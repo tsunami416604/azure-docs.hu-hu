@@ -17,6 +17,7 @@ ms.author: jotaub;sethm
 translationtype: Human Translation
 ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
 ms.openlocfilehash: bee101d19cb5f5fc790b53295069b4d4db247366
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -71,10 +72,5 @@ Gratulálunk, végpontok közötti hibrid kapcsolatok alkalmazást hozott létre
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

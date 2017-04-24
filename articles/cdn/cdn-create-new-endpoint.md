@@ -17,6 +17,7 @@ ms.author: mazha
 translationtype: Human Translation
 ms.sourcegitcommit: bdf6e27463fcc6186a3b15a55653fa468da91bdc
 ms.openlocfilehash: d263e911d0d0b3cdc1e48e300a3c8a0994b38c39
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -56,7 +57,7 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
    
     ![Végpont hozzáadása panel][cdn-add-endpoint]
 3. Adja meg a CDN-végpont kívánt nevét a **Név** mezőben.  A rendszer ezt a nevet fogja használni a gyorsítótárazott erőforrások eléréséhez a `<endpointname>.azureedge.net` tartományban.
-4. A **Forrása típusa** legördülő menüben válassza ki a forrástípust.  Azure Storage-fiók esetén válassza a **Storage**, Azure Cloud Service szolgáltatás esetén a **Cloud Service **, Azure Web Apps esetén a **Webalkalmazás**, az összes többi nyilvánosan elérhető (az Azure rendszerben vagy máshol tárolt) webkiszolgáló-forrás esetén pedig az **Egyéni forrás** lehetőséget.
+4. A **Forrása típusa** legördülő menüben válassza ki a forrástípust.  Azure Storage-fiók esetén válassza a **Storage**, Azure Cloud Service szolgáltatás esetén a **Cloud Service**, Azure Web Apps esetén a **Webalkalmazás**, az összes többi nyilvánosan elérhető (az Azure rendszerben vagy máshol tárolt) webkiszolgáló-forrás esetén pedig az **Egyéni forrás** lehetőséget.
    
     ![A CDN-forrása típusa](./media/cdn-create-new-endpoint/cdn-origin-type.png)
 5. A **Forrás állomásneve** legördülő menüben válassza ki vagy adja meg a forrástartományt.  A legördülő menüben szerepelni fog a 4. lépésben megadott típusú összes rendelkezésre álló forrás.  Ha a **Forrása típusa** számára az *Egyéni forrás* beállítást választotta ki, akkor be kell írnia az egyéni forrás tartományát.
@@ -103,9 +104,4 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 [cdn-new-endpoint-button]: ./media/cdn-create-new-endpoint/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
