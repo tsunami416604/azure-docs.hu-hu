@@ -59,7 +59,7 @@ Szükség esetén a 4–8. lépés megismétlésével további RADIUS-ügyfeleke
   Az LDAP-kötés használatához kattintson a Címtár-integráció ikonra, és szerkessze úgy az LDAP-konfigurációt a Beállítások lapon, hogy a kiszolgáló kötést hozhasson létre a címtárával. Az LDAP konfigurálásával kapcsolatos utasításokat az [LDAP-proxy konfigurációs útmutatójában](multi-factor-authentication-get-started-server-ldap.md) talál.
 
 4. Ha a felhasználókat egy másik RADIUS-kiszolgálón kell hitelesíteni, válassza a RADIUS-kiszolgáló(k) lehetőséget.
-5. Kattintson a ** Hozzáadás** gombra, és konfigurálja azt a kiszolgálót, amelynek a kiszolgáló proxykapcsolaton keresztül átadja a RADIUS-kéréseket.
+5. Kattintson a **Hozzáadás** gombra, és konfigurálja azt a kiszolgálót, amelynek a kiszolgáló proxykapcsolaton keresztül átadja a RADIUS-kéréseket.
 6. A RADIUS-kiszolgáló hozzáadása párbeszédpanelen adja meg a RADIUS-kiszolgáló IP-címét és egy közös titkos kulcsot. 
 
   A közös titkos kulcsnak azonosnak kell lennie az Azure Multi-Factor Authentication- és a RADIUS-kiszolgálón. Módosítsa a hitelesítési portot és a nyilvántartási portot, ha a RADIUS-kiszolgáló eltérő portokat használ.
