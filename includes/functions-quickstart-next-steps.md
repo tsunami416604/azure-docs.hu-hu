@@ -10,7 +10,3 @@ Ez a gyorsindító egy egyszerű módot mutat be egy alapszintű, HTTP-eseményi
   Az Azure Functions szolgáltatáshoz elérhető szolgáltatáscsomagokat ismerteti, köztük a Használatalapú futtatási csomagot, és segít a megfelelő csomag kiválasztásában. 
 * [Az Azure App Service-ről](../articles/app-service/app-service-value-prop-what-is.md)  
   Az Azure Functions az Azure App Service platform használatával biztosítja az olyan alapvető funkciókat, mint az üzembe helyezések, a környezeti változók és a diagnosztika. 
-
-<!--HONumber=Feb17_HO1-->
-
-

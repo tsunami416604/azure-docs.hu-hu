@@ -6,8 +6,3 @@
 | [Webes API-hívás .NET-webalkalmazásból](../articles/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet.md) | [Regisztráció és bejelentkezés hozzáadása egy Javascript SPA- (NodeJS-) alkalmazáshoz](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)| |
 | [Regisztráció és bejelentkezés hozzáadása egy ASP.NET-magalkalmazáshoz](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c) | | |
 
-
-
-<!--HONumber=Feb17_HO1-->
-
-
