@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 7b506668b3025774edec25b6a37b83a47d702cb0
 ms.openlocfilehash: b2eaddc631087d8b7b94e40f508bdd5da5229736
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -43,7 +44,7 @@ Ez a cikk azt ismerteti, hogyan vehet fel felhasználókat más címtárakból a
 > [!IMPORTANT]
 > Ha a szervezete több tartományt használ, a következő problémákról kell tudnia a felhasználói fiók hozzáadásakor:
 >
-> * Ha azonos egyszerű felhasználónévvel (UPN) szeretne felhasználói fiókokat felvenni több tartományba, **először** adja hozzá például a geoffgrisso@contoso.onmicrosoft.com, ** címet, majd a ** geoffgrisso@contoso.com címet.
+> * Ha azonos egyszerű felhasználónévvel (UPN) szeretne felhasználói fiókokat felvenni több tartományba, **először** adja hozzá például a geoffgrisso@contoso.onmicrosoft.com, **címet, majd a** geoffgrisso@contoso.com címet.
 > * **Ne** adja hozzá a geoffgrisso@contoso.com címet a geoffgrisso@contoso.onmicrosoft.com hozzáadása előtt. A sorrend betartása fontos, és nehézkes lehet visszavonni a változásokat.
 >
 >
@@ -86,9 +87,4 @@ Ha a felhasználót törlik a saját címtárában, vagy ha törlik a Microsoft-
 * [Az Azure AD felügyelete](active-directory-administer.md)
 * [Jelszavak kezelése az Azure AD-ben](active-directory-manage-passwords.md)
 * [Csoportok kezelése az Azure AD-ben](active-directory-manage-groups.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

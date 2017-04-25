@@ -11,7 +11,3 @@ Az Azure Portalon a kapcsolatra lépve tekintheti meg a klasszikus virtuális h�
 5. A kapcsolat további információinak megtekintéséhez kattintson a kapcsolat nevére a **Webhelyek közötti VPN-kapcsolat** panel megnyitásához.
 
     ![Kapcsolat állapota részletek](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Kapcsolat állapota további információk")
-
-<!--HONumber=Jan17_HO5-->
-
-
