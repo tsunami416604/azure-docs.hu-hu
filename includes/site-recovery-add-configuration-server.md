@@ -40,8 +40,3 @@
     ![Összefoglalás](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
 A regisztráció befejezését követően a kiszolgáló megjelenik a tároló **Beállítások** > **Kiszolgálók** paneljén.
-
-
-<!--HONumber=Feb17_HO4-->
-
-
