@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
 ms.openlocfilehash: 6c366a2b7e5017bbe67cf1dbefc0baec6cf1aed3
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -38,7 +39,7 @@ Felhasználók hozzáadásával feltöltheti a címtárat adatokkal. Ez a cikk a
 > [!IMPORTANT]
 > Ha a szervezete több tartományt használ, a következő problémákról kell tudnia a felhasználói fiók hozzáadásakor:
 >
-> * Ha azonos egyszerű felhasználónévvel (UPN) szeretne felhasználói fiókokat felvenni több tartományba, **először** adja hozzá például a geoffgrisso@contoso.onmicrosoft.com, ** címet, majd a ** geoffgrisso@contoso.com címet.
+> * Ha azonos egyszerű felhasználónévvel (UPN) szeretne felhasználói fiókokat felvenni több tartományba, **először** adja hozzá például a geoffgrisso@contoso.onmicrosoft.com, **címet, majd a** geoffgrisso@contoso.com címet.
 > * **Ne** adja hozzá a geoffgrisso@contoso.com címet a geoffgrisso@contoso.onmicrosoft.com hozzáadása előtt. A sorrend betartása fontos, és nehézkes lehet visszavonni a változásokat.
 >
 >
@@ -84,9 +85,4 @@ Ezután szerkesztheti a vendégfelhasználók hozzáférés-vezérlésének lehe
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -30,7 +30,7 @@ Ha Azure MFA, Azure AD Prémium vagy Nagyvállalati mobilitási csomag licenceke
 3. Az Active Directory lapon kattintson duplán arra a könyvtárra, amelyben az engedélyezni kívánt felhasználók találhatók.
 4. A könyvtárlap tetején válassza a **Licencek** elemet.
    ![Licencek hozzárendelése](./media/multi-factor-authentication-get-started-assign-licenses/assign1.png)
-5. A Licencek lapon válassza az **Azure Multi-Factor Authentication**, a **Prémium szintű Active Directory ** vagy a **Nagyvállalati mobilitási csomag** lehetőséget.  Ha csak eggyel rendelkezik, akkor azt a rendszer automatikusan bejelöli.
+5. A Licencek lapon válassza az **Azure Multi-Factor Authentication**, a **Prémium szintű Active Directory** vagy a **Nagyvállalati mobilitási csomag** lehetőséget.  Ha csak eggyel rendelkezik, akkor azt a rendszer automatikusan bejelöli.
 6. Kattintson a lap alján található **Hozzárendelés** gombra.
    ![Licencek hozzárendelése](./media/multi-factor-authentication-get-started-assign-licenses/assign3.png)
 7. A megjelenő mezőben kattintson azon felhasználók vagy csoportok mellé, amelyekhez licenceket szeretne rendelni.  Egy zöld pipának kell megjelennie.
