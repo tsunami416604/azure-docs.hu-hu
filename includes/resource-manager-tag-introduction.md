@@ -1,16 +1,12 @@
-Az Azure-erőforrások címkézésével logikus elv mentén rendszerezheti azokat, kategóriák szerint. Minden címke egy kulcsból és egy értékből áll. Alkalmazhatja például a „Környezet” kulcsot és az „Éles” értéket az összes éles üzemben használt erőforrásra. E nélkül a címke nélkül nehézségekbe ütközhet, ha meg szeretné állapítani, hogy az adott erőforrás fejlesztési, tesztelési vagy éles üzemi célokat szolgál. A „Környezet” és az „Éles” azonban csak például szolgál. Olyan kulcsokat és értékeket adjon meg, amelyek az előfizetés rendszerezésének szempontjából célszerűek.
+You apply tags to your Azure resources to logically organize them by categories. Each tag consists of a key and a value. For example, you can apply the key "Environment" and the value "Production" to all the resources in production. Without this tag, you may have difficulty identifying whether a resource is intended for development, test, or production. However, "Environment" and "Production" are just examples. You define the keys and values that make the most sense for organizing your subscription.
 
-A címkék alkalmazása után az előfizetés összes erőforrását lekérheti az adott címke kulcsával és értékével. A címkékkel olyan kapcsolódó erőforrásokat is lekérhet, amelyek más erőforráscsoportokban találhatók. Ez a megoldás akkor hasznos, ha számlázás vagy felügyelet céljából kell rendszereznie erőforrásait.
+After applying tags, you can retrieve all the resources in your subscription with that tag key and value. Tags enable you to retrieve related resources that reside in different resource groups. This approach is helpful when you need to organize resources for billing or management.
 
-Az alábbi korlátozások érvényesek a címkékre:
+The following limitations apply to tags:
 
-* Minden egyes erőforrás vagy erőforráscsoport legfeljebb 15 címkével rendelkezhet. 
-* A címke neve legfeljebb 512 karakter hosszúságú lehet.
-* A címke értéke legfeljebb 256 karakter hosszúságú lehet. 
-* Az egyes erőforráscsoportokra alkalmazott címkéket nem öröklik az adott erőforráscsoportba tartozó erőforrások. 
+* Each resource or resource group can have a maximum of 15 tag key/value pairs. This limitation only applies to tags directly applied to the resource group or resource. A resource group can contain many resources that each have 15 tag key/value pairs. 
+* The tag name is limited to 512 characters.
+* The tag value is limited to 256 characters. 
+* Tags applied to the resource group are not inherited by the resources in that resource group. 
 
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+If you have more than 15 values that you need to associate with a resource, use a JSON string for the tag value. The JSON string can contain many values that are applied to a single tag key. An example of assigning a JSON string to the tag key is shown in this article.

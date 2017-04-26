@@ -1,48 +1,29 @@
-### <a name="to-verify-your-connection-by-using-powershell"></a>A kapcsolat ellenőrzése a PowerShell használatával
-A sikeres kapcsolat ellenőrzéséhez használja a `Get-AzureRmVirtualNetworkGatewayConnection` parancsmagot a `-Debug` argumentummal vagy anélkül. 
+### <a name="to-verify-your-connection-by-using-powershell"></a>To verify your connection by using PowerShell
 
-1. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az „A” lehetőséget az összes futtatásához. A példában a `-Name` a létrehozott és tesztelni kívánt kapcsolat nevére utal.
+You can verify that your connection succeeded by using the 'Get-AzureRmVirtualNetworkGatewayConnection' cmdlet, with or without '-Debug'. 
+
+1. Use the following cmdlet example, configuring the values to match your own. If prompted, select 'A' in order to run 'All'. In the example, '-Name' refers to the name of the connection that you created and want to test.
+
+  ```powershell
+  Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
+  ```
+2. After the cmdlet has finished, view the values. In the example below, the connection status shows as 'Connected' and you can see ingress and egress bytes.
+
+  ```
+  "connectionType": "IPsec",
+  "routingWeight": 10,
+  "sharedKey": "abc123",
+  "connectionStatus": "Connected",
+  "ingressBytesTransferred": 33509044,
+  "egressBytesTransferred": 4142431
+  ```
+
+### <a name="to-verify-your-connection-by-using-the-azure-portal"></a>To verify your connection by using the Azure portal
+
+In the Azure portal, you can view the connection status by navigating to the connection. There are multiple ways to do this. The following steps show one way to navigate to your connection and verify.
+
+1. In the [Azure portal](http://portal.azure.com), click **All resources** and navigate to your virtual network gateway.
+2. On the blade for your virtual network gateway, click **Connections**. You can see the status of each connection.
+3. Click the name of the connection that you want to verify to open **Essentials**. In Essentials, you can view more information about your connection. The **Status** is 'Succeeded' and 'Connected' when you have made a successful connection.
    
-        Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
-2. A parancsmag futtatása után tekintse meg az értékeket. Az alábbi példában a kapcsolati állapot „Csatlakoztatva”, és láthatja a bemenő és kimenő bájtokat.
-   
-        Body:
-        {
-          "name": "MyGWConnection",
-          "id":
-        "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/connections/MyGWConnection",
-          "properties": {
-            "provisioningState": "Succeeded",
-            "resourceGuid": "1c484f82-23ec-47e2-8cd8-231107450446b",
-            "virtualNetworkGateway1": {
-              "id":
-        "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworkGa
-        teways/vnetgw1"
-            },
-            "localNetworkGateway2": {
-              "id":
-        "/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/localNetworkGate
-        ways/LocalSite"
-            },
-            "connectionType": "IPsec",
-            "routingWeight": 10,
-            "sharedKey": "abc123",
-            "connectionStatus": "Connected",
-            "ingressBytesTransferred": 33509044,
-            "egressBytesTransferred": 4142431
-          }
-
-### <a name="to-verify-your-connection-by-using-the-azure-portal"></a>A kapcsolat ellenőrzése az Azure Portal használatával
-Az Azure Portalon a kapcsolatra lépve tekintheti meg a kapcsolat állapotát. Ezt többféleképpen megteheti. Az alábbi lépések a kapcsolat megkeresését és ellenőrzését mutatják be.
-
-1. Az [Azure Portalon](http://portal.azure.com) kattintson az **Összes erőforrás** lehetőségre, és keresse meg a virtuális hálózati átjárót.
-2. A virtuális hálózati átjáró paneljén kattintson a **Kapcsolatok** lehetőségre. Láthatja az egyes kapcsolatok állapotát.
-3. Kattintson az ellenőrizni kívánt kapcsolat nevére az **Alapvető erőforrások** megnyitásához. Az Alapvető erőforrások panelen áttekintheti a kapcsolat további adatait. Az **Állapot** „Sikeres” vagy „Csatlakoztatva” értékű, ha a kapcsolat sikeresen létrejött.
-   
-    ![Kapcsolat ellenőrzése](./media/vpn-gateway-verify-connection-rm-include/connectionsucceeded.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-
+    ![Verify connection](./media/vpn-gateway-verify-connection-rm-include/connectionsucceeded.png)
