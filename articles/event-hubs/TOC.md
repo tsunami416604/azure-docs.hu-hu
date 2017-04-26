@@ -29,7 +29,6 @@
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET-keretrendszer](event-hubs-dotnet-framework-api-overview.md)
 #### [Diagnosztikai naplók](event-hubs-diagnostic-logs.md)
-### [Hitelesítés és engedélyezés](../service-bus-messaging/service-bus-sas.md)
 ### [AMQP 1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## Kezelés
 ### [Event Hubs felügyeleti könyvtárak](event-hubs-management-libraries.md)

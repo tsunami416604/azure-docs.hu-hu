@@ -22,5 +22,5 @@ A Blob szolgáltatás az alábbi összetevőkből áll:
   
     A *lapblobok* akár 1 TB méretűek is lehetnek, és hatékonyabbak a gyakori írási/olvasási műveletek esetén. Az Azure virtuális gépek lapblobokat használnak operációs rendszerként és adatlemezként.
   
-    A tárolók és blobok elnevezésével kapcsolatos részletekért lásd: [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/fileservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) (Tárolók, blobok és metaadatok elnevezése és hivatkozása).
+    A tárolók és blobok elnevezésével kapcsolatos részletekért lásd: [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) (Tárolók, blobok és metaadatok elnevezése és hivatkozása).
 

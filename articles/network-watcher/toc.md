@@ -7,6 +7,7 @@
 ## [Biztonsági csoport nézet](network-watcher-security-group-view-overview.md)
 ## [Következő ugrás](network-watcher-next-hop-overview.md)
 ## [VPN-kapcsolatok hibaelhárítása](network-watcher-troubleshoot-overview.md)
+## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
 # Első lépések
 ## [Network Watcher konfigurálása](network-watcher-create.md)
 ## Csomagrögzítés kezelése

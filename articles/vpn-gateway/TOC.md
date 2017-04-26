@@ -14,6 +14,7 @@
 ## Hely-hely közötti kapcsolat konfigurálása
 ### [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 ### [Klasszikus portál (klasszikus)](vpn-gateway-site-to-site-create.md)
 ## Pont–hely közötti kapcsolat konfigurálása
@@ -38,7 +39,6 @@
 ## [Magas rendelkezésre állású aktív–aktív kapcsolatok konfigurálása](vpn-gateway-activeactive-rm-powershell.md)
 ## [Helyi hálózati átjáró beállításainak módosítása a PowerShell-lel](vpn-gateway-modify-local-network-gateway.md)
 ## [VPN Gateway-kapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md)
-## [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 ## [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md)
 ## VPN Gateway törlése
 ### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -46,12 +46,15 @@
 ### [PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [Önaláírt főtanúsítványok létrehozása pont–hely (P2S) kapcsolatok esetén](vpn-gateway-certificates-point-to-site.md)
 ## [VPN-átjáró konfigurálása (klasszikus)](vpn-gateway-configure-vpn-gateway-mp.md)
+## Hibaelhárítás
+### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.6.0/azurerm.network)
 ## [PowerShell (klasszikus)](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
 ## [REST](https://msdn.microsoft.com/library/mt163859)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/jj154113)
+## [Azure CLI](https://docs.microsoft.com/cli/azure/network)
 
 # Kapcsolódó
 ## [Virtuális hálózat](/azure/virtual-network/)

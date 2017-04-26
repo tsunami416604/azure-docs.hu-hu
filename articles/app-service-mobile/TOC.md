@@ -22,7 +22,7 @@
 
 ## Webalkalmazások létrehozása
 ### [.NET](../app-service-web/app-service-web-get-started-dotnet.md)
-### [PHP](../app-service-web/app-service-web-get-started-php.md)    
+### [PHP](../app-service-web/app-service-web-get-started-php.md)
 ### [Node.js](../app-service-web/app-service-web-get-started-nodejs.md)
 ### [Java](../app-service-web/app-service-web-get-started-java.md)
 ### [Python](../app-service-web/app-service-web-get-started-python.md)
@@ -68,7 +68,7 @@
 #### [Leküldéses értesítések hozzáadása](app-service-mobile-windows-store-dotnet-get-started-push.md)
 #### [Az ügyfél-SDK használata](app-service-mobile-dotnet-how-to-use-client-library.md)
 
-### Xamarin.Android 
+### Xamarin.Android
 #### [Offline szinkronizálás engedélyezése](app-service-mobile-xamarin-android-get-started-offline-data.md)
 #### [Hitelesítés hozzáadása](app-service-mobile-xamarin-android-get-started-users.md)
 #### [Leküldéses értesítések hozzáadása](app-service-mobile-xamarin-android-get-started-push.md)
@@ -78,7 +78,6 @@
 #### [Offline szinkronizálás engedélyezése](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 #### [Hitelesítés hozzáadása](app-service-mobile-xamarin-forms-get-started-users.md)
 #### [Leküldéses értesítések hozzáadása](app-service-mobile-xamarin-forms-get-started-push.md)
-#### [Csatlakozás az Azure Storage-hoz a Xamarin.Forms alkalmazásban](app-service-mobile-xamarin-forms-blob-storage.md)
 #### [Az ügyfél-SDK használata](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.iOS
@@ -194,7 +193,6 @@
 ### [Alkalmazások kezelése az Azure Automation használatával](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Integrálás
-### [Csatlakozás az Azure Storage-hoz a Xamarin.Forms alkalmazásban](app-service-mobile-xamarin-forms-blob-storage.md)
 ### [Helyszíni erőforrások elérése hibrid kapcsolatokkal](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [E-mail küldése a SendGrid és az Azure használatával](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
@@ -219,10 +217,10 @@
 ## [Azure Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/en-us/pricing/details/app-service/)  
-## [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)  
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)  
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services) 
+## [Díjszabás](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## Példák
 ### [Kihelyezett mérnök](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
 ### [Strukturált adatszinkronizálás](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/)

@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 29d8693dd1d6d1ef26ccb21e3a5b29cf1adbfcc5
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: e9cfcdd9d6e36c1154b91904da60483825ff8b94
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>Get started with Azure Blob Storage using .NET (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel)
@@ -365,7 +365,7 @@ for (int i = 0; i < numBlocks; i++)
 Console.WriteLine(appendBlob.DownloadText());
 ```
 
-A blobok három különböző típusa közötti különbségekről bővebb információt az [Understanding Block Blobs, Page Blobs, and Append Blobs](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) (A blokkblobok, a lapblobok és a hozzáfűző blobok ismertetése) című részben talál.
+A blobok három különböző típusa közötti különbségekről bővebb információt az [Understanding Block Blobs, Page Blobs, and Append Blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) (A blokkblobok, a lapblobok és a hozzáfűző blobok ismertetése) című részben talál.
 
 ## <a name="managing-security-for-blobs"></a>A blobok biztonságának kezelése
 Alapértelmezés szerint az Azure Storage úgy biztosítja az adatok védelmét, hogy a hozzáférést a fiók tulajdonosára korlátozza, aki a fiók tárelérési kulcsaival rendelkezik. Ha a tárfiókjában lévő blobadatokat kell megosztania, fontos, hogy azt a fiók tárelérési kulcsai biztonságának fenyegetése nélkül tegye. A blobadatokat titkosíthatja, hogy továbbításuk biztonságosan történjen a hálózaton és az Azure Storage szolgáltatásban.
@@ -395,7 +395,7 @@ Most, hogy megismerte a Blob Storage alapjait, az alábbi hivatkozásokat követ
 
 ### <a name="blob-storage-reference"></a>Blob Storage-hivatkozás
 * [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](https://msdn.microsoft.com/library/azure/mt347887.aspx)
-* [REST API – referencia](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
+* [REST API – referencia](/rest/api/storageservices/azure-storage-services-rest-api-reference)
 
 ### <a name="conceptual-guides"></a>Fogalmi útmutatók
 * [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)

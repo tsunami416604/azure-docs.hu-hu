@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Mi az az Azure virtuális gépeken futó SQL Server?](virtual-machines-windows-sql-server-iaas-overview.md) 
-## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+## [Díjszabás](virtual-machines-windows-sql-server-pricing-guidance.md)
 ## [Gyakori kérdések](virtual-machines-windows-sql-server-iaas-faq.md)
  
 # Első lépések
@@ -48,9 +48,4 @@
 ## [SQL Server-eszközök](https://msdn.microsoft.com/library/mt238365.aspx)
 ## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 ## [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

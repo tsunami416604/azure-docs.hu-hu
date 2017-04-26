@@ -67,7 +67,7 @@
 ### [Útmutató a táblatervezéshez](storage-table-design-guide.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## Fájlok használata
-### [Áttekintés](/rest/api/storageservices/fileservices/File-Service-Concepts)
+### [Áttekintés](/rest/api/storageservices/File-Service-Concepts)
 ### [Azure-fájlok hibaelhárítása](storage-troubleshoot-file-connection-problems.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## Lemezek használata
@@ -180,7 +180,7 @@
 ## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST
-### [Blobok, üzenetsorok, táblák és fájlok](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
+### [Blobok, üzenetsorok, táblák és fájlok](/rest/api/storageservices/azure-storage-services-rest-api-reference)
 ### [Erőforrás-szolgáltató](/rest/api/storagerp)
 ### [Importálás és exportálás](/rest/api/storageimportexport)
 

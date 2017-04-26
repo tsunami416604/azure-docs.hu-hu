@@ -15,9 +15,9 @@ ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 7f23ae904461e754b3871b33ca40c2ff4fcb99f0
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 64c5869f3e66c249fefa9af228fe1b33974cf293
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -57,7 +57,7 @@ Minden Data Lake Analytics-fiók egy Azure Data Lake Store-fióktól függ.  Ezt
 Egy Data Lake Analytics-fiók létrehozása után hozzáadhat további Data Lake Store-fiókokat és Azure Storage-fiókokat is. Útmutatásért lásd: [Manage Data lake Analytics account data sources](data-lake-analytics-manage-use-portal.md#manage-account-data-sources) (A Data Lake Analytics-fiók adatforrásainak kezelése).
 
 ## <a name="prepare-source-data"></a>Forrásadatok előkészítése
-Az oktatóanyag során keresési naplókat fog feldolgozni.  A keresési napló tárolható Data Lake Store-ban vagy Azure Blob Storage-ban.
+Az oktatóanyag során keresési naplókat fog feldolgozni.  A keresési napló tárolható Data Lake-adattárban vagy Azure Blob Storage-ban.
 
 Az Azure Portal felhasználói felületet biztosít a mintaadatfájlok alapértelmezett Data Lake Store-fiókba való másolásához. Ilyen adatfájl a keresési napló is.
 

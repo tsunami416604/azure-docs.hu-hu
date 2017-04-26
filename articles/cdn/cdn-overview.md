@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 6c8c04e0237e2168df60ecc597754c38af167e14
-ms.openlocfilehash: 0aed3d224199b17bac748b14416a738eac342103
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 8809f35e992d528224fc14e0de01a61d396c082b
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -62,7 +63,7 @@ Három Azure CDN termék áll rendelkezésre: az **Akamai Azure CDN Standard**, 
 | [Gyors végleges törlés](cdn-purge-endpoint.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Objektumok előzetes betöltése](cdn-preload-endpoint.md) | |**&#x2713;;** |**&#x2713;;** |
 | [Egyszerűsített analitika](cdn-analyze-usage-patterns.md) | |**&#x2713;;** |**&#x2713;;** |
-| [HTTP/2-támogatás](https://msdn.microsoft.com/library/mt762901.aspx) |**&#x2713;;** | | |
+| [HTTP/2-támogatás](https://msdn.microsoft.com/library/mt762901.aspx) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Speciális HTTP-jelentések](cdn-advanced-http-reports.md) | | |**&#x2713;;** |
 | [Valós idejű statisztikák](cdn-real-time-stats.md) | | |**&#x2713;;** |
 | [Valós idejű riasztások](cdn-real-time-alerts.md) | | |**&#x2713;;** |
@@ -88,10 +89,5 @@ Ha működés közben szeretné látni a CDN-t, tekintse meg a [Build 2016 konfe
 Ismerje meg, hogyan automatizálhatja az Azure CDN-t a [.NET](cdn-app-dev-net.md) vagy a [Node.js](cdn-app-dev-node.md) segítségével.
 
 Díjszabási információkért tekintse meg [A tartalomkézbesítési hálózat (CDN) díjszabása](https://azure.microsoft.com/pricing/details/cdn/) című cikket.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

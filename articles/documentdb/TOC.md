@@ -4,6 +4,7 @@
 ## [Mi a DocumentDB: API a MongoDB-hez?](documentdb-protocol-mongodb.md)
 ## [Alapfogalmak](documentdb-resources.md)
 ## [Globális terjesztés](documentdb-distribute-data-globally.md)
+## [Régiónkénti feladatátvétel](documentdb-regional-failovers.md)
 ## [Biztonság](documentdb-nosql-database-security.md)
 ## [A NoSQL teljes birtoklási költségének elemzése](https://aka.ms/documentdb-tco-paper)
 ## Forgatókönyvek
@@ -47,7 +48,6 @@
 ### [Adatmodellezés](documentdb-modeling-data.md)
 ### [Adatok automatikus elévülése](documentdb-time-to-live.md)
 ### [Biztonsági mentés és visszaállítás](documentdb-online-backup-and-restore.md)
-### [Régiónkénti feladatátvétel](documentdb-regional-failovers.md)
 ### Automatizálás
 #### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
 #### [Azure CLI 1.0: Fiók létrehozása](documentdb-automation-resource-manager-cli-nodejs.md)

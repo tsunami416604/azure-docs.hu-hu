@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 1876b78186da3aa6c0ae9dc7de3b7ab7e46888bb
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 0f80ac93e3ff1ee95477e4fa5dbe21d61ddf8ead
+ms.lasthandoff: 04/25/2017
 
 ---
 
@@ -211,7 +211,7 @@ Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automat
 | AzureClassicAutomationTutorial forgatókönyv | Grafikus mintarunbook, amely a klasszikus futtató fiók (tanúsítvány) segítségével lekéri az előfizetéshez tartozó, a klasszikus üzemi modellel létrehozott virtuális gépeket, majd megjeleníti a virtuális gépek nevét és állapotát. |
 | AzureClassicAutomationTutorial parancsprogram-forgatókönyv | PowerShell-mintarunbook, amely a klasszikus futtató fiók (tanúsítvány) segítségével lekéri az előfizetéshez tartozó klasszikus virtuális gépeket, majd megjeleníti a virtuális gépek nevét és állapotát. |
 | AzureClassicRunAsCertificate | Automatikusan létrejövő tanúsítványobjektum, amely Azure-hitelesítésre használható, így a klasszikus Azure-erőforrások is kezelhetők a runbookokból. A tanúsítvány élettartama egy év. |
-| AzureClassicRunAsConnection | Automatikusan létrejövő kapcsolatobjektum, amely Azure-hitelesítésre használható, így a klasszikus Azure-erőforrások is kezelhetők a runbookokból. |Azure-hitelesítéssel a klasszikus Azure-erőforrások is kezelhetők a runbookokból. |
+| AzureClassicRunAsConnection | Automatikusan létrejövő kapcsolatobjektum, amely Azure-hitelesítésre használható, így a klasszikus Azure-erőforrások is kezelhetők a runbookokból.|
 
 ## <a name="next-steps"></a>Következő lépések
 * Ellenőrizheti, hogy az új Automation-fiók el tudja végezni a hitelesítést az Azure-erőforrásokkal: [Azure Automation futtató fiók hitelesítésének tesztelése](automation-verify-runas-authentication.md).
