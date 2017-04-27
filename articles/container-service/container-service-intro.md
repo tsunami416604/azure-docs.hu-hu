@@ -74,6 +74,8 @@ A Docker Swarm natív fürtszolgáltatást biztosít a Docker számára. Mivel a
 
 ![Swarm használatához konfigurált Azure Container Service.](media/acs-intro/acs-swarm2.png)
 
+[!INCLUDE [container-service-swarm-mode-note](../../includes/container-service-swarm-mode-note.md)]
+
 A Swarm-fürtön való tárolókezeléseket támogató eszközök közé tartoznak többek között az alábbiak:
 
 * Dokku
