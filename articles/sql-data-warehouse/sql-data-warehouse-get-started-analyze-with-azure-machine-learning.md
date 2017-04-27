@@ -109,7 +109,7 @@ Most teszteljük, hogyan kezeli a modell a tesztadatokat. Az általunk választo
     Első bemenet: tanított modell Második bemenet: tesztadatok ![Pontszámok számolása][9]
 2. Húzza a **két osztályú Bayes pontozó gépet** a kísérlet vászonra. Összehasonlítjuk ennek az algoritmusnak a teljesítményét a Két osztályú súlyozott döntési fa teljesítményével.
 3. Másolja és illessze be a vászonra a Tanítási és Pontszám modelleket.
-4. Húzza a **Modell kiértékelése ** modult a vászonra a két algoritmus összehasonlításához.
+4. Húzza a **Modell kiértékelése** modult a vászonra a két algoritmus összehasonlításához.
 5. **Futtassa** a kísérletet.
    ![Kísérlet futtatása][10]
 6. Kattintson a Modell kiértékelése modul alsó részén található kimeneti portra, majd kattintson a Képi megjelenítés opcióra.
