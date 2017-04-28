@@ -31,8 +31,6 @@ ms.lasthandoff: 02/03/2017
 > * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-> 
-> 
 
 Az Azure Data Factory **Másolás varázslójával** könnyen és gyorsan létrehozhat egy olyan folyamatot, amely megvalósítja az adatfeldolgozási/-átviteli forgatókönyvet. Ezért azt javasoljuk, hogy első lépésként a varázslóval hozzon létre egy mintafolyamatot az adatátviteli forgatókönyvhöz. Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure data factoryt, indíthatja el a Másolás varázslót, és végigvezeti az adatfeldolgozási/-átviteli forgatókönyv részletes ismertetését tartalmazó lépések sorozatán. Amikor befejezte a varázsló lépéseit, a varázsló automatikusan létrehoz egy másolási tevékenységet tartalmazó folyamatot, amelynek során az adatokat átmásolja egy Azure Blob Storage-ból egy Azure SQL Databese-be. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket. 
 

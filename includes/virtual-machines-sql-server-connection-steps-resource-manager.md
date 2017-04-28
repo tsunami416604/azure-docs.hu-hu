@@ -19,16 +19,11 @@ DNS-címke létrehozásához először válassza a **Virtuális gépek** elemet 
 
 ### <a name="connect-to-the-database-engine-from-another-computer"></a>Csatlakozás az adatbázismotorhoz egy másik számítógépről
 1. Nyissa meg az SQL Server Management Studio (SSMS) alkalmazást egy internethez csatlakozó számítógépen.
-2. A **Kapcsolódás a kiszolgálóhoz** vagy a ** Kapcsolódás az adatbázismotorhoz** párbeszédpanelen szerkessze a **Kiszolgáló neve** értéket. Adja meg a virtuális gép (az előző feladat során meghatározott) teljes DNS-nevét.
+2. A **Kapcsolódás a kiszolgálóhoz** vagy a **Kapcsolódás az adatbázismotorhoz** párbeszédpanelen szerkessze a **Kiszolgáló neve** értéket. Adja meg a virtuális gép (az előző feladat során meghatározott) teljes DNS-nevét.
 3. A **Hitelesítés** mezőben válassza az **SQL Server-hitelesítés** lehetőséget.
 4. A **Bejelentkezés** szövegmezőbe írjon be egy érvényes SQL-bejelentkezési nevet.
 5. A **Jelszó** szövegmezőbe írja be a bejelentkezési jelszót.
 6. Kattintson a **Connect** (Csatlakozás) gombra.
    
     ![ssms connect](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 
