@@ -3,8 +3,3 @@ A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálóz
 
 ![](./media/expressroute-intro-include/expressroute-basic.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

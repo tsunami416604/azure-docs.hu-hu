@@ -14,8 +14,3 @@ Az alábbi parancsmag segítségével indítsa újra a virtuális eszközt.
 
 `Restart-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

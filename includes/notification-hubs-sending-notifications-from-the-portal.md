@@ -11,8 +11,3 @@ Az alábbi listában egyéb oktatóprogramok találhatók, amelyek az értesít�
 
 Az oktatóprogram következő szakaszában megismerheti, hogyan használható a [Notification Hub REST interfész](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) az értesítési üzenetek közvetlen küldéséhez közvetlenül az alkalmazásával. Az összes regisztrált eszköz megkapja a bármelyik eszközről küldött értesítéseket.  
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

@@ -7,7 +7,7 @@
    
    1. **Név** – A virtuális eszköz egyedi neve.
    2. **Modell** – Válassza ki a virtuális eszköz modelljét. Ez a mező csak akkor jelenik meg, ha a 2. frissítést vagy újabb verziót futtat. Egy 8010-es eszközmodell 30 TB Standard szintű, míg egy 8020-as modell 64 TB Premium Storage tárhelyet biztosít. Ha biztonsági mentésekből szeretne elemszintű lekérési forgatókönyveket telepíteni, a 8010-es
-   3.  modellt adja meg. A 8020-as modellel magas teljesítményű, alacsony késleltetésű munkaterheléseket telepíthet, vagy használhatja vészhelyreállítási másodlagos eszközként.
+   3. modellt adja meg. A 8020-as modellel magas teljesítményű, alacsony késleltetésű munkaterheléseket telepíthet, vagy használhatja vészhelyreállítási másodlagos eszközként.
    4. **Verzió** – Válassza ki a virtuális eszköz verzióját. Ha a 8020-as modellt választja, akkor a Verzió mező nem jelenik meg a felhasználó számára. Ez a lehetőség akkor hiányzik, ha a szolgáltatáshoz regisztrált összes fizikai eszköz az 1. frissítést (vagy a rendszer újabb verzióját) futtatja. A mező csak akkor jelenik meg, ha a szolgáltatáshoz regisztrált az 1. frissítés előtti verziót és az 1. frissítést futtató fizikai eszközöket is. Mivel a virtuális eszköz verziója határozza meg, hogy melyik fizikai eszköz használható feladatátvételhez vagy klónozáshoz, fontos, hogy a virtuális eszköz megfelelő verzióját hozza létre. A következők szerint válasszon:
       
       * Válassza a 0.3-as frissítést futtató verziót, ha 0.3-as vagy korábbi verziójú fizikai eszközről hajt végre feladatátvételt vagy DR műveletet. 
@@ -25,9 +25,4 @@
    8. A virtuális eszköz létrehozásához kattintson a pipa ikonra. Az eszköz kiépítése körülbelül 30 percet vesz igénybe.
       
       ![StorSimple-virtuáliseszköz létrehozási fázisa](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

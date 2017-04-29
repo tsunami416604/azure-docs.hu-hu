@@ -12,8 +12,3 @@
 
 Ha létrehozta a végpontot, a részletek között megnézheti a nyilvános virtuális IP-címet (VIP). Jegyezze fel ezt az IP-címet.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

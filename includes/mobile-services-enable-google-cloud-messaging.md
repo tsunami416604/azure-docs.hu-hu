@@ -21,8 +21,3 @@
    
     Ezt az API-kulcs-értéket fogja használni, hogy engedélyezze az Azure-nak a GCM-mel való hitelesítést, és hogy leküldéses értesítéseket küldjön az alkalmazása nevében.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

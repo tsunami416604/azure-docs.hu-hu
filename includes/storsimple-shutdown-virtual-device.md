@@ -3,8 +3,3 @@
 2. Kattintson a **Virtual Machines** lehetőségre, majd válasszon ki egy virtuális eszközt.
 3. Kattintson a **Leállítás** elemre.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

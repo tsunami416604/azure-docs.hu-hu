@@ -8,8 +8,3 @@ Két dologért fizet: a virtuális hálózati átjáró óránkénti számítás
 * Ha különböző régiókban található virtuális hálózatok között küld forgalmat, a díjszabás a régióhoz igazodik.
 * Ha csak azonos régióban található virtuális hálózatok között küld forgalmat, nincsenek adatátviteli költségek. Az azonos régióban található virtuális hálózatok közötti forgalom ingyenes.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

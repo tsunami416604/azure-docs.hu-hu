@@ -17,8 +17,3 @@ A konfigurálás és a regisztráció befejezését követően az eszköz online
 
 ![StorSimple-virtuáliseszköz online fázisa](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

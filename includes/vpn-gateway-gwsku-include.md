@@ -15,8 +15,3 @@ A termékváltozat kiválasztásakor vegye figyelembe az alábbiakat:
 * Az alapszintű termékváltozat nem támogatja az ExpressRoute-VPN-átjárók egyszerre konfigurált beállításait.
 * Aktív/aktív módú S2S VPN Gateway-kapcsolatokat csak a nagy teljesítményű termékváltozaton lehet konfigurálni.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-

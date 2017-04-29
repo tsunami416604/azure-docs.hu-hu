@@ -8,8 +8,3 @@ Ebben az esetben egy **TestVNet** nevű VNetet fog létrehozni a**192.168.0.0./1
 * **FrontEnd**, amelynek a CIDR-blokkja **192.168.1.0/24** lesz.
 * **BackEnd**, amelynek a CIDR-blokkja **192.168.2.0/24** lesz.
 
-
-
-<!--HONumber=Jan17_HO1-->
-
-
