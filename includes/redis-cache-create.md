@@ -34,8 +34,3 @@ Az új gyorsítótár beállításainak konfigurálása után kattintson a **Lé
 
 ![A gyorsítótár létrejött](media/redis-cache-create/redis-cache-cache-created.png)
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

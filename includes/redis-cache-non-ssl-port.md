@@ -2,8 +2,3 @@ A nem SSL port engedélyezéséhez [tallózzon](../articles/redis-cache/cache-co
 
 ![A Redis Cache-gyorsítótár beállításai](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

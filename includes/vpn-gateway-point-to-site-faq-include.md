@@ -35,7 +35,3 @@ Igen, ez lehetséges. Azonban ezen virtuális hálózatok IP-előtagjai nem lehe
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Milyen átviteli sebességre számíthatok a helyek közötti és a pont–hely kapcsolatok esetében?
 Az átviteli sebesség fenntartása nehéz a VPN-alagutakban. Az IPsec és az SSTP erős titkosítást használó VPN-protokoll. Az átviteli sebességet emellett a késés, valamint a helyszín és az internet közötti sávszélesség is korlátozza.
-
-<!--HONumber=Feb17_HO3-->
-
-
