@@ -21,18 +21,22 @@
     href: app-service-web-get-started-python.md
   - name: "Statikus HTML-webhely létrehozása"
     href: app-service-web-get-started-html.md
+- name: "oktatóanyagokat"
+  items:
+  - name: "1 – .NET és SQL DB"
+    href: app-service-web-tutorial-dotnet-sqldatabase.md
+  - name: "1 – Node.js és MongoDB"
+    href: app-service-web-tutorial-nodejs-mongodb-app.md
+  - name: "2 – Egyéni tartomány leképezése"
+    href: app-service-web-tutorial-custom-domain.md
+  - name: "3 – SSL-tanúsítvány kötése"
+    href: app-service-web-tutorial-custom-ssl.md
 - name: "Példák"
   items:
   - name: "Azure CLI"
     href: app-service-cli-samples.md
   - name: "PowerShell"
     href: app-service-powershell-samples.md
-- name: "oktatóanyagokat"
-  items:
-  - name: ".NET-alkalmazás és SQL Database"
-    href: app-service-web-tutorial-dotnet-sqldatabase.md
-  - name: "Node.js és MongoDB"
-    href: app-service-web-tutorial-nodejs-mongodb-app.md
 - name: "Alapelvek"
   items:
   - name: "Az App Service működése"
@@ -174,8 +178,6 @@
         href: web-sites-dotnet-entity-framework-row-level-security.md
     - name: "Egyéni SSL hozzárendelése"
       items:
-      - name: "SSL-tanúsítvány vásárlása"
-        href: web-sites-purchase-ssl-web-site.md
       - name: "Külső SSL-tanúsítvány konfigurálása"
         href: web-sites-configure-ssl-certificate.md
     - name: "HTTPS kényszerítése"

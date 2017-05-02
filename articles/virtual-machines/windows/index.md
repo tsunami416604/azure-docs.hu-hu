@@ -12,16 +12,30 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: d6358d1a44b85a475cdf2d489112244152f64395
-ms.lasthandoff: 04/08/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: 631eb4c8aa3a41e03cf623fcc5610d3e84f18ec4
+ms.lasthandoff: 04/22/2017
 
 ---
 <div class="content">
     <h1>Windows rendszerű virtuális gépek – dokumentáció</h1>
-    <p style="padding-bottom: 0px; max-width: 1050px;">Az Azure Windows virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Windows Server használatával. Ismerje meg, hogyan hozhat létre, konfigurálhat, felügyelhet és méretezhet Windows virtuális gépeket a gyors útmutatóink, oktatóanyagaink és példáink segítségével.</p>
-<h2 style="margin-top: 36px; margin-bottom: 0px;">Gyors útmutatók</h2>
-<p style="margin-top: 6px; margin-bottom: 6px;">Windows rendszerű virtuális gép létrehozása a következővel:</p>
+    <div class="introHolder" style="justify-content: space-between;">
+        <div class="intro" style="min-width: 200px">
+            <p>Az Azure Windows virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Windows Server használatával. Ismerje meg, hogyan hozhat létre, konfigurálhat, felügyelhet és méretezhet Windows virtuális gépeket a gyors útmutatóink, oktatóanyagaink és példáink segítségével.</p>
+        </div>
+        <a href="https://azure.microsoft.com/en-us/resources/videos/create-windows-server-virtual-machine/">
+            <div class="calloutHolder" style="max-width: 250px">
+                <div>
+                    <img src="media/index/create-windows-server-virtual-machine.png" style="width: 250px" />
+                </div>
+                <div>
+                    <p style="margin-top: 0; color: #6e6e6e">Hozzon létre egy Windows Server virtuális gépet. (3:58)</p>
+                </div>
+            </div>
+        </a>
+    </div>
+<h2 style="margin-top: 0px; margin-bottom: 0px;">5 perces gyors útmutatók</h2>
+<p style="margin-top: 6px; margin-bottom: 6px;">Megtudhatja, hogyan lehet egy Windows Server 2016-ot futtató virtuális gépet üzembe helyezni egy IIS webkiszolgálón belül:</p>
 <div class="ico48Case">
     <div class="ico48Link">
         <a href="/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">
@@ -42,37 +56,82 @@ ms.lasthandoff: 04/08/2017
         </a>
     </div>
 </div>
-<div class="columnHolder">
-    <div class="column50">
-        <h2 style="margin-top: 36px">oktatóanyagokat</h2>
-        <p>Windows rendszerű virtuális gépek létrehozása és üzembe helyezése.</p>
-        <ul class="spaced">
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-tutorial-manage-vm?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Windows rendszerű virtuális gépek létrehozása és felügyelete</a></li>
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-load-balanced-iis-tutorial?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Magas rendelkezésre állású virtuális gépek terheléselosztása</a></li>
-        </ul>
-        <h2>Példák</h2>
-        <p>Az első alkalmazás telepítése az Azure-ban.</p>
-        <ul class="spaced">
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a></li>
-            <li><a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a></li>
-        </ul>
-    </div>
-    <div class="column50" style="max-width: 400px">
-        <h2 style="margin-top: 36px">Ingyenes videós képzés</h2>
-        <a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-infrastructure.png" width="400" alt="" />
-            <p style="margin-top: 0px">Ingyenes PluralSight videós képzés – Infrastruktúrakezelés</a></p>
-            <p style="margin-top: 36px"></p>
-                <a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-vms.png" width="400" alt="" />
-            <p style="margin-top: 0px">Ingyenes PluralSight videós képzés – A virtuális gépek használatának első lépései</a></p>
-        <p style="margin-top: 36px"></p>
-        <a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">
-            <img src="media/index/video-training-iaas-monitoring.png" width="400" alt="" />
-            <p style="margin-top: 0px">Ingyenes PluralSight videós képzés – Az IaaS megfigyelés első lépései</a></p>
-    </div>
-</div>
-<hr />
+
+<h2 style="margin-top: 36px">Részletes útmutatók</h2>
+<p>Megtudhatja, hogyan telepíthet, kezelhet és figyelhet biztonságos Windows rendszerű virtuális gépeket az Azure-ban</p>
+<ol>
+   <li><a href="/azure/virtual-machines/windows/tutorial-manage-vm">Windows rendszerű virtuális gépek létrehozása és felügyelete</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">Virtuálisgép-lemezek létrehozása és kezelése</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">Virtuálisgép-konfiguráció létrehozása</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-load-balancer">Virtuális gépek terheléselosztása</a></li>
+    <li><a href="/azure/virtual-machines/windows/tutorial-virtual-network">Virtuális gépek hálózatkezelése</a></li>
+</ol>
+
+<h2 style="margin-top: 36px">Ingyenes PluralSight videós képzés</h2>
+<ul class="panelContent cardsW">
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-infrastructure.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>Infrastruktúra kezelése</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-vms.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>A Virtual Machines használatának első lépései</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li style="flex: 0 1 25%">
+        <a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02"> 
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                       <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img style="max-width: 100%" alt="" src="media/index/video-training-iaas-monitoring.png" data-linktype="external">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <p>Az IaaS megfigyelés használatának első lépései</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<h2>Példák</h2>
+<p>Az első alkalmazás telepítése az Azure-ban.</p>
+<ul class="spaced">
+    <li><a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a></li>
+    <li><a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a></li>
+</ul>
+
 <h2 style="margin-top: 36px">Referencia</h2>
 <ul class="panelContent cardsW">
     <li>

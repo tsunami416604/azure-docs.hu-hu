@@ -1,6 +1,8 @@
 # Áttekintés
 ## [Mi az Azure DNS?](dns-overview.md)
 ## [DNS-zónák és -rekordok](dns-zones-records.md)
+## [DNS-delegálás az Azure DNS használatával](dns-domain-delegation.md)
+## [DNS – gyakori kérdések](dns-faq.md)
 
 # Első lépések
 
@@ -10,7 +12,7 @@
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 ### [Azure CLI 2.0](dns-getstarted-cli.md)
 
-## [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md)
+## [Tartomány delegálása az Azure DNS-be](dns-delegate-domain-azure-dns.md)
 ## [Webalkalmazások egyéni DNS-rekordjainak létrehozása](dns-web-sites-custom-domain.md)
 
 # Útmutató

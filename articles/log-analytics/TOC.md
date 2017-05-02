@@ -56,6 +56,7 @@
 ### [Kapacitás és teljesítmény](log-analytics-capacity.md)
 ### [Változáskövetés](log-analytics-change-tracking.md)
 ### [Tárolók](log-analytics-containers.md)
+### [DNS-elemzés](log-analytics-dns.md)
 ### [Key Vault](log-analytics-azure-key-vault.md)
 ### Logic Apps B2B-üzenetek
 #### [Logic Apps B2B-üzeneteken alapuló megoldás](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)

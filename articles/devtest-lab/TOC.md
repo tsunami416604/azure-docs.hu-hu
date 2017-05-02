@@ -1,7 +1,6 @@
 # Áttekintés
-## [Mi a DevTest Labs?](devtest-lab-overview.md)
-## [Milyen előnyöket kínál a DevTest Labs?](devtest-lab-why.md)
-## [DevTest Labs-fogalmak](devtest-lab-concepts.md)
+## [Információk az Azure DevTest Labs szolgáltatásról](devtest-lab-overview.md)
+## [Alapelvek](devtest-lab-concepts.md)
 
 # Első lépések
 ## [Tesztkörnyezet létrehozása](devtest-lab-create-lab.md)

@@ -8,6 +8,7 @@
 ## [Első lépések az előre konfigurált megoldásokkal](iot-suite-getstarted-preconfigured-solutions.md)
 ## [Engedélyek az azureiotsuite.com webhelyen](iot-suite-permissions.md)
 ## [A prediktív karbantartási megoldás áttekintése](iot-suite-predictive-overview.md)
+## [Csatlakoztatott factory-megoldás áttekintése](iot-suite-connected-factory-overview.md)
 ## [A távoli figyelési megoldás bemutatója](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [A prediktív karbantartási megoldás bemutatója](iot-suite-predictive-walkthrough.md)
 
@@ -21,6 +22,7 @@
 ## [Dinamikus telemetria használata a távoli figyelési megoldással](iot-suite-dynamic-telemetry.md)
 ## [Egyéni szabály létrehozása a távoli figyelési megoldásban](iot-suite-custom-rule.md)
 ## [Eszközinformációk a távoli figyelési megoldásban](iot-suite-remote-monitoring-device-info.md)
+## [Átjáró telepítése csatlakoztatott factoryhoz](iot-suite-connected-factory-gateway-deployment.md)
 
 # Referencia
 ## [Biztonsági architektúra](iot-security-architecture.md)
@@ -39,10 +41,5 @@
 ## [IoT Suite képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 
 
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

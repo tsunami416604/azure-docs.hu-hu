@@ -2,7 +2,7 @@
 ## [Mi az az Azure Functions?](functions-overview.md)
 # Első lépések
 ## [Az első függvény létrehozása](functions-create-first-azure-function.md)
-## [Webhook-függvény létrehozása](functions-create-a-web-hook-or-api-function.md)
+## [Webhook által aktivált függvény létrehozása](functions-create-github-webhook-triggered-function.md)
 ## [Azure-kapcsolattal rendelkező függvény létrehozása](functions-create-an-azure-connected-function.md)
 ## [Eseményfeldolgozási függvény létrehozása](functions-create-an-event-processing-function.md)
 # Útmutató

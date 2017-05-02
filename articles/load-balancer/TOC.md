@@ -44,6 +44,8 @@
 ### [Több IP-konfiguráció használata (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Naplóelemzés az Azure Load Balancerhez](load-balancer-monitor-log.md)
 ## [A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez](load-balancer-ipv6-for-linux.md)
+## Hibaelhárítás
+### [Azure Load Balancer hibaelhárítása](load-balancer-troubleshoot.md)
 
 # Referencia
 ## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.1.0/azurerm.network)

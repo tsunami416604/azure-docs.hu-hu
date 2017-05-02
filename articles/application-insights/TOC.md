@@ -18,6 +18,7 @@
 ### [Webalkalmazások – futtatókörnyezet](app-insights-java-live.md)
 ### [Docker-alkalmazások](app-insights-docker.md)
 
+
 ## Weblapok figyelése
 ### [JavaScript](app-insights-javascript.md)
 
@@ -75,6 +76,7 @@
 #### [Irányítópultok](app-insights-dashboards.md)
 #### [Keresés](app-insights-diagnostic-search.md)
 #### [Metrikák](app-insights-metrics-explorer.md)
+#### [Élő stream](app-insights-live-stream.md)
 
 #### [Alkalmazástérkép](app-insights-app-map.md)
 #### [HockeyApp-adatok](app-insights-hockeyapp-bridge-app.md)
@@ -132,6 +134,14 @@
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 ## [REST](https://dev.applicationinsights.io/)
+## [Adatmodell](application-insights-data-model.md)
+### [Kérés](application-insights-data-model-request-telemetry.md)
+### [Függőség](application-insights-data-model-dependency-telemetry.md)
+### [Kivétel](application-insights-data-model-exception-telemetry.md)
+### [Nyomkövetés](application-insights-data-model-trace-telemetry.md)
+### [Esemény](application-insights-data-model-event-telemetry.md)
+### [Metrika](application-insights-data-model-metric-telemetry.md)
+## [Telemetriai korreláció](application-insights-correlation.md)
 
 # Erőforrások
 

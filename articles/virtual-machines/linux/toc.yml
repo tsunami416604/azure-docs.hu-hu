@@ -13,20 +13,30 @@
     href: quick-create-portal.md
   - name: "Virtuális gép létrehozása – PowerShell"
     href: quick-create-powershell.md
+- name: "oktatóanyagokat"
+  items:
+  - name: "1 – Virtuális gépek létrehozása/kezelése"
+    href: tutorial-manage-vm.md
+  - name: "2 – Lemezek létrehozása/kezelése"
+    href: tutorial-manage-disks.md
+  - name: "3 – Konfigurálás automatizálása"
+    href: tutorial-automate-vm-deployment.md
+  - name: "4 – Virtuálisgép-lemezképek létrehozása"
+    href: tutorial-custom-images.md
+  - name: "5 – Magas rendelkezésre állású virtuális gépek"
+    href: tutorial-availability-sets.md
+  - name: "6 – Virtuálisgép-méretezési csoport létrehozása"
+    href: tutorial-create-vmss.md
+  - name: "7 – Virtuális gépek terheléselosztása"
+    href: tutorial-load-balancer.md
+  - name: "8 – Hálózatkezelés"
+    href: tutorial-virtual-network.md
 - name: "Példák"
   items:
   - name: "Azure CLI"
     href: cli-samples.md
   - name: "PowerShell"
     href: powershell-samples.md
-- name: "oktatóanyagokat"
-  items:
-  - name: "Virtuális gép létrehozása és kezelése"
-    href: tutorial-manage-vm.md
-  - name: "Magas rendelkezésre állású virtuális gépek terheléselosztása"
-    href: tutorial-load-balance-nodejs.md
-  - name: "Virtuálisgép-méretezési csoport létrehozása"
-    href: tutorial-create-vmss.md
 - name: "Alapelvek"
   items:
   - name: "Azure által támogatott disztribúciók"

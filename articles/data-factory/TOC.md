@@ -1,10 +1,9 @@
 # Áttekintés
 ## [Az Azure Data Factory bemutatása](data-factory-introduction.md)
 ## Alapelvek
-### [Adatkészletek](data-factory-create-datasets.md)
 ### [Folyamatok és tevékenységek](data-factory-create-pipelines.md)
+### [Adatkészletek](data-factory-create-datasets.md)
 ### [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md)
-### [Társított szolgáltatások számítása](data-factory-compute-linked-services.md)
 
 # Első lépések
 ## [Oktatóanyag: Folyamat létrehozása adatmásolásra](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -21,6 +20,7 @@
 ### [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 ### [Azure Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
 ### [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+## [Oktatóanyag: Adatok áthelyezése a helyszíni rendszer és a felhő között](data-factory-move-data-between-onprem-and-cloud.md)
 ## [Gyakori kérdések](data-factory-faq.md)
 
 # Útmutató
@@ -60,7 +60,7 @@
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Webtábla](data-factory-web-table-connector.md)
 ### [Adatkezelési átjáró](data-factory-data-management-gateway.md)
-### [Move data between on-premises and cloud](data-factory-move-data-between-onprem-and-cloud.md) (Adatok áthelyezése a helyszíni rendszer és a felhő között)
+
 
 ## [Adatok átalakítása](data-factory-data-transformation-activities.md)
 ### [HDInsight Hive-tevékenység](data-factory-hive-activity.md)
@@ -75,6 +75,7 @@
 ### [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
 ### [R-szkriptek meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 ### [Modellek újrafeldolgozása az Azure Analysis Servicesben](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample)
+### [Társított szolgáltatások számítása](data-factory-compute-linked-services.md)
 
 ## Fejlesztés
 ### [Azure Resource Manager-sablon](data-factory-how-to-use-resource-manager-templates.md)

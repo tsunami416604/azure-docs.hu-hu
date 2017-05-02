@@ -79,7 +79,8 @@
 #### [Egyéni tartományok létrehozása a Traffic Managerrel](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ### [Meglévő alkalmazás klónozása](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
-### [Helyszíni kapcsolatok](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [Hibrid kapcsolatok](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)
+### [Hibrid kapcsolatok 2. verzió](app-service-hybrid-connections.md)
 ### [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Speciális konfiguráció](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Erőforráscsoportok](../app-service-web/app-service-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json)

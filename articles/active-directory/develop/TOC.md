@@ -1,10 +1,11 @@
 # Áttekintés
+## [Integrálás az Azure AD-vel](active-directory-how-to-integrate.md)
 ## [Fejlesztői útmutató](active-directory-developers-guide.md)
 ## [Az alkalmazások és az Azure Active Directory](active-directory-how-applications-are-added.md)
 ## [Fejlesztői szószedet](active-directory-dev-glossary.md)
-## [AAD Graph API](active-directory-graph-api.md)
+## [Azure AD Graph API](active-directory-graph-api.md)
 # Gyors útmutatók
-## [AAD-bérlő beszerzése](active-directory-howto-tenant.md)
+## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
 ## [Alkalmazások integrálása az AAD-vel](active-directory-integrating-applications.md)
 ## Mobil- és PC-alkalmazások
 ### [iOS](active-directory-devquickstarts-ios.md)
@@ -23,9 +24,9 @@
 ## Webes API
 ### [Webes API és .NET](active-directory-devquickstarts-webapi-dotnet.md)
 ### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
-## [AAD Graph API](active-directory-graph-api-quickstart.md)
+## [Azure AD Graph API](active-directory-graph-api-quickstart.md)
 # Útmutatók
-## [Hitelesítési minták](active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad.md)
+## [Hitelesítési minták](active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
 ### [Natív alkalmazások](active-directory-authentication-scenarios.md#native-application-to-web-api)
 ### [Webalkalmazások](active-directory-authentication-scenarios.md#web-application-to-web-api)
 ### [Webes API](active-directory-authentication-scenarios.md#web-application-to-web-api)
@@ -45,7 +46,7 @@
 ### [Egyszeri bejelentkezéses SAML-protokoll](active-directory-single-sign-on-protocol-reference.md)
 ### [Egyszeri kijelentkezéses SAML-protokoll](active-directory-single-sign-out-protocol-reference.md)
 ## A Visual Studio használata
-### [Bevezetés az Azure Active Directory és a Visual Studio csatlakoztatott szolgáltatásainak használatába (MVC Projects.md)](vs-active-directory-dotnet-getting-started.md)
+### [Ismerkedés a Visual Studio kapcsolódó szolgáltatásaival (MVC Projects.md)](vs-active-directory-dotnet-getting-started.md)
 ### [Hiba a hitelesítés észlelésekor](vs-active-directory-error.md)
 ### [Bevezetés a WebApi használatába](vs-active-directory-webapi-getting-started.md)
 ### [Mi történt a WebApi-projektemmel?](vs-active-directory-webapi-what-happened.md)

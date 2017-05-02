@@ -105,6 +105,7 @@
 ### [Hive-házirendek konfigurálása](hdinsight-domain-joined-run-hive.md)
 ## A Kafka (előzetes verzió) használata
 ### [Kafka-adatok replikálása](hdinsight-apache-kafka-mirroring.md)
+### [Használat a Virtual Network szolgáltatással](hdinsight-apache-kafka-connect-vpn-gateway.md)
 ### [Használat a Sparkkal](hdinsight-apache-spark-with-kafka.md)
 ### [Használat a Stormmal](hdinsight-apache-storm-with-kafka.md)
 ## Fejlesztés

@@ -69,6 +69,7 @@
 #### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
+#### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 ### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
 ### [Hibaelhárítás](active-directory-accessmanagement-troubleshooting.md)
 

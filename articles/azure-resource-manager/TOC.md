@@ -10,6 +10,12 @@
 ## [Az első saját sablon létrehozása](resource-manager-create-first-template.md)
 ## [A Visual Studio és a Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
+# Példák
+## PowerShell
+### [Sablon üzembe helyezése](resource-manager-samples-powershell-deploy.md)
+## Azure CLI
+### [Sablon üzembe helyezése](resource-manager-samples-cli-deploy.md)
+
 # Útmutató
 ## Sablonok létrehozása
 ### [Ajánlott eljárások a sablonokhoz](resource-manager-template-best-practices.md)
@@ -26,9 +32,13 @@
 ### [Állapot megosztása hivatkozott sablonok között](best-practices-resource-manager-state.md)
 ### [Minták sablonok tervezéséhez](best-practices-resource-manager-design-templates.md)
 ## Üzembe helyezés
-### [PowerShell](resource-group-template-deploy.md)
-### [Azure CLI](resource-group-template-deploy-cli.md)
-### [Portál](resource-group-template-deploy-portal.md)
+### PowerShell
+#### [Sablon üzembe helyezése](resource-group-template-deploy.md)
+#### [Sablon üzembe helyezése SAS-token használatával](resource-manager-powershell-sas-token.md)
+### Azure CLI
+#### [Sablon üzembe helyezése](resource-group-template-deploy-cli.md)
+#### [Sablon üzembe helyezése SAS-token használatával](resource-manager-cli-sas-token.md)
+### [Portal](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [Folyamatos integráció a Visual Studio Team Services szolgáltatással](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Biztonságos értékek továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md)

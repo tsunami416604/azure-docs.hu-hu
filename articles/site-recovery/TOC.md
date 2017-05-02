@@ -8,17 +8,18 @@
 ## [Bevezetés megtekintése](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # Első lépések
-## [VMWare-alapú virtuális gépek replikálása az Azure-ba](site-recovery-vmware-to-azure.md)
-## [VMWare-alapú virtuális gépek replikálása az Azure-ba több-bérlős központi telepítésben (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
+## [VMware virtuális gépek replikálása az Azure-ba](site-recovery-vmware-to-azure.md)
+## [Fizikai kiszolgálók replikálása az Azure-ba](site-recovery-physical-servers-to-azure.md) 
 ## [Hyper-V-alapú virtuális gépek replikálása az Azure-ba (VMM-mel)](site-recovery-vmm-to-azure.md)
 ## [Hyper-V virtuális gépek replikálása az Azure-ba](site-recovery-hyper-v-site-to-azure.md)
-## [VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre](site-recovery-vmware-to-vmware.md)
 ## [Hyper-V-alapú virtuális gépek replikálása másodlagos helyre (VMM-mel)](site-recovery-vmm-to-vmm.md)
+## [VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre](site-recovery-vmware-to-vmware.md)
+## [VMWare-alapú virtuális gépek replikálása az Azure-ba több-bérlős központi telepítésben (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
 
 # Útmutató
 ## Felkészülés
 ### [Üzembe helyezési előfeltételek](site-recovery-prereq.md)
-### [A hálózati infrastruktúrával kapcsolatos szempontok](site-recovery-network-design.md)
+### [Hálózati infrastruktúra tervezése](site-recovery-network-design.md)
 ### [Kapacitás megtervezése és VMware-replikálás méretezése az Azure-hoz](site-recovery-plan-capacity-vmware.md)
 ### [Deployment Planner a VMware Azure-ba történő replikálásához](site-recovery-deployment-planner.md)
 ### [Capacity Planner Hyper-V-replikáláshoz](site-recovery-capacity-planner.md)
@@ -31,7 +32,7 @@
 #### [Mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel](site-recovery-install-mobility-service-using-sccm.md)
 #### [Mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel](site-recovery-automate-mobility-service-install.md)
 ### [A replikáció engedélyezése](site-recovery-replicate-vmware-to-azure.md)
-## Feladatátvétel és feladat-visszavétel
+## Feladatátadás és feladatátvétel
 ### [Védett gépek feladatátvétele](site-recovery-failover.md)
 ### [Helyreállítási tervek beállítása](site-recovery-create-recovery-plans.md)
 #### [Azure Runbookok hozzáadása helyreállítási tervekhez](site-recovery-runbook-automation.md)
