@@ -16,15 +16,16 @@ ms.workload: na
 ms.date: 02/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
-ms.openlocfilehash: 57c7b895579e1c1e86224a60d961721d2d4cf638
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 1c8703d64ff45e589a7ce93f1f2176681e1bf331
+ms.lasthandoff: 04/25/2017
 
 
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## <a name="azure-iot-suite"></a>Azure IoT Suite
-A Microsoft Azure IoT Suite egy vállalati szintű megoldás, amellyel gyorsan teheti meg az első lépéseket az előre konfigurált megoldások bővíthető készletével. Ezek a megoldások olyan általános IoT-forgatókönyveket érintenek, mint a [távoli megfigyelés][lnk-preconfigured-solutions] és a [prediktív karbantartás][lnk-predictive-maintenance]. Ezek a megoldások az ebben a cikkben leírt IoT-megoldásarchitektúra megvalósításai.
+A Microsoft Azure IoT Suite egy vállalati szintű megoldás, amellyel gyorsan teheti meg az első lépéseket az előre konfigurált megoldások bővíthető készletével. Ezek a megoldások olyan általános IoT-forgatókönyveket érintenek, mint a [távoli megfigyelés][lnk-preconfigured-solutions], a [prediktív karbantartás][lnk-predictive-maintenance] és a [csatlakoztatott gyár][lnk-connected-factory]. Ezek a megoldások az ebben a cikkben leírt IoT-megoldásarchitektúra megvalósításai.
 
 Az előre konfigurált megoldások teljes körű, működőképes és átfogó megoldások, amelyek a következőket tartalmazzák:
 
@@ -52,9 +53,4 @@ Ezekben a forrásanyagokban további információt talál az IoT Suite-ról és 
 [Azure Machine Learning]: https://azure.microsoft.com/documentation/services/machine-learning/
 [Azure storage]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+[lnk-connected-factory]: iot-suite-connected-factory-overview.md

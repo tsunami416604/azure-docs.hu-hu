@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 09/12/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 29c4c2a2818468a2fa8360eebd4b653bdcbbde19
-ms.openlocfilehash: 0749d371466226343227c79db544a8e3dca0cca8
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 75188a8f74b08d28b92259348626d5734ed4ce6c
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -40,9 +41,11 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
    2. Válassza ki a laborhoz társítani kívánt **Előfizetést**.
    3. Válassza ki a labor tárolásának **Helyét**.
    4. Válassza az **Automatikus leállítás** elemet annak megadásához, hogy engedélyezi-e az automatikus leállítást a labor összes virtuális gépénél (valamint az automatikus leállítás paramétereit is megadhatja). 
-   5. Kattintson a **Létrehozás** gombra.
-      
-      ![Laborpanel létrehozása](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+   5. Ha azt szeretné, hogy a labor parancsikonja megjelenjen a portál irányítópultján, válassza a **Rögzítés az irányítópulton** elemet.
+   6. Az **Automatizálási beállítások** lehetőséget választva elérheti az Azure Resource Manager-sablonokat a konfigurálás automatizálásához. 
+   7. Kattintson a **Létrehozás** gombra.
+    
+    ![Laborpanel létrehozása](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -54,10 +57,5 @@ A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
 * [Laborsablon létrehozása](devtest-lab-create-template.md).
 * [Egyéni összetevők létrehozása a virtuális géphez](devtest-lab-artifact-author.md).
 * [Összetevőkkel rendelkező virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm-with-artifacts.md).
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

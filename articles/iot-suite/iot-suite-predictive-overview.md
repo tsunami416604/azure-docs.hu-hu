@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
+ms.date: 04/25/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: caecd0d6e546d4ddef71ebeee6fad3a5c7ba6451
-ms.openlocfilehash: 5447dff1ff9aea1b90f7e18499f795e7c173e2b9
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: e0e658fc392bf6a53f777f22a2e0b6e7bd742f97
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -95,7 +96,7 @@ A kiépített erőforrások megtekintéséhez az Azure Portalon keresse meg a ki
 
 ![][img-resource-group]
 
-Az előre konfigurált megoldás kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. Az [azureiotsuite.com][lnk-azureiotsuite] olda címéről is elérheti ezt a Machine Learning-munkaterületet a kiépített megoldáshoz, amikor az **Kész** állapotban van.
+Az előre konfigurált megoldás kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon lévő csempéről is elérheti ezt a Machine Learning-munkaterületet a kiépített megoldáshoz, amikor a megoldás **Kész** állapotban van.
 
 ![][img-machine-learning]
 
@@ -150,8 +151,3 @@ Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltat�
 [lnk-permissions]: iot-suite-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

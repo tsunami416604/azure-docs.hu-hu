@@ -1,0 +1,262 @@
+---
+title: "A helyszíni hálózat csatlakoztatása egy Azure-beli virtuális hálózathoz: Helyek közötti VPN: parancssori felület | Microsoft Docs"
+description: "A helyszíni hálózatot az Azure-beli virtuális hálózattal a nyilvános interneten keresztül összekötő IPsec-kapcsolat létrehozásának lépései. Ezen lépéseket követve létrehozhat egy helyek közötti VPN-átjáró kapcsolatot a parancssori felület segítségével."
+services: vpn-gateway
+documentationcenter: na
+author: cherylmc
+manager: timlt
+editor: 
+tags: azure-resource-manager
+ms.assetid: 
+ms.service: vpn-gateway
+ms.devlang: na
+ms.topic: hero-article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 04/21/2017
+ms.author: cherylmc
+translationtype: Human Translation
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: c3563f3a3fa46d40ba02fe97b3b0ebe3c45caddd
+ms.lasthandoff: 04/25/2017
+
+
+---
+# <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a parancssori felület használatával
+
+Ez a cikk bemutatja, hogyan használhatja az Azure CLI-t egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a Vnet között. A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
+
+> [!div class="op_single_selector"]
+> * [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Resource Manager – parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+> * [Klasszikus – Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
+> * [Klasszikus – Klasszikus portál](vpn-gateway-site-to-site-create.md)
+> 
+>
+
+
+![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-howto-site-to-site-resource-manager-cli/site-to-site-connection-diagram.png)
+
+A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható létre a helyszíni hálózat és egy Azure-beli virtuális hálózat között egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztül. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. További információk a VPN-átjárókról: [Információk a VPN Gatewayről](vpn-gateway-about-vpngateways.md).
+
+## <a name="before-you-begin"></a>Előkészületek
+
+A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
+
+* Erősítse meg, hogy a Resource Manager-alapú üzemi modellt kívánja használni. [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] 
+* Egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
+* Egy kifelé irányuló, nyilvános IPv4-cím a VPN-eszköz számára. Ez az IP-cím nem lehet NAT mögötti.
+* Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván. 
+* A CLI-parancsok legújabb verziói (2.0-s vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI 2.0-s verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+### <a name="example-values"></a>Példaértékek
+
+Az alábbi értékek használatával létrehozhat egy tesztkörnyezetet, vagy segítségükkel értelmezheti a cikkben szereplő példákat:
+
+```
+#Example values
+
+VnetName                = TestVNet1 
+ResourceGroup           = TestRG1 
+Location                = eastus 
+AddressSpace            = 10.12.0.0/16 
+SubnetName              = Subnet1 
+Subnet                  = 10.12.0.0/24 
+GatewaySubnet           = 10.12.255.0/27 
+LocalNetworkGatewayName = Site2 
+LNG Public IP           = <VPN device IP address>
+LocalAddrPrefix1        = 10.0.0.0/24 
+LocalAddrPrefix2        = 20.0.0.0/24   
+GatewayName             = VNet1GW 
+PublicIP                = VNet1GWIP 
+VPNType                 = RouteBased 
+GatewayType             = Vpn 
+ConnectionName          = VNet1toSite2
+```
+
+## <a name="Login"></a>1. Jelentkezzen be az Azure-ba
+
+Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#login) paranccsal, és kövesse a képernyőn látható utasításokat.
+
+```azurecli
+az login
+```
+
+Ha több Azure-előfizetéssel rendelkezik, sorolja fel a fiókhoz tartozó előfizetéseket.
+
+```azurecli
+Az account list --all
+```
+
+Válassza ki a használni kívánt előfizetést.
+
+```azurecli
+Az account set --subscription <replace_with_your_subscription_id>
+```
+
+## <a name="2-create-a-resource-group"></a>2. Hozzon létre egy erőforráscsoportot
+
+A következő példában létrehozunk egy „TestRG1” nevű erőforráscsoportot az „eastus” helyen. Ha már rendelkezik erőforráscsoporttal abban a régióban, ahol létre kívánja hozni a virtuális hálózatát, használhatja azt is.
+
+```azurecli
+az group create -n TestRG1 -l eastus
+```
+
+## <a name="VNet"></a>3. Virtuális hálózat létrehozása
+
+Ha még nem rendelkezik virtuális hálózattal, akkor hozzon létre egyet. Virtuális hálózat létrehozásakor győződjön meg róla, hogy a megadott címterek nincsenek átfedésben a helyszíni hálózaton található egyéb címterekkel. 
+
+Az alábbi példa létrehoz egy „TestVNet1” nevű virtuális hálózatot és egy „Subnet-1” nevű alhálózatot.
+
+```azurecli
+az network vnet create -n TestVNet1 -g TestRG1 --address-prefix 10.12.0.0/16 -l eastus --subnet-name Subnet1 --subnet-prefix 10.12.0.0/24
+```
+
+## 4. <a name="gwsub"></a>Az átjáróalhálózat létrehozása
+
+[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
+
+Ehhez a konfigurációhoz átjáróalhálózat is szükséges. A virtuális hálózati átjáró átjáróalhálózatot használ, amely a VPN Gateway szolgáltatások által használt IP-címeket tartalmazza. A létrehozott átjáróalhálózatnak a „GatewaySubnet” nevet kell adnia. Ha ezt az alhálózatot máshogy nevezi el, az létrejön ugyan, de az Azure nem kezeli átjáró-alhálózatként.
+
+Az Ön által megadott átjáróalhálózat mérete a létrehozni kívánt VPN-átjárókonfigurációtól függ. Bár akár /29-es átjáróalhálózatot is létrehozhat, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: /27-eset vagy /28-asat. Nagyobb átjáróalhálózat használatával elegendő IP-cím áll rendelkezésre az esetleges jövőbeni konfigurációk megvalósításához.
+
+
+```azurecli
+az network vnet subnet create --address-prefix 10.12.255.0/27 -n GatewaySubnet -g TestRG1 --vnet-name TestVNet1
+```
+
+## <a name="localnet"></a>5. A helyi hálózati átjáró létrehozása
+
+A helyi hálózati átjáró általában a helyszínt jelenti. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, majd határozza meg annak a helyszíni VPN-eszköznek az IP-címét, amellyel létre kívánja hozni a kapcsolatot. Emellett megadhatja azokat az IP-címelőtagokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok. A helyszíni hálózat módosításakor az előtagok egyszerűen frissíthetők.
+
+Használja a következő értékeket:
+
+* A helyszíni VPN-eszköz IP-címe: *--gateway-ip-address*. A VPN-eszköz nem lehet NAT mögött.
+* A helyszíni címterek: *--local-address-prefixes*.
+
+A következő példa bemutatja, hogyan adható hozzá helyi hálózati átjáró több címelőtaggal:
+
+```azurecli
+az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site2 -g TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
+```
+
+## <a name="PublicIP"></a>6. Nyilvános IP-cím kérése
+
+Kérjen egy nyilvános IP-címeta a virtuális hálózat VPN-átjárójához. Ez az az IP-cím, amelyhez a VPN-eszközt csatlakoztatni kívánja.
+
+A Resource Manager-alapú üzemi modell virtuális hálózati átjárója jelenleg kizárólag a nyilvános IP-címeket támogatja a dinamikus kiosztási módszer használatával. Ez azonban nem jelenti azt, hogy az IP-cím változik. A VPN-átjáró IP-címe kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. A virtuális hálózati átjáró nyilvános IP-címe nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN-átjáró belső karbantartása/frissítése során. 
+
+```azurecli
+az network public-ip create -n VNet1GWIP -g TestRG1 --allocation-method Dynamic
+```
+
+## <a name="CreateGateway"></a>7. A VPN-átjáró létrehozása
+
+Hozza létre a virtuális hálózat VPN-átjáróját. A VPN-átjáró létrehozása akár 45 percet vagy többet is igénybe vehet.
+
+Használja a következő értékeket:
+
+* A helyek közötti konfiguráció *--gateway-type* paraméterének értéke: *Vpn*. Az átjáró típusa mindig a kiépítendő konfigurációra jellemző. További információért lásd: [Átjárótípusok](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
+* A *--vpn-type* a következők valamelyike lehet: *RouteBased* (egyes dokumentumokban Dinamikus átjáró néven szerepel) vagy *PolicyBased* (egyes dokumentumokban Statikus átjáró néven szerepel). A beállítás azon eszköz követelményeire vonatkozik, amelyhez csatlakozik. További információk a VPN-átjárótípusokról: [Információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
+* A *--sku* paraméter lehetséges értékei: Alapszintű, Standard vagy HighPerformance. Egyes termékváltozatok konfigurációs korlátokkal rendelkeznek. További információkért lásd: [Az átjárók termékváltozatai](vpn-gateway-about-vpngateways.md#gateway-skus).
+
+A parancs futtatása után nem jelenik meg semmilyen visszajelzés vagy kimenet. Egy átjáró létrehozása nagyjából 45 percet vesz igénybe.
+
+```azurecli
+az network vnet-gateway create -n VNet1GW --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku Standard --no-wait 
+```
+
+## <a name="VPNDevice"></a>8. VPN-eszköz konfigurálása
+
+[!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
+  A virtuális hálózati átjáró IP-címének megkereséséhez használja a következő példát (az értékeket cserélje le a sajátjaira). Az olvashatóság érdekében a kimenet táblázatos formában jeleníti meg a nyilvános IP-címek listáját.
+
+  ```azurecli
+  az network public-ip list -g TestRG1 -o table
+  ```
+
+## <a name="CreateConnection"></a>9. VPN-kapcsolat létrehozása
+
+Hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átjáró és a helyszíni VPN-eszköz között. Különösen figyeljen oda a megosztott kulcs értékére, amelynek meg kell egyeznie a VPN-eszköz konfigurált megosztottkulcs-értékével.
+
+```azurecli
+az network vpn-connection create -n VNet1toSite2 -g TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key abc123 --local-gateway2 Site2
+```
+
+A kapcsolat rövid időn belül létrejön.
+
+## <a name="toverify"></a>10. A VPN-kapcsolat ellenőrzése
+
+[!INCLUDE [verify connection](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)] 
+
+Ha másik módszerrel kívánja ellenőrizni a kapcsolatot: [VPN Gateway-kapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md).
+
+## <a name="common-tasks"></a>Gyakori feladatok
+
+### <a name="to-view-local-network-gateways"></a>Helyi hálózati átjárók megtekintése
+
+```azurecli
+az network local-gateway list --resource-group TestRG1
+```
+
+### <a name="modify"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása
+Ha módosítania kell a helyi hálózati átjáró előtagjait, használja a következő utasításokat. Minden módosításkor az előtagok teljes listáját meg kell adnia, nem csak azokat, amelyeket módosítani kíván.
+
+- **Ha már van megadott kapcsolata**, használja az alábbi példát. Adja meg az előtagok teljes listáját, amely a meglévő és a hozzáadni kívánt előtagokból áll. Ebben a példában a 10.0.0.0/24 és a 20.0.0.0/24 már léteznek, a 30.0.0.0/24 és a 40.0.0.0/24 előtagokat pedig most adjuk hozzá.
+
+  ```azurecli
+  az network local-gateway update --local-address-prefixes 10.0.0.0/24 20.0.0.0/24 30.0.0.0/24 40.0.0.0/24 -n VNet1toSite2 -g TestRG1
+  ```
+
+- **Ha még nincs megadott kapcsolata**, használja azt a parancsot, amelyet a helyi hálózati átjárók létrehozásához használ. Ezzel a paranccsal emellett a VPN-eszközhöz tartozó átjárói IP-címet is frissítheti. Csak akkor használja ezt a parancsot, ha még nincs létező kapcsolata. Ebben a példában a 10.0.0.0/24, 20.0.0.0/24, 30.0.0.0/24, és a 40.0.0.0/24 előtagok már jelen vannak. Csak a megtartandó előtagokat adjuk meg, ebben az esetben a 10.0.0.0/24 és a 20.0.0.0/24 előtagokat.
+
+  ```azurecli
+  az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site2 -g TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
+  ```
+
+### <a name="modifygwipaddress"></a>Helyi hálózati átjáró IP-címének módosítása
+
+Ebben a konfigurációban az IP-cím annak a VPN-eszköznek a nyilvános IP-címe, amelyhez csatlakozni kíván. Ha a VPN-eszköz IP-címe megváltozik, akkor módosíthatja ezt az értéket. Az IP-cím akkor is módosítható, ha fennáll az átjárókapcsolat.
+
+```azurecli
+az network local-gateway update --gateway-ip-address 23.99.222.170 -n Site2 -g TestRG1
+```
+
+Az eredmény megtekintésekor ellenőrizze, hogy az IP-cím-előtagok meg vannak-e adva.
+
+  ```azurecli
+  "localNetworkAddressSpace": { 
+    "addressPrefixes": [ 
+      "10.0.0.0/24", 
+      "20.0.0.0/24", 
+      "30.0.0.0/24" 
+    ] 
+  }, 
+  "location": "eastus", 
+  "name": "Site2", 
+  "provisioningState": "Succeeded",  
+  ```
+
+### <a name="to-view-the-virtual-network-gateway-public-ip-address"></a>A virtuális hálózati átjáró nyilvános IP-címének megtekintése
+
+A virtuális hálózati átjáró IP-címét az alábbi példa alapján keresheti meg. Az olvashatóság érdekében a kimenet táblázatos formában jeleníti meg a nyilvános IP-címek listáját.
+
+```azurecli
+az network public-ip list -g TestRG1 -o table
+```
+
+### <a name="to-verify-the-shared-key-values"></a>A megosztottkulcs-értékek ellenőrzése
+
+Ellenőrizze, hogy a megosztott kulcs megegyezik-e a VPN-eszköze konfigurálásakor használt értékkel. Ha nem, futtassa a kapcsolatot újra az eszközből származó értékkel, vagy frissítse az eszközt a visszaadott értékkel. Az értékeknek meg kell egyezniük.
+
+```azurecli
+az network vpn-connection shared-key show --connection-name VNet1toSite2 -g TestRG1
+```
+
+## <a name="next-steps"></a>Következő lépések
+
+*  Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
+* Információk a kényszerített bújtatásról: [Kényszerített bújtatás konfigurálása](vpn-gateway-forced-tunneling-rm.md).
+* Az Azure CLI hálózati parancsainak listáját lásd: [Azure CLI](https://docs.microsoft.com/cli/azure/network).

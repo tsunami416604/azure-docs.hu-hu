@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: f84ac7f1fa20af2e495df89609c810107c65583a
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: f7943b71bbd16c36df09436973d92539eb62b210
+ms.lasthandoff: 04/20/2017
 
 ---
 
@@ -36,6 +36,13 @@ Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban tö
 
 Ezek az utasítások feltételezik, hogy már telepítette az Azure CLI 1.0-t, és bejelentkezett. További segítségért lásd [a DNS-zónák az Azure CLI 1.0 használatával való kezelésével kapcsolatos](dns-operations-dnszones-cli-nodejs.md) témakört.
 
+## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
+
+A DNS-zóna létrehozása előtt egy erőforráscsoportot kell létrehozni, amely a DNS-zónát tartalmazza majd. Az alábbiakban a parancs látható.
+
+```azurecli
+azure group create --name MyResourceGroup --location "West US"
+```
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
@@ -98,6 +105,13 @@ info:    network dns zone show command OK
 
 Ezeket a névkiszolgálókat a tartományregisztrálóhoz kell konfigurálni (ahol a tartománynevet vásárolta). A regisztráló felajánlja, hogy beállítja a névkiszolgálókat a tartományhoz. További információért lásd: [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md).
 
+## <a name="delete-all-resources"></a>Az összes erőforrás törlése
+ 
+A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépést:
+
+```azurecli
+azure group delete --name MyResourceGroup
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

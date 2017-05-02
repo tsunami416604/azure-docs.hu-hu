@@ -16,9 +16,9 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 1657f7c772b7039707a67c4abc788479cc08bdd0
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 93920075a8ad8de4fd650d9cbbfd13b7bc18bf52
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -46,7 +46,7 @@ Az alábbi ábra a felhasználó által megadott útvonalakra és az IP-tovább�
 ![Rendszerútvonalak az Azure-ban](./media/virtual-networks-udr-overview/Figure2.png)
 
 > [!IMPORTANT]
-> A rendszer a felhasználó által megadott útvonalakat csak az alhálózatot elhagyó forgalomra alkalmazza. Nem hozhat létre útvonalakat például azért, hogy meghatározzák milyen úton érkezik a forgalom az internetről egy alhálózatba. Emellett az a készülék, amelyre a forgalmat továbbítja, nem lehet ugyanabban az alhálózatban, mint ahonnan a forgalom származik. Mindig hozzon létre egy külön alhálózatot a készülékeinek. 
+> A rendszer a felhasználó által megadott útvonalakat az alhálózatot elhagyó, az alhálózatban lévő bármely erőforrásról (például a virtuális gépekhez csatolt hálózati adapterekről) származó forgalomra alkalmazza. Nem hozhat létre útvonalakat például azért, hogy meghatározza, milyen úton érkezik a forgalom az internetről egy alhálózatba. Az a készülék, amelyre a forgalmat továbbítja, nem lehet ugyanabban az alhálózatban, ahonnan a forgalom származik. Mindig hozzon létre egy külön alhálózatot a készülékeinek. 
 > 
 > 
 

@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 9f9c2ad56483919bf676fc84af49a7c90ba042f9
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 48f7ba325f61b4a91c0208b4c99058da801bee19
+ms.lasthandoff: 04/20/2017
 
 ---
 
@@ -35,6 +35,14 @@ Ez a cikk végigvezeti az első DNS-zóna és -rekord Azure PowerShell-lel való
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Végül a DNS-zóna interneten való közzétételéhez konfigurálnia kell a tartomány névkiszolgálóit. Az egyes lépéseket az alábbiakban ismertetjük.
 
 Ezek az utasítások feltételezik, hogy már telepítette és az Azure Powershellt, és bejelentkezett. További segítségért lásd [a DNS-zónák a PowerShell használatával való kezelésével kapcsolatos](dns-operations-dnszones.md) témakört.
+
+## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
+
+A DNS-zóna létrehozása előtt egy erőforráscsoportot kell létrehozni, amely a DNS-zónát tartalmazza majd. Az alábbiakban a parancs látható.
+
+```powershell
+New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
+```
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
@@ -84,6 +92,13 @@ MaxNumberOfRecordSets : 5000
 
 Ezeket a névkiszolgálókat a tartományregisztrálóhoz kell konfigurálni (ahol a tartománynevet vásárolta). A regisztráló felajánlja, hogy beállítja a névkiszolgálókat a tartományhoz. További információért lásd: [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md).
 
+## <a name="delete-all-resources"></a>Az összes erőforrás törlése
+
+A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépést:
+
+```powershell
+Remove-AzureRMResourceGroup -Name MyResourceGroup
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -16,9 +16,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: andrela;sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 368ffc65382c75b0fe5f4c20ce1c6a487a764ed3
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 119ffa3ac31e0ea6e76f8232f13b4dd8667f78aa
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -32,6 +32,8 @@ Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott er�
 - [DB létrehozása – CLI](sql-database-get-started-cli.md)
 
 ## <a name="install-net"></a>A .NET telepítése
+
+A jelen szakaszban ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a .NET használatával, az Azure SQL Database használatában pedig még járatlan. Ha még tapasztalatlan a .NET-fejlesztésekben, lépjen a [Build an app using SQL Server](https://www.microsoft.com/en-us/sql-server/developer-get-started/) (Alkalmazás készítése az SQL Serverrel) című cikkre, válassza ki a **C#** nyelvet, majd az operációs rendszert.
 
 ### <a name="windows-net-framework-and-net-core"></a>**A Windows .NET-keretrendszer és a .NET Core**
 
@@ -66,7 +68,7 @@ sudo apt-get install dotnet-dev-1.0.1
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Kérje le a kapcsolati karakterláncot az Azure Portalon. A kapcsolati karakterlánccal csatlakozhat az Azure SQL adatbázishoz.
+Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
@@ -96,7 +98,8 @@ A .NET Core használatakor rendelje hozzá a projektje ***csproj*** fájljához 
 1. A fejlesztési környezetben nyisson meg egy üres kódfájlt.
 2. Adja hozzá a ```using System.Data.SqlClient``` sort a kódfájlhoz ([System.Data.SqlClient névtér](https://msdn.microsoft.com/library/system.data.sqlclient.aspx)). 
 
-3. Az [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) metódus és egy [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL utasítás együttes használatával lekérdezheti az adatokat az Azure SQL-adatbázisban. Adja meg a kiszolgálójának megfelelő értékeket.
+3. A következő kód használatával lekérdezheti kategóriánként az első 20 terméket az [SqlCommand.ExecuteReader](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executereader.aspx) paranccsal és egy [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-utasítással. Adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználót és a jelszót.
+
 ```csharp
 using System;
 using System.Data;
@@ -152,7 +155,7 @@ namespace ConsoleApplication1
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Az [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) metódus és egy [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL utasítás együttes használatával beszúrhatja az adatokat az Azure SQL Database-be.
+A következő kód használatával beszúrhat egy új terméket a SalesLT.Product táblába az [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) paranccsal és egy [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítással. Adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználót és a jelszót.
 
 ```csharp
 using System;
@@ -207,7 +210,7 @@ namespace ConsoleApplication1
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Az [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) metódus és egy [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítás együttes használatával frissítheti az adatokat az Azure SQL-adatbázisban.
+A következő kód használatával frissítheti az előzőleg hozzáadott új terméket az [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) paranccsal és egy [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítással. Adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználót és a jelszót.
 
 ```csharp
 using System;
@@ -257,7 +260,7 @@ namespace ConsoleApplication1
 
 ## <a name="delete-data"></a>Adat törlése
 
-Az [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) metódus és egy [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL utasítás együttes használatával törölheti az adatokat az Azure SQL-adatbázisban.
+A következő kód használatával törölheti az előzőleg hozzáadott új terméket a [SqlCommand.ExecuteNonQuery](https://msdn.microsoft.com/library/system.data.sqlclient.sqlcommand.executenonquery.aspx) paranccsal és egy [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-utasítással. Adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználót és a jelszót.
 
 ```csharp
 using System;

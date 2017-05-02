@@ -1,28 +1,27 @@
-### <a name="noconnection"></a>Előtagok hozzáadása vagy eltávolítása – átjárókapcsolat nélkül
-### <a name="to-add-additional-prefixes"></a>További előtagok hozzáadása
+### <a name="noconnection"></a>Előtagok módosítása – átjárókapcsolat nélkül
 
-Ha további címelőtagokat szeretne felvenni egy Ön által létrehozott hálózati átjáróra, de az még nem rendelkezik átjárókapcsolattal, akkor használja a lenti példát. Az értékeket módosítsa a sajátjaira.
+- További címelőtagok felvétele:
 
-```powershell
-$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
--AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
-```
-### <a name="to-remove-an-address-prefix"></a>Címelőtag eltávolítása
+  ```powershell
+  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+  -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+  ```
 
-Ha szeretne eltávolítani egy címelőtagot egy helyi hálózati átjáróról, amely nem rendelkezik VPN-kapcsolattal, akkor használja az alábbi példát. Hagyja ki azokat címelőtagokat, amelyekre már nincs szüksége. Ebben a példában a 20.0.0.0/24 előtagra (az előző példából) már nincs szükségünk, ezért frissítjük a helyi hálózati átjárót, és kihagyjuk ezt az előtagot.
+- Címelőtag eltávolítása:<br>
+  Hagyja ki azokat címelőtagokat, amelyekre már nincs szüksége. Ebben a példában a 20.0.0.0/24 előtagra (az előző példából) már nincs szükségünk, ezért frissítjük a helyi hálózati átjárót, kihagyva ezt az előtagot.
 
-```powershell
-$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
--AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
-```
+  ```powershell
+  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+  -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
+  ```
 
-### <a name="withconnection"></a>Előtagok hozzáadása vagy eltávolítása – meglévő átjárókapcsolattal
-Ha már létrehozott egy átjárókapcsolatot, és szeretné felvenni vagy eltávolítani a helyi hálózati átjáróban tárolt IP-címelőtagokat, akkor az alábbi lépéseket kell sorban végrehajtania. Ez némi állásidőt jelent majd a VPN-kapcsolata számára. Az előtagok frissítésekor először távolítsa el a kapcsolatot, módosítsa az előtagokat, majd hozzon létre egy új kapcsolatot. Az alábbi példákban található értékeket módosítsa a sajátjaira.
+### <a name="withconnection"></a>Előtagok módosítása – meglévő átjárókapcsolat
+Ha már rendelkezik átjárókapcsolattal, és szeretné felvenni vagy eltávolítani a helyi hálózati átjáróban tárolt IP-címelőtagokat, akkor az alábbi lépéseket kell sorban végrehajtania. Ez némi állásidőt jelent a VPN-kapcsolata számára.
 
 > [!IMPORTANT]
-> Ne törölje a VPN Gatewayt. Ha törli, akkor újra végre kell hajtania a létrehozásához szükséges lépéseket, valamint a helyszíni útválasztót is újra kell konfigurálnia az új beállításokkal.
+> Ne törölje a VPN Gatewayt. Ha törli, akkor újra végre kell hajtania a létrehozásához szükséges lépéseket. Emellett frissítenie kell a helyszíni VPN-eszközt az új VPN-átjáró IP-címével.
 > 
 > 
 
@@ -45,7 +44,7 @@ Ha már létrehozott egy átjárókapcsolatot, és szeretné felvenni vagy eltá
   Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
   ```
-3. Hozza létre a kapcsolatot. Ebben a példában IPsec kapcsolattípust konfigurálunk. A kapcsolat létrehozásakor a konfigurációban meghatározott kapcsolattípust használja. További kapcsolattípusok esetén tekintse meg a [PowerShell-parancsmag](https://msdn.microsoft.com/library/mt603611.aspx) oldalát.
+3. Hozza létre a kapcsolatot. Ebben a példában egy IPsec kapcsolattípust konfigurálunk. A kapcsolat létrehozásakor a konfigurációban meghatározott kapcsolattípust használja. További kapcsolattípusok esetén tekintse meg a [PowerShell-parancsmag](https://msdn.microsoft.com/library/mt603611.aspx) oldalát.
    
   Állítsa be a VirtualNetworkGateway változóját.
 
@@ -53,7 +52,7 @@ Ha már létrehozott egy átjárókapcsolatot, és szeretné felvenni vagy eltá
   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name RMGateway  -ResourceGroupName MyRGName
   ```
    
-  Hozza létre a kapcsolatot. Vegye figyelembe, hogy a példa az előző lépésben beállított $local változót használja.
+  Hozza létre a kapcsolatot. Ez a példa a 2. lépésben beállított $local változót használja.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `

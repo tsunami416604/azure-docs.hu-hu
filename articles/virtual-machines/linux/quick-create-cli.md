@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 04/03/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: d051382954db989ce4152602d249383e7b9dfa46
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: b26d3952adc4d0bb1993bb46cabf6c7d0850666a
+ms.lasthandoff: 04/20/2017
 
 ---
 
 # <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Linux virtuális gép létrehozása az Azure CLI-vel
 
-Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató részletesen bemutatja, hogyan lehet egy Ubuntu 16.04 LTS-t futtató virtuális gépet üzembe helyezni az Azure CLI-vel. A kiszolgáló üzembe helyezését követően SSH-n keresztül csatlakozunk a virtuális géphez az NGINX telepítéséhez. 
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató részletesen bemutatja, hogyan lehet egy Ubuntu 16.04 LTS-t futtató virtuális gépet üzembe helyezni az Azure CLI-vel. A kiszolgáló üzembe helyezése után SSH-val csatlakozunk a virtuális géphez az NGINX telepítése érdekében. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

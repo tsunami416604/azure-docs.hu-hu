@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 04/19/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
-ms.openlocfilehash: 888b9786de8302ccd2e11f271aa417bcbcc2620b
-ms.lasthandoff: 12/02/2016
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: c6944fd4f93d2daa9071bb27f76ea0f772bdb743
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -33,7 +33,7 @@ Az OMS biztonsági és naplózási megoldás a figyelmet igénylő jelentős pro
 
 1. A **Microsoft Operations Management Suite** fő irányítópultján kattintson a **Settings** (Beállítások) csempére a bal oldalon.
 2. A **Settings** (Beállítások) panel **Solutions** (Megoldások) területén kattintson a **Security and Audit** (Biztonság és auditálás) lehetőségre.
-3. Ekkor megjelenik a **Security and Audit** (Biztonság és auditálás) irányítópult:
+3. Megjelenik a **Security and Audit** (Biztonság és auditálás) irányítópult:
    
     ![Az OMS biztonsági és auditálási irányítópultja](./media/oms-security-getting-started/oms-getting-started-fig1-ga.png)
 
@@ -92,19 +92,19 @@ Akárcsak az OMS irányítópultján rendelkezésre álló többi élő csempe e
 ![keresési eredmény](./media/oms-security-getting-started/oms-getting-started-fig5.png)
 
 > [!NOTE]
-> a *rang* olyan helyezés, amelyet a rendszer a védelem állapota (bekapcsolt, kikapcsolt, frissített stb.), illetve a talált fenyegetések alapján állapít meg. Ennek számszerűsítése segíti az összesítést.
+> A *rang* olyan helyezés, amelyet a rendszer a védelem állapota (bekapcsolt, kikapcsolt, frissített stb.), illetve a talált fenyegetések alapján állapít meg. Ennek számszerűsítése segíti az összesítést.
 > 
 > 
 
 Ha a számítógép nevére kattint, akkor időrend szerinti nézetben jelenik meg a számítógép védelmi állapota. Ez azokban az esetekben nagyon hasznos, amikor azt kell felismerni, hogy a kártevőirtót korábban telepítették, majd egy későbbi időpontban eltávolították.   
 
 ### <a name="update-assessment"></a>Frissítések felmérése
-Ez a funkció lehetővé teszi a potenciális biztonsági problémáknak való teljes kitettség gyors meghatározását, valamint annak megállapítását, hogy ezek a frissítések fontosak-e, és ha igen, mennyire fontosak a környezet szempontjából. Az OMS biztonsági és auditálási megoldás csupán e frissítések képi megjelenítését biztosítja, a tényleges adatok az OMS rendszeren belüli másik, [Rendszerfrissítések megoldás](https://technet.microsoft.com/library/mt484096.aspx) nevű modulból származnak. Alább látható egy példa a frissítésekre:
+Ez a funkció lehetővé teszi a potenciális biztonsági problémáknak való teljes kitettség gyors meghatározását, valamint annak megállapítását, hogy ezek a frissítések fontosak-e, és ha igen, mennyire fontosak a környezet szempontjából. Az OMS biztonsági és auditálási megoldás csak a frissítések képi megjelenítését biztosítja, a tényleges adatok az OMS rendszeren belüli másik, [Frissítéskezelési megoldások](oms-solution-update-management.md) nevű modulból származnak. Alább látható egy példa a frissítésekre:
 
-![rendszerfrissítések](./media/oms-security-getting-started/oms-getting-started-fig6.png)
+![rendszerfrissítések](./media/oms-security-getting-started/oms-getting-started-fig6-new.png)
 
 > [!NOTE]
-> a frissítési megoldással kapcsolatos további információkért olvassa el [a kiszolgálók Rendszerfrissítések megoldással történő frissítését ismertető cikket](https://technet.microsoft.com/library/mt484096.aspx).
+> A frissítéskezelési megoldással kapcsolatos további információkért olvassa el [az OMS frissítéskezelési megoldását ismertető cikket](oms-solution-update-management.md).
 > 
 > 
 
@@ -135,6 +135,14 @@ Ezzel a csempével tekintheti meg az összes olyan számítógépet, amely aktí
 
 A vizsgálatot úgy folytathatja, hogy rákattint az egyes számítógépekre, és áttekinti a megjelölt biztonsági eseményeket.
 
+### <a name="threat-intelligence"></a>Fenyegetések felderítése
+
+Az OMS biztonsági és auditálási megoldásban elérhető fenyegetésfelderítési szolgáltatással az informatikai rendszergazdák azonosíthatják a környezetre leselkedő biztonsági fenyegetéseket, például ha egy adott számítógép egy botnet része. A számítógépek akkor válhatnak egy botnet csomópontjává, ha a támadók illetéktelenül kártevőket telepítenek a számítógépére, amelyek titokban csatlakoztatják a gépet a vezérlőrendszerhez. A szolgáltatás emellett az illegális kommunikációs csatornákról, például a darknetekről érkező potenciális fenyegetéseket is azonosítani tudja. A fenyegetésfelderítéssel kapcsolatos további információért olvassa el [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md) című cikket.
+
+### <a name="baseline-assessment"></a>Az alapkonfiguráció értékelése
+
+A Microsoft a világszerte elhelyezkedő iparági és kormányzati szervezetekkel közösen olyan Windows-konfigurációt határoz meg, amely nagy biztonságú kiszolgálók üzembe helyezését teszi lehetővé. Ez a konfiguráció beállításkulcsokból, auditálási szabályzatok beállításaiból és biztonsági szabályzatok beállításaiból áll, valamint a Microsoft ajánlott értékeit tartalmazza ezekhez a beállításokhoz. Ez a szabályzathalmaz biztonsági alapkonfigurációként ismert. A beállítással kapcsolatos további információkért olvassa el [Az alapkonfiguráció értékelése az Operations Management Suite biztonsági és auditálási megoldásában](oms-security-baseline.md) című cikket.
+
 ### <a name="azure-security-center"></a>Azure Security Center
 Ez a csempe gyakorlatilag az Azure Security Center irányítópultjának megnyitására szolgáló parancsikon. Ha további információkat szeretne megtudni erről a megoldásról, olvassa el [Az Azure Security Center használatának első lépései](../security-center/security-center-get-started.md) című cikket.
 
@@ -153,7 +161,7 @@ E beállítás elsődleges célja, hogy lehetővé tegye az informatikai részle
 Ez a beállítás az [incidensre adott válasz vizsgálatának](https://blogs.msdn.microsoft.com/azuresecurity/2016/11/30/investigating-suspicious-activity-in-a-hybrid-cloud-with-oms-security/) során is használható az értékelés végrehajtására, valamint a támadásra vonatkozó további információk lekérésére.
 
 > [!NOTE]
-> Ha további információkat szeretne megtudni arról, hogyan használható az incidensekre való válaszadás során, tekintse meg a [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Hogyan használható az Azure Security Center és Microsoft Operations Management Suite egy incidensre adott válaszlépések során?) című blogbejegyzést.
+> Ha további információkat szeretne megtudni arról, hogyan használható az OMS incidensekre való válaszadáshoz, tekintse meg a következő videót: [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Hogyan használható az Azure Security Center és Microsoft Operations Management Suite egy incidensre adott válaszlépések során?).
 > 
 > 
 

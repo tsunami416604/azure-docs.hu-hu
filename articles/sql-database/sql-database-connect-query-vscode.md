@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 5b623c78f8b8eac846c5ca244f1e0b25ee4f400f
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 45405c7bb9993d1fd529b25b599c3cd7f459843c
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -35,7 +35,7 @@ Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott er�
 
 A kezdés előtt győződjön meg arról, hogy a [Visual Studio Code](https://code.visualstudio.com/Download) legújabb verziója van telepítve, és be van töltve az [mssql bővítmény](https://aka.ms/mssql-marketplace). Az mssql bővítmény telepítési lépéseinek megismeréséhez olvassa el [a VS Code telepítését](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) és a [Visual Studio Code-hoz használható mssql-t](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) ismertető cikkeket. 
 
-## <a name="configure-vs-code-mac-os-only"></a>Konfigurálás vagy kód (csak Mac OS esetén)
+## <a name="configure-vs-code"></a>A VS Code konfigurálása 
 
 ### <a name="mac-os"></a>**Mac OS**
 Mac OS esetén telepíteni kell az OpenSSL-t, amely az mssql bővítmény által használt DotNet Core előfeltétele. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez. 
@@ -49,9 +49,17 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+
+Nincs szükség különleges konfigurációra.
+
+### <a name="windows"></a>**Windows**
+
+Nincs szükség különleges konfigurációra.
+
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure Portalon. A teljes kiszolgálónévvel csatlakozhat a kiszolgálóhoz a Visual Studio Code-ot használva.
+Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
@@ -108,7 +116,7 @@ A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Data
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Használja a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak lekérdezéséhez.
+A következő kód használatával lekérdezheti kategóriánként az első 20 terméket a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-utasítással.
 
 1. A **szerkesztő** ablakában írja be a következő lekérdezést az üres lekérdezési ablakba:
 
@@ -125,7 +133,7 @@ Használja a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Használja az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL utasítást az adatok Azure SQL-adatbázisba történő beszúrására.
+A következő kód használatával beszúrhat egy új terméket a SalesLT.Product táblába az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítással.
 
 1. A **szerkesztő** ablakában törölje az előző lekérdezést, és adja meg a következő lekérdezést:
 
@@ -153,7 +161,7 @@ Használja az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transac
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Használja az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak frissítésére.
+A következő kód használatával frissítheti az előzőleg hozzáadott új terméket az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítással.
 
 1.  A **szerkesztő** ablakában törölje az előző lekérdezést, és adja meg a következő lekérdezést:
 
@@ -167,7 +175,7 @@ Használja az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transac
 
 ## <a name="delete-data"></a>Adat törlése
 
-Használja az [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak törlésére.
+A következő kód használatával törölheti az előzőleg hozzáadott új terméket a [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-utasítással.
 
 1. A **szerkesztő** ablakában törölje az előző lekérdezést, és adja meg a következő lekérdezést:
 

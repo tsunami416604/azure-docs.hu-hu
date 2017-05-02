@@ -13,51 +13,46 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 81eca4b41b6a0726e5fcf851074bfb7dfca16fb8
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: fd7c834e8e061ba51b116ade88769dde05abcf9a
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
 
-A helyek közötti (Site-to-Site, S2S) VPN Gateway-kapcsolat egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztüli kapcsolat. Ehhez a típusú kapcsolathoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy nyilvános IP-cím, és nem NAT mögött helyezkedik el. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.
-
-![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
-
-Ez a cikk részletesen bemutatja, hogyan hozható létre egy virtuális hálózat és egy helyek közötti VPN-átjárókapcsolat a helyszíni hálózathoz a klasszikus üzemi modell és az Azure Portal használatával. Ezt a konfigurációt létrehozhatja a Resource Manager-alapú üzemi modellhez is egy másik lehetőség kiválasztásával az alábbi listáról:
+Ez a cikk bemutatja, hogyan használhatja az Azure Portalt egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a Vnet között. A cikkben ismertetett lépések a klasszikus üzemi modellre vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Resource Manager – parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Klasszikus – Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [Klasszikus – Klasszikus portál](vpn-gateway-site-to-site-create.md)
->
+> 
 >
 
-#### <a name="additional-configurations"></a>További konfigurációk
-Ha csatlakoztatni szeretné egymáshoz a virtuális hálózatokat, de nem szeretne létrehozni kapcsolatot egy hellyel: [Virtuális hálózatok közötti kapcsolat konfigurálása](virtual-networks-configure-vnet-to-vnet-connection.md). Ha szeretne helyek közötti kapcsolatot hozzáadni olyan virtuális hálózathoz, amely már rendelkezik egy kapcsolattal, olvassa el a következőt: [Helyek közötti kapcsolat hozzáadása meglévő VPN-átjárókapcsolattal rendelkező virtuális hálózathoz](vpn-gateway-multi-site.md).
+![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
+
+
+A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható létre a helyszíni hálózat és egy Azure-beli virtuális hálózat között egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztül. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. További információk a VPN-átjárókról: [Információk a VPN Gatewayről](vpn-gateway-about-vpngateways.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-[!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
+A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
-A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a következőkkel:
-
-* Egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. Lásd: [About VPN Devices](vpn-gateway-about-vpn-devices.md) (Tudnivalók a VPN-eszközökről). Ha nem jártas a VPN-eszköz konfigurálásában, vagy nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, együtt kell működnie valakivel, aki ezeket az adatokat megadhatja Önnek.
+* Erősítse meg, hogy a klasszikus üzemi modellt kívánja használni. [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)] 
+* Egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
 * Egy kifelé irányuló, nyilvános IPv4 IP-cím a VPN-eszközhöz. Ez az IP-cím nem lehet NAT mögötti.
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial).
+* Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
 * Jelenleg a megosztott kulcs megadásához és a VPN Gateway-kapcsolat létrehozásához a PowerShellre van szükség. Telepítse az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azureps-cmdlets-docs) foglalkozó témakörben talál. Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia. 
 
-> [!NOTE]
-> Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.
->
-
 ### <a name="values"></a>Konfigurációs mintaértékek ehhez a gyakorlathoz
-Ha gyakorlatként használja ezeket a lépéseket, ezeket a konfigurációs mintaértékeket használhatja:
+
+A cikkben szereplő példák a következő értékeket használják. Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat.
 
 * **Virtuális hálózat neve:** TestVNet1
 * **Címtér:** 
@@ -151,7 +146,7 @@ Létre kell hoznia egy átjáróalhálózatot a VPN-átjáróhoz. Az átjáróal
 3. Az **Átjáró konfigurációja** panelen kattintson az **Alhálózat – Kötelező beállítások konfigurálása** elemre az **Alhálózat hozzáadása** panel megnyitásához.
 
     ![Átjáró konfigurációja – átjáróalhálózat](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "Átjáró konfigurációja – átjáró-alhálózat")
-4. Az **Alhálózat hozzáadása** panelen adja meg az átjáróalhálózatot. Ha lehetséges, átjáró hozzáadásakor a legjobb megoldás egy átjáróalhálózat létrehozása /28 vagy /27 CIDR-blokk használatával. Így a később felmerülő konfigurációs követelmények kiszolgálásához is elegendő IP-címet tud biztosítani.  Kattintson az **OK** gombra a beállítások mentéséhez.
+4. Az **Alhálózat hozzáadása** panelen adja meg az átjáróalhálózatot. Az Ön által megadott átjáróalhálózat mérete a létrehozni kívánt VPN-átjárókonfigurációtól függ. Bár akár /29-es átjáróalhálózatot is létrehozhat, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: /27-eset vagy /28-asat. Nagyobb átjáróalhálózat használatával elegendő IP-cím áll rendelkezésre az esetleges jövőbeni konfigurációk megvalósításához.
 
     ![Átjáróalhálózat hozzáadása](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "Átjáróalhálózat hozzáadása")
 
@@ -165,24 +160,13 @@ Létre kell hoznia egy átjáróalhálózatot a VPN-átjáróhoz. Az átjáróal
 
 ## <a name="vpndevice"></a>7. VPN-eszköz konfigurálása
 
-A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-eszközre van szükség. Nem mutatjuk be a konfigurációs lépéseket minden VPN-eszköz esetében, azonban az alábbi hivatkozásokra kattintva hasznos információkat találhat erre vonatkozóan:
-
-- A kompatibilis VPN-eszközökkel kapcsolatos információért tekintse meg a [VPN-eszközökkel foglalkozó szakaszt](vpn-gateway-about-vpn-devices.md). 
-- Az eszköz konfigurációs beállításaira mutató hivatkozásokért tekintse meg az [ellenőrzött VPN-eszközökkel](vpn-gateway-about-vpn-devices.md#devicetable) kapcsolatos témakört. Ezeket a hivatkozásokat tájékoztató jelleggel biztosítjuk. A legfrissebb konfigurációs információkért érdemes az eszköz gyártójához fordulni.
-- Az eszközök konfigurációs mintáinak szerkesztésével kapcsolatos információkért tekintse meg a [minták szerkesztésével](vpn-gateway-about-vpn-devices.md#editing) kapcsolatos részt.
-- Az IPsec/IKE-paraméterekkel kapcsolatos információkért tekintse meg a [paraméterekkel](vpn-gateway-about-vpn-devices.md#ipsec) kapcsolatos részt.
-- A VPN-eszköz konfigurálása előtt ellenőrizze, hogy a használni kívánt VPN-eszközre nem vonatkoznak-e [ismert eszközkompatibilitási problémák](vpn-gateway-about-vpn-devices.md#known).
-
-A VPN-eszköz konfigurálásakor a következő elemekre lesz szüksége:
-
-- A virtuális hálózati átjáró nyilvános IP-címe. Ezt a virtuális hálózat **Áttekintés** paneljén keresheti ki.
-- Megosztott kulcs. Ez ugyanaz a megosztott kulcs, amelyet a helyek közötti VPN-kapcsolat létrehozásakor fog megadni. A példákban igen alapvető megosztott kulcsot használunk. Ennél összetettebb kulcsot kell létrehoznia.
+[!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 ## <a name="CreateConnection"></a>8. A kapcsolat létrehozása
 Ebben a lépésben beállítja a megosztott kulcsot, és létrehozza a kapcsolatot. A beállított kulcsnak meg kell egyeznie a VPN-eszköz konfigurációjához használt kulccsal.
 
 > [!NOTE]
-> Ez a lépés jelenleg az Azure Portalon nem érhető el. A műveletekhez az Azure PowerShell-parancsmagjainak Service Management (SM) verzióját kell használnia.                                        >
+> Ez a lépés jelenleg az Azure Portalon nem érhető el. A műveletekhez az Azure PowerShell-parancsmagjainak Service Management (SM) verzióját kell használnia.
 >
 
 ### <a name="step-1-connect-to-your-azure-account"></a>1. lépés Csatlakozás az Azure-fiókhoz

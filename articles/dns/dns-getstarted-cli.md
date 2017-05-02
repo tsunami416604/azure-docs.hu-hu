@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: c912aee814d339b979b4d2055425d195d2b9f346
-ms.lasthandoff: 03/21/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 5cb387c4d1a2a2ae5ee8822241b11e79f53f0d6a
+ms.lasthandoff: 04/25/2017
 
 ---
 
@@ -34,14 +34,21 @@ Ez a cikk bemutatja az első DNS-zóna és -rekord létrehozásának lépéseit 
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Végül a DNS-zóna interneten való közzétételéhez konfigurálnia kell a tartomány névkiszolgálóit. Az egyes lépéseket az alábbiakban ismertetjük.
 
-Ezek az utasítások feltételezik, hogy már telepítette az Azure CLI 1.0-t, és bejelentkezett. További segítségért lásd [a DNS-zónák az Azure CLI 2.0 használatával való kezelésével kapcsolatos](dns-operations-dnszones-cli.md) témakört.
+Ezek az utasítások feltételezik, hogy már telepítette az Azure CLI 2.0-t, és bejelentkezett. További segítségért lásd [a DNS-zónák az Azure CLI 2.0 használatával való kezelésével kapcsolatos](dns-operations-dnszones-cli.md) témakört.
 
+## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
+
+A DNS-zóna létrehozása előtt egy erőforráscsoportot kell létrehozni, amely a DNS-zónát tartalmazza majd. Az alábbiakban a parancs látható.
+
+```azurecli
+az group create --name MyResourceGroup --location "West US"
+```
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 A DNS-zóna az `az network dns zone create` parancs használatával hozható létre. A paranccsal kapcsolatos súgó megtekintéséhez írja be a következőt: `az network dns zone create -h`.
 
-Az alábbi példaparancs a *MyResourceGroup* erőforráscsoportban létrehozza a *contoso.com* DNS-zónát. A példát követve, és az értékeket a sajátjaira cserélve hozza létre a DNS-zónát.
+Az alábbi példaparancs a *MyResourceGroup* nevű erőforráscsoportban létrehozza a *contoso.com* DNS-zónát. A példát követve, és az értékeket a sajátjaira cserélve hozza létre a DNS-zónát.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.com
@@ -100,6 +107,13 @@ az network dns zone show -g MyResourceGroup -n contoso.com -o json
 
 Ezeket a névkiszolgálókat a tartományregisztrálóhoz kell konfigurálni (ahol a tartománynevet vásárolta). A regisztráló felajánlja, hogy beállítja a névkiszolgálókat a tartományhoz. További információért lásd: [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md).
 
+## <a name="delete-all-resources"></a>Az összes erőforrás törlése
+ 
+A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépést:
+
+```azurecli
+az group delete --name MyResourceGroup
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

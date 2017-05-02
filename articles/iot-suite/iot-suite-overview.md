@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 04/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 7adde91586f5fbbffd0aeaf0efb0810cc891ac0b
-ms.openlocfilehash: ecae2cb9c0cdc78226c100cd287b840b6b2a6bb8
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: 309a36b1aa5db95a287b7a6b21449f9d61880cf4
+ms.lasthandoff: 04/25/2017
 
 
 ---
 # <a name="overview-of-azure-iot-suite"></a>Az Azure IoT Suite áttekintése
+
 Az Azure eszközök internetes hálózata (IoT) szolgáltatások a képességek széles választékát nyújtják. Ezekkel a vállalati szintű szolgáltatásokkal a következőket teheti:
 
 * Adatok gyűjtése eszközökről
@@ -52,9 +53,11 @@ Az előre konfigurált megoldások általában a következő szolgáltatásokat 
 A tipikus IoT-megoldások architektúrájának áttekintéséért lásd a [Microsoft Azure-t és az eszközök internetes hálózatát (IoT)][iot-suite-what-is-azure-iot] ismertető cikket.
 
 ## <a name="preconfigured-solutions"></a>Előre konfigurált megoldások
-Az IoT Suite előre konfigurált megoldásokat tartalmaz, amelyekkel gyorsan teheti meg az első lépéseket és fedezheti fel az általános IoT-forgatókönyveket, például a *távoli megfigyelést* és a *prediktív karbantartást*. Ezeket a megoldásokat az Azure-előfizetésre telepítheti, majd egy teljes körű IoT-forgatókönyvet futtathat.
+
+Az IoT Suite előre konfigurált megoldásokat tartalmaz, amelyekkel gyorsan teheti meg az első lépéseket és fedezheti fel az általános IoT-forgatókönyveket, például a *távoli figyelést*, a *prediktív karbantartást* és a *csatlakoztatott gyárat*. Ezeket a megoldásokat az Azure-előfizetésre telepítheti, majd egy teljes körű IoT-forgatókönyvet futtathat.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Most, hogy áttekintette az IoT Suite képességeit és fő összetevőit, többet is megtudhat az IoT Suite előre konfigurált megoldásairól. További információkért lásd [az Azure IoT előre konfigurált megoldásait][lnk-what-are-preconfig] ismertető cikket.
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/

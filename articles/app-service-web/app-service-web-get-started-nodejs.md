@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/28/2017
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: 26d460a699e31f6c19e3b282fa589ed07ce4a068
-ms.openlocfilehash: 22966659db3951316dca11fd555e07a183114062
-ms.lasthandoff: 04/04/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: c32cb52e4bb7bacde20e21820f277b4e86877e74
+ms.lasthandoff: 04/25/2017
 
 ---
 # <a name="create-a-nodejs-application-on-web-app"></a>Node.js-alkalmazás létrehozása a webappban
@@ -148,7 +148,7 @@ Az App Service-csomag létrehozása után az Azure CLI az alábbi példához has
 
 Most, hogy létrehoztuk az App Service-csomagot, hozzon létre egy webappot a `quickStartPlan` App Service-csomagján belül. A webapp üzemeltetési tárterületet biztosít a kód üzembe helyezéséhez, valamint megadja az üzembe helyezett alkalmazás megtekintéséhez szükséges URL-címet. A webapp létrehozásához használja az [az appservice web create](/cli/azure/appservice/web#create) parancsot.
 
-Az alábbi parancsban az <app_name> helyőrző helyére írja be saját, egyedi alkalmazásnevét. Az <app_name> nevet a rendszer a webapp alapértelmezett DNS-helyének részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazása tekintetében. A későbbiekben leképezhet bármely DNS-bejegyzést a webapphoz, mielőtt elérhetővé teszi a felhasználók számára.
+Az alábbi parancsban az `<app_name>` helyőrző helyére írja be saját, egyedi alkalmazásnevét. Az `<app_name>` nevet a rendszer a webalkalmazás alapértelmezett DNS-helyének részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazása tekintetében. A későbbiekben leképezhet bármely DNS-bejegyzést a webapphoz, mielőtt elérhetővé teszi a felhasználók számára.
 
 ```azurecli
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
@@ -296,7 +296,7 @@ Az Azure Portalon tekintse meg a létrehozott webappot.
 
 Ehhez jelentkezzen be a következő címen: [https://portal.azure.com](https://portal.azure.com).
 
-A bal oldali menüben kattintson az **App Service** lehetőségre, majd az Azure-webapp nevére.
+A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webapp nevére.
 
 ![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
@@ -321,3 +321,4 @@ A panel ezen lapja a webapphoz hozzáadható nagyszerű szolgáltatásokat jelen
 ## <a name="next-steps"></a>Következő lépések
 
 Az előre létrehozott, [Web Apps CLI-szkriptek](app-service-cli-samples.md) vizsgálata.
+

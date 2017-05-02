@@ -17,9 +17,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 06b6830b28745b0f6574d7bca5cca7907db8ecb1
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: fb0cd3898703b9acf54d7ff70774bd090d39f0e5
+ms.lasthandoff: 04/22/2017
 
 ---
 
@@ -45,18 +45,18 @@ Ebben a rövid útmutatóban változókat határozhat meg a szkriptekben való h
 
 ```azurecli
 # The data center and resource name for your resources
-resourcegroupname = myResourceGroup
-location = westeurope
+export resourcegroupname = myResourceGroup
+export location = westeurope
 # The logical server name: Use a random value or replace with your own value (do not capitalize)
-servername = server-$RANDOM
+export servername = server-$RANDOM
 # Set an admin login and password for your database
-adminlogin = ServerAdmin
-password = ChangeYourAdminPassword1
+export adminlogin = ServerAdmin
+export password = ChangeYourAdminPassword1
 # The ip address range that you want to allow to access your DB
-startip = "0.0.0.0"
-endip = "0.0.0.1"
+export startip = "0.0.0.0"
+export endip = "0.0.0.1"
 # The database name
-databasename = mySampleDatabase
+export databasename = mySampleDatabase
 ```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
@@ -99,7 +99,11 @@ az sql db create --resource-group $resourcegroupname --server $servername \
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épít. Ha azt tervezi, hogy az ezt rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti az ehhez a rövid útmutatóhoz létrehozott összes erőforrást.
+Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épít. 
+
+> [!TIP]
+> Ha azt tervezi, hogy az ezt követő rövid útmutatókkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.
+>
 
 ```azurecli
 az group delete --name $resourcegroupname
@@ -107,12 +111,15 @@ az group delete --name $resourcegroupname
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az SQL Server Management Studióval történő csatlakozáshoz és lekérdezéshez lásd [az SSMS segítségével történő csatlakozással és lekérdezéssel](sql-database-connect-query-ssms.md) foglalkozó témakört.
-- A Visual Studio Code használatával történő csatlakozásról és lekérdezésről lásd a [Visual Studio Code használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-vscode.md) szóló témakört.
-- A .NET használatával történő csatlakozásról és lekérdezésről lásd a [.NET használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-dotnet.md) szóló témakört.
-- A PHP-vel történő csatlakozásról és lekérdezésről lásd a [PHP-vel végzett csatlakozásról és lekérdezésről](sql-database-connect-query-php.md) szóló témakört.
-- A Node.js használatával történő csatlakozásról és lekérdezésről lásd a [Node.js használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-nodejs.md) szóló témakört.
-- A Java használatával történő csatlakozásról és lekérdezésről lásd a [Java használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-java.md) szóló témakört.
-- A Python használatával történő csatlakozásról és lekérdezésről lásd a [Python használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-python.md) szóló témakört.
-- A Ruby használatával történő csatlakozásról és lekérdezésről lásd a [Ruby használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-ruby.md) szóló témakört.
+Most, hogy rendelkezik egy adatbázissal, csatlakoztathatja a kedvenc eszközeit, és lekérdezéseket hajthat végre velük. További információkért válassza ki az eszközt az alábbiak közül:
+
+- [SQL Server Management Studio](sql-database-connect-query-ssms.md)
+- [Visual Studio Code](sql-database-connect-query-vscode.md)
+- [.NET](sql-database-connect-query-dotnet.md)
+- [PHP](sql-database-connect-query-php.md)
+- [Node.js](sql-database-connect-query-nodejs.md)
+- [Java](sql-database-connect-query-java.md)
+- [Python](sql-database-connect-query-python.md)
+- [Ruby](sql-database-connect-query-ruby.md)
+
 

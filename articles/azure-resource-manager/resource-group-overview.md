@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/23/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6d88b7c5ad96a1c7cfb60bde3c9d952b654adb9f
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 4b7192b22d1583be2b2ab027b040c9a2fce8a293
+ms.lasthandoff: 04/20/2017
 
 
 ---
@@ -256,7 +256,7 @@ Egyes esetekben előfordulhat, hogy olyan kódot vagy szkriptet kíván futtatni
 
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](resource-group-authenticate-service-principal.md)
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](resource-group-authenticate-service-principal-cli.md)
-* [Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portálon erőforrások eléréséhez](resource-group-create-service-principal-portal.md)
+* [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portálon erőforrások eléréséhez](resource-group-create-service-principal-portal.md)
 
 Kifejezetten zárolhatja a kritikus erőforrásokat is, megakadályozva, hogy a felhasználók törölhessék vagy módosíthassák azokat. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](resource-group-lock-resources.md).
 

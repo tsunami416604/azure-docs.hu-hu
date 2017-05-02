@@ -18,9 +18,9 @@ ms.topic: hero-article
 ms.date: 03/15/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a08fe566f4962684bc4aad220687e9cd36fc4abf
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
+ms.openlocfilehash: 9ffad92e668b76c9a4e2941b20d075bf52132d16
+ms.lasthandoff: 04/19/2017
 
 
 ---
@@ -37,7 +37,7 @@ A kezdés előtt győződjön meg arról, hogy az [SSMS](https://msdn.microsoft.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Kérje le az Azure SQL Database kiszolgáló teljes kiszolgálónevét az Azure Portalon. Használja a teljes kiszolgálónevet az SQL Server Management Studióban a kiszolgálóhoz történő csatlakozáshoz.
+Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
@@ -78,7 +78,7 @@ Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Data
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Használja a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak lekérdezéséhez.
+A következő kód használatával lekérdezheti kategóriánként az első 20 terméket a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-utasítással.
 
 1. Az Object Explorerben kattintson a jobb gombbal a **mySampleDatabase** adatbázisra, majd kattintson a **New Query** (Új lekérdezés) elemre. Megnyílik egy, az adatbázishoz csatlakoztatott üres lekérdezési ablak.
 2. A lekérdezési ablakban írja be a következő lekérdezést:
@@ -96,7 +96,7 @@ Használja a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Használja az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL utasítást az adatok Azure SQL-adatbázisba történő beszúrására.
+A következő kód használatával beszúrhat egy új terméket a SalesLT.Product táblába az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítással.
 
 1. A lekérdezési ablakban cserélje le az előző lekérdezést a következő lekérdezésre:
 
@@ -126,7 +126,7 @@ Használja az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transac
 
 ## <a name="update-data"></a>Adatok frissítése
 
-Használja az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak frissítésére.
+A következő kód használatával frissítheti az előzőleg hozzáadott új terméket az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítással.
 
 1. A lekérdezési ablakban cserélje le az előző lekérdezést a következő lekérdezésre:
 
@@ -142,7 +142,7 @@ Használja az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transac
 
 ## <a name="delete-data"></a>Adat törlése
 
-Használja az [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL utasítást az Azure SQL-adatbázis adatainak törlésére.
+A következő kód használatával törölheti az előzőleg hozzáadott új terméket a [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-utasítással.
 
 1. A lekérdezési ablakban cserélje le az előző lekérdezést a következő lekérdezésre:
 

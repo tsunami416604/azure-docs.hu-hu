@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 79f0c9297c4be70f705f325274f3d9241ea4bc3f
-ms.lasthandoff: 03/29/2017
+ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
+ms.openlocfilehash: 3aea60bc21bfb0650a336f6674005bbab47201fe
+ms.lasthandoff: 04/20/2017
 
 ---
 
@@ -41,41 +41,36 @@ Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban tö
 
     ![DNS-zóna](./media/dns-getstarted-portal/openzone650.png)
 
-4. A **DNS-zóna létrehozása** panelen nevezze el a DNS-zónát. Például adja meg a *contoso.com* nevet.
- 
-    ![Zóna létrehozása](./media/dns-getstarted-portal/newzone250.png)
+4. A **DNS-zóna létrehozása** panelen adja meg a következő értékeket, majd kattintson a **Létrehozás** elemre:
 
-5. Ezután adja meg a használni kívánt erőforráscsoportot. Létrehozhat egy új erőforráscsoportot, vagy kiválaszthat egy meglévőt. Ha új erőforráscsoport létrehozását választja, a **Hely** legördülő listában adja meg az erőforráscsoport helyét. Vegye figyelembe, hogy ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a DNS-zónára. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
-6. A **Rögzítés az irányítópulton** jelölőnégyzetet bejelölve hagyhatja, ha könnyedén meg szeretné találni az új zónát az irányítópulton. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+   | **Beállítás** | **Érték** | **Részletek** |
+   |---|---|---|
+   |**Name (Név)**|contoso.com|A DNS-zóna neve|
+   |**Előfizetés**|[Az Ön előfizetése]|Válasszon ki egy előfizetést, amelyben létrehozza az alkalmazásátjárót.|
+   |**Erőforráscsoport**|**Új létrehozása:** contosoDNSRG|Hozzon létre egy erőforráscsoportot. Az erőforráscsoport nevének egyedinek kell lennie a kiválasztott előfizetésen belül. Az erőforráscsoportokkal kapcsolatos további információkért olvassa el [A Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) áttekintése című cikket.|
+   |**Hely**|USA nyugati régiója||
 
-    ![Rögzítés az irányítópulton](./media/dns-getstarted-portal/pindashboard150.png)
-
-7. Miután a Létrehozás gombra kattint, láthatja az új zóna konfigurálását az irányítópulton.
-
-    ![Létrehozás](./media/dns-getstarted-portal/creating150.png)
-
-8. Amikor létrejött az új zóna, a hozzá tartozó panel megnyílik az irányítópulton.
-
+> [!NOTE]
+> Az erőforráscsoport az erőforráscsoport helyére vonatkozik, és nincs hatással a DNS-zónára. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
 ## <a name="create-a-dns-record"></a>DNS-rekord létrehozása
 
 A következő példa végigvezeti egy új „A” rekord létrehozásának folyamatán. Más rekordtípusok és meglévő rekordok módosítása esetén lásd [a DNS-rekordok és -rekordhalmazok az Azure Portallal való kezelésével kapcsolatos](dns-operations-recordsets-portal.md) témakört. 
 
+1. Ha létrehozta a DNS-zónát, az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az Összes erőforrás panelen kattintson a **contoso.com** DNS-zónára. Ha a kiválasztott előfizetésben már több erőforrás szerepel, a DNS-zóna egyszerű eléréséhez beírhatja a **contoso.com** nevet a **Szűrés név alapján...** mezőbe.
 
 1. A **DNS-zóna** panel tetején válassza a **+ Rekordhalmaz** elemet a **Rekordhalmaz hozzáadása** panel megnyitásához.
 
-    ![Új rekordhalmaz](./media/dns-getstarted-portal/newrecordset500.png)
+1. A **Rekordhalmaz hozzáadása** panelen adja meg az alábbi értékeket, majd kattintson az **OK** gombra. Ebben a példában egy A rekordot hozhat létre.
 
-4. A **Rekordhalmaz hozzáadása** panelen nevezze el a rekordhalmazt. Például adja neki a „**www**” nevet.
-
-    ![Rekordhalmaz hozzáadása](./media/dns-getstarted-portal/addrecordset500.png)
-
-5. Válassza ki a létrehozni kívánt rekord típusát. Ehhez a példához válassza az **A** típust.
-6. Állítsa be az **élettartamot**. Az alapértelmezett élettartam egy óra.
-7. Adja hozzá a rekord IP-címét.
-8. Válassza a panel alján található **OK** gombot a DNS-rekord létrehozásához.
-
+   |**Beállítás** | **Érték** | **Részletek** |
+   |---|---|---|
+   |**Name (Név)**|www|A rekord neve|
+   |**Típus**|A| A létrehozni kívánt DNS-rekord típusa. Az elfogadható értékek: A, AAAA, CNAME, MX, NS, SRV, TXT és PTR.  A rekordok típusaival kapcsolatos további információért tekintse meg a [DNS-zónákat és -rekordokat áttekintő](dns-zones-records.md) cikket.|
+   |**TTL**|1|A DNS-kérés élettartama.|
+   |**TTL mértékegysége**|Óra|A TTL értékének időmértékegysége.|
+   |**IP-cím**|{ipAddressValue| Ez az érték a DNS-rekord által feloldott IP-cím.|
 
 ## <a name="view-records"></a>A rekordok megtekintése
 
@@ -93,6 +88,14 @@ A zóna névkiszolgálói az Azure Portalon vannak megadva:
 ![zóna](./media/dns-getstarted-portal/viewzonens500.png)
 
 Ezeket a névkiszolgálókat a tartományregisztrálóhoz kell konfigurálni (ahol a tartománynevet vásárolta). A regisztráló felajánlja, hogy beállítja a névkiszolgálókat a tartományhoz. További információért lásd: [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md).
+
+## <a name="delete-all-resources"></a>Az összes erőforrás törlése
+
+A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépéseket:
+
+1. Az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az Összes erőforrás panelen kattintson a **MyResourceGroup** erőforráscsoportra. Ha a kiválasztott előfizetésben már több erőforrás szerepel, az erőforráscsoport egyszerű eléréséhez beírhatja a **MyResourceGroup** nevet a **Szűrés név alapján...** mezőbe.
+1. A **MyResourceGroup** panelen kattintson a **Törlés** gombra.
+1. A portál megköveteli, hogy az erőforráscsoport törlésének megerősítéséhez beírja annak nevét. Kattintson a **Törlés** elemre, írja be a *MyResourceGroup* nevet az erőforráscsoport nevéhez, majd kattintson a **Törlés** gombra. Az erőforráscsoport törlésével az abban foglalt összes erőforrás törölve lesz, ezért mindenképp ellenőrizze az erőforráscsoportok tartalmát azok törlése előtt. A portál törli az erőforráscsoportban lévő összes erőforrást, majd magát az erőforráscsoportot is. Ez a folyamat több percig is eltarthat.
 
 
 ## <a name="next-steps"></a>Következő lépések

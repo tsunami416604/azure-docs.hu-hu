@@ -13,34 +13,36 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: ff70484dff03a44d23d2cf34ce115fd57c4b0390
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
+ms.openlocfilehash: d0cedf73aa3f73e672a73b6abaca5eb8c22a76a7
+ms.lasthandoff: 04/25/2017
 
 
 ---
-# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal"></a>Virtuális hálózat létrehozása S2S kapcsolattal a klasszikus portálon
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-classic-portal-classic"></a>Virtuális hálózat létrehozása helyek közötti kapcsolattal a klasszikus portálon (klasszikus)
 
-A helyek közötti (Site-to-Site, S2S) VPN Gateway-kapcsolat egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztüli kapcsolat. Ehhez a típusú kapcsolathoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy nyilvános IP-cím, és nem NAT mögött helyezkedik el. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.
-
-![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
-
-Ez a cikk részletesen bemutatja, hogyan hozható létre egy virtuális hálózat és egy helyek közötti VPN-átjárókapcsolat a helyszíni hálózathoz a klasszikus üzemi modell és a klasszikus portál használatával. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók. Ez a konfiguráció a Resource Manager-alapú üzemi modellhez is létrehozható az alábbi listából egy másik lehetőséget választva:
+Ez a cikk bemutatja, hogyan használhatja a klasszikus portált egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a VNet között. A cikkben ismertetett lépések a klasszikus üzemi modellre vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Resource Manager – parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Klasszikus – Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 > * [Klasszikus – Klasszikus portál](vpn-gateway-site-to-site-create.md)
+> 
 >
->
+
+![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-site-to-site-create/site-to-site-connection-diagram.png)
+
+
+A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható létre a helyszíni hálózat és egy Azure-beli virtuális hálózat között egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztül. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. További információk a VPN-átjárókról: [Információk a VPN Gatewayről](vpn-gateway-about-vpngateways.md).
 
 #### <a name="additional-configurations"></a>További konfigurációk
-Ha csatlakoztatni szeretné egymáshoz a virtuális hálózatokat, tekintse meg a [Configure a VNet-to-VNet connection for the classic deployment model](virtual-networks-configure-vnet-to-vnet-connection.md) (Virtuális hálózatok közötti kapcsolat konfigurálása a klasszikus üzemi modellhez) című témakört. Ha helyek közötti kapcsolatot szeretne hozzáadni olyan virtuális hálózathoz, amely már rendelkezik kapcsolattal, olvassa el a következő témakört: [S2S kapcsolat hozzáadása egy meglévő VPN-átjárókapcsolattal rendelkező virtuális hálózathoz](vpn-gateway-multi-site.md).
 
+Ha csatlakoztatni szeretné egymáshoz a virtuális hálózatokat, tekintse meg a [Configure a VNet-to-VNet connection for the classic deployment model](virtual-networks-configure-vnet-to-vnet-connection.md) (Virtuális hálózatok közötti kapcsolat konfigurálása a klasszikus üzemi modellhez) című témakört. Ha helyek közötti kapcsolatot szeretne hozzáadni olyan virtuális hálózathoz, amely már rendelkezik kapcsolattal, olvassa el a következő témakört: [S2S kapcsolat hozzáadása egy meglévő VPN-átjárókapcsolattal rendelkező virtuális hálózathoz](vpn-gateway-multi-site.md).
 ## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-deployment-models-include.md)]
@@ -90,7 +92,7 @@ Adja meg az alábbi információkat, és kattintson a jobb alsó pipára a hál�
 * **Alhálózat hozzáadása**: Adja meg a kezdő IP-címet és a címek számát. További alhálózatok nem szükségesek, de célszerű lehet egy külön alhálózat létrehozása a statikus DIP-kkel rendelkező virtuális gépekhez. Esetleg dönthet úgy is, hogy a virtuális gépeit egy, a többi szerepkörpéldányait tartalmazótól eltérő alhálózaton helyezi el.
 * **Átjáróalhálózat hozzáadása**: Kattintson ide az átjáróalhálózat hozzáadásához. Az átjáróalhálózat kizárólag a virtuális hálózati átjáróhoz használatos, és kötelező ehhez a konfigurációhoz.
 
-Kattintson a lap alján található pipára. Ekkor megkezdődik a virtuális hálózat létrehozása. Ha ez befejeződik, megjelenik a **Létrehozva** elem a klasszikus Azure portál **Hálózatok** lapján az **Állapot** listában. Miután létrejött a virtuális hálózat, konfigurálhatja a virtuális hálózati átjárót.
+Kattintson a lap alján található pipára a virtuális hálózat létrehozásához. Ha ez befejeződik, megjelenik a **Létrehozva** elem a klasszikus Azure portál **Hálózatok** lapján az **Állapot** listában. Miután létrejött a virtuális hálózat, konfigurálhatja a virtuális hálózati átjárót.
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 

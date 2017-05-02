@@ -16,9 +16,9 @@ ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: c7090940192d9bd07fce96ad475b2239f5e9f2e8
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 23dfe112411ebc6f47e6a3f09baaf1aa746e6987
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -73,11 +73,12 @@ A Batch-fiókok a Batch szolgáltatáson belül egyedileg azonosított entitáso
 
 Azure Batch-fiókot az [Azure Portalon](batch-account-create-portal.md)hozhat létre, vagy programozott módon, például a [Batch Management .NET könyvtár](batch-management-dotnet.md) használatával. Egy fiók létrehozásakor társíthatja azt egy Azure Storage-fiókhoz.
 
-A Batch két fiókkonfigurációt támogat a *készletlefoglalási mód* tulajdonság alapján. A két konfiguráció eltérő lehetőségeket biztosít a Batch szolgáltatással történő hitelesítésre és a Batch-[készletek](#pool) kiépítésére és kezelésére (lásd a cikk későbbi részében). 
+A Batch két fiókkonfigurációt támogat a *készletlefoglalási mód* tulajdonság alapján. A két konfiguráció eltérő képességeket biztosít a Batch-[készletekhez](#pool) kapcsolódóan (lásd a cikk későbbi részében). 
 
 
-* **Batch szolgáltatás** (alapértelmezett): A Batch API-t megosztott kulcsos hitelesítéssel vagy az [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el. A Batch számítási erőforrásai a háttérben, egy Azure által felügyelt fiókban vannak lefoglalva.   
-* **Felhasználói előfizetés**: A Batch API-t csak [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el. A Batch számítási erőforrásai közvetlenül az Azure-előfizetésében vannak lefoglalva. Ez a mód több rugalmasságot tesz lehetővé a számítási csomópontok konfigurálása és a más szolgáltatásokkal való integráció terén. Ehhez a módhoz egy további Azure Key Vault létrehozása szükséges Batch-fiókjához.
+* **Batch szolgáltatás**: Ez az alapértelmezett beállítás, amelyben a Batch-készlet virtuális gépeit a rendszer a háttérben osztja ki az Azure által felügyelt előfizetésekben. Ezt a fiókkonfigurációt kell használni, ha Cloud Services-készletekre van szükség, azonban nem használható, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t megosztott kulcsos hitelesítéssel vagy az [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el. 
+
+* **Felhasználói előfizetés**: Ezt a fiókkonfigurációt kell használni, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t csak [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el, a Cloud Services-készletek nem támogatottak. A Batch számítási virtuális gépei közvetlenül az Azure-előfizetésében vannak lefoglalva. Ehhez a módhoz egy Azure Key Vault létrehozása szükséges a Batch-fiókjához.
  
 
 ## <a name="compute-node"></a>Számítási csomópont

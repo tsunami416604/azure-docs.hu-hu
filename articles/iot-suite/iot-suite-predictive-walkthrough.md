@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2017
+ms.date: 04/25/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 719f9810abb12cbe8645651d35cbff936cecd158
-ms.openlocfilehash: 57531b609b095359c8bf0ea3685af40124f46311
+ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
+ms.openlocfilehash: 9b2947d9ce00083c168635811395bc86b3e60b78
+ms.lasthandoff: 04/25/2017
 
 
 ---
@@ -63,7 +64,7 @@ Az IoT Hub nyugtázza az eszközparancsokat.
 Az **Event Processor Host** egy Azure-beli webes feladatban fut. Az **eseményfeldolgozó** a befejezett ciklusok átlagos érzékelőértékeit kezeli. Ezeket az értékeket azután egy olyan API-ra küldi, amely közzéteszi a betanított modellt egy motor RUL értékének kiszámításához. Az API-t a megoldás részeként üzembe helyezett Machine Learning-munkaterület teszi közzé.
 
 ## <a name="machine-learning"></a>Machine Learning
-A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon lévő csempéről érheti el ezt a Machine Learning-munkaterületet a kiépített megoldáshoz, amikor az **Kész** állapotban van.
+A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon lévő csempéről érheti el ezt a Machine Learning-munkaterületet a kiépített megoldáshoz, amikor a megoldás **Kész** állapotban van.
 
 
 ## <a name="next-steps"></a>Következő lépések
@@ -83,8 +84,3 @@ Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltat�
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
-
-
-<!--HONumber=Feb17_HO1-->
-
-

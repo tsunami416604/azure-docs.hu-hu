@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: f5793f771553df78c1c335ad57e0d64078d98148
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
+ms.openlocfilehash: e16792bb762287bc16c280386981a4d442448674
+ms.lasthandoff: 04/22/2017
 
 
 ---
@@ -42,11 +42,10 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 ## <a name="select-a-sql-vm-image-from-the-gallery"></a>SQL virtuálisgép-rendszerkép kiválasztása a katalógusból
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a saját fiókjával.
-   
+
    > [!NOTE]
    > Ha nem rendelkezik Azure-fiókkal, az [Azure ingyenes próbát](https://azure.microsoft.com/pricing/free-trial/) biztosít.
-   > 
-   > 
+
 2. Az Azure Portalon kattintson az **Új** elemre. A portál megnyitja az **Új** panelt. Az SQL Server virtuálisgép-erőforrásai a Marketplace **Számítás** csoportjában találhatók.
 3. Az **Új** panelen kattintson a **Számítás**, majd az **Összes megjelenítése** elemre.
 4. A **Szűrő** szövegmezőbe írja be az SQL Server kifejezést, majd nyomja le az ENTER billentyűt.
@@ -58,13 +57,13 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
    > [!TIP]
    > Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni.
-   
+
    > [!NOTE]
-   > Az SQL-alapú virtuális gépek rendszerképeinek percalapú díjszabása tartalmazza az SQL-kiszolgáló licencelési költségeit (kivéve a Developer és az Express kiadások esetén). Az SQL Server Developer ingyenesen használható fejlesztési/tesztelési célokra (üzemi környezetben nem), az SQL Express pedig ingyenesen használható kisebb számítási feladatokhoz (1 GB-nál kisebb memória, 10 GB-nál kevesebb tárhely). Van egy másik lehetőség is: a saját licenc használata (BYOL), amely esetben csak a virtuális gépért kell fizetni. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. További információk erről a lehetőségről: [Az SQL Server használatának első lépései az Azure Virtual Machines szolgáltatásban](virtual-machines-windows-sql-server-iaas-overview.md).
-   > 
-   > 
+   > Az SQL-alapú virtuális gépek rendszerképeinek percalapú díjszabása tartalmazza az SQL-kiszolgáló licencelési költségeit (kivéve a Developer és az Express kiadások esetén). Az SQL Server Developer ingyenesen használható fejlesztési/tesztelési célokra (üzemi környezetben nem), az SQL Express pedig ingyenesen használható kisebb számítási feladatokhoz (1 GB-nál kisebb memória, 10 GB-nál kevesebb tárhely).
+   > Van egy másik lehetőség is: a saját licenc használata (BYOL), amely esetben csak a virtuális gépért kell fizetni. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. A lehetőségekkel kapcsolatos további információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
+
 7. Ellenőrizze, hogy a **Telepítési modell kiválasztása** alatt a **Resource Manager** van-e kiválasztva. Az új virtuális gépek esetén az ajánlott üzemi modell a Resource Manager. Kattintson a **Létrehozás** gombra.
-   
+
     ![SQL virtuális gép létrehozása a Resource Manager használatával](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
 ## <a name="configure-the-vm"></a>A virtuális gép konfigurálása
@@ -100,7 +99,7 @@ Az **Alapvető beállítások** panelen adja meg a következő információkat:
 A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiválasztása** panelen. A panel kezdetben a választott rendszerkép alapján jeleníti meg az ajánlott gépméreteket.
 
 > [!IMPORTANT]
-> A **Méret kiválasztása** panelen megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez egyedül a virtuális gép költsége. Az SQL Server Express és Developer kiadásai esetében ez a teljes becsült költség. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. 
+> A **Méret kiválasztása** panelen megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez egyedül a virtuális gép költsége. Az SQL Server Express és Developer kiadásai esetében ez a teljes becsült költség. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. Lásd még [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 ![SQL virtuális gépek méretbeállításai](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
@@ -108,8 +107,6 @@ A termelési számítási feladatokhoz ajánlott olyan virtuálisgép-méretet v
 
 > [!NOTE]
 > További információ a virtuális gépek méretével kapcsolatban: [Virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Az SQL Server rendszerű virtuális gépek méretével kapcsolatos megfontolások: [Performance best practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md) (Az SQL Server teljesítményéhez kapcsolódó ajánlott eljárások Azure virtuális gépek esetén).
-> 
-> 
 
 Válassza ki a virtuális gép méretét, majd kattintson a **Kijelölés** elemre.
 

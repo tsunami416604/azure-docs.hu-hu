@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/12/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 0a6b5115a4eebfcce14094d82cdcc9579f80def6
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
+ms.openlocfilehash: 5b4a2b7646a2ead1df459c5d9a17d125821c86a5
+ms.lasthandoff: 04/21/2017
 
 
 ---
@@ -94,13 +94,15 @@ Az alábbi táblázat az egyes engedélyezési modellekkel beállítható hozzá
 
 A korábbi Log Analytics felhasználói szerepkörök kizárólag a [Log Analytics-portálon](https://mms.microsoft.com) végrehajtott tevékenységekhez való hozzáférést szabályozzák.
 
-A Log Analytics-portál alábbi tevékenységei szintén Azure-engedélyeket igényelnek:
+Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
 | Műveletek                                                          | Azure-engedélyek szükségesek | Megjegyzések |
 |-----------------------------------------------------------------|--------------------------|-------|
-| Felügyeleti megoldások hozzáadása és eltávolítása                        | Erőforráscsoport írása <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| Felügyeleti megoldások hozzáadása és eltávolítása                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | Tarifacsomag módosítása                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Adatok megtekintése a *Backup* és a *Site Recovery* megoldások csempéin | Rendszergazda / Társadminisztrátor | A klasszikus üzemi modellel üzembe helyezett erőforrásokhoz fér hozzá |
+| Munkaterület létrehozása az Azure Portalon                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
+
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>A Log Analyticshez való hozzáférés szabályozása Azure-engedélyekkel
 Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../active-directory/role-based-access-control-configure.md) című rész lépéseit.
@@ -177,7 +179,7 @@ Az OMS-fiókjával lehetősége van módosítani egy társított felhasználó f
 4. A megerősítési párbeszédpanelen kattintson az **Igen** gombra.
 
 ### <a name="remove-a-user-from-a-workspace"></a>Felhasználó eltávolítása a munkaterületről
-A következő lépésekkel távolíthat el egy felhasználót egy munkaterületről. A felhasználó eltávolításával nem záródik be a munkaterület. Csupán eltávolítja a felhasználó és a munkaterület közötti társítást. Ha egy felhasználóhoz több munkaterület is társítva van, a felhasználó továbbra is bejelentkezhet az OMS-be, hogy megtekintse a többi munkaterületét.
+A következő lépésekkel távolíthat el egy felhasználót egy munkaterületről. A felhasználó eltávolításával nem záródik be a munkaterület. Csupán eltávolítja a felhasználó és a munkaterület közötti társítást. Ha egy felhasználóhoz több munkaterület is társítva van, a felhasználó továbbra is bejelentkezhet az OMS-be, hogy megtekintse a többi munkaterületet.
 
 1. Az OMS-portálon kattintson a **Beállítások** csempére.
 2. Kattintson a **Fiókok** fülre, majd a **Felhasználók kezelése** fülre.
