@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 96ab414f6fb58908f253e9f1cf29ab3a57ca2a90
-ms.lasthandoff: 04/15/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d34bb4a285f77f5c21a4af2d544bda3221d59e8d
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -32,7 +32,7 @@ A PowerShell segítségével frissítheti meglévő Automation-fiókját. Erre a
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ez a szkript kizárólag Windows 10 és Azure Resource Manager 2.01-es vagy újabb modulokkal rendelkező Windows Server 2016 rendszeren futtatható. A korábbi Windows-verziók esetében nem támogatott.
-* Az Azure PowerShell 1.0-s és újabb verziói. Információk a PowerShell 1.0-s kiadásáról: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
+* Az Azure PowerShell 1.0-s és újabb verziói. Információk a PowerShell 1.0-s kiadásáról: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 * Olyan Automation-fiók, amelyre az alábbi PowerShell-szkript az *–AutomationAccountName* és az *-ApplicationDisplayName* paraméterek értékeként hivatkozik.
 
 A szkript végrehajtásához feltétlenül szükséges *SubscriptionID*, *ResourceGroup* és *AutomationAccountName* paraméterek értékének lekéréséhez tegye a következőket:
@@ -271,3 +271,4 @@ A szkript sikeres futtatása után jegyezze fel a következőket:
 ## <a name="next-steps"></a>Következő lépések
 * Az Egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/active-directory-application-objects.md).
 * A tanúsítványokkal és az Azure-szolgáltatásokkal kapcsolatos részletes információkért lásd: [Tanúsítványok áttekintése az Azure Cloud Servicesben](../cloud-services/cloud-services-certs-create.md).
+

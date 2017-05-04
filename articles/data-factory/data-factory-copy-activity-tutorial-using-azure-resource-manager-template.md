@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: f45c21e682f93de4dbe34b4ce07745225d548cb0
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d14b4a638868f0206542825f05dd9473fd5e6c95
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -43,7 +43,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Tekintse meg [Az oktatóanyag áttekintése és előfeltételei](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
-* Kövesse a [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Ebben az oktatóanyagban Data Factory-entitásokat fogunk üzembe helyezni a PowerShell-lel. 
+* Kövesse a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Ebben az oktatóanyagban Data Factory-entitásokat fogunk üzembe helyezni a PowerShell-lel. 
 * (Nem kötelező) Az Azure Resource Manager-sablonokkal kapcsolatban az [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) című cikkben tájékozódhat bővebben.
 
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
@@ -592,3 +592,4 @@ Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sa
 | [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a folyamatokat és tevékenységeket az Azure Data Factoryban. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
+

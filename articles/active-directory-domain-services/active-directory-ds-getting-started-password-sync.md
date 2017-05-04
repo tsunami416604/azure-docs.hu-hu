@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 51e4665b6372859021237144a0bf7f6763a2638b
-ms.lasthandoff: 04/14/2017
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: b7b5f92c0093faa96a367fc95d459b1babd99789
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -64,7 +64,7 @@ Az alábbi utasításokat küldje el a végfelhasználóknak a jelszavuk módos�
 Néhány perccel azután, hogy módosította a jelszavát, az új jelszó használható lesz az Active Directory Domain Servicesben. Néhány további perc (átlagosan körülbelül 20 perc) múlva az új jelszavával bejelentkezhet a felügyelt tartományhoz kapcsolódó számítógépekre.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Saját jelszó frissítése](../active-directory/active-directory-passwords-update-your-own-password.md#reset-my-password)
+* [Saját jelszó frissítése](../active-directory/active-directory-passwords-update-your-own-password.md)
 * [A jelszókezelés első lépései az Azure AD-ben](../active-directory/active-directory-passwords-getting-started.md)
 * [Jelszó-szinkronizálás engedélyezése Active Directory Domain Servicesre szinkronizált Azure AD bérlő esetén](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja](active-directory-ds-admin-guide-administer-domain.md)

@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 38e8320c09c5aa870018081a29911611f09a3e3a
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 31cdfdcb5c0e5a1c467b871dca72a8a1da58a00e
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -41,7 +41,7 @@ Ez a cikk bemutatja, hogyan hozhatja létre első Azure data factoryját egy Azu
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Olvassa el [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című részt, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
-* Kövesse a [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre.
+* Kövesse a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre.
 * Az Azure Resource Manager-sablonokkal kapcsolatban az [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md) (Azure Resource Manager-sablonok készítése) című cikkben tájékozódhat bővebben. 
 
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma

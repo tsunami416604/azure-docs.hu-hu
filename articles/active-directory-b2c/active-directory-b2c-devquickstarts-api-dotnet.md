@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
 translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: d67043f2e0a062796f4d6167b28774ce494027c2
-ms.lasthandoff: 04/10/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 48749bfa2ab54a0e766a4aad4f39073cc4e90818
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -59,10 +59,10 @@ A házirend sikeres létrehozása után készen áll az app elkészítésére.
 
 ## <a name="download-the-code"></a>A kód letöltése
 
-Az oktatóanyag kódjának kezelése a [GitHubon](https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi) történik. A minta klónozásához futtassa a következőt:
+Az oktatóanyag kódjának kezelése a [GitHubon](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) történik. A minta klónozásához futtassa a következőt:
 
 ```console
-git clone https://github.com/Azure-Samples/b2c-dotnet-webapp-and-webapi.git
+git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
 Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. A `TaskWebApp` egy MVC-webalkalmazás, amellyel a felhasználó kommunikál. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk csak a `TaskService` alkalmazást ismerteti. Ha tudni szeretné, hogyan hozhatja létre a `TaskWebApp` alkalmazást az Azure AD B2C-vel, tekintse meg a [.NET-alapú webappokról szóló oktatóanyagunkat](active-directory-b2c-devquickstarts-web-dotnet-susi.md).

@@ -30,6 +30,7 @@
 ### [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 ### [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md)
 ### [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md)
+### [Titkosítás](data-lake-store-encryption.md)
 
 ## Teljesítmény
 ### [Teljesítmény-finomhangolási útmutató az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-guidance.md)
@@ -58,7 +59,7 @@
 ### [Tervezés magas rendelkezésre álláshoz](data-lake-store-troubleshooting-guidance.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/azurerm.datalakestore)
+## [PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datalake.store)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)

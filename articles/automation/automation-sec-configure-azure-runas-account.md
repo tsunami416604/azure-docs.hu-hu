@@ -19,9 +19,9 @@ ROBOTS: NOINDEX
 redirect_url: /azure/automation/automation-offering-get-started
 redirect_document_id: TRUE
 translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: fbca3d195290551d37606e231b997a40a602351f
-ms.lasthandoff: 03/28/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 90570886b3a1ae0c48683691cb438b5a61195d76
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -245,7 +245,7 @@ A PowerShell segítségével frissítheti meglévő Automation-fiókját. Erre a
 A szkriptre a következő előfeltételek vonatkoznak:
 
 * Ez a szkript kizárólag Windows 10 és Azure Resource Manager 2.01-es vagy újabb modulokkal rendelkező Windows Server 2016 rendszeren futtatható. A korábbi Windows-verziók esetében nem támogatott.
-* Az Azure PowerShell 1.0-s és újabb verziói. Információk a PowerShell 1.0-s kiadásáról: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
+* Az Azure PowerShell 1.0-s és újabb verziói. Információk a PowerShell 1.0-s kiadásáról: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 * Olyan Automation-fiók, amelyre az alábbi PowerShell-szkript az *–AutomationAccountName* és az *-ApplicationDisplayName* paraméterek értékeként hivatkozik.
 
 A szkript végrehajtásához feltétlenül szükséges *SubscriptionID*, *ResourceGroup* és *AutomationAccountName* paraméterek értékének lekéréséhez tegye a következőket:
@@ -515,7 +515,7 @@ A Resource Manager-erőforrások runbookkal való kezeléséhez használhatja az
          }
     }
 
-A szkript tartalmaz két további kódsort az előfizetési környezet hivatkozásának támogatásához, így könnyedén tud több előfizetéssel is dolgozni. Egy *SubscriptionId* nevű változó objektum tartalmazza az előfizetés azonosítóját. Az `Add-AzureRmAccount` parancsmag-utasítás után a [`Set-AzureRmContext`](https://msdn.microsoft.com/library/mt619263.aspx) parancsmag a *-SubscriptionId* paraméterkészlettel lesz kiadva. Ha a változó neve túl általános, módosíthatja, hogy tartalmazzon egy előtagot vagy igazodjon más elnevezési konvenciókhoz, és könnyebbé tegye az azonosítását. Alternatív megoldásként a *-SubscriptionId* helyett használhatja a *-SubscriptionName* paraméterkészletet egy megfelelő változóobjektummal.
+A szkript tartalmaz két további kódsort az előfizetési környezet hivatkozásának támogatásához, így könnyedén tud több előfizetéssel is dolgozni. Egy *SubscriptionId* nevű változó objektum tartalmazza az előfizetés azonosítóját. Az `Add-AzureRmAccount` parancsmag-utasítás után a [`Set-AzureRmContext`](/powershell/module/azurerm.profile/set-azurermcontext) parancsmag a *-SubscriptionId* paraméterkészlettel lesz kiadva. Ha a változó neve túl általános, módosíthatja, hogy tartalmazzon egy előtagot vagy igazodjon más elnevezési konvenciókhoz, és könnyebbé tegye az azonosítását. Alternatív megoldásként a *-SubscriptionId* helyett használhatja a *-SubscriptionName* paraméterkészletet egy megfelelő változóobjektummal.
 
 A runbookban használt hitelesítési parancsmag (`Add-AzureRmAccount`) a *ServicePrincipalCertificate* paraméterkészletet használja. Ez a megoldás a szolgáltatástanúsítvány segítségével, és nem a felhasználói hitelesítő adatokkal végzi el a hitelesítést.
 

@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 9ed3e60679a0c637c99f8019119289c71be81f83
-ms.lasthandoff: 04/17/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9d523044f5107eea9dfbba17564cc15ec05076c5
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -55,7 +55,7 @@ Az alkalmazások és szolgáltatások közvetlen REST API-hívásokat hajthatnak
 
 A fejlesztői API-k által biztosított funkciók szintén elérhetők a parancssori eszközök használatával: 
 
-* [Batch PowerShell-parancsmagok][batch_ps]: Az [Azure PowerShell](/powershell/azureps-cmdlets-docs) modulban található Azure Batch-parancsmagokkal felügyelheti a Batch-erőforrásokat a PowerShell használatával.
+* [Batch PowerShell-parancsmagok][batch_ps]: Az [Azure PowerShell](/powershell/azure/overview) modulban található Azure Batch-parancsmagokkal felügyelheti a Batch-erőforrásokat a PowerShell használatával.
 * [Azure CLI](/cli/azure/overview): Az Azure parancssori felület (Azure CLI) egy többplatformos eszközkészlet, amely rendszerhéjparancsokat biztosít sok Azure-szolgáltatással, például a Batch szolgáltatással való interakcióhoz.
 
 ## <a name="batch-resource-management"></a>Batch-erőforráskezelés

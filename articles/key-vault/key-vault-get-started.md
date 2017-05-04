@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 10/24/2016
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 115a718977906b3e647b628017f7ab46a588d7f2
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: dd53cbc0ec10700ebcd47f9d2f9d6cc358f68569
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -30,10 +31,10 @@ Ez az oktatóanyag segít megismerni az Azure Key Vault szolgáltatást, amellye
 
 > [!NOTE]
 > Ez az oktatóanyag nem tartalmaz arra vonatkozó útmutatást, hogy hogyan kell létrehozni a kulcstartó valamely kulcsa vagy titkos kódja használatának az alkalmazások számára való engedélyezésével foglalkozó lépésben szereplő Azure-alkalmazást.
-> 
-> Az oktatóanyag az Azure PowerShellt használja. A platformfüggetlen parancssori felületre vonatkozó utasításokat [ebben az oktatóanyagban](key-vault-manage-with-cli.md) tekintheti meg.
-> 
-> 
+>
+> Az oktatóanyag az Azure PowerShellt használja. A platformfüggetlen parancssori felületre vonatkozó utasításokat [ebben az oktatóanyagban](key-vault-manage-with-cli2.md) tekintheti meg.
+>
+>
 
 Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az Azure Key Vault?) című cikkben talál.
 
@@ -41,7 +42,7 @@ Ez az oktatóanyag segít megismerni az Azure Key Vault szolgáltatást, amellye
 Az oktatóanyag teljesítéséhez szüksége lesz:
 
 * Egy Microsoft Azure-előfizetésre. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-* Az Azure PowerShell legalább **1.1.0-ás verziójára**. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShellt, de nem tudja, melyik verziót, írja be az Azure PowerShell-konzolon az alábbi parancsot: `(Get-Module azure -ListAvailable).Version`. Ha az Azure PowerShell 0.9.1-től 0.9.8-ig terjedő verziói közül rendelkezik valamelyikkel, néhány apró eltéréstől függetlenül Önre is vonatkozik az útmutató. Például a `Switch-AzureMode AzureResourceManager` parancsot kell használnia, valamint bizonyos Azure Key Vault parancsok módosultak. A 0.9.1 és 0.9.8 közötti verziók Key Vault parancsmagjainak listája az alábbi témakörben található: [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.98\).aspx) (Az Azure Key Vault parancsmagjai). 
+* Az Azure PowerShell legalább **1.1.0-ás verziójára**. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShellt, de nem tudja, melyik verziót, írja be az Azure PowerShell-konzolon az alábbi parancsot: `(Get-Module azure -ListAvailable).Version`. Ha az Azure PowerShell 0.9.1-től 0.9.8-ig terjedő verziói közül rendelkezik valamelyikkel, néhány apró eltéréstől függetlenül Önre is vonatkozik az útmutató. Például a `Switch-AzureMode AzureResourceManager` parancsot kell használnia, valamint bizonyos Azure Key Vault parancsok módosultak. A 0.9.1 és 0.9.8 közötti verziók Key Vault parancsmagjainak listája az alábbi témakörben található: [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Az Azure Key Vault parancsmagjai).
 * Egy, az útmutató során létrehozott kulcs vagy jelszó használatához konfigurált alkalmazásra. Egy mintaalkalmazás elérhető a [Microsoft letöltőközpontból](http://www.microsoft.com/en-us/download/details.aspx?id=45343). Útmutatásért tekintse meg a kísérő információs fájlt.
 
 Ez az útmutató kezdő Azure PowerShell-felhasználók számára készült, de a követéséhez tisztában kell lennie az olyan alapszintű fogalmakkal, mint a modulok, a parancsmagok és a munkamenetek. További információ: [Getting started with Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx) (Ismerkedés a Windows PowerShellel).
@@ -56,13 +57,13 @@ Például ha a **Login-AzureRmAccount** parancsmaghoz szeretne segítséget kér
 
 Az alábbi útmutatókkal megismerkedhet az Azure Resource Manager az Azure PowerShellel való használatával:
 
-* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azureps-cmdlets-docs)
+* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)
 * [Using Azure PowerShell with Resource Manager (Az Azure PowerShell és a Resource Manager együttes használata)](../powershell-azure-resource-manager.md)
 
-## <a name="a-idconnectaconnect-to-your-subscriptions"></a><a id="connect"></a>Csatlakozás az előfizetésekhez
+## <a id="connect"></a>Csatlakozás az előfizetésekhez
 Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába az alábbi paranccsal:  
 
-    Login-AzureRmAccount 
+    Login-AzureRmAccount
 
 Vegye figyelembe, hogy az Azure bizonyos példányainak, például az Azure Governmentnek a használatakor az -Environment paramétert kell használni ehhez a parancshoz. Például:`Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
 
@@ -76,16 +77,16 @@ Ezt követően írja be az alábbi parancsot a kívánt előfizetés kiválaszt�
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása).
+További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
-## <a name="a-idresourceacreate-a-new-resource-group"></a><a id="resource"></a>Új erőforráscsoport létrehozása
+## <a id="resource"></a>Új erőforráscsoport létrehozása
 Az Azure Resource Manager használatakor minden kapcsolódó erőforrás egy erőforráscsoportban jön létre. Ehhez az útmutatóhoz hozzon létre egy új erőforráscsoportot **ContosoResourceGroup** névvel:
 
     New-AzureRmResourceGroup –Name 'ContosoResourceGroup' –Location 'East Asia'
 
 
-## <a name="a-idvaultacreate-a-key-vault"></a><a id="vault"></a>Kulcstartó létrehozása
-A[New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736\(v=azure.300\).aspx) parancsmag segítségével hozzon létre egy kulcstartót. Ez a parancsmag három kötelező paraméterrel rendelkezik: egy **erőforráscsoport-név**, egy **kulcstartónév**, és a **földrajzi hely**.
+## <a id="vault"></a>Kulcstartó létrehozása
+A[New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) parancsmag segítségével hozzon létre egy kulcstartót. Ez a parancsmag három kötelező paraméterrel rendelkezik: egy **erőforráscsoport-név**, egy **kulcstartónév**, és a **földrajzi hely**.
 
 Ha például a tároló neve **ContosoKeyVault**, az erőforráscsoport neve **ContosoResourceGroup**, a földrajzi hely pedig **Kelet-Ázsia**, írja be az alábbi parancsot:
 
@@ -99,12 +100,12 @@ Ezzel a parancsmaggal megjelenítheti az újonnan létrehozott kulcstartó tulaj
 Azure-fiókja most már engedéllyel rendelkezik arra, hogy bármilyen műveletet végezzen ezen a kulcstartón. Egyelőre senki másnak nincs erre engedélye.
 
 > [!NOTE]
-> Ha a **Az előfizetés nincs regisztrálva a(z) Microsoft.KeyVault névtér használatára** hibaüzenettel találkozik egy új kulcstartó létrehozásakor, futtassa a `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` parancsot, majd futtassa újra az New-AzureRmKeyVault parancsot. További információ: [Register-AzureRmResourceProvider](https://msdn.microsoft.com/library/azure/mt759831\(v=azure.300\).aspx).
-> 
-> 
+> Ha a **Az előfizetés nincs regisztrálva a(z) Microsoft.KeyVault névtér használatára** hibaüzenettel találkozik egy új kulcstartó létrehozásakor, futtassa a `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` parancsot, majd futtassa újra az New-AzureRmKeyVault parancsot. További információ: [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider).
+>
+>
 
-## <a name="a-idaddaadd-a-key-or-secret-to-the-key-vault"></a><a id="add"></a>Kulcs vagy titkos kód hozzáadása a kulcstartóhoz
-Ha azt szeretné, hogy az Azure Key Vault létrehozzon egy szoftveresen védett kulcsot, használja az [Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048\(v=azure.300\).aspx) parancsmagot, majd írja be a következő parancsot:
+## <a id="add"></a>Kulcs vagy titkos kód hozzáadása a kulcstartóhoz
+Ha azt szeretné, hogy az Azure Key Vault létrehozzon egy szoftveresen védett kulcsot, használja az [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) parancsmagot, majd írja be a következő parancsot:
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
@@ -144,13 +145,13 @@ Tekintse meg az előbb létrehozott kulcsot vagy titkos kódot:
 
 A kulcstartó és a kulcs vagy a titkos kód mostantól készen áll az alkalmazásokkal való használatra. Használatukat engedélyeznie kell az alkalmazások számára.  
 
-## <a name="a-idregisteraregister-an-application-with-azure-active-directory"></a><a id="register"></a>Alkalmazás regisztrálása az Azure Active Directory szolgáltatásban
+## <a id="register"></a>Alkalmazás regisztrálása az Azure Active Directory szolgáltatásban
 Ezt a lépést általában egy fejlesztő végzi egy másik számítógépről. Nem kifejezetten az Azure Key Vaulthoz kapcsolódik, de a teljes körű tájékoztatás érdekében bemutatjuk.
 
 > [!IMPORTANT]
 > Az oktatóprogram sikeres befejezéséhez a fiókjának, a tárolónak és az ebben a lépésben regisztrálandó alkalmazásnak ugyanabban az Azure-címtárban kell lenniük.
-> 
-> 
+>
+>
 
 A kulcstartót használó alkalmazásoknak az Azure Active Directoryból származó jogkivonat használatával kell hitelesítést végezniük. Ehhez az alkalmazás tulajdonosának először regisztrálnia kell az alkalmazást az Azure Active Directory szolgáltatásban. A regisztrációt követően az alkalmazás tulajdonosa az alábbi értékeket kapja:
 
@@ -169,8 +170,8 @@ Az alkalmazás regisztrálása az Azure Active Directory szolgáltatásban:
 9. Görgessen a **keys** (kulcsok) szakaszhoz, adja meg az időtartamot, majd kattintson a **SAVE** (MENTÉS) gombra. A lap ekkor frissül, és kijelzi a kulcs értékét. Az alkalmazásban ezt a kulcsértéket, valamint **CLIENT ID** (ÜGYFÉLAZONOSÍTÓ) értéket kell beállítani. (A konfigurálásra vonatkozó utasítások alkalmazásspecifikusak.)
 10. Másolja ki a lapról az ügyfélazonosító értékét, mert ezzel fogja beállítani a tároló engedélyeit a következő lépésben.
 
-## <a name="a-idauthorizeaauthorize-the-application-to-use-the-key-or-secret"></a><a id="authorize"></a>A kulcs vagy titkos kód használatának engedélyezése az alkalmazás számára
-Az alkalmazás a tároló kulcsához vagy titkos kódjához való hozzáférésének engedélyezéséhez használja a  [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625\(v=azure.300\).aspx) parancsmagot.
+## <a id="authorize"></a>A kulcs vagy titkos kód használatának engedélyezése az alkalmazás számára
+Az alkalmazás a tároló kulcsához vagy titkos kódjához való hozzáférésének engedélyezéséhez használja a  [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) parancsmagot.
 
 Ha például a tároló neve **ContosoKeyVault**, az engedélyezni kívánt alkalmazás ügyfélazonosítója 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed, és engedélyezni szeretné az alkalmazás számára, hogy a tároló kulcsait visszafejtse és használja, futtassa az alábbi parancsot:
 
@@ -180,7 +181,7 @@ Ha engedélyezni szeretné, hogy az alkalmazás megnyithassa a tárolóban lév�
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 
-## <a name="a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm"></a><a id="HSM"></a>Hardveres biztonsági modul (HSM) használata
+## <a id="HSM"></a>Hardveres biztonsági modul (HSM) használata
 A nagyobb biztonság érdekében hardveres biztonsági modulokkal importálhat vagy hozhat létre a HSM határait mindig betartó kulcsokat. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Ha ez a követelmény nem vonatkozik Önre, ugorja át ezt a szakaszt, és folytassa a [Kulcsartó és a hozzá tartozó kulcsok és titkos kódok törlése](#delete) szakasszal.
 
 Ezeknek a HSM-védelemmel ellátott kulcsoknak a létrehozásához az [Azure Key Vault Premium szolgáltatási réteget kell használni a HSM-védelemmel ellátott kulcsok támogatására](https://azure.microsoft.com/pricing/free-trial/). Emellett felhívjuk figyelmét, hogy ezt a funkciót az Azure China nem támogatja.
@@ -206,8 +207,8 @@ A következő parancs egy „saját kulcs használata” (BYOK-) csomagot import
 
 A BYOK-csomag létrehozásával kapcsolatos részletesebb útmutatásért tekintse meg a [How to generate and transfer HSM-protected keys for Azure Key Vault](key-vault-hsm-protected-keys.md) (HSM által védett kulcsok létrehozása és áthelyezése az Azure Key Vaultban) című témakört.
 
-## <a name="a-iddeleteadelete-the-key-vault-and-associated-keys-and-secrets"></a><a id="delete"></a>Kulcstartó és a hozzá tartozó kulcsok és titkos kódok törlése
-Ha már nincs szüksége a kulcstartóra és az ahhoz tartozó kulcsra vagy titkos kódra, eltávolíthatja a kulcstartót a [Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485\(v=azure.300\).aspx) parancsmaggal:
+## <a id="delete"></a>Kulcstartó és a hozzá tartozó kulcsok és titkos kódok törlése
+Ha már nincs szüksége a kulcstartóra és az ahhoz tartozó kulcsra vagy titkos kódra, eltávolíthatja a kulcstartót a [Remove-AzureRmKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault) parancsmaggal:
 
     Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
@@ -216,7 +217,7 @@ Lehetősége van a teljes Azure-erőforráscsoport törlésére is, amely magáb
     Remove-AzureRmResourceGroup -ResourceGroupName 'ContosoResourceGroup'
 
 
-## <a name="a-idotheraother-azure-powershell-cmdlets"></a><a id="other"></a>Egyéb Azure PowerShell-parancsmagok
+## <a id="other"></a>Egyéb Azure PowerShell-parancsmagok
 Egyéb parancsok, amelyek hasznosak lehetnek az Azure Key Vault kezeléséhez:
 
 * `$Keys = Get-AzureKeyVaultKey -VaultName 'ContosoKeyVault'`: Ez a parancs táblázatos formában jeleníti meg az összes kulcsot és a megadott tulajdonságokat.
@@ -225,18 +226,12 @@ Egyéb parancsok, amelyek hasznosak lehetnek az Azure Key Vault kezeléséhez:
 * `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Példa egy adott kulcs eltávolítására.
 * `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Példa egy adott titkos kód eltávolítására.
 
-## <a name="a-idnextanext-steps"></a><a id="next"></a>Következő lépések
+## <a id="next"></a>Következő lépések
 Az Azure Key Vault webalkalmazásban való használatáról a [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Az Azure Key Vault webalkalmazással való használata) című témakörben találhat további útmutatást.
 
 A kulcstartó használatának módjairól az [Azure Key Vault Logging](key-vault-logging.md) (Az Azure Key Vault naplózása) című témakörben olvashat.
 
-A legújabb Azure Key Vaultra vonatkozó Azure PowerShell-parancsmagok listáját az [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052\(v=azure.300\).aspx) (Az Azure Key Vault parancsmagjai) című témakörben találja. 
+A legújabb Azure Key Vaultra vonatkozó Azure PowerShell-parancsmagok listáját az [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Az Azure Key Vault parancsmagjai) című témakörben találja.
 
 Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-vault-developers-guide.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

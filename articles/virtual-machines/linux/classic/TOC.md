@@ -66,7 +66,7 @@
 ### [Virtuális gép újraindítása vagy átméretezése](restart-resize-error-troubleshooting.md)
 
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [Resource Manager-sablonok készítése](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

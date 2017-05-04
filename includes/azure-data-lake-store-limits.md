@@ -1,11 +1,7 @@
-Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Az Azure Data Lake Store lehetővé teszi mindenféle méretű, típusú és feldolgozási sebességű adatok egy helyen történő műveleti és felderítési jellegű feldolgozását. A Data Lake Store-fiókokban korlátlan mennyiségű adat tárolható.
+Azure Data Lake Store is an enterprise-wide hyper-scale repository for big data analytic workloads. Data Lake Store enables you to capture data of any size, type, and ingestion speed in one single place for operational and exploratory analytics. There is no limit to the amount of data you can store in a Data Lake Store account.
 
-| **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzések** |
+| **Resource** | **Default Limit** | **Comments** |
 | --- | --- | --- |
-| A Data Lake Store-fiókok maximális száma előfizetésenként és régiónként |10 | Ha szeretné növelni a korlátot, lépjen kapcsolatba a támogatással |
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-
+| Max number of Data Lake Store accounts, per subscription, per region |10 | Contact Support to request an increase for this limit |
+| Max number of access ACLs, per file or folder |32 | This is a hard limit. Use groups to manage access with fewer entries |
+| Max number of default ACLs, per file or folder |32 | This is a hard limit. Use groups to manage access with fewer entries |

@@ -197,7 +197,7 @@
 ### [Kiadás – GA](storsimple-july-2014-release-notes.md)
 
 ## Referencia
-### [Azure PowerShell](/powershell/servicemanagement)
+### [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
 ### [StorSimple-höz készült Windows PowerShell-parancsmagok](https://technet.microsoft.com/library/dn688168.aspx)
 
 # StorSimple Data Manager (privát előzetes verzió)

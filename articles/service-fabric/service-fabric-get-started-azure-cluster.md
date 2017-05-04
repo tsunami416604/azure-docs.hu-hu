@@ -15,9 +15,9 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 813217567c7e1fa5fc9ac11492933ad0c34553d1
-ms.lasthandoff: 04/18/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: cf652f1ba6b7d3aa0717a2e3a54000a4aebccc78
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -79,12 +79,12 @@ A fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalm
 ![Service Fabric Explorer][service-fabric-explorer]
 
 ## <a name="connect-to-the-cluster-using-powershell"></a>Csatlakozás a fürthöz PowerShell használatával
-Ha ellenőrizni szeretné, hogy a fürt fut-e, csatlakozzon hozzá a PowerShell-lel.  A ServiceFabric PowerShell-modul a [Service Fabric SDK](service-fabric-get-started.md)-val települ.  A [Connect-ServiceFabricCluster](/powershell/module/ServiceFabric/Connect-ServiceFabricCluster) parancsmag kiépít egy kapcsolatot a fürttel.   
+Ha ellenőrizni szeretné, hogy a fürt fut-e, csatlakozzon hozzá a PowerShell-lel.  A ServiceFabric PowerShell-modul a [Service Fabric SDK](service-fabric-get-started.md)-val települ.  A [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag kiépít egy kapcsolatot a fürttel.   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-A fürtökhöz való csatlakozást bemutató egyéb példákért lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md). Miután csatlakozott a fürthöz, a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) parancsmaggal listázza a fürtben lévő csomópontokat és az egyes csomópontok állapotinformációit. A **HealthState** tulajdonságnak *OK* értékűnek kell lennie minden csomópont esetében.
+A fürtökhöz való csatlakozást bemutató egyéb példákért lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md). Miután csatlakozott a fürthöz, a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) parancsmaggal listázza a fürtben lévő csomópontokat és az egyes csomópontok állapotinformációit. A **HealthState** tulajdonságnak *OK* értékűnek kell lennie minden csomópont esetében.
 
 ```powershell
 PS C:\> Get-ServiceFabricNode |Format-Table
@@ -119,3 +119,4 @@ Most, hogy telepített egy önálló fejlesztési fürtöt, megpróbálkozhat a 
 [cluster-status]: ./media/service-fabric-get-started-azure-cluster/clusterstatus.png
 [service-fabric-explorer]: ./media/service-fabric-get-started-azure-cluster/sfx.png
 [cluster-delete]: ./media/service-fabric-get-started-azure-cluster/delete.png
+

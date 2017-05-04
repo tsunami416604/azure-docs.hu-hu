@@ -47,7 +47,7 @@
 ### [Megfigyelés az Azure Monitor használatával](api-management-howto-use-azure-monitor.md)
 ### [Szerepköralapú hozzáférés-vezérlés alkalmazása](api-management-role-based-access-control.md)
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/powershell/azure/overview)
 ## [REST](/rest/api/apimanagement/)
 ## [REST (eredeti)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
 ## [Házirendek](api-management-policies.md)

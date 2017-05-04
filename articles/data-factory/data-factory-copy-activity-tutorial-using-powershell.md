@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 09d8634d8d1b16edb058d0bb259b089a54748279
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 8b5cb66ea958cf6643fa34abb8d484b97b212373
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -39,7 +39,7 @@ Az oktatóanyag során létrehoz és felügyel egy Azure Data Factory-példányt
 A másolási tevékenység végzi az adattovábbítást a Data Factoryban. A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. A másolási tevékenységgel kapcsolatos részletekért tekintse meg az [adattovábbítási tevékenységeket](data-factory-data-movement-activities.md) ismertető cikket.   
 
 > [!NOTE]
-> Ez a cikk nem tárgyalja az összes Data Factory-parancsmagot. A parancsmagokkal kapcsolatos átfogó dokumentációért tekintse meg a [Data Factory-parancsmagok referenciáját](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories).
+> Ez a cikk nem tárgyalja az összes Data Factory-parancsmagot. A parancsmagokkal kapcsolatos átfogó dokumentációért tekintse meg a [Data Factory-parancsmagok referenciáját](/powershell/module/azurerm.datafactories).
 >
 > Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. A bemeneti adatokat nem alakítja át kimeneti adatok létrehozásához. Az adatok Azure Data Factory használatával történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
 
@@ -482,7 +482,7 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
 ## <a name="see-also"></a>Lásd még:
 | Témakör | Leírás |
 |:--- |:--- |
-| [A Data Factory parancsmagjainak leírása](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories) | Ez a szakasz információt nyújt az összes Data Factory-parancsmagról. |
+| [A Data Factory parancsmagjainak leírása](/powershell/module/azurerm.datafactories) | Ez a szakasz információt nyújt az összes Data Factory-parancsmagról. |
 | [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a folyamatokat és tevékenységeket az Azure Data Factoryban. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |

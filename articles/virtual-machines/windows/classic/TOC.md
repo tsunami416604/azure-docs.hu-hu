@@ -9,7 +9,7 @@
 # Bevezetés
 ## [Virtuális gép létrehozása a portálról](tutorial.md)
 ## [Bejelentkezés virtuális gépre](connect-logon.md)
-## [Az Azure PowerShell telepítése](/powershell/azureps-cmdlets-docs)
+## [Az Azure PowerShell telepítése](/powershell/azure/overview)
 ## [Az Azure parancssori felület telepítése](../../../cli-install-nodejs.md)
 
 # Útmutató
@@ -88,7 +88,7 @@
 ## [RDP-jelszó visszaállítása](reset-rdp.md)
 
 # Referencia
-## [PowerShell](/powershell/azureps-cmdlets-docs)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)

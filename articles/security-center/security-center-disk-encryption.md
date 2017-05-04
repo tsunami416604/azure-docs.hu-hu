@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: ac0d2e6891d916febb3eeee736288454c2b92c2d
-ms.lasthandoff: 03/31/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 859c0bf3afec46e07b8b8da73fffbc37f3f7959d
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +48,7 @@ Az előfeltételek beállítására, valamint az Azure virtuális gépek titkos�
 >
 
 ## <a name="install-and-configure-azure-powershell"></a>Az Azure PowerShell telepítése és konfigurálása
-Először telepítenie kell a számítógépre az Azure PowerShell 1.2.1-es vagy újabb verzióját. A [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben minden lépést megtalál, amelyet el kell végeznie az Azure PowerShell telepítéséhez. A legegyszerűbb, ha a cikkben említett Web PI telepítési módszert használja. Ha a gépen már fut az Azure PowerShell, akkor is telepítse újra a Web PI módszerrel, hogy biztosan a legújabb verziót használja.
+Először telepítenie kell a számítógépre az Azure PowerShell 1.2.1-es vagy újabb verzióját. A [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben minden lépést megtalál, amelyet el kell végeznie az Azure PowerShell telepítéséhez. A legegyszerűbb, ha a cikkben említett Web PI telepítési módszert használja. Ha a gépen már fut az Azure PowerShell, akkor is telepítse újra a Web PI módszerrel, hogy biztosan a legújabb verziót használja.
 
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Az Azure Disk Encryption titkosítási előfeltétel-konfigurációs parancsprogram beszerzése és futtatása
 Az Azure Disk Encryption előfeltétel-konfigurációs parancsprogram beállítja az Azure virtuális gépek titkosításához szükséges összes előfeltételt.

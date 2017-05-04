@@ -6,7 +6,7 @@ documentationcenter: na
 author: cherylmc
 manager: timlt
 editor: 
-tags: azure-resource-manager
+tags: azure-service-management
 ms.assetid: 
 ms.service: vpn-gateway
 ms.devlang: na
@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: fd7c834e8e061ba51b116ade88769dde05abcf9a
-ms.lasthandoff: 04/25/2017
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: e5dcf957ea88175be02bce21929c43151417d0e3
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -48,7 +48,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 * Egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
 * Egy kifelé irányuló, nyilvános IPv4 IP-cím a VPN-eszközhöz. Ez az IP-cím nem lehet NAT mögötti.
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
-* Jelenleg a megosztott kulcs megadásához és a VPN Gateway-kapcsolat létrehozásához a PowerShellre van szükség. Telepítse az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azureps-cmdlets-docs) foglalkozó témakörben talál. Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia. 
+* Jelenleg a megosztott kulcs megadásához és a VPN Gateway-kapcsolat létrehozásához a PowerShellre van szükség. Telepítse az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál. Ahhoz, hogy ezt a konfigurációt elvégezhesse, a PowerShellt rendszergazdaként kell futtatnia. 
 
 ### <a name="values"></a>Konfigurációs mintaértékek ehhez a gyakorlathoz
 

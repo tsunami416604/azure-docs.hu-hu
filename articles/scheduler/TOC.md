@@ -21,7 +21,7 @@
 ### [Kimenő hitelesítés](scheduler-outbound-authentication.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.scheduler/v0.11.1/azurerm.scheduler)
+## [PowerShell](/powershell/module/azurerm.scheduler)
 ## [REST](/rest/api/scheduler)
 
 # Erőforrások

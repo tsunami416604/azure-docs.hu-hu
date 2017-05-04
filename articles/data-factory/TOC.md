@@ -29,6 +29,7 @@
 ### [A Data Factory másolási varázslója](data-factory-azure-copy-wizard.md)
 #### [1 TB adat betöltése 15 perc alatt](data-factory-load-sql-data-warehouse.md)
 ### [Teljesítmény és finomhangolási útmutató](data-factory-copy-activity-performance.md)
+### [Biztonsági szempontok](data-factory-data-movement-security-considerations.md)
 ### Összekötők
 #### [Amazon Redshift](data-factory-amazon-redshift-connector.md)
 #### [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
@@ -91,7 +92,7 @@
 ### [Az Adatkezelési átjáró használatával hibáinak elhárítása](data-factory-troubleshoot-gateway-issues.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
+## [PowerShell](/powershell/module/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [REST](/rest/api/datafactory/)
 ## [JSON](data-factory-json-scripting-reference.md)

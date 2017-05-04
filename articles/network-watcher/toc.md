@@ -54,7 +54,7 @@
 ## [Behatolásészlelés végrehajtása nyílt forráskódú eszközök használatával](network-watcher-intrusion-detection-open-source-tools.md)
 ## [Application Gateway-naplók elemzése az Azure Log Analyticsben](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
 # Referencia
-## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
+## [PowerShell](/powershell/azure/overview)
 ## [.NET](/dotnet/api)
 ## [REST](/rest/api/networkwatcher/)
 # Kapcsolódó

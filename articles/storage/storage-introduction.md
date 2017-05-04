@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 44f40aebe8418b0cfcf2c2708469d586d1dd4c4c
-ms.lasthandoff: 04/06/2017
+ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
+ms.openlocfilehash: eec53d5dea1255572d515f1ab2796da681579d19
+ms.lasthandoff: 04/29/2017
 
 
 ---
@@ -32,7 +32,9 @@ Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra
 * Hogyan teszi tartóssá az Azure Storage-adatokat a redundancia és a replikáció
 * Hol kezdhet neki az első Azure Storage-alkalmazás felépítésének
 
-Az Azure Storage gyors üzembe helyezéséről lásd: [Az Azure Storage első lépéseinek rövid összefoglalása](storage-getting-started-guide.md).
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!-- To get up and running with Azure Storage quickly, see [Get started with Azure Storage in five minutes](storage-getting-started-guide.md). -->
 
 Az Azure Storage használatához szükséges eszközökkel, kódtárakkal és egyéb forrásokkal kapcsolatban további információt talál a cikk [Következő lépések](#next-steps) szakaszában.
 
@@ -185,12 +187,12 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 * [A Storage ügyféloldali kódtára a PHP-hez](https://azure.microsoft.com/develop/php/)
 * [A Storage ügyféloldali kódtára a Rubyhoz](https://azure.microsoft.com/develop/ruby/)
 * [A Storage ügyféloldali kódtára a Pythonhoz](https://azure.microsoft.com/develop/python/)
-* [Storage-parancsmagok a PowerShell 1.0-hoz](https://msdn.microsoft.com/library/azure/mt269418.aspx)
+* [Storage-parancsmagok a PowerShell 1.0-hoz](/powershell/module/azurerm.storage/#storage)
 
 ### <a name="azure-storage-management-services"></a>Azure Storage kezelési szolgáltatások
 * [A Storage erőforrás-szolgáltató REST API-ja – referencia](/rest/api/storagerp/)
 * [Storage erőforrás-szolgáltató ügyfél a .NET-hez](/dotnet/api/microsoft.azure.management.storage)
-* [A Storage erőforrás-szolgáltató parancsmagjai a PowerShell 1.0-hoz](/powershell/storage/)
+* [A Storage erőforrás-szolgáltató parancsmagjai a PowerShell 1.0-hoz](/powershell/module/azure.storage)
 * [A Storage szolgáltatásfelügyelet REST API-ja](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-services"></a>Azure Storage adatátviteli szolgáltatások
@@ -202,7 +204,7 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 * [Azure Storage-ügyféleszközök](storage-explorers.md)
 * [Azure SDK-k és eszközök](https://azure.microsoft.com/tools/)
 * [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell](/powershell/azure/overview)
 * [AzCopy parancssori segédprogram](http://aka.ms/downloadazcopy)
 
 ## <a name="next-steps"></a>Következő lépések
@@ -211,7 +213,11 @@ Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 ### <a name="documentation"></a>Dokumentáció
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
 * [Tárfiók létrehozása](storage-create-storage-account.md)
-* [Az Azure Storage első lépéseinek rövid összefoglalása](storage-getting-started-guide.md)
+
+<!-- after our quick starts are available, replace this link with a link to one of those. 
+Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
+<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
+-->
 
 ### <a name="for-administrators"></a>Rendszergazdáknak
 * [Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)](storage-powershell-guide-full.md)

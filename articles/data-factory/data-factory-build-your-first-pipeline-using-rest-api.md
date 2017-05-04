@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 78117fd3947be922e339931a0f8f31040ebf79fe
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 19fe97eb41be3222a846f86b2a390bf86157884f
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -47,7 +47,7 @@ Ebből a cikkből megtudhatja, hogyan hozza létre első Azure data factoryját 
   2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**.
   3. Szerezze be a **bérlőazonosítót**.
   4. Rendelje az **ADFGetStartedApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.
-* Telepítse az [Azure PowerShellt](/powershell/azureps-cmdlets-docs).
+* Telepítse az [Azure PowerShellt](/powershell/azure/overview).
 * Indítsa el a **PowerShellt**, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
   1. Futtassa a **Login-AzureRmAccount** parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
   2. Futtassa a **Get-AzureRmSubscription** parancsot a fiókhoz elérhető összes előfizetés megtekintéséhez.

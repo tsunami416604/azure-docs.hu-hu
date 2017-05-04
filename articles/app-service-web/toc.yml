@@ -6,7 +6,7 @@
     href: app-service-web-overview.md
   - name: "Az üzemeltetési lehetőségek összehasonlítása"
     href: choose-web-site-cloud-service-vm.md
-- name: "Első lépések"
+- name: "Gyors útmutatók"
   expanded: true
   items:
   - name: ".NET-alkalmazás létrehozása"

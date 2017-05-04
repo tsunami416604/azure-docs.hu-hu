@@ -16,9 +16,9 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
-ms.openlocfilehash: 493a915fb4e3de4cb70324b22beeaae6720a3492
-ms.lasthandoff: 01/25/2017
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: a6b1df79f4fc6b09b681755f5adbb7f56faaf225
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -42,7 +42,7 @@ Napjainkban az adatok óriási mennyiségben, nagy sebességgel áramlanak. A st
 * **Csatlakozás:** A Stream Analytics a közvetlen Azure Event Hubs- és Azure IoT Hub-kapcsolatokon keresztül fogadja a streameket, az Azure Blob szolgáltatás pedig előzményadatokat biztosít a számára. A Stream Analytics eredményei beírhatók az Azure Storage Blobsba vagy a Tablesbe, az Azure SQL Database-be, az Azure Data Lake Storesba, a DocumentDB-be, az Event Hubsba, az Azure Service Bus-témakörökbe vagy -üzenetsorokba és a Power BI-ba, ahol megjeleníthetők, tovább feldolgozhatók munkafolyamatokkal, felhasználhatók kötegelt elemzésekben az [Azure HDInsighton](https://azure.microsoft.com/services/hdinsight/) keresztül, vagy ismét feldolgozhatók események sorozataként. Az Event Hubs lehetővé teszi több Stream Analytics más adatforrásokkal és feldolgozórendszerekkel való összeállítását a számítások streamelő jellegének elvesztése nélkül.  
 
 ## <a name="get-help"></a>Segítségkérés
-További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Következő lépések
 Bemutattuk Önnek a Stream Analytics felügyelt szolgáltatást, amely streamelő elemzéseket biztosít az eszközök internetes hálózatáról (IoT) származó adatokon. További információk a szolgáltatásról:

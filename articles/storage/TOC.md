@@ -4,7 +4,6 @@
 
 # Első lépések
 
-## [Első lépések](storage-getting-started-guide.md)
 ## [Tárfiók létrehozása](storage-create-storage-account.md)
 
 ## Blob Storage
@@ -166,7 +165,7 @@
 #### [Meghajtójegyzékek biztonsági mentése](storage-import-export-backing-up-drive-manifests.md)
 #### [Import/Export-feladatok diagnosztizálása és hibajavítása](storage-import-export-diagnostics-and-error-recovery.md)
 # Referencia
-## [PowerShell](/powershell/storage)
+## [PowerShell](/powershell/module/azure.storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
 ### [Resource Manager](/dotnet/api/microsoft.azure.management.storage)
@@ -180,7 +179,7 @@
 ## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST
-### [Blobok, üzenetsorok, táblák és fájlok](/rest/api/storageservices/azure-storage-services-rest-api-reference)
+### [Blobok, üzenetsorok, táblák és fájlok](/rest/api/storageservices)
 ### [Erőforrás-szolgáltató](/rest/api/storagerp)
 ### [Importálás és exportálás](/rest/api/storageimportexport)
 

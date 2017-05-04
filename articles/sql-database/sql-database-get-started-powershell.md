@@ -17,9 +17,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: aaf4222d4bd31b992ce955cf8f3cb0f8bff4b5df
-ms.lasthandoff: 04/22/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 9a8cf3ad9c252b6a1ace1e7f3cf191428b228d80
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -27,13 +27,13 @@ ms.lasthandoff: 04/22/2017
 
 A PowerShell használatával Azure-erőforrások hozhatók létre és kezelhetők a parancssorból vagy szkriptekben. Ez az útmutató azt ismerteti, hogyan helyezhet üzembe Azure SQL-adatbázist a PowerShell használatával egy [Azure SQL Database logikai kiszolgálón](sql-database-features.md) található [Azure-erőforráscsoportban](../azure-resource-manager/resource-group-overview.md).
 
-Az oktatóanyag elvégzéséhez győződjön meg arról, hogy az [Azure PowerShell](/powershell/azureps-cmdlets-docs) legújabb verziója van telepítve. 
+Az oktatóanyag elvégzéséhez győződjön meg arról, hogy az [Azure PowerShell](/powershell/azure/overview) legújabb verziója van telepítve. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe az [Add-AzureRmAccount](https://docs.microsoft.com/powershell/resourcemanager/azurerm.profile/v2.5.0/add-azurermaccount) parancs használatával, és kövesse a képernyőn megjelenő útmutatásokat.
+Jelentkezzen be az Azure-előfizetésbe az [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) parancs használatával, és kövesse a képernyőn megjelenő útmutatásokat.
 
 ```powershell
 Add-AzureRmAccount
@@ -62,14 +62,14 @@ $databasename = "mySampleDatabase"
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/new-azurermresourcegroup) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
 ```powershell
 New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Hozzon létre egy logikai kiszolgálót
 
-Hozzon létre egy [Azure SQL Database logikai kiszolgálót](sql-database-features.md) a [New-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.5.0/new-azurermsqlserver) paranccsal. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. A következő példában létrehozunk egy véletlenszerűen elnevezett kiszolgálót az erőforráscsoportban egy `ServerAdmin` nevű és `ChangeYourAdminPassword1` jelszavú rendszergazdai bejelentkezéssel. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
+Hozzon létre egy [Azure SQL Database logikai kiszolgálót](sql-database-features.md) a [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) paranccsal. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. A következő példában létrehozunk egy véletlenszerűen elnevezett kiszolgálót az erőforráscsoportban egy `ServerAdmin` nevű és `ChangeYourAdminPassword1` jelszavú rendszergazdai bejelentkezéssel. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
 
 ```powershell
 New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
@@ -80,7 +80,7 @@ New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
 
-Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](sql-database-firewall-configure.md) a [New-AzureRmSqlServerFirewallRule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.5.0/new-azurermsqlserverfirewallrule) parancs használatával. A kiszolgálószintű tűzfalszabályok lehetővé teszik, hogy külső alkalmazások, például az SQL Server Management Studio vagy az SQLCMD segédprogram az SQL Database szolgáltatás tűzfalán keresztül csatlakozzon egy SQL-adatbázishoz. A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
+Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](sql-database-firewall-configure.md) a [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) parancs használatával. A kiszolgálószintű tűzfalszabályok lehetővé teszik, hogy külső alkalmazások, például az SQL Server Management Studio vagy az SQLCMD segédprogram az SQL Database szolgáltatás tűzfalán keresztül csatlakozzon egy SQL-adatbázishoz. A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
 
 ```powershell
 New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -94,7 +94,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 
 ## <a name="create-a-blank-database"></a>Hozzon létre egy üres adatbázist
 
-Hozzon létre egy üres, [S0 teljesítményszintű](sql-database-service-tiers.md) SQL-adatbázist a kiszolgálón a [New-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.5.0/new-azurermsqldatabase) parancs használatával. Az alábbi példa egy `mySampleDatabase` nevű adatbázist hoz létre. Igény szerint cserélje le ezt az előre meghatározott értéket.
+Hozzon létre egy üres, [S0 teljesítményszintű](sql-database-service-tiers.md) SQL-adatbázist a kiszolgálón a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancs használatával. Az alábbi példa egy `mySampleDatabase` nevű adatbázist hoz létre. Igény szerint cserélje le ezt az előre meghatározott értéket.
 
 ```powershell
 New-AzureRmSqlDatabase  -ResourceGroupName $resourcegroupname `

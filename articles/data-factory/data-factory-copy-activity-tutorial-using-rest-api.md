@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 003a32f2ef67f8aa63ed7be2553fa0f0c3afc08a
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: f4d2535e929996101f6e22ffbd0b2105e8fbf2a8
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -49,7 +49,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg A
   2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**. 
   3. Szerezze be a **bérlőazonosítót**. 
   4. Rendelje az **ADFCopyTutorialApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.  
-* Telepítse az [Azure PowerShellt](/powershell/azureps-cmdlets-docs).  
+* Telepítse az [Azure PowerShellt](/powershell/azure/overview).  
 * Indítsa el a **PowerShellt**, és végezze el az alábbi lépéseket. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja, akkor újra futtatnia kell a parancsokat.
   
   1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.

@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 4c29a3d17161a38f9aee9337e27feb36306cf329
-ms.openlocfilehash: b889208da300f301ee5c418bfa461a21cd8c07ee
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c06be7a2d17b655c958c4ba4618739f5b218b8d7
+ms.lasthandoff: 04/27/2017
 
 ---
 
@@ -39,7 +40,7 @@ ms.openlocfilehash: b889208da300f301ee5c418bfa461a21cd8c07ee
 
 Az alábbi lépéseket követve állíthat be egy terheléselosztót a PowerShell használatával:
 
-1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
+1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 2. Virtuális gép létrehozása után a PowerShell-parancsmagok segítségével hozzáadhat egy terheléselosztót egy virtuális géphez ugyanazon a felhőszolgáltatáson belül.
 
 Az alábbi példában egy „webfarm” nevű terheléselosztó-készletet fog hozzáadni a „mytestcloud” (vagy myctestcloud.cloudapp.net) nevű felhőszolgáltatáshoz, ehhez a terheléselosztó végpontjait hozzáadja a „web1” és „web2” nevű virtuális gépekhez. A terheléselosztó a 80-as porton keresztül fogadja a hálózati forgalmat, és a TCP használatával elosztja a terhelést a helyi végpont (jelen esetben a 80-as port) által meghatározott virtuális gépek között.
@@ -73,9 +74,4 @@ Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name htt
 Emellett [megkezdheti egy belső terheléselosztó létrehozását](load-balancer-get-started-ilb-classic-ps.md), és beállíthatja az [elosztási mód](load-balancer-distribution-mode.md) típusát egy adott terheléselosztó hálózati forgalmára vonatkozóan.
 
 Ha az alkalmazásának fenn kell tartania a kapcsolatot a terheléselosztó mögött lévő kiszolgálókkal, többet megtudhat a [terheléselosztó üresjárati TCP-időkorlátjának beállításairól](load-balancer-tcp-idle-timeout.md). A segítségével jobban megismerheti az üresjárati kapcsolatok viselkedését az Azure Load Balancer használata során.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

@@ -16,9 +16,9 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: cc8942dacee60d6243e91a3b4360c0c07956fa66
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 65c9d6c2b7a7c994a262d463d6a32b41c7e5c33a
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -26,14 +26,14 @@ ms.lasthandoff: 02/28/2017
 
 Az Azure Batch PowerShell-parancsmagokkal a Batch API-k, az Azure Portal és az Azure parancssori felület (CLI) használatával végrehajtott műveletek közül sokat elvégezhet. Ez a cikk gyors ismertetést nyújt a Batch-fiókok felügyeletéhez és a Batch-erőforrásokkal, például készletekkel, feladatokkal és tevékenységekkel használható parancsmagokról.
 
-A Batch-parancsmagok teljes listájáért és a parancsmagok részletes szintaxisáért lásd: [Azure Batch-parancsmagok referenciája](https://msdn.microsoft.com/library/azure/mt125957.aspx).
+A Batch-parancsmagok teljes listájáért és a parancsmagok részletes szintaxisáért lásd: [Azure Batch-parancsmagok referenciája](/powershell/module/azurerm.batch/#batch).
 
 Ez a cikk az Azure PowerShell 3.0.0-s verziójának parancsmagjain alapul. Ajánlott gyakran frissíteni az Azure PowerShellt a szolgáltatásfrissítések és -fejlesztések kihasználása érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi műveletek segítségével felügyelheti az Azure PowerShell-lel a Batch-erőforrásokat.
 
-* [Telepítse és konfigurálja az Azure PowerShellt](/powershell/azureps-cmdlets-docs)
+* [Telepítse és konfigurálja az Azure PowerShellt](/powershell/azure/overview)
 * Futtassa a **Login-AzureRmAccount** parancsmagot, hogy csatlakozzon az előfizetéséhez (az Azure Batch-parancsmagok az Azure Resource Manager modulban találhatók):
   
     `Login-AzureRmAccount`
@@ -43,7 +43,7 @@ Az alábbi műveletek segítségével felügyelheti az Azure PowerShell-lel a Ba
 
 ## <a name="manage-batch-accounts-and-keys"></a>Batch-fiókok és kulcsok felügyelete
 ### <a name="create-a-batch-account"></a>Batch-fiók létrehozása
-A **New-AzureRmBatchAccount** parancs egy Batch-fiókot hoz létre a meghatározott erőforráscsoportban. Ha még nem rendelkezik erőforráscsoporttal, hozzon létre egyet a [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx) parancsmag futtatásával. A **Hely** paraméternél adjon meg egy Azure régiót, például az „USA középső régiója”. Példa:
+A **New-AzureRmBatchAccount** parancs egy Batch-fiókot hoz létre a meghatározott erőforráscsoportban. Ha még nem rendelkezik erőforráscsoporttal, hozzon létre egyet a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmag futtatásával. A **Hely** paraméternél adjon meg egy Azure régiót, például az „USA középső régiója”. Példa:
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
@@ -237,7 +237,7 @@ A készlet tulajdonságainak frissítése megtörtént a Batch-szolgáltatásban
 > 
 
 ## <a name="next-steps"></a>Következő lépések
-* A parancsmag részletes szintaxisáért és példákért lásd: [Azure Batch-parancsmagok referenciája](https://msdn.microsoft.com/library/azure/mt125957.aspx).
+* A parancsmag részletes szintaxisáért és példákért lásd: [Azure Batch-parancsmagok referenciája](/powershell/module/azurerm.batch/#batch).
 * Az alkalmazások és alkalmazáscsomagok Batch-ben történő használatával kapcsolatban további információt az [Application deployment with Azure Batch application packages](batch-application-packages.md) (Alkalmazások üzembe helyezése az Azure Batch-alkalmazáscsomagokkal) című cikkben talál.
 
 

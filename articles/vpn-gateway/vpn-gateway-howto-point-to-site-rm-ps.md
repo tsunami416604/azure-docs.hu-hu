@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: b0ccde30b93214b161558daf8e2b4e37e58711da
-ms.lasthandoff: 04/12/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d340210d799f995cb10a20cf48a9245bbd3bc8d3
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -68,7 +68,7 @@ Ehhez a konfigurációhoz a következő értékeket használjuk: A változókat 
 
 ## <a name="before-beginning"></a>Mielőtt hozzálát
 * Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
-* Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. A PowerShell-parancsmagok telepítéséről további információt a [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című témakörben talál. 
+* Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. A PowerShell-parancsmagok telepítéséről további információt a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című témakörben talál. 
 
 ## <a name="declare"></a>1. rész – Bejelentkezés és a változók beállítása
 Ez a szakasz a bejelentkezést és a konfigurációban használt értékek deklarálását ismerteti. A minta parancsprogramok a deklarált értékeket használják. Módosítsa az értékeket úgy, hogy megfeleljenek a saját környezetének. Azt is megteheti, hogy a deklarált értékeket használja, és gyakorlásként halad végig a lépéseken.
@@ -166,15 +166,15 @@ Ha nem vállalati tanúsítványmegoldást használ, létre kell hoznia egy öna
 
 A pont–hely kapcsolatokhoz a nyilvános kulcsot (.cer) fel kell tölteni az Azure-ba. A következő lépések segítségével tudja feltölteni az önaláírt főtanúsítvány .cer fájlját.
 
-1. A .cer fájl tanúsítványból történő beszerzéséhez válassza a **Felhasználói tanúsítványok kezelése** lehetőséget.
-2. Keresse meg a P2SRootCert önaláírt főtanúsítványt a „Tanúsítványok – aktuális felhasználó\Személyes\Tanúsítványok” részben, majd kattintson rá a jobb gombbal. Kattintson a **Minden feladat** elemre, majd az **Exportálás** lehetőségre kattintva nyissa meg a **Tanúsítványexportáló varázslót**.
+1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet.
+2. Keresse meg a „P2SRootCert” önaláírt főtanúsítványt a Tanúsítványok – aktuális felhasználó\Személyes\Tanúsítványok útvonalon, és kattintson rá a jobb gombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre a **Tanúsítványexportáló varázsló** elindításához.
 3. A varázslóban kattintson a **Tovább** gombra. Válassza a **Nem, nem akarom exportálni a titkos kulcsomat** lehetőséget, majd kattintson a **Tovább** gombra.
 4. Az **Exportfájlformátum** lapon válassza a **Base-64 kódolású X.509 (.CER)** lehetőséget, majd kattintson a **Tovább** gombra. 
-5. Az **Exportálandó fájl** lapon navigáljon a „C:” útvonalra, és hozza létre a „cert” nevű almappát, majd jelölje ki azt. A tanúsítványfájlnak a „P2SRootCert.cer” nevet adja, majd kattintson a **Mentés** elemre. 
-6. A **Tovább**, majd a **Befejezés** lehetőségre kattintva exportálja a tanúsítványt. Ekkor **Az exportálás sikerült** üzenet jelenik meg. A varázsló bezárásához kattintson az **OK** gombra.
+5. Az **Exportálandó fájl** lapon a Tallózás gombra kattintva keresse meg a „C:” meghajtót, hozzon létre egy „cert” nevű alkönyvtárat, és válassza ki. Adja a tanúsítványfájlnak a „P2SRootCert.cer” nevet, majd kattintson a **Mentés** gombra. 
+6. Kattintson a **Tovább** gombra, majd a **Befejezés** gombra a tanúsítvány exportálásához. Megjelenik **Az exportálás sikeres volt** üzenet. A varázsló bezárásához kattintson az **OK** gombra.
 
 ### <a name="generate"></a>2. lépés – Ügyféltanúsítvány létrehozása
-Létrehozhat egyedi tanúsítványt minden ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfélhez. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy visszavonhat egyetlen tanúsítványt is. Ha azonban mindenki ugyanazt az ügyféltanúsítványt használja, és azt Önnek vissza kell vonnia, az összes olyan ügyfél számára új tanúsítványokat kell előállítania és telepítenie, amelyek az adott tanúsítványt használják a hitelesítéshez.
+Létrehozhat egy egyedi tanúsítványt minden ügyfél számára, vagy használhatja ugyanazt a tanúsítványt több ügyfél esetén. Az egyedi ügyféltanúsítványok előállításának előnye az, hogy visszavonhat egyetlen tanúsítványt is. Ha azonban mindenki ugyanazt az ügyféltanúsítványt használja, és Önnek vissza kell vonnia a tanúsítványt, az összes olyan ügyfél számára elő kell állítania és telepítenie kell új tanúsítványokat, amelyek az adott tanúsítványt használják a hitelesítéshez.
 
 #### <a name="enterprise-certificate"></a>Vállalati tanúsítvány
 - Ha vállalati tanúsítványmegoldást használ, az általános „name@yourdomain.com” formátumban hozza létre az ügyféltanúsítványokat a „tartománynév\felhasználónév” formátum helyett.
@@ -188,9 +188,9 @@ Ha önaláírt főtanúsítványt használ, tekintse meg a [tanúsítvány Power
 
 Ha egy önaláírt főtanúsítványból a [PowerShellre](vpn-gateway-certificates-point-to-site.md#clientcert) vonatkozó utasítások segítségével hoz létre ügyféltanúsítványt, akkor az automatikusan a létrehozásához használt számítógépre lesz telepítve. Ha egy ügyféltanúsítványt egy másik ügyfélszámítógépre szeretne telepíteni, akkor exportálnia kell azt.
  
-1. Egy ügyféltanúsítvány exportálásához válassza a **Felhasználói tanúsítványok kezelése** lehetőséget. Kattintson a jobb gombbal az exportálni kívánt ügyféltanúsítványra, és kattintson a **minden feladat**, majd az **exportálás** elemre a **Tanúsítványexportáló varázsló** megnyitásához.
+1. Ügyféltanúsítvány exportálásához nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Kattintson a jobb gombbal az exportálni kívánt ügyféltanúsítványra, majd a **Minden feladat** és az **Exportálás** elemre a **Tanúsítványexportáló varázsló** elindításához.
 2. A varázslóban kattintson a **Tovább** gombra, válassza az **Igen, a titkos kulcs exportálását választom** lehetőséget, majd kattintson a **Tovább** gombra.
-3. Az **Exportfájlformátum** lapon hagyja bejelölve az alapértelmezett elemeket. Győződjön meg róla, hogy a **Minden tanúsítvány belefoglalása a tanúsítványláncba** jelölőnégyzet be van jelölve annak érdekében, hogy a szükséges főtanúsítvány-adatok is exportálva legyenek. Ezután kattintson a **Tovább** gombra.
+3. Az **Exportfájlformátum** lapon hagyja bejelölve az alapértelmezett elemeket. Győződjön meg róla, hogy a **Minden tanúsítvány belefoglalása a tanúsítványláncba** jelölőnégyzet be van jelölve, hogy a szükséges főtanúsítvány-információkat is exportálja. Ezután kattintson a **Tovább** gombra.
 4. A **Biztonság** lapon be kell állítania a titkos kulcs védelmét. Ha jelszó használata mellett dönt, jegyezze fel vagy jegyezze meg a tanúsítványhoz beállított jelszót. Ezután kattintson a **Tovább** gombra.
 5. Az **Exportálandó fájl** lapon a **Tallózás** gombra kattintva keresse meg azt a helyet, ahová exportálni szeretné a tanúsítványt. A **Fájlnév** mezőben nevezze el a tanúsítványfájlt. Ezután kattintson a **Tovább** gombra.
 6. Kattintson a **Befejezés** gombra a tanúsítvány exportálásához.
@@ -244,7 +244,7 @@ Ha pont–hely típusú VPN-kapcsolattal szeretne kapcsolódni egy virtuális h�
 
 Ha a tanúsítvány létrehozásához használttól eltérő ügyfélszámítógépről szeretne pont–hely kapcsolatot létesíteni, akkor telepítenie kell egy ügyféltanúsítványt. Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvány exportálásakor létrehozott jelszóra.
 
-1. Keresse meg, és másolja a *.pfx* fájlt az ügyfélszámítógépre. Az ügyfélszámítógépen kattintson duplán a *.pfx* fájlra annak telepítéséhez. Hagyja a **Tárolás helyét** az **Aktuális felhasználó** értéken, majd kattintson a **Tovább** gombra.
+1. Keresse meg, és másolja a *.pfx* fájlt az ügyfélszámítógépre. Az ügyfélszámítógépen kattintson duplán a *.pfx* fájlra annak telepítéséhez. Hagyja meg a **Tárolás helye** esetében az **Aktuális felhasználó** értéket, és kattintson a **Tovább** gombra.
 2. A **Fájl** importálása lapon nem kell semmit módosítania. Kattintson a **Tovább** gombra.
 3. A **Titkos kulcs védelme** lapon adja meg a tanúsítvány jelszavát, vagy ellenőrizze, hogy a rendszerbiztonsági tag megfelelő-e, majd kattintson a **Tovább** gombra.
 4. A **Tanúsítványtároló** lapon ne módosítsa az alapértelmezett helyet, majd kattintson a **Tovább** gombra.
@@ -254,14 +254,14 @@ Ha a tanúsítvány létrehozásához használttól eltérő ügyfélszámítóg
 1. Csatlakozzon a virtuális hálózathoz. Ehhez navigáljon az ügyfélszámítógépen a VPN-kapcsolatokhoz, és keresse meg a létrehozott VPN-kapcsolatot. Ugyanaz a neve, mint a virtuális hálózatnak. Kattintson a **Connect** (Csatlakozás) gombra. Megjelenhet egy előugró üzenet, amely a tanúsítvány használatára utal. Kattintson a **Folytatás** gombra emelt szintű jogosultságok használatához. 
 2. A csatlakozás megkezdéséhez a **Kapcsolat** állapotlapon kattintson a **Csatlakozás** gombra. Ha megjelenik a **Tanúsítvány kiválasztása** képernyő, ellenőrizze, hogy az a csatlakozáshoz használni kívánt ügyféltanúsítványt mutatja-e. Ha nem, kattintson a legördülő nyílra, válassza ki a helyes tanúsítványt, majd kattintson az **OK** gombra.
    
-    ![A VPN-ügyfél csatlakozik az Azure-hoz](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
+    ![A VPN-ügyfél az Azure-hoz csatlakozik](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
 3. A kapcsolat létrejött.
    
     ![A kapcsolat létrejött](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png)
 
 Ha kapcsolódási problémákat észlel, ellenőrizze az alábbiakat:
 
-- Nyissa meg a **Felhasználói tanúsítványok kezelése** ablakot, és navigáljon a **Megbízható legfelső szintű hitelesítésszolgáltatók\Tanúsítványok** részhez. Ellenőrizze, hogy a főtanúsítvány szerepel-e a listában. A főtanúsítványnak szerepelnie kell ahhoz, hogy a hitelesítés működjön. Ha egy .pfx ügyféltanúsítványt az alapértelmezett „Minden tanúsítvány belefoglalása a tanúsítványláncba” beállítással exportál, a főtanúsítvány adatai is exportálva lesznek. Amikor telepíti az ügyféltanúsítványt, a főtanúsítvány is települ az ügyfélszámítógépre. 
+- Nyissa meg a **Felhasználói tanúsítványok kezelése** ablakot, és navigáljon a **Megbízható legfelső szintű hitelesítésszolgáltatók\Tanúsítványok** részhez. Ellenőrizze, hogy a főtanúsítvány szerepel-e a listában. A főtanúsítvány a hitelesítés működéséhez szükséges. Ha .pfx formátumú ügyféltanúsítványt exportál az alapértelmezett „Minden tanúsítvány belefoglalása a tanúsítványláncba” érték használatával, a főtanúsítvány információit is exportálja a program. Amikor telepíti az ügyféltanúsítványt, az alkalmazás a főtanúsítványt is telepíti az ügyfélszámítógépre. 
 
 - Ha vállalati hitelesítésszolgáltatói megoldás használatával kiadott tanúsítványt használ, és problémák merülnek fel a hitelesítés során, ellenőrizze a hitelesítési sorrendet az ügyféltanúsítványon. A hitelesítési lista sorrendjének ellenőrzéséhez kattintson duplán az ügyféltanúsítványra, és lépjen a **Részletek > Kibővített kulcshasználat** részre. Ellenőrizze, hogy a listán az „ügyfél-hitelesítés” jelenik-e meg első helyen. Ha nem, ki kell adnia egy ügyféltanúsítványt, amely az ügyfél-hitelesítést a lista első helyén tartalmazó felhasználói sablonon alapul.  
 
@@ -284,7 +284,7 @@ Ha kapcsolódási problémákat észlel, ellenőrizze az alábbiakat:
 
 ## <a name="connectVM"></a>Csatlakozás virtuális géphez
 
-1. Miután csatlakozott a virtuális hálózathoz, kapcsolódhat a virtuális géphez P2S-kapcsolattal. A virtuális géphez való csatlakozáshoz szükség lesz a virtuális gép privát IP-címére. Az alábbi példa segít a privát IP-cím beolvasásában a [Get-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkinterface?view=azurermps-3.7.0) használatával. Eredményül egy virtuális gépeket és a hozzájuk tartozó privát IP-címeket tartalmazó listát kap minden erőforráscsoportban. 
+1. Miután csatlakozott a virtuális hálózathoz, kapcsolódhat a virtuális géphez P2S-kapcsolattal. A virtuális géphez való csatlakozáshoz szükség lesz a virtuális gép privát IP-címére. Az alábbi példa segít a privát IP-cím beolvasásában a [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) használatával. Eredményül egy virtuális gépeket és a hozzájuk tartozó privát IP-címeket tartalmazó listát kap minden erőforráscsoportban. 
 
   ```powershell   
   $vms = get-azurermvm
@@ -304,11 +304,11 @@ Ha kapcsolódási problémákat észlel, ellenőrizze az alábbiakat:
   mstsc /v:192.168.1.4
   ```
 
-Ha nem sikerült P2S-en keresztül csatlakozni egy virtuális géphez, az ipconfig használatával ellenőrizze annak a számítógépnek az Ethernet-adapteréhez hozzárendelt IPv4-címet, amelyről a kapcsolatot létesíti. Ha az IP-cím az elérni kívánt virtuális hálózat vagy a virtuális magánhálózati ügyfélcímkészlet címtartományán belül található, ezt átfedő címtartománynak nevezzük. Ha a címtartományban ilyen átfedés tapasztalható, a hálózati forgalom nem jut el az Azure-hoz, hanem a helyi hálózaton marad. Ha a hálózati címtartományokban nincs átfedés, de mégsem tud kapcsolódni a virtuális géphez, olvassa el a [Troubleshoot Remote Desktop connections to a VM](../virtual-machines/windows/troubleshoot-rdp-connection.md) (A virtuális gépekhez való távoli asztali kapcsolatok hibáinak elhárítása) című témakört.
+Ha nem sikerült P2S-en keresztül csatlakozni egy virtuális géphez, az ipconfig használatával ellenőrizze annak a számítógépnek az Ethernet-adapteréhez hozzárendelt IPv4-címet, amelyről a kapcsolatot létesíti. Ha az IP-cím azon virtuális hálózat tartományában található, amelyhez csatlakozni kíván, vagy a VPN-ügyfél címkészletének címtartományában, akkor átfedő címtérről beszélünk. Ilyen átfedés esetén a hálózati forgalom nem éri el az Azure-t, és a helyi hálózaton marad. Ha a hálózati címtartományokban nincs átfedés, de mégsem tud kapcsolódni a virtuális géphez, olvassa el a [Troubleshoot Remote Desktop connections to a VM](../virtual-machines/windows/troubleshoot-rdp-connection.md) (A virtuális gépekhez való távoli asztali kapcsolatok hibáinak elhárítása) című témakört.
 
 ## <a name="addremovecert"></a>Megbízható főtanúsítvány hozzáadása vagy eltávolítása
 
-A megbízható főtanúsítványokat felveheti vagy el is távolíthatja az Azure-ban. Ha eltávolít egy megbízható tanúsítványt, akkor az abból a főtanúsítványból generált ügyféltanúsítványok nem tudnak pont–hely kapcsolattal csatlakozni az Azure-hoz. Ha azt szeretné, hogy az ügyfelek csatlakozni tudjanak, egy, az Azure által megbízhatónak tartott tanúsítványból generált új ügyféltanúsítványt kell telepítenie.
+A megbízható főtanúsítványokat felveheti vagy el is távolíthatja az Azure-ban. Ha eltávolít egy megbízható tanúsítványt, akkor a főtanúsítványból generált ügyféltanúsítványok nem tudnak pont–hely kapcsolattal csatlakozni az Azure-hoz. Ha azt szeretné, hogy az ügyfelek csatlakozni tudjanak, egy, az Azure által megbízhatónak tartott tanúsítványból generált új ügyféltanúsítványt kell telepítenie.
 
 ### <a name="to-add-a-trusted-root-certificate"></a>Megbízható főtanúsítvány hozzáadása
 Az Azure-ra legfeljebb 20 megbízható főtanúsítványt tölthet fel .cer fájl formájában. A következő lépések segítségével adhat hozzá főtanúsítványt:
@@ -365,7 +365,7 @@ Az Azure-ra legfeljebb 20 megbízható főtanúsítványt tölthet fel .cer fáj
   ```
 
 ## <a name="revoke"></a>Ügyféltanúsítvány visszavonása
-Az ügyféltanúsítványokat vissza lehet vonni. A visszavont tanúsítványok listájával az egyes ügyféltanúsítványok alapján, szelektíven tagadhatja meg a pont–hely kapcsolódás lehetőségét. Ez a folyamat eltér a megbízható főtanúsítvány eltávolításától. Ha töröl egy .cer formátumú megbízható főtanúsítványt az Azure-ból, azzal megvonja a hozzáférést minden olyan ügyféltanúsítványtól, amelyet a visszavont főtanúsítvánnyal hoztak létre/írtak alá. A főtanúsítvány helyett az ügyféltanúsítvány visszavonása lehetővé teszi, hogy a főtanúsítványból létrehozott többi tanúsítványt továbbra is lehessen hitelesítésére használni.
+Az ügyféltanúsítványokat vissza lehet vonni. A visszavont tanúsítványok listájával az egyes ügyféltanúsítványok alapján, szelektíven tagadhatja meg a pont–hely kapcsolódás lehetőségét. Ez a folyamat eltér a megbízható főtanúsítvány eltávolításától. Ha töröl egy .cer formátumú megbízható főtanúsítványt az Azure-ból, azzal megvonja a hozzáférést minden olyan ügyféltanúsítványtól, amelyet a visszavont főtanúsítvánnyal hoztak létre/írtak alá. A főtanúsítvány helyett az ügyféltanúsítvány visszavonása esetén a főtanúsítványból létrehozott többi tanúsítvány továbbra is használható hitelesítésre.
 
 A szokásos gyakorlat az, hogy a főtanúsítvánnyal kezelik a hozzáférést a munkacsoport vagy a szervezet szintjén, az egyes felhasználókra vonatkozó részletesebb szabályozást pedig visszavont ügyféltanúsítványokkal oldják meg.
 
@@ -424,3 +424,4 @@ Vissza is állíthatja az ügyféltanúsítványok érvényességét. Ehhez tör
 
 ## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/linux/azure-vm-network-overview.md).
+

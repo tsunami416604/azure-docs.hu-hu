@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
-ms.openlocfilehash: 51732acdad74dd6dbfc47fae62efc87df6ce5c15
-ms.lasthandoff: 03/14/2017
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 924fce8245a88fd7c12636182336e503237fe4dc
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,11 +35,11 @@ A kulcstároló műveletei után legfeljebb 10 perccel már elérheti a naplóin
 Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával, a tárfiók létrehozásával, a naplózás engedélyezésével és az összegyűjtött naplóinformációk értelmezésével.  
 
 > [!NOTE]
-> Az oktatóanyag nem tartalmazza a kulcstárolók, a kulcsok és titkos kulcsok létrehozásának lépéseit. Ezekről a [Get started with Azure Key Vault](key-vault-get-started.md) (Bevezetés az Azure Key Vault használatába) című cikkben találhat információt. A platformfüggetlen parancssori felületre vonatkozó utasításokat megtekintheti [ebben a megfelelő oktatóanyagban](key-vault-manage-with-cli.md).
-> 
+> Az oktatóanyag nem tartalmazza a kulcstárolók, a kulcsok és titkos kulcsok létrehozásának lépéseit. Ezekről a [Get started with Azure Key Vault](key-vault-get-started.md) (Bevezetés az Azure Key Vault használatába) című cikkben találhat információt. A platformfüggetlen parancssori felületre vonatkozó utasításokat megtekintheti [ebben a megfelelő oktatóanyagban](key-vault-manage-with-cli2.md).
+>
 > Az Azure Key Vault jelenleg nem konfigurálható az Azure-portálon. Ehelyett kövesse ezeket az Azure PowerShell-utasításokat.
-> 
-> 
+>
+>
 
 Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az az Azure Key Vault?) című cikkben találhat.
 
@@ -47,7 +47,7 @@ Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával, a t�
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy meglévő kulcstároló.  
-* Az Azure PowerShell **legalább 1.0.1-es verziója**. Az Azure PowerShell telepítéséről és az Azure-előfizetéssel való társításáról további információt a [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShellt, de nem tudja, melyik verziót, írja be az Azure PowerShell-konzolon az alábbi parancsot: `(Get-Module azure -ListAvailable).Version`.  
+* Az Azure PowerShell **legalább 1.0.1-es verziója**. Az Azure PowerShell telepítéséről és az Azure-előfizetéssel való társításáról további információt a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShellt, de nem tudja, melyik verziót, írja be az Azure PowerShell-konzolon az alábbi parancsot: `(Get-Module azure -ListAvailable).Version`.  
 * A Key Vault naplóihoz elegendő tárhely az Azure-ban.
 
 ## <a id="connect"></a>Csatlakozás az előfizetésekhez
@@ -66,11 +66,11 @@ Ezt követően a naplózandó kulcstárolóhoz tartozó előfizetés megadásáh
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
 > [!NOTE]
-> Ez egy nagyon fontos lépés, és különösen hasznosnak bizonyulhat, ha több előfizetés tartozik a fiókjához. Egy, a Microsoft.Insights-regisztrációról szóló hibaüzenetet kaphat, ha kihagyja ezt a lépést. 
+> Ez egy nagyon fontos lépés, és különösen hasznosnak bizonyulhat, ha több előfizetés tartozik a fiókjához. Egy, a Microsoft.Insights-regisztrációról szóló hibaüzenetet kaphat, ha kihagyja ezt a lépést.
 >   
 >
 
-További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása).
+További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
 ## <a id="storage"></a>Új tárfiók létrehozása a naplóknak
 Bár meglévő tárfiókot is használhat a naplózáshoz, mi létrehozunk egy újat, amely kimondottan a Key Vault naplóinak tárolására szolgál majd. Ezt később kell csak megadni, így addig a vonatkozó részleteket egy **sa** nevű változóban tároljuk.
@@ -82,8 +82,8 @@ Az egyszerű használat érdekében ugyanazt az erőforráscsoportot használjuk
 
 > [!NOTE]
 > Ha egy meglévő tárfiók használata mellett dönt, azt ugyanazzal az előfizetéssel kell használnia, mint a kulcstárolót, és a Resource Manager-alapú üzemi modellt kell alkalmaznia, nem a klasszikust.
-> 
-> 
+>
+>
 
 ## <a id="identify"></a>A naplók kulcstárolójának azonosítása
 Az oktatóanyagban a kulcstároló neve **ContosoKeyVault** volt, így a továbbiakban is azt használjuk, a részleteket pedig egy **kv** nevű változóban tároljuk:
@@ -168,13 +168,13 @@ A második parancs futtatásakor a blob nevének **/** elválasztója egy teljes
 A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 * Ha több erőforráscsoporttal rendelkezik, de csak egyhez szeretne naplókat letölteni, használja a `-Blob '*/RESOURCEGROUPS/<resource group name>/*'` parancsot:
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 * Ha 2016 januárjának összes naplóját szeretné letölteni, használja a `-Blob '*/year=2016/m=01/*'` parancsot:
-  
+
         Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
 Most már készen áll a naplók tartalmának megtekintésére. Mielőtt azonban belekezdenénk, érdemes feljegyeznie ezt a két paramétert a Get-AzureRmDiagnosticSetting parancshoz:
@@ -272,8 +272,7 @@ Az Azure Key Vault webalkalmazásban való használatáról a [Use Azure Key Vau
 
 Programozási hivatkozások: [Azure Key Vault developer’s guide](key-vault-developers-guide.md) (Az Azure Key Vault fejlesztői útmutatója).
 
-Az Azure Key Vaultra vonatkozó Azure PowerShell 1.0-parancsmagok listáját az [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (Az Azure Key Vault parancsmagjai) című témakörben találja.
+Az Azure Key Vaultra vonatkozó Azure PowerShell 1.0-parancsmagok listáját az [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Az Azure Key Vault parancsmagjai) című témakörben találja.
 
 A kulcsrotálással és a naplózással kapcsolatos oktatóanyag: [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md) (A Key Vault beállítása átfogó kulcsrotálással és naplózással).
-
 

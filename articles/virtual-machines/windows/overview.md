@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d128d1f5bdf054accac87631a5d6a65f3bb15ea6
-ms.lasthandoff: 04/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: e1e09f4f75da05ca051b78e57979600fd3e36006
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -59,7 +59,7 @@ Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olva
 | Módszer | Leírás |
 | --- | --- |
 | Azure Portal |Egy virtuális gép létrehozásakor válasszon egy helyet a listából. |
-| Azure PowerShell |Használja a [Get-AzureRmLocation](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/get-azurermlocation) parancsot. |
+| Azure PowerShell |Használja a [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) parancsot. |
 | REST API |Használja a [Helyek listázása](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) műveletet. |
 
 ### <a name="vm-size"></a>Virtuális gép mérete
@@ -80,7 +80,7 @@ Az alábbi tábla bemutat néhány módszert, amelyekkel egy rendszerképről t�
 | Módszer | Leírás |
 | --- | --- |
 | Azure Portal |Az értékek a rendszerképek kiválasztásakor automatikusan megjelennek. |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>[Get-AzureRMVMImageSku](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagesku) -Location "location" -Publisher "publisherName" -Offer "offerName" |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "location" -Publisher "publisherName" -Offer "offerName" |
 | REST API-k |[Rendszerkép-közzétevők listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Rendszerkép-ajánlatok listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Rendszerkép-termékváltozatok listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 
 Lehetősége van egy [saját rendszerképek feltöltésére és használatára](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) is, ebben az esetben a közzétevő neve, az ajánlat és a termékváltozat adatok nem használatosak.

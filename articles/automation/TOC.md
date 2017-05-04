@@ -71,8 +71,8 @@
 ### [Gyakori hibák elhárítása](automation-troubleshooting-automation-errors.md)
 ### [A hibrid runbook-feldolgozó hibaelhárítása](automation-troubleshooting-hybrid-runbook-worker.md)
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.automation/v2.3.0/azurerm.automation)
-## [PowerShell (klasszikus)](/powershell/servicemanagement/azure.automation/v3.1.0/azure.automation)
+## [PowerShell](/powershell/module/azurerm.automation)
+## [PowerShell (klasszikus)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](/rest/api/automation)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/mt163781)

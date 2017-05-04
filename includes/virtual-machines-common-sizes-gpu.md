@@ -1,41 +1,31 @@
-Az NC- és NV-méretek más néven GPU-kompatibilis példányokként is ismertek. Ezek olyan speciális virtuális gépek, amelyek az NVIDIA grafikus (GPU-) kártyáival rendelkeznek, és különféle forgatókönyvekre és használati esetekre vannak optimalizálva. Az NV-méretek OpenGL, DirectX és hasonló keretrendszereket használó távoli megjelenítési, streamelési, játék-, kódolási és VDI-forgatókönyvekhez lettek kialakítva és optimalizálva. Az NC-méretek inkább nagy számítási és hálózatigényű alkalmazásokra és algoritmusokra vannak optimalizálva, beleértve a CUDA- és OpenCL-alapú alkalmazásokat és szimulációkat. 
+The NC and NV sizes are also known as GPU-enabled instances. These are specialized virtual machines that include NVIDIA's GPU cards, optimized for different scenarios and use cases. The NV sizes are optimized and designed for remote visualization, streaming, gaming, encoding and VDI scenarios utilizing frameworks such as OpenGL and DirectX. The NC sizes are more optimized for compute-intensive and network-intensive applications and algorithms, including CUDA- and OpenCL-based applications and simulations. 
 
 
-A gyorsított asztali alkalmazások és virtuális asztalok esetében az NVIDIA által gyártott Tesla M60 GPU kártya és az NVIDIA GRID működteti az NV-példányokat, így az ügyfelek hatékonyan jeleníthetik meg adataikat vagy szimulációikat. Az ügyfelek a nagy grafikai igényű számítási feladataikat az NV-példányokon megjelenítve kiemelkedő grafikai teljesítményt érhetnek le, illetve futtathatnak különálló precíziós számítási feladatokat is, mint amilyen a konvertálás vagy a renderelés. A Tesla M60 két grafikus kártyát tartalmazó kialakítása 4096 CUDA-magot biztosít akár 36 egyidejű 1080p H.264 kódolású streammel. 
+The NV instances are powered by NVIDIA’s Tesla M60 GPU card and NVIDIA GRID for desktop accelerated applications and virtual desktops where customers will be able to visualize their data or simulations. Users will be able to visualize their graphics intensive workflows on the NV instances to get superior graphics capability and additionally run single precision workloads such as encoding and rendering. The Tesla M60 delivers 4096 CUDA cores in a dual-GPU design with up to 36 streams of 1080p H.264. 
 
-Az NC-példányok az NVIDIA által gyártott Tesla K80 kártyát használják. A felhasználók a CUDA kiaknázásával sokkal gyorsabban dolgozhatják fel az adatokat az energiafeltérképező alkalmazások, az ütközésszimulációk, a sugárkövetéses renderelés, a mély tanulás és egyebek terén. A Tesla K80 két grafikai kártyát tartalmazó kialakítása 4992 CUDA-magot biztosít, akár 2,91 Teraflop kétszeres pontosságú vagy 8,93 Teraflop egyszeres pontosságú teljesítménnyel.
+The NC instances are powered by NVIDIA’s Tesla K80 card. Users can now crunch through data much faster by leveraging CUDA for energy exploration applications, crash simulations, ray traced rendering, deep learning and more. The Tesla K80 delivers 4992 CUDA cores with a dual-GPU design, up to 2.91 Teraflops of double-precision and up to 8.93 Teraflops of single-precision performance.
 
-## <a name="nv-instances"></a>NV-példányok
+## <a name="nv-instances"></a>NV instances
 
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | GPU |
+| Size | CPU cores | Memory: GiB | Local SSD: GiB | GPU |
 | --- | --- | --- | --- | --- |
 | Standard_NV6 |6 |56 |380 | 1 |
 | Standard_NV12 |12 |112 |680 | 2 |
 | Standard_NV24 |24 |224 |1440 | 4 |
 
-1 GPU = fél M60 kártya.
+1 GPU = one-half M60 card.
 
-**Támogatott operációs rendszerek**
+## <a name="nc-instances"></a>NC instances
 
-* Windows Server 2016, Windows Server 2012 R2 – lásd [az N-sorozat illesztőinek Windows esetében történő beállítását](../articles/virtual-machines/windows/n-series-driver-setup.md) ismertető cikket
-
-## <a name="nc-instances"></a>NC-példányok
-
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | GPU |
+| Size | CPU cores | Memory: GiB | Local SSD: GiB | GPU |
 | --- | --- | --- | --- | --- |
 | Standard_NC6 |6 |56 | 380 | 1 |
 | Standard_NC12 |12 |112 | 680 | 2 |
 | Standard_NC24 |24 |224 | 1440 | 4 |
 | Standard_NC24r* |24 |224 | 1440 | 4 |
 
-1 GPU = fél K80-kártya.
+1 GPU = one-half K80 card.
 
-*RDMA-kompatibilis
+*RDMA capable
 
-**Támogatott operációs rendszerek**
-
-* Windows Server 2016, Windows Server 2012 R2 – lásd [az N-sorozat illesztőinek Windows esetében történő beállítását](../articles/virtual-machines/windows/n-series-driver-setup.md) ismertető cikket
-* Ubuntu 16.04 LTS – lásd [az N-sorozat illesztőinek Linux rendszer esetében történő beállítását](../articles/virtual-machines/linux/n-series-driver-setup.md) ismertető cikket
-
-<br>
 

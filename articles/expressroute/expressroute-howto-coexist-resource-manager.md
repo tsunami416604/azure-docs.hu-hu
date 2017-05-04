@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: charwen,cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 1acd56f13c06d45287c38ea4f62aecf0ce0cf072
-ms.lasthandoff: 04/20/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: ec9da5c9818f03a85e858800bd38be49d8ed14e6
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -79,7 +79,7 @@ Két különböző eljáráscsoport közül választhat. A konfigurálás válas
 ## <a name="new"></a>Új virtuális hálózat és egyidejű kapcsolatok létrehozása
 Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és ExpressRoute-kapcsolatok létrehozásának módját ismerteti.
 
-1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióit. A parancsmagok telepítésével kapcsolatos információkért lásd: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs). Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja.
+1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióit. A parancsmagok telepítésével kapcsolatos információkért lásd: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja.
 2. Jelentkezzen be a fiókjába, és állítsa be a környezetet.
 
   ```powershell
@@ -179,7 +179,7 @@ Ha az átjáró-alhálózat /27 vagy nagyobb, és a virtuális hálózat Express
 > 
 > 
 
-1. Az Azure PowerShell-parancsmagok legújabb verzióit kell telepítenie. A parancsmagok telepítésével kapcsolatos további információkért lásd: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs). Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja. 
+1. Az Azure PowerShell-parancsmagok legújabb verzióit kell telepítenie. A parancsmagok telepítésével kapcsolatos további információkért lásd: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja. 
 2. Törölje a meglévő ExpressRoute- vagy helyek közötti VPN-átjárót.
 
   ```powershell 
@@ -232,3 +232,4 @@ A pont-hely VPN-ekkel kapcsolatos további információkért lásd: [Pont-hely k
 
 ## <a name="next-steps"></a>Következő lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
+

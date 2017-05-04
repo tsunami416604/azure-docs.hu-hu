@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
 translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: 7e866a218c003390e0281f1adce7c0d843d006c0
-ms.lasthandoff: 03/24/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 594dee64f49e83949403fc85903ec66f9cf0d996
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -82,7 +82,7 @@ Két különböző eljáráscsoport közül választhat az egyidejűleg használ
 ## <a name="new"></a>Új virtuális hálózat és egyidejű kapcsolatok létrehozása
 Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és ExpressRoute-kapcsolatok létrehozásának módját ismerteti.
 
-1. Az Azure PowerShell-parancsmagok legújabb verzióit kell telepítenie. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs). Vegye figyelembe, hogy az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja. 
+1. Az Azure PowerShell-parancsmagok legújabb verzióit kell telepítenie. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Vegye figyelembe, hogy az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja. 
 2. Hozzon létre egy sémát a virtuális hálózat számára. Az új konfigurációs sémával kapcsolatos információkért lásd: [Azure Virtual Network konfigurációs séma](https://msdn.microsoft.com/library/azure/jj157100.aspx).
    
     Amikor létrehozza a sémát, mindenképp a következő értékeket használja:
@@ -195,7 +195,7 @@ Ha az átjáró-alhálózat /27 vagy nagyobb, és a virtuális hálózat Express
 > 
 > 
 
-1. Az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióit kell telepítenie. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs). Vegye figyelembe, hogy az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja. 
+1. Az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióit kell telepítenie. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Vegye figyelembe, hogy az ehhez a konfigurációhoz használt parancsmagok eltérőek lehetnek az Ön által már ismertektől. Ügyeljen arra, hogy az ebben az útmutatóban meghatározott parancsmagokat használja. 
 2. Törölje a meglévő ExpressRoute- vagy helyek közötti VPN-átjárót. Használja a következő parancsmagot, és cserélje le az értékeket saját értékekre.
    
         Remove-AzureVNetGateway –VnetName MyAzureVNET

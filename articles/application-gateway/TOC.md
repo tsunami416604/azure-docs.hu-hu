@@ -46,7 +46,7 @@
 ### [Az Application Gatewayben észlelt hibák elhárítása](application-gateway-troubleshooting-502.md)
 ### [Diagnosztikai naplózás és mérőszámok](application-gateway-diagnostics.md)
 # Referencia
-## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
+## [PowerShell](/powershell/azure/overview)
 ## [Azure CLI 2.0](/cli/azure/network/application-gateway)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/com.microsoft.azure.management.network)

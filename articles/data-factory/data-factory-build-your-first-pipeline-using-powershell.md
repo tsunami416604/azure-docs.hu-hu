@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 2d1a4cf1ab1f66f51eb29a4b8cee07dca8d88719
-ms.lasthandoff: 02/03/2017
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: c7062721017176b4caacbd48a513c2610058b835
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -41,8 +41,8 @@ Ez a cikk azt ismerteti, hogyan hozhatja létre első Azure data factoryját az 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Olvassa el [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című részt, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
-* Kövesse a [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre.
-* (elhagyható) Ez a cikk nem tárgyalja az összes Data Factory-parancsmagot. A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentációért tekintse meg a [Data Factory Cmdlet Reference](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories) (Data Factory-parancsmagok referenciája) című cikket.
+* Kövesse a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre.
+* (elhagyható) Ez a cikk nem tárgyalja az összes Data Factory-parancsmagot. A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentációért tekintse meg a [Data Factory Cmdlet Reference](/powershell/module/azurerm.datafactories) (Data Factory-parancsmagok referenciája) című cikket.
 
 ## <a name="create-data-factory"></a>Data factory létrehozása
 Ebben a lépésben az Azure PowerShell használatával létrehozza a **FirstDataFactoryPSH** nevű Azure data factoryt. A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Ilyen például a másolási tevékenység, amely adatokat másol a forrásadattárból a céladattárba, és a HDInsight Hive tevékenység, amely egy Hive-parancsprogramot futtat az bemeneti adatok átalakításához. Ebben a lépésben létrehozzuk a data factoryt.
@@ -409,7 +409,7 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 ## <a name="see-also"></a>Lásd még:
 | Témakör | Leírás |
 |:--- |:--- |
-| [A Data Factory parancsmagjainak leírása](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories) |A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentáció. |
+| [A Data Factory parancsmagjainak leírása](/powershell/module/azurerm.datafactories) |A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentáció. |
 | [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
