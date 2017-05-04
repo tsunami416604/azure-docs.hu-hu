@@ -18,6 +18,7 @@ ms.author: annahar
 translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: db7c328b2ba7008b9d34275341fa4bad9522b028
+ms.lasthandoff: 01/24/2017
 
 ---
 
@@ -68,7 +69,7 @@ További információkat szerezhet a terheléselosztónak az Azure Resource Mana
 ## <a name="create-a-back-end-address-pool"></a>Háttércímkészlet létrehozása
 
 1. A terheléselosztó sikeres üzembe helyezését követően válassza ki azt az erőforrások közül. A Beállítások alatt válassza ki a Háttérkészletek elemet. Írja be a háttérkészlet nevét. Ezután kattintson a megjelenő panel tetején található **Hozzáadás** gombra.
-2. A **Háttérkészlet hozzáadása** panelen kattintson a **Virtuális gép hozzáadása** lehetőségre.  A **Rendelkezésre állási készlet** alatt válassza ki a **Rendelkezésre állási készlet kiválasztása ** lehetőséget, majd válassza ki a **myAvailSet** elemet. Ezután a panel Virtuális gépek szakasza alatt válassza ki a **Virtuális gépek kiválasztása** lehetőséget, majd kattintson a **web1** és a **web2** elemre, a terheléselosztás céljából létrehozott két virtuális gépre. Győződjön meg róla, hogy mindkét gép bal oldalán kék pipa található, az alábbi képnek megfelelően. Ezután kattintson ugyanazon a panelen a **Kiválasztás** elemre, majd a **Virtuális gépek kiválasztása** panelen az OK gombra, s végül a **Háttérkészlet hozzáadása** panelen az **OK** gombra.
+2. A **Háttérkészlet hozzáadása** panelen kattintson a **Virtuális gép hozzáadása** lehetőségre.  A **Rendelkezésre állási készlet** alatt válassza ki a **Rendelkezésre állási készlet kiválasztása** lehetőséget, majd válassza ki a **myAvailSet** elemet. Ezután a panel Virtuális gépek szakasza alatt válassza ki a **Virtuális gépek kiválasztása** lehetőséget, majd kattintson a **web1** és a **web2** elemre, a terheléselosztás céljából létrehozott két virtuális gépre. Győződjön meg róla, hogy mindkét gép bal oldalán kék pipa található, az alábbi képnek megfelelően. Ezután kattintson ugyanazon a panelen a **Kiválasztás** elemre, majd a **Virtuális gépek kiválasztása** panelen az OK gombra, s végül a **Háttérkészlet hozzáadása** panelen az **OK** gombra.
 
     ![Hozzáadás a háttércímkészlethez – ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
 
@@ -112,9 +113,4 @@ Terheléselosztó törléséhez válassza ki az eltávolítani kívánt terhelé
 [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
