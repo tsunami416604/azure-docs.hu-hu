@@ -9,5 +9,4 @@ A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-es
 A VPN-eszköz konfigurálásakor a következőkre van szüksége:
 
 - Megosztott kulcs. Ez ugyanaz a megosztott kulcs, amelyet a helyek közötti VPN-kapcsolat létrehozásakor ad meg. A példákban alapvető megosztott kulcsot használunk. Javasoljuk egy ennél összetettebb kulcs létrehozását.
-
 - A virtuális hálózati átjáró nyilvános IP-címe. A nyilvános IP-címet az Azure Portalon, valamint a PowerShell vagy a CLI használatával is megtekintheti.
