@@ -30,6 +30,7 @@
 
 ## Megoldások használata
 ### [Felügyeleti megoldások](operations-management-suite-solutions.md)
+### [Célmegoldások](operations-management-suite-solution-targeting.md)
 ### Betekintés és elemzés
 #### [AD-elemzés](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-replikáció állapota](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -58,6 +59,7 @@
 ### [Automation-erőforrások](operations-management-suite-solutions-resources-automation.md)
 ### [Naplókeresések és riasztások](operations-management-suite-solutions-resources-searches-alerts.md)
 ### [Nézetek](operations-management-suite-solutions-resources-views.md)
+### [Ajánlott eljárások](operations-management-suite-solutions-best-practices.md)
 
 ## [Integrálás az OMS-sel](operations-management-suite-integration.md)
 

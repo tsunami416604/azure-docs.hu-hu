@@ -4,7 +4,7 @@
   items:
   - name: "Információk a virtuális gépekről"
     href: overview.md
-- name: "Első lépések"
+- name: "Gyors útmutatók"
   expanded: true
   items:
   - name: "Virtuális gép létrehozása – portál"
@@ -21,10 +21,19 @@
     href: tutorial-manage-data-disk.md
   - name: "3 – Konfigurálás automatizálása"
     href: tutorial-automate-vm-deployment.md
-  - name: "4 – Virtuális gépek terheléselosztása"
+  - name: "4 – Virtuálisgép-lemezképek létrehozása"
+    href: tutorial-custom-images.md
+  - name: "5 – Magas rendelkezésre állású virtuális gépek"
+    href: tutorial-availability-sets.md
+  - name: "6 – Virtuálisgép-méretezési csoport létrehozása"
+    href: tutorial-create-vmss.md
+  - name: "7 – Virtuális gépek terheléselosztása"
     href: tutorial-load-balancer.md
-  - name: "5 – Hálózatkezelés"
+  - name: "8 – Hálózatkezelés"
     href: tutorial-virtual-network.md
+  - name: "9 – A virtuális gépek biztonságának kezelése"
+    href: tutorial-azure-security.md
+
 - name: "Példák"
   items:
   - name: "PowerShell"

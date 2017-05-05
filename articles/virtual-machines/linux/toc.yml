@@ -4,7 +4,7 @@
   items:
   - name: "Információk a virtuális gépekről"
     href: overview.md
-- name: "Első lépések"
+- name: "Gyors útmutatók"
   expanded: true
   items:
   - name: "Virtuális gép létrehozása – Azure CLI"
@@ -31,6 +31,8 @@
     href: tutorial-load-balancer.md
   - name: "8 – Hálózatkezelés"
     href: tutorial-virtual-network.md
+  - name: "9 – A virtuális gépek biztonságának kezelése"
+    href: tutorial-azure-security.md
 - name: "Példák"
   items:
   - name: "Azure CLI"

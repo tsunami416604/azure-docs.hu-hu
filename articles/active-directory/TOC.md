@@ -1,9 +1,9 @@
 # Áttekintés
 ## [Mi az az Azure Active Directory?](active-directory-whatis.md)
 ## [Kiadás kiválasztása](active-directory-editions.md)
-## [Tudnivalók az Azure-identitáskezelésről](fundamentals-identity.md)
-## [Az Azure AD-portál felületének előzetese](active-directory-preview-explainer.md)
 
+## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
+## [Az Azure Portal felületének előzetese](active-directory-preview-explainer.md)
 
 # Bevezetés
 ## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
@@ -58,6 +58,7 @@
 ### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
 ### [Dedikált csoportok engedélyezése](active-directory-accessmanagement-dedicated-groups.md)
 ### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
+### [Törölt Office 365-csoport visszaállítása](active-directory-groups-restore-azure-portal.md)
 ### Csoportbeállítások kezelése
 #### [Azure Portal](active-directory-groups-settings-azure-portal.md)
 #### [Parancsmagok](active-directory-accessmanagement-groups-settings-cmdlets.md)
@@ -110,24 +111,27 @@
 ##### [Ismeretlen források](active-directory-reporting-sign-ins-from-unknown-sources.md)
 ##### [Rendellenes bejelentkezések](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
-## [Jelszavak kezelése](active-directory-manage-passwords.md)
-### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
-### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
-### [Rendszergazdák által engedélyezett önkiszolgáló jelszó-visszaállítás](active-directory-passwords.md)
-### [A jelszókezeléssel kapcsolatos tudnivalók](active-directory-passwords-how-it-works.md)
-### [A szabályzatokkal és a korlátozásokkal kapcsolatos tudnivalók](active-directory-passwords-policy.md)
-### Új jelszavak létrehozása
+## [Jelszavak kezelése](active-directory-passwords.md)
+### Felhasználói dokumentumok
+#### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
+#### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
+### [Rövid útmutató: Új jelszó kérése önkiszolgáló eljárással](active-directory-passwords-getting-started.md)
+### [SSPR licenc](active-directory-passwords-licensing.md)
+### [Az SSPR üzembe helyezése](active-directory-passwords-best-practices.md)
+### Informatikai rendszergazdák: Új jelszavak kérése
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
-#### [Klasszikus portál](active-directory-create-users-reset-password.md)
-### [Elévülési szabályzatok beállítása](active-directory-passwords-set-expiration-policy.md)
-### Jelszókezelés engedélyezése
-#### [Első lépések](active-directory-passwords-getting-started.md)
-#### [Üzembe helyezés](active-directory-passwords-best-practices.md)
-#### [Testreszabás](active-directory-passwords-customize.md)
-#### [Jelentések megtekintése](active-directory-passwords-get-insights.md)
-#### [További információ](active-directory-passwords-learn-more.md)
-#### [Gyakori kérdések](active-directory-passwords-faq.md)
-#### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)
+#### [klasszikus Azure portál](active-directory-create-users-reset-password.md)
+### [Az SSPR-rel kapcsolatos tudnivalók ](active-directory-passwords-policy.md)
+### [Új jelszó kérésével kapcsolatos tudnivalók](active-directory-passwords-how-it-works.md)
+### [Az SSPR testreszabása](active-directory-passwords-customize.md)
+### [Az SSPR által felhasznált adatok](active-directory-passwords-data.md)
+### [Jelentéskészítés az SSPR-ben](active-directory-passwords-reporting.md)
+### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [Jelszóvisszaíró](active-directory-passwords-writeback.md)
+### [Jelszókivonat szinkronizálása](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
+### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)
+### [Gyakori kérdések](active-directory-passwords-faq.md)
+
 
 ## Eszközök kezelése
 ### [Eszközök regisztrálása](active-directory-device-registration-overview.md)
@@ -289,6 +293,7 @@
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
 ##### [REST](role-based-access-control-manage-access-rest.md)
 #### [Hibaelhárítás](role-based-access-control-troubleshooting.md)
+#### [Erőforrás-szolgáltatói műveletek](role-based-access-control-resource-provider-operations.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 
 ## Identitások védelme
@@ -341,7 +346,7 @@
 
 
 # Referencia
-## [PowerShell-parancsmagok](/powershell/ )
+## [PowerShell-parancsmagok](/powershell/azure/overview)
 ## [Java API-referencia](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
 ## [Szolgáltatási korlátozások](active-directory-service-limits-restrictions.md)

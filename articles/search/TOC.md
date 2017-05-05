@@ -15,13 +15,12 @@
 ### [Azure Portal](search-explorer.md)
 ### [.NET](search-query-dotnet.md)
 ### [REST](search-query-rest-api.md)
-## [A keresési eredmények kezelése](search-pagination-page-layout.md)
-## oktatóanyagokat
-### [.NET](search-howto-dotnet-sdk.md)
-### [.NET-szinonimák előzetes verzió](search-synonyms-tutorial-sdk.md)
-### [Portál](search-get-started-portal.md)
-### [NodeJS](search-get-started-nodejs.md)
-### [Java](search-get-started-java.md)
+# oktatóanyagokat
+## [.NET](search-howto-dotnet-sdk.md)
+## [.NET-szinonimák előzetes verzió](search-synonyms-tutorial-sdk.md)
+## [Portal](search-get-started-portal.md)
+## [Node.js](search-get-started-nodejs.md)
+## [Java](search-get-started-java.md)
 # Útmutató
 ## Tervezés és kialakítás
 ### [Szolgáltatási korlátozások](search-limits-quotas-capacity.md)
@@ -59,14 +58,16 @@
 ### Egyéni keresés
 #### [Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
+### [Lapozás eredményei](search-pagination-page-layout.md)
 ### [Pontozás](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [Javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Jellemzőalapú navigáció](search-faceted-navigation.md)
 ### [Szinonimák előzetes verziója](search-synonyms.md)
 
 # Referencia
-## [.NET](/dotnet/api/microsoft.azure.search)
-## [.NET (Felügyelet)](/dotnet/api/microsoft.azure.management.search)
+
+## [.NET](/dotnet/api/?term=microsoft.azure.search)
+## [.NET (Felügyelet)](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python (Felügyelet)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST](/rest/api/searchservice)
 ## [.REST (Felügyelet)](/rest/api/searchmanagement)

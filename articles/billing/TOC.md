@@ -33,6 +33,7 @@
 
 # Referencia
 ## [API – Áttekintés](billing-usage-rate-card-overview.md)
+## [Az Enterprise Reporting API áttekintése](billing-enterprise-api.md)
 ## [REST számlázása](/rest/api/billing)
 ## [Használat és RateCard REST](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
 ## [Partneri megoldás: Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)

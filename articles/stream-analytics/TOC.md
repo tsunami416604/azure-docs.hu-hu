@@ -32,23 +32,33 @@
 
 ## Kezelés
 ### [Feladatok megbízhatósága](stream-analytics-job-reliability.md)
-### [Feladatok figyelése](stream-analytics-monitoring.md)
-### [Diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)
 ### [Feladatok programozott figyelése](stream-analytics-monitor-jobs.md)
 ### [Feladatok figyelése a PowerShell-lel](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [Teljesítménynövelés skálázással](stream-analytics-scale-jobs.md)
 ### [Skálázás Machine Learning-függvények esetén](stream-analytics-scale-with-machine-learning-functions.md)
 ### [Bemeneti és kimeneti hitelesítő adatok forgatása](stream-analytics-login-credentials-inputs-outputs.md)
 
+## Hibaelhárítás
+### [Hibaelhárítási útmutató](stream-analytics-troubleshooting-guide.md)
+### [Feladatok figyelése](stream-analytics-monitoring.md)
+### [Erőforrás-állapot panel](stream-analytics-resource-health.md)
+### [Feladatábra és metrikák](stream-analytics-job-diagram-with-metrics.md)
+### [Tesztlekérdezések](stream-analytics-test-query.md)
+### [Minta beviteli adatok](stream-analytics-sample-data-input.md)
+### [SELECT INTO hibakeresés](stream-analytics-select-into.md)
+### [Eseménysorrend kezelése](stream-analytics-out-of-order-and-late-events.md)
+### [Eseményközpont olvasói korlátai](stream-analytics-event-hub-consumer-groups.md)
+### [Streamelési egységek optimalizálása](stream-analytics-streaming-unit-consumption.md)
+### [Diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)
+
 ## Automatizálás
 ### [Egykattintásos PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytics)
+## [PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [Lekérdezés nyelve](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST](/rest/api/streamanalytics)
-
 
 # Erőforrások
 ## [Kibocsátási megjegyzések](stream-analytics-release-notes.md)

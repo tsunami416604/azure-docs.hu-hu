@@ -7,11 +7,14 @@
 ## [Batch-fiók létrehozása](batch-account-create-portal.md)
 ## [.NET-útmutató a Batchhez](batch-dotnet-get-started.md)
 ## [Python-útmutató a Batchhez](batch-python-tutorial.md)
+## [Node.js-útmutató a Batchhez](batch-nodejs-get-started.md)
 # Útmutató
 ## Fejlesztés
 ### [Alkalmazáscsomagok](batch-application-packages.md)
 ### [Számítási csomópontok automatikus méretezése](batch-automatic-scaling.md)
-### [Azure AD-hitelesítés](batch-aad-auth.md)
+### Azure AD-hitelesítés
+#### [Azure AD a Batch szolgáltatással](batch-aad-auth.md)
+#### [Azure AD a Batch Managementtel](batch-aad-auth-management.md)
 ### [Párhuzamosan futó csomóponti feladatok](batch-parallel-node-tasks.md)
 ### [Hatékony listázó lekérdezések](batch-efficient-list-queries.md)
 ### [Feladatok előkészítési és befejezési műveletei](batch-job-prep-release.md)
@@ -27,7 +30,7 @@
 ### [Azure CLI](batch-cli-get-started.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.batch/v2.5.0/azurerm.batch)
+## [PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
 ## [Java](/java/api/com.microsoft.azure.batch)

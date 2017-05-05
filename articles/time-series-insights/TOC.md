@@ -1,11 +1,18 @@
 # Áttekintés
 ## [Mi az a Time Series Insights?](time-series-insights-overview.md)
 
-# Bevezetés
+# Első lépések
 ## [Környezet létrehozása](time-series-insights-get-started.md)
 ## [Adathozzáférés biztosítása](time-series-insights-data-access.md)
 ## [Eseményforrás létrehozása](time-series-insights-add-event-source.md)
 ## [Események küldése](time-series-insights-send-events.md)
+
+# Útmutató
+## [Event Hub-eseményforrás létrehozása](time-series-insights-how-to-add-an-event-source-eventhub.md)
+## [IoT Hub-eseményforrás létrehozása](time-series-insights-how-to-add-an-event-source-iothub.md)
+## [A környezet méretezése](time-series-insights-how-to-scale-your-environment.md)
+## [Problémák diagnosztizálása és megoldása](time-series-insights-diagnose-and-solve-problems.md)
+## [Adatok lekérdezése a C# használatával](time-series-insights-query-data-csharp.md)
 
 # Referencia
 ## [Lekérdezés API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)

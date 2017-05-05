@@ -6,6 +6,7 @@
 ## [Globális terjesztés](documentdb-distribute-data-globally.md)
 ## [Régiónkénti feladatátvétel](documentdb-regional-failovers.md)
 ## [Biztonság](documentdb-nosql-database-security.md)
+## [Titkosítás inaktív állapotban](documentdb-nosql-database-encryption-at-rest.md)
 ## [A NoSQL teljes birtoklási költségének elemzése](https://aka.ms/documentdb-tco-paper)
 ## Forgatókönyvek
 ### [Gyakori alkalmazási helyzetek](documentdb-use-cases.md)

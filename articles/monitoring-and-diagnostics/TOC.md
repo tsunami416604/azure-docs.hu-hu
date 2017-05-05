@@ -56,15 +56,16 @@
 # Referencia
 ## [A támogatott mérőszámok listája](monitoring-supported-metrics.md)
 ## [Megfigyelési adatok forrásai](monitoring-data-sources.md)
-## [PowerShell](/powershell/resourcemanager/azurerm.insights/v1.0.12/azurerm.insights?redirectedfrom=msdn#40v=azure.200#41)
+## [PowerShell](/powershell/module/azurerm.insights)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST](/rest/api/monitor/)
-## [Azure Diagnostics-verzióelőzmények](azure-diagnostics-versioning-history.md)
-## [Azure Diagnostics-séma](azure-diagnostics-schema.md)
-### [Diagnostics-séma 1.0](azure-diagnostics-schema-1dot0.md)
-### [Diagnostics-séma 1.2](azure-diagnostics-schema-1dot2.md)
-### [Diagnostics-séma 1.3-tól 1.7-ig](azure-diagnostics-schema-1dot3-and-later.md)
+## [Az Azure Diagnostics bővítményeinek verzióelőzményei](azure-diagnostics-versioning-history.md)
+## [Azure Diagnostics-bővítményséma](azure-diagnostics-schema.md)
+### [1.0](azure-diagnostics-schema-1dot0.md)
+### [1.2](azure-diagnostics-schema-1dot2.md)
+### [1.3–1.7](azure-diagnostics-schema-1dot3-and-later.md)
 
 # Erőforrások
 ## [PowerShell-minták](insights-powershell-samples.md)
 ## [Azure CLI 1.0-minták](insights-cli-samples.md)
+## [Videók](https://azure.microsoft.com/resources/videos/index/?services=monitor)

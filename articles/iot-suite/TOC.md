@@ -11,12 +11,22 @@
 ## [Csatlakoztatott factory-megoldás áttekintése](iot-suite-connected-factory-overview.md)
 ## [A távoli figyelési megoldás bemutatója](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [A prediktív karbantartási megoldás bemutatója](iot-suite-predictive-walkthrough.md)
+## [A Raspberry Pi csatlakoztatása](iot-suite-raspberry-pi-kit-get-started.md)
+### C használata
+#### [Szimulált adatok](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)
+#### [Valódi érzékelők használata](iot-suite-raspberry-pi-kit-c-get-started-basic.md)
+#### [Vezérlőprogram-frissítés megvalósítása](iot-suite-raspberry-pi-kit-c-get-started-advanced.md)
+### Node.js használata
+#### [Szimulált adatok](iot-suite-raspberry-pi-kit-node-get-started-simulator.md)
+#### [Valódi érzékelők használata](iot-suite-raspberry-pi-kit-node-get-started-basic.md)
+#### [Vezérlőprogram-frissítés megvalósítása](iot-suite-raspberry-pi-kit-node-get-started-advanced.md)
 
 # Útmutató
-## [Az eszköz csatlakoztatása a távoli figyelési megoldáshoz (Windows)](iot-suite-connecting-devices.md)
-## [Az eszköz csatlakoztatása a távoli figyelési megoldáshoz (Linux)](iot-suite-connecting-devices-linux.md)
-## [Az eszköz csatlakoztatása a távoli figyelési megoldáshoz (mbed)](iot-suite-connecting-devices-mbed.md)
-## [Az eszköz csatlakoztatása a távoli figyelési megoldáshoz (Node)](iot-suite-connecting-devices-node.md)
+## Szimulált eszköz csatlakoztatása
+### [C Windowson](iot-suite-connecting-devices.md)
+### [C Linuxon](iot-suite-connecting-devices-linux.md)
+### [Node.js](iot-suite-connecting-devices-node.md)
+## [mbed-eszköz csatlakoztatása](iot-suite-connecting-devices-mbed.md)
 ## [Logikai alkalmazás csatlakoztatása a távoli figyelési megoldáshoz](iot-suite-logic-apps-tutorial.md)
 ## [Előre konfigurált megoldás testreszabása](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [Dinamikus telemetria használata a távoli figyelési megoldással](iot-suite-dynamic-telemetry.md)

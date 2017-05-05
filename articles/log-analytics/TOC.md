@@ -48,6 +48,7 @@
 ### [Riasztáskezelési megoldás](log-analytics-solution-alert-management.md)
 ## Megoldások használata
 ### [Megoldások áttekintése](log-analytics-add-solutions.md)
+### [Célmegoldások](../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [Activity Log Analytics](log-analytics-activity.md)
 ### [AD-elemzés](log-analytics-ad-assessment.md)
 ### [AD-replikáció állapota](log-analytics-ad-replication-status.md)
@@ -57,6 +58,8 @@
 ### [Változáskövetés](log-analytics-change-tracking.md)
 ### [Tárolók](log-analytics-containers.md)
 ### [DNS-elemzés](log-analytics-dns.md)
+### [Informatikai szolgáltatásfelügyeleti összekötő az OMS-ben](log-analytics-itsmc-overview.md)
+#### [Informatikai szolgáltatásfelügyeleti kapcsolatok az OMS-ben](log-analytics-itsmc-connections.md)
 ### [Key Vault](log-analytics-azure-key-vault.md)
 ### Logic Apps B2B-üzenetek
 #### [Logic Apps B2B-üzeneteken alapuló megoldás](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
@@ -84,7 +87,7 @@
 ### [Riasztási API](log-analytics-api-alerts.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+## [PowerShell](/powershell/module/azurerm.operationalinsights)
 ## [REST](/rest/api/loganalytics)
 
 # Erőforrások

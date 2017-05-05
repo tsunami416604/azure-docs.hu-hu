@@ -19,6 +19,7 @@
 ### [Ablakfüggvények az U-SQL-ben](data-lake-analytics-use-window-functions.md)
 ### [Felhasználó által definiált operátorok az U-SQL-ben](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 ### [A U-SQL Python-bővítményei](data-lake-analytics-u-sql-python-extensions.md)
+### [A U-SQL R-bővítményei](data-lake-analytics-u-sql-r-extensions.md)
 ### [A U-SQL kognitív képességei](data-lake-analytics-u-sql-cognitive.md)
 
 ## Megoldások létrehozása
@@ -40,7 +41,7 @@
 ### [A Vertex végrehajtási nézet használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.datalakeanalytics/v2.3.0/azurerm.datalakeanalytics)
+## [PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)

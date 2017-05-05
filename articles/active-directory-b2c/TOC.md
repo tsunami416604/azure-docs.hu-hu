@@ -9,14 +9,14 @@
 ## Gyors útmutatók
 ### [iOS-alkalmazás készítése](active-directory-b2c-devquickstarts-ios.md)
 ### [Android-alkalmazás készítése](active-directory-b2c-devquickstarts-android.md)
-### [Node.Js-alapú webes API készítése](active-directory-b2c-devquickstarts-api-node.md)
-### [.NET-alapú webes alkalmazás készítése](active-directory-b2c-devquickstarts-web-dotnet.md)
-#### [Feliratkozás egy ASP.NET-webalkalmazásra és bejelentkezés](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+### .NET-alapú webapp készítése
+#### [Feliratkozás egy .NET-webappra és bejelentkezés](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+#### [Webes API-hívás .NET-webalkalmazásból](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 ### [.NET-alapú webes API készítése](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [Windows alapú asztali alkalmazás készítése](active-directory-b2c-devquickstarts-native-dotnet.md)
-### [Webes API-hívás .NET-webalkalmazásból](active-directory-b2c-devquickstarts-web-api-dotnet.md)
+### [Node.Js-alapú webapp készítése](active-directory-b2c-devquickstarts-web-node.md)
+### [Node.Js-alapú webes API készítése](active-directory-b2c-devquickstarts-api-node.md)
+### [.NET-alapú asztali alkalmazás készítése](active-directory-b2c-devquickstarts-native-dotnet.md)
 ### [Az Azure AD Graph API használata](active-directory-b2c-devquickstarts-graph-dotnet.md)
-### [Bejelentkezés felvétele Node js-webalkalmazásokba](active-directory-b2c-devquickstarts-web-node.md)
 ## [Gyakori kérdések](active-directory-b2c-faqs.md)
 
 # Útmutató
@@ -53,7 +53,7 @@
 
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
-## [Azure visszajelzési fórum](http://feedback.azure.com/forums/169401-azure-active-directory)
+## [Azure AD B2C visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [Támogatás](active-directory-b2c-support.md)

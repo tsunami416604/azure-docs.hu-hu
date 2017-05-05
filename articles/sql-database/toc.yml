@@ -4,7 +4,7 @@
   items:
   - name: "Az SQL DB névjegye"
     href: sql-database-technical-overview.md
-- name: "Első lépések"
+- name: "Gyors útmutatók"
   expanded: true
   items:
   - name: "DB létrehozása – portál"
@@ -38,7 +38,9 @@
   - name: "1 – Új SQL DB létrehozása/tervezése"
     href: sql-database-design-first-database.md
   - name: "2 – Meglévő SQL Server áttelepítése"
-    href: sql-database-migrate-your-sql-server-database.md 
+    href: sql-database-migrate-your-sql-server-database.md
+  - name: "3 – Az SQL DB biztonságossá tétele"
+    href: sql-database-security-tutorial.md
 - name: "Példák"
   items:
   - name: "Azure CLI"

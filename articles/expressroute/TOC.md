@@ -12,7 +12,6 @@
 ## [Előfeltételek](expressroute-prerequisites.md)
 ## [Munkafolyamatok](expressroute-workflows.md)
 ## [Útválasztási követelmények](expressroute-routing.md)
-## [NAT-követelmények](expressroute-nat.md)
 ## [QoS-követelmények](expressroute-qos.md)
 ## [Információk a kapcsolatcsoportok módosításáról klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-move.md)
 
@@ -38,8 +37,9 @@
 
 ## Ajánlott eljárások
 ### [Hálózati biztonság és felhőszolgáltatások – ajánlott eljárások](../best-practices-network-security.md)
-## [Útválasztás optimalizálása](expressroute-optimize-routing.md)
+### [Útválasztás optimalizálása](expressroute-optimize-routing.md)
 ### [Aszimmetrikus útválasztás](expressroute-asymmetric-routing.md)
+### [NAT az ExpressRoute-hoz](expressroute-routing-nat.md)
 
 ## Hibaelhárítás
 ### [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
@@ -47,7 +47,7 @@
 ### [ARP-táblák lekérése (klasszikus)](expressroute-troubleshooting-arp-classic.md)
 
 # Referencia
-## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.network/v3.4.0/azurerm.network)
+## [PowerShell](/powershell/module/azurerm.network)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/dn606310)
 

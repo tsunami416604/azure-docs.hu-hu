@@ -81,6 +81,7 @@
 ### Közvetlen metódusok használata
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-direct-methods.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-direct-methods.md)
+#### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-direct-methods.md)
 ### Ismerkedés az eszközfelügyelettel
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-device-management-get-started.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-device-management-get-started.md)

@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Monitoring and Diagnostics dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+title: "Az Azure Monitor dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan használhatja a felügyeleti és diagnosztikai szolgáltatásokat a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. API-referenciák, ajánlott eljárások és egyebek."
 services: monitoring-and-diagnostics
 author: carolz
@@ -13,12 +13,12 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: 0d57ccb26a3dde16c50d2e837d392ab8e6fea979
-ms.lasthandoff: 03/22/2017
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 475353f5a5abca1e9d6b5fdf4980d0cf33acc744
+ms.lasthandoff: 05/03/2017
 
 ---
-# <a name="monitoring-and-diagnostics-documentation"></a>Monitoring and Diagnostics – dokumentáció
+# <a name="azure-monitor-documentation"></a>Az Azure Monitor dokumentációja
 
 Ismerje meg, hogyan használhatja az Azure felügyeleti és diagnosztikai szolgáltatásokat a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. Oktatóanyagok, API-referenciák, ajánlott eljárások és egyéb dokumentáció, amelyek segítségével megismerheti a felügyelet és diagnosztika használatát, valamint méretezhető és megbízható megoldások tervezésének és üzembe helyezésének módját.
 

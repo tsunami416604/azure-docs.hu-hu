@@ -132,8 +132,9 @@
 ## Fürtök kiterjesztése
 ### [Fürtök testreszabása a Bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [Fürtök testreszabása szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)
-### [Hive-kódtárak hozzáadása](hdinsight-hadoop-add-hive-libraries.md)
 ### [Szkriptműveletek fejlesztése](hdinsight-hadoop-script-actions-linux.md)
+### [Mono telepítése vagy frissítése](hdinsight-hadoop-install-mono.md)
+### [Hive-kódtárak hozzáadása](hdinsight-hadoop-add-hive-libraries.md)
 ### [A Giraph használata](hdinsight-hadoop-giraph-install-linux.md)
 ### [A Hue használata](hdinsight-hadoop-hue-linux.md)
 ### [Az R használata](hdinsight-hadoop-r-scripts-linux.md)
@@ -190,7 +191,7 @@
 #### [Hive-lekérdezés teljesítménye](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight)
+## [PowerShell](/powershell/module/azurerm.hdinsight)
 ## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
 ## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)

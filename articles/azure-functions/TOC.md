@@ -30,6 +30,7 @@
 #### [Értesítési központ](functions-bindings-notification-hubs.md)
 #### [Mobile Apps](functions-bindings-mobile-apps.md)
 #### [Külső fájl](functions-bindings-external-file.md)
+#### [Külső tábla](functions-bindings-external-table.md)
 ### [Functions-proxyk megadása](functions-proxies.md)
 ### [Függvényalkalmazás létrehozása az Azure Portal használatával](functions-create-function-app-portal.md)
 ### [Ütemezett karbantartási feladatok végrehajtása](functions-scenario-database-table-cleanup.md)

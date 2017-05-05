@@ -8,19 +8,19 @@
 ## [Integráció a következővel: SAP Netweaver](../../../active-directory/active-directory-saas-sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [Integráció a következővel: SAP Business ByDesign](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 # SAP-megoldások az Azure-on
-## SAP HANA
+## SAP HANA nagyméretű példányok
 ### [Áttekintés és architektúra](hana-overview-architecture.md)
 ### [Infrastruktúra és kapcsolódás](hana-overview-infrastructure-connectivity.md)
 ### [Az SAP HANA telepítése](hana-installation.md)
 ### [Magas rendelkezésre állás és vészhelyreállítás](hana-overview-high-availability-disaster-recovery.md)
 ### [Hibaelhárítás és figyelés](troubleshooting-monitoring.md)
+## SAP HANA virtuális gépeken
 ### [Egyetlen példánnyal rendelkező SAP HANA](hana-get-started.md)
 ### [Üzembe helyezési útmutató a következőhöz: S/4 HANA vagy BW/4 HANA](cal-s4h.md)
-### Biztonsági mentés
-#### [Áttekintés](sap-hana-backup-guide.md)
-#### [Fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
-#### [Storage Snapshots](sap-hana-backup-storage-snapshots.md)
-
+### [Magas rendelkezésre állás virtuális gépeken] (sap-hana-high-availability.md)
+### [A biztonsági mentés áttekintése](sap-hana-backup-guide.md)
+### [Fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
+### [Storage-pillanatkép biztonsági mentései](sap-hana-backup-storage-snapshots.md)
 ## SAP NetWeaver
 ### [Áttekintés és architektúra](suse-quickstart.md)
 ### [Tervezés és megvalósítás](planning-guide.md)

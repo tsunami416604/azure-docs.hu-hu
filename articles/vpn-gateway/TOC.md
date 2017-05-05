@@ -37,21 +37,23 @@
 ### [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
 ## [BGP konfigurálása egy VPN-átjáró számára](vpn-gateway-bgp-resource-manager-ps.md)
 ## [Magas rendelkezésre állású aktív–aktív kapcsolatok konfigurálása](vpn-gateway-activeactive-rm-powershell.md)
-## [Helyi hálózati átjáró beállításainak módosítása a PowerShell-lel](vpn-gateway-modify-local-network-gateway.md)
+## Helyi hálózati átjáró beállításainak módosítása
+### [PowerShell](vpn-gateway-modify-local-network-gateway.md)
+### [Parancssori felület](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [VPN Gateway-kapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md)
 ## [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md)
 ## VPN Gateway törlése
 ### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [Önaláírt főtanúsítványok létrehozása pont–hely (P2S) kapcsolatok esetén](vpn-gateway-certificates-point-to-site.md)
+## [Önaláírt tanúsítványok létrehozása pont–hely kapcsolatokhoz](vpn-gateway-certificates-point-to-site.md)
 ## [VPN-átjáró konfigurálása (klasszikus)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## Hibaelhárítás
 ### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.network/v3.6.0/azurerm.network)
-## [PowerShell (klasszikus)](/powershell/servicemanagement/azure.networking/v3.4.0/azure.networking)
+## [PowerShell](/powershell/module/azurerm.network)
+## [PowerShell (klasszikus)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [REST](https://msdn.microsoft.com/library/mt163859)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/jj154113)
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/network)

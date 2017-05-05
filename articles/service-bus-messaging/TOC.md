@@ -42,8 +42,10 @@
 ### [Tranzakciófeldolgozás](service-bus-transactions.md)
 ### [Diagnosztikai naplók](service-bus-diagnostic-logs.md)
 ### AMQP
+#### [Az AMQP áttekintése](service-bus-amqp-overview.md)
 #### [.NET](service-bus-amqp-dotnet.md)
 #### [Java](service-bus-amqp-java.md)
+#### [Java Message Service és AMQP](service-bus-java-how-to-use-jms-api-amqp.md)
 #### [AMQP protokoll-útmutató](service-bus-amqp-protocol-guide.md)
 #### [AMQP kérés-válasz alapú műveletek](service-bus-amqp-request-response.md)
 
@@ -56,7 +58,7 @@
 ## .NET
 ### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus)
-## [PowerShell](/powershell/resourcemanager/azurerm.servicebus/v0.0.2/azurerm.servicebus)
+## [PowerShell](/powershell/module/azurerm.servicebus)
 ## [REST](/rest/api/servicebus)
 ## [Kivételek](service-bus-messaging-exceptions.md)
 ## [Kvóták](service-bus-quotas.md)

@@ -22,9 +22,11 @@
 ## [A Traffic Manager teljesítményének mérése](traffic-manager-performance-considerations.md)
 ## [A Traffic Manager kezelése a PowerShell használatával](traffic-manager-powershell-arm.md)
 ## [Az internetes tartomány átirányítása a Traffic Managerhez](traffic-manager-point-internet-domain.md)
+## Hibaelhárítás
+### [Az Azure Traffic Manager csökkentett teljesítményének elhárítása](traffic-manager-troubleshooting-degraded.md)
 
 # Referencia
-## [PowerShell](/powershell/resourcemanager/azurerm.trafficmanager/v2.5.0/azurerm.trafficmanager)
+## [PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/)
