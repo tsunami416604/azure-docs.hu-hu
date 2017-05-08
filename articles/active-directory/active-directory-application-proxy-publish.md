@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/30/2016
+ms.date: 04/20/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: d7fe552e0c8856a8d7799ae8a7732e57a350fee3
-ms.openlocfilehash: 2a42605c75fe183d57030e4a3ff3f3218a7dbc2b
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 4f7860b906ab988c918de31d53f4a958e4dea83b
+ms.contentlocale: hu-hu
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -30,8 +32,8 @@ Az Azure AD alkalmazásproxy segít a távoli feldolgozók támogatásában azá
 
 > [!NOTE]
 > Az alkalmazásproxy-szolgáltatás kizárólag akkor érhető el, ha frissített az Azure Active Directory Prémium vagy Alapszintű kiadására. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
-> 
-> 
+
+Ha szeretné az Alkalmazásproxy nyilvános előzetes verzióját használni, ezt megteheti az [alkalmazások közzétételével az Azure Portalban](application-proxy-publish-azure-portal.md).
 
 ## <a name="publish-an-app-using-the-wizard"></a>Alkalmazás közzététele a varázsló használatával
 1. Jelentkezzen be rendszergazdaként a [klasszikus Azure portálra](https://manage.windowsazure.com/).
@@ -102,10 +104,5 @@ Egy alkalmazás törléséhez jelölje ki azt a listában, majd kattintson a **T
 * [Munkavégzés jogcímeket figyelembe vevő alkalmazásokkal](active-directory-application-proxy-claims-aware-apps.md)
 
 A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](http://blogs.technet.com/b/applicationproxyblog/).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

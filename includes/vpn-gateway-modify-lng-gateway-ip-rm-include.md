@@ -1,9 +1,8 @@
-Az átjáró IP-címének módosításához használja a New-AzureRmVirtualNetworkGatewayConnection parancsmagot. A Set parancsmag jelenleg nem támogatja az átjáró IP-címének módosítását.
+### <a name="gwipnoconnection"></a> Helyi hálózati átjáró „GatewayIpAddress” értékének módosítása – nincs átjárókapcsolat
 
-### <a name="gwipnoconnection"></a>Átjáró IP-címének módosítása – átjárókapcsolat nélkül
-Ha módosítani szeretné a kapcsolattal nem rendelkező helyi hálózati átjáró IP-címét, akkor használja az alábbi példát. Ugyanekkor módosíthatja a címelőtagokat is. Ügyeljen arra, hogy a helyi hálózati átjáró meglévő nevét használja az aktuális beállítások felülírásakor. Ha nem ezt teszi, új helyi hálózati átjárót hoz létre a meglévő felülírása helyett.
+Ha a VPN-eszköz, amelyhez csatlakozni akar, megváltoztatta nyilvános IP-címét, a változtatásnak megfelelően módosítania kell a helyi hálózati átjárót. A példa alapján módosítsa a helyi hálózati átjárót, amelynek nincs átjárókapcsolata.
 
-Használja a következő példát, és cserélje le az értékeket saját értékeire:
+Az érték módosításával egy időben a címelőtagokat is módosíthatja. Ügyeljen arra, hogy a helyi hálózati átjáró meglévő nevét használja az aktuális beállítások felülírásához. Ha más nevet használ, új helyi hálózati átjárót hoz létre a meglévő felülírása helyett.
 
 ```powershell
 New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
@@ -11,13 +10,10 @@ New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName MyRGName
 ```
 
-### <a name="gwipwithconnection"></a>Átjáró IP-címének módosítása – meglévő átjárókapcsolat
-Ha már létezik egy átjárókapcsolat, először el kell távolítania a kapcsolatot. Ha a kapcsolatot eltávolította, módosíthatja az átjáró IP-címét, és létrehozhat egy új kapcsolatot. Ugyanekkor módosíthatja a címelőtagokat is. Ez némi állásidőt jelent a VPN-kapcsolata számára.
+### <a name="gwipwithconnection"></a>Helyi hálózati átjáró „GatewayIpAddress” értékének módosítása – létező átjárókapcsolat
 
-> [!IMPORTANT]
-> Ne törölje a VPN Gatewayt. Ha törli, akkor újra végre kell hajtania a létrehozásához szükséges lépéseket. Emellett frissítenie kell a helyszíni VPN-eszközt az új VPN-átjáró IP-címével.
-> 
-> 
+Ha a VPN-eszköz, amelyhez csatlakozni akar, megváltoztatta nyilvános IP-címét, a változtatásnak megfelelően módosítania kell a helyi hálózati átjárót. Ha már létezik egy átjárókapcsolat, először el kell távolítania a kapcsolatot. Ha a kapcsolatot eltávolította, módosíthatja az átjáró IP-címét, és létrehozhat egy új kapcsolatot. Ugyanekkor módosíthatja a címelőtagokat is. Ez némi állásidőt jelent a VPN-kapcsolata számára. Mikor módosítja az átjáró IP-címét, nem kell törölnie a VPN-átjárót. Csak a kapcsolatot kell eltávolítania.
+ 
 
 1. Távolítsa el a kapcsolatot. A kapcsolat nevét a Get-AzureRmVirtualNetworkGatewayConnection parancsmaggal keresheti meg.
 

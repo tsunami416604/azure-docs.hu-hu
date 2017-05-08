@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2017
+ms.date: 05/02/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: b0624bde9ab53231768beb0c832a4a49b21a8975
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 03a6c1f20632691c08f5de4afe74eacc6f79608e
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -87,9 +88,14 @@ Ha engedélyezi ezt a megoldást, az OMS-munkaterülethez közvetlenül kapcsol�
 Azonban a Windows rendszerű számítógépek hozzáadhatóak egy hibrid runbook-feldolgozócsoporthoz az Automation-fiókban az Automation-runbookok támogatása érdekében, ha ugyanazon fiókot használja a megoldáshoz és a hibrid runbook-feldolgozócsoporttagsághoz.  Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.  
 
 ## <a name="configuration"></a>Konfiguráció
-A frissítéskezelési megoldás az OMS-munkaterülethez való hozzáadásához és annak ellenőrzéséhez, hogy az ügynökök készítenek jelentéseket, hajtsa végre az alábbi lépéseket. Windows-ügynökök hozzáadása automatikusan történik, esetükben nincs szükség további konfigurációs beállításokra. 
+A frissítéskezelési megoldás az OMS-munkaterülethez való hozzáadásához és annak ellenőrzéséhez, hogy az ügynökök készítenek jelentéseket, hajtsa végre az alábbi lépéseket. A munkaterülethez már csatlakoztatott Windows-ügynökök hozzáadása automatikusan, további konfiguráció nélkül történik. 
 
-Három különböző módon adhatja hozzá ezt a megoldást: az Azure Portalon az Azure Marketplace Automatizálás és vezérlés ajánlata vagy egy frissítéskezelési megoldás kiválasztásával; vagy az OMS-munkaterülete OMS-megoldástárából.  Ha rendelkezik összekapcsolt Automation-fiókkal és OMS munkaterülettel egyazon erőforráscsoportban és régióban, az Automatizálás és vezérlés kiválasztása esetén a rendszer ellenőrzi a konfigurációt, majd telepíti a megoldást és konfigurálja azt a két szolgáltatásban.  A frissítéskezelési megoldás az Azure Marketplace-en való kiválasztása ugyanezt eredményezi.  Ha egyik szolgáltatás sincs telepítve az előfizetésében, kövesse az **Új megoldás létrehozása** panelen leírt lépéseket, és erősítse meg, hogy szeretné telepíteni a többi, előzetesen kiválasztott, ajánlott megoldást.  Hozzáadhatja az OMS-munkaterülethez a frissítéskezelési megoldást. Ehhez kövesse a megoldástárban az [OMS-megoldások hozzáadásával](../log-analytics/log-analytics-add-solutions.md) kapcsolatos témakörben leírt eljárást.  
+A megoldás a következő módszerekkel helyezhető üzembe:
+
+* Az Azure Portalon az Azure Marketplace Automatizálás és vezérlés ajánlata vagy egy frissítéskezelési megoldás kiválasztásával
+* Az OMS-munkaterülete OMS-megoldástárából
+
+Ha rendelkezik összekapcsolt Automation-fiókkal és OMS munkaterülettel egyazon erőforráscsoportban és régióban, az Automatizálás és vezérlés kiválasztása esetén a rendszer ellenőrzi a konfigurációt, majd telepíti a megoldást és konfigurálja azt a két szolgáltatásban.  A frissítéskezelési megoldás az Azure Marketplace-en való kiválasztása ugyanezt eredményezi.  Ha egyik szolgáltatás sincs telepítve az előfizetésében, kövesse az **Új megoldás létrehozása** panelen leírt lépéseket, és erősítse meg, hogy szeretné telepíteni a többi, előzetesen kiválasztott, ajánlott megoldást.  Hozzáadhatja az OMS-munkaterülethez a frissítéskezelési megoldást. Ehhez kövesse a megoldástárban az [OMS-megoldások hozzáadásával](../log-analytics/log-analytics-add-solutions.md) kapcsolatos témakörben leírt eljárást.  
 
 ### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>OMS-ügynökök és Operations Manager felügyeleti csoport az OMS-sel való kapcsolatának ellenőrzése
 
@@ -144,7 +150,7 @@ A munkaterületen található összes Linux- és Windows-számítógép frissít
 > [!NOTE]
 > Az Azure Marketplace-ről üzembe helyezett Windows rendszerű virtuális gépek alapértelmezés szerint úgy vannak beállítva, hogy automatikusan frissítéseket kapjanak a Windows Update szolgáltatástól.  Ez a viselkedés nem változik meg, miután hozzáadja ezt a megoldást vagy Windows rendszerű virtuális gépeket a munkaterületéhez.  Ha nem felügyeli aktívan a frissítéseket ebben a megoldásban, az alapértelmezett viselkedést alkalmazza a rendszer (automatikusan alkalmazza a frissítéseket).  
 
-Az Azure Marketplace-en elérhető, igény szerinti Red Hat Enterprise Linux- (RHEL-) rendszerképekből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat Update Infrastructure (RHUI)](../virtual-machines/linux/update-infrastructure-redhat.md) eléréséhez.  Minden más Linux-változatot a disztribúciók online fájltárolójából kell frissíteni, a támogatott eljárásokat követve.  
+Az Azure Marketplace-en elérhető, igény szerinti Red Hat Enterprise Linux- (RHEL-) rendszerképekből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) eléréséhez.  Minden más Linux-változatot a disztribúciók online fájltárolójából kell frissíteni, a támogatott eljárásokat követve.  
 
 ### <a name="viewing-update-deployments"></a>Frissítéstelepítések megtekintése
 Az elérhető frissítéstelepítések listáját a **Frissítéstelepítés** csempére kattintva tekintheti meg.  A lista a frissítések állapota szerinti csoportosításban jelenik meg: **Ütemezett**, **Futó** és **Befejezett**.<br><br> ![Frissítéstelepítési ütemezési lap](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  

@@ -1,4 +1,4 @@
-### <a name="noconnection"></a>Előtagok módosítása – átjárókapcsolat nélkül
+### <a name="noconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – nincs átjárókapcsolat
 
 - További címelőtagok felvétele:
 
@@ -8,7 +8,7 @@
   -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
   ```
 
-- Címelőtag eltávolítása:<br>
+- Címelőtagok eltávolítása:<br>
   Hagyja ki azokat címelőtagokat, amelyekre már nincs szüksége. Ebben a példában a 20.0.0.0/24 előtagra (az előző példából) már nincs szükségünk, ezért frissítjük a helyi hálózati átjárót, kihagyva ezt az előtagot.
 
   ```powershell
@@ -17,13 +17,10 @@
   -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
   ```
 
-### <a name="withconnection"></a>Előtagok módosítása – meglévő átjárókapcsolat
-Ha már rendelkezik átjárókapcsolattal, és szeretné felvenni vagy eltávolítani a helyi hálózati átjáróban tárolt IP-címelőtagokat, akkor az alábbi lépéseket kell sorban végrehajtania. Ez némi állásidőt jelent a VPN-kapcsolata számára.
+### <a name="withconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – létező átjárókapcsolat
 
-> [!IMPORTANT]
-> Ne törölje a VPN Gatewayt. Ha törli, akkor újra végre kell hajtania a létrehozásához szükséges lépéseket. Emellett frissítenie kell a helyszíni VPN-eszközt az új VPN-átjáró IP-címével.
-> 
-> 
+Ha már rendelkezik átjárókapcsolattal, és szeretné felvenni vagy eltávolítani a helyi hálózati átjáróban tárolt IP-címelőtagokat, akkor az alábbi lépéseket kell sorban végrehajtania. Ez némi állásidőt jelent a VPN-kapcsolata számára. Mikor módosítja az IP-címelőtagokat, nem kell törölnie a VPN-átjárót. Csak a kapcsolatot kell eltávolítania.
+
 
 1. Távolítsa el a kapcsolatot.
 

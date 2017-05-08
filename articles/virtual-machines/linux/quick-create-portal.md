@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/13/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: ab29f01980bc7c3a8f12aaa55ff35baa3bf3f9fb
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 8bfc4892343dd62c958ce6937c4879a2b029cb88
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -46,9 +47,9 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
 
-2. Válassza a **Számítás** elemet az **Új** panelen, majd válassza az **Ubuntu Server 16.04 LTS** lehetőséget a **Számítás** panelről, és kattintson a **Létrehozás** gombra.
+2. Válassza a **Számítás** elemet az **Új** panelen, majd válassza az *Ubuntu Server 16.04 LTS* lehetőséget a **Számítás** panelről, és kattintson a **Létrehozás** gombra.
 
-3. Töltse ki a virtuális gép **Alapvető beállítások** űrlapját. A **Hitelesítés típusa** résznél válassza az **SSH** lehetőséget. Az **SSH nyilvános kulcs** beillesztése közben ügyeljen rá, hogy eltávolítsa a kezdő vagy záró térközt. Hozzon létre egy új **Erőforráscsoportot**. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer létrehozza és együttesen kezeli az Azure-erőforrásokat. Amikor végzett, kattintson az **OK** gombra.
+3. Töltse ki a virtuális gép **Alapvető beállítások** űrlapját. A **Hitelesítés típusa** résznél válassza az *SSH* lehetőséget. Az **SSH nyilvános kulcs** beillesztése közben ügyeljen rá, hogy eltávolítsa a kezdő vagy záró térközt. Hozzon létre egy új **Erőforráscsoportot**. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer létrehozza és együttesen kezeli az Azure-erőforrásokat. Amikor végzett, kattintson az **OK** gombra.
 
     ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/quick-create-portal/create-vm-portal-basic-blade.png)  
 
@@ -56,11 +57,11 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
     ![Képernyőkép a virtuális gépek méreteivel](./media/quick-create-portal/create-linux-vm-portal-sizes.png)  
 
-5. A beállítások panelen válassza a **Felügyelt lemezek használata** területen az **Igen** lehetőséget, tartsa meg az alapértelmezéseket a többi beállításnál, majd kattintson az **OK** elemre.
+5. A beállítások panelen válassza a **Felügyelt lemezek használata** területen az *Igen* lehetőséget, tartsa meg az alapértelmezéseket a többi beállításnál, majd kattintson az **OK** elemre.
 
 6. Az összegzés lapon kattintson az **OK** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
 
-7. Az üzembe helyezési állapot figyeléséhez kattintson a virtuális gépre. A virtuális gép megtalálható az Azure Portal irányítópultján, illetve a bal oldali menüben a **Virtuális gépek** elemre kattintva. A virtuális gép létrehozása után az állapot **Üzembe helyezés** értékről **Fut** értékre módosul.
+7. Az üzembe helyezési állapot figyeléséhez kattintson a virtuális gépre. A virtuális gép megtalálható az Azure Portal irányítópultján, illetve a bal oldali menüben a **Virtuális gépek** elemre kattintva. A virtuális gép létrehozása után az állapot *Üzembe helyezés* értékről *Fut* értékre módosul.
 
 
 ## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
@@ -68,10 +69,10 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 Alapértelmezés szerint kizárólag SSH-kapcsolatok engedélyezettek az Azure-ban üzembe helyezett, Linux rendszerű virtuális gépeken. Ha ez a virtuális gép webkiszolgáló lesz, meg kell nyitnia a 80-as portot a webes forgalom számára. Ez a lépés végigvezeti a hálózati biztonsági csoportokra (NSG) vonatkozó szabály létrehozásának folyamatán, amellyel engedélyezheti a bejövő kapcsolatokat a 80-as porton.
 
 1. A virtuális gép paneljén, az **Alapvető erőforrások** szakaszban kattintson az **Erőforráscsoport** nevére.
-2. Az erőforráscsoport paneljén kattintson a **Hálózati biztonsági csoport** elemre az erőforrások listájában. Az NSG neve a virtuális gép -nsg utótaggal bővített neve legyen.
+2. Az erőforráscsoport paneljén kattintson a **Hálózati biztonsági csoport** elemre az erőforrások listájában. Az NSG neve a virtuális gép *-nsg* utótaggal bővített neve legyen.
 3. Kattintson a **Bejövő biztonsági szabály** fejlécre a bejövő szabályok listájának megnyitásához. A listában látnia kell egy, az RDP-re vonatkozó szabályt.
 4. Kattintson a **+ Hozzáadás** gombra a **Bejövő biztonsági szabály felvétele** panel megnyitásához.
-5. A **Név** mezőbe írja be az **nginx** karakterláncot. Ügyeljen rá, hogy a **Porttartomány** értéke 80, a **Művelet** értéke pedig **Engedélyezés** legyen. Kattintson az **OK** gombra.
+5. A **Név** mezőbe írja be az *nginx* karakterláncot. Ügyeljen arra, hogy a **Porttartomány** értéke *80*, a **Művelet** értéke pedig *Engedélyezés* legyen. Kattintson az **OK** gombra.
 
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
@@ -104,7 +105,7 @@ apt-get -y install nginx
 
 ## <a name="view-the-ngix-welcome-page"></a>Az NGINX kezdőlapjának megtekintése
 
-Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális gépén az internet irányából, tetszőleges böngészőt használhat az alapértelmezett NGINX-kezdőlap megtekintéséhez. Ügyeljen arra, hogy az alapértelmezett oldalt a dokumentált `publicIpAddress` használatával keresse fel. 
+Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális gépén az internet irányából, tetszőleges böngészőt használhat az alapértelmezett NGINX-kezdőlap megtekintéséhez. Kérje le a *nyilvános IP-címet* a virtuális gép paneljéről, majd annak használatával nyissa meg az alapértelmezett weblapot.
 
 ![Alapértelmezett NGINX-webhely](./media/quick-create-cli/nginx.png) 
 ## <a name="delete-virtual-machine"></a>Virtuális gép törlése

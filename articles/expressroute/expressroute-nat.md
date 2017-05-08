@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: a7b3f8addbba21e60be0076784ae954f4cedb0b8
-ms.lasthandoff: 04/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
+ms.openlocfilehash: d29cf81747390fe153c3c6dc330ef738de0cd83a
+ms.contentlocale: hu-hu
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -48,7 +49,7 @@ A társviszony-létesítésen keresztül hirdetett NAT IP-előtag hosszára nem 
 > 
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>A Microsoft társviszony-létesítésre vonatkozó NAT-követelmények
-A Microsoft társviszony-létesítési útvonal lehetővé teszi, hogy az Azure nyilvános társviszony-létesítési útvonalon keresztül nem támogatott Microsoft-felhőszolgáltatásokhoz csatlakozzon. A szolgáltatások listájába beletartoznak az Office 365 szolgáltatásai, például az Exchange Online, a SharePoint Online, a Skype Vállalati verzió és a CRM Online. A Microsoft tervezi a kétirányú kapcsolatok támogatását a Microsoft társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalmat forrásoldali hálózati címfordítással érvényes nyilvános IPv4-címekké kell alakítani, mielőtt belép a Microsoft hálózatába. A Microsoft felhőszolgáltatásai felől az Ön hálózata felé irányuló forgalmon forrásoldali hálózati címfordítást kell végrehajtani, mielőtt az adatok belépnének az Ön hálózatába. Az alábbi ábrán annak magas szintű ábrázolása látható, hogy hogyan kell beállítani a NAT-ot a Microsoft társviszony-létesítéshez.
+A Microsoft társviszony-létesítési útvonal lehetővé teszi, hogy az Azure nyilvános társviszony-létesítési útvonalon keresztül nem támogatott Microsoft-felhőszolgáltatásokhoz csatlakozzon. A szolgáltatások listájába beletartoznak az Office 365 szolgáltatásai, például az Exchange Online, a SharePoint Online, a Skype Vállalati verzió és a CRM Online. A Microsoft tervezi a kétirányú kapcsolatok támogatását a Microsoft társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalmat forrásoldali hálózati címfordítással érvényes nyilvános IPv4-címekké kell alakítani, mielőtt belép a Microsoft hálózatába. A Microsoft felhőszolgáltatásai felől az Ön hálózata felé irányuló forgalmon forrásoldali hálózati címfordítást kell végrehajtani az internetes peremhálózaton az [aszimmetrikus útválasztás](expressroute-asymmetric-routing.md) megelőzése érdekében. Az alábbi ábrán annak magas szintű ábrázolása látható, hogy hogyan kell beállítani a NAT-ot a Microsoft társviszony-létesítéshez.
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -63,7 +64,9 @@ A Microsoft társviszony-létesítési útvonal lehetővé teszi, hogy az Azure 
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>A Microsofttól eredő, az Ön hálózata felé irányuló forgalom
 * Bizonyos forgatókönyvek megkövetelik, hogy a Microsoft kapcsolatot kezdeményezzen az Ön hálózatán üzemeltetett szolgáltatásvégpontokkal. A forgatókönyvre jellemző példa az Ön hálózatában üzemeltetett ADFS-kiszolgálókhoz való csatlakozás az Office 365-ből. Ilyen esetekben a megfelelő előtagokat ki kell szivárogtatnia a hálózatából a Microsoft-társviszonyba. 
-* A Microsoft felől az Ön hálózatában lévő IP-címekhez irányított forgalmon forrásoldali hálózati címfordítást kell végrehajtani. 
+* Az [aszimmetrikus útválasztás](expressroute-asymmetric-routing.md) kiküszöbölése érdekében a Microsoft-adatforgalmon forrásoldali hálózati címfordítást kell végrehajtani az internetes peremhálózaton, a hálózaton belüli szolgáltatásvégpontok számára. Az ExpressRoute-on keresztül kapott útvonallal megegyező cél IP-címmel ellátott kérelmeket **és válaszokat** a rendszer minden esetben ExpressRoute-on keresztül küldi el. Aszimmetrikus útválasztás akkor jön létre, ha a kérelem interneten keresztül érkezik, a választ viszont ExpressRoute-on keresztül küldjük el. A bejövő Microsoft-adatforgalom internetes peremhálózaton történő forrásoldali hálózati címfordítása úgy küszöböli ki ezt a problémát, hogy a válasz adatforgalmát újra az internetes peremhálózatra kényszeríti.
+
+![Aszimmetrikus útválasztás az ExpressRoute-tal](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="next-steps"></a>Következő lépések
 * Tekintse meg az [Útválasztás](expressroute-routing.md) és a [QoS](expressroute-qos.md) követelményeit.

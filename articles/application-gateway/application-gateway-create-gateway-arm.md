@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 73ee330c276263a21931a7b9a16cc33f86c58a26
-ms.openlocfilehash: 11ecfc993f17c89d4ac4431e9a835000d30afe76
-ms.lasthandoff: 04/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 8a0eb841b1a41a14e443b6ce93e6b8fb8985a803
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -107,7 +108,7 @@ A fenti példában létrehoztunk egy **appgw-RG** nevű erőforráscsoportot, am
 > [!NOTE]
 > Ha egy egyéni mintát kell konfigurálnia az Application Gateway számára: [Application Gateway létrehozása egyéni mintákkal a PowerShell használatával](application-gateway-create-probe-ps.md). További információért lásd: [egyéni minták és állapotfigyelés](application-gateway-probe-overview.md).
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Virtuális hálózat és alhálózat létrehozása az Application Gateway számára
+## <a name="create-a-virtual-network-and-a-subnet"></a>Hozzon létre egy virtuális hálózatot és egy alhálózatot
 
 Az alábbi példa bemutatja, hogyan hozhat létre virtuális hálózatot a Resource Manager használatával. Ebben a példában egy VNetet hozunk létre az Application Gatewayhez. Az Application Gatewayhez külön alhálózat szükséges, és ebből az okból az Application Gateway számára létrehozott alhálózat kisebb, mint a VNet címtere. A kisebb alhálózat használatával más erőforrások, például webkiszolgálók is konfigurálhatók ugyanazon a VNeten.
 
@@ -135,7 +136,7 @@ Rendelje hozzá az alhálózati változót a következő lépésekhez. A `New-Az
 $subnet=$vnet.Subnets[0]
 ```
 
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
+## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
 Hozzon létre egy **publicIP01** nevű, nyilvános IP-címhez tartozó erőforrást az **appgw-rg** nevű erőforráscsoportban, az USA nyugati régiójában. Az Application Gateway nyilvános vagy belső IP-címet, vagy akár mindkettőt is használhatja a terheléselosztási kérések fogadására.  Ebben a példában csak nyilvános IP-címet használunk. A következő példában nem konfigurálunk DNS-nevet a nyilvános IP-cím létrehozásához.  Az Application Gateway nem támogatja az egyéni DNS-neveket a nyilvános IP-címeken.  Ha egyéni név szükséges a nyilvános végponthoz, egy CNAME rekordot kell létrehozni, amely a nyilvános IP-cím automatikusan létrehozott DNS-nevére mutat.
 
@@ -219,7 +220,7 @@ $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Cap
 > [!NOTE]
 > Az **InstanceCount** alapértelmezett értéke 2, a maximális értéke pedig 10. A **GatewaySize** alapértelmezett értéke Közepes. A **Standard_Small**, **Standard_Medium** és a **Standard_Large** lehetőségek közül választhat.
 
-## <a name="create-an-application-gateway-by-using-new-azurermapplicationgateway"></a>Application Gateway létrehozása a New-AzureRmApplicationGateway paranccsal
+## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
 Hozzon létre egy Application Gatewayt az előző lépések konfigurációs elemeivel. Ebben a példában az Application Gateway neve: **appgwtest**.
 
@@ -233,7 +234,7 @@ Kérje le az alkalmazásátjáró DNS-hez és virtuális IP-címhez kapcsolódó
 Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName appgw-rg  
 ```
 
-## <a name="delete-an-application-gateway"></a>Application Gateway törlése
+## <a name="delete-the-application-gateway"></a>Application Gateway törlése
 
 Egy Application Gateway törléséhez kövesse az alábbi lépéseket:
 
@@ -296,6 +297,14 @@ IpConfiguration          : {
 DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
+```
+
+## <a name="delete-all-resources"></a>Az összes erőforrás törlése
+
+A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépéseket:
+
+```powershell
+Remove-AzureRmResourceGroup -Name appgw-RG
 ```
 
 ## <a name="next-steps"></a>Következő lépések

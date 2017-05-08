@@ -15,10 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 119275f335344858cd20b6a17ef87e3ef32b6e12
-ms.openlocfilehash: 8b72a3f26e356af588e9f5c2039bcc525366ce11
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 79e373a69f3b899dea1f10ac447a0284931648f4
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -31,7 +32,7 @@ ms.lasthandoff: 02/28/2017
 > * [Azure Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
 > * [Azure CLI](application-gateway-create-gateway-cli.md)
 
-Az Azure Application Gateway egy&7;. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer (SSL) alapú kiszervezést, az egyéni állapotteszteket, a többhelyes támogatást és még sok mást. A támogatott szolgáltatások teljes listájáért látogasson el [Az Application Gateway áttekintése](application-gateway-introduction.md) című oldalra
+Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer (SSL) alapú kiszervezést, az egyéni állapotteszteket, a többhelyes támogatást és még sok mást. A támogatott szolgáltatások teljes listájáért látogasson el [Az Application Gateway áttekintése](application-gateway-introduction.md) című oldalra
 
 Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat, konfigurálhat, elindíthat és törölhet egy Application Gateway-t.
 
@@ -106,11 +107,11 @@ A *VirtualIPs* és a *DnsName* paraméterek azért üresek, mert az átjáró m�
 
 Az Application Gateway-t egy XML-fájl vagy konfigurációs objektum segítségével konfigurálhatja.
 
-## <a name="configure-the-application-gateway-by-using-xml"></a>Az Application Gateway konfigurálása XML-fájl használatával
+### <a name="configure-the-application-gateway-by-using-xml"></a>Az Application Gateway konfigurálása XML-fájl használatával
 
 Az alábbi példában egy XML-fájllal konfigurálja az Application Gateway beállításait, és véglegesíti őket az Application Gateway-erőforráshoz.  
 
-### <a name="step-1"></a>1. lépés
+#### <a name="step-1"></a>1. lépés
 
 Másolja az alábbi szöveget a Jegyzettömbbe.
 
@@ -211,7 +212,7 @@ Az alábbi példa bemutatja, hogyan használhat egy konfigurációs fájlt az Ap
 </ApplicationGatewayConfiguration>
 ```
 
-### <a name="step-2"></a>2. lépés
+#### <a name="step-2"></a>2. lépés
 
 A következő lépésként állítsa be az Application Gateway-t. Használja a `Set-AzureApplicationGatewayConfig` parancsmagot egy konfigurációs XML-fájllal.
 
@@ -219,14 +220,14 @@ A következő lépésként állítsa be az Application Gateway-t. Használja a `
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile "D:\config.xml"
 ```
 
-## <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>Az Application Gateway konfigurálása konfigurációs objektum segítségével
+### <a name="configure-the-application-gateway-by-using-a-configuration-object"></a>Az Application Gateway konfigurálása konfigurációs objektum segítségével
 
 Az alábbi példa bemutatja, hogyan konfigurálhatja az Application Gateway-t konfigurációs objektumok segítségével. Minden konfigurációs elemet külön kell konfigurálni, és utána kell hozzáadni egy Application Gateway konfigurációs objektumhoz. A konfigurációs objektum létrehozása után a `Set-AzureApplicationGateway` paranccsal véglegesíti a konfigurációt a korábban létrehozott Application Gateway-erőforráshoz.
 
 > [!NOTE]
 > Mielőtt értékeket rendelne a konfigurációs objektumokhoz, deklarálnia kell, hogy a PowerShell milyen típusú objektumot használ a tároláshoz. Az egyéni elemek létrehozásának első sora határozza meg, hogy milyen `Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(object name)` elemet használ a rendszer.
 
-### <a name="step-1"></a>1. lépés
+#### <a name="step-1"></a>1. lépés
 
 Hozza létre az összes egyedi konfigurációs elemet.
 
@@ -297,7 +298,7 @@ $rule.Listener = "listener1"
 $rule.BackendAddressPool = "pool1"
 ```
 
-### <a name="step-2"></a>2. lépés
+#### <a name="step-2"></a>2. lépés
 
 Rendelje hozzá az összes egyéni konfigurációs elemeket egy Application Gateway konfigurációs objektumhoz ($appgwconfig).
 
@@ -385,9 +386,9 @@ Vip           : 138.91.170.26
 DnsName       : appgw-1b8402e8-3e0d-428d-b661-289c16c82101.cloudapp.net
 ```
 
-## <a name="delete-an-application-gateway"></a>Application Gateway törlése
+## <a name="delete-the-application-gateway"></a>Application Gateway törlése
 
-Application Gateway törléséhez tegye a következőket:
+Az Application Gateway törlése:
 
 1. Állítsa le az átjárót a `Stop-AzureApplicationGateway` parancsmaggal.
 2. Távolítsa el az átjárót a `Remove-AzureApplicationGateway` parancsmaggal.

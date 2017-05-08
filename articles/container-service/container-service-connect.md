@@ -17,10 +17,11 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 3dfa2c56dd6d3e0fe7757995d284cebe172eabc4
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
+ms.openlocfilehash: 317399c04afa9f81e5916c08b750d494dd7704dc
+ms.contentlocale: hu-hu
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -29,34 +30,34 @@ Miután létrehozott egy Azure Container Service-fürtöt, csatlakoznia kell hoz
 
 A Kubernetes-, DC/OS- és Docker Swarm-fürtök helyi HTTP-végpontokat biztosítanak. A Kubernetes esetében ez a végpont biztonságosan van közzétéve az interneten, és az internethez csatlakozó bármely gépről elérhető a `kubectl` parancssori eszköz futtatásával. 
 
-A DC/OS és a Docker Swarm esetében létre kell hoznia egy belső rendszerbe vezető Secure Shell- (SSH-) alagutat. Az alagút létrehozása után futtathat HTTP-végpontokat használó parancsokat, és megtekintheti a fürt webes felületét a helyi rendszerről. 
+A DC/OS és a Docker Swarm esetében azt javasoljuk, hogy hozzon létre egy Secure Shell- (SSH-) alagutat a helyi számítógép és a fürtkezelő rendszer között. Az alagút létrehozása után futtathat HTTP-végpontokat használó parancsokat, és megtekintheti a vezénylő webes felületét (ha elérhető) a helyi rendszerről. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az [Azure Container Service](container-service-deployment.md)-ben üzembe helyezett Kubernetes-, DC/OS- vagy Docker Swarm-fürt.
-* Titkos SSH RSA-kulcsfájl, amely a fürthöz az üzembe helyezéskor hozzáadott nyilvános kulcshoz tartozik. Ezek a parancsok feltételezik, hogy a titkos SSH-kulcs a következő helyen található a számítógépen: `$HOME/.ssh/id_rsa`. További információkat az [OS X és Linux](../virtual-machines/linux/mac-create-ssh-keys.md) rendszerekre vagy a [Windows](../virtual-machines/linux/ssh-from-windows.md) rendszerre vonatkozó útmutatókban találhat. Ha az SSH-kapcsolat nem működik, lehetséges, hogy [új SSH-kulcsot kell létrehoznia](../virtual-machines/linux/troubleshoot-ssh-connection.md).
+* Egy, az [Azure Container Service](container-service-deployment.md)-ben üzembe helyezett Kubernetes-, DC/OS- vagy Docker Swarm-fürt.
+* Titkos SSH RSA-kulcsfájl, amely a fürthöz az üzembe helyezéskor hozzáadott nyilvános kulcshoz tartozik. Ezek a parancsok feltételezik, hogy a titkos SSH-kulcs a következő helyen található a számítógépen: `$HOME/.ssh/id_rsa`. További információkat a [macOS és Linux](../virtual-machines/linux/mac-create-ssh-keys.md) rendszerre vagy a [Windows](../virtual-machines/linux/ssh-from-windows.md) rendszerre vonatkozó útmutatókban találhat. Ha az SSH-kapcsolat nem működik, lehetséges, hogy [új SSH-kulcsot kell létrehoznia](../virtual-machines/linux/troubleshoot-ssh-connection.md).
 
 ## <a name="connect-to-a-kubernetes-cluster"></a>Csatlakozás Kubernetes-fürthöz
 
 Kövesse a következő lépéseket a `kubectl` telepítéséhez és konfigurálásához.
 
 > [!NOTE] 
-> Előfordulhat, hogy Linux vagy OS X rendszereken a jelen szakaszban leírt parancsokat a `sudo` használatával kell futtatni.
+> Előfordulhat, hogy Linux vagy macOS rendszeren a jelen szakaszban leírt parancsokat a `sudo` használatával kell futtatni.
 > 
 
 ### <a name="install-kubectl"></a>A kubectl telepítése
 Az eszköz telepítésének egyik módja az `az acs kubernetes install-cli` Azure CLI 2.0 parancs használata. A parancs futtatása előtt győződjön meg arról, hogy [telepítve van](/cli/azure/install-az-cli2) a legfrissebb Azure CLI 2.0, és hogy bejelentkezett egy Azure-fiókba (`az login`).
 
 ```azurecli
-# Linux or OS X
+# Linux or macOS
 az acs kubernetes install-cli [--install-location=/some/directory/kubectl]
 
 # Windows
 az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 ```
 
-Másik lehetőségként letöltheti a legújabb ügyfelet közvetlenül a [Kubernetes-kiadások oldaláról](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md). További információ: [A kubectl telepítése és beállítása](https://kubernetes.io/docs/user-guide/prereqs/).
+Másik lehetőségként letöltheti a legújabb `kubectl`-ügyfelet közvetlenül a [Kubernetes-kiadások oldaláról](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md). További információ: [A kubectl telepítése és beállítása](https://kubernetes.io/docs/tasks/kubectl/install/).
 
 ### <a name="download-cluster-credentials"></a>A fürt hitelesítő adatainak letöltése
 A `kubectl` telepítését követően át kell másolnia a fürt hitelesítő adatait a gépre. A hitelesítő adatok beszerzésének egyik módja az `az acs kubernetes get-credentials` parancs használata. Továbbítsa az erőforráscsoport nevét és a tárolószolgáltatás erőforrásának nevét:
@@ -70,12 +71,12 @@ Ez a parancs letölti a fürt hitelesítő adatait a `$HOME/.kube/config` helyre
 
 Másik lehetőségként az `scp` használatával is biztonságosan átmásolhatja a fájlt a fő virtuális gép `$HOME/.kube/config` mappájából a helyi gépre. Példa:
 
-```console
+```bash
 mkdir $HOME/.kube
 scp azureuser@<master-dns-name>:.kube/config $HOME/.kube/config
 ```
 
-Windows rendszeren a Windowson futó Ubuntu Bash-környezetet, a PuTTy biztonságos fájlmásoló ügyfelét vagy egy hasonló eszközt kell használnia.
+Windows rendszeren a Windowson futó Ubuntu Bash-környezetet, a PuTTy biztonságos fájlmásoló ügyfelét vagy egy hasonló eszközt használhat.
 
 
 
@@ -83,13 +84,13 @@ Windows rendszeren a Windowson futó Ubuntu Bash-környezetet, a PuTTy biztonsá
 
 A `kubectl` konfigurálását követően a fürt csomópontjainak listázásával tesztelheti a kapcsolatot:
 
-```console
+```bash
 kubectl get nodes
 ```
 
 Egyéb `kubectl` parancsokat is kipróbálhat. Például megtekintheti a Kubernetes irányítópultot. Először futtasson egy proxyt a Kubernetes API-kiszolgálóhoz:
 
-```console
+```bash
 kubectl proxy
 ```
 
@@ -99,19 +100,19 @@ További információ: [A Kubernetes gyors üzembe helyezése](http://kubernetes
 
 ## <a name="connect-to-a-dcos-or-swarm-cluster"></a>Csatlakozás DC/OS- vagy Swarm-fürthöz
 
-Az Azure Container Service által üzembe helyezett DC/OS- és Docker Swarm-fürtök használatához kövesse a Secure Shell- (SSH-) alagút helyi Linux, OS X vagy Windows rendszerről való létrehozására vonatkozó utasításokat. 
+Az Azure Container Service által üzembe helyezett DC/OS- és Docker Swarm-fürtök használatához kövesse az SSH-alagút helyi Linux, macOS vagy Windows rendszerről való létrehozására vonatkozó utasításokat. 
 
 > [!NOTE]
 > A jelen útmutatások elsősorban a TCP-forgalom SSH-n keresztüli bújtatására vonatkoznak. Interaktív SSH-munkamenetet az egyik belső fürtkezelő rendszerrel is indíthat, ez azonban nem ajánlott. A közvetlenül a belső rendszeren végzett munka növeli a konfiguráció véletlen módosításának kockázatát.  
 > 
 
-### <a name="create-an-ssh-tunnel-on-linux-or-os-x"></a>SSH-alagút létrehozása Linux vagy OS X rendszeren
-Amikor Linux vagy OS X rendszeren hoz létre SSH-alagutat, először meg kell keresnie az elosztott terhelésű főkiszolgálók nyilvános DNS-nevét. Kövesse az alábbi lépéseket:
+### <a name="create-an-ssh-tunnel-on-linux-or-macos"></a>SSH-alagút létrehozása Linux vagy macOS rendszeren
+Amikor Linux vagy macOS rendszeren hoz létre SSH-alagutat, először meg kell keresnie az elosztott terhelésű főkiszolgálók nyilvános DNS-nevét. Kövesse az alábbi lépéseket:
 
 
 1. Az [Azure portálon](https://portal.azure.com) lépjen a tárolószolgáltatási fürtjét tartalmazó erőforráscsoporthoz. Bontsa ki az erőforráscsoportot, hogy az egyes erőforrások megjelenjenek. 
 
-2. Kattintson a tárolószolgáltatás erőforrására, majd az **Áttekintés** elemre. Ekkor az **Alapvető erőforrások** területen megjelenik a fürt **teljes fő tartományneve**. Mentse ezt a nevet a későbbi felhasználásra. 
+2. Kattintson a **Tárolószolgáltatás** erőforrására, majd az **Áttekintés** elemre. Ekkor az **Alapvető erőforrások** területen megjelenik a fürt **teljes fő tartományneve**. Mentse ezt a nevet a későbbi felhasználásra. 
 
     ![Nyilvános DNS-név](media/pubdns.png)
 
@@ -119,7 +120,7 @@ Amikor Linux vagy OS X rendszeren hoz létre SSH-alagutat, először meg kell ke
 
 3. Most nyisson meg egy kezelőfelületet, és futtassa az `ssh` parancsot a következő értékek megadásával: 
 
-    a **LOCAL_PORT** az alagút szolgáltatásoldali TCP-portja, amelyhez csatlakozni kell. Swarm esetén állítsa ezt 2375 értékre. DC/OS esetén állítsa ezt 80 értékre.  
+    a **LOCAL_PORT** az alagút szolgáltatásoldali TCP-portja, amelyhez csatlakozni kell. Swarm esetén állítsa ezt 2375 értékre. DC/OS esetén állítsa ezt 80 értékre. 
    a  **REMOTE_PORT** az elérhetővé tenni kívánt végpont portja. Swarm esetén használja a 2375-ös portot. DC/OS esetén használja a 80-as portot.  
    a  **USERNAME** a fürt telepítésekor megadott felhasználónév.  
    a  **DNSPREFIX** a fürt telepítésekor megadott DNS-előtag.  
@@ -127,13 +128,14 @@ Amikor Linux vagy OS X rendszeren hoz létre SSH-alagutat, először meg kell ke
    a  **PATH_TO_PRIVATE_KEY** [NEM KÖTELEZŐ] a fürt létrehozásakor megadott nyilvános kulcshoz tartozó titkos kulcs elérési útja. Ezt a beállítást a `-i` jelzővel együtt kell használni.
 
     ```bash
-    ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
+    ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com
     ```
-    > [!NOTE]
-    > Az SSH-kapcsolati port 2200, és nem a szokásos 22-es port. A több fő virtuális géppel rendelkező fürtökön ez az első fő virtuális gép kapcsolódási portja.
-    > 
+  
+  > [!NOTE]
+  > Az SSH-kapcsolati port 2200, és nem a szokásos 22-es port. A több fő virtuális géppel rendelkező fürtökön ez az első fő virtuális gép kapcsolódási portja.
+  > 
 
-
+  A parancs nem ad vissza kimenetet.
 
 A DC/OS-re és a Swarmra vonatkozó példák a következő szakaszokban találhatók.    
 
@@ -145,7 +147,8 @@ sudo ssh -fNL 80:localhost:80 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudap
 ```
 
 > [!NOTE]
-> Beállíthat más, a 80-as porttól eltérő helyi portokat is (például a 8888-as portot). Ha azonban ezt a portot használja, előfordulhat, hogy egyes webes felhasználói felületek hivatkozásai nem működnek.
+> Győződjön meg arról, hogy nincs másik olyan helyi folyamat, amely lekötné a 80-as portot. Ha szükséges, beállíthat más, a 80-as porttól eltérő helyi portokat is (például a 8080-as portot). Ha azonban ezt a portot használja, előfordulhat, hogy egyes webes felhasználói felületek hivatkozásai nem működnek.
+>
 
 Most már elérheti a DC/OS-hez kapcsolódó végpontokat a helyi rendszerről, az alábbi URL-címeken keresztül (ha a 80-as helyi portot használja):
 
@@ -161,21 +164,34 @@ A Swarm-végponthoz vezető alagút megnyitásához futtasson egy olyan parancso
 ```bash
 ssh -fNL 2375:localhost:2375 -p 2200 azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com
 ```
+> [!NOTE]
+> Győződjön meg arról, hogy nincs másik olyan helyi folyamat, amely lekötné a 2375-ös portot. Ha például helyileg futtatja a Docker-démont, az alapértelmezés szerint a 2375-ös portot használja. Ha szükséges, beállíthat más, a 2375-ös porttól eltérő helyi portokat is.
+>
 
-Most beállíthatja a DOCKER_HOST környezeti változót az alábbi módon. A Docker parancssori felületét továbbra is a szokott módon használhatja.
+Ekkor a Docker Swarm-fürtöt a Docker parancssori felületén (Docker CLI) keresztül érheti el a helyi rendszeren. A telepítési utasításokért lásd [a Docker telepítését](https://docs.docker.com/engine/installation/) ismertető cikket.
+
+A DOCKER_HOST környezeti változót az alagút számára konfigurált helyi portra állíthatja be. 
 
 ```bash
 export DOCKER_HOST=:2375
 ```
 
+Futtasson olyan Docker-parancsokat, amelyek a Docker Swarm-fürthöz nyitnak alagutat. Példa:
+
+```bash
+docker info
+```
+
+
+
 ### <a name="create-an-ssh-tunnel-on-windows"></a>SSH-alagút létrehozása Windows rendszeren
-Windows-rendszeren az SSH-alagutak többféleképpen is létrehozhatók. Ez a témakör ismerteti, hogyan hozható létre az alagút a PuTTY használatával.
+Windows-rendszeren az SSH-alagutak többféleképpen is létrehozhatók. Ubuntu Bash-környezet Windowson vagy hasonló eszköz futtatásakor a cikk korábbi részében megadott, macOS és Linux rendszerre vonatkozó, SSH-alagútkezelési utasításokat követve járhat el. Ez a szakasz ismerteti, hogyan hozható létre az alagút a PuTTY használatával, a Windows rendszeren elérhető egyik lehetséges alternatívaként.
 
 1. [Töltse le a PuTTY alkalmazást](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) Windows rendszerére.
 
 2. Futtassa az alkalmazást.
 
-3. Adjon meg egy állomásnevet, amely a fürt rendszergazdai felhasználónevéből és a fürt első főkiszolgálójának nyilvános DNS-nevéből áll. A **Host Name** (Gazdagép neve) a következőhöz hasonló: `adminuser@PublicDNSName`. A **Port** mezőben adja meg a 2200-as értéket.
+3. Adjon meg egy állomásnevet, amely a fürt rendszergazdai felhasználónevéből és a fürt első főkiszolgálójának nyilvános DNS-nevéből áll. A **Host Name** (Gazdagép neve) a következőhöz hasonló: `azureuser@PublicDNSName`. A **Port** mezőben adja meg a 2200-as értéket.
 
     ![A PuTTY-konfigurálásának 1. lépése](media/putty1.png)
 

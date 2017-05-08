@@ -14,16 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2017
 ms.author: subramar
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5faf7dc0b544f6fe2f83565cc368e218c6df35af
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 00c1f10f7df865344233143ce9cdf546e64acca0
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>A Service Fabric Linux (előzetes verziójú) és Windows (általánosan elérhető) rendszerhez készült verziója közötti különbségek
 
-Mivel a Service Fabric Linux rendszeren előzetes verziójú, ezért néhány szolgáltatás csak Windows rendszeren támogatott. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, amikor a Service Fabric általánosan elérhetővé válik Linux rendszeren.
+Mivel a Service Fabric Linux rendszeren még előzetes verzióban van, ezért néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, amikor a Service Fabric általánosan elérhetővé válik Linux rendszeren.
 
 * A Reliable Collections (és a Reliable Stateful Services) nem támogatott Linux rendszeren.
 * A ReverseProxy nem érhető el Linux rendszeren.
@@ -38,7 +39,7 @@ Mivel a Service Fabric Linux rendszeren előzetes verziójú, ezért néhány sz
 >[!NOTE]
 >A konzolátirányítás nem támogatott éles fürtökben, még Windows rendszeren sem.
 
-A fejlesztői eszközök eltérőek: a Windows rendszeren a VisualStudio, a PowerShell, a VSTS és az ETW, míg Linuxon a Yeoman, az Eclipse, a Jenkins és az LTTng érhető el.
+A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendszeren a VisualStudio, a PowerShell, a VSTS és az ETW, míg Linuxon a Yeoman, az Eclipse, a Jenkins és az LTTng érhető el.
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-parancsmagok, amelyek nem működnek Linux rendszerű Service Fabric-fürtökön
 

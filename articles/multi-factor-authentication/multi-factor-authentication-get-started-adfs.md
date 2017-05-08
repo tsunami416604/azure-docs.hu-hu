@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 00ee90b6d264c1aee4b488cd1c2a5447809a1e3c
-ms.openlocfilehash: 0981be75b9caffb29b10c70ce528209984986ce2
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 28aede545c738137ff04257214e4a3f42792d85c
+ms.contentlocale: hu-hu
+ms.lasthandoff: 04/28/2017
 
 
 ---
@@ -40,17 +42,12 @@ A következő táblázat foglalja össze az ellenőrzésbeli különbségeket az
 * Az alkalmazásjelszavak ellenőrzése felhőalapú hitelesítéssel történik, így mellőzik az összevonásokat. Az összevonás csak alkalmazásjelszó beállításakor van aktív használatban.
 * Az alkalmazásjelszavak nem tartják be a helyszíni ügyfél hozzáférés-vezérlési beállításait.
 * Az alkalmazásjelszavak használata esetén nem érhető el a helyszíni hitelesítésnaplózás.
-* A fiókok letiltása/törlése akár&3; óráig is eltarthat a címtár-szinkronizálással, ami késlelteti az alkalmazásjelszó letiltását/törlését a felhőalapú identitásban.
+* A fiókok letiltása/törlése akár 3 óráig is eltarthat a címtár-szinkronizálással, ami késlelteti az alkalmazásjelszó letiltását/törlését a felhőalapú identitásban.
 
 ## <a name="next-steps"></a>Következő lépések
-Az Azure Multi-Factor Authentication vagy az Azure Multi-Factor Authentication-kiszolgáló az AD FS-sel való beállításával kapcsolatos információt a következő cikkekben talál:
+Az Azure Multi-Factor Authentication vagy az Azure Multi-Factor Authentication-kiszolgáló AD FS-sel való beállításával kapcsolatosan további információt a következő cikkekben talál:
 
 * [A felhőerőforrások védelme az Azure Multi-Factor Authentication és az AD FS használatával](multi-factor-authentication-get-started-adfs-cloud.md)
 * [A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és a Windows Server 2012 R2 AD FS használatával](multi-factor-authentication-get-started-adfs-w2k12.md)
 * [A felhő és a helyszíni erőforrások védelme az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0-s verziójának használatával](multi-factor-authentication-get-started-adfs-adfs2.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

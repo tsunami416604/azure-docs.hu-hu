@@ -1,5 +1,5 @@
 ---
-title: "A Service Bus prémium és standard szintű üzenetkezelés tarifacsomagjainak áttekintése | Microsoft Docs"
+title: "Az Azure Service Bus prémium és standard szintű üzenetkezelés tarifacsomagjainak áttekintése | Microsoft Docs"
 description: "A Service Bus prémium és standard üzenetkezelési szintjei"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/19/2017
+ms.date: 04/28/2017
 ms.author: darosa;sethm;jotaub
-translationtype: Human Translation
-ms.sourcegitcommit: e0c999b2bf1dd38d8a0c99c6cdd4976cc896dd99
-ms.openlocfilehash: 606838dbeec5e9762f67159ece1bbc8a78769420
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
+ms.openlocfilehash: 72e4c59e1282d97cfc5aa5f55861c6f70d419ce8
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/02/2017
 
 
 ---
@@ -47,7 +48,7 @@ Az alábbi szakaszokban a prémium és a standard szintű üzenetkezelési szint
 
 ### <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
-A particionált üzenetsorok és témakörök támogatottak a prémium szintű üzenetkezelésben, de nem ugyanúgy működnek, mint a standard és az alapszintű Service Bus-üzenetkezelés. A prémium szintű üzenetkezelés nem használ SQL-t az adattároláshoz, és már nem jelentkezik a megosztott platformokhoz társuló erőforrásverseny. Ennek köszönhetően a particionálás nem kötelező a jobb teljesítmény érdekében. Ezen felül a partíciók száma a standard szint 16 partíciójáról a prémium szinten 2 partícióra változott. A két partíció biztosítja a rendelkezésre állást, és megfelelőbb szám a prémium szintű futtatókörnyezethez. A particionálásra vonatkozó további információkat a [Partitioned queues and topics](service-bus-partitioning.md) (Particionált üzenetsorok és témakörök) című rész tartalmazza.
+A prémium szintű üzenetkezelés támogatja a particionált üzenetsorokat és témaköröket. Ezek az entitások tulajdonképpen mindig particionáltak (és nem tilthatók le). A prémium szintű particionált üzenetsorok és témakörök viszont nem ugyanúgy működnek, mint a standard és az alapszintű Service Bus-üzenetkezelés. A prémium szintű üzenetkezelés nem használ SQL-t az adattároláshoz, és már nem jelentkezik a megosztott platformokhoz társuló erőforrásverseny. Ennek köszönhetően a particionálás nem kötelező a teljesítmény növeléséhez. Ezen felül a partíciók száma a standard szint 16 partíciójáról a prémium szinten 2 partícióra változott. A két partíció biztosítja a rendelkezésre állást, és megfelelőbb szám a prémium szintű futtatókörnyezethez. A particionálásra vonatkozó további információkat a [Partitioned queues and topics](service-bus-partitioning.md) (Particionált üzenetsorok és témakörök) című rész tartalmazza.
 
 ### <a name="express-entities"></a>Expressz entitások
 

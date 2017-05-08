@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/22/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 21d8dff230e045607b70013f4eabf1bfe8ec3993
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 4e9ee21a7eac240cccdfac650992063244364185
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -35,9 +36,6 @@ Ezen HBase oktatóanyag elkezdéséhez a következőkkel kell rendelkeznie:
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Biztonságos rendszerhéj (SSH)](hdinsight-hadoop-linux-use-ssh-unix.md). 
 * [curl](http://curl.haxx.se/download.html).
-
-### <a name="access-control-requirements"></a>A hozzáférés-vezérlésre vonatkozó követelmények
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-hbase-cluster"></a>HBase-fürt létrehozása
 Az alábbi eljárás egy Azure Resource Manager-sablont használ egy 3.4 verziójú Linux-alapú HBase-fürt és a függő Azure Storage-fiók létrehozására. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban).
@@ -253,6 +251,10 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Következő lépések
 A HDInsight ezen HBase oktatóprogramjában megtanulta, hogyan hozhat létre HBase-fürtöt, hogyan hozhat létre táblákat, és tekintheti meg ezen táblák adatait a HBase rendszerhéjból. Azt is megtanulta, hogyan használhat Hive-lekérdezést a HBase-táblákban lévő adatokon, és hogyan használhatja a HBase C# REST API-kat egy HBase-tábla létrehozásához és adatok lekérdezéséhez a táblából.

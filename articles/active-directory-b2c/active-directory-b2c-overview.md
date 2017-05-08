@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: swkrish
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 851319639f1443c062b87305bbde351f41846433
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 2f64c905d2304bfc94415e871012a783cd2cf328
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -57,7 +58,7 @@ Az alábbi hivatkozások segítségével mélyebben is megismerheti a szolgálta
 * Tekintse meg az [Azure Active Directory B2C díjszabásával kapcsolatos információkat](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 * Tekintse át az Azure Active Directory B2C-vel kapcsolatos [kódmintákat](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c). 
 * Keressen hasznos információkat a Stack Overflow oldalon az [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) címke segítségével.
-* Ossza meg velünk gondolatait a [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) – hallani szeretnénk őket!
+* Ossza meg velünk gondolatait a [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c). Szívesen veszünk minden visszajelzést.
 * Tekintse át az [Azure AD B2C protokollreferenciáját](active-directory-b2c-reference-protocols.md).
 * Tekintse át az [Azure AD B2C jogkivonat-referenciáját](active-directory-b2c-reference-tokens.md).
 * Olvassa el az [Azure Active Directory B2C-vel kapcsolatos gyakori kérdéseket](active-directory-b2c-faqs.md).

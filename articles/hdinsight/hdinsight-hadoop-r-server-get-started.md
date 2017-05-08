@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/13/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: bf245d8885e6d6628f182e36e0a9c99a4854873a
-ms.lasthandoff: 04/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: bf5b1c0a6e76f712e0be1f16ed1a6b2ac78d68de
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -36,13 +37,9 @@ A HDInsight olyan R Server beállítással rendelkezik, amely a HDInsight-fürtb
 > A dokumentum lépései azt feltételezik, hogy jelszót használ.
 
 
-### <a name="access-control-requirements"></a>A hozzáférés-vezérlésre vonatkozó követelmények
-
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
-
 ## <a name="automated-cluster-creation"></a>Fürt automatikus létrehozása
 
-ARM-sablonok, SDK, illetve a PowerShell használatával is automatizálható a HDInsight R Server-kiszolgálók létrehozása.
+Azure Resource Manager-sablonok, az SDK, illetve a PowerShell használatával is automatizálható a HDInsight R Server-kiszolgálók létrehozása.
 
 * Az R Server Azure Resource Management-sablonnal végzett létrehozásáról az [R Server HDInsight-fürt üzembe helyezésének leírásában](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/) talál további információt.
 * R Server létrehozása .NET SDK-val: [Linux-alapú fürtök létrehozása a HDInsightban a .NET SDK-val](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
@@ -629,6 +626,10 @@ Ha minden leszerelt feldolgozó csomópontot konfigurált a számítási csomóp
 * Keresse meg az „URIs” szakaszt, és adja hozzá a feldolgozó csomópontok IP-címét és portrészleteit.
 
 ![feldolgozó csomópont(ok) leszerelési parancssora](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
+
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Következő lépések
 

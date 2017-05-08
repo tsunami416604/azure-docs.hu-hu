@@ -12,12 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/14/2017
+ms.date: 05/02/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 0f80ac93e3ff1ee95477e4fa5dbe21d61ddf8ead
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 8a04fda8eaf6e14a278941e7bb55b23012f67850
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -98,8 +99,6 @@ Amikor létrehoz egy Automation-fiókot az Azure Portalon, automatikusan két hi
 
 A szerepköralapú hozzáférés-vezérlés az Azure Resource Managerben érhető el, hogy hozzáférést adjon az engedélyezett műveleteknek egy Azure AD-felhasználói fiókhoz és futtatófiókhoz, és hitelesítse az egyszerű szolgáltatást.  Az Automation-engedélyek kezelésére használt modell fejlesztésére vonatkozó további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md) című cikket.  
 
-
-
 #### <a name="authentication-methods"></a>Hitelesítési módszerek
 A következő táblázat összefoglalja az Azure Automation által támogatott összes környezet különböző hitelesítési módszereit.
 
@@ -136,6 +135,13 @@ Ha rendelkezik egy adott régióhoz meghatározott Automation-fiókkal, és szer
 | Délkelet-Ausztrália |ase-jobruntimedata-prod-su1.azure-automation.net |
 | Az Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net |
 | USA-beli államigazgatás – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us |
+
+Ha a nevek helyet az IP-címek listájára van szüksége, töltse le és tekintse át az [Azure-adatközponti IP-címeket](https://www.microsoft.com/download/details.aspx?id=41653) tartalmazó XML-fájlt a Microsoft letöltőközpontból. 
+
+> [!NOTE]
+> Ez a fájl azokat az IP-címtartományokat (beleértve Compute, SQL és Storage tartományokat) tartalmazza, amelyeket a Microsoft Azure adatközpontokban használnak. Hetente közzétesznek egy frissített fájlt, amely bemutatja a jelenleg üzembe helyezett tartományokat és minden, az IP tartományokat érintő közelgő változást. A fájlban megjelenő új tartományokat legalább egy hétig nem használják még az adatközpontok. Töltse le az új XML-fájlt minden héten, és végezze el a szükséges változtatásokat oldalán, hogy helyesen azonosítsa az Azure-ban futó szolgáltatásokat. Az Express Route felhasználóinak feltűnhet, hogy régen ez a fájl frissítette az Azure címterületek BGP-közzétételét minden hónap első hetében. 
+> 
+
 
 ## <a name="implementation"></a>Megvalósítás
 
@@ -191,27 +197,6 @@ Az Automation bevezetésének ajánlott módja a Marketplace Automatizálás és
 8. Kattintson a **Létrehozás** elemre, és folytassa az eljárást az Automation és az OMS-munkaterület bevezetésével. A rendszer érvényesíti az összes beállítást, majd megpróbálja üzembe helyezni az ajánlatot az előfizetésében.  A folyamat eltarthat néhány másodpercig, az előrehaladását nyomon követheti az **Értesítések** menüpont alatt. 
 
 Az ajánlat bevezetését követően hozzáláthat a runbookok létrehozásához, az engedélyezett felügyeleti megoldások használatához, vagy a [Log Analytics](https://docs.microsoft.com/azure/log-analytics) szolgáltatással a felhő vagy helyszíni környezet erőforrásai által előállított adatok begyűjtéséhez.   
-
-### <a name="resources-included"></a>Érintett erőforrások
-Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automatikusan létrejön. Az erőforrásokat az alábbi két táblázat foglalja össze:<br>
-
-#### <a name="run-as-account-resources"></a>Futtató fiók erőforrásai
-
-| Erőforrás | Leírás |
-| --- | --- |
-| AzureAutomationTutorial forgatókönyv | Grafikus mintarunbook, amely bemutatja, hogyan kell a futtató fiókkal hitelesítést végezni, és megjeleníti az összes Resource Manager-alapú erőforrást. |
-| AzureAutomationTutorialScript forgatókönyv | PowerShell-mintarunbook, amely bemutatja, hogyan kell a futtató fiókkal hitelesítést végezni, és megjeleníti az összes Resource Manager-alapú erőforrást. |
-| AzureRunAsCertificate | Tanúsítványobjektum, amely automatikusan létrejön, amikor Automation-fiókot hoz létre, vagy futtatja egy meglévő fiókon az alábbi PowerShell-szkriptet. A tanúsítvány lehetővé teszi az Azure-hitelesítést, így a runbookokból is kezelheti az Azure Resource Manager-erőforrásokat. A tanúsítvány élettartama egy év. |
-| AzureRunAsConnection | Kapcsolatobjektum, amely automatikusan létrejön, amikor Automation-fiókot hoz létre, vagy futtatja egy meglévő fiókon a PowerShell-szkriptet. |
-
-#### <a name="classic-run-as-account-resources"></a>Klasszikus futtató fiók erőforrásai
-
-| Erőforrás | Leírás |
-| --- | --- |
-| AzureClassicAutomationTutorial forgatókönyv | Grafikus mintarunbook, amely a klasszikus futtató fiók (tanúsítvány) segítségével lekéri az előfizetéshez tartozó, a klasszikus üzemi modellel létrehozott virtuális gépeket, majd megjeleníti a virtuális gépek nevét és állapotát. |
-| AzureClassicAutomationTutorial parancsprogram-forgatókönyv | PowerShell-mintarunbook, amely a klasszikus futtató fiók (tanúsítvány) segítségével lekéri az előfizetéshez tartozó klasszikus virtuális gépeket, majd megjeleníti a virtuális gépek nevét és állapotát. |
-| AzureClassicRunAsCertificate | Automatikusan létrejövő tanúsítványobjektum, amely Azure-hitelesítésre használható, így a klasszikus Azure-erőforrások is kezelhetők a runbookokból. A tanúsítvány élettartama egy év. |
-| AzureClassicRunAsConnection | Automatikusan létrejövő kapcsolatobjektum, amely Azure-hitelesítésre használható, így a klasszikus Azure-erőforrások is kezelhetők a runbookokból.|
 
 ## <a name="next-steps"></a>Következő lépések
 * Ellenőrizheti, hogy az új Automation-fiók el tudja végezni a hitelesítést az Azure-erőforrásokkal: [Azure Automation futtató fiók hitelesítésének tesztelése](automation-verify-runas-authentication.md).

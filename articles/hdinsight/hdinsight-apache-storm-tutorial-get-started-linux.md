@@ -16,10 +16,11 @@ ms.workload: big-data
 ms.date: 03/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 4787928ed066b9aed51a8512deeda6cd49897d82
-ms.lasthandoff: 04/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: 2ab0818646626577a23fb4096fbe863d7525a8f2
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 ---
 #<a name="get-started-with-the-storm-starter-samples-for-big-data-analytics-on-linux-based-hdinsight"></a>Ismerkedés a Storm Starter-mintákkal Linux-alapú HDInsight platformon történő big data-elemzéshez
@@ -36,10 +37,6 @@ Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számít
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * **SSH- és SCP-ismeretek**. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-### <a name="access-control-requirements"></a>A hozzáférés-vezérlésre vonatkozó követelmények
-
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-a-storm-cluster"></a>Storm-fürt létrehozása
 
@@ -190,6 +187,8 @@ Lépjen vissza a **Topology summary** (Topológia összegzése) lapra a word-cou
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a id="next"></a>Következő lépések
 

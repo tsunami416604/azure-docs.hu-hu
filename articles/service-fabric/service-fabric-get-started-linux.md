@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2017
 ms.author: subramar
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 516b8e517a16dd0d87e02189260166696225fbab
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: d01e141ec8ee8da18d38a216f3b13c88f3632801
+ms.contentlocale: hu-hu
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -74,6 +75,13 @@ A források frissítése után telepítheti az SDK-t.
     ```bash
     sudo apt-get install servicefabricsdkcommon
     ```
+    A telepítés automatizálása érdekében átugorhatja a licencszerződési kérdést, ha a beállítja a debconf-kiválasztásokat a Service Fabric-csomagokhoz. Az alábbi két parancs futtatható
+    
+    ```bash
+    echo "servicefabric servicefabric/accepted-eula-v1 select true" | debconf-set-selections
+    echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | debconf-set-selections
+    ```
+
 2. Futtassa az SDK telepítőszkriptjét.
 
     ```bash
@@ -203,6 +211,11 @@ Az SDK és a futtatókörnyezet legújabb verziójára történő frissítéséh
    sudo apt-get update
    sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp servicefabricsdkjava
    ```
+   
+> [!NOTE]
+> A fenti csomagok frissítése eredményezheti azt, hogy a helyi fejlesztési fürt leáll. Frissítés után az oldalon található utasításokat követve indítsa újra a helyi fürtöt.
+>
+>
 
 A parancssori felület frissítéséhez lépjen abba a könyvtárba, amelybe klónozta a parancssori felületet, és futtassa a `git pull` parancsot a frissítéshez.  Ha a frissítéshez további lépések szükségesek, azok a kibocsátási megjegyzésekben vannak leírva. 
 

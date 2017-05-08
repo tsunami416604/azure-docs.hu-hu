@@ -15,10 +15,11 @@ ms.workload: big-compute
 ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 23dfe112411ebc6f47e6a3f09baaf1aa746e6987
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: d05739a4d9f0712c2b4b47432bff97594a11b121
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -337,7 +338,7 @@ Amikor számítási csomópontok készletét hozza létre az Azure Batchben, az 
 
 * A megadott alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon. Ha a számítási csomópontok felé irányuló kommunikációt a VNethez társított **Hálózati biztonsági csoport (NSG)** letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát. 
 
-* Ha a megadott virtuális hálózat rendelkezik társított NSG-kkel, akkor engedélyezni kell a bejövő kommunikációt. Linux-készlet esetén engedélyezni kell a 29876-os, a 29877-es és a 22-es portot. Windows-készlet esetén a 3389-es portot kell engedélyezni.
+* Ha a megadott virtuális hálózat rendelkezik társított NSG-kkel, akkor engedélyezni kell a bejövő kommunikációt. Linux- és Windows-készletek esetében egyaránt engedélyezni kell a 29876-os és a 29877-es portot. Opcionálisan engedélyezheti a 22-es vagy 3389-es portot SSH-s Linux- vagy RDP-s Windows-készletek esetében.
 
 A virtuális hálózat további beállításai a Batch-fiók készletlefoglalási módjától függnek.
 

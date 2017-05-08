@@ -1,4 +1,12 @@
 > [!IMPORTANT] 
-> You will not be able to create new ExpressRoute circuits in the classic deployment model starting March 1, 2017. You can move an existing ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model without experiencing any connectivity down time. For more information, see [Move an existing circuit](../articles/expressroute/expressroute-move.md). You can connect to virtual networks in the classic deployment model by setting **allowClassicOperations** to TRUE.<br>Use the following links to create and manage ExpressRoute circuits in the Resource Manager deployment model:<br>[Create and manage ExpressRoute circuits](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>[Configure routing (peering) for ExpressRoute circuits](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)<br>
->     
+> 2017. március 1. után nem hozhat létre új ExpressRoute-kapcsolatcsoportot a klasszikus üzemi modellben.
+> 
+> - Meglévő ExpressRoute-kapcsolatcsoportot a kapcsolat megszakadása nélkül helyezhet át a klasszikus üzemi modellből a Resource Manager-alapú üzemi modellbe. További információ: [Meglévő kapcsolatcsoport áthelyezése](../articles/expressroute/expressroute-move.md).
+> - A klasszikus üzemi modellben az **allowClassicOperations** TRUE értékűre állításával kapcsolódhat virtuális hálózatokhoz.
+> 
+> Ha a Resource Manager-alapú üzemi modellben szeretne létrehozni és kezelni ExpressRoute-kapcsolatcsoportokat, kövesse az alábbi hivatkozásokat:
+
+> - [ExpressRoute-kapcsolatcsoportok létrehozása és kezelése](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>
+> - [Útválasztás (társviszony-létesítés) konfigurálása ExpressRoute-kapcsolatcsoportok számára](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)
+>
 >

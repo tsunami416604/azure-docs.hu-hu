@@ -5,7 +5,7 @@ keywords:
 services: time-series-insights
 documentationcenter: 
 author: op-ravi
-manager: santoshb
+manager: jhubbard
 editor: cgronlun
 ms.assetid: 
 ms.service: time-series-insights
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 05/01/2017
 ms.author: omravi
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 5e9ee102c0375c8c1ac0e0ff6bc93989115b7cfa
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: 143d48b9fc551ade0d0fd043cdb0cf1f3340a9af
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/02/2017
 
 ---
 
@@ -29,16 +30,17 @@ A Time Series Insights-környezetek két különböző típusú hozzáférési h
 * Felügyeleti hozzáférési házirendek
 * Adathozzáférési házirendek
 
-A házirendek mindkét típusa különféle engedélyeket biztosít az Azure Active Directory rendszerbiztonsági tagjai (felhasználók és alkalmazások) számára egy adott környezetre vonatkozóan. A rendszerbiztonsági tagoknak (felhasználóknak és alkalmazásoknak) a környezetet tartalmazó előfizetéshez társított Active Directoryhoz (vagy „Azure-bérlőhöz”) kell tartozniuk.
+Mindkét házirend különféle engedélyeket biztosít az Azure Active Directory rendszerbiztonsági tagjai (felhasználók és alkalmazások) számára egy adott környezetre vonatkozóan. A rendszerbiztonsági tagoknak (felhasználóknak és alkalmazásoknak) a környezetet tartalmazó előfizetéshez társított Active Directoryhoz (vagy „Azure-bérlőhöz”) kell tartozniuk.
 
 A felügyeleti hozzáférési házirendek a környezet konfigurálásához kapcsolódó engedélyeket biztosítanak, például:
-*    a környezet létrehozása vagy törlése, eseményforrások, referencia-adatkészletek, és
-*    az adathozzáférési házirendek felügyelete.
+*    A környezet létrehozása vagy törlése, eseményforrások, referencia-adatkészletek; valamint
+*    Az adathozzáférési házirendek felügyelete.
 
 Az adathozzáférési házirendek a következőkhöz biztosítanak engedélyeket: adatlekérdezések kiadása, referenciaadatok módosítása a környezetben, valamint a környezethez társított mentett megosztott lekérdezések és perspektívák.
 
 A házirendek két típusa lehetővé teszi a környezet felügyeletéhez történő hozzáférés és a környezetben található adatokhoz való hozzáférés teljes mértékű szétválasztását. Például beállítható egy olyan környezet, amely esetében a környezet tulajdonosa/létrehozója el van távolítva az adathozzáférésből. Emellett megadható, hogy azok a felhasználók és szolgáltatások, amelyek olvashatják a környezet adatait, ne kapjanak hozzáférést a környezet konfigurációjához.
 
+## <a name="grant-data-access"></a>Adathozzáférés biztosítása
 A következő lépések bemutatják, hogyan biztosítható adathozzáférés egy felhasználó rendszerbiztonsági tag számára:
 
 1.    Jelentkezzen be az [Azure Portal](https://portal.azure.com).

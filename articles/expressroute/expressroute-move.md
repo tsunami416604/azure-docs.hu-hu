@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 05/02/2017
 ms.author: ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 945923d9858ec0ed31272c23268b263f77b5c7a4
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
 Ez a cikk azt tekinti át, hogy az Azure ExpressRoute-kapcsolatcsoportok hogyan helyezhetők át a klasszikusból az Azure Resource Manager-alapú üzemi modellbe.
-
-[!INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 Egyetlen ExpressRoute-kapcsolatcsoporttal csatlakozhat a klasszikus és a Resource Manager-alapú üzemi modellekbe telepített virtuális hálózatokhoz. Az ExpressRoute-kapcsolatcsoportok mostantól a létrehozási módjuktól függetlenül képesek virtuális hálózatokhoz csatlakozni mindkét üzemi modellben.
 
@@ -87,11 +87,11 @@ Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében támogatott műveletek
 * Miután egy ExpressRoute-kapcsolatcsoportot áthelyezett a Resource Manager-alapú üzemi modellbe, az ExpressRoute-kapcsolatcsoport életciklusát csak a Resource Manager-alapú üzemi modell segítségével kezelheti. Ez azt jelenti, hogy az olyan műveletek, mint a társviszonyok hozzáadása/frissítése/törlése, a kapcsolatcsoport tulajdonságainak (például a sávszélesség, termékváltozat és számlázási típus) frissítése, valamint a kapcsolatcsoportok törlése, csak a Resource Manager-alapú üzemi modellben végezhetők el.
 * Az ExpressRoute-kapcsolatcsoport hídként működik a klasszikus és a Resource Manager-alapú üzemi modellek között A klasszikus üzemi modellben lévő virtuális hálózatok virtuális gépei és a Resource Manager-alapú üzemi modellben lévő virtuális hálózatok közötti forgalom keresztülhalad az ExpressRoute-on, ha mindkét virtuális hálózat ugyanahhoz az ExpressRoute-kapcsolatcsoporthoz csatlakozik.
 * Az előfizetések közötti kapcsolat a klasszikus és a Resource Manager-alapú üzemi modellekben is támogatott.
+* Miután áthelyezett egy ExpressRoute-kapcsolatcsoportot a klasszikusból az Azure Resource Manager-alapú modellbe, [áttelepítheti az ExpressRoute-kapcsolatcsoporthoz kapcsolt virtuális hálózatokat](expressroute-migration-classic-resource-manager.md) is.
 
 ## <a name="whats-not-supported"></a>Nem támogatott műveletek
 Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében nem támogatott műveleteket ismerteti:
 
-* A kapcsolatcsoportok kapcsolatai, az átjárók és a virtuális hálózatok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe.
 * ExpressRoute-kapcsolatcsoportok életciklusának kezelése a klasszikus üzemi modellből.
 * Szerepköralapú hozzáférés-vezérlés (RBAC) támogatása a klasszikus üzemi modell esetében. A klasszikus üzemi modellben nem hajthat végre RBAC-vezérlési műveleteket a kapcsolatcsoportokon. Az előfizetés bármelyik rendszergazdája/társrendszergazdája csatlakoztathat virtuális hálózatokat a kapcsolatcsoporthoz, illetve leválaszthatja azokat.
 
@@ -99,16 +99,12 @@ Ez a szakasz az ExpressRoute-kapcsolatcsoportok esetében nem támogatott művel
 Kövesse az [ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-howto-move-arm.md) című szakaszban ismertetett utasításokat.
 
 ## <a name="next-steps"></a>Következő lépések
+* [ExpressRoute-kapcsolatcsoporthoz kapcsolt virtuális hálózatok áttelepítése a klasszikusból az Azure Resource Manager-alapú modellbe](expressroute-migration-classic-resource-manager.md)
 * További információkért lásd: [ExpressRoute-kapcsolatcsoportok kiépítési munkafolyamatai és kapcsolatcsoport-állapotok](expressroute-workflows.md).
 * Az ExpressRoute-kapcsolat konfigurálása:
   
   * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-arm.md)
   * [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

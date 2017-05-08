@@ -13,38 +13,28 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 04/03/2017
+ms.date: 04/27/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: ba9c673676fd0b742eb8bd780b67930333b151b3
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
+ms.openlocfilehash: e9dfb5a744a7c63ef9805b1341236c4f3c57ec4d
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/02/2017
 
 
 ---
 # <a name="overview-of-application-gateway"></a>Application Gateway – áttekintés
 
-A Microsoft Azure Application Gateway egy alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosító dedikált virtuális berendezés, amely számos 7. rétegbeli terheléselosztási lehetőséget nyújt alkalmazásának. A berendezés a méretezhetőség és a magas rendelkezésre állás céljából több feldolgozói példányból áll. Az ügyfelek optimalizálhatják a webfarmok termelékenységét a processzorigényes SSL-lezárások Application Gateway felé történő kiszervezésével. Ezen túlmenően egyéb 7. rétegbeli útválasztási lehetőségeket is kínál, beleértve a bejövő forgalom ciklikus időszeleteléses elosztását, a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást, valamint egyetlen Application Gateway mögött több webhelyet is üzemeltethet. Az Application Gateway szolgáltatást internetes átjáróként, csak belső használatú átjáróként vagy a kettő kombinációjaként lehet konfigurálni. Az Application Gateway egy teljes körűen felügyelt Azure-szolgáltatás, amely skálázható és magas rendelkezésre állást kínál. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében. Amikor alkalmazásátjárót hoz létre, a rendszer egy végpontot (nyilvános virtuális IP-cím vagy belső ILB IP) rendel hozzá, amely a bejövő hálózati forgalom kezelésére szolgál. A virtuális IP-cím vagy ILB IP biztosításáért az Azure Load Balancer felel az átviteli szinten (TCP/UDP), és a teljes bejövő hálózati forgalom terheléselosztását az Application Gateway feldolgozópéldányai végzik el. Az Application Gateway az alapján irányítja a HTTP/HTTPS-forgalmat, hogy az átjáró virtuális gépként, felhőszolgáltatásként, illetve belső vagy külső IP-címként lett-e megadva.
+A Microsoft Azure Application Gateway egy alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosító dedikált virtuális berendezés, amely számos 7. rétegbeli terheléselosztási lehetőséget nyújt alkalmazásának. Az ügyfelek optimalizálhatják a webfarmok termelékenységét a processzorigényes SSL-lezárások Application Gateway felé történő kiszervezésével. Ezen túlmenően egyéb 7. rétegbeli útválasztási lehetőségeket is kínál, beleértve a bejövő forgalom ciklikus időszeleteléses elosztását, a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást, valamint egyetlen Application Gateway mögött több webhelyet is üzemeltethet. Az Application Gateway WAF termékváltozata tartalmaz egy webapp tűzfalat is, amely védelmet biztosít a webappok számára a gyakori internetes biztonsági rések és az azokat kihasználó támadások ellen. Az Application Gateway szolgáltatást internetes átjáróként, csak belső használatú átjáróként vagy a kettő kombinációjaként lehet konfigurálni. 
 
-Az Application Gateway WAF termékváltozata tartalmaz egy webapp tűzfalat is, amely védelmet biztosít a webappok számára a gyakori internetes biztonsági rések és az azokat kihasználó támadások ellen. A webapp tűzfal az [alapvető OWASP-szabálykészletek](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0-s vagy 2.2.9-es verzióinak szabályai alapján működik.
-
-## <a name="differences-between-application-gateway-skus"></a>Az Application Gateway termékváltozatai közötti különbségek
-
-Az Application Gateway kétféle termékváltozatban érhető el. Az egyik a Standard termékváltozat, a másik pedig a Web Application Firewall (WAF) termékváltozat.
-
-### <a name="standard"></a>Standard
-
-A Standard termékváltozat SSL-lezárást, cookie-alapú munkamenet-affinitást, ciklikus időszeleteléses terheléselosztást, tartalomalapú útválasztást, valamint több webhely és biztonsági fejlesztés üzemeltetésének képességét kínálja. Az Application Gateway által kínált biztonsági fejlesztések között szerepel az SSL-házirend kezelése, a végpontok közötti SSL-támogatás és az SSL-lezárás.
-
-### <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
-
-A WAF termékváltozat tartalmazza a standard termékváltozat által kínált összes funkciót, valamint a [webapp tűzfalat](application-gateway-web-application-firewall-overview.md). Ez támadásészlelési szabályokat biztosít, amelyek védelmet nyújtanak a webappok számára a gyakori internetes biztonsági rések és az azokat kihasználó támadások ellen.
+![forgatókönyv](./media/application-gateway-introduction/scenario.png)
 
 ## <a name="features"></a>Szolgáltatások
 
-Az Application Gateway az alábbi funkciókkal támogatja a 7. rétegbeli alkalmazásszolgáltatást:
+Az Application Gateway jelenleg a következő képességeket biztosítja:
 
-* **[Webapp tűzfal](application-gateway-webapplicationfirewall-overview.md)** – Az Application Gateway webapp tűzfala (WAF) megvédi a webappokat az ismert webalapú támadásoktól, például az SQL-injektálástól; a helyközi, szkriptet alkalmazó támadásoktól és a munkamenet-eltérítésektől.
+
+* **[Webalkalmazási tűzfal](application-gateway-webapplicationfirewall-overview.md)** – Az Application Gateway webalkalmazási tűzfala (WAF) megvédi a webalkalmazásokat az ismert webalapú támadásoktól, például az SQL-injektálástól; a helyközi, szkriptet alkalmazó támadásoktól és a munkamenet-eltérítésektől.
 * **HTTP-terheléselosztás** – Az Application Gateway ciklikus időszeleteléses terheléselosztást biztosít. A terheléselosztás a 7. rétegben történik, és kizárólag a HTTP(S)-forgalmat érinti.
 * **Cookie-alapú munkamenet-affinitás** – Ez a funkció akkor hasznos, ha egy felhasználói munkamenetet egy adott háttérkiszolgálón szeretne tartani. Az átjáróval kezelt cookie-k használatával az Application Gateway képes egy felhasználói munkamenet minden újabb forgalmát ugyanarra a háttérkiszolgálóra irányítani feldolgozásra. Ez a funkció olyan esetekben lehet fontos, amelyekben egy felhasználói munkamenethez tartozó munkamenet-állapotot helyileg ment a rendszer a háttérkiszolgálón.
 * **[A biztonságos szoftvercsatorna (SSL) kiszervezése](application-gateway-ssl-arm.md)** – Ez a funkció leveszi a HTTPS-forgalom visszafejtése költséges feladatának terhét az Ön webkiszolgálóiról. Ha lezárja az SSL-kapcsolatot az Application Gatewayben, és a kérést titkosítás nélkül irányítja át a kiszolgálóra, a webkiszolgálónak nem kell feloldania a titkosítást.  Az Application Gateway újratitkosítja a választ, mielőtt visszaküldené az ügyfélnek. Ez a funkció akkor hasznos, ha a háttérkiszolgáló ugyanazon a biztonságos virtuális hálózaton van, mint az Azure Application Gateway.
@@ -64,6 +54,9 @@ Az Application Gateway az alábbi esetekben hasznos:
 * Olyan alkalmazásokhoz, például a tartalomkézbesítési hálózatokhoz, amelyeken egy hosszú ideig futó TCP-kapcsolat HTTP-kéréseit különböző háttérkiszolgálókra kell irányítani, terheléselosztását azokon elvégezni.
 * Olyan alkalmazásokhoz, amelyek támogatják a WebSocket-forgalmat.
 * A webalkalmazások ismert webalapú támadásoktól, például az SQL-injektálástól, a helyközi, szkriptet alkalmazó támadásoktól és a munkamenet-eltérítésektől való megvédéséhez.
+* A forgalom logikai elosztása a különböző útválasztási kritériumok alapján, mint például az URL-elérési út vagy a tartományfejlécek.
+
+Az Application Gateway egy teljes körűen felügyelt Azure-szolgáltatás, amely skálázható és magas rendelkezésre állást kínál. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében. Amikor alkalmazásátjárót hoz létre, a rendszer egy végpontot (nyilvános virtuális IP-cím vagy belső ILB IP) rendel hozzá, amely a bejövő hálózati forgalom kezelésére szolgál. A virtuális IP-cím vagy ILB IP biztosításáért az Azure Load Balancer felel az átviteli szinten (TCP/UDP), és a teljes bejövő hálózati forgalom terheléselosztását az Application Gateway feldolgozópéldányai végzik el. Az Application Gateway az alapján irányítja a HTTP/HTTPS-forgalmat, hogy az átjáró virtuális gépként, felhőszolgáltatásként, illetve belső vagy külső IP-címként lett-e megadva.
 
 Az Azure által felügyelt Application Gateway terheléselosztási szolgáltatás egy 7. rétegbeli, az Azure szoftveres terheléselosztója mögött működő terheléselosztó üzembe helyezését teszi lehetővé. A Traffic Managerrel a következő képen látható módon valósítható meg a forgatókönyv, ahol a Traffic Manager átirányítást és különböző régiókban lévő több Application Gatewayre irányuló forgalom elérhetőségét biztosít, míg az Application Gateway régiók közötti, 7. rétegbeli terheléselosztást nyújt. A forgatókönyv példája a következő témakörben található: [Terheléselosztási szolgáltatások használata az Azure-felhőben](../traffic-manager/traffic-manager-load-balancing-azure.md)
 
@@ -104,6 +97,7 @@ A díjszabás az átjárópéldányok óránkénti díján és az adatfeldolgoz�
 ## <a name="faq"></a>GYIK
 
 Az Application Gatewayre vonatkozó gyakori kérdésekért lásd: [Application Gateway – gyakori kérdések](application-gateway-faq.md).
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ha elsajátította a szükséges ismereteket, [hozzon létre egy alkalmazásátjárót](application-gateway-create-gateway-portal.md), vagy [hozzon létre egy SSL-kiszervező alkalmazásátjárót](application-gateway-ssl-arm.md) a HTTPS-kapcsolatok teherelosztása érdekében.

@@ -4,7 +4,7 @@ description: "Ez a dokumentum ismerteti, hogy az Azure Security Center hogyan in
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
@@ -12,12 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 04/28/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 5001cd47b6ee51967d1286414ccefedd8e7e7813
-ms.openlocfilehash: 095b5c9d1a888a4061450234f80c52c5834fbf53
-ms.lasthandoff: 12/02/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
+ms.openlocfilehash: 8dddfc8929ab1a0c44522ed2a2596e2c82e3987d
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/01/2017
 
 
 ---
@@ -37,10 +38,10 @@ A négy fő érv a Security Center partnerintegrációjának használata mellett
 ## <a name="what-partners-are-integrated-with-security-center"></a>Mely partnerek integrálhatók a Security Centerrel?
 A Security Center jelenleg a következő partnerekkel integrálható:
 
-- Endpoint Protection (Trend Micro), 
-- Webalkalmazási tűzfal (Barracuda, F5, Imperva és hamarosan Microsoft WAF és Fortinet), 
-- Újgenerációs tűzfalmegoldások (Check Point, Barracuda és hamarosan Fortinet és Cisco). 
-- Sebezhetőség-felmérési megoldások (Qualys – előzetes verzió). 
+- Végpontvédelem ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)) 
+- Webalkalmazás-tűzfal ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets) és [App Gateway WAF](https://azure.microsoft.com/en-us/blog/azure-web-application-firewall-waf-generally-available/)) 
+- Újgenerációs tűzfalmegoldások ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/) és hamarosan [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2) és [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)) 
+- Sebezhetőség-felmérés ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) – előzetes verzió).  
 
 Idővel a Security Center kibővíti a partnerek számát a meglévő kategóriákban, és új kategóriák is elérhetők lesznek. 
 

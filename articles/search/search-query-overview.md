@@ -11,11 +11,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 04/26/2017
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 1e18f20e202c199036ff2012dcc6d415898cac7f
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: a6e9e504f4ccb8fb1e0a151dcfe76339fcc8051a
+ms.contentlocale: hu-hu
+ms.lasthandoff: 04/27/2017
 
 
 ---
@@ -28,7 +30,7 @@ ms.openlocfilehash: 1e18f20e202c199036ff2012dcc6d415898cac7f
 > 
 > 
 
-Az Azure Search számára keresési kérések elküldésekor az alkalmazás keresőmezőjébe írt tényleges szavak mellett számos paraméter is megadható. Ezen lekérdezési paraméterek segítségével jobban kézben tartható a teljes szöveges keresés.
+Az Azure Search számára keresési kérések elküldésekor az alkalmazás keresőmezőjébe írt tényleges szavak mellett számos paraméter is megadható. A lekérdezési paraméterek segítségével jobban kezelhető a [teljes szöveges keresés](search-lucene-query-architecture.md).
 
 Az alábbi lista röviden ismerteti az Azure Search lekérdezési paramétereinek gyakori alkalmazásait. A lekérdezési paraméterek és azok viselkedésének teljes leírását a [REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) és a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters#microsoft_azure_search_models_searchparameters#properties_summary) részletes információi között találja.
 
@@ -59,10 +61,5 @@ A keresési eredmények lapozásáról további információkat a [Keresési ere
 
 ## <a name="hit-highlighting"></a>Találatok kiemelése
 Az Azure Search szolgáltatás `highlight`, `highlightPreTag` és `highlightPostTag` paramétereinek használatával egyszerűen kiemelhető a keresési lekérdezésnek megfelelő keresési eredmények pontos köre. Megadhatja, hogy mely *searchable* (kereshető) mezők esetében kívánja bekapcsolni az egyező szöveg kiemelését, valamint az Azure által visszaadott egyező szöveg elejére és végére hozzáfűzni kívánt karakterlánc-címkéket.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

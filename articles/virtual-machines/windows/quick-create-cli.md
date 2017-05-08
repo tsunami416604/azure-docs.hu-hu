@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/03/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: a1ccebd6d53c7f02517c7655bdfb5b3ce3f26090
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
+ms.openlocfilehash: 7461a0006e57608d9baa538175174788692db5f5
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 ---
 
@@ -42,7 +43,7 @@ az login
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
-A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
+A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *westeurope* helyen.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
@@ -52,13 +53,17 @@ az group create --name myResourceGroup --location westeurope
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. 
 
-Az alábbi példa egy `myVM` nevű virtuális gépet hoz létre. Ez a példa az `azureuser` rendszergazdanevet és a ` myPassword12` jelszót használja. Az értékeket módosítsa a környezetének megfelelően. Ezekre az értékekre akkor van szükség, amikor kapcsolódik a virtuális géphez.
+Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa az *azureuser* rendszergazdanevet és a *myPassword12* jelszót használja. Az értékeket módosítsa a környezetének megfelelően. Ezekre az értékekre akkor van szükség, amikor kapcsolódik a virtuális géphez.
 
 ```azurecli
-az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --admin-username azureuser --admin-password myPassword12
+az vm create `
+  --resource-group myResourceGroup `
+  --name myVM --image win2016datacenter `
+  --admin-username azureuser `
+  --admin-password myPassword12
 ```
 
-A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a nyilvános IP-címet. Ez a cím használható a virtuális gép eléréséhez.
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a `publicIpAaddress` értékét. Ez a cím használható a virtuális gép eléréséhez.
 
 ```azurecli
 {
@@ -75,7 +80,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
 
-Alapértelmezés szerint kizárólag RDP-kapcsolatok engedélyezettek az Azure-ban üzembe helyezett, Windows rendszerű virtuális gépeken. Ha ez a virtuális gép webkiszolgáló lesz, meg kell nyitnia a 80-as portot az internet irányából.  A kívánt port megnyitásához egyetlen parancs szükséges.  
+Alapértelmezés szerint kizárólag RDP-kapcsolatok engedélyezettek az Azure-ban üzembe helyezett, Windows rendszerű virtuális gépeken. Ha ez a virtuális gép webkiszolgáló lesz, meg kell nyitnia a 80-as portot az internet irányából. A kívánt port megnyitásához használja az [az vm open-port](/cli/azure/vm#open-port) parancsot.  
  
  ```azurecli 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -92,7 +97,7 @@ mstsc /v:<Public IP Address>
 
 ## <a name="install-iis-using-powershell"></a>Az IIS telepítése a PowerShell-lel
 
-Miután bejelentkezett az Azure-beli virtuális gépre, egyetlen PowerShell-utasítással telepítheti az IIS-t, és engedélyezheti, hogy a helyi tűzfalszabály átengedje a webforgalmat.  Nyisson meg egy PowerShell-parancssort, és futtassa a következő parancsot:
+Miután bejelentkezett az Azure-beli virtuális gépre, egyetlen PowerShell-utasítással telepítheti az IIS-t, és engedélyezheti, hogy a helyi tűzfalszabály átengedje a webforgalmat. Nyisson meg egy PowerShell-parancssort, és futtassa a következő parancsot:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -100,12 +105,12 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>Az IIS kezdőlapjának megtekintése
 
-Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gépen az internet irányából, egy tetszőleges böngésző használatával megtekintheti az alapértelmezett IIS-kezdőlapot. Ügyeljen arra, hogy az alapértelmezett oldalt a fentebb dokumentált `publicIpAddress` használatával keresse fel. 
+Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gépen az internet irányából, egy tetszőleges böngésző használatával megtekintheti az alapértelmezett IIS-kezdőlapot. Ügyeljen arra, hogy az alapértelmezett oldalt a fentebb dokumentált nyilvános IP-cím használatával keresse fel. 
 
 ![Alapértelmezett IIS-webhely](./media/quick-create-powershell/default-iis-website.png) 
 ## <a name="delete-virtual-machine"></a>Virtuális gép törlése
 
-Ha már nincs rá szükség, az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
+Ha már nincs rá szükség, a [az group delete](/cli/azure/group#delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli
 az group delete --name myResourceGroup

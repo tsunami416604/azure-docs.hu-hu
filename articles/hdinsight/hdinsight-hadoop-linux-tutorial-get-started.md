@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 24bb7e2ffd212594f50bab735e86d74ab95d8c62
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
+ms.openlocfilehash: bef6754f5ffd2b004af01a2e26edeeed63793b6e
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/03/2017
 
 
 ---
@@ -28,13 +29,11 @@ ms.lasthandoff: 03/28/2017
 Megtanulhatja, hogyan hozhat létre [Hadoop](http://hadoop.apache.org/)-fürtöket, és hogyan futtathat Hive-feladatokat a HDInsightban. Az [Apache Hive](https://hive.apache.org/) a Hadoop ökoszisztémájának legnépszerűbb összetevője. A HDInsight jelenleg hat különböző fürttípussal érhető el: [Hadoop](hdinsight-hadoop-introduction.md), [Spark](hdinsight-apache-spark-overview.md), [HBase](hdinsight-hbase-overview.md), [Storm](hdinsight-storm-overview.md), [Interaktív Hive (előzetes verzió)](hdinsight-hadoop-use-interactive-hive.md) és [R Server](hdinsight-hadoop-r-server-overview.md).  Minden egyes fürttípus más és más összetevőket támogat. A Hive-ot mind a hat fürttípus támogatja. A HDInsightban támogatott összetevők listáját lásd: [What's new in the Hadoop cluster versions provided by HDInsight?](hdinsight-component-versioning.md) (A HDInsight által biztosított Hadoop-fürtverziók újdonságai).  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elindításának feltétele:
 
 * **Azure-előfizetés**: egy ingyenes egy hónapos próbafiók létrehozásához keresse fel az [azure.microsoft.com/free](https://azure.microsoft.com/free) webhelyet.
-
-### <a name="access-control-requirements"></a>A hozzáférés-vezérlésre vonatkozó követelmények
-[!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-cluster"></a>Fürt létrehozása
 
@@ -123,6 +122,10 @@ Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál irányítópultján kattintson arra a csempére, amelynek a neve megegyezik a fürt létrehozásakor használt erőforráscsoport-névvel.
 3. Kattintson az erőforrás panel **Törlés** gombjára a fürtöt és az alapértelmezett tárfiókot tartalmazó erőforráscsoport törléséhez, vagy kattintson a fürt nevére az **Erőforrások** csempén, majd a **Törlés** gombra a fürt paneljén. Vegye figyelembe, hogy az erőforráscsoport törlése esetén a tárfiók is törlődik. Ha szeretné megtartani a tárfiókot, csak a fürtöt törölje.
+
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóprogramban megtanulhatta, hogyan hozhat létre Linux-alapú HDInsight-fürtöt egy Resource Manager-sablonnal, és hogyan hajthat végre alapszintű Hive-lekérdezéseket.

@@ -1,4 +1,7 @@
 ## <a name="provision-the-solution"></a>A megoldás megvalósítása
+
+Ha még nem építette ki az előre konfigurált távoli figyelési megoldást a fiókban:
+
 1. Jelentkezzen be az [azureiotsuite.com][lnk-azureiotsuite] címre az Azure-fiókja hitelesítő adataival, majd kattintson a **+** elemre egy megoldás létrehozásához.
 2. Kattintson a **Kiválasztás** elemre a **Távoli figyelés** csempén.
 3. Adja meg a **Megoldásnevet** az előre konfigurált távoli figyelési megoldáshoz.

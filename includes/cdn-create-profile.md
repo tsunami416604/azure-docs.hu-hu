@@ -1,6 +1,6 @@
 **Új CDN-profil létrehozása**
 
-1. Kattintson az [Azure Portal](https://portal.azure.com) bal felső sarkában található **Új** gombra.  Az **Új** panelen válassza az **Adathordozó + CDN**, majd a **CDN** lehetőséget.
+1. Kattintson az [Azure Portal](https://portal.azure.com) bal felső sarkában található **Új** gombra.  Az **Új** panelen válassza a **Web + mobil**, majd a **CDN** lehetőséget.
    
     Megjelenik az új CDN-profil panelje.
    
@@ -13,9 +13,4 @@
     ![CDN-tarifacsomag kiválasztása](./media/cdn-create-profile/cdn-choose-sku-include.png)
 6. Válassza ki a jelen CDN-profilhoz tartozó **előfizetést**.
 7. Az új profil létrehozásához kattintson a **Létrehozás** gombra. 
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

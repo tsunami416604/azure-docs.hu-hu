@@ -1,6 +1,6 @@
 ---
-title: "Bevezetés az Azure Search használatába NodeJS nyelven | Microsoft Docs"
-description: "Ismerje meg egy keresőalkalmazás felépítésének lépéseit egy üzemeltetett felhőalapú keresőszolgáltatásban az Azure rendszerben, a NodeJS programozási nyelv használatával."
+title: "Bevezetés az Azure Search használatába Node.js-ben | Microsoft Docs"
+description: "Keresőalkalmazás felépítési útmutatója az Azure egy üzemeltetett felhőalapú keresőszolgáltatásához a Node.js programozási nyelv használatával."
 services: search
 documentationcenter: 
 author: EvanBoyle
@@ -12,31 +12,33 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 07/14/2016
+ms.date: 04/26/2017
 ms.author: evboyle
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8a66c8f6079671b16c1c60467e6d458ed54be5af
+ms.translationtype: Human Translation
+ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
+ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
+ms.contentlocale: hu-hu
+ms.lasthandoff: 04/27/2017
 
 
 ---
-# <a name="get-started-with-azure-search-in-nodejs"></a>Bevezetés az Azure Search használatába NodeJS nyelven
+# <a name="get-started-with-azure-search-in-nodejs"></a>Bevezetés az Azure Search használatába Node.js-ben
 > [!div class="op_single_selector"]
-> * [Portál](search-get-started-portal.md)
+> * [Portal](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
 > 
 > 
 
-Ismerje meg, hogyan hozhat létre olyan egyéni NodeJS keresőalkalmazást, amely az Azure Search szolgáltatást használja a keresésekhez. Ez az oktatóanyag az [Azure Search szolgáltatás REST API](https://msdn.microsoft.com/library/dn798935.aspx)-ját használja ebben a gyakorlatban az objektumok és műveletek összeállításához.
+Ismerje meg, hogyan hozhat létre olyan egyéni Node.js-keresőalkalmazást, amely az Azure Search szolgáltatást használja a keresésekhez. Ez az oktatóanyag az [Azure Search szolgáltatás REST API](https://msdn.microsoft.com/library/dn798935.aspx)-ját használja ebben a gyakorlatban az objektumok és műveletek összeállításához.
 
-A kód kialakításához és teszteléséhez a következő eszközöket használjuk a Windows 8.1 operációs rendszerben: [NodeJS](https://nodejs.org) és NPM, [Sublime Text 3](http://www.sublimetext.com/3) és Windows PowerShell.
+A kód fejlesztéséhez és teszteléséhez a [Node.js](https://Nodejs.org)-t, valamint Windows 8.1 rendszeren az NPM-et, a [Sublime Text 3](http://www.sublimetext.com/3)-at és a Windows PowerShellt használtuk.
 
-A minta futtatásához rendelkeznie kell egy Azure Search szolgáltatással, amelyre az [Azure portálon](https://portal.azure.com) regisztrálhat. A részletes utasításokat lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md).
+A minta futtatásához rendelkeznie kell egy Azure Search-szolgáltatással, amelyre az [Azure Portalon](https://portal.azure.com) regisztrálhat. A részletes utasításokat lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md).
 
 ## <a name="about-the-data"></a>Tudnivalók az adatokról
 A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](http://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
 
-Ebben az alkalmazásban a **DataIndexer** program egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet segítségével létrehozza és betölti az indexet, amelyhez egy nyilvános Azure SQL-adatbázisból kéri le a szűrt USGS-adatkészletet. A hitelesítő adatokat és az online adatforrás kapcsolódási adatait a programkód tartalmazza. Nincs szükség további konfigurációra.
+Ebben az alkalmazásban a **DataIndexer** program egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet segítségével létrehozza és betölti az indexet, amelyhez egy nyilvános Azure SQL-adatbázisból kéri le a szűrt USGS-adatkészletet. A hitelesítő adatokat és az online adatforrás csatlakozási adatait a programkód tartalmazza. Nincs szükség további konfigurációra.
 
 > [!NOTE]
 > Az adatkészlethez olyan szűrőt alkalmaztunk, hogy az ingyenes tarifacsomag 10 000 dokumentumos korlátja alatt maradjunk. Ha a standard csomagot használja, arra nem vonatkozik ez a korlátozás. Az egyes tarifacsomagok kapacitásával kapcsolatos részletes információkat lásd: [A Search szolgáltatásra vonatkozó korlátozások](search-limits-quotas-capacity.md).
@@ -45,26 +47,24 @@ Ebben az alkalmazásban a **DataIndexer** program egy [indexelő](https://msdn.m
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-apikey-of-your-azure-search-service"></a>Az Azure Search szolgáltatás szolgáltatásnevének és API-kulcsának megkeresése
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Az Azure Search szolgáltatás szolgáltatásnevének és API-kulcsának megkeresése
 Miután létrehozta a szolgáltatást, térjen vissza a portálra az URL-cím vagy az `api-key` beolvasása érdekében. A keresőszolgáltatáshoz való kapcsolódáshoz szükséges, hogy a hívás hitelesítéséhez az URL-cím és egy `api-key` is a rendelkezésére álljon.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Az ugrás sávon kattintson a **Keresési szolgáltatás** elemre, hogy megjelenjen az előfizetéséhez kapcsolódó összes Azure Search szolgáltatás.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A gyorselérési sávon kattintson a **Keresési szolgáltatás** elemre, hogy megjelenjen az előfizetéséhez kapcsolódó összes Azure Search-szolgáltatás.
 3. Válassza ki a használni kívánt szolgáltatást.
-4. A szolgáltatás irányítópultján megjelennek az alapvető információkat tartalmazó csempék, valamint az adminisztrációs kulcsok eléréséhez szükséges kulcs ikon.
-   
-      ![][3]
-5. Másolja át a szolgáltatás URL-címét, egy adminisztrációs kulcsot és egy lekérdezési kulcsot. Később mind a háromra szüksége lesz, amikor hozzáadja őket a config.js fájlhoz.
+4. A szolgáltatás irányítópultján meg kell jelenniük az alapvető információkat tartalmazó csempéknek, például az adminisztrációs kulcsok eléréséhez szükséges kulcs ikonnak.
+5. Másolja át a szolgáltatás URL-címét, egy adminisztrációs kulcsot és egy lekérdezési kulcsot. Mindháromra később lesz szüksége, amikor hozzáadja őket a config.js fájlhoz.
 
 ## <a name="download-the-sample-files"></a>A mintafájlok letöltése
 A minta letöltéséhez a következő módszerek bármelyikét használhatja.
 
-1. Lépjen az [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo) elemre.
+1. Lépjen az [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodejsIndexerDemo) elemre.
 2. Kattintson a **Download ZIP** (ZIP-fájl letöltése) elemre, mentse el a .zip-fájlt, és bontsa ki a benne található összes fájlt.
 
-Minden további fájlmódosítás és utasításfuttatás az ebben a mappában lévő fájlokra vonatkozóan fog történni.
+Minden további fájlmódosítás és utasításfuttatás az ebben a mappában lévő fájlokra vonatkozóan történik.
 
-## <a name="update-the-configjs-with-your-search-service-url-and-apikey"></a>Frissítse a config.js fájlt. a keresőszolgáltatása URL-címével és API-kulcsával
+## <a name="update-the-configjs-with-your-search-service-url-and-api-key"></a>Frissítse a config.js fájlt. a keresőszolgáltatása URL-címével és API-kulcsával
 A már korábban átmásolt URL-címmel és API-kulccsal a konfigurációs fájlban adja meg az URL-címet, az adminisztrációs kulcsot és a lekérdezési kulcsot.
 
 Az adminisztrációs kulcsok teljes körű vezérlést biztosítanak a szolgáltatási műveletek felett, beleértve az index létrehozását vagy törlését, illetve a dokumentumok betöltését. Ezzel szemben a lekérdezési kulcsok a csak olvasható műveletekhez, jellemzően az Azure Search szolgáltatáshoz kapcsolódó ügyfélalkalmazásokhoz használhatók.
@@ -91,7 +91,7 @@ A következő parancsokhoz használjon egy PowerShell-ablakot.
 4. Irányítsa a böngészőt a következő helyre: `http://localhost:8080/index.html`
 
 ## <a name="search-on-usgs-data"></a>USGS-adatok keresése
-Az USGS-adatkészlet a Rhode Island államra vonatkozó rekordokat tartalmaz. Ha rákattint egy üres keresőmező **Search** (Keresés) gombjára, megjelenik az 50 legfontosabb bejegyzés; ez az alapértelmezett viselkedés.
+Az USGS-adatkészlet a Rhode Island államra vonatkozó rekordokat tartalmaz. Ha rákattint egy üres keresőmező **Keresés** gombjára, megjelenik az 50 legfontosabb bejegyzés; ez az alapértelmezett viselkedés.
 
 A keresett kifejezés beírása elindítja a keresőmotort. Próbáljon meg a helyhez kötődő nevet beírni. „Roger Williams” volt Rhode Island első kormányzója. Számos parkot, épületet és iskolát neveztek el róla.
 
@@ -104,21 +104,16 @@ Megpróbálhatja beírni az alábbi kifejezések bármelyikét is:
 * goose+cape
 
 ## <a name="next-steps"></a>Következő lépések
-Ez az Azure Search első oktatóanyaga, amely NodeJS és USGS-adatkészlet alapján készült. Idővel majd tovább bővítjük oktatóanyagunkat, és olyan kiegészítő keresési funkciókat fogunk bemutatni, amelyeket esetleg szívesen használna egyéni megoldásaiban.
+Ez az Azure Search első oktatóanyaga, amely a Node.js és a USGS-adatkészlet alapján készült. Idővel majd tovább bővítjük oktatóanyagunkat, és olyan kiegészítő keresési funkciókat fogunk bemutatni, amelyeket esetleg szívesen használna egyéni megoldásaiban.
 
 Ha már rendelkezik bizonyos tapasztalattal az Azure Search használatában, ezt a mintát akár ugródeszkaként is használhatja a javaslattevők (előre begépelt vagy automatikusan kitöltött lekérdezések), szűrők és a jellemzőalapú navigáció kipróbálásához. A keresési eredmények oldalát is tovább fejlesztheti számok és kötegelt dokumentumok hozzáadásával úgy, hogy a felhasználók lapozhassanak az eredmények között.
 
 Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóanyagokat is, hogy jobban megismerhesse, mit hozhat létre. További forrásokat a [dokumentációs oldalunkon](https://azure.microsoft.com/documentation/services/search/) talál. További információkat szerezhet, ha megtekinti a [Videók és oktatóanyagok listáját](search-video-demo-tutorial-list.md).
 
 <!--Image references-->
-[1]: ./media/search-get-started-nodejs/create-search-portal-1.PNG
-[2]: ./media/search-get-started-nodejs/create-search-portal-2.PNG
-[3]: ./media/search-get-started-nodejs/create-search-portal-3.PNG
-[5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
-[9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[1]: ./media/search-get-started-Nodejs/create-search-portal-1.PNG
+[2]: ./media/search-get-started-Nodejs/create-search-portal-2.PNG
+[3]: ./media/search-get-started-Nodejs/create-search-portal-3.PNG
+[5]: ./media/search-get-started-Nodejs/AzSearch-Nodejs-configjs.png
+[9]: ./media/search-get-started-Nodejs/rogerwilliamsschool.png
 
