@@ -4,7 +4,7 @@ description: "Az Azure Security Center Power BI tartalomcsomaggal a jelentéské
 services: security-center
 documentationcenter: na
 author: YuriDio
-manager: swadhwa
+manager: mbaldwin
 editor: 
 ms.assetid: 0ded6bc7-52e8-43b4-8940-0bee137526e3
 ms.service: security-center
@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 05/09/2017
 ms.author: yurid
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
@@ -32,7 +32,7 @@ Az Azure Security Center irányítópultjának használatával is elérheti a Po
 
 1. Az **Azure Security Center** irányítópultján kattintson a **Power BI** gombra.
 
-    ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-newUI-2017.png)
+    ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-1-newUI-2017.png)
 2. A **Power BI** panel a jobb oldalon nyílik meg, ahogy az alábbi képernyőn látható:
 
     ![Csatlakozás az Azure Security Centerhez Power BI használatával](./media/security-center-powerbi/security-center-powerbi-fig1-new11-2017.png)
