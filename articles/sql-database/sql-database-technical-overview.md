@@ -16,14 +16,15 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 03/17/2017
 ms.author: shkurhek
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: a139b97e20685a5ced513c1fd180a74e91c497a7
+ms.contentlocale: hu-hu
 ms.lasthandoff: 04/15/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>Mi az SQL Database? Bevezetés az SQL Database-be
-Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motorom alapuló relációs adatbázis-szolgáltatása, amely képes a kritikus fontosságú számítási feladatok kezelésére. Az SQL Database minimális felügyelet mellett megbízható teljesítményt, leállási idő nélküli skálázhatóságot, beépített üzletmenet-folytonosságot és adatvédelmet kínál számos szolgáltatási szinten. Ezen képességek birtokában az alkalmazások gyors fejlesztésére és forgalomba hozásának felgyorsítására összpontosíthat ahelyett, hogy értékes időt és erőforrásokat kellene lefoglalnia a virtuális gépek és infrastruktúra kezeléséhez. Az SQL Database az [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) motoron alapul, így támogatja az SQL Serverhez készült meglévő eszközöket, könyvtárakat és API-alkalmazásokat. Ezáltal megkönnyíti az új megoldások fejlesztését, a meglévő SQL Server-megoldások áthelyezését, valamint a meglévő SQL Server-megoldások kiterjesztését a Microsoft Cloudra anélkül, hogy mindehhez új készségeket kellene elsajátítania.
+Az SQL Database a Microsoft Cloud egy, a piacvezető Microsoft SQL Server motoron alapuló relációs adatbázis-szolgáltatása, amely képes a kritikus fontosságú számítási feladatok kezelésére. Az SQL Database minimális felügyelet mellett megbízható teljesítményt, leállási idő nélküli skálázhatóságot, beépített üzletmenet-folytonosságot és adatvédelmet kínál számos szolgáltatási szinten. Ezen képességek birtokában az alkalmazások gyors fejlesztésére és forgalomba hozásának felgyorsítására összpontosíthat ahelyett, hogy értékes időt és erőforrásokat kellene lefoglalnia a virtuális gépek és infrastruktúra kezeléséhez. Az SQL Database az [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) motoron alapul, így támogatja az SQL Serverhez készült meglévő eszközöket, könyvtárakat és API-alkalmazásokat. Ezáltal megkönnyíti az új megoldások fejlesztését, a meglévő SQL Server-megoldások áthelyezését, valamint a meglévő SQL Server-megoldások kiterjesztését a Microsoft Cloudra anélkül, hogy mindehhez új készségeket kellene elsajátítania.
 
 Jelen cikkünk bemutatja az SQL Database teljesítménnyel, skálázhatósággal és kezelhetőséggel kapcsolatos alapfogalmait és jellemzőit, és a további részletes ismertetőkre mutató hivatkozásokat tartalmaz. Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
  - [SQL Database létrehozása az Azure Portalon](sql-database-get-started-portal.md)  
