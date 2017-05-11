@@ -16,10 +16,10 @@ ms.date: 03/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: d05739a4d9f0712c2b4b47432bff97594a11b121
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: c3ed30ec43128c4e2b0e3d7e4b5dd61670e6bb52
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/03/2017
 
 Ebben a cikkben áttekintjük az Azure Batch legfontosabb alkotóelemeit, valamint szót ejtünk a szolgáltatás elsődleges funkcióiról és erőforrásairól, amelyek segítenek a Batch-fejlesztőknek nagy léptékű párhuzamos számítási megoldásokat létrehozni.
 
-Akár olyan elosztott számítási alkalmazást vagy szolgáltatást fejleszt, amely közvetlen [REST API][batch_rest_api]-hívásokkal működik, akár valamelyik [Batch SDK-t](batch-apis-tools.md#batch-development-apis) használja, biztosan szüksége lesz a cikkben tárgyalt erőforrásokra és funkciókra.
+Akár olyan elosztott számítási alkalmazást vagy szolgáltatást fejleszt, amely közvetlen [REST API][batch_rest_api]-hívásokkal működik, akár valamelyik [Batch SDK-t](batch-apis-tools.md#azure-accounts-for-batch-development) használja, biztosan szüksége lesz a cikkben tárgyalt erőforrásokra és funkciókra.
 
 > [!TIP]
 > A Batch szolgáltatás részletesebb leírásáért olvassa el a következő cikket: [Basics of Azure Batch](batch-technical-overview.md) (Az Azure Batch alapjai).
@@ -74,13 +74,13 @@ A Batch-fiókok a Batch szolgáltatáson belül egyedileg azonosított entitáso
 
 Azure Batch-fiókot az [Azure Portalon](batch-account-create-portal.md)hozhat létre, vagy programozott módon, például a [Batch Management .NET könyvtár](batch-management-dotnet.md) használatával. Egy fiók létrehozásakor társíthatja azt egy Azure Storage-fiókhoz.
 
-A Batch két fiókkonfigurációt támogat a *készletlefoglalási mód* tulajdonság alapján. A két konfiguráció eltérő képességeket biztosít a Batch-[készletekhez](#pool) kapcsolódóan (lásd a cikk későbbi részében). 
+A Batch két fiókkonfigurációt támogat a *készletlefoglalási mód* tulajdonság alapján. A két konfiguráció eltérő képességeket biztosít a Batch-[készletekhez](#pool) kapcsolódóan (lásd a cikk későbbi részében).
 
 
-* **Batch szolgáltatás**: Ez az alapértelmezett beállítás, amelyben a Batch-készlet virtuális gépeit a rendszer a háttérben osztja ki az Azure által felügyelt előfizetésekben. Ezt a fiókkonfigurációt kell használni, ha Cloud Services-készletekre van szükség, azonban nem használható, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t megosztott kulcsos hitelesítéssel vagy az [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el. 
+* **Batch szolgáltatás**: Ez az alapértelmezett beállítás, amelyben a Batch-készlet virtuális gépeit a rendszer a háttérben osztja ki az Azure által felügyelt előfizetésekben. Ezt a fiókkonfigurációt kell használni, ha Cloud Services-készletekre van szükség, azonban nem használható, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t megosztott kulcsos hitelesítéssel vagy az [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el.
 
 * **Felhasználói előfizetés**: Ezt a fiókkonfigurációt kell használni, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t csak [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el, a Cloud Services-készletek nem támogatottak. A Batch számítási virtuális gépei közvetlenül az Azure-előfizetésében vannak lefoglalva. Ehhez a módhoz egy Azure Key Vault létrehozása szükséges a Batch-fiókjához.
- 
+
 
 ## <a name="compute-node"></a>Számítási csomópont
 A számítási csomópontok olyan Azure virtuális gépek, amelyek az alkalmazás adott számítási feladatának feldolgozására vannak kijelölve. A csomópont mérete határozza meg a CPU-magok számát, a memóriakapacitást és a csomóponthoz lefoglalt helyi fájlrendszeri méretet. A Windows- és Linux-csomópontokból az Azure Cloud Servicesből vagy a Virtual Machines-piactérről származó rendszerképek segítségével hozhat létre készleteket. Ezekről a lehetőségekről további információkat tudhat meg az alábbi, [Készlet](#pool) című fejezetben.
@@ -336,7 +336,7 @@ Amikor számítási csomópontok készletét hozza létre az Azure Batchben, az 
 
 * A VNetnek elegendő szabad **IP-címmel** kell rendelkeznie a készlet `targetDedicated` tulajdonsága számára. Ha az alhálózaton nincs elegendő szabad IP-cím, akkor a Batch szolgáltatás részlegesen lefoglalja a készlet számítási csomópontjait, és átméretezési hibát jelez.
 
-* A megadott alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon. Ha a számítási csomópontok felé irányuló kommunikációt a VNethez társított **Hálózati biztonsági csoport (NSG)** letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát. 
+* A megadott alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon. Ha a számítási csomópontok felé irányuló kommunikációt a VNethez társított **Hálózati biztonsági csoport (NSG)** letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát.
 
 * Ha a megadott virtuális hálózat rendelkezik társított NSG-kkel, akkor engedélyezni kell a bejövő kommunikációt. Linux- és Windows-készletek esetében egyaránt engedélyezni kell a 29876-os és a 29877-es portot. Opcionálisan engedélyezheti a 22-es vagy 3389-es portot SSH-s Linux- vagy RDP-s Windows-készletek esetében.
 
@@ -345,7 +345,7 @@ A virtuális hálózat további beállításai a Batch-fiók készletlefoglalás
 ### <a name="vnets-for-pools-provisioned-in-the-batch-service"></a>Virtuális hálózatok a Batch szolgáltatásban kiépített készletekhez
 
 A Batch szolgáltatás lefoglalási módjában virtuális hálózat csak a **Cloud Services-konfigurációt** használó készletekhez társítható. Ezenkívül a megadott VNet-nek **klasszikus** VNet-nek kell lennie. Az Azure Resource Manager-alapú üzemi modellel létrehozott VNetek nem támogatottak.
-   
+
 
 
 * A *MicrosoftAzureBatch* egyszerű szolgáltatásnak rendelkeznie kell a [Klasszikus virtuális gép közreműködő](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor) szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörrel az adott VNeten. Az Azure Portalon:
@@ -368,7 +368,7 @@ Az [automatikus méretezéssel](batch-automatic-scaling.md) megadhatja, hogy a B
 
 Az automatikus skálázáshoz írnia kell egy [automatikus skálázási képletet](batch-automatic-scaling.md#automatic-scaling-formulas), amelyet aztán társítania kell a készlethez. A Batch szolgáltatás ezzel a képlettel határozza meg a készletben működő csomópontok célszámát a következő skálázási intervallumhoz (amelyet Ön állíthat be). A készlet automatikus skálázását a készlet létrehozásakor és később egyaránt bekapcsolhatja. A skálázási beállításokat a skálázás bekapcsolása után is módosíthatja.
 
-Előfordulhat például, hogy az adott feladathoz rendkívül nagyszámú végrehajtandó tevékenység tartozik. Ekkor skálázási képletet rendelhet a készlethez, amely a sorban álló tevékenységek aktuális száma és a feladathoz tartozó tevékenységek befejezettségi állapota alapján határozza meg a készletben működő csomópontok számát. A Batch szolgáltatás időnként kiértékeli a képletet és átméretezi a készletet a számítási feladatok és a képlet egyéb beállításai alapján. A szolgáltatás szükség szerint csomópontokat ad hozzá, amikor nagy számú tevékenység van a várakozási sorban, és eltávolít csomópontokat, amikor nincs futó tevékenység a várakozási sorban. 
+Előfordulhat például, hogy az adott feladathoz rendkívül nagyszámú végrehajtandó tevékenység tartozik. Ekkor skálázási képletet rendelhet a készlethez, amely a sorban álló tevékenységek aktuális száma és a feladathoz tartozó tevékenységek befejezettségi állapota alapján határozza meg a készletben működő csomópontok számát. A Batch szolgáltatás időnként kiértékeli a képletet és átméretezi a készletet a számítási feladatok és a képlet egyéb beállításai alapján. A szolgáltatás szükség szerint csomópontokat ad hozzá, amikor nagy számú tevékenység van a várakozási sorban, és eltávolít csomópontokat, amikor nincs futó tevékenység a várakozási sorban.
 
 A méretezési képletek a következő mérőszámokon alapulhatnak:
 

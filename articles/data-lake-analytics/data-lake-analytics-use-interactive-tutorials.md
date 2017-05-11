@@ -14,20 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-translationtype: Human Translation
-ms.sourcegitcommit: 194b5d79505afbfd0208f63dd182a0e03227ba69
-ms.openlocfilehash: 36677be6bc5599f55f1f15bc145c59033ad20e0a
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ca88b355416b4ae4785bc69244185a67756ca916
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
 # <a name="use-azure-data-lake-analytics-interactive-tutorials"></a>Az Azure Data Lake Analytics interaktív oktatóanyagainak használata
 Az Azure portál egy interaktív oktatóanyaggal segíti a Data Lake Analytics megismerését. Ez a cikk azt ismerteti, hogyan haladhat végig a webhelynaplók elemzését bemutató oktatóanyagon.
-
-> [!NOTE]
-> Ha a Visual Studio használatával szeretné elvégezni ugyanezeket az oktatóanyagokat, tekintse meg a [Analyze website logs using Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelynaplók elemzése a Data Lake Analytics használatával) című cikket.
-> A portálra várhatóan további interaktív oktatóanyagok kerülnek fel.
-> 
-> 
 
 Egyéb oktatóanyagok:
 
@@ -87,10 +83,5 @@ Minden Data Lake Analytics-fiók egy [Azure Data Lake Store](../data-lake-store/
 * [A Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
 * [Webhelynaplók elemzése az Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

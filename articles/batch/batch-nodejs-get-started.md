@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 04/25/2017
 ms.author: shwetams
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 14edac7896ac3aff8788b26906b8a97a35fae60e
+ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
+ms.openlocfilehash: 23e833b9eb926c81fd8c02cd96d43da8cffcaa43
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/04/2017
 
 ---
 
@@ -45,9 +45,9 @@ Az alábbi ábra bemutatja, hogyan történik a Python-szkript méretezése az A
 
 A Node.js-ügyfél üzembe helyez egy előkészítő feladattal ellátott Batch-feladatot (részletesen lásd később), valamint – a tárfiókban lévő tárolók számától függően – egy feladatkészletet. A szkripteket a GitHub-adattárból töltheti le.
 
-* [Node.js-ügyfél](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/storehbaseclient.js)
-* [Előkészítési tevékenységhez kapcsolódó héjszkriptek](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh)
-* [Python CSV – JSON feldolgozó](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py)
+* [Node.js-ügyfél](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
+* [Előkészítési tevékenységhez kapcsolódó héjszkriptek](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
+* [Python CSV – JSON feldolgozó](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
 
 > [!TIP]
 > A megadott hivatkozásban szereplő Node.js-ügyfél nem tartalmaz Azure-függvényalkalmazásként üzembe helyezendő kódot. Az alábbi hivatkozások azon útmutatásokra mutatnak, amelyek segítségével létrehozhatja azt.

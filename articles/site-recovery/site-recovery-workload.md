@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/06/2017
+ms.date: 05/08/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4149c5e06f1a23864ca0f92f1b7b73f4f66949df
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 1e48b0848c9f286f3bb0b3758403135a4f280bc0
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -89,7 +90,7 @@ Az Azure Site Recovery szolgáltatással az alábbi módokon biztosíthatja a Sh
 * Leegyszerűsíti a SharePoint-alkalmazások fejlesztését és tesztelését, mivel segítségével az éleshez hasonló, igény szerinti replikakörnyezet hozható létre a teszteléshez és a hibakereséshez.
 * Megkönnyíti a felhőre való átállást, mivel a SharePoint üzemelő példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
 
-[Itt részletesebben olvashat](https://gallery.technet.microsoft.com/SharePoint-DR-Solution-f6b4aeae) a SharePoint védelméről.
+[Itt részletesebben olvashat](site-recovery-sharepoint.md) a SharePoint védelméről.
 
 ## <a name="protect-dynamics-ax"></a>A Dynamics AX védelme
 Az Azure Site Recovery szolgáltatással az alábbi módokon biztosíthatja a Dynamics AX ERP-megoldás védelmét:
@@ -98,7 +99,7 @@ Az Azure Site Recovery szolgáltatással az alábbi módokon biztosíthatja a Dy
 * Leegyszerűsíti a Dynamics AX üzemelő példányok felhőbe (Azure-ba) való áttelepítését.
 * Leegyszerűsíti a Dynamics AX-alkalmazások fejlesztését és tesztelését, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre a teszteléshez és a hibakereséshez.
 
-[Itt részletesebben tájékozódhat](https://gallery.technet.microsoft.com/Dynamics-AX-DR-Solution-b2a76281) a Dynamic AX védelméről.
+[Itt részletesebben tájékozódhat](site-recovery-dynamicsax.md) a Dynamic AX védelméről.
 
 ## <a name="protect-rds"></a>A távoli asztali szolgáltatások védelme
 A távoli asztali szolgáltatások (RDS) lehetővé teszik a virtuális asztali infrastruktúra (VDI), illetve a munkamenet-alapú asztal és alkalmazások használatát, így a felhasználók bárhonnan dolgozhatnak. Az Azure Site Recovery segítségével:

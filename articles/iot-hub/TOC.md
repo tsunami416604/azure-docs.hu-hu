@@ -106,6 +106,7 @@
 ### Fájlfeltöltés konfigurálása
 #### [A portál használata](iot-hub-configure-file-upload.md)
 #### [A PowerShell használata](iot-hub-configure-file-upload-powershell.md)
+#### [A CLI 2.0 használata](iot-hub-configure-file-upload-cli.md)
 ### [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
 ### [Használati metrikák](iot-hub-metrics.md)
 ### [Műveletek figyelése](iot-hub-operations-monitoring.md)
