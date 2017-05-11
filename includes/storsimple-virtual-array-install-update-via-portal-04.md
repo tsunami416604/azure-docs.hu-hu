@@ -50,10 +50,4 @@
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
 
-9. A frissítések sikeres telepítéséről értesítést láthat az **Eszközfrissítések** panelen. A szoftververzió a következőre változik: **10.0.10289.0**.
-
-    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate17m1.png)
-
-<!--HONumber=Feb17_HO1-->
-
-
+9. A frissítések sikeres telepítéséről értesítést láthat az **Eszközfrissítések** panelen. 

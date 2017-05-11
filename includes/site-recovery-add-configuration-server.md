@@ -1,42 +1,46 @@
-1. Futtassa az egyesített telepítő fájlját.
-2. Az **Előkészületek** területen válassza **A konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése** lehetőséget.
-    ![Előkészületek](./media/site-recovery-add-configuration-server/combined-wiz1.png)
-3. A **Külső szoftver licence** területen kattintson az **Elfogadom** elemre a MySQL letöltéséhez és telepítéséhez.
+1. Run the Unified Setup installation file.
+2. In **Before You Begin**, select **Install the configuration server and process server**.
 
-    ![Külső gyártótól származó szoftverek](./media/site-recovery-add-configuration-server/combined-wiz2.png)
-4. A **Regisztráció** területen válassza ki a kulcstartóból letöltött regisztrációs kulcsot.
+    ![Before you start](./media/site-recovery-add-configuration-server/combined-wiz1.png)
 
-    ![Regisztráció](./media/site-recovery-add-configuration-server/combined-wiz3.png)
-5. Az **Internetbeállítások** területen adja meg, hogy a konfigurációs kiszolgálón futó Provider hogyan csatlakozzon az Azure Site Recoveryhez az interneten keresztül.
+3. In **Third Party Software License**, click **I Accept** to download and install MySQL.
 
-   * Ha a gépen jelenleg beállított proxyval szeretne csatlakozni, válassza a **Csatlakozás a meglévő proxybeállításokkal** lehetőséget.
-   * Ha azt szeretné, hogy a Provider közvetlenül kapcsolódjon, válassza a **Connect directly without a proxy** (Közvetlen kapcsolódás proxy nélkül) lehetőséget.
-   * Ha a meglévő proxy hitelesítést igényel, illetve ha egyéni proxyt szeretne használni a Provider csatlakoztatásához, válassza a **Csatlakozás egyéni proxybeállításokkal** lehetőséget.
+    ![Third-party software](./media/site-recovery-add-configuration-server/combined-wiz2.png)
+4. In **Registration**, select the registration key you downloaded from the vault.
 
-     * Ha az egyéni proxy használatát választja, meg kell adnia a címet, a portot és a hitelesítő adatokat.
-     * Ha proxyt használt, ellenőrizze, hogy engedélyezte-e az [előfeltételekben](#prerequisites) leírt URL-címek elérését.
+    ![Registration](./media/site-recovery-add-configuration-server/combined-wiz3.png)
+5. In **Internet Settings**, specify how the Provider running on the configuration server connects to Azure Site Recovery over the Internet.
 
-     ![Tűzfal](./media/site-recovery-add-configuration-server/combined-wiz4.png)
-6. Az **Előfeltételek ellenőrzése** területen a telepítő ellenőrzi, hogy a telepítés végrehajtható-e. Ha megjelenik egy figyelmeztetés a **globális időszinkron ellenőrzéséről**, ellenőrizze, hogy a rendszeróra ideje (a **Dátum és idő** beállítások) megegyeznek-e az időzónával.
+   a. If you want to connect with the proxy that's currently set up on the machine, select **Connect to Azure Site Recovery using a proxy server**.
 
-    ![Előfeltételek](./media/site-recovery-add-configuration-server/combined-wiz5.png)
-7. A **MySQL-konfiguráció** területen hozza létre a telepített MySQL-kiszolgálópéldányra való bejelentkezéshez szükséges hitelesítő adatokat.
+   b. If you want the Provider to connect directly, select **Connect directly to Azure Site Recovery without a proxy server**.
+
+   c. If the existing proxy requires authentication, or if you want to use a custom proxy for the Provider connection, select **Connect with custom proxy settings**.
+
+     * If you use a custom proxy, you need to specify the address, port, and credentials.
+     * If you're using a proxy, you should have already allowed the URLs described in [Prerequisites](#prerequisites).
+
+     ![Firewall](./media/site-recovery-add-configuration-server/combined-wiz4.png)
+6. In **Prerequisites Check**, Setup runs a check to make sure that installation can run. If a warning appears about the **Global time sync check**, verify that the time on the system clock (**Date and Time** settings) is the same as the time zone.
+
+    ![Prerequisites](./media/site-recovery-add-configuration-server/combined-wiz5.png)
+7. In **MySQL Configuration**, create credentials for logging on to the MySQL server instance that is installed.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. A **Környezet részletei** területen válassza ki, hogy kívánja-e replikálni a VMware virtuális gépeket. Ha igen, a telepítő ellenőrzi, hogy a PowerCLI 6.0 telepítve van-e.
+8. In **Environment Details**, select whether you're going to replicate VMware VMs. If you are, then Setup checks that PowerCLI 6.0 is installed.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
 
-9. A **Telepítés helye** területen válassza ki, hová szeretné telepíteni a bináris fájlokat, és hol kívánja tárolni a gyorsítótárat. A kiválasztott meghajtón legalább 5 GB szabad lemezterületre van szükség, de javasoljuk, hogy a gyorsítótárazáshoz használt lemezen legyen legalább 600 GB szabad hely.
+9. In **Install Location**, select where you want to install the binaries and store the cache. The drive you select must have at least 5 GB of disk space available, but we recommend a cache drive with at least 600 GB of free space.
 
-    ![Telepítés helye](./media/site-recovery-add-configuration-server/combined-wiz8.png)
-10. A **Hálózat kiválasztása** területen adja meg a figyelőt (hálózati adaptert és SSL-portot), amelyen keresztül a konfigurációs kiszolgáló küldi és fogadja a replikált adatokat. A 9443-as port a replikációs forgalom küldésére és fogadására használt alapértelmezett port, ez azonban a környezeti követelményektől függően módosítható. A 9443-as port mellett a 443-as portot is megnyitjuk, amelyen keresztül egy webkiszolgáló a replikálási műveleteket vezényli. A replikációs forgalom küldésére és fogadására ne használja a 443-as portot.
+    ![Install location](./media/site-recovery-add-configuration-server/combined-wiz8.png)
+10. In **Network Selection**, specify the listener (network adapter and SSL port) on which the configuration server sends and receives replication data. Port 9443 is the default port used for sending and receiving replication traffic, but you can modify this port number to suit your environment's requirements. In addition to the port 9443, we also open port 443, which is used by a web server to orchestrate replication operations. Do not use port 443 for sending or receiving replication traffic.
 
-    ![Hálózat kiválasztása](./media/site-recovery-add-configuration-server/combined-wiz9.png)
+    ![Network selection](./media/site-recovery-add-configuration-server/combined-wiz9.png)
 
 
-11. Az **Összefoglalás** területen ellenőrizze az adatokat, majd kattintson a **Telepítés** gombra. A telepítés után a rendszer létrehoz egy hozzáférési kódot. Erre szüksége lesz, amikor engedélyezi a replikálást, ezért másolja le, és tárolja biztonságos helyen.
+11. In **Summary**, review the information and click **Install**. When installation finishes, a passphrase is generated. You will need this when you enable replication, so copy it and keep it in a secure location.
 
-    ![Összefoglalás](./media/site-recovery-add-configuration-server/combined-wiz10.png)
+    ![Summary](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
-A regisztráció befejezését követően a kiszolgáló megjelenik a tároló **Beállítások** > **Kiszolgálók** paneljén.
+After registration finishes, the server is displayed on the **Settings** > **Servers** blade in the vault.
