@@ -1,7 +1,7 @@
 # Áttekintés
 ## [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md)
 ## [VPN Gateway – gyakori kérdések](vpn-gateway-vpn-faq.md)
-## [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md)
+## [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Első lépések
 ## [A VPN Gateway tervezése és kialakítása](vpn-gateway-plan-design.md)
@@ -46,7 +46,9 @@
 ### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [Önaláírt tanúsítványok létrehozása pont–hely kapcsolatokhoz](vpn-gateway-certificates-point-to-site.md)
+## Önaláírt tanúsítványok létrehozása pont–hely kapcsolatokhoz
+### [PowerShell](vpn-gateway-certificates-point-to-site.md)
+### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ## [VPN-átjáró konfigurálása (klasszikus)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## Hibaelhárítás
 ### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
