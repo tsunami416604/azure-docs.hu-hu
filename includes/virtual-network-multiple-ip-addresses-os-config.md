@@ -1,67 +1,67 @@
-## <a name="a-nameos-configaadd-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>IP-címek hozzáadása a virtuális gép operációs rendszeréhez
+## <a name="os-config"></a>Add IP addresses to a VM operating system
 
-Csatlakozzon, és jelentkezzen be egy több magánhálózati IP-címmel létrehozott virtuális gépbe. A virtuális géphez hozzáadott összes magánhálózati IP-címet (az elsődlegest is beleértve) manuálisan kell hozzáadnia. Végezze el az alábbi lépések közül azokat, amelyek a virtuális gép operációs rendszerére vonatkoznak:
+Connect and login to a VM you created with multiple private IP addresses. You must manually add all the private IP addresses (including the primary) that you added to the VM. Complete the following steps for your VM operating system:
 
 ### <a name="windows"></a>Windows
 
-1. A parancssorba írja be az *ipconfig /all* parancsot.  Csak az *elsődleges* magánhálózati IP-cím látható (DHCP-vel).
-2. Írja be a parancssorba az *ncpa.cpl* parancsot a **Hálózati kapcsolatok** ablak megnyitásához.
-3. Nyissa meg a megfelelő adapter tulajdonságait: **Helyi kapcsolat**.
-4. Kattintson duplán A TCP/IP protokoll 4-es verziója (IPv4) elemre.
-5. Jelölje be **A következő IP-cím használata:** elemet, és írja be a következő értékeket:
+1. From a command prompt, type *ipconfig /all*.  You only see the *Primary* private IP address (through DHCP).
+2. Type *ncpa.cpl* in the command prompt to open the **Network connections** window.
+3. Open the properties for the appropriate adapter: **Local Area Connection**.
+4. Double-click Internet Protocol version 4 (IPv4).
+5. Select **Use the following IP address** and enter the following values:
 
-    * **IP-cím**: Adja meg az *elsődleges* magánhálózati IP-címet
-    * **Alhálózati maszk**: Állítsa be az alhálózatának megfelelően. Például ha az alhálózat egy /24 alhálózat, akkor az alhálózati maszk 255.255.255.0.
-    * **Alapértelmezett átjáró**: Az alhálózat első IP-címe. Ha az alhálózata 10.0.0.0/24, akkor az átjáró IP-címe 10.0.0.1.
-    * Kattintson **A következő DNS-kiszolgálócímek használata:** elemre, és írja be a következő értékeket:
-        * **Elsődleges DNS-kiszolgáló**: Ha nem a saját DNS-kiszolgálóját használja, adja meg a következőt: 168.63.129.16.  Ha a saját DNS-kiszolgálóját használja, adja meg a kiszolgáló IP-címét.
-    * Kattintson a **Speciális** gombra, és vegyen fel további IP-címeket. Adja hozzá a 8. lépésben felsorolt másodlagos magánhálózati IP-címeket a hálózati adapterhez ugyanazon alhálózat megadásával az elsődleges IP-címhez.
+    * **IP address**: Enter the *Primary* private IP address
+    * **Subnet mask**: Set based on your subnet. For example, if the subnet is a /24 subnet then the subnet mask is 255.255.255.0.
+    * **Default gateway**: The first IP address in the subnet. If your subnet is 10.0.0.0/24, then the gateway IP address is 10.0.0.1.
+    * Click **Use the following DNS server addresses** and enter the following values:
+        * **Preferred DNS server**: If you are not using your own DNS server, enter 168.63.129.16.  If you are using your own DNS server, enter the IP address for your server.
+    * Click the **Advanced** button and add additional IP addresses. Add each of the secondary private IP addresses listed in step 8 to the NIC with the same subnet specified for the primary IP address.
         >[!WARNING] 
-        >Ha nem megfelelően követi a fenti lépéseket, elveszítheti a kapcsolatot a virtuális géppel. A továbblépés előtt ellenőrizze, hogy az 5. lépésben megadott információk pontosak-e.
+        >If you do not follow the steps above correctly, you may lose connectivity to your VM. Ensure the information entered for step 5 is accurate before proceeding.
 
-    * Kattintson az **OK** gombra a TCP/IP-beállításokból való kilépéshez, majd kattintson ismét az **OK** gombra az adapterbeállítások bezárásához. A rendszer újból létesíti az RDP-kapcsolatot.
+    * Click **OK** to close out the TCP/IP settings and then **OK** again to close the adapter settings. Your RDP connection is re-established.
 
-6. A parancssorba írja be az *ipconfig /all* parancsot. Megjelenik az összes hozzáadott IP-cím, és a DHCP ki van kapcsolva.
+6. From a command prompt, type *ipconfig /all*. All IP addresses you added are shown and DHCP is turned off.
 
 
-### <a name="validation-windows"></a>Ellenőrzés (Windows)
+### <a name="validation-windows"></a>Validation (Windows)
 
-Ellenőrizze, hogy tud-e csatlakozni az internethez a másodlagos IP-konfigurációról az ahhoz tartozó nyilvános IP-címen keresztül. Ehhez a fenti lépésekkel történő hozzáadás után használja a következő parancsot:
+To ensure you are able to connect to the internet from your secondary IP configuration via the public IP associated it, once you have added it correctly using steps above, use the following command:
 
 ```bash
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Az internet felé csak akkor lehet pingelni, ha a fentebb használt magánhálózati IP-címhez tartozik egy nyilvános IP-cím is.
+>For secondary IP configurations, you can only ping to the Internet if the configuration has a public IP address associated with it. For primary IP configurations, a public IP address is not required to ping to the Internet.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
-1. Nyisson meg egy terminálablakot.
-2. Győződjön meg arról, hogy Ön a gyökér szintű felhasználó. Ha nem Ön az, írja be a következő parancsot:
+1. Open a terminal window.
+2. Make sure you are the root user. If you are not, enter the following command:
 
     ```bash
     sudo -i
     ```
 
-3. Frissítse a hálózati adapter (feltehetőleg „eth0”) konfigurációs fájlját.
+3. Update the configuration file of the network interface (assuming ‘eth0’).
 
-    * A dhcp esetében hagyja meg a meglévő sortételt. Az elsődleges IP-cím konfigurációja nem változik.
-    * Adjon hozzá egy konfigurációt egy további statikus IP-cím számára a következő parancsokkal:
+    * Keep the existing line item for dhcp. The primary IP address remains configured as it was previously.
+    * Add a configuration for an additional static IP address with the following commands:
 
         ```bash
         cd /etc/network/interfaces.d/
         ls
         ```
 
-    Egy .cfg fájlnak kell megjelennie.
-4. Nyissa meg a fájlt. A következő soroknak kell megjelennie a fájl végén:
+    You should see a .cfg file.
+4. Open the file. You should see the following lines at the end of the file:
 
     ```bash
     auto eth0
     iface eth0 inet dhcp
     ```
 
-5. Írja be a következő sorokat a fájl meglévő sorai alá:
+5. Add the following lines after the lines that exist in this file:
 
     ```bash
     iface eth0 inet static
@@ -69,66 +69,66 @@ ping -S 10.0.0.5 hotmail.com
     netmask <your subnet mask>
     ```
 
-6. Mentse a fájlt a következő paranccsal:
+6. Save the file by using the following command:
 
     ```bash
     :wq
     ```
 
-7. Állítsa alaphelyzetbe a hálózati adaptert a következő paranccsal:
+7. Reset the network interface with the following command:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
     > [!IMPORTANT]
-    > Ha távoli kapcsolatot használ, az ifdown és az ifup parancsokat ugyanabban a sorban futtassa.
+    > Run both ifdown and ifup in the same line if using a remote connection.
     >
 
-8. A következő paranccsal ellenőrizze, hogy az IP-cím hozzá van-e adva a hálózati adapterhez:
+8. Verify the IP address is added to the network interface with the following command:
 
     ```bash
     ip addr list eth0
     ```
 
-    A listán meg kell jelennie a hozzáadott IP-címnek.
+    You should see the IP address you added as part of the list.
 
-### <a name="linux-redhat-centos-and-others"></a>Linux (Redhat, CentOS és egyebek)
+### <a name="linux-redhat-centos-and-others"></a>Linux (Redhat, CentOS, and others)
 
-1. Nyisson meg egy terminálablakot.
-2. Győződjön meg arról, hogy Ön a gyökér szintű felhasználó. Ha nem Ön az, írja be a következő parancsot:
+1. Open a terminal window.
+2. Make sure you are the root user. If you are not, enter the following command:
 
     ```bash
     sudo -i
     ```
 
-3. Adja meg a jelszavát, és kövesse a megjelenő utasításokat. Miután Ön lett a gyökér szintű felhasználó, lépjen a hálózati parancsfájlok mappájába a következő paranccsal:
+3. Enter your password and follow instructions as prompted. Once you are the root user, navigate to the network scripts folder with the following command:
 
     ```bash
     cd /etc/sysconfig/network-scripts
     ```
 
-4. Listázza a kapcsolódó ifcfg-fájlokat a következő paranccsal:
+4. List the related ifcfg files using the following command:
 
     ```bash
     ls ifcfg-*
     ```
 
-    A fájlok között meg kell jelennie az *ifcfg-eth0* fájlnak.
+    You should see *ifcfg-eth0* as one of the files.
 
-5. IP-cím hozzáadásához hozzon létre egy hozzá tartozó konfigurációs fájlt az alábbiakban látható módon. Vegye figyelembe, hogy minden IP-konfigurációhoz létre kell hozni egy fájlt.
+5. To add an IP address, create a configuration file for it as shown below. Note that one file must be created for each IP configuration.
 
     ```bash
     touch ifcfg-eth0:0
     ```
 
-6. Nyissa meg az *ifcfg-eth0:0* fájlt a következő paranccsal:
+6. Open the *ifcfg-eth0:0* file with the following command:
 
     ```bash
     vi ifcfg-eth0:0
     ```
 
-7. Adjon tartalmat a fájlhoz (ebben az esetben az *eth0:0* fájlhoz) a következő paranccsal. Ne felejtse el frissíteni az információkat az IP-címe alapján.
+7. Add content to the file, *eth0:0* in this case, with the following command. Be sure to update information based on your IP address.
 
     ```bash
     DEVICE=eth0:0
@@ -138,32 +138,32 @@ ping -S 10.0.0.5 hotmail.com
     NETMASK=255.255.255.0
     ```
 
-8. Mentse a fájlt a következő paranccsal:
+8. Save the file with the following command:
 
     ```bash
     :wq
     ```
 
-9. Indítsa újra a hálózati szolgáltatásokat, és a következő parancsok futtatásával győződjön meg arról, hogy a módosítások sikeresen végre lettek hajtva:
+9. Restart the network services and make sure the changes are successful by running the following commands:
 
     ```bash
     /etc/init.d/network restart
     ifconfig
     ```
 
-    A hozzáadott *eth0:0* IP-címnek meg kell jelennie a rendszer által visszaadott listában.
+    You should see the IP address you added, *eth0:0*, in the list returned.
 
-### <a name="validation-linux"></a>Ellenőrzés (Linux)
+### <a name="validation-linux"></a>Validation (Linux)
 
-Ellenőrizze, hogy tud-e csatlakozni az internethez a másodlagos IP-konfigurációról az ahhoz tartozó nyilvános IP-címen keresztül. Ehhez használja a következő parancsot:
+To ensure you are able to connect to the internet from your secondary IP configuration via the public IP associated it, use the following command:
 
 ```bash
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Az internet felé csak akkor lehet pingelni, ha a fentebb használt magánhálózati IP-címhez tartozik egy nyilvános IP-cím is.
+>For secondary IP configurations, you can only ping to the Internet if the configuration has a public IP address associated with it. For primary IP configurations, a public IP address is not required to ping to the Internet.
 
-Linux rendszerű virtuális gépek esetében a másodlagos hálózati adapterről kimenő kapcsolatok ellenőrzésekor szükség lehet a megfelelő útvonalak hozzáadására. Ezt többféleképpen teheti meg. Tekintse át a Linux-disztribúciójára vonatkozó megfelelő dokumentációt. Az egyik lehetséges módszer a következő:
+For Linux VMs, when trying to validate outbound connectivity from a secondary NIC, you may need to add appropriate routes. There are many ways to do this. Please see appropriate documentation for your Linux distribution. The following is one method to accomplish this:
 
 ```bash
 echo 150 custom >> /etc/iproute2/rt_tables 
@@ -172,12 +172,7 @@ ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
 
 ```
-- Cserélje le:
-    - a **10.0.0.5**-öt arra a magánhálózati IP-címre, amelyhez nyilvános IP-cím is tartozik
-    - a **10.0.0.1**-et az alapértelmezett átjáróra
-    - az **eth2**-t a másodlagos hálózati adapter nevére
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+- Be sure to replace:
+    - **10.0.0.5** with the private IP address that has a public IP address associated to it
+    - **10.0.0.1** to your default gateway
+    - **eth2** to the name of your secondary NIC
