@@ -53,6 +53,7 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [Címkék használata az erőforrások rendszerezéséhez](resource-group-using-tags.md)
 ### [Erőforrások áthelyezése új csoportba vagy előfizetésbe](resource-group-move-resources.md)
+### [Felhasználóifelület-definíciók létrehozása](managed-application-createuidefinition-overview.md)
 ## Vezérlési hozzáférés
 ### [Egyszerű szolgáltatás létrehozása a PowerShell-lel](resource-group-authenticate-service-principal.md)
 ### [Egyszerű szolgáltatás létrehozása az Azure CLI 2.0-s verziójával](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -82,6 +83,7 @@
 ### [Numerikus függvények](resource-group-template-functions-numeric.md)
 ### [Erőforrásfüggvények](resource-group-template-functions-resource.md)
 ### [Karakterlánc-függvények](resource-group-template-functions-string.md)
+## [Felhasználói felületet definiáló függvények](managed-application-createuidefinition-functions.md)
 ## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

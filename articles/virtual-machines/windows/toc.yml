@@ -31,7 +31,11 @@
     href: tutorial-load-balancer.md
   - name: "8 – Hálózatkezelés"
     href: tutorial-virtual-network.md
-  - name: "9 – A virtuális gépek biztonságának kezelése"
+  - name: "9 – Virtuális gépek biztonsági mentése"
+    href: tutorial-backup-vms.md
+  - name: "10 – Virtuális gépek figyelése"
+    href: tutorial-monitoring.md
+  - name: "11 – A virtuális gépek biztonságának kezelése"
     href: tutorial-azure-security.md
 
 - name: "Példák"
@@ -126,7 +130,7 @@
       href: creation-choices.md
     - name: "Virtuális gép létrehozása sablon alapján"
       href: ps-template.md
-    - name: "Virtuális gép létrehozása C használatával#"
+    - name: "Virtuális gép létrehozása C# használatával"
       href: csharp.md
     - name: "Virtuális gép létrehozása C# használatával sablon alapján"
       href: csharp-template.md
@@ -159,7 +163,7 @@
       href: cli-manage.md
     - name: "Virtuális gépek kezelése a parancssori felületről"
       href: cli-deploy-templates.md
-    - name: "Virtuális gépek kezelése a C használatával#"
+    - name: "Virtuális gépek kezelése a C# használatával"
       href: csharp-manage.md
   - name: "Kapcsolódás RDP-vel"
     items:
@@ -202,7 +206,7 @@
       - name: "Azure PowerShell"
         href: attach-disk-ps.md
       - name: "Azure Portal"
-        href: attach-disk-portal.md
+        href: attach-managed-disk-portal.md
     - name: "Adatlemez leválasztása"
       href: detach-disk.md
     - name: "Operációsrendszer-lemez kibontása"
@@ -223,6 +227,8 @@
         href: vhd-copy.md
       - name: "Virtuális gép létrehozása specializált virtuális merevlemezből"
         href: create-vm-specialized.md
+      - name: "Nem felügyelt adatlemez csatolása"
+        href: attach-disk-portal.md
   - name: "Virtuális gépek hálózatkezelése"
     href: ps-common-network-ref.md
     items:
@@ -392,9 +398,9 @@
   - name: "Java"
     href: /java/api
   - name: "Node.js"
-    href: https://azure.microsoft.com/en-us/develop/nodejs/#azure-sdk
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
   - name: "Python"
-    href: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.compute.html
+    href: https://azure.microsoft.com/develop/python/
   - name: "Számítási REST"
     href: /rest/api/compute
   - name: "Managed Disks REST"

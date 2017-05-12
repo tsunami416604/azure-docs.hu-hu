@@ -41,6 +41,26 @@
     href: sql-database-migrate-your-sql-server-database.md
   - name: "3 – Az SQL DB biztonságossá tétele"
     href: sql-database-security-tutorial.md
+  - name: "4 – A SQL DB teljesítményének növelése"
+    href: sql-database-performance-tutorial.md
+  - name: "5 – Több-bérlős alkalmazás implementálása"
+    href: sql-database-multi-tenant-application.md
+  - name: "6 – Több-bérlős alkalmazás üzembe helyezése"
+    href: sql-database-saas-tutorial.md
+  - name: "7 – Új bérlők létesítése/katalogizálása"
+    href: sql-database-saas-tutorial-provision-and-catalog.md
+  - name: "8 – Teljesítményfigyelés"
+    href: sql-database-saas-tutorial-performance-monitoring.md
+  - name: "9 – Egyetlen bérlő visszaállítása"
+    href: sql-database-saas-tutorial-restore-single-tenant.md
+  - name: "10 – Bérlői sémák kezelése"
+    href: sql-database-saas-tutorial-schema-management.md
+  - name: "11 – Alkalmi elemzés futtatása"
+    href: sql-database-saas-tutorial-adhoc-analytics.md
+  - name: "12 – Figyelés a Log Analytics használatával"
+    href: sql-database-saas-tutorial-log-analytics.md
+  - name: "13 – Bérlői elemzések kezelése"
+
 - name: "Példák"
   items:
   - name: "Azure CLI"
@@ -142,7 +162,7 @@
       href: sql-database-long-term-retention.md
     - name: "Adatbázis-helyreállítás"
       href: sql-database-recovery-using-backups.md
-    - name: "Georeplikáció"
+    - name: "Automatikus feladatátvétel és georeplikáció"
       href: sql-database-geo-replication-overview.md
     - name: "Bejelentkezések"
       href: sql-database-geo-replication-security-config.md

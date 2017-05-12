@@ -27,10 +27,22 @@
     href: app-service-web-tutorial-dotnet-sqldatabase.md
   - name: "1 – Node.js és MongoDB"
     href: app-service-web-tutorial-nodejs-mongodb-app.md
+  - name: "1 – PHP és MySQL"
+    href: app-service-web-tutorial-php-mysql.md 
+  - name: "1 – WordPress és MySQL"
+    href: app-service-web-create-web-app-from-marketplace.md
+#  - name: 1 - Java with MySQL
+#    href: app-service-web-tutorial-java-mysql.md
+  - name: "1 – Python és PostgreSQL"
+    href: app-service-web-tutorial-docker-python-postgresql-app.md
   - name: "2 – Egyéni tartomány leképezése"
     href: app-service-web-tutorial-custom-domain.md
   - name: "3 – SSL-tanúsítvány kötése"
     href: app-service-web-tutorial-custom-ssl.md
+  - name: "4 – Tartalomkézbesítési hálózat hozzáadása"
+    href: app-service-web-tutorial-content-delivery-network.md
+#  - name: 5 - Monitor your app
+#    href: app-service-web-tutorial-monitoring.md
 - name: "Példák"
   items:
   - name: "Azure CLI"
@@ -101,14 +113,32 @@
         href: web-sites-php-configure.md
       - name: "Java"
         href: web-sites-java-add-app.md
-      - name: "Node.js Linuxon"
-        href: app-service-linux-using-nodejs-pm2.md
       - name: "Python"
         href: web-sites-python-configure.md
     - name: "Az alkalmazás konfigurálása"
       items:
       - name: "Alkalmazásbeállítások használata"
         href: web-sites-configure.md
+    - name: "Webappok Linuxon"
+      items:
+      - name: "Áttekintés"
+        href: app-service-linux-intro.md
+      - name: "Webapp létrehozása Linuxon"
+        href: app-service-linux-how-to-create-web-app.md
+      - name: "Ruby-webapp Linuxon"
+        href: app-service-linux-ruby-get-started.md
+      - name: "Node.js-webapp Linuxon"
+        href: app-service-linux-using-nodejs-pm2.md
+      - name: ".NET Core-webapp Linuxon"
+        href: app-service-linux-using-dotnetcore.md
+      - name: "Egyéni Docker-webapp Linuxon"
+        href: app-service-linux-using-custom-docker-image.md
+      - name: "Kapcsolódás SSH-n keresztül"
+        href: app-service-linux-ssh-support.md
+      - name: "Folyamatos üzembe helyezés"
+        href: app-service-linux-ci-cd.md
+      - name: "Webappok Linuxon – GYIK"
+        href: app-service-linux-faq.md
   - name: "Üzembe helyezés az Azure-ban"
     href: web-sites-deploy.md
     items:

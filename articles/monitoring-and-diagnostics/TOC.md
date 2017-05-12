@@ -1,5 +1,6 @@
 # Áttekintés
-## [Azure Monitor – áttekintés](monitoring-overview.md)
+## [Figyelési eszközök az Azure-ban](monitoring-overview.md)
+## [Azure Monitor](monitoring-overview-azure-monitor.md)
 ## [Metrikák](monitoring-overview-metrics.md)
 ## [Riasztások](monitoring-overview-alerts.md)
 ## [Automatikus méretezés](monitoring-overview-autoscale.md)
@@ -7,12 +8,14 @@
 ## [Műveletcsoportok](monitoring-action-groups.md)
 ## [Diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
 ## [Partnerintegrációk](monitoring-partners.md)
-## [Azure Diagnostics](azure-diagnostics.md)
+## [Azure Diagnostics bővítmény](azure-diagnostics.md)
 
 
 # Első lépések
 ## [Ismerkedés az Azure Monitorral](monitoring-get-started.md)
+## [Az Automatikus skálázás használatának első lépései](monitoring-autoscale-get-started.md)
 ## [Szerepköri engedélyek és biztonság](monitoring-roles-permissions-security.md)
+
 
 # Útmutató
 ## Riasztások használata
@@ -24,6 +27,8 @@
 ## Automatikus méretezés használata
 ### [Ajánlott eljárások az automatikus méretezéshez](insights-autoscale-best-practices.md)
 ### [Gyakori metrikák az automatikus méretezéshez](insights-autoscale-common-metrics.md)
+### [Gyakori automatikus skálázási minták](monitoring-autoscale-common-scale-patterns.md)
+### [Automatikus skálázás egyéni metrikával](monitoring-autoscale-scale-by-custom-metric.md)
 ### [Virtuálisgép-méretezési készletek automatikus méretezése Resource Manager-sablonok használatával](insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [VM-skálázási készlet gépeinek automatikus skálázása](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Webhookok és e-mailes értesítések beállítása az automatikus méretezésben](insights-autoscale-to-webhook-email.md)
@@ -48,7 +53,7 @@
 ### [Diagnosztikai beállítások engedélyezése Resource Manager-sablonok használatával](monitoring-enable-diagnostic-logs-using-template.md)
 ## A REST API használata
 ### [A REST API használatának bemutatója](monitoring-rest-api-walkthrough.md)
-## A Microsoft Azure Diagnostics használata
+## Az Azure Diagnostics bővítmény használata
 ### [Küldés az Application Insights-ba](azure-diagnostics-configure-application-insights.md)
 ### [Küldés az Event Hubsba](azure-diagnostics-streaming-event-hubs.md)
 ### [hibaelhárítással](azure-diagnostics-troubleshooting.md)

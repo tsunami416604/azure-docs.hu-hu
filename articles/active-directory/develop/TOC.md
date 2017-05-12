@@ -67,6 +67,7 @@
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ### [Oauth](active-directory-protocols-oauth-code.md)
 ### [Szolgáltatások közötti hívások](active-directory-protocols-oauth-service-to-service.md)
+### [Meghatalmazásos folyamat](active-directory-protocols-oauth-on-behalf-of.md)
 ### [Támogatott token- és jogcímtípusok](active-directory-token-and-claims.md)
 ### [Aláírókulcs-váltás](active-directory-signing-key-rollover.md)
 ### [Összevonási metaadatok](active-directory-federation-metadata.md)
@@ -77,31 +78,27 @@
 ## [Szolgáltatási korlátozások](../active-directory-service-limits-restrictions.md)
 # 2.0 verziójú végpont
 ## [Áttekintés](active-directory-appmodel-v2-overview.md)
-### [Eltérések](active-directory-v2-compare.md)
 ### [Alkalmazástípusok](active-directory-v2-flows.md)
 ### [Korlátozások](active-directory-v2-limitations.md)
-## Gyors útmutatók
-### Mobile Apps
-#### [iOS](active-directory-v2-devquickstarts-ios.md)
-#### [Windows Phone](active-directory-v2-devquickstarts-wpf.md)
-#### [Android](active-directory-v2-devquickstarts-android.md)
-### Webalkalmazások és API-k
-#### [AngularJS Node JS-sel](active-directory-v2-devquickstarts-angular-node.md)
-#### [Angular JS .NET-tel](active-directory-v2-devquickstarts-angular-dotnet.md)
-#### [.NET-webalkalmazás](active-directory-v2-devquickstarts-dotnet-web.md)
-#### [.NET webes API](active-directory-v2-devquickstarts-dotnet-api.md)
-#### [NodeJS API](active-directory-v2-devquickstarts-node-api.md)
+### [v1-v2 összehasonlítása](active-directory-v2-compare.md)
+## Első lépések
+### Mobil- és asztali appok
+#### [iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift)
+#### [Android](guidedsetups/active-directory-android.md)
+#### [Windows asztali .NET](guidedsetups/active-directory-windesktop.md)
+### Webalkalmazások
+#### [JavaScript SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+#### [ASP.NET-webkiszolgáló](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS-webalkalmazás](active-directory-v2-devquickstarts-node-web.md)
-#### [Webes API .NET-webalkalmazásból](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 ## Útmutatók
 ### [Alkalmazás regisztrálása](active-directory-v2-app-registration.md)
 ## Referencia
-### [Alkalmazásregisztráció-referencia](active-directory-v2-registration-portal.md)
 ### [Hitelesítési tárak](active-directory-v2-libraries.md)
 ### [2.0-s hitelesítési protokollok](active-directory-v2-protocols.md)
-#### [Jogkivonat-referencia](active-directory-v2-tokens.md)
-#### [OAuth 2.0 engedélyezési kódfolyam](active-directory-v2-protocols-oauth-code.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
-#### [Implicit folyamat](active-directory-v2-protocols-implicit.md)
-#### [OAuth 2.0-ügyfél hitelesítő adatai](active-directory-v2-protocols-oauth-client-creds.md)
+#### [OAuth 2.0 hitelesítési kódmegadás](active-directory-v2-protocols-oauth-code.md)
+#### [OAuth 2.0 implicit engedélyezés](active-directory-v2-protocols-implicit.md)
+#### [OAuth 2.0-ügyfél hitelesítő adatainak megadása](active-directory-v2-protocols-oauth-client-creds.md)
+#### [Oauth 2.0-alapú meghatalmazásos folyamat](active-directory-v2-protocols-oauth-on-behalf-of.md)
+#### [Jogkivonat-referencia](active-directory-v2-tokens.md)
 ### [Hatókörök](active-directory-v2-scopes.md)

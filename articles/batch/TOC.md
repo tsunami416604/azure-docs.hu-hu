@@ -19,6 +19,7 @@
 ### [Hatékony listázó lekérdezések](batch-efficient-list-queries.md)
 ### [Feladatok előkészítési és befejezési műveletei](batch-job-prep-release.md)
 ### [Linuxos számítási csomópontok](batch-linux-nodes.md)
+### [Alacsony prioritású virtuális gépek](batch-low-pri-vms.md)
 ### [Batch-fiókok kezelése a Batch Management .NET használatával](batch-management-dotnet.md)
 ### [Feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md)
 ### [MPI-feladatok futtatása a Batchben](batch-mpi.md)

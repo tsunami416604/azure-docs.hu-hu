@@ -1,4 +1,5 @@
 # StorSimple Virtual Array
+
 ## Áttekintés
 ### [Mi a megoldás?](storsimple-ova-overview.md)
 
@@ -8,7 +9,7 @@
 #### [A korlátozások ismertetése](storsimple-ova-limits.md)
 #### [Az ajánlott eljárások áttekintése](storsimple-ova-best-practices.md)
 
-### Üzembe helyezés (Azure Portal)
+### Üzembe helyezés
 #### [Az üzembe helyezés előkészítése](storsimple-virtual-array-deploy1-portal-prep.md)
 ##### [A StorSimple Manager szolgáltatás üzembe helyezése](storsimple-virtual-array-manage-service.md)
 #### [Üzembe helyezés Hyper-V rendszerben](storsimple-virtual-array-deploy2-provision-hyperv.md)
@@ -16,17 +17,10 @@
 #### [Beállítás fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
 #### [Beállítás iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)
 
-### Üzembe helyezés (klasszikus portál)
-#### [Az üzembe helyezés előkészítése](storsimple-ova-deploy1-portal-prep.md)
-##### [A StorSimple Manager szolgáltatás üzembe helyezése](storsimple-ova-manage-service.md)
-#### [Üzembe helyezés Hyper-V rendszerben](storsimple-ova-deploy2-provision-hyperv.md)
-#### [Üzembe helyezés VMware rendszerben](storsimple-ova-deploy2-provision-vmware.md)
-#### [Beállítás fájlkiszolgálóként](storsimple-ova-deploy3-fs-setup.md)
-#### [Beállítás iSCSI-kiszolgálóként](storsimple-ova-deploy3-iscsi-setup.md)
-
 ## Útmutató
 ### [Kezelés az Azure Portalon](storsimple-virtual-array-manager-service-administration.md)
-#### [A legújabb frissítés telepítése](storsimple-virtual-array-install-update-04.md)
+#### [A legújabb frissítés telepítése](storsimple-virtual-array-install-update-05.md)
+##### [A 0.4-es frissítés telepítése](storsimple-virtual-array-install-update-04.md)
 ##### [A 0.3-as frissítés telepítése](storsimple-virtual-array-install-update.md)
 #### [Biztonsági másolatok létrehozása és kezelése](storsimple-virtual-array-backup.md)
 #### [Klónozás biztonsági mentésből](storsimple-virtual-array-clone.md)
@@ -44,22 +38,11 @@
 #### [Diagnosztika és hibaelhárítás](storsimple-virtual-array-diagnose-problems.md)
 #### [Naplótámogatási kérelem](storsimple-virtual-array-log-support-ticket.md)
 
-### [Kezelés a klasszikus Azure portálon keresztül](storsimple-ova-manager-service-administration.md)
-#### [A legújabb frissítés telepítése](storsimple-ova-install-update-01.md)
-#### [Biztonsági másolatok létrehozása és kezelése](storsimple-ova-backup.md)
-#### [Visszaállítás biztonsági mentésből](storsimple-ova-restore.md)
-#### [Feladatátvétel és vészhelyreállítás](storsimple-ova-failover-dr.md)
-#### [Inaktiválás és törlés](storsimple-ova-deactivate-and-delete-device.md)
-#### [A szolgáltatás irányítópultjának figyelése](storsimple-ova-service-dashboard.md)
-#### [Az eszköz jelszavának módosítása](storsimple-ova-change-device-admin-password.md)
-#### [ACR-ek kezelése](storsimple-ova-manage-acrs.md)
-#### [Tárfiókok kezelése](storsimple-ova-manage-storage-accounts.md)
-#### [Feladatok kezelése](storsimple-ova-manage-jobs.md)
-#### [Az MPIO konfigurálása Windows Server-gazdagépen](storsimple-ova-configure-mpio-windows-server.md)
 ### [Konfigurálás helyi webes felhasználói felületen](storsimple-ova-web-ui-admin.md)
 
 ## Kibocsátási megjegyzések
-### [0.4-es frissítés – aktuális](storsimple-virtual-array-update-04-release-notes.md)
+### [0.5-ös frissítés – aktuális](storsimple-virtual-array-update-05-release-notes.md)
+### [0.4-es frissítés](storsimple-virtual-array-update-04-release-notes.md)
 ### [0.3-as frissítés](storsimple-ova-update-03-release-notes.md)
 ### [0.2-es és 0.1-es frissítés](storsimple-ova-update-01-release-notes.md)
 
@@ -71,6 +54,7 @@
 ### [Biztonsági szempontok](storsimple-security.md)
 
 ## Bevezetés
+
 ### Felkészülés
 #### [Követelmények áttekintése](storsimple-system-requirements.md)
 #### [A műszaki specifikációk áttekintése](storsimple-technical-specifications-and-compliance.md)
@@ -80,7 +64,6 @@
 ### Telepítés
 #### [Biztonsági kérdések áttekintése](storsimple-safety.md)
 #### [A 8100-as típus kicsomagolása, szekrényre szerelése és bekábelezése](storsimple-8100-hardware-installation.md)
-
 #### [A 8600-as típus kicsomagolása, szekrényre szerelése és bekábelezése](storsimple-8600-hardware-installation.md)
 #### [10 GbE hálózati adapterek támogatott hardverei](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
@@ -96,6 +79,7 @@
 #### [SharePointhoz készült StorSimple-adapter](storsimple-adapter-for-sharepoint.md)
 
 ## Útmutató
+
 ### Kezelés
 #### [A StorSimple Manager szolgáltatás használata](storsimple-manager-service-administration.md)
 ##### [Visszaállítás biztonsági mentésből](storsimple-restore-from-backup-set-u2.md)
@@ -214,6 +198,7 @@
 ### [Blob alapértelmezett elérési útjának módosítása](storsimple-data-manager-change-default-blob-path.md)
 
 # StorSimple partnerek számára
+
 ## Áttekintés
 ### [Mi a megoldás?](storsimple-partner-csp-overview.md)
 

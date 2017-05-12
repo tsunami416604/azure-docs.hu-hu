@@ -18,8 +18,10 @@
 ### [Java Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
 ### [C# Linuxon](service-fabric-create-your-first-linux-application-with-csharp.md)
 ## [Alkalmazások telepítése helyi fürtre](service-fabric-get-started-with-a-local-cluster.md)
+## [.NET-alkalmazások üzembe helyezése tárolókban](service-fabric-host-app-in-a-container.md)
 ## [Az első saját fürt létrehozása az Azure-on](service-fabric-get-started-azure-cluster.md)
 ## [Az első saját önálló fürt létrehozása](service-fabric-get-started-standalone-cluster.md)
+## [Az első saját tárolóapp létrehozása](service-fabric-get-started-containers.md)
 
 # Útmutató
 ## Alkalmazás készítése
@@ -27,6 +29,7 @@
 ### Alapelvek
 #### [Támogatott programozási modellek](service-fabric-choose-framework.md)
 #### [Az alkalmazásmodell](service-fabric-application-model.md)
+#### [Futtatási modell](service-fabric-hosting-model.md)
 #### [Szolgáltatásjegyzéki erőforrások](service-fabric-service-manifest-resources.md)
 #### [Szolgáltatás állapota](service-fabric-concepts-state.md)
 #### [Szolgáltatás particionálása](service-fabric-concepts-partitioning.md)
@@ -44,20 +47,29 @@
 #### [Áttekintés](service-fabric-containers-overview.md)
 #### [Windows-tároló üzembe helyezése](service-fabric-deploy-container.md)
 #### [Linux-tároló üzembe helyezése](service-fabric-deploy-container-linux.md)
+#### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
+#### [Tárolók és szolgáltatások erőforrás-szabályozása](service-fabric-resource-governance.md)
 
 ### Reliable Services-szolgáltatás készítése
 #### [Áttekintés](service-fabric-reliable-services-introduction.md)
 #### Alapelvek
 ##### [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)
 ##### [A Reliable Services életciklusa – Java](service-fabric-reliable-services-lifecycle-java.md)
+
+#### Reliable Collections
 ##### [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
+##### [Reliable Collections – irányelvek és javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
+##### [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
+##### [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+##### [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md)
+##### [Reliable Collections-szerializáció](service-fabric-reliable-services-reliable-collections-serialization.md)
+##### [A Reliable State Manager és a Reliable Collection belső elemei](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### Bevezetés
 ##### [C# Windowson](service-fabric-reliable-services-quick-start.md)
 ##### [Java Linuxon](service-fabric-reliable-services-quick-start-java.md)
 
 #### A Reliable Services életciklusa
-#### [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 #### [Konfigurálás](service-fabric-reliable-services-configuration.md)
 #### [Értesítések küldése](service-fabric-reliable-services-notifications.md)
 #### [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
@@ -94,6 +106,7 @@
 
 ### Kommunikáció a szolgáltatásokkal
 #### [A szolgáltatások közötti kommunikáció](service-fabric-connect-and-communicate-with-services.md)
+#### [DNS-szolgáltatás](service-fabric-dnsservice.md)
 #### [Fordított proxy](service-fabric-reverseproxy.md)
 
 ### [Webes kezelőfelület hozzáadása](service-fabric-add-a-web-frontend.md)

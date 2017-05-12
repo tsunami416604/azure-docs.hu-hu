@@ -1,51 +1,86 @@
-# Áttekintés
-## [Áttekintés](active-directory-b2c-overview.md)
-## [Alkalmazástípusok](active-directory-b2c-apps.md)
-## [Régiónkénti elérhetőség és az adatok tárolási helye](active-directory-b2c-reference-tenant-type.md)
+# [Áttekintés](active-directory-b2c-overview.md)
 
 # Első lépések
 ## [Azure AD B2C-címtár létrehozása](active-directory-b2c-get-started.md)
 ## [Alkalmazás regisztrálása](active-directory-b2c-app-registration.md)
-## Gyors útmutatók
-### [iOS-alkalmazás készítése](active-directory-b2c-devquickstarts-ios.md)
-### [Android-alkalmazás készítése](active-directory-b2c-devquickstarts-android.md)
-### .NET-alapú webapp készítése
-#### [Feliratkozás egy .NET-webappra és bejelentkezés](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-#### [Webes API-hívás .NET-webalkalmazásból](active-directory-b2c-devquickstarts-web-api-dotnet.md)
-### [.NET-alapú webes API készítése](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [Node.Js-alapú webapp készítése](active-directory-b2c-devquickstarts-web-node.md)
-### [Node.Js-alapú webes API készítése](active-directory-b2c-devquickstarts-api-node.md)
-### [.NET-alapú asztali alkalmazás készítése](active-directory-b2c-devquickstarts-native-dotnet.md)
-### [Az Azure AD Graph API használata](active-directory-b2c-devquickstarts-graph-dotnet.md)
-## [Gyakori kérdések](active-directory-b2c-faqs.md)
+## Mobil- és asztali appok
+### [Áttekintés](active-directory-b2c-reference-oauth-code.md)
+### iOS
+#### [iOS Swift az MSAL használatával](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)
+#### [iOS ObjC az AppAuth használatával](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth)
+### Android
+#### [Android az MSAL használatával](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal)
+#### [Android az AppAuth használatával](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth)
+### [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)
+### [Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native)
+## Web Apps
+### [Áttekintés](active-directory-b2c-reference-oidc.md)
+### [ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+### [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
+### [NodeJS](active-directory-b2c-devquickstarts-web-node.md)
+## Egylapos appok
+### [Áttekintés](active-directory-b2c-reference-spa.md)
+### [JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+### [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
+### [NodeJS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
+## Webes API-k
+### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
+### [NodeJS](active-directory-b2c-devquickstarts-api-node.md)
+### [.NET-alapú webes API hívása](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
-# Útmutató
-## Kezelés
-### [A többtényezős hitelesítés engedélyezése](active-directory-b2c-reference-mfa.md)
-### [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-b2c-reference-sspr.md)
-### [Jogkivonat, munkamenet és egyszeri bejelentkezés konfigurálása](active-directory-b2c-token-session-sso.md)
-## Fejlesztés
-### Regisztráció és bejelentkezés
-#### [Microsoft-fiók](active-directory-b2c-setup-msa-app.md)
-#### [Facebook](active-directory-b2c-setup-fb-app.md)
-#### [Google +](active-directory-b2c-setup-goog-app.md)
-#### [Amazon](active-directory-b2c-setup-amzn-app.md)
-#### [LinkedIn](active-directory-b2c-setup-li-app.md)
-### [Egyéni attribútumok használata](active-directory-b2c-reference-custom-attr.md)
-### [OAuth 2.0 hitelesítési kódfolyamat](active-directory-b2c-reference-oauth-code.md)
-### [Webes bejelentkezés OpenID-kapcsolattal](active-directory-b2c-reference-oidc.md)
-### [A felhasználói felület testreszabása](active-directory-b2c-reference-ui-customization.md)
-#### [Segédeszköz testreszabáshoz](active-directory-b2c-reference-ui-customization-helper-tool.md)
-## Hibaelhárítás
-### [Címtárak készítésekor előforduló problémák](active-directory-b2c-support-create-directory.md)
+# Útmutatók
+## Identitásszolgáltatók konfigurálása
+### [Microsoft-fiók](active-directory-b2c-setup-msa-app.md)
+### [Facebook](active-directory-b2c-setup-fb-app.md)
+### [Google](active-directory-b2c-setup-goog-app.md)
+### [Amazon](active-directory-b2c-setup-amzn-app.md)
+### [LinkedIn](active-directory-b2c-setup-li-app.md)
+### [Twitter](active-directory-b2c-setup-twitter-app.md)
+### [Weibo](active-directory-b2c-setup-weibo-app.md)
+### [QQ](active-directory-b2c-setup-qq-app.md)
+### [WeChat](active-directory-b2c-setup-wechat-app.md)
+## [Az Azure AD Graph API használata](active-directory-b2c-devquickstarts-graph-dotnet.md)
+## [Hozzáférési jogkivonatok beszerzése](active-directory-b2c-access-tokens.md)
+## [E-mailes ellenőrzés letiltása](active-directory-b2c-reference-disable-ev.md)
+## [Jogkivonatok konfigurálása](active-directory-b2c-token-session-sso.md)
+## [MFA engedélyezése](active-directory-b2c-reference-mfa.md)
+## [Egyéni attribútumok használata](active-directory-b2c-reference-custom-attr.md)
+## [A felhasználói felület testreszabása](active-directory-b2c-reference-ui-customization.md)
+### [Segédeszköz testreszabáshoz](active-directory-b2c-reference-ui-customization-helper-tool.md)
+## [Nyelvi testreszabás](active-directory-b2c-reference-language-customization.md)
+## [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-b2c-reference-sspr.md)
+
+# Identity Experience Engine
+## [Egyéni házirendek](active-directory-b2c-overview-custom.md)
+## Útmutatók
+### [Első lépések](active-directory-b2c-get-started-custom.md)
+### OIDC-szolgáltatók konfigurálása
+#### [Azure AD](active-directory-b2c-setup-aad-custom.md)
+### SAML-szolgáltatók konfigurálása
+#### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
+### RESTful API-k integrálása
+#### [További jogcímek beszerzése](active-directory-b2c-rest-api-step-custom.md)
+#### [Felhasználó által megadott adatok érvényesítése](active-directory-b2c-rest-api-validation-custom.md)
+### Bejelentkezés testreszabása
+#### [Felhasználó által megadott adatok konfigurálása](active-directory-b2c-configure-signup-self-asserted-custom.md)
+#### [Felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md)
+#### [Jogkivonat testreszabása](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
+### Hibaelhárítás
+#### [Naplók gyűjtése az Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)
+## Referencia
+### [Kibocsátási megjegyzések](active-directory-b2c-developer-notes-custom.md)
+
 
 # Referencia
-## [Korlátozások és megkötések](active-directory-b2c-limitations.md)
-## [Bővíthető házirend-keretrendszer](active-directory-b2c-reference-policies.md)
-## [Hitelesítési protokollok](active-directory-b2c-reference-protocols.md)
-## [Jogkivonatok](active-directory-b2c-reference-tokens.md)
-
+## Szószedet
+### [Alkalmazástípusok](active-directory-b2c-apps.md)
+### [Hitelesítési protokollok](active-directory-b2c-reference-protocols.md)
+### [Beépített házirendek](active-directory-b2c-reference-policies.md)
+### [Jogkivonatok](active-directory-b2c-reference-tokens.md)
+## [Régiónkénti elérhetőség és az adatok tárolási helye](active-directory-b2c-reference-tenant-type.md)
 ## [Fenyegetések kezelése](active-directory-b2c-reference-threat-management.md)
+## [Korlátozások és megkötések](active-directory-b2c-limitations.md)
+## [Címtárak készítésekor előforduló problémák](active-directory-b2c-support-create-directory.md)
 
 # Kapcsolódó
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
@@ -54,6 +89,8 @@
 # Erőforrások
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure AD B2C visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c) 
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [Gyakori kérdések](active-directory-b2c-faqs.md)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [Támogatás](active-directory-b2c-support.md)

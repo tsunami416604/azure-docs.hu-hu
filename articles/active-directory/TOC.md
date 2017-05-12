@@ -3,7 +3,6 @@
 ## [Kiadás kiválasztása](active-directory-editions.md)
 
 ## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
-## [Az Azure Portal felületének előzetese](active-directory-preview-explainer.md)
 
 # Bevezetés
 ## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
@@ -18,7 +17,9 @@
 
 # Útmutató
 ## Tervezés és kialakítás
+### [Az Azure AD architektúrájának ismertetése](active-directory-architecture.md)
 ### [Hibrid identitáskezelési megoldás üzembe helyezése](active-directory-hybrid-identity-design-considerations-overview.md)
+
 #### Követelmények meghatározása
 ##### [Identitáskezelés](active-directory-hybrid-identity-design-considerations-business-needs.md)
 ##### [Címtár-szinkronizálás](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
@@ -80,7 +81,7 @@
 ### [Veszélyeztetett felhasználók](active-directory-reporting-security-user-at-risk.md)
 ### [Kockázatos bejelentkezések](active-directory-reporting-security-risky-sign-ins.md)
 ### [Kockázati események](active-directory-reporting-risk-events.md)
-### [Nevesített hálózatok](active-directory-known-networks-azure-portal.md)
+### [Nevesített helyek](active-directory-named-locations.md)
 ### [Jelentések migrálása](active-directory-reporting-migration.md)
 ### [Megőrzés](active-directory-reporting-retention.md)
 ### [Késések](active-directory-reporting-latencies-azure-portal.md)
@@ -91,6 +92,7 @@
 ###    Szoftveres hozzáférés
 #### [Naplózási referencia](active-directory-reporting-api-audit-reference.md)
 #### [Naplózási minták](active-directory-reporting-api-audit-samples.md)
+#### [Adatok lekérése](active-directory-reporting-api-with-certificates.md)
 #### [Előfeltételek](active-directory-reporting-api-prerequisites.md)
 #### [Bejelentkezési referencia](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
@@ -114,6 +116,7 @@
 ## [Jelszavak kezelése](active-directory-passwords.md)
 ### Felhasználói dokumentumok
 #### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
+#### [Ajánlott eljárások a jelszavakhoz](active-directory-secure-passwords.md)
 #### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
 ### [Rövid útmutató: Új jelszó kérése önkiszolgáló eljárással](active-directory-passwords-getting-started.md)
 ### [SSPR licenc](active-directory-passwords-licensing.md)
@@ -159,33 +162,37 @@
 #### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
-### [Távoli hozzáférés biztosítása az alkalmazásokhoz](active-directory-application-proxy-get-started.md)
-#### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
-#### [Az összekötők ismertetése](application-proxy-understand-connectors.md)
-#### [Alkalmazások közzététele](application-proxy-publish-azure-portal.md)
-#### [Biztonság](application-proxy-security-considerations.md)
-#### [Hálózatok](application-proxy-network-topology-considerations.md)
-#### [Távoli asztal](application-proxy-publish-remote-desktop.md)
-#### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-#### [Közzététel külön hálózatokon](active-directory-application-proxy-connectors-azure-portal.md)
-#### [Proxykiszolgálók](application-proxy-working-with-proxy-servers.md)
-#### [Egyéni tartományok](active-directory-application-proxy-custom-domains.md)
-#### [Hozzáférés az alkalmazásokhoz](active-directory-appssoaccess-whatis.md)
-##### [Azure Portal](application-proxy-sso-azure-portal.md)
-#### [Egyszeri bejelentkezés KCD-vel](active-directory-application-proxy-sso-using-kcd.md)
-#### [Egyszeri bejelentkezés fejlécekkel](application-proxy-ping-access.md)
-#### [Jogcímbarát alkalmazások](active-directory-application-proxy-claims-aware-apps.md)
-#### [Natív ügyfélalkalmazások](active-directory-application-proxy-native-client.md)
-#### [Egyéni kezdőlap](application-proxy-office365-app-launcher.md)
-#### [Feltételes hozzáférés](active-directory-application-proxy-conditional-access.md)
-#### [Csendes telepítés](active-directory-application-proxy-silent-installation.md)
-#### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
+### [Appok távoli elérése az App Proxyval](active-directory-application-proxy-get-started.md)
+#### Bevezetés
+##### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
+##### [Alkalmazások közzététele](application-proxy-publish-azure-portal.md)
+##### [Egyéni tartományok](active-directory-application-proxy-custom-domains.md)
+#### [Egyszeri bejelentkezéses hozzáférés](active-directory-appssoaccess-whatis.md)
+##### [Egyszeri bejelentkezés KCD-vel](active-directory-application-proxy-sso-using-kcd.md)
+##### [Egyszeri bejelentkezés fejlécekkel](application-proxy-ping-access.md)
+##### [Egyszeri bejelentkezés jelszótárolással](application-proxy-sso-azure-portal.md)
+#### Ajánlott eljárások ismertetése
+##### [Összekötők](application-proxy-understand-connectors.md)
+##### [Biztonság](application-proxy-security-considerations.md)
+##### [Hálózatok](application-proxy-network-topology-considerations.md)
+#### 
+#### Speciális konfigurációk
+##### [Közzététel külön hálózatokon](active-directory-application-proxy-connectors-azure-portal.md)
+##### [Proxykiszolgálók](application-proxy-working-with-proxy-servers.md)
+##### [Jogcímbarát alkalmazások](active-directory-application-proxy-claims-aware-apps.md)
+##### [Natív ügyfélalkalmazások](active-directory-application-proxy-native-client.md)
+##### [Csendes telepítés](active-directory-application-proxy-silent-installation.md)
+##### [Egyéni kezdőlap](application-proxy-office365-app-launcher.md)
+#### Közzétételi útmutatók
+##### [Távoli asztal](application-proxy-publish-remote-desktop.md)
+##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
 #### A klasszikus portál használata
 ##### [Letöltési összekötők](application-proxy-enable-classic-portal.md)
 ##### [Alkalmazások közzététele](active-directory-application-proxy-publish.md)
 ##### [Összekötők használata](active-directory-application-proxy-connectors.md)
-
+##### [Feltételes hozzáférés](active-directory-application-proxy-conditional-access.md)
 
 ### Vállalati alkalmazások kezelése
 #### [Felhasználók hozzárendelése](active-directory-coreapps-assign-user-azure-portal.md)
@@ -297,14 +304,18 @@
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 
 ## Identitások védelme
-### [Feltételes hozzáférés](active-directory-conditional-access.md)
-#### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
+### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
+#### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Támogatott alkalmazások](active-directory-conditional-access-supported-apps.md)
 #### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
 #### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
+#### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
-#### [Hibaelhárítás](active-directory-conditional-access-device-remediation.md)
-#### [Referencia](active-directory-conditional-access-technical-reference.md)
+#### [Kijavítás](active-directory-conditional-access-device-remediation.md)
+#### [Klasszikus portál](active-directory-conditional-access.md)
+##### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
+
+
 ### Windows Hello
 #### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)
 #### [A Vállalati Windows Hello engedélyezése](active-directory-azureadjoin-passport-deployment.md)

@@ -18,12 +18,13 @@
 ### [Webalkalmazások – futtatókörnyezet](app-insights-java-live.md)
 ### [Docker-alkalmazások](app-insights-docker.md)
 
+## Node.js-alkalmazások figyelése
+### [Node.js](app-insights-nodejs.md)
 
 ## Weblapok figyelése
 ### [JavaScript](app-insights-javascript.md)
-
+ 
 ## Más platformok figyelése
-### [Node.js-alkalmazások](app-insights-nodejs.md)
 ### [SharePoint-webhelyek](app-insights-sharepoint.md)
 ### [További platformok](app-insights-platforms.md)
 
@@ -32,7 +33,6 @@
 ## Tervezés és kialakítás
 ### [Webalkalmazások és szolgáltatások részletes diagnosztikája](app-insights-devops.md)
 ### [Webalkalmazások teljesítményének monitorozása](app-insights-web-monitor-performance.md)
-### [Használatelemzés az Application Insights szolgáltatással](app-insights-web-track-usage.md)
 ### [Application Insights-erőforrások elválasztása](app-insights-separate-resources.md)
 ### [Hogyan tegyem... az Application Insights szolgáltatásban?](app-insights-how-do-i.md)
 
@@ -50,7 +50,7 @@
 #### [Függőségek](app-insights-asp-net-dependencies.md)
 #### [Kiadási jegyzetek](app-insights-annotations.md)
 #### [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md)
-
+#### [Pillanatkép-hibakereső](app-insights-snapshot-debugger.md)
 
 ### J2EE
 #### [Nyomkövetési naplók](app-insights-java-trace-logs.md)
@@ -86,6 +86,11 @@
 #### [F5-információk](app-insights-visual-studio.md)
 #### [Trendek](app-insights-visual-studio-trends.md)
 #### [CodeLens](app-insights-visual-studio-codelens.md)
+
+### Használat
+#### [Áttekintés](app-insights-usage-overview.md)
+#### [Megőrzés](app-insights-usage-retention.md)
+#### [Felhasználók, munkamenetek, események](app-insights-usage-segmentation.md)
 
 ### Elemzés
 
@@ -152,14 +157,14 @@
 ## Hírek
 
 ### [Blog](https://azure.microsoft.com/blog/tag/application-insights/)
-### [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=application-insights) 
+### [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=application-insights) 
 ### [SDK kibocsátási megjegyzései](app-insights-release-notes.md)
 ### [Developer Analytics Tools kibocsátási megjegyzései](app-insights-release-notes-vsix.md)
 
 ## [Gyakori kérdések](app-insights-troubleshoot-faq.md)
 
 ## Súgó
-### [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=ApplicationInsights)  
+### [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights)  
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/az-application-insights)
 ### [User Voice](https://visualstudio.uservoice.com/forums/357324-application-insights)
 ### [Támogatás](https://azure.microsoft.com/support/)

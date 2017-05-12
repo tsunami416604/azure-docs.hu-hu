@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 4a6b1a9e581904f7f7de2a6592dfb163ab2ec45e
-ms.openlocfilehash: 2284db5eaeba0bad709f7e2181ec357f58201d1e
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f9d8cecf45e40909e39f894c62bcc572b610b014
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="azure-billing-documentation"></a>Azure Billing – dokumentáció
@@ -87,8 +89,8 @@ Ismerje meg az Azure számlázását, valamint a használat és költségek fel�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c">REST API-referencia</a></p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/module/azurerm.billing/?view=azurermps-3.8.0">Számlaletöltés PowerShell használatával</a></p>
                     </div>
                 </div>
             </div>
@@ -99,21 +101,39 @@ Ismerje meg az Azure számlázását, valamint a használat és költségek fel�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Egyéb</h3>
-                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-overview">API – Áttekintés</a></p>
-                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Partneri megoldás: Cloud Cruiser</a></p>
-                        <p><a href="https://docs.microsoft.com/azure/billing-usage-rate-card-partner-solution-cloudyn">Partneri megoldás: Cloudyn</a></p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/microsoft.azure.management.billing">.NET-referencia számlaletöltéshez</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c">Használat és RateCard API</a></p>
+                        <p><a href="/rest/api/billing/">Számlaletöltési API</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Útmutató az API-k használatához</h3>
+                        <p><a href="/azure/billing-usage-rate-card-overview">API – Áttekintés</a></p>
+                        <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Partneri megoldás: Cloud Cruiser</a></p>
+                        <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudyn">Partneri megoldás: Cloudyn</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

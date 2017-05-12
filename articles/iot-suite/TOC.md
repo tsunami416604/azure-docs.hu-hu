@@ -20,6 +20,9 @@
 #### [Szimulált adatok](iot-suite-raspberry-pi-kit-node-get-started-simulator.md)
 #### [Valódi érzékelők használata](iot-suite-raspberry-pi-kit-node-get-started-basic.md)
 #### [Vezérlőprogram-frissítés megvalósítása](iot-suite-raspberry-pi-kit-node-get-started-advanced.md)
+## Az Intel NUC-átjáró csatlakoztatása
+### [Szimulált adatok](iot-suite-gateway-kit-get-started-simulator.md)
+### [Valódi érzékelő használata](iot-suite-gateway-kit-get-started-sensortag.md)
 
 # Útmutató
 ## Szimulált eszköz csatlakoztatása
@@ -33,6 +36,7 @@
 ## [Egyéni szabály létrehozása a távoli figyelési megoldásban](iot-suite-custom-rule.md)
 ## [Eszközinformációk a távoli figyelési megoldásban](iot-suite-remote-monitoring-device-info.md)
 ## [Átjáró telepítése csatlakoztatott factoryhoz](iot-suite-connected-factory-gateway-deployment.md)
+## [Csatlakoztatott factory testreszabása](iot-suite-connected-factory-customize.md)
 
 # Referencia
 ## [Biztonsági architektúra](iot-security-architecture.md)

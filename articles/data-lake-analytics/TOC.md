@@ -15,12 +15,14 @@
 
 # Útmutató
 ## Fejlesztés
-### [U-SQL](data-lake-analytics-u-sql-get-started.md)
+### [Az U-SQL alapjai](data-lake-analytics-u-sql-get-started.md)
+### [U-SQL-katalógus](data-lake-analytics-u-sql-catalog.md)
+### [U-SQL-paraméterek](data-lake-analytics-u-sql-parameterize_scripts.md)
 ### [Ablakfüggvények az U-SQL-ben](data-lake-analytics-use-window-functions.md)
 ### [Felhasználó által definiált operátorok az U-SQL-ben](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 ### [A U-SQL Python-bővítményei](data-lake-analytics-u-sql-python-extensions.md)
 ### [A U-SQL R-bővítményei](data-lake-analytics-u-sql-r-extensions.md)
-### [A U-SQL kognitív képességei](data-lake-analytics-u-sql-cognitive.md)
+### [Az U-SQL kognitív bővítményei](data-lake-analytics-u-sql-cognitive.md)
 
 ## Megoldások létrehozása
 ### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)

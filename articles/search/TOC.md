@@ -43,7 +43,7 @@
 ### [Azure Blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md)
 ### [Azure Table Storage-indexelő](search-howto-indexing-azure-tables.md)
 ### [Azure SQL-indexelő](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [Azure DocumentDB-indexelő](search-howto-index-documentdb.md)
+### [Azure Cosmos DB-indexelő](search-howto-index-documentdb.md)
 ### [CSV-blobok indexelése](search-howto-index-csv-blobs.md)
 ### [JSON-blobok indexelése](search-howto-index-json-blobs.md)
 ### [Az indexelő az Azure virtuális gépen futó SQL Serverhez való csatlakozásának konfigurálása](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
