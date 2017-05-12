@@ -1,101 +1,101 @@
-- name: "Azure DB for PostgreSQL-dokumentáció"
+- name: Azure DB for PostgreSQL-dokumentáció
   href: index.yml
-- name: "Áttekintés"
+- name: Áttekintés
   items:
-  - name: "Azure DB for PostgreSQL"
+  - name: Azure DB for PostgreSQL
     href: overview.md
-- name: "Gyors útmutatók"
+- name: Gyors útmutatók
   expanded: true
   items:
-  - name: "DB létrehozása – portál"
+  - name: DB létrehozása – portál
     href: quickstart-create-server-database-portal.md
-  - name: "DB létrehozása – Azure CLI"
+  - name: DB létrehozása – Azure CLI
     href: quickstart-create-server-database-azure-cli.md
-- name: "Mintaszkriptek"
+- name: Mintaszkriptek
   items:
-  - name: "Azure CLI"
+  - name: Azure CLI
     href: sample-scripts-azure-cli.md
-- name: "oktatóanyagokat"
+- name: oktatóanyagokat
   items:
-  - name: "1 – Adatbázis-tervezés"
+  - name: 1 – Adatbázis-tervezés
     items:
-    - name: "Azure Portal"
+    - name: Azure Portal
       href: tutorial-design-database-using-azure-portal.md
-    - name: "Azure CLI"
+    - name: Azure CLI
       href: tutorial-design-database-using-azure-cli.md
-  - name: "2 – Webapptervezés – Python"
+  - name: 2 – Webapptervezés – Python
     href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
-- name: "Alapelvek"
+- name: Alapelvek
   items:
-  - name: "Adatbázis és kiszolgálók"
+  - name: Adatbázis és kiszolgálók
     items:
-    - name: "Kiszolgálók"
+    - name: Kiszolgálók
       href: concepts-servers.md
-    - name: "Támogatott verziók"
+    - name: Támogatott verziók
       href: concepts-supported-versions.md
-    - name: "PostgreSQL-bővítmények"
+    - name: PostgreSQL-bővítmények
       href: concepts-extensions.md
-    - name: "Kiszolgálói naplók"
+    - name: Kiszolgálói naplók
       href: concepts-server-logs.md
-  - name: "Erőforrások"
+  - name: Erőforrások
     items:
-    - name: "Szolgáltatásszintek"
+    - name: Szolgáltatásszintek
       href: concepts-service-tiers.md
-    - name: "Számítási és tárolási egységek"
+    - name: Számítási és tárolási egységek
       href: concepts-compute-unit-and-storage.md
-    - name: "Korlátok"
+    - name: Korlátok
       href: concepts-limits.md
-  - name: "Adathozzáférés és -biztonság"
+  - name: Adathozzáférés és -biztonság
     items:
-    - name: "Tűzfalszabályok"
+    - name: Tűzfalszabályok
       href: concepts-firewall-rules.md
-    - name: "Az SSL konfigurálása"
+    - name: Az SSL konfigurálása
       href: concepts-ssl-connection-security.md
-  - name: "Fejlesztés"
+  - name: Fejlesztés
     items:
-    - name: "Adatkapcsolattárak"
+    - name: Adatkapcsolattárak
       href: concepts-connection-libraries.md
-- name: "Útmutatók"
+- name: Útmutatók
   items:
-  - name: "Tűzfalszabályok"
+  - name: Tűzfalszabályok
     items:
-    - name: "Azure Portal"
+    - name: Azure Portal
       href: howto-manage-firewall-using-portal.md
-    - name: "Azure CLI"
+    - name: Azure CLI
       href: howto-manage-firewall-using-cli.md
-  - name: "Kiszolgáló visszaállítása"
+  - name: Kiszolgáló visszaállítása
     items:
-    - name: "Azure Portal"
+    - name: Azure Portal
       href: howto-restore-server-portal.md
-  - name: "Adatbázis migrálása"
+  - name: Adatbázis migrálása
     items:
-    - name: "Memóriakép és visszaállítás"
+    - name: Memóriakép és visszaállítás
       href: howto-migrate-using-dump-and-restore.md
-    - name: "Importálás és exportálás"
+    - name: Importálás és exportálás
       href: howto-migrate-using-export-and-import.md
-  - name: "Kiszolgáló konfigurációs paramétereinek testreszabása"
+  - name: Kiszolgáló konfigurációs paramétereinek testreszabása
     items:
-    - name: "Azure CLI"
+    - name: Azure CLI
       href: howto-configure-server-parameters-using-cli.md
-  - name: "Kiszolgálói naplók"
+  - name: Kiszolgálói naplók
     items:
-    - name: "Azure CLI"
+    - name: Azure CLI
       href: howto-configure-server-logs-using-cli.md
-- name: "Referencia"
+- name: Referencia
   items:
-  - name: "Azure CLI"
+  - name: Azure CLI
     href: /cli/azure/postgres
-- name: "Erőforrások"
+- name: Erőforrások
   items:
-  - name: "Díjszabás"
+  - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/postgresql/
-  - name: "MSDN-fórum"
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDatabaseforPostgreSQL
-  - name: "Stack Overflow"
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
+  - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-database-postgresql
-  - name: "Visszajelzési fórum"
+  - name: Visszajelzési fórum
     href: https://feedback.azure.com/forums/597976-azure-database-for-postgresql
-  - name: "Régiónkénti elérhetőség"
+  - name: Régiónkénti elérhetőség
     href: https://azure.microsoft.com/regions/services/
-  - name: "Támogatási lehetőségek"
+  - name: Támogatási lehetőségek
     href: https://azure.microsoft.com/support/options/

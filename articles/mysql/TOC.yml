@@ -1,105 +1,105 @@
-- name: "MySQL-hez készült Azure DB – Dokumentáció"
+- name: MySQL-hez készült Azure DB – Dokumentáció
   href: index.yml
-- name: "Áttekintés"
+- name: Áttekintés
   items:
-  - name: "MySQL-hez készült Azure DB"
+  - name: MySQL-hez készült Azure DB
     href: overview.md
-- name: "Gyors útmutatók"
+- name: Gyors útmutatók
   expanded: true
   items:
-  - name: "DB létrehozása – portál"
+  - name: DB létrehozása – portál
     href: quickstart-create-mysql-server-database-using-azure-portal.md
-  - name: "DB létrehozása – Azure CLI"
+  - name: DB létrehozása – Azure CLI
     href: quickstart-create-mysql-server-database-using-azure-cli.md
-- name: "oktatóanyagokat"
+- name: oktatóanyagokat
   items:
-  - name: "1 – Adatbázis-tervezés"
+  - name: 1 – Adatbázis-tervezés
     items:
-    - name: "Azure Portal"
+    - name: Azure Portal
       href: tutorial-design-database-using-portal.md
-    - name: "Azure CLI"
+    - name: Azure CLI
       href: tutorial-design-database-using-cli.md
-  - name: "2. – Webapp létrehozása"
+  - name: 2. – Webapp létrehozása
     items:
-    - name: "Wordpress – Portál"
+    - name: Wordpress – Portál
       href: ../app-service-web/app-service-web-create-web-app-from-marketplace.md?toc=%2fazure%2fmysql%2ftoc.json
-    - name: "PHP – Azure CLI"
+    - name: PHP – Azure CLI
       href: ../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
-- name: "Példák"
+- name: Példák
   items:
-  - name: "Azure CLI"
+  - name: Azure CLI
     href: sample-scripts-azure-cli.md
-- name: "Alapelvek"
+- name: Alapelvek
   items:
-  - name: "Adatbázis és kiszolgálók"
+  - name: Adatbázis és kiszolgálók
     items:
-    - name: "Kiszolgálók"
+    - name: Kiszolgálók
       href: concepts-servers.md
-    - name: "Támogatott verziók"
+    - name: Támogatott verziók
       href: concepts-supported-versions.md
-  - name: "Erőforrások"
+  - name: Erőforrások
     items:
-    - name: "Szolgáltatásszintek"
+    - name: Szolgáltatásszintek
       href: concepts-service-tiers.md
-    - name: "Számítási és tárolási egységek"
+    - name: Számítási és tárolási egységek
       href: concepts-compute-unit-and-storage.md
-    - name: "Korlátok"
+    - name: Korlátok
       href: concepts-limits.md
-  - name: "Adathozzáférés és -biztonság"
+  - name: Adathozzáférés és -biztonság
     items:
-    - name: "Tűzfalszabályok"
+    - name: Tűzfalszabályok
       href: concepts-firewall-rules.md
-    - name: "Az SSL konfigurálása"
+    - name: Az SSL konfigurálása
       href: concepts-ssl-connection-security.md
-  - name: "Fejlesztés"
+  - name: Fejlesztés
     items:
-    - name: "Adatkapcsolattárak"
+    - name: Adatkapcsolattárak
       href: concepts-connection-libraries.md
-    - name: "Alkalmazásfejlesztés"
+    - name: Alkalmazásfejlesztés
       href: concepts-database-application-development.md
-  - name: "Adatbázis migrálása"
+  - name: Adatbázis migrálása
     items:
-    - name: "Memóriakép és visszaállítás"
+    - name: Memóriakép és visszaállítás
       href: concepts-migrate-dump-restore.md
-    - name: "Importálás és exportálás"
+    - name: Importálás és exportálás
       href: concepts-migrate-import-export.md
-- name: "Útmutatók"
+- name: Útmutatók
   items:
-  - name: "Kiszolgáló kezelése"
+  - name: Kiszolgáló kezelése
     items:
-    - name: "Azure Portal"
+    - name: Azure Portal
       href: howto-create-manage-server-portal.md
-  - name: "Tűzfalszabályok"
+  - name: Tűzfalszabályok
     items:
-    - name: "Azure Portal"
+    - name: Azure Portal
       href: howto-manage-firewall-using-portal.md
-    - name: "Azure CLI"
+    - name: Azure CLI
       href: howto-manage-firewall-using-cli.md
-  - name: "Kiszolgáló visszaállítása"
+  - name: Kiszolgáló visszaállítása
     items:
-    - name: "Azure Portal"
+    - name: Azure Portal
       href: howto-restore-server-portal.md
-  - name: "Alkalmazások csatlakoztatása"
+  - name: Alkalmazások csatlakoztatása
     items:
-    - name: "Kapcsolati sztringek"
+    - name: Kapcsolati sztringek
       href: howto-connection-string.md
-    - name: "Az SSL konfigurálása"
+    - name: Az SSL konfigurálása
       href: howto-configure-ssl.md
-- name: "Referencia"
+- name: Referencia
   items:
-  - name: "Azure CLI"
+  - name: Azure CLI
     href: /cli/azure/mysql
-- name: "Erőforrások"
+- name: Erőforrások
   items:
-  - name: "Díjszabás"
+  - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/mysql/
-  - name: "MSDN-fórum"
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDatabaseforMySQL
-  - name: "Stack Overflow"
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL
+  - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-database-mysql
-  - name: "Szolgáltatás igénylése"
+  - name: Szolgáltatás igénylése
     href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
-  - name: "Régiónkénti elérhetőség"
+  - name: Régiónkénti elérhetőség
     href: https://azure.microsoft.com/regions/services/
-  - name: "Támogatási lehetőségek"
+  - name: Támogatási lehetőségek
     href: https://azure.microsoft.com/support/options/

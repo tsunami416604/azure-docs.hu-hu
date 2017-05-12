@@ -1,300 +1,298 @@
-- name: "Web Apps-dokumentáció"
-  href: index.md
-- name: "Áttekintés"
+- name: Web Apps-dokumentáció
+  href: index.yml
+- name: Áttekintés
   items:
-  - name: "Tudnivalók a Web Appsról"
+  - name: Tudnivalók a Web Appsról
     href: app-service-web-overview.md
-  - name: "Az üzemeltetési lehetőségek összehasonlítása"
+  - name: Az üzemeltetési lehetőségek összehasonlítása
     href: choose-web-site-cloud-service-vm.md
-- name: "Gyors útmutatók"
+- name: Gyors útmutatók
   expanded: true
   items:
-  - name: ".NET-alkalmazás létrehozása"
+  - name: .NET-alkalmazás létrehozása
     href: app-service-web-get-started-dotnet.md
-  - name: "Node.js-alapú alkalmazás létrehozása"
+  - name: Node.js-alapú alkalmazás létrehozása
     href: app-service-web-get-started-nodejs.md
-  - name: "PHP-alkalmazás létrehozása"
+  - name: PHP-alkalmazás létrehozása
     href: app-service-web-get-started-php.md
-  - name: "Java-alkalmazás létrehozása"
+  - name: Java-alkalmazás létrehozása
     href: app-service-web-get-started-java.md
-  - name: "Python-alkalmazás létrehozása"
+  - name: Python-alkalmazás létrehozása
     href: app-service-web-get-started-python.md
-  - name: "Statikus HTML-webhely létrehozása"
+  - name: Statikus HTML-webhely létrehozása
     href: app-service-web-get-started-html.md
-- name: "oktatóanyagokat"
+- name: oktatóanyagokat
   items:
-  - name: "1 – .NET és SQL DB"
+  - name: 1 – .NET és SQL DB
     href: app-service-web-tutorial-dotnet-sqldatabase.md
-  - name: "1 – Node.js és MongoDB"
+  - name: 1 – Node.js és MongoDB
     href: app-service-web-tutorial-nodejs-mongodb-app.md
-  - name: "1 – PHP és MySQL"
+  - name: 1 – PHP és MySQL
     href: app-service-web-tutorial-php-mysql.md 
-  - name: "1 – WordPress és MySQL"
+  - name: 1 – WordPress és MySQL
     href: app-service-web-create-web-app-from-marketplace.md
-#  - name: 1 - Java with MySQL
-#    href: app-service-web-tutorial-java-mysql.md
-  - name: "1 – Python és PostgreSQL"
+  - name: 1 – Python és PostgreSQL
     href: app-service-web-tutorial-docker-python-postgresql-app.md
-  - name: "2 – Egyéni tartomány leképezése"
+  - name: 2 – Egyéni tartomány leképezése
     href: app-service-web-tutorial-custom-domain.md
-  - name: "3 – SSL-tanúsítvány kötése"
+  - name: 3 – SSL-tanúsítvány kötése
     href: app-service-web-tutorial-custom-ssl.md
-  - name: "4 – Tartalomkézbesítési hálózat hozzáadása"
+  - name: 4 – Tartalomkézbesítési hálózat hozzáadása
     href: app-service-web-tutorial-content-delivery-network.md
 #  - name: 5 - Monitor your app
 #    href: app-service-web-tutorial-monitoring.md
-- name: "Példák"
+- name: Példák
   items:
-  - name: "Azure CLI"
+  - name: Azure CLI
     href: app-service-cli-samples.md
-  - name: "PowerShell"
+  - name: PowerShell
     href: app-service-powershell-samples.md
-- name: "Alapelvek"
+- name: Alapelvek
   items:
-  - name: "Az App Service működése"
+  - name: Az App Service működése
     href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: "App Service-csomagok"
+  - name: App Service-csomagok
     href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: "App Service-környezetek"
+  - name: App Service-környezetek
     href: app-service-app-service-environment-intro.md
-  - name: "Hitelesítés és engedélyezés"
+  - name: Hitelesítés és engedélyezés
     href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: "Hitelesítés helyszíni AD-vel"
+  - name: Hitelesítés helyszíni AD-vel
     href: web-sites-authentication-authorization.md
-- name: "Útmutatók"
+- name: Útmutatók
   items:
-  - name: "Alkalmazások fejlesztése"
+  - name: Alkalmazások fejlesztése
     items:
-    - name: "ASP.NET"
+    - name: ASP.NET
       items:
-      - name: "ASP.NET-alkalmazás és SQL Database"
+      - name: ASP.NET-alkalmazás és SQL Database
         href: web-sites-dotnet-get-started.md
-      - name: "ASP.NET Core-alkalmazás fejlesztése VS Code használatával"
+      - name: ASP.NET Core-alkalmazás fejlesztése VS Code használatával
         href: web-sites-create-web-app-using-vscode.md
-    - name: "PHP"
+    - name: PHP
       items:
-      - name: "Laravel-alkalmazás és MySQL"
+      - name: Laravel-alkalmazás és MySQL
         href: app-service-web-php-get-started.md
-      - name: "PHP-projekt beállítása"
+      - name: PHP-projekt beállítása
         href: web-sites-php-configure.md
-      - name: "Többhelyes WordPress-konfiguráció beállítása"
+      - name: Többhelyes WordPress-konfiguráció beállítása
         href: web-sites-php-convert-wordpress-multisite.md
-    - name: "Node.js"
+    - name: Node.js
       items:
-      - name: "Sails.js-alkalmazás és NOSQL DB"
+      - name: Sails.js-alkalmazás és NOSQL DB
         href: app-service-web-nodejs-sails.md
-      - name: "Az io.js használata"
+      - name: Az io.js használata
         href: web-sites-nodejs-iojs.md
-      - name: "Hibakeresés a Node.js-alkalmazásokban"
+      - name: Hibakeresés a Node.js-alkalmazásokban
         href: web-sites-nodejs-debug.md
-    - name: "Java"
+    - name: Java
       items:
-      - name: "Java-alkalmazás és Eclipse"
+      - name: Java-alkalmazás és Eclipse
         href: app-service-web-eclipse-create-hello-world-web-app.md
-      - name: "Java-alkalmazás és IntelliJ"
+      - name: Java-alkalmazás és IntelliJ
         href: app-service-web-intellij-create-hello-world-web-app.md
-      - name: "Javához készült Azure SDK használata"
+      - name: Javához készült Azure SDK használata
         href: java-create-azure-website-using-java-sdk.md
-      - name: "Meglévő alkalmazás feltöltése"
+      - name: Meglévő alkalmazás feltöltése
         href: web-sites-java-add-app.md
-      - name: "Távoli hibakeresés az Eclipse-ben"
+      - name: Távoli hibakeresés az Eclipse-ben
         href: app-service-web-debug-java-web-app-in-eclipse.md
-      - name: "Távoli hibakeresés az IntelliJ-ben"
+      - name: Távoli hibakeresés az IntelliJ-ben
         href: app-service-web-debug-java-web-app-in-intellij.md
-    - name: "Python"
+    - name: Python
       items:
-      - name: "Django-alkalmazás és MySQL"
+      - name: Django-alkalmazás és MySQL
         href: web-sites-python-ptvs-django-mysql.md
-    - name: "E-mailek küldése a SendGriddel"
+    - name: E-mailek küldése a SendGriddel
       href: sendgrid-dotnet-how-to-send-email.md
-    - name: "A futtatókörnyezet konfigurálása"
+    - name: A futtatókörnyezet konfigurálása
       items:
-      - name: "PHP Windowson"
+      - name: PHP Windowson
         href: web-sites-php-configure.md
-      - name: "Java"
+      - name: Java
         href: web-sites-java-add-app.md
-      - name: "Python"
+      - name: Python
         href: web-sites-python-configure.md
-    - name: "Az alkalmazás konfigurálása"
+    - name: Az alkalmazás konfigurálása
       items:
-      - name: "Alkalmazásbeállítások használata"
+      - name: Alkalmazásbeállítások használata
         href: web-sites-configure.md
-    - name: "Webappok Linuxon"
+    - name: Webappok Linuxon
       items:
-      - name: "Áttekintés"
+      - name: Áttekintés
         href: app-service-linux-intro.md
-      - name: "Webapp létrehozása Linuxon"
+      - name: Webapp létrehozása Linuxon
         href: app-service-linux-how-to-create-web-app.md
-      - name: "Ruby-webapp Linuxon"
+      - name: Ruby-webapp Linuxon
         href: app-service-linux-ruby-get-started.md
-      - name: "Node.js-webapp Linuxon"
+      - name: Node.js-webapp Linuxon
         href: app-service-linux-using-nodejs-pm2.md
-      - name: ".NET Core-webapp Linuxon"
+      - name: .NET Core-webapp Linuxon
         href: app-service-linux-using-dotnetcore.md
-      - name: "Egyéni Docker-webapp Linuxon"
+      - name: Egyéni Docker-webapp Linuxon
         href: app-service-linux-using-custom-docker-image.md
-      - name: "Kapcsolódás SSH-n keresztül"
+      - name: Kapcsolódás SSH-n keresztül
         href: app-service-linux-ssh-support.md
-      - name: "Folyamatos üzembe helyezés"
+      - name: Folyamatos üzembe helyezés
         href: app-service-linux-ci-cd.md
-      - name: "Webappok Linuxon – GYIK"
+      - name: Webappok Linuxon – GYIK
         href: app-service-linux-faq.md
-  - name: "Üzembe helyezés az Azure-ban"
+  - name: Üzembe helyezés az Azure-ban
     href: web-sites-deploy.md
     items:
-    - name: "Üzembe helyezés FTP használatával"
+    - name: Üzembe helyezés FTP használatával
       href: app-service-deploy-content-sync.md
-    - name: "Üzembe helyezés felhőalapú szinkronizálással"
+    - name: Üzembe helyezés felhőalapú szinkronizálással
       href: web-sites-deploy.md
-    - name: "Folyamatos üzembe helyezés"
+    - name: Folyamatos üzembe helyezés
       href: app-service-continuous-deployment.md
-    - name: "Üzembe helyezés átmeneti környezetbe"
+    - name: Üzembe helyezés átmeneti környezetbe
       href: web-sites-staged-publishing.md
-    - name: "Üzembe helyezés a helyi Gitből"
+    - name: Üzembe helyezés a helyi Gitből
       href: app-service-deploy-local-git.md
-    - name: "Üzembe helyezés sablon használatával"
+    - name: Üzembe helyezés sablon használatával
       href: app-service-deploy-complex-application-predictably.md
-    - name: "Rugalmas üzembe helyezés"
+    - name: Rugalmas üzembe helyezés
       href: app-service-agile-software-development.md
-    - name: "Bétatesztelés"
+    - name: Bétatesztelés
       href: app-service-web-test-in-production-controlled-test-flight.md
-    - name: "Telepítési hitelesítő adatok beállítása"
+    - name: Telepítési hitelesítő adatok beállítása
       href: app-service-deployment-credentials.md
-    - name: "Egyéni tartomány leképezése"
+    - name: Egyéni tartomány leképezése
       items:
-      - name: "Tartomány vásárlása"
+      - name: Tartomány vásárlása
         href: custom-dns-web-site-buydomains-web-app.md
-      - name: "Külső tartomány leképezése"
+      - name: Külső tartomány leképezése
         href: web-sites-custom-domain-name.md
-      - name: "Tartományok leképezése a Traffic Managerrel"
+      - name: Tartományok leképezése a Traffic Managerrel
         href: web-sites-traffic-manager-custom-domain-name.md
-      - name: "GoDaddy-tartományok leképezése"
+      - name: GoDaddy-tartományok leképezése
         href: web-sites-godaddy-custom-domain-name.md
-      - name: "Aktív tartomány migrálása"
+      - name: Aktív tartomány migrálása
         href: app-service-custom-domain-name-migrate.md
-    - name: "Áttelepítés IIS-ből"
+    - name: Áttelepítés IIS-ből
       href: web-sites-migration-from-iis-server.md
-    - name: "Tesztelés éles környezetben"
+    - name: Tesztelés éles környezetben
       href: app-service-web-test-in-production-get-start.md
-    - name: "Funkcionalitás hozzáadása webappokhoz"
+    - name: Funkcionalitás hozzáadása webappokhoz
       href: app-service-web-get-started-2.md
-  - name: "Csatlakozás adatbázishoz/erőforrásokhoz"
+  - name: Csatlakozás adatbázishoz/erőforrásokhoz
     items:
-    - name: "Csatlakozás helyszíni adatokhoz"
+    - name: Csatlakozás helyszíni adatokhoz
       href: web-sites-hybrid-connection-get-started.md
-    - name: "Csatlakozás Azure VNethez"
+    - name: Csatlakozás Azure VNethez
       href: web-sites-integrate-with-vnet.md
-    - name: "Csatlakozás Azure VNethez a PowerShell használatával"
+    - name: Csatlakozás Azure VNethez a PowerShell használatával
       href: app-service-vnet-integration-powershell.md
-    - name: "Csatlakozás MongoDB-hez Azure-beli virtuális gépen"
+    - name: Csatlakozás MongoDB-hez Azure-beli virtuális gépen
       href: web-sites-dotnet-store-data-mongodb-vm.md
-  - name: "Az alkalmazás védelme"
+  - name: Az alkalmazás védelme
     items:
-    - name: "Felhasználók hitelesítése"
+    - name: Felhasználók hitelesítése
       items:
-      - name: "Hitelesítés az Azure AD-vel"
+      - name: Hitelesítés az Azure AD-vel
         href: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Hitelesítés a Facebookkal"
+      - name: Hitelesítés a Facebookkal
         href: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Hitelesítés a Google-lel"
+      - name: Hitelesítés a Google-lel
         href: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Hitelesítés Microsoft-fiókkal"
+      - name: Hitelesítés Microsoft-fiókkal
         href: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Hitelesítés a Twitterrel"
+      - name: Hitelesítés a Twitterrel
         href: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-      - name: "Hitelesítés helyszíni AD-vel"
+      - name: Hitelesítés helyszíni AD-vel
         href: web-sites-authentication-authorization.md
-      - name: "Alkalmazás több-bérlős adatbázissal"
+      - name: Alkalmazás több-bérlős adatbázissal
         href: web-sites-dotnet-entity-framework-row-level-security.md
-    - name: "Egyéni SSL hozzárendelése"
+    - name: Egyéni SSL hozzárendelése
       items:
-      - name: "Külső SSL-tanúsítvány konfigurálása"
+      - name: Külső SSL-tanúsítvány konfigurálása
         href: web-sites-configure-ssl-certificate.md
-    - name: "HTTPS kényszerítése"
+    - name: HTTPS kényszerítése
       href: web-sites-configure-ssl-certificate.md#enforce-https-on-your-app
-    - name: "TLS kölcsönös hitelesítés beállítása"
+    - name: TLS kölcsönös hitelesítés beállítása
       href: app-service-web-configure-tls-mutual-auth.md
-  - name: "Az alkalmazás méretezése"
+  - name: Az alkalmazás méretezése
     items:
-    - name: "Vertikális felskálázás"
+    - name: Vertikális felskálázás
       href: web-sites-scale.md
-    - name: "Horizontális felskálázás"
+    - name: Horizontális felskálázás
       href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: "Terheléselosztás a Traffic Managerrel"
+    - name: Terheléselosztás a Traffic Managerrel
       href: web-sites-traffic-manager.md
-    - name: "Nagy léptékű méretezés App Service Environment-környezetekkel"
+    - name: Nagy léptékű méretezés App Service Environment-környezetekkel
       href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: "Globális elérhetőség az Azure CDN használatával"
+    - name: Globális elérhetőség az Azure CDN használatával
       href: cdn-websites-with-cdn.md
-    - name: "Redis Cache-csatlakozás a Memcache-en keresztül"
+    - name: Redis Cache-csatlakozás a Memcache-en keresztül
       href: web-sites-connect-to-redis-using-memcache-protocol.md
-    - name: "Redis Cache létrehozása"
+    - name: Redis Cache létrehozása
       href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-    - name: "Munkamenetállapot-kezelés az Azure Redis Cache használatával"
+    - name: Munkamenetállapot-kezelés az Azure Redis Cache használatával
       href: web-sites-dotnet-session-state-caching.md
-  - name: "Figyelés"
+  - name: Figyelés
     items:
-    - name: "Alkalmazások figyelése"
+    - name: Alkalmazások figyelése
       href: web-sites-monitor.md
-    - name: "Naplók engedélyezése"
+    - name: Naplók engedélyezése
       href: web-sites-enable-diagnostic-log.md
-    - name: "Naplók streamelése"
+    - name: Naplók streamelése
       href: web-sites-streaming-logs-and-console.md
-  - name: "Tartalmak biztonsági mentése"
+  - name: Tartalmak biztonsági mentése
     items:
-    - name: "Az alkalmazás biztonsági mentése"
+    - name: Az alkalmazás biztonsági mentése
       href: web-sites-backup.md
-    - name: "Az alkalmazás biztonsági másolatának visszaállítása"
+    - name: Az alkalmazás biztonsági másolatának visszaállítása
       href: web-sites-restore.md
-    - name: "Biztonsági mentés a REST API-val"
+    - name: Biztonsági mentés a REST API-val
       href: websites-csm-backup.md
-  - name: "Alkalmazás-erőforrások kezelése"
+  - name: Alkalmazás-erőforrások kezelése
     items:
-    - name: "Alkalmazás klónozása a PowerShell használatával"
+    - name: Alkalmazás klónozása a PowerShell használatával
       href: app-service-web-app-cloning.md
-    - name: "Alkalmazás klónozása a portál használatával"
+    - name: Alkalmazás klónozása a portál használatával
       href: app-service-web-app-cloning-portal.md
-    - name: "Erőforrások áthelyezése"
+    - name: Erőforrások áthelyezése
       href: app-service-move-resources.md
-    - name: "Az Azure Resource Manager és a PowerShell együttes használata"
+    - name: Az Azure Resource Manager és a PowerShell együttes használata
       href: app-service-web-app-azure-resource-manager-powershell.md
-    - name: "Alkalmazások kezelése az Azure Automation használatával"
+    - name: Alkalmazások kezelése az Azure Automation használatával
       href: automation-manage-web-app.md
-- name: "Referencia"
+- name: Referencia
   items:
-  - name: "CLI 2.0"
+  - name: CLI 2.0
     href: /cli/azure/appservice
-  - name: "PowerShell"
+  - name: PowerShell
     href: /powershell
-  - name: "REST API"
+  - name: REST API
     href: /rest/api/appservice/
-- name: "Erőforrások"
+- name: Erőforrások
   items:
-  - name: "Hibaelhárítás"
+  - name: Hibaelhárítás
     items:
-    - name: "Hibaelhárítás a Visual Studióval"
+    - name: Hibaelhárítás a Visual Studióval
       href: web-sites-dotnet-troubleshoot-visual-studio.md
-    - name: "Node.js-alapú alkalmazások hibaelhárítása"
+    - name: Node.js-alapú alkalmazások hibaelhárítása
       href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
-    - name: "HTTP 502-es és 503-as hibák elhárítása"
+    - name: HTTP 502-es és 503-as hibák elhárítása
       href: app-service-web-troubleshoot-http-502-http-503.md
-    - name: "Teljesítményproblémák elhárítása"
+    - name: Teljesítményproblémák elhárítása
       href: app-service-web-troubleshoot-performance-degradation.md
-  - name: "Díjszabás"
+  - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/app-service/
-  - name: "Kvótákra vonatkozó információk"
+  - name: Kvótákra vonatkozó információk
     href: ../azure-subscription-service-limits.md#app-service-limits
-  - name: "Szolgáltatási hírek és kibocsátási megjegyzések"
+  - name: Szolgáltatási hírek és kibocsátási megjegyzések
     href: https://azure.microsoft.com/updates/?product=app-service
-  - name: "Ajánlott eljárások"
+  - name: Ajánlott eljárások
     href: app-service-best-practices.md
-  - name: "Példák"
+  - name: Példák
     href: https://azure.microsoft.com/resources/samples/?service=app-service
-  - name: "Videók"
+  - name: Videók
     href: https://azure.microsoft.com/resources/videos/index/?services=app-service
-  - name: "Részletes útmutatók"
+  - name: Részletes útmutatók
     items:
-    - name: "Referenciaarchitektúrák"
+    - name: Referenciaarchitektúrák
       href: ../guidance/guidance-ra-app-service.md
-    - name: "Üzembehelyezési szkriptek"
+    - name: Üzembehelyezési szkriptek
       href: https://azure.microsoft.com/documentation/scripts/
