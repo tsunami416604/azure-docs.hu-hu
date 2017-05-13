@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 0506de98119576aae8f55cc6067f0bee95334c87
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 1156135200e05f8a2585467f37805a72d67279ba
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -72,7 +73,7 @@ Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, am
 >
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-A nyilvános IP-címet társíthatja egy [Windows](../virtual-machines/windows/about.md) vagy [Linux](../virtual-machines/virtual-machines-linux-about.md) virtuális géppel, ha hozzárendeli a **hálózati adapteréhez**. Több hálózati adapterrel rendelkező virtuális gépek esetén csak az *elsődleges* hálózati adapterhez végezhet hozzárendelést. Hozzárendelhet egy dinamikus vagy egy statikus méretű nyilvános IP-címet az egyes virtuális gépekhez.
+A nyilvános IP-címet társíthatja egy [Windows](../virtual-machines/windows/overview.md) vagy [Linux](../virtual-machines/virtual-machines-linux-about.md) virtuális géppel, ha hozzárendeli a **hálózati adapteréhez**. Több hálózati adapterrel rendelkező virtuális gépek esetén csak az *elsődleges* hálózati adapterhez végezhet hozzárendelést. Hozzárendelhet egy dinamikus vagy egy statikus méretű nyilvános IP-címet az egyes virtuális gépekhez.
 
 ### <a name="internet-facing-load-balancers"></a>Internetkapcsolattal rendelkező terheléselosztók
 A nyilvános IP-címet társíthatja egy [Azure Load Balancerrel](../load-balancer/load-balancer-overview.md), ha hozzárendeli a terheléselosztó **előtér**-konfigurációjához. Ez a nyilvános IP-cím terheléselosztásos virtuális IP-címként (VIP) szolgál majd. Hozzárendelhet egy dinamikus vagy egy statikus nyilvános IP-címet a terheléselosztó előtérrendszerhez. Több nyilvános IP-címet is hozzárendelhet egy terheléselosztó előtérrendszerhez, ami olyan [több virtuális IP-címes](../load-balancer/load-balancer-multivip.md) forgatókönyveket tesz lehetővé, mint az SSL-alapú webhelyek több-bérlős környezetei.
@@ -116,7 +117,7 @@ Statikus magánhálózati IP-címeket általában a következő esetekben szokta
 * Más alkalmazások/erőforrások által IP-címen keresztül elért erőforrások esetén.
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-A magánhálózati IP-cím egy [Windows-](../virtual-machines/windows/about.md) vagy [Linux-](../virtual-machines/virtual-machines-linux-about.md)virtuális gép **hálózati adapteréhez** van rendelve. Több hálózati adapterrel rendelkező virtuális gép esetében mindegyik adapterhez külön lesz egy magánhálózati IP-cím rendelve. A lefoglalási módszert hálózati adapter esetében meghatározhatja dinamikusként vagy statikusként is.
+A magánhálózati IP-cím egy [Windows-](../virtual-machines/windows/overview.md) vagy [Linux-](../virtual-machines/virtual-machines-linux-about.md)virtuális gép **hálózati adapteréhez** van rendelve. Több hálózati adapterrel rendelkező virtuális gép esetében mindegyik adapterhez külön lesz egy magánhálózati IP-cím rendelve. A lefoglalási módszert hálózati adapter esetében meghatározhatja dinamikusként vagy statikusként is.
 
 #### <a name="internal-dns-hostname-resolution-for-vms"></a>Belső DNS-állomásnév feloldása (virtuális gép esetén)
 Minden Azure VM alapértelmezés szerint az [Azure által felügyelt DNS-kiszolgálókkal](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) van konfigurálva, ha nem konfigurál kifejezetten egyéni DNS-kiszolgálókat. Ezek a DNS-kiszolgálók belső névfeloldást biztosítanak az egyazon VNeten található virtuális gépek számára.
