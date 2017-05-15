@@ -1,6 +1,6 @@
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az összes, a rövid útmutató által létrehozott erőforrás eltávolításához futtassa a következő parancsot:
+Az erőforrások eltávolításához futtassa az alábbi parancsot:
 
 ```azurecli
 az group delete --name myResourceGroup

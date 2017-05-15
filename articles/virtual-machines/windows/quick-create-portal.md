@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/13/2017
+ms.date: 05/03/2017
 ms.author: nepeters
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: df6f1b86b706d58a5c07a4f3de43a1872da61511
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 8d64ede4fd5f442cbfc88a61e2ad8388e0df2a7b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 ---
 
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>Windows virtuális gép létrehozása az Azure Portallal
 
-Az Azure virtuális gépek létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek, valamint az összes kapcsolódó erőforrás létrehozásához és konfigurálásához. Ez a rövid útmutató részletesen bemutatja egy virtuális gép Azure Portalon történő létrehozását. Az üzembe helyezés végeztével csatlakozunk a kiszolgálóhoz, és telepítjük az IIS-t.
+Az Azure virtuális gépek létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek, valamint az összes kapcsolódó erőforrás létrehozásához és konfigurálásához. Ez a rövid útmutató részletesen bemutatja egy virtuális gép létrehozását és egy webkiszolgáló telepítését a virtuális gépen.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -35,40 +35,30 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-2. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
 
-3. Válassza a **Számítás** elemet az **Új** panelen, majd válassza a *Windows Server 2016 Datacenter* lehetőséget a **Számítás** panelről, és kattintson a **Létrehozás** gombra.
+2. Válassza a **Számítás** elemet, majd a **Windows Server 2016 Datacenter** lehetőséget, és győződjön meg arról, hogy a kiválasztott üzemi modell az **Erőforrás-kezelő**. Kattintson a **Létrehozás** gombra. 
 
-4. Töltse ki a virtuális gép **Alapvető beállítások** űrlapját. Az itt megadott felhasználónévvel és jelszóval bejelentkezhet a virtuális gépbe. Hozzon létre egy új **Erőforráscsoportot**. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer létrehozza és együttesen kezeli az Azure-erőforrásokat. Amikor végzett, kattintson az **OK** gombra.
+3. Adja meg a virtuális gép adatait. Az itt megadott felhasználónévvel és jelszóval bejelentkezhet a virtuális gépbe. Amikor végzett, kattintson az **OK** gombra.
 
     ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)  
 
-5. Válasszon méretet a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. 
+4. Válasszon méretet a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. 
 
     ![Képernyőkép a virtuális gépek méreteivel](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-6. A beállítások panelen válassza a **Felügyelt lemezek használata** területen az *Igen* lehetőséget, tartsa meg az alapértelmezéseket a többi beállításnál, majd kattintson az **OK** elemre.
+5. A beállítások panelen válassza a **Felügyelt lemezek használata** területen az **Igen** lehetőséget, tartsa meg az alapértelmezéseket a többi beállításnál, majd kattintson az **OK** elemre.
 
-7. Az összegzés lapon kattintson az **OK** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
+6. Az összegzés lapon kattintson az **OK** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
 
-8. Az üzembe helyezési állapot figyeléséhez kattintson a virtuális gépre. A virtuális gép megtalálható az Azure Portal irányítópultján, illetve a bal oldali menüben a **Virtuális gépek** elemre kattintva. A virtuális gép létrehozása után az állapot *Üzembe helyezés* értékről *Fut* értékre módosul.
-
-## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
-
-Az IIS-adatforgalom engedélyezéséhez meg kell nyitnia a 80-as portot a webes forgalom számára. Ez a lépés végigvezeti a hálózati biztonsági csoportokra (NSG) vonatkozó szabály létrehozásának folyamatán, amellyel engedélyezheti a bejövő kapcsolatokat a 80-as porton.
-
-1. A virtuális gép paneljén, az **Alapvető erőforrások** szakaszban kattintson az **Erőforráscsoport** nevére.
-2. Az erőforráscsoport paneljén kattintson a **Hálózati biztonsági csoport** elemre az erőforrások listájában. Az NSG neve a virtuális gép *-nsg* utótaggal bővített neve legyen.
-3. Kattintson a **Bejövő biztonsági szabály** fejlécre a bejövő szabályok listájának megnyitásához. A listában látnia kell egy, az RDP-re vonatkozó szabályt.
-4. Kattintson a **+ Hozzáadás** gombra a **Bejövő biztonsági szabály felvétele** panel megnyitásához.
-5. A **Név** mezőbe írja be az *IIS* karakterláncot. Ügyeljen arra, hogy a **Porttartomány** értéke *80*, a **Művelet** értéke pedig *Engedélyezés* legyen. Kattintson az **OK** gombra.
+7. A virtuális gép rögzítve lesz az Azure Portal irányítópultján. Az üzembe helyezés befejeztével a virtuális gép összefoglalás panelje automatikusan megnyílik.
 
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
-Az üzembe helyezés befejeztével hozzon létre egy távoli asztali kapcsolatot a virtuális géppel.
+Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel.
 
-1. Kattintson a **Csatlakozás** gombra a virtuális gép paneljén. A rendszer létrehoz és letölt egy Remote Desktop Protocol-fájlt (.rdp-fájlt).
+1. Kattintson a **Csatlakozás** gombra a virtuális gép tulajdonságai között. A rendszer létrehoz és letölt egy Remote Desktop Protocol-fájlt (.rdp-fájlt).
 
     ![Portál – 9](./media/quick-create-portal/quick-create-portal/portal-quick-start-9.png) 
 
@@ -81,15 +71,29 @@ Az üzembe helyezés befejeztével hozzon létre egy távoli asztali kapcsolatot
 
 ## <a name="install-iis-using-powershell"></a>Az IIS telepítése a PowerShell-lel
 
-A virtuális gépen nyisson meg egy PowerShell-parancssort, majd futtassa a következő parancsot az IIS telepítéséhez és a webforgalom engedélyezéséhez a helyi tűzfalszabály által:
+A virtuális gépen indítson el egy PowerShell-munkamenetet, majd futtassa a következő parancsot az IIS telepítéséhez.
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
+Ha ezzel elkészült, lépjen ki az RDP-munkamenetből, és térjen vissza a virtuális gép tulajdonságaihoz az Azure Portalon.
+
+## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
+
+A hálózati biztonsági csoport (NSG) feladata a bejövő és kimenő forgalom védelme. Ha létrehoz egy virtuális gépet az Azure Portalon, a 3389-es porton létrejön egy bejövő szabály az RDP-kapcsolatok számára. Mivel ezen a virtuális gépen egy webkiszolgáló üzemel, a 80-as porthoz létre kell hoznia egy NSG-szabályt.
+
+1. A virtuális gépen kattintson az **Erőforráscsoport** nevére.
+2. Válassza ki a **hálózati biztonsági csoportot**. A hálózati biztonsági csoport a **Típus** oszlop segítségével azonosítható. 
+3. A bal oldali menü Beállítások területén kattintson a **Bejövő biztonsági szabályok** elemre.
+4. Kattintson a **Hozzáadás** gombra.
+5. A **Név** mezőbe írja be a **http** karakterláncot. Ügyeljen rá, hogy a **Porttartomány** értéke 80, a **Művelet** értéke pedig **Engedélyezés** legyen. 
+6. Kattintson az **OK** gombra.
+
+
 ## <a name="view-the-iis-welcome-page"></a>Az IIS kezdőlapjának megtekintése
 
-Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gépen az internet irányából, egy tetszőleges böngésző használatával megtekintheti az alapértelmezett IIS-kezdőlapot. Kérje le a *nyilvános IP-címet* a virtuális gép paneljéről, majd annak használatával nyissa meg az alapértelmezett weblapot. 
+Most, hogy az IIS telepítve van, és a 80-as port meg van nyitva a virtuális gép felé, a webkiszolgáló elérhető az internetről. Nyisson meg egy webböngészőt, és adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím az Azure Portal VM panelén található.
 
 ![Alapértelmezett IIS-webhely](./media/quick-create-powershell/default-iis-website.png) 
 
@@ -99,7 +103,8 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gé
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Szerepkörök telepítését és a tűzfal konfigurálását ismertető oktatóanyag](hero-role.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, egy hálózati biztonsági csoport szabályát, valamint telepített egy webkiszolgálót. Ha bővebb információra van szüksége az Azure-alapú virtuális gépekkel kapcsolatban, lépjen tovább a Windows rendszerű virtuális gépekről szóló oktatóanyagra.
 
-[A virtuális gépek parancssori felületen való üzembe helyezését ismertető minták megismerése](cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> [!div class="nextstepaction"]
+> [Windowsos virtuális gépek az Azure-ban – oktatóanyagok](./tutorial-manage-vm.md)
 

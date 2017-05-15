@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 07c6836c9279ed2f28730a49d131c064891de1b1
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 5c716069bdff2a23bf81b2d2d0793a8616cf9c83
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -36,7 +37,7 @@ Az eszköz a következő részleteket biztosítja:
 
 **Kompatibilitási felmérés**
 
-* A virtuális gép jogosultságfelmérése a lemezszám, a lemezméretek, az IOPS és a forgalom alapján
+* A virtuális gép jogosultságfelmérése a lemezszám, a lemezméretek, az IOPS, a forgalom és a rendszerindítási típus (EFI/BIOS) alapján
 * A változásreplikáláshoz szükséges becsült hálózati sávszélesség
 
 **A hálózatisávszélesség-igény és RPO-elemzés**
@@ -204,6 +205,10 @@ A profilkészítés befejezése után futtathatja az eszközt jelentéskészít�
 | -StartDate | (Nem kötelező) Kezdő dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. A *StartDate* és az *EndDate* paraméter megadása kötelező. Ha a StartDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
 | -EndDate | (Nem kötelező) Záró dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. Az *EndDate* és a *StartDate* paraméter megadása kötelező. Ha az EndDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
 | -GrowthFactor | (Nem kötelező) A növekedési tényező százalékértékként megadva. Az alapértelmezett érték 30%. |
+| -UseManagedDisks | (Nem kötelező) UseManagedDisks – Igen/Nem. Az alapértelmezett érték az Igen. A rendszer az alapján számítja ki az egyetlen tárfiókba helyezhető virtuális gépek számát, hogy felügyelt lemez van-e kijelölve feladatátvételre/feladatátvételi tesztre. |
+
+Egyetlen tárfiók esetén a rendszer az elhelyezés kiszámításakor figyelembe veszi, hogy a virtuális gépek feladatátvétele/feladatátvételi tesztje nem felügyelt lemez helyett felügyelt lemezen történik. |
+
 
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>1. példa: Jelentés készítése az alapértelmezett értékekkel, ha a profilkészítés során létrehozott adatok a helyi meghajtón találhatóak
 ```
@@ -480,7 +485,7 @@ Tehát, ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy 
 
 **NICs** (Hálózati adapterek): A virtuális gép hálózati adaptereinek száma.
 
-**Rendszerindítás típusa**: a virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet. Az Azure Site Recovery jelenleg csak a BIOS rendszerindítási típust támogatja. Minden EFI rendszerindítási típusú virtuális gép szerepel a Nem kompatibilis virtuális gépek listájában. 
+**Rendszerindítás típusa**: a virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet. Az Azure Site Recovery jelenleg csak a BIOS rendszerindítási típust támogatja. Minden EFI rendszerindítási típusú virtuális gép szerepel a Nem kompatibilis virtuális gépek listájában.
 
 **Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet.
 
@@ -517,7 +522,7 @@ Tehát, ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy 
 
 **NICs** (Hálózati adapterek): A virtuális gép hálózati adaptereinek száma.
 
-**Rendszerindítás típusa**: a virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet. Az Azure Site Recovery jelenleg csak a BIOS rendszerindítási típust támogatja. Minden EFI rendszerindítási típusú virtuális gép szerepel a Nem kompatibilis virtuális gépek listájában. 
+**Rendszerindítás típusa**: a virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet. Az Azure Site Recovery jelenleg csak a BIOS rendszerindítási típust támogatja. Minden EFI rendszerindítási típusú virtuális gép szerepel a Nem kompatibilis virtuális gépek listájában.
 
 **Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet.
 
@@ -558,6 +563,15 @@ A Deployment Planner frissítéséhez tegye a következőt:
 
 
 ## <a name="version-history"></a>Verzióelőzmények
+
+### <a name="13"></a>1.3
+Frissítve: 2017. május 9.
+
+A következő új szolgáltatást tartalmazza:
+
+* Most már elérhető a felügyelt lemezek támogatása a jelentéskészítés során. A rendszer az alapján számítja ki az egyetlen tárfiókba helyezhető virtuális gépek számát, hogy felügyelt lemez van-e kijelölve feladatátvételre/feladatátvételi tesztre.        
+
+
 ### <a name="12"></a>1.2
 Frissítve: 2017. április 7.
 

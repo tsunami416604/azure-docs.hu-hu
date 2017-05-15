@@ -12,12 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/07/2017
+ms.date: 05/05/2017
 ms.author: ryanwi
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 296f02dd7deb22fd4ca15478b7f90a7688b4304a
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: dea338477ca82eead9e272ed9a1709cb2643f743
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -116,7 +117,18 @@ Most, hogy megírta az alkalmazást, próbálja meg futtatni azt.
    
     ![A diagnosztikai eseménynapló a feladatátvétel után][diagnostic-events-viewer-detail-post-failover]
 
-## <a name="switch-cluster-mode"></a>Fürt üzemmód átkapcsolása
+## <a name="cleaning-up-the-local-cluster-optional"></a>A helyi fürt törlése (nem kötelező)
+A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. A hibakereső leállításával eltávolítja az adott alkalmazáspéldányt, és törli az alkalmazástípus regisztrációját. A fürt futtatása azonban a háttérben tovább folytatódik. A fürt kezelésére számos lehetősége van:
+
+1. A fürt leállításához, ugyanakkor az alkalmazás adatainak és nyomkövetéseinek megtartásához a rendszertálca alkalmazásban kattintson a **Stop Local Cluster** (Helyi fürt leállítása) parancsra.
+2. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A fürtöt csak abban az esetben törölje, ha egy ideig nem kívánja használni a helyi fürtöt, vagy ha erőforrásokat kíván felszabadítani.
+
+## <a name="deploy-your-application-to-an-azure-cluster"></a>Az alkalmazás telepítése egy Azure-fürtre
+Most, hogy helyileg üzembe helyezte az alkalmazást, ugyanazt az alkalmazást üzembe helyezheti az Azure-ban is. Az [első saját Service Fabric-fürt az Azure-on történő létrehozását](service-fabric-get-started-azure-cluster.md) ismertető cikk végigvezeti a lépéseken az Azure PowerShell vagy a portál használatával.
+
+Miután beállított egy Azure-fürtöt, az [Azure-fürtben történő közzététel](service-fabric-publish-app-remote-cluster.md) utasításait követve közzéteheti az alkalmazást a Visual Studióból az Azure-ban.  
+
+## <a name="switch-cluster-mode-of-your-local-development-cluster"></a>A helyi fejlesztési fürt üzemmódjának váltása
 Alapértelmezés szerint a helyi fejlesztési fürt ötcsomópontos fürtként való futásra van konfigurálva, ami a több csomóponton telepített szolgáltatások hibakeresésekor hasznos. Azonban az alkalmazások az ötcsomópontos fejlesztési fürtre való telepítése akár hosszabb ideig is tarthat. Ha azt szeretné, hogy a kódmódosítások gyorsan települjenek, és ne legyen szükség az alkalmazás öt csomóponton való futtatására, átállíthatja a fejlesztési fürtöt egycsomópontos üzemmódra. Ha a kódot egy csomópontos fürtön szeretné futtatni, kattintson a jobb gombbal a tálcán található Local Cluster Manager elemre, és válassza ki a **Fürt üzemmód átkapcsolása -> 1 csomópontos** lehetőséget.  
 
 ![Fürt üzemmód átkapcsolása][switch-cluster-mode]
@@ -136,11 +148,7 @@ Azt is megteheti, hogy módosítja a fürt üzemmódját a PowerShell-lel:
    
     ![A fürtbeállítás kimenete][cluster-setup-success-1-node]
 
-## <a name="cleaning-up"></a>Takarítás
-A téma lezárása előtt fontos megjegyezni, hogy a helyi fürt valós. A hibakereső leállításával eltávolítja az adott alkalmazáspéldányt, és törli az alkalmazástípus regisztrációját. A fürt futtatása azonban a háttérben tovább folytatódik. A fürt kezelésére számos lehetősége van:
 
-1. A fürt leállításához, ugyanakkor az alkalmazás adatainak és nyomkövetéseinek megtartásához a rendszertálca alkalmazásban kattintson a **Stop Local Cluster** (Helyi fürt leállítása) parancsra.
-2. A fürt teljes törléséhez a rendszertálca alkalmazásban kattintson a **Remove Local Cluster** (Helyi fürt eltávolítása) parancsra. Ez a beállítás egy másik lassú üzembe helyezést fog eredményezni, amikor legközelebb a Visual Studióban lenyomja az F5 billentyűt. A fürtöt csak abban az esetben törölje, ha egy ideig nem kívánja használni a helyi fürtöt, vagy ha erőforrásokat kíván felszabadítani.
 
 ## <a name="next-steps"></a>Következő lépések
 * Megismerkedhet egy [azure-beli fürt](service-fabric-cluster-creation-via-portal.md) vagy egy [önálló windowsbeli fürt](service-fabric-cluster-creation-for-windows-server.md) létrehozásával.

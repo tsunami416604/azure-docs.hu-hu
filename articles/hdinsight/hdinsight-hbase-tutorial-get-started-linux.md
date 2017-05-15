@@ -1,7 +1,7 @@
 ---
 title: "A HBase használatának első lépései az Azure HDInsightban | Microsoft Docs"
 description: "Ez a HBase oktatóanyag segítséget nyújt az Apache HBase Hadoop-eszközzel végzett használatának első lépéseiben a HDInsight eszközben. Táblákat hozhat létre a HBase rendszehéjból, és lekérdezheti azokat a Hive eszközzel."
-keywords: "apache hbase,hbase,hbase rendszerhéj,hbase-oktatóanyag"
+keywords: "apache hbase,hbase,hbase felület,hbase-oktatóanyag,beeline"
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/22/2017
+ms.date: 05/08/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 4e9ee21a7eac240cccdfac650992063244364185
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: a935fe574bffaad109abd13151c4da1027210014
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -31,7 +31,7 @@ Megtudhatja, hogyan hozhat létre HBase-fürtöket a HDInsight eszközben, illet
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ezen HBase oktatóanyag elkezdéséhez a következőkkel kell rendelkeznie:
+Ezen HBase-oktatóanyag elkezdéséhez a következőkkel kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Biztonságos rendszerhéj (SSH)](hdinsight-hadoop-linux-use-ssh-unix.md). 
@@ -43,12 +43,12 @@ Az alábbi eljárás egy Azure Resource Manager-sablont használ egy 3.4 verzió
 1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon egy nyilvános blobtárolóban található. 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. A **Custom deployment** (Egyéni üzembe helyezés) panelen adja meg a következőket:
+2. Az **Egyéni üzembe helyezés** panelen adja meg a következő értékeket:
    
-   * **Subscription** (Előfizetés): Válassza ki a fürt létrehozásához használni kívánt Azure-előfizetését.
-   * **Resource group** (Erőforráscsoport): Hozzon létre egy új Azure Resource Management-csoportot vagy használjon egy meglévőt.
+   * **Előfizetés**: Válassza ki a fürt létrehozásához használt Azure-előfizetést.
+   * **Erőforráscsoport**: Hozzon létre egy Azure Resource Management-csoportot, vagy használjon egy meglévőt.
    * **Location** (Hely): Adja meg az erőforráscsoport helyét. 
-   * **ClusterName** (Füret neve): Adjon nevet a létrehozandó HBase-fürtnek.
+   * **Fürt neve**: Adjon nevet a HBase-fürtnek.
    * **A fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az **admin**.
    * **SSH-felhasználónév és jelszó**: Az alapértelmezett felhasználónév az **sshuser**.  Ezt át lehet nevezni.
      
@@ -63,7 +63,7 @@ Az alábbi eljárás egy Azure Resource Manager-sablont használ egy 3.4 verzió
 > 
 
 ## <a name="create-tables-and-insert-data"></a>Táblák létrehozása és adatok beszúrása
-Az SSH-val HBase-fürtökhöz csatlakozhat, majd a HBase-rendszerhéjjal Hbase-táblákat hozhat létre, adatokat szúrhat be, és adatokat kérdezhet le. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+Az SSH-val HBase-fürtökhöz csatlakozhat, majd a HBase-rendszerhéjjal HBase-táblákat hozhat létre, adatokat szúrhat be, és adatokat kérdezhet le. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 A legtöbbek számára az adatok táblázatos formátumban jelennek meg:
 
@@ -73,7 +73,6 @@ A HBase eszközben, amely a BigTable implementációja, ugyanezen az adatok a k�
 
 ![HDInsight HBase BigTable-adatok][img-hbase-sample-data-bigtable]
 
-Több értelme lesz a következő eljárás befejezése után.  
 
 **A Hbase-rendszerhéj használata**
 
@@ -97,7 +96,7 @@ Több értelme lesz a következő eljárás befejezése után.
    
         get 'Contacts', '1000'
    
-    Ugyanazokat az eredményeket látja, mint a vizsgálat parancskor, mert csak egy sor van.
+    Ugyanazokat az eredményeket látja, mint a vizsgálat parancs használatakor, mert csak egy sor van.
    
     A Hbase-táblasémáról további információért lásd: [Introduction to HBase Schema Design][hbase-schema] (Bevezetés a Hbase-sématervezésbe). További Hbase-parancsokért lásd: [Apache HBase reference guide][hbase-quick-start] (Apache HBase referencia-útmutató).
 5. Kilépés a rendszerhéjból
@@ -121,7 +120,7 @@ A rendszer feltöltött egy minta adatfájlt egy nyilvános blob-tárolóba, *wa
     4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
     16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-Létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjába, ha szeretné. Az utasításokért lásd: [Upload data for Hadoop jobs in HDInsight][hdinsight-upload-data] (Adatok feltöltése Hadoop-feladatokhoz a HDInsightban).
+Igény szerint létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjába. Az utasításokért lásd: [Upload data for Hadoop jobs in HDInsight][hdinsight-upload-data] (Adatok feltöltése Hadoop-feladatokhoz a HDInsightban).
 
 > [!NOTE]
 > Ez az eljárás az utolsó eljárás során létrehozott Contacts HBase táblát használja.
@@ -137,19 +136,14 @@ Létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjáb
 3. Megnyithatja a HBase rendszerhéjat, és a vizsgálat paranccsal listázhatja a tábla tartalmát.
 
 ## <a name="use-hive-to-query-hbase"></a>A Hive használata a HBase lekérdezéséhez
-A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ez a szakasz olyan Hive táblát hoz létre, amely a HBase táblára képez le, és azzal kérdezi le a HBase táblában lévő adatokat.
 
-> [!NOTE]
-> Ha a Hive és a HBase eltérő fürtökön vannak egyazon virtuális hálózaton, teljesítenie kell a zookeeperkvórumot a Hive-rendszerhéj meghívása során:
->
->       hive --hiveconf hbase.zookeeper.quorum=zk0-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk1-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net,zk2-xxxx.xxxxxxxxxxxxxxxxxxxxxxx.cx.internal.cloudapp.net --hiveconf zookeeper.znode.parent=/hbase-unsecure  
->
->
+A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ebben a szakaszban egy, a HBase-táblára leképezést biztosító Hive-táblát hoz létre, amellyel lekérdezheti a HBase-táblában lévő adatokat.
 
 1. Nyissa meg a **PuTTY** eszközt, és csatlakozzon a fürthöz.  Lásd az előző eljárás utasításait.
-2. Nyissa meg a Hive rendszerhéjat.
-   
-       hive
+2. Az SSH-munkamenetből a következő paranccsal indíthatja el a Beeline-t:
+
+        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+    A Beeline-nal kapcsolatos további információkért lásd [a Hive és a Hadoop együttes, a Beeline-nal történő használatát a HDInsightban](hdinsight-hadoop-use-hive-beeline.md) ismertető cikket.
        
 3. Futtassa a következő HiveQL-szkriptet, hogy egy, a HBase-táblára leképező Hive-táblát hozzon létre. Ellenőrizze, hogy létrehozta-e az oktatóanyag korábbi részében hivatkozott mintatáblát az utasítás futtatása előtt a HBase rendszerhéjjal.
    
@@ -159,31 +153,12 @@ A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ez a szaka
         TBLPROPERTIES ('hbase.table.name' = 'Contacts');
 4. Futtassa a következő HiveQL-parancsfájlt a HBase-tábla adatainak lekérdezéséhez:
    
-         SELECT count(*) FROM hbasecontacts;
+         SELECT * FROM hbasecontacts;
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>HBase REST API-k használata Curl használatával
-> [!NOTE]
-> Amikor a Curl vagy más REST kommunikációt használ a WebHCattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája felhasználónevének és jelszavának megadásával. A fürtnevet a kérések kiszolgálóhoz küldéséhez használt egységes erőforrás-azonosító (URI) részeként is használnia kell.
-> 
-> Ezen szakasz parancsaiban cserélje le a **USERNAME** elemet a fürthöz hitelesíteni kívánt felhasználóval, és a **PASSWORD** elemet pedig a felhasználói fiók jelszavával. Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
-> 
-> A REST API védelméről [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje a kiszolgálóhoz.
-> 
-> 
 
-1. Egy parancssorból a következő paranccsal ellenőrizze, hogy tud-e kapcsolódni a HDInsight-fürthöz:
-   
-        curl -u <UserName>:<Password> \
-        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
-   
-    A következőhöz hasonló választ kell kapnia:
-   
-        {"status":"ok","version":"v1"}
-   
-    Ezen parancs paraméterei a következők:
-   
-   * **-u** - A kérés hitelesítéséhez használt felhasználónév és jelszó.
-   * **-G** - Jelzi, hogy ez egy GET kérés.
+A REST API védelméről [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje a kiszolgálóhoz.
+
 2. Használja az alábbi parancsot a meglévő HBase-táblák listázásához:
    
         curl -u <UserName>:<Password> \
@@ -223,10 +198,20 @@ A HBase táblákban lévő adatokat a Hive eszközzel kérdezheti le. Ez a szaka
 
 További információ a HBase REST-ről: [Apache HBase Reference Guide](https://hbase.apache.org/book.html#_rest) (Apache HBase referencia-útmutató).
 
->
 > [!NOTE]
 > A HBase nem támogatja a Thriftet a HDInsightban.
 >
+> Amikor a Curl vagy más REST kommunikációt használ a WebHCattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája felhasználónevének és jelszavának megadásával. A fürtnevet a kérések a kiszolgálóhoz küldéséhez használt egységes erőforrás-azonosító (URI) részeként is használnia kell.
+> 
+>   
+>        curl -u <UserName>:<Password> \
+>        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
+>   
+>    A következőhöz hasonló választ kell kapnia:
+>   
+>        {"status":"ok","version":"v1"}
+   
+
 
 ## <a name="check-cluster-status"></a>A fürt állapotának ellenőrzése
 A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasználói felülettel kapható. A webes felhasználói felülettel a régiók statisztikáit vagy információit kérheti le.

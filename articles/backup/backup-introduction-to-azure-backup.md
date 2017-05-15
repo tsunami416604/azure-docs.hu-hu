@@ -13,13 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/13/2017
+ms.date: 5/3/2017
 ms.author: markgal;trinadhk; anuragm
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 2e981f0f45bc5b338937839b74114e12db960927
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 245a89f2576dc1bfed2f9078f1d8761f91caf561
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -112,10 +113,10 @@ A Premium Storage virtuális gépek Premium Storage tárolóba vagy normál tár
 Az Azure Backup védelmet biztosít a felügyelt lemezes virtuális gépek számára. A felügyelt lemezek használatával mentesül a virtuális gépek tárfiókjainak kezelése alól, és lényegesen leegyszerűsödik a virtuális gépek üzembe helyezése.
 
 ### <a name="back-up-managed-disk-vms"></a>Felügyelt lemezes virtuális gépek biztonsági mentése
-A felügyelt lemezeken található virtuális gépek biztonsági mentése megegyezik a Resource Manager-alapú virtuális gépek biztonsági mentésével. Az Azure Portalon közvetlenül a virtuálisgép-nézetből vagy a Recovery Services-tároló nézetéből konfigurálhatja a biztonsági mentési feladatot. A felügyelt lemezeken található virtuális gépek biztonsági mentését a felügyelt lemezeken kiépített visszaállításipont-gyűjteményekkel végezheti el. Az Azure Backup jelenleg nem támogatja az Azure Disk Encryption (ADE) használatával titkosított, felügyelt lemezes virtuális gépek biztonsági mentését.
+A felügyelt lemezeken található virtuális gépek biztonsági mentése megegyezik a Resource Manager-alapú virtuális gépek biztonsági mentésével. Az Azure Portalon közvetlenül a virtuálisgép-nézetből vagy a Recovery Services-tároló nézetéből konfigurálhatja a biztonsági mentési feladatot. A felügyelt lemezeken található virtuális gépek biztonsági mentését a felügyelt lemezeken kiépített visszaállításipont-gyűjteményekkel végezheti el. Az Azure Backup támogatja az Azure Disk Encryption (ADE) használatával titkosított, felügyelt lemezes virtuális gépek biztonsági mentését is.
 
 ### <a name="restore-managed-disk-vms"></a>Felügyelt lemezes virtuális gépek visszaállítása
-Az Azure Backup lehetővé teszi teljes felügyelt lemezes virtuális gépek visszaállítását, illetve a felügyelt lemezek visszaállítását egy Resource Manager-tárfiókba. A visszaállítási folyamat során az Azure kezeli a felügyelt lemezeket. Az ügyfél (tehát Ön) kezeli a visszaállítási folyamat részeként létrehozott tárfiókot.
+Az Azure Backup lehetővé teszi teljes felügyelt lemezes virtuális gépek visszaállítását, illetve a felügyelt lemezek visszaállítását egy Resource Manager-tárfiókba. A visszaállítási folyamat során az Azure kezeli a felügyelt lemezeket. Az ügyfél (tehát Ön) kezeli a visszaállítási folyamat részeként létrehozott tárfiókot. A felügyelt, titkosított virtuális gépek visszaállításához a virtuális gép kulcsainak és titkos kódjainak már létezniük kell a kulcstartóban a visszaállítás előtt.
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>Milyen funkciókat nyújtanak az egyes Backup-összetevők?
 A következő szakaszok táblázatai az egyes Azure Backup-összetevők különböző funkcióinak elérhetőségét vagy támogatottságát foglalják össze. A további támogatásra vagy részletekre vonatkozó információkat a táblázatok alatt találja.

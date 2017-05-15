@@ -1,6 +1,7 @@
 ---
-title: "Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portál előzetes kiadásában | Microsoft Docs"
-description: "A bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portál előzetes kiadásában – bevezetés"
+
+title: "Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon | Microsoft Docs"
+description: "A bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon – bevezetés"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,18 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: f6c0bb59d9eb16da6c7daea2e722e32ac7dbc2d7
-ms.lasthandoff: 04/13/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 19cd81c1e6020523d1bea3ec76c957ce22f931ca
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal---preview"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portál előzetes kiadásában
+# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
-Az Azure Active Directory [előzetes kiadásában](active-directory-preview-explainer.md) elérhető jelentéskészítéssel minden szükséges információhoz hozzájuthat a környezetével kapcsolatban.
+Az [Azure Portalon](https://portal.azure.com) az Azure Active Directory (Azure AD) jelentéskészítési funkciójával minden szükséges információhoz hozzájuthat a környezetével kapcsolatban.
 
 Az Azure Active Directory jelentéskészítési architektúrája a következő elemekből áll:
 
@@ -44,7 +46,7 @@ A felhasználók bejelentkezési jelentésében szereplő információkból az a
 * Hány felhasználó jelentkezett be egy adott héten?
 * Milyen állapotúak ezek a bejelentkezések?
 
-A **Bejelentkezések** menüponton át vezet az út a bejelentkezési tevékenység adataihoz, a menüpont az **Azure Active** Tevékenység szakaszában található. Directoryban.
+A **Bejelentkezések** menüponton át vezet az út a bejelentkezési tevékenység adataihoz, a menüpont az **Azure Active** Tevékenység szakaszában található.
 
 
 ![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/61.png "Sign-in activity")

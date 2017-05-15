@@ -1,6 +1,7 @@
 ---
-title: "A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portál előzetes kiadásában | Microsoft Docs"
-description: "Ismerje meg az Azure Active Directory portál előzetes kiadásának a veszélyeztetett felhasználókról szóló biztonsági jelentését"
+
+title: "A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon | Microsoft Docs"
+description: "Ismerje meg az Azure Active Directory portál veszélyeztetett felhasználókról szóló biztonsági jelentését"
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -10,18 +11,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/21/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 349109e0c12a1394f96529a94ab884eeb451d242
-ms.openlocfilehash: 48c504a9ed5bc4ef9f0bff889df031962c5bf6e8
-ms.lasthandoff: 02/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 01ecb98c02b2a01007c7f76805d4db4b7aeee1f0
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal---preview"></a>A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portál előzetes kiadásában
+# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon
 
-Az Azure Active Directory [előzetes kiadásának](active-directory-preview-explainer.md) biztonsági jelentéseivel megtudhatja, hogy a környezetben mekkora valószínűséggel sérült egyes felhasználói fiókok biztonsága. 
+Az Azure Active Directory (Azure AD) biztonsági jelentéseivel megtudhatja, hogy a környezetben mekkora valószínűséggel sérült egyes felhasználói fiókok biztonsága. 
 
 Az Azure Active Directory észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenységeket. A rendszer minden egyes észlelt tevékenység esetében létrehoz egy *kockázati esemény* nevű rekordot. További részletek: [Az Azure Active Directory kockázati eseményei](active-directory-identity-protection-risk-events.md). 
 

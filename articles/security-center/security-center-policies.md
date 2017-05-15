@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/03/2017
+ms.date: 05/08/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: bd2291129a1a61f69e83cb76748d00b9ede6eb6f
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: ec658f4c74d54a11684460c0e634303793480152
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -66,7 +67,7 @@ Az egyes előfizetésekhez vagy erőforráscsoportokhoz külön-külön biztons�
    >
 9. A **Security Policy** (Biztonsági szabályzat) panelen kattintson az **On** (Bekapcsolás) lehetőségre azoknál a biztonsági javaslatoknál, amelyeket az előfizetésnél használni kíván. Az alábbi képernyőképen látható beállításokhoz hasonló beállítások megtekintéséhez kattintson a **Prevention policy** (Megelőzési szabályzat) elemre:
 
-    ![A biztonsági szabályzatok kiválasztása](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
+    ![A biztonsági szabályzatok kiválasztása](./media/security-center-policies/security-center-policies-fig4-newUI.png)
 
 Az egyes beállítások megértéséhez használja az alábbi táblázatot:
 
@@ -82,6 +83,7 @@ Az egyes beállítások megértéséhez használja az alábbi táblázatot:
 | SQL-naplózás és fenyegetésészlelés |Javasolja, hogy a megfelelés, a jobb fenyegetésészlelés és a támadások hatékonyabb kivizsgálásához engedélyezze az Azure Database-hozzáférések naplózását. |
 | SQL transparent data encryption (SQL transzparens adattitkosítás) |Javasolja, hogy engedélyezze az inaktív adatok titkosítását az Azure SQL Database számára, valamint az azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra vonatkozóan. Így hiába jutnak be illetéktelen személyek a rendszerbe, az adatokat nem fogják tudni olvasni. |
 | Sebezhetőségi felmérés |Javasolja, hogy telepítsen egy biztonsági rések felmérése szolgáló megoldást a virtuális gépére. |
+| Storage-titkosítás |Ez a szolgáltatás jelenleg Azure-blobok és -fájlok számára érhető el. Vegye figyelembe, hogy a Storage szolgáltatás titkosításának engedélyezése után csak az új adatok lesznek titkosítva, és a tárfiók meglévő fájljai titkosítatlanok maradnak. |
 
 Miután minden beállítást konfigurált, kattintson a javaslatokat tartalmazó **Security Policy** (Biztonsági szabályzat) panel **OK** gombjára, majd az eredeti beállításokat tartalmazó **Security Policy** (Biztonsági szabályzat) panel **Save** (Mentés) gombjára.
 

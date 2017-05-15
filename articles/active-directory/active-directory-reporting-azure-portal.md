@@ -1,6 +1,7 @@
 ---
-title: "Jelentéskészítés az Azure Active Directory előzetes kiadásában | Microsoft Docs"
-description: "Ez a dokumentum az Azure Active Directory előzetes kiadásában elérhető különféle jelentéseket sorolja fel"
+
+title: "Jelentéskészítés az Azure Active Directoryban | Microsoft Docs"
+description: "Ez a dokumentum az Azure Active Directoryban elérhető különféle jelentéseket sorolja fel"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,19 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
-ms.openlocfilehash: b9cd11954a52600c1cd50155cb7ce9b7d2355cd3
-ms.lasthandoff: 01/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: c7fe995f097c72ab5275249538fe2bb65efac256
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="azure-active-directory-reporting---preview"></a>Jelentéskészítés az Azure Active Directory előzetes kiadásában
+# <a name="azure-active-directory-reporting"></a>Jelentéskészítés az Azure Active Directoryban
 
 
 *Ez a dokumentáció az [Azure Active Directory Reporting-útmutató](active-directory-reporting-guide.md) része.*
 
-Az Azure Active Directory előzetes kiadásában elérhető jelentéskészítéssel minden szükséges információhoz hozzájuthat a környezetével kapcsolatban. [Mit tartalmaz az előzetes kiadás?](active-directory-preview-explainer.md)
+Az Azure Portalon az Azure Active Directory (Azure AD) jelentéskészítési funkciójával minden szükséges információhoz hozzájuthat a környezetével kapcsolatban.
 
 A jelentéskészítés két fő területe:
 

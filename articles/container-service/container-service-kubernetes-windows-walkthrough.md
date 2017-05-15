@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2017
+ms.date: 05/04/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: eb3af43b8a13eaaebfa9147848383ff889119d97
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
+ms.openlocfilehash: 4e730b65a98af05ea00c5f8ebd9914e3367b66a7
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/09/2017
 
 
 ---
@@ -28,184 +29,203 @@ ms.lasthandoff: 04/03/2017
 # <a name="get-started-with-kubernetes-and-windows-containers-in-container-service"></a>Bevezetés a Kubernetes és a Windows-tárolók használatába a Container Service-ben
 
 
-Ez a cikk bemutatja, hogyan hozhat létre olyan Kubernetes-fürtöt az Azure Container Service-ben, amely Windows-csomópontokat tartalmaz Windows-tárolók futtatásához. 
+Ez a cikk bemutatja, hogyan hozhat létre olyan Kubernetes-fürtöt az Azure Container Service-ben, amely Windows-csomópontokat tartalmaz Windows-tárolók futtatásához. Első lépésként használja a Kubernetes-fürt Azure Container Service-ben való létrehozására szolgáló `az acs` Azure CLI 2.0-parancsokat. Ezután a Kubernetes `kubectl` parancssori eszközével elkezdheti használni a Docker-rendszerképekből kiépített Windows-tárolókat. 
 
 > [!NOTE]
-> Az Azure Container Service-ben a Windows-tárolók Kubernetes-szel való használatának támogatása előzetes verzióban érhető el. Az Azure Portallal vagy egy Resource Manager-sablonnal hozzon létre egy Kubernetes-fürtöt Windows-csomópontokkal. Ez a funkció jelenleg nem támogatott az Azure CLI 2.0-s verziójával.
+> Az Azure Container Service-ben a Windows-tárolók Kubernetes-szel való használatának támogatása előzetes verzióban érhető el. 
 >
 
 
 
 A következő kép egy Kubernetes-fürt architektúráját mutatja be az Azure Container Service-ben. A fürt egy Linux-főcsomóponttal és két Windows-ügyfélcsomóponttal rendelkezik. 
 
+![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-windows-walkthrough/kubernetes-windows.png)
+
 * A Linux-főcsomópont szolgálja ki a Kubernetes REST API-t, és SSH-val a 22. porton, a `kubectl` használatával pedig a 443. porton érhető el. 
 * A Windows-ügyfélcsomópontok egy Azure rendelkezésre állási csoportba vannak besorolva, és a tárolókat futtatják. A Windows-csomópontok RDP SSH-alagúttal érhetők el a főcsomóponton keresztül. A rendszer automatikusan adja hozzá az Azure Load Balancer-szabályokat a fürthöz a közzétett szolgáltatásoktól függően.
 
 
-![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-windows-walkthrough/kubernetes-windows.png)
 
 Minden virtuális gép ugyanazon a privát virtuális hálózaton található, és teljes mértékben elérhetők egymás számára. Minden virtuális gép egy kubeletet, Dockert és egy proxyt futtat.
 
+További információt [Az Azure Container Service bemutatása](container-service-intro.md) és [A Kubernetes dokumentációja](https://kubernetes.io/docs/home/) című cikkekben talál.
+
 ## <a name="prerequisites"></a>Előfeltételek
+Az Azure Container Service-fürtök az Azure CLI 2.0-s verziójával való létrehozásának feltételei:
+* szükség van egy Azure-fiókra ([ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/));
+* telepítenie kell az [Azure CLI 2.0-t](/cli/azure/install-az-cli2), és be kell jelentkeznie
+
+A Kubernetes-fürthöz emellett az alábbiakra is szüksége lesz. Ezeket előzetesen is előkészítheti, vagy az `az acs create` parancs kapcsolóival automatikusan is létrehozhatja őket a fürt üzembe helyezése során. 
+
+* **SSH RSA nyilvános kulcs**: a Secure Shell (SSH) RSA-kulcsok létrehozásával kapcsolatban lásd az [OS X és Linux](../virtual-machines/linux/mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/linux/ssh-from-windows.md) rendszerhez készült útmutatót. 
+
+* **Szolgáltatásnév ügyfél-azonosítója és kulcsa**: az Azure Active Directory-szolgáltatásnevek létrehozásának lépései és további információk: [Tudnivalók a Kubernetes-fürthöz tartozó szolgáltatásnévről](container-service-kubernetes-service-principal.md).
+
+A jelen cikkben szereplő példaparancs automatikusan létrehozza az SSH-kulcsokat és egy egyszerű szolgáltatást.
+  
+## <a name="create-your-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
+
+Itt Azure CLI 2.0-parancsokat talál a fürt létrehozásához. 
+
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+Hozzon létre egy erőforráscsoportot egy olyan helyen, ahol az Azure Container Service [elérhető](https://azure.microsoft.com/regions/services/). Az alábbi parancs létrehoz egy *myKubernetesResourceGroup* nevű erőforráscsoportot a *westus* helyen:
+
+```azurecli
+az group create --name=myKubernetesResourceGroup --location=westus
+```
+
+### <a name="create-a-kubernetes-cluster-with-windows-agent-nodes"></a>Kubernetes-fürt létrehozása Windows-ügyfélcsomópontokkal
+
+Hozzon létre egy Kubernetes-fürtöt az erőforráscsoportban az `az acs create` parancs, valamint az `--orchestrator-type=kubernetes` és a `--windows` ügynökkapcsolók használatával. A parancs szintaxisát lásd az `az acs create` [Súgójában](/cli/azure/acs#create).
+
+Az alábbi parancs egy *myKubernetesClusterName* nevű Container Service-fürtöt hoz létre *myPrefix* DNS-előtaggal a felügyeleti csomópont számára, illetve létrehozza a megadott hitelesítő adatokat a Windows-csomópontok eléréséhez. A parancs jelen verziója létrehozza az SSH RSA-kulcsokat és egy szolgáltatásnevet a Kubernetes-fürthöz.
 
 
-* **Nyilvános SSH RSA-kulcs**: Ha a portálon vagy valamelyik Azure-beli gyorsindítási sablonnal végzi az üzembe helyezést, meg kell adnia az Azure Container Service virtuális gépeivel történő hitelesítésre szolgáló SSH RSA nyilvános kulcsot. A Secure Shell (SSH) RSA-kulcsok létrehozásával kapcsolatban lásd az [OS X és Linux](../virtual-machines/linux/mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/linux/ssh-from-windows.md) rendszerhez készült útmutatót. 
+```azurecli
+az acs create --orchestrator-type=kubernetes \
+    --resource-group myKubernetesResourceGroup \
+    --name=myKubernetesClusterName \
+    --dns-prefix=myPrefix \
+    --agent-count=2 \
+    --generate-ssh-keys \
+    --windows --admin-username myWindowsAdminName \
+    --admin-password myWindowsAdminPassword
+```
 
-* **Egyszerű szolgáltatás ügyfél-azonosítója és kulcsa**: További információ és útmutatás: [Tudnivalók a Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](container-service-kubernetes-service-principal.md).
+Pár perc múlva befejeződik a parancs végrehajtása, és rendelkeznie kell egy működő Kubernetes-fürttel.
+
+> [!IMPORTANT]
+> Ha a fiók nem rendelkezik jogosultsággal az Azure AD-szolgáltatásnév létrehozásához, a parancs a következőhöz hasonló hibaüzenetet hoz létre: `Insufficient privileges to complete the operation.`. További információ: [Tudnivalók a Kubernetes-fürthöz tartozó szolgáltatásnévről](container-service-kubernetes-service-principal.md). 
+> 
+
+## <a name="connect-to-the-cluster-with-kubectl"></a>Csatlakozás a fürthöz a kubectl használatával
+
+Ha a csatlakozni kíván a Kubernetes-fürthöz az ügyfélszámítógépről, ehhez a Kubernetes [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/) nevű parancssori ügyfelét használhatja. 
+
+Ha a `kubectl` még nincs telepítve helyben, az `az acs kubernetes install-cli` paranccsal telepítheti. (Vagy le is töltheti a [Kubernetes webhelyéről](https://kubernetes.io/docs/tasks/kubectl/install/).)
+
+**Linux vagy macOS**
+
+```azurecli
+sudo az acs kubernetes install-cli
+```
+
+**Windows**
+```azurecli
+az acs kubernetes install-cli
+```
+
+> [!TIP]
+> Ez a parancs alapértelmezés szerint Linux vagy macOS rendszeren az `/usr/local/bin/kubectl`, illetve Windows rendszeren pedig a `C:\Program Files (x86)\kubectl.exe` helyre telepíti a `kubectl` bináris fájlt. Másik telepítési útvonal megadásához használja az `--install-location` paramétert.
+>
+> A `kubectl` telepítése után győződjön meg arról, hogy a könyvtára elérhető-e a rendszerbeli elérési úton, vagy adja hozzá az elérési úthoz. 
 
 
+Ezután futtassa az alábbi parancsot a fő Kubernetes-fürtkonfiguráció helyi `~/.kube/config` fájlba való letöltéséhez:
 
+```azurecli
+az acs kubernetes get-credentials --resource-group=myKubernetesResourceGroup --name=myKubernetesClusterName
+```
 
-## <a name="create-the-cluster"></a>A fürt létrehozása
+Most már készen áll arra, hogy hozzáférjen a fürthöz a gépéről. Próbálja meg futtatni a következőt:
 
-Az Azure Portallal [létrehozhat egy Kubernetes-fürtöt](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal) Windows-ügyfélcsomópontokkal. A fürt létrehozásakor ügyeljen a következő beállításokra:
+```bash
+kubectl get nodes
+```
 
-* Az **Alapvető beállítások** panelen a **Vezénylő** részben válassza a **Kubernetes** lehetőséget. 
+Ellenőrizze, hogy látja-e a fürtben található gépek listáját.
 
-  ![Kubernetes vezénylő kiválasztása](media/container-service-kubernetes-windows-walkthrough/portal-select-kubernetes.png)
-
-* A **Fő konfiguráció** panelen adja meg a felhasználói hitelesítő adatokat és az egyszerű szolgáltatás hitelesítő adatait a fő Linux-csomópontokhoz. 1, 3 vagy 5 fő csomópontot válasszon.
-
-* Az **Ügynökkonfiguráció** panel **Operációs rendszer** területén válassza a **Windows (előnézet)** lehetőséget. Adja meg a rendszergazdai hitelesítő adatokat a Windows-ügyfélcsomópontokhoz.
-
-  ![Windows-ügynökök kiválasztása](media/container-service-kubernetes-windows-walkthrough/portal-select-windows.png)
-
-További részletekért lásd: [Azure Container Service-fürt üzembe helyezése](container-service-deployment.md).
-
-## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
-
-A `kubectl` parancssori eszközzel csatlakozzon a helyi számítógépről a Kubernetes-fürt főcsomópontjához. A `kubectl` telepítésének és beállításának lépései: [Csatlakozás Azure Container Service-fürthöz](container-service-connect.md#connect-to-a-kubernetes-cluster). A `kubectl` parancsokkal elérheti a Kubernetes webes felhasználói felületét, és kezelheti Windows-tárolók számítási feladatait.
+![Kubernetes-fürtben futó csomópontok](media/container-service-kubernetes-windows-walkthrough/kubectl-get-nodes.png)
 
 ## <a name="create-your-first-kubernetes-service"></a>Az első Kubernetes-szolgáltatás létrehozása
 
-A fürt létrehozása és a `kubectl` használatával való kapcsolódás után megpróbálhat elindítani és közzétenni az interneten egy alapszintű Windows-webappot. Ebben a példában egy YAML-fájllal határozza meg a tároló erőforrásait, majd létrehozza a `kubctl apply` paranccsal.
+A fürt létrehozása és a `kubectl` használatával való kapcsolódás után megpróbálhat elindítani egy Windows-appot egy Docker-tárolóból, és közzétenni azt az interneten. Ez az alapszintű példa JSON-fájlt használ a Microsoft Internet Information Server- (IIS-) tároló megadásához, majd a `kubctl apply` használatával létrehozza a tárolót. 
 
-1. A csomópontok listájának megtekintéséhez írja be a következőt: `kubectl get nodes`. A csomópontok összes részletének megtekintéséhez írja be a következőt:  
+1. Hozzon létre egy `iis.json` nevű helyi fájlt, és másolja a következőket. Ez a fájl arra utasítja a Kubernetest, hogy futtassa az IIS-t Windows Server 2016 Server Core rendszeren, a [Docker Hubból](https://hub.docker.com/r/microsoft/iis/) származó, nyilvános rendszerkép használatával. A tároló a 80-as portot használja, de kezdetben csak a fürthálózaton belül érhető el.
 
-    ```
-    kubectl get nodes -o yaml
-    ```
+  ```JSON
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "name": "iis",
+      "labels": {
+        "name": "iis"
+      }
+    },
+    "spec": {
+      "containers": [
+        {
+          "name": "iis",
+          "image": "microsoft/iis",
+          "ports": [
+            {
+            "containerPort": 80
+            }
+          ]
+        }
+      ],
+      "nodeSelector": {
+        "beta.kubernetes.io/os": "windows"
+      }
+    }
+  }
+  ```
+2. A alkalmazás elindításához írja be a következőt:  
+  
+  ```bash
+  kubectl apply -f iis.json
+  ```  
+3. A tároló üzembe helyezésének nyomon követéséhez írja be a következőket:  
+  ```bash
+  kubectl get pods
+  ```
+  A tároló üzembe helyezése közben az állapot: `ContainerCreating`. 
 
-2. Hozzon létre egy `simpleweb.yaml` nevű fájlt, és másolja a következőket. Ez a fájl beállít egy webappot a Windows Server 2016 Server Core alap operációsrendszer-képpel a [Docker Hubból](https://hub.docker.com/r/microsoft/windowsservercore/).  
+  ![ContainerCreating állapotú IIS-tároló](media/container-service-kubernetes-windows-walkthrough/iis-pod-creating.png)   
 
-```yaml
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: win-webserver
-    labels:
-      app: win-webserver
-  spec:
-    ports:
-      # the port that this service should serve on
-    - port: 80
-      targetPort: 80
-    selector:
-      app: win-webserver
-    type: LoadBalancer
-  ---
-  apiVersion: extensions/v1beta1
-  kind: Deployment
-  metadata:
-    labels:
-      app: win-webserver
-    name: win-webserver
-  spec:
-    replicas: 1
-    template:
-      metadata:
-        labels:
-          app: win-webserver
-        name: win-webserver
-      spec:
-        containers:
-        - name: windowswebserver
-          image: microsoft/windowsservercore
-          command:
-          - powershell.exe
-          - -command
-          - "<#code used from https://gist.github.com/wagnerandrade/5424431#> ; $$listener = New-Object System.Net.HttpListener ; $$listener.Prefixes.Add('http://*:80/') ; $$listener.Start() ; $$callerCounts = @{} ; Write-Host('Listening at http://*:80/') ; while ($$listener.IsListening) { ;$$context = $$listener.GetContext() ;$$requestUrl = $$context.Request.Url ;$$clientIP = $$context.Request.RemoteEndPoint.Address ;$$response = $$context.Response ;Write-Host '' ;Write-Host('> {0}' -f $$requestUrl) ;  ;$$count = 1 ;$$k=$$callerCounts.Get_Item($$clientIP) ;if ($$k -ne $$null) { $$count += $$k } ;$$callerCounts.Set_Item($$clientIP, $$count) ;$$header='<html><body><H1>Windows Container Web Server</H1>' ;$$callerCountsString='' ;$$callerCounts.Keys | % { $$callerCountsString+='<p>IP {0} callerCount {1} ' -f $$_,$$callerCounts.Item($$_) } ;$$footer='</body></html>' ;$$content='{0}{1}{2}' -f $$header,$$callerCountsString,$$footer ;Write-Output $$content ;$$buffer = [System.Text.Encoding]::UTF8.GetBytes($$content) ;$$response.ContentLength64 = $$buffer.Length ;$$response.OutputStream.Write($$buffer, 0, $$buffer.Length) ;$$response.Close() ;$$responseStatus = $$response.StatusCode ;Write-Host('< {0}' -f $$responseStatus)  } ; "
-        nodeSelector:
-          beta.kubernetes.io/os: windows
+  Az IIS-rendszerkép mérete miatt több percig is eltarthat, amíg a tároló eléri a `Running` állapotot.
+
+  ![Futó állapotú IIS-tároló](media/container-service-kubernetes-windows-walkthrough/iis-pod-running.png)
+
+4. A tároló elérhetővé tételéhez írja be a következő parancsot:
+
+  ```bash
+  kubectl expose pods iis --port=80 --type=LoadBalancer
   ```
 
-      
-> [!NOTE] 
-> A konfiguráció tartalmazza a következőt: `type: LoadBalancer`. Ez a beállítás azt eredményezi, hogy az Azure Load Balanceren közzéteszi a szolgáltatást az interneten. További információ: [Tárolók terheléselosztása Kubernetes-fürtön az Azure Container Service-ben](container-service-kubernetes-load-balancing.md).
->
+  Ezzel a paranccsal a Kubernetes létrehoz egy nyilvános IP-címmel rendelkező Azure Load Balancer-szabályt. A rendszer néhány percen belül propagálja a módosítást a terheléselosztóra. Részletes információk: [Tárolók terheléselosztása Kubernetes-fürtön az Azure Container Service-ben](container-service-kubernetes-load-balancing.md).
 
-## <a name="start-the-application"></a>Az alkalmazás elindítása
+5. Futtassa az alábbi parancsot a szolgáltatás állapotának megtekintéséhez.
 
-1. A alkalmazás elindításához írja be a következőt:  
+  ```bash
+  kubectl get svc
+  ```
 
-    ```
-    kubectl apply -f simpleweb.yaml
-    ```  
+  Az IP-cím először a következőképpen jelenik meg: `pending`
+
+  ![Függőben lévő külső IP-cím](media/container-service-kubernetes-windows-walkthrough/iis-svc-expose.png)
+
+  Pár percen belül megtörténik az IP-cím beállítása:
   
-  
-2. A szolgáltatás üzembe helyezésének ellenőrzéséhez (ez körülbelül 30 másodpercet vesz igénybe) írja be a következőt:  
-
-    ```
-    kubectl get pods
-    ```
-
-3. A szolgáltatás elindítása után a szolgáltatás belső és külső IP-címeinek megtekintéséhez írja be a következőt:
-
-    ```
-    kubectl get svc
-    ``` 
-  
-    ![Windows -szolgáltatás IP-címei](media/container-service-kubernetes-windows-walkthrough/externalipa.png)
-
-    A külső IP-cím hozzáadása több percet igényel. Mielőtt a terheléselosztó konfigurálja a külső címet, a következőképpen jelenik meg: `<pending>`.
-
-4. Miután elérhetővé válik a külső IP-cím, elérheti a szolgáltatást a webböngészőjében.
-
-    ![Windows Server-app böngészőben](media/container-service-kubernetes-windows-walkthrough/wincontainerwebserver.png)
+  ![IIS külső IP-címe](media/container-service-kubernetes-windows-walkthrough/iis-svc-expose-public.png)
 
 
-## <a name="access-the-windows-nodes"></a>A Windows-csomópontok elérése
-A Windows-csomópontok a helyi Windows-számítógépekről távoli asztali kapcsolaton keresztül érhetők el. RDP SSH-alagút használatát javasoljuk a főcsomóponton keresztül. 
+6. Ha már elérhető a külső IP-cím, megnyithatja a böngészőben:
 
-Windows-rendszeren az SSH-alagutak többféleképpen is létrehozhatók. Ez a témakör ismerteti, hogyan hozható létre az alagút a PuTTY használatával.
+  ![Az IIS keresését ábrázoló kép](media/container-service-kubernetes-windows-walkthrough/kubernetes-iis.png)  
 
-1. [Töltse le a PuTTY alkalmazást](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) Windows rendszerére.
+7. Az IIS-pod törléséhez írja be a következőt:
 
-2. Futtassa az alkalmazást.
-
-3. Adjon meg egy állomásnevet, amely a fürt rendszergazdai felhasználónevéből és a fürt első főkiszolgálójának nyilvános DNS-nevéből áll. A **Host Name** (Gazdagép neve) a következőhöz hasonló: `adminuser@PublicDNSName`. A **Port** mezőben adja meg a 22-es értéket.
-
-  ![A PuTTY-konfigurálásának 1. lépése](media/container-service-kubernetes-windows-walkthrough/putty1.png)
-
-4. Válassza az **SSH > Auth** (SSH > Hitelesítés) parancsot. Adja meg a hitelesítéshez használandó titkos kulcsfájl (.ppk) elérési útját. Ez a fájl a [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) vagy egy hasonló eszköz segítségével hozható létre a fürt létrehozásakor használt SSH-kulcsból.
-
-  ![A PuTTY-konfigurálásának 2. lépése](media/container-service-kubernetes-windows-walkthrough/putty2.png)
-
-5. Válassza az **SSH > Tunnels** (SSH > Alagutak) elemet, és konfigurálja a továbbított portokat. Mivel a helyi Windows-gép már használja a 3389-es portot, ajánlott a következő beállításokat használni a 0. Windows-csomópont és az 1. Windows-csomópont eléréséhez. (A további Windows-csomópontok hasonló minta szerint használhatók.)
-
-    **0. Windows csomópont**
-
-    * **Forrásport:** 3390
-    * **Cél:** 10.240.245.5:3389
-
-    **1. Windows-csomópont**
-
-    * **Forrásport:** 3391
-    * **Cél:** 10.240.245.6:3389
-
-    ![Windows RDP-alagutak képe](media/container-service-kubernetes-windows-walkthrough/rdptunnels.png)
-
-6. Amikor elkészült, a **Session > Save** (Munkamenet > Mentés) paranccsal mentse a kapcsolat konfigurációját.
-
-7. A PuTTY-munkamenethez az **Open** (Megnyitás) gombra kattintva csatlakozhat. Létesítsen kapcsolatot a fő csomóponttal.
-
-8. Indítsa el a távoli asztali kapcsolatot. Ha az első Windows-csomóponthoz szeretne csatlakozni, a **Számítógép** területen adja meg a `localhost:3390` értéket, majd kattintson a **Csatlakozás** elemre. (Ha a másodikhoz szeretne csatlakozni, adja meg a `localhost:3390` értéket és így tovább.) A kapcsolat létesítéséhez adja meg az üzembe helyezéskor konfigurált helyi Windows rendszergazdai jelszavát.
-
+  ```bash
+  kubectl delete pods iis
+  ```
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az alábbi javasolt hivatkozások további információkat nyújtanak a Kubernetesről:
+* A Kubernetes felhasználói felület használatához futtassa a következő parancsot: `kubectl proxy`. Ezután nyissa meg a http://localhost:8001/ui címet.
 
-* [Kubernetes Bootcamp](https://kubernetesbootcamp.github.io/kubernetes-bootcamp/index.html) – bemutatja, hogyan lehet üzembe helyezni, méretezni és frissíteni a tárolóalapú alkalmazásokat, illetve hibakeresést végezni rajtuk.
-* [Kubernetes felhasználói útmutató](http://kubernetes.io/docs/user-guide/) – információkat tartalmaz a programok meglévő Kubernetes-fürtökben való futtatásáról.
-* [Kubernetes-példák](https://github.com/kubernetes/kubernetes/tree/master/examples) – példákkal szolgál a valódi alkalmazások Kubernetes használatával való futtatására.
+* Az egyéni IIS-webhely létrehozásának és Windows-tárolón történő futtatásának lépéseit lásd a [Docker Hub](https://hub.docker.com/r/microsoft/iis/) útmutatójában.
+
+* A Windows-csomópontok főkiszolgáló felé tartó RDP SSH-alagúton keresztül történő elérése a PuTTy használatával: [Az ACS-motor dokumentációja](https://github.com/Azure/acs-engine/blob/master/docs/ssh.md#create-port-80-tunnel-to-the-master). 
+

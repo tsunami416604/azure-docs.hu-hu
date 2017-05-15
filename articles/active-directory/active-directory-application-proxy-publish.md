@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2017
+ms.date: 05/04/2017
 ms.author: kgremban
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 4f7860b906ab988c918de31d53f4a958e4dea83b
+ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
+ms.openlocfilehash: 526efc5b025f8050f40c49d0a07a9c2713509493
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 05/05/2017
 
 
 ---
@@ -31,9 +31,7 @@ ms.lasthandoff: 04/28/2017
 Az Azure AD alkalmazásproxy segít a távoli feldolgozók támogatásában azáltal, hogy közzétesz helyszíni alkalmazásokat, és ezek elérhetővé válnak az interneten keresztül. Ennél a pontnál, már [engedélyezte az alkalmazásproxyt a klasszikus Azure-portálon](active-directory-application-proxy-enable.md). Ez a cikk végigvezeti a helyi hálózaton futó alkalmazások közzétételének és távoli, hálózaton kívüli biztonságos hozzáférésük kiépítésének lépésein. Miután befejezte a cikkben leírtakat, készen áll az alkalmazás személyre szabott információkkal vagy biztonsági követelményekkel történő konfigurálására.
 
 > [!NOTE]
-> Az alkalmazásproxy-szolgáltatás kizárólag akkor érhető el, ha frissített az Azure Active Directory Prémium vagy Alapszintű kiadására. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
-
-Ha szeretné az Alkalmazásproxy nyilvános előzetes verzióját használni, ezt megteheti az [alkalmazások közzétételével az Azure Portalban](application-proxy-publish-azure-portal.md).
+> Az alkalmazásproxy-szolgáltatás kizárólag akkor érhető el, ha frissített az Azure Active Directory Prémium vagy Alapszintű kiadására. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások). Ha szeretné az alkalmazásproxyt használni, ezt megteheti az [alkalmazások közzétételével az Azure Portalban](application-proxy-publish-azure-portal.md).
 
 ## <a name="publish-an-app-using-the-wizard"></a>Alkalmazás közzététele a varázsló használatával
 1. Jelentkezzen be rendszergazdaként a [klasszikus Azure portálra](https://manage.windowsazure.com/).

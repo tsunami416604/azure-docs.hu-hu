@@ -1,6 +1,7 @@
 ---
-title: "Naplózási tevékenységre vonatkozó jelentések az Azure Active Directory portál előzetes kiadásában | Microsoft Docs"
-description: "Naplózási tevékenységre vonatkozó jelentések az Azure Active Directory portál előzetes kiadásában – bevezetés"
+
+title: "Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon | Microsoft Docs"
+description: "Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon – bevezetés"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,20 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2017
+ms.date: 05/04/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: d88f8bed0cbd14ee49986d6749396731a810034b
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 4065682658bdd99066266b8b4e5e4c4605ff3db9
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal---preview"></a>Naplózási tevékenységre vonatkozó jelentések az Azure Active Directory portál előzetes kiadásában
+# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
-Az Azure Active Directory [előzetes kiadásában](active-directory-preview-explainer.md) elérhető jelentéskészítéssel minden szükséges információhoz hozzájuthat a környezetével kapcsolatban.
+Az Azure Portalon az Azure Active Directory (Azure AD) jelentéskészítési funkciójával minden szükséges információhoz hozzájuthat a környezetével kapcsolatban.
 
-Az Azure Active Directory jelentéskészítési architektúrája a következő elemekből áll:
+Az Azure AD jelentéskészítési architektúrája a következő elemekből áll:
 
 - **Tevékenység** 
     - **Bejelentkezési tevékenységek** – A felügyelt alkalmazások használatával és a felhasználók bejelentkezési tevékenységeivel kapcsolatos információk
