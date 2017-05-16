@@ -7,15 +7,15 @@ Ha létrehoz egy távoli asztali kapcsolatot a virtuális géppel, csatlakozhat 
   - PowerShell – A példa segítségével tekintse meg a virtuális gépek listáját és magánhálózati IP-címeket az erőforráscsoportokból. Ezt a példát nem kell használat előtt módosítania.
 
     ```powershell
-    $vms = get-azurermvm
-    $nics = get-azurermnetworkinterface | where VirtualMachine -NE $null
+    $VMs = Get-AzureRmVM
+    $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
 
-    foreach($nic in $nics)
+    foreach($Nic in $Nics)
     {
-      $vm = $vms | where-object -Property Id -EQ $nic.VirtualMachine.id
-      $prv = $nic.IpConfigurations | select-object -ExpandProperty PrivateIpAddress
-      $alloc = $nic.IpConfigurations | select-object -ExpandProperty PrivateIpAllocationMethod
-      Write-Output "$($vm.Name): $prv,$alloc"
+      $VM = $VMs | Where-Object -Property Id -eq $Nic.VirtualMachine.Id
+      $Prv = $Nic.IpConfigurations | Select-Object -ExpandProperty PrivateIpAddress
+      $Alloc = $Nic.IpConfigurations | Select-Object -ExpandProperty PrivateIpAllocationMethod
+      Write-Output "$($VM.Name): $Prv,$Alloc"
     }
     ```
 
