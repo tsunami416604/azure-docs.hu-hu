@@ -14,10 +14,11 @@ ms.devlang: na
 ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 3c5520f30b75c0e0a2b1aee890f79d01d325d543
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 745e115409a5b1e5e4f343ca0a5bb922272d3020
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/11/2017
 
 ---
 
@@ -184,7 +185,7 @@ A VS Code ebben az esetben is javasol elérhető függvényeket.
 
 ![függvények megjelenítése](./media/resource-manager-create-first-template/show-functions.png)
 
-Figyelje meg, hogy a függvény szögletes zárójelek közt jelenik meg. A [resourceGroup](resource-group-template-functions.md#resourcegroup) függvény a következő tulajdonsággal rendelkező objektumot adja vissza: `location`. Az erőforráscsoport tartalmazza a megoldás összes kapcsolódó erőforrását. A hely tulajdonságot szoftveresen kötött módon is megadhatná, például az „USA középső régiója” érték használatával, de ez azt jelentené, hogy a más régiókban való üzembe helyezéshez manuálisan módosítania kellene a sablont. A `resourceGroup` függvény használatával a sablon egyszerűen üzembe helyezhető egy másik régióban lévő erőforráscsoportban.
+Figyelje meg, hogy a függvény szögletes zárójelek közt jelenik meg. A [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) függvény a következő tulajdonsággal rendelkező objektumot adja vissza: `location`. Az erőforráscsoport tartalmazza a megoldás összes kapcsolódó erőforrását. A hely tulajdonságot szoftveresen kötött módon is megadhatná, például az „USA középső régiója” érték használatával, de ez azt jelentené, hogy a más régiókban való üzembe helyezéshez manuálisan módosítania kellene a sablont. A `resourceGroup` függvény használatával a sablon egyszerűen üzembe helyezhető egy másik régióban lévő erőforráscsoportban.
 
 A sablon most a következőképpen néz ki:
 
@@ -216,7 +217,7 @@ A sablon most a következőképpen néz ki:
 ## <a name="add-parameters-and-variables"></a>Paramétereket és változók hozzáadása
 Már csak két értéket kell megadni a sablonhoz: a **name** (név) és az **sku.name** (SKU-név) értékét. Ezekhez az értékekhez olyan paramétereket kell adni, amelyek lehetővé teszik az értékek testreszabását az üzembe helyezés során. 
 
-A tárfiókok neveire több korlátozás vonatkozik, amelyek bonyolulttá teszik a megadásukat. A név 3–24 karakter hosszúságú lehet, csak számokból és kisbetűkből állhat, és egyedinek kell lennie. Ahelyett, hogy megpróbálna kitalálni egy, a korlátozásoknak megfelelő egyedi nevet, használja a [uniqueString](resource-group-template-functions.md#uniquestring) függvényt egy kivonatolt érték létrehozásához. Ahhoz, hogy a kivonatolt érték könnyebben értelmezhető legyen, adjon hozzá egy előtagot, amely alapján az üzembe helyezés után felismerhető lesz tárfiókként. 
+A tárfiókok neveire több korlátozás vonatkozik, amelyek bonyolulttá teszik a megadásukat. A név 3–24 karakter hosszúságú lehet, csak számokból és kisbetűkből állhat, és egyedinek kell lennie. Ahelyett, hogy megpróbálna kitalálni egy, a korlátozásoknak megfelelő egyedi nevet, használja a [uniqueString](resource-group-template-functions-string.md#uniquestring) függvényt egy kivonatolt érték létrehozásához. Ahhoz, hogy a kivonatolt érték könnyebben értelmezhető legyen, adjon hozzá egy előtagot, amely alapján az üzembe helyezés után felismerhető lesz tárfiókként. 
 
 1. Az Ön elnevezési konvencióinak megfelelő előtag megadásához lépjen a sablon **parameters** (paraméterek) szakaszára. Adjon egy olyan paramétert a sablonhoz, amely elfogadja a tárfiók nevéhez adott előtagot:
 
