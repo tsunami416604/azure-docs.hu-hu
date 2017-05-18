@@ -9,7 +9,7 @@
 
 # Első lépések
 ## [VMware virtuális gépek replikálása az Azure-ba](site-recovery-vmware-to-azure.md)
-## [Fizikai kiszolgálók replikálása az Azure-ba](site-recovery-physical-servers-to-azure.md) 
+## [Fizikai kiszolgálók replikálása az Azure-ba](site-recovery-physical-servers-to-azure.md)
 ## [Hyper-V-alapú virtuális gépek replikálása az Azure-ba (VMM-mel)](site-recovery-vmm-to-azure.md)
 ## [Hyper-V virtuális gépek replikálása az Azure-ba](site-recovery-hyper-v-site-to-azure.md)
 ## [Hyper-V-alapú virtuális gépek replikálása másodlagos helyre (VMM-mel)](site-recovery-vmm-to-vmm.md)
@@ -23,6 +23,7 @@
 ### [Kapacitás megtervezése és VMware-replikálás méretezése az Azure-hoz](site-recovery-plan-capacity-vmware.md)
 ### [Deployment Planner a VMware Azure-ba történő replikálásához](site-recovery-deployment-planner.md)
 ### [Capacity Planner Hyper-V-replikáláshoz](site-recovery-capacity-planner.md)
+### [Szerepköralapú hozzáférés-vezérlés](site-recovery-role-based-linked-access-control.md)
 
 ## Konfigurálás
 ### [A forráskörnyezet beállítása](site-recovery-set-up-vmware-to-azure.md)

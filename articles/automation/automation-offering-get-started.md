@@ -1,4 +1,4 @@
---- 
+---
 title: "Bevezetés az Azure Automation használatába | Microsoft Docs"
 description: "Ez a cikk az alapfogalmak és a megvalósítás részleteinek áttekintésével áttekintést nyújt az Azure Automation szolgáltatásról az Azure Marketplace-ről származó ajánlat bevezetésének előkészítéséhez."
 services: automation
@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8a04fda8eaf6e14a278941e7bb55b23012f67850
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 9b4982ffece9283304ad3ab3c82a471ac1dbd463
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 05/11/2017
 
 ---
 
 ## <a name="getting-started-with-azure-automation"></a>Bevezetés az Azure Automation használatába
 
-Ez a kezdeti lépéseket ismertető útmutató az Azure Automation üzembe helyezésével kapcsolatos alapfogalmakat mutatja be. Ha még nem ismeri az Azure Automationt, vagy nincs tapasztalata a System Center Orchestratorhoz hasonló munkafolyamat-automatizálási szoftverekkel, ez az útmutató bemutatja a használatba vételhez szükséges alapfogalmakat és az üzembe helyezés részleteit. 
+Ez a kezdeti lépéseket ismertető útmutató az Azure Automation üzembe helyezésével kapcsolatos alapfogalmakat mutatja be. Ha még nem ismeri az Azure Automationt, vagy nincs tapasztalata a System Center Orchestratorhoz hasonló munkafolyamat-automatizálási szoftverekkel, ez az útmutató bemutatja a használatba vételhez szükséges alapfogalmakat és az üzembe helyezés részleteit.
 
 ## <a name="key-concepts"></a>Fő fogalmak
 
@@ -83,14 +83,14 @@ A hibrid runbookfeladatok futtatására kijelölt számítógépnek az alábbiak
 ## <a name="security"></a>Biztonság
 Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure-beli és helyszíni erőforrásokon, illetve egyéb felhőszolgáltatókon.  Annak érdekében, hogy a forgatókönyv elvégezze a szükséges műveleteket, engedélyekkel kell rendelkeznie az erőforrások biztonságos eléréséhez az előfizetésben szükséges minimális jogokkal.  
 
-### <a name="automation-account"></a>Automation-fiók 
+### <a name="automation-account"></a>Automation-fiók
 Minden automatizálási feladatot, amelyet az Azure Automation parancsmagjaival hajt végre az erőforrásokon, hitelesíteni kell az Azure Active Directory szervezeti identitáshitelesítésével.  Az Automation-fiók nem azonos az Azure-erőforrások konfigurációjakor és használatakor a portálra való bejelentkezéshez használt fiókkal.  
 
 Az Azure-fiókokhoz tartozó Automation-erőforrások egy Azure-régióhoz tartoznak, de az Automation-fiókok képesek az előfizetés összes erőforrását kezelni. Ha olyan szabályzatokkal rendelkezik, amelyek az adatok és erőforrások adott régióban való elkülönítését írják elő, hozzon létre Automation-fiókokat különböző régiókban.
 
 > [!NOTE]
 > Az Azure portálon létrehozott Automation-fiókok, valamint a rajtuk tárolt erőforrások nem érhetők el a klasszikus Azure portálról. Ha ezeket fiókokat vagy az erőforrásaikat Windows PowerShellel felügyeli, az Azure Resource Manager modulokat kell használnia.
-> 
+>
 
 Amikor létrehoz egy Automation-fiókot az Azure Portalon, automatikusan két hitelesítési entitás jön létre:
 
@@ -102,17 +102,17 @@ A szerepköralapú hozzáférés-vezérlés az Azure Resource Managerben érhet�
 #### <a name="authentication-methods"></a>Hitelesítési módszerek
 A következő táblázat összefoglalja az Azure Automation által támogatott összes környezet különböző hitelesítési módszereit.
 
-| Módszer | Környezet 
-| --- | --- | 
+| Módszer | Környezet
+| --- | --- |
 | Azure futtató és klasszikus futtató fiókok |Azure Resource Manager és klasszikus Azure üzemelő példány |  
 | Azure AD felhasználói fiók |Azure Resource Manager és klasszikus Azure üzemelő példány |  
 | Windows-hitelesítés |Hibrid runbook-feldolgozót használó helyszíni adatközpont vagy egyéb felhőszolgáltató |  
 | AWS hitelesítő adatok |Amazon webszolgáltatások |  
 
 Az **Útmutató\Hitelesítés és biztonság** című szakaszban támogatási cikkeket talál, amelyek áttekintést nyújtanak a témáról, és bemutatják a szóban forgó környezetek hitelesítésének konfigurálásához szükséges lépéseket az adott környezethez dedikált meglévő vagy új fiók esetén.  Az Azure futtató fiók és klasszikus futtató fiók esetén az [Automation futtató fiók frissítése a PowerShell használatával](automation-update-account-powershell.md) című témakör mutatja be, hogyan frissíthető a futtató fiókokat tartalmazó meglévő Automation-fiók a PowerShell használatával, ha eredetileg nem lett konfigurálva futtató vagy klasszikus futtató fiókkal.   
- 
+
 ## <a name="network"></a>Network (Hálózat)
-Ahhoz, hogy a hibrid runbook-feldolgozó kapcsolódni és regisztrálni tudjon a Microsoft Operations Management Suite (OMS) szolgáltatásban, hozzáféréssel kell rendelkeznie az alább ismertetett portszámokhoz és URL-címekhez.  Ez kiegészítésként szolgál a [Microsoft Monitoring Agent OMS-csatlakozásához szükséges portok és URL-címek](../log-analytics/log-analytics-proxy-firewall.md#configure-settings-with-the-microsoft-monitoring-agent) listájához. Ha proxykiszolgálót használ az ügynök és az OMS szolgáltatás közötti kommunikációhoz, győződjön meg arról, hogy a megfelelő erőforrások elérhetők. Ha tűzfallal korlátozza az internethez való hozzáférést, akkor a tűzfalat úgy kell beállítani, hogy engedélyezze a hozzáférést.
+Ahhoz, hogy a hibrid runbook-feldolgozó kapcsolódni és regisztrálni tudjon a Microsoft Operations Management Suite (OMS) szolgáltatásban, hozzáféréssel kell rendelkeznie az alább ismertetett portszámokhoz és URL-címekhez.  Ez kiegészítésként szolgál a [Microsoft Monitoring Agent OMS-csatlakozásához szükséges portok és URL-címek](../log-analytics/log-analytics-windows-agents.md) listájához. Ha proxykiszolgálót használ az ügynök és az OMS szolgáltatás közötti kommunikációhoz, győződjön meg arról, hogy a megfelelő erőforrások elérhetők. Ha tűzfallal korlátozza az internethez való hozzáférést, akkor a tűzfalat úgy kell beállítani, hogy engedélyezze a hozzáférést.
 
 Az alábbi lista a hibrid runbook-feldolgozó és az Automation szolgáltatás közötti kommunikációhoz szükséges portokat és URL-címeket tartalmazza.
 
@@ -136,11 +136,11 @@ Ha rendelkezik egy adott régióhoz meghatározott Automation-fiókkal, és szer
 | Az Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net |
 | USA-beli államigazgatás – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us |
 
-Ha a nevek helyet az IP-címek listájára van szüksége, töltse le és tekintse át az [Azure-adatközponti IP-címeket](https://www.microsoft.com/download/details.aspx?id=41653) tartalmazó XML-fájlt a Microsoft letöltőközpontból. 
+Ha a nevek helyet az IP-címek listájára van szüksége, töltse le és tekintse át az [Azure-adatközponti IP-címeket](https://www.microsoft.com/download/details.aspx?id=41653) tartalmazó XML-fájlt a Microsoft letöltőközpontból.
 
 > [!NOTE]
-> Ez a fájl azokat az IP-címtartományokat (beleértve Compute, SQL és Storage tartományokat) tartalmazza, amelyeket a Microsoft Azure adatközpontokban használnak. Hetente közzétesznek egy frissített fájlt, amely bemutatja a jelenleg üzembe helyezett tartományokat és minden, az IP tartományokat érintő közelgő változást. A fájlban megjelenő új tartományokat legalább egy hétig nem használják még az adatközpontok. Töltse le az új XML-fájlt minden héten, és végezze el a szükséges változtatásokat oldalán, hogy helyesen azonosítsa az Azure-ban futó szolgáltatásokat. Az Express Route felhasználóinak feltűnhet, hogy régen ez a fájl frissítette az Azure címterületek BGP-közzétételét minden hónap első hetében. 
-> 
+> Ez a fájl azokat az IP-címtartományokat (beleértve Compute, SQL és Storage tartományokat) tartalmazza, amelyeket a Microsoft Azure adatközpontokban használnak. Hetente közzétesznek egy frissített fájlt, amely bemutatja a jelenleg üzembe helyezett tartományokat és minden, az IP tartományokat érintő közelgő változást. A fájlban megjelenő új tartományokat legalább egy hétig nem használják még az adatközpontok. Töltse le az új XML-fájlt minden héten, és végezze el a szükséges változtatásokat oldalán, hogy helyesen azonosítsa az Azure-ban futó szolgáltatásokat. Az Express Route felhasználóinak feltűnhet, hogy régen ez a fájl frissítette az Azure címterületek BGP-közzétételét minden hónap első hetében.
+>
 
 
 ## <a name="implementation"></a>Megvalósítás
@@ -175,16 +175,16 @@ Az Automation bevezetésének ajánlott módja a Marketplace Automatizálás és
 
 4. Az ajánlat leírásának elolvasása után kattintson a **Létrehozás** gombra.  
 
-5. Az **Automatizálás és vezérlés** beállításainak paneljén válassza az **OMS-munkaterület** elemet.  Az **OMS-munkaterületek** panelen válassza ki az Automation-fiókot tartalmazó Azure-előfizetéshez kapcsolódó OMS-munkaterületet, vagy hozzon létre egy újat.  Ha nem rendelkezik OMS-munkaterülettel, válassza az **Új munkaterület létrehozása** lehetőséget, és az **OMS-munkaterület** panelen végezze el az alábbiakat: 
+5. Az **Automatizálás és vezérlés** beállításainak paneljén válassza az **OMS-munkaterület** elemet.  Az **OMS-munkaterületek** panelen válassza ki az Automation-fiókot tartalmazó Azure-előfizetéshez kapcsolódó OMS-munkaterületet, vagy hozzon létre egy újat.  Ha nem rendelkezik OMS-munkaterülettel, válassza az **Új munkaterület létrehozása** lehetőséget, és az **OMS-munkaterület** panelen végezze el az alábbiakat:
    - Adja meg az új **OMS-munkaterület** nevét.
    - A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
    - Az **Erőforráscsoport** területen létrehozhat egy erőforráscsoportot, vagy kiválaszthat egy meglévőt.  
    - Válasszon ki egy **helyet**.  Jelenleg csak a következő helyek közül választhat: **Délkelet-Ausztrália**, **USA keleti régiója**, **Délkelet-Ázsia**, **USA nyugati középső régiója** és **Nyugat-Európa**.
    - Válasszon egy tarifacsomagot a **Tarifacsomag** területen.  A megoldás két tarifacsomagban érhető el: ingyenes és csomópontalapú (OMS-) csomagban.  Az ingyenes csomagnál korlátozva van a naponta összegyűjtött adatok mennyisége, a megőrzési időtartam és a runbook-feladatok futásideje (perc).  A csomópontalapú (OMS) csomagnál a naponta összegyűjtött adatok mennyisége nincs korlátozva.  
-   - Válassza az **Automation-fiók** elemet.  Új OMS-munkaterület létrehozásakor egy hozzá társított új Automation-fiókot is létre kell hoznia, valamint meg kell adnia az Azure-előfizetését, az erőforráscsoportot és a régiót.  Kiválaszthatja az **Automation-fiók létrehozása** lehetőséget, és az **Automation-fiók** panelen megadhatja a következő adatokat: 
+   - Válassza az **Automation-fiók** elemet.  Új OMS-munkaterület létrehozásakor egy hozzá társított új Automation-fiókot is létre kell hoznia, valamint meg kell adnia az Azure-előfizetését, az erőforráscsoportot és a régiót.  Kiválaszthatja az **Automation-fiók létrehozása** lehetőséget, és az **Automation-fiók** panelen megadhatja a következő adatokat:
   - A **Név** mezőbe írja be az Automation-fiók nevét.
 
-    A rendszer a kiválasztott OMS-munkaterület alapján automatikusan kitölti az összes többi beállítást, amelyek utána nem módosíthatók.  Az ajánlat alapértelmezett hitelesítési módszere egy Azure futtató fiók.  Miután rákattintott az **OK** gombra, a rendszer érvényesíti a konfigurációs beállításokat, és létrehozza az Automation-fiókot.  Az **Értesítések** menüpont alatt nyomon követheti a folyamat előrehaladását. 
+    A rendszer a kiválasztott OMS-munkaterület alapján automatikusan kitölti az összes többi beállítást, amelyek utána nem módosíthatók.  Az ajánlat alapértelmezett hitelesítési módszere egy Azure futtató fiók.  Miután rákattintott az **OK** gombra, a rendszer érvényesíti a konfigurációs beállításokat, és létrehozza az Automation-fiókot.  Az **Értesítések** menüpont alatt nyomon követheti a folyamat előrehaladását.
 
     Ellenkező esetben válasszon egy meglévő Automation futtató fiókot.  Nem választhat másik OMS-munkaterülethez már kapcsolódó fiókot, ellenkező esetben a panelen egy figyelmeztető üzenet jelenik meg.  Ha a kiválasztott fiók már össze van kapcsolva a munkaterülettel, egy másik Automation futtató fiókot kell választania, vagy létre kell hoznia egyet.
 
@@ -194,7 +194,7 @@ Az Automation bevezetésének ajánlott módja a Marketplace Automatizálás és
 
 7. Az **Automatizálás és vezérlés** beállításainak paneljén erősítse meg, hogy telepíteni kívánja az előre kiválasztott megoldásokat. Ha bármelyiket kihagyja, később külön is telepítheti.  
 
-8. Kattintson a **Létrehozás** elemre, és folytassa az eljárást az Automation és az OMS-munkaterület bevezetésével. A rendszer érvényesíti az összes beállítást, majd megpróbálja üzembe helyezni az ajánlatot az előfizetésében.  A folyamat eltarthat néhány másodpercig, az előrehaladását nyomon követheti az **Értesítések** menüpont alatt. 
+8. Kattintson a **Létrehozás** elemre, és folytassa az eljárást az Automation és az OMS-munkaterület bevezetésével. A rendszer érvényesíti az összes beállítást, majd megpróbálja üzembe helyezni az ajánlatot az előfizetésében.  A folyamat eltarthat néhány másodpercig, az előrehaladását nyomon követheti az **Értesítések** menüpont alatt.
 
 Az ajánlat bevezetését követően hozzáláthat a runbookok létrehozásához, az engedélyezett felügyeleti megoldások használatához, vagy a [Log Analytics](https://docs.microsoft.com/azure/log-analytics) szolgáltatással a felhő vagy helyszíni környezet erőforrásai által előállított adatok begyűjtéséhez.   
 
@@ -202,5 +202,4 @@ Az ajánlat bevezetését követően hozzáláthat a runbookok létrehozásához
 * Ellenőrizheti, hogy az új Automation-fiók el tudja végezni a hitelesítést az Azure-erőforrásokkal: [Azure Automation futtató fiók hitelesítésének tesztelése](automation-verify-runas-authentication.md).
 * A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).
 * További információk a grafikus létrehozásról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md).
-
 
