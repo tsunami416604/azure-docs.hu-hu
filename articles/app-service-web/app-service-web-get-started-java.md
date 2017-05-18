@@ -14,10 +14,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: cephalin;robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 2673a9c0d91510756a97b2dba3801d2925905c9a
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
+ms.openlocfilehash: 75e51ca45a899c6b6fa123346aa3c5860fd1600d
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -44,11 +45,9 @@ Az oktatóanyagban található lépések elvégzéséhez egy Azure-előfizetésr
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Dinamikus webes projekt létrehozása az Eclipse-ben
 
-Az Eclipse IDE környezetében kattintson a **File** (Fájl), majd a **New** (Új), végül pedig a **Dynamic Web Project** (Dinamikus webes projekt) lehetőségre.
+Az Eclipse-ben válassza a **File** (Fájl) menüt, majd a **New** (Új), végül pedig a **Dynamic Web Project** (Dinamikus webes projekt) lehetőséget.
 
-![Új dinamikus webes projekt](./media/app-service-web-get-started-java/file-new-dynamic-web-project-menu.png)
-
-Amikor megjelenik a Dynamic Web Project (Dinamikus webes projekt) párbeszédpanel, adja az alkalmazásnak a **MyFirstJavaOnAzureWebApp** nevet, majd kattintson az **OK** gombra.
+A **New Dynamic Web Project** (Új dinamikus webprojekt) párbeszédpanelen adja a **MyFirstJavaOnAzureWebApp** nevet a projektnek, és válassza a **Finish** (Befejezés) lehetőséget.
    
 ![Dinamikus webes projekt párbeszédpanel](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -73,13 +72,11 @@ Amikor az új oldal megnyílik az Eclipse-ben, a meglévő `<body></body>` szaka
 
 ```jsp
 <body>
-<h1><% out.println("Java on Azure!"); %></h1>
+<h1><% out.println("Hello Azure!"); %></h1>
 </body>
 ```
 
 Mentse az oldal módosításait.
-
-![JSP-kód szerkesztése](./media/app-service-web-get-started-java/creating-index-jsp-page.png)
 
 ## <a name="publish-your-web-app-to-azure"></a>A webalkalmazás közzététele az Azure-ban
 
@@ -183,14 +180,12 @@ Először módosítsa a korábbi JSP-kódmintát, hogy a cím a mai dátum legye
 <title><% out.println(date.format(new Date())); %></title>
 </head>
 <body>
-<h1><% out.println("Java on Azure!"); %></h1>
+<h1><% out.println("Hello Azure!"); %></h1>
 </body>
 </html>
 ```
 
-![JSP-kód frissítése](./media/app-service-web-get-started-java/updating-index-jsp-page.png)
-
-Miután mentette az oldal módosításait, kattintson a jobb gombbal a projektre az Eclipse **projektböngészőjében**, majd kattintson az **Azure**, végül pedig a **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) lehetőségre.
+Miután mentette a módosításait, kattintson a jobb gombbal a projektre az Eclipse **projektböngészőjében**, majd kattintson az **Azure**, végül pedig a **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) lehetőségre.
 
 ![Frissített webalkalmazás közzététele](./media/app-service-web-get-started-java/publish-updated-web-app-context-menu.png)
 
@@ -207,9 +202,9 @@ Miután közzétette a módosításokat, láthatja, hogy az oldal címe a mai d�
 
 ![Webalkalmazás kikeresése](./media/app-service-web-get-started-java/browse-web-app-2.png)
 
-## <a name="deleting-your-web-app"></a>Webalkalmazás törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Webalkalmazás törléséhez használhatja az Azure-eszközkészlet részét képező **Azure Explorert**. Ha az **Azure Explorer** nézet még nem látható az Eclipse-ben, a következő lépések végrehajtásával jelenítheti meg:
+A webapp törléséhez használja az Azure-eszközkészlet részét képező **Azure Explorert**. Ha az **Azure Explorer** nézet még nem látható az Eclipse-ben, a következő lépések végrehajtásával jelenítheti meg:
 
 1. Kattintson a **Window** (Ablak), majd a **Show View** (Nézet megjelenítése) és az **Other** (Egyéb) elemre.
 
