@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 03/27/2017
+ms.date: 05/05/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: c3ed30ec43128c4e2b0e3d7e4b5dd61670e6bb52
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: f8279eb672e58c7718ffb8e00a89bc1fce31174f
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -77,13 +77,12 @@ Azure Batch-fiókot az [Azure Portalon](batch-account-create-portal.md)hozhat l�
 A Batch két fiókkonfigurációt támogat a *készletlefoglalási mód* tulajdonság alapján. A két konfiguráció eltérő képességeket biztosít a Batch-[készletekhez](#pool) kapcsolódóan (lásd a cikk későbbi részében).
 
 
-* **Batch szolgáltatás**: Ez az alapértelmezett beállítás, amelyben a Batch-készlet virtuális gépeit a rendszer a háttérben osztja ki az Azure által felügyelt előfizetésekben. Ezt a fiókkonfigurációt kell használni, ha Cloud Services-készletekre van szükség, azonban nem használható, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t megosztott kulcsos hitelesítéssel vagy az [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el.
+* **Batch szolgáltatás**: Ez az alapértelmezett beállítás, amelyben a Batch-készlet virtuális gépeit a rendszer a háttérben osztja ki az Azure által felügyelt előfizetésekben. Ezt a fiókkonfigurációt kell használni, ha Cloud Services-készletekre van szükség, azonban nem használható, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t megosztott kulcsos hitelesítéssel vagy az [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el. A Batch szolgáltatás fiókkonfigurációjában dedikált vagy alacsony prioritású számítási csomópontok készletei is használhatók.
 
-* **Felhasználói előfizetés**: Ezt a fiókkonfigurációt kell használni, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t csak [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el, a Cloud Services-készletek nem támogatottak. A Batch számítási virtuális gépei közvetlenül az Azure-előfizetésében vannak lefoglalva. Ehhez a módhoz egy Azure Key Vault létrehozása szükséges a Batch-fiókjához.
-
+* **Felhasználói előfizetés**: Ezt a fiókkonfigurációt kell használni, ha egyéni VM-képekből létrehozott vagy virtuális hálózatot használó virtuálisgép-készletekre van szükség. A Batch API-t csak [Azure Active Directory-hitelesítéssel](batch-aad-auth.md) érheti el, a Cloud Services-készletek nem támogatottak. A Batch számítási virtuális gépei közvetlenül az Azure-előfizetésében vannak lefoglalva. Ehhez a módhoz egy Azure Key Vault létrehozása szükséges a Batch-fiókjához. Az előfizetett felhasználói fiók konfigurációjában csak dedikált számítási csomópontok készletei használhatók. 
 
 ## <a name="compute-node"></a>Számítási csomópont
-A számítási csomópontok olyan Azure virtuális gépek, amelyek az alkalmazás adott számítási feladatának feldolgozására vannak kijelölve. A csomópont mérete határozza meg a CPU-magok számát, a memóriakapacitást és a csomóponthoz lefoglalt helyi fájlrendszeri méretet. A Windows- és Linux-csomópontokból az Azure Cloud Servicesből vagy a Virtual Machines-piactérről származó rendszerképek segítségével hozhat létre készleteket. Ezekről a lehetőségekről további információkat tudhat meg az alábbi, [Készlet](#pool) című fejezetben.
+A számítási csomópontok olyan Azure-alapú virtuális gépek vagy Cloud Service-virtuális gépek, amelyek az alkalmazás adott számítási feladatának feldolgozására vannak kijelölve. A csomópont mérete határozza meg a CPU-magok számát, a memóriakapacitást és a csomóponthoz lefoglalt helyi fájlrendszeri méretet. A Windows- és Linux-csomópontokból az Azure Cloud Servicesből vagy a Virtual Machines-piactérről származó rendszerképek segítségével hozhat létre készleteket. Ezekről a lehetőségekről további információkat tudhat meg az alábbi, [Készlet](#pool) című fejezetben.
 
 A csomópontok minden olyan végrehajtható fájlt vagy parancsprogramot képesek futtatni, amelyet a csomópont operációsrendszer-környezete támogat. Ezek közé Windows esetén az \*.exe-, a \*.cmd-, a \*.bat-fájlok és a PowerShell-parancsfájlok tartoznak, Linux esetén pedig a bináris fájlok, valamint rendszerhéj- és Python-parancsfájlok.
 
@@ -117,6 +116,25 @@ Készlet létrehozásakor a következő attribútumokat adhatja meg. Néhány be
   * Az *operációsrendszer-család* azt is meghatározza, hogy a .NET melyik verziója van telepítve az operációs rendszerrel.
   * Ahogy a Cloud Services feldolgozói szerepkörei esetében, itt is megadhatja az *operációs rendszer verzióját* (a feldolgozói szerepkörökkel kapcsolatos további információkért olvassa el a [Cloud Services overview](../cloud-services/cloud-services-choose-me.md) (A Cloud Services áttekintése) című cikk [Tell me about cloud services](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services) (További információk a Cloud Servicesről) című fejezetét).
   * A feldolgozói szerepkörökhöz hasonlóan ajánlott a `*` értéket megadni az *Operációs rendszer verziója* beállításnál, hogy a csomópontok automatikusan frissüljenek, és ne kelljen semmilyen műveletet végeznie, ha új verzió jelenik meg. Azért tanácsos megadni a konkrét operációsrendszer-verziót, mert így garantálható az alkalmazások kompatibilitása, hogy így a korábbi verziókkal való kompatibilitási tesztet lehessen végezni a verziófrissítés engedélyezése előtt. Az ellenőrzést követően frissítheti a készlet *operációsrendszer-verzióját*, és telepítheti az új operációsrendszer-képet. A rendszer ilyenkor megszakítja a futó feladatokat, és újból a várólistára helyezi őket.
+
+* **Számítási csomópont típusa** és **a csomópontok kívánt száma**
+
+    Készlet létrehozásakor megadható, hogy milyen típusú számítási csomópontokat és azokból mennyit kíván. A számítási csomópontok két típusa:
+
+    - **Alacsony prioritású számítási csomópontok.** Az alacsony prioritású csomópontok az Azure többletkapacitását használják ki a Batch-feladatok futtatásához. Az alacsony prioritású csomópontok költséghatékonyabbak a dedikáltaknál, és nagy számítási teljesítményt igénylő feladatok futtatását teszik lehetővé. További információ: [Alacsony prioritású virtuális gépek használata a Batch szolgáltatással](batch-low-pri-vms.md).
+
+        Az alacsony prioritású számítási csomópontok háttérbe szorulhatnak, ha az Azure-ban nem áll rendelkezése elég többletkapacitás. Amennyiben egy csomópont feladatok futása közben szorul háttérbe, akkor a feladatok visszakerülnek a várakozási sorba, és újra futnak, amikor a számítási csomópont ismét elérhetővé válik. Az alacsony prioritású csomópontokat akkor érdemes választani, ha a feladat végrehajtási ideje rugalmas, és a munka sok csomóponton oszlik meg.
+
+        Alacsony prioritású számítási csomópontok csak **Batch szolgáltatás** foglalási módban létrehozott Batch-fiókokkal állnak rendelkezésre.
+
+    - **Dedikált számítási csomópontok.** A dedikált számítási csomópontok az adott feladatra vannak fenntartva. Költségesebbek az alacsony prioritású csomópontoknál, de biztosan nem szorulnak háttérbe.    
+
+    Ugyanabban a készletben alacsony prioritású és dedikált csomópontok is lehetnek. Mindkét csomóponttípus (&mdash;az alacsony prioritású és a dedikált&mdash; is) saját célbeállításokkal rendelkezik, amelyhez megadható a csomópontok kívánt száma. 
+        
+    A számítási csomópontok számát azért nevezzük *cél*-értéknek, mert előfordulhat, hogy a készletben nem lehet a kívánt számú csomópontot alkalmazni. Egy készlet például nem érheti el a célértéket, ha először a Batch-fiók [magkvótáját](batch-quota-limit.md) éri el. Az is előfordulhat, hogy a készlet azért nem éri el a célértéket, mert automatikusan skálázó képlet van megadva hozzá a csomópontok maximális számának korlátozására.
+
+    Az alacsony prioritású és dedikált számítási csomópontok díjszabását a [Batch díjszabása](https://azure.microsoft.com/pricing/details/batch/) írja le.
+
 * **A csomópontok mérete**
 
     A **Cloud Services-konfigurációt** használó számítási csomópontok méretét a [Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md) (A Cloud Servicesben érvényes méretek) című cikk tartalmazza. A Batch az `ExtraSmall`, `STANDARD_A1_V2` és `STANDARD_A2_V2` kivételével az összes Cloud Services-méretet támogatja.
@@ -126,12 +144,11 @@ Készlet létrehozásakor a következő attribútumokat adhatja meg. Néhány be
     A számítási csomópont méretének kiválasztásakor vegye figyelembe a csomóponton futtatni kívánt alkalmazások jellemzőit és követelményeit. Az olyan szempontok, mint hogy az alkalmazás többszálú-e vagy mennyi memóriát fogyaszt, segíthetnek meghatározni a legmegfelelőbb és legköltséghatékonyabb csomópontméretet. A csomópont méretének kiválasztásakor általában az feltételezhető, hogy egyszerre egy tevékenység fog futni a csomóponton. Azonban lehetséges egyszerre több tevékenységet (és így több alkalmazáspéldányt) [párhuzamosan is futtatni](batch-parallel-node-tasks.md) egy számítási csomóponton a feladat végrehajtása során. Ebben az esetben a párhuzamos tevékenység-végrehajtás megnövekedett igényének kielégítése érdekében általában nagyobb csomópontméretet választanak. A további információkat a [Tevékenységütemezési szabályzat](#task-scheduling-policy) tartalmazza.
 
     A készlethez csak azonos méretű csomópontok tartozhatnak. Ha eltérő rendszerigényű és/vagy terhelési szintű alkalmazásokat szándékozik futtatni, javasoljuk, hogy használjon különálló készleteket.
-* **Csomópontok célszáma**
 
-    Ez a szám azt határozza meg, hogy hány számítási csomópontot szeretne üzembe helyezni a készletben. Azért használjuk a *cél* szócskát, mivel előfordulhat, hogy a készletben nem lehet a kívánt számú csomópontot alkalmazni. Ez például akkor fordulhat elő, ha a kívánt csomópontok száma eléri a Batch-fiókhoz tartozó [magkvótát](batch-quota-limit.md), vagy ha korábban automatikus méretezési képletet alkalmazott a készletre, amely a kívántnál alacsonyabb értékre korlátozza a csomópontok maximális számát (lásd az alábbi „Skálázási szabályzat” című fejezetet).
 * **Skálázási szabályzat**
 
     Dinamikus számítási feladatoknál megírhat egy [automatikus skálázási képletet](#scaling-compute-resources), amelyet aztán alkalmazhat a készletre. A Batch szolgáltatás rendszeresen ellenőrzi a készletet a képlet alapján, és az Ön által megadott, a készletre, a feladatokra és a tevékenységekre vonatkozó paraméterek alapján szükség esetén módosítja a készletben lévő csomópontok számát.
+
 * **Tevékenységütemezési szabályzat**
 
     A [csomópontonkénti maximális tevékenység](batch-parallel-node-tasks.md) konfigurációs lehetőség határozza meg a készleten belüli egyes számítási csomópontokon egyidejűleg futtatható tevékenységek maximális számát.

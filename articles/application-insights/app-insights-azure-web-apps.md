@@ -11,12 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/30/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: c6f25b8cf8c133f44644db1507958b2176efa230
-ms.lasthandoff: 04/13/2017
+ms.date: 05/05/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: da09e09bb0605da583716e125f5d961bfb7af0c7
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -40,9 +41,19 @@ Ha már futtat egy webappot az Azure-ban, a kéréseket és a hibák gyakoriság
 2. **Alakítsa ki webappját** az Application Insights telepítése után. 
    
     ![Webapp kialakítása](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+   **Engedélyezze az ügyféloldali figyelést** a lapmegtekintések és a felhasználók telemetriai adatainak gyűjtéséhez.
+
+   * Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
+   * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt: 
+   
+    Kulcs: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
+    
+    Érték: `true`
+   * **Mentse** a beállításokat, és **indítsa újra** az alkalmazást.
 3. **Figyelje alkalmazását**.  [Vizsgálja meg az adatokat](#explore-the-data).
 
-Később igény szerint felépítheti és újra üzembe helyezheti az alkalmazást az Application Insights segítségével.
+Később igény szerint felépítheti az alkalmazást az Application Insights segítségével.
 
 *Hogyan távolíthatom el az Application Insightst vagy válthatok másik erőforrás küldésére?*
 
@@ -104,6 +115,7 @@ Telemetriája még hatékonyabb kereséséhez használja az [Analytics lekérdez
 
 ## <a name="next-steps"></a>Következő lépések
 * [Futtassa a profilkészítőt a működő alkalmazásán.](app-insights-profiler.md)
+* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
 * [Engedélyezze az Azure Diagnostics](app-insights-azure-diagnostics.md) Application Insightsba való küldését.
 * [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
 * [Riasztási értesítéseket kaphat](../monitoring-and-diagnostics/insights-receive-alert-notifications.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.

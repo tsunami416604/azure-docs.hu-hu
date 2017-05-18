@@ -3,7 +3,7 @@ title: "Webhelyek rendelkezésre állásának és válaszkészségének megfigye
 description: "Webes teszteket állíthat be az Application Insightsban. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol."
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
@@ -11,30 +11,29 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
-ms.author: awills
-translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 5893f8126b0f18ac0d56e434a8e495380bd605d5
-ms.lasthandoff: 04/13/2017
+ms.date: 04/26/2017
+ms.author: cfreeman
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 0916c10afd526abaaf6c8e1e3aa311af5c7d84cd
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
-Miután telepítette a webalkalmazást vagy a weboldalt bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
+Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
 
-![Példa webes tesztre](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
+Rendelkezésre állási teszteket állíthat be bármely olyan HTTP- vagy HTTPS-végponthoz, amely a nyilvános internetről érhető el. Nem kell semmit hozzáadnia a tesztelt webhelyhez. Még csak arra sincs szükség, hogy a saját webhelye legyen: tesztelhet egy olyan REST API-t is, amelyet használni szokott.
 
-Webes teszteket állíthat be bármely olyan HTTP- vagy HTTPS- végponthoz, amely a nyilvános internetről érhető el. Nem kell semmit hozzáadnia a tesztelt webhelyhez. Még csak arra sincs szükség, hogy a saját webhelye legyen: tesztelhet egy olyan REST API-t is, amelyet használni szokott.
-
-A webes teszteknek két típusa létezik:
+A rendelkezésre állási teszteknek két típusuk van:
 
 * [URL-ping teszt](#create): egyszerű teszt, amelyet az Azure Portalon hozhat létre.
 * [Többlépéses webes teszt](#multi-step-web-tests): ezt a Visual Studio Enterprise segítségével hozhatja létre és feltöltheti a portálra.
 
-Alkalmazás-erőforrásonként legfeljebb 10 webes tesztet hozhat létre.
+Alkalmazás-erőforrásonként legfeljebb 25 rendelkezésre állási tesztet hozhat létre.
 
-## <a name="create"></a>1. Erőforrás megnyitása webes tesztjelentésekhez
+## <a name="create"></a>1. Erőforrás megnyitása a rendelkezésre állási tesztek jelentéseihez
 
 **Ha már konfigurálta az Application Insights szolgáltatást** a webapphoz, nyissa meg a hozzá tartozó Application Insights-erőforrást [az Azure Portalon](https://portal.azure.com).
 
@@ -45,11 +44,11 @@ Alkalmazás-erőforrásonként legfeljebb 10 webes tesztet hozhat létre.
 Az új erőforrás Áttekintés paneljének megnyitásához kattintson az **Összes erőforrás** lehetőségre.
 
 ## <a name="setup"></a>2. URL-ping teszt létrehozása
-Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy webes tesztet.
+Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
 ![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
-* **Az URL-cím** bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat egy lekérdezési karakterláncot&#151;,így például használhatja az adatbázisát. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
+* **Az URL-cím** bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat lekérdezési karakterláncot. Tehát például kísérletezhet egy kicsit az adatbázissal. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
 * **Függő kérelmek elemzése**: Ha a beállítás be van jelölve, a teszt lekéri a tesztelt weblap képeit, szkriptjeit, stílusfájljait és más erőforrásait. A rögzített válaszidőbe a fájlok lekérése is beleszámít. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt. 
 
     Ha a beállítás nincs bejelölve, a teszt csak a fájlt és a megadott URL-címet kéri le.
@@ -71,30 +70,38 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy webes tesztet.
 Adjon hozzá további teszteket. Például a kezdőlap tesztelése mellett egy keresés URL-címének tesztelésével ellenőrizni lehet, hogy az adatbázis működik-e.
 
 
-## <a name="monitor"></a>3. A webes teszt eredményeinek megtekintése
+## <a name="monitor"></a>3. A rendelkezésre állási teszt eredményeinek megtekintése
 
-5 perc elteltével kattintson a **Frissítés** elemre a teszteredmények megtekintéséhez. 
+Néhány perc elteltével kattintson a **Frissítés** elemre a teszteredmények megtekintéséhez. 
 
-![Az összegzés eredményei a kezdőpanelen](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![Az összegzés eredményei a kezdőpanelen](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
 
-Kattintson az összegző diagram bármely sávjára az időszak részletesebb megjelenítéséhez.
+A pontdiagram mintákat mutat be azokból a teszteredményekből, amelyek adatokat tartalmaznak a diagnosztikai teszt lépéseiről. A tesztmotor tárolja a hibákat tartalmazó tesztek diagnosztikai adatait. A sikeres tesztek esetében a végrehajtások részhalmazainak diagnosztikai adatait is tárolja. Vigye a mutatót a zöld vagy a piros pontokra a teszt időbélyegzőjének, időtartamának, helyének és nevének megjelenítéséhez. Kattintson a pontdiagram bármelyik pontjára a részletes teszteredmények megtekintéséhez.  
+
+Ha további adatokat szeretne látni egy konkrét időszakról, válassza ki a megfelelő tesztet vagy helyet, illetve állítsa rövidebbre az időszakot. A Keresési ablak használatával megtekintheti az összes végrehajtás eredményét, vagy az Analytics lekérdezéseinek használatával egyéni jelentéseket hozhat létre ezen adatok alapján.
+
+A nyers eredményeken kívül két rendelkezésre állási metrika is elérhető a Metrikaböngészőben: 
+
+1. Rendelkezésre állás: Az összes végrehajtott teszt közül a sikeresen végrehajtott tesztek százalékos aránya. 
+2. Tesztek időtartama: A tesztek átlagos időtartama az összes végrehajtás alapján.
+
+Az eredményeket szűrheti a teszt neve vagy a hely alapján adott tesztek és/vagy helyek trendjeinek elemzéséhez.
 
 ## <a name="edit"></a> Tesztek megtekintése és szerkesztése
 
 Az összegzés lapon válasszon ki egy tesztet. Itt megtekintheti a teszt eredményeit, és szerkesztheti vagy átmenetileg letilthatja a tesztet.
 
-![Webes teszt szerkesztése vagy letiltása](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Webes teszt szerkesztése vagy letiltása](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
 
-Érdemes letiltani a webes teszteket, miközben karbantartást végez a szolgáltatáson.
-
+Amikor karbantartást végez a szolgáltatáson, célszerű kikapcsolni a rendelkezésre állási teszteket és az azokhoz kapcsolódó riasztási szabályokat. 
 
 ## <a name="failures"></a>Ha hibákat lát
 Kattintson egy piros pontra.
 
-![Kattintson egy piros pontra](./media/app-insights-monitor-web-app-availability/open-instance.png)
+![Kattintson egy piros pontra](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
 
 
-Egy webes teszt eredményéből a következőket teheti:
+A rendelkezésre állási tesztek eredményei alapján a következőket teheti:
 
 * Megvizsgálhatja a kiszolgálótól érkezett választ.
 * Megnyithatja a kiszolgálóalkalmazás által a sikertelen kéréspéldány feldolgozása közben küldött telemetriát.
@@ -104,7 +111,7 @@ Egy webes teszt eredményéből a következőket teheti:
 
 *Úgy tűnik, hogy rendben van, mégis sikertelenként lett jelentve?* Ellenőrizze az összes képet, szkriptet, stíluslapot és a lap által betöltött többi fájlt. Ha ezek közül bármelyik hibás, a teszt sikertelenként lesz jelentve, még akkor is, ha a fő HTML-oldal megfelelően töltődik be.
 
-*Nem találhatók kapcsolódó elemek?* Ennek az lehet az oka, hogy [mintavételezés](app-insights-sampling.md) van folyamatban.
+*Nem találhatók kapcsolódó elemek?* Ha a kiszolgálóoldali alkalmazásához be van állítva az Application Insights, akkor ezt okozhatja az, hogy [mintavételezés](app-insights-sampling.md) van folyamatban. 
 
 ## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
@@ -149,7 +156,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
     ![A Visual Studióban nyissa meg a .webtest fájlt, majd kattintson a Run (Futtatás) gombra.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
 
 #### <a name="2-upload-the-web-test-to-application-insights"></a>2. A webes teszt feltöltése az Application Insightsba
-1. Az Application Insights portálon hozzon létre egy új webes tesztet.
+1. Az Application Insights portálon hozzon létre egy webes tesztet.
 
     ![A webes teszt panelen válassza a Hozzáadás elemet.](./media/app-insights-monitor-web-app-availability/16-another-test.png)
 2. Válassza ki a többlépéses tesztet, majd töltse fel a .webtest fájlt.
@@ -240,7 +247,7 @@ Az Áttekintés panelről nyissa meg a **Beállítások**, **Teljesítményteszt
 A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
 ## <a name="automation"></a>Automatizálás
-* [Használjon PowerShell-szkripteket a webes teszt automatikus beállításához](app-insights-powershell.md#add-an-availability-test).
+* [Használjon PowerShell-szkripteket a rendelkezésre állási teszt automatikus beállításához](app-insights-powershell.md#add-an-availability-test).
 * Állítson be egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer riasztás esetén hív meg.
 
 ## <a name="qna"></a>Kérdése van? Problémákat tapasztal?
@@ -252,13 +259,13 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
     A TLS 1.1 és a TLS 1.2 támogatott.
 * *Van különbség a „webes tesztek” és a „rendelkezésre állási tesztek” között?*
 
-    A két kifejezés ugyanazt jelenti.
+    A két kifejezés hasonló értelmű, felcserélhető. A „rendelkezésre állási teszt” általánosabb fogalom, amely az URL-ping tesztek mellett a többlépéses webes teszteket is magában foglalja.
 * *Rendelkezésre állási teszteket szeretnék használni a tűzfal mögött futó belső kiszolgálón.*
 
     Két lehetséges megoldás létezik:
     
     * Konfigurálhatja úgy a tűzfalat, hogy az engedélyezze a [webes tesztügynökök IP-címeiről](app-insights-ip-addresses.md) érkező bejövő kéréseket.
-    * Saját kód megírásával rendszeresen ellenőrizheti a belső kiszolgálót. Futtassa a kódot a tűzfal mögötti tesztkiszolgáló háttérfolyamataként. A tesztelési folyamat az eredményeket a Core SDK-csomag [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API-jával küldheti el az Application Insightsba. Ehhez szükség van arra, hogy a tesztkiszolgáló kimenő hozzáféréssel rendelkezzen az Application Insights betöltési végpontjához, de ez jóval kisebb biztonsági kockázatot jelent a bejövő kérések engedélyezéséhez képest. Az eredmények nem jelennek meg a rendelkezésre állási webes tesztek paneljein, de rendelkezésre állási eredményként megtekinthetők az Elemzés, a Keresés és a Metrikaböngésző paneleken.
+    * Saját kód megírásával rendszeresen ellenőrizheti a belső kiszolgálót. Futtassa a kódot a tűzfal mögötti tesztkiszolgáló háttérfolyamataként. A tesztelési folyamat az eredményeket a Core SDK-csomag [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API-jával küldheti el az Application Insightsba. Ehhez szükség van arra, hogy a tesztkiszolgáló kimenő hozzáféréssel rendelkezzen az Application Insights betöltési végpontjához, de ez jóval kisebb biztonsági kockázatot jelent a bejövő kérések engedélyezéséhez képest. Az eredmények nem jelennek meg a rendelkezésre állási webes tesztek paneljein, de rendelkezésre állási eredményként megtekinthetők az Elemzés, a Keresés és a Metrikaböngésző panelen.
 * *A többlépéses teszt feltöltése sikertelen*
 
     A méretkorlát: 300 KB.
@@ -291,4 +298,3 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 [diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-

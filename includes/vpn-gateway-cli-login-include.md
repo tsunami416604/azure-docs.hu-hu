@@ -15,4 +15,3 @@ Válassza ki a használni kívánt előfizetést.
 ```azurecli
 az account set --subscription <replace_with_your_subscription_id>
 ```
-

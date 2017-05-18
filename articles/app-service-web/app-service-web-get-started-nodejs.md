@@ -1,5 +1,5 @@
 ---
-title: "Node.js alkalmazás létrehozása a webappban | Microsoft Docs"
+title: "Node.js alkalmazás létrehozása az Azure Web App szolgáltatásban | Microsoft Docs"
 description: "Percek alatt üzembe helyezheti első Hello World Node.js-alkalmazását az App Service webappban."
 services: app-service\web
 documentationcenter: 
@@ -12,29 +12,30 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/28/2017
+ms.date: 05/05/2017
 ms.author: cfowler
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: c32cb52e4bb7bacde20e21820f277b4e86877e74
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: ced6f54603120d8832ee417b02b6673f80a99613
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 ---
 # <a name="create-a-nodejs-application-on-web-app"></a>Node.js-alkalmazás létrehozása a webappban
 
-Ez a gyorsútmutató a Node.js-alkalmazások Azure rendszeren történő fejlesztésén és üzembe helyezésén vezeti végig. Az alkalmazás futtatását Linux-alapú Azure App Service-szolgáltatás használatával végezzük majd el, az új webapp létrehozása és konfigurálása pedig az Azure CLI használatával fog történni. Ezt követően a git segítségével üzembe helyezzük a Node.js-alkalmazást az Azure-ban.
+Ez a gyorsútmutató a Node.js-alkalmazások Azure rendszeren történő fejlesztésén és üzembe helyezésén vezeti végig. Az alkalmazás futtatását [Azure App Service-csomag](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) használatával végezzük majd el, az új webalkalmazás létrehozása és konfigurálása pedig az Azure CLI használatával fog történni. Ezt követően a git segítségével üzembe helyezzük a Node.js-alkalmazást az Azure-ban.
 
 ![hello-world-in-browser](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az alábbi lépések végrehajtása nagyjából 5 percet vehet igénybe.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
-A minta futtatása előtt telepítse helyben a következő előfeltételeket:
+Mielőtt létrehozná ezt a mintát, töltse le és telepítse a következő szoftvereket:
 
-1. [A git letöltése és telepítése](https://git-scm.com/)
-1. [A Node.js és az NPM letöltése és telepítése](https://nodejs.org/)
-1. Az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) letöltése és telepítése
+* [Git](https://git-scm.com/)
+* [ Node.js és NPM](https://nodejs.org/)
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,9 +46,6 @@ Klónozza a Hello World mintaalkalmazás tárházát a helyi számítógépre.
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
-
-> [!TIP]
-> Másik lehetőségként [letöltheti a mintát](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) ZIP-fájlként, majd kicsomagolhatja azt.
 
 Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
 
@@ -83,20 +81,8 @@ Most az Azure CLI 2.0-t fogjuk egy terminálablakban használni a Node.js-alkalm
 az login
 ```
 
-## <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
-
-Az FTP és a helyi Git esetében üzembe helyező felhasználót kell konfigurálni a kiszolgálón az üzemelő példány hitelesítéséhez. Az üzembe helyező felhasználó konfigurálását csak egyszer kell elvégezni. Jegyezze fel a felhasználónevet és a jelszót, mivel az alább látható lépésben ezeket fogja használni.
-
-> [!NOTE]
-> Az FTP és a helyi Git WebAppban történő üzembe helyezéséhez üzembe helyező felhasználóra van szükség.
-> A `username` és a `password` fiókszintűek, így eltérnek az Azure-előfizetés hitelesítő adataitól. Ezeket a hitelesítő adatokat csupán egyszer kell létrehozni.
->
-
-A fiókszintű hitelesítő adatok létrehozásához használja az [az appservice web deployment user set](/cli/azure/appservice/web/deployment/user#set) parancsot.
-
-```azurecli
-az appservice web deployment user set --user-name <username> --password <password>
-```
+<!-- ## Configure a Deployment User -->
+[!INCLUDE [login-to-azure](../../includes/configure-deployment-user.md)]
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -106,32 +92,26 @@ Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#cre
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-an-azure-app-service"></a>Azure App Service-szolgáltatás létrehozása
+## <a name="create-an-azure-app-service-plan"></a>Azure App Service-csomag létrehozása
 
-Hozzon létre egy Linux-alapú App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#create) paranccsal.
+Hozzon létre egy „INGYENES” [App Service-csomagot](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) az [az appservice plan create](/cli/azure/appservice/plan#create) paranccsal.
 
-> [!NOTE]
-> Az App Service-csomagok az alkalmazások üzemeltetéséhez használt fizikai erőforrások gyűjteményét jelölik. Egy App Service-csomaghoz rendelt összes alkalmazás ugyanazokat az általa meghatározott erőforrásokat használja, így több alkalmazás üzemeltetése esetén is csökkenthetők a költségek.
->
-> Az App Service-csomagok a következőket határozzák meg:
-> * Régió (Észak-Európa, az USA keleti régiója, Délkelet-Ázsia)
-> * Példányméret (kicsi, közepes, nagy)
-> * Méretezési szám (egy, kettő vagy három példány stb.)
-> * Termékváltozat (Ingyenes, Közös, Alapszintű, Standard, Prémium)
->
+<!--
+ An App Service plan represents the collection of physical resources used to ..
+-->
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Az alábbi példa egy App Service-csomag létrehozását mutatja be a `quickStartPlan` nevű Linux-feldolgozókon, a **Standard** tarifacsomag használatával.
+Az alábbi példa egy `quickStartPlan` nevű App Service-csomag létrehozását mutatja be az **Ingyenes** tarifacsomag használatával.
 
 ```azurecli
-az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku S1 --is-linux
+az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
 ```
 
-Az App Service-csomag létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg.
+Az App Service-csomag létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg:
 
 ```json
 {
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
-    "kind": "linux",
     "location": "West Europe",
     "sku": {
     "capacity": 1,
@@ -146,9 +126,13 @@ Az App Service-csomag létrehozása után az Azure CLI az alábbi példához has
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Most, hogy létrehoztuk az App Service-csomagot, hozzon létre egy webappot a `quickStartPlan` App Service-csomagján belül. A webapp üzemeltetési tárterületet biztosít a kód üzembe helyezéséhez, valamint megadja az üzembe helyezett alkalmazás megtekintéséhez szükséges URL-címet. A webapp létrehozásához használja az [az appservice web create](/cli/azure/appservice/web#create) parancsot.
+Miután létrehoztuk az App Service-csomagot, hozzon létre egy [webalkalmazást](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) az `quickStartPlan` App Service-csomagon belül. A webapp üzemeltetési tárterületet biztosít a kód üzembe helyezéséhez, valamint megadja az üzembe helyezett alkalmazás megtekintéséhez szükséges URL-címet. A webapp létrehozásához használja az [az appservice web create](/cli/azure/appservice/web#create) parancsot.
 
-Az alábbi parancsban az `<app_name>` helyőrző helyére írja be saját, egyedi alkalmazásnevét. Az `<app_name>` nevet a rendszer a webalkalmazás alapértelmezett DNS-helyének részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazása tekintetében. A későbbiekben leképezhet bármely DNS-bejegyzést a webapphoz, mielőtt elérhetővé teszi a felhasználók számára.
+Az alábbi parancsban az `<app_name>` helyőrző helyére írja be saját, egyedi alkalmazásnevét. A `<app_name>` a webalkalmazáshoz tartozó alapértelmezett DNS-webhelyen használható. Ha a `<app_name>` nem egyedi, „Az < alkalmazásnév > nevű webhely már létezik.” üzenet jelenik meg.
+
+<!-- removed per https://github.com/Microsoft/azure-docs-pr/issues/11878
+You can later map any custom DNS entry to the web app before you expose it to your users.
+-->
 
 ```azurecli
 az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
@@ -182,22 +166,11 @@ http://<app_name>.azurewebsites.net
 
 ![app-service-web-service-created](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
-Ezzel létrehoztunk egy üres, új webappot az Azure-ban. A Node.js használatához és az alkalmazás Node.js-en történő üzembe helyezéséhez most végezzük el a webapp konfigurálását.
-
-## <a name="configure-to-use-nodejs"></a>A Node.js használatának konfigurálása
-
-A Node.js `6.9.3` verziójának használatához futtassa az [az appservice web config update](/cli/azure/app-service/web/config#update) parancsot a webapp konfigurálásához.
-
-> [!TIP]
-> A Node.js-verzió e konfigurációja a platform által biztosított alapértelmezett tárolót használja. Ha saját tárolót szeretne használni, tekintse meg az [az appservice web config container update](/cli/azure/appservice/web/config/container#update) parancs CLI-referenciáját.
-
-```azurecli
-az appservice web config update --linux-fx-version "NODE|6.9.3" --startup-file process.json --name <app_name> --resource-group myResourceGroup
-```
+Ezzel létrehoztunk egy üres, új webappot az Azure-ban.
 
 ## <a name="configure-local-git-deployment"></a>A Git helyi üzemelő példányának konfigurálása
 
-A webappon történő üzembe helyezésnek számos módja létezik, így például az FTP, a helyi Git, valamint a GitHub, a Visual Studio Team Services és a Bitbucket.
+A Web App szolgáltatásban történő üzembe helyezésnek számos módja létezik, így például az FTP, a helyi Git, valamint a GitHub, a Visual Studio Team Services és a Bitbucket.
 
 A webapphoz a helyi git alkalmazásával történő hozzáférés konfigurálásához használja az [az appservice web source-control config-local-git](/cli/azure/appservice/web/source-control#config-local-git) parancsot.
 
@@ -219,13 +192,13 @@ Adjon hozzá egy távoli Azure-mappát a helyi Git-tárházhoz.
 git remote add azure <paste-previous-command-output-here>
 ```
 
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást. Az üzembe helyező felhasználó létrehozásának részeként a rendszer fel fogja kérni a korábban megadott jelszó megadására.
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást. A rendszer kéri az üzembe helyező felhasználó létrehozásakor beállított jelszó megadását. Ügyeljen arra, hogy az [Üzembe helyező felhasználó konfigurálása](#configure-a-deployment-user) lépésben beállított jelszót adja meg, és ne az Azure Portalra való bejelentkezéshez használt jelszavát.
 
-```azurecli
+```bash
 git push azure master
 ```
 
-Az üzembe helyezés során az Azure App Service-szolgáltatás megküldi annak előrehaladási állapotát a Git részére.
+Az üzembe helyezés során az Azure App Service szolgáltatás elküldi az előrehaladási állapotát a Git részére.
 
 ```bash
 Counting objects: 23, done.
@@ -286,7 +259,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-Az üzembe helyezés befejezését követően váltson vissza Az alkalmazás megkeresése tallózással lépésben megnyitott böngészőablakra, és frissítse azt.
+Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse azt.
 
 ![hello-world-in-browser](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -318,7 +291,6 @@ A panel ezen lapja a webapphoz hozzáadható nagyszerű szolgáltatásokat jelen
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
-
-Az előre létrehozott, [Web Apps CLI-szkriptek](app-service-cli-samples.md) vizsgálata.
+> [!div class="nextstepaction"]
+> [Web Apps CLI-mintaszkriptek vizsgálata](app-service-cli-samples.md)
 
