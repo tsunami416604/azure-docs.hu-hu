@@ -3,7 +3,7 @@ title: Application Insights az Azure Cloud Servicesben | Microsoft Docs
 description: "Webes és feldolgozói szerepkörök hatékony figyelése az Application Insightsszal"
 services: application-insights
 documentationcenter: 
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 editor: alancameronwills
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
