@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: df5832478bf7049a7bb883eacac4be961ef65cf9
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: acb68b274228aa647dc7be5d36b2b077bd213c1b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -32,7 +32,7 @@ Egy fejlesztői számítógép, amelyen a következők futnak:
 * [Service Fabric SDK és -eszközök](service-fabric-get-started.md).
 *  Windows rendszerhez készült Docker.  [A Docker CE for Windows (stable) letöltése](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
-Egy Windows-fürt legalább három, Windows Server 2016 rendszerű, a Containerst futtató csomóponttal. Ehhez [hozzon létre egy fürtöt](service-fabric-get-started-azure-cluster.md) vagy [próbálja ki ingyen a Service Fabricot](http://tryazureservicefabrictest.westus.cloudapp.azure.com/). 
+Egy Windows-fürt legalább három, Windows Server 2016 rendszerű, a Containerst futtató csomóponttal. Ehhez [hozzon létre egy fürtöt](service-fabric-get-started-azure-cluster.md) vagy [próbálja ki ingyen a Service Fabricot](http://tryazureservicefabric.westus.cloudapp.azure.com/). 
 
 Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében. 
 
@@ -193,7 +193,7 @@ A Service Fabric SDK és -eszközök egy szolgáltatássablont biztosítanak, am
 4. Nyisson meg egy böngészőt, majd navigáljon a http://containercluster.westus2.cloudapp.azure.com helyre. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-get-started-azure-cluster.md#remove-the-cluster).  A [nyilvános fürtök](http://tryazureservicefabrictest.westus.cloudapp.azure.com/) néhány óra múlva automatikusan törlődnek.
+A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-get-started-azure-cluster.md#remove-the-cluster).  A [nyilvános fürtök](http://tryazureservicefabric.westus.cloudapp.azure.com/) néhány óra múlva automatikusan törlődnek.
 
 Miután leküldte a rendszerképet a tároló-beállításjegyzékbe, törölheti a helyi rendszerképet a fejlesztői számítógépről:
 
