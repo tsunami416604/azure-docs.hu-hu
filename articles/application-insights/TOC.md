@@ -12,6 +12,7 @@
 ### [Már üzemelő webalkalmazások](app-insights-monitor-performance-live-website-now.md)
 ### [Windows-szolgáltatások](app-insights-windows-services.md)
 ### [Asztali Windows](app-insights-windows-desktop.md)
+### [ASP.NET Core](app-insights-asp-net-core.md)
 
 ## Java-alkalmazások figyelése
 ### [Webalkalmazások](app-insights-java-get-started.md)
@@ -33,7 +34,8 @@
 ## Tervezés és kialakítás
 ### [Webalkalmazások és szolgáltatások részletes diagnosztikája](app-insights-devops.md)
 ### [Webalkalmazások teljesítményének monitorozása](app-insights-web-monitor-performance.md)
-### [Application Insights-erőforrások elválasztása](app-insights-separate-resources.md)
+### [A fejlesztési, tesztelési és éles környezetek elkülönítése](app-insights-separate-resources.md)
+### [Alkalmazások figyelése több szerepkörrel](app-insights-monitor-multi-role-apps.md)
 ### [Hogyan tegyem... az Application Insights szolgáltatásban?](app-insights-how-do-i.md)
 
 
@@ -112,7 +114,6 @@
 ### [API egyéni eseményekhez és a mérőszámokhoz](app-insights-api-custom-events-metrics.md)
 ### [Telemetria szűrése és előfeldolgozása](app-insights-api-filtering-sampling.md)
 ### [Mintavételezés](app-insights-sampling.md)
-### [ASP.NET Core](app-insights-asp-net-core.md)
 
 ## Kezelés
 ### [Árak és kvóták kezelése](app-insights-pricing.md)

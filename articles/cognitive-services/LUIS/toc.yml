@@ -1,85 +1,87 @@
-- name: "LUIS Documentation"
+- name: A LUIS dokumentációja
   href: ../index.md
-- name: "Overview"
+- name: Áttekintés
   items: 
-  - name: "Learn about Language Understanding Intelligent Service"
+  - name: Ismerkedés az intelligens hangfelismerési szolgáltatással
     href: Home.md
-- name: "Quickstarts"
+- name: Gyors útmutatók
   expanded: true
   items: 
-  - name: "Create a new app"
+  - name: Új alkalmazás létrehozása
     href: luis-get-started-create-app.md
-- name: "Tutorials"
+- name: oktatóanyagokat
   items: 
-  - name: "Integrate LUIS with a bot using Node.js"
+  - name: A LUIS integrálása robotokkal a Node.js használatával
     href: luis-nodejs-tutorial-build-bot-framework-sample.md
-- name: "Concepts"
+- name: Alapelvek
   items: 
-  - name: "Intents"
+  - name: Leképezések
     href: luis-concept-intent.md
-  - name: "Entities"
+  - name: Entitások
     href: luis-concept-entity-types.md
-  - name: "Utterances"
+  - name: Beszédmódok
     href: luis-concept-utterance.md
-  - name: "Support for multiple languages"
+  - name: Több nyelv támogatása
     href: luis-concept-language-support.md
-- name: "How-to guides"
+- name: Útmutatók
   items: 
-  - name: "Plan your app"
+  - name: Az alkalmazás megtervezése
     href: Plan-your-app.md
-  - name: "Build a LUIS app"
+  - name: LUIS-alkalmazások felépítése
     items: 
-    - name: "Start a new app"
+    - name: Új alkalmazás indítása
       href: Create-new-app.md
-    - name: "Add intents"
+    - name: Leképezések hozzáadása
       href: Add-intents.md
-    - name: "Add utterances"
+    - name: Beszédmódok hozzáadása
       href: Add-example-utterances.md
-    - name: "Add entities"
+    - name: Entitások hozzáadása
       href: Add-entities.md
-    - name: "Improve performance using features"
+    - name: Teljesítmény javítása szolgáltatások használatával
       href: Add-Features.md
-    - name: "Train and test the app"
+    - name: Képzés és az alkalmazás tesztelése
       href: Train-Test.md
-    - name: "Use active learning"
+    - name: Aktív tanulás használata
       href: Label-Suggested-Utterances.md
-    - name: "Publish your app"
+    - name: Az alkalmazás közzététele
       href: PublishApp.md
-  - name: "Prebuilt models"
+  - name: Előre összeállított modellek
     items: 
-    - name: "Use prebuilt entities"
+    - name: Előre összeállított entitások használata
       href: Pre-builtEntities.md
-    - name: "Use prebuilt domains"
+    - name: Előre összeállított tartományok használata
       href: luis-how-to-use-prebuilt-domains.md
-    - name: "Use the Cortana prebuilt app"
+    - name: Az előre összeállított Cortana-alkalmazás használata
       href: Cortana-Prebuilt-App.md
-  - name: "Manage your LUIS app"
+  - name: A LUIS-alkalmazás felügyelete
     items: 
-    - name: "Monitor your app using the dashboard"
+    - name: Az alkalmazás figyelése az irányítópulttal
       href: App-Dashboard.md
-    - name: "Manage keys"
+    - name: Kulcsok kezelése
       href: Manage-Keys.md
-    - name: "Create subscription keys"
+    - name: Előfizetői azonosítók létrehozása
       href: AzureIbizaSubscription.md
-    - name: "Manage versions"
+    - name: Verziók kezelése
       href: luis-how-to-manage-versions.md
-    - name: "Collaborate on a LUIS app"
+    - name: Együttműködés a LUIS-alkalmazásokon
       href: luis-how-to-collaborate.md    
-- name: "Reference"
+- name: Referencia
   items: 
-  - name: "LUIS API"
+  - name: API-k készítése
     href: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f
-  - name: "SDKs"
+  - name: Végponti API
+    href: https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78      
+  - name: SDK-k
     items:
-    - name: "Android"
+    - name: Android
       href: https://github.com/Microsoft/Cognitive-LUIS-Android
-    - name: "Node.js"
+    - name: Node.js
       href: https://github.com/Microsoft/Cognitive-LUIS-Node.js
-    - name: "Python"
+    - name: Python
       href: https://github.com/Microsoft/Cognitive-LUIS-Python
-    - name: "Windows"
+    - name: Windows
       href: https://github.com/Microsoft/Cognitive-LUIS-Windows
-- name: "Resources"
+- name: Erőforrások
   items: 
-  - name: "LUIS FAQ"
+  - name: LUIS FAQ
     href: luis-resources-faq.md

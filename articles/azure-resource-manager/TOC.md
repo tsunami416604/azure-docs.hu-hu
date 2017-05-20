@@ -24,7 +24,6 @@
 ### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
 ### [Több példány létrehozása](resource-group-create-multiple.md)
-### [Szekvenciális hurok](resource-manager-sequential-loop.md)
 ### [Hely beállítása](resource-manager-template-location.md)
 ### [Címkék hozzárendelése](resource-manager-template-tags.md)
 ### [Gyermekerőforrás nevének és típusának megadása](resource-manager-template-child-resource.md)
@@ -44,7 +43,7 @@
 #### [Sablon exportálása és újbóli üzembe helyezése](resource-manager-export-template-cli.md)
 ### [Portal](resource-group-template-deploy-portal.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [Több erőforráscsoport üzembe helyezése](resource-manager-cross-resource-group-deployment.md)
+### [Erőforráscsoportok közötti üzembe helyezés](resource-manager-cross-resource-group-deployment.md)
 ### [Folyamatos integráció a Visual Studio Team Services szolgáltatással](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Biztonságos értékek továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md)
 

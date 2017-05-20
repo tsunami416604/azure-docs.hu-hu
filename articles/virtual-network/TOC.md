@@ -17,14 +17,17 @@
 ### [Hálózati biztonsági csoportok](virtual-networks-nsg.md)
 
 ## Üzembe helyezés
-### Virtuális hálózatok
-#### [Portál](virtual-networks-create-vnet-arm-pportal.md)
-#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [Parancssori felület](virtual-networks-create-vnet-arm-cli.md)
-#### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
-#### [Portál (klasszikus)](virtual-networks-create-vnet-classic-pportal.md)
-#### [PowerShell (klasszikus)](virtual-networks-create-vnet-classic-netcfg-ps.md)
-#### [Parancssori felület (klasszikus)](virtual-networks-create-vnet-classic-cli.md)
+### Virtuális hálózatok (VNetek)
+#### [VNetek létrehozása, módosítása vagy törlése](virtual-network-manage-network.md)
+#### [Alhálózatok létrehozása, módosítása vagy törlése](virtual-network-manage-subnet.md)
+#### [VNet létrehozása – több alhálózat](virtual-networks-create-vnet-arm-pportal.md) 
+##### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+##### [Parancssori felület](virtual-networks-create-vnet-arm-cli.md)
+##### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
+#### VNet létrehozása – több alhálózat (klasszikus)
+##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [Parancssori felület](virtual-networks-create-vnet-classic-cli.md)
 
 ### Network security groups (Hálózati biztonsági csoportok)
 #### [Portál](virtual-networks-create-nsg-arm-pportal.md)
@@ -46,39 +49,42 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [Sablon](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### [Hálózati illesztők](virtual-network-network-interface.md)
+### Hálózati adapterek (NIC-k)
+#### [Hálózati adapterek létrehozása, módosítása vagy törlése](virtual-network-network-interface.md)
+#### [IP-címek hozzáadása, szerkesztése vagy eltávolítása](virtual-network-network-interface-addresses.md)
 
 ### [Nyilvános IP-címek](virtual-network-public-ip-address.md)
 
 ### Virtual machines (Virtuális gépek)
-
-#### Statikus nyilvános IP-címek
-##### [Portál](virtual-network-deploy-static-pip-arm-portal.md)
+#### [Hálózati adapterek hozzáadása vagy eltávolítása](virtual-network-network-interface-vm.md) 
+#### Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása
+##### [Portal](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [Parancssori felület](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [Sablon](virtual-network-deploy-static-pip-arm-template.md)
 ##### [PowerShell (klasszikus)](virtual-networks-reserved-public-ip.md)
 
-#### Statikus magánhálózati IP-címek
-##### [Portál](virtual-networks-static-private-ip-arm-pportal.md)
+#### Statikus magánhálózati IP-címmel rendelkező virtuális gép létrehozása
+##### [Portal](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [Parancssori felület](virtual-networks-static-private-ip-arm-cli.md)
 ##### [Portál (klasszikus)](virtual-networks-static-private-ip-classic-pportal.md)
 ##### [PowerShell (klasszikus)](virtual-networks-static-private-ip-classic-ps.md)
 ##### [Parancssori felület (klasszikus)](virtual-networks-static-private-ip-classic-cli.md)
 
-#### Több hálózati adapter
-##### [PowerShell](virtual-network-deploy-multinic-arm-ps.md)
-##### [Parancssori felület](virtual-network-deploy-multinic-arm-cli.md)
-##### [Sablon](virtual-network-deploy-multinic-arm-template.md)
+#### Több hálózati adapterrel rendelkező virtuális gép létrehozása
+##### [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Parancssori felület](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [PowerShell (klasszikus)](virtual-network-deploy-multinic-classic-ps.md)
 ##### [Parancssori felület (klasszikus)](virtual-network-deploy-multinic-classic-cli.md)
 
-#### Több IP-cím
+#### Több IP-címmel rendelkező virtuális gép létrehozása
 ##### [Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
 ##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 ##### [Parancssori felület](virtual-network-multiple-ip-addresses-cli.md)
 ##### [Sablon](virtual-network-multiple-ip-addresses-template.md)
+
+#### [Gyorsított hálózatkezeléssel rendelkező virtuális gép létrehozása](virtual-network-create-vm-accelerated-networking.md)
 
 ### Kapcsolódási forgatókönyvek
 #### [Virtuális hálózatok közötti kapcsolat](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -97,9 +103,6 @@
 ##### [Mintaalkalmazás](virtual-networks-sample-app.md)
 
 ## Konfigurálás
-### Gyorsított hálózatkezelés virtuális gépek számára
-#### [Azure Portal](virtual-network-accelerated-networking-portal.md)
-#### [PowerShell](virtual-network-accelerated-networking-powershell.md)
 ### [Virtuálisgép-hálózat teljesítményének optimalizálása](virtual-network-optimize-network-bandwidth.md)
 ### Hozzáférés-vezérlési listák
 #### [Klasszikus portál](virtual-networks-acl.md)

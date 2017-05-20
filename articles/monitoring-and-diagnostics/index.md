@@ -12,10 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 475353f5a5abca1e9d6b5fdf4980d0cf33acc744
-ms.lasthandoff: 05/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
+ms.openlocfilehash: e59cdcf2d54edece06feb0ee5675bdef35dfae03
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/16/2017
 
 ---
 # <a name="azure-monitor-documentation"></a>Az Azure Monitor dokumentációja
@@ -40,7 +41,25 @@ Ismerje meg, hogyan használhatja az Azure felügyeleti és diagnosztikai szolg�
             </div>
         </div>
         </a>
-    </li>    
+    </li>
+    <li>
+        <a href="https://azure.microsoft.com/resources/videos/index/?services=monitor">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Monitor videotár</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
     <li>
         <a href="/azure/monitoring-and-diagnostics/insights-alerts-portal">
         <div class="cardSize">
@@ -149,7 +168,7 @@ Ismerje meg, hogyan használhatja az Azure felügyeleti és diagnosztikai szolg�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/monitor/">REST API-referencia</a></p>
+                        <p><a href="/rest/api/monitor/">REST API – referencia</a></p>
                     </div>
                 </div>
             </div>
@@ -174,10 +193,11 @@ Ismerje meg, hogyan használhatja az Azure felügyeleti és diagnosztikai szolg�
                 <div class="card">
                     <div class="cardText">
                         <h3>Diagnosztika</h3>
-                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema">Azure Diagnostics-séma</a></p>
-                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot0">Azure Diagnostics-séma 1.0</a></p>
-                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot2">Azure Diagnostics-séma 1.2</a></p>
-                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later">Azure Diagnostics-séma 1.3-tól 1.5-ig</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-versioning-history">Az Azure Diagnostics bővítményeinek verzióelőzményei</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema">Azure Diagnostics-bővítményséma</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot0">Azure Diagnostics-bővítményséma 1.0</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot2">Azure Diagnostics-bővítményséma 1.2</a></p>
+                        <p><a href="/azure/monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later">Azure Diagnostics-bővítményséma 1.3–1.7</a></p>
                     </div>
                 </div>
             </div>

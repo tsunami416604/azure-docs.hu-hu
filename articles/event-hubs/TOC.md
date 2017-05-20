@@ -1,5 +1,6 @@
 # Áttekintés
 ## [Mi az Event Hubs?](event-hubs-what-is-event-hubs.md)
+## [Event Hubs-szolgáltatások](event-hubs-features.md)
 ## [Gyakori kérdések](event-hubs-faq.md)
 
 # Első lépések

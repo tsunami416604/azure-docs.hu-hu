@@ -1,8 +1,9 @@
 # Áttekintés
 ## [Mi az az Azure Active Directory?](active-directory-whatis.md)
 ## [Kiadás kiválasztása](active-directory-editions.md)
-
-## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
+## [Tudnivalók az Azure-identitáskezelésről](fundamentals-identity.md)
+## [Az Azure identitáskezelési megoldásainak ismertetése](understand-azure-identity-solutions.md)
+## [Az Azure Portal felületének előzetese](active-directory-preview-explainer.md)
 
 # Bevezetés
 ## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
@@ -91,16 +92,17 @@
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
 ###    Szoftveres hozzáférés
 #### [Naplózási referencia](active-directory-reporting-api-audit-reference.md)
-#### [Naplózási minták](active-directory-reporting-api-audit-samples.md)
-#### [Adatok lekérése](active-directory-reporting-api-with-certificates.md)
-#### [Előfeltételek](active-directory-reporting-api-prerequisites.md)
 #### [Bejelentkezési referencia](active-directory-reporting-api-sign-in-activity-reference.md)
+#### [Előfeltételek](active-directory-reporting-api-prerequisites-azure-portal.md)
+#### [Naplózási minták](active-directory-reporting-api-audit-samples.md)
 #### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
+#### [Adatok lekérése](active-directory-reporting-api-with-certificates.md)
 ### [Klasszikus portál](active-directory-view-access-usage-reports.md)
 #### [Azure AD Reporting](active-directory-reporting-getting-started.md)
 #### [Jelentéskészítési útmutató](active-directory-reporting-guide.md)
 #### [Ismert hálózatok](active-directory-known-networks.md)
 #### [API](active-directory-reporting-api-getting-started.md)
+##### [Előfeltételek](active-directory-reporting-api-prerequisites.md)
 #### [Események naplózása](active-directory-reporting-audit-events.md)
 #### [Késések](active-directory-reporting-latencies.md)
 #### [Értesítések](active-directory-reporting-notifications.md)
@@ -171,11 +173,14 @@
 ##### [Egyszeri bejelentkezés KCD-vel](active-directory-application-proxy-sso-using-kcd.md)
 ##### [Egyszeri bejelentkezés fejlécekkel](application-proxy-ping-access.md)
 ##### [Egyszeri bejelentkezés jelszótárolással](application-proxy-sso-azure-portal.md)
-#### Ajánlott eljárások ismertetése
+#### Alapelvek
 ##### [Összekötők](application-proxy-understand-connectors.md)
 ##### [Biztonság](application-proxy-security-considerations.md)
 ##### [Hálózatok](application-proxy-network-topology-considerations.md)
-#### 
+
+
+##### [Frissítés a TMG vagy a UAG rendszerről](application-proxy-transition-from-uag-tmg.md)
+
 #### Speciális konfigurációk
 ##### [Közzététel külön hálózatokon](active-directory-application-proxy-connectors-azure-portal.md)
 ##### [Proxykiszolgálók](application-proxy-working-with-proxy-servers.md)
@@ -186,7 +191,6 @@
 #### Közzétételi útmutatók
 ##### [Távoli asztal](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
-##### [Microsoft Forefront](application-proxy-transition-from-uag-tmg.md)
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
 #### A klasszikus portál használata
 ##### [Letöltési összekötők](application-proxy-enable-classic-portal.md)
@@ -201,12 +205,6 @@
 #### [Felhasználók eltávolítása](active-directory-coreapps-remove-assignment-azure-portal.md)
 #### [Az összes alkalmazás megtekintése](active-directory-coreapps-view-azure-portal.md)
 #### [Felhasználói fiók üzembe helyezésének kezelése](active-directory-enterprise-apps-manage-provisioning.md)
-
-### Fejlesztés
-#### [Felhasználók hozzárendelése](active-directory-applications-guiding-developers-assigning-users.md)
-#### [Csoportok hozzárendelése](active-directory-applications-guiding-developers-assigning-groups.md)
-#### [Hozzárendelés igénylése](active-directory-applications-guiding-developers-requiring-user-assignment.md)
-#### [LoB-alkalmazások fejlesztése](active-directory-applications-guiding-developers-for-lob-applications.md)
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)
@@ -226,7 +224,7 @@
 ##### [Hozzáférési panel](active-directory-application-access-panel-content-map.md)
 ##### [Alkalmazásproxy](active-directory-application-proxy-content-map.md)
 ##### [Feltételes hozzáférés](active-directory-application-conditional-access-content-map.md)
-
+### [Alkalmazásfejlesztés](active-directory-applications-guiding-developers-for-lob-applications.md)
 ### [Dokumentumtár](active-directory-apps-index.md)
 
 ## Címtár kezelése
@@ -294,6 +292,7 @@
 ##### [Erőforrás szerint](role-based-access-control-configure.md)
 #### [Beépített szerepkörök](role-based-access-built-in-roles.md)
 #### [Egyéni szerepkörök](role-based-access-control-custom-roles.md)
+#### [Egyéni szerepkörök hozzárendelése belső és külső felhasználókhoz](role-based-access-control-create-custom-roles-for-internal-external-users.md)
 #### [Jelentéskészítés](role-based-access-control-access-change-history-report.md)
 #### Szerepkörök kezelésének további módjai
 ##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
@@ -306,12 +305,13 @@
 ## Identitások védelme
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
+#### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
+#### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
 #### [Támogatott alkalmazások](active-directory-conditional-access-supported-apps.md)
 #### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
 #### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
-#### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
-#### [Gyakori kérdések](active-directory-conditional-faqs.md)
 #### [Kijavítás](active-directory-conditional-access-device-remediation.md)
+#### [Gyakori kérdések](active-directory-conditional-faqs.md)
 #### [Klasszikus portál](active-directory-conditional-access.md)
 ##### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
 
@@ -332,6 +332,7 @@
 #### [Bejelentkezési felület](active-directory-identityprotection-flows.md)
 #### [Kockázati események szimulálása](active-directory-identityprotection-playbook.md)
 #### [Felhasználók tiltásának feloldása](active-directory-identityprotection-unblock-howto.md)
+#### [Gyakori kérdések](active-directory-identity-protection-faqs.md)
 #### [Szószedet](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)

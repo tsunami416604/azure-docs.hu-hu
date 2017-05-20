@@ -1,5 +1,5 @@
 # Áttekintés
-## [Hadoop](hdinsight-hadoop-introduction.md)
+## [A HDInsight és a Hadoop](hdinsight-hadoop-introduction.md)
 ## [Hadoop-összetevők a HDInsighton](hdinsight-component-versioning.md)
 ## [R Server](hdinsight-hadoop-r-server-overview.md)
 ## [Apache Spark](hdinsight-apache-spark-overview.md)
@@ -133,6 +133,7 @@
 ### [Fürtök testreszabása a Bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [Fürtök testreszabása szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)
 ### [Szkriptműveletek fejlesztése](hdinsight-hadoop-script-actions-linux.md)
+### [A Presto telepítése és használata](hdinsight-hadoop-install-presto.md)
 ### [Mono telepítése vagy frissítése](hdinsight-hadoop-install-mono.md)
 ### [Hive-kódtárak hozzáadása](hdinsight-hadoop-add-hive-libraries.md)
 ### [A Giraph használata](hdinsight-hadoop-giraph-install-linux.md)
@@ -166,6 +167,7 @@
 #### [Az Ambari REST API használata](hdinsight-hadoop-manage-ambari-rest-api.md)
 ### [Tárfiókok hozzáadása](hdinsight-hadoop-add-storage.md)
 ### [Adatok feltöltése Hadoop-feladatokhoz](hdinsight-upload-data.md)
+### [Több HDInsight-fürt a Data Lake Store-ral](hdinsight-multiple-clusters-data-lake-store.md)
 ### [Adatok importálása és exportálása a Sqoop használatával](hdinsight-use-sqoop.md)
 #### [Kapcsolódás az SSH-val](hdinsight-use-sqoop-mac-linux.md)
 #### [Futtatás a cURL használatával](hdinsight-hadoop-use-sqoop-curl.md)
@@ -220,5 +222,6 @@
 ### [Fürtök figyelése az Ambari API-val](hdinsight-monitor-use-ambari-api.md)
 
 # Erőforrások
+## [A HDInsight Windows-eszközei](hdinsight-hadoop-windows-tools.md)
 ## [Segítség kérése a fórumokon](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)

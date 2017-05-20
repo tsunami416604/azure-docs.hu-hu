@@ -29,6 +29,10 @@
 ## Kezelés
 ### [Batch – PowerShell-parancsmagok](batch-powershell-cmdlets-get-started.md)
 ### [Azure CLI](batch-cli-get-started.md)
+#### [Batch-fiók létrehozása](./scripts/batch-cli-sample-create-account.md)
+#### [Alkalmazás hozzáadása](./scripts/batch-cli-sample-add-application.md)
+#### [Készletek kezelése](./scripts/batch-cli-sample-manage-pool.md)
+#### [Feladatok és tevékenységek futtatása](./scripts/batch-cli-sample-run-job.md)
 
 # Referencia
 ## [PowerShell](/powershell/module/azurerm.batch)
@@ -63,7 +67,6 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [C#-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [Python-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
-## [CLI-minták](batch-cli-samples.md)
 ## [Big Compute erőforrások](big-compute-resources.md)
 ## [Blog](https://blogs.technet.microsoft.com/windowshpc/)
 

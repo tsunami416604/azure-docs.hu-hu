@@ -70,9 +70,9 @@
 ##### [Java Linuxon](service-fabric-reliable-services-quick-start-java.md)
 
 #### A Reliable Services életciklusa
-#### [Konfigurálás](service-fabric-reliable-services-configuration.md)
-#### [Értesítések küldése](service-fabric-reliable-services-notifications.md)
-#### [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
+##### [Konfigurálás](service-fabric-reliable-services-configuration.md)
+##### [Értesítések küldése](service-fabric-reliable-services-notifications.md)
+##### [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
 
 #### Kommunikáció a szolgáltatásokkal
 ##### [Kommunikáció a Reliable Services szolgáltatással](service-fabric-reliable-services-communication.md)
@@ -215,6 +215,7 @@
 ### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
 
 ### [Fürt kezelése az Azure CLI-vel](service-fabric-azure-cli.md)
+### [Fürtcsomópontok javítása](service-fabric-patch-orchestration-application.md)
 
 ### Fürterőforrások kezelése és összehangolása
 #### [A fürterőforrás-kezelő áttekintése](service-fabric-cluster-resource-manager-introduction.md)
@@ -249,11 +250,13 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [Naplók lekérdezése egy szolgáltatási folyamatból](service-fabric-diagnostic-collect-logs-without-an-agent.md)
+### [Windows Server-tárolók figyelése](service-fabric-diagnostics-containers-windowsserver.md)
 ### [A Stateful Reliable Services diagnosztikai funkciói](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors-diagnosztika](service-fabric-reliable-actors-diagnostics.md)
 ### [A helyi fürt hibaelhárítása](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # Referencia
+## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
 ## [Java API](/java/api/)
 ## [.NET](/dotnet/api/)

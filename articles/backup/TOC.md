@@ -71,9 +71,11 @@
 ### [Az Azure Backup-fájlok és -mappák lassú biztonsági mentése](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 
 # Alapelvek
+## [A Recovery Services-tárolók áttekintése](backup-azure-recovery-services-vault-overview.md)
+## [Backup tároló frissítése Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md)
+## [Azure Backup-tároló törlése](backup-azure-delete-vault.md)
 ## [Szerepköralapú hozzáférés-vezérlés](backup-rbac-rs-vault.md)
 ## [Biztonsági szolgáltatások hibrid biztonsági mentésekhez](backup-azure-security-feature.md)
-## [Azure Backup-tároló törlése](backup-azure-delete-vault.md)
 ## [Offline biztonsági mentés konfigurálása](backup-azure-backup-import-export.md)
 ## [A szalagtár lecserélése](backup-azure-backup-cloud-as-tape.md)
 ## [Linux virtuális gépek alkalmazáskonzisztens biztonsági mentései](backup-azure-linux-app-consistent.md)

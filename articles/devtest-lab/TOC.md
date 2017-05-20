@@ -4,12 +4,12 @@
 ## Forgatókönyvek
 ### [Tesztkörnyezetek használata képzéshez](devtest-lab-training-lab.md)
 
-# Első lépések
+# Bevezetés
 ## [Tesztkörnyezet létrehozása](devtest-lab-create-lab.md)
 ## [Az első virtuális gép létrehozása](devtest-lab-create-first-vm.md)
 ## [Kiinduló szabályzatok beállítása](devtest-lab-get-started-with-lab-policies.md)
 
-# Útmutató
+# Útmutatók
 ## Virtuális gépek használata tesztkörnyezetben
 ### [Virtuális gépek létrehozása](devtest-lab-add-vm.md)
 ### [Igényelhető virtuális gép létrehozása](devtest-lab-add-claimable-vm.md)
@@ -44,6 +44,8 @@
 ## Virtuális hálózatok kezelése
 ### [Virtuális hálózatok konfigurálása](devtest-lab-configure-vnet.md)
 ### [IP-konfigurációs beállítás kiválasztása](devtest-lab-shared-ip.md)
+
+## [A labor skálázása](devtest-lab-scale-lab.md)
 
 # Referencia
 ## [CLI 2.0](/cli/azure/lab)
