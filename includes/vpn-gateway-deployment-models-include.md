@@ -1,1 +1,4 @@
-Az Azure jelenleg két üzemi modellt használ: a Resource Manager-alapú és a klasszikus modellt. Mielőtt elkezdené a konfigurációt, győződjön meg arról, hogy a használni kívánt üzemi modellhez tartozó beállításokat használja. További információkért tekintse át az [üzemi modelleket ismertető](../articles/resource-manager-deployment-model.md) témakört.
+> [!NOTE]
+> Az Azure jelenleg két üzemi modellt használ: a Resource Manager-alapú és a klasszikus modellt. A két modell nem teljesen kompatibilis egymással. Mielőtt belekezdene, tudnia kell, hogy melyik modellben kíván dolgozni. További információt az üzembehelyezési modellekről [az üzembehelyezési modellek ismertetésében](../articles/resource-manager-deployment-model.md) talál. Ha még nem ismeri az Azure-t, javasoljuk, hogy használja a Resource Manager-alapú üzemi modellt.
+>
+>
