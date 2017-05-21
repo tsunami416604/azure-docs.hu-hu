@@ -1,4 +1,4 @@
-# [Áttekintés](security-get-started-overview.md)
+# [Áttekintés](azure-security.md)
 ## [Hálózati biztonság](security-network-overview.md)
 ## [Tárbiztonság](security-storage-overview.md)
 ## [Számítási biztonság](security-virtual-machines-overview.md)
@@ -6,6 +6,10 @@
 ## [Identitáskezelés](security-identity-management-overview.md)
 ## [IoT-biztonság](../iot-suite/iot-security-architecture.md#security-in-iot)
 ## [Biztonsági architektúra](azure-security-architecture-overview.md)
+### [Működési biztonság](azure-operational-security.md)
+### [Fejlett fenyegetésészlelés](azure-threat-detection.md)
+### [Naplózás](azure-log-audit.md)
+### [Elkülönítés a nyilvános felhőben](azure-isolation.md)
 
 # Első lépések
 ## [Ismerkedés az Azure biztonsági szolgáltatásaival](azure-security-getting-started.md)

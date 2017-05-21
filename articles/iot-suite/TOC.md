@@ -11,6 +11,7 @@
 ## [Csatlakoztatott factory-megoldás áttekintése](iot-suite-connected-factory-overview.md)
 ## [A távoli figyelési megoldás bemutatója](iot-suite-remote-monitoring-sample-walkthrough.md)
 ## [A prediktív karbantartási megoldás bemutatója](iot-suite-predictive-walkthrough.md)
+## [Csatlakoztatott gyáron alapuló megoldás bemutatója](iot-suite-connected-factory-sample-walkthrough.md)
 ## [A Raspberry Pi csatlakoztatása](iot-suite-raspberry-pi-kit-get-started.md)
 ### C használata
 #### [Szimulált adatok](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)

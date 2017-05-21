@@ -5,7 +5,6 @@
 # Első lépések
 ## [Regisztráció a Log Analyticsre](log-analytics-get-started.md)
 ## [Hozzáférés-kezelés](log-analytics-manage-access.md)
-## [Proxy és tűzfal](log-analytics-proxy-firewall.md)
 ## [Használati adatok](log-analytics-usage.md)
 ## [Log Analytics – gyakori kérdések](log-analytics-faq.md)
 ## [Szolgáltatók](log-analytics-service-providers.md)
@@ -14,7 +13,7 @@
 ## Adatok gyűjtése
 ### Összekapcsolt források
 #### [Windows-ügynökök](log-analytics-windows-agents.md)
-#### [Linux-ügynökök](log-analytics-linux-agents.md)
+#### [Linux-ügynökök](log-analytics-agent-linux.md)
 #### [Azure-alapú virtuális gépek](log-analytics-azure-vm-extension.md)
 #### [Azure-erőforrások](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
@@ -23,8 +22,12 @@
 ### Adatforrások
 #### [Az adatforrások áttekintése](log-analytics-data-sources.md)
 #### [Windows-események](log-analytics-data-sources-windows-events.md)
+#### [Egyéni JSON-adatok](log-analytics-data-sources-json.md)
+#### [Összegyűjtött teljesítményadatok](log-analytics-data-sources-collectd.md)
+#### [Nagios- és Zabbix-riasztások](log-analytics-data-sources-alerts-nagios-zabbix.md)
 #### [Syslog](log-analytics-data-sources-syslog.md)
 #### [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md)
+#### [Linux-alkalmazások teljesítménye](log-analytics-data-sources-linux-applications.md)
 #### [IIS-naplók](log-analytics-data-sources-iis-logs.md)
 #### [Egyéni naplók](log-analytics-data-sources-custom-logs.md)
 #### [Egyéni mezők](log-analytics-custom-fields.md)
@@ -32,6 +35,7 @@
 ### [Naplókeresés – Áttekintés](log-analytics-log-searches.md)
 ### [A Search leírása](log-analytics-search-reference.md)
 #### [Reguláris kifejezések](log-analytics-log-searches-regex.md)
+### [Műveletek végrehajtása a keresési eredményekből](log-analytics-log-search-takeaction.md)
 ### [Számítógépcsoportok](log-analytics-computer-groups.md)
 ## Adatok elemzése
 ### [Irányítópultok](log-analytics-dashboards.md)
@@ -54,6 +58,7 @@
 ### [AD-replikáció állapota](log-analytics-ad-replication-status.md)
 ### [Riasztáskezelés](log-analytics-solution-alert-management.md)
 ### [Azure SQL Analytics](log-analytics-azure-sql.md)
+### [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md)
 ### [Kapacitás és teljesítmény](log-analytics-capacity.md)
 ### [Változáskövetés](log-analytics-change-tracking.md)
 ### [Tárolók](log-analytics-containers.md)

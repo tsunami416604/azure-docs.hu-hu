@@ -17,6 +17,7 @@
 ## Fejlesztés
 ### [Az U-SQL alapjai](data-lake-analytics-u-sql-get-started.md)
 ### [U-SQL-katalógus](data-lake-analytics-u-sql-catalog.md)
+### [U-SQL-összekapcsolások](data-lake-analytics-u-sql-combine-data-with-joins.md)
 ### [U-SQL-paraméterek](data-lake-analytics-u-sql-parameterize_scripts.md)
 ### [Ablakfüggvények az U-SQL-ben](data-lake-analytics-use-window-functions.md)
 ### [Felhasználó által definiált operátorok az U-SQL-ben](data-lake-analytics-u-sql-develop-user-defined-operators.md)

@@ -116,7 +116,7 @@
 ### [Ajánlott biztonsági eljárások](iot-hub-security-best-practices.md)
 ### [Biztonsági architektúra](iot-hub-security-architecture.md)
 ### [Az IoT-környezet biztonságossá tétele](iot-hub-security-deployment.md)
-## Átjáró SDK
+## IoT Edge
 ### Eszköz szimulálása
 #### [Linux](iot-hub-linux-gateway-sdk-simulated-device.md)
 #### [Windows](iot-hub-windows-gateway-sdk-simulated-device.md)
@@ -129,7 +129,7 @@
 ## [Java (Szolgáltatás)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (Eszközök)](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Azure IoT SDK-k](http://azure.github.io/azure-iot-sdks/)
-## [Átjáró SDK](http://azure.github.io/azure-iot-gateway-sdk)
+## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (Erőforrás-szolgáltató)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 ## [REST (Eszközidentitások)](https://docs.microsoft.com/rest/api/iothub/deviceapi)
 ## [REST (Ikereszközök)](https://docs.microsoft.com/rest/api/iothub/devicetwinapi)

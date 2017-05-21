@@ -29,12 +29,14 @@
 ### [Erőforrások figyelése](cdn-resource-health.md)
 ### [A működés felülbírálása szabályokkal](cdn-rules-engine.md)
 ### [Valós idejű értesítések beállítása](cdn-real-time-alerts.md)
+### [HTTP/2-támogatás](cdn-http2.md)
 
 ## Elemzés
 ### [Használati minták elemzése](cdn-analyze-usage-patterns.md)
 ### [Extra szintű HTTP-jelentések létrehozása](cdn-advanced-http-reports.md)
 ### [Valós idejű statisztikák megjelenítése](cdn-real-time-stats.md)
 ### [Élcsomópont teljesítményelemzése](cdn-edge-performance.md)
+### [Metrikák exportálása diagnosztikai naplókkal](cdn-log-analysis.md)
 
 ## Fejlesztés
 ### [.NET](cdn-app-dev-net.md)

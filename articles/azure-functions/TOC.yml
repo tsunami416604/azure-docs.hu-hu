@@ -1,128 +1,128 @@
-- name: "Functions – dokumentáció"
+- name: Functions – dokumentáció
   href: index.yml
-- name: "Áttekintés"
+- name: Áttekintés
   items:
-  - name: "A Functions ismertetése"
+  - name: A Functions ismertetése
     href: functions-overview.md
-  - name: "A Functions futtatókörnyezete"
+  - name: A Functions futtatókörnyezete
     href: functions-runtime-overview.md
-  - name: "Választás a következők közül: Flow, Logic Apps, Functions és WebJobs"
+  - name: 'Választás a következők közül: Flow, Logic Apps, Functions és WebJobs'
     href: functions-compare-logic-apps-ms-flow-webjobs.md
-- name: "Gyors útmutatók"
+- name: Gyors útmutatók
   expanded: true
   items:
-  - name: "Függvény létrehozása – portál"
+  - name: Függvény létrehozása – portál
     href: functions-create-first-azure-function.md
-  - name: "Függvény létrehozása – Azure CLI"
+  - name: Függvény létrehozása – Azure CLI
     href: functions-create-first-azure-function-azure-cli.md
 #  - name: Create function - Visual Studio
 #    href: functions-create-your-first-function-visual-studio.md
-  - name: "Eseményindítók"
+  - name: Eseményindítók
     items:
-    - name: "Időzítő"
+    - name: Időzítő
       href: functions-create-scheduled-function.md
-    - name: "GitHub-webhook"
+    - name: GitHub-webhook
       href: functions-create-github-webhook-triggered-function.md
-    - name: "Blob Storage"
+    - name: Blob Storage
       href: functions-create-storage-blob-triggered-function.md
-    - name: "Queue Storage"
+    - name: Queue Storage
       href: functions-create-storage-queue-triggered-function.md
-  - name: "Integrálás"
+  - name: Integrálás
     items:
-    - name: "Tárolás"
+    - name: Tárolás
       href: functions-integrate-storage-queue-output-binding.md
-#    - name: Cosmos DB
-#      href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: "Példák"
+    - name: Cosmos DB
+      href: functions-integrate-store-unstructured-data-cosmosdb.md
+- name: Példák
   items:
-  - name: "Azure CLI"
+  - name: Azure CLI
     href: functions-cli-samples.md
-- name: "oktatóanyagokat"
+- name: oktatóanyagokat
   items:
-  - name: "1. – A Functions és a Logic Apps"
+  - name: 1. – A Functions és a Logic Apps
     href: functions-twitter-email.md
-  - name: "2: – Kiszolgáló nélküli API létrehozása"
+  - name: '2: – Kiszolgáló nélküli API létrehozása'
     href: functions-create-serverless-api.md
-- name: "Alapelvek"
+- name: Alapelvek
   items:
-  - name: "Futtatási tervek"
+  - name: Futtatási tervek
     href: functions-scale.md
-  - name: "Eseményindítók és kötések"
+  - name: Eseményindítók és kötések
     href: functions-triggers-bindings.md
-- name: "Útmutatók"
+- name: Útmutatók
   items:
-  - name: "Az Azure Functions tesztelése"
+  - name: Az Azure Functions tesztelése
     href: functions-test-a-function.md
-  - name: "Helyi fejlesztés és hibakeresés"
+  - name: Helyi fejlesztés és hibakeresés
     href: functions-run-local.md
-  - name: "Függvényalkalmazás beállításainak konfigurálása"
+  - name: Függvényalkalmazás beállításainak konfigurálása
     href: functions-how-to-use-azure-function-app-settings.md
-  - name: "Azure Functions – folyamatos üzembe helyezés"
+  - name: Azure Functions – folyamatos üzembe helyezés
     href: functions-continuous-deployment.md
-  - name: "A Functions üzembe helyezése az infrastruktúra kódként való használatával"
+  - name: A Functions üzembe helyezése az infrastruktúra kódként való használatával
     href: functions-infrastructure-as-code.md
-  - name: "Az Azure Functions figyelése"
+  - name: Az Azure Functions figyelése
     href: functions-monitoring.md
-  - name: "A Functions futtatókörnyezetének telepítése"
+  - name: A Functions futtatókörnyezetének telepítése
     href: functions-runtime-install.md
-- name: "Referencia"
+- name: Referencia
   items:
-  - name: "Függvényalkalmazások fejlesztése"
+  - name: Függvényalkalmazások fejlesztése
     href: functions-reference.md
     items:
-    - name: "Az API 2.0 megnyitása"
+    - name: Az API 2.0 megnyitása
       href: functions-api-definition.md
-  - name: "Azure Functions – ajánlott eljárások"
+  - name: Azure Functions – ajánlott eljárások
     href: functions-best-practices.md
-  - name: "Kötések"
+  - name: Kötések
     items:
-    - name: "DocumentDB-kötések"
+    - name: Cosmos DB-kötések
       href: functions-bindings-documentdb.md
-    - name: "Event Hub kötések"
+    - name: Event Hub kötések
       href: functions-bindings-event-hubs.md
-    - name: "HTTP- és a webhook kötések"
+    - name: HTTP- és a webhook kötések
       href: functions-bindings-http-webhook.md
-    - name: "Mobile Apps-kötések"
+    - name: Mobile Apps-kötések
       href: functions-bindings-mobile-apps.md
-    - name: "Értesítési központ kimeneti kötése"
+    - name: Értesítési központ kimeneti kötése
       href: functions-bindings-notification-hubs.md
-    - name: "Service Bus-eseményindítók és -kötések a várólistákhoz és a témakörökhöz"
+    - name: Service Bus-eseményindítók és -kötések a várólistákhoz és a témakörökhöz
       href: functions-bindings-service-bus.md
-    - name: "SendGrid-kötések"
+    - name: SendGrid-kötések
       href: functions-bindings-sendgrid.md
-    - name: "Tárkötések"
+    - name: Tárkötések
       items:
-      - name: "Blobkötések"
+      - name: Blobkötések
         href: functions-bindings-storage-blob.md
-      - name: "Üzenetsorkötések"
+      - name: Üzenetsorkötések
         href: functions-bindings-storage-queue.md
-      - name: "Táblakötések"
+      - name: Táblakötések
         href: functions-bindings-storage-table.md
-      - name: "Külső fájlkötések"
+      - name: Külső fájlkötések
         href: functions-bindings-external-file.md
-    - name: "SendGrid-kötések"
+    - name: SendGrid-kötések
       href: functions-bindings-sendgrid.md
-    - name: "Időzítő eseményindító"
+    - name: Időzítő eseményindító
       href: functions-bindings-timer.md
-    - name: "Twilio kimeneti kötés"
+    - name: Twilio kimeneti kötés
       href: functions-bindings-twilio.md
-  - name: "Keretrendszerek"
+  - name: Keretrendszerek
     items:
-    - name: "C#"
+    - name: 'C#'
       href: functions-reference-csharp.md
-    - name: "F#"
+    - name: 'F#'
       href: functions-reference-fsharp.md
-    - name: "JavaScript"
+    - name: JavaScript
       href: functions-reference-node.md
-- name: "Erőforrások"
+- name: Erőforrások
   items:
-  - name: "Díjszabás"
+  - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/functions/
-  - name: "MSDN-fórum"
+  - name: MSDN-fórum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
-  - name: "Stack Overflow"
+  - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-functions
-  - name: "Az Azure Functions GitHub-adattára"
+  - name: Az Azure Functions GitHub-adattára
     href: https://github.com/Azure/Azure-Functions/
-  - name: "Szolgáltatási hírek"
+  - name: Szolgáltatási hírek
     href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=

@@ -13,6 +13,7 @@
 ## Sablon létrehozása
 ### [Információk a méretezési csoportok sablonjairól](virtual-machine-scale-sets-mvss-start.md)
 ### [Virtuális hálózat hozzáadása](virtual-machine-scale-sets-mvss-existing-vnet.md)
+### [Egyéni rendszerkép használata](virtual-machine-scale-sets-mvss-custom-image.md)
 
 ## Üzembe helyezés
 ### [Létrehozás a portálon](virtual-machine-scale-sets-portal-create.md)

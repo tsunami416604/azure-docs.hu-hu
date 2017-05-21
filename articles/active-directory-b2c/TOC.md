@@ -1,31 +1,30 @@
 # [Áttekintés](active-directory-b2c-overview.md)
 
-# Első lépések
+# Bevezetés
 ## [Azure AD B2C-címtár létrehozása](active-directory-b2c-get-started.md)
 ## [Alkalmazás regisztrálása](active-directory-b2c-app-registration.md)
 ## Mobil- és asztali appok
 ### [Áttekintés](active-directory-b2c-reference-oauth-code.md)
 ### iOS
 #### [iOS Swift az MSAL használatával](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)
-#### [iOS ObjC az AppAuth használatával](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth)
+#### [iOS ObjC az AppAuth használatával](active-directory-b2c-devquickstarts-ios.md)
 ### Android
 #### [Android az MSAL használatával](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal)
-#### [Android az AppAuth használatával](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth)
+#### [Android az AppAuth használatával](active-directory-b2c-devquickstarts-android.md)
 ### [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)
 ### [Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native)
-## Web Apps
+## Webalkalmazások
 ### [Áttekintés](active-directory-b2c-reference-oidc.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-### [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
-### [NodeJS](active-directory-b2c-devquickstarts-web-node.md)
+### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp)
+### [Node.js](active-directory-b2c-devquickstarts-web-node.md)
 ## Egylapos appok
 ### [Áttekintés](active-directory-b2c-reference-spa.md)
-### [JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-### [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
-### [NodeJS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
+### [JavaScript az MSAL használatával](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+### [JavaScript a Hello használatával](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 ## Webes API-k
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
-### [NodeJS](active-directory-b2c-devquickstarts-api-node.md)
+### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
 ### [.NET-alapú webes API hívása](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # Útmutatók
@@ -48,10 +47,11 @@
 ## [A felhasználói felület testreszabása](active-directory-b2c-reference-ui-customization.md)
 ### [Segédeszköz testreszabáshoz](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [Nyelvi testreszabás](active-directory-b2c-reference-language-customization.md)
+## [A jelentéskészítő API használata](active-directory-b2c-refererence-usage-reporting-api.md)
 ## [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-b2c-reference-sspr.md)
 
-# Identity Experience Engine
-## [Egyéni házirendek](active-directory-b2c-overview-custom.md)
+# Identity Experience Framework
+## [Egyéni szabályzatok](active-directory-b2c-overview-custom.md)
 ## Útmutatók
 ### [Első lépések](active-directory-b2c-get-started-custom.md)
 ### OIDC-szolgáltatók konfigurálása
@@ -64,20 +64,20 @@
 ### Bejelentkezés testreszabása
 #### [Felhasználó által megadott adatok konfigurálása](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [Felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md)
-#### [Jogkivonat testreszabása](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
+#### [Jogkivonatok testreszabása](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 ### Hibaelhárítás
 #### [Naplók gyűjtése az Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)
 ## Referencia
 ### [Kibocsátási megjegyzések](active-directory-b2c-developer-notes-custom.md)
 
-
 # Referencia
 ## Szószedet
 ### [Alkalmazástípusok](active-directory-b2c-apps.md)
 ### [Hitelesítési protokollok](active-directory-b2c-reference-protocols.md)
-### [Beépített házirendek](active-directory-b2c-reference-policies.md)
+### [Beépített szabályzatok](active-directory-b2c-reference-policies.md)
 ### [Jogkivonatok](active-directory-b2c-reference-tokens.md)
 ## [Régiónkénti elérhetőség és az adatok tárolási helye](active-directory-b2c-reference-tenant-type.md)
+## [Számlázás engedélyezése](active-directory-b2c-how-to-enable-billing.md)
 ## [Fenyegetések kezelése](active-directory-b2c-reference-threat-management.md)
 ## [Korlátozások és megkötések](active-directory-b2c-limitations.md)
 ## [Címtárak készítésekor előforduló problémák](active-directory-b2c-support-create-directory.md)

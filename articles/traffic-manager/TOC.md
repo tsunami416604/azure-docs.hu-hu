@@ -2,6 +2,7 @@
 ## [A Traffic Manager ismertetése](traffic-manager-overview.md)
 ## [Útválasztási módszerek](traffic-manager-routing-methods.md)
 ### [A Traffic Manager által használt ország/régió-hierarchia](traffic-manager-geographic-regions.md)
+## [Beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md)
 ## [Végponttípusok](traffic-manager-endpoint-types.md)
 ## [Végpontmonitoring](traffic-manager-monitoring.md)
 ## [Gyakori kérdések](traffic-manager-FAQs.md)
