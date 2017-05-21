@@ -1,14 +1,15 @@
+1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
 
-1. Click the **New** button found on the upper left-hand corner of the Azure portal.
+1. Kattintson a **Számítás** > **Függvényalkalmazás** elemre, és válassza az **Előfizetés** elemet. Ezután használja a táblázatban megadott függvényalkalmazás-beállításokat.
 
-2. Click **Compute** > **Function App**, select your **Subscription**, type a unique **App name** that identifies your function app, then specify the following settings:
-   
-   * **[Resource Group](../articles/azure-resource-manager/resource-group-overview.md)**: Select **Create new** and enter a name for your new resource group. 
-   * **[Hosting plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)**, which can be one of these plans: 
-     * **Consumption plan**: The default plan type for Azure Functions. When you choose a consumption plan, you must also choose the **Location**.  
-     * **App Service plan**: An App Service plan requires you to create an **App Service plan/location** or select an existing one. These settings determine the [location, features, cost, and compute resources](https://azure.microsoft.com/pricing/details/app-service/) associated with your app.  
-   * **Storage account**: Each function app requires a storage account. You can either choose an existing storage account or [create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account). 
-     
-    ![Create function app in the Azure portal](./media/functions-create-function-app-portal/function-app-create-flow.png)
+    ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-function-app-portal/function-app-create-flow.png)
 
-3. Click **Create** to provision and deploy the new function app.  
+    | Beállítás      | Ajánlott érték  | Leírás                                        |
+    | ------------ |  ------- | -------------------------------------------------- |
+    | **Alkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. | 
+    | **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. | 
+    | **[Szolgáltatási csomag](../articles/azure-functions/functions-scale.md)** |   Használatalapú csomag | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Az alapértelmezett **használatalapú csomagban** az erőforrások hozzáadása dinamikusan történik a függvények igényeinek megfelelően. Csak a függvények futási idejéért kell fizetnie.   |
+    | **Hely** | Nyugat-Európa | Válasszon egy helyet a közelben vagy a függvények által elérendő más szolgáltatások közelében. |
+    | **[Tárfiók](../articles/storage/storage-create-storage-account.md#create-a-storage-account)** |  Globálisan egyedi név |  A függvényalkalmazás által használt új tárfiók neve. Meglévő fiókot is használhat. |
+
+1. Kattintson a **Létrehozás** elemre az új függvényalkalmazás létrehozásához és üzembe helyezéséhez.
