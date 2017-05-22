@@ -12,12 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/27/2017
+ms.date: 05/05/2017
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: e0bfa7620feeb1bad33dd2fe4b32cb237d3ce158
-ms.openlocfilehash: 24e9f1d7bdf4401d009ba04fb62351b6abda6079
-ms.lasthandoff: 04/21/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 773d616b2a5815158971d63d005fae605450ac98
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 
 ---
@@ -29,7 +30,7 @@ A rövid útmutató segítségével csupán pár perc alatt üzembe helyezheti a
 
 ![ASP.NET-webapp az Azure App Service-ben](./media/app-service-web-get-started-dotnet/updated-azure-web-app.png)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez az oktatóanyag bemutatja, hogyan hozhatja létre és helyezheti üzembe az ASP.NET-webappot az Azure-ban a Visual Studio 2017 használatával Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
@@ -37,7 +38,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhatja létre és helyezheti üzembe az A
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
 
-Hozzon létre egy új projektet a Visual Studióban a `Ctrl`+`Shift`+`N` billentyűparancs lenyomásával.
+Hozzon létre egy projektet a Visual Studióban a `Ctrl`+`Shift`+`N` billentyűparancs lenyomásával.
 
 A **New Project** (Új projekt) párbeszédpanelen válassza a **Visual C# > Web > ASP.NET Web Application (.NET Framework)** (ASP.NET-webapp (.NET-keretrendszer)) elemet.
 
@@ -110,7 +111,7 @@ A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszé
 
 Kattintson az **OK** gombra.
 
-![Új App Service-csomag létrehozása](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
+![App Service-csomag létrehozása](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
 ## <a name="create-and-publish-the-web-app"></a>A webapp létrehozása és közzététele
 
@@ -165,11 +166,11 @@ A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azur
 
 Ekkor a webapp _paneljére_ (vízszintesen megnyíló portáloldalára) jut. 
 
-Alapértelmezés szerint a webapp panelje az **Áttekintés** oldalt mutatja. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. A panel bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg. 
+Alapértelmezés szerint a webapp panelje az **Áttekintés** oldalt mutatja. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés.  
 
 ![Az App Service panel az Azure Portalon](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
-A panel ezen lapja a webapphoz hozzáadható nagyszerű szolgáltatásokat jelenítik meg. Az alábbi lista csupán néhány lehetőséget sorol fel:
+A panel bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg. Az alábbi lista csupán néhány lehetőséget sorol fel:
 
 - Egyéni DNS-név leképezése
 - Egyéni SSL-tanúsítvány kötése
@@ -193,5 +194,9 @@ A megerősítési panelen írja be az erőforráscsoport nevét (**myResourceGro
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az előre létrehozott [Web Apps PowerShell-szkriptek](app-service-powershell-samples.md) vizsgálata.
+> [!div class="nextstepaction"]
+> [ASP.NET-alapú alkalmazás készítése az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md)
+
+> [!div class="nextstepaction"]
+> [Web Apps PowerShell-mintaszkriptek vizsgálata](app-service-powershell-samples.md)
 

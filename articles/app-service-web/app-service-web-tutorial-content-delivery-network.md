@@ -1,148 +1,300 @@
 ---
-title: "Content Delivery Network hozzáadása Azure App Service platformon | Microsoft Docs"
-description: "A Content Delivery Network hozzáadásával az Azure App Service platformon élcsomópontokból kézbesítheti a statikus fájlokat."
+title: "Content Delivery Network (CDN) hozzáadása Azure App Service platformon | Microsoft Docs"
+description: "A Content Delivery Network (CDN) hozzáadásával az Azure App Service platformon gyorsítótárazhatja és az ügyfelekhez közeli kiszolgálóiról továbbíthatja statikus fájljait világszerte."
 services: app-service
 author: syntaxc4
 ms.author: cfowler
-ms.date: 04/03/2017
+ms.date: 05/01/2017
 ms.topic: hero-article
 ms.service: app-service-web
 manager: erikre
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 7ba3737566401152a3171e8926beca188045230c
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
+ms.openlocfilehash: 7208abc0e6eaa9067c5bb36a09e1bfd276fe0b0c
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/08/2017
 
 ---
-# <a name="add-a-content-deliver-network-on-an-azure-app-service"></a>Content Delivery Network hozzáadása Azure App Service platformon
+# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Content Delivery Network (CDN) hozzáadása Azure App Service platformon
 
-Az oktatóanyag során hozzáadhat egy Content Delivery Network (CDN) hálózatot az Azure App Service platformhoz, hogy közzé tehesse a statikus tartalmakat egy élkiszolgálón. Létrehoz majd egy CDN-profilt, amely legfeljebb 10 CDN-végpont gyűjteménye.
+Az [Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md) a statikus webtartalmakat stratégiailag kiválasztott helyeken gyorsítótárazza, így maximális átviteli sebességgel tudja kézbesíteni a tartalmakat a felhasználók számára. A CDN ezzel együtt csökkenti a kiszolgálók terhelését a webappban. Ez az oktatóanyag bemutatja, hogyan adható hozzá az Azure CDN [a webappokhoz az Azure App Service szolgáltatásban](app-service-web-overview.md). 
 
-A Content Delivery Network (CDN) a statikus webtartalmakat stratégiailag kiválasztott helyeken gyorsítótárazza, így maximális átviteli sebességgel tudja kézbesíteni a tartalmakat a felhasználók számára. A webhelyek objektumainak CDN használatával történő gyorsítótárazása a következő előnyökkel jár:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
-* Jobb teljesítmény és felhasználói élmény a végfelhasználók számára – különösen az alkalmazások használata esetén, amikor a tartalom betöltéséhez a kiszolgálóval végzett több adatváltásra is szükség van.
-* A teljesítmény könnyedén méretezhető az azonnali nagy terheléshez, például a termékbevezetési események kezdetén fellépő magas igényekhez.
-* A felhasználói kérelmek elosztásával és a tartalom peremhálózati kiszolgálókról történő szolgáltatásával csökken a forrásra jutó forgalom.
+> [!div class="checklist"]
+> * CDN-végpont létrehozása.
+> * Gyorsítótárazott objektumok frissítése.
+> * Gyorsítótárazott verziók felügyelete lekérdezési karakterláncok használatával.
+> * Egyéni tartomány használata a CDN-végponthoz.
 
-> [!TIP]
-> Ellenőrizze az [Azure CDN POP-helyek](https://docs.microsoft.com/en-us/azure/cdn/cdn-pop-locations) aktuális listáját.
->
+Íme a mintaként szolgáló statikus HTML-webhely kezdőlapja, amelyet használni fog:
 
-## <a name="deploy-the-sample"></a>A minta üzembe helyezése
+![Mintaalkalmazás kezdőlapja](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy WebAppban üzembe helyezett alkalmazásra. A jelen oktatóanyaghoz szükséges alapok biztosításához kövesse [a statikus HTML gyorsútmutatót](app-service-web-get-started-html.md).
+## <a name="create-the-web-app"></a>A webapp létrehozása
 
-## <a name="step-1---login-to-azure-portal"></a>1. lépés – Belépés az Azure Portalba
+A használandó webapp létrehozásához kövesse a [statikus HTML gyorsútmutatót](app-service-web-get-started-html.md), de ne végezze el **Az erőforrások eltávolítása** lépést.
 
-Először nyissa meg a kedvenc böngészőjét, és keresse fel az [Azure Portalt](https://portal.azure.com).
+Ne zárja be a parancssort, miután az oktatóanyag végére ért, hogy további módosításokat hajthasson végre a webappon ennek az oktatóanyagnak a későbbi részeiben.
 
-## <a name="step-2---create-a-cdn-profile"></a>2. lépés – CDN-profil létrehozása
+### <a name="have-a-custom-domain-ready"></a>Rendelkezésre álló egyéni tartománynév
 
-A bal oldali navigációs menüben kattintson az `+ New` gombra, majd kattintson a **Web és mobil** elemre. A Web és mobil kategória alatt válassza ki a **CDN** lehetőséget.
+Az oktatóanyag egyéni tartományra vonatkozó lépése során hozzá kell majd férnie tartományszolgáltatója (például a GoDaddy) DNS-jegyzékéhez. Például a `contoso.com` és a `www.contoso.com` DNS-bejegyzéseinek hozzáadásához hozzá kell férnie a `contoso.com` gyökértartomány DNS-beállításainak konfigurációjához.
 
-Töltse ki a következő mezőket:
+Ha még nem rendelkezik tartománynévvel, az [App Service-tartományokkal foglalkozó oktatóanyagban](custom-dns-web-site-buydomains-web-app.md) foglaltak szerint vásárolhat egy tartományt az Azure Portal használatával. 
 
-| Mező | Mintaérték | Leírás |
-|---|---|---|
-| Név | myCDNProfile | A CDN-profil neve. |
-| Hely | Nyugat-Európa | Ez az az Azure-hely, ahol a rendszer a CDN-profil adatait tárolja majd. Ez nincs hatással a CDN-végpontok helyére. |
-| Erőforráscsoport | myResourceGroup | További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md#resource-groups). |
-| Tarifacsomag | Akamai Standard | A tarifacsomagok összehasonlításához lásd a [CDN áttekintésével](../cdn/cdn-overview.md#azure-cdn-features) foglalkozó cikket. |
+## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+
+Nyisson meg egy böngészőt, és keresse fel az [Azure Portalt](https://portal.azure.com).
+
+## <a name="create-a-cdn-profile-and-endpoint"></a>CDN-profil és -végpont létrehozása
+
+A bal oldali navigációs felületen válassza az **App Services** lehetőséget, majd válassza ki a [statikus HTML gyorsútmutató](app-service-web-get-started-html.md) segítségével létrehozott alkalmazást.
+
+![Az App Service alkalmazás kiválasztása a portálon](media/app-service-web-tutorial-content-delivery-network/portal-select-app-services.png)
+
+Az **App Service** lap **Beállítások** területén válassza a **Hálózatkezelés > Az Azure CDN konfigurálása az alkalmazáshoz** lehetőséget.
+
+![A CDN kiválasztása a portálon](media/app-service-web-tutorial-content-delivery-network/portal-select-cdn.png)
+
+Az **Azure Content Delivery Network** lapon adja meg az **Új végpont** beállításait az alábbi táblának megfelelően.
+
+![Profil és végpont létrehozása a portálon](media/app-service-web-tutorial-content-delivery-network/portal-new-endpoint.png)
+
+| Beállítás | Ajánlott érték | Leírás |
+| ------- | --------------- | ----------- |
+| **CDN-profil** | myCDNProfile | Válassza az **Új létrehozása** lehetőséget egy új CDN-profil létrehozásához. A CDN-profil ugyanabba a tarifacsomagba tartozó CDN-végpontok gyűjteménye. |
+| **Tarifacsomag** | Akamai Standard | A [tarifacsomag](../cdn/cdn-overview.md#azure-cdn-features) határozza meg a szolgáltatót és az elérhető szolgáltatásokat. Az oktatóanyagban az Akamai Standard csomagot használjuk. |
+| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrások a *\<végpont_neve>.azureedge.net* tartományban érhetőek el.
 
 Kattintson a **Létrehozás** gombra.
 
-Nyissa meg az erőforráscsoportok központját a bal oldali navigációs menüben, majd válassza ki a **myResourceGroup** elemet. Az erőforrások listájából válassza ki a **myCDNProfile** elemet.
+Az Azure létrehozza a profilt és a végpontot. Az új végpont megjelenik ugyanezen a lapon a **Végpontok** listában, és a kiosztása után **Fut** állapotra vált.
 
-![azure-cdn-profile-created](media/app-service-web-tutorial-content-delivery-network/azure-cdn-profile-created.png)
+![Új végpont a listában](media/app-service-web-tutorial-content-delivery-network/portal-new-endpoint-in-list.png)
 
-## <a name="step-3---create-a-cdn-endpoint"></a>3. lépés – CDN-végpont létrehozása
+### <a name="test-the-cdn-endpoint"></a>A CDN-végpont tesztelése
 
-Kattintson a **+ Végpont** elemre a keresőmező melletti parancsok között a Végpontlétrehozás panel elindításához.
+A Verizon tarifacsomag kiválasztása esetén a végpontok terjesztése körülbelül 90 percet vesz igénybe. Az Akamai esetében a terjesztés csak néhány percig tart
 
-Töltse ki a következő mezőket:
+Ugyanehhez az alkalmazáshoz tartozik egy `index.html` fájl, valamint *css*, *img* és *js* mappák is, amelyek egyéb statikus objektumokat tartalmaznak. Az összes fájl tartalmának elérési útjai megegyezik a CDN-végponton. Például a következő két URL egyaránt a *bootstrap.css* fájlra mutat a *css* mappában:
 
-| Mező | Mintaérték | Leírás |
-|---|---|
-| Név |  | A rendszer ezt a nevet fogja használni a gyorsítótárazott erőforrások eléréséhez a `<endpointname>.azureedge.net` tartományban. |
-| Forrás típusa | Webalkalmazás | A forrástípus kiválasztásával helyi menük válnak elérhetővé a többi mezőhöz. Egyéni forrás kiválasztása esetén egy szövegmező jelenik meg a forrás gazdanevének megadásához. |
-| Forrás gazdaneve | |  A legördülő menüben szerepelni fog a megadott forrástípusú összes rendelkezésre álló forrás. Ha a Forrása típusa számára az Egyéni forrás beállítást választotta ki, akkor be kell írnia az egyéni forrás tartományát.  |
-
-Kattintson a **Hozzáadás** parancsra.
-
-A végpont ekkor létrejön. Ha a tartalomkézbesítési hálózat végpontja létrejön, az állapot **futás** állapotúra frissül.
-
-![azure-cdn-endpoint-created](media/app-service-web-tutorial-content-delivery-network/azure-cdn-endpoint-created.png)
-
-## <a name="step-4---serve-from-azure-cdn"></a>4. lépés – Kiszolgálás az Azure CDN-ről
-
-Most, hogy a CDN-végpont **fut**, el kell tudnia érni a rajta lévő tartalmakat róla.
-
-Mivel az oktatóanyag a [statikus HTML gyorsútmutatón alapul](app-service-web-get-started-html.md), a CDN-en rendelkezésre kell állnia a következő mappáknak: `css`, `img`, `js`.
-
-A tartalmak elérési útjai a WebApp `http://<app_name>.azurewebsites.net/img/` URL-címe és a CDN-végpont `http://<endpointname>.azureedge.net/img/` URL-címe közt megegyeznek, ami azt jelenti, hogy a CDN-végpont tartományát egyszerűen lecserélheti bármely statikus tartalomra, hogy a tartalom a CDN-ről legyen szolgáltatva.
-
-Kérje le az első képet a CDN-végpontról. Ehhez lépjen a kedvenc böngészőjével a következő URL-címre:
-
-```bash
-http://<endpointname>.azureedge.net/img/03-enterprise.png
+```
+http://<appname>.azurewebsites.net/css/bootstrap.css
 ```
 
-Most, hogy a statikus tartalom elérhető a CDN-en, frissítheti az alkalmazást, hogy az a CDN-végpont használatával biztosítsa a tartalmakat a végfelhasználók számára.
+```
+http://<endpointname>.azureedge.net/css/bootstrap.css
+```
 
-A webhely készítéséhez használt nyelvtől függően számos különféle keretrendszer lehet elérhető a CDN-tartalék támogatásához. Az ASP.NET például támogatja a [kötegelést és kicsinyítést](https://docs.microsoft.com/en-us/aspnet/mvc/overview/performance/bundling-and-minification#using-a-cdn), amely elérhetővé teszi a CDN-tartalékhoz kapcsolódó képességeket is.
+Nyissa meg egy böngészőben a következő URL-címet, és ugyanaz a lap jelenik meg, amelyet korábban egy Azure webappban futtatott, most azonban a CDN szolgáltatja.
 
-Ha a nyelv nem tartalmaz beépített támogatást vagy egy könyvtárat a CDN-tartalék számára, használhat egy JavaScript-keretrendszert, például a [FallbackJS](http://fallback.io/) keretrendszert, amely támogatja a [szkriptek](https://github.com/dolox/fallback/tree/master/examples/loading-scripts), [stíluslapok](https://github.com/dolox/fallback/tree/master/examples/loading-stylesheets) és [képek](https://github.com/dolox/fallback/tree/master/examples/loading-images) betöltését.
+```
+http://<endpointname>.azureedge.net/index.html
+```
 
-## <a name="step-5---purge-the-cdn"></a>5- lépés – A CDN végleges törlése
+![Mintaalkalmazás a CDN által szolgáltatott kezdőlapja](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page-cdn.png)
 
-Néha szükség lehet a CDN végleges törlésére, ha azt szeretné, hogy a tartalom az élettartama (TTL) lejárta előtt elavuljon.
+Az ábrán látható, hogy az Azure CDN lehívta a forrásként szolgáló webapp objektumait, és a CDN-végpontról szolgáltatja azokat. 
 
-Az Azure CDN manuálisan végrehajtott végleges törlése a CDN-profil panelről vagy a CDN-végpont panelről lehetséges. Ha a Profil oldalon választja ki a végleges törlés lehetőséget, ki kell választania a véglegesen törölni kívánt végpontot.
+Annak érdekében, hogy a CDN gyorsítótárazza a lapot, frissítse azt. Néha két kérés is szükséges egyazon objektumra vonatkozóan, hogy a CDN gyorsítótárazza a kért tartalmat.
 
-Tartalom végleges törléséhez adja meg a törölni kívánt tartalmak elérési útjait. Megadhat egy teljes elérési útvonalat egy adott fájl törléséhez, vagy egy részleges útvonalat egy adott mappa tartalmának törléséhez és frissítéséhez.
+Az Azure CDN-profilok és -végpontok létrehozásával kapcsolatos további információkért lásd: [Az Azure CDN használatának első lépései](../cdn/cdn-create-new-endpoint.md).
 
-Miután megadta az összes törölni kívánt tartalom elérési útját, kattintson a **Végleges törlés** gombra.
+## <a name="purge-the-cdn"></a>A CDN végleges törlése
 
-![app-service-web-purge-cdn](media/app-service-web-tutorial-content-delivery-network/app-service-web-purge-cdn.png)
+A CDN rendszeres időközönként frissíti az erőforrásait a forrásként szolgáló webappból az élettartam (TTL) konfigurációja alapján. Az alapértelmezett élettartam 7 nap.
 
-## <a name="step-6---map-a-custom-domain"></a>6. lépés – Egyéni tartomány leképezése
+Esetenként az élettartam lejárta előtt is szükséges lehet a CDN frissítése – például amikor frissített tartalmat telepít a webappba. A frissítés indításához manuálisan törölheti a CDN-erőforrásokat. 
 
-Egy egyéni tartomány CDN-végpontra történő leképezésével egy egységes tartományt hozhat létre a webalkalmazása számára.
+Az oktatóanyag jelen szakaszában egy módosítást fog telepíteni a webappba, és törli a CDN-t, hogy az frissítse a gyorsítótárát.
 
-Az egyéni tartomány a CDN-végpontra való leképezéséhez hozzon létre egy CNAME-rekordot a tartományregisztrálónál.
+### <a name="deploy-a-change-to-the-web-app"></a>Módosítás telepítése a webappba
 
-> [!NOTE]
-> A CNAME-rekord egy DNS-szolgáltatás, amellyel egy forrástartomány (pl.: `www.contosocdn.com` vagy `static.contosocdn.com`) leképezhető egy céltartományra.
+Nyissa meg az `index.html` fájlt, és adja hozzá a „- V2” utótagot a H1 fejléchez, ahogy az az alábbi példában látható: 
 
-Ebben az esetben hozzáadunk egy `static.contosocdn.com` forrástartományt, és a céltartományra, azaz a CDN-végpontra irányítjuk.
+```
+<h1>Azure App Service - Sample Static HTML Site - V2</h1>
+```
 
-| forrástartomány | céltartomány |
-|---|---|
-| static.contosocdn.com | &lt;végpontnév&gt;.azureedge.net |
+Véglegesítse a módosítást, és telepítse a webappba.
 
-A CDN-végpont áttekintő panelén kattintson a `+ Custom domain` gombra.
+```bash
+git commit -am "version 2"
+git push azure master
+```
 
-Az Egyéni tartomány hozzáadása panelen adja meg az egyéni tartományt az altartománnyal együtt a párbeszédpanelen. Adja meg például a contoso.com tartománynevet a következő formátumban: `static.contosocdn.com`.
+Miután befejeződött a telepítés, a böngészőben nyissa meg a webapp URL-címét, és láthatja a módosított tartalmat.
 
-Kattintson a **Hozzáadás** parancsra.
+```
+http://<appname>.azurewebsites.net/index.html
+```
 
-## <a name="step-7---version-content"></a>7. lépés – Tartalom verziózása
+![V2 a webapp címében](media/app-service-web-tutorial-content-delivery-network/v2-in-web-app-title.png)
 
-A CDN-végpont bal oldali navigációs menüjében válassza a **Gyorsítótár** elemet a Beállítások fejléc alatt.
+Ha a böngészőben megnyitja a kezdőlap CDN-végponti URL-címét, láthatja, hogy a módosítás még nem jelent meg, mivel a CDN-ben gyorsítótárazott verzió még nem járt le. 
 
-A **Gyorsítótár** panelen konfigurálhatja, hogy a CDN hogyan kezelje a lekérdezési karakterláncokat a kérésben.
+```
+http://<endpointname>.azureedge.net/index.html
+```
 
-> [!NOTE]
-> A lekérdezési karakterláncok gyorsítótárazási viselkedésének beállításaival kapcsolatban olvassa el [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal](../cdn/cdn-query-string.md) című témakört.
+![A V2 nem jelenik meg a CDN-beli címben](media/app-service-web-tutorial-content-delivery-network/no-v2-in-cdn-title.png)
 
-Válassza a **Minden egyedi URL-cím gyorsítótárazása** lehetőséget a legördülő menüből a Lekérdezési karakterlánc gyorsítótárazási viselkedése beállításnál.
+### <a name="purge-the-cdn-in-the-portal"></a>A CDN törlése a portálon
 
-Kattintson a **mentés** gombra.
+Ahhoz, hogy a CDN frissítse a gyorsítótárazott verziót, törölje a CDN-t.
+
+A portál bal oldali navigációs felületén válassza az **Erőforráscsoportok** elemet, majd válassza ki a webapphoz létrehozott erőforráscsoportot (myResourceGroup).
+
+![Erőforráscsoport kiválasztása](media/app-service-web-tutorial-content-delivery-network/portal-select-group.png)
+
+Az erőforrások listájában válassza ki a CDN-végpontot.
+
+![Végpont kiválasztása](media/app-service-web-tutorial-content-delivery-network/portal-select-endpoint.png)
+
+A **Végpont** lap tetején kattintson a **Végleges törlés** gombra.
+
+![Végleges törlés kiválasztva](media/app-service-web-tutorial-content-delivery-network/portal-select-purge.png)
+
+Adja meg a törölni kívánt tartalmak elérési útjait. Megadhat egy teljes elérési útvonalat egy adott fájl törléséhez, vagy egy részleges útvonalat egy adott mappa teljes tartalmának törléséhez és frissítéséhez. Mivel az `index.html` fájlt módosította, mindenképp ez legyen az egyik útvonal.
+
+A lap alján kattintson a **Végleges törlés** gombra.
+
+![Oldal végleges törlése](media/app-service-web-tutorial-content-delivery-network/app-service-web-purge-cdn.png)
+
+### <a name="verify-that-the-cdn-is-updated"></a>A CDN frissítésének ellenőrzése
+
+Várjon, amíg végleges törlési kérés feldolgozása befejeződik. Ez általában néhány percet vesz igénybe. Az aktuális állapot megtekintéséhez válassza a harang ikont a lap tetején. 
+
+![Törlési értesítés](media/app-service-web-tutorial-content-delivery-network/portal-purge-notification.png)
+
+Böngészőben nyissa meg az `index.html` CDN-végponti URL-címét, és láthatja, hogy a kezdőlap címéhez hozzáadott V2 megjelent. Ez jelzi, hogy a CDN gyorsítótára frissítve lett.
+
+```
+http://<endpointname>.azureedge.net/index.html
+```
+
+![V2 a CDN-beli címben](media/app-service-web-tutorial-content-delivery-network/v2-in-cdn-title.png)
+
+További információkért lásd: [CDN-végpont végleges törlése](../cdn/cdn-purge-endpoint.md). 
+
+## <a name="use-query-strings-to-version-content"></a>Tartalmak verziószámozása lekérdezési karakterláncok használatával
+
+Az Azure CDN az alábbi gyorsítótárazási működésére vonatkozó lehetőségeket kínálja:
+
+* Lekérdezési karakterláncok figyelmen kívül hagyása
+* Lekérdezési karakterláncok gyorsítótárazásának megkerülése
+* Minden egyedi URL gyorsítótárazása 
+
+A legelső az alapértelmezett beállítás, amely azt jelenti, hogy minden objektumnak csak egy gyorsítótárazott verziója van, függetlenül az azt elérő URL-címben használt lekérdezési karakterlánctól. 
+
+Az oktatóanyag ezen szakaszában a gyorsítótárazás működésének módosításával minden egyedi URL-címet gyorsítótárazni fog.
+
+### <a name="change-the-cache-behavior"></a>A gyorsítótárazás működésének módosítása
+
+Az Azure Portal **CDN-végpont** lapján válassza a **Gyorsítótár** lehetőséget.
+
+Válassza a **Minden egyedi URL-cím gyorsítótárazása** lehetőséget a **Lekérdezési karakterláncok gyorsítótárazásának működése** legördülő menüben.
+
+Kattintson a **Mentés** gombra.
+
+![Lekérdezési karakterláncok gyorsítótárazási működésének kiválasztása](media/app-service-web-tutorial-content-delivery-network/portal-select-caching-behavior.png)
+
+### <a name="verify-that-unique-urls-are-cached-separately"></a>Az egyedi URL-címek külön gyorsítótárazásának ellenőrzése
+
+Egy böngészőben nyissa meg a kezdőlapot a CDN-végponton, de használjon egy lekérdezési karakterláncot is: 
+
+```
+http://<endpointname>.azureedge.net/index.html?q=1
+```
+
+A CDN a webapp aktuális tartalmát adja vissza, aminek a fejlécében szerepel a „V2” utótag. 
+
+Annak érdekében, hogy a CDN gyorsítótárazza a lapot, frissítse azt. 
+
+Nyissa meg az `index.html` fájlt, módosítsa a „V2”-t „V3”-ra, majd telepítse a módosítást. 
+
+```bash
+git commit -am "version 3"
+git push azure master
+```
+
+Böngészőben nyissa meg a CDN-végponti URL-címet egy új lekérdezési karakterlánccal, például a következővel: `q=2`. A CDN lekéri az aktuális `index.html` fájlt, és megjelenik a „V3” utótag.  Ha azonban a `q=1` lekérdezési karakterlánccal nyitja meg a CDN-végpontot, a „V2” utótag látható.
+
+```
+http://<endpointname>.azureedge.net/index.html?q=2
+```
+
+![V3 a CDN-beli címben, 2. lekérdezési karakterlánc](media/app-service-web-tutorial-content-delivery-network/v3-in-cdn-title-qs2.png)
+
+```
+http://<endpointname>.azureedge.net/index.html?q=1
+```
+
+![V2 a CDN-beli címben, 1. lekérdezési karakterlánc](media/app-service-web-tutorial-content-delivery-network/v2-in-cdn-title-qs1.png)
+
+Ez a kimenet mutatja, hogy a rendszer minden lekérdezési karakterláncot máshogy kezel: korábban a q=1 volt használatban, amely a gyorsítótárazott tartalmakat adja vissza (V2), a q=2 viszont új, ezért a webapp legfrissebb tartalmait kéri le és adja vissza (V3).
+
+További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal](../cdn/cdn-query-string.md).
+
+## <a name="map-a-custom-domain-to-a-cdn-endpoint"></a>Egyéni tartomány leképezése egy CDN-végpontra
+
+Az egyéni tartományt a CDN-végpontra egy CNAME-rekord létrehozásával képezheti le. A CNAME-rekord egy DNS-szolgáltatás, amellyel egy forrástartomány leképezhető egy céltartományra. Például leképezheti a `cdn.contoso.com` vagy a `static.contoso.com` tartományt a `contoso.azureedge.net` tartományra.
+
+Ha nem rendelkezik egyéni tartománnyal, az [App Service-tartományokkal foglalkozó oktatóanyagban](custom-dns-web-site-buydomains-web-app.md) foglaltak szerint vásárolhat egyet az Azure Portal használatával. 
+
+### <a name="find-the-hostname-to-use-with-the-cname"></a>A CNAME-rekordhoz használandó gazdagépnév keresése
+
+Az Azure Portal **Végpont** lapján ellenőrizze, hogy a bal oldali navigációs felületen az **Áttekintés** lehetőség van kiválasztva, majd válassza a **+ Egyéni tartomány** gombot a lap tetején.
+
+![Egyéni tartomány hozzáadása kiválasztva](media/app-service-web-tutorial-content-delivery-network/portal-select-add-domain.png)
+
+Az **Egyéni tartomány hozzáadása** lapon látható a CNAME rekord létrehozásához használandó végpont gazdagépneve. A gazdagépnév CDN-végponti URL-címből van származtatva: **&lt;VégpontNeve>.azureedge.net**. 
+
+![Tartomány hozzáadása lap](media/app-service-web-tutorial-content-delivery-network/portal-add-domain.png)
+
+### <a name="configure-the-cname-with-your-domain-registrar"></a>A CNAME konfigurálása a tartományregisztrálóval
+
+Lépjen a tartományregisztráló webhelyére, és keresse meg a DNS-rekordok létrehozására szolgáló felületet. Ezt a **Tartománynév**, **DNS**, **Névkiszolgáló kezelése** vagy hasonló területen találja.
+
+Keresse meg a CNAME-rekordok kezelésére szolgáló felületet. Ehhez esetleg a különleges beállítások lapjára kell lépnie, és ott a CNAME, Alias vagy Altartományok kifejezést kell keresnie.
+
+Hozzon létre egy új CNAME-rekordot, amely leképezi a választott altartományt (például a **statikus** vagy **cdn** altartományt) a portálon korábban bemutatott **Végpont gazdagépnevére**. 
+
+### <a name="enter-the-custom-domain-in-azure"></a>Az egyéni tartománynév megadása az Azure-ban
+
+Lépjen vissza az **Egyéni tartomány hozzáadása** lapra, és adja meg az egyéni tartományt az altartománnyal együtt a párbeszédpanelen. Adja meg például a következőt: `cdn.contoso.com`.   
+   
+Az Azure ellenőrzi, hogy a megadott tartománynév esetében létezik-e a CNAME-rekord. Ha a CNAME helyes, az egyéni tartomány érvényesítve lesz.
+
+Időbe telhet, amíg megtörténik a CNAME-rekord névkiszolgálókon való propagálása az interneten. Ha úgy véli, hogy a CNAME-rekord helyes, ám a tartomány érvényesítése mégsem történik meg azonnal, várjon néhány percet, majd próbálja újra.
+
+### <a name="test-the-custom-domain"></a>Az egyéni tartomány tesztelése
+
+Egy böngészőben nyissa meg az `index.html` fájlt az egyéni tartomány (például a `cdn.contoso.com/index.html`) használatával annak ellenőrzéséhez, hogy az eredmény ugyanaz, mintha közvetlenül az `<endpointname>azureedge.net/index.html` helyre lépett volna.
+
+![Mintaalkalmazás egyéni tartományi URL-címet használó kezdőlapja](media/app-service-web-tutorial-content-delivery-network/home-page-custom-domain.png)
+
+További információkért lásd: [Azure CDN-tartalom leképezése egyéni tartományra](../cdn/cdn-map-content-to-custom-domain.md)
+
+[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Mi az Azure CDN?](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
-* [HTTPS engedélyezése Azure CDN egyéni tartományon](../cdn/cdn-custom-ssl.md)
-* [A teljesítmény javítása a fájlok tömörítésével az Azure CDN-ben](../cdn/cdn-improve-performance.md)
-* [Eszközök előzetes betöltése Azure CDN-végponton](../cdn/cdn-preload-endpoint.md)
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+
+> [!div class="checklist"]
+> * CDN-végpont létrehozása.
+> * Gyorsítótárazott objektumok frissítése.
+> * Gyorsítótárazott verziók felügyelete lekérdezési karakterláncok használatával.
+> * Egyéni tartomány használata a CDN-végponthoz.
+
+A CDN teljesítményének optimalizálását a következő cikkekben sajátíthatja el.
+
+> [!div class="nextstepaction"]
+> [A teljesítmény javítása a fájlok tömörítésével az Azure CDN-ben](../cdn/cdn-improve-performance.md)
+
+> [!div class="nextstepaction"]
+> [Eszközök előzetes betöltése Azure CDN-végponton](../cdn/cdn-preload-endpoint.md)
+
 
