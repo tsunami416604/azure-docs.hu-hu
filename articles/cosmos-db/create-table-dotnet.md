@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 73b9448153ec520d77afd1bdb65b9694e7bf7b9e
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: cba0b278d84e25876a8b73cedb7e35f84500fc5e
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -58,7 +58,7 @@ Az Adatkezelő segítségével adatokat adhat hozzá az új táblához.
 
 Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatjuk az alkalmazást. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
 
-1. Nyisson meg egy git-terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen át egy munkakönyvtárba.  
+1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
 
 2. Futtassa a következő parancsot a mintatárház klónozásához. 
 
@@ -70,27 +70,33 @@ Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Tekintsük át, hogy mi is történik az alkalmazásban. Nyissa meg a DocumentDBRepository.cs fájlt. Az itt található kódsorok hozzák létre az Azure Cosmos DB-erőforrásokat. 
+Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB erőforrásokat. 
 
 * A rendszer inicializálja a DocumentClient ügyfelet.
 
     ```csharp
-    client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);`
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString); 
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     ```
 
-* A rendszer létrehozza az új adatbázist.
+* Új táblázat jön létre, ha még nem létezik.
 
     ```csharp
-    await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
+    CloudTable table = tableClient.GetTableReference("people");
+    table.CreateIfNotExists();
     ```
 
-* A rendszer létrehozza az új gráftárolót.
+* Létrejön egy új táblázattároló. Láthatja, hogy ez a kód nagyon hasonló a normál Azure Table Storage SDK-hoz 
 
     ```csharp
-    await client.CreateDocumentCollectionAsync(
-        UriFactory.CreateDatabaseUri(DatabaseId),
-        new DocumentCollection { Id = CollectionId },
-        new RequestOptions { OfferThroughput = 1000 });
+    CustomerEntity item = new CustomerEntity()
+                {
+                    PartitionKey = Guid.NewGuid().ToString(),
+                    RowKey = Guid.NewGuid().ToString(),
+                    Email = $"{GetRandomString(6)}@contoso.com",
+                    PhoneNumber = "425-555-0102",
+                    Bio = GetRandomString(1000)
+                };
     ```
 
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
@@ -106,7 +112,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 3. Másolja az Azure Cosmos DB-fiók nevét a Portalról, és az app.config fájlban a PremiumStorageConnection karakterlánc értéknél adja meg a nevet az AccountName paraméter értékeként. A fenti képen a fiók neve: cosmos-db-quickstart. A fiók neve a Portalon legfelül látható.
 
     `<add key="PremiumStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://COSMODB.documents.azure.com" />`
+        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://COSMOSDB.documents.azure.com" />`
 
 4. Ezután másolja az elsődleges kulcs értékét a Portalról, és adja meg a PremiumStorageConnectionString sztring AccountKey paraméterének értékeként. 
 
@@ -114,7 +120,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 5. Végezetül másolja az URI értékét a Portal Kulcsok lapjáról (a Másolás gombbal), és adja meg a PremiumStorageConnectionString sztring TableEndpoint paraméterének értékeként.
 
-    `TableEndpoint=https://COSMODB.documents.azure.com`
+    `TableEndpoint=https://COSMOSDB.documents.azure.com`
 
     A StandardStorageConnectionString értékét nem szükséges megváltoztatnia.
 

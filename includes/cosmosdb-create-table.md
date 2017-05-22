@@ -7,10 +7,10 @@ Az Adatkezelővel gráftárolókat hozhat létre és adatokat adhat hozzá az ad
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    Adatbázis azonosítója|minta adatbázis|Az új adatbázis azonosítója Az adatbázis nevének 1 és 255 karakter közé kell esnie, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóköz.
+    Adatbázis azonosítója|sample-database|Az új adatbázis azonosítója. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóközt.
     Katalógus azonosítója|minta tábla|Az új gyűjtemény azonosítója A gyűjtemények nevére ugyanazok a korlátozások vonatkoznak, mint az adatbázis-azonosítókra.
-    Tárkapacitás| 10 GB|Ne módosítsa az alapértelmezett értéket. Ez az adatbázis a tárkapacitása.
+    Tárkapacitás| 10 GB|Ne módosítsa az alapértelmezett értéket. Ez az adatbázis tárkapacitása.
     Teljesítmény|400 kérelemegység|Ne módosítsa az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-    Partíciókulcs|/databases|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs A megfelelő partíciókulcs kiválasztása fontos a nagy teljesítményű gyűjtemények létrehozásához. Erről bővebben a [Particionálásra tervezés](../articles/cosmos-db/partition-data.md#designing-for-partitioning) c. részben olvashat.
+    Partíciókulcs|/utónév|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciókulcs kiválasztása fontos a nagy teljesítményű gyűjtemények létrehozásához. Erről bővebben a [Particionálásra tervezés](../articles/cosmos-db/partition-data.md#designing-for-partitioning) c. részben olvashat.
 
 3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.

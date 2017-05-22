@@ -1,6 +1,6 @@
 ---
-title: "Az összes bérlőre kiterjedő alkalmi elemzési lekérdezések futtatása (Azure SQL Database-t használó SaaS-mintaalkalmazás) | Microsoft Docs"
-description: "Az összes bérlőre kiterjedő alkalmi elemzési lekérdezések futtatása"
+title: "Alkalmi elemzési lekérdezések futtatása több Azure SQL-adatbázisban | Microsoft Docs"
+description: "Alkalmi elemzési lekérdezések futtatása több adatbázisban egy több-bérlős alkalmazásban"
 keywords: "sql database-oktatóanyag"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c00c25116002c46fc94c5ea59acc101a2055b689
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: dd41e7f1f131f6c18e03d2434982c3d681342b8b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -54,7 +54,7 @@ Ezeknek az adatoknak egyetlen több bérlős adatbázisban történő elérése 
 
 ## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
 
-A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub-tárban érhetők el. A parancsfájlok a [Tanulási modulok mappában](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
+A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaas](https://github.com/Microsoft/WingtipSaaS) GitHub-adattárban érhető el. A szkriptfájlok a [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Tanulási modulok) mappában találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
 
 ## <a name="deploy-the-database-used-for-ad-hoc-analytics-queries"></a>Az alkalmi elemzési lekérdezésekhez használt adatbázis üzembe helyezése
 

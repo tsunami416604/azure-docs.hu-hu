@@ -13,12 +13,13 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/03/2017
+ms.date: 05/11/2017
 ms.author: iainfou
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d7ff1317cdf6ccfe6b4e5035878fc4e096fcc0f9
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 756711abb014829971af126c5cb60c12e79c920e
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -27,59 +28,43 @@ Az Azure-ban rugalmasan hozhat létre Linux virtuális gépeket olyan eszközök
 
 Az [Azure CLI 2.0](/cli/azure/install-az-cli2) több platformon elérhető egy npm-csomagon, disztribúció által biztosított csomagokon vagy a Docker-tárolón keresztül. Telepítheti a környezet számára legmegfelelőbb buildet, és bejelentkezhet egy Azure-fiókba az [az login](/cli/azure/#login) paranccsal
 
-Az alábbi példák az Azure CLI 2.0-s verzióját veszik alapul. Olvassa el az egyes cikkeket a bemutatott parancsok további részleteivel kapcsolatban. Emellett példákat találhat a Linux rendszeren elérhető létrehozási lehetőségekre az [Azure CLI 1.0](creation-choices-nodejs.md) használata esetén.
-
-* [Linux virtuális gép létrehozása az Azure CLI 2.0-val](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux-alapú virtuális gép létrehozása az Azure CLI 2.0-s verziójával](quick-create-cli.md)
   
-  * Ez a példa létrehoz egy `myResourceGroup` nevű erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal: 
--    
+  * Hozzon létre egy *myResourceGroup* nevű erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal: 
+   
     ```azurecli
-    az group create --name myResourceGroup --location westus
+    az group create --name myResourceGroup --location eastus
     ```
     
-  * Ez a példa létrehoz egy `myVM` nevű virtuális gépet a legújabb Debian rendszerképet az Azure Managed Disks eszközzel és egy `id_rsa.pub` nevű nyilvános kulcs és az [az vm create](/cli/azure/vm#create) parancs használatával:
+  * Hozzon létre egy *myVM* nevű virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal a legújabb *UbuntuLTS* rendszerkép használatával, majd hozzon létre SSH-kulcsokat, ha azok még nem léteznek az *~/.ssh* mappában:
 
     ```azurecli
     az vm create \
-    --image credativ:Debian:8:latest \
-     --admin-username azureuser \
-    --ssh-key-value ~/.ssh/id_rsa.pub \
-az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk  –-new --size-gb 5    --public-ip-address-dns-name myPublicDNS \
-    --resource-group myResourceGroup \
-    --location westus \
-    --name myVM
+        --resource-group myResourceGroup \
+        --name myVM \
+        --image UbuntuLTS \
+        --generate-ssh-keys
     ```
 
-    * Ha nem felügyelt lemezeket szeretne használni, adja a `--use-unmanaged-disks` jelzőt a fenti parancshoz. Létrejön egy tárfiók. További információ: [Azure Managed Disks – áttekintés](../../storage/storage-managed-disks-overview.md).
-
-* [Biztonságos Linux virtuális gép létrehozása Azure-sablon alapján](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux virtuális gép létrehozása Azure-sablon alapján](create-ssh-secured-vm-from-template.md)
   
-  * Az alábbi példa egy virtuális gépet hoz létre a GitHubon tárolt sablonnal az [az group deployment create](/cli/azure/group/deployment#create) paranccsal:
+  * Az alábbi példa egy virtuális gépet hoz létre a GitHubon tárolt sablonból az [az group deployment create](/cli/azure/group/deployment#create) paranccsal:
     
     ```azurecli
     az group deployment create --resource-group myResourceGroup \ 
       --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json \
       --parameters @myparameters.json
     ```
-    
-* [Teljes Linux-környezet létrehozása az Azure parancssori felülettel](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-  
-  * Magában foglalja egy terheléselosztó és több virtuális gép létrehozását egy rendelkezésre állási csoportban.
+* [Linux virtuális gép létrehozása és testreszabása a cloud-init paranccsal](tutorial-automate-vm-deployment.md)
 
-* [Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-  
-  * Az alábbi példa hozzáad egy 50 GB-os nem felügyelt lemezt a `myVM` nevű meglévő virtuális géphez az [az vm disk attach-new](/cli/azure/vm/disk#attach-new) paranccsal:
-  
-    ```azurecli
-    az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk  \
-    –-new --size-gb 50
-    ```
+* [Elosztott terhelésű és magas rendelkezésre állású alkalmazás létrehozása több Linux virtuális gépen](tutorial-load-balancer.md)
+
 
 ## <a name="azure-portal"></a>Azure Portal
 Az [Azure portálon](https://portal.azure.com) gyorsan létrehozhat egy virtuális gépet, mivel semmit nem kell telepítenie a rendszerre. A virtuális gép létrehozása az Azure Portallal:
 
-* [Linux virtuális gép létrehozása az Azure Portal használatával](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
-* [Lemez csatolása az Azure Portal használatával](../windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Linux virtuális gép létrehozása az Azure Portal használatával](quick-create-portal.md) 
+
 
 ## <a name="operating-system-and-image-choices"></a>Választható operációs rendszerek és rendszerképek
 A virtuális gépek létrehozásakor egy rendszerképet választ ki a futtatni kívánt operációs rendszer alapján. Az Azure és a partnerei számos rendszerképet kínálnak, amelyek némelyike előre telepített alkalmazásokat és eszközöket tartalmaz. Feltöltheti az egyik saját rendszerképét is (lásd [a következő szakaszt](#use-your-own-image)).
@@ -90,30 +75,30 @@ Az [az vm image](/cli/azure/vm/image) paranccsal megtekintheti az elérhető ele
 Az elérhető közzétevők listázása:
 
 ```azurecli
-az vm image list-publishers --location WestUS
+az vm image list-publishers --location eastus
 ```
 
 Egy adott közzétevő elérhető termékeinek (ajánlatainak) listázása:
 
 ```azurecli
-az vm image list-offers --publisher Canonical --location WestUS
+az vm image list-offers --publisher Canonical --location eastus
 ```
 
 Egy adott ajánlat elérhető termékváltozatainak (disztribúciós kiadásainak) listázása:
 
 ```azurecli
-az vm image list-skus --publisher Canonical --offer UbuntuServer --location WestUS
+az vm image list-skus --publisher Canonical --offer UbuntuServer --location eastus
 ```
 
 Egy adott kiadás összes elérhető rendszerképének listázása:
 
 ```azurecli
-az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS --location WestUS
+az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS --location eastus
 ```
 
-Az elérhető rendszerképek tallózásával és használatával kapcsolatos további példák: [Navigate and select Azure virtual machine images with the Azure CLI](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Azure virtuális gépek rendszerképének keresése és kiválasztása az Azure parancssori felülettel).
+Az elérhető rendszerképek tallózásával és használatával kapcsolatos további példák: [Navigate and select Azure virtual machine images with the Azure CLI](cli-ps-findimage.md) (Azure virtuális gépek rendszerképének keresése és kiválasztása az Azure parancssori felülettel).
 
-Az **az vm create** parancs rendelkezik aliasokkal, amelyek segítségével gyorsan hozzáférhet a leggyakoribb disztribúciókhoz és azok legújabb kiadásaihoz. Az aliasok használata gyakran gyorsabb, mintha meg kellene adnia a közzétevőt, ajánlatot, termékváltozatot és verziót, valahányszor létrehoz egy virtuális gépet:
+Az [az vm create](/cli/azure/vm#create) parancs rendelkezik aliasokkal, amelyek segítségével gyorsan hozzáférhet a leggyakoribb disztribúciókhoz és azok legújabb kiadásaihoz. Az aliasok használata gyakran gyorsabb, mintha meg kellene adnia a közzétevőt, ajánlatot, termékváltozatot és verziót, valahányszor létrehoz egy virtuális gépet:
 
 | Alias | Közzétevő | Ajánlat | SKU | Verzió |
 |:--- |:--- |:--- |:--- |:--- |
@@ -126,22 +111,22 @@ Az **az vm create** parancs rendelkezik aliasokkal, amelyek segítségével gyor
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |legújabb |
 
 ### <a name="use-your-own-image"></a>Saját rendszerkép használata
-Ha speciális egyéni beállításokra van szüksége, használhat egy meglévő Azure virtuális gépen alapuló rendszerképet a virtuális gép *rögzítésével*. Emellett feltölthet egy helyszínen létrehozott rendszerképet is. A támogatott disztribúciókkal és a saját rendszerképek használatával kapcsolatban az alábbi cikkekben tekinthet meg további információt:
+Ha speciális egyéni beállításokra van szüksége, használhat egy meglévő Azure virtuális gépen alapuló rendszerképet a virtuális gép rögzítésével. Emellett feltölthet egy helyszínen létrehozott rendszerképet is. A támogatott disztribúciókkal és a saját rendszerképek használatával kapcsolatban az alábbi cikkekben tekinthet meg további információt:
 
-* [Azure által támogatott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Nem támogatott disztribúciókkal kapcsolatos tudnivalók](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [How to capture a Linux virtual machine as a Resource Manager template](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux virtuális gép rögzítése Resource Manager-sablonként).
+* [Azure által támogatott disztribúciók](endorsed-distros.md)
+* [Nem támogatott disztribúciókkal kapcsolatos tudnivalók](create-upload-generic.md)
+* [Rendszerkép létrehozása meglévő Azure virtuális gépből](tutorial-custom-images.md).
   
-  * Gyors üzembe helyezési **az vm** példaparancsok egy meglévő virtuális gép rögzítésére nem felügyelt lemezek használatával:
+  * Gyors üzembehelyezési példaparancsok rendszerkép meglévő Azure virtuális gépből való létrehozására:
     
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     az vm generalize --resource-group myResourceGroup --name myVM
-    az vm capture --resource-group myResourceGroup --name myVM --vhd-name-prefix myCapturedVM
+    az vm image create --resource-group myResourceGroup --source myVM --name myImage
     ```
 
 ## <a name="next-steps"></a>Következő lépések
-* Hozzon létre egy Linux virtuális gépet a [portálon](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [parancssori felülettel](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [Azure Resource Manager-sablonnal](../windows/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* A Linux virtuális gép létrehozása után [adjon hozzá egy adatlemezt](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Gyors lépések [jelszó vagy SSH-kulcsok alaphelyzetbe állításához és felhasználók kezeléséhez](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* Hozzon létre egy Linux virtuális gépet a [parancssori felülettel](quick-create-cli.md), a [portálon](quick-create-portal.md) vagy [Azure Resource Manager-sablonnal](../windows/cli-deploy-templates.md).
+* A Linux virtuális gép létrehozása után [ismerje meg az Azure lemezeket és tárolót](tutorial-manage-disks.md).
+* Gyors lépések [jelszó vagy SSH-kulcsok alaphelyzetbe állításához és felhasználók kezeléséhez](using-vmaccess-extension.md).
 

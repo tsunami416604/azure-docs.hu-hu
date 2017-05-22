@@ -1,6 +1,6 @@
 ---
-title: "A Wingtip Tickets Platform (WTP) alkalmazás üzembe helyezése és megismerése (az Azure SQL Database-t használó minta SaaS-alkalmazás) | Microsoft Docs"
-description: "Egy Azure SQL Database-t használó minta SaaS-alkalmazás üzembe helyezése és megismerése"
+title: "Egy Azure SQL Database-t használó SaaS-alkalmazás üzembe helyezése és megismerése | Microsoft Docs"
+description: "Az Azure SQL Database mintául szolgáló Wingtip Tickets (WTP) alkalmazásának üzembe helyezése és megismerése"
 keywords: "sql database-oktatóanyag"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: ff4dc19bb6e24ea9ceeed9721cfb3a85b4d10965
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 04859fb8a9f4a8bf04d92e7139d9202885c52503
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -29,6 +29,8 @@ ms.lasthandoff: 05/10/2017
 Ez az oktatóanyag a Wingtip Tickets Platform (WTP) SaaS-alkalmazás üzembe helyezésével és részletes ismertetésével foglalkozik. Az alkalmazás egy bérlőnként egy adatbázisos SaaS-alkalmazásmintát használ több bérlő kiszolgálására. Az alkalmazás úgy lett kialakítva, hogy bemutassa az Azure SQL Database SaaS-forgatókönyveket támogató funkcióit, illetve az SaaS kialakítási és a felügyeleti mintáit.
 
 Öt perccel az alábbi *Deploy to Azure* (Üzembe helyezés az Azure-ban) gombra kattintás után már üzemelni és futni fog a felhőben egy SQL Database-t használó, több bérlős SaaS-alkalmazás. Az alkalmazást három mintabérlővel helyezzük üzembe, amelyek mindegyike rendelkezik egy saját, SQL rugalmas készletben üzembe helyezett adatbázissal. Az alkalmazás az Ön Azure-előfizetésében lesz üzembe helyezve, így teljes körű hozzáférése, vizsgálati és használati lehetősége lesz az alkalmazás egyes összetevőihez.
+
+A szkriptek és alkalmazás-forráskódok a [WingtipSaas](https://github.com/Microsoft/WingtipSaaS) GitHub-adattárban érhetők el.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

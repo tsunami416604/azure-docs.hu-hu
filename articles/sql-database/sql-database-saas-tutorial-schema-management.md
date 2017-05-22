@@ -1,6 +1,6 @@
 ---
-title: "Séma kezelése több bérlőnél (Azure SQL Database-t használó SaaS-mintaalkalmazás) | Microsoft Docs"
-description: "Séma kezelése több bérlőnél az Azure SQL Database-t használó SaaS-alkalmazásban"
+title: "Azure SQL Database-séma kezelése több-bérlős alkalmazásban | Microsoft Docs"
+description: "Több bérlő sémájának kezelése Azure SQL Database-t használó több-bérlős alkalmazásban"
 keywords: "sql database-oktatóanyag"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 226cda254934fae30410e54148d5cc527e1c7881
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 19d02229781186053a0063af1c7e1a3280179f46
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -64,7 +64,7 @@ Megjelent az Elastic Jobs új verziója, amely most az Azure SQL Database integr
 
 ## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
 
-A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub-tárban érhetők el. A parancsfájlok a [Tanulási modulok mappában](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
+A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaas](https://github.com/Microsoft/WingtipSaaS) GitHub-adattárban érhető el. A szkriptfájlok a [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Tanulási modulok) mappában találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>Feladatfiók-adatbázis és új feladatfiók létrehozása
 

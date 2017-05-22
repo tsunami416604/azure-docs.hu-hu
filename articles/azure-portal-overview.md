@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
-translationtype: Human Translation
-ms.sourcegitcommit: 6ab02779d65dfc1519b457486678ace5fafc9fb5
-ms.openlocfilehash: 60733f973e7b88389816c1ea7cc15532ba967693
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: e4c1c2b956b2cae673e60223ce777ba1096dce33
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -32,7 +33,7 @@ A Microsoft Azure Portal egy központi felület, ahol kioszthatja és kezelheti 
   ![Az Azure Portal felhasználói felületének bemutatása][UIOrientation]
 
 ## <a name="before-you-get-started"></a>A kezdés előtt
-Érvényes Azure-előfizetéssel kell rendelkeznie az oktatóanyag megtekintéséhez.  Ha még nem rendelkezik ezzel, most [regisztrálhat egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).  Ha rendelkezik előfizetéssel, a portálhoz a [https://portal.azure.com] webhelyen férhet hozzá.
+Érvényes Azure-előfizetéssel kell rendelkeznie az oktatóanyag megtekintéséhez.  Ha még nem rendelkezik ezzel, most [regisztrálhat egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).  Ha rendelkezik előfizetéssel, a portálhoz a <https://portal.azure.com> webhelyen férhet hozzá.
 
 ## <a name="how-to-create-a-resource"></a>Erőforrás létrehozása
 Az Azure Piactéren elemek százait hozhatja létre egyetlen helyen.  Tegyük fel, hogy egy új Windows Server 2012 virtuális gépet kíván létrehozni.  Az +ÚJ felület a belépési pont a piactér kiemelt kategóriáinak gondosan összeválogatott listájához.  Mindegyik kategóriában kiemelt elemeket találhat, valamint egy hivatkozást a teljes piactérre, amely megjeleníti az összes kategóriát és keresést. Az új Windows Server 2012 virtuális gép létrehozásához hajtsa végre a következő műveleteket:  

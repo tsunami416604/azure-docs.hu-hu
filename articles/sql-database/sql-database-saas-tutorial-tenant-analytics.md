@@ -1,6 +1,6 @@
 ---
-title: "Több bérlőre kiterjedő analitikai lekérdezések futtatása (Azure SQL Database-t használó SaaS-mintaalkalmazás) | Microsoft Docs"
-description: "Több bérlőre kiterjedő analitikai lekérdezések futtatása"
+title: "Elemzési lekérdezések futtatása több Azure SQL-adatbázisban | Microsoft Docs"
+description: "Elosztott lekérdezések futtatása több Azure SQL-adatbázisban"
 keywords: "sql database-oktatóanyag"
 services: sql-database
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b512e2f7833be1947ef7674d6e0266879789ac5a
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: a0742a004b618dda304618bca21ae715552c16e6
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
-# <a name="run-analytics-queries-against-multiple-tenants"></a>Több bérlőre kiterjedő analitikai lekérdezések futtatása
+# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>Elosztott lekérdezések futtatása több Azure SQL-adatbázisban
 
 Ebben az oktatóanyagban a katalógusban szereplő összes bérlőre vonatkozó analitikai lekérdezéseket futtat majd. A lekérdezések futtatásához egy rugalmas feladatot fogunk használni. A feladat kigyűjti és a katalóguskiszolgálón létrehozott külön analitikai adatbázisba tölti be az adatokat. Ennek az adatbázisnak a lekérdezésével feltárhatók az összes bérlő nap mint nap használt adatai között rejlő összefüggések. A feladat kimeneteként az eredményt visszaadó lekérdezések alapján létrejön egy tábla a bérlő analitikai adatbázisában.
 
@@ -37,7 +37,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A WTP alkalmazás üzembe van helyezve. A kevesebb mint öt perc alatti üzembe helyezéshez lásd: [A WTP SaaS-alkalmazás üzembe helyezése és megismerése](sql-database-saas-tutorial.md)
+* A WTP alkalmazás üzembe van helyezve. A kevesebb, mint öt perc alatti üzembe helyezéshez lásd: [A WTP SaaS-alkalmazás üzembe helyezése és felfedezése](sql-database-saas-tutorial.md)
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [Az SSMS letöltése és telepítése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
@@ -47,7 +47,7 @@ Az SaaS-alkalmazásokban rejlő nagy lehetőségek egyike a felhőben tárolt r�
 
 ## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
 
-A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub-tárházban érhetők el. A parancsfájlok a [Tanulási modulok mappában](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
+A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaas](https://github.com/Microsoft/WingtipSaaS) GitHub-adattárban érhető el. A szkriptfájlok a [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Tanulási modulok) mappában találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
 
 ## <a name="deploy-a-database-for-tenant-analytics-results"></a>A bérlői analitikai eredményeket tároló adatbázis kialakítása
 

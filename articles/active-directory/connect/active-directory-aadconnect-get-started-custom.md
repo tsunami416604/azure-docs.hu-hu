@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/30/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 06f81b11205085357ba4ba4e2f0d2e1e4c0e940a
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: 5120b3f11549c936daacdfab37190a7193fde89f
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/12/2017
 
 
 ---
@@ -74,9 +75,19 @@ Ha hibaüzenetet kap, és problémák adódnak a kapcsolódással, tekintse meg 
 ## <a name="pages-under-the-section-sync"></a>Oldalak a Sync (Szinkronizálás) szakaszban
 
 ### <a name="connect-your-directories"></a>Csatlakoztassa a címtárakat
-Az Active Directory tartományi szolgáltatások csatlakoztatásához az Azure AD Connectnek szüksége van egy megfelelő engedélyekkel rendelkező fiók hitelesítő adataira. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\syncuser vagy fabrikam.com\syncuser alakban. A fiók lehet normál felhasználói fiók is, mivel csupán az alapértelmezett olvasási engedélyek szükségesek. A forgatókönyvtől függően azonban más engedélyekre is szüksége lehet. További információkért lásd: [Azure AD Connect-fiókok és -engedélyek](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)
+Az Active Directory tartományi szolgáltatások csatlakoztatásához az Azure AD Connectnek szüksége van az erdő nevére és egy megfelelő engedélyekkel rendelkező fiók hitelesítő adataira.
 
-![Címtár csatlakoztatása](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
+![Címtár csatlakoztatása](./media/active-directory-aadconnect-get-started-custom/connectdir01.png)
+
+Miután beírta az erdő nevét és a **Címtár hozzáadása** gombra kattintott, megjelenik egy felugró párbeszédpanel a következő lehetőségekkel:
+
+| Beállítás | Leírás |
+| --- | --- |
+| Meglévő fiók használata | Válassza ezt a lehetőséget, ha meglévő AD DS-fiókot szeretne megadni az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\syncuser vagy fabrikam.com\syncuser alakban. A fiók lehet normál felhasználói fiók is, mivel csupán az alapértelmezett olvasási engedélyek szükségesek. A forgatókönyvtől függően azonban más engedélyekre is szüksége lehet. További információkért lásd: [Azure AD Connect-fiókok és -engedélyek](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account). |
+| Új fiók létrehozása | Válassza ezt a lehetőséget, ha az Azure AD Connect varázslójával szeretné létrehozni az AD DS-fiókot az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. Ha ezt a lehetőséget választja, adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Az Azure AD Connect varázsló a megadott vállalati rendszergazdai fiók használatával hozza létre a szükséges AD DS-fiókot. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\rendszergazda vagy fabrikam.com\rendszergazda alakban. |
+
+![Címtár csatlakoztatása](./media/active-directory-aadconnect-get-started-custom/connectdir02.png)
+
 
 ### <a name="azure-ad-sign-in-configuration"></a>Azure AD-bejelentkezés konfigurálása
 Ezen az oldalon áttekintheti a helyszíni AD DS rendszerben jelenlévő és az Azure AD szolgáltatásban ellenőrzött UPN-tartományokat. Az oldalon emellett konfigurálhatja a userPrincipalName tulajdonsághoz használt attribútumot is.
@@ -99,7 +110,7 @@ Alapértelmezés szerint minden tartomány és szervezeti egység szinkronizálv
 ![Domain/OU-szűrés](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)  
 A varázslónak ezen az oldalán a tartományalapú és szervezeti egység szerinti szűrés konfigurálható. Ha módosításokat tervez, tekintse meg a [tartományalapú szűréssel](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) és a [szervezeti egység szerinti szűréssel](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) kapcsolatos témaköröket a módosítások végrehajtása előtt. Egyes szervezeti egységek létfontosságúak a működéshez, és ezek kijelölését nem szabad törölni.
 
-Szervezeti egység szerinti szűrés használata esetén a rendszer alapértelmezés szerint szinkronizálja a később hozzáadott új szervezeti egységeket. Ha azt szeretné, hogy a rendszer ne szinkronizálja az új szervezeti egységeket, akkor azt azután állíthatja be, hogy a varázsló a [szervezeti egység szerinti szűrés](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) beállítással befejeződött
+Ha a szervezeti egység szerinti szűrést az Azure AD Connect 1.1.524.0 előtti verziójával használja, a rendszer alapértelmezés szerint szinkronizálja a később hozzáadott új szervezeti egységeket. Ha azt szeretné, hogy a rendszer ne szinkronizálja az új szervezeti egységeket, akkor azt azután állíthatja be, hogy a varázsló a [szervezeti egység szerinti szűrés](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) beállítással befejeződött Az Azure AD Connect 1.1.524.0-s vagy újabb verziója esetén jelezheti, hogy szeretné-e szinkronizálni az új szervezeti egységeket.
 
 Ha [csoportalapú szűrés](#sync-filtering-based-on-groups) használatát tervezi, győződjön meg arról, hogy a csoport szervezeti egysége szerepel, és nincs kiszűrve a szervezeti egység szerinti szűrésben. A rendszer a szervezeti egység szerinti szűrést a csoportalapú szűrés előtt végzi el.
 
@@ -108,6 +119,8 @@ Előfordulhat, hogy egyes tartományok tűzfalkorlátozások miatt nem érhetőe
 Ha ilyen figyelmeztető jelölést lát, ellenőrizze, hogy ezek a tartományok valóban nem érhetőek el, és a figyelmeztetés jogos.
 
 ### <a name="uniquely-identifying-your-users"></a>Felhasználók egyedi azonosítása
+
+#### <a name="select-how-users-should-be-identified-in-your-on-premises-directories"></a>Válassza ki, hogyan történjen a felhasználók azonosítása a helyszíni címtárakban
 Az erdők közötti megfeleltetés szolgáltatás segítségével meghatározhatja, hogy az AD DS-erdőkből származó felhasználók miként szerepeljenek az Azure AD szolgáltatásban. A felhasználók vagy egyszer szerepelnek az összes erdőben, vagy engedélyezett és letiltott fiókok kombinációjával rendelkeznek. A felhasználók egyes erdőkben esetleg kapcsolattartóként is szerepelhetnek.
 
 ![Egyedi](./media/active-directory-aadconnect-get-started-custom/unique.png)
@@ -120,7 +133,15 @@ Az erdők közötti megfeleltetés szolgáltatás segítségével meghatározhat
 | sAMAccountName and MailNickName (sAMAccountName és MailNickName) |Ez a beállítás azokat az attribútumokat csatlakoztatja, ahol a felhasználó bejelentkezési azonosítója várhatóan megtalálható. |
 | A specific attribute (Egy adott attribútum) |Ez a beállítás lehetővé teszi, hogy kiválassza a saját attribútumát. **Korlátozás:** Mindenképp olyan attribútumot kell választania, amely már megtalálható a metaverzumban. Amennyiben egy egyedi attribútumot választ (amely nem tartozik a metaverzumba), a varázsló nem képes befejezni a feladatot. |
 
-**Source Anchor** (Forráshorgony) – A sourceAnchor egy olyan attribútum, amely a felhasználói objektum élettartama alatt megváltoztathatatlan. Ez a helyszíni felhasználót az Azure AD-felhasználóval összekötő elsődleges kulcs. Mivel az attribútum nem módosítható, megfelelő attribútumot kell választania a tervezés során. Egy jó jelölt az objectGUID. Ez az attribútum nem változik, hacsak a felhasználói fiókot nem helyezi át az erdők/tartományok között. Többerdős környezetben, ahol az erdők közt mozgatja a fiókokat, egy másik attribútumot kell használni, például egy olyat, amelyik az employeeID azonosítót tartalmazza. Ne használjon olyan attribútumokat, amelyek változhatnak, ha a felhasználó megházasodik vagy más pozícióba kerül. Nem használhat olyan attribútumokat, amelyek tartalmazzák a @-sign jelet, így az e-mail-cím vagy a userPrincipalName nem használható. Az attribútum továbbá különbséget tesz a kis- és a nagybetűk között, ezért amikor az objektumokat az erdők között mozgatja, ügyeljen a kis-/nagybetűk megőrzésére. A bináris attribútumok base64-kódolásúak, az egyéb típusú attribútumok azonban megmaradnak kódolatlan állapotban. Összevonási forgatókönyvekben és néhány Azure AD felületen ez az attribútum immutableID néven ismert. A forráshorgonnyal kapcsolatban további információt a [tervezési alapelvek](active-directory-aadconnect-design-concepts.md#sourceanchor) leírásában talál.
+#### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Válassza ki, hogyan történjen a felhasználók azonosítása az Azure AD – Source Anchor (Forráshorgony) használatával
+A sourceAnchor egy olyan attribútum, amely a felhasználói objektum élettartama alatt megváltoztathatatlan. Ez a helyszíni felhasználót az Azure AD-felhasználóval összekötő elsődleges kulcs.
+
+| Beállítás | Leírás |
+| --- | --- |
+| Let Azure manage the source anchor for me (Az Azure kezelje a forráshorgonyt) | Válassza ezt a lehetőséget, ha azt szeretné, hogy az Azure AD válassza ki az attribútumot. |
+| A specific attribute (Egy adott attribútum) | Válassza ezt a lehetőséget, ha meglévő AD-attribútumot szeretne megadni forráshorgony-attribútumként. |
+
+Mivel az attribútum nem módosítható, megfelelő attribútumot kell választania a tervezés során. Egy jó jelölt az objectGUID. Ez az attribútum nem változik, hacsak a felhasználói fiókot nem helyezi át az erdők/tartományok között. Többerdős környezetben, ahol az erdők közt mozgatja a fiókokat, egy másik attribútumot kell használni, például egy olyat, amelyik az employeeID azonosítót tartalmazza. Ne használjon olyan attribútumokat, amelyek változhatnak, ha a felhasználó megházasodik vagy más pozícióba kerül. Nem használhat olyan attribútumokat, amelyek tartalmazzák a @-sign jelet, így az e-mail-cím vagy a userPrincipalName nem használható. Az attribútum továbbá különbséget tesz a kis- és a nagybetűk között, ezért amikor az objektumokat az erdők között mozgatja, ügyeljen a kis-/nagybetűk megőrzésére. A bináris attribútumok base64-kódolásúak, az egyéb típusú attribútumok azonban megmaradnak kódolatlan állapotban. Összevonási forgatókönyvekben és néhány Azure AD felületen ez az attribútum immutableID néven ismert. A forráshorgonnyal kapcsolatban további információt a [tervezési alapelvek](active-directory-aadconnect-design-concepts.md#sourceanchor) leírásában talál.
 
 ### <a name="sync-filtering-based-on-groups"></a>Szinkronizálás szűrése csoportok alapján
 A csoportra szűrés szolgáltatás használatával szinkronizálhatja az objektumok kisebb részhalmazát is próbaüzem esetén. A szolgáltatás használatához hozzon létre egy csoportot e célból a helyszíni Active Directory szolgáltatásban. Ezután adja hozzá a felhasználókat és csoportokat, amelyeket közvetlen tagokként kíván szinkronizálni az Azure AD szolgáltatásba. Később hozzáadhat vagy eltávolíthat felhasználókat a csoportban, és így karbantarthatja az objektumok listáját, amelyeknek az Azure AD szolgáltatásban jelen kell lenniük. Az összes szinkronizálni kívánt objektumnak a csoport közvetlen tagjának kell lennie. A felhasználóknak, csoportoknak, kapcsolattartóknak és számítógépeknek/eszközöknek mind közvetlen tagnak kell lenniük. A beágyazott csoporttagság feloldása nem lehetséges. Ha egy csoportot tagként hozzáad, csak maga a csoport lesz hozzáadva, a tagjai nem.
@@ -147,6 +168,7 @@ A képernyő segítségével beállíthatja a választható szolgáltatásokat a
 | Optional Features (Választható szolgáltatások) | Leírás |
 | --- | --- |
 | Exchange Hybrid Deployment (Exchange hibrid telepítés) |Az Exchange hibrid telepítés lehetővé teszi, hogy az Exchange postafiókok a helyszínen és az Office 365-ben egy időben létezzenek. Az Azure AD Connect visszaszinkronizálja az [attribútumok](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) egy adott halmazát az Azure AD szolgáltatásból a helyszíni címtárba. |
+| Exchange Mail Public Folders (Exchange-levelezés – nyilvános mappák) | Az Exchange-levelezés nyilvános mappák funkciójával szinkronizálhatja a levelezési célú nyilvánosmappa-objektumokat a helyszíni Active Directoryból az Azure AD-be. |
 | Azure AD app and attribute filtering (Azure AD alkalmazás- és attribútumszűrés) |Az Azure AD alkalmazás- és attribútumszűrés engedélyezésével a szinkronizált attribútumok halmaza testre szabható. Ez a beállítás két további konfigurációs oldallal bővíti a varázslót. További információkért lásd: [Azure AD alkalmazás- és attribútumszűrés](#azure-ad-app-and-attribute-filtering). |
 | Jelszó-szinkronizálás |Amennyiben az összevonás megoldást választotta a bejelentkezéshez, engedélyezheti ezt a beállítást. A jelszó-szinkronizálás ezt követően használható másodlagos beállításként. További információkért lásd: [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md). </br></br>Ha az átmenő hitelesítést választotta, ez a beállítás alapértelmezés szerint engedélyezve van, hogy támogassa a régebbi ügyfelek biztonsági mentési lehetőségként történő használatát. További információkért lásd: [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md).|
 | Jelszóvisszaíró |A jelszóvisszaíró engedélyezésével az Azure AD szolgáltatásban végrehajtott jelszómódosítások visszaíródnak a helyszíni címtárba. További részletekért lásd: [A jelszókezelés első lépései](../active-directory-passwords-getting-started.md). |

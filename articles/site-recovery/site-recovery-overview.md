@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 03/14/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: d8e4e4bb7dd1e40d8c561adba04b8346fcb2127d
-ms.lasthandoff: 03/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
+ms.openlocfilehash: 89921997f68bd72ee6086d2b635361eeeaba1c28
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/11/2017
 
 
 ---
@@ -33,7 +34,7 @@ Az Azure helyreállítási szolgáltatásai segítenek a BCDR-stratégia kidolgo
 
 - **Vészhelyreállítás a felhőben** – A virtuális gépeken és fizikai kiszolgálókon futó számítási feladatokat egy másodlagos helyszín helyett az Azure-ba replikálhatja. Ezáltal kiküszöbölhetők a másodlagos adatközpontok fenntartásával járó bonyodalmak és költségek.
 - **Rugalmas replikáció biztosítása hibrid környezetek számára** – A támogatott helyszíni Hyper-V-alapú virtuális gépeken, a VMware-alapú virtuális gépeken és a Windows-/Linux-alapú fizikai kiszolgálókon futó bármilyen számítási feladatot replikálhat.
-- **Áttelepítés** – A Site Recovery használatával a helyszíni AWS-példányokat Azure virtuális gépekre telepítheti át, illetve Azure virtuális gépeket telepíthet át Azure-régiók között.
+- **Áttelepítés** – A Site Recovery használatával az AWS-példányokat Azure virtuális gépekre telepítheti át, illetve Azure virtuális gépeket telepíthet át Azure-régiók között.
 - **A üzletmenet-folytonosság és vészhelyreállítás leegyszerűsítése** – Egyetlen helyről végezheti el a replikálás üzembe helyezését az Azure Portalon.  Egy vagy több gép egyszerű feladatátvételét és feladat-visszavételét is futtathatja.
 - **Rugalmasság** – A Site Recovery koordinálja a replikációt és a feladatátvételt, de az alkalmazás adataihoz nem fér hozzá.
 A replikált adatokat az Azure Storage tárolja, és az ezzel járó rugalmasságot is biztosítja. Feladatátvétel esetén a rendszer Azure-beli virtuális gépeket hoz létre a replikált adatok alapján.

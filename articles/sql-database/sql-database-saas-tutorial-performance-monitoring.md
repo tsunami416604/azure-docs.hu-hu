@@ -1,6 +1,6 @@
 ---
-title: "Teljesítményfigyelés a WTP alkalmazásban (az Azure SQL Database-t használó minta SaaS-alkalmazás) | Microsoft Docs"
-description: "Egy Azure SQL Database-t használó minta SaaS-alkalmazás teljesítményének figyelése"
+title: "SQL Database SaaS-alkalmazás teljesítményének megfigyelése | Microsoft Docs"
+description: "Az Azure SQL Database mintául szolgáló Wingtip Tickets (WTP) alkalmazása teljesítményének megfigyelése és kezelése"
 keywords: "sql database-oktatóanyag"
 services: sql-database
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1698a06dc326b1d215bb635c40724f914ba82442
+ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
+ms.openlocfilehash: af9511978718af10c97bee6af3a2835c9d2c1ff4
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/12/2017
 
 
 ---
