@@ -80,6 +80,16 @@
 ### [Díjszabás](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [Használatmérés](logic-apps-pricing.md)
 
+# Kiszolgáló nélküli
+## Áttekintés
+### [Az Azure kiszolgáló nélküli használata](logic-apps-serverless-overview.md)
+## Első lépések
+### [Kiszolgáló nélküli app létrehozása a Visual Studióban](logic-apps-serverless-get-started-vs.md)
+## Forgatókönyvek és útmutatók
+### [Ügyfélvisszajelzések összegyűjtése](logic-apps-scenario-social-serverless.md)
+### [Automatizált e-mailek küldése](https://channel9.msdn.com/Blogs/Microsoft-Integration/Build-and-Deploy-Serverless-Part-1)
+### [B2B/EDI-rendelésfeldolgozás](logic-apps-enterprise-integration-overview.md)
+
 # Referencia
 ## [Munkafolyamat-definíciós nyelv](logic-apps-workflow-definition-language.md)
 ## [Munkafolyamat-műveletek és eseményindítók](logic-apps-workflow-actions-triggers.md)
