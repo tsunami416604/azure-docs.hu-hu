@@ -4,7 +4,7 @@ Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg a
 
 1. Adja hozzá a következő változódeklarációkat az `#include` utasítások után. Cserélje le a [Device Id] és a [Device Key] helyőrzőértékeket az eszközhöz tartozó értékekre a távoli figyelési megoldás irányítópultja alapján. Cserélje le az [IoTHub Name] értéket a megoldás irányítópultján található IoT Hub gazdanévre. Ha például az IoT Hub gazdaneve **contoso.azure-devices.net**, cserélje le az [IoTHub Name] helyőrzőt a **contoso** értékre:
    
-    ```
+    ```c
     static const char* deviceId = "[Device Id]";
     static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
     ```
@@ -17,7 +17,7 @@ Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg a
    - Fogadhatja az IoT Hubban található ikereszköz kívánt tulajdonságait, és reagálhat rájuk.
    - Válaszolhat a megoldásportálon meghívott **Reboot** és **InitiateFirmwareUpdate** közvetlen metódusokra. Az eszköz jelentett tulajdonságokkal küld információkat azokról a közvetlen metódusokról, amelyeket támogat.
    
-    ```
+    ```c
     // Define the Model
     BEGIN_NAMESPACE(Contoso);
 
@@ -90,7 +90,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
 
 1. Adja hozzá a következő függvényeket, amelyek a megoldás irányítópultján beállított kívánt tulajdonságokat kezelik. A modellben a következő kívánt tulajdonságok vannak meghatározva:
 
-    ```
+    ```c
     void onDesiredTemperatureMeanValue(void* argument)
     {
       /* By convention 'argument' is of the type of the MODEL */
@@ -109,7 +109,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
 
 1. Adja hozzá a következő függvényeket, amelyek az IoT Hubon keresztül meghívott közvetlen metódusokat kezelik. A modellben a következő közvetlen metódusok vannak meghatározva:
 
-    ```
+    ```c
     /* Handlers for direct methods */
     METHODRETURN_HANDLE Reboot(Thermostat* thermostat)
     {
@@ -132,7 +132,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
 
 1. Adja hozzá a következő függvényt, amely egy üzenetet küld az előre konfigurált megoldásnak:
    
-    ```
+    ```c
     /* Send data to IoT Hub */
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
     {
@@ -160,7 +160,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
 
 1. Adja hozzá a következő visszahíváskezelőt, amely akkor fut, ha az eszköz új jelentett tulajdonságértékeket küldött az előre konfigurált megoldásnak:
 
-    ```
+    ```c
     /* Callback after sending reported properties */
     void deviceTwinCallback(int status_code, void* userContextCallback)
     {
@@ -180,7 +180,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
     - Létrehoz egy hurkot, és másodpercenként telemetriát küld.
     - Deinicializálja az összes erőforrást.
 
-      ```
+      ```c
       void remote_monitoring_run(void)
       {
         if (platform_init() != 0)
