@@ -11,7 +11,7 @@ A Table Service szolgáltatás hatalmas strukturált, nem relációs adatkészle
 ## <a name="table-service-concepts"></a>A Table Service szolgáltatással kapcsolatos fogalmak
 A Table Service az alábbi összetevőkből áll:
 
-![Table1][Table1]
+![Table Service összetevő-diagram][Table1]
 
 * **URL-címformátum:** A kód egy fiók tábláira hivatkozik az alábbi címformátummal:   
   http://`<storage account>`.table.core.windows.net/`<table>`  
@@ -26,8 +26,3 @@ A táblák és tulajdonságok elnevezésével kapcsolatos további információk
 
 [Table1]: ./media/storage-table-concepts-include/table1.png
 [OData.org]: http://www.odata.org/
-
-
-<!--HONumber=Nov16_HO2-->
-
-

@@ -1,7 +1,7 @@
 ---
 title: "Mi az a HBase a HDInsight eszközben? | Microsoft Docs"
 description: "Az Apache HBase HDInsightban való használatának bevezetése, amely egy, a Hadoop programra épített NoSQL-adatbázis. Megismerheti a használati eseteket, és összehasonlíthatja a HBase programot más Hadoop-fürtökkel."
-keywords: bigtable,nosql,mi az a hbase
+keywords: "bigtable,nosql,mi az a hbase,apache hbase,hbase,habase áttekintés,"
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -17,10 +17,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/22/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 5e6ffbb8f1373f7170f87ad0e345a63cc20f08dd
-ms.openlocfilehash: 45fb85f83570ed7d79e70dc6fb8f0fdabb7ea191
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 8f0472425be8dd244cc5c24b585185b07007f4eb
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---

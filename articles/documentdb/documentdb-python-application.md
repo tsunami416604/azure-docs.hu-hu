@@ -1,14 +1,14 @@
 ---
-title: "Python Flask-webalkalmazás oktatóanyag az Azure DocumentDB-hez | Microsoft Docs"
-description: "Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait a DocumentDB használatával. Alkalmazásfejlesztési megoldások keresése."
+title: "Python Flask-webalkalmazási oktatóanyag az Azure Cosmos DB-hez | Microsoft Docs"
+description: "Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait az Azure Cosmos DB használatával. Alkalmazásfejlesztési megoldások keresése."
 keywords: "Alkalmazásfejlesztés, python flask, python-webalkalmazás, python-webfejlesztés"
-services: documentdb
+services: cosmosdb
 documentationcenter: python
 author: syamkmsft
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 20ebec18-67c2-4988-a760-be7c30cfb745
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: python
@@ -16,14 +16,15 @@ ms.topic: hero-article
 ms.date: 11/16/2016
 ms.author: syamk
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 4f05075efea0f0fd8ca4424f771d3991a65c6d67
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 68b3fd109291551294b58b3cda75fd6a9619b4b4
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="build-a-python-flask-web-application-using-documentdb"></a>Python Flask-webalkalmazás létrehozása a DocumentDB használatával
+# <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Python Flask-webalkalmazás létrehozása az Azure Cosmos DB használatával
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
 > * [.NET MongoDB-hez](documentdb-mongodb-application.md)
@@ -33,13 +34,13 @@ ms.lasthandoff: 04/18/2017
 > 
 > 
 
-Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python-webalkalmazás adatait az Azure DocumentDB használatával, valamint feltételezi, hogy már rendelkezik némi tapasztalattal a Python és az Azure Websites használatát illetően.
+Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python-webalkalmazás adatait az Azure Cosmos DB használatával, valamint feltételezi, hogy már rendelkezik némi tapasztalattal a Python és az Azure Websites használatát illetően.
 
 Az adatbázis-oktatóanyag az alábbiakat ismerteti:
 
-1. DocumentDB-fiók létrehozása és üzembe helyezése.
+1. Cosmos DB-fiók létrehozása és üzembe helyezése.
 2. Python MVC-alkalmazás létrehozása.
-3. Az Azure DocumentDB a webalkalmazásból történő használata, valamint az ahhoz való csatlakozás.
+3. A Cosmos DB a webalkalmazásból történő használata, valamint az ahhoz való csatlakozás.
 4. A webalkalmazás Azure Websitesra történő telepítése.
 
 Az oktatóanyag utasításait követve egy egyszerű szavazóalkalmazást fog létrehozni, amely lehetővé teszi, hogy leadja a voksát egy szavazáson.
@@ -53,7 +54,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
  
     VAGY 
 
-    Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) egy helyi telepítése.
+    Az [Azure Cosmos DB Emulator](documentdb-nosql-local-emulator.md) helyi telepítése.
 * [Visual Studio 2013-as](http://www.visualstudio.com/) vagy újabb, illetve az ingyenes [Visual Studio Express]() verzió. Az oktatóanyagban szereplő utasítások kifejezetten a Visual Studio 2015-ös verzióhoz íródtak. 
 * Python Tools for Visual Studio, amely beszerezhető a [GitHubról](http://microsoft.github.io/PTVS/). Ez az oktatóanyag a Python Tools VS 2015-ös verziót használja. 
 * Az Azure Python SDK for Visual Studio az [azure.com](https://azure.microsoft.com/downloads/) webhelyről letölthető 2.4-es vagy újabb verziója. Az oktatóanyagban a Python 2.7-hez készült Microsoft Azure SDK-t használtuk.
@@ -68,8 +69,8 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 
 * A [Microsoft letöltőközpontból][3] beszerezhető Microsoft Visual C++ Compiler for Python 2.7.
 
-## <a name="step-1-create-a-documentdb-database-account"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
-Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban a DocumentDB Emulatort használja, továbbléphet a [2. lépés: Új Python Flask-webalkalmazás létrehozása](#step-2:-create-a-new-python-flask-web-application) című lépésre.
+## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>1. lépés: Azure Cosmos DB-adatbázisfiók létrehozása
+Először hozzon létre egy Cosmos DB-fiókot. Ha már rendelkezik fiókkal, vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet a [2. lépés: Új Python Flask-webalkalmazás létrehozása](#step-2:-create-a-new-python-flask-web-application) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -155,7 +156,7 @@ class VoteForm(Form):
 
 ### <a name="add-the-required-imports-to-viewspy"></a>A szükséges importálások hozzáadása a views.py fájlhoz
 1. A Solution Explorer (Megoldáskezelő) nézetben bontsa ki a **tutorial** mappát, majd nyissa meg a **views.py** fájlt. 
-2. Adja hozzá a következő importálási utasításokat a **views.py** fájl elejéhez, majd mentse a fájlt. Ezek importálják majd a DocumentDB Python SDK-it és a Flask-csomagokat.
+2. Adja hozzá a következő importálási utasításokat a **views.py** fájl elejéhez, majd mentse a fájlt. Ezek importálják majd a Cosmos DB Python SDK-it és a Flask-csomagokat.
    
     ```python
     from forms import VoteForm
@@ -202,7 +203,7 @@ def create():
 ```
 
 > [!TIP]
-> A **CreateCollection** metódus egy harmadik paramétere egy opcionális **RequestOptions** paraméter. Ezzel megadható a gyűjtemény ajánlattípusa. Ha nem ad meg értéket az offerType paraméter esetében, a gyűjtemény az alapértelmezett ajánlattípus használatával jön létre. A DocumentDB ajánlattípusaival kapcsolatos további információkért lásd: [Performance levels in DocumentDB](documentdb-performance-levels.md) (A DocumentDB teljesítményszintjei)
+> A **CreateCollection** metódus egy harmadik paramétere egy opcionális **RequestOptions** paraméter. Ezzel megadható a gyűjtemény ajánlattípusa. Ha nem ad meg értéket az offerType paraméter esetében, a gyűjtemény az alapértelmezett ajánlattípus használatával jön létre. A Cosmos DB-ajánlatok típusaival kapcsolatos további információkért tekintse meg [az Azure Cosmos DB teljesítményszintjeivel kapcsolatos cikket](documentdb-performance-levels.md).
 > 
 > 
 
@@ -314,7 +315,7 @@ def vote():
     ```html
     {% extends "layout.html" %}
     {% block content %}
-    <h2>Python + DocumentDB Voting Application.</h2>
+    <h2>Python + Azure Cosmos DB Voting Application.</h2>
     <h3>This is a sample DocumentDB voting application using PyDocumentDB</h3>
     <p><a href="{{ url_for('create') }}" class="btn btn-primary btn-large">Create/Clear the Voting Database &raquo;</a></p>
     <p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
@@ -336,7 +337,7 @@ def vote():
     DOCUMENTDB_COLLECTION = 'voting collection'
     DOCUMENTDB_DOCUMENT = 'voting document'
     ```
-3. Az [Azure Portalon](https://portal.azure.com/) navigáljon a **Kulcsok** panelre. Ehhez kattintson a **Tallózás**, majd a **DocumentDB-fiókok** lehetőségre, kattintson duplán a használni kívánt fiók nevére, és végül kattintson a **Kulcsok** gombra az **Alapvető erőforrások** területen. A **Kulcsok** panelen másolja ki az **URI** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_HOST** paraméter értéke helyére. 
+3. Az [Azure Portalon](https://portal.azure.com/) navigáljon a **Kulcsok** panelre. Ehhez kattintson a **Tallózás**, majd az **Azure Cosmos DB-fiókok** lehetőségre, kattintson duplán a használni kívánt fiók nevére, és végül kattintson a **Kulcsok** gombra az **Alapvető erőforrások** területen. A **Kulcsok** panelen másolja ki az **URI** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_HOST** paraméter értéke helyére. 
 4. Ismét az Azure Portalon, a **Kulcsok** panelen másolja ki az **Elsődleges kulcs** vagy **Másodlagos kulcs** mező értékét, és illessze be azt a **config.py** fájlba a **DOCUMENTDB\_KEY** paraméter értéke helyére.
 5. Adja hozzá a következő sort az **\_\_init\_\_.py** fájlhoz. 
    
@@ -358,7 +359,7 @@ def vote():
 1. Fordítsa le a megoldást a **Ctrl**+**Shift**+**B** billentyűkombináció lenyomásával.
 2. A sikeres fordítás után indítsa el a webhelyet az **F5** billentyű lenyomásával. A következőnek kell megjelennie a képernyőn.
    
-    ![Képernyőfelvétel a webböngészőben megjelenített Python + DocumentDB szavazóalkalmazásról](./media/documentdb-python-application/image16.png)
+    ![Képernyőfelvétel a webböngészőben megjelenített Python + Azure Cosmos DB szavazóalkalmazásról](./media/documentdb-python-application/image16.png)
 3. Kattintson a **Create/Clear the Voting Database** (A szavazóadatbázis létrehozása/törlése) lehetőségre az adatbázis létrehozásához.
    
     ![Képernyőfelvétel a webalkalmazás Create (Létrehozás) lapjáról – fejlesztési részletek](./media/documentdb-python-application/image17.png)
@@ -371,7 +372,7 @@ def vote():
 6. A projekt hibakeresésének leállításához nyomja le a Shift+F5 billentyűkombinációt.
 
 ## <a name="step-5-deploy-the-web-application-to-azure-websites"></a>5. lépés: A webalkalmazás Azure Websitesra történő telepítése
-Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB-vel, feltelepítjük a webalkalmazást az Azure Websitesra.
+Most, hogy a teljes alkalmazás megfelelően működik a Cosmos DB-vel, üzembe helyezzük az Azure Websiteson.
 
 1. Kattintson a jobb gombbal a projektre a Solution Explorer (Megoldáskezelő) nézetben (győződjön meg arról, hogy helyileg már nem futtatja azt), és válassza a **Publish** (Közzététel) lehetőséget.  
    
@@ -398,7 +399,7 @@ Ha ez az első Python-alkalmazás, amelyet számítógépén futtat, győződjö
 Ha hibába ütközik a szavazási lapon, és a projektet nem **tutorial** néven hozta létre, győződjön meg arról, hogy az **\_\_init\_\_.py** fájl a megfelelő projektnévre hivatkozik a következő sorban: `import tutorial.view`.
 
 ## <a name="next-steps"></a>Következő lépések
-Gratulálunk! Elkészítette első Python-webalkalmazását az Azure DocumentDB használatával, és közzétette azt az Azure Websitesban.
+Gratulálunk! Elkészítette első Python-webalkalmazását a Cosmos DB használatával, és közzétette azt az Azure Websitesban.
 
 Gyakran frissítjük és javítjuk a jelen témakört a visszajelzések alapján.  Az oktatóanyag befejezése után a lap tetején vagy alján található szavazógomb használatával küldhet visszajelzést. A visszajelzésbe azt is foglalja bele, hogy milyen javításokat szeretne látni. Ha szeretne közvetlenül kapcsolatba lépni velünk, a hozzászólásaiban tüntesse fel az e-mail-címét.
 

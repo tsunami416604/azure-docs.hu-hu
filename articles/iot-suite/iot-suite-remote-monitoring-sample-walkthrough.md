@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: dc8ee6a0f17c20c5255d95c7b6f636d89ffe3aee
-ms.openlocfilehash: 9bd4232670256ec7889dd367ea2ea01a2845e789
-ms.lasthandoff: 02/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 57544151cc020e5170ebd231b5e4d8f424aeada0
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -50,7 +51,7 @@ A szimulált eszközök az alábbi típusú üzeneteket küldhetik az IoT Hubnak
 | Telemetria |Az eszközök rendszeres időközönként küldenek **telemetry** (telemetria) típusú üzenetet is, amelyek az eszköz szimulált érzékelői által jelentett szimulált hőmérsékleti és páratartalom-értékeket jelentenek a rendszernek. |
 
 > [!NOTE]
-> A megoldás az eszköz által támogatott parancsok listáját egy DocumentDB-adatbázisban tárolja, és nem az ikereszközben.
+> A megoldás az eszköz által támogatott parancsok listáját egy Cosmos DB-adatbázisban tárolja, és nem az ikereszközben.
 > 
 > 
 
@@ -229,10 +230,10 @@ A **device info** és a **rules** ASA-feladatok az eseményközpontoknak adják 
 A megoldás az Azure Blob Storage segítségével őrzi meg a megoldásba bevont eszközök által küldött nyers és összegzett telemetriai adatokat. A portál beolvassa a Blob Storage-ból a telemetriaadatokat a diagramok adatokkal történő feltöltéséhez. Riasztások megjelenítéséhez a megoldásportál beolvassa a Blob Storage-ból azon adatokat, amelyek akkor lettek rögzítve, amikor a telemetriaértékek túllépték a konfigurált küszöbértékeket. A megoldás a Blob Storage használatával rögzíti a megoldásportálon beállított küszöbértékeket is.
 
 ## <a name="webjobs"></a>WebJobs
-Az eszközszimulátorok elérhetővé tételén kívül a megoldásban a WebJobs szolgáltatja a parancsválaszokat kezelő Azure WebJobban futó **Eseményfeldolgozót** is. Parancsválasz-üzeneteket használ a (DocumentDB-adatbázisban tárolt) eszközparancs-előzmények frissítéséhez.
+Az eszközszimulátorok elérhetővé tételén kívül a megoldásban a WebJobs szolgáltatja a parancsválaszokat kezelő Azure WebJobban futó **Eseményfeldolgozót** is. Parancsválasz-üzeneteket használ a (Cosmos DB-adatbázisban tárolt) eszközparancs-előzmények frissítéséhez.
 
-## <a name="documentdb"></a>DocumentDB
-A megoldás egy DocumentDB-adatbázisban tárolja a megoldáshoz csatlakoztatott eszközökre vonatkozó adatokat. Ezen adatok közé tartoznak a megoldásportálról az eszközökre küldött parancsok és a megoldásportálról indított metódusok előzményei.
+## <a name="cosmos-db"></a>Cosmos DB
+A megoldás egy Cosmos DB-adatbázisban tárolja a megoldáshoz csatlakoztatott eszközökre vonatkozó adatokat. Ezen adatok közé tartoznak a megoldásportálról az eszközökre küldött parancsok és a megoldásportálról indított metódusok előzményei.
 
 ## <a name="solution-portal"></a>Megoldásportál
 
@@ -244,7 +245,7 @@ A webalkalmazás ezen oldala PowerBI javascript-vezérlőket használ (lásd a [
 ### <a name="device-list"></a>Eszközlista
 A megoldásportál ezen oldaláról a következőket teheti:
 
-* Új eszközöket építhet ki. Ezzel a művelettel állíthatja be az egyedi eszközazonosítót, valamint hozhatja létre a hitelesítési kulcsot. A művelet mind az IoT Hub-identitásjegyzékébe, mind a megoldásspecifikus DocumentDB-adatbázisba beírja az eszközadatokat.
+* Új eszközöket építhet ki. Ezzel a művelettel állíthatja be az egyedi eszközazonosítót, valamint hozhatja létre a hitelesítési kulcsot. A művelet mind az IoT Hub-identitásjegyzékébe, mind a megoldásspecifikus Cosmos DB-adatbázisba beírja az eszközadatokat.
 * Felügyelheti az eszköztulajdonságokat. A művelet segítségével megtekintheti a meglévő tulajdonságokat, és új tulajdonságokat hozhat létre.
 * Parancsokat küldhet eszközökre.
 * Megtekintheti az eszközök parancselőzményeit.
@@ -271,3 +272,4 @@ Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 [lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
 [lnk-device-twins]:  ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
+

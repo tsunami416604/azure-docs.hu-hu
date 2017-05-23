@@ -1,28 +1,29 @@
 ---
-title: "NoSQL Node.js-oktatóanyag a DocumentDB-hez | Microsoft Docs"
-description: "Ez egy NoSQL Node.js-oktatóanyag, amely egy NoSQL-adatbázis és egy konzolalkalmazás a DocumentDB Node.js SDK használatával történő létrehozását ismerteti. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
+title: "Node.js-oktatóanyag az Azure Cosmos DB-hez készült DocumentDB API-hoz | Microsoft Docs"
+description: "Ez a Node.js-oktatóanyag létrehoz egy Cosmos DB-t a DocumentDB API-val."
 keywords: "node.js-oktatóanyag, node-adatbázis"
-services: documentdb
+services: cosmosdb
 documentationcenter: node.js
 author: AndrewHoh
 manager: jhubbard
 editor: monicar
 ms.assetid: 14d52110-1dce-4ac0-9dd9-f936afccd550
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: anhoh
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 2b8ac838e9387b04467f03d0608da05b3edfdd26
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 8e34fe6461683801ad6c0423567308b7b38d7a00
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="nosql-nodejs-tutorial-documentdb-nodejs-console-application"></a>NoSQL Node.js oktatóanyag: DocumentDB Node.js-konzolalkalmazás
+# <a name="nodejs-tutorial-documentdb-nodejs-console-application"></a>Node.js-oktatóanyag: DocumentDB Node.js-konzolalkalmazás
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -33,11 +34,11 @@ ms.lasthandoff: 03/28/2017
 >  
 > 
 
-Üdvözöljük az Azure DocumentDB Node.js SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazással fog rendelkezni, amely DocumentDB erőforrásokat hoz létre és kérdez le.
+Üdvözöljük az Azure Cosmos DB Node.js SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
 
 Az oktatóanyag a következőket ismerteti:
 
-* DocumentDB-fiók létrehozása, és az ahhoz való csatlakozás
+* Azure Cosmos DB-fiók létrehozása és csatlakoztatása
 * Az alkalmazás beállítása
 * Node-adatbázis létrehozása
 * Gyűjtemény létrehozása
@@ -57,11 +58,11 @@ Most pedig lássunk neki!
 Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/).
-    * Vagy használhatja az [Azure DocumentDB Emulatort](documentdb-nosql-local-emulator.md) ebben az oktatóanyagban.
+    * Másik lehetőségként használhatja az [Azure Cosmos DB Emulatort](documentdb-nosql-local-emulator.md) az oktatóanyaghoz.
 * [Node.js](https://nodejs.org/)-verzió: 0.10.29-s vagy újabb.
 
-## <a name="step-1-create-a-documentdb-account"></a>1. lépés: DocumentDB-fiók létrehozása
-Hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A Node.js-alkalmazás beállítása](#SetupNode) című lépéssel. Ha a DocumentDB Emulatort használja, kövesse az [Azure DocumentDB Emulatornál](documentdb-nosql-local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre a [Node.js alkalmazás beállítása](#SetupNode) című lépésre.
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
+Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A Node.js-alkalmazás beállítása](#SetupNode) című lépéssel. Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](documentdb-nosql-local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre [A Node.js-alkalmazás beállítása](#SetupNode) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -85,7 +86,7 @@ Nyissa meg a ```config.js``` fájlt egy tetszőleges szövegszerkesztőben.
 
 Ezután másolja és illessze be az alábbi kódrészletet, majd állítsa be a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot a saját DocumentDB-végpontjának URI és elsődleges kulcs értékeire. Mindkettő konfiguráció megtalálható az [Azure portálon](https://portal.azure.com).
 
-![Node.js-oktatóanyag – Képernyőfelvétel az Azure portálról, amely egy DocumentDB-fiókot jelenít meg az ACTIVE központ, a DocumentDB-fiók panelen lévő KEYS (KULCSOK) gomb, valamint a Keys (Kulcsok) panelen lévő URI, PRIMARY KEY (ELSŐDLEGES KULCS) és SECONDARY KEY (MÁSODLAGOS KULCS) értékek kiemelésével – Node-adatbázis][keys]
+![Node.js-oktatóanyag – Képernyőfelvétel az Azure Portalról, amely egy Azure Cosmos DB-fiókot jelenít meg az ACTIVE (AKTÍV) központ, az Azure Cosmos DB-fiók panelén lévő KEYS (KULCSOK) gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY (ELSŐDLEGES KULCS) és SECONDARY KEY (MÁSODLAGOS KULCS) értékek kiemelésével – Node-adatbázis][keys]
 
     // ADD THIS PART TO YOUR CODE
     var config = {}
@@ -93,7 +94,7 @@ Ezután másolja és illessze be az alábbi kódrészletet, majd állítsa be a 
     config.endpoint = "~your DocumentDB endpoint uri here~";
     config.primaryKey = "~your primary key here~";
 
-Másolja és illessze be a ```database id```, ```collection id``` és ```JSON documents``` értékeket az alábbi ```config```-objektumba oda, ahol megadta a ```config.endpoint``` és ```config.authKey``` tulajdonságot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, használhatja a DocumentDB [adatáttelepítési eszközét](documentdb-import-data.md) a dokumentumdefiníciók hozzáadása helyett.
+Másolja és illessze be a ```database id```, ```collection id``` és ```JSON documents``` értékeket az alábbi ```config```-objektumba oda, ahol megadta a ```config.endpoint``` és ```config.authKey``` tulajdonságot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, használhatja az Azure Cosmos DB [adatáttelepítési eszközét](documentdb-import-data.md) a dokumentumdefiníciók hozzáadása helyett.
 
     config.endpoint = "~your DocumentDB endpoint uri here~";
     config.primaryKey = "~your primary key here~";
@@ -177,7 +178,7 @@ Végül exportálja a ```config```-objektumot, hogy hivatkozhasson rá az ```app
     // ADD THIS PART TO YOUR CODE
     module.exports = config;
 
-## <a id="Connect"></a>4. lépés: Csatlakozás DocumentDB-fiókhoz
+## <a id="Connect"></a> 4. lépés: Csatlakozás Azure Cosmos DB-fiókhoz
 Nyissa meg az üres ```app.js``` fájlt a szövegszerkesztőben. Másolja és illessze be az alábbi kódot a ```documentdb```, valamint az újonnan létrehozott ```config``` modul importálásához.
 
     // ADD THIS PART TO YOUR CODE
@@ -259,7 +260,7 @@ Másolja és illessze be az alábbi kódot oda, ahol megadta a **getDatabase** f
 
 A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: ```node app.js```
 
-Gratulálunk! Sikeresen létrehozott egy DocumentDB-adatbázist.
+Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 
 ## <a id="CreateColl"></a>6. lépés: Gyűjtemény létrehozása
 > [!WARNING]
@@ -369,8 +370,8 @@ Gratulálunk! Sikeresen létrehozott egy DocumentDB-dokumentumot.
 
 ![Node.js-oktatóanyag – A fiók, az adatbázis, a gyűjtemény és a dokumentumok hierarchikus kapcsolatát ábrázoló diagram – Node-adatbázis](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
 
-## <a id="Query"></a>8. lépés: DocumentDB-erőforrások lekérdezése
-A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](documentdb-sql-query.md). Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a gyűjteményben található dokumentumokra vonatkozóan futtathat le.
+## <a id="Query"></a>8. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
+Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](documentdb-sql-query.md). Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a gyűjteményben található dokumentumokra vonatkozóan futtathat le.
 
 Másolja és illessze be a **queryCollection** függvényt a **getFamilyDocument** függvény alá az app.js fájlban. A DocumentDB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](documentdb-sql-query.md).
 
@@ -424,10 +425,10 @@ Másolja és illessze be az alábbi kódot a **getFamilyDocument** függvény me
 
 A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: ```node app.js```
 
-Gratulálunk! Sikeresen lekérdezett egy DocumentDB-dokumentumot.
+Gratulálunk! Sikeresen lekérdezett Azure Cosmos DB-dokumentumokat.
 
 ## <a id="ReplaceDocument"></a>9. lépés: Dokumentum cseréje
-A DocumentDB támogatja a JSON-dokumentumok cseréjét.
+Az Azure Cosmos DB támogatja a JSON-dokumentumok cseréjét.
 
 Másolja és illessze be a **replaceFamilyDocument** függvényt a **queryCollection** függvény alá az app.js fájlban.
 
@@ -471,10 +472,10 @@ Másolja és illessze be az alábbi kódot a **queryCollection** függvény megh
 
 A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: ```node app.js```
 
-Gratulálunk! Sikeresen kicserélt egy DocumentDB-dokumentumot.
+Gratulálunk! Sikeresen lecserélt egy Azure Cosmos DB-dokumentumot.
 
 ## <a id="DeleteDocument"></a>10. lépés: Dokumentum törlése
-A DocumentDB támogatja a JSON-dokumentumok törlését.
+Az Azure Cosmos DB támogatja a JSON-dokumentumok törlését.
 
 Másolja és illessze be a **deleteFamilyDocument** függvényt a **replaceFamilyDocument** függvény alá.
 
@@ -515,7 +516,7 @@ Másolja és illessze be az alábbi kódot a második **queryCollection** függv
 
 A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: ```node app.js```
 
-Gratulálunk! Sikeresen törölt egy DocumentDB-dokumentumot.
+Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-dokumentumot.
 
 ## <a id="DeleteDatabase"></a>11. lépés: A Node-adatbázis törlése
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
@@ -601,14 +602,14 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg 
     Completed successfully
     Press any key to exit
 
-Gratulálunk! Ezennel befejezte a Node.js-oktatóanyagot, és létrehozta első saját DocumentDB-konzolalkalmazását.
+Gratulálunk! Ezzel befejezte a Node.js-oktatóanyagot, és létrehozta első saját Azure Cosmos DB-konzolalkalmazását.
 
 ## <a id="GetSolution"></a>A Node. js-oktatóanyagban szereplő teljes megoldás beszerzése
 Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretné letölteni a kódot, a [GitHubon](https://github.com/Azure-Samples/documentdb-node-getting-started) beszerezheti azt.
 
 A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás futtatásához az alábbiakra lesz szüksége:
 
-* [DocumentDB-fiók][documentdb-create-account].
+* [Azure Cosmos DB-fiók][documentdb-create-account].
 * A GitHubon elérhető [GetStarted](https://github.com/Azure-Samples/documentdb-node-getting-started) megoldás.
 
 Telepítse a **DocumentDB** modult az npm segítségével. Használja az alábbi parancsot:
@@ -622,10 +623,10 @@ Majd a terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi 
 Ennyi az egész! Építse ki, és máris jó úton jár! 
 
 ## <a name="next-steps"></a>Következő lépések
-* Összetettebb Node.js-mintát szeretne használni? Lásd: [Node.js-webalkalmazás létrehozása a DocumentDB használatával](documentdb-nodejs-application.md)
-* Ismerje meg, hogyan [felügyelhet egy DocumentDB-fiókot](documentdb-monitor-accounts.md).
+* Összetettebb Node.js-mintát szeretne használni? Lásd: [Node.js-webalkalmazás létrehozása az Azure Cosmos DB használatával](documentdb-nodejs-application.md).
+* Ismerje meg, hogyan [figyelhet egy Azure Cosmos DB-fiókot](documentdb-monitor-accounts.md).
 * Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.
-* A programozási modellel kapcsolatos további tudnivalókat a [DocumentDB dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
+* A programozási modellel kapcsolatos további tudnivalókat az [Azure Cosmos DB-dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
 
 [documentdb-create-account]: documentdb-create-account.md
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png

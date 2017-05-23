@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: fba7f5f33d1a0d39219a6790e1d5c6b4515b794c
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 29e8639a6f1f0c2733d24dda78975ea7cfb6107a
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -107,7 +108,7 @@ Az IoT Hub eszközfelügyeleti lehetőségeivel felügyelheti az eszköz tulajdo
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Az előre konfigurált megoldás három [Azure Stream Analytics-][lnk-asa] (ASA-) feladattal szűri az eszközök telemetriastreamjét:
 
-* *DeviceInfo feladat* – adatokat küld egy eseményközpontba, amely az eszközregisztrációval kapcsolatos üzeneteket irányítja a megoldás eszközjegyzékébe (DocumentDB-adatbázisba). Ezt az üzenetet akkor küldi a rendszer, amikor az eszközök először csatlakoznak, vagy az **Eszközállapot módosítása** parancsra válaszul.
+* *DeviceInfo feladat* – adatokat küld egy eseményközpontba, amely az eszközregisztrációval kapcsolatos üzeneteket irányítja a megoldás eszközjegyzékébe (Azure Cosmos DB-adatbázisba). Ezt az üzenetet akkor küldi a rendszer, amikor az eszközök először csatlakoznak, vagy az **Eszközállapot módosítása** parancsra válaszul.
 * *Telemetriafeladat* – csak nyers telemetriát küld az Azure Blob Storage-ba offline tárolásra, és kiszámítja a megoldás irányítópultján megjelenő telemetriaösszesítéseket.
 * *Szabályfeladat* – olyan értékeket szűr a telemetriastreamből, amelyek meghaladják valamelyik szabály küszöbértékét, és az adatokat egy eseményközpontba küldi. Amikor egy szabály riasztást vált ki, a megoldásportál irányítópult-nézete egy új sorban jeleníti meg az eseményt a riasztáselőzmények táblázatában. Ezek a szabályok kiváltanak egy műveletet is a megoldásportál **Szabályok** és **Művelet** nézetében megadott beállítások alapján.
 
@@ -117,10 +118,10 @@ Ebben az előre konfigurált megoldásban az ASA-feladatok az **IoT-megoldás h�
 Ebben az előre konfigurált megoldásban az eseményfeldolgozó az **IoT-megoldás hátterének** része a tipikus [IoT-megoldásarchitektúrában][lnk-what-is-azure-iot].
 
 A **DeviceInfo** és **Rules** ASA-feladatok a kimenetüket egy eseményközpontokba küldik, amely más háttérszolgáltatásoknak továbbítja őket. A megoldás [WebJob][lnk-web-job] feladatban futó [EventProcessorHost][lnk-event-processor] példányt használ az eseményközpontokból érkező üzenetek olvasásához. Az **EventProcessorHost** a következőket használja:
-- A **DeviceInfo**-adatokkal frissíti az eszközadatokat a DocumentDB-adatbázisban.
+- A **DeviceInfo**-adatokkal frissíti az eszközadatokat a Cosmos DB-adatbázisban.
 - A **Rules**-adatokkal indítja el a logikai alkalmazást, és frissíti a megoldásportálon megjelenő riasztásokat.
 
-## <a name="device-identity-registry-device-twin-and-documentdb"></a>Eszközidentitás-jegyzék, ikereszköz és DocumentDB
+## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>Eszközidentitás-jegyzék, ikereszköz és Cosmos DB
 Minden IoT Hub tartalmaz eszközkulcsokat tároló [eszközidentitás-jegyzéket][lnk-identity-registry]. Az IoT Hub ezekkel az információkkal hitelesíti az eszközöket – az eszközöknek regisztrálva kell lenniük és érvényes kulccsal kell rendelkezniük, hogy csatlakozhassanak a hubhoz.
 
 Az [ikereszközök][lnk-device-twin] az IoT Hub által felügyelt JSON-dokumentumok. Az eszközök ikereszköze a következőket tartalmazza:
@@ -129,9 +130,9 @@ Az [ikereszközök][lnk-device-twin] az IoT Hub által felügyelt JSON-dokumentu
 - Az eszközre küldendő kívánt tulajdonságok. Ezeket a tulajdonságokat a megoldásportálon állíthatja be.
 - Csak az ikereszközön (nem az eszközön) létező címkék. Ezekkel a címkékkel szűrheti a megoldásportálon az eszközök listáját.
 
-Ez a megoldás ikereszközökkel kezeli az eszköz metaadatait. A megoldás DocumentDB-adatbázist is használ a megoldással kapcsolatos további eszközadatok, például az egyes eszközök által támogatott parancsok és a parancselőzmények tárolásához.
+Ez a megoldás ikereszközökkel kezeli az eszköz metaadatait. A megoldás Cosmos DB-adatbázist is használ a megoldással kapcsolatos további eszközadatok, például az egyes eszközök által támogatott parancsok és a parancselőzmények tárolásához.
 
-A megoldásnak az eszközidentitás-jegyzékben lévő információkat szinkronban is kell tartania a DocumentDB-adatbázis tartalmával. Az **EventProcessorHost** a **DeviceInfo** streamelemzési feladattal kezeli a szinkronizációt.
+A megoldásnak az eszközidentitás-jegyzékben lévő információkat szinkronban is kell tartania a Cosmos DB-adatbázis tartalmával. Az **EventProcessorHost** a **DeviceInfo** streamelemzési feladattal kezeli a szinkronizációt.
 
 ## <a name="solution-portal"></a>Megoldásportál
 ![megoldásportál][img-dashboard]
@@ -168,3 +169,4 @@ Most, hogy már tudja, mik azok az előre konfigurált megoldások, üzembe hely
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-getstarted-factory]: iot-suite-connected-factory-overview.md
+

@@ -1,6 +1,6 @@
 ---
 title: "Indexelők az Azure Search szolgáltatásban | Microsoft Docs"
-description: "Feltérképezi az Azure SQL Database, a DocumentDB vagy az Azure Storage tárolókat a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez."
+description: "Feltérképezi az Azure SQL Database, az Azure Cosmos DB vagy az Azure Storage tárolókat a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 4bcd31a200024a182ee3d5a21bcbcb621fed595f
-ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 52b154895fca9fc465a9c6cc2fb6bf2d5384b057
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -27,9 +29,9 @@ ms.openlocfilehash: fd46641709d260f8b468556972aae14205fdb515
 > * [Áttekintés](search-indexer-overview.md)
 > * [Portál](search-import-data-portal.md)
 > * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-> * [DocumentDB](search-howto-index-documentdb.md)
-> * [Blob Storage (előzetes verzió)](search-howto-indexing-azure-blob-storage.md)
-> * [Table Storage (előzetes verzió)](search-howto-indexing-azure-tables.md)
+> * [Azure Cosmos DB](search-howto-index-documentdb.md)
+> * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+> * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 >
 >
 
@@ -40,7 +42,7 @@ Az indexelőt használhatja kizárólag adatfeldolgozásra, illetve olyan kombin
 Az indexelők futtatása történhet igény szerint vagy ismétlődő adatfrissítési ütemterv alapján, akár 15 perces gyakorisággal is. Az ennél gyakoribb frissítésekhez olyan leküldési modellre van szükség, amely egyszerre frissíti az adatokat az Azure Search szolgáltatásban és a külső adatforrásban is.
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Indexelők létrehozásának és kezelésének módszerei
-Az olyan, mindenki számára elérhető indexelők esetében, mint az Azure SQL vagy a DocumentDB, az indexelők létrehozása és kezelése a következő módszerekkel történhet:
+Az olyan, mindenki számára elérhető indexelők esetében, mint az Azure SQL vagy az Azure Cosmos DB, az indexelők létrehozása és kezelése a következő módszerekkel történhet:
 
 * [Portál > Adatok importálása varázsló ](search-get-started-portal.md)
 * [Szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dn946891.aspx)
@@ -56,7 +58,7 @@ Az indexelők képesek egyes, az adatfeldolgozással kapcsolatos feladat automat
 Az indexelők olyan **adatforrásokból** kérnek le adatokat, amelyek például kapcsolati karakterláncokat tartalmaznak. Jelenleg a következő adatforrások támogatottak:
 
 * [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) – szöveg kinyerésére szolgál PDF, Office-dokumentum, HTML- vagy XML formátumokból
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
@@ -69,14 +71,9 @@ Az indexelődefiníció egy olyan konstrukció, amely megadja az indexet, az ada
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
 * [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [DocumentDB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-documentdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) – szöveg kinyerésére szolgál PDF, Office-dokumentum, HTML- vagy XML formátumokból
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [CSV-blobok indexelése az Azure Search Blob indexelőjével (előzetes verzió)](search-howto-index-csv-blobs.md)
-* [JSON-blobok indexelése az Azure Search Blob indexelőjével (előzetes verzió)](search-howto-index-json-blobs.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+* [CSV-blobok indexelése az Azure Search Blob indexelőjével](search-howto-index-csv-blobs.md)
+* [JSON-blobok indexelése az Azure Search Blob indexelőjével](search-howto-index-json-blobs.md)
 

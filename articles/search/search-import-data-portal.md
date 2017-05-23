@@ -1,6 +1,6 @@
 ---
 title: "Adatok importálása az Azure Search szolgáltatásba a portálon | Microsoft Docs"
-description: "Az Azure Portalon az Azure Search Adatok importálása varázslójával bejárhatja az Azure-beli virtuális gépeken található NoSQL DocumentDB-ben, Blob Storage-ban, Table Storage-ban, SQL Database-ben és SQL Serverben tárolt Azure-adatokat."
+description: "Az Azure Portalon az Azure Search Adatok importálása varázslójával bejárhatja az Azure-beli virtuális gépeken található NoSQL Azure Cosmos DB-ben, Blob Storage-ban, Table Storage-ban, SQL Database-ben és SQL Serverben tárolt Azure-adatokat."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,11 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 02/08/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: d19a85e127b548e5f8979358879e8b9354934904
-ms.openlocfilehash: c03c26d0e5ea2529162262664412f4f8f7e854dc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -32,17 +34,17 @@ Belső használatra a varázsló konfigurál és meghív egy *indexelőt*, és a
 * Módosítható indexséma létrehozása a forrás-adatszerkezet alapján
 * JSON-dokumentumok betöltése egy indexbe az adatforrásból beolvasott sorhalmaz használatával
 
-A DocumentDB adatbázisból vett mintaadatokkal kipróbálhatja ezt a munkafolyamatot. Az utasításokért tekintse meg az [Ismerkedés az Azure Search szolgáltatással az Azure portálon](search-get-started-portal.md) részt.
+Az Azure Cosmos DB-adatbázisból vett mintaadatokkal kipróbálhatja ezt a munkafolyamatot. Az utasításokért tekintse meg az [Ismerkedés az Azure Search szolgáltatással az Azure portálon](search-get-started-portal.md) részt.
 
 > [!NOTE]
-> A DocumentDB irányítópultjáról elindíthatja az **Adatok importálása** varázslót, amellyel egyszerűbbé válik az adatforrás indexelése. A kezdéshez lépjen a bal oldali navigációs menüben a **Gyűjtemények** > **Azure Search hozzáadása** elemre.
+> Az Azure Cosmos DB irányítópultjáról elindíthatja az **Adatok importálása** varázslót, amellyel egyszerűbbé válik az adatforrás indexelése. A kezdéshez lépjen a bal oldali navigációs menüben a **Gyűjtemények** > **Azure Search hozzáadása** elemre.
 
 ## <a name="data-sources-supported-by-the-import-data-wizard"></a>Az Adatok importálása varázsló által támogatott adatforrások
 Az Adatok importálása varázsló az alábbi adatforrások használatát támogatja: 
 
 * Azure SQL Database
 * Az SQL Server relációs adatai egy Azure virtuális gépen
-* Azure DocumentDB
+* Azure Cosmos DB
 * Azure Blob Storage
 * Azure Table Storage
 
@@ -58,7 +60,7 @@ Egybesimított adatkészlet a kötelező bemenet. Az importálás kizárólag eg
 | **Meglévő adatforrás** |Ha a Search-szolgáltatásban már meg vannak adva indexelők, másik importálási folyamathoz kiválaszthat egy meglévő adatforrás-definíciót. |
 | **Azure SQL Database** |A szolgáltatás neve, az olvasási engedéllyel rendelkező adatbázis-felhasználó hitelesítő adatai, valamint az adatbázis neve megadható vagy az oldalon, vagy az ADO.NET kapcsolati karakterlánc használatával. A tulajdonságok megtekintéséhez vagy testreszabásához válassza ki a kapcsolati karakterlánc lehetőséget. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | **Azure virtuális gépen futó SQL Server** |Adjon meg egy teljesen minősített szolgáltatásnevet, felhasználóazonosítót és jelszót, illetve egy adatbázist kapcsolati karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Részletes útmutatásért lásd az [SQL virtuális gép az Azure Search-höz történő csatlakoztatását](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) ismertető témakört. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
-| **DocumentDB** |A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Definiálhat egy lekérdezést a sorkészlet egybesimításához vagy szűréséhez, illetve a módosított dokumentumok észleléséhez a későbbi adatfrissítési műveletek elvégzése érdekében. |
+| **Azure Cosmos DB** |A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Definiálhat egy lekérdezést a sorkészlet egybesimításához vagy szűréséhez, illetve a módosított dokumentumok észleléséhez a későbbi adatfrissítési műveletek elvégzése érdekében. |
 | **Azure Blob Storage** |A követelmények a következőket tartalmazzák: a tárolási fiók és egy tároló. Szükség esetén, ha csoportosítási célból a blob-nevek egy virtuális elnevezési konvenciót követnek, akkor a név virtuáliskönyvtár-részét a tárolóban található mappa neveként is megadhatja. A további információkat [a Blob Storage indexelését](search-howto-indexing-azure-blob-storage.md) ismertető témakör tartalmazza. |
 | **Azure Table Storage** |A követelmények a következőket tartalmazzák: a tárolási fiók és egy táblanév. Szükség esetén megadhat egy lekérdezést a táblák részhalmazának beolvasásához. A további információkat [a Table Storage indexelését](search-howto-indexing-azure-tables.md) ismertető témakör tartalmazza. |
 
@@ -113,16 +115,11 @@ Az újjáépítést nem igénylő szerkesztési műveletek közé tartozik az ú
 Az alábbi hivatkozások további információkat nyújtanak az indexelőkről:
 
 * [Az Azure SQL Database indexelése](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [A DocumentDB indexelése](search-howto-index-documentdb.md)
+* [Az Azure Cosmos DB indexelése](search-howto-index-documentdb.md)
 * [A Blob Storage indexelése](search-howto-indexing-azure-blob-storage.md)
 * [A Table Storage indexelése](search-howto-indexing-azure-tables.md)
 
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

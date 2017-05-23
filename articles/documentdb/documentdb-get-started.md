@@ -1,28 +1,29 @@
 ---
-title: "NoSQL-oktatóanyag: DocumentDB .NET SDK | Microsoft Docs"
-description: "NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és egy C# konzolalkalmazást a DocumentDB .NET SDK használatával. A DocumentDB egy NoSQL-alapú adatbázis a JSON formátumhoz."
+title: "Azure Cosmos DB: DocumentDB API kezdeti lépéseket ismertető oktatóanyag| Microsoft Docs"
+description: "Oktatóanyag, amely létrehoz egy online adatbázist és egy C# konzolalkalmazást a DocumentDB API használatával."
 keywords: "nosql-oktatóanyag, online adatbázis, c# konzolalkalmazás"
-services: documentdb
+services: cosmosdb
 documentationcenter: .net
 author: AndrewHoh
 manager: jhubbard
 editor: monicar
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/19/2017
 ms.author: anhoh
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 648aa01beaffccf69250f1028e27bc13ed70837c
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 765c1329422f5890c018f71d6e3c409fc0d56a6e
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="nosql-tutorial-build-a-documentdb-c-console-application"></a>NoSQL-oktatóanyag: DocumentDB C# konzolalkalmazás létrehozása
+# <a name="azure-cosmos-db-documentdb-api-getting-started-tutorial"></a>Azure Cosmos DB: DocumentDB API kezdeti lépéseket ismertető oktatóanyag
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -33,11 +34,11 @@ ms.lasthandoff: 03/28/2017
 >  
 > 
 
-Köszönti az Azure DocumentDB .NET SDK-hoz készült NoSQL-oktatóanyag! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazással fog rendelkezni, amely DocumentDB erőforrásokat hoz létre és kérdez le.
+Üdvözöljük az Azure Cosmos DB: DocumentDB API kezdeti lépéseket ismertető oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazással fog rendelkezni, amely DocumentDB erőforrásokat hoz létre és kérdez le.
 
 Az oktatóanyag a következőket ismerteti:
 
-* DocumentDB-fiók létrehozása, és az ahhoz való csatlakozás
+* Azure Cosmos DB-fiók létrehozása és csatlakoztatása
 * A Visual Studio megoldás konfigurálása
 * Online adatbázis létrehozása
 * Gyűjtemény létrehozása
@@ -57,11 +58,11 @@ Most pedig lássunk neki!
 Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/). 
-    * Vagy használhatja az [Azure DocumentDB Emulatort](documentdb-nosql-local-emulator.md) ebben az oktatóanyagban.
+    * Másik lehetőségként használhatja az [Azure Cosmos DB Emulatort](documentdb-nosql-local-emulator.md) az oktatóanyaghoz.
 * [Visual Studio 2013 / Visual Studio 2015](http://www.visualstudio.com/).
 
-## <a name="step-1-create-a-documentdb-account"></a>1. lépés: DocumentDB-fiók létrehozása
-Hozzon létre egy DocumentDB-fiókot. Ha van már olyan fiókja, amelyet használni szeretne, ugorjon előre a [Visual Studio megoldás beállítása](#SetupVS) című lépésre. Ha a DocumentDB Emulatort használja, kövesse az [Azure DocumentDB Emulatornál](documentdb-nosql-local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre [A Visual Studio megoldás beállítása](#SetupVS) című lépésre.
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
+Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet használni szeretne, ugorjon előre a [Visual Studio megoldás beállítása](#SetupVS) című lépésre. Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](documentdb-nosql-local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre a [Visual Studio Solution beállítása](#SetupVS) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -75,14 +76,14 @@ Hozzon létre egy DocumentDB-fiókot. Ha van már olyan fiókja, amelyet haszná
     ![A Projekt jobb gombos kattintással elérhető menüjének képernyőfelvétele](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 5. A **NuGet** lapon kattintson a **Tallózás** elemre, majd írja be az **azure documentdb** kifejezést a keresőmezőbe.
 6. A találatok között keresse meg a **Microsoft.Azure.DocumentDB** elemet, majd kattintson a **Telepítés** lehetőségre.
-   A DocumentDB ügyfélkódtárának csomagazonosítója a következő: [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB).
-   ![Képernyőfelvétel a Nuget menüről a DocumentDB ügyféloldali SDK megkereséséhez](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+   Az Azure Cosmos DB ügyfélkódtárának csomagazonosítója a következő: [Microsoft.Azure.Azure Cosmos DB](https://www.nuget.org/packages/Microsoft.Azure.Azure Cosmos DB).
+   ![Képernyőfelvétel a Nuget menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
     Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
 
 Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásának! A [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) megtalálhatja az oktatóanyagban szereplő kódprojekt befejezett változatát.
 
-## <a id="Connect"></a>3. lépés: Csatlakozás DocumentDB-fiókhoz
+## <a id="Connect"></a>3. lépés: Csatlakozás egy Azure Cosmos DB-fiókhoz
 Először adja hozzá az alábbi hivatkozásokat a C# alkalmazás elejéhez a Program.cs fájlban:
 
     using System;
@@ -96,7 +97,7 @@ Először adja hozzá az alábbi hivatkozásokat a C# alkalmazás elejéhez a Pr
     using Newtonsoft.Json;
 
 > [!IMPORTANT]
-> A NoSQL-oktatóanyag befejezéséhez mindenképpen adja hozzá az alábbi függőségeket.
+> Az oktatóanyag befejezéséhez mindenképpen adja hozzá az alábbi függőségeket.
 > 
 > 
 
@@ -109,13 +110,13 @@ Most adja hozzá ezt a két állandót és az *ügyfél* változót a *Program* 
         private const string PrimaryKey = "<your primary key>";
         private DocumentClient client;
 
-Ezután lépjen vissza az [Azure Portalra](https://portal.azure.com) a végponti URL-cím és az elsődleges kulcs beszerzéséért. A végponti URL-cím és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, a DocumentDB pedig megbízzon az alkalmazás által létesített kapcsolatban.
+Ezután lépjen vissza az [Azure Portalra](https://portal.azure.com) a végponti URL-cím és az elsődleges kulcs beszerzéséért. A végponti URL-cím és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, az Azure Cosmos DB pedig megbízzon az alkalmazás által létesített kapcsolatban.
 
-Az Azure portálon lépjen a DocumentDB-fiókra, majd kattintson a **Kulcsok** elemre.
+Az Azure Portalon lépjen a Azure Cosmos DB-fiókra, majd kattintson a **Kulcsok** elemre.
 
 Másolja ki az URI-t a portálról, és illessze be a program.cs fájl `<your endpoint URL>` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `<your primary key>` elembe.
 
-![Képernyőfelvétel a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt Azure-portálról. Megjelenít egy DocumentDB-fiókot, amelyen az ACTIVE központ, a DocumentDB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve.][keys]
+![Képernyőfelvétel a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt Azure-portálról. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az ACTIVE központ, az Azure Cosmos DB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve][keys]
 
 Ezt követően létrehozunk egy új **DocumentClient** példányt az alkalmazás elindításához.
 
@@ -159,7 +160,7 @@ Adja hozzá a következő kódot az aszinkron feladat **Fő** metódusból való
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt. A konzolablak kimenete a következő üzenet megjelenítésével erősíti meg a kapcsolat létrejöttét: `End of demo, press any key to exit.`.  Ezután bezárhatja a konzolablakot. 
 
-Gratulálunk! Sikeresen csatlakozott egy DocumentDB-fiókhoz. Most vessünk egy pillantást a DocumentDB-erőforrások használatára.  
+Gratulálunk! Sikeresen csatlakozott egy Azure Cosmos DB-fiókhoz. Most vessünk egy pillantást az Azure Cosmos DB-erőforrások használatára.  
 
 ## <a name="step-4-create-a-database"></a>4. lépés: Adatbázis létrehozása
 Mielőtt hozzáadja a kódot az adatbázis létrehozásához, adjon hozzá egy segédmetódust a konzolba való íráshoz.
@@ -174,7 +175,7 @@ Másolja, majd illessze be a **WriteToConsoleAndPromptToContinue** metódust a *
             Console.ReadKey();
     }
 
-A DocumentDB-[adatbázis](documentdb-resources.md#databases) a **DocumentClient** osztály [CreateDatabaseIfNotExistAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
+Az Azure Cosmos DB-[adatbázis](documentdb-resources.md#databases) a **DocumentClient** osztály [CreateDatabaseIfNotExistAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metódusának használatával hozható létre. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
 Az ügyfél létrehozása után másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba. Ezzel létrehoz egy *FamilyDB* elnevezésű adatbázist.
 
@@ -187,7 +188,7 @@ Az ügyfél létrehozása után másolja, majd illessze be az alábbi kódot a *
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Gratulálunk! Sikeresen létrehozott egy DocumentDB-adatbázist.  
+Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.  
 
 ## <a id="CreateColl"></a>5. lépés: Gyűjtemény létrehozása
 > [!WARNING]
@@ -208,12 +209,12 @@ Az adatbázis létrehozása után másolja, majd illessze be az alábbi kódot a
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Gratulálunk! Sikeresen létrehozott egy DocumentDB-dokumentumgyűjteményt.  
+Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-dokumentumgyűjteményt.  
 
 ## <a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
 A [dokumentumok](documentdb-resources.md#documents) a **DocumentClient** osztály [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) metódusának használatával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, a DocumentDB [adatáttelepítési eszközének](documentdb-import-data.md) használatával importálhat adatokat az adatbázisba.
 
-Először létre kell hozni egy **Család** osztályt, amely ebben a mintában a DocumentDB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva. Az osztályok létrehozásához adja hozzá az alábbi belső alosztályokat a **GetStartedDemo** metódus után.
+Először létre kell hozni egy **Család** osztályt, amely ebben a mintában az Azure Cosmos DB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva. Az osztályok létrehozásához adja hozzá az alábbi belső alosztályokat a **GetStartedDemo** metódus után.
 
 Másolja, majd illessze be a **Család**, **Szülő**, **Gyermek**, **Háziállat** és **Cím** osztályokat a **WriteToConsoleAndPromptToContinue** metódus után.
 
@@ -368,12 +369,12 @@ A dokumentumgyűjtemény létrehozása után másolja, majd illessze be az aláb
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Gratulálunk! Sikeresen létrehozott két DocumentDB-dokumentumot.  
+Gratulálunk! Sikeresen létrehozott két Azure Cosmos DB-dokumentumot.  
 
 ![A diagram a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt fiók, online adatbázis, gyűjtemény és dokumentumok hierarchikus kapcsolatát ábrázolja.](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>7. lépés: DocumentDB-erőforrások lekérdezése
-A DocumentDB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett részletes [lekérdezéseket](documentdb-sql-query.md).  Az alábbi kódminta több olyan lekérdezést mutat be – a DocumentDB SQL-szintaxis és a LINQ használatával egyaránt – amelyeket az előző lépésben beszúrt dokumentumokon futtathatunk.
+## <a id="Query"></a>7. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
+Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](documentdb-sql-query.md).  Az alábbi kódminta több olyan lekérdezést mutat be – az Azure Cosmos DB SQL-szintaxis és a LINQ használatával egyaránt – amelyeket az előző lépésben beszúrt dokumentumokon futtathatunk.
 
 Másolja, majd illessze be a **ExecuteSimpleQuery** metódust a **CreateFamilyDocumentIfNotExists** metódus után.
 
@@ -420,16 +421,16 @@ A második dokumentum létrehozása után másolja, majd illessze be az alábbi 
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Gratulálunk! Sikeres lekérdezést végzett egy DocumentDB-gyűjteményen.
+Gratulálunk! Sikeres lekérdezést végzett egy Azure Cosmos DB-gyűjteményen.
 
-Az alábbi diagram bemutatja, hogyan indít hívást a DocumentDB SQL-lekérdezési szintaxisa a létrehozott gyűjteményre. Ugyanez a logika vonatkozik a LINQ-lekérdezésekre is.
+Az alábbi diagram bemutatja, hogyan indít hívást az Azure Cosmos DB SQL-lekérdezési szintaxisa a létrehozott gyűjteményre. Ugyanez a logika vonatkozik a LINQ-lekérdezésekre is.
 
 ![A NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt lekérdezés hatókörét és jelentését ábrázoló diagram.](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
 A [FROM](documentdb-sql-query.md#FromClause) kulcsszó kihagyható a lekérdezésből, mivel a DocumentDB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. A DocumentDB úgy veszi, hogy a Families, a root vagy a tetszőleges változónév alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
 
 ## <a id="ReplaceDocument"></a>8. lépés: JSON-dokumentumok cseréje
-A DocumentDB támogatja a JSON-dokumentumok cseréjét.  
+Az Azure Cosmos DB támogatja a JSON-dokumentumok cseréjét.  
 
 Másolja, majd illessze be a **ReplaceFamilyDocument** metódust az **ExecuteSimpleQuery** metódus után.
 
@@ -456,10 +457,10 @@ A lekérdezés végrehajtása után másolja, majd illessze be az alábbi kódot
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Gratulálunk! Sikeresen kicserélt egy DocumentDB-dokumentumot.
+Gratulálunk! Sikeresen lecserélt egy Azure Cosmos DB-dokumentumot.
 
 ## <a id="DeleteDocument"></a>9. lépés: JSON-dokumentumok törlése
-A DocumentDB támogatja a JSON-dokumentumok törlését.  
+Az Azure Cosmos DB támogatja a JSON-dokumentumok törlését.  
 
 Másolja, majd illessze be a **DeleteFamilyDocument** metódust a **ReplaceFamilyDocument** metódus után.
 
@@ -481,7 +482,7 @@ A második lekérdezés végrehajtása után másolja, majd illessze be az aláb
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Gratulálunk! Sikeresen törölt egy DocumentDB-dokumentumot.
+Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-dokumentumot.
 
 ## <a id="DeleteDatabase"></a>10. lépés: Az adatbázis törlése
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
@@ -498,7 +499,7 @@ Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba a d
 
 Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
-Gratulálunk! Sikeresen törölt egy DocumentDB-adatbázist.
+Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-adatbázist.
 
 ## <a id="Run"></a>11. lépés: Futtassa a teljes C# konzolalkalmazást!
 Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban történő összeállításához.
@@ -526,28 +527,28 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenet megjele
     Deleted Family Andersen.1
     End of demo, press any key to exit.
 
-Gratulálunk! Elvégezte a NoSQL-oktatóanyagot, és egy működőképes C# konzolalkalmazással rendelkezik!
+Gratulálunk! Elvégezte az oktatóanyagot, és egy működőképes C# konzolalkalmazással rendelkezik!
 
-## <a id="GetSolution"></a>A NoSQL-oktatóanyagban szereplő teljes megoldás beszerzése
+## <a id="GetSolution"></a> Az oktatóanyagban szereplő teljes megoldás beszerzése
 Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretné letölteni a mintakódokat, a [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) beszerezhetőek. 
 
 A GetStarted-megoldás létrehozásához a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Egy [DocumentDB-fiók][documentdb-create-account].
+* Egy [Azure Cosmos DB-fiók][documentdb-create-account].
 * A GitHubon elérhető [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) megoldás.
 
-Ahhoz, hogy visszaállítsa a DocumentDB .NET SDK-ra mutató hivatkozásokat a Visual Studióban, kattintson a jobb gombbal a **GetStarted** megoldásra a Megoldáskezelőben, majd kattintson a **NuGet-csomagok visszaállításának engedélyezése** lehetőségre. Ezután az App.config fájlban frissítse az EndpointUrl és az AuthorizationKey értékeket a [Csatlakozás DocumentDB-fiókhoz](#Connect) című részben leírtak szerint.
+Ahhoz, hogy visszaállítsa a DocumentDB .NET SDK-ra mutató hivatkozásokat a Visual Studióban, kattintson a jobb gombbal a **GetStarted** megoldásra a Megoldáskezelőben, majd kattintson a **NuGet-csomagok visszaállításának engedélyezése** lehetőségre. Ezután az App.config fájlban frissítse az EndpointUrl és az AuthorizationKey értékeket a [Csatlakozás Azure Cosmos DB-fiókhoz](#Connect) című részben leírtak szerint.
 
 Ennyi az egész! Építse ki, és máris jó úton jár!
 
 
 ## <a name="next-steps"></a>Következő lépések
-* Összetettebb ASP.NET MVC NoSQL-oktatóanyagot szeretne? Tekintse meg a következőt: [ASP.NET MVC-vel rendelkező webalkalmazás összeállítása a DocumentDB használatával](documentdb-dotnet-application.md).
-* Méret- és teljesítménytesztelést szeretne elvégezni a DocumentDB használatával? Tekintse meg a következőt: [Teljesítmény- és mérettesztelés az Azure DocumentDB használatával](documentdb-performance-testing.md)
-* Ismerje meg, hogyan [felügyelhet egy DocumentDB-fiókot](documentdb-monitor-accounts.md).
+* Összetettebb ASP.NET MVC-oktatóanyagot szeretne? Tekintse meg a következőt: [ASP.NET MVC-vel rendelkező webalkalmazás összeállítása az Azure Cosmos DB használatával](documentdb-dotnet-application.md).
+* Méret- és teljesítménytesztelést szeretne végezni az Azure Cosmos DB használatával? Tekintse meg a következőt: [Teljesítmény- és mérettesztelés az Azure Cosmos DB használatával](documentdb-performance-testing.md)
+* Ismerje meg, hogyan [figyelhet egy Azure Cosmos DB-fiókot](documentdb-monitor-accounts.md).
 * Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.
-* A programozási modellel kapcsolatos további tudnivalókat a [DocumentDB dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
+* A programozási modellel kapcsolatos további tudnivalókat az [Azure Cosmos DB-dokumentációs oldalának](https://azure.microsoft.com/documentation/services/documentdb/) Develop (Fejlesztés) szakaszában találja.
 
 [documentdb-create-account]: documentdb-create-account.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png

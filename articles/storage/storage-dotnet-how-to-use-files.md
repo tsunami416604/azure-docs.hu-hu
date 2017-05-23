@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: renash
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e773fd4917c7a96201d94d31b2098a3486d27900
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 4e2422e8651d6fd17df2670e78606d1caeaf64ce
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -676,14 +676,11 @@ Emellett olvassa el az [Azure-fájlok hibaelhárításáról szóló cikk](stora
     
     Olvassa el az [Azure fájlok hibaelhárításáról szóló cikk](storage-troubleshoot-file-connection-problems.md) átfogó hibaelhárítási útmutatóját.               
 
-18. **Hogyan lehet engedélyezni a kiszolgálóoldali titkosítást az Azure Files-hoz?**
-> [!NOTE]
-> Az Azure Files [kiszolgálóoldali titkosítása](storage-service-encryption.md) jelenleg előzetes verzióban működik. Ha kérdése van az előzetes verzió használatakor, írjon az [SSE vitafórumába](mailto:ssediscussions@microsoft.com).
-
-    [Server Side Encryption](storage-service-encryption.md) for Azure Files is currently in preview. During preview, you can enable this feature only on new Azure Resource Manager storage accounts created by using the [Azure portal](https://portal.azure.com). There is no additional charge for enabling this feature. When you enable Storage Service Encryption for Azure File Storage, your data is automatically encrypted for you. 
+18. **Hogyan lehet engedélyezni a kiszolgálóoldali titkosítást az Azure File Storage-hoz?**
     
-    We plan to support enabling encryption for file storage with [Azure PowerShell](/powershell/resourcemanager/azurerm.storage/v2.7.0/azurerm.storage), [Azure CLI](storage-azure-cli.md), and the [Azure Storage Resource Provider REST API](/rest/api/storagerp/storageaccounts) in the future. 
-    See [Storage Service Encryption](storage-service-encryption.md) for more information about encryption at rest in Azure Storage, and you can contact ssediscussions@microsoft.com if you have questions during the preview.
+    A [kiszolgálóoldali titkosítás](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) engedélyezése az Azure File Storage-hoz általánosan elérhető minden régióban és nyilvános, illetve országos felhőben. A kiszolgálóoldali titkosítást a File Storage szolgáltatáshoz is engedélyezheti az [Azure Portal](https://ms.portal.azure.com/), a [Microsoft Azure Storage Resource Provider API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts), az [Azure PowerShell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx) vagy az [Azure CLI](https://azure.microsoft.com/en-us/documentation/articles/storage-azure-cli/) használatával.
+    
+    Miután engedélyezte a kiszolgálóoldali titkosítást az Azure File Storage-hoz, minden új adat automatikusan titkosítva lesz, amelyet a tárfiókban lévő fájltárolóhoz hozzáad. Ez a funkció a meglévő vagy új tárfiók minden meglévő vagy új megosztására írt új adathoz elérhető. A szolgáltatás díjmentesen engedélyezhető. További információk [a kiszolgálóoldali titkosítás engedélyezéséről az Azure File Storage szolgáltatásban](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption).
 
 ## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.

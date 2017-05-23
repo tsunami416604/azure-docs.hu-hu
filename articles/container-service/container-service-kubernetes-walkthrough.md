@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2017
+ms.date: 05/08/2017
 ms.author: anhowe
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 5c529ae41b42d276d37e6103305e33ed04694e18
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 2ec155129374c03ba7e0ecaa5d2bf29a1d3111aa
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 ---
 
@@ -29,21 +30,31 @@ ms.lasthandoff: 04/07/2017
 
 Ez a forgatókönyv bemutatja, hogyan használhatók az Azure CLI 2.0 parancsok Kubernetes-fürt létrehozása az Azure Container Service-ben. Ezután a `kubectl` parancssori eszközzel elkezdheti a fürtben lévő tárolók használatát.
 
-A következő kép egy Container Service-fürt architektúráját mutatja be, amely egy főkiszolgálóval és két ügynökkel rendelkezik. A főcsomópont a Kubernetes REST API-t szolgálja ki. Az ügyfélcsomópontok egy Azure-beli rendelkezésre állási csoportba vannak besorolva, és a tárolókat futtatják. Minden virtuális gép ugyanazon a privát virtuális hálózaton található, és teljes mértékben elérhetők egymás számára.
+A következő kép egy Container Service-fürt architektúráját mutatja be, amely egy Linux-főcsomóponttal és két Linux-ügynökkel rendelkezik. A főcsomópont a Kubernetes REST API-t szolgálja ki. Az ügyfélcsomópontok egy Azure-beli rendelkezésre állási csoportba vannak besorolva, és a tárolókat futtatják. Minden virtuális gép ugyanazon a privát virtuális hálózaton található, és teljes mértékben elérhetők egymás számára.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-walkthrough/kubernetes.png)
 
-## <a name="prerequisites"></a>Előfeltételek
-Az útmutatás feltételezi, hogy telepítette és beállította a következőt: [Azure CLI 2.0](/cli/azure/install-az-cli2). 
+További információt [Az Azure Container Service bemutatása](container-service-intro.md) és [A Kubernetes dokumentációja](https://kubernetes.io/docs/home/) című cikkekben talál.
 
-A parancspéldákban feltételeztük, hogy az Azure CLI a Linux és macOS rendszerben általános Bash-rendszerhéjból fut. Ha Windows-ügyfélen futtatja az Azure CLI-t, a parancssori felülettől függően néhány szintaktikai eltérés lehet a parancsprogramokban és a fájlokban. 
+## <a name="prerequisites"></a>Előfeltételek
+Az Azure Container Service-fürtök az Azure CLI 2.0-s verziójával való létrehozásának feltételei:
+* szükség van egy Azure-fiókra ([ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/));
+* az [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítésére és beállítására
+
+Ezenkívül szüksége lesz az alábbiakra (vagy az Azure CLI-vel automatikusan létrehozhatja ezeket a fürt üzembe helyezése közben):
+
+* **SSH RSA nyilvános kulcs**: a Secure Shell (SSH) RSA-kulcsok előzetes létrehozásával kapcsolatban lásd a [macOS és Linux](../virtual-machines/linux/mac-create-ssh-keys.md) vagy a [Windows](../virtual-machines/linux/ssh-from-windows.md) rendszerhez készült útmutatót. 
+
+* **Szolgáltatásnév ügyfél-azonosítója és kulcsa**: az Azure Active Directory-szolgáltatásnevek létrehozásának lépései és további információk: [Tudnivalók a Kubernetes-fürthöz tartozó szolgáltatásnévről](container-service-kubernetes-service-principal.md).
+
+ A jelen cikkben szereplő példaparancs automatikusan létrehozza az SSH-kulcsokat és egy egyszerű szolgáltatást.
 
 ## <a name="create-your-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Itt rövid rendszerhéjparancsokat talál a fürt Azure CLI 2.0-val történő létrehozásához. 
+Itt rövid Bash rendszerhéjparancsokat talál a fürt az Azure CLI 2.0-val történő létrehozásához. 
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-A fürt létrehozásához először létre kell hoznia egy erőforráscsoportot egy adott helyen. Futtasson az alábbihoz hasonló parancsokat:
+A fürt létrehozásához először létre kell hoznia egy erőforráscsoportot egy olyan helyen, ahol az Azure Container Service [elérhető](https://azure.microsoft.com/regions/services/). Futtasson az alábbihoz hasonló parancsokat:
 
 ```azurecli
 RESOURCE_GROUP=my-resource-group
@@ -52,9 +63,11 @@ az group create --name=$RESOURCE_GROUP --location=$LOCATION
 ```
 
 ### <a name="create-a-cluster"></a>Fürt létrehozása
-Ha rendelkezik erőforráscsoporttal, létrehozhat benne egy fürtöt. Az alábbi példában a `--generate-ssh-keys` kapcsoló létrehozza a szükséges SSH nyilvános és titkos kulcsfájlokat az üzembe helyezéshez, ha azok még nem léteztek már az alapértelmezett `~/.ssh/` könyvtárban. 
+Hozzon létre egy Kubernetes-fürtöt az erőforráscsoportban az `az acs create` parancs és az `--orchestrator-type=kubernetes` együttes használatával. A parancs szintaxisát lásd az `az acs create` [Súgójában](/cli/azure/acs#create).
 
-Ez a parancs automatikusan létrehozza a [Azure Active Directory szolgáltatásnevet](container-service-kubernetes-service-principal.md), amelyet a Kubernetes-fürt használ az Azure-ban.
+A parancs jelen verziója létrehozza az SSH RSA-kulcsokat és egy szolgáltatásnevet a Kubernetes-fürthöz.
+
+
 
 ```azurecli
 DNS_PREFIX=some-unique-value
@@ -62,23 +75,29 @@ CLUSTER_NAME=any-acs-cluster-name
 az acs create --orchestrator-type=kubernetes --resource-group $RESOURCE_GROUP --name=$CLUSTER_NAME --dns-prefix=$DNS_PREFIX --generate-ssh-keys
 ```
 
-
 Pár perc múlva befejeződik a parancs végrehajtása, és rendelkeznie kell egy működő Kubernetes-fürttel.
+
+> [!IMPORTANT]
+> Ha a fiók nem rendelkezik jogosultsággal az Azure AD-szolgáltatásnév létrehozásához, a parancs a következőhöz hasonló hibaüzenetet hoz létre: `Insufficient privileges to complete the operation.`. További információ: [Tudnivalók a Kubernetes-fürthöz tartozó szolgáltatásnévről](container-service-kubernetes-service-principal.md).
+> 
+
+
 
 ### <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
 A Kubernetes-fürthöz csatlakozhat a számítógépéről a Kubernetes [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/) nevű parancssori ügyfelével. 
 
-Ha a `kubectl` még nincs telepítve, a következővel telepítheti:
+Ha a `kubectl` még nincs telepítve, az `az acs kubernetes install-cli` paranccsal telepítheti. (Vagy le is töltheti a [Kubernetes webhelyéről](https://kubernetes.io/docs/tasks/kubectl/install/).)
 
 ```azurecli
 sudo az acs kubernetes install-cli
 ```
+
 > [!TIP]
 > Alapértelmezés szerint ez a parancs telepíti a `kubectl` bináris fájlt a `/usr/local/bin/kubectl` könyvtárba Linux vagy macOS rendszeren, vagy a `C:\Program Files (x86)\kubectl.exe` mappába Windows rendszeren. Másik telepítési útvonal megadásához használja az `--install-location` paramétert.
 >
-
-A `kubectl` telepítését követően győződjön meg arról, hogy a könyvtár elérhető a rendszerútvonalon, vagy adja hozzá az elérési úthoz. 
+> A `kubectl` telepítését követően győződjön meg arról, hogy a könyvtár elérhető a rendszerútvonalon, vagy adja hozzá az elérési úthoz. 
+>
 
 
 Ezután az alábbi parancs futtatásával töltheti le a fő Kubernetes-fürt konfigurációját a `~/.kube/config` fájlba:
@@ -104,8 +123,8 @@ Az oktatóanyag végére elsajátíthatja a következőket:
 * a `kubectl exec` használata parancsok futtatására egy tárolóban, 
 * hozzáférés a Kubernetes-irányítópulthoz
 
-### <a name="start-a-simple-container"></a>Egyszerű tároló indítása
-Az egyszerű tárolókat (ebben az esetben az Nginx webkiszolgálót) a következővel futtathatja:
+### <a name="start-a-container"></a>Tároló indítása
+A tárolókat (ebben az esetben az Nginx-webkiszolgálót) a következővel futtathatja:
 
 ```bash
 kubectl run nginx --image nginx
@@ -147,7 +166,7 @@ A Kubernetes webes felületének megtekintéséhez a következőt használhatja:
 ```bash
 kubectl proxy
 ```
-Ez a parancs egyszerű hitelesített proxyt futtat a localhoston, amellyel megtekintheti a [http://localhost:8001/ui](http://localhost:8001/ui) helyen futó Kubernetes webes felhasználói felületét. További információ: [A Kubernetes webes felhasználói felületének használata az Azure Container Service-szel](container-service-kubernetes-ui.md).
+Ez a parancs egy hitelesített proxyt futtat a localhoston, amellyel megtekintheti a [http://localhost:8001/ui](http://localhost:8001/ui) helyen futó Kubernetes webes felhasználói felületét. További információ: [A Kubernetes webes felhasználói felületének használata az Azure Container Service-szel](container-service-kubernetes-ui.md).
 
 ![Kubernetes-irányítópult képe](media/container-service-kubernetes-walkthrough/kubernetes-dashboard.png)
 
@@ -159,7 +178,7 @@ A Kubernetes lehetővé teszi a parancsok futtatását a fürtben futó távoli 
 kubectl get pods
 ```
 
-A podnév használatával távoli parancsokat futtathat a podján.  Példa:
+A podnév használatával távoli parancsokat futtathat a podján. Példa:
 
 ```bash
 kubectl exec <pod name> date

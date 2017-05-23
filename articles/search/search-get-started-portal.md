@@ -13,12 +13,13 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 02/22/2017
+ms.date: 05/01/2017
 ms.author: heidist
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: e03d0ff92b0ad6d34314c55d98972997769d09f0
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -199,7 +200,7 @@ Most már rendelkezik egy keresési indexszel, amely készen áll a lekérdezés
 
   Az egyes összetevők megtekintéséhez kattintson az **Index**, **Indexelő** vagy **Adatforrások** csempére az irányítópulton a meglévő objektumok listájának megjelenítéséhez. Az újjáépítést nem igénylő indexszerkesztési műveletekkel kapcsolatos további információk: [Index frissítése (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/update-index).
 
-+ Próbálja ki az eszközöket és lépéseket más adatforrásokkal is. A `realestate-us-sample` minta-adatkészlet olyan Azure SQL Database-adatbázisból származik, amelyet az Azure Search szolgáltatás be tud járni. Az Azure SQL Database-en kívül az Azure Search be tudja járni és indexre tud következtetni sima adatszerkezetekből az alábbiakban: Azure Table Storage, Blob Storage, Azure-beli virtuális gépen futtatott SQL Server, illetve DocumentDB. A varázsló az összes fent említett adatforrást támogatja. *Indexelő* használatával könnyedén tölthet fel indexeket a kódban.
++ Próbálja ki az eszközöket és lépéseket más adatforrásokkal is. A `realestate-us-sample` minta-adatkészlet olyan Azure SQL Database-adatbázisból származik, amelyet az Azure Search szolgáltatás be tud járni. Az Azure SQL Database-en kívül az Azure Search be tudja járni és indexre tud következtetni sima adatszerkezetekből az alábbiakban: Azure Table Storage, Blob Storage, Azure-beli virtuális gépen futtatott SQL Server, illetve Azure Cosmos DB. A varázsló az összes fent említett adatforrást támogatja. *Indexelő* használatával könnyedén tölthet fel indexeket a kódban.
 
 + Minden más nem indexelő adatforrás leküldéses modellen keresztül támogatott, amely során a kód az új és módosított sorhalmazokat JSON formátumban küldi le az index számára. További információk: [Dokumentumok hozzáadása, frissítése vagy törlése az Azure Search szolgáltatásban](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 

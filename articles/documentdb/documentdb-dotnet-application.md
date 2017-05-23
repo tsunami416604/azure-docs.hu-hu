@@ -1,28 +1,29 @@
 ---
-title: "ASP.NET MVC oktatóprogram a DocumentDB szolgáltatáshoz: webalkalmazás-fejlesztés | Microsoft Docs"
-description: "ASP.NET MVC oktatóprogram MVC webalkalmazás létrehozásához a DocumentDB szolgáltatással. A JSON-fájlok tárolása és az adatok elérése az Azure-webhelyeken tárolt teendőkezelő alkalmazásból történik – ASP NET MVC oktatóprogram lépésről lépésre."
+title: "ASP.NET MVC oktatóprogram az Azure Cosmos DB szolgáltatáshoz: webalkalmazás-fejlesztés | Microsoft Docs"
+description: "ASP.NET MVC oktatóprogram MVC webalkalmazás létrehozásához az Azure Cosmos DB szolgáltatással. A JSON-fájlok tárolása és az adatok elérése az Azure-webhelyeken tárolt teendőkezelő alkalmazásból történik – ASP NET MVC oktatóprogram lépésről lépésre."
 keywords: "asp.net mvc oktatóanyag, webalkalmazás fejlesztése, mvc-webalkalmazás, asp net mvc lépésről lépésre haladó oktatóanyag"
-services: documentdb
+services: cosmosdb
 documentationcenter: .net
 author: syamkmsft
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 52532d89-a40e-4fdf-9b38-aadb3a4cccbc
-ms.service: documentdb
+ms.service: cosmosdb
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: syamk
-translationtype: Human Translation
-ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
-ms.openlocfilehash: 44307f258ea05635addf85bf9c59cd78b2ac0f1e
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 48736ab63a74c78a7d111011faf135f32c0c4f9e
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
-# <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése a DocumentDB szolgáltatással
+# <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése az Azure Cosmos DB szolgáltatással
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
 > * [.NET MongoDB-hez](documentdb-mongodb-application.md)
@@ -32,11 +33,11 @@ ms.lasthandoff: 04/18/2017
 > 
 > 
 
-Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazást az Azure DocumentDB eszközzel, és ezáltal hogyan teheti hatékonnyá a JSON-dokumentumok tárolását és lekérdezését. A feladatok JSON-dokumentumokként lesznek tárolva az Azure DocumentDB-ben.
+Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazást az Azure Cosmos DB eszközzel, és ezáltal hogyan használhatja hatékonyan az Azure Cosmos DB-t a JSON-dokumentumok tárolására és lekérdezésére. A feladatok JSON-dokumentumokként lesznek tárolva az Azure Cosmos DB-ben.
 
 ![Az oktatóprogram során létrehozott teendőlista-kezelő MVC webalkalmazás képernyőfelvétele – ASP NET MVC oktatóprogram lépésről lépésre](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image1.png)
 
-Ez az útmutató bemutatja, hogyan használhatja az Azure által biztosított DocumentDB szolgáltatást az Azure rendszeren üzemeltetett ASP.NET MVC webalkalmazásról származó adatok eléréséhez. Ha olyan oktatóprogramot keres, amely csak a DocumentDB szolgáltatással foglalkozik, az ASP.NET MVC összetevőkkel nem, akkor tekintse meg: [DocumentDB C# konzolalkalmazás felépítése](documentdb-get-started.md).
+Ez az útmutató bemutatja, hogyan használhatja az Azure által biztosított Azure Cosmos DB szolgáltatást az Azure rendszeren üzemeltetett ASP.NET MVC webalkalmazásról származó adatok eléréséhez. Ha olyan oktatóprogramot keres, amely csak az Azure Cosmos DB szolgáltatással foglalkozik, az ASP.NET MVC összetevőkkel nem, akkor tekintse meg: [Azure Cosmos DB C# konzolalkalmazás felépítése](documentdb-get-started.md).
 
 > [!TIP]
 > Ez az oktatóprogram feltételezi, hogy van korábbi tapasztalata az ASP.NET MVC és az Azure webhelyek használatában. Ha nem ismeri az ASP.NET rendszert vagy az [előfeltételt jelentő eszközöket](#_Toc395637760), érdemes letöltenie a teljes mintaprojektet a [GitHubról][GitHub], és követni a mintában lévő utasításokat. Ha felépítette, ezen cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.
@@ -50,14 +51,14 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 
     VAGY
 
-    Az [Azure DocumentDB Emulator](documentdb-nosql-local-emulator.md) egy helyi telepítése.
+    Az [Azure Cosmos DB Emulator](documentdb-nosql-local-emulator.md) helyi telepítése.
 * [Visual Studio 2015](http://www.visualstudio.com/) vagy Visual Studio 2013 Update 4 vagy újabb verzió. Ha Visual Studio 2013-at használ, telepítenie kell a [Microsoft.Net.Compilers NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Net.Compilers/) a C# 6.0 támogatásához. 
 * Azure SDK for .NET 2.5.1-es vagy újabb verzió, amely a [Microsoft Webplatform-telepítőn][Microsoft Web Platform Installer] keresztül érhető el.
 
 A jelen cikk összes képernyőfelvétele az Update 4-es verzióval ellátott Visual Studio 2013 programmal és az Azure SDK for .NET 2.5.1-es verzióval készült. Ha a rendszere más verziókkal van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
 
-## <a name="_Toc395637761"></a>1. lépés: DocumentDB-adatbázisfiók létrehozása
-Először hozzon létre egy DocumentDB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban a DocumentDB Emulatort használja, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
+## <a name="_Toc395637761"></a>1. lépés: Azure Cosmos DB-adatbázisfiók létrehozása
+Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
 
 [!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
@@ -89,26 +90,26 @@ Most, hogy már rendelkezik fiókkal, hozzuk létre az új ASP.NET projektet.
 
 8. Ha úgy döntött, hogy ezt a felhőben üzemelteti, legalább egy további képernyőt lát, amely megkéri, hogy jelentkezzen be az Azure-fiókjába és adjon meg néhány értéket az új webhelyhez. Adja meg az összes további értéket, és folytassa. 
    
-      Itt nem választottam „Adatbázis-kiszolgálót”, mert itt nem Azure SQL adatbázis-kiszolgálót használunk, hanem később hozunk létre új Azure DocumentDB-fiókot az Azure-portálon.
+      Itt nem választottam „Adatbázis-kiszolgálót”, mert itt nem Azure SQL adatbázis-kiszolgálót használunk, hanem később hozunk létre új Azure Cosmos DB-fiókot az Azure-portálon.
    
     Az **App Service-csomagok** és az **Erőforráscsoportok** kiválasztásáról további információért lásd: [Az Azure App Service díjcsomagjainak részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
    
       ![A Configure Microsoft Azure Website (Microsoft Azure webhely konfigurálása) párbeszédpanel képernyőfelvétele](./media/documentdb-dotnet-application/image11_1.png)
 9. Ha a Visual Studio befejezte a sablonszöveges MVC alkalmazás létrehozását, egy üres ASP.NET alkalmazást kap, amelyet helyileg futtathat.
    
-    Kihagyjuk a projekt helyi futtatását, mert biztosan mindannyian láttuk az ASP.NET „Hello World” alkalmazást. Ugorjunk közvetlenül a DocumentDB ezen projekthez való hozzáadására és az alkalmazás felépítésére.
+    Kihagyjuk a projekt helyi futtatását, mert biztosan mindannyian láttuk az ASP.NET „Hello World” alkalmazást. Ugorjunk közvetlenül az Azure Cosmos DB ezen projekthez való hozzáadására és az alkalmazás felépítésére.
 
-## <a name="_Toc395637767"></a>3. lépés: DocumentDB hozzáadása az MVC webalkalmazás projekthez
-Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy részével, folytassuk az oktatóprogram valódi céljával, amely az Azure DocumentDB MVC webalkalmazáshoz adása.
+## <a name="_Toc395637767"></a>3. lépés: Azure Cosmos DB hozzáadása az MVC webalkalmazás projekthez
+Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy részével, folytassuk az oktatóprogram valódi céljával, amely az Azure Cosmos DB MVC webalkalmazáshoz adása.
 
 1. A DocumentDB .NET SDK NuGet-csomagként van csomagolva és elosztva. A Visual Studióban a NuGet-csomag beszerzéséhez használja a Visual Studio NuGet-csomagkezelőjét. Ehhez kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
    
       ![A Megoldáskezelőben a webalkalmazás projekt helyi menüjének képernyőfelvétele, ahol a Manage NuGet Packages (NuGet-csomagok kezelése) parancs van kiemelve.](./media/documentdb-dotnet-application/image21.png)
    
     Megjelenik a **Manage NuGet Packages** (NuGet-csomagok kezelése) párbeszédpanel.
-2. A NuGet **Browse** (Tallózás) mezőjébe írja be az ***Azure DocumentDB*** szöveget.
+2. A NuGet **Browse** (Tallózás) mezőjébe írja be az ***Azure Cosmos DB*** szöveget.
    
-    Az eredmények közül telepítse a **Microsoft Azure DocumentDB Client Library** csomagot. Ez letölti és telepíti a DocumentDB-csomagot, valamint az összes függőségét, például a Newtonsoft.Json elemet. Kattintson az **OK** gombra a **Preview** (Előnézet) ablakban, majd az **I Accept** (Elfogadás) gombra a **License Acceptance** (Licenc elfogadása) ablakban a telepítés befejezéséhez.
+    Az eredmények közül telepítse a **Microsoft Azure Cosmos DB Client Library** csomagot. Ez letölti és telepíti az Azure Cosmos DB-csomagot, valamint az összes függőségét, például a Newtonsoft.Json elemet. Kattintson az **OK** gombra a **Preview** (Előnézet) ablakban, majd az **I Accept** (Elfogadás) gombra a **License Acceptance** (Licenc elfogadása) ablakban a telepítés befejezéséhez.
    
       ![A Manage NuGet Packages (NuGet-csomagok kezelése) ablak képernyőfelvétele, ahol a Microsoft Azure DocumentDB Client Library elem van kiemelve](./media/documentdb-dotnet-application/nuget.png)
    
@@ -159,7 +160,7 @@ Először hozzuk létre az **M-et** az MVC-ből, a modellt.
             public bool Completed { get; set; }
         }
    
-    A DocumentDB összes adata átkerül a hálózaton keresztül, és JSON-fájlként lesz tárolva. Az objektumok JSON.NET általi szerializálási/deszerializálási módjának beállításához használhatja a **JsonProperty** attribútumot, ahogyan az az imént létrehozott **Item** (Elem) osztályban látható. Nem **kell** ezt csinálnia, de biztosítani szeretném, hogy a tulajdonságaim követik a JSON camelCase elnevezési konvenciókat. 
+    Az Azure Cosmos DB összes adata átkerül a hálózaton keresztül, és JSON-fájlként lesz tárolva. Az objektumok JSON.NET általi szerializálási/deszerializálási módjának beállításához használhatja a **JsonProperty** attribútumot, ahogyan az az imént létrehozott **Item** (Elem) osztályban látható. Nem **kell** ezt csinálnia, de biztosítani szeretném, hogy a tulajdonságaim követik a JSON camelCase elnevezési konvenciókat. 
    
     Nem csak a tulajdonságnév formátumát vezérelheti, amikor a JSON-ba kerül, hanem teljesen át is nevezheti a .NET tulajdonságokat, mint ahogyan a **Description** (Leírás) tulajdonsággal tettem. 
 
@@ -232,8 +233,8 @@ Az **Elemindex** nézet létrehozásához hasonlóan most létrehozunk egy új n
 
 Ha ezzel végzett, zárja be az összes cshtml dokumentumot a Visual Studióban, mivel később vissza fog térni ezekhez a nézetekhez.
 
-## <a name="_Toc395637769"></a>5. lépés: A DocumentDB csatlakoztatása
-Most, hogy elvégeztük az MVC-vel kapcsolatos szokásos feladatokat, adjuk hozzá a DocumentDB kódját. 
+## <a name="_Toc395637769"></a>5. lépés: Az Azure Cosmos DB csatlakoztatása
+Most, hogy elvégeztük az MVC-vel kapcsolatos szokásos feladatokat, adjuk hozzá az Azure Cosmos DB kódját. 
 
 Ebben a szakaszban a következők kezeléséhez adunk hozzá kódot:
 
@@ -242,7 +243,7 @@ Ebben a szakaszban a következők kezeléséhez adunk hozzá kódot:
 * [Elemek szerkesztése](#_Toc395637772).
 
 ### <a name="_Toc395637770"></a>Hiányos elemek listázása az MVC webalkalmazásban
-Itt először hozzá kell adni egy osztályt, amely tartalmazza a DocumentDB adatbázishoz való csatlakozás és a DocumentDB használatának összes logikáját. Ehhez az oktatóprogramhoz ezen logikák mindegyikét a DocumentDBRepository nevű adattárba foglaljuk. 
+Itt először hozzá kell adni egy osztályt, amely tartalmazza az Azure Cosmos DB-adatbázishoz való csatlakozás és a DocumentDB használatának összes logikáját. Ehhez az oktatóprogramhoz ezen logikák mindegyikét a DocumentDBRepository nevű adattárba foglaljuk. 
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) gombra. Adja az új osztálynak a **DocumentDBRepository** nevet, és kattintson az **Add** (Hozzáadás) gombra.
 2. Az újonnan létrehozott **DocumentDBRepository** osztályban adja a következő *használati utasításokat* a *névtér-deklaráció* fölé
@@ -318,7 +319,7 @@ Itt először hozzá kell adni egy osztályt, amely tartalmazza a DocumentDB ada
         }
    
    > [!TIP]
-   > Új DocumentCollection létrehozásakor megadhat egy választható OfferType típusú RequestOptions paramétert, amellyel megadhatja az új gyűjtemény teljesítményszintjét. Ha ez a paraméter nem kerül át, a rendszer az alapértelmezett ajánlattípust használja. A DocumentDB ajánlattípusokról további információ: [DocumentDB teljesítményszintek](documentdb-performance-levels.md)
+   > Új DocumentCollection létrehozásakor megadhat egy választható OfferType típusú RequestOptions paramétert, amellyel megadhatja az új gyűjtemény teljesítményszintjét. Ha ez a paraméter nem kerül át, a rendszer az alapértelmezett ajánlattípust használja. Az Azure Cosmos DB ajánlattípusokról további információ: [Azure Cosmos DB teljesítményszintek](documentdb-performance-levels.md)
    > 
    > 
 3. A konfigurációból adunk hozzá néhány értéket, ezért nyissa meg az alkalmazás **Web.config** fájlját, és adja hozzá a következő sorokat az `<AppSettings>` szakasz alá.
@@ -395,7 +396,7 @@ Ha most felépíti és futtatja ezt a projektet, valami ilyesmit kell látnia.
 ### <a name="_Toc395637771"></a>Elemek hozzáadása
 Tegyünk néhány elemet az adatbázisba, hogy ne csak egy üres táblát lássunk.
 
-Adjunk néhány kódot a DocumentDBRepository és az ItemController elemhez, hogy megmaradjon a rekord a DocumentDB adatbázisban.
+Adjunk néhány kódot az Azure Cosmos DBRepository és az ItemController elemhez, hogy megmaradjon a rekord az Azure Cosmos DB-adatbázisban.
 
 1. Adja hozzá a **DocumentDBRepository** tárhoz a következő metódust:
    
@@ -468,9 +469,9 @@ Az egyik utolsó teendő azon funkció hozzáadása, amellyel az **elemek** szer
             }
         }
    
-    Ezen metódusok közül az első, a **GetItem** egy elemet kér le a DocumentDB adatbázisból, amelyet visszaküld az **ItemController** vezérlőhöz, majd az **Edit** (Szerkesztés) nézethez.
+    Ezen metódusok közül az első, a **GetItem** egy elemet kér le az Azure Cosmos DB-adatbázisból, amelyet visszaküld az **ItemController** vezérlőhöz, majd az **Edit** (Szerkesztés) nézethez.
    
-    A most hozzáadott metódusok közül a második lecseréli a **dokumentumot** a DocumentDB adatbázisban a **dokumentum** azon verziójával, amely az **ItemController** vezérlőből származik.
+    A most hozzáadott metódusok közül a második lecseréli a **dokumentumot** az Azure Cosmos DB-adatbázisban a **dokumentum** azon verziójával, amely az **ItemController** vezérlőből származik.
 2. Adja hozzá a következőt az **ItemController** osztályhoz.
    
         [HttpPost]
@@ -504,11 +505,11 @@ Az egyik utolsó teendő azon funkció hozzáadása, amellyel az **elemek** szer
             return View(item);
         }
    
-    Az első metódus a Http GET kérést kezeli, amely akkor történik meg, amikor a felhasználó az **Edit** (Szerkesztés) hivatkozásra kattint az **Index** nézetből. Ez a metódus [**dokumentumot**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) kér le a DocumentDB adatbázisból és az **Edit** (Szerkesztés) nézetbe küldi azt.
+    Az első metódus a Http GET kérést kezeli, amely akkor történik meg, amikor a felhasználó az **Edit** (Szerkesztés) hivatkozásra kattint az **Index** nézetből. Ez a metódus [**dokumentumot**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) kér le az Azure Cosmos DB-adatbázisból, és az **Edit** (Szerkesztés) nézetbe küldi azt.
    
     Az **Edit** (Szerkesztés) nézet ezután Http POST kérést küld az **IndexController** vezérlőnek. 
    
-    A második hozzáadott metódus kezeli a frissített objektum átadását a DocumentDB adatbázisnak, hogy megmaradjon az adatbázisban.
+    A második hozzáadott metódus kezeli a frissített objektum átadását az Azure Cosmos DB-adatbázisnak, hogy megmaradjon az adatbázisban.
 
 Ennyi, ez minden, amire szükségünk van az alkalmazás futtatásához, a hiányos **elemek** listázásához és új **elemek** hozzáadásához, valamint az **elemek** szerkesztéséhez.
 
@@ -534,7 +535,7 @@ Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
 5. Ha befejezte az alkalmazás tesztelését, nyomja meg a Ctrl+F5 billentyűkombinációt az alkalmazás hibakeresésének befejezéséhez. Készen áll a telepítésre!
 
 ## <a name="_Toc395637774"></a>7. lépés: Az alkalmazás üzembe helyezése az Azure Websites-ban
-Most, hogy a teljes alkalmazás megfelelően működik a DocumentDB adatbázissal, Azure-webhelyekre fogjuk telepíteni ezt a webalkalmazást. Ha bejelölte a **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget az üres ASP.NET MVC projekt létrehozásakor, akkor a Visual Studio jelentősen megkönnyíti ezt, és a legtöbb munkát elvégzi. 
+Most, hogy a teljes alkalmazás megfelelően működik az Azure Cosmos DB-adatbázissal, Azure-webhelyekre fogjuk telepíteni ezt a webalkalmazást. Ha bejelölte a **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget az üres ASP.NET MVC projekt létrehozásakor, akkor a Visual Studio jelentősen megkönnyíti ezt, és a legtöbb munkát elvégzi. 
 
 1. Az alkalmazás közzétételéhez egyszerűen a jobb gombbal a projektre kell kattintania a **Megoldáskezelőben**, majd a **Publish** (Közzététel) parancsot választania.
    
@@ -565,7 +566,7 @@ Ha a „Hiba történt a kérelem feldolgozása közben” hibaüzenet jelenik m
 
 
 ## <a name="_Toc395637775"></a>Következő lépések
-Gratulálunk! Megépítette az első ASP.NET MVC webalkalmazását az Azure DocumentDB eszközzel és közzétette azt Azure-webhelyekre. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHubról][GitHub]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
+Gratulálunk! Megépítette az első ASP.NET MVC webalkalmazását az Azure Cosmos DB eszközzel, és közzétette azt Azure-webhelyekre. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHubról][GitHub]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
 
 Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át a [DocumentDB .NET kódtárban](https://msdn.microsoft.com/library/azure/dn948556.aspx) lévő API-kat, és nyugodtan járuljon hozzá a DocumentDB .NET kódtárhoz a [GitHubon][GitHub]. 
 

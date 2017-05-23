@@ -15,10 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: a6b1df79f4fc6b09b681755f5adbb7f56faaf225
-ms.lasthandoff: 05/01/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
+ms.openlocfilehash: 42f77fbea2ac9572940e8c428999c79d6b4b6e23
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/10/2017
 
 
 ---
@@ -39,7 +40,7 @@ Napjainkban az adatok óriási mennyiségben, nagy sebességgel áramlanak. A st
 * **Alacsony költség:** Mivel a Stream Analytics felhőszolgáltatás, arra optimalizálták, hogy a felhasználók nagyon alacsony költség mellett indíthassanak el és tarthassanak fenn valós idejű elemzési megoldásokat. A szolgáltatás használatalapú fizetést tesz lehetővé, ami a Streaming Unit-használaton és a rendszer által feldolgozott adatmennyiségen alapul. A használat számítása a feldolgozott események mennyisége, illetve a megfelelő Stream Analytics-feladatok kezelésére a fürtben kiépített számítási teljesítmény mennyisége alapján történik.  
 * **Referenciaadatok:** A Stream Analytics lehetővé teszi a referenciaadatok megadását és használatát a felhasználók számára. Ezek lehetnek előzményadatok vagy egyszerűen nem streamadatok, amelyek ritkábban változnak az idő folyamán. A rendszer a referenciaadatok használatának leegyszerűsítésével más bejövő eseménystreamekhez hasonlóan kezeli őket, így ezek más valós időben feldolgozott eseménystreamekhez csatlakoztatva átalakításokat hajthattak végre.  
 * **Felhasználó által definiált függvények:** A Stream Analytics integrálva lett az Azure Machine Learning szolgáltatással, így függvényhívásokat lehet meghatározni a Machine Learning szolgáltatásban egy Stream Analytics-lekérdezés részeként. Ez kibővíti a Stream Analytics képességeit, és képes használni az Azure Machine Learning meglévő megoldásait. Az ezzel kapcsolatos további információkért tekintse át a [Machine Learning integrációs oktatóanyagát](stream-analytics-machine-learning-integration-tutorial.md).
-* **Csatlakozás:** A Stream Analytics a közvetlen Azure Event Hubs- és Azure IoT Hub-kapcsolatokon keresztül fogadja a streameket, az Azure Blob szolgáltatás pedig előzményadatokat biztosít a számára. A Stream Analytics eredményei beírhatók az Azure Storage Blobsba vagy a Tablesbe, az Azure SQL Database-be, az Azure Data Lake Storesba, a DocumentDB-be, az Event Hubsba, az Azure Service Bus-témakörökbe vagy -üzenetsorokba és a Power BI-ba, ahol megjeleníthetők, tovább feldolgozhatók munkafolyamatokkal, felhasználhatók kötegelt elemzésekben az [Azure HDInsighton](https://azure.microsoft.com/services/hdinsight/) keresztül, vagy ismét feldolgozhatók események sorozataként. Az Event Hubs lehetővé teszi több Stream Analytics más adatforrásokkal és feldolgozórendszerekkel való összeállítását a számítások streamelő jellegének elvesztése nélkül.  
+* **Csatlakozás:** A Stream Analytics a közvetlen Azure Event Hubs- és Azure IoT Hub-kapcsolatokon keresztül fogadja a streameket, az Azure Blob szolgáltatás pedig előzményadatokat biztosít a számára. A Stream Analytics eredményei beírhatók az Azure Storage Blobsba vagy a Tablesbe, az Azure SQL Database-be, az Azure Data Lake Storesba, az Azure Cosmos DB-be, az Event Hubsba, az Azure Service Bus-témakörökbe vagy -üzenetsorokba és a Power BI-ba, ahol megjeleníthetők, tovább feldolgozhatók munkafolyamatokkal, felhasználhatók kötegelt elemzésekben az [Azure HDInsighton](https://azure.microsoft.com/services/hdinsight/) keresztül, vagy ismét feldolgozhatók események sorozataként. Az Event Hubs lehetővé teszi több Stream Analytics más adatforrásokkal és feldolgozórendszerekkel való összeállítását a számítások streamelő jellegének elvesztése nélkül.  
 
 ## <a name="get-help"></a>Segítségkérés
 További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
