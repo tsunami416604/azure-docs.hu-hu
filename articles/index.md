@@ -2,7 +2,7 @@
 layout: HubPage
 hide_bc: true
 experimental: true
-experiment_id: d6155f71-baae-45
+experiment_id: 81ba5f65-59fb-4d
 title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
 ms.translationtype: Human Translation

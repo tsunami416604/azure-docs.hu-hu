@@ -141,9 +141,9 @@
     href: web-sites-deploy.md
     items:
     - name: Üzembe helyezés FTP használatával
-      href: app-service-deploy-content-sync.md
+      href: app-service-deploy-ftp.md
     - name: Üzembe helyezés felhőalapú szinkronizálással
-      href: web-sites-deploy.md
+      href: app-service-deploy-content-sync.md
     - name: Folyamatos üzembe helyezés
       href: app-service-continuous-deployment.md
     - name: Üzembe helyezés átmeneti környezetbe
