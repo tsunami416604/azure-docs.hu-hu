@@ -76,7 +76,6 @@
 ### Elérés
 #### [Bevezetés a leküldés használatába és kezelésébe](mobile-engagement-how-tos.md)
 #### [Hangulatjelek küldése az értesítésekben](mobile-engagement-use-emoji-with-push.md)
-#### [Egyéni értesítések küldése](mobile-engagement-send-personalized-notifications.md)
 
 ### Adatelérési szolgáltatás API-k
 #### [REST](mobile-engagement-dotnet-rest-service-api.md)
@@ -145,10 +144,5 @@
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

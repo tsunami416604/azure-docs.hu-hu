@@ -30,7 +30,6 @@
 ### [C Windowson](iot-suite-connecting-devices.md)
 ### [C Linuxon](iot-suite-connecting-devices-linux.md)
 ### [Node.js](iot-suite-connecting-devices-node.md)
-## [mbed-eszköz csatlakoztatása](iot-suite-connecting-devices-mbed.md)
 ## [Logikai alkalmazás csatlakoztatása a távoli figyelési megoldáshoz](iot-suite-logic-apps-tutorial.md)
 ## [Előre konfigurált megoldás testreszabása](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
 ## [Dinamikus telemetria használata a távoli figyelési megoldással](iot-suite-dynamic-telemetry.md)

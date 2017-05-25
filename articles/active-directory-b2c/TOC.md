@@ -47,7 +47,7 @@
 ## [A felhasználói felület testreszabása](active-directory-b2c-reference-ui-customization.md)
 ### [Segédeszköz testreszabáshoz](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [Nyelvi testreszabás](active-directory-b2c-reference-language-customization.md)
-## [A jelentéskészítő API használata](active-directory-b2c-refererence-usage-reporting-api.md)
+## [A jelentéskészítő API használata](active-directory-b2c-reference-usage-reporting-api.md)
 ## [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-b2c-reference-sspr.md)
 
 # Identity Experience Framework
@@ -59,8 +59,8 @@
 ### SAML-szolgáltatók konfigurálása
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### RESTful API-k integrálása
-#### [További jogcímek beszerzése](active-directory-b2c-rest-api-step-custom.md)
 #### [Felhasználó által megadott adatok érvényesítése](active-directory-b2c-rest-api-validation-custom.md)
+#### [További jogcímek beszerzése](active-directory-b2c-rest-api-step-custom.md)
 ### Bejelentkezés testreszabása
 #### [Felhasználó által megadott adatok konfigurálása](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [Felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md)
@@ -79,7 +79,6 @@
 ## [Régiónkénti elérhetőség és az adatok tárolási helye](active-directory-b2c-reference-tenant-type.md)
 ## [Számlázás engedélyezése](active-directory-b2c-how-to-enable-billing.md)
 ## [Fenyegetések kezelése](active-directory-b2c-reference-threat-management.md)
-## [Korlátozások és megkötések](active-directory-b2c-limitations.md)
 ## [Címtárak készítésekor előforduló problémák](active-directory-b2c-support-create-directory.md)
 
 # Kapcsolódó
