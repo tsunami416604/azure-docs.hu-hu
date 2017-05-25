@@ -57,7 +57,8 @@
     href: azure-vm-network-overview.md
   - name: Virtuális gépek méretezési csoportjai
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-  - name: Példány-metaadat szolgáltatás 
+  - name: Példány-metaadat szolgáltatás
+ 
     href: ../virtual-machines-instancemetadataservice-overview.md
   - name: Tárolók
     href: containers.md
@@ -170,10 +171,7 @@
       href: update-agent.md
     - name: Biztonsági mentés a Recovery Services-zel
       href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: >-
-        RedHat virtuális gép csatlakoztatása Azure Active Directory tartományi
-        szolgáltatáshoz
-
+    - name: RedHat virtuális gép csatlakoztatása Azure Active Directory tartományi szolgáltatáshoz
       href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
   - name: Kapcsolódás az SSH-val
     items:
@@ -182,10 +180,7 @@
       items:
       - name: Részletes lépések
         href: create-ssh-keys-detailed.md
-    - name: >-
-        Az SSH-kulcsok és a Windows együttes használata Linux rendszerű virtuális
-        gépek esetében
-
+    - name: Az SSH-kulcsok és a Windows együttes használata Linux rendszerű virtuális gépek esetében
       href: ssh-from-windows.md
     - name: Távoli asztal használata Linux virtuális géphez való csatlakozáshoz
       href: use-remote-desktop.md
