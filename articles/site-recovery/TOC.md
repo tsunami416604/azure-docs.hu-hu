@@ -18,12 +18,13 @@
 
 # Útmutató
 ## Felkészülés
-### [Üzembe helyezési előfeltételek](site-recovery-prereq.md)
+### [Az Azure-replikáció előfeltételei](site-recovery-prereq.md)
 ### [Hálózati infrastruktúra tervezése](site-recovery-network-design.md)
+### [Hálózatleképezés megtervezése](site-recovery-network-mapping.md)
 ### [Kapacitás megtervezése és VMware-replikálás méretezése az Azure-hoz](site-recovery-plan-capacity-vmware.md)
 ### [Deployment Planner a VMware Azure-ba történő replikálásához](site-recovery-deployment-planner.md)
 ### [Capacity Planner Hyper-V-replikáláshoz](site-recovery-capacity-planner.md)
-### [Szerepköralapú hozzáférés-vezérlés](site-recovery-role-based-linked-access-control.md)
+### [VM-replikáció szabályozása szerepköralapú hozzáféréssel](site-recovery-role-based-linked-access-control.md)
 
 ## Konfigurálás
 ### [A forráskörnyezet beállítása](site-recovery-set-up-vmware-to-azure.md)
@@ -53,6 +54,8 @@
 ### [RDS](site-recovery-workload.md#protect-rds)
 ### [Exchange](site-recovery-workload.md#protect-exchange)
 ### [SAP](site-recovery-workload.md#protect-sap)
+### [IIS-alapú webalkalmazások](site-recovery-iis.md)
+### [Citrix XenApp és XenDesktop](site-recovery-citrix-xenapp-and-xendesktop.md)
 ### [Egyéb számítási feladatok](site-recovery-workload.md#workload-summary)
 ## Replikálás automatizálása
 ### [Hyper-V-replikáció automatizálása az Azure-ba (VMM nélkül)](site-recovery-deploy-with-powershell-resource-manager.md)

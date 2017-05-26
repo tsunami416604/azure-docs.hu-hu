@@ -35,7 +35,7 @@
 ### [Webalkalmazások és szolgáltatások részletes diagnosztikája](app-insights-devops.md)
 ### [Webalkalmazások teljesítményének monitorozása](app-insights-web-monitor-performance.md)
 ### [A fejlesztési, tesztelési és éles környezetek elkülönítése](app-insights-separate-resources.md)
-### [Alkalmazások figyelése több szerepkörrel](app-insights-monitor-multi-role-apps.md)
+### [Alkalmazások figyelése több összetevővel](app-insights-monitor-multi-role-apps.md)
 ### [Hogyan tegyem... az Application Insights szolgáltatásban?](app-insights-how-do-i.md)
 
 
@@ -139,7 +139,7 @@
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-## [REST](https://dev.applicationinsights.io/)
+## [Adathozzáférési API](https://dev.applicationinsights.io/)
 ## [Adatmodell](application-insights-data-model.md)
 ### [Kérés](application-insights-data-model-request-telemetry.md)
 ### [Függőség](application-insights-data-model-dependency-telemetry.md)
@@ -147,6 +147,7 @@
 ### [Nyomkövetés](application-insights-data-model-trace-telemetry.md)
 ### [Esemény](application-insights-data-model-event-telemetry.md)
 ### [Metrika](application-insights-data-model-metric-telemetry.md)
+### [Környezet](application-insights-data-model-context.md)
 ## [Telemetriai korreláció](application-insights-correlation.md)
 
 # Erőforrások

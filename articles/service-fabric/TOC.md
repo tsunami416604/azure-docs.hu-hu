@@ -49,6 +49,7 @@
 #### [Linux-tároló üzembe helyezése](service-fabric-deploy-container-linux.md)
 #### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
 #### [Tárolók és szolgáltatások erőforrás-szabályozása](service-fabric-resource-governance.md)
+#### [Kötet- és naplózási illesztők](service-fabric-containers-volume-logging-drivers.md)
 
 ### Reliable Services-szolgáltatás készítése
 #### [Áttekintés](service-fabric-reliable-services-introduction.md)
@@ -69,10 +70,9 @@
 ##### [C# Windowson](service-fabric-reliable-services-quick-start.md)
 ##### [Java Linuxon](service-fabric-reliable-services-quick-start-java.md)
 
-#### A Reliable Services életciklusa
-##### [Konfigurálás](service-fabric-reliable-services-configuration.md)
-##### [Értesítések küldése](service-fabric-reliable-services-notifications.md)
-##### [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
+#### [Konfigurálás](service-fabric-reliable-services-configuration.md)
+#### [Értesítések küldése](service-fabric-reliable-services-notifications.md)
+#### [Biztonsági mentés és visszaállítás](service-fabric-reliable-services-backup-restore.md)
 
 #### Kommunikáció a szolgáltatásokkal
 ##### [Kommunikáció a Reliable Services szolgáltatással](service-fabric-reliable-services-communication.md)
@@ -87,12 +87,12 @@
 ### Reliable Actors-szolgáltatás készítése
 #### [Áttekintés](service-fabric-reliable-actors-introduction.md)
 #### Alapelvek
-#### [Architektúra](service-fabric-reliable-actors-platform.md)
-#### [Életciklus-kezelés és szemétgyűjtés](service-fabric-reliable-actors-lifecycle.md)
-#### [Állapotkezelés](service-fabric-reliable-actors-state-management.md)
-#### [Polimorfizmus](service-fabric-reliable-actors-polymorphism.md)
-#### [Újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
-#### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+##### [Architektúra](service-fabric-reliable-actors-platform.md)
+##### [Életciklus-kezelés és szemétgyűjtés](service-fabric-reliable-actors-lifecycle.md)
+##### [Állapotkezelés](service-fabric-reliable-actors-state-management.md)
+##### [Polimorfizmus](service-fabric-reliable-actors-polymorphism.md)
+##### [Újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
+##### [Típusszerializáció](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
 #### Bevezetés
 ##### [C# Windowson](service-fabric-reliable-actors-get-started.md)
@@ -108,6 +108,7 @@
 #### [A szolgáltatások közötti kommunikáció](service-fabric-connect-and-communicate-with-services.md)
 #### [DNS-szolgáltatás](service-fabric-dnsservice.md)
 #### [Fordított proxy](service-fabric-reverseproxy.md)
+#### [Fordított proxy konfigurálása biztonságos kommunikációhoz](service-fabric-reverseproxy-configure-secure-communication.md)
 
 ### [Webes kezelőfelület hozzáadása](service-fabric-add-a-web-frontend.md)
 

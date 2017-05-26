@@ -55,7 +55,8 @@
     href: network-overview.md
   - name: Virtuális gépek méretezési csoportjai
     href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - name: Példány-metaadat szolgáltatás 
+  - name: Példány-metaadat szolgáltatás
+ 
     href: ../virtual-machines-instancemetadataservice-overview.md
   - name: Tárolók
     href: containers.md
@@ -370,6 +371,9 @@
         href: troubleshoot-specific-rdp-errors.md
     - name: RDP-jelszó visszaállítása
       href: reset-rdp.md
+    - name: Rendszerindítási diagnosztika
+ 
+      href: boot-diagnostics.md
     - name: Virtuális gép létrehozása
       href: troubleshoot-deployment-new-vm.md
     - name: Virtuális gép újraindítása vagy átméretezése
@@ -380,6 +384,8 @@
       href: allocation-failure.md
     - name: Virtuális gép ismételt üzembe helyezése
       href: redeploy-to-new-node.md
+    - name: Gyakori hibaüzenetek
+      href: error-messages.md
     - name: Virtuális merevlemez csatlakoztatása a hibaelhárító virtuális géphez
       items:
       - name: Azure PowerShell

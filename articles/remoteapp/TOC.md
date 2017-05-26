@@ -24,6 +24,8 @@
 
 # Útmutató
 
+## [Felhasználói adatok áttelepítése az Azure RemoteApp-ből](remoteapp-migrate.md)
+## [Áttelepítés a Citrix XenApp Essentials rendszerbe](remoteapp-migrate-citrix.md)
 ## RemoteApp-gyűjtemény létrehozása
 ### [Melyik gyűjteményre van szüksége?](remoteapp-collections.md)
 ### [Felhőalapú gyűjtemény létrehozása](remoteapp-create-cloud-deployment.md)
@@ -69,8 +71,3 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/remoteapp/)
 ## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)
-
-
-<!--HONumber=Nov16_HO4-->
-
-

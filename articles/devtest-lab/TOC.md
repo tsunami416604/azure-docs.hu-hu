@@ -13,6 +13,7 @@
 ## Virtuális gépek használata tesztkörnyezetben
 ### [Virtuális gépek létrehozása](devtest-lab-add-vm.md)
 ### [Igényelhető virtuális gép létrehozása](devtest-lab-add-claimable-vm.md)
+### [Virtuális gépek létrehozása és kezelése az Azure parancssori felülettel](devtest-lab-vmcli.md)
 
 ## Környezetek használata tesztkörnyezetben
 ### [Környezet létrehozása](devtest-lab-create-environment-from-arm.md)

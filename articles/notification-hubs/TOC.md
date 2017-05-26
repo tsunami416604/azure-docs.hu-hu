@@ -44,6 +44,7 @@
 
 ## Kezelés
 ### [Regisztrációk](notification-hubs-push-notification-registration-management.md)
+### [APNS tokenalapú hitelesítés](notification-hubs-push-notification-http2-token-authentification.md)
 
 ## [Biztonságos](notification-hubs-push-notification-security.md)
 ### Biztonságos leküldés

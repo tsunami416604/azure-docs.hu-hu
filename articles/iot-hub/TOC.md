@@ -12,9 +12,9 @@
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
-### Szimulált átjáró használata 
-#### [Szimuláció Linux rendszeren](iot-hub-linux-gateway-sdk-get-started.md)
-#### [Szimuláció Windows rendszeren](iot-hub-windows-gateway-sdk-get-started.md)
+### Szimulált átjáró használata
+#### [Szimuláció Linux rendszeren](iot-hub-linux-iot-edge-get-started.md)
+#### [Szimuláció Windows rendszeren](iot-hub-windows-iot-edge-get-started.md)
 
 ### Fizikai eszköz használata
 #### [Raspberry Pi és Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
@@ -28,9 +28,9 @@
 #### [Adafruit Feather M0 és Arduino IDE](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
 #### Az IoT Gateway Starter Kit használata
-##### [Az Intel NUC beállítása IoT-átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-##### [Az IoT Hub és az IoT-átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-##### [Az IoT-átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+##### [Az Intel NUC beállítása átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
+##### [Az IoT Hub és az átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+##### [Az átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
 ## [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
 ## [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
@@ -78,6 +78,7 @@
 ### Ikereszközök – első lépések
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-getstarted.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-getstarted.md)
+#### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-getstarted.md)
 ### Közvetlen metódusok használata
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-direct-methods.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-direct-methods.md)
@@ -85,6 +86,7 @@
 ### Ismerkedés az eszközfelügyelettel
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-device-management-get-started.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-device-management-get-started.md)
+#### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-device-management-getstarted.md)
 ### Az ikertulajdonságok használata
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-how-to-configure.md)
@@ -118,9 +120,9 @@
 ### [Az IoT-környezet biztonságossá tétele](iot-hub-security-deployment.md)
 ## IoT Edge
 ### Eszköz szimulálása
-#### [Linux](iot-hub-linux-gateway-sdk-simulated-device.md)
-#### [Windows](iot-hub-windows-gateway-sdk-simulated-device.md)
-### [Valós eszköz használata](iot-hub-gateway-sdk-physical-device.md)
+#### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
+#### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
+### [Valós eszköz használata](iot-hub-iot-edge-physical-device.md)
 
 # Referencia
 ## [Azure CLI 2.0 előzetes verzió](/cli/azure/iot)
@@ -154,3 +156,4 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT fejlesztői központ](https://azure.microsoft.com/develop/iot/)
 ## [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/)
+## [Műszaki esettanulmányok](https://microsoft.github.io/techcasestudies/#technology=IoT)

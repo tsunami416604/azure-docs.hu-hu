@@ -17,17 +17,13 @@
 ### [Hálózati biztonsági csoportok](virtual-networks-nsg.md)
 
 ## Üzembe helyezés
-### Virtuális hálózatok (VNetek)
-#### [VNetek létrehozása, módosítása vagy törlése](virtual-network-manage-network.md)
-#### [Alhálózatok létrehozása, módosítása vagy törlése](virtual-network-manage-subnet.md)
-#### [VNet létrehozása – több alhálózat](virtual-networks-create-vnet-arm-pportal.md) 
-##### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-##### [Parancssori felület](virtual-networks-create-vnet-arm-cli.md)
-##### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
-#### VNet létrehozása – több alhálózat (klasszikus)
-##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
-##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
-##### [Parancssori felület](virtual-networks-create-vnet-classic-cli.md)
+### [Virtuális hálózatok](virtual-networks-create-vnet-arm-pportal.md)
+#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
+#### [Parancssori felület](virtual-networks-create-vnet-arm-cli.md)
+#### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
+#### [Portál (klasszikus)](virtual-networks-create-vnet-classic-pportal.md)
+#### [PowerShell (klasszikus)](virtual-networks-create-vnet-classic-netcfg-ps.md)
+#### [Parancssori felület (klasszikus)](virtual-networks-create-vnet-classic-cli.md)
 
 ### Network security groups (Hálózati biztonsági csoportok)
 #### [Portál](virtual-networks-create-nsg-arm-pportal.md)
@@ -49,14 +45,9 @@
 #### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
 #### [Sablon](virtual-networks-create-vnetpeering-arm-template-click.md)
 
-### Hálózati adapterek (NIC-k)
-#### [Hálózati adapterek létrehozása, módosítása vagy törlése](virtual-network-network-interface.md)
-#### [IP-címek hozzáadása, szerkesztése vagy eltávolítása](virtual-network-network-interface-addresses.md)
-
 ### [Nyilvános IP-címek](virtual-network-public-ip-address.md)
 
 ### Virtual machines (Virtuális gépek)
-#### [Hálózati adapterek hozzáadása vagy eltávolítása](virtual-network-network-interface-vm.md) 
 #### Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása
 ##### [Portal](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
@@ -103,20 +94,29 @@
 ##### [Mintaalkalmazás](virtual-networks-sample-app.md)
 
 ## Konfigurálás
-### [Virtuálisgép-hálózat teljesítményének optimalizálása](virtual-network-optimize-network-bandwidth.md)
+
 ### Hozzáférés-vezérlési listák
 #### [Klasszikus portál](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
-### [A virtuális gépek és felhőszolgáltatások névfeloldása](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+### Virtual machines (Virtuális gépek)
+#### [Hálózati adapterek hozzáadása vagy eltávolítása](virtual-network-network-interface-vm.md)
+#### [A virtuális gépek és felhőszolgáltatások névfeloldása](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+#### [Hálózati teljesítmény optimalizálása](virtual-network-optimize-network-bandwidth.md)
+#### [Gazdagépnevek megtekintése és módosítása](virtual-networks-viewing-and-modifying-hostnames.md)
 
 ## Kezelés
+### [Virtuális hálózatok](virtual-network-manage-network.md)
+#### [Alhálózatok](virtual-network-manage-subnet.md)
+#### [Társviszonyok](virtual-network-manage-peering.md)
 ### Network security groups (Hálózati biztonsági csoportok)
 #### [Portál](virtual-network-manage-nsg-arm-portal.md)
 #### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [Parancssori felület](virtual-network-manage-nsg-arm-cli.md)
 #### [Naplók](virtual-network-nsg-manage-log.md)
+### Hálózati adapterek (NIC-k)
+#### [Hálózati adapterek létrehozása, módosítása vagy törlése](virtual-network-network-interface.md)
+#### [IP-címek hozzáadása, szerkesztése vagy eltávolítása](virtual-network-network-interface-addresses.md)
 ### Virtual machines (Virtuális gépek)
-#### [Gazdagépnevek megtekintése és módosítása](virtual-networks-viewing-and-modifying-hostnames.md)
 #### [Virtuális gép áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md)
 
 ## Hibaelhárítás

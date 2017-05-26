@@ -117,6 +117,7 @@
 #### [Java](storage-client-side-encryption-java.md)
 #### [Python](storage-client-side-encryption-python.md)
 ## Figyelés és hibaelhárítás
+### [A Storage Explorer hibaelhárítása](storage-explorer-troubleshooting.md)
 ### Metrikák és naplózás
 #### [Storage Analytics](storage-analytics.md)
 #### [Metrikák engedélyezése és megtekintése](storage-enable-and-view-metrics.md)

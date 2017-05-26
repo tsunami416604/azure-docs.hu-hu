@@ -39,9 +39,9 @@
       href: concepts-supported-versions.md
   - name: Erőforrások
     items:
-    - name: Szolgáltatásszintek
+    - name: Árképzési szintek
       href: concepts-service-tiers.md
-    - name: Számítási és tárolási egységek
+    - name: Számítási egységek
       href: concepts-compute-unit-and-storage.md
     - name: Korlátok
       href: concepts-limits.md
@@ -85,6 +85,8 @@
       href: howto-connection-string.md
     - name: Az SSL konfigurálása
       href: howto-configure-ssl.md
+    - name: Webalkalmazás
+      href: howto-connect-webapp.md
 - name: Referencia
   items:
   - name: Azure CLI

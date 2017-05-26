@@ -297,6 +297,8 @@
       href: extensions-customscript.md
     - name: OMS-ügynök bővítmény
       href: extensions-oms.md
+    - name: Linux diagnosztikai bővítmény
+      href: diagnostic-extension.md
   - name: Alkalmazások futtatása
     items:
     - name: Cloud Foundry
@@ -354,19 +356,24 @@
       href: migration-classic-resource-manager-faq.md
   - name: Hibaelhárítás
     items:
-    - name: SSH-kapcsolatok hibaelhárítása
+    - name: SSH-kapcsolatok
       href: troubleshoot-ssh-connection.md
       items:
       - name: Részletes hibaelhárítási útmutató
         href: detailed-troubleshoot-ssh-connection.md
-    - name: Alkalmazásokhoz való hozzáférés hibaelhárítása
+    - name: Rendszerindítási diagnosztika
+ 
+      href: boot-diagnostics.md
+    - name: Hozzáférés az alkalmazásokhoz
       href: troubleshoot-app-connection.md
-    - name: Foglalási hibák elhárítása
+    - name: Foglalási hibák
       href: allocation-failure.md
-    - name: Üzembe helyezési problémák elhárítása
+    - name: Üzembe helyezési problémák
       href: troubleshoot-deployment-new-vm.md
     - name: Virtuális üzembe helyezése egy új Azure csomópontra
       href: redeploy-to-new-node.md
+    - name: Gyakori hibaüzenetek
+      href: error-messages.md
     - name: Virtuális merevlemez csatlakoztatása hibaelhárítás céljából
       items:
       - name: Azure CLI

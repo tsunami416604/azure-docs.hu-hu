@@ -1,7 +1,7 @@
 # Áttekintés
 ## [Mi az az Azure Active Directory?](active-directory-whatis.md)
 ## [Kiadás kiválasztása](active-directory-editions.md)
-## [Tudnivalók az Azure-identitáskezelésről](fundamentals-identity.md)
+## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
 ## [Az Azure identitáskezelési megoldásainak ismertetése](understand-azure-identity-solutions.md)
 ## [Az Azure Portal felületének előzetese](active-directory-preview-explainer.md)
 
@@ -90,7 +90,7 @@
 ### Hibaelhárítás
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
-###    Szoftveres hozzáférés
+###    [Szoftveres hozzáférés](active-directory-reporting-api-getting-started-azure-portal.md)
 #### [Naplózási referencia](active-directory-reporting-api-audit-reference.md)
 #### [Bejelentkezési referencia](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [Előfeltételek](active-directory-reporting-api-prerequisites-azure-portal.md)
@@ -115,7 +115,7 @@
 ##### [Ismeretlen források](active-directory-reporting-sign-ins-from-unknown-sources.md)
 ##### [Rendellenes bejelentkezések](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
-## [Jelszavak kezelése](active-directory-passwords.md)
+## [Jelszavak kezelése](active-directory-passwords-overview.md)
 ### Felhasználói dokumentumok
 #### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
 #### [Ajánlott eljárások a jelszavakhoz](active-directory-secure-passwords.md)
@@ -298,6 +298,7 @@
 ##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
 ##### [REST](role-based-access-control-manage-access-rest.md)
+#### [Bérlői rendszergazda hozzáférési szintjének emelése](role-based-access-control-tenant-admin-access.md)
 #### [Hibaelhárítás](role-based-access-control-troubleshooting.md)
 #### [Erőforrás-szolgáltatói műveletek](role-based-access-control-resource-provider-operations.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)

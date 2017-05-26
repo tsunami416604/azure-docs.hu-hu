@@ -45,12 +45,22 @@
     href: functions-create-serverless-api.md
 - name: Alapelvek
   items:
-  - name: Futtatási tervek
+  - name: Használat és App Service-csomagok
     href: functions-scale.md
   - name: Eseményindítók és kötések
     href: functions-triggers-bindings.md
+  - name: Nyelvek
+    items:
+    - name: 'C#-függvények alapelvei'
+      href: functions-reference-csharp.md
+    - name: 'F#-függvények alapelvei'
+      href: functions-reference-fsharp.md
+    - name: JavaScript-függvények alapelvei
+      href: functions-reference-node.md    
 - name: Útmutatók
   items:
+  - name: Fejlesztői útmutató
+    href: functions-reference.md
   - name: Az Azure Functions tesztelése
     href: functions-test-a-function.md
   - name: Helyi fejlesztés és hibakeresés
@@ -65,15 +75,14 @@
     href: functions-monitoring.md
   - name: A Functions futtatókörnyezetének telepítése
     href: functions-runtime-install.md
+  - name: Csatlakozás SQL Database-adatbázishoz
+    href: functions-scenario-database-table-cleanup.md
+  - name: Open API 2.0-definíció létrehozása
+    href: functions-api-definition-getting-started.md     
+  - name: Azure Functions – ajánlott eljárások
+    href: functions-best-practices.md     
 - name: Referencia
   items:
-  - name: Függvényalkalmazások fejlesztése
-    href: functions-reference.md
-    items:
-    - name: Az API 2.0 megnyitása
-      href: functions-api-definition.md
-  - name: Azure Functions – ajánlott eljárások
-    href: functions-best-practices.md
   - name: Kötések
     items:
     - name: Cosmos DB-kötések
@@ -106,14 +115,8 @@
       href: functions-bindings-timer.md
     - name: Twilio kimeneti kötés
       href: functions-bindings-twilio.md
-  - name: Keretrendszerek
-    items:
-    - name: 'C#'
-      href: functions-reference-csharp.md
-    - name: 'F#'
-      href: functions-reference-fsharp.md
-    - name: JavaScript
-      href: functions-reference-node.md
+  - name: OpenAPI-dokumentáció
+    href: functions-api-definition.md     
 - name: Erőforrások
   items:
   - name: Díjszabás
