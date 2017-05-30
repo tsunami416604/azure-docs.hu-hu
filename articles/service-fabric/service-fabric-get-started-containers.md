@@ -111,7 +111,7 @@ Ellenőrizze helyben a rendszerkép működését, mielőtt leküldené azt a t�
     docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
     ```
 
-3. Csatlakozzon a futó tárolóhoz.  Nyisson meg egy webböngészőt, majd a 8000-es porton visszaadott IP-címet, például „http://172.31.194.61:8000”. A „Hello World!” címsornak kell megjelennie a böngészőben.
+3. Csatlakozzon a futó tárolóhoz.  Nyisson meg egy webböngészőt, majd a 8000-es porton visszaadott IP-címet, például „ http://172.31.194.61:8000 ”. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 4. A tároló leállításához futtassa a következő parancsot:
 
