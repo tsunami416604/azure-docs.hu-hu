@@ -3,7 +3,7 @@ title: "SQL-adatraktár adatainak megjelenítése Power BI használatával |Micr
 description: "SQL-adatraktár adatainak megjelenítése Power BI használatával"
 services: sql-data-warehouse
 documentationcenter: NA
-author: barbkess
+author: mlee3gsd
 manager: jhubbard
 editor: 
 ms.assetid: d7fb89d1-da1d-4788-a111-68d0e3fda799
