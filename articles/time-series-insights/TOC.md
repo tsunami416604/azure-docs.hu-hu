@@ -12,7 +12,9 @@
 ## [IoT Hub-eseményforrás létrehozása](time-series-insights-how-to-add-an-event-source-iothub.md)
 ## [A környezet méretezése](time-series-insights-how-to-scale-your-environment.md)
 ## [Problémák diagnosztizálása és megoldása](time-series-insights-diagnose-and-solve-problems.md)
-## [Adatok lekérdezése a C# használatával](time-series-insights-query-data-csharp.md)
+## Fejlesztés
+### [Hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)
+### [Adatok lekérdezése a C# használatával](time-series-insights-query-data-csharp.md)
 
 # Referencia
 ## [Lekérdezés API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)

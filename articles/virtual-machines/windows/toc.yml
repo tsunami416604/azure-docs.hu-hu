@@ -130,6 +130,8 @@
     items:
     - name: A virtuális gépek létrehozásának áttekintése
       href: creation-choices.md
+    - name: Virtuális gép létrehozása specializált virtuális merevlemezből
+      href: create-vm-specialized.md
     - name: Virtuális gép létrehozása sablon alapján
       href: ps-template.md
     - name: 'Virtuális gép létrehozása C# használatával'
@@ -215,20 +217,6 @@
       href: expand-data-disks.md
     - name: A D meghajtó használata adatlemezként
       href: change-drive-letter.md
-    - name: Virtuális gépek létrehozása nem felügyelt lemezek használatával
-      items:
-      - name: VHD feltöltése
-        href: upload-image.md
-      - name: Nem felügyelt rendszerkép létrehozása
-        href: capture-image.md
-      - name: Nem felügyelt virtuális gép létrehozása általános virtuális merevlemezből
-        href: create-vm-generalized.md
-      - name: Virtuális gép másolása
-        href: vhd-copy.md
-      - name: Virtuális gép létrehozása specializált virtuális merevlemezből
-        href: create-vm-specialized.md
-      - name: Nem felügyelt adatlemez csatolása
-        href: attach-disk-portal.md
   - name: Virtuális gépek hálózatkezelése
     href: ps-common-network-ref.md
     items:
@@ -341,10 +329,8 @@
       items:
       - name: Áttelepítés Amazon Web Servicesből (AWS) Azure-ba
         href: aws-to-azure.md
-    - name: Virtuális gép feltöltése és létrehozása általánosított virtuális merevlemezből
-      href: upload-generalized-managed.md
-    - name: Virtuális gép feltöltése és létrehozása speciális virtuális merevlemezből
-      href: upload-specialized.md
+      - name: Virtuális gép feltöltése és létrehozása általánosított virtuális merevlemezből
+        href: upload-generalized-managed.md
     - name: Áttelepítés a klasszikusból Azure Resource Manager-alapú környezetbe
       href: migration-classic-resource-manager-overview.md
       items:

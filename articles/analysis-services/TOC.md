@@ -1,5 +1,6 @@
 # Áttekintés
 ## [Mi az Azure Analysis Services?](analysis-services-overview.md)
+## [Támogatott adatforrások](analysis-services-datasource.md)
 
 # Gyors útmutatók
 ## [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md)
@@ -17,7 +18,7 @@
 ### [6. lecke: Mértékek létrehozása](tutorials/aas-lesson-6-create-measures.md)  
 ### [7. lecke: Fő teljesítménymutatók létrehozása](tutorials/aas-lesson-7-create-key-performance-indicators.md)  
 ### [8. lecke: Perspektívák létrehozása](tutorials/aas-lesson-8-create-perspectives.md) 
-### [9. lecke: Hierarchiák létrehozása](tutorials/aas-lesson-9-create-hierarchies.md)  
+### [9. lecke: Hierarchiák létrehozása](tutorials/aas-lesson-9-create-hierarchies.md) 
 ### [10. lecke: Partíciók létrehozása](tutorials/aas-lesson-10-create-partitions.md) 
 ### [11. lecke: Szerepkörök létrehozása](tutorials/aas-lesson-11-create-roles.md)
 ### [12. lecke: Elemzés az Excelben](tutorials/aas-lesson-12-analyze-in-excel.md)
@@ -36,7 +37,6 @@
 ## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
 ## [Magas rendelkezésre állás](analysis-services-bcdr.md)
-## [Adatforrás-kapcsolatok](analysis-services-datasource.md)
 ## [.odc fájl létrehozása](analysis-services-odc.md)
 
 # Referencia

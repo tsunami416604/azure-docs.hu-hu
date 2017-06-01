@@ -11,7 +11,7 @@
 ## [Ajánlott eljárások](sql-data-warehouse-best-practices.md)
 ## [Kezelés](sql-data-warehouse-overview-manage.md)
 ## [Támogatás kérése](sql-data-warehouse-get-started-create-support-ticket.md)
-## [Hibaelhárítás](sql-data-warehouse-troubleshoot.md)
+
 
 # Útmutató
 
@@ -114,7 +114,7 @@
 
 ### [Áttekintés](sql-data-warehouse-overview-manage-user-queries.md)
 ### [Oszlopcentrikus tömörítés](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
-### [Lekérdezések](sql-data-warehouse-manage-monitor.md)
+### [Figyelés](sql-data-warehouse-manage-monitor.md)
 ### [Számítási feladat](sql-data-warehouse-develop-concurrency.md)
 
 ## Biztonság
@@ -126,6 +126,9 @@
 ### [Titkosítás](sql-data-warehouse-encryption-tde.md)
 ### [Titkosítás T-SQL-lel](sql-data-warehouse-encryption-tde-tsql.md)
 ### [Fenyegetések észlelése](sql-data-warehouse-security-threat-detection.md)
+
+## Hibaelhárítás
+### [Hibaelhárítás](sql-data-warehouse-troubleshoot.md)
 
 # Referencia
 

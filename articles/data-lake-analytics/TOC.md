@@ -2,7 +2,6 @@
 ## [A Data Lake Analytics ismertetése](data-lake-analytics-overview.md)
 
 # Bevezetés
-## [Interaktív oktatóanyag: Webhelynaplók elemzése](data-lake-analytics-use-interactive-tutorials.md)
 ## [Azure Portal](data-lake-analytics-get-started-portal.md)
 ## [PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [.NET SDK](data-lake-analytics-get-started-net-sdk.md)
@@ -27,6 +26,8 @@
 
 ## Megoldások létrehozása
 ### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)
+### [Interaktív oktatóanyag: Webhelynaplók elemzése](data-lake-analytics-use-interactive-tutorials.md)
+
 
 ## Kezelés
 ### [Azure Portal](data-lake-analytics-manage-use-portal.md)

@@ -11,10 +11,12 @@
     href: quickstart-create-server-database-portal.md
   - name: DB létrehozása – Azure CLI
     href: quickstart-create-server-database-azure-cli.md
-- name: Mintaszkriptek
-  items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
+  - name: Kapcsolódás
+    items:
+    - name: Node.js
+      href: connect-nodejs.md
+    - name: Python
+      href: connect-python.md
 - name: oktatóanyagokat
   items:
   - name: 1 – Adatbázis-tervezés
@@ -55,6 +57,10 @@
     items:
     - name: Adatkapcsolattárak
       href: concepts-connection-libraries.md
+- name: Példák
+  items:
+  - name: Azure CLI
+    href: sample-scripts-azure-cli.md
 - name: Útmutatók
   items:
   - name: Tűzfalszabályok

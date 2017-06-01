@@ -64,7 +64,6 @@
 #### [Portal](resource-group-create-service-principal-portal.md)
 ### [Hitelesítési API az előfizetések hozzáféréséhez](resource-manager-api-authentication.md)
 ### [Erőforrások zárolása](resource-group-lock-resources.md)
-### [Biztonsági szempontok](best-practices-resource-manager-security.md)
 
 ## Erőforrás-házirendek beállítása
 ### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
