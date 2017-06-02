@@ -11,6 +11,7 @@
 ## [Fürt üzembe helyezése – Azure CLI](container-service-create-acs-cluster-cli.md)
 ## [CI/CD – Kubernetes és Jenkins](container-service-kubernetes-jenkins.md)
 ## [CI/CD – Docker Swarm és VSTS](container-service-docker-swarm-setup-ci-cd.md)
+## [CI/CD – Docker Swarm üzemmód és VSTS az ACS Engine használatával](container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md)
 
 # Alapelvek
 ## [Biztonságos tárolók](container-service-security.md)

@@ -12,10 +12,6 @@
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
-### Szimulált átjáró használata
-#### [Szimuláció Linux rendszeren](iot-hub-linux-iot-edge-get-started.md)
-#### [Szimuláció Windows rendszeren](iot-hub-windows-iot-edge-get-started.md)
-
 ### Fizikai eszköz használata
 #### [Raspberry Pi és Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [Raspberry Pi és C](iot-hub-raspberry-pi-kit-c-get-started.md)
@@ -31,6 +27,8 @@
 ##### [Az Intel NUC beállítása átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 ##### [Az IoT Hub és az átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [Az átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+
+### [Online eszközszimulátor használata](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
 ## [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
 ## [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
@@ -48,15 +46,21 @@
 ### [További protokollok támogatása](iot-hub-protocol-gateway.md)
 ## [Fejlesztés](iot-hub-how-to.md)
 ### [Fejlesztői útmutató](iot-hub-devguide.md)
-#### [Üzenetek küldése és fogadása](iot-hub-devguide-messaging.md)
 #### [Eszközről a felhőbe – funkcióismertető](iot-hub-devguide-d2c-guidance.md)
 #### [Felhőről az eszközre – funkcióismertető](iot-hub-devguide-c2d-guidance.md)
+#### [Üzenetek küldése és fogadása](iot-hub-devguide-messaging.md)
+##### [Az eszközről a felhőbe irányuló üzenetek küldése az IoT Hubra](iot-hub-devguide-messages-d2c.md)
+##### [Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról](iot-hub-devguide-messages-read-builtin.md)
+##### [Egyéni végpontok és útválasztási szabályok használata az eszközről a felhőbe irányuló üzenetekhez](iot-hub-devguide-messages-read-custom.md)
+##### [A felhőből az eszközökre irányuló üzenetek küldése az IoT Hubról](iot-hub-devguide-messages-c2d.md)
+##### [IoT Hub-üzenetek létrehozása és olvasása](iot-hub-devguide-messages-construct.md)
 #### [Fájlok feltöltése eszközökről](iot-hub-devguide-file-upload.md)
 #### [Eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)
 #### [IoT Hub-hozzáférés szabályozása](iot-hub-devguide-security.md)
 #### [Az ikereszközök áttekintése](iot-hub-devguide-device-twins.md)
 #### [Közvetlen metódusok meghívása eszközökön](iot-hub-devguide-direct-methods.md)
 #### [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
+#### [Kommunikációs protokoll kiválasztása](iot-hub-devguide-protocols.md)
 #### [IoT Hub-végpontok](iot-hub-devguide-endpoints.md)
 #### [Lekérdezés nyelve](iot-hub-devguide-query-language.md)
 #### [Kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md)
@@ -119,18 +123,22 @@
 ### [Biztonsági architektúra](iot-hub-security-architecture.md)
 ### [Az IoT-környezet biztonságossá tétele](iot-hub-security-deployment.md)
 ## IoT Edge
+### Bevezetés
+#### [Linux](iot-hub-linux-iot-edge-get-started.md)
+#### [Windows](iot-hub-windows-iot-edge-get-started.md)
 ### Eszköz szimulálása
 #### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
 #### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
 ### [Valós eszköz használata](iot-hub-iot-edge-physical-device.md)
 
 # Referencia
-## [Azure CLI 2.0 előzetes verzió](/cli/azure/iot)
+## [Azure CLI 2.0](/cli/azure/iot)
 ## [.NET (Szolgáltatás)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (Eszközök)](/dotnet/api/microsoft.azure.devices.client)
 ## [Java (Szolgáltatás)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (Eszközök)](/java/api/com.microsoft.azure.sdk.iot.device)
-## [Azure IoT SDK-k](http://azure.github.io/azure-iot-sdks/)
+## [Node.js SDK-k](http://azure.github.io/azure-iot-sdk-node/)
+## [C eszköz SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (Erőforrás-szolgáltató)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
 ## [REST (Eszközidentitások)](https://docs.microsoft.com/rest/api/iothub/deviceapi)

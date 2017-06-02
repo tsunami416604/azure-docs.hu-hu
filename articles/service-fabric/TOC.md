@@ -235,25 +235,27 @@
 
 ### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
 
-## Az alkalmazás és a fürt állapotának vizsgálata
-### [A Service Fabric állapotának figyelése](service-fabric-health-introduction.md)
-### [Szolgáltatásállapot jelentése és ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-### [Egyéni állapotjelentések hozzáadása](service-fabric-report-health.md)
-### [Hibaelhárítás rendszerállapot-jelentések segítségével](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-### [Állapotjelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
-
 ## Megfigyelés és diagnosztika
 ### [Alkalmazások figyelése és diagnosztikája](service-fabric-diagnostics-overview.md)
-### A szolgáltatások helyi figyelése és diagnosztikája
-#### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
-#### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
-### Azure Diagnostics-naplók
-#### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
-#### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
-### [Naplók lekérdezése egy szolgáltatási folyamatból](service-fabric-diagnostic-collect-logs-without-an-agent.md)
-### [Windows Server-tárolók figyelése](service-fabric-diagnostics-containers-windowsserver.md)
-### [A Stateful Reliable Services diagnosztikai funkciói](service-fabric-reliable-services-diagnostics.md)
-### [Reliable Actors-diagnosztika](service-fabric-reliable-actors-diagnostics.md)
+### Események létrehozása
+#### [Infrastruktúra-szintű események előállítása](service-fabric-diagnostics-event-generation-infra.md)
+##### [A Reliable Services eseményei](service-fabric-reliable-services-diagnostics.md)
+##### [A Reliable Actors eseményei](service-fabric-reliable-actors-diagnostics.md)
+#### [Alkalmazásszintű események létrehozása](service-fabric-diagnostics-event-generation-app.md)
+### Az alkalmazás és a fürt állapotának vizsgálata
+#### [A Service Fabric állapotának figyelése](service-fabric-health-introduction.md)
+#### [Szolgáltatásállapot jelentése és ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+#### [Egyéni állapotjelentések hozzáadása](service-fabric-report-health.md)
+#### [Hibaelhárítás rendszerállapot-jelentések segítségével](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+#### [Állapotjelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
+### Események összesítése
+#### [Események összesítése az EventFlow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md)
+#### Események összesítése az Azure Diagnostics segítségével
+##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
+##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
+### Események elemzése
+#### [Események elemzése az Application Insights segítségével](service-fabric-diagnostics-event-analysis-appinsights.md)
+#### [Események elemzése az OMS szolgáltatással](service-fabric-diagnostics-event-analysis-oms.md)
 ### [A helyi fürt hibaelhárítása](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # Referencia

@@ -2,6 +2,7 @@
 ## [Információk az Azure DevTest Labs szolgáltatásról](devtest-lab-overview.md)
 ## [Alapelvek](devtest-lab-concepts.md)
 ## Forgatókönyvek
+### [Tesztkörnyezetek használata fejlesztőknek](devtest-lab-developer-lab.md)
 ### [Tesztkörnyezetek használata képzéshez](devtest-lab-training-lab.md)
 
 # Bevezetés

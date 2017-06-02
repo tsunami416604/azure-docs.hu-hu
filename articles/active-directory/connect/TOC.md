@@ -32,6 +32,7 @@
 ### [Felhasználói bejelentkezési lehetőségek](active-directory-aadconnect-user-signin.md)
 ### [Többtartományos támogatás összevonási szolgáltatásokhoz](active-directory-aadconnect-multiple-domains.md)
 ### [Automatikus frissítés](active-directory-aadconnect-feature-automatic-upgrade.md)
+### [SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez](active-directory-aadconnect-federation-saml-idp.md)
 
 
 

@@ -1,6 +1,7 @@
 # Áttekintés
 ## [Az Azure-hálózat bemutatása](networking-overview.md)
 ## Architektúra
+### [Virtuális adatközpontok](networking-virtual-datacenter.md)
 ### [Aszimmetrikus útválasztás több hálózati útvonallal](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Biztonságos hálózatkialakítások](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Küllős topológia](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
@@ -44,6 +45,7 @@
 ### [Virtuális gép IP-forgalmának ellenőrzése](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## Mintaszkriptek
 ### [Azure CLI](cli-samples.md)
+### [PowerShell](powershell-samples.md)
 ## oktatóanyagokat
 ### [Virtuális gépek terheléselosztása](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Számítógép csatlakoztatása egy virtuális hálózathoz](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)

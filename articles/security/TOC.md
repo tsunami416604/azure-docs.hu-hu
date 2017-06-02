@@ -10,6 +10,7 @@
 ### [Fejlett fenyegetésészlelés](azure-threat-detection.md)
 ### [Naplózás](azure-log-audit.md)
 ### [Elkülönítés a nyilvános felhőben](azure-isolation.md)
+### [Biztonságtechnikai képességek](azure-security-technical-capabilities.md)
 
 # Első lépések
 ## [Ismerkedés az Azure biztonsági szolgáltatásaival](azure-security-getting-started.md)
@@ -18,6 +19,7 @@
 
 ## Hálózati biztonság
 ### [Ajánlott hálózati biztonsági eljárások](azure-security-network-security-best-practices.md)
+###[Azure hálózati biztonság](azure-network-security.md)
 ### [Határbiztonság](../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Biztonságos hibrid hálózati architektúra](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md?toc=%2fazure%2fsecurity%2ftoc.json)
 

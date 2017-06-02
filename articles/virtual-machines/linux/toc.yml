@@ -140,6 +140,14 @@
       href: move-vm.md
     - name: Magas rendelkezésre állású virtuális gépek létrehozása
       href: create-cli-complete.md
+    - name: Ansible
+      items:
+      - name: Telepítés és konfigurálás
+        href: ansible-install-configure.md
+      - name: Alapszintű virtuális gép létrehozása
+        href: ansible-create-vm.md
+      - name: Teljes virtuális gép létrehozása
+        href: ansible-create-complete-vm.md
     - name: Alkalmazás üzembe helyezése virtuálisgép-sablon használatával
       items:
       - name: Az oktatóanyag áttekintése
@@ -194,7 +202,7 @@
       href: upload-vhd.md
     - name: Meglévő virtuális gép rögzítése rendszerképben
       href: capture-image.md
-    - name: Azure által támogatott rendszerképek létrehozása
+    - name: Azure-rendszerképek létrehozása
       items:
       - name: Ubuntu
         href: create-upload-ubuntu.md
@@ -206,6 +214,8 @@
         href: create-upload-centos.md
       - name: Oracle Linux
         href: oracle-create-upload-vhd.md
+      - name: OpenBSD
+        href: create-upload-openbsd.md
   - name: Virtuális gép tárolójának kezelése
     items:
     - name: Azure Managed Disks

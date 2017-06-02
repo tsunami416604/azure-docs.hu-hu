@@ -60,9 +60,9 @@
   - name: 2 – Importálás
     items:
     - name: DocumentDB
-      href: ../documentdb/documentdb-import-data.md
+      href: import-data.md
     - name: MongoDB
-      href: ../documentdb/documentdb-mongodb-migrate.md
+      href: mongodb-migrate.md
   - name: 3 – Lekérdezés
     items:
     - name: DocumentDB
@@ -86,9 +86,9 @@
   - name: 5 – Helyi fejlesztés
     items:
     - name: Az emulátor használata
-      href: ../documentdb/documentdb-nosql-local-emulator.md
+      href: local-emulator.md
     - name: Tanúsítványok exportálása
-      href: ../documentdb/documentdb-nosql-local-emulator-export-ssl-certificates.md
+      href: local-emulator-export-ssl-certificates.md
 - name: Példák
   items:
   - name: Azure CLI 2.0
@@ -98,32 +98,35 @@
 - name: Alapelvek
   items:
   - name: Globális terjesztés
-    href: ../documentdb/documentdb-distribute-data-globally.md
+    href: distribute-data-globally.md
   - name: Particionálás
     href: partition-data.md
   - name: Konzisztencia
-    href: ../documentdb/documentdb-consistency-levels.md
+    href: consistency-levels.md
   - name: Teljesítmény
-    href: ../documentdb/documentdb-request-units.md
+    href: request-units.md
     items:
     - name: Kérelemegységek percenként
       href: request-units-per-minute.md
   - name: Többmodelles API-k
     items:
     - name: DocumentDB
-      href: ../documentdb/documentdb-introduction.md
+      href: documentdb-introduction.md
     - name: MongoDB
-      href: ../documentdb/documentdb-protocol-mongodb.md
+      href: mongodb-introduction.md
     - name: Tábla
       href: table-introduction.md
     - name: Graph
       href: graph-introduction.md
   - name: Biztonság
-    href: ../documentdb/documentdb-nosql-database-security.md
+    href: database-security.md
   - name: Teljes birtoklási költség
     href: https://aka.ms/documentdb-tco-paper
   - name: Használati esetek
-    href: ../documentdb/documentdb-use-cases.md
+    href: use-cases.md
+    items:
+      - name: Közösségimédia-alkalmazások
+        href: social-media-apps.md
 - name: Útmutatók
   items:
   - name: Fejlesztés
@@ -131,87 +134,90 @@
     - name: DocumentDB API
       items:
       - name: Erőforrások
-        href: ../documentdb/documentdb-resources.md
+        href: documentdb-resources.md
       - name: SQL-lekérdezés
-        href: ../documentdb/documentdb-sql-query.md
+        href: documentdb-sql-query.md
       - name: SQL-játszótér
         href: https://www.documentdb.com/sql/demo
       - name: Particionálás
-        href: ../documentdb/documentdb-partition-data.md
+        href: documentdb-partition-data.md
       - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
-        href: ../documentdb/documentdb-programming.md
+        href: programming.md
       - name: Teljesítménytesztelés
-        href: ../documentdb/documentdb-performance-testing.md
+        href: performance-testing.md
       - name: Teljesítménnyel kapcsolatos tippek
-        href: ../documentdb/documentdb-performance-tips.md
+        href: performance-tips.md
       - name: Több főkiszolgálós telepítés
-        href: ../documentdb/documentdb-multi-region-writers.md
+        href: multi-region-writers.md
       - name: Dátum/idő
-        href: ../documentdb/documentdb-working-with-dates.md
+        href: working-with-dates.md
+      - name: Dokumentumadatok modellezése
+ 
+        href: modeling-data.md 
       - name: oktatóanyagokat
         items:
         - name: Az első alkalmazás megírása
           items:
           - name: .NET
-            href: ../documentdb/documentdb-get-started.md
+            href: documentdb-get-started.md
           - name: .NET Core
-            href: ../documentdb/documentdb-dotnetcore-get-started.md
+            href: documentdb-dotnetcore-get-started.md
           - name: Java
-            href: ../documentdb/documentdb-java-get-started.md
+            href: documentdb-java-get-started.md
           - name: Node.js
-            href: ../documentdb/documentdb-nodejs-get-started.md
+            href: documentdb-nodejs-get-started.md
           - name: C++
-            href: ../documentdb/documentdb-cpp-get-started.md
+            href: documentdb-cpp-get-started.md
         - name: Webalkalmazás készítése
           items:
           - name: .NET
-            href: ../documentdb/documentdb-dotnet-application.md
+            href: documentdb-dotnet-application.md
           - name: Xamarin
-            href: ../documentdb/documentdb-mobile-apps-with-xamarin.md
+            href: mobile-apps-with-xamarin.md
           - name: Node.js
-            href: ../documentdb/documentdb-nodejs-application.md
+            href: documentdb-nodejs-application.md
           - name: Java
-            href: ../documentdb/documentdb-java-application.md
+            href: documentdb-java-application.md
           - name: Python Flask
-            href: ../documentdb/documentdb-python-application.md
+            href: documentdb-python-application.md
       - name: Példák
         items:
         - name: .NET-minták
-          href: ../documentdb/documentdb-dotnet-samples.md
+          href: documentdb-dotnet-samples.md
         - name: Node.js-példák
-          href: ../documentdb/documentdb-nodejs-samples.md
+          href: documentdb-nodejs-samples.md
         - name: Python-példák
-          href: ../documentdb/documentdb-python-samples.md
+          href: documentdb-python-samples.md
         - name: SQL-szintaxis
           href: https://msdn.microsoft.com/library/azure/dn782250.aspx
         - name: SQL-szintaxis – adatlap
-          href: ../documentdb/documentdb-sql-query-cheat-sheet.md
+          href: documentdb-sql-query-cheat-sheet.md
       - name: Erőforrások
         items:
         - name: Stack Overflow
-          href: http://stackoverflow.com/questions/tagged/azure-documentdb
+          href: http://stackoverflow.com/questions/tagged/azure-cosmosdb
         - name: Videók
-          href: https://azure.microsoft.com/documentation/videos/index/?services=documentdb
+          href: https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db
         - name: Szolgáltatási hírek
-          href: https://azure.microsoft.com/updates/?product=documentdb
+          href: https://azure.microsoft.com/updates/?product=cosmos-db
         - name: Közösségi portál
-          href: ../documentdb/documentdb-community.md
+          href: community.md
         - name: Tanulmány a sémafüggetlen indexelésről
           href: http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf
         - name: 'S1, S2, S3 kivonása'
-          href: ../documentdb/documentdb-performance-levels.md
+          href: performance-levels.md
     - name: MongoDB API
       items:
       - name: Csatlakozás a MongoDB-fiókhoz
-        href: ../documentdb/documentdb-connect-mongodb-account.md
+        href: connect-mongodb-account.md
       - name: A MongoChef használata
-        href: ../documentdb/documentdb-mongodb-mongochef.md
+        href: mongodb-mongochef.md
       - name: A Robomongo használata
-        href: ../documentdb/documentdb-mongodb-robomongo.md
+        href: mongodb-robomongo.md
       - name: oktatóanyagokat
         items:
         - name: Node.js-konzolalkalmazás
-          href: ../documentdb/documentdb-mongodb-samples.md
+          href: mongodb-samples.md
     - name: Graph API
       items:
       - name: Gremlin-támogatás
@@ -221,57 +227,49 @@
       - name: Table Storage
         href: https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts
     - name: Csatorna módosítása
-      href: ../documentdb/documentdb-change-feed.md
+      href: change-feed.md
     - name: Térinformatikai
-      href: ../documentdb/documentdb-geospatial.md
+      href: geospatial.md
     - name: Indexelés
-      href: ../documentdb/documentdb-indexing-policies.md
+      href: indexing-policies.md
   - name: Kezelés
     items:
     - name: Költséghatékony írások és olvasások
-      href: ../documentdb/documentdb-key-value-store-cost.md
+      href: key-value-store-cost.md
     - name: Adatok automatikus elévülése
-      href: ../documentdb/documentdb-time-to-live.md
+      href: time-to-live.md
     - name: Biztonsági mentés és visszaállítás
-      href: ../documentdb/documentdb-online-backup-and-restore.md
+      href: online-backup-and-restore.md
     - name: Régiónkénti feladatátvétel
-      href: ../documentdb/documentdb-regional-failovers.md
+      href: regional-failover.md
     - name: Teljesítmény beállítása
-      href: ../documentdb/documentdb-set-throughput.md
+      href: set-throughput.md
     - name: SLA-k figyelése
-      href: ../documentdb/documentdb-monitor-accounts.md
+      href: monitor-accounts.md
     - name: Kulcsok és konzisztencia kezelése
-      href: ../documentdb/documentdb-manage-account.md
-    - name: Automatizálás
-      items:
-      - name: Azure CLI 1.0 – Fiók létrehozása
-        href: ../documentdb/documentdb-automation-resource-manager-cli-nodejs.md
-      - name: Azure CLI 1.0 – Régiók hozzáadása vagy eltávolítása
-        href: ../documentdb/documentdb-automation-region-management.md
-      - name: Azure PowerShell
-        href: ../documentdb/documentdb-manage-account-with-powershell.md
+      href: manage-account.md
     - name: Biztonság
       items:
       - name: Titkosítás inaktív állapotban
-        href: ../documentdb/documentdb-nosql-database-encryption-at-rest.md
+        href: database-encryption-at-rest.md
       - name: Tűzfaltámogatás
-        href: ../documentdb/documentdb-firewall-support.md
+        href: firewall-support.md
       - name: Az adathozzáférés biztonságossá tétele
-        href: ../documentdb/documentdb-secure-access-to-data.md
+        href: secure-access-to-data.md
   - name: Integrálás
     items:
     - name: Csatlakozás a Sparkhoz
-      href: ../documentdb/documentdb-spark-connector.md
+      href: spark-connector.md
     - name: Csatlakozás a Spark GraphX-hez
       href: spark-connector-graph.md      
     - name: Webhely üzembe helyezése az Azure App Service-szel
-      href: ../documentdb/documentdb-create-documentdb-website.md
+      href: create-website.md
     - name: Alkalmazásnaplózás a Logic Apps használatával
       href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
     - name: Kötés az Azure Functionshöz
       href: ../azure-functions/functions-bindings-documentdb.md
     - name: Adatelemzés a Hadooppal
-      href: ../documentdb/documentdb-run-hadoop-with-hdinsight.md
+      href: run-hadoop-with-hdinsight.md
     - name: Integrálás az Azure Search szolgáltatással
       href: ../search/search-howto-index-documentdb.md
     - name: Adatok áthelyezése az Azure Data Factoryvel
@@ -279,27 +277,27 @@
     - name: Valós idejű adatok elemzése az Azure Stream Analyticsszel
       href: ../stream-analytics/stream-analytics-define-outputs.md#documentdb
     - name: Módosított HL7 FHIR-rekord beszerzése a Logic Apps használatával
-      href: ../documentdb/documentdb-change-feed-hl7-fhir-logic-apps.md
+      href: change-feed-hl7-fhir-logic-apps.md
     - name: Érzékelőktől kapott adatok valós idejű feldolgozása
       href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
     - name: Adatok megjelenítése Power BI használatával
-      href: ../documentdb/documentdb-powerbi-visualize.md
+      href: powerbi-visualize.md
     - name: Az ODBC-illesztő felhasználása az adatmegjelenítéshez
-      href: ../documentdb/documentdb-nosql-odbc-driver.md
+      href: odbc-driver.md
 - name: Referencia
   items:
   - name: DocumentDB API-k
     items:
     - name: Java
-      href: ../documentdb/documentdb-sdk-java.md
+      href: documentdb-sdk-java.md
     - name: .NET
-      href: ../documentdb/documentdb-sdk-dotnet.md
+      href: documentdb-sdk-dotnet.md
     - name: .NET Core
-      href: ../documentdb/documentdb-sdk-dotnet-core.md
+      href: documentdb-sdk-dotnet-core.md
     - name: Node.js
-      href: ../documentdb/documentdb-sdk-node.md
+      href: documentdb-sdk-node.md
     - name: Python
-      href: ../documentdb/documentdb-sdk-python.md
+      href: documentdb-sdk-python.md
     - name: REST
       href: /rest/api/documentdb/
     - name: REST erőforrás-szolgáltató
@@ -317,8 +315,8 @@
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/documentdb/
   - name: GYIK
-    href: ../documentdb/documentdb-faq.md
+    href: faq.md
   - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-cosmos-db
+    href: http://stackoverflow.com/questions/tagged/azure-cosmosdb
   - name: Az adatkonzisztencia magyarázata a baseball példáján
     href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913

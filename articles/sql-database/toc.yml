@@ -13,14 +13,12 @@
     href: sql-database-get-started-cli.md
   - name: DB létrehozása – PowerShell
     href: sql-database-get-started-powershell.md
-  - name: Kezelés
+  - name: Csatlakozás és lekérdezés
     items:
     - name: SSMS
       href: sql-database-connect-query-ssms.md
     - name: VS Code
       href: sql-database-connect-query-vscode.md
-  - name: Kapcsolódás
-    items:
     - name: .NET
       href: sql-database-connect-query-dotnet.md
     - name: PHP
@@ -37,7 +35,7 @@
   items:
   - name: 1 – Új SQL DB létrehozása/tervezése
     href: sql-database-design-first-database.md
-  - name: 2 – Meglévő SQL Server áttelepítése
+  - name: 2 – SQL Server-adatbázis migrálása
     href: sql-database-migrate-your-sql-server-database.md
   - name: 3 – Az SQL DB biztonságossá tétele
     href: sql-database-security-tutorial.md
@@ -45,6 +43,8 @@
     href: sql-database-performance-tutorial.md
   - name: 5 – Több-bérlős alkalmazás implementálása
     href: sql-database-multi-tenant-application.md
+  - name: 6 – Földrajzilag elosztott adatbázis implementálása
+    href: sql-database-implement-geo-distributed-database.md 
   - name: Wingtip SaaS-oktatóanyagok
     items:
     - name: A Wingtip SaaS bemutatása
@@ -55,15 +55,15 @@
       href: sql-database-saas-tutorial-provision-and-catalog.md
     - name: Teljesítmény figyelése
       href: sql-database-saas-tutorial-performance-monitoring.md
+    - name: Figyelés a Log Analytics használatával
+      href: sql-database-saas-tutorial-log-analytics.md
     - name: Egyetlen bérlő visszaállítása
       href: sql-database-saas-tutorial-restore-single-tenant.md
     - name: Bérlői sémák kezelése
       href: sql-database-saas-tutorial-schema-management.md
     - name: Alkalmi elemzés futtatása
       href: sql-database-saas-tutorial-adhoc-analytics.md
-    - name: Figyelés a Log Analytics használatával
-      href: sql-database-saas-tutorial-log-analytics.md
-    - name: Bérlői elemzések kezelése
+    - name: Bérlői elemzés futtatása
       href: sql-database-saas-tutorial-tenant-analytics.md
 - name: Példák
   items:
@@ -145,7 +145,7 @@
       href: sql-database-ssms-mfa-authentication.md
     - name: Naplózás
       href: sql-database-auditing.md
-    - name: Naplózás és TDS
+    - name: Táblanaplózás és TDS
       href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
     - name: Fenyegetések észlelése
       href: sql-database-threat-detection.md
@@ -355,6 +355,8 @@
       href: sql-database-xevent-code-event-file.md
     - name: Bővített események – gyűrűpuffer
       href: sql-database-xevent-code-ring-buffer.md
+    - name: Diagnosztikai naplózás
+      href: sql-database-metrics-diag-logging.md
   - name: Kezelés
     items:
     - name: Azure Automation

@@ -5,6 +5,7 @@
 ## [Az Azure identitáskezelési megoldásainak ismertetése](understand-azure-identity-solutions.md)
 ## [Az Azure Portal felületének előzetese](active-directory-preview-explainer.md)
 
+
 # Bevezetés
 ## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
 ## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
@@ -14,7 +15,8 @@
 ### [Klasszikus portál](active-directory-licensing-what-is.md)
 ## [Azure beszerzése a szervezet számára](sign-up-organization.md)
 ## [Gyakori kérdések](active-directory-faq.md)
-## [A SaaS-alkalmazás oktatóanyagai](active-directory-saas-tutorial-list.md)
+## [Hogyan kérhet támogatást az Azure Active Directoryhoz](active-directory-troubleshooting-support-howto.md)
+## [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
 
 # Útmutató
 ## Tervezés és kialakítás

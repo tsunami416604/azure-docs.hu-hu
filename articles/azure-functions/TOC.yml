@@ -69,7 +69,7 @@
     href: functions-how-to-use-azure-function-app-settings.md
   - name: Azure Functions – folyamatos üzembe helyezés
     href: functions-continuous-deployment.md
-  - name: A Functions üzembe helyezése az infrastruktúra kódként való használatával
+  - name: Erőforrások üzembe helyezésének automatizálása
     href: functions-infrastructure-as-code.md
   - name: Az Azure Functions figyelése
     href: functions-monitoring.md
@@ -85,35 +85,31 @@
   items:
   - name: Kötések
     items:
-    - name: Cosmos DB-kötések
+    - name: Blob Storage
+      href: functions-bindings-storage-blob.md
+    - name: Cosmos DB
       href: functions-bindings-documentdb.md
-    - name: Event Hub kötések
+    - name: Eseményközpont
       href: functions-bindings-event-hubs.md
-    - name: HTTP- és a webhook kötések
+    - name: Külső fájl
+      href: functions-bindings-external-file.md
+    - name: HTTP és webhookok
       href: functions-bindings-http-webhook.md
-    - name: Mobile Apps-kötések
+    - name: Mobile Apps
       href: functions-bindings-mobile-apps.md
-    - name: Értesítési központ kimeneti kötése
+    - name: Notification Hubs
       href: functions-bindings-notification-hubs.md
-    - name: Service Bus-eseményindítók és -kötések a várólistákhoz és a témakörökhöz
+    - name: Queue Storage
+      href: functions-bindings-storage-queue.md
+    - name: SendGrid
+      href: functions-bindings-sendgrid.md
+    - name: Service Bus
       href: functions-bindings-service-bus.md
-    - name: SendGrid-kötések
-      href: functions-bindings-sendgrid.md
-    - name: Tárkötések
-      items:
-      - name: Blobkötések
-        href: functions-bindings-storage-blob.md
-      - name: Üzenetsorkötések
-        href: functions-bindings-storage-queue.md
-      - name: Táblakötések
-        href: functions-bindings-storage-table.md
-      - name: Külső fájlkötések
-        href: functions-bindings-external-file.md
-    - name: SendGrid-kötések
-      href: functions-bindings-sendgrid.md
-    - name: Időzítő eseményindító
+    - name: Table Storage
+      href: functions-bindings-storage-table.md
+    - name: Időzítő
       href: functions-bindings-timer.md
-    - name: Twilio kimeneti kötés
+    - name: Twilio
       href: functions-bindings-twilio.md
   - name: OpenAPI-dokumentáció
     href: functions-api-definition.md     

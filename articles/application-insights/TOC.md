@@ -116,7 +116,7 @@
 ### [Mintavételezés](app-insights-sampling.md)
 
 ## Kezelés
-### [Árak és kvóták kezelése](app-insights-pricing.md)
+### [Árak és adatmennyiségek kezelése](app-insights-pricing.md)
 ### [Alkalmazásteljesítmény-figyelés az Application Insights az SCOM-hoz használatával](app-insights-scom.md)
 
 ## Exportálás

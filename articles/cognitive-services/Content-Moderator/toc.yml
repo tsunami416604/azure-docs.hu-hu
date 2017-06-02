@@ -1,57 +1,56 @@
-- name: "Content Moderator Documentation"
+- name: A Tartalommoderátor dokumentációja
   href: ../index.md
-- name: "Overview"
+- name: Áttekintés
   items: 
-  - name: "Learn about the Content Moderator API"
+  - name: Megismerheti a Tartalommoderátor API-t
     href: overview.md
-- name: "Get started"
+- name: Bevezetés
   items: 
-  - name: "Get started with Content Moderator"
+  - name: Bevezetés a Tartalommoderátor használatába
     href: quick-start.md
-- name: "How to"
+- name: Útmutató
   items: 
-  - name: "Review tool user guide"
+  - name: Eszközhasználati útmutató áttekintése
     items:
-    - name: "Human in the loop"
+    - name: Human in the loop
       href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: "Create team"
+    - name: Csoport létrehozása
       href: Review-Tool-User-Guide/Sign-up.md
-    - name: "Upload images"
+    - name: Képek feltöltése
       href: Review-Tool-User-Guide/Upload-Images.md
-    - name: "Image reviews"
+    - name: Képekre vonatkozó vélemények
       href: Review-Tool-User-Guide/Review-Moderated-Images.md
-    - name: "Text reviews"
+    - name: Szövegekre vonatkozó vélemények
       href: Review-Tool-User-Guide/Text-Reviews.md
-    - name: "Team and subteams"
+    - name: Csoportok és alcsoportok
       href: Review-Tool-User-Guide/SubTeams.md
-    - name: "Using workflows"
+    - name: Munkafolyamatok használata
       href: Review-Tool-User-Guide/Workflows.md
-    - name: "Settings"
+    - name: Beállítások
       href: Review-Tool-User-Guide/Configure.md
-    - name: "View dashboard"
+    - name: Az irányítópult megtekintése
       href: Review-Tool-User-Guide/View-Dashboard.md
-- name: "Reference"
+- name: Referencia
   items: 
-  - name: "API Reference Guide"  
+  - name: API-referencia útmutató
+  
     href: api-reference.md
     items:
-  - name: "Review APIs"
+  - name: API-k áttekintése
     href: review-api.md
-  - name: "Review Authentication"
-    href: Review-API-Authentication.md
-  - name: "Image moderation"
+  - name: Képmoderálás
     href: image-moderation-api.md
-  - name: "Text moderation"
+  - name: Szövegmoderálás
     href: text-moderation-api.md
-  - name: "Text moderation - languages"
+  - name: Szövegmoderálás – nyelvek
     href: Text-Moderation-API-Languages.md
-  - name: "Video moderation"
+  - name: Videomoderálás
     href: video-moderation-api.md
-- name: "Resources"
+- name: Erőforrások
   items:  
-  - name: "Windows SDK"
+  - name: Windows SDK
     href: https://github.com/MicrosoftContentModerator/Microsoft.CognitiveServices.ContentModerator-Windows/
-  - name: "Samples"
+  - name: Példák
     href: https://azure.microsoft.com/resources/samples/?service=cognitive-services
-  - name: "FAQ"
+  - name: GYIK
     href: FAQs.md

@@ -41,6 +41,7 @@
 ### [Gépek előkészítése kezelésre](automation-dsc-onboarding.md)
 ### [Célállapot-konfigurálók fordítása](automation-dsc-compile.md)
 ### [Folyamatos üzembe helyezés a Chocolatey használatával](automation-dsc-cd-chocolatey.md)
+### [Az Azure Automation DSC jelentési adatainak továbbítása az OMS Log Analyticsbe](automation-dsc-diagnostics.md)
 ## Automatizálási objektumok kezelése
 ### [Tanúsítványok](automation-certificates.md)
 ### [Kapcsolatok](automation-connections.md)

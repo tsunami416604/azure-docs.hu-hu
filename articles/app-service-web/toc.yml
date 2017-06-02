@@ -95,10 +95,6 @@
         href: java-create-azure-website-using-java-sdk.md
       - name: Meglévő alkalmazás feltöltése
         href: web-sites-java-add-app.md
-      - name: Távoli hibakeresés az Eclipse-ben
-        href: app-service-web-debug-java-web-app-in-eclipse.md
-      - name: Távoli hibakeresés az IntelliJ-ben
-        href: app-service-web-debug-java-web-app-in-intellij.md
     - name: Python
       items:
       - name: Django-alkalmazás és MySQL
@@ -162,8 +158,6 @@
       items:
       - name: Tartomány vásárlása
         href: custom-dns-web-site-buydomains-web-app.md
-      - name: Külső tartomány leképezése
-        href: web-sites-custom-domain-name.md
       - name: Tartományok leképezése a Traffic Managerrel
         href: web-sites-traffic-manager-custom-domain-name.md
       - name: GoDaddy-tartományok leképezése
@@ -204,10 +198,6 @@
         href: web-sites-authentication-authorization.md
       - name: Alkalmazás több-bérlős adatbázissal
         href: web-sites-dotnet-entity-framework-row-level-security.md
-    - name: Egyéni SSL hozzárendelése
-      items:
-      - name: Külső SSL-tanúsítvány konfigurálása
-        href: web-sites-configure-ssl-certificate.md
     - name: HTTPS kényszerítése
       href: web-sites-configure-ssl-certificate.md#enforce-https-on-your-app
     - name: TLS kölcsönös hitelesítés beállítása
@@ -278,6 +268,16 @@
       href: app-service-web-troubleshoot-http-502-http-503.md
     - name: Teljesítményproblémák elhárítása
       href: app-service-web-troubleshoot-performance-degradation.md
+    - name: GYIK
+      items:
+      - name: 'Rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos gyakori kérdések'
+        href: app-service-web-availability-performance-application-issues-faq.md
+      - name: Üzembe helyezéssel kapcsolatos gyakori kérdések
+        href: app-service-web-deployment-faq.md
+      - name: Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések
+        href: app-service-web-open-source-technologies-faq.md
+      - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
+        href: app-service-web-configuration-and-management-faq.md
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/app-service/
   - name: Kvótákra vonatkozó információk

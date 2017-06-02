@@ -1,4 +1,5 @@
 # Áttekintés
+
 ## [Mi az Azure DNS?](dns-overview.md)
 ## [DNS-zónák és -rekordok](dns-zones-records.md)
 ## [DNS-delegálás az Azure DNS használatával](dns-domain-delegation.md)
@@ -18,17 +19,21 @@
 # Útmutató
 
 ## DNS-zónák kezelése
+### [Portal](dns-operations-dnszones-portal.md)
 ### [PowerShell](dns-operations-dnszones.md)
-### [Azure CLI](dns-operations-dnszones-cli.md)
+### [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
+### [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
-
-## [DNS-rekordok kezelése](dns-operations-recordsets-portal.md)
+## DNS-rekordok kezelése
+### [Portal](dns-operations-recordsets-portal.md)
 ### [PowerShell](dns-operations-recordsets.md)
-### [Azure CLI](dns-operations-recordsets-cli.md)
+### [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
+### [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 
-## [Fordított DNS-rekordok kezelése](dns-reverse-dns-record-operations-ps.md)
-### [Azure CLI](dns-reverse-dns-record-operations-cli.md)
-### [PowerShell](dns-reverse-dns-record-operations-classic-ps.md)
+## Fordított DNS kezelése
+### [Áttekintés](dns-reverse-dns-overview.md)
+### [Névkeresési zónák üzemeltetése az Azure DNS-ben](dns-reverse-dns-hosting.md)
+### [Fordított DNS-rekordok kezelése az Azure-szolgáltatásokhoz](dns-reverse-dns-for-azure-services.md)
 
 ## [DNS-zónafájl importálása és exportálása](dns-import-export.md)
 ## [Együttműködés más Azure-szolgáltatásokkal](dns-for-azure-services.md)

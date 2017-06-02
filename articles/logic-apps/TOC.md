@@ -7,6 +7,7 @@
 ## [Az első logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md)
 ## [Sablonok logikai alkalmazásokhoz](logic-apps-use-logic-app-templates.md)
 ## [Logikai alkalmazások létrehozása sablonból](logic-apps-arm-provision.md)
+## [MABS-alkalmazások áthelyezése a logikai alkalmazásokhoz](logic-apps-move-from-mabs.md)
 
 # Útmutató
 ## Felépítés
@@ -80,6 +81,7 @@
 ### [Díjszabás](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [Használatmérés](logic-apps-pricing.md)
 
+
 # Kiszolgáló nélküli
 ## Áttekintés
 ### [Az Azure kiszolgáló nélküli használata](logic-apps-serverless-overview.md)
@@ -128,6 +130,8 @@
 ### [Twitter](../connectors/connectors-create-api-twitter.md)
 ### [X12](logic-apps-enterprise-integration-x12.md)
 ### [XML-érvényesítés](logic-apps-enterprise-integration-xml-validation.md)
+
+## [Összekötők: részletes információk](https://docs.microsoft.com/connectors/)
 ## Sémaelőzmények
 ### [FE](logic-apps-schema-2016-04-01.md)
 ### [Előzetes verzió](logic-apps-schema-2015-08-01.md)

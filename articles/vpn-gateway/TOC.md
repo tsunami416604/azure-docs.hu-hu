@@ -7,6 +7,7 @@
 ## [A VPN Gateway tervezése és kialakítása](vpn-gateway-plan-design.md)
 ## [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md)
 ## [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md)
+## [Információ a kriptográfiai követelményekről](vpn-gateway-about-compliance-crypto.md)
 ## [A BGP és a VPN-átjáró ismertetése](vpn-gateway-bgp-overview.md)
 ## [Tudnivalók a magas rendelkezésre állású kapcsolatokról](vpn-gateway-highlyavailable.md)
 
@@ -29,37 +30,41 @@
 ### [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [(Klasszikus) Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+## IPsec/IKE kapcsolati házirendjeinek konfigurálása
+### [PowerShell](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 ## Virtuális hálózatok közötti kapcsolat konfigurálása üzemi modellek között
 ### [Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 ## [Egyidejű helyek közötti és ExpressRoute-kapcsolatok konfigurálása](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
-## Kényszerített bújtatás konfigurálása
-### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
-### [PowerShell (klasszikus)](vpn-gateway-about-forced-tunneling.md)
 ## Több helyek közötti kapcsolat konfigurálása
 ### [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [PowerShell (klasszikus)](vpn-gateway-multi-site.md)
+## Több házirendalapú VPN-eszköz csatlakoztatása
+### [PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
 ## [BGP konfigurálása egy VPN-átjáró számára](vpn-gateway-bgp-resource-manager-ps.md)
+## Kényszerített bújtatás konfigurálása
+### [PowerShell](vpn-gateway-forced-tunneling-rm.md)
+### [PowerShell (klasszikus)](vpn-gateway-about-forced-tunneling.md)
 ## [Magas rendelkezésre állású aktív–aktív kapcsolatok konfigurálása](vpn-gateway-activeactive-rm-powershell.md)
+## Azure-alapú VPN-átjárók kezelése
+### [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md)
+### [Átjáró törlése az Azure Portal használatával)](vpn-gateway-delete-vnet-gateway-portal.md)
+### [Átjáró törlése a PowerShell használatával](vpn-gateway-delete-vnet-gateway-powershell.md)
+### [Átjáró törlése a klasszikus PowerShell használatával](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## Helyi hálózati átjáró beállításainak módosítása
 ### [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 ### [Parancssori felület](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [VPN Gateway-kapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md)
-## [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md)
-## VPN Gateway törlése
-### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-### [PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [VPN-átjáró konfigurálása (klasszikus)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## Hibaelhárítás
 ### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 
 # Referencia
-## [PowerShell](/powershell/module/azurerm.network)
-## [PowerShell (klasszikus)](/powershell/module/azure/?view=azuresmps-3.7.0)
-## [REST](https://docs.microsoft.com/rest/api/network/virtualnetworkgateways)
+## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
+## [PowerShell (klasszikus)](/powershell/module/azure/?view=azuresmps-3.7.0#networking)
+## [REST](/rest/api/network/virtualnetworkgateways)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/jj154113)
-## [Azure CLI](https://docs.microsoft.com/cli/azure/network/vnet-gateway)
+## [Azure CLI](/cli/azure/network/vnet-gateway)
 
 # Kapcsolódó
 ## [Virtuális hálózat](/azure/virtual-network/)

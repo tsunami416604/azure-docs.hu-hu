@@ -61,6 +61,9 @@
 ### [Nézetek](operations-management-suite-solutions-resources-views.md)
 ### [Ajánlott eljárások](operations-management-suite-solutions-best-practices.md)
 
+## Felügyeleti forgatókönyvek
+### [Elemzési adatok gyűjtése a runbookból](operations-management-suite-runbook-datacollect.md)
+
 ## [Integrálás az OMS-sel](operations-management-suite-integration.md)
 
 # Referencia
