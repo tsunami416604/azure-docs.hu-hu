@@ -1,21 +1,21 @@
 ### <a name="noconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – nincs átjárókapcsolat
 
-- További címelőtagok felvétele:
+További címelőtagok felvétele:
 
-  ```powershell
-  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
-  -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
-  ```
+```powershell
+$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+-AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+```
 
-- Címelőtagok eltávolítása:<br>
-  Hagyja ki azokat címelőtagokat, amelyekre már nincs szüksége. Ebben a példában a 20.0.0.0/24 előtagra (az előző példából) már nincs szükségünk, ezért frissítjük a helyi hálózati átjárót, kihagyva ezt az előtagot.
+Címelőtagok eltávolítása:<br>
+Hagyja ki azokat címelőtagokat, amelyekre már nincs szüksége. Ebben a példában a 20.0.0.0/24 előtagra (az előző példából) már nincs szükségünk, ezért frissítjük a helyi hálózati átjárót, kihagyva ezt az előtagot.
 
-  ```powershell
-  $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-  Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
-  -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
-  ```
+```powershell
+$local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
+Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
+-AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
+```
 
 ### <a name="withconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – létező átjárókapcsolat
 
