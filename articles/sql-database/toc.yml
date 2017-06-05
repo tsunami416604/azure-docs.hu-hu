@@ -45,26 +45,6 @@
     href: sql-database-multi-tenant-application.md
   - name: 6 – Földrajzilag elosztott adatbázis implementálása
     href: sql-database-implement-geo-distributed-database.md 
-  - name: Wingtip SaaS-oktatóanyagok
-    items:
-    - name: A Wingtip SaaS bemutatása
-      href: sql-database-wtp-overview.md
-    - name: A Wingtip SaaS-minta üzembe helyezése
-      href: sql-database-saas-tutorial.md
-    - name: Új bérlők létesítése/katalogizálása
-      href: sql-database-saas-tutorial-provision-and-catalog.md
-    - name: Teljesítmény figyelése
-      href: sql-database-saas-tutorial-performance-monitoring.md
-    - name: Figyelés a Log Analytics használatával
-      href: sql-database-saas-tutorial-log-analytics.md
-    - name: Egyetlen bérlő visszaállítása
-      href: sql-database-saas-tutorial-restore-single-tenant.md
-    - name: Bérlői sémák kezelése
-      href: sql-database-saas-tutorial-schema-management.md
-    - name: Alkalmi elemzés futtatása
-      href: sql-database-saas-tutorial-adhoc-analytics.md
-    - name: Bérlői elemzés futtatása
-      href: sql-database-saas-tutorial-tenant-analytics.md
 - name: Példák
   items:
   - name: Azure CLI
@@ -175,25 +155,12 @@
       href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
     - name: Alkalmazásfrissítések
       href: sql-database-manage-application-rolling-upgrade.md
-  - name: Fejlesztés
+  - name: Adatbázis-fejlesztés
     items:
     - name: Áttekintés
       href: sql-database-develop-overview.md
     - name: Kapcsolatok
       href: sql-database-libraries.md
-    - name: Alkalmazástervezés – SaaS
-      href: sql-database-design-patterns-multi-tenancy-saas-applications.md
-    - name: Biztonság – SaaS
-      href: sql-database-elastic-tools-multi-tenant-row-level-security.md
-    - name: Portok – ADO.NET
-      href: sql-database-develop-direct-route-ports-adonet-v12.md
-    - name: Alkalmazás hitelesítése
- 
-      href: sql-database-client-id-keys.md
-    - name: Hibaüzenetek
-      href: sql-database-develop-error-messages.md
-    - name: Dapper
-      href: sql-database-elastic-scale-working-with-dapper.md
     - name: JSON-adatok
       href: sql-database-json-features.md
     - name: Memóriabeli
@@ -231,8 +198,6 @@
       href: sql-database-monitoring-with-dmvs.md
     - name: Teljesítmény-útmutató
       href: sql-database-performance-guidance.md
-    - name: Kötegelés
-      href: sql-database-use-batching-to-improve-performance.md
     - name: Bővített események
       href: sql-database-xevent-db-diff-from-svr.md
     - name: Kompatibilitási szintek
@@ -365,6 +330,25 @@
       href: sql-database-ssms-remoteapp.md
     - name: SSMS – MFA
       href: sql-database-ssms-mfa-authentication-configure.md
+  - name: Alkalmazásfejlesztés
+    items:
+    - name: Portok – ADO.NET
+      href: sql-database-develop-direct-route-ports-adonet-v12.md
+    - name: Alkalmazás hitelesítése
+ 
+      href: sql-database-client-id-keys.md
+    - name: Hibaüzenetek
+      href: sql-database-develop-error-messages.md
+    - name: Dapper
+      href: sql-database-elastic-scale-working-with-dapper.md
+    - name: Teljesítménynövelő célú kötegelés
+      href: sql-database-use-batching-to-improve-performance.md
+    - name: SaaS-alkalmazástervezés
+      href: sql-database-design-patterns-multi-tenancy-saas-applications.md
+    - name: SaaS-alkalmazásbiztonság
+      href: sql-database-elastic-tools-multi-tenant-row-level-security.md
+    - name: SaaS-alkalmazás oktatóanyaga
+      href: sql-database-wtp-overview.md
 - name: Referencia
   items:
   - name: PowerShell
@@ -444,5 +428,3 @@
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
     - name: Egyéni rugalmaskészlet-irányítópult
       href: https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
-
-
