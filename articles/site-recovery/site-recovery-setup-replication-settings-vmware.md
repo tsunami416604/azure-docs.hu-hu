@@ -12,11 +12,13 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/19/2017
+ms.date: 06/05/2017
 ms.author: sutalasi
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 28e905a20d878eab1428a4b88113544aa742124a
 ms.openlocfilehash: 9c34ea792aa561b8155a915845ffb857dfef7a90
+ms.contentlocale: hu-hu
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -86,9 +88,4 @@ ms.openlocfilehash: 9c34ea792aa561b8155a915845ffb857dfef7a90
 
     > [!NOTE]
     > Nem törölheti a replikációs házirendet, ha legalább egy konfigurációs kiszolgáló társítva van hozzá. A házirend törlése előtt győződjön meg arról, hogy egy replikált elem sem használja azt, továbbá törölje az összes társított konfigurációs kiszolgálót is.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

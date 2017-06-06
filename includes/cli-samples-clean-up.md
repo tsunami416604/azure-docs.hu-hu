@@ -2,6 +2,6 @@
 
 Az erőforrások eltávolításához futtassa az alábbi parancsot:
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
