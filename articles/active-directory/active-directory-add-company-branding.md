@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 05/23/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 144132cf0d591e398d5a6ebafb06fd915eec38b8
-ms.openlocfilehash: 1ec1a20dec318153923afd6a0875545d1e102f29
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: c558bd5f2b7fae91483cc2c6724c40442bb65045
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/05/2017
 
 
 ---
@@ -205,12 +205,12 @@ Az Azure AD egyes testreszabható elemei többféleképpen is használhatók. C�
 
 | Név | Leírás | Korlátozások | Javaslatok |
 | --- | --- | --- | --- |
-| Szalagcímembléma |A szalagcím emblémája a bejelentkezési és a hozzáférési panel oldalakon jelenik meg. |<p>JPG vagy PNG</p><p>60 x&280; képpont</p><p>10 kB</p> |<p>Használja szervezete teljes emblémáját (a piktogramot és az emblémát is beleértve).</p><p>A magassága ne legyen több 30 képpontnál, hogy a mobileszközökön ne legyen szükség görgetősáv használatára.</p><p>A mérete maradjon 4 kB alatt.</p><p>Átlátszó PNG formátumot használjon (nem érdemes feltételezni, hogy a bejelentkezési oldalak háttérszíne minden esetben fehér).</p> |
-| Csempeembléma |(jelenleg nem szerepel a bejelentkezési oldalon) A jövőben ez a szöveg helyettesítheti majd különböző helyeken az általános „munkahelyi vagy iskolai fiók” piktogramot. |<p>JPG vagy PNG</p><p>120 x&120; képpont</p><p>10 kB</p> |<p>Legyen egyszerű (kisméretű szöveg nélkül), mivel a rendszer ezt a képet a felére kicsinyítheti. |
+| Szalagcímembléma |A szalagcím emblémája a bejelentkezési és a hozzáférési panel oldalakon jelenik meg. |<p>JPG vagy PNG</p><p>60x280 képpont</p><p>10 kB</p> |<p>Használja szervezete teljes emblémáját (a piktogramot és az emblémát is beleértve).</p><p>A magassága ne legyen több 30 képpontnál, hogy a mobileszközökön ne legyen szükség görgetősáv használatára.</p><p>A mérete maradjon 4 kB alatt.</p><p>Átlátszó PNG formátumot használjon (nem érdemes feltételezni, hogy a bejelentkezési oldalak háttérszíne minden esetben fehér).</p> |
+| Csempeembléma |(jelenleg nem szerepel a bejelentkezési oldalon) A jövőben ez a szöveg helyettesítheti majd különböző helyeken az általános „munkahelyi vagy iskolai fiók” piktogramot. |<p>JPG vagy PNG</p><p>120x120 képpont</p><p>10 kB</p> |<p>Legyen egyszerű (kisméretű szöveg nélkül), mivel a rendszer ezt a képet a felére kicsinyítheti. |
 | </p> | | | |
 | A felhasználónév címkéje a bejelentkezési oldalon |(jelenleg nem szerepel a bejelentkezési oldalon) A jövőben ez a szöveg helyettesítheti majd különböző helyeken az általános „munkahelyi vagy iskolai fiók” karaktersort. Olyasmire állíthatja be, mint például „Contoso-fiók” vagy „Contoso-azonosító”. |<p>Unicode szöveg, legfeljebb 50 karakter</p><p>Csak egyszerű szöveg (hivatkozások és HTML-címkék nélkül)</p> |<p>Legyen rövid és egyszerű.</p><p>Kérdezze meg felhasználóit, hogy általában hogyan hívják a nekik biztosított munkahelyi vagy iskolai fiókot.</p> |
 | A bejelentkezési oldal szövege |Ez a sablonszöveg jelenik meg a bejelentkezési oldal űrlapja alatt, és a használatával további utasítások is megjeleníthetők a segítségkérés és a támogatás igénylésének módjáról. |<p>Unicode szöveg, legfeljebb 256 karakter</p><p>Csak egyszerű szöveg (hivatkozások és HTML-címkék nélkül)</p> |Legyen 250 karakternél kevesebb (nagyjából 3 soros szöveg). |
-| A bejelentkezési oldal ábrája |Az ábra a bejelentkezési oldalon a bejelentkezési űrlaptól balra látható nagy méretű kép. |<p>JPG vagy PNG</p><p>1420 x&1200;</p><p>500 kB</p> |<p>1420 x&1200; képpont.</p><p>Fontos: a mérete legyen a lehető legkisebb, ideálisan 200 kB alatti. Ha a kép túlságosan nagy, az kihatással van a bejelentkezési oldal teljesítményére, amikor a kép nincs gyorsítótárazva.</p><p>A különböző képarányoknak való megfelelés érdekében a rendszer a képet gyakran levágja. Az elsődleges látványelemeket a bal felső sarokban (jobbról balra író nyelvek esetén a jobb felső sarokban) helyezze el, mivel a böngészőablak átméretezése keskenyebb formára az alsó résztől/jobb saroktól a felső rész/bal sarok felé történik.</p> |
+| A bejelentkezési oldal ábrája |Az ábra a bejelentkezési oldalon a bejelentkezési űrlaptól balra látható nagy méretű kép. |<p>JPG vagy PNG</p><p>1420x1200</p><p>500 kB</p> |<p>1420x1200 képpont.</p><p>Fontos: a mérete legyen a lehető legkisebb, ideálisan 200 kB alatti. Ha a kép túlságosan nagy, az kihatással van a bejelentkezési oldal teljesítményére, amikor a kép nincs gyorsítótárazva.</p><p>A különböző képarányoknak való megfelelés érdekében a rendszer a képet gyakran levágja. Az elsődleges látványelemeket a bal felső sarokban (jobbról balra író nyelvek esetén a jobb felső sarokban) helyezze el, mivel a böngészőablak átméretezése keskenyebb formára az alsó résztől/jobb saroktól a felső rész/bal sarok felé történik.</p> |
 | A bejelentkezési oldal háttérszíne |A bejelentkezési oldal háttérszíne a bejelentkezési űrlaptól balra található területen érvényesül. |Hexadecimális formátumú RGB-színnek kell lennie (például: #FFFFFF) |<p>Alacsony sávszélességű kapcsolat használatakor a nagy méretű ábrák helyén a háttérszín jelenhet meg.</p><p>Javasoljuk, hogy a szalagcím emblémájának elsődleges színét válassza háttérszínnek.</p> |
 
 ## <a name="next-steps"></a>Következő lépések
