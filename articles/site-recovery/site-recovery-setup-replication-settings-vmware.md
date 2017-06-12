@@ -56,7 +56,7 @@ ms.lasthandoff: 02/21/2017
 ![Konfigurációs kiszolgáló társítása](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
 
 3. Válassza ki a konfigurációs kiszolgálót a kiszolgálók listájában.
-4. Kattintson az **OK** gombra. A konfigurációs kiszolgáló társításának végrehajtása átlagosan&1;–2 percet vesz igénybe.
+4. Kattintson az **OK** gombra. A konfigurációs kiszolgáló társításának végrehajtása átlagosan 1–2 percet vesz igénybe.
 
 ![A konfigurációs kiszolgáló társítása](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 02/21/2017
 ![Replikációs házirend beállításainak szerkesztése](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
 
 3. Igény szerint módosítsa a beállításokat.
-4. Kattintson a **Save** (Mentés) gombra. A replikációs házirend mentése&2;–5 percet vesz igénybe attól függően, hogy hány virtuális gép használja azt.
+4. Kattintson a **Save** (Mentés) gombra. A replikációs házirend mentése 2–5 percet vesz igénybe attól függően, hogy hány virtuális gép használja azt.
 
 ![Replikációs házirend mentése](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 02/21/2017
 1. Válassza azt a replikációs házirendet, amelyikhez a konfigurációs kiszolgálót társítani szeretné.
 2. Kattintson a **Társítás megszüntetése** gombra.
 3. Válassza ki a konfigurációs kiszolgálót a kiszolgálók listájában.
-4. Kattintson az **OK** gombra. A konfigurációs kiszolgáló társításának megszüntetése&1;–2 percet vesz igénybe.
+4. Kattintson az **OK** gombra. A konfigurációs kiszolgáló társításának megszüntetése 1–2 percet vesz igénybe.
 
     > [!NOTE]
     > Nem szüntetheti meg a konfigurációs kiszolgáló társítását, ha van legalább egy olyan replikált elem, amelyik az adott házirendet használja. A konfigurációs kiszolgáló társításának megszüntetése előtt győződjön meg arról, hogy nincsenek olyan replikált elemek, amelyek a házirendet használják.
