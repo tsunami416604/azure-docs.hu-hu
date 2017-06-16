@@ -8,7 +8,7 @@ manager: garavd
 editor: 
 ms.assetid: 
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
@@ -108,8 +108,8 @@ A feladatátvétel után az Azure virtuális gépen lévő lemezek a következő
 
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
-DISK0 |    C:\ | Operációsrendszer-lemez
-Disk1 |    E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
+DISK0 | C:\ | Operációsrendszer-lemez
+Disk1 | E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 | G:\ | 2. felhasználói adatbázis
 
@@ -141,13 +141,13 @@ Kétféleképpen hozhatja létre ezt az elérési utat:
 3. Futtassa a következő sqlcmd parancsot a tempdb elérési útjának az új elérési útra történő módosításához.
 
         sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;        
-        GO        
-        ALTER DATABASE tempdb        
+        USE master;     
+        GO      
+        ALTER DATABASE tempdb       
         MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO        
-        ALTER DATABASE tempdb        
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');        
+        GO      
+        ALTER DATABASE tempdb       
+        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
         GO
 
 
@@ -173,9 +173,9 @@ Az előző példában az Azure virtuális gép lemezkonfigurációja a következ
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 |    E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
-Disk2 |    D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
-Disk3 |    G:\ | 2. felhasználói adatbázis
+Disk1 | E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
+Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
+Disk3 | G:\ | 2. felhasználói adatbázis
 
 
 #### <a name="vmware-to-azure"></a>VMware – Azure
@@ -186,8 +186,8 @@ A tervezett, Azure-ból helyszíni VMware-re történő feladatátvétel után a
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 |    D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
-Disk2 |    G:\ | 2. felhasználói adatbázis
+Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
+Disk2 | G:\ | 2. felhasználói adatbázis
 
 #### <a name="hyper-v-to-azure"></a>Hyper-V – Azure
 Amikor a feladat-visszavétel az eredeti helyre történik, a feladat-visszavételi virtuális gép lemezkonfigurációja ugyanaz marad, mint a Hyper-V eredeti virtuálisgép-lemezkonfigurációja. A Hyper-V hely–Azure replikációból kizárt lemezek elérhetőek a feladat-visszavételi virtuális gépen.
@@ -196,7 +196,7 @@ A tervezett, Azure-ból helyszíni Hyper-V-re történő feladatátvétel után 
 
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
-DB-Disk0-OS | DISK0 |    C:\ | Operációsrendszer-lemez
+DB-Disk0-OS | DISK0 |   C:\ | Operációsrendszer-lemez
 DB-Disk1 | Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 DB-Disk2 (kizárt lemez) | Disk2 | E:\ | Ideiglenes fájlok
 DB-Disk3 (kizárt lemez) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\)
