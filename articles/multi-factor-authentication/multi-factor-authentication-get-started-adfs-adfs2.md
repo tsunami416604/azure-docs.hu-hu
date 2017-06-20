@@ -5,19 +5,20 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 96168849-241a-4499-a224-d829913caa7e
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/24/2017
+ms.date: 06/14/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: H1Hack27Feb2017, it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
 ms.openlocfilehash: ea0853929cd8670b6458a546e7fb1b3a229c09d7
+ms.contentlocale: hu-hu
 ms.lasthandoff: 02/28/2017
 
 ---
@@ -37,9 +38,9 @@ Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authe
    <center>![Telepítés](./media/multi-factor-authentication-get-started-adfs-adfs2/setup1.png)</center>
 
 4. A felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-t (pl. https://sso.contoso.com/adfs/ls) az Űrlapalapú webhely automatikus konfigurálása párbeszédpanelen, és kattintson az **OK** gombra.
-5. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet. 
+5. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 6. Ha az oldal változóit nem lehet automatikusan észlelni, kattintson a **Megadás manuálisan** gombra az Űrlapalapú webhely automatikus konfigurálása párbeszédpanelen.
-7. Az Űrlapalapú webhely hozzáadása párbeszédpanelen adja meg az AD FS bejelentkezési oldal URL-címét (pl. https://sso.contoso.com/adfs/ls) a Küldési URL-cím mezőben, majd adjon meg egy alkalmazásnevet (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben. 
+7. Az Űrlapalapú webhely hozzáadása párbeszédpanelen adja meg az AD FS bejelentkezési oldal URL-címét (pl. https://sso.contoso.com/adfs/ls) a Küldési URL-cím mezőben, majd adjon meg egy alkalmazásnevet (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
 8. A kérelmet állítsa **POST vagy GET** formátumúra.
 9. Adja meg a Felhasználónév változót (ctl00$ContentPlaceHolder1$UsernameTextBox) és a Jelszó változót (ctl00$ContentPlaceHolder1$PasswordTextBox). Ha az űrlapalapú bejelentkezési oldalon egy tartomány szövegmező jelenik meg, írja be a Tartomány változót is. A bejelentkezési lapon megjelenő beviteli mezők nevének a megtekintéséhez nyissa meg a bejelentkezési lapot egy webböngészőben, majd a kattintson a jobb gombbal a **Forrás megtekintése** parancsra.
 10. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet.
@@ -51,7 +52,7 @@ Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authe
     - Az elsődleges hitelesítő adatok hitelesítési módjának kiválasztása
 
 12. Mivel az AD FS-proxykiszolgáló valószínűleg nem fog a tartományhoz csatlakozni, valószínűleg LDAP-vel fog csatlakozni a tartományvezérlőhöz a felhasználó importálásához és előhitelesítéséhez. A Speciális űrlapalapú webhely párbeszédpanelen kattintson az **Elsődleges hitelesítés fülre**, és válassza az **LDAP-kötést** az előhitelesítés hitelesítési típusaként.
-13. Amikor végzett, kattintson az **OK** gombra, hogy visszatérjen az Űrlapalapú webhely hozzáadása párbeszédpanelre. 
+13. Amikor végzett, kattintson az **OK** gombra, hogy visszatérjen az Űrlapalapú webhely hozzáadása párbeszédpanelre.
 14. A párbeszédpanel bezárásához kattintson az **OK** gombra.
 15. Miután a rendszer észlelte vagy megadta az URL-címet és az oldal változóit, a webhely adatai megjelennek az Űrlapalapú panelen.
 16. Kattintson a **Natív modul** fülre, és jelölje ki a kiszolgálót, az AD FS-proxyt futtató webhelyet (például az „Alapértelmezett webhelyet”) vagy az AD FS-proxyalkalmazást (például az „adfs” alatt található „Is”-t) az IIS beépülő modul kívánt szinten való engedélyezéséhez.
@@ -93,14 +94,14 @@ Az AD FS védelmét akkor is biztosíthatja, ha az AD FS-proxy nincs használatb
 3. Kattintson az **Add** (Hozzáadás) parancsra.
 4. Az Alap URL-cím hozzáadása párbeszédpanelen az Alap URL-cím mezőben adja meg az URL-címét annak az AD FS-webhelynek, amelyen a rendszer a HTTP-hitelesítést végzi (pl. https://sso.domain.com/adfs/ls/auth/integrated). Ezután írja be az alkalmazás nevét (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
 5. Ha szeretné, állítsa be az Üresjárati időkorlátot és a Munkamenetek maximális időtartamát.
-6. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet. 
+6. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 7. Szükség esetén jelölje be a cookie-gyorsítótár jelölőnégyzetét.
 
    <center>![Telepítés](./media/multi-factor-authentication-get-started-adfs-adfs2/noproxy.png)</center>
 
 8. Kattintson az **OK** gombra.
 9. Kattintson a **Natív modul** fülre, és jelölje ki a kiszolgálót, a webhelyet (például az „Alapértelmezett webhelyet”) vagy az AD FS-alkalmazást (például az „adfs” alatta található „Is”-t) az IIS beépülő modul kívánt szinten való engedélyezéséhez.
-10. Kattintson az **IIS-hitelesítés engedélyezése** jelölőnégyzetre a képernyő tetején. 
+10. Kattintson az **IIS-hitelesítés engedélyezése** jelölőnégyzetre a képernyő tetején.
 
 Az Azure Multi-Factor Authentication mostantól védi az AD FS-t.
 

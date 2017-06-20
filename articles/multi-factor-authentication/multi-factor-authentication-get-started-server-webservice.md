@@ -5,27 +5,28 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 6c8d6fcc-70f4-4da4-9610-c76d66635b8b
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/25/2017
+ms.date: 06/15/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: H1Hack27Feb2017,it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 20afeb3ba290ddf728d2b52c076c7a57fadc77c6
 ms.openlocfilehash: 4014bf0217e25ea9bc8473ef2383279e5eb79b87
+ms.contentlocale: hu-hu
 ms.lasthandoff: 02/28/2017
 
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>A mobilalkalmazásos hitelesítés engedélyezése az Azure Multi-Factor Authentication-kiszolgálóval
 
-A Microsoft Authenticator alkalmazás egy további sávon kívüli ellenőrzési lehetőséget kínál. Automatikus telefonhívás vagy SMS küldése helyett a felhasználó bejelentkezésekor az Azure Multi-Factor Authentication értesítést küld le a Microsoft Authenticator alkalmazásba a felhasználó okostelefonján vagy táblagépén. A felhasználó egyszerűen az **Ellenőrzés** (vagy a PIN-kód megadása után a „Hitelesítés”) elemre koppint a bejelentkezés befejezéséhez. 
+A Microsoft Authenticator alkalmazás egy további sávon kívüli ellenőrzési lehetőséget kínál. Automatikus telefonhívás vagy SMS küldése helyett a felhasználó bejelentkezésekor az Azure Multi-Factor Authentication értesítést küld le a Microsoft Authenticator alkalmazásba a felhasználó okostelefonján vagy táblagépén. A felhasználó egyszerűen az **Ellenőrzés** (vagy a PIN-kód megadása után a „Hitelesítés”) elemre koppint a bejelentkezés befejezéséhez.
 
-Ha a telefonon a vétel nem megbízható, kétlépéses ellenőrzést biztosító mobilalkalmazás használata ajánlott. Ha az alkalmazást OATH token előállítására használja, nincs szükség hálózatra vagy internetkapcsolatra. 
+Ha a telefonon a vétel nem megbízható, kétlépéses ellenőrzést biztosító mobilalkalmazás használata ajánlott. Ha az alkalmazást OATH token előállítására használja, nincs szükség hálózatra vagy internetkapcsolatra.
 
 A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól eltérő kiszolgálón való telepítésének lépései a következők:
 
@@ -51,10 +52,10 @@ A Microsoft Authenticator alkalmazás használatához a következőkre van szük
 
 
 ## <a name="install-the-web-service-sdk"></a>A Web Service SDK telepítése
-Ha az Azure Multi-Factor Authentication Web Service SDK még nincs telepítve az Azure Multi-Factor Authentication- (MFA-) kiszolgálón, lépjen a kiszolgálóra, és nyissa meg az Azure MFA-kiszolgálót. 
+Ha az Azure Multi-Factor Authentication Web Service SDK még nincs telepítve az Azure Multi-Factor Authentication- (MFA-) kiszolgálón, lépjen a kiszolgálóra, és nyissa meg az Azure MFA-kiszolgálót.
 
 1. Kattintson a Web Service SDK ikonra.
-2. Kattintson a **Web Service SDK telepítése** gombra, és kövesse a megjelenő utasításokat. 
+2. Kattintson a **Web Service SDK telepítése** gombra, és kövesse a megjelenő utasításokat.
 
 A Web Service SDK védelméhez SSL-tanúsítvány használata szükséges. Erre a célra megfelel egy önaláírt tanúsítvány. Importálja a tanúsítványt a felhasználói portál webkiszolgálójának helyi számítógépfiókja „Megbízható legfelső szintű hitelesítésszolgáltatók” tárolójába, hogy az megbízhatónak tekintse ezt a tanúsítványt az SSL-kapcsolat elindításakor.
 
@@ -65,7 +66,7 @@ A Mobile App Web Service telepítése előtt vegye figyelembe a következő rés
 
 * Ha az Azure MFA felhasználói portál már telepítve van az internetes kiszolgálón, a felhasználónév, a jelszó és a Web Service SDK URL-címe másolható a felhasználói portál web.config fájljából.
 * Hasznos lehet, ha megnyit egy webböngészőt az internetes webkiszolgálón és megkeresi a Web Service SDK a web.config fájlban megadott URL-címét. Ha a böngésző sikeresen eléri a webszolgáltatást, kérnie kell a hitelesítő adatok megadását. Írja be a web.config fájlban megadott felhasználónevet és jelszót pontosan úgy, ahogyan az a fájlban megjelenik. Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
-* Ha fordított proxy vagy tűzfal található a Mobile App Web Service webkiszolgálója előtt és SSL-tehermentesítést végez, a Mobile App Web Service web.config fájljának szerkesztésével a Mobile App Web Service http-t használhat https helyett. Az SSL továbbra is szükséges a Mobile App és a tűzfal/fordított proxy között. Adja hozzá a következő kulcsot az \<appSettings\> szakaszhoz: 
+* Ha fordított proxy vagy tűzfal található a Mobile App Web Service webkiszolgálója előtt és SSL-tehermentesítést végez, a Mobile App Web Service web.config fájljának szerkesztésével a Mobile App Web Service http-t használhat https helyett. Az SSL továbbra is szükséges a Mobile App és a tűzfal/fordított proxy között. Adja hozzá a következő kulcsot az \<appSettings\> szakaszhoz:
 
         <add key="SSL_REQUIRED" value="false"/>
 
@@ -79,11 +80,11 @@ A Mobile App Web Service telepítése előtt vegye figyelembe a következő rés
 
   Rövid virtuális-címtárnév használata javasolt, mivel a felhasználóknak a Mobile App Web Service URL-címét meg kell adniuk a mobileszközeiken aktiváláskor.
 
-4. Az Azure Multi-Factor AuthenticationMobileAppWebServiceSetup telepítésének befejezése után lépjen a C:\inetpub\wwwroot\PA könyvtárra (vagy a virtuális könyvtár neve alapján a megfelelő könyvtárra), és szerkessze a web.config fájlt. 
+4. Az Azure Multi-Factor AuthenticationMobileAppWebServiceSetup telepítésének befejezése után lépjen a C:\inetpub\wwwroot\PA könyvtárra (vagy a virtuális könyvtár neve alapján a megfelelő könyvtárra), és szerkessze a web.config fájlt.
 
 5. Keresse meg a WEB_SERVICE_SDK_AUTHENTICATION_USERNAME és a WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD kulcsot. Állítsa az értékeket azon szolgáltatásfiók felhasználónevére és jelszavára, amely a PhoneFactor-adminisztrátorok biztonsági csoport tagja. Ez lehet ugyanaz a fiók, amelyet a Azure Multi-Factor Authentication felhasználói portál identitásaként használ, ha az már korábban telepítve volt. Ügyeljen rá, hogy a felhasználónév és a jelszó a sor végén lévő idézőjelek között legyen megadva (value=””/>). Teljes felhasználónevet adjon meg, mint tartomány\felhasználónév vagy gép\felhasználónév.  
 
-6. Keresse meg a pfMobile App Web Service_pfwssdk_PfWsSdk beállítást. Módosítsa az értéket *http://localhost:4898/PfWsSdk.asmx* értékről azon Web Service SDK URL-címére, amely az Azure Multi-Factor Authentication-kiszolgálón fut (például https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx). 
+6. Keresse meg a pfMobile App Web Service_pfwssdk_PfWsSdk beállítást. Módosítsa az értéket *http://localhost:4898/PfWsSdk.asmx* értékről azon Web Service SDK URL-címére, amely az Azure Multi-Factor Authentication-kiszolgálón fut (például https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx).
 
   Mivel ehhez a kapcsolathoz a rendszer SSL-t használ, a Web Service SDK-ra kiszolgálónév alapján kell hivatkozni és nem IP-cím alapján. Az SSL-tanúsítvány a kiszolgálónévhez lesz kiadva, és a használt URL-címnek meg kell egyeznie a tanúsítványon szereplő névvel. Előfordulhat, hogy a kiszolgáló neve nem az internetes kiszolgálóról származó IP-címmé lesz feloldva. Ebben az esetben adjon egy bejegyzést a kiszolgálón lévő gazdafájlhoz az Azure Multi-Factor Authentication-kiszolgáló nevének az IP-címére való leképezéséhez. A módosítások elvégzése után mentse a web.config fájlt.
 

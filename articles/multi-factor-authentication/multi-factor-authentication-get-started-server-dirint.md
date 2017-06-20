@@ -5,19 +5,21 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 06/16/2017
 ms.author: kgremban
-translationtype: Human Translation
+ms.reviewer: yossib
+ms.custom: it-pro
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
 ms.openlocfilehash: 07b14394b0e07fd78d70d77aeef8a2feb17284e0
-
+ms.contentlocale: hu-hu
+ms.lasthandoff: 02/17/2017
 
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
@@ -94,7 +96,7 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 | Mellék |Megadhatja azon attribútum nevét, amely a telefonszámhoz tartozó melléket egy felhasználórekordban tárolja.  A mellék mező értékét a rendszer csak az elsődleges telefonszám mellékeként használja.  Alapértelmezés szerint ez a mező üres. <br><br>Ha a Mellék attribútum nincs meghatározva, a mellékek megadhatók a telefonattribútum részeként. Ebben az esetben a mellék elé tegyen egy „x” karaktert, hogy a rendszer megfelelően tudja elemezni.  Például az 555-123-4567 x890 érték az 555-123-4567-es telefonszámot jelöli 890-es mellékkel. |
 | Alapértelmezések visszaállítása gomb |Kattintson az **Alapértelmezések visszaállítása** gombra, hogy az összes attribútum visszaálljon az alapértelmezett értékre.  Az alapértelmezett értékek megfelelően működnek a normál Active Directory- vagy ADAM-sémával. |
 
-Az attribútumok szerkesztéséhez kattintson az Attribútumok lapon a **Szerkesztés** gombra.  Ez megnyit egy ablakot, amelyben szerkeszthetők az attribútumok. Bármely attribútum mellett a **...** elemet kiválasztva megnyílik egy ablak, ahol kiválaszthatja, hogy mely attribútumok jelenjenek meg. 
+Az attribútumok szerkesztéséhez kattintson az Attribútumok lapon a **Szerkesztés** gombra.  Ez megnyit egy ablakot, amelyben szerkeszthetők az attribútumok. Bármely attribútum mellett a **...** elemet kiválasztva megnyílik egy ablak, ahol kiválaszthatja, hogy mely attribútumok jelenjenek meg.
 
 ![Attribútumok szerkesztése](./media/multi-factor-authentication-get-started-server-dirint/dirint4.png)
 
@@ -137,10 +139,4 @@ A Feljebb és Lejjebb gombbal a rendszergazda módosíthatja a szinkronizált el
 További Multi-Factor Auth-kiszolgálókat beállíthat úgy, hogy tartalék RADIUS-proxyként, LDAP-proxyként, illetve IIS-hitelesítési kiszolgálóként szolgáljanak. A szinkronizálási konfiguráció az összes ügynökre érvényes. Azonban csak az egyik ügynökön futhat a Multi-Factor Auth-kiszolgáló szolgáltatás. Ezen a lapon kiválaszthatja a szinkronizálásra engedélyezett Multi-Factor Auth-kiszolgálót.
 
 ![Multi-Factor-Auth-kiszolgálók](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
