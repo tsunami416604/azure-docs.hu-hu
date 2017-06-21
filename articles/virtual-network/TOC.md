@@ -40,12 +40,7 @@
 #### [PowerShell (klasszikus)](virtual-network-create-udr-classic-ps.md)
 #### [Parancssori felület (klasszikus)](virtual-network-create-udr-classic-cli.md)
 
-### Társviszony létesítése virtuális hálózatok között
-#### [Portál](virtual-networks-create-vnetpeering-arm-portal.md)
-#### [PowerShell](virtual-networks-create-vnetpeering-arm-ps.md)
-#### [Sablon](virtual-networks-create-vnetpeering-arm-template-click.md)
-
-### [Nyilvános IP-címek](virtual-network-public-ip-address.md)
+### [Társviszony létesítése virtuális hálózatok között](virtual-network-create-peering.md)
 
 ### Virtual machines (Virtuális gépek)
 #### Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása
@@ -118,6 +113,7 @@
 #### [IP-címek hozzáadása, szerkesztése vagy eltávolítása](virtual-network-network-interface-addresses.md)
 ### Virtual machines (Virtuális gépek)
 #### [Virtuális gép áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md)
+### [Nyilvános IP-címek](virtual-network-public-ip-address.md)
 
 ## Hibaelhárítás
 ### Network security groups (Hálózati biztonsági csoportok)

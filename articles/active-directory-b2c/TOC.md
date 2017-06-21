@@ -3,6 +3,7 @@
 # Bevezetés
 ## [Azure AD B2C-címtár létrehozása](active-directory-b2c-get-started.md)
 ## [Alkalmazás regisztrálása](active-directory-b2c-app-registration.md)
+## [Beépített szabályzatok](active-directory-b2c-reference-policies.md)
 ## Mobil- és asztali appok
 ### [Áttekintés](active-directory-b2c-reference-oauth-code.md)
 ### iOS
@@ -24,6 +25,7 @@
 ### [JavaScript a Hello használatával](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 ## Webes API-k
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
+### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
 ### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
 ### [.NET-alapú webes API hívása](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
@@ -63,6 +65,7 @@
 #### [További jogcímek beszerzése](active-directory-b2c-rest-api-step-custom.md)
 ### Bejelentkezés testreszabása
 #### [Felhasználó által megadott adatok konfigurálása](active-directory-b2c-configure-signup-self-asserted-custom.md)
+#### [Egyéni attribútumok](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [Felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md)
 #### [Jogkivonatok testreszabása](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 ### Hibaelhárítás
@@ -74,7 +77,6 @@
 ## Szószedet
 ### [Alkalmazástípusok](active-directory-b2c-apps.md)
 ### [Hitelesítési protokollok](active-directory-b2c-reference-protocols.md)
-### [Beépített szabályzatok](active-directory-b2c-reference-policies.md)
 ### [Jogkivonatok](active-directory-b2c-reference-tokens.md)
 ## [Régiónkénti elérhetőség és az adatok tárolási helye](active-directory-b2c-reference-tenant-type.md)
 ## [Számlázás engedélyezése](active-directory-b2c-how-to-enable-billing.md)

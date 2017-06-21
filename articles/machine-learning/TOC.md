@@ -155,7 +155,7 @@
 #### [Meglévő webszolgáltatás újratanítása](machine-learning-retrain-existing-resource-manager-based-web-service.md)
 #### [Hibaelhárítás](machine-learning-troubleshooting-retraining-models.md)
 ### Modellek felhasználása
-#### [Áttekintés](machine-learning-connect-to-azure-machine-learning-web-service.md)
+#### [Áttekintés](machine-learning-consume-web-services.md)
 #### [Excel használata](machine-learning-consuming-from-excel.md)
 #### [Excel-bővítmény használata](machine-learning-excel-add-in-for-web-services.md)
 #### [Webalkalmazás-sablon használata](machine-learning-consume-web-service-with-web-app-template.md)

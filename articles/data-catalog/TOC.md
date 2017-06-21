@@ -23,6 +23,7 @@
 
 # Referencia
 ## [REST](/rest/api/datacatalog/)
+## [Keresési szintaxis referenciája](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Fejlesztői fogalmak](data-catalog-developer-concepts.md)
 ## [Fejlesztői minták](data-catalog-samples.md)
 
@@ -34,8 +35,3 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
-
-
-<!--HONumber=Feb17_HO1-->
-
-

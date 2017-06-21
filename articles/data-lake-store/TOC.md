@@ -10,7 +10,6 @@
 ## [A .NET SDK használata](data-lake-store-get-started-net-sdk.md)
 ## [A Java SDK használata](data-lake-store-get-started-java-sdk.md)
 ## [A REST API használata](data-lake-store-get-started-rest-api.md)
-## [Az Azure parancssori felület használata](data-lake-store-get-started-cli.md)
 ## [Az Azure CLI 2.0 használata](data-lake-store-get-started-cli-2.0.md)
 ## [A Node.js használata](data-lake-store-manage-use-nodejs.md)
 ## [A Python használata](data-lake-store-get-started-python.md)

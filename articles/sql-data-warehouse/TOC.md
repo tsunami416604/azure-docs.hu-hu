@@ -48,6 +48,7 @@
 #### [Adattípusok](sql-data-warehouse-tables-data-types.md)
 #### [Elosztott táblák](sql-data-warehouse-tables-distribute.md)
 #### [Indexek](sql-data-warehouse-tables-index.md)
+#### [Identitáskezelés](sql-data-warehouse-tables-identity.md)
 #### [Partíciók](sql-data-warehouse-tables-partition.md)
 #### [Statisztika](sql-data-warehouse-tables-statistics.md)
 #### [Ideiglenes](sql-data-warehouse-tables-temporary.md)

@@ -200,13 +200,13 @@
 #### [Törlés](service-fabric-cluster-delete.md)
 
 ### Önálló fürtök
-#### [A különálló csomag tartalma](service-fabric-cluster-standalone-package-contents.md)
 #### [Tervezés és felkészülés az üzembe helyezésre](service-fabric-cluster-standalone-deployment-preparation.md)
 #### Létrehozás
 ##### [Helyszíni létrehozás](service-fabric-cluster-creation-for-windows-server.md)
 ##### [Létrehozás Azure-beli virtuális gépeken](service-fabric-cluster-creation-with-windows-azure-vms.md)
 ##### [Biztonságossá tétel tanúsítványokkal](service-fabric-windows-cluster-x509-security.md)  
 ##### [Biztonságossá tétel a Windows-rendszerbiztonság használatával](service-fabric-windows-cluster-windows-security.md)
+##### [A különálló csomag tartalma](service-fabric-cluster-standalone-package-contents.md)
 #### [Méretezés](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [Hozzáférés-vezérlés beállítása](service-fabric-cluster-security-roles.md)
 #### [Konfigurálás](service-fabric-cluster-manifest.md)
@@ -232,8 +232,6 @@
 #### [Fürt terhelésének elosztása](service-fabric-cluster-resource-manager-balancing.md)
 #### [Szabályozás](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [Szolgáltatás áthelyezése](service-fabric-cluster-resource-manager-movement-cost.md)
-
-### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
 
 ## Megfigyelés és diagnosztika
 ### [Alkalmazások figyelése és diagnosztikája](service-fabric-diagnostics-overview.md)
@@ -261,8 +259,9 @@
 # Referencia
 ## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
-## [Java API](/java/api/)
-## [.NET](/dotnet/api/)
+## [Azure CLI](/cli/azure/sf)
+## [Java API](/java/api/overview/azure/servicefabric)
+## [.NET](/dotnet/api/overview/azure/servicefabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
 
 # Erőforrások

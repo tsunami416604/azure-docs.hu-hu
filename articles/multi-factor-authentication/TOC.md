@@ -7,15 +7,15 @@
 ## [Az üzembe helyezés helyének kiválasztása](multi-factor-authentication-get-started.md)
 ## [MFA üzemeltetése a felhőben](multi-factor-authentication-get-started-cloud.md)
 ## [MFA helyszíni üzemeltetése](multi-factor-authentication-get-started-server.md)
-## [MFA O365-felhasználók számára](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)
+## [MFA O365-felhasználók számára](https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)
 ## [Ajánlott biztonsági eljárások](multi-factor-authentication-security-best-practices.md)
 
 # Útmutató
 ## Üzembe helyezés és használat
-### [Hitelesítési szolgáltató létrehozása](multi-factor-authentication-get-started-auth-provider.md)
 ### [Beállítások konfigurálása](multi-factor-authentication-whats-next.md)
 ### [Jelentések az MFA-ban](multi-factor-authentication-manage-reports.md)
 ### [Meglévő hálózatiházirend-kiszolgálók használata](multi-factor-authentication-nps-extension.md)
+### [Hitelesítési szolgáltató létrehozása](multi-factor-authentication-get-started-auth-provider.md)
 ### Helyszíni Azure MFA
 #### [A felhasználói portál telepítése](multi-factor-authentication-get-started-portal.md)
 #### [Speciális VPN-konfigurációk](multi-factor-authentication-advanced-vpn-configurations.md)
