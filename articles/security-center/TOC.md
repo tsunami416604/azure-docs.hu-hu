@@ -5,11 +5,13 @@
 ## Forgatókönyvek
 ### [Incidensmegoldás](security-center-incident-response.md)
 ### [Javaslatok használata a biztonság növelése érdekében](security-center-using-recommendations.md)
+## [Platformok migrálása](security-center-platform-migration.md)
 
 # Bevezetés
 ## [Első lépések](security-center-get-started.md)
 ## [Tervezés és műveletek](security-center-planning-and-operations-guide.md)
 ## [Engedélyek](security-center-permissions.md)
+## [Támogatott platformok](security-center-os-coverage.md)
 ## [Partnerintegráció](security-center-partner-integration.md)
 ## [Gyakori kérdések](security-center-faq.md)
 

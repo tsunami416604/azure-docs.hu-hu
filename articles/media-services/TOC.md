@@ -6,7 +6,13 @@
 ## [A fejlesztési környezet beállítása](media-services-set-up-computer.md)
 ###[.NET](media-services-dotnet-how-to-use.md)
 ###[REST](media-services-rest-how-to-use.md)  
-## Programozott módon való kapcsolódás
+## [API-hozzáférés AAD-hitelesítés használatával](media-services-use-aad-auth-to-access-ams-api.md)
+###[AAD-hitelesítés kezelése a portál használatával](media-services-portal-get-started-with-aad.md)
+###[API-hozzáférés .NET-tel](media-services-dotnet-get-started-with-aad.md)
+###[API-hozzáférés REST-tel](media-services-rest-connect-with-aad.md)
+###[AAD-alkalmazás létrehozása és konfigurálása a parancssori felületen](media-services-cli-create-and-configure-aad-app.md)
+###[AAD-alkalmazás létrehozása és konfigurálása PowerShell-lel](media-services-powershell-create-and-configure-aad-app.md)
+## Programozott módon való kapcsolódás ACS-kulcsokkal
 ### [.NET](media-services-dotnet-connect-programmatically.md)
 ### [REST](media-services-rest-connect-programmatically.md)
 
@@ -129,7 +135,7 @@
 ### [Partnerek használata a Widevine-licencek Media Servicesbe való kézbesítéséhez](media-services-licenses-partner-integration.md)
 ### [A PlayReady és/vagy Widevine Dynamic Common Encryption titkosítás használata](media-services-protect-with-drm.md)
 ### [Az Apple FairPlay által védett HLS-tartalmak streamelése ](media-services-protect-hls-with-fairplay.md)
-### [CENC with Multi-DRM and Access Control](media-services-cenc-with-multidrm-access-control.md) (CENC többszörös DRM-mel és hozzáférés-vezérléssel)
+### [CENC többszörös DRM-mel és hozzáférés-vezérléssel](media-services-cenc-with-multidrm-access-control.md)
 ### [Az Axinom használata a Widevine-licencek Media Servicesbe való kézbesítéséhez  ](media-services-axinom-integration.md)
 ### [A castLabs használata a Widevine-licencek Media Servicesbe való kézbesítéséhez](media-services-castlabs-integration.md)
 
@@ -214,7 +220,7 @@
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [PowerShell (Szolgáltatásfelügyelet)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
-## [REST](/rest/api/media)
+## [REST](/rest/api/media/mediaservice)  
 
 # Erőforrások
 ## [Kibocsátási megjegyzések](media-services-release-notes.md)
