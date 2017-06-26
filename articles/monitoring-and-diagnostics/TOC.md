@@ -29,8 +29,8 @@
 ### [Gyakori metrikák](insights-autoscale-common-metrics.md)
 ### [Gyakori minták](monitoring-autoscale-common-scale-patterns.md)
 ### [Automatikus skálázás egyéni metrikával](monitoring-autoscale-scale-by-custom-metric.md)
-### [Virtuálisgép-méretezési készletek automatikus méretezése Resource Manager-sablonok használatával](insights-advanced-autoscale-virtual-machine-scale-sets.md)
-### [VM-skálázási készlet gépeinek automatikus skálázása](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+### [Virtuálisgép-méretezési csoportok automatikus skálázása Resource Manager-sablonok használatával](insights-advanced-autoscale-virtual-machine-scale-sets.md)
+### [Virtuálisgép-méretezési csoport gépeinek automatikus skálázása](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Webhookok és e-mailes értesítések beállítása az automatikus méretezésben](insights-autoscale-to-webhook-email.md)
 ## A tevékenységnapló használata
 ### [Események megtekintése a tevékenységnaplóban](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
@@ -39,10 +39,10 @@
 ### [Tevékenységnapló streamelése az Event Hubs szolgáltatásba](monitoring-stream-activity-logs-event-hubs.md)
 ### [Auditálási műveletek a Resource Managerben](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Tevékenységnapló-riasztások létrehozása a Resource Managerrel](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-## Szolgáltatási értesítések
+## Szolgáltatási értesítések használata
 ### [Szolgáltatási értesítések megtekintése](monitoring-service-notifications.md)
 ### [Riasztások beállítása szolgáltatási értesítésekhez](monitoring-activity-log-alerts-on-service-notifications.md)
-## Műveletcsoportok
+## Műveletcsoportok használata
 ### [Információ a webhook sémáról](monitoring-activity-log-alerts-webhook.md)
 ### [Az SMS-riasztás viselkedése](monitoring-sms-alert-behavior.md)
 ### [Riasztási arány korlátozása](monitoring-alerts-rate-limiting.md)

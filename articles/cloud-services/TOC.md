@@ -102,7 +102,11 @@
 ### [Gyakori üzembe helyezési problémák](cloud-services-troubleshoot-deployment-problems.md)
 ### [A szerepkör nem indult el](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [Helyreállítási útmutató](cloud-services-disaster-recovery-guidance.md)
-### [Cloud Services – gyakori kérdések](cloud-services-faq.md)
+### Cloud Services – gyakori kérdések
+#### [Az alkalmazások és szolgáltatások rendelkezésre állásával kapcsolatos gyakori kérdések](cloud-services-application-and-service-availability-faq.md)
+#### [Konfigurálással és felügyelettel kapcsolatos gyakori kérdések](cloud-services-configuration-and-management-faq.md)
+#### [Kapcsolatokkal és hálózatkezeléssel kapcsolatos gyakori kérdések](cloud-services-connectivity-and-networking-faq.md)
+#### [Üzembe helyezéssel kapcsolatos gyakori kérdések](cloud-services-deployment-faq.md)
 
 # Referencia
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)

@@ -140,6 +140,12 @@
       href: move-vm.md
     - name: Magas rendelkezésre állású virtuális gépek létrehozása
       href: create-cli-complete.md
+    - name: Terraform
+      items:
+      - name: Telepítés és konfigurálás
+        href: ../terraform-install-configure.md
+      - name: Alapszintű infrastruktúra létrehozása
+        href: ../terraform-create-complete-vm.md
     - name: Ansible
       items:
       - name: Telepítés és konfigurálás
@@ -202,6 +208,8 @@
       href: upload-vhd.md
     - name: Meglévő virtuális gép rögzítése rendszerképben
       href: capture-image.md
+    - name: Rendszerkép létrehozása a Packerrel
+      href: build-image-with-packer.md
     - name: Azure-rendszerképek létrehozása
       items:
       - name: Ubuntu
@@ -312,7 +320,11 @@
   - name: Alkalmazások futtatása
     items:
     - name: Cloud Foundry
-      href: cloudfoundry-get-started.md
+      items:
+      - name: Áttekintés
+        href: cloudfoundry-get-started.md
+      - name: Az első alkalmazás üzembe helyezése
+        href: cloudfoundry-deploy-your-first-app.md
     - name: Az adatelemzési virtuális gépek áttekintése
       href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: MongoDB
@@ -366,6 +378,8 @@
       href: migration-classic-resource-manager-faq.md
   - name: Hibaelhárítás
     items:
+    - name: Rendszer-újraindítás ismertetése
+      href: understand-vm-reboot.md
     - name: SSH-kapcsolatok
       href: troubleshoot-ssh-connection.md
       items:

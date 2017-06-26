@@ -22,6 +22,8 @@
 ### [Alacsony prioritású virtuális gépek](batch-low-pri-vms.md)
 ### [Batch-fiókok kezelése a Batch Management .NET használatával](batch-management-dotnet.md)
 ### [Feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md)
+#### [Kimenet megőrzése Batch API-val](batch-task-output-files.md)
+#### [Kimenet megőrzése File Conventions-könyvtárral](batch-task-output-file-conventions.md)
 ### [MPI-feladatok futtatása a Batchben](batch-mpi.md)
 ### [Tevékenységfüggőségek](batch-task-dependencies.md)
 ### [Felhasználói fiókok feladatok futtatásához](batch-user-accounts.md)

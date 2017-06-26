@@ -11,12 +11,14 @@
     href: quickstart-create-server-database-portal.md
   - name: DB létrehozása – Azure CLI
     href: quickstart-create-server-database-azure-cli.md
-  - name: Kapcsolódás
-    items:
-    - name: Node.js
-      href: connect-nodejs.md
+  - name: Csatlakozás és lekérdezés
+    items: 
     - name: Python
       href: connect-python.md
+    - name: Node.js
+      href: connect-nodejs.md
+    - name: .NET
+      href: connect-csharp.md
 - name: oktatóanyagokat
   items:
   - name: 1 – Adatbázis-tervezés
@@ -27,6 +29,10 @@
       href: tutorial-design-database-using-azure-cli.md
   - name: 2 – Webapptervezés – Python
     href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+- name: Példák
+  items:
+  - name: Azure CLI
+    href: sample-scripts-azure-cli.md
 - name: Alapelvek
   items:
   - name: Adatbázis és kiszolgálók
@@ -57,10 +63,6 @@
     items:
     - name: Adatkapcsolattárak
       href: concepts-connection-libraries.md
-- name: Példák
-  items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
 - name: Útmutatók
   items:
   - name: Tűzfalszabályok
@@ -73,6 +75,8 @@
     items:
     - name: Azure Portal
       href: howto-restore-server-portal.md
+    - name: Azure CLI
+      href: howto-restore-server-cli.md
   - name: Adatbázis migrálása
     items:
     - name: Memóriakép és visszaállítás
@@ -99,6 +103,8 @@
     href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-database-postgresql
+  - name: Videók
+    href: videos.md    
   - name: Visszajelzési fórum
     href: https://feedback.azure.com/forums/597976-azure-database-for-postgresql
   - name: Régiónkénti elérhetőség

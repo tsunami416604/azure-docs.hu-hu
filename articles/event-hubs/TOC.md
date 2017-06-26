@@ -19,13 +19,11 @@
 
 # Útmutató
 ## Tervezés és kialakítás
-### [🔧 Gyakori integrációs forgatókönyvek az Azure-szolgáltatások használatával](event-hubs-common-integrations.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)
 ### [Rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md)
+### [Átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md)
 ## Fejlesztés
-### [🔧 Hibakezelés és újrapróbálkozás](event-hubs-handling-errors-retry.md)
-### [🔧 Teljesítmény- és méretkezelés](event-hubs-performance-scale.md)
 ### [Elérhető API-k](event-hubs-api-overview.md)
 #### [.NET Standard](event-hubs-dotnet-standard-api-overview.md)
 #### [.NET-keretrendszer](event-hubs-dotnet-framework-api-overview.md)

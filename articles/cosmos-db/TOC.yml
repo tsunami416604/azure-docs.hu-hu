@@ -13,8 +13,6 @@
     items:
     - name: .NET
       href: create-documentdb-dotnet.md
-    - name: .NET Core
-      href: create-documentdb-dotnet-core.md
     - name: Java
       href: create-documentdb-java.md
     - name: Node.js
@@ -135,7 +133,7 @@
       items:
       - name: Erőforrások
         href: documentdb-resources.md
-      - name: SQL-lekérdezés
+      - name: SQL-lekérdezések
         href: documentdb-sql-query.md
       - name: SQL-játszótér
         href: https://www.documentdb.com/sql/demo
@@ -188,12 +186,10 @@
           href: documentdb-nodejs-samples.md
         - name: Python-példák
           href: documentdb-python-samples.md
-        - name: SQL-szintaxis
-          href: https://msdn.microsoft.com/library/azure/dn782250.aspx
-        - name: SQL-szintaxis – adatlap
-          href: documentdb-sql-query-cheat-sheet.md
       - name: Erőforrások
         items:
+        - name: SQL-szintaxis – adatlap
+          href: documentdb-sql-query-cheat-sheet.md
         - name: Stack Overflow
           href: http://stackoverflow.com/questions/tagged/azure-cosmosdb
         - name: Videók
@@ -302,6 +298,8 @@
       href: /rest/api/documentdb/
     - name: REST erőforrás-szolgáltató
       href: /rest/api/documentdbresourceprovider/
+    - name: SQL
+      href: documentdb-sql-query-reference.md
   - name: Tábla API-k
     items:
     - name: .NET

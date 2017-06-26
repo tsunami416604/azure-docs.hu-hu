@@ -4,8 +4,6 @@
   items:
   - name: A Functions ismertetése
     href: functions-overview.md
-  - name: A Functions futtatókörnyezete
-    href: functions-runtime-overview.md
   - name: 'Választás a következők közül: Flow, Logic Apps, Functions és WebJobs'
     href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: Gyors útmutatók
@@ -15,8 +13,8 @@
     href: functions-create-first-azure-function.md
   - name: Függvény létrehozása – Azure CLI
     href: functions-create-first-azure-function-azure-cli.md
-#  - name: Create function - Visual Studio
-#    href: functions-create-your-first-function-visual-studio.md
+  - name: Függvény létrehozása – Visual Studio
+    href: functions-create-your-first-function-visual-studio.md
   - name: Eseményindítók
     items:
     - name: Időzítő
@@ -33,16 +31,16 @@
       href: functions-integrate-storage-queue-output-binding.md
     - name: Cosmos DB
       href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: Példák
-  items:
-  - name: Azure CLI
-    href: functions-cli-samples.md
 - name: oktatóanyagokat
   items:
   - name: 1. – A Functions és a Logic Apps
     href: functions-twitter-email.md
   - name: '2: – Kiszolgáló nélküli API létrehozása'
     href: functions-create-serverless-api.md
+- name: Példák
+  items:
+  - name: Azure CLI
+    href: functions-cli-samples.md
 - name: Alapelvek
   items:
   - name: Használat és App Service-csomagok
@@ -51,36 +49,49 @@
     href: functions-triggers-bindings.md
   - name: Nyelvek
     items:
-    - name: 'C#-függvények alapelvei'
+    - name: 'C#-szkript'
+ 
       href: functions-reference-csharp.md
-    - name: 'F#-függvények alapelvei'
+    - name: .NET-osztálytár
+      href: functions-dotnet-class-library.md
+    - name: 'F#'
       href: functions-reference-fsharp.md
-    - name: JavaScript-függvények alapelvei
+    - name: JavaScript
       href: functions-reference-node.md    
+  - name: A teljesítménnyel kapcsolatos megfontolások
+    href: functions-best-practices.md 
+  - name: Functions-proxyk
+    href: functions-proxies.md 
+  - name: A Functions futtatókörnyezete
+    href: functions-runtime-overview.md
 - name: Útmutatók
   items:
-  - name: Fejlesztői útmutató
-    href: functions-reference.md
-  - name: Az Azure Functions tesztelése
-    href: functions-test-a-function.md
-  - name: Helyi fejlesztés és hibakeresés
-    href: functions-run-local.md
-  - name: Függvényalkalmazás beállításainak konfigurálása
+  - name: Fejlesztés
+    items: 
+     - name: Fejlesztői útmutató
+       href: functions-reference.md
+     - name: Függvények tesztelése
+       href: functions-test-a-function.md
+     - name: Helyi fejlesztés és hibakeresés
+       href: functions-run-local.md
+  - name: Üzembe helyezés
+    items:
+    - name: Folyamatos üzembe helyezés
+      href: functions-continuous-deployment.md
+    - name: Erőforrások üzembe helyezésének automatizálása
+      href: functions-infrastructure-as-code.md
+    - name: Helyszíni függvények
+      href: functions-runtime-install.md
+  - name: Konfigurálás
     href: functions-how-to-use-azure-function-app-settings.md
-  - name: Azure Functions – folyamatos üzembe helyezés
-    href: functions-continuous-deployment.md
-  - name: Erőforrások üzembe helyezésének automatizálása
-    href: functions-infrastructure-as-code.md
-  - name: Az Azure Functions figyelése
+  - name: Figyelés
     href: functions-monitoring.md
-  - name: A Functions futtatókörnyezetének telepítése
-    href: functions-runtime-install.md
-  - name: Csatlakozás SQL Database-adatbázishoz
-    href: functions-scenario-database-table-cleanup.md
-  - name: Open API 2.0-definíció létrehozása
-    href: functions-api-definition-getting-started.md     
-  - name: Azure Functions – ajánlott eljárások
-    href: functions-best-practices.md     
+  - name: Integrálás
+    items:   
+    - name: Csatlakozás SQL Database-adatbázishoz
+      href: functions-scenario-database-table-cleanup.md
+    - name: Open API 2.0-definíció létrehozása
+      href: functions-api-definition-getting-started.md         
 - name: Referencia
   items:
   - name: Kötések
@@ -117,10 +128,14 @@
   items:
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/functions/
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/regions/services/
   - name: MSDN-fórum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-functions
+  - name: Twitter
+    href: https://twitter.com/azurefunctions
   - name: Az Azure Functions GitHub-adattára
     href: https://github.com/Azure/Azure-Functions/
   - name: Szolgáltatási hírek

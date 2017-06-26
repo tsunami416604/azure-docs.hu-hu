@@ -48,7 +48,7 @@
 #### [A Resource Managerrel üzembe helyezett virtuális gépek előkészítése](backup-azure-arm-vms-prepare.md)
 ### A környezet megtervezése
 #### [Virtuális gépek biztonsági mentési infrastruktúrájának tervezése](backup-azure-vms-introduction.md)
-### A kiszolgálók és a számítási feladatok biztonsági mentése
+### Virtuális gépek biztonsági mentése
 #### [Azure-beli virtuális gépek biztonsági mentése biztonsági mentési tárolóba](backup-azure-vms.md)
 #### [Azure-beli virtuális gépek biztonsági mentése Recovery Services-tárolóba](backup-azure-arm-vms.md)
 #### [Titkosított virtuális gépek biztonsági mentése](backup-azure-vms-encryption.md)

@@ -140,6 +140,14 @@
       href: csharp-template.md
     - name: Virtuális gép létrehozása Chef használatával
       href: chef-automation.md
+    - name: Virtuális gép létrehozása Python használatával
+      href: python.md
+    - name: Virtuális gép létrehozása Terraform használatával
+      items:
+      - name: Telepítés és konfigurálás
+        href: ../terraform-install-configure.md
+      - name: Alapszintű infrastruktúra létrehozása
+        href: ../terraform-create-complete-vm.md      
     - name: Népszerű alkalmazás-keretrendszereket futtató virtuális gép létrehozása
       href: app-frameworks.md
     - name: Virtuális gép áthelyezése előfizetések között
@@ -185,13 +193,10 @@
       href: capture-image-resource.md
     - name: Virtuális gép létrehozása általános felügyelt lemez rendszerképéből
       href: create-vm-generalized-managed.md
+    - name: Rendszerkép létrehozása a Packerrel
+      href: build-image-with-packer.md
   - name: Virtuális gép tárolójának kezelése
     items:
-    - name: Azure Managed Disks
-      href: ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      items:
-      - name: Gyakori kérdések
-        href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Felügyelt lemezek létrehozása
       href: create-managed-disk-ps.md
     - name: Virtuális gépek migrálása felügyelt lemezekre
@@ -215,6 +220,8 @@
       href: expand-os-disk.md
     - name: Adatlemez kibontása
       href: expand-data-disks.md
+    - name: Fájlmegosztás használata
+      href: mount-azure-file-storage.md
     - name: A D meghajtó használata adatlemezként
       href: change-drive-letter.md
   - name: Virtuális gépek hálózatkezelése
@@ -348,6 +355,8 @@
         href: migration-classic-resource-manager-faq.md
   - name: Hibaelhárítás
     items:
+    - name: Rendszer-újraindítás ismertetése
+      href: understand-vm-reboot.md
     - name: Távoli asztali kapcsolatok
       href: troubleshoot-rdp-connection.md
       items:

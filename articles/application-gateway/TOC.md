@@ -41,6 +41,7 @@
 ### [Portál](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
 ### [PowerShell (klasszikus)](application-gateway-create-probe-classic-ps.md)
+## [Azure Security Center – integráció](application-gateway-integration-security-center.md)
 ## [Többféle terheléselosztási szolgáltatás használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## Hibaelhárítás
 ### [Az Application Gatewayben észlelt hibák elhárítása](application-gateway-troubleshooting-502.md)

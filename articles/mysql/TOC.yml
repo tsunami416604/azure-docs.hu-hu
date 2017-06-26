@@ -11,6 +11,12 @@
     href: quickstart-create-mysql-server-database-using-azure-portal.md
   - name: DB létrehozása – Azure CLI
     href: quickstart-create-mysql-server-database-using-azure-cli.md
+  - name: Csatlakozás és lekérdezés
+    items:
+    - name: PHP
+      href: connect-php.md
+    - name: Java
+      href: connect-java.md
 - name: oktatóanyagokat
   items:
   - name: 1 – Adatbázis-tervezés
@@ -81,12 +87,16 @@
       href: howto-restore-server-portal.md
   - name: Alkalmazások csatlakoztatása
     items:
-    - name: Kapcsolati sztringek
+    - name: Kapcsolati karakterláncok
       href: howto-connection-string.md
     - name: Az SSL konfigurálása
       href: howto-configure-ssl.md
-    - name: Webalkalmazás
+    - name: Webalkalmazások
       href: howto-connect-webapp.md
+  - name: Kiszolgáló paramétereinek konfigurálása
+    items:
+    - name: Azure Portal
+      href: howto-server-parameters.md
 - name: Referencia
   items:
   - name: Azure CLI
@@ -99,6 +109,8 @@
     href: https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-database-mysql
+  - name: Videók
+    href: videos.md
   - name: Szolgáltatás igénylése
     href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
   - name: Régiónkénti elérhetőség

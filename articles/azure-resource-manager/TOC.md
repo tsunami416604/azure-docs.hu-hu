@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Mi az a Resource Manager?](resource-group-overview.md)
-## [Támogatott szolgáltatások](resource-manager-supported-services.md)
+## [Erőforrás-szolgáltatók és típusaik](resource-manager-supported-services.md)
 ## [A Resource Manager-alapú és a klasszikus üzemi modell](resource-manager-deployment-model.md)
 ## [Előfizetés-irányítás](resource-manager-subscription-governance.md)
 ## [Felügyelt alkalmazások](managed-application-overview.md)
@@ -67,12 +67,13 @@
 
 ## Erőforrás-házirendek beállítása
 ### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
-### [Portálházirend hozzárendelése](resource-manager-policy-portal.md)
-### [Szkriptházirend hozzárendelése](resource-manager-policy-create-assign.md)
-### [Erőforrás-címkézési házirendek](resource-manager-policy-tags.md)
-### [Tárolási házirendek](resource-manager-policy-storage.md)
-### [Linux rendszerű virtuális gépek házirendjei](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-### [Windows rendszerű virtuális gépek házirendjei](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Szabályzat hozzárendelése a portál használatával](resource-manager-policy-portal.md)
+### [Szabályzat hozzárendelése szkriptek használatával](resource-manager-policy-create-assign.md)
+### Példák
+#### [Erőforráscímkék](resource-manager-policy-tags.md)
+#### [Storage](resource-manager-policy-storage.md)
+#### [Linux rendszerű virtuális gép](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Windows rendszerű virtuális gép](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## Felügyelt alkalmazások használata
 ### [Felügyelt alkalmazás közzététele](managed-application-publishing.md)

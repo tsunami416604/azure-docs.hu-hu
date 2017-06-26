@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 8252bc979fdeb034384fc65e416643de8ef97031
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: d42045b1c354b7bd5f9299181aefd6d98fda382b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 ---
 
@@ -43,14 +43,14 @@ Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszköz�
         </div>
         </a>
     </li>
-     <li>
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=iot-hub">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="/media/common/i_video.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -62,17 +62,17 @@ Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszköz�
         </a>
     </li>
     <li>
-        <a href="/azure/iot-hub/iot-hub-csharp-csharp-getstarted">
+        <a href="/azure/iot-hub/iot-hub-get-started-simulated">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/dotnet.svg" alt="" />
+                            <img src="/media/common/i_get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az IoT Hub használatának első lépései a .NET-keretrendszerrel</h3>
+                        <h3>Első lépések a szimulált eszközökkel</h3>
                     </div>
                 </div>
             </div>
@@ -80,17 +80,17 @@ Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszköz�
         </a>
     </li>
     <li>
-        <a href="/azure/iot-hub/iot-hub-java-java-getstarted">
+        <a href="/azure/iot-hub/iot-hub-get-started-physical">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/java.svg" alt="" />
+                            <img src="/media/common/i_get-started.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az IoT Hub használatának első lépései a Java használatával</h3>
+                        <h3>Első lépések a fizikai eszközökkel</h3>
                     </div>
                 </div>
             </div>
@@ -98,35 +98,17 @@ Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszköz�
         </a>
     </li>
     <li>
-        <a href="/azure/iot-hub/iot-hub-node-node-getstarted">
+        <a href="/azure/iot-hub/iot-hub-devguide">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/nodejs.svg" alt="" />
+                            <img src="/media/common/i_road-map.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Az IoT Hub használatának első lépései a Node.js használatával</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/iot-hub/iot-hub-device-sdk-c-intro">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/c.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Az IoT Hub használatának első lépései a C használatával</h3>
+                        <h3>A fejlesztői útmutató elolvasása</h3>
                     </div>
                 </div>
             </div>
@@ -159,11 +141,10 @@ Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszköz�
                         <h3>Nyelvek</h3>
                         <p><a href="/dotnet/api/microsoft.azure.devices">.NET (Szolgáltatás)</a></p>
                         <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (Eszközök)</a></p>
+                        <p><a href="https://azure.github.io/azure-iot-sdk-c/index.html">C eszköz-SDK</a></p>
                         <p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (Szolgáltatás)</a></p>
                         <p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (Eszközök)</a></p>
-                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iothub/1.1.11/index.html">Csomópont (Szolgáltatás)</a></p>
-                        <p><a href="https://azure.github.io/azure-iot-sdk-node/azure-iot-device/1.1.12/index.html">Csomópont (Eszközök)</a></p>
-                        <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDK-k</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdk-node/">Node.js-SDK-k</a></p>
                         <p><a href="http://azure.github.io/iot-edge/">Azure IoT Edge</a></p>
                     </div>
                 </div>
@@ -178,6 +159,7 @@ Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszköz�
                         <h3>REST</h3>
                         <p><a href="/rest/api/iothub/iothubresource">REST (Erőforrás-szolgáltató)</a></p>
                         <p><a href="/rest/api/iothub/deviceapi">REST (Eszközidentitások)</a></p>
+                        <p><a href="/rest/api/iothub/devicetwinapi">REST (Ikereszközök)</a></p>
                         <p><a href="/rest/api/iothub/httpruntime">REST (Eszközök üzenetküldése)</a></p>
                         <p><a href="/rest/api/iothub/jobapi">REST (Feladatok)</a></p>
                     </div>
@@ -186,6 +168,4 @@ Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszköz�
         </div>
     </li>
 </ul>
-
-
 

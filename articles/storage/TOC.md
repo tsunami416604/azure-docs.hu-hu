@@ -1,6 +1,7 @@
 # Áttekintés
 
 ## [Bevezetés](storage-introduction.md)
+## [Blobok, fájlok vagy adatlemezek választása](storage-decide-blobs-files-disks.md)
 
 # Első lépések
 
@@ -50,6 +51,7 @@
 ### [Felügyelt lemez hozzáadása Linux rendszerű virtuális géphez](../virtual-machines/linux/add-disk.md)
 ### [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Windows alatt](../virtual-machines/windows/snapshot-copy-managed-disk.md)
 ### [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Linux alatt](../virtual-machines/linux/snapshot-copy-managed-disk.md)
+### [Felügyelt lemezek használata a Resource Manager-sablonokban](storage-using-managed-disks-template-deployments.md)
 
 # Útmutató
 ## [Tárfiók létrehozása](storage-create-storage-account.md)
@@ -70,7 +72,8 @@
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=table)
 ## Fájlok használata
 ### [Áttekintés](/rest/api/storageservices/File-Service-Concepts)
-### [Azure-fájlok hibaelhárítása](storage-troubleshoot-file-connection-problems.md)
+### [Azure-fájlok hibaelhárítása – Windows](storage-troubleshoot-windows-file-connection-problems.md)
+### [Azure-fájlok hibaelhárítása – Linux](storage-troubleshoot-linux-file-connection-problems.md)
 ### [Példák](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
 ## Lemezek használata
 ### [Lemezek és virtuális merevlemezek Windows rendszerű virtuális gépekhez](storage-about-disks-and-vhds-windows.md)
@@ -109,6 +112,7 @@
 ## Biztonságos
 ### [Biztonsági útmutató](storage-security-guide.md)
 ### [Inaktív adatok titkosítása](storage-service-encryption.md)
+### [Titkosítás inaktív állapotban ügyfélkulcsokkal](storage-service-encryption-customer-managed-keys.md)
 ### [Megosztott kulcsos hitelesítés](https://msdn.microsoft.com/library/dd179428.aspx)
 ### [Közös hozzáférésű jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 ### [Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Key Vaulttal](storage-encrypt-decrypt-blobs-key-vault.md)
@@ -130,7 +134,8 @@
 ### [Vész-helyreállítási útmutató](storage-disaster-recovery-guidance.md)
 ## Adatátvitel
 ### [Adatok áthelyezése a Storage-ba és a Storage-ból](storage-moving-data.md)
-### [AzCopy parancssori segédprogram](storage-use-azcopy.md)
+### [AzCopy Windowson](storage-use-azcopy.md)
+### [AzCopy Linuxon](storage-use-azcopy-linux.md)
 ### [Az Import/Export szolgáltatás használata](storage-import-export-service.md)
 ### [Az Import/Export eszköz használata](storage-import-export-tool-how-to.md)
 #### [Az Import/Export eszköz telepítése](storage-import-export-tool-setup.md)

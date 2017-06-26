@@ -4,6 +4,7 @@
 
 # Első lépések
 ## [Névtér létrehozása](relay-create-namespace-portal.md)
+## [Hibrid helyszíni/felhőbeli alkalmazás létrehozása](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hibrid kapcsolatok
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Csomópont](relay-hybrid-connections-node-get-started.md)

@@ -1,4 +1,5 @@
 # [Áttekintés](active-directory-developers-guide.md)
+## [Milyen előnyöket kínál az Azure AD?](https://azure.microsoft.com/develop/identity/signin/)
 ## [A hitelesítés alapjai](active-directory-authentication-scenarios.md)
 ## [Alkalmazástípusok](active-directory-authentication-scenarios.md#application-types-and-scenarios)
 # Első lépések
@@ -71,6 +72,7 @@
 ### [Támogatott token- és jogcímtípusok](active-directory-token-and-claims.md)
 ### [Aláírókulcs-váltás](active-directory-signing-key-rollover.md)
 ### [Összevonási metaadatok](active-directory-federation-metadata.md)
+### [Tanúsítványok hitelesítő adatai](active-directory-certificate-credentials.md)
 ## [Alkalmazásobjektumok](active-directory-application-objects.md)
 ### [Appok és az Azure AD](active-directory-how-applications-are-added.md)
 ## [Alkalmazásjegyzék](active-directory-application-manifest.md)
@@ -101,4 +103,5 @@
 #### [OAuth 2.0-ügyfél hitelesítő adatainak megadása](active-directory-v2-protocols-oauth-client-creds.md)
 #### [Oauth 2.0-alapú meghatalmazásos folyamat](active-directory-v2-protocols-oauth-on-behalf-of.md)
 #### [Jogkivonat-referencia](active-directory-v2-tokens.md)
+#### [Tanúsítványok hitelesítő adatai](active-directory-certificate-credentials.md)
 ### [Hatókörök](active-directory-v2-scopes.md)

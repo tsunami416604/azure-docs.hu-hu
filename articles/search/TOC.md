@@ -78,6 +78,7 @@
 ## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/search/)
 ## Bemutató webhelyek
+### [Search Analyzer Demo](http://alice.unearth.ai/)
 ### [Feladatlistázó alkalmazás](http://aka.ms/azjobsdemo)
 ### [Élő bemutató alkalmazások](https://searchsamples.azurewebsites.net/)
 ## Oktatóanyagok és -programok

@@ -21,6 +21,9 @@
 ### [Bérlőazonosító módosítása](key-vault-subscription-move-fix.md)
 ### [Elérhetőség és redundancia](key-vault-disaster-recovery-guidance.md)
 ### [Kulcstartó védelme](key-vault-secure-your-key-vault.md)
+### [Biztonsági világok áttekintése](key-vault-ovw-security-worlds.md)
+### [Helyreállítható törlés áttekintése](key-vault-ovw-soft-delete.md)
+### [Tárfiókok kulcsainak áttekintése](key-vault-ovw-storage-keys.md)
 
 ## Automatizálás
 ### [Azure Automation](automation-manage-key-vault.md)
@@ -43,7 +46,7 @@
 ## [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
 # Erőforrások
-## [Kulcsok és titkok](https://msdn.microsoft.com/en-us/library/azure/dn903623)
+## [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
 ## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [Blog](http://blogs.technet.com/b/kv/)

@@ -11,7 +11,7 @@
 ### [Önálló Automation-fiók létrehozása](automation-create-standalone-account.md)
 ### [Azure AD felhasználói fiók létrehozása](automation-create-aduser-account.md)
 ### [Hitelesítés beállítása az AWS használatával](automation-config-aws-account.md)
-### [Azure-beli futtató fiók létrehozása PowerShell használatával](automation-update-account-powershell.md)
+### [Automation futtató fiók létrehozása](automation-create-runas-account.md)
 ### [Automation-fiók konfigurációjának érvényesítése](automation-verify-runas-authentication.md)
 ### [Szerepköralapú hozzáférés-vezérlés kezelése](automation-role-based-access-control.md)
 ### [Automation-fiók kezelése](automation-manage-account.md)
@@ -56,12 +56,12 @@
 ### [Azure VM-riasztás szervizelése](automation-azure-vm-alert-integration.md)
 ### [Virtuális gép indítása és leállítása JSON-címkékkel](automation-scenario-start-stop-vm-wjson-tags.md)
 ### [Erőforráscsoport eltávolítása](automation-scenario-remove-resourcegroup.md)
-### [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
 ### [Forráskezelés integrálása a GitHub Enterprise-zal](automation-scenario-source-control-integration-with-github-ent.md)
 ### [Forráskezelés integrálása a VSTS-sel](automation-scenario-source-control-integration-with-VSTS.md)
 ## Megoldások
 ### [Változáskövetés](../log-analytics/log-analytics-change-tracking.md)
 ### [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md)
+### [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
 ## Figyelés
 ### [Azure Automation-feladat adatainak továbbítása a Log Analyticsbe](automation-manage-send-joblogs-log-analytics.md)
 ### [Azure Automation-fiók leválasztása a Log Analyticsről](automation-unlink-from-log-analytics.md)

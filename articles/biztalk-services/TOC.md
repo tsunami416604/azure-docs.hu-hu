@@ -1,6 +1,5 @@
 # Áttekintés
 ## [Kiadások](biztalk-editions-feature-chart.md)
-## [A hibrid kapcsolatok bemutatása](integration-hybrid-connection-overview.md)
 
 # Első lépések
 ## [BizTalk Services létrehozása](biztalk-provision-services.md)
@@ -12,8 +11,6 @@
 ## Konfigurálás
 ### [Szabályozás](biztalk-throttling-thresholds.md)
 ### [Szolgáltatásbeállítások és figyelés](biztalk-dashboard-monitor-scale-tabs.md)
-## Integrálás
-### [Hibrid kapcsolatok](integration-hybrid-connection-create-manage.md)
 ## Migrate (Áttelepítés)
 ### [BizTalk Server-alapú EDI-megoldások áttelepítése a BizTalk Services modulba](biztalk-migrating-to-edi-guide.md)
 ## Figyelés
@@ -21,6 +18,9 @@
 ## Biztonságos
 ### [Hozzáférés-vezérlés](biztalk-issuer-name-issuer-key.md)
 ## [Hibaelhárítás](biztalk-troubleshoot-using-ops-logs.md)
+## Hibrid kapcsolatok
+### [Áttekintés](integration-hybrid-connection-overview.md)
+### [Létrehozás és kezelés](integration-hybrid-connection-create-manage.md)
 
 # Erőforrások
 ## [Kibocsátási megjegyzések](biztalk-release-notes.md)

@@ -6,13 +6,15 @@
 # [Első lépések](iot-hub-get-started.md)
 
 ## Az eszköz beállítása
-### Szimulált eszköz használata
+### [Eszköz szimulálása a számítógépen](iot-hub-get-started-simulated.md)
 #### [.NET](iot-hub-csharp-csharp-getstarted.md)
 #### [Java](iot-hub-java-java-getstarted.md)
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
-### Fizikai eszköz használata
+### [Online szimulátor használata](iot-hub-raspberry-pi-web-simulator-get-started.md)
+
+### [Fizikai eszköz használata](iot-hub-get-started-physical.md)
 #### [Raspberry Pi és Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [Raspberry Pi és C](iot-hub-raspberry-pi-kit-c-get-started.md)
 
@@ -28,15 +30,14 @@
 ##### [Az IoT Hub és az átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [Az átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
-### [Online eszközszimulátor használata](iot-hub-raspberry-pi-web-simulator-get-started.md)
-
-## [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
-## [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
-## [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
-## [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
-## [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
-## [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
-## [Távoli figyelés és értesítések a Logic Apps használatával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+## Bővített IoT-forgatókönyvek
+### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
+### [IoT Hub-üzenetek mentése Azure-adattárba](iot-hub-store-data-in-azure-table-storage.md)
+### [Adatmegjelenítés a Power BI-ban](iot-hub-live-data-visualization-in-power-bi.md)
+### [Adatmegjelenítés a Web Apps használatával](iot-hub-live-data-visualization-in-web-apps.md)
+### [Időjárás-előrejelzés az Azure Machine Learning használatával](iot-hub-weather-forecast-machine-learning.md)
+### [Eszközkezelés az iothub-explorerrel](iot-hub-device-management-iothub-explorer.md)
+### [Távoli figyelés és értesítések a Logic Apps használatával](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
 # Útmutató
 ## Felkészülés
@@ -54,13 +55,13 @@
 ##### [Egyéni végpontok és útválasztási szabályok használata az eszközről a felhőbe irányuló üzenetekhez](iot-hub-devguide-messages-read-custom.md)
 ##### [A felhőből az eszközökre irányuló üzenetek küldése az IoT Hubról](iot-hub-devguide-messages-c2d.md)
 ##### [IoT Hub-üzenetek létrehozása és olvasása](iot-hub-devguide-messages-construct.md)
+##### [Kommunikációs protokoll kiválasztása](iot-hub-devguide-protocols.md)
 #### [Fájlok feltöltése eszközökről](iot-hub-devguide-file-upload.md)
 #### [Eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)
 #### [IoT Hub-hozzáférés szabályozása](iot-hub-devguide-security.md)
 #### [Az ikereszközök áttekintése](iot-hub-devguide-device-twins.md)
 #### [Közvetlen metódusok meghívása eszközökön](iot-hub-devguide-direct-methods.md)
 #### [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
-#### [Kommunikációs protokoll kiválasztása](iot-hub-devguide-protocols.md)
 #### [IoT Hub-végpontok](iot-hub-devguide-endpoints.md)
 #### [Lekérdezés nyelve](iot-hub-devguide-query-language.md)
 #### [Kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md)
@@ -122,7 +123,8 @@
 ### [Ajánlott biztonsági eljárások](iot-hub-security-best-practices.md)
 ### [Biztonsági architektúra](iot-hub-security-architecture.md)
 ### [Az IoT-környezet biztonságossá tétele](iot-hub-security-deployment.md)
-## IoT Edge
+## Azure IoT Edge
+### [Áttekintés](iot-hub-iot-edge-overview.md)
 ### Bevezetés
 #### [Linux](iot-hub-linux-iot-edge-get-started.md)
 #### [Windows](iot-hub-windows-iot-edge-get-started.md)
@@ -130,9 +132,22 @@
 #### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
 #### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
 ### [Valós eszköz használata](iot-hub-iot-edge-physical-device.md)
+### Modul létrehozása
+#### [Java](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-java-modules-windows-10ubuntu-linux-14)
+#### [.NET-keretrendszer](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-net-modules-windows-10)
+#### [Node.js](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-javascript-modules-windows-10ubuntu-linux-14)
+### Felépítés
+#### [.NET-keretrendszer](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample)
+#### [.NET Core-modul](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_module_sample)
+#### [.NET Core felügyelt átjáró](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_managed_gateway)
+#### [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample)
+#### [Node.js](https://github.com/Azure/iot-edge/tree/master/samples/nodejs_simple_sample)
+#### [Modul dinamikus hozzáadása](https://github.com/Azure/iot-edge/tree/master/samples/dynamically_add_module_sample)
+#### [Folyamaton kívüli proxymodul](https://github.com/Azure/iot-edge/tree/master/samples/proxy_sample)
+#### [Natív modulszolgáltató](https://github.com/Azure/iot-edge/tree/master/samples/native_module_host_sample)
 
 # Referencia
-## [Azure CLI 2.0](/cli/azure/iot)
+## [Azure CLI](/cli/azure/iot)
 ## [.NET (Szolgáltatás)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (Eszközök)](/dotnet/api/microsoft.azure.devices.client)
 ## [Java (Szolgáltatás)](/java/api/com.microsoft.azure.sdk.iot.service)
@@ -164,4 +179,4 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT fejlesztői központ](https://azure.microsoft.com/develop/iot/)
 ## [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/)
-## [Műszaki esettanulmányok](https://microsoft.github.io/techcasestudies/#technology=IoT)
+## [Műszaki esettanulmányok](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)

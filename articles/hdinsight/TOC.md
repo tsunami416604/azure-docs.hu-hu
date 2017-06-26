@@ -22,7 +22,8 @@
 ## [Hadoop-tesztkörnyezet](hdinsight-hadoop-emulator-get-started.md)
 ## [Data Lake Tools with Hortonworks – tesztkörnyezet](hdinsight-hadoop-emulator-visual-studio.md)
 ## [Visual Studio-eszközök](hdinsight-hadoop-visual-studio-tools-get-started.md)
-## [A HDInsight tárolási lehetőségei](hdinsight-hadoop-use-blob-storage.md)
+## [Az Azure Storage-et használó HDInsight](hdinsight-hadoop-use-blob-storage.md)
+## [Az Azure Data Lake Store-t használó HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
 # Útmutató
 ## Kötegelt lekérdezések a Hadoop használatával
@@ -105,14 +106,17 @@
 ### [Hive-házirendek konfigurálása](hdinsight-domain-joined-run-hive.md)
 ## A Kafka (előzetes verzió) használata
 ### [Kafka-adatok replikálása](hdinsight-apache-kafka-mirroring.md)
+### [A Kafka tárolójának és skálázhatóságának konfigurálása](hdinsight-apache-kafka-scalability.md)
 ### [Használat a Virtual Network szolgáltatással](hdinsight-apache-kafka-connect-vpn-gateway.md)
-### [Használat a Sparkkal](hdinsight-apache-spark-with-kafka.md)
+### [Használat a Sparkkal (strukturált stream)](hdinsight-apache-kafka-spark-structured-streaming.md)
+### [Használat a Sparkkal (DStream)](hdinsight-apache-spark-with-kafka.md)
 ### [Használat a Stormmal](hdinsight-apache-storm-with-kafka.md)
 ## Fejlesztés
 ### [Streamelő MapReduce programok fejlesztése C# nyelven](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 ### [Java MapReduce programok fejlesztése](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce feladatok fejlesztése](hdinsight-hadoop-mapreduce-scalding.md)
 ### [A HDInsight Tools használata Spark-alkalmazások létrehozásához](hdinsight-apache-spark-eclipse-tool-plugin.md)
+### [A HDInsight Tools használata Spark-alkalmazások távoli hibakereséséhez](hdinsight-apache-spark-intellij-tool-debug-remotely.md)
 ### [Üres élcsomópontok használata](hdinsight-apps-use-edge-node.md)
 ### [Python-streamprogramok fejlesztése](hdinsight-hadoop-streaming-python.md)
 ### [JSON-dokumentumok feldolgozása és elemzése](hdinsight-using-json-in-hive.md)
@@ -141,7 +145,7 @@
 ### [Az R használata](hdinsight-hadoop-r-scripts-linux.md)
 ### [A Solr használata](hdinsight-hadoop-solr-install-linux.md)
 ### [A Virtual Network használata](hdinsight-extend-hadoop-virtual-network.md)
-### [A Zeppelin használata](hdinsight-apache-spark-use-zeppelin-notebook.md)
+### [A Zeppelin használata](hdinsight-apache-spark-zeppelin-notebook.md)
 ### HDInsight-alkalmazások fejlesztése
 #### [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md)
 #### [Egyedi alkalmazások telepítése](hdinsight-apps-install-custom-applications.md)
@@ -222,6 +226,7 @@
 ### [Fürtök figyelése az Ambari API-val](hdinsight-monitor-use-ambari-api.md)
 
 # Erőforrások
-## [A HDInsight Windows-eszközei](hdinsight-hadoop-windows-tools.md)
+## [Microsoft Professional Program big data-megoldásokhoz](https://academy.microsoft.com/en-us/professional-program/big-data/)
 ## [Segítség kérése a fórumokon](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+## [A HDInsight Windows-eszközei](hdinsight-hadoop-windows-tools.md)

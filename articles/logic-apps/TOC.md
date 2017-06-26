@@ -45,10 +45,12 @@
 ### [EDIFACT vállalati integrációja](logic-apps-enterprise-integration-edifact.md)
 ### [EDIFACT-kódolás](logic-apps-enterprise-integration-edifact-encode.md)
 ### [EDIFACT-dekódolás](logic-apps-enterprise-integration-edifact-decode.md)
+### [UNH2.5-szegmenst tartalmazó EDIFACT-dokumentumok kezelése](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 ### [X12 vállalati integrációja](logic-apps-enterprise-integration-x12.md)
 ### [X12-kódolás](logic-apps-enterprise-integration-x12-encode.md)
 ### [X12-dekódolás](logic-apps-enterprise-integration-x12-decode.md)
 ### [Vészhelyreállítás](logic-apps-enterprise-integration-b2b-business-continuity.md)
+### [Hibák és megoldások](logic-apps-enterprise-integration-b2b-list-errors-solutions.md)
 
 ## Helyszíni adatok elérése
 ### [Csatlakozás helyszíni adatokhoz](logic-apps-gateway-connection.md)
@@ -75,7 +77,6 @@
 ### [Logikai alkalmazások meghívása Azure Functions-függvényekkel](logic-apps-scenario-function-sb-trigger.md)
 ### [Hiba- és kivételkezelés hozzáadása](logic-apps-scenario-error-and-exception-handling.md)
 ### [B2B feldolgozás](logic-apps-enterprise-integration-b2b.md)
-### [UNH2.5-szegmenst tartalmazó EDIFACT-dokumentumok kezelése](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 
 ## Díjszabás és számlázás
 ### [Díjszabás](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -116,6 +117,7 @@
 ### [HTTP Webhook](../connectors/connectors-native-webhook.md)
 ### [Informix](../connectors/connectors-create-api-informix.md)
 ### [Integrációs fiók](logic-apps-enterprise-integration-metadata.md)
+### [MQ](../connectors/connectors-create-api-mq.md)
 ### [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)
 ### [Oracle Database](../connectors/connectors-create-api-oracledatabase.md)
 ### [Kérés / Válasz](../connectors/connectors-native-reqres.md)

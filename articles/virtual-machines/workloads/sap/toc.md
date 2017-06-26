@@ -16,12 +16,13 @@
 ### [Hibaelhárítás és figyelés](troubleshooting-monitoring.md)
 ## SAP HANA virtuális gépeken
 ### [Egyetlen példánnyal rendelkező SAP HANA](hana-get-started.md)
-### [Üzembe helyezési útmutató a következőhöz: S/4 HANA vagy BW/4 HANA](cal-s4h.md)
+### [S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója](cal-s4h.md)
 ### [Magas rendelkezésre állás virtuális gépeken](sap-hana-high-availability.md)
 ### [A biztonsági mentés áttekintése](sap-hana-backup-guide.md)
 ### [Fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
 ### [Storage-pillanatkép biztonsági mentései](sap-hana-backup-storage-snapshots.md)
 ## SAP NetWeaver
+### [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](sap-cal-ides-erp6-ehp7-sp3-sql.md)
 ### [Áttekintés és architektúra](suse-quickstart.md)
 ### [Tervezés és megvalósítás](planning-guide.md)
 ### [Magas rendelkezésre állás](high-availability-guide.md)

@@ -10,17 +10,18 @@ ms.service: site-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 06/05/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 491bbfe61cf387f18b903caa45529be206876d49
-ms.openlocfilehash: fe253f5d95b0b9351d6ffd382cbba0c490074f15
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: ef7a25de4536cfd54331e1bce7d22f351768585c
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/05/2017
 
 ---
 # <a name="site-recovery-documentation"></a>A Site Recovery dokumentációja
 
-Ismerje meg, hogy a Site Recovery hogyan használható a privát felhőkben a folyamatos üzletmenet és a vészhelyreállítás stratégiájának kialakítására. A gyakorlatok és egyéb dokumentációk bemutatják, hogy hogyan tervezheti meg, helyezheti üzembe és kezelheti a helyszíni fizikai kiszolgálóknak és virtuális gépeknek felhőbe vagy egy másodlagos adatközpontba történő replikálását.
+Ismerje meg, hogy a Site Recovery hogyan használható a folyamatos üzletmenet és a vészhelyreállítás stratégiájának kialakításához, hogy az alkalmazások és számítási feladatok leállás esetén is elérhetők legyenek. Az oktatóanyagok és egyéb cikkek bemutatják, hogyan tervezhet és helyezhet üzembe helyszíni gépeket és Azure-beli virtuális gépeket, illetve hogyan végezheti el a replikációjukat, feladatátvételüket és helyreállításukat.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -42,7 +43,7 @@ Ismerje meg, hogy a Site Recovery hogyan használható a privát felhőkben a fo
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/en-us/resources/videos/index/?services=recovery-manager">
+        <a href="https://azure.microsoft.com/en-us/resources/videos/index/?services=site-recovery">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -145,6 +146,4 @@ Ismerje meg, hogy a Site Recovery hogyan használható a privát felhőkben a fo
         </div>
     </li>
 </ul>
-
-
 

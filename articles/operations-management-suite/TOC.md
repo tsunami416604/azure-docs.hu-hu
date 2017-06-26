@@ -3,8 +3,10 @@
 ## [OMS-architektúra](operations-management-suite-architecture.md)
 
 # Bevezetés
-## Útmutatók
-### [Szolgáltatástérkép](operations-management-suite-walkthrough-servicemap.md)
+## [Log Analytics](../log-analytics/log-analytics-get-started.md)
+## [Automatizálás](../automation/automation-offering-get-started.md)
+## [Biztonsági mentés](../backup/backup-introduction-to-azure-backup.md)
+## [Site Recovery](../site-recovery/site-recovery-overview.md)
 
 
 # Útmutató
@@ -35,13 +37,15 @@
 #### [AD-elemzés](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-replikáció állapota](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Riasztáskezelés](../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-#### [Szolgáltatástérkép](operations-management-suite-service-map.md)
-##### [Konfigurálás](operations-management-suite-service-map-configure.md)
 #### [Azure hálózatelemzés](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Tárolók](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Key Vault-elemzés](../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Hálózati teljesítményfigyelő](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Service Fabric-elemzés](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### Szolgáltatástérkép
+##### [Útmutatás](operations-management-suite-walkthrough-servicemap.md)
+##### [Használat](operations-management-suite-service-map.md)
+##### [Konfigurálás](operations-management-suite-service-map-configure.md)
 #### [SQL-elemzés](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)

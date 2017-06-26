@@ -43,6 +43,7 @@
 ### Azure
 #### [Profilkészítő](app-insights-profiler.md)
 #### [Diagnosztika](app-insights-azure-diagnostics.md)
+#### [Előnézetek](app-insights-previews.md)
 
 ### ASP.NET
 #### [További telemetriai funkciók](app-insights-asp-net-more.md)
@@ -91,8 +92,9 @@
 
 ### Használat
 #### [Áttekintés](app-insights-usage-overview.md)
-#### [Megőrzés](app-insights-usage-retention.md)
 #### [Felhasználók, munkamenetek, események](app-insights-usage-segmentation.md)
+#### [Megőrzés](app-insights-usage-retention.md)
+#### [Munkafüzetek](app-insights-usage-workbooks.md)
 
 ### Elemzés
 
@@ -108,6 +110,7 @@
 ### [Erőforrások létrehozása](app-insights-powershell-script-create-resource.md)
 ### [Riasztások beállítása](app-insights-powershell-alerts.md)
 ### [Az Azure Diagnostics beszerzése](app-insights-powershell-azure-diagnostics.md)
+### [Automatizálás a Microsoft Flow-val](app-insights-automate-with-flow.md)
 
 ## Fejlesztés
 

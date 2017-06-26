@@ -11,6 +11,7 @@
 ### [Naplózás](azure-log-audit.md)
 ### [Elkülönítés a nyilvános felhőben](azure-isolation.md)
 ### [Biztonságtechnikai képességek](azure-security-technical-capabilities.md)
+### [Irányítás az Azure-ban](governance-in-azure.md)
 
 # Első lépések
 ## [Ismerkedés az Azure biztonsági szolgáltatásaival](azure-security-getting-started.md)
