@@ -1,25 +1,25 @@
 ---
 title: "Azure Cosmos DB: Konzolalkalmazás létrehozása Javával és MongoDB API-val | Microsoft Docs"
 description: "Egy Java-kódmintátmutat be, amellyel csatlakozhat az Azure Cosmos DB MongoDB API-hoz és lekérdezheti azt"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
-ms.custom: quick start connect
+ms.service: cosmos-db
+ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: java
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 22bce387c2b33759c1b83247f253c72fb3132739
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 1683afd842294b3b45ae4d0e53bbecdccadc1ed5
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -32,20 +32,20 @@ A rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségé
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
-   * JDK 1.7+ (Futtassa az `apt-get install default-jdk` -t ha nem rendelkezik JDK-val)
-   * Maven (Futtassa az `apt-get install maven`-t ha nem rendelkezik Maven-nel)
+   * JDK 1.7+ (ha még nem rendelkezik a JDK-val, futtassa az `apt-get install default-jdk` parancsot)
+   * Maven (ha nem rendelkezik Maven-nel, futtassa az `apt-get install maven` parancsot)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
-[!INCLUDE [mongodb-create-dbaccount](../../includes/cosmosdb-create-dbaccount-mongodb.md)]
+[!INCLUDE [mongodb-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
 
 Az új adatbázis neve legyen **db**, az új gyűjteményé pedig **coll**.
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -53,7 +53,7 @@ Klónozzunk egy MongoDB API-alkalmazást a GitHubról, állítsuk be a kapcsolat
 
 1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
 
-2. Futtassa a következő parancsot a minta tárház klónozásához. 
+2. Futtassa a következő parancsot a mintatárház klónozásához. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-getting-started.git
@@ -61,7 +61,7 @@ Klónozzunk egy MongoDB API-alkalmazást a GitHubról, állítsuk be a kapcsolat
 
 3. Ezután nyissa meg a megoldásfájlt a Visual Studióban. 
 
-## <a name="review-the-code"></a>Tekintse át a kódot
+## <a name="review-the-code"></a>A kód áttekintése
 
 Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a `Program.cs` fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB erőforrásokat. 
 
@@ -92,7 +92,7 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a `Program.cs` 
 
     ```java
     Document queryResult = collection.find(Filters.eq("fruit", "apple")).first();
-    System.out.println(queryResult.toJson());        
+    System.out.println(queryResult.toJson());       
     ```
 
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
@@ -109,25 +109,25 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 2. Futtassa a `mvn exec:java -D exec.mainClass=GetStarted.Program` parancsot egy terminálban a Java-alkalmazás elindításához.
 
-Ezentúl a [Robomongo](../documentdb/documentdb-mongodb-robomongo.md) / [Studio 3T](../documentdb/documentdb-mongodb-mongochef.md) használatával lekérdezheti, módosíthatja, és dolgozhat az új adatokkal.
+Ezentúl a [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) használatával lekérdezheti, módosíthatja, és dolgozhat az új adatokkal.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást:
+Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
+2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, hogyan hozhat létre gyűjteményt az Adatkezelő segítségével, és hogyan futtathat konzolalkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
-> [MongoDB adatok importálása az Azure Cosmos DB-be](../documentdb/documentdb-mongodb-migrate.md)
+> [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)
 
 
 

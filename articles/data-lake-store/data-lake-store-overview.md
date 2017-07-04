@@ -12,11 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/06/2017
+ms.date: 06/29/2017
 ms.author: nitinme
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a1d30c77dd29a134017be7deec6bb50991e6a698
+ms.contentlocale: hu-hu
+ms.lasthandoff: 12/07/2016
 
 
 ---
@@ -55,7 +57,7 @@ Az Azure Data Lake Store bármilyen adatot képes natív formátumában, módos�
 
 Az Azure Data Lake Store adattárolói lényegében mappák és fájlok. A tárolt adatokat az SDK-k, az Azure Portal és az Azure PowerShell használatával kezelheti. Mindaddig, amíg a fenti felületeken keresztül és a megfelelő tárolók használatával helyezi el adatait a tárolóban, bármilyen típusú adatot tárolhat. A Data Lake Store nem kezeli különleges módon az adatokat a tárolt adatok típusa alapján.
 
-## <a name="a-namedatalakestoresecurityasecuring-data-in-azure-data-lake-store"></a><a name="DataLakeStoreSecurity"></a>Az adatok védelme az Azure Data Lake Store-ban
+## <a name="DataLakeStoreSecurity"></a>Az adatok védelme az Azure Data Lake Store-ban
 Az Azure Data Lake Store az Azure Active Directory a hitelesítésével és hozzáférés-vezérlési listáival (ACL-ek) felügyeli az adatok hozzáférését.
 
 | Szolgáltatás | Leírás |
@@ -101,10 +103,5 @@ Ha könnyebben tanul videók megtekintésével, a Data Lake Store számos szolg�
 * [Adatok áthelyezése relációs források és az Azure Data Lake Store között az Apache Sqoop használatával](https://mix.office.com/watch/1butcdjxmu114)
 * [Adatok előkészítése az Azure Data Lake Store-hoz készült Azure Data Factory használatával](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Az adatok védelme az Azure Data Lake Store-ban](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 
