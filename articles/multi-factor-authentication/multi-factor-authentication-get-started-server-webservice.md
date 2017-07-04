@@ -39,9 +39,9 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
 
 A Microsoft Authenticator alkalmazás használatához a következőkre van szükség, hogy az alkalmazás sikeresen kommunikáljon a Mobile App Web Service-szel:
 
-* Az Azure Multi-Factor Authentication-kiszolgáló&6;.0-s vagy újabb verziója
+* Az Azure Multi-Factor Authentication-kiszolgáló 6.0-s vagy újabb verziója
 * A Mobile App Web Service telepítése Microsoft® [Internet Information Services (IIS) 7.x vagy újabb](http://www.iis.net/) verziót futtató internetes webkiszolgálóra
-* Az ASP.NET&4;.0.30319-es verziója telepítve és regisztrálva van, és engedélyezett állapotú
+* Az ASP.NET 4.0.30319-es verziója telepítve és regisztrálva van, és engedélyezett állapotú
 * A szükséges szerepkör-szolgáltatások közé tartozik az ASP.NET és az IIS 6 metabázisával való kompatibilitás.
 * A Mobile App Web Service elérhető egy nyilvános URL-címről
 * A Mobile App Web Service védelmét egy SSL-tanúsítvány biztosítja.
