@@ -1,16 +1,20 @@
-- name: Egyéni döntési szolgáltatás
+- name: Custom Decision Service
   href: ../index.md
-- name: Áttekintés
+- name: Overview
   href: custom-decision-service-overview.md
-- name: Bevezetés
+- name: Get started
   items:
-  - name: Alkalmazás regisztrálása
+  - name: Register your application
     href: custom-decision-service-get-started-register.md
-  - name: API hívása egy böngészőből
+  - name: Call API from a browser
     href: custom-decision-service-get-started-browser.md
-  - name: API hívása egy alkalmazásból
+  - name: Call API from an app
     href: custom-decision-service-get-started-app.md
-- name: Oktatóanyag
+- name: Tutorial
   href: custom-decision-service-tutorial.md
-- name: API-referencia
+- name: API reference
   href: custom-decision-service-api-reference.md
+- name: Resources
+  items:
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/

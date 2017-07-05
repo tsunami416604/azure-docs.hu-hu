@@ -1,33 +1,37 @@
-- name: Bing Beszédfelismerés dokumentációja
+- name: Bing Speech Documentation
   href: ../index.md
-- name: Áttekintés
+- name: Overview
   href: Home.md
-- name: Bevezetés
+- name: Get started
   items:
-  - name: "C#(REST API)\_\_"
+  - name: 'C#(REST API)  '
     href: GetStarted/GetStartedREST.md
   - name: cURL(REST API)
     href: GetStarted/GetStarted-cURL.md
-  - name: "JavaScript(Websocket API)\_\_\_"
+  - name: 'JavaScript(Websocket API)   '
  
     href: GetStarted/GetStartedJSWebsockets.md
-  - name: 'C#(ügyféloldali kódtár)'
+  - name: 'C#(Client Library)'
     href: GetStarted/GetStartedCSharpDesktop.md
-  - name: 'C#(szolgáltatási kódtár)'
+  - name: 'C#(Service Library)'
     href: GetStarted/GetStartedCSharpServiceLibrary.md
-  - name: "Objective C iOS rendszeren(ügyféloldali kódtár)\_\_\_"
+  - name: 'Objective C on iOS(Client Library)   '
     href: GetStarted/Get-Started-ObjectiveC-iOS.md
-  - name: Java Android rendszeren(ügyféloldali kódtár)
+  - name: Java on Android(Client Library)
     href: GetStarted/GetStartedJavaAndroid.md
-- name: Referencia
+- name: Reference
   items: 
-  - name: Beszédfelismerési API-referencia
+  - name: Speech recognition API reference
     href: API-Reference-REST/BingVoiceRecognition.md
-  - name: Szöveget beszéddé átalakító API-referencia
+  - name: Text-to-speech API reference
     href: API-Reference-REST/BingVoiceOutput.md
-  - name: WebSocket protokoll
+  - name: Websocket Protocol
     href: API-Reference-REST/websocketprotocol.md
-  - name: SDK-k és minták
+  - name: SDKs & Samples
     items:
     - name: JavaScript
       href: https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript
+- name: Resources
+  items:
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/

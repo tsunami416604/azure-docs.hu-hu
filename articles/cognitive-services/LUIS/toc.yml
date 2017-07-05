@@ -1,79 +1,79 @@
-- name: A LUIS dokumentációja
+- name: LUIS Documentation
   href: ../index.md
-- name: Áttekintés
+- name: Overview
   items: 
-  - name: Ismerkedés az intelligens hangfelismerési szolgáltatással
+  - name: Learn about Language Understanding Intelligent Service
     href: Home.md
-- name: Gyors útmutatók
+- name: Quickstarts
   expanded: true
   items: 
-  - name: Új alkalmazás létrehozása
+  - name: Create a new app
     href: luis-get-started-create-app.md
-- name: oktatóanyagokat
+- name: Tutorials
   items: 
-  - name: A LUIS integrálása robotokkal a Node.js használatával
+  - name: Integrate LUIS with a bot using Node.js
     href: luis-nodejs-tutorial-build-bot-framework-sample.md
-- name: Alapelvek
+- name: Concepts
   items: 
-  - name: Leképezések
+  - name: Intents
     href: luis-concept-intent.md
-  - name: Entitások
+  - name: Entities
     href: luis-concept-entity-types.md
-  - name: Beszédmódok
+  - name: Utterances
     href: luis-concept-utterance.md
-  - name: Szolgáltatások
+  - name: Features
     href: luis-concept-feature.md
-  - name: Több nyelv támogatása
+  - name: Support for multiple languages
     href: luis-concept-language-support.md
-- name: Útmutatók
+- name: How-to guides
   items: 
-  - name: Az alkalmazás megtervezése
+  - name: Plan your app
     href: Plan-your-app.md
-  - name: LUIS-alkalmazások felépítése
+  - name: Build a LUIS app
     items: 
-    - name: Új alkalmazás indítása
+    - name: Start a new app
       href: Create-new-app.md
-    - name: Leképezések hozzáadása
+    - name: Add intents
       href: Add-intents.md
-    - name: Beszédmódok hozzáadása
+    - name: Add utterances
       href: Add-example-utterances.md
-    - name: Entitások hozzáadása
+    - name: Add entities
       href: Add-entities.md
-    - name: Teljesítmény javítása szolgáltatások használatával
+    - name: Improve performance using features
       href: Add-Features.md
-    - name: Képzés és az alkalmazás tesztelése
+    - name: Train and test the app
       href: Train-Test.md
-    - name: Aktív tanulás használata
+    - name: Use active learning
       href: Label-Suggested-Utterances.md
-    - name: Az alkalmazás közzététele
+    - name: Publish your app
       href: PublishApp.md
-  - name: Előre összeállított modellek
+  - name: Prebuilt models
     items: 
-    - name: Előre összeállított entitások használata
+    - name: Use prebuilt entities
       href: Pre-builtEntities.md
-    - name: Előre összeállított tartományok használata
+    - name: Use prebuilt domains
       href: luis-how-to-use-prebuilt-domains.md
-    - name: Az előre összeállított Cortana-alkalmazás használata
+    - name: Use the Cortana prebuilt app
       href: Cortana-Prebuilt-App.md
-  - name: A LUIS-alkalmazás felügyelete
+  - name: Manage your LUIS app
     items: 
-    - name: Az alkalmazás figyelése az irányítópulttal
+    - name: Monitor your app using the dashboard
       href: App-Dashboard.md
-    - name: Kulcsok kezelése
+    - name: Manage keys
       href: Manage-Keys.md
-    - name: Előfizetői azonosítók létrehozása
+    - name: Create subscription keys
       href: AzureIbizaSubscription.md
-    - name: Verziók kezelése
+    - name: Manage versions
       href: luis-how-to-manage-versions.md
-    - name: Együttműködés a LUIS-alkalmazásokon
+    - name: Collaborate on a LUIS app
       href: luis-how-to-collaborate.md    
-- name: Referencia
+- name: Reference
   items: 
-  - name: API-k készítése
+  - name: Authoring APIs
     href: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f
-  - name: Végponti API
+  - name: Endpoint API
     href: https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78      
-  - name: SDK-k
+  - name: SDKs
     items:
     - name: Android
       href: https://github.com/Microsoft/Cognitive-LUIS-Android
@@ -83,7 +83,9 @@
       href: https://github.com/Microsoft/Cognitive-LUIS-Python
     - name: Windows
       href: https://github.com/Microsoft/Cognitive-LUIS-Windows
-- name: Erőforrások
+- name: Resources
   items: 
+  - name: Azure Roadmap
+    href: https://azure.microsoft.com/roadmap/
   - name: LUIS FAQ
     href: luis-resources-faq.md
