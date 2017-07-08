@@ -140,10 +140,11 @@
 ## [PowerShell-parancsmagok](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
-## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## Partnerek

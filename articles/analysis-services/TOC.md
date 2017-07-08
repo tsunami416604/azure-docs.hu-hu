@@ -1,11 +1,14 @@
 # Áttekintés
 ## [Mi az Azure Analysis Services?](analysis-services-overview.md)
 ## [Támogatott adatforrások](analysis-services-datasource.md)
+## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
 
 # Gyors útmutatók
 ## [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md)
 ## [Modell üzembe helyezése – SSDT](analysis-services-deploy.md)
 
+# Példák
+## [Analysis Services-példák a GitHubon](https://github.com/Microsoft/Analysis-Services)
 
 # oktatóanyagokat
 ## Modell létrehozása és üzembe helyezése
@@ -29,9 +32,9 @@
 
 # Használati útmutató 
 ## [Kiszolgáló kezelése](analysis-services-manage.md)
-## [Felhasználók kezelése](analysis-services-manage-users.md)
+## [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
+## [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
 ## [A helyszíni adatátjáró integrálása](analysis-services-gateway.md)
-## [Kapcsolódás kiszolgálókhoz](analysis-services-connect.md)
 ## [Kapcsolódás Excellel](analysis-services-connect-excel.md)
 ## [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
 ## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
@@ -44,13 +47,15 @@
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
+## [Táblázatos modell parancsnyelve (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # Erőforrások
 ## [Analysis Services csapatblog](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
-## [Visszajelzés](https://feedback.azure.com/forums/556165-azure-analysis-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/analysis-services/)
-## [Videók](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Azure állapota](https://azure.microsoft.com/status/)
+## [Visszajelzés](https://feedback.azure.com/forums/556165-azure-analysis-services)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/analysis-services/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
+## [Videók](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
 

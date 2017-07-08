@@ -114,8 +114,9 @@
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/cloud-services/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/cloud-services/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)

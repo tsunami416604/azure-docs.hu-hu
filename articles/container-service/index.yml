@@ -1,0 +1,66 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Container Service-dokumentáció
+metadata:
+  document_id: 
+  title: Az Azure Container Service dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  meta.description: Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster.  Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.
+  services: container-service
+  author: carolz
+  manager: carolz
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01-23-2017
+  ms.author: carolz
+abstract:
+  description: 'Az Azure Container Service lehetővé teszi egy üzemkész Kubernetes-, DC/OS- vagy Docker Swarm-fürt gyors üzembe helyezését.  Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Service használatával.'
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Megtudhatja, hogyan helyezhet üzembe Kubernetes-fürtöket az Azure Container Service használatával:'
+  - type: list
+    style: icon48
+    items: 
+    - image: 
+        src: /media/logos/logo_linux.svg
+      text: Linux
+      href: /azure/container-service/container-service-kubernetes-walkthrough
+    - image: 
+        src: /media/logos/logo_Windows.svg
+      text: Windows
+      href: /azure/container-service/container-service-kubernetes-windows-walkthrough
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: 'Megtudhatja, hogyan telepíthet, kezelhet és frissíthet alkalmazásokat az Azure Container Service Kubernetes-fürtjén.'
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-prepare-app">Tárolórendszerképek létrehozása alkalmazásból</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-prepare-acr">Tárolórendszerképek feltöltése az Azure Container Registry-be</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-deploy-cluster">Kubernetes-fürt üzembe helyezése az Azure Container Service-ben</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-deploy-application">Tárolórendszerképek futtatása a Kubernetes-ben</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-scale">Alkalmazás és Kubernetes-infrastruktúra skálázása</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-app-update">A Kubernetes-ben futó alkalmazás frissítése</a>
+    - html: <a href="/azure/container-service/container-service-tutorial-kubernetes-monitor">A Kubernetes monitorozása az OMS használatával</a>
+- title: Példák
+ 
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/container-service/cli-samples">Azure CLI</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/compute/containerservices">REST API</a></p>

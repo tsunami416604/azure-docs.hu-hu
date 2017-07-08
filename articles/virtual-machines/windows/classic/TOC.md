@@ -99,6 +99,7 @@
 ## [Tárolási REST](/rest/api/storageservices)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

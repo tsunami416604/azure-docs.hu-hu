@@ -70,7 +70,8 @@
 ### [Szabályzat hozzárendelése a portál használatával](resource-manager-policy-portal.md)
 ### [Szabályzat hozzárendelése szkriptek használatával](resource-manager-policy-create-assign.md)
 ### Példák
-#### [Erőforráscímkék](resource-manager-policy-tags.md)
+#### [Címkék](resource-manager-policy-tags.md)
+#### [Elnevezési konvenciók](resource-manager-policy-naming-convention.md)
 #### [Storage](resource-manager-policy-storage.md)
 #### [Linux rendszerű virtuális gép](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Windows rendszerű virtuális gép](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
@@ -119,8 +120,9 @@
 ## [REST](/rest/api/resources/)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Kérelmek szabályozása](resource-manager-request-limits.md)
 ## [Aszinkron műveletek követése](resource-manager-async-operations.md)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)

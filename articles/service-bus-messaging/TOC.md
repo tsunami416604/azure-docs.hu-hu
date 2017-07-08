@@ -33,7 +33,7 @@
 ### [Entitások láncolása automatikus továbbítással](service-bus-auto-forwarding.md)
 
 ## Fejlesztés
-### [Queues, topics, and subscriptions](service-bus-queues-topics-subscriptions.md) (Üzenetsorok, témakörök és előfizetések)
+### [Üzenetsorok, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md)
 ### [Üzenetsorokat használó alkalmazások](service-bus-create-queues.md)
 ### [Témákat vagy előfizetéseket használó alkalmazások](service-bus-create-topics-subscriptions.md)
 ### [Hitelesítés és engedélyezés](service-bus-sas.md)
@@ -66,14 +66,15 @@
 ## [SQLRuleAction szintaxis](service-bus-messaging-sql-rule-action.md)
 
 # Erőforrások
-## [Díjszabás részletei](service-bus-pricing-billing.md)
-## [Példák](service-bus-samples.md)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [A Microsoft Developer Network fórumai](https://social.msdn.microsoft.com/forums/home?forum=servbus)
+## [Díjszabás részletei](service-bus-pricing-billing.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/service-bus/)
+## [Példák](service-bus-samples.md)
 ## [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-bus)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 

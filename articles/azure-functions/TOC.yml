@@ -74,6 +74,8 @@
        href: functions-test-a-function.md
      - name: Helyi fejlesztés és hibakeresés
        href: functions-run-local.md
+     - name: A Visual Studio fejlesztése
+       href: functions-develop-vs.md
   - name: Üzembe helyezés
     items:
     - name: Folyamatos üzembe helyezés
@@ -100,7 +102,7 @@
       href: functions-bindings-storage-blob.md
     - name: Cosmos DB
       href: functions-bindings-documentdb.md
-    - name: Eseményközpont
+    - name: Event Hubs
       href: functions-bindings-event-hubs.md
     - name: Külső fájl
       href: functions-bindings-external-file.md
@@ -126,6 +128,8 @@
     href: functions-api-definition.md     
 - name: Erőforrások
   items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/functions/
   - name: Régiónkénti rendelkezésre állás

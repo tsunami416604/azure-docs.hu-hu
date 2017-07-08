@@ -15,6 +15,9 @@
 ### [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [Java](event-hubs-java-get-started-receive-eph.md)
 ### [Apache Storm](event-hubs-storm-getstarted-receive.md)
+## Események rögzítése
+### [Az Event Hubs Capture engedélyezése az Azure Portal használatával](event-hubs-capture-enable-through-portal.md)
+### [Az Event Hubs Capture engedélyezése Resource Manager-sablon használatával](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 ## [Programozási útmutató](event-hubs-programming-guide.md)
 
 # Útmutató
@@ -31,10 +34,9 @@
 ### [AMQP 1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## Kezelés
 ### [Event Hubs felügyeleti könyvtárak](event-hubs-management-libraries.md)
-### Archívum
-#### [Az Event Hubs archívum](event-hubs-archive-overview.md)
-#### [Az Event Hubs Archívum engedélyezése sablonnal](event-hubs-resource-manager-namespace-event-hub-enable-archive.md)
-#### [Az Event Hubs Archívum engedélyezése Pythonnal](event-hubs-archive-python.md)
+### Rögzítés
+#### [Event Hubs Capture](event-hubs-capture-overview.md)
+#### [Event Hubs-adatok rögzítése Python használatával](event-hubs-capture-python.md)
 ### [A PowerShell használata entitások üzembe helyezésére](event-hubs-manage-with-ps.md) 
 ### [Azure Diagnostics-adatok streamelése az Event Hubs használatával](event-hubs-streaming-azure-diags-data.md)
 ### [Eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal](event-hubs-resource-manager-namespace-event-hub.md)
@@ -54,9 +56,10 @@
 ## [Kvóták](event-hubs-quotas.md)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Kódminták](event-hubs-samples.md)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)

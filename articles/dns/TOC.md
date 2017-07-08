@@ -62,8 +62,9 @@
 ## [Webalkalmazások](/azure/app-service-web/)
 
 # Erőforrások
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=dns)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/dns/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Funkciókérések](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
-## [Funkciókérések](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/dns/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=dns)

@@ -105,5 +105,6 @@
 
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ##[Azure AD Connect – gyakori kérdések](active-directory-aadconnect-faq.md)
 ##[DirSync elavulása](active-directory-aadconnect-dirsync-deprecated.md)

@@ -25,7 +25,8 @@
 ## [Container Service](/azure/container-service/)
 
 # Erőforrások
-## [Régiónkénti elérhetőség](https://azure.microsoft.com/regions/services/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/container-registry/)
+## [Régiónkénti elérhetőség](https://azure.microsoft.com/regions/services/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-container-registry)

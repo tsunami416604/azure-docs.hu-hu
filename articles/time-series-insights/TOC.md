@@ -5,6 +5,7 @@
 ## [Környezet létrehozása](time-series-insights-get-started.md)
 ## [Adathozzáférés biztosítása](time-series-insights-data-access.md)
 ## [Eseményforrás létrehozása](time-series-insights-add-event-source.md)
+## [Referencia-adatkészlet létrehozása](time-series-insights-add-reference-data-set.md)
 ## [Események küldése](time-series-insights-send-events.md)
 
 # Útmutató
@@ -15,6 +16,7 @@
 ## Fejlesztés
 ### [Hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)
 ### [Adatok lekérdezése a C# használatával](time-series-insights-query-data-csharp.md)
+### [Referenciaadatok kezelése a C# használatával](time-series-insights-manage-reference-data-csharp.md)
 
 # Referencia
 ## [Lekérdezés API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
@@ -26,4 +28,5 @@
 ## [Azure Stream Analytics](/azure/stream-analytics/)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/time-series-insights/)

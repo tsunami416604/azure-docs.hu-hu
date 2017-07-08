@@ -75,7 +75,7 @@
 ### [Külső csomagok használata Jupyterrel, szkriptműveletek használatával](hdinsight-apache-spark-python-package-installation.md)
 ### [Helyi Jupyter notebook használata](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md)
-### [Feladatok távoli hibakeresése az IntelliJ-vel](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+### [Feladatok távoli hibakeresése az IntelliJ-vel VPN-en keresztül](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [Erőforrások kezelése](hdinsight-apache-spark-resource-manager.md)
 ### [Feladatok nyomon követése és hibakeresése](hdinsight-apache-spark-job-debugging.md)
 ### [Ismert problémák](hdinsight-apache-spark-known-issues.md)
@@ -107,6 +107,7 @@
 ## A Kafka (előzetes verzió) használata
 ### [Kafka-adatok replikálása](hdinsight-apache-kafka-mirroring.md)
 ### [A Kafka tárolójának és skálázhatóságának konfigurálása](hdinsight-apache-kafka-scalability.md)
+### [Az adatok magas rendelkezésre állásának konfigurálása](hdinsight-apache-kafka-high-availability.md)
 ### [Használat a Virtual Network szolgáltatással](hdinsight-apache-kafka-connect-vpn-gateway.md)
 ### [Használat a Sparkkal (strukturált stream)](hdinsight-apache-kafka-spark-structured-streaming.md)
 ### [Használat a Sparkkal (DStream)](hdinsight-apache-spark-with-kafka.md)
@@ -116,7 +117,7 @@
 ### [Java MapReduce programok fejlesztése](hdinsight-develop-deploy-java-mapreduce-linux.md)
 ### [Scalding MapReduce feladatok fejlesztése](hdinsight-hadoop-mapreduce-scalding.md)
 ### [A HDInsight Tools használata Spark-alkalmazások létrehozásához](hdinsight-apache-spark-eclipse-tool-plugin.md)
-### [A HDInsight Tools használata Spark-alkalmazások távoli hibakereséséhez](hdinsight-apache-spark-intellij-tool-debug-remotely.md)
+### [A HDInsight Tools használata a Spark-alkalmazások távoli hibakereséséhez SSH-n keresztül](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 ### [Üres élcsomópontok használata](hdinsight-apps-use-edge-node.md)
 ### [Python-streamprogramok fejlesztése](hdinsight-hadoop-streaming-python.md)
 ### [JSON-dokumentumok feldolgozása és elemzése](hdinsight-using-json-in-hive.md)
@@ -226,7 +227,8 @@
 ### [Fürtök figyelése az Ambari API-val](hdinsight-monitor-use-ambari-api.md)
 
 # Erőforrások
-## [Microsoft Professional Program big data-megoldásokhoz](https://academy.microsoft.com/en-us/professional-program/big-data/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Segítség kérése a fórumokon](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+## [Microsoft Professional Program big data-megoldásokhoz](https://academy.microsoft.com/en-us/professional-program/big-data/)
 ## [A HDInsight Windows-eszközei](hdinsight-hadoop-windows-tools.md)

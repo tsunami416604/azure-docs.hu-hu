@@ -73,21 +73,22 @@
 ## [.REST (Felügyelet)](/rest/api/searchmanagement)
 
 # Erőforrások
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=search)
 ## [API-verziók](search-api-versions.md)
-## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/search/)
+## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=search)
+## Oktatóanyagok és -programok
 ## Bemutató webhelyek
-### [Search Analyzer Demo](http://alice.unearth.ai/)
+## Partner és közösség
+### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [Fórum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
 ### [Feladatlistázó alkalmazás](http://aka.ms/azjobsdemo)
 ### [Élő bemutató alkalmazások](https://searchsamples.azurewebsites.net/)
-## Oktatóanyagok és -programok
-### [Virtuális akadémia](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)
-### [Videók és oktatóanyagok](search-video-demo-tutorial-list.md)
-### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-## Partner és közösség
 ### [Relációs adatok modellezése](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
 ### [Többszintű jellemzőkezelés](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [Fórum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
+### [Search Analyzer Demo](http://alice.unearth.ai/)
 ### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
-### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [Videók és oktatóanyagok](search-video-demo-tutorial-list.md)
+### [Virtuális akadémia](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)

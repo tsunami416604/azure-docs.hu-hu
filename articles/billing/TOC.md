@@ -40,4 +40,5 @@
 ## [Partneri megoldás: Cloudyn](billing-usage-rate-card-partner-solution-cloudyn.md)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Kapcsolatfelvétel az ügyfélszolgálattal](../azure-supportability/how-to-create-azure-support-request.md)

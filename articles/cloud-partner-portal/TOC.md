@@ -33,3 +33,5 @@
 ## [Közzétevő profil kezelése](./cloud-partner-portal-manage-publisher-profile.md)
 ## [Felhasználók kezelése](./cloud-partner-portal-manage-users.md)
 ## [Támogatás kérése](./cloud-partner-portal-support-for-cloud-partner-portal.md)
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

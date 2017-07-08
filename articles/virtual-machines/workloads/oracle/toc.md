@@ -6,3 +6,5 @@
 ## [Oracle ASM konfigurálása](configure-oracle-asm.md)
 ## [Oracle DataGuard konfigurálása](configuring-oracle-dataguard.md)
 ## [Oracle GoldenGate konfigurálása](configure-oracle-golden-gate.md)
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

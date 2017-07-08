@@ -23,15 +23,11 @@
 ### [Az U-SQL alapjai](data-lake-analytics-u-sql-get-started.md)
 ### [U-SQL nyelvi referencia](https://msdn.microsoft.com/library/azure/mt591959)
 ### [U-SQL-katalógus](data-lake-analytics-u-sql-catalog.md)
-### [U-SQL-összekapcsolások](data-lake-analytics-u-sql-combine-data-with-joins.md)
-### [Ablakfüggvények az U-SQL-ben](data-lake-analytics-use-window-functions.md)
 ### [Felhasználó által definiált operátorok az U-SQL-ben](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 ### [A U-SQL Python-bővítményei](data-lake-analytics-u-sql-python-extensions.md)
 ### [A U-SQL R-bővítményei](data-lake-analytics-u-sql-r-extensions.md)
 ### [Az U-SQL kognitív bővítményei](data-lake-analytics-u-sql-cognitive.md)
-### [Az U-SQL katalógus használata a kód és az adatok strukturálásához](data-lake-analytics-use-u-sql-catalog.md)
 ### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)
-### [Az U-SQL interaktív oktatóanyagának használata](data-lake-analytics-use-interactive-tutorials.md)
 
 ## U-SQL-programok hibakeresése
 ### [Feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
@@ -48,9 +44,10 @@
 ## [CLI 2.0](https://docs.microsoft.com/cli/azure/dla)
 
 # Erőforrások
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
-## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
 ## [Azure Data Lake blog](https://blogs.msdn.microsoft.com/azuredatalake/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-analytics)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)

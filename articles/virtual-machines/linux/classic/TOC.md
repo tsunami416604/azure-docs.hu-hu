@@ -78,6 +78,7 @@
 
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

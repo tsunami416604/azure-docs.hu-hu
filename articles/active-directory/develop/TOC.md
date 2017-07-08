@@ -105,3 +105,5 @@
 #### [Jogkivonat-referencia](active-directory-v2-tokens.md)
 #### [Tanúsítványok hitelesítő adatai](active-directory-certificate-credentials.md)
 ### [Hatókörök](active-directory-v2-scopes.md)
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

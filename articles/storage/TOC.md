@@ -113,9 +113,10 @@
 ### [Biztonsági útmutató](storage-security-guide.md)
 ### [Inaktív adatok titkosítása](storage-service-encryption.md)
 ### [Titkosítás inaktív állapotban ügyfélkulcsokkal](storage-service-encryption-customer-managed-keys.md)
-### [Megosztott kulcsos hitelesítés](https://msdn.microsoft.com/library/dd179428.aspx)
+### [Megosztott kulcsos hitelesítés](/rest/api/storageservices/Authentication-for-the-Azure-Storage-Services)
 ### [Közös hozzáférésű jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md)
 ### [Oktatóanyag: Blobok titkosítása és visszafejtése az Azure Key Vaulttal](storage-encrypt-decrypt-blobs-key-vault.md)
+### [Biztonságos átvitel megkövetelése](storage-require-secure-transfer.md)
 ### Ügyféloldali titkosítás
 #### [.NET](storage-client-side-encryption.md)
 #### [Java](storage-client-side-encryption-java.md)
@@ -201,11 +202,12 @@
 ### [Oktatóanyag a hibaelhárításhoz](storage-e2e-troubleshooting-classic-portal.md)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Azure Storage-ügyféleszközök](storage-explorers.md)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storage)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storage)
 
 ## Azure Storage Explorer

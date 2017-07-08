@@ -127,17 +127,18 @@
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
 
 # Erőforrások
+## [.NET API-minta](mobile-engagement-dotnet-sdk-service-api.md)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/mobile-engagement/)
+## [Bemutatóalkalmazás-minták](mobile-engagement-demo-apps.md)
+## [Szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+## [Videók és frissítések](https://azure.microsoft.com/documentation/services/mobile-engagement/)
 ## Kibocsátási megjegyzések
 ### [Android SDK](mobile-engagement-android-release-notes.md)
 ### [iOS SDK](mobile-engagement-ios-release-notes.md)
 ### [Web SDK](mobile-engagement-web-release-notes.md)
-### [Univerzális Windows-alkalmazások SDK](mobile-engagement-windows-store-release-notes.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-release-notes.md)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/mobile-engagement/)
-## [Bemutatóalkalmazás-minták](mobile-engagement-demo-apps.md)
-## [.NET API-minta](mobile-engagement-dotnet-sdk-service-api.md)
-## [Videók és frissítések](https://azure.microsoft.com/documentation/services/mobile-engagement/)
-## [Szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
+### [Univerzális Windows-alkalmazások SDK](mobile-engagement-windows-store-release-notes.md)
 
 
 

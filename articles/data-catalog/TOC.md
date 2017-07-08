@@ -28,10 +28,11 @@
 ## [Fejlesztői minták](data-catalog-samples.md)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Az Azure Data Catalog billentyűparancsai](data-catalog-keyboard-shortcuts.md)
-## [Terminológia](data-catalog-terminology.md)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [Kibocsátási megjegyzések](data-catalog-whats-new.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-catalog)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/data-catalog/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
+## [Terminológia](data-catalog-terminology.md)

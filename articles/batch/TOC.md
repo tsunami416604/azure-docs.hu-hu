@@ -62,14 +62,15 @@
 ## [Batch- és HPC-megoldások az Azure-felhőben | Microsoft Azure](batch-hpc-solutions.md)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/batch/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=batch)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
-## [C#-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
-## [Python-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Big Compute erőforrások](big-compute-resources.md)
 ## [Blog](https://blogs.technet.microsoft.com/windowshpc/)
+## [C#-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/batch/)
+## [Python-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
 

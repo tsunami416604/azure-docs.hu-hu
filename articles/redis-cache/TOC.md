@@ -55,6 +55,7 @@
 ## [REST](https://docs.microsoft.com/rest/api/redis/)
 
 # Erőforrások
-## [Redis Cache-minták](cache-redis-samples.md)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/cache/)
+## [Redis Cache-minták](cache-redis-samples.md)
 

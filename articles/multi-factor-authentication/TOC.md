@@ -48,3 +48,5 @@
 ### [Gyakori kérdések](multi-factor-authentication-faq.md)
 ### [Kérdezzen](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 ### [NPS-bővítmény hibái](multi-factor-authentication-nps-errors.md)
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

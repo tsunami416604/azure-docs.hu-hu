@@ -14,8 +14,5 @@
 ### [Bejelentkezés telefonnal](microsoft-authenticator-app-phone-signin-faq.md)
 ### [Gyakori kérdések](microsoft-authenticator-app-faq.md)
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

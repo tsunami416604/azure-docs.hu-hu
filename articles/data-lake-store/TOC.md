@@ -68,10 +68,11 @@
 ## [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/dls)
 
 # Erőforrások
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-store)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
-## [Stack Overflow fórum](http://stackoverflow.com/questions/tagged/azure-data-lake)
-## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Data Lake Store blog](https://blogs.msdn.microsoft.com/azuredatalake/)
+## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-store)
+## [Stack Overflow fórum](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

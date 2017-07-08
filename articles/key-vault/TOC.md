@@ -14,16 +14,18 @@
 ### [Szolgáltatási korlátozások](key-vault-service-limits.md)
 ### [HSM által védett kulcsok](key-vault-hsm-protected-keys.md)
 ### [Áttelepítés az .NET 2.0-ba](key-vault-dotnet2api-release-notes.md)
+### Áttekintések
+#### [Biztonsági világok áttekintése](key-vault-ovw-security-worlds.md)
+#### [Helyreállítható törlés áttekintése](key-vault-ovw-soft-delete.md)
+#### [Szabályozás áttekintése](key-vault-ovw-throttling.md)
 
 ## Kezelés
 ### [Az Azure Key Vault naplózása](key-vault-logging.md)
 ### [Tűzfal mögötti hozzáférés](key-vault-access-behind-firewall.md)
 ### [Bérlőazonosító módosítása](key-vault-subscription-move-fix.md)
+### [Hozzáférés megadása csoportok használatával](key-vault-group-permissions-for-apps.md)
 ### [Elérhetőség és redundancia](key-vault-disaster-recovery-guidance.md)
 ### [Kulcstartó védelme](key-vault-secure-your-key-vault.md)
-### [Biztonsági világok áttekintése](key-vault-ovw-security-worlds.md)
-### [Helyreállítható törlés áttekintése](key-vault-ovw-soft-delete.md)
-### [Tárfiókok kulcsainak áttekintése](key-vault-ovw-storage-keys.md)
 
 ## Automatizálás
 ### [Azure Automation](automation-manage-key-vault.md)
@@ -47,7 +49,8 @@
 
 # Erőforrások
 ## [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
-## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](http://blogs.technet.com/b/kv/)
+## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [Fórumok](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/)

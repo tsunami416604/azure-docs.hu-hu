@@ -56,15 +56,17 @@
 ### [Activity Log Analytics](log-analytics-activity.md)
 ### [AD-elemzés](log-analytics-ad-assessment.md)
 ### [AD-replikáció állapota](log-analytics-ad-replication-status.md)
+### [Az ügynök állapota](../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [Riasztáskezelés](log-analytics-solution-alert-management.md)
+### [Application Insights Connector](log-analytics-app-insights-connector.md)
 ### [Azure SQL Analytics](log-analytics-azure-sql.md)
 ### [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md)
 ### [Kapacitás és teljesítmény](log-analytics-capacity.md)
 ### [Változáskövetés](log-analytics-change-tracking.md)
 ### [Tárolók](log-analytics-containers.md)
 ### [DNS-elemzés](log-analytics-dns.md)
-### [Informatikai szolgáltatásfelügyeleti összekötő az OMS-ben](log-analytics-itsmc-overview.md)
-#### [Informatikai szolgáltatásfelügyeleti kapcsolatok az OMS-ben](log-analytics-itsmc-connections.md)
+### [Informatikai szolgáltatásfelügyeleti összekötő](log-analytics-itsmc-overview.md)
+#### [Informatikai szolgáltatásfelügyeleti kapcsolatok](log-analytics-itsmc-connections.md)
 ### [Key Vault](log-analytics-azure-key-vault.md)
 ### Logic Apps B2B-üzenetek
 #### [Logic Apps B2B-üzeneteken alapuló megoldás](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
@@ -89,6 +91,7 @@
 ### [PowerShell-parancsmagok](log-analytics-powershell-workspace-configuration.md)
 ### [Resource Manager-sablonok](log-analytics-template-workspace-configuration.md)
 ### [Naplókeresési API](log-analytics-log-search-api.md)
+#### [Python](log-analytics-log-search-api-python.md)
 ### [Riasztási API](log-analytics-api-alerts.md)
 
 # Referencia
@@ -96,6 +99,7 @@
 ## [REST](/rest/api/loganalytics)
 
 # Erőforrások
-## [Windows Analytics](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=log-analytics)
+## [Windows Analytics](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)

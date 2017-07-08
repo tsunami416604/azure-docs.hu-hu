@@ -193,6 +193,10 @@
 ### [Gyűjtemények](machine-learning-gallery-collections.md)
 ### [Egyéni modulok](machine-learning-gallery-custom-modules.md)
 
+## Cortana Intelligence partnermegoldások
+### [Cortana Intelligence közzétételi útmutató](cortana-intelligence-appsource-publishing-guide.md)
+### [Cortana Intelligence megoldásértékelési eszköz](cortana-intelligence-appsource-evaluation-tool.md)
+
 ## Cortana Analytics
 ### API-k
 #### [Rendellenességek észlelése](machine-learning-apps-anomaly-detection-api.md)
@@ -207,6 +211,7 @@
 ##### [Telepítés](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 
 ## [Net# neurális hálózati nyelv](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/)

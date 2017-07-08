@@ -216,14 +216,15 @@
 ## [StorSimple 5000-7000-es sorozat](http://onlinehelp.storsimple.com)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/storsimple/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storsimple)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Marketing blog](http://blogs.technet.com/b/cis/)
 ## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/storsimple/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storsimple)
 ## [Támogatási blog](http://blogs.msdn.com/b/storsimple/)
 ## [Harmadik felekkel kapcsolatos közlemények](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
 

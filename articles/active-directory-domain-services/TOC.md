@@ -7,10 +7,10 @@
 ## [Kompatibilis külső szoftverek](active-directory-ds-compatible-software.md)
 
 # Bevezetés
-## [Felügyeleti csoport létrehozása](active-directory-ds-getting-started.md)
+## [Felügyeleti csoport létrehozása](active-directory-ds-getting-started-create-group.md)
 ## [Virtuális hálózat létrehozása vagy kiválasztása](active-directory-ds-getting-started-vnet.md)
 ## [Az Azure AD tartományi szolgáltatások engedélyezése](active-directory-ds-getting-started-enableaadds.md)
-## [DNS-beállítások frissítése](active-directory-ds-getting-started-dns.md)
+## [DNS-beállítások frissítése](active-directory-ds-getting-started-update-dns.md)
 ## Jelszó-szinkronizálás engedélyezése
 ### [Csak felhőalapú bérlő](active-directory-ds-getting-started-password-sync.md)
 ### [Szinkronizált bérlő](active-directory-ds-getting-started-password-sync-synced-tenant.md)
@@ -41,12 +41,8 @@
 ## [Többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-ds/)
 ## [Azure AD visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-ds)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Kapcsolat](active-directory-ds-contact-us.md)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-ds/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-ds)

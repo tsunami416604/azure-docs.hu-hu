@@ -51,6 +51,7 @@
 ## [Machine Learning](/azure/machine-learning/)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Gyakori kérdések](iot-suite-faq.md)
 ## [IoT Suite képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 

@@ -12,7 +12,7 @@
 
 ## Sablon létrehozása
 ### [Információk a méretezési csoportok sablonjairól](virtual-machine-scale-sets-mvss-start.md)
-### [Virtuális hálózat hozzáadása](virtual-machine-scale-sets-mvss-existing-vnet.md)
+### [Meglévő virtuális hálózat használata](virtual-machine-scale-sets-mvss-existing-vnet.md)
 ### [Egyéni rendszerkép használata](virtual-machine-scale-sets-mvss-custom-image.md)
 
 ## Üzembe helyezés
@@ -50,7 +50,8 @@
 ## [REST](/rest/api/virtualmachinescalesets/)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 ## Díjszabás 
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 ### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)

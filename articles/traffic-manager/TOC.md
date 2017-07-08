@@ -41,10 +41,11 @@
 ## [Azure DNS](/azure/dns/)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/traffic-manager/)
-## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
-## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md#traffic-manager-limits)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/traffic-manager/)
+## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md#traffic-manager-limits)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=traffic-manager)
+## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=traffic-manager)

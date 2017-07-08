@@ -67,7 +67,8 @@
 ### [Felhőalapú gyűjtemény hibaelhárítása](remoteapp-cloudtrouble.md)
 
 # Erőforrások
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=remoteapp)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=remoteapp)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)

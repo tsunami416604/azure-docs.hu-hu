@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Mi az Application Insights?](app-insights-overview.md)
-## [Teljesítményfigyelés a devOps-ciklusokban](app-insights-detect-triage-diagnose.md)
+## [A teljesítményfigyelés áttekintése a DevOps esetében](app-insights-detect-triage-diagnose.md)
 
 # Bevezetés
 ## Az Azure figyelése
@@ -80,7 +80,6 @@
 #### [Keresés](app-insights-diagnostic-search.md)
 #### [Metrikák](app-insights-metrics-explorer.md)
 #### [Élő stream](app-insights-live-stream.md)
-
 #### [Alkalmazástérkép](app-insights-app-map.md)
 #### [HockeyApp-adatok](app-insights-hockeyapp-bridge-app.md)
 
@@ -93,6 +92,7 @@
 ### Használat
 #### [Áttekintés](app-insights-usage-overview.md)
 #### [Felhasználók, munkamenetek, események](app-insights-usage-segmentation.md)
+#### [Tölcsérek](app-insights-understand-usage-patterns.md)
 #### [Megőrzés](app-insights-usage-retention.md)
 #### [Munkafüzetek](app-insights-usage-workbooks.md)
 
@@ -111,6 +111,7 @@
 ### [Riasztások beállítása](app-insights-powershell-alerts.md)
 ### [Az Azure Diagnostics beszerzése](app-insights-powershell-azure-diagnostics.md)
 ### [Automatizálás a Microsoft Flow-val](app-insights-automate-with-flow.md)
+### [Automatizálás Azure Logic App használatával](automate-with-logic-apps.md)
 
 ## Fejlesztés
 
@@ -154,6 +155,7 @@
 ## [Telemetriai korreláció](application-insights-correlation.md)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 
 ## [Nyelvek és platformok](app-insights-platforms.md)
 

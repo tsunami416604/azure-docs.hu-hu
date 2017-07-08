@@ -70,6 +70,7 @@
 ### [1.3 és újabb verziók](azure-diagnostics-schema-1dot3-and-later.md)
 
 # Erőforrások
-## [PowerShell-minták](insights-powershell-samples.md)
 ## [Azure CLI 1.0-minták](insights-cli-samples.md)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [PowerShell-minták](insights-powershell-samples.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=monitor)

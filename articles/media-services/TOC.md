@@ -4,17 +4,14 @@
 # Bevezetés
 ## [Fiók létrehozása és felügyelete](media-services-portal-create-account.md)
 ## [A fejlesztési környezet beállítása](media-services-set-up-computer.md)
-###[.NET](media-services-dotnet-how-to-use.md)
-###[REST](media-services-rest-how-to-use.md)  
+### [.NET](media-services-dotnet-how-to-use.md)
+### [REST](media-services-rest-how-to-use.md)  
 ## [API-hozzáférés AAD-hitelesítés használatával](media-services-use-aad-auth-to-access-ams-api.md)
-###[AAD-hitelesítés kezelése a portál használatával](media-services-portal-get-started-with-aad.md)
-###[API-hozzáférés .NET-tel](media-services-dotnet-get-started-with-aad.md)
-###[API-hozzáférés REST-tel](media-services-rest-connect-with-aad.md)
-###[AAD-alkalmazás létrehozása és konfigurálása a parancssori felületen](media-services-cli-create-and-configure-aad-app.md)
-###[AAD-alkalmazás létrehozása és konfigurálása PowerShell-lel](media-services-powershell-create-and-configure-aad-app.md)
-## Programozott módon való kapcsolódás ACS-kulcsokkal
-### [.NET](media-services-dotnet-connect-programmatically.md)
-### [REST](media-services-rest-connect-programmatically.md)
+### [AAD-hitelesítés kezelése a portál használatával](media-services-portal-get-started-with-aad.md)
+### [API-hozzáférés .NET-tel](media-services-dotnet-get-started-with-aad.md)
+### [API-hozzáférés REST-tel](media-services-rest-connect-with-aad.md)
+### [AAD-alkalmazás létrehozása és konfigurálása a parancssori felületen](media-services-cli-create-and-configure-aad-app.md)
+### [AAD-alkalmazás létrehozása és konfigurálása PowerShell-lel](media-services-powershell-create-and-configure-aad-app.md)
 
 ## Igény szerinti videó továbbítása
 ### [Portál](media-services-portal-vod-get-started.md)
@@ -223,7 +220,8 @@
 ## [REST](/rest/api/media/mediaservice)  
 
 # Erőforrások
-## [Kibocsátási megjegyzések](media-services-release-notes.md)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services-közösség](media-services-community.md)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
+## [Kibocsátási megjegyzések](media-services-release-notes.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)

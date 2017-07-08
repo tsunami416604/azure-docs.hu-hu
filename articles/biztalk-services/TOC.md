@@ -23,9 +23,10 @@
 ### [Létrehozás és kezelés](integration-hybrid-connection-create-manage.md)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/biztalk-services/)
 ## [Kibocsátási megjegyzések](biztalk-release-notes.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=biztalk-services)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/biztalk-services/)
-## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/biztalk-services)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)

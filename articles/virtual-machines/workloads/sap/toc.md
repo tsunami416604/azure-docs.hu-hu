@@ -22,10 +22,12 @@
 ### [Fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
 ### [Storage-pillanatkép biztonsági mentései](sap-hana-backup-storage-snapshots.md)
 ## SAP NetWeaver
-### [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](sap-cal-ides-erp6-ehp7-sp3-sql.md)
+### [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](cal-ides-erp6-erp7-sp3-sql.md)
 ### [Áttekintés és architektúra](suse-quickstart.md)
 ### [Tervezés és megvalósítás](planning-guide.md)
 ### [Magas rendelkezésre állás](high-availability-guide.md)
 ### [Több SID-vel rendelkező konfigurációk](high-availability-multi-sid.md)
 ### [Üzembehelyezési útmutató](deployment-guide.md)
 ### [DBMS üzembehelyezési útmutató](dbms-guide.md)
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

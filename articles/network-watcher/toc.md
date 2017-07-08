@@ -70,8 +70,9 @@
 ## [Virtuális gépek](/azure/virtual-machines/)
 ## [VPN Gateway](/azure/vpn-gateway/)
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/network-watcher/)
-## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/network-watcher)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/network-watcher/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=network-watcher)
+## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/network-watcher)

@@ -3,8 +3,7 @@
 ## [Kiadás kiválasztása](active-directory-editions.md)
 ## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
 ## [Az Azure identitáskezelési megoldásainak ismertetése](understand-azure-identity-solutions.md)
-## [Az Azure Portal felületének előzetese](active-directory-preview-explainer.md)
-
+## [Hibrid identitáskezelési megoldás](choose-hybrid-identity-solution.md)
 
 # Bevezetés
 ## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
@@ -13,14 +12,16 @@
 ## Az Azure AD-licencek kezelése
 ### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
 ### [Klasszikus portál](active-directory-licensing-what-is.md)
-## [Azure beszerzése a szervezet számára](sign-up-organization.md)
+### [Licencek hozzárendelése csoportok használatával](active-directory-licensing-whatis-azure-portal.md)
+#### [Licencek hozzárendelése egy csoporthoz](active-directory-licensing-group-assignment-azure-portal.md)
+#### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
+#### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
+#### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 ## [Gyakori kérdések](active-directory-faq.md)
 ## [Hogyan kérhet támogatást az Azure Active Directoryhoz](active-directory-troubleshooting-support-howto.md)
 ## [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
-## Azure AD-vezérlők
-### [Teljes hozzáférési felülvizsgálat](active-directory-azure-ad-controls-complete-an-access-review.md)
-### [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-an-access-review.md)
-### [Hozzáférési felülvizsgálat végrehajtása](active-directory-azure-ad-controls-perform-an-access-review.md)
+
 
 
 # Útmutató
@@ -53,9 +54,7 @@
 ### Felhasználók hozzáadása
 #### [Azure Portal](active-directory-users-create-azure-portal.md)
 #### [Klasszikus portál](active-directory-create-users.md)
-### Azure AD-vezérlők
-#### [Vendéghozzáférés hozzáférési felülvizsgálatokkal](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-#### [Felhasználói hozzáférések kezelése felülvizsgálatokkal](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
+
 
 ### [Licencek hozzárendelése csoportok használatával](active-directory-licensing-whatis-azure-portal.md)
 #### [Licencek hozzárendelése egy csoporthoz](active-directory-licensing-group-assignment-azure-portal.md)
@@ -106,11 +105,13 @@
 ### [Veszélyeztetett felhasználók](active-directory-reporting-security-user-at-risk.md)
 ### [Kockázatos bejelentkezések](active-directory-reporting-security-risky-sign-ins.md)
 ### [Kockázati események](active-directory-reporting-risk-events.md)
-### [Nevesített helyek](active-directory-named-locations.md)
-### [Jelentések migrálása](active-directory-reporting-migration.md)
 ### [Megőrzés](active-directory-reporting-retention.md)
 ### [Késések](active-directory-reporting-latencies-azure-portal.md)
 ### [Gyakori kérdések](active-directory-reporting-faq.md)
+### Feladatok
+#### [Nevesített helyek konfigurálása](active-directory-named-locations.md)
+#### [Tevékenységjelentések keresése](active-directory-reporting-migration.md)
+#### [Az Azure Active Directory Power BI-tartalomcsomag használata](active-directory-reporting-power-bi-content-pack-how-to.md)  
 ### Hibaelhárítás
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -188,8 +189,7 @@
 ### [Felhőalkalmazások felderítése](active-directory-cloudappdiscovery-whatis.md)
 #### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
-### Azure AD-vezérlők
-####[Programok és vezérlőik kezelése](active-directory-azure-ad-controls-manage-programs-and-controls.md)
+
 
 ### [Appok távoli elérése az App Proxyval](active-directory-application-proxy-get-started.md)
 #### Bevezetés
@@ -215,6 +215,7 @@
 ##### [Natív ügyfélalkalmazások](active-directory-application-proxy-native-client.md)
 ##### [Csendes telepítés](active-directory-application-proxy-silent-installation.md)
 ##### [Egyéni kezdőlap](application-proxy-office365-app-launcher.md)
+##### [Beágyazott hivatkozások fordítása](application-proxy-link-translation.md)
 #### Közzétételi útmutatók
 ##### [Távoli asztal](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
@@ -399,9 +400,10 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory/)
+## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory)
-## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)

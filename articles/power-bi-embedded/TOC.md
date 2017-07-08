@@ -33,9 +33,10 @@
 
 
 # Erőforrások
-## [Mintaalkalmazás](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 ## [JavaScript Git-tárház](https://github.com/Microsoft/PowerBI-JavaScript)
 ## [Power BI C# Git-tárház](https://github.com/Microsoft/PowerBI-CSharp)
 ## [Power BI-közösség](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [Mintaalkalmazás](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)

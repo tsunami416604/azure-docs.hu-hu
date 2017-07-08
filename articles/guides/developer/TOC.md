@@ -111,5 +111,6 @@
 
 # Erőforrások
 ## [Azure-régiók](https://azure.microsoft.com/regions/)
-## [Videók](https://azure.microsoft.com/resources/videos/home/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Példák](https://azure.microsoft.com/resources/samples/)
+## [Videók](https://azure.microsoft.com/resources/videos/home/)

@@ -42,6 +42,7 @@
 #### [Ismerkedés az Azure-naplók integrációjával](security-azure-log-integration-get-started.md)
 #### [Az Azure Active Directory naplóinak integrálása](security-azure-log-integration-ad.md)
 #### [A Security Center riasztásainak integrálása](security-azure-log-integration-security-center.md)
+#### [Key Vault-naplók integrálása az Event Hubs használatával](security-azure-log-integration-keyvault-eventhub.md)
 #### [Gyakori kérdések](security-azure-log-integration-faq.md)
 
 ## Identitáskezelés
@@ -72,9 +73,10 @@
 ## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
 # Erőforrások
-## [Biztonsági és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Azure biztonsági MVP program](azure-security-mvp.md)
 ## [Kiberbiztonsági tanácsadás](azure-security-cyber-services.md)
+## [Biztonsági és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)
 ## [Biztonsági kurzusok a Virtuális Akadémián](security-microsoft-virtual-academy.md)
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](security-channel-nine.md)
 ## [Fenyegetésmodellezési eszköz](azure-security-threat-modeling-tool.md)

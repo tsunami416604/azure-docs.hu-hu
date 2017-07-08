@@ -20,7 +20,8 @@
 ### [A Stretch Database letiltása](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=sql-server-stretch-database)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-server-stretch-database)

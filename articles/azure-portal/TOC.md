@@ -33,6 +33,7 @@
 ## [Azure Insights parancssori felület gyors üzembe helyezési mintái](../monitoring-and-diagnostics/insights-cli-samples.md)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-management-portal)
 

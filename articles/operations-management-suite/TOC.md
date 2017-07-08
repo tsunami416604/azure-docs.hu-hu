@@ -36,6 +36,7 @@
 ### Betekintés és elemzés
 #### [AD-elemzés](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-replikáció állapota](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [Az ügynök állapota](oms-solution-agenthealth.md)
 #### [Riasztáskezelés](../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Azure hálózatelemzés](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Tárolók](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -73,3 +74,5 @@
 # Referencia
 ## [SDK](operations-management-suite-sdk.md)
 
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

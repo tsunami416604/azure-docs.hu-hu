@@ -63,6 +63,10 @@
 ## [Átjáró termékváltozatai (régi)](vpn-gateway-about-skus-legacy.md)
 ## Hibaelhárítás
 ### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
+### [Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások](vpn-gateway-third-party-settings.md)
+### [Pont–hely kapcsolati probléma](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+### [A helyek közötti kapcsolat időnként megszakad](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+### [A helyek közötti kapcsolat nem hozható létre](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
 
 # Referencia
 ## [PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
@@ -80,6 +84,7 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking)
 ## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway)

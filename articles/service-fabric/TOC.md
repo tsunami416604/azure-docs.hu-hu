@@ -2,11 +2,11 @@
 # Áttekintés
 ## [Mi a Service Fabric?](service-fabric-overview.md)
 ## [A mikroszolgáltatások ismertetése](service-fabric-overview-microservices.md)
+## [Nagyméretű kép](service-fabric-content-roadmap.md)
 ## [Alkalmazáshasználati helyzetek](service-fabric-application-scenarios.md)
 ## [Minták és forgatókönyvek](service-fabric-patterns-and-scenarios.md)
 ## [Architektúra](service-fabric-architecture.md)
 ## [Terminológia](service-fabric-technical-overview.md)
-## [Ismertető](service-fabric-content-roadmap.md)
 
 # Bevezetés
 ## A fejlesztési környezet beállítása
@@ -131,6 +131,10 @@
 #### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 #### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
+### Integrálás az API Management szolgáltatással
+#### [Áttekintés](service-fabric-api-management-overview.md)
+#### [Első lépések](service-fabric-api-management-quick-start.md)
+
 ### Áttelepítés a Cloud Servicesből
 #### [A Cloud Services és a Service Fabric összehasonlítása](service-fabric-cloud-services-migration-differences.md)
 #### [Migráció a Service Fabricre](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -142,6 +146,7 @@
 ### [Az ImageStoreConnectionString beállítás ismertetése](service-fabric-image-store-connection-string.md)
 ### Alkalmazások üzembe helyezése vagy eltávolítása
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
+#### [Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API-k](service-fabric-deploy-remove-applications-fabricclient.md)
 ### Alkalmazás frissítése
@@ -215,7 +220,8 @@
 ### [Fürt ábrázolása](service-fabric-visualizing-your-cluster.md)
 ### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
 
-### [Fürt kezelése az Azure CLI-vel](service-fabric-azure-cli.md)
+### [Fürt kezelése az XPlat CLI használatával](service-fabric-azure-cli.md)
+### [Fürt kezelése az Azure CLI-2.0-parancsokkal](service-fabric-azure-cli-2-0.md)
 ### [Fürtcsomópontok javítása](service-fabric-patch-orchestration-application.md)
 
 ### Fürterőforrások kezelése és összehangolása
@@ -258,18 +264,19 @@
 
 # Referencia
 ## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
-## [PowerShell](/powershell/azure/overview?view=azureservicefabricps)
+## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
 ## [Azure CLI](/cli/azure/sf)
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/servicefabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
 
 # Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Gyakori kérdések a Service Fabrickel kapcsolatban](service-fabric-common-questions.md)
-## [A Service Fabric támogatási lehetőségei](service-fabric-support.md)
-## [Mintakód](http://aka.ms/servicefabricsamples)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/service-fabric/)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/service-fabric/)
+## [Mintakód](http://aka.ms/servicefabricsamples)
+## [A Service Fabric támogatási lehetőségei](service-fabric-support.md)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)

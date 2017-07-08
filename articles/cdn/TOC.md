@@ -10,7 +10,11 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Eltérő eredetű erőforrások megosztása](cdn-cors.md)
-
+## Tartalom optimalizálása
+### [Optimalizálás áttekintése](cdn-optimization-overview.md)
+####[Nagyméretű fájlok optimalizálása](cdn-large-file-optimization.md)
+####[Online médialejátszás optimalizálása](cdn-media-streaming-optimization.md)
+ 
 ## Kezelés
 ### [HTTPS engedélyezése egyéni tartományon](cdn-custom-ssl.md)
 ### [Kezelés a Powershell-lel](cdn-manage-powershell.md)
@@ -54,12 +58,13 @@
 
 # Erőforrások
 ##  [Szabálymotor referencia](cdn-rules-engine-reference.md)
-### [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
-### [Szabálymotor egyezési feltételei](cdn-rules-engine-reference-match-conditions.md)
-### [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
 ## [Azure CDN POP-helyek](cdn-pop-locations.md)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cdn)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/cdn/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/cdn/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=cdn)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cdn)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
+### [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
+### [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
+### [Szabálymotor egyezési feltételei](cdn-rules-engine-reference-match-conditions.md)

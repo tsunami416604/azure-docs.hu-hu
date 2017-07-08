@@ -91,6 +91,8 @@
 ## [Azure Backup-tároló törlése](backup-azure-delete-vault.md)
 ## [Szerepköralapú hozzáférés-vezérlés](backup-rbac-rs-vault.md)
 ## [Biztonsági szolgáltatások hibrid biztonsági mentésekhez](backup-azure-security-feature.md)
+## [Azure Backup-jelentések konfigurálása](backup-azure-configure-reports.md)
+## [Adatmodell az Azure Backup-jelentésekhez](backup-azure-reports-data-model.md)
 ## [Offline biztonsági mentés konfigurálása](backup-azure-backup-import-export.md)
 ## [A szalagtár lecserélése](backup-azure-backup-cloud-as-tape.md)
 ## [Linux virtuális gépek alkalmazáskonzisztens biztonsági mentései](backup-azure-linux-app-consistent.md)
@@ -100,7 +102,8 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.recoveryservices.backup)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/backup/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
-## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=backup)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/backup/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=backup)
+## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=backup)

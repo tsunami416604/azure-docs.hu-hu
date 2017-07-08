@@ -65,8 +65,9 @@
 ## [REST](/rest/api/notificationhubs)
 
 # Erőforrások
-## [Díjszabás](https://azure.microsoft.com/pricing/details/notification-hubs/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs)
+## [Díjszabás](https://azure.microsoft.com/pricing/details/notification-hubs/)
+## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=notification-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-notificationhub)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=notification-hubs)
-## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=notification-hubs)

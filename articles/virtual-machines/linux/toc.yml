@@ -37,7 +37,7 @@
     href: tutorial-monitoring.md
   - name: 11 – A virtuális gépek biztonságának kezelése
     href: tutorial-azure-security.md
-  - name: 12 – Jenkins CI/CD
+  - name: 12 - A Jenkins üzembe helyezése
     href: tutorial-jenkins-github-docker-cicd.md
 - name: Példák
   items:
@@ -204,6 +204,8 @@
       href: cli-ps-findimage.md
     - name: Egyéni virtuálisgép-rendszerképek létrehozása
       href: create-upload-generic.md
+    - name: VHD letöltése
+      href: download-vhd.md
     - name: Egyéni virtuálisgép-rendszerképek feltöltése
       href: upload-vhd.md
     - name: Meglévő virtuális gép rögzítése rendszerképben
@@ -331,6 +333,8 @@
       href: install-mongodb.md
     - name: MySQL
       href: mysql-install.md
+    - name: OpenShift
+      href: openshift-get-started.md
     - name: PostgreSQL
       href: postgresql-install.md
     - name: LAMP verem telepítése
@@ -378,6 +382,8 @@
       href: migration-classic-resource-manager-faq.md
   - name: Hibaelhárítás
     items:
+    - name: Jelszó visszaállítása Linux rendszerű virtuális gépen
+      href: virtual-machines-linux-reset-password.md
     - name: Rendszer-újraindítás ismertetése
       href: understand-vm-reboot.md
     - name: SSH-kapcsolatok
@@ -393,6 +399,8 @@
     - name: Foglalási hibák
       href: allocation-failure.md
     - name: Üzembe helyezési problémák
+      href: troubleshoot-deploy-vm.md
+    - name: Virtuális gép létrehozása
       href: troubleshoot-deployment-new-vm.md
     - name: Virtuális üzembe helyezése egy új Azure csomópontra
       href: redeploy-to-new-node.md
@@ -424,6 +432,8 @@
   items:
   - name: Szerzői sablonok
     href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
   - name: Közösségi sablonok
     href: https://azure.microsoft.com/documentation/templates
   - name: Díjszabás

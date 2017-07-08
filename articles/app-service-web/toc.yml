@@ -53,8 +53,8 @@
     href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
   - name: App Service-csomagok
     href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-  - name: App Service-környezetek
-    href: app-service-app-service-environment-intro.md
+  - name: App Service-környezet
+    href: ../app-service/app-service-environment/intro.md
   - name: Hitelesítés és engedélyezés
     href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
   - name: Hitelesítés helyszíni AD-vel
@@ -248,6 +248,24 @@
       href: app-service-web-app-azure-resource-manager-powershell.md
     - name: Alkalmazások kezelése az Azure Automation használatával
       href: automation-manage-web-app.md
+  - name: App Service-környezet
+    items:
+    - name: App Service-környezet használata
+      href: ../app-service/app-service-environment/using-an-ase.md
+    - name: Külső App Service-környezet létrehozása
+      href: ../app-service/app-service-environment/create-external-ase.md
+    - name: Létrehozás az Azure Resource Manager használatával
+      href: ../app-service/app-service-environment/create-from-template.md
+    - name: Létrehozás belső terheléselosztóval
+      href: ../app-service/app-service-environment/create-ilb-ase.md
+    - name: Hálózati megfontolások
+      href: ../app-service/app-service-environment/network-info.md
+    - name: Egyéni beállítások konfigurálása
+      href: ./app-service-app-service-environment-custom-settings.md
+    - name: Integrálás webalkalmazási tűzfallal
+      href: ./app-service-app-service-environment-web-application-firewall.md
+    - name: Földrajzilag elosztott skálázás
+      href: ./app-service-app-service-environment-geo-distributed-scale.md
 - name: Referencia
   items:
   - name: CLI 2.0
@@ -256,8 +274,12 @@
     href: /powershell
   - name: REST API
     href: /rest/api/appservice/
+  - name: App Service-környezet
+    href: ../app-service/app-service-environment/readme.md
 - name: Erőforrások
   items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
   - name: Hibaelhárítás
     items:
     - name: Hibaelhárítás a Visual Studióval
@@ -278,6 +300,32 @@
         href: app-service-web-open-source-technologies-faq.md
       - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
         href: app-service-web-configuration-and-management-faq.md
+  - name: App Service-környezet v1
+    items:
+    - name: Áttekintés
+      href: app-service-app-service-environment-intro.md
+    - name: App Service Environment létrehozása
+      href: app-service-web-how-to-create-an-app-service-environment.md
+    - name: Webalkalmazás létrehozása Azure App Service-környezetben
+      href: app-service-web-how-to-create-a-web-app-in-an-ase.md
+    - name: Belső terheléselosztó használata
+      href: app-service-environment-with-internal-load-balancer.md
+    - name: Az App Service-környezet konfigurálása
+      href: app-service-web-configure-an-app-service-environment.md
+    - name: Alkalmazások méretezése App Service-környezetben
+      href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+    - name: A hálózati architektúra áttekintése
+      href: app-service-app-service-environment-network-architecture-overview.md
+    - name: Többrétegű biztonsági architektúra megvalósítása
+      href: app-service-app-service-environment-layered-security.md
+    - name: Bejövő forgalom szabályozása
+      href: app-service-app-service-environment-control-inbound-traffic.md
+    - name: Biztonságos csatlakozás a háttérerőforrásokhoz
+      href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
+    - name: Hálózati konfiguráció részletei az ExpressRoute-tal
+      href: app-service-app-service-environment-network-configuration-expressroute.md
+    - name: Automatikus méretezés App Service-környezetben
+      href: ../app-service/app-service-environment-auto-scale.md
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/app-service/
   - name: Kvótákra vonatkozó információk

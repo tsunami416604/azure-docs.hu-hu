@@ -134,13 +134,13 @@
       href: create-vm-specialized.md
     - name: Virtuális gép létrehozása sablon alapján
       href: ps-template.md
-    - name: 'Virtuális gép létrehozása C# használatával'
+    - name: 'Virtuális gép létrehozása / kezelése C# használatával'
       href: csharp.md
     - name: 'Virtuális gép létrehozása C# használatával sablon alapján'
       href: csharp-template.md
     - name: Virtuális gép létrehozása Chef használatával
       href: chef-automation.md
-    - name: Virtuális gép létrehozása Python használatával
+    - name: Virtuális gép létrehozása / kezelése Python használatával
       href: python.md
     - name: Virtuális gép létrehozása Terraform használatával
       items:
@@ -173,8 +173,6 @@
       href: cli-manage.md
     - name: Virtuális gépek kezelése a parancssori felületről
       href: cli-deploy-templates.md
-    - name: 'Virtuális gépek kezelése a C# használatával'
-      href: csharp-manage.md
   - name: Kapcsolódás RDP-vel
     items:
     - name: Bejelentkezés virtuális gépre
@@ -187,6 +185,8 @@
       href: hybrid-use-benefit-licensing.md
     - name: Windows-ügyfélrendszerképek használata
       href: client-images.md
+    - name: VHD letöltése
+      href: download-vhd.md
     - name: Virtuális merevlemez előkészítése feltöltéshez
       href: prepare-for-upload-vhd-image.md
     - name: Felügyelt lemez rendszerképének létrehozása
@@ -366,15 +366,22 @@
         href: troubleshoot-specific-rdp-errors.md
     - name: RDP-jelszó visszaállítása
       href: reset-rdp.md
+    - name: Hálózati adapter alaphelyzetbe állítása
+      href: reset-network-interface.md
     - name: Rendszerindítási diagnosztika
  
       href: boot-diagnostics.md
     - name: Virtuális gép létrehozása
       href: troubleshoot-deployment-new-vm.md
+    - name: Üzembe helyezési problémák
+ 
+      href: troubleshoot-deploy-vm.md
     - name: Virtuális gép újraindítása vagy átméretezése
       href: restart-resize-error-troubleshooting.md
     - name: Alkalmazás-hozzáférés
       href: troubleshoot-app-connection.md
+    - name: Aktiválási problémák
+      href: troubleshoot-activation-problems.md
     - name: Foglalási hibák
       href: allocation-failure.md
     - name: Virtuális gép ismételt üzembe helyezése
@@ -409,6 +416,8 @@
   items:
   - name: Szerzői sablonok
     href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
   - name: Közösségi sablonok
     href: https://azure.microsoft.com/documentation/templates
   - name: Díjszabás

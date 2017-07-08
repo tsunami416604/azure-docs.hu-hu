@@ -99,3 +99,5 @@
 #### [Számítógép csatlakoztatása egy virtuális hálózathoz](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Következő lépések](azure-operations-guide.md#next-steps)
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
