@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: a6bb1c4b3a4972cdab9b99c548ef918a4d1070a0
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 780728950199bac6a317767ef1db4462b3fe6ffd
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -35,8 +37,7 @@ A [Microsoft Cloud németországi adatközpontja](https://www.microsoft.com/de-d
 * A következő funkciók nem érhetők el:
   * Azure AD Connect Health
   * Automatikus frissítések
-  * Jelszóvisszaíró
-
+ 
 ## <a name="download"></a>Letöltés
 Az Azure AD Connect a portál Azure AD Connect paneljéről tölthető le.  Az Azure AD Connect panelt az alábbi útmutatás alapján keresheti meg.
 
@@ -64,10 +65,5 @@ Az Azure AD Connect telepítéséhez használhatja az [itt](active-directory-aad
 
 ## <a name="advanced-features-and-additional-information"></a>Speciális szolgáltatások és további információk
 Ha további tájékoztatást, illetve az egyéni beállításokkal vagy speciális konfigurációkkal kapcsolatos útmutatást keres, kezdje a [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md) című cikkel.  Ez a lap a további útmutatással kapcsolatos információkat és hivatkozásokat ismerteti.
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

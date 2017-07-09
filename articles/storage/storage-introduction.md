@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 02/24/2017
 ms.author: marsma
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e041a4d88d93b5ea9fcd792800c4a12a6a44ce36
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 1cab34785d6e4f7751245ebf77b29fa8dc3c685b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -91,7 +91,10 @@ A Blob Storage háromféle blobot biztosít: blokkblobokat, hozzáfűző bloboka
 A nagy adatkészleteknél, ahol a hálózati korlátok miatt irreális lenne az adatok vezetékes le- vagy feltöltése a Blob Storage-ba, elküldhet a Microsoftnak egy merevlemezt, hogy az adatokat közvetlenül az adatközpontból importálják vagy oda exportálják. Lásd: [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage](storage-import-export-service.md) (A Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob Storage-ba).
 
 ## <a name="table-storage"></a>Table Storage
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)] A modern alkalmazásokhoz gyakran az előző generációs szoftvereknél jobban méretezhető és rugalmasabb adattárolók szükségesek. A Table Storage magas rendelkezésre állású, nagymértékben méretezhető tárolót kínál, így alkalmazása a felhasználói igények függvényében automatikusan átméretezheti magát. A Table Storage a Microsoft NoSQL kulcs-/attribútumtára, amely séma nélküli kivitelezésében különbözik a hagyományos relációs adatbázisoktól. A séma nélküli adattárral az adatok könnyedén alkalmazkodnak az alkalmazás igényeinek fejlődéséhez. A Table Storage könnyen használható, így a fejlesztők gyorsan létrehozhatják benne alkalmazásaikat. Az adatok hozzáférése gyors és költséghatékony, bármilyen alkalmazásról legyen is szó.  Hasonló adatmennyiséggel számolva a Table Storage általában határozottan kevesebb költséggel jár, mint egy hagyományos SQL.
+
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+
+A modern alkalmazásokhoz gyakran az előző generációs szoftvereknél jobban méretezhető és rugalmasabb adattárolók szükségesek. A Table Storage magas rendelkezésre állású, nagymértékben méretezhető tárolót kínál, így alkalmazása a felhasználói igények függvényében automatikusan átméretezheti magát. A Table Storage a Microsoft NoSQL kulcs-/attribútumtára, amely séma nélküli kivitelezésében különbözik a hagyományos relációs adatbázisoktól. A séma nélküli adattárral az adatok könnyedén alkalmazkodnak az alkalmazás igényeinek fejlődéséhez. A Table Storage könnyen használható, így a fejlesztők gyorsan létrehozhatják benne alkalmazásaikat. Az adatok hozzáférése gyors és költséghatékony, bármilyen alkalmazásról legyen is szó.  Hasonló adatmennyiséggel számolva a Table Storage általában határozottan kevesebb költséggel jár, mint egy hagyományos SQL.
 
 A Table Storage egy kulcs-/attribútumtár, ami azt jelenti, hogy a táblázatok minden értékét egy típusos tulajdonságnévvel tárolja. A tulajdonságnév felhasználható szűréshez vagy a kiválasztási feltételek megadásához is. A tulajdonságok és értékeik gyűjteménye egy entitást alkot. Mivel a Table Storage séma nélküli, egy tábla két entitása a tulajdonságok különböző gyűjteményeit tartalmazhatja, és ezek a tulajdonságok különböző típusúak lehetnek.
 

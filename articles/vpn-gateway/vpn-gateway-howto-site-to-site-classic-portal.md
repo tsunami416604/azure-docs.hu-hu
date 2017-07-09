@@ -16,23 +16,25 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 0148c3900f2bb6b6a227da01d954e6f79bff4270
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 48fd6daf7bae4d658b1cecd89088e6d78638a20a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
 
+[!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
+
 Ez a cikk bemutatja, hogyan használhatja az Azure Portalt egy helyek közötti VPN-átjárókapcsolat létrehozására egy helyszíni hálózat és a Vnet között. A cikkben ismertetett lépések a klasszikus üzemi modellre vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Resource Manager – Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [Resource Manager – PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-> * [Resource Manager – parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
-> * [Klasszikus – Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
-> * [Klasszikus – Klasszikus portál](vpn-gateway-site-to-site-create.md)
+> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+> * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
+> * [Klasszikus portál (klasszikus)](vpn-gateway-site-to-site-create.md)
 > 
 >
 
@@ -183,22 +185,17 @@ Ebben a lépésben beállítja a megosztott kulcsot, és létrehozza a kapcsolat
 1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
   ```powershell
-  Login-AzureRmAccount
+  Add-AzureAccount
   ```
 2. Keresse meg a fiókot az előfizetésekben.
 
   ```powershell
-  Get-AzureRmSubscription
+  Get-AzureSubscription
   ```
 3. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
 
   ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
-4. Adja hozzá a PowerShell-parancsmagok SM-verzióját.
-
-  ```powershell
-  Add-AzureAccount
+  Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
   ```
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2. lépés A megosztott kulcs beállítása és a kapcsolat létrehozása

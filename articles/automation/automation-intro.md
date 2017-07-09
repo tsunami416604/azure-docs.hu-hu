@@ -15,9 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 15456a887aab29ac6c4ee74d15b8b8ef8d3047d3
-ms.openlocfilehash: 4e7488f954ce50298aba0da83ae07f7a0de6a73d
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: e37e79f3990d920a656330c4f4c5cf7748183441
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -50,7 +52,7 @@ A [PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) egy fel�
 Az [Azure Automation DSC](automation-dsc-overview.md) egy felhőalapú megoldás a PowerShell DSC-hez, amely vállalati környezetekhez szükséges szolgáltatásokat biztosít.  A DSC-erőforrásait kezelheti az Azure Automationben, és alkalmazhat konfigurációkat virtuális és fizikai gépekre, amelyek azokat az Azure-felhőben lévő DSC lekéréses kiszolgálóról szerzik be.  Jelentéskészítési szolgáltatásokat is biztosít, amelyek tájékoztatást adnak olyan fontos eseményekről, mint a csomók letérése a kijelölt konfigurációról vagy egy új konfiguráció alkalmazása 
 
 ## <a name="creating-your-own-dsc-configurations-with-azure-automation"></a>Saját DSC-konfigurációk létrehozása az Azure Automationnel
-A [DSC-konfigurációk](automation-dsc-overview.md#azure-automation-dsc-terms) meghatározzák a csomópont kívánt állapotát.  Több csomópont alkalmazhatja ugyanazt a konfigurációt annak biztosítására, hogy mind azonos állapotot tartsanak fenn.  Létrehozhat egy konfigurációt bármilyen szövegszerkesztővel a helyi gépén, majd importálhatja az Azure Automationbe, ahol lefordíthatja, majd alkalmazhatja a csomópontokra.
+A [DSC-konfigurációk](automation-dsc-overview.md) meghatározzák a csomópont kívánt állapotát.  Több csomópont alkalmazhatja ugyanazt a konfigurációt annak biztosítására, hogy mind azonos állapotot tartsanak fenn.  Létrehozhat egy konfigurációt bármilyen szövegszerkesztővel a helyi gépén, majd importálhatja az Azure Automationbe, ahol lefordíthatja, majd alkalmazhatja a csomópontokra.
 
 ## <a name="getting-modules-and-configurations"></a>Modulok és konfigurációk beszerzése
 A forgatókönyveiben és a DSC-konfigurációiban használható parancsmagokat tartalmazó [PowerShell-modulokat](automation-runbook-gallery.md#modules-in-powershell-gallery) beszerezhet a [PowerShell-galériából](http://www.powershellgallery.com/). Ezt a galériát az Azure portálról indíthatja el, a modulokat pedig importálhatja közvetlenül az Azure Automationbe, vagy letöltheti őket, és importálhatja manuálisan. A modulokat nem telepítheti közvetlenül az Azure portálról, de letöltheti, majd telepítheti őket, mint bármely egyéb modult. 
@@ -83,10 +85,5 @@ Számos erőforrás áll rendelkezésére, hogy további információkat kapjon 
 
 ## <a name="can-i-provide-feedback"></a>Küldhetek visszajelzést?
 **Várjuk a visszajelzését!** Ha egy Azure Automation-forgatókönyv megoldást vagy egy integrációs modult keres, küldjön egy Parancsfájlkérelmet a Script Centerbe. Ha visszajelzést vagy funkciókérést küldene az Azure Automation vonatkozásában, tegye azt közzé a [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) fórumon. Köszönjük! 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

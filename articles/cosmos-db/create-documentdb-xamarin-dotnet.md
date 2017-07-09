@@ -1,14 +1,14 @@
 ---
 title: "Azure Cosmos DB: webalkalmazás fejlesztése Xamarin és Facebook-hitelesítés használatával | Microsoft Docs"
 description: "Egy .NET-kódmintát mutat be, amellyel Azure Cosmos DB-adatbázishoz csatlakozhat, és lekérdezéseket hajthat végre"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
-ms.custom: quick start connect
+ms.service: cosmos-db
+ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -16,18 +16,18 @@ ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 80aa96973799584118125829f9479fbd14431ac0
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 4ea97c2aca6769843d0210ffeae6f95531a21f10
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: webalkalmazás fejlesztése .NET, Xamarin és Facebook-hitelesítés használatával
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Gyorsan hozhat létre és kérdezhet le dokumentumokat, kulcsokat/értékeket és gráfadatbázisokat, amelyek mind kihasználják az Azure Cosmos DB középpontjában álló globális terjesztési és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután egy teendőkezelő webalkalmazást fog létrehozni és üzembe helyezni, amely a [DocumentDB .NET API-ra](../documentdb/documentdb-sdk-dotnet.md), a [Xamarin-platformra](https://www.xamarin.com/) és az Azure Cosmos DB-beli hitelesítési motorra épül. A teendőkezelő webalkalmazás olyan felhasználónkénti adatmintát használ, amellyel a felhasználók a Facebook hitelesítési szolgáltatásán keresztül jelentkezhetnek be és kezelhetik saját teendőiket.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután egy teendőkezelő webalkalmazást fog létrehozni és üzembe helyezni, amely a [DocumentDB .NET API-ra](documentdb-sdk-dotnet.md), a [Xamarin-platformra](https://www.xamarin.com/) és az Azure Cosmos DB-beli hitelesítési motorra épül. A teendőkezelő webalkalmazás olyan felhasználónkénti adatmintát használ, amellyel a felhasználók a Facebook hitelesítési szolgáltatásán keresztül jelentkezhetnek be és kezelhetik saját teendőiket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,17 +37,17 @@ Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ing
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
-[!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Klónozzunk egy DocumentDB API alkalmazást a GitHubról, állítsuk be a kapcsolati karakterláncot, és futtassuk az alkalmazást. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
+Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatni is fogjuk. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával navigáljon egy munkakönyvtárba.  
+1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
 
 2. Az alábbi parancs futtatásával klónozhatja a mintatárházat. 
 
@@ -77,7 +77,7 @@ A hitelesítés és az adatfolyam az alábbi ábrán látható.
     
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
-Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be az alkalmazásba.
+Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
 1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiók bal oldali oldalsávjában kattintson a **Kulcsok** elemre, majd kattintson az **Írási/olvasási kulcsok** lehetőségre. A következő lépésben használja a képernyő jobb oldalán lévő másolási gombokat az URI és az elsődleges kulcs web.config fájlba való másolásához.
 
@@ -114,7 +114,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -128,5 +128,5 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, hogyan hozhat létre gyűjteményt az Adatkezelő segítségével, valamint hogyan hozhat lére és helyezhet üzembe Xamarin-alkalmazásokat. Most már további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
-> [Adatok importálása az Azure Cosmos DB-be](../documentdb/documentdb-import-data.md)
+> [Adatok importálása az Azure Cosmos DB-be](import-data.md)
 

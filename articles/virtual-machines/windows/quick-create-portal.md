@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/03/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 8d64ede4fd5f442cbfc88a61e2ad8388e0df2a7b
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: fac46780cfd591a00ce73ea1bb4ce73893d22967
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -97,7 +98,7 @@ Most, hogy az IIS telepítve van, és a 80-as port meg van nyitva a virtuális g
 
 ![Alapértelmezett IIS-webhely](./media/quick-create-powershell/default-iis-website.png) 
 
-## <a name="delete-virtual-machine"></a>Virtuális gép törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforráscsoportot a virtuális gép paneljéről és kattintson a **Törlés** elemre.
 

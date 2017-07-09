@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2017
+ms.date: 05/15/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: e68815c2dafc596c3560ad3fcb2a7bf96d29182b
-ms.lasthandoff: 04/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: 2364ab79ec4091d41e4d340e13033181df05b507
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="tutorial-get-started-with-the-preconfigured-solutions"></a>Oktatóprogram: Az előre konfigurált megoldások bemutatása
-## <a name="introduction"></a>Bevezetés
+# <a name="get-started-with-the-preconfigured-solutions"></a>Első lépések az előre konfigurált megoldásokkal
+
 Az Azure IoT Suite [előre konfigurált megoldások][lnk-preconfigured-solutions] több Azure IoT-szolgáltatást kombinálnak, hogy általános IoT üzleti forgatókönyveket megvalósító végpontok közötti megoldásokat nyújtsanak. Az előre konfigurált *távoli figyelő* megoldás csatlakozik az eszközökhöz, és megfigyeli azokat. Ez a megoldás az eszközökről származó adatstream elemzésére használható, valamint az ezen streamre automatikusan válaszoló folyamatok létrehozásával az üzleti eredmények is javíthatók.
 
 Ez az oktatóprogram bemutatja, hogyan építheti ki az előre konfigurált távoli figyelő megoldást. Valamint az előre konfigurált megoldás alapvető funkcióin is végigvezeti. Ezek közül számos funkcióhoz a megoldás *irányítópultján* keresztül férhet hozzá, amelyet a rendszer az előre konfigurált megoldás részeként telepít:
@@ -34,8 +35,6 @@ Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 
 > [!NOTE]
 > Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ: [Ingyenes Azure-fiók létrehozása][lnk_free_trial].
-> 
-> 
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 

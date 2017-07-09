@@ -17,10 +17,11 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 25301f1bbacdf2f1e3d04ed3470eafd31098ea32
-ms.lasthandoff: 04/17/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
+ms.openlocfilehash: bc0c8ccad64166582dcb3f7162280a8772abc6b3
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/21/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>A privát Docker-tárolójegyzékek bemutatása
@@ -39,7 +40,7 @@ A Dockerrel és a tárolókkal kapcsolatos háttérinformációk:
 Rendszerképek lekérése egy Azure-beli tároló-beállításjegyzékből különféle telepítési célokra:
 
 * **Méretezhető előkészítési rendszerek**, amelyek tárolóalapú alkalmazásokat kezelnek gazdagépfürtökben (többek között [DC/OS](https://docs.mesosphere.com/), [Docker Swarm](https://docs.docker.com/swarm/) és [Kubernetes](http://kubernetes.io/docs/)).
-* **Azure-szolgáltatások**, amelyek támogatják az alkalmazások építését és nagy mennyiségű alkalmazás futtatását, beleértve a [Container Service](../container-service/index.md), az [App Service](/app-service/index.md), a [Batch](../batch/index.md), a [Service Fabric](../service-fabric/index.md) és egyéb szolgáltatásokat.
+* **Azure-szolgáltatások**, amelyek támogatják az alkalmazások építését és nagy mennyiségű alkalmazás futtatását, beleértve a [Container Service](../container-service/index.yml), az [App Service](/app-service/index.md), a [Batch](../batch/index.md), a [Service Fabric](../service-fabric/index.md) és egyéb szolgáltatásokat.
 
 A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a tárolófejlesztési munkafolyamatok részeként. Például megcélozhat egy tároló-beállításjegyzéket egy olyan folyamatos integrációs és üzembe helyezési eszközből, mint a [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) vagy a [Jenkins](https://jenkins.io/).
 
@@ -69,6 +70,6 @@ A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a t�
 * [Tároló-beállításjegyzék létrehozása az Azure Portalon](container-registry-get-started-portal.md)
 * [Tároló beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)
 * [Az első rendszerkép leküldése a Docker parancssori felületével](container-registry-get-started-docker-cli.md)
-* Egy folyamatos integrációt és üzembe helyezést megvalósító munkafolyamat a Visual Studio Team Services, az Azure Container Service és az Azure Container Registry használatával történő kiépítéséhez lásd [ezt az oktatóanyagot](../container-service/container-service-setup-ci-cd.md).
+* Egy folyamatos integrációt és üzembe helyezést megvalósító munkafolyamat a Visual Studio Team Services, az Azure Container Service és az Azure Container Registry használatával történő kiépítéséhez lásd [ezt az oktatóanyagot](../container-service/container-service-docker-swarm-setup-ci-cd.md).
 * Ha privát Docker-beállításjegyzéket szeretne beállítani az Azure-ban (nyilvános végpont nélkül), tekintse meg [a saját privát Docker-beállításjegyzék Azure-beli üzembe helyezésével kapcsolatos](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md) cikket.
 

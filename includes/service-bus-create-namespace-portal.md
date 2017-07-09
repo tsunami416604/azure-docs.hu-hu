@@ -1,5 +1,3 @@
-## <a name="create-a-service-namespace"></a>Szolgáltatásnévtér létrehozása
-
 A Service Bus-üzenetsorok Azure-ban való használatához először létre kell hoznia egy névteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül. 
 
 Névtér létrehozása:
@@ -16,6 +14,7 @@ Névtér létrehozása:
 8. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
 
 ### <a name="obtain-the-management-credentials"></a>A felügyeleti hitelesítő adatok beszerzése
+
 1. A névterek listájában kattintson az újonnan létrehozott névtér nevére.
 2. A névtér panelen kattintson a **Megosztott elérési házirendek** elemre.
 3. A **Megosztott elérési házirendek** panelen kattintson a **RootManageSharedAccessKey** elemre.

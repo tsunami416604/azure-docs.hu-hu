@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 7e00a1fd047cd38b8fb8a7d9e2e03fd203dbaaab
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: dacea9ef9b502ecd264dd4fcd1e8f4ef23f48c87
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 05/31/2017
 
 ---
 
@@ -145,7 +145,7 @@ Miután az IIS telepítve lett, és a 80-as port meg van nyitva a virtuális gé
 
 ![Alapértelmezett IIS-webhely](./media/quick-create-powershell/default-iis-website.png) 
 
-## <a name="delete-virtual-machine"></a>Virtuális gép törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 

@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 859c0bf3afec46e07b8b8da73fffbc37f3f7959d
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
+ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/17/2017
 
 
 ---
@@ -53,7 +54,7 @@ Először telepítenie kell a számítógépre az Azure PowerShell 1.2.1-es vagy
 ## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Az Azure Disk Encryption titkosítási előfeltétel-konfigurációs parancsprogram beszerzése és futtatása
 Az Azure Disk Encryption előfeltétel-konfigurációs parancsprogram beállítja az Azure virtuális gépek titkosításához szükséges összes előfeltételt.
 
-1. Nyissa meg a GitHubon az [Azure Disk Encryption előfeltétel-beállító parancsprogramot](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1) tartalmazó lapot.
+1. Nyissa meg a GitHubon az [Azure Disk Encryption előfeltétel-beállító parancsprogramot](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1) tartalmazó lapot.
 2. A GitHub-lapon kattintson a **Raw** (Nyers) gombra.
 3. A lapon található összes szöveg kijelöléséhez nyomja le a **CTRL-A** billentyűkombinációt, majd a kijelölt szöveg vágólapra másolásához nyomja le a **CTRL-C** kombinációt.
 4. Nyissa meg a **Jegyzettömböt**, és másolja a vágólapra helyezett szöveget egy üres dokumentumba.
