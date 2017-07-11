@@ -1,6 +1,6 @@
 ---
-title: "Hozza létre az első Python-webappját öt perc alatt az Azure-ban | Microsoft Docs"
-description: "Percek alatt üzembe helyezheti első Hello World Python-alkalmazását az App Service webappban."
+title: "Python-webalkalmazás létrehozása az Azure-ban | Microsoft Docs"
+description: "Percek alatt üzembe helyezheti első Hello World Python-alkalmazását az Azure App Service Web Apps szolgáltatásban."
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -14,40 +14,49 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 2916ee6ba4753efdb8823f93c951a4f678b08ae4
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 233db1cb74a6c81cf044953ecdf6e9de6cc50ee8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 06/28/2017
 
 ---
-# <a name="create-a-python-application-on-web-app"></a>Python-alkalmazás létrehozása a WebAppban
+<a id="create-a-python-web-app-in-azure" class="xliff"></a>
 
-Ez a gyorsútmutató a Python-alkalmazások Azure rendszeren történő fejlesztésén és üzembe helyezésén vezeti végig. Az alkalmazás futtatását Azure App Service-szolgáltatás használatával végezzük majd el, az új webalkalmazás létrehozása és konfigurálása pedig az Azure CLI használatával fog történni. Ezt követően a git segítségével üzembe helyezzük a Python-alkalmazást az Azure-ban.
+# Python-webapp létrehozása az Azure-ban
 
-![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
+Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a Python-alkalmazások Azure Web Apps szolgáltatásban történő fejlesztésén és üzembe helyezésén vezeti végig. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a Gittel pedig üzembe helyezheti a Python-mintakódot a webalkalmazásban.
 
-Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az alábbi lépések végrehajtása nagyjából 5 percet vehet igénybe.
+![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-## <a name="prerequisites"></a>Előfeltételek
+Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az előfeltételek telepítése után a lépések végrehajtása nagyjából öt percet vesz igénybe.
+<a id="prerequisites" class="xliff"></a>
 
-A minta futtatása előtt telepítse helyben a következő előfeltételeket:
+## Előfeltételek
 
-1. [A git letöltése és telepítése](https://git-scm.com/)
-1. [A Python letöltése és telepítése](https://www.python.org/downloads/)
-1. Az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) letöltése és telepítése
+Az oktatóanyag elvégzéséhez:
 
-## <a name="download-the-sample"></a>A minta letöltése
+1. [A Git telepítése](https://git-scm.com/)
+1. [Telepítse a Pythont](https://www.python.org/downloads/)
 
-Klónozza a Hello World mintaalkalmazás tárházát a helyi számítógépre.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+
+<a id="download-the-sample" class="xliff"></a>
+
+## A minta letöltése
+
+Egy terminálablakban futtassa a következő parancsot a mintaalkalmazás-tárház helyi számítógépre történő klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-> [!TIP]
-> Másik lehetőségként [letöltheti a mintát](https://github.com/Azure-Samples/Python-docs-hello-world/archive/master.zip) ZIP-fájlként, majd kicsomagolhatja azt.
+Ezt a terminálablakot használhatja az összes parancs gyorsútmutatóban történő futtatásához.
 
 Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
 
@@ -55,189 +64,54 @@ Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
 cd Python-docs-hello-world
 ```
 
-## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
+<a id="run-the-app-locally" class="xliff"></a>
 
-Az alkalmazás helyi futtatásához nyissa meg a terminálablakot a minta `Python` parancssorának használatával, hogy elindítsa a beépített Python-webkiszolgálót.
+## Az alkalmazás futtatása helyben
+
+Az alkalmazás a terminálablak megnyitásával és a `Python` parancs használatával helyben futtatható a beépített Python-webkiszolgáló indításához.
 
 ```bash
 python main.py
 ```
 
-Nyisson meg egy webböngészőt, majd keresse meg a mintát.
-
-```bash
-http://localhost:5000
-```
+Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a http://localhost:5000 címen.
 
 Az oldalon látható mintaalkalmazáson ekkor a **Hello World** üzenetnek kell megjelennie.
 
-![localhost-hello-world-in-browser](media/app-service-web-get-started-python/localhost-hello-world-in-browser.png)
+![A helyileg futó mintaalkalmazás](media/app-service-web-get-started-python/localhost-hello-world-in-browser.png)
 
 A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolgálóból történő kilépéshez.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
 
-Most az Azure CLI 2.0-t fogjuk egy terminálablakban használni a Python-alkalmazás Azure-ban történő üzemeltetéséhez szükséges erőforrások létrehozásához. Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#login) paranccsal, és kövesse a képernyőn látható utasításokat.
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
-```azurecli
-az login
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)] 
+
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)] 
+
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
+
+![Üres webalkalmazás oldal](media/app-service-web-get-started-python/app-service-web-service-created.png)
+
+Ezzel létrehozott egy üres, új webalkalmazást az Azure-ban.
+
+<a id="configure-to-use-python" class="xliff"></a>
+
+## A Python használatának konfigurálása
+
+A Python `3.4` verziójának használatához futtassa az [az webapp config set](/cli/azure/webapp/config#set) parancsot a webalkalmazás konfigurálásához.
+
+```azurecli-interactive
+az webapp config set --python-version 3.4 --name <app_name> --resource-group myResourceGroup
 ```
 
-## <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
 
-Az FTP és a helyi Git esetében üzembe helyező felhasználót kell konfigurálni a kiszolgálón az üzemelő példány hitelesítéséhez. Az üzembe helyező felhasználó konfigurálását csak egyszer kell elvégezni. Jegyezze fel a felhasználónevet és a jelszót, mivel az alább látható lépésben ezeket fogja használni.
+A Python-verzió ezen konfigurációja a platform által biztosított alapértelmezett tárolót használja. Ha saját tárolót szeretne használni, tekintse meg az [az webapp config container set](/cli/azure/webapp/config/container#set) parancs CLI-referenciáját.
 
-> [!NOTE]
-> Az FTP és a helyi Git webappban történő üzembe helyezéséhez üzembe helyező felhasználóra van szükség.
-> A `username` és a `password` fiókszintűek, és így eltérnek az Azure-előfizetés hitelesítő adataitól. **Ezeket a hitelesítő adatokat csupán egyszer kell létrehozni.**
->
+[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-A fiókszintű hitelesítő adatok létrehozásához használja az [az appservice web deployment user set](/cli/azure/appservice/web/deployment/user#set) parancsot.
-
-```azurecli
-az appservice web deployment user set --user-name <username> --password <password>
-```
-
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például webappokat, adatbázisokat és tárfiókokat).
-
-```azurecli
-az group create --name myResourceGroup --location westeurope
-```
-
-## <a name="create-an-azure-app-service"></a>Azure App Service-szolgáltatás létrehozása
-
-Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#create) paranccsal.
-
-> [!NOTE]
-> Az App Service-csomagok az alkalmazások üzemeltetéséhez használt fizikai erőforrások gyűjteményét jelölik. Egy App Service-csomaghoz rendelt összes alkalmazás ugyanazokat az általa meghatározott erőforrásokat használja, így több alkalmazás üzemeltetése esetén is csökkenthetők a költségek.
->
-> Az App Service-csomagok a következőket határozzák meg:
-> * Régió (Észak-Európa, az USA keleti régiója, Délkelet-Ázsia)
-> * Példányméret (kicsi, közepes, nagy)
-> * Méretezési szám (egy, kettő vagy három példány stb.)
-> * Termékváltozat (Ingyenes, Közös, Alapszintű, Standard, Prémium)
->
-
-Az alábbi példa egy `quickStartPlan` nevű App Service-csomag létrehozását mutatja be az **INGYENES** tarifacsomag használatával.
-
-```azurecli
-az appservice plan create --name quickStartPlan --resource-group myResourceGroup --sku FREE
-```
-
-Az App Service-csomag létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg.
-
-```json
-{
-"appServicePlanName": "quickStartPlan",
-"geoRegion": "North Europe",
-"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
-"kind": "app",
-"location": "North Europe",
-"maximumNumberOfWorkers": 1,
-"name": "quickStartPlan",
-"provisioningState": "Succeeded",
-"resourceGroup": "myResourceGroup",
-"sku": {
-  "capacity": 0,
-  "family": "F",
-  "name": "F1",
-  "size": "F1",
-  "tier": "Free"
-},
-"status": "Ready",
-"type": "Microsoft.Web/serverfarms",
-}
-```
-
-## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-
-Most, hogy létrehoztuk az App Service-csomagot, hozzon létre egy webappot a `quickStartPlan` App Service-csomagján belül. A webapp üzemeltetési tárterületet biztosít a kód üzembe helyezéséhez, valamint megadja az üzembe helyezett alkalmazás megtekintéséhez szükséges URL-címet. A webapp létrehozásához használja az [az appservice web create](/cli/azure/appservice/web#create) parancsot.
-
-Az alábbi parancsban az `<app_name>` helyőrző helyére írja be saját, egyedi alkalmazásnevét. Az `<app_name>` nevet a rendszer a webalkalmazás alapértelmezett DNS-helyének részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazása tekintetében. A későbbiekben leképezhet bármely DNS-bejegyzést a webapphoz, mielőtt elérhetővé teszi a felhasználók számára.
-
-```azurecli
-az appservice web create --name <app_name> --resource-group myResourceGroup --plan quickStartPlan
-```
-
-A webapp létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg.
-
-```json
-{
-  "clientAffinityEnabled": true,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "enabled": true,
-  "enabledHostNames": [
-    "<app_name>.azurewebsites.net",
-    "<app_name>.scm.azurewebsites.net"
-  ],
-  "hostNames": [
-    "<app_name>.azurewebsites.net"
-  ],
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app_name>",
-  "kind": "app",
-  "location": "North Europe",
-  "outboundIpAddresses": "13.69.190.80,13.69.191.239,13.69.186.193,13.69.187.34",
-  "resourceGroup": "myResourceGroup",
-  "serverFarmId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/quickStartPlan",
-  "state": "Running",
-  "type": "Microsoft.Web/sites",
-}
-```
-
-Az újonnan létrehozott webapp megtekintéséhez tallózással keresse meg a helyet.
-
-```bash
-http://<app_name>.azurewebsites.net
-```
-
-![app-service-web-service-created](media/app-service-web-get-started-python/app-service-web-service-created.png)
-
-Ezzel létrehoztunk egy üres, új webappot az Azure-ban. A Python használatához és az alkalmazás azon történő üzembe helyezéséhez most végezzük el a webapp konfigurálását.
-
-## <a name="configure-to-use-python"></a>A Python használatának konfigurálása
-
-A Python `3.4` verziójának használatához futtassa az [az appservice web config update](/cli/azure/app-service/web/config#update) parancsot a webapp konfigurálásához.
-
-> [!TIP]
-> A Python-verzió e konfigurációja a platform által biztosított alapértelmezett tárolót használja. Ha saját tárolót szeretne használni, tekintse meg az [az appservice web config container update](https://docs.microsoft.com/cli/azure/appservice/web/config/container#update) parancs CLI-referenciáját.
-
-```azurecli
-az appservice web config update --python-version 3.4 --name <app-name> --resource-group myResourceGroup
-```
-
-## <a name="configure-local-git-deployment"></a>A Git helyi üzemelő példányának konfigurálása
-
-A webappon történő üzembe helyezésnek számos módja létezik, így például az FTP, a helyi Git, valamint a GitHub, a Visual Studio Team Services és a Bitbucket.
-
-A webapphoz a helyi git alkalmazásával történő hozzáférés konfigurálásához használja az [az appservice web source-control config-local-git](/cli/azure/appservice/web/source-control#config-local-git) parancsot.
-
-```azurecli
-az appservice web source-control config-local-git --name <app_name> --resource-group myResourceGroup --query url --output tsv
-```
-
-A művelet kimenetét másolja ki a terminálról, mivel azt a következő lépésben használni fogja.
-
-```bash
-https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
-```
-
-## <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
-
-Adjon hozzá egy távoli Azure-mappát a helyi Git-tárházhoz.
-
-```bash
-git remote add azure <paste-previous-command-output-here>
-```
-
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást. Az üzembe helyező felhasználó létrehozásának részeként a rendszer fel fogja kérni a korábban megadott jelszó megadására.
-
-```azurecli
-git push azure master
-```
-
-Az üzembe helyezés során az Azure App Service-szolgáltatás megküldi annak előrehaladási állapotát a Git részére.
+[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 18, done.
@@ -281,7 +155,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
+<a id="browse-to-the-app" class="xliff"></a>
+
+## Az alkalmazás megkeresése tallózással
 
 Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
 
@@ -289,59 +165,55 @@ Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző has
 http://<app_name>.azurewebsites.net
 ```
 
-Ekkor a Hello World üzenetet megjelenítő oldal egy Azure App Service-webappként futó Python-kód használatával fut.
+A Python-mintakód az Azure App Service-webalkalmazásban fut.
 
-![hello-world-in-browser](media/app-service-web-get-started-python/hello-world-in-browser.png)
+![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-## <a name="updating-and-deploying-the-code"></a>A kód frissítése és központi telepítése
+**Gratulálunk!** Elvégezte az első Python-webapp üzembe helyezését az App Service-ben.
 
-Egy helyi szövegszerkesztő használatával nyissa meg a `main.py` fájlt a Python-alkalmazásban, majd módosítsa kissé annak szövegét a `return` utasítás melletti karakterláncon belül:
+<a id="update-and-redeploy-the-code" class="xliff"></a>
+
+## A kód frissítése és ismételt üzembe helyezése
+
+Egy helyi szövegszerkesztővel nyissa meg a `main.py` fájlt a Python-alkalmazásban, majd módosítsa kissé annak szövegét a `return` utasítás mellett:
 
 ```python
 return 'Hello, Azure!'
 ```
 
-Mentse a módosításokat a gitben, majd továbbítsa a kód módosításait az Azure-ba.
+Mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
 
 ```bash
 git commit -am "updated output"
 git push azure master
 ```
 
-Az üzembe helyezés befejezését követően váltson vissza Az alkalmazás megkeresése tallózással lépésben megnyitott böngészőablakra, és frissítse azt.
+Az üzembe helyezés befejezését követően váltson vissza [Az alkalmazás megkeresése tallózással](#browse-to-the-app) lépésben megnyitott böngészőablakra, és frissítse az oldalt.
 
-![hello-azure-in-browser](media/app-service-web-get-started-python/hello-azure-in-browser.png)
+![Az Azure-ban futó frissített mintaalkalmazás](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
+<a id="manage-your-new-azure-web-app" class="xliff"></a>
 
-Az Azure Portalon tekintse meg a létrehozott webappot.
+## Az új Azure-webapp kezelése
 
-Ehhez jelentkezzen be a következő címen: [https://portal.azure.com](https://portal.azure.com).
+A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webapp nevére.
+A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
 
-![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-python/app-service-list.png)
+![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
-Ekkor a webapp _paneljére_ (vízszintesen megnyíló portáloldalára) jut.
+Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
 
-Alapértelmezés szerint a webapp panelje az **Áttekintés** oldalt mutatja. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. A panel bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
+![Az App Service panel az Azure Portalon](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-![Az App Service panel az Azure Portalon](media/app-service-web-get-started-python/app-service-detail.png)
-
-A panel ezen lapja a webapphoz hozzáadható nagyszerű szolgáltatásokat jelenítik meg. Az alábbi lista csupán néhány lehetőséget sorol fel:
-
-* Egyéni DNS-név leképezése
-* Egyéni SSL-tanúsítvány kötése
-* Folyamatos üzembe helyezés konfigurálása
-* Vertikális felskálázás és kibővítés
-* Felhasználói hitelesítés hozzáadása
-
-**Gratulálunk!** Elvégezte az első Python-webapp üzembe helyezését az App Service-ben.
+A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 > [!div class="nextstepaction"]
-> [Web Apps CLI-mintaszkriptek vizsgálata](app-service-cli-samples.md)
+> [Python és PostgreSQL](app-service-web-tutorial-docker-python-postgresql-app.md)
 
