@@ -8,52 +8,67 @@ manager: jwhit
 editor: 
 ms.assetid: c413efcd-d750-4b22-b34b-15bcaa03934a
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/14/2017
+ms.date: 06/14/2017
 ms.author: raynew
-translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: 4674985363bc1267449e018ab15a53757a8fd32d
-ms.lasthandoff: 03/15/2017
-
+ROBOTS: NOINDEX, NOFOLLOW
+redirect_url: site-recovery-azure-to-azure-architecture
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: e8faa2c7cde18fc08f0255e80f0acdb961082fcb
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/16/2017
 
 ---
-# <a name="how-does-azure-site-recovery-work"></a>Hogy működik az Azure Site Recovery?
 
-Ez a cikk ismerteti az [Azure Site Recovery](site-recovery-overview.md) mögöttes architektúráját, illetve az azt működtető összetevőket.
+
+<a id="how-does-azure-site-recovery-work-for-on-premises-infrastructure" class="xliff"></a>
+
+# Hogy működik az Azure Site Recovery egy helyszíni infrastruktúra esetében?
+
+> [!div class="op_single_selector"]
+> * [Azure-alapú virtuális gépek replikálása](site-recovery-azure-to-azure-architecture.md)
+> * [Helyszíni gépek replikálása](site-recovery-components.md)
+
+Ez a cikk ismerteti az [Azure Site Recovery](site-recovery-overview.md) mögöttes architektúráját, illetve az azt működtető összetevőket a munkaterhelések replikálásához a helyszínről az Azure-ba.
 
 Megjegyzéseit a cikk alján, vagy az [Azure Recovery Services fórumban](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) teheti közzé.
 
 
-## <a name="replicate-to-azure"></a>Replikálás az Azure-ba
+<a id="replicate-to-azure" class="xliff"></a>
 
-A következőket replikálhatja az Azure-ba:
+## Replikálás az Azure-ba
+
+A következő helyszíni infrastruktúrákat replikálhatja és védheti meg az Azure-ban:
 
 - **VMware**: [Támogatott gazdagépen](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) futó helyszíni VMware virtuális gépek. A [támogatott operációs rendszereket](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) futtató VMware virtuális gépeket replikálhatja.
 - **Hyper-V**: [Támogatott gazdagépeken](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) futó helyszíni Hyper-V virtuális gépek.
 - **Fizikai gépek**: [Támogatott operációs rendszereken](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) Windowst vagy Linuxot futtató helyszíni fizikai kiszolgálók. A [Hyper-V és az Azure által támogatott](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bármilyen vendég operációs rendszert futtató Hyper-V-alapú virtuális gépet replikálhat.
 
-## <a name="vmware-to-azure"></a>VMware – Azure
+<a id="vmware-to-azure" class="xliff"></a>
+
+## VMware – Azure
 
 A következőkre lesz szüksége VMware virtuális gépek az Azure-ba történő replikálásához.
 
 Terület | Összetevő | Részletek
 --- | --- | ---
-**Azure** | Az Azure-ban szüksége van egy Azure-fiókra, egy Azure Storage-fiókra és egy Azure-hálózatra. | A Storage és a hálózat lehet Resource Manager- vagy klasszikus fiók.<br/><br/>  A replikált adatokat a tárfiók tárolja, ha pedig feladatátvétel következik be a helyszíni helyről, a rendszer Azure virtuális gépeket hoz létre a replikált adatokkal. Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
 **Konfigurációs kiszolgáló** | Egyetlen felügyeleti kiszolgáló (VMware virtuális gép) futtatja az összes helyszíni összetevőt – a konfigurációs kiszolgálót, a folyamatkiszolgálót és a fő célkiszolgálót | A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
  **Folyamatkiszolgáló**:  | Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. | Replikációs átjáróként üzemel. Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítással optimalizálja őket, majd továbbítja az Azure Storage-nak.<br/><br/> A folyamatkiszolgáló ezenfelül kezeli a mobilitási szolgáltatás leküldéses telepítését a védett gépekre, és elvégzi a WMware virtuális gépek automatikus felderítését.<br/><br/> Az üzemelő példány bővülésével további, önálló és dedikált folyamatkiszolgálókat helyezhet üzembe, amelyek segítségével képes lesz a megnövekedett replikációs forgalom kezelésére is.
  **Fő célkiszolgáló** | Alapértelmezés szerint telepítve van a helyszíni konfigurációs kiszolgálón. | Az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.<br/><br/> Ha a feladat-visszavételi adatforgalom kötetei nagyok, a feladat-visszavételhez üzembe helyezhet egy másik fő célkiszolgálót.
-**VMware-kiszolgálók** | A VMware virtuális gépek vSphere ESXi-kiszolgálókon futnak, és a gazdagépek felügyeletéhez egy vCenter-kiszolgáló üzembe helyezését javasoljuk. | Vegyen fel VMware-kiszolgálókat a Recovery Services-tárolóba.<br/><br/> I
-**Replikált gépek** | A mobilitási szolgáltatás az összes replikálni kívánt VMware virtuális gépen telepítve lesz. A szolgáltatás manuálisan is telepíthető az egyes gépekre, de leküldéses telepítés is végrehajtható a folyamatkiszolgálóról.
+**VMware-kiszolgálók** | A VMware virtuális gépek vSphere ESXi-kiszolgálókon futnak, és a gazdagépek felügyeletéhez egy vCenter-kiszolgáló üzembe helyezését javasoljuk. | Vegyen fel VMware-kiszolgálókat a Recovery Services-tárolóba.<br/><br/>
+**Replikált gépek** | A mobilitási szolgáltatás az összes replikálni kívánt VMware virtuális gépen telepítve lesz. A szolgáltatás manuálisan is telepíthető az egyes gépekre, de leküldéses telepítés is végrehajtható a folyamatkiszolgálóról.| -
 
 **1. ábra: Összetevők: VMware-ről Azure-ra**
 
 ![Összetevők](./media/site-recovery-components/arch-enhanced.png)
 
-### <a name="replication-process"></a>Replikációs folyamat
+<a id="replication-process" class="xliff"></a>
+
+### Replikációs folyamat
 
 1. Az üzemelő példány beállításának részeként az Azure-összetevőket és egy Recovery Services-tárolót is be kell állítani. A tárolóban meg kell adni a replikáció forrás- és célhelyét, be kell állítani a konfigurációs kiszolgálót, fel kell venni VMware-kiszolgálókat, replikációs szabályzatot kell létrehozni, üzembe kell helyezni a mobilitási szolgáltatást, engedélyezni kell a replikálást, illetve futtatni kell egy feladatátvételi tesztet.
 2.  A gépek a replikációs szabályzat szerint kezdik meg a replikálást, és az adatok kezdeti másolata az Azure-tárolóba lesz replikálva.
@@ -69,45 +84,35 @@ Terület | Összetevő | Részletek
 
 ![Továbbfejlesztett](./media/site-recovery-components/v2a-architecture-henry.png)
 
-### <a name="failover-and-failback"></a>Feladatátvétel és feladat-visszavétel
+<a id="failover-and-failback" class="xliff"></a>
+
+### Feladatátvétel és feladat-visszavétel
 
 1. Miután ellenőrizte, hogy a feladatátvételi teszt a várt módon működik-e, igény szerint nem tervezett feladatátvételeket futtathat az Azure-hoz. A tervezett feladatátvétel nem támogatott.
 2. Elvégezheti egyetlen gép feladatátvételét, vagy létrehozhat több virtuális gép feladatátvételét tartalmazó [helyreállítási terveket](site-recovery-create-recovery-plans.md) is.
 3. Feladatátvétel futtatásakor az Azure-ban replikaként létrehozott virtuális gépek jönnek létre. Akkor kell feladatátvételt végezni, ha hozzá szeretne férni a replikaként létrehozott Azure virtuális gép számítási feladataihoz.
 4. Amint az elsődleges helyszíni hely megint elérhetővé válik, visszaadhatja a feladatokat. Ehhez be kell állítani a feladat-visszavételi infrastruktúrát, el kell kezdeni a gép replikálását a másodlagos helyről az elsődlegesre, valamint nem tervezett feladatátvételt kell futtatni a másodlagos helyről. Ezen feladatátvétel végrehajtását követően az adatok visszakerülnek a helyszíni helyre, és az Azure-ba történő replikációt újra engedélyezni kell. [További információ](site-recovery-failback-azure-to-vmware.md)
 
-A feladat-visszavételre vonatkozó követelmények:
-
-
-- **Ideiglenes folyamatkiszolgáló az Azure-ban**: ha feladatátvételt követően szeretné visszaadni a feladatokat az Azure-ból, be kell állítania egy folyamatkiszolgálóként üzemelő Azure virtuális gépet, amely kezeli az Azure-ból való replikációt. Ez a virtuális gép a feladatok visszaadását követően törölhető.
-- **VPN-kapcsolat**: a feladat-visszavételhez szüksége lesz egy VPN-kapcsolatra (vagy Azure ExpressRoute-ra), amelyet a helyszíni hely Azure-hálózatában kell beállítania.
-- **Önálló helyszíni fő célkiszolgáló**: a helyszíni fő célkiszolgáló kezeli a feladat-visszavételt. A fő célkiszolgálót alapértelmezés szerint a felügyeleti kiszolgálóra kell telepíteni, de nagyobb mértékű forgalom feladat-visszavétele esetén érdemes ebből a célból egy önálló helyszíni fő célkiszolgálót is létrehozni.
-- **Feladat-visszavételi szabályzat**: A helyszíni helyre történő újbóli replikáláshoz feladat-visszavételi szabályzatra van szükség. A replikációs szabályzat létrehozásakor a rendszer ezt automatikusan létrehozza.
-
 **3. ábra: VMware-/fizikai gépek közötti feladat-visszavétel**
 
 ![Feladat-visszavétel](./media/site-recovery-components/enhanced-failback.png)
 
-## <a name="physical-to-azure"></a>Fizikai az Azure-ba
+<a id="physical-to-azure" class="xliff"></a>
+
+## Fizikai az Azure-ba
 
 Amikor fizikai helyszíni kiszolgálókat replikál az Azure-ba, a replikációs forgatókönyv ugyanazokat az összetevőket és folyamatokat használja, mint a [VMware–Azure replikálás](#vmware-replication-to-azure), a következő eltérésekkel:
 
 - VMware virtuális gép helyett fizikai kiszolgálót használhat konfigurációs kiszolgálóként
 - A feladat-visszavételhez helyszíni VMware-infrastruktúrára van szükség. Fizikai gép nem használható a feladat-visszavételhez.
 
-## <a name="hyper-v-to-azure"></a>Hyper-V – Azure
+<a id="hyper-v-to-azure" class="xliff"></a>
 
-A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek az Azure-ba történő replikálásához.
+## Hyper-V – Azure
 
-**Terület** | **Összetevő** | **Részletek**
---- | --- | ---
-**Azure** | Az Azure-ban szüksége van egy Microsoft Azure-fiókra, és Azure Storage-fiókra és egy Azure-hálózatra. | A Storage és a hálózat lehet Resource Manager-alapú vagy klasszikus fiók.<br/><br/> A replikált adatokat a tárfiók tárolja, ha pedig feladatátvétel következik be a helyszíni helyről, a rendszer Azure virtuális gépeket hoz létre a replikált adatokkal.<br/><br/> Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
-**VMM-kiszolgáló** | VMM-felhőkben lévő Hyper-V-gazdagépek | Ha a Hyper-V-gazdagépeket VMM felhőben felügyeli, a Recovery Services-tárolóban regisztrálja a VMM-kiszolgálót.<br/><br/> A VMM-kiszolgálón telepítse a Site Recovery Providert az Azure-ral való replikáció vezényléséhez.<br/><br/> A hálózatleképezés konfigurálásához logikai és virtuálisgép-hálózatokat is be kell állítania. Egy virtuálisgép-hálózatot össze kell kötnie egy felhőhöz társított logikai hálózattal.
-**Hyper-V gazdagép** | A Hyper-V-kiszolgálók VMM-kiszolgálóval vagy anélkül is üzembe helyezhetők. | Ha nincs VMM-kiszolgáló, a Site Recovery Providert a gazdagépen kell telepíteni, hogy vezényelni tudja az internetes replikációt a Site Recoveryval. Ha van VMM-kiszolgáló, a Provider azon van telepítve, és nem a gazdagépen.<br/><br/> A Recovery Services-ügynököt a gazdagépen kell telepíteni az adatreplikáció kezelése érdekében.<br/><br/> A Provider és az Agent kommunikációja biztonságos, titkosított csatornákon történik. Ezenfelül az Azure-tárfiókba replikált adatok is titkosítást kapnak.
-**Hyper-V virtuális gépek** | A Hyper-V gazdakiszolgálón legalább egy virtuális gépnek kell lennie. | A virtuális gépekre semmit nem kell explicit módon telepíteni
+<a id="replication-process" class="xliff"></a>
 
-
-### <a name="replication-process"></a>Replikációs folyamat
+### Replikációs folyamat
 
 1. Az Azure-összetevők beállítása. Javasoljuk, hogy a Site Recovery üzembe helyezésének megkezdése előtt hozza létre a Storage- és hálózati fiókokat.
 2. Létrehoz egy replikációsszolgáltatás-tárolót a Site Recoveryhez, és konfigurálja a tároló beállításait, például:
@@ -118,7 +123,9 @@ A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek az Azure-ba 
 4. Az adatváltozásokat a rendszer nyomon követi, és az Azure változáskülönbözeteinek replikálása a kezdeti replikálás befejezése után kezdődik meg. Az elemek nyomon követett módosításait a rendszer .hrl fájlokban tárolja.
 5. Egy teszt feladatátvétel futtatásával ellenőrzi, hogy minden jól működik-e.
 
-### <a name="failover-and-failback-process"></a>Feladatátvételi és feladat-visszavételi folyamat
+<a id="failover-and-failback-process" class="xliff"></a>
+
+### Feladatátvételi és feladat-visszavételi folyamat
 
 1. Futtathat tervezett vagy nem tervezett [feladatátvételt](site-recovery-failover.md) a helyszíni Hyper-V virtuális gépekről az Azure-ra. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.
 2. Elvégezheti egy gép feladatátadását, de létrehozhat több gép összehangolt feladatátadását tartalmazó [helyreállítási terveket](site-recovery-create-recovery-plans.md) is.
@@ -135,7 +142,9 @@ A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek az Azure-ba 
 ![Összetevők](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
 
-## <a name="replicate-to-a-secondary-site"></a>Replikálás másodlagos helyre
+<a id="replicate-to-a-secondary-site" class="xliff"></a>
+
+## Replikálás másodlagos helyre
 
 A következőket replikálhatja másodlagos helyre:
 
@@ -144,15 +153,18 @@ A következőket replikálhatja másodlagos helyre:
 - **Hyper-V**: VMM-felhőkben felügyelt [támogatott Hyper-V-gazdagépeken](site-recovery-support-matrix-to-sec-site.md#on-premises-servers) futó helyszíni Hyper-V virtuális gépek. [támogatott gazdagépek](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers). A [Hyper-V és az Azure által támogatott](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bármilyen vendég operációs rendszert futtató Hyper-V-alapú virtuális gépet replikálhat.
 
 
-## <a name="vmwarephysical-to-a-secondary-site"></a>VMware/fizikai egy másodlagos helyre
+<a id="vmwarephysical-to-a-secondary-site" class="xliff"></a>
+
+## VMware/fizikai egy másodlagos helyre
 
 A VMware-alapú virtuális gépeket és a fizikai kiszolgálókat az InMage Scout használatával replikálhatja egy másodlagos helyre.
 
-### <a name="components"></a>Összetevők
+<a id="components" class="xliff"></a>
+
+### Összetevők
 
 **Terület** | **Összetevő** | **Részletek**
 --- | --- | ---
-**Azure** | InMage Scout. | Az InMage Scout beszerzéséhez Azure-előfizetésre van szüksége.<br/><br/> Miután létrehozott egy Site Recovery-tárolót, töltse le az InMage Scoutot, és telepítse a legújabb frissítéseket az üzembe helyezés előkészítéséhez.
 **Folyamatkiszolgáló** | Az elsődleges helyen található | Helyezze üzembe a folyamatkiszolgálót, amely kezeli az adatok gyorsítótárazását, tömörítését és optimalizálását.<br/><br/> Ezenfelül ez az összetevő kezeli a Unified Agent ügynöknek a védeni kívánt gépekre történő leküldéses telepítését.
 **Konfigurációs kiszolgáló** | A másodlagos helyen található | A konfigurációs kiszolgáló végzi az üzemelő példány felügyeleti webhelyen vagy a vContinuum-konzolban végzett felügyeletét, konfigurálását és megfigyelését.
 **vContinuum-kiszolgáló** | Választható. Ugyanoda kell telepíteni, mint a konfigurációs kiszolgálót. | Ez az összetevő elérhetővé tesz egy konzolt, amelyről felügyelheti és figyelheti a védett környezetet.
@@ -161,7 +173,9 @@ A VMware-alapú virtuális gépeket és a fizikai kiszolgálókat az InMage Scou
 **Virtuális gépek/fizikai kiszolgálók** |  A replikálni kívánt VMware virtuális gépeken és fizikai kiszolgálókon telepített Unified Agent. | Ez az ügynök valósítja meg az összetevők közötti kommunikációt.
 
 
-### <a name="replication-process"></a>Replikációs folyamat
+<a id="replication-process" class="xliff"></a>
+
+### Replikációs folyamat
 
 1. Állítsa be mindkét oldalon az összetevőkiszolgálókat (konfigurációs, folyamat- és fő célkiszolgáló), majd telepítse a replikálni kívánt gépekre a Unified Agent ügynököt.
 2. A kezdeti replikációt követően a gépek ügynökei továbbítják a változásreplikálás módosításait a folyamatkiszolgálónak.
@@ -173,19 +187,22 @@ A VMware-alapú virtuális gépeket és a fizikai kiszolgálókat az InMage Scou
 
 
 
-## <a name="hyper-v-to-a-secondary-site"></a>Hyper-V egy másodlagos helyre
+<a id="hyper-v-to-a-secondary-site" class="xliff"></a>
+
+## Hyper-V egy másodlagos helyre
 
 A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek egy másodlagos helyre való replikálásához.
 
 
 **Terület** | **Összetevő** | **Részletek**
 --- | --- | ---
-**Azure** | Szüksége van egy Microsoft Azure-fiókra. |
 **VMM-kiszolgáló** | Javasoljuk, hogy legyen egy VMM-kiszolgáló az elsődleges helyen, és egy a másodlagos helyen | Mindegyik VMM-kiszolgálónak csatlakoznia kell az internethez.<br/><br/> Minden kiszolgálón legyen legalább egy VMM-magánfelhő beállított Hyper-V-kapacitásprofillal.<br/><br/> Telepítse az Azure Site Recovery Providert a VMM-kiszolgálóra. A Provider az interneten keresztül koordinálja és valósítja meg a Site Recovery szolgáltatással történő replikációt. A Provider és az Azure közötti kommunikáció biztonságos, titkosított csatornákon történik.
 **Hyper-V kiszolgáló** |  Legalább egy Hyper-V gazdakiszolgáló az elsődleges és a másodlagos VMM-felhőkben.<br/><br/> A kiszolgálóknak csatlakozniuk kell az internethez.<br/><br/> A rendszer LAN vagy VPN hálózaton keresztül replikálja az adatokat az elsődleges és másodlagos Hyper-V gazdakiszolgálók között Kerberos vagy tanúsítványalapú hitelesítés használatával.  
 **Hyper-V virtuális gépek** | A forrás Hyper-V gazdakiszolgálón található. | A forrás gazdakiszolgálókon legalább egy replikálni kívánt virtuális gépnek kell futnia.
 
-### <a name="replication-process"></a>Replikációs folyamat
+<a id="replication-process" class="xliff"></a>
+
+### Replikációs folyamat
 
 1. Beállítja az Azure-fiókot.
 2. Létrehoz egy replikációsszolgáltatás-tárolót a Site Recoveryhez, és konfigurálja a tároló beállításait, például:
@@ -201,7 +218,9 @@ A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek egy másodla
 
 ![Két helyszíni hely közötti replikálás](./media/site-recovery-components/arch-onprem-onprem.png)
 
-### <a name="failover-and-failback"></a>Feladatátvétel és feladat-visszavétel
+<a id="failover-and-failback" class="xliff"></a>
+
+### Feladatátvétel és feladat-visszavétel
 
 1. Futtathat tervezett vagy nem tervezett [feladatátvételt](site-recovery-failover.md) a helyszíni helyek között. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.
 2. Elvégezheti egy gép feladatátadását, de létrehozhat több gép összehangolt feladatátadását tartalmazó [helyreállítási terveket](site-recovery-create-recovery-plans.md) is.
@@ -211,7 +230,9 @@ A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek egy másodla
 7. Ha azt szeretné, hogy újra az elsődleges hely legyen az aktív hely, kezdeményezzen egy tervezett feladatátvételt a másodlagos helyről az elsődleges helyre, majd hajtson végre ismét fordított replikálást.
 
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 - [További információk](site-recovery-hyper-v-azure-architecture.md) a Hyper-V-replikálás munkafolyamatáról.
 - [Előfeltételek ellenőrzése](site-recovery-prereq.md)

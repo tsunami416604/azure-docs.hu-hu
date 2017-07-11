@@ -15,19 +15,23 @@ ms.date: 04/18/2017
 ms.topic: get-started-article
 ms.author: tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 745e115409a5b1e5e4f343ca0a5bb922272d3020
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 80fd9d79652e4f0d9c4c524e3a762bcc3462bb53
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/01/2017
 
 ---
 
-# <a name="create-your-first-azure-resource-manager-template"></a>Az első Azure-Resource Manager-sablon létrehozása
+<a id="create-your-first-azure-resource-manager-template" class="xliff"></a>
+
+# Az első Azure-Resource Manager-sablon létrehozása
 Ez a témakör bemutatja azon lépéseket, amelyekkel elkészítheti az első Resource Manager-sablonját. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md). Ha már rendelkezik erőforrásokkal, és azokhoz kíván sablont használni, lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
 
 A sablonok létrehozásához és átalakításához JSON-szerkesztő szükséges. A [Visual Studio Code](https://code.visualstudio.com/) egy könnyen használható, nyílt forráskódú, platformfüggetlen kódszerkesztő. Egy bővítményével lehetővé teszi a Resource Manager-sablonok létrehozását és szerkesztését. Ez a témakör a VS Code használatát feltételezi, de használhat egyéb JSON-szerkesztőt is (pl. Visual Studio).
 
-## <a name="get-vs-code-and-extension"></a>A VS Code és a bővítmény beszerzése
+<a id="get-vs-code-and-extension" class="xliff"></a>
+
+## A VS Code és a bővítmény beszerzése
 1. Ha szükséges,a VS Code a következő címről telepíthető: [https://code.visualstudio.com/](https://code.visualstudio.com/).
 
 2. Telepítse az [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) bővítményt. Ehhez jelenítse meg a gyorsmegnyitási listát (Ctrl+P), majd futtassa a következőt: 
@@ -38,7 +42,9 @@ A sablonok létrehozásához és átalakításához JSON-szerkesztő szükséges
 
 3. A bővítmény engedélyezéséhez indítsa újra a VS Code alkalmazást, amikor a rendszer kéri.
 
-## <a name="create-blank-template"></a>Üres sablon létrehozása
+<a id="create-blank-template" class="xliff"></a>
+
+## Üres sablon létrehozása
 
 Kezdjük egy üres sablonnal, amely csak az alapvető szakaszokat tartalmazza.
 
@@ -59,7 +65,9 @@ Kezdjük egy üres sablonnal, amely csak az alapvető szakaszokat tartalmazza.
 
 3. Mentse ezt a fájlt **azuredeploy.json** néven. 
 
-## <a name="add-storage-account"></a>Tárfiók hozzáadása
+<a id="add-storage-account" class="xliff"></a>
+
+## Tárfiók hozzáadása
 1. Egy tárfiók üzembe helyezéshez való meghatározásához adja hozzá azt a sablon **resources** (erőforrások) szakaszához. A tárfiókhoz elérhető értékek azonosításához tekintse meg a [tárfióksablonok referenciáját](/azure/templates/microsoft.storage/storageaccounts). Másolja a vágólapra a tárfiókhoz megjelenített JSON-t. 
 
 3. Másolja ezt a JSON-t a sablonja **resources** (erőforrások) szakaszába az alábbi példában látható módon: 
@@ -74,7 +82,7 @@ Kezdjük egy üres sablonnal, amely csak az alapvető szakaszokat tartalmazza.
        {
          "name": "string",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-05-01",
+         "apiVersion": "2016-12-01",
          "sku": {
            "name": "string"
          },
@@ -102,9 +110,13 @@ Kezdjük egy üres sablonnal, amely csak az alapvető szakaszokat tartalmazza.
    }
    ```
 
+  A VS Code esetleg jelezheti, hogy a 2016-12-01 nem egy érvényes API-verzió. Ha a sablon referenciadokumentációjából származó verziószámot használ, figyelmen kívül hagyhatja ezt a figyelmeztetést. Ez a figyelmeztetés akkor látható, ha a séma nem lett frissítve az erőforrás-szolgáltatótól származó legutolsó verziószámmal. 
+  
   A megelőző példában sok helyőrző érték és néhány olyan tulajdonság szerepel, amelyek nem feltétlenül szükségesek az Ön tárfiókjához.
 
-## <a name="set-values-for-storage-account"></a>Értékek beállítása a tárfiókhoz
+<a id="set-values-for-storage-account" class="xliff"></a>
+
+## Értékek beállítása a tárfiókhoz
 
 Készen áll arra, hogy értékeket állítson be a tárfiókjához. 
 
@@ -117,7 +129,7 @@ Készen áll arra, hogy értékeket állítson be a tárfiókjához.
      {
        "name": "string",
        "type": "Microsoft.Storage/storageAccounts",
-       "apiVersion": "2016-05-01",
+       "apiVersion": "2016-12-01",
        "sku": {
          "name": "string"
        },
@@ -156,7 +168,7 @@ A sablon most a következőképpen néz ki:
     {
       "name": "string",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "string"
       },
@@ -171,7 +183,9 @@ A sablon most a következőképpen néz ki:
 }
 ```
 
-## <a name="add-template-function"></a>Sablonfüggvény hozzáadása
+<a id="add-template-function" class="xliff"></a>
+
+## Sablonfüggvény hozzáadása
 
 A sablonban függvények használatával egyszerűsítheti a sablon szintaxisát, valamint kinyerheti azokat az értékeket, amelyek csak a sablon üzembe helyezésekor érhetők el. A sablonokban használható függvények teljes listáját lásd: [Az Azure Resource Manager-sablonok függvényei](resource-group-template-functions.md).
 
@@ -199,7 +213,7 @@ A sablon most a következőképpen néz ki:
     {
       "name": "string",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "string"
       },
@@ -214,7 +228,9 @@ A sablon most a következőképpen néz ki:
 }
 ```
 
-## <a name="add-parameters-and-variables"></a>Paramétereket és változók hozzáadása
+<a id="add-parameters-and-variables" class="xliff"></a>
+
+## Paramétereket és változók hozzáadása
 Már csak két értéket kell megadni a sablonhoz: a **name** (név) és az **sku.name** (SKU-név) értékét. Ezekhez az értékekhez olyan paramétereket kell adni, amelyek lehetővé teszik az értékek testreszabását az üzembe helyezés során. 
 
 A tárfiókok neveire több korlátozás vonatkozik, amelyek bonyolulttá teszik a megadásukat. A név 3–24 karakter hosszúságú lehet, csak számokból és kisbetűkből állhat, és egyedinek kell lennie. Ahelyett, hogy megpróbálna kitalálni egy, a korlátozásoknak megfelelő egyedi nevet, használja a [uniqueString](resource-group-template-functions-string.md#uniquestring) függvényt egy kivonatolt érték létrehozásához. Ahhoz, hogy a kivonatolt érték könnyebben értelmezhető legyen, adjon hozzá egy előtagot, amely alapján az üzembe helyezés után felismerhető lesz tárfiókként. 
@@ -289,7 +305,9 @@ A tárfiókok neveire több korlátozás vonatkozik, amelyek bonyolulttá teszik
 
 4. Mentse a fájlt.
 
-## <a name="final-template"></a>Végső sablon
+<a id="final-template" class="xliff"></a>
+
+## Végső sablon
 
 A cikkben ismertetett lépések végrehajtása után a sablon a következőképpen néz ki:
 
@@ -328,7 +346,7 @@ A cikkben ismertetett lépések végrehajtása után a sablon a következőképp
     {
       "name": "[variables('storageName')]",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-05-01",
+      "apiVersion": "2016-12-01",
       "sku": {
         "name": "[parameters('storageSKU')]"
       },
@@ -343,7 +361,9 @@ A cikkben ismertetett lépések végrehajtása után a sablon a következőképp
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 * A sablon elkészült, és készen áll az előfizetésben való üzembe helyezésre. Az üzembe helyezéshez lásd: [Erőforrások üzembe helyezése az Azure-ban](resource-manager-quickstart-deploy.md).
 * A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).

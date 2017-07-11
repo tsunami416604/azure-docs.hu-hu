@@ -1,6 +1,6 @@
 ---
-title: "Hozza létre az első Java-webappját öt perc alatt az Azure-ban | Microsoft Docs"
-description: "Egy egyszerű Java-alkalmazás üzembe helyezésével megtudhatja, mennyire egyszerű a webalkalmazások futtatása az App Service-ben."
+title: "Az első Java-webalkalmazás létrehozása az Azure-ban"
+description: "Egy alapszintű Java-alkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az App Service-ben."
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
@@ -12,63 +12,66 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 6/7/2017
 ms.author: cephalin;robmcm
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 75e51ca45a899c6b6fa123346aa3c5860fd1600d
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: a805d92fbe1043b9143140bdbfb8626362aa8bb5
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 06/20/2017
 
 ---
-# <a name="create-your-first-java-web-app-in-azure-in-five-minutes"></a>Hozza létre az első Java-webappját öt perc alatt az Azure-ban
+<a id="create-your-first-java-web-app-in-azure" class="xliff"></a>
 
-[!INCLUDE [app-service-web-selector-get-started](../../includes/app-service-web-selector-get-started.md)] 
+# Az első Java-webalkalmazás létrehozása az Azure-ban
 
-Ez a rövid útmutató segítséget nyújt az első Java-webalkalmazás mindössze néhány perc alatt történő üzembe helyezéséhez az [Azure App Service](../app-service/app-service-value-prop-what-is.md) használatával. Az oktatóanyag végére egy egyszerű, Java-alapú működő webalkalmazás válik elérhetővé a felhőben.
+Az [Azure App Service](../app-service/app-service-value-prop-what-is.md) [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) szolgáltatása egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást biztosít. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/) használatával.
 
-![Webalkalmazás kikeresése](./media/app-service-web-get-started-java/browse-web-app-1.png)
+![„Hello Azure!” példa webalkalmazás](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
-## <a name="before-you-begin"></a>Előkészületek
+<a id="prerequisites" class="xliff"></a>
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre és helyezhet üzembe Java-webalkalmazást az Azure-ban a Java EE-fejlesztőknek készült Eclipse IDE használatával. Ha az Eclipse még nincs telepítve, ingyenesen letöltheti a http://www.eclipse.org/ webhelyről.
+## Előfeltételek
 
-A Java-webalkalmazások Azure-ban való közzétételének leegyszerűsítése érdekében az oktatóanyagban ismertetett lépésekben az [Eclipse-hez készült Azure-eszközkészletet](/azure/azure-toolkit-for-eclipse) használjuk. Az eszközkészlet telepítésével kapcsolatos útmutatásért lásd [az Eclipse-hez készült Azure-eszközkészlet telepítésével](/azure/azure-toolkit-for-eclipse-installation) foglalkozó cikket.
+A gyorsútmutató elvégzéséhez a következők telepítése szükséges:
 
-> [!NOTE]
->
-> Emellett a JetBrains által kifejlesztett [IntelliJ IDEA](https://www.jetbrains.com/idea/) is használható az oktatóanyagban ismertetett lépések végrehajtására. A lépések némelyike ebben a fejlesztői környezetben eltérhet, bár létezik egy, [az IntelliJ-hez készült Azure-eszközkészlet](/azure/azure-toolkit-for-intellij) is, amellyel leegyszerűsítheti a közzétételi folyamatot az adott IDE-ben.
->
+* Az ingyenes, [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/downloads/). Ez a gyorsútmutató az Eclipse Neont használj.
+* Az [Eclipse-hez készült Azure-eszközkészlet](/azure/azure-toolkit-for-eclipse-installation).
 
-Az oktatóanyagban található lépések elvégzéséhez egy Azure-előfizetésre is szüksége lesz. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-dynamic-web-project-in-eclipse"></a>Dinamikus webes projekt létrehozása az Eclipse-ben
+<a id="create-a-dynamic-web-project-in-eclipse" class="xliff"></a>
 
-Az Eclipse-ben válassza a **File** (Fájl) menüt, majd a **New** (Új), végül pedig a **Dynamic Web Project** (Dinamikus webes projekt) lehetőséget.
+## Dinamikus webes projekt létrehozása az Eclipse-ben
+
+Az Eclipse-ben válassza a **File (Fájl)** > **New (Új)** > **Dynamic Web Project** (Dinamikus webprojekt) lehetőséget.
 
 A **New Dynamic Web Project** (Új dinamikus webprojekt) párbeszédpanelen adja a **MyFirstJavaOnAzureWebApp** nevet a projektnek, és válassza a **Finish** (Befejezés) lehetőséget.
    
-![Dinamikus webes projekt párbeszédpanel](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
+![New Dynamic Web Project (Új dinamikus webprojekt) párbeszédpanel](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
-> [!NOTE]
->
-> Ha egy helyi futtatókörnyezet, például az [Apache Tomcat](https://tomcat.apache.org/) telepítve van, megadhatja azt a **Target runtime** (Cél futtatókörnyezet) mezőben.
->
+<a id="add-a-jsp-page" class="xliff"></a>
 
-Miután a dinamikus webes projekt létrejött, adjon hozzá egy új JSP-oldalt a projektböngészőben. Bontsa ki a projektet, a jobb gombbal kattintson a **WebContent** mappára, majd kattintson a **New** (Új), végül pedig a **JSP File** (JSP fájl) elemre.
+### JSP-oldal hozzáadása
 
-![New JSP File (Új JSP-fájl) menü](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
+Ha a Project Explorer (Projektböngésző) nem jelenik meg, állítsa azt vissza.
 
-Amikor megjelenik a New JSP File (Új JSP fájl) párbeszédpanel, adja a fájlnak az **index.jsp** nevet, a szülőmappa neve maradjon **MyFirstJavaOnAzureWebApp/WebContent**, majd kattintson a **Next** (Tovább) gombra.
+![Az Eclipse-hez készült Java EE munkaterület](./media/app-service-web-get-started-java/pe.png)
 
-![New JSP File (Új JSP-fájl) párbeszédpanel](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-1.png)
+A Project Explorer (Projektböngésző) nézetben bontsa ki a **MyFirstJavaOnAzureWebApp** projektet.
+Kattintson a jobb gombbal az **WebContent** elemre, majd válassza a **(New) Új** > **JSP File (JSP-fájl)** (JSP-fájl) lehetőséget.
 
-A New JSP File (Új JSP-fájl) párbeszédpanel második oldalán nevezze el a fájlt **index.jsp** néven, a szülőmappa neve maradjon **MyFirstJavaOnAzureWebApp/WebContent**, majd kattintson a **Finish** (Befejezés) gombra.
+![Az új JSP-fájl menüje a Project Explorer (Projektböngésző) nézetben](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
 
-![New JSP File (Új JSP-fájl) párbeszédpanel](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-2.png)
+A **New JSP File** (Új JSP-fájl) párbeszédpanelen:
 
-Amikor az új oldal megnyílik az Eclipse-ben, a meglévő `<body></body>` szakasz helyébe illessze az alábbi kódot:
+* Nevezze el a fájlt az alábbi módon: **index.jsp**.
+* Válassza a **Finish** (Befejezés) elemet.
+
+  ![New JSP File (Új JSP-fájl) párbeszédpanel](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-1.png)
+
+Az index.jsp fájlban cserélje le a `<body></body>` elemet az alábbi jelöléssel:
 
 ```jsp
 <body>
@@ -76,162 +79,149 @@ Amikor az új oldal megnyílik az Eclipse-ben, a meglévő `<body></body>` szaka
 </body>
 ```
 
-Mentse az oldal módosításait.
+Mentse a módosításokat.
 
-## <a name="publish-your-web-app-to-azure"></a>A webalkalmazás közzététele az Azure-ban
+<a id="publish-the-web-app-to-azure" class="xliff"></a>
 
-A webalkalmazások üzembe helyezéséhez az Azure-ban az Eclipse-hez készült Azure-eszközkészlet több szolgáltatását is igénybe vesszük.
+## A webalkalmazás közzététele az Azure-ban
 
-A közzétételi folyamat indításához használja az alábbi módszerek egyikét:
+A Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a projektre, majd válassza az **Azure** > **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) lehetőséget.
 
-* Kattintson a jobb gombbal a projektre az Eclipse **projektböngészőjében**, majd kattintson az **Azure**, végül pedig a **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) lehetőségre.
+![A Publish as Azure Web App (Közzététel Azure-webalkalmazásként) helyi menü](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-   ![A Publish as Azure Web App (Közzététel Azure-webalkalmazásként) helyi menü](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
+Az **Azure bejelentkezési** párbeszédpanelen tartsa meg az **Interactive** (Interaktív) lehetőséget, majd válassza a **Sign in** (Bejelentkezés) gombot.
 
-* Kattintson a **közzétételi** ikonra az Eclipse eszköztárjában, majd a **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) elemre.
+Kövesse a bejelentkezési utasításokat.
 
-   ![A Publish as Azure Web App (Közzététel Azure-webalkalmazásként) lenyíló menü](./media/app-service-web-get-started-java/publish-as-azure-web-app-drop-down-menu.png)
+<a id="deploy-web-app-dialog-box" class="xliff"></a>
 
-Ha még nem jelentkezett be Azure-fiókjába, a rendszer felszólítja, hogy jelentkezzen be. Ehhez a következőket kell tennie:
+### Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel
 
-1. Két különböző lehetőség is rendelkezésre áll az Azure-fiókba való bejelentkezéshez. A jelen oktatóanyag esetében válassza az **Interaktív** lehetőséget.
+Miután bejelentkezett Azure-fiókjába, megjelenik a **Deploy Web App** (Webalkalmazás üzembe helyezése) párbeszédpanel.
 
-   ![Azure bejelentkezési párbeszédpanel](./media/app-service-web-get-started-java/azure-signin-dialog-box.png)
-
-1. Írja be Azure-beli hitelesítő adatait, majd kattintson a **Sign In** (Bejelentkezés) gombra.
-
-   ![Azure bejelentkezési párbeszédpanel](./media/app-service-web-get-started-java/azure-login-dialog-box.png)
-
-1. Válassza ki Azure-előfizetéseit, majd kattintson a **Select** (Kijelölés) elemre.
-
-   ![Azure bejelentkezési párbeszédpanel](./media/app-service-web-get-started-java/select-azure-subscriptions-dialog-box.png)
-
-> [!NOTE]
->
-> Az **Interaktív** és az **Automatizált** bejelentkezéssel kapcsolatos részletes útmutatásokat az [Azure az Eclipse-hez készült Azure-eszközkészletre vonatkozó bejelentkezési utasításait leíró](https://go.microsoft.com/fwlink/?linkid=846174) cikkben olvashatja.
->
-
-Miután bejelentkezett Azure-fiókjába, megjelenik a **Deploy Web App** (Webalkalmazás üzembe helyezése) párbeszédpanel. Ha most először tesz közzé webalkalmazást az Azure-ban, az App Services lista üres lesz. Ebben az esetben, vagy ha egy új App Service-szolgáltatást szeretne létrehozni, a következő lépés egy új App Service létrehozása. Ehhez kattintson a **Create** (Létrehozás) gombra.
+Kattintson a **Létrehozás** gombra.
 
 ![Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
-Amikor megjelenik az **Create App Service** (App Service létrehozása) párbeszédpanel, a következő induló adatokat kell megadnia:
+<a id="create-app-service-dialog-box" class="xliff"></a>
 
-* A webalkalmazás egyedi neve, amely a webalkalmazás DNS-címe lesz. Ha például a **MyJavaWebApp** nevet adja meg, a cím a *myjavawebapp.azurewebsites.net* lesz.
+### A Create App Service (App Service létrehozása) párbeszédpanel
 
-* A webalkalmazás által használt webes tároló. Például: **Newest Tomcat 8.5** (Legújabb Tomcat 8.5).
+Megjelenik a **Create App Service** (App Service létrehozása) párbeszédpanel az alapértelmezett értékekkel. Az alábbi képen látható **170602185241** szám eltérő az Ön párbeszédpanelén.
 
-* Az Azure-előfizetése.
+![A Create App Service (App Service létrehozása) párbeszédpanel](./media/app-service-web-get-started-java/cas1.png)
+
+A **Create App Service** (App Service létrehozása) párbeszédpanelen:
+
+* Tartsa meg a webalkalmazáshoz létrehozott nevet. Ennek a névnek az Azure-on belül egyedinek kell lennie. Ez a név a webalkalmazáshoz tartozó URL-cím része. Ha például a webalkalmazás neve **MyJavaWebApp**, az URL-cím *myjavawebapp.azurewebsites.net*.
+* Tartsa meg az alapértelmezett webes tárolót.
+* Válasszon ki egy Azure-előfizetést.
+* Az **App service plan** (App Service-csomag) lapon:
+
+  * **Create new** (Új létrehozása): tartsa meg az alapértelmezettet, amely az App Service-csomag neve.
+  * **Location** (Hely): válassza a **West Europe** (Nyugat-Európa) lehetőséget vagy egy Önhöz közeli helyet.
+  * **Pricing tier** (Tarifacsomag): válassza az ingyenes lehetőséget. A szolgáltatások díját az [App Service díjszabás](https://azure.microsoft.com/pricing/details/app-service/) részben találja.
 
    ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
-Ha még nem rendelkezik App Service-csomagokkal, vagy ha szeretne egy új szolgáltatáscsomagot létrehozni, a következő információkat kell megadnia:
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-* Az új szolgáltatáscsomag egyedi neve. Ez a név jelenik meg, ha a későbbiekben webalkalmazásokat tesz közzé az Azure-eszközkészlet használatával, és ez a név jelenik meg az [Azure Portalon](https://portal.azure.com) a fiókja kezelésekor.
+<a id="resource-group-tab" class="xliff"></a>
 
-* A földrajzi hely, ahol a szolgáltatáscsomag létrejön.
+### Resource group (Erőforráscsoport) lap
 
-* A szolgáltatáscsomag tarifacsomagja.
+Válassza ki a **Resource group** (Erőforráscsoport) lapot. Tartsa meg az erőforráscsoporthoz tartozó alapértelmezetten létrehozott értéket.
 
-   ![App Service-csomag létrehozása](./media/app-service-web-get-started-java/create-app-service-plan.png)
+![Resource group (Erőforráscsoport) lap](./media/app-service-web-get-started-java/create-app-service-resource-group.png)
 
-Ezután kattintson a **Resource group** (Erőforráscsoport) lapra. Ha még nem rendelkezik erőforráscsoportokkal, vagy ha szeretne egy új erőforráscsoportot létrehozni, adnia kell egy egyedi nevet az új erőforráscsoportnak. Más esetben válasszon ki egy erőforráscsoportot a legördülő menüből.
+[!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-![App Service-csomag létrehozása](./media/app-service-web-get-started-java/create-app-service-resource-group.png)
+Kattintson a **Létrehozás** gombra.
 
-Végül kattintson a **JDK** lapra. Itt több lehetőség is fel van sorolva, amelyek segítségével a fejlesztők külső vagy egyedi Java Developer Kiteket (JDK-kat, fejlesztői készleteket) adhatnak meg. A jelen oktatóanyagban válassza a **Default** (Alapértelmezett) lehetőséget, majd kattintson a **Create** (Létrehozás) gombra.
+<!--
+### The JDK tab
 
-![App Service-csomag létrehozása](./media/app-service-web-get-started-java/create-app-service-specify-jdk.png)
+Select the **JDK** tab. Keep the default, and then select **Create**.
 
-Az Azure-eszközkészlet elkezdi az új App Service létrehozását, és a feldolgozás közben megjelenít egy folyamatjelző panelt.
+![Create App Service plan](./media/app-service-web-get-started-java/create-app-service-specify-jdk.png)
+-->
 
-![App Service létrehozásának állapotjelző sávja](./media/app-service-web-get-started-java/create-app-service-progress-bar.png)
+Az Azure-eszközkészlet létrehozza a webalkalmazást, és megjelenít egy folyamatjelző panelt.
 
-Miután az új App Service létrejött, az utolsó dolog, amelyet még el kell döntenie, hogy a webalkalmazást az új webhely gyökerén helyezi-e üzembe. Ha például van egy App Service a *wingtiptoys.azurewebsites.net* helyen, és nem a gyökérnél végzi el az üzembe helyezést, a **MyFirstJavaOnAzureWebApp** nevű webalkalmazás a *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp* helyen lesz üzembe helyezve.
+![App Service létrehozásának állapotjelző párbeszédpanelje](./media/app-service-web-get-started-java/create-app-service-progress-bar.png)
 
-![Webalkalmazás üzembe helyezése a gyökéren](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
+<a id="deploy-web-app-dialog-box" class="xliff"></a>
 
-Miután minden előző lépést végrehajtott, kattintson a **Deploy** (Üzembe helyezés) lehetőségre a webalkalmazás közzétételéhez az Azure-ban.
+### Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel
 
-![Webalkalmazás üzembe helyezése az Azure-ban](./media/app-service-web-get-started-java/deploy-web-app-to-azure.png)
+A **Deploy Web App** (Webalkalmazás üzembe helyezése) párbeszédpanelen válassza a **Deploy to root** (Üzembe helyezés a gyökérnél) beállítást. Ha egy App Service a *wingtiptoys.azurewebsites.net* helyen, és nem a gyökérnél végzi el az üzembe helyezést, a **MyFirstJavaOnAzureWebApp** nevű webalkalmazás a *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp* helyen lesz üzembe helyezve.
 
-Gratulálunk! Sikeresen végrehajtotta a webalkalmazás üzembe helyezését az Azure-ban! Most megtekintheti a webalkalmazás előnézetét az Azure-webhelyen:
+![Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
 
-![Webalkalmazás kikeresése](./media/app-service-web-get-started-java/browse-web-app-1.png)
+A párbeszédpanel megjeleníti az Azure-nál, a JDK-nál és a webes tárolónál kiválasztott beállításokat.
 
-## <a name="updating-your-web-app"></a>Webalkalmazás frissítése
+A webalkalmazás Azure-ban történő közzétételéhez válassza a **Deploy** (Üzembe helyezés) lehetőséget.
 
-Miután sikeresen közzétette a webalkalmazást az Azure-ban, a webalkalmazás frissítése már sokkal egyszerűbb folyamat lesz. Az alábbi lépések azt mutatják be, hogyan teheti közzé a webalkalmazás módosításait.
+A közzététel befejezése után válassza a **Published** (Közzétéve) hivatkozást az **Azure Activity Log** (Azure tevékenységnapló) párbeszédpanelen.
 
-Először módosítsa a korábbi JSP-kódmintát, hogy a cím a mai dátum legyen:
+![Azure Activity Log (Azure tevékenységnapló) párbeszédpanel](./media/app-service-web-get-started-java/aal.png)
+
+Gratulálunk! Sikeresen végrehajtotta a webalkalmazás üzembe helyezését az Azure-ban. 
+
+![„Hello Azure!” példa webalkalmazás](./media/app-service-web-get-started-java/browse-web-app-1.png)
+
+<a id="update-the-web-app" class="xliff"></a>
+
+## A webalkalmazás frissítése
+
+Módosítsa a JSP-mintakódot egy eltérő üzenetre.
 
 ```jsp
-<%@ page
-    language="java"
-    contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
-    import="java.text.SimpleDateFormat"
-    import="java.util.Date" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<% SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd"); %>
-<title><% out.println(date.format(new Date())); %></title>
-</head>
 <body>
-<h1><% out.println("Hello Azure!"); %></h1>
+<h1><% out.println("Hello again Azure!"); %></h1>
 </body>
-</html>
 ```
 
-Miután mentette a módosításait, kattintson a jobb gombbal a projektre az Eclipse **projektböngészőjében**, majd kattintson az **Azure**, végül pedig a **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) lehetőségre.
+Mentse a módosításokat.
 
-![Frissített webalkalmazás közzététele](./media/app-service-web-get-started-java/publish-updated-web-app-context-menu.png)
+A Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a projektre, majd válassza az **Azure** > **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) lehetőséget.
 
-Amikor megjelenik a **Deploy Web App** (Webalkalmazás üzembe helyezése) párbeszédpanel, a listában megtalálható lesz a korábban létrehozott App Service. A webalkalmazás frissítéséhez mindössze annyit kell tennie, hogy kiemeli az App Service-t, és a **Deploy** (Üzembe helyezés) gombra kattint a módosítások közzétételéhez.
-
-![Webalkalmazás üzembe helyezése az Azure-ban](./media/app-service-web-get-started-java/deploy-web-app-to-azure.png)
+Megjelenik a **Deploy Web App** (Webalkalmazás üzembe helyezése) párbeszédpanel, és megjeleníti a korábban létrehozott App Service-t. 
 
 > [!NOTE]
+> Minden egyes közzétételkor válassza a **Deploy to root** (Üzembe helyezés a gyökérnél) beállítást.
 >
-> Ha a webalkalmazást az App Service gyökerében helyezi üzembe, minden egyes alkalommal újra be kell jelölnie a **Deploy to root** (Üzembe helyezés a gyökérnél) beállítást, amikor közzéteszi a módosításokat.
->
 
-Miután közzétette a módosításokat, láthatja, hogy az oldal címe a mai dátumra változik a böngészőben.
+Válassza ki a webalkalmazást, majd a **Deploy** (Üzembe helyezés) lehetőséget, ami közzéteszi a módosításokat.
 
-![Webalkalmazás kikeresése](./media/app-service-web-get-started-java/browse-web-app-2.png)
+Amikor megjelenik a **Publishing** (Közzététel) hivatkozás, válassza azt ki a webalkalmazás tallózásához, és tekintse meg a módosításokat.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+<a id="manage-the-web-app" class="xliff"></a>
 
-A webapp törléséhez használja az Azure-eszközkészlet részét képező **Azure Explorert**. Ha az **Azure Explorer** nézet még nem látható az Eclipse-ben, a következő lépések végrehajtásával jelenítheti meg:
+## A webalkalmazás kezelése
 
-1. Kattintson a **Window** (Ablak), majd a **Show View** (Nézet megjelenítése) és az **Other** (Egyéb) elemre.
+Ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>, és tekintse meg a létrehozott webalkalmazást.
 
-   ![Show View (Nézet megjelenítése) menü](./media/app-service-web-get-started-java/show-azure-explorer-view-1.png)
+A bal oldali menüben válassza az **Erőforráscsoportok** elemet.
 
-2. Amikor megjelenik a **Show View** (Nézet megjelenítése) párbeszédpanel, válassza az **Azure Explorer** lelehetőséget, és kattintson az **OK** gombra.
+![Navigálás a portálon az erőforráscsoportokhoz](media/app-service-web-get-started-java/rg.png)
 
-   ![Show View (Nézet megjelenítése) párbeszédpanel](./media/app-service-web-get-started-java/show-azure-explorer-view-2.png)
+Válassza az erőforráscsoportot. Az oldal megjeleníti a gyorsútmutatóban létrehozott erőforrásokat.
 
-Ahhoz, hogy törölje a webalkalmazást az Azure Explorerből, nyissa ki a **Web Apps** (Webalkalmazások) csomópontot, majd kattintson jobb gombbal a webalkalmazásra, és válassza a **Delete** (Törlés) lehetőséget.
+![myResourceGroup erőforráscsoport](media/app-service-web-get-started-java/rg2.png)
 
-![Webalkalmazás törlése](./media/app-service-web-get-started-java/delete-web-app-context-menu.png)
+Válassza a webalkalmazást (**webapp-170602193915** az előző képen).
 
-Amikor a program rákérdez a webalkalmazás törlésére, kattintson az **OK** gombra.
+Megjelenik az **Áttekintés** oldal. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. A panel bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg. 
 
-## <a name="next-steps"></a>Következő lépések
+![Az App Service lap az Azure Portalon](media/app-service-web-get-started-java/web-app-blade.png)
 
-A Java IDE környezetekhez készült Azure-eszközkészlettel kapcsolatos további információkért lásd az alábbi hivatkozásokat:
+[!INCLUDE [clean-up-section-portal-web-app](../../includes/clean-up-section-portal-web-app.md)]
 
-* [Az Eclipse-hez készült Azure-eszközkészlet (a jelen cikk)](../azure-toolkit-for-eclipse.md)
-  * [Az Eclipse-hez készült Azure-eszközkészlet újdonságai](../azure-toolkit-for-eclipse-whats-new.md)
-  * [Az Eclipse-hez készült Azure-eszközkészlet telepítése](../azure-toolkit-for-eclipse-installation.md)
-  * [Bejelentkezési utasítások az Eclipse-hez készült Azure-eszközkészlethez](https://go.microsoft.com/fwlink/?linkid=846174)
-* [Az IntelliJ-hez készült Azure-eszközkészlet](../azure-toolkit-for-intellij.md)
-  * [Az IntelliJ-hez készült Azure-eszközkészlet újdonságai](../azure-toolkit-for-intellij-whats-new.md)
-  * [Az IntelliJ-hez készült Azure-eszközkészlet telepítése](../azure-toolkit-for-intellij-installation.md)
-  * [Bejelentkezési utasítások az IntelliJ-hez készült Azure-eszközkészlethez](https://go.microsoft.com/fwlink/?linkid=846179)
+<a id="next-steps" class="xliff"></a>
 
-Az Azure Javával való használatáról további információ: [Azure Java fejlesztői központ](https://azure.microsoft.com/develop/java/) és [Java-eszközök a Visual Studio Team Serviceshez](https://java.visualstudio.com/).
+## Következő lépések
+
+> [!div class="nextstepaction"]
+> [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)
 

@@ -14,26 +14,33 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 04/25/2017
 ms.author: rachelap;robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 26f2fba953870564292ef3e986a3151373f6babf
-ms.lasthandoff: 01/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 26011d72644f8b13a711d847d83175ce384f2053
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/17/2017
 
 
 ---
-# <a name="build-and-deploy-a-java-api-app-in-azure-app-service"></a>Java API-alkalmazás buildjének elkészítése és telepítése az Azure App Service platformon
+<a id="build-and-deploy-a-java-api-app-in-azure-app-service" class="xliff"></a>
+
+# Java API-alkalmazás buildjének elkészítése és telepítése az Azure App Service platformon
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Java-alkalmazást, és hogyan telepítheti az Azure App Service API Apps szolgáltatásba a [Git] használatával. Az oktatóanyagban lévő utasítások bármilyen, Java-programok futtatására alkalmas operációs rendszeren végrehajthatók. Az oktatóanyagban szereplő kód a [Maven] használatával lett lefordítva. A RESTful szolgáltatás létrehozásához a [Jax-RS] API-t használjuk, és a szolgáltatás generálása [Swagger] metaadat-specifikáció alapján történik, amelyet a [Swagger Editor] programmal készítünk el.
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 1. [Java Developer's Kit 8] \(vagy újabb)
 2. A fejlesztői gépen telepítve van a [Maven]
 3. A fejlesztő gépen telepítve van a [Git]
 4. [Ingyenes] vagy fizetős [Microsoft Azure]-előfizetés
 5. HTTP-tesztalkalmazás, például [Postman]
 
-## <a name="scaffold-the-api-using-swaggerio"></a>Az API strukturálása a Swagger.IO használatával
+<a id="scaffold-the-api-using-swaggerio" class="xliff"></a>
+
+## Az API strukturálása a Swagger.IO használatával
 A swagger.io online szerkesztő segítségével az API struktúráját leírhatja Swagger JSON- vagy YAM- kóddal. Az API felületének megtervezése után a kódot exportálhatja különböző platformokra és keretrendszerekre. A következő szakaszban a generált kódot úgy módosítjuk, hogy tartalmazza a funkciók utánzatait. 
 
 A demonstráció elején a swagger.io online szerkesztőbe Swagger JSON-kódot illesztünk be, amelyből a JAX-RS segítségével egy REST API-végpont elérésére alkalmas kódot generálunk. Ezt követően a generált kódot úgy szerkesztjük, hogy próbaadatokat adjon vissza, ezáltal egy adatperzisztencia-mechanizmus feletti REST API-t szimulálva.  
@@ -147,13 +154,15 @@ A demonstráció elején a swagger.io online szerkesztőbe Swagger JSON-kódot i
    
     A kódgenerálás után egy ZIP-fájlt tölthet le. Ez a fájl tartalmazza a Swagger kódgeneráló által generált kódot és az összes kapcsolódó fordítási parancsprogramot. Bontsa ki a fájl teljes tartalmát a fejlesztő munkaállomás valamelyik könyvtárába. 
 
-## <a name="edit-the-code-to-add-api-implementation"></a>A kód szerkesztése API-implementáció hozzáadásához
+<a id="edit-the-code-to-add-api-implementation" class="xliff"></a>
+
+## A kód szerkesztése API-implementáció hozzáadásához
 Ebben a szakaszban a Swagger által generált kód kiszolgálóoldali implementációját a saját kódjára cseréli le. Az új kód egy Contact entitásokat tartalmazó ArrayListet fog visszaadni a hívó ügyfélnek. 
 
 1. Nyissa meg az *src/gen/java/io/swagger/model* mappában található  *Contact.java* modellfájlt a [Visual Studio Code]-dal vagy kedvenc szövegszerkesztőjével. 
    
     ![A Contact modellfájl megnyitása][open-contact-model-file]
-2. Adja hozzá az alábbi konstruktort a **Contact** osztályhoz. 
+2. Adja hozzá az alábbi konstruktort a **Contact** osztályon belül. 
    
         public Contact(Integer id, String name, String email) 
         {
@@ -238,7 +247,9 @@ Ebben a szakaszban a Swagger által generált kód kiszolgálóoldali implement�
           copy target\ROOT.war deploy\webapps
           cd deploy
 
-## <a name="publish-the-output-to-azure-app-service"></a>A kimenet közzététele az Azure App Service platformon
+<a id="publish-the-output-to-azure-app-service" class="xliff"></a>
+
+## A kimenet közzététele az Azure App Service platformon
 Ebben a szakaszban megtudhatja, hogyan hozhat létre új API-alkalmazást az Azure portálon, hogyan készítheti elő az API-alkalmazást Java-alkalmazások futtatására, valamint hogy hogyan telepítheti az újonnan létrehozott WAR-fájlt az Azure App Service platformra az új API-alkalmazás futtatásához. 
 
 1. Hozzon létre egy új API-alkalmazást az [Azure Portal]. Ehhez kattintson a **Új -> Web + mobil -> API-alkalmazás** menüpontra, írja be az adatokat, majd kattintson a **Létrehozás** gombra.
@@ -269,14 +280,18 @@ Ebben a szakaszban megtudhatja, hogyan hozhat létre új API-alkalmazást az Azu
    
     ![A Java Contacts REST API használata élőben az Azure-ban][postman-calling-azure-contacts]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 Ebben a cikkben egy Swagger JSON-fájllal és a Swagger.io szerkesztő által generált Java-kóddal indultunk el. Ezekből egyszerű módosításokkal és a Git telepítési folyamatának eredményeként egy működő, Java nyelven írt API-alkalmazást kaptunk. A következő oktatóanyag azt mutatja be, hogyan [használhat API-alkalmazásokat JavaScript-ügyfelekkel a CORS segítségével][App Service API CORS]. A sorozat későbbi részei bemutatják, hogyan implementálhatja a hitelesítést és az engedélyezést.
 
 Erre a példára építve részletesen megismerheti, hogyan használhatja a [Storage SDK for Java] csomagot a JSON-blobok megtartásához. Vagy a [Document DB Java SDK] használatával mentheti a névjegyadatokat az Azure Document DB rendszerbe. 
 
 <a name="see-also"></a>
 
-## <a name="see-also"></a>Lásd még:
+<a id="see-also" class="xliff"></a>
+
+## Lásd még:
 Az Azure Javával való használatáról további információ: [Azure Java fejlesztői központ].
 
 <!-- URL List -->
@@ -291,7 +306,7 @@ Az Azure Javával való használatáról további információ: [Azure Java fejl
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
 [Microsoft Azure]: https://azure.microsoft.com/
-[Online Swagger Editort]: http://editor.swagger.io/
+[Online Swagger Editort]: http://editor2.swagger.io/
 [Postman]: https://www.getpostman.com/
 [Storage SDK for Java]: ../storage/storage-java-how-to-use-blob-storage.md
 [Swagger]: http://swagger.io/

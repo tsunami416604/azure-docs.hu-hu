@@ -1,0 +1,1 @@
+Az [erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md#terminology) olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például webalkalmazásokat, adatbázisokat és tárfiókokat).

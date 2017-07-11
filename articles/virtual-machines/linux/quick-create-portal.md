@@ -15,21 +15,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ff4bf9c9e3bfbd0e51cdb91be85dec15db6cd758
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 8c51af189e8086a509d44546882e1b26605dddae
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 05/31/2017
 
 ---
 
-# <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Linux virtuális gép létrehozása az Azure Portal használatával
+<a id="create-a-linux-virtual-machine-with-the-azure-portal" class="xliff"></a>
+
+# Linux virtuális gép létrehozása az Azure Portal használatával
 
 Az Azure virtuális gépek létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek, valamint az összes kapcsolódó erőforrás létrehozásához és konfigurálásához. Ez a rövid útmutató részletesen bemutatja egy virtuális gép létrehozását és egy webkiszolgáló telepítését a virtuális gépen.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-ssh-key-pair"></a>SSH-kulcspár létrehozása
+<a id="create-ssh-key-pair" class="xliff"></a>
+
+## SSH-kulcspár létrehozása
 
 A gyors üzembe helyezés elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már rendelkezik SSH-kulcspárral, kihagyhatja ezt a lépést.
 
@@ -39,11 +44,15 @@ Futtassa ezt a parancsot egy Bash rendszerhéjból, és kövesse a képernyőn l
 ssh-keygen -t rsa -b 2048
 ```
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
+<a id="log-in-to-azure" class="xliff"></a>
+
+## Jelentkezzen be az Azure-ba 
 
 Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
-## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
+<a id="create-virtual-machine" class="xliff"></a>
+
+## Virtuális gép létrehozása
 
 1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
 
@@ -64,7 +73,9 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 7. A virtuális gép rögzítve lesz az Azure Portal irányítópultján. Az üzembe helyezés befejeztével a virtuális gép összefoglalás panelje automatikusan megnyílik.
 
 
-## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
+<a id="connect-to-virtual-machine" class="xliff"></a>
+
+## Csatlakozás virtuális géphez
 
 Hozzon léte egy SSH-kapcsolatot a virtuális géppel.
 
@@ -78,7 +89,9 @@ Hozzon léte egy SSH-kapcsolatot a virtuális géppel.
 ssh azureuser@40.112.21.50
 ```
 
-## <a name="install-nginx"></a>Az NGINX telepítése
+<a id="install-nginx" class="xliff"></a>
+
+## Az NGINX telepítése
 
 Az alábbi bash-parancsfájl segítségével frissítse a csomagforrásokat, és telepítse a legújabb NGINX-csomagot. 
 
@@ -95,7 +108,9 @@ sudo apt-get -y install nginx
 Ha ezzel elkészült, lépjen ki az SSH-munkamenetből, és térjen vissza a virtuális gép tulajdonságaihoz az Azure Portalon.
 
 
-## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
+<a id="open-port-80-for-web-traffic" class="xliff"></a>
+
+## A 80-as port megnyitása a webes adatforgalom számára 
 
 A hálózati biztonsági csoport (NSG) feladata a bejövő és kimenő forgalom védelme. Ha létrehoz egy virtuális gépet az Azure Portalon, a 22-es porton létrejön egy bejövő szabály az SSH-kapcsolatok számára. Mivel ezen a virtuális gépen egy webkiszolgáló üzemel, a 80-as porthoz létre kell hoznia egy NSG-szabályt.
 
@@ -107,17 +122,23 @@ A hálózati biztonsági csoport (NSG) feladata a bejövő és kimenő forgalom 
 6. Kattintson az **OK** gombra.
 
 
-## <a name="view-the-ngix-welcome-page"></a>Az NGINX kezdőlapjának megtekintése
+<a id="view-the-nginx-welcome-page" class="xliff"></a>
 
-Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális gép felé, a webkiszolgáló elérhető az internetről. Nyisson meg egy webböngészőt, és adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím az Azure Portal VM panelén található.
+## Az NGINX kezdőlapjának megtekintése
+
+Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális gép felé, a webkiszolgáló elérhető az internetről. Nyisson meg egy webböngészőt, és adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím az Azure Portal Virtuális gépek panelén található.
 
 ![Alapértelmezett NGINX-webhely](./media/quick-create-cli/nginx.png) 
 
-## <a name="delete-virtual-machine"></a>Virtuális gép törlése
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforráscsoportot a virtuális gép paneljéről és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, egy hálózati biztonsági csoport szabályát, valamint telepített egy webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

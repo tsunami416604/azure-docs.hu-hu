@@ -15,14 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 93920075a8ad8de4fd650d9cbbfd13b7bc18bf52
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 6274e0101f6fb0864c8d1efaef7fcde78b8760c3
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/31/2017
 
 
 ---
-# <a name="user-defined-routes-and-ip-forwarding"></a>Felhasználó által megadott útvonalak és IP-továbbítás
+<a id="user-defined-routes-and-ip-forwarding" class="xliff"></a>
+
+# Felhasználó által megadott útvonalak és IP-továbbítás
 
 Amikor az Azure-ban virtuális gépeket (VM-ek) ad hozzá egy virtuális hálózathoz (VNet), észre fogja venni, hogy a virtuális gépek automatikusan tudnak egymással kommunikálni a hálózaton keresztül. Nem kell megadni átjárót, akkor sem, ha a virtuális gépek külön alhálózatokon vannak. Ugyanez vonatkozik a virtuális gépek és a nyilvános internet közötti kommunikációra, és akár a helyszíni hálózatra is, ha jelen van egy hibrid kapcsolat az Azure és a saját adatközpont között.
 
@@ -50,7 +53,9 @@ Az alábbi ábra a felhasználó által megadott útvonalakra és az IP-tovább�
 > 
 > 
 
-## <a name="route-resource"></a>Útvonal-erőforrás
+<a id="route-resource" class="xliff"></a>
+
+## Útvonal-erőforrás
 A csomagok útválasztása a TCP/IP-hálózatban egy útválasztási táblázaton alapul, ami a fizikai hálózat minden csomópontján meg van határozva. Az útválasztási táblázat külön útvonalak gyűjteménye, amelyet arra használnak, hogy az IP-célcím alapján eldöntsék, a rendszer hova továbbítsa a csomagokat. Az útvonalak a következőket tartalmazzák:
 
 | Tulajdonság | Leírás | Korlátozások | Megfontolások |
@@ -67,14 +72,18 @@ Az Azure PowerShellben néhány „NextHopType” értéknek különböző neve 
 * Az internet az Internet
 * A nincs a Nincs
 
-### <a name="system-routes"></a>Rendszerútvonalak
+<a id="system-routes" class="xliff"></a>
+
+### Rendszerútvonalak
 A rendszer a virtuális hálózatban létrehozott összes alhálózatot automatikusan hozzárendeli egy útválasztási táblázathoz, ami az alábbi útválasztási szabályokat tartalmazza:
 
 * **Helyi Vnet szabály**: Ez a szabály a virtuális hálózat miden alhálózatában automatikusan létrejön. Meghatározza, hogy a virtuális hálózatban a virtuális gépek között közvetlen kapcsolat van, és nincs köztes ugrás.
 * **Helyszíni szabály**: Ez a szabály a helyszíni címtartományba irányuló teljes forgalomra érvényes, és VPN-átjárót használ a következő ugrási célként.
 * **Internet szabály**: Ez a szabály kezeli a nyilvános internet felé irányuló teljes forgalmat (címelőtag 0.0.0.0/0) , és az internetre irányuló forgalomnál az infrastruktúra internetes átjáróját használja következő ugrásként.
 
-### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
+<a id="user-defined-routes" class="xliff"></a>
+
+### Felhasználó által megadott útvonalak
 A legtöbb környezetben csak az Azure által meghatározott rendszerútvonalakra van szükség. Lehetséges azonban, hogy létre kell hoznia egy útválasztási táblázatot, amelyhez bizonyos esetekben hozzá kell adnia egy vagy több útvonalat, ilyenek például:
 
 * Kényszerített bújtatás az internetre a helyszíni hálózaton keresztül.
@@ -95,7 +104,9 @@ A felhasználó által megadott útvonalak létrehozásával kapcsolatban tekint
 > 
 > 
 
-### <a name="bgp-routes"></a>BGP-útvonalak
+<a id="bgp-routes" class="xliff"></a>
+
+### BGP-útvonalak
 Ha a helyszíni hálózat és az Azure között ExpressRoute kapcsolat van, akkor engedélyezni lehet a BGP-t, hogy az útvonalakat a helyszíni hálózatból az Azure-ba terjessze. A BGP-útvonalakat minden Azure alhálózatban ugyanúgy kell használni, mint a rendszerútvonalakat és a felhasználó által megadott útvonalakat. További információ: [ExpressRoute Introduction](../expressroute/expressroute-introduction.md) (Az ExpressRoute bemutatása).
 
 > [!IMPORTANT]
@@ -103,12 +114,16 @@ Ha a helyszíni hálózat és az Azure között ExpressRoute kapcsolat van, akko
 > 
 > 
 
-## <a name="ip-forwarding"></a>IP-továbbítás
-A fent leírtak alapján a felhasználó által megadott útvonal létrehozásának egyik fő oka a forgalom virtuális készülékre történő továbbítása. A virtuális készülék nem más, mint egy virtuális gép, amelyen egy olyan alkalmazás fut, ami a hálózati forgalmat kezeli valamilyen módon, például tűzfallal vagy NAT-eszközzel.
+<a id="ip-forwarding" class="xliff"></a>
+
+## IP-továbbítás
+A fent leírtak szerint a felhasználó által megadott útvonal létrehozásának egyik fő oka a forgalom virtuális készülékre történő továbbítása. A virtuális készülék nem más, mint egy virtuális gép, amelyen egy olyan alkalmazás fut, ami a hálózati forgalmat kezeli valamilyen módon, például tűzfallal vagy NAT-eszközzel.
 
 A virtuális készüléknek képesnek kell lennie fogadni a nem neki címzett bejövő forgalmat. Ahhoz, hogy egy virtuális gép számára engedélyezze a más célhelyre irányított forgalom fogadását, először engedélyeznie kell a virtuális gép számára az IP-továbbítást. Ez egy Azure beállítás, nem a vendég operációs rendszer beállítása.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 * Ismerje meg, hogyan [hozhat létre útvonalakat a Resource Manager üzembe helyezési modellben](virtual-network-create-udr-arm-template.md), és hogyan rendelheti őket hozzá az alhálózatokhoz. 
 * Ismerje meg, hogyan [hozhat létre útvonalakat a klasszikus üzembe helyezési modellben](virtual-network-create-udr-classic-ps.md), és hogyan rendelheti őket hozzá az alhálózatokhoz.
 

@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/31/2017
-ms.author: jehollan; estfan; LADocs
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 6634f0ee88e68f2fcb09fd7534a88677e8efa029
-ms.lasthandoff: 04/03/2017
+ms.author: LADocs; jehollan; estfan
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 204bf123509729b60b55c306050cef54aa7fecc5
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/17/2017
 
 ---
 
-# <a name="create-your-first-logic-app-workflow-to-automate-processes-between-cloud-apps-and-cloud-services"></a>Az első logikai alkalmazás munkafolyamatának létrehozása folyamatok automatizálásához a felhőalapú alkalmazások és felhőszolgáltatások között
+<a id="create-your-first-logic-app-workflow-to-automate-processes-between-cloud-apps-and-cloud-services" class="xliff"></a>
+
+# Az első logikai alkalmazás munkafolyamatának létrehozása folyamatok automatizálásához a felhőalapú alkalmazások és felhőszolgáltatások között
 
 Könnyebben és gyorsabban automatizálhatja az üzleti folyamatokat kód megírása nélkül is, ha az [Azure Logic Apps](logic-apps-what-are-logic-apps.md) segítségével hoz létre és futtat munkafolyamatokat. Az első példa bemutatja, hogyan hozhat létre alapszintű logikaialkalmazás-munkafolyamatot, amely egy webhely RSS-hírcsatornájában keres új tartalmat. Ha új elemek jelennek meg a webhely hírcsatornájában, a logikai alkalmazás e-mailt küld az Outlook- vagy Gmail-fiókból.
 
@@ -39,9 +42,11 @@ A példához a következő elemek is szükségesek:
     > [!TIP]
     > Ha rendelkezik személyes [Microsoft-fiókkal](https://account.microsoft.com/account), akkor Outlook.com-fiókja van. Egyéb esetben, ha rendelkezik Azure munkahelyi vagy iskolai fiókkal, **Office 365 Outlook**-fiókja van.
 
-* Egy webhely RSS-hírcsatornájára mutató hivatkozás. Ez a példa az [MSDN Channel 9 webhely](https://channel9.msdn.com/) RSS-hírcsatornáját használja: `https://s.ch9.ms/Feeds/RSS`
+* Egy webhely RSS-hírcsatornájára mutató hivatkozás. Ez a példa a [CNN.com webhely legfontosabb híreit tartalmazó RSS-hírcsatornáját használja](http://rss.cnn.com/rss/cnn_topstories.rss): `http://rss.cnn.com/rss/cnn_topstories.rss`
 
-## <a name="add-a-trigger-that-starts-your-workflow"></a>Eseményindító hozzáadása a munkafolyamat indításához
+<a id="add-a-trigger-that-starts-your-workflow" class="xliff"></a>
+
+## Eseményindító hozzáadása a munkafolyamat indításához
 
 Az [*eseményindító*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) egy olyan esemény, amely elindítja a logikai alkalmazás munkafolyamatát, valamint az első elem, amelyre a logikai alkalmazásnak szüksége van.
 
@@ -74,7 +79,7 @@ Az [*eseményindító*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) 
      Módosíthatja a **Gyakoriság** és az **Időköz** értékeket is. 
      Ezek a beállítások határozzák meg, hogy a logikai alkalmazás milyen gyakran keres új elemeket és ad vissza minden megtalált elemet az adott időtartományon belül.
 
-     Ebben a példában minden nap ellenőrizni fogja az MSDN Channel 9 webhelyen közzétett új elemeket.
+     Ebben a példában minden nap ellenőrizni fogja a CNN webhelyén közzétett legfontosabb híreket.
 
      ![Eseményindító beállítása RSS-hírcsatornával, gyakorisággal és időközzel](media/logic-apps-create-a-logic-app/rss-trigger-setup.png)
 
@@ -85,7 +90,9 @@ Az [*eseményindító*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) 
    Mentéskor a rendszer élesíti a logikai alkalmazást, de az jelenleg csak a megadott RSS-hírcsatornában keres új elemeket. 
    A példa hasznosabbá tételéhez adjunk hozzá egy műveletet, amelyet a logikai alkalmazás az eseményindító aktiválása után hajt végre.
 
-## <a name="add-an-action-that-responds-to-your-trigger"></a>Az eseményindítóra válaszoló művelet hozzáadása
+<a id="add-an-action-that-responds-to-your-trigger" class="xliff"></a>
+
+## Az eseményindítóra válaszoló művelet hozzáadása
 
 A [*művelet*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) a logikai alkalmazás munkafolyamata által végrehajtott feladat. Miután hozzáadott egy eseményindítót a logikai alkalmazáshoz, hozzáadhat egy műveletet is, amely további műveleteket végez el az eseményindító által előállított adatokkal. A példában egy olyan műveletet adunk hozzá, amely e-mailt küld, ha új elem jelenik meg a webhely RSS-hírcsatornájában.
 
@@ -138,7 +145,9 @@ A [*művelet*](./logic-apps-what-are-logic-apps.md#logic-app-concepts) a logikai
 
 Gratulálunk, sikeresen beállította és futtatta az első logikai alkalmazását. Azt is megtanulta, milyen egyszerű a folyamatokat automatizáló munkafolyamat létrehozása, valamint a felhőalapú alkalmazások és felhőszolgáltatások integrálása – mindez kód nélkül.
 
-## <a name="manage-your-logic-app"></a>A logikai alkalmazás kezelése
+<a id="manage-your-logic-app" class="xliff"></a>
+
+## A logikai alkalmazás kezelése
 
 Az alkalmazás kezeléséhez olyan műveleteket hajthat végre, mint például az állapot ellenőrzése, a szerkesztés, az előzmények megtekintése, a kikapcsolás vagy a logikai alkalmazás törlése.
 
@@ -158,13 +167,17 @@ Az alkalmazás kezeléséhez olyan műveleteket hajthat végre, mint például a
    | Az alkalmazás ideiglenes kikapcsolása | Válassza az **Áttekintés** elemet, majd a parancssávon válassza a **Letiltás** lehetőséget. | 
    | Az alkalmazás törlése | Válassza az **Áttekintés** elemet, majd a parancssávon válassza a **Törlés** lehetőséget. Adja meg a logikai alkalmazás nevét, majd válassza a **Törlés** elemet. | 
 
-## <a name="get-help"></a>Segítségkérés
+<a id="get-help" class="xliff"></a>
+
+## Segítségkérés
 
 Látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps), ahol kérdéseket tehet fel és válaszolhat meg, valamint megtudhatja, mivel foglalkoznak az Azure Logic Apps más felhasználói.
 
 Ha szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, szavazzon az ötletekre az [Azure Logic Apps felhasználói visszajelzések oldalán](http://aka.ms/logicapps-wish), vagy küldje be saját javaslatait.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 *  [Feltételek hozzáadása és munkafolyamatok futtatása](../logic-apps/logic-apps-use-logic-app-features.md)
 *     [A logikai alkalmazások sablonjai](../logic-apps/logic-apps-use-logic-app-templates.md)

@@ -6,25 +6,31 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
+editor: gahug
 ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 05/12/2017
 ms.author: joflore
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: b4d2819f51506651ebeb5b7b7c2d016c0cfc154d
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 663041285f7b64a8f38ace91bcb3673f46c1218a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
-# <a name="quick-start-azure-ad-self-service-password-reset"></a>Gyors üzembe helyezés: Azure AD önkiszolgáló jelszó-visszaállítás
+<a id="quick-start-azure-ad-self-service-password-reset" class="xliff"></a>
 
-## <a name="rapidly-deploy-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás gyors üzembe helyezése
+# Gyors üzembe helyezés: Azure AD önkiszolgáló jelszó-visszaállítás
+
+<a id="rapidly-deploy-self-service-password-reset" class="xliff"></a>
+
+## Az önkiszolgáló jelszó-visszaállítás gyors üzembe helyezése
 
 Az önkiszolgáló jelszó-visszaállítás (SSPR) egyszerű módot kínál a rendszergazdáknak arra, hogy felhatalmazzák a felhasználókat jelszavuk és fiókjuk visszaállítására vagy zárolásának feloldására. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhasználatáról, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
 
@@ -63,19 +69,25 @@ Ez a tájékoztató feltételezi, hogy már rendelkezik egy Azure AD-bérlő ér
 > [!NOTE]
 > Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai típusú fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról a [jelszóházirendről szóló cikkünkben](active-directory-passwords-policy.md#administrator-password-policy-differences) talál további információt.
 
-## <a name="configure-synchronization-to-existing-identity-source"></a>Szinkronizálás konfigurálása létező identitásforráshoz
+<a id="configure-synchronization-to-existing-identity-source" class="xliff"></a>
+
+## Szinkronizálás konfigurálása létező identitásforráshoz
 
 Annak engedélyezéséhez, hogy a helyszíni identitás szinkronizálhasson az Azure AD-val, telepítenie és konfigurálnia kell az [Azure AD Connect](./connect/active-directory-aadconnect.md) programot szervezete egyik kiszolgálójára. Ez az alkalmazás kezeli a felhasználók és csoportok szinkronizálását a létező identitásforrásról az Azure AD-tartományba.
 
-[Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](./connect/active-directory-aadconnect-get-started-express.md)
+* [Frissítés DirSyncről vagy Azure AD Syncről Azure AD Connectre](./connect/active-directory-aadconnect-dirsync-deprecated.md)
+* [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](./connect/active-directory-aadconnect-get-started-express.md)
+* [Jelszóvisszaíró konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához.
 
-[Frissítés DirSyncről vagy Azure AD Syncről Azure AD Connectre](./connect/active-directory-aadconnect-dirsync-deprecated.md)
+<a id="disabling-self-service-password-reset" class="xliff"></a>
 
-## <a name="disabling-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás letiltása
+## Önkiszolgáló jelszóátállítás letiltása
 
 Az önkiszolgáló jelszó-visszaállítás letiltása egyszerű: nyissa meg Azure AD-bérlőjét, keresse meg az **Új jelszó létrehozása** elemet, válassza a **Tulajdonságok** parancsot, majd válassza a **Senki** lehetőséget az **„Önkiszolgáló jelszóátállítás engedélyezve”** alatt
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
 
 * [**Licencelés**](active-directory-passwords-licensing.md) – Az Azure AD licencelésének konfigurálása.

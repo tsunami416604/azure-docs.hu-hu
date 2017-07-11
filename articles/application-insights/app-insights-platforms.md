@@ -14,27 +14,37 @@ ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: b78c574e9edf6ce28e8deb80d264858d480f5861
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 7f9b886259c065627055f62a3636ab65434ca57b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
-# <a name="developer-analytics-languages-platforms-and-integrations"></a>Fejlesztői elemzések: nyelvek, platformok és integrációk
+<a id="developer-analytics-languages-platforms-and-integrations" class="xliff"></a>
+
+# Fejlesztői elemzések: nyelvek, platformok és integrációk
 Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósításai, amelyekről hallottunk, beleértve néhány harmadik fél által létrehozottat.
 
-## <a name="languages"></a>Nyelvek
+<a id="languages---officially-supported-by-application-insights-team" class="xliff"></a>
+
+## Az Application Insights csapata által hivatalosan támogatott nyelvek
 * [C#|VB (.NET)](app-insights-asp-net.md)
 * [Java](app-insights-java-get-started.md)
 * [JavaScript-weblapok](app-insights-javascript.md)
-* [Objective-C](https://github.com/Microsoft/ApplicationInsights-iOS)
+
+<a id="languages---community-supported" class="xliff"></a>
+
+## Közösség által támogatott nyelvek
+* [Node.JS](https://github.com/Microsoft/ApplicationInsights-node.js)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
 * [Bármi más](#projects)
 
-## <a name="platforms-and-frameworks"></a>Platformok és keretrendszerek
+<a id="platforms-and-frameworks" class="xliff"></a>
+
+## Platformok és keretrendszerek
 * [Angular](https://www.npmjs.com/package/angular-applicationinsights)
 * [ASP.NET](app-insights-asp-net.md)
 * [ASP.NET – már élő alkalmazásokhoz](app-insights-monitor-performance-live-website-now.md)
@@ -59,7 +69,9 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [Asztali Windows-alkalmazások, szolgáltatások és feldolgozói szerepkörök](app-insights-windows-desktop.md)
 * [Bármi más](#projects)
 
-## <a name="logging-frameworks"></a>Naplózási keretrendszerek
+<a id="logging-frameworks" class="xliff"></a>
+
+## Naplózási keretrendszerek
 * [Log4Net, NLog, vagy System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 * [Java, Log4J, vagy Logback](app-insights-java-trace-logs.md)
 * [Szemantikus naplózás (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) – integrálható a [szemantikus naplózási alkalmazásblokkal](https://msdn.microsoft.com/library/dn440729.aspx)
@@ -68,7 +80,9 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [OMS Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 * [Logary](https://www.nuget.org/packages/Logary.Targets.AppInsights/)
 
-## <a name="content-management-systems"></a>Tartalomkezelő rendszerek
+<a id="content-management-systems" class="xliff"></a>
+
+## Tartalomkezelő rendszerek
 * [Concrete](https://github.com/fidmor89/appInsights-Concrete)
 * [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
 * [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
@@ -76,7 +90,9 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [SharePoint](app-insights-sharepoint.md)
 * [WordPress](https://wordpress.org/plugins/application-insights/)
 
-## <a name="export-and-data-analysis"></a>Exportálás és adatelemzés
+<a id="export-and-data-analysis" class="xliff"></a>
+
+## Exportálás és adatelemzés
 * [Alooma](https://www.alooma.com/blog/application-insights-amazon-redshift)
 * [Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Stream Analytics](app-insights-export-power-bi.md)

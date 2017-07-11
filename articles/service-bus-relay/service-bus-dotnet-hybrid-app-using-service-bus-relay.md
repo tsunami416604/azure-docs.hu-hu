@@ -12,17 +12,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 02/16/2017
+ms.date: 06/14/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: ed1db5521a17988d7936c53afcfe565cc7ba1a38
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 366922a083b9d18ef50e04eb8b459d2725315e1e
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/16/2017
 
 
 ---
-# <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure WCF Relay használatával
-## <a name="introduction"></a>Introduction (Bevezetés)
+<a id="net-on-premisescloud-hybrid-application-using-azure-wcf-relay" class="xliff"></a>
+
+# Helyszíni/felhőbeli .NET-hibridalkalmazás az Azure WCF Relay használatával
+<a id="introduction" class="xliff"></a>
+
+## Introduction (Bevezetés)
+
 Ez a cikk azt mutatja be, hogyan készíthet felhőbeli hibridalkalmazást a Microsoft Azure és a Visual Studio használatával. Az oktatóanyagban feltételezzük, hogy nincs korábbi tapasztalata az Azure használatával kapcsolatban. 30 percen belül olyan alkalmazással rendelkezhet, amely több, a felhőben működő Azure-erőforrást is használ.
 
 Az oktatóanyagban érintett témák köre:
@@ -32,51 +38,65 @@ Az oktatóanyagban érintett témák köre:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Hogyan segít az Azure Relay a hibrid megoldások terén?
+<a id="how-azure-relay-helps-with-hybrid-solutions" class="xliff"></a>
+
+## Hogyan segít az Azure Relay a hibrid megoldások terén?
+
 Az üzleti megoldások általában egyéni kódok kombinációjából állnak, amelyeket az új és egyedi üzleti követelmények és már meglévő megoldások és rendszerek által szolgáltatott létező funkciók kezeléséhez írtak.
 
 A megoldások tervezői elkezdték a felhőt használni a méretezési követelmények egyszerűbb kezelése és az alacsonyabb működési költségek érdekében. Mindeközben azt vették észre, hogy a megoldásaik építőelemeként használni kívánt meglévő szolgáltatási eszközök a vállalati tűzfalon belül vannak, és a felhőalapú megoldással nehéz elérni ezeket. Számos belső szolgáltatás nem úgy van felépítve vagy tárolva, hogy könnyen elérhető legyen vállalati hálózat peremén.
 
 Az [Azure Relay](https://azure.microsoft.com/services/service-bus/) azon használati esethez lett tervezve, amelynek során a meglévő Windows Communication Foundation- (WCF-) webszolgáltatásokat biztonságosan elérhetik a szervezeti hálózaton kívüli megoldások anélkül, hogy zavaró módosításokat kellene végezni a vállalati hálózat infrastruktúráján. Ezek a Relay-szolgáltatások továbbra is a meglévő környezeten belül vannak tárolva, de átadják a bejövő munkamenetek és a kérések figyelését a felhőn tárolt Relay-szolgáltatásnak. Az Azure Relay ezeket a szolgáltatásokat [közös hozzáférésű jogosultságkód- (SAS-)](../service-bus-messaging/service-bus-sas.md) hitelesítéssel a jogosulatlan hozzáféréssel szemben is védi.
 
-## <a name="solution-scenario"></a>A megoldás forgatókönyve
+<a id="solution-scenario" class="xliff"></a>
+
+## A megoldás forgatókönyve
 Az oktatóanyag során létrehoz egy ASP.NET-webhelyet, amelyen láthatja a termékleltár oldalán a termékek listáját.
 
 ![][0]
 
 Az oktatóanyag feltételezi, hogy egy meglévő helyi rendszeren elérhetők a termékek adatai, és hogy az Azure Relay közvetítőn keresztül éri el ezt a rendszert. Ezt egy olyan webszolgáltatás szimulálja, amely egyszerű konzolalkalmazásként fut, és a termékek memóriában szereplő készletére épül. Ezt a konzolalkalmazást a saját számítógépén futtathatja, és a webes szerepkört az Azure-ban telepítheti. Így láthatja, hogy az Azure adatközpontjában futó webes szerepkör valójában a számítógéphez intéz hívást, bár a számítógép szinte biztosan legalább egy tűzfal és egy hálózati címfordítási (NAT-) réteg mögött található.
 
-A következő képernyőkép az elkészült webalkalmazás kezdőlapját mutatja.
+<a id="set-up-the-development-environment" class="xliff"></a>
 
-![][1]
+## A fejlesztési környezet kialakítása
 
-## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 Az Azure-alkalmazások fejlesztésének megkezdése előtt töltse le az eszközöket és állítsa be a fejlesztési környezetet:
 
 1. Telepítse az Azure SDK for .NET-et az SDK [letöltési oldaláról](https://azure.microsoft.com/downloads/).
-2. A **.NET** oszlopban kattintson a használt [Visual Studio](http://www.visualstudio.com)-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015 verzión alapulnak.
+2. A **.NET** oszlopban kattintson a használt [Visual Studio](http://www.visualstudio.com)-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015-öt használják, de ezek a Visual Studio 2017-ben is működnek.
 3. A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
 4. A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
 5. A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban.
 
-## <a name="create-a-namespace"></a>Névtér létrehozása
+<a id="create-a-namespace" class="xliff"></a>
+
+## Névtér létrehozása
+
 A Relay-funkciók Azure-ban való használatához először létre kell hoznia egy szolgáltatásnévteret. A névtér egy hatókörkezelési tárolót biztosít az Azure erőforrásainak címzéséhez az alkalmazáson belül. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
 
-## <a name="create-an-on-premises-server"></a>Helyszíni kiszolgáló létrehozása
+<a id="create-an-on-premises-server" class="xliff"></a>
+
+## Helyszíni kiszolgáló létrehozása
+
 Először létrehoz egy (utánzatként funkcionáló) helyszíni termékkatalógus-rendszert. Ez egészen egyszerű lesz. Erre úgy tekinthet, mint ami egy tényleges helyszíni termékkatalógus-rendszert képvisel, integrálni próbált teljes szolgáltatási felülettel.
 
 Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGet-csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) használja a Service Bus-kódtárak és konfigurációs beállítások belefoglalása érdekében.
 
-### <a name="create-the-project"></a>A projekt létrehozása
+<a id="create-the-project" class="xliff"></a>
+
+### A projekt létrehozása
+
 1. Rendszergazdai jogosultságokkal indítsa el a Microsoft Visual Studiót. Ehhez kattintson a jobb gombbal a Visual Studio programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra.
 2. A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
-3. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Console Application** (Konzolalkalmazás) elemre. A **Name** (Név) mezőbe írja be a **ProductsServer** nevet:
+3. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer)) elemre. A **Name** (Név) mezőbe írja be a **ProductsServer** nevet:
 
    ![][11]
 4. A **ProductsServer** projekt létrehozásához kattintson az **OK** gombra.
 5. Ha már telepítette a NuGet-csomagkezelőt a Visual Studióhoz, hagyja ki a következő lépést. Ellenkező esetben látogasson el a [NuGet][NuGet] oldalára, és kattintson az [Install NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) (NuGet telepítése) parancsra. Kövesse a NuGet-csomagkezelő telepítésének utasításait, majd indítsa újra a Visual Studiót.
 6. A Megoldáskezelőben kattintson a jobb gombbal a **ProductsServer** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
-7. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
+7. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus`. Válassza a **WindowsAzure.ServiceBus** csomagot.
+8. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
 
    ![][13]
 
@@ -207,32 +227,40 @@ Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGe
     ```
 14. Nyomja le a **Ctrl+Shift+B** billentyűkombinációt, vagy a **Build** (Fordítás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre, és ellenőrizze az eddigi munkája pontosságát.
 
-## <a name="create-an-aspnet-application"></a>ASP.NET-alkalmazás létrehozása
+<a id="create-an-aspnet-application" class="xliff"></a>
+
+## ASP.NET-alkalmazás létrehozása
+
 Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely megjeleníti a termékszolgáltatásból lekért adatokat.
 
-### <a name="create-the-project"></a>A projekt létrehozása
+<a id="create-the-project" class="xliff"></a>
+
+### A projekt létrehozása
+
 1. Ellenőrizze, hogy a Visual Studio rendszergazdai jogosultságokkal fut-e.
 2. A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
-3. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson az **ASP.NET Web Application** (ASP.NET-webalkalmazás) elemre. Adja a projektnek a **ProductsPortal** nevet. Ezután kattintson az **OK** gombra.
+3. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson az **ASP.NET Web Application (.NET Framework)** (ASP.NET-webalkalmazás (.NET keretrendszer)) elemre. Adja a projektnek a **ProductsPortal** nevet. Ezután kattintson az **OK** gombra.
 
    ![][15]
-4. A **Select a template** (Sablon kiválasztása) listában kattintson az **MVC** elemre.
-5. Jelölje be a **Host in the cloud** (Üzemeltetés a felhőben) lehetőséget.
+
+4. A **New ASP.NET Web Application** (Új ASP.NET-es webalkalmazás) párbeszédpanel **ASP.NET sablonok** listájában kattintson az **MVC** lehetőségre.
 
    ![][16]
-6. Kattintson a **Change Authentication** (Hitelesítés módosítása) gombra. A **Change Authentication** (Hitelesítés módosítása) párbeszédpanelen kattintson a **No Authentication** (Nincs hitelesítés) elemre, majd az **OK** gombra. Ebben az oktatóanyaghoz egy olyan alkalmazást hoz létre, amelyhez nincs szükség felhasználói bejelentkezésre.
+
+6. Kattintson a **Change Authentication** (Hitelesítés módosítása) gombra. Győződjön meg róla, hogy a **No Authentication** (Nincs hitelesítés) elem van kiválasztva a **Change Authentication** (Hitelesítés módosítása) párbeszédpanelen, majd kattintson az **OK** gombra. Ebben az oktatóanyaghoz egy olyan alkalmazást helyezhet üzembe, amelyhez nincs szükség felhasználói bejelentkezésre.
 
     ![][18]
-7. A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanel **Microsoft Azure** szakaszában győződjön meg arról hogy a **Host in the cloud** (Üzemeltetés a felhőben) lehetőség be van jelölve, és a legördülő listából ki van választva az **App Service** lehetőség.
 
-   ![][19]
-8. Kattintson az **OK** gombra.
-9. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse a [webalkalmazás létrehozását](../app-service-web/app-service-web-get-started-dotnet.md) és az [Azure-erőforrások létrehozását](../app-service-web/app-service-web-get-started-dotnet.md) ismertető szakasz lépéseit. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
+7. A **New ASP.NET Web Application** (Új ASP.NET-webalkalmazás) párbeszédpanelen kattintson az **OK** gombra az MVC-alkalmazás létrehozásához.
+8. Most az Azure-erőforrásokat kell konfigurálnia az új webalkalmazáshoz. Kövesse a [cikk Közzététel az Azure platformon szakaszában](../app-service-web/app-service-web-get-started-dotnet.md) található lépéseket. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
 10. A Megoldáskezelőben kattintson a jobb gombbal a **Models** (Modellek) elemre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) elemre. A **Name** (Név) mezőbe írja be a **Product.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
     ![][17]
 
-### <a name="modify-the-web-application"></a>A webalkalmazás módosítása
+<a id="modify-the-web-application" class="xliff"></a>
+
+### A webalkalmazás módosítása
+
 1. A Visual Studióban a Product.cs fájlban cserélje le a meglévő névtér-definíciót az alábbi kódra.
 
    ```csharp
@@ -274,8 +302,8 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
 6. Távolítsa el a **Home** (Kezdőlap), **About** (Névjegy) és **Contact** (Kapcsolatfelvétel) hivatkozásokat. A következő példában törölje a kiemelt kódot.
 
     ![][41]
-7. A Megoldáskezelőben bontsa ki a Views\Home (Nézetek\Kezdőlap) mappát, majd kattintson duplán az **Index.cshtml** fájlra, hogy megnyissa a Visual Studio szerkesztőjében.
-   Cserélje le a fájl teljes tartalmát a következő kódra.
+
+7. A Megoldáskezelőben bontsa ki a Views\Home (Nézetek\Kezdőlap) mappát, majd kattintson duplán az **Index.cshtml** fájlra, hogy megnyissa a Visual Studio szerkesztőjében. Cserélje le a fájl teljes tartalmát a következő kódra.
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -312,25 +340,32 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást fog létrehozni, amely meg
    ```
 8. Az eddigi munkája pontosságának ellenőrzéséhez lenyomhatja a **Ctrl+Shift+B** billentyűkombinációt a projekt létrehozásához.
 
-### <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
+<a id="run-the-app-locally" class="xliff"></a>
+
+### Az alkalmazás futtatása helyben
+
 Futtassa az alkalmazást a működése ellenőrzéséhez.
 
 1. Győződjön meg arról, hogy a **ProductsPortal** az aktív projekt. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd válassza a **Set As Startup Project** (Beállítás indítási projektként) lehetőséget.
-2. Nyomja le az F5 billentyűt a Visual Studióban.
+2. Nyomja le az **F5** billentyűt a Visual Studióban.
 3. Az alkalmazásának meg kell jelennie egy böngészőben.
 
    ![][21]
 
-## <a name="put-the-pieces-together"></a>Az egyes alkotórészek összeállítása teljes egésszé
+<a id="put-the-pieces-together" class="xliff"></a>
+
+## Az egyes alkotórészek összeállítása teljes egésszé
+
 A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalmazáshoz csatlakoztassuk.
 
 1. Ha még nincs megnyitva, a Visual Studióban nyissa meg ismét az [ASP.NET-alkalmazás létrehozása](#create-an-aspnet-application) című szakaszban létrehozott **ProductsPortal** projektet.
 2. A „Helyszíni kiszolgáló létrehozása” című szakaszhoz hasonlóan adja a NuGet-csomagot a projekt referenciáihoz. A Megoldáskezelőben kattintson a jobb gombbal a **ProductsPortal** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőségre.
-3. Keressen a „Service Bus” kifejezésre, és válassza ki az **Microsoft Azure Service Bus** elemet. Ezután fejezze be a telepítést, és zárja be a párbeszédpanelt.
+3. Keressen a „Service Bus” kifejezésre, és válassza ki az **WindowsAzure.ServiceBus** elemet. Ezután fejezze be a telepítést, és zárja be a párbeszédpanelt.
 4. A Megoldáskezelőben kattintson a jobb gombbal a **ProductsPortal** projektre, majd kattintson az **Add** (Hozzáadás), azután pedig az**Existing Item** (Létező elem) lehetőségre.
 5. Keresse meg a **ProductsContract.cs** fájlt a **ProductsServer** konzolprojektben. Kattintással jelölje ki a ProductsContract.cs fájlt. Kattintson a lefelé mutató nyílra az **Add** (Hozzáadás) elem mellett, majd kattintson az **Add as Link** (Hozzáadás hivatkozásként) parancsra.
 
    ![][24]
+
 6. Ezután nyissa meg a **HomeController.cs** fájlt a Visual Studio szerkesztőjében, és a névtér definícióját cserélje az alábbi kódra. Győződjön meg arról, hogy a *yourServiceNamespace* helyett a saját szolgáltatásnévterét adja meg, és a *yourKey* helyett pedig a saját SAS-kulcsát. Így teheti lehetővé, hogy az ügyfél helyszíni szolgáltatásokat hívjon meg, és vissza tudja adni a hívás eredményeit.
 
    ```csharp
@@ -378,14 +413,19 @@ A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalma
 10. A bal oldalon kattintson a **Startup Project** (Kezdőprojekt) elemre. A jobb oldalon kattintson a **Multiple startup projects** (Több kezdőprojekt elemre). Győződjön meg arról, hogy a **ProductsServer** és a **ProductsPortal** is megjelenik (ebben a sorrendben), és mindkettőhöz a **Start** (Indítás) művelet legyen beállítva.
 
       ![][25]
+
 11. Még mindig a **Properties** (Tulajdonságok) párbeszédpanelen maradva kattintson a **Project Dependencies** (Projektfüggőségek) elemre a bal oldalon.
-12. A **Projects** (Projektek) listában kattintson a **ProductsServer** elemre. Győződjön meg arról, hogy a **ProductsPortal** **nincs** kijelölve.
+12. A **Projects** (Projektek) listában kattintson a **ProductsServer** elemre. Győződjön meg arról, hogy a **ProductsPortal** nincs kijelölve.
 13. A **Projects** (Projektek) listában kattintson a **ProductsPortal** elemre. Győződjön meg arról, hogy a **ProductsServer** ki van jelölve.
 
     ![][26]
+
 14. A **Property Pages** (Tulajdonságlapok) párbeszédpanelen kattintson az **OK** gombra.
 
-## <a name="run-the-project-locally"></a>A projekt helyi futtatása
+<a id="run-the-project-locally" class="xliff"></a>
+
+## A projekt helyi futtatása
+
 Az alkalmazás helyi teszteléséhez nyomja le az **F5** billentyűt a Visual Studióban. Először a helyszíni kiszolgálónak (**ProductsServer**) kell elindulnia, és ezt követően kell megnyílnia a **ProductsPortal** alkalmazásnak egy böngészőablakban. Ezúttal a termék helyszíni rendszeréből származó adatokat fog látni a termékleltárban.
 
 ![][10]
@@ -394,30 +434,44 @@ A **ProductsPortal** oldalon kattintson a **Frissítés** parancsra. Valahánysz
 
 Zárja be mindkét alkalmazást, mielőtt a következő lépéssel folytatná.
 
-## <a name="deploy-the-productsportal-project-to-an-azure-web-app"></a>A ProductsPortal projekt telepítése egy Azure-webalkalmazásba
-A következő lépés a **ProductsPortal** előtérkiszolgáló Azure-webalkalmazássá történő átalakítása. Először is telepítse a **ProductsPortal** projektet [a webes projekt az Azure-ba történő telepítését](../app-service-web/app-service-web-get-started-dotnet.md) ismertető szakaszban leírtak szerint. A telepítés befejezése után térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
+<a id="deploy-the-productsportal-project-to-an-azure-web-app" class="xliff"></a>
 
-> [!NOTE]
-> Előfordulhat, hogy egy hibaüzenet jelenik meg a böngészőablakban, amikor a **ProductsPortal** webprojekt automatikusan elindul a telepítés után. Emiatt nem kell aggódnia, ugyanis az okozza, hogy a **ProductsServer** alkalmazás még nem fut.
+## A ProductsPortal projekt telepítése egy Azure-webalkalmazásba
+
+A következő lépés az Azure-webalkalmazás **ProductsPortal** előtérkiszolgálójának újbóli közzététele. Tegye a következőket:
+
+1. A Megoldáskezelőben kattintson a jobb gombbal a **ProductsPortal** projektre, majd kattintson a **Publish** (Közzététel) lehetőségre. Majd a **Publish** (Közzététel) oldalon kattintson a **Publish** (Közzététel) elemre.
+
+  > [!NOTE]
+  > Előfordulhat, hogy egy hibaüzenet jelenik meg a böngészőablakban, amikor a **ProductsPortal** webprojekt automatikusan elindul a telepítés után. Emiatt nem kell aggódnia, ugyanis az okozza, hogy a **ProductsServer** alkalmazás még nem fut.
 >
 >
 
-Másolja ki a telepített webalkalmazás URL-címét, mert szükség lesz rá a következő lépésben. Az URL-cím a Visual Studio Azure App Service-tevékenység ablakában is elérhető:
+2. Másolja ki a telepített webalkalmazás URL-címét, mert szükség lesz rá a következő lépésben. Az URL-cím a Visual Studio Azure App Service-tevékenység ablakában is elérhető:
 
-![][9]
+  ![][9]
 
-### <a name="set-productsportal-as-web-app"></a>A ProductsPortal beállítása webalkalmazásként
+3. Zárja be a böngészőablakot a futó alkalmazás leállításához.
+
+<a id="set-productsportal-as-web-app" class="xliff"></a>
+
+### A ProductsPortal beállítása webalkalmazásként
+
 Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a **ProductsPortal** webalkalmazásként indult el a Visual Studióban.
 
-1. A Visual Studióban kattintson a jobb gombbal a **ProjectsPortal** projektre, majd kattintson a **Properties** (Tulajdonságok) lehetőségre.
+1. A Visual Studióban kattintson a jobb gombbal a **ProductsPortal** projektre, majd kattintson a **Properties** (Tulajdonságok) lehetőségre.
 2. A bal oldali oszlopban kattintson a **Web** elemre.
 3. A **Start Action** (Művelet indítása) részen kattintson az **Start URL** (URL-cím indítása) gombra, majd írja be a szövegmezőbe a korábban telepített webalkalmazás URL-címét (például: `http://productsportal1234567890.azurewebsites.net/`).
 
     ![][27]
+
 4. A Visual Studio **File** (Fájl) menüjében kattintson az **Save All** (Összes mentése) parancsra.
 5. A Visual Studio Build (Fordítás) menüjében kattintson a **Rebuild Solution** (Megoldás újrafordítása) parancsra.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+<a id="run-the-application" class="xliff"></a>
+
+## Az alkalmazás futtatása
+
 1. Nyomja le az F5 billentyűt az alkalmazás fordításához és futtatásához. Először a helyszíni kiszolgálónak (**ProductsServer** konzolalkalmazás) kell elindulnia, ezt követően indul el a **ProductsPortal** alkalmazás a böngészőablakban a képernyőképen is látható módon. Figyelje meg, hogy a termék helyszíni rendszeréből származó adatokat láthat a termékleltárban, és ezek az adatok a webalkalmazásban jelennek meg. Ellenőrizze az URL-címet, és győződjön meg arról, hogy a **ProductsPortal** Azure-webalkalmazás fut a felhőben.
 
    ![][1]
@@ -432,7 +486,10 @@ Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a 
 
     ![][38]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
+
 A Azure Relay szolgáltatásól a következő forrásanyagokban találhat további információkat:  
 
 * [Mi az az Azure Relay?](relay-what-is-it.md)  
@@ -448,7 +505,6 @@ A Azure Relay szolgáltatásól a következő forrásanyagokban találhat továb
 [16]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-4.png
 [17]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-7.png
 [18]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-5.png
-[19]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-6.png
 [9]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-9.png
 [10]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App3.png
 

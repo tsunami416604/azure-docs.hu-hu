@@ -16,14 +16,16 @@ ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 143d48b9fc551ade0d0fd043cdb0cf1f3340a9af
+ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
+ms.openlocfilehash: e975c6d8f217bc73948c0c046204b16b1a742bc7
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/20/2017
 
 ---
 
-# <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Adathozzáférés biztosítása egy Time Series Insights-környezethez az Azure Portal segítségével
+<a id="grant-data-access-to-a-time-series-insights-environment-using-azure-portal" class="xliff"></a>
+
+# Adathozzáférés biztosítása egy Time Series Insights-környezethez az Azure Portal segítségével
 
 A Time Series Insights-környezetek két különböző típusú hozzáférési házirenddel rendelkeznek:
 
@@ -36,11 +38,13 @@ A felügyeleti hozzáférési házirendek a környezet konfigurálásához kapcs
 *    A környezet létrehozása vagy törlése, eseményforrások, referencia-adatkészletek; valamint
 *    Az adathozzáférési házirendek felügyelete.
 
-Az adathozzáférési házirendek a következőkhöz biztosítanak engedélyeket: adatlekérdezések kiadása, referenciaadatok módosítása a környezetben, valamint a környezethez társított mentett megosztott lekérdezések és perspektívák.
+Az adathozzáférési házirendek a következőkhöz biztosítanak engedélyeket: adatlekérdezések kiadása, referenciaadatok módosítása a környezetben, valamint a környezethez társított mentett lekérdezések és perspektívák megosztása.
 
 A házirendek két típusa lehetővé teszi a környezet felügyeletéhez történő hozzáférés és a környezetben található adatokhoz való hozzáférés teljes mértékű szétválasztását. Például beállítható egy olyan környezet, amely esetében a környezet tulajdonosa/létrehozója el van távolítva az adathozzáférésből. Emellett megadható, hogy azok a felhasználók és szolgáltatások, amelyek olvashatják a környezet adatait, ne kapjanak hozzáférést a környezet konfigurációjához.
 
-## <a name="grant-data-access"></a>Adathozzáférés biztosítása
+<a id="grant-data-access" class="xliff"></a>
+
+## Adathozzáférés biztosítása
 A következő lépések bemutatják, hogyan biztosítható adathozzáférés egy felhasználó rendszerbiztonsági tag számára:
 
 1.    Jelentkezzen be az [Azure Portal](https://portal.azure.com).
@@ -70,7 +74,9 @@ A következő lépések bemutatják, hogyan biztosítható adathozzáférés egy
 
   ![A Time Series Insights-forrás felügyelete – eredmények](media/data-access/getstarted-grant-data-access5.png)
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 * [Eseményforrás létrehozása](time-series-insights-add-event-source.md)
 * [Események küldése](time-series-insights-send-events.md) az eseményforrásnak

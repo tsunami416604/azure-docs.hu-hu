@@ -1,12 +1,16 @@
 Kétféle tárfióktípus létezik:
 
-### <a name="generalpurpose-storage-accounts"></a>Általános célú tárfiókok
+<a id="general-purpose-storage-accounts" class="xliff"></a>
+
+### Általános célú tárfiókok
 Egy általános célú tárfiók olyan Azure Storage-szolgáltatásokhoz biztosít hozzáférést egyetlen fiókban, mint a Tables, a Queues, a Files, a Blobs és az Azure virtuális gép lemezei. Ez a tárfióktípus két teljesítményszinttel rendelkezik:
 
 * Egy standard tárolási teljesítményszinttel, amely a táblák, üzenetsorok, fájlok, blobok és Azure virtuálisgép-lemezek tárolását teszi lehetővé.
 * Egy prémium szintű Storage teljesítményszinttel, amely jelenleg csak az Azure virtuális gépek lemezeit támogatja. A Premium Storage részletesebb áttekintéséért lásd: [Premium Storage: High-performance Storage for Azure Virtual Machine Workloads](../articles/storage/storage-premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
 
-### <a name="blob-storage-accounts"></a>Blob Storage-fiókok
+<a id="blob-storage-accounts" class="xliff"></a>
+
+### Blob Storage-fiókok
 A Blob Storage-fiók egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok hasonlóak a meglévő általános célú tárfiókjaihoz, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát.
 
 > [!NOTE]
@@ -25,10 +29,5 @@ Blob Storage-fiókok további részletei: [Azure Blob Storage: Cool and Hot tier
 
 Ahhoz, hogy létrehozhasson egy tárfiókot, Azure-előfizetéssel kell rendelkeznie. Ez a csomag számos különböző Azure-szolgáltatáshoz biztosít hozzáférést. Az Azure használatát egy [ingyenes fiók](https://azure.microsoft.com/pricing/free-trial/) létrehozásával is elkezdheti. Ha úgy dönt, hogy szeretne előfizetési csomagot vásárolni, több [vásárlási lehetőség](https://azure.microsoft.com/pricing/purchase-options/) közül választhat. Ha Ön [MSDN-előfizető](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), ingyenes havi krediteket kap, amelyeket olyan Azure-szolgáltatásokhoz használhat, mint az Azure Storage. A mennyiségi díjszabásról lásd: [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-A tárfiók létrehozásával kapcsolatos részleteket lásd: [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása). Akár 100 egyedi névvel ellátott tárfiókot is létrehozhat egyetlen előfizetéssel. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménykorlátai).
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+A tárfiók létrehozásával kapcsolatos részleteket lásd: [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása). Akár 200 egyedi névvel ellátott tárfiókot is létrehozhat egyetlen előfizetéssel. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménykorlátai).
 
