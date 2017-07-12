@@ -19,7 +19,9 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/23/2017
 
 ---
-#<a name="service-fabric-documentation"></a>Service Fabric-dokumentáció
+<a id="service-fabric-documentation" class="xliff"></a>
+
+#Service Fabric-dokumentáció
 
 Ismerje meg, hogy a Service Fabric hogyan használható a skálázható és megbízható mikroszolgáltatások csomagolására, üzembe helyezésére és kezelésére. Oktatóanyagok, API-referenciák és kódminták mutatják meg, hogy hogyan használja ezt az elosztott rendszerplatformot a felhőléptékű alkalmazások felépítésére és kezelésére.
 

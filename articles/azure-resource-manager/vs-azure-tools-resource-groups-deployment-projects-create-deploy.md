@@ -12,16 +12,18 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/10/2017
+ms.date: 07/10/2017
 ms.author: tomfitz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 14fbfbc5abd6d95744832d9b39e377bbffe652ac
+ms.contentlocale: hu-hu
 ms.lasthandoff: 03/14/2017
 
-
 ---
-# <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
+<a id="creating-and-deploying-azure-resource-groups-through-visual-studio" class="xliff"></a>
+
+# Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 A Visual Studio és az [Azure SDK](https://azure.microsoft.com/downloads/) alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerbe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. Azt is megteheti, hogy meghatározza a virtuális gépet, a virtuális hálózatot és a tárfiókot, majd telepíti az infrastruktúrát a virtuális gépen végrehajtott parancsfájllal együtt. Az **Azure erőforráscsoport** telepítési projektje lehetővé teszi, hogy az összes szükséges erőforrást egyetlen, megismételhető műveletben telepítse. Az erőforrások telepítésével és kezelésével kapcsolatos további információkért lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md).
 
 Az Azure-erőforráscsoport-projektek az Azure Resource Managerből származó JSON-sablonokat tartalmaznak, amelyek az Azure-ba telepítendő erőforrásokat határozzák meg. A Resource Manager-sablon elemeivel kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md). A Visual Studio lehetővé teszi a sablonok szerkesztését, valamint eszközeivel egyszerűbbé teszi a sablonokkal való munkát.
@@ -30,7 +32,9 @@ Ebben a cikkben egy webapp és egy SQL Database üzembe helyezésének módját 
 
 Ez a cikk a Visual Studio 2017 szoftvert mutatja be. Amennyiben a Visual Studio 2015 2. frissítését és a Microsoft Azure SDK for .NET 2.9-et használja vagy a Visual Studio 2013-as verzióját Azure SDK 2.9-cel, a tapasztalt működés nagyjából azonos lesz. Használhatja az Azure SDK 2.6-os vagy újabb verzióját is, azonban ebben az esetben a felhasználói felület eltérhet a cikkben leírtaktól. Az [Azure SDK](https://azure.microsoft.com/downloads/) legújabb verziójának telepítése erősen ajánlott a lépések megkezdése előtt. 
 
-## <a name="create-azure-resource-group-project"></a>Azure erőforráscsoport-projekt létrehozása
+<a id="create-azure-resource-group-project" class="xliff"></a>
+
+## Azure erőforráscsoport-projekt létrehozása
 Ebben az eljárásban egy Azure erőforráscsoport-projektet hoz létre egy **Webes alkalmazás + SQL** sablonból.
 
 1. A Visual Studio programban válassza a **Fájl**, **Új projekt**, majd a **C#** vagy a **Visual Basic** lehetőséget. Ezután válassza a **Felhő** lehetőséget, majd az **Azure erőforráscsoport** projektet.
@@ -62,7 +66,9 @@ Ebben az eljárásban egy Azure erőforráscsoport-projektet hoz létre egy **We
    
     Mindegyik erőforráscsoport-telepítési projekt tartalmazza ezeket az alapvető fájlokat. Más projektek további fájlokat is tartalmazhatnak, egyéb funkciók támogatásához.
 
-## <a name="customize-the-resource-manager-template"></a>A Resource Manager-sablon testreszabása
+<a id="customize-the-resource-manager-template" class="xliff"></a>
+
+## A Resource Manager-sablon testreszabása
 A telepítési projekteket a telepíteni kívánt erőforrásokat leíró JSON sablonok módosításával szabhatja testre. A JSON a JavaScript Object Notation rövidítése, és egy könnyen kezelhető szerializált adatformátum. A JSON-fájlok az egyes fájlok tetején hivatkozott sémát használják. Amennyiben szeretné megismerni a sémát, töltse le, és elemezze. A séma meghatározza az érvényes elemeket, a mezők típusát és formátumát, a felsorolt értékek lehetséges értékeit stb. A Resource Manager-sablon elemeivel kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 
 A munkához nyissa meg a **WebSiteSQLDatabase.json** sablont.
@@ -89,16 +95,18 @@ Figyelje meg, hogy nem csupán az erőforrás lett hozzáadva, hanem a tárfiók
 
 A **storageType** paraméter előre meg van határozva az engedélyezett típusokkal és az alapértelmezett típussal egyetemben. Megtarthatja ezeket az értékeket, vagy módosíthatja őket az adott forgatókönyvnek megfelelően. Ha nem szeretné, hogy bárki **Premium_LRS** tárfiókot hozzon létre a sablonon keresztül, egyszerűen törölje azt az engedélyezett típusok közül. 
 
-    "storageType": {
-      "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_ZRS",
-        "Standard_GRS",
-        "Standard_RAGRS"
-      ]
-    }
+```json
+"storageType": {
+  "type": "string",
+  "defaultValue": "Standard_LRS",
+  "allowedValues": [
+    "Standard_LRS",
+    "Standard_ZRS",
+    "Standard_GRS",
+    "Standard_RAGRS"
+  ]
+}
+```
 
 A Visual Studio intellisense szolgáltatása segítségével megtudhatja, milyen tulajdonságok érhetőek el a sablon szerkesztése során. Például az App Service-csomag tulajdonságainak szerkesztéséhez lépjen a **HostingPlan** erőforrásra, és adjon meg egy értéket a **properties** elemnél. Figyelje meg, hogy az intellisense megjeleníti az elérhető értékeket, valamint az adott értékek leírását.
 
@@ -106,12 +114,16 @@ A Visual Studio intellisense szolgáltatása segítségével megtudhatja, milyen
 
 Állítsa a **numberOfWorkers** paraméter értékét 1-re.
 
-    "properties": {
-      "name": "[parameters('hostingPlanName')]",
-      "numberOfWorkers": 1
-    }
+```json
+"properties": {
+  "name": "[parameters('hostingPlanName')]",
+  "numberOfWorkers": 1
+}
+```
 
-## <a name="deploy-the-resource-group-project-to-azure"></a>Az Erőforráscsoport-projekt telepítése az Azure szolgáltatásban
+<a id="deploy-the-resource-group-project-to-azure" class="xliff"></a>
+
+## Az Erőforráscsoport-projekt telepítése az Azure szolgáltatásban
 Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt telepítésekor egy Azure-erőforráscsoporton helyezi üzembe azt. Az erőforráscsoport közös életciklussal rendelkező erőforrások logikai csoportja.
 
 1. Az üzembe helyezési projekt csomópontjának helyi menüjén válassza a **Telepítés** > **Új** lehetőséget.
@@ -162,7 +174,9 @@ Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt tele
    
     ![Azure erőforráscsoport üzembe helyezve](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
-## <a name="deploy-code-with-your-infrastructure"></a>Kód telepítése az infrastruktúrával
+<a id="deploy-code-with-your-infrastructure" class="xliff"></a>
+
+## Kód telepítése az infrastruktúrával
 Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges kód azonban még nincs telepítve a projekttel. Ez a cikk a webappok és az SQL Database-táblák üzembe helyezésének módját ismerteti az üzembe helyezés során. Amennyibe webalkalmazás helyett virtuális gépet telepít, a telepítés keretében valamennyi kódot is érdemes futtatni a gépen. A kód telepítésének folyamata a webalkalmazások és a virtuális gépek telepítésénél szinte teljesen megegyezik.
 
 1. Adjon hozzá egy projektet a Visual Studio megoldásához. Kattintson a jobb gombbal a megoldásra, és válassza az **Add** > **New Project** (Hozzáadás – Új projekt) parancsot.
@@ -213,7 +227,9 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
     
      ![telepített alkalmazás megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 * Az erőforrásoknak a portálon keresztül történő kezelésével kapcsolatos információkért lásd: [Az Azure Portal használata az Azure erőforrások kezeléséhez](resource-group-portal.md).
 * A sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 
