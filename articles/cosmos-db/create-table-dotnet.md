@@ -1,62 +1,76 @@
 ---
 title: "Azure Cosmos DB .NET-alkalmazás létrehozása a Table API-val | Microsoft Docs"
 description: "Bevezetés az Azure Cosmos DB Table API-jának .NET-alapú használatába"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: arramac
 manager: jhubbard
 editor: 
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
-ms.service: cosmosdb
-ms.custom: quick start connect
+ms.service: cosmos-db
+ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 06/22/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: cba0b278d84e25876a8b73cedb7e35f84500fc5e
+ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
+ms.openlocfilehash: 29e7eebda5177d6e852ef04ad82d9d38a8d30ed8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
-# <a name="azure-cosmos-db-build-a-net-application-using-the-table-api"></a>Azure Cosmos DB: .NET-alkalmazás létrehozása a Table API-val
+<a id="azure-cosmos-db-build-a-net-application-using-the-table-api" class="xliff"></a>
+
+# Azure Cosmos DB: .NET-alkalmazás létrehozása a Table API-val
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével egy Azure Cosmos DB-fiókot, majd abban egy táblát. Ezután megírhatja a kódot az entitások beillesztéséhez, frissítéséhez és törléséhez, és futtathat néhány lekérdezést. Az [Azure Storage SDK-jának előzetes verzióját](https://aka.ms/premiumtablenuget) a NuGetről töltheti le. Az előzetes verzió osztályai és metódusainak aláírásai megegyeznek a nyilvános [Azure Storage SDK-ban](https://www.nuget.org/packages/WindowsAzure.Storage) elérhetőkkel, de ez a verzió ezenfelül képes Azure Cosmos DB-fiókokhoz is kapcsolódni a [Table API](table-introduction.md) előzetes verziójának használatával. 
+Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével egy Azure Cosmos DB-fiókot, majd abban egy táblát. Ezután kódot írunk az entitások beillesztésére, frissítésére és törlésére és futtatunk pár lekérdezést az új [Windows Azure Storage prémium tábla](https://aka.ms/premiumtablenuget) NuGet-csomag előzetes verziójának használatával. Ennek a függvénytárnak az osztályai és a metódusainak aláírásai megegyeznek a nyilvános [Windows Azure Storage SDK-ban](https://www.nuget.org/packages/WindowsAzure.Storage) elérhetőkkel, de ez a verzió ezenfelül képes Azure Cosmos DB-fiókokhoz is kapcsolódni a [Table API](table-introduction.md) előzetes verziójának használatával. 
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 
 Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+<a id="create-a-database-account" class="xliff"></a>
 
-[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmosdb-create-dbaccount-table.md)]
+## Adatbázisfiók létrehozása
 
-## <a name="add-a-table"></a>Tábla hozzáadása
+[!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
-[!INCLUDE [cosmosdb-create-table](../../includes/cosmosdb-create-table.md)]
+<a id="add-a-table" class="xliff"></a>
 
-## <a name="add-sample-data"></a>Mintaadatok hozzáadása
+## Tábla hozzáadása
 
-Az Adatkezelő segítségével adatokat adhat hozzá az új táblához.
+[!INCLUDE [cosmos-db-create-table](../../includes/cosmos-db-create-table.md)]
 
-1. Az Adatkezelőben bontsa ki a **sample-database** és a **sample-table** pontot, és kattintson az **Entitások**, ezután pedig az **Entitás hozzáadása** lehetőségre.
-2. Adja meg a PartitionKey és a RowKey mező adatait és kattintson az **Entitás hozzáadása** lehetőségre.
+<a id="add-sample-data" class="xliff"></a>
+
+## Mintaadatok hozzáadása
+
+Az Adatkezelő előzetes verziójának segítségével adatokat adhat hozzá az új táblához.
+
+1. Az Adatkezelőben bontsa ki a **minta tábla** pontot, és kattintson az **Entitások**, ezután pedig az **Entitás hozzáadása** lehetőségre.
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-document.png)
+2. Adja meg a PartitionKey és a RowKey mező adatait és kattintson az **Entitás hozzáadása** lehetőségre.
+
+   ![A partíciókulcs és a sorkulcs beállítása új entitások számára](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-entity.png)
   
     Most már az Adatkezelővel további entitásokat is hozzá tud adni a táblához, szerkesztheti őket, és lekérdezéseket is indíthat. Az Adatkezelőben továbbá skálázhatja az átviteli sebességet, és tárolt eljárásokat, felhasználói függvényeket és triggereket adhat hozzá a táblához.
 
-## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
+<a id="clone-the-sample-application" class="xliff"></a>
 
-Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatjuk az alkalmazást. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
+## A mintaalkalmazás klónozása
+
+Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
 1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
 
@@ -68,11 +82,13 @@ Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk
 
 3. Ezután nyissa meg a megoldásfájlt a Visual Studióban. 
 
-## <a name="review-the-code"></a>A kód áttekintése
+<a id="review-the-code" class="xliff"></a>
+
+## A kód áttekintése
 
 Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB erőforrásokat. 
 
-* A rendszer inicializálja a DocumentClient ügyfelet.
+* A CloudTableClient inicializálásra kerül.
 
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString); 
@@ -86,7 +102,7 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs f�
     table.CreateIfNotExists();
     ```
 
-* Létrejön egy új táblázattároló. Láthatja, hogy ez a kód nagyon hasonló a normál Azure Table Storage SDK-hoz 
+* Létrejön egy új táblázattároló. Láthatja, hogy ez a kód nagyon hasonló a normál Azure Table Storage SDK-hoz. 
 
     ```csharp
     CustomerEntity item = new CustomerEntity()
@@ -99,59 +115,69 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs f�
                 };
     ```
 
-## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
+<a id="update-your-connection-string" class="xliff"></a>
 
-Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
+## A kapcsolati karakterlánc frissítése
 
-1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiók bal oldali oldalsávján kattintson a **Kulcsok** elemre, majd kattintson az **Írási/olvasási kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot az app.config fájlba.
+Most pedig frissítjük a kapcsolati karakterláncot, hogy az alkalmazása kommunikálni tudjon az Azure Cosmos DB-szolgáltatással. 
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok paneljén](./media/create-documentdb-dotnet-core/keys.png)
+1. Nyissa meg az app.config fájlt a Visual Studióban. 
 
-2. Nyissa meg az app.config fájlt a Visual Studióban. 
+2. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB bal oldali navigációs menüjében kattintson a **Kapcsolati karakterlánc** elemre. Ezután az új panelen kattintson a kapcsolati karakterlánc másolás gombjára. 
 
-3. Másolja az Azure Cosmos DB-fiók nevét a Portalról, és az app.config fájlban a PremiumStorageConnection karakterlánc értéknél adja meg a nevet az AccountName paraméter értékeként. A fenti képen a fiók neve: cosmos-db-quickstart. A fiók neve a Portalon legfelül látható.
+    ![Keresse meg és másolja ki a Végpont és a Fiókkulcs mezőket a Kapcsolati karakterlánc panelen](./media/create-table-dotnet/keys.png)
+
+3. Az értéket illessze be az app.config fájlba a PremiumStorageConnectionString értékéhez. 
 
     `<add key="PremiumStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://COSMOSDB.documents.azure.com" />`
-
-4. Ezután másolja az elsődleges kulcs értékét a Portalról, és adja meg a PremiumStorageConnectionString sztring AccountKey paraméterének értékeként. 
-
-    `AccountKey=AUTHKEY`
-
-5. Végezetül másolja az URI értékét a Portal Kulcsok lapjáról (a Másolás gombbal), és adja meg a PremiumStorageConnectionString sztring TableEndpoint paraméterének értékeként.
-
-    `TableEndpoint=https://COSMOSDB.documents.azure.com`
+        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://COSMOSDB.documents.azure.com" />`    
 
     A StandardStorageConnectionString értékét nem szükséges megváltoztatnia.
 
 Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
-## <a name="run-the-web-app"></a>A webalkalmazás futtatása
+<a id="run-the-web-app" class="xliff"></a>
 
-1. A Visual Studióban kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 
+## A webalkalmazás futtatása
 
-2. A NuGet **Browse** (Tallózás) mezőjébe írja be *WindowsAzure.Storage* kifejezést, és jelölje be az **Include prerelease** (Előzetes verzió is) jelölőnégyzetet. 
+1. A Visual Studióban kattintson a jobb gombbal a **PremiumTableGetStarted** projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 
 
-3. Az eredmények közül telepítse a **WindowsAzure.Storage** függvénytárat. Ez telepíti az Azure Cosmos DB Table API csomag előzetes verzióját és annak összes függőségét.
+2. A NuGet **Tallózás** mezőjébe írja be a *WindowsAzure.Storage-PremiumTable* kifejezést.
 
-4. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
+3. Jelölje be az **Előzetes verzió is** jelölőnégyzetet. 
 
-    A konzolablakban láthatja, hogy a rendszer adatokat ad a táblához. Miután a szkript futtatása befejeződött, bezárhatja a konzolablakot. 
+4. Az eredmények közül telepítse a **WindowsAzure.Storage-PremiumTable** függvénytárat. Ez telepíti az Azure Cosmos DB Table API csomag előzetes verzióját és annak összes függőségét. Vegye figyelembe, hogy ez a NuGet-csomag eltér az Azure Table Storage által használt Windows Azure Storage csomagtól. 
 
-Ezután visszaléphet az Adatkezelőbe, ahol lekérdezheti és módosíthatja az új adatokat, és megkezdheti velük a munkát. 
+5. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+    A konzolablakban követheti az adatok hozzáadásának, beolvasásának, lekérdezésének, cseréjének és a táblából történő törlésének folyamatait. Miután a parancsfájl futása befejeződött, nyomjon le egy tetszőleges billentyűt a konzolablak bezárásához. 
+    
+    ![A gyors útmutató lépéseinek konzolkimenete](./media/create-table-dotnet/azure-cosmosdb-table-quickstart-console-output.png)
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+6. Ha meg szeretné tekinteni az új entitásokat az Adatkezelőben, tegye megjegyzésbe a program.cs fájl 188-208. sorait – így azokat nem kell törölni – , majd ezután futtassa újra a mintakódot. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+    Ezután lépjen vissza az Adatkezelőbe, kattintson a **Frissítés** gombra, bontsa ki a **people** táblát, kattintson az **Entitások** elemre és máris munkához láthat az új adatokkal. 
+
+    ![Új entitások az Adatkezelőben](./media/create-table-dotnet/azure-cosmosdb-table-quickstart-data-explorer.png)
+
+<a id="review-slas-in-the-azure-portal" class="xliff"></a>
+
+## Tekintse át az SLA-kat az Azure Portalon
+
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
+
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
 
 Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon: 
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével táblát készíteni, és hogyan lehet futtatni az alkalmazást.  Most már le tudja kérdezni adatait a Table API segítségével.  
 

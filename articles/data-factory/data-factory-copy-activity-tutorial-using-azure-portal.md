@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Másolási tevékenységet tartalmazó folyamat létrehozása az Azure Portallal | Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan hozhat létre Másolási tevékenységgel rendelkező Azure Data Factory-folyamatot az Azure Portal Data Factory Editor eszközével."
+title: "Oktatóanyag: Azure Data Factory-folyamatok létrehozása adatmásolás céljából (Azure Portal) | Microsoft Docs"
+description: "Az oktatóanyagban az Azure Portal használatával hoz létre egy másolási tevékenységgel rendelkező Azure Data Factory-folyamatot az adatok Azure Blob Storage-ból Azure SQL Database-be való másolásához."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 079cb3e69954a9b02e26e005ad4bb1b7ef14c909
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: c7815a02bd0eab6b87a1b1b97258c9006a3542e4
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/14/2017
 
 
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-azure-portal"></a>Oktatóanyag: Másolási tevékenységet tartalmazó folyamat létrehozása az Azure Portallal
+<a id="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data" class="xliff"></a>
+
+# Oktatóanyag: Az Azure Portal használata Data Factory-folyamatok létrehozására adatmásolás céljából 
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -34,30 +37,50 @@ ms.lasthandoff: 04/12/2017
 > 
 > 
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és figyelhet meg Azure data factoryt az Azure Portallal. Az adat-előállítóban szereplő adatcsatorna másolási tevékenységgel másolja az adatokat az Azure Blob Storage-ből az Azure SQL Database-be.
+A cikk útmutatást nyújt adat-előállítók [Azure Portal](https://portal.azure.com) használatával való létrehozására olyan folyamatokkal, amelyek az Azure Blob Storage-ból másolnak adatokat az Azure SQL Database-be. Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md) című cikket az oktatóanyag elvégzése előtt.   
 
-> [!NOTE]
-> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. A bemeneti adatokat nem alakítja át kimeneti adatok létrehozásához. Az adatok Azure Data Factory használatával történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
-> 
-> Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket. 
+Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
 
+Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További információért lásd: [egy folyamaton belüli több tevékenység](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
+
+> [!NOTE] 
+> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. Az adatok Azure Data Factory használatával történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
+
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
+Az oktatóanyag elvégzése előtt hajtsa végre [Az oktatóanyag előfeltételei](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikkben előfeltételként felsorolt lépéseket.
+
+<a id="steps" class="xliff"></a>
+
+## Lépések
 Az oktatóanyag során a következő lépéseket fogja elvégezni:
 
-| Lépés | Leírás |
-| --- | --- |
-| [Azure data factory létrehozása](#create-data-factory) |Ebben a lépésben egy Azure data factoryt hoz létre **ADFTutorialDataFactory** néven. |
-| [Társított szolgáltatások létrehozása](#create-linked-services) |Ebben a lépésben létrehozza a következő két társított szolgáltatást: **AzureStorageLinkedService** és **AzureSqlLinkedService**. <br/><br/>Az AzureStorageLinkedService az Azure-tárolót, az AzureSqlLinkedService pedig az Azure SQL Database-t társítja az ADFTutorialDataFactory data factoryhez. A folyamat bemeneti adatai az Azure Blob Storage egyik blobtárolójában, a kimeneti adatok pedig az Azure SQL Database egyik táblájában találhatók. Ezért ezt a két adattárat társított szolgáltatásként kell hozzáadnia a data factoryhez. |
-| [Bemeneti és kimeneti adatkészletek létrehozása](#create-datasets) |Az előző lépésben társított szolgáltatásokat hozott létre, amelyek a bemeneti/kimeneti adatokat tartalmazó adattárakra hivatkoznak. Ebben a lépésben két adatkészletet határoz meg – az **InputDataset** és az **OutputDataset** adatkészletet –, amelyek az adattárakban tárolt bemeneti és kimeneti adatokat jelölik. <br/><br/>Az InputDataset adatkészlethez megadja a forrásadatokkal rendelkező blobot tároló blobtárolót, az OutputDataset adatkészlethez pedig megadja a kimeneti adatokat tároló SQL-táblát. Egyéb tulajdonságokat is megad, például a szerkezetet, rendelkezésre állást és a szabályzatot. |
-| [Folyamat létrehozása](#create-pipeline) |Ebben a lépésben létrehozza az **ADFTutorialPipeline** nevű folyamatot az ADFTutorialDataFactory elemben. <br/><br/>A folyamathoz hozzáad egy **Másolási tevékenységet**, amely bemeneti adatokat másol az Azure-blobból a kimeneti Azure SQL-táblába. A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban. Egy olyan, globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és méretezhető módon másolja át az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket. |
-| [Folyamat figyelése](#monitor-pipeline) |Ebben a lépésben a bemeneti és kimeneti táblák szeleteit figyeli az Azure Portal használatával. |
+1. Hozzon létre egy folyamatot az **adat-előállítóban**. Ebben a lépésben egy adat-előállítót hoz létre ADFTutorialDataFactory néven. 
+2. Hozzon létre **társított szolgáltatásokat** az adat-előállítóban. Ebben a lépésben a következő két típusú társított szolgáltatást hozza létre: Azure Storage és Azure SQL Database. 
+    
+    Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Létrehozott egy tárolót, és adatokat töltött fel ebbe a tárfiókba az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként.   
 
-## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag elvégzése előtt hajtsa végre [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikkben előfeltételként felsorolt lépéseket.
+    Az AzureSqlLinkedService az Azure SQL Database-t társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az SQL-táblát az adatbázisban.   
+3. Hozza létre a bemeneti és kimeneti **adatkészleteket** az adat-előállítóban.  
+    
+    Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. A bemeneti blob adatkészlete pedig a tárolót és a bemeneti adatokat tartalmazó mappát határozza meg.  
 
-## <a name="create-data-factory"></a>Data factory létrehozása
-Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialDataFactory** nevű Azure data factoryt.
+    Ehhez hasonlóan az Azure SQL Database társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure SQL Database csatlakoztatásához használ. Az SQL-tábla kimeneti adatkészlete határozza meg azt az adatbázistáblát, amelybe a rendszer a blobtárolóból származó adatokat másolja.
+4. Hozzon létre egy **folyamatot** az adat-előállítóban. Ebben a lépésben létrehoz egy másolási tevékenységgel rendelkező folyamatot.   
+    
+    A másolási tevékenység adatokat másol az Azure Blob Storage-ból az Azure SQL Database egyik táblájába. A folyamat másolási tevékenységével adatokat másolhat bármely támogatott forrásból bármely támogatott célhelyre. A támogatott adattárak listájáért lásd: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
+5. Monitorozza a folyamatot. Ebben a lépésben a bemeneti és a kimeneti adatkészletek szeleteit **monitorozhatja** az Azure Portal használatával. 
 
-1. Miután bejelentkezett az [Azure Portalra](https://portal.azure.com/), kattintson az **Új** elemre, és válassza az **Intelligencia és elemzés** lehetőséget, majd kattintson a **Data Factory** elemre. 
+<a id="create-data-factory" class="xliff"></a>
+
+## Data factory létrehozása
+> [!IMPORTANT]
+> Hajtsa végre az [oktatóanyag előfeltételi lépéseit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), ha még nem tette volna meg.   
+
+A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Például egy olyan másolási tevékenység, amely adatokat másol egy forrásadattárból egy céladattárba, és egy HDInsight Hive-tevékenység, amely egy Hive-parancsprogram futtatásával alakítja át a bemeneti adatokat kimeneti adatokká. Ebben a lépésben létrehozzuk a data factoryt.
+
+1. Miután bejelentkezett az [Azure Portalra](https://portal.azure.com/), kattintson a bal oldali menüben az **Új** elemre, és válassza az **Adatok + analitika** lehetőséget, majd kattintson a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)    
 2. A **New data factory** (Új data factory) panelen:
@@ -71,15 +94,15 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
            Data factory name “ADFTutorialDataFactory” is not available  
       
        ![A Data Factory name not available (A data factory neve nem érhető el) üzenet](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-not-available.png)
-   2. Jelölje ki az Azure-**előfizetést**.
-   3. Az erőforráscsoportban tegye a következők egyikét:
+   2. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
+   3. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
       
       - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
       - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
           Az oktatóanyag egyes lépései azt feltételezik, hogy az **ADFTutorialResourceGroup** nevet adta az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
    4. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory szolgáltatás által támogatott régiók jelennek meg.
-   5. Válassza **A kezdőpulton rögzít** lehetőséget.     
+   5. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
    6. Kattintson a **Létrehozás** gombra.
       
       > [!IMPORTANT]
@@ -88,23 +111,36 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
       > A data factory neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá válhat.                
       > 
       > 
-3. Az állapotüzenetek/értesítési üzenetek megtekintéséhez kattintson az eszköztáron található csengő ikonra. 
-   
-   ![Értesítési üzenetek](./media/data-factory-copy-activity-tutorial-using-azure-portal/Notifications.png) 
+3. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
+
+    ![adat-előállító üzembe helyezése csempe](media/data-factory-copy-activity-tutorial-using-azure-portal/deploying-data-factory.png)
 4. A létrehozás befejezése után a **Data Factory** panel a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-home-page.png)
 
-## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. A másolási tevékenység által támogatott forrásokért és fogadókért tekintse meg a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) című részt. A Data Factory által támogatott számítási szolgáltatások listájáért tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című részt. Az oktatóanyag során ne használjon számítási szolgáltatásokat. 
+<a id="create-linked-services" class="xliff"></a>
 
-Ebben a lépésben létrehozza a következő két társított szolgáltatást: **AzureStorageLinkedService** és **AzureSqlLinkedService**. Az AzureStorageLinkedService társított szolgáltatás egy Azure Storage-fiókot, az AzureSqlLinkedService pedig egy Azure SQL Database-adatbázist társít az **ADFTutorialDataFactory** data factoryhez. Az oktatóanyag későbbi részében létrehoz egy folyamatot, amely adatokat másol az AzureStorageLinkedService blobtárolójából az AzureSqlLinkedService SQL-táblájába.
+## Társított szolgáltatások létrehozása
+Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben az oktatóanyagban nem használ számítási szolgáltatásokat (például Azure HDInsight vagy Azure Data Lake Analytics). Csak kétféle típusú adattárat használ: Azure Storage (forrás) és Azure SQL Database (cél). 
 
-### <a name="create-a-linked-service-for-the-azure-storage-account"></a>Társított szolgáltatás létrehozása az Azure Storage-fiókhoz
-1. A **Data Factory** panelen kattintson az **Fejlesztés és üzembe helyezés** csempére a Data Factory **szerkesztőjének** elindításához.
+Ezért két társított szolgáltatást hoz létre AzureStorageLinkedService és AzureSqlLinkedService néven (típus: AzureStorage és AzureSqlDatabase).  
+
+Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Ebben a tárfiókban hozta létre a tárolót, és ebbe töltötte fel az adatokat az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként.   
+
+Az AzureSqlLinkedService az Azure SQL Database-t társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban.  
+
+<a id="create-azure-storage-linked-service" class="xliff"></a>
+
+### Azure Storage társított szolgáltatás létrehozása
+Ebben a lépésben társítja az Azure Storage-fiókot az adat-előállítóval. Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát.  
+
+1. A **Data Factory** (Adat-előállító) panelen kattintson az **Author and deploy** (Fejlesztés és üzembe helyezés) csempére.
    
    ![Az Author and deploy (Fejlesztés és üzembe helyezés) csempe](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-author-deploy-tile.png) 
-2. A **szerkesztőben** kattintson az eszköztár **New data store** (Új adattár) gombjára, és a legördülő menüben válassza az **Azure Storage** lehetőséget. A jobb oldali panelen megjelenik az Azure Storage társított szolgáltatás létrehozására szolgáló JSON-sablon. 
+2. Megjelenik a **Data Factory szerkesztője** az alábbi ábrán látható módon: 
+
+    ![A Data Factory szerkesztője](./media/data-factory-copy-activity-tutorial-using-azure-portal/data-factory-editor.png)
+3. A szerkesztőben kattintson az eszköztár **New data store** (Új adattár) gombjára, és a legördülő menüben válassza az **Azure Storage** lehetőséget. A jobb oldali panelen megjelenik az Azure Storage társított szolgáltatás létrehozására szolgáló JSON-sablon. 
    
     ![A szerkesztő New data store (Új adattár) gombja](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-newdatastore-button.png)    
 3. Az `<accountname>` és az `<accountkey>` kifejezéseket cserélje az Azure-tárfiókja nevére, illetve kulcsára. 
@@ -114,34 +150,40 @@ Ebben a lépésben létrehozza a következő két társított szolgáltatást: *
    
     ![Szerkesztő – A blobtároló üzembe helyezése](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-editor-blob-storage-deploy.png)
 
-> [!NOTE]
-> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése Azure Blobból vagy Azure Blobba](data-factory-azure-blob-connector.md#azure-storage-linked-service).
-> 
-> 
+    További információ a társított szolgáltatás definíciójában található JSON-tulajdonságokról: [Azure Blob Storage-összekötő](data-factory-azure-blob-connector.md#linked-service-properties).
 
-### <a name="create-a-linked-service-for-the-azure-sql-database"></a>Társított szolgáltatás létrehozása az Azure SQL Database-hez
+<a id="create-a-linked-service-for-the-azure-sql-database" class="xliff"></a>
+
+### Társított szolgáltatás létrehozása az Azure SQL Database-hez
+Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállítóhoz. Ebben a szakaszban megadhatja az Azure SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót. 
+
 1. A **Data Factory Editorban** kattintson az eszköztár **Új adattár** gombjára, és a legördülő menüben válassza az **Azure SQL Database** lehetőséget. A jobb oldali panelen megjelenik az Azure SQL társított szolgáltatás létrehozására szolgáló JSON-sablon.
 2. Cserélje le a `<servername>`, `<databasename>`, `<username>@<servername>` és `<password>` paraméter értékét az Azure SQL-kiszolgáló, az adatbázis és a felhasználói fiók nevére, valamint a felhasználói fiók jelszavára. 
 3. Kattintson az eszköztár **Üzembe helyezés** gombjára az **AzureSqlLinkedService** létrehozásához és üzembe helyezéséhez.
-4. Győződjön meg arról, hogy az **AzureSqlLinkedService** szolgáltatás megjelenik a fanézetben. 
+4. Győződjön meg arról, hogy az **AzureSqlLinkedService** szolgáltatás megjelenik a **Társított szolgáltatások** faszerkezetes nézetében.  
 
-> [!NOTE]
-> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése SQL Database-ből vagy SQL Database-be](data-factory-azure-sql-connector.md#linked-service-properties).
-> 
-> 
+    További információ a JSON-tulajdonságokról: [Azure SQL Database-összekötő](data-factory-azure-sql-connector.md#linked-service-properties).
 
-## <a name="create-datasets"></a>Adatkészletek létrehozása
-Az előző lépésben létrehozta az **AzureStorageLinkedService** és az **AzureSqlLinkedService** társított szolgáltatásokat egy Azure Storage-fiók és egy Azure SQL Database az **ADFTutorialDataFactoryPSH** data factoryhez való társításához. Ebben a lépésben két adatkészletet határoz meg – az **InputDataset** és az **OutputDataset** adatkészletet –, amelyek az AzureStorageLinkedService és az AzureSqlLinkedService szolgáltatás által hivatkozott bemeneti és kimeneti adatokat jelölik. Az InputDataset adatkészlethez megadja a forrásadatokkal rendelkező blobot tároló blobtárolót, az OutputDataset adatkészlethez pedig megadja a kimeneti adatokat tároló SQL-táblát. 
+<a id="create-datasets" class="xliff"></a>
 
-### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
-Ebben a lépésben létrehozza az **InputDataset** nevű adatkészletet, amely egy, az Azure Storage-ben található blob-tárolóra mutat, amelyet az **AzureStorageLinkedService** társított szolgáltatás jelöl.
+## Adatkészletek létrehozása
+Az előző lépésben létrehozta az Azure Storage-fiók és az Azure SQL Database összekapcsolását végző társított szolgáltatásokat. Ebben a lépésben két adatkészletet határoz meg – InputDataset és OutputDataset néven –, amelyek az AzureStorageLinkedService és az AzureSqlLinkedService szolgáltatás által hivatkozott bemeneti és kimeneti adatokat jelölik.
+
+Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. A bemeneti blob adatkészlete (InputDataset) pedig a tárolót és a bemeneti adatokat tartalmazó mappát határozza meg.  
+
+Ehhez hasonlóan az Azure SQL Database társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure SQL Database csatlakoztatásához használ. Az SQL-tábla kimeneti adatkészlete (OututDataset) határozza meg azt az adatbázistáblát, amelybe a rendszer a blobtárolóból származó adatokat másolja. 
+
+<a id="create-input-dataset" class="xliff"></a>
+
+### Bemeneti adatkészlet létrehozása
+Ebben a lépésben hozza létre az InputDataset nevű adatkészletet, amely az AzureStorageLinkedService társított szolgáltatás által hivatkozott Azure Storage blobtárolójának (adftutorial) gyökérmappájában található blobfájlra mutat (emp.txt). Ha nem ad meg értéket a fájlnévnek (vagy kihagyja azt), a rendszer a bemeneti mappában található összes blob adatát a célhelyre másolja. Ebben az oktatóanyagban a fileName értékét adja meg. 
 
 1. A Data Factory **szerkesztőjében** kattintson a **... Továbbiak**, majd az **Új adatkészlet**, végül az **Azure Blob Storage** elemre a legördülő menüben. 
    
     ![Új adatkészlet menü](./media/data-factory-copy-activity-tutorial-using-azure-portal/new-dataset-menu.png)
 2. A jobb oldali panelen cserélje le a JSON-t a következő JSON-kódrészletre: 
    
-    ```JSON
+    ```json
     {
       "name": "InputDataset",
       "properties": {
@@ -173,46 +215,32 @@ Ebben a lépésben létrehozza az **InputDataset** nevű adatkészletet, amely e
       }
     }
     ```   
-    Vegye figyelembe a következő szempontokat: 
-   
-    - Az adatkészlet **típusa** **AzureBlob** értékre van állítva.
-    - A **linkedServiceName** tulajdonság **AzureStorageLinkedService** értékre van állítva. Ezt a társított szolgáltatást a 2. lépésben hozta létre.
-    - A **folderPath** (mappaútvonal) tulajdonság az **adftutorial** tárolóra van állítva. A blob nevét is megadhatja a mappán belül a **fileName** tulajdonsággal. Mivel itt nincs megadva a blob neve, a tárolóban lévő összes blob adata bemeneti adatnak minősül.
-    - A formátum **type** (típus) tulajdonsága **TextFormat** (Szövegformátum) értékre van állítva.
-    - A szövegfájlban két mező található – a **FirstName** (Utónév) és a **LastName** (Vezetéknév) –, amelyeket egy vessző karakter választ el (**columnDelimiter**)
-    - Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre). Így a Data Factory szolgáltatás óránként keres bemeneti adatokat a megadott blobtároló (**adftutorial**) gyökérmappájában. 
-     
-     Ha nem adja meg a **fileName** paramétert a **bemeneti** adatkészlethez, a bemeneti mappában (**folderPath**) található összes fájl/blob bemenetnek minősül. Ha megadja a fileName paramétert a JSON-fájlban, csak a megadott fájl/blob minősül bemenetnek.
-     
-     Ha nem adja meg a **fileName** paramétert a **kimeneti táblához**, a **folderPath** útvonalon előállított fájlok elnevezéséhez a rendszer a következő formátumot használja: Data.&lt;Guid&gt;.txt (példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
-     
-     Ha a **folderPath** és a **fileName** tulajdonságokat dinamikusan szeretné beállítani a **SliceStart** változó időpontja alapján, használja a **partitionedBy** tulajdonságot. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2016-09-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2016/09/20, a fileName beállítása pedig 08.csv lesz. 
 
-    ```JSON     
-    "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
-    "fileName": "{Hour}.csv",
-    "partitionedBy": 
-    [
-       { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
-       { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } }, 
-       { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } }, 
-       { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } } 
-    ],
-    ```
+    Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat:
+
+    | Tulajdonság | Leírás |
+    |:--- |:--- |
+    | type | A tulajdonság beállítása **AzureBlob**, mert az adatok egy Azure Blob Storage-tárban találhatók. |
+    | linkedServiceName | A korábban létrehozott **AzureStorageLinkedService** szolgáltatásra hivatkozik. |
+    | folderPath | A **blobtárolót** és a bemeneti blobokat tartalmazó **mappát** határozza meg. Ebben az oktatóanyagban az adftutorial a blobtároló és a folder a gyökérmappa. | 
+    | fileName | Ez a tulajdonság nem kötelező. Ha kihagyja, a rendszer a folderPath elérési úton található összes fájlt kiválasztja. Ebben az oktatóanyagban az **emp.txt** a fileName értéke, így a rendszer csak ezt a fájlt használja a feldolgozáshoz. |
+    | formátum -> típus |A bemeneti fájl szöveges formátumú, ezért a **TextFormat** értéket használjuk. |
+    | columnDelimiter | A bemeneti fájlban **vesszővel (`,`)** vannak elválasztva az oszlopok. |
+    | frequency/interval | A frequency (gyakoriság) beállítása **Hour** (Óra), az interval (időköz) beállítása pedig **1**, ami azt jelenti, hogy a bemeneti szeletek **óránként** érhetők el. Vagyis a Data Factory szolgáltatás óránként keres bemeneti adatokat a megadott blobtároló (**adftutorial**) gyökérmappájában. A szolgáltatás a folyamat kezdő és befejező időpontja közti időszakban – és nem azon kívül – keres adatokat.  |
+    | external | Ez a tulajdonság a **true** (igaz) értékre van állítva, ha az adatokat nem ez a folyamat hozta létre. Az oktatóanyagban használt bemeneti adatok az emp.txt fájlban találhatók, amelyet nem ez a folyamat hoz létre, ezért ezt a tulajdonságot true (igaz) értékre állítottuk. |
+
+    További információ ezekről a JSON-tulajdonságokról: [Azure Blob-összekötő](data-factory-azure-blob-connector.md#dataset-properties).      
 3. Kattintson az eszköztár **Üzembe helyezés** gombjára az **InputDataset** adatkészlet létrehozásához és üzembe helyezéséhez. Győződjön meg arról, hogy az **InputDataset** adatkészlet megjelenik a fanézetben.
 
-> [!NOTE]
-> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése Azure Blobból vagy Azure Blobba](data-factory-azure-blob-connector.md#dataset-properties).
-> 
-> 
+<a id="create-output-dataset" class="xliff"></a>
 
-### <a name="create-output-dataset"></a>Kimeneti adatkészlet létrehozása
-A lépés ezen részében egy kimeneti adatkészletet hoz létre **OutputDataset** néven. Ez az adathalmaz egy SQL-táblára mutat abban az Azure SQL Database-adatbázisban, amelyet az **AzureSqlLinkedService** jelöl. 
+### Kimeneti adatkészlet létrehozása
+Az Azure SQL Database társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure SQL Database csatlakoztatásához használ. Az ebben a lépésben létrehozandó SQL-tábla kimeneti adatkészlete (OututDataset) határozza meg azt az adatbázistáblát, amelybe a rendszer a blobtárolóból származó adatokat másolja.
 
 1. A Data Factory **szerkesztőjében** kattintson a **... Továbbiak**, majd az **Új adatkészlet**, végül az **Azure SQL** elemre a legördülő menüben. 
 2. A jobb oldali panelen cserélje le a JSON-t a következő JSON-kódrészletre:
 
-    ```JSON   
+    ```json   
     {
       "name": "OutputDataset",
       "properties": {
@@ -237,28 +265,33 @@ A lépés ezen részében egy kimeneti adatkészletet hoz létre **OutputDataset
         }
       }
     }
-    ```       
-    Vegye figyelembe a következő szempontokat: 
-   
-    - Az adatkészlet **type** (típus) tulajdonsága **AzureSQLTable** értékre van állítva.
-    - A **linkedServiceName** tulajdonság az **AzureSqlLinkedService** értékre van állítva (ezt a társított szolgáltatást a 2. lépésben hozta létre).
-    - A **tablename** tulajdonság **emp** értékre van állítva.
-    - Az adatbázis emp táblájában három oszlop van – **ID**, **FirstName** és **LastName**. Az ID azonosítóoszlop, ezért itt csak a **FirstName** és **LastName** tulajdonságokat kell megadnia.
-    - Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás óránként előállít egy kimeneti adatszeletet az Azure SQL Database **emp** táblájában.
-3. Kattintson az eszköztár **Üzembe helyezés** gombjára az **OutputDataset** adatkészlet létrehozásához és üzembe helyezéséhez. Győződjön meg arról, hogy az **OutputDataset** adatkészlet megjelenik a fanézetben. 
+    ```     
 
-> [!NOTE]
-> A JSON-tulajdonságokkal kapcsolatos információk: [Adatok áthelyezése SQL Database-ből vagy SQL Database-be](data-factory-azure-sql-connector.md#linked-service-properties).
-> 
-> 
+    Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat:
 
-## <a name="create-pipeline"></a>Folyamat létrehozása
+    | Tulajdonság | Leírás |
+    |:--- |:--- |
+    | type | A tulajdonság beállítása **AzureSqlTable**, mert az adatok másolása az Azure SQL Database egyik táblájába történik. |
+    | linkedServiceName | A korábban létrehozott **AzureSqlLinkedService** szolgáltatásra hivatkozik. |
+    | tableName | Azt a **táblát** határozza meg, amelybe a rendszer az adatokat másolja. | 
+    | frequency/interval | A frequency (gyakoriság) értéke **Hour** (Óra), az interval (időköz) értéke pedig **1**, azaz a rendszer a kimeneti szeleteket **óránként** állítja elő a folyamat kezdő és befejező időpontja közti időszakban (és nem azon kívül).  |
+
+    Az adatbázis emp táblájában három oszlop van – **ID**, **FirstName** és **LastName**. Az ID azonosítóoszlop, ezért itt csak a **FirstName** és **LastName** tulajdonságokat kell megadnia.
+
+    További információ ezekről a JSON-tulajdonságokról: [Azure SQL-összekötő](data-factory-azure-sql-connector.md#dataset-properties).
+3. Kattintson az eszköztár **Üzembe helyezés** gombjára az **OutputDataset** adatkészlet létrehozásához és üzembe helyezéséhez. Győződjön meg arról, hogy az **OutputDataset** megjelenik az **Adatkészletek** faszerkezetes nézetében. 
+
+<a id="create-pipeline" class="xliff"></a>
+
+## Folyamat létrehozása
 Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező folyamatot, amely bemenetként az **InputDataset**, kimenetként pedig az **OutputDataset** adatkészletet használja.
+
+Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagban a kimeneti adatkészletet úgy konfiguráljuk, hogy a szeletek létrehozása óránként történjen meg. A folyamat kezdő és befejező időpontja között egy nap, azaz 24 óra telik el. Ezért a folyamat a kimeneti adatkészletből 24 szeletet hoz létre. 
 
 1. A Data Factory **szerkesztőjében** kattintson a **... Továbbiak**, majd az **Új adatcsatorna** elemre. Azt is megteheti, hogy a jobb gombbal a **Pipelines** (Folyamatok) elemre kattint a fanézetben, majd a **New pipeline** (Új folyamat) parancsot választja.
 2. A jobb oldali panelen cserélje le a JSON-t a következő JSON-kódrészletre: 
 
-    ```JSON   
+    ```json   
     {
       "name": "ADFTutorialPipeline",
       "properties": {
@@ -295,83 +328,88 @@ Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező fol
             }
           }
         ],
-        "start": "2016-07-12T00:00:00Z",
-        "end": "2016-07-13T00:00:00Z"
+        "start": "2017-05-11T00:00:00Z",
+        "end": "2017-05-12T00:00:00Z"
       }
     } 
     ```   
     
     Vegye figyelembe a következő szempontokat:
    
-    - A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **Copy** értékre van beállítva.
-    - A tevékenység bemenetének beállítása **InputDataset**, a kimeneté pedig **OutputDataset**.
-    - A **typeProperties** szakaszban forrástípusként a **BlobSource**, fogadótípusként pedig az **SqlSink** érték van megadva.
-     
-    A **start** (kezdés) tulajdonság értékét cserélje az aktuális, az **end** (befejezés) tulajdonság értékét pedig a következő napra. Azt is megteheti, hogy a dátum-időpont paraméternek csak a dátum részét adja meg, az időpont részét pedig kihagyja. Megadhatja például a „2016-02-03” értéket, amely a következőnek felel meg: „2016-02-03T00:00:00Z”
-     
-    Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2016-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk. 
-     
-    Ha nem adja meg az **end** (befejezés) tulajdonság értékét, akkor a rendszer a „**kezdő időpont + 48 óra**” számítással határozza meg azt. A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz.
+    - A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa** **Copy** értékre van beállítva. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md). A Data Factory megoldásaiban használhatja az [adatátalakítási tevékenységeket](data-factory-data-transformation-activities.md) is.
+    - A tevékenység bemenetének beállítása **InputDataset**, a kimeneté pedig **OutputDataset**. 
+    - A **typeProperties** szakaszban forrástípusként a **BlobSource**, fogadótípusként pedig az **SqlSink** érték van megadva. A másolási tevékenység által forrásként és fogadóként támogatott adattárak teljes listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Egy forrásként/fogadóként támogatott konkrét adattár használatával kapcsolatos útmutatóért kattintson a tábla adott hivatkozására.
+    - Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2016-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk. Ha nem adja meg az **end** (befejezés) tulajdonság értékét, akkor a rendszer a „**kezdő időpont + 48 óra**” számítással határozza meg azt. A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz.
      
     Az előző példában 24 adatszelet van, mert a rendszer óránként létrehoz egy adatszeletet.
+
+    A folyamathoz tartozó definíció JSON-tulajdonságainak leírásáért lásd: [folyamatok létrehozása](data-factory-create-pipelines.md). A másolási tevékenységhez tartozó definíció JSON-tulajdonságainak leírásáért lásd: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md). A BlobSource által támogatott JSON-tulajdonságok leírásáért lásd: [Azure Blob-összekötő](data-factory-azure-blob-connector.md). Az SqlSink által támogatott JSON-tulajdonságok leírásáért lásd: [Azure SQL Database-összekötő](data-factory-azure-sql-connector.md).
 3. Kattintson az eszköztár **Deploy** (Üzembe helyezés) gombjára az **ADFTutorialPipeline** létrehozásához és üzembe helyezéséhez. Győződjön meg arról, hogy a folyamat megjelenik a fanézetben. 
 4. Most pedig az **X**-re kattintva zárja be az **Editor** (Szerkesztő) panelt. Kattintson újra az **X-re** az **ADFTutorialDataFactory** **Data Factory**-kezdőlapjának megjelenítéséhez.
 
-**Gratulálunk!** Sikeresen létrehozott egy Azure data factoryt, társított szolgáltatásokat, táblákat és egy folyamatot, valamint ütemezte is a folyamatot.   
+**Gratulálunk!** Sikeresen létrehozott egy Azure-beli adat-előállítót egy olyan folyamattal, amely az Azure Blob Storage-ból az Azure SQL Database-be másol adatokat. 
 
-### <a name="view-the-data-factory-in-a-diagram-view"></a>A data factory megtekintése diagramnézetben
+
+<a id="monitor-pipeline" class="xliff"></a>
+
+## Folyamat figyelése
+Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factory eseményeit.    
+
+<a id="monitor-pipeline-using-monitor--manage-app" class="xliff"></a>
+
+### Folyamat figyelése a Monitor & Manage alkalmazással
+A következő lépések útmutatót nyújtanak az adat-előállító folyamatainak monitorozására a Monitor & Manage alkalmazás használatával: 
+
+1. Kattintson a **Monitor & Manage** csempére a Data Factory kezdőlapján.
+   
+    ![Monitor & Manage csempe](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-manage-tile.png) 
+2. A **Monitor & Manage alkalmazásnak** egy külön lapon kell megjelennie. 
+
+    > [!NOTE]
+    > Ha a böngésző az „Authorizing...” (Hitelesítés) lépésnél elakad, törölje a **Block third party cookies and site data** (Harmadik féltől származó cookie-k és webhelyadatok tiltása) jelölőnégyzet bejelölését, (vagy) hozzon létre kivételt a **login.microsoftonline.com** webhelyhez, majd próbálkozzon ismét az alkalmazás megnyitásával.
+
+    ![Monitor & Manage alkalmazás](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-and-manage-app.png)
+3. Módosítsa a **kezdési idő** és a **befejezési idő** értékét úgy, hogy az megfeleljen a folyamat kezdési (2017-05-11) és befejezési (2017-05-12) időpontjának, majd kattintson az **Alkalmaz** gombra.       
+3. A középső panel listájában megjelennek a folyamat kezdési és befejezési időpontja közötti órákhoz tartozó **tevékenységablakok**. 
+4. Válasszon egy tevékenységablakot a **Tevékenységablakok** listában a részletek megtekintéséhez. 
+    ![Tevékenységablakok részletei](./media/data-factory-copy-activity-tutorial-using-azure-portal/activity-window-details.png)
+
+    A jobb oldali Activity Window Explorer mutatja, hogy az aktuális UTC időnek (20:12) megfelelő összes szelet feldolgozása megtörtént (zöld szín). A 20:00-21:00, a 21:00-22:00, a 22:00-23:00 és a 23:00-00:00 órának megfelelő szeletek feldolgozása még nem történt meg.
+
+    A jobb oldali panelen látható **Kísérletek** szakasz mutatja az adatszelethez tartozó tevékenységfuttatási adatokat. Hiba esetén a hibarészletek is a panelen láthatók. Például ha a bemeneti mappa vagy a tároló nem létezik, és a folyamat feldolgozása nem sikerül, a rendszer hibaüzenetben tájékoztat arról, hogy a tároló vagy a mappa nem található.
+
+    ![Tevékenységfuttatási kísérletek](./media/data-factory-copy-activity-tutorial-using-azure-portal/activity-run-attempts.png) 
+4. Indítsa el az **SQL Server Management Studiót**, csatlakozzon az Azure SQL Database-hez, és ellenőrizze, hogy a sorok megjelennek-e az adatbázis **emp** táblájában.
+    
+    ![SQL-lekérdezés eredményei](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-sql-query-results.png)
+
+Az alkalmazás használatával kapcsolatos részletes információkért olvassa el a [Monitor and manage Azure Data Factory pipelines using Monitoring and Management App](data-factory-monitor-manage-app.md) (Azure Data Factory-folyamatok figyelése és felügyelete a Monitoring and Management használatával) című cikket.
+
+<a id="monitor-pipeline-using-diagram-view" class="xliff"></a>
+
+### Folyamat figyelése diagramnézetben
+Az adatfolyamatok monitorozását a diagramnézet használatával is végezheti.  
+
 1. A **Data Factory** panelen kattintson a **Diagram** elemre.
    
     ![Data Factory panel – Diagram csempe](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-datafactoryblade-diagramtile.png)
 2. Az alábbi képhez hasonló diagramnak kell megjelennie: 
    
-    ![Diagramnézet](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-diagram-blade.png)
-   
-    Nagyíthat, kicsinyíthet, 100%-ra vagy mérethez igazítva nagyíthat/kicsinyíthet, automatikusan elhelyezheti a folyamatokat és táblákat, illetve megjelenítheti a leszármaztatási információkat (a kijelölt elemek fölérendelt vagy alárendelt elemeinek kiemelésével).  Ha duplán kattint egy objektumra (bemeneti/kimeneti táblára, illetve folyamatra), megtekintheti a tulajdonságait. 
-3. A diagramnézetben kattintson a jobb gombbal az **ADFTutorialPipeline** folyamatra, majd kattintson az **Open pipeline** (Folyamat megnyitása) elemre. 
-   
-    ![Folyamat megnyitása](./media/data-factory-copy-activity-tutorial-using-azure-portal/DiagramView-OpenPipeline.png)
-4. Ekkor meg kell jelennie a folyamat tevékenységeinek, valamint a tevékenységek bemeneti és kimeneti adatkészleteinek. Ebben az oktatóanyagban csak egy tevékenység (a másolási tevékenység) szerepel a folyamatban, és a tevékenység bemeneti adatkészlete az InputDataset, a kimeneti adatkészlete pedig az OutputDataset.   
-   
-    ![Megnyitott folyamatnézet](./media/data-factory-copy-activity-tutorial-using-azure-portal/DiagramView-OpenedPipeline.png)
-5. A diagramnézethez való visszatéréshez kattintson a **Data factory** elemre a bal felső sarokban lévő navigációs menüben. A diagramnézet az összeg folyamatot megjeleníti. Ebben a példában csak egy folyamatot hozott létre.   
-
-## <a name="monitor-pipeline"></a>Folyamat figyelése
-Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factory eseményeit. 
-
-### <a name="monitor-pipeline-using-diagram-view"></a>Folyamat figyelése diagramnézetben
-1. Kattintson az **X-re** a **Diagram** nézet bezárásához és a Data Factory kezdőlapjának megjelenítéséhez. Ha bezárta a webböngészőt, tegye a következőket: 
-   1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). 
-   2. Kattintson duplán az **ADFTutorialDataFactory** elemre a **Kezdőpulton** (vagy) kattintson az **Adat-előállítók** elemre a bal oldali menüben és keresse meg az ADFTutorialDataFactory elemet. 
-2. A panelen megjelenik a létrehozott táblák és folyamatok száma és neve.
-   
-    ![kezdőlap a nevekkel](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-datafactory-home-page-pipeline-tables.png)
-3. Most kattintson a **Datasets** (Adatkészletek) csempére.
-4. Az **Adatkészletek** panelen kattintson az **InputDataset** adatkészletre. Ez az adatkészlet az **ADFTutorialPipeline** bementi adatkészlete.
+    ![Diagramnézet](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-diagram-blade.png)  
+5. A diagramnézetben az **InputDataset** elemre duplán kattintva tekintheti meg az adatkészlet szeleteit.  
    
     ![Adatkészletek kiválasztott InputDataset elemmel](./media/data-factory-copy-activity-tutorial-using-azure-portal/DataSetsWithInputDatasetFromBlobSelected.png)   
-5. Az összes adatszelet megjelenítéséhez kattintson a három pontot ábrázoló gombra (**...**).
+5. Az összes adatszelet megjelenítéséhez kattintson a **Részletek** hivatkozásra. Megjelennek a 24 órához tartozó szeletek a folyamat kezdési és befejezési időpontja között. 
    
     ![Összes bemeneti adatszelet](./media/data-factory-copy-activity-tutorial-using-azure-portal/all-input-slices.png)  
    
-    Figyelje meg, hogy az aktuális időpontig már létrejöttek az adatszeletek, és hogy **Kész** állapotúak, mert az **emp.txt** fájl folyamatosan megtalálható a következő blobtárolóban: **adftutorial\input**. Győződjön meg arról, hogy a panel alsó részén található **Recently failed slices** (Legutóbbi sikertelen szeletek) részben egy szelet sem jelenik meg.
-   
-    Mind a **Recently updated slices** (A legutóbb frissített szeletek), mind pedig a **Recently failed slices** (Legutóbbi sikertelen szeletek) lista a **LAST UPDATE TIME** (LEGUTÓBBI FRISSÍTÉS IDŐPONTJA) szerint van rendezve. 
-   
-    A szeletek szűréséhez kattintson az eszköztár **Filter** (Szűrés) elemére.  
-   
-    ![Bementi szeletek szűrése](./media/data-factory-copy-activity-tutorial-using-azure-portal/filter-input-slices.png)
-6. Zárja be a paneleket, amíg el nem jut az **Adatkészletek** panelhez. Kattintson az **OutputDataset** adatkészletre. Ez az adatkészlet az **ADFTutorialPipeline** kimenti adatkészlete.
-   
-    ![Datasets (Adatkészletek) panel](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-datasets-blade.png)
-7. Az **OutputDataset** panelnek a következő képen látható módon kell megjelennie:
-   
-    ![Table (Tábla) panel](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-table-blade.png) 
-8. Figyelje meg, hogy az aktuális időpontig létrejöttek az adatszeletek, és hogy **Ready** (Kész) állapotúak. A panel alsó részén található **Problem slices** (Problémás szeletek) részben egy szelet sem jelenik meg.
-9. Az összes szelet megjelenítéséhez kattintson a három pontot ábrázoló gombra (**...**).
-   
-    ![Data slices (Adatszeletek) panel](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslices-blade.png)
-10. Kattintson a listában lévő bármelyik adatszeletre, és megjelenik az **Adatszelet** panel.
+    Figyelje meg, hogy az aktuális UTC időpontig már létrejöttek az adatszeletek, és **Kész** állapotúak, mert az **emp.txt** fájl folyamatosan megtalálható a következő blobtárolóban: **adftutorial\input**. A jövőbeli időpontokhoz tartozó szeletek még nem Kész állapotúak. Győződjön meg arról, hogy a panel alsó részén található **Recently failed slices** (Legutóbbi sikertelen szeletek) részben egy szelet sem jelenik meg.
+6. Zárja be a paneleket, amíg meg nem jelenik a diagramnézet, (vagy) balra görgetve jelenítheti meg a diagramnézetet. Ezután kattintson duplán az **OutputDataset** elemre. 
+8. Az összes szeletet az **OutputDataset** **Tábla** paneljének **Részletek** hivatkozására kattintva tekintheti meg.
+
+    ![Data slices (Adatszeletek) panel](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslices-blade.png) 
+9. Figyelje meg, hogy az aktuális UTC időpontig az összes szelet állapota a következők szerint módosul: **Végrehajtásra vár** => **Folyamatban van** ==> **Kész**. A múltbeli időpontokhoz tartozó (a jelenlegi időpontnál korábbi) szeletek feldolgozása alapértelmezés szerint a legújabb elemtől a legrégebbi elemig történik. Például ha a jelenlegi idő 20:12, a 19:00-20:00 óra szeletének feldolgozása a 18:00-19:00 órához tartozó szelet feldolgozása előtt történik. A 20:00-21:00 órához tartozó szelet feldolgozása alapértelmezés szerint az időintervallum végén, azaz 21:00 után történik.  
+10. Kattintson a listában lévő bármelyik adatszeletre, és megjelenik az **Adatszelet** panel. A tevékenységablakokhoz tartozó adatszeleteket nevezzük szeletnek. Egy szelet lehet egy vagy több fájl.  
     
      ![Data slice (Adatszelet) panel](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-dataslice-blade.png)
     
@@ -379,25 +417,18 @@ Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factor
 11. A **DATA SLICE** (ADATSZELET) panel alsó részén található listában az összes tevékenységfuttatás megjelenik. Kattintson egy **tevékenységfuttatásra** az **Tevékenységfuttatás részletei** panel megjelenítéséhez. 
     
     ![Az Activity Run Details (Tevékenységfuttatás részletei) panel](./media/data-factory-copy-activity-tutorial-using-azure-portal/ActivityRunDetails.png)
+
+    Ezen a panelen tekintheti meg, hogy mennyi ideig tart a másolási művelet, mekkora az átviteli sebesség, a rendszer hány bájt adatot olvasott és írt, mikor van a futtatás kezdete és vége, stb.  
 12. Kattintson az **X**-re az összes panel bezárásához, amíg vissza nem tér az **ADFTutorialDataFactory** kezdőpaneljére.
-13. (opcionális) Kattintson az **ADFTutorialDataFactory** kezdőlapjának **Pipelines** (Folyamatok) elemére, kattintson az **ADFTutorialPipeline** elemre a **Pipelines** (Folyamatok) panelen, és jelenítse meg a bemeneti táblák (**Consumed** (Felhasznált)) vagy a kimeneti táblák (**Produced** (Létrehozott)) részleteit.
+13. (nem kötelező) Az előző lépésekben látott paneleket az **Adatkészletek** vagy a **Folyamatok** csempére kattintva érheti el. 
 14. Indítsa el az **SQL Server Management Studiót**, csatlakozzon az Azure SQL Database-hez, és ellenőrizze, hogy a sorok megjelennek-e az adatbázis **emp** táblájában.
     
     ![SQL-lekérdezés eredményei](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-sql-query-results.png)
 
-### <a name="monitor-pipeline-using-monitor--manage-app"></a>Folyamat figyelése a Monitor & Manage alkalmazással
-A folyamatok figyeléséhez a Monitor & Manage alkalmazást is használhatja. Az alkalmazás használatával kapcsolatos részletes információkért tekintse meg a [Monitor and manage Azure Data Factory pipelines using Monitoring and Management App](data-factory-monitor-manage-app.md) (Azure Data Factory-folyamatok figyelése és felügyelete a Monitoring and Management használatával) című cikket.
 
-1. Kattintson a **Monitor & Manage** csempére a Data Factory kezdőlapján.
-   
-    ![Monitor & Manage csempe](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-manage-tile.png) 
-2. Meg kell jelennie a **Monitor & Manage alkalmazásnak**. Módosítsa a **kezdési idő** és a **befejezési idő** értékét, hogy megfeleljen a folyamat kezdési (2016-07-12) és befejezési (2016-07-13) idejének, és kattintson az **Alkalmaz** gombra. 
-   
-    ![Monitor & Manage alkalmazás](./media/data-factory-copy-activity-tutorial-using-azure-portal/monitor-and-manage-app.png) 
-3. Válasszon egy tevékenységablakot az **Activity Windows** (Tevékenységablakok) listában a részleteinek a megtekintéséhez. 
-    ![Tevékenységablakok részletei](./media/data-factory-copy-activity-tutorial-using-azure-portal/activity-window-details.png)
+<a id="summary" class="xliff"></a>
 
-## <a name="summary"></a>Összefoglalás
+## Összefoglalás
 Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat másoljon egy Azure-blobból egy Azure SQL Database-adatbázisba. Az Azure Portalt használta a data factory, a társított szolgáltatások, az adatkészletek és a folyamat létrehozásához. Az oktatóanyag során a következő főbb lépéseket végezte el:  
 
 1. Létrehozott egy Azure **data factoryt**.
@@ -407,10 +438,11 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
 3. **Adatkészleteket** hozott létre, amelyek a folyamat bemeneti és kimeneti adatait írják le.
 4. Létrehozott egy **folyamatot** egy **Másolási tevékenységgel**, ahol a **BlobSource** a forrás, az **SqlSink** pedig a fogadó.  
 
-## <a name="see-also"></a>Lásd még:
-| Témakör | Leírás |
-|:--- |:--- |
-| [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a folyamatokat és tevékenységeket az Azure Data Factoryban. |
-| [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
-| [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
+<a id="next-steps" class="xliff"></a>
 
+## Következő lépések
+Ez az oktatóanyag olyan másolási műveletet mutatott be, amelynek a forrásadattára az Azure Blob Storage, a céladattára pedig az Azure SQL Database volt. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
+
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+A táblázatban lévő adattárak hivatkozására kattintva megismerheti az adattárakba és az adattárakból történő adatmásolás módszereit.

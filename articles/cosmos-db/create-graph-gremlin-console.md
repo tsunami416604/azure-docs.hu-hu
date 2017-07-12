@@ -1,37 +1,40 @@
 ---
-title: "Oktatóanyag az Azure Cosmos DB-hez: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban | Microsoft Docs"
+title: "Oktatóanyag az Azure Cosmos DB használatához: Elemek létrehozása, lekérdezése és gráfbejárás az Apache TinkerPops Gremlin-konzolban | Microsoft Docs"
 description: "Az Azure Cosmos DB bevezetője csúcsok, élek és lekérdezések létrehozásához az Azure Cosmos DB Graph API-val"
-services: cosmosdb
+services: cosmos-db
 author: AndrewHoh
 manager: jhubbard
 editor: monicar
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
-ms.service: cosmosdb
+ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 06/10/2017
 ms.author: anhoh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: fb27ba1a70959ba92fbd021e9e42438081000e45
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 44972270a13f5ab5b3aa22557b36e80ae406a4a6
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/13/2017
 
 ---
-# <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
+<a id="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console" class="xliff"></a>
+
+# Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, adatbázist és gráfot (tárolót), majd hogyan dolgozhat a Graph API (előzetes verzió) alkalmazás adataival a [Gremlin-konzolban](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console). Az oktatóanyagból megtudhatja, hogyan hozhat létre és kérdezhet le csúcsokat és éleket, hogyan frissítheti a csúcsok tulajdonságait, hogyan járhatja be a gráfokat és vetheti el csúcsokat.
+Ez a rövid útmutató bemutatja egy Azure Cosmos DB-fiók, egy adatbázis és egy gráf (tároló) Azure Portal segítségével való létrehozását, majd az [Apache TinkerPop](http://tinkerpop.apache.org) [Gremlin-konzoljának](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használatát a Graph API (előzetes verzió) adataival végzett munkához. Az oktatóanyagból megtudhatja, hogyan hozhat létre és kérdezhet le csúcsokat és éleket, hogyan frissítheti a csúcsok tulajdonságait, hogyan járhatja be a gráfokat és vetheti el csúcsokat.
 
 ![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
 
 A Gremlin konzol egy Groovy/Java-alapú program, mely Linux, Mac és Windows rendszereken futtatható. A konzol az [Apache TinkerPop webhelyről](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.4/apache-tinkerpop-gremlin-console-3.2.4-bin.zip) tölthető le.
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 
 A bevezető során az Azure Cosmos DB-fiók létrehozásához Azure-előfizetés szükséges.
 
@@ -39,13 +42,17 @@ A bevezető során az Azure Cosmos DB-fiók létrehozásához Azure-előfizetés
 
 Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell lennie. A program 3.2.4-es vagy újabb verzióját használja.
 
-## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+<a id="create-a-database-account" class="xliff"></a>
 
-[!INCLUDE [cosmosdb-create-dbaccount-graph](../../includes/cosmosdb-create-dbaccount-graph.md)]
+## Adatbázisfiók létrehozása
 
-## <a name="add-a-graph"></a>Gráf hozzáadása
+[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
-[!INCLUDE [cosmosdb-create-graph](../../includes/cosmosdb-create-graph.md)]
+<a id="add-a-graph" class="xliff"></a>
+
+## Gráf hozzáadása
+
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a id="ConnectAppService"></a>Csatlakozás az alkalmazásszolgáltatáshoz
 1. A Gremlin-konzol elindítása előtt hozza létre vagy módosítsa a *remote-secure.yaml* konfigurációs fájlt az *apache-tinkerpop-gremlin-console-3.2.4/conf* könyvtárban.
@@ -65,56 +72,88 @@ Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell len
 
 Remek! Most, hogy befejeztük a beállítást, futtassunk néhány konzolparancsot!
 
-## <a name="create-vertices-and-edges"></a>Csúcsok és élek létrehozása
+Próbáljon ki egy egyszerű count() parancsot. Írja be a következőket a konzol parancssorába:
+```
+:> g.V().count()
+```
 
-Először is hozzunk létre négy személyt jelölő csúcsot *Thomas*, *Mary Kay*, *Robin* és *Ben* néven.
+> [!TIP]
+> Látja a ***:>*** jelet a g.V().count() szöveg előtt? 
+>
+> Ez része a parancsnak, amit be kell írnia. Ez fontos a Gremlin-konzol Azure Cosmos DB-vel való használatánál.  
+>
+> A :> előtag elhagyása arra utasítja a konzolt, hogy helyileg hajtsa végre a parancsot, gyakran a memórián belüli gráfból.
+> A ***:>*** előtag használatával távoli parancs végrehajtására utasítja a konzolt, ebben az esetben a Cosmos DB-ből (ami vagy a localhost emulátor, vagy egy > Azure példány).
+
+
+<a id="create-vertices-and-edges" class="xliff"></a>
+
+## Csúcsok és élek létrehozása
+
+Először hozzon létre öt darab, egy-egy személyt jelölő csúcsot *Thomas*, *Mary Kay*, *Robin*, *Ben*, és *Jack* néven.
 
 Bemenet (Thomas):
 
 ```
-:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
+:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
 ```
 
 Kimenet:
 
 ```
-==>[id:1eb91f79-94d7-4fd4-b026-18f707952f21,label:person,type:vertex,properties:[firstName:[[id:ec5fcfbe-040e-48c3-b961-31233c8b1801,value:Thomas]],lastName:[[id:86e5b580-0bca-4bc2-bc53-a46f92c1a182,value:Andersen]],age:[[id:2caeab3c-c66d-4098-b673-40a8101bb72a,value:44]]]]
+==>[id:796cdccc-2acd-4e58-a324-91d6f6f5ed6d,label:person,type:vertex,properties:[firstName:[[id:f02a749f-b67c-4016-850e-910242d68953,value:Thomas]],lastName:[[id:f5fa3126-8818-4fda-88b0-9bb55145ce5c,value:Andersen]],age:[[id:f6390f9c-e563-433e-acbf-25627628016e,value:44]],userid:[[id:796cdccc-2acd-4e58-a324-91d6f6f5ed6d|userid,value:1]]]]
 ```
 Bemenet (Mary Kay):
 
 ```
-:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39)
+:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
+
 ```
 
 Kimenet:
 
 ```
-==>[id:899a9d37-6701-48fc-b0a1-90950be7e0f4,label:person,type:vertex,properties:[firstName:[[id:c79c5599-8646-47d1-9a49-3456200518ce,value:Mary Kay]],lastName:[[id:c1362095-9dcc-479d-ab21-86c1b6d4ffc1,value:Andersen]],age:[[id:0b530408-bfae-4e8f-98ad-c160cd6e6a8f,value:39]]]]
+==>[id:0ac9be25-a476-4a30-8da8-e79f0119ea5e,label:person,type:vertex,properties:[firstName:[[id:ea0604f8-14ee-4513-a48a-1734a1f28dc0,value:Mary Kay]],lastName:[[id:86d3bba5-fd60-4856-9396-c195ef7d7f4b,value:Andersen]],age:[[id:bc81b78d-30c4-4e03-8f40-50f72eb5f6da,value:39]],userid:[[id:0ac9be25-a476-4a30-8da8-e79f0119ea5e|userid,value:2]]]]
+
 ```
 
 Bemenet (Robin):
 
 ```
-:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield')
+:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
 ```
 
 Kimenet:
 
 ```
-==>[id:953aefd9-5a54-4033-9b3a-d4dc3049f720,label:person,type:vertex,properties:[firstName:[[id:bbda02e0-8a96-4ca1-943e-621acbb26824,value:Robin]],lastName:[[id:f0291ad3-05a3-40ec-aabb-6538a7c331e3,value:Wakefield]]]]
+==>[id:8dc14d6a-8683-4a54-8d74-7eef1fb43a3e,label:person,type:vertex,properties:[firstName:[[id:ec65f078-7a43-4cbe-bc06-e50f2640dc4e,value:Robin]],lastName:[[id:a3937d07-0e88-45d3-a442-26fcdfb042ce,value:Wakefield]],userid:[[id:8dc14d6a-8683-4a54-8d74-7eef1fb43a3e|userid,value:3]]]]
 ```
 
 Bemenet (Ben):
 
 ```
-:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller')
+:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
+
 ```
 
 Kimenet:
 
 ```
-==>[id:81c891d9-beca-4c87-9009-13a826c9ed9a,label:person,type:vertex,properties:[firstName:[[id:3a3b53d3-888c-46da-bb54-1c42194b1e18,value:Ben]],lastName:[[id:48c6dd50-79c4-4585-ab71-3bf998061958,value:Miller]]]]
+==>[id:ee86b670-4d24-4966-9a39-30529284b66f,label:person,type:vertex,properties:[firstName:[[id:a632469b-30fc-4157-840c-b80260871e9a,value:Ben]],lastName:[[id:4a08d307-0719-47c6-84ae-1b0b06630928,value:Miller]],userid:[[id:ee86b670-4d24-4966-9a39-30529284b66f|userid,value:4]]]]
 ```
+
+Bemenet (Jack):
+
+```
+:> g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
+```
+
+Kimenet:
+
+```
+==>[id:4c835f2a-ea5b-43bb-9b6b-215488ad8469,label:person,type:vertex,properties:[firstName:[[id:4250824e-4b72-417f-af98-8034aa15559f,value:Jack]],lastName:[[id:44c1d5e1-a831-480a-bf94-5167d133549e,value:Connor]],userid:[[id:4c835f2a-ea5b-43bb-9b6b-215488ad8469|userid,value:5]]]]
+```
+
 
 Ezután adjunk meg éleket. Ezek a személyek közötti kapcsolatokat jelölik.
 
@@ -154,7 +193,9 @@ Kimenet:
 ==>[id:889c4d3c-549e-4d35-bc21-a3d1bfa11e00,label:knows,type:edge,inVLabel:person,outVLabel:person,inV:40fd641d-546e-412a-abcc-58fe53891aab,outV:3e324073-ccfc-4ae1-8675-d450858ca116]
 ```
 
-## <a name="update-a-vertex"></a>Csúcs frissítése
+<a id="update-a-vertex" class="xliff"></a>
+
+## Csúcs frissítése
 
 Most frissítsük a *Thomas* csúcspontot új életkor (*45*) megadásával.
 
@@ -168,7 +209,9 @@ Kimenet:
 ==>[id:ae36f938-210e-445a-92df-519f2b64c8ec,label:person,type:vertex,properties:[firstName:[[id:872090b6-6a77-456a-9a55-a59141d4ebc2,value:Thomas]],lastName:[[id:7ee7a39a-a414-4127-89b4-870bc4ef99f3,value:Andersen]],age:[[id:a2a75d5a-ae70-4095-806d-a35abcbfe71d,value:45]]]]
 ```
 
-## <a name="query-your-graph"></a>Gráf lekérdezése
+<a id="query-your-graph" class="xliff"></a>
+
+## Gráf lekérdezése
 
 Futtassunk néhány lekérdezést a gráfon.
 
@@ -200,7 +243,9 @@ Kimenet:
 ==>Thomas
 ```
 
-## <a name="traverse-your-graph"></a>A gráf bejárása
+<a id="traverse-your-graph" class="xliff"></a>
+
+## A gráf bejárása
 
 A gráf bejárásával most kérdezzük le Thomas összes barátját.
 
@@ -230,40 +275,51 @@ Kimenet:
 ==>[id:a801a0cb-ee85-44ee-a502-271685ef212e,label:person,type:vertex,properties:[firstName:[[id:b9489902-d29a-4673-8c09-c2b3fe7f8b94,value:Ben]],lastName:[[id:e084f933-9a4b-4dbc-8273-f0171265cf1d,value:Miller]]]]
 ```
 
-## <a name="drop-a-vertex"></a>Csúcs elvetése
+<a id="drop-a-vertex" class="xliff"></a>
+
+## Csúcs elvetése
 
 Töröljünk egy csúcsot a gráfadatbázisból.
 
-Bemenet (a Robin csúcs elvetése):
+Bemenet (a Jack csúcs elvetése):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Robin').drop()
+:> g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
-## <a name="clear-your-graph"></a>Gráf adatainak törlése
+<a id="clear-your-graph" class="xliff"></a>
+
+## Gráf adatainak törlése
 
 Végezetül töröljük az adatbázisból az összes csúcsot és élet.
 
 Bemenet:
 
 ```
+:> g.E().drop()
 :> g.V().drop()
 ```
 
 Gratulálunk! Az Azure Cosmos DB: Graph API-oktatóanyag végére ért.
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+<a id="review-slas-in-the-azure-portal" class="xliff"></a>
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+## Az SLA-k áttekintése az Azure Portalon
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-Ha nem folytatja az alkalmazás használatát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást:  
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
+
+Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon:  
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
+2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 A rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB-fiókot, miként készíthet gráfokat az Adatkezelő használatával, és hogyan hozhat létre csúcsokat és éleket, valamint hogy hogyan járhat be gráfokat a Gremlin-konzollal. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

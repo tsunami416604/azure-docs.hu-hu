@@ -13,33 +13,36 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: c0d1271bc083688bbc72bd2556546c2f738e7345
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: a55f28fad4c70e49e417d2856568791b313ad1eb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/20/2017
 
 ---
-# <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob-tároló által aktivált függvény létrehozása
+<a id="create-a-function-triggered-by-azure-blob-storage" class="xliff"></a>
+
+# Azure Blob-tároló által aktivált függvény létrehozása
 
 Ismerje meg, hogyan hozhat létre olyan függvényt, amelyet az Azure Blob-tárolóba történő fájlfeltöltés vagy az ott található fájlok frissítése aktivál.
 
 ![Tekintse meg a naplókban található üzeneteket.](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
 
-A minta futtatása előtt az alábbiakat kell elvégeznie:
+## Előfeltételek
 
-- A [Microsoft Azure Storage Explorer](http://storageexplorer.com/) letöltése és telepítése.
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
++ A [Microsoft Azure Storage Explorer](http://storageexplorer.com/) letöltése és telepítése.
++ Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
+<a id="create-an-azure-function-app" class="xliff"></a>
+
+## Azure-függvényalkalmazás létrehozása
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -49,21 +52,31 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 <a name="create-function"></a>
 
-## <a name="create-a-blob-storage-triggered-function"></a>A blobtároló által aktivált függvény létrehozása
+<a id="create-a-blob-storage-triggered-function" class="xliff"></a>
 
-Bontsa ki a függvényalkalmazást, kattintson a **Függvények** elem melletti **+** gombra, majd kattintson a kívánt nyelvű **BlobTrigger** sablonra. Ezután használja a táblázatban megadott beállításokat, és kattintson a **Létrehozás** gombra.
+## A blobtároló által aktivált függvény létrehozása
 
-![Hozza létre a blobtároló által aktivált függvényt.](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
 
-| Beállítás | Ajánlott érték | Leírás |
-|---|---|---|
-| **Elérési út**   | mycontainer/{name}    | A figyelt blobtárolóban található hely. A blob fájlneve a kötésben adható át a _name_ paraméterrel.  |
-| **Tárfiók kapcsolata** | AzureWebJobStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |
-| **A függvény neve** | Egyedi a függvényalkalmazásban | Az üzenetsor által aktivált függvény neve. |
+    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
+
+2. Kattintson a választott nyelvhez tartozó **BlobTrigger** sablonra, és használja a táblázatban megadott beállításokat.
+
+    ![Hozza létre a blobtároló által aktivált függvényt.](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+
+    | Beállítás | Ajánlott érték | Leírás |
+    |---|---|---|
+    | **Elérési út**   | mycontainer/{name}    | A figyelt blobtárolóban található hely. A blob fájlneve a kötésben adható át a _name_ paraméterrel.  |
+    | **Tárfiók kapcsolata** | AzureWebJobStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |
+    | **A függvény neve** | Egyedi a függvényalkalmazásban | A blob által aktivált függvény neve. |
+
+3. Kattintson a **Létrehozás** elemre a függvény létrehozásához.
 
 Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **mycontainer** tárolót.
 
-## <a name="create-the-container"></a>A tároló létrehozása
+<a id="create-the-container" class="xliff"></a>
+
+## A tároló létrehozása
 
 1. A függvényben kattintson az **Integráció** elemre, bontsa ki a **Dokumentáció** elemet, és másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz. Ha már csatlakozott a tárfiókjához, folytassa a 4. lépéssel.
 
@@ -83,7 +96,9 @@ Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **mycontai
 
 A blobtároló létrehozása után tesztelheti a függvényt úgy, hogy feltölt egy fájlt a tárolóba.
 
-## <a name="test-the-function"></a>A függvény tesztelése
+<a id="test-the-function" class="xliff"></a>
+
+## A függvény tesztelése
 
 1. Térjen vissza az Azure Portalra, keresse meg a függvényt, bontsa ki a **Naplók** elemet a lap alján, és győződjön meg arról, hogy a naplózási adatfolyam nincs leállítva.
 
@@ -100,14 +115,19 @@ A blobtároló létrehozása után tesztelheti a függvényt úgy, hogy feltölt
     >[!NOTE]
     > Amikor a függvényalkalmazás az alapértelmezett használatalapú csomagban fut, előfordulhat, hogy akár több is perc is eltelik a blob hozzáadása vagy frissítése és a függvény aktiválása között. Ha kis késleltetésre van szüksége a blob által aktivált függvényekhez, célszerű App Service-csomagban futtatnia a függvényalkalmazást.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 Létrehozott egy függvényt, amely akkor fut, amikor blob felvétele vagy frissítése történik a blobtárolóban. 
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 További információ a blobtároló eseményindítóiról: [Azure Functions – a blobtároló kötései](functions-bindings-storage-blob.md).
+

@@ -3,47 +3,47 @@ title: "Az Azure Data Lake Analytics használatának első lépései az Azure CL
 description: "Ebből a cikkből megtudhatja, hogyan használhatja az Azure CLI 2.0-s verzióját egy Data Lake Analytics-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozásához U-SQL használatával, valamint a feladat elküldéséhez. "
 services: data-lake-analytics
 documentationcenter: 
-author: mumian
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/06/2017
+ms.date: 06/18/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 109460cecc4e11c729203af97c9bf1c22b90e61a
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: 35d30e90a8a390e21b08b0796f441f0e9154c499
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="tutorial-get-started-with-azure-data-lake-analytics-using-azure-cli-20-preview"></a>Oktatóanyag: Az Azure Data Lake Analytics használatának első lépései az Azure CLI 2.0-val (előzetes verzió)
+<a id="get-started-with-azure-data-lake-analytics-using-azure-cli-20" class="xliff"></a>
+
+# Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felületének 2.0-s verziójával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure CLI 2.0-s verzióját Azure Data Lake Analytics-fiókok létrehozásához, Data Lake Analytics-feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-fiókokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
+Az oktatóanyaggal egy olyan feladatot fog elkészíteni, amely beolvas egy tabulátorral elválasztott értékeket tartalmazó fájlt (TSV), majd konvertálja azt egy vesszővel elválasztott értékeket tartalmazó fájllá (CSV). Ha ugyanezt az oktatóanyagot más támogatott eszközök használatával szeretné elvégezni, használja a legördülő listákat a szakasz tetején.
 
-Az oktatóanyag során elkészít egy feladatot, amely beolvas egy tabulátorral elválasztott értékeket (TSV) tartalmazó fájlt, és azt vesszővel elválasztott értékeket (CSV) tartalmazó fájllá konvertálja. Ha ugyanezt az oktatóanyagot más támogatott eszközök használatával szeretné elvégezni, használja a legördülő listákat a szakasz tetején.
+<a id="prerequisites" class="xliff"></a>
 
-## <a name="prerequisites"></a>Előfeltételek
+## Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure CLI 2.0**. Lásd: [Install and configure Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (Az Azure parancssori felület telepítése és konfigurálása).
-* **Engedélyezze a Data Lake Store/Analytics CLI 2.0 előzetes verzióját**. A Data Lake Store és a Data Lake Analytics CLI 2.0 felületei még csak előzetes verzióban érhetők el. Futtassa az alábbi parancsokat mindkettő engedélyezéséhez:
 
-    ```azurecli
-    az component update --add dls
-    az component update --add dla 
-    ```
+<a id="log-in-to-azure" class="xliff"></a>
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## Jelentkezzen be az Azure-ba
 
 Jelentkezzen be az Azure-előfizetésébe:
 
-```azurecli
+```
+azurecli
 az login
 ```
 
@@ -53,162 +53,169 @@ Miután bejelentkezett, a login paranccsal listázhatja az előfizetéseit.
 
 Egy adott előfizetés használata:
 
-```azurecli
+```
 az account set --subscription <subscription id>
 ```
 
-## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
+<a id="create-data-lake-analytics-account" class="xliff"></a>
+
+## Data Lake Analytics-fiók létrehozása
 A feladatok futtatásához rendelkeznie kell egy Data Lake Analytics-fiókkal. A Data Lake Analytics-fiók létrehozásához az alábbiakat kell megadnia:
 
-* **Azure-erőforráscsoport**. A Data Lake Analytics-fiókot egy Azure-erőforráscsoporton belül kell létrehoznia. Az [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat csoportként használja. Az alkalmazás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti.  
-  
-    Az előfizetés alá tartozó meglévő erőforráscsoportok megjelenítése:
-  
-    ```azurecli
-    az group list 
-    ```
+* **Azure-erőforráscsoport**. A Data Lake Analytics-fiókot egy Azure-erőforráscsoportban kell létrehoznia. Az [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat csoportként használja. Az alkalmazás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti.  
 
-    Új erőforráscsoport létrehozása:
-  
-    ```azurecli
-    az group create --name "<Resource Group Name>" --location "<Azure Location>"
-    ```
+Az előfizetés alá tartozó meglévő erőforráscsoportok megjelenítése:
+
+```
+az group list
+```
+
+Új erőforráscsoport létrehozása:
+
+```
+az group create --name "<Resource Group Name>" --location "<Azure Location>"
+```
 
 * **A Data Lake Analytics-fiók neve**. Minden Data Lake Analytics-fiók rendelkezik egy névvel.
 * **Hely**. Használja az egyik, a Data Lake Analytics szolgáltatást támogató Azure-adatközpontot.
 * **Alapértelmezett Data Lake Store-fiók:** minden Data Lake Analytics-fiókhoz tartozik egy alapértelmezett Data Lake Store-fiók.
-  
-    A meglévő Data Lake Store-fiók megjelenítése:
 
-    ```azurecli
-    az dls account list
-    ```
-  
-    Új Data Lake Store-fiók létrehozása:
-  
-    ```azurecli
-    az dls account create --account "<Data Lake Store Account Name>" --resource-group "<Resource Group Name>"
-    ```
+A meglévő Data Lake Store-fiók megjelenítése:
+
+```
+az dls account list
+```
+
+Új Data Lake Store-fiók létrehozása:
+
+```azurecli
+az dls account create --account "<Data Lake Store Account Name>" --resource-group "<Resource Group Name>"
+```
 
 Egy Data Lake Analytics-fiók létrehozásához használja a következő szintaxist:
 
-```azurecli
+```
 az dla account create --account "<Data Lake Analytics Account Name>" --resource-group "<Resource Group Name>" --location "<Azure location>" --default-data-lake-store "<Default Data Lake Store Account Name>"
 ```
 
 A fiók létrehozása után az alábbi parancsok használatával listázhatja a fiókokat és jelentheti meg azok részleteit:
 
-```azurecli
+```
 az dla account list
 az dla account show --account "<Data Lake Analytics Account Name>"            
 ```
 
-## <a name="upload-data-to-data-lake-store"></a>Adatok feltöltése a Data Lake Store-ba
-Az alábbi oktatóanyagban keresési naplókat fog feldolgozni.  A keresési napló tárolható Data Lake-adattárban vagy Azure Blob Storage-ban. 
+<a id="upload-data-to-data-lake-store" class="xliff"></a>
 
-Az Azure Portal felhasználói felületet biztosít bizonyos mintaadatfájlok alapértelmezett Data Lake Store-fiókba való másolásához. Ilyen adatfájl a keresési napló is. Az adatok alapértelmezett Data Lake Store-fiókba való feltöltéséhez lásd a [Forrásadatok előkészítése](data-lake-analytics-get-started-portal.md#prepare-source-data) című szakaszt.
+## Adatok feltöltése a Data Lake Store-ba
+Az alábbi oktatóanyagban keresési naplókat fog feldolgozni.  A keresési napló tárolható Data Lake-adattárban vagy Azure Blob Storage-ban.
 
-A fájlok a CLI 2.0 segítségével való feltöltéséhez használja az alábbi parancsokat:
+Az Azure Portal felhasználói felületet biztosít bizonyos mintaadatfájlok alapértelmezett Data Lake Store-fiókba való másolásához. Ilyen adatfájl a keresési napló is. Az adatok alapértelmezett Data Lake Store-fiókba való feltöltéséhez lásd a [Forrásadatok előkészítése](data-lake-analytics-get-started-portal.md) című szakaszt.
 
-```azurecli
+A fájloknak a parancssori felület 2.0-s verziójával történő feltöltéséhez használja az alábbi parancsokat:
+
+```
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
 A Data Lake Analytics az Azure Blob Storage-hoz is rendelkezik hozzáféréssel.  A fájlok az Azure Blob Storage-ba történő feltöltéséhez lásd: [Using the Azure CLI with Azure Storage](../storage/storage-azure-cli.md) (Az Azure parancssori felület és az Azure Storage használata).
 
-## <a name="submit-data-lake-analytics-jobs"></a>Data Lake Analytics-feladatok küldése
-A Data Lake Analytics-feladatok nyelve a U-SQL. További információk a U-SQL-ről: [U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md) és [U-SQL nyelvi referencia](http://go.microsoft.com/fwlink/?LinkId=691348).
+<a id="submit-data-lake-analytics-jobs" class="xliff"></a>
+
+## Data Lake Analytics-feladatok küldése
+A Data Lake Analytics-feladatok nyelve a U-SQL. A U-SQL-ről további tudnivalók [A U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md) című cikkben és [a U-SQL nyelvvel foglalkozó segédanyagban](http://go.microsoft.com/fwlink/?LinkId=691348) találhatók.
 
 **Data Lake Analytics-feladatparancsfájl létrehozása**
 
 Hozzon létre egy szövegfájlt az alábbi U-SQL-parancsfájl alapján, és mentse a szövegfájlt a munkaállomáson:
-  
-    @searchlog =
-        EXTRACT UserId          int,
-                Start           DateTime,
-                Region          string,
-                Query           string,
-                Duration        int?,
-                Urls            string,
-                ClickedUrls     string
-        FROM "/Samples/Data/SearchLog.tsv"
-        USING Extractors.Tsv();
 
-    OUTPUT @searchlog   
-        TO "/Output/SearchLog-from-Data-Lake.csv"
+```
+@a  = 
+    SELECT * FROM 
+        (VALUES
+            ("Contoso", 1500.0),
+            ("Woodgrove", 2700.0)
+        ) AS 
+              D( customer, amount );
+OUTPUT @a
+    TO "/data.csv"
     USING Outputters.Csv();
-  
-Ez a U-SQL-parancsfájl beolvassa a forrásadatfájlt az **Extractors.Tsv()** segítségével, majd létrehoz egy csv-fájlt az **Outputters.Csv()** használatával. 
+```
+
+Ez a U-SQL-parancsfájl beolvassa a forrásadatfájlt az **Extractors.Tsv()** segítségével, majd létrehoz egy csv-fájlt az **Outputters.Csv()** használatával.
 
 Ne módosítsa az elérési utat, kivéve, ha átmásolja a forrásfájlt egy másik helyre.  A Data Lake Analytics létrehozza a kimeneti mappát, ha az még nem létezik.
 
 Egyszerűbb relatív útvonalakat használni az alapértelmezett Data Lake Store-fiókokban tárolt fájlokhoz. De használhat abszolút elérési utakat is.  Példa:
 
-    adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
+```
+adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
+```
 
 A társított tárfiókokban lévő fájlok eléréséhez abszolút elérési utakat kell használnia.  A társított Azure Storage-fiókban tárolt fájlok szintaxisa:
 
-    wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
-  
-  > [!NOTE]
-  > A nyilvános blobokkal vagy a nyilvános tárolókhoz hozzáférési jogosultságokkal rendelkező Azure Blob-tárolók használata jelenleg nem támogatott.      
-  > 
-  > 
+```
+wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
+```
+
+> [!NOTE]
+> A nyilvános blobokat tartalmazó Azure Blob-tárolók nem támogatottak.      
+> A nyilvános tárolókat tartalmazó Azure Blob-tárolók nem támogatottak.      
+>
 
 **Feladatok elküldése**
 
 Feladatok elküldéséhez használja a következő szintaxist.
 
-```azurecli
+```
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
 Példa:
 
-```azurecli
+```
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
 **Feladatok listázása és részleteik megjelenítése**
 
-```azurecli
+```
+azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
 **Feladatok megszakítása**
 
-```azurecli
+```
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-##<a name="retrieve-job-results"></a>Feladatok eredményeinek lekérése
+<a id="retrieve-job-results" class="xliff"></a>
+
+##Feladatok eredményeinek lekérése
 
 A feladat befejezése után az alábbi parancsok segítségével listázhatja ki a kimeneti fájlokat, és töltheti le a fájlokat:
 
-```azurecli
+```
 az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destintion>"
-az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" 
+az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" --length 128 --offset 0
 az dls fs downlod --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "<Destination Path and File Name>"
 ```
 
 Példa:
 
-```azurecli
+```
 az dls fs downlod --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "C:\DLA\myfile.csv"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
 
-* Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
-* A Data Lake Analytics CLI 2.0-referenciadokumentum megtekintéséhez lásd: [Data Lake Analytics – az dla](https://docs.microsoft.com/cli/azure/dla).
-* A Data Lake Store CLI 2.0-referenciadokumentum megtekintéséhez lásd: [Data Lake Store – az dls](https://docs.microsoft.com/cli/azure/dls).
+## Következő lépések
+
+* A Data Lake Analytics parancssori felületének 2.0-s verziójával foglalkozó referenciadokumentum megtekintéséhez lásd: [Data Lake Analytics](https://docs.microsoft.com/cli/azure/dla).
+* A Data Lake Store parancssori felületének 2.0-s verziójával foglalkozó referenciadokumentum megtekintéséhez lásd: [Data Lake Store](https://docs.microsoft.com/cli/azure/dls).
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával).
-* Ismerkedés a U-SQL-alkalmazások fejlesztésével: [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) (U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával).
-* A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).
-* Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md) (Az Azure Data Lake Analytics kezelése az Azure Portallal).
-* A Data Lake Analytics áttekintése: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
-
 

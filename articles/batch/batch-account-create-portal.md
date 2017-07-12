@@ -12,18 +12,20 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 8cfe8689494a9f85d1533d259a2744e18407ecef
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 053e2ae7f382bc55a6638ccd612289ab2ba64e52
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
+<a id="create-a-batch-account-with-the-azure-portal" class="xliff"></a>
+
+# Batch-fiók létrehozása az Azure Portalon
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](batch-account-create-portal.md)
@@ -37,11 +39,15 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
 
 
-## <a name="create-a-batch-account"></a>Batch-fiók létrehozása
+<a id="create-a-batch-account" class="xliff"></a>
+
+## Batch-fiók létrehozása
 
 A portálon a két *készletfelosztási mód* egyikének használatával hozhat létre Batch-fiókot: a **Batch szolgáltatás** módban vagy az újabb, **felhasználói előfizetés** módban, amely több konfigurálást igényel. További információt a két módról a [funkciók áttekintésében](batch-api-basics.md#account) találhat. A felhasználói előfizetés mód funkcióiról a [blogbejegyzésben](https://blogs.technet.microsoft.com/windowshpc/2017/03/17/azure-batch-vnet-and-custom-image-support-for-virtual-machine-pools/) is olvashat.
 
-## <a name="batch-service-mode"></a>Batch szolgáltatás mód
+<a id="batch-service-mode" class="xliff"></a>
+
+## Batch szolgáltatás mód
 
 
 
@@ -69,9 +75,13 @@ A portálon a két *készletfelosztási mód* egyikének használatával hozhat 
 
    A portál jelzi a folyamatban lévő üzembe helyezést. A befejezéskor **Az üzembe helyezések sikerültek** értesítés jelenik meg az **Értesítések** területen.
 
-## <a name="user-subscription-mode"></a>Felhasználói előfizetés mód
+<a id="user-subscription-mode" class="xliff"></a>
 
-### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Az előfizetés elérésének engedélyezése az Azure Batch számára (egyszeri művelet)
+## Felhasználói előfizetés mód
+
+<a id="allow-azure-batch-to-access-the-subscription-one-time-operation" class="xliff"></a>
+
+### Az előfizetés elérésének engedélyezése az Azure Batch számára (egyszeri művelet)
 Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, az alábbi lépéseket követve regisztrálja az előfizetését a Batch szolgáltatásban. (Ha korábban már regisztrált, ugorjon a következő szakaszra.)
 
 1. Jelentkezzen be az [Azure Portalra][azure_portal].
@@ -82,18 +92,27 @@ Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, a
 
     ![Az előfizetéshez való hozzáférés vezérlése][subscription_access]
 
-4. Az **Engedélyek hozzáadása** panelen válassza a **Közreműködő** szerepkört, és keressen rá a **MicrosoftAzureBatch** kifejezésre (szóközök nélkül). Válassza a **MicrosoftAzureBatch** lehetőséget, és kattintson a **Mentés** elemre.
+4. Az **Engedélyek hozzáadása** panelen válassza a **Közreműködő** szerepkört, és keressen rá a Batch API kifejezésre. Keressen rá az egyes karakterláncokra, addig amíg meg nem találja az API-t:
+    1. **MicrosoftAzureBatch**.
+    2. **Microsoft Azure Batch**. Újabb Azure AD-bérlők ezt a nevet használhatják.
+    3. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója. 
+
+5. Miután megtalálta a Batch API-t, jelölje ki, majd kattintson a **Mentés** gombra.
 
     ![Batch-engedélyek hozzáadása][add_permission]
 
-### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
+<a id="create-a-key-vault" class="xliff"></a>
+
+### Kulcstartó létrehozása
 Felhasználói előfizetés módban olyan Azure Key Vault szükséges, amely ugyanahhoz az erőforráscsoporthoz tartozik, mint a létrehozandó Batch-fiók. Győződjön meg arról, hogy az erőforráscsoport olyan régióban található, amelyben [elérhető](https://azure.microsoft.com/regions/services/) a Batch szolgáltatás, és amelyet támogat az előfizetése.
 
 1. Az [Azure Portalon][azure_portal] kattintson az **Új** > **Biztonság és identitás** > **Kulcstartó** elemre.
 
 2. A **Kulcstartó létrehozása** panelen adja meg a kulcstartó nevét, és hozzon létre a régióban egy erőforráscsoportot a Batch-fiókhoz. A többi beállításnál hagyja meg az alapértelmezett értéket, majd kattintson a **Létrehozás** elemre.
 
-### <a name="create-a-batch-account"></a>Batch-fiók létrehozása
+<a id="create-a-batch-account" class="xliff"></a>
+
+### Batch-fiók létrehozása
 
 1. Az [Azure Portalon][azure_portal] kattintson az **Új** > **Számítás** > **Batch szolgáltatás** lehetőségre.
 
@@ -122,7 +141,9 @@ Felhasználói előfizetés módban olyan Azure Key Vault szükséges, amely ugy
 
 
 
-## <a name="view-batch-account-properties"></a>Batch-fiók tulajdonságainak megtekintése
+<a id="view-batch-account-properties" class="xliff"></a>
+
+## Batch-fiók tulajdonságainak megtekintése
 A fiók létrehozása után megnyithatja a **Batch-fiók panelt** a beállítások és tulajdonságok eléréséhez. Az összes fiókbeállítást és tulajdonságot elérheti a Batch-fiók panelének bal oldali menüjéből.
 
 ![A Batch-fiók panel az Azure Portalon][account_blade]
@@ -141,7 +162,9 @@ A fiók létrehozása után megnyithatja a **Batch-fiók panelt** a beállítás
 
 [!INCLUDE [batch-pricing-include](../../includes/batch-pricing-include.md)]
 
-## <a name="linked-azure-storage-account"></a>Társított Azure Storage-fiók
+<a id="linked-azure-storage-account" class="xliff"></a>
+
+## Társított Azure Storage-fiók
 
 Dönthet úgy, hogy általános célú Azure Storage-fiókot csatol a Batch-fiókhoz. A Batch [alkalmazáscsomagok](batch-application-packages.md) funkciója Azure Blob Storage-ot használ, ahogyan a [Batch File Conventions .NET](batch-task-output.md) könyvtár is. Ezek a választható funkciók segítik a Batch-feladatok által futtatott alkalmazások üzembe helyezését és az általuk létrehozott adatok megőrzését.
 
@@ -161,7 +184,9 @@ Dönthet úgy, hogy általános célú Azure Storage-fiókot csatol a Batch-fió
 
 ![A tárfiók hozzáférési kulcsainak ismételt létrehozása][4]
 
-## <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
+<a id="batch-service-quotas-and-limits" class="xliff"></a>
+
+## A Bach szolgáltatás kvótái és korlátozásai
 Vegye figyelembe, hogy az Azure-előfizetéshez és más Azure-szolgáltatásokhoz hasonlóan a Batch-fiókokra is bizonyos [kvóták és korlátozások](batch-quota-limit.md) érvényesek. A Batch-fiókok aktuális kvótái a **Tulajdonságok** fiókban jelennek meg a portálon.
 
 ![Batch-fiókra vonatkozó kvóták az Azure Portalon][quotas]
@@ -170,14 +195,18 @@ Vegye figyelembe, hogy az Azure-előfizetéshez és más Azure-szolgáltatásokh
 
 Ezenkívül, sok kvóta egyszerűen növelhető az Azure Portalra elküldött ingyenes terméktámogatási kéréssel. A kvótanövelések kéréséről részletekért lásd: [Quotas and limits for the Azure Batch service](batch-quota-limit.md) (Az Azure Batch szolgáltatás kvótái és korlátai).
 
-## <a name="other-batch-account-management-options"></a>Egyéb Batch-fiókkezelési lehetőségek
+<a id="other-batch-account-management-options" class="xliff"></a>
+
+## Egyéb Batch-fiókkezelési lehetőségek
 Az Azure Portal használata mellett a következőkkel is létrehozhat és kezelhet Batch-fiókokat:
 
 * [Batch – PowerShell-parancsmagok](batch-powershell-cmdlets-get-started.md)
 * [Azure CLI](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 * A Batch szolgáltatás fogalmairól és funkcióiról további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md) talál. A cikk az elsődleges Batch-erőforrásokat tárgyalja, például a készleteket, a számítási csomópontokat, a feladatokat, a tevékenységeket és a szolgáltatás olyan funkcióinak áttekintését nyújtja, amely lehetővé teszi a nagy méretű számítási feladatok futtatását.
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](batch-dotnet-get-started.md) vagy [Python](batch-python-tutorial.md) segítségével való fejlesztésének alapjait. Ezek a bevezető cikkek végigvezetik egy működő alkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.
 

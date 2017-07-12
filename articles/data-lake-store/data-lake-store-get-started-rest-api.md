@@ -14,21 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: nitinme
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: de04bf367f9f9f92756202cf6c1571f811a0f1f7
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: dc2c8f58e0a2faf1b00f4903148328a5141a8637
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/07/2017
 
 
 ---
-# <a name="get-started-with-azure-data-lake-store-using-rest-apis"></a>Az Azure Data Lake Store használatának első lépései a REST API használatával
+<a id="get-started-with-azure-data-lake-store-using-rest-apis" class="xliff"></a>
+
+# Az Azure Data Lake Store használatának első lépései a REST API használatával
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI](data-lake-store-get-started-cli.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
@@ -42,15 +44,21 @@ Ebből a cikkből megtudhatja, hogyan kezelheti a fiókokat, illetve hogyan hajt
 > 
 > 
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Azure Active Directory-alkalmazás létrehozása**. A Data Lake Store alkalmazás Azure AD-val történő hitelesítéséhez az Azure AD alkalmazást kell használni. Az Azure AD-val többféle módon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatos útmutatást és további információkat a [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Hitelesítés a Data Lake Store-ral az Azure Active Directoryt használva).
+* **Egy Azure Active Directory-alkalmazás létrehozása**. A Data Lake Store alkalmazás Azure AD-val történő hitelesítéséhez az Azure AD alkalmazást kell használni. Az Azure AD-val többféle módon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 * [cURL](http://curl.haxx.se/). Ez a cikk a cURL használatával mutatja be, hogyan lehet REST API-hívásokat indítani a Data Lake Store-fiókra.
 
-## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
+<a id="how-do-i-authenticate-using-azure-active-directory" class="xliff"></a>
+
+## Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
 Az Azure Active Directory használatával történő hitelesítést két módon végezheti el.
 
-### <a name="end-user-authentication-interactive"></a>Végfelhasználó hitelesítése (interaktív)
+<a id="end-user-authentication-interactive" class="xliff"></a>
+
+### Végfelhasználó hitelesítése (interaktív)
 Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és minden művelet a felhasználó kontextusában lesz végrehajtva. Az interaktív hitelesítéshez hajtsa végre a következő lépéseket.
 
 1. Az alkalmazáson keresztül irányítsa át a felhasználót az alábbi URL-címre:
@@ -91,7 +99,9 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
 
-### <a name="service-to-service-authentication-non-interactive"></a>Szolgáltatások közötti hitelesítés (nem interaktív)
+<a id="service-to-service-authentication-non-interactive" class="xliff"></a>
+
+### Szolgáltatások közötti hitelesítés (nem interaktív)
 Ebben az esetben az alkalmazás maga biztosítja saját hitelesítő adatait a műveletek végrehajtásához. Ehhez egy alábbihoz hasonló POST-kérelmet kell kiadnia. 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -106,7 +116,9 @@ A kérelem kimenete egy engedélyezési jogkivonatot fog tartalmazni (amelyet az
 
 Ez a cikk a **nem interaktív** módszert alkalmazza. További információk a nem interaktív (szolgáltatások közötti) hívásokról: [Szolgáltatások közötti hívások hitelesítő adatok használatával](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
-## <a name="create-a-data-lake-store-account"></a>Data Lake Store-fiók létrehozása
+<a id="create-a-data-lake-store-account" class="xliff"></a>
+
+## Data Lake Store-fiók létrehozása
 Ez a művelet az [itt](https://msdn.microsoft.com/library/mt694078.aspx) definiált REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -123,7 +135,9 @@ A fenti parancsban cserélje le a(z) \<`REDACTED`\> részt a korábban kapott en
     "properties": {}
     }    
 
-## <a name="create-folders-in-a-data-lake-store-account"></a>Mappák létrehozása Data Lake Store-fiókban
+<a id="create-folders-in-a-data-lake-store-account" class="xliff"></a>
+
+## Mappák létrehozása Data Lake Store-fiókban
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory) definiált WebHDFS REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -136,7 +150,9 @@ Ha a művelet sikeresen befejeződik, a következőhöz hasonló választ kell k
 
     {"boolean":true}
 
-## <a name="list-folders-in-a-data-lake-store-account"></a>Data Lake Store-fiók mappáinak listázása
+<a id="list-folders-in-a-data-lake-store-account" class="xliff"></a>
+
+## Data Lake Store-fiók mappáinak listázása
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory) definiált WebHDFS REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -164,7 +180,9 @@ Ha a művelet sikeresen befejeződik, a következőhöz hasonló választ kell k
     }
     }
 
-## <a name="upload-data-into-a-data-lake-store-account"></a>Adatok feltöltése egy Data Lake Store-fiókba
+<a id="upload-data-into-a-data-lake-store-account" class="xliff"></a>
+
+## Adatok feltöltése egy Data Lake Store-fiókba
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File) definiált WebHDFS REST API-híváson alapul.
 
 Használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -186,7 +204,9 @@ A kimenet a következő példához hasonló:
     HTTP/1.1 201 Created
     ...
 
-## <a name="read-data-from-a-data-lake-store-account"></a>Adatok beolvasása a Data Lake Store-fiókból
+<a id="read-data-from-a-data-lake-store-account" class="xliff"></a>
+
+## Adatok beolvasása a Data Lake Store-fiókból
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File) definiált WebHDFS REST API-híváson alapul.
 
 Az adatok beolvasása a Data Lake Store-fiókból egy kétlépéses folyamat.
@@ -210,7 +230,9 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
     Hello, Data Lake Store user!
 
-## <a name="rename-a-file-in-a-data-lake-store-account"></a>Fájl átnevezése a Data Lake Store-fiókban
+<a id="rename-a-file-in-a-data-lake-store-account" class="xliff"></a>
+
+## Fájl átnevezése a Data Lake Store-fiókban
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory) definiált WebHDFS REST API-híváson alapul.
 
 Fájl átnevezéséhez használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -224,7 +246,9 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
     {"boolean":true}
 
-## <a name="delete-a-file-from-a-data-lake-store-account"></a>Fájl törlése a Data Lake Store-fiókból
+<a id="delete-a-file-from-a-data-lake-store-account" class="xliff"></a>
+
+## Fájl törlése a Data Lake Store-fiókból
 Ez a művelet az [itt](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory) definiált WebHDFS REST API-híváson alapul.
 
 Fájl törléséhez használja a következő cURL-parancsot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -238,7 +262,9 @@ A következőhöz hasonló kimenetnek kell megjelennie:
 
     {"boolean":true}
 
-## <a name="delete-a-data-lake-store-account"></a>Data Lake Store-fiók törlése
+<a id="delete-a-data-lake-store-account" class="xliff"></a>
+
+## Data Lake Store-fiók törlése
 Ez a művelet az [itt](https://msdn.microsoft.com/library/mt694075.aspx) definiált REST API-híváson alapul.
 
 Az alábbi cURL-parancs segítségével törölheti a Data Lake Store-fiókot. Cserélje le a **\<yourstorename>** elemet saját Data Lake Store-nevére.
@@ -251,7 +277,9 @@ A következőhöz hasonló kimenetnek kell megjelennie:
     ...
     ...
 
-## <a name="see-also"></a>Lásd még:
+<a id="see-also" class="xliff"></a>
+
+## Lásd még:
 * [Az Azure Data Lake Store-ral kompatibilis nyílt forráskódú big data-alkalmazások](data-lake-store-compatible-oss-other-applications.md)
 
 

@@ -13,17 +13,20 @@ ms.devlang: multiple
 ms.topic: hero-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/10/2017
+ms.date: 06/08/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: abd508631787ba5f839a4ae2ea82e76c4bfab425
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: f00ca3b8a35c0c49277457bd42fe8a314520d5a5
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
-# <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
+<a id="create-your-first-function-in-the-azure-portal" class="xliff"></a>
+
+# Az első függvény létrehozása az Azure portálon
 
 Az Azure Functions lehetővé teszi a kód végrehajtását kiszolgáló nélküli környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást. Ebben a témakörben megismerheti, hogyan használhatja a Functions szolgáltatást egy „hello world” függvény létrehozására az Azure Portalon.
 
@@ -31,13 +34,15 @@ Az Azure Functions lehetővé teszi a kód végrehajtását kiszolgáló nélkü
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-A témakörben foglalt lépések végrehajtása legfeljebb 5 percet vehet igénybe.
+<a id="log-in-to-azure" class="xliff"></a>
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## Jelentkezzen be az Azure-ba
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
+<a id="create-a-function-app" class="xliff"></a>
+
+## Függvényalkalmazás létrehozása
 
 Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, telepítése és megosztása érdekében. 
 
@@ -59,9 +64,11 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 A rendszer létrehoz egy függvényt a választott nyelven a HTTP által indított függvények sablonjának használatával. Az új függvényt egy HTTP-kérelem küldésével futtathatja.
 
-## <a name="test-the-function"></a>A függvény tesztelése
+<a id="test-the-function" class="xliff"></a>
 
-1. Az új függvényben kattintson a **</>Függvény URL-címének lekérése** elemre, és másolja vágólapra a **függvény URL-címét**. 
+## A függvény tesztelése
+
+1. Az új függvényben kattintson a **< /> Függvény URL-címének beolvasása** elemre, válassza a **default (Function key)** (alapértelmezett (funkcióbillentyű)) lehetőséget, majd kattintson a **Másolás** gombra. 
 
     ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
@@ -71,17 +78,23 @@ A rendszer létrehoz egy függvényt a választott nyelven a HTTP által indíto
 
     A kérelem URL-címe alapértelmezés szerint tartalmazza a függvény HTTP protokollon keresztüli eléréséhez szükséges kulcsot.   
 
-## <a name="view-the-function-logs"></a>A függvény naplóinak megtekintése 
+<a id="view-the-function-logs" class="xliff"></a>
+
+## A függvény naplóinak megtekintése 
 
 A függvény futásakor a rendszer nyomkövetési adatok ír a naplókba. Az előző végrehajtás nyomkövetési adatainak megtekintéséhez térjen vissza a függvényhez a portálon, és a **Naplók** elem kibontásához kattintson a képernyő alján található felfelé mutató nyílra. 
 
 ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-first-azure-function/function-view-logs.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
 
 [!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 Létrehozott egy függvényalkalmazást és egy HTTP által aktivált egyszerű függvényt.  
 

@@ -1,6 +1,6 @@
 ---
-title: "A HDInsight alatt futó Apache Kafka bemutatása | Microsoft Docs"
-description: "Ez a cikk a HDInsight alatt futó Apache Kafka ismertetését tartalmazza. Leírja, mi ez, mire szolgál, illetve hol találhat példákat és információt a használatának első lépéseiről."
+title: "Az Azure HDInsight-alapú Apache Kafka bemutatása | Microsoft Docs"
+description: "Ismerje meg a HDInsight-alapú Apache Kafkát: Mi ez, mire való, hol találhat rá példákat, és hol találhatja meg az első lépésekre vonatkozó információt?"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -13,20 +13,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 06/15/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: ca48abcdc9f9d05648a4b03bdb5fec7b4a5b7cce
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: f6a49be148ded1a90a642b83d3d70a83e572f4e4
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/17/2017
 
 ---
-# <a name="introducing-apache-kafka-on-hdinsight-preview"></a>A HDInsight alatt futó Apache Kafka (előzetes verzió) bemutatása
+<a id="introducing-apache-kafka-on-hdinsight-preview" class="xliff"></a>
+
+# A HDInsight alatt futó Apache Kafka (előzetes verzió) bemutatása
 
 Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. A Kafka az üzenetsorokhoz hasonló üzenetközvetítő funkciót is biztosít, amellyel adatstreameket tehet közzé, illetve feliratkozhat rájuk. A HDInsight alatt futó Kafka felügyelt, rugalmasan méretezhető és magas rendelkezésre állású szolgáltatást biztosít önnek a Microsoft Azure-felhőben.
 
-## <a name="why-use-kafka-on-hdinsight"></a>Miért érdemes a HDInsight alatt futó Kafkát használni?
+<a id="why-use-kafka-on-hdinsight" class="xliff"></a>
+
+## Miért érdemes a HDInsight alatt futó Kafkát használni?
 
 A Kafka a következő funkciókat biztosítja:
 
@@ -40,7 +44,15 @@ A Kafka a következő funkciókat biztosítja:
 
 * Hibatűrés: A partíciók replikálhatók a csomópontok között a hibatűrés biztosításához.
 
-## <a name="use-cases"></a>Használati esetek
+* Integráció az Azure Managed Disks szolgáltatással: Az Azure Managed Disks jobb méretezést és teljesítményt biztosít a HDInsight-fürt által használt virtuális gépek lemezei számára.
+
+    Alapértelmezés szerint a felügyelt lemezek engedélyezve vannak a HDInsight-alapú Kafka számára, és a csomópontonként használt lemezek száma konfigurálható a HDInsight létrehozása során. További tudnivalók a felügyelt lemezekről: [Azure Managed Disks](../storage/storage-managed-disks-overview.md).
+
+    További tudnivalók a felügyelt lemezek HDInsight-alapú Kafkával való konfigurálásáról: [A HDInsight-alapú Kafka méretezhetőségének javítása](hdinsight-apache-kafka-scalability.md).
+
+<a id="use-cases" class="xliff"></a>
+
+## Használati esetek
 
 * **Üzenetkezelés**: sokszor használják a Kafkát üzenetközvetítőként, mivel támogatja a közzétételi-feliratkozási üzenetmintát.
 
@@ -50,7 +62,9 @@ A Kafka a következő funkciókat biztosítja:
 
 * **Átalakítás**: streamfeldolgozás használatával egyesítheti és bővítheti az adatokat több bemeneti témakörből egy vagy több kimeneti témakörbe.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 

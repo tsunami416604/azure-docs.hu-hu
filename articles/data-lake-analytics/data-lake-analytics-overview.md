@@ -12,27 +12,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/06/2017
-ms.author: edmaca
+ms.date: 06/23/2017
+ms.author: saveenr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: cb2da3515cfe5fd460e16b019d3738f4a9a050bb
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 8817b511d779029421491194b50120d51ec9dbad
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/26/2017
 
 
 ---
-# <a name="overview-of-microsoft-azure-data-lake-analytics"></a>A Microsoft Azure Data Lake Analytics áttekintése
-## <a name="what-is-azure-data-lake-analytics"></a>Mi az az Azure Data Lake Analytics?
-Az Azure Data Lake Analytics egy igény szerinti elemzési feladatokat végző szolgáltatás a big data-elemzés egyszerűsítésére. Ez a szolgáltatás lehetővé teszi, hogy a feladatok írására, futtatására és kezelésére összpontosítson, és nem kell az elosztott infrastruktúra működtetésével bajlódnia. Az üzembe helyezés, a konfigurálás és a hardver beállítása helyett lekérdezéseket írhat az adatátalakítás és az értékes információk kinyerése érdekében. Az elemző szolgáltatás bármekkora munkát képes elvégezni, csak be kell állítania, hogy mekkora teljesítményre van szüksége. Költséghatékony megoldás, hiszen csak az elvégzett munkáért kell fizetni. Az elemző szolgáltatás az Azure Active Directoryt is támogatja, ami lehetővé teszi a helyszíni identitáskezelő rendszerbe integrált hozzáférések és szerepkörök kezelését. A szolgáltatás tartalmazza a U-SQL lekérdezésnyelvet is, amely az SQL előnyeit egyesíti a felhasználói kód kifejezőerejével. A U-SQL skálázható elosztott futtatókörnyezete segítségével hatékonyan elemezheti az adattárban és az Azure, az Azure SQL Database és az Azure SQL Data Warehouse szolgáltatásban működő SQL Server kiszolgálókon található adatokat.
+<a id="overview-of-microsoft-azure-data-lake-analytics" class="xliff"></a>
 
-## <a name="key-capabilities"></a>Főbb képességek
+# A Microsoft Azure Data Lake Analytics áttekintése
+<a id="what-is-azure-data-lake-analytics" class="xliff"></a>
+
+## Mi az az Azure Data Lake Analytics?
+Az Azure Data Lake Analytics egy igény szerinti elemzési feladatokat végző szolgáltatás a big data-elemzés egyszerűsítésére. Az elosztott infrastruktúra működtetése helyett így nyugodtan összpontosíthat a feladatok írására, futtatására és kezelésére. Az üzembe helyezés, a konfigurálás és a hardver beállítása helyett lekérdezéseket írhat az adatátalakítás és az értékes információk kinyerése érdekében. Az elemző szolgáltatás bármekkora munkát képes elvégezni, csak be kell állítania, hogy mekkora teljesítményre van szüksége. Költséghatékony megoldás, hiszen csak az elvégzett munkáért kell fizetni. Az elemző szolgáltatás az Azure Active Directoryt is támogatja, ami lehetővé teszi a helyszíni identitáskezelő rendszerbe integrált hozzáférések és szerepkörök kezelését. A szolgáltatás tartalmazza a U-SQL lekérdezésnyelvet is, amely az SQL előnyeit egyesíti a felhasználói kód kifejezőerejével. A U-SQL skálázható elosztott futtatókörnyezete segítségével hatékonyan elemezheti az adattárban és az Azure, az Azure SQL Database és az Azure SQL Data Warehouse szolgáltatásban működő SQL Server kiszolgálókon található adatokat.
+
+<a id="key-capabilities" class="xliff"></a>
+
+## Főbb képességek
 * **Dinamikus méretezés**
   
-    A Data Lake Analytics a felhőbeli méretezéshez és teljesítményhez lett tervezve.  Dinamikusan kiosztja az erőforrásokat, és lehetővé teszi az adatok terabájtjain vagy akár exabájtjain való elemzést. Amikor a feladat kész, automatikusan lecsökkenti az erőforrás-használatot, és csak a felhasznált számítási kapacitásért kell fizetnie. Ha növeli vagy csökkenti a tárolt adatok méretét, vagy a felhasznált számítási teljesítményt, nem kell újraírnia a programot. Kizárólag az üzleti logikára összpontosíthat, és nem kell törődnie a nagy adatkészletek feldolgozásának vagy tárolásának módjával.
+    A Data Lake Analytics a felhőbeli méretezéshez és teljesítményhez lett tervezve.  Dinamikusan kiosztja az erőforrásokat, és lehetővé teszi az adatok terabájtjain vagy akár exabájtjain való elemzést. Amikor a feladat kész, automatikusan lecsökkenti az erőforrás-használatot, és csak a felhasznált számítási kapacitásért kell fizetnie. Nem kell újraírnia a programot, ha növeli vagy csökkenti a tárolt adatmennyiséget vagy a felhasznált számítási erőforrások számát. Kizárólag az üzleti logikára összpontosíthat, és nem kell törődnie a nagy adatkészletek feldolgozásának vagy tárolásának módjával.
 * **Gyorsabb fejlesztés, intelligensebb hibakeresés és optimalizálás a már ismerős eszközökkel**
   
-    A Data Lake Analytics átfogóan integrálja a Visual Studiót, így ismerős eszközökkel futtathatja a programját, végezhet hibakeresést vagy finomhangolást. Az U-SQL feladatok vizualizációja révén láthatja, hogyan fut a program nagyobb méretek esetén, így egyszerűbb azonosítani a teljesítménybeli szűk keresztmetszeteket, valamint optimalizálni a költségeket.
+    A Data Lake Analytics átfogóan integrálja a Visual Studiót, így a már ismert eszközökkel futtathatja a kódot, vagy végezhet rajta hibakeresést és finomhangolást. Az U-SQL feladatok vizualizációja révén láthatja, hogyan fut a program nagyobb méretek esetén, így egyszerűbb azonosítani a teljesítménybeli szűk keresztmetszeteket, valamint optimalizálni a költségeket.
 * **U-SQL: egyszerű és ismerős, sokoldalú és bővíthető**
   
     A Data Lake Analytics tartalmazza a U-SQL lekérdezésnyelvet, amely kibővíti az SQL ismerős, egyszerű, deklaratív természetét a C# kifejezőerejével. A U-SQL nyelv alapja ugyanaz az elosztott futtatási környezet, amely a big data-rendszereket működteti a Microsoft vállalatnál. Mostantól SQL- és .NET-fejlesztők milliói dolgozhatják fel az adataikat a már meglévő ismereteik segítségével.
@@ -41,29 +47,16 @@ Az Azure Data Lake Analytics egy igény szerinti elemzési feladatokat végző s
     A Data Lake Analytics képes a meglévő informatikai befektetések használatára az identitások, a kezelés, a biztonság és az adatraktározás terén. Ez a megközelítés leegyszerűsíti az adatszabályozást, és megkönnyíti az aktuális adatalkalmazások bővítését. A Data Lake Analytics integrálja az Active Directoryt a felhasználók kezeléséhez és a jogosultságokhoz, és beépített figyelést és felülvizsgálatot is biztosít.
 * **Megfizethető és költséghatékony**
   
-    A Data Lake Analytics egy költséghatékony megoldás big data-számítási feladatok futtatásához. Az adatok feldolgozásakor feladatonként kell fizetnie. Nem szükséges hardver-, licenc- vagy szolgáltatásspecifikus támogatási megállapodásokat kötnie. A rendszer automatikusan méretezi magát a feladat indulásakor és befejezésekor, azaz sosem kell a szükségesnél többért fizetnie.
+    A Data Lake Analytics egy költséghatékony megoldás big data-számítási feladatok futtatásához. Az adatok feldolgozásakor feladatonként kell fizetnie. Nem szükséges hardver-, licenc- vagy szolgáltatásspecifikus támogatási megállapodásokat kötnie. Mivel a feladat indulásakor és befejezésekor a rendszer automatikusan méretezi magát, soha nem kell a szükségesnél többet fizetnie.
 * **Az összes Azure Data-szolgáltatással együttműködik**
   
-    A Data Lake Analytics az Azure Data Lake szolgáltatással való együttműködésre lett optimalizálva, így a legmagasabb szintű teljesítményt, adatátvitelt és párhuzamos folyamatkezelést biztosítja a big data-számítási feladatokhoz.  A Data Lake Analytics az Azure Blob Storage és az Azure SQL Database szolgáltatással is képes együttműködni.
+    A Data Lake Analytics az Azure Data Lake szolgáltatással való együttműködésre lett optimalizálva, így a legmagasabb szintű teljesítményt, adatátvitelt és párhuzamos folyamatkezelést biztosítja a big data-számítási feladatokhoz.  A Data Lake Analytics képes együttműködni az Azure Blob Storage és az Azure SQL Database szolgáltatással is.
 
-## <a name="see-also"></a>Lásd még:
-* Bevezetés
-  
-  * [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)
-  * [A Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md)
-  * [A Data Lake Analytics használatának első lépései az Azure .NET SDK-val](data-lake-analytics-get-started-net-sdk.md)
-  * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
-  * [Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével](data-lake-analytics-u-sql-get-started.md)
+<a id="next-steps" class="xliff"></a>
 
-* Kezelés
-  
-  * [Az Azure Data Lake Analytics kezelése az Azure Portal használatával](data-lake-analytics-manage-use-portal.md)
-  * [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](data-lake-analytics-manage-use-powershell.md)
-  * [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure Portal használatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-
-* Ossza meg velünk a véleményét
-  
-  * [Funkciókérés küldése](http://aka.ms/adlafeedback)
-  * [Segítség kérése az MSDN-fórumokban](http://aka.ms/adlaforums)
-
+## Következő lépések
+ 
+  * A Data Lake Analytics használatának első lépései – [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [parancssori felület](data-lake-analytics-get-started-cli2.md)
+  * Az Azure Data Lake Analytics kezelése – [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md)
+  * [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure Portal használatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md) 
 

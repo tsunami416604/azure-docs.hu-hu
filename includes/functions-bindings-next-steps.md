@@ -1,2 +1,2 @@
-Az egyéb kötésekkel és eseményindítókkal kapcsolatos további információért lásd: [Az Azure Functions eseményindítóinak és kötéseinek fejlesztői segédanyagai](../articles/azure-functions/functions-triggers-bindings.md)
+További tudnivalók az Azure Functions egyéb kötéseivel és triggereivel kapcsolatban: [Azure Functions: triggerek és kötések – fejlesztői referencia](../articles/azure-functions/functions-triggers-bindings.md).
 

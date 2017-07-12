@@ -13,35 +13,37 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: e6cf8797d08609f847e33f88e78fbcd3f3743a08
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: ba8db575c8731e4f9067a6635e745da12c8667dd
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
-# <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Storage-üzenetsor által aktivált függvény létrehozása
+<a id="create-a-function-triggered-by-azure-queue-storage" class="xliff"></a>
+
+# Azure Storage-üzenetsor által aktivált függvény létrehozása
 
 Ismerje meg, hogyan hozhat létre az Azure Storage üzenetsorába küldött üzenetek által aktivált függvényt.
 
 ![Tekintse meg a naplókban található üzeneteket.](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
 
-A témakörben foglalt lépések végrehajtása legfeljebb 5 percet vehet igénybe.
+<a id="prerequisites" class="xliff"></a>
 
-## <a name="prerequisites"></a>Előfeltételek
-
-A minta futtatása előtt az alábbiakat kell elvégeznie:
+## Előfeltételek
 
 - A [Microsoft Azure Storage Explorer](http://storageexplorer.com/) letöltése és telepítése.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+- Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
+<a id="create-an-azure-function-app" class="xliff"></a>
+
+## Azure-függvényalkalmazás létrehozása
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -51,21 +53,31 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 <a name="create-function"></a>
 
-## <a name="create-a-queue-triggered-function"></a>Üzenetsor által aktivált függvény létrehozása
+<a id="create-a-queue-triggered-function" class="xliff"></a>
 
-Bontsa ki a függvényalkalmazást, kattintson a **Függvények** elem melletti **+** gombra, majd kattintson a kívánt nyelvű **QueueTrigger** sablonra. Ezután használja a táblázatban megadott beállításokat, és kattintson a **Létrehozás** gombra.
+## Üzenetsor által aktivált függvény létrehozása
 
-![Hozza létre a tároló üzenetsora által aktivált függvényt.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
 
-| Beállítás | Ajánlott érték | Leírás |
-|---|---|---|
-| **Üzenetsor neve**   | myqueue-items    | A tárfiókhoz csatlakoztatni kívánt üzenetsor neve. |
-| **Tárfiók kapcsolata** | AzureWebJobStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |
-| **A függvény neve** | Egyedi a függvényalkalmazásban | Az üzenetsor által aktivált függvény neve. |
+    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
+
+2. Kattintson a választott nyelvhez tartozó **QueueTrigger** sablonra, és használja a táblázatban megadott beállításokat.
+
+    ![Hozza létre a tároló üzenetsora által aktivált függvényt.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    
+    | Beállítás | Ajánlott érték | Leírás |
+    |---|---|---|
+    | **Üzenetsor neve**   | myqueue-items    | A tárfiókhoz csatlakoztatni kívánt üzenetsor neve. |
+    | **Tárfiók kapcsolata** | AzureWebJobStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |
+    | **A függvény neve** | Egyedi a függvényalkalmazásban | Az üzenetsor által aktivált függvény neve. |
+
+3. Kattintson a **Létrehozás** elemre a függvény létrehozásához.
 
 Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **myqueue-items** tárolót.
 
-## <a name="create-the-queue"></a>Az üzenetsor létrehozása
+<a id="create-the-queue" class="xliff"></a>
+
+## Az üzenetsor létrehozása
 
 1. A függvényben kattintson az **Integráció** elemre, bontsa ki a **Dokumentáció** elemet, és másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz. Ha már csatlakozott a tárfiókjához, folytassa a 4. lépéssel.
 
@@ -85,7 +97,9 @@ Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **myqueue-
 
 Az üzenetsor létrehozása után tesztelheti a függvényt úgy, hogy felvesz egy üzenetet az üzenetsorba.
 
-## <a name="test-the-function"></a>A függvény tesztelése
+<a id="test-the-function" class="xliff"></a>
+
+## A függvény tesztelése
 
 1. Térjen vissza az Azure Portalra, keresse meg a függvényt, bontsa ki a **Naplók** elemet a lap alján, és győződjön meg arról, hogy a naplózási adatfolyam nincs leállítva.
 
@@ -101,11 +115,15 @@ Az üzenetsor létrehozása után tesztelheti a függvényt úgy, hogy felvesz e
 
 1. Térjen vissza a Storage Explorerbe, kattintson a **Frissítés** elemre, és ellenőrizze, hogy megtörtént-e az üzenet feldolgozása, és hogy el lett-e távolítva az üzenetsorból.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 Létrehozott egy függvényt, amely akkor fut, amikor üzenet felvétele történik a tárolási üzenetsorba.
 

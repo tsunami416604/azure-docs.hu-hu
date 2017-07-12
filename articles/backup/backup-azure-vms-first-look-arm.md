@@ -16,14 +16,17 @@ ms.topic: hero-article
 ms.date: 02/15/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: d39678bb7e7d2263b6b2f8d36da1bd86dcfff271
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: fd923fa711aa0af72e8d81d84fd0adb2e003596a
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/01/2017
 
 
 ---
-# <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Azure-beli virtuális gépek biztonsági mentése Recovery Services-tárolókba
+<a id="back-up-azure-virtual-machines-to-recovery-services-vaults" class="xliff"></a>
+
+# Azure-beli virtuális gépek biztonsági mentése Recovery Services-tárolókba
 > [!div class="op_single_selector"]
 > * [Virtuális gépek védelme Recovery Services-tárolóval](backup-azure-vms-first-look-arm.md)
 > * [Virtuális gépek védelme Backup-tárolóval](backup-azure-vms-first-look.md)
@@ -40,7 +43,9 @@ Ez az oktatóprogram végigkíséri egy Recovery Services-tároló létrehozás�
 * Az Azure Disk Encryption használatával titkosított virtuális gépeket, amelyek rendelkeznek BEK-kel és KEK-kel
 * Windows rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentése VSS és Linux rendszerű virtuális gépekkel egyéni, pillanatkép előtti és utáni szkriptekkel
 
-A Prémium szintű tárolós virtuális gépek védelméről további információt a következő cikkben talál: [Prémium szintű tárolós virtuális gépek biztonsági mentése és visszaállítása](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). További információ a felügyelt lemezeken található virtuális gépek támogatásáról: [ Virtuális gépek biztonsági mentése és visszaállítása felügyelt lemezeken](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). A Linux rendszerű virtuális gépek biztonsági mentéseinek szkript előtti és utáni keretrendszerével kapcsolatos további információért lásd: [Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentése szkript előtti és utáni keretrendszerrel] (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)
+A Prémium szintű tárolós virtuális gépek védelméről további információt a következő cikkben talál: [Prémium szintű tárolós virtuális gépek biztonsági mentése és visszaállítása](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). További információ a felügyelt lemezeken található virtuális gépek támogatásáról: [ Virtuális gépek biztonsági mentése és visszaállítása felügyelt lemezeken](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). A Linux rendszerű virtuális gépek biztonsági mentéseinek szkript előtti és utáni keretrendszerével kapcsolatos további információért lásd: [Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentése szkript előtti és utáni keretrendszerrel] (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+
+[Ide](backup-azure-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm) kattintva további információt talál arról, hogy miről készülhet biztonsági másolat, és miről nem
 
 > [!NOTE]
 > Ez az oktatóprogram feltételezi, hogy Ön már rendelkezik egy virtuális géppel az Azure-előfizetésében, és hogy lépéseket tett azért, hogy a biztonsági mentési szolgáltatás hozzáférjen a virtuális géphez.
@@ -51,7 +56,9 @@ A Prémium szintű tárolós virtuális gépek védelméről további informáci
 
 A védeni kívánt virtuális gépek számától függően különböző kiindulási pontokból kezdhet. Ha több virtuális gépről szeretne biztonsági mentést készíteni egy művelettel, lépjen a Recovery Services-tárolóhoz, és [indítsa el a biztonsági mentési feladatot a tároló irányítópultjáról](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault). Ha egyetlen virtuális gépről szeretne biztonsági mentést készíteni, a biztonsági mentési feladatot a Virtuális gép kezelése panelről indíthatja el.
 
-## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>A biztonsági mentési feladat konfigurálása a virtuális gép kezelése panelről
+<a id="configure-the-backup-job-from-the-vm-management-blade" class="xliff"></a>
+
+## A biztonsági mentési feladat konfigurálása a virtuális gép kezelése panelről
 
 A következő lépések végrehajtásával konfigurálhatja a biztonsági mentési feladatot az Azure Portal Virtuális gép kezelése paneljéről. Ezek a lépések nem vonatkoznak a klasszikus portálon található virtuális gépekre.
 
@@ -119,14 +126,18 @@ A következő lépések végrehajtásával konfigurálhatja a biztonsági menté
 
   Az üzembehelyezési értesítések értesítik, hogy a biztonsági mentési feladat elindult, és hogy a feladat állapotát a Biztonsági mentési feladatok oldalon figyelheti.
 
-## <a name="configure-the-backup-job-from-the-recovery-services-vault"></a>A biztonsági mentési feladat konfigurálása a Recovery Services-tárolóból
+<a id="configure-the-backup-job-from-the-recovery-services-vault" class="xliff"></a>
+
+## A biztonsági mentési feladat konfigurálása a Recovery Services-tárolóból
 A biztonsági mentési feladat konfigurálásához végezze el a következő lépéseket.  
 
 1. Hozzon létre egy Recovery Services-tárolót egy virtuális géphez.
 2. Az Azure Portal használatával válasszon ki egy Forgatókönyvet, állítson be egy Biztonsági mentési házirendet, és azonosítsa a védelemmel ellátni kívánt elemeket.
 3. Futtatja a kezdeti biztonsági mentést.
 
-## <a name="create-a-recovery-services-vault-for-a-vm"></a>Létrehoz egy Recovery Services-tárolót egy virtuális géphez.
+<a id="create-a-recovery-services-vault-for-a-vm" class="xliff"></a>
+
+## Létrehoz egy Recovery Services-tárolót egy virtuális géphez.
 A Recovery Services-tároló egy olyan entitás, amely eltárolja az idők során létrehozott biztonsági mentéseket és helyreállítási pontokat. A Recovery Services-tároló tartalmazza a védelem alatt álló virtuális gépeken alkalmazott biztonsági mentési házirendet is.
 
 > [!NOTE]
@@ -180,7 +191,9 @@ Egy Recovery Services-tároló létrehozásához:
 
 Most, hogy létrehozta a tárolóját, megismerkedhet a tárreplikáció beállításának módjával.
 
-### <a name="set-storage-replication"></a>Tárreplikáció beállítása
+<a id="set-storage-replication" class="xliff"></a>
+
+### Tárreplikáció beállítása
 A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha a Recovery Services-tároló az elsődleges biztonsági mentési tároló, hagyja a tárolóreplikációs beállítást georedundáns tároláson. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/storage-redundancy.md#geo-redundant-storage) és a [helyileg redundáns](../storage/storage-redundancy.md#locally-redundant-storage) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/storage-redundancy.md) című cikkben.
 
 A tárreplikációs beállítás szerkesztése:
@@ -205,7 +218,9 @@ A tárreplikációs beállítás szerkesztése:
     Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, folytassa a **georedundáns** beállítás használatát. Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amellyel csökkentheti az Azure Storage-költségeit. A [georedundáns](../storage/storage-redundancy.md#geo-redundant-storage) és a [helyileg redundáns](../storage/storage-redundancy.md#locally-redundant-storage) tárolási lehetőségekről többet olvashat ebben a [Tárhely-redundancia áttekintésben](../storage/storage-redundancy.md).
 
 
-## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Válassza ki a biztonsági mentés célját, állítsa be a házirendet, és határozza meg a megvédeni kívánt elemeket
+<a id="select-a-backup-goal-set-policy-and-define-items-to-protect" class="xliff"></a>
+
+## Válassza ki a biztonsági mentés célját, állítsa be a házirendet, és határozza meg a megvédeni kívánt elemeket
 Mielőtt regisztrálna egy virtuális gépet a tárolóval, futtassa a felfedezési folyamatot, hogy meggyőződjön arról, hogy az előfizetéshez hozzáadott minden új virtuális gép azonosítva lett. A folyamat lekéri az Azure-ból az előfizetésben található virtuális gépek listáját, olyan kiegészítő információkkal, mint a felhőszolgáltatás neve és a régió. Az Azure portálon a forgatókönyv arra utal, amit bele fog tenni a Recovery Services-tárolóba. A házirend adja meg a helyreállítási pontok gyakoriságának és elhelyezési idejének a menetrendjét. A házirend emellett tartalmazza a helyreállítási pontok megőrzési tartományát.
 
 1. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 2. lépéssel. Ha még nincs, a központi menüben kattintson a **További szolgáltatások** elemre, majd az erőforrások listájában írja be a **Recovery Services** szöveget, és kattintson a **Recovery Services-tárolók** elemre.
@@ -253,7 +268,9 @@ Mielőtt regisztrálna egy virtuális gépet a tárolóval, futtassa a felfedez�
 
 A biztonsági mentés sikeres engedélyezése után a biztonsági mentési házirend az ütemezés szerint fog futni. Ennek ellenére lépjen tovább az első biztonsági mentési feladat elindításához.
 
-## <a name="initial-backup"></a>Kezdeti biztonsági mentés
+<a id="initial-backup" class="xliff"></a>
+
+## Kezdeti biztonsági mentés
 Az, hogy egy biztonsági mentési házirend lett bevezetve a virtuális gépeken, nem jelenti azt, hogy az adatokról biztonsági mentés készült. Alapértelmezés szerint az első ütemezett biztonsági mentés (a biztonsági mentési házirendben meghatározottak szerint) a kezdeti biztonsági mentés. A kezdeti biztonsági mentés végrehajtásáig a **Biztonsági mentési feladatok** panelen az Utolsó biztonsági mentés állapota **Figyelmeztetés (kezdeti biztonsági mentés folyamatban)** állapotú.
 
 ![Biztonsági mentés függőben](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
@@ -317,7 +334,9 @@ A kezdeti biztonsági mentési feladat futtatása:
 
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
-## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Telepítse a virtuális gép ügynökét a virtuális gépre.
+<a id="install-the-vm-agent-on-the-virtual-machine" class="xliff"></a>
+
+## Telepítse a virtuális gép ügynökét a virtuális gépre.
 Ez az információ szükség esetén mellékelve van. Az Azure virtuálisgép-ügynököt telepíteni kell az Azure virtuális gépre, hogy a Backup bővítmény működjön. Ugyanakkor ha a virtuális gépe az Azure-katalógusból lett létrehozva, a virtuálisgép-ügynök már jelen van a virtuális gépen. A helyszíni adatközpontokból áttelepített virtuális gépek nem rendelkeznek telepített virtuálisgép-ügynökkel. Ebben az esetben a virtuális gép ügynökét telepíteni kell. Ha problémákba ütközik az Azure-beli virtuális gép telepítése közben, ellenőrizze, hogy az Azure virtuálisgép-ügynöke megfelelően telepítve van-e a virtuális gépen (lásd az alábbi táblázatot). Ha egy egyéni virtuális gépet hoz létre, [a **Virtuálisgép-ügynök telepítése** jelölőnégyzet legyen bejelölve](../virtual-machines/windows/classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) a virtuális gép kiépítése előtt.
 
 Többet is megtudhat itt a [virtuálisgép-ügynökről](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) és arról, [hogyan kell telepíteni](../virtual-machines/windows/classic/manage-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
@@ -330,17 +349,25 @@ A következő táblázat további információkat tartalmaz a Windows és Linux 
 | A virtuálisgép-ügynök frissítése |A virtuálisgép-ügynök frissítése a [virtuálisgép-ügynök bináris fájljainak](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) újratelepítéséből áll. <br>Győződjön meg róla, hogy nem fut biztonsági mentési művelet a virtuálisgép-ügynök frissítése közben. |Kövesse a [linuxos virtuálisgép-ügynök frissítését](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ismertető szakasz utasításait. <br>Győződjön meg róla, hogy nem fut biztonsági mentési művelet a virtuálisgép-ügynök frissítése közben. |
 | A virtuálisgép-ügynök telepítésének érvényesítése |<li>Lépjen a *C:\WindowsAzure\Packages* mappába az Azure virtuális gépen. <li>Itt találja a WaAppAgent.exe fájlt.<li> Kattintson jobb gombbal a fájlra, válassza a **Tulajdonságok** parancsot, majd nyissa meg a **Részletek** lapot. A Termék verziószáma mezőben 2.6.1198.718 vagy újabb verziónak kell lennie. |N/A |
 
-### <a name="backup-extension"></a>Backup bővítmény
+<a id="backup-extension" class="xliff"></a>
+
+### Backup bővítmény
 Miután a virtuálisgép-ügynök telepítve lett a virtuális gépen, az Azure Backup szolgáltatás telepíti a biztonsági mentési bővítményt a virtuálisgép-ügynökhöz. Az Azure Backup szolgáltatás akadásmentesen frissíti és javítja a biztonsági mentési bővítményt a felhasználó további beavatkozása nélkül.
 
 A Backup szolgáltatás akkor is telepíti a biztonsági mentési bővítményt, ha a virtuális gép nem fut. Egy futó virtuális gép adja a legnagyobb esélyt egy alkalmazással konzisztens helyreállítási pont létrehozásának. Ugyanakkor az Azure Backup szolgáltatás folytatja a virtuális gép biztonsági másolatának elkészítését akkor is, ha az ki van kapcsolva és a bővítményt nem lehet telepíteni. Az ilyen típusú biztonsági mentés Offline virtuális gép néven ismeretes, és a helyreállítási pont *összeomlás-konzisztens*.
 
-## <a name="troubleshooting-information"></a>Hibaelhárítási információ
+<a id="troubleshooting-information" class="xliff"></a>
+
+## Hibaelhárítási információ
 Ha problémákba ütközik a cikkben leírt feladatok elvégzésében, tekintse meg a [Hibaelhárítási útmutatót](backup-azure-vms-troubleshoot.md).
 
-## <a name="pricing"></a>Díjszabás
+<a id="pricing" class="xliff"></a>
+
+## Díjszabás
 Az Azure-beli virtuális gépek biztonsági mentésének költsége a védett példányok számától függ. A védett példányok definíciójáért lásd [a fogalmat ismertető szakaszt](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Ha szeretne egy példát látni a virtuális gépek biztonsági mentési költségeinek számítására, olvassa el [a védett példányok számítását](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances) ismertető cikket. [A Backup díjszabásával](https://azure.microsoft.com/pricing/details/backup/) kapcsolatban lásd az Azure Backup díjszabását ismertető oldalt.
 
-## <a name="questions"></a>Kérdései vannak?
+<a id="questions" class="xliff"></a>
+
+## Kérdései vannak?
 Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
 

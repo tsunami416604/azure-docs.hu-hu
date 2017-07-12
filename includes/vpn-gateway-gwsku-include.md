@@ -1,17 +1,37 @@
-Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Ha egy átjáró magasabb szintű termékváltozatát választja, a rendszer több processzort és hálózati sávszélességet foglal le a számára, ezért az átjáró nagyobb hálózati átviteli sebesség támogatására képes a virtuális hálózaton.
+Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, a teljesítmény, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatokat.
 
-A VPN Gateway a következő termékváltozatok használatára képes:
+[!INCLUDE [classic SKU](./vpn-gateway-classic-sku-support-include.md)]
 
-* Basic
-* Standard
-* HighPerformance
+[!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
-A VPN Gateway nem használja az UltraPerformance átjáró-termékváltozatot. Az UltraPerformance termékváltozattal kapcsolatos információkért lásd az [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) dokumentációját.
+###  <a name="workloads"></a>Termelés *vs.* Dev-Test számítási feladatok
 
-A termékváltozat kiválasztásakor vegye figyelembe az alábbiakat:
+A szolgáltatói szerződések és a szolgáltatáskészletek eltérései miatt az alábbi termékváltozatokat javasoljuk termelés *vs.* dev-test környezetekhez:
 
-* PolicyBased-típusú VPN-ekhez az alapszintű átjáró-termékváltozatot kell használni. A PolicyBased VPN-eket (régebbi nevén Statikus útválasztás) semmilyen más termékváltozat nem támogatja.
-* A BGP az alapszintű termékváltozathoz nem támogatott.
-* Az alapszintű termékváltozat nem támogatja az ExpressRoute-VPN-átjárók egyszerre konfigurált beállításait.
-* Aktív/aktív módú S2S VPN Gateway-kapcsolatokat csak a nagy teljesítményű termékváltozaton lehet konfigurálni.
+| **Számítási feladat**                       | **Termékváltozatok**               |
+| ---                                | ---                    |
+| **Termelés, kritikus fontosságú számítási feladatok** | VpnGw1, VpnGw2, VpnGw3 |
+| **Dev-test vagy a koncepció igazolása**   | Basic                  |
+|                                    |                        |
 
+Ha a régi termékváltozatokat használja, a termelési termékváltozatnak a Standard és a Nagy teljesítményű termékváltozatot javasoljuk. További információ a régi termékváltozatokról: [Átjáró termékváltozatai (régi)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
+
+###  <a name="feature"></a>Átjáró termékváltozatainak szolgáltatáskészletei
+
+Az átjárók új termékváltozatai egyszerűbbé teszik az átjárókon elérhető szolgáltatáskészleteket alkalmazását:
+
+| **Termékváltozat**| **Szolgáltatások**|
+| ---    | ---         |
+| VpnGw1<br>VpnGw2<br>VpnGw3|Útvonalalapú VPN akár 30 alagúttal* <br>P2S, BGP, aktív-aktív, egyéni IPsec/IKE-házirend, ExpressRoute/ VPN együttes jelenléte <br><br>* A „PolicyBasedTrafficSelectors” konfigurálásával egy útvonalalapú VPN-átjárót (VpnGw1, VpnGw2, VpnGw3) több helyszíni házirendalapú tűzfal-eszközhöz csatlakoztathat. További részletekért tekintse meg a [VPN-átjárók több helyszíni házirendalapú VPN-eszközhöz való csatlakoztatása a PowerShellel](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) című cikket. |
+|Basic   | Útvonalalapú: 10 alagút P2S-sel<br>Házirend-alapú (IKEv1): 1 alagút, P2S nélkül|
+|        |             |
+
+###  <a name="resize"></a>Az átjárók termékváltozatainak átméretezése
+
+1. Az átméretezés során a VpnGw1, a VpnGw2 és a VpnGw3 termékváltozatok közül választhat.
+2. Ha a régi átjárók termékváltozataival dolgozik, az átméretezéskor az Alapszintű, a Standard és a Nagy teljesítményű termékváltozatok közül választhat.
+2. Az Alapszintű/Standard/Nagy teljesítményű termékváltozatokról **nem** méretezhet a VpnGw1/VpnGw2/VpnGw3 termékváltozatokra. Ehelyett [migrálnia](#migrate) kell az új termékváltozatokra.
+
+###  <a name="migrate"></a>Migrálás a régi termékváltozatokról az új termékváltozatokra
+
+[!INCLUDE [Migrate SKU](./vpn-gateway-migrate-legacy-sku-include.md)]

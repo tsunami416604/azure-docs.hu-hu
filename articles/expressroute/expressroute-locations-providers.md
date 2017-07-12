@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2017
-ms.author: cherylmc
+ms.date: 06/30/2017
+ms.author: kaanan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0a1aa87f0c1cc3fdc9f61788e528e3618e92a5a2
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 7fbdecd6fcaa784c5cdeebe46bf1991bfe730017
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/04/2017
 
 ---
-# <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
+<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
+
+# ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
 > [!div class="op_single_selector"]
 > * [Helyek szolgáltató alapján](expressroute-locations.md)
@@ -37,12 +39,14 @@ Az ExpressRoute az összes Azure-régióban és -helyen támogatott. A következ
 
 Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, az adott geopolitikai régióban lévő összes régióban hozzáférhet az Azure-szolgáltatásokhoz. 
 
-### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek
+<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
+
+### Az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek
 A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek térképét mutatja.
 
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
 | --- | --- | --- |
-| **Észak-Amerika** |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver+, Las Vegas, Los Angeles, New York, Seattle, Szilícium-völgy, Washington, D.C., Montréal, Québec város, Toronto |
+| **Észak-Amerika** |USA keleti régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. nyugati régiója, USA középső régiója, USA déli középső régiója, USA északi középső régiója, USA középnyugati régiója, Közép-Kanada, Kelet-Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Szilícium-völgy, Washington, D.C., Montreal, Québec város, Toronto |
 | **Dél-Amerika** |Dél-Brazília |Sao Paulo |
 | **Európa** |Észak-Európa, Nyugat-Európa, az Egyesült Királyság nyugati része, az Egyesült Királyság déli része |Amszterdam, Dublin, London, Newport (Wales), Párizs |
 | **Ázsia** |Kelet-Ázsia, Délkelet-Ázsia |Hongkong, Szingapúr |
@@ -51,11 +55,13 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **India** |Nyugat-India, Közép-India, Dél-India |Csennai, Mumbai |
 | **Dél-Korea** |Korea középső régiója, Korea déli régiója |Busan, Szöul |
 
-### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>A régiók és az országos felhők geopolitikai határai
+<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
+
+### A régiók és az országos felhők geopolitikai határai
 Az alábbi tábla a régiók és az országos felhők geopolitikai határainak információit tartalmazza.
 
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Az Egyesült Államok kormányának felhője** |USA-beli államigazgatás – Iowa, USA-beli államigazgatás – Virginia, USA Védelmi Minisztériuma – Középső régió, USA Védelmi Minisztériuma – Keleti régió  |Chicago, Dallas, New York, Seattle, Szilícium-völgy, Washington, D.C. |
 | **Kína** |Észak-Kína, Kelet-Kína |Peking, Sanghaj |
 | **Németország** |Közép-Németország, Kelet-Németország |Berlin, Frankfurt |
@@ -67,54 +73,64 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szolgáltatók láthatók. A szolgáltatók és a szolgáltatási helyek megtekintéséhez lásd: [Helyek szolgáltatók szerint](expressroute-locations.md#locations). 
 
 
-### <a name="production-azure"></a>Termelési Azure
+<a id="production-azure" class="xliff"></a>
+
+### Termelési Azure
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
-| **Amszterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Internet Solutions - Cloud Connect, Interxion, KPN, Level 3 Communications, Orange, Tata Communications, TeleCity Group, Telefonica+, Telenor, Verizon |
+| **Amszterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Internet Solutions – Cloud Connect, Interxion, KPN, Level 3 Communications, Megaport, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo Group |
 | **Atlanta** |Equinix |
 | **Busan** |LG CNS |
-| **Csennai** |Global CloudXchange (GCX), SIFY, Tata Communications |
-| **Chicago** |AT&T NetBond, Comcast, Equinix, Level 3 Communications, Verizon, Zayo Group |
+| **Csennai** | Airtel+, Global CloudXchange (GCX), SIFY, Tata Communications |
+| **Chicago** |AT&T NetBond, Comcast, Equinix, Level 3 Communications, Megaport, Verizon, Zayo Group |
 | **Dallas** |Aryaka Networks, AT&T NetBond, Cologix, Equinix, Level 3 Communications, Megaport, Verizon, Zayo Group+ |
-| **Denver** |CoreSite+ |
+| **Denver** |CoreSite |
 | **Dublin** |Colt, Telecity Group |
 | **Hongkong** |Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, Orange, PCCW Global Limited, Tata Communications, Verizon |
 | **Las Vegas** |Level 3 Communications+, Megaport |
-| **London** |AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, MTN, NTT Communications, Orange, Tata Communications, Telecity Group, Telehouse – KDDI, Telenor, Verizon, Vodafone, Zayo Group+ |
+| **London** |AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, Tata Communications, Telecity Group, Telehouse – KDDI, Telenor, Verizon, Vodafone, Zayo Group+ |
 | **Los Angeles** |CoreSite, Equinix, Megaport, NTT, Zayo Group |
 | **Melbourne** |AARNet, Equinix, Megaport, NEXTDC, Telstra Corporation |
-| **New York** |Coresite, Equinix, Megaport, Zayo Group |
-| **Newport (Wales)** |Következő generációs adatok |
+| **Miami** |Megaport |
 | **Montreal** |Bell Canada, Cologix |
 | **Mumbai** |Airtel+, Tata Communications |
-| **Oszaka** |Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, Softbank |
-| **Párizs** |Interxion, Equinix+ |
+| **New York** |Coresite, Equinix, Megaport, Zayo Group |
+| **Newport (Wales)** |Következő generációs adatok |
+| **Oszaka** |Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, NTT SmartConnect+, Softbank |
+| **Párizs** |Colt, Interxion, Equinix, Orange+ |
 | **Quebec város** | Megaport |
-| **Sao Paulo** |Equinix, Telefonica |
+| **San Antonio** |Megaport |
+| **Sao Paulo** |Ascenty Data Centers+, Equinix, Level 3 Communications, Telefonica, UOLDIVEO+ |
 | **Seattle** |Equinix, Level 3 Communications, Megaport |
 | **Szöul** |KINX, Sejong Telecom |
-| **Szilícium-völgy** |Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink+, Comcast, Console, Equinix, Level 3 Communications, Orange, Tata Communications, Verizon, Zayo Group |
+| **Szilícium-völgy** |Aryaka Networks, AT&T NetBond, British Telecom, CenturyLink+, Comcast, Console, Equinix, Level 3 Communications, Megaport, Orange, Tata Communications, Verizon, Zayo Group |
 | **Szingapúr** |Aryaka Networks, AT&T NetBond, British Telecom, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Verizon |
 | **Sydney** |AARNet, AT&T NetBond, British Telecom, Equinix, Megaport, NEXTDC, Orange, Telstra Corporation, Verizon |
-| **Tokió** |Aryaka Networks, British Telecom, Colt, Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, Softbank, Verizon |
-| **Toronto** |Bell Canada, Cologix, Console, Equinix, Megaport, Zayo Group |
-| **Washington DC** |Aryaka Networks, AT&T NetBond, British Telecom, Comcast, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, Verizon, Zayo Group |
+| **Tokió** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, Softbank, Verizon |
+| **Toronto** |AT&T NetBond, Bell Canada, Cologix, Console, Equinix, Megaport, Telus, Zayo Group |
+| **Washington, D.C.** |Aryaka Networks, AT&T NetBond, British Telecom, Comcast, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, Verizon, Zayo Group |
 
  **+** = hamarosan elérhető
 
-### <a name="national-cloud-environments"></a>Országos felhőkörnyezetek
+<a id="national-cloud-environments" class="xliff"></a>
 
-### <a name="us-government-cloud"></a>Az Egyesült Államok kormányának felhője
+### Országos felhőkörnyezetek
+
+<a id="us-government-cloud" class="xliff"></a>
+
+### Az Egyesült Államok kormányának felhője
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 | **Dallas** |Equinix, Megaport, Verizon |
 | **New York** |Equinix, Level 3 Communications+, Verizon |
-| **Szilícium-völgy** | Equinix |
+| **Szilícium-völgy** | Equinix, Level 3 Communications |
 | **Seattle** | Equinix |
-| **Washington DC** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
+| **Washington, D.C.** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 
-### <a name="china"></a>Kína
+<a id="china" class="xliff"></a>
+
+### Kína
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Peking** |China Telecom |
@@ -122,17 +138,20 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 
 További tudnivalókért lásd: [Az ExpressRoute Kínában](http://www.windowsazure.cn/home/features/expressroute/).
 
-### <a name="germany"></a>Németország
+<a id="germany" class="xliff"></a>
+
+### Németország
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Berlin** |Colt+, e-shelter, Megaport+ |
 | **Frankfurt** |Colt, Equinix, Interxion |
 
-## <a name="c1partners"></a>Kapcsolódás a listában nem szereplő szolgáltatókon keresztül
+## <a name="c1partners"></a>Kapcsolódás adatcsere-szolgáltatókon keresztül
 Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is létesíthet kapcsolatot.
 
 * Ellenőrizze a kapcsolatszolgáltatójánál, hogy kapcsolódik-e a fenti táblában felsorolt adatcsere-szolgáltatások bármelyikéhez. A következő hivatkozásokon további információkat találhat az adatcsere-szolgáltatók által kínált szolgáltatásokkal kapcsolatban. Több kapcsolatszolgáltató már eleve kapcsolódik Ethernet-adatcserélőkhöz.
   * [Cologix](http://www.cologix.com/)
+  * [Console](https://www.consoleconnect.com/partners/cloudsaas/)
   * [CoreSite](http://www.coresite.com/)
   * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
   * [InterXion](http://www.interxion.com/)
@@ -144,37 +163,43 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 * Rendeljen meg egy ExpressRoute-kapcsolatcsoportot, ahol az adatcserélő a Microsofthoz kapcsolódó kapcsolatszolgáltató.
   * Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-classic.md) című témakör lépéseit a kapcsolat beállításához.
 
+## <a name="c1partners"></a>Kapcsolódás további szolgáltatókon keresztül
 | **Hely** | **Exchange** | **Kapcsolatszolgáltatók** |
 | --- | --- | --- |
 | **Amszterdam** | Equinix, Telecity | Eurofiber, Fastweb S.p.A, Nianet |
 | **Chicago** | Equinix | Windstream |
-| **Dallas** | Equinix, Megaport | C3ntro, Data Foundry, Transtelco |
+| **Dallas** | Equinix, Megaport | C3ntro Telecom, Cox Business, Data Foundry, Transtelco |
 | **Frankfurt** | Telecity | Nianet, QSC AG |
-| **London** | Equinix, euNetworks, Telecity | Bezeq International Ltd., Exponential E, HSO, NexGen Networks, Tamares Telecom |
+| **Hongkong** | Equinix | Macroview Telecom |
+| **London** | Equinix, euNetworks, Telecity | Bezeq International Ltd., Epsilon, Exponential E, HSO, NexGen Networks, Tamares Telecom, Zain |
 | **Los Angeles** | Equinix |Transtelco |
 | **Madrid** | Level3 | Zertia |
-| **Montreal** | Cologix, Equinix | Airgate Technologies. Inc, Cogeco Peer 1 |
-| **New York** |Equinix | Lightower |
+| **Montreal** | Cologix, Equinix | Airgate Technologies. Inc, Cogeco Peer 1, Rogers, Zirro |
+| **New York** |Equinix, Megaport | Altice Business, Lightower, Webair |
 | **Seattle** |Equinix | Alaska Communications |
-| **Szilícium-völgy** |Equinix | Windstream |
-| **Szingapúr** |Equinix |1CLOUDSTAR, Epsilon Telecommunications Limited |
+| **Szilícium-völgy** |Equinix | Cox Business, Windstream |
+| **Szingapúr** |Equinix |1CLOUDSTAR, Epsilon Telecommunications Limited, LGA Telecom, United Information Highway (UIH) |
 | **Slough** | Equinix | HSO|
 | **Sydney** | Megaport | Macquarie Telecom Group|
 | **Tokió** | Equinix | ARTERIA Networks Corporation |
-| **Toronto** | Equinix | Airgate Technologies. Inc, Cogeco Peer 1 |
-| **Washington DC** |Equinix | Lightower, Masergy, Windstream |
+| **Toronto** | Equinix | Airgate Technologies. Inc, Cogeco Peer 1, Rogers, Thinktel, Zirro|
+| **Washington, D.C.** |Equinix | Altice Business, Gtt Communications Inc, Epsilon, Lightower, Masergy, Windstream |
 
-## <a name="expressroute-system-integrators"></a>ExpressRoute-rendszerintegrátorok
+<a id="expressroute-system-integrators" class="xliff"></a>
+
+## ExpressRoute-rendszerintegrátorok
 A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hálózat méretétől függően. A következő táblában felsorolt rendszerintegrátorok bármelyike segítségére lehet az ExpressRoute üzembe helyezésében.
 
 | **Kontinens** | **Rendszerintegrátorok** |
 | --- | --- |
 | **Ázsia** |Avanade Inc., OneAs1a |
-| **Ausztrália** | IT Consultancy, Vigilant.IT |
-| **Európa** |Avanade Inc., Altogee, Bright Skies GmbH, Dotnet Solutions, MSG Services, Nelite, Orange Networks, sol-tec |
-| **Észak-Amerika** |Avanade Inc., Equinix Professional Services, Perficient, Presidio, Project Leadership |
+| **Ausztrália** | Ensyst, IT Consultancy, MOQdigital, Vigilant.IT |
+| **Európa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
+| **Észak-Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Perficient, Presidio |
 | **Dél-Amerika** |Avanade Inc. |
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 * További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

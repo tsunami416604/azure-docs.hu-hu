@@ -12,24 +12,28 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/04/2017
+ms.date: 05/12/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 43f18fb3ce873eef5c2d96a89ab41fc6efc443d8
+ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
+ms.openlocfilehash: a36fce44efb3c32f83f33b19d2bca5ad73782a1b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 05/15/2017
 
 
 ---
-# <a name="expressroute-overview"></a>ExpressRoute – áttekintés
-A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, az Office 365-tel és a CRM Online-nal. 
+<a id="expressroute-overview" class="xliff"></a>
+
+# ExpressRoute – áttekintés
+A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365.
 
 A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Így az ExpressRoute-kapcsolatok a tipikus internetes kapcsolatoknál megbízhatóbbak, gyorsabbak, gyorsabb a válaszidejük, és biztonságosabbak. További információk a hálózat a Microsofthoz való csatlakoztatásáról az ExpressRoute használatával: [ExpressRoute kapcsolati modellek](expressroute-connectivity-models.md).
 
 ![](./media/expressroute-introduction/expressroute-connection-overview.png)
 
-## <a name="key-benefits"></a>Főbb előnyök
+<a id="key-benefits" class="xliff"></a>
+
+## Főbb előnyök
 
 * 3 rétegbeli kapcsolatok a helyszíni hálózat és a Microsoft Cloud közt egy kapcsolatszolgáltatón keresztül. A kapcsolatok lehetnek: bármely elemek közötti (IPVPN) hálózat, pontok közötti Ethernet-kapcsolat vagy egy virtuális keresztkapcsolat egy Ethernet-adatcserélőn keresztül.
 * Kapcsolódás a Microsoft-felhőszolgáltatásokhoz az adott geopolitikai régió minden régiójában.
@@ -41,40 +45,58 @@ A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok kö
 
 További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 
-## <a name="features"></a>Szolgáltatások
+<a id="features" class="xliff"></a>
 
-### <a name="layer-3-connectivity"></a>3. rétegbeli kapcsolatok
+## Szolgáltatások
+
+<a id="layer-3-connectivity" class="xliff"></a>
+
+### 3. rétegbeli kapcsolatok
 A Microsoft iparági szabványnak megfelelő dinamikus útválasztási protokollt (BGP) alkalmaz az útvonalak cseréjéhez a helyszíni hálózat, az Azure-ban lévő példányai és a Microsoft nyilvános címek között.  Több BGP-munkamenetet létesítünk a hálózattal, különböző forgalomprofilokkal. További részletek az [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok) című cikkben találhatók.
 
-### <a name="redundancy"></a>Redundancia
+<a id="redundancy" class="xliff"></a>
+
+### Redundancia
 Minden egyes ExpressRoute-kapcsolatcsoport két kapcsolattal rendelkezik két Microsoft Enterprise peremhálózati útválasztóhoz (MSEE) a kapcsolatszolgáltatótól / a hálózata peremétől. A Microsoft kettős BGP-kapcsolatot igényel a kapcsolatszolgáltatótól / az Ön oldaláról – egyet-egyet mindkét MSEE-hez. Dönthet úgy, hogy nem helyez üzembe redundáns eszközöket / Ethernet-kapcsolatcsoportokat az Ön oldalán. A kapcsolatszolgáltatók azonban redundáns eszközöket használnak annak biztosítása érdekében, hogy az Ön kapcsolatai redundáns módon jussanak el a Microsofthoz. Az [SLA](https://azure.microsoft.com/support/legal/sla/) érvényességének előfeltétele a redundáns 3. rétegbeli kapcsolódási konfiguráció.
 
-### <a name="connectivity-to-microsoft-cloud-services"></a>Kapcsolódás a Microsoft-felhőszolgáltatásokhoz
+<a id="connectivity-to-microsoft-cloud-services" class="xliff"></a>
+
+### Kapcsolódás a Microsoft-felhőszolgáltatásokhoz
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 Az ExpressRoute-kapcsolatok a következő szolgáltatásokhoz biztosítanak hozzáférést:
 
 * Microsoft Azure-szolgáltatások
 * Microsoft Office 365-szolgáltatások
-* Microsoft CRM Online-szolgáltatások 
+* Microsoft Dynamics 365
 
 Az ExpressRoute-on keresztül támogatott szolgáltatások részletes listáját az [ExpressRoute – Gyakori kérdések](expressroute-faqs.md) oldalon tekintheti meg.
 
-### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>Kapcsolódás az összes régióhoz egy geopolitikai régión belül
+<a id="connectivity-to-all-regions-within-a-geopolitical-region" class="xliff"></a>
+
+### Kapcsolódás az összes régióhoz egy geopolitikai régión belül
 Csatlakozhat a Microsofthoz a [társviszony-létesítési helyszínek](expressroute-locations.md) egyikén, és elérheti az összes régiót a geopolitikai régióban. 
 
 Ha például Amszterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, az Észak-Európában és a Nyugat-Európában üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáférhet. A geopolitikai régiók, a hozzájuk rendelt Microsoft felhő-régiók és a megfelelő ExpressRoute társviszony-létesítési helyszínek áttekintését az [ExpressRoute partnerek és társviszony-létesítési helyszínek](expressroute-locations.md) oldalon találja.
 
-### <a name="global-connectivity-with-expressroute-premium-add-on"></a>Globális kapcsolódás az ExpressRoute prémium bővítmény használatával
+<a id="global-connectivity-with-expressroute-premium-add-on" class="xliff"></a>
+
+### Globális kapcsolódás az ExpressRoute prémium bővítmény használatával
 Az ExpressRoute prémium bővítménnyel kiterjesztheti a kapcsolódási lehetőségeket a geopolitikai határokon túl. Ha például Amsterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, a világszerte az összes régióban (az országos felhők kivételével) üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáféréssel fog rendelkezni. A Dél-Amerikában vagy Ausztráliában üzemeltetett szolgáltatásokat ugyanúgy eléri majd, mint az észak- vagy nyugat-európai régióban lévőket.
 
-### <a name="rich-connectivity-partner-ecosystem"></a>A kapcsolati partnerek gazdag ökoszisztémája
+<a id="rich-connectivity-partner-ecosystem" class="xliff"></a>
+
+### A kapcsolati partnerek gazdag ökoszisztémája
 Az ExpressRoute kapcsolati és SI-partnerek egyre bővülő ökoszisztémájával rendelkezik. A legfrissebb információkért lásd az [ExpressRoute-szolgáltatókat és helyeket](expressroute-locations.md) ismertető cikket.
 
-### <a name="connectivity-to-national-clouds"></a>Kapcsolódás országos felhőkhöz
+<a id="connectivity-to-national-clouds" class="xliff"></a>
+
+### Kapcsolódás országos felhőkhöz
 A Microsoft elkülönített felhőkörnyezeteket tart fenn speciális geopolitikai régiók és ügyfélszegmensek számára. Az országos felhők és szolgáltatók listájáért lásd az [ExpressRoute-szolgáltatókat és -helyeket](expressroute-locations.md) ismertető lapot.
 
-### <a name="bandwidth-options"></a>Sávszélesség-lehetőségek
+<a id="bandwidth-options" class="xliff"></a>
+
+### Sávszélesség-lehetőségek
 A sávszélességek széles választékához vásárolhat ExpressRoute-kapcsolatcsoportokat. A támogatott sávszélességeket az alábbi lista tartalmazza. Mindenképp egyeztessen kapcsolatszolgáltatójával a támogatott sávszélességekről.
 
 * 50 Mbps
@@ -86,10 +108,14 @@ A sávszélességek széles választékához vásárolhat ExpressRoute-kapcsolat
 * 5 Gbps
 * 10 Gbps
 
-### <a name="dynamic-scaling-of-bandwidth"></a>Dinamikus sávszélesség-méretezés
+<a id="dynamic-scaling-of-bandwidth" class="xliff"></a>
+
+### Dinamikus sávszélesség-méretezés
 Az ExpressRoute-kapcsolatcsoport sávszélességét (az elérhető legjobb lehetőség alapján) anélkül növelheti, hogy le kellene bontania a kapcsolatokat. 
 
-### <a name="flexible-billing-models"></a>Rugalmas számlázási modellek
+<a id="flexible-billing-models" class="xliff"></a>
+
+### Rugalmas számlázási modellek
 Kiválaszthatja az Ön számára optimális számlázási modellt. Az alábbi számlázási modellek közül választhat. További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 
 * **Korlátlan adatforgalom**. Az ExpressRoute-kapcsolatcsoport számlázása havi díj alapján történik, amely az összes bejövő és kimenő adatátvitelt ingyenesen tartalmazza. 
@@ -99,11 +125,15 @@ Kiválaszthatja az Ön számára optimális számlázási modellt. Az alábbi sz
   * Globális kapcsolódás a szolgáltatásokhoz. A bármely régióban (az országos felhők kivételével) létrehozott ExpressRoute-kapcsolatcsoportok a világ bármely más régiójában elérik az erőforrásokat. Egy Nyugat-Európában létrehozott virtuális hálózat például elérhető egy, a Szilícium-völgyben kiosztott ExpressRoute-kapcsolatcsoportról is.
   * A VNet-hivatkozások száma ExpressRoute-kapcsolatcsoportonként 10-ről egy magasabb korlátra nő a kör sávszélességének függvényében.
 
-## <a name="faq"></a>GYIK
+<a id="faq" class="xliff"></a>
+
+## GYIK
 
 Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyakori kérdéseit](expressroute-faqs.md).
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 * [Az ExpressRoute kapcsolati modelljeinek](expressroute-connectivity-models.md) ismertetése.
 * Ismerje meg az ExpressRoute-kapcsolatokat és útválasztási tartományokat. Lásd: [ExpressRoute-kapcsolatcsoportok és útválasztási tartományok](expressroute-circuit-peerings.md).

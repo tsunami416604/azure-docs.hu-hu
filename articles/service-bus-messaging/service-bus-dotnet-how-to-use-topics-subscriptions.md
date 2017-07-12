@@ -1,327 +1,253 @@
 ---
-title: "Az Azure Service Bus-üzenettémakörök használata a .NET keretrendszerrel | Microsoft Docs"
-description: "Megismerheti a Service Bus-üzenettémakörök és előfizetések a .NET-keretrendszerrel való használatát az Azure-ban. A kódminták .NET-alkalmazásokhoz íródtak."
+title: "Ismerkedés az Azure Service Bus-üzenettémákkal és előfizetésekkel | Microsoft Docs"
+description: "Írjon Service Bus-üzenettémákat és előfizetéseket használó C# konzolalkalmazást."
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
 editor: 
-ms.assetid: 31d0bc29-6524-4b1b-9c7f-aa15d5a9d3b4
+ms.assetid: 
 ms.service: service-bus-messaging
+ms.devlang: tbd
+ms.topic: hero-article
+ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: get-started-article
-ms.date: 03/23/2017
+ms.date: 06/30/2017
 ms.author: sethm
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: bec18e91ef8798a791d4b1fe93bd529593197e01
-ms.lasthandoff: 03/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/01/2017
 
 
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions"></a>A Service Bus-üzenettémakörök és -előfizetések használata
+<a id="get-started-with-service-bus-topics" class="xliff"></a>
+
+# Bevezetés a Service Bus-üzenettémák használatába
+
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Ez a cikk a Service Bus-üzenettémakörök és -előfizetések használatát ismerteti. A kódminták C# nyelven íródtak, és a .NET API-kat használják. Az ismertetett forgatókönyvek között megtalálható az üzenettémák és előfizetések létrehozása, az előfizetés-szűrők létrehozása, az üzenetek küldése egy üzenettémakörbe, az üzenetek fogadása egy előfizetésből, valamint az üzenettémák és előfizetések törlése. Az üzenettémakörökkel és előfizetésekkel kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
+<a id="what-will-be-accomplished" class="xliff"></a>
+
+## Az oktatóanyag célja
+
+Ez az oktatóanyag a következő lépéseken vezet végig:
+
+1. Service Bus-névtér létrehozása az Azure Portal használatával.
+2. Service Bus-üzenettéma létrehozása az Azure Portal használatával.
+3. Service Bus-előfizetés létrehozása az üzenettémához az Azure Portal használatával.
+4. Az üzenettémához üzenetet küldő konzolalkalmazás megírása.
+5. Az előfizetéstől üzenetet fogadó konzolalkalmazás megírása.
+
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
+
+1. [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-öt használják.
+2. Azure-előfizetés.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+<a id="1-create-a-namespace-using-the-azure-portal" class="xliff"></a>
 
-## <a name="configure-the-application-to-use-service-bus"></a>Az alkalmazás konfigurálása a Service Bus használatára
-Amikor egy Service Bust használó alkalmazást hoz létre, fel kell vennie egy, a Service Bus-összeállításra mutató hivatkozást, és bele kell foglalnia a megfelelő névtereket. Ennek legegyszerűbb módja a megfelelő [NuGet](https://www.nuget.org)-csomag letöltése.
+## 1. Névtér létrehozása az Azure Portal használatával
 
-## <a name="get-the-service-bus-nuget-package"></a>A Service Bus NuGet-csomag beszerzése
-Az alkalmazások az összes szükséges Service Bus-függőséggel való konfigurálásának legegyszerűbb módja a [Service Bus NuGet-csomag](https://www.nuget.org/packages/WindowsAzure.ServiceBus) telepítése. A Service Bus NuGet-csomagnak a projektben való telepítéséhez tegye a következőket:
+Ha már létrehozta a Service Bus Messaging-névteret, lépjen a [Üzenettéma létrehozása az Azure Portal használatával](#2-create-a-topic-using-the-azure-portal) szakaszra.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **Hivatkozások** elemre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
-2. Kattintson a **Browse** (Tallózás) gombra, keressen rá az „Azure Service Bus” kifejezésre, majd válassza ki a **Microsoft Azure Service Bus** elemet. Kattintson az **Install** (Telepítés) gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt:
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
+<a id="2-create-a-topic-using-the-azure-portal" class="xliff"></a>
+
+## 2. Üzenettéma létrehozása az Azure Portal használatával
+
+1. Jelentkezzen be az [Azure Portalra][azure-portal].
+2. A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre (ha nem lát **Service Bus** elemet, kattintson a **További szolgáltatások** lehetőségre).
+3. Kattintson a névtérre, amelyben az üzenettémát létre kívánja hozni. Megjelenik a névtér áttekintő panelje:
    
-   ![][7]
+    ![Üzenettémakör létrehozása][createtopic1]
+4. A **Service Bus-névtér** panelen kattintson az **Üzenettémák**, majd az **Üzenettéma hozzáadása** elemre.
+   
+    ![Üzenettéma kiválasztása][createtopic2]
+5. Adjon meg egy nevet a témához, és törölje a jelet a **Particionálás engedélyezése** lehetőség mellől. A többi beállítást hagyja az alapértelmezett értékükön.
+   
+    ![Új kiválasztása][createtopic3]
+6. Kattintson a panel alján található **Létrehozás** gombra.
 
-Készen áll arra, hogy kódot írjon a Service Bushoz.
+<a id="3-create-a-subscription-to-the-topic" class="xliff"></a>
 
-## <a name="create-a-service-bus-connection-string"></a>Service Bus kapcsolati karakterlánc létrehozása
-A Service Bus egy kapcsolati karakterláncot használ a végpontok és a hitelesítő adatok tárolásához. A következő esetekben érdemes lehet a kapcsolati karakterláncot egy konfigurációs fájlban elhelyezni a rögzített megadás helyett:
+## 3. Előfizetés létrehozása az üzenettémához
 
-* Az Azure-szolgáltatások használata esetén ajánlott a kapcsolati karakterláncot az Azure szolgáltatás konfigurációs rendszerével tárolni (.csdef és .cscfg fájlokban).
-* Azure-webhelyek vagy Azure virtuális gépek használata esetén ajánlott a kapcsolati karakterláncot a. NET konfigurációs rendszerével tárolni (például a Web.config fájlban).
+1. A portál-erőforrások panelen kattintson az 1. lépésben létrehozott névtérre majd a 2. lépésben létrehozott üzenettéma nevére.
+2. Új előfizetést az áttekintő panel tetején az **Előfizetés** elem melletti plusz-jelre kattintva adhat az üzenettémához.
 
-Mindkét esetben a(z) `CloudConfigurationManager.GetSetting` metódussal kérheti le a kapcsolati karakterláncot, amint az a cikk későbbi részében látható lesz.
+    ![Előfizetés létrehozása][createtopic4]
 
-### <a name="configure-your-connection-string"></a>A kapcsolati karakterlánc konfigurálása
-A szolgáltatás konfigurációs mechanizmusa lehetővé teszi a konfigurációs beállítások dinamikus módosítását az [Azure Portalról][Azure portal] az alkalmazás újbóli telepítése nélkül. Hozzáadhat például egy `Setting` címkét a szolgáltatás definíciós (**.csdef**) fájljához a következő példában látható módon.
+3. Adjon egy nevet az előfizetésnek. A többi beállítást hagyja az alapértelmezett értékükön.
 
-```xml
-<ServiceDefinition name="Azure1">
-...
-    <WebRole name="MyRole" vmsize="Small">
-        <ConfigurationSettings>
-            <Setting name="Microsoft.ServiceBus.ConnectionString" />
-        </ConfigurationSettings>
-    </WebRole>
-...
-</ServiceDefinition>
-```
+<a id="4-send-messages-to-the-topic" class="xliff"></a>
 
-Ezután értékeket határozhat meg a szolgáltatás konfigurációs (.cscfg) fájljában.
+## 4. Üzenet küldése az üzenettémához
 
-```xml
-<ServiceConfiguration serviceName="Azure1">
-...
-    <Role name="MyRole">
-        <ConfigurationSettings>
-            <Setting name="Microsoft.ServiceBus.ConnectionString"
-                     value="Endpoint=sb://yourServiceNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey" />
-        </ConfigurationSettings>
-    </Role>
-...
-</ServiceConfiguration>
-```
+A Visual Studio használatával C# konzolalkalmazást írunk az üzeneteknek az üzenettémához való küldéséhez.
 
-Használja a portálról lekért közös hozzáférésű jogosultságkód (SAS-) kulcs nevét és a kulcs értékeit az előzőekben leírtak szerint.
+<a id="create-a-console-application" class="xliff"></a>
 
-### <a name="configure-your-connection-string-when-using-azure-websites-or-azure-virtual-machines"></a>A kapcsolati karakterlánc konfigurálása Azure-webhelyek vagy Azure virtuális gépek használatakor
-Webhelyek vagy virtuális gépek használata esetén ajánlott a. NET konfigurációs rendszerét használni (például a Web.config fájlt). A kapcsolati karakterláncot a(z) `<appSettings>` elem használatával tárolhatja.
+### Konzolalkalmazás létrehozása
 
-```xml
-<configuration>
-    <appSettings>
-        <add key="Microsoft.ServiceBus.ConnectionString"
-             value="Endpoint=sb://yourServiceNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey" />
-    </appSettings>
-</configuration>
-```
+Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.NET Framework)** projektet.
 
-Használja az [Azure Portalról][Azure portal] lekért SAS-nevet és -kulcsértékeket az előzőekben leírtak szerint.
+<a id="add-the-service-bus-nuget-package" class="xliff"></a>
 
-## <a name="create-a-topic"></a>Üzenettémakör létrehozása
-A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) osztály használatával kezelési műveleteket hajthat végre a Service Bus-üzenettémakörökön és előfizetéseken. Ez az osztály metódusokat biztosít az üzenettémakörök létrehozásához, enumerálásához és törléséhez.
+### A Service Bus NuGet-csomag hozzáadása
 
-A következő példa egy `NamespaceManager` objektumot állít össze az Azure `CloudConfigurationManager` osztály használatával egy olyan kapcsolati karakterlánccal, amely egy Service Bus-névtér alapszintű címéből és a megfelelő SAS hitelesítő adatokból áll, és rendelkezik a kezeléséhez szükséges engedélyekkel. Ez a kapcsolati karakterlánc a következő formátumot követi:
+1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
+2. 1Kattintson a **Browse** (Tallózás) fülre, és keressen a **Microsoft Azure Service Bus** kifejezésre, majd válassza ki a **WindowsAzure.ServiceBus** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
+   
+    ![NuGet-csomag kiválasztása][nuget-pkg]
 
-```xml
-Endpoint=sb://<yourNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<yourKey>
-```
+<a id="write-some-code-to-send-a-message-to-the-topic" class="xliff"></a>
 
-Használja a következő példát az előző szakaszban megadott konfigurációs beállításokkal.
+### Írjon egy kódrészletet egy üzenet küldéséhez az üzenettémához
 
-```csharp
-// Create the topic if it does not exist already.
-string connectionString =
-    CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+1. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
+   
+    ```csharp
+    using Microsoft.ServiceBus.Messaging;
+    ```
+2. Adja hozzá a következő kódot a(z) `Main` metódushoz. A(z) `connectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati karakterláncot, `topicName` értékének pedig az üzenettéma létrehozásakor használt nevet.
+   
+    ```csharp
+    var connectionString = "<your connection string>";
+    var topicName = "<your topic name>";
+   
+    var client = TopicClient.CreateFromConnectionString(connectionString, topicName);
+    var message = new BrokeredMessage("This is a test message!");
 
-var namespaceManager =
-    NamespaceManager.CreateFromConnectionString(connectionString);
+    Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
+    Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
 
-if (!namespaceManager.TopicExists("TestTopic"))
-{
-    namespaceManager.CreateTopic("TestTopic");
-}
-```
+    client.Send(message);
 
-A [CreateTopic](/dotnet/api/microsoft.servicebus.namespacemanager) metódus túlterhelésekkel rendelkezik, amelyek lehetővé teszik a témakör tulajdonságainak hangolását (például a témakörbe küldött üzenetek alapértelmezett élettartam (TTL) értékének meghatározását). Ezek a beállítások a [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) használatával alkalmazhatók. A következő példa bemutatja, hogyan hozható létre egy **TestTopic** nevű üzenettémakör 5 GB maximális mérettel és 1 perces alapértelmezett üzenet-élettartammal.
+    Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+    Console.ReadLine();
+    ```
+   
+    A Program.cs fájlnak így kell kinéznie.
+   
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.ServiceBus.Messaging;
 
-```csharp
-// Configure Topic Settings.
-TopicDescription td = new TopicDescription("TestTopic");
-td.MaxSizeInMegabytes = 5120;
-td.DefaultMessageTimeToLive = new TimeSpan(0, 1, 0);
-
-// Create a new Topic with custom settings.
-string connectionString =
-    CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
-
-var namespaceManager =
-    NamespaceManager.CreateFromConnectionString(connectionString);
-
-if (!namespaceManager.TopicExists("TestTopic"))
-{
-    namespaceManager.CreateTopic(td);
-}
-```
-
-> [!NOTE]
-> A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) objektumokon alkalmazhatja a [ZopicExists](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_TopicExists_System_String_) metódust annak ellenőrzéséhez, hogy már létezik-e egy adott nevű témakörben.
-> 
-> 
-
-## <a name="create-a-subscription"></a>Előfizetés létrehozása
-A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) osztály használatával is létrehozhat üzenettémakör-előfizetéseket. Az előfizetések el vannak nevezve, és rendelkezhetnek olyan szűrőkkel, amelyek korlátozzák az előfizetés virtuális üzenetsorának átadott üzenetek készletét.
-
-> [!IMPORTANT]
-> Ahhoz, hogy egy előfizetés üzeneteket kapjon, létre kell hoznia az előfizetés, mielőtt még bármilyen üzenetet küldene a témakörbe. Ha egy témakörhöz nem tartoznak előfizetések, a témakör figyelmen kívül hagyja az üzeneteket.
-> 
-> 
-
-### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
-Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, akkor a **MatchAll** szűrő az alapértelmezett használandó szűrő. A **MatchAll** szűrő használatakor a rendszer a témakörbe közzétett összes üzenetet elhelyezi az előfizetés virtuális üzenetsorában. A következő példa egy „AllMessages” nevű előfizetést hoz létre, és az alapértelmezett **MatchAll** szűrőt használja.
-
-```csharp
-string connectionString =
-    CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
-
-var namespaceManager =
-    NamespaceManager.CreateFromConnectionString(connectionString);
-
-if (!namespaceManager.SubscriptionExists("TestTopic", "AllMessages"))
-{
-    namespaceManager.CreateSubscription("TestTopic", "AllMessages");
-}
-```
-
-### <a name="create-subscriptions-with-filters"></a>Előfizetések létrehozása szűrőkkel
-Beállíthat szűrőket, amelyek lehetővé teszik annak meghatározását, hogy mely üzenetek jelenjenek meg egy adott üzenettémakör-előfizetésben.
-
-Az előfizetések által támogatott legrugalmasabb típusú szűrő az [SqlFilter][SqlFilter] osztály, amely az SQL92 egy részhalmazát valósítja meg. Az SQL-szűrők az üzenettémába közzétett üzenetek tulajdonságain működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további információkat az [SqlFilter.SqlExpression][SqlFilter.SqlExpression] szintaxisa tartalmaz.
-
-A következő példa egy **HighMessages** nevű előfizetést hoz létre egy [SqlFilter][SqlFilter] objektummal, amely csak azokat az üzeneteket választja ki, amelyek egyéni **MessageNumber** tulajdonságának értéke nagyobb, mint 3.
-
-```csharp
-// Create a "HighMessages" filtered subscription.
-SqlFilter highMessagesFilter =
-   new SqlFilter("MessageId > 3");
-
-namespaceManager.CreateSubscription("TestTopic",
-   "HighMessages",
-   highMessagesFilter);
-```
-
-A következő példa hasonlóképpen egy **LowMessages** nevű előfizetést hoz létre egy [SqlFilter][SqlFilter] objektummal, amely csak azokat az üzeneteket választja ki, amelyek egyéni **MessageNumber** tulajdonságának értéke kisebb vagy egyenlő, mint 3.
-
-```csharp
-// Create a "LowMessages" filtered subscription.
-SqlFilter lowMessagesFilter =
-   new SqlFilter("MessageId <= 3");
-
-namespaceManager.CreateSubscription("TestTopic",
-   "LowMessages",
-   lowMessagesFilter);
-```
-
-Ekkor, ha a(z) `TestTopic` egy üzenetet kap, a rendszer mindig kézbesíti az üzenetet az **AllMessages** üzenettémakör-előfizetésre feliratkozott címzetteknek, és szelektív módon kézbesíti a **HighMessages** és a **LowMessages** üzenettémakör-előfizető címzetteknek (az üzenet tartalmától függően).
-
-## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
-Az alkalmazás a kapcsolati karakterlánc használatával létrehoz egy [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient) objektumot egy Service Bus-témakörbe való üzenetküldéshez.
-
-A következő kód bemutatja, hogyan hozható létre egy [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient) objektum a [CreateFromConnectionString](/dotnet/api/microsoft.servicebus.messaging.topicclient#Microsoft_ServiceBus_Messaging_TopicClient_CreateFromConnectionString_System_String_System_String_) API-val korábban létrehozott **TestTopic** témakörhöz.
-
-```csharp
-string connectionString =
-    CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
-
-TopicClient Client =
-    TopicClient.CreateFromConnectionString(connectionString, "TestTopic");
-
-Client.Send(new BrokeredMessage());
-```
-
-A Service Bus-üzenettémakörbe küldött üzenetek a [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) osztály példányai. A **BrokeredMessage** objektumok egy szabványos tulajdonságkészlettel (például a [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) és a [TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive)), az egyéni alkalmazásspecifikus tulajdonságokat tároló könyvtárral, valamint egy tetszőleges alkalmazásadatokból álló törzzsel rendelkeznek. Az alkalmazás beállíthatja az üzenet törzsét egy bármilyen szerializálható objektumnak a **BrokeredMessage** objektum konstruktorának való átadásával, ezután a megfelelő **DataContractSerializer** osztály szerializálja az objektumot. Azt is megteheti, hogy megad egy **System.IO.Stream** objektumot.
-
-A következő példa bemutatja, hogyan küldhető öt tesztüzenet az előző példakódban beszerzett **TestTopic** [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient) objektumba. Vegye figyelembe, hogy az egyes üzenetek [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) tulajdonságának értéke a ciklus ismétléseinek számától függően változik (ez határozza meg, hogy melyik előfizetések fogják megkapni).
-
-```csharp
-for (int i=0; i<5; i++)
-{
-  // Create message, passing a string message for the body.
-  BrokeredMessage message = new BrokeredMessage("Test message " + i);
-
-  // Set additional custom app-specific property.
-  message.Properties["MessageId"] = i;
-
-  // Send message to the topic.
-  Client.Send(message);
-}
-```
-
-A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörökben tárolt üzenetek száma korlátlan, a témakörök által tárolt üzenetek teljes mérete azonban korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. Ha a particionálás engedélyezve van, a felső korlát magasabb. További információkért lásd: [Particionált üzenetküldési entitások](service-bus-partitioning.md).
-
-## <a name="how-to-receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-Az üzenetek előfizetésből való fogadásához egy [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) objektum használata ajánlott. A **SubscriptionClient** objektumok két különböző módban tudnak működni: [*ReceiveAndDelete* és *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode). A **PeekLock** az alapértelmezett érték.
-
-A **ReceiveAndDelete** mód használatakor a fogadás egy egylépéses művelet – vagyis amikor a Service Bus egy olvasási kérést kap egy előfizetésben lévő üzenetre vonatkozóan, feldolgozottként jelöli meg az üzenetet, és visszaadja az alkalmazásnak. A **ReceiveAndDelete** mód a legegyszerűbb modell, és az olyan forgatókönyvekben működik a legjobban, ha az alkalmazás működését nem zavarja, hogy hiba esetén nem dolgoz fel üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel ekkor a Service Bus már feldolgozottként jelölte meg az üzenetet, az alkalmazás újraindításakor és az üzenetek feldolgozásának megkezdésekor ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
-
-**PeekLock** módban (az alapértelmezett módban) a fogadás kétszakaszos művelet, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), végrehajtja a fogadási folyamat második a [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) meghívásával a fogadott üzenethez. Amikor a Service Bus látja a **Complete** hívást, feldolgozottként jelöli meg az üzenetet, és eltávolítja az előfizetésből.
-
-A következő példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek az alapértelmezett **PeekLock** mód használatával. Egy másik [ReceiveMode](/dotnet/api/microsoft.servicebus.messaging.receivemode) érték meghatározásához a [CreateFromConnectionString](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_CreateFromConnectionString_System_String_System_String_System_String_Microsoft_ServiceBus_Messaging_ReceiveMode_) egy másik túlterhelését használhatja. Ez a példa az [OnMessage](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) visszahívást használja az üzenetek feldolgozásához, amikor megérkeznek a **HighMessages** előfizetésbe.
-
-```csharp
-string connectionString =
-    CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
-
-SubscriptionClient Client =
-    SubscriptionClient.CreateFromConnectionString
-            (connectionString, "TestTopic", "HighMessages");
-
-// Configure the callback options.
-OnMessageOptions options = new OnMessageOptions();
-options.AutoComplete = false;
-options.AutoRenewTimeout = TimeSpan.FromMinutes(1);
-
-Client.OnMessage((message) =>
-{
-    try
+    namespace tsend
     {
-        // Process message from subscription.
-        Console.WriteLine("\n**High Messages**");
-        Console.WriteLine("Body: " + message.GetBody<string>());
-        Console.WriteLine("MessageID: " + message.MessageId);
-        Console.WriteLine("Message Number: " +
-            message.Properties["MessageNumber"]);
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                var connectionString = "Endpoint=sb://<your namespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<your key>";
+                var topicName = "<your topic name>";
 
-        // Remove message from subscription.
-        message.Complete();
+                var client = TopicClient.CreateFromConnectionString(connectionString, topicName);
+                var message = new BrokeredMessage("This is a test message!");
+
+                Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
+                Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
+
+                client.Send(message);
+
+                Console.WriteLine("Message successfully sent! Press ENTER to exit program");
+                Console.ReadLine();
+            }
+        }
     }
-    catch (Exception)
+    ```
+3. Futtassa a programot, és ellenőrizze az Azure Portalon: kattintson az üzenettéma nevére a névtér **Áttekintés** paneljén. Megjelenik az üzenettéma **Essentials** (Alapok) panelje. Arra figyeljen, hogy a panel alsó részén megjelenő előfizetés-lista minden tagjának **Message Count** (Üzenetek száma) értéke elvileg már 1. Valahányszor a küldő alkalmazást az üzenetek (a következő szakaszban leírt módon történő) fogadása nélkül futtatja, ez az érték egyel növekszik. Azt is megfigyelheti, hogy a téma jelenlegi méretét tükröző **Current** (Jelenlegi) érték az **Essentials** panelen mindig növekszik, amikor az alkalmazás újabb üzenetet ad hozzá a témához/előfizetéshez.
+   
+      ![Üzenet mérete][topic-message]
+
+<a id="5-receive-messages-from-the-subscription" class="xliff"></a>
+
+## 5. Üzenet fogadása az előfizetéstől
+
+1. Az imént elküldött üzenet vagy üzenetek fogadásához hozzon létre egy új konzolalkalmazást, majd vegyen fel egy hivatkozást a Service Bus NuGet-csomagjára, hasonlóan az előző küldő alkalmazáshoz.
+2. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
+   
+    ```csharp
+    using Microsoft.ServiceBus.Messaging;
+    ```
+3. Adja hozzá a következő kódot a(z) `Main` metódushoz. A(z) `connectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati karakterláncot, `topicName` értékének pedig az üzenettéma létrehozásakor használt nevet.
+   
+    ```csharp
+    var connectionString = "<your connection string>";
+    var topicName = "<your topic name>";
+   
+    var client = SubscriptionClient.CreateFromConnectionString(connectionString, topicName, "<your subscription name>");
+   
+    client.OnMessage(message =>
     {
-        // Indicates a problem, unlock message in subscription.
-        message.Abandon();
+      Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
+      Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
+    });
+   
+    Console.WriteLine("Press ENTER to exit program");
+    Console.ReadLine();
+    ```
+   
+    A Program.cs fájlnak így kell kinéznie:
+   
+    ```csharp
+    using System;
+    using Microsoft.ServiceBus.Messaging;
+   
+    namespace GettingStartedWithTopics
+    {
+      class Program
+      {
+        static void Main(string[] args)
+        {
+          var connectionString = "Endpoint=sb://<your namespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<your key>";;
+          var topicName = "<your topic name>";
+   
+          var client = SubscriptionClient.CreateFromConnectionString(connectionString, topicName, "<your subscription name>");
+   
+          client.OnMessage(message =>
+          {
+            Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
+            Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
+          });
+
+          Console.WriteLine("Press ENTER to exit program");   
+          Console.ReadLine();
+        }
+      }
     }
-}, options);
-```
+    ```
+4. Futtassa a programot, majd ellenőrizze ismét a portálon. Figyelje meg, hogy az **Message Count** (Üzenetek száma) és a **Current** (Jelenlegi) értéke most 0.
+   
+    ![A témakör hossza][topic-message-receive]
 
-A példa egy [OnMessageOptions](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions) objektum használatával konfigurálja az [OnMessage](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient#Microsoft_ServiceBus_Messaging_SubscriptionClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) visszahívást. Az [AutoComplete](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoComplete) **hamis** értékre van állítva, így manuálisan vezérelhető, hogy mikor legyen meghívva a [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) metódus a fogadott üzenethez. Az [AutoRenewTimeout](/dotnet/api/microsoft.servicebus.messaging.onmessageoptions#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout) 1 percre van beállítva, aminek következtében az ügyfél legfeljebb egy percet vár, mielőtt leállítja az automatikus megújítási szolgáltatást, és új hívást indít az üzenetek ellenőrzése érdekében. Ez a tulajdonságérték csökkenti azon alkalmak számát, amikor az ügyfél olyan felszámítható hívásokat kezdeményez, amelyek nem kérnek le üzeneteket.
+Gratulálunk! Létrehozott egy üzenettémát és egy előfizetést, elküldött egy üzenetet, és fogadta is azt.
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tud feldolgozni egy üzenetet, akkor meghívhatja az [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon_System_Collections_Generic_IDictionary_System_String_System_Object__) metódust a fogadott üzenethez (a [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) metódus helyett). Ennek hatására a Service Bus feloldja az üzenet zárolását az előfizetésen belül, és lehetővé teszi az ugyanazon vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
+<a id="next-steps" class="xliff"></a>
 
-Emellett egy időtúllépés van hozzárendelve az előfizetésben lévő üzenetekhez, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási idő lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását, és lehetővé teszi az újbóli fogadását.
+## Következő lépések
 
-Ha az alkalmazás az üzenet feldolgozása után, de a [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) kérés kiadása előtt omlik össze, az üzenet újból kézbesítve lesz az alkalmazásnak, amikor újraindul. Ezt a módszert gyakran *Legalább egyszeri feldolgozásnak* nevezik. Ez azt jelenti, hogy minden üzenet legalább egyszer fel lesz dolgozva, de bizonyos helyzetekben előfordulhat ugyanazon üzenet újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran az üzenet [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek során.
+Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://github.com/Azure/azure-service-bus/tree/master/samples), amelyek a Service Bus üzenetkezelési szolgáltatásának néhány speciális funkcióját mutatják be.
 
-## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
-A következő példa bemutatja, hogy hogyan törölhető a **TestTopic** témakör a **HowToSample** szolgáltatásnévtérből.
+<!--Image references-->
 
-```csharp
-// Delete Topic.
-namespaceManager.DeleteTopic("TestTopic");
-```
-
-Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli. Az előfizetések független módon is törölhetők. A következő kód bemutatja, hogyan törölhető a **HighMessages** nevű előfizetés a **TestTopic** témakörből.
-
-```csharp
-namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
-```
-
-## <a name="next-steps"></a>Következő lépések
-Most, hogy megismerte a Service Bus-témakörök és -előfizetések alapjait, az alábbi hivatkozásokból tudhat meg többet.
-
-* [Üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions].
-* [Témakörszűrők – minta][Topic filters sample].
-* Az [SqlFilter][SqlFilter] API-referenciája.
-* A [Service Bus által felügyelt üzenettovábbítás .NET oktatóanyaga][Service Bus brokered messaging .NET tutorial] segítségével összeállíthat egy működő alkalmazást, amely üzeneteket küld egy Service Bus-üzenetsorba, illetve üzeneteket fogad belőle.
-* Service Bus-minták: letöltheti őket az [Azure-minták][Azure samples] közül, vagy átnézheti az [áttekintésüket](service-bus-samples.md).
-
-[Azure portal]: https://portal.azure.com
-
-[7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
-
-[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Topic filters sample]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
-[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
-[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#Microsoft_ServiceBus_Messaging_SqlFilter_SqlExpression
-[Service Bus brokered messaging .NET tutorial]: service-bus-brokered-tutorial-dotnet.md
-[Azure samples]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
+[nuget-pkg]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/nuget-package.png
+[topic-message]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/topic-message.png
+[topic-message-receive]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/topic-message-receive.png
+[createtopic1]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic1.png
+[createtopic2]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic2.png
+[createtopic3]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic3.png
+[createtopic4]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic4.png
+[github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
+[azure-portal]: https://portal.azure.com
 

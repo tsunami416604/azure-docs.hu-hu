@@ -15,17 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: venkatja
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 92e3e64f235e165a6a1772b6e1724789f3ec3049
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 9f2d3b57a42efb7b04566278d3267b3cdbed713a
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/01/2017
 
 ---
-# <a name="send-events-to-a-time-series-insights-environment-via-event-hub"></a>Események küldése Time Series Insights-környezetbe eseményközponton keresztül
+<a id="send-events-to-a-time-series-insights-environment-via-event-hub" class="xliff"></a>
 
-Az oktatóanyag elmagyarázza, hogyan hozhat létre és konfigurálhat egy eseményközpontot, és hogyan futtathat egy mintaalkalmazást események leküldéséhez. Ha rendelkezik egy meglévő eseményközponttal, amelyben JSON formátumú események találhatóak, átugorhatja ezt az oktatóanyagot, és megtekintheti a környezetet a [Time Series Explorerben](https://insights.timeseries.azure.com).
+# Események küldése Time Series Insights-környezetbe eseményközponton keresztül
 
-## <a name="configure-an-event-hub"></a>Eseményközpont konfigurálása
+Az oktatóanyag elmagyarázza, hogyan hozhat létre és konfigurálhat egy eseményközpontot, és hogyan futtathat egy mintaalkalmazást események leküldéséhez. Ha már van JSON formátumú eseményeket tartalmazó eseményközpontja, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetet a [Time Series Insightsban](https://insights.timeseries.azure.com).
+
+<a id="configure-an-event-hub" class="xliff"></a>
+
+## Eseményközpont konfigurálása
 1. Eseményközpont létrehozásához kövesse az Event Hubs [dokumentációjában](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) foglalt utasításokat.
 
 2. Olyan fogyasztói csoportot hozzon létre, amelyet csak a Time Series Insights-eseményforrás használ.
@@ -35,25 +40,29 @@ Az oktatóanyag elmagyarázza, hogyan hozhat létre és konfigurálhat egy esem�
 
   ![Az eseményközpont fogyasztói csoportjának kiválasztása](media/send-events/consumer-group.png)
 
-3. Az eseményközpontban hozza létre a „MySendPolicy” elnevezésű házirendet, amelyet az alábbi mintában az események küldésére használunk majd.
+3. Az eseményközpontban hozza létre a „MySendPolicy” elnevezésű szabályzatot, amelyet az alábbi C#-példában az események küldésére használunk majd.
 
   ![A Megosztott elérési házirendek kiválasztása, majd kattintás a Hozzáadás gombra](media/send-events/shared-access-policy.png)  
 
   ![Új megosztott elérési házirend hozzáadása](media/send-events/shared-access-policy-2.png)  
 
-## <a name="create-time-series-insights-event-source"></a>Time Series Insights-eseményforrás létrehozása
+<a id="create-time-series-insights-event-source" class="xliff"></a>
+
+## Time Series Insights-eseményforrás létrehozása
 1. Ha még nem hozott létre eseményforrást, tegye ezt meg az [itt](time-series-insights-add-event-source.md) található utasításokat követve.
 
-2. Adja meg a „deviceTimestamp” értéket az időbélyegző-tulajdonság neveként – ezt a tulajdonságot használja a rendszer a tényleges időbélyegzőként az alábbi mintában. Az időbélyegző-tulajdonság neve megkülönbözteti a kis- és nagybetűket, és az értékeknek __éééé-HH-nnTÓÓ:pp:mm.FFFFFFFK__ formátumban kell lenniük, ha JSON formátumban lesznek elküldve az eseményközpontba. Ha a tulajdonság nem létezik az eseményben, akkor a rendszer azt az időpontot használja, amikor az eseményt sorba helyezték az eseményközpontban.
+2. Adja meg a „deviceTimestamp” értéket az időbélyegző-tulajdonság neveként – ezt a tulajdonságot használja a rendszer a tényleges időbélyegzőként a C#-példában. Az időbélyegző-tulajdonság neve megkülönbözteti a kis- és nagybetűket, és az értékeknek __éééé-HH-nnTÓÓ:pp:mm.FFFFFFFK__ formátumban kell lenniük, ha JSON formátumban lesznek elküldve az eseményközpontba. Ha a tulajdonság nem létezik az eseményben, akkor a rendszer azt az időpontot használja, amikor az eseményt sorba helyezték az eseményközpontban.
 
   ![Eseményforrás létrehozása](media/send-events/event-source-1.png)
 
-## <a name="run-sample-code-to-push-events"></a>Mintakód futtatása események leküldéséhez
+<a id="sample-code-to-push-events" class="xliff"></a>
+
+## Mintakód események leküldéséhez
 1. Lépjen a „MySendPolicy” eseményközpont-házirendhez, és másolja a házirendkulccsal rendelkező kapcsolati karakterláncot.
 
   ![A MySendPolicy kapcsolati karakterlánc másolása](media/send-events/sample-code-connection-string.png)
 
-2. Futtassa a következő kódot, amely 600 eseményt küld mindhárom eszközre. Frissítse az `eventHubConnectionString` elemet a kapcsolati karakterlánccal.
+2. A következő kód futtatásával 600 eseményt küld mindhárom eszközre. Frissítse az `eventHubConnectionString` elemet a kapcsolati karakterlánccal.
 
 ```csharp
 using System;
@@ -122,51 +131,68 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-## <a name="supported-json-shapes"></a>Támogatott JSON-alakzatok
-### <a name="sample-1"></a>1. példa
+<a id="supported-json-shapes" class="xliff"></a>
 
-#### <a name="input"></a>Input (Bemenet)
+## Támogatott JSON-alakzatok
+<a id="sample-1" class="xliff"></a>
+
+### 1. példa
+
+<a id="input" class="xliff"></a>
+
+#### Input (Bemenet)
 
 Egyszerű JSON-objektum.
 
 ```json
 {
-    "deviceId":"device1",
-    "deviceTimestamp":"2016-01-08T01:08:00Z"
+    "id":"device1",
+    "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---1-event"></a>Kimenet – 1 esemény
+<a id="output---1-event" class="xliff"></a>
 
-|deviceId|deviceTimestamp|
+#### Kimenet – 1 esemény
+
+|id|időbélyeg|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 
-### <a name="sample-2"></a>2. példa
+<a id="sample-2" class="xliff"></a>
 
-#### <a name="input"></a>Input (Bemenet)
+### 2. példa
+
+<a id="input" class="xliff"></a>
+
+#### Input (Bemenet)
 JSON-tömb két JSON-objektummal. Minden JSON-objektum eseménnyé lesz átalakítva.
 ```json
 [
     {
-        "deviceId":"device1",
-        "deviceTimestamp":"2016-01-08T01:08:00Z"
+        "id":"device1",
+        "timestamp":"2016-01-08T01:08:00Z"
     },
     {
-        "deviceId":"device2",
-        "deviceTimestamp":"2016-01-17T01:17:00Z"
+        "id":"device2",
+        "timestamp":"2016-01-17T01:17:00Z"
     }
 ]
 ```
-#### <a name="output---2-events"></a>Kimenet – 2 esemény
+<a id="output---2-events" class="xliff"></a>
 
-|deviceId|deviceTimestamp|
+#### Kimenet – 2 esemény
+
+|id|időbélyeg|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
+<a id="sample-3" class="xliff"></a>
 
-### <a name="sample-3"></a>3. példa
+### 3. példa
 
-#### <a name="input"></a>Input (Bemenet)
+<a id="input" class="xliff"></a>
+
+#### Input (Bemenet)
 
 Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-objektum.
 ```json
@@ -174,50 +200,58 @@ Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-obje
     "location":"WestUs",
     "events":[
         {
-            "deviceId":"device1",
-            "deviceTimestamp":"2016-01-08T01:08:00Z"
+            "id":"device1",
+            "timestamp":"2016-01-08T01:08:00Z"
         },
         {
-            "deviceId":"device2",
-            "deviceTimestamp":"2016-01-17T01:17:00Z"
+            "id":"device2",
+            "timestamp":"2016-01-17T01:17:00Z"
         }
     ]
 }
 
 ```
-#### <a name="output---2-events"></a>Kimenet – 2 esemény
+<a id="output---2-events" class="xliff"></a>
+
+#### Kimenet – 2 esemény
 A „location” tulajdonság mindegyik eseménybe át van másolva.
 
-|location|events.deviceId|events.deviceTimestamp|
+|location|events.id|events.timestamp|
 |--------|---------------|----------------------|
 |WestUs|device1|2016-01-08T01:08:00Z|
 |WestUs|device2|2016-01-08T01:17:00Z|
 
-### <a name="sample-4"></a>4. példa
+<a id="sample-4" class="xliff"></a>
 
-#### <a name="input"></a>Input (Bemenet)
+### 4. példa
+
+<a id="input" class="xliff"></a>
+
+#### Input (Bemenet)
+
+Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-objektum. Ez a bemenet azt szemlélteti, hogy a komplex JSON-objektumban a globális tulajdonságok is szerepelhetnek.
 
 ```json
 {
     "location":"WestUs",
-    "manufacturerInfo":{
+    "manufacturer":{
         "name":"manufacturer1",
         "location":"EastUs"
     },
     "events":[
         {
-            "deviceId":"device1",
-            "deviceTimestamp":"2016-01-08T01:08:00Z",
-            "deviceData":{
+            "id":"device1",
+            "timestamp":"2016-01-08T01:08:00Z",
+            "data":{
                 "type":"pressure",
                 "units":"psi",
                 "value":108.09
             }
         },
         {
-            "deviceId":"device2",
-            "deviceTimestamp":"2016-01-17T01:17:00Z",
-            "deviceData":{
+            "id":"device2",
+            "timestamp":"2016-01-17T01:17:00Z",
+            "data":{
                 "type":"vibration",
                 "units":"abs G",
                 "value":217.09
@@ -226,14 +260,18 @@ A „location” tulajdonság mindegyik eseménybe át van másolva.
     ]
 }
 ```
-#### <a name="output---2-events"></a>Kimenet – 2 esemény
+<a id="output---2-events" class="xliff"></a>
 
-|location|manufacturerInfo.name|manufacturerInfo.location|events.deviceId|events.deviceTimestamp|events.deviceData.type|events.deviceData.units|events.deviceData.value|
+#### Kimenet – 2 esemény
+
+|location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
-|WestUs|manufacturer1|EastUs|device1|2016-01-08T01:17:00Z|vibration|abs G|217.09|
+|WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 * A környezet megtekintése a [Time Series Insights portálon](https://insights.timeseries.azure.com)
 

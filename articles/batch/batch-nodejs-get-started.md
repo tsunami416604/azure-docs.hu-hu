@@ -12,14 +12,16 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 23e833b9eb926c81fd8c02cd96d43da8cffcaa43
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/16/2017
 
 ---
 
-# <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
+<a id="get-started-with-batch-sdk-for-nodejs" class="xliff"></a>
+
+# Ismerkedés a Node.js-hez készült Batch SDK-val
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
@@ -30,15 +32,21 @@ ms.lasthandoff: 05/04/2017
 
 Ebben a cikkben megismerheti a Batch-ügyfelek kiépítésének alapjait Node.js-ben, az [Azure Batch Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) használatával. Részletes, lépésekre osztott módon ismerkedhet meg a Batch-alkalmazásokhoz tartozó forgatókönyvekkel és azok a Node.js-ügyfél használatával történő beállításával.  
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 Ez a cikk a Node.js és a Linux gyakorlati ismeretét feltételezi. Azt is feltételezi, hogy rendelkezik egy, a Batch- és Storage-szolgáltatások létrehozásához szükséges hozzáférési jogosultságokkal ellátott Azure-fiókkal.
 
 A jelen cikk lépéseinek végrehajtása előtt javasoljuk, hogy olvassa el az [Azure Batch technikai áttekintését](batch-technical-overview.md).
 
-## <a name="the-tutorial-scenario"></a>Az oktatóanyagban használt forgatókönyv
+<a id="the-tutorial-scenario" class="xliff"></a>
+
+## Az oktatóanyagban használt forgatókönyv
 Ismerkedjünk meg a Batch-munkafolyamat forgatókönyvével. Ez a Pythonban írt egyszerű szkript letölti az összes CSV-fájlt egy Azure Blob Storage-tárolóból, és konvertálja azokat JSON formátumba. Több tárfióktároló párhuzamos feldolgozásához Azure Batch-feladatként helyezheti üzembe a szkriptet.
 
-## <a name="azure-batch-architecture"></a>Azure Batch-architektúra
+<a id="azure-batch-architecture" class="xliff"></a>
+
+## Azure Batch-architektúra
 Az alábbi ábra bemutatja, hogyan történik a Python-szkript méretezése az Azure Batch és egy Node.js-ügyfél használatával.
 
 ![Azure Batch-forgatókönyv](./media/batch-nodejs-get-started/BatchScenario.png)
@@ -56,11 +64,15 @@ A Node.js-ügyfél üzembe helyez egy előkészítő feladattal ellátott Batch-
 >
 >
 
-## <a name="build-the-application"></a>Az alkalmazás létrehozása
+<a id="build-the-application" class="xliff"></a>
+
+## Az alkalmazás létrehozása
 
 Az alábbiakban lépésenként követjük a Node.js-ügyfél felépítésének folyamatát:
 
-### <a name="step-1-install-azure-batch-sdk"></a>1. lépés: Az Azure Batch SDK telepítése
+<a id="step-1-install-azure-batch-sdk" class="xliff"></a>
+
+### 1. lépés: Az Azure Batch SDK telepítése
 
 A Node.js-hez készült Azure Batch SDK telepítése az npm install paranccsal történik.
 
@@ -73,7 +85,9 @@ Ezzel a paranccsal telepítheti az Azure Batch Node SDK legújabb verzióját.
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>2. lépés: Azure Batch-fiók létrehozása
+<a id="step-2-create-an-azure-batch-account" class="xliff"></a>
+
+### 2. lépés: Azure Batch-fiók létrehozása
 
 A fiókot az [Azure Portalon](batch-account-create-portal.md) vagy a parancssorból ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](https://docs.microsoft.com/cli/azure/overview)) hozhatja létre.
 
@@ -93,7 +107,9 @@ Minden egyes Batch-fiók megfelelő hozzáférési kulcsokkal rendelkezik. Ezekr
 
 Másolja és mentse a következő lépésekben használni kívánt kulcsot.
 
-### <a name="step-3-create-an-azure-batch-service-client"></a>3. lépés: Azure Batch-szolgáltatásügyfél létrehozása
+<a id="step-3-create-an-azure-batch-service-client" class="xliff"></a>
+
+### 3. lépés: Azure Batch-szolgáltatásügyfél létrehozása
 Az alábbi kódrészlet először importálja az Azure Batch Node.js modult, majd létrehoz egy Batch-szolgáltatásügyfelet. Először létre kell hoznia egy SharedKeyCredentials objektumot az előző lépésből átmásolt Batch-fiókkulccsal.
 
 ```nodejs
@@ -127,7 +143,9 @@ Tekintse meg a következő képernyőképet:
 
 
 
-### <a name="step-4-create-an-azure-batch-pool"></a>4. lépés: Azure Batch-készlet létrehozása
+<a id="step-4-create-an-azure-batch-pool" class="xliff"></a>
+
+### 4. lépés: Azure Batch-készlet létrehozása
 Az Azure Batch-készlet több virtuális gépből áll (ezek Batch-csomópontokként is ismertek). Az Azure Batch-szolgáltatás elvégzi a feladatok központi telepítését ezeken a csomópontokon, és kezeli azokat. A készlet esetében az alábbi konfigurációs paramétereket adhatja meg.
 
 * A virtuális gép rendszerképének típusa
@@ -262,7 +280,9 @@ Az alábbiakban a pool.get függvény által visszaadott objektumra láthat pél
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>4. lépés: Azure Batch-feladat elküldése
+<a id="step-4-submit-an-azure-batch-job" class="xliff"></a>
+
+### 4. lépés: Azure Batch-feladat elküldése
 Az Azure Batch-feladatok hasonló feladatok logikai csoportjai. Ebben az esetben ez a következő: „CSV – JSON feldolgozás”. Minden egyes itt szereplő feladat képes az Azure Storage-tárolókban lévő CSV-fájlok feldolgozására.
 
 E feladatok párhuzamosan futtathatók és több csomóponton üzembe helyezhetők, a vezénylésüket az Azure Batch-szolgáltatás végzi.
@@ -272,7 +292,9 @@ E feladatok párhuzamosan futtathatók és több csomóponton üzembe helyezhet�
 >
 >
 
-#### <a name="preparation-task"></a>Előkészítő feladat
+<a id="preparation-task" class="xliff"></a>
+
+#### Előkészítő feladat
 
 A virtuálisgép-csomópontok üres Ubuntu-csomópontokat hoztak létre. Gyakori eset, hogy előfeltételként néhány programot kell telepíteni.
 Linux-csomópontok esetében általában rendelkezhet olyan héjszkripttel, amely az aktuális feladatok futtatása előtt telepíti az előfeltételeket. Ez azonban bármilyen programozható végrehajtható fájl lehet.
@@ -319,7 +341,9 @@ Ha a feladatok futtatásához nem szükséges előfeltételeket telepíteni, kih
 ```
 
 
-### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>5. lépés: Azure Batch-feladatok elküldése egy feladathoz
+<a id="step-5-submit-azure-batch-tasks-for-a-job" class="xliff"></a>
+
+### 5. lépés: Azure Batch-feladatok elküldése egy feladathoz
 
 A CSV-feldolgozási feladat létrehozását követően hozzunk létre tevékenységeket ehhez a feladathoz. Feltételezve, hogy négy tárolóval rendelkezünk, négy tevékenységet hozunk létre – minden tárolóhoz egyet.
 
@@ -359,7 +383,9 @@ A kód több tevékenységet ad hozzá a készlethez. Minden egyes tevékenység
 
 A portálon részletesen megtekinthetők a tevékenységek és a feladatok állapotai. Használhatja az Azure Node SDK listázási és lekérési funkcióit is. Részletes információkat a dokumentáció [hivatkozását](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) megnyitva talál.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 - Ha korábban nem használta a szolgáltatást, olvassa el [az Azure Batch szolgáltatásainak áttekintését](batch-api-basics.md) tartalmazó cikket.
 - A Batch API megismeréséhez lásd a [Batch – Node.js-referenciát](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/).

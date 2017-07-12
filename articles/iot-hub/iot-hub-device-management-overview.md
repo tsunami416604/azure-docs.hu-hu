@@ -14,15 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: briz
-translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 352c42ddeef5537f9b912ddfe6a72b6b5342835b
-ms.lasthandoff: 03/09/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 7ae476dbaf51ae90cc3c5948b0ec8901d7a536da
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/31/2017
 
 
 ---
-# <a name="overview-of-device-management-with-iot-hub"></a>Az IoT Hub-eszközfelügyelet áttekintése
-## <a name="introduction"></a>Bevezetés
+<a id="overview-of-device-management-with-iot-hub" class="xliff"></a>
+
+# Az IoT Hub-eszközfelügyelet áttekintése
+<a id="introduction" class="xliff"></a>
+
+## Bevezetés
 Az Azure IoT Hub által biztosított szolgáltatások és bővíthetőségi modell segítségével az eszköz- és háttérrendszer-fejlesztők hatékony eszközfelügyeleti megoldásokat építhetnek ki. Az eszközök köre a korlátozott érzékelőktől és az egycélú mikrovezérlőktől az eszközcsoportok kommunikációjának továbbítását végző, nagyteljesítményű átjárókig terjed.  Emellett az IoT-műveletek használati módja és követelményei az egyes iparágak esetében jelentősen eltér.  Ezen eltérések ellenére az Azure IoT Hub-eszközfelügyelet az eszközök és végfelhasználók változatos együttesének igényeihez igazítva biztosítja a szükséges képességeket, mintákat és kódelemtárakat.
 
 A vállalati IoT-megoldások sikeres létrehozásának fontos része annak a stratégiának a megalkotása, amely meghatározza a kezelők számára a folyamatos eszközfelügyelet módját. Az IoT-kezelőknek olyan egyszerű és megbízható eszközökre és alkalmazásokra van szükségük, amelyek segítségével a feladataik stratégiai szempontjaira koncentrálhatnak. Ez a cikk a következő információkat tartalmazza:
@@ -32,7 +37,9 @@ A vállalati IoT-megoldások sikeres létrehozásának fontos része annak a str
 * Az eszközök életciklusának ismertetése.
 * Az általános eszközfelügyeleti minták áttekintése.
 
-## <a name="device-management-principles"></a>Az eszközfelügyelet alapelvei
+<a id="device-management-principles" class="xliff"></a>
+
+## Az eszközfelügyelet alapelvei
 Az IoT alkalmazása egyedi eszközfelügyeleti kihívásokat hoz magával, a következő alapelveket pedig a vállalati szintű megoldások mindegyikének magában kell foglalnia:
 
 ![Az eszközfelügyelet alapelveinek ábrája][img-dm_principles]
@@ -46,7 +53,9 @@ Az IoT alkalmazása egyedi eszközfelügyeleti kihívásokat hoz magával, a kö
     * Az eszköz földrajzi helyei
 * **Sok szerepkör kiszolgálása**: az IoT-műveletekhez tartozó szerepkörök egyedi munkafolyamatainak és folyamatainak támogatása rendkívül fontos. Az üzemeltetést végző stábnak zökkenőmentesen kell együttműködnie a belső informatikai részlegek által meghatározott korlátozásokkal.  Fenntartható módot kell találniuk továbbá a valós idejű eszközművelet-információk beillesztésére a felettesi és üzletfelügyeleti szerepkörökbe.
 
-## <a name="device-lifecycle"></a>Az eszközök életciklusa
+<a id="device-lifecycle" class="xliff"></a>
+
+## Az eszközök életciklusa
 Egyes általános eszközfelügyeleti szakaszok minden vállalati IoT-projektben megjelennek. Az Azure IoT-ben az eszközök életciklusának öt szakaszát különböztetjük meg:
 
 ![Az Azure IoT-eszközök életciklusának öt fázisa: tervezés, üzembe helyezés, konfigurálás, figyelés, kivonás][img-device_lifecycle]
@@ -64,12 +73,14 @@ A teljes megoldás megvalósításához számos eszközkezelői követelménynek
     *További információk*: [Közvetlen metódusok használata][lnk-c2d-methods], [Közvetlen metódus meghívása egy eszközön][lnk-methods-devguide], [Az ikertulajdonságok használata][lnk-twin-properties], [Feladatok ütemezése és szórása][lnk-jobs], [Feladatok ütemezése több eszközön][lnk-jobs-devguide]
 * **Figyelés**: A teljes eszközgyűjtemény és a folyamatban lévő műveletek állapotának figyelése, valamint a kezelők riasztása az esetlegesen figyelmet érdemlő problémák kapcsán.  Az ikereszközök alkalmazásával az eszközök képesek a valós idejű működési feltételek és a frissítési műveletek állapotának jelentésére. Nagyteljesítményű irányítópulti jelentések hozhatók létre, amelyek az ikereszköz-lekérdezések használatával felszínre hozzák az azonnali intézkedést igénylő problémákat.
   
-    *További információk*: [Az ikertulajdonságok használata][lnk-twin-properties], [IoT Hub lekérdezési nyelv az ikereszközökhöz és feladatokhoz][lnk-query-language]
+    *További információ*: [Az ikertulajdonságok használata][lnk-twin-properties], [IoT Hub lekérdezési nyelv az ikereszközökhöz és feladatokhoz, valamint az üzenettovábbításhoz][lnk-query-language].
 * **Kivonás**: az eszközök lecserélése vagy leszerelése meghibásodás vagy frissítési ciklus után, illetve a szolgáltatás élettartamának végén.  Az ikereszközök használatával az eszközinformációk abban az esetben is megőrizhetők, ha a fizikai eszközt kicserélik vagy a kivonás során archiválják. Az IoT Hub-identitásjegyzék alkalmazásával lehetséges az eszközidentitások és -hitelesítő adatok biztonságos visszahívása.
   
     *További információk*: [Az ikertulajdonságok használata][lnk-twin-properties], [Eszközidentitások kezelése][lnk-identity-registry]
 
-## <a name="device-management-patterns"></a>Eszközfelügyeleti minták
+<a id="device-management-patterns" class="xliff"></a>
+
+## Eszközfelügyeleti minták
 Az IoT Hub az alábbi eszközfelügyeleti mintákat engedélyezi.  Az [eszközfelügyeleti oktatóanyagok][lnk-get-started] részletesebben is bemutatják e minták kiterjesztését valós helyzetekre, illetve új minták létrehozását az alapminták alapján.
 
 * **Újraindítás** – A háttéralkalmazás közvetlen módszerrel értesíti az eszközt arról, hogy kezdeményezte az újraindítást.  Az eszköz a jelentett tulajdonságokat felhasználva frissíti az eszköz újraindítási állapotát.
@@ -88,7 +99,9 @@ Az IoT Hub az alábbi eszközfelügyeleti mintákat engedélyezi.  Az [eszközfe
   
     ![Az eszközfelügyelet előrehaladási és állapotmeghatározási jelentéskészítési mintájának ábrája][img-report_progress_pattern]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 Az IoT Hub eszközfelügyeleti szolgáltatásai által biztosított képességek, minták és kódtárak használatával olyan IoT-alkalmazások hozhatók létre, amelyek az eszköz teljes életciklusában képesek megfelelni a vállalati IoT-kezelők követelményeinek.
 
 Ha szeretne részletesebben is megismerkedni az IoT Hub eszközfelügyeleti funkcióival, tekintse meg az [eszközfelügyelet első lépéseit][lnk-get-started] bemutató oktatóanyagot.

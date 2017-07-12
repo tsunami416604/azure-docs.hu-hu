@@ -1,14 +1,14 @@
 ---
 title: "Azure Cosmos DB: Alkalmazás létrehozása Pythonnal és DocumentDB API-val | Microsoft Docs"
 description: "Egy Python-kódmintát mutat be, amellyel csatlakozhat az Azure Cosmos DB DocumentDB API-hoz és lekérdezheti azt"
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: 51c11be2-af6d-425f-a86a-39cbfe61da29
-ms.service: cosmosdb
-ms.custom: quick start connect
+ms.service: cosmos-db
+ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: python
@@ -16,20 +16,24 @@ ms.topic: hero-article
 ms.date: 05/13/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 6e64614c6ca746d91be535b64e520033c9e7d053
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 08d467ea27484e7d1d07d6c21b2e04b6525fbcd8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/01/2017
 
 
 ---
-# <a name="azure-cosmos-db-build-a-documentdb-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: DocumentDB API-alkalmazás létrehozása Pythonnal és az Azure Portallal
+<a id="azure-cosmos-db-build-a-documentdb-api-app-with-python-and-the-azure-portal" class="xliff"></a>
+
+# Azure Cosmos DB: DocumentDB API-alkalmazás létrehozása Pythonnal és az Azure Portallal
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-A rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist, és gyűjteményt. Ezután létrehozhatja és futtathatja a [DocumentDB Python API-ra](../documentdb/documentdb-sdk-python.md) épülő konzolalkalmazást.
+A rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist, és gyűjteményt. Ezután létrehozhatja és futtathatja a [DocumentDB Python API-ra](documentdb-sdk-python.md) épülő konzolalkalmazást.
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 
 * Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
     * [Visual Studio 2015](http://www.visualstudio.com/) vagy újabb.
@@ -38,15 +42,21 @@ A rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségé
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+<a id="create-a-database-account" class="xliff"></a>
 
-[!INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
+## Adatbázisfiók létrehozása
 
-## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-[!INCLUDE [cosmosdb-create-collection](../../includes/cosmosdb-create-collection.md)]
+<a id="add-a-collection" class="xliff"></a>
 
-## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
+## Gyűjtemény hozzáadása
+
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+
+<a id="clone-the-sample-application" class="xliff"></a>
+
+## A mintaalkalmazás klónozása
 
 Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatni is fogjuk. Ilyen egyszerű az adatokkal programozott módon dolgozni. 
 
@@ -57,9 +67,11 @@ Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-python-getting-started.git
     ```  
-## <a name="review-the-code"></a>Tekintse át a kódot
+<a id="review-the-code" class="xliff"></a>
 
-Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a DocumentDBRepository.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB-erőforrásokat. 
+## A kód áttekintése
+
+Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a DocumentDBGetStarted.py fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB-erőforrásokat. 
 
 
 * A DocumentClient inicializálva van.
@@ -120,11 +132,13 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a DocumentDBRep
     print(results)
     ```
 
-## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
+<a id="update-your-connection-string" class="xliff"></a>
+
+## A kapcsolati karakterlánc frissítése
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **kulcsok** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolja az URI-t és az elsődleges kulcsot a `DocumentDBGetStarted.py` fájlba.
+1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **kulcsok** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `DocumentDBGetStarted.py` fájlba.
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-documentdb-dotnet/keys.png)
 
@@ -134,11 +148,13 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     `config.ENDPOINT : "https://FILLME.documents.azure.com"`
 
-4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról és adja meg a `config.MASTERKEY` értékeként a `DocumentDBGetStarted.py`-ben. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és adja meg a `config.MASTERKEY` értékeként a `DocumentDBGetStarted.py`-ben. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
     `config.MASTERKEY : "FILLME"`
     
-## <a name="run-the-app"></a>Az alkalmazás futtatása
+<a id="run-the-app" class="xliff"></a>
+
+## Az alkalmazás futtatása
 1. A Visual Studióban kattintson jobb gombbal a projekt lehetőségre a **Megoldáskezelőben**, válassza ki a jelenlegi Python-környezetet, majd kattintson a jobb gombbal.
 
 2. Válassza ki a Python-csomag telepítése lehetőséget, majd írja be a következőt: **pydocumentdb**
@@ -147,23 +163,29 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 Lépjen vissza az Adatkezelőbe, ahol lekérdezheti, módosíthatja, és dolgozhat az új adattal. 
 
-## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
+<a id="review-slas-in-the-azure-portal" class="xliff"></a>
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+## Az SLA-k áttekintése az Azure Portalon
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-Ha nem folytatja az alkalmazás használatát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást:
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
+
+Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
+2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
-> [Adatok importálása az Azure Cosmos DB-be a DocumentDB API-hoz](../documentdb/documentdb-import-data.md)
+> [Adatok importálása az Azure Cosmos DB-be a DocumentDB API-hoz](import-data.md)
 
 
 

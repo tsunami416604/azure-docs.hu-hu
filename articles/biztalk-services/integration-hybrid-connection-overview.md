@@ -14,16 +14,26 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 397a922bf3bf4c39c89f5f69015de4942bda0af9
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 9367d6f57e694c8a438781004ef29a09de77aaa8
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/03/2017
 
 
 ---
-# <a name="hybrid-connections-overview"></a>Hibrid kapcsolatok áttekintése
+<a id="hybrid-connections-overview" class="xliff"></a>
+
+# Hibrid kapcsolatok áttekintése
+
+> [!IMPORTANT]
+> A BizTalk Hybrid Connections ki van vezetve, helyét az App Service Hybrid Connections vette át. További tájékoztatást egyebek között a meglévő BizTalk Hybrid Connections-kapcsolatok kezeléséről az [Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) című cikkben talál.
+
 A hibrid kapcsolatok bemutatása a támogatott konfigurációkat és a szükséges TCP-portokat sorolja fel.
 
-## <a name="what-is-a-hybrid-connection"></a>Mi a hibrid kapcsolat
+<a id="what-is-a-hybrid-connection" class="xliff"></a>
+
+## Mi a hibrid kapcsolat
 A hibrid kapcsolatok az Azure BizTalk Services egyik funkciója. A hibrid kapcsolatokkal könnyen és kényelmesen csatlakozhatja az Azure App Service Web Apps (korábban Websites) szolgáltatását és az Azure App Service Mobile Apps (korábban Mobile Services) szolgáltatását a tűzfal mögött található helyszíni erőforrásokhoz.
 
 ![Hibrid kapcsolatok][HCImage]
@@ -48,7 +58,9 @@ A hibrid kapcsolatokkal a vállalati rendszergazdáknak vezérelhetik és elemez
 * A rendszergazdák csoportházirend-beállításokkal engedélyezhetik a hibrid kapcsolatokat a hálózaton, és a hibrid alkalmazások által elérhető erőforrásokat jelölhetnek ki.
 * A vállalati hálózaton az esemény- és vizsgálati naplók nyújtanak betekintést a hibrid kapcsolatok által elért erőforrásokba.
 
-## <a name="example-scenarios"></a>Példaforgatókönyvek
+<a id="example-scenarios" class="xliff"></a>
+
+## Példaforgatókönyvek
 A hibrid kapcsolatok a keretrendszerek és alkalmazások következő kombinációit támogatják:
 
 * .NET-keretrendszer hozzáférése az SQL Serverhez
@@ -65,7 +77,9 @@ Amikor hibrid kapcsolatokkal éri el a helyszíni SQL Servert, vegye figyelembe 
 * Az `ApplicationIntent=ReadOnly` jelenleg nem támogatott.
 * SQL-hitelesítésre lehet szükség az Azure-alkalmazás és a helyszíni SQL-kiszolgáló által támogatott végpontok közötti hitelesítési módszerként.
 
-## <a name="security-and-ports"></a>Biztonság és portok
+<a id="security-and-ports" class="xliff"></a>
+
+## Biztonság és portok
 A hibrid kapcsolatok közös hozzáférésű jogosultságkódon (SAS) alapuló hitelesítést használnak az Azure-alkalmazások és a helyszíni hibridkapcsolat-kezelő és a hibrid kapcsolatok közötti kapcsolatok védelméhez. A rendszer külön kapcsolati kulcsokat hoz létre az alkalmazás és a helyszíni hibridkapcsolat-kezelő számára. Ezek a kapcsolati kulcsok egymástól függetlenül frissíthetők és visszavonhatók.
 
 A hibrid kapcsolatok a kulcsok zökkenőmentes és biztonságos elosztását biztosítják az alkalmazások és a helyszíni hibridkapcsolat-kezelő számára.
@@ -74,7 +88,9 @@ Lásd: [Create and Manage Hybrid Connections](integration-hybrid-connection-crea
 
 *Az alkalmazások hitelesítése a hibrid kapcsolatoktól elkülönítve történik*. Bármilyen megfelelő hitelesítési módszer használható. A hitelesítési módszer az Azure-felhőben és a helyszíni összetevőkben támogatott végpontok közötti hitelesítési módszerektől függ. Az Azure-alkalmazás például egy helyszíni SQL Servert ér el. Ebben a forgatókönyvben az SQL-hitelesítés lehet a végpontok között támogatott hitelesítési módszer.
 
-#### <a name="tcp-ports"></a>TCP-portok
+<a id="tcp-ports" class="xliff"></a>
+
+#### TCP-portok
 A hibrid kapcsolatokhoz csak kimenő TCP- vagy HTTP-kapcsolatra van szükség a magánhálózaton. Nem kell tűzfalportokat nyitnia, és nem kell módosítania a hálózatperem konfigurációját ahhoz, hogy bemenő kapcsolatot engedélyezzen a hálózat felé.
 
 A hibrid kapcsolatok a következő TCP-portokat használják:
@@ -85,12 +101,16 @@ A hibrid kapcsolatok a következő TCP-portokat használják:
 | 5671 |Amikor a 9352-es portot használja az adatforgalomhoz, az 5671-es port szolgál vezérlőcsatornaként. <br/><br/>Engedélyezze a kimenő kapcsolatokat ezen a porton. |
 | 80, 443 |Ezek a portok szolgálnak az Azure felé irányuló egyes adatkérések kezdeményezésére. Ezenkívül, ha a 9352-es és az 5671-es port nem használható, *akkor* a 80-as és a 443-as port az adatátvitelhez és a vezérlőcsatornához használt tartalékport.<br/><br/>Engedélyezze a kimenő kapcsolatokat ezeken a portokon. <br/><br/>**Megjegyezés**: nem ajánlott ezeket tartalékportokként használni más TCP-portok helyett. Adatcsatornák esetén a natív TCP helyett a HTTP/WebSocket protokoll használható. Ez kisebb teljesítményt eredményezhet. |
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 [Create and Manage Hybrid Connections (Hibrid kapcsolatok létrehozása és felügyelete)](integration-hybrid-connection-create-manage.md)<br/>
 [Azure Web Apps csatlakoztatása helyszíni erőforráshoz](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
 [Csatlakozás helyszíni SQL Serverhez Azure-webalkalmazásból](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/>
 
-## <a name="see-also"></a>Lásd még:
+<a id="see-also" class="xliff"></a>
+
+## Lásd még:
 [REST API a BizTalk Services felügyeletéhez a Microsoft Azure-ban](http://msdn.microsoft.com/library/azure/dn232347.aspx)
 [BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)<br/>
 [BizTalk-szolgáltatás létrehozása az Azure Portallal](biztalk-provision-services.md)<br/>
@@ -100,9 +120,4 @@ A hibrid kapcsolatok a következő TCP-portokat használják:
 [HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

@@ -13,30 +13,35 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 06/27/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 3daf74e480854255a40e7ee74e96993fff930471
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 4045dd501ba70b04cb8ea06901c76072fc009018
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal"></a>Pont–hely kapcsolat konfigurálása virtuális hálózat számára az Azure Portalon
+<a id="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal" class="xliff"></a>
+
+# Pont–hely kapcsolat konfigurálása virtuális hálózat számára az Azure Portalon
 
 Ez a cikk bemutatja, hogyan hozhat létre pont–hely kapcsolattal rendelkező virtuális hálózatot a Resource Manager-alapú üzemi modellben az Azure Portallal. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Resource Manager – Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Klasszikus – Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+> * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+> * [(Klasszikus) Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
 >
 
-A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat egy SSTP (Secure Socket Tunneling Protocol) használatával működő VPN-kapcsolat. A pont–hely kapcsolatok akkor hasznosak, ha egy távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról, vagy akkor, ha csak néhány ügyfelet szeretne csatlakoztatni egy virtuális hálózathoz. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet a működéshez. A VPN-kapcsolatot az ügyfélszámítógépről hozhatja létre.
+A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont–hely kapcsolatok akkor hasznosak, ha egy távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról, vagy akkor, ha csak néhány ügyfelet szeretne csatlakoztatni egy virtuális hálózathoz. A P2S VPN kapcsolatot az ügyfélszámítógépről kezdeményezik a natív Windows VPN-ügyfél használatával. Az ügyfelek hitelesítése a kapcsolódáskor tanúsítványokkal történik. 
+
 
 ![Pont–hely diagram](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-connection-diagram.png)
+
+A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. A P2S-kapcsolat SSTP (Secure Socket Tunneling Protocol) használatával hozza létre a VPN-kapcsolatot. A kiszolgálói oldalon az SSTP 1.0, 1.1 és 1.2 verziója támogatott. Az ügyfél dönti el, hogy melyik verziót használja. Windows 8.1 és újabb kiadások esetén az SSTP alapértelmezés szerint az 1.2 verziót használja. A Pont–hely kapcsolatokról további információt a cikk végén, a [Pont–hely kapcsolatok – gyakori kérdések](#faq) című részben talál.
 
 A pont–hely kapcsolatokhoz a következőkre van szükség:
 
@@ -82,7 +87,9 @@ Mielőtt csatlakoztatja virtuális hálózatát egy átjáróhoz, létre kell ho
 
 Az ebben a részben szereplő képernyőképek példa referenciaként szolgálnak. Ügyeljen arra, hogy azt az átjáróalhálózati címtartományt használja, amelyik a konfigurációhoz szükséges értékeknek megfelelő.
 
-### <a name="to-create-a-gateway-subnet"></a>Átjáróalhálózat létrehozása
+<a id="to-create-a-gateway-subnet" class="xliff"></a>
+
+### Átjáróalhálózat létrehozása
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
@@ -99,21 +106,25 @@ A pont–hely kapcsolatokhoz a következő beállításokra van szükség:
 * Átjáró típusa: VPN
 * VPN típusa: Útvonalalapú
 
-### <a name="to-create-a-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
+<a id="to-create-a-virtual-network-gateway" class="xliff"></a>
 
-[!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+### Virtuális hálózati átjáró létrehozása
+
+[!INCLUDE [create a vnet gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 ## <a name="generatecert"></a>6 – Tanúsítványok előállítása
 
-A tanúsítványokat az Azure használja a VPN-ügyfelek hitelesítésére a pont–hely VPN-kapcsolatokban. A főtanúsítvány nyilvánoskulcs-adatait feltölti az Azure-ba. A nyilvános kulcs ezután „megbízhatónak” tekinthető. Az ügyféltanúsítványokat a megbízható főtanúsítványból kell létrehozni, majd telepíteni kell az összes számítógépen a Certificates-Current User/Personal tanúsítványtárolóban. A tanúsítványt a rendszer az ügyfél hitelesítésére használja, amikor az a virtuális hálózathoz próbál csatlakozni. További információ a tanúsítványok létrehozásáról és telepítéséről: [Tanúsítványok pont–hely kapcsolatokhoz](vpn-gateway-certificates-point-to-site.md).
+A tanúsítványokat az Azure használja a VPN-ügyfelek hitelesítésére a pont–hely VPN-kapcsolatokban. A főtanúsítvány nyilvánoskulcs-adatait feltölti az Azure-ba. A nyilvános kulcs ezután „megbízhatónak” tekinthető. Az ügyféltanúsítványokat a megbízható főtanúsítványból kell létrehozni, majd telepíteni kell az összes számítógépen a Certificates-Current User/Personal tanúsítványtárolóban. A tanúsítványt a rendszer az ügyfél hitelesítésére használja, amikor az a virtuális hálózathoz próbál csatlakozni. 
+
+Önaláírt tanúsítványok használata esetén azokat megadott paraméterekkel kell létrehozni. Önaláírt tanúsítványt a [PowerShell és Windows 10](vpn-gateway-certificates-point-to-site.md), vagy [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) című cikkekben leírt utasítások alapján hozhat létre. Fontos, hogy az önaláírt legfelső szintű tanúsítványokkal végzett munka és az ügyféltanúsítványoknak a legfelső szintű tanúsítványból történő generálása során lépésről lépésre betartsa ezeket az utasításokat. Ellenkező esetben a létrehozott tanúsítványok nem lesznek kompatibilisek a P2S-kapcsolatokkal, és hibaüzenetet eredményeznek kapcsolódáskor.
 
 ### <a name="getcer"></a>1. lépés – A .cer fájl beszerzése a főtanúsítványhoz
 
-[!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-rootcert-include.md)]
+[!INCLUDE [obtain root certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
 ### <a name="generateclientcert"></a>2. lépés – Ügyféltanúsítvány létrehozása
 
-[!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
+[!INCLUDE [generate client certificate](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
 ## <a name="addresspool"></a>7 – Az ügyfélcímkészlet hozzáadása
 
@@ -145,7 +156,9 @@ Ha pont–hely típusú VPN-kapcsolattal szeretne kapcsolódni egy virtuális h�
 
 Használhatja a VPN-ügyfél azonos konfigurációs csomagját minden ügyfélszámítógépen, feltéve, hogy a verzió megfelel az ügyfél architektúrájának. A támogatott ügyfél operációs rendszerek listáját a cikk végén, a [Pont–hely kapcsolatok – gyakori kérdések](#faq) című szakaszban tekintheti meg.
 
-### <a name="step-1---download-the-client-configuration-package"></a>1. rész: Az ügyfél-konfigurációs csomag letöltése
+<a id="step-1---download-the-client-configuration-package" class="xliff"></a>
+
+### 1. rész: Az ügyfél-konfigurációs csomag letöltése
 
 1. A **Pont–hely konfiguráció** panelen kattintson a **VPN-ügyfél letöltése** elemre a **VPN-ügyfél letöltése** panel megnyitásához. A csomag létrehozása egy-két percet vesz igénybe.
 
@@ -154,7 +167,9 @@ Használhatja a VPN-ügyfél azonos konfigurációs csomagját minden ügyfélsz
 
   ![VPN-ügyfél letöltése, 2](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/vpnclient.png)
 
-### <a name="step-2---install-the-client-configuration-package"></a>2. rész: Az ügyfél-konfigurációs csomag telepítése
+<a id="step-2---install-the-client-configuration-package" class="xliff"></a>
+
+### 2. rész: Az ügyfél-konfigurációs csomag telepítése
 
 1. Másolja a konfigurációs fájlt a virtuális hálózathoz csatlakoztatni kívánt számítógépre. 
 2. Kattintson duplán az .exe fájlra, hogy a csomagot az ügyfélszámítógépre telepítse. Mivel a konfigurációs csomagot Ön hozta létre, nincs aláírva, ezért lehet, hogy figyelmeztetés jelenik meg. Ha egy Windows SmartScreen előugró ablak jelenik meg, kattintson a **További információ** (a bal oldalon), majd a **Futtatás mindenképpen** elemre a csomag telepítéséhez.
@@ -210,11 +225,15 @@ Ha problémákat tapasztal, amikor P2S használatával szeretne kapcsolódni egy
 
 A megbízható főtanúsítványokat felveheti vagy el is távolíthatja az Azure-ban. Főtanúsítvány eltávolításakor az abból a gyökérből létrehozott tanúsítvánnyal rendelkező ügyfelek nem fognak tudni hitelesítést végezni, így csatlakozni sem. Ha azt szeretné, hogy az ügyfelek hitelesítést végezhessenek és csatlakozni tudjanak, telepítenie kell egy olyan új ügyféltanúsítványt, amelyet az Azure által megbízhatónak tartott (feltöltött) főtanúsítványból hoztak létre.
 
-### <a name="to-add-a-trusted-root-certificate"></a>Megbízható főtanúsítvány hozzáadása
+<a id="to-add-a-trusted-root-certificate" class="xliff"></a>
+
+### Megbízható főtanúsítvány hozzáadása
 
 Az Azure-ra legfeljebb 20 megbízható főtanúsítványt tölthet fel .cer fájl formájában. Útmutatásért lásd a jelen cikk [Megbízható főtanúsítvány feltöltése](#uploadfile) című szakaszát.
 
-### <a name="to-remove-a-trusted-root-certificate"></a>Megbízható főtanúsítvány eltávolítása
+<a id="to-remove-a-trusted-root-certificate" class="xliff"></a>
+
+### Megbízható főtanúsítvány eltávolítása
 
 1. A megbízható főtanúsítvány eltávolításához lépjen a virtuális hálózati átjáróhoz tartozó **Pont–hely konfiguráció** panelre.
 2. Keresse meg az eltávolítani kívánt tanúsítványt a panel **Főtanúsítvány** szakaszában.
@@ -226,7 +245,9 @@ Az ügyféltanúsítványokat vissza lehet vonni. A visszavont tanúsítványok 
 
 A szokásos gyakorlat az, hogy a főtanúsítvánnyal kezelik a hozzáférést a munkacsoport vagy a szervezet szintjén, az egyes felhasználókra vonatkozó részletesebb szabályozást pedig visszavont ügyféltanúsítványokkal oldják meg.
 
-### <a name="to-revoke-a-client-certificate"></a>Ügyféltanúsítvány visszavonása
+<a id="to-revoke-a-client-certificate" class="xliff"></a>
+
+### Ügyféltanúsítvány visszavonása
 
 Az ügyféltanúsítványok visszavonásához vegye fel az ujjlenyomatot a visszavont tanúsítványok listájára.
 
@@ -242,5 +263,8 @@ Az ügyféltanúsítványok visszavonásához vegye fel az ujjlenyomatot a vissz
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/linux/azure-vm-network-overview.md).
+

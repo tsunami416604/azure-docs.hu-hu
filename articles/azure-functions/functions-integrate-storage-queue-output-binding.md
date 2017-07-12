@@ -15,27 +15,29 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0e2501b0eb218d3c8a62dd4959b08ff85ec565eb
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: d1ddfbe9a0a0c7c7e0a060776938bd68a87e1ba5
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 06/26/2017
 
 ---
-# <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
+<a id="add-messages-to-an-azure-storage-queue-using-functions" class="xliff"></a>
+
+# Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
 Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztosítanak a külső szolgáltatások adataihoz a függvényből történő csatlakozásra. Ebben a témakörben megtudhatja, hogyan módosíthat egy meglévő függvényt egy kimeneti kötés hozzáadásával, amely üzeneteket küld az Azure üzenetsor-tárolójába.  
 
 ![Tekintse meg a naplókban található üzeneteket.](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
 
-A témakörben foglalt lépések végrehajtása legfeljebb 5 percet vehet igénybe.
+<a id="prerequisites" class="xliff"></a>
 
-## <a name="prerequisites"></a>Előfeltételek 
+## Előfeltételek 
 
 [!INCLUDE [Previous topics](../../includes/functions-quickstart-previous-topics.md)]
 
-Le kell töltenie és telepítenie kell a [Microsoft Azure Storage Explorer](http://storageexplorer.com/) szoftvert. 
+* Telepítse a [Microsoft Azure Storage Explorert](http://storageexplorer.com/).
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
 
@@ -43,11 +45,11 @@ Le kell töltenie és telepítenie kell a [Microsoft Azure Storage Explorer](htt
  
 1. Bontsa ki a függvényalkalmazást és a függvényt.
 
-2. Kattintson az **Integráció** és az **+ Új kimenet** elemre, majd kattintson az **Azure Queue Storage** és a **Kiválasztás** elemre.
+2. Kattintson az **Integráció** és az **+ Új kimenet**, majd pedig az **Azure Queue Storage** és a **Kiválasztás** elemre.
     
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. Ezután használja a táblázatban megadott beállításokat, és kattintson a **Mentés** gombra: 
+3. Használja a táblázatban megadott beállításokat, majd kattintson a **Mentés** elemre: 
 
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -59,7 +61,9 @@ Le kell töltenie és telepítenie kell a [Microsoft Azure Storage Explorer](htt
 
 Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az a kötés használatával üzeneteket adjon hozzá az üzenetsorhoz.  
 
-## <a name="update-the-function-code"></a>A függvénykód módosítása
+<a id="update-the-function-code" class="xliff"></a>
+
+## A függvénykód módosítása
 
 1. A függvényre kattintva jelenítse meg a szerkesztőben a függvénykódot. 
 
@@ -84,11 +88,13 @@ Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az 
     outQueueItem.Add("Name passed to the function: " + name);     
     ```
 
-4. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+4. A módosítások mentéséhez kattintson a **Mentés** elemre.
 
 A HTTP-eseményindítónak üzenetben átadott érték bekerül az üzenetsorba.
  
-## <a name="test-the-function"></a>A függvény tesztelése 
+<a id="test-the-function" class="xliff"></a>
+
+## A függvény tesztelése 
 
 1. A kód módosításainak mentése után kattintson a **Futtatás** elemre. 
 
@@ -98,32 +104,38 @@ A HTTP-eseményindítónak üzenetben átadott érték bekerül az üzenetsorba.
 
 Ezután csatlakozhat a tárfiókhoz, hogy ellenőrizze az új üzenetsort és az abba felvett üzenetet. 
 
-## <a name="connect-to-the-queue"></a>Csatlakozás az üzenetsorhoz
+<a id="connect-to-the-queue" class="xliff"></a>
+
+## Csatlakozás az üzenetsorhoz
 
 Hagyja ki az első három lépést, ha már telepítette a Storage Explorert, és már csatlakoztatta azt a tárfiókjához.    
 
-1. A függvényben kattintson az **Integráció** elemre és az új **Azure Queue Storage** kimeneti kötésre, majd bontsa ki a **Dokumentáció** elemet. Másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz.
+1. A függvényben jelölje ki az **Integráció** elemet és az új **Azure Queue Storage** kimeneti kötést, majd bontsa ki a **Dokumentáció** elemet. Másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz.
  
     ![Kérje le a tárfiókhoz való csatlakozáshoz szükséges hitelesítő adatokat.](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
-2. Futtassa a [Microsoft Azure Storage Explorer](http://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** gombra.
+2. Futtassa a [Microsoft Azure Storage Explorer](http://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza ki a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** elemre.
 
     ![Futtassa a Storage Account Explorer eszközt.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
     
-3. Adja meg az 1. lépésben megállapított **Fiók neve** és **Fiók kulcsa** értéket, és kattintson a **Tovább**, majd a **Csatlakozás** gombra. 
+3. Illessze be az első lépésből a **Fiók neve** és a **Fiók kulcsa** értéket a megfelelő mezőkbe, majd kattintson a **Tovább**, és a **Csatlakozás** elemre. 
   
-    ![Adja meg a tároló hitelesítő adatait, és csatlakozzon.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
+    ![Illessze be a tároló hitelesítő adatait, és csatlakozzon.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
 4. Bontsa ki a csatolt tárfiókot, kattintson a jobb gombbal az **Üzenetsorok** elemre, és ellenőrizze, hogy létezik-e **myqueue-items** nevű üzenetsor. Ezenkívül egy üzenetnek is kell szerepelnie már az üzenetsorban.  
  
     ![Hozzon létre egy tárolási üzenetsort.](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 Felvett egy kimeneti kötést egy meglévő függvénybe. 
 

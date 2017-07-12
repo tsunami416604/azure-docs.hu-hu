@@ -1,67 +1,65 @@
 ---
 title: "Azure Cosmos DB .NET-alkalmazás létrehozása a Graph API-val | Microsoft Docs"
 description: "Egy .NET-kódmintát mutat be, amellyel csatlakozhat egy Cosmos DB-adatbázishoz, és lekérdezéseket hajthat végre."
-services: cosmosdb
+services: cosmos-db
 documentationcenter: 
 author: mimig1
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
-ms.service: cosmosdb
-ms.custom: quick start connect
+ms.service: cosmos-db
+ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 05/21/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 07a13c3e9e2baefe0be7ed417ba105dd23a3708d
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 3491aa53a55d988876710c0ac19383e642dda27b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
-# <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-alkalmazás létrehozása a Graph API-val
+<a id="azure-cosmos-db-build-a-net-application-using-the-graph-api" class="xliff"></a>
+
+# Azure Cosmos DB: .NET-alkalmazás létrehozása a Graph API-val
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
 A bevezető bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, adatbázist és gráfot (tárolót). Ezután megtudhatja hogyan hozhat létre és futtathat egy a [Graph API](graph-sdk-dotnet.md) előzetes verziójával létrehozott konzolalkalmazást.  
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 
 Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+<a id="create-a-database-account" class="xliff"></a>
 
-[!INCLUDE [cosmosdb-create-dbaccount-graph](../../includes/cosmosdb-create-dbaccount-graph.md)]
+## Adatbázisfiók létrehozása
 
-## <a name="add-a-graph"></a>Gráf hozzáadása
+[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
-[!INCLUDE [cosmosdb-create-graph](../../includes/cosmosdb-create-graph.md)]
+<a id="add-a-graph" class="xliff"></a>
 
-## <a name="add-sample-data"></a>Mintaadatok hozzáadása
+## Gráf hozzáadása
 
-Az Adatkezelő segítségével hozzáadhat adatokat új gráfjához.
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-1. Ha elemeket szeretne hozzáadni a gráfjához, az Adatkezelőben bontsa ki a **minta adatbázist**, **minta gráf** pontokat, kattintson a **Gráf** lehetőségre, végül kattintson az **Új csúcspont** és az **Új él** elemekre. Az Adatkezelőben továbbá skálázhatja átviteli sebességét, és tárolt eljárásokat, felhasználói függvényeket és eseményindítókat adhat hozzá a tárolóhoz.
+<a id="clone-the-sample-application" class="xliff"></a>
 
-    ![Csúcspontok és élek hozzáadása egy gráfhoz az Adatkezelőben](./media/create-graph-dotnet/azure-cosmos-db-graph-sample-data.png)
-
-2. Miután hozzáadott néhány elemet a gráfhoz, az adatok megjelenítéséhez kattintson a **Szűrés** gombra, vagy kattintson a jobb gombbal a **Gráf**, majd az **Új gráf lekérdezés** lehetőségre. Az adatok címkéinek és stílusának módosításához kattintson a **Stílus** gombra és módosítsa a beállításokat. Az alábbiakban egy példát talál az Adatkezelő egy grafikonjára. A megjelenített címkék, színek és adatok mind módosíthatóak.
-
-    ![Vizuális gráfvizsgáló az Azure Portal Adatkezelőjében](./media/create-graph-dotnet/azure-cosmos-db-graph-explorer.png)
-
-## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
+## A mintaalkalmazás klónozása
 
 Most pedig klónozunk egy Graph API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépejen át egy munkakönyvtárba.  
+1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
 
-2. Futtassa a következő parancsot a minta tárház klónozásához. 
+2. Futtassa a következő parancsot a mintatárház klónozásához. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started.git
@@ -69,11 +67,13 @@ Most pedig klónozunk egy Graph API-alkalmazást a GitHubról, beállítjuk a ka
 
 3. Ezután nyissa meg a megoldásfájlt a Visual Studióban. 
 
-## <a name="review-the-code"></a>A kód áttekintése
+<a id="review-the-code" class="xliff"></a>
+
+## A kód áttekintése
 
 Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB erőforrásokat. 
 
-* A rendszer inicializálja a DocumentClient ügyfelet. Az előzetes verzióban hozzáadtunk egy gráfbővítmény API-t a DocumentDB-ügyfélhez. Jelenleg egy különálló gráfügyfélen dolgozunk, mely a DocumentDB-ügyféltől és annak és az erőforrásaitól függetlenül működik.
+* A DocumentClient inicializálva van. Az előzetes verzióban hozzáadtunk egy gráfbővítmény API-t az Azure Cosmos DB-ügyfélhez. Jelenleg egy különálló gráfügyfélen dolgozunk, amely az Azure Cosmos DB-ügyféltől és annak erőforrásaitól függetlenül működik.
 
     ```csharp
     using (DocumentClient client = new DocumentClient(
@@ -112,11 +112,13 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs f�
 
     ```
 
-## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
+<a id="update-your-connection-string" class="xliff"></a>
+
+## A kapcsolati karakterlánc frissítése
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **Kulcsok** elemre, majd kattintson az **Írási/olvasási kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `App.config` fájlba.
+1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **kulcsok** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot a `App.config` fájlba.
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok panelén](./media/create-graph-dotnet/keys.png)
 
@@ -132,7 +134,9 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
-## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
+<a id="run-the-console-app" class="xliff"></a>
+
+## A konzolalkalmazás futtatása
 
 1. A Visual Studióban kattintson a jobb gombbal a **GraphGetStarted** projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 
 
@@ -144,28 +148,36 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
    A konzolablakban megjelennek a gráfhoz hozzáadandó csúcspontok és élek. Miután a parancsfájl futása befejeződött, nyomja meg kétszer az ENTER billentyűt a konzolablak bezárásához. 
 
-## <a name="browse-using-the-data-explorer"></a>Tallózás az Adatkezelővel
+<a id="browse-using-the-data-explorer" class="xliff"></a>
+
+## Tallózás az Adatkezelővel
 
 Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és lekérdezheti az új gráfadatokat.
 
-* Az Adatkezelőben az új adatbázis a Gyűjtemények ablaktáblán jelenik meg. Bontsa ki a **graphdb**, **graphcoll** pontokat, és kattintson a **Gráf** lehetőségre.
+* Az új adatbázis az Adatkezelőben a Gyűjtemények ablaktáblán jelenik meg. Bontsa ki a **graphdb**, **graphcoll** pontokat, és kattintson a **Gráf** lehetőségre.
 
-    A mintaalkalmazás által létrehozott adatok megjelennek a Gráfok ablaktáblán.
+    A mintaalkalmazás által létrehozott adatokat a Gráfok ablaktáblán találja.
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+<a id="review-slas-in-the-azure-portal" class="xliff"></a>
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmosdb-tutorial-review-slas.md)]
+## Az SLA-k áttekintése az Azure Portalon
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-Ha nem folytatja az alkalmazás használatát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást: 
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
+
+Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon: 
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
+2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
 
-Ebben a rövid útmutatóban megtudtuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
+## Következő lépések
+
+Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Most már készen áll arra, hogy a Gremlin használatával összetettebb lekérdezéseket hozzon létre és hatékony gráfbejárási logikákat implementáljon. 
 
 > [!div class="nextstepaction"]
 > [Lekérdezés a Gremlin használatával](tutorial-query-graph.md)

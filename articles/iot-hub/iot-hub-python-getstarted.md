@@ -14,14 +14,16 @@ ms.date: 04/22/2017
 ms.author: dkshir
 ms.custom: na
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d0ccbcfa5fc8006590951707f7162f7864110f38
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 572dfc8965957c4667d4124b045ffbb835786a94
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
-# <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>A szimulált eszköz csatlakoztatása az IoT Hubhoz Pythonnal
+<a id="connect-your-simulated-device-to-your-iot-hub-using-python" class="xliff"></a>
+
+# A szimulált eszköz csatlakoztatása az IoT Hubhoz Pythonnal
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 Az oktatóanyag végén kettő Python-alkalmazással fog rendelkezni:
@@ -41,6 +43,10 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * [Node.js 4.0 vagy újabb][lnk-node-download]. Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Ez az [IoT Hub Explorer eszköz][lnk-iot-hub-explorer] telepítéséhez szükséges.
 * Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy [ingyenes fiókot][lnk-free-trial].
 
+> [!NOTE]
+> `azure-iothub-service-client` és `azure-iothub-device-client` rendszerhez a *pip*-csomagok jelenleg csak Windows operációs rendszer alatt érhetőek el. Linux/Mac OS rendszer estében olvassa el a [Python fejlesztőkörnyezet előkészítése ][lnk-python-devbox] című bejegyzés Linuxra illetve Mac OS-re vonatkozó részét.
+> 
+
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 Ezzel létrehozta az IoT Hubot. Az oktatóanyag további részében használja az IoT Hub-gazdagépnevet és kapcsolati karakterláncot.
@@ -49,7 +55,9 @@ Ezzel létrehozta az IoT Hubot. Az oktatóanyag további részében használja a
 > Az IoT Hubot könnyedén létrehozhatja egy parancssorban a Python- vagy Node.js-alapú Azure CLI használatával. Ennek lépéseit az [IoT Hub Azure CLI 2.0-vel történő létrehozásával][lnk-azure-cli-hub] foglalkozó cikk ismerteti. 
 > 
 
-## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
+<a id="create-a-device-identity" class="xliff"></a>
+
+## Eszközidentitás létrehozása
 Ez a szakasz egy Python-konzolalkalmazás létrehozásának lépéseit ismerteti, amely egy új eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért lásd az [IoT Hub fejlesztői útmutatójának][lnk-devguide-identity] **Identitásjegyzék** című szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
 
 1. Nyisson meg egy parancssort, és telepítse a **Pythonhoz készült Azure IoT Hub szolgáltatási SDK-t**. Az SDK telepítése után zárja be a parancssort.
@@ -134,7 +142,9 @@ Ez a szakasz egy Python-konzolalkalmazás létrehozásának lépéseit ismerteti
 > 
 
 
-## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
+<a id="create-a-simulated-device-app" class="xliff"></a>
+
+## Szimulált eszközalkalmazás létrehozása
 Ez a szakasz egy olyan Python-konzolalkalmazás létrehozásának lépéseit ismerteti, amely egy eszközt szimulál, és az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubra.
 
 1. Nyisson meg egy új parancssort, és telepítse a Pythonhoz készült Azure IoT Hub eszközoldali SDK-t az alábbiak szerint. A telepítés után zárja be a parancssort.
@@ -251,7 +261,9 @@ Ez a szakasz egy olyan Python-konzolalkalmazás létrehozásának lépéseit ism
 > 
 > 
 
-## <a name="receive-messages-from-your-simulated-device"></a>Üzenet fogadása a szimulált eszközről
+<a id="receive-messages-from-your-simulated-device" class="xliff"></a>
+
+## Üzenet fogadása a szimulált eszközről
 Az eszközről érkező telemetriaüzenetek fogadásához egy, az IoT Hub által feltárt [Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot kell használnia, amely beolvassa az eszközről a felhőbe irányuló üzeneteket. Az Event Hubstól az IoT Hub Event Hubs-kompatibilis végpontjára érkező üzenetek feldolgozásával kapcsolatos információkért olvassa el [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. Az Event Hubs egyelőre nem támogatja a telemetriát a Pythonban, így létrehozhat egy [Node.js](iot-hub-node-node-getstarted.md#D2C_node) vagy [.NET](iot-hub-csharp-csharp-getstarted.md#D2C_csharp) Event Hubs-alapú konzolalkalmazást az IoT Hubról érkező, az eszközről a felhőbe irányuló üzenetek olvasásához. Az oktatóanyag bemutatja, hogyan használható az [IoT Hub Explorer eszköz][lnk-iot-hub-explorer] ezeknek az eszközüzeneteknek az olvasására.
 
 1. Nyisson meg egy parancssort, és telepítse az IoT Hub Explorert. 
@@ -277,7 +289,9 @@ Az eszközről érkező telemetriaüzenetek fogadásához egy, az IoT Hub által
 
     ![Eszközről felhőbe irányuló Python-üzenetek][2]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön az IoT Hubnak. Megfigyelte az IoT Hub által fogadott üzeneteket az IoT Hub Explorer eszköz segítségével. 
 
 A Pythonhoz készült Azure IoT Hub SDK használatának részletesebb megismerése érdekében látogasson el [ebbe a GitHub-adattárba][lnk-python-github]. A Pythonhoz készült Azure IoT Hub szolgáltatási SDK üzenetküldési képességeinek áttekintéséhez töltse le és futtassa az [iothub_messaging_sample.py][lnk-messaging-sample] fájlt. A Pythonhoz készült Azure IoT Hub eszközoldali SDK használatával végzett eszközoldali szimulációkhoz töltse le és futtassa az [iothub_client_sample.py][lnk-client-sample] fájlt.
@@ -286,9 +300,10 @@ További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatóköny
 
 * [Kapcsolódás az eszközhöz][lnk-connect-device]
 * [Eszközfelügyelet – első lépések][lnk-device-management]
-* [Ismerkedés az Azure IoT Edge szolgáltatással][lnk-gateway-SDK]
+* [Ismerkedés az Azure IoT Edge szolgáltatással][lnk-iot-edge]
 
 Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban tekintse meg [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot.
+[!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->
 [1]: ./media/iot-hub-python-getstarted/createdevice.png
@@ -311,6 +326,7 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
 [lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
+[lnk-python-devbox]: https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md
 
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
@@ -318,6 +334,6 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 

@@ -1,6 +1,6 @@
 ---
 title: "Bevezetés az Azure Data Catalog használatába | Microsoft Docs"
-description: "Ez a cikk a Microsoft Azure Data Catalog áttekintését tartalmazza, beleértve a szolgáltatás funkcióit, valamint a problémákat, amelyek áthidalására a szolgáltatást tervezték. A Data Catalog olyan képességeket biztosít, amelyek minden felhasználónak – az elemzőktől az adatszakértőkön át a fejlesztőkig – lehetővé teszik az adatforrások regisztrálását, felderítését, megértését és felhasználását."
+description: "Ez a cikk a Microsoft Azure Data Catalog áttekintését tartalmazza, beleértve a szolgáltatás funkcióit, és azokat a problémákat, amelyeket a szolgáltatás segítségével áthidalhat. A Data Catalog minden felhasználó számára lehetővé teszi adatforrások regisztrálását, felfedezését, értelmezését és felhasználását."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -16,53 +16,61 @@ ms.workload: data-catalog
 ms.date: 05/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: fb8f43f5bb5725da30e67cdf5d7b066fe40ed003
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: c0cf2805de958c979def3f21eda59ec97fb91d33
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/07/2017
+ms.lasthandoff: 06/05/2017
 
 
 ---
-# <a name="what-is-azure-data-catalog"></a>Mi az az Azure Data Catalog?
-Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi a felhasználóknak, hogy számukra szükséges adatforrásokat fedezzenek fel, és hogy a talált adatforrásokat értelmezzék, miközben a szervezeteket is segíti minél többet kihozni a meglévő befektetéseikből. A Data Catalog olyan képességeket biztosít, amelyek minden felhasználó számára – az elemzőktől az adatszakértőkön át a fejlesztőkig – lehetővé teszik az adatforrások felderítését, értelmezését és felhasználását. A Data Catalog egy közösségi metaadat- és megjegyzésmegosztási modellt is tartalmaz, amelynek segítségével minden felhasználó közzéteheti a saját ismereteit, és egy adatközösség hozható létre.
+<a id="what-is-azure-data-catalog" class="xliff"></a>
 
-## <a name="discovery-challenges-for-data-consumers"></a>Az adatok felfedezésének kihívásai az adatfelhasználók számára
-A vállalati adatforrások felfedezése hosszú ideje egy organikus, kollektív tudáson alapú folyamat. Ez számos kihívást támaszt a vállalatok számára, akik az információs adategységeiket a lehető leghatékonyabban szeretnék kihasználni.
+# Mi az az Azure Data Catalog?
+Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely segít a felhasználóknak megtalálni a keresett adatforrásokat és értelmezni őket. Eközben a Data Catalog a vállalatoknak is segít még több értéket kinyerni a meglévő befektetésekből. 
 
-* A felhasználók nem tudnak az adatforrások létezéséről, amíg egy másik folyamat során nem kerülnek velük kapcsolatba. Nincs egy központi nyilvántartás az adatforrásokról.
-* Ha egy felhasználó nem ismeri az adatforrás pontos helyét, nem tud egy ügyfélalkalmazással kapcsolódni a benne található adatokhoz. Az adatok felhasználásának követelménye, hogy a felhasználók ismerjék a kapcsolati karakterláncot vagy az elérési utat.
-* Hacsak egy felhasználó nem ismeri egy adatforrás dokumentációjának a helyét, nem tudja értelmezni az adatok felhasználási célját. Az adatforrások és a dokumentációk különböző helyeken találhatók és különböző módokon lehet őket felhasználni.
-* Ha egy felhasználónak kérdései vannak egy adategységgel kapcsolatban, offline módon kell felvennie a kapcsolatot az adatokért felelős szakértővel vagy csapattal. Nincs explicit kapcsolat az adatok és a használatukra vonatkozó szakértői meglátásokkal rendelkező személyek között.
-* Hacsak egy felhasználó nincs tisztában az adatforráshoz való hozzáférés kérelmezésének menetével, az adatforrás és a hozzá tartozó dokumentáció felfedezésével még mindig nem fér hozzá az adatokhoz, amelyekre szüksége van.
+A Data Catalog segítségével bármely felhasználó (elemző, adattudós, vagy fejlesztő) felfedezhet, értelmezhet és felhasználhat adatforrásokat. A Data Catalog tartalmaz egy közösségi modellt is a metaadatok és megjegyzések kiszervezéséhez. A vállalat felhasználói egyetlen központi helyen oszthatják meg ismereteiket egymással és építhetnek közösséget és kultúrát az adatok köré.
 
-## <a name="discovery-challenges-for-data-producers"></a>Az adatok felfedezésének kihívásai az adatalkotók számára
-Miközben az adatfelhasználók mindezekkel a kihívásokkal néznek szembe, az információs adategységek létrehozásáért és fenntartásáért felelős felhasználóknak szintén megvannak a saját kihívásaik.
+<a id="discovery-challenges-for-data-consumers" class="xliff"></a>
 
-* Az adatforrások leíró metaadatokkal való ellátása gyakran hiábavaló, mivel az ügyfélalkalmazások általában nem veszik figyelembe az adatforrásokban tárolt leírásokat.
-* Az adatforrásokhoz tartozó dokumentáció létrehozása gyakran hiábavaló, mert a dokumentációt folyamatosan szinkronban kell tartani az adatforrásokkal, a felhasználók pedig nem bíznak a dokumentációban, amelyeket gyakran elavultnak tartanak.
+## Az adatok felfedezésének kihívásai az adatfelhasználók számára
+A vállalati adatforrások felfedezése hosszú ideje egy organikus, kollektív tudáson alapú folyamat. Ez számos kihívást gördít azon vállalatok elé, akik az információs adategységeiket a lehető leghatékonyabban szeretnék kihasználni:
+
+* A felhasználók lehet, hogy csak akkor szereznek tudomást egy adatforrás létezéséről, amikor egy másik munkafolyamat során kapcsolatba kerülnek vele. Nincs egyetlen központi hely az adatforrások nyilvántartására.
+* A felhasználók ügyfélalkalmazásaikkal csak akkor tudják elérni az adott adatforrást, ha tudják annak pontos helyét. A hagyományos adatfelhasználási folyamatok során a felhasználóknak tudniuk kell a megfelelő kapcsolati karakterláncot, vagy az elérési utat.
+* Hacsak nem tudják a felhasználók az adott adatforráshoz tartozó dokumentáció helyét, nem fogják tudni pontosan, hogyan is kell az adatokat felhasználni. Lehet, hogy az adatforrások és dokumentáció csak különböző helyeken és különböző módokon érhetőek el.
+* Ha a felhasználóknak kérdése van egy adott információval kapcsolatban, személyesen kell megkeresniük az adatokért felelős szakembert vagy csapatot. Nincs explicit kapcsolat az adatok és az azok felhasználására szakértői módon rálátó emberek között.
+* Hacsak egy felhasználó nincs tisztában az adatforráshoz való hozzáférés kérelmezésének menetével, az adatforrás és a hozzá tartozó dokumentáció felfedezésével még mindig nem fér hozzá a szükséges adatokhoz.
+
+<a id="discovery-challenges-for-data-producers" class="xliff"></a>
+
+## Az adatok felfedezésének kihívásai az adatalkotók számára
+Miközben az adatfelhasználók mindezekkel az említett kihívásokkal néznek szembe, az információs adategységek létrehozásáért és fenntartásáért felelős felhasználóknak szintén megvannak a saját kihívásaik:
+
+* Az adatforrások felcímkézése tájékoztató jellegű metaadatokkal gyakran hiábavalónak bizonyul. Az ügyfélalkalmazások általában figyelmen kívül hagyják az adatforrásban tárolt tájékoztatókat.
+* Adatforrásokhoz dokumentációt készíteni gyakran hiábavalónak bizonyul. Szinkronban tartani az adatforrást és annak dokumentációját folyamatos felelősséget jelent, és a felhasználók nem is nagyon bíznak egy elavultnak tűnő dokumentációban.
+* Az adatforrásokhoz tartozó dokumentációk létrehozása és fenntartása összetett és időigényes feladat. A dokumentációkat az adatforrás minden felhasználója számára elérhetővé tenni pedig gyakran még inkább az.
 * Állandó kihívás az adatforrásokhoz való hozzáférés korlátozása, és annak biztosítása, hogy az adatfelhasználók ismerjék a hozzáférések kérelmezésének menetét.
 
-Az adatforrásokhoz tartozó dokumentációk létrehozása és fenntartása összetett és időigényes feladat. A dokumentációkat az adatforrás minden felhasználója számára elérhetővé tenni pedig gyakran még inkább az.
+Az ilyen kihívások együttesen jelentős korlátokat állítanak a vállalatok elé, akik szorgalmazni kívánják a vállalati adatok felhasználását és értelmezését.
 
-Ezek a kihívások együttesen jelentős korlátokat állítanak a vállalatok elé, akik szorgalmazni kívánják a vállalati adatok felhasználását és értelmezését.
+<a id="azure-data-catalog-can-help" class="xliff"></a>
 
-## <a name="azure-data-catalog-can-help"></a>Az Azure Data Catalog segíthet
-A Data Catalog szolgáltatást arra tervezték, hogy megoldja ezeket a problémákat, és lehetővé tegye a vállalatok számára, hogy a lehető leghatékonyabban használják ki a meglévő információs eszközeiket. A Data Catalog segít az adatforrásokat könnyen felfedezhetővé és értelmezhetővé tenni azon felhasználók számára, akiknek szükségük van a bennük foglalt adatokra.
+## Az Azure Data Catalog segíthet
+A Data Catalog szolgáltatást arra tervezték, hogy megoldja ezeket a problémákat, és segítsen a vállalatoknak a lehető leghatékonyabban kihasználni a meglévő információs eszközeiket. A Data Catalog az adatforrásokat könnyen felfedezhetővé és értelmezhetővé teszi azon felhasználók számára, akik a bennük foglalt adatokat kezelik.
 
-A Data Catalog egy felhőalapú szolgáltatást biztosít, amelybe az adatforrásokat regisztrálni lehet. Az adatok az eredeti helyükön maradnak, de a metaadatok másolatai bekerülnek a Data Catalog katalógusába, az adatforrások helyére mutató hivatkozásokkal együtt. A metaadatok indexelésének köszönhetően az adatforrások egy egyszerű keresés által felfedezhetők, majd értelmezhetők.
+A Data Catalog egy felhőalapú szolgáltatást biztosít, amelybe az adatforrásokat regisztrálni lehet. Az adatok az eredeti helyükön maradnak, de a metaadatok másolatai bekerülnek a Data Catalog katalógusába, az adatforrások helyére mutató hivatkozásokkal együtt. A metaadatok indexelésének köszönhetően az adatforrások egy egyszerű keresés által felfedezhetővé és könnyen értelmezhetővé válnak a felhasználók számára.
 
-Miután egy adatforrás regisztrálva lett, a metaadatai bővíthetők, akár a regisztrálását elvégző felhasználó, akár a vállalaton belüli más felhasználók által. Bármely felhasználó megjegyzésekkel láthatja el az adatforrásokat, amelyekben leírásokat, címkéket és egyéb metaadatokat, például dokumentációkat és hozzáférés-kérelmezési eljárásokat adhat meg. Ezek a leíró metaadatok kiegészítik az adatforrásból regisztrált szerkezeti metaadatokat (például oszlopneveket és adattípusokat).
+Miután egy adatforrás regisztrálva lett, a metaadatai bővíthetők, akár az azt regisztráló felhasználó, akár a vállalaton belüli többi felhasználó által. Bármely felhasználó megjegyzésekkel láthatja el az adatforrásokat, amelyekben leírásokat, címkéket és egyéb metaadatokat, például dokumentációkat és hozzáférés-kérelmezési eljárásokat adhat meg. Ezek a leíró metaadatok kiegészítik az adatforrásból regisztrált szerkezeti metaadatokat (például oszlopneveket és adattípusokat).
 
-Az adatforrások regisztrálásának elsődleges célja, hogy a források felfedezhetők, értelmezhetők és felhasználhatók legyenek. Ha a vállalat felhasználóinak adatokra van szükségük a munkájukhoz (legyen az üzleti intelligencia, alkalmazásfejlesztés, adattudomány vagy bármilyen egyéb jellegű feladat, amelyhez megfelelő adatokra van szükség), a Data Catalog felfedezési eljárásának használatával gyorsan megtalálhatják az igényeiknek megfelelő adatokat, értelmezhetik azokat és kiértékelhetik, hogy megfelelnek-e a céljaiknak, majd az adatforrások egy tetszőleges eszköz általi megnyitásával felhasználhatják az adatokat. Emellett a Data Catalog lehetővé teszi, hogy a katalógushoz a felhasználók is hozzájáruljanak, és címkéket, dokumentációkat és megjegyzéseket adjanak a már regisztrált adatforrásokhoz, vagy új adatforrásokat regisztráljanak, amelyeket aztán a katalógus felhasználóinak közössége felfedezhet, értelmezhet és felhasználhat.
+Az adatforrások regisztrálásának elsődleges célja, hogy a források felfedezhetők, értelmezhetők és felhasználhatók legyenek. A vállalati felhasználóknak adatokra lehet szükségük az üzleti intelligencia, az alkalmazásfejlesztés, az adattudomány és minden más olyan tevékenység terén, ahol fontos a megfelelő adatok használata. Ők a Data Catalog segítségével könnyedén megtalálhatják a szükségleteiknek megfelelő adatokat, értelmezhetik, hogy mennyire felelnek meg felhasználási szempontjaiknak, és fel is használhatják őket úgy, hogy az adatforrást a választott eszközzel nyitják meg. 
 
-![Az Azure Data Catalog képességei](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
+Ezzel egy időben a regisztrált adatforrások címkézésével, dokumentáció, illetve jegyzetek készítésével a felhasználók közre is tudnak működni a katalógus készítésében. További adatforrásokat is regisztrálni tudnak, amelyeket a katalógus felhasználói közössége szabadon felfedezhet, értelmezhet és felhasználhat.
 
-## <a name="get-started-with-data-catalog"></a>Bevezetés a Data Catalog használatába
-A Data Catalog használatának azonnali megkezdéséhez látogasson el a [www.azuredatacatalog.com](https://www.azuredatacatalog.com) webhelyre.
+![A Data Catalog képességei](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
 
-Az első lépésekről szóló útmutatót [itt](data-catalog-get-started.md) érheti el.
+<a id="learn-more-about-data-catalog" class="xliff"></a>
 
-## <a name="learn-more-about-data-catalog"></a>További információ a Data Catalog szolgáltatásról
+## További információ a Data Catalog szolgáltatásról
 A Data Catalog képességeinek bővebb megismeréséhez lásd a következő témaköröket:
 
 * [Adatforrások regisztrálása](data-catalog-how-to-register.md)
@@ -74,4 +82,11 @@ A Data Catalog képességeinek bővebb megismeréséhez lásd a következő tém
 * [Adategységek felügyelete](data-catalog-how-to-manage.md)
 * [Az üzleti szószedet összeállítása](data-catalog-how-to-business-glossary.md)
 * [Gyakori kérdések](data-catalog-frequently-asked-questions.md)
+
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
+A Data Catalog használatával itt ismerkedhet meg:
+* [Microsoft Azure Data Catalog](https://www.azuredatacatalog.com)
+* [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)
 

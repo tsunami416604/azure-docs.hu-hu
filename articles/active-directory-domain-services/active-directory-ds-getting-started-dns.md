@@ -12,45 +12,48 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2017
+ms.date: 06/27/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: abb27292d4b5533fe6f3d66d6921fea8c82f18dd
-ms.lasthandoff: 04/12/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: c704ee189072ce8ed196d1ef0a23edd528a10025
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="update-dns-settings-for-the-azure-virtual-network"></a>Az Azure virtuális hálózat DNS-beállításainak frissítése
-## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése
+<a id="enable-azure-active-directory-domain-services-preview" class="xliff"></a>
+
+# Az Azure Active Directory Domain Services engedélyezése (előzetes verzió)
+
+<a id="task-4-update-dns-settings-for-the-azure-virtual-network" class="xliff"></a>
+
+## 4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése
 Az előző konfigurációs feladatokban sikeresen engedélyezte az Azure Active Directory Domain Services-t a címtárhoz. A következő feladat annak biztosítása, hogy a virtuális hálózaton lévő összes számítógép képes legyen csatlakozni ezekhez a szolgáltatásokhoz, és használhassa azokat. Ez a cikk bemutatja, hogyan frissítheti a virtuális hálózat DNS-kiszolgálójának beállításait, hogy arra a két IP-címre mutassanak, amelyeken az Azure Active Directory Domain Services elérhető a virtuális hálózaton.
 
-> [!NOTE]
-> Miután engedélyezte az Azure Active Directory Domain Services-t a címtárhoz, jegyezze fel az Azure Active Directory Domain Services a címtár **Configure** (Konfigurálás) lapján megjelenített IP-címeit.
->
->
+A DNS-kiszolgáló azon virtuális hálózatra vonatkozó beállításainak frissítéséhez, amelyiken engedélyezte az Azure Active Directory Domain Services-t, végezze el a következő műveleteket:
 
-A DNS-kiszolgáló azon virtuális hálózatra vonatkozó beállításainak frissítéséhez, amelyiken engedélyezte az Azure Active Directory Domain Services-t, tegye a következőket:
+1. A felügyelt tartomány teljes kiépítése után az **Overview** (Áttekintés) lapon jelenik meg az elvégzendő **szükséges konfigurációs lépések** listája. Az első konfigurációs lépés a **virtuális hálózathoz tartozó DNS-kiszolgáló beállításainak frissítése**.
 
-1. Nyissa meg a [klasszikus Azure portált](https://manage.windowsazure.com).
-2. A bal oldali panelen válassza ki a **Networks** (Hálózatok) elemet.  
-    Ekkor megnyílik a **Networks** (Hálózatok) ablak.
+    ![Tartományi szolgáltatások – Áttekintés lap a teljes kiépítés után](./media/getting-started/domain-services-provisioned-overview.png)
 
-    ![Virtual networks (Virtuális hálózatok) ablak](./media/active-directory-domain-services-getting-started/virtual-network-select.png)
-3. A **Virtual Networks** (Virtuális hálózatok) lapon válassza ki a virtuális hálózatot, amelyiken engedélyezte az Azure Active Directory Domain Services-t, és tekintse meg a tulajdonságait.
-4. Kattintson a **Configure** (Konfigurálás) lapra.
+2. A tartomány teljes kiépítését követően két IP-cím jelenik meg ezen a csempén. Mindkét IP-cím a felügyelt tartományhoz tartozó tartományvezérlőt jelöli.
 
-    ![Virtual networks (Virtuális hálózatok) ablak](./media/active-directory-domain-services-getting-started/virtual-network-configure-tab.png)
-5. A **DNS servers** (DNS-kiszolgálók) szakaszban adja meg mindkét IP-címet, amely a címtár **Configure** (Konfigurálás) lapjának **Domain Services** (Tartományi szolgáltatások) szakaszában megjelentek.
-6. A DNS-kiszolgáló virtuális hálózatra vonatkozó beállításainak mentéséhez kattintson a **Save** (Mentés) gombra az ablak alján található feladatpanelen.
+3. Az első IP-cím vágólapra való másolásához kattintson a mellette lévő másolás gombra. Ezt követően kattintson a **Configure DNS servers** (DNS-kiszolgálók konfigurálása) gombra.
 
-   ![A DNS-kiszolgáló virtuális hálózatra vonatkozó beállításainak frissítése](./media/active-directory-domain-services-getting-started/update-dns.png)
+4. Illessze be az első IP-címet a **DNS servers** (DNS-kiszolgálók) panelen található **Add DNS server** (DNS-kiszolgáló hozzáadása) szövegmezőbe. A második IP-cím másolásához görgessen vízszintesen balra, majd illessze be az **Add DNS server** (DNS-kiszolgáló hozzáadása) szövegmezőbe.
+
+    ![Tartományi szolgáltatások – DNS frissítése](./media/getting-started/domain-services-update-dns.png)
+
+5. Ha végzett, kattintson a **Save** (Mentés) elemre a virtuális hálózathoz tartozó DNS-kiszolgáló frissítéséhez.
 
 > [!NOTE]
-> A DNS-kiszolgáló a virtuális hálózatra vonatkozó beállításainak frissítését követően némi időt vehet igénybe, míg a hálózaton lévő virtuális gépek megkapják a frissített DNS-konfigurációt. Ha egy virtuális gép nem tud csatlakozni a tartományhoz, kiürítheti a DNS gyorsítótárat (az „ipconfig /flushdns” paranccsal) a virtuális gépen. Ez a parancs kikényszeríti a DNS-beállítások frissítését a virtuális gépen.
+> A hálózat virtuális gépei csak újraindítás után alkalmazzák az új DNS-beállításokat. Ha azt szeretné, hogy azonnal alkalmazzák a frissített DNS-beállításokat, kezdeményezzen újraindítást a portálon, a PowerShellen vagy a CLI-n keresztül.
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
-5. feladat: [Jelszavak szinkronizálásának engedélyezése az Azure Active Directory Domain Services-re](active-directory-ds-getting-started-password-sync.md)
+<a id="next-step" class="xliff"></a>
+
+## Következő lépés
+[5. feladat: Jelszavak szinkronizálásának engedélyezése az Azure Active Directory Domain Services-re](active-directory-ds-getting-started-password-sync.md)
 

@@ -8,24 +8,28 @@ manager: garavd
 editor: 
 ms.assetid: 
 ms.service: site-recovery
-ms.workload: backup-recovery
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/21/2017
+ms.date: 06/29/2017
 ms.author: nisoneji
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 5c716069bdff2a23bf81b2d2d0793a8616cf9c83
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: a6fdab66a6a41e352d07e3b6f3c58eb331c0d93f
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
+<a id="azure-site-recovery-deployment-planner" class="xliff"></a>
+
+# Azure Site Recovery Deployment Planner
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
 
-## <a name="overview"></a>Áttekintés
+<a id="overview" class="xliff"></a>
+
+## Áttekintés
 
 A VMware virtuális gépek Site Recovery-vel történő védelmének megkezdése előtt elegendő sávszélességet kell kiosztania a napi szintű adatváltozások alapján, hogy elérje a kívánt helyreállítási időkorlátot (RPO). Ügyeljen arra, hogy üzembe helyezze a megfelelő számú helyszíni konfigurációs és folyamatkiszolgálót.
 
@@ -63,12 +67,14 @@ Az eszköz a következő részleteket biztosítja:
 >Mivel a használat idővel megnövekszik, az eszközben minden számítás a munkaterhelési jellemzők 30%-os növekedési tényezőjével történik, illetve a profilkészítési mérőszámok 95%-át veszi alapul (írási/olvasási IOPS, adatforgalom stb.). Mindkét elem (a növekedési tényező és a százalékérték is) konfigurálható. További információkat a növekedési tényezőről „A növekedési tényezővel kapcsolatos szempontok” szakaszban találhat. További információkat a százalékértékről „A számításhoz használt százalékérték” szakaszban találhat.
 >
 
-## <a name="requirements"></a>Követelmények
+<a id="requirements" class="xliff"></a>
+
+## Követelmények
 Az eszköz két fő fázisból áll: a profil- és jelentéskészítésből. Van egy harmadik lehetőség, amely csak az átviteli sebességet számítja ki. Az alábbi táblázatban láthatók annak a kiszolgálónak a követelményei, ahonnan a profilkészítés/átviteli sebesség mérését kezdeményezi:
 
 | Kiszolgálókövetelmények | Leírás|
 |---|---|
-|Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: Microsoft Windows Server 2012 R2<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](https://aka.ms/asr-v2a-on-prem-components))</li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://developercenter.vmware.com/tool/vsphere_powercli/6.0)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A VMware vCenter statisztikaszint-beállításait a 2. vagy magasabb szintre kell állítani</li></ul>|
+|Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: Microsoft Windows Server 2012 R2<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](https://aka.ms/asr-v2a-on-prem-components))</li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A VMware vCenter statisztikaszint-beállításait a 2. vagy magasabb szintre kell állítani</li></ul>|
 | Jelentéskészítés | 2013-as vagy újabb Microsoft Excellel rendelkező Windows PC vagy Windows Server |
 | Felhasználói engedélyek | Csak olvasási jogosultság a felhasználói fióknak a VMware vCenter/VMware vSphere ESXi kiszolgáló profilkészítés közben való hozzáféréséhez |
 
@@ -77,7 +83,9 @@ Az eszköz két fő fázisból áll: a profil- és jelentéskészítésből. Van
 >Az eszköz csak a VMDK- és RDM-lemezzel rendelkező virtuális gépeknek tud profilt készíteni. Nem képes az iSCSI- vagy NFS-lemezzel rendelkező virtuális gépek profilkészítésére. A Site Recovery támogatja az iSCSI- és NFS-lemezeket a VMware-kiszolgálókon, azonban az üzembe helyezési tervező nem a vendéggépen belül fut, és csak a vCenter teljesítményszámlálók használatával készít profilokat, így az eszköz számára nem láthatók ezek a lemeztípusok.
 >
 
-## <a name="download-and-extract-the-public-preview"></a>Nyilvános előzetes verzió letöltése és kibontása
+<a id="download-and-extract-the-public-preview" class="xliff"></a>
+
+## Nyilvános előzetes verzió letöltése és kibontása
 1. Töltse le a [Site Recovery Deployment Planner legújabb nyilvános előzetes verzióját](https://aka.ms/asr-deployment-planner).  
 Az eszköz .zip-mappába van csomagolva. Az eszköz jelenlegi verziója csak a VMware–Azure forgatókönyvet támogatja.
 
@@ -95,7 +103,9 @@ A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtat
 
     E:\ASR Deployment Planner-Preview_v1.2\ ASR Deployment Planner-Preview_v1.2\ ASRDeploymentPlanner.exe
 
-## <a name="capabilities"></a>Funkciók
+<a id="capabilities" class="xliff"></a>
+
+## Funkciók
 A parancssori eszköz (ASRDeploymentPlanner.exe) a következő három mód bármelyikében futtatható:
 
 1. Profilkészítés  
@@ -104,13 +114,17 @@ A parancssori eszköz (ASRDeploymentPlanner.exe) a következő három mód bárm
 
 Először futtassa profilkészítési módban az eszközt a virtuális gép adatváltozásának és IOPS-értékének összegyűjtéséhez. Ezután futtassa az eszközt a jelentés létrehozásához, hogy megtudhassa a hálózati sávszélességet és a tárolási követelményeket.
 
-## <a name="profiling"></a>Profilkészítés
+<a id="profiling" class="xliff"></a>
+
+## Profilkészítés
 Profilkészítési módban a Deployment Planner eszköz a vCenter-kiszolgálóhoz vagy a vSphere ESXi-gazdagéphez csatlakozik, hogy összegyűjtse a virtuális gép teljesítményadatait.
 
 * A profilkészítés nincs hatással az éles virtuális gépek teljesítményére, mivel nem jön létre közvetlen kapcsolat az éles virtuális gépekkel. A rendszer minden teljesítményadatot összegyűjt a vCenter-kiszolgálóról / vSphere ESXi-gazdagépről.
 * Az eszköz 15 percenként lekérdezi a vCenter-kiszolgálót vagy a vSphere ESXi-gazdagépet, hogy a profilkészítés biztosan csak elhanyagolható hatással legyen a kiszolgálóra. A lekérdezési időköz azonban nem veszélyezteti a profilkészítés pontosságát, mivel az eszköz minden percben tárolja a teljesítményszámláló adatait.
 
-### <a name="create-a-list-of-vms-to-profile"></a>A profillal ellátni kívánt virtuális gépek listájának létrehozása
+<a id="create-a-list-of-vms-to-profile" class="xliff"></a>
+
+### A profillal ellátni kívánt virtuális gépek listájának létrehozása
 Először létre kell hoznia a profillal ellátni kívánt virtuális gépek listáját. A következő eljárás VMware vSphere PowerCLI-parancsai használatával a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen található összes virtuális gép nevét elérheti. Másik lehetőségként egy fájlba listázhatja azon virtuális gépek rövid nevét vagy IP-címét, amelyeket manuálisan szeretne profillal ellátni.
 
 1. Jelentkezzen be arra a virtuális gépre, amelyen a VMware vSphere PowerCLI telepítve van.
@@ -130,7 +144,9 @@ Cserélje le a &lsaquo;server name&rsaquo; (kiszolgáló neve), a &lsaquo;user n
 
     ![Virtuálisgép-nevek listája a Deployment Planner eszközben](./media/site-recovery-deployment-planner/profile-vm-list.png)
 
-### <a name="start-profiling"></a>Profilkészítés indítása
+<a id="start-profiling" class="xliff"></a>
+
+### Profilkészítés indítása
 Ha megvan azon virtuális gépek listája, amelyekről profilt szeretne készíteni, futtathatja az eszközt profilkészítési módban. Az alábbi lista az eszköz profilkészítési módjában használható kötelező és választható paramétereket sorolja fel.
 
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
@@ -140,7 +156,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Művelet | StartProfiling |
 | -Kiszolgáló | Azon vCenter-kiszolgáló vagy vSphere ESXi-gazdagép teljes tartományneve vagy IP-címe, amelynek virtuális gépeiről profilt szeretne készíteni.|
 | -Felhasználó | A vCenter-kiszolgálóhoz vagy vSphere ESXi-gazdagéphez való csatlakozáshoz használt felhasználónév. A felhasználónak legalább olvasási hozzáféréssel kell rendelkeznie.|
-| -VMListFile |    Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy az ESXi-gazdagépen szereplő nevekkel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
+| -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy az ESXi-gazdagépen szereplő nevekkel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>virtual_machine_A</li><li>10.150.29.110</li><li>virtual_machine_B</li><ul> |
 | -NoOfDaysToProfile | A napok száma, ameddig a profilkészítést futtatni szeretné. Javasoljuk, hogy legalább 15 napig futtassa a profilkészítést. Ez biztosítja számítási feladatok mintájának megfigyelését a környezetben a meghatározott időtartamon belül, amely alapján pontos javaslat adható |
 | -Directory | (Nem kötelező) Az univerzális elnevezési konvenciónak (UNC) megfelelő elérési út vagy azon helyi könyvtár elérési útja, ahol a profilkészítés során létrehozott adatokat tárolni kívánja. Ha nem adja meg könyvtár nevét, a rendszer az aktuális elérési úton található „ProfiledData” könyvtárat használja alapértelmezett könyvtárként. |
 | -Password | (Nem kötelező) A vCenter-kiszolgálóhoz vagy vSphere ESXi-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg most, a rendszer a parancs végrehajtásakor rákérdez.|
@@ -162,18 +178,24 @@ A rendszer egyszer, a profilkészítési művelet elején rögzíti virtuálisg�
 
 A profilkészítési parancs számos fájlt létrehoz a profilkészítési könyvtárban. Ezeket ne törölje, mert az hatással lenne a jelentésre.
 
-#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>1. példa: Profilkészítés virtuális gépről 30 napon keresztül, valamint a helyszín és az Azure közötti átviteli sebesség meghatározása
+<a id="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure" class="xliff"></a>
+
+#### 1. példa: Profilkészítés virtuális gépről 30 napon keresztül, valamint a helyszín és az Azure közötti átviteli sebesség meghatározása
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  30  -User vCenterUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
-#### <a name="example-2-profile-vms-for-15-days"></a>2. példa: Profilkészítés virtuális gépről 15 napon keresztül
+<a id="example-2-profile-vms-for-15-days" class="xliff"></a>
+
+#### 2. példa: Profilkészítés virtuális gépről 15 napon keresztül
 
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  15  -User vCenterUser1
 ```
 
-#### <a name="example-3-profile-vms-for-1-hour-for-a-quick-test-of-the-tool"></a>3. példa: Profilkészítés virtuális gépekről 1 órán keresztül az eszköz gyors teszteléséhez
+<a id="example-3-profile-vms-for-1-hour-for-a-quick-test-of-the-tool" class="xliff"></a>
+
+#### 3. példa: Profilkészítés virtuális gépekről 1 órán keresztül az eszköz gyors teszteléséhez
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  0.04  -User vCenterUser1
 ```
@@ -184,7 +206,9 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Directory “E:\vCenter1_Pro
 >* Ha megadja a tárfióknevet és -kulcsot, az eszköz a profilkészítés utolsó lépéseként megméri az átviteli sebességet. Ha bezárja az eszközt, mielőtt a profilkészítés befejeződött volna, a rendszer nem számítja ki az átviteli sebességet. Az átviteli sebesség a jelentés létrehozása előtti lekérdezéséhez futtassa a GetThroughput műveletet a parancssori konzolból. Ellenkező esetben a létrehozott jelentés nem tartalmazza majd az átviteli sebességgel kapcsolatos információkat.
 
 
-## <a name="generate-a-report"></a>Jelentés létrehozása
+<a id="generate-a-report" class="xliff"></a>
+
+## Jelentés létrehozása
 Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként, amely összefoglalja az üzembehelyezési javaslatokat. A jelentés neve DeploymentPlannerReport_<*egyéni numerikus azonosító*>.xlsm, és a megadott könyvtárban lesz elérhető.
 
 A profilkészítés befejezése után futtathatja az eszközt jelentéskészítési módban. A következő táblázat a jelentéskészítési módban futtatandó kötelező és nem kötelező eszközparaméterek listáját tartalmazza.
@@ -205,44 +229,55 @@ A profilkészítés befejezése után futtathatja az eszközt jelentéskészít�
 | -StartDate | (Nem kötelező) Kezdő dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. A *StartDate* és az *EndDate* paraméter megadása kötelező. Ha a StartDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
 | -EndDate | (Nem kötelező) Záró dátum és idő HH-NN-ÉÉÉÉ:ÓÓ:PP (24 órás) formátumban megadva. Az *EndDate* és a *StartDate* paraméter megadása kötelező. Ha az EndDate meg van adva, a rendszer a StartDate és az EndDate paraméter közötti időszakban összegyűjtött, profilkészítéshez használt adatokról állít elő jelentést. |
 | -GrowthFactor | (Nem kötelező) A növekedési tényező százalékértékként megadva. Az alapértelmezett érték 30%. |
-| -UseManagedDisks | (Nem kötelező) UseManagedDisks – Igen/Nem. Az alapértelmezett érték az Igen. A rendszer az alapján számítja ki az egyetlen tárfiókba helyezhető virtuális gépek számát, hogy felügyelt lemez van-e kijelölve feladatátvételre/feladatátvételi tesztre. |
+| -UseManagedDisks | (Nem kötelező) UseManagedDisks – Igen/Nem. Az alapértelmezett érték az Igen. Az egy tárfiókban elhelyezhető virtuális gépek számának meghatározáskor a rendszer figyelembe veszi, hogy a virtuális gépek feladatátvétele, illetve feladatátvételi tesztje nem felügyelt lemez helyett felügyelt lemezen történik. |
 
-Egyetlen tárfiók esetén a rendszer az elhelyezés kiszámításakor figyelembe veszi, hogy a virtuális gépek feladatátvétele/feladatátvételi tesztje nem felügyelt lemez helyett felügyelt lemezen történik. |
+<a id="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive" class="xliff"></a>
 
-
-#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>1. példa: Jelentés készítése az alapértelmezett értékekkel, ha a profilkészítés során létrehozott adatok a helyi meghajtón találhatóak
+#### 1. példa: Jelentés készítése az alapértelmezett értékekkel, ha a profilkészítés során létrehozott adatok a helyi meghajtón találhatóak
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>2. példa: Jelentés készítése, ha a profilkészítés során létrehozott adatok távoli kiszolgálón találhatóak
+<a id="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server" class="xliff"></a>
+
+#### 2. példa: Jelentés készítése, ha a profilkészítés során létrehozott adatok távoli kiszolgálón találhatóak
 A felhasználónak olvasási/írási hozzáféréssel kell rendelkeznie a távoli könyvtárhoz.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>3. példa: Jelentés készítése megadott sávszélességgel és a kezdeti replikáció adott határidejű befejezésére vonatkozó céllal
+<a id="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time" class="xliff"></a>
+
+#### 3. példa: Jelentés készítése megadott sávszélességgel és a kezdeti replikáció adott határidejű befejezésére vonatkozó céllal
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
 
-#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>4. példa: Jelentés készítése 5%-os növekedési tényezővel az alapértelmezett 30% helyett
+<a id="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent" class="xliff"></a>
+
+#### 4. példa: Jelentés készítése 5%-os növekedési tényezővel az alapértelmezett 30% helyett
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
 
-#### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>5. példa: Jelentés létrehozása a profilkészítés során használt adatok egy részéből
+<a id="example-5-generate-a-report-with-a-subset-of-profiled-data" class="xliff"></a>
+
+#### 5. példa: Jelentés létrehozása a profilkészítés során használt adatok egy részéből
 Tegyük fel, hogy van 30 napnyi adata, amelyet a profilkészítés során hozott létre, de csak 20 napról szeretne jelentést készíteni.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
 
-#### <a name="example-6-generate-a-report-for-5-minute-rpo"></a>6. példa: Jelentés készítése 5 perces helyreállítási időkorláttal
+<a id="example-6-generate-a-report-for-5-minute-rpo" class="xliff"></a>
+
+#### 6. példa: Jelentés készítése 5 perces helyreállítási időkorláttal
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
-## <a name="percentile-value-used-for-the-calculation"></a>A számításhoz használt százalékérték
+<a id="percentile-value-used-for-the-calculation" class="xliff"></a>
+
+## A számításhoz használt százalékérték
 **Alapértelmezés szerint a profilkészítés során összegyűjtött teljesítménymetrikák milyen százalékos arányát használja az eszköz jelentések készítésekor?**
 
 Az eszköz alapértelmezett értéke az írási/olvasási IOPS, az írási IOPS és az adatváltozás esetén a 95. százalékérték az összes virtuális gép profiljának elkészítése során. Ez a metrika biztosítja, hogy a virtuális gépek által az ideiglenes események miatt esetlegesen észlelt 100. százalékértékes kiugrást a rendszer nem használja fel a cél tárfiók és a forrássávszélesség követelményeinek meghatározásakor. Az ideiglenes esemény lehet például egy naponta egyszer futtatott biztonsági mentési feladat, rendszeres időközönként végzett adatbázis-indexelés, elemzésijelentés-készítési tevékenység vagy bármely hasonló, rövid ideig tartó, időpontalapú esemény.
@@ -254,7 +289,9 @@ A 95. százalékérték használata valós képet ad a számítási feladatok va
 <add key="DataChurnPercentile" value="95" />
 ```
 
-## <a name="growth-factor-considerations"></a>A növekedési tényezővel kapcsolatos szempontok
+<a id="growth-factor-considerations" class="xliff"></a>
+
+## A növekedési tényezővel kapcsolatos szempontok
 **Miért kell figyelembe vennem a növekedési tényezővel kapcsolatos szempontokat a környezetek megtervezésekor?**
 
 Rendkívül fontos figyelembe venni a növekedést a számítási feladatok jellemzőiben, feltételezve a használat lehetséges növekedését. Ha beállítja a védelmet, és módosulnak a számítási feladatok jellemzői, nincs lehetőség arra, hogy egy másik védett tárfiókra váltson a védelem letiltása és ismételt engedélyezése nélkül.
@@ -278,7 +315,9 @@ Az elkészített Microsoft Excel-jelentés a következő információkat tartalm
 
 ![Deployment Planner](./media/site-recovery-deployment-planner/dp-report.png)
 
-## <a name="get-throughput"></a>Átviteli sebesség lekérdezése
+<a id="get-throughput" class="xliff"></a>
+
+## Átviteli sebesség lekérdezése
 
 Ha meg szeretné becsülni az átviteli sebességet, amelyet a Site Recovery el tud érni helyszínről az Azure-ba történő replikáció során, futtassa az eszközt GetThroughput módban. Az eszköz arról a kiszolgálóról számítja ki az átviteli sebességet, amelyen fut. Ez a kiszolgáló optimális esetben a konfigurációs kiszolgálók méretezési útmutatóján alapul. Ha már üzembe helyezte a Site Recovery infrastruktúra-összetevőit a helyszínen, futtassa az eszközt a konfigurációs kiszolgálón.
 
@@ -299,7 +338,9 @@ Az eszköz több 64 MB-os „asrchdfile<#>.vhd” nevű fájlt (a „#” a fáj
 
 Az eszköz egy meghatározott időpontban méri az átviteli sebességet, és a kapott érték a Site Recovery által a replikáció során elérhető maximális átviteli sebesség, feltéve, hogy a többi tényező sem változik. Ha például valamelyik alkalmazás több sávszélességet kezd el felhasználni ugyanazon a hálózaton belül, a tényleges átviteli sebesség változhat a replikáció során. Ha a GetThroughput parancsot egy konfigurációs kiszolgálóról futtatja, az eszköz nem veszi figyelembe a védett virtuális gépeket és a folyamatban lévő replikációkat. Az átviteli sebesség mérésének eredménye eltérő lesz, ha a védett virtuális gépek adatváltozása magas a GetThroughput művelet végrehajtásakor. Ajánlott az eszközt különböző időpontokban futtatni a profilkészítés során, hogy átláthassa, milyen átviteli sebességi szintek érhetők el a különféle időpontokban. Az eszköz a legutóbb mért átviteli sebességet jeleníti meg a jelentésben.
 
-### <a name="example"></a>Példa
+<a id="example" class="xliff"></a>
+
+### Példa
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_ProfiledData -VMListFile E:\vCenter1_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
@@ -318,9 +359,13 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 >
 >  4. Módosítsa a Site Recovery beállításait a folyamatkiszolgálón [a replikációhoz használt hálózati sávszélesség növelésével](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
-## <a name="recommendations-with-desired-rpo-as-input"></a>Javaslatok a kívánt helyreállítási időkorlát (RPO) bemenetként való megadásával
+<a id="recommendations-with-desired-rpo-as-input" class="xliff"></a>
 
-### <a name="profiled-data"></a>Profilkészítés során létrehozott adatok
+## Javaslatok a kívánt helyreállítási időkorlát (RPO) bemenetként való megadásával
+
+<a id="profiled-data" class="xliff"></a>
+
+### Profilkészítés során létrehozott adatok
 
 ![A profilkészítés során létrehozott adatok nézete a Deployment Planner eszközben](./media/site-recovery-deployment-planner/profiled-data-period.png)
 
@@ -330,7 +375,9 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 **Desired RPO** (Kívánt RPO): Az üzembe helyezés kívánt helyreállítási időkorlátja. Alapértelmezés szerint a szükséges hálózati sávszélesség kiszámítása 15, 30 és 60 perces RPO értékkel történik. A kiválasztástól függően az eszköz frissíti az érintett értékeket a munkalapon. Ha használta a *DesiredRPOinMin* paramétert a jelentés elkészítése közben, akkor az az érték jelenik meg a Kívánt helyreállítási időkorlát eredményei között.
 
-### <a name="profiling-overview"></a>Profilkészítés áttekintése
+<a id="profiling-overview" class="xliff"></a>
+
+### Profilkészítés áttekintése
 
 ![A profilkészítés eredményei a Deployment Planner eszközben](./media/site-recovery-deployment-planner/profiling-overview.png)
 
@@ -342,7 +389,9 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 **Desired RPO**(Kívánt RPO): A kívánt helyreállítási időkorlát, percben megadva. Az eszköz három helyreállítási időkorlát értékről készít jelentést: 15 (alapértelmezett érték), 30 és 60 perc. A jelentésben szereplő ajánlott sávszélesség attól függően változik, hogy melyik lehetőséget választja a munkalap jobb felső sarkában található Desired RPO (Kívánt RPO) legördülő listából. Ha egyéni értékű *-DesiredRPO* paraméterrel készítette el a jelentést, ez az egyéni érték jelenik meg alapértelmezett értékként a Kívánt helyreállítási időkorlát legördülő listában.
 
-### <a name="required-network-bandwidth-mbps"></a>Szükséges hálózati sávszélesség (Mbps)
+<a id="required-network-bandwidth-mbps" class="xliff"></a>
+
+### Szükséges hálózati sávszélesség (Mbps)
 
 ![Szükséges hálózati sávszélesség a Deployment Planner eszközben](./media/site-recovery-deployment-planner/required-network-bandwidth.png)
 
@@ -366,28 +415,38 @@ Ha az eszközt olyan konfigurációs kiszolgálón vagy folyamatkiszolgálón fu
 
 A Site Recovery minden vállalati üzemelő példánya esetében az [ExpressRoute](https://aka.ms/expressroute) használata javasolt.
 
-### <a name="required-storage-accounts"></a>Szükséges tárfiókok
+<a id="required-storage-accounts" class="xliff"></a>
+
+### Szükséges tárfiókok
 A következő diagram az összes kompatibilis virtuális gép védelméhez szükséges (standard és prémium szintű) tárfiókok teljes számát mutatja. A „VM-storage placement” (Virtuálisgép-tároló elhelyezése) szakaszból megtudhatja, hogy melyik tárfiókot melyik virtuális géphez használhatja.
 
 ![Szükséges tárfiókok a Deployment Planner eszközben](./media/site-recovery-deployment-planner/required-azure-storage-accounts.png)
 
-### <a name="required-number-of-azure-cores"></a>Szükséges Azure-magok száma
+<a id="required-number-of-azure-cores" class="xliff"></a>
+
+### Szükséges Azure-magok száma
 Ez az eredmény az összes kompatibilis virtuális gép feladatátvétele vagy feladatátvételi tesztje előtt beállítandó magok teljes száma. Ha az előfizetés túl kevés maggal rendelkezik, a Site Recovery nem tudja létrehozni a virtuális gépeket a feladatátvételi teszt vagy a tényleges feladatátvétel alatt.
 
 ![Szükséges Azure-magok száma a Deployment Planner eszközben](./media/site-recovery-deployment-planner/required-number-of-azure-cores.png)
 
-### <a name="required-on-premises-infrastructure"></a>Szükséges helyszíni infrastruktúra
+<a id="required-on-premises-infrastructure" class="xliff"></a>
+
+### Szükséges helyszíni infrastruktúra
 Ez az adat az összes virtuális gép védelméhez szükséges konfigurálandó konfigurációs kiszolgálók és további folyamatkiszolgálók teljes száma. A [konfigurációs kiszolgáló támogatott méretére vonatkozó javaslatoktól](https://aka.ms/asr-v2a-on-prem-components) függően az eszköz további kiszolgálókat javasolhat. A javaslat a napi adatforgalmon vagy a védett virtuális gépek maximális számán alapul (virtuális gépenként átlagosan három lemezt feltételezve), ha eléri valamelyik korlátot a konfigurációs kiszolgálón vagy a további folyamatkiszolgálón. A napi összes adatforgalom és a védett lemezek teljes számának részletei az „Input” (Bemenet) szakaszban találhatók.
 
 ![Szükséges helyszíni infrastruktúra a Deployment Planner eszközben](./media/site-recovery-deployment-planner/required-on-premises-infrastructure.png)
 
-### <a name="what-if-analysis"></a>Lehetőségelemzés
+<a id="what-if-analysis" class="xliff"></a>
+
+### Lehetőségelemzés
 Ez az elemzés kiemeli, hogy hányszor szegné meg a helyreállítási időkorlátot a profilkészítés időtartama alatt, ha alacsonyabb sávszélességet állít be, amely az idő 90 százalékában biztosítaná a kívánt RPO betartását. A helyreállítási időkorlát túllépése bármelyik nap egy vagy több alkalommal is előfordulhat. Az ábra a napi RPO-csúcsértéket mutatja.
 Az elemzés alapján eldöntheti, hogy az RPO-túllépések teljes száma az összes nap alatt, valamint a napi RPO-csúcsérték elfogadható-e a megadott alacsonyabb sávszélesség esetén. Ha elfogadható, akkor lefoglalhatja az alacsonyabb sávszélességet a replikációhoz. Ha nem, akkor foglalja le a javasolt magasabb sávszélességet ahhoz, hogy az idő 100 százalékában betarthassa az RPO-t.
 
 ![Lehetőségelemzés a Deployment Planner eszközben](./media/site-recovery-deployment-planner/what-if-analysis.png)
 
-### <a name="recommended-vm-batch-size-for-initial-replication"></a>A virtuálisgép-köteg ajánlott mérete a kezdeti replikációhoz
+<a id="recommended-vm-batch-size-for-initial-replication" class="xliff"></a>
+
+### A virtuálisgép-köteg ajánlott mérete a kezdeti replikációhoz
 A szakaszban arra teszünk javaslatot, hogy hány virtuális gép védhető meg egyszerre úgy, hogy a kezdeti replikáció 72 órán belül befejeződjön a javasolt sávszélesség és a kívánt RPO 100 százalékos betartása mellett a beállítás során. Ezen érték konfigurálható. Módosításához használja a *GoalToCompleteIR* paramétert a jelentéskészítés során.
 
 A diagram egy sávszélesség-tartományt és azt a virtuálisgép-köteg méretet mutatja, amellyel a kezdeti replikáció 72 órán belüli befejezhető. Ez a szám az összes kompatibilis virtuális gép és a virtuális gépek átlagos észlelt méretén alapul.
@@ -396,12 +455,16 @@ A nyilvános előzetes verzióban a jelentés nem határozza meg, hogy melyik vi
 
 ![A virtuálisgép-köteg ajánlott mérete](./media/site-recovery-deployment-planner/recommended-vm-batch-size.png)
 
-### <a name="growth-factor-and-percentile-values-used"></a>A használt növekedési tényező és százalékértékek
+<a id="growth-factor-and-percentile-values-used" class="xliff"></a>
+
+### A használt növekedési tényező és százalékértékek
 A munkalap alján található szakasz a profilkészítésben részt vevő virtuális gépek összes teljesítményszámlálójához használt százalékértéket (az alapértelmezett érték 95 százalék), valamint az összes számításban használt növekedési tényezőt (az alapértelmezett érték 30 százalék) mutatja.
 
 ![A használt növekedési tényező és százalékértékek](./media/site-recovery-deployment-planner/max-iops-and-data-churn-setting.png)
 
-## <a name="recommendations-with-available-bandwidth-as-input"></a>Javaslatok az elérhető sávszélesség bemenetként való megadásával
+<a id="recommendations-with-available-bandwidth-as-input" class="xliff"></a>
+
+## Javaslatok az elérhető sávszélesség bemenetként való megadásával
 
 ![Javaslatok az elérhető sávszélesség bemenetként való megadásával](./media/site-recovery-deployment-planner/profiling-overview-bandwidth-input.png)
 
@@ -409,7 +472,9 @@ Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud beáll
 
 ![Elérhető RPO 500 Mbps sávszélességhez](./media/site-recovery-deployment-planner/achievable-rpos.png)
 
-## <a name="input"></a>Input (Bemenet)
+<a id="input" class="xliff"></a>
+
+## Input (Bemenet)
 Az Input (Bemenet) munkalap áttekintést nyújt arról a VMware-környezetről, amelyről profilt készített.
 
 ![Áttekintés arról a VMware-környezetről, amelyről profilt készített](./media/site-recovery-deployment-planner/Input.png)
@@ -433,7 +498,9 @@ Az Input (Bemenet) munkalap áttekintést nyújt arról a VMware-környezetről,
 **Observed typical data churn per day (GB)** (Megfigyelt átlagos napi adatváltozás (GB)): Az összes profilkészítési napon megfigyelt átlagos adatváltozás. Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
 
 
-## <a name="vm-storage-placement"></a>Virtuálisgép-tároló elhelyezése
+<a id="vm-storage-placement" class="xliff"></a>
+
+## Virtuálisgép-tároló elhelyezése
 
 ![Virtuálisgép-tároló elhelyezése](./media/site-recovery-deployment-planner/vm-storage-placement.png)
 
@@ -451,7 +518,9 @@ Az Input (Bemenet) munkalap áttekintést nyújt arról a VMware-környezetről,
 
 **Virtual Machines to Place** (Elhelyezendő virtuális gépek): Az összes olyan virtuális gép listája, amelyet az optimális teljesítmény és használat érdekében az adott tárfiókon ajánlott elhelyezni.
 
-## <a name="compatible-vms"></a>Kompatibilis virtuális gépek
+<a id="compatible-vms" class="xliff"></a>
+
+## Kompatibilis virtuális gépek
 ![A kompatibilis virtuális gépek Excel-táblázata](./media/site-recovery-deployment-planner/compatible-vms.png)
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor a VMListFile-ban használt virtuálisgépnév vagy IP-cím. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
@@ -489,7 +558,9 @@ Tehát, ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy 
 
 **Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet.
 
-## <a name="incompatible-vms"></a>Nem kompatibilis virtuális gépek
+<a id="incompatible-vms" class="xliff"></a>
+
+## Nem kompatibilis virtuális gépek
 
 ![A nem kompatibilis virtuális gépek Excel-táblázata](./media/site-recovery-deployment-planner/incompatible-vms.png)
 
@@ -527,22 +598,26 @@ Tehát, ha a számítási feladatok jellemzői alapján egy lemez a P20-as vagy 
 **Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet.
 
 
-## <a name="site-recovery-limits"></a>A Site Recovery korlátai
+<a id="site-recovery-limits" class="xliff"></a>
+
+## A Site Recovery korlátai
 
 **Replikáció tárolási célja** | **Forráslemez átlagos I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
 ---|---|---|---
-Standard szintű Storage | 8 KB    | 2 MBps | Lemezenként 168 GB
-Prémium szintű P10 lemez | 8 KB    | 2 MBps | Lemezenként 168 GB
-Prémium szintű P10 lemez | 16 KB | 4 MBps |    Lemezenként 336 GB
+Standard szintű Storage | 8 KB | 2 MBps | Lemezenként 168 GB
+Prémium szintű P10 lemez | 8 KB | 2 MBps | Lemezenként 168 GB
+Prémium szintű P10 lemez | 16 KB | 4 MBps | Lemezenként 336 GB
 Prémium szintű P10 lemez | 32 KB vagy több | 8 MBps | Lemezenként 672 GB
-Prémium szintű P20 vagy P30 lemez | 8 KB    | 5 MBps | Lemezenként 421 GB
+Prémium szintű P20 vagy P30 lemez | 8 KB  | 5 MBps | Lemezenként 421 GB
 Prémium szintű P20 vagy P30 lemez | 16 KB vagy több |10 MBps | Lemezenként 842 GB
 
 Ezek átlagos értékek, amelyek 30 százalékos I/O-átfedést feltételeznek. A Site Recovery képes magasabb átviteli sebesség kezelésére az átfedési arány, a nagyobb írási méretek és a számítási feladatok tényleges I/O-viselkedése alapján. Az előbbi számok egy általános, körülbelül ötperces várólistát feltételeznek. Ez azt jelenti, hogy a feltöltést követő öt percben megtörténik az adat feldolgozása, és létrejön egy helyreállítási pont.
 
 Ezek a korlátok a saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. A legjobb eredmények érdekében még az üzembe helyezés megtervezése után is ajánlott az alkalmazás alapos tesztelése feladatátvételi tesztek használatával, így valós képet kaphat a teljesítményről.
 
-## <a name="updating-the-deployment-planner"></a>A Deployment Planner frissítése
+<a id="updating-the-deployment-planner" class="xliff"></a>
+
+## A Deployment Planner frissítése
 A Deployment Planner frissítéséhez tegye a következőt:
 
 1. Töltse le az [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) legújabb verzióját.
@@ -562,9 +637,13 @@ A Deployment Planner frissítéséhez tegye a következőt:
   >Minden új Deployment Planner a .zip fájl összegző frissítését jelenti. Ezért nem kell a legújabb fájlokat a korábbi mappába másolnia. Létrehozhat és használhat egy új mappát is.
 
 
-## <a name="version-history"></a>Verzióelőzmények
+<a id="version-history" class="xliff"></a>
 
-### <a name="13"></a>1.3
+## Verzióelőzmények
+
+<a id="13" class="xliff"></a>
+
+### 1.3
 Frissítve: 2017. május 9.
 
 A következő új szolgáltatást tartalmazza:
@@ -572,7 +651,9 @@ A következő új szolgáltatást tartalmazza:
 * Most már elérhető a felügyelt lemezek támogatása a jelentéskészítés során. A rendszer az alapján számítja ki az egyetlen tárfiókba helyezhető virtuális gépek számát, hogy felügyelt lemez van-e kijelölve feladatátvételre/feladatátvételi tesztre.        
 
 
-### <a name="12"></a>1.2
+<a id="12" class="xliff"></a>
+
+### 1.2
 Frissítve: 2017. április 7.
 
 A következő javításokat tartalmazza:
@@ -584,7 +665,9 @@ A következő javításokat tartalmazza:
 * Hibás jelentéseket eredményezett, ha nem az angol nyelv lett megadva a helyi beállításokban.
 
 
-### <a name="11"></a>1.1
+<a id="11" class="xliff"></a>
+
+### 1.1
 Frissítve: 2017. március 9.
 
 Az alábbi problémákat javítja:
@@ -592,7 +675,9 @@ Az alábbi problémákat javítja:
 * Az eszköz nem képes profilt készíteni a virtuális gépekről, ha a vCenter-kiszolgáló különböző ESXi-gazdagépein több azonos nevű vagy IP-című virtuális gép található.
 * A Kompatibilis virtuális gépek és a Nem kompatibilis virtuális gépek munkalapján a másolás és a keresés le van tiltva.
 
-### <a name="10"></a>1.0
+<a id="10" class="xliff"></a>
+
+### 1.0
 Frissítve: 2017. február 23.
 
 Az Azure Site Recovery Deployment Planner 1.0-s nyilvános előzetes verziója az alábbi ismert hibákat tartalmazza (ezeket az elkövetkező frissítések fogják elhárítani):

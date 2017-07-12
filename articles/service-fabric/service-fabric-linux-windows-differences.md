@@ -12,28 +12,33 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/23/2017
+ms.date: 6/28/2017
 ms.author: subramar
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: 00c1f10f7df865344233143ce9cdf546e64acca0
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 68c7e1f3f51ca5bec30a0f71aaccbafa58078e69
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>A Service Fabric Linux (előzetes verziójú) és Windows (általánosan elérhető) rendszerhez készült verziója közötti különbségek
+<a id="differences-between-service-fabric-on-linux-preview-and-windows-generally-available" class="xliff"></a>
 
-Mivel a Service Fabric Linux rendszeren még előzetes verzióban van, ezért néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, amikor a Service Fabric általánosan elérhetővé válik Linux rendszeren.
+# A Service Fabric Linux (előzetes verziójú) és Windows (általánosan elérhető) rendszerhez készült verziója közötti különbségek
 
-* A Reliable Collections (és a Reliable Stateful Services) nem támogatott Linux rendszeren.
-* A ReverseProxy nem érhető el Linux rendszeren.
-* Az önálló telepítő nem érhető el Linux rendszeren.
-* A jegyzékfájlok XML-sémaérvényesítése nem történik meg Linux rendszeren. 
-* A konzolátirányítás Linux rendszeren nem támogatott. 
-* A hibaelemzési szolgáltatás (FAS) nem érhető el Linux rendszeren.
-* Az Azure Active Directory-támogatás nem érhető el Linux rendszeren.
-* A PowerShell-parancsok néhány parancssori felületi megfelelője nem érhető el.
+Mivel a Service Fabric Linux rendszeren még előzetes verzióban van, ezért néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, amikor a Service Fabric általánosan elérhetővé válik Linux rendszeren. A jövőbeli kiadásokban a funkciók eltérései egyre csekélyebbé válnak. A legújabb elérhető kiadások (Windows rendszeren 5.6, Linuxon 5.5) között az alábbi eltérések állnak fenn: 
+
+* Reliable Collections (és a Reliable Stateful Services) 
+* ReverseProxy 
+* Önálló telepítő 
+* Jegyzékfájlok XML-sémaérvényesítése 
+* Konzol-átirányítás 
+* Fault Analysis Service (FAS)
+* Docker compose, kötet- és naplózási illesztők tárolókhoz 
+* Tárolók és szolgáltatások erőforrás-szabályozása 
+* DNS-szolgáltatás
+* Azure Active Directory-támogatás
+* Egyes PowerShell-parancsok parancssori felületi megfelelője 
 * Csak a PowerShell-parancsok egy része futtatható Linux-fürtökön (a következő szakaszban leírtak szerint).
 
 >[!NOTE]
@@ -41,7 +46,9 @@ Mivel a Service Fabric Linux rendszeren még előzetes verzióban van, ezért n�
 
 A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendszeren a VisualStudio, a PowerShell, a VSTS és az ETW, míg Linuxon a Yeoman, az Eclipse, a Jenkins és az LTTng érhető el.
 
-## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-parancsmagok, amelyek nem működnek Linux rendszerű Service Fabric-fürtökön
+<a id="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster" class="xliff"></a>
+
+## PowerShell-parancsmagok, amelyek nem működnek Linux rendszerű Service Fabric-fürtökön
 
 * Invoke-ServiceFabricChaosTestScenario
 * Invoke-ServiceFabricFailoverTestScenario
@@ -99,7 +106,9 @@ A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendsze
 
 
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 * [A fejlesztőkörnyezet előkészítése Linuxon](service-fabric-get-started-linux.md)
 * [A fejlesztőkörnyezet előkészítése OSX-en](service-fabric-get-started-mac.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)

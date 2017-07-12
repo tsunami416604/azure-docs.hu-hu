@@ -14,16 +14,19 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
+ms.date: 06/06/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: e37a3194bb65ccf3bb6168a2f456902a9c48edc5
-ms.lasthandoff: 03/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 99bb3db7cc80e8426e1dca14bc3d733ee6c7342c
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/07/2017
 
 ---
-# <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Privát Docker-tárolójegyzék létrehozása az Azure CLI 2.0 használatával
+<a id="create-a-private-docker-container-registry-using-the-azure-cli-20" class="xliff"></a>
+
+# Privát Docker-tárolójegyzék létrehozása az Azure CLI 2.0 használatával
 Az [Azure CLI 2.0](https://github.com/Azure/azure-cli) parancsaival létrehozhat egy tároló-beállításjegyzéket, és kezelheti annak beállításait Linux, Mac vagy Windows rendszerű számítógépéről. A tároló-beállításjegyzékeket létrehozhatja és kezelheti az [Azure Portalon](container-registry-get-started-portal.md) vagy programozott módon a tároló-beállításjegyzék [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=834376) is.
 
 
@@ -31,13 +34,17 @@ Az [Azure CLI 2.0](https://github.com/Azure/azure-cli) parancsaival létrehozhat
 * A Container Registry parancssori felületének parancsaival (`az acr` parancsok) kapcsolatos segítségért adja át a `-h` paramétert egy parancsnak.
 
 
-## <a name="prerequisites"></a>Előfeltételek
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 * **Azure CLI 2.0**: A CLI 2.0 telepítéshez és megismeréséhez tekintse meg a [telepítési utasításokat](/cli/azure/install-azure-cli). Jelentkezzen be Azure-előfizetésébe az `az login` futtatásával. További információkért lásd a [CLI 2.0 használatának első lépéseit](/cli/azure/get-started-with-azure-cli) ismertető témakört.
 * **Erőforráscsoport**: A tárolójegyzék létrehozása előtt hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md#resource-groups), vagy használjon egy meglévő erőforráscsoportot. Győződjön meg arról, hogy az erőforráscsoport olyan helyen található, ahol a Container Registry szolgáltatás [elérhető](https://azure.microsoft.com/regions/services/). Ha a CLI 2.0-val szeretne erőforráscsoportot létrehozni, tekintse meg [a CLI 2.0-referenciát](/cli/azure/group).
 * **Storage-fiók** (nem kötelező): Hozzon létre egy standard Azure [Storage-fiókot](../storage/storage-introduction.md) a tárolójegyzékhez a tárolójegyzékkel megegyező helyen. Ha nem ad meg Storage-fiókot, amikor létrehozza a beállításjegyzéket az `az acr create` paranccsal, a parancs létrehoz egyet. Ha a CLI 2.0-val szeretne tárfiókot létrehozni, tekintse meg [a CLI 2.0-referenciát](/cli/azure/storage/account). A Premium Storage jelenleg nem támogatott.
 * **Egyszerű szolgáltatás** (nem kötelező): Ha a parancssori felülettel hoz létre beállításjegyzéket, az alapértelmezés szerint nem lesz elérhető. Igény szerint a beállításjegyzékhez hozzárendelhet egy meglévő Azure Active Directory egyszerű szolgáltatást (vagy létrehozhat és hozzárendelhet egy újat), vagy engedélyezheti a beállításjegyzék rendszergazdai felhasználói fiókját. Ezzel kapcsolatban lásd a cikk későbbi részeit. A beállításjegyzék elérésével kapcsolatos további információkat a [tároló-beállításjegyzékkel való hitelesítéssel kapcsolatos cikkben](container-registry-authentication.md) találhat.
 
-## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+<a id="create-a-container-registry" class="xliff"></a>
+
+## Tároló-beállításjegyzék létrehozása
 Futtassa az `az acr create` parancsot egy tároló-beállításjegyzék létrehozásához.
 
 > [!TIP]
@@ -45,17 +52,38 @@ Futtassa az `az acr create` parancsot egy tároló-beállításjegyzék létreho
 >
 >
 
-Az alábbi parancs a minimális paramétereket használja a `myRegistry1` tároló beállításjegyzék a `myResourceGroup` erőforráscsoportban való létrehozásához az USA déli középső régiójában:
+Az alábbi parancs az *alapszintű* termékváltozattal a minimális paramétereket használja a tárolóregisztrációs adatbázis (`myRegistry1`) `myResourceGroup` erőforráscsoportban való létrehozásához:
 
 ```azurecli
-az acr create -n myRegistry1 -g myResourceGroup -l southcentralus
+az acr create --name myRegistry1 --resource-group myResourceGroup --sku Basic
 ```
 
 * A(z) `--storage-account-name` nem kötelező. Ha nincs megadva, a Storage-fiók a beállításjegyzék nevéből és egy időbélyegzőből álló névvel jön létre a megadott erőforráscsoportban.
 
-A kimenet a következő példához hasonló:
+A tárolóregisztrációs adatbázis létrehozásakor a kimenet a következő példához hasonló:
 
-![az acr create kimenete](./media/container-registry-get-started-azure-cli/acr_create.png)
+```azurecli
+{
+  "adminUserEnabled": false,
+  "creationDate": "2017-06-06T18:36:29.124842+00:00",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ContainerRegistry
+/registries/myRegistry1",
+  "location": "southcentralus",
+  "loginServer": "myregistry1.azurecr.io",
+  "name": "myRegistry1",
+  "provisioningState": "Succeeded",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "storageAccount": {
+    "name": "myregistry123456789"
+  },
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries"
+}
+
+```
 
 
 Különösen ügyeljen a következőre:
@@ -63,10 +91,14 @@ Különösen ügyeljen a következőre:
 * `id` – Az előfizetésben lévő beállításjegyzék azonosítója, amelyre akkor van szükség, ha egyszerű szolgáltatást szeretne hozzárendelni.
 * `loginServer` – A teljes név, amelyet a [beállításjegyzékbe való bejelentkezéshez](container-registry-authentication.md) ad meg. Ebben a példában a név `myregistry1.exp.azurecr.io` (csak kisbetűkkel).
 
-## <a name="assign-a-service-principal"></a>Egyszerű szolgáltatás hozzárendelése
+<a id="assign-a-service-principal" class="xliff"></a>
+
+## Egyszerű szolgáltatás hozzárendelése
 Azure Active Directory egyszerű szolgáltatások beállításjegyzékhez való hozzárendeléséhez a CLI 2.0 parancsait használhatja. A példákban szereplő egyszerű szolgáltatáshoz a tulajdonosi szerepkör van hozzárendelve, de [más szerepköröket](../active-directory/role-based-access-control-configure.md) is hozzárendelhet, ha szeretne.
 
-### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>Egyszerű szolgáltatás létrehozása és hozzáférés biztosítása a beállításjegyzékhez
+<a id="create-a-service-principal-and-assign-access-to-the-registry" class="xliff"></a>
+
+### Egyszerű szolgáltatás létrehozása és hozzáférés biztosítása a beállításjegyzékhez
 Az alábbi parancs tulajdonosi szerepkör szintű hozzáférést biztosít az új egyszerű szolgáltatás számára a `--scopes` paraméterrel átadott beállításjegyzék-azonosítóhoz. Adjon meg egy erős jelszót a `--password` paraméterrel.
 
 ```azurecli
@@ -75,7 +107,9 @@ az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 
-### <a name="assign-an-existing-service-principal"></a>Meglévő egyszerű szolgáltatás hozzárendelése
+<a id="assign-an-existing-service-principal" class="xliff"></a>
+
+### Meglévő egyszerű szolgáltatás hozzárendelése
 Ha már rendelkezik egyszerű szolgáltatással, és tulajdonosi szerepkör szintű hozzáférést szeretne számára biztosítani a beállításjegyzékhez, futtasson egy, a következő példához hasonló parancsot. Az egyszerű szolgáltatás alkalmazásazonosítóját az `--assignee` paraméterrel lehet átadni:
 
 ```azurecli
@@ -84,45 +118,61 @@ az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxx
 
 
 
-## <a name="manage-admin-credentials"></a>Rendszergazdai hitelesítő adatok kezelése
+<a id="manage-admin-credentials" class="xliff"></a>
+
+## Rendszergazdai hitelesítő adatok kezelése
 Minden tároló-beállításjegyzékhez automatikusan létrejön egy rendszergazdai fiók, amely alapértelmezés szerint le van tiltva. Az alábbi példák `az acr` parancssori felületi parancsokat mutatnak be a tároló-beállításjegyzék rendszergazdai hitelesítő adatainak kezeléséhez.
 
-### <a name="obtain-admin-user-credentials"></a>Rendszergazdai hitelesítő adatok beszerzése
+<a id="obtain-admin-user-credentials" class="xliff"></a>
+
+### Rendszergazdai hitelesítő adatok beszerzése
 ```azurecli
 az acr credential show -n myRegistry1
 ```
 
-### <a name="enable-admin-user-for-an-existing-registry"></a>Rendszergazdai felhasználó engedélyezése meglévő beállításjegyzékhez
+<a id="enable-admin-user-for-an-existing-registry" class="xliff"></a>
+
+### Rendszergazdai felhasználó engedélyezése meglévő beállításjegyzékhez
 ```azurecli
 az acr update -n myRegistry1 --admin-enabled true
 ```
 
-### <a name="disable-admin-user-for-an-existing-registry"></a>Rendszergazdai felhasználó letiltása meglévő beállításjegyzékhez
+<a id="disable-admin-user-for-an-existing-registry" class="xliff"></a>
+
+### Rendszergazdai felhasználó letiltása meglévő beállításjegyzékhez
 ```azurecli
 az acr update -n myRegistry1 --admin-enabled false
 ```
 
-## <a name="list-images-and-tags"></a>Képek és címkék listázása
+<a id="list-images-and-tags" class="xliff"></a>
+
+## Képek és címkék listázása
 Az `az acr` parancssori felületi parancsokkal lekérdezheti az adattárakban tárolt képeket és címkéket.
 
 > [!NOTE]
 > A Container Registry jelenleg nem támogatja a `docker search` parancsot a képek és címkék lekérdezéséhez.
 
 
-### <a name="list-repositories"></a>Adattárak listázása
+<a id="list-repositories" class="xliff"></a>
+
+### Adattárak listázása
 A következő példa egy beállításjegyzék adattárait listázza JSON (JavaScript Object Notation) formátumban:
 
 ```azurecli
 az acr repository list -n myRegistry1 -o json
 ```
 
-### <a name="list-tags"></a>Címkék listázása
+<a id="list-tags" class="xliff"></a>
+
+### Címkék listázása
 A következő példa a **samples/nginx** adattárban lévő címkéket listázza JSON formátumban:
 
 ```azurecli
 az acr repository show-tags -n myRegistry1 --repository samples/nginx -o json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 * [Az első rendszerkép leküldése a Docker parancssori felületével](container-registry-get-started-docker-cli.md)
 

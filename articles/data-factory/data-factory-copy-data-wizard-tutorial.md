@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/24/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-translationtype: Human Translation
-ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
-ms.openlocfilehash: 5a50f583831b398ae22416e7ade23c33846de55c
-ms.lasthandoff: 02/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
+ms.openlocfilehash: 6a83d5e5939744137e11a441048ade407c63ee86
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/17/2017
 
 
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Másolás varázslója használatával
+<a id="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard" class="xliff"></a>
+
+# Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Másolás varázslója használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -32,36 +35,39 @@ ms.lasthandoff: 02/03/2017
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
-Az Azure Data Factory **Másolás varázslójával** könnyen és gyorsan létrehozhat egy olyan folyamatot, amely megvalósítja az adatfeldolgozási/-átviteli forgatókönyvet. Ezért azt javasoljuk, hogy első lépésként a varázslóval hozzon létre egy mintafolyamatot az adatátviteli forgatókönyvhöz. Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure data factoryt, indíthatja el a Másolás varázslót, és végigvezeti az adatfeldolgozási/-átviteli forgatókönyv részletes ismertetését tartalmazó lépések sorozatán. Amikor befejezte a varázsló lépéseit, a varázsló automatikusan létrehoz egy másolási tevékenységet tartalmazó folyamatot, amelynek során az adatokat átmásolja egy Azure Blob Storage-ból egy Azure SQL Databese-be. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket. 
+Ez az oktatóanyag megmutatja, hogyan másolhat adatokat egy Azure Blob Storage-tárból egy Azure SQL-adatbázisba a **Másolás varázsló** segítségével. 
 
-## <a name="prerequisites"></a>Előfeltételek
-- Olvassa el figyelmesen [Az oktatóanyag áttekintése és az Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, hogy képet kapjon az oktatóanyag céljáról, és tisztában legyen az **előfeltételként** elvégzendő lépésekkel.
+Az Azure Data Factory **Másolás varázslójával** gyorsan létrehozhat egy olyan adatátviteli folyamatot, amely a támogatott forrásadattárból adatokat másol a támogatott céladattárba. Ezért azt javasoljuk, hogy a varázsló segítségével első lépésként hozzon létre mintafolyamatot az adatátviteli forgatókönyvhöz. A forrásként és célként támogatott adattárak listáját a [támogatott adattárakról](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szóló témakörben találja.  
 
+Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure data factoryt, indíthatja el a Másolás varázslót, és végigvezeti az adatfeldolgozási/-átviteli forgatókönyv részletes ismertetését tartalmazó lépések sorozatán. Amikor befejezte a varázsló lépéseit, a varázsló automatikusan létrehoz egy másolási tevékenységet tartalmazó folyamatot, amelynek során az adatokat átmásolja egy Azure Blob Storage-ból egy Azure SQL Databese-be. A másolási tevékenységről további információk az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben találhatók.
 
-## <a name="create-data-factory"></a>Data factory létrehozása
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
+Az oktatóanyag elvégzése előtt hajtsa végre [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikkben előfeltételként felsorolt lépéseket.
+
+<a id="create-data-factory" class="xliff"></a>
+
+## Data factory létrehozása
 Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialDataFactory** nevű Azure data factoryt.
 
-1. Miután bejelentkezett az [Azure Portalra](https://portal.azure.com), kattintson a bal felső sarokban található **+ NEW** (+ ÚJ) elemre, és válassza az **Intelligence + analytics** (Intelligencia és elemzés) lehetőséget, majd kattintson a **Data Factory** elemre. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Kattintson a **+ ÚJ** elemre a jobb felső sarokban, kattintson az **Adatok + analitika**, majd a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. A **New data factory** (Új data factory) panelen:
    
    1. A**Name** (Név) mezőbe írja be a következőt: **ADFTutorialDataFactory**.
-       Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a **Data factory name “ADFTutorialDataFactory” is not available** (Az „ADFTutorialDataFactory” data factory-név nem érhető el) hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-re), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
+       Az Azure data factory nevének globálisan egyedinek kell lennie. A `Data factory name “ADFTutorialDataFactory” is not available` hibaüzenet esetén változtassa meg az adat-előállító nevét (legyen például sajátnévADFTutorialDataFactoryYYYYMMDD), majd kísérelje meg újra a létrehozást. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
       
-       ![A Data Factory name not available (A data factory neve nem érhető el) üzenet](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)
-      
-      > [!NOTE]
-      > A data factory neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá válhat.
-      > 
-      > 
+       ![A Data Factory name not available (A data factory neve nem érhető el) üzenet](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
    2. Jelölje ki az Azure-**előfizetést**.
    3. Az erőforráscsoportban hajtsa végre a következő lépések egyikét: 
       
       - Meglévő erőforráscsoport kiválasztásához kattintson a **Use existing** (Meglévő használata) elemre.
       - Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
-         
-          Az oktatóanyag egyes lépései azt feltételezik, hogy az **ADFTutorialResourceGroup** nevet adta az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
+          
+        Az oktatóanyag egyes lépései azt feltételezik, hogy az **ADFTutorialResourceGroup** nevet adta az erőforráscsoportnak. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
    6. Kattintson a **Létrehozás** gombra.
@@ -71,22 +77,22 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
    
    ![Data factory kezdőlap](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
-## <a name="launch-copy-wizard"></a>A Másolás varázsló indítása
-1. A Data Factory kezdőlapján kattintson a **Copy data** (Adatok másolása) csempére a **Copy Wizard** (Másolás varázsló) elindításához. 
+<a id="launch-copy-wizard" class="xliff"></a>
+
+## A Másolás varázsló indítása
+1. A Data Factory panelen kattintson az **Adatok másolása (ELŐZETES VERZIÓ)** elemre a **Copy Wizard** (Másolás varázsló) elindításához. 
    
    > [!NOTE]
-   > Ha a böngésző azt jeleníti meg, hogy „Authorizing...” (Hitelesítés), és nem lép tovább, tiltsa le a **Block third party cookies and site data** (Harmadik féltől származó cookie-k és webhelyadatok tiltása) jelölőnégyzetet, illetve törölje a jelölését, vagy hagyja engedélyezve, és hozzon létre kivételt a **login.microsoftonline.com** webhelyhez, majd próbálkozzon ismét a varázsló elindításával.
-   > 
-   > 
+   > Ha a böngésző az Authorizing... (Hitelesítés...) lépésnél megakad, távolítsa el a jelölést a **Block third-party cookies and site data** (Harmadik féltől származó cookie-k és webhelyadatok tiltása) jelölőnégyzetből a böngésző beállításai között, vagy hagyja engedélyezve a beállítást, és hozzon létre kivételt a **login.microsoftonline.com** webhelyhez, majd kísérelje meg ismét a varázsló elindítását.
 2. A **Properties** (Tulajdonságok) oldalon:
    
    1. Írja be a **CopyFromBlobToAzureSql** kifejezést a **Task name** (Feladat neve) mezőbe.
    2. Adjon meg **leírást** (opcionális).
-   3. A **Start date time** (Kezdő dátum és időpont) és az **End date time** (Záró dátum és időpont) mezők értékét módosítsa úgy, hogy a záró dátum értéke mai napra, a kezdő dátum értéke pedig az aktuális naptól öt nappal korábbi napra legyen beállítva.  
+   3. A **Start date time** (Kezdő dátum és időpont) és az **End date time** (Záró dátum és időpont) mező értékét módosítsa úgy, hogy a záró dátum a mai napra, a kezdő dátum pedig öt nappal korábbra essen.  
    4. Kattintson a **Tovább** gombra.  
       
       ![Copy (Másolás) eszköz – Properties (Tulajdonságok) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-properties-page.png) 
-3. A **Source data store** (Forrásadattár) oldalon kattintson az **Azure Blob Storage** csempére. Az oldal használatával megadhatja a forrásadattárat a másolási feladathoz. Használhatja egy meglévő adattár társított szolgáltatását, vagy megadhat egy új adattárat. Egy meglévő társított szolgáltatás használatához kattintson a **FROM EXISTING LINKED SERVICES** (MEGLÉVŐ TÁRSÍTOTT SZOLGÁLTATÁSOKBÓL) elemre, és válassza ki a megfelelő társított szolgáltatást. 
+3. A **Source data store** (Forrásadattár) oldalon kattintson az **Azure Blob Storage** csempére. Az oldal használatával megadhatja a forrásadattárat a másolási feladathoz. 
    
     ![Copy (Másolás) eszköz – Source data store (Forrásadattár) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-source-data-store-page.png)
 4. A **Specify the Azure Blob storage account** (Az Azure Blob Storage-fiók megadása) oldalon:
@@ -99,9 +105,8 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
       ![Copy (Másolás) eszköz – Specify the Azure Blob storage account (Az Azure Blob Storage-fiók megadása) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-specify-azure-blob-storage-account.png)
 5. A **Choose the input file or folder** (A bemeneti fájl vagy mappa kiválasztása) oldalon:
    
-   1. Lépjen az **adftutorial** mappába.
+   1. Kattintson duplán az **adftutorial** mappára.
    2. Jelölje ki az **emp.txt** fájlt, és kattintson a **Choose** (Kiválasztás) lehetőségre.
-   3. Kattintson a **Tovább** gombra. 
       
       ![Copy (Másolás) eszköz – Choose the input file or folder (A bemeneti fájl vagy mappa kiválasztása) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
 6. A **Choose the input file or folder** (A bemeneti fájl vagy mappa kiválasztása) lapon kattintson a **Next** (Tovább) gombra. Ne jelölje be a **Binary copy** (Bináris másolat) beállítást. 
@@ -136,27 +141,29 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
     
     ![Copy (Másolás) eszköz – performance settings (Teljesítménybeállítások) oldal](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
-## <a name="launch-monitor-and-manage-application"></a>A Monitor and Manage alkalmazás elindítása
+<a id="launch-monitor-and-manage-application" class="xliff"></a>
+
+## A Monitor and Manage alkalmazás elindítása
 1. A **Deployment** (Üzembe helyezés) lapon kattintson a következő hivatkozásra: `Click here to monitor copy pipeline`.
    
    ![Copy (Másolás) eszköz – Deployment succeeded (Sikeres üzembe helyezés) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
-2. A [Monitor and manage pipelines using Monitoring App](data-factory-monitor-manage-app.md) (Folyamatok figyelése és felügyelete a Monitoring App használatával) című cikk útmutatásaiból megtudhatja, hogyan figyelheti a létrehozott folyamatot. A szelet megtekintéséhez kattintson a **Frissítés** ikonra az **ACTIVITY WINDOWS** (TEVÉKENYSÉGABLAKOK ) listában. 
+2. A figyelési alkalmazás a böngészőben külön lapon nyílik meg.   
    
-   ![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png) 
-   
-   
-   A legfrissebb állapot megtekintéséhez kattintson a **Refresh** (Frissítés) gombra az **ACTIVITY WINDOWS** (TEVÉKENYSÉGABLAKOK) lista alján. Automatikusan nem frissül. 
+   ![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)   
+3. Az óránkénti szeletek legfrissebb állapotának megtekintéséhez kattintson a**Refresh** (Frissítés) gombra az alul látható **ACTIVITY WINDOWS** (TEVÉKENYSÉGABLAKOK) listán. Ekkor öt tevékenységablak jelenik meg, amelyek a folyamat kezdő és záró időpontja közötti öt napot ábrázolják. Mivel a lista nem frissül automatikusan, szükség lehet rá, hogy többször kattintson a Refresh (Frissítés) gombra, mire minden tevékenységablak üzemkész állapotba kerül. 
+4. Válassza ki az egyik tevékenységablakot a listáról. A kapcsolódó részletes adatokat az **Activity Window Explorer** mutatja a jobb oldalon.
 
-> [!NOTE]
-> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. A bemeneti adatokat nem alakítja át kimeneti adatok létrehozásához. Az adatok Azure Data Factoryval történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
-> 
-> Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket.
+    ![Tevékenységablakok részletei](media/data-factory-copy-data-wizard-tutorial/activity-window-details.png)    
 
-## <a name="see-also"></a>Lásd még:
-| Témakör | Leírás |
-|:--- |:--- |
-| [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
-| [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
-| [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
+    Figyelje meg, hogy a hónap 11., 12., 13., 14. és 15. napját zöld színű számok jelölik, mert az e napokra vonatkozó napi kimeneti szeletek már elkészültek. Ugyanezt a színkódot láthatja a folyamaton és a grafikonos nézet kimeneti adatkészleténél is. Az előző lépésnél figyelje meg, hogy két szelet már elkészült, egy harmadik feldolgozás alatt van, a fennmaradó kettő pedig feldolgozásra vár (a színkódok alapján). 
 
+    Az alkalmazás használatáról további tudnivalókat talál a [Monitor and manage pipeline using Monitoring App](data-factory-monitor-manage-app.md) (Folyamat figyelése és felügyelete a Monitoring App használatával) című cikkben.
 
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
+Ez az oktatóanyag egy olyan másolási műveletet mutatott be, amelynek a forrásadattára egy Azure Blob Storage-tár, a céladattára pedig egy Azure SQL-adatbázis volt. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
+
+[!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
+
+Ha a táblázatban az adattárnak megfelelő hivatkozásra kattint, megtekintheti az adattár Másolás varázslóban megjelenő mezőinek, illetve tulajdonságainak részleteit. 

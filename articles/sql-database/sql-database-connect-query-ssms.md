@@ -10,32 +10,42 @@ manager: jhubbard
 editor: 
 ms.assetid: 7cd2a114-c13c-4ace-9088-97bd9d68de12
 ms.service: sql-database
-ms.custom: quick start manage
+ms.custom: mvc,DBs & servers
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/15/2017
+ms.date: 05/26/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: 9ffad92e668b76c9a4e2941b20d075bf52132d16
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 29883e37f1f506f33f44cf02dbf08221274e109d
+ms.contentlocale: hu-hu
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: Az SQL Server Management Studio segítségével csatlakozhat és kérdezhet le adatokat
+<a id="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data" class="xliff"></a>
 
-Az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) egy felügyeleti eszköz, amely az SQL Server-erőforrások felhasználói felületről vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható az SSMS egy Azure SQL Database-adatbázishoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. 
+# Azure SQL Database: Az SQL Server Management Studio segítségével csatlakozhat és kérdezhet le adatokat
+
+Az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) bármely SQL-infrastruktúra kezelésére alkalmas integrált környezet az SQL Servertől az SQL Database for Microsoft Windowsig. Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható az SSMS egy Azure SQL Database-adatbázishoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. 
+
+<a id="prerequisites" class="xliff"></a>
+
+## Előfeltételek
 
 Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
 
 - [DB létrehozása – portál](sql-database-get-started-portal.md)
 - [DB létrehozása – CLI](sql-database-get-started-cli.md)
+- [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
 
 A kezdés előtt győződjön meg arról, hogy az [SSMS](https://msdn.microsoft.com/library/mt238290.aspx) legújabb verziója van telepítve. 
 
-## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
+<a id="get-connection-information" class="xliff"></a>
+
+## Kapcsolatadatok lekérése
 
 Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
@@ -43,11 +53,13 @@ Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolat
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
 3. Az adatbázis **Áttekintés** lapján tekintse meg a teljes kiszolgálónevet, amint az alábbi képen is látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség.
 
-   ![kapcsolatadatok](./media/sql-database-connect-query-ssms/connection-information.png) 
+   ![kapcsolatadatok](./media/sql-database-get-started-portal/server-name.png) 
 
 4. Amennyiben elfelejtette Azure SQL Database-kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét, valamint szükség esetén visszaállíthatja a jelszót. 
 
-## <a name="connect-to-your-database-in-the-sql-database-logical-server"></a>Csatlakozás az adatbázishoz az SQL Database logikai kiszolgálóban
+<a id="connect-to-your-database" class="xliff"></a>
+
+## Csatlakozás az adatbázishoz
 
 Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Database kiszolgálóval. 
 
@@ -58,11 +70,14 @@ Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Data
 1. Nyissa meg az SQL Server Management Studiót.
 
 2. A **Connect to Server** (Kapcsolódás a kiszolgálóhoz) párbeszédpanelen adja meg a következő adatokat:
-   - **Server type** (Kiszolgáló típusa): Adja meg az adatbázismotort
-   - **Server name** (Kiszolgáló neve): Írja be a teljes kiszolgálónevet, például **mynewserver20170313.database.windows.net**
-   - **Authentication** (Hitelesítés): Válassza az SQL Server Authentication (SQL Server-hitelesítés) beállítást
-   - **Login** (Bejelentkezés): Adja meg a kiszolgálói rendszergazdai fiókot
-   - **Password** (Jelszó): Adja meg a kiszolgálói rendszergazdai fiók jelszavát
+
+   | Beállítás       | Ajánlott érték | Leírás | 
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | **Kiszolgáló típusa** | Adatbázismotor | Kötelezően megadandó érték. |
+   | **Kiszolgálónév** | A teljes kiszolgálónév | A névnek a következőhöz hasonlónak kell lennie: **mynewserver20170313.database.windows.net**. |
+   | **Hitelesítés** | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
+   | **Bejelentkezés** | A kiszolgálói rendszergazdafiók | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
+   | **Jelszó** | A kiszolgálói rendszergazdafiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
 
    ![kapcsolódás a kiszolgálóhoz](./media/sql-database-connect-query-ssms/connect.png)  
 
@@ -76,7 +91,9 @@ Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Data
 
 5. Az Object Explorerben bontsa ki a **Database** (Adatbázisok), majd a **mySampleDatabese** csomópontot a mintaadatbázisban található objektumok megtekintéséhez.
 
-## <a name="query-data"></a>Adatok lekérdezése
+<a id="query-data" class="xliff"></a>
+
+## Adatok lekérdezése
 
 A következő kód használatával lekérdezheti kategóriánként az első 20 terméket a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-utasítással.
 
@@ -94,7 +111,9 @@ A következő kód használatával lekérdezheti kategóriánként az első 20 t
 
     ![lekérdezés](./media/sql-database-connect-query-ssms/query.png)
 
-## <a name="insert-data"></a>Adat beszúrása
+<a id="insert-data" class="xliff"></a>
+
+## Adat beszúrása
 
 A következő kód használatával beszúrhat egy új terméket a SalesLT.Product táblába az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítással.
 
@@ -124,7 +143,9 @@ A következő kód használatával beszúrhat egy új terméket a SalesLT.Produc
 
     <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
 
-## <a name="update-data"></a>Adatok frissítése
+<a id="update-data" class="xliff"></a>
+
+## Adatok frissítése
 
 A következő kód használatával frissítheti az előzőleg hozzáadott új terméket az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítással.
 
@@ -140,7 +161,9 @@ A következő kód használatával frissítheti az előzőleg hozzáadott új te
 
     <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
 
-## <a name="delete-data"></a>Adat törlése
+<a id="delete-data" class="xliff"></a>
+
+## Adat törlése
 
 A következő kód használatával törölheti az előzőleg hozzáadott új terméket a [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-utasítással.
 
@@ -155,8 +178,11 @@ A következő kód használatával törölheti az előzőleg hozzáadott új ter
 
     <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
 
+## Következő lépések
+
+- Kiszolgálók és adatbázisok Transact-SQL-lel történő létrehozásáról és kezeléséről az [Azure SQL Database-kiszolgálók és -adatbázisok megismerése](sql-database-servers-databases.md) című cikkből tájékozódhat.
 - Az SSMS eszközről további információt [az SQL Server Management Studio használatát ismertető cikkben talál](https://msdn.microsoft.com/library/ms174173.aspx).
 - A Visual Studio Code használatával történő csatlakozásról és lekérdezésről lásd a [Visual Studio Code használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-vscode.md) szóló témakört.
 - A .NET használatával történő csatlakozásról és lekérdezésről lásd a [.NET használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-dotnet.md) szóló témakört.

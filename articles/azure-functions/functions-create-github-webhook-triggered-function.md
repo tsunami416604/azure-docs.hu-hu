@@ -13,35 +13,36 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 05/31/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 7423ef26a4a1c49245a1f8df79bbcaabea222596
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: accd5c55e7adafd5a387bf420660b808335192e6
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/01/2017
 
 ---
-# <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub-webhookok által meghívott függvények létrehozása
+<a id="create-a-function-triggered-by-a-github-webhook" class="xliff"></a>
+
+# GitHub-webhookok által meghívott függvények létrehozása
 
 Ismerje meg, hogyan hozhat létre HTTP-webhookkérelem által meghívott függvényeket a GitHub hasznos adataival.
 
 ![GitHub-webhook által meghívott függvény az Azure portálon](./media/functions-create-github-webhook-triggered-function/function-app-in-portal-editor.png)
 
-A témakörben foglalt lépések végrehajtása legfeljebb 5 percet vehet igénybe.
+<a id="prerequisites" class="xliff"></a>
 
-## <a name="prerequisites"></a>Előfeltételek
+## Előfeltételek
 
-A minta futtatásához az alábbiakkal kell rendelkeznie:
-
-- Legalább egy projekttel rendelkező GitHub-fiók.
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
++ Legalább egy projekttel rendelkező GitHub-fiók.
++ Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
+<a id="create-an-azure-function-app" class="xliff"></a>
+
+## Azure-függvényalkalmazás létrehozása
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -51,17 +52,27 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 <a name="create-function"></a>
 
-## <a name="create-a-github-webhook-triggered-function"></a>GitHub-webhook által aktivált függvény létrehozása
+<a id="create-a-github-webhook-triggered-function" class="xliff"></a>
 
-1. Bontsa ki a függvényalkalmazást, kattintson a **Függvények** elem melletti **+** gombra, majd kattintson a kívánt nyelvű **GitHubWebHook** sablonra. **Nevezze el a függvényt**, majd kattintson a **Létrehozás** elemre.
+## GitHub-webhook által aktivált függvény létrehozása
 
-1. Az új függvényben kattintson a **</> Függvény URL-címének lekérése** elemre, majd másolja és mentse az értékeket. Járjon el ugyanígy a **</> GitHub-titok lekérése** esetében. Ezekre az értékekre a GitHub-webhook konfigurálásához lesz szükség.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
+
+    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
+
+2. Kattintson a kívánt nyelvhez tartozó **GitHubWebHook** sablonra. **Nevezze el a függvényt**, majd kattintson a **Létrehozás** elemre.
+
+     ![GitHub-webhook által aktivált függvény létrehozása az Azure Portalon](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+
+3. Az új függvényben kattintson a **</> Függvény URL-címének lekérése** elemre, majd másolja és mentse az értékeket. Járjon el ugyanígy a **</> GitHub-titok lekérése** esetében. Ezekre az értékekre a GitHub-webhook konfigurálásához lesz szükség.
 
     ![A függvénykód áttekintése](./media/functions-create-github-webhook-triggered-function/functions-copy-function-url-github-secret.png)
 
 A következő lépésben egy webhookot hoz létre a GitHub-tárban.
 
-## <a name="configure-the-webhook"></a>A webhook konfigurálása
+<a id="configure-the-webhook" class="xliff"></a>
+
+## A webhook konfigurálása
 
 1. A GitHubban lépjen a tulajdonában álló adattárra. Használhat bármely elágaztatott adattárat is. Ha elágazásra van szüksége egy tárház esetében, tekintse át a következőt: <https://github.com/Azure-Samples/functions-quickstart>.
 
@@ -83,7 +94,9 @@ A következő lépésben egy webhookot hoz létre a GitHub-tárban.
 
 Most a webhook arra van beállítva, hogy elindítsa a függvényt egy új, problémához fűzött megjegyzés hozzáadásakor.
 
-## <a name="test-the-function"></a>A függvény tesztelése
+<a id="test-the-function" class="xliff"></a>
+
+## A függvény tesztelése
 
 1. A GitHub-tárban nyissa meg az **Issues** (Problémák) lapot egy új böngészőablakban.
 
@@ -97,11 +110,15 @@ Most a webhook arra van beállítva, hogy elindítsa a függvényt egy új, prob
 
      ![Tekintse át a megjegyzések szövegét a naplókban.](./media/functions-create-github-webhook-triggered-function/function-app-view-logs.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+<a id="clean-up-resources" class="xliff"></a>
+
+## Az erőforrások eltávolítása
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 
 Létrehozott egy függvényt, amely akkor fut, amikor kérelem érkezik egy GitHub-webhookból. 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)] További információ a webhook eseményindítókról: [Azure Functions – HTTP- és webhookkötések](functions-bindings-http-webhook.md).

@@ -1,0 +1,3 @@
+Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. Amikor a Visual Studióból először indít el egy függvényt, a rendszer arra kéri, hogy telepítse ezeket az eszközöket.  
+
+A függvénye teszteléséhez a **Megoldáskezelő** felületén kattintson jobb egérgombbal a projekt csomópontra, majd válassza a **Hibakeresés** > **Új példány indítása** lehetőséget. Ha a rendszer kéri, fogadja el a Visual Studio kérését az Azure Functions Core (CLI) eszközök telepítéséhez.  Előfordulhat, hogy be kell állítania a tűzfalban egy kivételt, hogy az eszközök kezelhessék a HTTP-kéréseket.

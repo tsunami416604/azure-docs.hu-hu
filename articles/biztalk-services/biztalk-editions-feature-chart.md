@@ -14,16 +14,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: b8d2b49a416883376302c9b3cc5924877b404a95
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
+ms.contentlocale: hu-hu
+ms.lasthandoff: 05/31/2017
 
 
 ---
-# <a name="biztalk-services-editions-chart"></a>BizTalk Services: Kiadások diagramja
+<a id="biztalk-services-editions-chart" class="xliff"></a>
+
+# BizTalk Services: Kiadások diagramja
+
+> [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
 Az Azure BizTalk Services számos kiadást biztosít. A jelen cikk segítségével határozhatja meg, hogy melyik kiadás felel meg a forgatókönyvnek és az üzleti igényeknek.
 
-## <a name="compare-the-editions"></a>A kiadások összehasonlítása
+<a id="compare-the-editions" class="xliff"></a>
+
+## A kiadások összehasonlítása
 **Ingyenes (előzetes verzió)**
 
 Hibrid kapcsolatokat hozhat létre és felügyelhet. A hibrid kapcsolatokkal könnyedén csatlakoztathat Azure-webhelyet egy helyszíni rendszerhez, például az SQL Serverhez.
@@ -44,7 +53,9 @@ Tartalmazza az Alapszintű kiadás összes képességét, de több hibrid kapcso
 
 Tartalmazza az összes Standard képességet, de több hibrid kapcsolatot, EAI-hidat, EDI-egyezményt és BizTalk Adapter Pack-kapcsolatot tartalmaz. Emellett archiválást, magas rendelkezésre állást is kínál, valamint a méretezés lehetőségét szolgáltatói szerződéssel (SLA-val).
 
-## <a name="editions-chart"></a>Kiadások diagramja
+<a id="editions-chart" class="xliff"></a>
+
+## Kiadások diagramja
 Az alábbi táblázat tartalmazza a különbségeket.
 
 <table border="1">
@@ -205,11 +216,17 @@ Tartalmazza a számla letagadhatatlanságát (NRR) és a követett üzenetek let
 > 
 > 
 
-## <a name="faqs"></a>Gyakori kérdések
-#### <a name="what-is-a-biztalk-unit"></a>Mi a BizTalk-egység?
+<a id="faqs" class="xliff"></a>
+
+## Gyakori kérdések
+<a id="what-is-a-biztalk-unit" class="xliff"></a>
+
+#### Mi a BizTalk-egység?
 Az „egység” az Azure BizTalk Services telepítésének atomi szintje. Mindegyik kiadás egységének számítási kapacitása és memóriája különböző. Az alapszintű egység például több számításra képes, mint a fejlesztői, a standard több számításra képes, mint az alapszintű stb. A BizTalk Service méretezése egységekben történik.
 
-#### <a name="what-is-the-difference-between-biztalk-services-and-azure-biztalk-vm"></a>Mi a különbség a BizTalk Services és az Azure BizTalk virtuális gépek között?
+<a id="what-is-the-difference-between-biztalk-services-and-azure-biztalk-vm" class="xliff"></a>
+
+#### Mi a különbség a BizTalk Services és az Azure BizTalk virtuális gépek között?
 A BizTalk Services valódi PaaS-architektúrát biztosít a felhőben kiépített integrációs megoldásokhoz. A PaaS modellel teljes mértékben az alkalmazás logikájára összpontosíthat, és a Microsoftra hagyhatja az infrastruktúra felügyeletét, beleértve a következőket:
 
 * Nem kell felügyelnie vagy javítania a virtuális gépeket.
@@ -220,30 +237,46 @@ Az Azure Virtual Machinesben futó BizTalk Server IaaS-architektúrát biztosít
 
 A BizTalk Services segítségével az infrastruktúra kezelését megkönnyítő integrációs megoldásokat készíthet. Ha gyorsan szeretné áttelepíteni a meglévő BizTalk-megoldásokat, vagy igény szerinti környezetet keres a BizTalk Server-alkalmazások fejlesztéséhez és teszteléséhez, Azure virtuális gépen használja a BizTalk Servert.
 
-#### <a name="what-is-the-difference-between-biztalk-adapter-service-and-hybrid-connections"></a>Mi a különbség a BizTalk Adapter Service és a hibrid kapcsolatok között?
+<a id="what-is-the-difference-between-biztalk-adapter-service-and-hybrid-connections" class="xliff"></a>
+
+#### Mi a különbség a BizTalk Adapter Service és a hibrid kapcsolatok között?
 A BizTalk Adapter Service-t Azure BizTalk Service használja. A BizTalk Adapter Service a BizTalk Adapter Pack használatával csatlakozik egy helyszíni üzletági (LOB) rendszerhez. A hibrid kapcsolattal könnyen és kényelmesen csatlakozhat Azure-alkalmazásokat, például az Azure App Service Web Apps szolgáltatását vagy az Azure Mobile Servicest egy helyszíni erőforráshoz.
 
-#### <a name="what-does-hybrid-connection-data-transfer-gb-per-unit-mean-is-this-per-minutehourdayweekmonth-what-happens-when-the-limit-is-reached"></a>Mit jelent a „hibrid kapcsolat adatátvitele (GB) egységenként”? Ez percenként/óránként/naponta/hetente/havonta értendő? Mi történik a korlát elérésekor?
+<a id="what-does-hybrid-connection-data-transfer-gb-per-unit-mean-is-this-per-minutehourdayweekmonth-what-happens-when-the-limit-is-reached" class="xliff"></a>
+
+#### Mit jelent a „hibrid kapcsolat adatátvitele (GB) egységenként”? Ez percenként/óránként/naponta/hetente/havonta értendő? Mi történik a korlát elérésekor?
 A hibrid kapcsolat egységenkénti költsége a BizTalk Services kiadásától függ. A költségek egyszerűen attól függnek, hogy mennyi adatot visz át. Napi 10 GB adat átvitele például kevesebbe kerül, mint napi 100 GB adat átvitele. A BizTalk Services [díjkalkulátorával](https://azure.microsoft.com/pricing/calculator/?scenario=full) határozhatja meg a pontos költségeket. A korlátok érvényesítése általában naponta történik. A korlát elérése után GB-onként 1 dolláros díjat kell fizetnie a túllépésért.
 
-#### <a name="when-i-create-an-agreement-in-biztalk-services-why-does-the-number-of-bridges-go-up-by-two-instead-of-just-one"></a>Amikor egyezményt hozok létre a BizTalk Servicesben, miért kettővel nő a hidak száma egy helyett?
+<a id="when-i-create-an-agreement-in-biztalk-services-why-does-the-number-of-bridges-go-up-by-two-instead-of-just-one" class="xliff"></a>
+
+#### Amikor egyezményt hozok létre a BizTalk Servicesben, miért kettővel nő a hidak száma egy helyett?
 Minden egyezmény két különböző hídból áll: egy küldőoldali kommunikációs hídból és egy fogadóoldali kommunikációs hídból.
 
-#### <a name="what-happens-when-i-hit-the-quota-limit-on-the-number-of-bridges-or-agreements"></a>Mi történik, amikor elérem a hidak számának vagy az egyezményeknek a kvótakorlátját?
+<a id="what-happens-when-i-hit-the-quota-limit-on-the-number-of-bridges-or-agreements" class="xliff"></a>
+
+#### Mi történik, amikor elérem a hidak számának vagy az egyezményeknek a kvótakorlátját?
 Nem tud új hidakat üzembe helyezni és új egyezményeket létrehozni. Továbbiak üzembe helyezéséhez a BizTalk szolgáltatás vertikális felskálázásával több egységet kell beszereznie, vagy magasabb kiadásra kell frissítenie.
 
-#### <a name="how-do-i-migrate-from-one-tier-of-biztalk-services-to-another"></a>Hogyan hajthatok végre áttelepítést át a BizTalk Services egyik szintjéről egy másikra?
+<a id="how-do-i-migrate-from-one-tier-of-biztalk-services-to-another" class="xliff"></a>
+
+#### Hogyan hajthatok végre áttelepítést át a BizTalk Services egyik szintjéről egy másikra?
 Az ingyenes kiadás nem telepíthető át vagy skálázható fel másik szintre, és nem készíthető róla biztonsági másolat egy másik szinten való visszaállításhoz. Ha másik rétegre van szüksége, hozzon létre egy új BizTalk szolgáltatást az új szinten. Az ingyenes kiadásban létrehozott összes összetevőt, beleértve a hibrid kapcsolatokat is, újra létre kell hozni az új BizTalk szolgáltatásban. 
 
 A többi kiadás esetén biztonsági mentéssel és visszaállítással telepítheti át az összetevőket az egyik rétegről a másikra. Készítsen biztonsági másolatot például az összetevőkről a Standard rétegen, majd állítsa vissza azokat a Prémium rétegen. A [BizTalk Services: Backup and Restore](biztalk-backup-restore.md) (BizTalk Services: Biztonsági mentés és visszaállítás) című témakör ismerteti a támogatott áttelepítési útvonalakat, és felsorolja, mely összetevőkről készül biztonsági másolat. Vegye figyelembe, hogy a hibrid kapcsolatokról nem készül biztonsági másolat. Az új szintre készített biztonsági mentés és visszaállítás után újra létre kell hoznia a hibrid kapcsolatokat.  
 
-#### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>A BizTalk Adapter Service szerepel a szolgáltatásban? Hogyan kapom meg a szoftvert?
+<a id="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software" class="xliff"></a>
+
+#### A BizTalk Adapter Service szerepel a szolgáltatásban? Hogyan kapom meg a szoftvert?
 Igen, a BizTalk Adapter Service és a BizTalk Adapter Pack szerepel a Azure BizTalk Services SDK [letöltésben](http://www.microsoft.com/download/details.aspx?id=39087).
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 Ha az Azure BizTalk Servicest az Azure Portalon szeretné létrehozni, ugorjon a [BizTalk Services: Provisioning using the Azure portal](biztalk-provision-services.md) (BizTalk Services: Kiépítés az Azure Portallal) című témakörre. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
-## <a name="additional-resources"></a>További források
+<a id="additional-resources" class="xliff"></a>
+
+## További források
 * [BizTalk Services: Kiépítés az Azure Portallal](biztalk-provision-services.md)<br/>
 * [BizTalk Services: Kiépítési állapot diagramja](biztalk-service-state-chart.md)<br/>
 * [BizTalk Services: Irányítópult, Figyelés és Méret lapok](biztalk-dashboard-monitor-scale-tabs.md)<br/>
@@ -251,10 +284,5 @@ Ha az Azure BizTalk Servicest az Azure Portalon szeretné létrehozni, ugorjon a
 * [BizTalk Services: Szabályozás](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md)<br/>
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

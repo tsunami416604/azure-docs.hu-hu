@@ -13,46 +13,52 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 06/21/2017
 ms.author: mandia; ladocs
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e1e6ef74e7d14b94b2ed9d61c4d122bdb11786a6
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 1e2dad92647630c8b9a4e7676eee9288c87daf44
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="connectors-list"></a>Összekötők listája
+<a id="connectors-list" class="xliff"></a>
+
+# Összekötők listája
 > [!TIP]
-> A [betűrend szerinti teljes lista](#az) (ebben a témakörben) tartalmazza a Logic Apps alatt használható összes elérhető összekötő listáját. Az [összekötő-swagger](/connectors/) felsorolja a swagger-adatokat minden összekötőhöz.
+> A [betűrend szerinti teljes lista](#az) (ebben a témakörben) tartalmazza a Logic Apps alatt használható összes elérhető összekötő listáját. Az [összekötő részletei](/connectors/) a swaggerben meghatározott valamennyi eseményindítót és műveletet, valamint az egyes összekötők korlátait is felsorolja.
 
 Az összekötők a logikai alkalmazások létrehozásának szerves részei. Ezen összekötők használatával jelentős mértékben kiterjesztheti a helyszíni és felhőbeli alkalmazásokat, így rengeteg mindent kezdhet a létrehozott és már meglévő adataival. Az összekötők a következő kategóriákban érhetők el: 
 
-* **Standard összekötők**: Automatikusan elérhetők és részei a logikai alkalmazásoknak. Néhány példa: Service Bus, DropBox, GoogleDrive, Power BI, Oracle Database, OneDrive stb.
+* **Standard összekötők**: Automatikusan elérhetők és részei a logikai alkalmazásoknak. Néhány példa: Service Bus, Power BI, Oracle Database, OneDrive stb.
 
-* **Integrációsfiók-összekötők**: Ezek akkor érhetők el, ha integrációs fiókot vásárol. Ezen összekötők használatával átalakíthatja és érvényesítheti az XML-fájlokat, vállalatok közötti üzeneteket dolgozhat fel az AS2/X12/EDIFACT használatával, illetve egybesimított fájlokat kódolhat és dekódolhat. Ha BizTalk Serverrel dolgozik, akkor ezek az összekötők a BizTalk-munkafolyamatok Azure-ba történő kibontásakor kifejezetten hasznosak.  
+* **Integrációsfiók-összekötők**: Akkor érhetők el, ha integrációs fiókot vásárol. Ezen összekötők használatával átalakíthatja és érvényesítheti az XML-fájlokat, vállalatok közötti üzeneteket dolgozhat fel az AS2/X12/EDIFACT használatával, illetve egybesimított fájlokat kódolhat és dekódolhat. Ha BizTalk Serverrel dolgozik, akkor ezek az összekötők a BizTalk-munkafolyamatok Azure-ba történő kibontásakor kifejezetten hasznosak.  
 
     A BizTalk Server rendelkezik [Logic Apps-adapterrel](https://msdn.microsoft.com/library/mt787163.aspx) is, amely elérhetővé teszi a logikai alkalmazással folytatott kétoldalú kommunikációt.
 
-* **Vállalati összekötők**: Tartalmazza az MQ-t és az SAP-t. Ezek további költségekkel járnak. 
+* **Vállalati összekötők**: Tartalmazza az MQ-t és az SAP-t. További költségekkel érhető el. 
 
 A [Logic Apps díjszabási modell](https://azure.microsoft.com/pricing/details/logic-apps/) és a [Díjszabási modell](../logic-apps/logic-apps-pricing.md) című témakörben megismerheti e költségek részleteit. 
 
-## <a name="popular-connectors"></a>Népszerű összekötők
+<a id="popular-connectors" class="xliff"></a>
+
+## Népszerű összekötők
 Több ezer olyan alkalmazás és több millió olyan végrehajtás létezik, amely ezekkel az összekötőkkel dolgozott fel sikeresen adatokat és információkat. Az alábbi táblázat tartalmazza a felhasználóink körében legnépszerűbb összekötőket:
 
 | |  |  |  |
 | --- | --- | --- | --- |
 | [![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | Ha szeretné bármely feladatot a tárfiókjával automatizálni, akkor tekintse meg ezt az összekötőt. Támogatja a CRUD (create – létrehozás, read – olvasás, update – frissítés, delete – törlés) műveleteket. | [![API Icon][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | Létrehozhat C#- vagy node.js-környezetben készített, egyedi kódrészleteket futtatni képes függvényeket, majd logikai alkalmazásaiban felhasználhatja ezeket.  |
-| [![API Icon][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | Jelenleg ez az egyik legkeresettebb összekötő. Rendelkezik eseményindítókkal és műveletekkel, amelyek segítenek az érdeklődőkhöz kapcsolódó munkafolyamatok automatizálásában és számos egyébben. | [![API Icon][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Az Event Hubon eseményeket használhat fel és tehet közzé. Az Event Hubs használatával például lekérheti a logikai alkalmazás kimenetét, majd elküldheti azt egy valós idejű elemzési szolgáltatónak. |
+| [![API Icon][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | Jelenleg ez az egyik legkeresettebb összekötő. Rendelkezik eseményindítókkal és műveletekkel, amelyek segítenek az érdeklődőkhöz kapcsolódó munkafolyamatok automatizálásában és számos egyébben. | [![API Icon][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Az Event Hubon eseményeket használhat fel és tehet közzé. Az Event Hubs használatával például lekérheti a logikai alkalmazás kimenetét, majd elküldheti a kimenetet valamely valós idejű elemzési szolgáltatónak. |
 | [![API Icon][FTPicon]<br/>**FTP**][FTPdoc] | Ha az FTP-kiszolgálója elérhető az interneten keresztül, akkor automatizálhatja a fájlokkal és mappákkal végzett munkameneteket. <br/><br/>Az SFTP szintén elérhető az SFTP-összekötővel. | [![API Icon][HTTPicon]<br/>**HTTP**][httpdoc] | A logikai alkalmazások segítségével HTTP protokollon keresztül bármilyen végponttal kommunikálhat. |
 | [![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | Rengeteg eseményindító és még több művelet, amelyekkel az Office 365 e-mailjeit és eseményeit a munkafolyamatain belül használhatja. <br/><br/>Ez az összekötő tartalmaz egy *jóváhagyó e-mailes* műveletet, amellyel jóváhagyhatja a szabadságkérelmeket, a kiadásokról szóló jelentéseket stb. <br/><br/>Az Office 365-felhasználók is elérhetők az Office 365 Users összekötővel.| [![API Icon][HTTP-Requesticon]<br/>**Request/Response**][HTTP-Requestdoc] | Ez az összekötő HTTPS URL-címet biztosít. A logikai alkalmazás elindul, amikor kérést kap erre az URL-címre. |
 | [![API Icon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Könnyen bejelentkezhet a Salesforce-fiókjával, és objektumokhoz – például érdeklődőkhöz – és sok egyébhez férhet hozzá. |  [![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | A logikai alkalmazásokon belüli legnépszerűbb összekötő. Olyan eseményindítókat és műveleteket tartalmaz, amelyekkel aszinkron üzenetkezelést végezhet, valamint közzétehet üzenetsorokat, előfizetéseket és témaköröket, illetve feliratkozhat rájuk. |
 |  [![API Icon][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Ha olyan jellegű munkát végez a SharePointtal, amely során hasznos lenne az automatizálás, javasoljuk, hogy tekintse meg ezt az összekötőt. A helyszíni SharePointtal és a SharePoint Online-nal is használható. | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | Az egyik leggyakrabban használt összekötő, amely egy helyszíni SQL Server és egy Azure SQL Database összekapcsolására szolgál. | 
 | [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | Könnyedén bejelentkezhet Twitter-fiók használatával, majd minden új Twitter-üzenet közzététele után elindíthat egy munkafolyamatot. Végül mentheti ezeket a Twitter-üzeneteket egy SQL-adatbázisba vagy SharePoint-listába. | | | 
 
-## <a name="integration-account-connectors"></a>Integrációs fiókok összekötői 
+<a id="integration-account-connectors" class="xliff"></a>
+
+## Integrációs fiókok összekötői 
 
 Az Enterprise Integration Pack (EIP) olyan összekötőket tartalmaz, amelyeket a BizTalk Server közössége már régóta jól ismer. Amikor [integrációs fiókot](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) vásárol, a következő összekötőket is megkapja: 
 
@@ -62,16 +68,20 @@ Az Enterprise Integration Pack (EIP) olyan összekötőket tartalmaz, amelyeket 
 [![API Icon][flatfileicon]<br/>**Flat file</br> encoding**][flatfiledoc] | [![API Icon][flatfiledecodeicon]<br/>**Flat file</br> decoding**][flatfiledecodedoc] | [![API Icon][integrationaccounticon]<br/>**Integration<br/>account**][integrationaccountdoc] | [![API Icon][xmltransformicon]<br/>**Transform<br/>XML**][xmltransformdoc] |
 | [![API Icon][x12icon]<br/>**X12</br> decoding**][x12decode] | [![API Icon][x12icon]<br/>**X12</br> encoding**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>validation**][xmlvalidatedoc] | |
 
-## <a name="enterprise-connectors"></a>Vállalati összekötők
+<a id="enterprise-connectors" class="xliff"></a>
+
+## Vállalati összekötők
 
 Logikai alkalmazásain belül csatlakozhat vállalati alkalmazásaihoz.
 
 |  |  |
 | --- | --- |
-|![API-ikon][MQicon]<br/>**MQ**|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
+|[! [API-ikon] [MQicon] <br/>**MQ**][mqdoc]|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>Betűrend szerinti teljes lista
+
+Az [összekötő részletei](/connectors/) a swaggerben meghatározott valamennyi eseményindítót és műveletet, valamint az egyes összekötők korlátait felsorolja.
 
 | | | | | | | | | | | | | |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -80,12 +90,14 @@ Logikai alkalmazásain belül csatlakozhat vállalati alkalmazásaihoz.
 
 | | |
 |---|---|
-|<a name="1"></a>10to8 Appointment Scheduling<br/><br/><a name="a"></a>Act!<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory<br/>Azure API Management<br/>Azure App Services<br/>Azure Automation<br/>[Azure Blob Storage][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure Cosmos DB<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure Logic Apps][nested-logic-appdoc]<br/>AzureML<br/>Azure Queues<br/>Azure Resource Manager<br/>[Azure SQL Database][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Benchmark Email<br/>Bing kereső<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognitive Services számítógépes látástechnológiai API<br/>Cognitive Services arcfelismerési API<br/>Cognitive Services LUIS<br/>Cognitive Services szövegelemzés<br/>Common Data Service<br/>[Egyéni API-k/webappok][api/web-appdoc]<br/><br/><a name="d"></a>Adatműveletek<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[Event Hubs][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[Fájlrendszer][filesystemdoc]<br/>[Egybesimított fájl][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Naptár<br/>Google Névjegyek<br/>Google Drive<br/>Google Táblázatok<br/>Google Teendők<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>Integrációs fiók<br/>Intercom | <a name="j"></a>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>Közepes<br/>Microsoft Translator<br/>MQ<br/>MSN Időjárás<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 Users<br/>Office 365 Video<br/>OneDrive<br/>OneDrive Vállalati verzió<br/>OneNote (vállalati)<br/>[Oracle Database][oracle-db-doc]<br/>Outlook Customer<br/>Outlook Tasks<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[Request/Response][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP alkalmazáskiszolgáló][sapconnector]<br/>[SAP üzenetkiszolgáló][sapconnector]<br/>[Ütemezés][recurrencedoc]<br/>Hatókör<br/>SendGrid<br/>[Szolgáltatásbusz][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointdoc]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>Switch Case<br/>SurveyMonkey<br/><br/><a name="t"></a>Teradata<br/>Todoist<br/>Toodledo<br/>[XML-átalakítás][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>Változók<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML-érvényesítés][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
+|<a name="1"></a>10to8 Appointment Scheduling<br/><br/><a name="a"></a>Act!<br/>Adobe Creative Cloud<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory (AD)<br/>Azure API Management<br/>Azure App Services<br/>Azure-alkalmazás<br/>Azure Automation<br/>[Azure Blob Storage][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB (Cosmos DB)<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure Logic Apps][nested-logic-appdoc]<br/>AzureML<br/>Azure Queues<br/>Azure Resource Manager<br/>[Azure SQL Database][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Batch<br/>Benchmark Email<br/>Bing kereső<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Calendly<br/>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito Forms<br/>Cognitive Services számítógépes látástechnológiai API<br/>Cognitive Services arcfelismerési API<br/>Cognitive Services LUIS<br/>Cognitive Services szövegelemzés<br/>Common Data Service<br/>Content Conversion<br/>Control-Terminate<br/>[Egyéni API-k/webappok][api/web-appdoc]<br/><br/><a name="d"></a>Adatműveletek<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[Event Hubs][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[Fájlrendszer][filesystemdoc]<br/>[Egybesimított fájl][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>Freshservice<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Naptár<br/>Google Névjegyek<br/>Google Drive<br/>Google Táblázatok<br/>Google Teendők<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP Webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>Integrációs fiók<br/>Intercom | <a name="j"></a>JotForm<br/>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>Közepes<br/>Microsoft Forms<br/>Microsoft Teams<br/>Microsoft Translator<br/>[MQ][mqdoc]<br/>MSN Időjárás<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365 Users<br/>Office 365 Video<br/>OneDrive<br/>OneDrive Vállalati verzió<br/>OneNote (vállalati)<br/>[Oracle Database][oracle-db-doc]<br/>Outlook Customer Manager<br/>Outlook Tasks<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[Request/Response][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP alkalmazáskiszolgáló][sapconnector]<br/>[SAP üzenetkiszolgáló][sapconnector]<br/>[Ütemezés][recurrencedoc]<br/>Hatókör<br/>SendGrid<br/>Üzenetek küldése kötegbe<br/>[Szolgáltatásbusz][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointdoc]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>Teamwork Projects<br/>Teradata<br/>Todoist<br/>Toodledo<br/>[XML-átalakítás][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>Változók<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML-érvényesítés][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
 
 > [!TIP]
 > Ha az Azure Logic Appst az Azure-fiók regisztrálása előtt szeretné kipróbálni, folytassa [a Logic Apps kipróbálásával](https://tryappservice.azure.com/?appservice=logic). Azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
-## <a name="connectors-as-triggers-and-actions"></a>Eseményindítóként és műveletként használható összekötők
+<a id="connectors-as-triggers-and-actions" class="xliff"></a>
+
+## Eseményindítóként és műveletként használható összekötők
 
 Egy **eseményindító** elindul, vagy lefuttatja a logikai alkalmazása egy példányát. Egyes összekötők eseményindítókat biztosítanak, amelyek adott események bekövetkezése esetén értesítik az alkalmazást. Az FTP-összekötő például az `OnUpdatedFile` eseményindítót tartalmazza, amely egy fájl frissítésekor elindítja a logikai alkalmazást. 
 
@@ -105,7 +117,9 @@ Az összekötők **műveleteket** is biztosítanak, amelyek felhasználhatók a 
 > Az [összekötők áttekintését](connectors-overview.md) nyújtó témakörben további részleteket olvashat az eseményindítókról és a műveletekről. 
 
 
-## <a name="message-manipulation-actions"></a>Üzenetkezelési műveletek
+<a id="message-manipulation-actions" class="xliff"></a>
+
+## Üzenetkezelési műveletek
 
 A logikai alkalmazások beépített műveleteket tartalmaznak, amelyek a hasznos adatok módosítására vagy kezelésére szolgálnak. A beépített **Adatműveletek** összekötő az alábbi műveleteket tartalmazza: 
 
@@ -116,21 +130,29 @@ A logikai alkalmazások beépített műveleteket tartalmaznak, amelyek a hasznos
 | **Tömb szűrése** (lekérdezés) | Szűrhet az Önt érdeklő bejegyzések eredménykészletére. Kereshet például az `#Azure` kifejezést tartalmazó Twitter-üzenetek között, majd a kapott üzeneteket „szűrheti” úgy, hogy csak a `Tweeted_by_followers > 50` feltételnek megfelelő eredményeket adja ki. |
 | **Csatlakozás** | Tömböt csatlakoztathat valamilyen elválasztóval. A Kulcskifejezések észlelése művelet például egy kulcskifejezésekből álló tömböt ad vissza. Ezeket „csatlakoztathatja” egy `,` vagy hasonló karakter segítségével. Tehát `["Some", "Phrase"]` helyett `"Some, Phrase"` értékkel rendelkezik majd. |
 | **JSON elemzése** | Elérheti és elemezheti a tervezőben található JSON-objektumok értékeit. Ha az Azure Function például hasznos JSON-adatokat ad vissza, akkor elemezheti azokat, hogy hozzáférhessen a JSON tulajdonságaihoz egy későbbi lépésben. Ez a művelet azt is ellenőrzi, hogy a JSON egyezik-e a futásidő során meghatározott sémával. | 
-| **Kiválasztás** | Kiválaszthatja egy tömb bizonyos tulajdonságait további feldolgozás céljából. Ha az SQL-ben a „Rekordok listába rendezése” parancs 15 oszlopot ad vissza, akkor kiválaszthat ezek közül néhányat további feldolgozáshoz (a kimenet egy tömb, amely csak a választott tulajdonságokat tartalmazza). |
+| **Kiválasztás** | Kiválaszthatja egy tömb bizonyos tulajdonságait további feldolgozás céljából. Ha az SQL-ben a „Rekordok listába rendezése” parancs 15 oszlopot ad vissza, akkor kiválaszthat ezek közül néhányat a további feldolgozás érdekében. A kimenet olyan tömb, amely csak a kiválasztott tulajdonságokat tartalmazza. |
 
-## <a name="custom-connectors-and-azure-certification"></a>Egyéni összekötők és Azure-hitelesítés 
+<a id="custom-connectors-and-azure-certification" class="xliff"></a>
+
+## Egyéni összekötők és Azure-hitelesítés 
 
 Ha szeretne hívásokat indítani olyan API-kba, amelyek egyéni kóddal rendelkeznek, vagy nem érhetők el beépített összekötőkként, kiterjesztheti a Logic Apps-platformot [REST-alapú API-alkalmazások egyéni összekötőként történő létrehozásával](../logic-apps/logic-apps-create-api-app.md). 
 
 Ha szeretné, hogy egyéni API-alkalmazása nyilvános és az Azure-ban elérhető legyen, akkor küldje be az alkotását a [Microsoft Azure Certfied programba](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/).
 
-## <a name="get-help"></a>Segítségkérés
+<a id="get-help" class="xliff"></a>
+
+## Segítségkérés
 
 Látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps), ahol kérdéseket tehet fel és válaszolhat meg, valamint megtudhatja, mivel foglalkoznak az Azure Logic Apps más felhasználói.
 
 Ha szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, szavazzon az ötletekre a [Logic Apps felhasználói visszajelzéseinek oldalán](http://aka.ms/logicapps-wish), vagy küldje be saját javaslatait.
 
-## <a name="next-steps"></a>Következő lépések
+Nem talál valamilyen összekötővel kapcsolatos témakört, illetve fontosnak tartott részletet? Ha nem, akkor meglévő témaköreinket kiegészítve segíthet nekünk, illetve sajátot is készíthet. Dokumentációnk nyílt forrás, amelyet a GitHubon találhat. Első lépések a [GitHub-adattárban](https://github.com/Microsoft/azure-docs). 
+
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 * [Az első logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
 * [Egyéni API-k létrehozása logikai alkalmazásokhoz](../logic-apps/logic-apps-create-api-app.md)
 * [Logikai alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)
@@ -152,6 +174,7 @@ Ha szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, sza
 [nested-logic-appdoc]: ../logic-apps/logic-apps-http-endpoint.md "Logikai alkalmazások integrálása beágyazott munkafolyamatokkal"
 [office365-outlookdoc]: ./connectors-create-api-office365-outlook.md "Csatlakozhat Office 365-fiókjához. E-maileket küldhet és fogadhat, kezelheti a naptárát és névjegyeit, és egyéb műveleteket is végrehajthat"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Csatlakozhat egy Oracle-adatbázishoz, ahol többek között sorokat adhat hozzá, szúrhat be és törölhet"
+[mqdoc]: ./connectors-create-api-mq.md "Csatlakozás az MQ-hoz a helyszínen vagy az Azure-on keresztül, és üzenetek küldése és fogadása"
 [recurrencedoc]:  ./connectors-native-recurrence.md "Ismétlődő műveletek kiváltása logikai alkalmazásokhoz"
 [salesforcedoc]: ./connectors-create-api-salesforce.md "Csatlakozhat Salesforce-fiókjához. Kezelheti fiókjait, az érdeklődőket, üzleti lehetőségeit és egyéb elemeket"
 [sapconnector]: ../logic-apps/logic-apps-using-sap-connector.md "Csatlakozhat egy helyszíni SAP-rendszerhez"
