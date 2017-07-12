@@ -1,24 +1,24 @@
-**Standard felügyelt virtuálisgép-lemezek**
+**Standard managed virtual machine disks**
 
-| Standard lemez típusa | S4 | S6 | S10 | S20 | S30 |
-| --- | --- |--- | --- | --- | --- |
-| Lemezméret | 30 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB)|
-| IOPS-érték lemezenként | 500 |500 |500 |500 |500 |
-| Adattovábbítás lemezenként | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 
+| Standard Disk Type  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
+|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
+| Disk size           | 32 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
+| IOPS per disk       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
+| Throughput per disk | 60 MB/sec | 60 MB/sec | 60 MB/sec | 60 MB/sec | 60 MB/sec | 60 MB/sec | 60 MB/sec | 
 
-**Prémium felügyelt virtuálisgép-lemezek: lemezenkénti korlátok**
+**Premium managed virtual machine disks: per disk limits**
 
-| Premium Storage-lemez típusa | P10 | P20 | P30 |
-| --- | --- | --- | --- |
-| Lemezméret |128 GiB |512 GiB |1024 GiB (1 TB) |
-| Lemezenkénti maximális IOPS-érték |500 |2300 |5000 |
-| Lemezenkénti maximális átviteli sebesség |100 MB/s |150 MB/s |200 MB/s |
+| Premium Disks Type  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|
+| Disk size           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS per disk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
+| Throughput per disk | 25 MB/sec | 50 MB/sec  | 100 MB/sec | 150 MB/sec | 200 MB/sec | 250 MB/sec | 250 MB/sec |
 
-**Prémium felügyelt virtuálisgép-lemezek: virtuális gépenkénti korlátok**
+**Premium managed virtual machine disks: per VM limits**
 
-| Erőforrás | Alapértelmezett korlát |
+| Resource | Default Limit |
 | --- | --- |
-| Virtuális gépenkénti maximális IOPS |80 000 IOPS GS5 virtuális géppel<sup>1</sup> |
-| Virtuális gépenkénti maximális átviteli sebesség |2000 MB/s GS5 virtuális géppel<sup>1</sup> |
+| Max IOPS Per VM |80,000 IOPS with GS5 VM<sup>1</sup> |
+| Max throughput per VM |2,000 MB/s with GS5 VM<sup>1</sup> |
 
-<sup>1</sup>A többi VM-méretet lásd: [Virtuális gépek mérete](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+<sup>1</sup>Refer to [VM Size](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) for limits on other VM sizes. 
