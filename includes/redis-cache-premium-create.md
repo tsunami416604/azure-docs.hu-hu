@@ -1,18 +1,13 @@
-Prémium gyorsítótár létrehozásához jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Új** > **Adatbázisok** > **Redis Cache** lehetőségre.
+To create a premium cache, sign-in to the [Azure portal](https://portal.azure.com) and click **New** > **Databases** > **Redis Cache**.
 
-![Gyorsítótár létrehozása](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
+![Create cache](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
 > [!NOTE]
-> A gyorsítótárak létrehozására az Azure Portalon kívül a Resource Manager-sablonok, a PowerShell vagy az Azure parancssori felület is használható. További információk az Azure Redis Cache létrehozásával kapcsolatban: [Gyorsítótár létrehozása](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+> In addition to creating caches in the Azure portal, you can also create them using Resource Manager templates, PowerShell, or Azure CLI. For more information about creating an Azure Redis Cache, see [Create a cache](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 > 
 > 
 
-Prémium funkciók konfigurálásához válasszon egyet a prémium tarifacsomagok közül az **Árképzési szint kiválasztása** panelen.
+To configure premium features, first select one of the premium pricing tiers in the **Pricing tier** drop-down list. For more information about each pricing tier, click **View full pricing details** and select a pricing tier from the **Choose your pricing tier** blade.
 
-![Tarifacsomag kiválasztása](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+![Choose your pricing tier](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 

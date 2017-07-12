@@ -1,102 +1,135 @@
-# <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiók szerinti csoportosítása és rendelkezésre állása
-Fontos átlátni, hogy a virtuális gépek hol és hogyan működnek az Azure-ban, illetve hogy a teljesítmény, a rendelkezésre állás és a redundancia maximalizálása terén milyen lehetőségek vannak. Az Azure világszerte számos adatközpontban működik. Ezek az adatközpontok földrajzi régiók szerint vannak csoportosítva, ami kellő mozgásteret biztosít az alkalmazások létrehozási helyének megválasztásához. Ez a cikk az Azure rendelkezésre állással és redundanciával kapcsolatos szolgáltatásairól nyújt áttekintést.
+<a id="regions-and-availability-for-virtual-machines-in-azure" class="xliff"></a>
 
-## <a name="what-are-azure-regions"></a>Mik azok az Azure-régiók?
-Az Azure lehetővé teszi erőforrások, így például virtuális gépek létrehozását olyan, meghatározott földrajzi régiókban, mint az „USA nyugati régiója”, „Észak-Európa” vagy „Délkelet-Ázsia”. Jelenleg világszerte 30 Azure-régió van. [A régiók és a kapcsolódó helyek listáját itt](https://azure.microsoft.com/regions/) tekintheti meg. A redundancia és a rendelkezésre állás biztosítása érdekében minden egyes régióban egyszerre több adatközpont működik. Ez nagyobb rugalmasságot biztosít az alkalmazások létrehozásához, a virtuális gépek pedig a lehető legközelebb lesznek a felhasználókhoz, ami jogi, megfelelőségi és adóügyi szempontból egyaránt előnyös.
+# Regions and availability for virtual machines in Azure
+It is important to understand how and where your virtual machines (VMs) operate in Azure, along with your options to maximize performance, availability, and redundancy. Azure operates in multiple datacenters around the world. These datacenters are grouped in to geographic regions, giving you flexibility in choosing where to build your applications. This article provides you with an overview of the availability and redundancy features of Azure.
 
-## <a name="special-azure-regions"></a>Különleges Azure-régiók
-Létezik néhány olyan különleges Azure-régió is, amelyet megfelelőségi vagy jogi okokból érdemes választani az alkalmazások létrehozásához. Ezek a különleges régiók a következők:
+<a id="what-are-azure-regions" class="xliff"></a>
 
-* **USA-beli államigazgatás – Virginia** és **USA-beli államigazgatás – Iowa**
-  * Az Azure fizikailag és logikailag elszigetelt példánya az USA-beli államigazgatási szervek és partnereik számára, amelyet biztonsági szempontból átvilágított, USA-beli személyek kezelnek. Olyan további megfelelőségi tanúsítványokat is tartalmaz, mint a [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) vagy a [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Tudjon meg többet az [Azure Governmentről](https://azure.microsoft.com/features/gov/).
-* **Kelet-Kína** és **Észak-Kína**
-  * Ezek a régiók a Microsoft és a 21Vianet közötti különleges partnerség révén érhetők el, amelyben az adatközpontok fenntartója nem közvetlenül a Microsoft. Tudjon meg többet a [Microsoft Azure kínai működéséről](http://www.windowsazure.cn/).
-* **Közép-Németország** és **Északkelet-Németország**
-  * Ezek a régiók jelenleg egy megbízott adatkezelői modell szerint érhetők el, amelynek keretében az ügyféladatok Németországban maradnak a T-Systems, a Deutsche Telekom egyik vállalata és egyben a németországi megbízott adatkezelő felügyelete alatt.
+## What are Azure regions?
+Azure allows you to create resources, such as VMs, in defined geographic regions like 'West US', 'North Europe', or 'Southeast Asia'. There are currently 30 Azure regions around the world. You can review the [list of regions and their locations](https://azure.microsoft.com/regions/). Within each region, multiple datacenters exist to provide for redundancy and availability. This approach gives you flexibility when building your applications to create VMs closest to your users and to meet any legal, compliance, or tax purposes.
 
-## <a name="region-pairs"></a>Régiópárok
-Minden egyes Azure-régió párban áll egy másik, azonos földrajzi helyhez tartozó régióval (amilyen például az USA, Európa vagy Ázsia). Ez lehetővé teszi az erőforrások, így például a virtuálisgép-tárolók földrajzi hely szerinti replikálását abból a megfontolásból, hogy természeti katasztrófák, zavargások, áramkimaradások vagy a fizikai hálózat fennakadásai kisebb eséllyel jelentkeznek egyszerre mindkét régióban. A régiópárok további előnyei még a következők:
+<a id="special-azure-regions" class="xliff"></a>
 
-* Az Azure szélesebb körű leállása esetén minden párból az egyik régió előnyt élvez, ami segít csökkenteni az alkalmazások helyreállításához szükséges időt. 
-* A tervezett Azure-frissítések egyszerre csak a régiópár egyik tagján jelennek meg, ami csökkenti az állásidőt és az alkalmazáskimaradás kockázatát.
-* Az adatok a pár mindkét tagja esetében ugyanazon a földrajzi helyen maradnak (Dél-Brazília kivételével), ami adóügyi és törvényi szempontból fontos.
+## Special Azure regions
+There are some special Azure regions for compliance or legal purposes that you may wish to use when building out your applications. These special regions include:
 
-Néhány példa a régiópárokra:
+* **US Gov Virginia** and **US Gov Iowa**
+  * A physical and logical network-isolated instance of Azure for US government agencies and partners, operated by screened US persons. Includes additional compliance certifications such as [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) and [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Read more about [Azure Government](https://azure.microsoft.com/features/gov/).
+* **China East** and **China North**
+  * These regions are available through a unique partnership between Microsoft and 21Vianet, whereby Microsoft does not directly maintain the datacenters. See more about [Microsoft Azure in China](http://www.windowsazure.cn/).
+* **Germany Central** and **Germany Northeast**
+  * These regions are currently available via a data trustee model whereby customer data remains in Germany under control of T-Systems, a Deutsche Telekom company, acting as the German data trustee.
 
-| Elsődleges | Másodlagos |
+<a id="region-pairs" class="xliff"></a>
+
+## Region pairs
+Each Azure region is paired with another region within the same geography (such as US, Europe, or Asia). This approach allows for the replication of resources, such as VM storage, across a geography that should reduce the likelihood of natural disasters, civil unrest, power outages, or physical network outages affecting both regions at once. Additional advantages of region pairs include:
+
+* In the event of a wider Azure outage, one region is prioritized out of every pair to help reduce the time to restore for applications. 
+* Planned Azure updates are rolled out to paired regions one at a time to minimize downtime and risk of application outage.
+* Data continues to reside within the same geography as its pair (except for Brazil South) for tax and law enforcement jurisdiction purposes.
+
+Examples of region pairs include:
+
+| Primary | Secondary |
 |:--- |:--- |
-| USA nyugati régiója |USA keleti régiója |
-| Észak-Európa |Nyugat-Európa |
-| Délkelet-Ázsia |Kelet-Ázsia |
+| West US |East US |
+| North Europe |West Europe |
+| Southeast Asia |East Asia |
 
-[A régiópárok teljes listája](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions) itt érhető el.
+You can see the full [list of regional pairs here](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
-## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
-Néhány szolgáltatás és virtuálisgép-funkció, például meghatározott méretű virtuális gépek vagy adott tárolótípusok csak bizonyos régiókban érhetők el. Emellett létezik pár olyan globális Azure-szolgáltatás is, amelyhez nem kell régiót választani. Ilyen például az [Azure Active Directory](../articles/active-directory/active-directory-whatis.md), a [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) vagy az [Azure DNS](../articles/dns/dns-overview.md). Az alkalmazáskörnyezet megtervezéséhez javasoljuk, hogy tekintse meg [az Azure-szolgáltatások régiók szerinti rendelkezésre állását](https://azure.microsoft.com/regions/#services). 
+<a id="feature-availability" class="xliff"></a>
 
-## <a name="storage-availability"></a>Tárterület rendelkezésre állása
-A rendelkezésre álló tárreplikációs lehetőségek mérlegeléséhez fontos átlátni az Azure-régiók és földrajzi helyek működését. A tárterület típusától függően eltérő replikálási lehetőségek állnak rendelkezésre.
+## Feature availability
+Some services or VM features are only available in certain regions, such as specific VM sizes or storage types. There are also some global Azure services that do not require you to select a particular region, such as [Azure Active Directory](../articles/active-directory/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md), or [Azure DNS](../articles/dns/dns-overview.md). To assist you in designing your application environment, you can check the [availability of Azure services across each region](https://azure.microsoft.com/regions/#services). 
+
+<a id="storage-availability" class="xliff"></a>
+
+## Storage availability
+Understanding Azure regions and geographies becomes important when you consider the available storage replication options. Depending on the storage type, you have different replication options.
 
 **Azure Managed Disks**
-* Helyileg redundáns tárolás (LRS)
-  * A rendszer háromszor replikálja az adatokat abban a régióban, amelyben a tárfiókot létrehozták.
+* Locally redundant storage (LRS)
+  * Replicates your data three times within the region in which you created your storage account.
 
-**Tárfiókalapú lemezek**
-* Helyileg redundáns tárolás (LRS)
-  * A rendszer háromszor replikálja az adatokat abban a régióban, amelyben a tárfiókot létrehozták.
-* Zónaredundáns tárolás (ZRS)
-  * A rendszer két vagy három intézményben háromszor replikálja az adatokat, amelyek egy vagy két régióban is lehetnek.
-* Georedundáns tárolás (GRS)
-  * A rendszer egy másodlagos régióba replikálja az adatokat, amely a forrásadatok elsődleges helyétől több száz kilométerre található.
-* Írásvédett georedundáns tárolás (RA-GRS)
-  * A rendszer egy másodlagos régióba replikálja az adatokat (csakúgy, mint a GRS esetében), és az adatokhoz a másodlagos helyszínen is írásvédett hozzáférést biztosít.
+**Storage account-based disks**
+* Locally redundant storage (LRS)
+  * Replicates your data three times within the region in which you created your storage account.
+* Zone redundant storage (ZRS)
+  * Replicates your data three times across two to three facilities, either within a single region or across two regions.
+* Geo-redundant storage (GRS)
+  * Replicates your data to a secondary region that is hundreds of miles away from the primary region.
+* Read-access geo-redundant storage (RA-GRS)
+  * Replicates your data to a secondary region, as with GRS, but also then provides read-only access to the data in the secondary location.
 
-A következő táblázat a tárreplikáció típusai közötti különbségek rövid összefoglalását tartalmazza:
+The following table provides a quick overview of the differences between the storage replication types:
 
-| Replikációs stratégia | LRS | ZRS | GRS | RA-GRS |
+| Replication strategy | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| A rendszer több intézményben replikálja az adatokat. |Nem |Igen |Igen |Igen |
-| Az adatok a másodlagos és az elsődleges helyről is olvashatók. |Nem |Nem |Nem |Igen |
-| A külön csomópontokon fenntartott adatmásolatok száma. |3 |3 |6 |6 |
+| Data is replicated across multiple facilities. |No |Yes |Yes |Yes |
+| Data can be read from the secondary location and from the primary location. |No |No |No |Yes |
+| Number of copies of data maintained on separate nodes. |3 |3 |6 |6 |
 
-[Az Azure tárreplikációs lehetőségeiről itt](../articles/storage/storage-redundancy.md) olvashat bővebben. További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../articles/storage/storage-managed-disks-overview.md).
+You can read more about [Azure Storage replication options here](../articles/storage/storage-redundancy.md). For more information about managed disks, see [Azure Managed Disks overview](../articles/storage/storage-managed-disks-overview.md).
 
-### <a name="storage-costs"></a>Tárolási költségek
-Az árak a választott tárolótípus és rendelkezésre állás függvényében változnak.
+<a id="storage-costs" class="xliff"></a>
+
+### Storage costs
+Prices vary depending on the storage type and availability that you select.
 
 **Azure Managed Disks**
-* A Premium Managed Disks szolgáltatás tartós állapotú meghajtókkal (SSD) üzemel, a Standard Managed Disks szolgáltatás pedig HDD-alapú. Mind a Premium, mind a Standard Managed Disks szolgáltatás díjszabása a kiépített lemezkapacitás szerint alakul.
+* Premium Managed Disks are backed by Solid State Drives (SSDs) and Standard Managed Disks are backed by regular spinning disks. Both Premium and Standard Managed Disks are charged based on the provisioned capacity for the disk.
 
-**Nem felügyelt lemezek**
-* A Prémium szintű tárterület tartós állapotú meghajtókkal (SSD) üzemel, a díjszabás pedig a lemezkapacitástól függ.
-* A Standard szintű tárterület általános merevlemezekkel működik, a díjszabás pedig a kihasznált kapacitástól és a rendelkezésre álló, választott tárterülettől függ.
-  * Az RA-GRS esetében egy további georeplikációs adatátviteli díj is érvényben van, az adatok másik Azure-régióba történő replikálásához használt sávszélességre vonatkozóan.
+**Unmanaged disks**
+* Premium storage is backed by Solid State Drives (SSDs) and is charged based on the capacity of the disk.
+* Standard storage is backed by regular spinning disks and is charged based on the in-use capacity and desired storage availability.
+  * For RA-GRS, there is an additional Geo-Replication Data Transfer charge for the bandwidth of replicating that data to another Azure region.
 
-A különböző tártípusokhoz és rendelkezésre állási lehetőségekhez tartozó díjszabásról lásd: [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
+See [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) for pricing information on the different storage types and availability options.
 
-## <a name="azure-images"></a>Azure-rendszerképek
-Az Azure-ban a virtuális gépek rendszerképből jönnek létre. A rendszerképek forrása általában az [Azure Marketplace](https://azure.microsoft.com/marketplace/), ahol a partnerek teljes, előre konfigurált rendszerképeket kínálnak operációs rendszerekhez vagy alkalmazásokhoz.
+<a id="azure-images" class="xliff"></a>
 
-Az Azure Marketplace rendszerképeivel létrehozott virtuális gép tulajdonképpen sablonokkal készül. Az Azure Resource Manager-sablonok deklaratív JavaScript Object Notation- (JSON-) fájlok, amelyek felhasználásával összetett alkalmazáskörnyezeteket lehet létrehozni virtuális gépek, tárterületek, virtuális hálózatok stb. bevonásával. Tudjon meg többet az [Azure Resource Manager-sablonok használatáról](../articles/azure-resource-manager/resource-group-overview.md), illetve ismerje meg, [hogyan hozhat létre saját sablont](../articles/resource-group-authoring-templates.md).
+## Azure images
+In Azure, VMs are created from an image. Typically, images are from the [Azure Marketplace](https://azure.microsoft.com/marketplace/) where partners can provide pre-configured complete OS or application images.
 
-Az [Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és az [Azure PowerShell](../articles/virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával saját, egyéni rendszerképeket is létrehozhat, illetve feltölthet, így gyorsan és egyszerűen hozhat létre az igényeinek megfelelő, egyedi virtuális gépeket.
+When you create a VM from an image in the Azure Marketplace, you are actually working with templates. Azure Resource Manager templates are declarative JavaScript Object Notation (JSON) files that can be used to create complex application environments comprising VMs, storage, virtual networking, etc. You can read more about using [Azure Resource Manager templates](../articles/azure-resource-manager/resource-group-overview.md), including how to [build your own templates](../articles/resource-group-authoring-templates.md).
 
-## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-A rendelkezésre állási csoport a virtuális gépek logikus csoportosítását jelenti, ami lehetővé teszi az Azure számára az alkalmazás felépítésének megértését a redundancia és a rendelkezésre állás biztosításához. Két vagy annál több virtuális gépet már ajánlott egy rendelkezésre állási csoporton belül létrehozni, hogy az alkalmazás rendelkezésre állása a lehető legjobb legyen, és a [99,95%-os Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) teljesüljön. Ha az önálló virtuális gép [Azure Premium Storage](../articles/storage/storage-premium-storage.md) csomagot használ, az Azure SLA a nem tervezett karbantartási események során is érvényben van. A rendelkezésre állási csoport két további csoportosítást is tartalmaz, amelyek védelmet nyújtanak az esetleges hardverhibák ellen, illetve lehetővé teszik a frissítések biztonságos alkalmazását. Ez a tartalék tartományok, illetve a frissítési tartományok csoportja.
+You can also create your own custom images and upload them using [Azure CLI](../articles/virtual-machines/linux/upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) or [Azure PowerShell](../articles/virtual-machines/windows/upload-generalized-managed.md) to quickly create custom VMs to your specific build requirements.
 
-![A frissítési és tartalék tartományokat tartalmazó konfiguráció elméleti rajza](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
+<a id="availability-sets" class="xliff"></a>
 
-Tudjon meg többet a [Linux-alapú virtuális gépek](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), illetve a [Windows-alapú virtuális gépek](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) rendelkezésre állásának kezeléséről.
+## Availability sets
+An availability set is a logical grouping of VMs that allows Azure to understand how your application is built to provide for redundancy and availability. It is recommended that two or more VMs are created within an availability set to provide for a highly available application and to meet the [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). When a single VM is using [Azure Premium Storage](../articles/storage/storage-premium-storage.md), the Azure SLA applies for unplanned maintenance events. An availability set is compromised of two additional groupings that protect against hardware failures and allow updates to safely be applied - fault domains (FDs) and update domains (UDs).
 
-### <a name="fault-domains"></a>Tartalék tartományok
-A tartalék tartomány a mögöttes hardverelemek logikus csoportja, ahol az áramforrás és a hálózati kapcsoló közös, a helyszíni adatközpontok állványaihoz hasonlóan. Amikor rendelkezésre állási csoporton belül hoz létre virtuális gépeket, az Azure platform automatikusan elosztja ezeket a tartalék tartományok között. Ez a módszer korlátozza a potenciális hardvermeghibásodások, hálózatkimaradások vagy a tápellátás megszakadásának hatását.
+![Conceptual drawing of the update domain and fault domain configuration](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
 
-#### <a name="managed-disk-fault-domains-and-availability-sets"></a>Tartalék tartományok és rendelkezésre állási csoportok felügyelt lemezeken
-Az [Azure Managed Disks](../articles/storage/storage-faq-for-disks.md) használatával létrehozott virtuális gépek felügyelt rendelkezésre állási csoportok használata esetén felügyelt lemezes tartalék tartományokra vannak elosztva. Ez a kiosztás biztosítja, hogy a virtuális géphez csatolt mindegyik felügyelt lemez ugyanabban a felügyelt lemezes tartalék tartományban legyen. Kizárólag felügyelt lemezeken futó virtuális gépek hozhatók létre felügyelt rendelkezésre állási csoportokban. A felügyelt lemezes tartalék tartományok száma régiónként eltérő – régiónként kettő vagy három felügyelt lemezes tartalék tartomány lehet.
+You can read more about how to manage the availability of [Linux VMs](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) or [Windows VMs](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-### <a name="update-domains"></a>Frissítési tartományok
-A frissítési tartomány a mögöttes hardverelemek logikus csoportja, amelyen egyszerre végezhető karbantartás vagy újraindítás. Amikor rendelkezésre állási csoporton belül hoz létre virtuális gépeket, az Azure platform automatikusan elosztja ezeket a frissítési tartományok között. Ez lehetővé teszi, hogy az alkalmazás legalább egy példánya mindig fusson akkor is, ha az Azure platformon épp rendszeres karbantartás folyik. A frissítési tartományok újraindítása nem haladhat szekvenciálisan a tervezett karbantartás során, hanem csak egyetlen frissítési tartományt lehet újraindítani egyszerre.
+<a id="fault-domains" class="xliff"></a>
 
-## <a name="next-steps"></a>Következő lépések
-Mostantól a saját Azure-környezetében is használhatja ezeket a rendelkezésre állási és redundanciával kapcsolatos szolgáltatásokat. Javasoljuk, hogy tájékozódjon [az Azure rendelkezésre állásával kapcsolatos ajánlott eljárásokról](../articles/best-practices-availability-checklist.md).
+### Fault domains
+A fault domain is a logical group of underlying hardware that share a common power source and network switch, similar to a rack within an on-premises datacenter. As you create VMs within an availability set, the Azure platform automatically distributes your VMs across these fault domains. This approach limits the impact of potential physical hardware failures, network outages, or power interruptions.
+
+<a id="managed-disk-fault-domains-and-availability-sets" class="xliff"></a>
+
+#### Managed Disk fault domains and availability sets
+For VMs using [Azure Managed Disks](../articles/storage/storage-faq-for-disks.md), VMs are aligned with managed disk fault domains when using a managed availability set. This alignment ensures that all the managed disks attached to a VM are within the same managed disk fault domain. Only VMs with managed disks can be created in a managed availability set. The number of managed disk fault domains varies by region - either two or three managed disk fault domains per region.
+
+![Managed Disk FDs](./media/virtual-machines-common-manage-availability/md-fd.png)
+
+> [!IMPORTANT]
+> The number of fault domains for managed availability sets varies by region - either two or three per region. The following table shows the number per region
+
+[!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
+
+<a id="update-domains" class="xliff"></a>
+
+### Update domains
+An update domain is a logical group of underlying hardware that can undergo maintenance or be rebooted at the same time. As you create VMs within an availability set, the Azure platform automatically distributes your VMs across these update domains. This approach ensures that at least one instance of your application always remains running as the Azure platform undergoes periodic maintenance. The order of update domains being rebooted may not proceed sequentially during planned maintenance, but only one update domain is rebooted at a time.
+
+<a id="next-steps" class="xliff"></a>
+
+## Next steps
+You can now start to use these availability and redundancy features to build your Azure environment. For best practices information, see [Azure availability best practices](../articles/best-practices-availability-checklist.md).
 

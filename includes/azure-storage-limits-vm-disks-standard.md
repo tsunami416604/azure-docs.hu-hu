@@ -1,13 +1,8 @@
-**Standard nem felügyelt virtuálisgép-lemezek: lemezenkénti korlátok**
+**Standard unmanaged virtual machine disks: per disk limits**
 
-| Virtuálisgép-szint | Alapszintű VM | Standard szintű VM |
+| VM Tier | Basic Tier VM | Standard Tier VM |
 | --- | --- | --- |
-| Lemezméret |1023 GB |1023 GB |
-| Állandó lemezenként maximum 8 kB IOPS |300 |500 |
-| A maximális IOPS-t végrehajtó lemezek maximális száma |66 |40 |
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+| Disk size |4095 GB |4095 GB |
+| Max 8 KB IOPS per persistent disk |300 |500 |
+| Max number of disks performing max IOPS |66 |40 |
 
