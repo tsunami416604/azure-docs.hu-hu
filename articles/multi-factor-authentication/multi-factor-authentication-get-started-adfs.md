@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/23/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
+ms.translationtype: HT
 ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
 ms.openlocfilehash: 28aede545c738137ff04257214e4a3f42792d85c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Bevezetés az Azure Multi-Factor Authentication és az Active Directory összevonási szolgáltatások használatába
+<a id="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services" class="xliff"></a>
+
+# Bevezetés az Azure Multi-Factor Authentication és az Active Directory összevonási szolgáltatások használatába
 <center>![Felhő](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 Ha a szervezete az AD FS használatával vonta össze a helyszíni Active Directoryt az Azure Active Directoryval, az Azure Multi-Factor Authentication két módon használható .
@@ -44,7 +45,9 @@ A következő táblázat foglalja össze az ellenőrzésbeli különbségeket az
 * Az alkalmazásjelszavak használata esetén nem érhető el a helyszíni hitelesítésnaplózás.
 * A fiókok letiltása/törlése akár 3 óráig is eltarthat a címtár-szinkronizálással, ami késlelteti az alkalmazásjelszó letiltását/törlését a felhőalapú identitásban.
 
-## <a name="next-steps"></a>Következő lépések
+<a id="next-steps" class="xliff"></a>
+
+## Következő lépések
 Az Azure Multi-Factor Authentication vagy az Azure Multi-Factor Authentication-kiszolgáló AD FS-sel való beállításával kapcsolatosan további információt a következő cikkekben talál:
 
 * [A felhőerőforrások védelme az Azure Multi-Factor Authentication és az AD FS használatával](multi-factor-authentication-get-started-adfs-cloud.md)
