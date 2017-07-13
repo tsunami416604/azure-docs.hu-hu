@@ -1,109 +1,218 @@
 # [Áttekintés](active-directory-developers-guide.md)
+
 ## [Milyen előnyöket kínál az Azure AD?](https://azure.microsoft.com/develop/identity/signin/)
+
 ## [A hitelesítés alapjai](active-directory-authentication-scenarios.md)
+
 ## [Alkalmazástípusok](active-directory-authentication-scenarios.md#application-types-and-scenarios)
+
 # Első lépések
+
 ## Mobil- és asztali appok
+
 ### [Áttekintés](active-directory-authentication-scenarios.md#native-application-to-web-api)
+
 ### [iOS](active-directory-devquickstarts-ios.md)
+
 ### [Android](active-directory-devquickstarts-android.md)
+
 ### [.NET](active-directory-devquickstarts-dotnet.md)
+
 ### [Windows](active-directory-devquickstarts-windowsstore.md)
+
 ### [Xamarin](active-directory-devquickstarts-xamarin.md)
+
 ### [Cordova](active-directory-devquickstarts-cordova.md)
+
 ### [OAuth 2.0](active-directory-protocols-oauth-code.md)
+
 ## Webalkalmazások
+
 ### [Áttekintés](active-directory-authentication-scenarios.md#web-browser-to-web-application)
+
 ### [ASP.NET](active-directory-devquickstarts-webapp-dotnet.md)
+
 ### [Java](active-directory-devquickstarts-webapp-java.md)
+
 ### [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)
+
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
+
 ## Egylapos appok
+
 ### [Áttekintés](active-directory-authentication-scenarios.md#single-page-application-spa)
+
 ### [Angular JS](active-directory-devquickstarts-angular.md)
+
 ### [Javascript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi)
+
 ## Webes API-k
+
 ### [Áttekintés](active-directory-authentication-scenarios.md#web-application-to-web-api)
+
 ### [ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)
+
 ### [NodeJS](active-directory-devquickstarts-webapi-nodejs.md)
+
 ## Szolgáltatások közötti
+
 ### [Áttekintés](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)
+
 ### [.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)
+
 ### [OAuth 2.0-ügyfél hitelesítő adatai](active-directory-protocols-oauth-service-to-service.md)
+
 # Útmutatók
+
 ## [Alkalmazásregisztráció](active-directory-integrating-applications.md)
+
 ## [Több-bérlős alkalmazások](active-directory-devhowto-multi-tenant-overview.md)
+
 ## OAuth és OpenID Connect
+
 ### [OpenID Connect-protokoll](active-directory-protocols-openid-connect-code.md)
+
 ### [Oauth 2.0 hitelesítésikód-engedélyezés](active-directory-protocols-oauth-code.md)
+
 ### [OAuth 2.0 implicit engedélyezés](active-directory-dev-understanding-oauth2-implicit-grant.md)
+
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
+
 ### [Jogcímek testreszabása](active-directory-saml-claims-customization.md)
+
 ### [SAML-alapú SSO hibakeresése](active-directory-saml-debugging.md)
+
 ### [Egyszeri bejelentkezéses SAML-protokoll](active-directory-single-sign-on-protocol-reference.md)
+
 ### [Egyszeri kijelentkezéses SAML-protokoll](active-directory-single-sign-out-protocol-reference.md)
+
 ### [Bérlő létrehozása](active-directory-howto-tenant.md)
+
 ## [Védjegyzési útmutató](active-directory-branding-guidelines.md)
+
 ## Mobil és asztali egyszeri bejelentkezés
+
 ### [Egyszeri bejelentkezés engedélyezése Android rendszeren](active-directory-sso-android.md)
+
 ### [Egyszeri bejelentkezés engedélyezése iOS rendszeren](active-directory-sso-ios.md)
+
 ## [Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md)
+
 ## [Felhasználókiépítés az SCIM-mel](../active-directory-scim-provisioning.md)
+
 ## [Azure AD Graph API](active-directory-graph-api.md)
+
 ### [Az AAD Graph használatának első lépései](active-directory-graph-api-quickstart.md)
+
 ## [AppSource-tanúsítvány](active-directory-devhowto-appsource-certified.md)
+
 ## [Azure AD appkatalógus](active-directory-app-gallery-listing.md)
+
 ## [Office 365-értékesítői információközpont](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+
 ## A Visual Studio használata
+
 ### [Ismerkedés a Visual Studio kapcsolódó szolgáltatásaival](vs-active-directory-dotnet-getting-started.md)
+
 ### [Hiba a hitelesítés észlelésekor](vs-active-directory-error.md)
+
 ### [Bevezetés a WebApi használatába](vs-active-directory-webapi-getting-started.md)
+
 ### [Mi történt a WebApi-projektemmel?](vs-active-directory-webapi-what-happened.md)
+
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
+
 # Referencia
+
 ## [Hitelesítési tárak (ADAL)](active-directory-authentication-libraries.md)
+
 ## [Kódminták](active-directory-code-samples.md)
+
 ## [Szószedet](active-directory-dev-glossary.md)
+
 ## [Hitelesítési protokollok](active-directory-authentication-protocols.md)
+
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
+
 ### [Oauth](active-directory-protocols-oauth-code.md)
+
 ### [Szolgáltatások közötti hívások](active-directory-protocols-oauth-service-to-service.md)
+
 ### [Meghatalmazásos folyamat](active-directory-protocols-oauth-on-behalf-of.md)
+
 ### [Támogatott token- és jogcímtípusok](active-directory-token-and-claims.md)
+
 ### [Aláírókulcs-váltás](active-directory-signing-key-rollover.md)
+
 ### [Összevonási metaadatok](active-directory-federation-metadata.md)
+
 ### [Tanúsítványok hitelesítő adatai](active-directory-certificate-credentials.md)
+
 ## [Alkalmazásobjektumok](active-directory-application-objects.md)
+
 ### [Appok és az Azure AD](active-directory-how-applications-are-added.md)
+
 ## [Alkalmazásjegyzék](active-directory-application-manifest.md)
+
 ## [A jogkivonatok élettartama](../active-directory-configurable-token-lifetimes.md)
+
 ## [Szolgáltatási korlátozások](../active-directory-service-limits-restrictions.md)
+
 # 2.0 verziójú végpont
+
 ## [Áttekintés](active-directory-appmodel-v2-overview.md)
+
 ### [Alkalmazástípusok](active-directory-v2-flows.md)
+
 ### [Korlátozások](active-directory-v2-limitations.md)
+
 ### [v1-v2 összehasonlítása](active-directory-v2-compare.md)
+
 ## Első lépések
+
 ### Mobil- és asztali appok
-#### [iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift)
+
+#### [iOS](guidedsetups/active-directory-ios.md)
+
 #### [Android](guidedsetups/active-directory-android.md)
+
 #### [Windows asztali .NET](guidedsetups/active-directory-windesktop.md)
+
 ### Webalkalmazások
-#### [JavaScript SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+
+#### [JavaScript SPA](guidedsetups/active-directory-javascriptspa.md)
+
 #### [ASP.NET-webkiszolgáló](guidedsetups/active-directory-aspnetwebapp.md)
+
 #### [NodeJS-webalkalmazás](active-directory-v2-devquickstarts-node-web.md)
+
 ## Útmutatók
+
 ### [Alkalmazás regisztrálása](active-directory-v2-app-registration.md)
+
 ## Referencia
+
 ### [Hitelesítési tárak](active-directory-v2-libraries.md)
+
 ### [2.0-s hitelesítési protokollok](active-directory-v2-protocols.md)
+
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
+
 #### [OAuth 2.0 hitelesítési kódmegadás](active-directory-v2-protocols-oauth-code.md)
+
 #### [OAuth 2.0 implicit engedélyezés](active-directory-v2-protocols-implicit.md)
+
 #### [OAuth 2.0-ügyfél hitelesítő adatainak megadása](active-directory-v2-protocols-oauth-client-creds.md)
+
 #### [Oauth 2.0-alapú meghatalmazásos folyamat](active-directory-v2-protocols-oauth-on-behalf-of.md)
+
 #### [Jogkivonat-referencia](active-directory-v2-tokens.md)
+
 #### [Tanúsítványok hitelesítő adatai](active-directory-certificate-credentials.md)
+
 ### [Hatókörök](active-directory-v2-scopes.md)
+
 # Erőforrások
+
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+
