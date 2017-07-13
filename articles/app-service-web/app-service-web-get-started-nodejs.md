@@ -16,15 +16,14 @@ ms.date: 05/05/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: 665f55f79eb6e09bce1b5130efc01c76ccbc9109
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: e41c6f544ace374eb1f059c115e585a70265a571
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/06/2017
 
 ---
-<a id="create-a-nodejs-web-app-in-azure" class="xliff"></a>
-
 # Node.js-webalkalmazás létrehozása az Azure-ban
+<a id="create-a-nodejs-web-app-in-azure" class="xliff"></a>
 
 Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a Node.js-alkalmazások Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a Git szoftver használatával pedig üzembe helyezheti a Node.js-mintakódot a webalkalmazásban.
 
@@ -32,9 +31,8 @@ Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az előfeltételek telepítése után a lépések végrehajtása nagyjából öt percet vesz igénybe.
 
-<a id="prerequisites" class="xliff"></a>
-
 ## Előfeltételek
+<a id="prerequisites" class="xliff"></a>
 
 A gyorsútmutató elvégzéséhez:
 
@@ -47,9 +45,8 @@ A gyorsútmutató elvégzéséhez:
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-<a id="download-the-sample" class="xliff"></a>
-
 ## A minta letöltése
+<a id="download-the-sample" class="xliff"></a>
 
 Egy terminálablakban futtassa a következő parancsot a mintaalkalmazás-tárház helyi számítógépre történő klónozásához.
 
@@ -65,9 +62,8 @@ Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
 cd nodejs-docs-hello-world
 ```
 
-<a id="run-the-app-locally" class="xliff"></a>
-
 ## Az alkalmazás futtatása helyben
+<a id="run-the-app-locally" class="xliff"></a>
 
 Az alkalmazás a terminálablak megnyitásával és a `npm start` szkript használatával helyben futtatható a beépített Node.js HTTP-kiszolgáló indításához.
 
@@ -135,9 +131,8 @@ To https://<app_name>.scm.azurewebsites.net:443/<app_name>.git
  * [new branch]      master -> master
 ```
 
-<a id="browse-to-the-app" class="xliff"></a>
-
 ## Az alkalmazás megkeresése tallózással
+<a id="browse-to-the-app" class="xliff"></a>
 
 Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
 
@@ -149,11 +144,10 @@ A Node.js mintakód az Azure App Service webalkalmazásban fut.
 
 ![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-**Gratulálunk!** Elvégezte az első PHP-webapp üzembe helyezését az App Service-ben.
-
-<a id="update-and-redeploy-the-code" class="xliff"></a>
+**Gratulálunk!** Elvégezte az első Node.js-app üzembe helyezését az App Service-ben.
 
 ## A kód frissítése és ismételt üzembe helyezése
+<a id="update-and-redeploy-the-code" class="xliff"></a>
 
 Egy szövegszerkesztő használatával nyissa meg a Node.js-alkalmazáson belüli `index.js` fájlt, majd módosítsa annak szövegét a `response.end` hívásán belül:
 
@@ -172,9 +166,8 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
-<a id="manage-your-new-azure-web-app" class="xliff"></a>
-
 ## Az új Azure-webapp kezelése
+<a id="manage-your-new-azure-web-app" class="xliff"></a>
 
 A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
@@ -190,9 +183,8 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-<a id="next-steps" class="xliff"></a>
-
 ## Következő lépések
+<a id="next-steps" class="xliff"></a>
 
 > [!div class="nextstepaction"]
 > [Node.js és MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)

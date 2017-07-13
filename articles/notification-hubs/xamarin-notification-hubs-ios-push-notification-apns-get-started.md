@@ -16,34 +16,31 @@ ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 426294e0dc3e877565bd57e899fdc79a1bd31c21
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 72a81fa0deb34ace77b8fb9b1a4e6b24ee164b35
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 07/05/2017
 
 
 ---
-<a id="ios-push-notifications-with-notification-hubs-for-xamarin-apps" class="xliff"></a>
-
 # iOS leküldéses értesítések küldése a Notification Hubs használatával Xamarin-alkalmazásokba
+<a id="ios-push-notifications-with-notification-hubs-for-xamarin-apps" class="xliff"></a>
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-<a id="overview" class="xliff"></a>
-
 ## Áttekintés
+<a id="overview" class="xliff"></a>
 > [!IMPORTANT]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 > 
 > 
 
 Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére iOS-alkalmazásokba.
-Létre fog hozni egy üres Xamarin.iOS-alkalmazást, amely leküldéses értesítéseket fogad az [Apple Push Notification szolgáltatás (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html) használatával. Amikor végzett, képes lesz az értesítési központ használatával leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre. A befejezett kód a minta [NotificationHubs alkalmazásban][GitHub] érhető el.
+Létre fog hozni egy üres Xamarin.iOS-alkalmazást, amely leküldéses értesítéseket fogad az [Apple Push Notification szolgáltatás (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) használatával. Amikor végzett, képes lesz az értesítési központ használatával leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre. A befejezett kód a minta [NotificationHubs alkalmazásban][GitHub] érhető el.
 
 Ez az oktatóanyag az egyszerű leküldéses üzenetküldési forgatókönyvet mutatja be a Notification Hubs használatával.
 
-<a id="prerequisites" class="xliff"></a>
-
 ## Előfeltételek
+<a id="prerequisites" class="xliff"></a>
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 
 * [XCode 6.0][Install Xcode]
@@ -60,9 +57,8 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Xamarin i
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-<a id="configure-your-notification-hub" class="xliff"></a>
-
 ## Az értesítési központ konfigurálása
+<a id="configure-your-notification-hub" class="xliff"></a>
 Ez a szakasz végigvezeti egy új értesítési központ létrehozásának és az APNS-hitelesítés konfigurálásának folyamatán a létrehozott **.p12** leküldéses tanúsítvány használatával. Ha egy már korábban létrehozott értesítési központot kíván használni, egyből az 5. lépésre ugorhat.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
@@ -82,12 +78,10 @@ Ez a szakasz végigvezeti egy új értesítési központ létrehozásának és a
 
 Az értesítési központ konfigurálva lett az APNS-sel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez.
 
-<a id="connect-your-app-to-the-notification-hub" class="xliff"></a>
-
 ## Az alkalmazás csatlakoztatása az értesítési központhoz
-<a id="create-a-new-project" class="xliff"></a>
-
+<a id="connect-your-app-to-the-notification-hub" class="xliff"></a>
 #### Új projekt létrehozása
+<a id="create-a-new-project" class="xliff"></a>
 1. A Xamarin Studióban hozzon létre egy új iOS-projektet, és válassza a **Unified API** > **Single View Application** (Egyesített API > Egynézetes alkalmazás) sablont.
    
      ![Xamarin Studio – Alkalmazástípus kiválasztása][31]
@@ -189,9 +183,8 @@ Az értesítési központ konfigurálva lett az APNS-sel való együttműködés
    > 
 10. Futtassa az alkalmazást az eszközön.
 
-<a id="sending-push-notifications" class="xliff"></a>
-
 ## Leküldéses értesítések küldése
+<a id="sending-push-notifications" class="xliff"></a>
 A leküldéses értesítések fogadásának az alkalmazásban való teszteléséhez értesítéseket küldhet az [Azure Portal] közvetlenül az értesítési központ lapján található **Hibaelhárítás** eszközkészlet **Küldés tesztelése** funkciója használatával, az alábbi képernyőn látható módon.
 
 ![](./media/notification-hubs-ios-get-started/notification-hubs-test-send.png)
@@ -208,9 +201,8 @@ Ebben az oktatóanyagban az egyszerűbb megoldást választjuk, és az ügyféla
 
 * **Java/PHP**: „A Notification Hubs használata Javából/PHP-ből” ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) témakörben találhat példát arra, hogyan küldhetők leküldéses értesítések a REST API-k használatával.
 
-<a id="optional-send-push-notifications-from-a-net-console-app" class="xliff"></a>
-
 #### (Választható) Leküldéses értesítések küldése .NET-konzolalkalmazásból
+<a id="optional-send-push-notifications-from-a-net-console-app" class="xliff"></a>
 Ebben a szakaszban egy egyszerű .NET konzolalkalmazás használatával küldünk leküldéses értesítéseket. A jelen példában átváltunk Windows fejlesztői környezetre, amelyben a Visual Studio már telepítve lett.
 
 1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást:
@@ -245,9 +237,8 @@ Ebben a szakaszban egy egyszerű .NET konzolalkalmazás használatával küldün
 
 Az összes lehetséges hasznos adatot megtalálja az Apple [helyi és leküldéses értesítések programozásával foglalkozó útmutatójában].
 
-<a id="optional-send-notifications-from-a-mobile-service" class="xliff"></a>
-
 #### (Választható) Értesítések küldése mobilszolgáltatásból
+<a id="optional-send-notifications-from-a-mobile-service" class="xliff"></a>
 Ebben a szakaszban egy mobilszolgáltatás használatával küldünk leküldéses értesítéseket egy csomópontparancsfájl segítségével.
 
 Ha mobilszolgáltatással kíván értesítést küldeni, kövesse [A Mobile Services használatának első lépéseit] című témakör utasításait, majd:
@@ -280,9 +271,8 @@ Ha mobilszolgáltatással kíván értesítést küldeni, kövesse [A Mobile Ser
         );
 6. Kattintson az alsó sáv **Run Once** (Futtatás egyszer) parancsára. Az eszköznek egy riasztást kell fogadnia.
 
-<a id="next-steps" class="xliff"></a>
-
 ## Következő lépések
+<a id="next-steps" class="xliff"></a>
 Ebben az egyszerű példában leküldéses értesítéseket küldött az összes iOS-eszközre. Ha adott felhasználóknak szeretne értesítést küldeni, tekintse meg [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyagot. Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news] (Friss hírek küldése Notification Hubs használatával) című témakört. A Notification Hubs használatával kapcsolatban a [Notification Hubs használatával] és [Notification Hubs iOS rendszeren való használatával] foglalkozó témakörben tekinthet meg további információt.
 
 <!-- Images. -->
@@ -314,7 +304,7 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: /manage/services/notification-hubs/notify-users-aspnet
 [Use Notification Hubs to send breaking news]: /manage/services/notification-hubs/breaking-news-dotnet
 
-[helyi és leküldéses értesítések programozásával foglalkozó útmutatójában]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[helyi és leküldéses értesítések programozásával foglalkozó útmutatójában]:https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/

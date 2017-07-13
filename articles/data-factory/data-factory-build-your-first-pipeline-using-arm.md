@@ -12,19 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 04/17/2017
+ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: e420d192b6c60aad7523948762ff2762970583ed
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 7303b51a4a107e63e4c6514f7bf8f33a3ba00e39
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
-<a id="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template" class="xliff"></a>
-
 # Oktatóanyag: Az első Azure data factory létrehozása Azure Resource Manager-sablon használatával
+<a id="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template" class="xliff"></a>
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -44,16 +43,14 @@ A jelen oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: e
 > 
 > Az oktatóanyagban szereplő folyamat csak egyetlen tevékenységtípussal rendelkezik: HDInsightHive. Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További tudnivalókért lásd: [Ütemezés és végrehajtás a Data Factoryban](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
-<a id="prerequisites" class="xliff"></a>
-
 ## Előfeltételek
+<a id="prerequisites" class="xliff"></a>
 * Olvassa el [Az oktatóanyag áttekintése](data-factory-build-your-first-pipeline.md) című részt, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
 * Kövesse a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre.
 * Az Azure Resource Manager-sablonokkal kapcsolatban az [Authoring Azure Resource Manager Templates](../azure-resource-manager/resource-group-authoring-templates.md) (Azure Resource Manager-sablonok készítése) című cikkben tájékozódhat bővebben. 
 
-<a id="in-this-tutorial" class="xliff"></a>
-
 ## Az oktatóanyag tartalma
+<a id="in-this-tutorial" class="xliff"></a>
 | Entitás | Leírás |
 | --- | --- |
 | Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Ebben a példában az Azure Storage-fiók a bemeneti és a kimeneti adatokat tárolja a folyamathoz. |
@@ -66,9 +63,8 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy 
 
 A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
 
-<a id="data-factory-json-template" class="xliff"></a>
-
 ## Data Factory JSON-sablon
+<a id="data-factory-json-template" class="xliff"></a>
 A data factory meghatározásához szükséges legfelső szintű Resource Manager-sablon a következő: 
 
 ```json
@@ -271,9 +267,8 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFGetStarted
 > 
 > 
 
-<a id="parameters-json" class="xliff"></a>
-
 ## Paramétereket tartalmazó JSON-file
+<a id="parameters-json" class="xliff"></a>
 Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, amely paramétereket tartalmaz az Azure Resource Manager-sablon számára.  
 
 > [!IMPORTANT]
@@ -319,9 +314,8 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 > 
 > 
 
-<a id="create-data-factory" class="xliff"></a>
-
 ## Data factory létrehozása
+<a id="create-data-factory" class="xliff"></a>
 1. Indítsa el az **Azure PowerShellt**, és futtassa az alábbi parancsot: 
    * Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
     ```PowerShell
@@ -341,9 +335,8 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFTutorialARM-Parameters.json
     ```
 
-<a id="monitor-pipeline" class="xliff"></a>
-
 ## Folyamat figyelése
+<a id="monitor-pipeline" class="xliff"></a>
 1. Miután bejelentkezett az [Azure Portalra](https://portal.azure.com/), kattintson a **Tallózás** elemre, és válassza az **Adat-előállítók** lehetőséget.
      ![Tallózás->Data Factories](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2. A **Data Factories** panelen kattintson a létrehozott data factoryre (**TutorialFactoryARM**).    
@@ -370,12 +363,10 @@ Az adatfolyamatok figyeléséhez a Monitor and Manage Appot is használhatja. Az
 > 
 > 
 
-<a id="data-factory-entities-in-the-template" class="xliff"></a>
-
 ## Data Factory-entitások a sablonban
-<a id="define-data-factory" class="xliff"></a>
-
+<a id="data-factory-entities-in-the-template" class="xliff"></a>
 ### Data Factory definiálása
+<a id="define-data-factory" class="xliff"></a>
 A data factoryt a Resource Manager-sablonban definiálhatja az alábbi minta szerint:  
 
 ```json
@@ -394,9 +385,8 @@ A dataFactoryName az alábbi módon van definiálva:
 ```
 Ez az erőforráscsoport-azonosítón alapuló egyedi karakterlánc.  
 
-<a id="defining-data-factory-entities" class="xliff"></a>
-
 ### Data Factory-entitások definiálása
+<a id="defining-data-factory-entities" class="xliff"></a>
 Az alábbi Data Factory-entitások a JSON-sablonban vannak definiálva: 
 
 * [Azure Storage társított szolgáltatás](#azure-storage-linked-service)
@@ -405,9 +395,8 @@ Az alábbi Data Factory-entitások a JSON-sablonban vannak definiálva:
 * [Azure blobkimeneti adatkészlet](#azure-blob-output-dataset)
 * [Másolási tevékenységgel rendelkező adatfolyamat](#data-pipeline)
 
-<a id="azure-storage-linked-service" class="xliff"></a>
-
 #### Azure Storage társított szolgáltatás
+<a id="azure-storage-linked-service" class="xliff"></a>
 Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure Storage társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Storage társított szolgáltatás](data-factory-azure-blob-connector.md#azure-storage-linked-service) című szakaszt. 
 
 ```json
@@ -429,9 +418,8 @@ Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure S
 ```
 A **connectionString** a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció változókat is használ: azureStroageLinkedService és dataFactoryName, amelyek a sablonban vannak definiálva. 
 
-<a id="hdinsight-on-demand-linked-service" class="xliff"></a>
-
 #### HDInsight igény szerinti társított szolgáltatás
+<a id="hdinsight-on-demand-linked-service" class="xliff"></a>
 A HDInsight igény szerinti társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg a [Számítási társított szolgáltatás](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) című cikket.  
 
 ```json
@@ -463,9 +451,8 @@ Vegye figyelembe a következő szempontokat:
 
 További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás).
 
-<a id="azure-blob-input-dataset" class="xliff"></a>
-
 #### Azure blobbemeneti adatkészlet
+<a id="azure-blob-input-dataset" class="xliff"></a>
 Megadhatja a bemeneti adatokat tartalmazó blobtároló, mappa és fájl nevét. Az Azure Blob-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Blob-adatkészlet tulajdonságai](data-factory-azure-blob-connector.md#dataset-properties) című szakaszt. 
 
 ```json
@@ -498,9 +485,8 @@ Megadhatja a bemeneti adatokat tartalmazó blobtároló, mappa és fájl nevét.
 ```
 Ez a definíció az alábbi, a paramétersablonban definiált paramétereket használja: blobContainer, inputBlobFolder és inputBlobName. 
 
-<a id="azure-blob-output-dataset" class="xliff"></a>
-
 #### Azure Blob kimeneti adatkészlet
+<a id="azure-blob-output-dataset" class="xliff"></a>
 Megadhatja a kimeneti adatokat tartalmazó blobtároló és mappa nevét. Az Azure Blob-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Blob-adatkészlet tulajdonságai](data-factory-azure-blob-connector.md#dataset-properties) című szakaszt.  
 
 ```json
@@ -532,9 +518,8 @@ Megadhatja a kimeneti adatokat tartalmazó blobtároló és mappa nevét. Az Azu
 
 Ez a definíció az alábbi, a paramétersablonban definiált paramétereket használja: blobContainer és outputBlobFolder. 
 
-<a id="data-pipeline" class="xliff"></a>
-
 #### Adatfolyamat
+<a id="data-pipeline" class="xliff"></a>
 Definiálhat egy folyamatot, amely átalakítja az adatokat a Hive-parancsfájl egy igény szerinti Azure HDInsight-fürtön való futtatásával. A példában található folyamat definiálásához használt JSON-elemek leírásához tekintse meg [A folyamat JSON-fájlja](data-factory-create-pipelines.md#pipeline-json) című szakaszt. 
 
 ```json
@@ -591,9 +576,8 @@ Definiálhat egy folyamatot, amely átalakítja az adatokat a Hive-parancsfájl 
 }
 ```
 
-<a id="reuse-the-template" class="xliff"></a>
-
 ## A sablon ismételt felhasználása
+<a id="reuse-the-template" class="xliff"></a>
 Az oktatóanyagban létrehozott egy sablont a Data Factory-entitások definiálásához, illetve egy másikat a paraméterek értékeinek átadásához. Ha ugyanazt a sablont szeretné használni a Data Factory-entitások különböző környezetekben történő üzembe helyezéséhez, hozzon létre egy paraméterfájlt az egyes környezetekhez, és használja azt az adott környezetben történő üzembe helyezéskor.     
 
 Példa:  
@@ -609,9 +593,8 @@ Megfigyelheti, hogy az első parancs a fejlesztőkörnyezet, a második a tesztk
 
 Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sablont. Ilyen eset például, ha több olyan, egy vagy több folyamattal rendelkező adat-előállítót is létre kell hoznia, amelyek ugyanazt a logikát alkalmazzák, de az egyes adat-előállítók különböző Azure-tárfiókokat és Azure SQL Database-fiókokat használnak. Ebben a forgatókönyvben ugyanazt a sablont használja ugyanabban a környezetben (fejlesztői, teszt vagy éles) különböző paraméterfájlokkal a data factoryk létrehozásához. 
 
-<a id="resource-manager-template-for-creating-a-gateway" class="xliff"></a>
-
 ## Resource Manager-sablon átjáró létrehozásához
+<a id="resource-manager-template-for-creating-a-gateway" class="xliff"></a>
 Az itt látható, mintául szolgáló Resource Manager-sablonnal egy háttérben lévő logikai átjáró hozható létre. Telepítsen egy átjárót a helyszíni számítógépre vagy az Azure IaaS virtuális gépre, és regisztrálja az átjárót egy kulccsal a Data Factory szolgáltatásban. További információkért lásd: [Move data between on-premises and cloud](data-factory-move-data-between-onprem-and-cloud.md) (Adatok áthelyezése a helyszíni rendszer és a felhő között).
 
 ```json
@@ -648,9 +631,8 @@ Az itt látható, mintául szolgáló Resource Manager-sablonnal egy háttérben
 ```
 Ez a sablon létrehozza a GatewayUsingArmDF nevű data factoryt a GatewayUsingARM nevű átjáróval. 
 
-<a id="see-also" class="xliff"></a>
-
 ## Lásd még:
+<a id="see-also" class="xliff"></a>
 | Témakör | Leírás |
 |:--- |:--- |
 | [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |

@@ -14,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/14/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 84c7048bbd608b0b99215d74f71960dc9d1158ef
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 1b3e0d06c8b25158e421f02b587b4ae4836d80ad
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
-<a id="configure-storage-and-scalability-for-apache-kafka-on-hdinsight" class="xliff"></a>
-
 # Tárhely és méretezhetőség konfigurálása HDInsight-beli Apache Kafka platformon
+<a id="configure-storage-and-scalability-for-apache-kafka-on-hdinsight" class="xliff"></a>
 
 Útmutató a HDInsight-beli Apache Kafka által használt felügyelt lemezek számának konfigurálásához.
 
@@ -34,9 +33,8 @@ A következő ábra a felügyelt lemezek nélküli és a felügyelt lemezeket ha
 
 ![Ábra a HDInsight-beli Kafka platformról virtuális gépenként egy virtuális merevlemezzel és virtuális gépenként több felügyelt lemezzel](./media/hdinsight-apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-<a id="configure-managed-disks-azure-portal" class="xliff"></a>
-
 ## Felügyelt lemezek konfigurálása: Azure Portal
+<a id="configure-managed-disks-azure-portal" class="xliff"></a>
 
 1. Kövesse a [HDInsight-fürt létrehozása](hdinsight-hadoop-create-linux-clusters-portal.md) című cikkben leírtakat, hogy megismerje a fürt Portal segítségével történő létrehozásának szokásos lépéseit. Ne fejezze be a létrehozást a Portalon.
 
@@ -47,9 +45,8 @@ A következő ábra a felügyelt lemezek nélküli és a felügyelt lemezeket ha
 
     ![Ábra a fürtméret-panelről a feldolgozó csomópontonkénti lemezszám kiemelésével](./media/hdinsight-apache-kafka-scalability/set-managed-disks-portal.png)
 
-<a id="configure-managed-disks-resource-manager-template" class="xliff"></a>
-
 ## Felügyelt lemezek használata: Resource Manager-sablon
+<a id="configure-managed-disks-resource-manager-template" class="xliff"></a>
 
 Egy Kafka-fürt egy feldolgozó csomópontjára jutó lenezek számának beállításához használja a sablon következő szakaszát:
 
@@ -63,9 +60,8 @@ Egy Kafka-fürt egy feldolgozó csomópontjára jutó lenezek számának beáll�
 
 A felügyelt lemezek konfigurálását bemutató teljes sablon megtalálható a [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) URL-címen.
 
-<a id="next-steps" class="xliff"></a>
-
 ## Következő lépések
+<a id="next-steps" class="xliff"></a>
 
 A HDInsight-beli Kafka használatával kapcsolatos további információk a következő dokumentumokban találhatók:
 
@@ -74,4 +70,4 @@ A HDInsight-beli Kafka használatával kapcsolatos további információk a köv
 * [Az Apache Spark használata a Kafkával a HDInsighton](hdinsight-apache-spark-with-kafka.md)
 * [Csatlakozás a Kafkához Azure Virtual Networkön keresztül](hdinsight-apache-kafka-connect-vpn-gateway.md)
 
-* [HDInsight blog a felügyelt lemezek Kafka platformmal való használatáról](https://azure.microsoft.com/blog/announcing-hdinsight-kafka-public-preview-with-azure-managed-disks)
+* [HDInsight blog a felügyelt lemezek Kafka platformmal való használatáról](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)
