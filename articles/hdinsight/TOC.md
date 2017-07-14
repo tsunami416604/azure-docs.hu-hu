@@ -1,234 +1,475 @@
 # Áttekintés
+
 ## [A HDInsight és a Hadoop](hdinsight-hadoop-introduction.md)
+
 ## [Hadoop-összetevők a HDInsighton](hdinsight-component-versioning.md)
+
 ## [R Server](hdinsight-hadoop-r-server-overview.md)
+
 ## [Apache Spark](hdinsight-apache-spark-overview.md)
+
 ## [HBase](hdinsight-hbase-overview.md)
+
 ## [Apache Storm](hdinsight-storm-overview.md)
+
 ## [Kafka (előzetes verzió)](hdinsight-apache-kafka-introduction.md)
+
 ## [Tartományhoz csatlakoztatott HDInsight-fürtök (előzetes verzió)](hdinsight-domain-joined-introduction.md)
+
 ## Kibocsátási megjegyzések
+
 ### [Legutóbbiak](hdinsight-release-notes.md)
+
 ### [Archívum](hdinsight-release-notes-archive.md)
 
+
 # Első lépések
+
 ## [Első lépések a Hadoopban](hdinsight-hadoop-linux-tutorial-get-started.md)
+
 ## [Első lépések a Sparkban](hdinsight-apache-spark-jupyter-spark-sql.md)
+
 ## [Első lépések az R Serverben](hdinsight-hadoop-r-server-get-started.md)
+
 ## [Első lépések a HBase-ben és a NoSQL-ben](hdinsight-hbase-tutorial-get-started-linux.md)
+
 ## [Első lépések a Stormban](hdinsight-apache-storm-tutorial-get-started-linux.md)
+
 ## [Első lépések a Hive interaktív változatában (előzetes verzió)](hdinsight-hadoop-use-interactive-hive.md)
+
 ## [Első lépések a Kafkában (előzetes verzió)](hdinsight-apache-kafka-get-started.md)
+
 ## [Hadoop-tesztkörnyezet](hdinsight-hadoop-emulator-get-started.md)
+
 ## [Data Lake Tools with Hortonworks – tesztkörnyezet](hdinsight-hadoop-emulator-visual-studio.md)
+
 ## [Visual Studio-eszközök](hdinsight-hadoop-visual-studio-tools-get-started.md)
+
 ## [Az Azure Storage-et használó HDInsight](hdinsight-hadoop-use-blob-storage.md)
+
 ## [Az Azure Data Lake Store-t használó HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
+
 # Útmutató
+
 ## Kötegelt lekérdezések a Hadoop használatával
+
 ### [A Hive és a Hadoop](hdinsight-use-hive.md)
+
 #### [A Hive-nézet használata](hdinsight-hadoop-use-hive-ambari-view.md)
+
 #### [A Beeline használata](hdinsight-hadoop-use-hive-beeline.md)
+
 #### [A cURL használata](hdinsight-hadoop-use-hive-curl.md)
+
 #### [A PowerShell használata](hdinsight-hadoop-use-hive-powershell.md)
+
 #### [A .NET SDK használata](hdinsight-hadoop-use-hive-dotnet-sdk.md)
+
 #### [A HDInsight Tools for Visual Studio használata](hdinsight-hadoop-use-hive-visual-studio.md)
+
 #### [A Távoli asztal használata](hdinsight-hadoop-use-hive-remote-desktop.md)
+
 #### [A Lekérdezéskonzol használata](hdinsight-hadoop-use-hive-query-console.md)
+
 ### [Java UDF-használata a Hive-val](hdinsight-hadoop-hive-java-udf.md)
+
 ### [A MapReduce használata a Hadooppal](hdinsight-use-mapreduce.md)
+
 #### [Az SSH használata](hdinsight-hadoop-use-mapreduce-ssh.md)
+
 #### [A cURL használata](hdinsight-hadoop-use-mapreduce-curl.md)
+
 #### [A PowerShell használata](hdinsight-hadoop-use-mapreduce-powershell.md)
+
 #### [A Távoli asztal használata](hdinsight-hadoop-use-mapreduce-remote-desktop.md)
+
 ### [A MapReduce-minták futtatása](hdinsight-hadoop-run-samples-linux.md)
+
 ### [A Pig használata a Hadooppal](hdinsight-use-pig.md)
+
 #### [Az SSH és a Pig](hdinsight-hadoop-use-pig-ssh.md)
+
 #### [A PowerShell használata](hdinsight-hadoop-use-pig-powershell.md)
+
 #### [A .NET SDK használata](hdinsight-hadoop-use-pig-dotnet-sdk.md)
+
 #### [A cURL használata](hdinsight-hadoop-use-pig-curl.md)
+
 #### [A Távoli asztal használata](hdinsight-hadoop-use-pig-remote-desktop.md)
+
 ### [A DataFu és a Pig együttes használata](hdinsight-hadoop-use-pig-datafu-udf.md)
+
 ### [Igény szerinti fürtök](hdinsight-hadoop-create-linux-clusters-adf.md)
+
 ### [Hadoop-feladatok elküldése](hdinsight-submit-hadoop-jobs-programmatically.md)
+
 ## Az R Server használata
+
 ### [Tárolási lehetőségek](hdinsight-hadoop-r-server-storage.md)
+
 ### [Az RStudio telepítése](hdinsight-hadoop-r-server-install-r-studio.md)
+
 ### [Számítási környezetek](hdinsight-hadoop-r-server-compute-contexts.md)
+
 ### [ScaleR és SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
+
 ## A Spark használata memórián belüli feldolgozáshoz
+
 ### [A Data Lake Store adattárral](hdinsight-apache-spark-use-with-data-lake-store.md)
+
 ### [BI-eszközökkel](hdinsight-apache-spark-use-bi-tools.md)
+
 ### [Önálló alkalmazás létrehozása](hdinsight-apache-spark-create-standalone-application.md)
+
 ### [Alkalmazások létrehozása az Eclipse-szel](hdinsight-apache-spark-eclipse-tool-plugin.md)
+
 ### [Alkalmazások létrehozása az IntelliJ-vel](hdinsight-apache-spark-intellij-tool-plugin.md)
+
 ### [Streamelési események feldolgozása](hdinsight-apache-spark-eventhub-streaming.md)
+
 ### [HVAC-teljesítmény előrejelzése](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+
 ### [Élelmiszer-vizsgálati eredmények előrejelzése](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+
 ### [Webhelynaplók elemzése](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+
 ### [Mély tanulás a Caffe használatával](hdinsight-deep-learning-caffe-spark.md)
+
 ### [Használat a Microsoft Cognitive Toolkittel](hdinsight-apache-spark-microsoft-cognitive-toolkit.md)
+
 ### [Zeppelin notebookok használata](hdinsight-apache-spark-zeppelin-notebook.md)
+
 ### [Jupyter notebookkernelek](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+
 ### [Külső csomagok használata Jupyterrel, cellafunkciók használatával](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+
 ### [Külső csomagok használata Jupyterrel, szkriptműveletek használatával](hdinsight-apache-spark-python-package-installation.md)
+
 ### [Helyi Jupyter notebook használata](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+
 ### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md)
+
 ### [Feladatok távoli hibakeresése az IntelliJ-vel VPN-en keresztül](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+
 ### [Erőforrások kezelése](hdinsight-apache-spark-resource-manager.md)
+
 ### [Feladatok nyomon követése és hibakeresése](hdinsight-apache-spark-job-debugging.md)
+
 ### [Ismert problémák](hdinsight-apache-spark-known-issues.md)
+
 ## A HBase használata
+
 ### [A Phoenix és az SQLLine használata](hdinsight-hbase-phoenix-squirrel-linux.md)
+
 ### [Valós idejű tweetek elemzése](hdinsight-hbase-analyze-twitter-sentiment.md)
+
 ### [Fürtök létrehozása virtuális hálózaton](hdinsight-hbase-provision-vnet.md)
+
 ### [HBase-replikáció konfigurálása](hdinsight-hbase-replication.md)
+
 ### [Alkalmazás fejlesztése Javával](hdinsight-hbase-build-java-maven-linux.md)
+
 ## A Storm használata
+
 ### [Topológiák üzembe helyezése és kezelése](hdinsight-storm-deploy-monitor-topology-linux.md)
+
 ### [Adatfeldolgozó alkalmazások fejlesztése SCP-ben](hdinsight-storm-scp-programming-guide.md)
+
 ### [Storm-példák](hdinsight-storm-example-topology.md)
+
 #### [Írás a Data Lake Store-ba](hdinsight-storm-write-data-lake-store.md)
+
 #### [Java-alapú topológiák fejlesztése a Maven használatával](hdinsight-storm-develop-java-topology.md)
+
 #### [C#-topológiák fejlesztése Hadoop-eszközökkel](hdinsight-storm-develop-csharp-visual-studio-topology.md)
+
 #### [Népszerű Twitter-témakörök meghatározása](hdinsight-storm-twitter-trending.md)
+
 #### [Események feldolgozása C#-topológiákkal](hdinsight-storm-develop-csharp-event-hub-topology.md)
+
 #### [Események feldolgozása Java-topológiákkal](hdinsight-storm-develop-java-event-hub-topology.md)
+
 #### [A Power BI használata topológiákkal](hdinsight-storm-power-bi-topology.md)
+
 #### [Valós idejű érzékelőadatok elemzése](hdinsight-storm-sensor-data-analysis.md)
+
 #### [Járműérzékelő-adatok feldolgozása](hdinsight-storm-iot-eventhub-documentdb.md)
+
 #### [Események korrelációinak megállapítása az idő múlásával](hdinsight-storm-correlation-topology.md)
+
 #### [Topológiák fejlesztése a Pythonnal](hdinsight-storm-develop-python-topology.md)
+
 ## A tartományhoz csatlakoztatott HDInsight (előzetes verzió) használata
+
 ### [Konfigurálás](hdinsight-domain-joined-configure.md)
+
 ### [Kezelés](hdinsight-domain-joined-manage.md)
+
 ### [Hive-házirendek konfigurálása](hdinsight-domain-joined-run-hive.md)
+
 ## A Kafka (előzetes verzió) használata
+
 ### [Kafka-adatok replikálása](hdinsight-apache-kafka-mirroring.md)
+
 ### [A Kafka tárolójának és skálázhatóságának konfigurálása](hdinsight-apache-kafka-scalability.md)
+
 ### [Az adatok magas rendelkezésre állásának konfigurálása](hdinsight-apache-kafka-high-availability.md)
+
 ### [Használat a Virtual Network szolgáltatással](hdinsight-apache-kafka-connect-vpn-gateway.md)
+
 ### [Használat a Sparkkal (strukturált stream)](hdinsight-apache-kafka-spark-structured-streaming.md)
+
 ### [Használat a Sparkkal (DStream)](hdinsight-apache-spark-with-kafka.md)
+
 ### [Használat a Stormmal](hdinsight-apache-storm-with-kafka.md)
+
 ## Fejlesztés
+
 ### [Streamelő MapReduce programok fejlesztése C# nyelven](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
+
 ### [Java MapReduce programok fejlesztése](hdinsight-develop-deploy-java-mapreduce-linux.md)
+
 ### [Scalding MapReduce feladatok fejlesztése](hdinsight-hadoop-mapreduce-scalding.md)
+
 ### [A HDInsight Tools használata Spark-alkalmazások létrehozásához](hdinsight-apache-spark-eclipse-tool-plugin.md)
+
 ### [A HDInsight Tools használata a Spark-alkalmazások távoli hibakereséséhez SSH-n keresztül](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+
 ### [Üres élcsomópontok használata](hdinsight-apps-use-edge-node.md)
+
 ### [Python-streamprogramok fejlesztése](hdinsight-hadoop-streaming-python.md)
+
 ### [JSON-dokumentumok feldolgozása és elemzése](hdinsight-using-json-in-hive.md)
+
 ### [Adatok szerializálása az Avro Libraryvel](hdinsight-dotnet-avro-serialization.md)
+
 ### [Felhasználó által definiált C#-függvények használata](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+
 ### [A Python használata a Hive-val és a Piggel](hdinsight-python.md)
+
 ## Big Data típusú adatok elemzése
+
 ### [Elemzés a Power Queryvel](hdinsight-connect-excel-power-query.md)
+
 ### [Az Excel csatlakozása a Hadoophoz](hdinsight-connect-excel-hive-odbc-driver.md)
+
 ### [Kapcsolódás a Hive JDBC-illesztővel](hdinsight-connect-hive-jdbc-driver.md)
+
 ### [Tárolt érzékelőadatok elemzése](hdinsight-hive-analyze-sensor-data.md)
+
 ### [Tárolt tweetek elemzése](hdinsight-analyze-twitter-data-linux.md)
+
 ### [Repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md)
+
 ### [Javaslatok létrehozása a Mahout használatával](hdinsight-hadoop-mahout-linux-mac.md)
+
 ### [Webhelynaplók elemzése a Hive használatával](hdinsight-hive-analyze-website-log.md)
+
 ### [Application Insights-telemetrianaplók elemzése](hdinsight-spark-analyze-application-insight-logs.md)
+
 ## Fürtök kiterjesztése
+
 ### [Fürtök testreszabása a Bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md)
+
 ### [Fürtök testreszabása szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)
+
 ### [Szkriptműveletek fejlesztése](hdinsight-hadoop-script-actions-linux.md)
+
 ### [A Presto telepítése és használata](hdinsight-hadoop-install-presto.md)
+
 ### [Mono telepítése vagy frissítése](hdinsight-hadoop-install-mono.md)
+
 ### [Hive-kódtárak hozzáadása](hdinsight-hadoop-add-hive-libraries.md)
+
 ### [A Giraph használata](hdinsight-hadoop-giraph-install-linux.md)
+
 ### [A Hue használata](hdinsight-hadoop-hue-linux.md)
+
 ### [Az R használata](hdinsight-hadoop-r-scripts-linux.md)
+
 ### [A Solr használata](hdinsight-hadoop-solr-install-linux.md)
+
 ### [A Virtual Network használata](hdinsight-extend-hadoop-virtual-network.md)
+
 ### [A Zeppelin használata](hdinsight-apache-spark-zeppelin-notebook.md)
+
 ### HDInsight-alkalmazások fejlesztése
+
 #### [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md)
+
 #### [Egyedi alkalmazások telepítése](hdinsight-apps-install-custom-applications.md)
+
 #### [A REST használata alkalmazások telepítéséhez](https://msdn.microsoft.com/library/mt706515.aspx)
+
 #### [HDInsight-alkalmazások közzététele az Azure Marketplace-en](hdinsight-apps-publish-applications.md)
+
 ## Biztonságos
+
 ### [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)
+
 ### [SSH-alagútkezelés használata](hdinsight-linux-ambari-ssh-tunnel.md)
+
 ### [Adatokhoz hozzáférésének korlátozása](hdinsight-storage-sharedaccesssignature-permissions.md)
+
 ## Kezelés
+
 ### [Linux-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
+
 #### [Azure PowerShell használata](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+
 #### [A cURL és az Azure REST API használata](hdinsight-hadoop-create-linux-clusters-curl-rest.md)
+
 #### [A .NET SDK használata](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
+
 #### [Az Azure parancssori felületének használata](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+
 #### [Az Azure Portal használata](hdinsight-hadoop-create-linux-clusters-portal.md)
+
 #### [Használjon Azure Resource Manager-sablonokat](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+
 ### [Hadoop-fürtök kezelése](hdinsight-administer-use-portal-linux.md)
+
 #### [A .NET SDK használata](hdinsight-administer-use-dotnet-sdk.md)
+
 #### [Azure PowerShell használata](hdinsight-administer-use-powershell.md)
+
 #### [Az Azure parancssori felületének használata](hdinsight-administer-use-command-line.md)
+
 ### [Fürtök kezelése az Ambari webes felülettel](hdinsight-hadoop-manage-ambari.md)
+
 #### [Az Ambari REST API használata](hdinsight-hadoop-manage-ambari-rest-api.md)
+
 ### [Tárfiókok hozzáadása](hdinsight-hadoop-add-storage.md)
+
 ### [Adatok feltöltése Hadoop-feladatokhoz](hdinsight-upload-data.md)
+
 ### [Több HDInsight-fürt a Data Lake Store-ral](hdinsight-multiple-clusters-data-lake-store.md)
+
 ### [Adatok importálása és exportálása a Sqoop használatával](hdinsight-use-sqoop.md)
+
 #### [Kapcsolódás az SSH-val](hdinsight-use-sqoop-mac-linux.md)
+
 #### [Futtatás a cURL használatával](hdinsight-hadoop-use-sqoop-curl.md)
+
 #### [Futtatás a .NET SDK használatával](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
+
 #### [Futtatás a PowerShell használatával](hdinsight-hadoop-use-sqoop-powershell.md)
+
 ### [Az Oozie használata a munkafolyamatokhoz](hdinsight-use-oozie-linux-mac.md)
+
 ### [Időalapú Oozie-koordinátorok használata](hdinsight-use-oozie-coordinator-time.md)
+
 ### [Fürt- és szolgáltatásportok, valamint URI-k](hdinsight-hadoop-port-settings-for-services.md)
+
 ### [Áttelepítés Resource Manager fejlesztői eszközökre](hdinsight-hadoop-development-using-azure-resource-manager.md)
+
 ### [Rendelkezésre állás és megbízhatóság](hdinsight-high-availability-linux.md)
+
 ### [A HDInsight-fürt frissítése újabb verzióra](hdinsight-upgrade-cluster.md)
+
 ### [Az operációs rendszer javításai a HDInsight-fürthöz](hdinsight-os-patching.md)
-## Hibaelhárítás
-### [Linux-tippek](hdinsight-hadoop-linux-information.md)
-### [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)
-### [Alkalmazások hibakeresése YARN-naplók használatával](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-### [Halomürítések engedélyezése](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-### [Hibák javítása a WebHCat használatával](hdinsight-hadoop-templeton-webhcat-debug-errors.md)
-### [Ambari-nézetek használata a Tez-feladatok hibakereséséhez](hdinsight-debug-ambari-tez-view.md)
-### [További hibaelhárítás](hdinsight-hadoop-stack-trace-error-messages.md)
+
+## [Hibaelhárítás](hdinsight-troubleshoot-guide.md)
+
+### [HBASE-hibaelhárítás](hdinsight-troubleshoot-hbase.md)
+
+### [HDFS-hibaelhárítás](hdinsight-troubleshoot-hdfs.md)
+
+### [HIVE-hibaelhárítás](hdinsight-troubleshoot-hive.md)
+
+### [Spark-hibaelhárítás](hdinsight-troubleshoot-spark.md)
+
+### [STORM-hibaelhárítás](hdinsight-troubleshoot-storm.md)
+
+### [YARN-hibaelhárítás](hdinsight-troubleshoot-yarn.md)
+
+### Erőforrások
+
+#### [Információk a HDInsight Linuxon való használatáról](hdinsight-hadoop-linux-information.md)
+
+#### [Hadoop – memória és teljesítmény](hdinsight-hadoop-stack-trace-error-messages.md)
+
+#### [Hadoop YARN-alkalmazásnaplók elérése Linuxon](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+
+#### [Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+
+#### [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)
+
+#### [WebHCat-hibák megértése és megoldása](hdinsight-hadoop-templeton-webhcat-debug-errors.md)
+
 #### [Hive-beállítások a Nincs elég memória hiba javításához](hdinsight-hadoop-hive-out-of-memory-error-oom.md)
+
+#### [Ambari-nézetek használata a Tez-feladatok hibakereséséhez](hdinsight-debug-ambari-tez-view.md)
+
 #### [Hive-lekérdezések optimalizálása](hdinsight-hadoop-optimize-hive-query.md)
-#### [Hive-lekérdezés teljesítménye](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+
 
 # Referencia
+
 ## [PowerShell](/powershell/module/azurerm.hdinsight)
+
 ## [.NET (Hadoop)](https://msdn.microsoft.com/library/mt271028.aspx)
+
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
+
 ## [.NET (Avro)](https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library)
+
 ## [REST](/rest/api/hdinsight/)
+
 ## [REST (Spark)](/rest/api/hdinsightspark/)
 
+
 # Kapcsolódó
+
 ## Windows-fürtök
+
 ### [Windows-fürtök áttelepítése Linux-fürtökre](hdinsight-migrate-from-windows-to-linux.md)
+
 ### [.NET–megoldások áttelepítése Linux-fürtökre](hdinsight-hadoop-migrate-dotnet-to-linux.md)
+
 ### [Hadoop MapReduce-minták futtatása](hdinsight-run-samples.md)
+
 ### [A Solr használata fürtökön](hdinsight-hadoop-solr-install-linux.md)
+
 ### [A Giraph használata nagyméretű gráfok feldolgozásához](hdinsight-hadoop-giraph-install.md)
+
 ### [Az Oozie használata a munkafolyamatokhoz](hdinsight-use-oozie.md)
+
 ### [Storm-topológiák üzembe helyezése és kezelése](hdinsight-storm-deploy-monitor-topology.md)
+
 ### [A Maven használata Java-alkalmazások létrehozásához](hdinsight-hbase-build-java-maven.md)
+
 ### [A Tez felhasználói felület használata a Tez-feladatok hibakereséséhez](hdinsight-debug-tez-ui.md)
+
 ### [Testreszabás szkriptműveletekkel](hdinsight-hadoop-customize-cluster.md)
+
 ### [YARN-alkalmazásnaplók elérése](hdinsight-hadoop-access-yarn-app-logs.md)
+
 ### [Az Apache Phoenix és az SQuirreL használata](hdinsight-hbase-phoenix-squirrel.md)
+
 ### [Filmajánlók létrehozása a Mahout használatával](hdinsight-mahout.md)
+
 ### [Repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data.md)
+
 ### [Szkriptműveletek fejlesztése](hdinsight-hadoop-script-actions.md)
+
 ### [Twitter-adatok elemzése](hdinsight-analyze-twitter-data.md)
+
 ### [Fürtök felügyelete az Azure Portalon](hdinsight-administer-use-management-portal.md)
+
 ### [Fürtök figyelése az Ambari API-val](hdinsight-monitor-use-ambari-api.md)
 
+
 # Erőforrások
+
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+
 ## [Segítség kérése a fórumokon](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
+
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
+
 ## [Microsoft Professional Program big data-megoldásokhoz](https://academy.microsoft.com/en-us/professional-program/big-data/)
+
 ## [A HDInsight Windows-eszközei](hdinsight-hadoop-windows-tools.md)
+
