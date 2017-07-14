@@ -12,20 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 07/12/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
 ms.openlocfilehash: 76fd245f91e1bfab3df68120859c69e459283e5b
-
+ms.contentlocale: hu-hu
+ms.lasthandoff: 01/27/2017
 
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Igény szerinti tartalomtovábbítás az Azure Portal használatával
+# Igény szerinti tartalomtovábbítás az Azure Portal használatával
+<a id="get-started-with-delivering-content-on-demand-using-the-azure-portal" class="xliff"></a>
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portal segítségével, az Azure Media Services (AMS) alkalmazással.
 
-## <a name="prerequisites"></a>Előfeltételek
+## Előfeltételek
+<a id="prerequisites" class="xliff"></a>
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
@@ -39,7 +42,8 @@ Az oktatóanyag a következő feladatokat tartalmazza:
 4. Az objektum közzététele, majd a streamelési és a progresszív letöltési URL-cím lekérése  
 5. Tartalom lejátszása
 
-## <a name="start-streaming-endpoints"></a>Streamvégpontok elindítása 
+## Streamvégpontok elindítása
+<a id="start-streaming-endpoints" class="xliff"></a> 
 
 Az Azure Media Services egyik leggyakrabban használt funkciója a videók továbbítása az adaptív sávszélességű streamelés használatával. A Media Services dinamikus csomagolást biztosít, amelynek köszönhetően adaptív sávszélességű, MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolna.
 
@@ -57,7 +61,8 @@ A streamvégpont elindításához tegye a következőket:
 4. Kattintson a Start ikonra.
 5. Mentse a módosításokat a Save (Mentés) gombra kattintva.
 
-## <a name="upload-files"></a>Fájlok feltöltése
+## Fájlok feltöltése
+<a id="upload-files" class="xliff"></a>
 Ha az Azure Media Services használatával kíván videókat streamelni, fel kell töltenie a forrásvideókat, különböző bitsebességekre kell kódolnia azokat, majd közzé kell tennie az eredményt. Ez a rész a folyamat első lépését írja le. 
 
 1. A **Settings** (Beállítások) ablakban kattintson az **Assets** (Objektumok) elemre.
@@ -77,14 +82,16 @@ Ha az Azure Media Services használatával kíván videókat streamelni, fel kel
 
 A feltöltés befejezését követően az új objektum bekerül az **Objektumok** ablakban található listába. 
 
-## <a name="encode-assets"></a>Objektumok kódolása
+## Objektumok kódolása
+<a id="encode-assets" class="xliff"></a>
 Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH. A videók adaptív sávszélességű streameléséhez többszörös sávszélességű fájlokká kell kódolnia a forrásvideókat. Javasoljuk, hogy a videók kódolásához használja a **Media Encoder Standard** kódolót.  
 
 A Media Services dinamikus csomagolást is biztosít, aminek köszönhetően anélkül lehet MPEG DASH, HLS és Smooth Streaming formátumban közvetíteni többszörös sávszélességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus csomagolás használatával csak egyféle formátumban kell tárolnia a fájlokat és fizetnie azok alapján, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
 
 Annak érdekében, hogy kihasználhassa a dinamikus csomagolást, kódolja többszörös sávszélességű MP4-fájlokká a forrásfájlt (a kódolás lépéseit egy későbbi részben találja meg).
 
-### <a name="to-use-the-portal-to-encode"></a>Kódolás a portál használatával
+### Kódolás a portál használatával
+<a id="to-use-the-portal-to-encode" class="xliff"></a>
 Ebben a részben leírjuk, milyen lépéseket kell elvégeznie a tartalmaknak a Media Encoder Standard segítségével történő kódolásához.
 
 1. A **Settings** (Beállítások) ablakban válassza az **Assets** (Objektumok) lehetőséget.  
@@ -97,12 +104,14 @@ Ebben a részben leírjuk, milyen lépéseket kell elvégeznie a tartalmaknak a 
    ![Objektumok kódolása](./media/media-services-portal-vod-get-started/media-services-encode1.png)
 5. Nyomja meg a **Create** (Létrehozás) gombot.
 
-### <a name="monitor-encoding-job-progress"></a>Kódolási feladatok előrehaladásának figyelése
+### Kódolási feladatok előrehaladásának figyelése
+<a id="monitor-encoding-job-progress" class="xliff"></a>
 A kódolási feladat előrehaladásának figyeléséhez kattintson az oldal tetején található **Settings** (Beállítások), majd a **Jobs** (Feladatok) elemre.
 
 ![Feladatok](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-## <a name="publish-content"></a>Tartalom közzététele
+## Tartalom közzététele
+<a id="publish-content" class="xliff"></a>
 Ahhoz, hogy átadhassa a tartalmak streamelésére vagy letöltésére használható URL-címet a felhasználónak, először „közzé kell tennie” az objektumot. Ehhez létre kell hoznia egy lokátort. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services két lokátortípust támogat: 
 
 * Streamelési (OnDemandOrigin) lokátorokat, amelyek adaptív streameléshez (például MPEG DASH, HLS vagy Smooth Streaming adatok streameléséhez) használhatók. A streamelési lokátorok létrehozásához az objektumnak tartalmaznia kell egy .ism-fájlt. 
@@ -132,7 +141,8 @@ Az SAS URL-cím formátuma a következő:
 
 A lokátor lejárati idejének módosításához használjon [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) vagy [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API-t. Az SAS-keresők lejárati dátumának frissítésekor az URL-cím is módosul.
 
-### <a name="to-use-the-portal-to-publish-an-asset"></a>Az objektum portál segítségével történő közzététele
+### Az objektum portál segítségével történő közzététele
+<a id="to-use-the-portal-to-publish-an-asset" class="xliff"></a>
 Az objektumnak a portál segítségével történő közzétételéhez tegye a következőket:
 
 1. Válassza a **Settgings (Beállítások)** > **Assets (Objektumok)** lehetőséget.
@@ -145,7 +155,8 @@ Az objektumnak a portál segítségével történő közzétételéhez tegye a k
 
 Az URL-cím bekerül a **Közzétett URL-címek** listájába.
 
-## <a name="play-content-from-the-portal"></a>Tartalom lejátszása a portálról
+## Tartalom lejátszása a portálról
+<a id="play-content-from-the-portal" class="xliff"></a>
 Az Azure Portalon talál egy tartalomlejátszót, amellyel tesztelheti a videót.
 
 Kattintson a kívánt videóra, majd a **Lejátszás** gombra.
@@ -157,17 +168,14 @@ Vegye figyelembe a következőket:
 * Ellenőrizze, hogy közzétette-e a videót.
 * A **Media Player** az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, rákattintva másolja az URL-címet, és használjon másik lejátszót. Például az [Azure Media Services lejátszót](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
-## <a name="next-steps"></a>Következő lépések
+## Következő lépések
+<a id="next-steps" class="xliff"></a>
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Visszajelzés küldése
+## Visszajelzés küldése
+<a id="provide-feedback" class="xliff"></a>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
