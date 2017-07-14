@@ -1,96 +1,100 @@
-### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Open TCP ports in the Windows firewall for the default instance of the Database Engine
-1. Connect to the virtual machine with Remote Desktop. For detailed instructions on connecting to the VM, see [Open a SQL VM with Remote Desktop](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#open-the-vm-with-remote-desktop).
-2. Once logged in, at the Start screen, type **WF.msc**, and then hit ENTER.
+### A Windows-tűzfal TCP-portjainak megnyitása az Adatbázismotor alapértelmezett példányában
+<a id="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine" class="xliff"></a>
+1. Csatlakozzon a virtuális géphez a távoli asztalról. Részletes útmutatás a virtuális géphez való csatlakozásról: [SQL virtuális gép megnyitása a távoli asztalról](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#open-the-vm-with-remote-desktop).
+2. Miután bejelentkezett, a kezdőképernyőn írja be a **WF.msc** szöveget, majd nyomja le az ENTER billentyűt.
    
-    ![Start the Firewall Program](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
-3. In the **Windows Firewall with Advanced Security**, in the left pane, right-click **Inbound Rules**, and then click **New Rule** in the action pane.
+    ![A tűzfalprogram elindítása](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
+3. A **fokozott biztonságú Windows tűzfal** bal oldali ablaktábláján kattintson jobb gombbal a **Bejövő szabályok** elemre, majd a műveletpanelen az **Új szabály** lehetőségre.
    
-    ![New Rule](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
-4. In the **New Inbound Rule Wizard** dialog box, under **Rule Type**, select **Port**, and then click **Next**.
-5. In the **Protocol and Ports** dialog, use the default **TCP**. In the **Specific local ports** box, then type the port number of the instance of the Database Engine (**1433** for the default instance or your choice for the private port in the endpoint step).
+    ![Új szabály](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
+4. Az **Új bejövő szabály varázsló** párbeszédpanel **Szabálytípus** területén válassza a **Port** lehetőséget, és kattintson a **Tovább** gombra.
+5. A **Protokoll és portok** párbeszédpanelen használja az alapértelmezett **TCP** beállítást. Az **Adott helyi portok** mezőben írja be az Adatbázismotor példányának portszámát (**1433** az alapértelmezett példányhoz, vagy végpont lépésének választott magánhálózati portja).
    
-    ![TCP Port 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
-6. Click **Next**.
-7. In the **Action** dialog box, select **Allow the connection**, and then click **Next**.
+    ![1433-as TCP-port](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
+6. Kattintson a **Tovább** gombra.
+7. A **Művelet** párbeszédpanelen válassza a **Kapcsolat engedélyezése** lehetőséget, majd kattintson a **Tovább** gombra.
    
-    **Security Note:** Selecting **Allow the connection if it is secure** can provide additional security. Select this option if you want to configure additional security options in your environment.
+    **Biztonsági megjegyzés:** A **Csak akkor engedélyezze a kapcsolatot, ha biztonságos** beállítással fokozhatja a biztonságot. Ha a környezethez további biztonsági beállításokat szeretne megadni, válassza ezt a lehetőséget.
    
-    ![Allow Connections](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
-8. In the **Profile** dialog box, select **Public**, **Private**, and **Domain**. Then click **Next**.
+    ![Kapcsolatok engedélyezése](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
+8. A **Profil** párbeszédpanelen válassza a **Nyilvános**, **Privát** és a **Tartomány** lehetőséget. Ezután kattintson a **Next** (Tovább) gombra.
    
-    **Security Note:**  Selecting **Public** allows access over the internet. Whenever possible, select a more restrictive profile.
+    **Biztonsági megjegyzés:** A **Nyilvános** beállítással engedélyezi az internetelérést. Amikor csak lehetséges, válasszon egy szigorúbb profilt.
    
-    ![Public Profile](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
-9. In the **Name** dialog box, type a name and description for this rule, and then click **Finish**.
+    ![Nyilvános profil](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
+9. A **Név** párbeszédpanelen írjon be egy nevet és leírást a szabályhoz, majd kattintson a **Befejezés** lehetőségre.
    
-    ![Rule Name](./media/virtual-machines-sql-server-connection-steps/17Rule-Name.png)
+    ![Szabály neve](./media/virtual-machines-sql-server-connection-steps/17Rule-Name.png)
 
-Open additional ports for other components as needed. For more information, see [Configuring the Windows Firewall to Allow SQL Server Access](http://msdn.microsoft.com/library/cc646023.aspx).
+Szükség szerint nyisson meg további portokat a többi összetevőhöz. További információ: [A Windows Tűzfal konfigurálása SQL Server-hozzáféréshez](http://msdn.microsoft.com/library/cc646023.aspx).
 
-### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>Configure SQL Server to listen on the TCP protocol
-1. While connected to the virtual machine, on the Start page, type **SQL Server Configuration Manager** and hit ENTER.
+### Az SQL Server konfigurálása a TCP-protokoll figyeléséhez
+<a id="configure-sql-server-to-listen-on-the-tcp-protocol" class="xliff"></a>
+1. A virtuális géphez csatlakozva a kezdőlapon írja be az **SQL Server Konfigurációkezelő** kifejezést, és nyomja le az ENTER billentyűt.
    
-    ![Open SSCM](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
-2. In SQL Server Configuration Manager, in the console pane, expand **SQL Server Network Configuration**.
-3. In the console pane, click **Protocols for MSSQLSERVER** (he default instance name.) In the details pane, right-click **TCP** and click **Enable** if it is not already enabled.
+    ![Az SSCM megnyitása](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
+2. Az SQL Server Konfigurációkezelő konzolablakában bontsa ki az **SQL Server Network Configuration** elemet.
+3. A konzolablakban kattintson az **MSSQLSERVER protokolljai** (az alapértelmezett példánynév) elemre. A részleteket tartalmazó ablaktáblán kattintson a jobb gombbal a **TCP** elemre, majd az **Engedélyezés** lehetőségre, ha még nincs engedélyezve.
    
-    ![Enable TCP](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
-4. In the console pane, click **SQL Server Services**. In the details pane, right-click **SQL Server (*instance name*)** (the default instance is **SQL Server (MSSQLSERVER)**), and then click **Restart**, to stop and restart the instance of SQL Server.
+    ![A TCP engedélyezése](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
+4. A konzolablakban kattintson az **SQL Server Services** lehetőségre. Az SQL Server példányának leállításához és újraindításához a részleteket tartalmazó ablaktáblán kattintson a jobb gombbal az **SQL Server (*példánynév*)** (az alapértelmezett példány az **SQL Server (MSSQLSERVER)**) lehetőségre, majd az **Újraindítás** lehetőségre.
    
-    ![Restart Database Engine](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
-5. Close SQL Server Configuration Manager.
+    ![Az Adatbázismotor újraindítása](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
+5. Zárja be az SQL Server Konfigurációkezelőt.
 
-For more information about enabling protocols for the SQL Server Database Engine, see [Enable or Disable a Server Network Protocol](http://msdn.microsoft.com/library/ms191294.aspx).
+További információ az SQL Server Adatbázismotor protokolljainak engedélyezéséről: [Kiszolgálói hálózati protokoll engedélyezése vagy letiltása](http://msdn.microsoft.com/library/ms191294.aspx).
 
-### <a name="configure-sql-server-for-mixed-mode-authentication"></a>Configure SQL Server for mixed mode authentication
-The SQL Server Database Engine cannot use Windows Authentication without domain environment. To connect to the Database Engine from another computer, configure SQL Server for mixed mode authentication. Mixed mode authentication allows both SQL Server Authentication and Windows Authentication.
+### Az SQL Server konfigurálása vegyes módú hitelesítéshez
+<a id="configure-sql-server-for-mixed-mode-authentication" class="xliff"></a>
+Az SQL Server Adatbázismotor nem használhatja a Windows-hitelesítést egy tartománykörnyezet nélkül. Ha az Adatbázismotorhoz egy másik számítógépről szeretne csatlakozni, konfigurálja az SQL Servert vegyes módú hitelesítéshez. A vegyes módú hitelesítés az SQL Server-hitelesítést és a Windows-hitelesítést is lehetővé teszi.
 
 > [!NOTE]
-> Configuring mixed mode authentication might not be necessary if you have configured an Azure Virtual Network with a configured domain environment.
+> Előfordulhat, hogy a vegyes módú hitelesítés konfigurálása nem szükséges, ha az Azure Virtual Networköt egy már konfigurált tartománykörnyezettel konfigurálta.
 > 
 > 
 
-1. While connected to the virtual machine, on the Start page, type **SQL Server Management Studio** and click the selected icon.
+1. A virtuális géphez csatlakozva a kezdőlapon írja be az **SQL Server Management Studio** kifejezést, és kattintson a kijelölt ikonra.
    
-    The first time you open Management Studio it must create the users Management Studio environment. This may take a few moments.
-2. Management Studio presents the **Connect to Server** dialog box. In the **Server name** box, type the name of the virtual machine to connect to the Database Engine  with the Object Explorer (Instead of the virtual machine name you can also use **(local)** or a single period as the **Server name**). Select **Windows Authentication**, and leave ***your_VM_name*\your_local_administrator** in the **User name** box. Click **Connect**.
+    A Management Studio első megnyitásakor annak létre kell hoznia a felhasználó Management Studio-környezetét. Ez eltarthat néhány pillanatig.
+2. A Management Studio ezután megjeleníti a **Kapcsolódás a kiszolgálóhoz** párbeszédpanelt. A **Kiszolgálónév** mezőbe írja be a virtuális gép nevét, így az Object Explorerrel kapcsolódhat az Adatbázismotorhoz (A virtuális gép neve helyett a **(helyi)** kifejezést vagy egy pontot is megadhat mint **kiszolgálónév**). Válassza a **Windows-hitelesítés** lehetőséget, és írja a ***saját_virtuális gép_neve*\saját_helyi_rendszergazda** szöveget a **Felhasználónév** mezőbe. Kattintson a **Connect** (Csatlakozás) gombra.
    
-    ![Connect to Server](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
-3. In SQL Server Management Studio Object Explorer, right-click the name of the instance of SQL Server (the virtual machine name), and then click **Properties**.
+    ![Csatlakozás kiszolgálóhoz](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
+3. Az SQL Server Management Studio Object Explorer felületén kattintson jobb gombbal az SQL Server példányának nevére (a virtuális gép nevére), majd a **Tulajdonságok** lehetőségre.
    
-    ![Server Properties](./media/virtual-machines-sql-server-connection-steps/20Server-Properties.png)
-4. On the **Security** page, under **Server authentication**, select **SQL Server and Windows Authentication mode**, and then click **OK**.
+    ![Kiszolgáló tulajdonságai](./media/virtual-machines-sql-server-connection-steps/20Server-Properties.png)
+4. A **Biztonság** lap **Kiszolgálóhitelesítés** területén válassza az **SQL Server és Windows-hitelesítési mód** lehetőséget, majd kattintson az **OK** gombra.
    
-    ![Select Authentication Mode](./media/virtual-machines-sql-server-connection-steps/21Mixed-Mode.png)
-5. In the SQL Server Management Studio dialog box, click **OK** to acknowledge the requirement to restart SQL Server.
-6. In Object Explorer, right-click your server, and then click **Restart**. (If SQL Server Agent is running, it must also be restarted.)
+    ![A hitelesítési mód kiválasztása](./media/virtual-machines-sql-server-connection-steps/21Mixed-Mode.png)
+5. Az SQL Server Management Studio párbeszédpanelen kattintson az **OK** gombra az SQL Server újraindítását kérő üzenet elfogadásához.
+6. Az Object Explorerben kattintson a jobb gombbal a kiszolgálóra, majd az **Újraindítás** lehetőségre. (Ha az SQL Server Agent fut, azt is újra kell indítani.)
    
-    ![Restart](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
-7. In the SQL Server Management Studio dialog box, click **Yes** to agree that you want to restart SQL Server.
+    ![Újraindítás](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
+7. Az SQL Server Management Studio párbeszédpanelen kattintson az **Igen** lehetőségre az SQL Server újraindításának megerősítését kérő üzenet elfogadásához.
 
-### <a name="create-sql-server-authentication-logins"></a>Create SQL Server authentication logins
-To connect to the Database Engine from another computer, you must create at least one SQL Server authentication login.
+### SQL Server-hitelesítési bejelentkezés létrehozása
+<a id="create-sql-server-authentication-logins" class="xliff"></a>
+Ha az Adatbázismotorhoz egy másik számítógépről szeretne csatlakozni, létre kell hoznia legalább egy SQL Server hitelesítési bejelentkezést.
 
-1. In SQL Server Management Studio Object Explorer, expand the folder of the server instance in which you want to create the new login.
-2. Right-click the **Security** folder, point to **New**, and select **Login...**.
+1. Az SQL Server Management Studio Object Explorer felületén bontsa ki azon kiszolgáló példányának mappáját, amelyben létre szeretné hozni az új bejelentkezést.
+2. Kattintson a jobb gombbal a **Biztonság** mappára, mutasson az **Új** lehetőségre, és válassza a **Bejelentkezés...**  lehetőséget.
    
-    ![New Login](./media/virtual-machines-sql-server-connection-steps/23New-Login.png)
-3. In the **Login - New** dialog box, on the **General** page, enter the name of the new user in the **Login name** box.
-4. Select **SQL Server authentication**.
-5. In the **Password** box, enter a password for the new user. Enter that password again into the **Confirm Password** box.
-6. Select the password enforcement options required (**Enforce password policy**, **Enforce password expiration**, and **User must change password at next login**). If you are using this login for yourself, you do not need to require a password change at the next login.
-7. From the **Default database** list, select a default database for the login. **master** is the default for this option. If you have not yet created a user database, leave this set to **master**.
+    ![Új bejelentkezés](./media/virtual-machines-sql-server-connection-steps/23New-Login.png)
+3. A **Bejelentkezés – Új** párbeszédpanel **Általános** lapján adja meg az új felhasználó nevét a **Bejelentkezési név** mezőben.
+4. Kattintson az **SQL Server-hitelesítés** lehetőségre.
+5. A **Jelszó** mezőbe írja be az új felhasználó jelszavát. Adja meg újra a jelszót a **Jelszó megerősítése** mezőben.
+6. Válassza ki a szükséges jelszókényszerítési beállításokat (**Jelszóházirend kényszerítése**, **Jelszóelévülés kényszerítése** és **A felhasználónak módosítania kell a jelszavát a következő bejelentkezéskor**). Ha ezt a bejelentkezést saját célra használja, nem szükséges jelszómódosítást kérnie a következő bejelentkezéshez.
+7. Az **Alapértelmezett adatbázis** listából válasszon ki egy alapértelmezett adatbázist a bejelentkezéshez. Az alapértelmezett beállítás a **master**. Ha még nem hozott létre egy felhasználói adatbázist, hagyja meg a **master** beállítást.
    
-    ![Login Properties](./media/virtual-machines-sql-server-connection-steps/24Test-Login.png)
-8. If this is the first login you are creating, you may want to designate this login as a SQL Server administrator. If so, on the **Server Roles** page, check **sysadmin**.
+    ![Bejelentkezési tulajdonságok](./media/virtual-machines-sql-server-connection-steps/24Test-Login.png)
+8. Ha ez az első létrehozott bejelentkezése, célszerű lehet SQL Server-rendszergazdaként megadnia a bejelentkezést. Ebben az esetben a **Kiszolgálói szerepkörök** lapon jelölje be a **sysadmin** jelölőnégyzetet.
    
    > [!NOTE]
-   > Members of the sysadmin fixed server role have complete control of the Database Engine. You should carefully restrict membership in this role.
+   > A sysadmin rögzített kiszolgálói szerepkör tagjai teljes vezérlést kapnak az Adatbázismotor felett. A szerepkör tagságát így gondosan határozza meg.
    > 
    > 
    
    ![sysadmin](./media/virtual-machines-sql-server-connection-steps/25sysadmin.png)
-9. Click OK.
+9. Kattintson az OK gombra.
 
-For more information about SQL Server logins, see [Create a Login](http://msdn.microsoft.com/library/aa337562.aspx).
+További információ az SQL Server-bejelentkezésekről: [Bejelentkezés létrehozása](http://msdn.microsoft.com/library/aa337562.aspx).
 

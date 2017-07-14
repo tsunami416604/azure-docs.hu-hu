@@ -1,23 +1,25 @@
-### <a name="determine-the-dns-name-of-the-virtual-machine"></a>Determine the DNS name of the virtual machine
-To connect to the SQL Server Database Engine from another computer, you must know the Domain Name System (DNS) name of the virtual machine. (This is the name the internet uses to identify the virtual machine. You can use the IP address, but the IP address might change when Azure moves resources for redundancy or maintenance. The DNS name will be stable because it can be redirected to a new IP address.)  
+### A virtuális gép DNS-nevének meghatározása
+<a id="determine-the-dns-name-of-the-virtual-machine" class="xliff"></a>
+Ha egy másik számítógépről szeretne az SQL Server Adatbázismotorhoz csatlakozni, ismernie kell a virtuális gép Tartománynév-szolgáltatójának (DNS) nevét. (Az internet ezzel a névvel azonosítja a virtuális gépet. Az IP-címet is használhatja, azonban az megváltozhat, ha az Azure erőforrásokat helyez át redundancia vagy karbantartás miatt. A DNS-név mindig stabil, mivel átirányítható egy új IP-címre.)  
 
-1. In the Azure Portal (or from the previous step), select **Virtual machines (classic)**.
-2. Select your SQL VM.
-3. On the **Virtual machine** blade, copy the **DNS name** for the virtual machine.
+1. Az Azure Portalon (vagy az előző lépésben) válassza a **Virtuális gépek (klasszikus)** lehetőséget.
+2. Válassza ki az SQL virtuális gépét.
+3. A **Virtuális gép** panelen másolja ki a virtuális gép **DNS-nevét**.
    
-    ![DNS name](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
+    ![DNS-név](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
 
-### <a name="connect-to-the-database-engine-from-another-computer"></a>Connect to the Database Engine from another computer
-1. On a computer connected to the internet, open SQL Server Management Studio.
-2. In the **Connect to Server** or **Connect to Database Engine** dialog box, in the **Server name** box, enter the DNS name of the virtual machine (determined in the previous task) and a public endpoint port number in the format of *DNSName,portnumber* such as **mysqlvm.cloudapp.net,57500**.
+### Csatlakozás az adatbázismotorhoz egy másik számítógépről
+<a id="connect-to-the-database-engine-from-another-computer" class="xliff"></a>
+1. Nyissa meg az SQL Server Management Studio alkalmazást egy internethez csatlakozó számítógépen.
+2. A **Kapcsolódás a kiszolgálóhoz** vagy a **Kapcsolódás az Adatbázismotorhoz** párbeszédpanel **Kiszolgálónév** mezőjében adja meg a virtuális gép DNS-nevét (amelyet az előző feladatban határozott meg), valamint egy nyilvános végponthoz tartozó portszámot az alábbi formátumban: *DNSNév, portszám*, például **mysqlvm.cloudapp.net,57500**.
    
-    ![Connect using SSMS](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
+    ![Csatlakozás az SSMS használatával](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
    
-    If you don't remember the public endpoint port number you previously created, you can find it in the **Endpoints** area of the **Virtual machine** blade.
+    Ha nem emlékszik a korábban létrehozott nyilvános végpont portszámára, azt megtalálhatja a **Virtuális gép** panel **Végpontok** területén.
    
-    ![Public Port](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
-3. In the **Authentication** box, select **SQL Server Authentication**.
-4. In the **Login** box, type the name of a login that you created in an earlier task.
-5. In the **Password** box, type the password of the login that you create in an earlier task.
-6. Click **Connect**.
+    ![Nyilvános port](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
+3. A **Hitelesítés** mezőben válassza az **SQL Server-hitelesítés** lehetőséget.
+4. A **Bejelentkezés** mezőbe írja be egy korábbi feladatban létrehozott bejelentkezés nevét.
+5. A **Jelszó** mezőbe írja be a korábbi feladatban létrehozott bejelentkezés jelszavát.
+6. Kattintson a **Connect** (Csatlakozás) gombra.
 
