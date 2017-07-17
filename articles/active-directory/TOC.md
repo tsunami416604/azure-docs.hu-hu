@@ -199,10 +199,6 @@
 
 ### [Kockázati események](active-directory-reporting-risk-events.md)
 
-### [Megőrzés](active-directory-reporting-retention.md)
-
-### [Késések](active-directory-reporting-latencies-azure-portal.md)
-
 ### [Gyakori kérdések](active-directory-reporting-faq.md)
 
 ### Feladatok
@@ -212,7 +208,15 @@
 #### [Tevékenységjelentések keresése](active-directory-reporting-migration.md)
 
 #### [Az Azure Active Directory Power BI-tartalomcsomag használata](active-directory-reporting-power-bi-content-pack-how-to.md)
-  
+
+### Referencia
+
+#### [Megőrzés](active-directory-reporting-retention.md)
+
+#### [Késések](active-directory-reporting-latencies-azure-portal.md)
+
+#### [Bejelentkezési tevékenységek hibakódjai](active-directory-reporting-activity-sign-ins-errors.md)
+
 ### Hibaelhárítás
 
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
@@ -416,6 +420,8 @@
 ##### [Távoli asztal](application-proxy-publish-remote-desktop.md)
 
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+
+##### [Microsoft Teams](application-proxy-teams.md)
 
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
 
