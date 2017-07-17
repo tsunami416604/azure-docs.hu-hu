@@ -1,5 +1,4 @@
 ---
-
 title: "Az Azure Active Directory Power BI-tartalomcsomag használata | Microsoft Docs"
 description: "Útmutató az Azure Active Directory Power BI-tartalomcsomag használatához | Microsoft Docs"
 services: active-directory
@@ -11,27 +10,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/21/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
 ms.openlocfilehash: ab95f61e2d88f82bf2b24aea786c7dbadfb9c0fe
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/22/2017
 
-
 ---
-<a id="how-to-use-the-azure-active-directory-power-bi-content-pack" class="xliff"></a>
-
 # Az Azure Active Directory Power BI-tartalomcsomag használata
+<a id="how-to-use-the-azure-active-directory-power-bi-content-pack" class="xliff"></a>
 
 Rendszergazdaként elengedhetetlen, hogy tudja, hogyan használják felhasználói az Azure Active Directory funkcióit. Ez lehetővé teszi, hogy úgy tervezze meg az informatikai infrastruktúráját és kommunikációját, hogy növelni tudja annak használatát, és a lehető legtöbbet hozza ki az AAD funkcióiból. Az Azure Active Directory lehetővé teszi adatai részletesebb elemzését, így átláthatja, hogyan használhatja ezeket az adatokat részletesebb betekintések szerzéséhez abba, mi történik az Azure Active Directoryjukban az Ön számára legfontosabb képességek tekintetében.  Az Azure Active Directory API-jainak a Power BI-ba integrálásával könnyedén letöltheti az előre összeállított tartalomcsomagokat, valamint betekintést nyerhet az Azure Active Directoryn belüli tevékenységekbe a Power BI által biztosított részletes megjelenítések használatával. Létrehozhatja saját irányítópultját, és könnyedén megoszthatja szervezete bármelyik tagjával. 
 
 Ez a témakör lépésről lépésre bemutatja, hogyan telepítheti és használhatja környezetében a tartalomcsomagot.
 
-<a id="installation" class="xliff"></a>
-
-## Telepítés  
+## Telepítés
+<a id="installation" class="xliff"></a>  
 
 **A Power BI-tartalomcsomag telepítése:**
 
@@ -72,15 +69,13 @@ Ez a témakör lépésről lépésre bemutatja, hogyan telepítheti és használ
  
     ![Azure Active Directory Power BI-tartalomcsomag](./media/active-directory-reporting-power-bi-content-pack-how-to/08.png) 
 
-<a id="what-can-i-do-with-this-content-pack" class="xliff"></a>
-
 ## Mire használhatom ezt a tartalomcsomagot?
+<a id="what-can-i-do-with-this-content-pack" class="xliff"></a>
 
 Mielőtt mélyebben beleásnánk magunkat, mi mindenre használhatja ezt a tartalomcsomagot, tekintse meg ezt a rövid áttekintést a tartalomcsomagban található különböző jelentésekről. **Az elmúlt 30 nap** jelentésadatai érhetők el.
 
-<a id="reports-included-in-this-version-of-azure-active-directory-logs-content-pack" class="xliff"></a>
-
 ### Az Azure Active Directory-naplók tartalomcsomagjának jelen verziójában található jelentések
+<a id="reports-included-in-this-version-of-azure-active-directory-logs-content-pack" class="xliff"></a>
 
 **Alkalmazáshasználat és -trendek jelentés**: Többet tudhat meg a szervezetében használt alkalmazásokról: melyiket használják a legtöbbet és mikor. Ebből a jelentésből megtudhatja, hogy a szervezetében a közelmúltban kiadott alkalmazásokat hogyan használják, vagy hogy mely alkalmazások népszerűek. Így javíthatja a kihasználtságot, ha azt tapasztalja, hogy az alkalmazást nem használják.
 
@@ -105,9 +100,8 @@ Ebből a jelentésből megismerheti a szervezetében használt különböző esz
 
 **SSPR tölcsér**: Megismerheti a szervezete jelszó-visszaállítási folyamatait. Betekintést nyerhet abba, hány új jelszót igényeltek az SSPR-eszközből, és hány volt ezek közül sikeres. Többet tudhat meg az SSPR tölcsérrel végzett sikertelen jelszó-visszaállításokról, és megvizsgálhatja, mi lehetett a sikertelenség oka. Ez jelentés részletesebb betekintést biztosít az SSPR eszköz szervezeten belüli használatába, és ezáltal segít a helyes döntések meghozatalában.
 
-<a id="customizing-azure-ad-activity-content-pack" class="xliff"></a>
-
 ## Az Azure AD-tevékenység tartalomcsomag személyre szabása
+<a id="customizing-azure-ad-activity-content-pack" class="xliff"></a>
 
 **Megjelenítés módosítása**: Megváltoztathatja egy jelentés megjelenítését a **Jelentés szerkesztése** elemre kattintással és a kívánt megjelenítés kiválasztásával.
  
@@ -135,17 +129,15 @@ Ebből a jelentésből megismerheti a szervezetében használt különböző esz
 
 
 
-<a id="scheduling-a-daily-refresh-of-your-power-bi-report" class="xliff"></a>
-
 ## A Power BI-jelentés napi frissítésének ütemezése
+<a id="scheduling-a-daily-refresh-of-your-power-bi-report" class="xliff"></a>
 
 A Power BI-jelentés napi frissítésének ütemezéséhez lépjen az **Adatkészletek > Beállítások > Frissítés ütemezése** részbe, és állítsa be az alábbiaknak megfelelően.
  
 ![Azure Active Directory Power BI-tartalomcsomag](./media/active-directory-reporting-power-bi-content-pack-how-to/15.png) 
 
-<a id="updating-to-newer-version-of-content-pack" class="xliff"></a>
-
 ## Frissítés a tartalomcsomag újabb verziójára
+<a id="updating-to-newer-version-of-content-pack" class="xliff"></a>
 
 A tartalomcsomag frissítése új verzió beszerzéséhez:
 
@@ -157,9 +149,8 @@ A tartalomcsomag frissítése új verzió beszerzéséhez:
 
 Amint a tartalomcsomag új verziója működőképes, a korábbi tartalomcsomag alapjául szolgáló jelentések és a tartalomcsomaghoz tartozó adatkészletek törlésével eltávolíthatja a régi verziót, ha szükséges.
 
-<a id="still-having-issues" class="xliff"></a>
-
-## Továbbra is problémákat tapasztal? 
+## Továbbra is problémákat tapasztal?
+<a id="still-having-issues" class="xliff"></a> 
 
 Tekintse meg a [hibaelhárítási útmutatót](active-directory-reporting-troubleshoot-content-pack.md). A Power BI-jal kapcsolatos általános útmutatásért tekintse meg ezeket a [súgótémaköröket](https://powerbi.microsoft.com/en-us/documentation/powerbi-service-get-started/).
  

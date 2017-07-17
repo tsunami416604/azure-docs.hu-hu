@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 07/17/2017
 ms.author: davidmu
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: cda53c43d4524ddcc8139f60f6b605a1f26c2658
+ms.contentlocale: hu-hu
 ms.lasthandoff: 04/27/2017
-
 
 ---
 
-# <a name="virtual-networks-and-windows-virtual-machines-in-azure"></a>Virtuális hálózatok és az Azure Windows rendszerű virtuális gépei 
+# Virtuális hálózatok és az Azure Windows rendszerű virtuális gépei
+<a id="virtual-networks-and-windows-virtual-machines-in-azure" class="xliff"></a> 
 
 Azure virtuális gép létrehozásakor létre kell hoznia egy [virtuális hálózatot](../../virtual-network/virtual-networks-overview.md) (VNet), vagy egy meglévő VNetet kell használnia. Arról is döntenie kell, hogy a virtuális gépek milyen módon legyenek elérhetők a VNeten. Mindenképpen [készítsen tervet az erőforrások létrehozása előtt](../../virtual-network/virtual-network-vnet-plan-design-arm.md), továbbá győződjön meg arról, hogy tisztában van a [hálózati erőforrások korlátaival](../../azure-subscription-service-limits.md#networking-limits).
 
@@ -44,7 +45,8 @@ Ezen alapvető erőforrások mellett az alábbi választható erőforrások hasz
 - Network security groups (Hálózati biztonsági csoportok)
 - Terheléselosztók 
 
-## <a name="network-interfaces"></a>Hálózati illesztők
+## Hálózati illesztők
+<a id="network-interfaces" class="xliff"></a>
 
 A [hálózati adapter](../../virtual-network/virtual-network-network-interface.md) a virtuális gép és a virtuális hálózat (VNet) közötti kapcsolatot biztosítja. Egy virtuális gépnek legalább egy hálózati adapterrel kell rendelkeznie, de a létrehozott virtuális gép méretétől függően több ilyennel is rendelkezhet. Az [Azure-ban található virtuális gépek méreteivel](sizes.md) foglalkozó szakaszból megtudhatja, hogy az egyes virtuálisgép-méretek esetében hány hálózati adapter támogatott. 
 
@@ -63,7 +65,8 @@ Ez a táblázat egy hálózati adapter létrehozásának lehetséges módszereit
 | [Azure CLI](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md) | A korábban létrehozott nyilvános IP-cím azonosítójának megadásához használja az [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) parancsot a **--public-ip-address** paraméterrel. |
 | [Sablon](../../virtual-network/virtual-network-deploy-multinic-arm-template.md) | Hálózati adapter sablon használatával történő üzembe helyezéséhez segítségképp használja a [nyilvános IP-címmel rendelkező virtuális hálózatban található hálózati adapter](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) sablonját. |
 
-## <a name="ip-addresses"></a>IP-címek 
+## IP-címek
+<a id="ip-addresses" class="xliff"></a> 
 
 Az Azure-ban az alábbi [IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)típusokat rendelheti egy hálózati adapterhez:
 
@@ -87,7 +90,8 @@ Ez a táblázat egy IP-cím létrehozásának lehetséges módszereit sorolja fe
 
 A létrehozást követően a nyilvános IP-címet társíthatja egy virtuális géppel, ha hozzárendeli egy hálózati adapterhez.
 
-## <a name="virtual-network-and-subnets"></a>Virtuális hálózat és alhálózatok
+## Virtuális hálózat és alhálózatok
+<a id="virtual-network-and-subnets" class="xliff"></a>
 
 Az alhálózat egy IP-címtartományt jelent a VNeten belül. A VNetet a rendszerezés és a biztonság érdekében több alhálózatra lehet osztani. Egy virtuális gép minden hálózati adaptere egy VNet egyetlen alhálózatához van csatlakoztatva. Egy VNeten belül az (ugyanazon vagy különböző) alhálózatokhoz csatlakoztatott hálózati adapterek további konfigurálás nélkül is tudnak egymással kommunikálni.
 
@@ -97,7 +101,7 @@ Ha olyan szervezetben dolgozik, amelyben valaki más felelős a belső hálózat
 
 Alapértelmezés szerint nincs biztonsági határ az alhálózatok között, hogy az ezekben lévő virtuális gépek kommunikálhassanak egymással. Beállíthat viszont hálózati biztonsági csoportokat (NSG), amelyek segítségével szabályozhatja az alhálózatokról és virtuális gépekről érkező, illetve az azokra irányuló forgalmat. 
 
-Ez a táblázat egy VNet és alhálózatok létrehozásának lehetséges módszereit sorolja fel.    
+Ez a táblázat egy VNet és alhálózatok létrehozásának lehetséges módszereit sorolja fel. 
 
 | Módszer | Leírás |
 | ------ | ----------- |
@@ -106,7 +110,8 @@ Ez a táblázat egy VNet és alhálózatok létrehozásának lehetséges módsze
 | [Azure CLI](../../virtual-network/virtual-networks-create-vnet-arm-cli.md) | Az alhálózat és a VNet egyidejűleg jön létre. Adjon egy **--subnet-name** paramétert az alhálózat nevével rendelkező [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) parancshoz. |
 | [Sablon](../../virtual-network/virtual-networks-create-vnet-arm-template-click.md) | Egy VNet és az alhálózatok létrehozásának legegyszerűbb módja egy meglévő sablon letöltése (pl.: [virtuális hálózat két alhálózattal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)), és annak módosítása az igényeknek megfelelően. |
 
-## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+## Network security groups (Hálózati biztonsági csoportok)
+<a id="network-security-groups" class="xliff"></a>
 
 A [hálózati biztonsági csoport (NSG)](../../virtual-network/virtual-networks-nsg.md) tartalmazza a hozzáférés-vezérlési (ACL) szabályok listáját, amelyek megszabják, hogy milyen típusú hálózati forgalom juthat el az alhálózatokhoz, a hálózati adapterekhez vagy mindkettőhöz. Az NSG-ket alhálózatokhoz vagy alhálózathoz csatlakoztatott hálózati adapterekhez lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuális gépre. Emellett egy adott hálózati adapterre irányuló forgalmat korlátozni is lehet azáltal, hogy egy NSG-t közvetlenül a hálózati adapterhez rendelnek.
 
@@ -127,7 +132,8 @@ Ez a táblázat egy hálózati biztonsági csoport létrehozásának lehetséges
 | [Azure CLI](../../virtual-network/virtual-networks-create-nsg-arm-cli.md) | Az [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) parancs használatával hozhatja létre először az NSG-t. Az [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) parancs használatával adhat szabályokat az NSG-hez. Az [az network vnet subnet update](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet#update) parancs használatával adhatja az NSG-t az alhálózathoz. |
 | [Sablon](../../virtual-network/virtual-networks-create-nsg-arm-template.md) | Hálózati biztonsági csoport sablon használatával történő üzembe helyezéséhez segítségképp használja a [hálózati biztonsági csoport létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) sablont. |
 
-## <a name="load-balancers"></a>Terheléselosztók
+## Terheléselosztók
+<a id="load-balancers" class="xliff"></a>
 
 Az [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. A Load Balancer konfigurálható a virtuális gépekre [beérkező internetes forgalom](../../load-balancer/load-balancer-internet-overview.md) vagy a [virtuális gépek közötti VNet-forgalom elosztására](../../load-balancer/load-balancer-internal-overview.md). A terheléselosztó a helyszíni számítógépek és virtuális gépek közötti forgalom elosztására is képes egy létesítmények közötti hálózatban, illetve továbbítani tudja a külső forgalmat egy adott virtuális gépre.
 
@@ -159,7 +165,8 @@ Ez a táblázat egy belső terheléselosztó létrehozásának lehetséges móds
 | [Azure CLI](../../load-balancer/load-balancer-get-started-ilb-arm-cli.md) | Az első terheléselosztó konfigurációjának létrehozásához használja az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) parancsot. A magánhálózati IP-cím meghatározásához használja az [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#create) parancsot a **--private-ip-address** paraméterrel. A háttércímkészlet konfigurációjának hozzáadásához használja az [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool#create) parancsot. NAT-szabályok hozzáadásához használja az [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) parancsot. A terheléselosztó szabályainak hozzáadásához használja az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) parancsot. A mintavételezők hozzáadásához használja az [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) parancsot.|
 | [Sablon](../../load-balancer/load-balancer-get-started-ilb-arm-template.md) | Terheléselosztó sablon használatával történő üzembe helyezéséhez segítségképp használja a [2 virtuális gép, egy terheléselosztó és NAT-szabályok a terheléselosztón történő konfigurálását](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) biztosító sablont. |
 
-## <a name="vms"></a>Virtuális gépek
+## Virtuális gépek
+<a id="vms" class="xliff"></a>
 
 A virtuális gépeket létre lehet hozni ugyanabban a VNetben, és magánhálózati IP-címek használatával képesek csatlakozni egymáshoz. Akkor is képesek csatlakozni, ha külön alhálózatokon vannak – anélkül, hogy átjárót kellene konfigurálni vagy nyilvános IP-címeket kellene használni. Ha virtuális gépeket szeretne helyezni egy VNetbe, először hozza létre a VNetet, majd a virtuális gép létrehozásakor rendelje azt a VNethez és az alhálózathoz. A virtuális gépek az üzembe helyezés vagy az indítás során kérik le a hálózati beállításaikat.  
 
@@ -175,7 +182,8 @@ Ez a táblázat virtuális gépek VNetben való létrehozásának lehetséges m�
 | [Azure PowerShell](../virtual-machines-windows-ps-create.md) | Az [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) parancsot alkalmazza a korábban létrehozott hálózati adapter a virtuális gép konfigurációjához történő hozzáadásához. |
 | [Sablon](ps-template.md) | Virtuális gép sablon használatával történő üzembe helyezéséhez segítségképp használja a [windowsos virtuális gépek leegyszerűsített üzembe helyezésére](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) szolgáló sablont. |
 
-## <a name="next-steps"></a>Következő lépések
+## Következő lépések
+<a id="next-steps" class="xliff"></a>
 
 - Ismerje meg a [felhasználó által megadott útvonalak és az IP-továbbítás](../../virtual-network/virtual-networks-udr-overview.md) konfigurálásának módját. 
 - Ismerje meg a [virtuális hálózatok közötti kapcsolatok](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) konfigurálásának módját.

@@ -13,7 +13,7 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 07/17/2017
 ms.author: davidmu
 ms.custom: mvc
 ms.translationtype: Human Translation
@@ -23,9 +23,9 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 05/31/2017
 
 ---
+# Windows rendszerű virtuális gépek áttekintése az Azure-ban
 <a id="overview-of-windows-virtual-machines-in-azure" class="xliff"></a>
 
-# Windows rendszerű virtuális gépek áttekintése az Azure-ban
 Az Azure Virtual Machines (VM) az Azure által kínált számos különböző típusú, [igény szerinti, méretezhető számítási erőforrás](../../app-service-web/choose-web-site-cloud-service-vm.md) közé tartozik. Virtuális gépet általában akkor érdemes választani, ha a számítási környezet átfogóbb vezérlésére van szüksége annál, amelyet az egyéb lehetőségek kínálnak. Ez a cikk bemutatja, hogy mit kell szem előtt tartania egy virtuális gép létrehozása előtt, valamint hogy hogyan hozhatja létre és kezelheti azt.
 
 Az Azure VM a virtualizálás rugalmasságát biztosítja anélkül, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. A virtuális gép karbantartásához azonban így is szükséges elvégeznie néhány feladatot, például a virtuális gépen futó szoftver konfigurálását, javítását és telepítését.
@@ -38,9 +38,8 @@ Az Azure virtuális gépek különféle módon használhatóak. Néhány példa:
 
 Az alkalmazás által használt virtuális gépek száma az Ön igényei szerint skálázható.
 
-<a id="what-do-i-need-to-think-about-before-creating-a-vm" class="xliff"></a>
-
 ## Mit kell átgondolnom egy virtuális gép létrehozása előtt?
+<a id="what-do-i-need-to-think-about-before-creating-a-vm" class="xliff"></a>
 Az Azure-ban futó alkalmazás-infrastruktúrák kiépítésekor mindig számos [kialakítási szempontot](infrastructure-virtual-machine-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kell figyelembe venni. A kezdés előtt a virtuális gépek következő tulajdonságait fontos átgondolni:
 
 * Az alkalmazás erőforrásainak nevei
@@ -51,16 +50,14 @@ Az Azure-ban futó alkalmazás-infrastruktúrák kiépítésekor mindig számos 
 * A virtuális gép indítás utáni konfigurációja
 * A virtuális gép által igényelt kapcsolódó erőforrások
 
-<a id="naming" class="xliff"></a>
-
 ### Elnevezés
+<a id="naming" class="xliff"></a>
 A virtuális gépeknek van egy hozzárendelt [nevük](infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), valamint egy, az operációs rendszer részeként konfigurálható számítógépnevük. A virtuális gépek neve legfeljebb 15 karakter hosszú lehet.
 
 Ha az operációs rendszert tartalmazó lemezt az Azure használatával hozza létre, akkor a számítógépnév és a virtuális gép neve ugyanaz. Ha egy korábban már konfigurált operációs rendszert tartalmazó [saját rendszerképet tölt fel és használ](upload-generalized-managed.md) egy virtuális gép létrehozásához, akkor a nevek különbözőek lehetnek. Javasoljuk, hogy a saját rendszerkép feltöltésekor állítsa be, hogy az operációs rendszerben megadott számítógépnév és a virtuális gép neve ugyanaz legyen.
 
-<a id="locations" class="xliff"></a>
-
 ### Helyek
+<a id="locations" class="xliff"></a>
 Az Azure-ban létrehozott minden erőforrás világszerte több [földrajzi régió](https://azure.microsoft.com/regions/) között oszlik meg. A virtuális gépek létrehozásakor a régiót általában **helynek** nevezik. A virtuális gépek esetében a hely adja meg, hogy a virtuális merevlemezek hol tárolódnak.
 
 Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olvasható néhány módszer.
@@ -71,21 +68,18 @@ Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olva
 | Azure PowerShell |Használja a [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) parancsot. |
 | REST API |Használja a [Helyek listázása](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) műveletet. |
 
-<a id="vm-size" class="xliff"></a>
-
 ### Virtuális gép mérete
+<a id="vm-size" class="xliff"></a>
 A használt virtuális gép [mérete](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a futtatni kívánt számítási feladatok mennyiségétől függ. A választott méret határoz meg olyan tényezőket, mint a feldolgozókapacitás, a memória és a tárolókapacitás. Az Azure számos különböző méretet kínál különféle felhasználási módokhoz.
 
 Az Azure [óradíjas rendszerben](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) számláz, a virtuális gép mérete és az operációs rendszer alapján. Nem egész órák esetében az Azure csak a használt perceket számlázza. A tárhely árazása és felszámítása külön történik.
 
-<a id="vm-limits" class="xliff"></a>
-
 ### A virtuális gépekre korlátai
+<a id="vm-limits" class="xliff"></a>
 Minden előfizetésre alapértelmezett [kvótakorlátozások](../../azure-subscription-service-limits.md) vonatkoznak, amelyek akadályt jelenthetnek, ha a projektjéhez nagy számú virtuális gépet szeretne üzembe helyezni. A jelenlegi határérték minden előfizetés esetében régiónként 20 virtuális gép. A határértékek megemelhetők egy emelést kérvényező támogatási jegy benyújtásával.
 
-<a id="operating-system-disks-and-images" class="xliff"></a>
-
 ### Operációsrendszer-lemezek és -rendszerképek
+<a id="operating-system-disks-and-images" class="xliff"></a>
 A virtuális gépek [virtuális merevlemezeken (VHD-k)](../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tárolják az operációs rendszereket és az adatokat. A VHD-ken találhatók az operációs rendszer telepítéséhez kiválasztható rendszerképek is. 
 
 Az Azure számos, a [piactéren elérhető rendszerképet](https://azure.microsoft.com/marketplace/virtual-machines/) kínál használatra, amelyek a Windows Server operációs rendszer különböző verzióit és típusait tartalmazzák. A piactérről származó rendszerképek azonosítása a rendszerkép közzétevője, ajánlat, termékváltozat és verzió alapján lehetséges (a verzió általában mint „legfrissebb” van megadva). 
@@ -100,9 +94,8 @@ Az alábbi tábla bemutat néhány módszert, amelyekkel egy rendszerképről t�
 
 Lehetősége van egy [saját rendszerképek feltöltésére és használatára](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account) is, ebben az esetben a közzétevő neve, az ajánlat és a termékváltozat adatok nem használatosak.
 
-<a id="extensions" class="xliff"></a>
-
 ### Bővítmények
+<a id="extensions" class="xliff"></a>
 A virtuális gépek [bővítményei](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) további hozzáadott képességekkel ruházzák fel a virtuális gépeket az üzembe helyezést követő konfigurálás és automatizált feladatok útján.
 
 A bővítményekkel a következő gyakori feladatok végezhetők el:
@@ -111,9 +104,8 @@ A bővítményekkel a következő gyakori feladatok végezhetők el:
 * **Konfigurációk üzembe helyezése és kezelése** – A [PowerShell Célállapot konfigurálása (DSC) bővítmény](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) segítségével beállíthatja egy virtuális gépen a DSC-t a konfigurációk és környezetek kezeléséhez.
 * **Diagnosztikai adatok gyűjtése** – Az [Azure Diagnostics bővítményével](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a virtuális gép diagnosztikai adatok gyűjtésére konfigurálható, amelyek felhasználhatók az alkalmazás állapotának figyelésére.
 
-<a id="related-resources" class="xliff"></a>
-
 ### Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
+<a id="related-resources" class="xliff"></a>
 Az alábbi táblázat a virtuális gép által használt erőforrásokat tartalmazza, amelyeknek létezniük kell a virtuális gép létrehozásakor, vagy akkor kell őket létrehozni.
 
 | Erőforrás | Kötelező | Leírás |
@@ -125,9 +117,8 @@ Az alábbi táblázat a virtuális gép által használt erőforrásokat tartalm
 | [Hálózati illesztő](../../virtual-network/virtual-network-network-interface.md) |Igen |A virtuális gépnek szüksége van a hálózati illesztőre a hálózattal való kommunikációhoz. |
 | [Adatlemezek](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nem |A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak. |
 
-<a id="how-do-i-create-my-first-vm" class="xliff"></a>
-
 ## Hogyan hozhatom létre az első virtuális gépemet?
+<a id="how-do-i-create-my-first-vm" class="xliff"></a>
 A virtuális gépek létrehozásakor számos választási lehetőség áll rendelkezésre. A megfelelő választás az Ön környezetétől függ. 
 
 Az alábbi táblázat információkat nyújt a virtuális gépek létrehozásának első lépéseivel kapcsolatban.
@@ -142,14 +133,12 @@ Az alábbi táblázat információkat nyújt a virtuális gépek létrehozásán
 
 Reménykedhet, hogy sosem következik be, de várhatóan időnként elromlik valami. Ha ilyen helyzet áll elő, tekintse át [A Resource Manager üzembe helyezési hibáinak elhárítása egy Windows rendszerű virtuális gép létrehozásakor az Azure-ban](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) témakört.
 
-<a id="how-do-i-manage-the-vm-that-i-created" class="xliff"></a>
-
 ## Hogyan kezelhetem a létrehozott virtuális gépet?
+<a id="how-do-i-manage-the-vm-that-i-created" class="xliff"></a>
 A virtuális gépek felügyelhetők egy böngészőalapú portállal, parancsfájlkezelést támogató parancssori eszközökkel, vagy közvetlenül az API-kon keresztül. A tipikus kezelési feladatok közé tartozik a virtuális gépek adatainak lekérése, a virtuális gépekre való bejelentkezés, a rendelkezésre állás kezelése és a biztonsági mentések készítése.
 
-<a id="get-information-about-a-vm" class="xliff"></a>
-
 ### Virtuális gép adatainak lekérése
+<a id="get-information-about-a-vm" class="xliff"></a>
 Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olvasható néhány módszer.
 
 | Módszer | Leírás |
@@ -159,26 +148,22 @@ Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olva
 | REST API |Használja a [Virtuális gép adatainak lekérése](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) műveletet egy virtuális gép adatainak lekéréséhez. |
 | Ügyfél-SDK-k |Információk a virtuális gépek C# használatával való kezeléséről: [Microsoft Azure virtuális gépek kezelése az Azure Resource Manager és a C# használatával](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
 
-<a id="log-on-to-the-vm" class="xliff"></a>
-
 ### Bejelentkezés a virtuális gépre
+<a id="log-on-to-the-vm" class="xliff"></a>
 Használja az Azure Portal Csatlakozás gombját [egy távoli asztali (RDP) munkamenet elindításához](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). A távoli kapcsolatok használatának megkísérlésekor időnként hibák történhetnek. Ha ez a helyzet áll elő, tekintse át a súgó információit a [Távoli asztali kapcsolatok hibaelhárítása Windows rendszert futtató Azure virtuális gépeken](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) szakaszban.
 
-<a id="manage-availability" class="xliff"></a>
-
 ### Rendelkezésre állás kezelése
+<a id="manage-availability" class="xliff"></a>
 Fontos, hogy tisztában legyen azzal, hogyan [biztosíthatja alkalmazása magas rendelkezésre állását](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ebben a konfigurációban több virtuális gépet hozhat létre, hogy közülük legalább egy mindig, mindenképp fusson.
 
 Ahhoz, hogy az üzembe helyezett példány megfeleljen a 99,95-ös virtuálisgép-szolgáltatói szerződésünknek, legalább két virtuális gépet kell üzembe helyeznie a számítási feladatok futtatásához egy [rendelkezésre állási csoporton](infrastructure-availability-sets-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) belül. Ez a konfiguráció biztosítja, hogy a virtuális gépek több tartalék tartomány között oszoljanak meg, és az őket futtató gazdagépeknek különböző karbantartási időszakaik legyenek. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/)-ban található.
 
-<a id="back-up-the-vm" class="xliff"></a>
-
 ### Virtuális gépek biztonsági mentése
+<a id="back-up-the-vm" class="xliff"></a>
 A [Recovery Services tároló](../../backup/backup-introduction-to-azure-backup.md) megvédi az Azure Backup és az Azure Site Recovery szolgáltatásokban található adatokat és adategységeket. Igénybe vehet egy Recovery Services tárolót a [Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéseinek létrehozásához és kezeléséhez a PowerShell használatával.](../../backup/backup-azure-vms-automation.md) 
 
-<a id="next-steps" class="xliff"></a>
-
 ## Következő lépések
+<a id="next-steps" class="xliff"></a>
 * Ha Linux rendszerű virtuális gépeket tervez használni, nézze át [Az Azure és a Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) témakört.
 * Infrastruktúra-beállítási útmutatóért lásd [Az Azure-infrastruktúra bemutatása példákkal](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) témakört.
 * Ajánlott követni az [Ajánlott eljárás a Windows rendszerű virtuális gépek futtatásához az Azure-on](guidance-compute-single-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) témakörben leírtakat.

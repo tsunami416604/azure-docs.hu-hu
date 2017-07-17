@@ -12,19 +12,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 0e8ae05b5f8644d4dfd0e6205224cabfb0919531
 ms.contentlocale: hu-hu
 ms.lasthandoff: 05/26/2017
 
-
 ---
-<a id="sign-in-activity-reports-in-the-azure-active-directory-portal" class="xliff"></a>
-
 # Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
+<a id="sign-in-activity-reports-in-the-azure-active-directory-portal" class="xliff"></a>
 
 Az [Azure Portalon](https://portal.azure.com) az Azure Active Directory (Azure AD) jelentéskészítési funkciójával minden szükséges információhoz hozzájuthat a környezetével kapcsolatban.
 
@@ -39,26 +38,22 @@ Az Azure Active Directory jelentéskészítési architektúrája a következő e
 
 Ez a témakör áttekintést nyújt a bejelentkezési tevékenységekről.
 
+## Előfeltétel
 <a id="pre-requisite" class="xliff"></a>
 
-## Előfeltétel
-
-<a id="who-can-access-the-data" class="xliff"></a>
-
 ### Ki férhet hozzá az adatokhoz?
+<a id="who-can-access-the-data" class="xliff"></a>
 * A biztonsági rendszergazda vagy biztonsági olvasó szerepkörű felhasználók
 * A globális rendszergazdák
 * Bármely (nem rendszergazda jogosultságú) felhasználó hozzáfér a saját bejelentkezéseihez 
 
-<a id="what-azure-ad-license-do-you-need-to-access-sign-in-activity" class="xliff"></a>
-
 ### Milyen Azure AD-licencre van szükség a bejelentkezési tevékenységhez való hozzáféréshez?
+<a id="what-azure-ad-license-do-you-need-to-access-sign-in-activity" class="xliff"></a>
 * A bérlőjének prémium szintű Azure AD-licenccel kell rendelkeznie az összes bejelentkezési tevékenység jelentésének megtekintéséhez
 
 
-<a id="signs-in-activities" class="xliff"></a>
-
 ## Bejelentkezési tevékenységek
+<a id="signs-in-activities" class="xliff"></a>
 
 A felhasználók bejelentkezési jelentésében szereplő információkból az alábbi kérdésekre kaphat választ:
 
@@ -94,9 +89,8 @@ A listanézet egyik elemére kattintva megtekintheti annak elérhető összes r�
 ![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/43.png "Sign-in activity")
 
 
-<a id="filtering-sign-in-activities" class="xliff"></a>
-
 ## A bejelentkezési tevékenységek szűrése
+<a id="filtering-sign-in-activities" class="xliff"></a>
 
 A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a bejelentkezési adatokat:
 
@@ -132,9 +126,8 @@ A **Bejelentkezési állapot** szűrővel az alábbi szűrők egyikét választh
 - Hiba
 
 
-<a id="sign-in-activities-shortcuts" class="xliff"></a>
-
 ## Bejelentkezési tevékenységek parancsikonjai
+<a id="sign-in-activities-shortcuts" class="xliff"></a>
 
 Az Azure Active Directory mellett az Azure Portal két további lehetőséget biztosít a bejelentkezési tevékenységek adatainak elérésére:
 
@@ -142,9 +135,8 @@ Az Azure Active Directory mellett az Azure Portal két további lehetőséget bi
 - Vállalati alkalmazások
 
 
-<a id="users-and-groups-sign-ins-activities" class="xliff"></a>
-
 ### Felhasználók és csoportok bejelentkezési tevékenységei
+<a id="users-and-groups-sign-ins-activities" class="xliff"></a>
 
 A felhasználók bejelentkezési jelentésében szereplő információkból az alábbi kérdésekre kaphat választ:
 
@@ -180,9 +172,8 @@ A **Bejelentkezések** lehetőség teljes körű áttekintést biztosít az öss
 
 
 
-<a id="usage-of-managed-applications" class="xliff"></a>
-
 ## Felügyelt alkalmazások használati adatai
+<a id="usage-of-managed-applications" class="xliff"></a>
 
 A bejelentkezési információk alkalmazás-központú nézetével az alábbi kérdésekre kaphat választ:
 
@@ -215,9 +206,8 @@ A **Bejelentkezések** lehetőség az alkalmazások összes bejelentkezési esem
 
 
 
-<a id="next-steps" class="xliff"></a>
-
 ## Következő lépések
+<a id="next-steps" class="xliff"></a>
 Lásd az [Azure Active Directory Reporting-útmutatót](active-directory-reporting-guide.md).
 
 

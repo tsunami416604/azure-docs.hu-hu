@@ -1,5 +1,4 @@
 ---
-
 title: "A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon | Microsoft Docs"
 description: "Ismerje meg az Azure Active Directory portál veszélyeztetett felhasználókról szóló biztonsági jelentését"
 services: active-directory
@@ -11,17 +10,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/15/2017
 ms.author: markvi
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 01ecb98c02b2a01007c7f76805d4db4b7aeee1f0
 ms.contentlocale: hu-hu
 ms.lasthandoff: 05/08/2017
 
-
 ---
-# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon
+# A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon
+<a id="users-at-risk-security-report-in-the-azure-active-directory-portal" class="xliff"></a>
 
 Az Azure Active Directory (Azure AD) biztonsági jelentéseivel megtudhatja, hogy a környezetben mekkora valószínűséggel sérült egyes felhasználói fiókok biztonsága. 
 
@@ -37,7 +37,8 @@ Az Azure Portalon a biztonsági jelentések az **Azure Active Directory** panel 
 
 ![Kockázatos bejelentkezések](./media/active-directory-reporting-security-user-at-risk/10.png)
 
-## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – ingyenes és alapszintű kiadások
+## Azure Active Directory – ingyenes és alapszintű kiadások
+<a id="azure-active-directory-free-and-basic-edition" class="xliff"></a>
 
 Az Azure Active Directory ingyenes és alapszintű kiadásának Veszélyeztetett felhasználókról szóló jelentése azokról a felhasználói fiókokról biztosít listát, amelyeknek elképzelhető, hogy sérült a biztonsága. 
 
@@ -49,7 +50,8 @@ A veszélyeztetett felhasználók esetében áttekintheti a felhasználó bejele
 
 ![Kockázatos bejelentkezések](./media/active-directory-reporting-security-user-at-risk/46.png)
 
-## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – prémium szintű kiadások
+## Azure Active Directory – prémium szintű kiadások
+<a id="azure-active-directory-premium-editions" class="xliff"></a>
 
 Az Azure Active Directory prémium kiadásaiban a Veszélyeztetett felhasználókról szóló jelentés a következőket tartalmazza:
 
@@ -86,7 +88,8 @@ Ekkor megnyílik az eseményre vonatkozó **Részletek** panel. A **Részletek**
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## Következő lépések
+<a id="next-steps" class="xliff"></a>
 
 - Az Azure Active Directory Identity Protectionnel kapcsolatos további részletekért lásd: [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 
