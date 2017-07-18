@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3b75c10ed0012d682562eb943cb67fc8176ddbb
-ms.lasthandoff: 12/07/2016
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: e23a4f182e6bb0ba53927aa6195967c2464e4233
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -28,7 +29,7 @@ Az Ön által jelenleg használt Mobile Services mobilszolgáltatás biztonságb
 * Egyszerűbb, átláthatóbb és költséghatékonyabb konstrukció alkalmazásokhoz; a választék webes és mobilos ügyfeleket egyaránt tartalmaz
 * Új üzemeltetési funkciók, többek között a WebJobs használata, egyéni CNAME-ek és jobb ellenőrzés
 * Kulcsrakész integráció a Traffic Managerrel
-* A helyszíni erőforrásokhoz és VPN-hálózatokhoz való csatlakozás lehetősége a VNet- és a hibrid kapcsolatok révén
+* Kapcsolat létesítése a helyszíni erőforrásokkal és VPN-ekkel hibrid kapcsolatok és virtuális hálózat használatával
 * Az alkalmazáshoz kötődő figyelés, riasztás és hibaelhárítás a NewRelic vagy az AppInsights segítségével
 * Szélesebb választék a mögöttes számítási erőforrások és az árképzés terén
 * Beépített automatikus skálázás, terheléselosztás és teljesítményfigyelés
@@ -46,7 +47,7 @@ Az *Azure App Service* szolgáltatásban a *Mobile Apps*-háttéralkalmazás ugy
 * (Node.js esetében) A Node ökoszisztémához tartozó bármely tiszta JavaScript-függvénytár használata (például közös MVC-függvénytárak)
 
 ## <a name="access-on-premises-data-using-vnet"></a>Helyszíni adatok elérése VNet segítségével
-A Mobile Services szolgáltatással már jelenleg is elérheti a helyszíni erőforrásokat a hibrid kapcsolatokkal. Bizonyos esetekben azonban érdemesebb lehet VPN-megoldást használni. Az *Azure App Service* szolgáltatásban az Azure VNet is használható a Mobile Apps-háttéralkalmazás kódjához.
+A Mobile Services segítségével ma már hibrid kapcsolatok használatával is hozzáférhet helyszíni erőforrásaihoz. Bizonyos esetekben azonban érdemesebb lehet VPN-megoldást használni. Az *Azure App Service* szolgáltatásban az Azure VNet is használható a Mobile Apps-háttéralkalmazás kódjához.
 
 ## <a name="use-your-favorite-backend-language"></a>A kívánt háttéralkalmazás-nyelv használata
 Az *Azure App Service* szélesebb körben és több funkcióval támogatja az ASP.NET és a Node.js platformot, többek között a legújabb futtatókörnyezeteket is elérhetővé teszi.

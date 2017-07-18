@@ -15,16 +15,14 @@ ms.topic: get-started-article
 ms.date: 06/09/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 07dc5e1520cf60e19a1961ad85d2aea0cc7bd15f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef57753aeeace0086c815d83600f92422996032a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-<a id="introduction-to-azure-cosmos-db-table-api" class="xliff"></a>
-
-# Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
 
 Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Az Azure Cosmos DB az [iparág legjobb szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/cosmos-db/) által biztosított [teljes körű, globális terjesztést](distribute-data-globally.md) kínál, valamint [a teljesítmény és a tárterület rugalmas méretezését](partition-data.md) világszerte, az esetek 99%-ában egyszámjegyű ezredmásodperces késéseket, [öt jól meghatározott konzisztenciaszintet](consistency-levels.md) és garantált magas rendelkezésre állást. Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Egy többmodelles szolgáltatásról van szó, amely támogatja a dokumentum, a kulcs-érték, a gráf és az oszlop típusú adatmodelleket. 
 
@@ -34,9 +32,7 @@ Az Azure Cosmos DB biztosítja a Tábla API előzetes verzióját az olyan alkal
 
 Az Azure Table Storage továbbra is használható nagy tárigényű és alacsonyabb átviteli sebességet megkövetelő táblákkal. Az Azure Cosmos DB hamarosan be fogja vezetni a tárolásra optimalizált táblák támogatását, valamint a meglévő és az új Azure Table Storage-fiókok Azure Cosmos DB szolgáltatásra való frissítése is meg fog történni.
 
-<a id="premium-and-standard-table-apis" class="xliff"></a>
-
-## Prémium és standard szintű tábla API-k
+## <a name="premium-and-standard-table-apis"></a>Prémium és standard szintű tábla API-k
 Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előnyökben részesülhet az Azure Cosmos DB előzetes verziójú, prémium szintű tábláira való áttéréskor:
 
 |  | Azure Table Storage | Azure Cosmos DB: Table Storage (előzetes verzió) |
@@ -50,15 +46,11 @@ Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előny
 | Díjszabás | Tárolásra optimalizált  | Átviteli sebességre optimalizált |
 | SLA-k | 99,9%-os rendelkezésre állás | 99,99%-os rendelkezésre állás egyetlen régióban, valamint lehetőség van további régiók felvételére a magasabb rendelkezésre állás céljából. [Iparágvezető és átfogó SLA-k](https://azure.microsoft.com/support/legal/sla/cosmos-db/) az általános rendelkezésre állásra vonatkozóan |
 
-<a id="how-to-get-started" class="xliff"></a>
-
-## Első lépések
+## <a name="how-to-get-started"></a>Első lépések
 
 Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azure.com), és tegye meg az első lépéseket a [Tábla API a .NET használatával című rövid útmutató](create-table-dotnet.md) segítségével. 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Íme, pár hivatkozás az első lépések megtételéhez:
 * Ismerkedés az [Azure Cosmos DB tábla API szolgáltatásával](create-table-dotnet.md) meglévő .NET tábla SDK esetén.

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: bc0c8ccad64166582dcb3f7162280a8772abc6b3
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f9dff5384838521c309a2d2a5ebb5376c90159fb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>A privát Docker-tárolójegyzékek bemutatása
@@ -52,6 +52,8 @@ A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a t�
 * **Beállításjegyzék** – Létrehozhat egy vagy több tároló-beállításjegyzéket Azure-előfizetésében. Mindegyik beállításjegyzék egy, ugyanazon a helyen található standard Azure [Storage-fiókra](../storage/storage-introduction.md) épül. Hozzon létre egy beállításjegyzéket az üzemelő példányaival megegyező Azure-beli helyen, hogy kiaknázhassa tárolórendszerképei helyi, hálózatközeli tárolásának előnyeit. A teljes tartománynév `myregistry.azurecr.io` formában van.
 
   A tároló-beállításjegyzékhez való [hozzáférés szabályozása](container-registry-authentication.md) egy, az Azure Active Directory által támogatott [egyszerű szolgáltatással](../active-directory/active-directory-application-objects.md) vagy a rendszergazdai fiókkal lehetséges. A beállításjegyzéken való hitelesítéshez futtassa a szabványos `docker login` parancsokat.
+
+* **Felügyelt beállításjegyzék** – A beállításjegyzékekhez további képességeket nyújtó szint három termékváltozatban – Basic, Standard és Premium – érhető el. A termékváltozatokban lévő rendszerképek az Azure Container Registry szolgáltatás által felügyelt tárfiókokban vannak tárolva, ami növeli a megbízhatóságot és új funkciókat tesz elérhetővé. Az új képességek közé tartozik a webhook-integráció, az Azure Active Directoryval való adattár-hitelesítés és a törlési funkció támogatása. A felhasználók a beállításjegyzékek létrehozásakor választhatnak a felügyelt beállításjegyzékek vagy a saját tárfiókjuk által támogatott beállításjegyzék létrehozása között.
 
 * **Tár** – A beállításjegyzékek egy vagy több tárat tartalmaznak, amelyek tárolórendszerképek csoportjai. Az Azure Container Registry támogatja a többszintű adattárnévtereket. Ezzel a szolgáltatással egy adott alkalmazáshoz vagy alkalmazások gyűjteményéhez kapcsolódó rendszerképek gyűjteményeit csoportba rendezheti az egyes fejlesztői és üzemeltetői csoportok számára. Példa:
 

@@ -16,16 +16,14 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 19014e65920b16d2efbaa475b7c17b2a4e3a8471
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a818a41e2e11926c2dee27e081ae8ffc0a4a6298
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-<a id="manage-batch-resources-with-azure-cli" class="xliff"></a>
-
-# Batch-erőforrássok kezelése az Azure CLI-vel
+# <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
 Az Azure CLI 2.0 az Azure új parancssori felülete, amely Azure-erőforrások felügyeletére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. Az Azure CLI 2.0-t az Azure erőforrások parancssorból történő kezelésére és felügyeletére optimalizáltuk. Az Azure CLI használatával felügyelheti Azure Batch-fiókját, valamint erőforrásokat kezelhet, például készleteket, feladatokat és tevékenységeket is. Az Azure CLI-vel a Batch API-k, az Azure Portal és a Batch PowerShell-parancsmagok használatával végrehajtott műveletek közül is sokat elvégezhet.
 
@@ -33,9 +31,7 @@ Ez a cikk betekintést nyújt az [Azure CLI 2.0-ás verziójának](https://docs.
 
 A Microsoft az Azure CLI legújabb, 2.0-ás verziójának használatát ajánlja. A 2.0-ás verzióval kapcsolatban további információt az [Mostantól általánosan elérhető az Azure parancssori felületének 2.0-s verziója](https://azure.microsoft.com/blog/announcing-general-availability-of-vm-storage-and-network-azure-cli-2-0/) című blogbejegyzésben talál.
 
-<a id="set-up-the-azure-cli" class="xliff"></a>
-
-## Az Azure CLI beállítása
+## <a name="set-up-the-azure-cli"></a>Az Azure CLI beállítása
 
 Az Azure CLI telepítéséhez kövesse a [Telepítse az Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli.md) című cikk lépéseit.
 
@@ -44,9 +40,7 @@ Az Azure CLI telepítéséhez kövesse a [Telepítse az Azure CLI-t](https://doc
 > 
 > 
 
-<a id="command-help" class="xliff"></a>
-
-## Segítség a parancsokhoz
+## <a name="command-help"></a>Segítség a parancsokhoz
 
 Az Azure CLI-ben minden parancshoz megjeleníthet súgószöveget, ha a parancshoz hozzáfűzi a `-h` utótagot. Az egyéb beállításokat hagyja változatlanul. Példa:
 
@@ -63,18 +57,14 @@ Ha bizonytalan, a `-h` parancssori kapcsoló használatával az Azure CLI bárme
 
 További részleteket az [Azure CLI Batch-parancsaival](https://docs.microsoft.com/cli/azure/batch) kapcsolatban az Azure CLI használati útmutatójában talál. 
 
-<a id="log-in-and-authenticate" class="xliff"></a>
-
-## Bejelentkezés és hitelesítés
+## <a name="log-in-and-authenticate"></a>Bejelentkezés és hitelesítés
 
 Az Azure CLI Batch-csel történő használatához be kell jelentkeznie és hitelesítenie kell fiókját. Ehhez két egyszerű lépést kell követnie:
 
 1. **Bejelentkezés az Azure-ba.** Az Azure-ba történő bejelentkezés hozzáférést biztosít az Azure Resource Manager parancsaihoz, beleértve a [Batch Management szolgáltatás](batch-management-dotnet.md) parancsait is.  
 2. **Bejelentkezés a Batch-fiókjába.** A Batch-fiókba történő bejelentkezés hozzáférést biztosít a Batch szolgáltatás parancsaihoz.   
 
-<a id="log-in-to-azure" class="xliff"></a>
-
-### Jelentkezzen be az Azure-ba
+### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
 Az Azure-szolgáltatásba több módon is bejelentkezhet, ezeket részletesen a [Bejelentkezés az Azure CLI 2.0 használatával](https://docs.microsoft.com/cli/azure/authenticate-azure-cli) című cikk ismerteti:
 
@@ -94,9 +84,7 @@ Ahogy az itt látható, az `az login` parancs egy tokent ad vissza, amelyet a hi
 
 A [Shell-szkript minták](#sample-shell-scripts) részben felsorolt példákban is az interaktív bejelentkezés segítségével indítunk majd Azure CLI-munkamenetet. Bejelentkezés után parancshívások használatával elkezdheti a munkát a különböző Batch Management-erőforrásokkal, többek között a Batch-fiókokkal, kulcsokkal, alkalmazáscsomagokkal és kvótákkal.  
 
-<a id="log-in-to-your-batch-account" class="xliff"></a>
-
-### Bejelentkezés a Batch-fiókjába
+### <a name="log-in-to-your-batch-account"></a>Bejelentkezés a Batch-fiókjába
 
 Ahhoz, hogy az Azure CLI segítségével kezelhessen Batch-erőforrásokat, például készleteket, feladatokat és tevékenységeket, be kell jelentkeznie Batch-fiókjába, és azt hitelesítenie kell. A Batch szolgáltatásba történő bejelentkezéshez használja a [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) parancsot. 
 
@@ -132,9 +120,7 @@ A Batch-fiók hitelesítését két módon is elvégezheti:
 
 A [Shell-szkript minták](#sample-shell-scripts) rész példákon keresztül mutatja be, hogyan jelentkezhet be az Azure CLI-vel Batch-fiókjába mind az Azure AD, mind a megosztott kulcsos hitelesítés használatával.
 
-<a id="sample-shell-scripts" class="xliff"></a>
-
-## Shell-szkript minták
+## <a name="sample-shell-scripts"></a>Shell-szkript minták
 
 A következő táblázatban felsorolt mintaszkriptek bemutatják, hogyan hajthatja végre a leggyakoribb feladatokat az Azure CLI parancsainak segítségével a Batch, és a Batch Management szolgáltatás használatával. A mintaszkriptek az Azure CLI-ben és a Batch-ben elérhetőek közül számos parancsot bemutatnak. 
 
@@ -145,9 +131,7 @@ A következő táblázatban felsorolt mintaszkriptek bemutatják, hogyan hajthat
 | [Batch-készletek kezelése](./scripts/batch-cli-sample-manage-pool.md) | Bemutatja a készletek létrehozását, átméretezését és kezelését. |
 | [Feladatok és tevékenységek futtatása a Batch-csel](./scripts/batch-cli-sample-run-job.md) | Bemutatja a feladatok futtatását és a tevékenységek hozzáadását. |
 
-<a id="json-files-for-resource-creation" class="xliff"></a>
-
-## Erőforrás létrehozása JSON-fájlok használatával
+## <a name="json-files-for-resource-creation"></a>Erőforrás létrehozása JSON-fájlok használatával
 
 Amikor olyan Batch-erőforrásokat hoz létre, mint a készletek és a feladatok, megadhat egy JSON-fájlt, amely az új erőforrás konfigurációját tartalmazza, ahelyett, hogy parancssori kapcsolókként adná át a paramétereket. Példa:
 
@@ -166,9 +150,7 @@ JSON-fájlra hivatkozó szkriptre példát a [Feladatok és tevékenységek futt
 > 
 > 
 
-<a id="efficient-queries-for-batch-resources" class="xliff"></a>
-
-## Hatékony lekérdezések Batch-erőforrásokhoz
+## <a name="efficient-queries-for-batch-resources"></a>Hatékony lekérdezések Batch-erőforrásokhoz
 
 Minden Batch erőforrástípus támogat egy `list` parancsot, amely lekérdezi a Batch-fiókját, és listázza az adott típusú erőforrásokat. Például listázhatja a fiókja készleteit és egy feladat tevékenységeit:
 
@@ -191,24 +173,21 @@ Az OData-záradékok használatát bemutató mintaszkript megtekintéséhez lás
 
 További információt az OData-záradékokkal létrehozható hatékony lista-lekérdezésekkel kapcsolatban a [Az Azure Batch szolgáltatás hatékony lekérdezése](batch-efficient-list-queries.md) című témakörben talál.
 
-<a id="troubleshooting-tips" class="xliff"></a>
-
-## Hibaelhárítási tippek
+## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
 Az következő tippek segíthetnek az Azure CLI használata során felmerülő problémák elhárításakor:
 
 * A `-h` segítségével **súgószöveget** kérhet bármely CLI parancshoz
 * A `-v` és a `-vv` segítségével **részletes** parancskimenetet jeleníthet meg. Ha a parancs tartalmazza a `-vv` jelzőt, az Azure CLI megjeleníti a tényleges REST-kérelmeket és válaszokat is. Ezek a kapcsolók jól jönnek a teljes hibakimenet megjelenítéséhez.
 * A  **kapcsolóval megtekintheti a** parancskimenetet JSON-fájlként`--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezt követően másolhatja és módosíthatja ezt a kimenetet, hogy felhasználhassa egy `--json-file` kapcsolóval (lásd a[JSON-fájlok](#json-files) szakaszt a jelen cikk korábbi részében).
+<!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 * A [Batch fórumát] [ batch_forum] a Batch fejlesztőcsapat tagjai is figyelik. Ott felteheti kérdéseit, ha problémákba ütközne, vagy segítségre lenne szüksége egy adott művelethez.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információt az Azure CLI-vel kapcsolatban az [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure/overview) talál.
 * További információt a Batch-erőforrásokkal kapcsolatban a [Az Azure Batch áttekintése fejlesztők számára](batch-api-basics.md) című cikkben talál.
-* A szolgáltatás Batch számítási csomópontokon futtatott alkalmazások kezelésére és üzembe helyezésére való használatával kapcsolatban lásd: [Application deployment with Azure Batch application packages](batch-application-packages.md) (Alkalmazástelepítés Azure Batch-alkalmazáscsomagokkal).
+* A szolgáltatás Batch számítási csomópontokon futtatott alkalmazások kezelésére és üzembe helyezésére való használatával kapcsolatban lásd a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikket.
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md

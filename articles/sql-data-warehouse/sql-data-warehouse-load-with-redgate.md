@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
-ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: a38b237d5bfc0450c1ca79b53a5784dbb9bf8602
 ms.contentlocale: hu-hu
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 07/10/2017
 
 
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/24/2017
 > 
 > 
 
-Ebből az oktatóanyagból megtudhatja, hogy miként használható a [Redgate Data Platform Studio](http://www.red-gate.com/products/azure-development/data-platform-studio/) (DPS) az adatok helyszíni SQL Serverről Azure SQL Data Warehouse-ba történő áthelyezésére. A Data Platform Studio a legmegfelelőbb kompatibilitási javításokat és optimalizálásokat alkalmazza, így ez a leggyorsabb mód az SQL Data Warehouse használatának megkezdésére.
+Ebből az oktatóanyagból megtudhatja, hogyan használható a [Redgate Data Platform Studio](http://www.red-gate.com/products/azure-development/data-platform-studio/) (DPS) az adatok helyszíni SQL Serverről Azure SQL Data Warehouse-ba történő áthelyezésére. A Data Platform Studio a legmegfelelőbb kompatibilitási javításokat és optimalizálásokat alkalmazza, így ez a leggyorsabb mód az SQL Data Warehouse használatának megkezdésére.
 
 > [!NOTE]
 > A [Redgate](http://www.red-gate.com) már régóta a Microsoft partnere, és különböző SQL Server-eszközöket tesz elérhetővé. A Data Platform Studio e funkciója ingyenesen elérhető kereskedelmi és nem kereskedelmi használatra.
@@ -44,9 +44,9 @@ Ebből az oktatóanyagból megtudhatja, hogy miként használható a [Redgate Da
 ### <a name="create-or-identify-resources"></a>Erőforrások létrehozása és azonosítása
 Az oktatóanyag elindítása előtt a következőkkel kell rendelkeznie:
 
-* **Helyszíni SQL Server-adatbázis:** Az SQL Data Warehouse-ba importálni kívánt adatoknak egy helyszíni SQL Serverről (2008 R2 vagy újabb verzió) kell származniuk. A Data Platform Studio nem tud közvetlenül adatokat importálni egy Azure SQL Database-ből vagy szövegfájlokból.
+* **helyszíni SQL Server-adatbázis:** Az SQL Data Warehouse-ba importálni kívánt adatoknak egy helyszíni SQL Serverről (2008 R2 vagy újabb verzió) kell származniuk. A Data Platform Studio nem tud közvetlenül adatokat importálni egy Azure SQL Database-ből vagy szövegfájlokból.
 * **Azure-tárfiók:** A Data Platform Studio előkészíti az adatokat az Azure Blob Storage-ban azelőtt, hogy betöltené őket az SQL Data Warehouse-ba. A tárfióknak a „klasszikus” üzemi modell helyett a „Resource Manager”-alapú üzemi modellt (alapértelmezett) kell használnia. Ha még nem rendelkezik tárfiókkal, hozzon létre egyet. 
-* **SQL Data Warehouse:** Az oktatóanyag az adatokat a helyi SQL Serverről az SQL Data Warehouse-ba helyezi át, ezért rendelkeznie kell egy online adattárházzal. Ha még nem rendelkezik adattárházzal, hozzon létre egyet.
+* **SQL Data Warehouse**: Az oktatóanyag a helyszíni SQL Serverről az SQL Data Warehouse-ba helyezi át az adatokat, ezért rendelkeznie kell egy online adattárházzal. Ha még nem rendelkezik adattárházzal, hozzon létre egyet.
 
 > [!NOTE]
 > Ha a tárfiók és az adattárház ugyanabban a régióban található, jobb teljesítményt érhet el.
@@ -67,7 +67,7 @@ A DPS főképernyőjén válassza az Import to Azure SQL Data Warehouse (Import�
 ![][1]
 
 ## <a name="step-3-install-the-data-platform-studio-gateway"></a>3. lépés: A Data Platform Studio-átjáró telepítése
-A helyszíni SQL Server-adatbázishoz való csatlakozáshoz telepíteni kell a DPS-átjárót. Az átjáró egy ügyfélügynök, amely hozzáférést biztosít a helyszíni környezethez, kinyeri az adatokat, és feltölti őket a tárfiókba. Az adatai soha nem haladnak keresztül a Redgate kiszolgálóin. Az átjáró telepítése:
+A helyszíni SQL Server-adatbázishoz való csatlakozáshoz telepítenie kell a DPS-átjárót. Az átjáró egy ügyfélügynök, amely hozzáférést biztosít a helyszíni környezethez, kinyeri az adatokat, és feltölti őket a tárfiókba. Az adatai soha nem haladnak keresztül a Redgate kiszolgálóin. Az átjáró telepítése:
 
 1. Kattintson a **Create Gateway** (Átjáró létrehozása) hivatkozásra.
 2. Töltse le, és telepítse az átjárót a megadott telepítővel.

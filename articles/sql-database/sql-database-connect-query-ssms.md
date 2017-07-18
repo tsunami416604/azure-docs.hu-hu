@@ -18,22 +18,18 @@ ms.topic: hero-article
 ms.date: 05/26/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 29883e37f1f506f33f44cf02dbf08221274e109d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2835a72fc90d1fd39af73c6907648908e5d9fdeb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-<a id="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data" class="xliff"></a>
-
-# Azure SQL Database: Az SQL Server Management Studio segítségével csatlakozhat és kérdezhet le adatokat
+# <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: Az SQL Server Management Studio segítségével csatlakozhat és kérdezhet le adatokat
 
 Az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) bármely SQL-infrastruktúra kezelésére alkalmas integrált környezet az SQL Servertől az SQL Database for Microsoft Windowsig. Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható az SSMS egy Azure SQL Database-adatbázishoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
 
@@ -43,9 +39,7 @@ Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott er�
 
 A kezdés előtt győződjön meg arról, hogy az [SSMS](https://msdn.microsoft.com/library/mt238290.aspx) legújabb verziója van telepítve. 
 
-<a id="get-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
+## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
 Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
@@ -53,13 +47,11 @@ Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolat
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
 3. Az adatbázis **Áttekintés** lapján tekintse meg a teljes kiszolgálónevet, amint az alábbi képen is látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség.
 
-   ![kapcsolatadatok](./media/sql-database-get-started-portal/server-name.png) 
+   ![kapcsolatadatok](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 4. Amennyiben elfelejtette Azure SQL Database-kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét, valamint szükség esetén visszaállíthatja a jelszót. 
 
-<a id="connect-to-your-database" class="xliff"></a>
-
-## Csatlakozás az adatbázishoz
+## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 
 Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Database kiszolgálóval. 
 
@@ -91,9 +83,7 @@ Az SQL Server Management Studióban építse fel a kapcsolatot az Azure SQL Data
 
 5. Az Object Explorerben bontsa ki a **Database** (Adatbázisok), majd a **mySampleDatabese** csomópontot a mintaadatbázisban található objektumok megtekintéséhez.
 
-<a id="query-data" class="xliff"></a>
-
-## Adatok lekérdezése
+## <a name="query-data"></a>Adatok lekérdezése
 
 A következő kód használatával lekérdezheti kategóriánként az első 20 terméket a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-utasítással.
 
@@ -111,9 +101,7 @@ A következő kód használatával lekérdezheti kategóriánként az első 20 t
 
     ![lekérdezés](./media/sql-database-connect-query-ssms/query.png)
 
-<a id="insert-data" class="xliff"></a>
-
-## Adat beszúrása
+## <a name="insert-data"></a>Adat beszúrása
 
 A következő kód használatával beszúrhat egy új terméket a SalesLT.Product táblába az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítással.
 
@@ -143,9 +131,7 @@ A következő kód használatával beszúrhat egy új terméket a SalesLT.Produc
 
     <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
 
-<a id="update-data" class="xliff"></a>
-
-## Adatok frissítése
+## <a name="update-data"></a>Adatok frissítése
 
 A következő kód használatával frissítheti az előzőleg hozzáadott új terméket az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítással.
 
@@ -161,9 +147,7 @@ A következő kód használatával frissítheti az előzőleg hozzáadott új te
 
     <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
 
-<a id="delete-data" class="xliff"></a>
-
-## Adat törlése
+## <a name="delete-data"></a>Adat törlése
 
 A következő kód használatával törölheti az előzőleg hozzáadott új terméket a [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-utasítással.
 
@@ -178,9 +162,7 @@ A következő kód használatával törölheti az előzőleg hozzáadott új ter
 
     <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Kiszolgálók és adatbázisok Transact-SQL-lel történő létrehozásáról és kezeléséről az [Azure SQL Database-kiszolgálók és -adatbázisok megismerése](sql-database-servers-databases.md) című cikkből tájékozódhat.
 - Az SSMS eszközről további információt [az SQL Server Management Studio használatát ismertető cikkben talál](https://msdn.microsoft.com/library/ms174173.aspx).

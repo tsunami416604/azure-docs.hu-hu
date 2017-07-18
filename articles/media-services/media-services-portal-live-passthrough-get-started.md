@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 0818c3124815b53119a5b2d43f16e3154afbc225
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: b28488ac9037b0f0ff7df892b9c3a61167b1eceb
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/10/2017
 
 
 ---
-# <a name="how-to-perform-live-streaming-with-on-premise-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure portál használatával
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -41,9 +43,9 @@ Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
 
 * [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/) (Az Azure Media Services RTMP-támogatása és az élő kódolók)
 * [Overview of Live Streaming using Azure Media Services](media-services-manage-channels-overview.md) (Az Azure Media Services segítségével történő élő streamelés áttekintése)
-* [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal)
+* [Live streaming with on-premises encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal)
 
-## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>Az élő adatfolyamok egy gyakori alkalmazási helyzete
+## <a id="scenario"></a>Az élő adatfolyamok egy gyakori alkalmazási helyzete
 A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streamelő alkalmazásokat létrehozni, amelyek átmenő közvetítésre vannak konfigurálva. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet átmenő csatornát és élő eseményeket.
 
 >[!NOTE]
@@ -69,7 +71,7 @@ A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streame
 9. Törölje az eseményt/programot (és ha kívánja, törölje az objektumot).     
 
 > [!IMPORTANT]
-> A [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő adatfolyam továbbítása többszörös sávszélességű streamet létrehozó helyszíni kódolókkal) című cikkből tájékozódhat helyszíni kódolókkal és átmenő csatornákkal történő élő streamelés fogalmairól és fontos szempontjairól.
+> Az [élő stream többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal történő továbbítását](media-services-live-streaming-with-onprem-encoders.md) ismertető cikkből tájékozódhat a helyszíni kódolókkal és átmenő csatornákkal történő élő streamelés fogalmairól és fontos szempontjairól.
 > 
 > 
 
@@ -100,7 +102,7 @@ Ha szeretné megtartani az archivált tartalmakat, de nem szeretné elérhetőv�
 ### <a name="to-use-the-portal-to-create-a-channel"></a>Csatorna létrehozása a portállal
 Ez a szakasz azt mutatja be, hogyan lehet átmenő csatornát létrehozni a **Gyorslétrehozás** beállítással.
 
-Az átmenő csatornákról a [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös sávszélességű streamet létrehozó helyszíni kódolókkal) című cikk tartalmaz részletes tájékoztatást.
+Az átmenő csatornákról az [élő stream többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal történő továbbítását](media-services-live-streaming-with-onprem-encoders.md) ismertető cikk nyújt részletes tájékoztatást.
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
 2. Kattintson a **Settings** (Beállítások) ablak **Live streaming** (Élő stream) elemére. 
@@ -134,7 +136,7 @@ Ha meg szeretne tekinteni egy eseményt, kattintson az Azure Portal **Watch** (M
 Leállítása után az élő esemény automatikusan átalakul igény szerinti tartalommá.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-Az átmenő csatornákról a [Live streaming with on-premise encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös sávszélességű streamet létrehozó helyszíni kódolókkal) című cikk tartalmaz részletes tájékoztatást.
+Az átmenő csatornákról az [élő stream többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal történő továbbítását](media-services-live-streaming-with-onprem-encoders.md) ismertető cikk nyújt részletes tájékoztatást.
 
 * Egy csatornát csak akkor lehet  leállítani, ha már leállítottak minden, a csatornán közvetített eseményt/programot.  A csatorna leállítását követően nem számítunk fel további díjakat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
 * Egy csatornát csak akkor lehet törölni, ha töröltek minden, a csatornán közvetített élő eseményt.
@@ -153,10 +155,5 @@ Tekintse át a Media Services képzési terveket.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Ismerkedés az Azure IoT Hub (.NET) szolgáltatással | Microsoft Docs"
-description: "Eszközről a felhőbe irányuló üzenetek küldésének módja egy eszközről az Azure IoT Hubba a .NET-hez készült Azure IoT SDK-k használatával. Létre kell hozni egy szimulált eszközalkalmazást üzenetek küldéséhez, egy szolgáltatásalkalmazást az eszközének az identitásjegyzékben történő regisztrálásához, továbbá egy szolgáltatásalkalmazást, amely beolvassa az eszközről a felhőbe irányuló üzeneteket az IoT Hubról."
+description: "Megtudhatja, hogyan küldhet eszközről a felhőbe irányuló üzeneteket az Azure IoT Hubba a .NET-hez készült IoT SDK-k használatával. Szimulált eszközt és szolgáltatásalkalmazásokat hozhat létre az eszköz regisztrálásához, üzenetek küldéséhez és üzenetek olvasásához az IoT Hubról."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -15,17 +15,14 @@ ms.workload: na
 ms.date: 05/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 477f618c09c8cf572a16d142f63c9b3553050b20
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 103d64ea73c309f387ff90d181f472ad246d3026
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
-<a id="connect-your-simulated-device-to-your-iot-hub-using-net" class="xliff"></a>
-
-# A szimulált eszköz csatlakoztatása az IoT Hubhoz .NET használatával
+# <a name="connect-your-simulated-device-to-your-iot-hub-using-net"></a>A szimulált eszköz csatlakoztatása az IoT Hubhoz .NET használatával
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 Az oktatóanyag végén három .NET-konzolalkalmazással fog rendelkezni:
@@ -58,9 +55,7 @@ Létrehozta a IoT Hubot, és rendelkezik az oktatóanyag további részeinek tel
 [!INCLUDE [iot-hub-get-started-create-device-identity-csharp](../../includes/iot-hub-get-started-create-device-identity-csharp.md)]
 
 <a id="D2C_csharp"></a>
-<a id="receive-device-to-cloud-messages" class="xliff"></a>
-
-## Az eszközről a felhőbe irányuló üzenetek fogadása
+## <a name="receive-device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetek fogadása
 Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Azure Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. (Ez az oktatóanyag az IoT Hub Event Hub-kompatibilis végpontokra vonatkozik.)
 
 > [!NOTE]
@@ -130,9 +125,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre, amely az eszközről 
     Task.WaitAll(tasks.ToArray());
    ```
 
-<a id="create-a-simulated-device-app" class="xliff"></a>
-
-## Szimulált eszközalkalmazás létrehozása
+## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
 
 1. A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console App (.NET Framework)** (Konzolalkalmazás (.NET-keretrendszer)) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **SimulatedDevice** nevet.
@@ -207,9 +200,7 @@ Ez az oktatóanyag végigvezeti egy szimulált IoT Hub-eszközalkalmazás létre
 > 
 > 
 
-<a id="run-the-apps" class="xliff"></a>
-
-## Az alkalmazások futtatása
+## <a name="run-the-apps"></a>Az alkalmazások futtatása
 Most már készen áll az alkalmazások futtatására.
 
 1. A Visual Studióban a Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Set StartUp projects** (Indítási projektek beállítása) parancsra. Válassza a **Multiple startup projects** (Több indítási projekt) lehetőséget, majd válassza a **Start** (Indítás) elemet a **ReadDeviceToCloudMessages** és a **SimulatedDevice** projekt műveleteként.
@@ -222,9 +213,7 @@ Most már készen áll az alkalmazások futtatására.
    
     ![Az Azure Portal Használat csempéje][43]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban egy IoT Hubot konfigurált az Azure Portalon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön az IoT Hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti az IoT Hub által fogadott üzeneteket. 
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:

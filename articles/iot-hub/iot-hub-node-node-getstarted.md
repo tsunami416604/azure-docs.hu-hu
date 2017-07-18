@@ -1,6 +1,6 @@
 ---
 title: "Ismerkedés az Azure IoT Hub (Node) szolgáltatással | Microsoft Docs"
-description: "Eszközről a felhőbe irányuló üzenetek küldésének módja egy eszközről az Azure IoT Hubba a Node.js-hez készült Azure IoT SDK-k használatával. Létre kell hozni egy szimulált eszközalkalmazást üzenetek küldéséhez, egy szolgáltatásalkalmazást az eszközének az identitásjegyzékben történő regisztrálásához, továbbá egy szolgáltatásalkalmazást, amely beolvassa az eszközről a felhőbe irányuló üzeneteket az IoT Hubról."
+description: "Megtudhatja, hogyan küldhet eszközről a felhőbe irányuló üzeneteket az Azure IoT Hubba a Node.js-hez készült IoT SDK-k használatával. Szimulált eszközt és szolgáltatásalkalmazásokat hozhat létre az eszköz regisztrálásához, üzenetek küldéséhez és üzenetek olvasásához az IoT Hubról."
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 05/22/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: b04fe441cf83ed616b0464eec83a6caf3a449532
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 3df643a517250d85200a887f5c4e62ed6c66c9c4
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-node"></a>A szimulált eszköz csatlakoztatása az IoT Hubhoz a Node használatával

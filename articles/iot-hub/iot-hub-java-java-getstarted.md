@@ -1,6 +1,6 @@
 ---
 title: "Ismerkedés az Azure IoT Hub (Java) szolgáltatással | Microsoft Docs"
-description: "Eszközről a felhőbe irányuló üzenetek küldésének módja egy eszközről az Azure IoT Hubba a Javához készült Azure IoT SDK-k használatával. Létre kell hozni egy szimulált eszközalkalmazást üzenetek küldéséhez, egy szolgáltatásalkalmazást az eszközének az identitásjegyzékben történő regisztrálásához, továbbá egy szolgáltatásalkalmazást, amely beolvassa az eszközről a felhőbe irányuló üzeneteket az IoT Hubról."
+description: "Megtudhatja, hogyan küldhet eszközről a felhőbe irányuló üzeneteket az Azure IoT Hubba a Javához készült IoT SDK-k használatával. Szimulált eszközt és szolgáltatásalkalmazásokat hozhat létre az eszköz regisztrálásához, üzenetek küldéséhez és üzenetek olvasásához az IoT Hubról."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -15,17 +15,14 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 7b44762ffea876d628886192376b6275bbc0b83b
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 7d95ba163712c8a3610839029fe3453bd5c308a8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
-<a id="connect-your-simulated-device-to-your-iot-hub-using-java" class="xliff"></a>
-
-# A szimulált eszköz csatlakoztatása az IoT Hubhoz Javával
+# <a name="connect-your-simulated-device-to-your-iot-hub-using-java"></a>A szimulált eszköz csatlakoztatása az IoT Hubhoz Javával
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 Az oktatóanyag elvégzése után három Java-konzolalkalmazással fog rendelkezni:
@@ -51,9 +48,7 @@ Az utolsó lépésben jegyezze fel az **Elsődleges kulcs** értékét. Ezután 
 
 Ezzel létrehozta az IoT Hubot. Rendelkezik az oktatóanyag teljesítéséhez szükséges IoT Hub-állomásnévvel és kapcsolati karakterlánccal, IoT Hub elsődleges kulccsal, valamint Event Hubs-kompatibilis névvel és végponttal.
 
-<a id="create-a-device-identity" class="xliff"></a>
-
-## Eszközidentitás létrehozása
+## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért lásd az [IoT Hub fejlesztői útmutatójának][lnk-devguide-identity] **Identitásjegyzék** című szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak.
 
 1. Hozzon létre egy iot-java-get-started nevű üres mappát. Az iot-java-get-started mappában hozzon létre egy **create-device-identity** nevű Maven-projektet a következő parancs beírásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
@@ -168,9 +163,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
 > [!NOTE]
 > Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszközidentitásokat. Az eszközazonosítókat és kulcsokat biztonsági hitelesítő adatokként tárolja, valamint tartalmaz egy engedélyezve/letiltva jelzőt, amellyel letilthatja egy adott eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. További információ: [IoT Hub fejlesztői útmutató][lnk-devguide-identity].
 
-<a id="receive-device-to-cloud-messages" class="xliff"></a>
-
-## Az eszközről a felhőbe irányuló üzenetek fogadása
+## <a name="receive-device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetek fogadása
 
 Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely az eszközről a felhőbe irányuló üzeneteket olvas az IoT Hubról. Az IoT Hub egy [Event Hubs][lnk-event-hubs-overview]-kompatibilis végpontot tesz közzé, hogy lehetővé tegye az eszközről a felhőbe irányuló üzenetek olvasását. Az egyszerűség érdekében ez az oktatóanyag egy alapszintű olvasót hoz létre, amely nem alkalmas nagy átviteli sebességű üzemelő példányokhoz. Az eszközről a felhőbe irányuló üzenetek nagy léptékű feldolgozásával kapcsolatban lásd [az eszközről a felhőbe irányuló üzenetek feldolgozását][lnk-process-d2c-tutorial] ismertető oktatóanyagot. Az Event Hubs szolgáltatástól érkező üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot. Ez az IoT Hub Event Hub-kompatibilis végpontjaira érvényes.
 
@@ -309,9 +302,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely az eszközről 
     mvn clean package -DskipTests
     ```
 
-<a id="create-a-simulated-device-app" class="xliff"></a>
-
-## Szimulált eszközalkalmazás létrehozása
+## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
 Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
 
@@ -472,9 +463,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszköz
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket is meg kell valósítania (például egy exponenciális leállítást) a [tranziens hibakezelést][lnk-transient-faults] ismertető MSDN-cikkben leírtak szerint.
 
-<a id="run-the-apps" class="xliff"></a>
-
-## Az alkalmazások futtatása
+## <a name="run-the-apps"></a>Az alkalmazások futtatása
 
 Most már készen áll az alkalmazások futtatására.
 
@@ -498,9 +487,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![Az Azure Portalon az IoT Hubnak küldött üzenetek számát megjelenítő Használat csempe][43]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön az IoT Hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti az IoT Hub által fogadott üzeneteket.
 

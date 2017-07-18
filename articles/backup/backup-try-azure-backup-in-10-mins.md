@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 2/23/2017
 ms.author: markgal;
-translationtype: Human Translation
-ms.sourcegitcommit: b188affca609dd5ff3aa0d2cba3ec81c1c91888f
-ms.openlocfilehash: 916a4e837d003a73a1801dd25b8ebfbfdcd86312
-ms.lasthandoff: 02/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: c989ca38e2463f8365b55c509e8b2bcf4572b409
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/05/2017
 
 
 ---
@@ -163,6 +164,15 @@ A tároló létrehozása után konfigurálja azt a fájlok és mappák biztonsá
      >
 
 Az ügynök most telepítve van, és a gépe regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
+
+## <a name="network-and-connectivity-requirements"></a>Hálózati és kapcsolati követelmények
+
+Ha a gép/proxy korlátozott internet-hozzáféréssel rendelkezik, győződjön meg arról, hogy a tűzfalbeállításokban engedélyezve vannak a következő URL-címek: <br>
+    1. www.msftncsi.com
+    2. *.Microsoft.com
+    3. *.WindowsAzure.com
+    4. *.microsoftonline.com
+    5. *.windows.ne
 
 ## <a name="back-up-your-files-and-folders"></a>Biztonsági másolat készítése a fájlokról és mappákról
 A kezdeti biztonsági mentésbe két fő feladat tartozik:

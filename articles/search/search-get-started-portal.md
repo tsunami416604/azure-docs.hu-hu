@@ -1,5 +1,5 @@
 ---
-title: "Az első saját Azure Search-index létrehozása a portálon | Microsoft Docs"
+title: "Oktatóanyag: Az első saját Azure Search-index létrehozása a portálon | Microsoft Docs"
 description: "Az Azure Portalon előre meghatározott mintaadatok használatával indexet hozhat létre. Használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést, a geosearch funkciót és sok mást."
 services: search
 documentationcenter: 
@@ -13,17 +13,16 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 05/01/2017
+ms.date: 06/26/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: e03d0ff92b0ad6d34314c55d98972997769d09f0
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: c49989058fdd98d623c5517060f725e5f7e436d8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="build-and-query-your-first-azure-search-index-in-the-portal"></a>Az első saját Azure Search-index létrehozása és lekérdezése a portálon
+# <a name="tutorial-create-your-first-azure-search-index-in-the-portal"></a>Oktatóanyag: Az első saját Azure Search-index létrehozása a portálon
 
 Egy előre meghatározott minta adatkészlettel, valamint az **Adatok importálása** varázslóval gyorsan létrehozhat egy indexet az Azure Portalon. A **keresési ablakban** használhatja a teljes szöveges keresést, a szűrőket, az aspektusokat, az intelligens keresést és a geosearch funkciót.  
 

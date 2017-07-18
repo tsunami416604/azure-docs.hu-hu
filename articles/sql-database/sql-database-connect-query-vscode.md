@@ -18,22 +18,18 @@ ms.topic: hero-article
 ms.date: 06/20/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: bc43936310c48f4dad54c829c7511cf2ad5f83af
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4076b1e7ab3a70009217a1deff72da4bff0dc871
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-<a id="azure-sql-database-use-visual-studio-code-to-connect-and-query-data" class="xliff"></a>
-
-# Azure SQL Database: Csatlakozás, majd adatok lekérdezése a Visual Studio Code használatával
+# <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Csatlakozás, majd adatok lekérdezése a Visual Studio Code használatával
 
 A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus kódszerkesztő Linux, macOS és Windows rendszerekre, amely támogatja a bővítményeket, beleértve az [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható a Visual Studio Code egy Azure SQL Database-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
 
@@ -43,13 +39,9 @@ Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott er�
 
 A kezdés előtt győződjön meg arról, hogy a [Visual Studio Code](https://code.visualstudio.com/Download) legújabb verziója van telepítve, és be van töltve az [mssql bővítmény](https://aka.ms/mssql-marketplace). Az mssql bővítmény telepítési lépéseinek megismeréséhez olvassa el [a VS Code telepítését](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) és a [Visual Studio Code-hoz használható mssql-t](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) ismertető cikkeket. 
 
-<a id="configure-vs-code" class="xliff"></a>
+## <a name="configure-vs-code"></a>A VS Code konfigurálása 
 
-## A VS Code konfigurálása 
-
-<a id="mac-os" class="xliff"></a>
-
-### **Mac OS**
+### <a name="mac-os"></a>**Mac OS**
 Mac OS esetén telepíteni kell az OpenSSL-t, amely az mssql bővítmény által használt DotNet Core előfeltétele. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez. 
 
 ```bash
@@ -61,21 +53,15 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
-<a id="linux-ubuntu" class="xliff"></a>
-
-### **Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 
 Nincs szükség különleges konfigurációra.
 
-<a id="windows" class="xliff"></a>
-
-### **Windows**
+### <a name="windows"></a>**Windows**
 
 Nincs szükség különleges konfigurációra.
 
-<a id="get-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
+## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
 Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
@@ -83,13 +69,11 @@ Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolat
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
 3. Az adatbázis **Áttekintés** oldalán tekintse meg a teljes kiszolgálónevet, amint az az alábbi képen látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség.
 
-   ![kapcsolatadatok](./media/sql-database-get-started-portal/server-name.png) 
+   ![kapcsolatadatok](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 4. Amennyiben elfelejtette Azure SQL Database-kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét, valamint szükség esetén visszaállíthatja a jelszót. 
 
-<a id="set-language-mode-to-sql" class="xliff"></a>
-
-## A nyelvmód SQL értékre állítása
+## <a name="set-language-mode-to-sql"></a>A nyelvmód SQL értékre állítása
 
 Az mssql-parancsok és a T-SQL IntelliSense engedélyezéséhez ügyeljen arra, hogy a nyelvmód beállítása **SQL** legyen a Visual Studio Code-ban.
 
@@ -100,9 +84,7 @@ Az mssql-parancsok és a T-SQL IntelliSense engedélyezéséhez ügyeljen arra, 
 
    ![SQL nyelvmód](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-<a id="connect-to-your-database" class="xliff"></a>
-
-## Csatlakozás az adatbázishoz
+## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 
 A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Database-kiszolgálóval.
 
@@ -134,9 +116,7 @@ A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Data
 
    ![A kapcsolat állapota](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
 
-<a id="query-data" class="xliff"></a>
-
-## Adatok lekérdezése
+## <a name="query-data"></a>Adatok lekérdezése
 
 A következő kód használatával lekérdezheti kategóriánként az első 20 terméket a [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-utasítással.
 
@@ -153,9 +133,7 @@ A következő kód használatával lekérdezheti kategóriánként az első 20 t
 
     ![Lekérdezés](./media/sql-database-connect-query-vscode/query.png)
 
-<a id="insert-data" class="xliff"></a>
-
-## Adat beszúrása
+## <a name="insert-data"></a>Adat beszúrása
 
 A következő kód használatával beszúrhat egy új terméket a SalesLT.Product táblába az [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-utasítással.
 
@@ -183,9 +161,7 @@ A következő kód használatával beszúrhat egy új terméket a SalesLT.Produc
 
 2. A **CTRL+SHFT+E** billentyűkombinációt lenyomva beszúrhat egy új sort a Product táblába.
 
-<a id="update-data" class="xliff"></a>
-
-## Adatok frissítése
+## <a name="update-data"></a>Adatok frissítése
 
 A következő kód használatával frissítheti az előzőleg hozzáadott új terméket az [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-utasítással.
 
@@ -199,9 +175,7 @@ A következő kód használatával frissítheti az előzőleg hozzáadott új te
 
 2. A **CTRL+SHFT+E** billentyűkombinációt lenyomva frissítheti a megadott sort a Product táblában.
 
-<a id="delete-data" class="xliff"></a>
-
-## Adat törlése
+## <a name="delete-data"></a>Adat törlése
 
 A következő kód használatával törölheti az előzőleg hozzáadott új terméket a [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-utasítással.
 
@@ -214,9 +188,7 @@ A következő kód használatával törölheti az előzőleg hozzáadott új ter
 
 2. A **CTRL+SHFT+E** billentyűkombinációt lenyomva törölheti a megadott sort a Product táblából.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az SQL Server Management Studióval történő csatlakozáshoz és lekérdezéshez lásd [az SSMS segítségével történő csatlakozással és lekérdezéssel](sql-database-connect-query-ssms.md) foglalkozó témakört.
 - Az MSDN magazin Visual Studio Code használatáról szóló cikkéhez lásd az [Adatbázis IDE létrehozása az MSSQL bővítménnyel blogbejegyzést](https://msdn.microsoft.com/magazine/mt809115).

@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/30/2017
+ms.date: 07/04/2017
 ms.author: kaanan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 7fbdecd6fcaa784c5cdeebe46bf1991bfe730017
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 48c7a83515ec43f63fb7ff4e6b2d6b4edf93f7b4
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 07/13/2017
 
 ---
-<a id="expressroute-partners-and-peering-locations" class="xliff"></a>
-
-# ExpressRoute-partnerek és társviszony-létesítési helyszínek.
+# <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
 > [!div class="op_single_selector"]
 > * [Helyek szolgáltató alapján](expressroute-locations.md)
@@ -39,9 +37,7 @@ Az ExpressRoute az összes Azure-régióban és -helyen támogatott. A következ
 
 Ha legalább egy ExpressRoute-helyhez csatlakozott egy geopolitikai régióban, az adott geopolitikai régióban lévő összes régióban hozzáférhet az Azure-szolgáltatásokhoz. 
 
-<a id="azure-regions-to-expressroute-locations-within-a-geopolitical-region" class="xliff"></a>
-
-### Az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek
+### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek
 A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és ExpressRoute-helyek térképét mutatja.
 
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
@@ -55,9 +51,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **India** |Nyugat-India, Közép-India, Dél-India |Csennai, Mumbai |
 | **Dél-Korea** |Korea középső régiója, Korea déli régiója |Busan, Szöul |
 
-<a id="regions-and-geopolitical-boundaries-for-national-clouds" class="xliff"></a>
-
-### A régiók és az országos felhők geopolitikai határai
+### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>A régiók és az országos felhők geopolitikai határai
 Az alábbi tábla a régiók és az országos felhők geopolitikai határainak információit tartalmazza.
 
 | **Geopolitikai régió** | **Azure-régiók** | **ExpressRoute-helyek** |
@@ -73,9 +67,7 @@ A geopolitikai régiókon átívelő kapcsolódás nem támogatott a standard Ex
 Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szolgáltatók láthatók. A szolgáltatók és a szolgáltatási helyek megtekintéséhez lásd: [Helyek szolgáltatók szerint](expressroute-locations.md#locations). 
 
 
-<a id="production-azure" class="xliff"></a>
-
-### Termelési Azure
+### <a name="production-azure"></a>Termelési Azure
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Amszterdam** |Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Internet Solutions – Cloud Connect, Interxion, KPN, Level 3 Communications, Megaport, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Verizon, Zayo Group |
@@ -96,7 +88,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Mumbai** |Airtel+, Tata Communications |
 | **New York** |Coresite, Equinix, Megaport, Zayo Group |
 | **Newport (Wales)** |Következő generációs adatok |
-| **Oszaka** |Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, NTT SmartConnect+, Softbank |
+| **Oszaka** |Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
 | **Párizs** |Colt, Interxion, Equinix, Orange+ |
 | **Quebec város** | Megaport |
 | **San Antonio** |Megaport |
@@ -112,13 +104,9 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 
  **+** = hamarosan elérhető
 
-<a id="national-cloud-environments" class="xliff"></a>
+### <a name="national-cloud-environments"></a>Országos felhőkörnyezetek
 
-### Országos felhőkörnyezetek
-
-<a id="us-government-cloud" class="xliff"></a>
-
-### Az Egyesült Államok kormányának felhője
+### <a name="us-government-cloud"></a>Az Egyesült Államok kormányának felhője
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
@@ -128,9 +116,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Seattle** | Equinix |
 | **Washington, D.C.** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 
-<a id="china" class="xliff"></a>
-
-### Kína
+### <a name="china"></a>Kína
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Peking** |China Telecom |
@@ -138,9 +124,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 
 További tudnivalókért lásd: [Az ExpressRoute Kínában](http://www.windowsazure.cn/home/features/expressroute/).
 
-<a id="germany" class="xliff"></a>
-
-### Németország
+### <a name="germany"></a>Németország
 | **Hely** | **Szolgáltatók** |
 | --- | --- |
 | **Berlin** |Colt+, e-shelter, Megaport+ |
@@ -167,7 +151,7 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 | **Hely** | **Exchange** | **Kapcsolatszolgáltatók** |
 | --- | --- | --- |
 | **Amszterdam** | Equinix, Telecity | Eurofiber, Fastweb S.p.A, Nianet |
-| **Chicago** | Equinix | Windstream |
+| **Chicago** | Equinix | Lightower, Windstream |
 | **Dallas** | Equinix, Megaport | C3ntro Telecom, Cox Business, Data Foundry, Transtelco |
 | **Frankfurt** | Telecity | Nianet, QSC AG |
 | **Hongkong** | Equinix | Macroview Telecom |
@@ -181,13 +165,11 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 | **Szingapúr** |Equinix |1CLOUDSTAR, Epsilon Telecommunications Limited, LGA Telecom, United Information Highway (UIH) |
 | **Slough** | Equinix | HSO|
 | **Sydney** | Megaport | Macquarie Telecom Group|
-| **Tokió** | Equinix | ARTERIA Networks Corporation |
+| **Tokió** | Equinix | ARTERIA Networks Corporation, BroadBand Tower, Inc. |
 | **Toronto** | Equinix | Airgate Technologies. Inc, Cogeco Peer 1, Rogers, Thinktel, Zirro|
 | **Washington, D.C.** |Equinix | Altice Business, Gtt Communications Inc, Epsilon, Lightower, Masergy, Windstream |
 
-<a id="expressroute-system-integrators" class="xliff"></a>
-
-## ExpressRoute-rendszerintegrátorok
+## <a name="expressroute-system-integrators"></a>ExpressRoute-rendszerintegrátorok
 A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hálózat méretétől függően. A következő táblában felsorolt rendszerintegrátorok bármelyike segítségére lehet az ExpressRoute üzembe helyezésében.
 
 | **Kontinens** | **Rendszerintegrátorok** |
@@ -197,9 +179,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **Európa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Észak-Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Perficient, Presidio |
 | **Dél-Amerika** |Avanade Inc. |
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

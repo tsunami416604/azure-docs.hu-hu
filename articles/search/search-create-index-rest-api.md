@@ -1,5 +1,5 @@
 ---
-title: "Azure Search-index létrehozása REST API használatával | Microsoft Docs"
+title: "Index létrehozása (REST API – Azure Search) | Microsoft Docs"
 description: "Index létrehozása kódból az Azure Search HTTP REST API használatával."
 services: search
 documentationcenter: 
@@ -15,9 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
-ms.openlocfilehash: 7f4bccda8a7cebff0d80627320d34062d4d55add
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 9a64d1436471e406b7d9b700257d3dd96b5edcde
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Azure Search-index létrehozása REST API használatával
@@ -107,9 +109,4 @@ Miután végzett az index használatával, és törölni szeretné, csak küldj�
 
 ## <a name="next-steps"></a>Következő lépések
 Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a tartalmát az indexbe](search-what-is-data-import.md), és megkezdje az adatok keresését.
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

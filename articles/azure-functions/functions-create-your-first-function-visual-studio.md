@@ -14,19 +14,17 @@ ms.devlang: multiple
 ms.topic: hero-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/25/2017
+ms.date: 07/05/2017
 ms.author: rachelap, glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 64769458ad90f14c2f7a87b9a405b80616a478be
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2d539dd51834e935f9c5f7a6be42011ffe9e0870
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-<a id="create-your-first-function-using-visual-studio" class="xliff"></a>
-
-# Az első függvény létrehozása a Visual Studio használatával 
+# <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával 
 
 Az Azure Functions lehetővé teszi a kód végrehajtását kiszolgáló nélküli környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást. 
 
@@ -34,9 +32,7 @@ Ebben a témakörben megtudhatja, hogy az Azure Functions Tools for Visual Studi
 
 ![Azure-függvénykód Visual Studio-projektben](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
@@ -46,25 +42,19 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-<a id="install-azure-functions-tools-for-visual-studio-2017" class="xliff"></a>
-
-## Az Azure Functions Tools for Visual Studio 2017 telepítése
+## <a name="install-azure-functions-tools-for-visual-studio-2017"></a>Az Azure Functions Tools for Visual Studio 2017 telepítése
 
 Mielőtt nekifogna, töltse le és telepítse az Azure Functions Tools for Visual Studio 2017-et. Ezekhez az eszközökhöz legalább a Visual Studio 2017 Preview 15.3-as vagy későbbi verziója szükséges. Ha már telepítette az Azure Function Toolst, kihagyhatja ezt a részt.
 
 [!INCLUDE [Install the Azure Functions Tools for Visual Studio](../../includes/functions-install-vstools.md)]   
 
-<a id="create-an-azure-functions-project-in-visual-studio" class="xliff"></a>
-
-## Hozzon létre egy Azure Functions-projektet a Visual Studióban
+## <a name="create-an-azure-functions-project-in-visual-studio"></a>Hozzon létre egy Azure Functions-projektet a Visual Studióban
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 Most, hogy már létrehozta a projektet, hozza létre első függvényét.
 
-<a id="create-the-function" class="xliff"></a>
-
-## A függvény létrehozása
+## <a name="create-the-function"></a>A függvény létrehozása
 
 A **Solution Explorer** (Megoldáskezelő) felületén kattintson a jobb gombbal a projektcsomópontra, majd válassza az **Add** (Hozzáadás)  > **New Item** (Új elem) lehetőséget. Válassza ki az **Azure Function** (Azure-függvény) elemet, majd kattintson az **Add** (Hozzáadás) lehetőségre.
 
@@ -74,9 +64,7 @@ Válassza ki a **HttpTrigger** elemet, adja meg a **Function Name** (Függvényn
 
 Most, hogy már létrehozta a HTTP-triggerrel aktivált függvényt, tesztelheti a helyi számítógépen.
 
-<a id="test-the-function-locally" class="xliff"></a>
-
-## A függvény helyi tesztelése
+## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
 [!INCLUDE [Test the function locally](../../includes/functions-vstools-test.md)]
 
@@ -92,17 +80,13 @@ A hibakeresés leállításához kattintson a **Stop** (Leállítás) gombra a V
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 
-<a id="publish-the-project-to-azure" class="xliff"></a>
-
-## A projekt közzététele az Azure-ban
+## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
 A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az Azure-előfizetéséhez. Közvetlenül a Visual Studióból is létrehozhat függvényalkalmazást.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-<a id="test-your-function-in-azure" class="xliff"></a>
-
-## A függvény tesztelése az Azure-ban
+## <a name="test-your-function-in-azure"></a>A függvény tesztelése az Azure-ban
 
 Másolja a függvényalkalmazás alap URL-címét a Publish (Közzététel) profiloldalról. Cserélje ki a függvény helyi tesztelésekor használt `localhost:port` URL-címrészt az új alap URL-címmel. Ahogyan korábban, most is az URL-címhez fűzze hozzá a `&name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet.
 
@@ -114,14 +98,12 @@ Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Az alább
 
 ![A függvény által visszaadott válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
  
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio segítéségével létrehozott egy egyszerű, HTTP-triggerrel aktivált függvényt tartalmazó C#-függvényalkalmazást. 
 
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
 
-További információ az Azure Functions Core Tools használatával végzett helyi tesztelésről és hibakeresésről: [Code and test Azure Functions locally](functions-run-local.md) (Az Azure-függvények kódolása és helyi tesztelése). 
+További információ az Azure Functions Core Tools használatával végzett helyi tesztelésről és hibakeresésről: [Code and test Azure Functions locally](functions-run-local.md) (Az Azure-függvények kódolása és helyi tesztelése). A függvények .NET-osztálytárakként való fejlesztéséről további információért lásd [a .NET-osztálytárak és az Azure Functions használatát](functions-dotnet-class-library.md) ismertető cikket. 
 
 

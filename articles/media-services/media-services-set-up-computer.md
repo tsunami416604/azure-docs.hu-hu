@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/23/2017
+ms.date: 07/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e16620b457e82260b27fe484abee715bb4b3aa24
-ms.openlocfilehash: fe69fc0ace47967e1ddf083e47dd25beb8d91d84
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: f992ec4ff2b36208f740320a133b5eece47919bb
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Az Azure Media Services fejlesztési környezet beállítása
-
 
 A következő lépésekben az Azure Media Services szolgáltatással történő fejlesztés előfeltételeit ismertetjük.
 
@@ -40,20 +40,12 @@ A REST fejlesztési környezet beállításával kapcsolatban tekintse meg [ezt]
 
 ## <a name="connect-programmatically"></a>Programozott módon való kapcsolódás
 
-Az Azure Media Serviceshez .NET segítségével való csatlakozáshoz tekintse meg [ezt](media-services-dotnet-connect-programmatically.md) a témakört.  
-
-Az Azure Media Serviceshez REST segítségével való csatlakozáshoz tekintse meg [ezt](media-services-rest-connect-programmatically.md) a témakört.  
-
+Ha az Azure Media Services API-hoz szeretne csatlakozni, lásd [az Azure Media Services Azure AD-hitelesítéssel történő elérését](media-services-use-aad-auth-to-access-ams-api.md) ismertető cikket.  
 
 ## <a name="next-steps-azure-media-services-learning-paths"></a>További lépések: Az Azure Media Services képzési tervei
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

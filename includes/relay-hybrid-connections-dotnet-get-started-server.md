@@ -1,12 +1,15 @@
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
-* Indítsa el a Visual Studiót, majd hozzon létre egy új konzolalkalmazást.
+
+Először indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.NET-keretrendszer)** projektet.
 
 ### <a name="add-the-relay-nuget-package"></a>A Relay NuGet-csomag hozzáadása
-1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
+
+1. Kattintson a jobb gombbal az újonnan létrehozott projektre, majd kattintson a **NuGet-csomagok kezelése** parancsra.
 2. Kattintson a **Browse** (Tallózás) fülre, keressen a „Microsoft.Azure.Relay” kifejezésre, majd válassza ki a **Microsoft Azure Relay** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
 
 ### <a name="write-some-code-to-receive-messages"></a>Írjon egy kódrészletet az üzenetek fogadásához
-1. A Program.cs fájl elején cserélje le a meglévő `using` utasításokat az alábbi utasításokra:
+
+1. A Program.cs fájl elején cserélje le a meglévő `using`-utasításokat az alábbi `using`-utasításokra:
    
     ```csharp
     using System;
@@ -15,7 +18,7 @@
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
-2. Adjon állandókat a `Program` osztályhoz a Hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid gyűjtemény létrehozásakor beszerzett megfelelő értékekre. Ügyeljen arra, hogy a teljes névtérnevet használja:
+2. Adjon állandókat a `Program` osztályhoz a hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid gyűjtemény létrehozásakor beszerzett megfelelő értékekre. Ügyeljen arra, hogy a teljes névtérnevet használja:
    
     ```csharp
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
@@ -23,7 +26,7 @@
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. Adja hozzá a következő új, `ProcessMessagesOnConnection` nevű metódust a `Program` osztályhoz:
+3. Adja hozzá a következő `ProcessMessagesOnConnection` nevű metódust a `Program` osztályhoz:
    
     ```csharp
     // Method is used to initiate connection
@@ -74,7 +77,7 @@
         await relayConnection.CloseAsync(cts.Token);
     }
     ```
-4. Adjon hozzá egy `RunAsync` nevű másik új metódust a `Program` osztályhoz, a következőképpen:
+4. Adjon hozzá egy `RunAsync` nevű másik metódust a `Program` osztályhoz, a következőképpen:
    
     ```csharp
     private static async Task RunAsync()
@@ -119,13 +122,13 @@
         await listener.CloseAsync(cts.Token);
     }
     ```
-5. Adja hozzá a következő kódsort a `Main` metódushoz a `Program` osztályban.
+5. Adja hozzá a következő kódsort a `Main` metódushoz a `Program` osztályban:
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();
     ```
    
-    A Program.cs fájlnak így kell kinéznie:
+    A befejezett Program.cs fájlnak így kell kinéznie:
    
     ```csharp
     namespace Server

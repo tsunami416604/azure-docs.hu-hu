@@ -16,16 +16,14 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 5144c27ccbef6cc0e1e8c0b168bbfd86b736331b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9776bd4f703227f49f83f563489cfa7c44604fb8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-<a id="get-started-building-solutions-with-the-batch-client-library-for-net" class="xliff"></a>
-
-# Bevezetés a megoldások létrehozásába a Batch ügyfél .NET-es kódtárával
+# <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Bevezetés a megoldások létrehozásába a Batch ügyfél .NET-es kódtárával
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
@@ -38,14 +36,10 @@ Ebben a cikkben megismerheti az [Azure Batch][azure_batch] alapjait és a [Batch
 
 ![Batch-megoldás munkafolyamata (alapszintű)][11]<br/>
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk a C# és a Visual Studio gyakorlati ismeretét feltételezi. Azt is feltételezi, hogy az Azure, a Batch és a Storage alábbi fióklétrehozási követelmények teljesülnek.
 
-<a id="accounts" class="xliff"></a>
-
-### Fiókok
+### <a name="accounts"></a>Fiókok
 * **Azure-fiók**: Ha még nincs Azure-előfizetése, [hozzon létre egy ingyenes Azure-fiókot][azure_free_account].
 * **Batch-fiók**: Ha már rendelkezik Azure-előfizetéssel, [hozzon létre egy Azure Batch-fiókot](batch-account-create-portal.md).
 * **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) cikk [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) szakaszát.
@@ -55,26 +49,18 @@ Ez a cikk a C# és a Visual Studio gyakorlati ismeretét feltételezi. Azt is fe
 >
 >
 
-<a id="visual-studio" class="xliff"></a>
-
-### Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 A mintaprojekt összeállításához **Visual Studio 2015 vagy újabb** szükséges. A Visual Studio ingyenes és próbaverzióit a [Visual Studio-termékek áttekintésében][visual_studio] találja.
 
-<a id="dotnettutorial-code-sample" class="xliff"></a>
-
-### *DotNetTutorial* kódminta
+### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial* kódminta
 A [DotNetTutorial][github_dotnettutorial] mintája a GitHubon lévő [azure-batch-samples][github_samples] tárban található számos Batch-kódminta egyike. Az összes minta letöltéséhez kattintson a **Clone or download > Download ZIP** (Klónozás vagy letöltés > ZIP letöltése) elemre a tár kezdőlapján, vagy kattintson az [azure-batch-samples-master.zip][github_samples_zip] közvetlen letöltésére szolgáló hivatkozásra. Amikor kibontotta a ZIP-fájl tartalmát, a következő mappában találja a megoldást:
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
-<a id="azure-batch-explorer-optional" class="xliff"></a>
-
-### Azure Batch Explorer (nem kötelező)
+### <a name="azure-batch-explorer-optional"></a>Azure Batch Explorer (nem kötelező)
 Az [Azure Batch Explorer][github_batchexplorer] egy ingyenes segédprogram, amely a GitHub [azure-batch-samples][github_samples] tárában található meg. Bár ezen oktatóprogram elvégzéséhez nem szükséges, hasznos a Batch-megoldások fejlesztésekor és hibakeresésekor.
 
-<a id="dotnettutorial-sample-project-overview" class="xliff"></a>
-
-## DotNetTutorial mintaprojekt áttekintése
+## <a name="dotnettutorial-sample-project-overview"></a>DotNetTutorial mintaprojekt áttekintése
 A *DotNetTutorial* kódminta egy Visual Studio-megoldás, amely két projektből áll: a **DotNetTutorial** és a **TaskApplication** projektből.
 
 * A **DotNetTutorial** az az ügyfélalkalmazás, amely a Batch és a Storage szolgáltatásokkal együttműködve végez párhuzamos számítási feladatokat a számítási csomópontokon (virtuális gépeken). A DotNetTutorial a helyi munkaállomáson fut.
@@ -98,9 +84,7 @@ A következő diagram az ügyfélalkalmazás által végzett elsődleges művele
 
 Ahogy említettük, nem minden Batch-megoldás végzi el pontosan ezeket a lépéseket, és sok más lépést is tartalmazhatnak, de a *DotNetTutorial* mintaalkalmazás bemutatja a Batch-megoldások általános folyamatait.
 
-<a id="build-the-dotnettutorial-sample-project" class="xliff"></a>
-
-## A *DotNetTutorial* mintaprojekt felépítése
+## <a name="build-the-dotnettutorial-sample-project"></a>A *DotNetTutorial* mintaprojekt felépítése
 A minta sikeres futtatása előtt a Batch- és a Storage-fiók hitelesítő adatait is meg kell adnia a *DotNetTutorial*-projekt `Program.cs` fájljában. Ha még nem tette meg, nyissa meg a megoldást a Visual Studióban. Ehhez kattintson duplán a `DotNetTutorial.sln` megoldásfájlra. Vagy nyissa meg a Visual Studióból a **File > Open > Project/Solution** (Fájl > Megnyitás > Projekt/Megoldás) elemre kattintva.
 
 Nyissa meg a *DotNetTutorial* projekt `Program.cs` elemét. Ezután adja hozzá a fájl elejének közelében megadott hitelesítő adatokat:
@@ -141,9 +125,7 @@ A következő szakaszokban a mintaalkalmazást felosztjuk azokra a lépésekre, 
 
 Az 1. lépés elkezdéséhez keresse meg a *DotNetTutorial* projekt `Program.cs` fájljának `MainAsync` metódusát. Az alábbi lépések mindegyike nagyjából a `MainAsync` metódushívásainak sorrendjét követi.
 
-<a id="step-1-create-storage-containers" class="xliff"></a>
-
-## 1. lépés: Storage-tárolók létrehozása
+## <a name="step-1-create-storage-containers"></a>1. lépés: Storage-tárolók létrehozása
 ![Tárolók létrehozása az Azure Storage-ban][1]
 <br/>
 
@@ -211,9 +193,7 @@ A tárolók létrehozása után az alkalmazás feltöltheti a tevékenységek á
 >
 >
 
-<a id="step-2-upload-task-application-and-data-files" class="xliff"></a>
-
-## 2. lépés: Tevékenységalkalmazás- és adatfájlok feltöltése
+## <a name="step-2-upload-task-application-and-data-files"></a>2. lépés: Tevékenységalkalmazás- és adatfájlok feltöltése
 ![Tevékenységalkalmazás- és bemeneti (adat-) fájlok feltöltése tárolókba][2]
 <br/>
 
@@ -290,9 +270,7 @@ private static async Task<ResourceFile> UploadFileToContainerAsync(
 }
 ```
 
-<a id="resourcefiles" class="xliff"></a>
-
-### ResourceFiles
+### <a name="resourcefiles"></a>ResourceFiles
 A [ResourceFile][net_resourcefile] tevékenységeket biztosít a Batchben az Azure Storage azon fájljának URL-jével, amely a számítási csomópontra töltődik le a feladat futtatása előtt. A [ResourceFile.BlobSource][net_resourcefile_blobsource] tulajdonság határozza meg a fájl teljes URL-jét, ahogyan az az Azure Storage-ban található. Az URL a fájl biztonságos elérését nyújtó közös hozzáférésű jogosultságkódot (SAS-t) is tartalmazhat. A Batch .NET-en belüli legtöbb tevékenység tartalmaz egy *ResourceFiles* tulajdonságot, beleértve a következőket:
 
 * [CloudTask][net_task]
@@ -302,9 +280,7 @@ A [ResourceFile][net_resourcefile] tevékenységeket biztosít a Batchben az Azu
 
 A DotNetTutorial-mintaalkalmazás nem használja a JobPreparationTask és a JobReleaseTask tevékenységtípust, de ezekről további információt talál a [Run job preparation and completion tasks on Azure Batch compute nodes](batch-job-prep-release.md) (Feladat-előkészítési és -befejezési műveletek futtatása Azure Batch számítási csomópontjain) című szakaszban talál.
 
-<a id="shared-access-signature-sas" class="xliff"></a>
-
-### Közös hozzáférésű jogosultságkód (SAS)
+### <a name="shared-access-signature-sas"></a>Közös hozzáférésű jogosultságkód (SAS)
 A közös hozzáférésű jogosultságkódok olyan karakterláncok, amelyek – egy URL-címbe belefoglalva – biztonságos hozzáférést nyújtanak a tárolókhoz és a blobokhoz az Azure Storage-ban. A DotNetTutorial-alkalmazás a blobok és a tárolók közös hozzáférésű jogosultságkód URL-jeit is használja, és bemutatja, hogyan szerezheti be a közös hozzáférésű jogosultságkódok karakterláncait a Storage szolgáltatásból.
 
 * **Blob közös hozzáférésű jogosultságkódjai**: A DotNetTutorial-oktatóprogramban a készlet StartTask tevékenysége blobok közös hozzáférésű jogosultságkódjait használja az alkalmazás bináris fájljainak és bemeneti adatfájljainak a tárolóból való letöltéséhez (lásd az alábbi 3. lépést). A DotNetTutorial `Program.cs` fájljában lévő `UploadFileToContainerAsync` metódus tartalmazza a kódot, amely lekéri az egyes blobok közös hozzáférésű jogosultságkódját. Ezt a [CloudBlob.GetSharedAccessSignature][net_sas_blob] meghívásával végzi el.
@@ -315,9 +291,7 @@ A közös hozzáférésű jogosultságkódok olyan karakterláncok, amelyek – 
 >
 >
 
-<a id="step-3-create-batch-pool" class="xliff"></a>
-
-## 3. lépés: Batch-készlet létrehozása
+## <a name="step-3-create-batch-pool"></a>3. lépés: Batch-készlet létrehozása
 ![Batch-készlet létrehozása][3]
 <br/>
 
@@ -401,7 +375,7 @@ A fizikai csomópontok tulajdonságai mellett egy [StartTask][net_pool_starttask
 Ebben a mintaalkalmazásban a StartTask átmásolja a Storage-ból letöltött fájlokat (amelyek a [StartTask][net_starttask].[ResourceFiles][net_starttask_resourcefiles] tulajdonsággal határozhatók meg) a StartTask-munkakönyvtárból abba a megosztott könyvtárba, amelyet a csomóponton futó *összes* tevékenység elér. Ez lényegében mindegyik csomóponton a megosztott könyvtárba másolja a(z) `TaskApplication.exe` fájlt és annak függőségeit, amikor a csomópont csatlakozik a készlethez, hogy a csomóponton futó összes feladat elérje a fájlt.
 
 > [!TIP]
-> Az Azure Batch **alkalmazáscsomagok** szolgáltatása egy másik módot nyújt arra, hogy az alkalmazást egy készletben lévő számítási csomópontokra helyezze. Részletekért lásd: [Alkalmazástelepítés Azure Batch-alkalmazáscsomagokkal](batch-application-packages.md).
+> Az Azure Batch **alkalmazáscsomagok** szolgáltatása egy másik módot nyújt arra, hogy az alkalmazást egy készletben lévő számítási csomópontokra helyezze. Részletekért lásd a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikket.
 >
 >
 
@@ -412,9 +386,7 @@ A fenti kódrészletben a StartTask *CommandLine* tulajdonságában lévő két 
 >
 >
 
-<a id="step-4-create-batch-job" class="xliff"></a>
-
-## 4. lépés: Batch-feladat létrehozása
+## <a name="step-4-create-batch-job"></a>4. lépés: Batch-feladat létrehozása
 ![Batch-feladat létrehozása][4]<br/>
 
 A Batch-**feladatok** számítási csomópontok készletéhez társított tevékenységek gyűjteményei. A feladatok tevékenységei a társított készlet számítási csomópontjain futnak.
@@ -441,9 +413,7 @@ private static async Task CreateJobAsync(
 
 Most, hogy létrejött egy feladat, hozzáadhatók a munka végrehajtásáért felelős feladatok.
 
-<a id="step-5-add-tasks-to-job" class="xliff"></a>
-
-## 5. lépés: Tevékenységek hozzáadása a feladathoz
+## <a name="step-5-add-tasks-to-job"></a>5. lépés: Tevékenységek hozzáadása a feladathoz
 ![Tevékenységek hozzáadása a feladathoz][5]<br/>
 *(1) A feladathoz hozzáadja a tevékenységeket, (2) ütemezi a tevékenységeket a csomópontokon való futáshoz, és (3) a tevékenységek letöltik a feldolgozni kívánt adatfájlokat*
 
@@ -534,9 +504,7 @@ private static void UploadFileToContainer(string filePath, string containerSas)
 }
 ```
 
-<a id="step-6-monitor-tasks" class="xliff"></a>
-
-## 6. lépés: Tevékenységek figyelése
+## <a name="step-6-monitor-tasks"></a>6. lépés: Tevékenységek figyelése
 ![Tevékenységek figyelése][6]<br/>
 *Az ügyfélalkalmazás (1) megfigyeli a tevékenységek elvégzésének és sikerességének állapotát, és (2) a tevékenységek eredményadatokat töltenek fel az Azure Storage-ba*
 
@@ -632,9 +600,7 @@ private static async Task<bool> MonitorTasks(
 }
 ```
 
-<a id="step-7-download-task-output" class="xliff"></a>
-
-## 7. lépés: Feladat kimenetének letöltése
+## <a name="step-7-download-task-output"></a>7. lépés: Feladat kimenetének letöltése
 ![Tevékenység kimenetének letöltése a Storage-ból][7]<br/>
 
 Most, hogy a feladat befejeződött, a tevékenységek kimenete letölthető az Azure Storage-ból. Ez a `DownloadBlobsFromContainerAsync` hívásával végezhető el a *DotNetTutorial* `Program.cs` fájljában:
@@ -672,9 +638,7 @@ private static async Task DownloadBlobsFromContainerAsync(
 >
 >
 
-<a id="step-8-delete-containers" class="xliff"></a>
-
-## 8. lépés: Tárolók törlése
+## <a name="step-8-delete-containers"></a>8. lépés: Tárolók törlése
 Mivel az Azure Storage-ban lévő adatok díjkötelesek, mindig célszerű eltávolítani azokat a blobokat, amelyekre már nincs szükség a Batch-feladatokhoz. A DotNetTutorial `Program.cs` fájljában ez a `DeleteContainerAsync` segítőmetódus három hívásával végezhető el:
 
 ```csharp
@@ -705,9 +669,7 @@ private static async Task DeleteContainerAsync(
 }
 ```
 
-<a id="step-9-delete-the-job-and-the-pool" class="xliff"></a>
-
-## 9. lépés: A feladat és a készlet törlése
+## <a name="step-9-delete-the-job-and-the-pool"></a>9. lépés: A feladat és a készlet törlése
 Az utolsó lépésben a rendszer arra kéri, hogy törölje a DotNetTutorial-alkalmazás által létrehozott feladatot és készletet. Bár magukért a munkákért és feladatokért nem kell fizetnie, a számítási csomópontokért *igen*. Ezért ajánlott csak szükség szerint lefoglalni a csomópontokat. A nem használt készletek törlése a karbantartási folyamat része lehet.
 
 A BatchClient [JobOperations][net_joboperations] és [PoolOperations][net_pooloperations] művelete is rendelkezik megfelelő törlési metódusokkal, amelyeket a rendszer meghív, ha a felhasználó megerősíti a törlést:
@@ -735,9 +697,7 @@ if (response != "n" && response != "no")
 >
 >
 
-<a id="run-the-dotnettutorial-sample" class="xliff"></a>
-
-## A *DotNetTutorial*-minta futtatása
+## <a name="run-the-dotnettutorial-sample"></a>A *DotNetTutorial*-minta futtatása
 A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet történik a következőnél a készlet számítási csomópontjainak indításakor: `Awaiting task completion, timeout in 00:30:00...`. Az [Azure Portal][azure_portal] használatával megfigyelheti a készletet, a számítási csomópontokat, a feladatokat és a tevékenységeket a végrehajtás alatt és után. Az [Azure Portallal][azure_portal] vagy az [Azure Storage Explorerrel][storage_explorers] tekintheti meg az alkalmazás által létrehozott tárolási erőforrásokat (tárolókat és blobokat).
 
 A jellemző végrehajtási idő **körülbelül 5 perc**, ha az alapértelmezett konfigurációban futtatja az alkalmazást.
@@ -773,9 +733,7 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Nyugodtan módosítsa a *DotNetTutorial* és a *TaskApplication* elemeket a különböző számítási forgatókönyvekkel való kísérletezéshez. Próbáljon meg például végrehajtási késleltetést adni a *TaskApplication* elemhez, például a [Thread.Sleep][net_thread_sleep] paranccsal, így hosszan futó feladatokat szimulálhat, és megfigyelheti őket a portálon. Próbáljon meg több tevékenységet hozzáadni, vagy módosítani a számítási csomópontok számát. Adja hozzá az ellenőrizni kívánt logikát, és engedélyezze egy meglévő készlet használatát a futtatási idő csökkentéséhez (*tipp*: tekintse meg a [Microsoft.Azure.Batch.Samples.Common][github_samples_common] `ArticleHelpers.cs` elemét az [azure-batch-samples][github_samples] mintákban).
 
 Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch szolgáltatás további funkcióit is áttekintheti.

@@ -12,28 +12,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/21/2017
+ms.date: 07/09/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: b4d5ab66db64a50d1b87edd4bf445e49004e67b4
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 8f83f5d13cb61709653f255c756dc78453073626
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/22/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
-<a id="update-management-solution-in-oms" class="xliff"></a>
-
-# Frissítéskezelési megoldás az OMS-ben
+# <a name="update-management-solution-in-oms"></a>Frissítéskezelési megoldás az OMS-ben
 
 ![Frissítéskezelési szimbólum](./media/oms-solution-update-management/update-management-symbol.png)
 
-Az OMS-beli Frissítéskezelési megoldással Windows és Linux rendszerű számítógépek frissítéseit kezelheti.  Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és elindítható a kiszolgálók szükséges frissítéseinek telepítése is.
+Az OMS-beli frissítéskezelési megoldással az Azure-ban üzembe helyezett Windows és Linux rendszerű számítógépeken, helyszíni környezetekben vagy más felhőszolgáltatóknál kezelheti az operációs rendszer biztonsági frissítéseit.  Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
 
-<a id="solution-overview" class="xliff"></a>
-
-## Megoldás áttekintése
+## <a name="solution-overview"></a>Megoldás áttekintése
 Az OMS által kezelt számítógépek a következők használatával hajtják végre a felméréseket és frissítik az üzemelő példányokat:
 
 * OMS Windows- vagy Linux-ügynök
@@ -41,16 +37,12 @@ Az OMS által kezelt számítógépek a következők használatával hajtják v�
 * Automation hibrid runbook-feldolgozó
 * Microsoft Update vagy Windows Server Update Services Windows-számítógépekhez
 
-Az alábbi ábrák egy koncepcióvázlaton jelenítik meg annak működését és adatfolyamait, hogy a megoldás hogyan értékeli és alkalmazza a frissítéseket egy adott munkaterület minden csatlakoztatott Windows Server- és Linux-számítógépére.    
+Az alábbi ábrák egy koncepcióvázlaton jelenítik meg annak működését és adatfolyamait, hogy a megoldás hogyan értékeli és alkalmazza a biztonsági frissítéseket egy adott munkaterület minden csatlakoztatott Windows Server- és Linux-számítógépén.    
 
-<a id="windows-server" class="xliff"></a>
-
-#### Windows Server
+#### <a name="windows-server"></a>Windows Server
 ![A Windows Server frissítéskezelési folyamatdiagramja](media/oms-solution-update-management/update-mgmt-windows-updateworkflow.png)
 
-<a id="linux" class="xliff"></a>
-
-#### Linux
+#### <a name="linux"></a>Linux
 ![A Linux frissítéskezelési folyamatdiagramja](media/oms-solution-update-management/update-mgmt-linux-updateworkflow.png)
 
 Miután a számítógép futtat egy vizsgálatot a frissítés megfelelőségének ellenőrzésére, az OMS-ügynök kötegelve továbbítja az adatokat az OMS-nek. Windows-számítógépeken a rendszer alapértelmezés szerint 12 óránként elvégzi a megfelelőségi vizsgálatot.  Az ütemezett vizsgálatok mellett a rendszer a Microsoft Monitoring Agent (MMA) ügynök újraindítása esetén, továbbá a frissítések telepítése előtt és után is 15 percen belül végrehajtja a frissítésmegfelelőségi vizsgálatot.  Linux-számítógépeken a rendszer alapértelmezés szerint 3 óránként végzi el a megfelelőségi vizsgálatot, valamint az MMA-ügynök újraindítása után 15 percen belül.  
@@ -61,9 +53,7 @@ A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létreh
 
 A frissítéstelepítésben megadott helyen és időben a célszámítógépek egyszerre hajtják végre a telepítést.  A rendszer először egy vizsgálatot hajt végre, amelynek során ellenőrzi, mely frissítések szükségesek még, és telepíti őket.  Fontos megjegyezni, hogy WSUS-ügyfélszámítógépek esetében sikertelen lesz a frissítéstelepítés, ha a frissítéseket nem hagyja jóvá a WSUS-ben.  Az alkalmazott frissítések eredményeit a rendszer továbbítja az OMS-nek feldolgozásra és összesítésre az irányítópultokon vagy az események keresésével.     
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * A megoldás a frissítések állapotának felmérését Windows Server 2008 vagy újabb, a frissítéstelepítéseket pedig csak Windows Server 2008 R2 SP1 vagy újabb rendszerek esetében támogatja.  A Server Core és a Nano Server telepítési lehetőségek nem támogatottak.
 
     > [!NOTE]
@@ -90,14 +80,10 @@ A frissítéstelepítésben megadott helyen és időben a célszámítógépek e
 
 További információért a Linuxhoz készült OMS-ügynök telepítéséről és a legújabb verzió letöltéséről tekintse meg a [Linuxhoz készült Operations Management Suite-ügynökkel](https://github.com/microsoft/oms-agent-for-linux) kapcsolatos részt.  További információért a Windowshoz készült OMS-ügynök telepítésével kapcsolatban tekintse meg a [Windowshoz készült Operations Management Suite-ügynökkel](../log-analytics/log-analytics-windows-agents.md) kapcsolatos részt.  
 
-<a id="solution-components" class="xliff"></a>
-
-## Megoldás-összetevők
+## <a name="solution-components"></a>Megoldás-összetevők
 Ez a megoldás a következő erőforrásokból áll, amelyek az Automation-fiókjába lesznek felvéve, és ügynökökhöz vagy az Operations Managerhez kapcsolt felügyeleti csoporthoz lesznek közvetlenül hozzákapcsolva.
 
-<a id="management-packs" class="xliff"></a>
-
-### Felügyeleti csomagok
+### <a name="management-packs"></a>Felügyeleti csomagok
 Ha a System Center Operations Manager felügyeleti csoportja össze van kapcsolva egy OMS-munkaterülettel, az alábbi felügyeleti csomagok is telepítve lesznek az Operations Managerben.  Ezeket a felügyeleti csomagokat a megoldás hozzáadását követően a rendszer a közvetlenül kapcsolódó Windows rendszerű számítógépekre is telepíti. A felügyeleti csomagokat nem szükséges konfigurálni vagy felügyelni.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
@@ -106,16 +92,12 @@ Ha a System Center Operations Manager felügyeleti csoportja össze van kapcsolv
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../log-analytics/log-analytics-om-agents.md).
 
-<a id="hybrid-worker-groups" class="xliff"></a>
-
-### Hibridfeldolgozó-csoportok
+### <a name="hybrid-worker-groups"></a>Hibridfeldolgozó-csoportok
 Ha engedélyezi ezt a megoldást, az OMS-munkaterülethez közvetlenül kapcsolódó Windows-számítógépeket a rendszer automatikusan hibrid runbook-feldolgozóként konfigurálja a megoldásban lévő runbookok támogatása érdekében.  Ez az egyes, a megoldás által felügyelt Windows rendszerű számítógépek esetében az Automation-fiók Hibrid Runbook-feldolgozócsoportok paneljén lesz látható a *Gazdanév FQDN_GUID* elnevezési konvenciót követve.  Ezeket a csoportokat nem célozhatja meg, ha runbookok vannak a fiókjában, ellenkező esetben sikertelenek lesznek. Ezek a csoportok csak a felügyeleti megoldást támogatják.   
 
 Azonban a Windows rendszerű számítógépek hozzáadhatóak egy hibrid runbook-feldolgozócsoporthoz az Automation-fiókban az Automation-runbookok támogatása érdekében, ha ugyanazon fiókot használja a megoldáshoz és a hibrid runbook-feldolgozócsoporttagsághoz.  Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.  
 
-<a id="configuration" class="xliff"></a>
-
-## Konfiguráció
+## <a name="configuration"></a>Konfiguráció
 A frissítéskezelési megoldás az OMS-munkaterülethez való hozzáadásához és annak ellenőrzéséhez, hogy az ügynökök készítenek jelentéseket, hajtsa végre az alábbi lépéseket. A munkaterülethez már csatlakoztatott Windows-ügynökök hozzáadása automatikusan, további konfiguráció nélkül történik.
 
 A megoldás a következő módszerekkel helyezhető üzembe:
@@ -125,9 +107,7 @@ A megoldás a következő módszerekkel helyezhető üzembe:
 
 Ha rendelkezik összekapcsolt Automation-fiókkal és OMS munkaterülettel egyazon erőforráscsoportban és régióban, az Automatizálás és vezérlés kiválasztása esetén a rendszer ellenőrzi a konfigurációt, majd telepíti a megoldást és konfigurálja azt a két szolgáltatásban.  A frissítéskezelési megoldás az Azure Marketplace-en való kiválasztása ugyanezt eredményezi.  Ha egyik szolgáltatás sincs telepítve az előfizetésében, kövesse az **Új megoldás létrehozása** panelen leírt lépéseket, és erősítse meg, hogy szeretné telepíteni a többi, előzetesen kiválasztott, ajánlott megoldást.  Hozzáadhatja az OMS-munkaterülethez a frissítéskezelési megoldást. Ehhez kövesse a megoldástárban az [OMS-megoldások hozzáadásával](../log-analytics/log-analytics-add-solutions.md) kapcsolatos témakörben leírt eljárást.  
 
-<a id="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms" class="xliff"></a>
-
-### OMS-ügynökök és Operations Manager felügyeleti csoport az OMS-sel való kapcsolatának ellenőrzése
+### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>OMS-ügynökök és Operations Manager felügyeleti csoport az OMS-sel való kapcsolatának ellenőrzése
 
 Közvetlenül kapcsolódó, Linuxhoz és Windowshoz készült OMS-ügynök az OMS-sel való kommunikációjának ellenőrzéséhez néhány perc után futtathatja a következő naplókeresést:
 
@@ -152,12 +132,8 @@ Az újonnan hozzáadott Linux-ügynökök **Frissítve** állapotúak, miután a
 
 Annak ellenőrzéséhez, hogy egy Operations Manager felügyeleti csoport kommunikál-e az OMS-szel, tekintse meg az [Operations Manager és az OMS integrációjának ellenőrzésével](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms) kapcsolatos részt.
 
-<a id="data-collection" class="xliff"></a>
-
-## Adatgyűjtés
-<a id="supported-agents" class="xliff"></a>
-
-### Támogatott ügynökök
+## <a name="data-collection"></a>Adatgyűjtés
+### <a name="supported-agents"></a>Támogatott ügynökök
 Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
@@ -167,32 +143,24 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 | Az Operations Manager felügyeleti csoportja |Igen |A megoldás információt szerez be a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről.<br>Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynök és a Log Analytics között. Az adatok a felügyeleti csoportból az OMS-tárházba lesznek továbbítva. |
 | Azure Storage-fiók |Nem |Az Azure Storage nem tartalmaz rendszerfrissítésekkel kapcsolatos információt. |
 
-<a id="collection-frequency" class="xliff"></a>
-
-### A gyűjtés gyakorisága
+### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 Minden felügyelt Windows-számítógép esetében naponta kétszer történik vizsgálat. A rendszer 15 percenként lekérdezi a Windows API utolsó frissítésének időpontját, hogy meghatározza, megváltozott-e az állapot, és ha igen, megfelelőségi vizsgálatot kezdeményez.  Linux-számítógépek esetében a vizsgálat három óránként történik.
 
 30 perctől akár 6 óráig is eltarthat, amíg megjelennek a felügyelt számítógépekből származó frissített adatok az irányítópulton.   
 
-<a id="using-the-solution" class="xliff"></a>
-
-## A megoldás használata
+## <a name="using-the-solution"></a>A megoldás használata
 A Frissítéskezelési megoldás hozzáadásakor az OMS-munkaterületen a **Frissítéskezelés** csempe felkerül az OMS-irányítópultra. Ez a csempe a környezetben jelenleg elérhető számítógépek számát és grafikus ábrázolását jeleníti meg, valamint a frissítési megfelelőségi állapotukat.<br><br>
 ![Frissítéskezelés – áttekintő csempe](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 
-<a id="viewing-update-assessments" class="xliff"></a>
-
-## A frissítési felmérések megtekintése
+## <a name="viewing-update-assessments"></a>A frissítési felmérések megtekintése
 A **Frissítéskezelés** irányítópultjának megnyitásához kattintson a **Frissítéskezelés** csempére.<br><br> ![Frissítéskezelés – áttekintő irányítópult](./media/oms-solution-update-management/update-management-dashboard.png)<br>
 
 Az irányítópult részletes áttekintést kínál a frissítési állapotokról az operációs rendszer típusa és frissítési besorolása alapján kategorizálva – kritikus, biztonsági vagy egyéb (például egy definíciófrissítés). A **Frissítéstelepítések** csempe kijelölésekor a rendszer átirányítja a Frissítéstelepítések oldalra, ahol megtekintheti az ütemezéseket, az aktuálisan futó telepítéseket, a befejezett telepítéseket, vagy ütemezhet új telepítést.  
 
 Futtathat naplókeresést, amely minden bejegyzést visszaad a megfelelő csempére kattintva. Egy adott kategória és előre meghatározott feltételek lekérdezéséhez válasszon a **Gyakori frissítési lekérdezések** oszlop alatt elérhető listából.    
 
-<a id="installing-updates" class="xliff"></a>
-
-## Frissítések telepítése
+## <a name="installing-updates"></a>Frissítések telepítése
 A munkaterületen található összes Linux- és Windows-számítógép frissítésének felmérését követően a szükséges frissítések telepítését egy *frissítéstelepítés* létrehozásával végezheti el.  A frissítéstelepítés egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése.  Ehhez adja meg a telepítés dátumát és idejét, valamint meg kell határoznia a telepítésben érintett számítógépet vagy számítógépcsoportot.  A számítógépcsoportokkal kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjaival](../log-analytics/log-analytics-computer-groups.md) kapcsolatos részt.  Ha számítógépcsoportok szerepelnek a frissítéstelepítésben, a csoporttagságot csak egyszer, az ütemezés létrehozásakor méri fel a rendszer.  A csoportot érintő későbbi változások nem jelennek meg.  Ennek megoldásához törölje az ütemezett frissítéstelepítést, és hozza ismét létre.
 
 > [!NOTE]
@@ -200,9 +168,7 @@ A munkaterületen található összes Linux- és Windows-számítógép frissít
 
 Az Azure Marketplace-en elérhető, igény szerinti Red Hat Enterprise Linux- (RHEL-) rendszerképekből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) eléréséhez.  Minden más Linux-változatot a disztribúciók online fájltárolójából kell frissíteni, a támogatott eljárásokat követve.  
 
-<a id="viewing-update-deployments" class="xliff"></a>
-
-### Frissítéstelepítések megtekintése
+### <a name="viewing-update-deployments"></a>Frissítéstelepítések megtekintése
 Az elérhető frissítéstelepítések listáját a **Frissítéstelepítés** csempére kattintva tekintheti meg.  A lista a frissítések állapota szerinti csoportosításban jelenik meg: **Ütemezett**, **Futó** és **Befejezett**.<br><br> ![Frissítéstelepítési ütemezési lap](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
 
 A frissítéstelepítések tulajdonságait az alábbi táblázat ismerteti.
@@ -228,9 +194,7 @@ Egy befejezett frissítéstelepítést kijelölve megjeleníthető a részletes 
 | Windows-frissítések |A frissítéstelepítésben érintett Windows-frissítéseket és telepítési állapotukat listázza frissítésenként.  Egy frissítést kiválasztva futtathat egy naplókeresést, amely minden, az adott frissítéssel kapcsolatos frissítési bejegyzést visszaad, vagy kattintson az állapotra egy naplókeresés futtatásához, amely minden, a telepítéssel kapcsolatos frissítési bejegyzést visszaad. |
 | Linux-frissítések |A frissítéstelepítésben érintett Linux-frissítéseket és telepítési állapotukat listázza frissítésenként.  Egy frissítést kiválasztva futtathat egy naplókeresést, amely minden, az adott frissítéssel kapcsolatos frissítési bejegyzést visszaad, vagy kattintson az állapotra egy naplókeresés futtatásához, amely minden, a telepítéssel kapcsolatos frissítési bejegyzést visszaad. |
 
-<a id="creating-an-update-deployment" class="xliff"></a>
-
-### Frissítéstelepítés létrehozása
+### <a name="creating-an-update-deployment"></a>Frissítéstelepítés létrehozása
 Új frissítéstelepítés létrehozásához a képernyő felső részében kattintson a **Hozzáadás** gombra az **Új telepítésfrissítés** lap megnyitásához.  Az alábbi táblázatban szereplő tulajdonságok értékeit kell megadnia.
 
 | Tulajdonság | Leírás |
@@ -244,21 +208,15 @@ Egy befejezett frissítéstelepítést kijelölve megjeleníthető a részletes 
 
 <br><br> ![Új frissítéstelepítés lapja](./media/oms-solution-update-management/update-newupdaterun-page.png)
 
-<a id="time-range" class="xliff"></a>
-
-### Időtartomány
+### <a name="time-range"></a>Időtartomány
 A Frissítéskezelési szolgáltatás adatelemzése alapértelmezés szerint a legutóbbi egy nap során felderített csatlakoztatott felügyeleti csoportokra terjed ki.
 
 Az adatokra vonatkozó időtartomány módosításához válassza ki az irányítópult tetején látható **Az adatok időtartománya** elemet. Itt meghatározhatja, hogy milyen időtartományban létrehozott vagy módosított adatok legyenek használva: legutóbbi 7 nap, 1 nap vagy 6 óra. Az **Egyéni** lehetőség választásával egyéni dátumtartományt is megadhat.
 
-<a id="log-analytics-records" class="xliff"></a>
-
-## Log Analytics-rekordok
+## <a name="log-analytics-records"></a>Log Analytics-rekordok
 A Frissítéskezelési megoldás két rekordtípust hoz létre az OMS-adattárban.
 
-<a id="update-records" class="xliff"></a>
-
-### Update típusú rekordok
+### <a name="update-records"></a>Update típusú rekordok
 Az egyes számítógépekhez szükséges vagy telepített minden egyes frissítéshez egy**Update** (frissítés) típusú rekord készül. Az Update típusú rekordok tulajdonságait az alábbi táblázat ismerteti.
 
 | Tulajdonság | Leírás |
@@ -299,9 +257,7 @@ A **Táblázat** nézetben bármely rekord **KBID** tulajdonságára kattintva a
 
 ![Naplókeresés, lista nézet csempékkel, frissítések típusú rekorddal](./media/oms-solution-update-management/update-la-view-list.png)
 
-<a id="updatesummary-records" class="xliff"></a>
-
-### UpdateSummary típusú rekordok
+### <a name="updatesummary-records"></a>UpdateSummary típusú rekordok
 Minden Windows-ügynök esetében egy **UpdateSummary** típusú rekord készül. Ez a rekord minden olyan alkalommal frissül, amikor a számítógépen frissítéskeresés történik. Az **UpdateSummary** típusú rekordok tulajdonságait az alábbi táblázat ismerteti.
 
 | Tulajdonság | Leírás |
@@ -324,9 +280,7 @@ Minden Windows-ügynök esetében egy **UpdateSummary** típusú rekord készül
 | WindowsUpdateSetting |A fontos frissítések telepítésének módját meghatározó beállítás a számítógépen.<br>Lehetséges értékek:<br>– Disabled (Letiltva)<br>– Notify before installation (Értesítés telepítés előtt)<br>– Scheduled installation (Ütemezett telepítése) |
 | WSUSServer |A WSUS-kiszolgálóra mutató URL, ha a számítógép konfigurálásában meg van adva ennek használata. |
 
-<a id="sample-log-searches" class="xliff"></a>
-
-## Naplókeresési minták
+## <a name="sample-log-searches"></a>Naplókeresési minták
 A következő táblázat a megoldás által összegyűjtött frissítési rekordokkal kapcsolatos naplókeresési mintákat tartalmazza.
 
 | Lekérdezés | Leírás |
@@ -353,22 +307,16 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 | Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |Az ebben a frissítésfuttatásban frissített számítógépek (cserélje le az értéket a saját frissítéstelepítésének nevére) | 
 | Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |Minden olyan Ubuntu-gép, amelyhez bármilyen frissítés érhető el | 
 
-<a id="troubleshooting" class="xliff"></a>
-
-## Hibaelhárítás
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ebben a szakaszban arról talál információkat, hogyan háríthatja el a frissítéskezelési megoldásban felmerülő hibákat.  
 
-<a id="how-do-i-troubleshoot-update-deployments" class="xliff"></a>
-
-### Hogyan háríthatom el a frissítéstelepítési hibákat?
+### <a name="how-do-i-troubleshoot-update-deployments"></a>Hogyan háríthatom el a frissítéstelepítési hibákat?
 Megtekintheti a frissítések telepítéséért felelős runbook eredményeit. Ezek az ezt a megoldást támogató OMS-munkaterülettel összekapcsolt Automation-fiókjának Feladatok paneljén, az ütemezett frissítéstelepítésekben találhatóak.  A **Patch-MicrosoftOMSComputer** runbook egy gyermekrunbook, amely egy megadott, felügyelt számítógépet céloz meg. A részletes stream áttekintése részletes információt jelenít meg erről a telepítésről.  A kimenet megjeleníti, mely szükséges frissítések alkalmazhatóak, valamint mutatja a letöltési állapotot, a telepítési állapotot és további részleteket.<br><br> ![Frissítéstelepítési feladat állapota](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
 
 További információért tekintse meg az [Automation runbook-kimeneteivel és -üzeneteivel](../automation/automation-runbook-output-and-messages.md) kapcsolatos részt.   
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-searches.md) Naplókeresés funkciójával is megtekintheti.
 * [Saját irányítópult létrehozásával](../log-analytics/log-analytics-dashboards.md) megjelenítheti a felügyelt számítógépek frissítési megfelelőségét.
 * [Létrehozhat riasztásokat](../log-analytics/log-analytics-alerts.md) a számítógépekről hiányzó kritikus frissítések jelzésére vagy arra az estre, ha egy számítógép automatikus frissítése letiltott állapotba kerül.  

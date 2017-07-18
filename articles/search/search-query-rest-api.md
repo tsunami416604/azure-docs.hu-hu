@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Search-index lekérdezése a REST API használatával | Microsoft Docs"
+title: "Index lekérdezése (REST API – Azure Search) | Microsoft Docs"
 description: "Létrehozhat keresési lekérdezést az Azure Search szolgáltatásban, a keresési eredmények szűrését és rendezését pedig keresési paraméterek használatával végezheti el."
 services: search
 documentationcenter: 
@@ -13,17 +13,15 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/12/2017
 ms.author: ashmaka
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 1976a514b4469704dcba9381c5fcbe8805a11ecd
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 07/12/2017
 
 ---
 
-<a id="query-your-azure-search-index-using-the-rest-api" class="xliff"></a>
-
-# Az Azure Search-index lekérdezése a REST API használatával
+# <a name="query-your-azure-search-index-using-the-rest-api"></a>Az Azure Search-index lekérdezése a REST API használatával
 > [!div class="op_single_selector"]
 >
 > * [Áttekintés](search-query-overview.md)
@@ -37,9 +35,7 @@ Ebből a cikkből megtudhatja, hogyan történik egy index lekérdezése az [Azu
 
 A bemutató elindítása előtt [létre kell hoznia egy Azure Search-indexet](search-what-is-an-index.md), majd [fel kell töltenie azt adatokkal](search-what-is-data-import.md). Háttér-információkért lásd: [A teljes szöveges keresés működése az Azure Search szolgáltatásban](search-lucene-query-architecture.md).
 
-<a id="identify-your-azure-search-services-query-api-key" class="xliff"></a>
-
-## Azonosítsa az Azure Search szolgáltatás lekérdezési API-kulcsát
+## <a name="identify-your-azure-search-services-query-api-key"></a>Azonosítsa az Azure Search szolgáltatás lekérdezési API-kulcsát
 Az Azure Search REST API-ján végrehajtott keresési műveletek egyik fontos eleme az Ön által üzembe helyezett szolgáltatás számára létrehozott *API-kulcs*. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 1. A szolgáltatás API-kulcsainak megkereséséhez bejelentkezhet az [Azure Portalra](https://portal.azure.com/).
@@ -53,9 +49,7 @@ A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* rend
 
 Indexlekérdezéshez a lekérdezési kulcsok egyikét használhatja. A rendszergazdai kulcsok szintén használhatók a lekérdezésekhez, az alkalmazáskódban azonban inkább lekérdezési kulcsot használjon, mivel ez a módszer jobban követi a [legalacsonyabb jogosultsági szint elvét](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
-<a id="formulate-your-query" class="xliff"></a>
-
-## A lekérdezés meghatározása
+## <a name="formulate-your-query"></a>A lekérdezés meghatározása
 Kétféleképpen [keresheti meg az indexet a REST API használatával](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Az egyik lehetőség egy HTTP POST kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kéréstörzs JSON-objektumában. A másik lehetőség egy HTTP GET kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kérés URL-címén belül. A lekérdezési paraméterek méretének tekintetében a POST több [enyhe korlátozással](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) rendelkezik, mint a GET. Éppen ezért a POST használatát javasoljuk, hacsak nem állnak fenn olyan speciális körülmények, amelyek a GET használatát kényelmesebbé tennék.
 
 A POST és a GET esetében egyaránt meg kell majd adnia a *szolgáltatás nevét*, az *index nevét*, valamint a megfelelő *API-verziót* (a jelen dokumentum kiadásakor érvényes API-verzió: `2016-09-01`) a kérés URL-címében. A GET esetében a lekérdezési paramétereket az URL-cím végén található *lekérdezési karakterláncban* kell megadni. Az URL-cím formátuma alább látható:
@@ -64,9 +58,7 @@ A POST és a GET esetében egyaránt meg kell majd adnia a *szolgáltatás nevé
 
 A POST esetében a formátum ugyanez, azzal a kiegészítéssel, hogy a lekérdezési karakterlánc paraméterei között csak az API-verzió szerepel.
 
-<a id="example-queries" class="xliff"></a>
-
-#### Példa a lekérdezésekre
+#### <a name="example-queries"></a>Példa a lekérdezésekre
 Alább néhány példa látható a „hotels” nevű index lekérdezéseire. Ezek a lekérdezések GET- és POST-formátumban is megtekinthetők.
 
 A teljes indexben keres a „budget” kifejezésre, és csak a `hotelName` mezőt adja vissza:
@@ -108,14 +100,10 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-<a id="submit-your-http-request" class="xliff"></a>
-
-## A HTTP-kérés elküldése
+## <a name="submit-your-http-request"></a>A HTTP-kérés elküldése
 Azt követően, hogy meghatározta a lekérdezést a HTTP-kérés (GET esetében) URL-címének vagy (POST esetében) törzsének részeként, megadhatja a kérésfejléceket, majd elküldheti a lekérdezést.
 
-<a id="request-and-request-headers" class="xliff"></a>
-
-#### Kérés és kérésfejlécek
+#### <a name="request-and-request-headers"></a>Kérés és kérésfejlécek
 A GET esetében kettő, a POST esetében három kérésfejlécet kell meghatároznia:
 
 1. Az `api-key` fejléc beállításának a fenti I. lépésben található lekérdezési kulcsnak kell lennie. Az `api-key` fejléceként rendszergazdai kulcsot is használhat, javasolt azonban a lekérdezési kulcs használata, mivel az kizárólag csak olvasási hozzáférést biztosít az indexekhez és a dokumentumokhoz.

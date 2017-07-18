@@ -1,6 +1,6 @@
 ---
 title: "Partnerintegráció az Azure Security Centerben | Microsoft Docs"
-description: "Ez a dokumentum ismerteti, hogy az Azure Security Center hogyan integrálható a partnerekkel az Azure-erőforrások általános biztonságának növelése érdekében."
+description: "Megtudhatja, hogy az Azure Security Center hogyan integrálható a partnerekkel az Azure-erőforrások általános biztonságának növelése érdekében."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,80 +14,71 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
-ms.openlocfilehash: 85460ea37d251b53074de9d832610d253700f2c1
+ms.translationtype: HT
+ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
+ms.openlocfilehash: 4d0909e926de14a0cbe9799b969ac7a1946d69d1
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/24/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
-<a id="partner-integration-in-azure-security-center" class="xliff"></a>
+# <a name="partner-integration-in-azure-security-center"></a>Partnerintegráció az Azure Security Centerben
 
-# Partnerintegráció az Azure Security Centerben
-Ez a dokumentum ismerteti, hogy az Azure Security Center hogyan integrálható a partnerekkel az Azure-erőforrások általános biztonságának növelése és integrált Azure-élmény nyújtása érdekében, és hogyan használja ki az Azure Marketplace partnertanúsítványainak és számlázási funkcióinak előnyeit.
+Ebben a cikkben leírjuk, hogy az Azure Security Center hogyan integrálható a partnerekkel az általános biztonság növelése érdekében. A Security Center integrált Azure-felületet kínál, és kihasználja az Azure Marketplace partnertanúsítványainak és számlázási funkcióinak előnyeit.
 
->[!NOTE] 
->2017 júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
+> [!NOTE] 
+> 2017 júniusától a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További információk: [Az Azure Security Center platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
 >
 
-<a id="why-deploy-partners-solutions-from-security-center" class="xliff"></a>
-
-## Miért érdemes a partnermegoldásokat a Security Centerből üzembe helyezni?
+## <a name="why-deploy-partner-solutions-from-security-center"></a>Miért érdemes a Security Centerből üzembe helyezni a partnermegoldásokat?
 
 A négy fő érv a Security Center partnerintegrációjának használata mellett:
 
-- **Egyszerű telepítés**: A Security Center javaslatait követve sokkal egyszerűbb üzembe helyezni a partnermegoldást. Az üzembe helyezési folyamat történhet teljesen automatikusan alapértelmezett konfigurációt és hálózati topológiát használva, vagy az ügyfelek választhatják a félig automatikus lehetőséget is, amellyel a konfiguráció rugalmasabb és testre szabható.
-- **Integrált észlelések**: A partnermegoldásoktól érkező biztonsági eseményeket a rendszer automatikusan összegyűjti, összesíti és megjeleníti a Security Center riasztásainak és incidenseinek részeként. Ezek az események más forrásoktól érkező észlelésekhez is kapcsolódnak, ami fejlett fenyegetésészlelési képességeket biztosít.
-- **Egyesített állapotfigyelés és -kezelés**: Az integrált állapotesemények lehetővé teszik az ügyfelek számára az összes partnermegoldás gyors áttekintését. Az alapszintű felügyeletből könnyen elérhető a speciális konfiguráció a partnermegoldás használatával.
-- **Exportálás SIEM-be**: Az ügyfelek mostantól CEF formátumban exportálhatják az összes Security Center- és partnerriasztást helyszíni SIEM rendszerekbe a Microsoft Azure Log Integration (előzetes verzió) használatával
+- **Egyszerű üzembe helyezés**. A Security Center javaslatait követve sokkal egyszerűbb üzembe helyezni a partnermegoldást. Az üzembehelyezési folyamat teljesen automatizálható egy alapértelmezett beállítás és hálózati topológia használatával. Az ügyfelek választhatják a félig automatikus lehetőséget is, amely rugalmasabb és nagyobb mértékben testre szabható.
+- **Integrált észlelések**. A partnermegoldásoktól érkező biztonsági eseményeket a rendszer automatikusan összegyűjti, összesíti és megjeleníti a Security Center riasztásainak és incidenseinek részeként. Ezek az események más forrásoktól érkező észlelésekhez is kapcsolódnak, ami fejlett fenyegetésészlelési képességeket biztosít.
+- **Egyesített állapotmonitorozás és -kezelés**. Az integrált állapotesemények lehetővé teszik az összes partnermegoldás gyors monitorozását. Az alapszintű felügyeletből könnyen elérhető a speciális beállítás a partnermegoldás használatával.
+- **Exportálás SIEM-be**. Az ügyfelek Common Event Format (CEF) formátumban exportálhatják az összes Security Center- és partnerriasztást helyszíni Biztonságiadat- és eseménykezelés (SIEM) rendszerekbe az Azure Log Integration (előzetes verzió) használatával.
 
 
-<a id="what-partners-are-integrated-with-security-center" class="xliff"></a>
+## <a name="partners-that-integrate-with-security-center"></a>Security Center-integrációt kínáló partnerek
 
-## Mely partnerek integrálhatók a Security Centerrel?
-A Security Center jelenleg a következő megoldásokkal integrálható:
+A Security Center jelenleg ezekkel a megoldásokkal van integrálva:
 
-- Végpontvédelem ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), Symantec, [Microsoft Antimalware Azure-hoz](https://docs.microsoft.com/azure/security/azure-security-antimalware)) 
-- Webalkalmazás-tűzfal ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets) és [App Gateway WAF](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/)) 
-- Újgenerációs tűzfalmegoldások ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/) és hamarosan [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2) és [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)) 
-- Sebezhetőség-felmérés ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
+- Végpontvédelem ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), Symantec és [Microsoft Antimalware az Azure Cloud Services és Virtual Machines szolgáltatásokhoz](https://docs.microsoft.com/azure/security/azure-security-antimalware)) 
+- Webalkalmazás-tűzfal ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets) és [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/)) 
+- Új generációs tűzfalmegoldások ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2) és [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)) 
+- Biztonságirés-felmérés ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
 
-Idővel a Security Center kibővíti a partnerek számát a meglévő kategóriákban, és új kategóriák is elérhetők lesznek. 
+A Security Center tervezi a kategóriákhoz tartozó partnerek bővítését, és új kategóriák is elérhetők lesznek. 
 
-<a id="how-to-deploy-a-partner-solution" class="xliff"></a>
+## <a name="deploy-a-partner-solution"></a>Partnermegoldás üzembe helyezése
 
-## Hogyan helyezhetők üzembe a partnermegoldások?
+Az Azure-környezet beállítása és az Ön által meghatározott biztonsági szabályzat alapján a Security Center javasolhatja egy partnermegoldás üzembe helyezését. A Security Centerre vonatkozó javaslatok végigvezetik a partnermegoldás kiválasztásának és telepítésének folyamatán. Az általános üzembehelyezési folyamat az adott megoldástípusnak és a használt partnernek megfelelően eltérő lehet. További információkért tekintse át a következő cikkeket:
 
-Az Azure-környezet konfigurációja és az Ön által meghatározott biztonsági szabályzat alapján a Security Center javasolhatja egy partnermegoldás üzembe helyezését. A javaslatok végigvezetik a partnermegoldás kiválasztásának és telepítésének folyamatán. Az általános üzembe helyezési folyamat az adott megoldástípusnak és partnernek megfelelően eltérő lehet. További információért kövesse az alábbi hivatkozásokat:
-
+- [Végpontvédelem telepítése](security-center-install-endpoint-protection.md)
 - [Webalkalmazási tűzfal hozzáadása](security-center-add-web-application-firewall.md)
-- [Újgenerációs tűzfal hozzáadása](security-center-add-next-generation-firewall.md)
-- [Endpoint Protection telepítése](security-center-install-endpoint-protection.md)
+- [Új generációs tűzfal hozzáadása](security-center-add-next-generation-firewall.md)
 - [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md)
 
-<a id="how-to-manage-partner-solutions" class="xliff"></a>
+## <a name="manage-partner-solutions"></a>A partnermegoldások kezelése
 
-## A partnermegoldások kezelése
-
-Miután a partnermegoldást üzembe helyezte, információkat tekinthet meg az állapotáról, és alapszintű felügyeleti feladatokat végezhet a Security Center fő irányítópultjának Partnermegoldás csempéjén. A partnermegoldások Security Centerben végzett kezelésével kapcsolatos további információkért tekintse meg a [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) című cikket.
+Az üzembe helyezés után a megoldás állapotinformációinak megtekintéséhez és alapszintű felügyeleti feladatok elvégzéséhez a **Security Center** panelen válassza a **Partnermegoldások** csempét. A partnermegoldások Security Centerben való kezelésével kapcsolatos további információkért tekintse meg a [Partnermegoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) című cikket.
 
 ![Partnerintegráció](./media/security-center-partner-integration/security-center-partner-integration-fig1-1-newUI.png)
 
 > [!NOTE]
-> A Symantec Endpoint Protection támogatása a felderítésre korlátozott, állapotriasztások azonban nem érhetők el.
+> A Symantec Endpoint Protection támogatása a felderítésre korlátozódik. Az állapotriasztások nem érhetők el.
 >
 
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>Lásd még:
 
-## Lásd még:
-Ebben a dokumentumban megismerkedett a partnermegoldások az Azure Security Centerrel való integrációjával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+Ebben a cikkben megismerkedett a partnermegoldások Azure Security Centerrel való integrációjával. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
-* [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
-* [Biztonsági riasztások típus szerint az Azure Security Centerben](security-center-alerts-type.md)
-* [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
-* [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
-* [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Útmutató a Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
+* [A biztonsági riasztások kezelése és a riasztásokra való válaszadás a Security Centerben](security-center-managing-and-responding-alerts.md)
+* [Biztonsági riasztások típus szerint a Security Centerben](security-center-alerts-type.md)
+* [Biztonsági állapot monitorozása a Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
+* [Partnermegoldások monitorozása a Security Centerrel](security-center-partner-solutions.md). A partnermegoldások állapotának figyelését ismertető útmutató.
+* [Azure Security Center – gyakori kérdések](security-center-faq.md) Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
+* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 

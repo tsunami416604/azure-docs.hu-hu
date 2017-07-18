@@ -10,31 +10,25 @@ ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 06/19/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 7bbf70786bff83ad3cfae9cb9b893f41736874b5
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: 2b81b9e1ae2abfd332bd6048b7643b4245ca374b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/13/2017
 
 ---
 
-<a id="create-an-azure-database-for-postgresql-in-the-azure-portal" class="xliff"></a>
-
-# Azure-adatbázis létrehozása PostgreSQL-hez az Azure Portalon
+# <a name="create-an-azure-database-for-postgresql-in-the-azure-portal"></a>Azure-adatbázis létrehozása PostgreSQL-hez az Azure Portalon
 
 A PostgreSQL-hez készült Azure Database felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure-adatbázist PostgreSQL-kiszolgálóhoz az Azure Portal használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-<a id="log-in-to-the-azure-portal" class="xliff"></a>
-
-## Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-<a id="create-an-azure-database-for-postgresql" class="xliff"></a>
-
-## Azure-adatbázis létrehozása PostgreSQL-hez
+## <a name="create-an-azure-database-for-postgresql"></a>Azure-adatbázis létrehozása PostgreSQL-hez
 
 Az Azure-adatbázis PostgreSQL-kiszolgálóhoz [számítási és tárolási erőforrások](./concepts-compute-unit-and-storage.md) egy meghatározott készletével együtt jön létre. A kiszolgáló egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül jön létre.
 
@@ -67,9 +61,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
    
   Alapértelmezés szerint a **postgres** adatbázis a kiszolgáló alatt jön létre. A [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) adatbázis egy alapértelmezett adatbázis, amelyet a felhasználók, segédprogramok és külső féltől származó alkalmazások általi használatra szántak. 
 
-<a id="configure-a-server-level-firewall-rule" class="xliff"></a>
-
-## Kiszolgálószintű tűzfalszabály konfigurálása
+## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
 
 Az Azure-adatbázis PostgreSQL-hez szolgáltatás a kiszolgáló szintjén hoz létre tűzfalat. Ez a tűzfal megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha olyan tűzfalszabályt hoz létre, amely adott IP-címek számára megnyitja a tűzfalat. 
 
@@ -88,9 +80,7 @@ Az Azure-adatbázis PostgreSQL-hez szolgáltatás a kiszolgáló szintjén hoz l
   > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben addig nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, amíg az informatikai részleg nem nyitja meg az 5432-es portot.
   >
 
-<a id="get-the-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
+## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
 Az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásakor, az alapértelmezett **postgres** adatbázis is létrejön. A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat.
 
@@ -103,9 +93,7 @@ Az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásakor, az alapértelme
 
  ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló-rendszergazdai bejelentkezés](./media/quickstart-create-database-portal/6-server-name.png)
 
-<a id="connect-to-postgresql-database-using-psql-in-cloud-shell" class="xliff"></a>
-
-## Csatlakozás a PostgreSQL-adatbázishoz a psql használatával a Cloud Shell-ben
+## <a name="connect-to-postgresql-database-using-psql-in-cloud-shell"></a>Csatlakozás a PostgreSQL-adatbázishoz a psql használatával a Cloud Shell-ben
 
 Használjuk a psql parancssori segédprogramot az Azure-adatbázis PostgreSQL-kiszolgálóhoz való kapcsolódáshoz. 
 1. Indítsa el az Azure Cloud Shell-t a felső navigációs ablakban található terminálikonnal.
@@ -116,12 +104,12 @@ Használjuk a psql parancssori segédprogramot az Azure-adatbázis PostgreSQL-ki
 
    ![Azure-adatbázis PostgreSQL-hez - Azure Shell Bash parancssor](./media/quickstart-create-database-portal/8-bash.png)
 
-3. A Cloud Shell parancssornál csatlakozzon az Azure-adatbázis PostgreSQL-kiszolgálóhoz a psql-parancsok használatával. A következő formátum segítségével kapcsolódhat egy [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal rendelkező Azure-adatbázis PostgreSQL-kiszolgálóhoz:
+3. A Cloud Shell parancssornál csatlakozzon az Azure-adatbázis PostgreSQL-kiszolgálóhoz. Ehhez írja be a psql parancsot a parancssorba. A következő formátum segítségével kapcsolódhat egy [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal rendelkező Azure-adatbázis PostgreSQL-kiszolgálóhoz:
    ```bash
    psql --host=<myserver> --port=<port> --username=<server admin login> --dbname=<database name>
    ```
 
-   Például a következő parancs a **postgres** nevű alapértelmezett adatbázishoz kapcsolódik a PostgreSQL-kiszolgálón **mypgserver-20170401.postgres.database.azure.com** a hozzáférési hitelesítő adatok használatával. Adja meg a kiszolgáló-rendszergazdai jelszavát, amikor a rendszer kéri.
+   Például a következő parancs a **postgres** nevű alapértelmezett adatbázishoz kapcsolódik a PostgreSQL-kiszolgálón **mypgserver-20170401.postgres.database.azure.com** a hozzáférési hitelesítő adatok használatával. A csatlakozáskor mindig használja az **5432-es** portot. Adja meg a kiszolgáló-rendszergazdai jelszavát, amikor a rendszer kéri. Tegyen szóközöket a parancsban a --kapcsolók közé az itt látható módon, de ne használjon szóközöket az egyenlőségjelek és a paraméterértékek között.
 
    ```bash
    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
@@ -136,9 +124,7 @@ CREATE DATABASE mypgsqldb;
 \c mypgsqldb
 ```
 
-<a id="connect-to-postgresql-database-using-pgadmin" class="xliff"></a>
-
-## Csatlakozás a PostgreSQL-adatbázishoz a pgAdmin használatával
+## <a name="connect-to-postgresql-database-using-pgadmin"></a>Csatlakozás a PostgreSQL-adatbázishoz a pgAdmin használatával
 
 Kapcsolódás az Azure PostgreSQL-kiszolgálóhoz a _pgAdmin_ GUI-eszköz használatával
 1.  Indítsa el a MySQL _pgAdmin_ alkalmazást az ügyfélszámítógépen. A _pgAdmin-t_ http://www.pgadmin.org/ oldalról telepítheti.
@@ -168,9 +154,7 @@ Kapcsolódás az Azure PostgreSQL-kiszolgálóhoz a _pgAdmin_ GUI-eszköz haszn�
  ![pgAdmin - Create - Database](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Távolítsa el a rövid útmutató során létrehozott összes erőforrást az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) törlésével.
 
 > [!TIP]
@@ -184,9 +168,7 @@ Ha csak az újonnan létrehozott kiszolgálót szeretné törölni:
 2.  Az Áttekintés lap felső paneljén kattintson a Törlés gombra![Azure-adatbázis PostgreSQL-hez - Kiszolgáló törlése](./media/quickstart-create-database-portal/12-delete.png)
 3.  Erősítse meg a törölni kívánt kiszolgáló nevét, és jelenítse meg az érintett adatbázisokat. Írja be a **mypgserver-20170401** szöveget a szövegmezőbe, és kattintson a Törlés gombra.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)
 

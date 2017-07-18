@@ -22,9 +22,11 @@ Az átjárók új termékváltozatai egyszerűbbé teszik az átjárókon elérh
 
 | **Termékváltozat**| **Szolgáltatások**|
 | ---    | ---         |
-| VpnGw1<br>VpnGw2<br>VpnGw3|Útvonalalapú VPN akár 30 alagúttal* <br>P2S, BGP, aktív-aktív, egyéni IPsec/IKE-házirend, ExpressRoute/ VPN együttes jelenléte <br><br>* A „PolicyBasedTrafficSelectors” konfigurálásával egy útvonalalapú VPN-átjárót (VpnGw1, VpnGw2, VpnGw3) több helyszíni házirendalapú tűzfal-eszközhöz csatlakoztathat. További részletekért tekintse meg a [VPN-átjárók több helyszíni házirendalapú VPN-eszközhöz való csatlakoztatása a PowerShellel](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) című cikket. |
-|Basic   | Útvonalalapú: 10 alagút P2S-sel<br>Házirend-alapú (IKEv1): 1 alagút, P2S nélkül|
+|Alapszintű   | Útvonalalapú: 10 alagút P2S-sel<br>Házirend-alapú (IKEv1): 1 alagút, P2S nélkül|
+| VpnGw1, VpnGw2, VpnGw3 |Útvonalalapú VPN legfeljebb 30 alagúttal (*) <br>P2S, BGP, aktív-aktív, egyéni IPsec/IKE-házirend, ExpressRoute/ VPN együttes jelenléte |
 |        |             |
+
+(*) A „PolicyBasedTrafficSelectors” paraméter konfigurálásával egy útvonalalapú VPN-átjárót (VpnGw1, VpnGw2, VpnGw3) több helyszíni, házirendalapú tűzfaleszközhöz is csatlakoztathat. További részletekért tekintse meg a [VPN-átjárók több helyszíni házirendalapú VPN-eszközhöz való csatlakoztatása a PowerShellel](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) című cikket.
 
 ###  <a name="resize"></a>Az átjárók termékváltozatainak átméretezése
 

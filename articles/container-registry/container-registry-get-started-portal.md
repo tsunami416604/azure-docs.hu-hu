@@ -17,19 +17,18 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e74c5428f0e31d9d3cf06b85aa8cefde868e9d67
-ms.lasthandoff: 03/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 2cd5a08cc74473be594fc3c7a4fb934d65ffe0ab
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/12/2017
 
 ---
 
 # <a name="create-a-private-docker-container-registry-using-the-azure-portal"></a>Privát Docker-tárolójegyzék létrehozása az Azure Portalon
-Az Azure Portalon létrehozhat egy tároló-beállításjegyzéket, és kezelheti a beállításait. A tároló-beállításjegyzékeket létrehozhatja és kezelheti az [Azure CLI 2.0 parancsaival](container-registry-get-started-azure-cli.md) vagy programozott módon a tároló-beállításjegyzék [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=834376) is.
+Az Azure Portalon létrehozhat egy tároló-beállításjegyzéket, és kezelheti a beállításait. A tárolóregisztrációs adatbázisokat létrehozhatja és kezelheti az [Azure CLI 2.0 parancsaival](container-registry-get-started-azure-cli.md), az [Azure PowerShell](container-registry-get-started-powershell.md) használatával vagy programozott módon a tárolóregisztrációs adatbázis [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=834376) is.
 
 Háttér-információkért és a fogalmakkal kapcsolatban lásd [az áttekintést](container-registry-intro.md).
-
-
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 1. Az [Azure Portalon](https://portal.azure.com) kattintson az **+Új** elemre.

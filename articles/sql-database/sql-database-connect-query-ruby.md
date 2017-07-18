@@ -16,22 +16,18 @@ ms.topic: hero-article
 ms.date: 05/24/2017
 ms.author: andrela
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: c5d09cf03c87c8da1d8588be62fea3f0cc3eec4f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b25ef8333a2836f976a974d6ea6e7fdcea2745e3
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/22/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 
-<a id="azure-sql-database-use-ruby-to-connect-and-query-data" class="xliff"></a>
-
-# Azure SQL Database: Csatlakozás és adatok lekérdezése a Ruby használatával
+# <a name="azure-sql-database-use-ruby-to-connect-and-query-data"></a>Azure SQL Database: Csatlakozás és adatok lekérdezése a Ruby használatával
 
 Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható a [Ruby](https://www.ruby-lang.org) az Azure SQL Database-adatbázishoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban Mac OS és Ubuntu Linux platformokról.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
 
@@ -39,15 +35,11 @@ Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott er�
 - [DB létrehozása – CLI](sql-database-get-started-cli.md)
 - [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
 
-<a id="install-ruby-and-database-communication-libraries" class="xliff"></a>
-
-## A Ruby és az adatbázis-kommunikációs könyvtárak telepítése
+## <a name="install-ruby-and-database-communication-libraries"></a>A Ruby és az adatbázis-kommunikációs könyvtárak telepítése
 
 A jelen szakaszban ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Ruby használatával, az Azure SQL Database használatában pedig még járatlan. Ha még nincs tapasztalata a Ruby-fejlesztésekben, lépjen az [alkalmazások SQL Serverrel való készítését](https://www.microsoft.com/en-us/sql-server/developer-get-started/) bemutató cikkre, válassza a **Ruby** lehetőséget, majd válassza ki az operációs rendszert.
 
-<a id="mac-os" class="xliff"></a>
-
-### **Mac OS**
+### <a name="mac-os"></a>**Mac OS**
 Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a Ruby-szkriptet. A **brew**, a **FreeTDS** és a **TinyTDS** telepítéséhez használja a következő parancsokat.
 
 ```bash
@@ -58,9 +50,7 @@ brew install FreeTDS
 gem install tiny_tds
 ```
 
-<a id="linux-ubuntu" class="xliff"></a>
-
-### **Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a Ruby-szkriptet. A **FreeTDS** és a **TinyTDS** telepítéséhez használja a következő parancsokat.
 
 ```bash
@@ -73,9 +63,7 @@ make install
 gem install tiny_tds
 ```
 
-<a id="get-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
+## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
 Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
@@ -88,9 +76,7 @@ Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolat
 4. Amennyiben elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét, valamint szükség esetén új jelszót kérhet.
     
 
-<a id="select-data" class="xliff"></a>
-
-## Adatok kiválasztása
+## <a name="select-data"></a>Adatok kiválasztása
 A következő kóddal lekérdezheti kategóriánként az első 20 terméket a [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) függvény és egy [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL-utasítás használatával. A TinyTDS::Client függvény elfogad egy lekérdezést, és visszaad egy eredményhalmazt. Az eredményhalmazon a rendszer a [result.each do |row|](https://github.com/rails-sqlserver/tiny_tds) kóddal iterál végig. Cserélje le a kiszolgáló, az adatbázis, a felhasználónév és a jelszó paramétereit azokra az értékekre, amelyeket akkor határozott meg, amikor az AdventureWorksL- mintaadatokkal létrehozta az adatbázist.
 
 ```ruby
@@ -113,9 +99,7 @@ result.each do |row|
 end
 ```
 
-<a id="insert-data" class="xliff"></a>
-
-## Adat beszúrása
+## <a name="insert-data"></a>Adat beszúrása
 A következő kóddal beszúrhat egy új terméket a SalesLT.Product táblába a [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) függvény és egy [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL-utasítás használatával. Cserélje le a kiszolgáló, az adatbázis, a felhasználónév és a jelszó paramétereit azokra az értékekre, amelyeket akkor határozott meg, amikor az AdventureWorksL- mintaadatokkal létrehozta az adatbázist.
 
 Ez a példa bemutatja, hogyan hajtható végre biztonságosan egy INSERT utasítás, hogyan adhatók át az alkalmazást az [SQL-injektálási](https://technet.microsoft.com/library/ms161953(v=sql.105).aspx) támadások ellen védő paraméterek, és hogyan kérhető le az automatikusan létrehozott [elsődleges kulcs](https://docs.microsoft.com/sql/relational-databases/tables/primary-and-foreign-key-constraints) értéke.    
@@ -153,9 +137,7 @@ end
 insert('BrandNewProduct', '200989', 'Blue', 75, 80, '7/1/2016')
 ```
 
-<a id="update-data" class="xliff"></a>
-
-## Adatok frissítése
+## <a name="update-data"></a>Adatok frissítése
 A következő kóddal frissítheti az előzőleg felvett új terméket a [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) függvény és egy [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL-utasítás használatával. Cserélje le a kiszolgáló, az adatbázis, a felhasználónév és a jelszó paramétereit azokra az értékekre, amelyeket akkor határozott meg, amikor az AdventureWorksL- mintaadatokkal létrehozta az adatbázist.
 
 ```ruby
@@ -176,9 +158,7 @@ end
 update('BrandNewProduct', 500, client)
 ```
 
-<a id="delete-data" class="xliff"></a>
-
-## Adat törlése
+## <a name="delete-data"></a>Adat törlése
 A következő kóddal törölheti az előzőleg hozzáadott új terméket a [TinyTDS::Client](https://github.com/rails-sqlserver/tiny_tds) függvény és egy [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL-utasítás használatával. Cserélje le a kiszolgáló, az adatbázis, a felhasználónév és a jelszó paramétereit azokra az értékekre, amelyeket akkor határozott meg, amikor az AdventureWorksL- mintaadatokkal létrehozta az adatbázist.
 
 ```ruby
@@ -209,9 +189,7 @@ end
 delete('BrandNewProduct', client)
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
 - [GitHub-adattár a TinyTDS-hez](https://github.com/rails-sqlserver/tiny_tds)
 - [Hibák jelentése/kérdések felvetése](https://github.com/rails-sqlserver/tiny_tds/issues)

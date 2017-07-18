@@ -15,10 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 65c9d6c2b7a7c994a262d463d6a32b41c7e5c33a
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5e1819a9f081284fa03e9355730689629166006f
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -201,7 +202,7 @@ Ezután hozza létre a készletet, majd a csomag-referenciaobjektumot az `Applic
 
     New-AzureBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 
-Az alkalmazáscsomagok használatával kapcsolatban további információkat az [Application deployment with Azure Batch application packages](batch-application-packages.md) (Alkalmazások üzembe helyezése az Azure Batch-alkalmazáscsomagokkal) című cikk tartalmazza.
+Az alkalmazáscsomagok használatával kapcsolatban további információkat a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikkben talál.
 
 > [!IMPORTANT]
 > Az alkalmazáscsomagok használatához [hozzá kell kapcsolnia egy Azure Storage-fiókot](#linked-storage-account-autostorage) a Batch-fiókjához.
@@ -238,6 +239,6 @@ A készlet tulajdonságainak frissítése megtörtént a Batch-szolgáltatásban
 
 ## <a name="next-steps"></a>Következő lépések
 * A parancsmag részletes szintaxisáért és példákért lásd: [Azure Batch-parancsmagok referenciája](/powershell/module/azurerm.batch/#batch).
-* Az alkalmazások és alkalmazáscsomagok Batch-ben történő használatával kapcsolatban további információt az [Application deployment with Azure Batch application packages](batch-application-packages.md) (Alkalmazások üzembe helyezése az Azure Batch-alkalmazáscsomagokkal) című cikkben talál.
+* A Batchben elérhető alkalmazásokkal és alkalmazáscsomagokkal kapcsolatban további információkat a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikkben talál.
 
 

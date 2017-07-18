@@ -1,5 +1,5 @@
 ---
-title: " Azure Media Services-fiók létrehozása az Azure Portal használatával | Microsoft Docss"
+title: "Azure Media Services-fiók létrehozása az Azure Portal használatával | Microsoft Docs"
 description: "Ez az oktatóanyag végigvezeti azokon a lépéseken, amelyek segítségével Azure Media Services-fiókot hozhat létre az Azure Portal használatával."
 services: media-services
 documentationcenter: 
@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 07/10/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 7ef0383ae88dcb8beb4b30792eaf60dec2911507
-ms.openlocfilehash: 08b8629502f99fc46fbe28ad17cd173f11259721
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: 9ab5368c173f016f44546d6c8acb360598f5f5ab
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/12/2017
 
 ---
 # <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Azure Media Services-fiók létrehozása az Azure Portal használatával
@@ -40,13 +41,10 @@ A Media Services szolgáltatásainak eléréséhez két kapcsolódó fiók szük
 
 * Egy Media Services-fiók. A fiók hozzáférést biztosít több felhőalapú, az Azure szolgáltatásban elérhető Media Services-szolgáltatáshoz. A Media Services-fiók nem tárol tényleges médiatartalmakat. Ehelyett metaadatokat tárol a fiókban található médiatartalmakról és médiafeldolgozási feladatokról. A fiók létrehozásakor ki kell választania egy elérhető Media Services-régiót. A választott régió egy adatközpont, amely a fiók metaadat-rekordjait tárolja.
   
-    Az elérhető Media Services (AMS)-régiók a következők: Észak-Európa, Nyugat-Európa, USA nyugati régiója, USA keleti régiója, Délkelet-Ázsia, Kelet-Ázsia, Nyugat-Japán, Kelet-Japán. A Media Services nem használ affinitáscsoportokat.
-  
-    Az AMS már a következő adatközpontokban is elérhető: Dél-Brazília, Nyugat-India, Dél-India és Közép-India. Az Azure Portalt már Media Services-fiókok létrehozására és az itt leírt különböző feladatok elvégzésére is használhatja. Azonban ezekben az adatközpontokban a Live Encoding nem támogatott. Emellett ezekben az adatközpontokban a kódoláshoz fenntartott egységeknek sem minden típusa érhető el.
-  
-  * Dél-Brazília: Csak a standard és alapszintű kódoláshoz fenntartott egységek érhetők el.
-  * Nyugat-India, Dél-India: 
 * Egy Azure-tárfiók. A tárfiókoknak a Media Services-fiókkal azonos földrajzi régióban kell lenniük. Egy Media Services-fiók létrehozásakor választhat, hogy egy ugyanabban a régióban található, meglévő tárfiókot használ, vagy létrehoz egy újat ugyanabban a régióban. Egy Media Services-fiók törlésekor a kapcsolódó tárfiókban található blobok nem törlődnek.
+
+> [!NOTE]
+> A különböző régiókban lévő Azure Media Services-funkciók elérhetőségéről további információért lásd [az AMS-funkciók elérhetőségét az egyes adatközpontokban](scenarios-and-availability.md#a-idavailabilitya-availability-of-media-services-features-across-datacenters).
 
 ## <a name="create-an-ams-account"></a>AMS-fiók létrehozása
 A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásának módját.
@@ -74,35 +72,21 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
     >[!NOTE]
     >Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
    
-    ![Media Services, beállítások](./media/media-services-create-account/media-services-settings.png)
-   
-    Az AMS-fiók kezeléséhez (például videók feltöltéséhez, objektumok kódolásához, a feladatok előrehaladásának figyeléséhez) használja a **Settings** (Beállítások) ablakot.
+## <a name="to-manage-your-ams-account"></a>Az AMS-fiók kezelése
 
-## <a name="manage-keys"></a>Kulcsok kezelése
-A Media Services-fiók programon keresztüli eléréséhez szüksége lesz a fiók nevére és az elsődleges kulcs adataira.
+Az AMS-fiók kezeléséhez (például az AMS API-hoz való programozott kapcsolódáshoz, videók feltöltéséhez, objektumok kódolásához, tartalomvédelem konfigurálásához, a feladatok előrehaladásának figyeléséhez) válassza a portál bal oldalán lévő **Beállítások** elemet. A **Beállítások** területen keresse meg az egyik elérhető panelt (például: **API-hozzáférés**, **Objektumok**, **Feladatok**, **Tartalomvédelem**).
 
-1. Válassza ki a fiókját az Azure Portalon. 
-   
-    Jobb oldalt megjelenik a **Beállítások** ablak. 
-2. A **Beállítások** ablakban válassza a **Kulcsok** lehetőséget. 
-   
-    A **Kulcsok kezelése** ablakban megtalálja a fiók nevét, valamint az elsődleges és másodlagos kulcsot. 
-3. Az értékek másolásához nyomja le a Másolás gombot.
-   
-    ![Media Services, kulcsok](./media/media-services-create-account/media-services-keys.png)
 
 ## <a name="next-steps"></a>Következő lépések
+
 Most már feltölthet fájlokat AMS-fiókjába. További információk: [Fájlok feltöltése](media-services-portal-upload-files.md).
+
+Ha programozott módon szeretné elérni az AMS API-t, lásd [az Azure Media Services Azure AD-hitelesítéssel történő elérését](media-services-use-aad-auth-to-access-ams-api.md) ismertető cikket.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Search-index lekérdezése az Azure portál használatával | Microsoft Docs"
+title: "Index lekérdezése (portál – Azure Search) | Microsoft Docs"
 description: "Keresési lekérdezés küldése az Azure portál Keresési ablakában."
 services: search
 manager: jhubbard
@@ -11,15 +11,16 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 07/10/2017
 ms.author: ashmaka
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a23372112e17703a3399e1bdc9eaf73b85a1f80d
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
+ms.openlocfilehash: dd68d8ed073bf7b8666ddef35a2f1f84df690b4b
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/12/2017
 
 ---
-# <a name="query-your-azure-search-index-using-the-azure-portal"></a>Az Azure Search-index lekérdezése az Azure portál használatával
+# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Azure Search-index lekérdezése a keresési ablakkal az Azure Portalon
 > [!div class="op_single_selector"]
 > * [Áttekintés](search-query-overview.md)
 > * [Portál](search-explorer.md)
@@ -28,34 +29,43 @@ ms.openlocfilehash: a23372112e17703a3399e1bdc9eaf73b85a1f80d
 > 
 > 
 
-Ez az útmutató bemutatja, hogyan kérdezhető le az Azure Search-index az Azure portálon.
+Ez a cikk bemutatja, hogyan kérdezhet le Azure Search-indexeket a **keresési ablakkal** az Azure Portalon. A keresési ablakkal egyszerű vagy teljes Lucene lekérdezési karakterláncokat küldhet el a szolgáltatásban lévő bármely indexnek.
 
-Az útmutató megkezdése előtt [létre kell hozni egy Azure Search-indexet](search-what-is-an-index.md), amelyet [adatokkal is fel kell tölteni](search-what-is-data-import.md).
+## <a name="open-the-service-dashboard"></a>A szolgáltatás irányítópultjának megnyitása
+1. Az [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) bal oldali gyorselérési sávján kattintson a **Minden erőforrás** elemre.
+2. Válassza ki az Azure Search szolgáltatást.
 
-## <a name="i-go-to-your-azure-search-blade"></a>I. Nyissa meg az Azure Search paneljét
-1. Kattintson az „Összes erőforrás” pontra az [Azure portál](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) bal oldalán található menüben
-2. Válassza ki az Azure Search szolgáltatást
+## <a name="select-an-index"></a>Index kiválasztása
 
-## <a name="ii-select-the-index-you-would-like-to-search"></a>II. Válassza ki az indexet a kereséshez
-1. Az Indexek csempéről válassza ki azt az indexet, amelyben keresést szeretne végezni.
+Válassza ki az **Indexek** csempén azt az indexet, amelyből keresni kíván.
 
-![](./media/search-explorer/pick-index.png)
+   ![](./media/search-explorer/pick-index.png)
 
-## <a name="iii-click-on-the-search-explorer-tile"></a>III. Kattintson a Keresési ablak csempére
-![](./media/search-explorer/search-explorer-tile.png)
+## <a name="open-search-explorer"></a>A keresési ablak megnyitása
 
-## <a name="iii-start-searching"></a>III. Indítson keresést
-1. Az Azure Search-indexben végzett kereséshez kezdjen szöveget írni a *Lekérdezési karakterlánc* mezőbe, majd kattintson a **Keresés** gombra.
+Kattintson a Keresési ablak csempére a keresősáv és az eredményeket tartalmazó ablaktábla megnyitásához.
+
+   ![](./media/search-explorer/search-explorer-tile.png)
+
+## <a name="start-searching"></a>Indítson keresést
+
+A Keresési ablak használatakor [lekérdezési paraméterekkel](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) határozhatja meg a lekérdezést.
+
+1. A **Lekérdezési karakterlánc** területen írjon be egy lekérdezést, majd kattintson a **Keresés** gombra. 
+
+   A rendszer automatikusan átalakítja a lekérdezési sztringet a megfelelő kérelmi URL-címmé, és HTTP-kérelmet küldjön az Azure Search REST API-nak.   
    
-   * A Keresési ablak használatakor bármely [lekérdezési paramétert](https://msdn.microsoft.com/library/dn798927.aspx) megadhatja
-2. Az *Eredmények* területen a lekérdezés eredménye nyers JSON-adatok formájában jelenik meg – ugyanúgy, ahogyan a HTTP-válasz törzsében is megjelennek, amikor keresési kérelmeket küld az Azure Search REST API-nak.
-3. A rendszer a lekérdezési karakterláncot automatikusan elemzi, és megfelelő kérelem-URL-címet állít elő belőle, amellyel HTTP-kérelmet tud küldeni az Azure Search REST API-nak.
+   A kérelem létrehozásához bármilyen érvényes egyszerű vagy teljes Lucene lekérdezési szintaxist használhat. A `*` karakter üres vagy nem meghatározott keresésnek felel meg, amely az összes dokumentumot visszaadja véletlenszerű sorrendben.
 
-![](./media/search-explorer/search-bar.png)
+2. Az **Eredmények** területen a lekérdezési eredmények nyers JSON formátumban jelennek meg, hasonlóan a HTTP-választörzsekben visszaadott hasznos adatokhoz, amikor programozott módon ad ki kéréseket.
 
+   ![](./media/search-explorer/search-bar.png)
 
+## <a name="next-steps"></a>Következő lépések
 
+Az alábbi forrásokban további tudnivalókat és példákat találhat a lekérdezési szintaxisokról.
 
-<!--HONumber=Nov16_HO2-->
-
-
+ + [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+ + [Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+ + [Lucene lekérdezési szintaxis példái](https://docs.microsoft.com/azure/search/search-query-lucene-examples) 
+ + [OData szűrési kifejezés szintaxisa](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) 

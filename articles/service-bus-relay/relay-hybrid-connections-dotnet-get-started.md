@@ -1,6 +1,6 @@
 ---
 title: "Ismerkedés az Azure Relay Hibrid-kapcsolatokkal a .NET-ben | Microsoft Docs"
-description: "C# konzolalkalmazás létrehozása hibrid kapcsolatokhoz"
+description: "C#-konzolalkalmazást hozhat létre a hibrid Azure Relay-kapcsolatokhoz."
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 07/07/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f92909e0098a543f99baf3df3197a799bc9f1edc
-ms.openlocfilehash: d27016559ede5d810d7efcec2a3abc78334f0f0a
+ms.translationtype: HT
+ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
+ms.openlocfilehash: 1af23bfd46dd7d3781505473f7c1d86e65ea9bc7
 ms.contentlocale: hu-hu
-ms.lasthandoff: 02/28/2017
+ms.lasthandoff: 07/10/2017
 
 
 ---
@@ -26,18 +26,21 @@ ms.lasthandoff: 02/28/2017
 # <a name="get-started-with-relay-hybrid-connections"></a>Ismerkedés a hibrid Relay-kapcsolatokkal
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Ez az oktatóprogram bevezetést nyújt az [Azure Relay Hibrid-kapcsolatok](relay-what-is-it.md#hybrid-connections) használatába, és bemutatja egy olyan ügyfélalkalmazás létrehozását, amely üzeneteket küld egy kapcsolódó figyelő alkalmazásnak. 
+Ez az oktatóprogram bevezetést nyújt a [hibrid Azure Relay-kapcsolatok](relay-what-is-it.md#hybrid-connections) használatába, és bemutatja egy olyan ügyfélalkalmazás .NET-tel való létrehozását, amely üzeneteket küld egy kapcsolódó figyelőalkalmazásnak. 
 
 ## <a name="what-will-be-accomplished"></a>Az oktatóanyag célja
 Mivel a hibrid kapcsolatokhoz szükség van egy ügyfélre és egy kiszolgáló-összetevőre is, ebben az oktatóanyagban két konzolalkalmazást hozunk létre. A lépések a következők:
 
 1. Relay-névtér létrehozása az Azure Portal használatával.
-2. Hibrid kapcsolat létrehozása az Azure Portal használatával.
+2. Hibrid kapcsolat létrehozása ezen a névtéren az Azure Portal használatával.
 3. Kiszolgálói (figyelő) konzolalkalmazás írása üzenetfogadási céllal.
 4. Ügyfél-konzolalkalmazás (küldő) írása üzenetküldési céllal.
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2015-öt használják.
+
+Az oktatóanyag teljesítéséhez az alábbi előfeltételeknek kell megfelelnie:
+
+1. [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
 2. Azure-előfizetés.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]

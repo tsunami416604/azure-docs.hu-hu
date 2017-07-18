@@ -13,21 +13,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 07/12/2017
 ms.author: cgronlun;tedway;olgali
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 247c26b3988664bcf93fb5face6514a3dc74cebc
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: a9b47429779417afa664156cd824aa044f7bf04c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/13/2017
 
 ---
-# <a name="introduction-to-azure-machine-learning-in-the-cloud"></a>Bevezetés a felhőalapú Azure Machine Learning használatába
-## <a name="what-is-machine-learning"></a>Mit jelent a gépi tanulás funkció?
-A Machine Learning olyan adatelemzési módszer, amelynek segítségével a számítógépek a meglévő adatokból tanulva jövőbeni viselkedéseket, kimeneteket és trendeket jelezhetnek előre.  
+# <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Bevezetés az Azure-felhőalapú Machine Learning használatába
 
-A gépi tanulás által biztosított előrejelzéseket felhasználva aztán intelligensebbé tehetők az alkalmazások és az eszközök. Ha például online vásárlói felületeknél alkalmazzák, a gépi tanulás képes a korábban megvásárolt cikkek alapján olyan termékeket ajánlani, amelyek esetleg szintén érdekelhetik Önt. A Machine Learning a bankkártya minden lehúzásakor összeveti az adott tranzakciót az adatbázisban található tranzakciókkal, így segít a csalások felismerésében. Ha robotporszívóra bízza a szoba kitakarítását, a Machine Learning segít eldönteni, hogy a feladat el lett-e végezve.
+## <a name="what-is-machine-learning"></a>Mit jelent a gépi tanulás funkció?
+A Machine Learning egy olyan adatelemzési módszer, amely lehetővé teszi, hogy a számítógépek a meglévő adatokból tanulva jövőbeni viselkedéseket, kimeneteket és trendeket jelezhessenek előre. A gépi tanulással a számítógépek konkrét programozás nélkül tanulhatnak.
+
+A gépi tanulás által biztosított előrejelzéseket felhasználva intelligensebbé tehetők az alkalmazások és az eszközök. Ha például online vásárlói felületeknél alkalmazzák, a gépi tanulás képes a korábban megvásárolt cikkek alapján olyan termékeket ajánlani, amelyek esetleg szintén érdekelhetik Önt. A Machine Learning a bankkártya minden lehúzásakor összeveti az adott tranzakciót az adatbázisban található tranzakciókkal, így segít a csalások felismerésében. Ha robotporszívóra bízza a szoba kitakarítását, a Machine Learning segít eldönteni, hogy a feladat el lett-e végezve.
 
 Az [Adatelemzés kezdőknek](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) videósorozat rövid áttekintést ad ezekről a témákról. Az Adatelemzés kezdőknek sorozat szakzsargon vagy matematikai kifejezések használata nélkül ismerteti meg a Machine Learning használatával, és vezeti végig egy egyszerű prediktív modellen.
 

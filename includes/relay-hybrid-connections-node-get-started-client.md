@@ -1,10 +1,13 @@
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-* Hozzon létre egy `sender.js` nevű JavaScript-fájlt.
+
+Hozzon létre egy `sender.js` nevű JavaScript-fájlt.
 
 ### <a name="add-the-relay-npm-package"></a>A Relay NPM-csomag hozzáadása
-* Futtassa az `npm install hyco-ws` parancsot a projektmappában lévő Csomópont parancssorból.
+
+Futtassa az `npm install hyco-ws` parancsot a projektmappában lévő Csomópont parancssorból.
 
 ### <a name="write-some-code-to-send-messages"></a>Írjon egy kódrészletet üzenetek küldéséhez
+
 1. Adja hozzá a következő `constants` utasítást a `sender.js` fájl elejéhez.
    
     ```js
@@ -15,12 +18,13 @@
             output: process.stdout
         });;
     ```
-2. Adja hozzá a következő Relay `constants` elemeket a `sender.js` osztályhoz a Hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid gyűjtemény létrehozásakor beszerzett megfelelő értékekre.
+2. Adja hozzá a következő állandókat a `sender.js` fájlhoz a hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid gyűjtemény létrehozásakor beszerzett megfelelő értékekre.
    
-   1. `const ns` – A továbbítási névtér (Használjon FQDN-t – példa: `{namespace}.servicebus.windows.net`)
-   2. `const path` – A hibrid kapcsolat neve
-   3. `const keyrule` – Az SAS-kulcs neve
-   4. `const key` – Az SAS-kulcs értéke
+   1. `const ns` – A Relay-névtér. Ügyeljen arra, hogy a teljes névtérnevet használja, például: `{namespace}.servicebus.windows.net`.
+   2. `const path` – A hibrid kapcsolat neve.
+   3. `const keyrule` – Az SAS-kulcs neve.
+   4. `const key` – Az SAS-kulcs értéke.
+
 3. Adja a következő kódot a `sender.js` fájlhoz:
    
     ```js
@@ -40,7 +44,7 @@
         }
     );
     ```
-    A listener.js fájlnak így kell kinéznie:
+    A sender.js fájlnak így kell kinéznie:
    
     ```js
     const WebSocket = require('hyco-ws');

@@ -1,9 +1,9 @@
 ---
-title: "Csatlakozás az Azure SQL Database-hez Python használatával | Microsoft Docs"
-description: "Egy Python-kódmintát jelenít meg, amellyel csatlakozhat egy Azure SQL Database-adatbázishoz, és lekérdezéseket hajthat végre."
+title: "Python használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs"
+description: "Ez a témakör bemutatja, hogyan használhatja a Pythont egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal."
 services: sql-database
 documentationcenter: 
-author: meet-bhagdev
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 452ad236-7a15-4f19-8ea7-df528052a3ad
@@ -13,98 +13,54 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 05/24/2017
-ms.author: meetb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 99195b43a1577f978562864bac5fa12cdeb95d63
+ms.date: 07/11/2017
+ms.author: carlrab
+ms.translationtype: HT
+ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
+ms.openlocfilehash: b7c217be41b979f8a7246109cc95a01341dadf3d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 07/13/2017
 
 ---
-<a id="azure-sql-database-use-python-to-connect-and-query-data" class="xliff"></a>
+# <a name="use-python-to-query-an-azure-sql-database"></a>Python használata Azure SQL Database-adatbázis lekérdezéséhez
 
-# Azure SQL Database: Csatlakozás és adatlekérdezés a Python használatával
+ Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható a [Python](https://python.org) egy Azure SQL Database-adatbázishoz való csatlakozáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.
 
- Ez a gyors üzembehelyezési útmutató ismerteti, hogyan használható a [Python](https://python.org) az Azure SQL Database-adatbázishoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasítások használatával lekérdezni, beszúrni, frissíteni és adatot törölni az adatbázisban a Mac OS, Ubuntu Linux és Windows platformokról.
+## <a name="prerequisites"></a>Előfeltételek
 
-<a id="prerequisites" class="xliff"></a>
+A gyors üzembehelyezési útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-## Előfeltételek
+- Azure SQL Database-adatbázis. Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja: 
 
-Ez a rövid útmutató az alábbi rövid útmutatók egyikében létrehozott erőforrásokat használja kiindulási pontnak:
+   - [DB létrehozása – portál](sql-database-get-started-portal.md)
+   - [DB létrehozása – CLI](sql-database-get-started-cli.md)
+   - [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
 
-- [DB létrehozása – portál](sql-database-get-started-portal.md)
-- [DB létrehozása – CLI](sql-database-get-started-cli.md)
-- [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
+- A gyors üzembe helyezési útmutatóhoz használt számítógép nyilvános IP-címére vonatkozó [kiszolgálószintű tűzfalszabály](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 
-<a id="install-the-python-and-database-communication-libraries" class="xliff"></a>
+- Telepítette a Pythont és az operációs rendszerének megfelelő kapcsolódó szoftvereket.
 
-## A Python és az adatbázisokkal való kommunikációra való kódtárak telepítése
+    - **MacOS**: Telepítse a Homebrew-t és a Pythont, telepítse az ODBC-illesztőt és az SQLCMD-t, majd telepítse az SQL Serverhez készült Python-illesztőt. Lásd az [1.2, 1.3 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/Python/mac/).
+    - **Ubuntu**: Telepítse a Pythont és a többi szükséges csomagot, majd telepítse az SQL Serverhez készült Python-illesztőt. Lásd az [1.2 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
+    - **Windows**: Telepítse a Python legújabb verzióját (a környezeti változó konfigurálása automatikusan megtörténik), telepítse az ODBC-illesztőt és az SQLCMD-t, majd telepítse az SQL Serverhez készült Python-illesztőt. Lásd az [1.2, 1.3 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/windows/). 
 
-A jelen szakaszban ismertetett lépések feltételezik, hogy Ön rendelkezik a Pythonnal végzett fejlesztésekkel kapcsolatos tapasztalatokkal, az Azure SQL Database használatában pedig még járatlan. Ha még tapasztalatlan a Python-fejlesztésekben, lépjen az [alkalmazások SQL Serverrel történő összeállításával](https://www.microsoft.com/sql-server/developer-get-started/) foglalkozó témakörre, válassza ki a **Python** nyelvet, majd a használt operációs rendszert.
-
-<a id="mac-os" class="xliff"></a>
-
-### **Mac OS**
-Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a Python szkriptet. A **brew**, a **Mac rendszerre készült Microsoft ODBC-illesztő** és a **pyodbc** telepítéséhez használja a következő parancsokat. A pyodbc a Linux rendszeren a Microsoft ODBC-illesztőt használja az SQL Database-adatbázisokhoz való csatlakozásra.
-
-``` bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap microsoft/msodbcsql https://github.com/Microsoft/homebrew-msodbcsql-preview
-brew update
-brew install msodbcsql 
-#for silent install ACCEPT_EULA=y brew install msodbcsql
-sudo pip install pyodbc==3.1.1
-```
-
-<a id="linux-ubuntu" class="xliff"></a>
-
-### **Linux (Ubuntu)**
-Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a Python szkriptet. A **Linux rendszerre készült Microsoft ODBC-illesztő** és a **pyodbc** telepítéséhez használja a következő parancsokat. A pyodbc a Linux rendszeren a Microsoft ODBC-illesztőt használja az SQL Database-adatbázisokhoz való csatlakozásra.
-
-```bash
-sudo su
-curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql.list
-exit
-sudo apt-get update
-sudo apt-get install msodbcsql mssql-tools unixodbc-dev
-sudo pip install pyodbc==3.1.1
-```
-
-<a id="windows" class="xliff"></a>
-
-### **Windows**
-Telepítse a [Microsoft ODBC-illesztő 13.1 verzióját](https://www.microsoft.com/download/details.aspx?id=53339) (frissítse az illesztőt, ha a gép erre kéri). A pyodbc a Linux rendszeren a Microsoft ODBC-illesztőt használja az SQL Database-adatbázisokhoz való csatlakozásra. 
-
-Ezután telepítse a **pyodbc**-t a pip használatával.
-
-```cmd
-pip install pyodbc==3.1.1
-```
-
-A pip használatának engedélyezésével kapcsolatos utasításokat [itt](http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows) találja
-
-<a id="get-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
+## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 
 Kérje le az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. A későbbi eljárásokban szüksége lesz a teljes kiszolgálónévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az adatbázis **Áttekintés** lapján tekintse meg a teljes kiszolgálónevet, amint az alábbi képen is látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség. 
+3. Az adatbázis **Áttekintés** oldalán tekintse meg a teljes kiszolgálónevet, amint az az alábbi képen látható. Ha a mutatót a kiszolgáló neve fölé viszi, megjelenik a **Kattintson a másoláshoz** lehetőség.  
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 4. Amennyiben elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az SQL Database-kiszolgáló oldalára, és itt megtudhatja a kiszolgáló rendszergazdájának nevét, valamint szükség esetén új jelszót kérhet.     
-   
-<a id="select-data" class="xliff"></a>
+    
+## <a name="insert-code-to-query-sql-database"></a>Kód beszúrása SQL-adatbázis lekérdezéséhez 
 
-## Adatok kiválasztása
+1. Egy tetszőleges szövegszerkesztőben hozza létre a **sqltest.py** nevű új fájlt.  
 
-A következő kód használatával lekérdezheti kategóriánként az első 20 terméket a [pyodbc.connect](https://github.com/mkleehammer/pyodbc/wiki) függvény egy [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql) Transact-SQL-utasítással való használatával. A [cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) függvénnyel lekérheti egy lekérdezés eredményhalmazát egy SQL Database-adatbázisból. Ez a függvény elfogad egy lekérdezést és visszaad egy eredményhalmazt, amely megismételhető a **cursor.fetchone()** segítségével. Cserélje le a kiszolgáló, az adatbázis, a felhasználónév és a jelszó paramétereit azokra az értékekre, amelyeket akkor határozott meg, amikor az AdventureWorksL- mintaadatokkal létrehozta az adatbázist.
+2. Cserélje le a tartalmat a következő kódra, és adja meg a kiszolgáló és az adatbázis megfelelő adatait, valamint a felhasználót és a jelszót.
 
 ```Python
 import pyodbc
@@ -118,73 +74,21 @@ cursor = cnxn.cursor()
 cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
 row = cursor.fetchone()
 while row:
-    print str(row[0]) + " " + str(row[1])
+    print (str(row[0]) + " " + str(row[1]))
     row = cursor.fetchone()
 ```
 
-<a id="insert-data" class="xliff"></a>
+## <a name="run-the-code"></a>A kód futtatása
 
-## Adat beszúrása
-A következő kód használatával beszúrhat egy új terméket a SalesLT.Product táblába a [cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) függvénnyel és az [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) Transact-SQL-utasítással. Cserélje le a kiszolgáló, az adatbázis, a felhasználónév és a jelszó paramétereit azokra az értékekre, amelyeket akkor határozott meg, amikor az AdventureWorksL- mintaadatokkal létrehozta az adatbázist.
+1. Futtassa az alábbi parancsokat a parancssorban:
 
-```Python
-import pyodbc
-server = 'your_server.database.windows.net'
-database = 'your_database'
-username = 'your_username'
-password = 'your_password'
-driver= '{ODBC Driver 13 for SQL Server}'
-cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-cursor = cnxn.cursor()
-with cursor.execute("INSERT INTO SalesLT.Product (Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('BrandNewProduct', '200989', 'Blue', 75, 80, '7/1/2016')"): 
-    print ('Successfuly Inserted!')
-cnxn.commit()
-```
+   ```Python
+   python sqltest.py
+   ```
 
-<a id="update-data" class="xliff"></a>
+2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
 
-## Adatok frissítése
-A következő kód használatával frissítheti az előzőleg hozzáadott új terméket a [cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) függvénnyel és az [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql) Transact-SQL-utasítással. Cserélje le a kiszolgáló, az adatbázis, a felhasználónév és a jelszó paramétereit azokra az értékekre, amelyeket akkor határozott meg, amikor az AdventureWorksL- mintaadatokkal létrehozta az adatbázist.
-
-```Python
-import pyodbc
-server = 'your_server.database.windows.net'
-database = 'your_database'
-username = 'your_username'
-password = 'your_password'
-driver= '{ODBC Driver 13 for SQL Server}'
-cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-cursor = cnxn.cursor()
-tsql = "UPDATE SalesLT.Product SET ListPrice = ? WHERE Name = ?"
-with cursor.execute(tsql,50,'BrandNewProduct'):
-    print ('Successfuly Updated!')
-cnxn.commit()
-
-```
-
-<a id="delete-data" class="xliff"></a>
-
-## Adat törlése
-A következő kód használatával törölheti az előzőleg hozzáadott új terméket a [cursor.execute](https://github.com/mkleehammer/pyodbc/wiki/Cursor) függvénnyel és a [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL-utasítással. Cserélje le a kiszolgáló, az adatbázis, a felhasználónév és a jelszó paramétereit azokra az értékekre, amelyeket akkor határozott meg, amikor az AdventureWorksL- mintaadatokkal létrehozta az adatbázist.
-
-```Python
-import pyodbc
-server = 'your_server.database.windows.net'
-database = 'your_database'
-username = 'your_username'
-password = 'your_password'
-driver= '{ODBC Driver 13 for SQL Server}'
-cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-cursor = cnxn.cursor()
-tsql = "DELETE FROM SalesLT.Product WHERE Name = ?"
-with cursor.execute(tsql,'BrandNewProduct'):
-    print ('Successfuly Deleted!')
-cnxn.commit()
-```
-
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
 - [SQL Serverre készült Microsoft Python-illesztőprogramok](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
