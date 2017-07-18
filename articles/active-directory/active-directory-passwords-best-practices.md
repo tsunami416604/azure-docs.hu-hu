@@ -13,7 +13,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/25/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: Human Translation
@@ -22,11 +22,9 @@ ms.openlocfilehash: 5f3900aef2b432527454da72f3ff15e533543758
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/07/2017
 
-
 ---
-<a id="roll-out-password-reset-for-users" class="xliff"></a>
-
 # Jelszóátállítás bevezetése felhasználók számára
+<a id="roll-out-password-reset-for-users" class="xliff"></a>
 
 A legtöbb ügyfél követi azokat a lépéseket, amelyek biztosítják számukra az SSPR funkcióinak zökkenőmentes bevezetését.
 
@@ -43,9 +41,8 @@ A legtöbb ügyfél követi azokat a lépéseket, amelyek biztosítják számukr
 8. Bármikor dönthet úgy, hogy kényszeríti a regisztrációt, és megköveteli a felhasználóktól, hogy bizonyos idő elteltével újra erősítsék meg a hitelesítési adataikat. Ha nem szeretné, hogy a felhasználók regisztrációja kötelező legyen, válassza a [jelszóátállítás üzembe helyezése anélkül, hogy a felhasználóknak regisztrálniuk kellene](active-directory-passwords-data.md) lehetőséget.
 9. Az [Azure AD által biztosított jelentés](active-directory-passwords-reporting.md) megtekintésével folyamatosan ellenőrizheti, mely felhasználók regisztráltak és vették igénybe a funkciót.
 
-<a id="email-based-rollout" class="xliff"></a>
-
 ## E-mailes alapú bevezetés
+<a id="email-based-rollout" class="xliff"></a>
 
 Számos ügyfél szerint egy egyszerűen követhető útmutatással ellátott e-mailes kampánnyal lehet a legkönnyebben rávenni a felhasználókat az SSPR használatára. [Három egyszerű e-mailt hoztunk létre, amelyeket sablonként használhat a bevezetés során.](https://onedrive.live.com/?authkey=%21AD5ZP%2D8RyJ2Cc6M&id=A0B59A91C740AB16%2125063&cid=A0B59A91C740AB16)
 
@@ -53,9 +50,8 @@ Számos ügyfél szerint egy egyszerűen követhető útmutatással ellátott e-
 * A **Már elérhető** e-mail-sablont az indulás napján érdemes használni, hogy a felhasználók regisztráljanak, és megerősítsék a hitelesítési adataikat. Így szükség esetén már használatba tudják venni az SSPR-t.
 * A **Regisztrációs emlékeztető** e-mail-sablont pár nappal vagy héttel az üzembe helyezés után érdemes használni, hogy a felhasználók emlékeztetőt kapjanak a regisztrációról és hitelesítési adataik megerősítéséről.
 
-<a id="creating-your-own-password-portal" class="xliff"></a>
-
 ## Saját jelszókezelő portál létrehozása
+<a id="creating-your-own-password-portal" class="xliff"></a>
 
 Nagyvállalati ügyfeleink közül sokan döntenek webhelyek üzemeltetése és gyökérszintű DNS-bejegyzések létrehozása mellett. Például: https://jelszo.contoso.com. Ezután feltöltik az oldalt az Azure AD jelszóátállítására, a jelszóátállítási regisztrációra, a jelszóátállítási portálokra mutató és más, az adott szervezetre jellemző hivatkozásokkal. A kiküldött e-mailekben vagy közleményekben feltüntethet egy márkaüzenettel ellátott, könnyen megjegyezhető URL-címet, amelyre a felhasználók ellátogathatnak, amikor szükségük van a szolgáltatásokra.
 
@@ -63,9 +59,8 @@ Nagyvállalati ügyfeleink közül sokan döntenek webhelyek üzemeltetése és 
 * Jelszóátállítási regisztrációs portál – http://aka.ms/ssprsetup
 * Jelszómódosítási portál – https://account.activedirectory.windowsazure.com/ChangePassword.aspx
 
-<a id="using-enforced-registration" class="xliff"></a>
-
 ## Kényszerített regisztráció használata
+<a id="using-enforced-registration" class="xliff"></a>
 
 Ha szeretné, hogy a felhasználók a jelszóátállításra regisztráljanak, kényszerítheti őket erre, amikor bejelentkeznek az Azure AD használatával. Ezt a beállítást a címtár **Jelszóátállítás** panelén engedélyezheti úgy, hogy a **Regisztráció** lapon engedélyezi a **Felhasználói regisztráció megkövetelése a hozzáférési panelen történő bejelentkezéskor** beállítást.
 
@@ -73,21 +68,18 @@ A rendszergazdák megkövetelhetik a felhasználóktól az újbóli regisztráci
 
 Miután engedélyezi ezt a beállítást, a bejelentkező felhasználókat egy üzenet fogadja majd, miszerint a rendszergazda a hitelesítési adataik érvényesítésére kéri őket.
 
-<a id="populate-authentication-data" class="xliff"></a>
-
 ## Hitelesítési adatok feltöltése
+<a id="populate-authentication-data" class="xliff"></a>
 
 Ha [feltölti a felhasználóihoz tartozó hitelesítési adatokat](active-directory-passwords-data.md), akkor a felhasználóknak az SSPR használatához nem lesz kötelező regisztrálniuk a jelszóátállításhoz. Mindaddig, amíg a felhasználók hitelesítési adatai definiálva vannak, ezek pedig megfelelnek az Ön által definiált jelszóátállítási szabályzatban foglaltaknak, a felhasználók átállíthatják a jelszavaikat.
 
-<a id="disabling-self-service-password-reset" class="xliff"></a>
-
 ## Önkiszolgáló jelszóátállítás letiltása
+<a id="disabling-self-service-password-reset" class="xliff"></a>
 
 Az önkiszolgáló jelszó-visszaállítás letiltása egyszerű: nyissa meg Azure AD-bérlőjét, keresse meg az **Új jelszó létrehozása** elemet, válassza a **Tulajdonságok** parancsot, majd válassza a **Senki** lehetőséget az **„Önkiszolgáló jelszóátállítás engedélyezve”** alatt
 
-<a id="next-steps" class="xliff"></a>
-
 ## Következő lépések
+<a id="next-steps" class="xliff"></a>
 
 Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
 
