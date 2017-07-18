@@ -20,18 +20,13 @@ ms.openlocfilehash: 8a5d0c60e101f4038dff6f76c8f23dbb2b44661c
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/28/2017
 
-
 ---
-<a id="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure" class="xliff"></a>
-
-# Node.js RESTful API buildjének elkészítése és telepítése Azure-ban futó API-alkalmazásba
+# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Node.js RESTful API buildjének elkészítése és telepítése Azure-ban futó API-alkalmazásba
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
 Ez a gyors útmutató bemutatja, hogyan hozhat létre [Swagger](http://swagger.io/)-definícióból használt [Express](http://expressjs.com/) keretrendszerű Node.js REST API-t, és hogyan helyezheti üzembe [API-alkalmazásként](app-service-api-apps-why-best-platform.md) az Azure-on. Az alkalmazást parancssori eszközök használatával hozza létre, az erőforrások konfigurálását az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) segítségével végzi el, míg az alkalmazást a Git használatával helyezi üzembe.  Amikor végzett, Azure-on futó, működő minta REST API áll rendelkezésére majd.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 * [Git](https://git-scm.com/)
 * [ Node.js és NPM](https://nodejs.org/)
@@ -42,9 +37,7 @@ Ez a gyors útmutató bemutatja, hogyan hozhat létre [Swagger](http://swagger.i
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-<a id="prepare-your-environment" class="xliff"></a>
-
-## A környezet előkészítése
+## <a name="prepare-your-environment"></a>A környezet előkészítése
 
 1. A következő parancsot terminálablakban futtatva klónozhatja a mintát a helyi gépen.
 
@@ -65,9 +58,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
     npm install -g generator-swaggerize
     ```
 
-<a id="generate-nodejs-code" class="xliff"></a>
-
-## Node.js-kód generálása 
+## <a name="generate-nodejs-code"></a>Node.js-kód generálása 
 
 Az oktatóanyagnak ez a fejezete az API-fejlesztésnek azt a folyamatát modellezi, amelynek során először létrehozzuk a Swagger-metaadatokat, majd ezek segítségével automatikusan generáljuk az API kiszolgálói kódját. 
 
@@ -89,9 +80,7 @@ Lépjen a *start*mappa könyvtárába, majd futtassa a `yo swaggerize` parancsot
    ? Your email: frank@fabrikam.net
    ```
    
-<a id="customize-the-project-code" class="xliff"></a>
-
-## Projektkód testreszabása
+## <a name="customize-the-project-code"></a>Projektkód testreszabása
 
 1. Másolja a *lib* mappát a `yo swaggerize` által létrehozott *ContactList* mappába, majd lépjen a *ContactList* könyvtárába.
 
@@ -149,6 +138,9 @@ Lépjen a *start*mappa könyvtárába, majd futtassa a `yo swaggerize` parancsot
     var swaggerize = require('swaggerize-express');
     var swaggerUi = require('swaggerize-ui'); 
     var path = require('path');
+    var fs = require("fs");
+    
+    fs.existsSync = fs.existsSync || require('path').existsSync;
 
     var app = express();
 
@@ -173,9 +165,7 @@ Lépjen a *start*mappa könyvtárába, majd futtassa a `yo swaggerize` parancsot
 
     Ez a kód kis módosításokat hajt végre az Azure App Service platformmal való használat lehetővé tétele érdekében, és interaktív webes felületet tesz közzé az API-hoz.
 
-<a id="test-the-api-locally" class="xliff"></a>
-
-### API tesztelése helyileg
+### <a name="test-the-api-locally"></a>API tesztelése helyileg
 
 1. A Node.js-alkalmazás indítása
     ```bash
@@ -239,9 +229,7 @@ Ebben a szakaszban az Azure CLI 2.0 használatával hozhatja létre az API Azure
 5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
 
 
-<a id="deploy-the-api-with-git" class="xliff"></a>
-
-## API üzembe helyezése GIT segítségével
+## <a name="deploy-the-api-with-git"></a>API üzembe helyezése GIT segítségével
 
 Úgy tudja telepíteni a kódot az API-alkalmazásba, hogy az Azure App Service-ben található helyi Git-tárházból beküldi a véglegesítéseket.
 
@@ -268,9 +256,7 @@ Ebben a szakaszban az Azure CLI 2.0 használatával hozhatja létre az API Azure
 
 5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
  
-<a id="test-the-api--in-azure" class="xliff"></a>
-
-## Az API tesztelése az Azure-ban
+## <a name="test-the-api--in-azure"></a>Az API tesztelése az Azure-ban
 
 1. Nyissa meg valamilyen böngészőben a http://app_name.azurewebsites.net/contacts webhelyet. Ugyanazt a visszaadott JSON-t láthatja, mint amikor az oktatóanyag egyik korábbi szakaszában helyileg leadta a kérelmet.
 
@@ -298,9 +284,7 @@ Ebben a szakaszban az Azure CLI 2.0 használatával hozhatja létre az API Azure
 
     Úgy helyezheti üzembe mostantól a minta API frissítéseit az Azure-ban, hogy a véglegesítéseket egyszerűen beküldi az Azure Git-tárházba.
 
-<a id="clean-up" class="xliff"></a>
-
-## A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Az ebben az oktatóanyagban létrehozott erőforrások törléséhez futtassa a következő Azure CLI parancsot:
 
@@ -308,9 +292,7 @@ Az ebben az oktatóanyagban létrehozott erőforrások törléséhez futtassa a 
 az group delete --name myResourceGroup
 ```
 
-<a id="next-step" class="xliff"></a>
-
-## Következő lépés 
+## <a name="next-step"></a>Következő lépés 
 > [!div class="nextstepaction"]
 > [API-alkalmazások használata JavaScript-ügyfelekkel a CORS segítségével](app-service-api-cors-consume-javascript.md)
 
