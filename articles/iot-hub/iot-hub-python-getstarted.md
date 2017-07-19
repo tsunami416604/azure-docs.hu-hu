@@ -77,6 +77,8 @@ Ez a szakasz egy Python-konzolalkalmazás létrehozásának lépéseit ismerteti
     CONNECTION_STRING = "[IoTHub Connection String]"
     DEVICE_ID = "MyFirstPythonDevice"
     ```
+   [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
+
 3. Adja hozzá a következő függvényt az eszköz egyes információinak kinyomtatása érdekében.
 
     ```python

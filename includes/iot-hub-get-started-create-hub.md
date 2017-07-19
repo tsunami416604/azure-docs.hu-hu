@@ -10,6 +10,8 @@ Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszközalkalmaz�
     ![IoT Hub panel][2]
    
    1. A **Név** mezőben adja meg az IoT Hub nevét. Ha a **Név** érvényes és elérhető, egy zöld pipa jelenik meg a **Név** mezőben.
+    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
+   
    1. Válasszon ki egy [tarifacsomagot és méretet][lnk-pricing]. Az oktatóanyag teljesítéséhez nem kell egy konkrét csomagot kiválasztani. Az oktatóanyaghoz használja az ingyenes F1 csomagot.
    1. Az **Erőforráscsoport** mezőben hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt. További információk: [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez][lnk-resource-groups].
    1. A **Hely** mezőben válasszon ki egy helyet, ahol az IoT Hubot tárolni szeretné. A jelen oktatóanyag esetében válassza az Önhöz legközelebb eső helyet.

@@ -1,6 +1,4 @@
-<a id="create-a-device-identity" class="xliff"></a>
-
-## Eszközidentitás létrehozása
+## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 Ebben a szakaszban egy .NET-konzolalkalmazást fog létrehozni, amely egy eszközidentitást hoz létre az IoT Hub identitásjegyzékében. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért lásd az [IoT Hub fejlesztői útmutatójának][lnk-devguide-identity] „Identitásjegyzék” című szakaszát. A konzolalkalmazás egy egyedi eszközazonosítót állít elő a futtatásakor, valamint egy kulcsot, amellyel az eszköz azonosítani tudja magát, amikor az eszközről a felhőbe irányuló üzeneteket küld az IoT Hubnak. Az eszközazonosítókban különbözőnek számítanak a kis- és nagybetűk.
 
 1. A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az új megoldáshoz a **Console App (.NET Framework)** (Konzolalkalmazás (.NET-keretrendszer)) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **CreateDeviceIdentity** nevet, a megoldásnak pedig az **IoTHubGetStarted** nevet.
@@ -36,6 +34,8 @@ Ebben a szakaszban egy .NET-konzolalkalmazást fog létrehozni, amely egy eszkö
         }
    
     Ez a metódus egy eszközidentitást hoz létre a **myFirstDevice** azonosítóval. (Ha ez az eszköz már létezik az identitásjegyzékben, a kód egyszerűen lekéri a meglévő eszközinformációkat.) Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált eszközalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
+[!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
+
 7. Végül adja a következő sorokat a **Main** metódushoz:
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);

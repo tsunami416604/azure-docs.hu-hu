@@ -94,6 +94,8 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely egy esz
       }
     }
     ```
+   [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
+
 7. Mentse és zárja be a **CreateDeviceIdentity.js** fájlt.
 8. Ha a **createdeviceidentity** alkalmazást szeretné futtatni, futtassa a következő parancsot a parancssorban a createdeviceidentity mappában:
    

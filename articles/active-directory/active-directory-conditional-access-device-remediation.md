@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/05/2017
 ms.author: markvi
+ms.reviewer: jairoc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 4d7704c03bece51957efa2a56577b8808cc62c79
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/08/2017
 
-
 ---
-# Innen nem érheti el Windows-eszközről
-<a id="you-cant-get-there-from-here-on-a-windows-device" class="xliff"></a>
+# <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Innen nem érheti el Windows-eszközről
 
 Ha például a szervezet SharePoint Online intranetéhez próbál hozzáférni, megjelenhet egy oldal a következő üzenettel: *Innen nem érheti el*. Az oldal azért jelenik meg, mert a rendszergazda olyan hozzáférési szabályzatot állított be, amely bizonyos feltételek szerint megakadályozza a vállalat erőforrásaihoz való hozzáférést. Bár lehetséges, hogy a probléma megoldásához végül az ügyfélszolgálathoz vagy a rendszergazdához kell fordulni, érdemes először megpróbálkozni néhány lépéssel.
 
@@ -40,8 +39,7 @@ Ha **Windows**-eszközt használ, ellenőrizze a következőket:
 
 
 
-## Támogatott böngésző
-<a id="supported-browser" class="xliff"></a>
+## <a name="supported-browser"></a>Támogatott böngésző
 
 Ha a rendszergazda feltételes hozzáférési szabályzatot állított be, akkor csak támogatott böngészővel férhet hozzá a szervezet erőforrásaihoz. Windows-eszközön csak az **Internet Explorer** és az **Edge** támogatott.
 
@@ -52,8 +50,7 @@ Ha egy erőforráshoz egy nem támogatott böngésző miatt nem férhet hozzá, 
 Az egyetlen javítási megoldás egy olyan böngésző használata, amelyet az alkalmazás támogat az adott eszközplatformon. A támogatott böngészők teljes listáját a [támogatott böngészők](active-directory-conditional-access-supported-apps.md#supported-browsers-for-device-based-policies) című témakörben találja.  
 
 
-## A Windows támogatott verziói
-<a id="supported-versions-of-windows" class="xliff"></a>
+## <a name="supported-versions-of-windows"></a>A Windows támogatott verziói
 
 A következő feltételeknek kell teljesülnie az eszközön futó Windows operációs rendszer esetében: 
 
@@ -61,8 +58,7 @@ A következő feltételeknek kell teljesülnie az eszközön futó Windows oper�
 - Ha eszközén Windows kiszolgálói operációs rendszert használ, annak verziója Windows Server 2008 R2 vagy újabb kell, hogy legyen. 
 
 
-## Megfelelő eszköz
-<a id="compliant-device" class="xliff"></a>
+## <a name="compliant-device"></a>Megfelelő eszköz
 
 Lehetséges, hogy a rendszergazda olyan feltételes hozzáférési szabályzatot állított be, amely a vállalat erőforrásaihoz való hozzáférést csak megfelelő eszközökről engedélyezi. A megfeleléshez az eszköznek csatlakoznia kell a helyszíni Active Directoryhez vagy az Azure Active Directoryhez.
 
@@ -71,8 +67,7 @@ Ha egy erőforráshoz egy nem megfelelő eszköz miatt nem férhet hozzá, azt k
 ![„Innen nem érheti el” üzenetek nem regisztrált eszközök esetén](./media/active-directory-conditional-access-device-remediation/01.png "Forgatókönyv")
 
 
-### Az eszköz egy helyszíni Active Directoryhez csatlakozik?
-<a id="is-your-device-joined-to-an-on-premises-active-directory" class="xliff"></a>
+### <a name="is-your-device-joined-to-an-on-premises-active-directory"></a>Az eszköz egy helyszíni Active Directoryhez csatlakozik?
 
 **Ha az eszköz egy helyszíni Active Directoryhez csatlakozik a szervezeten belül:**
 
@@ -84,8 +79,7 @@ Ha egy erőforráshoz egy nem megfelelő eszköz miatt nem férhet hozzá, azt k
 6. Ha ugyanazt a lapot látja, kattintson a **További részletek** hivatkozásra, és az ott található információt adja át a rendszergazdának.
 
 
-### Az eszköz nem csatlakozik egy helyszíni Active Directoryhez?
-<a id="is-your-device-not-joined-to-an-on-premises-active-directory" class="xliff"></a>
+### <a name="is-your-device-not-joined-to-an-on-premises-active-directory"></a>Az eszköz nem csatlakozik egy helyszíni Active Directoryhez?
 
 Ha az eszköze nem csatlakozik egy helyszíni Active Directoryhez, és Windows 10 rendszert futtat, két lehetőség áll rendelkezésre:
 
@@ -100,8 +94,7 @@ Ha az eszköz:
 
 
 
-#### Azure AD Join a Windows 10 rendszeren
-<a id="azure-ad-join-on-windows-10" class="xliff"></a>
+#### <a name="azure-ad-join-on-windows-10"></a>Azure AD Join a Windows 10 rendszeren
 
 Az eszköz Azure AD-hez való csatlakoztatásának lépései az eszközön futó Windows 10 verziójához vannak kötve. A Windows 10 operációs rendszer verziójának megállapításához futtassa a **winver** parancsot: 
 
@@ -128,8 +121,7 @@ Az eszköz Azure AD-hez való csatlakoztatásának lépései az eszközön futó
 6. Próbálja meg újból elérni az alkalmazást.
 
 
-#### Munkahelyi csatlakoztatás Windows 8.1 rendszeren
-<a id="workplace-join-on-windows-81" class="xliff"></a>
+#### <a name="workplace-join-on-windows-81"></a>Munkahelyi csatlakoztatás Windows 8.1 rendszeren
 
 Ha az eszköze nincs tartományhoz csatlakoztatva és Windows 8.1 rendszert futtat, munkahelyi csatlakoztatást hajthat végre, és regisztrálhat a Microsoft Intune-ba a következők elvégzésével:
 
@@ -142,8 +134,7 @@ Ha az eszköze nincs tartományhoz csatlakoztatva és Windows 8.1 rendszert futt
 
 
 
-#### Adja hozzá a munkahelyi vagy iskolai fiókját a Windowshoz
-<a id="add-your-work-or-school-account-to-windows" class="xliff"></a> 
+#### <a name="add-your-work-or-school-account-to-windows"></a>Adja hozzá a munkahelyi vagy iskolai fiókját a Windowshoz 
 
 
 **Windows 10 évfordulós frissítés (1607-es verzió):**
@@ -167,8 +158,7 @@ Ha az eszköze nincs tartományhoz csatlakoztatva és Windows 8.1 rendszert futt
 
 
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 [Azure Active Directory feltételes hozzáférés](active-directory-conditional-access.md)
 
 

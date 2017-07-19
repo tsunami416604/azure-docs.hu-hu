@@ -4,7 +4,7 @@ description: "Ez az Azure AD Connect Health-oldal ismerteti az AD DS figyelésé
 services: active-directory
 documentationcenter: 
 author: arluca
-manager: samueld
+manager: femila
 editor: curtand
 ms.assetid: 19e3cf15-f150-46a3-a10c-2990702cd700
 ms.service: active-directory
@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
+ms.date: 07/18/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9d7640577eedcc9221f6346b650aed85f1d31a65
 ms.openlocfilehash: 26ebdbc6f568dd3d9bbcaa3250aae70d80af2d35
-
+ms.contentlocale: hu-hu
+ms.lasthandoff: 01/18/2017
 
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Az Azure AD Connect Health használata az AD DS szolgáltatással
@@ -61,10 +62,5 @@ Alapértelmezés szerint négy teljesítményszámláló van kiválasztva, de be
 * [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
 * [Az Azure AD Connect Health verzióelőzményei](active-directory-aadconnect-health-version-history.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
