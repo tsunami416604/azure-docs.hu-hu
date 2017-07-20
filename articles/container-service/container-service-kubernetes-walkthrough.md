@@ -3,7 +3,7 @@ title: "Rövid útmutató – Azure Kubernetes-fürt létrehozása Linux rendsze
 description: "Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Container Service-ben."
 services: container-service
 documentationcenter: 
-author: anhowe
+author: neilpeterson
 manager: timlt
 editor: 
 tags: acs, azure-container-service, kubernetes
@@ -14,42 +14,28 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/31/2017
-ms.author: anhowe
+ms.date: 07/18/2017
+ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 25043f6bf5e5ab3def8563bd2c096b79706bfec1
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 3be2079d205d6bfd4c796e5f6abcd7ac5fe595a2
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/19/2017
 
 ---
 
-<a id="deploy-kubernetes-cluster-for-linux-containers" class="xliff"></a>
-
-# Kubernetes-fürt üzembe helyezése Linux-tárolók esetén
+# <a name="deploy-kubernetes-cluster-for-linux-containers"></a>Kubernetes-fürt üzembe helyezése Linux-tárolók esetén
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Az útmutatóból megtudhatja, hogyan használható az Azure CLI [Kubernetes](https://kubernetes.io/docs/home/)-fürtök [Azure Container Service-ben](container-service-intro.md) történő üzembe helyezésére. Miután üzembe helyezte a fürtöt, a Kubernetes `kubectl` parancssori eszközével kapcsolódhat hozzá, és hozhatja létre az első Linux-tárolóját.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-<a id="log-in-to-azure" class="xliff"></a>
-
-## Jelentkezzen be az Azure-ba 
-
-Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/#login) paranccsal, és kövesse a képernyőn látható utasításokat.
-
-```azurecli-interactive
-az login
-```
-
-<a id="create-a-resource-group" class="xliff"></a>
-
-## Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. 
 
@@ -59,9 +45,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location eastus
 ```
 
-<a id="create-kubernetes-cluster" class="xliff"></a>
-
-## Kubernetes-fürt létrehozása
+## <a name="create-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 Hozzon létre egy Kubernetes-fürtöt az Azure Container Service-ben az [az acs create](/cli/azure/acs#create) paranccsal. 
 
 Az alábbi példában egy *myK8sCluster* nevű fürtöt hozhat létre egy Linux rendszerű főcsomóponttal és két Linux rendszerű ügynökcsomóponttal. Ebben a példában SSH-kulcsokat hozhat létre, ha még nem léteznek ilyenek az alapértelmezett helyeken. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. Frissítse a fürt nevét a környezetnek megfelelően. 
@@ -77,13 +61,11 @@ az acs create --orchestrator-type=kubernetes \
 
 Pár perc múlva befejeződik a parancs futtatása, és megjelennek az üzembe helyezésre vonatkozó információk.
 
-<a id="install-kubectl" class="xliff"></a>
-
-## A kubectl telepítése
+## <a name="install-kubectl"></a>A kubectl telepítése
 
 Ha a csatlakozni kíván a Kubernetes-fürthöz az ügyfélszámítógépről, ehhez a Kubernetes [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/) nevű parancssori ügyfelét használhatja. 
 
-Azure CloudShell használatakor a `kubectl` már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) parancsot.
+Az Azure CloudShell használata esetén a `kubectl` már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) parancsot.
 
 Az alábbi Azure CLI-példában a `kubectl` rendszerre való telepítése történik. Ha macOS vagy Linux rendszeren használja az Azure CLI-t, elképzelhető, hogy a parancsot a `sudo` használatával kell futtatnia.
 
@@ -91,11 +73,9 @@ Az alábbi Azure CLI-példában a `kubectl` rendszerre való telepítése tört�
 az acs kubernetes install-cli 
 ```
 
-<a id="connect-with-kubectl" class="xliff"></a>
+## <a name="connect-with-kubectl"></a>Kapcsolódás a kubectl segítségével
 
-## Kapcsolódás a kubectl segítségével
-
-Futtassa az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) parancsot a `kubectl` Kubernetes-fürthöz való kapcsolódásának konfigurálásához. Az alábbi példában a Kubernetes-fürthöz tartozó fürtkonfiguráció letöltése történik.
+Az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) parancs futtatásával konfigurálja a `kubectl` ügyfelet úgy, hogy a saját Kubernetes-fürthöz kapcsolódjon. Az alábbi példában a Kubernetes-fürthöz tartozó fürtkonfiguráció letöltése történik.
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
@@ -118,9 +98,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
 ```
 
 
-<a id="deploy-an-nginx-container" class="xliff"></a>
-
-## NGINX-tároló üzembe helyezése
+## <a name="deploy-an-nginx-container"></a>NGINX-tároló üzembe helyezése
 
 Docker-tárolót futtathat olyan Kubernetes-*podokban*, amelyek legalább egy tárolót tartalmaznak. 
 
@@ -135,9 +113,7 @@ A tároló futtatási állapotának ellenőrzéséhez futtassa az alábbi paranc
 kubectl get pods
 ```
 
-<a id="view-the-nginx-welcome-page" class="xliff"></a>
-
-## Az NGINX kezdőlapjának megtekintése
+## <a name="view-the-nginx-welcome-page"></a>Az NGINX kezdőlapjának megtekintése
 Az NGINX-kiszolgáló nyilvános IP-címmel történő közzétételéhez írja be az alábbi parancsot:
 
 ```azurecli-interactive
@@ -165,9 +141,7 @@ Az alapértelmezés szerinti NGINX-kezdőlapot tetszőleges böngészővel tekin
 ![Az Nginx keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/kubernetes-nginx4.png)  
 
 
-<a id="delete-cluster" class="xliff"></a>
-
-## Fürt törlése
+## <a name="delete-cluster"></a>Fürt törlése
 Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive 
@@ -175,9 +149,7 @@ az group delete --name myResourceGroup
 ```
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutató segítségével üzembe helyezett egy Kubernetes-fürtöt, kapcsolatot hozott létre a `kubectl` használatával, és üzembe helyezett egy NGINX-tárolóval rendelkező podot. Az Azure Container Service-ről további információt a Kubernetes-fürtöket ismertető oktatóanyagban talál.
 

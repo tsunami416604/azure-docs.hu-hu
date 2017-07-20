@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 2/7/2017
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: a226bdfeb1e1e70f31b2728db594042578e5f21f
-ms.openlocfilehash: 7ccb76695a6ca0d9f1ff79f05de6a5c071510a43
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 9e9eae1623e55c1c05e97aa0b836819ce5dc16f9
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
@@ -37,8 +38,8 @@ Annak eldöntéséhez, hogy az alkalmazás hatékony tudja-e használni a nagym�
 - A nagyméretű méretezési csoportokhoz az Azure Managed Disks szükséges. Azokhoz a méretezési csoportokhoz, amelyeket nem a Managed Disksszel hoztak létre, több tárfiókra van szükség (egyre minden 20 virtuális géphez). A nagyméretű méretezési csoportokat arra tervezték, hogy kizárólag a Managed Disksszel működjenek annak érdekében, hogy csökkenjen a tárolókezelés munkaterhelése, és hogy megszűnjön a tárfiókhoz tartozó előfizetés-korlát elérésének veszélye. Ha nem használja a Managed Diskst, a méretezési csoport legfeljebb 100 virtuális gép méretű lehet.
 - Az Azure Marketplace rendszerképekből létrehozott méretezési csoportok akár 1000 virtuális gépig skálázhatók.
 - Az egyéni rendszerképekből (olyan virtuálisgép-rendszerképek, amelyeket a felhasználó maga hoz létre és tölt fel) létrehozott méretezési csoportok akár 100 virtuális gépig skálázhatók.
-- A&4;. rétegbeli terheléselosztás az Azure Load Balancerrel még nem támogatott a több elhelyezési csoportból álló méretezési csoportok esetén. Ha az Azure Load Balancert szeretné használni, győződjön meg róla, hogy a méretezési csoport egyetlen elhelyezési csoport használatára van konfigurálva, ami az alapértelmezett beállítás is.
-- A&7;. rétegbeli terheléselosztás az Azure Application Gatewayjel minden méretezési csoporthoz támogatott.
+- A 4. rétegbeli terheléselosztás az Azure Load Balancerrel még nem támogatott a több elhelyezési csoportból álló méretezési csoportok esetén. Ha az Azure Load Balancert szeretné használni, győződjön meg róla, hogy a méretezési csoport egyetlen elhelyezési csoport használatára van konfigurálva, ami az alapértelmezett beállítás is.
+- A 7. rétegbeli terheléselosztás az Azure Application Gatewayjel minden méretezési csoporthoz támogatott.
 - A méretezési csoport egyetlen alhálózattal van meghatározva – győződjön meg róla, hogy az alhálózat megfelelő méretű névtérrel rendelkezik minden virtuális géphez. A méretezési csoport alapértelmezés szerint a szükségesnél több erőforrást hoz létre (további virtuális gépeket hoz létre az üzembe helyezés során vagy a felskálázáskor, amelyek nem járnak többletköltséggel), hogy javítsa az üzembe helyezés megbízhatóságát és teljesítményét. Lehetővé teszi egy címtér számára, hogy 20%-kal nagyobb legyen, mint a virtuális gépek száma, amelyekhez skálázni szeretne.
 - Ha több virtuális gépet tervez üzembe helyezni, a Számítási magkvóta korlátozásának emelése lehet szükséges.
 - A tartalék tartományok és a frissítési tartományok csak az elhelyezési csoporton belül konzisztensek. Ez az architektúra nem módosítja a méretezési csoport általános elérhetőségét, mivel a virtuális gépek egyenlően vannak elosztva a különböző fizikai hardvereken, de azt jelenti, hogy ha biztosítania kell, hogy két virtuális gép különböző hardveren legyen, meg kell győződnie arról, hogy különböző tartalék tartományban találhatók ugyanabban az elhelyezési csoportban. A tartalék tartomány és az elhelyezési csoport azonosítója a méretezési csoport virtuális gépének _példány nézetében_ tekinthető meg. A méretezési csoport virtuális gépének példány nézetét az [Azure Resource Explorerben](https://resources.azure.com/) tekintheti meg.
@@ -83,16 +84,7 @@ A nagyméretű méretezésicsoport-sablon teljes példájáért lásd: [https://
 Ahhoz, hogy egy már meglévő virtuálisgép-méretezési csoport több mint 100 virtuális géphez skálázódhasson, a _singplePlacementGroup_ tulajdonságot _hamis_ értékre kell állítani a méretezésicsoport-modellben. Az [Azure Resource Explorerrel](https://resources.azure.com/) tesztelheti ennek a tulajdonságnak a módosítását. Keressen egy már létező méretezési csoportot, válassza a _Szerkesztés_ lehetőséget, majd módosítsa a _singlePlacementGroup_ tulajdonságot. Ha nem látja ezt a tulajdonságot, előfordulhat, hogy a Microsoft.Compute API egy régebbi változatával tekinti meg a méretezési csoportot.
 
 >[!NOTE] 
-Módosíthat egy méretezési csoportot, hogy ne csak (az alapértelmezett működés szerinti) egy, hanem több elhelyezési csoportot támogasson, de ennek fordítottjára nincs lehetőség. Ezért a konvertálás előtt győződjön meg róla, hogy tisztában van a nagyméretű méretezési csoportok tulajdonságaival. Különösen ügyeljen arra, hogy ne legyen szüksége a&4;. rétegbeli terheléselosztásra az Azure Load Balancerrel.
+Módosíthat egy méretezési csoportot, hogy ne csak (az alapértelmezett működés szerinti) egy, hanem több elhelyezési csoportot támogasson, de ennek fordítottjára nincs lehetőség. Ezért a konvertálás előtt győződjön meg róla, hogy tisztában van a nagyméretű méretezési csoportok tulajdonságaival. Különösen ügyeljen arra, hogy ne legyen szüksége a 4. rétegbeli terheléselosztásra az Azure Load Balancerrel.
 
-## <a name="additional-notes"></a>További megjegyzések
-A nagyméretű méretezési csoportok, a csatlakoztatott adatlemezzel rendelkező méretezési csoportok és az Azure Managed Disks támogatása a Microsoft.Compute API [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) verziójától vált elérhetővé. Az API ezen vagy újabb verzióival létrehozott bármely SDK vagy parancssori eszköz használata támogatott.
-
-
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
