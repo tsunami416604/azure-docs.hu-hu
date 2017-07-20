@@ -6,7 +6,7 @@ Az Apple Push Notification szolgáltatás (APNS) tanúsítványokat használ a l
 Hozza létre a tanúsítvány-aláírási kérelem (CSR) fájlját, mellyel az Apple létrehoz egy aláírt leküldéses tanúsítványt.
 
 1. Futtassa a Kulcskarika-elérés eszközt Mac számítógépén. Ez a **Segédprogramok** vagy az **Egyéb** mappából nyitható meg a Launchpadről.
-2. Kattintson a **Kulcskarika-elérés ** menüpontra, bontsa ki a **Tanúsítványasszisztens** almenü, majd kattintson a **Tanúsítvány igénylése egy tanúsítványkiadó központból...** lehetőségre.
+2. Kattintson a **Kulcskarika-elérés** menüpontra, bontsa ki a **Tanúsítványasszisztens** almenü, majd kattintson a **Tanúsítvány igénylése egy tanúsítványkiadó központból...** lehetőségre.
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 3. Töltse ki a **Felhasználói e-mail-cím** és az **Általános név** mezőket, ügyeljen arra, hogy a **Mentve lemezre** lehetőség legyen kiválasztva, majd kattintson a **Folytatás** gombra. Hagyja üresen a **CA e-mail-cím** mezőt, ennek kitöltése nem kötelező.
@@ -116,8 +116,3 @@ Ahhoz, hogy leküldéses értesítéseket küldhessen az iOS-alkalmazásoknak, e
 7. Az új üzembe helyezési profil létrejötte után kattintson rá a letöltéshez, és telepítse az Xcode-fejlesztői gépére. Ezután kattintson a **Done** (Kész) gombra.
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
-
-
-<!--HONumber=Dec16_HO1-->
-
-

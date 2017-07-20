@@ -3,7 +3,7 @@ title: "Mobile Apps-t használó Univerzális Windows-platform (UWP) létrehozá
 description: "Az útmutató bevezeti Önt az Azure-alapú, az Univerzális Windows-platformra (UWP) C#, Visual Basic vagy JavaScript nyelven történő alkalmazásfejlesztésre szolgáló mobil-háttéralkalmazások használatába."
 services: app-service\mobile
 documentationcenter: windows
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 47124296-2908-4d92-85e0-05c4aa6db916
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 1a031c4858bcbc75ee807ba520e1b22c89471498
+ms.contentlocale: hu-hu
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="create-a-windows-app"></a>Windows-alkalmazás létrehozása
@@ -28,12 +28,12 @@ ms.lasthandoff: 02/16/2017
 Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat Univerzális Windows Platform- (UWP-) alkalmazásokhoz. További információ: [Mi a Mobile Apps szolgáltatás?](app-service-mobile-value-prop.md). Az alábbiakban az elkészült alkalmazás képernyőképei láthatók:
 
 ![Az elkészült asztali alkalmazás](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png)   
-Asztali számítógépen futó alkalmazás. 
+Asztali számítógépen futó alkalmazás.
 
 ![Az elkészült mobilalkalmazás](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)  
 Telefonon futó alkalmazás.
 
-Az oktatóanyag végrehajtása feltétele a Mobile Apps UWP-alkalmazásokra vonatkozó összes többi oktatóanyag elérésének. 
+Az oktatóanyag végrehajtása feltétele a Mobile Apps UWP-alkalmazásokra vonatkozó összes többi oktatóanyag elérésének.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
@@ -43,8 +43,8 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/mobile/) oldalra. Itt azonnal létrehozhat egy ideiglenes, induló mobilalkalmazást az App Service szolgáltatásban – kötelezettségek és a bankkártyaadatok megadása nélkül.
-> 
-> 
+>
+>
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Új Azure Mobile Apps-háttéralkalmazás létrehozása
 Új Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.
@@ -60,20 +60,20 @@ Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ü
 Miután konfigurálta a Mobile Apps-háttéralkalmazást, létrehozhat új ügyfélalkalmazást, vagy módosíthat egy meglévő alkalmazást az Azure-hoz való kapcsolódáshoz. Ebben a részben le fogja tölteni egy UWP-alkalmazás sablonprojektjét, amely a Mobile Apps-háttéralkalmazásához való csatlakozásnak megfelelően van kialakítva.
 
 1. Mobile Apps-háttéralkalmazásának korábbi, **Gyorsindítás** paneljén kattintson az **Új alkalmazás létrehozása** > **Letöltés** elemre, majd bontsa ki a tömörített projektfájlokat a helyi számítógépen.
-   
+
     ![Gyorssablonra épülő Windows-projekt letöltése](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
 2. (Nem kötelező.) Az UWP-alkalmazásprojektet hozzáadhatja kiszolgálóprojektként ugyanahhoz a megoldáshoz. Ez mind az alkalmazás, mind az ugyanabban a Visual Studio-megoldásban lévő háttéralkalmazás hibakeresését és tesztelését megkönnyíti, ha szeretné ezt elvégezni. Ahhoz, hogy egy UWP-alkalmazásprojektet hozzá tudjon adni a megoldáshoz, a Visual Studio 2015-ös vagy újabb verzióját kell használnia.
 3. Az UWP-alkalmazást használja kezdőprojektként, és nyomja le az F5 billentyűt az alkalmazás telepítéséhez és futtatásához.
 4. Az alkalmazásban írjon be egy értelmes, például *Az oktatóanyag befejezése* szöveget az **Insert a TodoItem** (Teendő hozzáadása) szövegmezőbe, majd kattintson a **Save** (Mentés) gombra.
-   
+
     ![Az elkészült, gyorssablonra épülő Windows-projekt asztali számítógépen](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
-   
+
     Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-háttéralkalmazás számára.
 5. (Nem kötelező.) Állítsa le az alkalmazást, és indítsa újra egy másik eszközön vagy mobilemulátoron.
-   
+
     ![Az elkészült, gyorssablonra épülő Windows-projekt telefonon](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
-   
-    Érdemes tudni, hogy az előző lépésben mentett adatok betöltése az Azure-ból, az UWP-alkalmazás indítását követően történik. 
+
+    Érdemes tudni, hogy az előző lépésben mentett adatok betöltése az Azure-ból, az UWP-alkalmazás indítását követően történik.
 
 ## <a name="next-steps"></a>Következő lépések
 * [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-windows-store-dotnet-get-started-users.md)  

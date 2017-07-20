@@ -3,7 +3,7 @@ title: "Bevezetés az Azure Mobile Apps szolgáltatásnak a Xamarin.Android-alka
 description: "Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin Android-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást"
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 4d34bb29df95ae83952d8f421f3f2a9118ad5e1d
+ms.contentlocale: hu-hu
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android-alkalmazás létrehozása
@@ -41,8 +41,8 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 
 > [!NOTE]
 > Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, lépjen [Az App Service kipróbálása](https://azure.microsoft.com/try/app-service/mobile/) oldalra.  Itt azonnal létrehozhat egy ideiglenes, induló mobilalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
-> 
-> 
+>
+>
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure Mobile Apps-háttéralkalmazás létrehozása
 Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.
@@ -56,19 +56,19 @@ Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ü
 
 ## <a name="download-and-run-the-xamarinandroid-app"></a>A Xamarin.Android-alkalmazás letöltése és futtatása
 1. A **Download and run your Xamarin.Android project** (A Xamarin.Android-projekt letöltése és futtatása) területen kattintson a **Download** (Letöltés) gombra.
-   
+
       Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
 2. Indítsa el a projekt buildjének elkészítését az **F5** billentyű lenyomásával, és indítsa el az alkalmazást.
 3. Az alkalmazásban írjon be egy értelmes szöveget, például *Az oktatóanyag befejezése*, majd kattintson a **Hozzáadás** gombra.
-   
+
     ![][10]
-   
+
     A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblázatban tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
-   
+
    > [!NOTE]
    > A mobil-háttéralkalmazás számára az adatok lekérdezéséhez és beszúrásához hozzáférést biztosító kódot a ToDoActivity.cs C# fájlban tekintheti meg.
-   > 
-   > 
+   >
+   >
 
 ## <a name="next-steps"></a>Következő lépések
 * [Offline szinkronizálás hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-android-get-started-offline-data.md)

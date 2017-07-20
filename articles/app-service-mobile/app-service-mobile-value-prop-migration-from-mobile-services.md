@@ -3,7 +3,7 @@ title: "A Mobile Services szolgáltatást használom, miben válhat előnyömre 
 description: "Ismerje meg, milyen előnyökkel jár az App Service szolgáltatásnak a meglévő Mobile Services projektjeibe való felvétele."
 services: app-service\mobile
 documentationcenter: ios
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 26b68a11-8352-4f78-acd2-e4e0ec177781
@@ -19,7 +19,6 @@ ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: e23a4f182e6bb0ba53927aa6195967c2464e4233
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/10/2017
-
 
 ---
 # <a name="getting-started"> </a>A Mobile Services-t használom, miben válhat előnyömre az App Service?
@@ -65,5 +64,4 @@ A szolgáltatás automatikus biztonsági mentést készít a háttéralkalmazás
 Az *Azure App Service* segítségével több különböző privát tesztelési és átmeneti előkészítő környezet hozható létre a mobilalkalmazásokhoz. Ezek segítségével még a végleges telepítés előtt alaposan tesztelheti az alkalmazásokat. Majd egyetlen perc leállási idő nélkül éles üzemre válthat. A webalkalmazásokat a rendszer előre betölti, ami hozzájárul a lehető legjobb felhasználói élményhez.
 
 Az *App Service* meglévő Mobile Service szolgáltatáshoz való használatát máris megkezdheti ezzel az [oktatóanyaggal](app-service-mobile-migrating-from-mobile-services.md).
-
 

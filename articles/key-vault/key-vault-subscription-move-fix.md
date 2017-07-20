@@ -20,7 +20,6 @@ ms.openlocfilehash: 4317cf84760289ca29d8d5a78e2adef99c4cedf2
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után
 ### <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>Kérdés: Az előfizetésem átkerült A bérlőtől B bérlőhöz. Hogyan módosíthatom a meglévő kulcstartó bérlőazonosítóját, és hogyan állíthatok be helyes ACL-eket a B bérlő rendszerbiztonsági tagjai számára?
@@ -36,7 +35,7 @@ Ha például a „kucstarto” kulcstartót használja egy olyan előfizetésben
 $Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
 $vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
 $vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
-$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.Id
+$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId
 $vault.Properties.AccessPolicies = @()
 Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>

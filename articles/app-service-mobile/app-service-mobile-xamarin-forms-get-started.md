@@ -3,7 +3,7 @@ title: "A Mobile Apps használatának első lépései a Xamarin.Forms eszközké
 description: "Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin.Forms-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást."
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 6b8c5c2ac2e721c4d6f73c7c17f34eadc041e0c9
+ms.contentlocale: hu-hu
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="create-a-xamarinforms-app"></a>Xamarin.Forms-alkalmazás létrehozása
@@ -33,13 +33,13 @@ Az oktatóanyag végrehajtása feltétele a Mobile Apps Xamarin.Forms-alkalmazá
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio és Xamarin. Az útmutatót lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése). 
+* Visual Studio és Xamarin. Az útmutatót lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése).
 * Mac számítógép&7;.0 vagy-s újabb verziójú Xcode-dal és Xamarin Studio Communityvel. Lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése) és [Setup, install, and verifications for Mac users](https://msdn.microsoft.com/library/mt488770.aspx) (Beállítás, telepítés és ellenőrzés Macintosh-felhasználók számára) (MSDN).
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/mobile/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű mobilalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
-> 
-> 
+>
+>
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Új Azure Mobile Apps-háttéralkalmazás létrehozása
 Új Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.
@@ -60,12 +60,12 @@ Lássunk hozzá:
 
 1. Macintosh- vagy Windows-számítógépén nyissa meg egy böngészőablakban az [Azure Portal].
 2. A mobilalkalmazás beállítási paneljén kattintson az **Első lépések** (a Mobil alatt) > **Xamarin.Forms** elemre. A 3. lépésben kattintson az **Új alkalmazás létrehozása** lehetőségre, ha még nincs kiválasztva.  Ezután kattintson a **Letöltés** gombra.
-   
+
    Ez letölti a projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
 3. Bontsa ki a letöltött projektet, és nyissa meg a Xamarin Studio (vagy a Visual Studio) alkalmazást.
-   
+
    ![][9]
-   
+
    ![][8]
 
 ## <a name="optional-run-the-ios-project"></a>Az iOS-projekt futtatása (nem kötelező)
@@ -80,11 +80,11 @@ Ez a szakasz az iOS-eszközökhöz készült Xamarin iOS-projektek futtatásáva
 2. A **Build** menüben kattintson a **Configuration Manager** lehetőségre.
 3. A **Configuration Manager** párbeszédpanelen jelölje be az iOS-projekthez tartozó **Build** és **Deploy** (Telepítés) jelölőnégyzetet.
 4. Indítsa el a projekt buildjének elkészítését az **F5** billentyűt lenyomásával, és indítsa el az alkalmazást az iPhone-emulátoron.
-   
+
    > [!NOTE]
    > Ha a build elkészítése során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a Xamarin támogatási csomagjainak legújabb verziójára. Bizonyos esetekben előfordulhat, hogy a gyorssablonra épülő projektek nem a legfrissebb verziót használják.    
-   > 
-   > 
+   >
+   >
 
 Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd kattintson a **+** gombra.
 
@@ -94,8 +94,8 @@ Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-h�
 
 > [!NOTE]
 > A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
-> 
-> 
+>
+>
 
 ## <a name="optional-run-the-android-project"></a>Az Android-projekt futtatása (nem kötelező)
 Ez a szakasz az Android rendszerre készült Xamarin Droid-projektek futtatásával foglalkozik. Kihagyhatja ezt a részt, ha nem dolgozik Android-eszközökkel.
@@ -109,11 +109,11 @@ Ez a szakasz az Android rendszerre készült Xamarin Droid-projektek futtatásá
 2. A **Build** menüben kattintson a **Configuration Manager** lehetőségre.
 3. A **Configuration Manager** párbeszédpanelen jelölje be az Android-projekthez tartozó **Build** és **Telepítés** (Deploy) jelölőnégyzetet.
 4. Indítsa el a projekt buildjének elkészítését az **F5** billentyű lenyomásával, és indítsa el az alkalmazást egy Android-emulátoron.
-   
+
    > [!NOTE]
    > Ha a build elkészítése során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a Xamarin támogatási csomagjainak legújabb verziójára. Bizonyos esetekben előfordulhat, hogy a gyorssablonra épülő projektek nem a legfrissebb verziót használják.    
-   > 
-   > 
+   >
+   >
 
 Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd kattintson a **+** gombra.
 
@@ -123,8 +123,8 @@ Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-h�
 
 > [!NOTE]
 > A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
-> 
-> 
+>
+>
 
 ## <a name="optional-run-the-windows-project"></a>A Windows-projekt futtatása (nem kötelező)
 Ez a szakasz a Windows-eszközökhöz készült Xamarin WinApp-projektek futtatásával foglalkozik. Kihagyhatja ezt a részt, ha nem dolgozik Windows-eszközökkel.
@@ -134,11 +134,11 @@ Ez a szakasz a Windows-eszközökhöz készült Xamarin WinApp-projektek futtat�
 2. A **Build** menüben kattintson a **Configuration Manager** lehetőségre.
 3. A **Configuration Manager** párbeszédpanelen jelölje be a választott Windows-projekthez tartozó **Build** és **Deploy** (Telepítés) jelölőnégyzetet.
 4. Indítsa el a projekt buildjének elkészítését az **F5** billentyű lenyomásával, és indítsa el az alkalmazást egy Windows-emulátoron.
-   
+
    > [!NOTE]
    > Ha a build elkészítése során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a Xamarin támogatási csomagjainak legújabb verziójára. Bizonyos esetekben előfordulhat, hogy a gyorssablonra épülő projektek nem a legfrissebb verziót használják.    
-   > 
-   > 
+   >
+   >
 
 Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd kattintson a **+** gombra.
 
@@ -148,8 +148,8 @@ Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-h�
 
 > [!NOTE]
 > A mobil-háttéralkalmazáshoz hozzáférést biztosító kódot a megoldás hordozhatóosztálytár-projektjének TodoItemManager.cs C# fájljában találja.
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Következő lépések
 * [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-users.md)  
@@ -159,7 +159,7 @@ Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-h�
 * [Az offline szinkronizálás engedélyezése az alkalmazás számára](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
   Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. A kapcsolat nélküli szinkronizálás a mobilalkalmazást használó végfelhasználók számára lehetővé teszi &mdash;az adatok megtekintését, hozzáadását és módosítását&mdash; akkor is, ha nincs hálózati kapcsolat.
 * [A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz](app-service-mobile-dotnet-how-to-use-client-library.md)  
-  Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazásokban. 
+  Ismerje meg, hogyan működnek a felügyelt ügyfél-SDK-k a Xamarin-alkalmazásokban.
 
 <!-- Anchors. -->
 [Getting started with mobile app backends]:#getting-started
@@ -180,5 +180,4 @@ Ez egy POST kérést küld az Azure szolgáltatásban üzemeltetett új mobil-h�
 [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure Portal]: https://portal.azure.com/
-
 

@@ -3,7 +3,7 @@ title: "Mi a Mobile Apps szolgáltatás?"
 description: "Ismerje meg, milyen előnyökkel jár az App Service szolgáltatás bevezetése vállalati mobilalkalmazásai számára."
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
+author: dhei
 manager: yochayk
 editor: 
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: 8ce0a0e7b06f85090c07052056ddd67b97b2ee8b
+ms.contentlocale: hu-hu
 ms.lasthandoff: 04/29/2017
-
 
 ---
 # <a name="getting-started"> </a>Mi a Mobile Apps szolgáltatás?
@@ -38,14 +38,14 @@ Az *Azure App Service* *Mobile Apps* szolgáltatása jól skálázható, világs
 A felhőalapú mobilalkalmazások fejlesztéséhez fontos funkciók a következők:
 
 * **Hitelesítés és engedélyezés** – Folyamatosan bővülő identitásszolgáltatók listájából, az Azure Active Directory vállalati hitelesítési megoldását is beleértve, illetve olyan közösségi szolgáltatók közül választhat, mint a Facebook, a Google, a Twitter és a Microsoft-fiók.  Az Azure Mobile Apps minden szolgáltató számára OAuth 2.0 protokoll szerinti engedélyezést biztosít.  Integrálhatja az identitásszolgáltatók különféle speciális funkciókat biztosító SDK-it is.
-  
+
   Részletesebben is tájékozódhat [hitelesítési szolgáltatások] kapcsolatban.
 * **Adatelérés** – Az Azure Mobile Apps mobilbarát, az SQL Azure-hoz vagy egy helyi SQL-kiszolgálóhoz csatolt, OData v3 rendszerű adatforrást biztosít.  A szolgáltatás alapjául entitás-keretrendszer is használható, így könnyen integrálhatja más NoSQL- és SQL-adatszolgáltatókkal, az [Azure Table Storage], a MongoDB, a [DocumentDB], illetve az olyan SaaS API-szolgáltatókat is beleértve, mint az Office 365 és a Salesforce.com.
 * **Kapcsolat nélküli szinkronizálás** – Ügyfél SDK-ink megkönnyítik a kapcsolat nélküli adatkészleteket használó, hatékony és rugalmas mobilalkalmazások készítését, melyek automatikusan, támogatott ütközésfeloldási megoldásokkal szinkronizálhatók a háttéradatokkal.
-  
+
   Részletesebben is tájékozódhat [az adatokkal kapcsolatos funkciókkal] kapcsolatban.
 * **Leküldéses értesítések** – Ügyfél SDK-ink tökéletesen integrálhatók az Azure Notification Hubs regisztrációs szolgáltatásaival, lehetővé téve a leküldéses értesítések több millió felhasználónak egyszerre történő elküldését.
-  
+
   Részletesebben is tájékozódhat [leküldéses értesítési szolgáltatások] kapcsolatban.
 * **Ügyfél SDK-k** – Ügyfél SDK-ink választékából mind a natív fejlesztésekhez ([iOS], [Android] és [Windows]), mind a platformfüggetlen fejlesztésekhez ([Xamarin iOS és Android rendszerhez], [Xamarin Forms]), illetve a hibrid alkalmazásfejlesztésekhez ([Apache Cordova]) is talál megfelelőt.  Minden ügyfél SDK MIT licenccel érhető el, és nyílt forráskódú.
 
@@ -53,19 +53,19 @@ A felhőalapú mobilalkalmazások fejlesztéséhez fontos funkciók a következ�
 A mobilos webhelyek számára általában hasznos platformfunkciók a következők.
 
 * **automatikus skálázással** – Az App Service bármilyen beérkező terhelés esetén gyors vertikális vagy horizontális skálázást tesz lehetővé. A virtuális gépek száma és mérete manuálisan választható, illetve beállíthatja úgy az automatikus skálázást, hogy a mobil-háttéralkalmazást terhelés alapján vagy ütemezés szerint skálázza.
-  
+
   Részletesebben is tájékozódhat az [automatikus skálázással] kapcsolatban.
 * **Átmeneti környezet** – Az App Service egy webhely több verziójának futtatására képes, így lehetővé teszi A/B tesztek végrehajtását, éles üzemi környezetben, egy nagyobb fejlesztési és üzemeltetési terv részeként elvégzett tesztelést, illetve egy új háttéralkalmazásnak a saját helyén történő előkészítését.
-  
+
   További tudnivalók az [átmeneti környezet] kapcsolatban.
 * **Folyamatos telepítés** – Az App Service integrálható a gyakran használt SCM-rendszerekkel, így automatikusan telepítheti háttéralkalmazásának új verzióit az SCM-rendszer egyik ágára való leküldés révén.
-  
+
   Részletesebben is tájékozódhat a [telepítési lehetőségek] kapcsolatban.
 * **Virtuális hálózatkezelés** – Az App Service képes virtuális hálózaton, ExpressRoute-on vagy hibrid kapcsolaton keresztül csatlakozni a helyi erőforrásokhoz.
-  
+
   Részletesebben is tájékozódhat a [hibrid kapcsolatok], a [virtuális hálózatokkal] és az [ExpressRoute]-tal kapcsolatban.
 * **Elkülönített/dedikált környezetek** – Az App Service képes az Azure App Service-alkalmazások teljesen elkülönített és dedikált környezetben történő biztonságos futtatására, nagy méretekben.  Ez ideális a rendkívül nagy skálázást, elkülönített vagy biztonságos hálózati hozzáférést igénylő alkalmazások és szolgáltatások számára.
-  
+
   Részletesebben is tájékozódhat az [App Service-környezetek] kapcsolatban.
 
 ## <a name="getting-started"></a>Első lépések
@@ -76,8 +76,8 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/mobile/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
-> 
-> 
+>
+>
 
 <!-- URLs. -->
 [Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md

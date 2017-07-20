@@ -3,7 +3,7 @@ title: "Bevezetés az Azure App Service Mobile Apps szolgáltatásnak a Xamarin.
 description: "Ezt az oktatóanyagot követve megismerkedhet azokkal a kezdeti lépésekkel, amelyekkel Xamarin.iOS-alapú fejlesztésre használhatja a Mobile Apps szolgáltatást."
 services: app-service\mobile
 documentationcenter: xamarin
-author: adrianhall
+author: dhei
 manager: adrianha
 editor: 
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: adrianha
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: ed289d0755bbad08de01b0f311d14f5514ce0631
+ms.contentlocale: hu-hu
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS-alkalmazás létrehozása
@@ -38,8 +38,8 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 
 > [!NOTE]
 > Ha nem szeretne regisztrálni Azure-fiókot az Azure App Service megismerése előtt, menjen [Az App Service kipróbálása](https://azure.microsoft.com/try/app-service/mobile/) oldalra. Itt azonnal létrehozhat egy ideiglenes, induló mobilalkalmazást az App Service szolgáltatásban – kötelezettségek és a bankkártyaadatok megadása nélkül.
-> 
-> 
+>
+>
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure Mobile Apps-háttéralkalmazás létrehozása
 Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.
@@ -56,24 +56,24 @@ Konfigurálja a kiszolgálóprojektet a Node.js vagy a .NET-háttéralkalmazás 
 ## <a name="download-and-run-the-xamarinios-app"></a>A Xamarin.iOS-alkalmazás letöltése és futtatása
 1. Nyissa meg az [Azure Portal] egy böngészőablakban.
 2. A Mobile Apps beállítási paneljén kattintson az **Első lépések** > **Xamarin.iOS** elemre. A 3. lépésben kattintson az **Új alkalmazás létrehozása** lehetőségre, ha még nincs kiválasztva.  Ezután kattintson a **Letöltés** gombra.
-   
+
       A program ekkor letölt egy, a mobilháttérmodulhoz csatlakozó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
 3. Bontsa ki a letöltött projektet, és nyissa meg a Xamarin Studio (vagy a Visual Studio) alkalmazást.
-   
+
     ![][9]
-   
+
     ![][8]
 4. Készítse el a projekt buildjét az F5 billentyűt lenyomásával, és indítsa el az alkalmazást az iPhone-emulátoron.
 5. Az alkalmazásban írjon be egy értelmes szöveget, például *Xamarin-tanulás*, majd kattintson a **+** gombra.
-   
+
     ![][10]
-   
+
     A kérelem adatai beillesztésre kerülnek a TodoItem táblába. A táblában tárolt elemeket a mobil-háttéralkalmazás visszaküldi, és az adatok megjelennek a listában.
 
 > [!NOTE]
 > A mobil-háttéralkalmazás számára az adatok lekérdezéséhez és beszúrásához hozzáférést biztosító kódot a QSTodoService.cs C# fájlban tekintheti meg.
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Következő lépések
 * [Offline szinkronizálás hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-ios-get-started-offline-data.md)
