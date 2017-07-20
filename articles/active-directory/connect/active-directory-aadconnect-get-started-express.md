@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
-ms.openlocfilehash: 240475240be76265c2a2f150a4a6d8f4aa0d3664
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 8a08f6e441a856a06bf7870747ca20af45a0364e
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Első lépések az Azure AD Connecttel a gyorsbeállítások használatával
@@ -72,10 +73,5 @@ További információ: [Helyszíni identitások integrálása az Azure Active Di
 | Telepítés testreszabott beállítások használatával |
 | Frissítés a DirSync szolgáltatásról |
 | Telepítési fiókok |
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 
