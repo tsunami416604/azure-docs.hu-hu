@@ -23,9 +23,7 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="connectors-list" class="xliff"></a>
-
-# Összekötők listája
+# <a name="connectors-list"></a>Összekötők listája
 > [!TIP]
 > A [betűrend szerinti teljes lista](#az) (ebben a témakörben) tartalmazza a Logic Apps alatt használható összes elérhető összekötő listáját. Az [összekötő részletei](/connectors/) a swaggerben meghatározott valamennyi eseményindítót és műveletet, valamint az egyes összekötők korlátait is felsorolja.
 
@@ -41,9 +39,7 @@ Az összekötők a logikai alkalmazások létrehozásának szerves részei. Ezen
 
 A [Logic Apps díjszabási modell](https://azure.microsoft.com/pricing/details/logic-apps/) és a [Díjszabási modell](../logic-apps/logic-apps-pricing.md) című témakörben megismerheti e költségek részleteit. 
 
-<a id="popular-connectors" class="xliff"></a>
-
-## Népszerű összekötők
+## <a name="popular-connectors"></a>Népszerű összekötők
 Több ezer olyan alkalmazás és több millió olyan végrehajtás létezik, amely ezekkel az összekötőkkel dolgozott fel sikeresen adatokat és információkat. Az alábbi táblázat tartalmazza a felhasználóink körében legnépszerűbb összekötőket:
 
 | |  |  |  |
@@ -56,9 +52,7 @@ Több ezer olyan alkalmazás és több millió olyan végrehajtás létezik, ame
 |  [![API Icon][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Ha olyan jellegű munkát végez a SharePointtal, amely során hasznos lenne az automatizálás, javasoljuk, hogy tekintse meg ezt az összekötőt. A helyszíni SharePointtal és a SharePoint Online-nal is használható. | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | Az egyik leggyakrabban használt összekötő, amely egy helyszíni SQL Server és egy Azure SQL Database összekapcsolására szolgál. | 
 | [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | Könnyedén bejelentkezhet Twitter-fiók használatával, majd minden új Twitter-üzenet közzététele után elindíthat egy munkafolyamatot. Végül mentheti ezeket a Twitter-üzeneteket egy SQL-adatbázisba vagy SharePoint-listába. | | | 
 
-<a id="integration-account-connectors" class="xliff"></a>
-
-## Integrációs fiókok összekötői 
+## <a name="integration-account-connectors"></a>Integrációs fiókok összekötői 
 
 Az Enterprise Integration Pack (EIP) olyan összekötőket tartalmaz, amelyeket a BizTalk Server közössége már régóta jól ismer. Amikor [integrációs fiókot](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) vásárol, a következő összekötőket is megkapja: 
 
@@ -68,15 +62,13 @@ Az Enterprise Integration Pack (EIP) olyan összekötőket tartalmaz, amelyeket 
 [![API Icon][flatfileicon]<br/>**Flat file</br> encoding**][flatfiledoc] | [![API Icon][flatfiledecodeicon]<br/>**Flat file</br> decoding**][flatfiledecodedoc] | [![API Icon][integrationaccounticon]<br/>**Integration<br/>account**][integrationaccountdoc] | [![API Icon][xmltransformicon]<br/>**Transform<br/>XML**][xmltransformdoc] |
 | [![API Icon][x12icon]<br/>**X12</br> decoding**][x12decode] | [![API Icon][x12icon]<br/>**X12</br> encoding**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>validation**][xmlvalidatedoc] | |
 
-<a id="enterprise-connectors" class="xliff"></a>
-
-## Vállalati összekötők
+## <a name="enterprise-connectors"></a>Vállalati összekötők
 
 Logikai alkalmazásain belül csatlakozhat vállalati alkalmazásaihoz.
 
 |  |  |
 | --- | --- |
-|[! [API-ikon] [MQicon] <br/>**MQ**][mqdoc]|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API Icon][MQicon]<br/>**MQ**][mqdoc]|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>Betűrend szerinti teljes lista
@@ -95,9 +87,7 @@ Az [összekötő részletei](/connectors/) a swaggerben meghatározott valamenny
 > [!TIP]
 > Ha az Azure Logic Appst az Azure-fiók regisztrálása előtt szeretné kipróbálni, folytassa [a Logic Apps kipróbálásával](https://tryappservice.azure.com/?appservice=logic). Azonnal létrehozhat egy rövid életű, kezdő szintű logikai alkalmazást. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 
-<a id="connectors-as-triggers-and-actions" class="xliff"></a>
-
-## Eseményindítóként és műveletként használható összekötők
+## <a name="connectors-as-triggers-and-actions"></a>Eseményindítóként és műveletként használható összekötők
 
 Egy **eseményindító** elindul, vagy lefuttatja a logikai alkalmazása egy példányát. Egyes összekötők eseményindítókat biztosítanak, amelyek adott események bekövetkezése esetén értesítik az alkalmazást. Az FTP-összekötő például az `OnUpdatedFile` eseményindítót tartalmazza, amely egy fájl frissítésekor elindítja a logikai alkalmazást. 
 
@@ -117,9 +107,7 @@ Az összekötők **műveleteket** is biztosítanak, amelyek felhasználhatók a 
 > Az [összekötők áttekintését](connectors-overview.md) nyújtó témakörben további részleteket olvashat az eseményindítókról és a műveletekről. 
 
 
-<a id="message-manipulation-actions" class="xliff"></a>
-
-## Üzenetkezelési műveletek
+## <a name="message-manipulation-actions"></a>Üzenetkezelési műveletek
 
 A logikai alkalmazások beépített műveleteket tartalmaznak, amelyek a hasznos adatok módosítására vagy kezelésére szolgálnak. A beépített **Adatműveletek** összekötő az alábbi műveleteket tartalmazza: 
 
@@ -132,17 +120,13 @@ A logikai alkalmazások beépített műveleteket tartalmaznak, amelyek a hasznos
 | **JSON elemzése** | Elérheti és elemezheti a tervezőben található JSON-objektumok értékeit. Ha az Azure Function például hasznos JSON-adatokat ad vissza, akkor elemezheti azokat, hogy hozzáférhessen a JSON tulajdonságaihoz egy későbbi lépésben. Ez a művelet azt is ellenőrzi, hogy a JSON egyezik-e a futásidő során meghatározott sémával. | 
 | **Kiválasztás** | Kiválaszthatja egy tömb bizonyos tulajdonságait további feldolgozás céljából. Ha az SQL-ben a „Rekordok listába rendezése” parancs 15 oszlopot ad vissza, akkor kiválaszthat ezek közül néhányat a további feldolgozás érdekében. A kimenet olyan tömb, amely csak a kiválasztott tulajdonságokat tartalmazza. |
 
-<a id="custom-connectors-and-azure-certification" class="xliff"></a>
-
-## Egyéni összekötők és Azure-hitelesítés 
+## <a name="custom-connectors-and-azure-certification"></a>Egyéni összekötők és Azure-hitelesítés 
 
 Ha szeretne hívásokat indítani olyan API-kba, amelyek egyéni kóddal rendelkeznek, vagy nem érhetők el beépített összekötőkként, kiterjesztheti a Logic Apps-platformot [REST-alapú API-alkalmazások egyéni összekötőként történő létrehozásával](../logic-apps/logic-apps-create-api-app.md). 
 
 Ha szeretné, hogy egyéni API-alkalmazása nyilvános és az Azure-ban elérhető legyen, akkor küldje be az alkotását a [Microsoft Azure Certfied programba](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/).
 
-<a id="get-help" class="xliff"></a>
-
-## Segítségkérés
+## <a name="get-help"></a>Segítségkérés
 
 Látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps), ahol kérdéseket tehet fel és válaszolhat meg, valamint megtudhatja, mivel foglalkoznak az Azure Logic Apps más felhasználói.
 
@@ -150,9 +134,7 @@ Ha szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, sza
 
 Nem talál valamilyen összekötővel kapcsolatos témakört, illetve fontosnak tartott részletet? Ha nem, akkor meglévő témaköreinket kiegészítve segíthet nekünk, illetve sajátot is készíthet. Dokumentációnk nyílt forrás, amelyet a GitHubon találhat. Első lépések a [GitHub-adattárban](https://github.com/Microsoft/azure-docs). 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az első logikai alkalmazás létrehozása](../logic-apps/logic-apps-create-a-logic-app.md)
 * [Egyéni API-k létrehozása logikai alkalmazásokhoz](../logic-apps/logic-apps-create-api-app.md)
 * [Logikai alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)
