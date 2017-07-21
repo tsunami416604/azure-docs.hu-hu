@@ -4,7 +4,11 @@ title: Azure Cosmos DB-dokumentáció
 metadata:
   document_id: e77bd640-1036-8b31-955c-a2cc990c69a1
   title: 'Azure Cosmos DB-dokumentáció – oktatóanyagok, API-referencia'
-  description: 'Ismerje meg, hogyan építhet fel globálisan elosztott, többmodelles adatbázisokat az Azure Cosmos DB használatával. Az oktatóanyagok bemutatják a dokumentum-, kulcs/érték- és Graph-adatbázisok felépítésének és lekérdezésének folyamatát.'
+  description: >-
+    Ismerje meg, hogyan építhet fel globálisan elosztott, többmodelles
+    adatbázisokat az Azure Cosmos DB használatával. Az oktatóanyagok bemutatják
+    a dokumentum-, kulcs/érték- és Graph-adatbázisok felépítésének és
+    lekérdezésének folyamatát.
   services: cosmos-db
   author: carolz
   manager: carolz
@@ -15,85 +19,150 @@ metadata:
   ms.date: 04/28/2017
   ms.author: carolz
 abstract:
-  description: 'Az Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely arra lett kifejlesztve, hogy – átfogó SLA-feltételek mellett – lehetővé tegye az átviteli sebesség és a tárterület rugalmas és független méretezését akár több földrajzi régióra kiterjedően is.  A Cosmos DB használatával egy sor népszerű API és programozási modell segítségével fejleszthet dokumentum-, kulcs/érték- és Graph-adatbázisokat. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet a Cosmos DB használatával.'
+  description: >-
+    Az Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely
+    arra lett kifejlesztve, hogy – átfogó SLA-feltételek mellett – lehetővé
+    tegye az átviteli sebesség és a tárterület rugalmas és független méretezését
+    akár több földrajzi régióra kiterjedően is.  A Cosmos DB használatával egy
+    sor népszerű API és programozási modell segítségével fejleszthet
+    dokumentum-, kulcs/érték- és Graph-adatbázisokat. Rövid útmutatóink,
+    oktatóanyagaink és példáink segítségével megismerkedhet a Cosmos DB
+    használatával.
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Megismerheti, hogyan hozhat létre egy globálisan elosztott adatbázist az Azure Cosmos DB és a következő többmodelles API-k használatával:'
-  - type: table
-    style: dataMatrix
-    columns:
-      - image:
-          src: media/index/logo_net.svg
-      - image:
-          src: media/index/logo_java.svg
-      - image:
-          src: media/index/logo_nodejs.svg
-      - image:
-          src: media/index/logo_python.svg
-      - image:
-          src: media/index/logo_gremlin.svg
-    rows:
-      - title: DocumentDB API
-        values:
-        - href: /azure/cosmos-db/create-documentdb-dotnet
-        - href: /azure/cosmos-db/create-documentdb-java
-        - href: /azure/cosmos-db/create-documentdb-nodejs
-        - href: /azure/cosmos-db/create-documentdb-python
-        - href:
-      - title: MongoDB API
-        values:
-          - href: /azure/cosmos-db/create-mongodb-dotnet
-          - href: /azure/cosmos-db/create-mongodb-java
-          - href: /azure/cosmos-db/create-mongodb-nodejs
-          - href: 
-          - href: 
-      - title: Graph API
-        values:
-          - href: /azure/cosmos-db/create-graph-dotnet
-          - href: /azure/cosmos-db/create-graph-java
-          - href: /azure/cosmos-db/create-graph-nodejs
-          - href:
-          - href: /azure/cosmos-db/create-graph-gremlin-console
-      - title: Tábla API
-        values:
-          - href: /azure/cosmos-db/create-table-dotnet
-          - href:
-          - href:
-          - href:
-          - href:
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Megismerheti, hogyan fejleszthet alkalmazásokat az Azure Cosmos DB&#58; használatával'
-  - type: list
-    style: ordered
+  - title: 5 perces gyors útmutatók
     items:
-    - html: 'Alkalmazás fejlesztése a Cosmos DB&#58; használatával <a href="/azure/cosmos-db/tutorial-develop-documentdb-dotnet">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Graph</a>'
-    - html: 'Adatok importálása a Cosmos DB-be&#58; <a href="documentdb-import-data">DocumentDB</a> | <a href="documentdb-mongodb-migrate">MongoDB</a>'
-    - html: 'Adatok lekérdezése a Cosmos DB&#58; használatával <a href="/azure/cosmos-db/tutorial-query-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Graph</a>'
-    - html: 'Globális adatbázis-replikáció a Cosmos DB&#58; használatával <a href="/azure/cosmos-db/tutorial-global-distribution-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>'
-    - html: <a href="local-emulator">Alkalmazás helyszíni fejlesztése az emulátor használatával</a>
-- title: Példák
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: >-
+          Megismerheti, hogyan hozhat létre egy globálisan elosztott adatbázist
+          az Azure Cosmos DB és a következő többmodelles API-k használatával:
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo_net.svg
+          - image:
+              src: media/index/logo_java.svg
+          - image:
+              src: media/index/logo_nodejs.svg
+          - image:
+              src: media/index/logo_python.svg
+          - image:
+              src: media/index/logo_gremlin.svg
+        rows:
+          - title: DocumentDB API
+            values:
+              - href: /azure/cosmos-db/create-documentdb-dotnet
+              - href: /azure/cosmos-db/create-documentdb-java
+              - href: /azure/cosmos-db/create-documentdb-nodejs
+              - href: /azure/cosmos-db/create-documentdb-python
+              - href: null
+          - title: MongoDB API
+            values:
+              - href: /azure/cosmos-db/create-mongodb-dotnet
+              - href: /azure/cosmos-db/create-mongodb-java
+              - href: /azure/cosmos-db/create-mongodb-nodejs
+              - href: null
+              - href: null
+          - title: Graph API
+            values:
+              - href: /azure/cosmos-db/create-graph-dotnet
+              - href: /azure/cosmos-db/create-graph-java
+              - href: /azure/cosmos-db/create-graph-nodejs
+              - href: null
+              - href: /azure/cosmos-db/create-graph-gremlin-console
+          - title: Tábla API
+            values:
+              - href: /azure/cosmos-db/create-table-dotnet
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/cosmos-db/cli-samples">Azure CLI</a>
-    - html: <a href="/azure/cosmos-db/powershell-samples">Azure PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: >-
+          Megismerheti, hogyan fejleszthet alkalmazásokat az Azure Cosmos
+          DB&#58; használatával
+      - type: list
+        style: ordered
+        items:
+          - html: >-
+              Alkalmazás fejlesztése a Cosmos DB&#58; használatával <a
+              href="/azure/cosmos-db/tutorial-develop-documentdb-dotnet">DocumentDB</a>
+              | <a href="/azure/cosmos-db/tutorial-develop-mongodb">MongoDB</a>
+              | <a
+              href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> |
+              <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Graph</a>
+          - html: >-
+              Adatok importálása a Cosmos DB-be&#58; <a
+              href="documentdb-import-data">DocumentDB</a> | <a
+              href="documentdb-mongodb-migrate">MongoDB</a>
+          - html: >-
+              Adatok lekérdezése a Cosmos DB&#58; használatával <a
+              href="/azure/cosmos-db/tutorial-query-documentdb">DocumentDB</a> |
+              <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a
+              href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a
+              href="/azure/cosmos-db/tutorial-query-graph">Graph</a>
+          - html: >-
+              Globális adatbázis-replikáció a Cosmos DB&#58; használatával <a
+              href="/azure/cosmos-db/tutorial-global-distribution-documentdb">DocumentDB</a>
+              | <a
+              href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a>
+              | <a
+              href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a>
+              | <a
+              href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>
+          - html: >-
+              <a href="local-emulator">Alkalmazás helyszíni fejlesztése az
+              emulátor használatával</a>
+  - title: Példák
     items:
-    - title: DocumentDB API-k
-      html: '<p><a href="/rest/api/documentdb/">REST</a></p><p><a href="https://aka.ms/acdbnetref">.NET</a></p><p><a href="https://aka.ms/acdbnetcoreref">.NET Core</a></p><p><a href="https://aka.ms/acdbnoderef">Node.js</a></p><p><a href="https://aka.ms/acdbjavaref">Java</a></p><p><a href="https://aka.ms/acdbpythonref">Python</a></p><p><a href="/rest/api/documentdbresourceprovider/">REST erőforrás-szolgáltató</a></p><p><a href="documentdb-sql-query-reference">SQL</a></p>'
-    - title: MongoDB API-k
-      html: '<p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.js</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>'
-    - title: Tábla API-k
-      html: <p><a href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST</a></p><p><a href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p>
-    - title: Gremlin API-k
-      html: '<p><a href="http://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a href="http://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>'
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/cosmos-db/cli-samples">Azure CLI</a>
+          - html: <a href="/azure/cosmos-db/powershell-samples">Azure PowerShell</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: DocumentDB API-k
+            html: >-
+              <p><a href="/rest/api/documentdb/">REST</a></p><p><a
+              href="https://aka.ms/acdbnetref">.NET</a></p><p><a
+              href="documentdb-sdk-dotnet-changefeed">.NET – Csatorna
+              módosítása</a></p><p><a href="https://aka.ms/acdbnetcoreref">.NET
+              Core</a></p><p><a
+              href="https://aka.ms/acdbnoderef">Node.js</a></p><p><a
+              href="https://aka.ms/acdbjavaref">Java</a></p><p><a
+              href="https://aka.ms/acdbpythonref">Python</a></p><p><a
+              href="/rest/api/documentdbresourceprovider/">REST
+              erőforrás-szolgáltató</a></p><p><a
+              href="documentdb-sql-query-reference">SQL</a></p>
+          - title: MongoDB API-k
+            html: >-
+              <p><a
+              href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire
+              Protocol</a></p><p><a
+              href="https://mongodb.github.io/node-mongodb-native/
+              ">Node.js</a></p><p><a
+              href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a
+              href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a
+              href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a
+              href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>
+          - title: Tábla API-k
+            html: >-
+              <p><a
+              href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST</a></p><p><a
+              href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p>
+          - title: Gremlin API-k
+            html: >-
+              <p><a
+              href="http://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a
+              href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a
+              href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a
+              href="http://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a
+              href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>

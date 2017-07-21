@@ -15,6 +15,7 @@
 ### [Beállítások konfigurálása](multi-factor-authentication-whats-next.md)
 ### [Jelentések az MFA-ban](multi-factor-authentication-manage-reports.md)
 ### [Meglévő hálózatiházirend-kiszolgálók használata](multi-factor-authentication-nps-extension.md)
+#### [Speciális konfiguráció az NPS-bővítményhez](nps-extension-advanced-configuration.md)
 ### [Hitelesítési szolgáltató létrehozása](multi-factor-authentication-get-started-auth-provider.md)
 ### Helyszíni Azure MFA
 #### [A felhasználói portál telepítése](multi-factor-authentication-get-started-portal.md)

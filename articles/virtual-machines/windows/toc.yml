@@ -85,8 +85,6 @@
           href: preserving-maintenance.md
         - name: Karbantartás újraindítása
           href: impactful-maintenance.md
-        - name: Ütemezés
-          href: planned-maintenance-schedule.md
     - name: A virtuális gépek mérete
       href: sizes.md
       items:
@@ -413,6 +411,10 @@
               href: troubleshoot-recovery-disks.md
             - name: Azure Portal
               href: troubleshoot-recovery-disks-portal.md
+        - name: >-
+            A PerfInsights használata teljesítménnyel kapcsolatos hibák
+            elhárítására
+          href: how-to-use-perfInsights.md
 - name: Referencia
   items:
     - name: Azure CLI

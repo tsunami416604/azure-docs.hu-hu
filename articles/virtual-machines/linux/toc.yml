@@ -375,6 +375,8 @@
               href: classic/hpcpack-cluster-namd.md
         - name: Az SAP az Azure-on
           href: ../workloads/sap/get-started.md
+        - name: Az Oracle az Azure-on
+          href: ../workloads/oracle/oracle-considerations.md
     - name: Docker a virtuális gépeken
       items:
         - name: >-

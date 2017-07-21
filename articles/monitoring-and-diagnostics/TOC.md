@@ -74,3 +74,4 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [PowerShell-minták](insights-powershell-samples.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=monitor)
+## [Gyorsindítási sablonok](https://azure.microsoft.com/en-us/resources/templates/?resourceType=Microsoft.Insights)

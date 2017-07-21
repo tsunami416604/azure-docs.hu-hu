@@ -25,6 +25,7 @@
 # Útmutató
 
 ## [Felhasználói adatok áttelepítése az Azure RemoteApp-ből](remoteapp-migrate.md)
+## [Migrálás a MyCloudIT-re](remoteapp-migrate-mycloudit.md)
 ## [Áttelepítés a Citrix XenApp Essentials rendszerbe](remoteapp-migrate-citrix.md)
 ## RemoteApp-gyűjtemény létrehozása
 ### [Melyik gyűjteményre van szüksége?](remoteapp-collections.md)

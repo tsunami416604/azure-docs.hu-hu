@@ -20,6 +20,7 @@
 ### [Virtuális gépek figyelése a diagnosztikai virtuálisgép-bővítmény 2.x verziójával](diagnostic-extension-v2.md)
 ### [Egyéni adatok betöltése](inject-custom-data.md)
 ### [Linux-jelszavak vagy -kulcsok visszaállítása, az SSH javítása és a lemezek ellenőrzése](reset-access.md)
+### [Karbantartás](planned-maintenance-schedule.md)
 ### [Docker-gazdagép létrehozása a parancssori felületről](cli-use-docker.md)
 ### [Docker-gazdagép létrehozása a portálról](portal-use-docker.md)
 ### [A Docker és a Swarm együttes használata](../../virtual-machines-linux-docker-swarm.md)

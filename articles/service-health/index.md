@@ -13,16 +13,15 @@ ms.topic: landing-page
 ms.date: 07/07/2017
 ms.author: bernardm
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: d95507be7af7eb69cbab4e11a2aa6af1a9775b0c
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 1452c1dd56829d162d464c4a359fa8c86ce74a6b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 07/19/2017
 
 ---
-# Azure Service Health dokumentációja
-<a id="azure-service-health-documentation" class="xliff"></a>
+# <a name="azure-service-health-documentation"></a>Azure Service Health dokumentációja
 
-A Service Health segítséget nyújt a diagnosztizálásban és a támogatás igénylésében, ha egy Azure-ral kapcsolatos probléma hatással van az erőforrásokra. Tájékoztatja az erőforrásai aktuális és korábbi állapotáról, és segít a problémák kezelésében. Műszaki támogatást nyújt, ha segítségre van szüksége az Azure szolgáltatásait érintő problémákkal kapcsolatban.
+Az Azure Service Health személyre szabott útmutatást és támogatást nyújt, ha problémák merülnek fel az Azure használata közben, valamint segít felkészülni az ütemezett karbantartási műveletekre. Az Azure Service Health célzott és rugalmas értesítések útján figyelmezteti Önt és az Önhöz tartozó csapatokat.
 <ul class="panelContent cardsFTitle">
     <li>
         <a href="/azure/service-health/service-health-overview">
