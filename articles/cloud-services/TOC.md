@@ -21,8 +21,6 @@
 #### [A Queue Storage és a kapcsolódó szolgáltatások](../storage/vs-storage-cloud-services-getting-started-queues.md)
 #### [A Table Storage és a kapcsolódó szolgáltatások](../storage/vs-storage-cloud-services-getting-started-tables.md)
 ### Csomagok konfigurálása folyamatos fejlesztéshez és üzembe helyezéshez
-#### [Visual Studio Team Services és Git](cloud-services-continuous-delivery-use-vso-git.md)
-#### [Visual Studio Team Services](cloud-services-continuous-delivery-use-vso.md)
 #### [TFS és Team Build](cloud-services-dotnet-continuous-delivery.md)
 ### [Szerepkör adatforgalmi szabályainak konfigurálása](cloud-services-enable-communication-role-instances.md)
 ### [Cloud Service-életciklusesemények kezelése](cloud-services-role-lifecycle-dotnet.md)

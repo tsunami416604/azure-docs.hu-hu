@@ -7,6 +7,7 @@
 ## [URL-útválasztás](application-gateway-url-route-overview.md)
 ## [Többhelyes kapcsolat](application-gateway-multi-site-overview.md)
 ## [Végpontok közötti SSL-szolgáltatások](application-gateway-backend-ssl.md)
+## [Átirányítás](application-gateway-redirect-overview.md)
 ## [WebSocket](application-gateway-websocket.md)
 ## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # Bevezetés
@@ -37,6 +38,8 @@
 ## Többhelyes üzemeltetés konfigurálása
 ### [Portál](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
+## Átirányítás konfigurálása
+### [PowerShell](application-gateway-configure-redirect-powershell.md)
 ## Állapotminták konfigurálása
 ### [Portál](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)

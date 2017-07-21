@@ -13,6 +13,3 @@
 ### [Bevezetés az alkalmazás használatába](microsoft-authenticator-app-how-to.md)
 ### [Bejelentkezés telefonnal](microsoft-authenticator-app-phone-signin-faq.md)
 ### [Gyakori kérdések](microsoft-authenticator-app-faq.md)
-
-# Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
