@@ -29,6 +29,7 @@
 ### [A Data Factory másolási varázslója](data-factory-azure-copy-wizard.md)
 #### [1 TB adat betöltése 15 perc alatt](data-factory-load-sql-data-warehouse.md)
 ### [Teljesítmény és finomhangolási útmutató](data-factory-copy-activity-performance.md)
+### [Hibatűrés](data-factory-copy-activity-fault-tolerance.md)
 ### [Biztonsági szempontok](data-factory-data-movement-security-considerations.md)
 ### Összekötők
 #### [Amazon Redshift](data-factory-amazon-redshift-connector.md)

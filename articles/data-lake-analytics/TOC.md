@@ -6,7 +6,6 @@
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 ## [PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [Azure CLI 2.0](data-lake-analytics-get-started-cli2.md)
-## [U-SQL programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
 
 # Útmutató
 
@@ -37,6 +36,7 @@
 ### [A feladatböngésző és a Feladat nézet használata](data-lake-analytics-data-lake-tools-view-jobs.md)
 ### [A Vertex végrehajtási nézet használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 ### [Helyi futtatás és hibakeresés a VSCode-ban](data-lake-tools-for-vscode-local-run-and-debug.md)
+### [U-SQL programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
 
 # Referencia
 ## [PowerShell](/powershell/module/azurerm.datalakeanalytics)
