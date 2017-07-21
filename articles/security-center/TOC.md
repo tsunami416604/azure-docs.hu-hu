@@ -19,6 +19,7 @@
 
 ## Megelőzés
 ### [Biztonsági szabályzatok beállítása](security-center-policies.md)
+### [Igény szerinti hozzáférés](security-center-just-in-time.md)
 ### [Biztonsági ajánlások megvalósítása](security-center-recommendations.md)
 
 ### [Alkalmazásokkal kapcsolatos javaslatok](security-center-application-recommendations.md)
