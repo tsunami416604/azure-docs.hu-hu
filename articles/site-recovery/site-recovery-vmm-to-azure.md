@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
-ms.openlocfilehash: b53e7f5454cd97f013fdce052f0a990a44958dee
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 475b0cea9be58c9b6fa13645e3c19cc3b689aab2
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>VMM-felhőben lévő Hyper-V virtuális gépek replikálása az Azure-ba az Azure Portal Site Recovery szolgáltatásának használatával
@@ -59,7 +59,7 @@ Kövesse a cikkben leírtakat az üzembe helyezési lépések elvégzéséhez:
 **Támogatási követelmények** | **Részletek**
 --- | ---
 **Azure** | Az [Azure-követelmények](site-recovery-prereq.md#azure-requirements) ismertetése.
-**Helyszíni kiszolgálók** | A helyszíni VMM-kiszolgáló és a Hyper-V-gazdagépek követelményeinek [ismertetése](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-in-virtual-machine-manager-clouds-to-azure).
+**Helyszíni kiszolgálók** | A helyszíni VMM-kiszolgáló és a Hyper-V-gazdagépek követelményeinek [ismertetése](site-recovery-prereq.md#disaster-recovery-of-hyper-v-vms-in-vmm-clouds-to-azure).
 **Helyszíni Hyper-V rendszerű virtuális gépek** | A replikálni kívánt virtuális gépeknek [támogatott operációs rendszert](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) kell futtatniuk, valamint meg kell felelniük az [Azure-előfeltételeknek](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
 **Azure-beli URL-címek** | A VMM-kiszolgálónak hozzáférésre van szüksége a következő URL-címekhez:<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> Ha IP-címeken alapuló tűzfalszabályokat használ, ellenőrizze, hogy engedélyezik-e az Azure-ral való kommunikációt.<br/></br> Engedélyezze az [Azure-adatközpont IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653) és a HTTPS-portot (443).<br/></br> Engedélyezze az előfizetéshez tartozó Azure-régió, illetve az USA nyugati régiójának IP-tartományait (a hozzáférés-vezérléshez és az identitáskezeléshez szükséges).
 
