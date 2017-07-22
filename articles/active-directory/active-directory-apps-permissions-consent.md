@@ -13,12 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2016
+ms.date: 07/20/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.reviewer: jesakowi
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 095497656a1c6ed1fe5322b6015de750d8fd6f15
 ms.openlocfilehash: 3706ed729a525526a415d3a3367e6b8245ead812
-
+ms.contentlocale: hu-hu
+ms.lasthandoff: 12/06/2016
 
 ---
 
@@ -215,10 +217,5 @@ A FabrikamMail esetében ez nagyjából a következők szerint néz ki:
 (A **ClientId** a FabrikamMail ServicePrincipal objektumának azonosítója (amelyet a rendszer éppen létrehozott), a **PrincipalId** a felhasználói objektum azonosítója (a jóváhagyást adó felhasználóé), a **ResourceId** az Exchange ServicePrincipal objektumának azonosítója, a Scope pedig az Exchange azon engedélye, amelyet a felhasználó jóváhagy.)
 
 Ha a felhasználók nem adhatnak maguktól jóváhagyást, egy olyan képernyő jelenik meg, amely közli, hogy engedélyre van szükség.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 
