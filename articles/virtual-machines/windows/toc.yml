@@ -374,6 +374,10 @@
               href: migration-classic-resource-manager-faq.md
     - name: Hibaelhárítás
       items:
+        - name: >-
+            Azure-beli virtuális gépek meglévő rendelkezésre állási csoporthoz
+            történő hozzáadásának támogatási lehetőségei
+          href: ../virtual-machines-availability-set-supportability.md
         - name: Rendszer-újraindítás ismertetése
           href: understand-vm-reboot.md
         - name: Távoli asztali kapcsolatok

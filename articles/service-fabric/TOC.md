@@ -290,7 +290,8 @@
 ## Megfigyelés és diagnosztika
 ### [Alkalmazások figyelése és diagnosztikája](service-fabric-diagnostics-overview.md)
 ### Események létrehozása
-#### [Infrastruktúra-szintű események előállítása](service-fabric-diagnostics-event-generation-infra.md)
+#### [Platformszintű események létrehozása](service-fabric-diagnostics-event-generation-infra.md)
+##### [Műveleti csatorna](service-fabric-diagnostics-event-generation-operational.md)
 ##### [A Reliable Services eseményei](service-fabric-reliable-services-diagnostics.md)
 ##### [A Reliable Actors eseményei](service-fabric-reliable-actors-diagnostics.md)
 ##### [Teljesítmény-mérőszámok](service-fabric-diagnostics-event-generation-perf.md)

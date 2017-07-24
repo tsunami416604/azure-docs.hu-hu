@@ -257,6 +257,11 @@
           href: app-service-web-app-azure-resource-manager-powershell.md
         - name: Alkalmazások kezelése az Azure Automation használatával
           href: automation-manage-web-app.md
+    - name: Integrálás
+      items:
+        - name: Exportálás a PowerAppsbe és a Microsoft Flow-ba
+          href: >-
+            ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: App Service-környezet
       items:
         - name: App Service-környezet használata

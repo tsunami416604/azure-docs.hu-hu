@@ -62,14 +62,14 @@
 
 ## Figyelés és felügyelet
 ### [Logikai alkalmazások kezelése a Visual Studióval](logic-apps-manage-from-vs.md)
-### [Logikai alkalmazások figyelése](logic-apps-monitor-your-logic-apps.md)
 ### [Integrációs fiókok kezelése](logic-apps-enterprise-integration-accounts.md)
+### [Logikai alkalmazások állapotának megfigyelése](logic-apps-monitor-your-logic-apps.md)
 ### [B2B üzenetek megfigyelése](logic-apps-monitor-b2b-message.md)
+#### [B2B-üzenetek nyomon követése az OMS-ben](logic-apps-track-b2b-messages-omsportal.md)
+#### [B2B-üzenetek lekérdezése az OMS-ben](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 #### [AS2-követési séma](logic-apps-track-integration-account-as2-tracking-schemas.md)
 #### [X12-követési séma](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [Egyéni követési séma](logic-apps-track-integration-account-custom-tracking-schema.md)
-#### [B2B-üzenetek nyomon követése az OMS-ben](logic-apps-track-b2b-messages-omsportal.md)
-#### [Üzenetek lekérdezése az OMS-ben](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 
 ## Példák, forgatókönyvek és útmutatók
 ### [Áttekintés](logic-apps-examples-and-scenarios.md)
@@ -81,7 +81,6 @@
 ## Díjszabás és számlázás
 ### [Díjszabás](https://azure.microsoft.com/pricing/details/logic-apps/)
 ### [Használatmérés](logic-apps-pricing.md)
-
 
 # Kiszolgáló nélküli
 ## Áttekintés

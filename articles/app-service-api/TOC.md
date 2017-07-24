@@ -146,6 +146,7 @@
 ## Integrálás
 ### [Helyszíni erőforrások elérése hibrid kapcsolatokkal](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [E-mail küldése a SendGrid és az Azure használatával](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [Exportálás a PowerAppsbe és a Microsoft Flow-ba](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## Hibaelhárítás
 ### [Diagnosztikai naplózás engedélyezése](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
