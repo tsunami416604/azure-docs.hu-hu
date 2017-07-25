@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 769377af7bf62d35c45c6e2e7b0ae3311b784894
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 457ba9c9f74bc9d88800607a2f78a3c3c96cea07
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Webalkalmazások futásidejű kialakítása az Application Insights használatával
@@ -42,10 +41,10 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 | [Részletes kivételek](app-insights-asp-net-exceptions.md) | |Igen |
 | [Függőségek diagnosztikája](app-insights-asp-net-dependencies.md) |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
 | [Rendszerteljesítmény-számlálók](app-insights-performance-counters.md) |Igen |Igen |
-| [API egyéni telemetriához][api] |Igen | |
-| [Nyomkövetési napló integrációja](app-insights-asp-net-trace-logs.md) |Igen | |
-| [Lapmegtekintések és felhasználói adatok](app-insights-javascript.md) |Igen | |
-| Nincs szükség a kód ismételt felépítésére |Nem | |
+| [API egyéni telemetriához][api] |Igen |Nem |
+| [Nyomkövetési napló integrációja](app-insights-asp-net-trace-logs.md) |Igen |Nem |
+| [Lapmegtekintések és felhasználói adatok](app-insights-javascript.md) |Igen |Nem |
+| Szükség van a kód ismételt felépítésére |Igen | Nem |
 
 
 ## <a name="monitor-a-live-azure-web-app"></a>Élő Azure-webapp figyelése

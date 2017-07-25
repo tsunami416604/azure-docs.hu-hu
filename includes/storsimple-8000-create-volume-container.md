@@ -1,7 +1,6 @@
 <!--author=alkohli last changed: 06/22/17-->
 
-#### Kötettároló létrehozása
-<a id="to-create-a-volume-container" class="xliff"></a>
+#### <a name="to-create-a-volume-container"></a>Kötettároló létrehozása
 1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki az eszközt, majd kattintson rá. 
 
     ![Kötettároló panel](./media/storsimple-8000-create-volume-container/createvolumecontainer1.png)
@@ -13,7 +12,7 @@
 3. A **Kötettároló hozzáadása** panelen:
    
    1. Az eszköz automatikusan ki lesz választva.
-   2. Adja meg a kötettároló **nevét**. A név 3–32 karakter hosszúságú lehet.
+   2. Adja meg a kötettároló **nevét**. A név 3–32 karakter hosszúságú lehet. A kötettárolók nem nevezhetők át a létrehozásuk után.
    3. A **Felhőalapú tárolás titkosításának engedélyezése** lehetőséggel engedélyezheti az eszközről a felhőbe küldött adatok titkosítását.
    4. Adja meg a **Felhőalapú tárolás titkosítási kulcsát**, amely 8–32 karakter hosszúságú lehet. Ezt a kulcsot az eszköz a titkosított adatok hozzáféréséhez használja.
    5. Válasszon egy **tárfiókot**, amelyet ehhez a kötettárolóhoz kíván társítani. Választhat egy meglévő tárfiókot vagy kiválaszthatja az alapértelmezett fiókot is, amely a szolgáltatás létrehozásakor jön létre. Használhatja az **Új hozzáadása** lehetőséget is. Ezzel megadhat egy olyan tárfiókot, amely nincs ehhez a szolgáltatás-előfizetéshez kapcsolva.

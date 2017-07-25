@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 01/12/2017-->
+<!--author=alkohli last changed: 07/19/2017-->
 
 #### <a name="to-create-a-volume"></a>Kötet létrehozása
 1. Az **Eszközök** panelen szereplő eszközök táblázatos listájából válassza ki az eszközt. Kattintson a **+ Kötet hozzáadása** gombra.
@@ -11,7 +11,7 @@
 
    2. A legördülő listából válassza ki a kötettárolót, amelyhez kötetet szeretne adni. 
 
-   3.  Adja meg a kötet **Nevét**.
+   3.  Adja meg a kötet **Nevét**. A kötetek nem nevezhetők át a létrehozásuk után.
 
    4. A legördülő listából adja meg a **Típus** beállítást a kötethez. Helyi garanciákat, kis késleltetést és magasabb teljesítményt igénylő munkaterheléseknél válasszon **Helyileg rögzített** kötetet. Minden más adathoz válasszon **Rétegzett** kötetet. Ha archív adatokhoz használja ezt a kötetet, jelölje be a **Kötet használata ritkábban használt archív adatokhoz** beállítást.
       

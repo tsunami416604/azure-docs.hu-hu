@@ -14,17 +14,17 @@ ms.devlang: nodejs
 ms.topic: get-started-article
 ms.date: 06/13/2017
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 8a5d0c60e101f4038dff6f76c8f23dbb2b44661c
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 49f6a49f3f97841e896ff2d497555c42a1ec8e0d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Node.js RESTful API buildjének elkészítése és telepítése Azure-ban futó API-alkalmazásba
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-Ez a gyors útmutató bemutatja, hogyan hozhat létre [Swagger](http://swagger.io/)-definícióból használt [Express](http://expressjs.com/) keretrendszerű Node.js REST API-t, és hogyan helyezheti üzembe [API-alkalmazásként](app-service-api-apps-why-best-platform.md) az Azure-on. Az alkalmazást parancssori eszközök használatával hozza létre, az erőforrások konfigurálását az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) segítségével végzi el, míg az alkalmazást a Git használatával helyezi üzembe.  Amikor végzett, Azure-on futó, működő minta REST API áll rendelkezésére majd.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre REST API-t a Node.js [Express](http://expressjs.com/) verzióval, [Swagger](http://swagger.io/) definícióval és [API-alkalmazásként](app-service-api-apps-why-best-platform.md) üzembe helyezve az Azure-ban. Az alkalmazást parancssori eszközökkel hozza létre, az erőforrásokat az [Azure parancssori felülettel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) konfigurálja, majd az alkalmazást a Git használatával helyezi üzembe.  Amikor végzett, Azure-on futó, működő minta REST API áll rendelkezésére majd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,6 +1,6 @@
 ---
-title: "A Service Fabric első lépései az Azure CLI 2.0 használatával"
-description: "A Service Fabric parancsmodul használata az Azure CLI 2.0 verziójában többek között fürt csatlakoztatására és alkalmazások kezelésére"
+title: "Az Azure Service Fabric és az Azure CLI 2.0 használatának első lépései"
+description: "Ez a dokumentum ismerteti az Azure Service Fabric-parancsmodul használatát az Azure CLI 2.0-s verziójában. Megtudhatja, hogyan csatlakozhat fürtökhöz, és hogyan kezelheti alkalmazásait."
 services: service-fabric
 author: samedder
 manager: timlt
@@ -8,80 +8,70 @@ ms.service: service-fabric
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: edwardsa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: c5cc6e54acf27456185eeb48858c4d981aa46b4b
+ms.translationtype: HT
+ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
+ms.openlocfilehash: ee3302b984ca2f5509755dc17b0a5fd06ace0afe
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/14/2017
 
 ---
-<a id="service-fabric-and-azure-cli-20" class="xliff"></a>
+# <a name="azure-service-fabric-and-azure-cli-20"></a>Az Azure Service Fabric és az Azure CLI 2.0
 
-# A Service Fabric és az Azure CLI 2.0
+Az Azure parancssori felület (Azure CLI) 2.0-s verziója olyan parancsokat is tartalmaz, amelyekkel kezelheti Azure Service Fabric-fürtjeit. Megismerheti az Azure CLI és a Service Fabric használatának első lépéseit.
 
-Az új Azure CLI 2.0 már Service Fabric fürtök kezelésére szolgáló parancsokat is tartalmaz. Ez a dokumentáció az Azure CLI használatba vételének lépéseit ismerteti.
+## <a name="install-azure-cli-20"></a>Az Azure CLI 2.0 telepítése
 
-<a id="install-azure-cli-20" class="xliff"></a>
+Az Azure CLI 2.0 parancsaival kezelheti a Service Fabric-fürtöket. Az Azure CLI legújabb verziójának beszerzéséhez kövesse az [Azure CLI 2.0 normál telepítési folyamatát](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
-## Az Azure CLI 2.0 telepítése
+További információ: [Az Azure CLI 2.0 áttekintése](https://docs.microsoft.com/en-us/cli/azure/overview).
 
-Az Azure CLI már Service Fabric-fürtök kezelésére és a velük való interakcióra szolgáló parancsokat is tartalmaz. A legfrissebb Azure CLI beszerzéséhez követheti a [szabványos telepítési eljárást](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+## <a name="azure-cli-syntax"></a>Azure CLI-szintaxis
 
-További információt talál az [Azure CLI 2.0 dokumentációjában](https://docs.microsoft.com/en-us/cli/azure/overview)
+Az Azure CLI-ben minden Service Fabric-parancs `az sf` előtaggal van ellátva. A használható parancsokkal kapcsolatos általános információkért használja az `az sf -h` parancsot. Ha egyetlen paranccsal kapcsolatban van szüksége segítségre, használja az `az sf <command> -h` parancsot.
 
-<a id="cli-syntax" class="xliff"></a>
-
-## A parancssori felület szintaxisa
-
-Az Azure parancssori felületén minden Azure Service Fabric-parancs az `az sf` előtaggal van ellátva. Az használható parancsokról további általános információhoz juthat az `az sf -h` parancs futtatásával. Az `az sf <command> -h` paranccsal részletesebb súgót kap egy adott parancsról.
-
-A parancssori felület Azure Service Fabric-parancsai egy elnevezési mintát követnek
+Az Azure CLI-ben található Service Fabric-parancsok az alábbi elnevezési mintázatot követik:
 
 ```azurecli
 az sf <object> <action>
 ```
 
-Itt `<object>` a `<action>` művelet tárgya.
+az `<object>` az `<action>` művelet célpontja.
 
-<a id="selecting-a-cluster" class="xliff"></a>
+## <a name="select-a-cluster"></a>Fürt kiválasztása
 
-## Fürt kiválasztása
-
-Mielőtt bármilyen műveletet végrehajthatna, ki kell választania a fürtöt, amelyhez kapcsolódik. Az alábbi kódrészlet például egy nem biztonságos fürthöz csatlakozik.
+A műveletek végrehajtása előtt ki kell választania egy fürtöt, amelyhez csatlakozni kíván. Példaként tekintse meg az alábbi kódot. A kód egy nem védett fürthöz csatlakozik.
 
 > [!WARNING]
-> Termelési környezetben ne használjon nem biztonságos Service Fabric-fürtöket
+> Éles környezetben ne használjon nem védett Service Fabric-fürtöket.
 
 ```azurecli
 az sf cluster select --endpoint http://testcluster.com:19080
 ```
 
-A fürt végpont előtagja `http` vagy `https` lehet és meg kell adni hozzá a HTTP-átjáró portszámát. Ez a port és a cím ugyanaz, mint a Service Fabric Explorer-beli URL-cím.
+A fürt végpontját `http` vagy `https` előtaggal kell ellátni. Tartalmaznia kell a HTTP-átjáróhoz tartozó portot. A port és a cím megegyezik a Service Fabric Explorer URL-címével.
 
-Tanúsítvánnyal biztosított fürtök esetén nem titkosított `pem` vagy `crt` és `key` fájlok is támogatottak.
+A tanúsítvánnyal védett fürtök esetében nem titkosított .pem, vagy .crt és .key fájlokat használhat. Példa:
 
 ```azurecli
 az sf cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
-További információt talál a [biztonságos fürtökhöz való csatlakozás részletes dokumentációjában](service-fabric-connect-to-secure-cluster.md).
+További információ: [Csatlakozás védett Azure Service Fabric-fürthöz](service-fabric-connect-to-secure-cluster.md).
 
 > [!NOTE]
-> A select parancs nem hajt végre lekérdezést a visszatéréséig. Egy fürt helyes megadásának ellenőrzéséhez futtatható parancs például `az sf cluster health`. Győződjön meg róla, hogy a parancs hibaüzenet nélkül fut le.
+> A `select` parancs egy kérést sem hajt végre a visszatérése előtt. A megadott fürt helyességének ellenőrzéséhez használjon az alábbihoz hasonló parancsot: `az sf cluster health`. Győződjön meg róla, hogy a parancs nem ad vissza hibát.
 
-<a id="performing-basic-operations" class="xliff"></a>
+## <a name="basic-operations"></a>Alapszintű műveletek
 
-## Alapszintű műveletek végrehajtása
+A fürt kapcsolatadatai több Azure CLI-munkamenetben is megmaradnak. Egy Service Fabric-fürt kiválasztása után bármilyen Service Fabric-parancsot futtathat a fürtön.
 
-A fürtkapcsolati adatok megőrződnek különböző Azure CLI-munkamenetek között. Egy Service Fabric-fürt kijelölése után már bármilyen Service Fabric parancs futtatható.
-
-A Service Fabric-fürt állapotának kiolvasásához például futtassa a következő parancsot
+A Service Fabric-fürt állapotának lekérdezéséhez például használja az alábbi parancsot:
 
 ```azurecli
 az sf cluster health
 ```
 
-A parancs eredménye az alábbi kimenet, feltéve, hogy az Azure CLI konfigurációjában JSON-kimenet van beállítva
+A parancs az alábbi kimenetet eredményezi (feltéve, hogy az Azure CLI konfigurációjában JSON formátumú kimenet van megadva):
 
 ```json
 {
@@ -106,51 +96,41 @@ A parancs eredménye az alábbi kimenet, feltéve, hogy az Azure CLI konfigurác
 }
 ```
 
-<a id="tips-and-faq" class="xliff"></a>
+## <a name="tips-and-troubleshooting"></a>Tippek és hibaelhárítás
 
-## Tippek és gyakran ismételt kérdések
+Az alábbi információkat hasznosnak találhatja, ha hibába ütközne a Service Fabric-parancsok Azure CLI-ben történő használata során.
 
-Az itt következő információk hasznosak lehetnek az Azure parancssori felületen használt Service Fabric-parancsokkal kapcsolatos problémák felmerülése esetén
+### <a name="convert-a-certificate-from-pfx-to-pem-format"></a>Tanúsítvány konvertálása PFX formátumról PEM formátumra
 
-<a id="converting-a-certificate-from-pfx-to-pem" class="xliff"></a>
-
-### Tanúsítvány konvertálása PFX-ről PEM formátumra
-
-Az Azure CLI az ügyféloldali tanúsítványokat PEM (`.pem` kiterjesztésű) fájlokként támogatja. Ha Windows rendszerből származó PFX-fájlokat használ, akkor ezeket a tanúsítványokat PEM formátumra kell konvertálnia. PFX-fájl a következő paranccsal konvertálható PEM fájllá:
+Az Azure CLI PEM- (.pem kiterjesztésű) fájlok formájában támogatja az ügyféloldali tanúsítványokat. Ha Windows rendszerből származó PFX-fájlokat lát, át kell alakítania a tanúsítványokat PEM formátumba. A PFX-fájlok PEM-fájlokká történő konvertálásához használja a következő parancsot:
 
 ```bash
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
-Részletes információkat az [OpenSSL-dokumentációban](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html) talál.
+További információt az [OpenSSL-dokumentációban](https://www.openssl.org/docs/) találhat.
 
-<a id="connection-issues" class="xliff"></a>
+### <a name="connection-issues"></a>Kapcsolódási problémák
 
-### Kapcsolódási problémák
+Egyes műveletek az alábbi üzenetet hozhatják létre:
 
-Műveletek végrehajtása során felmerülhet a következő hiba:
+`Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
 
-> `Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
+Ellenőrizze, hogy a megadott fürtvégpont elérhető-e és figyel-e. Továbbá ellenőrizze, hogy a Service Fabric Explorer felhasználói felülete elérhető-e a gazdagépen és a porton. A végpont frissítéséhez használja az `az sf cluster select` parancsot.
 
-Ebben az esetben ellenőrizze újra, hogy a megadott fürtvégpont elérhető és figyel. Ellenőrizze azt is, hogy a Service Fabric Explorer felhasználói felülete elérhető az adott állomáson és porton. A végpont frissítéséhez használja az `az sf cluster select` parancsot.
+### <a name="detailed-logs"></a>Részletes naplók
 
-<a id="getting-detailed-logs" class="xliff"></a>
+A részletes naplók gyakran hasznosak a hibák javításához vagy jelentéséhez. Az Azure CLI kínál egy globális `--debug` jelzőt, amely növeli a naplófájlok részletességét.
 
-### Részletes naplók lekérése
+### <a name="command-help-and-syntax"></a>Parancsok súgója és szintaxisa
 
-Hibakeresés vagy probléma bejelentése esetén hasznos mellékelni a részletes naplókat. Az Azure CLI része egy globális `--debug` kapcsoló, amely részletesebb naplókat eredményez.
-
-<a id="command-help-and-syntax" class="xliff"></a>
-
-### Parancsok súgója és szintaxisa
-
-A Service Fabric-parancsok az Azure parancssori felületéével azonos konvenciókat követnek. A `-h` kapcsolóval részletes súgót kaphat egy adott parancsról vagy parancscsoportról. Példa:
+A Service Fabric-parancsok ugyanazokat a szabályokat követik, mint az Azure CLI. Ha segítségre van szüksége egy bizonyos paranccsal vagy parancscsoporttal kapcsolatban, használja a `-h` jelzőt:
 
 ```azurecli
 az sf application -h
 ```
 
-vagy
+Egy további példa:
 
 ```azurecli
 az sf application create -h

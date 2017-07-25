@@ -16,10 +16,6 @@ A **Create App Service** (Alkalmazásszolgáltatás létrehozása) párbeszédpa
 | **[App Service-csomag](../articles/azure-functions/functions-scale.md)** | Használatalapú csomag | Győződjön meg róla, hogy új csomag létrehozása esetén a **Felhasználás** lehetőséget választja a **Méret** elemnél.  |
 | **[Tárfiók](../articles/storage/storage-create-storage-account.md#create-a-storage-account)** | Globálisan egyedi név | Használjon egy már létező tárfiókot, vagy hozzon létre egy újat.   |
 
-Kattintson a **Létrehozás** elemre, hogy ezekkel a beállításokkal hozzon létre Azure-beli függvényalkalmazást. 
-
-A kiépítés befejeztét követően kattintson a **Közzététel** elemre, hogy üzembe helyezze projektkódját az új függvényalkalmazáshoz. 
+Kattintson a **Létrehozás** elemre, hogy ezekkel a beállításokkal hozzon létre Azure-beli függvényalkalmazást. Miután az üzembe helyezés befejeződött, jegyezze fel a **webhely URL-címe** értékét, amely a függvényalkalmazás címe az Azure-ban. 
 
 ![Az Azure helyi futtatókörnyezete](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
-
-Jegyezze le a **Webhely URL-címe** mező értékét, ami az Azure-beli függvényalkalmazásának a címe. 

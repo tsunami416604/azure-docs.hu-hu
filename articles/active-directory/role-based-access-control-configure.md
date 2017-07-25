@@ -5,20 +5,20 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2017
+ms.date: 07/17/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
-ms.openlocfilehash: 9fb0fdf1a2a48c5c9daf7d0ec22e85221bfb6b28
-ms.lasthandoff: 04/07/2017
-
+ms.reviewer: rqureshi
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: aff943e797da93e95563c3de3f064dbbfc30a384
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel
@@ -41,7 +41,7 @@ Az [Azure Portal](https://portal.azure.com) fő paneljén láthatja, hogy kinek 
    
     ![Képernyőfelvétel a felhasználók panelről – örökölt vagy hozzárendelt hozzáférés](./media/role-based-access-control-configure/view-access.png)
 
-Megfigyelheti, hogy egyes felhasználók **hozzárendelt** mások pedig **örökölt** hozzáféréssel rendelkeznek. A hozzáférés lehet kifejezetten az erőforráscsoporthoz rendelt, vagy a szülő előfizetés egyik hozzárendeléséből örökölt.
+Figyelje meg, hogy egyes szerepkör hatóköre **erre az erőforrásra** érvényes, míg mások más hatókörökből **öröklődnek**. A hozzáférés lehet kifejezetten az erőforráscsoporthoz rendelt, vagy a szülő előfizetés egyik hozzárendeléséből örökölt.
 
 > [!NOTE]
 > Az új RBAC-modellben a hagyományos előfizetés-adminisztrátorok és társadminisztrátorok minősülnek tulajdonosoknak.
@@ -60,9 +60,10 @@ A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásb
 A szerepkör-hozzárendelés a sikeres felvétel után megjelenik a **Felhasználók** panelen.
 
 ## <a name="remove-access"></a>Hozzáférés megszüntetése
-1. A Hozzáférés-vezérlés panel jelölőnégyzetei segítségével válasszon ki egy vagy több szerepkör-hozzárendelést.
+1. Vigye az egérmutatót az eltávolítani kívánt hozzárendelés fölé. Ekkor megjelenik egy jelölőnégyzet a név mellett.
+2. A jelölőnégyzetek segítségével válasszon ki egy vagy több szerepkör-hozzárendelést.
 2. Válassza az **Eltávolítás** lehetőséget.  
-3. Egy előugró ablakban a rendszer a művelet megerősítését kéri. A szerepkör-hozzárendelések eltávolításához válassza az **Igen** lehetőséget.
+3. Válassza az **Igen** lehetőséget az eltávolítás megerősítéséhez.
 
 Az örökölt hozzárendeléseket nem lehet eltávolítani. Ha egy örökölt hozzárendelést kell eltávolítania, azt abban a hatókörben kell megtennie, ahol a szerepkör-hozzárendelés létrejött. A **Hatókör** oszlopban az **Örökölt** elem melletti hivatkozás azokra az erőforrásokra mutat, ahol az adott szerepkör hozzárendelése megtörtént. Lépjen az ott szereplő erőforrásra a szerepkör-hozzárendelés eltávolításához.
 

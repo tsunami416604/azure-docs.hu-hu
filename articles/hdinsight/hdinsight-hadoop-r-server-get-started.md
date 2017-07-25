@@ -13,26 +13,21 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/28/2017
+ms.date: 07/13/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: a42138ae234313c7c6cbfcaa8b851ad47f82133b
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: ee4298b91f4e2b215b5faabaad96323f4ef234b8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-<a id="get-started-using-r-server-on-hdinsight" class="xliff"></a>
-
-# R Server a HDInsightban – első lépések
+# <a name="get-started-using-r-server-on-hdinsight"></a>R Server a HDInsightban – első lépések
 
 A HDInsight olyan R Server beállítással rendelkezik, amely a HDInsight-fürtbe integrálható. Ez lehetővé teszi, hogy az R-szkriptek a Spark és a MapReduce eszközökkel elosztott számításokat futtathassanak. A dokumentumban foglaltakat követve elsajátíthatja az R Server létrehozását a HDInsight-fürtökön, majd R-szkriptet futtathat, amely a Spark elosztott R számításokhoz való használatát mutatja be.
 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. További információt az [ingyenes Microsoft Azure-próbafiók beszerzésével](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) foglalkozó cikkben talál.
 * **Secure Shell- (SSH-) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -42,9 +37,7 @@ A HDInsight olyan R Server beállítással rendelkezik, amely a HDInsight-fürtb
 > A dokumentum lépései azt feltételezik, hogy jelszót használ.
 
 
-<a id="automated-cluster-creation" class="xliff"></a>
-
-## Fürt automatikus létrehozása
+## <a name="automated-cluster-creation"></a>Fürt automatikus létrehozása
 
 Azure Resource Manager-sablonok, az SDK, illetve a PowerShell használatával is automatizálható a HDInsight R Server-kiszolgálók létrehozása.
 
@@ -54,9 +47,7 @@ Azure Resource Manager-sablonok, az SDK, illetve a PowerShell használatával is
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
-<a id="create-the-cluster-using-the-azure-portal" class="xliff"></a>
-
-## Fürt létrehozása az Azure Portallal
+## <a name="create-the-cluster-using-the-azure-portal"></a>Fürt létrehozása az Azure Portallal
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 
@@ -162,9 +153,7 @@ Azure Resource Manager-sablonok, az SDK, illetve a PowerShell használatával is
    >
 
 <a name="connect-to-rstudio-server"></a>
-<a id="connect-to-rstudio-server" class="xliff"></a>
-
-## Csatlakozás az RStudio Serverhez
+## <a name="connect-to-rstudio-server"></a>Csatlakozás az RStudio Serverhez
 
 Ha úgy döntött, hogy belefoglalja az RStudio Server community edition kiadást a telepítésbe, akkor az RStudio bejelentkezési oldalát két módon érheti el.
 
@@ -182,9 +171,7 @@ Ha úgy döntött, hogy belefoglalja az RStudio Server community edition kiadás
    > A használt módszertől függetlenül, az első bejelentkezéskor kétszer kell elvégeznie a hitelesítést.  Az első hitelesítéskor adja meg a *fürt rendszergazdai felhasználói azonosítóját* és *jelszavát*. A második adatkéréskor adja meg az *SSH felhasználói azonosítót* és *jelszót*. A későbbi bejelentkezések csak az *SSH-jelszót* és a *felhasználói azonosítót* kérik.
 
 <a name="connect-to-edge-node"></a>
-<a id="connect-to-the-r-server-edge-node" class="xliff"></a>
-
-## Csatlakozás az R Server élcsomóponthoz
+## <a name="connect-to-the-r-server-edge-node"></a>Csatlakozás az R Server élcsomóponthoz
 
 Csatlakoztassa a HDInsight-fürt R Server élcsomópontját SSH használatával, a következő paranccsal:
 
@@ -208,9 +195,7 @@ Ha csatlakoztatva van, a következőhöz hasonló adatkérés érkezik:
     sername@ed00-myrser:~$
 
 <a name="enable-concurrent-users"></a>
-<a id="enable-multiple-concurrent-users" class="xliff"></a>
-
-## Több párhuzamos felhasználó engedélyezése
+## <a name="enable-multiple-concurrent-users"></a>Több párhuzamos felhasználó engedélyezése
 
 Több párhuzamos felhasználó úgy tud engedélyezni, ha több felhasználót is hozzáad ahhoz az élcsomóponthoz, amelyen az RStudio közösségi verziója fut.
 
@@ -239,16 +224,12 @@ Mivel az RStudio Server Community kiadása a fürt élcsomópontján fut, több 
 2. További Linux-felhasználók hozzáadása az élcsomópontban
 3. Az RStudio Community verziójának használata a létrehozott felhasználóval
 
-<a id="step-1-use-the-created-ssh-user-to-log-in-to-the-edge-node" class="xliff"></a>
-
-### 1. lépés: A létrehozott SSH-felhasználó használata az élcsomópontra való bejelentkezéshez
+### <a name="step-1-use-the-created-ssh-user-to-log-in-to-the-edge-node"></a>1. lépés: A létrehozott SSH-felhasználó használata az élcsomópontra való bejelentkezéshez
 
 Töltsön le egy SSH-eszközt (például a Putty-t), és használja a meglévő SSH-felhasználót a bejelentkezéshez. Ezután az élcsomópont eléréséhez kövesse a [Csatlakozás a HDInsighthoz (Hadoop) SSH-val](hdinsight-hadoop-linux-use-ssh-unix.md) szakasz utasításait. Az élcsomópont címe az R Serverhez a HDInsight-fürtön a következő: *clustername-ed-ssh.azurehdinsight.net*
 
 
-<a id="step-2-add-more-linux-users-in-edge-node" class="xliff"></a>
-
-### 2. lépés: További Linux-felhasználók hozzáadása az élcsomópontban
+### <a name="step-2-add-more-linux-users-in-edge-node"></a>2. lépés: További Linux-felhasználók hozzáadása az élcsomópontban
 
 Felhasználó élcsomóponthoz adásához hajtsa végre a következő parancsokat:
 
@@ -262,9 +243,7 @@ A programnak a következő elemeket kell visszaadnia:
 Amikor a rendszer az „aktuális Kerberos-jelszót” kéri, nyomja meg az **Enter** billentyűt a figyelmen kívül hagyásához. A `useradd` parancs `-m` kapcsolója jelzi, hogy a rendszer létrehoz egy kezdőmappát a felhasználó számára, amely szükséges az RStudio Community verziójához.
 
 
-<a id="step-3-use-rstudio-community-version-with-the-user-created" class="xliff"></a>
-
-### 3. lépés: Az RStudio Community verziójának használata a létrehozott felhasználóval
+### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>3. lépés: Az RStudio Community verziójának használata a létrehozott felhasználóval
 
 A létrehozott felhasználóval jelentkezhet be az RStudióba:
 
@@ -355,9 +334,7 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
 
 
 <a name="use-r-console"></a>
-<a id="use-the-r-console" class="xliff"></a>
-
-## Az R-konzol használata
+## <a name="use-the-r-console"></a>Az R-konzol használata
 
 1. Az SSH-munkamenetből a következő paranccsal indíthatja el az R-konzolt:  
 
@@ -393,9 +370,7 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
     rxHadoopListFiles("wasbs:///")
 
 
-<a id="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client" class="xliff"></a>
-
-## Az R Server használata HDI-n a Microsoft R Server vagy a Microsoft R ügyfél egy távoli példányáról
+## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Az R Server használata HDI-n a Microsoft R Server vagy a Microsoft R ügyfél egy távoli példányáról
 
 A HDI Hadoop Spark számítási környezetet el lehet érni a Microsoft R Server vagy a Microsoft R-ügyfél számítógépen vagy laptopon futó távoli példányáról. Lásd a **Microsoft R Server használata Hadoop-ügyfélként** alszakaszt a [számítási környezet Sparkhoz való létrehozásával](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md) foglalkozó weblapon. Ehhez meg kell adnia a következő beállításokat, amikor meghatározza az RxSpark számítási környezetet a laptopon: hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript. Példa:
 
@@ -423,9 +398,7 @@ A HDI Hadoop Spark számítási környezetet el lehet érni a Microsoft R Server
     )
 
 
-<a id="use-a-compute-context" class="xliff"></a>
-
-## Számítási környezet használata
+## <a name="use-a-compute-context"></a>Számítási környezet használata
 
 A számítási környezetekkel vezérelheti, hogy a számítás helyben történik-e az élcsomóponton, vagy elosztottan a HDInsight-fürtben lévő csomópontok között.
 
@@ -549,9 +522,7 @@ A számítási környezetekkel vezérelheti, hogy a számítás helyben történ
    > A MapReduce eszközzel is eloszthatja a számítást a fürtcsomópontok között. A számítási környezetről további információért lásd: [Számítási környezeti beállítások a HDInsighton belüli R Server esetében](hdinsight-hadoop-r-server-compute-contexts.md).
 
 
-<a id="distribute-r-code-to-multiple-nodes" class="xliff"></a>
-
-## R-kód elosztása több csomópontra
+## <a name="distribute-r-code-to-multiple-nodes"></a>R-kód elosztása több csomópontra
 
 Az R Serverrel könnyedén futtathatja a meglévő R-kódokat a fürt több csomópontján az `rxExec` használatával. Ez a függvény akkor hasznos, amikor paraméteres frissítést vagy szimulációkat végez. A következő kód az `rxExec` használatának példája:
 
@@ -576,9 +547,7 @@ Ha továbbra is a Spark vagy a MapReduce környezetet használja, ez visszaadja 
     "wn3-myrser"
 
 
-<a id="accessing-data-in-hive-and-parquet" class="xliff"></a>
-
-## Adatok elérése a Hive és a Parquet eszközökben
+## <a name="accessing-data-in-hive-and-parquet"></a>Adatok elérése a Hive és a Parquet eszközökben
 
 Az R Server 9.1 és újabb verziókban elérhető funkciója lehetővé teszi az adatok közvetlen elérését a Hive és a Parquet eszközökben a Spark számítási környezet ScaleR-függvényei általi használatra. Ezek a képességek az RxHiveData és RxParquetData nevű új ScaleR adatforrás-függvényeken keresztül érhetők el, amelyek a Spark SQL-en keresztül töltenek adatokat közvetlenül a Spark DataFrame-be a ScaleR által végzett elemzéshez.  
 
@@ -618,9 +587,7 @@ A következő kód tartalmazza az új függvények használatának néhány mint
 Ezen új függvények használatával kapcsolatos további információkat az R Server online súgójában találhat a `?RxHivedata` és a `?RxParquetData` parancsok használatával.  
 
 
-<a id="install-additional-r-packages-on-the-edge-node" class="xliff"></a>
-
-## További R-csomagok telepítése az élcsomópontra
+## <a name="install-additional-r-packages-on-the-edge-node"></a>További R-csomagok telepítése az élcsomópontra
 
 Ha további R csomagokat szeretne telepíteni az élcsomóponton, az `install.packages()` parancsot használhatja közvetlenül az R-konzolról, amikor SSH-n keresztül csatlakozik az élcsomóponthoz. Ha azonban a fürt munkavégző csomópontjaira kell R csomagokat telepítenie, szkriptműveletet kell használnia.
 
@@ -667,9 +634,7 @@ A szkriptműveletek olyan Bash-szkriptek, amelyekkel konfigurációs módosítá
 4. Válassza a **Létrehozás** lehetőséget a szkript futtatásához. A szkript befejezése után az R csomagok elérhetők az összes munkavégző csomóponton.
 
 
-<a id="using-microsoft-r-server-operationalization" class="xliff"></a>
-
-## A Microsoft R Server operacionalizálás használata
+## <a name="using-microsoft-r-server-operationalization"></a>A Microsoft R Server operacionalizálás használata
 
 Amikor elkészült az adatmodellezés, működőképessé teheti a modellt, hogy előrejelzéseket végezzen. A Microsoft R Server működőképessé tételhez való konfigurálásához kövesse az alábbi lépéseket:
 
@@ -677,10 +642,15 @@ Először jelentkezzen be SSH-n keresztül az élcsomópontba. Például:
 
     ssh -L USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-Az SSH használata után módosítsa a könyvtárat a következő könyvtárra, és használja az alábbi sudo dotnet dll parancsot:
+Az SSH használata után lépjen a megfelelő verzió könyvtárára, és használja a következő sudo dotnet dll-t: 
 
-    cd /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil
-    sudo dotnet Microsoft.DeployR.Utils.AdminUtil.dll
+- Microsoft R Server 9.1 esetén:
+
+    cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0   sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+
+- Microsoft R Server 9.0 esetén:
+
+    cd /usr/lib64/microsoft-deployr/9.0.1   sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
 Ha a Microsoft R Server működőképessé tételét egy beépített konfigurációban szeretné konfigurálni, tegye a következőt:
 
@@ -703,9 +673,7 @@ Választható lépésként diagnosztikai ellenőrzéseket végezhet az alább l�
 
 Az operacionalizálás konfigurációja ezzel befejeződött. Most már használhatja az „mrsdeploy” csomagot RClientben, hogy kapcsolódhasson az élcsomóponti operacionalizáláshoz, és elkezdhet alkalmazni olyan szolgáltatásokat, mint a [távoli végrehajtás](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution) és [webszolgáltatás](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette). Attól függően, hogy fürt virtuális hálózaton van-e beállítva, szükség lehet porttovábbító bújtatás kialakítására SSH-bejelentkezésen keresztül. Az alábbi szakaszok ismertetik, hogyan állíthatja be ezt az alagutat.
 
-<a id="rserver-cluster-on-virtual-network" class="xliff"></a>
-
-### Az RServer fürt virtuális hálózaton van
+### <a name="rserver-cluster-on-virtual-network"></a>Az RServer fürt virtuális hálózaton van
 
 Bizonyosodjon meg róla, hogy engedélyezett a forgalom az 12800-as porton az élcsomópont felé. Így az élcsomópont használatával kapcsolódhat az operacionalizálási szolgáltatáshoz.
 
@@ -721,9 +689,7 @@ Bizonyosodjon meg róla, hogy engedélyezett a forgalom az 12800-as porton az é
 
 Ha a `remoteLogin()` metódus nem tud kapcsolódni az élcsomóponthoz, de SSH-n be tud jelentkezni az élcsomópontba, győződjön meg róla, hogy a szabály, amely engedélyezi a forgalmat az 12800-as porton, megfelelően van-e beállítva. Ha a probléma továbbra is jelentkezik, egy másik megoldás segítségével is beállíthat porttovábbító alagutat az SSH-n keresztül. Útmutatásért lásd a következő szakaszt.
 
-<a id="rserver-cluster-not-set-up-on-virtual-network" class="xliff"></a>
-
-### Az RServer fürt nem virtuális hálózaton van beállítva
+### <a name="rserver-cluster-not-set-up-on-virtual-network"></a>Az RServer fürt nem virtuális hálózaton van beállítva
 
 Ha a fürt nem a virtuális hálózaton van beállítva vagy problémás a kapcsolódás a virtuális hálózaton keresztül, akkor használhatja az SSH porttovábbító alagutat:
 
@@ -745,13 +711,9 @@ Ha az SSH-munkamenet aktív, a rendszer számítógépe 12800-as portjáról az 
     )
 
 
-<a id="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes" class="xliff"></a>
+## <a name="how-to-scale-microsoft-r-server-operationalization-compute-nodes-on-hdinsight-worker-nodes"></a>Hogyan méretezhetők a Microsoft R Server operacionalizálási számítási csomópontjai a HDInsight feldolgozó csomópontjain?
 
-## Hogyan méretezhetők a Microsoft R Server operacionalizálási számítási csomópontjai a HDInsight feldolgozó csomópontjain?
-
-<a id="decommission-the-worker-nodes" class="xliff"></a>
-
-### A feldolgozó csomópont(ok) leszerelése
+### <a name="decommission-the-worker-nodes"></a>A feldolgozó csomópont(ok) leszerelése
 
 A Microsoft R Servert jelenleg nem a Yarnon keresztül kezeli a rendszer. Ha a feldolgozó csomópontokat nem szereli le, a Yarn Resource Manager nem a várakozásoknak megfelelően fog működni, mert nem fogja látni a kiszolgáló által felhasznált erőforrásokat. Ennek a helyzetnek az elkerülésére javasoljuk a feldolgozó csomópontok leszerelését a számítási csomópontok horizontális felskálázása előtt.
 
@@ -770,9 +732,7 @@ A feldolgozó csomópontok leszerelésének lépései:
 * Szüntesse meg a feldolgozó csomópontok kijelölését, és jelölje ki az élcsomópontokat
 * Válassza az **Actions**(Műveletek) > **Selected Hosts** (Kiválasztott gazdagépek) > "**Hosts**(Gazdagépek) > **Restart All Components**(Összes gazdagép újraindítása) elemet
 
-<a id="configure-compute-nodes-on-each-decommissioned-worker-nodes" class="xliff"></a>
-
-### Számítási csomópontok konfigurálása az összes leszerelt feldolgozó csomóponton
+### <a name="configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Számítási csomópontok konfigurálása az összes leszerelt feldolgozó csomóponton
 
 1. Jelentkezzen be SSH-n keresztül minden egyes leszerelt feldolgozó csomópontba.
 2. Futtassa az admin segédprogramot a következő paranccsal: `dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll`.
@@ -780,9 +740,7 @@ A feldolgozó csomópontok leszerelésének lépései:
 4. Írja be a „c” karaktert a „C. Compute node” (Számítási csomópont) lehetőség kijelöléséhez. Ez konfigurálja a számítási csomópontot a feldolgozó csomóponton.
 5. Lépjen ki az admin segédprogramból.
 
-<a id="add-compute-nodes-details-on-web-node" class="xliff"></a>
-
-### Számítási csomópontok részleteinek megadása a Web csomóponton
+### <a name="add-compute-nodes-details-on-web-node"></a>Számítási csomópontok részleteinek megadása a Web csomóponton
 
 Ha minden leszerelt feldolgozó csomópontot konfigurált a számítási csomópont futtatására, térjen vissza az élcsomóponthoz, és adja hozzá a leszerelt feldolgozó csomópontok IP címét a Microsoft R Server webcsomópontjának konfigurációjában:
 
@@ -793,16 +751,12 @@ Ha minden leszerelt feldolgozó csomópontot konfigurált a számítási csomóp
     ![feldolgozó csomópont(ok) leszerelési parancssora](./media/hdinsight-hadoop-r-server-get-started/get-started-op-cmd.png)
 
 
-<a id="troubleshoot" class="xliff"></a>
-
-## Hibaelhárítás
+## <a name="troubleshoot"></a>Hibaelhárítás
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Mostanra biztosan megértette, hogyan kell R Servert tartalmazó HDInsight-fürtöt létrehozni, és tisztában van az R-konzol SSH-munkamenetből történő használatának alapjaival. A következő témakörök az R Server HDInsighton történő kezelésének és az azzal történő munkavégzésnek egyéb módjait ismertetik:
 

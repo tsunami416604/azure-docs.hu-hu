@@ -15,17 +15,14 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 06/19/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 0265503689e189a3e2e30c2ae9fff39641647d0c
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: d1b887e68b1040ea9340235cd215028300c14fac
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-<a id="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app" class="xliff"></a>
-
-# Azure Cosmos DB: Meglévő Node.js MongoDB-webalkalmazás migrálása 
+# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Meglévő Node.js MongoDB-webalkalmazás migrálása 
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
@@ -40,16 +37,12 @@ Az útmutató végére MEAN-alkalmazása (MongoDB, Express, AngularJS és Node.j
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek 
 Az Azure parancssori felülete mellett helyileg telepített [Node.js](https://nodejs.org/) és [Git](http://www.git-scm.com/downloads) rendszerre is szükség van az `npm`- és `git`-parancsok futtatásához.
 
 Emellett ajánlott rendelkeznie a Node.js használatához szükséges ismeretekkel. A rövid útmutatónak nem célja általános segítséget nyújtani a Node.js-alkalmazások fejlesztéséhez.
 
-<a id="clone-the-sample-application" class="xliff"></a>
-
-## A mintaalkalmazás klónozása
+## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
 Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépejen át egy munkakönyvtárba.  
 
@@ -59,9 +52,7 @@ Az alábbi parancsok futtatásával klónozza a mintatárházat. Ez a mintatárh
 git clone https://github.com/prashanthmadi/mean
 ```
 
-<a id="run-the-application" class="xliff"></a>
-
-## Az alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Telepítse a szükséges csomagokat, és indítsa el az alkalmazást.
 
@@ -71,9 +62,7 @@ npm install
 npm start
 ```
 
-<a id="log-in-to-azure" class="xliff"></a>
-
-## Jelentkezzen be az Azure-ba
+## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
 Telepített Azure-os parancssori felület használata esetén jelentkezzen be az Azure-előfizetésébe az [az login](/cli/azure/#login) paranccsal, és kövesse a képernyőn látható utasításokat. Az Azure Cloud Shell használata esetén kihagyhatja ezt a lépést.
 
@@ -81,17 +70,13 @@ Telepített Azure-os parancssori felület használata esetén jelentkezzen be az
 az login 
 ``` 
    
-<a id="add-the-azure-cosmos-db-module" class="xliff"></a>
-
-## Az Azure Cosmos DB modul hozzáadása
+## <a name="add-the-azure-cosmos-db-module"></a>Az Azure Cosmos DB modul hozzáadása
 
 Telepített Azure-os parancssori felület használata esetén az `az` parancs futtatásával ellenőrizze, hogy a `cosmosdb` összetevő telepítve van-e. Ha a `cosmosdb` szerepel az alapparancsok listáján, lépjen tovább a következő parancsra. Az Azure Cloud Shell használata esetén kihagyhatja ezt a lépést.
 
 Ha a `cosmosdb` nincs az alapparancsok listáján, telepítse újra az [Azure parancssori felületének 2.0-s verzióját]( /cli/azure/install-azure-cli).
 
-<a id="create-a-resource-group" class="xliff"></a>
-
-## Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például webappokat, adatbázisokat és tárfiókokat). 
 
@@ -103,16 +88,14 @@ Az Azure Cloud Shell használata esetén kattintson a **Try It** (Kipróbálás)
 az group create --name myResourceGroup --location "West Europe"
 ```
 
-<a id="create-an-azure-cosmos-db-account" class="xliff"></a>
-
-## Azure Cosmos DB-fiók létrehozása
+## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
 Hozzon létre egy Azure Cosmos DB-fiókot az [az cosmosdb create](/cli/azure/cosmosdb#create) paranccsal.
 
-A következő parancsban a `<cosmosdb_name>` helyőrző helyett írja be Azure Cosmos DB-fiókjának egyedi nevét. A nevet a rendszer Azure Cosmos DB-végpontként (`https://<cosmosdb_name>.documents.azure.com/`) fogja használni, így annak egyedinek kell lennie az összes Azure-beli Azure Cosmos DB-fiók között. 
+A következő parancsban a `<cosmosdb-name>` helyőrző helyett írja be Azure Cosmos DB-fiókjának egyedi nevét. A nevet a rendszer Azure Cosmos DB-végpontként (`https://<cosmosdb-name>.documents.azure.com/`) fogja használni, így annak egyedinek kell lennie az összes Azure-beli Azure Cosmos DB-fiók között. 
 
 ```azurecli-interactive
-az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
+az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
 A `--kind MongoDB` paraméter lehetővé teszi a MongoDB-ügyfélkapcsolatok használatát.
@@ -122,17 +105,17 @@ Az Azure Cosmos DB-fiók létrehozása után az Azure CLI az alábbi példához 
 ```json
 {
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb_name>.documents.azure.com:443/",
+  "documentEndpoint": "https://<cosmosdb-name>.documents.azure.com:443/",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Document
-DB/databaseAccounts/<cosmosdb_name>",
+DB/databaseAccounts/<cosmosdb-name>",
   "kind": "MongoDB",
   "location": "West Europe",
-  "name": "<cosmosdb_name>",
+  "name": "<cosmosdb-name>",
   "readLocations": [
     {
-      "documentEndpoint": "https://<cosmosdb_name>-westeurope.documents.azure.com:443/",
+      "documentEndpoint": "https://<cosmosdb-name>-westeurope.documents.azure.com:443/",
       "failoverPriority": 0,
-      "id": "<cosmosdb_name>-westeurope",
+      "id": "<cosmosdb-name>-westeurope",
       "locationName": "West Europe",
       "provisioningState": "Succeeded"
     }
@@ -141,9 +124,9 @@ DB/databaseAccounts/<cosmosdb_name>",
   "type": "Microsoft.DocumentDB/databaseAccounts",
   "writeLocations": [
     {
-      "documentEndpoint": "https://<cosmosdb_name>-westeurope.documents.azure.com:443/",
+      "documentEndpoint": "https://<cosmosdb-name>-westeurope.documents.azure.com:443/",
       "failoverPriority": 0,
-      "id": "<cosmosdb_name>-westeurope",
+      "id": "<cosmosdb-name>-westeurope",
       "locationName": "West Europe",
       "provisioningState": "Succeeded"
     }
@@ -151,64 +134,46 @@ DB/databaseAccounts/<cosmosdb_name>",
 } 
 ```
 
-<a id="connect-your-nodejs-application-to-the-database" class="xliff"></a>
-
-## A Node.js-alkalmazás csatlakoztatása az adatbázishoz
+## <a name="connect-your-nodejs-application-to-the-database"></a>A Node.js-alkalmazás csatlakoztatása az adatbázishoz
 
 Ebben a lépésben a MEAN.js-mintaalkalmazást a MongoDB-kapcsolati karakterlánc használatával egy korábban létrehozott Azure Cosmos DB-adatbázishoz fogjuk csatlakoztatni. 
 
-<a id="retrieve-the-key" class="xliff"></a>
-
-## A kulcs lekérése
-
-Az Azure Cosmos DB-adatbázishoz való csatlakozáshoz adatbáziskulcs szükséges. Az [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) parancs használatával kérje le az elsődleges kulcsot.
-
-```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
-```
-
-Az Azure CLI az alábbi példához hasonló formában jeleníti meg a kimeneti adatokat. 
-
-```json
-{
-  "primaryMasterKey": "RUayjYjixJDWG5xTqIiXjC...",
-  "primaryReadonlyMasterKey": "...",
-  "secondaryMasterKey": "...",
-  "secondaryReadonlyMasterKey": "..."
-}
-```
-
-Másolja a `primaryMasterKey` értékét egy szövegszerkesztőbe. A következő lépés során szükség lesz erre az információra.
-
 <a name="devconfig"></a>
-<a id="configure-the-connection-string-in-your-nodejs-application" class="xliff"></a>
-
-## A kapcsolati karakterlánc konfigurálása a Node.js-alkalmazásban
+## <a name="configure-the-connection-string-in-your-nodejs-application"></a>A kapcsolati karakterlánc konfigurálása a Node.js-alkalmazásban
 
 A MEAN.js-tárházban nyissa meg a `config/env/local-development.js` fájlt.
 
-Cserélje le a fájl tartalmát a következő kódra. Ügyeljen arra, hogy a két `<cosmosdb_name>` helyőrzőt se felejtse el lecserélni Azure Cosmos DB-fióknevére. A `<primary_master_key>` helyőrzőt az előző lépésben kimásolt kulccsal helyettesítse.
+Cserélje le a fájl tartalmát a következő kódra. Cserélje le a két `<cosmosdb-name>` helyőrzőt az Azure Cosmos DB-fiók nevére.
 
 ```javascript
 'use strict';
 
 module.exports = {
   db: {
-    uri: 'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean-dev?ssl=true&sslverifycertificate=false'
+    uri: 'mongodb://<cosmosdb-name>:<primary_master_key>@<cosmosdb-name>.documents.azure.com:10250/mean-dev?ssl=true&sslverifycertificate=false'
   }
 };
 ```
 
-> [!NOTE] 
-> Az `ssl=true` beállítás azért fontos, mert az [Azure Cosmos DB-adatbázis SSL használatát igényli](connect-mongodb-account.md#connection-string-requirements). 
->
->
+## <a name="retrieve-the-key"></a>A kulcs lekérése
+
+Az Azure Cosmos DB-adatbázishoz való csatlakozáshoz adatbáziskulcs szükséges. Az [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) parancs használatával kérje le az elsődleges kulcsot.
+
+```azurecli-interactive
+az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
+```
+
+Az Azure CLI az alábbi példához hasonló formában jeleníti meg a kimeneti adatokat. 
+
+```json
+"RUayjYjixJDWG5xTqIiXjC..."
+```
+
+Másolja a `primaryMasterKey` értékét. Illessze be a `<primary_master_key>` fölé a `local-development.js` fájlban.
 
 Mentse a módosításokat.
 
-<a id="run-the-application-again" class="xliff"></a>
-
-### Futtassa ismét az alkalmazást.
+### <a name="run-the-application-again"></a>Futtassa ismét az alkalmazást.
 
 Futtassa ismét az `npm start` parancsot. 
 
@@ -224,9 +189,7 @@ A MEAN.js-mintaalkalmazás a felhasználói adatokat az adatbázisban tárolja. 
 
 ![A MEAN.js sikeresen csatlakozik a MongoDB-hez](./media/create-mongodb-nodejs/mongodb-connect-success.png)
 
-<a id="view-data-in-data-explorer" class="xliff"></a>
-
-## Adatok megtekintése az Adatkezelőben
+## <a name="view-data-in-data-explorer"></a>Adatok megtekintése az Adatkezelőben
 
 Az Azure Cosmos DB-adatbázisokban tárolt adatok az Azure Portalon megtekinthetők, lekérdezhetők, valamint azokon üzleti logika futtatható.
 
@@ -237,9 +200,7 @@ A felső keresőmezőbe írja be az Azure Cosmos DB kifejezést. Amikor megnyíl
 ![Adatkezelő az Azure Portalon](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
 
-<a id="deploy-the-nodejs-application-to-azure" class="xliff"></a>
-
-## A Node.js-alkalmazás központi telepítése az Azure-ban
+## <a name="deploy-the-nodejs-application-to-azure"></a>A Node.js-alkalmazás központi telepítése az Azure-ban
 
 Ebben a lépésben a MongoDB-hez csatlakoztatott Node.js-alkalmazást telepítjük az Azure Cosmos DB-adatbázisba.
 
@@ -250,8 +211,13 @@ A MEAN.js-tárházban nyissa meg a `config/env/production.js` fájlt.
 A `db` objektumban cserélje le az `uri` értékét az alábbi példa szerint. A korábbiakhoz hasonlóan, most se felejtse el lecserélni a helyőrzőket.
 
 ```javascript
-'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
+'mongodb://<cosmosdb-name>:<primary_master_key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
 ```
+
+> [!NOTE] 
+> Az `ssl=true` beállítás azért fontos, mert az [Azure Cosmos DB-adatbázis SSL használatát igényli](connect-mongodb-account.md#connection-string-requirements). 
+>
+>
 
 A terminálban mentse a módosításait a Gitbe. Mindkét parancsot lemásolhatja és azokat egyszerre is futtathatja.
 
@@ -259,18 +225,14 @@ A terminálban mentse a módosításait a Gitbe. Mindkét parancsot lemásolhatj
 git add .
 git commit -m "configured MongoDB connection string"
 ```
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk az Azure Cosmos DB-fiókok létrehozásának menetét, valamint bemutattuk, hogyan hozható létre MongoDB-gyűjtemény az Adatkezelő segítségével. Így már áttelepítheti a MongoDB-adatait az Azure Cosmos DB-adatbázisba.  
 

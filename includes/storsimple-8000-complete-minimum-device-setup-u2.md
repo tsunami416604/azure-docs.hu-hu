@@ -1,9 +1,10 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-<a id="to-complete-the-minimum-storsimple-device-setup" class="xliff"></a>
+#### <a name="to-complete-the-minimum-storsimple-device-setup"></a>A minimális StorSimple eszközbeállítás befejezése
 
-#### A minimális StorSimple eszközbeállítás befejezése
-
+   > [!NOTE]
+   > Az eszköz neve nem módosítható a minimális eszközbeállítás végrehajtása után.
+   
 1. Az **Eszközök** panelen szereplő eszközök táblázatos listájából válassza ki az eszközt, majd kattintson rá. Az eszköz állapota: **Beállításra kész**. Ekkor megnyílik az **Eszköz konfigurálása** panel.
 
      ![A StorSimple minimális eszközbeállításának hálózati adapterei](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig1.png)
@@ -27,9 +28,6 @@
 1. Kattintson az **OK** gombra. Ekkor elkezdődik az eszköz konfigurálása. Az eszköz konfigurálásának befejezéséről a rendszer értesítést küld. Az eszköz **Elérhető** állapotúra vált az **Eszközök** panelen.
 
     ![A StorSimple minimális eszközbeállításának hálózati adapterei](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
-
-   > [!NOTE]
-   > Az eszköz többi beállítását bármikor módosíthatja az **Eszközbeállítások** panelen.
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx

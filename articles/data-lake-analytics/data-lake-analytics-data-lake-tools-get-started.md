@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Stud
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: saveenr
+manager: jhubbard
 editor: cgronlun
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.service: data-lake-analytics
@@ -14,26 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/28/2017
 ms.author: saveenr, yanacai
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 401e2d84e5e2eb9f66a16b299fbb93bd1943e04b
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 7bbbb08ff635477a88403a3ae6bd3486d31838ef
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
-<a id="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio" class="xliff"></a>
-
-# U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
+# <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studiót Azure Data Lake Analytics-fiókok létrehozásához, feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-szolgáltatásokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 * **Visual Studio**: Az Express kivételével minden kiadás támogatott.
     * Visual Studio 2017
@@ -42,17 +37,13 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studiót Azure Data
 * **Microsoft Azure SDK for .NET** 2.7.1-es vagy újabb verzió.  Telepítse a [Webplatform-telepítővel](http://www.microsoft.com/web/downloads/platform.aspx).
 * Egy **Data Lake Analytics**-fiók. Fiók létrehozásához lásd: [Az Azure Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md).
 
-<a id="install-azure-data-lake-tools-for-visual-studio" class="xliff"></a>
-
-## Az Azure Data Lake Tools for Visual Studio telepítése 
+## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Az Azure Data Lake Tools for Visual Studio telepítése 
 
 Töltse le és telepítse az Azure Data Lake Tools for Visual Studio eszközt [a letöltőközpontból](http://aka.ms/adltoolsvs). A telepítést követően vegye figyelembe a következőket:
 * A **Kiszolgálókezelő** > **Azure** csomópont tartalmaz egy **Data Lake Analytics** csomópontot. 
 * Az **Eszközök** menü tartalmaz egy **Data Lake** elemet.
 
-<a id="connect-to-an-azure-data-lake-analytics-account" class="xliff"></a>
-
-## Csatlakozás Azure Data Lake Data Lake Analytics-fiókhoz
+## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Csatlakozás Azure Data Lake Data Lake Analytics-fiókhoz
 
 1. Nyissa meg a Visual Studiót.
 2. Nyissa meg a Kiszolgálókezelőt a **Nézet** > **Kiszolgálókezelő** kiválasztásával.
@@ -60,9 +51,7 @@ Töltse le és telepítse az Azure Data Lake Tools for Visual Studio eszközt [a
 4. A Kiszolgálókezelőben válassza az **Azure** > **Data Lake Analytics** elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája.
 
 
-<a id="write-your-first-u-sql-script" class="xliff"></a>
-
-## Az első U-SQL parancsfájl megírása
+## <a name="write-your-first-u-sql-script"></a>Az első U-SQL parancsfájl megírása
 
 A következő szöveg egy igen egyszerű U-SQL parancsfájl. Definiál egy kisebb adatkészletet, és az alapértelmezett Data Lake Store-ba írja az adatkészletet, amely a `/data.csv` nevű fájl.
 
@@ -79,9 +68,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-<a id="submit-a-data-lake-analytics-job" class="xliff"></a>
-
-### Data Lake Analytics-feladat küldése
+### <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics-feladat küldése
 
 1. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
 
@@ -108,28 +95,22 @@ OUTPUT @a
    * Az **Adatok** az összes bemenetet és kimenetet jeleníti meg.
    * A **Diagnosztika** részletes elemzést nyújt a feladat végrehajtásához és a teljesítmény optimalizálásához.
 
-<a id="to-check-job-state" class="xliff"></a>
-
-### Feladat állapotának ellenőrzése
+### <a name="to-check-job-state"></a>Feladat állapotának ellenőrzése
 
 1. A Kiszolgálókezelőben válassza az **Azure** > **Data Lake Analytics** elemet. 
 2. Bontsa ki a Data Lake Analytics-fiók nevét.
 3. Kattintson duplán a **Feladatok** elemre.
 4. Válassza ki a korábban elküldött feladatot.
 
-<a id="to-see-the-output-of-a-job" class="xliff"></a>
-
-### A feladat eredményének megtekintése
+### <a name="to-see-the-output-of-a-job"></a>A feladat eredményének megtekintése
 
 1. A Kiszolgálókezelőben keresse meg az elküldött feladatot.
 2. Kattintson az **Adatok** lapra.
 3. A **Feladatkimenetek** lapon jelölje be a `"/data.csv"` fájlt.
 
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 
-## Következő lépések
-
-* Első lépések a Data Lake Analytics szolgáltatással az [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) használatával 
+* [U-SQL-szkript futtatása a munkaállomáson teszteléshez és hibakereséshez](data-lake-analytics-data-lake-tools-local-run.md)
 * [Hibakeresés a C#-kódban – U-SQL-feladatok](data-lake-analytics-debug-u-sql-jobs.md)
 * [Az Azure Data Lake Tools for Visual Studio kód használata](data-lake-analytics-data-lake-tools-for-vscode.md)
 

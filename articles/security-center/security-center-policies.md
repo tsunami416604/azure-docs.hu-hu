@@ -12,35 +12,28 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 07/18/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 2593e6846c897644017083b49ad4ba8219696c6c
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: aefec15c72c6cf8389a29b03be70abb4c7f020b9
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
-<a id="set-security-policies-in-azure-security-center" class="xliff"></a>
-
-# Biztonsági szabályzatok beállítása az Azure Security Centerben
+# <a name="set-security-policies-in-azure-security-center"></a>Biztonsági szabályzatok beállítása az Azure Security Centerben
 Ez a dokumentum végigvezeti a Security Center biztonsági szabályzatainak beállításához szükséges lépéseken.
 
 >[!NOTE] 
 >2017 júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
 >
 
-<a id="what-are-security-policies" class="xliff"></a>
-
-## Mik azok a biztonsági szabályzatok?
+## <a name="what-are-security-policies"></a>Mik azok a biztonsági szabályzatok?
 A biztonsági szabályzat határozza meg azoknak a vezérlőelemeknek a körét, amelyeket a rendszer az egy adott előfizetésen belüli erőforrásokhoz javasol. A Security Centerben a vállalat biztonsági igényeinek és az egyes előfizetésekben szereplő alkalmazások típusának vagy az adatok bizalmasságának megfelelően határozhatja meg az Azure-előfizetésekre vonatkozó szabályzatokat.
 
 Különböző biztonsági követelmények vonatkozhatnak például a fejlesztésben vagy tesztelésben, illetve az éles környezetben használt erőforrásokra. A szabályozott adatokat, például személyazonosításra alkalmas adatokat használó alkalmazások is magasabb szintű biztonságot követelhetnek meg. Az Azure Security Centerben engedélyezett biztonsági szabályzatok biztonsági javaslatokkal szolgálnak, és figyelést biztosítanak, így segítenek Önnek felismerni a potenciális biztonsági réseket és elhárítani a fenyegetéseket. Az [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) cikkből további információkhoz juthat az Önnek legmegfelelőbb lehetőség meghatározásával kapcsolatban.
 
-<a id="set-security-policies" class="xliff"></a>
-
-## Biztonsági házirendek beállítása
+## <a name="set-security-policies"></a>Biztonsági házirendek beállítása
 Az egyes előfizetésekhez külön-külön biztonsági szabályzatot állíthat be. Biztonsági szabályzat módosításához az előfizetésben tulajdonos vagy közreműködő szerepkörrel kell rendelkeznie. A Security Center biztonsági szabályzatainak konfigurálásához jelentkezzen be az Azure Portalra, és kövesse az alábbiakban megadott lépéseket:
 
 1. A Security Center irányítópultján kattintson a **Policy** (Szabályzat) csempére.
@@ -49,7 +42,7 @@ Az egyes előfizetésekhez külön-külön biztonsági szabályzatot állíthat 
     ![A szabályzat definiálása](./media/security-center-policies/security-center-policies-fig1-ga.png)
 3. Megnyílik a kiválasztott előfizetéshez tartozó **Security policy** (Biztonsági szabályzat) panel, amelyen néhány beállítás jelenik meg. Ezen a panelen a következő beállítások érhetőek el:
 
-   * **Prevention policy** (Megelőzési szabályzat): Ezzel a beállítással előfizetésenként vagy erőforráscsoportonként konfigurálhatók szabályzatok.  
+   * **Prevention policy** (Megelőzési szabályzat): Ezzel a beállítással előfizetésenként konfigurálhatók a szabályzatok.  
    * **Email notification** (E-mailes értesítés): Ezzel a beállítással olyan e-mailes értesítés konfigurálható, amelyet a rendszer a nagyon súlyos riasztások napi első előfordulása esetében küld. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatók. Az e-mailes értesítések konfigurálásával kapcsolatos további információkért olvassa el a [Biztonsági kapcsolattartási adatok megadása az Azure Security Centerben](security-center-provide-security-contact-details.md) című cikket.
    * **Pricing tier** (Tarifacsomag): Ez a beállítás a kiválasztott tarifacsomag frissítéséhez használható. Az árképzési beállításokkal kapcsolatban további információkat a [Security Center díjszabását](security-center-pricing.md) ismertető oldalon talál.
 4. A **Collect data from virtual machines** (Adatgyűjtés a virtuális gépekről) beállítás értéke legyen **On** (Bekapcsolva). Ezzel engedélyezi a meglévő és az új erőforrásokra vonatkozó automatikus naplógyűjtést a Microsoft Monitoring Agenttel. Ez ugyanaz az ügynök, amelyet az Operations Management Suite és a Log Analytics szolgáltatás is használ. A rendszer az ügynökből összegyűjtött adatokat az Azure-előfizetéséhez társított, meglévő Log Analytics-munkaterületen tárolja, illetve egy új munkaterületen, a virtuális gép földrajzi helyét is figyelembe véve.
@@ -81,9 +74,7 @@ Miután minden beállítást konfigurált, kattintson a javaslatokat tartalmazó
 >
 >
 
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabályzatainak konfigurálását. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md). A tervezési szempontokat ismertető és az azokat figyelembe vevő tervezési folyamatokban segítő útmutató, amely megkönnyíti az Azure Security Center használatát.

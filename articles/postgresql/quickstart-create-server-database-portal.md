@@ -9,10 +9,10 @@ editor: jasonwhowell
 ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 06/19/2017
+ms.date: 07/12/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 2b81b9e1ae2abfd332bd6048b7643b4245ca374b
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: c065d692d2a4ac369cb13a70d09b30498e6c9106
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/13/2017
 
@@ -38,12 +38,12 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
  ![Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása](./media/quickstart-create-database-portal/1-create-database.png)
 
 3.  Töltse ki az új kiszolgáló adatai űrlapot a következő információkkal az előző képen látható módon:
-    - A kiszolgáló neve: **mypgserver-20170401** (a kiszolgáló neve leképez a DNS-névbe, ezért globálisan egyedinek kell lennie) 
+    - Kiszolgáló neve: **mypgserver-20170401** (válasszon globálisan egyedi kiszolgálónevet, mivel ez a DNS-névre van leképezve)
     - Feliratkozás: Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van.
     - Erőforráscsoport: **myresourcegroup**
     - Az Ön által választott kiszolgálói rendszergazdai bejelentkezési név és jelszó
-    - Hely
-    - PostgreSQL-verzió
+    - Hely: válassza az Önhöz legközelebbi helyet.
+    - PostgreSQL-verzió: válassza a legújabb verziót.
 
   > [!IMPORTANT]
   > A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia a rövid útmutató későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.

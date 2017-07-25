@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: d991adb8fa8f71a8785327be244ad9749a837dfd
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 451d3c956b863ab90f86509fd80a5c96e27525ce
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/13/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és csatlakoztatott adatlemezek
@@ -112,7 +112,7 @@ az vmss disk detach -g dsktest -n dskvmss --lun 2
 Hasonlóképpen, úgy is eltávolíthat lemezt méretezési csoportból, hogy eltávolít egy bejegyzést a _storageProfile_ szakaszban található _dataDisks_ tulajdonságból, és alkalmazza a módosítást. 
 
 ## <a name="additional-notes"></a>További megjegyzések
-Az Azure Managed Disks, valamint a csatlakoztatott adatlemezzel rendelkező méretezési csoportok támogatása a Microsoft.Compute API [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) verziójától vált elérhetővé. Az API ezen vagy újabb verzióival létrehozott bármely SDK vagy parancssori eszköz használata támogatott.
+Az Azure Managed Disks, valamint a csatlakoztatott adatlemezzel rendelkező méretezési csoportok támogatása elérhető a Microsoft.Compute API [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) és újabb verzióiban.
 
 A csatlakoztatott lemezek méretezési csoportok esetében való támogatásának kezdeti implementációjában nincs lehetőség adatlemezek csatlakoztatására, vagy azok eltávolítására a méretezési csoportokba tartozó különálló virtuális gépek esetében.
 

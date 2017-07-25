@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/03/2017
+ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: fac46780cfd591a00ce73ea1bb4ce73893d22967
+ms.translationtype: HT
+ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
+ms.openlocfilehash: 31ac18add9c3fd956e0d37b1e0c1a510265c22e6
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/18/2017
 
 ---
 
@@ -38,7 +38,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
 
-2. Válassza a **Számítás** elemet, majd a **Windows Server 2016 Datacenter** lehetőséget, és győződjön meg arról, hogy a kiválasztott üzemi modell az **Erőforrás-kezelő**. Kattintson a **Létrehozás** gombra. 
+2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
 
 3. Adja meg a virtuális gép adatait. Az itt megadott felhasználónévvel és jelszóval bejelentkezhet a virtuális gépbe. Amikor végzett, kattintson az **OK** gombra.
 
@@ -48,7 +48,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
     ![Képernyőkép a virtuális gépek méreteivel](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-5. A beállítások panelen válassza a **Felügyelt lemezek használata** területen az **Igen** lehetőséget, tartsa meg az alapértelmezéseket a többi beállításnál, majd kattintson az **OK** elemre.
+5. A Beállítások panelen hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
 
 6. Az összegzés lapon kattintson az **OK** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
 

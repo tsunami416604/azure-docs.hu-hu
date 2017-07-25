@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 8fa97a00978b4efdcf5956ee6b92547960b1d57a
+ms.translationtype: HT
+ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
+ms.openlocfilehash: bf028b0e49833385837fa7bdd68f215ed27e0325
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/05/2017
-
+ms.lasthandoff: 07/14/2017
 
 ---
-# Virtuális hálózatok közötti VPN-átjárókapcsolat konfigurálása az Azure Portalon
-<a id="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal" class="xliff"></a>
+# <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Virtuális hálózatok közötti VPN-átjárókapcsolat konfigurálása az Azure Portalon
 
-Ebből a cikkből megtudhatja, hogyan hozható létre VPN Gateway-kapcsolat virtuális hálózatok között. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre és az Azure Portalra vonatkoznak. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
+Ebből a cikkből megtudhatja, hogyan hozható létre VPN Gateway-kapcsolat virtuális hálózatok között. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. Amikor különböző előfizetésekről csatlakoztat virtuális hálózatokat, az előfizetéseket nem kell társítani ugyanazzal az Active Directory-bérlővel. 
+
+A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre és az Azure Portalra vonatkoznak az ugyanazon előfizetésben lévő virtuális hálózatok esetén. Ha a virtuális hálózatok különböző előfizetésekben találhatóak, nem hozhatja létre a kapcsolatot a portálon. Ehelyett használhatja a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md) vagy a [parancssori felületet](vpn-gateway-howto-vnet-vnet-cli.md). Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -46,8 +46,7 @@ A virtuális hálózatok közötti kommunikáció kombinálható többhelyes kon
 
 ![Tudnivalók a kapcsolatokról](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "Tudnivalók a kapcsolatokról")
 
-### Miért érdemes összekapcsolni a virtuális hálózatokat?
-<a id="why-connect-virtual-networks" class="xliff"></a>
+### <a name="why-connect-virtual-networks"></a>Miért érdemes összekapcsolni a virtuális hálózatokat?
 
 A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
@@ -59,9 +58,10 @@ A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
   
   * Egy régión belül beállíthat többrétegű alkalmazásokat több, elkülönítéssel vagy felügyeleti követelményekkel összekapcsolt virtuális hálózatokkal.
 
-A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál. Vegye figyelembe, hogy ha a virtuális hálózatok különböző előfizetésekben találhatóak, nem hozhatja létre a kapcsolatot a portálon. Ehelyett használhatja a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md).
+A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, a [Virtuális hálózatok közötti kapcsolat – gyakori kérdések](#faq) című részben talál. Vegye figyelembe, hogy ha a virtuális hálózatok különböző előfizetésekben találhatóak, nem hozhatja létre a kapcsolatot a portálon. Ehelyett használhatja a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md) vagy a [parancssori felületet](vpn-gateway-howto-vnet-vnet-cli.md).
 
 ### <a name="values"></a>Példabeállítások
+
 Ha gyakorlatként használja ezeket a lépéseket, használhatja a példa beállításértékeket. Csupán a példa kedvéért több címteret használunk az egyes virtuális hálózatokhoz. Azonban a virtuális hálózatok közötti kapcsolat konfigurálásához nincs szükség több címtérre.
 
 **Értékek a TestVNet1-hez:**
@@ -113,8 +113,7 @@ Ha gyakorlatként használja ezeket a lépéseket, használhatja a példa beáll
 ## <a name="CreatVNet"></a>1. A TestVNet1 létrehozása és konfigurálása
 Ha már rendelkezik egy virtuális hálózattal, győződjön meg arról, hogy a beállításai kompatibilisek a VPN-átjáró kialakításával. Különösen ügyeljen az esetleges olyan alhálózatokra, amelyek átfedésbe kerülhetnek más hálózatokkal. Egymást átfedő alhálózatok esetén a kapcsolat nem fog megfelelően működni. Ha a virtuális hálózat a megfelelő beállításokkal lett konfigurálva, folytassa a [DNS-kiszolgáló megadása](#dns) szakaszban leírt lépésekkel.
 
-### Virtuális hálózat létrehozása
-<a id="to-create-a-virtual-network" class="xliff"></a>
+### <a name="to-create-a-virtual-network"></a>Virtuális hálózat létrehozása
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="subnets"></a>2. További címterek hozzáadása és alhálózatok létrehozása
@@ -129,8 +128,7 @@ Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket a [Péld
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### Átjáróalhálózat létrehozása
-<a id="to-create-a-gateway-subnet" class="xliff"></a>
+### <a name="to-create-a-gateway-subnet"></a>Átjáróalhálózat létrehozása
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
 ## <a name="dns"></a>4. DNS-kiszolgáló megadása (nem kötelező)
@@ -141,8 +139,7 @@ A virtuális hálózatok közötti kapcsolatokhoz nincs szükség DNS-re. Ha azo
 ## <a name="VNetGateway"></a>5. Virtuális hálózati átjáró létrehozása
 Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően. Ha gyakorlatként hozza létre ezt a konfigurációt, használja ezeket a [Példabeállításokat](#values).
 
-### Virtuális hálózati átjáró létrehozása
-<a id="to-create-a-virtual-network-gateway" class="xliff"></a>
+### <a name="to-create-a-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 ## <a name="CreateTestVNet4"></a>6. A TestVNet4 létrehozása és konfigurálása
@@ -192,7 +189,6 @@ A virtuális hálózatok közötti kapcsolatokról további információt a gyak
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért tekintse meg a [Virtual Machines-dokumentációt](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 

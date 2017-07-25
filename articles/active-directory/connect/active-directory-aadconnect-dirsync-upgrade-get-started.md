@@ -12,11 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/07/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
-ms.sourcegitcommit: e358f6d1937a45f375777cea1153b975a745a719
-ms.openlocfilehash: 08ba157ba783d00069750cdc1c80d13111b6a670
+ms.translationtype: HT
+ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
+ms.openlocfilehash: 7049af4567947d3d799a38c5a3940ba25a2c0f18
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/13/2017
 
 ---
 
@@ -134,7 +136,7 @@ Ha 50 000-nél kevesebb objektummal rendelkezik, azonban mégis párhuzamos üz
 1. Futtassa az Azure AD Connect telepítőt (MSI).
 2. Amikor megjelenik a **Welcome to Azure AD Connect** (Üdvözli az Azure AD Connect) képernyő, lépjen ki a telepítővarázslóból az „X” gombra kattintva az ablak jobb felső sarkában.
 3. Nyisson meg egy parancssort.
-4. Az Azure AD Connect telepítési helyéről (alapértelmezett hely: C:\Program Files\Microsoft Azure Active Directory Connect) hajtsa végre a következő parancsot:  `AzureADConnect.exe /ForceExport`.
+4. Az Azure AD Connect telepítési helyéről (alapértelmezett hely: C:\Program Files\Microsoft Azure Active Directory Connect) hajtsa végre a következő parancsot: `AzureADConnect.exe /ForceExport`.
 5. Kattintson az **Export settings** (Beállítások exportálása) gombra. Ha az Azure AD Connectet egy különálló kiszolgálón telepíti, ezek a beállítások át lesznek telepítve a jelenlegi DirSyncből az új Azure AD Connect-telepítésre.
 
 ![Elemzés befejeződött](./media/active-directory-aadconnect-dirsync-upgrade-get-started/forceexport.png)
@@ -147,7 +149,7 @@ Ha az Azure AD Connectet egy új kiszolgálón telepíti, a rendszer feltételez
 1. Futtassa az Azure AD Connect telepítőt (MSI).
 2. Amikor megjelenik a **Welcome to Azure AD Connect** (Üdvözli az Azure AD Connect) képernyő, lépjen ki a telepítővarázslóból az „X” gombra kattintva az ablak jobb felső sarkában.
 3. Nyisson meg egy parancssort.
-4. Az Azure AD Connect telepítési helyéről (alapértelmezett hely: C:\Program Files\Microsoft Azure Active Directory Connect) hajtsa végre a következő parancsot:  `AzureADConnect.exe /migrate`.
+4. Az Azure AD Connect telepítési helyéről (alapértelmezett hely: C:\Program Files\Microsoft Azure Active Directory Connect) hajtsa végre a következő parancsot: `AzureADConnect.exe /migrate`.
    Az Azure AD Connect telepítővarázslója elindul, és a következő képernyőt jeleníti meg:  
    ![Adja meg Azure AD hitelesítő adatait](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ImportSettings.png)
 5. Válassza ki a DirSync-telepítésből exportált beállítási fájlt.
@@ -216,9 +218,4 @@ Ismerkedjen meg a következő, a telepítéssel engedélyezett új szolgáltatá
 Ismerje meg részletesebben a következő általános témaköröket: [az ütemező és a szinkronizálási események indítása](active-directory-aadconnectsync-feature-scheduler.md).
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

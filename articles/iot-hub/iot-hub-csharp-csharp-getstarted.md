@@ -16,19 +16,19 @@ ms.date: 05/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 103d64ea73c309f387ff90d181f472ad246d3026
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 2734a90284432ee218efb4fea68684de4b069dd6
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/19/2017
 
 ---
-# <a name="connect-your-simulated-device-to-your-iot-hub-using-net"></a>A szimulált eszköz csatlakoztatása az IoT Hubhoz .NET használatával
+# <a name="connect-your-device-to-your-iot-hub-using-net"></a>Az eszköz csatlakoztatása az IoT Hubhoz .NET-tel
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 Az oktatóanyag végén három .NET-konzolalkalmazással fog rendelkezni:
 
-* A **CreateDeviceIdentity** egy eszközidentitást, valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat a szimulált eszközalkalmazáshoz.
-* A **ReadDeviceToCloudMessages** megjeleníti a szimulált eszközalkalmazások által küldött telemetriát.
+* A **CreateDeviceIdentity** egy eszközidentitást, valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat az eszközalkalmazáshoz.
+* A **ReadDeviceToCloudMessages** megjeleníti az eszközalkalmazások által küldött telemetriát.
 * A **SimulatedDevice** csatlakozik az IoT Hubhoz a korábban létrehozott eszközidentitással, és az MQTT protokoll használatával másodpercenként telemetriai üzenetet küld.
 
 Letöltheti vagy klónozhatja a Githubról származó három alkalmazást tartalmazó Visual Studio-megoldást.
@@ -125,7 +125,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre, amely az eszközről 
     Task.WaitAll(tasks.ToArray());
    ```
 
-## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
+## <a name="create-a-device-app"></a>Eszközalkalmazás létrehozása
 Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
 
 1. A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet az aktuális megoldáshoz a **Console App (.NET Framework)** (Konzolalkalmazás (.NET-keretrendszer)) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **SimulatedDevice** nevet.
@@ -193,7 +193,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre, amely egy, az eszköz
    
    Alapértelmezés szerint a **Create** metódus a .NET-keretrendszerre épülő alkalmazásokban létrehoz egy **DeviceClient**-példányt, amely az AMQP protokollt használja az IoT Hubbal való kommunikációra (az UWP- és a PLC-ügyfelek alapértelmezés szerint HTTP-t használnak). Az MQTT vagy a HTTP protokoll használatához használja a **Create** metódus felülbírálását, amely lehetővé teszi a protokoll megadását. Ha a HTTP protokollt használja, hozzá kell adnia a **Microsoft.AspNet.WebApi.Client** NuGet-csomagot a projekthez, hogy tartalmazza a **System.Net.Http.Formatting** névteret.
 
-Ez az oktatóanyag végigvezeti egy szimulált IoT Hub-eszközalkalmazás létrehozásának lépésein. A [Connected Service for Azure IoT Hub][lnk-connected-service] (Csatlakoztatott szolgáltatás Azure IoT Hubhoz) Visual Studio-bővítmény használatával is hozzáadhatja a szükséges kódot az eszközalkalmazáshoz.
+Ez az oktatóanyag végigvezeti egy IoT Hub-eszközalkalmazás létrehozásának lépésein. A [Connected Service for Azure IoT Hub][lnk-connected-service] (Csatlakoztatott szolgáltatás Azure IoT Hubhoz) Visual Studio-bővítmény használatával is hozzáadhatja a szükséges kódot az eszközalkalmazáshoz.
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket is meg kell valósítania (például egy exponenciális leállítást) a [tranziens hibakezelést][lnk-transient-faults] ismertető MSDN-cikkben leírtak szerint.
@@ -206,7 +206,7 @@ Most már készen áll az alkalmazások futtatására.
 1. A Visual Studióban a Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a megoldásra, majd kattintson a **Set StartUp projects** (Indítási projektek beállítása) parancsra. Válassza a **Multiple startup projects** (Több indítási projekt) lehetőséget, majd válassza a **Start** (Indítás) elemet a **ReadDeviceToCloudMessages** és a **SimulatedDevice** projekt műveleteként.
    
     ![Indítási projektek tulajdonságai][41]
-2. Nyomja le az **F5** billentyűt a két alkalmazás futtatásához. A **SimulatedDevice** alkalmazás konzolkimenete a szimulált eszközalkalmazás által az IoT Hubnak küldött üzeneteket jeleníti meg. A **ReadDeviceToCloudMessages** alkalmazás konzolkimenete az IoT Hub által fogadott üzeneteket jeleníti meg.
+2. Nyomja le az **F5** billentyűt a két alkalmazás futtatásához. A **SimulatedDevice** alkalmazás konzolkimenete az eszközalkalmazás által az IoT Hubnak küldött üzeneteket jeleníti meg. A **ReadDeviceToCloudMessages** alkalmazás konzolkimenete az IoT Hub által fogadott üzeneteket jeleníti meg.
    
     ![Az alkalmazások konzolkimenetei][42]
 3. Az [Azure Portal][lnk-portal] **Használat** csempéje az IoT Hubnak küldött üzenetek számát jeleníti meg:
@@ -214,7 +214,7 @@ Most már készen áll az alkalmazások futtatására.
     ![Az Azure Portal Használat csempéje][43]
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban egy IoT Hubot konfigurált az Azure Portalon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön az IoT Hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti az IoT Hub által fogadott üzeneteket. 
+Ebben az oktatóanyagban egy IoT Hubot konfigurált az Azure Portalon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette az eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön az IoT Hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti az IoT Hub által fogadott üzeneteket. 
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

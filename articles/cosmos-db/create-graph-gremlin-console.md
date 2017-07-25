@@ -2,7 +2,7 @@
 title: "Oktatóanyag az Azure Cosmos DB használatához: Elemek létrehozása, lekérdezése és gráfbejárás az Apache TinkerPops Gremlin-konzolban | Microsoft Docs"
 description: "Az Azure Cosmos DB bevezetője csúcsok, élek és lekérdezések létrehozásához az Azure Cosmos DB Graph API-val"
 services: cosmos-db
-author: AndrewHoh
+author: dennyglee
 manager: jhubbard
 editor: monicar
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
@@ -11,30 +11,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
 ms.topic: hero-article
-ms.date: 06/10/2017
-ms.author: anhoh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 44972270a13f5ab5b3aa22557b36e80ae406a4a6
+ms.date: 07/14/2017
+ms.author: denlee
+ms.translationtype: HT
+ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
+ms.openlocfilehash: 82ddc351359318dab82c95d3e3b9b97ba3e3b4a8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/17/2017
 
 ---
-<a id="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console" class="xliff"></a>
-
-# Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
+# <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja egy Azure Cosmos DB-fiók, egy adatbázis és egy gráf (tároló) Azure Portal segítségével való létrehozását, majd az [Apache TinkerPop](http://tinkerpop.apache.org) [Gremlin-konzoljának](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használatát a Graph API (előzetes verzió) adataival végzett munkához. Az oktatóanyagból megtudhatja, hogyan hozhat létre és kérdezhet le csúcsokat és éleket, hogyan frissítheti a csúcsok tulajdonságait, hogyan járhatja be a gráfokat és vetheti el csúcsokat.
+Ez a rövid útmutató bemutatja egy Azure Cosmos DB-fiók, egy adatbázis és egy gráf (tároló) Azure Portal segítségével való létrehozását, majd az [Apache TinkerPop](http://tinkerpop.apache.org) [Gremlin-konzoljának](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) használatát a Graph API (előzetes verzió) adataival végzett munkához. Ebben az oktatóanyagban éleket és csúcspontokat hoz létre és kérdez le, csúcsponttulajdonságokat frissít, csúcspontokat kérdez le, bejárja a gráfot és elvet csúcspontokat.
 
 ![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
 
 A Gremlin konzol egy Groovy/Java-alapú program, mely Linux, Mac és Windows rendszereken futtatható. A konzol az [Apache TinkerPop webhelyről](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.4/apache-tinkerpop-gremlin-console-3.2.4-bin.zip) tölthető le.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 A bevezető során az Azure Cosmos DB-fiók létrehozásához Azure-előfizetés szükséges.
 
@@ -42,53 +38,52 @@ A bevezető során az Azure Cosmos DB-fiók létrehozásához Azure-előfizetés
 
 Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell lennie. A program 3.2.4-es vagy újabb verzióját használja.
 
-<a id="create-a-database-account" class="xliff"></a>
-
-## Adatbázisfiók létrehozása
+## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
 [!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
-<a id="add-a-graph" class="xliff"></a>
-
-## Gráf hozzáadása
+## <a name="add-a-graph"></a>Gráf hozzáadása
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a id="ConnectAppService"></a>Csatlakozás az alkalmazásszolgáltatáshoz
-1. A Gremlin-konzol elindítása előtt hozza létre vagy módosítsa a *remote-secure.yaml* konfigurációs fájlt az *apache-tinkerpop-gremlin-console-3.2.4/conf* könyvtárban.
+1. A Gremlin-konzol elindítása előtt hozza létre vagy módosítsa a remote-secure.yaml konfigurációs fájlt az apache-tinkerpop-gremlin-console-3.2.4/conf könyvtárban.
 2. Adja meg a *host* (gazdagép), *Port*, *username* (felhasználónév), *password* (jelszó), *ConnectionPool* (kapcsolatkészlet), és *serializer* (szerializáló) beállításokat:
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    Hosts|***.graphs.azure.com|A gráfszolgáltatás URI-címe, amely az Azure Portalról kérhető le
-    Port|443|Állítsa be a 443-as portot.
-    Felhasználónév|*Az Ön felhasználóneve*|`/dbs/<db>/colls/<coll>` formátumú erőforrás
-    Jelszó|*Az Ön elsődleges főkulcsa*|Az Ön elsődleges főkulcsa az Azure Cosmos DB rendszerhez
-    ConnectionPool|{enableSsl: true}|Kapcsolatkészletének beállítása SSL használatához
-    Serializer|{ className:org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Ezt az értéket adja meg.
+    gazdagépek|[***.graphs.azure.com]|Lásd az alábbi képernyőképet. Ez a Gremlin URI értéke szögletes zárójelben az Azure Portal Áttekintés oldalán a :443 / végződés nélkül.<br><br>Ez az érték a Kulcsok lapról is lekérhető az URI értékkel a https:// eltávolításával, a dokumentumok gráfokká alakításával és a :443/ végződés eltávolításával.
+    port|443|Állítsa 443 értékre.
+    felhasználónév|*Az Ön felhasználóneve*|A `/dbs/<db>/colls/<coll>` űrlap erőforrása, ahol a `<db>` az adatbázis neve és a `<coll>` a gyűjtemény neve.
+    jelszó|*Az Ön elsődleges kulcsa*| Lásd az alábbiakban a második képernyőképet. Ez az Ön elsődleges kulcsa, amelyet az Azure Portal Kulcsok oldalának Elsődleges Kulcs mezőjéből kérdezhet le. Az érték másolásához használja a mező bal oldalán lévő Másolás gombot.
+    kapcsolatkészlet|{enableSsl: true}|A kapcsolatkészletre vonatkozó beállítás az SSL-hez.
+    szerializáló|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Állítsa be ezt az értéket, és törölje a `\n` sortöréseket az érték beillesztésekor.
 
-3. A terminálban futtassa a *bin/gremlin.bat* vagy a *bin/gremlin.sh* fájlt a [Gremlin-konzol](http://tinkerpop.apache.org/docs/3.2.4/tutorials/getting-started/) elindításához.
-4. A terminálban futtassa a *:remote connect tinkerpop.server conf/remote-secure.yam* fájlt az alkalmazásszolgáltatóhoz való kapcsolódáshoz.
+    A gazdagépek értékéhez másolja a **Gremlin URI** értéket az **Áttekintés** lapról: ![Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása](./media/create-graph-gremlin-console/gremlin-uri.png)
+
+    A jelszó értékéhez másolja az **Elsődleges kulcs** értékét a **Kulcsok** lapról: ![Az Azure Portal Kulcsok lapján található elsődleges kulcs megtekintése és másolása](./media/create-graph-gremlin-console/keys.png)
+
+
+3. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](http://tinkerpop.apache.org/docs/3.2.4/tutorials/getting-started/) elindításához.
+4. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
 
 Remek! Most, hogy befejeztük a beállítást, futtassunk néhány konzolparancsot!
 
-Próbáljon ki egy egyszerű count() parancsot. Írja be a következőket a konzol parancssorába:
+Próbáljon ki egy egyszerű count() parancsot. Írja be a következőket a konzolon, amikor a rendszer kéri:
 ```
 :> g.V().count()
 ```
 
 > [!TIP]
-> Látja a ***:>*** jelet a g.V().count() szöveg előtt? 
+> Észrevette a `g.V().count()` szöveg előtti `:>` előtagot? 
 >
 > Ez része a parancsnak, amit be kell írnia. Ez fontos a Gremlin-konzol Azure Cosmos DB-vel való használatánál.  
 >
-> A :> előtag elhagyása arra utasítja a konzolt, hogy helyileg hajtsa végre a parancsot, gyakran a memórián belüli gráfból.
-> A ***:>*** előtag használatával távoli parancs végrehajtására utasítja a konzolt, ebben az esetben a Cosmos DB-ből (ami vagy a localhost emulátor, vagy egy > Azure példány).
+> A `:>` előtag kihagyása arra utasítja a konzolt, hogy helyileg, gyakran egy, a memóriában tárolt gráfon hajtsa végre a parancsot.
+> A `:>` előtag alkalmazása távoli parancs végrehajtására utasítja a konzolt ebben az esetben a Cosmos DB-n (a localhost emulátoron vagy egy > Azure-példányon).
 
 
-<a id="create-vertices-and-edges" class="xliff"></a>
-
-## Csúcsok és élek létrehozása
+## <a name="create-vertices-and-edges"></a>Csúcsok és élek létrehozása
 
 Először hozzon létre öt darab, egy-egy személyt jelölő csúcsot *Thomas*, *Mary Kay*, *Robin*, *Ben*, és *Jack* néven.
 
@@ -193,9 +188,7 @@ Kimenet:
 ==>[id:889c4d3c-549e-4d35-bc21-a3d1bfa11e00,label:knows,type:edge,inVLabel:person,outVLabel:person,inV:40fd641d-546e-412a-abcc-58fe53891aab,outV:3e324073-ccfc-4ae1-8675-d450858ca116]
 ```
 
-<a id="update-a-vertex" class="xliff"></a>
-
-## Csúcs frissítése
+## <a name="update-a-vertex"></a>Csúcs frissítése
 
 Most frissítsük a *Thomas* csúcspontot új életkor (*45*) megadásával.
 
@@ -209,9 +202,7 @@ Kimenet:
 ==>[id:ae36f938-210e-445a-92df-519f2b64c8ec,label:person,type:vertex,properties:[firstName:[[id:872090b6-6a77-456a-9a55-a59141d4ebc2,value:Thomas]],lastName:[[id:7ee7a39a-a414-4127-89b4-870bc4ef99f3,value:Andersen]],age:[[id:a2a75d5a-ae70-4095-806d-a35abcbfe71d,value:45]]]]
 ```
 
-<a id="query-your-graph" class="xliff"></a>
-
-## Gráf lekérdezése
+## <a name="query-your-graph"></a>Gráf lekérdezése
 
 Futtassunk néhány lekérdezést a gráfon.
 
@@ -243,9 +234,7 @@ Kimenet:
 ==>Thomas
 ```
 
-<a id="traverse-your-graph" class="xliff"></a>
-
-## A gráf bejárása
+## <a name="traverse-your-graph"></a>A gráf bejárása
 
 A gráf bejárásával most kérdezzük le Thomas összes barátját.
 
@@ -275,9 +264,7 @@ Kimenet:
 ==>[id:a801a0cb-ee85-44ee-a502-271685ef212e,label:person,type:vertex,properties:[firstName:[[id:b9489902-d29a-4673-8c09-c2b3fe7f8b94,value:Ben]],lastName:[[id:e084f933-9a4b-4dbc-8273-f0171265cf1d,value:Miller]]]]
 ```
 
-<a id="drop-a-vertex" class="xliff"></a>
-
-## Csúcs elvetése
+## <a name="drop-a-vertex"></a>Csúcs elvetése
 
 Töröljünk egy csúcsot a gráfadatbázisból.
 
@@ -287,9 +274,7 @@ Bemenet (a Jack csúcs elvetése):
 :> g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
-<a id="clear-your-graph" class="xliff"></a>
-
-## Gráf adatainak törlése
+## <a name="clear-your-graph"></a>Gráf adatainak törlése
 
 Végezetül töröljük az adatbázisból az összes csúcsot és élet.
 
@@ -302,24 +287,18 @@ Bemenet:
 
 Gratulálunk! Az Azure Cosmos DB: Graph API-oktatóanyag végére ért.
 
-<a id="review-slas-in-the-azure-portal" class="xliff"></a>
-
-## Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon:  
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB-fiókot, miként készíthet gráfokat az Adatkezelő használatával, és hogyan hozhat létre csúcsokat és éleket, valamint hogy hogyan járhat be gráfokat a Gremlin-konzollal. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

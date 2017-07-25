@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 07/19/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: d8c49272789e7d33c6f0684875765a1ecea5a2ff
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: f2d0332d815c82d7d47625e020de2e9c5099deeb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 07/19/2017
 
 ---
-# Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon
-<a id="audit-activity-reports-in-the-azure-active-directory-portal" class="xliff"></a> 
+# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
 Az Azure Portalon az Azure Active Directory (Azure AD) jelentéskészítési funkciójával minden szükséges információhoz hozzájuthat a környezetével kapcsolatban.
 
@@ -38,15 +37,13 @@ Az Azure AD jelentéskészítési architektúrája a következő elemekből áll
 
 Ezen témakör áttekintést nyújt a naplózási tevékenységekről.
  
-## Ki férhet hozzá az adatokhoz?
-<a id="who-can-access-the-data" class="xliff"></a>
+## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 * A biztonsági rendszergazda vagy biztonsági olvasó szerepkörű felhasználók
 * A globális rendszergazdák
 * Az egyedi (nem rendszergazda jogosultságú) felhasználók csak a saját tevékenységüket láthatják
 
 
-## Naplók
-<a id="audit-logs" class="xliff"></a>
+## <a name="audit-logs"></a>Naplók
 
 Az Azure Active Directory naplói a rendszertevékenységek rekordjait tartalmazzák megfelelőségi célokból.  
 A **Naplók** menüponton át vezet az út az összes naplózott adathoz – a menüpont az **Azure Active Directory** **Tevékenység** szakaszában található.
@@ -76,8 +73,7 @@ A listanézet egyik elemére kattintva megtekintheti annak elérhető összes r�
 ![Naplók](./media/active-directory-reporting-activity-audit-logs/22.png "Naplók")
 
 
-## Auditnaplók szűrése
-<a id="filtering-audit-logs" class="xliff"></a>
+## <a name="filtering-audit-logs"></a>Auditnaplók szűrése
 
 A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a naplózott adatokat:
 
@@ -134,19 +130,17 @@ Ha a **Csoport** elemet választja a **tevékenység erőforrástípusaként**, 
 
 A **tevékenység** szűrő a kiválasztott kategórián és tevékenység-erőforrástípuson alapul. Választhat egy adott tevékenységet, amelyet meg szeretne tekinteni, vagy kiválaszthatja az összeset. 
 
-A Graph API (https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta) használatával lekérheti az összes naplózási tevékenység listáját, ahol a $tenantdomain a tartománynév, vagy tekintse meg a [naplózási jelentési eseményekkel kapcsolatos](active-directory-reporting-audit-events.md#list-of-audit-report-events) cikket.
+A Graph API (https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta) használatával lekérheti az összes naplózási tevékenység listáját, ahol a $tenantdomain a tartománynév, vagy tekintse meg a [naplózási jelentési eseményekkel kapcsolatos](active-directory-reporting-audit-events.md) cikket.
 
 
-## Rövidebb utak a naplók eléréséhez
-<a id="audit-logs-shortcuts" class="xliff"></a>
+## <a name="audit-logs-shortcuts"></a>Rövidebb utak a naplók eléréséhez
 
 Az **Azure Active Directory** mellett az Azure Portal két további lehetőséget biztosít a naplózási adatok elérésére:
 
 - Felhasználók és csoportok
 - Vállalati alkalmazások
 
-### Felhasználók és csoportok auditnaplói
-<a id="users-and-groups-audit-logs" class="xliff"></a>
+### <a name="users-and-groups-audit-logs"></a>Felhasználók és csoportok auditnaplói
 
 A felhasználó- és csoportalapú naplózási jelentésekkel az alábbi kérdésekre kaphat választ:
 
@@ -170,8 +164,7 @@ Ha csak át szeretné tekinteni a felhasználókhoz és csoportokhoz kapcsolód�
 
 ![Naplók](./media/active-directory-reporting-activity-audit-logs/93.png "Naplók")
 
-### Vállalati alkalmazások naplói
-<a id="enterprise-applications-audit-logs" class="xliff"></a>
+### <a name="enterprise-applications-audit-logs"></a>Vállalati alkalmazások naplói
 
 Az alkalmazásalapú naplózási jelentésekkel az alábbi kérdésekre kaphat választ:
 
@@ -190,8 +183,8 @@ A nézetet tovább szűrheti csak a **csoportok** vagy csak a **felhasználók**
 ![Naplók](./media/active-directory-reporting-activity-audit-logs/25.png "Naplók")
 
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
-Lásd az [Azure Active Directory Reporting-útmutatót](active-directory-reporting-guide.md).
+## <a name="next-steps"></a>Következő lépések
+
+A jelentéskészítés áttekintéséért lásd: [Jelentéskészítés az Azure Active Directoryban](active-directory-reporting-azure-portal.md).
 
 

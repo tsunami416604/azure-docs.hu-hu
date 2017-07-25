@@ -13,24 +13,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/06/2017
+ms.date: 07/17/2017
 ms.author: guybo
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 1c9487be5415d05a8699f458259d872591280d3d
+ms.sourcegitcommit: cddb80997d29267db6873373e0a8609d54dd1576
+ms.openlocfilehash: a8520c6d8962cc362fc935f6b515a299c0ce75b3
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 07/18/2017
 
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
 
 Ha a Portalon keresztül helyez üzembe virtuálisgép-méretezési csoportot, bizonyos hálózati tulajdonságok esetében alapértelmezett értékeket használ a rendszer (például Azure Load Balancer bejövő NAT-szabályokkal). Ez a cikk azt ismerteti, hogyan használhatja a méretezési csoportokkal konfigurálható speciális hálózatkezelési szolgáltatásokat.
 
-Az ebben a cikkben ismertetett összes szolgáltatás konfigurálható az Azure Resource Manager-sablonok használatával. Egyes szolgáltatások esetében az Azure parancssori felülethez (CLI) is találhat példákat. Használja a parancssori felület 2017. júliusi vagy újabb verzióját. A cikk hamarosan további CLI- és PowerShell-példákkal bővül majd.
+Az ebben a cikkben ismertetett összes szolgáltatás konfigurálható az Azure Resource Manager-sablonok használatával. Egyes szolgáltatások esetében az Azure CLI-hez és PowerShellhez is találhat példákat. Használja a parancssori felület 2.10-es vagy újabb, illetve a PowerShell 4.2.0-s vagy újabb verzióját.
 
 ## <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
-Az Azure [Gyorsított hálózatkezelés](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-vm-accelerated-networking) javítja a hálózati teljesítményt azáltal, hogy engedélyezi az egygyökerű I/O-virtualizálás (SR-IOV) szolgáltatást a virtuális gépekre. Ha a gyorsított hálózatkezelést méretezési csoportokkal szeretné használni, állítsa az enableAcceleratedNetworking tulajdonságot _true_ értékre a méretezési csoport networkInterfaceConfigurations beállításaiban. Példa:
+Az Azure [Gyorsított hálózatkezelés](../virtual-network/virtual-network-create-vm-accelerated-networking.md) javítja a hálózati teljesítményt azáltal, hogy engedélyezi az egygyökerű I/O-virtualizálás (SR-IOV) szolgáltatást a virtuális gépekre. Ha a gyorsított hálózatkezelést méretezési csoportokkal szeretné használni, állítsa az enableAcceleratedNetworking tulajdonságot **true** értékre a méretezési csoport networkInterfaceConfigurations beállításaiban. Példa:
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -59,9 +58,9 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 
 ## <a name="configurable-dns-settings"></a>Konfigurálható DNS-beállítások
 Alapértelmezés szerint a méretezési csoportok azon virtuális hálózat és alhálózat DNS-beállításait használják, ahol létrehozták őket. A méretezési csoportok DNS-beállításait azonban közvetlenül is konfigurálhatja.
-
+~
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Konfigurálható DNS-kiszolgálókkal rendelkező méretezési csoport létrehozása
-Ha egyéni DNS-konfigurációval rendelkező méretezési csoportot szeretne létrehozni a CLI 2.0 használatával, adja hozzá a --dns-servers argumentumot a _vmss create_ parancshoz, majd ezek után adja meg a kiszolgálók IP-címeit szóközökkel elválasztva. Példa:
+Ha egyéni DNS-konfigurációval rendelkező méretezési csoportot szeretne létrehozni a CLI 2.0 használatával, adja hozzá a **--dns-servers** argumentumot a **vmss create** parancshoz, majd adja meg a kiszolgálók IP-címeit szóközökkel elválasztva. Példa:
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
@@ -73,9 +72,9 @@ Ha egyéni DNS-kiszolgálókat szeretne konfigurálni egy Azure-sablonban, adja 
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Konfigurálható virtuálisgép-tartománynevekkel rendelkező méretezési csoport létrehozása
-Ha olyan méretezési csoportot szeretne létrehozni a CLI 2.0 használatával, amelyben a virtuális gépek egyéni DNS-névvel rendelkeznek, adja hozzá a _--vm-domain-name_ argumentumot a _vmss create_ parancshoz, majd ezek után adja meg a tartománynév karakterláncát.
+Ha olyan méretezési csoportot szeretne létrehozni a CLI 2.0 használatával, amelyben a virtuális gépek egyéni DNS-névvel rendelkeznek, adja hozzá a **--vm-domain-name** argumentumot a **vmss create** parancshoz, majd ezek után adja meg a tartománynév karakterláncát.
 
-Ha egyéni tartománynevet szeretne konfigurálni egy Azure-sablonban, adja hozzá a dnsSettings tulajdonságot a méretezési csoport networkInterfaceConfigurations szakaszához. Példa:
+Ha egyéni tartománynevet szeretne konfigurálni egy Azure-sablonban, adja hozzá a **dnsSettings** tulajdonságot a méretezési csoport **networkInterfaceConfigurations** szakaszához. Példa:
 
 ```json
 "networkProfile": {
@@ -109,84 +108,7 @@ Ha egyéni tartománynevet szeretne konfigurálni egy Azure-sablonban, adja hozz
 
 A virtuális gépek egyéni DNS-nevének kimenete az alábbi módon kell, hogy kinézzen: 
 ```
-<vmname><vmindex>.<specifiedVmssDomainNameLabel>
-```
-
-## <a name="ipv6-preview-for-public-ips-and-load-balancer-pools"></a>Az IPv6 előnézeti verziója nyilvános IP-címek és Load Balancer-készletek esetében
-Az Azure Load Balanceren konfigurálhat IPv6 típusú nyilvános IP-címeket, és átirányíthatja a kapcsolatokat a virtuálisgép-méretezési csoport háttérkészleteibe. A jelenleg előnézeti verzióban elérhető IPv6 használatához először hozzon létre egy IPv6 nyilvánoscím-erőforrást. Példa:
-```json
-{
-    "apiVersion": "2016-03-30",
-    "type": "Microsoft.Network/publicIPAddresses",
-    "name": "[parameters('ipv6PublicIPAddressName')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "publicIPAddressVersion": "IPv6",
-        "publicIPAllocationMethod": "Dynamic",
-        "dnsSettings": {
-            "domainNameLabel": "[parameters('dnsNameforIPv6LbIP')]"
-        }
-    }
-}
-```
-Ezután szükség szerint konfigurálja a terheléselosztó előtérrendszer IP-konfigurációit az IPv4 és az IPv6 esetében:
-
-```json
-"frontendIPConfigurations": [
-    {
-        "name": "LoadBalancerFrontEndIPv6",
-        "properties": {
-            "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('ipv6PublicIPAddressName'))]"
-            }
-        }
-    }
-]
-```
-Definiálja a szükséges háttérkészleteket:
-```json
-"backendAddressPools": [
-    {
-        "name": "BackendPoolIPv4"
-    },
-    {
-        "name": "BackendPoolIPv6"
-    }
-]
-```
-Definiálja az összes terheléselosztási szabályt:
-```json
-{
-    "name": "LBRuleIPv6-46000",
-    "properties": {
-        "frontendIPConfiguration": {
-            "id": "[variables('ipv6FrontEndIPConfigID')]"
-        },
-        "backendAddressPool": {
-            "id": "[variables('ipv6LbBackendPoolID')]"
-        },
-        "protocol": "tcp",
-        "frontendPort": 46000,
-        "backendPort": 60001,
-        "probe": {
-            "id": "[variables('ipv4ipv6lbProbeID')]"
-        }
-    }
-}
-```
-Végül pedig hivatkozzon az IPv6-készletre a méretezési csoport hálózati tulajdonságainak IPConfigurations szakaszában:
-```json
-{
-    "name": "ipv6IPConfig",
-    "properties": {
-        "privateIPAddressVersion": "IPv6",
-        "loadBalancerBackendAddressPools": [
-            {
-                "id": "[variables('ipv6LbBackendPoolID')]"
-            }
-        ]
-    }
-}
+<vm><vmindex>.<specifiedVmssDomainNameLabel>
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Nyilvános IPv4-cím virtuális gépenként
@@ -195,9 +117,9 @@ Az Azure méretezési csoportok virtuális gépeinek általában nincs szükség
 Egyes helyzetek azonban megkövetelik, hogy a méretezési csoport virtuális gépei saját nyilvános IP-címmel rendelkezzenek. Egy ilyen példa a játékok, ahol a konzolnak közvetlen kapcsolatot kell létesítenie egy felhőalapú virtuális géppel, amely elvégzi a játék fizikai világának feldolgozását. Egy másik példa, ha a különböző régiókban található virtuális gépeknek külső kapcsolatokat kell létesítenie egymással egy elosztott adatbázisban.
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Méretezési csoport létrehozása úgy, hogy minden virtuális gép saját IP-címmel rendelkezzen
-Ha olyan méretezési csoportot szeretne létrehozni a CLI 2.0 használatával, amely minden egyes virtuális géphez hozzárendel egy nyilvános IP-címet, adja hozzá a _--public-ip-per-vm_ paramétert a _vmss create_ parancshoz. 
+Ha olyan méretezési csoportot szeretne létrehozni a CLI 2.0 használatával, amely minden egyes virtuális géphez hozzárendel egy nyilvános IP-címet, adja hozzá a **--public-ip-per-vm** paramétert a **vmss create** parancshoz. 
 
-Ha Azure-sablon használatával szeretné ezt megvalósítani, ellenőrizze, hogy a Microsoft.Compute/virtualMachineScaleSets erőforrás legalább 2017-03-30-as verziójú-e, és adja hozzá a _publicIpAddressConfiguration_ JSON-tulajdonságot a méretezési csoport ipConfigurations szakaszához. Példa:
+Ha Azure-sablon használatával szeretné ezt megvalósítani, ellenőrizze, hogy a Microsoft.Compute/virtualMachineScaleSets erőforrás legalább **2017-03-30**-as verziójú-e, és adja hozzá a **publicIpAddressConfiguration** JSON-tulajdonságot a méretezési csoport ipConfigurations szakaszához. Példa:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -210,11 +132,21 @@ Ha Azure-sablon használatával szeretné ezt megvalósítani, ellenőrizze, hog
 Példasablon: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>A méretezési csoportban található virtuális gépek nyilvános IP-címének lekérdezése
-A méretezési csoportok virtuális gépeihez hozzárendelt nyilvános IP-címek listáját az _az vmss list-instance-public-ips_ paranccsal kérheti le a CLI 2.0 használatával.
+A méretezési csoportok virtuális gépeihez hozzárendelt nyilvános IP-címek listáját az **az vmss list-instance-public-ips** paranccsal kérheti le a CLI 2.0 használatával.
 
-A méretezési csoportok virtuális gépeihez hozzárendelt nyilvános IP-címeket az [Azure Erőforrás-kezelő](https://resources.azure.com) használatával, illetve az Azure REST API _2017-03-30-as_ vagy újabb verziójával is lekérdezheti.
+Ha a PowerShell-lel szeretné lekérdezni a méretezési csoportok nyilvános IP-címeinek listáját, használja a _Get-AzureRmPublicIpAddress_ parancsot. Példa:
+```PowerShell
+PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+```
 
-Ha az Erőforrás-kezelő használatával szeretné megtekinteni a méretezési csoportokhoz tartozó nyilvános IP-címeket, tekintse meg a méretezési csoport alatti _publicipaddresses_ szakaszt. Például: https://resources.azure.com/subscriptions/_saját_előfizetési_azonosító_/resourceGroups/_saját_erőforráscsoport_/providers/Microsoft.Compute/virtualMachineScaleSets/_saját_vmss_/publicipaddresses
+A nyilvános IP-címeket úgy is lekérdezheti, ha közvetlenül a nyilvános IP-cím konfigurációjának erőforrás-azonosítójára hivatkozik. Példa:
+```PowerShell
+PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+```
+
+A méretezési csoportok virtuális gépeihez hozzárendelt nyilvános IP-címeket az [Azure Erőforrás-kezelő](https://resources.azure.com) használatával, illetve az Azure REST API **2017-03-30-as** vagy újabb verziójával kérdezheti le.
+
+Ha az Erőforrás-kezelő használatával szeretné megtekinteni a méretezési csoportokhoz tartozó nyilvános IP-címeket, tekintse meg a méretezési csoport alatti **publicipaddresses** szakaszt. Például: https://resources.azure.com/subscriptions/_saját_előfizetési_azonosító_/resourceGroups/_saját_erőforráscsoport_/providers/Microsoft.Compute/virtualMachineScaleSets/_saját_vmss_/publicipaddresses
 
 ```
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30

@@ -3,8 +3,8 @@ title: "Cordova-alkalmazás létrehozása az Azure App Service Mobile Apps szolg
 description: "Az útmutató bevezeti Önt az Azure-alapú mobil-háttéralkalmazások használatával megvalósítható, Apache Cordova keretrendszerben történő fejlesztésbe."
 services: app-service\mobile
 documentationcenter: javascript
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 tags: 
 keywords: "cordova,javascript,mobil,ügyfél"
@@ -14,13 +14,13 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: hero-article
-ms.date: 10/30/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: bf5691dbf4aaae585373de454ad7a0672dd17b84
-ms.openlocfilehash: aab35cdbbc6dc73551ca436985b51e5fe7a50fb6
-ms.lasthandoff: 12/01/2016
-
+ms.date: 07/07/2017
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: 251e36364d0440890dc30dc5267be9f775d95933
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="create-an-apache-cordova-app"></a>Apache Cordova-alkalmazás létrehozása
@@ -34,7 +34,7 @@ Az oktatóanyag végrehajtása feltétele az Azure App Service Mobile Apps szolg
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
-* Számítógép, amelyen fut a [Visual Studio Community 2015] vagy újabb verzió.
+* Számítógép, amelyen fut a [Visual Studio Community 2017] vagy újabb verzió.
 * [Visual Studio Tools for Apache Cordova].
 * [Aktív Azure-fiók](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -74,7 +74,7 @@ További információk az Azure App Service alapjairól.
 
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2015]: http://www.visualstudio.com/
+[Visual Studio Community 2017]: http://www.visualstudio.com/
 [Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [Offline adatok]: app-service-mobile-offline-data-sync.md
 [Hitelesítés]: app-service-mobile-auth.md

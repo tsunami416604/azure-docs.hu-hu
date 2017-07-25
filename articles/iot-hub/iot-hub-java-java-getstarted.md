@@ -16,19 +16,19 @@ ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 7d95ba163712c8a3610839029fe3453bd5c308a8
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: 7f0fbaf5d8e0379fc67ad62ea7c9ab63c6737150
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/19/2017
 
 ---
-# <a name="connect-your-simulated-device-to-your-iot-hub-using-java"></a>A szimulált eszköz csatlakoztatása az IoT Hubhoz Javával
+# <a name="connect-your-device-to-your-iot-hub-using-java"></a>Az eszköz csatlakoztatása az IoT Hubhoz Javával
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 Az oktatóanyag elvégzése után három Java-konzolalkalmazással fog rendelkezni:
 
-* A **create-device-identity** egy eszközidentitást, valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat a szimulált eszközalkalmazáshoz.
-* A **read-d2c-messages** megjeleníti a szimulált eszközalkalmazás által küldött telemetriát.
+* A **create-device-identity** egy eszközidentitást, valamint egy társított biztonsági kulcsot hoz létre, amellyel csatlakozhat az eszközalkalmazáshoz.
+* A **read-d2c-messages** megjeleníti az eszközalkalmazások által küldött telemetriát.
 * A **simulated-device** csatlakozik az IoT Hubhoz a korábban létrehozott eszközidentitással, és az MQTT protokoll használatával másodpercenként telemetriai üzenetet küld.
 
 > [!NOTE]
@@ -93,6 +93,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást fog létrehozni, amely egy új es
     private static final String connectionString = "{yourhubconnectionstring}";
     private static final String deviceId = "myFirstJavaDevice";
     ```
+[!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
 8. Módosítsa úgy a **main** metódus aláírását, hogy tartalmazza az alábbi kivételeket:
 
@@ -302,9 +303,12 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely az eszközről 
     mvn clean package -DskipTests
     ```
 
+<<<<<<< HEAD
+## <a name="create-a-device-app"></a>Eszközalkalmazás létrehozása
+=======
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál.
+>>>>>>> master Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszközről a felhőbe irányuló üzeneteket az IoT Hubnak elküldő eszközt szimulál.
 
 1. Az *Eszközidentitás létrehozása* szakaszban létrehozott iot-java-get-started mappában hozzon létre egy **simulated-device** nevű Maven-projektet a következő parancs beírásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
 
@@ -374,11 +378,19 @@ Ebben a szakaszban egy Java-konzolalkalmazást hoz létre, amely egy, az eszköz
       }
     }
     ```
+<<<<<<< HEAD
+9. Adja hozzá a következő beágyazott **EventCallback** osztályt az **App** osztályon belül az IoT Hub által az eszközalkalmazástól érkező üzenet feldolgozásakor visszaadott nyugtázási állapot megjelenítéséhez. Ez a metódus az alkalmazás fő szálát is értesíti, amikor üzenet fel lett dolgozva:
+   
+    ```
+    private static class EventCallback implements IotHubEventCallback
+    {
+=======
 
-9. Adja hozzá a következő beágyazott **EventCallback** osztályt az **App** osztályon belül az IoT Hub által szimulált eszközalkalmazásról érkező üzenet feldolgozásakor visszaadott nyugtázási állapot megjelenítéséhez. Ez a metódus az alkalmazás fő szálát is értesíti, amikor üzenet fel lett dolgozva:
+9. Add the following nested **EventCallback** class inside the **App** class to display the acknowledgement status that the IoT hub returns when it processes a message from the simulated device app. This method also notifies the main thread in the app when the message has been processed:
 
     ```java
     private static class EventCallback implements IotHubEventCallback {
+>>>>>>> master
       public void execute(IotHubStatusCode status, Object context) {
         System.out.println("IoT Hub responded to message with status: " + status.name());
    
@@ -488,8 +500,11 @@ Most már készen áll az alkalmazások futtatására.
     ![Az Azure Portalon az IoT Hubnak küldött üzenetek számát megjelenítő Használat csempe][43]
 
 ## <a name="next-steps"></a>Következő lépések
+<<<<<<< HEAD Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure Portalon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette az eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön az IoT Hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti az IoT Hub által fogadott üzeneteket. 
+=======
 
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Ennek az eszközidentitásnak a segítségével lehetővé tette a szimulált eszközalkalmazásnak, hogy az eszközről a felhőbe irányuló üzeneteket küldjön az IoT Hubnak. Emellett létrehozott egy alkalmazást, amely megjeleníti az IoT Hub által fogadott üzeneteket.
+>>>>>>> master
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

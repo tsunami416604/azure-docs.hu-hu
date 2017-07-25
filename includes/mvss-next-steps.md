@@ -1,9 +1,11 @@
-You can deploy the preceding template by following the [Azure Resource Manager documentation](../articles/azure-resource-manager/resource-group-template-deploy.md).
+Az előző sablon üzembe helyezéséhez kövesse az [Azure Resource Manager dokumentációjában](../articles/azure-resource-manager/resource-group-template-deploy.md) leírtakat.
 
-You can start this tutorial series from the [minimum viable scale set template article](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md).
+Ezt az oktatóanyag-sorozatot a [minimális működőképes méretezési csoport sablonját ismertető cikktől](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) kezdheti el.
 
-You can see how to modify the [minimum viable scale set template](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) to [deploy the scale set into an existing virtual network](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md).
+Itt megtekintheti, hogyan módosíthatja a [minimális működőképes méretezési csoport sablonját](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) a [méretezési csoport meglévő virtuális hálózaton történő üzembe helyezéséhez](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md).
 
-You can see how to modify the [minimum viable scale set template](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) to [deploy the scale set with a custom image](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md).
+Itt megtekintheti, hogyan módosíthatja a [minimális működőképes méretezési csoport sablonját](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) a [méretezési csoport egyéni rendszerképpel történő üzembe helyezéséhez](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md).
 
-For more general information about scale sets, refer to the [scale set overview page](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
+Itt megtekintheti, hogyan módosíthatja a [minimális működőképes méretezési csoport sablonját](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) a [linuxos méretezési csoportok vendégalapú automatikus skálázással történő üzembe helyezéséhez](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md).
+
+Általánosabb információk a méretezési csoportokról: [méretezési csoportok áttekintése oldal](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).

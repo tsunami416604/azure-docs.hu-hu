@@ -16,17 +16,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: rachelap, glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 2d539dd51834e935f9c5f7a6be42011ffe9e0870
+ms.translationtype: HT
+ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
+ms.openlocfilehash: be7a9979ba7e6aa26c60b24bcc892ca35af3c1fc
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/19/2017
 
 ---
-# <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával 
+# <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
-Az Azure Functions lehetővé teszi a kód végrehajtását kiszolgáló nélküli környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást. 
+Az Azure Functions lehetővé teszi a kód végrehajtását kiszolgáló nélküli környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást.
+
+> [!IMPORTANT]
+> Ez a témakör a Visual Studio előzetes verzióját használja a lépések végrehajtásához. A folytatás előtt ellenőrizze, hogy telepítette-e a [Visual Studio 2017 15.3-as előzetes verzióját](https://www.visualstudio.com/vs/preview/).
 
 Ebben a témakörben megtudhatja, hogy az Azure Functions Tools for Visual Studio 2017 használatával miként hozhat létre és tesztelhet helyileg egy „Helló világ!”-függvényt. Ezután közzéteheti a függvénykódot az Azure-ban.
 
@@ -37,7 +39,7 @@ Ebben a témakörben megtudhatja, hogy az Azure Functions Tools for Visual Studi
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * A [Visual Studio 2017 Preview 15.3-as verziója](https://www.visualstudio.com/vs/preview/), amely tartalmazza az **Azure-fejlesztési** számítási feladatot is.
-    
+
     ![Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017 telepítése](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
