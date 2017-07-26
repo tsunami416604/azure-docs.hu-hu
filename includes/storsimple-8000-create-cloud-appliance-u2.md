@@ -5,7 +5,7 @@
     ![StorSimple felhőalapú berendezés létrehozása](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. A **Felhőalapú berendezés létrehozása** párbeszédpanelen adja meg a következő adatokat.
    
-    ![StorSimple felhőalapú berendezés létrehozása](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2.png)
+    ![StorSimple felhőalapú berendezés létrehozása](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **Név** – A felhőalapú berendezés egyedi neve.
    2. **Modell** – Válassza ki a felhőalapú berendezés modelljét. A 8010-es eszköz 30 TB Standard szintű, a 8020-as pedig 64 TB Prémium szintű tárhelyet biztosít. Ha biztonsági mentésekből szeretne elemszintű lekérési forgatókönyveket telepíteni, a 8010-es modellt adja meg. A 8020-as modellel nagy teljesítményű, alacsony késleltetésű munkaterheléseket telepíthet, vagy használhatja vészhelyreállítási másodlagos eszközként.
