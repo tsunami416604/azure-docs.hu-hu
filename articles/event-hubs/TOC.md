@@ -56,7 +56,7 @@
 ## [Kvóták](event-hubs-quotas.md)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [Kódminták](event-hubs-samples.md)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/)

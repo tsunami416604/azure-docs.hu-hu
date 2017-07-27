@@ -384,7 +384,7 @@
 
 # Erőforrások
 ## [Azure visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory)
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory)

@@ -128,7 +128,7 @@
 ## [REST](/rest/api/resources/)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Kérelmek szabályozása](resource-manager-request-limits.md)

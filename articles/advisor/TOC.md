@@ -21,4 +21,4 @@
 
 # Erőforrások
 ## [Azure Advisor videók](https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor)
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)

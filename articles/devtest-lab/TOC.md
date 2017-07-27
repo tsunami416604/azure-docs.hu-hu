@@ -67,3 +67,7 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/devtest-lab/)
+
+
+# Erőforrások
+## [Azure-ütemterv](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)

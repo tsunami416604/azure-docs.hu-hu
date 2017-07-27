@@ -81,7 +81,8 @@
 ### [Hozzáférés alkalmazáshoz](../../virtual-machines-windows-troubleshoot-app-connection.md)
 ### [Klasszikus üzembe helyezési hibák új virtuális gép létrehozásakor](troubleshoot-deployment-new-vm.md)
 ### [Klasszikus üzembe helyezési hibák meglévő virtuális gép újraindításakor vagy átméretezésekor](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-## [RDP-jelszó visszaállítása](reset-rdp.md)
+### [RDP-jelszó visszaállítása](reset-rdp.md)
+### [Virtuális merevlemez csatlakoztatása a hibaelhárító virtuális géphez](troubleshoot-recovery-disks-portal.md)
 
 # Referencia
 ## [PowerShell](/powershell/azure/overview)
@@ -95,7 +96,7 @@
 ## [Tárolási REST](/rest/api/storageservices)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

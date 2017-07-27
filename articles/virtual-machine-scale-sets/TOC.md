@@ -52,7 +52,7 @@
 ## [REST](/rest/api/virtualmachinescalesets/)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 ## Díjszabás 
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)

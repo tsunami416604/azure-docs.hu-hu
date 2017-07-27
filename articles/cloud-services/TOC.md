@@ -112,7 +112,7 @@
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/cloud-services/)

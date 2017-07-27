@@ -27,7 +27,7 @@
 ## [Portbeállítások](relay-port-settings.md)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/service-bus/)
 ## [Példák](https://github.com/azure/azure-relay/tree/master/samples)

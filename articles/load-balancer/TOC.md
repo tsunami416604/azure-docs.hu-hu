@@ -67,6 +67,6 @@
 ## [DNS](/azure/dns/)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/load-balancer/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=load-balancer)

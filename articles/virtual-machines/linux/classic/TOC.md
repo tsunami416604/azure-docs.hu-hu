@@ -66,6 +66,7 @@
 ## Hibaelhárítás
 ### [Virtuális gépek üzembe helyezése](troubleshoot-deployment-new-vm.md)
 ### [Virtuális gép újraindítása vagy átméretezése](restart-resize-error-troubleshooting.md)
+### [Virtuális merevlemez csatlakoztatása a hibaelhárító virtuális géphez](troubleshoot-recovery-disks-portal.md)
 
 # Referencia
 ## [PowerShell](/powershell/azure/overview)
@@ -79,7 +80,7 @@
 
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

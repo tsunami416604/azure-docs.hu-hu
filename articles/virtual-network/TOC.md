@@ -158,7 +158,7 @@
 ## [ExpressRoute](/azure/expressroute/)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
 ## [Hálózatkezelési fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-network)

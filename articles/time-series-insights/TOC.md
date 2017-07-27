@@ -28,5 +28,5 @@
 ## [Azure Stream Analytics](/azure/stream-analytics/)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/time-series-insights/)

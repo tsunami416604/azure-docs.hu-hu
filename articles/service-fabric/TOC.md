@@ -16,7 +16,8 @@
 ### [2. .NET-alkalmazás üzembe helyezése a Docker Compose használatával](service-fabric-host-app-in-a-container.md)
 
 # Példák
-## [PowerShell](service-fabric-powershell-samples.md) 
+## [PowerShell](service-fabric-powershell-samples.md)
+## [Azure CLI](samples-cli.md)
 # Alapelvek
 ## [A mikroszolgáltatások ismertetése](service-fabric-overview-microservices.md)
 ## [Nagyméretű kép](service-fabric-content-roadmap.md)

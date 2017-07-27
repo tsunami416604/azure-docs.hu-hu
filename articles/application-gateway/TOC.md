@@ -67,7 +67,7 @@
 ## [Terheléselosztó](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/application-gateway/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=application-gateway)

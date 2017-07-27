@@ -33,7 +33,7 @@
 
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 ## [JavaScript Git-tárház](https://github.com/Microsoft/PowerBI-JavaScript)
 ## [Power BI C# Git-tárház](https://github.com/Microsoft/PowerBI-CSharp)

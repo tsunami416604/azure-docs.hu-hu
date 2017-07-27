@@ -19,12 +19,15 @@
 ## Kapcsolatcsoport létrehozása és módosítása
 ### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-circuit-arm.md)
+### [Azure CLI](howto-circuit-cli.md)
 ## Társhálózati konfiguráció létrehozása és módosítása
 ### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
+### [Azure CLI](howto-routing-cli.md)
 ## Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
 ### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
+### [Azure CLI](howto-linkvnet-cli.md)
 ## Az ExpressRoute virtuális hálózati átjáróinak konfigurálása
 ### [Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -60,7 +63,7 @@
 ## [Traffic Manager](/azure/traffic-manager/)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Esettanulmányok](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [Hálózatkezelési blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/expressroute/)

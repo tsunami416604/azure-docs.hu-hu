@@ -89,7 +89,7 @@
 
 # Erőforrások
 ## [Azure AD B2C visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Gyakori kérdések](active-directory-b2c-faqs.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-b2c)

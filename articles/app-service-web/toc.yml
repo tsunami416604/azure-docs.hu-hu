@@ -48,16 +48,13 @@
 - name: Alapelvek
   items:
     - name: Az App Service működése
-      href: >-
-        ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/app-service-how-works-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: App Service-csomagok
-      href: >-
-        ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: App Service-környezet
       href: ../app-service/app-service-environment/intro.md
     - name: Hitelesítés és engedélyezés
-      href: >-
-        ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+      href: ../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: Hitelesítés helyszíni AD-vel
       href: web-sites-authentication-authorization.md
 - name: Útmutatók
@@ -161,8 +158,6 @@
               href: custom-dns-web-site-buydomains-web-app.md
             - name: Tartományok leképezése a Traffic Managerrel
               href: web-sites-traffic-manager-custom-domain-name.md
-            - name: GoDaddy-tartományok leképezése
-              href: web-sites-godaddy-custom-domain-name.md
             - name: Aktív tartomány migrálása
               href: app-service-custom-domain-name-migrate.md
         - name: Áttelepítés IIS-ből
@@ -186,20 +181,15 @@
         - name: Felhasználók hitelesítése
           items:
             - name: Hitelesítés az Azure AD-vel
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Hitelesítés a Facebookkal
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Hitelesítés a Google-lel
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Hitelesítés Microsoft-fiókkal
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Hitelesítés a Twitterrel
-              href: >-
-                ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+              href: ../app-service-mobile/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service-web%2ftoc.json
             - name: Hitelesítés helyszíni AD-vel
               href: web-sites-authentication-authorization.md
             - name: Alkalmazás több-bérlős adatbázissal
@@ -213,20 +203,17 @@
         - name: Vertikális felskálázás
           href: web-sites-scale.md
         - name: Horizontális felskálázás
-          href: >-
-            ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: Terheléselosztás a Traffic Managerrel
           href: web-sites-traffic-manager.md
         - name: Nagy léptékű méretezés App Service Environment-környezetekkel
-          href: >-
-            ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: Globális elérhetőség az Azure CDN használatával
           href: cdn-websites-with-cdn.md
         - name: Redis Cache-csatlakozás a Memcache-en keresztül
           href: web-sites-connect-to-redis-using-memcache-protocol.md
         - name: Redis Cache létrehozása
-          href: >-
-            ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: Munkamenetállapot-kezelés az Azure Redis Cache használatával
           href: web-sites-dotnet-session-state-caching.md
     - name: Figyelés
@@ -260,8 +247,7 @@
     - name: Integrálás
       items:
         - name: Exportálás a PowerAppsbe és a Microsoft Flow-ba
-          href: >-
-            ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-web%2ftoc.json
+          href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-web%2ftoc.json
     - name: App Service-környezet
       items:
         - name: App Service-környezet használata
@@ -308,11 +294,8 @@
           href: app-service-web-troubleshoot-performance-degradation.md
         - name: GYIK
           items:
-            - name: >-
-                Rendelkezésre állással, teljesítménnyel és alkalmazásokkal
-                kapcsolatos gyakori kérdések
-              href: >-
-                app-service-web-availability-performance-application-issues-faq.md
+            - name: 'Rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos gyakori kérdések'
+              href: app-service-web-availability-performance-application-issues-faq.md
             - name: Üzembe helyezéssel kapcsolatos gyakori kérdések
               href: app-service-web-deployment-faq.md
             - name: Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések
@@ -340,11 +323,9 @@
         - name: Bejövő forgalom szabályozása
           href: app-service-app-service-environment-control-inbound-traffic.md
         - name: Biztonságos csatlakozás a háttérerőforrásokhoz
-          href: >-
-            app-service-app-service-environment-securely-connecting-to-backend-resources.md
+          href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: Hálózati konfiguráció részletei az ExpressRoute-tal
-          href: >-
-            app-service-app-service-environment-network-configuration-expressroute.md
+          href: app-service-app-service-environment-network-configuration-expressroute.md
         - name: Automatikus méretezés App Service-környezetben
           href: ../app-service/app-service-environment-auto-scale.md
     - name: Díjszabás

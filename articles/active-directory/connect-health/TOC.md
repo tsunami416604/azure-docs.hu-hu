@@ -20,6 +20,6 @@
 ## [Hibrid identitáskezelés – kialakítási útmutató](../active-directory-hybrid-identity-design-considerations-overview.md)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
 

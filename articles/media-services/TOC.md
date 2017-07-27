@@ -222,7 +222,7 @@
 
 # Erőforrások
 ## [Azure Media Services-közösség](media-services-community.md)
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Kibocsátási megjegyzések](media-services-release-notes.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)

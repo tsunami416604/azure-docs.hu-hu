@@ -42,6 +42,7 @@
 #### [Tárolók](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Key Vault-elemzés](../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Hálózati teljesítményfigyelő](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric-elemzés](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Szolgáltatástérkép
 ##### [Útmutatás](operations-management-suite-walkthrough-servicemap.md)

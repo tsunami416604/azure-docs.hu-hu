@@ -66,7 +66,7 @@
 ## [SQLRuleAction szintaxis](service-bus-messaging-sql-rule-action.md)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [A Microsoft Developer Network fórumai](https://social.msdn.microsoft.com/forums/home?forum=servbus)
 ## [Díjszabás részletei](service-bus-pricing-billing.md)

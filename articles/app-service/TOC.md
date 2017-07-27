@@ -75,7 +75,6 @@
 ### Egyéni tartományok
 #### [Egyéni tartományok vásárlása és konfigurálása](../app-service-web/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [Saját egyéni tartomány leképezése](../app-service-web/web-sites-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
-#### [GoDaddy-tartományok konfigurálása](../app-service-web/web-sites-godaddy-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
 #### [Egyéni tartományok létrehozása a Traffic Managerrel](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
 ### [Meglévő alkalmazás klónozása](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)

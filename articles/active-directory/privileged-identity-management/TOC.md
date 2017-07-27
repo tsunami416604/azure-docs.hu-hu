@@ -27,4 +27,4 @@
 ## [Azure Active Directory](/azure/active-directory/)
 ## [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control-what-is.md)
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)

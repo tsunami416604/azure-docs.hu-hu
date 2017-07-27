@@ -25,7 +25,7 @@
 ## [REST](/rest/api/scheduler)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=scheduler)
