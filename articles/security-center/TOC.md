@@ -72,7 +72,7 @@
 ## [Azure Security](/azure/security/)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure biztonsági, adatvédelmi és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)
 ## [Díjszabás](security-center-pricing.md)
 ## [Szolgáltatás áttekintése](https://azure.microsoft.com/services/security-center/)
