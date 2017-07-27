@@ -18,10 +18,10 @@ ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: ba82a5e25750fc6d9bd047ace3abb087e5dedfb3
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 4eb32dd18c57af8d46e7afb63047c0985458705d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>A privát Docker-tárolójegyzékek bemutatása
@@ -72,6 +72,6 @@ A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a t�
 * [Tároló-beállításjegyzék létrehozása az Azure Portalon](container-registry-get-started-portal.md)
 * [Tároló beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)
 * [Az első rendszerkép leküldése a Docker parancssori felületével](container-registry-get-started-docker-cli.md)
-* Egy folyamatos integrációt és üzembe helyezést megvalósító munkafolyamat a Visual Studio Team Services, az Azure Container Service és az Azure Container Registry használatával történő kiépítéséhez lásd [ezt az oktatóanyagot](../container-service/container-service-docker-swarm-setup-ci-cd.md).
+* Egy folyamatos integrációt és üzembe helyezést megvalósító munkafolyamat a Visual Studio Team Services, az Azure Container Service és az Azure Container Registry használatával történő kiépítéséhez lásd [ezt az oktatóanyagot](../container-service/dcos-swarm/container-service-docker-swarm-setup-ci-cd.md).
 * Ha privát Docker-beállításjegyzéket szeretne beállítani az Azure-ban (nyilvános végpont nélkül), tekintse meg [a saját privát Docker-beállításjegyzék Azure-beli üzembe helyezésével kapcsolatos](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md) cikket.
 
