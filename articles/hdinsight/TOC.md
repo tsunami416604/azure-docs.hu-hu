@@ -13,7 +13,12 @@
 
 # Első lépések
 ## [Első lépések a Hadoopban](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [Első lépések a Sparkban](hdinsight-apache-spark-jupyter-spark-sql.md)
+## Első lépések a Sparkban
+### [Spark-fürt létrehozása](hdinsight-apache-spark-jupyter-spark-sql.md)
+### [Lekérdezések futtatása Spark-fürtön](hdinsight-apache-spark-load-data-run-query.md)
+### [Adatok elemzése BI-eszközökkel](hdinsight-apache-spark-use-bi-tools.md)
+### [Fürterőforrások kezelése](hdinsight-apache-spark-resource-manager.md)
+### [Hibakeresés Spark-feladatokban](hdinsight-apache-spark-job-debugging.md)
 ## [Első lépések az R Serverben](hdinsight-hadoop-r-server-get-started.md)
 ## [Első lépések a HBase-ben és a NoSQL-ben](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Első lépések a Stormban](hdinsight-apache-storm-tutorial-get-started-linux.md)
@@ -59,7 +64,6 @@
 ### [ScaleR és SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## A Spark használata memórián belüli feldolgozáshoz
 ### [A Data Lake Store adattárral](hdinsight-apache-spark-use-with-data-lake-store.md)
-### [BI-eszközökkel](hdinsight-apache-spark-use-bi-tools.md)
 ### [Önálló alkalmazás létrehozása](hdinsight-apache-spark-create-standalone-application.md)
 ### [Alkalmazások létrehozása az Eclipse-szel](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [Alkalmazások létrehozása az IntelliJ-vel](hdinsight-apache-spark-intellij-tool-plugin.md)
@@ -76,8 +80,6 @@
 ### [Helyi Jupyter notebook használata](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md)
 ### [Feladatok távoli hibakeresése az IntelliJ-vel VPN-en keresztül](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-### [Erőforrások kezelése](hdinsight-apache-spark-resource-manager.md)
-### [Feladatok nyomon követése és hibakeresése](hdinsight-apache-spark-job-debugging.md)
 ### [Ismert problémák](hdinsight-apache-spark-known-issues.md)
 ## A HBase használata
 ### [A Phoenix és az SQLLine használata](hdinsight-hbase-phoenix-squirrel-linux.md)
@@ -234,7 +236,7 @@
 ### [Fürtök figyelése az Ambari API-val](hdinsight-monitor-use-ambari-api.md)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Segítség kérése a fórumokon](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 ## [Microsoft Professional Program big data-megoldásokhoz](https://academy.microsoft.com/en-us/professional-program/big-data/)

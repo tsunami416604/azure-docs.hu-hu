@@ -135,9 +135,7 @@
 #### [Metrikák engedélyezése és megtekintése](storage-enable-and-view-metrics.md)
 #### [Figyelés, diagnosztika és hibaelhárítás](storage-monitoring-diagnosing-troubleshooting.md)
 #### [Oktatóanyag a hibaelhárításhoz](storage-e2e-troubleshooting.md)
-### Lemeztörlési hibák elhárítása
-#### [Egy Azure Resource Manager-alapú üzemelő példányon](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
-#### [Egy klasszikus üzemelő példányon](storage-cannot-delete-storage-account-container-vhd.md)
+### [Lemeztörlési hibák elhárítása](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
 ### [A File Storage hibaelhárítása](storage-troubleshoot-file-connection-problems.md)
 ## Adatátvitel
 ### [Adatok áthelyezése a Storage-ba és a Storage-ból](storage-moving-data.md)
@@ -208,7 +206,7 @@
 ### [Oktatóanyag a hibaelhárításhoz](storage-e2e-troubleshooting-classic-portal.md)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=storage)
 ## [Azure Storage-ügyféleszközök](storage-explorers.md)
 ## [Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/)

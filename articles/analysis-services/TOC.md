@@ -1,14 +1,10 @@
 # Áttekintés
 ## [Mi az Azure Analysis Services?](analysis-services-overview.md)
 ## [Támogatott adatforrások](analysis-services-datasource.md)
-## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
 
 # Gyors útmutatók
 ## [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md)
 ## [Modell üzembe helyezése – SSDT](analysis-services-deploy.md)
-
-# Példák
-## [Analysis Services-példák a GitHubon](https://github.com/Microsoft/Analysis-Services)
 
 # oktatóanyagokat
 ## Modell létrehozása és üzembe helyezése
@@ -30,16 +26,20 @@
 ### [Kiegészítő lecke – Dinamikus biztonság](tutorials/aas-supplemental-lesson-dynamic-security.md)
 ### [Kiegészítő lecke – Hézagos hierarchiák](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)
 
+# Alapelvek
+## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
+## [Magas rendelkezésre állás](analysis-services-bcdr.md)
+
 # Használati útmutató 
+## [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
 ## [Kiszolgáló kezelése](analysis-services-manage.md)
 ## [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
 ## [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
-## [A helyszíni adatátjáró integrálása](analysis-services-gateway.md)
+## [Helyszíni adatátjáró telepítése](analysis-services-gateway.md)
 ## [Kapcsolódás Excellel](analysis-services-connect-excel.md)
 ## [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
 ## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
-## [Magas rendelkezésre állás](analysis-services-bcdr.md)
 ## [.odc fájl létrehozása](analysis-services-odc.md)
 
 # Referencia
@@ -50,9 +50,10 @@
 ## [Táblázatos modell parancsnyelve (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # Erőforrások
+## [Analysis Services-kódminták a GitHubon](https://github.com/Microsoft/Analysis-Services)
 ## [Analysis Services csapatblog](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Azure állapota](https://azure.microsoft.com/status/)
 ## [Visszajelzés](https://feedback.azure.com/forums/556165-azure-analysis-services)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/analysis-services/)

@@ -60,6 +60,7 @@
 ### [Forráskezelés integrálása a GitHub Enterprise-zal](automation-scenario-source-control-integration-with-github-ent.md)
 ### [Forráskezelés integrálása a VSTS-sel](automation-scenario-source-control-integration-with-VSTS.md)
 ### [Azure Automation-runbook hívása Log Analytics-riasztásból](automation-invoke-runbook-from-omsla-alert.md)
+### [Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban](automation-deploy-template-runbook.md)
 ## Megoldások
 ### [Változáskövetés](../log-analytics/log-analytics-change-tracking.md)
 ### [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md)
@@ -82,7 +83,7 @@
 # Erőforrások
 ## [Automation bevezető videója](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 ## [Azure Automation-képzés](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/automation/)  

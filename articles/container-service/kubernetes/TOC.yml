@@ -1,0 +1,89 @@
+- name: ACS és Kubernetes együttes használata
+  href: ./index.yml
+- name: Áttekintés
+  items:
+    - name: A Container Service ismertetése
+      href: container-service-intro-kubernetes.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Kubernetes Linux
+      href: container-service-kubernetes-walkthrough.md
+- name: oktatóanyagokat
+  items:
+    - name: 1 – Tárolórendszerképek létrehozása
+      href: container-service-tutorial-kubernetes-prepare-app.md
+    - name: 2 – Tárolóregisztrációs adatbázis létrehozása
+      href: container-service-tutorial-kubernetes-prepare-acr.md
+    - name: 3 – Kubernetes-fürt létrehozása
+      href: container-service-tutorial-kubernetes-deploy-cluster.md
+    - name: 4 – Alkalmazás futtatása
+      href: container-service-tutorial-kubernetes-deploy-application.md
+    - name: 5 – Alkalmazás skálázása
+      href: container-service-tutorial-kubernetes-scale.md
+    - name: 6 – Alkalmazás frissítése
+      href: container-service-tutorial-kubernetes-app-update.md
+    - name: 7 – Monitorozás az OMS-szel
+      href: container-service-tutorial-kubernetes-monitor.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+- name: Alapelvek
+  items:
+    - name: Biztonságos tárolók
+      href: container-service-security.md
+    - name: Szolgáltatásnév – Kubernetes
+      href: container-service-kubernetes-service-principal.md
+- name: Útmutatók
+  items:
+    - name: Kubernetes Windows gyorsindítással
+      href: container-service-kubernetes-windows-walkthrough.md
+    - name: Tárolókezelés – Kubernetes felhasználói felület
+      href: container-service-kubernetes-ui.md
+    - name: Helm-diagramok központi telepítése
+      href: container-service-kubernetes-helm.md
+    - name: CI/CD – Kubernetes és Jenkins
+      href: container-service-kubernetes-jenkins.md
+    - name: Vázlat használata ACR-rel és ACS-szel
+      href: container-service-draft-up.md
+    - name: Kapcsolódás ACS-fürthöz
+      href: container-service-connect.md
+    - name: ACS-fürt méretezése
+      href: container-service-scale.md
+    - name: Figyelés
+      items:
+        - name: Monitorozás a Datadoggal
+          href: container-service-kubernetes-datadog.md
+        - name: Monitorozás a Sysdiggel
+          href: container-service-kubernetes-sysdig.md
+        - name: Monitorozás CoScale-lel
+          href: container-service-kubernetes-coscale.md
+    - name: Spring Boot-alkalmazások üzembe helyezése
+      items:
+        - name: Spring Boot-alkalmazás üzembe helyezése Linux rendszeren az Azure Container Service-ben
+          href: container-service-deploy-spring-boot-app-on-linux.md
+        - name: Spring Boot-alkalmazás üzembe helyezése Kubernetes-fürtön az Azure Container Service-ben
+          href: container-service-deploy-spring-boot-app-on-kubernetes.md
+- name: Referencia
+  items:
+    - name: Azure CLI 2.0
+      href: /cli/azure/acs
+    - name: REST
+      href: /rest/api/compute/containerservices
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: GYIK
+      href: container-service-faq.md
+    - name: Sablonok – ACS Engine
+      href: 'https://github.com/Azure/acs-engine'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

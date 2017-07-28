@@ -40,6 +40,7 @@
 ## [DNS-zónák és -rekordok védelme](dns-protect-zones-recordsets.md)
 ## [DNS-műveletek automatizálása a .NET SDK használatával](dns-sdk.md)
 
+## [Az Azure DNS integrálása Azure-erőforrásokkal](dns-custom-domain.md)
 ## Hibaelhárítás
 ### [Hibaelhárítási útmutató](dns-troubleshoot.md)
 
@@ -62,7 +63,7 @@
 ## [Webalkalmazások](/azure/app-service-web/)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Funkciókérések](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)

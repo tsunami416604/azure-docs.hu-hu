@@ -18,6 +18,7 @@
 ### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
 ### [Node.js](data-lake-analytics-manage-use-nodejs.md)
 ### [Diagnosztikai naplók elérése](data-lake-analytics-diagnostic-logs.md)
+### [A kvótakorlátok beállítása](data-lake-analytics-quota-limits.md)
 
 ## U-SQL-programok fejlesztése
 ### [Az U-SQL alapjai](data-lake-analytics-u-sql-get-started.md)
@@ -48,7 +49,7 @@
 
 # Erőforrások
 ## [Azure Data Lake blog](https://blogs.msdn.microsoft.com/azuredatalake/)
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-analytics/)

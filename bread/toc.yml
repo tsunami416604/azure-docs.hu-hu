@@ -122,9 +122,7 @@
         - name: Arcfelismerés
           tocHref: /azure/cognitive-services/face/
           topicHref: /azure/cognitive-services/face/
-        - name: >-
-            Language Understanding Intelligent Service (LUIS, intelligens
-            hangfelismerési szolgáltatás)
+        - name: 'Language Understanding Intelligent Service (LUIS, intelligens hangfelismerési szolgáltatás)'
           tocHref: /azure/cognitive-services/LUIS/
           topicHref: /azure/cognitive-services/LUIS/
         - name: Videóindexelő
@@ -133,9 +131,19 @@
     - name: Összekötők
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
+    - name: Tárolópéldányok
+      tocHref: /azure/container-instances/
+      topicHref: /azure/container-instances/
     - name: Container Service
       tocHref: /azure/container-service/
       topicHref: /azure/container-service/
+      items:
+        - name: DC/OS és Swarm
+          tocHref: /azure/container-service/dcos-swarm/
+          topicHref: /azure/container-service/dcos-swarm/
+        - name: Kubernetes
+          tocHref: /azure/container-service/kubernetes/
+          topicHref: /azure/container-service/kubernetes/
     - name: CosmosDB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/

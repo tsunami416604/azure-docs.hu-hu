@@ -1,5 +1,6 @@
 # [Áttekintés](azure-security.md)
 ## [Hálózati biztonság](security-network-overview.md)
+## [Adatbázis-biztonság](azure-database-security-overview.md)
 ## [Tárbiztonság](security-storage-overview.md)
 ## [Számítási biztonság](security-virtual-machines-overview.md)
 ## [Biztonságkezelés és megfigyelés](security-management-and-monitoring-overview.md)
@@ -12,6 +13,7 @@
 ### [Elkülönítés a nyilvános felhőben](azure-isolation.md)
 ### [Biztonságtechnikai képességek](azure-security-technical-capabilities.md)
 ### [Irányítás az Azure-ban](governance-in-azure.md)
+### [Adattitkosítás inaktív állapotban](azure-security-encryption-atrest.md)
 
 # Első lépések
 ## [Ismerkedés az Azure biztonsági szolgáltatásaival](azure-security-getting-started.md)
@@ -51,6 +53,7 @@
 ## PaaS szolgáltatások
 ### [PaaS-környezetek védelme](security-paas-deployments.md)
 #### [PaaS web- és mobilalkalmazások védelme SQL-lel](security-paas-applications-using-sql.md)
+#### [Ajánlott eljárások az SQL Database-re vonatkozóan](azure-database-security-best-practices.md)
 #### [PaaS web- és mobilalkalmazások védelme az App Services segítségével](security-paas-applications-using-app-services.md)
 
 ## Eszközök internetes hálózata
@@ -73,7 +76,7 @@
 ## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
 # Erőforrások
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Azure biztonsági MVP program](azure-security-mvp.md)
 ## [Kiberbiztonsági tanácsadás](azure-security-cyber-services.md)
 ## [Biztonsági és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)

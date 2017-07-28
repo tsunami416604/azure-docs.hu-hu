@@ -17,7 +17,7 @@
 ### Virtuális gépek biztonsági mentése
 #### [Azure-beli virtuális gépek biztonsági mentése Recovery Services-tárolóba](backup-azure-arm-vms.md)
 #### [Titkosított virtuális gépek biztonsági mentése](backup-azure-vms-encryption.md)
-#### [Azure-beli virtuális gépek biztonsági mentése biztonsági mentési tárolóba](backup-azure-vms.md)
+#### [Azure-beli virtuális gépek biztonsági mentése](backup-azure-vms.md)
 ### Virtuális gépek kezelése és monitorozása
 #### [Azure-beli virtuális gépek biztonsági másolatainak kezelése az Azure Portalon](backup-azure-manage-vms.md)
 #### [Azure-beli virtuális gépek biztonsági másolataival kapcsolatos riasztások figyelése az Azure Portalon](backup-azure-monitor-vms.md)
@@ -57,7 +57,7 @@
 ### [A DPM számítási feladatainak előkészítése az Azure Portalon](backup-azure-dpm-introduction.md)
 ### [A DPM számítási feladatainak előkészítése a klasszikus portálon](backup-azure-dpm-introduction-classic.md)
 ### [A System Center DPM használata Exchange-kiszolgálók biztonsági mentéséhez](backup-azure-backup-exchange-server.md)
-### [A Backup-tárolóban lévő adatok helyreállítása egy másik DPM-kiszolgálóra](backup-azure-alternate-dpm-server.md)
+### [Adatok helyreállítása egy másik DPM-kiszolgálóra](backup-azure-alternate-dpm-server.md)
 ### [A DPM használata az SQL Server számítási feladatainak biztonsági mentéséhez](backup-azure-backup-sql.md)
 ### [A DPM használata SharePoint-farmok biztonsági mentéséhez](backup-azure-backup-sharepoint.md)
 
@@ -90,11 +90,12 @@
 # Alapelvek
 ## [A Recovery Services-tárolók áttekintése](backup-azure-recovery-services-vault-overview.md)
 ## [Backup tároló frissítése Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md)
-## [Azure Backup-tároló törlése](backup-azure-delete-vault.md)
+## [Recovery Services-tároló törlése](backup-azure-delete-vault.md)
 ## [Szerepköralapú hozzáférés-vezérlés](backup-rbac-rs-vault.md)
 ## [Biztonsági szolgáltatások hibrid biztonsági mentésekhez](backup-azure-security-feature.md)
 ## [Azure Backup-jelentések konfigurálása](backup-azure-configure-reports.md)
 ## [Adatmodell az Azure Backup-jelentésekhez](backup-azure-reports-data-model.md)
+## [Naplóelemzési adatmodell az Azure Backuphoz](backup-azure-log-analytics-data-model.md)
 ## [Offline biztonsági mentés konfigurálása](backup-azure-backup-import-export.md)
 ## [A szalagtár lecserélése](backup-azure-backup-cloud-as-tape.md)
 ## [Linux virtuális gépek alkalmazáskonzisztens biztonsági mentései](backup-azure-linux-app-consistent.md)

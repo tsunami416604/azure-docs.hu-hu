@@ -1,0 +1,58 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 'Dokumentáció az Azure Container Service, valamint a DC/OS és a Swarm együttes használatához'
+metadata:
+  document_id: null
+  title: 'Dokumentáció az Azure Container Service, valamint a DC/OS és a Swarm együttes használatához – oktatóanyagok és API-referencia | Microsoft Docs'
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  services: container-service
+  author: carolz
+  manager: carolz
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07-21-2017
+  ms.author: carolz
+abstract:
+  description: 'Az Azure Container Service lehetővé teszi egy üzemkész DC/OS- vagy Docker Swarm-fürt gyors üzembe helyezését. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Service használatával.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Megtudhatja, hogyan helyezhet üzembe DC/OS-fürtöket az Azure Container Service használatával:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+            text: Linux
+            href: /azure/container-service/container-service-dcos-quickstart
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Megtudhatja, hogyan telepíthet, kezelhet és frissíthet alkalmazásokat az Azure Container Service DC/OS-fürtjén.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-service/container-service-dcos-manage-tutorial">Azure Container Service DC/OS-fürt létrehozása és kezelése</a>
+          - html: <a href="/azure/container-service/container-service-load-balancing">Tárolók terheléselosztása Azure Container Service DC/OS-fürtben</a>
+          - html: <a href="/azure/container-service/container-service-dcos-fileshare">Fájlmegosztás létrehozása és csatlakoztatása DC/OS-fürthöz</a>
+          - html: <a href="/azure/container-service/container-service-dcos-acr">Az Azure Container Registry használata DC/OS-fürttel az alkalmazás üzembe helyezéséhez</a>
+  - title: Példák
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/container-service/cli-samples">Azure CLI</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/compute/containerservices">REST API</a></p>

@@ -59,8 +59,9 @@
 ### [hibaelhárítással](azure-diagnostics-troubleshooting.md)
 
 # Referencia
-## [A támogatott mérőszámok listája](monitoring-supported-metrics.md)
 ## [Megfigyelési adatok forrásai](monitoring-data-sources.md)
+## [A támogatott mérőszámok listája](monitoring-supported-metrics.md)
+## [Tevékenységnapló eseménysémája](monitoring-activity-log-schema.md)
 ## [PowerShell](/powershell/module/azurerm.insights)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST](/rest/api/monitor/)
@@ -71,7 +72,7 @@
 
 # Erőforrások
 ## [Azure CLI 1.0-minták](insights-cli-samples.md)
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [PowerShell-minták](insights-powershell-samples.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=monitor)
 ## [Gyorsindítási sablonok](https://azure.microsoft.com/en-us/resources/templates/?resourceType=Microsoft.Insights)

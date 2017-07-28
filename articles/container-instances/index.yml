@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Container Instances dokumentációja
+metadata:
+  title: Az Azure Container Instances dokumentációja – oktatóanyagok | Microsoft Docs
+  description: 'Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia.'
+  services: container-instances
+  author: carolz
+  manager: carolz
+  ms.service: container-instances
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/26/2017
+  ms.author: carolz
+abstract:
+  description: 'Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia. Ha teljes körű tárolóvezénylő megoldásra van szüksége, tekintse meg az <a href="/azure/container-service/kubernetes/">Azure Container Service dokumentációjának Kubernetesre vonatkozó szakaszát</a>. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megtudhatja, hogyan hozhat létre és kezelhet tárolópéldányokat.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Megtudhatja, hogyan helyezhet üzembe rendszerképeket az Azure Container Instances használatával.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/container-instances/media/container-instances.png
+            text: Tárolópéldány létrehozása
+            href: /azure/container-instances/container-instances-quickstart
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Megtudhatja, hogyan csomagolhat kódot egy tárolórendszerképbe, illetve hogyan futtathatja azt egy Azure-tárolópéldányon.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Alkalmazás becsomagolása tárolórendszerképbe</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Azure-tároló beállításjegyzékének létrehozása és a tárolórendszerkép feltöltése</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">A tárolórendszerkép üzembe helyezése egy Azure-tárolópéldányon</a>
