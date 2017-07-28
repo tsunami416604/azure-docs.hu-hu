@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 07/18/2017
 ms.author: yurid
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
 ms.openlocfilehash: 5cb5c6b6cc047974013df59d615d4f094d8d60a4
+ms.contentlocale: hu-hu
 ms.lasthandoff: 12/06/2016
-
 
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Biztonsági termékek csatlakoztatása az Operations Management Suite (OMS) biztonsági és auditálási megoldáshoz 
@@ -90,11 +90,13 @@ Az ügynökgépen a helyi 25226-os UDP-portra kell küldeni az eseményeket a sy
     ```
 6. Írja be az alábbi parancsot, és az eredményeket áttekintve ellenőrizze, hogy találhatók-e hibák az OMS-ügynök naplójában:
 
-    ```    
+    ``` 
     tail /var/opt/microsoft/omsagent/log/omsagent.log
     ```
 
 ## <a name="reviewing-collected-security-events"></a>Az összegyűjtött biztonsági események áttekintése
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 A konfigurálás befejezését követően az OMS biztonsági megoldás elkezdi feldolgozni a biztonsági eseményeket. Az események megjelenítéséhez nyissa meg a Naplók keresése eszközt, írja be a *Type=CommonSecurityLog* parancsot a keresőmezőbe, majd nyomja le az ENTER billentyűt. Az alábbi példában a parancs eredménye látható. Vegye figyelembe, hogy ebben az esetben az OMS biztonsági megoldás már feldolgozta a több forgalmazótól származó biztonsági naplókat:
    
