@@ -3,8 +3,8 @@ title: "Adatok betöltése az SQL Serverről az Azure SQL Data Warehouse-ba (Pol
 description: "A bcp segítségével exportál adatokat az SQL Serverről egybesimított fájlokba, az AzCopy segítségével importál adatokat az Azure Blob Storage-ban, és a PolyBase használatával viszi be az adatokat az SQL Data Warehouse-ba."
 services: sql-data-warehouse
 documentationcenter: NA
-author: ckarst
-manager: barbkess
+author: barbkess
+manager: jhubbard
 editor: 
 ms.assetid: 4d42786a-fb28-43c9-9c3b-72d19c0ecc11
 ms.service: sql-data-warehouse
@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 21b4cc704e271ac220fd606305f8f97c9b2593bb
+ms.contentlocale: hu-hu
 ms.lasthandoff: 03/21/2017
-
-
 
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-azcopy"></a>Adatok betöltése az SQL Serverről az Azure SQL Data Warehouse-ba (AZCopy)

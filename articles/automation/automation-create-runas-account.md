@@ -12,7 +12,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/29/2017
+ms.date: 07/27/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
@@ -22,9 +22,7 @@ ms.lasthandoff: 06/30/2017
 
 ---
 
-<a id="update-your-automation-account-authentication-with-run-as-accounts" class="xliff"></a>
-
-# Automation-fiók hitelesítésének frissítése futtató fiókokkal 
+# <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation-fiók hitelesítésének frissítése futtató fiókokkal 
 A portálról vagy a PowerShell-lel frissítheti meglévő Automation-fiókját. Erre a következő esetekben lehet szükség:
 
 * Létrehozott egy Automation-fiókot, de futtató fiókot nem.
@@ -32,9 +30,7 @@ A portálról vagy a PowerShell-lel frissítheti meglévő Automation-fiókját.
 * Már használ egy, a klasszikus erőforrások felügyeletére szolgáló Automation-fiókot, de szeretné azt frissíteni, és klasszikus futtató fiókként használni, hogy megtakarítsa az új fiók létrehozásához és a runbookok és objektumok áthelyezéséhez szükséges időt.   
 * Egy futtató és egy klasszikus futtató fiókot szeretne létrehozni a vállalati hitelesítésszolgáltató által kibocsátott tanúsítvánnyal.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 * Ez a szkript kizárólag Windows 10 és Azure Resource Manager 3.0.0-s vagy újabb modulokkal rendelkező Windows Server 2016 rendszeren futtatható. A korábbi Windows-verziók esetében nem támogatott.
 * Az Azure PowerShell 1.0-s és újabb verziói. Információk a PowerShell 1.0-s kiadásáról: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
@@ -46,9 +42,7 @@ A szkript végrehajtásához feltétlenül szükséges *SubscriptionID*, *Resour
 2. A **Minden beállítás** panel **Fiókbeállítások** részénél válassza a **Tulajdonságok** lehetőséget. 
 3. Jegyezze fel a **Tulajdonságok** panelen megjelenő értékeket.<br><br> ![Az Automation-fiók „Tulajdonságok” panelje](media/automation-create-runas-account/automation-account-properties.png)  
 
-<a id="required-permissions-to-update-your-automation-account" class="xliff"></a>
-
-### Az Automation-fiók frissítéséhez szükséges engedélyek
+### <a name="required-permissions-to-update-your-automation-account"></a>Az Automation-fiók frissítéséhez szükséges engedélyek
 Automation-fiók frissítéséhez az alábbi, a jelen témakör végrehajtásához szükséges jogosultságokkal és engedélyekkel kell rendelkeznie.   
  
 * Az AD-felhasználói fiókot egy olyan szerepkörhöz kell hozzáadni, amely a Microsoft.Automation-erőforrások közreműködői szerepkörével egyenértékű engedélyekkel rendelkezik a [Szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md#contributor-role-permissions) című cikkben ismertetett módon.  
@@ -56,9 +50,7 @@ Automation-fiók frissítéséhez az alábbi, a jelen témakör végrehajtásáh
 
 Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják Önt az előfizetés globális rendszergazdai vagy társadminisztrátori szerepköréhez, vendégként lesz hozzáadva az Active Directoryhoz. Ebben az esetben „Nincs engedélye létrehozni…” figyelmeztető üzenetet kap az **Automation-fiók hozzáadása** panelen. A globális rendszergazdai vagy társadminisztrátori szerepkörhöz hozzáadott felhasználók először eltávolíthatók az előfizetéshez tartozó Active Directory-példányból, majd újra hozzáadhatók, így teljes jogú felhasználók lehetnek az Active Directoryban. Ez a helyzet úgy ellenőrizhető, ha az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja. A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).
 
-<a id="create-run-as-account-from-the-portal" class="xliff"></a>
-
-## Futtató fiók létrehozása a portálról
+## <a name="create-run-as-account-from-the-portal"></a>Futtató fiók létrehozása a portálról
 Az ebben a szakaszban szereplő lépések végrehajtásával frissítheti Azure Automation-fiókját az Azure Portalról.  Egyenként hozza létre a futtató és a klasszikus futtató fiókokat, és ha nem kell erőforrásokat felügyelnie a klasszikus Azure-portálon, egyszerűen létrehozhatja a futtató fiókot.  
 
 Ez a folyamat a következő elemeket hozza létre az Automation-fiókjában.
@@ -79,9 +71,7 @@ Ez a folyamat a következő elemeket hozza létre az Automation-fiókjában.
 3. Attól függően, hogy melyik fiókra van szüksége, válassza az **Azure-alapú futtató fiók** vagy a **Klasszikus Azure-alapú futtató fiók** lehetőséget.  Miután választott, megjelenik az **Azure-alapú futtató fiók felvétele** vagy a **Klasszikus Azure-alapú futtató fiók felvétele** panel. Az áttekintési információk tanulmányozása után kattintson a **Létrehozás** gombra a futtató fiók létrehozásának folytatásához.  
 4. Amíg az Azure létrehozza a futtató fiókot, a menü **Értesítések** részén nyomon követheti a folyamat állapotát, és megjelenik egy szalagcím azzal az üzenettel, hogy a fiók létrehozása folyamatban van.  A folyamat eltarthat pár percig.  
 
-<a id="create-run-as-account-using-powershell-script" class="xliff"></a>
-
-## Futtató fiók létrehozása PowerShell-szkripttel
+## <a name="create-run-as-account-using-powershell-script"></a>Futtató fiók létrehozása PowerShell-szkripttel
 Ez a PowerShell-szkript a következő konfigurációk támogatását tartalmazza:
 
 * Futtató fiók létrehozása önaláírt tanúsítvány használatával.
@@ -166,7 +156,7 @@ A szkript az alábbi elemeket hozza létre a kiválasztott konfigurációs beál
 
         $KeyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
         $KeyCredential.StartDate = $CurrentDate
-        $KeyCredential.EndDate= [DateTime]$PfxCert.GetExpirationDateString()
+        $KeyCredential.EndDate = Get-Date $PfxCert.GetExpirationDateString()
         $KeyCredential.EndDate = $KeyCredential.EndDate.AddDays(-1)
         $KeyCredential.KeyId = $KeyId
         $KeyCredential.CertValue  = $keyValue
@@ -307,8 +297,6 @@ A szkript sikeres futtatása után jegyezze fel a következőket:
 * Ha egy (.cer formátumú) vállalati tanúsítvánnyal rendelkező klasszikus futtató fiókot hozott létre, használja ezt a tanúsítványt. Kövesse az utasításokat, amelyek bemutatják [a felügyeleti API-tanúsítványok klasszikus Azure portálra való feltöltését](../azure-api-management-certs.md), majd ellenőrizze a hitelesítő adatok konfigurációját a klasszikus üzembe helyezési erőforrásokkal. Ehhez használja a [klasszikus Azure üzembe helyezési modell erőforrásaival való hitelesítésre szolgáló mintakódot](automation-verify-runas-authentication.md#classic-run-as-authentication). 
 * Ha *nem* klasszikus futtató fiókot hozott létre, állítsa be a hitelesítést a Resource Manager-erőforrásokkal, valamint ellenőrizze a hitelesítő adatok konfigurációját. Ehhez használja a [Service Management-erőforrásokkal való hitelesítéshez használt mintakódot.](automation-verify-runas-authentication.md#automation-run-as-authentication)
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Az Egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/active-directory-application-objects.md).
 * A tanúsítványokkal és az Azure-szolgáltatásokkal kapcsolatos részletes információkért lásd: [Tanúsítványok áttekintése az Azure Cloud Servicesben](../cloud-services/cloud-services-certs-create.md).
