@@ -22,9 +22,7 @@ ms.lasthandoff: 05/31/2017
 
 
 ---
-<a id="how-to-use-azure-redis-cache" class="xliff"></a>
-
-# Az Azure Redis Cache használata
+# <a name="how-to-use-azure-redis-cache"></a>Az Azure Redis Cache használata
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -48,9 +46,7 @@ Ez az útmutató ismerteti, hogyan használhatja a [StackExchange.Redis][StackEx
 
 <a name="getting-started-cache-service"></a>
 
-<a id="get-started-with-azure-redis-cache" class="xliff"></a>
-
-## Bevezetés az Azure Redis Cache használatába
+## <a name="get-started-with-azure-redis-cache"></a>Bevezetés az Azure Redis Cache használatába
 Az első lépések az Azure Redis Cache-ben egyszerűek. Először hozzon létre és konfiguráljon egy gyorsítótárat. Ezután konfigurálja a gyorsítótárügyfeleket, hogy hozzáféréssel rendelkezzenek a gyorsítótárhoz. A gyorsítótárügyfelek konfigurálása után megkezdheti a használatukat.
 
 * [A gyorsítótár létrehozása][Create the cache]
@@ -58,32 +54,24 @@ Az első lépések az Azure Redis Cache-ben egyszerűek. Először hozzon létre
 
 <a name="create-cache"></a>
 
-<a id="create-a-cache" class="xliff"></a>
-
-## Gyorsítótár létrehozása
+## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-<a id="to-access-your-cache-after-its-created" class="xliff"></a>
-
-### A gyorsítótár elérése a létrehozás után
+### <a name="to-access-your-cache-after-its-created"></a>A gyorsítótár elérése a létrehozás után
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
 További információk a gyorsítótár konfigurálásáról: [How to configure Azure Redis Cache](cache-configure.md) (Az Azure Redis Cache konfigurálása).
 
 <a name="NuGet"></a>
 
-<a id="configure-the-cache-clients" class="xliff"></a>
-
-## A gyorsítótárügyfelek konfigurálása
+## <a name="configure-the-cache-clients"></a>A gyorsítótárügyfelek konfigurálása
 [!INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
 Miután az ügyfélprojektet konfigurálta gyorsítótárazásra, a következő szakaszokban ismertetett módszereket is alkalmazhatja a gyorsítótár használatakor.
 
 <a name="working-with-caches"></a>
 
-<a id="working-with-caches" class="xliff"></a>
-
-## A gyorsítótárak használata
+## <a name="working-with-caches"></a>A gyorsítótárak használata
 Az ebben a szakaszban szereplő lépések a gyorsítótárral végzett gyakori feladatok végrehajtását mutatják be.
 
 * [Csatlakozás a gyorsítótárhoz][Connect to the cache]
@@ -92,9 +80,7 @@ Az ebben a szakaszban szereplő lépések a gyorsítótárral végzett gyakori f
 
 <a name="connect-to-cache"></a>
 
-<a id="connect-to-the-cache" class="xliff"></a>
-
-## Csatlakozás a gyorsítótárhoz
+## <a name="connect-to-the-cache"></a>Csatlakozás a gyorsítótárhoz
 Annak érdekében, hogy programozott módon használja a gyorsítótárat, szüksége van egy, a gyorsítótárra mutató hivatkozásra. Adja a következőt bármely olyan fájl tetejéhez, amelyből a StackExchange.Redis ügyféllel szeretne hozzáférni egy Azure Redis Cache-hez.
 
     using StackExchange.Redis;
@@ -162,9 +148,7 @@ Most, hogy megismerte, hogyan csatlakozhat egy Azure Redis Cache-példányhoz é
 
 <a name="add-object"></a>
 
-<a id="add-and-retrieve-objects-from-the-cache" class="xliff"></a>
-
-## Objektumok hozzáadása és lekérése a gyorsítótárból
+## <a name="add-and-retrieve-objects-from-the-cache"></a>Objektumok hozzáadása és lekérése a gyorsítótárból
 Elemek a `StringSet` és a `StringGet` metódussal tárolhatók a gyorsítótárban, illetve kérhetők le onnan.
 
     // If key1 exists, it is overwritten.
@@ -190,9 +174,7 @@ Egy elem lejáratának megadásához a gyorsítótárban használja a `TimeSpan`
 
     cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 
-<a id="work-with-net-objects-in-the-cache" class="xliff"></a>
-
-## .NET-objektumok használata a gyorsítótárban
+## <a name="work-with-net-objects-in-the-cache"></a>.NET-objektumok használata a gyorsítótárban
 Az Azure Redis Cache .NET-objektumokat és primitív adattípusokat is képes gyorsítótárazni, de a .NET-objektumokat a gyorsítótárazásuk előtt szerializálni kell. Ez a .NET-objektumszerializálás az alkalmazásfejlesztők feladata, akik így rugalmasan kiválaszthatják a szerializálót.
 
 Az objektumok szerializálásának egy egyszerű módja, ha a [Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) témakörben található `JsonConvert` szerializálási módszereket használja és JSON formátumból JSON formátumba szerializál. Az alábbi példában egy `Employee`-objektumpéldány használatával végrehajtott get és set művelet látható.
@@ -217,9 +199,7 @@ Az objektumok szerializálásának egy egyszerű módja, ha a [Newtonsoft.Json.N
 
 <a name="next-steps"></a>
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte az alapokat, az alábbi hivatkozásokra kattintva tudhat meg többet az Azure Redis Cache-ről.
 
 * Tekintse meg az Azure Redis Cache ASP.NET-szolgáltatóit.

@@ -23,14 +23,10 @@ ms.lasthandoff: 06/03/2017
 
 
 ---
-<a id="deploy-a-model-from-ssdt" class="xliff"></a>
-
-# Modell üzembe helyezése SSDT-ről
+# <a name="deploy-a-model-from-ssdt"></a>Modell üzembe helyezése SSDT-ről
 Miután létrehozott egy kiszolgálót az Azure-előfizetésében, készen áll a táblázatos modelladatbázis üzembe helyezésére. Az SQL Server Data Tools (SSDT) segítségével létrehozhatja és üzembe helyezheti a táblázatosmodell-projektet, amelyen dolgozik. 
 
-<a id="before-you-begin" class="xliff"></a>
-
-## Előkészületek
+## <a name="before-you-begin"></a>Előkészületek
 A kezdéshez a következők szükségesek:
 
 * **Analysis Services-kiszolgáló** az Azure-ban. További információkért lásd [az Azure Analysis Services-kiszolgáló létrehozásával kapcsolatos](analysis-services-create-server.md) témakört.
@@ -42,9 +38,7 @@ A kezdéshez a következők szükségesek:
 > 
 > 
 
-<a id="to-deploy-a-tabular-model-from-ssdt" class="xliff"></a>
-
-## Táblázatos modell üzembe helyezése az SSDT-ből
+## <a name="to-deploy-a-tabular-model-from-ssdt"></a>Táblázatos modell üzembe helyezése az SSDT-ből
 
 1. Az üzembe helyezés előtt kérje le a kiszolgáló nevét. Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekintés** > **Kiszolgálónév** részéből.
    
@@ -63,16 +57,12 @@ A kezdéshez a következők szükségesek:
 Ennyi az egész!
 
 
-<a id="but-something-went-wrong" class="xliff"></a>
-
-## Azonban hiba történt
+## <a name="but-something-went-wrong"></a>Azonban hiba történt
 Ha a metaadatok telepítésekor a telepítés sikertelen, annak valószínűleg az az oka, hogy az SSDT nem tudott csatlakozni a kiszolgálóhoz. Győződjön meg róla, hogy tud csatlakozni a kiszolgálóhoz az SSMS használatával. Ezt követően ellenőrizze, hogy helyes a projekt Üzembehelyezési kiszolgáló tulajdonsága.
 
 Ha a telepítés egy táblán sikertelen, annak valószínűleg az az oka, hogy a kiszolgálója nem tudott csatlakozni egy adatforráshoz. Ha a szervezete hálózatában helyszíni adatforrás található, mindenképp telepítsen egy [helyszíni adatátjárót](analysis-services-gateway.md).
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Miután sikeresen telepítette a kiszolgálóra a táblázatos modellt, azonnal csatlakozhat is hozzá. A kezeléséhez [csatlakozzon hozzá az SSMS-sel](analysis-services-manage.md). Továbbá [csatlakozhat hozzá ügyféleszközzel](analysis-services-connect.md) is, például Power BI, Power BI Desktop vagy Excel segítségével, és megkezdheti a jelentések létrehozását.
 
 

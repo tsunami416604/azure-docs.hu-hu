@@ -15,25 +15,21 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 233db1cb74a6c81cf044953ecdf6e9de6cc50ee8
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 754c381cb242e0bdf7c56bd2a763d46acc80fbda
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/21/2017
 
 ---
-<a id="create-a-python-web-app-in-azure" class="xliff"></a>
-
-# Python-webapp létrehozása az Azure-ban
+# <a name="create-a-python-web-app-in-azure"></a>Python-webapp létrehozása az Azure-ban
 
 Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a Python-alkalmazások Azure Web Apps szolgáltatásban történő fejlesztésén és üzembe helyezésén vezeti végig. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a Gittel pedig üzembe helyezheti a Python-mintakódot a webalkalmazásban.
 
 ![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az előfeltételek telepítése után a lépések végrehajtása nagyjából öt percet vesz igénybe.
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
@@ -46,9 +42,7 @@ Az oktatóanyag elvégzéséhez:
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-<a id="download-the-sample" class="xliff"></a>
-
-## A minta letöltése
+## <a name="download-the-sample"></a>A minta letöltése
 
 Egy terminálablakban futtassa a következő parancsot a mintaalkalmazás-tárház helyi számítógépre történő klónozásához.
 
@@ -64,9 +58,13 @@ Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
 cd Python-docs-hello-world
 ```
 
-<a id="run-the-app-locally" class="xliff"></a>
+## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
 
-## Az alkalmazás futtatása helyben
+Telepítse a szükséges csomagokat a(z) `pip` használatával.
+
+```bash
+pip install -r requirements.txt
+```
 
 Az alkalmazás a terminálablak megnyitásával és a `Python` parancs használatával helyben futtatható a beépített Python-webkiszolgáló indításához.
 
@@ -96,9 +94,7 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 Ezzel létrehozott egy üres, új webalkalmazást az Azure-ban.
 
-<a id="configure-to-use-python" class="xliff"></a>
-
-## A Python használatának konfigurálása
+## <a name="configure-to-use-python"></a>A Python használatának konfigurálása
 
 A Python `3.4` verziójának használatához futtassa az [az webapp config set](/cli/azure/webapp/config#set) parancsot a webalkalmazás konfigurálásához.
 
@@ -155,9 +151,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-<a id="browse-to-the-app" class="xliff"></a>
-
-## Az alkalmazás megkeresése tallózással
+## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
 Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
 
@@ -171,9 +165,7 @@ A Python-mintakód az Azure App Service-webalkalmazásban fut.
 
 **Gratulálunk!** Elvégezte az első Python-webapp üzembe helyezését az App Service-ben.
 
-<a id="update-and-redeploy-the-code" class="xliff"></a>
-
-## A kód frissítése és ismételt üzembe helyezése
+## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
 
 Egy helyi szövegszerkesztővel nyissa meg a `main.py` fájlt a Python-alkalmazásban, majd módosítsa kissé annak szövegét a `return` utasítás mellett:
 
@@ -192,9 +184,7 @@ Az üzembe helyezés befejezését követően váltson vissza [Az alkalmazás me
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
-<a id="manage-your-new-azure-web-app" class="xliff"></a>
-
-## Az új Azure-webapp kezelése
+## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
 
 A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
@@ -210,9 +200,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Python és PostgreSQL](app-service-web-tutorial-docker-python-postgresql-app.md)

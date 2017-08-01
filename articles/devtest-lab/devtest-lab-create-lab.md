@@ -22,21 +22,15 @@ ms.lasthandoff: 05/31/2017
 
 
 ---
-<a id="create-a-lab-in-azure-devtest-labs" class="xliff"></a>
-
-# Labor létrehozása az Azure DevTest Labs szolgáltatásban
+# <a name="create-a-lab-in-azure-devtest-labs"></a>Labor létrehozása az Azure DevTest Labs szolgáltatásban
 Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet erőforráscsoportokat, például virtuális gépeket (VM-eket) magában foglaló infrastruktúra, amely korlátok és kvóták meghatározásával segíti ezen erőforráscsoportok jobb kezelését. Ez a cikk végigvezeti a tesztkörnyezet Azure Portalon való létrehozásának folyamatán.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Labor létrehozásához a következőkre van szüksége:
 
 * Azure-előfizetés. Az Azure megvásárlási lehetőségeinek ismertetése: [Az Azure megvásárlása](https://azure.microsoft.com/pricing/purchase-options/) vagy [Ingyenes egy hónapos próbaverzió](https://azure.microsoft.com/pricing/free-trial/). Az előfizetés tulajdonosának kell lennie a labor létrehozásához.
 
-<a id="steps-to-create-a-lab-in-azure-devtest-labs" class="xliff"></a>
-
-## A labor létrehozásának lépései az Azure DevTest Labs szolgáltatásban
+## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>A labor létrehozásának lépései az Azure DevTest Labs szolgáltatásban
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor létrehozására az Azure DevTest Labs szolgáltatásban. 
 
 1. Jelentkezzen be az [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
@@ -63,9 +57,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
 
 * [Biztonságos hozzáférés a laborokhoz](devtest-lab-add-devtest-user.md).

@@ -4,7 +4,6 @@ description: "Ismerteti az Azure AD-bérlő fogalmát, valamint az Azure kezelé
 services: active-directory
 documentationcenter: 
 author: curtand
-writer: markvi
 manager: femila
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
@@ -12,13 +11,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/06/2017
+ms.date: 07/20/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 001ffc0f9c7465552392a9848ef1487a4c0eafce
-ms.lasthandoff: 12/07/2016
-
+ms.reviewer: jeffsta
+ms.custom: it-pro;oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 07b9f4626e9129c7eeb94d43883417f324da5292
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="administer-your-azure-ad-directory"></a>Az Azure AD-címtár felügyelete
@@ -55,7 +56,7 @@ Ha például eredetileg egy Microsoft Intune-előfizetésre iratkozott fel, és 
 További információk a helyszíni címtár Azure AD-integrációjáról: [Directory integration](active-directory-aadconnect.md)(Címtár-integráció).
 
 ### <a name="associate-an-azure-ad-directory-with-a-new-azure-subscription"></a>Új Azure-előfizetés társítása Azure AD-címtárhoz
-Új Azure-előfizetést társíthat ugyanahhoz a címtárhoz, amely egy meglévő Office 365- vagy Microsoft Intune-előfizetés bejelentkezésének hitelesítését végzi. Jelentkezzen be az Azure felügyeleti portálra munkahelyi vagy iskolai fiókjával. A felügyeleti portál által megjelenített üzenetben az szerepel, hogy az adott fiókhoz nem található előfizetés. Ahhoz, hogy a címtárat kezelni tudja a portálon, válassza a **Sign Up For Azure** (Feliratkozás az Azure szolgáltatásra) lehetőséget. További információk: [Manage the directory for your Office 365 subscription in Azure](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure) (Office 365-előfizetéshez tartozó címtár kezelése az Azure-ban).
+Új Azure-előfizetést társíthat ugyanahhoz a címtárhoz, amely egy meglévő Office 365- vagy Microsoft Intune-előfizetés bejelentkezésének hitelesítését végzi. Jelentkezzen be az Azure Portalra munkahelyi vagy iskolai fiókjával. A portál által megjelenített üzenetben az szerepel, hogy az adott fiókhoz nem található előfizetés. Ahhoz, hogy a címtárat kezelni tudja a portálon, válassza a **Sign Up For Azure** (Feliratkozás az Azure szolgáltatásra) lehetőséget. További információk: [Manage the directory for your Office 365 subscription in Azure](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure) (Office 365-előfizetéshez tartozó címtár kezelése az Azure-ban).
 
 Videó az Azure AD használatával kapcsolatban gyakran felmerülő kérdésekről: [Azure Active Directory - Common Sign-up, sign-in and usage questions](http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/WAADCommonSignupsigninquestions) (Azure Active Directory – Gyakori kérdések a feliratkozásról, a bejelentkezésről és a használatról).
 
@@ -76,7 +77,7 @@ Az Azure AD használata ingyenes. A címtár egy ingyenes erőforrás. A Prémiu
 A címtár megjelenített nevének módosításához kattintson a portálon a címtárra, majd a **Konfigurálás** lehetőségre. Ahogy a jelen témakör későbbi részében olvasható, új címtárat is felvehet, illetve törölheti azt, amelyikre már nincs szüksége. Ha az előfizetést másik címárhoz szeretné társítani, a bal oldali navigációs ablaktáblán kattintson a **Settings** (Beállítások) elemre, majd a **Subscriptions** (Előfizetések) oldal alján kattintson az **Edit Directory** (Címtár szerkesztése) gombra. Egyéni tartományt is létrehozhat az alapértelmezett *.onmicrosoft.com tartomány helyett egy regisztrált DNS-név használatával, amely a SharePoint Online-hoz hasonló szolgáltatások esetében célravezetőbb megoldás lehet.
 
 ## <a name="how-can-i-manage-directory-data"></a>Hogyan történik a címtáradatok kezelése?
-Egy vagy több Microsoft felhőszolgáltatás-előfizetés rendszergazdájaként a szervezet címtáradatainak kezeléséhez az Azure felügyeleti portált, a Microsoft Intune fiókportált vagy az Office 365 felügyeleti központját használhatja. Az Azure AD-ban tárolt adatok kezelését megkönnyíti a [Windows PowerShellhez készült Microsoft Azure Active Directory-modul](https://msdn.microsoft.com/library/azure/jj151815.aspx) parancsmagok letöltése és futtatása.
+Egy vagy több Microsoft felhőszolgáltatás-előfizetés rendszergazdájaként a szervezet címtáradatainak kezeléséhez az [Azure AD felügyeleti központot](https://aad.portal.azure.com), a Microsoft Intune-fiókportált vagy az Office 365 felügyeleti központját használhatja. Az Azure AD-ban tárolt adatok kezelését megkönnyíti a [Windows PowerShellhez készült Microsoft Azure Active Directory-modul](https://msdn.microsoft.com/library/azure/jj151815.aspx) parancsmagok letöltése és futtatása.
 
 E portálok (vagy parancsmagok) a következőket teszik lehetővé:
 
@@ -84,7 +85,7 @@ E portálok (vagy parancsmagok) a következőket teszik lehetővé:
 * A szervezet által előfizetett, kapcsolódó felhőszolgáltatás(ok) kezelése
 * Helyszíni integráció beállítása a címtárszolgáltatással
 
-Az Azure felügyeleti portál, az Office 365 felügyeleti központ, a Microsoft Intune fiókportál és az Azure AD-parancsmagok mind egyetlen, a szervezet címtárához társított megosztott Azure AD-példányba írnak és onnan olvasnak, az alábbi ábrán látható módon. Így a portálok (vagy parancsmagok) a címtáradatok bekérésére vagy módosítására használt kezelőfelületként működnek.
+Az [Azure AD felügyeleti központ](https://aad.portal.azure.com), az Office 365 felügyeleti központ, a Microsoft Intune-fiókportál és az Azure AD-parancsmagok mind egyetlen, a szervezet címtárához társított megosztott Azure AD-példányba írnak és onnan olvasnak, az alábbi ábrán látható módon. Így a portálok (vagy parancsmagok) a címtáradatok bekérésére vagy módosítására használt kezelőfelületként működnek.
 
 ![][2]
 
@@ -94,7 +95,7 @@ Ha valamelyik portál (vagy parancsmag) használatával módosítja a szervezeti
 Ha például egy felhasználó bejelentkezésének blokkolására az Office 365 felügyeleti központját használta, ezzel az adott felhasználó bármely másik, a szervezete által aktuálisan előfizetett szolgáltatásra történő bejelentkezését is blokkolja. Ha a Microsoft Intune fiókportálon próbálja blokkolni ugyanennek a felhasználónak a fiókját, azt fogja tapasztalni, hogy a felhasználó már blokkolva van.
 
 ## <a name="how-can-i-add-and-manage-multiple-directories"></a>Hogyan vehetek fel és kezelhetek több címtárat?
-Azure AD-címtárat az Azure felügyeleti portálon vehet fel. Válassza az **Active Directory** elemet a bal oldali panelen, majd kattintson az **OK** gombra.
+A [klasszikus Azure AD portálon](https://manage.windowsazure.com) vehet fel Azure AD-címtárakat. Az **Áttekintés** panelen válassza az **Active Directory** bővítményt a bal oldalon, majd kattintson az **Új** elemre.
 
 Az egyes címtárakat teljesen független erőforrásként kezelheti: mindegyikük társüzemű, minden funkcióval ellátott és logikailag független a többi, Ön által kezelt címtártól, nincs közöttük szülő-gyermek típusú kapcsolat. Ez a függetlenség az erőforrás, a felügyelet és a szinkronizálás függetlenségét is jelenti.
 
@@ -116,7 +117,7 @@ Vegye figyelembe azt is, hogy a többi Azure-erőforrástól eltérően az Ön c
 Az Azure AD-címtárakat egy globális rendszergazda törölheti a portálról. Egy címtár törlésekor az abban található összes erőforrás is törlődik, ezért a törlés előtt győződjön meg arról, hogy nincs szüksége az adott címtárra.
 
 > [!NOTE]
-> Ha a felhasználó munkahelyi vagy iskolai fiókkal jelentkezik be, kezdőcímtárát nem szabad törölnie. Ha például a felhasználó joe@contoso.onmicrosoft.com, fiókkal van bejelentkezve, nem törölheti a contoso.onmicrosoft.com-ot alapértelmezett tartományként használó címtárat.
+> Ha a felhasználó munkahelyi vagy iskolai fiókkal jelentkezik be, kezdőcímtárát nem szabad törölnie. Ha például a felhasználó a joe@contoso.onmicrosoft.com fiókkal van bejelentkezve, nem törölheti a contoso.onmicrosoft.com-ot alapértelmezett tartományként használó címtárat.
 > 
 > 
 
@@ -130,7 +131,7 @@ A rendszer a következő feltételek teljesülését ellenőrzi:
 * Törölni kell minden, a címtárhoz társított Microsoft Online Services-előfizetést, például a Microsoft Azure-t, az Office 365-öt vagy a Prémium szintű Azure AD-t. Ha például az alapértelmezett címtár az Azure-ban lett létrehozva, nem törölheti azt mindaddig, amíg Azure-előfizetésének hitelesítése továbbra is ezen a címtáron alapul. Akkor sem törölhet egy címtárat, ha felhasználói előfizetés társul hozzá. Az előfizetés másik címtárhoz történő társításához jelentkezzen be az Azure felügyeleti portálra, majd a bal oldali navigációs ablaktáblán kattintson a **Settings**(Beállítások) lehetőségre. Ezt követően kattintson az **Subscriptions** (Előfizetések) oldal alján található **Edit Directory** (Címtár szerkesztése) elemre. További információk az Azure-előfizetésekről: [How Azure subscriptions are associated with Azure AD?](active-directory-how-subscriptions-associated-directory.md) (Hogyan kapcsolódnak az Azure-előfizetések az Azure AD-hoz?)
 
 > [!NOTE]
-> Ha a felhasználó munkahelyi vagy iskolai fiókkal jelentkezik be, kezdőcímtárát nem szabad törölnie. Ha például a felhasználó joe@contoso.onmicrosoft.com, fiókkal van bejelentkezve, nem törölheti a contoso.onmicrosoft.com-ot alapértelmezett tartományként használó címtárat.
+> Ha a felhasználó munkahelyi vagy iskolai fiókkal jelentkezik be, kezdőcímtárát nem szabad törölnie. Ha például a felhasználó a joe@contoso.onmicrosoft.com fiókkal van bejelentkezve, nem törölheti a contoso.onmicrosoft.com-ot alapértelmezett tartományként használó címtárat.
 > 
 > 
 

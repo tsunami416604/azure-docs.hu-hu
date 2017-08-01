@@ -20,17 +20,13 @@ ms.lasthandoff: 06/20/2017
 
 ---
 
-<a id="create-your-first-function-using-the-azure-cli" class="xliff"></a>
-
-# Az első függvény létrehozása az Azure CLI használatával
+# <a name="create-your-first-function-using-the-azure-cli"></a>Az első függvény létrehozása az Azure CLI használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhatja létre az első függvényét az Azure Functions használatával. Az Azure CLI használatával létrehoz egy függvényalkalmazást, amely az a kiszolgáló nélküli infrastruktúra lesz, amelyen a függvény működni fog. Magát a függvénykódot a GitHub tárházában található minta alapján készíti el.    
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógépen is követheti. 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek 
 
 A minta futtatásához az alábbiakkal kell rendelkeznie:
 
@@ -44,9 +40,7 @@ A minta futtatásához az alábbiakkal kell rendelkeznie:
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 
-<a id="create-a-resource-group" class="xliff"></a>
-
-## Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például a függvényalkalmazásokat, az adatbázisokat és a tárfiókokat).
 
@@ -55,9 +49,7 @@ A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscso
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
-<a id="create-an-azure-storage-account" class="xliff"></a>
-
-## Azure Storage-fiók létrehozása
+## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
 A Functions szolgáltatás Azure Storage-fiókot használ a függvények állapotának és egyéb adatainak kezeléséhez. Az [az storage account create](/cli/azure/storage/account#create) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban.
 
@@ -87,9 +79,7 @@ A tárfiók létrehozása után az Azure CLI az alábbi példához hasonló info
 }
 ```
 
-<a id="create-a-function-app" class="xliff"></a>
-
-## Függvényalkalmazás létrehozása
+## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
 Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód kiszolgáló nélküli végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, telepítése és megosztása érdekében. Hozzon létre egy függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#create) parancs használatával. 
 
@@ -122,9 +112,7 @@ A függvény létrehozása után az Azure CLI az alábbi példához hasonló inf
 
 Miután már van egy függvényalkalmazása, elkészítheti a tényleges függvénykódot a GitHub tárházában található mintákból.
 
-<a id="deploy-your-function-code" class="xliff"></a>
-
-## A függvénykód létrehozása  
+## <a name="deploy-your-function-code"></a>A függvénykód létrehozása  
 
 A függvénykódot többféleképpen is elkészítheti az új függvényalkalmazásban. Ez a témakör GitHub mintatárházához kapcsolódik. Az eddigiekhez hasonlóan a `<app_name>` helyőrzőt cserélje le a létrehozott függvényalkalmazás nevére. 
 
@@ -148,9 +136,7 @@ A forrás beállítása után az Azure CLI a következő példában szereplőkh�
 }
 ```
 
-<a id="test-the-function" class="xliff"></a>
-
-## A függvény tesztelése
+## <a name="test-the-function"></a>A függvény tesztelése
 
 Ellenőrizze az üzembe helyezett függvényt a cURL használatával Mac vagy Linux rendszerű számítógépen vagy a Bash használatával Windows rendszerű számítógépen. Hajtsa végre a következő cURL parancsot úgy, hogy a `<app_name>` helyőrzőt lecseréli a függvényalkalmazás nevére. Fűzze hozzá a `&name=<yourname>` lekérdezési karakterláncot az URL-hez.
 
@@ -166,9 +152,7 @@ Ha a parancssorban nem érhető el a cURL, egyszerűen adja meg az adott URL-cí
    
 ![A függvény válasza a böngészőben jelenik meg.](./media/functions-create-first-azure-function-azure-cli/functions-azure-cli-function-test-browser.png)  
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti az ehhez a rövid útmutatóhoz létrehozott összes erőforrást:
 
@@ -177,9 +161,7 @@ az group delete --name myResourceGroup
 ```
 Amikor a rendszer kéri, írja be a `y` parancsot.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

@@ -24,23 +24,17 @@ ms.lasthandoff: 06/15/2017
 
 
 ---
-<a id="create-an-azure-sql-database-in-the-azure-portal" class="xliff"></a>
-
-# Azure SQL Database létrehozása az Azure Portalon
+# <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
 Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre SQL Database adatbázist az Azure-ban. Az Azure SQL Database egy adatbázis-szolgáltatási ajánlat, amellyel magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet a felhőben. Ez a rövid útmutató bemutatja, hogyan teheti meg az SQL Database adatbázisok létrehozásának első lépéseit az Azure Portalon.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-<a id="log-in-to-the-azure-portal" class="xliff"></a>
-
-## Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-<a id="create-a-sql-database" class="xliff"></a>
-
-## SQL-adatbázis létrehozása
+## <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
 
 Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database-service-tiers.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL Database logikai kiszolgálón](sql-database-features.md) jön létre. 
 
@@ -96,9 +90,7 @@ Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó 
 
    ![értesítés](./media/sql-database-get-started-portal/notification.png)
 
-<a id="create-a-server-level-firewall-rule" class="xliff"></a>
-
-## Kiszolgálószintű tűzfalszabály létrehozása
+## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
 
 Az SQL Database szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén, amely megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha létrehoz tűzfalszabályt, hogy adott IP-címek számára megnyissa a tűzfalat. A következő lépésekkel hozzon létre egy [kiszolgálószintű SQL Database-tűzfalszabályt](sql-database-firewall-configure.md) az ügyfél IP-címéhez, és engedélyezze a külső kapcsolatokat csak az Ön IP-címéhez az SQL Database-tűzfalon keresztül. 
 
@@ -132,9 +124,7 @@ Mostantól csatlakozhat az SQL Database-kiszolgálóhoz és annak adatbázisaiho
 > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Kattintson a **KI** gombra ezen az oldalon az összes Azure-szolgáltatás hozzáférésének letiltásához.
 >
 
-<a id="query-the-sql-database" class="xliff"></a>
-
-## Az SQL-adatbázis lekérdezése
+## <a name="query-the-sql-database"></a>Az SQL-adatbázis lekérdezése
 
 Most, miután létrehozott egy mintaadatbázist az Azure-ban, az Azure Portalon található beépített lekérdezési eszközzel ellenőrizzük, hogy tud-e csatlakozni az adatbázishoz, és le tudja-e kérdezni az adatokat. 
 
@@ -165,9 +155,7 @@ Most, miután létrehozott egy mintaadatbázist az Azure-ban, az Azure Portalon 
 
 7. Zárja be a **Lekérdezésszerkesztő** lapot és az **Eszközök** lapot.
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha ezekre az erőforrásokra már nincs szüksége más útmutatókhoz/oktatóanyagokhoz (lásd [Következő lépések](#next-steps)), az alábbiak szerint törölheti azokat:
 
@@ -175,9 +163,7 @@ Ha ezekre az erőforrásokra már nincs szüksége más útmutatókhoz/oktatóan
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre. 
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy rendelkezik egy adatbázissal, csatlakoztathatja a kedvenc eszközeit, és lekérdezéseket hajthat végre velük. További információkért válassza ki az eszközt az alábbiak közül:
 

@@ -21,30 +21,22 @@ ms.lasthandoff: 05/23/2017
 
 
 ---
-<a id="developer-analytics-languages-platforms-and-integrations" class="xliff"></a>
-
-# Fejlesztői elemzések: nyelvek, platformok és integrációk
+# <a name="developer-analytics-languages-platforms-and-integrations"></a>Fejlesztői elemzések: nyelvek, platformok és integrációk
 Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósításai, amelyekről hallottunk, beleértve néhány harmadik fél által létrehozottat.
 
-<a id="languages---officially-supported-by-application-insights-team" class="xliff"></a>
-
-## Az Application Insights csapata által hivatalosan támogatott nyelvek
+## <a name="languages---officially-supported-by-application-insights-team"></a>Az Application Insights csapata által hivatalosan támogatott nyelvek
 * [C#|VB (.NET)](app-insights-asp-net.md)
 * [Java](app-insights-java-get-started.md)
 * [JavaScript-weblapok](app-insights-javascript.md)
 
-<a id="languages---community-supported" class="xliff"></a>
-
-## Közösség által támogatott nyelvek
+## <a name="languages---community-supported"></a>Közösség által támogatott nyelvek
 * [Node.JS](https://github.com/Microsoft/ApplicationInsights-node.js)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
 * [Bármi más](#projects)
 
-<a id="platforms-and-frameworks" class="xliff"></a>
-
-## Platformok és keretrendszerek
+## <a name="platforms-and-frameworks"></a>Platformok és keretrendszerek
 * [Angular](https://www.npmjs.com/package/angular-applicationinsights)
 * [ASP.NET](app-insights-asp-net.md)
 * [ASP.NET – már élő alkalmazásokhoz](app-insights-monitor-performance-live-website-now.md)
@@ -69,9 +61,7 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [Asztali Windows-alkalmazások, szolgáltatások és feldolgozói szerepkörök](app-insights-windows-desktop.md)
 * [Bármi más](#projects)
 
-<a id="logging-frameworks" class="xliff"></a>
-
-## Naplózási keretrendszerek
+## <a name="logging-frameworks"></a>Naplózási keretrendszerek
 * [Log4Net, NLog, vagy System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 * [Java, Log4J, vagy Logback](app-insights-java-trace-logs.md)
 * [Szemantikus naplózás (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) – integrálható a [szemantikus naplózási alkalmazásblokkal](https://msdn.microsoft.com/library/dn440729.aspx)
@@ -80,9 +70,7 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [OMS Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 * [Logary](https://www.nuget.org/packages/Logary.Targets.AppInsights/)
 
-<a id="content-management-systems" class="xliff"></a>
-
-## Tartalomkezelő rendszerek
+## <a name="content-management-systems"></a>Tartalomkezelő rendszerek
 * [Concrete](https://github.com/fidmor89/appInsights-Concrete)
 * [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
 * [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
@@ -90,9 +78,7 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [SharePoint](app-insights-sharepoint.md)
 * [WordPress](https://wordpress.org/plugins/application-insights/)
 
-<a id="export-and-data-analysis" class="xliff"></a>
-
-## Exportálás és adatelemzés
+## <a name="export-and-data-analysis"></a>Exportálás és adatelemzés
 * [Alooma](https://www.alooma.com/blog/application-insights-amazon-redshift)
 * [Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Stream Analytics](app-insights-export-power-bi.md)

@@ -22,9 +22,7 @@ ms.lasthandoff: 06/07/2017
 
 
 ---
-<a id="get-started-with-azure-data-lake-store-using-net-sdk" class="xliff"></a>
-
-# Az Azure Data Lake Store használatának első lépései a .NET SDK-val
+# <a name="get-started-with-azure-data-lake-store-using-net-sdk"></a>Az Azure Data Lake Store használatának első lépései a .NET SDK-val
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -39,9 +37,7 @@ ms.lasthandoff: 06/07/2017
 
 A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) segítségével, mint például a mappák létrehozása, adatfájlok le- és feltöltése stb. További információk a Data Lake-ről: [Azure Data Lake Store](data-lake-store-overview.md).
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * **Visual Studio 2013, 2015 vagy 2017** Az alábbi utasítások a Visual Studio 2015 Update 2-t használják.
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
@@ -50,9 +46,7 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
 
 * **Egy Azure Active Directory-alkalmazás létrehozása**. A Data Lake Store alkalmazás Azure AD-val történő hitelesítéséhez az Azure AD alkalmazást kell használni. Az Azure AD-val többféle módon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. A hitelesítéssel kapcsolatban a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben talál útmutatást és további tudnivalókat.
 
-<a id="create-a-net-application" class="xliff"></a>
-
-## .NET-alkalmazás létrehozása
+## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 1. Nyissa meg a Visual Studiót, és hozzon létre egy konzolalkalmazást.
 2. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 3. Az **Új projekt** területen írja be vagy válassza ki az alábbi értékeket:
@@ -117,13 +111,9 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket az [Azu
 
 A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .NET-metódusokat az olyan műveletek elvégzésére, mint a hitelesítés, a fájlok feltöltése stb.
 
-<a id="authentication" class="xliff"></a>
+## <a name="authentication"></a>Authentication
 
-## Authentication
-
-<a id="if-you-are-using-end-user-authentication-recommended-for-this-tutorial" class="xliff"></a>
-
-### Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
+### <a name="if-you-are-using-end-user-authentication-recommended-for-this-tutorial"></a>Végfelhasználói hitelesítés használata esetén (ehhez az oktatóanyaghoz ajánlott)
 
 Ezt egy meglévő Azure AD natív alkalmazással használva **interaktív** módon hitelesítheti az alkalmazást, vagyis a rendszer az Azure-beli hitelesítő adatok megadását kéri.
 
@@ -142,9 +132,7 @@ Néhány tudnivaló a fenti kódrészlettel kapcsolatban:
 * Az oktatóanyag gyorsabb teljesítése érdekében ez a kódrészlet olyan Azure AD-tartományt és ügyfél-azonosítót használ, amely minden Azure-előfizetés számára alapértelmezés szerint elérhető. Így **a kódrészletet változtatás nélkül használhatja az alkalmazásában**.
 * Ha azonban a saját Azure AD-tartományát és alkalmazásügyfél-azonosítóját szeretné használni, létre kell hoznia egy natív Azure AD-alkalmazást, majd a létrehozott alkalmazáshoz használnia kell az Azure AD-bérlőazonosítót, az ügyfél-azonosítót és az átirányítási URI-t. Útmutatásért tekintse meg az [Active Directory-alkalmazás a Data Lake Store-ral, végfelhasználói hitelesítéshez való létrehozásával](data-lake-store-end-user-authenticate-using-active-directory.md) kapcsolatos témakört.
 
-<a id="if-you-are-using-service-to-service-authentication-with-client-secret" class="xliff"></a>
-
-### Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés használata esetén
+### <a name="if-you-are-using-service-to-service-authentication-with-client-secret"></a>Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés használata esetén
 A következő kódrészlet használható az alkalmazás **nem interaktív hitelesítéséhez** az alkalmazás/egyszerű szolgáltatás titkos ügyfélkódja/kulcsa segítségével. Ez a megoldás meglévő „webes” Azure AD-alkalmazásokhoz használható. Az Azure AD-webalkalmazás létrehozásával és az alábbi kódrészlethez szükséges ügyfél-azonosító és titkos ügyfélkód lekérésével kapcsolatos útmutatásért lásd az [Active Directory-alkalmazás szolgáltatások közötti hitelesítéshez, a Data Lake Store-ral való létrehozásáról](data-lake-store-authenticate-using-active-directory.md) szóló témakört.
 
     // Service principal / appplication authentication with client secret / key
@@ -157,9 +145,7 @@ A következő kódrészlet használható az alkalmazás **nem interaktív hitele
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
     var creds = await ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential);
 
-<a id="if-you-are-using-service-to-service-authentication-with-certificate" class="xliff"></a>
-
-### Szolgáltatások közötti, tanúsítvánnyal történő hitelesítés használata esetén
+### <a name="if-you-are-using-service-to-service-authentication-with-certificate"></a>Szolgáltatások közötti, tanúsítvánnyal történő hitelesítés használata esetén
 
 Harmadik lehetőségként a következő kódrészlet is használható az alkalmazás **nem interaktív**, az Azure Active Directory-alkalmazás/egyszerű szolgáltatás tanúsítványával történő hitelesítésére. Ez [tanúsítványokkal rendelkező meglévő Azure AD-alkalmazásokhoz](../azure-resource-manager/resource-group-authenticate-service-principal.md) használható.
 
@@ -173,18 +159,14 @@ Harmadik lehetőségként a következő kódrészlet is használható az alkalma
     var clientAssertionCertificate = new ClientAssertionCertificate(webApp_clientId, clientCert);
     var creds = await ApplicationTokenProvider.LoginSilentWithCertificateAsync(domain, clientAssertionCertificate);
 
-<a id="create-client-objects" class="xliff"></a>
-
-## Ügyfélobjektumok létrehozása
+## <a name="create-client-objects"></a>Ügyfélobjektumok létrehozása
 A következő kódrészlet létrehozza a Data Lake Store-fiókot és a fájlrendszeri ügyfélobjektumokat. Ezek a szolgáltatásnak küldött kérések kiadására használatosak.
 
     // Create client objects and set the subscription ID
     _adlsClient = new DataLakeStoreAccountManagementClient(creds) { SubscriptionId = _subId };
     _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
 
-<a id="list-all-data-lake-store-accounts-within-a-subscription" class="xliff"></a>
-
-## Az összes Data Lake Store-fiók listázása egy előfizetésen belül
+## <a name="list-all-data-lake-store-accounts-within-a-subscription"></a>Az összes Data Lake Store-fiók listázása egy előfizetésen belül
 A következő kódrészlet listázza az összes Data Lake Store-fiókot egy Azure-előfizetésen belül.
 
     // List all ADLS accounts within the subscription
@@ -202,9 +184,7 @@ A következő kódrészlet listázza az összes Data Lake Store-fiókot egy Azur
         return accounts;
     }
 
-<a id="create-a-directory" class="xliff"></a>
-
-## Könyvtár létrehozása
+## <a name="create-a-directory"></a>Könyvtár létrehozása
 Az alábbi részlet egy `CreateDirectory` metódust mutat be, amely egy könyvtár létrehozására használható egy Data Lake Store-fiókon belül.
 
     // Create a directory
@@ -213,9 +193,7 @@ Az alábbi részlet egy `CreateDirectory` metódust mutat be, amely egy könyvt�
         await _adlsFileSystemClient.FileSystem.MkdirsAsync(_adlsAccountName, path);
     }
 
-<a id="upload-a-file" class="xliff"></a>
-
-## Fájl feltöltése
+## <a name="upload-a-file"></a>Fájl feltöltése
 Az alábbi részlet egy `UploadFile` metódust mutat be, amely fájlok egy Data Lake Store-fiókba való feltöltésére használható.
 
     // Upload a file
@@ -226,9 +204,7 @@ Az alábbi részlet egy `UploadFile` metódust mutat be, amely fájlok egy Data 
 
 Az SDK támogatja a rekurzív fel- és letöltést egy helyi fájlelérési út és egy Data Lake Store-fájl elérési útja között.    
 
-<a id="get-file-or-directory-info" class="xliff"></a>
-
-## Fájl vagy könyvtár adatainak lekérése
+## <a name="get-file-or-directory-info"></a>Fájl vagy könyvtár adatainak lekérése
 Az alábbi részlet egy `GetItemInfo` metódust mutat be, amely a Data Lake Store-ban elérhető fájlok vagy könyvtárak adatainak lekérésére használható.
 
     // Get file or directory info
@@ -237,9 +213,7 @@ Az alábbi részlet egy `GetItemInfo` metódust mutat be, amely a Data Lake Stor
         return await _adlsFileSystemClient.FileSystem.GetFileStatusAsync(_adlsAccountName, path).FileStatus;
     }
 
-<a id="list-file-or-directories" class="xliff"></a>
-
-## Fájlok vagy könyvtárak listázása
+## <a name="list-file-or-directories"></a>Fájlok vagy könyvtárak listázása
 Az alábbi részlet egy `ListItem` metódust mutat be, amely egy Data Lake Store-fiókban található fájlok és könyvtárak listázására használható.
 
     // List files and directories
@@ -248,9 +222,7 @@ Az alábbi részlet egy `ListItem` metódust mutat be, amely egy Data Lake Store
         return _adlsFileSystemClient.FileSystem.ListFileStatus(_adlsAccountName, directoryPath).FileStatuses.FileStatus.ToList();
     }
 
-<a id="concatenate-files" class="xliff"></a>
-
-## Fájlok összefűzése
+## <a name="concatenate-files"></a>Fájlok összefűzése
 Az alábbi részlet egy `ConcatenateFiles` metódust mutat be, amely fájlok összefűzésére használható.
 
     // Concatenate files
@@ -259,9 +231,7 @@ Az alábbi részlet egy `ConcatenateFiles` metódust mutat be, amely fájlok ös
         await _adlsFileSystemClient.FileSystem.ConcatAsync(_adlsAccountName, destFilePath, srcFilePaths);
     }
 
-<a id="append-to-a-file" class="xliff"></a>
-
-## Hozzáfűzés fájlhoz
+## <a name="append-to-a-file"></a>Hozzáfűzés fájlhoz
 Az alábbi részlet egy `AppendToFile` metódust mutat be, amely az adatok egy Data Lake Store-fiókban tárolt fájlhoz történő hozzáfűzésére használható.
 
     // Append to file
@@ -273,9 +243,7 @@ Az alábbi részlet egy `AppendToFile` metódust mutat be, amely az adatok egy D
         }
     }
 
-<a id="download-a-file" class="xliff"></a>
-
-## Fájl letöltése
+## <a name="download-a-file"></a>Fájl letöltése
 Az alábbi részlet egy `DownloadFile` metódust mutat be, amely egy fájl Data Lake Store-fiókból való letöltésére használható.
 
     // Download file
@@ -284,9 +252,7 @@ Az alábbi részlet egy `DownloadFile` metódust mutat be, amely egy fájl Data 
          _adlsFileSystemClient.FileSystem.DownloadFile(_adlsAccountName, srcFilePath, destFilePath);
     }
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)

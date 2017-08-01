@@ -21,9 +21,7 @@ ms.lasthandoff: 06/16/2017
 
 ---
 
-<a id="delegate-a-domain-to-azure-dns" class="xliff"></a>
-
-# Tartomány delegálása az Azure DNS-be
+# <a name="delegate-a-domain-to-azure-dns"></a>Tartomány delegálása az Azure DNS-be
 
 Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. Egy tartomány DNS-lekérdezései csak akkor érik el az Azure DNS-t, ha a tartomány delegálva van az Azure DNS-be a szülőtartományból. Ne feledje: nem az Azure DNS a tartományregisztráló. Ez a cikk a tartomány delegálását ismerteti az Azure DNS-be.
 
@@ -31,9 +29,7 @@ A tartományregisztrálótól vásárolt tartományokhoz a regisztráló felajá
 
 Tegyük fel például, hogy megvette a „contoso.net” tartományt, és létrehozott egy „contoso.net” nevű zónát az Azure DNS-ben. A tartomány tulajdonosaként a regisztráló felajánlja, hogy konfigurálja a tartomány névkiszolgálóinak címeit (azaz a névkiszolgálói rekordokat). A regisztráló ezeket a névkiszolgálói rekordokat a szülőtartományban, ebben az esetben a „.net” tartományban tárolja. A világ különböző pontjain található ügyfelek ekkor az Azure DNS-zónabeli tartományához irányíthatók, amikor megpróbálják feloldani a „contoso.net” DNS-rekordjait.
 
-<a id="create-a-dns-zone" class="xliff"></a>
-
-## DNS-zóna létrehozása
+## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 1. Jelentkezzen be az Azure Portalra
 1. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a DNS-zóna létrehozása panel megnyitásához.
@@ -52,9 +48,7 @@ Tegyük fel például, hogy megvette a „contoso.net” tartományt, és létre
 > [!NOTE]
 > Az erőforráscsoport az erőforráscsoport helyére vonatkozik, és nincs hatással a DNS-zónára. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
-<a id="retrieve-name-servers" class="xliff"></a>
-
-## Névkiszolgálók lekérdezése
+## <a name="retrieve-name-servers"></a>Névkiszolgálók lekérdezése
 
 Mielőtt DNS-zónáját az Azure DNS-be delegálhatná, meg kell tudnia a zóna névkiszolgálóinak neveit. Minden zóna létrehozásakor az Azure DNS egy névkiszolgálói készletből választ ki egyet.
 
@@ -68,9 +62,7 @@ Az Azure DNS automatikusan létrehozza a zóna mérvadó névkiszolgálói rekor
 
 Az alábbi példák bemutatják az egyes zónák névkiszolgálói lekérdezésének lépéseit az Azure DNS-ben a PowerShell és az Azure CLI használatával.
 
-<a id="powershell" class="xliff"></a>
-
-### PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 # The record name "@" is used to refer to records at the top of the zone.
@@ -92,9 +84,7 @@ Records           : {ns1-07.azure-dns.com., ns2-07.azure-dns.net., ns3-07.azure-
 Metadata          :
 ```
 
-<a id="azure-cli" class="xliff"></a>
-
-### Azure CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network dns record-set show --resource-group contosoRG --zone-name contoso.net --type NS --name @
@@ -128,9 +118,7 @@ A következő példa a válasz.
 }
 ```
 
-<a id="delegate-the-domain" class="xliff"></a>
-
-## A tartomány delegálása
+## <a name="delegate-the-domain"></a>A tartomány delegálása
 
 Most, hogy létrehozta a DNS-zónát, és megvannak a névkiszolgálók is, frissítenie kell a szülőtartományt az Azure DNS-névkiszolgálókkal. Minden tartományregisztráló a saját DNS-kezelési eszközeit használja a tartományok névkiszolgálói rekordjainak módosítására. A regisztráló DNS-kezelési oldalán szerkessze a névkiszolgálói rekordokat, és cserélje le őket az Azure DNS által létrehozottakra.
 
@@ -138,9 +126,7 @@ Amikor egy tartományt az Azure DNS-be delegál, az Azure DNS által nyújtott n
 
 Ne használjon „összetartó rekordokat” az Azure DNS névkiszolgálói IP-címeire való rámutatáshoz, mert ezek az IP-címek megváltozhatnak a jövőben. A saját zónájában történő, névkiszolgálói neveket használó delegálásokat – más néven „személyes névkiszolgálókat” – az Azure DNS jelenleg nem támogatja.
 
-<a id="verify-name-resolution-is-working" class="xliff"></a>
-
-## A névfeloldás működésének ellenőrzése
+## <a name="verify-name-resolution-is-working"></a>A névfeloldás működésének ellenőrzése
 
 A delegálás befejezése után ellenőrizheti, hogy a névfeloldás működik-e. Ezt például az „nslookup” vagy egy hasonló eszköz segítségével teheti meg, amely lekérdezi a zónája SOA típusú rekordját (amely szintén automatikusan létrejön a zóna létrehozásakor).
 
@@ -166,9 +152,7 @@ expire = 604800 (7 days)
 default TTL = 300 (5 mins)
 ```
 
-<a id="delegate-sub-domains-in-azure-dns" class="xliff"></a>
-
-## Altartományok delegálása az Azure DNS-ben
+## <a name="delegate-sub-domains-in-azure-dns"></a>Altartományok delegálása az Azure DNS-ben
 
 Ha különálló gyermekzónát szeretne létrehozni, azt megteheti egy altartomány Azure DNS-beli delegálásával. Tegyük fel például, hogy a „contoso.net” Azure DNS-beli beállítása és delegálása után szeretne egy különálló gyermekzónát is létrehozni, „partners.contoso.net” néven.
 
@@ -176,9 +160,7 @@ Ha különálló gyermekzónát szeretne létrehozni, azt megteheti egy altartom
 2. Keresse meg a mérvadó névkiszolgálói rekordokat a gyermekzónában, így megtalálja a gyermekzónát az Azure DNS-ben üzemeltető névkiszolgálókat.
 3. A gyermekzónára mutató szülőzónában delegálja a gyermekzónát a névkiszolgálói rekordok konfigurálásával.
 
-<a id="create-a-dns-zone" class="xliff"></a>
-
-### DNS-zóna létrehozása
+### <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 1. Jelentkezzen be az Azure Portalra
 1. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a DNS-zóna létrehozása panel megnyitásához.
@@ -197,9 +179,7 @@ Ha különálló gyermekzónát szeretne létrehozni, azt megteheti egy altartom
 > [!NOTE]
 > Az erőforráscsoport az erőforráscsoport helyére vonatkozik, és nincs hatással a DNS-zónára. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
-<a id="retrieve-name-servers" class="xliff"></a>
-
-### Névkiszolgálók lekérdezése
+### <a name="retrieve-name-servers"></a>Névkiszolgálók lekérdezése
 
 1. Ha létrehozta a DNS-zónát, az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az **Összes erőforrás** panelen kattintson a **partners.contoso.net** DNS-zónára. Ha a kiválasztott előfizetésben már több erőforrás szerepel, a DNS-zóna egyszerű eléréséhez beírhatja a **partners.contoso.net** nevet a Szűrés név alapján... mezőbe.
 
@@ -209,9 +189,7 @@ Ha különálló gyermekzónát szeretne létrehozni, azt megteheti egy altartom
 
 Az Azure DNS automatikusan létrehozza a zóna mérvadó névkiszolgálói rekordjait, amelyek a zónához rendelt névkiszolgálókat tartalmazzák.  A névkiszolgálók neveit az Azure PowerShellen vagy az Azure parancssori felületén keresztül is megtekintheti ezeknek a rekordoknak a lekérésével.
 
-<a id="create-name-server-record-in-parent-zone" class="xliff"></a>
-
-### Névkiszolgáló-rekord létrehozása a szülőzónában
+### <a name="create-name-server-record-in-parent-zone"></a>Névkiszolgáló-rekord létrehozása a szülőzónában
 
 1. Az Azure Portalon lépjen a **contoso.net** DNS-zónára.
 1. Kattintson a **+ Rekordhalmaz** gombra.
@@ -228,15 +206,11 @@ Az Azure DNS automatikusan létrehozza a zóna mérvadó névkiszolgálói rekor
    ![DNS-névkiszolgáló](./media/dns-domain-delegation/partnerzone.png)
 
 
-<a id="delegating-sub-domains-in-azure-dns-with-other-tools" class="xliff"></a>
-
-### Altartományok delegálása az Azure DNS-ben más eszközökkel
+### <a name="delegating-sub-domains-in-azure-dns-with-other-tools"></a>Altartományok delegálása az Azure DNS-ben más eszközökkel
 
 Az alábbi példák az altartományok delegálásának lépéseit mutatják be az Azure DNS-ben a PowerShell és a CLI használatával:
 
-<a id="powershell" class="xliff"></a>
-
-#### PowerShell
+#### <a name="powershell"></a>PowerShell
 
 Az alábbi PowerShell-példa bemutatja ennek működését. Ugyanezek a lépések az Azure-portálon vagy az Azure platformfüggetlen parancssori felületén keresztül is végrehajthatók.
 
@@ -274,9 +248,7 @@ partners.contoso.com
     default TTL = 300 (5 mins)
 ```
 
-<a id="azure-cli" class="xliff"></a>
-
-#### Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 #!/bin/bash
@@ -323,9 +295,7 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 az network dns record-set ns add-record --resource-group contosorg --zone-name contoso.net --record-set-name partners --nsdname ns4-09.azure-dns.info.
 ```
 
-<a id="delete-all-resources" class="xliff"></a>
-
-## Az összes erőforrás törlése
+## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 
 A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépéseket:
 
@@ -333,9 +303,7 @@ A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az 
 1. A **contosorg** panelen kattintson a **Törlés** gombra.
 1. A portál megköveteli, hogy az erőforráscsoport törlésének megerősítéséhez beírja annak nevét. Írja be a *contosorg* nevet az erőforráscsoport nevéhez, majd kattintson a **Törlés** gombra. Az erőforráscsoport törlésével az abban foglalt összes erőforrás törölve lesz, ezért mindenképp ellenőrizze az erőforráscsoportok tartalmát azok törlése előtt. A portál törli az erőforráscsoportban lévő összes erőforrást, majd magát az erőforráscsoportot is. Ez a folyamat több percig is eltarthat.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 [DNS-zónák kezelése](dns-operations-dnszones.md)
 

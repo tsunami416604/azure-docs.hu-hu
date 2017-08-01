@@ -23,17 +23,13 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/07/2017
 
 ---
-<a id="create-a-function-in-azure-that-is-triggered-by-a-timer" class="xliff"></a>
-
-# Időzítő által aktivált függvény létrehozása az Azure-ban
+# <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Időzítő által aktivált függvény létrehozása az Azure-ban
 
 Tekintse át, hogyan használhatja az Azure Functions szolgáltatást olyan függvény létrehozására, amely az Ön által meghatározott ütemezés alapján fut.
 
 ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
@@ -41,9 +37,7 @@ Az oktatóanyag elvégzéséhez:
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
-<a id="create-an-azure-function-app" class="xliff"></a>
-
-## Azure-függvényalkalmazás létrehozása
+## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -53,9 +47,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 <a name="create-function"></a>
 
-<a id="create-a-timer-triggered-function" class="xliff"></a>
-
-## Időzítő által aktivált függvény létrehozása
+## <a name="create-a-timer-triggered-function"></a>Időzítő által aktivált függvény létrehozása
 
 1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
 
@@ -78,9 +70,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 Most módosíthatja a függvény ütemezését, hogy ritkábban, például óránként egyszer fusson. 
 
-<a id="update-the-timer-schedule" class="xliff"></a>
-
-## Az időzítő ütemezésének módosítása
+## <a name="update-the-timer-schedule"></a>Az időzítő ütemezésének módosítása
 
 1. Bontsa ki a függvényt, és kattintson az **Integráció** elemre. Itt határozhatja meg a függvény bemeneti és kimeneti kötéseit, és itt állíthatja be az ütemezést is. 
 
@@ -90,15 +80,11 @@ Most módosíthatja a függvény ütemezését, hogy ritkábban, például órá
 
 A függvény ezután óránként egyszer fog futni. 
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy ütemezés alapján futó függvényt.
 

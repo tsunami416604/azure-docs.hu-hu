@@ -21,17 +21,13 @@ ms.lasthandoff: 05/19/2017
 
 
 ---
-<a id="manually-configure-application-insights-for-net-applications" class="xliff"></a>
-
-# Az Application Insights manuális beállítása a .NET-alkalmazásokhoz
+# <a name="manually-configure-application-insights-for-net-applications"></a>Az Application Insights manuális beállítása a .NET-alkalmazásokhoz
 
 Konfigurálhatja az [Application Insightsot](app-insights-overview.md) számos különféle alkalmazás vagy alkalmazás-szerepkör, -összetevő vagy mikroszolgáltatás monitorozására. A webalkalmazásokhoz és -szolgáltatásokhoz a Visual Studio [egylépéses konfigurációs lehetőséget ](app-insights-asp-net.md) biztosít. Más típusú .NET-alkalmazásokhoz, például a háttérkiszolgálói szerepkörökhöz vagy az asztali alkalmazásokhoz beállíthatja manuálisan az Application Insightsot.
 
 ![Példa teljesítményfigyelő diagramokra](./media/app-insights-windows-services/10-perf.png)
 
-<a id="before-you-start" class="xliff"></a>
-
-#### Előkészületek
+#### <a name="before-you-start"></a>Előkészületek
 
 A következők szükségesek:
 
@@ -42,9 +38,7 @@ A következők szükségesek:
 
 Az „erőforrás” az adatok összegyűjtésének és megjelenítésének helye az Azure Portalon. Választhat, hogy újat hoz-e létre, vagy megoszt egy már meglévőt.
 
-<a id="part-of-a-larger-app-use-existing-resource" class="xliff"></a>
-
-### Egy nagyobb alkalmazás része: létező erőforrás használata
+### <a name="part-of-a-larger-app-use-existing-resource"></a>Egy nagyobb alkalmazás része: létező erőforrás használata
 
 Ha a webalkalmazás több részből áll – például egy előtéri webalkalmazásból és egy vagy több háttérszolgáltatásból –, akkor minden helyről ugyanarra az erőforrásra kell telemetriát küldenie. Ez lehetővé teszi, hogy egyetlen alkalmazástérképen megjeleníthetőek legyenek, valamint nyomon követhetőek legyenek a kérések az egyes összetevők közt.
 
@@ -52,9 +46,7 @@ Ha a webalkalmazás több részből áll – például egy előtéri webalkalmaz
 
 Nyissa meg az erőforrást az [Azure Portalon](https://portal.azure.com/). 
 
-<a id="self-contained-app-create-a-new-resource" class="xliff"></a>
-
-### Önálló alkalmazás: Új erőforrás létrehozása
+### <a name="self-contained-app-create-a-new-resource"></a>Önálló alkalmazás: Új erőforrás létrehozása
 
 Ha az új alkalmazás nem kapcsolódik más alkalmazásokhoz, akkor saját erőforrása kell, hogy legyen.
 
@@ -64,9 +56,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/), és hozzon lét
 
 A kiválasztott alkalmazástípus adja meg az erőforráspanelek alapértelmezett tartalmát.
 
-<a id="2-copy-the-instrumentation-key" class="xliff"></a>
-
-## 2. A kialakítási kulcs másolása
+## <a name="2-copy-the-instrumentation-key"></a>2. A kialakítási kulcs másolása
 A kulcs azonosítja az erőforrást. Hamarosan telepíteni fogja azt az SDK-ba, hogy az adatokat az erőforrásba irányíthassa.
 
 ![Kattintson a Tulajdonságok elemre, válassza ki a kulcsot, és nyomja le a ctrl+C billentyűkombinációt.](./media/app-insights-windows-services/02-props-asp.png)
@@ -89,18 +79,14 @@ Az Application Insights-csomag telepítése és konfigurálása a használt plat
    
     Igen. Válassza a „Microsoft.ApplicationInsights” lehetőséget, ha csak a saját telemetriája küldésére kívánja használni az API-t. A Windows Server-csomag tartalmazza az API-t és más csomagokat, például a teljesítményszámlálót és a függőségmonitorozást. 
 
-<a id="to-upgrade-to-future-package-versions" class="xliff"></a>
-
-### Frissítés a jövőbeli csomagverziókra
+### <a name="to-upgrade-to-future-package-versions"></a>Frissítés a jövőbeli csomagverziókra
 Időről-időre kiadunk egy új SDK-verziót.
 
 Ha frissíteni szeretne egy [új csomagkiadásra](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/), nyissa meg ismét a NuGet-csomagkezelőt, és szűréssel keresse meg a telepített csomagokat. Jelölje ki a **Microsoft.ApplicationInsights.WindowsServer** lehetőséget, és válassza az **Upgrade** (Frissítés) lehetőséget.
 
 Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt, majd egyesítse a módosításait az új verzióval.
 
-<a id="4-send-telemetry" class="xliff"></a>
-
-## 4. Telemetria küldése
+## <a name="4-send-telemetry"></a>4. Telemetria küldése
 **Ha csak az API-csomagot telepítette:**
 
 * Állítsa be a rendszerállapotkulcsot a kódban, például `main()`: 
@@ -133,31 +119,23 @@ Az Áttekintés diagramokon keresse meg az adatot. Először csak egy vagy két 
 
 Részletesebb mérőszámokért kattintson bármelyik diagramra. [További információk a metrikákról.](app-insights-web-monitor-performance.md)
 
-<a id="no-data" class="xliff"></a>
-
-### Nincs adat?
+### <a name="no-data"></a>Nincs adat?
 * Az alkalmazás segítségével nyisson meg különböző oldalakat, hogy létrejöjjön némi telemetria.
 * Az egyes események megtekintéséhez nyissa meg a [Keresés](app-insights-diagnostic-search.md)csempét. Események esetében kicsit tovább is eltarthat a mérőszámok folyamatain való végighaladás.
 * Várjon néhány másodpercet, és kattintson a **Frissítés** lehetőségre. A diagramok rendszeres időközönként frissülnek, de manuálisan is frissítheti őket, ha várja valamilyen adatok megjelenését.
 * Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).
 
-<a id="publish-your-app" class="xliff"></a>
-
-## Az alkalmazás közzététele
+## <a name="publish-your-app"></a>Az alkalmazás közzététele
 Most telepítse az alkalmazását a kiszolgálóra vagy az Azure-ba, és figyelje meg, hogyan gyűlnek az adatok.
 
 ![Az alkalmazás közzététele a Visual Studio segítségével](./media/app-insights-windows-services/15-publish.png)
 
 Ha hibakeresési módban futtatja az alkalmazást, az egész folyamatban szolgáltat telemetriát a rendszer, így másodperceken belül meg kell jelenniük az adatoknak. Ha Kiadás konfigurációban telepíti az alkalmazását, az adatok lassabban gyűlnek.
 
-<a id="no-data-after-you-publish-to-your-server" class="xliff"></a>
-
-### Nem lát adatokat a kiszolgálón való közzététel után?
+### <a name="no-data-after-you-publish-to-your-server"></a>Nem lát adatokat a kiszolgálón való közzététel után?
 Nyissa meg a portokat a kimenő forgalom számára a kiszolgáló tűzfalán. A szükséges címek listája [ezen az oldalon](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses) tekinthető meg 
 
-<a id="trouble-on-your-build-server" class="xliff"></a>
-
-### Probléma adódott a lemezképfájl-kiszolgálóján?
+### <a name="trouble-on-your-build-server"></a>Probléma adódott a lemezképfájl-kiszolgálóján?
 Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
 
 > [!NOTE]
@@ -166,15 +144,11 @@ Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-
 > 
 > 
 
-<a id="video" class="xliff"></a>
-
-## Videó
+## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [További telemetriák hozzáadásával](app-insights-asp-net-more.md) az alkalmazást teljes körűen megfigyelheti.
 
 

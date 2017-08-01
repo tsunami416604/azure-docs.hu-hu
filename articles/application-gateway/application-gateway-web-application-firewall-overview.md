@@ -23,9 +23,7 @@ ms.lasthandoff: 06/07/2017
 
 ---
 
-<a id="web-application-firewall-waf" class="xliff"></a>
-
-# Webalkalmazási tűzfal (WAF)
+# <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
 A webalkalmazási tűzfal (WAF) az Application Gateway egyik szolgáltatása, amely központi védelmet nyújt a webalkalmazásoknak a gyakori biztonsági rések ellen. 
 
@@ -35,37 +33,27 @@ A webalkalmazási tűzfal az [alapvető OWASP-szabálykészletek](https://www.ow
 
 Az Application Gateway egy alkalmazáskézbesítési vezérlőként működik, és SSL-lezárást, cookie-alapú munkamenet-affinitást, ciklikus időszeleteléses terheléselosztást, tartalomalapú útválasztást, valamint több webhely és biztonsági fejlesztés üzemeltetésének képességét kínálja. Az Application Gateway által kínált biztonsági fejlesztések között szerepel az SSL-házirend kezelése és a végpontok közötti SSL-támogatás. Az ADC-ajánlatba közvetlenül integrált WAF (webalkalmazási tűzfal) tovább erősíti az alkalmazásbiztonságot. Ez egy könnyen konfigurálható központi helyet biztosít a webalkalmazások kezeléséhez és a gyakori webes biztonsági rések elleni védelemhez.
 
-<a id="benefits" class="xliff"></a>
-
-## Előnyök
+## <a name="benefits"></a>Előnyök
 
 Az alábbiak az Application Gateway és a webalkalmazási tűzfal használatának legfontosabb előnyei:
 
-<a id="protection" class="xliff"></a>
-
-### Védelem
+### <a name="protection"></a>Védelem
 
 * A háttérkód módosítása nélkül védheti a webalkalmazásokat a webes biztonsági résektől és támadásoktól.
 
 * Egyszerre több webalkalmazást védhet egy Application Gateway mögött. Az Application Gateway akár 20 webhely üzemeltetését is támogatja egyetlen átjáró mögött, amelyek a WAF segítségével mind védhetők a webes támadásokkal szemben.
 
-<a id="monitoring" class="xliff"></a>
-
-### Figyelés
+### <a name="monitoring"></a>Figyelés
 
 * Valós idejű WAF-naplók segítségével követheti nyomon a webalkalmazást fenyegető támadásokat. A WAF-riasztások és -naplók nyomon követése, illetve a tendenciák kimutatása érdekében ezek a naplók integrálva vannak az [Azure Monitorral](../monitoring-and-diagnostics/monitoring-overview.md).
 
 * A WAF hamarosan az Azure Security Centerrel is integrálva lesz. Az Azure Security Center egyetlen központi helyen jeleníti meg minden Azure-erőforrás biztonsági állapotát.
 
-<a id="customization" class="xliff"></a>
-
-### Testreszabás
+### <a name="customization"></a>Testreszabás
 
 * A WAF-szabályok és -szabálycsoportok testreszabhatók az alkalmazás követelményeinek való megfelelés, illetve a téves riasztások kiszűrése érdekében.
 
-<a id="features" class="xliff"></a>
-
-## Szolgáltatások
+## <a name="features"></a>Szolgáltatások
 
 A webalkalmazási tűzfal alapértelmezés szerint a CRS 3.0-s verziójával van előre konfigurálva, de a 2.2.9-es verzió használata mellett is dönthet. A CRS 3.0-s verziója esetén kevesebb hibás riasztással kell számolnia, mint a 2.2.9-es verziónál. A [szabályok igény szerinti testreszabására](application-gateway-customize-waf-rules-portal.md) is lehetősége van. A webalkalmazási tűzfal többek között a következő gyakori internetes biztonsági rések ellen nyújt védelmet:
 
@@ -79,15 +67,11 @@ A webalkalmazási tűzfal alapértelmezés szerint a CRS 3.0-s verziójával van
 
 A szabályok és a hozzájuk tartozó védelmi megoldások részletesebb listáját az [Alapvető szabálykészletek](#core-rule-sets) című szakasz tartalmazza.
 
-<a id="core-rule-sets" class="xliff"></a>
-
-### Alapvető szabálykészletek
+### <a name="core-rule-sets"></a>Alapvető szabálykészletek
 
 Az Application Gateway a következő két szabálykészletet támogatja: CRS 3.0 és CRS 2.2.9. Ezek az alapvető szabálykészletek olyan szabályok gyűjteményei, amelyek megvédik a webalkalmazásokat a kártékony tevékenységek ellen.
 
-<a id="owasp30" class="xliff"></a>
-
-#### OWASP_3.0
+#### <a name="owasp30"></a>OWASP_3.0
 
 A mellékelt 3.0-s alapvető szabálykészlet 13 szabálycsoportot tartalmaz, ahogy a következő táblázatban is látható. Ezen szabálycsoportok mindegyike több, egyenként letiltható szabályt tartalmaz.
 
@@ -107,9 +91,7 @@ A mellékelt 3.0-s alapvető szabálykészlet 13 szabálycsoportot tartalmaz, ah
 |**[REQUEST-942-APPLICATION-ATTACK-SQLI](application-gateway-crs-rulegroups-rules.md#crs942)**|Az SQL-injektálási támadások ellen védelmet biztosító szabályokat tartalmaz.|
 |**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](application-gateway-crs-rulegroups-rules.md#crs943)**|A munkamenet-rögzítési támadások ellen védelmet biztosító szabályokat tartalmaz.|
 
-<a id="owasp229" class="xliff"></a>
-
-#### OWASP_2.2.9
+#### <a name="owasp229"></a>OWASP_2.2.9
 
 A mellékelt 2.2.9-es alapvető szabálykészlet 10 szabálycsoportot tartalmaz, ahogy a következő táblázatban is látható. Ezen szabálycsoportok mindegyike több, egyenként letiltható szabályt tartalmaz.
 
@@ -126,9 +108,7 @@ A mellékelt 2.2.9-es alapvető szabálykészlet 10 szabálycsoportot tartalmaz,
 |**[crs_42_tight_security](application-gateway-crs-rulegroups-rules.md#crs42)**|Az elérésiút-átjárási támadások ellen védelmet biztosító szabályokat tartalmaz.|
 |**[crs_45_trojans](application-gateway-crs-rulegroups-rules.md#crs45)**|A backdoor trójai programok ellen védelmet biztosító szabályokat tartalmaz.|
 
-<a id="waf-modes" class="xliff"></a>
-
-### WAF-üzemmódok
+### <a name="waf-modes"></a>WAF-üzemmódok
 
 Az Application Gateway WAF az alábbi két üzemmódban való futtatásra konfigurálható:
 
@@ -141,23 +121,17 @@ Fontos az alkalmazásátjáró állapotának folyamatos figyelése. A webalkalma
 
 ![diagnosztika](./media/application-gateway-web-application-firewall-overview/diagnostics.png)
 
-<a id="azure-monitor" class="xliff"></a>
-
-#### Azure Monitor
+#### <a name="azure-monitor"></a>Azure Monitor
 
 Az Application Gateway-naplók integrálva vannak az [Azure Monitorral](../monitoring-and-diagnostics/monitoring-overview.md),  ami lehetővé teszi a diagnosztikai információk (például a WAF-riasztások és -naplók) nyomon követését.  Ez a képesség a portál Application Gateway-erőforrásának **Diagnosztika** lapján vagy közvetlenül az Azure Monitor szolgáltatáson keresztül érhető el. További információk az Application Gateway diagnosztikai naplóinak engedélyezéséről: [Application Gateway-diagnosztika](application-gateway-diagnostics.md)
 
-<a id="azure-security-center" class="xliff"></a>
-
-#### Azure Security Center
+#### <a name="azure-security-center"></a>Azure Security Center
 
 [Az Azure Security Center](../security-center/security-center-intro.md) az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Az alkalmazásátjáró most már [integrálható az Azure Security Centerbe](application-gateway-integration-security-center.md). Az Azure Security Center átvizsgálja a környezetet védelem nélküli webalkalmazásokat keresve. Ezek után javasolhatja az alkalmazásátjáró WAF-nak a sebezhető erőforrások védelmét. Közvetlenül létrehozhat alkalmazásátjáró WAF-ot az Azure Security Centerből.  Ezek a WAF-példányok az Azure Security Centerbe integrálódnak, és a jelentésekhez használható riasztásokat, valamint állapotinformációkat fognak visszaküldeni az Azure Security Centerbe.
 
 ![1. ábra](./media/application-gateway-web-application-firewall-overview/figure1.png)
 
-<a id="logging" class="xliff"></a>
-
-#### Naplózás
+#### <a name="logging"></a>Naplózás
 
 Az Application Gateway WAF részletes jelentéseket biztosít az összes észlelt fenyegetésről. A naplózás integrálva van az Azure Diagnostics naplóival, a riasztások pedig JSON formátumban vannak rögzítve. Ezek a naplók integrálhatók a [Log Analytics-be](../log-analytics/log-analytics-azure-networking-analytics.md).
 
@@ -191,17 +165,13 @@ Az Application Gateway WAF részletes jelentéseket biztosít az összes észlel
 
 ```
 
-<a id="application-gateway-waf-sku-pricing" class="xliff"></a>
-
-## Application Gateway WAF – A termékváltozat díjszabása
+## <a name="application-gateway-waf-sku-pricing"></a>Application Gateway WAF – A termékváltozat díjszabása
 
 A webalkalmazási tűzfal az új WAF termékváltozatban érhető el. Ez a termékváltozat kizárólag az Azure Resource Manager üzembe helyezési modelljében érhető el, a klasszikus üzemi modellben nem. A WAF termékváltozat csak közepes és nagy méretű alkalmazásátjáró-példányokhoz használható. Az alkalmazásátjárókra vonatkozó összes korlátozás a WAF termékváltozatra is érvényes. A díjszabás az átjárópéldányok óránkénti díján és az adatfeldolgozási díjon alapul. A WAF termékváltozathoz tartozó óránkénti átjáródíj eltér a normál termékváltozat díjaitól, és az [Application Gateway díjszabását](https://azure.microsoft.com/pricing/details/application-gateway/) ismertető webhelyen tekinthető meg. Az adatfeldolgozási díjak nem változnak. Nincsenek szabályonként vagy szabálycsoportonként kiszabott díjak. Ugyanazzal a webalkalmazási tűzfallal több webalkalmazást is elláthat védelemmel, többletköltség nélkül. 
 
 A WAF számlázási időszaka 2017. május 5-től indul, addig a WAF termékváltozathoz tartozó átjárók esetében is a normál díjszabás lesz érvényben.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután részletesebben megismerkedett a WAF képességeivel, tekintse meg a [webalkalmazási tűzfal Application Gatewayen történő konfigurálását](application-gateway-web-application-firewall-portal.md) ismertető cikket.
 

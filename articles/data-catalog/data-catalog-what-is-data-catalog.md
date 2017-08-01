@@ -23,16 +23,12 @@ ms.lasthandoff: 06/05/2017
 
 
 ---
-<a id="what-is-azure-data-catalog" class="xliff"></a>
-
-# Mi az az Azure Data Catalog?
+# <a name="what-is-azure-data-catalog"></a>Mi az az Azure Data Catalog?
 Az Azure Data Catalog egy teljes körűen felügyelt felhőszolgáltatás, amely segít a felhasználóknak megtalálni a keresett adatforrásokat és értelmezni őket. Eközben a Data Catalog a vállalatoknak is segít még több értéket kinyerni a meglévő befektetésekből. 
 
 A Data Catalog segítségével bármely felhasználó (elemző, adattudós, vagy fejlesztő) felfedezhet, értelmezhet és felhasználhat adatforrásokat. A Data Catalog tartalmaz egy közösségi modellt is a metaadatok és megjegyzések kiszervezéséhez. A vállalat felhasználói egyetlen központi helyen oszthatják meg ismereteiket egymással és építhetnek közösséget és kultúrát az adatok köré.
 
-<a id="discovery-challenges-for-data-consumers" class="xliff"></a>
-
-## Az adatok felfedezésének kihívásai az adatfelhasználók számára
+## <a name="discovery-challenges-for-data-consumers"></a>Az adatok felfedezésének kihívásai az adatfelhasználók számára
 A vállalati adatforrások felfedezése hosszú ideje egy organikus, kollektív tudáson alapú folyamat. Ez számos kihívást gördít azon vállalatok elé, akik az információs adategységeiket a lehető leghatékonyabban szeretnék kihasználni:
 
 * A felhasználók lehet, hogy csak akkor szereznek tudomást egy adatforrás létezéséről, amikor egy másik munkafolyamat során kapcsolatba kerülnek vele. Nincs egyetlen központi hely az adatforrások nyilvántartására.
@@ -41,9 +37,7 @@ A vállalati adatforrások felfedezése hosszú ideje egy organikus, kollektív 
 * Ha a felhasználóknak kérdése van egy adott információval kapcsolatban, személyesen kell megkeresniük az adatokért felelős szakembert vagy csapatot. Nincs explicit kapcsolat az adatok és az azok felhasználására szakértői módon rálátó emberek között.
 * Hacsak egy felhasználó nincs tisztában az adatforráshoz való hozzáférés kérelmezésének menetével, az adatforrás és a hozzá tartozó dokumentáció felfedezésével még mindig nem fér hozzá a szükséges adatokhoz.
 
-<a id="discovery-challenges-for-data-producers" class="xliff"></a>
-
-## Az adatok felfedezésének kihívásai az adatalkotók számára
+## <a name="discovery-challenges-for-data-producers"></a>Az adatok felfedezésének kihívásai az adatalkotók számára
 Miközben az adatfelhasználók mindezekkel az említett kihívásokkal néznek szembe, az információs adategységek létrehozásáért és fenntartásáért felelős felhasználóknak szintén megvannak a saját kihívásaik:
 
 * Az adatforrások felcímkézése tájékoztató jellegű metaadatokkal gyakran hiábavalónak bizonyul. Az ügyfélalkalmazások általában figyelmen kívül hagyják az adatforrásban tárolt tájékoztatókat.
@@ -53,9 +47,7 @@ Miközben az adatfelhasználók mindezekkel az említett kihívásokkal néznek 
 
 Az ilyen kihívások együttesen jelentős korlátokat állítanak a vállalatok elé, akik szorgalmazni kívánják a vállalati adatok felhasználását és értelmezését.
 
-<a id="azure-data-catalog-can-help" class="xliff"></a>
-
-## Az Azure Data Catalog segíthet
+## <a name="azure-data-catalog-can-help"></a>Az Azure Data Catalog segíthet
 A Data Catalog szolgáltatást arra tervezték, hogy megoldja ezeket a problémákat, és segítsen a vállalatoknak a lehető leghatékonyabban kihasználni a meglévő információs eszközeiket. A Data Catalog az adatforrásokat könnyen felfedezhetővé és értelmezhetővé teszi azon felhasználók számára, akik a bennük foglalt adatokat kezelik.
 
 A Data Catalog egy felhőalapú szolgáltatást biztosít, amelybe az adatforrásokat regisztrálni lehet. Az adatok az eredeti helyükön maradnak, de a metaadatok másolatai bekerülnek a Data Catalog katalógusába, az adatforrások helyére mutató hivatkozásokkal együtt. A metaadatok indexelésének köszönhetően az adatforrások egy egyszerű keresés által felfedezhetővé és könnyen értelmezhetővé válnak a felhasználók számára.
@@ -68,9 +60,7 @@ Ezzel egy időben a regisztrált adatforrások címkézésével, dokumentáció,
 
 ![A Data Catalog képességei](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
 
-<a id="learn-more-about-data-catalog" class="xliff"></a>
-
-## További információ a Data Catalog szolgáltatásról
+## <a name="learn-more-about-data-catalog"></a>További információ a Data Catalog szolgáltatásról
 A Data Catalog képességeinek bővebb megismeréséhez lásd a következő témaköröket:
 
 * [Adatforrások regisztrálása](data-catalog-how-to-register.md)
@@ -83,9 +73,7 @@ A Data Catalog képességeinek bővebb megismeréséhez lásd a következő tém
 * [Az üzleti szószedet összeállítása](data-catalog-how-to-business-glossary.md)
 * [Gyakori kérdések](data-catalog-frequently-asked-questions.md)
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A Data Catalog használatával itt ismerkedhet meg:
 * [Microsoft Azure Data Catalog](https://www.azuredatacatalog.com)
 * [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)

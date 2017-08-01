@@ -23,9 +23,7 @@ ms.lasthandoff: 06/07/2017
 
 
 ---
-<a id="configure-expressroute-and-site-to-site-coexisting-connections" class="xliff"></a>
-
-# Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell – Klasszikus](expressroute-howto-coexist-classic.md)
@@ -39,21 +37,15 @@ Az egyidejű helyek közötti VPN- és ExpressRoute-kapcsolatok konfigurálása 
 > 
 > 
 
-<a id="limits-and-limitations" class="xliff"></a>
-
-## Korlátok és korlátozások
+## <a name="limits-and-limitations"></a>Korlátok és korlátozások
 * **A tranzit útválasztás nem támogatott.** Nem hajthat végre útválasztást (az Azure-on keresztül) a helyek közötti VPN használatával csatlakoztatott helyi hálózat és az ExpressRoute használatával csatlakoztatott helyi hálózat között.
 * **A Basic SKU-átjáró nem támogatott.** Nem Basic SKU-átjárót kell használnia [ExpressRoute-](expressroute-about-virtual-network-gateways.md) és [VPN-átjáróként](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 * **Kizárólag az útvonalalapú VPN-átjáró támogatott.** Útvonalalapú [VPN-átjárót](../vpn-gateway/vpn-gateway-about-vpngateways.md) kell használnia.
 * **A VPN-átjáróhoz statikus útvonalat kell konfigurálni.** Ha a helyi hálózat az ExpressRoute-hoz és a helyek közötti VPN-hez is csatlakozik, konfigurálnia kell egy statikus útvonalat a helyi hálózaton a helyek közötti VPN-kapcsolat a nyilvános internetre történő átirányításához.
 * **Elsőként az ExpressRoute-átjárót kell konfigurálnia és csatlakoztatnia egy kapcsolatcsoporthoz.** Elsőként az ExpressRoute-átjárót konfigurálja és csatlakoztassa egy kapcsolatcsoporthoz, és csak ezután vegye fel a helyek közötti VPN-átjárót.
 
-<a id="configuration-designs" class="xliff"></a>
-
-## Konfigurációs tervek
-<a id="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute" class="xliff"></a>
-
-### Helyek közötti VPN konfigurálása feladatátvételi útvonalként az ExpressRoute számára
+## <a name="configuration-designs"></a>Konfigurációs tervek
+### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Helyek közötti VPN konfigurálása feladatátvételi útvonalként az ExpressRoute számára
 Konfigurálhat egy helyek közötti VPN-kapcsolatot tartalékként az ExpressRoute számára. Ez csak az Azure privát társviszony-létesítési útvonalhoz társított virtuális hálózatokra vonatkozik. Az Azure nyilvános és a Microsoft társviszony-létesítésekhez nem létezik VPN-alapú feladatátvételi megoldás. Minden esetben az ExpressRoute-kapcsolatcsoport az elsődleges kapcsolat. Az adatok csak akkor lesznek a helyek közötti VPN-útvonalon továbbítva, ha az ExpressRoute-kapcsolatcsoport meghibásodik.
 
 > [!NOTE]
@@ -63,9 +55,7 @@ Konfigurálhat egy helyek közötti VPN-kapcsolatot tartalékként az ExpressRou
 
 ![Egyidejű jelenlét](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
 
-<a id="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute" class="xliff"></a>
-
-### Helyek közötti VPN konfigurálása az ExpressRoute használatával nem csatlakozó helyekhez
+### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>Helyek közötti VPN konfigurálása az ExpressRoute használatával nem csatlakozó helyekhez
 A hálózatát konfigurálhatja úgy is, hogy egyes helyek közvetlenül az Azure-hoz kapcsolódnak helyek közötti VPN-en keresztül, míg más helyek az ExpressRoute használatával kapcsolódnak. 
 
 ![Egyidejű jelenlét](media/expressroute-howto-coexist-resource-manager/scenario2.jpg)
@@ -75,9 +65,7 @@ A hálózatát konfigurálhatja úgy is, hogy egyes helyek közvetlenül az Azur
 > 
 > 
 
-<a id="selecting-the-steps-to-use" class="xliff"></a>
-
-## A használni kívánt lépések kiválasztása
+## <a name="selecting-the-steps-to-use"></a>A használni kívánt lépések kiválasztása
 Két különböző eljáráscsoport közül választhat. A konfigurálás választott módja attól függ, hogy rendelkezik-e meglévő virtuális hálózattal, amelyhez csatlakozni szeretne, vagy egy új virtuális hálózatot szeretne létrehozni.
 
 * Nem rendelkezem VNettel, és létre kell hoznom egyet.
@@ -223,9 +211,7 @@ Ha az átjáró-alhálózat /27 vagy nagyobb, és a virtuális hálózat Express
   ```
 5. Ezen a ponton egy átjáró nélküli VNettel rendelkezik. Új átjárók létrehozásához és a kapcsolatok véglegesítéséhez folytathatja az előző lépéssorban foglalt [4. lépés – ExpressRoute-átjáró létrehozása](#gw) lépéssel.
 
-<a id="to-add-point-to-site-configuration-to-the-vpn-gateway" class="xliff"></a>
-
-## Pont-hely konfiguráció hozzáadása a VPN-átjáróhoz
+## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Pont-hely konfiguráció hozzáadása a VPN-átjáróhoz
 Az alábbi lépések végrehajtásával pont–hely konfigurációt adhat hozzá a VPN-átjáróhoz egyidejű jelenléttel rendelkező beállításokban.
 
 1. Adja hozzá a VPN-ügyfél címterét.
@@ -246,8 +232,6 @@ Az alábbi lépések végrehajtásával pont–hely konfigurációt adhat hozzá
 
 A pont-hely VPN-ekkel kapcsolatos további információkért lásd: [Pont-hely kapcsolat konfigurálása](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
 

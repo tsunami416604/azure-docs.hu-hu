@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-1-create-a-new-tabular-model-project" class="xliff"></a>
-
-# 1. lecke: Új táblázatos modellprojekt létrehozása
+# <a name="lesson-1-create-a-new-tabular-model-project"></a>1. lecke: Új táblázatos modellprojekt létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -32,18 +30,12 @@ Ebben a leckében az SQL Server Data Tools (SSDT) használatával hozhat létre 
   
 A lecke elvégzésének várható időtartama: **10 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellek létrehozását ismertető oktatóanyag első leckéje. A lecke elvégzéséhez néhány előfeltételnek teljesülnie kell. További információ: [Azure Analysis Services – Adventure Works-oktatóanyag](../tutorials/aas-adventure-works-tutorial.md).  
   
-<a id="create-a-new-tabular-model-project" class="xliff"></a>
-
-## Új táblázatosmodell-projekt létrehozása  
+## <a name="create-a-new-tabular-model-project"></a>Új táblázatosmodell-projekt létrehozása  
   
-<a id="to-create-a-new-tabular-model-project" class="xliff"></a>
-
-#### Új táblázatosmodell-projekt létrehozása  
+#### <a name="to-create-a-new-tabular-model-project"></a>Új táblázatosmodell-projekt létrehozása  
   
 1.  Az SSDT **Fájl** menüjében kattintson az **Új** > **Projekt** elemre.  
   
@@ -66,9 +58,7 @@ Ez a témakör a táblázatos modellek létrehozását ismertető oktatóanyag e
     Ha nem látja az SQL Server 2017 / Azure Analysis Services (1400) lehetőséget a Kompatibilitási szint listában, akkor nem az SSDT legújabb verzióját használja. A legújabb verzió beszerzése: [Az SQL Server Data Tools telepítése](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
       
   
-<a id="understanding-the-ssdt-tabular-model-authoring-environment" class="xliff"></a>
-
-## Az SSDT táblázatosmodell-létrehozási környezetének megismerése  
+## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Az SSDT táblázatosmodell-létrehozási környezetének megismerése  
 Az új táblázatosmodell-projekt létrehozása után szánjon néhány percet az SSDT táblázatosmodell-létrehozási környezetének felfedezésére.  
   
 A létrehozott projekt megnyílik az SSDT-ben. A jobb oldalon, a **Táblázatosmodell-tallózóban** láthatja a modellben található objektumok fanézetét. Mivel még nem importált adatokat, a mappák üresek. A jobb gombbal egy objektummappára kattintva műveleteket hajthat végre, a menüsorhoz hasonló módon. Az oktatóanyag elvégzése során a Táblázatosmodell-tallózóval navigálhat a modellprojekt különböző objektumai között.
@@ -92,9 +82,7 @@ Az SSDT telepítésekor a Visual Studio-környezet több új menüelemmel bővü
 Fedezze fel a táblázatos modellek létrehozásával kapcsolatos különféle funkciók párbeszédpaneljeit és helyét. Habár néhány elem egyelőre nem aktív, jó képet kaphat a táblázatosmodell-létrehozási környezetről.  
   
 
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 [2. lecke: Az adatok beszerzése](../tutorials/aas-lesson-2-get-data.md).
 
   

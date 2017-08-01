@@ -22,18 +22,14 @@ ms.lasthandoff: 06/01/2017
 
 
 ---
-<a id="filter-network-traffic-with-network-security-groups" class="xliff"></a>
-
-# Hálózati forgalom szűrése hálózati biztonsági csoportokkal
+# <a name="filter-network-traffic-with-network-security-groups"></a>Hálózati forgalom szűrése hálózati biztonsági csoportokkal
 
 A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra. A forgalom tovább korlátozható egy NGS-t virtuális géphez vagy hálózati adapterhez társításával.
 
 > [!NOTE]
 > Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md). A jelen cikk mindkét modell használatát bemutatja, de a Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
-<a id="nsg-resource" class="xliff"></a>
-
-## NSG-erőforrás
+## <a name="nsg-resource"></a>NSG-erőforrás
 Az NSG-k az alábbi tulajdonságokat tartalmazzák:
 
 | Tulajdonság | Leírás | Korlátozások | Megfontolandó szempontok |
@@ -47,9 +43,7 @@ Az NSG-k az alábbi tulajdonságokat tartalmazzák:
 > A végpont-alapú ACL-ek és hálózati biztonsági csoportok nem támogatottak ugyanazon a virtuálisgép-példányon. Ha használni szeretne egy NSG-t, és már be van állítva egy végponti ACL, először el kell távolítani a végponti ACL-t. Az ACL-ek eltávolításával kapcsolatban olvassa el [a hozzáférés-vezérlési listák a végpontoknál, a PowerShell-lel való kezelésével](virtual-networks-acl-powershell.md) kapcsolatos cikket.
 > 
 
-<a id="nsg-rules" class="xliff"></a>
-
-### NSG-szabályok
+### <a name="nsg-rules"></a>NSG-szabályok
 Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák:
 
 | Tulajdonság | Leírás | Korlátozások | Megfontolások |
@@ -70,18 +64,14 @@ Az NSG-k két szabálykészletet tartalmaznak: bejövőt és kimenőt. A szabál
 
 Az előző ábrán az NSG-szabályok feldolgozásának folyamata látható.
 
-<a id="default-tags" class="xliff"></a>
-
-### Alapértelmezett címkék
+### <a name="default-tags"></a>Alapértelmezett címkék
 Az alapértelmezett címkék olyan rendszer által biztosított azonosítók, amelyek az IP-címek egy kategóriáját célozzák meg. Az alapértelmezett címkéket a szabályok tulajdonságainak **forráscím-előtagjában** és **célcím-előtagjában** lehet használni. Háromféle alapértelmezett címkét lehet használni:
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** klasszikus telepítéshez): Ez a címke tartalmazza a virtuális hálózat címterét (az Azure-ban meghatározott CIDR-tartományok), valamint az összes csatlakoztatott helyszíni címteret és a csatlakoztatott Azure virtuális hálózatokat (helyi hálózatokat).
 * **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra terheléselosztóját jelöli. A címkét a rendszer lefordítja arra az Azure-adatközponti IP-címre, ahonnan az Azure állapot-mintavételei származnak.
 * **Internet** (Resource Manager) (**INTERNET** klasszikus telepítéshez): Ez a címke azt az IP-címteret jelöli, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el. A tartományba beletartozik az [Azure tulajdonában lévő nyilvános IP-címtér](https://www.microsoft.com/download/details.aspx?id=41653) is.
 
-<a id="default-rules" class="xliff"></a>
-
-### Alapértelmezett szabályok
+### <a name="default-rules"></a>Alapértelmezett szabályok
 Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezett szabályokat nem lehet törölni, de mivel a legalacsonyabb prioritást rendelték hozzájuk, a létrehozott szabályok felülbírálhatják azokat. 
 
 Az alapértelmezett szabályok az alábbiak szerint engedélyezik és tiltják le a forgalmat:
@@ -105,9 +95,7 @@ Az alapértelmezett szabályok az alábbiak szerint engedélyezik és tiltják l
 | AllowInternetOutBound | 65001 | * | * | Internet | * | * | Engedélyezés |
 | DenyAllOutBound | 65500 | * | * | * | * | * | Megtagadás |
 
-<a id="associating-nsgs" class="xliff"></a>
-
-## Az NSG-k társítása
+## <a name="associating-nsgs"></a>Az NSG-k társítása
 Az NSG-ket virtuális gépekhez, hálózati adapterekhez és alhálózatokhoz is társíthatja attól függően, hogy milyen üzembe helyezési modellt használ, a következők szerint:
 
 * **VM (csak klasszikus modell):** A biztonsági szabályok a virtuális gép teljes bejövő és kimenő forgalmára érvényesek. 
@@ -132,9 +120,7 @@ Különböző NSG-ket társíthat egy virtuális géphez (vagy hálózati adapte
 > Bár egy alhálózathoz, virtuális géphez vagy hálózati adapterhez csak egy NSG-t lehet társítani, ugyanazt az NSG-t korlátlan számú erőforráshoz hozzá lehet rendelni.
 >
 
-<a id="implementation" class="xliff"></a>
-
-## Megvalósítás
+## <a name="implementation"></a>Megvalósítás
 Az NSG-ket a klasszikus és a Resource Manager-alapú üzemi modellel is meg lehet valósítani az alábbi eszközökkel:
 
 | Üzembe helyezési eszköz | Klasszikus | Resource Manager |
@@ -145,9 +131,7 @@ Az NSG-ket a klasszikus és a Resource Manager-alapú üzemi modellel is meg leh
 | Azure CLI **V2**   | Nem | [Igen](virtual-networks-create-nsg-arm-cli.md) |
 | Azure Resource Manager-sablon   | Nem  | [Igen](virtual-networks-create-nsg-arm-template.md) |
 
-<a id="planning" class="xliff"></a>
-
-## Tervezés
+## <a name="planning"></a>Tervezés
 Az NSG-k megvalósítása előtt válaszolnia kell az alábbi kérdésekre:
 
 1. Milyen típusú erőforrások bejövő és kimenő forgalmát szeretné szűrni? Csatlakoztathat erőforrásokat, például hálózati adaptereket (Resource Manager-alapú modell), virtuális gépeket (klasszikus modell), felhőszolgáltatásokat, alkalmazásszolgáltatási környezeteket és virtuálisgép-méretezési csoportokat. 
@@ -155,59 +139,41 @@ Az NSG-k megvalósítása előtt válaszolnia kell az alábbi kérdésekre:
 
 A hálózati biztonság Azure-ban történő megtervezésével kapcsolatos további információkért olvassa el [a felhőszolgáltatásokkal és a hálózati biztonsággal](../best-practices-network-security.md) kapcsolatos cikket. 
 
-<a id="design-considerations" class="xliff"></a>
-
-## Kialakítási szempontok
+## <a name="design-considerations"></a>Kialakítási szempontok
 Ha megválaszolta a [Tervezés](#Planning) szakasz kérdéseit, tekintse át az alábbiakat az NSG-k meghatározása előtt:
 
-<a id="limits" class="xliff"></a>
-
-### Korlátok
+### <a name="limits"></a>Korlátok
 Előfizetésenként korlátozott számú NSG-t használhat és NSG-nként korlátozott számú szabályt. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-subscription-service-limits.md#networking-limits) szóló cikket.
 
-<a id="vnet-and-subnet-design" class="xliff"></a>
-
-### VNet és alhálózat kialakítása
+### <a name="vnet-and-subnet-design"></a>VNet és alhálózat kialakítása
 Mivel az NSG-ket alhálózatokra is lehet alkalmazni, minimalizálhatja az NSG-k számát azzal, hogy alhálózat szerint csoportosítja az erőforrásokat, és az alhálózatokra alkalmazza az NSG-ket.  Ha úgy dönt, hogy NSG-ket alkalmaz az alhálózatokra, azt tapasztalhatja, hogy a meglévő VNetek és alhálózatok meghatározásánál nem vették figyelembe az NSG-ket. Előfordulhat, hogy az NSG-rendszer támogatásához új VNet-eket és alhálózatokat kell meghatároznia és új alhálózataihoz új erőforrásokat kell üzembe helyeznie. Ezt követően meghatározhatja az áttelepítési stratégiát a meglévő erőforrások új alhálózatokra történő áthelyezésére. 
 
-<a id="special-rules" class="xliff"></a>
-
-### Különleges szabályok
+### <a name="special-rules"></a>Különleges szabályok
 Ha letiltja a következő szabályok által engedélyezett forgalmat, infrastruktúrája nem tud majd kommunikálni alapvető Azure-szolgáltatásokkal:
 
 * **A gazdacsomópont virtuális IP-címe:** A virtuális gazdagép IP-címe (168.63.129.16) biztosítja az olyan alapvető infrastruktúra szolgáltatásokat, mint a DHCP, a DNS és az állapotfigyelés. Ez a nyilvános IP-cím a Microsofthoz tartozik, és minden régióban ezt a virtualizált IP-címet fogják használni erre a célra. Az IP-cím a virtuális gépet üzemeltető kiszolgálógép (gazdacsomópont) fizikai IP-címére van leképezve. Ez a gazdacsomópont látja el a DHCP-továbbító, a rekurzív DNS-feloldó, valamint vizsgálati forrás szerepét a terheléselosztó és a gép állapotmintáihoz. Az IP-címmel folytatott kommunikáció nem minősül támadásnak.
 * **Licencelés (Kulcskezelő szolgáltatás):** A virtuális gépeken futó Windows-rendszerképeket licencelni kell. A licenceléshez el kell küldeni egy licencelési kérelmet a Kulcskezelő szolgáltatás ilyen kérelmeket kezelő kiszolgálóinak. A kérelmet az 1688-as kimenő porton küldi el a rendszer.
 
-<a id="icmp-traffic" class="xliff"></a>
-
-### ICMP-forgalom
+### <a name="icmp-traffic"></a>ICMP-forgalom
 A jelenlegi NSG-szabályok csak a *TCP* és az *UDP* protokollokat engedélyezik. Az *ICMP*-nek nincs külön címkéje. Azonban a virtuális hálózatokon belül az ICMP-forgalmat az AllowVNetInBound alapértelmezett szabály engedélyezi, amely engedélyezi a virtuális hálózaton belüli portok és protokollok minden bejövő és kimenő forgalmát.
 
-<a id="subnets" class="xliff"></a>
-
-### Alhálózatok
+### <a name="subnets"></a>Alhálózatok
 * Vegye figyelembe a számítási feladat által igényelt rétegek számát. Minden réteget el lehet különíteni egy alhálózattal, amelyre alkalmazva van egy NSG. 
 * Ha meg kell valósítania egy alhálózatot egy VPN-átjáró vagy ExpressRoute-kapcsolatcsoport számára, **ne** alkalmazzon NSG-t arra az alhálózatra. Ha mégis így tesz, virtuális hálózatok vagy létesítmények közötti kapcsolatok megszakadhatnak. 
 * Ha meg kell valósítania egy hálózati virtuális készüléket (NVA-t), csatlakoztassa az NVA-t a saját alhálózatához, és hozzon létre felhasználó által megadott útvonalakat (UDR) az NVA felé. Megvalósíthat egy alhálózatszintű NSG-t is az alhálózat be- és kifelé irányuló forgalmának szűrésére. A felhasználó által megadott útvonalakkal (UDR-ekkel) kapcsolatban további információt a [felhasználó által megadott útvonalakkal](virtual-networks-udr-overview.md) kapcsolatos cikkben olvashat.
 
-<a id="load-balancers" class="xliff"></a>
-
-### Terheléselosztók
+### <a name="load-balancers"></a>Terheléselosztók
 * Vegyük példaként a terheléselosztási és a hálózati címfordítási (NAT-) szabályokat a számítási feladatok által használt terheléselosztóknál. A NAT-szabályok egy háttérkészlethez vannak kötve, amely hálózati adaptereket (Resource Manager-alapú modell) vagy virtuális gépeket/felhőszolgáltatásiszerepkör-példányokat (klasszikus modell) tartalmaz. Érdemes létrehozni egy NSG-t minden egyes háttérkészlethez, így a terheléselosztókban csak a megvalósított szabályok által leképezett forgalom lesz engedélyezve. Ha létrehoz egy-egy NSG-t minden háttérkészlet számára, azzal biztosítja, hogy a háttérkészletbe közvetlenül (nem a terheléselosztón keresztül) érkező forgalom is szűrve lesz.
 * A klasszikus üzembe helyezés során végpontokat hoz létre, amelyek leképezik a terheléselosztón található portokat a virtuális gépekre vagy szerepkörpéldányokra. Emellett a Resource Managerrel létrehozhatja saját önálló, nyilvános terheléselosztóját. A bejövő forgalom célportja egyben a virtuális gép vagy szerepkörpéldány tényleges portja, nem a terheléselosztó által elérhetővé tett port. A forrásport és a virtuális géppel való kapcsolat címe az interneten található távoli számítógép portjával és címével egyezik, nem a terheléselosztó által elérhetővé tett port és cím.
 * Amikor azért hoz létre NSG-ket, hogy azok a belső terheléselosztón (ILB) keresztüli forgalmat szűrjék, az alkalmazott forrásport és címtartomány a forrásszámítógépről származik, nem a terheléselosztóról. A célport és a címtartomány nem a terheléselosztóhoz, hanem a célszámítógéphez tartozik.
 
-<a id="other" class="xliff"></a>
-
-### Egyéb
+### <a name="other"></a>Egyéb
 * Végpontalapú hozzáférés-vezérlési listák (ACL-ek) és NSG-k használata nem támogatott ugyanazon a virtuálisgép-példányon. Ha használni szeretne egy NSG-t, és már be van állítva egy végponti ACL, először el kell távolítani a végponti ACL-t. Végponti ACL-ek eltávolításával kapcsolatos információkért tekintse meg a [végponti ACL-ek kezelésével](virtual-networks-acl-powershell.md) kapcsolatos cikket.
 * A Resource Managerben a hálózati adapterenkénti felügyelet (távoli elérés) lehetővé tételéhez használhat olyan NSG-t, amely több hálózati adapterrel rendelkező virtuális gép hálózati adapteréhez van hozzárendelve. Ha minden hálózati adapterhez egyedi NSG-t társít, azzal lehetővé teszi a hálózati adaptereken keresztüli forgalom típusainak elkülönítését.
 * A terheléselosztók használatához hasonlóan a más VNetekről érkező forgalom szűrésénél a távoli gép forráscímtartományát kell használni, nem a VNeteket összekötő átjárót.
 * Számos Azure-szolgáltatást nem lehet csatlakoztatni virtuális hálózatokhoz. Ha egy Azure-erőforrás nem csatlakozik virtuális hálózathoz, nem használhat NSG-t az erőforrás felé irányuló forgalom szűrésére.  Olvassa el az Ön által használt szolgáltatások dokumentációját annak megállapítására, hogy lehet-e őket virtuális hálózatokhoz csatlakoztatni.
 
-<a id="sample-deployment" class="xliff"></a>
-
-## Üzembe helyezési minta
+## <a name="sample-deployment"></a>Üzembe helyezési minta
 A cikkben leírtak alkalmazásának szemléltetéséhez tekintsük át egy kétszintű alkalmazás gyakori forgatókönyvét, amely az alábbi képen látható:
 
 ![NSG-k](./media/virtual-network-nsg-overview/figure1.png)
@@ -226,9 +192,7 @@ Ahogyan az az ábrán látható, a *Web1* és a *Web2* virtuális gép a *FrontE
 
 A fent látható 1–6. követelmény (a 3. és a 4. kivételével) alhálózati területekre korlátozódik. Az alábbi NSG-k felelnek meg az előbbi követelményeknek, a szükséges NSG-k számának minimalizálásával:
 
-<a id="frontend" class="xliff"></a>
-
-### Előtér
+### <a name="frontend"></a>Előtér
 **Bejövő szabályok**
 
 | Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
@@ -243,9 +207,7 @@ A fent látható 1–6. követelmény (a 3. és a 4. kivételével) alhálózati
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Deny-Internet-All |Megtagadás |100 | * | * | Internet | * | * |
 
-<a id="backend" class="xliff"></a>
-
-### Háttér
+### <a name="backend"></a>Háttér
 **Bejövő szabályok**
 
 | Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
@@ -260,9 +222,7 @@ A fent látható 1–6. követelmény (a 3. és a 4. kivételével) alhálózati
 
 Az alábbi NSG-k jönnek létre, és a rendszer hálózati adapterekhez társítja őket a következő virtuális gépeken:
 
-<a id="web1" class="xliff"></a>
-
-### WEB1
+### <a name="web1"></a>WEB1
 **Bejövő szabályok**
 
 | Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
@@ -275,9 +235,7 @@ Az alábbi NSG-k jönnek létre, és a rendszer hálózati adapterekhez társít
 > 
 > 
 
-<a id="web2" class="xliff"></a>
-
-### WEB2
+### <a name="web2"></a>WEB2
 **Bejövő szabályok**
 
 | Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
@@ -285,18 +243,14 @@ Az alábbi NSG-k jönnek létre, és a rendszer hálózati adapterekhez társít
 | Deny-Inbound-RDP-Internet | Megtagadás | 100 | Internet | * | * | 3389 | TCP |
 | Allow-Inbound-HTTP-Internet | Engedélyezés | 200 | Internet | * | * | 80 | TCP |
 
-<a id="db-servers-management-nic" class="xliff"></a>
-
-### DB kiszolgálók (felügyeleti hálózati adapter)
+### <a name="db-servers-management-nic"></a>DB kiszolgálók (felügyeleti hálózati adapter)
 **Bejövő szabályok**
 
 | Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Allow-Inbound-RDP-Front-end | Engedélyezés | 100 | 192.168.1.0/24 | * | * | 3389 | TCP |
 
-<a id="db-servers-database-traffic-nic" class="xliff"></a>
-
-### DB kiszolgálók (adatbázis-forgalmi hálózati adapter)
+### <a name="db-servers-database-traffic-nic"></a>DB kiszolgálók (adatbázis-forgalmi hálózati adapter)
 **Bejövő szabályok**
 
 | Szabály | Hozzáférés | Prioritás | Forráscímtartomány | Forrásport | Célcímtartomány | Célport | Protokoll |
@@ -305,9 +259,7 @@ Az alábbi NSG-k jönnek létre, és a rendszer hálózati adapterekhez társít
 
 Mivel néhány NSG önálló hálózati adapterhez van hozzárendelve, a szabályok a Resource Managerrel üzembe helyezett erőforrásokra érvényesek. A szabályokat egyesíti a rendszer az alhálózat és a hálózati adapterek vonatkozásában, attól függően, hogyan vannak társítva. 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [NSG-k üzembe helyezése a Resource Managerrel](virtual-networks-create-nsg-arm-pportal.md).
 * [NSG-k telepítése a klasszikus modellel](virtual-networks-create-nsg-classic-ps.md).
 * [Manage NSG logs](virtual-network-nsg-manage-log.md) (NSG-naplók kezelése).

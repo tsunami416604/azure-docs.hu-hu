@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-10-create-partitions" class="xliff"></a>
-
-# 10. lecke: Partíciók létrehozása
+# <a name="lesson-10-create-partitions"></a>10. lecke: Partíciók létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -32,18 +30,12 @@ Ebben a leckében partíciókat hoz létre a FactInternetSales tábla kisebb log
   
 A lecke elvégzésének várható időtartama: **15 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([9. lecke: Hierarchiák létrehozása](../tutorials/aas-lesson-9-create-hierarchies.md)).  
   
-<a id="create-partitions" class="xliff"></a>
-
-## Partíciók létrehozása  
+## <a name="create-partitions"></a>Partíciók létrehozása  
   
-<a id="to-create-partitions-in-the-factinternetsales-table" class="xliff"></a>
-
-#### A FactInternetSales tábla partícióinak létrehozása  
+#### <a name="to-create-partitions-in-the-factinternetsales-table"></a>A FactInternetSales tábla partícióinak létrehozása  
   
 1.  A Tabular Model Explorerben bontsa ki a **Táblák** fát, és kattintson a jobb gombbal a **FactInternetSales** > **Partíciók** elemre.  
   
@@ -72,9 +64,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
     Ez az utasítás meghatározza, hogy a partíció csak olyan sorok adatait tartalmazhatja, ahol az OrderDate a 2010-es naptári évre esik, ahogy azt a szűrt sorok záradék megadja.  
   
   
-<a id="to-create-a-partition-for-the-2011-year" class="xliff"></a>
-
-#### Partíció létrehozása a 2011-es évhez  
+#### <a name="to-create-a-partition-for-the-2011-year"></a>Partíció létrehozása a 2011-es évhez  
   
 1.  A partíciók listájában kattintson a korábban létrehozott **FactInternetSales2010** partícióra, majd a **Másolás** parancsra.  Módosítsa a partíció nevét a **FactInternetSales2011** értékre. 
 
@@ -93,33 +83,23 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
    
     ```  
   
-<a id="to-create-partitions-for-2012-2013-and-2014" class="xliff"></a>
-
-#### Partíció létrehozása a 2012-es, 2013-as és 2014-es évhez  
+#### <a name="to-create-partitions-for-2012-2013-and-2014"></a>Partíció létrehozása a 2012-es, 2013-as és 2014-es évhez  
   
 - A fenti lépéseket követve hozzon létre partíciókat a 2012-es, 2013-as és 2014-es évhez, és az évszámokat a Szűrt sorok záradékban a megfelelő évnek megfelelően módosítsa. 
   
 
-<a id="delete-the-factinternetsales-partition" class="xliff"></a>
-
-## A FactInternetSales partíció törlése
+## <a name="delete-the-factinternetsales-partition"></a>A FactInternetSales partíció törlése
 Most, hogy minden évhez létrehozott egy partíciót, törölheti a FactInternetSales partíciót, így megelőzi az átfedéseket az Összes feldolgozása parancs a partíciók feldolgozása során történő végrehajtásakor.
 
-<a id="to-delete-the-factinternetsales-partition" class="xliff"></a>
-
-#### A FactInternetSales partíció törlése
+#### <a name="to-delete-the-factinternetsales-partition"></a>A FactInternetSales partíció törlése
 -  Kattintson a FactInternetSales partícióra, majd a **Törlés** parancsra.
 
 
 
-<a id="process-partitions" class="xliff"></a>
-
-## Partíciók feldolgozása  
+## <a name="process-partitions"></a>Partíciók feldolgozása  
 A partíciókezelőben láthatja, hogy az egyes létrehozott partíciók **Utoljára feldolgozva** oszlopában látható, hogy a partíciók még soha nem lettek feldolgozva. A partíciók létrehozásakor érdemes futtatnia egy Partíciók feldolgozása vagy Tábla feldolgozása műveletet az adott partíciók adatainak frissítéséhez.  
   
-<a id="to-process-the-factinternetsales-partitions" class="xliff"></a>
-
-#### A FactInternetSales-partíciók feldolgozása  
+#### <a name="to-process-the-factinternetsales-partitions"></a>A FactInternetSales-partíciók feldolgozása  
   
 1.  A partíciókezelő bezárásához kattintson az **OK** gombra.  
   
@@ -137,8 +117,6 @@ A partíciókezelőben láthatja, hogy az egyes létrehozott partíciók **Utolj
   
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
-<a id="whats-next" class="xliff"></a>
-
- ## A következő lépések
+ ## <a name="whats-next"></a>A következő lépések
 Tovább a következő leckére: [11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md). 
 

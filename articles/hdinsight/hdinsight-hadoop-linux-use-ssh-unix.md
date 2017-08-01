@@ -25,9 +25,7 @@ ms.lasthandoff: 05/16/2017
 
 
 ---
-<a id="connect-to-hdinsight-hadoop-using-ssh" class="xliff"></a>
-
-# Csatlakozás a HDInsighthoz (Hadoop) SSH-val
+# <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Csatlakozás a HDInsighthoz (Hadoop) SSH-val
 
 Ismerje meg, hogyan használhatja a [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) eszközt az Azure HDInsight-alapú Hadoop-hoz való biztonságos csatlakozáshoz. 
 
@@ -49,9 +47,7 @@ A HDInsight használhatja a Linux (Ubuntu) rendszert a Hadoop-fürt csomópontja
 >
 > Az élcsomópontok használatával kapcsolatban további információért lásd: [Élcsomópontok használata a HDInsightban](hdinsight-apps-use-edge-node.md#access-an-edge-node).
 
-<a id="ssh-clients" class="xliff"></a>
-
-## SSH-ügyfelek
+## <a name="ssh-clients"></a>SSH-ügyfelek
 
 Az `ssh` és `scp` parancs elérhető a Linux, Unix és macOS rendszerekben. Az `ssh`-ügyfelet általában arra használják, hogy távoli parancssori munkamenetet hozzon létre Linux vagy Unix rendszerben. Az `scp`-ügyfél segítségével biztonságosan másolhat fájlokat a saját ügyfél és a távoli rendszer között.
 
@@ -88,9 +84,7 @@ Ha az SSH-fiókja kulccsal van védve, az ügyfélnek meg kell adnia az egyező 
 >
 > Ha jelszóval védi a titkos kulcsot, a kulcs használatakor be kell írnia a jelszót. Az `ssh-agent` és hasonló segédprogramokkal a kényelmes használat érdekében gyorsítótárazhatja a jelszót.
 
-<a id="create-an-ssh-key-pair" class="xliff"></a>
-
-### SSH-kulcs létrehozása
+### <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 
 Az `ssh-keygen` paranccsal hozhat létre nyilvános- és titkoskulcs-fájlokat. A következő parancs egy 2048 bites RSA-kulcspárt hoz létre, amely a HDInsighttal használható:
 
@@ -105,9 +99,7 @@ A kulcs létrehozása során a rendszer információk megadását kéri. Példá
 > [!IMPORTANT]
 > A kulcsokat jelszóval védheti. Ez a jelszó lényegében egy kód a titkos kulcson. Ilyen esetekben még ha valaki meg is szerzi a titkos kulcsát, a jelszóra is szüksége van a kulcs használatához.
 
-<a id="create-hdinsight-using-the-public-key" class="xliff"></a>
-
-### HDInsight létrehozása a nyilvános kulccsal
+### <a name="create-hdinsight-using-the-public-key"></a>HDInsight létrehozása a nyilvános kulccsal
 
 | Létrehozási metódus | A nyilvános kulcs használata |
 | ------- | ------- |
@@ -123,9 +115,7 @@ Az SSH-fiókok jelszóval védhetők. Amikor SSH-fiókkal csatlakozik a HDInsigh
 > [!WARNING]
 > Nem ajánlott jelszavas hitelesítést használni az SSH-hoz. A jelszavakat ki lehet találni, és védtelenek a találgatásos támadásokkal szemben. Ehelyett azt javasoljuk, hogy használjon [SSH-kulcsokat a hitelesítéshez](#sshkey).
 
-<a id="create-hdinsight-using-a-password" class="xliff"></a>
-
-### HDInsight létrehozása jelszóval
+### <a name="create-hdinsight-using-a-password"></a>HDInsight létrehozása jelszóval
 
 | Létrehozási metódus | Jelszó megadása |
 | --------------- | ---------------- |
@@ -134,9 +124,7 @@ Az SSH-fiókok jelszóval védhetők. Amikor SSH-fiókkal csatlakozik a HDInsigh
 | **Azure CLI 1.0** | Az `azure hdinsight cluster create` parancs `--sshPassword` paraméterével adja meg a jelszó értékét. |
 | **Resource Manager-sablon** | A jelszavak sablonnal történő használatának példájáért tekintse meg a [HDInsight Linux rendszeren, SSH-kulccsal való telepítéséről](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) szóló témakört. Az [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) fájlban lévő `linuxOperatingSystemProfile` elemmel illeszthető be az SSH-fióknév és -jelszó az Azure-ba a fürt létrehozásakor.|
 
-<a id="change-the-ssh-password" class="xliff"></a>
-
-### Az SSH-jelszó módosítása
+### <a name="change-the-ssh-password"></a>Az SSH-jelszó módosítása
 
 Az SSH-felhasználói fiók jelszavának módosításával kapcsolatos információért tekintse meg a [HDInsight kezelése](hdinsight-administer-use-portal-linux.md#change-passwords) dokumentum __Jelszavak módosítása__ szakaszát.
 
@@ -146,9 +134,7 @@ Ha __tartományhoz csatlakoztatott HDInsight-fürtöt__ használ, a `kinit` para
 
 További információkat itt talál: [Tartományhoz csatlakoztatott HDInsight konfigurálása](hdinsight-domain-joined-configure.md).
 
-<a id="connect-to-worker-and-zookeeper-nodes" class="xliff"></a>
-
-## Csatlakozás a feldolgozó és Zookeeper-csomópontokhoz
+## <a name="connect-to-worker-and-zookeeper-nodes"></a>Csatlakozás a feldolgozó és Zookeeper-csomópontokhoz
 
 A feldolgozó és Zookeeper-csomópontok nem közvetlenül az internetről, hanem a fürt átjáró- vagy élcsomópontjain keresztül érhetők el. A következő általános lépésekkel csatlakozhat más csomópontokhoz:
 
@@ -171,9 +157,7 @@ Ha az SSH-fiókot __SSH-kulcsok__ védik, győződjön meg róla, hogy az SSH-to
 >
 > További információ: [Virtuális hálózat használata HDInsighttal](hdinsight-extend-hadoop-virtual-network.md).
 
-<a id="configure-ssh-agent-forwarding" class="xliff"></a>
-
-### SSH-ügynöktovábbítás konfigurálása
+### <a name="configure-ssh-agent-forwarding"></a>SSH-ügynöktovábbítás konfigurálása
 
 > [!IMPORTANT]
 > A következő lépések Linux vagy UNIX-alapú rendszert feltételeznek, és a Windows 10-en futó Bash-környezet esetén működnek. Ha a lépések nem működnek a rendszerén, lehet, hogy át kell tekintenie az SSH-ügyfél dokumentációját.
@@ -205,9 +189,7 @@ Ha az SSH-fiókot __SSH-kulcsok__ védik, győződjön meg róla, hogy az SSH-to
 
 5. Csatlakozzon a fürt élcsomópontjához vagy átjárócsomópontjaihoz SSH-val. Ezután az SSH-paranccsal csatlakozzon egy feldolgozó vagy Zookeeper-csomóponthoz. A kapcsolat létrejön a továbbított kulccsal.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [SSH-alagútkezelés használata a HDInsighttal](hdinsight-linux-ambari-ssh-tunnel.md)
 * [Virtuális hálózat használata a HDInsighttal](hdinsight-extend-hadoop-virtual-network.md)

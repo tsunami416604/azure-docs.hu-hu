@@ -15,33 +15,31 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: a6d3a6f6e3457c84c5a7dc7d3601ef9495c060fe
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: e911e787cd1e29b2bbeaa648869c50245f2dd9ba
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/22/2017
 
 ---
 
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Azure-fájlmegosztás csatlakoztatása és a megosztás elérése Windows rendszeren
 Az [Azure-fájlmegosztás](storage-dotnet-how-to-use-files.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows és Windows Server rendszeren csatlakoztathatók. Ez a cikk három különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására Windows rendszeren: a Fájlkezelő felhasználói felület, a PowerShell és a parancssor használatával. 
 
-Ha egy Azure-fájlmegosztást az üzemeltető Azure-régión kívül kíván csatlakoztatni, például a helyszínen vagy más Azure-régióban, az operációs rendszernek támogatnia kell az SMB 3.x verziót. Az alábbi táblázat a legújabb Windows-kiadások SMB-verzióját tartalmazza:
+Ha egy Azure-fájlmegosztást az üzemeltető Azure-régión kívül kíván csatlakoztatni, például a helyszínen vagy más Azure-régióban, az operációs rendszernek támogatnia kell az SMB 3.0-s verziót. 
 
-| Windows-verzió | SMB-verzió | Támogatja az Azure-beli virtuális gépről végzett csatlakoztatást | Támogatja a helyszíni csatlakoztatást | Minimális ajánlott frissítés |
-|----|----|----|----|----|
-| Windows 10, 1703-as verzió | SMB 3.1.1 | Igen | Igen | |
-| Windows Server 2016 | SMB 3.1.1 | Igen | Igen | [KB4015438](https://support.microsoft.com/help/4015438) |
-| Windows 10, 1607-es verzió | SMB 3.1.1 | Igen | Igen | [KB4015438](https://support.microsoft.com/help/4015438) | 
-| Windows 10, 1511-es verzió | SMB 3.1.1 | Igen | Igen | [KB4013198](https://support.microsoft.com/help/4013198) |
-| Windows 10, 1507-es verzió | SMB 3.1.1 | Igen | Igen | [KB4012606](https://support.microsoft.com/help/4012606) | 
-| Windows 8.1 | SMB 3.0.2 | Igen | Igen | [KB4012216](https://support.microsoft.com/help/4012216) |
-| Windows Server 2012 R2 | SMB 3.0.2 | Igen | Igen | [KB4012216](https://support.microsoft.com/help/4012216) |
-| Windows Server 2012 | SMB 3.0 | Igen | Igen | [KB4012214](https://support.microsoft.com/help/4012214) |
-| Windows 7 | SMB 2.1 | Igen | Nem | [KB4012215](https://support.microsoft.com/help/4012215) |
-| Windows Server 2008 R2 | SMB 2.1 | Igen | Nem | [KB4012215](https://support.microsoft.com/help/4012215) |
+Az Azure-fájlmegosztás az operációs rendszer verziójától függően egy helyszíni vagy Azure-beli virtuális gépen lévő Windows-gépen csatlakoztatható. Az alábbi tábla a következőket mutatja be: 
+
+| Windows-verzió        | SMB-verzió |Azure-beli virtuális gépen csatlakoztatható|Helyszínen csatlakoztatható|
+|------------------------|-------------|---------------------|---------------------|
+| Windows 7              | SMB 2.1     | Igen                 | Nem                  |
+| Windows Server 2008 R2 | SMB 2.1     | Igen                 | Nem                  |
+| Windows 8              | SMB 3.0     | Igen                 | Igen                 |
+| Windows Server 2012    | SMB 3.0     | Igen                 | Igen                 |
+| Windows Server 2012 R2 | SMB 3.0     | Igen                 | Igen                 |
+| Windows 10             | SMB 3.0     | Igen                 | Igen                 |
 
 > [!Note]  
-> Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja. A minimális ajánlott frissítés a legújabb olyan csomagot tartalmazza a frissítéseket nem kedvelő rendszergazdák számára, amely rendelkezik az SMB javításaival.
+> Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja.
 
 ## <a name="aprerequisites-for-mounting-azure-file-share-with-windows"></a></a>Az Azure-fájlmegosztások Windowson történő csatlakoztatásának előfeltételei 
 * **Tárfiók neve**: Az Azure-fájlmegosztások csatlakoztatásához szüksége lesz a tárfiók nevére.
@@ -144,3 +142,4 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure File Sto
 ### <a name="reference"></a>Referencia
 * [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Referencia a fájlszolgáltatás REST API-jához](http://msdn.microsoft.com/library/azure/dn167006.aspx)
+

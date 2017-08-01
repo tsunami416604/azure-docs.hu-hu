@@ -22,18 +22,14 @@ ms.lasthandoff: 06/17/2017
 
 
 ---
-<a id="azure-security-center-planning-and-operations-guide" class="xliff"></a>
-
-# Útmutató az Azure Security Center tervezéséhez és működtetéséhez
+# <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikusok, megoldástervezők, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák számára készült, akik az Azure Security Center egész vállalatra kiterjedő bevezetését tervezik.
 
 >[!NOTE] 
 >2017 júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
 >
 
-<a id="planning-guide" class="xliff"></a>
-
-## Tervezési útmutató
+## <a name="planning-guide"></a>Tervezési útmutató
 Az útmutatóban ismertetett lépések és feladatok segítségével vállalata biztonsági igényeinek és felhőfelügyeleti modelljének megfelelően optimalizálhatja a Security Center használatát. Ahhoz, hogy a lehető legnagyobb mértékben kihasználhassa a Security Center által nyújtott előnyöket, fontos tisztában lennie azzal, hogy a vállalat különböző osztályai és dolgozói hogyan használják a szolgáltatást, mivel így könnyebben teljesítheti a biztonságos fejlesztésre, működésre, ellenőrzésre, irányításra és incidensmegoldásra vonatkozó követelményeket. A Security Center használatának tervezésekor fordítson különös figyelmet a következő területekre:
 
 * Biztonsági szerepkörök és hozzáférés-vezérlés
@@ -48,9 +44,7 @@ A következő részekben bemutatjuk, hogyan alkothatja meg a fenti területekre 
 > Az [Azure Security Center frequently asked questions (FAQ)](security-center-faq.md) (Az Azure Security Centerhez kapcsolódó gyakori kérdések) témakörben számos általánosan előforduló kérdést és választ talál, amelyek szintén hasznosak lehetnek a tervezési fázisban.
 > 
 
-<a id="security-roles-and-access-controls" class="xliff"></a>
-
-## Biztonsági szerepkörök és hozzáférés-vezérlés
+## <a name="security-roles-and-access-controls"></a>Biztonsági szerepkörök és hozzáférés-vezérlés
 A vállalat méretétől és felépítésétől függően előfordulhat, hogy sok ember és csoport is használni fogja a Security Centert a különböző biztonsági feladatok elvégzésére. A következő ábrán néhány képzeletbeli személyt mutatunk be, és ismertetjük a szerepköreiket és biztonsági feladataikat:
 
 ![Szerepkörök](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
@@ -129,9 +123,7 @@ A Security Centerre vonatkozó szerepköralapú hozzáférés-vezérlés kialak�
 > 
 > 
 
-<a id="security-policies-and-recommendations" class="xliff"></a>
-
-## Biztonsági szabályzatok és javaslatok
+## <a name="security-policies-and-recommendations"></a>Biztonsági szabályzatok és javaslatok
 A biztonsági szabályzat határozza meg azoknak a vezérlőelemeknek a körét, amelyeket a rendszer az egy adott előfizetésen belüli erőforrásokhoz javasol. A Security Centerben a vállalat biztonsági elvárásainak és az alkalmazások típusának vagy az adatok érzékenységének megfelelően állíthatja be a szabályzatokat.
 
 Az előfizetési csomagnak megfelelő szabályzatokat a rendszer automatikusan feltölti az előfizetésen belüli összes erőforráscsoport számára, ahogy a következő ábrán is látható:
@@ -143,21 +135,15 @@ Az előfizetési csomagnak megfelelő szabályzatokat a rendszer automatikusan f
 > 
 > 
 
-<a id="security-recommendations" class="xliff"></a>
-
-### Biztonsági javaslatok
+### <a name="security-recommendations"></a>Biztonsági javaslatok
 A biztonsági szabályzatok konfigurálása előtt mindig olvassa el a [biztonsági javaslatokat](security-center-recommendations.md), és döntse el, hogy ezek a szabályzatok megfelelőek-e az Ön által használt előfizetésekhez és erőforráscsoportokhoz. Ezenkívül fontos, hogy tisztában legyen azzal, milyen lépéseket kell tennie a [biztonsági javaslatok](https://docs.microsoft.com/en-us/azure/security-center/security-center-recommendations) kezelése érdekében, és a szervezeténél ki az új javaslatok monitorozásának és a szükséges lépések megtételének felelőse.
 
 A Security Center javasolni fogja, hogy adja meg a biztonsági kapcsolattartó adatait az Azure-előfizetéséhez. A Microsoft arra használja ezt az információt, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy egy jogosulatlan vagy illetéktelen fél hozzáfért az Ön ügyféladataihoz. Olvassa el a [Provide security contact details in Azure Security Center](security-center-provide-security-contact-details.md) (A biztonsági kapcsolattartó adatainak megadása az Azure Security Centerben) részt, amelyből megtudhatja, hogyan engedélyezheti ezt a javaslatot.
 
-<a id="data-collection-and-storage" class="xliff"></a>
-
-## Adatgyűjtés és -tárolás
+## <a name="data-collection-and-storage"></a>Adatgyűjtés és -tárolás
 Az Azure Security Center a Microsoft Monitoring Agentet használja – ez ugyanaz az ügynök, mint amelyet az Operations Management Suite és a Log Analytics is használ – a biztonsági adatok gyűjtésére a virtuális gépekről. Az ebből az ügynökből gyűjtött adatokat a Log Analytics munkaterület(ek)en tárolja a rendszer.
 
-<a id="agent" class="xliff"></a>
-
-### Ügynök
+### <a name="agent"></a>Ügynök
 
 Miután a biztonsági szabályzatban engedélyezte az adatgyűjtést, a rendszer telepíti a Microsoft Monitoring Agentet ([Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) vagy [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) rendszerhez) az összes támogatott Azure-beli és újonnan létrehozott virtuális gépen.  Ha a virtuális gépre már telepítve van a Microsoft Monitoring Agent, az Azure Security Center az aktuális telepített ügynököt használja. Az ügynök folyamata nem invazív és rendkívül csekély hatással van a virtuális gép teljesítményére.
 
@@ -169,9 +155,7 @@ Ha bármikor ki szeretné kapcsolni az adatgyűjtést, ezt a biztonsági szabál
 > A támogatott virtuális gépek listáját az [Az Azure Security Centerhez kapcsolódó gyakori kérdések (GYIK)](security-center-faq.md) című témakörben találja meg.
 > 
 
-<a id="workspace" class="xliff"></a>
-
-### Munkaterület
+### <a name="workspace"></a>Munkaterület
 
 A Microsoft Monitoring Agentből (az Azure Security Center nevében) gyűjtött adatok az Azure-előfizetésével társított meglévő Log Analytics munkaterületen tárolódnak, vagy egy új munkaterületen, a virtuális gép földrajzi helyét is figyelembe véve. 
 
@@ -186,9 +170,7 @@ Az Azure Security Center által létrehozott munkaterületek adatait 30 napig ő
 > A Microsoft fontos kötelességének tekinti ezeknek az adatoknak a védelmét és biztonságát. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Az adatkezeléssel és adatbiztonsággal kapcsolatos további információkért olvassa el az [Azure Security Center adatbiztonság](security-center-data-security.md) című cikket.
 > 
 
-<a id="ongoing-security-monitoring" class="xliff"></a>
-
-## A biztonság folyamatos ellenőrzése
+## <a name="ongoing-security-monitoring"></a>A biztonság folyamatos ellenőrzése
 A kezdeti konfigurációt, illetve a Security Center javaslatainak alkalmazását követően a következő lépés a Security Center működési folyamatainak megtervezése.
 
 A Security Centernek az Azure Portalról történő eléréséhez kattintson a **Tallózás** elemre, majd a **Szűrő** mezőbe írja be a **Security Center** nevet. A felhasználó számára megnyíló nézet az alkalmazott szűrőknek megfelelő elemeket tartalmazza, az alábbi példa egy számos elhárítandó problémával rendelkező környezetet ábrázol:
@@ -209,9 +191,7 @@ Az **Észlelés** szakasz gyakrabban változik. Itt azok az aktuálisan zajló, 
 > 
 > 
 
-<a id="monitoring-for-new-or-changed-resources" class="xliff"></a>
-
-### Új vagy módosult erőforrások keresése
+### <a name="monitoring-for-new-or-changed-resources"></a>Új vagy módosult erőforrások keresése
 Az Azure-környezetek általában dinamikusan változnak: új erőforrások jönnek létre és szűnnek meg, módosulnak a konfigurációk és így tovább. A Security Center segítségével könnyen átláthatja az új erőforrások biztonsági állapotát.
 
 A Security Center automatikusan felfedezi az Azure-környezethez adott új erőforrásokat (virtuális gépeket, SQL-adatbázisokat stb.), és elkezdi a biztonsági állapotuk figyelését. Ide tartoznak a PaaS webes és feldolgozói szerepkörei is. Ha a [Biztonsági szabályzat](security-center-policies.md) beállításainál bekapcsolja az adatgyűjtést, a rendszer automatikusan további figyelési funkciókat kapcsol be a virtuális gépeken.
@@ -231,9 +211,7 @@ Ezenfelül érdemes figyelemmel kísérni a meglévő erőforrások állapotát 
 2. A **Javaslatok** panelen megtekintheti a Security Center javaslatait. Az ellenőrzés során azt tapasztalhatja, hogy nem minden nap jelennek meg javaslatok. Ez nem jelent problémát, hiszen a Security Center kezdeti beállításakor minden javaslattal foglalkozott. Ezért fordulhat elő, hogy ebben a szakaszban nem jelennek meg minden nap új információk, így csak olyankor kell megnyitnia, ha szükséges.
 3. Az **Észlelés** szakasz vagy rendkívül gyakran, vagy rendkívül ritkán jelez változásokat. Mindig tekintse meg a biztonsági riasztásokat, és tegye meg a Security Center javaslatai szerinti lépéseket.
 
-<a id="incident-response" class="xliff"></a>
-
-## Incidensmegoldás
+## <a name="incident-response"></a>Incidensmegoldás
 A Security Center észleli az előforduló fenyegetéseket, és riasztást küld róluk. Javasoljuk, hogy mindig kövesse figyelemmel az új biztonsági riasztásokat, és tegye meg a szükséges lépéseket a támadás alaposabb kivizsgálása vagy következményeinek elhárítása érdekében. Ha részletes tájékoztatást szeretne kapni a Security Center fenyegetésészlelési funkciójának működéséről, olvassa el az [Azure Security Center detection capabilities](security-center-detection-capabilities.md) (Az Azure Security Center észlelési funkciói) című cikket.
 
 Bár ez a cikk nem nyújt segítséget a saját incidensmegoldási tervének kidolgozásához, a Microsoft Azure Security Response szolgáltatást fogjuk használni a felhő életciklusában az incidensmegoldási szakaszok alapjaként. Ezek a szakaszok a következő ábrán láthatók:
@@ -265,9 +243,7 @@ A [How to Leverage the Azure Security Center & Microsoft Operations Management S
 > 
 > 
 
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)

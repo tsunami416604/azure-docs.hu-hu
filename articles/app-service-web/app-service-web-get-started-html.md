@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/21/2017
 
 ---
-<a id="create-a-static-html-web-app-in-azure" class="xliff"></a>
-
-# Statikus HTML-webalkalmazás létrehozása az Azure-ban
+# <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
 Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató egy alapszintű HTML+CSS hely Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a Git szoftver használatával pedig üzembe helyezheti a HTML mintatartalmat a webalkalmazásban.
 
@@ -32,9 +30,7 @@ Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az előfeltételek telepítése után a lépések végrehajtása nagyjából öt percet vesz igénybe.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 A gyorsútmutató elvégzéséhez:
 
@@ -45,9 +41,7 @@ A gyorsútmutató elvégzéséhez:
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-<a id="download-the-sample" class="xliff"></a>
-
-## A minta letöltése
+## <a name="download-the-sample"></a>A minta letöltése
 
 Egy terminálablakban futtassa a következő parancsot a mintaalkalmazás-tárház helyi számítógépre történő klónozásához.
 
@@ -57,9 +51,7 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 Ezt a terminálablakot használhatja az összes parancs gyorsútmutatóban történő futtatásához.
 
-<a id="view-the-html" class="xliff"></a>
-
-## HTML megjelenítése
+## <a name="view-the-html"></a>HTML megjelenítése
 
 Váltson a minta HTML-t tartalmazó könyvtárra. Nyissa meg a *index.html* fájlt a böngészőben.
 
@@ -109,9 +101,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-<a id="browse-to-the-app" class="xliff"></a>
-
-## Az alkalmazás megkeresése tallózással
+## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
 Nyissa meg böngészőben az Azure webalkalmazás URL-címét:
 
@@ -125,9 +115,7 @@ Az oldal Azure App Service webalkalmazásként fut.
 
 **Gratulálunk!** Elvégezte az első HTML-webapp üzembe helyezését az App Service-ben.
 
-<a id="update-and-redeploy-the-app" class="xliff"></a>
-
-## Az alkalmazás frissítése és ismételt üzembe helyezése
+## <a name="update-and-redeploy-the-app"></a>Az alkalmazás frissítése és ismételt üzembe helyezése
 
 Egy szövegszerkesztőben nyissa meg az *index.html* fájlt, és hajtson végre módosítást a jelölőnyelvi kódon. Például, módosítsa az „Azure App Service – statikus HTML-mintahely” nevű H1 fejlécet egyszerűen „Azure App Service”-re.
 
@@ -142,9 +130,7 @@ A telepítés befejezése után frissítse a lapot a böngészőben, hogy lássa
 
 ![Frissített mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
-<a id="manage-your-new-azure-web-app" class="xliff"></a>
-
-## Az új Azure-webapp kezelése
+## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
 
 A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
@@ -160,9 +146,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

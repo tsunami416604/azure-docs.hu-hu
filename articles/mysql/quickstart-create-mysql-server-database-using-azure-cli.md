@@ -19,9 +19,7 @@ ms.lasthandoff: 06/20/2017
 
 ---
 
-<a id="create-an-azure-database-for-mysql-server-using-azure-cli" class="xliff"></a>
-
-# Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával
+# <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával
 Ez a rövid útmutató bemutatja, hogyan hozhat létre öt perc alatt egy Azure-adatbázist MySQL-kiszolgálóhoz az Azure CLI használatával az Azure-erőforráscsoportban. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
@@ -35,9 +33,7 @@ Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amel
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-<a id="create-a-resource-group" class="xliff"></a>
-
-## Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) az [az group create](https://docs.microsoft.com/cli/azure/group#create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
@@ -46,9 +42,7 @@ A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a 
 az group create --name myresourcegroup --location westus
 ```
 
-<a id="create-an-azure-database-for-mysql-server" class="xliff"></a>
-
-## Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
+## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 Hozzon létre egy Azure-adatbázist MySQL-kiszolgálóhoz az **az mysql server create** paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
 A következő példában létrehozunk egy `myserver4demo` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `myresourcegroup` erőforráscsoportban a `westus`-ben. A kiszolgáló rendelkezik egy `myadmin` nevű rendszergazdai fiókkal, amelyhez a jelszó `Password01!`. A kiszolgáló **Alapszintű** teljesítményszinttel van létrehozva, valamint **50** számítási egység van megosztva a kiszolgálón lévő összes adatbázis között. Az alkalmazás szükségleteitől függően csökkentheti vagy növelheti a számítási egységeket és a tárterületet.
@@ -57,9 +51,7 @@ A következő példában létrehozunk egy `myserver4demo` nevű Azure-adatbázis
 az mysql server create --resource-group myresourcegroup --name myserver4demo --location westus --admin-user myadmin --admin-password Password01! --performance-tier Basic --compute-units 50
 ```
 
-<a id="configure-firewall-rule" class="xliff"></a>
-
-## Tűzfalszabály konfigurálása
+## <a name="configure-firewall-rule"></a>Tűzfalszabály konfigurálása
 Hozzon létre egy Azure-adatbázis MySQL-kiszolgálóhoz-szintű tűzfalszabályt az **az mysql server firewall-rule create** parancs használatával. Egy kiszolgálószintű tűzfalszabály lehetővé teszi olyan külső alkalmazások használatát, mint a **mysql.exe** parancssori eszköz vagy a MySQL Workbench, amelyekkel kapcsolódhat a kiszolgálóhoz az Azure MySQL szolgáltatás tűzfalán keresztül. 
 
 A következő példában létrehozunk egy tűzfalszabályt egy előre meghatározott címtartományhoz, amely ebben a példában az IP-címek teljes lehetséges tartományát lefedi.
@@ -67,9 +59,7 @@ A következő példában létrehozunk egy tűzfalszabályt egy előre meghatáro
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server myserver4demo --name AllowYourIP --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
-<a id="configure-ssl-settings" class="xliff"></a>
-
-## Az SSL-beállítások konfigurálása
+## <a name="configure-ssl-settings"></a>Az SSL-beállítások konfigurálása
 Alapértelmezés szerint a kiszolgáló és az ügyfélalkalmazások közti SSL-kapcsolatok kényszerítve vannak.  Ez biztosítja a „mozgó” adatok biztonságát az adatfolyam interneten keresztüli titkosításával.  Ahhoz, hogy ez a gyorsútmutató egyszerűbb legyen, kiszolgálóján letiltjuk az SSL-kapcsolatokat.  Ez éles kiszolgálók esetében nem javasolt.  További információkért lásd [Az SSL-kapcsolatok a MySQL-hez készült Azure Database-hez való kapcsolódásra az alkalmazásban való konfigurálását](./howto-configure-ssl.md) bemutató cikket.
 
 A következő példában letiltjuk az SSL kényszerítését a MySQL-kiszolgálón.
@@ -78,9 +68,7 @@ A következő példában letiltjuk az SSL kényszerítését a MySQL-kiszolgál�
  az mysql server update --resource-group myresourcegroup --name myserver4demo -g -n --ssl-enforcement Disabled
  ```
 
-<a id="get-the-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
+## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
 A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat.
 
@@ -113,9 +101,7 @@ Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualif
 }
 ```
 
-<a id="connect-to-the-server-using-the-mysqlexe-command-line-tool" class="xliff"></a>
-
-## Csatlakozás a kiszolgálóhoz a mysql.exe parancssori eszköz használatával
+## <a name="connect-to-the-server-using-the-mysqlexe-command-line-tool"></a>Csatlakozás a kiszolgálóhoz a mysql.exe parancssori eszköz használatával
 Csatlakozzon kiszolgálójához a **mysql.exe** parancssori eszközzel. A MySQL-t [innen](https://dev.mysql.com/downloads/) töltheti le és telepítheti számítógépén. Vagy kattinthat a kódmintákban található **Kipróbálom** gombra vagy az Azure Portal jobb felső eszköztárán található `>_` gombra is az **Azure Cloud Shell** megnyitásához.
 
 Írja be a következő parancsokat: 
@@ -174,9 +160,7 @@ mysql>
 > [!TIP]
 > További parancsokért lásd: [az MySQL 5.7 referenciaútmutatójának 4.5.1-es fejezetét](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
-<a id="connect-to-the-server-using-the-mysql-workbench-gui-tool" class="xliff"></a>
-
-## Csatlakozás a kiszolgálóhoz a MySQL Workbench GUI eszköz használatával
+## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>Csatlakozás a kiszolgálóhoz a MySQL Workbench GUI eszköz használatával
 1.  Indítsa el a MySQL Workbench alkalmazást az ügyfélszámítógépen. A MySQL Workbench-et [innen](https://dev.mysql.com/downloads/workbench/) töltheti le és telepítheti.
 
 2.  Az **Új kapcsolat létrehozása** párbeszédpanelen adja meg a következő információkat a **Paraméterek** lapon:
@@ -195,18 +179,14 @@ mysql>
 Kattintson a **Kapcsolat tesztelése** lehetőségre, hogy tesztelje, minden paraméter helyesen lett-e konfigurálva.
 Ezután a kapcsolatra való kattintva sikeresen csatlakozhat a kiszolgálóhoz.
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha ezekre az erőforrásokra már nincs szüksége más gyorsútmutatókhoz/oktatóanyagokhoz, a következő paranccsal törölheti őket: 
 
 ```azurecli-interactive
 az group delete --name myresourcegroup
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis tervezése az Azure CLI-vel](./tutorial-design-database-using-cli.md)

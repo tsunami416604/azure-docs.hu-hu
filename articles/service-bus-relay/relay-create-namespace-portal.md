@@ -22,25 +22,19 @@ ms.lasthandoff: 06/05/2017
 
 ---
 
-<a id="create-a-relay-namespace-using-the-azure-portal" class="xliff"></a>
-
-# Továbbítónévtér létrehozása az Azure Portal használatával
+# <a name="create-a-relay-namespace-using-the-azure-portal"></a>Továbbítónévtér létrehozása az Azure Portal használatával
 A névtér egy közös tároló az Azure Relay valamennyi összetevője számára. Egyetlen névtér több Relayt is tartalmazhat, és a névterek gyakran alkalmazástárolóként is szolgálnak. A Relay-névterek létrehozásának jelenleg két különböző módja van.
 
 1. Azure Portal (ez a cikk)
 2. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) sablonok
 
-<a id="create-a-namespace-in-the-azure-portal" class="xliff"></a>
-
-## Névtér létrehozása az Azure Portalon
+## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 Gratulálunk! Ezzel létrehozott egy új Relay-névteret.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések:
+## <a name="next-steps"></a>Következő lépések:
 * [Továbbító – gyakori kérdések](relay-faq.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)

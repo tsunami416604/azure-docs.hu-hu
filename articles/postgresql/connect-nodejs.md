@@ -19,14 +19,10 @@ ms.lasthandoff: 06/26/2017
 
 ---
 
-<a id="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data" class="xliff"></a>
-
-# A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Node.js használatával
+# <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Node.js használatával
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet [Node.js](https://nodejs.org/) használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez Windows, Ubuntu Linux és Mac platformról. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Node.js használatával kapcsolatosan, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
 - [DB létrehozása – portál](quickstart-create-server-database-portal.md)
 - [DB létrehozása – CLI](quickstart-create-server-database-azure-cli.md)
@@ -35,14 +31,10 @@ Emellett a következőket kell elvégezni:
 - [Node.js](https://nodejs.org) telepítése
 - [pg](https://www.npmjs.com/package/pg) csomag telepítése. 
 
-<a id="install-nodejs" class="xliff"></a>
-
-## Node.js telepítése 
+## <a name="install-nodejs"></a>Node.js telepítése 
 Platformtól függően a Node.js telepítéséhez:
 
-<a id="mac-os" class="xliff"></a>
-
-### **Mac OS**
+### <a name="mac-os"></a>**Mac OS**
 A **brew**, a Mac OS X-hez és a **Node.js**-hez készült egyszerűen használható csomagkezelő telepítéséhez adja meg a következő parancsokat.
 
 ```bash
@@ -50,23 +42,17 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew install node
 ```
 
-<a id="linux-ubuntu" class="xliff"></a>
-
-### **Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 A **Node.js** és az **npm**, a Node.js-hez készült csomagkezelő telepítéséhez írja be a következő parancsokat.
 
 ```bash
 sudo apt-get install -y nodejs npm
 ```
 
-<a id="windows" class="xliff"></a>
-
-### **Windows**
+### <a name="windows"></a>**Windows**
 Keresse fel a [Node.js letöltési oldalát](https://nodejs.org/en/download/), majd válassza ki a kívánt windowsos telepítési lehetőséget.
 
-<a id="install-pg-client" class="xliff"></a>
-
-## pg-ügyfél telepítése
+## <a name="install-pg-client"></a>pg-ügyfél telepítése
 Telepítse a [pg](https://www.npmjs.com/package/pg)-t, amely a node.js-hez készült, a PostgreSQL-hez való csatlakozáskor és annak lekérdezésekor hasznos tisztán JavaScript alapú nem blokkoló ügyfél.
 
 A pg-ügyfél telepítéséhez futtassa a node package managert (npm) a parancssorban.
@@ -86,9 +72,7 @@ A listában található parancskimenet megerősíti az egyes összetevők verzi�
 etc...
 ```
 
-<a id="get-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
+## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. A teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra van szükség.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
@@ -98,14 +82,10 @@ Kérje le a PostgreSQL-hez készült Azure Database-hez való csatlakozáshoz sz
  ![A PostgreSQL-hez készült Azure Database – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-nodejs/1-connection-string.png)
 5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Overview** (Áttekintés) oldalra, és itt megtudhatja a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén visszaállíthatja a jelszót.
 
-<a id="running-the-javascript-code-in-nodejs" class="xliff"></a>
-
-## A JavaScript-kód futtatása a Node.js-ben
+## <a name="running-the-javascript-code-in-nodejs"></a>A JavaScript-kód futtatása a Node.js-ben
 A Node.js-t a `node` beírásával is elindíthatja a Bash-felületről vagy a Windows-parancssorból. Ezt követően futtassa interaktív módon a példa JavaScript-kódot úgy, hogy kimásolja és beilleszti a parancssorba. Másik megoldásként el is mentheti a JavaScript-kódot az adott szövegfájlba, majd a futtatáshoz végezze el a `node filename.js` indítását a paraméterként megadott fájlnévvel.
 
-<a id="connect-create-table-and-insert-data" class="xliff"></a>
-
-## Csatlakozás, táblák létrehozása és adatok beszúrása
+## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kód használatával csatlakozhat és töltheti be az adatokat a **CREATE TABLE** és az **INSERT INTO** SQL-utasítások segítségével.
 A [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) objektum a PostgreSQL-kiszolgálóval való használatra szolgál. A [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. 
 
@@ -170,9 +150,7 @@ function queryDatabase()
 }
 ```
 
-<a id="read-data" class="xliff"></a>
-
-## Adatok olvasása
+## <a name="read-data"></a>Adatok olvasása
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **SELECT** SQL-utasítás segítségével. A [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) objektum a PostgreSQL-kiszolgálóval való használatra szolgál. A [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. 
 
 Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
@@ -230,9 +208,7 @@ function queryDatabase()
 }
 ```
 
-<a id="update-data" class="xliff"></a>
-
-## Adatok frissítése
+## <a name="update-data"></a>Adatok frissítése
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **UPDATE** SQL-utasítás segítségével. A [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) objektum a PostgreSQL-kiszolgálóval való használatra szolgál. A [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. 
 
 Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
@@ -288,9 +264,7 @@ function queryDatabase()
 }
 ```
 
-<a id="delete-data" class="xliff"></a>
-
-## Adat törlése
+## <a name="delete-data"></a>Adat törlése
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **DELETE** SQL-utasítás segítségével. A [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) objektum a PostgreSQL-kiszolgálóval való használatra szolgál. A [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. 
 
 Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
@@ -346,9 +320,7 @@ function queryDatabase()
 }
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása az Exportálás és importálás lehetőség használatával](./howto-migrate-using-export-and-import.md)
 

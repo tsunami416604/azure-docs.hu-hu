@@ -20,18 +20,14 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 05/19/2017
 
 ---
-<a id="what-is-application-insights" class="xliff"></a>
-
-# Mi az Application Insights?
+# <a name="what-is-application-insights"></a>Mi az Application Insights?
 Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Sokféle platform alkalmazásaival együttműködik, ilyen többek között a .NET, a Node.js és a J2EE platform helyszíni vagy felhőbeli tárolás esetén is. Emellett a devOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal.
 
 ![Felhasználói tevékenységek statisztikáit ábrázolhatja diagramon, vagy konkrét eseményeket elemezhet.](./media/app-insights-overview/00-sample.png)
 
 [Tekintse meg a bevezető animációt](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
-<a id="how-does-application-insights-work" class="xliff"></a>
-
-## Hogyan működik az Application Insights?
+## <a name="how-does-application-insights-work"></a>Hogyan működik az Application Insights?
 Ön telepít egy kis méretű kialakítási csomagot az alkalmazásban, és beállít egy Application Insights-erőforrást a Microsoft Azure Portalon. A kialakítási csomag figyeli az alkalmazást, és telemetriai adatokat küld a portálnak. (Az alkalmazás bárhol futhat – nem kötelező az Azure-ban üzemeltetni.)
 
 Ráadásul nem csak webszolgáltatási alkalmazásokat vizsgálhat, hanem háttérösszetevőket és weboldalak JavaScript-kódjait is. 
@@ -44,14 +40,10 @@ Emellett telemetriai adatok olvashatók be a gazdakörnyezetekből, például te
 A telemetriai adatok integrálása az Azure Portalon történik, ahol hatékony elemzési és keresési eszközöket alkalmazhat a nyers adatokra.
 
 
-<a id="whats-the-overhead" class="xliff"></a>
-
-### Milyen mértékű a többletterhelés?
+### <a name="whats-the-overhead"></a>Milyen mértékű a többletterhelés?
 Az alkalmazásteljesítményre gyakorolt hatás rendkívül kicsi. A nem blokkoló nyomkövetési hívásokat a rendszer kötegeli, és a küldés külön szálakon történik.
 
-<a id="what-does-application-insights-monitor" class="xliff"></a>
-
-## Mit figyel az Application Insights?
+## <a name="what-does-application-insights-monitor"></a>Mit figyel az Application Insights?
 
 A fejlesztőcsapatoknak készült Application Insights segít az adott alkalmazás teljesítményének megismerésében, valamint abban, hogy a felhasználók miként használják az alkalmazást. A szolgáltatás az alábbiakat figyeli:
 
@@ -66,9 +58,7 @@ A fejlesztőcsapatoknak készült Application Insights segít az adott alkalmaz�
 * Alkalmazásból származó **nyomkövetési naplók diagnosztikája** – megállapíthatja a nyomkövetési események és a kérések korrelációját.
 * **Egyéni események és metrikák**, amelyeket saját kezűleg helyezhet el az ügyfél vagy a kiszolgáló kódjában, és ezáltal üzleti eseményeket követhet (például eladott tételek vagy megnyert játékok).
 
-<a id="where-do-i-see-my-telemetry" class="xliff"></a>
-
-## Hol láthatók a telemetriai adatok?
+## <a name="where-do-i-see-my-telemetry"></a>Hol láthatók a telemetriai adatok?
 
 Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 
@@ -89,40 +79,30 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 | [**REST API**](https://dev.applicationinsights.io/)<br/>Kód írásával lekérdezéseket futtathat a metrikákhoz és a nyers adatokhoz kapcsolódóan.| ![REST API](./media/app-insights-overview/rest-tn.png) |
 | [**Folyamatos exportálás**](app-insights-export-telemetry.md)<br/>Az adatok beérkezésével párhuzamosan végezheti a nyers adatok tömeges exportálását a tárba. |![Exportálás](./media/app-insights-overview/export-tn.png) |
 
-<a id="how-do-i-use-application-insights" class="xliff"></a>
+## <a name="how-do-i-use-application-insights"></a>Hogyan használható az Application Insights?
 
-## Hogyan használható az Application Insights?
-
-<a id="monitor" class="xliff"></a>
-
-### Figyelés
+### <a name="monitor"></a>Figyelés
 Telepítse az Application Insightsot az alkalmazásba, állítsa be a [rendelkezésre állási webes teszteket](app-insights-monitor-web-app-availability.md), és az alábbiakra nyílik lehetőség:
 
 * Beállíthat egy [irányítópultot](app-insights-dashboards.md) a csoportszobában, és nyomon követheti a terhelést, a válaszidőt, a függőségek teljesítményét, a lapbetöltéseket és az AJAX-hívásokat.
 * Megismerheti a leglassabb és a legsikertelenebb kéréseket.
 * Figyelheti az [élő streamet](app-insights-live-stream.md) új kiadások telepítésekor, és azonnal értesülhet bármilyen teljesítménycsökkenésről.
 
-<a id="detect-diagnose" class="xliff"></a>
-
-### Észlelés, diagnosztizálás
+### <a name="detect-diagnose"></a>Észlelés, diagnosztizálás
 Riasztások fogadásakor vagy problémák észlelésekor:
 
 * Felmérheti, hogy hány felhasználó érintett.
 * Elvégezheti a kivételek, a függőségi hívások és a nyomkövetési adatok korrelációját.
 * A profilkészítő, a pillanatképek, a veremkiíratások és a nyomkövetési naplók vizsgálata.
 
-<a id="build-measure-learn" class="xliff"></a>
-
-### Fejlesztés, mérés, tapasztalatszerzés
+### <a name="build-measure-learn"></a>Fejlesztés, mérés, tapasztalatszerzés
 Az újonnan üzembe helyezett szolgáltatások [hatékonyságának mérése](app-insights-usage-overview.md).
 
 * Megtervezheti az új felhasználói felület vagy üzleti szolgáltatások ügyfelek általi használatának mérését.
 * Egyéni telemetriai adatokat vehet fel a kódba.
 * A következési fejlesztési ciklust a telemetriai adatokból származó konkrét tényekre alapozhatja.
 
-<a id="get-started" class="xliff"></a>
-
-## Bevezetés
+## <a name="get-started"></a>Bevezetés
 Az Application Insights a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike, és a telemetriai adatok ide érkeznek be elemzésre és megjelenítésre. A használat megkezdéséhez egy [Microsoft Azure-előfizetésre](http://azure.com) van szükség. A regisztráció ingyenes, és ha az Application Insights alapszintű [díjcsomagját](https://azure.microsoft.com/pricing/details/application-insights/) választja, a használat mindaddig díjmentes, amíg az alkalmazás el nem ér egy jelentős használati értéket. Ha a munkahelye már rendelkezik előfizetéssel, lehetőség van felvenni az Ön Microsoft-fiókját az adott előfizetésbe.
 
 Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önnek a legmegfelelőbb. További szolgáltatásokat később is felvehet.
@@ -140,9 +120,7 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 * **[Rendelkezésre állási tesztek](app-insights-monitor-web-app-availability.md)** – rendszeresen pingelheti webhelyét kiszolgálóinkról.
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Első lépések futtatáskor:
 
 * [IIS-kiszolgáló](app-insights-monitor-performance-live-website-now.md)
@@ -154,9 +132,7 @@ Első lépések fejlesztéskor:
 * [Java](app-insights-java-get-started.md)
 * [Node.js](app-insights-nodejs.md)
 
-<a id="support-and-feedback" class="xliff"></a>
-
-## Támogatás és visszajelzés
+## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 * Kérdések és problémák:
   * [Hibaelhárítás][qna]
   * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
@@ -166,9 +142,7 @@ Első lépések fejlesztéskor:
 * Blog:
   * [Application Insights blog](https://azure.microsoft.com/blog/tag/application-insights)
 
-<a id="videos" class="xliff"></a>
-
-## Videók
+## <a name="videos"></a>Videók
 
 [![Animált bevezetés](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 

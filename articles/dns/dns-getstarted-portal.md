@@ -23,9 +23,7 @@ ms.lasthandoff: 05/18/2017
 
 ---
 
-<a id="get-started-with-azure-dns-using-the-azure-portal" class="xliff"></a>
-
-# Bevezetés az Azure DNS Azure Portallal való használatába
+# <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Bevezetés az Azure DNS Azure Portallal való használatába
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-getstarted-portal.md)
@@ -37,9 +35,7 @@ Ez a cikk végigvezeti az első DNS-zóna és -rekord létrehozásának lépése
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Végül a DNS-zóna interneten való közzétételéhez konfigurálnia kell a tartomány névkiszolgálóit. Az egyes lépéseket az alábbiakban ismertetjük.
 
-<a id="create-a-dns-zone" class="xliff"></a>
-
-## DNS-zóna létrehozása
+## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 1. Jelentkezzen be az Azure Portalra
 2. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a DNS-zóna létrehozása panel megnyitásához.
@@ -59,9 +55,7 @@ Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban tö
 > [!NOTE]
 > Az erőforráscsoport az erőforráscsoport helyére vonatkozik, és nincs hatással a DNS-zónára. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
-<a id="create-a-dns-record" class="xliff"></a>
-
-## DNS-rekord létrehozása
+## <a name="create-a-dns-record"></a>DNS-rekord létrehozása
 
 A következő példa végigvezeti egy új „A” rekord létrehozásának folyamatán. Más rekordtípusok és meglévő rekordok módosítása esetén lásd [a DNS-rekordok és -rekordhalmazok az Azure Portallal való kezelésével kapcsolatos](dns-operations-recordsets-portal.md) témakört. 
 
@@ -79,18 +73,14 @@ A következő példa végigvezeti egy új „A” rekord létrehozásának folya
    |**TTL mértékegysége**|Óra|A TTL értékének időmértékegysége.|
    |**IP-cím**|ipAddressValue| Ez az érték a DNS-rekord által feloldott IP-cím.|
 
-<a id="view-records" class="xliff"></a>
-
-## A rekordok megtekintése
+## <a name="view-records"></a>A rekordok megtekintése
 
 A DNS-zóna panel alsó részén láthatja a DNS-zóna rekordjait. Meg kell jelennie az alapértelmezett DNS és SOA típusú rekordoknak, amelyek minden zónában létrejönnek, valamint az összes új létrehozott rekordnak.
 
 ![zóna](./media/dns-getstarted-portal/viewzone500.png)
 
 
-<a id="update-name-servers" class="xliff"></a>
-
-## A névkiszolgálók frissítése
+## <a name="update-name-servers"></a>A névkiszolgálók frissítése
 
 Ha a DNS-zóna és -rekordok megfelelően be lettek állítva, konfigurálnia kell a tartománynevet az Azure DNS-névkiszolgálók használatára. Így más internetes felhasználók megkereshetik a DNS-rekordjait.
 
@@ -100,9 +90,7 @@ A zóna névkiszolgálói az Azure Portalon vannak megadva:
 
 Ezeket a névkiszolgálókat a tartományregisztrálóhoz kell konfigurálni (ahol a tartománynevet vásárolta). A regisztráló felajánlja, hogy beállítja a névkiszolgálókat a tartományhoz. További információért lásd: [Tartomány delegálása az Azure DNS-be](dns-domain-delegation.md).
 
-<a id="delete-all-resources" class="xliff"></a>
-
-## Az összes erőforrás törlése
+## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 
 A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépéseket:
 
@@ -111,9 +99,7 @@ A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az 
 1. A portál megköveteli, hogy az erőforráscsoport törlésének megerősítéséhez beírja annak nevét. Kattintson a **Törlés** elemre, írja be a *MyResourceGroup* nevet az erőforráscsoport nevéhez, majd kattintson a **Törlés** gombra. Az erőforráscsoport törlésével az abban foglalt összes erőforrás törölve lesz, ezért mindenképp ellenőrizze az erőforráscsoportok tartalmát azok törlése előtt. A portál törli az erőforráscsoportban lévő összes erőforrást, majd magát az erőforráscsoportot is. Ez a folyamat több percig is eltarthat.
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure DNS-sel kapcsolatos további információért lásd [az Azure DNS áttekintését biztosító](dns-overview.md) cikket.
 

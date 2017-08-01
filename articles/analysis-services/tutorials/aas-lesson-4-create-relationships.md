@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-4-create-relationships" class="xliff"></a>
-
-# 4. lecke: Kapcsolatok létrehozása
+# <a name="lesson-4-create-relationships"></a>4. lecke: Kapcsolatok létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -32,19 +30,13 @@ Ebben a leckében ellenőrzi az adatok importálásakor automatikusan létrehozo
   
 A lecke elvégzésének várható időtartama: **10 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([3. lecke: Megjelölés dátumtáblaként](../tutorials/aas-lesson-3-mark-as-date-table.md)). 
   
-<a id="review-existing-relationships-and-add-new-relationships" class="xliff"></a>
-
-## Meglévő kapcsolatok áttekintése és új kapcsolatok létrehozása  
+## <a name="review-existing-relationships-and-add-new-relationships"></a>Meglévő kapcsolatok áttekintése és új kapcsolatok létrehozása  
 Amikor az Adatok lekérése utasítás használatával importálta az adatokat, hét táblát hozott létre az AdventureWorksDW2014 adatbázisból. Általában amikor relációs forrásból importál adatokat, a meglévő kapcsolatok automatikusan importálva lesznek az adatokkal együtt. Mielőtt azonban folytatná a modell elkészítését, ellenőriznie kell, hogy a táblák közti kapcsolatok megfelelően lettek-e létrehozva. Ebben az oktatóanyagban három új kapcsolatot fog felvenni.  
   
-<a id="to-review-existing-relationships" class="xliff"></a>
-
-#### Meglévő kapcsolatok áttekintése  
+#### <a name="to-review-existing-relationships"></a>Meglévő kapcsolatok áttekintése  
   
 1.  Kattintson a **Modell** menü **Modellnézet** > **Diagramnézet** elemére.  
 
@@ -73,9 +65,7 @@ Amikor az Adatok lekérése utasítás használatával importálta az adatokat, 
   
     Ha bármelyik kapcsolat hiányzik, ellenőrizze, hogy a modell tartalmazza-e a következő táblákat: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory és FactInternetSales. Ha egyazon adatforrásból különböző időpontokban importál táblákat, az adott táblák közötti kapcsolatok nem lesznek létrehozva, és manuálisan kell létrehozni azokat.  
 
-<a id="take-a-closer-look" class="xliff"></a>
-
-### Közelebbi vizsgálat
+### <a name="take-a-closer-look"></a>Közelebbi vizsgálat
 A Diagramnézetben észrevehet egy nyilat, egy csillagot és egy számot a táblák közötti kapcsolatokat mutató vonalakon.
 
 ![aas-lesson4-line](../tutorials/media/aas-lesson4-line.png)
@@ -88,9 +78,7 @@ Ezek a funkciók fejlett adatmodellezéshez használhatók, és a jelen oktatóa
 
 Egyes esetekben további kapcsolatokat kell létrehozni a modell táblái között bizonyos üzleti logikák támogatásához. Ebben az oktatóanyagban három további kapcsolatot kell majd létrehoznia a FactInternetSales és a DimDate tábla között.  
   
-<a id="to-add-new-relationships-between-tables" class="xliff"></a>
-
-#### Új kapcsolatok létrehozása táblák között  
+#### <a name="to-add-new-relationships-between-tables"></a>Új kapcsolatok létrehozása táblák között  
   
 1.  A modelltervezőben kattintson az **OrderDate** oszlopra a **FactInternetSales** táblában, majd a gombot lenyomva tartva húzza a mutatót a **DimDate** tábla **Date** oszlopára, és engedje el.  
 
@@ -109,9 +97,7 @@ Egyes esetekben további kapcsolatokat kell létrehozni a modell táblái közö
     
      ![aas-lesson4-newinactive](../tutorials/media/aas-lesson4-newinactive.png)
   
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 [5. lecke: Számított oszlopok létrehozása](../tutorials/aas-lesson-5-create-calculated-columns.md)
   
   

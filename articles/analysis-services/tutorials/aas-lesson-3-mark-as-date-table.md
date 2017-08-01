@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-3-mark-as-date-table" class="xliff"></a>
-
-# 3. lecke: Megjelölés dátumtáblaként
+# <a name="lesson-3-mark-as-date-table"></a>3. lecke: Megjelölés dátumtáblaként
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -38,23 +36,17 @@ Mielőtt megjelölné a dátumtáblát és dátumoszlopot, érdemes lehet rendbe
   
 A lecke elvégzésének várható időtartama: **3 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([2. lecke: Az adatok beszerzése](../tutorials/aas-lesson-2-get-data.md)). 
 
-<a id="to-rename-the-fulldatealternatekey-column" class="xliff"></a>
-
-### A FullDateAlternateKey oszlop átnevezése
+### <a name="to-rename-the-fulldatealternatekey-column"></a>A FullDateAlternateKey oszlop átnevezése
 
 1.  A modelltervezőben kattintson a **DimDate** táblára.
 
 2.  Kattintson duplán a **FullDateAlternateKey** oszlop fejlécére, majd nevezze át **Date** névre.
 
   
-<a id="to-set-mark-as-date-table" class="xliff"></a>
-
-### A Megjelölés dátumtáblaként beállítás megadása  
+### <a name="to-set-mark-as-date-table"></a>A Megjelölés dátumtáblaként beállítás megadása  
   
 1.  Válassza ki a **Dátum** oszlopot, majd a **Tulajdonságok** ablakban az **Adattípus** alatt bizonyosodjon meg róla, hogy a **Dátum** lehetőség van kiválasztva.  
   
@@ -65,9 +57,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
     ![aas-lesson3-date-table](../tutorials/media/aas-lesson3-date-table.png)
   
 
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 [4. lecke: Kapcsolatok létrehozása](../tutorials/aas-lesson-4-create-relationships.md)
   
 

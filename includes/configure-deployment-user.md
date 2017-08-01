@@ -1,3 +1,3 @@
-## <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása  
+## <a name="create-a-deployment-user"></a>Üzembe helyező felhasználó létrehozása  
 
 [!INCLUDE [Configure a deployment user](configure-deployment-user-no-h.md)]

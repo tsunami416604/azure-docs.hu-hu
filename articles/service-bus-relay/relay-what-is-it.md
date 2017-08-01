@@ -22,9 +22,7 @@ ms.lasthandoff: 06/16/2017
 
 
 ---
-<a id="what-is-azure-relay" class="xliff"></a>
-
-# Mi az az Azure Relay?
+# <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
 
 Az Azure Relay szolgáltatás úgy segíti a hibrid alkalmazásokat, hogy biztonságosan lehetővé teszi a vállalati hálózaton belüli szolgáltatások közzétételét a nyilvános felhőben anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene végrehajtani a vállalati hálózati infrastruktúrában. A Relay számos különböző átviteli protokollt és webszolgáltatási szabványt támogat.
 
@@ -50,27 +48,19 @@ A Hibrid kapcsolatok és a WCF-továbbítók egyaránt lehetővé teszik a váll
 | **Szabvány-alapú nyílt protokoll** | |x |
 | **Többszörös RPC programozási modellek** | |x |
 
-<a id="hybrid-connections" class="xliff"></a>
-
-## Hibrid kapcsolatok
+## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 
 Az [Azure Relay Hibrid kapcsolatok képesség](relay-hybrid-connections-protocol.md) egy biztonságos, nyílt protokoll szerinti továbbfejlesztése a létező továbbítófunkcióknak, amely bármely platformon, illetve bármely olyan nyelvben is alkalmazható, amely rendelkezik alapszintű WebSocket képességgel, ha kifejezetten tartalmazza a WebSocket API-t a gyakori internetes böngészőkben. A Hibrid kapcsolatok a HTTP-n és a WebSockets szabványon alapul.
 
-<a id="wcf-relays" class="xliff"></a>
-
-## WCF-továbbítók
+## <a name="wcf-relays"></a>WCF-továbbítók
 
 A WCF-továbbító a teljes .NET-keretrendszer (NETFEX) és a WCF esetén működik. A kapcsolatot a helyszíni és a továbbítási szolgáltatás között kezdeményezheti egy WCF továbbító kötéskészlet használatával. A színfalak mögött a továbbítási kötéseket a rendszer a Service Busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett új átviteli kötőelemekké képezi le.
 
-<a id="service-history" class="xliff"></a>
-
-## Szolgáltatási előzmények
+## <a name="service-history"></a>Szolgáltatási előzmények
 
 A Hibrid kapcsolatok pótolja a korábbi, hasonló nevű „BizTalk Services” funkciót, amely az Azure Service Bus WCF-továbbítóra épült. Az új Hibrid kapcsolatok képesség kiegészíti a már meglévő WCF-továbbítót, és a belátható jövőben a két szolgáltatási képesség egymás mellett fog működni az Azure Relay szolgáltatásban. E szolgáltatások közös átjáróval rendelkeznek, de ettől eltekintve különböző megvalósításról van szó.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések:
+## <a name="next-steps"></a>Következő lépések:
 
 * [Relay – gyakori kérdések](relay-faq.md)
 * [Névtér létrehozása](relay-create-namespace-portal.md)

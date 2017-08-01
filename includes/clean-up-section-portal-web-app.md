@@ -1,6 +1,4 @@
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha várhatóan nincs szüksége ezekre az erőforrásokra a későbbiekben, az erőforráscsoport eltávolításával törölheti őket.
  

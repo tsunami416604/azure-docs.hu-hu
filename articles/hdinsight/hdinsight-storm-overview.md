@@ -25,9 +25,7 @@ ms.lasthandoff: 06/09/2017
 
 
 ---
-<a id="what-is-apache-storm-on-azure-hdinsight" class="xliff"></a>
-
-# Mi az Azure HDInsight alatt futó Apache Storm?
+# <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
 
 Az [Apache Storm](http://storm.apache.org/) egy elosztott, nagy hibatűrésű, nyílt forráskódú számítási rendszer. A Storm-fürtöket használva a Hadooppal valós időben dolgozhat fel adatfolyamokat. A Storm-megoldások emellett garantált adatfeldolgozást is biztosítanak, amely képes visszajátszani az elsőre sikeresen fel nem dolgozott adatokat.
 
@@ -63,9 +61,7 @@ A valós idejű elemzési megoldásaikhoz Apache Stormot használó vállalatok 
 
 A Storm használatának kezdő lépéseit itt találja: [A HDInsighton futó Storm bemutatása][gettingstarted].
 
-<a id="how-does-storm-work" class="xliff"></a>
-
-## Hogyan működik a Storm?
+## <a name="how-does-storm-work"></a>Hogyan működik a Storm?
 
 A Storm az esetleg ismerős MapReduce-feladatok helyett topológiákat futtat. A Storm-topológiák több összetevőből állnak, amelyek egy irányított aciklikus gráfba (DAG) vannak rendezve. Az adatáramlás a gráf összetevői között zajlik. Minden összetevőbe egy vagy több stream érkezik be, valamint egy vagy több streamet sugároz. Az alábbi ábrán az összetevők közti adatfolyamok láthatók egy alapszintű szószámlálási topológiában:
 
@@ -75,15 +71,11 @@ A Storm az esetleg ismerős MapReduce-feladatok helyett topológiákat futtat. A
 
 * A bolt-összetevők a spout- vagy más bolt-összetevők által sugárzott streameket dolgozzák fel. A boltok opcionálisan streameket is sugározhatnak a topológiába. A boltok felelősek az adatok külső szolgáltatásokba vagy tárolókba, például HDFS-, Kafka- vagy HBase-tárolókba történő kiírásáért.
 
-<a id="ease-of-creation" class="xliff"></a>
-
-## Könnyű létrehozás
+## <a name="ease-of-creation"></a>Könnyű létrehozás
 
 Az új Storm-fürtök percek alatt kiépíthetők a HDInsightban. További információkat a Storm-fürtök létrehozásáról [a HDInsight alatt futó Storm bemutatásában](hdinsight-apache-storm-tutorial-get-started-linux.md) talál.
 
-<a id="ease-of-use" class="xliff"></a>
-
-## Könnyű használat
+## <a name="ease-of-use"></a>Könnyű használat
 
 * __Secure Shell- (SSH-) kapcsolatok__: A Storm-fürt átjárócsomópontjai az interneten keresztül az SSH használatával érhetők el. Az SSH használatával közvetlenül futtathat parancsokat a fürtön.
 
@@ -99,9 +91,7 @@ Az új Storm-fürtök percek alatt kiépíthetők a HDInsightban. További infor
 
   További információ: [C# Storm-topológiák fejlesztése a HDInsight Tools for Visual Studio szolgáltatással](hdinsight-storm-develop-csharp-visual-studio-topology.md).
 
-<a id="integration-with-other-azure-services" class="xliff"></a>
-
-## Integráció más Azure-szolgáltatásokkal
+## <a name="integration-with-other-azure-services"></a>Integráció más Azure-szolgáltatásokkal
 
 * __Azure Data Lake Store__: Egy példát találhat a Data Lake Store és egy Storm-fürt együttes használatára [az Azure Data Lake a HDInsight alatt futó Apache Stormmal történő használatát](hdinsight-storm-write-data-lake-store.md) bemutató cikkben.
 
@@ -113,9 +103,7 @@ Az új Storm-fürtök percek alatt kiépíthetők a HDInsightban. További infor
 
 * __SQL Database__, __Cosmos DB__, __Event Hubs__ és __HBase__: A Data Lake Tools for Visual Studio tartalmaz példasablonokat. További információk: [C#-topológiák fejlesztése a HDInsight alatt futó Stormmal](hdinsight-storm-develop-csharp-visual-studio-topology.md).
 
-<a id="reliability" class="xliff"></a>
-
-## Megbízhatóság
+## <a name="reliability"></a>Megbízhatóság
 
 Az Apache Storm garantálja, hogy mindig minden bejövő üzenetet feldolgoz, még akkor is, ha az adatok elemzése több száz csomópont között oszlik meg.
 
@@ -125,26 +113,20 @@ Az alapértelmezett konfiguráció szerint az Apache Storm-fürtök csak egyetle
 
 ![Diagram: Nimbus, Zookeeper és Supervisor](./media/hdinsight-storm-overview/nimbus.png)
 
-<a id="scale" class="xliff"></a>
-
-## Méretezés
+## <a name="scale"></a>Méretezés
 
 A HDInsight-fürtök dinamikusan méretezhetők munkavégző csomópontok hozzáadásával vagy eltávolításával. Ezt a műveletet adatfeldolgozás közben hajthatja végre.
 
 > [!IMPORTANT]
 > A méretezés során hozzáadott új csomópontok kihasználásához újra egyensúlyba kell hoznia a fürtméret növelése előtt elindított Storm-topológiákat.
 
-<a id="support" class="xliff"></a>
-
-## Támogatás
+## <a name="support"></a>Támogatás
 
 A HDInsight alatt futó Stormhoz teljes körű, vállalati szintű, folyamatos támogatás áll rendelkezésre. A HDInsight alatt futó Storm emellett szolgáltatásiszint-szerződésben garantált 99,9%-os elérhetőséggel rendelkezik. Ez azt jelenti, hogy az egyes Storm-fürtök garantáltan az idő legalább 99,9%-ában elérhetők lesznek kívülről.
 
 További információk: [Azure-ügyfélszolgálat](https://azure.microsoft.com/support/options/).
 
-<a id="apache-storm-use-cases" class="xliff"></a>
-
-## Apache Storm használati esetek
+## <a name="apache-storm-use-cases"></a>Apache Storm használati esetek
 
 Az alábbiakban néhány gyakori forgatókönyvet ismertetünk, amelyek esetén a HDInsight alatt futó Storm használható:
 
@@ -158,9 +140,7 @@ Az alábbiakban néhány gyakori forgatókönyvet ismertetünk, amelyek esetén 
 
 Ha valós felhasználási forgatókönyvekkel kapcsolatos információkra kíváncsi, olvassa e [a Storm vállalati felhasználását](https://storm.apache.org/documentation/Powered-By.html) ismertető dokumentumot.
 
-<a id="development" class="xliff"></a>
-
-## Fejlesztés
+## <a name="development"></a>Fejlesztés
 
 A Data Lake Tools for Visual Studio használatával a .NET-fejlesztők C# nyelven tervezhetnek és valósíthatnak meg topológiákat. Létrehozhatók Java- és C#-összetevőket egyaránt használó hibrid topológiák is.
 
@@ -170,27 +150,19 @@ Java-megoldásokat is fejleszthet tetszőleges IDE használatával. További inf
 
 A Python is használható Storm-összetevők fejlesztéséhez. További információkért lásd [a Storm-topológiák Python segítségével a HDInsighton való fejlesztésével](hdinsight-storm-develop-python-topology.md) kapcsolatos témakört.
 
-<a id="common-development-patterns" class="xliff"></a>
+## <a name="common-development-patterns"></a>Gyakori fejlesztési minták
 
-## Gyakori fejlesztési minták
-
-<a id="guaranteed-message-processing" class="xliff"></a>
-
-### Garantált üzenetfeldolgozás
+### <a name="guaranteed-message-processing"></a>Garantált üzenetfeldolgozás
 
 Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozást. Például egy alapszintű Storm-alkalmazás „legalább egyszeri” feldolgozást tud garantálni, míg a Trident „pontosan egyszeri” feldolgozást.
 
 További információk: [Adatfeldolgozási garancia](https://storm.apache.org/about/guarantees-data-processing.html) az apache.org webhelyen.
 
-<a id="ibasicbolt" class="xliff"></a>
-
-### IBasicBolt
+### <a name="ibasicbolt"></a>IBasicBolt
 
 Gyakori műveleti minta egy bemeneti rekord olvasása, nulla vagy több rekord kibocsátása, majd a bemeneti rekord nyugtázása rögtön a művelet végrehajtásának végén. A Storm lehetővé teszi ennek a mintának az automatizálását az [IBasicBolt](https://storm.apache.org/releases/1.0.3/javadocs/org/apache/storm/topology/IBasicBolt.html) felület segítségével.
 
-<a id="joins" class="xliff"></a>
-
-### Illesztések
+### <a name="joins"></a>Illesztések
 
 Az adatstreamek alkalmazások közötti csatlakoztatásának különböző módjai. Például összeillesztheti több stream minden rekordját egy új streammé, vagy összeilleszthet csupán rekordkötegeket egy bizonyos ablak alapján. Az illesztés mindkét módszer esetén a [fieldsGrouping](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-) használatával történik. Ez egy mód annak definiálására, hogyan legyenek átirányítva a rekordok a boltokhoz.
 
@@ -198,39 +170,29 @@ A következő Java-példában az „1”, „2” és „3” jelű összetevők
 
     builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2"));
 
-<a id="batches" class="xliff"></a>
-
-### Kötegek
+### <a name="batches"></a>Kötegek
 
 A Storm rendelkezik egy belső időzítő mechanizmussal, az úgynevezett „tick tuple” rekordórajellel. Ennek segítségével beállíthatja, hogy a topológia milyen gyakran bocsásson ki egy-egy rekordórajelet.
 
 Példa egy rekordórajel C#-összetevőből való használatára: [PartialBoltCount.cs](https://github.com/hdinsight/hdinsight-storm-examples/blob/3b2c960549cac122e8874931df4801f0934fffa7/EventCountExample/EventCountTopology/src/main/java/com/microsoft/hdinsight/storm/examples/PartialCountBolt.java).
 
-<a id="caches" class="xliff"></a>
-
-### Gyorsítótárak
+### <a name="caches"></a>Gyorsítótárak
 
 A memóriában történő gyorsítótárazás gyakran használatos a feldolgozást felgyorsító mechanizmusként, mivel a memóriában tartja a gyakran használt objektumokat. Mivel a topológiák több csomópont, és az egyes csomópontokon belül is több folyamat között oszlanak meg, érdemes megfontolni a [fieldsGrouping](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-) használatát. A `fieldsGrouping` használata biztosítja, hogy a gyorsítótárban való kereséshez használt mezőket tartalmazó rekordok mindig ugyanahhoz a folyamathoz legyenek irányítva. Ezzel a csoportosítási funkcióval elkerülhető, hogy a különböző folyamatok ismétlődő gyorsítótár-bejegyzéseket hozzanak létre.
 
-<a id="stream-top-n" class="xliff"></a>
-
-### A „legfelső N” számú elem streamelése
+### <a name="stream-top-n"></a>A „legfelső N” számú elem streamelése
 
 Ha egy topológia az első N elem értékének kiszámításától függ, az első N értéket párhuzamosan számítsa ki. Ezután összesítse a számítások eredményét egy globális értékben. Ezt a műveletet a [fieldsGrouping](http://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-) használatával, a mezők párhuzamos feldolgozáshoz való továbbításával hajthatja végre. Ezt követően továbbíthat egy bolthoz, amely globálisan meghatározza a legfelső N számú elem értékét.
 
 Példa az első N elem értékének kiszámítására: [RollingTopWords](https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/org/apache/storm/starter/RollingTopWords.java) példa.
 
-<a id="logging" class="xliff"></a>
-
-## Naplózás
+## <a name="logging"></a>Naplózás
 
 A Storm az Apache Log4j használatával naplózza az információkat. Alapértelmezés szerint nagy mennyiségű adat rögzítése történik, aminek az áttekintése nehézségekkel járhat. A Storm-topológia részeként hozzáadhat egy naplózáskonfigurációs fájlt, amely a naplózás működését vezérli.
 
 A naplózás konfigurálását bemutató példatopológiát a HDInsight alatt futó Stormra vonatkozó [Java-alapú WordCount](hdinsight-storm-develop-java-topology.md) példában tekintheti meg.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk a HDInsight alatt futó Storm valós idejű elemzési megoldásairól:
 

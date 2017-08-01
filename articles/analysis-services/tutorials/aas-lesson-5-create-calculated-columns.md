@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-5-create-calculated-columns" class="xliff"></a>
-
-# 5. lecke: Számított oszlopok létrehozása
+# <a name="lesson-5-create-calculated-columns"></a>5. lecke: Számított oszlopok létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -36,18 +34,12 @@ Ez a lecke lesz az első, ahol a DAX (Data Analysis Expressions) nyelvet haszná
   
 A lecke elvégzésének várható időtartama: **15 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([4. lecke: Kapcsolatok létrehozása](../tutorials/aas-lesson-4-create-relationships.md)). 
   
-<a id="create-calculated-columns" class="xliff"></a>
-
-## Számított oszlopok létrehozása  
+## <a name="create-calculated-columns"></a>Számított oszlopok létrehozása  
   
-<a id="create-a-monthcalendar-calculated-column-in-the-dimdate-table" class="xliff"></a>
-
-#### MonthCalendar számított oszlop létrehozása a DimDate táblában  
+#### <a name="create-a-monthcalendar-calculated-column-in-the-dimdate-table"></a>MonthCalendar számított oszlop létrehozása a DimDate táblában  
   
 1.  Kattintson a **Modell** menü **Modellnézet** > **Adatnézet** elemre.  
   
@@ -73,9 +65,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 A MonthCalendar számított oszlop rendezhető formátumban adja meg a hónapok nevét.  
   
-<a id="create-a-dayofweek-calculated-column-in-the-dimdate-table" class="xliff"></a>
-
-#### DayOfWeek számított oszlop létrehozása a DimDate táblában  
+#### <a name="create-a-dayofweek-calculated-column-in-the-dimdate-table"></a>DayOfWeek számított oszlop létrehozása a DimDate táblában  
   
 1.  Az aktív **DimDate** táblában kattintson az **Oszlop** menüre, majd az **Oszlop hozzáadása** parancsra.  
   
@@ -96,9 +86,7 @@ A MonthCalendar számított oszlop rendezhető formátumban adja meg a hónapok 
   
 A DayOfWeek számított oszlop rendezhető formátumban adja meg a hét napjainak nevét.  
   
-<a id="create-a-productsubcategoryname-calculated-column-in-the-dimproduct-table" class="xliff"></a>
-
-#### ProductSubcategoryName számított oszlop létrehozása a DimProduct táblában  
+#### <a name="create-a-productsubcategoryname-calculated-column-in-the-dimproduct-table"></a>ProductSubcategoryName számított oszlop létrehozása a DimProduct táblában  
   
   
 1.  A **DimProduct** táblában görgessen a tábla jobb széléhez. Figyelje meg, hogy a jobb szélső oszlop az **Oszlop hozzáadása** (dőlt betűs) nevet viseli. Kattintson az oszlop fejlécére.  
@@ -113,9 +101,7 @@ A DayOfWeek számított oszlop rendezhető formátumban adja meg a hét napjaina
   
 A ProductSubcategoryName számított oszlop használatával létrejön egy hierarchia a DimProduct táblában, amely tartalmazza a DimProductSubcategory tábla EnglishProductSubcategoryName oszlopának adatait. A hierarchiák csak egyetlen táblára terjedhetnek ki. Hierarchiákat később, a 9. leckében hozhat majd létre.  
   
-<a id="create-a-productcategoryname-calculated-column-in-the-dimproduct-table" class="xliff"></a>
-
-#### ProductCategoryName számított oszlop létrehozása a DimProduct táblában  
+#### <a name="create-a-productcategoryname-calculated-column-in-the-dimproduct-table"></a>ProductCategoryName számított oszlop létrehozása a DimProduct táblában  
   
 1.  Az aktív **DimProduct** táblában kattintson az **Oszlop** menüre, majd az **Oszlop hozzáadása** parancsra.  
   
@@ -129,9 +115,7 @@ A ProductSubcategoryName számított oszlop használatával létrejön egy hiera
   
 A ProductCategoryName számított oszlop használatával létrejön egy hierarchia a DimProduct táblában, amely tartalmazza a DimProductCategory tábla EnglishProductCategoryName oszlopának adatait. A hierarchiák csak egyetlen táblára terjedhetnek ki.  
   
-<a id="create-a-margin-calculated-column-in-the-factinternetsales-table" class="xliff"></a>
-
-#### Margin (Nyereség) számított oszlop létrehozása a FactInternetSales táblában  
+#### <a name="create-a-margin-calculated-column-in-the-factinternetsales-table"></a>Margin (Nyereség) számított oszlop létrehozása a FactInternetSales táblában  
   
 1.  A modelltervezőben válassza ki a **FactInternetSales** táblát.  
   
@@ -149,9 +133,7 @@ A ProductCategoryName számított oszlop használatával létrejön egy hierarch
       
     A Margin számított oszlop használatával elemezhető az egyes értékesítések fedezeti mutatója.  
   
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 [6. lecke: Mértékek létrehozása](../tutorials/aas-lesson-6-create-measures.md).
   
   

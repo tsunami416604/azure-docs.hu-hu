@@ -22,17 +22,13 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/20/2017
 
 ---
-<a id="create-your-first-java-web-app-in-azure" class="xliff"></a>
-
-# Az első Java-webalkalmazás létrehozása az Azure-ban
+# <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
 Az [Azure App Service](../app-service/app-service-value-prop-what-is.md) [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) szolgáltatása egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást biztosít. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](http://www.eclipse.org/) használatával.
 
 ![„Hello Azure!” példa webalkalmazás](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 A gyorsútmutató elvégzéséhez a következők telepítése szükséges:
 
@@ -41,9 +37,7 @@ A gyorsútmutató elvégzéséhez a következők telepítése szükséges:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-<a id="create-a-dynamic-web-project-in-eclipse" class="xliff"></a>
-
-## Dinamikus webes projekt létrehozása az Eclipse-ben
+## <a name="create-a-dynamic-web-project-in-eclipse"></a>Dinamikus webes projekt létrehozása az Eclipse-ben
 
 Az Eclipse-ben válassza a **File (Fájl)** > **New (Új)** > **Dynamic Web Project** (Dinamikus webprojekt) lehetőséget.
 
@@ -51,9 +45,7 @@ A **New Dynamic Web Project** (Új dinamikus webprojekt) párbeszédpanelen adja
    
 ![New Dynamic Web Project (Új dinamikus webprojekt) párbeszédpanel](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
-<a id="add-a-jsp-page" class="xliff"></a>
-
-### JSP-oldal hozzáadása
+### <a name="add-a-jsp-page"></a>JSP-oldal hozzáadása
 
 Ha a Project Explorer (Projektböngésző) nem jelenik meg, állítsa azt vissza.
 
@@ -81,9 +73,7 @@ Az index.jsp fájlban cserélje le a `<body></body>` elemet az alábbi jelölés
 
 Mentse a módosításokat.
 
-<a id="publish-the-web-app-to-azure" class="xliff"></a>
-
-## A webalkalmazás közzététele az Azure-ban
+## <a name="publish-the-web-app-to-azure"></a>A webalkalmazás közzététele az Azure-ban
 
 A Project Explorer (Projektböngésző) nézetben kattintson a jobb gombbal a projektre, majd válassza az **Azure** > **Publish as Azure Web App** (Közzététel Azure-webalkalmazásként) lehetőséget.
 
@@ -93,9 +83,7 @@ Az **Azure bejelentkezési** párbeszédpanelen tartsa meg az **Interactive** (I
 
 Kövesse a bejelentkezési utasításokat.
 
-<a id="deploy-web-app-dialog-box" class="xliff"></a>
-
-### Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel
+### <a name="deploy-web-app-dialog-box"></a>Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel
 
 Miután bejelentkezett Azure-fiókjába, megjelenik a **Deploy Web App** (Webalkalmazás üzembe helyezése) párbeszédpanel.
 
@@ -103,9 +91,7 @@ Kattintson a **Létrehozás** gombra.
 
 ![Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
-<a id="create-app-service-dialog-box" class="xliff"></a>
-
-### A Create App Service (App Service létrehozása) párbeszédpanel
+### <a name="create-app-service-dialog-box"></a>A Create App Service (App Service létrehozása) párbeszédpanel
 
 Megjelenik a **Create App Service** (App Service létrehozása) párbeszédpanel az alapértelmezett értékekkel. Az alábbi képen látható **170602185241** szám eltérő az Ön párbeszédpanelén.
 
@@ -126,9 +112,7 @@ A **Create App Service** (App Service létrehozása) párbeszédpanelen:
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-<a id="resource-group-tab" class="xliff"></a>
-
-### Resource group (Erőforráscsoport) lap
+### <a name="resource-group-tab"></a>Resource group (Erőforráscsoport) lap
 
 Válassza ki a **Resource group** (Erőforráscsoport) lapot. Tartsa meg az erőforráscsoporthoz tartozó alapértelmezetten létrehozott értéket.
 
@@ -150,9 +134,7 @@ Az Azure-eszközkészlet létrehozza a webalkalmazást, és megjelenít egy foly
 
 ![App Service létrehozásának állapotjelző párbeszédpanelje](./media/app-service-web-get-started-java/create-app-service-progress-bar.png)
 
-<a id="deploy-web-app-dialog-box" class="xliff"></a>
-
-### Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel
+### <a name="deploy-web-app-dialog-box"></a>Deploy Web App (Webalkalmazás üzembe helyezése) párbeszédpanel
 
 A **Deploy Web App** (Webalkalmazás üzembe helyezése) párbeszédpanelen válassza a **Deploy to root** (Üzembe helyezés a gyökérnél) beállítást. Ha egy App Service a *wingtiptoys.azurewebsites.net* helyen, és nem a gyökérnél végzi el az üzembe helyezést, a **MyFirstJavaOnAzureWebApp** nevű webalkalmazás a *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp* helyen lesz üzembe helyezve.
 
@@ -170,9 +152,7 @@ Gratulálunk! Sikeresen végrehajtotta a webalkalmazás üzembe helyezését az 
 
 ![„Hello Azure!” példa webalkalmazás](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
-<a id="update-the-web-app" class="xliff"></a>
-
-## A webalkalmazás frissítése
+## <a name="update-the-web-app"></a>A webalkalmazás frissítése
 
 Módosítsa a JSP-mintakódot egy eltérő üzenetre.
 
@@ -196,9 +176,7 @@ Válassza ki a webalkalmazást, majd a **Deploy** (Üzembe helyezés) lehetősé
 
 Amikor megjelenik a **Publishing** (Közzététel) hivatkozás, válassza azt ki a webalkalmazás tallózásához, és tekintse meg a módosításokat.
 
-<a id="manage-the-web-app" class="xliff"></a>
-
-## A webalkalmazás kezelése
+## <a name="manage-the-web-app"></a>A webalkalmazás kezelése
 
 Ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>, és tekintse meg a létrehozott webalkalmazást.
 
@@ -218,9 +196,7 @@ Megjelenik az **Áttekintés** oldal. Ezen az oldalon megtekintheti az alkalmaz�
 
 [!INCLUDE [clean-up-section-portal-web-app](../../includes/clean-up-section-portal-web-app.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

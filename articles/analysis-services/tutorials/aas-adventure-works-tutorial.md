@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="azure-analysis-services---adventure-works-tutorial" class="xliff"></a>
-
-# Azure Analysis Services – Adventure Works-oktatóanyag
+# <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Adventure Works-oktatóanyag
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -32,9 +30,7 @@ Ez az oktatóanyag azzal kapcsolatos leckéket tartalmaz, hogyan hozhat létre �
 
 Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos modellezéssel, akkor ebből az oktatóanyagból sajátíthatja el leggyorsabban az alapszintű táblázatos modellek létrehozását és üzembe helyezését. Ha az előfeltételek teljesültek, két-három óra szükséges a befejezésig.  
   
-<a id="what-you-learn" class="xliff"></a>
-
-## Ismertetett témák   
+## <a name="what-you-learn"></a>Ismertetett témák   
   
 -   Új táblázatosmodell-projekt létrehozása az **1400-as kompatibilitási szinten** az SSDT-ben.
   
@@ -52,9 +48,7 @@ Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos mod
   
 -   Táblázatos modell üzembe helyezése egy **Azure Analysis Services**-kiszolgálón vagy egy helyszíni SQL Server 2017 Analysis Services-kiszolgálón.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:  
   
 -   Egy Azure Analysis Services- vagy SQL Server 2017 Analysis Services-példány, amelyen üzembe helyezheti a modelljét. Regisztráljon az [Azure Analysis Services ingyenes próbaverziójára](https://azure.microsoft.com/services/analysis-services/), és [hozzon létre egy kiszolgálót](../analysis-services-create-server.md). Vagy regisztráljon, és töltse le az [SQL Server 2017 Community Technology Preview verziót](https://www.microsoft.com/evalcenter/evaluate-sql-server-vnext-ctp). 
@@ -69,9 +63,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 -   Egy ügyfélalkalmazás (pl. [Power BI Desktop](https://powerbi.microsoft.com/desktop/) vagy Excel). 
 
-<a id="scenario" class="xliff"></a>
-
-## Forgatókönyv  
+## <a name="scenario"></a>Forgatókönyv  
 Ez az oktatóanyag az Adventures Works Cycles nevű kitalált vállalatra épül. Az Adventure Works egy nagy, multinacionális gyártócég, amely fém- és kompozit kerékpárokat gyárt Észak-Amerika, Európa és Ázsia kereskedelmi piacaira. A vállalat 500 alkalmazottat foglalkoztat. Az Adventure Works továbbá számos regionális értékesítési csapatot alkalmaz a különböző piacokon. A projekt célja egy táblázatos modell létrehozása az értékesítési és marketing felhasználók számára, amely elemzi az AdventureWorksDW adatbázis internetes értékesítési adatait.  
   
 Az oktatóanyag befejezéséhez különféle leckéket kell majd elvégeznie. Minden leckén belül feladatok várnak Önre. A leckék teljesítéséhez sorban kell végrehajtania a feladatokat. Előfordulhat, hogy egy bizonyos leckén belül több feladat is hasonló eredményt hoz, de a végrehajtásuk módja kismértékben különbözik. Ez a módszer bemutatja, hogy egy feladat gyakran többféleképpen teljesíthető, valamint a korábbi leckékben és feladatokban elsajátított készségeit is próbára teszi.  
@@ -81,9 +73,7 @@ A leckék célja, hogy végigvezessék Önt egy alapszintű táblázatos modell 
 Ez az oktatóanyag nem tartalmaz leckéket a következőkről: kiszolgáló kezelése az Azure Portalon, kiszolgáló vagy adatbázis kezelése az SSMS használatával vagy ügyfélalkalmazás használata a modelladatok közötti navigáláshoz. 
 
 
-<a id="lessons" class="xliff"></a>
-
-## Leckék  
+## <a name="lessons"></a>Leckék  
 Az oktatóanyag a következő leckéket tartalmazza:  
   
 |Lecke|Az oktatóanyag elvégzésének várható időtartama|  
@@ -102,9 +92,7 @@ Az oktatóanyag a következő leckéket tartalmazza:
 |[12. lecke: Elemzés az Excelben](../tutorials/aas-lesson-12-analyze-in-excel.md)|5 perc| 
 |[13. lecke: Üzembe helyezés](../tutorials/aas-lesson-13-deploy.md)|5 perc|  
   
-<a id="supplemental-lessons" class="xliff"></a>
-
-## Kiegészítő leckék  
+## <a name="supplemental-lessons"></a>Kiegészítő leckék  
 Ezek a leckék nem kötelezők az oktatóanyag elvégzéséhez, de hasznosak lehetnek az összetettebb táblázatos modellek létrehozásával kapcsolatos funkciók megismerésében.  
   
 |Lecke|Az oktatóanyag elvégzésének várható időtartama|  
@@ -114,9 +102,7 @@ Ezek a leckék nem kötelezők az oktatóanyag elvégzéséhez, de hasznosak leh
 |[Hézagos hierarchiák](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)|20 perc| 
 
   
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések  
+## <a name="next-steps"></a>Következő lépések  
 Az első lépéseket lásd: [1. lecke: Új táblázatosmodell-projekt létrehozása](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
   

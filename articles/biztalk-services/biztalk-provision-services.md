@@ -22,9 +22,7 @@ ms.lasthandoff: 05/31/2017
 
 
 ---
-<a id="create-biztalk-services-using-the-azure-portal" class="xliff"></a>
-
-# BizTalk Services létrehozása az Azure Portallal
+# <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -33,9 +31,7 @@ ms.lasthandoff: 05/31/2017
 > Az Azure Portalra való bejelentkezéshez Azure-fiókra és Azure-előfizetésre van szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. Lásd: [Ingyenes Azure-próbafiók](http://go.microsoft.com/fwlink/p/?LinkID=239738).
 
 
-<a id="create-a-biztalk-service" class="xliff"></a>
-
-## BizTalk-szolgáltatás létrehozása
+## <a name="create-a-biztalk-service"></a>BizTalk-szolgáltatás létrehozása
 A kiválasztott kiadástól függően lehet, hogy nem mindegyik BizTalk-szolgáltatásbeállítás érhető el.
 
 1. Jelentkezzen be az [Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
@@ -119,9 +115,7 @@ Amikor elkészült, létrejön az Azure BizTalk-szolgáltatás, és készen áll
 
 A BizTalk-szolgáltatás állapotától függően néhány művelet nem végezhető el. Ezen műveletek listájáért tekintse meg a [BizTalk-szolgáltatások állapota diagramot](biztalk-service-state-chart.md).
 
-<a id="post-provisioning-steps" class="xliff"></a>
-
-## Kiépítés utáni lépések
+## <a name="post-provisioning-steps"></a>Kiépítés utáni lépések
 * [A tanúsítvány telepítése helyi számítógépre](#InstallCert)
 * [Termelésre kész tanúsítvány hozzáadása](#AddCert)
 * [A hozzáférés-vezérlési névtér beszerzése](#ACS)
@@ -165,9 +159,7 @@ A hozzáférés-vezérlési szolgáltatásidentitás olyan hitelesítő adatok k
 
 [Az ACS-névtér felügyeletét](https://msdn.microsoft.com/library/azure/hh674478.aspx) ismertető dokumentum tartalmaz néhány útmutatást és javaslatot.
 
-<a id="requirements-explained" class="xliff"></a>
-
-## A követelmények részletei
+## <a name="requirements-explained"></a>A követelmények részletei
 Ezek a követelmények nem érvényesek az ingyenes kiadásra.
 
 <table border="1">
@@ -251,9 +243,7 @@ A BizTalk szolgáltatás létrehozása után hozzáadható egy új vagy másik t
 
 
 
-<a id="hybrid-connections" class="xliff"></a>
-
-## Hibrid kapcsolatok
+## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 Azure BizTalk Servies-szolgáltatások létrehozásakor elérhető a **Hibrid kapcsolatok** lap:
 
 ![Hibrid kapcsolatok lap][HybridConnectionTab]
@@ -262,14 +252,10 @@ A hibrid kapcsolatok az Azure-webhelyeket vagy Azure-mobilszolgáltatásokat bá
 
  További információért lásd a [Hibrid kapcsolatok](integration-hybrid-connection-overview.md) című szakaszt, ahol a hibrid kapcsolatok létrehozásáról és felügyeletéről is olvashat.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy létrejött a BizTalk Services-szolgáltatás, ismerje meg a különböző [BizTalk Services: Irányítópult, Figyelő és Méret lapokat](biztalk-dashboard-monitor-scale-tabs.md). Az Azure BizTalk-szolgáltatás készen áll az alkalmazásokhoz. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 * [BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)<br/>
 * [BizTalk Services: Állapottáblázat](biztalk-service-state-chart.md)<br/>
 * [BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md)<br/>

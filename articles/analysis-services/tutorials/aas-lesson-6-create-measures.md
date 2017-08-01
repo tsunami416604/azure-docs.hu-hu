@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-6-create-measures" class="xliff"></a>
-
-# 6. lecke: Mértékek létrehozása
+# <a name="lesson-6-create-measures"></a>6. lecke: Mértékek létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -38,18 +36,12 @@ Ebben a leckében mértékeket hoz létre DAX-képletek megadásával a szerkesz
   
 A lecke elvégzésének várható időtartama: **30 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([5. lecke: Számított oszlopok létrehozása](../tutorials/aas-lesson-5-create-calculated-columns.md)).  
   
-<a id="create-measures" class="xliff"></a>
-
-## Mértékek létrehozása  
+## <a name="create-measures"></a>Mértékek létrehozása  
   
-<a id="to-create-a-dayscurrentquartertodate-measure-in-the-dimdate-table" class="xliff"></a>
-
-#### DaysCurrentQuarterToDate mérték létrehozása a DimDate táblában  
+#### <a name="to-create-a-dayscurrentquartertodate-measure-in-the-dimdate-table"></a>DaysCurrentQuarterToDate mérték létrehozása a DimDate táblában  
   
 1.  A modelltervezőben kattintson a **DimDate** táblára.  
   
@@ -68,9 +60,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
     A számított oszlopoktól eltérően a mértékek képletei esetén beírhatja a mérték nevét, majd kettőspontot követően magát a képletet.
 
   
-<a id="to-create-a-daysincurrentquarter-measure-in-the-dimdate-table" class="xliff"></a>
-
-#### DaysInCurrentQuarter mérték létrehozása a DimDate táblában  
+#### <a name="to-create-a-daysincurrentquarter-measure-in-the-dimdate-table"></a>DaysInCurrentQuarter mérték létrehozása a DimDate táblában  
   
 1.  Miközben a **DimDate** tábla még aktív a modellszerkesztőben, a mérték rácsban kattintson egy üres cellára a létrehozott mérték alatt.  
   
@@ -82,9 +72,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
     Egy hiányos időszak és a megelőző időszak közötti összehasonlítási arány létrehozásakor. A képletnek ki kell számítania az időszak az időszakból eltelt rész arányát, és össze kell vetnie azt a megelőző időszak azonos arányú részével. Ebben az esetben a [DaysCurrentQuarterToDate]/[DaysInCurrentQuarter] képlet adja meg az aktuális időszak már eltelt részének arányát.  
   
-<a id="to-create-an-internetdistinctcountsalesorder-measure-in-the-factinternetsales-table" class="xliff"></a>
-
-#### InternetDistinctCountSalesOrder mérték létrehozása a FactInternetSales táblában  
+#### <a name="to-create-an-internetdistinctcountsalesorder-measure-in-the-factinternetsales-table"></a>InternetDistinctCountSalesOrder mérték létrehozása a FactInternetSales táblában  
   
 1.  Kattintson a **FactInternetSales** táblára.   
   
@@ -99,9 +87,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 4.  A mérték rácsban kattintson az új mértékre, majd a **Tulajdonságok** ablak **Mérték neve** mezőjében nevezze át a mértéket az **InternetDistinctCountSalesOrder** névre. 
  
   
-<a id="to-create-additional-measures-in-the-factinternetsales-table" class="xliff"></a>
-
-#### További mértékek létrehozása a FactInternetSales táblában  
+#### <a name="to-create-additional-measures-in-the-factinternetsales-table"></a>További mértékek létrehozása a FactInternetSales táblában  
   
 1.  Az AutoSzum függvény használatával hozza létre és nevezze el az alábbi mértékeket:  
 
@@ -144,9 +130,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 A FactInternetSales táblához létrehozott mértékek használatával elemezhetők az olyan kiemelten fontos információk, mint az értékesítések, a költségek és nyereségek a felhasználó által kiválasztott szűrőben meghatározott tételekhez.  
   
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 [7. lecke: Fő teljesítménymutatók létrehozása](../tutorials/aas-lesson-7-create-key-performance-indicators.md)  
 
   

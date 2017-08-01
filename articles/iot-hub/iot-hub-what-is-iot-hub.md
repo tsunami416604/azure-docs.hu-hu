@@ -23,9 +23,7 @@ ms.lasthandoff: 06/20/2017
 
 
 ---
-<a id="overview-of-the-azure-iot-hub-service" class="xliff"></a>
-
-# Az Azure IoT Hub szolgáltatás áttekintése
+# <a name="overview-of-the-azure-iot-hub-service"></a>Az Azure IoT Hub szolgáltatás áttekintése
 
 Üdvözli az Azure IoT Hub. Ez a cikk áttekintést nyújt az Azure IoT Hubról, és leírja, hogy miért érdemes ezt a szolgáltatást használnia az Eszközök internetes hálózata- (IoT-) megoldások megvalósításához. Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz között, valamint megoldást biztosít a háttérrendszer kialakításához. Azure IoT Hub:
 
@@ -45,9 +43,7 @@ Az [eszközök internetes hálózatának biztonsági alapjait][lnk-security-grou
 > [!NOTE]
 > Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture][lnk-refarch] (Microsoft Azure IoT-referenciaarchitektúra).
 
-<a id="iot-device-connectivity-challenges" class="xliff"></a>
-
-## Az IoT-eszközkapcsolatok kihívásai
+## <a name="iot-device-connectivity-challenges"></a>Az IoT-eszközkapcsolatok kihívásai
 
 Az IoT Hub és az eszközkódtárak segítségével megbízható és biztonságos módon csatlakoztathatja az eszközöket a megoldás háttérrendszeréhez. IoT-eszközök:
 
@@ -61,9 +57,7 @@ Az IoT Hub és az eszközkódtárak segítségével megbízható és biztonságo
 
 A fenti követelmények mellett minden egyes IoT-megoldásnak megfelelő méretezhetőséget, biztonságot és megbízhatóságot kell biztosítania. Az ebből következő kapcsolati követelmények megvalósítása rendkívül nehéz és időigényes az olyan hagyományos technológiák segítségével, mint például a webes tárolók vagy üzenetkezelő közvetítők.
 
-<a id="why-use-azure-iot-hub" class="xliff"></a>
-
-## Miért érdemes az Azure IoT Hubot használni?
+## <a name="why-use-azure-iot-hub"></a>Miért érdemes az Azure IoT Hubot használni?
 
 Amellett, hogy az [eszköz-felhő][lnk-d2c-guidance] és [felhő-eszköz][lnk-c2d-guidance] kommunikációs lehetőségek gazdag tárházát kínálja, beleértve az üzenetküldést, a fájlátvitelt és a kérés-válasz módszereket, az Azure IoT Hub a következő módokon kezeli az eszközkapcsolattal kapcsolatos kihívásokat:
 
@@ -84,9 +78,7 @@ Amellett, hogy az [eszköz-felhő][lnk-d2c-guidance] és [felhő-eszköz][lnk-c2
 
 * **Méretezés**. Az Azure IoT Hub több millió egyszerre csatlakoztatott eszközre és másodpercenként több millió eseményre méretezhető.
 
-<a id="gateways" class="xliff"></a>
-
-## Átjárók
+## <a name="gateways"></a>Átjárók
 
 Az IoT-megoldások átjárója általában a felhőben telepített [protokollátjáró][lnk-iotedge] vagy helyben, az eszközökkel telepített [helyszíni átjáró][lnk-field-gateway]. A protokollátjárók protokollfordítást végeznek, például MQTT-ről AMQP-re. A helyszíni átjárók elemzéseket futtathatnak a peremhálózaton, a késést csökkentő időérzékeny döntéseket hozhatnak, eszközfelügyeleti szolgáltatásokat nyújthatnak, biztonsági és adatvédelmi kényszereket tartathatnak be és protokollfordítást is végezhetnek. Mindkét átjárótípus közvetítőként működik az eszközök és az IoT Hub között.
 
@@ -94,9 +86,7 @@ A helyszíni átjárók különböznek az egyszerű forgalomirányító eszköz�
 
 Egy megoldás mindkét protokollt és helyszíni átjárót tartalmazhatja.
 
-<a id="how-does-iot-hub-work" class="xliff"></a>
-
-## Hogyan működik az IoT Hub?
+## <a name="how-does-iot-hub-work"></a>Hogyan működik az IoT Hub?
 
 Az Azure IoT Hub a [szolgáltatással támogatott kommunikációs][lnk-service-assisted-pattern] mintát valósítja meg az eszközök és a megoldásháttér közötti kommunikáció közvetítése érdekében. A szolgáltatással segített kommunikáció célja, hogy megbízható, kétirányú kommunikációs útvonalat hozzon létre egy vezérlőrendszer (például az IoT Hub) és olyan speciális célú eszközök között, amelyek nem megbízható fizikai helyen vannak üzembe helyezve. A minta a következő alapelveket valósítja meg:
 
@@ -118,9 +108,7 @@ A mobilágazat nagy mennyiségben használta a szolgáltatással támogatott kom
 
 Az IoT Hub használata az ExpressRoute nyilvános társhálózati útvonalain is támogatott.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk arról, hogyan küldhetők üzenetek egy eszközről és fogadhatók az IoT Hub felől, valamint hogyan konfigurálhatók az üzenetútvonalak: [Üzenetek küldése és fogadása az IoT Hub használatával][lnk-send-messages].
 

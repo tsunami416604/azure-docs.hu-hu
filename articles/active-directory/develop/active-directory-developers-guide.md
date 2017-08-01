@@ -21,9 +21,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/21/2017
 
 ---
-<a id="azure-active-directory-for-developers" class="xliff"></a>
-
-# Azure Active Directory fejlesztők számára
+# <a name="azure-active-directory-for-developers"></a>Azure Active Directory fejlesztők számára
 Az Azure Active Directory egy olyan felhőalapú identitásszolgáltatás, amely lehetővé teszi a fejlesztők számára bármely munkahelyi vagy iskolai Microsoft-fiókkal rendelkező felhasználó biztonságos bejelentkeztetését.  E dokumentációban megtekintheti, hogyan történik az Azure AD-támogatás hozzáadása az alkalmazásához iparági szabvány szerinti hitelesítési protokollok (OAuth és OpenID Connect) használatával.
 
 | | |
@@ -31,9 +29,7 @@ Az Azure Active Directory egy olyan felhőalapú identitásszolgáltatás, amely
 |[A hitelesítés alapjai](active-directory-authentication-scenarios.md) | Bevezetés az Azure AD-vel történő hitelesítés használatába |
 |[Alkalmazástípusok](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Áttekintés az Azure AD által támogatott hitelesítési forgatókönyvekről |                                
                                                                               
-<a id="get-started" class="xliff"></a>
-
-## Bevezetés
+## <a name="get-started"></a>Bevezetés
 Az alábbi irányított beállítási folyamatok végigvezetik az Azure Active Directory-felhasználók saját hitelesítési könyvtárának használatával történő bejelentkeztetési folyamatán.
 
 |  |  |  |  |
@@ -44,9 +40,7 @@ Az alábbi irányított beállítási folyamatok végigvezetik az Azure Active D
 | <center>![Webes API-k](./media/active-directory-developers-guide/Web_API.png)<br />Webes API-k</center> | [Áttekintés](active-directory-authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[NodeJS](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
 | <center>![Szolgáltatások közötti](./media/active-directory-developers-guide/Service_App.png)<br />Szolgáltatások közötti</center> | [Áttekintés](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)<br /><br />[OAuth 2.0-ügyfél hitelesítő adatai](active-directory-protocols-oauth-service-to-service.md) |  |
 
-<a id="guides" class="xliff"></a>
-
-## Útmutatók
+## <a name="guides"></a>Útmutatók
 Ebből a cikkből megtudhatja, hogyan hajthat végre gyakori feladatokat az Azure Active Directory használatával.
 
 |                                                                           |  |
@@ -56,9 +50,7 @@ Ebből a cikkből megtudhatja, hogyan hajthat végre gyakori feladatokat az Azur
 |[OAuth és OpenID Connect](active-directory-protocols-openid-connect-code.md)| Felhasználók beléptetése és webes API-k hívása a modern hitelesítési protokolljaink használatával |
 |[További útmutatók…](active-directory-developers-guide-index.md#guides)        |     |
 
-<a id="reference" class="xliff"></a>
-
-## Referencia
+## <a name="reference"></a>Referencia
 Ezekben a cikkekben az API-król, a protokollüzenetekről és az Azure Active Directory által használt kifejezésekről találhat részletes információkat.
 
 |                                                                                   | |
@@ -68,9 +60,7 @@ Ezekben a cikkekben az API-król, a protokollüzenetekről és az Azure Active D
 | [Szószedet](active-directory-dev-glossary.md)                                      | A jelen dokumentációban használt fogalmak terminológiája és meghatározásai |
 | [További referenciaanyagok…](active-directory-developers-guide-index.md#reference)|     |
 
-<a id="help--support" class="xliff"></a>
-
-## Súgó és támogatás
+## <a name="help--support"></a>Súgó és támogatás
 Az Azure Active Directoryban történő fejlesztéshez ezeken a helyeken találhat segítséget.
 
 |  |  

@@ -22,14 +22,10 @@ ms.lasthandoff: 06/08/2017
 
 
 ---
-<a id="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server" class="xliff"></a>
-
-# Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
+# <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
 A PhoneFactor-ügynök 5.x verziójáról az Azure Multi-Factor Authentication-kiszolgálóra való frissítéshez először távolítsa el a PhoneFactor-ügynököt és a kapcsolódó összetevőket. A Multi-Factor Authentication-kiszolgáló és kapcsolódó összetevői ezután telepíthetők.
 
-<a id="uninstall-the-phonefactor-agent" class="xliff"></a>
-
-## A PhoneFactor-ügynök eltávolítása
+## <a name="uninstall-the-phonefactor-agent"></a>A PhoneFactor-ügynök eltávolítása
 
 1. Először készítsen biztonsági másolatot a PhoneFactor-adatfájlokról. Az alapértelmezett telepítési hely a C:\Program Files\PhoneFactor\Data\Phonefactor.pfdata mappa.
 
@@ -50,9 +46,7 @@ A PhoneFactor-ügynök 5.x verziójáról az Azure Multi-Factor Authentication-k
 
 5. Távolítsa el a PhoneFactor ügynököt a Windows Programok és szolgáltatások lapja segítségével.
 
-<a id="install-the-multi-factor-authentication-server" class="xliff"></a>
-
-## A Multi-Factor Authentication-kiszolgáló telepítése
+## <a name="install-the-multi-factor-authentication-server"></a>A Multi-Factor Authentication-kiszolgáló telepítése
 
 A rendszer a telepítési útvonalat a korábbi PhoneFactor ügynök telepítése által létrehozott beállításjegyzékből olvassa be, ezért ugyanarra a helyre fogja telepíteni (pl. C:\Program Files\PhoneFactor). Az új telepítések eltérő alapértelmezett telepítési útvonallal rendelkeznek (pl. C:\Program Files\Multi-Factor Authentication Server). Az előző PhoneFactor ügynök által hátrahagyott adatfájlt a rendszer frissíti a telepítés során, ezért a felhasználók és beállítások megmaradnak az új Multi-Factor Authentication-kiszolgáló telepítése után.
 
@@ -82,9 +76,7 @@ A rendszer a telepítési útvonalat a korábbi PhoneFactor ügynök telepítés
 
   5. Nyissa meg a Mobile App Web Service telepítési helyét (pl. C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService), és szerkessze a web.config fájlt. Másolja az appSettings és az applicationSettings szakaszban található értékeket az eredeti web.config fájlból, amelyről a frissítés előtt biztonsági másolatot készített, az új web.config fájlba. Ha a Web Service SDK telepítésekor megtartotta az új alapértelmezett virtuális címtár nevét, módosítsa az URL-címet az applicationSettings szakaszban, hogy a megfelelő helyre mutasson. Ha bármilyen egyéb alapértelmezett értéket módosított a korábbi web.config fájlban, alkalmazza ugyanezeket a módosításokat az új web.config fájlra.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Telepítse a felhasználói portált](multi-factor-authentication-get-started-portal.md) az Azure Multi-Factor Authentication-kiszolgálóhoz.
 

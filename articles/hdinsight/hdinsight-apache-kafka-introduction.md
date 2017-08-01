@@ -22,15 +22,11 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/17/2017
 
 ---
-<a id="introducing-apache-kafka-on-hdinsight-preview" class="xliff"></a>
-
-# A HDInsight alatt futó Apache Kafka (előzetes verzió) bemutatása
+# <a name="introducing-apache-kafka-on-hdinsight-preview"></a>A HDInsight alatt futó Apache Kafka (előzetes verzió) bemutatása
 
 Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. A Kafka az üzenetsorokhoz hasonló üzenetközvetítő funkciót is biztosít, amellyel adatstreameket tehet közzé, illetve feliratkozhat rájuk. A HDInsight alatt futó Kafka felügyelt, rugalmasan méretezhető és magas rendelkezésre állású szolgáltatást biztosít önnek a Microsoft Azure-felhőben.
 
-<a id="why-use-kafka-on-hdinsight" class="xliff"></a>
-
-## Miért érdemes a HDInsight alatt futó Kafkát használni?
+## <a name="why-use-kafka-on-hdinsight"></a>Miért érdemes a HDInsight alatt futó Kafkát használni?
 
 A Kafka a következő funkciókat biztosítja:
 
@@ -50,9 +46,7 @@ A Kafka a következő funkciókat biztosítja:
 
     További tudnivalók a felügyelt lemezek HDInsight-alapú Kafkával való konfigurálásáról: [A HDInsight-alapú Kafka méretezhetőségének javítása](hdinsight-apache-kafka-scalability.md).
 
-<a id="use-cases" class="xliff"></a>
-
-## Használati esetek
+## <a name="use-cases"></a>Használati esetek
 
 * **Üzenetkezelés**: sokszor használják a Kafkát üzenetközvetítőként, mivel támogatja a közzétételi-feliratkozási üzenetmintát.
 
@@ -62,9 +56,7 @@ A Kafka a következő funkciókat biztosítja:
 
 * **Átalakítás**: streamfeldolgozás használatával egyesítheti és bővítheti az adatokat több bemeneti témakörből egy vagy több kimeneti témakörbe.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 

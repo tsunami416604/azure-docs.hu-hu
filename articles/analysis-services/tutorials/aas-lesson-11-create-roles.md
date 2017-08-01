@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-11-create-roles" class="xliff"></a>
-
-# 11. lecke: Szerepkörök létrehozása
+# <a name="lesson-11-create-roles"></a>11. lecke: Szerepkörök létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -45,18 +43,12 @@ Mivel a szervezetben található Windows-felhasználói és csoportfiókok egyed
   
 A lecke elvégzésének várható időtartama: **15 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A jelen leckében foglalt feladatok végrehajtása előtt be kell fejeznie az előző leckét ([10. lecke: Partíciók létrehozása](../tutorials/aas-lesson-10-create-partitions.md)).  
   
-<a id="create-roles" class="xliff"></a>
-
-## Szerepkörök létrehozása  
+## <a name="create-roles"></a>Szerepkörök létrehozása  
   
-<a id="to-create-a-sales-manager-user-role" class="xliff"></a>
-
-#### Értékesítési vezető felhasználói szerepkör létrehozása  
+#### <a name="to-create-a-sales-manager-user-role"></a>Értékesítési vezető felhasználói szerepkör létrehozása  
   
 1.  A Táblázatosmodell-tallózóban kattintson a jobb gombbal a **Szerepkörök** > **Szerepkörök** elemre.  
   
@@ -70,9 +62,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 5.  Opcionális: Kattintson a **Tagok** lapra, majd a **Hozzáadás** parancsra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz.  
   
-<a id="to-create-a-sales-analyst-us-user-role" class="xliff"></a>
-
-#### Értékesítési elemző – USA felhasználói szerepkör létrehozása  
+#### <a name="to-create-a-sales-analyst-us-user-role"></a>Értékesítési elemző – USA felhasználói szerepkör létrehozása  
   
 1.  A Szerepkörkezelőben kattintson az **Új** elemre.    
   
@@ -91,9 +81,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 6.  Opcionális: Kattintson a **Tagok** lapra, majd a **Hozzáadás** parancsra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz.  
   
-<a id="to-create-an-administrator-user-role" class="xliff"></a>
-
-#### Rendszergazdai felhasználói szerepkör létrehozása  
+#### <a name="to-create-an-administrator-user-role"></a>Rendszergazdai felhasználói szerepkör létrehozása  
   
 1.  Kattintson az **Új** lehetőségre.  
   
@@ -104,9 +92,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 4.  Opcionális: Kattintson a **Tagok** lapra, majd a **Hozzáadás** parancsra. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen adja meg a szervezetébe tartozó azon Windows-felhasználókat vagy -csoportokat, amelyeket hozzá kíván adni a szerepkörhöz. 
   
   
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 [12. lecke: Elemzés az Excelben](../tutorials/aas-lesson-12-analyze-in-excel.md).
 
   

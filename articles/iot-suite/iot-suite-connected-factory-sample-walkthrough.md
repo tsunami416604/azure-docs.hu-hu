@@ -23,9 +23,7 @@ ms.lasthandoff: 05/26/2017
 
 
 ---
-<a id="connected-factory-preconfigured-solution-walkthrough" class="xliff"></a>
-
-# Előre konfigurált csatlakoztatott gyár megoldás – bemutató
+# <a name="connected-factory-preconfigured-solution-walkthrough"></a>Előre konfigurált csatlakoztatott gyár megoldás – bemutató
 
 Az IoT Suite [előre konfigurált][lnk-preconfigured-solutions] csatlakoztatott gyár megoldással egy teljes körű ipari megoldást implementálhat, amely:
 
@@ -44,17 +42,13 @@ Ebben a cikkben bemutatjuk a csatlakoztatott gyár megoldás néhány fontos ele
 * Megtervezheti, hogy miképpen érdemes testre szabni a megoldást úgy, hogy az megfeleljen egyedi igényeinek.
 * Kialakíthatja saját, Azure-szolgáltatásokat használó IoT-megoldását.
 
-<a id="logical-architecture" class="xliff"></a>
-
-## Logikai architektúra
+## <a name="logical-architecture"></a>Logikai architektúra
 
 A következő diagram az előre konfigurált megoldás logikai összetevőit vázolja fel:
 
 ![Csatlakoztatott gyár logikai architektúrája][connected-factory-logical]
 
-<a id="simulation" class="xliff"></a>
-
-## Szimuláció
+## <a name="simulation"></a>Szimuláció
 
 A gyártósorok szimulált állomásokból és szimulált gyártási végrehajtó rendszerekből (MES) állnak. A szimulált eszközök és az OPC kiadói modul az OPC Foundation által kiadott [OPC UA .NET standardon][lnk-OPC-UA-NET-Standard] alapul.
 
@@ -62,31 +56,23 @@ Az OPC Proxy és az OPC Publisher modulként van megvalósítva az [Azure IoT Ed
 
 Minden szimulációs összetevő Azure Linux virtuális gépen futtatott Docker-tárolókban fut. A szimuláció úgy van konfigurálva, hogy alapértelmezés szerint nyolc szimulált gyártósort futtasson.
 
-<a id="simulated-production-line" class="xliff"></a>
-
-## Szimulált gyártósor
+## <a name="simulated-production-line"></a>Szimulált gyártósor
 
 A gyártósorok alkatrészeket gyártanak. Különböző állomásokból állnak: összeszerelő állomásból, tesztelő állomásból és csomagoló állomásból.
 
 A szimuláció futtatja és frissíti az OPC UA-csomópontokon keresztül közzétett adatokat. Minden szimulált gyártósori állomást a MES vezényel az OPC UA-n keresztül.
 
-<a id="simulated-manufacturing-execution-system" class="xliff"></a>
-
-## Szimulált gyártási végrehajtó rendszer
+## <a name="simulated-manufacturing-execution-system"></a>Szimulált gyártási végrehajtó rendszer
 
 A MES az OPC UA-n keresztül figyeli a gyártósor egyes állomásait azok állapotváltozásainak észlelése érdekében. OPC UA-metódusokat hív meg az állomások vezérlése érdekében, és egyik állomásról a következőre továbbítja a termékeket a befejezésükig.
 
-<a id="gateway-opc-publisher-module" class="xliff"></a>
-
-## Átjáró OPC kiadói modul
+## <a name="gateway-opc-publisher-module"></a>Átjáró OPC kiadói modul
 
 Az OPC kiadói modul az állomás OPC UA-kiszolgálóihoz csatlakozik és feliratkozik a kiadandó OPC-csomópontokra. A modul a csomópontadatokat JSON-formátumba alakítja, titkosítja, majd az IoT Hubra küldi OPC UA Pub/Sub üzenetekként.
 
 Az OPC kiadói modulnak csak kimenő https-portra (443) van szüksége, és képes együttműködni a meglévő vállalati infrastruktúrával.
 
-<a id="gateway-opc-proxy-module" class="xliff"></a>
-
-## Átjáró OPC-proxymodul
+## <a name="gateway-opc-proxy-module"></a>Átjáró OPC-proxymodul
 
 Az átjáró OPC UA-proxymodul bináris OPC UA-parancs- és vezérlési üzeneteket továbbít, és csak kimenő https-portot (443) igényel. Képes a meglévő vállalati infrastruktúrát használni, beleértve a webes proxykat is.
 
@@ -94,9 +80,7 @@ IoT Hub-eszközmetódusokkal viszi át a csomagolt TCP/IP-adatokat az alkalmazá
 
 A magán a proxyn keresztül továbbított OPC UA bináris protokoll UA-hitelesítést és -titkosítást használ.
 
-<a id="azure-time-series-insights" class="xliff"></a>
-
-## Azure Time Series Insights
+## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 Az átjáró OPC kiadói modul feliratkozik az OPC UA-kiszolgálócsomópontokra az adatértékek változásainak észlelése érdekében. Ha a rendszer adatmódosítást észlel valamelyik csomóponton, ez a modul üzeneteket küld az Azure IoT Hubnak.
 
@@ -120,28 +104,20 @@ Ezenkívül az OEE- és a KPI-topológia idősorozatai az alkalmazásban lesznek
 
 A csomópontadatok idősorozat nézete közvetlenül a TSI-ból származik az időtartomány összegzése segítségével.
 
-<a id="iot-hub" class="xliff"></a>
-
-## IoT Hub
+## <a name="iot-hub"></a>IoT Hub
 Az [IoT hub][lnk-IoT Hub] fogadja az OPC kiadói modulból a felhőbe küldött adatokat, és elérhetővé teszi azokat az Azure TSI szolgáltatás számára. 
 
 A megoldásban az IoT Hub ezenkívül a következőket teszi:
 - Fenntart egy identitásjegyzéket, amely tárolja az összes OPC kiadói modul és az összes OPC-proxymodul azonosítóját.
 - Átviteli csatornaként szolgál az OPC-proxymodul kétirányú kommunikációjához.
 
-<a id="azure-storage" class="xliff"></a>
-
-## Azure Storage
+## <a name="azure-storage"></a>Azure Storage
 A megoldás Azure Blob Storage tárolót használ a virtuális gép lemezes tárolójaként, valamint az üzembehelyezési adatok tárolásához.
 
-<a id="web-app" class="xliff"></a>
-
-## Webalkalmazás
+## <a name="web-app"></a>Webalkalmazás
 Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás integrált OPC UA-ügyfélből, riasztások feldolgozásából és a telemetria megjelenítéséből áll.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 

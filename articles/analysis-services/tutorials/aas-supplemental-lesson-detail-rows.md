@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="supplemental-lesson---detail-rows" class="xliff"></a>
-
-# Kiegészítő lecke – Részletsorok
+# <a name="supplemental-lesson---detail-rows"></a>Kiegészítő lecke – Részletsorok
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -32,14 +30,10 @@ Ebben a kiegészítő leckében a DAX-szerkesztőt használhatja egy egyéni ré
   
 A lecke elvégzésének várható időtartama: **10 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a kiegészítőlecke-témakör a táblázatos modellezésről szóló oktatóanyag része. Az ebben a kiegészítő leckében található feladatok végrehajtása előtt be kell fejeznie minden előző leckét, vagy rendelkeznie kell egy befejezett Adventure Works internetes értékesítési minta modellprojekttel.  
   
-<a id="what-do-we-need-to-solve" class="xliff"></a>
-
-## Mit kell megoldanunk?
+## <a name="what-do-we-need-to-solve"></a>Mit kell megoldanunk?
 Vessünk egy pillantást az InternetTotalSales mérték részleteire egy részletsor-kifejezés hozzáadása előtt.
 
 1.  Az SSDT-ben kattintson a **Modell** menü > **Elemzés az Excelben** elemére az Excel megnyitásához és egy üres kimutatás létrehozásához.
@@ -54,13 +48,9 @@ Vessünk egy pillantást az InternetTotalSales mérték részleteire egy részle
   
 Itt egy olyan, adatokból álló oszlopokat és sorokat tartalmazó táblázatot szeretnénk látni, amely hozzájárul az InternetTotalSales mérték aggregált eredményeihez. Ehhez hozzáadhatunk egy részletsor-kifejezést a mérték tulajdonságaként.
 
-<a id="add-a-detail-rows-expression" class="xliff"></a>
+## <a name="add-a-detail-rows-expression"></a>Részletsor-kifejezés hozzáadása
 
-## Részletsor-kifejezés hozzáadása
-
-<a id="to-create-a-detail-rows-expression" class="xliff"></a>
-
-#### Részletsor-kifejezés létrehozása 
+#### <a name="to-create-a-detail-rows-expression"></a>Részletsor-kifejezés létrehozása 
   
 1. A modelltervezőben kattintson a **FactInternetSales** táblára. 
 
@@ -92,9 +82,7 @@ Itt egy olyan, adatokból álló oszlopokat és sorokat tartalmazó táblázatot
 5. Helyezze ismét üzembe a modellt.
 
   
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:  
+## <a name="see-also"></a>Lásd még:  
 [SELECTCOLUMNS függvény (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
 [Kiegészítő lecke – Dinamikus biztonság](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [Kiegészítő lecke – Hézagos hierarchiák](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  

@@ -24,16 +24,12 @@ ms.lasthandoff: 06/16/2017
 
 
 ---
-<a id="overview-of-the-features-in-azure-backup" class="xliff"></a>
-
-# Az Azure Backup szolgáltatásainak áttekintése
+# <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
 
 [Áttekintő videó megtekintése az Azure Backupról](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
 
-<a id="why-use-azure-backup" class="xliff"></a>
-
-## Miért érdemes az Azure Backupot használni?
+## <a name="why-use-azure-backup"></a>Miért érdemes az Azure Backupot használni?
 A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt a lemezekhez és szalagokhoz hasonló végpontként vagy statikus tár célhelyként kezeljék. Bár ez a megközelítés egyszerű, de korlátozott, és nem használja ki maradéktalanul a mögöttes felhőplatformot, ezáltal költséges, nem hatékony megoldást eredményez. Más megoldások drágák lehetnek, mert Ön végül a nem megfelelő típusú tárhelyért vagy szükségtelen tárhelyért fizet. Más megoldások gyakran nem hatékonyak, mert nem szerepel a lehetőségeik között az a tárhelytípus vagy tárhelyméret, amelyre Önnek szüksége van, vagy a felügyeleti feladatok elvégzése túl sok időt vesz igénybe. Ezzel szemben az Azure Backup legfontosabb előnyei a következők:
 
 **Automatikus tárolófelügyelet** – A hibrid környezetek gyakran megkövetelik a heterogén tárhely alkalmazását – valamennyi tárhely szükséges a helyszínen, valamennyi a felhőben. Az Azure Backup szolgáltatással nem kell költenie helyszíni tárolóeszközökre. Az Azure Backup automatikusan foglalja le és kezeli a Backup-tárolót, és használatalapú modellt alkalmaz. A használatalapú elszámolás azt jelenti, hogy csak a felhasznált tárhelyért kell fizetnie. További információkat az [Azure díjszabására vonatkozó cikkben](https://azure.microsoft.com/pricing/details/backup) talál.
@@ -54,9 +50,7 @@ A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt 
 
 **Hosszú távú megőrzés** – Ahelyett, hogy biztonsági másolatait lemezről szalagra mentené, majd a szalagot egy külső helyre szállítaná, az Azure-t használhatja rövid és hosszú távú megőrzésre. Az Azure nem korlátozza az adatok megőrzési idejét a Backup- vagy Recovery Services-tárolókban. Tetszőleges ideig őrizheti meg az adatokat a tárolókban. Az Azure Backup védett példányonként 9999 helyreállítási pontos felső határral rendelkezik. A cikk [Biztonsági mentés és megőrzés](backup-introduction-to-azure-backup.md#backup-and-retention) című részéből megtudhatja, milyen hatással lehet ez a korlát a biztonsági mentési igényeire.  
 
-<a id="which-azure-backup-components-should-i-use" class="xliff"></a>
-
-## Melyik Azure Backup-összetevőt használjam?
+## <a name="which-azure-backup-components-should-i-use"></a>Melyik Azure Backup-összetevőt használjam?
 Ha nem tudja biztosan, hogy melyik Azure Backup-összetevő felel meg az igényeinek, az alábbi táblázatból megtudhatja, hogy az egyes összetevők minek a védelmét tudják biztosítani. Az Azure Portal tartalmaz egy beépített varázslót, amely végigvezeti az összetevő kiválasztásának, letöltésének és telepítésének folyamatán. A varázsló, amely részét képezi a helyreállítási tár létrehozási folyamatának, végigvezeti Önt a biztonsági mentési cél kiválasztásának, illetve a védendő adatok vagy alkalmazások kiválasztásának lépésein.
 
 | Összetevő | Előnyök | Korlátok | Mi van védve? | Hol tárolja a biztonsági mentéseket? |
@@ -66,9 +60,7 @@ Ha nem tudja biztosan, hogy melyik Azure Backup-összetevő felel meg az igénye
 | Azure Backup Server |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Használható a Recovery Services-tároló<li>Linux-támogatás Hyper-V és VMware virtuális gépeken<li>VMware virtuális gépek biztonsági mentése és visszaállítása <li>Nincs szükség System Center-licencre |<li>Nem készíthető biztonsági mentés az Oracle számítási feladatról.<li>Mindig élő Azure-előfizetést igényel<li>A szalagos biztonsági mentés nem támogatott |<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Recovery Services-tároló,<li> Helyileg csatlakoztatott lemez |
 | Azure IaaS virtuális gép biztonsági mentése |<li>Natív biztonsági mentések Windowshoz/Linuxhoz<li>Nincs szükség speciális ügynök telepítésére<li>Hálószintű biztonsági mentés, nincs szükség biztonsági mentési infrastruktúrára |<li>Virtuális gépek napi biztonsági mentése <li>Virtuális gépek visszaállítása csak lemezszinten<li>Nem készíthető biztonsági mentés a helyszínen |<li>Virtuális gépek <li>Minden lemez (PowerShell használatával) |<p>Recovery Services-tároló</p> |
 
-<a id="what-are-the-deployment-scenarios-for-each-component" class="xliff"></a>
-
-## Mik az egyes összetevők üzembe helyezési lehetőségei?
+## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Mik az egyes összetevők üzembe helyezési lehetőségei?
 | Összetevő | Üzembe helyezhető az Azure-ban? | Üzembe helyezhető a helyszínen? | A céltároló támogatott |
 | --- | --- | --- | --- |
 | Azure Backup (MARS) ügynöke |<p>**Igen**</p> <p>Az Azure Backup ügynöke az Azure-ban futó bármely Windows Server rendszerű virtuális gépre telepíthető.</p> |<p>**Igen**</p> <p>Az Azure Backup ügynöke bármely Windows Server rendszerű virtuális gépre vagy fizikai gépre telepíthető.</p> |<p>Recovery Services-tároló</p> |
@@ -76,9 +68,7 @@ Ha nem tudja biztosan, hogy melyik Azure Backup-összetevő felel meg az igénye
 | Azure Backup Server |<p>**Igen**</p><p>További információkat tudhat meg arról, [hogyan védheti meg a számítási feladatokat az Azure-ban az Azure Backup Serverrel](backup-azure-microsoft-azure-backup.md).</p> |<p>**Igen**</p> <p>További információkat tudhat meg arról, [hogyan védheti meg a számítási feladatokat az Azure-ban az Azure Backup Serverrel](backup-azure-microsoft-azure-backup.md).</p> |<p>Helyileg csatlakoztatott lemez,</p> <p>Recovery Services-tároló</p> |
 | Azure IaaS virtuális gép biztonsági mentése |<p>**Igen**</p><p>Az Azure-háló része</p><p>Az [Azure szolgáltatásként kínált infrastruktúra (IaaS) rendszerű virtuális gépek biztonsági mentéséhez](backup-azure-vms-introduction.md) készült.</p> |<p>**Nem**</p> <p>A System Center DPM-mel biztonsági mentést készíthet az adatközpontban lévő virtuális gépekről.</p> |<p>Recovery Services-tároló</p> |
 
-<a id="which-applications-and-workloads-can-be-backed-up" class="xliff"></a>
-
-## Melyik alkalmazásokról és számítási feladatokról készíthető biztonsági mentés?
+## <a name="which-applications-and-workloads-can-be-backed-up"></a>Melyik alkalmazásokról és számítási feladatokról készíthető biztonsági mentés?
 A következő táblázat az Azure Backup használatával védhető adatokat és számítási feladatokat tartalmazza. Az Azure Backup-megoldás oszlopban az adott megoldás telepítési dokumentációjára mutató hivatkozások szerepelnek. Minden Azure Backup-összetevő klasszikus (Service Manager-alapú telepítés) és Resource Manager-alapú üzemi modell környezetben is telepíthető.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
@@ -95,9 +85,7 @@ A következő táblázat az Azure Backup használatával védhető adatokat és 
 | Azure IaaS virtuális gépek (Windows) |Azure-ban futó |[Azure Backup (virtuálisgép-bővítmény)](backup-azure-vms-introduction.md) |
 | Azure IaaS virtuális gépek (Linux) |Azure-ban futó |[Azure Backup (virtuálisgép-bővítmény)](backup-azure-vms-introduction.md) |
 
-<a id="linux-support" class="xliff"></a>
-
-## Linux-támogatás
+## <a name="linux-support"></a>Linux-támogatás
 Az alábbi táblázat tartalmazza a Linuxot támogató Azure Backup-összetevőket.  
 
 | Összetevő | Linux (Azure által támogatott) támogatása |
@@ -107,14 +95,10 @@ Az alábbi táblázat tartalmazza a Linuxot támogató Azure Backup-összetevők
 | Azure Backup Server |<li>Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/> <li> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása </br></br> *Azure-beli virtuális gépekhez nem érhető el fájlkonzisztens biztonsági mentés*  |
 | Azure IaaS virtuális gép biztonsági mentése |Alkalmazáskonzisztens biztonsági mentés [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/> [Részletes fájlhelyreállítás](backup-azure-restore-files-from-vm.md)<br/> [Az összes virtuálisgép-lemez visszaállítása](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [Virtuális gép visszaállítása](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
 
-<a id="using-premium-storage-vms-with-azure-backup" class="xliff"></a>
-
-## Premium Storage virtuális gépek használata az Azure Backup szolgáltatással
+## <a name="using-premium-storage-vms-with-azure-backup"></a>Premium Storage virtuális gépek használata az Azure Backup szolgáltatással
 Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Részletesebb áttekintés talál a [Premium Storage szolgáltatást mint az Azure virtuális gépek számítási feladataihoz használható nagy teljesítményű tárterületet](../storage/storage-premium-storage.md) ismertető cikkben.
 
-<a id="back-up-premium-storage-vms" class="xliff"></a>
-
-### A Premium Storage virtuális gépek biztonsági mentése
+### <a name="back-up-premium-storage-vms"></a>A Premium Storage virtuális gépek biztonsági mentése
 Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatás átmeneti, „AzureBackup-” nevű előkészítési helyet hoz létre a Premium Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével. Győződjön meg arról, hogy megfelelő mennyiségű szabad hely áll rendelkezésre a Prémium szintű Storage-fiókban az átmeneti előkészítési hely számára. További információért tekintse meg a [Premium Storage korlátozásaival](../storage/storage-premium-storage.md#scalability-and-performance-targets) foglalkozó témakört. A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet. Az előkészítési helyhez használt tároló ára megfelel a [Premium Storage díjszabásnak](../storage/storage-premium-storage.md#pricing-and-billing).
 
 > [!NOTE]
@@ -122,34 +106,22 @@ Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatá
 >
 >
 
-<a id="restore-premium-storage-vms" class="xliff"></a>
-
-### A Premium Storage virtuális gépek visszaállítása
+### <a name="restore-premium-storage-vms"></a>A Premium Storage virtuális gépek visszaállítása
 A Premium Storage virtuális gépek Premium Storage tárolóba vagy normál tárolóba állíthatók vissza. A Premium Storage virtuális gép helyreállítási pontjának Premium Storage-ba való visszaállítása a visszaállítás tipikus folyamata. Azonban költséghatékony lehet a Premium Storage virtuális gépek helyreállítási pontjait Standard szintű tárolóba visszaállítani. Ez a visszaállítási típus használható, ha a fájlok egy részére van szüksége a virtuális gépről.
 
-<a id="using-managed-disk-vms-with-azure-backup" class="xliff"></a>
-
-## Felügyelt lemezes virtuális gépek használata az Azure Backuppal
+## <a name="using-managed-disk-vms-with-azure-backup"></a>Felügyelt lemezes virtuális gépek használata az Azure Backuppal
 Az Azure Backup védelmet biztosít a felügyelt lemezes virtuális gépek számára. A felügyelt lemezek használatával mentesül a virtuális gépek tárfiókjainak kezelése alól, és lényegesen leegyszerűsödik a virtuális gépek üzembe helyezése.
 
-<a id="back-up-managed-disk-vms" class="xliff"></a>
-
-### Felügyelt lemezes virtuális gépek biztonsági mentése
+### <a name="back-up-managed-disk-vms"></a>Felügyelt lemezes virtuális gépek biztonsági mentése
 A felügyelt lemezeken található virtuális gépek biztonsági mentése megegyezik a Resource Manager-alapú virtuális gépek biztonsági mentésével. Az Azure Portalon közvetlenül a virtuálisgép-nézetből vagy a Recovery Services-tároló nézetéből konfigurálhatja a biztonsági mentési feladatot. A felügyelt lemezeken található virtuális gépek biztonsági mentését a felügyelt lemezeken kiépített visszaállításipont-gyűjteményekkel végezheti el. Az Azure Backup támogatja az Azure Disk Encryption (ADE) használatával titkosított, felügyelt lemezes virtuális gépek biztonsági mentését is.
 
-<a id="restore-managed-disk-vms" class="xliff"></a>
-
-### Felügyelt lemezes virtuális gépek visszaállítása
+### <a name="restore-managed-disk-vms"></a>Felügyelt lemezes virtuális gépek visszaállítása
 Az Azure Backup lehetővé teszi teljes, felügyelt lemezes virtuális gépek visszaállítását, illetve a felügyelt lemezek visszaállítását egy tárfiókba. A visszaállítási folyamat során az Azure kezeli a felügyelt lemezeket. Az ügyfél (tehát Ön) kezeli a visszaállítási folyamat részeként létrehozott tárfiókot. Felügyelt, titkosított virtuális gépek visszaállításakor a virtuális gép kulcsainak és titkos kódjainak a visszaállítási művelet megkezdése előtt már létezniük kell a kulcstartóban.
 
-<a id="what-are-the-features-of-each-backup-component" class="xliff"></a>
-
-## Milyen funkciókat nyújtanak az egyes Backup-összetevők?
+## <a name="what-are-the-features-of-each-backup-component"></a>Milyen funkciókat nyújtanak az egyes Backup-összetevők?
 A következő szakaszok táblázatai az egyes Azure Backup-összetevők különböző funkcióinak elérhetőségét vagy támogatottságát foglalják össze. A további támogatásra vagy részletekre vonatkozó információkat a táblázatok alatt találja.
 
-<a id="storage" class="xliff"></a>
-
-### Tárolás
+### <a name="storage"></a>Tárolás
 | Szolgáltatás | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
 | --- | --- | --- | --- | --- |
 | Recovery Services-tároló |![Igen][green] |![Igen][green] |![Igen][green] |![Igen][green] |
@@ -163,15 +135,11 @@ A következő szakaszok táblázatai az egyes Azure Backup-összetevők különb
 
 A Recovery Services-tároló az előnyben részesített tárolási cél minden összetevőben. A System Center DPM és az Azure Backup Server lehetőséget nyújt helyi lemezmásolat készítésére is. Azonban csak a System Center DPM nyújt lehetőséget az adatok szalagos tárolóeszközre írására.
 
-<a id="compression" class="xliff"></a>
-
-#### Tömörítés
+#### <a name="compression"></a>Tömörítés
 A biztonsági másolatok a szükséges tárterület csökkentése érdekében tömörítve vannak. Csak a virtuálisgép-bővítmény összetevő nem használ tömörítést. A virtuálisgép-bővítmény minden biztonsági mentési adatot az Ön tárfiókjából az ugyanazon régióban lévő Recovery Services-tárolóba másol. Az adatátvitel során nem használ tömörítést. A tömörítés nélküli adatátvitel némileg megnöveli a felhasznált tárterületet. Az adatok tömörítés nélküli tárolása azonban gyorsabb helyreállítást tesz lehetővé, ha szüksége van a visszaállítási pontra.
 
 
-<a id="disk-deduplication" class="xliff"></a>
-
-#### Lemezdeduplikáció
+#### <a name="disk-deduplication"></a>Lemezdeduplikáció
 A deduplikáció nyújtotta előnyöket a System Center DPM vagy az Azure Backup Server [Hyper-V virtuális gépeken](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx) való üzembe helyezése esetén használhatja ki. A Windows Server az adatok deduplikációját (a gazdagép szintjén) a virtuális géphez Backup-tárolóként csatlakoztatott virtuális merevlemezeken (VHD-ken) végzi el.
 
 > [!NOTE]
@@ -179,14 +147,10 @@ A deduplikáció nyújtotta előnyöket a System Center DPM vagy az Azure Backup
 >
 >
 
-<a id="incremental-backup-explained" class="xliff"></a>
-
-### A növekményes biztonsági mentés bemutatása
+### <a name="incremental-backup-explained"></a>A növekményes biztonsági mentés bemutatása
 Minden Azure Backup-összetevő támogatja a növekményes biztonsági mentést a céltárolótól függetlenül (lemez, szalag, Recovery Services-tároló). A növekményes biztonsági mentés biztosítja, hogy a biztonsági mentések hatékonyan használják a tárhelyet és az időt, mert csak az utolsó biztonsági mentés óta végzett módosításokat viszi át.
 
-<a id="comparing-full-differential-and-incremental-backup" class="xliff"></a>
-
-#### A teljes, a különbségi és a növekményes biztonsági mentés összehasonlítása
+#### <a name="comparing-full-differential-and-incremental-backup"></a>A teljes, a különbségi és a növekményes biztonsági mentés összehasonlítása
 
 A tárhelyhasználat, a helyreállítási időre vonatkozó célkitűzés (RTO), és a hálózatleterheltség eltér az egyes biztonsági mentési módszerek esetében. A biztonsági mentés teljes birtoklási költségének alacsonyan tartásához fontos tudnia, hogyan válassza ki a legjobb biztonsági mentési megoldást. A következő képen a teljes, a különbségi és a növekményes biztonsági mentés összehasonlítása látható. A képen látható A adatforrás 10 tárolási blokkból áll (A1–A10), amelyekről havonta készül biztonsági mentés. Az A2, az A3, az A4 és az A9 módosul az első hónapban, az A5 pedig a következő hónapban.
 
@@ -198,9 +162,7 @@ A **különbségi biztonsági mentés** kizárólag a kezdeti biztonsági menté
 
 A **növekményes biztonsági mentés** tárterület- és sávszélesség-kihasználása nagyon hatékony, mivel kizárólag azokat az adatblokkokat tárolja, amelyek az előző biztonsági mentés óta módosultak. A növekményes biztonsági mentés használata esetén nincs szükség rendszeres teljes biztonsági mentésekre. A példában teljes biztonsági mentés készül az első hónapban, a módosított A2, A3, A4 és A9 blokkok meg lesznek jelölve módosítottként, és továbbítva lesznek a következő hónapra. A harmadik hónapban csak az A5 módosított blokk van megjelölve és továbbítva. A kevesebb adat mozgatásával tárterület és hálózati erőforrások takaríthatóak meg, és így csökken a teljes birtoklási költség.   
 
-<a id="security" class="xliff"></a>
-
-### Biztonság
+### <a name="security"></a>Biztonság
 | Szolgáltatás | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
 | --- | --- | --- | --- | --- |
 | Hálózati biztonság<br/> (az Azure-hoz) |![Igen][green] |![Igen][green] |![Igen][green] |![Részlegesen][yellow] |
@@ -208,9 +170,7 @@ A **növekményes biztonsági mentés** tárterület- és sávszélesség-kihasz
 
 ![tábla kulcsa](./media/backup-introduction-to-azure-backup/table-key.png)
 
-<a id="network-security" class="xliff"></a>
-
-#### Hálózati biztonság
+#### <a name="network-security"></a>Hálózati biztonság
 A kiszolgálókról a Recovery Services-tárolóba érkező minden biztonsági mentési adat az Advanced Encryption Standard 256 eljárással van titkosítva. A biztonsági mentési adatokat a rendszer egy biztonságos HTTPS-kapcsolaton keresztül küldi el. Az adatok biztonsági másolata titkosított formában megtalálható a Recovery Services-tárolóban is. Csak Ön mint Azure-ügyfél rendelkezik az adatok zárolásának feloldására szolgáló jelszóval. A Microsoft soha nem tudja visszafejteni az adatok biztonsági másolatát.
 
 > [!WARNING]
@@ -218,14 +178,10 @@ A kiszolgálókról a Recovery Services-tárolóba érkező minden biztonsági m
 >
 >
 
-<a id="data-security" class="xliff"></a>
-
-#### Adatbiztonság
+#### <a name="data-security"></a>Adatbiztonság
 Az Azure virtuális gépek biztonsági mentéséhez titkosítást kell beállítani a virtuális gépen *belül*. Használja a BitLockert Windows rendszerű virtuális gépeken és a **dm-crypt**-et Linux rendszerű virtuális gépeken. Az Azure Backup nem titkosítja automatikusan az ezen az elérési úton bejövő biztonsági mentési adatokat.
 
-<a id="network" class="xliff"></a>
-
-### Network (Hálózat)
+### <a name="network"></a>Network (Hálózat)
 | Szolgáltatás | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
 | --- | --- | --- | --- | --- |
 | Hálózati tömörítés <br/>(a **biztonsági mentési kiszolgálóhoz**) | |![Igen][green] |![Igen][green] | |
@@ -239,14 +195,10 @@ A virtuálisgép-bővítmény (az IaaS virtuális gépen) közvetlenül az Azure
 
 Ha System Center DPM-kiszolgálót vagy Azure Backup Servert használ másodlagos biztonsági mentési kiszolgálóként, tömörítse az elsődleges kiszolgálóról a biztonsági mentési kiszolgálóra irányuló adatokat. A DPM-ben vagy az Azure Backup Serverben való biztonsági mentés előtti adattömörítéssel kímélheti a sávszélességet.
 
-<a id="network-throttling" class="xliff"></a>
-
-#### A hálózati sávszélesség szabályozása
+#### <a name="network-throttling"></a>A hálózati sávszélesség szabályozása
 Az Azure Backup ügynökével szabályozhatja a hálózati sávszélességet, így az adatátvitel alatt vezérelheti a hálózati sávszélesség használatát. A szabályozás akkor lehet hasznos, ha adatokról kell biztonsági másolatot készítenie a munkaidő alatt, de nem szeretné, hogy a biztonsági mentési folyamat zavarja a többi internetes forgalmat. Az adatátvitel szabályozása a biztonsági mentési és a visszaállítást tevékenységekre vonatkozik.
 
-<a id="backup-and-retention" class="xliff"></a>
-
-## Biztonsági mentés és megőrzés
+## <a name="backup-and-retention"></a>Biztonsági mentés és megőrzés
 
 Az Azure Backup *védett példányonként* 9999 helyreállítási pontos felső határral rendelkezik. Ezeket a helyreállítási pontokat biztonsági másolatoknak, illetve pillanatképeknek is hívják. A védett példányok olyan számítógépek, kiszolgálók (fizikai vagy virtuális) vagy számítási feladatok, amelyek úgy vannak konfigurálva, hogy biztonsági mentést végezzenek az Azure-ba. További információkért lásd a [Mi az a védett példány?](backup-introduction-to-azure-backup.md#what-is-a-protected-instance) szakaszt. Az egyes példányok védelméhez biztonsági másolatot kell készíteni az adatokról. Az adatok biztonsági másolata maga a védelem. Ha a forrásadatok elvesznek vagy sérülnek, a biztonsági másolatból vissza lehet állítani azokat. Az alábbi táblázat az egyes összetevők maximális biztonsági mentési gyakoriságát ismerteti. A biztonsági mentési szabályzat konfigurációja határozza meg, hogy milyen gyorsan használja fel a helyreállítási pontokat. Ha például minden nap létrehoz egy helyreállítási pontot, akkor 27 év után fogynának el a helyreállítási pontjai. Ha havonta csak egy helyreállítási pontot használ fel, akkor helyreállítási pontjai 833 év után fogynának el. A Backup szolgáltatás nem társít lejárati időt a helyreállítási pontokhoz.
 
@@ -260,9 +212,7 @@ Az Azure Backup *védett példányonként* 9999 helyreállítási pontos felső 
 | Helyreállítási pontok a helyi lemezen |Nem alkalmazható |<li>64 fájlkiszolgálókhoz,<li>448 alkalmazáskiszolgálókhoz |<li>64 fájlkiszolgálókhoz,<li>448 alkalmazáskiszolgálókhoz |Nem alkalmazható |
 | Helyreállítási pontok a szalagon |Nem alkalmazható |Korlátlan |Nem alkalmazható |Nem alkalmazható |
 
-<a id="what-is-a-protected-instance" class="xliff"></a>
-
-## Mi az a védett példány?
+## <a name="what-is-a-protected-instance"></a>Mi az a védett példány?
 A védett példány egy általános elnevezés az olyan Windows-számítógépekre, -kiszolgálókra (fizikai vagy virtuális) vagy SQL-adatbázisokra, amelyek úgy vannak konfigurálva, hogy biztonsági mentést végezzenek az Azure-ba. A példány onnantól tekinthető védettnek, hogy konfigurálja a számítógép, kiszolgáló vagy adatbázis biztonsági mentésére vonatkozó házirendet, és létrehozott egy biztonsági másolatot az adatokról. Az adott védett példány rákövetkező biztonsági másolatai (az úgynevezett helyreállítási pontok), növelik a foglalt tárhely méretét. Védett példányonként 9999 helyreállítási pontot hozhat létre. Ha töröl egy helyreállítási pontot a tárterületről, az nem számít az összesen 9999 helyreállítási pont közé.
 Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskiszolgálók, adatbázisok, valamint Windows operációs rendszert futtató személyi számítógépek. Példa:
 
@@ -271,9 +221,7 @@ Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskis
 * Egy személyi számítógép, munkaállomás vagy laptop, amelyen a Windows operációs rendszer fut.
 
 
-<a id="what-is-a-recovery-services-vault" class="xliff"></a>
-
-## Mi az a Recovery Services-tároló?
+## <a name="what-is-a-recovery-services-vault"></a>Mi az a Recovery Services-tároló?
 A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. A Recovery Services-tároló az Azure-szolgáltatások, valamint a helyszíni kiszolgálók és munkaállomások biztonsági mentési adatainak tárolására szolgál. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. Egy előfizetésen belül tetszőleges számú Recovery Services-tárolót hozhat létre.
 
 Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első verziói. Az Azure Resource Manager modelljellemzőit biztosító Recovery Services-tárolók képezték a tároló második verzióját. A szolgáltatások közötti különbségekről teljes leírást a [Recovery Services-tároló áttekintő cikkében](backup-azure-recovery-services-vault-overview.md) talál. Biztonsági mentési tárolók a továbbiakban nem hozhatók létre az Azure Portalon, viszont továbbra is támogatottak.
@@ -284,9 +232,7 @@ Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első v
 >- A klasszikus portálon nem tud majd hozzáférni a biztonsági mentési adataihoz. Helyette az Azure Portal segítségével férhet hozzá a Recovery Services-tárolókban található biztonsági mentési adatokhoz.
 >
 
-<a id="how-does-azure-backup-differ-from-azure-site-recovery" class="xliff"></a>
-
-## Miben különbözik az Azure Backup az Azure Site Recoverytől?
+## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Miben különbözik az Azure Backup az Azure Site Recoverytől?
 Az Azure Backup és az Azure Site Recovery közös jellemzője, hogy mindkét szolgáltatás használható az adatok biztonsági mentésére és visszaállítására. Különböző szerepet töltenek be azonban a vállalkozásban az üzleti folytonosság és a vészhelyreállítás biztosítása során. Az Azure Backup segítségével részletesebben védheti meg és állíthatja vissza az adatokat. Ha például egy laptopon lévő bemutató megsérült, az Azure Backup segítségével állíthatja vissza a bemutatót. Ha egy virtuális gép konfigurációját és adatait szeretné replikálni egy másik adatközpontba, használja az Azure Site Recoveryt.
 
 Az Azure Backup biztosítja a helyszíni és a felhőben tárolt adatok védelmét. Az Azure Site Recovery koordinálja a virtuális gépek és a fizikai kiszolgálók replikálását, feladatátvételét és feladat-visszavételét. Mindkét szolgáltatás fontos, mert a vészhelyreállítási megoldásnak biztosítania kell az adatok védelmét és helyreállíthatóságát (Backup), *valamint* a számítási feladatok rendelkezésre állását (Site Recovery) leállások esetén.
@@ -299,9 +245,7 @@ A következő fogalmak segíthetnek a fontos döntések meghozatalában a bizton
 | Helyreállítási időre vonatkozó célkitűzés (RTO) |A helyreállítás vagy visszaállítás elvégzéséhez szükséges idő. |A nagyobb RPO miatt a biztonsági mentési megoldások által feldolgozandó adatmennyiség általában sokkal nagyobb, ami hosszabb RTO-khoz vezet. Napokba telhet például az adatok szalagokról való visszaállítása attól függően, hogy mennyi ideig tart a szalag szállítása egy külső helyről. |A vészhelyreállítási megoldások RTO-i sokkal rövidebbek, mert jobban szinkronban vannak a forrással. Kevesebb módosítást kell feldolgozni. |
 | Megőrzés |Az adatok tárolásának időtartama |A műveleti helyreállítást igénylő forgatókönyvekben (adatsérülés, véletlen fájltörlés, az operációs rendszer hibája) az adatok biztonsági másolatát általában legfeljebb 30 napig őrzi meg a rendszer.<br>A megfelelőség miatt lehet, hogy hónapokig vagy akár évekig kell tárolni az adatokat. Az adatok biztonsági másolata ideális az ilyen esetekben végzett archiváláshoz. |A vészhelyreállításhoz csak műveleti helyreállítási adatokra van szükség, ami általában néhány órát vagy legfeljebb egy napot vesz igénybe. A DR (vészhelyreállítási) megoldásokban használt részletes adatrögzítés miatt a DR-adatok hosszú távú megőrzése nem javasolt. |
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 A következő oktatóanyagok lépésről lépésre ismertetik a Windows Serveren lévő adatok vagy az Azure-beli virtuális gépek védelmét:
 
 * [Fájlok és mappák biztonsági mentése](backup-try-azure-backup-in-10-mins.md)

@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-8-create-perspectives" class="xliff"></a>
-
-# 8. lecke: Perspektívák létrehozása
+# <a name="lesson-8-create-perspectives"></a>8. lecke: Perspektívák létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -36,18 +34,12 @@ A lecke célja annak leírása, hogyan hozható létre perspektíva, illetve a t
   
 A lecke elvégzésének várható időtartama: **5 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Az ebben a leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét: [7. lecke: Fő teljesítménymutatók létrehozása](../tutorials/aas-lesson-7-create-key-performance-indicators.md).  
   
-<a id="create-perspectives" class="xliff"></a>
-
-## Perspektívák létrehozása  
+## <a name="create-perspectives"></a>Perspektívák létrehozása  
   
-<a id="to-create-an-internet-sales-perspective" class="xliff"></a>
-
-#### Internetes értékesítési perspektíva létrehozása  
+#### <a name="to-create-an-internet-sales-perspective"></a>Internetes értékesítési perspektíva létrehozása  
   
 1.  Kattintson a **Modell** menü > **Perspektívák** > **Létrehozás és kezelés** elemére.  
   
@@ -61,9 +53,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
     Egy későbbi leckében használhatja az Elemzés az Excelben szolgáltatást a perspektíva tesztelésére. Az Excel Kimutatás mezők listája a DimCustomer tábla kivételével minden táblát tartalmaz.  
 
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 [9. lecke: Hierarchiák létrehozása](../tutorials/aas-lesson-9-create-hierarchies.md).
   
   

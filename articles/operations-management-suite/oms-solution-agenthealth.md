@@ -22,24 +22,16 @@ ms.lasthandoff: 06/23/2017
 
 
 ---
-<a id="agent-health-solution-in-oms" class="xliff"></a>
-
-#  Ügynökállapot megoldás
+#  <a name="agent-health-solution-in-oms"></a>Ügynökállapot megoldás
 Az ügynökállapot megoldás segít átlátni, hogy az OMS munkaterület vagy egy OMS-hez csatlakozó System Center Operations Manager-felügyeleticsoport felé jelentő ügynökök közül melyik nem válaszol, és melyik küld működési adatokat.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 A megoldás telepítése előtt győződjön meg arról, hogy rendelkezik aktuálisan támogatott [Windows-ügynökökkel](../log-analytics/log-analytics-windows-agents.md), amelyek az OMS-munkaterület felé, vagy egy, az OMS-munkaterülettel integrált [Operations Manager-felügyeleticsoport](../log-analytics/log-analytics-om-agents.md) felé jelentenek.    
 
-<a id="solution-components" class="xliff"></a>
-
-## Megoldás-összetevők
+## <a name="solution-components"></a>Megoldás-összetevők
 Ez a megoldás a következő erőforrásokból áll, amelyek a munkaterületéhez lesznek hozzáadva, és ügynökökhöz vagy az Operations Managerhez kapcsolt felügyeleti csoporthoz lesznek közvetlenül hozzákapcsolva. 
 
-<a id="management-packs" class="xliff"></a>
-
-### Felügyeleti csomagok
+### <a name="management-packs"></a>Felügyeleti csomagok
 Ha a System Center Operations Manager felügyeleti csoportja össze van kapcsolva egy OMS-munkaterülettel, az alábbi felügyeleti csomagok is telepítve lesznek az Operations Managerben.  Ezeket a felügyeleti csomagokat a megoldás hozzáadását követően a rendszer a közvetlenül kapcsolódó Windows rendszerű számítógépekre is telepíti. A felügyeleti csomagokat nem szükséges konfigurálni vagy felügyelni. 
 
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentDirect)
@@ -47,18 +39,12 @@ Ha a System Center Operations Manager felügyeleti csoportja össze van kapcsolv
 
 A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Operations Manager csatlakoztatása a Log Analyticshez](../log-analytics/log-analytics-om-agents.md).
 
-<a id="configuration" class="xliff"></a>
-
-## Konfiguráció
+## <a name="configuration"></a>Konfiguráció
 Az OMS-munkaterülethez adja hozzá az Ügynökállapot megoldást, a [Megoldás hozzáadása](../log-analytics/log-analytics-add-solutions.md) című témakörben leírt eljárással. Nincs szükség további konfigurációra.
 
 
-<a id="data-collection" class="xliff"></a>
-
-## Adatgyűjtés
-<a id="supported-agents" class="xliff"></a>
-
-### Támogatott ügynökök
+## <a name="data-collection"></a>Adatgyűjtés
+### <a name="supported-agents"></a>Támogatott ügynökök
 Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
@@ -66,9 +52,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 | Windows-ügynökök | Igen | A szívverés eseményeket a rendszer a közvetlen Windows-ügynököktől gyűjti össze.|
 | System Center Operations Manage felügyeleti csoport | Igen | A szívverés eseményeket a rendszer a felügyeleti csoportnak jelentő ügynököktől gyűjti össze 60 másodpercenként, majd továbbítja az eseményeket a Log Analytics felé. Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynökök és a Log Analytics között. A szívverés események adatai a felügyeleti csoportból a Log Analytics-tárházba lesznek továbbítva.|
 
-<a id="using-the-solution" class="xliff"></a>
-
-## A megoldás használata
+## <a name="using-the-solution"></a>A megoldás használata
 A megoldás hozzáadásakor az OMS-munkaterületen az **Ügynökállapot** csempe felkerül az OMS-irányítópultra. Ezen a csempén látható az ügynökök teljes száma és az elmúlt 24 órában nem válaszoló ügynökök száma.<br><br> ![Ügynökállapot megoldás csempe az irányítópulton](./media/oms-solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 Kattintson az **Ügynökállapot** csempére az **Ügynökállapot** irányítópult megnyitásához.  Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Mindegyik oszlop felsorolja azt a tíz eseményt, amelyek a legjobban megfelelnek az adott oszlop időtartományi feltételének. Az oszlopok alján jobb oldalon található **Az összes megtekintése** elemet vagy az oszlopok fejlécét kiválasztva a teljes listát lefedő keresést végezhet a naplóban.
@@ -86,14 +70,10 @@ Kattintson az **Ügynökállapot** csempére az **Ügynökállapot** irányító
 
 ![Ügynökállapot megoldás irányítópultja – példa](./media/oms-solution-agenthealth/agenthealth-solution-dashboard.png)  
 
-<a id="log-analytics-records" class="xliff"></a>
-
-## Log Analytics-rekordok
+## <a name="log-analytics-records"></a>Log Analytics-rekordok
 A megoldás egy rekordtípust hoz létre az OMS-adattárban.  
 
-<a id="heartbeat-records" class="xliff"></a>
-
-### Szívverés rekordok
+### <a name="heartbeat-records"></a>Szívverés rekordok
 Egy **Szívverés** típusú rekord készül.  Ezen rekordok tulajdonságait az alábbi táblázat ismerteti.  
 
 | Tulajdonság | Leírás |
@@ -116,9 +96,7 @@ Egy **Szívverés** típusú rekord készül.  Ezen rekordok tulajdonságait az 
 
 Minden Operations Manager felügyeleti kiszolgáló felé jelentő ügynök két szívverést küld, az SCAgentChannel tulajdonság értéke pedig a **Direct** (Közvetlen) és az **SCManagementServer** értékeket is tartalmazza, attól függően, hogy az OMS-előfizetésben mely Log Analytics-adatforrások és megoldások vannak engedélyezve. Ha visszaemlékszik, a megoldások adatait vagy egy Operations Manager felügyeleti kiszolgáló küldi az OMS-webszolgáltatásnak, vagy közvetlenül az ügynök, az általa összegyűjtött adatok mennyisége miatt. Az **SCManagementServer** értékű szívverések esetében a ComputerIP értéke a felügyeleti kiszolgáló IP-címe, mivel ez tölti fel az adatokat.  Azoknál a szívveréseknél, ahol az SCAgentChannel beállítása **Direct** (Közvetlen), ez az ügynök nyilvános IP-címe.  
 
-<a id="sample-log-searches" class="xliff"></a>
-
-## Naplókeresési minták
+## <a name="sample-log-searches"></a>Naplókeresési minták
 A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsolatos naplókeresési mintákat tartalmazza. 
 
 | Lekérdezés | Leírás |
@@ -137,8 +115,6 @@ A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsol
 | Type=Heartbeat IsGatewayInstalled=true&#124;Distinct Computer |A telepített OMS-átjárók száma | 
 
   
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](../log-analytics/log-analytics-alerts.md).

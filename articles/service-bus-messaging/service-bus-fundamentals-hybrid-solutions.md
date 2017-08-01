@@ -22,15 +22,11 @@ ms.lasthandoff: 06/17/2017
 
 
 ---
-<a id="azure-service-bus" class="xliff"></a>
-
-# Azure Service Bus
+# <a name="azure-service-bus"></a>Azure Service Bus
 
 Függetlenül attól, hogy egy alkalmazás vagy szolgáltatás a felhőben vagy a helyszínen fut, gyakran kell más alkalmazásokkal vagy szolgáltatásokkal interakcióba lépnie. A Microsoft Azure ehhez a Service Bus révén kínál széles körben használható megoldást. Ez a témakör áttekintést nyújt erről a technológiáról, ismerteti, mi is ez pontosan, és miért érdemes használni.
 
-<a id="service-bus-fundamentals" class="xliff"></a>
-
-## Service Bus fundamentals (A Service Bus alapjai)
+## <a name="service-bus-fundamentals"></a>Service Bus fundamentals (A Service Bus alapjai)
 
 A különféle helyzetekben különféle stílusú kommunikáció lehet szükséges. Néha az a legjobb megoldás, ha az alkalmazások egy egyszerű üzenetsoron keresztül küldik és fogadják az üzeneteket. Más helyzetekben a hagyományos üzenetsorok nem elegendőek, és a közzétételi-előfizetési mechanizmus a jobb megoldás. Egyes esetekben mindössze kapcsolatra van szükség az alkalmazások között, és nincs szükség üzenetsorokra. A Service Bus mindhárom lehetőséget biztosítja, lehető téve az alkalmazások számára a különféle módokon zajló interakciót.
 
@@ -52,9 +48,7 @@ Ezen objektumok valamelyikének a Relay forgatókönyvben történő használat�
 
 Fontos megérteni, hogy jóllehet a Service Bus maga a felhőben fut (azaz a Microsoft Azure adatközpontjaiban), a szolgáltatást igénybe vevő alkalmazások bárhol futhatnak. A Service Bus használatával összekapcsolhat például az Azure-ban vagy a saját adatközpontjában futó alkalmazásokat. A szolgáltatással összekapcsolhat az Azure-ban vagy más felhőplatformon futó alkalmazást egy helyszíni alkalmazással vagy táblagépekkel és telefonokkal is. Akár háztartási készülékeket, érzékelőket és egyéb eszközöket is csatlakoztathat egy központi alkalmazáshoz vagy egymáshoz. A Service Bus egy olyan kommunikációs mechanizmus a felhőben, amely lényegében bárhonnan elérhető. A használatának módja attól függ, hogy milyen célt szolgálnak az alkalmazások.
 
-<a id="queues" class="xliff"></a>
-
-## Üzenetsorok
+## <a name="queues"></a>Üzenetsorok
 
 Tegyük fel, hogy két alkalmazás egy Service Bus-üzenetsorral való csatlakoztatása mellett dönt. A 2. ábra ezt a helyzetet mutatja be.
 
@@ -78,9 +72,7 @@ Figyelje meg, mi történhet ebben az esetben: ugyanazon üzenet kézbesítésé
 
 Az üzenetsorok számos helyzetben lehetnek hasznosak. A használatukkal az alkalmazások akkor is kommunikálhatnak, ha nem egy időben futnak, ami különösen a kötegelt és a mobilalkalmazások esetén praktikus. A több fogadóval rendelkező üzenetsorok emellett automatikus terheléselosztást is biztosítanak, mivel a küldött üzenetek megoszlanak a fogadók között.
 
-<a id="topics" class="xliff"></a>
-
-## Témakörök
+## <a name="topics"></a>Témakörök
 
 Bármennyire hasznosak is, az üzenetsorok nem minden esetben bizonyulnak a megfelelő megoldásnak. Esetenként célszerűbb Service Bus-témaköröket használni. A 3. ábra ezt az elképzelést mutatja be.
 
@@ -96,9 +88,7 @@ A *témakörök* sok szempontból hasonlóak az üzenetsorokhoz. A küldők ugya
 
 Ahogy az üzenetsorok esetében is, az üzenetek olvasásakor a témakörök előfizetői is választhatnak a [ReceiveAndDelete és a PeekLock mód](/dotnet/api/microsoft.servicebus.messaging.receivemode) között. Az üzenetsoroktól eltérően azonban a témakörökbe küldött egyes üzeneteket több előfizetés is fogadhatja. Ez a gyakran *közzététel és előfizetés* (vagy *pub/sub*) néven ismert megközelítés hasznos, ha több alkalmazás is érdeklődik ugyanazon üzenetek iránt. A megfelelő szűrő meghatározásával mindegyik előfizető az üzenetfolyamnak csak azon részét látja, amelyet látnia kell.
 
-<a id="relays" class="xliff"></a>
-
-## Továbbítók
+## <a name="relays"></a>Továbbítók
 
 Az üzenetsorok és a témakörök egyaránt egyirányú aszinkron kommunikációt tesznek lehetővé egy közvetítőn keresztül. A forgalom csak egy irányban folyik, és nincs közvetlen kapcsolat a küldők és a fogadók közt. De mi történik, ha nem szeretné ezt a kapcsolatot? Tegyük fel, hogy az alkalmazásainak küldenie és fogadnia is kell üzeneteket, vagy talán közvetlen kapcsolatot szeretne közöttük, és nincs szüksége közvetítőre az üzenetek tárolásához. Az ilyen forgatókönyvek kezeléséhez a Service Bus *továbbítókat* biztosít, amint az a 4. ábrán látható.
 
@@ -118,15 +108,11 @@ Az üzenetsoroktól és témaköröktől eltérően az alkalmazások nem hoznak 
 
 A továbbító a megfelelő megoldás, ha közvetlen kommunikációra van szükség az alkalmazások között. Vegyük például egy légitársaság foglalási rendszerét, amely egy olyan helyszíni adatközpontban fut, amelynek elérhetőnek kell lennie bejelentkezési pultokról, mobileszközökről és egyéb számítógépekről. Az ezeken a rendszereken futó alkalmazások Service Bus Relayeket használhatnak a felhőben a kommunikációhoz, függetlenül attól, hogy hol futnak.
 
-<a id="summary" class="xliff"></a>
-
-## Összefoglalás
+## <a name="summary"></a>Összefoglalás
 
 Az alkalmazások összekapcsolása mindig is részét képezte a teljes megoldások összeállításának, és az olyan forgatókönyvek száma, amelyekben az alkalmazásoknak és szolgáltatásoknak kommunikálniuk kell egymással, óhatatlanul nőni fog, ahogy egyre több alkalmazás és eszköz csatlakozik az internetre. A Service Bus célja az, hogy ezt az alapvető fontosságú funkciót könnyebben implementálhatóvá és szélesebb körben elérhetővé tegye azáltal, hogy felhőalapú technológiákat biztosít a kommunikációhoz az üzenetsorok, témakörök és Relayek révén.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az Azure Service Bus alapjait, az alábbi hivatkozásokat követve olvashat további információkat.
 

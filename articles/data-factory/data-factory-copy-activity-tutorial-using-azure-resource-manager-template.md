@@ -22,9 +22,7 @@ ms.lasthandoff: 05/18/2017
 
 
 ---
-<a id="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data" class="xliff"></a>
-
-# Oktatóanyag: Azure Resource Manager-sablonok használata Data Factory-folyamatok létrehozására adatmásolás céljából 
+# <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Azure Resource Manager-sablonok használata Data Factory-folyamatok létrehozására adatmásolás céljából 
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -46,16 +44,12 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 > [!NOTE] 
 > Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. Az adatok Azure Data Factory használatával történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md). 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 * Tekintse meg [Az oktatóanyag áttekintése és előfeltételei](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikket, és hajtsa végre az **előfeltételként** felsorolt lépéseket.
 * Kövesse a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Ebben az oktatóanyagban Data Factory-entitásokat fogunk üzembe helyezni a PowerShell-lel. 
 * (Nem kötelező) Az Azure Resource Manager-sablonokkal kapcsolatban az [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) című cikkben tájékozódhat bővebben.
 
-<a id="in-this-tutorial" class="xliff"></a>
-
-## Az oktatóanyag tartalma
+## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
 Ebben az oktatóanyagban az alábbi Data Factory-entitásokkal rendelkező adat-előállítót hozza létre:
 
 | Entitás | Leírás |
@@ -72,9 +66,7 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy 
 
 A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
 
-<a id="data-factory-json-template" class="xliff"></a>
-
-## Data Factory JSON-sablon
+## <a name="data-factory-json-template"></a>Data Factory JSON-sablon
 Az adat-előállító meghatározásához szükséges legfelső szintű Resource Manager-sablon a következő: 
 
 ```json
@@ -288,9 +280,7 @@ Hozzon létre egy JSON-fájlt **ADFCopyTutorialARM.json** néven a **C:\ADFGetSt
   }
 ```
 
-<a id="parameters-json" class="xliff"></a>
-
-## Paramétereket tartalmazó JSON-file
+## <a name="parameters-json"></a>Paramétereket tartalmazó JSON-file
 Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájlt, amely paramétereket tartalmaz az Azure Resource Manager-sablon számára. 
 
 > [!IMPORTANT]
@@ -323,9 +313,7 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
 > 
 > 
 
-<a id="create-data-factory" class="xliff"></a>
-
-## Data factory létrehozása
+## <a name="create-data-factory"></a>Data factory létrehozása
 1. Indítsa el az **Azure PowerShellt**, és futtassa az alábbi parancsot:
    * Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
    
@@ -348,9 +336,7 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
     ```
 
-<a id="monitor-pipeline" class="xliff"></a>
-
-## Folyamat figyelése
+## <a name="monitor-pipeline"></a>Folyamat figyelése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókkal.
 2. A bal oldali menüben kattintson az **Adat-előállítók** lehetőségre (vagy) kattintson a **További szolgáltatások** **INTELLIGENCIA ÉS ELEMZÉS** kategóriájában található **Adat-előállítók** lehetőségre.
@@ -370,12 +356,8 @@ A [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) (Ada
 
 A [Monitor and manage Azure Data Factory pipelines using Monitoring App](data-factory-monitor-manage-app.md) (Azure Data Factory-folyamatok figyelése és felügyelete a Monitoring App használatával) című cikkben további információt találhat az adatfolyamatok Monitor & Manage alkalmazással való monitorozásáról.
 
-<a id="data-factory-entities-in-the-template" class="xliff"></a>
-
-## Data Factory-entitások a sablonban
-<a id="define-data-factory" class="xliff"></a>
-
-### Data Factory definiálása
+## <a name="data-factory-entities-in-the-template"></a>Data Factory-entitások a sablonban
+### <a name="define-data-factory"></a>Data Factory definiálása
 A data factoryt a Resource Manager-sablonban definiálhatja az alábbi minta szerint:  
 
 ```json
@@ -396,9 +378,7 @@ A dataFactoryName az alábbi módon van definiálva:
 
 Ez az erőforráscsoport-azonosítón alapuló egyedi karakterlánc.  
 
-<a id="defining-data-factory-entities" class="xliff"></a>
-
-### Data Factory-entitások definiálása
+### <a name="defining-data-factory-entities"></a>Data Factory-entitások definiálása
 Az alábbi Data Factory-entitások a JSON-sablonban vannak definiálva: 
 
 1. [Azure Storage társított szolgáltatás](#azure-storage-linked-service)
@@ -407,9 +387,7 @@ Az alábbi Data Factory-entitások a JSON-sablonban vannak definiálva:
 4. [Azure SQL-adatkészlet](#azure-sql-dataset)
 5. [Másolási tevékenységgel rendelkező adatfolyamat](#data-pipeline)
 
-<a id="azure-storage-linked-service" class="xliff"></a>
-
-#### Azure Storage társított szolgáltatás
+#### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
 Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Létrehozott egy tárolót, és adatokat töltött fel ebbe a tárfiókba az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként. Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure Storage társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Storage társított szolgáltatás](data-factory-azure-blob-connector.md#azure-storage-linked-service) című szakaszt. 
 
 ```json
@@ -432,9 +410,7 @@ Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előál
 
 A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció változókat is használ: azureStorageLinkedServiceName és dataFactoryName, amelyek a sablonban vannak definiálva. 
 
-<a id="azure-sql-database-linked-service" class="xliff"></a>
-
-#### Azure SQL Database társított szolgáltatás
+#### <a name="azure-sql-database-linked-service"></a>Azure SQL Database társított szolgáltatás
 Az AzureSqlLinkedService az Azure SQL Database-t társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban. Ebben a szakaszban megadhatja az Azure SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.  
 
 ```json
@@ -457,9 +433,7 @@ Az AzureSqlLinkedService az Azure SQL Database-t társítja az adat-előállít�
 
 A connectionString az sqlServerName, databaseName, sqlServerUserName és sqlServerPassword paramétereket használja, amelyeknek az értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablon következő változóit is használja: azureSqlLinkedServiceName, dataFactoryName.
 
-<a id="azure-blob-dataset" class="xliff"></a>
-
-#### Azure Blob-adatkészlet
+#### <a name="azure-blob-dataset"></a>Azure Blob-adatkészlet
 Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. Az Azure Blob-adatkészletek definíciójában adhatja meg a bemeneti adatokat tartalmazó blobtároló, mappa és fájl nevét. Az Azure Blob-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Blob-adatkészlet tulajdonságai](data-factory-azure-blob-connector.md#dataset-properties) című szakaszt. 
 
 ```json
@@ -501,9 +475,7 @@ Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati szt
 }
 ```
 
-<a id="azure-sql-dataset" class="xliff"></a>
-
-#### Azure SQL-adatkészlet
+#### <a name="azure-sql-dataset"></a>Azure SQL-adatkészlet
 Megadhatja az Azure SQL Database-ben található tábla nevét, amely az Azure Blob Storage-tárból másolt adatokat tartalmazza. Az Azure SQL-adatkészletek definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL-adatkészlet tulajdonságai](data-factory-azure-sql-connector.md#dataset-properties) című szakaszt. 
 
 ```json
@@ -539,9 +511,7 @@ Megadhatja az Azure SQL Database-ben található tábla nevét, amely az Azure B
 }
 ```
 
-<a id="data-pipeline" class="xliff"></a>
-
-#### Adatfolyamat
+#### <a name="data-pipeline"></a>Adatfolyamat
 Definiálhat egy folyamatot, amely adatokat másol az Azure Blob-adatkészletből az Azure SQL-adatkészletbe. A példában található folyamat definiálásához használt JSON-elemek leírásához tekintse meg [A folyamat JSON-fájlja](data-factory-create-pipelines.md#pipeline-json) című szakaszt. 
 
 ```json
@@ -599,9 +569,7 @@ Definiálhat egy folyamatot, amely adatokat másol az Azure Blob-adatkészletbő
 }
 ```
 
-<a id="reuse-the-template" class="xliff"></a>
-
-## A sablon ismételt felhasználása
+## <a name="reuse-the-template"></a>A sablon ismételt felhasználása
 Az oktatóanyagban létrehozott egy sablont a Data Factory-entitások definiálásához, illetve egy másikat a paraméterek értékeinek átadásához. A folyamat adatokat másol az Azure Storage-fiókokból a paramétereken keresztül megadott Azure SQL Database-be. Ha ugyanazt a sablont szeretné használni a Data Factory-entitások különböző környezetekben történő üzembe helyezéséhez, hozzon létre egy paraméterfájlt az egyes környezetekhez, és használja azt az adott környezetben történő üzembe helyezéskor.     
 
 Példa:  
@@ -620,9 +588,7 @@ Megfigyelheti, hogy az első parancs a fejlesztőkörnyezet, a második a tesztk
 
 Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sablont. Ilyen eset például, ha több olyan, egy vagy több folyamattal rendelkező adat-előállítót is létre kell hoznia, amelyek ugyanazt a logikát alkalmazzák, de az egyes adat-előállítók különböző Storage- és SQL Database-fiókokat használnak. Ebben a forgatókönyvben ugyanazt a sablont használja ugyanabban a környezetben (fejlesztői, teszt vagy éles) különböző paraméterfájlokkal a data factoryk létrehozásához.   
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag olyan másolási műveletet mutatott be, amelynek a forrásadattára az Azure Blob Storage, a céladattára pedig az Azure SQL Database volt. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]

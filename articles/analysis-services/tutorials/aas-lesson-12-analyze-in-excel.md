@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-12-analyze-in-excel" class="xliff"></a>
-
-# 12. lecke: Elemzés az Excelben
+# <a name="lesson-12-analyze-in-excel"></a>12. lecke: Elemzés az Excelben
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -34,19 +32,13 @@ A lecke elvégzéséhez az Excelnek és az SSDT-nek ugyanazon a számítógépen
   
 A lecke elvégzésének várható időtartama: **5 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md)).  
   
-<a id="browse-using-the-default-and-internet-sales-perspectives" class="xliff"></a>
-
-## Tallózás az alapértelmezett és az Internetes értékesítés perspektíva használatával  
+## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Tallózás az alapértelmezett és az Internetes értékesítés perspektíva használatával  
 Ezekben az első feladatokban az összes modellobjektumot tartalmazó alapértelmezett perspektíva, valamint a korábban létrehozott Internetes értékesítés perspektíva használatával tallózhat a modellben. Az Internetes értékesítés perspektíva nem tartalmazza a Customer (Ügyfél) táblaobjektumot.  
   
-<a id="to-browse-by-using-the-default-perspective" class="xliff"></a>
-
-#### Tallózás az alapértelmezett perspektívával  
+#### <a name="to-browse-by-using-the-default-perspective"></a>Tallózás az alapértelmezett perspektívával  
   
 1.  Kattintson a **Modell** menü **Elemzés az Excelben** elemére.  
   
@@ -58,9 +50,7 @@ Ezekben az első feladatokban az összes modellobjektumot tartalmazó alapértel
   
 4.  Zárja be az Excelt a munkafüzet mentése nélkül.  
   
-<a id="to-browse-by-using-the-internet-sales-perspective" class="xliff"></a>
-
-#### Tallózás az Internetes értékesítés perspektívával  
+#### <a name="to-browse-by-using-the-internet-sales-perspective"></a>Tallózás az Internetes értékesítés perspektívával  
   
 1.  Kattintson a **Modell** menü **Elemzés az Excelben** elemére.  
   
@@ -74,14 +64,10 @@ Ezekben az első feladatokban az összes modellobjektumot tartalmazó alapértel
     
 4.  Zárja be az Excelt a munkafüzet mentése nélkül.  
   
-<a id="browse-by-using-roles" class="xliff"></a>
-
-## Tallózás szerepkörök használatával  
+## <a name="browse-by-using-roles"></a>Tallózás szerepkörök használatával  
 A szerepkörök minden táblázatos modell fontos részét képezik. Ha nincs legalább egy szerepkör, amelyhez felhasználók vannak hozzáadva tagként, a felhasználók nem érhetik el és nem elemezhetik az adatokat a modell használatával. Az Elemzés az Excelben funkció lehetővé teszi a definiált szerepkörök tesztelését.  
   
-<a id="to-browse-by-using-the-sales-manager-user-role" class="xliff"></a>
-
-#### Tallózás az Értékesítési vezető felhasználói szerepkörrel  
+#### <a name="to-browse-by-using-the-sales-manager-user-role"></a>Tallózás az Értékesítési vezető felhasználói szerepkörrel  
   
 1.  Az SSDT-ben kattintson a **Modell** menüre, majd az **Elemzés az Excelben** elemre.  
   
@@ -91,9 +77,7 @@ A szerepkörök minden táblázatos modell fontos részét képezik. Ha nincs le
       
 3.  Zárja be az Excelt a munkafüzet mentése nélkül.  
   
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 Tovább a következő leckére: [13. lecke: Üzembe helyezés](../tutorials/aas-lesson-13-deploy.md).
 
   

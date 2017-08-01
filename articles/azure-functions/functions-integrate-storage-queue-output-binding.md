@@ -23,17 +23,13 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/26/2017
 
 ---
-<a id="add-messages-to-an-azure-storage-queue-using-functions" class="xliff"></a>
-
-# Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
+# <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
 Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztosítanak a külső szolgáltatások adataihoz a függvényből történő csatlakozásra. Ebben a témakörben megtudhatja, hogyan módosíthat egy meglévő függvényt egy kimeneti kötés hozzáadásával, amely üzeneteket küld az Azure üzenetsor-tárolójába.  
 
 ![Tekintse meg a naplókban található üzeneteket.](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek 
 
 [!INCLUDE [Previous topics](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -61,9 +57,7 @@ Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztos�
 
 Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az a kötés használatával üzeneteket adjon hozzá az üzenetsorhoz.  
 
-<a id="update-the-function-code" class="xliff"></a>
-
-## A függvénykód módosítása
+## <a name="update-the-function-code"></a>A függvénykód módosítása
 
 1. A függvényre kattintva jelenítse meg a szerkesztőben a függvénykódot. 
 
@@ -92,9 +86,7 @@ Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az 
 
 A HTTP-eseményindítónak üzenetben átadott érték bekerül az üzenetsorba.
  
-<a id="test-the-function" class="xliff"></a>
-
-## A függvény tesztelése 
+## <a name="test-the-function"></a>A függvény tesztelése 
 
 1. A kód módosításainak mentése után kattintson a **Futtatás** elemre. 
 
@@ -104,9 +96,7 @@ A HTTP-eseményindítónak üzenetben átadott érték bekerül az üzenetsorba.
 
 Ezután csatlakozhat a tárfiókhoz, hogy ellenőrizze az új üzenetsort és az abba felvett üzenetet. 
 
-<a id="connect-to-the-queue" class="xliff"></a>
-
-## Csatlakozás az üzenetsorhoz
+## <a name="connect-to-the-queue"></a>Csatlakozás az üzenetsorhoz
 
 Hagyja ki az első három lépést, ha már telepítette a Storage Explorert, és már csatlakoztatta azt a tárfiókjához.    
 
@@ -127,15 +117,11 @@ Hagyja ki az első három lépést, ha már telepítette a Storage Explorert, é
     ![Hozzon létre egy tárolási üzenetsort.](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Felvett egy kimeneti kötést egy meglévő függvénybe. 
 

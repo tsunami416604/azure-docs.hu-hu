@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
-ms.openlocfilehash: 4393a9a71dcbdc709845eb4cd3078b4497b8b9a3
+ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
+ms.openlocfilehash: 16fdd3aafef1a50554932a0e7843d347182c9b6a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/12/2017
+ms.lasthandoff: 07/20/2017
 
 ---
 
 # <a name="introduction-to-azure-file-storage"></a>Bevezetés az Azure File Storage használatába
-Az Azure File Storage egy felhőalapú hálózati fájlmegosztást kínáló, az iparági szabvány [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) protokollt és a [Samba/Common Internet File System (CIFS)](https://technet.microsoft.com/library/cc939973.aspx) fájlrendszert használó szolgáltatás. Az Azure-fájlmegosztások párhuzamosan több ügyfél (például Windows, macOS vagy Linux rendszerek helyszíni üzemelő példányai) vagy Azure virtuális gép által is csatlakoztathatók. 
+Az Azure File Storage egy felhőalapú hálózati fájlmegosztást kínáló, az iparági szabvány [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) protokollt és a [Samba/Common Internet File System (CIFS)](https://technet.microsoft.com/library/cc939973.aspx) fájlrendszert használó szolgáltatás. Az Azure-fájlmegosztások párhuzamosan több ügyfél (például Windows, macOS vagy Linux rendszerek helyszíni üzemelő példányai) vagy Azure virtuális gép által is csatlakoztathatók. Egy általános célú tárfiók olyan Azure File Storage- és egyéb szolgáltatásokhoz biztosít hozzáférést egyetlen fiókban, mint a blobok, az Azure-beli virtuális gépek lemezei és az üzenetsorok.
 
 
 

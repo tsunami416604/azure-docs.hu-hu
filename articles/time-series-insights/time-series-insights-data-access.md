@@ -23,9 +23,7 @@ ms.lasthandoff: 05/20/2017
 
 ---
 
-<a id="grant-data-access-to-a-time-series-insights-environment-using-azure-portal" class="xliff"></a>
-
-# Adathozzáférés biztosítása egy Time Series Insights-környezethez az Azure Portal segítségével
+# <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Adathozzáférés biztosítása egy Time Series Insights-környezethez az Azure Portal segítségével
 
 A Time Series Insights-környezetek két különböző típusú hozzáférési házirenddel rendelkeznek:
 
@@ -42,9 +40,7 @@ Az adathozzáférési házirendek a következőkhöz biztosítanak engedélyeket
 
 A házirendek két típusa lehetővé teszi a környezet felügyeletéhez történő hozzáférés és a környezetben található adatokhoz való hozzáférés teljes mértékű szétválasztását. Például beállítható egy olyan környezet, amely esetében a környezet tulajdonosa/létrehozója el van távolítva az adathozzáférésből. Emellett megadható, hogy azok a felhasználók és szolgáltatások, amelyek olvashatják a környezet adatait, ne kapjanak hozzáférést a környezet konfigurációjához.
 
-<a id="grant-data-access" class="xliff"></a>
-
-## Adathozzáférés biztosítása
+## <a name="grant-data-access"></a>Adathozzáférés biztosítása
 A következő lépések bemutatják, hogyan biztosítható adathozzáférés egy felhasználó rendszerbiztonsági tag számára:
 
 1.    Jelentkezzen be az [Azure Portal](https://portal.azure.com).
@@ -74,9 +70,7 @@ A következő lépések bemutatják, hogyan biztosítható adathozzáférés egy
 
   ![A Time Series Insights-forrás felügyelete – eredmények](media/data-access/getstarted-grant-data-access5.png)
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eseményforrás létrehozása](time-series-insights-add-event-source.md)
 * [Események küldése](time-series-insights-send-events.md) az eseményforrásnak

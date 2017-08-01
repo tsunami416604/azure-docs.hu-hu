@@ -21,9 +21,7 @@ ms.lasthandoff: 05/26/2017
 
 
 ---
-<a id="monitor-availability-and-responsiveness-of-any-web-site" class="xliff"></a>
-
-# Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
+# <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
 
 Rendelkezésre állási teszteket állíthat be bármely olyan HTTP- vagy HTTPS-végponthoz, amely a nyilvános internetről érhető el. Nem kell semmit hozzáadnia a tesztelt webhelyhez. Még csak arra sincs szükség, hogy a saját webhelye legyen: tesztelhet egy olyan REST API-t is, amelyet használni szokott.
@@ -68,9 +66,7 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
     Be lehet állítani egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer egy riasztás megjelenésekor hív meg. (Vegye figyelembe, hogy jelenleg a lekérdezési paraméterek nem továbbítódnak Tulajdonságokként.)
 
-<a id="test-more-urls" class="xliff"></a>
-
-### További URL-címek tesztelése
+### <a name="test-more-urls"></a>További URL-címek tesztelése
 Adjon hozzá további teszteket. Például a kezdőlap tesztelése mellett egy keresés URL-címének tesztelésével ellenőrizni lehet, hogy az adatbázis működik-e.
 
 
@@ -117,9 +113,7 @@ A rendelkezésre állási tesztek eredményei alapján a következőket teheti:
 
 *Nem találhatók kapcsolódó elemek?* Ha a kiszolgálóoldali alkalmazásához be van állítva az Application Insights, akkor ezt okozhatja az, hogy [mintavételezés](app-insights-sampling.md) van folyamatban. 
 
-<a id="multi-step-web-tests" class="xliff"></a>
-
-## Többlépéses webes tesztek
+## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
 
 > [!NOTE] 
@@ -132,9 +126,7 @@ Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Vis
 > A tesztekben nem használhat kódolt függvényeket vagy hurkokat. A .webtest szkriptnek teljes egészében tartalmaznia kell a tesztet. Ehelyett azonban standard beépülő modulok is használhatók.
 >
 
-<a id="1-record-a-scenario" class="xliff"></a>
-
-#### 1. Forgatókönyv rögzítése
+#### <a name="1-record-a-scenario"></a>1. Forgatókönyv rögzítése
 A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
 1. Hozzon létre egy webes teljesítményt tesztelő projektet.
@@ -163,9 +155,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
     ![A Visual Studióban nyissa meg a .webtest fájlt, majd kattintson a Run (Futtatás) gombra.](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
 
-<a id="2-upload-the-web-test-to-application-insights" class="xliff"></a>
-
-#### 2. A webes teszt feltöltése az Application Insightsba
+#### <a name="2-upload-the-web-test-to-application-insights"></a>2. A webes teszt feltöltése az Application Insightsba
 1. Az Application Insights portálon hozzon létre egy webes tesztet.
 
     ![A webes teszt panelen válassza a Hozzáadás elemet.](./media/app-insights-monitor-web-app-availability/16-another-test.png)
@@ -175,17 +165,13 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
     Válassza ki a tesztelési helyeket, a tesztelés gyakoriságát és riasztási paramétereit ugyanúgy, mint a ping teszteknél.
 
-<a id="3-see-the-results" class="xliff"></a>
-
-#### 3. Az eredmények megtekintése
+#### <a name="3-see-the-results"></a>3. Az eredmények megtekintése
 
 Tekintse meg a teszt eredményeit és a hibákat ugyanúgy, mint az egyetlen URL-címre kiterjedő teszteknél.
 
 Emellett le is töltheti és megtekintheti a teszteredményeket a Visual Studióban.
 
-<a id="too-many-failures" class="xliff"></a>
-
-#### Túl sok a hiba?
+#### <a name="too-many-failures"></a>Túl sok a hiba?
 
 * A hibák gyakori oka, hogy a teszt túl hosszú ideig fut. A teszt nem tarthat tovább két percnél.
 
@@ -193,9 +179,7 @@ Emellett le is töltheti és megtekintheti a teszteredményeket a Visual Studió
 
 * A .webtest szkriptnek a teljes webes tesztet tartalmaznia kell: a tesztben nem használhat kódolt függvényeket.
 
-<a id="plugging-time-and-random-numbers-into-your-multi-step-test" class="xliff"></a>
-
-### Idő és véletlenszerű számok beiktatása a többlépéses tesztbe
+### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>Idő és véletlenszerű számok beiktatása a többlépéses tesztbe
 Tegyük fel, hogy egy olyan eszközt tesztel, amely időfüggő adatokat fogad, például részvényeket egy külső adatcsatornától. A webes teszt rögzítésekor meghatározott időpontokat kell használni, de ezeket a teszt StartTime és EndTime paramétereiként kell beállítani.
 
 ![Egy webes teszt paraméterekkel.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-parameters.png)
@@ -218,26 +202,18 @@ A webes teszt beépülő modulok lehetővé teszik az idő paraméterezését.
 
 Ezután töltse fel a tesztet a portálra. Ez a teszt minden futtatásánál a dinamikus értékeket használja.
 
-<a id="dealing-with-sign-in" class="xliff"></a>
-
-## A bejelentkezés kezelése
+## <a name="dealing-with-sign-in"></a>A bejelentkezés kezelése
 Ha a felhasználók bejelentkeznek az alkalmazásába, számos lehetősége van a bejelentkezés szimulálására a bejelentkezés után megjelenő lapok teszteléséhez. A használt megközelítés az alkalmazás által kínált biztonság típusától függ.
 
 Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési célra. Ha lehetséges, korlátozza az engedélyt ezen a tesztfiókon, így elkerülheti, hogy a webes tesztek hatással legyenek a tényleges felhasználókra.
 
-<a id="simple-username-and-password" class="xliff"></a>
-
-### Egyszerű felhasználónév és jelszó
+### <a name="simple-username-and-password"></a>Egyszerű felhasználónév és jelszó
 Rögzítsen egy webes tesztet a szokásos módon. Először törölje a cookie-kat.
 
-<a id="saml-authentication" class="xliff"></a>
-
-### SAML-hitelesítés
+### <a name="saml-authentication"></a>SAML-hitelesítés
 Használhatja a webes tesztek számára elérhető SAML beépülő modult.
 
-<a id="client-secret" class="xliff"></a>
-
-### Titkos ügyfélkulcs
+### <a name="client-secret"></a>Titkos ügyfélkulcs
 Ha az alkalmazás bejelentkezési módja titkos ügyfélkódot igényel, használja azt a módot. Az Azure Active Directory (AAD) mint egy példa olyan szolgáltatásra, amely titkos ügyfélkulccsal történő bejelentkezést biztosít. Az AAD-ben a titkos ügyfélkulcs az alkalmazáskulcs.
 
 Itt egy alkalmazáskulcsot használó Azure-webalkalmazás webes tesztelésre találhat példát:
@@ -250,9 +226,7 @@ Itt egy alkalmazáskulcsot használó Azure-webalkalmazás webes tesztelésre ta
 
 Győződjön meg róla, hogy a webes teszt egy tényleges ügyfél – saját alkalmazása van az AAD-ben –, valamint használja a clientId + appkey értékét. A teszt alatt álló szolgáltatása is rendelkezik saját alkalmazással az AAD-ben: az alkalmazás appID URI-ja a webes teszt „resource” mezőjében látható.
 
-<a id="open-authentication" class="xliff"></a>
-
-### Nyílt hitelesítés
+### <a name="open-authentication"></a>Nyílt hitelesítés
 Nyílt hitelesítés például a Microsoft- vagy Google-fiókkal történő bejelentkezés. Számos OAuth protokollt használó alkalmazás biztosítja a titkos ügyfélkódos alternatívát, így az első feladat ennek a lehetőségnek a megvizsgálása.
 
 Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközelítés a következő:
@@ -265,9 +239,7 @@ Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközel
   (A Visual Studio megpróbálja paraméterezni a tesztet, de a tokeneket nem paraméterezi megfelelően.)
 
 
-<a id="performance-tests" class="xliff"></a>
-
-## Teljesítménytesztek
+## <a name="performance-tests"></a>Teljesítménytesztek
 Terheléstesztelést futtathat a webhelyén. Csakúgy, mint a rendelkezésre állási teszt esetében, egyszerű vagy több lépésből álló kéréseket küldhet a világ minden táján található helyekről. A rendelkezésre állási teszttől eltérően sok kérés lesz elküldve, több párhuzamos felhasználót szimulálva.
 
 Az Áttekintés panelről nyissa meg a **Beállítások**, **Teljesítménytesztek** elemet. Teszt létrehozásakor egy kérést kap arra, hogy csatlakozzon a Visual Studio Team Services-fiókhoz, vagy hozzon létre egyet.
@@ -281,9 +253,7 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 > A teljesítményteszt hatásainak megfigyelésére használja az [Élő streamet](app-insights-live-stream.md) és a [Profilkészítőt](app-insights-profiler.md).
 >
 
-<a id="automation" class="xliff"></a>
-
-## Automatizálás
+## <a name="automation"></a>Automatizálás
 * [Használjon PowerShell-szkripteket a rendelkezésre állási teszt automatikus beállításához](app-insights-powershell.md#add-an-availability-test).
 * Állítson be egy [webhookot](../monitoring-and-diagnostics/insights-webhooks-alerts.md), amelyet a rendszer riasztás esetén hív meg.
 

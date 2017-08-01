@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-9-create-hierarchies" class="xliff"></a>
-
-# 9. lecke: Hierarchiák létrehozása
+# <a name="lesson-9-create-hierarchies"></a>9. lecke: Hierarchiák létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -34,18 +32,12 @@ Hierarchiák létrehozásához használja a modelltervezőt *Diagramnézetben*. 
   
 A lecke elvégzésének várható időtartama: **20 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Az ebben a leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét: [8. lecke: Perspektívák létrehozása](../tutorials/aas-lesson-8-create-perspectives.md).  
   
-<a id="create-hierarchies" class="xliff"></a>
-
-## Hierarchiák létrehozása  
+## <a name="create-hierarchies"></a>Hierarchiák létrehozása  
   
-<a id="to-create-a-category-hierarchy-in-the-dimproduct-table" class="xliff"></a>
-
-#### Category (Kategória) hierarchia létrehozása a DimProduct táblában  
+#### <a name="to-create-a-category-hierarchy-in-the-dimproduct-table"></a>Category (Kategória) hierarchia létrehozása a DimProduct táblában  
   
 1.  A modelltervezőben (diagramnézetben) kattintson a jobb gombbal a **DimProduct** táblára, majd kattintson a **Hierarchia létrehozása** elemre. Az új hierarchia a tábla ablakának alján jelenik majd meg. Nevezze át a hierarchiát a következőre: **Category**.  
   
@@ -64,9 +56,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 
     ![aas-lesson9-category](../tutorials/media/aas-lesson9-category.png)
   
-<a id="to-create-hierarchies-in-the-dimdate-table" class="xliff"></a>
-
-#### Hierarchiák létrehozása a DimDate táblában  
+#### <a name="to-create-hierarchies-in-the-dimdate-table"></a>Hierarchiák létrehozása a DimDate táblában  
   
 1.  A **DimDate** táblában hozzon létre egy **Calendar** nevű hierarchiát.  
   
@@ -91,9 +81,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
     *  WeekNumberOfYear
     *  DayNumberOfWeek
   
-<a id="whats-next" class="xliff"></a>
-
- ## A következő lépések
+ ## <a name="whats-next"></a>A következő lépések
 [10. lecke: Partíciók létrehozása](../tutorials/aas-lesson-10-create-partitions.md). 
   
   

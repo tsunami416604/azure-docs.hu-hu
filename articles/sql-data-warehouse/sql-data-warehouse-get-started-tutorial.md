@@ -23,32 +23,24 @@ ms.lasthandoff: 06/14/2017
 
 
 ---
-<a id="get-started-with-sql-data-warehouse" class="xliff"></a>
-
-# Bevezetés az SQL Data Warehouse használatába
+# <a name="get-started-with-sql-data-warehouse"></a>Bevezetés az SQL Data Warehouse használatába
 
 Ez az oktatóanyag az Azure SQL Data Warehouse üzembe helyezését és adatokkal való feltöltését mutatja be. Emellett megismerkedhet a méretezés, a felfüggesztetés és a finomhangolás alapjaival is. Az oktatóanyag elvégzése után készen áll majd az adattárház lekérdezésére és vizsgálatára.
 
 **Az oktatóanyag áttekintésének becsült ideje:** Ez egy példakódot is tartalmazó átfogó oktatóanyag, amelynek az elvégzése kb. 30 percet vesz igénybe, ha az előfeltételeket már teljesítette. 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez az oktatóanyag azt feltételezi, hogy már ismeri az SQL Data Warehouse-zal kapcsolatos alapvető fogalmakat. A bevezetésért lásd: [Mi az az SQL Data Warehouse?](sql-data-warehouse-overview-what-is.md) 
 
-<a id="sign-up-for-microsoft-azure" class="xliff"></a>
-
-### Regisztráció a Microsoft Azure-ban
+### <a name="sign-up-for-microsoft-azure"></a>Regisztráció a Microsoft Azure-ban
 Ha még nem rendelkezik Microsoft Azure-fiókkal, először regisztrálnia kell egyet a szolgáltatás használatához. Ha már rendelkezik fiókkal, ezt a lépést kihagyhatja. 
 
 1. Nyissa meg a fiókoldalakat: [https://azure.microsoft.com/account/](https://azure.microsoft.com/account/)
 2. Hozzon létre egy ingyenes Azure-fiókot, vagy vásároljon egy fiókot.
 3. Kövesse az utasításokat
 
-<a id="install-appropriate-sql-client-drivers-and-tools" class="xliff"></a>
-
-### A megfelelő SQL-ügyfélillesztők és -ügyféleszközök telepítése
+### <a name="install-appropriate-sql-client-drivers-and-tools"></a>A megfelelő SQL-ügyfélillesztők és -ügyféleszközök telepítése
 
 A legtöbb SQL-ügyféleszköz képes csatlakozni az SQL Data Warehouse-hoz a JDBC, az ODBC vagy az ADO.NET használatával. Az SQL Data Warehouse által támogatott T-SQL-szolgáltatások széles köre miatt lehetséges, hogy egyes ügyfélalkalmazások nem teljes mértékben kompatibilisek az SQL Data Warehouse-zal.
 
@@ -58,9 +50,7 @@ Ha Windows operációs rendszert használ, javasoljuk a [Visual Studio] vagy az 
 
 [!INCLUDE [SQL Database create server](../../includes/sql-database-create-new-server-firewall-portal.md)]
 
-<a id="create-a-sql-data-warehouse" class="xliff"></a>
-
-## SQL Data Warehouse létrehozása
+## <a name="create-a-sql-data-warehouse"></a>SQL Data Warehouse létrehozása
 
 Az SQL Data Warehouse egy nagymértékben párhuzamos feldolgozáshoz kialakított speciális típusú adatbázis. Az adatbázis több csomópontra van elosztva, és párhuzamosan dolgozza fel a lekérdezéseket. Az összes csomópont tevékenységét az SQL Data Warehouse vezérlő csomópontja vezényli. Maguk a csomópontok SQL Database használatával kezelik az adatokat.  
 
@@ -68,9 +58,7 @@ Az SQL Data Warehouse egy nagymértékben párhuzamos feldolgozáshoz kialakíto
 > Egy SQL Data Warehouse létrehozása egy új számlázható szolgáltatás létrejöttét eredményezheti.  További információ: [SQL Data Warehouse díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 
-<a id="create-a-data-warehouse" class="xliff"></a>
-
-### Adattárház létrehozása
+### <a name="create-a-data-warehouse"></a>Adattárház létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson a **New** > **Databases** > **SQL Data Warehouse** (Új > Adatbázisok > SQL Data Warehouse) elemre.
@@ -101,16 +89,12 @@ Az SQL Data Warehouse egy nagymértékben párhuzamos feldolgozáshoz kialakíto
 
 5. Dőljön hátra, és várjon, amíg az adattárház üzembe helyezése megtörténik! Ez a folyamat szokványos esetben több percig is eltarthat. A portál értesíti, amint az adattárház használatra kész. 
 
-<a id="connect-to-sql-data-warehouse" class="xliff"></a>
-
-## Connect to SQL Data Warehouse
+## <a name="connect-to-sql-data-warehouse"></a>Connect to SQL Data Warehouse
 
 Az oktatóanyagban az SQL Server Management Studio (SSMS) segítségével csatlakozunk az adattárházhoz. A következő támogatott összekötőkön keresztül is csatlakozhat az SQL Data Warehouse-hoz: ADO.NET, JDBC, ODBC és PHP. Ne feledje, hogy a Microsoft által nem támogatott eszközök esetében a funkcionalitás korlátozott lehet.
 
 
-<a id="get-connection-information" class="xliff"></a>
-
-### Kapcsolatadatok lekérése
+### <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
 Az adattárházhoz való kapcsolódáshoz az [Előfeltételek] szakaszban létrehozott logikai SQL-kiszolgálón keresztül kell csatlakoznia.
 
@@ -135,15 +119,11 @@ Emellett rendelkezhet egy Azure Active Directory-rendszergazdai fiókkal is. Enn
 Ezután a további bejelentkezések és felhasználók létrehozásával ismerkedünk meg.
 
 
-<a id="create-a-database-user" class="xliff"></a>
-
-## Adatbázis-felhasználó létrehozása
+## <a name="create-a-database-user"></a>Adatbázis-felhasználó létrehozása
 
 Ebben a lépésben egy felhasználói fiókot hozhat létre az adattárház eléréséhez. Megmutatjuk azt is, hogyan engedélyezheti a felhasználó számára a nagy mennyiségű memória- és processzor-erőforrást igénylő lekérdezések futtatását.
 
-<a id="notes-about-resource-classes-for-allocating-resources-to-queries" class="xliff"></a>
-
-### Az erőforrásosztályokkal kapcsolatos megjegyzések az erőforrások lekérdezésekhez való kiosztásához
+### <a name="notes-about-resource-classes-for-allocating-resources-to-queries"></a>Az erőforrásosztályokkal kapcsolatos megjegyzések az erőforrások lekérdezésekhez való kiosztásához
 
 - Az adatok biztonsága érdekében a kiszolgálói rendszergazdát ne használja a lekérdezések éles adatbázisokon való futtatásához. Az összes közül ez a felhasználó rendelkezik a legtöbb jogosultsággal, így ha ezzel hajt végre műveleteket a felhasználói adatokon, veszélyeztetheti az adatokat. Továbbá, mivel a kiszolgálói rendszergazda felügyeleti tevékenységeket hivatott végezni, a működéséhez kis mennyiségű memória- és processzor-erőforrást használ csak. 
 
@@ -151,9 +131,7 @@ Ebben a lépésben egy felhasználói fiókot hozhat létre az adattárház elé
 
 - Az optimális adattömörítéshez szükség lehet arra, hogy nagy vagy nagyon nagy erőforrást foglaljon le a felhasználó számára. További információkat az erőforrásosztályokról [itt](./sql-data-warehouse-develop-concurrency.md#resource-classes) talál.
 
-<a id="create-an-account-that-can-control-a-database" class="xliff"></a>
-
-### Az adatbázisok vezérlésére alkalmas fiók létrehozása
+### <a name="create-an-account-that-can-control-a-database"></a>Az adatbázisok vezérlésére alkalmas fiók létrehozása
 
 Mivel jelenleg kiszolgálói rendszergazdaként van bejelentkezve, rendelkezik megfelelő jogosultsággal a bejelentkezések és a felhasználók létrehozásához.
 
@@ -185,9 +163,7 @@ Mivel jelenleg kiszolgálói rendszergazdaként van bejelentkezve, rendelkezik m
     > Ha az adatbázis nevében található kötőjel, mindenképp foglalja a nevet szögletes zárójelek közé. 
     >
 
-<a id="give-the-user-medium-resource-allocations" class="xliff"></a>
-
-### Közepes erőforrás-mennyiség lefoglalása a felhasználó számára
+### <a name="give-the-user-medium-resource-allocations"></a>Közepes erőforrás-mennyiség lefoglalása a felhasználó számára
 
 1. A következő T-SQL parancs futtatásával tegye a felhasználót a mediumrc nevű közepes erőforrásosztály tagjává. 
 
@@ -203,9 +179,7 @@ Mivel jelenleg kiszolgálói rendszergazdaként van bejelentkezve, rendelkezik m
     ![Bejelentkezés az új bejelentkezési adatokkal](./media/sql-data-warehouse-get-started-tutorial/new-login.png)
 
 
-<a id="load-data-from-azure-blob-storage" class="xliff"></a>
-
-## Adatok betöltése az Azure Blob Storage-ből
+## <a name="load-data-from-azure-blob-storage"></a>Adatok betöltése az Azure Blob Storage-ből
 
 Most már készen áll az adatok betöltésére az adattárházba. Ez a lépés bemutatja, hogyan töltheti be a New York-i taxik adatait egy nyilvános Azure tárolóblobból. 
 
@@ -214,9 +188,7 @@ Most már készen áll az adatok betöltésére az adattárházba. Ez a lépés 
 - Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
 
 
-<a id="define-external-data" class="xliff"></a>
-
-### Külső adatok meghatározása
+### <a name="define-external-data"></a>Külső adatok meghatározása
 
 1. Hozzon létre egy főkulcsot. Adatbázisonként csak egyszer kell főkulcsot létrehoznia. 
 
@@ -447,9 +419,7 @@ Most már készen áll az adatok betöltésére az adattárházba. Ez a lépés 
     ;
 ```
 
-<a id="import-the-data-from-azure-blob-storage" class="xliff"></a>
-
-### Importálja az adatokat az Azure Blob Storage-ből.
+### <a name="import-the-data-from-azure-blob-storage"></a>Importálja az adatokat az Azure Blob Storage-ből.
 
 Az SQL Data Warehouse támogat egy CREATE TABLE AS SELECT (CTAS) nevű kulcsutasítást. Ez az utasítás létrehoz egy új táblát egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel.  Ez egy elegáns módja az adatok betöltésének az Azure Blob Storage-ből az SQL Data Warehouse-ba.
 
@@ -571,15 +541,11 @@ Az SQL Data Warehouse támogat egy CREATE TABLE AS SELECT (CTAS) nevű kulcsutas
     ![Betöltött adatok megjelenítése](./media/sql-data-warehouse-get-started-tutorial/see-data-loaded.png)
 
 
-<a id="improve-query-performance" class="xliff"></a>
-
-## Jobb lekérdezési teljesítmény
+## <a name="improve-query-performance"></a>Jobb lekérdezési teljesítmény
 
 Számos mód létezik a lekérdezési teljesítmény javítására és a kiemelkedően gyors teljesítmény elérésére, amelyre az SQL Data Warehouse-t tervezték.  
 
-<a id="see-the-effect-of-scaling-on-query-performance" class="xliff"></a>
-
-### A lekérdezésiteljesítmény-méretezés hatásának megtekintése 
+### <a name="see-the-effect-of-scaling-on-query-performance"></a>A lekérdezésiteljesítmény-méretezés hatásának megtekintése 
 
 Az egyik módja a lekérdezési teljesítmény javításának az, ha méretezi az erőforrásokat az adattárház DWU szolgáltatási szintjének módosításával. Minden szolgáltatási szintnek nagyobb a költsége, de bármikor visszaválthat vagy szüneteltetheti az erőforrásokat. 
 
@@ -619,9 +585,7 @@ Először csökkentse le a DWU-k számát 100-ra, hogy láthassuk, hogyan teljes
 > Ennek az az oka, hogy az SQL Data Warehouse nagymértékben párhuzamos feldolgozást használ. Olyan lekérdezésekkel tapasztalható meg az Azure SQL Data Warehouse igazi ereje, amelyek több millió soron hajtanak végre elemzési funkciókat.
 >
 
-<a id="see-the-effect-of-statistics-on-query-performance" class="xliff"></a>
-
-### A statisztika hatásának lekérdezések teljesítményére gyakorolt hatása
+### <a name="see-the-effect-of-statistics-on-query-performance"></a>A statisztika hatásának lekérdezések teljesítményére gyakorolt hatása
 
 1. Futtasson egy lekérdezést, amely összekapcsolja a Date (Dátum) táblát a Trip (Utazás) táblával.
 
@@ -673,9 +637,7 @@ Először csökkentse le a DWU-k számát 100-ra, hogy láthassuk, hogyan teljes
 
 3. Futtassa újra az Előfeltételek szakaszban szereplő lekérdezést, és figyelje meg a teljesítménybeli különbséget. Bár a lekérdezési teljesítmény változása nem olyan drámai, mint a felskálázás esetében, gyorsulás figyelhető meg. 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll a lekérdezésre és vizsgálódásra. Tekintse meg gyakorlati tanácsainkat és tippjeinket.
 
@@ -683,9 +645,7 @@ Ha a mai napra befejezte a vizsgálódást, szüneteltesse a példány működé
 
 ![Szünet](./media/sql-data-warehouse-get-started-tutorial/pause.png)
 
-<a id="useful-readings" class="xliff"></a>
-
-## Hasznos olvasmányok
+## <a name="useful-readings"></a>Hasznos olvasmányok
 
 [Egyidejűség és a számítási feladatok kezelése][]
 

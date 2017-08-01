@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="lesson-7-create-key-performance-indicators" class="xliff"></a>
-
-# 7. lecke: Fő teljesítménymutatók létrehozása
+# <a name="lesson-7-create-key-performance-indicators"></a>7. lecke: Fő teljesítménymutatók létrehozása
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -32,18 +30,12 @@ Ebben a leckében fő teljesítménymutatókat (KPI-k) hozhat létre. A KPI-k az
   
 A lecke elvégzésének várható időtartama: **15 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. Az ebben a leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét: [6. lecke: Mértékek létrehozása](../tutorials/aas-lesson-6-create-measures.md).   
   
-<a id="create-key-performance-indicators" class="xliff"></a>
-
-## Fő teljesítménymutatók létrehozása  
+## <a name="create-key-performance-indicators"></a>Fő teljesítménymutatók létrehozása  
   
-<a id="to-create-an-internetcurrentquartersalesperformance-kpi" class="xliff"></a>
-
-#### InternetCurrentQuarterSalesPerformance KPI létrehozása  
+#### <a name="to-create-an-internetcurrentquartersalesperformance-kpi"></a>InternetCurrentQuarterSalesPerformance KPI létrehozása  
   
 1.  A modelltervezőben kattintson a **FactInternetSales** táblára.  
   
@@ -74,9 +66,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
     A mértékrácson figyelje meg az **InternetCurrentQuarterSalesPerformance** mérték melletti ikont. Ez az ikon azt mutatja, hogy ez a mérték a KPI alapértékeként szolgál.  
   
-<a id="to-create-an-internetcurrentquartermarginperformance-kpi" class="xliff"></a>
-
-#### InternetCurrentQuarterMarginPerformance KPI létrehozása  
+#### <a name="to-create-an-internetcurrentquartermarginperformance-kpi"></a>InternetCurrentQuarterMarginPerformance KPI létrehozása  
   
 1.  A **FactInternetSales** tábla mértékrácsán kattintson egy üres cellára.  
   
@@ -94,9 +84,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 6.  Az **Ikonstílus kiválasztása** részben válassza a gyémánt (vörös), háromszög (sárga), kör (zöld) ikontípust, majd kattintson az **OK** gombra.  
   
-<a id="whats-next" class="xliff"></a>
-
-## A következő lépések
+## <a name="whats-next"></a>A következő lépések
 [8. lecke: Perspektívák létrehozása](../tutorials/aas-lesson-8-create-perspectives.md).
   
   

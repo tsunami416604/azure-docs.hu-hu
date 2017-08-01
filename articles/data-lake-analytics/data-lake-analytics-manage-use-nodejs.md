@@ -22,9 +22,7 @@ ms.lasthandoff: 06/01/2017
 
 
 ---
-<a id="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs" class="xliff"></a>
-
-# Az Azure Data Lake Analytics kezelése az Azure SDK for Node.js használatával
+# <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Az Azure Data Lake Analytics kezelése az Azure SDK for Node.js használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Az Azure SDK for Node.js az Azure Data Lake Analytics-fiókok, feladatok és katalógusok kezeléséhez használható. Ha más eszközök használatával szeretné megtekinteni a kezelést tárgyaló témakört, kattintson a fenti lapválasztóra.
@@ -36,23 +34,17 @@ Jelenleg a következőket támogatja:
 * **Katalógushoz tartozó REST API-verzió: 2015. 10. 01. előzetes verzió**
 * **Feladathoz tartozó REST API-verzió: 2016. 03. 20. előzetes verzió**
 
-<a id="features" class="xliff"></a>
-
-## Szolgáltatások
+## <a name="features"></a>Szolgáltatások
 * Fiókkezelés: létrehozás, lekérés, listázás, frissítés és törlés.
 * Feladatkezelés: küldés, lekérés, listázás és visszavonás.
 * Katalóguskezelés: lekérés és listázás.
 
-<a id="how-to-install" class="xliff"></a>
-
-## A telepítés módja
+## <a name="how-to-install"></a>A telepítés módja
 ```bash
 npm install azure-arm-datalake-analytics
 ```
 
-<a id="authenticate-using-azure-active-directory" class="xliff"></a>
-
-## Hitelesítés az Azure Active Directory használatával
+## <a name="authenticate-using-azure-active-directory"></a>Hitelesítés az Azure Active Directory használatával
  ```javascript
  var msrestAzure = require('ms-rest-azure');
  //user authentication
@@ -61,9 +53,7 @@ npm install azure-arm-datalake-analytics
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
  ```
 
-<a id="create-the-data-lake-analytics-client" class="xliff"></a>
-
-## Data Lake Analytics-ügyfél létrehozása
+## <a name="create-the-data-lake-analytics-client"></a>Data Lake Analytics-ügyfél létrehozása
 ```javascript
 var adlaManagement = require("azure-arm-datalake-analytics");
 var acccountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
@@ -71,9 +61,7 @@ var jobClient = new adlaManagement.DataLakeAnalyticsJobClient(credentials, 'azur
 var catalogClient = new adlaManagement.DataLakeAnalyticsCatalogClient(credentials, 'azuredatalakeanalytics.net');
 ```
 
-<a id="create-a-data-lake-analytics-account" class="xliff"></a>
-
-## Data Lake Analytics-fiók létrehozása
+## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
 ```javascript
 var util = require('util');
 var resourceGroupName = 'testrg';
@@ -122,9 +110,7 @@ client.account.create(resourceGroupName, accountName, accountToCreate, function 
 });
 ```
 
-<a id="get-a-list-of-jobs" class="xliff"></a>
-
-## A feladatok listájának lekérése
+## <a name="get-a-list-of-jobs"></a>A feladatok listájának lekérése
 ```javascript
 var util = require('util');
 var accountName = 'testadlaacct';
@@ -137,9 +123,7 @@ jobClient.job.list(accountName, function (err, result, request, response) {
 });
 ```
 
-<a id="get-a-list-of-databases-in-the-data-lake-analytics-catalog" class="xliff"></a>
-
-## A Data Lake Analytics-katalógus adatbázislistáinak lekérése
+## <a name="get-a-list-of-databases-in-the-data-lake-analytics-catalog"></a>A Data Lake Analytics-katalógus adatbázislistáinak lekérése
 ```javascript
 var util = require('util');
 var accountName = 'testadlaacct';
@@ -152,9 +136,7 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 });
 ```
 
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 * [Microsoft Azure SDK for Node.js – Data Lake Store-kezelés](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
 

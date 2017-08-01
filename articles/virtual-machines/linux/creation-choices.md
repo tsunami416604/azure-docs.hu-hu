@@ -23,9 +23,7 @@ ms.lasthandoff: 05/31/2017
 
 
 ---
-<a id="different-ways-to-create-a-linux-vm" class="xliff"></a>
-
-# Különböző módszerek Linux rendszerű virtuális gépek létrehozásához
+# <a name="different-ways-to-create-a-linux-vm"></a>Különböző módszerek Linux rendszerű virtuális gépek létrehozásához
 Az Azure-ban rugalmasan hozhat létre Linux virtuális gépeket olyan eszközökkel és munkafolyamatokkal, amelyeket szívesen használ. Ez a cikk a Linux-alapú virtuális gépek létrehozásának ezen különböző módszereit és példáit foglalja össze, az Azure CLI 2.0-s verzióját is beleértve. Emellett megtekintheti a létrehozási lehetőségeket, beleértve az [Azure CLI 1.0](creation-choices-nodejs.md) használatát.
 
 Az [Azure CLI 2.0](/cli/azure/install-az-cli2) több platformon elérhető egy npm-csomagon, disztribúció által biztosított csomagokon vagy a Docker-tárolón keresztül. Telepítheti a környezet számára legmegfelelőbb buildet, és bejelentkezhet egy Azure-fiókba az [az login](/cli/azure/#login) paranccsal
@@ -62,22 +60,16 @@ Az [Azure CLI 2.0](/cli/azure/install-az-cli2) több platformon elérhető egy n
 * [Elosztott terhelésű és magas rendelkezésre állású alkalmazás létrehozása több Linux virtuális gépen](tutorial-load-balancer.md)
 
 
-<a id="azure-portal" class="xliff"></a>
-
-## Azure Portal
+## <a name="azure-portal"></a>Azure Portal
 Az [Azure portálon](https://portal.azure.com) gyorsan létrehozhat egy virtuális gépet, mivel semmit nem kell telepítenie a rendszerre. A virtuális gép létrehozása az Azure Portallal:
 
 * [Linux virtuális gép létrehozása az Azure Portal használatával](quick-create-portal.md) 
 
 
-<a id="operating-system-and-image-choices" class="xliff"></a>
-
-## Választható operációs rendszerek és rendszerképek
+## <a name="operating-system-and-image-choices"></a>Választható operációs rendszerek és rendszerképek
 A virtuális gépek létrehozásakor egy rendszerképet választ ki a futtatni kívánt operációs rendszer alapján. Az Azure és a partnerei számos rendszerképet kínálnak, amelyek némelyike előre telepített alkalmazásokat és eszközöket tartalmaz. Feltöltheti az egyik saját rendszerképét is (lásd [a következő szakaszt](#use-your-own-image)).
 
-<a id="azure-images" class="xliff"></a>
-
-### Azure-rendszerképek
+### <a name="azure-images"></a>Azure-rendszerképek
 Az [az vm image](/cli/azure/vm/image) paranccsal megtekintheti az elérhető elemeket közzétevő, disztribúciós kiadás, illetve build szerint.
 
 Az elérhető közzétevők listázása:
@@ -118,9 +110,7 @@ Az [az vm create](/cli/azure/vm#create) parancs rendelkezik aliasokkal, amelyek 
 | SLES |SLES |SLES |12-SP1 |legújabb |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |legújabb |
 
-<a id="use-your-own-image" class="xliff"></a>
-
-### Saját rendszerkép használata
+### <a name="use-your-own-image"></a>Saját rendszerkép használata
 Ha speciális egyéni beállításokra van szüksége, használhat egy meglévő Azure virtuális gépen alapuló rendszerképet a virtuális gép rögzítésével. Emellett feltölthet egy helyszínen létrehozott rendszerképet is. A támogatott disztribúciókkal és a saját rendszerképek használatával kapcsolatban az alábbi cikkekben tekinthet meg további információt:
 
 * [Azure által támogatott disztribúciók](endorsed-distros.md)
@@ -135,9 +125,7 @@ Ha speciális egyéni beállításokra van szüksége, használhat egy meglévő
     az vm image create --resource-group myResourceGroup --source myVM --name myImage
     ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Hozzon létre egy Linux virtuális gépet a [parancssori felülettel](quick-create-cli.md), a [portálon](quick-create-portal.md) vagy [Azure Resource Manager-sablonnal](../windows/cli-deploy-templates.md).
 * A Linux virtuális gép létrehozása után [ismerje meg az Azure lemezeket és tárolót](tutorial-manage-disks.md).
 * Gyors lépések [jelszó vagy SSH-kulcsok alaphelyzetbe állításához és felhasználók kezeléséhez](using-vmaccess-extension.md).

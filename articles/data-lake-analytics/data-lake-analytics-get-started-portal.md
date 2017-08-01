@@ -22,22 +22,16 @@ ms.lasthandoff: 06/16/2017
 
 
 ---
-<a id="get-started-with-azure-data-lake-analytics-using-azure-portal" class="xliff"></a>
-
-# Az Azure Data Lake Analytics használatának első lépései az Azure Portallal
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Az Azure Data Lake Analytics használatának első lépései az Azure Portallal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja az Azure Portalt Azure Data Lake Analytics-fiókok létrehozásához, feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-szolgáltatásokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elindításához **Azure-előfizetéssel** kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-<a id="create-a-data-lake-analytics-account" class="xliff"></a>
-
-## Data Lake Analytics-fiók létrehozása
+## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
 
 A következő lépésben egyidejűleg hozhat létre fiókot a Data Lake Analytics és a Data Lake Store szolgáltatáshoz.  Ez az egyszerű lépés csupán 60 másodpercet vesz igénybe.
 
@@ -53,9 +47,7 @@ A következő lépésben egyidejűleg hozhat létre fiókot a Data Lake Analytic
 5. Kattintson a **Létrehozás** gombra. 
 
 
-<a id="your-first-u-sql-script" class="xliff"></a>
-
-## Az első U-SQL-szkript
+## <a name="your-first-u-sql-script"></a>Az első U-SQL-szkript
 
 A következő szöveg egy igen egyszerű U-SQL-szkript. Az egyetlen funkciója, hogy meghatároz egy kisebb adatkészletet a szkriptben, amelyet aztán egy `/data.csv` nevű fájlként kiír a Data Lake Store-ba.
 
@@ -72,9 +64,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-<a id="submit-a-u-sql-job" class="xliff"></a>
-
-## U-SQL-feladat elküldése
+## <a name="submit-a-u-sql-job"></a>U-SQL-feladat elküldése
 
 1. A Data Lake Analytics-fiókban kattintson az **Új feladat** lehetőségre.
 2. Illessze be a fent bemutatott U-SQL-szkript szövegét. 
@@ -83,9 +73,7 @@ OUTPUT @a
 5. Sikertelen művelet esetén lásd: [Data Lake Analytics-feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
 6. Kattintson a **Kimenet** fülre, majd a `SearchLog-from-Data-Lake.csv` elemre. 
 
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 
 * Ismerkedés a U-SQL-alkalmazások fejlesztésével: [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) (U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával).
 * A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).

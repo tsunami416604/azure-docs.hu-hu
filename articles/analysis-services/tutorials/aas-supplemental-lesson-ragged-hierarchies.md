@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/03/2017
 
 ---
-<a id="supplemental-lesson---ragged-hierarchies" class="xliff"></a>
-
-# Kiegészítő lecke – Hézagos hierarchiák
+# <a name="supplemental-lesson---ragged-hierarchies"></a>Kiegészítő lecke – Hézagos hierarchiák
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -36,20 +34,14 @@ A táblázatos modellek az 1400-as kompatibilitási szinten egy további **Tagok
   
 A lecke elvégzésének várható időtartama: **20 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a kiegészítőlecke-témakör a táblázatos modellezésről szóló oktatóanyag része. Az ebben a kiegészítő leckében található feladatok végrehajtása előtt be kell fejeznie minden előző leckét, vagy rendelkeznie kell egy befejezett Adventure Works internetes értékesítési minta modellprojekttel. 
 
 Ha az oktatóanyag részeként hozta létre az AW internetes értékesítési projektet, a modell még nem tartalmaz hézagos adatokat vagy hierarchiákat. A kiegészítő lecke teljesítéséhez először létre kell hoznia a problémát néhány további táblázat hozzáadásával, kapcsolatok, számított oszlopok, egy mérték és egy új szervezeti hierarchia létrehozásával. Ez a rész nagyjából 15 percet vesz igénybe. Ezután néhány perc alatt megoldhatja a problémát.  
 
-<a id="add-tables-and-objects" class="xliff"></a>
-
-## Táblázatok és objektumok hozzáadása
+## <a name="add-tables-and-objects"></a>Táblázatok és objektumok hozzáadása
   
-<a id="to-add-new-tables-to-your-model" class="xliff"></a>
-
-### Új táblázatok hozzáadása a modellhez
+### <a name="to-add-new-tables-to-your-model"></a>Új táblázatok hozzáadása a modellhez
   
 1.  A Tabular Model Explorerben bontsa ki az **Adatforrások** szakaszt, és kattintson a jobb gombbal a kapcsolatra, majd pedig az **Új táblázatok importálása** gombra.
   
@@ -120,9 +112,7 @@ Ha az oktatóanyag részeként hozta létre az AW internetes értékesítési pr
 
     Ahogy a kimutatásban látható, a hierarchia megjeleníti a hézagos sorokat. Több sor is látható, amely üres tagokat tartalmaz.
 
-<a id="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property" class="xliff"></a>
-
-## A hézagos hierarchia javítása a Tagok elrejtése tulajdonság beállításával
+## <a name="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property"></a>A hézagos hierarchia javítása a Tagok elrejtése tulajdonság beállításával
 
 1.  A **Táblázatos modelltallózóban** bontsa ki a következőt: **Táblák** > **DimEmployee** > **Hierarchiák** > **Szervezet**.
 
@@ -136,9 +126,7 @@ Ha az oktatóanyag részeként hozta létre az AW internetes értékesítési pr
 
     Így már sokkal jobban néz ki!
 
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:   
+## <a name="see-also"></a>Lásd még:   
 [9. lecke: Hierarchiák létrehozása](../tutorials/aas-lesson-9-create-hierarchies.md)  
 [Kiegészítő lecke – Dinamikus biztonság](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [Kiegészítő lecke – Részletsorok](../tutorials/aas-supplemental-lesson-detail-rows.md)  

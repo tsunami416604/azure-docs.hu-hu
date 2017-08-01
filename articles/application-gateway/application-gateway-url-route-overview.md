@@ -22,9 +22,7 @@ ms.lasthandoff: 06/07/2017
 
 
 ---
-<a id="url-path-based-routing-overview" class="xliff"></a>
-
-# Az URL-alapú útválasztás áttekintése
+# <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
 
 Az URL-alapú útválasztás lehetővé teszi, hogy a kérésben szereplő URL-cím alapján irányítsa a forgalmat a háttér-kiszolgálókészlethez. 
 
@@ -36,9 +34,7 @@ Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja
 
 A http://contoso.com/video* URL-hez kapcsolódó kérések a VideoServerPool, a http://contoso.com/images* URL-hez kapcsolódóak pedig az ImageServerPool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
     
-<a id="urlpathmap-configuration-element" class="xliff"></a>
-
-## Az UrlPathMap konfigurációs elem
+## <a name="urlpathmap-configuration-element"></a>Az UrlPathMap konfigurációs elem
 
 Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-kiszolgálókészletek leképezésében. Az alábbi kódpélda a sablonfájlból származó urlPathMap elem kódrészlete.
 
@@ -76,9 +72,7 @@ Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-k
 
 További információért tekintse át az [URL-alapú átirányításhoz készült Resource Manager-sablonokat](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 
-<a id="pathbasedrouting-rule" class="xliff"></a>
-
-## PathBasedRouting szabály
+## <a name="pathbasedrouting-rule"></a>PathBasedRouting szabály
 
 A PathBasedRouting típusú RequestRoutingRule szabály arra szolgál, hogy egy figyelőt az adott urlPathMap elemhez kössön. Minden kérés, amely ehhez a figyelőhöz kapcsolódik, az urlPathMap elemben meghatározott irányelvek alapján lesz átirányítva.
 A PathBasedRouting szabály kódrészlete:
@@ -103,9 +97,7 @@ A PathBasedRouting szabály kódrészlete:
 ]
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután elsajátította az URL-alapú tartalom-átirányításról szóló ismereteket, látogasson el [az URL-alapú átirányítást használó alkalmazásátjáró létrehozását bemutató témakörhöz](application-gateway-create-url-route-portal.md).
 

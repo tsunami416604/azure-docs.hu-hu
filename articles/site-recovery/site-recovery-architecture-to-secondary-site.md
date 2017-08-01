@@ -22,9 +22,7 @@ ms.lasthandoff: 06/15/2017
 
 
 ---
-<a id="how-does-on-premises-machine-replication-to-a-secondary-site-work-in-site-recovery" class="xliff"></a>
-
-# Hogyan működik a helyszíni gépek replikációja egy másodlagos helyre a Site Recoveryben?
+# <a name="how-does-on-premises-machine-replication-to-a-secondary-site-work-in-site-recovery"></a>Hogyan működik a helyszíni gépek replikációja egy másodlagos helyre a Site Recoveryben?
 
 Ez a cikk bemutatja a helyszíni virtuális gépek és fizikai kiszolgálók Azure-ba történő, az [Azure Site Recovery](site-recovery-overview.md) szolgáltatással végzett replikálásakor használt összetevőket és folyamatokat.
 
@@ -34,14 +32,10 @@ A következőket replikálhatja egy másodlagos helyszíni helyre:
 
 Megjegyzéseit a cikk alján, vagy az [Azure Recovery Services fórumban](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) teheti közzé.
 
-<a id="replicate-hyper-v-vms-to-a-secondary-on-premises-site" class="xliff"></a>
-
-## Hyper-V virtuális gépek replikálása másodlagos helyszíni helyre
+## <a name="replicate-hyper-v-vms-to-a-secondary-on-premises-site"></a>Hyper-V virtuális gépek replikálása másodlagos helyszíni helyre
 
 
-<a id="architectural-components" class="xliff"></a>
-
-### Az architektúra összetevői
+### <a name="architectural-components"></a>Az architektúra összetevői
 
 A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek egy másodlagos helyre való replikálásához.
 
@@ -52,9 +46,7 @@ A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek egy másodla
 **Hyper-V kiszolgáló** |  Legalább egy Hyper-V gazdakiszolgáló az elsődleges és a másodlagos VMM-felhőkben.<br/><br/> A kiszolgálóknak csatlakozniuk kell az internethez.<br/><br/> A rendszer LAN vagy VPN hálózaton keresztül replikálja az adatokat az elsődleges és másodlagos Hyper-V gazdakiszolgálók között Kerberos vagy tanúsítványalapú hitelesítés használatával.  
 **Hyper-V virtuális gépek** | A forrás Hyper-V gazdakiszolgálón található. | A forrás gazdakiszolgálókon legalább egy replikálni kívánt virtuális gépnek kell futnia.
 
-<a id="replication-process" class="xliff"></a>
-
-### Replikációs folyamat
+### <a name="replication-process"></a>Replikációs folyamat
 
 1. Beállítja az Azure-fiókot.
 2. Létrehoz egy replikációsszolgáltatás-tárolót a Site Recoveryhez, és konfigurálja a tároló beállításait, például:
@@ -70,9 +62,7 @@ A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek egy másodla
 
 ![Két helyszíni hely közötti replikálás](./media/site-recovery-components/arch-onprem-onprem.png)
 
-<a id="failover-and-failback-process" class="xliff"></a>
-
-### Feladatátvételi és feladat-visszavételi folyamat
+### <a name="failover-and-failback-process"></a>Feladatátvételi és feladat-visszavételi folyamat
 
 1. Futtathat tervezett vagy nem tervezett [feladatátvételt](site-recovery-failover.md) a helyszíni helyek között. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.
 2. Elvégezheti egy gép feladatátadását, de létrehozhat több gép összehangolt feladatátadását tartalmazó [helyreállítási terveket](site-recovery-create-recovery-plans.md) is.
@@ -84,16 +74,12 @@ A következőkre lesz szüksége a Hyper-V-alapú virtuális gépek egy másodla
 
 
 
-<a id="replicate-vmware-vmsphysical-servers-to-a-secondary-site" class="xliff"></a>
-
-## VMware virtuális gépek/fizikai kiszolgálók replikálása másodlagos helyre
+## <a name="replicate-vmware-vmsphysical-servers-to-a-secondary-site"></a>VMware virtuális gépek/fizikai kiszolgálók replikálása másodlagos helyre
 
 A VMware-alapú virtuális gépeket és a fizikai kiszolgálókat az InMage Scout használatával replikálhatja egy másodlagos helyre a következő architektúra-összetevők használatával:
 
 
-<a id="architectural-components" class="xliff"></a>
-
-### Az architektúra összetevői
+### <a name="architectural-components"></a>Az architektúra összetevői
 
 **Összetevő** | **Hely** | **Részletek**
 --- | --- | ---
@@ -106,9 +92,7 @@ A VMware-alapú virtuális gépeket és a fizikai kiszolgálókat az InMage Scou
 **Virtuális gépek/fizikai kiszolgálók** |  A replikálni kívánt VMware virtuális gépeken és fizikai kiszolgálókon telepített Unified Agent. | Ez az ügynök valósítja meg az összetevők közötti kommunikációt.
 
 
-<a id="replication-process" class="xliff"></a>
-
-### Replikációs folyamat
+### <a name="replication-process"></a>Replikációs folyamat
 
 1. Állítsa be mindkét oldalon az összetevőkiszolgálókat (konfigurációs, folyamat- és fő célkiszolgáló), majd telepítse a replikálni kívánt gépekre a Unified Agent ügynököt.
 2. A kezdeti replikációt követően a gépek ügynökei továbbítják a változásreplikálás módosításait a folyamatkiszolgálónak.
@@ -119,9 +103,7 @@ A VMware-alapú virtuális gépeket és a fizikai kiszolgálókat az InMage Scou
 ![VMware és VMware közötti replikáció](./media/site-recovery-components/vmware-to-vmware.png)
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [támogatási mátrix](site-recovery-support-matrix-to-sec-site.md) áttekintése
 
