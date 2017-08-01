@@ -22,15 +22,11 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="what-is-site-recovery" class="xliff"></a>
-
-# Mi a Site Recovery?
+# <a name="what-is-site-recovery"></a>Mi a Site Recovery?
 
 Üdvözli az Azure Site Recovery szolgáltatás! Ebben a cikkben a szolgáltatás rövid áttekintését olvashatja el.
 
-<a id="business-continuity-and-disaster-recovery-bdcr-with-azure-recovery-services" class="xliff"></a>
-
-## Üzletmenet-folytonosság és vészhelyreállítás (BCDR) az Azure Recovery Services szolgáltatással
+## <a name="business-continuity-and-disaster-recovery-bdcr-with-azure-recovery-services"></a>Üzletmenet-folytonosság és vészhelyreállítás (BCDR) az Azure Recovery Services szolgáltatással
 
 Egy szervezetnek gondolnia kell az adatok biztonságára és az alkalmazások/munkafolyamatok folyamatos futására tervezett vagy nem tervezett leállások esetén.
 
@@ -45,9 +41,7 @@ A Site Recovery a következők replikációját képes kezelni:
 - Helyszíni virtuális gépek és fizikai kiszolgálók replikációja az Azure-ba, vagy egy másodlagos helyre.
 
 
-<a id="what-does-site-recovery-provide" class="xliff"></a>
-
-## Mit nyújt a Site Recovery?
+## <a name="what-does-site-recovery-provide"></a>Mit nyújt a Site Recovery?
 
 **Funkció** | **Részletek**
 --- | ---
@@ -66,9 +60,7 @@ A Site Recovery a következők replikációját képes kezelni:
 **Hálózati beállítások kezelése** | A Site Recovery és az Azure integrációja leegyszerűsíti az alkalmazáshálózat kezelését, ideértve az IP-címek lefoglalását, a terheléselosztók konfigurálását, valamint az Azure Traffic Manager integrációját, ami hatékony hálózatváltást garantál.
 
 
-<a id="what-can-i-replicate" class="xliff"></a>
-
-## Miket replikálhatok?
+## <a name="what-can-i-replicate"></a>Miket replikálhatok?
 
 **Támogatott** | **Részletek**
 --- | ---
@@ -79,17 +71,13 @@ A Site Recovery a következők replikációját képes kezelni:
 **Milyen számítási feladatokat replikálhatok?** | A támogatott replikációs gépeken futó bármilyen számítási feladat replikálható. Ezenkívül a Site Recovery csapata alkalmazásspecifikus tesztelést végzett [néhány alkalmazáshoz](site-recovery-workload.md#workload-summary).
 
 
-<a id="azure-portal-considerations" class="xliff"></a>
-
-## Azure Portal tudnivalók
+## <a name="azure-portal-considerations"></a>Azure Portal tudnivalók
 
 * A Site Recovery az [Azure Portalon](https://portal.azure.com) helyezhető üzembe.
 * A klasszikus Azure portálon a Site Recovery a klasszikus szolgáltatáskezelési modellel kezelhető.
 - A klasszikus portál csak a meglévő Site Recovery-környezetek fenntartására használható. Új tárolók nem hozhatók létre a klasszikus portálon.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * További információk a [támogatott számítási feladatokról](site-recovery-workload.md)
 * Első lépések: [Azure virtuális gép replikációja régiók között](site-recovery-azure-to-azure.md), [VMware replikáció az Azure-ba](vmware-walkthrough-overview.md), vagy [Hyper-V replikáció az Azure-ba](hyper-v-site-walkthrough-overview.md).
 

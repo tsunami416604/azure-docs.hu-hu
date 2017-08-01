@@ -22,15 +22,11 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="what-is-event-hubs" class="xliff"></a>
-
-# Mi az Event Hubs?
+# <a name="what-is-event-hubs"></a>Mi az Event Hubs?
 
 Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform és eseményfeldolgozási szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az alacsony késésű és nagy méretű [közzétételi-feliratkozási képességeket](https://msdn.microsoft.com/library/aa560414.aspx) biztosító Event Hubs az „első lépcsőfok” a big data jellegű adatmennyiségek kezelése irányában.
 
-<a id="why-use-event-hubs" class="xliff"></a>
-
-## Miért érdemes az Event Hubs platformot használni?
+## <a name="why-use-event-hubs"></a>Miért érdemes az Event Hubs platformot használni?
 
 Az Event Hubs esemény- és telemetriakezelési képességei különösen az alábbiakhoz hasznosak:
 
@@ -40,9 +36,7 @@ Az Event Hubs esemény- és telemetriakezelési képességei különösen az al�
 
 Az Event Hubs segítségével lehetségessé válik például a viselkedéskövetés a mobilalkalmazásokban, a forgalmi információk gyűjtése a webfarmokról, a játékbeli események rögzítése a konzolos játékokban, vagy telemetriaadatok gyűjtése az ipari gépekről, csatlakoztatott járművekről vagy más eszközökről.
 
-<a id="azure-event-hubs-overview" class="xliff"></a>
-
-## Azure Event Hubs – áttekintés
+## <a name="azure-event-hubs-overview"></a>Azure Event Hubs – áttekintés
 
 Az Event Hubs gyakran tölti be az eseményfolyamatok „bejárati ajtajának” a szerepét a megoldásarchitektúrákban, mely szerepet gyakran nevezik *eseménybetöltőnek*. Az eseménybetöltő egy olyan összetevő vagy szolgáltatás, amely az esemény-közzétevők és az eseményfelhasználók közé ékelődve elkülöníti az eseménystream létrehozását az események felhasználásától. A következő ábra ezt az architektúrát ábrázolja:
 
@@ -50,9 +44,7 @@ Az Event Hubs gyakran tölti be az eseményfolyamatok „bejárati ajtajának”
 
 Az Event Hubs üzenetstream-kezelési képességet is biztosít, de olyan tulajdonságokkal rendelkezik, amelyek eltérnek a hagyományos vállalati üzenetkezelés jellemzőitől. Az Event Hubs képességei kimondottan a nagy mennyiségre és eseményfeldolgozási forgatókönyvekre vannak optimalizálva. Az Event Hubs különbözik az [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)-üzenetkezeléstől, és nem valósít meg bizonyos képességeket, amelyek a különböző [Service Bus-üzenetküldési](/azure/service-bus-messaging/) entitások (például a témakörök) esetén elérhetőek.
 
-<a id="event-hubs-features" class="xliff"></a>
-
-## Event Hubs-szolgáltatások
+## <a name="event-hubs-features"></a>Event Hubs-szolgáltatások
 
 Az Event Hubs az alábbi fő elemeket foglalja magába:
 
@@ -66,9 +58,7 @@ Az Event Hubs az alábbi fő elemeket foglalja magába:
 
 További technikai részletek ezekről és más Event Hubs-szolgáltatásokról: [Event Hubs features overview](event-hubs-features.md) (Event Hubs-szolgáltatások – Áttekintés). 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Event Hubs részletes díjszabási információi: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 

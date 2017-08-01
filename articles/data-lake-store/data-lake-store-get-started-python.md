@@ -23,9 +23,7 @@ ms.lasthandoff: 07/01/2017
 
 ---
 
-<a id="get-started-with-azure-data-lake-store-using-python" class="xliff"></a>
-
-# Az Azure Data Lake Store használatának első lépései a Python használatával
+# <a name="get-started-with-azure-data-lake-store-using-python"></a>Az Azure Data Lake Store használatának első lépései a Python használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
@@ -41,9 +39,7 @@ ms.lasthandoff: 07/01/2017
 
 A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket a Python SDK for Azure és az Azure Data Lake Store segítségével, mint például mappák létrehozása vagy adatfájlok le- és feltöltése. További információk a Data Lake-ről: [Azure Data Lake Store](data-lake-store-overview.md).
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 * **Python**. A Pythont [innen](https://www.python.org/downloads/) töltheti le. Ez a cikk a Python 3.5.2-es verzióját használja.
 
@@ -51,9 +47,7 @@ A cikkből megtudhatja, hogyan végezhet el olyan alapvető műveleteket a Pytho
 
 * **Egy Azure Active Directory-alkalmazás létrehozása**. A Data Lake Store alkalmazás Azure AD-val történő hitelesítéséhez az Azure AD alkalmazást kell használni. Az Azure AD-val többféle módon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. Útmutatás a hitelesítéshez és további tudnivalók a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben.
 
-<a id="install-the-modules" class="xliff"></a>
-
-## A modulok telepítése
+## <a name="install-the-modules"></a>A modulok telepítése
 
 A Data Lake Store a Pythonnal való használatához három modult kell telepítenie.
 
@@ -69,9 +63,7 @@ pip install azure-mgmt-datalake-store
 pip install azure-datalake-store
 ```
 
-<a id="create-a-new-python-application" class="xliff"></a>
-
-## Új Python-alkalmazás létrehozása
+## <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
 1. A választott IDE-ben hozzon létre egy új Python-alkalmazást, például **mysample.py** néven.
 
@@ -104,9 +96,7 @@ pip install azure-datalake-store
 
 3. Mentse a mysample.py módosításait.
 
-<a id="authentication" class="xliff"></a>
-
-## Hitelesítés
+## <a name="authentication"></a>Hitelesítés
 
 Ebben a szakaszban az Azure AD-hitelesítés különböző módjait tárgyaljuk. Az elérhető lehetőségek:
 
@@ -116,9 +106,7 @@ Ebben a szakaszban az Azure AD-hitelesítés különböző módjait tárgyaljuk.
 
 Ezeket a hitelesítési módokat kell használnia a fiókkezelési és a fájlrendszerkezelési modulokban egyaránt.
 
-<a id="end-user-authentication-for-account-management" class="xliff"></a>
-
-### Végfelhasználói hitelesítés fiókkezeléshez
+### <a name="end-user-authentication-for-account-management"></a>Végfelhasználói hitelesítés fiókkezeléshez
 
 Használja ezt az eljárást az Azure AD-val való hitelesítésre a fiókkezelési műveleteknél (Data Lake Store-fiók létrehozása/törlése stb). Az Azure AD-felhasználók számára meg kell adni egy felhasználónevet és egy jelszót. Ügyeljen arra, hogy a felhasználókat ne többtényezős hitelesítéssel konfigurálja.
 
@@ -127,9 +115,7 @@ Használja ezt az eljárást az Azure AD-val való hitelesítésre a fiókkezel�
 
     credentials = UserPassCredentials(user, password)
 
-<a id="end-user-authentication-for-filesystem-operations" class="xliff"></a>
-
-### Végfelhasználói hitelesítés fájlrendszerműveletekhez
+### <a name="end-user-authentication-for-filesystem-operations"></a>Végfelhasználói hitelesítés fájlrendszerműveletekhez
 
 Használja ezt az eljárást az Azure AD-val való hitelesítésre a fájlrendszerműveleteknél (mappa létrehozása, fájl feltöltése stb). Egy meglévő **natív Azure AD-ügyfélalkalmazással** használja. Az Azure AD-felhasználót a hitelesítő adatok kiosztása során ne többtényezős hitelesítéssel konfigurálja.
 
@@ -140,25 +126,19 @@ Használja ezt az eljárást az Azure AD-val való hitelesítésre a fájlrendsz
 
     token = lib.auth(tenant_id, user, password, client_id)
 
-<a id="service-to-service-authentication-with-client-secret-for-account-management" class="xliff"></a>
-
-### Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés a fiókkezeléshez
+### <a name="service-to-service-authentication-with-client-secret-for-account-management"></a>Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés a fiókkezeléshez
 
 Használja ezt az eljárást az Azure AD-val való hitelesítésre a fiókkezelési műveleteknél (Data Lake Store-fiók létrehozása/törlése stb). A következő kódrészlet használható az alkalmazás nem interaktív hitelesítéséhez, az alkalmazás/egyszerű szolgáltatás titkos ügyfélkódjának használatával. Ezt meglévő „webes” Azure AD-alkalmazással használhatja.
 
     credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = 'FILL-IN-HERE', tenant = 'FILL-IN-HERE')
 
-<a id="service-to-service-authentication-with-client-secret-for-filesystem-operations" class="xliff"></a>
-
-### Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés a fájlrendszerműveletekhez
+### <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés a fájlrendszerműveletekhez
 
 Használja ezt az eljárást az Azure AD-val való hitelesítésre a fájlrendszerműveleteknél (mappa létrehozása, fájl feltöltése stb). A következő kódrészlet használható az alkalmazás nem interaktív hitelesítéséhez, az alkalmazás/egyszerű szolgáltatás titkos ügyfélkódjának használatával. Ezt meglévő „webes” Azure AD-alkalmazással használhatja.
 
     token = lib.auth(tenant_id = 'FILL-IN-HERE', client_secret = 'FILL-IN-HERE', client_id = 'FILL-IN-HERE')
 
-<a id="multi-factor-authentication-for-account-management" class="xliff"></a>
-
-### Többtényezős hitelesítés fiókkezeléshez
+### <a name="multi-factor-authentication-for-account-management"></a>Többtényezős hitelesítés fiókkezeléshez
 
 Használja ezt az eljárást az Azure AD-val való hitelesítésre a fiókkezelési műveleteknél (Data Lake Store-fiók létrehozása/törlése stb). A következő kódrészlet használható az alkalmazás többtényezős hitelesítés használatával történő hitelesítéséhez. Ezt meglévő „webes” Azure AD-alkalmazással használhatja.
 
@@ -175,17 +155,13 @@ Használja ezt az eljárást az Azure AD-val való hitelesítésre a fiókkezel�
     mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
     credentials = AADTokenCredentials(mgmt_token, client_id)
 
-<a id="multi-factor-authentication-for-filesystem-management" class="xliff"></a>
-
-### Többtényezős hitelesítés fájlrendszerkezeléshez
+### <a name="multi-factor-authentication-for-filesystem-management"></a>Többtényezős hitelesítés fájlrendszerkezeléshez
 
 Használja ezt az eljárást az Azure AD-val való hitelesítésre a fájlrendszerműveleteknél (mappa létrehozása, fájl feltöltése stb). A következő kódrészlet használható az alkalmazás többtényezős hitelesítés használatával történő hitelesítéséhez. Ezt meglévő „webes” Azure AD-alkalmazással használhatja.
 
     token = lib.auth(tenant_id='FILL-IN-HERE')
 
-<a id="create-an-azure-resource-group" class="xliff"></a>
-
-## Azure-erőforráscsoport létrehozása
+## <a name="create-an-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
 
 Azure-erőforráscsoport létrehozásához használja a következő kódrészletet:
 
@@ -208,9 +184,7 @@ Azure-erőforráscsoport létrehozásához használja a következő kódrészlet
         )
     )
 
-<a id="create-clients-and-data-lake-store-account" class="xliff"></a>
-
-## Ügyfelek és Data Lake Store-fiókok létrehozása
+## <a name="create-clients-and-data-lake-store-account"></a>Ügyfelek és Data Lake Store-fiókok létrehozása
 
 Az alábbi kódrészlet először a Data Lake Store-fiókügyfelet hozza létre. Az ügyfélobjektum használatával hoz majd létre egy Data Lake Store-fiókot. Végül pedig létrehoz egy fájlrendszerügyfél-objektumot.
 
@@ -233,9 +207,7 @@ Az alábbi kódrészlet először a Data Lake Store-fiókügyfelet hozza létre.
     ## Create a filesystem client object
     adlsFileSystemClient = core.AzureDLFileSystem(token, store_name=adlsAccountName)
 
-<a id="list-the-data-lake-store-accounts" class="xliff"></a>
-
-## A Data Lake Store-fiókok kilistázása
+## <a name="list-the-data-lake-store-accounts"></a>A Data Lake Store-fiókok kilistázása
 
     ## List the existing Data Lake Store accounts
     result_list_response = adlsAcctClient.account.list()
@@ -243,39 +215,29 @@ Az alábbi kódrészlet először a Data Lake Store-fiókügyfelet hozza létre.
     for items in result_list:
         print(items)
 
-<a id="create-a-directory" class="xliff"></a>
-
-## Könyvtár létrehozása
+## <a name="create-a-directory"></a>Könyvtár létrehozása
 
     ## Create a directory
     adlsFileSystemClient.mkdir('/mysampledirectory')
 
-<a id="upload-a-file" class="xliff"></a>
-
-## Fájl feltöltése
+## <a name="upload-a-file"></a>Fájl feltöltése
 
 
     ## Upload a file
     multithread.ADLUploader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
 
 
-<a id="download-a-file" class="xliff"></a>
-
-## Fájl letöltése
+## <a name="download-a-file"></a>Fájl letöltése
 
     ## Download a file
     multithread.ADLDownloader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt.out', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
 
-<a id="delete-a-directory" class="xliff"></a>
-
-## Könyvtár törlése
+## <a name="delete-a-directory"></a>Könyvtár törlése
 
     ## Delete a directory
     adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 
 - [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 - [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

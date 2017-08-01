@@ -24,9 +24,7 @@ ms.lasthandoff: 07/04/2017
 
 
 ---
-<a id="use-data-lake-store-with-azure-hdinsight-clusters" class="xliff"></a>
-
-# A Data Lake Store és az Azure HDInsight-fürtök együttes használata
+# <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>A Data Lake Store és az Azure HDInsight-fürtök együttes használata
 
 A HDInsight-fürtben lévő adatok elemzéséhez az adatokat tárolhatja az [Azure Storage](../storage/storage-introduction.md)-ban, az [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)-ban, vagy mindkettőben. Mindkét tárolási lehetőség lehetővé teszi a számításhoz használt HDInsight-fürtök biztonságos törlését a felhasználói adatok elvesztése nélkül.
 
@@ -37,9 +35,7 @@ Ebből a cikkből megtudhatja, hogyan használható a Data Lake Store a HDInsigh
 > 
 > 
 
-<a id="availabilities-for-hdinsight-clusters" class="xliff"></a>
-
-## Lehetőségek HDInsight-fürtök esetén
+## <a name="availabilities-for-hdinsight-clusters"></a>Lehetőségek HDInsight-fürtök esetén
 
 A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozása során egy Azure Storage-blobtároló adható meg az alapértelmezett fájlrendszerként, illetve a 3.5-ös vagy újabb verziójú HDInsight esetében néhány kivételtől eltekintve választhat, hogy az Azure Storage vagy az Azure Data Lake Store legyen az alapértelmezett fájlrendszer. 
 
@@ -63,9 +59,7 @@ Jelen pillanatban csak bizonyos típusú, illetve verziójú HDInsight-fürtök 
 Ha a Data Lake Store-t kiegészítő tárfiókként használja, az nem befolyásolja a fürtből az Azure-tárba történő írás, illetve olvasás lehetőségét vagy hatékonyságát.
 
 
-<a id="use-data-lake-store-as-default-storage" class="xliff"></a>
-
-## A Data Lake Store használata az alapértelmezett tárolóként
+## <a name="use-data-lake-store-as-default-storage"></a>A Data Lake Store használata az alapértelmezett tárolóként
 
 Ha a HDInsight alapértelmezett tárolójaként a Data Lake Store van beállítva, a fürttel kapcsolatos fájlok a Data Lake Store-ban a következő helyen találhatók:
 
@@ -87,9 +81,7 @@ Ahhoz, hogy a Data Lake Store-t alapértelmezett tárolóként használhassa, ho
 A szolgáltatásnevek létrehozásával és a hozzáférés biztosításával kapcsolatos további információkért lásd: [A Data Lake Store-hoz történő hozzáférés konfigurálása](#configure-data-lake-store-access).
 
 
-<a id="use-data-lake-store-as-additional-storage" class="xliff"></a>
-
-## A Data Lake Store használata kiegészítő tárolóként
+## <a name="use-data-lake-store-as-additional-storage"></a>A Data Lake Store használata kiegészítő tárolóként
 
 A Data Lake Store a fürt kiegészítő tárolójaként is használható. Ilyen esetekben a fürt alapértelmezett tárolója az Azure Storage Blob vagy egy Data Lake Store-fiók lehet. Ha HDInsight-feladatokat futtat a kiegészítő tárolóként használt Data Lake Store-ban tárolt adatokon, a fájlok teljes elérési útját kell használnia. Példa:
 
@@ -104,15 +96,11 @@ Ahhoz, hogy a Data Lake Store-t kiegészítő tárolóként használhassa, hozz�
 A szolgáltatásnevek létrehozásával és a hozzáférés biztosításával kapcsolatos további információkért lásd: [A Data Lake Store-hoz történő hozzáférés konfigurálása](#configure-data-lake-store-access).
 
 
-<a id="use-more-than-one-data-lake-store-accounts" class="xliff"></a>
-
-## Több Data Lake Store-fiók használata
+## <a name="use-more-than-one-data-lake-store-accounts"></a>Több Data Lake Store-fiók használata
 
 Egy Data Lake Store-fiók kiegészítő fiókként történő hozzáadásához vagy több Data Lake Store-fiók hozzáadásához hozzáférést kell biztosítani a HDInsight-fürt számára egy vagy több Data Lake Store-fiók adataihoz. Lásd: [A Data Lake Store-hoz történő hozzáférés konfigurálása](#configure-data-lake-store-access).
 
-<a id="configure-data-lake-store-access" class="xliff"></a>
-
-## A Data Lake Store-hoz történő hozzáférés konfigurálása
+## <a name="configure-data-lake-store-access"></a>A Data Lake Store-hoz történő hozzáférés konfigurálása
 
 A Data Lake Store-hoz a HDInsight-fürtből történő hozzáférés konfigurálásához rendelkeznie kell egy Azure Active Directory- (Azure AD-) szolgáltatásnévvel. Kizárólag Azure AD-rendszergazdák hozhatnak létre szolgáltatásnevet. A szolgáltatásnevet egy tanúsítvánnyal kell létrehozni. További információkért lásd: [A Data Lake Store-hoz történő hozzáférés konfigurálása](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#configure-data-lake-store-access), és [Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
 
@@ -120,9 +108,7 @@ A Data Lake Store-hoz a HDInsight-fürtből történő hozzáférés konfigurál
 > Ha a Data Lake Store-t a HDInsight-fürt kiegészítő tárolójaként tervezi használni, akkor kifejezetten ezt a megoldást javasoljuk, amikor létrehozza a fürtöt az ebben a cikkben leírtaknak megfelelően. Az Azure Data Lake Store-t kiegészítő tárolóként hozzáadni egy meglévő HDInsight-fürthöz bonyolult folyamat, és sok hibalehetőséggel jár.
 >
 
-<a id="access-files-from-the-cluster" class="xliff"></a>
-
-## Fájlok elérése a fürtből
+## <a name="access-files-from-the-cluster"></a>Fájlok elérése a fürtből
 
 Többféleképpen is elérheti egy HDInsight-fürtből a Data Lake Store-ban tárolt fájlokat.
 
@@ -142,9 +128,7 @@ Többféleképpen is elérheti egy HDInsight-fürtből a Data Lake Store-ban tá
 
         /example/data/sample.log
 
-<a id="create-hdinsight-clusters-with-access-to-data-lake-store" class="xliff"></a>
-
-## Data Lake Store-hozzáféréssel rendelkező HDInsight-fürtök létrehozása
+## <a name="create-hdinsight-clusters-with-access-to-data-lake-store"></a>Data Lake Store-hozzáféréssel rendelkező HDInsight-fürtök létrehozása
 
 Az alábbi hivatkozások a Data Lake Store-hozzáféréssel rendelkező HDInsight-fürtök létrehozásának részletes útmutatóira mutatnak.
 
@@ -154,9 +138,7 @@ Az alábbi hivatkozások a Data Lake Store-hozzáféréssel rendelkező HDInsigh
 * [Azure-sablonok használata](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtanulta, hogyan használhatja HDFS-kompatibilis Azure Data Lake Store-tárolót a HDInsighttal. Ez lehetővé teszi a skálázható, hosszú távú adatarchiváló beszerzési megoldások kiépítését, valamint hogy a HDInsighttal kinyerje a strukturált és strukturálatlan tárolt adatokban lévő információkat.
 
 További információkért lásd:

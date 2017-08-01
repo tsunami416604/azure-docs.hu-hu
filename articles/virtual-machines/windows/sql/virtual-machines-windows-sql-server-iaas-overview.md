@@ -23,9 +23,7 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="overview-of-sql-server-on-azure-virtual-machines" class="xliff"></a>
-
-# Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés
+# <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés
 Ez a témakör az SQL Server Azure virtuális gépeken (VM) történő futtatásának lehetőségeit írja le, [hivatkozásokat tartalmaz a portálon elérhető rendszerképekhez](#option-1-create-a-sql-vm-with-per-minute-licensing), valamint tartalmazza a [gyakori feladatok](#manage-your-sql-vm) áttekintését.
 
 > [!NOTE]
@@ -33,9 +31,7 @@ Ez a témakör az SQL Server Azure virtuális gépeken (VM) történő futtatás
 > 
 > 
 
-<a id="overview" class="xliff"></a>
-
-## Áttekintés
+## <a name="overview"></a>Áttekintés
 Amennyiben Ön adatbázis-rendszergazda vagy fejlesztő, az Azure virtuális gépek lehetőséget nyújtanak a helyszíni SQL Server számítási feladatok és alkalmazások áthelyezésére a felhőbe. A következő videó az SQL Server Azure virtuális gépek műszaki áttekintését tartalmazza.
 
 > [!VIDEO https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016/player]
@@ -61,9 +57,7 @@ A videó a következő területeket fedi le:
 > 
 > 
 
-<a id="scenarios" class="xliff"></a>
-
-## Forgatókönyvek
+## <a name="scenarios"></a>Forgatókönyvek
 Számos oka lehet annak, amiért úgy dönt, az adatokat az Azure-ban tárolja. Ha az alkalmazást áthelyezi az Azure-ba, az növeli a teljesítményt az adatok áthelyezéséhez. De a használata további előnyökkel is jár. Automatikusan hozzáférést kap több különböző adatközponthoz is a globális jelenlét érdekében, illetve vészhelyreállítás esetére. Emellett az adatok is tartósak, és magas szintű biztonság védi őket.
 
 Az Azure virtuális gépeken futó SQL Server a relációs adatok Azure-ban való tárolásának egyik módja. Ez számos forgatókönyv esetében jó választás. Előfordulhat például, hogy egy helyszíni SQL Server-géphez hasonlóan konfigurált Azure-beli virtuális gépre van szüksége, vagy további alkalmazásokat és szolgáltatásokat szeretne futtatni ugyanazon az adatbázis-kiszolgálón. Két fő erőforrás segítheti abban, hogy még több forgatókönyvet és megfontolást végiggondoljon:
@@ -71,16 +65,12 @@ Az Azure virtuális gépeken futó SQL Server a relációs adatok Azure-ban val�
 * [Az SQL Server az Azure-beli virtuális gépeken](https://azure.microsoft.com/services/virtual-machines/sql-server/) témakör áttekinti az SQL Server Azure-beli virtuális gépeken való használatának ajánlott forgatókönyveit. 
 * A [Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md) című témakör részletesen összehasonlítja az SQL Database-t és a virtuális gépeken futó SQL Servert.
 
-<a id="create-a-new-sql-vm" class="xliff"></a>
-
-## Új SQL virtuális gép létrehozása
+## <a name="create-a-new-sql-vm"></a>Új SQL virtuális gép létrehozása
 Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra az SQL Server virtuálisgép-katalógus rendszerképeinek letöltéséhez. Attól függően, hogy milyen rendszerképet választott ki, fizetheti percalapon az SQL Server licencelési költségeit, vagy használhatja a saját licencét (BYOL).
 
 Az új SQL-alapú virtuális gép létrehozásának részletes útmutatója az [SQL Server rendszerű virtuális gép létrehozása az Azure Portalon](virtual-machines-windows-portal-sql-server-provision.md) című oktatóanyagban található. Emellett tekintse át az [Performance best practices for SQL Server VMs](virtual-machines-windows-sql-performance.md) (Az SQL Server virtuális gépek teljesítményével kapcsolatos ajánlott eljárások) című cikket, amely leírja, hogyan válassza ki a kiépítés során a megfelelő gépméretet és egyéb lehetőségeket.
 
-<a id="option-1-create-a-sql-vm-with-per-minute-licensing" class="xliff"></a>
-
-## 1. lehetőség: SQL virtuális gép létrehozása percalapú licenceléssel
+## <a name="option-1-create-a-sql-vm-with-per-minute-licensing"></a>1. lehetőség: SQL virtuális gép létrehozása percalapú licenceléssel
 A következő táblázat a virtuálisgép-katalógus legújabb SQL Server-rendszerképeit foglalja össze. Kattintson bármelyik hivatkozásra egy új SQL virtuális gép létrehozásának megkezdéséhez az Ön által választott verzióval, kiadással és operációs rendszerrel. 
 
 > [!TIP]
@@ -114,48 +104,32 @@ E listán kívül az SQL Server-verziók valamint az operációs rendszerek egy�
 > [!NOTE]
 > Nem lehetséges saját licencre módosítani egy percalapú SQL Server virtuális gép licencelési modelljét. Jelen esetben létre kell hoznia egy új BYOL virtuális gépet, majd az új virtuális gépre kell telepítenie az adatbázisokat. 
 
-<a id="manage-your-sql-vm" class="xliff"></a>
-
-## Az SQL virtuális gép felügyelete
+## <a name="manage-your-sql-vm"></a>Az SQL virtuális gép felügyelete
 Az SQL Server virtuális gép kiépítése után több választható felügyeleti feladatot is végrehajthat. Bizonyos szempontokból az SQL Server konfigurálását és felügyeletét pontosan ugyanúgy kell elvégeznie, ahogy egy helyszíni SQL Server-példánnyal tenné. Néhány feladat azonban csak az Azure-ra érvényes. A következő szakaszok kiemelnek néhány ilyen területet, és további információkra mutató hivatkozásokat is tartalmaznak.
 
-<a id="connect-to-the-vm" class="xliff"></a>
-
-### Kapcsolódás a virtuális géphez
+### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 Az egyik legalapvetőbb felügyeleti lépés az SQL Serverhez való csatlakozás olyan eszközök segítségével, mint az SQL Server Management Studio (SSMS). További információ az SQL Servert futtató új virtuális géphez való csatlakozásról:[Csatlakozás SQL Servert futtató virtuális gépekhez az Azure-ban](virtual-machines-windows-sql-connect.md).
 
-<a id="migrate-your-data" class="xliff"></a>
-
-### Adatok áttelepítése
+### <a name="migrate-your-data"></a>Adatok áttelepítése
 Ha van meglévő adatbázisa, érdemes áthelyeznie az újonnan kiépített SQL virtuális gépre. Az áttelepítési lehetőségekért és útmutatásért lásd: [Migrating a Database to SQL Server on an Azure VM](virtual-machines-windows-migrate-sql.md) (Adatbázis áttelepítése egy Azure virtuális gépen SQL Serverre).
 
-<a id="configure-high-availability" class="xliff"></a>
-
-### Magas rendelkezésre állás konfigurálása
+### <a name="configure-high-availability"></a>Magas rendelkezésre állás konfigurálása
 Ha magas rendelkezésre állásra van szüksége, fontolja meg az SQL Server rendelkezésre állási csoportok konfigurálását. Ehhez több Azure virtuális gépre van szükség egy virtuális hálózaton. Az Azure portálon találhat egy sablont, amely beállítja ezt a konfigurációt. További információ: [Configure an AlwaysOn availability group in Azure Resource Manager virtual machines](virtual-machines-windows-portal-sql-alwayson-availability-groups.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (AlwaysOn rendelkezésre állási csoport konfigurálása Azure Resource Manager virtuális gépeken). Ha saját kezűleg szeretné konfigurálni a rendelkezésre állási csoportot és a kapcsolódó figyelőt, lásd:: [Configure AlwaysOn Availability Groups in Azure VM](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md) (AlwaysOn rendelkezésre állási csoportok konfigurálása Azure virtuális gépeken).
 
 További magas rendelkezésre állási lehetőségekért lásd: [High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md) (Magas rendelkezésre állás és vészhelyreállítás Azure virtuális gépeken futó SQL Serveren).
 
-<a id="back-up-your-data" class="xliff"></a>
-
-### Az adatok biztonsági mentése
+### <a name="back-up-your-data"></a>Az adatok biztonsági mentése
 Az Azure virtuális gépek használni képesek az [automatikus biztonsági mentés](virtual-machines-windows-sql-automated-backup.md) előnyeit, amely rendszeresen biztonsági másolatokat készít az adatbázisról a Blob Storage tárhelyen. Ezt a technikát manuálisan is alkalmazhatja. További információ: [Use Azure Storage for SQL Server Backup and Restore](virtual-machines-windows-use-storage-sql-server-backup-restore.md) (Az Azure Storage használata az SQL Server biztonsági mentéséhez és helyreállításához). A biztonsági mentési és helyreállítási lehetőségek teljes körű áttekintéséért lásd: [Backup and Restore for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md) (Az SQL Server biztonsági mentése és helyreállítása Azure virtuális gépeken).
 
-<a id="automate-updates" class="xliff"></a>
-
-### Frissítések automatizálása
+### <a name="automate-updates"></a>Frissítések automatizálása
 Az Azure virtuális gépek az [automatikus javítás](virtual-machines-windows-sql-automated-patching.md) segítségével ütemezhetnek egy karbantartási időszakot a fontos Windows- és SQL Server-frissítések automatikus telepítéséhez.
 
-<a id="customer-experience-improvement-program-ceip" class="xliff"></a>
-
-### Felhasználói élmény fokozása program (CEIP)
+### <a name="customer-experience-improvement-program-ceip"></a>Felhasználói élmény fokozása program (CEIP)
 A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. 
 
 Tovább információért lásd a [Licencfeltételek elfogadása](https://msdn.microsoft.com/library/ms143343.aspx) című témakör CEIP-ről szóló szakaszát. 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A díjszabással kapcsolatos kérdésekről bővebben [az SQL Server Azure virtuális gépek díjszabási útmutatójában](virtual-machines-windows-sql-server-pricing-guidance.md) és az [Azure díjszabási oldalán](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) olvashat. Az SQL Server célkiadását az **OS/Software** (Operációs rendszer/Szoftver) listájából választhatja ki. Ezt követően megtekintheti a különböző méretű virtuális gépekre vonatkozó díjakat.
 

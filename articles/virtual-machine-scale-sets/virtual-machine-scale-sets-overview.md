@@ -24,9 +24,7 @@ ms.lasthandoff: 07/04/2017
 
 
 ---
-<a id="what-are-virtual-machine-scale-sets-in-azure" class="xliff"></a>
-
-# Mik azok a virtuálisgép-méretezési csoportok az Azure-ban?
+# <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Mik azok a virtuálisgép-méretezési csoportok az Azure-ban?
 A virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások, amelyek egymással teljesen azonos virtuális gépek csoportjainak üzembe helyezésére és felügyeletére használhatók. Az egyformán konfigurált virtuális gépeket tartalmazó méretezési csoportok a valódi automatikus méretezés támogatására készültek – szükségtelenné téve a virtuális gépek előzetes kiépítését. Ezzel is egyszerűsödik a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokra koncentráló nagyméretű szolgáltatások kiépítése.
 
 A számítási erőforrások horizontális fel- és leskálázását igénylő alkalmazások esetében a méretezési műveletek implicit módon oszlanak el a tartalék- és frissítési tartományok között. A méretezési csoportokra vonatkozó részletesebb bevezetést [ebben az Azure-blogbejegyzésben](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/) talál.
@@ -36,9 +34,7 @@ A méretezési csoportokkal kapcsolatban további információkat tudhat meg az 
 * [Mark Russinovich talks Azure Scale Sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/) (Mark Russinovich ismerteti az Azure-alapú méretezési csoportokat)  
 * [Virtual Machine Scale Sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman) (A virtuálisgép-méretezési csoportokról Guy Bowerman mesél)
 
-<a id="creating-and-managing-scale-sets" class="xliff"></a>
-
-## Méretezési csoportok létrehozása és kezelése
+## <a name="creating-and-managing-scale-sets"></a>Méretezési csoportok létrehozása és kezelése
 Ha méretezési csoportokat szeretne létrehozni az [Azure Portalon](https://portal.azure.com), válassza az **új** lehetőséget, majd írja be a keresőmezőbe a **scale** (méretezés) szót. Az eredmények között megjelenik a **Virtual machine scale set** (Virtuálisgép-méretezési csoport) kifejezés. Ezután kitöltheti a méretezési csoport testreszabásához és üzembe helyezéséhez szükséges mezőket. A portálon alapszintű automatikus méretezési szabályokat is beállíthat a processzorhasználat alapján.
 
 A méretezési csoportok megadását és üzembe helyezését – az egyedi Azure Resource Manager-alapú virtuális gépekhez hasonlóan – JSON-sablonok és [REST API-k](https://msdn.microsoft.com/library/mt589023.aspx) segítségével is elvégezheti. Ezért lehetőség van bármilyen szabványos Azure Resource Manager-alapú üzembe helyezési módszer használatára. A sablonokról további információkat az [Authoring Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md) (Azure Resource Manager-sablonok készítése) című témakörben talál.
@@ -47,9 +43,7 @@ A virtuálisgép-méretezési csoportokhoz tartozó példasablonkészlet az [Azu
 
 A gyors üzembe helyezési útmutató példasablonjainak esetében az egyes sablonok leírásában egy „telepítés az Azure-ba” gomb hivatkozik a portál telepítő funkciójára. A virtuálisgép-méretezési csoport üzembe helyezéséhez kattintson erre a gombra, majd a portálon írjon be minden szükséges paramétert. 
 
-<a id="scaling-a-scale-set-out-and-in" class="xliff"></a>
-
-## Méretezési csoport horizontális fel- és leskálázása
+## <a name="scaling-a-scale-set-out-and-in"></a>Méretezési csoport horizontális fel- és leskálázása
 Egy méretezési csoport kapacitásának módosításához az Azure Portalon kattintson a **Méretezés** szakaszra a **Beállítások** területen. 
 
 A méretezési csoport kapacitásának módosításához használja az [Azure CLI](https://github.com/Azure/azure-cli) **scale** parancsát a parancssorban. Ha például 10 virtuális gépre szeretné beállítani egy méretezési csoport kapacitását, használja a következő parancsot:
@@ -70,9 +64,7 @@ Ha egy Azure Resource Manager-sablonnal szeretné egy méretezési csoportban n�
 
 Ha a kapacitás módosításához újraalkalmaz egy Azure Resource Manager-sablont, akkor lehetőség van egy sokkal kisebb sablon megadására, amely csak az **SKU** tulajdonságcsomagot tartalmazza a frissített kapacitással. [Például:](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)
 
-<a id="autoscale" class="xliff"></a>
-
-## Automatikus méretezés
+## <a name="autoscale"></a>Automatikus méretezés
 
 Lehetőség van egy méretezési csoport automatikus méretezési beállításokkal való konfigurálására, ha az az Azure Portalon jött létre. A virtuális gépek száma ezután növekedhet vagy csökkenhet az átlagos CPU-használat alapján. 
 
@@ -93,18 +85,14 @@ Add-AzureRmAutoscaleSetting -Location $location -Name "autosetting1" -ResourceGr
 
 A méretezéshez használható érvényes mérőszámok listája [az Azure Monitorban támogatott mérőszámok](../monitoring-and-diagnostics/monitoring-supported-metrics.md) leírásában, a Microsoft.Compute/virtualMachineScaleSets fejléc alatt található. Elérhetők speciálisabb automatikus méretezési beállítások is, például ütemezésalapú automatikus méretezés, vagy webhookok használata riasztási rendszerek integrálására.
 
-<a id="monitoring-your-scale-set" class="xliff"></a>
-
-## A méretezési csoport figyelése
+## <a name="monitoring-your-scale-set"></a>A méretezési csoport figyelése
 Az [Azure Portalon](https://portal.azure.com) megtalálható a méretezési csoportok listája, valamint a hozzájuk tartozó tulajdonságok. A portál a felügyeleti műveleteket is támogatja. Végrehajthat felügyeleti műveleteket a méretezési csoportokon és méretezési csoportok egyes virtuális gépein is. A portál biztosít egy testre szabható erőforrás-használati diagramot is. 
 
 Ha meg kell tekintenie vagy szerkesztenie kell egy Azure-erőforrás mögöttes JSON-definícióját, akkor az [Azure Resource Explorert](https://resources.azure.com) is használhatja. A méretezési csoportok a Microsoft.Compute Azure-beli erőforrás-szolgáltató erőforrásai. Ezen a webhelyen tekintheti meg őket az alábbi hivatkozások kibontásával:
 
 **Előfizetések** > **saját előfizetés** > **resourceGroups** > **szolgáltatók** > **Microsoft.Compute** > **virtualMachineScaleSets** > **saját méretezési csoport** > stb.
 
-<a id="scale-set-scenarios" class="xliff"></a>
-
-## Méretezési csoportok használatának esetei
+## <a name="scale-set-scenarios"></a>Méretezési csoportok használatának esetei
 Ez a szakasz a méretezési csoportok használatának néhány tipikus esetét sorolja fel. Ezek az esetek néhány magasabb szintű Azure-szolgáltatás (például a Batch, a Service Fabric és a Container Service) használatakor merülhetnek fel.
 
 * **Csatlakozás az RDP vagy az SSH segítségével a méretezési csoport példányaihoz**: A rendszer egy méretezési csoportot hozott létre egy virtuális hálózaton belül, és a méretezési csoportba tartozó egyes virtuális gépekhez nem osztott ki nyilvános IP-címeket. Ez a házirend elkerüli az egyes nyilvános IP-címeknek a számítási grid összes csomópontjához való kiosztásával járó költségeket és munkaterhelést. Ha nem igényel közvetlen külső kapcsolatokat a méretezési csoport virtuális gépeihez, akkor beállíthatja a méretezési csoportot úgy, hogy automatikusan nyilvános IP-címet osszon ki az új virtuális gépeknek. Ezekhez a virtuális gépekhez csatlakozhat a virtuális hálózat más erőforrásairól is (például terheléselosztókról, önálló virtuális gépekről), amelyekhez lehet nyilvános IP-címeket kiosztani. 
@@ -134,17 +122,13 @@ Ez a szakasz a méretezési csoportok használatának néhány tipikus esetét s
   
    A megközelítést bemutató [példában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) az [Azure Container Service](https://azure.microsoft.com/services/container-service/) egy tárolóvezénylővel rendelkező méretezési csoportokon alapuló fürtöt helyez üzembe.
 
-<a id="scale-set-performance-and-scale-guidance" class="xliff"></a>
-
-## A virtuálisgép-méretezési csoportok teljesítményével és skálázásával kapcsolatos útmutató
+## <a name="scale-set-performance-and-scale-guidance"></a>A virtuálisgép-méretezési csoportok teljesítményével és skálázásával kapcsolatos útmutató
 * A méretezési csoportok legfeljebb 1000 virtuális gépet támogatnak. Ha a saját VM-rendszerképeit hozza létre és tölti fel, a korlát 100. A nagy méretezési csoportok használatánál megfontolandó szempontokról a [nagyméretű virtuálisgép-méretezési csoportok használatát](virtual-machine-scale-sets-placement-groups.md) ismertető cikkben olvashat.
 * A méretezési csoporthoz nem szükséges előzetesen Azure tárfiókot létrehozni. A méretezési csoportok támogatják az Azure Managed Disks használatát, amely megszünteti a tárfiókonkénti lemezek számával kapcsolatos teljesítményproblémákat. További információ: [Azure virtuálisgép-méretezési csoportok és felügyelt lemezek](virtual-machine-scale-sets-managed-disks.md).
 * Érdemes megfontolni az Azure Prémium Storage használatát az Azure Storage helyett a gyorsabb és kiszámíthatóbb VM-üzembehelyezési idők és a jobb I/O-teljesítmény érdekében.
 * A létrehozható virtuális gépek számának a telepítést végrehajtó régióban érvényes magkvóta szab határt. Előfordulhat, hogy kapcsolatba kell lépnie az ügyfélszolgálattal a számítási kvótahatár további növelése érdekében, még akkor is, ha az Azure Cloud Serviceshez használt magok esetében magas a határérték. A kvóta lekérdezéséhez futtathatja a következő Azure CLI-parancsot: `azure vm list-usage`. Vagy futtassa ezt a PowerShell-parancsot: `Get-AzureRmVMUsage`.
 
-<a id="frequently-asked-questions-for-scale-sets" class="xliff"></a>
-
-## A méretezési csoportokkal kapcsolatos gyakori kérdések
+## <a name="frequently-asked-questions-for-scale-sets"></a>A méretezési csoportokkal kapcsolatos gyakori kérdések
 **K.** Hány virtuális gépet tartalmazhat egy méretezési csoport?
 
 **V.** A méretezési csoport 0–1000, platformrendszerképen alapuló virtuális gépet, vagy 0–100, egyéni rendszerképen alapuló virtuális gépet tartalmazhat. 

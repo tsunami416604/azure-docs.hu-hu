@@ -22,10 +22,8 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 07/04/2017
 
 ---
-# Azure AD Connect a Microsoft Cloud németországi adatközpontjában – nyilvános előzetes verzió
-<a id="azure-ad-connect-in-microsoft-cloud-germany---public-preview" class="xliff"></a>
-## Introduction (Bevezetés)
-<a id="introduction" class="xliff"></a>
+# <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect a Microsoft Cloud németországi adatközpontjában – nyilvános előzetes verzió
+## <a name="introduction"></a>Introduction (Bevezetés)
 Az Azure AD Connect szinkronizálást biztosít a helyszíni Active Directory és az Azure Active Directory között.
 A [Microsoft Cloud németországi adatközpontja](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) esetében az eljárások jelentős részét a kezelőnek kell elvégeznie. A Microsoft Cloud németországi adatközpontjának használata esetén a következőkre kell ügyelnie:
 
@@ -39,12 +37,10 @@ A [Microsoft Cloud németországi adatközpontja](https://www.microsoft.com/de-d
   * Azure AD Connect Health
   * Automatikus frissítések
  
-## Letöltés
-<a id="download" class="xliff"></a>
+## <a name="download"></a>Letöltés
 Az Azure AD Connect a portál Azure AD Connect paneljéről tölthető le.  Az Azure AD Connect panelt az alábbi útmutatás alapján keresheti meg.
 
-### Az Azure AD Connect panel
-<a id="the-azure-ad-connect-blade" class="xliff"></a>
+### <a name="the-azure-ad-connect-blade"></a>Az Azure AD Connect panel
 Miután bejelentkezett az Azure Portalra, tegye a következőket:
 
 1. Válassza a Tallózás lehetőséget.
@@ -63,12 +59,10 @@ A következő táblázat a panelen látható funkciókat ismerteti.
 | LEGUTÓBBI SZINKRONIZÁLÁS |A legutóbbi alkalom, amikor sikeresen befejeződött egy szinkronizálás. |
 | ÖSSZEVONT TARTOMÁNYOK |Azt mutatja, hogy jelenleg hány összevont tartomány van konfigurálva. |
 
-## Telepítés
-<a id="installation" class="xliff"></a>
+## <a name="installation"></a>Telepítés
 Az Azure AD Connect telepítéséhez használhatja az [itt](active-directory-aadconnect.md#install-azure-ad-connect) található dokumentációt.
 
-## Speciális szolgáltatások és további információk
-<a id="advanced-features-and-additional-information" class="xliff"></a>
+## <a name="advanced-features-and-additional-information"></a>Speciális szolgáltatások és további információk
 Ha további tájékoztatást, illetve az egyéni beállításokkal vagy speciális konfigurációkkal kapcsolatos útmutatást keres, kezdje a [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md) című cikkel.  Ez a lap a további útmutatással kapcsolatos információkat és hivatkozásokat ismerteti.
 
 

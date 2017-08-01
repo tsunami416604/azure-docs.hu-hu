@@ -22,9 +22,7 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="what-are-logic-apps" class="xliff"></a>
-
-# Mi a Logic Apps szolgáltatás?
+# <a name="what-are-logic-apps"></a>Mi a Logic Apps szolgáltatás?
 A Logic Apps lehetőséget teremt a skálázható integrálások és munkafolyamatok felhőbe implementálásának leegyszerűsítésére és implementálása. Egy vizuális tervezőt biztosít a folyamatai lépéssorozatként, más néven munkafolyamatként történő modellezésére és automatizálására.  Sok helyszíni és felhőben található [összekötő](../connectors/apis-list.md) létezik, amelyeket gyorsan integrálni lehet a szolgáltatások és protokollok között.  A logikai alkalmazás egy eseményindítóval kezdődik (például „amikor egy fiókot hozzáadnak a Dynamics CRM-hez”), és az indítás után számos műveleti, konverziós és feltétellogikai kombinációt kezdhet.
 
 A Logic Apps használatának előnyei többek között a következők:  
@@ -48,9 +46,7 @@ Ahogy korábban már említettük, a Logic Apps segítségével automatizálhatj
 
 Az ehhez hasonló helyzeteknek megfelelő konfiguráláshoz mindössze a vizuális tervező szükséges, egyetlen sor kódot sem kell írnia. Kezdje el [összeállítani saját logikai alkalmazását][create].  Ha már megírták, a logikai alkalmazás [gyorsan üzembe helyezhető és újrakonfigurálható](../logic-apps/logic-apps-create-deploy-template.md) több környezetben és régióban is.
 
-<a id="why-logic-apps" class="xliff"></a>
-
-## Miért válasszam a Logic Apps szolgáltatást?
+## <a name="why-logic-apps"></a>Miért válasszam a Logic Apps szolgáltatást?
 A Logic Apps sebességet és méretezhetőséget biztosít a vállalati integráció terén.  A tervező könnyű használata, a számos elérhető eseményindító és művelet, valamint a sokoldalú kezelőeszközök teszik minden eddiginél könnyebbé az API-k központosítását.  Ahogy a vállalkozások a digitalizáció felé mozdulnak el, a Logic Apps lehetővé teszi a régi és a legmodernebb rendszerek összekapcsolását.
 
 Továbbá a [nagyvállalati integrációs fiókokkal][biztalk] részletes integrációs forgatókönyvekre is méretezhet az [XML-üzenetküldés][xml], a [kereskedelmipartner-kezelés][tpm] és további szolgáltatások kihasználásával.
@@ -61,9 +57,7 @@ Továbbá a [nagyvállalati integrációs fiókokkal][biztalk] részletes integr
 * **Beépített bővíthetőség** – Nem találja a szükséges összekötőt? A Logic Appst arra tervezték, hogy együttműködjön a saját API-kkal és programkóddal. Egyszerűen létrehozhatja és használhatja saját API-alkalmazását egyéni összekötőként, vagy meghívhatja egy [Azure-függvényben](https://functions.azure.com) a kódtöredékek igény szerinti végrehajtásához. 
 * **Komoly integrációs teljesítmény** – Kezdje könnyedén, és növekedjen az igényekkel együtt. A Logic Apps a BizTalk, a Microsoft piacvezető integrációs megoldásának erejével eszközöket ad az integrációs szakemberek kezébe, amelyekkel könnyedén kialakíthatják a saját igényeiknek leginkább megfelelő megoldásokat. További információk az [Enterprise Integration Packről](../logic-apps/logic-apps-enterprise-integration-overview.md).
 
-<a id="logic-app-concepts" class="xliff"></a>
-
-## A logikai alkalmazások alapjai
+## <a name="logic-app-concepts"></a>A logikai alkalmazások alapjai
 Az alábbiakban a Logic Apps használatának kulcsfontosságú elemeit emeljük ki. 
 
 * **Munkafolyamat** – A Logic Apps grafikus felületén lépések sorozataként vagy munkafolyamatként modellezheti az üzleti folyamatokat.
@@ -72,9 +66,7 @@ Az alábbiakban a Logic Apps használatának kulcsfontosságú elemeit emeljük 
 * **Műveletek** – Az eseményindítót követő lépéseket műveleteknek nevezzük. Minden művelet általában egy másik művelethez vezet a felügyelt összekötőn vagy egyéni API-alkalmazásokban.
 * **Enterprise Integration Pack** – A további speciális integrálási forgatókönyvek mmegvalósításaérdekében a Logic Apps BizTalk-képességeket is tartalmaz. A BizTalk a Microsoft piacvezető integrációs platformja. Az Enterprise Integration Pack-összekötők lehetővé teszik, hogy egyszerűen belefoglaljon érvényesítést, átalakítást és még több lehetőséget a Logic App-munkafolyamatokba.
 
-<a id="getting-started" class="xliff"></a>
-
-## Első lépések
+## <a name="getting-started"></a>Első lépések
 * Az első lépések megismeréséhez olvassa el a [Logikai alkalmazás létrehozása][create] című oktatóanyagot.  
 * [Gyakori példák és felhasználási helyzetek megtekintése](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Üzleti folyamatok automatizálása a Logic Apps segítségével](http://channel9.msdn.com/Events/Build/2016/T694) 

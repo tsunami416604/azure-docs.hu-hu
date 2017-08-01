@@ -22,15 +22,11 @@ ms.lasthandoff: 07/01/2017
 
 
 ---
-<a id="get-started-with-service-bus-topics" class="xliff"></a>
-
-# Bevezetés a Service Bus-üzenettémák használatába
+# <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-<a id="what-will-be-accomplished" class="xliff"></a>
-
-## Az oktatóanyag célja
+## <a name="what-will-be-accomplished"></a>Az oktatóanyag célja
 
 Ez az oktatóanyag a következő lépéseken vezet végig:
 
@@ -40,26 +36,20 @@ Ez az oktatóanyag a következő lépéseken vezet végig:
 4. Az üzenettémához üzenetet küldő konzolalkalmazás megírása.
 5. Az előfizetéstől üzenetet fogadó konzolalkalmazás megírása.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 1. [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-öt használják.
 2. Azure-előfizetés.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-<a id="1-create-a-namespace-using-the-azure-portal" class="xliff"></a>
-
-## 1. Névtér létrehozása az Azure Portal használatával
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Névtér létrehozása az Azure Portal használatával
 
 Ha már létrehozta a Service Bus Messaging-névteret, lépjen a [Üzenettéma létrehozása az Azure Portal használatával](#2-create-a-topic-using-the-azure-portal) szakaszra.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-<a id="2-create-a-topic-using-the-azure-portal" class="xliff"></a>
-
-## 2. Üzenettéma létrehozása az Azure Portal használatával
+## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Üzenettéma létrehozása az Azure Portal használatával
 
 1. Jelentkezzen be az [Azure Portalra][azure-portal].
 2. A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre (ha nem lát **Service Bus** elemet, kattintson a **További szolgáltatások** lehetőségre).
@@ -74,9 +64,7 @@ Ha már létrehozta a Service Bus Messaging-névteret, lépjen a [Üzenettéma l
     ![Új kiválasztása][createtopic3]
 6. Kattintson a panel alján található **Létrehozás** gombra.
 
-<a id="3-create-a-subscription-to-the-topic" class="xliff"></a>
-
-## 3. Előfizetés létrehozása az üzenettémához
+## <a name="3-create-a-subscription-to-the-topic"></a>3. Előfizetés létrehozása az üzenettémához
 
 1. A portál-erőforrások panelen kattintson az 1. lépésben létrehozott névtérre majd a 2. lépésben létrehozott üzenettéma nevére.
 2. Új előfizetést az áttekintő panel tetején az **Előfizetés** elem melletti plusz-jelre kattintva adhat az üzenettémához.
@@ -85,30 +73,22 @@ Ha már létrehozta a Service Bus Messaging-névteret, lépjen a [Üzenettéma l
 
 3. Adjon egy nevet az előfizetésnek. A többi beállítást hagyja az alapértelmezett értékükön.
 
-<a id="4-send-messages-to-the-topic" class="xliff"></a>
-
-## 4. Üzenet küldése az üzenettémához
+## <a name="4-send-messages-to-the-topic"></a>4. Üzenet küldése az üzenettémához
 
 A Visual Studio használatával C# konzolalkalmazást írunk az üzeneteknek az üzenettémához való küldéséhez.
 
-<a id="create-a-console-application" class="xliff"></a>
-
-### Konzolalkalmazás létrehozása
+### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
 Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.NET Framework)** projektet.
 
-<a id="add-the-service-bus-nuget-package" class="xliff"></a>
-
-### A Service Bus NuGet-csomag hozzáadása
+### <a name="add-the-service-bus-nuget-package"></a>A Service Bus NuGet-csomag hozzáadása
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
 2. 1Kattintson a **Browse** (Tallózás) fülre, és keressen a **Microsoft Azure Service Bus** kifejezésre, majd válassza ki a **WindowsAzure.ServiceBus** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
    
     ![NuGet-csomag kiválasztása][nuget-pkg]
 
-<a id="write-some-code-to-send-a-message-to-the-topic" class="xliff"></a>
-
-### Írjon egy kódrészletet egy üzenet küldéséhez az üzenettémához
+### <a name="write-some-code-to-send-a-message-to-the-topic"></a>Írjon egy kódrészletet egy üzenet küldéséhez az üzenettémához
 
 1. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
    
@@ -170,9 +150,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
    
       ![Üzenet mérete][topic-message]
 
-<a id="5-receive-messages-from-the-subscription" class="xliff"></a>
-
-## 5. Üzenet fogadása az előfizetéstől
+## <a name="5-receive-messages-from-the-subscription"></a>5. Üzenet fogadása az előfizetéstől
 
 1. Az imént elküldött üzenet vagy üzenetek fogadásához hozzon létre egy új konzolalkalmazást, majd vegyen fel egy hivatkozást a Service Bus NuGet-csomagjára, hasonlóan az előző küldő alkalmazáshoz.
 2. Adja hozzá az alábbi `using` utasítást a Program.cs fájl elejéhez.
@@ -233,9 +211,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
 
 Gratulálunk! Létrehozott egy üzenettémát és egy előfizetést, elküldött egy üzenetet, és fogadta is azt.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://github.com/Azure/azure-service-bus/tree/master/samples), amelyek a Service Bus üzenetkezelési szolgáltatásának néhány speciális funkcióját mutatják be.
 

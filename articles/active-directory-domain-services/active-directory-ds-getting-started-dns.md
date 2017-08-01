@@ -22,13 +22,9 @@ ms.lasthandoff: 06/30/2017
 
 
 ---
-<a id="enable-azure-active-directory-domain-services-preview" class="xliff"></a>
+# <a name="enable-azure-active-directory-domain-services-preview"></a>Az Azure Active Directory Domain Services engedélyezése (előzetes verzió)
 
-# Az Azure Active Directory Domain Services engedélyezése (előzetes verzió)
-
-<a id="task-4-update-dns-settings-for-the-azure-virtual-network" class="xliff"></a>
-
-## 4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése
+## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése
 Az előző konfigurációs feladatokban sikeresen engedélyezte az Azure Active Directory Domain Services-t a címtárhoz. A következő feladat annak biztosítása, hogy a virtuális hálózaton lévő összes számítógép képes legyen csatlakozni ezekhez a szolgáltatásokhoz, és használhassa azokat. Ez a cikk bemutatja, hogyan frissítheti a virtuális hálózat DNS-kiszolgálójának beállításait, hogy arra a két IP-címre mutassanak, amelyeken az Azure Active Directory Domain Services elérhető a virtuális hálózaton.
 
 A DNS-kiszolgáló azon virtuális hálózatra vonatkozó beállításainak frissítéséhez, amelyiken engedélyezte az Azure Active Directory Domain Services-t, végezze el a következő műveleteket:
@@ -52,8 +48,6 @@ A DNS-kiszolgáló azon virtuális hálózatra vonatkozó beállításainak fris
 >
 >
 
-<a id="next-step" class="xliff"></a>
-
-## Következő lépés
+## <a name="next-step"></a>Következő lépés
 [5. feladat: Jelszavak szinkronizálásának engedélyezése az Azure Active Directory Domain Services-re](active-directory-ds-getting-started-password-sync.md)
 

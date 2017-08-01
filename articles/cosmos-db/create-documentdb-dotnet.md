@@ -23,9 +23,7 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="azure-cosmos-db-build-a-documentdb-api-web-app-with-net-and-the-azure-portal" class="xliff"></a>
-
-# Azure Cosmos DB: DocumentDB API-webalkalmazás létrehozása .NET-tel és az Azure Portallal
+# <a name="azure-cosmos-db-build-a-documentdb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: DocumentDB API-webalkalmazás létrehozása .NET-tel és az Azure Portallal
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
@@ -33,32 +31,24 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítsé
 
 ![Teendőkezelő alkalmazás mintaadatokkal](./media/create-documentdb-dotnet/azure-comosdb-todo-app-list.png)
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 <a id="create-account"></a>
-<a id="create-a-database-account" class="xliff"></a>
-
-## Adatbázisfiók létrehozása
+## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <a id="create-collection"></a>
-<a id="add-a-collection" class="xliff"></a>
-
-## Gyűjtemény hozzáadása
+## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
 <a id="add-sample-data"></a>
-<a id="add-sample-data" class="xliff"></a>
-
-## Mintaadatok hozzáadása
+## <a name="add-sample-data"></a>Mintaadatok hozzáadása
 
 Az Adatkezelő segítségével adatokat adhat hozzá az új gyűjteményhez.
 
@@ -86,9 +76,7 @@ Az Adatkezelő segítségével adatokat adhat hozzá az új gyűjteményhez.
  
      Az Adatkezelővel létrehozhat tárolt eljárásokat is, felhasználói függvényeket és a kiszolgálóoldali üzleti logikákat végrehajtó eseményindítókat, valamint szabályozhatja az átviteli sebességet. Az Adatkezelő hozzáférhetővé teszi az API-k összes beépített, programozható adatelérési funkcióját, és az Azure Portalon tárolt adataihoz is egyszerű hozzáférést biztosít.
 
-<a id="clone-the-sample-application" class="xliff"></a>
-
-## A mintaalkalmazás klónozása
+## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
 Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatni is fogjuk. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
@@ -102,9 +90,7 @@ Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk
 
 3. Ezután nyissa meg a teendő megoldásfájlját a Visual Studióban. 
 
-<a id="review-the-code" class="xliff"></a>
-
-## A kód áttekintése
+## <a name="review-the-code"></a>A kód áttekintése
 
 Tekintsük át, hogy mi is történik az alkalmazásban. Nyissa meg a DocumentDBRepository.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB-erőforrásokat. 
 
@@ -129,9 +115,7 @@ Tekintsük át, hogy mi is történik az alkalmazásban. Nyissa meg a DocumentDB
         new RequestOptions { OfferThroughput = 1000 });
     ```
 
-<a id="update-your-connection-string" class="xliff"></a>
-
-## A kapcsolati karakterlánc frissítése
+## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
@@ -149,9 +133,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     `<add key="authKey" value="FILLME" />`
     
-<a id="run-the-web-app" class="xliff"></a>
-
-## A webalkalmazás futtatása
+## <a name="run-the-web-app"></a>A webalkalmazás futtatása
 1. A Visual Studióban kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 
 
 2. A NuGet **Tallózás** mezőjébe írja be a *DocumentDB* szöveget.
@@ -166,24 +148,18 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 Lépjen vissza az Adatkezelőbe, ahol lekérdezheti és módosíthatja az új adatokat, valamint dolgozhat azokkal. 
 
-<a id="review-slas-in-the-azure-portal" class="xliff"></a>
-
-## Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtudtuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni a webalkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
 

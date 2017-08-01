@@ -23,9 +23,7 @@ ms.lasthandoff: 06/28/2017
 ---
 
 
-<a id="how-does-hyper-v-replication-to-azure-work-in-site-recovery" class="xliff"></a>
-
-# Hogyan működik a Hyper-V-replikáció az Azure-ba a Site Recoveryben?
+# <a name="how-does-hyper-v-replication-to-azure-work-in-site-recovery"></a>Hogyan működik a Hyper-V-replikáció az Azure-ba a Site Recoveryben?
 
 
 Ez a cikk leírja a helyszíni Hyper-V virtuális gépeknek az [Azure Site Recovery](site-recovery-overview.md) szolgáltatással az Azure-ba történő replikációjakor használt összetevőkről és folyamatokról.
@@ -36,9 +34,7 @@ Megjegyzéseit a cikk alján, vagy az [Azure Recovery Services fórumban](https:
 
 
 
-<a id="architectural-components" class="xliff"></a>
-
-## Az architektúra összetevői
+## <a name="architectural-components"></a>Az architektúra összetevői
 
 Hyper-V virtuális gépek Azure-ba történő replikálásában számos összetevőnek része van.
 
@@ -60,17 +56,13 @@ Az egyes összetevők telepítési előfeltételeiről és követelményeiről a
 ![Összetevők](./media/site-recovery-components/arch-onprem-onprem-azure-vmm.png)
 
 
-<a id="replication-process" class="xliff"></a>
-
-## Replikációs folyamat
+## <a name="replication-process"></a>Replikációs folyamat
 
 **3. ábra: Replikáció és a helyreállítási folyamat Hyper-V Azure-ba történő replikációja esetén**
 
 ![munkafolyamat](./media/site-recovery-components/arch-hyperv-azure-workflow.png)
 
-<a id="enable-protection" class="xliff"></a>
-
-### Védelem engedélyezése
+### <a name="enable-protection"></a>Védelem engedélyezése
 
 1. Miután engedélyezte a védelmet egy Hyper-V-alapú virtuális gép esetében az Azure Portalon vagy a helyszíni környezetben, elindul a **Védelem engedélyezése** feladat.
 2. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, mielőtt meghívja a [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) metódust, amely az Ön által megadott beállításoknak megfelelően beállítja a replikációt.
@@ -79,9 +71,7 @@ Az egyes összetevők telepítési előfeltételeiről és követelményeiről a
         ![Feladatok listája](media/site-recovery-hyper-v-azure-architecture/image1.png)
         ![Védelem engedélyezésének részletei](media/site-recovery-hyper-v-azure-architecture/image2.png)
 
-<a id="replicate-the-initial-data" class="xliff"></a>
-
-### A kezdeti adatok replikálása
+### <a name="replicate-the-initial-data"></a>A kezdeti adatok replikálása
 
 1. A kezdeti replikálás indításakor egy [pillanatfelvétel készül a Hyper-V-alapú virtuális gépről](https://technet.microsoft.com/library/dd560637.aspx).
 2. A rendszer egyenként replikálja a virtuális merevlemezeket, amíg az összes át nem lesz másolva az Azure-ba. Ez a virtuális gép méretétől és a hálózat sávszélességétől függően eltarthat egy ideig. A hálózathasználat optimalizálásával kapcsolatban lásd [a helyszíni környezetből Azure-ba irányuló védelem hálózati sávszélesség-használatának kezelését](https://support.microsoft.com/kb/3056159) ismertető cikket.
@@ -90,25 +80,19 @@ Az egyes összetevők telepítési előfeltételeiről és követelményeiről a
 5. A kezdeti replikáció befejeztével a rendszer törli a virtuális gép pillanatképét. A rendszer a naplózott lemezmódosításokat szinkronizálja, és egyesíti a szülőlemezzel.
 
 
-<a id="finalize-protection" class="xliff"></a>
-
-### Védelem véglegesítése
+### <a name="finalize-protection"></a>Védelem véglegesítése
 
 1. A kezdeti replikálás befejezése után a **Védelem véglegesítése a virtuális gépen** feladat konfigurálja a hálózatot és más replikáció utáni beállításokat a virtuális gép védelméhez.
     ![Védelem véglegesítése feladat](media/site-recovery-hyper-v-azure-architecture/image3.png)
 2. Azure-ba történő replikálás esetén előfordulhat, hogy módosítania kell a virtuális gép beállításait, hogy az készen álljon a feladatátvételre. Ezen a ponton érdemes lehet feladatátvételi tesztet futtatni, amellyel ellenőrizheti, hogy minden megfelelően működik-e.
 
-<a id="replicate-the-delta" class="xliff"></a>
-
-### A változások replikálása
+### <a name="replicate-the-delta"></a>A változások replikálása
 
 1. A kezdeti replikálást követően a replikációs beállításoknak megfelelően elindul a változások szinkronizálása.
 2. A Hyper-V-replikációkövető a virtuális merevlemezek változásait .hrl fájlokban követi nyomon. Minden replikációra konfigurált lemezhez tartozik egy .hrl fájl. A rendszer a naplót a kezdeti replikáció befejezését követően küldi át az ügyfél tárfiókjába. A napló az Azure-ba való továbbítása alatt a rendszer az elsődleges lemez változásait egy másik naplófájlban követi nyomon ugyanabban a könyvtárban.
 3. A kezdeti és a változásreplikáció során a virtuális gép figyelése a virtuálisgép-nézetben lehetséges. [További információk](site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machines).  
 
-<a id="synchronize-replication" class="xliff"></a>
-
-### Replikáció szinkronizálása
+### <a name="synchronize-replication"></a>Replikáció szinkronizálása
 
 1. Ha nem sikerül a változások replikálása, és a teljes replikáció túl sok sávszélességet vagy időt venne igénybe, a rendszer a virtuális gépet megjelöli újraszinkronizálásra. Ha például a .hrl-fájlok mérete eléri a lemezkapacitás 50%-át, a rendszer kijelöli a virtuális gépet újraszinkronizálásra.
 2.  Az újraszinkronizálás kiszámítja a forrás és a cél virtuális gépek ellenőrzőösszegeit, és ezek alapján csak a változtatott adatokat továbbítja, így segít csökkenti az adatmennyiséget. Az újraszinkronizálás egy rögzített blokkméretű csonkoló algoritmust alkalmaz, amelyben a forrás- és a célfájlok rögzített méretű adattömbökre vannak osztva. A rendszer kiszámítja az egyes adattömbök ellenőrző összegét, majd ezeket összevetve megállapítja, hogy mely blokkokat kell a forrásból átmásolni a célba.
@@ -117,9 +101,7 @@ Az egyes összetevők telepítési előfeltételeiről és követelményeiről a
     ![Manuális újraszinkronizálás](media/site-recovery-hyper-v-azure-architecture/image4.png)
 
 
-<a id="retry-logic" class="xliff"></a>
-
-### Újrapróbálkozási logika
+### <a name="retry-logic"></a>Újrapróbálkozási logika
 
 Ha hiba lép fel a replikáció során, a rendszer automatikusan újrapróbálkozik. A vonatkozó logika két kategóriába sorolható:
 
@@ -130,9 +112,7 @@ Ha hiba lép fel a replikáció során, a rendszer automatikusan újrapróbálko
 
 
 
-<a id="failover-and-failback-process" class="xliff"></a>
-
-## Feladatátvételi és feladat-visszavételi folyamat
+## <a name="failover-and-failback-process"></a>Feladatátvételi és feladat-visszavételi folyamat
 
 1. Futtathat tervezett vagy nem tervezett [feladatátvételt](site-recovery-failover.md) a helyszíni Hyper-V virtuális gépekről az Azure-ra. Ha tervezett feladatátvételt végez, a forrás virtuális gépek leállnak, így nincs adatvesztés.
 2. Elvégezheti egy gép feladatátadását, de létrehozhat több gép összehangolt feladatátadását tartalmazó [helyreállítási terveket](site-recovery-create-recovery-plans.md) is.
@@ -143,9 +123,7 @@ Ha hiba lép fel a replikáció során, a rendszer automatikusan újrapróbálko
 
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Támogatási mátrix](site-recovery-support-matrix-to-azure.md) áttekintése
 

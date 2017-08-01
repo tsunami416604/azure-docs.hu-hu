@@ -23,9 +23,7 @@ ms.lasthandoff: 06/30/2017
 
 ---
 
-<a id="getting-started-with-an-azure-multi-factor-auth-provider" class="xliff"></a>
-
-# Első lépések az Azure Multi-Factor Auth szolgáltatóval
+# <a name="getting-started-with-an-azure-multi-factor-auth-provider"></a>Első lépések az Azure Multi-Factor Auth szolgáltatóval
 A kétlépéses ellenőrzés alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](multi-factor-authentication-whats-next.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
 
 Az Azure Multi-Factor Auth szolgáltatókkal kihasználhatja az Azure MFA teljes verziója által nyújtott szolgáltatásokat. Ez olyan felhasználóknak készült, akik **nem rendelkeznek Azure MFA, Azure AD Prémium vagy Enterprise Mobility + Security (EMS) licenccel**.  Az Azure MFA, az Azure AD Prémium és az EMS alapértelmezés szerint tartalmazza az Azure MFA teljes verzióját. Ha rendelkezik licencekkel, akkor nincs szüksége Azure Multi-Factor Auth szolgáltatóra.
@@ -35,17 +33,13 @@ Az SDK letöltéséhez egy Azure Multi-Factor Auth szolgáltató szükséges.
 > [!IMPORTANT]
 > Az SDK letöltéséhez hozzon létre egy Azure Multi-Factor Auth szolgáltatót, akkor is, ha rendelkezik Azure MFA, AAD Premium vagy EMS licencekkel.  Ha Azure Multi-Factor Auth szolgáltatót hoz létre erre a célra, és már rendelkezik licencekkel, ügyeljen arra, hogy a szolgáltatót az **Engedélyezett felhasználónként** modellel hozza létre. Ezt követően kapcsolja a szolgáltatót az Azure MFA, Azure AD Premium vagy EMS licenceket tartalmazó könyvtárhoz. Ezzel a konfigurációval biztosíthatja, hogy csak akkor számlázzunk Önnek, amikor több egyedi felhasználója végez kétlépéses ellenőrzést, mint ahány licenccel rendelkezik.
 
-<a id="what-is-an-azure-multi-factor-auth-provider" class="xliff"></a>
-
-## Mi az az Azure Multi-Factor hitelesítési szolgáltató?
+## <a name="what-is-an-azure-multi-factor-auth-provider"></a>Mi az az Azure Multi-Factor hitelesítési szolgáltató?
 
 Ha nem rendelkezik licencekkel az Azure Multi-Factor Authentication szolgáltatáshoz, akkor létrehozhat egy hitelesítési szolgáltatót, hogy megkövetelje a felhasználóktól a kétlépéses ellenőrzést. Ha egyéni alkalmazást fejleszt, és szeretné engedélyezni az Azure MFA-t, hozzon létre egy hitelesítési szolgáltatót, és [töltse le az SDK-t](multi-factor-authentication-sdk.md).
 
 A hitelesítésszolgáltatóknak két típusa van, és aszerint lehet megkülönböztetni őket, hogyan történik az Azure-előfizetési díjának a számítása. A hitelesítésenkénti lehetőség választásakor a rendszer kiszámítja a bérlőn havonta végzett hitelesítések számát. Ez a lehetőség akkor a legjobb, ha néhány felhasználó csak alkalmanként végez hitelesítést, mint amikor az MFA-ra egyéni alkalmazáshoz van szüksége. A felhasználónkénti lehetőség választásakor a rendszer kiszámítja a bérlőn egy hónap alatt kétlépéses ellenőrzést végző egyének számát. Ez a lehetőség akkor a legjobb, ha van néhány licenccel rendelkező felhasználója, de ki kell terjesztenie az MFA-t a licenckorlátján túl több felhasználóra.
 
-<a id="create-a-multi-factor-auth-provider" class="xliff"></a>
-
-## Multi-Factor Auth szolgáltató létrehozása
+## <a name="create-a-multi-factor-auth-provider"></a>Multi-Factor Auth szolgáltató létrehozása
 A következő lépésekkel hozhat létre Azure Multi-Factor Auth szolgáltatót.
 
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) rendszergazdaként.

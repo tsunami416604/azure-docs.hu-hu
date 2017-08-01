@@ -22,13 +22,9 @@ ms.lasthandoff: 06/30/2017
 
 
 ---
-<a id="enable-azure-active-directory-domain-services-using-the-azure-classic-portal" class="xliff"></a>
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-classic-portal"></a>Az Azure Active Directory Domain Services engedélyezése a klasszikus Azure portál használatával
 
-# Az Azure Active Directory Domain Services engedélyezése a klasszikus Azure portál használatával
-
-<a id="task-3-enable-azure-active-directory-domain-services" class="xliff"></a>
-
-## 3. feladat: Az Azure Active Directory Domain Services engedélyezése
+## <a name="task-3-enable-azure-active-directory-domain-services"></a>3. feladat: Az Azure Active Directory Domain Services engedélyezése
 Ennek a feladatnak a keretében engedélyezi az Azure Active Directory Domain Servicest (Azure AD DS) a címtár számára a következő lépések végrehajtásával:
 
 1. Nyissa meg a [klasszikus Azure portált](https://manage.windowsazure.com).
@@ -99,8 +95,6 @@ Ennek a feladatnak a keretében engedélyezi az Azure Active Directory Domain Se
 >
 >
 
-<a id="next-step" class="xliff"></a>
-
-## Következő lépés
+## <a name="next-step"></a>Következő lépés
 [4. feladat: Az Azure virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-update-dns.md)
 

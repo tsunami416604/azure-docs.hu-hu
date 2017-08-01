@@ -23,9 +23,7 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal-classic" class="xliff"></a>
-
-# Pont–hely kapcsolat konfigurálása virtuális hálózat számára az Azure Portalon (klasszikus)
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal-classic"></a>Pont–hely kapcsolat konfigurálása virtuális hálózat számára az Azure Portalon (klasszikus)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
@@ -51,9 +49,7 @@ A pont–hely kapcsolatokhoz a következőkre van szükség:
 * A főtanúsítványból létrejön egy ügyféltanúsítvány, majd települ az egyes csatlakozó ügyfélszámítógépekre. A rendszer ezt a tanúsítványt használja ügyfélhitelesítéshez.
 * Minden csatlakozó ügyfélszámítógépen létre kell hozni és telepíteni kell egy VPN-ügyfélkonfigurációs csomagot. Az ügyfélkonfigurációs csomag konfigurálja a már az operációs rendszeren lévő natív VPN-ügyfelet a virtuális hálózathoz való csatlakozáshoz szükséges adatokkal.
 
-<a id="example-settings" class="xliff"></a>
-
-### Példabeállítások
+### <a name="example-settings"></a>Példabeállítások
 
 Az alábbi értékek használatával létrehozhat egy tesztkörnyezetet, vagy segítségükkel értelmezheti a cikkben szereplő példákat:
 
@@ -168,9 +164,7 @@ Ha pont–hely típusú VPN-kapcsolattal szeretne kapcsolódni egy virtuális h�
 
 Használhatja a VPN-ügyfél azonos konfigurációs csomagját minden ügyfélszámítógépen, feltéve, hogy a verzió megfelel az ügyfél architektúrájának. A támogatott ügyfél operációs rendszerek listáját a cikk végén, a [Pont–hely kapcsolatok – gyakori kérdések](#faq) című szakaszban tekintheti meg.
 
-<a id="part-1-generate-and-install-the-vpn-client-configuration-package" class="xliff"></a>
-
-### 1. rész – A VPN-ügyfél konfigurációs csomagjának létrehozása és telepítése
+### <a name="part-1-generate-and-install-the-vpn-client-configuration-package"></a>1. rész – A VPN-ügyfél konfigurációs csomagjának létrehozása és telepítése
 
 1. Az Azure Portalon a virtuális hálózat **Overview** (Áttekintés) paneljének **VPN connections** (VPN-kapcsolatok) részén kattintson az ügyfél ábrára a **Point-to-site VPN connection** (Pont–hely típusú VPN-kapcsolat) panel megnyitásához.
 2. A **Point-to-site VPN connection** (Pont–hely típusú VPN-kapcsolat) panel felső részén kattintson arra a letöltési csomagra, amely ahhoz az ügyféloldali operációs rendszerhez tartozik, amelyen telepítve lesz:
@@ -181,17 +175,13 @@ Használhatja a VPN-ügyfél azonos konfigurációs csomagját minden ügyfélsz
   ![A VPN-ügyfél konfigurációs csomagjának letöltése](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)<br>
 3. A csomag létrehozása után töltse le és telepítse azt az ügyfélszámítógépen. Ha megjelenik a SmartScreen egy előugró ablaka, kattintson a **További információ**, majd a **Futtatás mindenképpen** elemre. A csomagot mentheti is, így más ügyfélszámítógépekre is telepítheti.
 
-<a id="part-2-install-the-client-certificate" class="xliff"></a>
-
-### 2. rész – Az ügyféltanúsítvány telepítése
+### <a name="part-2-install-the-client-certificate"></a>2. rész – Az ügyféltanúsítvány telepítése
 
 Ha a tanúsítvány létrehozásához használttól eltérő ügyfélszámítógépről szeretne pont–hely kapcsolatot létesíteni, akkor telepítenie kell egy ügyféltanúsítványt. Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvány exportálásakor létrehozott jelszóra. Ehhez általában annyit kell tennie, hogy duplán rákattint a tanúsítványra, és telepíti azt. További információkért lásd az [exportált ügyféltanúsítványok telepítését](vpn-gateway-certificates-point-to-site.md#install) ismertető cikket.
 
 ## <a name="connect"></a>5. szakasz – Csatlakozás az Azure-hoz
 
-<a id="connect-to-your-vnet" class="xliff"></a>
-
-### Csatlakozás a virtuális hálózathoz
+### <a name="connect-to-your-vnet"></a>Csatlakozás a virtuális hálózathoz
 
 1. Csatlakozzon a virtuális hálózathoz. Ehhez navigáljon az ügyfélszámítógépen a VPN-kapcsolatokhoz, és keresse meg a létrehozott VPN-kapcsolatot. Ugyanaz a neve, mint a virtuális hálózatnak. Kattintson a **Connect** (Csatlakozás) gombra. Megjelenhet egy előugró üzenet, amely a tanúsítvány használatára utal. Ilyen esetében kattintson a **Folytatás** gombra emelt szintű jogosultságok használatához.
 2. A csatlakozás megkezdéséhez a **Kapcsolat** állapotlapon kattintson a **Csatlakozás** gombra. Ha megjelenik a **Tanúsítvány kiválasztása** képernyő, ellenőrizze, hogy az a csatlakozáshoz használni kívánt ügyféltanúsítványt mutatja-e. Ha nem, kattintson a legördülő nyílra, válassza ki a helyes tanúsítványt, majd kattintson az **OK** gombra.
@@ -207,9 +197,7 @@ Ha kapcsolódási problémákat észlel, ellenőrizze az alábbiakat:
 
 - Ha vállalati hitelesítésszolgáltatói megoldás használatával kiadott tanúsítványt használ, és problémák merülnek fel a hitelesítés során, ellenőrizze a hitelesítési sorrendet az ügyféltanúsítványon. A hitelesítési lista sorrendjének ellenőrzéséhez kattintson duplán az ügyféltanúsítványra, és lépjen a **Részletek > Kibővített kulcshasználat** részre. Ellenőrizze, hogy a listán az „ügyfél-hitelesítés” jelenik-e meg első helyen. Ha nem, ki kell adnia egy ügyféltanúsítványt, amely az ügyfél-hitelesítést a lista első helyén tartalmazó felhasználói sablonon alapul. 
 
-<a id="verify-the-vpn-connection" class="xliff"></a>
-
-### A VPN-kapcsolat ellenőrzése
+### <a name="verify-the-vpn-connection"></a>A VPN-kapcsolat ellenőrzése
 
 1. Annak ellenőrzéséhez, hogy a VPN-kapcsolat aktív-e, nyisson meg egy rendszergazda jogú parancssort, és futtassa az *ipconfig/all* parancsot.
 2. Tekintse meg az eredményeket. A kapott IP-cím a virtuális hálózat létrehozásakor megadott pont–hely kapcsolati címtartományba tartozó valamelyik cím. Az eredmények a következőhöz hasonlóak:
@@ -238,15 +226,11 @@ Példa:
 
 A megbízható főtanúsítványokat felveheti vagy el is távolíthatja az Azure-ban. Főtanúsítvány eltávolításakor az abból a gyökérből létrehozott tanúsítvánnyal rendelkező ügyfelek nem fognak tudni hitelesítést végezni, így csatlakozni sem. Ha azt szeretné, hogy az ügyfelek hitelesítést végezhessenek és csatlakozni tudjanak, telepítenie kell egy olyan új ügyféltanúsítványt, amelyet az Azure által megbízhatónak tartott (feltöltött) főtanúsítványból hoztak létre.
 
-<a id="to-add-a-trusted-root-certificate" class="xliff"></a>
-
-### Megbízható főtanúsítvány hozzáadása
+### <a name="to-add-a-trusted-root-certificate"></a>Megbízható főtanúsítvány hozzáadása
 
 Az Azure-ra legfeljebb 20 megbízható főtanúsítványt tölthet fel .cer fájl formájában. Útmutatásért lásd [a főtanúsítvány .cer fájljának feltöltését ismertető 3. szakaszt](#upload).
 
-<a id="to-remove-a-trusted-root-certificate" class="xliff"></a>
-
-### Megbízható főtanúsítvány eltávolítása
+### <a name="to-remove-a-trusted-root-certificate"></a>Megbízható főtanúsítvány eltávolítása
 
 1. A virtuális hálózat paneljének **VPN connections** (VPN-kapcsolatok) szakaszában kattintson a **clients** (ügyfelek) ábrára a **Point-to-site VPN connection** (Pont–hely típusú VPN-kapcsolat) panel megnyitásához.
 
@@ -264,9 +248,7 @@ Az ügyféltanúsítványokat vissza lehet vonni. A visszavont tanúsítványok 
 
 A szokásos gyakorlat az, hogy a főtanúsítvánnyal kezelik a hozzáférést a munkacsoport vagy a szervezet szintjén, az egyes felhasználókra vonatkozó részletesebb szabályozást pedig visszavont ügyféltanúsítványokkal oldják meg.
 
-<a id="to-revoke-a-client-certificate" class="xliff"></a>
-
-### Ügyféltanúsítvány visszavonása
+### <a name="to-revoke-a-client-certificate"></a>Ügyféltanúsítvány visszavonása
 
 Az ügyféltanúsítványok visszavonásához vegye fel az ujjlenyomatot a visszavont tanúsítványok listájára.
 
@@ -281,8 +263,6 @@ Az ügyféltanúsítványok visszavonásához vegye fel az ujjlenyomatot a vissz
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/linux/azure-vm-network-overview.md).
 

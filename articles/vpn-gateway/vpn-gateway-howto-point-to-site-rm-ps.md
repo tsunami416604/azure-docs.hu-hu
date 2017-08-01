@@ -23,9 +23,7 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="configure-a-point-to-site-connection-to-a-vnet-using-powershell" class="xliff"></a>
-
-# Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével
 
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre pont–hely kapcsolattal rendelkező virtuális hálózatot a Resource Manager-alapú üzemi modellben a PowerShell használatával. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
@@ -51,9 +49,7 @@ A pont–hely kapcsolatokhoz a következőkre van szükség:
 * Minden csatlakozó ügyfélszámítógépen létre kell hozni és telepíteni kell egy VPN-ügyfélkonfigurációs csomagot. Az ügyfélkonfigurációs csomag konfigurálja a már az operációs rendszeren lévő natív VPN-ügyfelet a virtuális hálózathoz való csatlakozáshoz szükséges adatokkal.
 
 
-<a id="before-beginning" class="xliff"></a>
-
-## Mielőtt hozzálát
+## <a name="before-beginning"></a>Mielőtt hozzálát
 
 * Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 * Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. A PowerShell-parancsmagok telepítéséről további információt a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című témakörben talál.
@@ -264,9 +260,7 @@ Ha kapcsolódási problémákat észlel, ellenőrizze az alábbiakat:
 
 A megbízható főtanúsítványokat felveheti vagy el is távolíthatja az Azure-ban. Főtanúsítvány eltávolításakor az abból a gyökérből létrehozott tanúsítvánnyal rendelkező ügyfelek nem fognak tudni hitelesítést végezni, így csatlakozni sem. Ha azt szeretné, hogy az ügyfelek hitelesítést végezhessenek és csatlakozni tudjanak, telepítenie kell egy olyan új ügyféltanúsítványt, amelyet az Azure által megbízhatónak tartott (feltöltött) főtanúsítványból hoztak létre.
 
-<a id="to-add-a-trusted-root-certificate" class="xliff"></a>
-
-### Megbízható főtanúsítvány hozzáadása
+### <a name="to-add-a-trusted-root-certificate"></a>Megbízható főtanúsítvány hozzáadása
 
 Az Azure-ba legfeljebb 20 főtanúsítványt tölthet fel .cer fájl formájában. A következő lépések segítségével adhat hozzá főtanúsítványt:
 
@@ -297,9 +291,7 @@ Az Azure-ba legfeljebb 20 főtanúsítványt tölthet fel .cer fájl formájába
   -VirtualNetworkGatewayName "VNet1GW"
   ```
 
-<a id="to-remove-a-root-certificate" class="xliff"></a>
-
-### Főtanúsítvány eltávolítása
+### <a name="to-remove-a-root-certificate"></a>Főtanúsítvány eltávolítása
 
 1. Deklarálja a változókat.
 
@@ -327,9 +319,7 @@ Az ügyféltanúsítványokat vissza lehet vonni. A visszavont tanúsítványok 
 
 A szokásos gyakorlat az, hogy a főtanúsítvánnyal kezelik a hozzáférést a munkacsoport vagy a szervezet szintjén, az egyes felhasználókra vonatkozó részletesebb szabályozást pedig visszavont ügyféltanúsítványokkal oldják meg.
 
-<a id="to-revoke-a-client-certificate" class="xliff"></a>
-
-### Ügyféltanúsítvány visszavonása
+### <a name="to-revoke-a-client-certificate"></a>Ügyféltanúsítvány visszavonása
 
 1. Kérje le az ügyféltanúsítvány ujjlenyomatát. További információkat [a tanúsítványok ujjlenyomatának lekérését ismertető útmutatóban](https://msdn.microsoft.com/library/ms734695.aspx) találhat.
 2. Másolja át az adatokat egy szövegszerkesztőbe, és távolítsa el az összes szóközt, hogy egy folyamatos karakterláncot kapjon. A következő lépésben ez változóként van deklarálva.
@@ -355,9 +345,7 @@ A szokásos gyakorlat az, hogy a főtanúsítvánnyal kezelik a hozzáférést a
   ```
 6. Az ujjlenyomat hozzáadását követően a tanúsítvány már nem használható csatlakozáshoz. Azok az ügyfelek, akik ezzel a tanúsítvánnyal próbálnak csatlakozni, egy üzenetet kapnak majd arról, hogy a tanúsítvány már nem érvényes.
 
-<a id="to-reinstate-a-client-certificate" class="xliff"></a>
-
-### Ügyféltanúsítvány érvényességének visszaállítása
+### <a name="to-reinstate-a-client-certificate"></a>Ügyféltanúsítvány érvényességének visszaállítása
 
 Vissza is állíthatja az ügyféltanúsítványok érvényességét. Ehhez törölni kell az ujjlenyomatukat a visszavont ügyféltanúsítványok listájából.
 
@@ -385,8 +373,6 @@ Vissza is állíthatja az ügyféltanúsítványok érvényességét. Ehhez tör
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/linux/azure-vm-network-overview.md).
 

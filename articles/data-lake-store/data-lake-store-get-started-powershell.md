@@ -22,9 +22,7 @@ ms.lasthandoff: 07/01/2017
 
 
 ---
-<a id="get-started-with-azure-data-lake-store-using-azure-powershell" class="xliff"></a>
-
-# Az Azure Data Lake Store használatának első lépései az Azure PowerShell használatával
+# <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>Az Azure Data Lake Store használatának első lépései az Azure PowerShell használatával
 > [!div class="op_single_selector"]
 > * [Portál](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -39,22 +37,16 @@ ms.lasthandoff: 07/01/2017
 
 Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure PowerShell használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például a mappák létrehozása, adatfájlok le- és feltöltése, a fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Data Lake Store](data-lake-store-overview.md) (A Data Lake Store áttekintése).
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
-<a id="authentication" class="xliff"></a>
-
-## Authentication
+## <a name="authentication"></a>Authentication
 Ez a cikk egy egyszerűbb, a Data Lake Store-ral történő hitelesítési módszert használ, ahol meg kell adnia az Azure-fiókjához tartozó hitelesítő adatokat. Ezután a Data Lake Store-fiókhoz és a fájlrendszerhez való hozzáférés szintje a bejelentkezett felhasználó hozzáférési szintjétől függ. Azonban a Data Lake Store-ral más módokon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. Útmutatás a hitelesítéshez és további tudnivalók a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben.
 
-<a id="create-an-azure-data-lake-store-account" class="xliff"></a>
-
-## Azure Data Lake Store-fiók létrehozása
+## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store-fiók létrehozása
 1. Nyisson meg egy új Windows PowerShell ablakot, és adja meg az alábbi kódrészletet az Azure-fiókba való bejelentkezéshez, az előfizetés beállításához és a Data Lake Store-szolgáltató regisztrálásához. Győződjön meg arról, hogy az előfizetés rendszergazdájaként/tulajdonosaként jelentkezik be, amikor a rendszer erre kéri:
 
         # Log in to your Azure account
@@ -86,9 +78,7 @@ Ez a cikk egy egyszerűbb, a Data Lake Store-ral történő hitelesítési móds
 
     A kimenet értéke **True** (Igaz) kell, hogy legyen.
 
-<a id="create-directory-structures-in-your-azure-data-lake-store" class="xliff"></a>
-
-## Könyvtárstruktúrák létrehozása az Azure Data Lake Store-ban
+## <a name="create-directory-structures-in-your-azure-data-lake-store"></a>Könyvtárstruktúrák létrehozása az Azure Data Lake Store-ban
 Az Azure Data Lake Store-fiókjában könyvtárakat hozhat létre az adatok kezelésére és tárolására.
 
 1. Adjon meg egy gyökérkönyvtárat.
@@ -105,9 +95,7 @@ Az Azure Data Lake Store-fiókjában könyvtárakat hozhat létre az adatok keze
 
     ![A könyvtár ellenőrzése](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "A könyvtár ellenőrzése")
 
-<a id="upload-data-to-your-azure-data-lake-store" class="xliff"></a>
-
-## Fájlok feltöltése az Azure Data Lake Store-ba
+## <a name="upload-data-to-your-azure-data-lake-store"></a>Fájlok feltöltése az Azure Data Lake Store-ba
 Az adatait feltöltheti közvetlenül a Data Lake Store-ba gyökérszinten, vagy a fiókon belül létrehozott könyvtárba. Az alábbi részletek bemutatják, hogyan tölthet fel néhány adatot az előző szakaszban létrehozott könyvtárba (**mynewdirectory**).
 
 Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake Git-tárában](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData) található **Ambulance Data** mappát. Töltse le a fájlt, és tárolja a számítógépén egy helyi könyvtárban (pl. C:\sampledata).
@@ -115,9 +103,7 @@ Ha feltölthető mintaadatokra van szüksége, használhatja az [Azure Data Lake
     Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
 
 
-<a id="rename-download-and-delete-data-from-your-data-lake-store" class="xliff"></a>
-
-## A Data Lake Store-ban lévő adatok átnevezése, letöltése és törlése
+## <a name="rename-download-and-delete-data-from-your-data-lake-store"></a>A Data Lake Store-ban lévő adatok átnevezése, letöltése és törlése
 Fájlok átnevezéséhez használja a következő parancsot:
 
     Move-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
@@ -134,18 +120,14 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert az elem törléséhez. Ha 
 
     Remove-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
 
-<a id="delete-your-azure-data-lake-store-account" class="xliff"></a>
-
-## Az Azure Data Lake Store-fiók törlése
+## <a name="delete-your-azure-data-lake-store-account"></a>Az Azure Data Lake Store-fiók törlése
 Az alábbi parancs segítségével törölheti a Data Lake Store-fiókját.
 
     Remove-AzureRmDataLakeStoreAccount -Name $dataLakeStoreName
 
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
-<a id="performance-guidance-while-using-powershell" class="xliff"></a>
-
-## Teljesítménnyel kapcsolatos útmutató a PowerShell használata során
+## <a name="performance-guidance-while-using-powershell"></a>Teljesítménnyel kapcsolatos útmutató a PowerShell használata során
 
 Alább azon legfontosabb beállítások láthatók, amelyek megfelelő hangolásával a legjobb teljesítmény érhető el, miközben a PowerShellt használja a Data Lake Store-ral való munkavégzés során:
 
@@ -160,9 +142,7 @@ Ezzel a paranccsal fájlokat tölthet le az Azure Data Lake Store-ból a felhasz
 
     Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Store account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
-<a id="how-do-i-determine-the-value-to-set-for-these-parameters" class="xliff"></a>
-
-### Hogyan határozhatom meg a paraméterek számára beállítandó értéket?
+### <a name="how-do-i-determine-the-value-to-set-for-these-parameters"></a>Hogyan határozhatom meg a paraméterek számára beállítandó értéket?
 
 Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
@@ -199,9 +179,7 @@ Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
     Tehát a **ConcurrentFileCount** értéke **2,4**, amelyet kerekíthetünk **2**-re.
 
-<a id="further-tuning" class="xliff"></a>
-
-### További hangolás
+### <a name="further-tuning"></a>További hangolás
 
 Elképzelhető, hogy további hangolásra lesz szüksége, mert különböző fájlméretekkel kell dolgoznia. A fenti számítás jól működik, ha az összes, vagy legalábbis a legtöbb fájl nagyobb méretű, és közelebb van a 10 GB-os mérethez. Ha ehelyett sok különböző, nagyon eltérő méretű fájllal rendelkezik, akkor csökkentheti a PerFileThreadCount értékét. A PerFileThreadCount értékének csökkentésével, növelhetjük a ConcurrentFileCount értékét. Ha tehát feltételezzük, hogy a legtöbb fájlunk kisebb, az 5 GB-os tartományba eső mérettel rendelkezik, akkor újra végrehajthatjuk a számítást:
 
@@ -211,9 +189,7 @@ A **ConcurrentFileCount** értéke így 96/20, ami 4,8-del egyenlő, kerekítve 
 
 A beállítások hangolását a **PerFileThreadCount** értékének növelésével vagy csökkentésével folytathatja a fájlméretek eloszlásától függően.
 
-<a id="limitation" class="xliff"></a>
-
-### Korlátozás
+### <a name="limitation"></a>Korlátozás
 
 * **A fájlok száma kisebb, mint a ConcurrentFileCount értéke**: Ha a feltölteni kívánt fájlok száma kisebb a **ConcurrentFileCount** kiszámított értékének, akkor csökkentse a **ConcurrentFileCount** értékét úgy, hogy az egyenlő legyen a fájlok számával. A fennmaradó szálakat a **PerFileThreadCount** értékének a növelésére használhatja.
 
@@ -223,9 +199,7 @@ A beállítások hangolását a **PerFileThreadCount** értékének növelésév
 
 * **Szabályozási hibák**: Elképzelhető, hogy szabályozási hibákat tapasztal, ha az egyidejűség túl magas. Ha szabályozás hibák merülnek fel, csökkentse az egyidejűséget vagy lépjen kapcsolatba velünk.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)

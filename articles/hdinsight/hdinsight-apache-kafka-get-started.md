@@ -22,9 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 07/04/2017
 
 ---
-<a id="start-with-apache-kafka-preview-on-hdinsight" class="xliff"></a>
-
-# Az Apache Kafka (előzetes verzió) használatának első lépései a HDInsightban
+# <a name="start-with-apache-kafka-preview-on-hdinsight"></a>Az Apache Kafka (előzetes verzió) használatának első lépései a HDInsightban
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat [Apache Kafka](https://kafka.apache.org)-fürtöt az Azure HDInsightban. A Kafka egy, a HDInsighthoz is elérhető, nyílt forráskódú elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkcionalitást kínál.
 
@@ -33,17 +31,13 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat [Apache Kafk
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) vagy azzal egyenértékű, például az OpenJDK.
 
 * [Apache Maven](http://maven.apache.org/) 
 
-<a id="create-a-kafka-cluster" class="xliff"></a>
-
-## Kafka-fürt létrehozása
+## <a name="create-a-kafka-cluster"></a>Kafka-fürt létrehozása
 
 Egy Kafka HDInsight-fürtön történő létrehozásához kövesse az alábbi lépéseket:
 
@@ -101,9 +95,7 @@ Egy Kafka HDInsight-fürtön történő létrehozásához kövesse az alábbi l�
     > [!NOTE]
     > A fürt létrehozása 20 percig is eltarthat.
 
-<a id="connect-to-the-cluster" class="xliff"></a>
-
-## Csatlakozás a fürthöz
+## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
 Az ügyfélről SSH használatával csatlakozhat a fürthöz:
 
@@ -151,9 +143,7 @@ Az alábbi lépésekkel létrehozhatja a gazdagép adatait tartalmazó környeze
     >
     > A Zookeeper- és a közvetítő gazdagépek adatait rövid idővel a felhasználásuk előtt érdemes lekérni, hogy biztosan érvényes információkkal rendelkezzen.
 
-<a id="create-a-topic" class="xliff"></a>
-
-## Üzenettémakör létrehozása
+## <a name="create-a-topic"></a>Üzenettémakör létrehozása
 
 A Kafka *témaköröknek* nevezett kategóriákban tárolja az adatstreameket. Témakör létrehozásához használja a Kafkához biztosított szkripet egy fürt átjárócsomójával létesített SSH-kapcsolatból:
 
@@ -169,9 +159,7 @@ Ez a parancs a `$KAFKAZKHOSTS`-ban tárolt állomásadatok használatával kapcs
 
 A parancs kimenete listázza a Kafka-témaköröket, és tartalmazza a **test** témakört.
 
-<a id="produce-and-consume-records" class="xliff"></a>
-
-## Rekordok létrehozása és felhasználása
+## <a name="produce-and-consume-records"></a>Rekordok létrehozása és felhasználása
 
 A Kafka témakörökben tárolja a *rekordokat*. A rekordokat *előállítók* hozzák létre, és *fogyasztók* használják fel. Az előállítók *Kafka-közvetítőktől* kérik le a rekordokat. A HDInsight-fürt mindegyik feldolgozó csomópontja egy Kafka-közvetítő.
 
@@ -195,9 +183,7 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 3. Használja a __Ctrl + C__ billentyűparancsot a fogyasztó leállításához.
 
-<a id="producer-and-consumer-api" class="xliff"></a>
-
-## Előállítói és fogyasztói API
+## <a name="producer-and-consumer-api"></a>Előállítói és fogyasztói API
 
 Szoftveresen is létrehozhat és felhasználhat rekordokat a [Kafka API-k](http://kafka.apache.org/documentation#api) használatával. Az alábbi lépéseket követve töltsön le, és hozzon létre egy Java-alapú előállítót és fogyasztót:
 
@@ -246,9 +232,7 @@ Szoftveresen is létrehozhat és felhasználhat rekordokat a [Kafka API-k](http:
 
 6. Használja a __Ctrl + C__ billentyűparancsot a fogyasztóból történő kilépéshez.
 
-<a id="multiple-consumers" class="xliff"></a>
-
-### Több fogyasztó
+### <a name="multiple-consumers"></a>Több fogyasztó
 
 A Kafka egyik fontos vonása, hogy a fogyasztók fogyasztói csoportot (amelyet egy csoportazonosító határoz meg) használnak a rekordok olvasásánál. Ugyanazon csoport használata több fogyasztó esetén a terhelés szempontjából kiegyensúlyozott olvasást eredményez a témakörökből történő olvasáskor. A csoport mindegyik fogyasztója a rekordok egy részét kapja meg. Ha szeretné látni, hogy hogyan zajlik a folyamat, kövesse az alábbi lépéseket:
 
@@ -270,9 +254,7 @@ Az ugyanazon csoportban található ügyfelek általi felhasználás kezelése a
 
 A Kafkában tárolt rekordok mentése a partíción belüli fogadásuk sorrendje szerint történik. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *egy partíción belül*, hozzon létre egy fogyasztói csoportot, amelyben a fogyasztói példányok száma egyezik a partíciók számával. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *a témakörön belül*, hozzon létre egy olyan fogyasztói csoportot, amely csak egyetlen fogyasztói példánnyal rendelkezik.
 
-<a id="streaming-api" class="xliff"></a>
-
-## Streamelési API
+## <a name="streaming-api"></a>Streamelési API
 
 A streamelési API a Kafka 0.10.0-s verziójában vált elérhetővé, a korábbi verziók az Apache Sparkot vagy Stormot használnak a streamfeldolgozáshoz.
 
@@ -347,21 +329,15 @@ A streamelési API a Kafka 0.10.0-s verziójában vált elérhetővé, a korább
 
 7. Használja a __Ctrl + C__ billentyűparancsot a fogyasztóból történő kilépéshez, majd az `fg` paranccsal hozza az előtérbe a háttérben futó streamelési feladatot. Használja a __Ctrl + C__ billentyűparancsot a feladatból való kilépéshez.
 
-<a id="delete-the-cluster" class="xliff"></a>
-
-## A fürt törlése
+## <a name="delete-the-cluster"></a>A fürt törlése
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-<a id="troubleshoot" class="xliff"></a>
-
-## Hibaelhárítás
+## <a name="troubleshoot"></a>Hibaelhárítás
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelen dokumentumban megismerkedett az Apache Kafka HDInsightban való használatának az alapjaival. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 

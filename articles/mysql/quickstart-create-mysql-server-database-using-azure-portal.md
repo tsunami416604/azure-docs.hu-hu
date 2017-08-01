@@ -18,21 +18,15 @@ ms.lasthandoff: 06/28/2017
 
 ---
 
-<a id="create-an-azure-database-for-mysql-server-using-azure-portal" class="xliff"></a>
-
-# Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával
+# <a name="create-an-azure-database-for-mysql-server-using-azure-portal"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával
 Ez a cikk lépésről lépésre bemutatja, hogyan hozhat létre egy MySQL-kiszolgálóhoz készült Azure Database szolgáltatást az Azure Portal használatával öt perc alatt. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-<a id="log-in-to-azure" class="xliff"></a>
-
-## Jelentkezzen be az Azure-ba
+## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Nyissa meg a webböngészőjét, és keresse fel a [Microsoft Azure Portalt](https://portal.azure.com/). Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
 
-<a id="create-azure-database-for-mysql-server" class="xliff"></a>
-
-## Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
+## <a name="create-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
 
 2. Az **Új** panelen válassza az **Adatbázisok** lehetőséget, majd az **Adatbázisok** panelen válassza az **Azure Database MySQL-kiszolgálóhoz** lehetőséget. Az Új oldal keresőmezőbe be is írhatja a **MySQL** szöveget, hogy gyorsan megtalálja a szolgáltatást.
@@ -59,9 +53,7 @@ Nyissa meg a webböngészőjét, és keresse fel a [Microsoft Azure Portalt](htt
 
    Ezt követően kattintson a **Create** (Létrehozás) gombra. Egy-két percen belül már fut a felhőben egy új, a MySQL-hez készült Azure Database. Ha figyelni szeretné az üzembe helyezés folyamatát, kattintson az **Értesítések** gombra (harang ikon) az eszköztárban.
 
-<a id="configure-the-firewall" class="xliff"></a>
-
-## A tűzfal konfigurálása
+## <a name="configure-the-firewall"></a>A tűzfal konfigurálása
 Mielőtt először csatlakozna a MySQL-hez készült Azure Database-hez, konfigurálja a tűzfalat, és adja hozzá az ügyfél nyilvános hálózati IP-címét (vagy IP-címtartományát) az engedélyezési listához.
 
 1. Miután befejeződött a telepítés, kattintson az **Összes erőforrás** lehetőségre a bal oldali menüben, és írja be a **myserver4demo** nevet az újonnan létrehozott kiszolgáló megkereséséhez. Kattintson a keresési eredményekben listázott kiszolgálónévre. Megnyílik a kiszolgáló Áttekintés oldala, amely további konfigurációs lehetőségeket biztosít.
@@ -71,9 +63,7 @@ Mielőtt először csatlakozna a MySQL-hez készült Azure Database-hez, konfigu
 3. Kattintson az **IP-címem hozzáadása** elemre, a helyi számítógép IP-címének hozzáadásához, vagy IP-címek tartományának konfigurálásához. Ne felejtsen a **Mentés** gombra kattintani, miután létrehozta a szabályokat.
   ![Azure Portal - tűzfalszabályok hozzáadása és mentés](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
 
-<a id="get-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
+## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le az Azure MySQL-kiszolgáló teljes tartománynevét az Azure Portalon. Használja a teljes tartománynevet a kiszolgálóhoz való kapcsolódáshoz a **mysql.exe** parancssori eszköz segítségével.
 
 1.  Az [Azure Portalon](https://portal.azure.com/) kattintson a **Minden erőforrás** elemre a baloldali menüben, majd kattintson az Azure-adatbázis MySQL-kiszolgálóhoz elemre.
@@ -81,9 +71,7 @@ Kérje le az Azure MySQL-kiszolgáló teljes tartománynevét az Azure Portalon.
 2.  Kattintson a **Tulajdonságok** elemre. Jegyezze fel a **KISZOLGÁLÓNÉV** és a **KISZOLGÁLÓI RENDSZERGAZDAI BEJELENTKEZÉS** értékeit.
 Ebben a példában a kiszolgáló neve *myserver4demo.mysql.database.azure.com*, a kiszolgáló-rendszergazdai bejelentkezési név pedig *myadmin@myserver4demo*.
 
-<a id="connect-to-the-server-using-mysqlexe-command-line-tool" class="xliff"></a>
-
-## Csatlakozás a kiszolgálóhoz a mysql.exe parancssori eszköz használatával
+## <a name="connect-to-the-server-using-mysqlexe-command-line-tool"></a>Csatlakozás a kiszolgálóhoz a mysql.exe parancssori eszköz használatával
 A MySQL-hez készült Azure Database-kiszolgálóhoz a [mysql parancssori eszköz](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) használatával kapcsolódhat. A mysql parancssori eszköz a böngészőben az Azure Cloud Shell használatával, a saját számítógépen pedig a helyileg telepített mysql eszközök használatával futtatható. Az Azure Cloud Shell indításához kattintson a(z) `Try It` gombra ennek a cikknek valamelyik kódblokkjában vagy az [Azure Portal](https://portal.azure.com) jobb felső eszköztárának `>_` ikonjára. 
 
 1. Gépelje be a parancsot a csatlakozáshoz:
@@ -115,9 +103,7 @@ status
    SHOW DATABASES;
    ```
 
-<a id="connect-to-the-server-using-the-mysql-workbench-gui-tool" class="xliff"></a>
-
-## Csatlakozás a kiszolgálóhoz a MySQL Workbench GUI eszköz használatával
+## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>Csatlakozás a kiszolgálóhoz a MySQL Workbench GUI eszköz használatával
 1.  Indítsa el a MySQL Workbench alkalmazást az ügyfélszámítógépen. A MySQL Workbench-et [innen](https://dev.mysql.com/downloads/workbench/) töltheti le és telepítheti.
 
 2.  Az **Új kapcsolat létrehozása** párbeszédpanelen adja meg a következő információkat a **Paraméterek** lapon:
@@ -138,9 +124,7 @@ Kattintson a **Kapcsolat tesztelése** lehetőségre, hogy tesztelje, minden par
 > [!NOTE]
 > Alapértelmezés szerint az SSL kényszerítve van a kiszolgálón, és további konfigurációt igényel a sikeres csatlakozás érdekében. Lásd [SSL-összekapcsolhatóság konfigurálása az alkalmazásban a MySQL Azure-adatbázisához való biztonságos kapcsolódás érdekében](./howto-configure-ssl.md).  Ha ebben az útmutatóban le szeretné tiltani az SSL-t, kattintson az Azure Portal Kapcsolatbiztonság lapján letilthatja az SSL-kapcsolat kényszerítése váltógombot.
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Távolítsa el a rövid útmutató során létrehozott összes erőforrást az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) törlésével.
 
 > [!TIP]
@@ -155,9 +139,7 @@ Ha törölni szeretné az újonnan létrehozott kiszolgálót:
 3.  Erősítse meg a törölni kívánt kiszolgáló nevét, és jelenítse meg az érintett adatbázisokat. Írja be a **myserver4demo** szöveget a szövegmezőbe, és kattintson a Törlés gombra.
 
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az első Azure-adatbázis MySQL-adatbázishoz megtervezése](./tutorial-design-database-using-portal.md)

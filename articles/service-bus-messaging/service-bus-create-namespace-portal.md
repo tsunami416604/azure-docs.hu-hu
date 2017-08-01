@@ -21,23 +21,20 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 06/28/2017
 
 ---
-# Service Bus-névtér létrehozása az Azure Portal használatával
-<a id="create-a-service-bus-namespace-using-the-azure-portal" class="xliff"></a>
+# <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Service Bus-névtér létrehozása az Azure Portal használatával
 
 A névtér egy hatókörkezelési tároló az üzenetkezelés összes összetevője számára. Egyetlen névtér több üzenetsort és témakört tartalmazhat, és a névterek gyakran alkalmazástárolókként is szolgálnak. A Service Bus-névterek létrehozásának két különböző módja van:
 
 1. Azure Portal (ez a cikk)
 2. [Resource Manager-sablonok][create-namespace-using-arm]
 
-## Névtér létrehozása az Azure Portalon
-<a id="create-a-namespace-in-the-azure-portal" class="xliff"></a>
+## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 Gratulálunk! Létrehozott egy Service Bus üzenetkezelési névteret.
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a [GitHub-mintáinkat][github-samples], ahol további példákat talál, amelyek az Azure Service Bus üzenetkezelési szolgáltatásának speciális funkcióit mutatják be.
 

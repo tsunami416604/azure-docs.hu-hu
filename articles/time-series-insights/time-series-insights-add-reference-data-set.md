@@ -23,15 +23,11 @@ ms.lasthandoff: 07/04/2017
 
 ---
 
-<a id="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal" class="xliff"></a>
-
-# Referencia-adatkészlet létrehozása Azure Time Series Insights-környezethez az Ibiza Portal használatával
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Referencia-adatkészlet létrehozása Azure Time Series Insights-környezethez az Ibiza Portal használatával
 
 Egy referencia-adatkészlet az eseményforrásbeli eseményekkel kibővített elemek gyűjteménye. A Time Series Insights bejövő forgalmat kezelő motorja a referencia-adatkészlet egy elemét csatolja egy eseményforrásbeli eseményhez. Ez a kibővített esemény ezután lekérdezhető. A csatolás a referencia-adatkészletben definiált kulcsokon alapul.
 
-<a id="steps-to-add-a-reference-data-set-to-your-environment" class="xliff"></a>
-
-## Referencia-adatkészlet környezethez adása lépésenként
+## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>Referencia-adatkészlet környezethez adása lépésenként
 
 1. Jelentkezzen be az [Ibiza Portalra](https://portal.azure.com).
 2. Az Ibiza Portal bal oldali menüjében kattintson a „Minden erőforrás” lehetőségre.
@@ -50,9 +46,7 @@ Egy referencia-adatkészlet az eseményforrásbeli eseményekkel kibővített el
 
 7. Kattintson a „Létrehozás” elemre.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Referencia-adatok kezelése](time-series-insights-manage-reference-data-csharp.md) programozott módon.
 * Az alkalmazásprogramozási felület (API) teljes leírását a [Referencia-adatok API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) dokumentum tartalmazza.

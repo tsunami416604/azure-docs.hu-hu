@@ -23,9 +23,7 @@ ms.lasthandoff: 06/30/2017
 
 ---
 
-<a id="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure" class="xliff"></a>
-
-# Az első Jenkins Master létrehozása Linux (Ubuntu) virtuális gépen az Azure-ban
+# <a name="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure"></a>Az első Jenkins Master létrehozása Linux (Ubuntu) virtuális gépen az Azure-ban
 
 Ez a gyorsútmutató bemutatja, hogyan telepítheti a legújabb stabil Jenkins-verziót Linux (Ubuntu 14.04 LTS) virtuális gépre, valamint az Azure-ral való munkavégzésre konfigurált eszközöket és beépülő modulokat. Az eszközök a következőket foglalják magukban:
 <ul>
@@ -46,9 +44,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-<a id="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins" class="xliff"></a>
-
-## A virtuális gép létrehozása az Azure-ban a megoldássablon Jenkinshez történő telepítésével
+## <a name="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins"></a>A virtuális gép létrehozása az Azure-ban a megoldássablon Jenkinshez történő telepítésével
 
 Az Azure gyorsindítási sablonjai lehetővé teszik a bonyolult technológiák gyors és megbízható bevezetését az Azure-on.  Az Azure Resource Manager lehetővé teszi, hogy alkalmazásait egy [deklaratív sablon](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins) használatával helyezze üzembe. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont újra és újra, az alkalmazás életciklusának minden fázisában felhasználhatja az alkalmazás üzembe helyezéséhez.
 
@@ -85,17 +81,13 @@ Az ellenőrzés elvégzése után kattintson az **OK** gombra a sablon és a par
 
 Következőként az összes erőforrás kiépítéséhez válassza a **Vásárlás** lehetőséget.
 
-<a id="setup-ssh-port-forwarding" class="xliff"></a>
-
-## SSH-porttovábbítás beállítása
+## <a name="setup-ssh-port-forwarding"></a>SSH-porttovábbítás beállítása
 
 Alapértelmezés szerint a Jenkins-példány a HTTP protokollt használja, és a 8080-as portot figyeli. A felhasználók ne végezzenek hitelesítést nem biztonságos protokollokkal.
     
 Állítson be porttovábbítást a Jenkins felhasználói felületének a helyi gépen való megtekintéséhez.
 
-<a id="if-you-are-using-windows" class="xliff"></a>
-
-### Ha Windowst használ:
+### <a name="if-you-are-using-windows"></a>Ha Windowst használ:
 
 Telepítse a PuTTYt, és futtassa ezt a parancsot, ha jelszóval védi a Jenkinst:
 ```
@@ -110,9 +102,7 @@ Ha SSH-t használ, futtassa ezt a parancsot:
 putty -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
 ```
 
-<a id="if-you-are-using-linux-or-mac" class="xliff"></a>
-
-### Ha Linuxot vagy Macet használ:
+### <a name="if-you-are-using-linux-or-mac"></a>Ha Linuxot vagy Macet használ:
 
 Ha jelszót használ a Jenkins-főkiszolgáló védelmére, futtassa ezt a parancsot:
 ```
@@ -125,9 +115,7 @@ Ha SSH-t használ, futtassa ezt a parancsot:
 ssh -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
 ```
 
-<a id="connect-to-jenkins" class="xliff"></a>
-
-## Kapcsolódás a Jenkinshez
+## <a name="connect-to-jenkins"></a>Kapcsolódás a Jenkinshez
 Az alagút elindítása után lépjen a http://localhost:8080/ címre a helyi gépen.
 
 Először a kezdeti rendszergazdai jelszóval oldja fel a Jenkins-irányítópult zárolását.
@@ -146,9 +134,7 @@ A Jenkins-példánya most már készen áll a használatra! A csak olvasható n�
 
 ![Jenkins készen áll!](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az alábbiakat végezte el:
 

@@ -23,17 +23,13 @@ ms.lasthandoff: 06/28/2017
 
 
 ---
-<a id="azure-cosmos-db-build-a-documentdb-api-app-with-java-and-the-azure-portal" class="xliff"></a>
-
-# Azure Cosmos DB: DocumentDB API-alkalmazás létrehozása Javával és az Azure Portallal
+# <a name="azure-cosmos-db-build-a-documentdb-api-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB: DocumentDB API-alkalmazás létrehozása Javával és az Azure Portallal
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
 A rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist, és gyűjteményt. Ezután létrehozhatja és futtathatja a [DocumentDB Java API-ra](documentdb-sdk-java.md) épülő konzolalkalmazást.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 * Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
    * JDK 1.7+ (ha még nem rendelkezik a JDK-val, futtassa az `apt-get install default-jdk` parancsot)
@@ -41,21 +37,15 @@ A rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségé
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-<a id="create-a-database-account" class="xliff"></a>
-
-## Adatbázisfiók létrehozása
+## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-<a id="add-a-collection" class="xliff"></a>
-
-## Gyűjtemény hozzáadása
+## <a name="add-a-collection"></a>Gyűjtemény hozzáadása
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
-<a id="clone-the-sample-application" class="xliff"></a>
-
-## A mintaalkalmazás klónozása
+## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
 Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatni is fogjuk. Ilyen egyszerű az adatokkal programozott módon dolgozni. 
 
@@ -67,9 +57,7 @@ Most pedig klónozunk egy DocumentDB API-alkalmazást a GitHubról, beállítjuk
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
     ```
 
-<a id="review-the-code" class="xliff"></a>
-
-## A kód áttekintése
+## <a name="review-the-code"></a>A kód áttekintése
 
 Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a `Program.java` fájlt. Az itt található kódsorok hozzák létre az Azure Cosmos DB-erőforrásokat. 
 
@@ -138,9 +126,7 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a `Program.java
     }
     ```    
 
-<a id="update-your-connection-string" class="xliff"></a>
-
-## A kapcsolati karakterlánc frissítése
+## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
@@ -156,9 +142,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 4. Ezután másolja az ELSŐDLEGES KULCS értéket a Portalról és cserélje ki a „FILL ME” második paramétert a DocumentClient konstruktor kulcsával a Program.java fájlban. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
     
-<a id="run-the-app" class="xliff"></a>
-
-## Az alkalmazás futtatása
+## <a name="run-the-app"></a>Az alkalmazás futtatása
 
 1. Futtassa az `mvn package` parancsot egy terminálban a szükséges Java-csomagok telepítéséhez.
 
@@ -166,24 +150,18 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 Lépjen vissza az Adatkezelőbe, ahol lekérdezheti, módosíthatja, és dolgozhat az új adattal. 
 
-<a id="review-slas-in-the-azure-portal" class="xliff"></a>
-
-## Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gyűjteményt készíteni, és hogyan lehet futtatni az alkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
 

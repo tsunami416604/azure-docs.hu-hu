@@ -23,15 +23,11 @@ ms.lasthandoff: 07/01/2017
 
 ---
 
-<a id="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal" class="xliff"></a>
-
-# Eseményforrás létrehozása Azure Time Series Insights-környezethez az Ibiza Portal használatával
+# <a name="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Eseményforrás létrehozása Azure Time Series Insights-környezethez az Ibiza Portal használatával
 
 Egy Time Series Insights-eseményforrás egy eseményközvetítőből, például az Azure Event Hubsból származik. A Time Series Insights közvetlenül csatlakozik az eseményforrásokhoz, és anélkül dolgozza fel az adatfolyamot, hogy a felhasználóknak akár egy sor kódot is kéne írniuk. A Time Series Insights jelenleg az Azure Event Hubs és Azure IoT Hubs forrásokat támogatja. A jövőben további eseményforrásokkal is bővülni fog.
 
-<a id="steps-to-add-an-event-source-to-your-environment" class="xliff"></a>
-
-## Eseményforrás környezethez való hozzáadásának lépései
+## <a name="steps-to-add-an-event-source-to-your-environment"></a>Eseményforrás környezethez való hozzáadásának lépései
 
 1.  Jelentkezzen be az [Ibiza Portalra](https://portal.azure.com).
 2.  Az Ibiza Portal bal oldali menüjében kattintson a „Minden erőforrás” lehetőségre.
@@ -55,9 +51,7 @@ Egy Time Series Insights-eseményforrás egy eseményközvetítőből, például
 
 Az eseményforrás létrehozása után a Time Series Insights automatikusan megkezdi az adatok streamelését a környezetbe.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Események küldése](time-series-insights-send-events.md) az eseményforrásnak
 * A környezet megtekintése a [Time Series Insights portálon](https://insights.timeseries.azure.com)

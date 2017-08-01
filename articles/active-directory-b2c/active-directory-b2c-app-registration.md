@@ -23,25 +23,19 @@ ms.lasthandoff: 07/04/2017
 
 
 ---
-<a id="azure-active-directory-b2c-register-your-application" class="xliff"></a>
-
-# Azure Active Directory B2C: Az alkalmazás regisztrációja
+# <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Az alkalmazás regisztrációja
 
 > [!IMPORTANT]
 > Az Azure Portal Azure AD B2C paneljén létrehozott alkalmazásokat ugyanarról a helyről kell kezelnie. Ha a B2C-alkalmazásokat a PowerShell vagy valamely másik portál használatával szerkeszti, a rendszer nem támogatja többé az alkalmazásokat, és nem működnek majd az Azure AD B2C-vel. További információ [alább](#faulted-apps) olvasható.
 >
 
-<a id="prerequisite" class="xliff"></a>
-
-## Előfeltétel
+## <a name="prerequisite"></a>Előfeltétel
 
 A felhasználói regisztrációt és bejelentkezést elfogadó alkalmazás létrehozásához először regisztrálnia kell az alkalmazást egy Azure Active Directory B2C-bérlővel. Hozzon létre egy saját bérlőt az [Azure AD B2C bérlő létrehozása](active-directory-b2c-get-started.md) részben ismertetett lépések segítségével. Miután elvégezte ezeket a lépéseket, a B2C funkciók panelje rögzítésre kerül a kezdőpulton.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-<a id="navigate-to-the-b2c-features-blade" class="xliff"></a>
-
-## Lépjen a B2C funkciók paneljére
+## <a name="navigate-to-the-b2c-features-blade"></a>Lépjen a B2C funkciók paneljére
 
 Ha a B2C funkciók panelje rögzítésre kerül a kezdőpulton, azonnal látni fogja a panelt, amint B2C-bérlő globális rendszergazdájaként bejelentkezik az [Azure Portalra](https://portal.azure.com/).
 
@@ -52,9 +46,7 @@ A panelre úgy is beléphet, hogy a **További szolgáltatások** elemre kattint
 >
 >
 
-<a id="register-a-web-application" class="xliff"></a>
-
-## Webalkalmazás regisztrációja
+## <a name="register-a-web-application"></a>Webalkalmazás regisztrációja
 
 1. Kattintson az Azure Portal B2C funkciók panelén az **Applications** (Alkalmazások) lehetőségre.
 1. A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
@@ -71,9 +63,7 @@ A panelre úgy is beléphet, hogy a **További szolgáltatások** elemre kattint
 > Az **Application Secret** (Alkalmazástitok) fontos biztonsági hitelesítő adat, amelynek megfelelő biztonságáról gondoskodni kell.
 >
 
-<a id="register-a-web-api" class="xliff"></a>
-
-## Webes API regisztrálása
+## <a name="register-a-web-api"></a>Webes API regisztrálása
 
 1. Kattintson az Azure Portal B2C funkciók panelén az **Applications** (Alkalmazások) lehetőségre.
 1. A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
@@ -87,9 +77,7 @@ A panelre úgy is beléphet, hogy a **További szolgáltatások** elemre kattint
 1. Szükség szerint több hatókört is felvehet. Alapértelmezés szerint a „user_impersonation” hatókör van meghatározva. Ez lehetővé teszi az egyéb alkalmazások számára, hogy a bejelentkezett felhasználó nevében érjék el az API-t. Ha szeretné, ezt eltávolíthatja.
 1. Kattintson a **Save** (Mentés) gombra.
 
-<a id="register-a-mobilenative-application" class="xliff"></a>
-
-## Mobil-/natív alkalmazás regisztrálása
+## <a name="register-a-mobilenative-application"></a>Mobil-/natív alkalmazás regisztrálása
 
 1. Kattintson az Azure Portal B2C funkciók panelén az **Applications** (Alkalmazások) lehetőségre.
 1. A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
@@ -106,13 +94,9 @@ A panelre úgy is beléphet, hogy a **További szolgáltatások** elemre kattint
 > Az **Application Secret** (Alkalmazástitok) fontos biztonsági hitelesítő adat, amelynek megfelelő biztonságáról gondoskodni kell.
 >
 
-<a id="limitations" class="xliff"></a>
+## <a name="limitations"></a>Korlátozások
 
-## Korlátozások
-
-<a id="choosing-a-web-appapi-reply-url" class="xliff"></a>
-
-### Webalkalmazás/api válasz URL-címének kiválasztása
+### <a name="choosing-a-web-appapi-reply-url"></a>Webalkalmazás/api válasz URL-címének kiválasztása
 
 Az Azure AD B2C-vel regisztrált alkalmazások jelenleg csak meghatározott válasz URL-címértékekre korlátozódnak. A webalkalmazások és -szolgáltatások válasz URL-címének a `https`-sémával kell kezdődnie, és valamennyi válasz URL-címértéknek egyetlen DNS-tartományba kell tartoznia. Például nem regisztrálhat olyan webalkalmazást, amely az alábbi URL-címek egyikével rendelkezik:
 
@@ -147,9 +131,7 @@ Ebben az esetben a login.contoso.com egyik DNS-altartományára hivatkozik. Ha a
 
 Hozzáadhatja az utóbbi kettőt, mivel az első válasz URL-cím, a contoso.com altartományába tartoznak.
 
-<a id="choosing-a-native-application-redirect-uri" class="xliff"></a>
-
-### Natív alkalmazás átirányítási URI-jának kiválasztása
+### <a name="choosing-a-native-application-redirect-uri"></a>Natív alkalmazás átirányítási URI-jának kiválasztása
 
 A mobil-/natív alkalmazások átirányítási URI-jának kiválasztásakor két fontos szempontot kell megfontolnia:
 
@@ -158,9 +140,7 @@ A mobil-/natív alkalmazások átirányítási URI-jának kiválasztásakor két
 
 Ügyeljen rá, hogy az átirányítási uri ne tartalmazzon különleges karaktereket, például aláhúzásjeleket.
 
-<a id="faulted-apps" class="xliff"></a>
-
-### Hibás alkalmazások
+### <a name="faulted-apps"></a>Hibás alkalmazások
 
 A B2C-alkalmazások NEM szerkeszthetők:
 
@@ -171,9 +151,7 @@ Ha a fent leírt módon szerkeszti a B2C-alkalmazást, és az Azure Portalon lé
 
 Az alkalmazás törléséhez lépjen az [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/), ahol törölheti az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután az Azure AD B2C-vel regisztrált egy alkalmazást, [gyors üzembe helyezési oktatóanyagunk](active-directory-b2c-overview.md#get-started) segítségével elsajátíthatja a használatát.
 

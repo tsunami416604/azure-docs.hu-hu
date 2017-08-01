@@ -22,17 +22,11 @@ ms.lasthandoff: 06/30/2017
 
 
 ---
-<a id="create-or-select-a-virtual-network-for-azure-active-directory-domain-services" class="xliff"></a>
-
-# Virtuális hálózat létrehozása vagy kiválasztása az Azure Active Directory Domain Services-hez
-<a id="before-you-begin" class="xliff"></a>
-
-## Előkészületek
+# <a name="create-or-select-a-virtual-network-for-azure-active-directory-domain-services"></a>Virtuális hálózat létrehozása vagy kiválasztása az Azure Active Directory Domain Services-hez
+## <a name="before-you-begin"></a>Előkészületek
 Tekintse át a [Hálózati megfontolások az Azure Active Directory Domain Services-hez](active-directory-ds-networking.md) című dokumentumot.
 
-<a id="task-2-create-an-azure-virtual-network" class="xliff"></a>
-
-## 2. feladat: Azure-alapú virtuális hálózat létrehozása
+## <a name="task-2-create-an-azure-virtual-network"></a>2. feladat: Azure-alapú virtuális hálózat létrehozása
 A következő konfigurálási feladat egy Azure-alapú virtuális hálózat és azon belül egy alhálózat létrehozása. Engedélyezze az Azure Active Directory Domain Services-t a virtuális hálózatának ezen az alhálózatán. Ha létező virtuális hálózatot szeretne használni, kihagyhatja ezt a lépést.
 
 > [!NOTE]
@@ -74,8 +68,6 @@ Kövesse az alábbi konfigurációs utasításokat egy olyan Azure virtuális h�
 11. Az alhálózat létrehozásához kattintson a **Mentés** gombra.
 
 
-<a id="next-step" class="xliff"></a>
-
-## Következő lépés
+## <a name="next-step"></a>Következő lépés
 [3. feladat: Az Active Directory Domain Services engedélyezése](active-directory-ds-getting-started-enableaadds.md)
 
