@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 5e1819a9f081284fa03e9355730689629166006f
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 015096a48e5287af6b225f16a38fac328ed28630
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
@@ -101,7 +100,7 @@ Például a **New-AzureBatchPool**, **New-AzureBatchJob** és **New-AzureBatchTa
 Sok parancsmag használatakor egy BatchContext objektum átadása mellett részletes erőforrás-beállításokat tartalmazó objektumok létrehozására vagy átadására is szükség van, ahogyan az a következő példában látható. További példákat az egyes parancsmagok részletes súgójában talál.
 
 ### <a name="create-a-batch-pool"></a>Batch-készlet létrehozása
-Batch-készlet létrehozásakor vagy frissítésekor kiválaszt egy felhőszolgáltatás- vagy virtuálisgép-konfigurációt az operációs rendszerhez a számítási csomópontokon (lásd: [Batch-funkciók áttekintése](batch-api-basics.md#pool)). A választása határozza meg, hogy a számítási csomópontok az egyik [Azure vendég operációs rendszer kiadással](../cloud-services/cloud-services-guestos-update-matrix.md#releases), vagy az Azure Marketplace egyik támogatott Linux vagy Windows virtuálisgép-lemezképével képeződnek-e le.
+Batch-készlet létrehozásakor vagy frissítésekor kiválaszthatja a felhőszolgáltatás- vagy a virtuálisgép-konfigurációt az operációs rendszerhez a számítási csomópontokon (lásd a [Batch-funkciók áttekintésével](batch-api-basics.md#pool) kapcsolatos témakört). Ha a felhőszolgáltatás-konfigurációt adja meg, a számítási csomópontokról az egyik [Azure vendég operációs rendszer kiadással](../cloud-services/cloud-services-guestos-update-matrix.md#releases) készül rendszerkép. Ha a virtuálisgép-konfigurációt választja, megadhatja az [Azure Virtual Machines Marketplace-en][vm_marketplace] felsorolt támogatott Linux vagy Windows virtuálisgép-rendszerképek egyikét, vagy megadhat egy Ön által előkészített egyéni rendszerképet.
 
 A **New-AzureBatchPool** parancs futtatásakor adja át a PSCloudServiceConfiguration vagy PSVirtualMachineConfiguration objektumban található operációsrendszer-beállításokat. A következő parancsmag például egy új Batch-készletet hoz létre kis méretű számítási csomópontokkal a felhőszolgáltatás konfigurációjában, amely a 3-as család (Windows Server 2012) legújabb operációsrendszer-verziójával van leképezve. Itt a **CloudServiceConfiguration** paraméter a *$configuration* változót a PSCloudServiceConfiguration objektumként határozza meg. A **BatchContext** paraméter egy korábban meghatározott *$context* változót ad meg a BatchAccountContext objektumként.
 
@@ -241,4 +240,4 @@ A készlet tulajdonságainak frissítése megtörtént a Batch-szolgáltatásban
 * A parancsmag részletes szintaxisáért és példákért lásd: [Azure Batch-parancsmagok referenciája](/powershell/module/azurerm.batch/#batch).
 * A Batchben elérhető alkalmazásokkal és alkalmazáscsomagokkal kapcsolatban további információkat a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikkben talál.
 
-
+[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/

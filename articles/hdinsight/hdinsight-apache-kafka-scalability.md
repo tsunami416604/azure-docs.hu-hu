@@ -22,8 +22,7 @@ ms.lasthandoff: 07/13/2017
 
 ---
 
-# Tárhely és méretezhetőség konfigurálása HDInsight-beli Apache Kafka platformon
-<a id="configure-storage-and-scalability-for-apache-kafka-on-hdinsight" class="xliff"></a>
+# <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Tárhely és méretezhetőség konfigurálása HDInsight-beli Apache Kafka platformon
 
 Útmutató a HDInsight-beli Apache Kafka által használt felügyelt lemezek számának konfigurálásához.
 
@@ -33,8 +32,7 @@ A következő ábra a felügyelt lemezek nélküli és a felügyelt lemezeket ha
 
 ![Ábra a HDInsight-beli Kafka platformról virtuális gépenként egy virtuális merevlemezzel és virtuális gépenként több felügyelt lemezzel](./media/hdinsight-apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## Felügyelt lemezek konfigurálása: Azure Portal
-<a id="configure-managed-disks-azure-portal" class="xliff"></a>
+## <a name="configure-managed-disks-azure-portal"></a>Felügyelt lemezek konfigurálása: Azure Portal
 
 1. Kövesse a [HDInsight-fürt létrehozása](hdinsight-hadoop-create-linux-clusters-portal.md) című cikkben leírtakat, hogy megismerje a fürt Portal segítségével történő létrehozásának szokásos lépéseit. Ne fejezze be a létrehozást a Portalon.
 
@@ -45,8 +43,7 @@ A következő ábra a felügyelt lemezek nélküli és a felügyelt lemezeket ha
 
     ![Ábra a fürtméret-panelről a feldolgozó csomópontonkénti lemezszám kiemelésével](./media/hdinsight-apache-kafka-scalability/set-managed-disks-portal.png)
 
-## Felügyelt lemezek használata: Resource Manager-sablon
-<a id="configure-managed-disks-resource-manager-template" class="xliff"></a>
+## <a name="configure-managed-disks-resource-manager-template"></a>Felügyelt lemezek használata: Resource Manager-sablon
 
 Egy Kafka-fürt egy feldolgozó csomópontjára jutó lenezek számának beállításához használja a sablon következő szakaszát:
 
@@ -60,8 +57,7 @@ Egy Kafka-fürt egy feldolgozó csomópontjára jutó lenezek számának beáll�
 
 A felügyelt lemezek konfigurálását bemutató teljes sablon megtalálható a [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) URL-címen.
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 
 A HDInsight-beli Kafka használatával kapcsolatos további információk a következő dokumentumokban találhatók:
 

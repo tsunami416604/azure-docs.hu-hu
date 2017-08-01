@@ -1,10 +1,10 @@
 
-1. Sign in to the [Azure portal](https://portal.azure.com) > **Site Recovery**.
-2. Click **New** > **Monitoring & Management** > **Backup and Site Recovery**. 
-3. In **Name**, specify a friendly name to identify the vault. If you have more than one subscription, select one of them.
-4. [Create a resource group](../articles/azure-resource-manager/resource-group-template-deploy-portal.md), or select an existing one. Specify an Azure region. To check supported regions, see geographic availability in [Azure Site Recovery Pricing Details](https://azure.microsoft.com/pricing/details/site-recovery/).
-5. If you want to quickly access the vault from the dashboard, click **Pin to dashboard** and then click **Create**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
+2. Kattintson az **Új** > **Felügyelet és kezelés** > **Backup és Site Recovery** lehetőségre. 
+3. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, válasszon egyet ezek közül.
+4. [Hozzon létre egy erőforráscsoportot](../articles/azure-resource-manager/resource-group-template-deploy-portal.md), vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
+5. Ha gyors hozzáférést szeretne a tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton**, majd a **Létrehozás** gombra.
 
-   ![New vault](./media/site-recovery-create-vault/new-vault-settings.png)
+   ![Új tároló](./media/site-recovery-create-vault/new-vault-settings.png)
 
-   The new vault will appear on the **Dashboard** > **All resources** and on the main **Recovery Services vaults** blade.
+   Az új tároló megjelenik az **Irányítópult** > **Minden erőforrás** menüben, illetve a központi **Recovery Services-tárolók** panelen.

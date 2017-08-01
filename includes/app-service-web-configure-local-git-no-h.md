@@ -16,4 +16,4 @@ https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
 
 A(z) `<username>` az előző lépésben létrehozott [üzembe helyező felhasználó](#configure-a-deployment-user).
 
-Mentse el a megjelenő URI-t, a következő lépésben ugyanis használni fogja. 
+Másolja ki a megjelenő URI-t, mert a következő lépésben használni fogja.

@@ -12,30 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2017
+ms.date: 07/25/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 661470454775d43ce88410a6c995bbcc5e06264c
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 399230584d01986dd0f793a6ff8245ef2b4f8fb1
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
-<a id="add-users-from-other-directories-or-partner-companies-in-azure-active-directory" class="xliff"></a>
+# <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>Más címtárakban vagy partnervállalatokban lévő felhasználók felvétele az Azure Active Directoryba
 
-# Más címtárakban vagy partnervállalatokban lévő felhasználók felvétele az Azure Active Directoryba
-> [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-users-create-external-azure-portal.md )
-> * [klasszikus Azure portál](active-directory-create-users-external.md)
->
->
+Ez a cikk azt ismerteti, hogyan vehet fel felhasználókat más címtárakból az Azure Active Directoryba, illetve hogyan vehet fel felhasználókat a partnervállalatokból. A szervezetben új felhasználók hozzáadásáról és a Microsoft-fiókokkal rendelkező felhasználók hozzáadásáról további információért lásd: [Új felhasználók felvétele az Azure Active Directoryba](active-directory-create-users.md). 
 
-Ez a cikk azt ismerteti, hogyan vehet fel felhasználókat más címtárakból az Azure Active Directoryba, illetve hogyan vehet fel felhasználókat a partnervállalatokból. A szervezetben új felhasználók hozzáadásáról és a Microsoft-fiókokkal rendelkező felhasználók hozzáadásáról további információért lásd: [Új felhasználók felvétele az Azure Active Directoryba](active-directory-create-users.md). A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
+> [!IMPORTANT]
+> A Microsoft javasolja, hogy az Azure Portalon található [Azure AD felügyeleti központból](https://aad.portal.azure.com) kezelje az Azure AD-t az ebben a cikkben javasolt klasszikus Azure portál helyett. Az Azure AD felügyeleti központban B2B együttműködési vendégfelhasználók hozzáadásáról további információkért lásd: [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-<a id="add-a-user" class="xliff"></a>
+A hozzáadott felhasználók alapértelmezés szerint nem rendelkeznek rendszergazdai engedélyekkel, de bármikor hozzájuk rendelhet szerepköröket.
 
-## Felhasználó hozzáadása
+## <a name="add-a-user"></a>Felhasználó hozzáadása
 1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
 2. Válassza az **Active Directory** lehetőséget, majd nyissa meg a címtárat.
 3. Válassza a **Felhasználók** lapot, majd a parancssávon válassza a **Felhasználó hozzáadása** parancsot.
@@ -55,16 +52,12 @@ Ez a cikk azt ismerteti, hogyan vehet fel felhasználókat más címtárakból a
 
 Ha módosítja olyan felhasználó adatait, akinek identitása szinkronizálva van a helyszíni Active Directory szolgáltatással, nem módosíthatja a felhasználó adatait a klasszikus Azure portálon. A felhasználói adatok módosításához használja a helyszíni Active Directory-felügyeleti eszközöket.
 
-<a id="add-external-users" class="xliff"></a>
-
-## Külső felhasználók felvétele
+## <a name="add-external-users"></a>Külső felhasználók felvétele
 Másik olyan Azure AD-címtárból is felvehet felhasználókat, amelyeknek a tagja, vagy megteheti ugyanezt egy CSV-fájl feltöltésével, ha a partnervállalatokból vesz fel felhasználókat. Külső felhasználó hozzáadásához a **Felhasználó típusa** alatt adja meg a **Felhasználó egy másik Microsoft Azure AD-címtárban** vagy a **Felhasználók partnervállalatokban** beállítást.
 
 Mindkét felhasználótípust egy másik címtárból adja hozzá **külső felhasználóként**. A külső felhasználók együttműködhetnek más címtár-felhasználókkal anélkül, hogy új fiókokat és hitelesítő adatokat kellene felvenni. A külső felhasználók a saját címtárukkal végezhetnek hitelesítést amikor bejelentkeznek, és ez a hitelesítés bármely olyan címtárnál működik, amelyhez hozzá lettek adva.
 
-<a id="external-user-management-and-limitations" class="xliff"></a>
-
-## Külső felhasználók kezelése és korlátozásai
+## <a name="external-user-management-and-limitations"></a>Külső felhasználók kezelése és korlátozásai
 Amikor egy másik címtárból ad hozzá felhasználót a címtárához, ez a felhasználó külső felhasználónak számít a címtárában. A megjelenített nevet és a felhasználónevet a rendszer kimásolja a saját címtárukból, és a külső felhasználóhoz adja a címtárában. Ettől kezdve a külső felhasználói fiók tulajdonságai teljesen függetlenek. Ha a saját címtárban módosulnak a felhasználó tulajdonságai, ezek a módosítások nem tükröződnek majd a címtárában lévő külső felhasználói fiókban.
 
 A két fiók között az egyetlen kapcsolat, hogy a felhasználó mindig a saját címtárával vagy a Microsoft-fiókjával végzi a hitelesítést. Ezért nem lát olyan lehetőséget, amellyel alaphelyzetbe állíthatná a jelszót, vagy engedélyezhetné a többtényezős hitelesítést a külső felhasználók számára. Jelenleg a saját címtár vagy a Microsoft-fiók hitelesítési házirendje az egyetlen, amelyet a rendszer kiértékel a felhasználó bejelentkezésekor.
@@ -76,17 +69,13 @@ A két fiók között az egyetlen kapcsolat, hogy a felhasználó mindig a sajá
 
 Ha a felhasználót törlik a saját címtárában, vagy ha törlik a Microsoft-fiókját, a külső felhasználó továbbra is létezik a címtárában. De a címtárában lévő felhasználó nem éri el az erőforrásokat, mert nem tudja hitelesíteni magát a saját címtárával vagy Microsoft-fiókjával.
 
-<a id="services-that-currently-support-access-by-azure-ad-external-users" class="xliff"></a>
-
-### Az Azure AD külső felhasználóinak hozzáférését jelenleg támogató szolgáltatások
+### <a name="services-that-currently-support-access-by-azure-ad-external-users"></a>Az Azure AD külső felhasználóinak hozzáférését jelenleg támogató szolgáltatások
 * **Klasszikus Azure portál:** lehetővé teszi, hogy egy több címtár rendszergazdájaként eljáró külső felhasználó kezelje ezeket a címtárakat.
 * **SharePoint Online:** ha a külső megosztás engedélyezett, lehetővé teszi, hogy a külső felhasználók elérjék a SharePoint Online engedélyezett erőforrásait.
 * **Dynamics CRM:** ha a felhasználó PowerShellen keresztül kapott licencet, lehetővé teszi, hogy a külső felhasználó elérje az engedélyezett erőforrásokat a Dynamics CRM-ben.
 * **Dynamics AX:** ha a felhasználó PowerShellen keresztül kapott licencet, lehetővé teszi, hogy a külső felhasználó elérje az engedélyezett erőforrásokat a Dynamics AX-ben. Az [Azure AD külső felhasználóira](#known-limitations-of-azure-ad-external-users) vonatkozó korlátozások a Dynamics AX külső felhasználóira is érvényesek.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [Új felhasználók hozzáadása az Azure Active Directoryhoz](active-directory-create-users.md)
 * [Az Azure AD felügyelete](active-directory-administer.md)
 * [Jelszavak kezelése az Azure AD-ben](active-directory-manage-passwords.md)

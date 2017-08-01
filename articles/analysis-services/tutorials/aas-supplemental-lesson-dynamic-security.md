@@ -15,16 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: cd74b0cb0d58036cc7b1198a58649ba38e386322
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 4e97a558ae1a2601b5275a73164b483351f03857
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 07/26/2017
 
 ---
-<a id="supplemental-lesson---dynamic-security" class="xliff"></a>
-
-# Kiegészítő lecke – Dinamikus biztonság
+# <a name="supplemental-lesson---dynamic-security"></a>Kiegészítő lecke – Dinamikus biztonság
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -38,19 +36,13 @@ Azok a feladatok, amelyek erre az Adventure Work táblázatos modellezési forga
   
 A lecke elvégzésének várható időtartama: **30 perc**.  
   
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek  
+## <a name="prerequisites"></a>Előfeltételek  
 Ez a kiegészítőlecke-témakör a táblázatos modellezésről szóló oktatóanyag része, amelyet sorrendben kell elvégezni. Az ebben a kiegészítő leckében található feladatok végrehajtása előtt be kell fejeznie minden előző leckét.  
   
-<a id="add-the-dimsalesterritory-table-to-the-aw-internet-sales-tabular-model-project" class="xliff"></a>
-
-## A DimSalesTerritory tábla hozzáadása az AW internetes értékesítés táblázatos modellprojekthez  
+## <a name="add-the-dimsalesterritory-table-to-the-aw-internet-sales-tabular-model-project"></a>A DimSalesTerritory tábla hozzáadása az AW internetes értékesítés táblázatos modellprojekthez  
 A dinamikus biztonság beállításához ehhez az Adventure Works-forgatókönyvhöz való hozzá kell adnia két további táblázatot a modellhez. Az első hozzáadott táblázat a DimSalesTerritory (Értékesítési területként) ugyanabból az AdventureWorksDW-adatbázisból. Később sorszűrőt alkalmazhat a SalesTerritory táblára, amely meghatározza azokat az adatokat, amelyeket a bejelentkezett felhasználó kereshet.  
   
-<a id="to-add-the-dimsalesterritory-table" class="xliff"></a>
-
-#### DimSalesTerritory tábla hozzáadása  
+#### <a name="to-add-the-dimsalesterritory-table"></a>DimSalesTerritory tábla hozzáadása  
   
 1.  A Táblázatos modelltallózó **Adatforrások** szakaszában kattintson a jobb gombbal a kapcsolatra, majd kattintson az **Új táblázatok importálása** gombra.  
 
@@ -66,14 +58,10 @@ A dinamikus biztonság beállításához ehhez az Adventure Works-forgatókönyv
   
 9. A táblázat sikeres importálása után kattintson a **Bezárás** gombra.  
 
-<a id="add-a-table-with-user-name-data" class="xliff"></a>
-
-## A felhasználónevekre vonatkozó adatokat tartalmazó táblázat hozzáadása  
+## <a name="add-a-table-with-user-name-data"></a>A felhasználónevekre vonatkozó adatokat tartalmazó táblázat hozzáadása  
 Az AdventureWorksDW-mintaadatbázisban található DimEmployee tábla az AdventureWorks tartomány felhasználóit tartalmazza. Ezek a felhasználónevek nem léteznek a saját környezetében. A modellben létre kell hoznia egy táblázatot, amely a szervezet aktuális felhasználói közül tartalmaz néhányat példaként (legalább hármat). Ezután tagként kell hozzáadnia ezeket a felhasználókat az új szerepkörhöz. Nincs szükség a hozzáadott minta-felhasználónevekhez tartozó jelszavakra, de szükség van létező, a saját környezetéből származó Windows-felhasználónevekre.  
   
-<a id="to-add-an-employeesecurity-table" class="xliff"></a>
-
-#### EmployeeSecurity tábla hozzáadása  
+#### <a name="to-add-an-employeesecurity-table"></a>EmployeeSecurity tábla hozzáadása  
   
 1.  Nyissa meg a Microsoft Excelt, és hozzon létre egy munkalapot.  
   
@@ -106,14 +94,10 @@ Az AdventureWorksDW-mintaadatbázisban található DimEmployee tábla az Adventu
   
     Létrejön egy EmployeeSecurity nevű, új tábla, amely a SampleEmployee munkalapról másolt alkalmazotti adatokat tartalmazza.  
   
-<a id="create-relationships-between-factinternetsales-dimgeography-and-dimsalesterritory-table" class="xliff"></a>
-
-## Kapcsolatok létrehozása a FactInternetSales, a DimGeography és a DimSalesTerritory táblák között  
+## <a name="create-relationships-between-factinternetsales-dimgeography-and-dimsalesterritory-table"></a>Kapcsolatok létrehozása a FactInternetSales, a DimGeography és a DimSalesTerritory táblák között  
 A FactInternetSales, a DimGeography és a DimSalesTerritory táblák mindegyike tartalmaz egy közös SalesTerritoryId nevű oszlopot. A DimSalesTerritory tábla SalesTerritoryId oszlopa különböző azonosítóval rendelkező értékeket tartalmaz minden értékesítési területhez.  
   
-<a id="to-create-relationships-between-the-factinternetsales-dimgeography-and-the-dimsalesterritory-table" class="xliff"></a>
-
-#### Kapcsolatok létrehozásának módja a FactInternetSales, a DimGeography és a DimSalesTerritory táblázat között  
+#### <a name="to-create-relationships-between-the-factinternetsales-dimgeography-and-the-dimsalesterritory-table"></a>Kapcsolatok létrehozásának módja a FactInternetSales, a DimGeography és a DimSalesTerritory táblázat között  
   
 1.  A Diagramnézetben a **DimGeography** táblában kattintson a **SalesTerritoryId** oszlopra, és a gombot lenyomva húzza a mutatót a **DimSalesTerritory** tábla **SalesTerritoryId** oszlopára, majd engedje el a gombot.  
   
@@ -121,28 +105,20 @@ A FactInternetSales, a DimGeography és a DimSalesTerritory táblák mindegyike 
   
     Vegye észre, hogy a kapcsolat Aktív tulajdonsága Hamis, ami inaktívat jelent. A FactInternetSales tábla már rendelkezik egy másik aktív kapcsolattal.  
   
-<a id="hide-the-employeesecurity-table-from-client-applications" class="xliff"></a>
-
-## Az EmployeeSecurity tábla elrejtése az ügyfélalkalmazásokból  
-Ebben a feladatban elrejtheti az EmployeeSecurity táblát, ezzel megakadályozva, hogy az megjelenjen az ügyfélalkalmazás mezőlistájában. Ne feledje, hogy a táblázat elrejtése nem védi meg azt. A felhasználók továbbra is lekérdezhetik az EmployeeSecurity tábla adatait, ha tisztában vannak annak módjával. Az EmployeeSecurity tábla adatainak védelméhez, azaz annak megakadályozásához, hogy a felhasználók adatokat kérdezhessenek le a táblázatból, egy későbbi feladatban szűrőt alkalmazhat.  
+## <a name="hide-the-employeesecurity-table-from-client-applications"></a>Az EmployeeSecurity tábla elrejtése az ügyfélalkalmazásokból  
+Ebben a feladatban elrejtheti az EmployeeSecurity táblát, ezzel megakadályozva, hogy az megjelenjen az ügyfélalkalmazás mezőlistájában. Ne feledje, hogy a táblázat elrejtése nem nyújt a táblázat számára védelmet. A felhasználók továbbra is lekérdezhetik az EmployeeSecurity tábla adatait, ha tisztában vannak annak módjával. Az EmployeeSecurity tábla adatainak védelméhez, azaz annak megakadályozásához, hogy a felhasználók adatokat kérdezhessenek le a táblázatból, egy későbbi feladatban szűrőt alkalmazhat.  
   
-<a id="to-hide-the-employeesecurity-table-from-client-applications" class="xliff"></a>
-
-#### Az EmployeeSecurity tábla elrejtése az ügyfélalkalmazásokból  
+#### <a name="to-hide-the-employeesecurity-table-from-client-applications"></a>Az EmployeeSecurity tábla elrejtése az ügyfélalkalmazásokból  
   
 -   A modelltervező Diagramnézetében kattintson a jobb gombbal az **Alkalmazott** táblázatfejlécére, majd kattintson az **Elrejtés az ügyféleszközök elől** lehetőségre.  
   
-<a id="create-a-sales-employees-by-territory-user-role" class="xliff"></a>
-
-## Területenkénti értékesítési alkalmazottak felhasználói szerepkör létrehozása  
+## <a name="create-a-sales-employees-by-territory-user-role"></a>Területenkénti értékesítési alkalmazottak felhasználói szerepkör létrehozása  
 Ebben a feladatban egy felhasználói szerepkört hozhat létre. Ez a szerepkör egy olyan sorszűrőt tartalmaz, amely meghatározza, hogy a DimSalesTerritory tábla mely sorait láthatják a felhasználók. A szűrő ezután alkalmazva lesz az egy-a-többhöz típusú kapcsolati irányban minden egyéb, a DimSalesTerritoryhoz kapcsolódó táblázathoz. Egy olyan szűrőt is alkalmazhat, amely az egész EmployeeSecurity táblát lekérdezhetetlenné teszi azon felhasználók számára, akik tagjai a szerepkörnek.  
   
 > [!NOTE]  
 > Az ebben a leckében létrehozott Területenkénti értékesítési alkalmazottak szerepkör azt a korlátozást tartalmazza, hogy a tagok csak arról az értékesítési területről kereshetnek (vagy kérdezhetnek le) értékesítési adatokat, amelybe tartoznak. Ha olyan felhasználót ad hozzá tagként a Területenkénti értékesítési alkalmazottak szerepkörhöz, aki már tagja egy, a [11. lecke: Szerepkörök létrehozása](../tutorials/aas-lesson-11-create-roles.md) részben létrehozott szerepkörnek, akkor az engedélyek kombinációját kapja. Ha a felhasználó egyszerre több szerepkörnek is tagja, akkor az engedélyek és az egyes szerepkörökhöz meghatározott sorszűrők összeadódnak. Ez azt jelenti, hogy a felhasználó a szerepkörök kombinációja által megadott nagyobb engedélyekkel rendelkezik.  
   
-<a id="to-create-a-sales-employees-by-territory-user-role" class="xliff"></a>
-
-#### Területenkénti értékesítési alkalmazottak felhasználói szerepkör létrehozásának módja  
+#### <a name="to-create-a-sales-employees-by-territory-user-role"></a>Területenkénti értékesítési alkalmazottak felhasználói szerepkör létrehozásának módja  
   
 1.  Az SSDT-ben kattintson a **Modell** menüre, majd a **Szerepkörök** elemre.  
   
@@ -185,14 +161,10 @@ Ebben a feladatban egy felhasználói szerepkört hozhat létre. Ez a szerepkör
   
 10. A Szerepkörkezelőben kattintson az **OK** gombra.  
   
-<a id="test-the-sales-employees-by-territory-user-role" class="xliff"></a>
-
-## Területenkénti értékesítési alkalmazottak felhasználói szerepkör tesztelése  
+## <a name="test-the-sales-employees-by-territory-user-role"></a>Területenkénti értékesítési alkalmazottak felhasználói szerepkör tesztelése  
 Ebben a feladatban az SSDT-ben található Elemzés az Excelben szolgáltatást használhatja a Területenkénti értékesítési alkalmazottak felhasználói szerepkör hatékonyságának tesztelésére. Adja meg az EmployeeSecurity táblához hozzáadott és a szerepkör tagjává tett egyik felhasználónevet. Ez a felhasználónév hatályos felhasználónévként lesz használatos az Excel és a modell között létrehozott kapcsolatban.  
   
-<a id="to-test-the-sales-employees-by-territory-user-role" class="xliff"></a>
-
-#### A Területenkénti értékesítési alkalmazottak felhasználói szerepkör tesztelése  
+#### <a name="to-test-the-sales-employees-by-territory-user-role"></a>A Területenkénti értékesítési alkalmazottak felhasználói szerepkör tesztelése  
   
 1.  Az SSDT-ben kattintson a **Modell** menüre, majd az **Elemzés az Excelben** elemre.  
   
@@ -214,9 +186,7 @@ Ebben a feladatban az SSDT-ben található Elemzés az Excelben szolgáltatást 
   
     Ez a felhasználó nem kereshet vagy kérdezhet le semmilyen internetes értékesítési adatot olyan területekről, amelyikhez nem tartozik. Ez a korlátozás azért áll fenn, mert a DimSalesTerritory táblához a Területenkénti értékesítési alkalmazottak felhasználói szerepkörben megadott sorszűrő védelmet biztosít az egyéb értékesítési területekhez kapcsolódó adatoknak.  
   
-<a id="see-also" class="xliff"></a>
-
-## Lásd még:  
+## <a name="see-also"></a>Lásd még:  
 [USERNAME függvény (DAX)](https://msdn.microsoft.com/library/hh230954.aspx)  
 [LOOKUPVALUE függvény (DAX)](https://msdn.microsoft.com/library/gg492170.aspx)  
 [CUSTOMDATA függvény (DAX)](https://msdn.microsoft.com/library/hh213140.aspx)  

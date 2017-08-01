@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 07/25/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9e74127e3140ec9973753fb5f29151c406326c36
-
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: c097a9ccba91f59b323215d42d37e6d85e0981ce
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="expressroute-qos-requirements"></a>Az ExpressRoute QoS-követelményei
@@ -35,7 +36,7 @@ A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöl
 | **Forgalomosztály** | **Kezelés (DSCP-jelölés)** | **Skype Vállalati verzió számítási feladata** |
 | --- | --- | --- |
 | **Hang** |EF (46) |Skype- / Lync-hang |
-| **Interaktív** |AF41 (34) |Videó |
+| **Interaktív** |AF41 (34) |Videó, VBSS |
 | AF21 (18) |Alkalmazásmegosztás | |
 | **Alapértelmezett** |AF11 (10) |Fájlátvitel |
 | CS0 (0) |Bármi más | |
@@ -51,10 +52,5 @@ A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöl
   * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-classic.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-classic.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -21,14 +21,12 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 07/12/2017
 
 ---
-# Az Azure Security Center és az Azure-beli virtuális gépek
-<a id="azure-security-center-and-azure-virtual-machines" class="xliff"></a>
+# <a name="azure-security-center-and-azure-virtual-machines"></a>Az Azure Security Center és az Azure-beli virtuális gépek
 [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
 
 Ez a cikk ismerteti, hogyan segíthet a Security Center az Azure-beli virtuális gépek (VM) védelmében.
 
-## Miért használja a Security Centert?
-<a id="why-use-security-center" class="xliff"></a>
+## <a name="why-use-security-center"></a>Miért használja a Security Centert?
 A Security Center segít megóvni az Azure-beli virtuális gépeken tárolt adatokat azáltal, hogy betekintést biztosít a virtuális gép biztonsági beállításaiba. Ha a Security Center védi a virtuális gépeit, akkor a következő lehetőségek érhetők el:
 
 * Az operációs rendszer (OS) biztonsági beállításai ajánlott konfigurációs szabályokkal
@@ -45,16 +43,14 @@ A Security Center az Azure-beli virtuális gépek védelme mellett a Cloud Servi
 > 
 > 
 
-## Előfeltételek
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>Előfeltételek
 Az Azure Security Centert használatának elkezdése előtt tudnia kell és meg kell fontolnia a következőket:
 
 * Szüksége lesz egy Microsoft Azure-előfizetésre. A Security Center ingyenes és standard csomagjairól a [ Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/) ismertető oldalon talál további információt.
 * Tervezze meg a Security Center bevezetését az[Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) című dokumentum segítségével, amely további információkat nyújt a tervezés és működtetés szempontjairól.
 * További információ a támogatott operációs rendszerekről: [Azure Security Centerhez kapcsolódó gyakori kérdések (GYIK)](security-center-faq.md). 
 
-## Biztonsági házirend beállítása
-<a id="set-security-policy" class="xliff"></a>
+## <a name="set-security-policy"></a>Biztonsági házirend beállítása
 Engedélyezze az adatgyűjtést, hogy az Azure Security Center összegyűjthesse a szükséges információkat a beállított biztonsági házirend alapján létrehozott javaslatok és riasztások biztosításához. Az alábbi ábrán látható, hogy az **Adatgyűjtés** állapota **Be** van kapcsolva.
 
 A biztonsági szabályzat határozza meg azoknak a vezérlőelemeknek a körét, amelyeket a rendszer az egy adott előfizetésen vagy erőforráscsoporton belüli erőforrásokhoz javasol. A biztonsági házirend engedélyezése előtt engedélyeznie kell az adatgyűjtést. A Security Center összegyűjti az adatokat a virtuális gépekről a biztonsági állapotuk értékeléséhez, a biztonsági javaslatok létrehozásához és a fenyegetésekkel kapcsolatos riasztásokhoz. A Security Centerben a vállalata biztonsági igényeinek és az egyes előfizetésekben szereplő alkalmazások típusának vagy az adatok bizalmasságának megfelelően határozhatja meg az Azure-előfizetésekre vagy -erőforráscsoportokra vonatkozó házirendeket. 
@@ -66,8 +62,7 @@ A biztonsági szabályzat határozza meg azoknak a vezérlőelemeknek a körét,
 > 
 > 
 
-## Biztonsági javaslatok kezelése
-<a id="manage-security-recommendations" class="xliff"></a>
+## <a name="manage-security-recommendations"></a>Biztonsági javaslatok kezelése
 A Security Center elemzi az Azure-erőforrások biztonsági állapotát. A Security Center javaslatokat hoz létre, amikor lehetséges biztonsági réseket észlel. A javaslatok végigvezetik Önt a szükséges vezérlők konfigurálásának folyamatán.
 
 Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ön erőforrásainak állapotát, hogy észlelhesse a potenciális biztonsági réseket. A javaslatok egy tábla formájában jelennek meg, amelyben minden egyes sor egy adott javaslatot tartalmaz. Az alábbi táblázatban néhány példa látható az Azure virtuális gépekre vonatkozó javaslatok közül, valamint alkalmazásuk esetén azok működésének leírása. Egy javaslat kiválasztásakor megjelennek annak a Security Centerben történő megvalósításához kapcsolódó információk.
@@ -90,22 +85,19 @@ Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ö
 > 
 > 
 
-## A biztonsági állapot figyelése
-<a id="monitor-security-health" class="xliff"></a>
+## <a name="monitor-security-health"></a>A biztonsági állapot figyelése
 Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](security-center-policies.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat.  A **Resource Security Health** (Erőforrás biztonsági állapota) panelen megtekintheti az erőforrások biztonsági állapotát, valamint az esetleg felmerülő problémákat. A **Resources security health** (Erőforrás biztonsági állapota) csempe **Virtual machines** (Virtuális gépek) elemére kattintva megnyithatja a **Virtual machines** (Virtuális gépek) panelt, amelyen megtekintheti a virtuális gépekkel kapcsolatos javaslatokat. 
 
 ![Biztonsági állapot](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
-## A biztonsági riasztások kezelése és a riasztásokra való válaszadás
-<a id="manage-and-respond-to-security-alerts" class="xliff"></a>
+## <a name="manage-and-respond-to-security-alerts"></a>A biztonsági riasztások kezelése és a riasztásokra való válaszadás
 A valós fenyegetések észlelése és a téves riasztások számának csökkentése érdekében a Security Center automatikusan elvégzi a naplóadatok összegyűjtését, elemzését és integrálását az Azure-erőforrásokról, a hálózatról és a csatlakoztatott partnermegoldásokból (például tűzfalról és Endpoint Protection-megoldásokból). A Security Center számos [észlelési képesség](security-center-detection-capabilities.md) együttesének használatával képes a rangsorolt biztonsági riasztások létrehozására, amelyek segítségével gyorsan megtörténhet a problémák kivizsgálása, valamint a lehetséges támadások következményeinek javítására vonatkozó javaslattétel.
 
 ![Biztonsági riasztások](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 
 Válasszon ki egy biztonsági riasztást, ha többet szeretne megtudni a riasztást kiváltó esemény(ek)ről, és arról, hogy milyen lépéseket kell tennie a támadás elhárítása érdekében. A biztonsági riasztások [típus](security-center-alerts-type.md) és dátum szerint vannak csoportosítva.
 
-## Lásd még:
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>Lásd még:
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.

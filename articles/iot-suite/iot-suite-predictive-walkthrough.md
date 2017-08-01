@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 07/25/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 9b2947d9ce00083c168635811395bc86b3e60b78
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: a68a8fdc3976ade0d1036d5ed58c8b2eb6d32a5d
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>A prediktív karbantartási előre konfigurált megoldás bemutatója
 
-## <a name="introduction"></a>Bevezetés
-
-Az IoT Suite prediktív karbantartási előre konfigurált megoldás olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt az előre konfigurált megoldást proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT Suite-szolgáltatásokat, mint az IoT Hub, a Stream Analytics, valamint egy [Azure Machine Learning][lnk-machine-learning]-munkaterületet. Ezen a munkaterületen egy modell található a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
+A prediktív karbantartási előre konfigurált megoldás olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt az előre konfigurált megoldást proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT Suite-szolgáltatásokat, mint az IoT Hub, a Stream Analytics, valamint egy [Azure Machine Learning][lnk-machine-learning]-munkaterületet. Ezen a munkaterületen egy modell található a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
@@ -34,7 +32,7 @@ A következő diagram az előre konfigurált megoldás logikai összetevőit vá
 
 ![][img-architecture]
 
-A kék elemek Azure-szolgáltatások, amelyek az előre konfigurált megoldás kiépítésekor kiválasztott régióban vannak kiépítve. A régiók listája, amelyekben az előre konfigurált megoldás üzembe helyezhető, az [üzembe helyezés oldalon][lnk-azureiotsuite] jelenik meg.
+A kék elemek Azure-szolgáltatások, amelyek az előre konfigurált megoldás üzembe helyezésének régiójában vannak kiépítve. A régiók listája, amelyekben az előre konfigurált megoldás üzembe helyezhető, az [üzembe helyezés oldalon][lnk-azureiotsuite] jelenik meg.
 
 A zöld elem egy repülőmotort jelképező szimulált eszköz. Az alábbi szakaszban tudhat meg többet ezekről a szimulált eszközökről.
 
@@ -58,13 +56,17 @@ A szimulált eszközök a megoldás részét képező IoT Hubról küldött köv
 Az IoT Hub nyugtázza az eszközparancsokat.
 
 ## <a name="azure-stream-analytics-job"></a>Azure Stream Analytics-feladat
-**Feladat: Telemetria** – a bejövő eszköz telemetriastreamjén működik két utasítással. Az első kiválasztja az összes telemetriát az eszközökről, és ezeket az adatokat Blob Storage-ba küldi, ahol a webalkalmazásban jelennek meg. A második utasítás kiszámítja az átlagos érzékelőértékeket egy kétperces csúszóablakban és ezeket az adatokat az eseményközponton keresztül egy **eseményfeldolgozóba** küldi.
+
+**Feladat: Telemetria** – a bejövő eszköz telemetriastreamjén működik két utasítással.
+
+* Az első kiválasztja az összes telemetriát az eszközökről, és ezeket az adatokat Blob Storage-ba küldi. Itt a webalkalmazásban jelennek meg.
+* A második kiszámítja az átlagos érzékelőértékeket egy kétperces csúszóablakban, és ezeket az adatokat az eseményközponton keresztül egy **eseményfeldolgozóba** küldi.
 
 ## <a name="event-processor"></a>Eseményfeldolgozó
 Az **Event Processor Host** egy Azure-beli webes feladatban fut. Az **eseményfeldolgozó** a befejezett ciklusok átlagos érzékelőértékeit kezeli. Ezeket az értékeket azután egy olyan API-ra küldi, amely közzéteszi a betanított modellt egy motor RUL értékének kiszámításához. Az API-t a megoldás részeként üzembe helyezett Machine Learning-munkaterület teszi közzé.
 
 ## <a name="machine-learning"></a>Machine Learning
-A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon lévő csempéről érheti el ezt a Machine Learning-munkaterületet a kiépített megoldáshoz, amikor a megoldás **Kész** állapotban van.
+A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon lévő csempéről érheti el ezt a Machine Learning-munkaterületet a kiépített megoldáshoz. A csempe akkor érhető el, amikor a megoldás **Kész** állapotban van.
 
 
 ## <a name="next-steps"></a>Következő lépések

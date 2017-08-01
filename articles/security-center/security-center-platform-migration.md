@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2017
+ms.date: 07/24/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: d49f7986e09a90c5c4c49c0d3963d0cd8514713a
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
-<a id="azure-security-center-platform-migration" class="xliff"></a>
-
-# Az Azure Security Center platform migrációja
+# <a name="azure-security-center-platform-migration"></a>Az Azure Security Center platform migrációja
 
 2017 júniusának elejével kezdődően az Azure Security Center fontos változásokat vezet be a biztonsági adatok gyűjtési és tárolási módjával kapcsolatban.  Ezek a változások új képességek zárolását oldják fel, például a biztonsági adatok könnyen kereshetővé válnak, és a szolgáltatás jobban fog igazodni más Azure felügyeleti és figyelési szolgáltatásokhoz.
 
@@ -32,17 +29,13 @@ ms.lasthandoff: 06/28/2017
 > A platform migrációja nem érinti az éles erőforrásait, és az Ön részéről nincs szükség beavatkozásra.
 
 
-<a id="whats-happening-during-this-platform-migration" class="xliff"></a>
-
-## Mi történik a platform migrációja során?
+## <a name="whats-happening-during-this-platform-migration"></a>Mi történik a platform migrációja során?
 
 Régebben a Security Center az Azure Monitoring Agent ügynököt használta a biztonsági adatok virtuális gépekről való gyűjtésére. Ez magában foglal biztonsági konfigurációkra vonatkozó adatokat, amelyek a biztonsági rések azonosítására és biztonsági eseményeket, amelyek a veszélyek észlelésére használatosak. Ezeket az adatokat az Azure Storage-fiókjában tároltuk.
 
 A későbbiekben a Security Center a Microsoft Monitoring Agent ügynököt használja – ez ugyanaz az ügynök, amelyet az Operations Management Suite és a Log Analytics szolgáltatás használ. Az ettől az ügynöktől gyűjtött adatok tárolása vagy egy már meglévő, az Azure-előfizetéséhez társított *Log Analytics*-[munkaterületen](../log-analytics/log-analytics-manage-access.md) történik, vagy új munkaterülete(ke)n, a virtuális gép földrajzi helyének figyelembevételével.
 
-<a id="agent" class="xliff"></a>
-
-## Ügynök
+## <a name="agent"></a>Ügynök
 
 Az átmenet részeként a Microsoft Monitoring Agent ([Windows](../log-analytics/log-analytics-windows-agents.md) vagy [Linux](../log-analytics/log-analytics-linux-agents.md) rendszerhez) minden olyan Azure virtuális gépre telepítve lesz, amelyről jelenleg adatgyűjtés folyik.  Ha a virtuális gépre már telepítve van a Microsoft Monitoring Agent, a Security Center a jelenleg telepített ügynököt fogja használni.
 
@@ -56,9 +49,7 @@ A Windowshoz készült Microsoft Monitoring Agent megköveteli a 443-as port has
 > [!NOTE] 
 > Mivel a Microsoft Monitoring Agent ügynököt az Azure más felügyeleti és figyelési szolgáltatásai is használhatják, az ügynök nem lesz automatikusan eltávolítva, amikor kikapcsolja az adatgyűjtést a Security Centerben. Szükség esetén azonban manuálisan eltávolíthatja az ügynököt.
 
-<a id="workspace" class="xliff"></a>
-
-## Munkaterület
+## <a name="workspace"></a>Munkaterület
 
 Az előzőekben leírtaknak megfelelően a Microsoft Monitoring Agenttől (a Security Center számára) gyűjtött adatokat a rendszer vagy az Azure-előfizetéséhez társított, már meglévő Log Analytics-munkaterület(ek)en tárolja, vagy új munkaterület(ek)en, a virtuális gép földrajzi helyének figyelembevételével.
 
@@ -72,16 +63,12 @@ A Security Center által létrehozott munkaterületeken az adatok 30 napig őrz�
 > [!NOTE]
 > A Security Center által korábban gyűjtött adatok a Storage-fiók(ok)ban maradnak. A migráció befejeződése után ezeket a Storage-fiókokat törölheti.
 
-<a id="oms-security-solution" class="xliff"></a>
-
-### OMS biztonsági megoldás 
+### <a name="oms-security-solution"></a>OMS biztonsági megoldás 
 
 Azok számára a meglévő ügyfelek számára, akiknél nincs telepítve az OMS biztonsági megoldás, a Microsoft telepíti azt a munkaterületükre, de csak az Azure virtuális gépeket célozva. Ne távolítsa el ezt a megoldást, mert nincs automatikus javítási lehetőség, ha ezt az OMS kezelési konzoljáról teszi.
 
 
-<a id="other-updates" class="xliff"></a>
-
-## Egyéb frissítések
+## <a name="other-updates"></a>Egyéb frissítések
 
 A platformmigrálással összefüggésben néhány további kisebb frissítést bocsátunk ki:
 
@@ -90,5 +77,6 @@ A platformmigrálással összefüggésben néhány további kisebb frissítést 
 - A [Díjszabás](https://azure.microsoft.com/pricing/details/security-center/) óránkénti arányosítású lesz (régebben napi volt), ami bizonyos ügyfeleknél költségmegtakarítást fog eredményezni.
 - A standard tarifacsomagú ügyfelek számára az adatgyűjtés kötelező és automatikusan engedélyezett lesz.
 - Az Azure Security Center meg fogja kezdeni az olyan kártevőirtó megoldások észlelését, amelyek nem az Azure-bővítményeken keresztül lettek telepítve. Elsőként a Symantec Endpoint Protection és a Defender for Windows 2016 lesz elérhető.
+- A megelőzési szabályzatok és az értesítések csak az *Előfizetés* szintjén konfigurálhatók, de a díjszabás az *Erőforráscsoport* szintjén is beállítható
 
 

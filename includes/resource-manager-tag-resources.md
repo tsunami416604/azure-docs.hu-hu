@@ -1,24 +1,24 @@
-1. To view the tags for a resource or resource group, select the **Tags** icon. 
+1. Az egyes erőforrások vagy erőforráscsoportok címkéinek megtekintéséhez válassza a **Címkék** ikont. 
    
-     ![Select tags on resource and resource group blades](./media/resource-manager-tag-resources/select-tag-icon.png)
-2. You see the existing tags for the resource. If you have not previously applied tags, the list is empty. 
+     ![Címkék kiválasztása az erőforrások vagy erőforráscsoportok paneljein](./media/resource-manager-tag-resources/select-tag-icon.png)
+2. Itt láthatja az erőforrás meglévő címkéit. Ha eddig még nem vett fel címkéket, a lista üres. 
 
-     ![Show existing tags on resource and resource group blades](./media/resource-manager-tag-resources/existing-tags.png)
-3. To add a tag, type a name and value, or select an existing one from the dropdown menu. Select **Save**.
+     ![Meglévő címkék megjelenítése az erőforrások vagy erőforráscsoportok paneljein](./media/resource-manager-tag-resources/existing-tags.png)
+3. Címke hozzáadásához adjon meg egy nevet és egy értéket, vagy válasszon ki egy meglévőt a legördülő listából. Kattintson a **Mentés** gombra.
 
-     ![Add new tag](./media/resource-manager-tag-resources/tag-resources.png)
-3. To view all the resources with a tag value, select **>** (More services), and enter the word **Tags** into the filter text box. Select **Tags** from the available options.
+     ![Új címke hozzáadása](./media/resource-manager-tag-resources/tag-resources.png)
+3. A címkeértékkel rendelkező összes erőforrás megtekintéséhez válassza a **>** (**További szolgáltatások**) lehetőséget, és íja be a **Tags** (Címkék) szót a szűrőmezőbe. Válassza a **Címkék** lehetőséget az elérhető lehetőségek közül.
    
-     ![Find tags via the Browse hub](./media/resource-manager-tag-resources/browse-tags.png)
-4. You see a summary of the tags in your subscriptions.
+     ![Címkék keresése a Tallózás hubon keresztül](./media/resource-manager-tag-resources/browse-tags.png)
+4. Itt láthatja az előfizetései alá tartozó címkék összegzését.
    
-     ![Show all tags](./media/resource-manager-tag-resources/tag-taxonomy.png)
-5. Select any of the tags to display the resources and resource groups with that tag.
+     ![Az összes címke megjelenítése](./media/resource-manager-tag-resources/tag-taxonomy.png)
+5. Az egyes címkékre kattintva megjelenítheti az adott címkével rendelkező erőforrásokat és erőforráscsoportokat.
    
-     ![Show tagged resources](./media/resource-manager-tag-resources/show-tagged-resources.png)
-6. Select **Pin blade to dashboard** for quick access.
+     ![Címkézett erőforrások megjelenítése](./media/resource-manager-tag-resources/show-tagged-resources.png)
+6. A gyors elérés érdekében válassza a **Panel rögzítése az irányítópulton** lehetőséget.
    
-     ![Pin tags to the Dashboard](./media/resource-manager-tag-resources/pin-tag.png)
-7. You can select the pinned tag from the dashboard to see the resources with that tag.
+     ![Címkék rögzítése az irányítópulton](./media/resource-manager-tag-resources/pin-tag.png)
+7. Ha az irányítópulton a rögzített címkére kattint, megjelennek a címkével társított erőforrások.
 
-     ![Pin tags to the Dashboard](./media/resource-manager-tag-resources/show-pinned-tag.png)
+     ![Címkék rögzítése az irányítópulton](./media/resource-manager-tag-resources/show-pinned-tag.png)

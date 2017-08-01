@@ -15,17 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 79156c0b511dafcb43ed91800f01338dbb7ee5f3
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: dba483c21afc46b1b9f0a74ebfb24ed644080e09
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
-<a id="introduction-to-azure-cosmos-db-documentdb-api" class="xliff"></a>
-
-# Bevezetés az Azure Cosmos DB: DocumentDB API-ba
+# <a name="introduction-to-azure-cosmos-db-documentdb-api"></a>Bevezetés az Azure Cosmos DB: DocumentDB API-ba
 
 Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Az Azure Cosmos DB az [iparág legjobb szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/cosmos-db/) által biztosított [teljes körű, globális terjesztést](distribute-data-globally.md) kínál, valamint [a teljesítmény és a tárterület rugalmas méretezését](partition-data.md) világszerte, az esetek 99%-ában egyszámjegyű ezredmásodperces késéseket, [öt jól meghatározott konzisztenciaszintet](consistency-levels.md) és garantált magas rendelkezésre állást. Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Többmodelles szolgáltatás, amely támogatja a dokumentumokat, a kulcs-értékeket, a diagramokat és az oszlopos adatmodelleket. 
 
@@ -33,9 +30,7 @@ Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmo
 
 A DocumentDB API-val az Azure Cosmos DB az [SQL lekérdezési képességek](documentdb-sql-query.md) gazdag és ismerős skáláját nyújtja a séma nélküli JSON-adatok egységesen rövid késleltetésével. A cikkben áttekintést kap az Azure Cosmos DB DocumentDB API-járól, és megtudhatja, hogyan tárolhat vele nagyméretű JSON-adatköteteket, kérdezheti le őket ezredmásodperces késéssel, és hogyan fejlesztheti tovább könnyedén a sémát. 
 
-<a id="what-capabilities-and-key-features-does-azure-cosmos-db-offer" class="xliff"></a>
-
-## Milyen lehetőségeket és fő összetevőket kínál a Azure Cosmos DB?
+## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Milyen lehetőségeket és fő összetevőket kínál a Azure Cosmos DB?
 Az Azure Cosmos DB a DocumentDB API-n keresztül az alábbi főbb képességeket és előnyöket kínálja:
 
 * **Rugalmasan méretezhető átviteli sebesség és tárterület:** Könnyedén növelheti vagy csökkentheti JSON-adatbázisának méretét az alkalmazás igényeinek megfelelően. Az adatok tárolása tartós állapotú meghajtón (SSD) történik az alacsony, előre jelezhető késés érdekében. Az Azure Cosmos DB támogatja a gyűjteményeknek nevezett, JSON-adatok tárolására szolgáló tárolókat, amelyek szinte korlátlanul méretezhető tárterületet és átviteli sebességet biztosítanak. Ahogy az alkalmazás növekszik, kiszámítható teljesítmény mellett, rugalmasan és zökkenőmentesen méretezheti az Azure Cosmos DB-t. 
@@ -55,7 +50,7 @@ Az Azure Cosmos DB a DocumentDB API-n keresztül az alábbi főbb képességeket
 * **Automatikus indexelés:** Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli az adatbázisban szereplő összes dokumentumot, nem vár vagy igényel semmilyen sémát, és nem szükséges másodlagos indexek létrehozása sem. Szeretne mindent indexelni? Ne aggódjon, [a JSON-fájlok elérési útjainak indexelését](indexing-policies.md) is ki lehet kapcsolni.
 
 ## <a name="data-management"></a>Hogyan kezelhetők az adatok a DocumentDB API-val?
-A DocumentDB API jól meghatározott adatbázis-erőforrások használatával kezeli a JSON-adatokat. A magas rendelkezésre állás érdekében a rendszer replikálja ezeket az erőforrásokat, amelyek a logikai URI-juk alapján egyedi módon címezhetők. A DocumentDB egy egyszerű HTTP-alapú RESTful programozási modellt kínál minden erőforráshoz. 
+A DocumentDB API jól meghatározott adatbázis-erőforrások használatával kezeli a JSON-adatokat. A magas rendelkezésre állás érdekében a rendszer replikálja ezeket az erőforrásokat, amelyek a logikai URI-juk alapján egyedi módon címezhetők. A DocumentDB API egy egyszerű, HTTP-alapú RESTful programozási modellt kínál minden erőforráshoz. 
 
 
 Az Azure Cosmos DB-adatbázisfiók egy egyedi névtér, amely hozzáférést biztosít az Azure Cosmos DB-hez. Ahhoz, hogy létrehozhasson egy adatbázis-fiókot, Azure-előfizetéssel kell rendelkeznie, amely számos különböző Azure-szolgáltatáshoz biztosít hozzáférést. 
@@ -90,25 +85,19 @@ Az [Azure Cosmos DB Emulator](local-emulator.md) használatával helyben fejlesz
 
 Az alapvető létrehozási, olvasási, frissítési és törlési műveletek mellett a DocumentDB API egy részletes SQL-lekérdezési felületet is biztosít JSON-dokumentumok és kiszolgálóoldali támogatás lekéréséhez a JavaScript-alkalmazáslogika tranzakciós végrehajtásához. A lekérdezés és parancsfájl végrehajtására szolgáló felületek az összes platform könyvtárán, illetve a REST API-kon keresztül is elérhetők. 
 
-<a id="sql-query" class="xliff"></a>
-
-### SQL-lekérdezés
-A DocumentDB API a JavaScript típusrendszerből eredő SQL-nyelv, valamint a relációs, hierarchikus és térbeli lekérdezéseket támogató kifejezések használatával támogatja a dokumentumok lekérdezését. A DocumentDB lekérdezési nyelv a JSON-dokumentumok lekérdezésének egyszerű, mégis erőteljes felülete. A nyelv támogatja az ANSI SQL-szintaxis egy alkészletét, valamint biztosítja a JavaScript-objektumok, tömbök, objektumkonstrukciók és függvényhívások szoros integrációját. A DocumentDB a fejlesztőtől származó explicit séma vagy indexelési mutatók nélkül biztosítja a lekérdezési modelljét.
+### <a name="sql-query"></a>SQL-lekérdezés
+A DocumentDB API a JavaScript típusrendszerből eredő SQL-nyelv, valamint a relációs, hierarchikus és térbeli lekérdezéseket támogató kifejezések használatával támogatja a dokumentumok lekérdezését. A DocumentDB lekérdezési nyelv a JSON-dokumentumok lekérdezésének egyszerű, mégis erőteljes felülete. A nyelv támogatja az ANSI SQL-szintaxis egy alkészletét, valamint biztosítja a JavaScript-objektumok, tömbök, objektumkonstrukciók és függvényhívások szoros integrációját. A DocumentDB API a fejlesztőtől származó explicit séma vagy indexelési mutatók nélkül biztosítja a lekérdezési modelljét.
 
 A felhasználó által megadott függvények regisztrálhatók a DocumentDB API-ban, és az SQL-lekérdezés részeként hivatkozhatók, így a szintaxis kiterjeszthető az egyéni alkalmazáslogika támogatása érdekében. Ezen felhasználó által megadott függvények JavaScript programokként vannak megírva, futtatásuk pedig az adatbázisban történik. 
 
-A .NET-fejlesztők számára a DocumentDB [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) egy LINQ-lekérdezést is kínál. 
+A .NET-fejlesztők számára a DocumentDB API [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) egy LINQ-lekérdezést is kínál. 
 
-<a id="transactions-and-javascript-execution" class="xliff"></a>
-
-### Tranzakciók és a JavaScript futtatása
+### <a name="transactions-and-javascript-execution"></a>Tranzakciók és a JavaScript futtatása
 A DocumentDB API lehetővé teszi az alkalmazáslogikák teljes mértékben JavaScriptben írt, elnevezett programokként történő megírását. Ezeket a programokat a rendszer regisztrálja egy gyűjteményben, és adatbázis-műveleteket adhatnak ki az adott gyűjteményben lévő dokumentumokon. A JavaScript regisztrálható eseményindítóként, tárolt eljárásként vagy felhasználó által megadott függvényként való futtatásra. Az eseményindítók és tárolt eljárások létrehozhatnak, olvashatnak, frissíthetnek és törölhetnek dokumentumokat, míg a felhasználó által megadott függvények futtatása lekérdezés végrehajtási logikájának részeként történik, a gyűjteményhez történő írási hozzáférés nélkül.
 
-A JavaScript DocumentDB API-ban való futtatásának modellezése a relációs adatbázis-rendszerek által támogatott alapelvek alapján történik, ahol a JavaScript a Transact-SQL modern helyettesítője. Minden JavaScript-logika futtatása egy környezeti ACID-tranzakción belül történik pillanatkép-elkülönítéssel. Ha a futtatása során a JavaScript kivételt jelez, a teljes tranzakció megszakad.
+A JavaScript Cosmos DB-ben való futtatásának modellezése a relációs adatbázis-rendszerek által támogatott alapelvek alapján történik, ahol a JavaScript a Transact-SQL modern helyettesítője. Minden JavaScript-logika futtatása egy környezeti ACID-tranzakción belül történik pillanatkép-elkülönítéssel. Ha a futtatása során a JavaScript kivételt jelez, a teljes tranzakció megszakad.
 
-<a id="are-there-any-online-courses-on-azure-cosmos-db" class="xliff"></a>
-
-## Találhatók online tanfolyamok az Azure Cosmos DB-ben?
+## <a name="are-there-any-online-courses-on-azure-cosmos-db"></a>Találhatók online tanfolyamok az Azure Cosmos DB-ben?
 
 Igen, az Azure DocumentDB-ben található egy [Microsoft Virtual Academy](https://mva.microsoft.com/en-US/training-courses/azure-documentdb-planetscale-nosql-16847) tanfolyam. 
 
@@ -116,9 +105,7 @@ Igen, az Azure DocumentDB-ben található egy [Microsoft Virtual Academy](https:
 >
 >
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 Már van Azure-fiókja? Akkor megkezdheti az Azure Cosmos DB használatát. Ehhez kövesse a [gyors üzembe helyezési útmutatót](../cosmos-db/create-documentdb-dotnet.md), amely végigvezeti a fióklétrehozás folyamatán, és bevezeti a Cosmos DB használatába.
 
 [1]: ./media/documentdb-introduction/json-database-resources1.png

@@ -13,23 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/24/2017
+ms.date: 07/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 97da0f4dc5d5528bfb803eefe9037651939a8efd
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: d9d4dcf16954b0cd831e017ecb305d30e3b36dc7
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
-<a id="get-started-with-the-connected-factory-preconfigured-solution" class="xliff"></a>
+# <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>Az előre konfigurált csatlakoztatott gyár első lépései
 
-# Az előre konfigurált csatlakoztatott gyár első lépései
-
-<a id="introduction" class="xliff"></a>
-
-## Bevezetés
+## <a name="introduction"></a>Bevezetés
 
 Az Azure IoT Suite [előre konfigurált megoldások][lnk-preconfigured-solutions] több Azure IoT-szolgáltatást kombinálnak, hogy általános IoT üzleti forgatókönyveket megvalósító végpontok közötti megoldásokat nyújtsanak. Az előre konfigurált *csatlakoztatott gyár* megoldás csatlakozik ipari eszközeihez, és megfigyeli azokat. Ez a megoldás az eszközökről származó adatstream elemzésére, ezáltal pedig az üzemeltetés hatékonyságának és nyereségességének növelésére használható.
 
@@ -44,9 +39,7 @@ Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 > 
 > 
 
-<a id="provision-the-solution" class="xliff"></a>
-
-## A megoldás megvalósítása
+## <a name="provision-the-solution"></a>A megoldás megvalósítása
 
 1. Jelentkezzen be az azureiotsuite.com címre az Azure-fiókja hitelesítő adataival, majd kattintson a „**+**” elemre egy megoldás létrehozásához.
 2. Kattintson a **Kiválasztás** elemre a **Csatlakoztatott gyár** csempén.
@@ -54,9 +47,7 @@ Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 4. Válassza ki a megoldás kiépítéséhez használni kívánt **Előfizetést** és **Régiót**.
 5. Kattintson a **Megoldás létrehozása** gombra a kiépítés elkezdéséhez. Ez a folyamat általában több percig tart.
 
-<a id="while-you-wait-for-the-provisioning-process-to-complete" class="xliff"></a>
-
-### Amíg a kiépítési folyamat befejeződésére vár
+### <a name="while-you-wait-for-the-provisioning-process-to-complete"></a>Amíg a kiépítési folyamat befejeződésére vár
 
 1. Kattintson a megoldás **Kiépítési** állapotát jelző csempére.
 2. Megtekintheti a **Kiépítési állapotokat**, miközben az Azure-szolgáltatások telepítése megtörténik az Azure-előfizetésben.
@@ -68,9 +59,7 @@ Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 
 Hiányol bizonyos részleteket a megoldásával kapcsolatban? A [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/321918-azure-iot) elküldheti a szolgáltatásokkal kapcsolatos javaslatait.
 
-<a id="scenario-overview" class="xliff"></a>
-
-## Forgatókönyv áttekintése
+## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
 Amikor üzembe helyezi az előre konfigurált csatlakoztatott gyár megoldást, az előre fel van töltve olyan erőforrásokkal, amelyekkel elvégezhető egy általános ipari forgatókönyv. Ebben a forgatókönyvben a megoldáshoz csatlakozó több üzem ad le jelentést a teljes eszközhatékonyság (overall equipment efficiency, OEE) és a fő teljesítménymutatók (KPI) kiszámításához szükséges adatértékeket. A következő forgatókönyvek bemutatják, hogyan végezheti el a következőket:
 
@@ -80,9 +69,7 @@ Amikor üzembe helyezi az előre konfigurált csatlakoztatott gyár megoldást, 
 
 A forgatókönyv fő előnye, hogy az összes műveletet távolról végezheti el, a megoldás irányítópultjáról. Nincs szüksége hozzá az eszközök fizikai címére.
 
-<a id="view-the-solution-dashboard" class="xliff"></a>
-
-## A megoldás irányítópultjának megtekintése
+## <a name="view-the-solution-dashboard"></a>A megoldás irányítópultjának megtekintése
 
 A megoldás irányítópultján kezelheti az üzembe helyezett megoldást. Az irányítópult egy globális gyárkonfiguráció hierarchikus megjelenítése, amelyen megtekintheti például az OEE-ket és KPI-ket, és új csomópontokat tehet közzé a telemetriához és műveleti riasztásokhoz.
 
@@ -90,7 +77,7 @@ A megoldás irányítópultján kezelheti az üzembe helyezett megoldást. Az ir
 
     ![Az előre konfigurált megoldás indítása][img-launch-solution]
 
-1. Alapértelmezés szerint a megoldás portálja az *irányítópultot* jeleníti meg. Az oldal bal oldali menüjével a portál más területeire navigálhat.
+1. Alapértelmezés szerint a megoldás portálja az *irányítópultot* jeleníti meg. A portál más területeire az oldal bal oldali menüjével navigálhat.
 
     ![Az előre konfigurált csatlakoztatott gyár megoldás irányítópultja][cf-img-menu]
 
@@ -102,9 +89,7 @@ Az irányítópult az alábbi információkat jeleníti meg:
 * Egy **Overall Equipment Efficiency** (Teljes eszközhatékonyság) panelt, amely a teljes vállalat vagy a megtekintett gyár/gyártósor/állomás OEE-értékeit jeleníti meg. Az érték az állomásnézettől a vállalati szintig összesítve van. Az OEE értéke és annak összetevői részletesebben is elemezhetők.
 * Egy **Key Performance Indicators** (Fő teljesítménymutatók) panelt, amely a teljes vállalat vagy a megtekintett gyár/gyártósor/állomás által előállított egységeket és felhasznált energiát mutatja. Az értékek az állomásnézettől a vállalati szintig összesítve vannak.
 
-<a id="view-factories" class="xliff"></a>
-
-## Üzemek megtekintése
+## <a name="view-factories"></a>Üzemek megtekintése
 
 A *Factories* (Üzemek) panel a megoldás részét képező összes üzem földrajzi helyét, állapotát és aktuális termelési konfigurációját megjeleníti. A helyek listájából átléphet a megoldáshierarchia más szintjeire. A lista sorai hivatkozások, amelyek az adott helyen található gyártósorok részletes adataira mutatnak, amelyek segítenek feltárni a gyártósorok minden részletét, egészen az állomásszintű nézetig. A listán szűrőt is alkalmazhat.
 
@@ -122,27 +107,23 @@ A *Factories* (Üzemek) panel a megoldás részét képező összes üzem földr
 
 6. Valamely állomás adott csomópontjára vonatkozó részletek megtekintéséhez kattintson az adott sorra a listában. Ez a művelet elindítja a helyi panelt a Time Series Insights-vizualizációkkal. A diagramokra kattintva részletesebb elemzéseket is végezhet a Time Series Insights Explorer környezetében.
 
-<a id="view-map" class="xliff"></a>
+## <a name="view-map"></a>Térkép megtekintése
 
-## Térkép megtekintése
-
-Ha előfizetésével hozzá tud férni a Bing Maps API-hoz, a *Factories* (Üzemek) térkép a megoldás részét képező összes üzem földrajzi helyét és állapotát megjeleníti. A térképen megjelenített helyekre kattintva feltárhatja az adott hely részleteit.
+Ha előfizetésével hozzá tud férni a Bing Maps API-hoz, a *Factories* (Üzemek) térkép a megoldás részét képező összes üzem földrajzi helyét és állapotát megjeleníti. Az adott hely részleteit a térképen megjelenített helyekre kattintva tárhatja fel.
 
 ![Előre konfigurált csatlakoztatott gyár megoldás – térkép][cf-img-map]
 
-<a id="view-alerts" class="xliff"></a>
+## <a name="view-alerts"></a>Riasztások megtekintése
 
-## Riasztások megtekintése
-
-Az **Alert** (Riasztások) előzménypanel olyan riasztásokat jelenít meg, amelyek arra figyelmeztetnek, ha egy jelentett érték vagy egy kiszámított OEE/KPI meghaladja a hozzá beállított határértéket. A panel a hierarchia minden szintjére vonatkozó riasztásokat megjeleníti, az állomásszinttől egészen a globális nézetig. A riasztások a riasztás leírását, dátumát és időpontját, helyét és előfordulásainak számát tartalmazzák. A Time Series Insights-adatok segítségével mélyebb bepillantást nyerhet a riasztást kiváltó adatokba. Ahol lehetséges, a riasztások Time Series Insights-adatait a rendszer vizualizálja. Ha Ön rendszergazda, a riasztásokon a következő alapértelmezett műveleteket hajthatja végre:
+Az **Alert** (Riasztások) panel olyan riasztásokat jelenít meg, amelyek arra figyelmeztetnek, ha egy jelentett érték vagy egy kiszámított OEE/KPI meghaladja a hozzá beállított határértéket. A panel a hierarchia minden szintjére vonatkozó riasztásokat megjeleníti, az állomásszinttől egészen a globális nézetig. A riasztások a riasztás leírását, dátumát és időpontját, helyét és előfordulásainak számát tartalmazzák. A Time Series Insights-adatok segítségével mélyebb bepillantást nyerhet a riasztást kiváltó adatokba. Ahol lehetséges, a riasztások Time Series Insights-adatait a rendszer vizualizálja. Ha Ön rendszergazda, a riasztásokon a következő alapértelmezett műveleteket hajthatja végre:
 
 * Lezárhatja a riasztást.
 * Nyugtázhatja a riasztást.
 
 Igény szerint összetettebb műveleteket is végrehajthat. Például egy szerelvény nyomási OPC UA-csomópontja esetében a következőket teheti:
 
-* Betölthet egy weboldalt egy új böngészőablakban, amelyen támogatási információkat jeleníthet meg.
-* Meghívhat egy OPC UA-metódust az eszközön a riasztás okának elhárítása érdekében.
+* Támogatási információkat jeleníthet meg egy weboldalon egy új böngészőablakban.
+* A riasztás okának elhárítása érdekében meghívhat egy OPC UA-metódust az eszközön.
 * Felfüggesztheti az alapértelmezett műveletek rendelkezésre állását.
 
     ![Előre konfigurált csatlakoztatott gyár megoldás – riasztások][cf-img-alerts]
@@ -158,9 +139,7 @@ Igény szerint összetettebb műveleteket is végrehajthat. Például egy szerel
 
 4. A riasztások kezeléséhez több művelet is elérhető a riasztások panelén. Válassza ki a megfelelő lehetőséget, és kattintson a műveletet végrehajtó parancsgombra.
 
-<a id="view-overall-equipment-efficiency" class="xliff"></a>
-
-## A teljes eszközhatékonyság megtekintése
+## <a name="view-overall-equipment-efficiency"></a>A teljes eszközhatékonyság megtekintése
 
 Az OEE a gyártási folyamat hatékonyságát osztályozza a gyártáshoz kapcsolódó főbb működési paraméterek alapján. Az OEE egy iparági szabvány mérőszám, amely a rendelkezésre állás, a teljesítmény és a minőség besorolásainak szorzata: OEE = rendelkezésre állás x teljesítmény x minőség.
 
@@ -176,9 +155,7 @@ Az OEE a gyártási folyamat hatékonyságát osztályozza a gyártáshoz kapcso
 
     ![Előre konfigurált csatlakoztatott gyár megoldás – TSI Explorer][cf-img-tsi-explorer]
 
-<a id="view-key-performance-indicators" class="xliff"></a>
-
-## Fő teljesítménymutatók megtekintése
+## <a name="view-key-performance-indicators"></a>Fő teljesítménymutatók megtekintése
 
 A megoldás két fő teljesítménymutatót biztosít: *egységek száma óránként* és *felhasznált energia (kWh)*.
 
@@ -186,23 +163,17 @@ A megoldás két fő teljesítménymutatót biztosít: *egységek száma óránk
 
 1. A hierarchia valamely szintjére vonatkozó óránkénti egységszám vagy felhasznált energia megtekintéséhez lépjen az adott nézetre. Az óránkénti egységszám és a felhasznált energia megjelenik a panelen.
 
-2. Az óránkénti egységszám vagy a felhasznált energia mélyebb elemzéséhez a hierarchiaadatok valamelyik szintjén kattintson a legyártott egységek vagy a felhasznált energia mutatójára a **Fő teljesítménymutatók** panelén. Megjelenik egy Time Series Insights-vizualizációkat tartalmazó helyi panel, amelyek az elmúlt óra, az elmúlt 24 óra és az elmúlt 7 nap adatait mutatják.
+2. Az óránkénti egységszám vagy a felhasznált energia elemzéséhez a hierarchia valamely további szintjén kattintson a mutatóra a **Fő teljesítménymutatók** panelen. Megjelenik egy Time Series Insights-vizualizációkat tartalmazó helyi panel, amelyek az elmúlt óra, az elmúlt 24 óra és az elmúlt 7 nap adatait mutatják.
 
-<a id="scenario-review" class="xliff"></a>
-
-## Forgatókönyv áttekintése
+## <a name="scenario-review"></a>Forgatókönyv áttekintése
 
 Ebben a forgatókönyvben megfigyelte az üzemek OEE és KPI mutatóit az irányítópulton. Ezután a Time Series Insights használatával további információkhoz jutott, hogy az OEE-k és KPI-k telemetriaadatainak részletesebb feltárásával segíthesse elő a rendellenességek észlelését. A riasztási panelen megtekintette az üzemekben jelentkező problémákat, és a rendelkezésre műveletekkel orvosolta a riasztásokat.
 
-<a id="other-features" class="xliff"></a>
+## <a name="other-features"></a>Egyéb jellemzők
 
-## Egyéb jellemzők
+A következő szakaszokban a csatlakoztatott gyár megoldás néhány egyéb jellemzőjéről lesz szó, amelyek nem szerepeltek az előző forgatókönyvben.
 
-A következő szakaszokban az előre konfigurált csatlakoztatott gyár megoldás néhány egyéb jellemzőjéről lesz szó, amelyek nem szerepeltek az előző forgatókönyvben.
-
-<a id="apply-filters" class="xliff"></a>
-
-## Szűrők alkalmazása
+## <a name="apply-filters"></a>Szűrők alkalmazása
 
 1. Kattintson a **sávnyílra** a gyárhelyek vagy a riasztások panelén elérhető szűrők listájának megjelenítéséhez.
 
@@ -210,7 +181,7 @@ A következő szakaszokban az előre konfigurált csatlakoztatott gyár megoldá
 
     ![Előre konfigurált csatlakoztatott gyár megoldás – szűrők][cf-img-alert-filter]
 
-3. Válassza ki a kívánt szűrőt. Igény szerint szabad szöveget is megadhat a szűrőmezőkben.
+3. Válassza ki a kívánt szűrőt. A szűrőmezőkben szabad szöveget is megadhat.
 
 4. A rendszer működésbe lépteti a szűrőt. A szűrő állapota az irányítópulton is megjeleníthető egy tölcsér ikonon keresztül, amely az üzemek és a riasztások tábláiban is elérhető.
 
@@ -221,9 +192,7 @@ A következő szakaszokban az előre konfigurált csatlakoztatott gyár megoldá
 
 5. A szűrő törléséhez kattintson a tölcsér ikonra, majd a szűrőre a szűrő helyi panelén. Ekkor az **All** (Összes) kifejezés jelenik meg az üzemek és a riasztások tábláiban.
 
-<a id="browse-an-opc-ua-server" class="xliff"></a>
-
-## OPC UA-kiszolgáló tallózása
+## <a name="browse-an-opc-ua-server"></a>OPC UA-kiszolgáló tallózása
 
 Az előre konfigurált megoldás üzembe helyezésekor automatikusan sor kerül a szimulált OPC UA-kiszolgálók kiosztására, amelyek a megoldás böngészőjében tallózhatóak. Ezek a kiszolgálók *szimulált OPC UA-kiszolgálók*. A szimulált kiszolgálók megkönnyítik az előre konfigurált megoldással történő kísérletezést, anélkül, hogy valódi, fizikai kiszolgálók üzembe helyezésére lenne szükség. Valós OPC UA-kiszolgálóknak a megoldáshoz történő csatlakoztatásáról [az OPC UA-eszköz előre konfigurált csatlakoztatott gyár megoldáshoz történő csatlakoztatásával][lnk-connect-cf] foglalkozó oktatóanyagban olvashat.
 
@@ -243,9 +212,7 @@ Az előre konfigurált megoldás üzembe helyezésekor automatikusan sor kerül 
 
 5. Egy csomópont olvasásához, írásához, közzétételéhez vagy meghívásához kattintson jobb gombbal az adott elemre. Az elérhető műveletek a jogosultságaitól és a csomópont attribútumaitól függnek. Az olvasási lehetőség egy helyi panelt jelenít meg, amelyen az adott csomópont értéke látható. Az írási lehetőség egy olyan helyi panelt jelenít meg, amelyen új értéket adhat meg. A hívási lehetőség egy csomópontot jelenít meg, amelyen megadhatja a hívás paramétereit.
 
-<a id="publish-a-node" class="xliff"></a>
-
-## Csomópont közzététele
+## <a name="publish-a-node"></a>Csomópont közzététele
 
 Ha egy *szimulált OPC UA-kiszolgálóhoz* tallóz, új csomópontokat is közzétehet, ha szeretne. Ezeknek a csomópontoknak a telemetriáját is elemezheti a megoldásban. Ezek a *szimulált OPC UA-kiszolgálók* megkönnyítik az előre konfigurált megoldással történő kísérletezést, anélkül, hogy valódi, fizikai eszközök üzembe helyezésére lenne szükség.
 
@@ -255,15 +222,13 @@ Ha egy *szimulált OPC UA-kiszolgálóhoz* tallóz, új csomópontokat is közz�
 
 3. Válassza a **Publish** (Közzététel) lehetőséget.
 
-    ![Csatlakoztatott gyár – csomópont közzététele][cf-img-publish-node]
+    ![A csatlakoztatott gyár közzétesz egy csomópontot][cf-img-publish-node]
 
 4. Megjelenik egy helyi panel, amely tájékoztatja, hogy a közzététel sikeres volt. A csomópont megjelenik az állomásszinten, mellette egy pipával.
 
     ![Előre konfigurált csatlakoztatott gyár megoldás – sikeres közzététel][cf-img-publish-success]
 
-<a id="command-and-control" class="xliff"></a>
-
-## Parancs és vezérlés
+## <a name="command-and-control"></a>Parancs és vezérlés
 
 A csatlakoztatott gyár segítségével közvetlenül a felhőből irányíthatja és felügyelheti ipari eszközeit. A szolgáltatással az eszközök által létrehozott riasztásokra is reagálhat, például parancsokat küldhet a felhőből egy eszközre. A rendelkezésre álló parancsokat az OPC UA-kiszolgáló tallózási fájának **StationCommands** csomópontján találja. Ebben a forgatókönyvben megnyit egy nyomáskiegyenlítő szelepet egy müncheni gyártósor összeszerelő állomásán. Az irányítási és felügyeleti funkciók használatához **Rendszergazda** szerepkörrel kell rendelkeznie az előre konfigurált megoldás üzemelő példányán.
 
@@ -288,9 +253,7 @@ A csatlakoztatott gyár segítségével közvetlenül a felhőből irányíthatj
     ![Előre konfigurált csatlakoztatott gyár megoldás – sikeres hívás][cf-img-call-success]
 
 
-<a id="behind-the-scenes" class="xliff"></a>
-
-## A színfalak mögött
+## <a name="behind-the-scenes"></a>A színfalak mögött
 
 Előre konfigurált megoldás üzembe helyezésekor az üzembehelyezési folyamat több erőforrást hoz létre a kiválasztott Azure-előfizetésben. Ezeket az erőforrásokat az Azure [Portalon][lnk-portal] tekintheti meg. Az üzembe helyezési folyamat létrehoz egy **erőforráscsoportot** az előre konfigurált megoldáshoz kiválasztott néven alapuló névvel:
 
@@ -305,9 +268,7 @@ Amikor elkészült, törölheti az előre konfigurált megoldást az Azure-előf
 > [!NOTE]
 > Ahhoz, hogy biztosan törölje az előre konfigurált megoldáshoz kapcsolódó összes elemet, törölje a megoldást az [azureiotsuite.com][lnk-azureiotsuite] webhelyről. Ne törölje az erőforráscsoportot a portálon.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy üzembe helyezett egy működő előre konfigurált megoldást, a következő cikkek elolvasásával folytathatja az ismerkedést az IoT Suite használatával:
 

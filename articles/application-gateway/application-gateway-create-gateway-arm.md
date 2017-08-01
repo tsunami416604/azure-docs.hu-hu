@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: 8a0eb841b1a41a14e443b6ce93e6b8fb8985a803
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 6d38dd6802a25b147fd014b4d26ca432ca87a07d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/02/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="create-start-or-delete-an-application-gateway-by-using-azure-resource-manager"></a>Application Gateway létrehozása, indítása vagy törlése az Azure Resource Manager használatával
@@ -171,10 +170,10 @@ Ebben a példában két háttérkészlet végzi a hálózati forgalom irányít�
 
 ### <a name="step-3"></a>3. lépés
 
-Konfigurálja a **poolsetting01** nevű Application Gateway-beállítást a háttérkészlet elosztott terhelésű hálózati forgalmához. Mindegyik háttérkészlet saját háttérkészlet-beállításokkal rendelkezhet.  A szabályok a háttérbeli HTTP-beállítások használatával irányítják a forgalmat a háttérkészlet megfelelő tagjaira. A háttérbeli HTTP-beállítások határozzák meg a forgalom háttérkészlet-tagokra való küldése során használt protokollt és portot. A cookie-alapú munkameneteket szintén a háttérbeli HTTP-beállítások határozzák meg.  Ha engedélyezve van, a cookie-alapú munkamenet-affinitás az egyes csomagokhoz tartozó korábbi kéréseknek megfelelő háttérrendszerekre irányítja a forgalmat.
+Konfigurálja a **poolsetting** nevű Application Gateway-beállítást a háttérkészlet elosztott terhelésű hálózati forgalmához. Mindegyik háttérkészlet saját háttérkészlet-beállításokkal rendelkezhet.  A szabályok a háttérbeli HTTP-beállítások használatával irányítják a forgalmat a háttérkészlet megfelelő tagjaira. A háttérbeli HTTP-beállítások határozzák meg a forgalom háttérkészlet-tagokra való küldése során használt protokollt és portot. A cookie-alapú munkameneteket szintén a háttérbeli HTTP-beállítások határozzák meg.  Ha engedélyezve van, a cookie-alapú munkamenet-affinitás az egyes csomagokhoz tartozó korábbi kéréseknek megfelelő háttérrendszerekre irányítja a forgalmat.
 
 ```powershell
-$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
+$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
 ```
 
 ### <a name="step-4"></a>4. lépés
@@ -206,7 +205,7 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol
 Hozza létre a **rule01** nevű terheléselosztási útválasztási szabályt, amely a terheléselosztó viselkedését konfigurálja. A szabályt az előző lépésekben létrehozott háttérkészlet-beállítások, figyelő és háttérkészlet alkotják. A forgalom a meghatározott feltételek alapján a megfelelő háttérrendszerre lesz irányítva.
 
 ```powershell
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting01 -HttpListener $listener -BackendAddressPool $pool
+$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
 ### <a name="step-8"></a>8. lépés

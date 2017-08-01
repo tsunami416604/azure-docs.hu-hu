@@ -12,10 +12,10 @@ ms.topic: hero-article
 ms.devlang: java
 ms.date: 06/20/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 0190fb5a88f766369e6462965e47686c5f289551
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 6ffcf3b38a3d868dfa10ea2e2a9d097441387d4f
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehoz
 
 Emellett a következőket kell elvégezni:
 - Töltse le a [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) JDBC-illesztőprogramot
-- Illessze be a JDBC jar-fájlját (például mysql-connector-java-5.1.42-bin.jar) az alkalmazás osztályútvonalába.
+- Illessze be a JDBC jar-fájlját (például mysql-connector-java-5.1.42-bin.jar) az alkalmazás osztályútvonalába. Ha problémát tapasztal az itt leírtakkal kapcsolatban, tekintse meg környezete dokumentációját az osztályok elérési útvonalával kapcsolatban (például: [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) vagy [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)).
 - A MySQL-hez készült Azure Database-kapcsolat biztonsága megnyitott tűzfallal van konfigurálva és az SSL-beállítások úgy vannak megadva, hogy csatlakozni tudjon az alkalmazás.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése

@@ -1,6 +1,6 @@
 ---
 title: "Bevezetés a Prémium szintű Azure Active Directory használatába"
-description: "Ez a témakör ismerteti, hogyan regisztrálhat a Prémium szintű Active Directory-kiadásra a Mennyiségi licencelés webhelyén keresztül."
+description: "Ismerteti, hogyan regisztrálhat a Prémium szintű Active Directory-kiadásra a mennyiségi licencelési webhelyen."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -11,17 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 73cbbce9ae3d727632b8cac2a29c2b1b92332ae7
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: fac41a05c97088b55f07455133d960687227af0e
 ms.contentlocale: hu-hu
-ms.lasthandoff: 12/07/2016
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="getting-started-with-azure-active-directory-premium"></a>Bevezetés a Prémium szintű Azure Active Directory használatába
+Ez a cikk ismerteti a mennyiségi licencelési program keretében vásárolt Prémium szintű Active Directory használatának első lépéseit. Ha még nem ismeri az Azure Active Directory különböző kiadásait, olvassa el a következő cikket: [Azure Active Directory-kiadások](active-directory-editions.md).  
+
+> [!IMPORTANT]
+> A Microsoft javasolja, hogy az Azure Portalon található [Azure AD felügyeleti központból](https://aad.portal.azure.com) kezelje az Azure AD-t az ebben a cikkben javasolt klasszikus Azure portál helyett. 
+
 A Prémium szintű Active Directory-kiadásra történő regisztrálásra több lehetősége van: 
 
 **Azure vagy Office 365** – Azure- vagy Office 365-előfizetőként az interneten vásárolhatja meg a Prémium szintű Active Directory-kiadást. A részletes lépésekért lásd: [A Prémium szintű Active Directory megvásárlása – meglévő ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) vagy [A Prémium szintű Active Directory megvásárlása – új ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).  
@@ -29,8 +34,6 @@ A Prémium szintű Active Directory-kiadásra történő regisztrálásra több 
 **Nagyvállalati mobilitás és biztonság** – A Nagyvállalati mobilitás és biztonság (korábbi nevén Nagyvállalati mobilitási csomag) révén a szervezetek költséghatékony módon használhatják a következő szolgáltatásokat együttesen, egy licenccsomagban: Prémium szintű Active Directory, Azure Rights Management, Microsoft Intune. További információt a [Nagyvállalati mobilitás és biztonság](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) webhelyén talál. 30 napos ingyenes próbaverzióért kattintson [ide](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0).
 
 **Microsoft mennyiségi licencelés** – A Prémium szintű Active Directory a [Microsoft Nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 vagy több licenc esetén) vagy a [Open mennyiségi licencelés](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5–250 licenc esetén) keretén belül érhető el.
-
-Ez a témakör ismerteti a Mennyiségi licencelési programon keresztül vásárolt Prémium szintű Active Directory használatának első lépéseit. Ha még nem ismeri az Azure Active Directory különböző kiadásait, olvassa el a következő cikket: [Azure Active Directory-kiadások](active-directory-editions.md).  
 
 > [!NOTE]
 > Az Azure Active Directory Prémium és Alapszintű kiadásai az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure Active Directory Prémium és Alapszintű kiadásai jelenleg nem támogatottak Kínában a 21Vianet által működtetett Microsoft Azure szolgáltatásban. További információkért lépjen velünk kapcsolatba az [Azure Active Directory fórumán](https://feedback.azure.com/forums/169401-azure-active-directory/).

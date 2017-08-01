@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 9776bd4f703227f49f83f563489cfa7c44604fb8
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 1dc728cf6497d8ba0d35a7e41e51a52c5ca6d7df
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Bevezetés a megoldások létrehozásába a Batch ügyfél .NET-es kódtárával
@@ -45,7 +44,7 @@ Ez a cikk a C# és a Visual Studio gyakorlati ismeretét feltételezi. Azt is fe
 * **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) cikk [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) szakaszát.
 
 > [!IMPORTANT]
-> A Batch jelenleg *csak* az **Általános célú** tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) című szakaszában található.
+> A Batch jelenleg *csak* az **általános célú** tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) című szakaszában található.
 >
 >
 
@@ -105,7 +104,7 @@ private const string StorageAccountKey  = "";
 ```
 
 > [!IMPORTANT]
-> Ahogy korábban említettük, most meg kell adnia egy **Általános célú** Azure Storage-tárfiók hitelesítő adatait. A Batch-alkalmazások a Blob Storage-ot fogják használni az **Általános célú** Storage-fiókon belül. Ne olyan Storage-fiók hitelesítő adatait adja meg, amelyet a *Blob Storage* fióktípus kiválasztásával hozott létre.
+> Ahogy a korábbiakban említettük, most meg kell adnia egy **általános célú** Azure Storage-tárfiók hitelesítő adatait. A Batch-alkalmazások a Blob Storage-ot fogják használni az **általános célú** Storage-fiókon belül. Ne olyan Storage-fiók hitelesítő adatait adja meg, amelyet a *Blob Storage* fióktípus kiválasztásával hozott létre.
 >
 >
 
@@ -363,7 +362,12 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
 }
 ```
 
-Amikor létrehoz egy készletet a [CreatePool][net_pool_create] használatával, több paramétert is meghatároz, például a számítási csomópontok számát, a [csomópontok méretét](../cloud-services/cloud-services-sizes-specs.md) és a csomópontok operációs rendszerét. A *DotNetTutorial* oktatóanyagban a [CloudServiceConfiguration][net_cloudserviceconfiguration] konfigurációval határozzuk meg a Windows Server 2012 R2 rendszert a [Cloud Servicesből](../cloud-services/cloud-services-guestos-update-matrix.md). Ehelyett a [VirtualMachineConfiguration][net_virtualmachineconfiguration] is használható. Ezzel a Marketplace-ről származó lemezképekből létrehozott csomópontkészleteket hozhat létre, amelyek Windows- és Linux-rendszerképeket is tartalmaznak. További információkért tekintse át a [Linux számítási csomópontok Azure Batch-készletekben történő biztosításával](batch-linux-nodes.md) foglalkozó témakört.
+Amikor létrehoz egy készletet a [CreatePool][net_pool_create] használatával, több paramétert is meghatároz, például a számítási csomópontok számát, a [csomópontok méretét](../cloud-services/cloud-services-sizes-specs.md) és a csomópontok operációs rendszerét. A *DotNetTutorial* oktatóanyagban a [CloudServiceConfiguration][net_cloudserviceconfiguration] konfigurációval határozzuk meg a Windows Server 2012 R2 rendszert a [Cloud Servicesből](../cloud-services/cloud-services-guestos-update-matrix.md). 
+
+A készlethez a [VirtualMachineConfiguration][net_virtualmachineconfiguration] megadásával olyan számításicsomópont-készletek is létrehozhatók, amelyek Azure-beli virtuális gépek. A virtuális gépek számításicsomópont-készletei Windows- vagy [Linux-rendszerképből](batch-linux-nodes.md) hozhatóak létre. A következők lehetnek a virtuálisgép-rendszerképek forrásai:
+
+- Az [Azure Virtual Machines Marketplace][vm_marketplace], ahol használatra kész Windows- és Linux-rendszerképek érhetők el. 
+- Egy Ön által előkészített és biztosított, egyéni rendszerkép. További részletek az egyéni rendszerképekről: [Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével](batch-api-basics.md#pool).
 
 > [!IMPORTANT]
 > A Batchben lévő számítási erőforrások díjkötelesek. A költségek minimalizálása érdekében a `targetDedicatedComputeNodes` értékét 1-re csökkentheti a minta futtatása előtt.
@@ -788,6 +792,7 @@ Most, hogy megismerte a Batch-megoldások alapvető munkafolyamatát, a Batch sz
 [nuget_restore]: https://docs.nuget.org/consume/package-restore/msbuild-integrated#enabling-package-restore-during-build
 [storage_explorers]: http://storageexplorer.com/
 [visual_studio]: https://www.visualstudio.com/vs/
+[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
 [1]: ./media/batch-dotnet-get-started/batch_workflow_01_sm.png "Tárolók létrehozása az Azure Storage-ban"
 [2]: ./media/batch-dotnet-get-started/batch_workflow_02_sm.png "Tevékenységalkalmazás- és bemeneti (adat-) fájlok feltöltése tárolókba"

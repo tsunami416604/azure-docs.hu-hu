@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 475b0cea9be58c9b6fa13645e3c19cc3b689aab2
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 8a03e28045019a4beb423d95a4fa00637cd66294
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/20/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>VMM-felhőben lévő Hyper-V virtuális gépek replikálása az Azure-ba az Azure Portal Site Recovery szolgáltatásának használatával
@@ -164,6 +164,11 @@ Telepítse a VMM-kiszolgálóra az Azure Site Recovery Providert, és regisztrá
 
      ![internet](./media/site-recovery-vmm-to-azure/provider13.PNG)
 7. Fogadja el vagy módosítsa az adatok titkosításához automatikusan létrehozott SSL-tanúsítvány helyét. Ez a tanúsítvány akkor használatos, ha bekapcsolja az Azure által védett felhőre vonatkozó adattitkosítást az Azure Site Recovery portálon. Őrizze biztonságos helyen a tanúsítványt. Ha feladatátvételt végez az Azure-ba, és korábban bekapcsolta az adattitkosítást, szüksége lesz rá a titkosítás feloldásához.
+
+    > [!NOTE]
+    > Az inaktív adatok titkosításához az Azure Site Recovery adattitkosítási beállítása helyett az Azure biztosította titkosítási képesség igénybe vétele javasolt. Az Azure által biztosított titkosítási képesség bekapcsolható az egyes tárfiókokhoz, és jobb teljesítményt szavatol, mivel a titkosítást és annak feloldását az Azure-tároló kezeli.
+    > [További információk a Storage szolgáltatás Azure által biztosított titkosításáról](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption).
+    
 8. A **Kiszolgáló neve** mezőben adjon meg egy, a tárolóban regisztrált VMM-kiszolgálót azonosító rövid nevet. Fürtkonfiguráció használata esetén adja meg a VMM-fürtszerepkör nevét.
 9. Jelölje be a **Felhőmetaadatok szinkronizálása** jelölőnégyzetet, ha szeretné a VMM-kiszolgálón futó összes felhő metaadatait szinkronizálni a tárolóval. Ezt a műveletet kiszolgálónként csak egyszer szükséges elvégezni. Ha nem szeretné az összes felhőt szinkronizálni, ne jelölje be a jelölőnégyzetet, és szinkronizálja egyenként a felhőket a VMM-konzolban, a felhők tulajdonságainál. A folyamat befejezéséhez kattintson a **Regisztráció** elemre.
 
@@ -425,6 +430,12 @@ Az elemek magyarázata:
 * **/Credentials**: kötelező paraméter, amely a regisztrációs kulcsfájl helyét határozza meg.  
 * **/FriendlyName**: kötelező paraméter, amely a Hyper-V gazdakiszolgáló nevét tartalmazza úgy, ahogy az Azure Site Recovery portálon megjelenik.
 * * **/EncryptionEnabled**: nem kötelező paraméter arra az esetre, ha VMM-felhőkben futó Hyper-V virtuális gépeket replikál az Azure-ba. Adja meg, hogy szeretné-e titkosítani a virtuális gépeket az Azure-ban (inaktív adatok titkosítása). A fájlnak **.pfx** kiterjesztésűnek kell lennie. A titkosítás alapértelmezés szerint ki van kapcsolva.
+
+    > [!NOTE]
+    > Az inaktív adatok titkosításához az Azure Site Recovery titkosítási beállítása (EncryptionEnabled beállítás) helyett az Azure biztosította titkosítási képesség igénybe vétele javasolt. Az Azure által biztosított titkosítási funkcionalitás bekapcsolható az egyes tárfiókokhoz, és jobb teljesítményt szavatol, mivel a titkosítást és annak feloldását az Azure-tároló  
+    > végzi.
+    > [További információk a Storage szolgáltatás Azure-beli titkosításáról](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption).
+    
 * **/proxyAddress**: nem kötelező paraméter, amely a proxykiszolgáló címét határozza meg.
 * **/proxyport**: nem kötelező paraméter, amely a proxykiszolgáló portját határozza meg.
 * **/proxyUsername**: nem kötelező paraméter, amely a proxy felhasználónevét határozza meg (ha a proxy hitelesítést igényel).

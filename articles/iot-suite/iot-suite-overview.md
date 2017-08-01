@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/24/2017
+ms.date: 07/24/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: c57c0ddbe8e33d77c6f07f58dfe3236733f6c62f
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: bfa8dbbd0b1d943a9eb7a042df0bac25189d9ac9
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="overview-of-azure-iot-suite"></a>Az Azure IoT Suite áttekintése
@@ -55,7 +54,13 @@ A tipikus IoT-megoldások architektúrájának áttekintéséért lásd a [Micro
 
 ## <a name="preconfigured-solutions"></a>Előre konfigurált megoldások
 
-Az IoT Suite előre konfigurált megoldásokat tartalmaz, amelyekkel gyorsan teheti meg az első lépéseket és fedezheti fel az általános IoT-forgatókönyveket, például a *távoli figyelést*, a *prediktív karbantartást* és a *csatlakoztatott gyárat*. Ezeket a megoldásokat az Azure-előfizetésre telepítheti, majd egy teljes körű IoT-forgatókönyvet futtathat.
+Az IoT Suite előre konfigurált megoldásokat tartalmaz, amelyekkel gyorsan teheti meg az első lépéseket és fedezheti fel az általános IoT-forgatókönyveket, például a következőket:
+
+* Távoli figyelés
+* Prediktív karbantartás
+* Csatlakoztatott gyár
+
+Ezeket a megoldásokat az Azure-előfizetésre telepítheti, majd egy teljes körű IoT-forgatókönyvet futtathat.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,10 +1,10 @@
-Version 3.0 of the AzureRm.Resources module included significant changes in how you work with tags. Before proceeding, check your version:
+Az AzureRm.Resources modul 3.0-s verziója jelentős változásokat hozott a címkék használata terén. A továbblépés előtt ellenőrizze, milyen verziót használ:
 
 ```powershell
 Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ```
 
-If your results show version 3.0 or later, the examples in this topic work with your environment. If you do not have version 3.0 or later, [update your version](/powershell/azureps-cmdlets-docs/) by using PowerShell Gallery or Web Platform Installer before proceeding with this topic.
+Ha 3.0-s vagy annál újabb verziót, a témakörben szereplő példák alkalmazhatók az Ön által használt környezetre. Ha a 3.0-nál régebbi verzióval rendelkezik, először [frissítsen egy újabb verzióra](/powershell/azureps-cmdlets-docs/) a PowerShell-galériával vagy a Webplatform-telepítővel, és csak ezt követően lépjen tovább.
 
 ```powershell
 Version
@@ -12,13 +12,13 @@ Version
 3.5.0
 ```
 
-To see the existing tags for a **resource group**, use:
+*Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
 ```powershell
 (Get-AzureRmResourceGroup -Name examplegroup).Tags
 ```
 
-Which returns the following format:
+A szkript a következő formátumot adja vissza:
 
 ```powershell
 Name                           Value
@@ -27,39 +27,39 @@ Dept                           IT
 Environment                    Test
 ```
 
-To see the existing tags for a **resource with a specified resource ID**, use:
+*Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
 
 ```powershell
 (Get-AzureRmResource -ResourceId {resource-id}).Tags
 ```
 
-Or, to see the existing tags for a **resource with a specified name, and resource group**, use:
+Vagy *megadott névvel és erőforráscsoporttal rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
 
 ```powershell
 (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
-To get **resource groups with a specific tag**, use:
+*Adott címkével rendelkező erőforráscsoportok* lekéréséhez használja a következőt:
 
 ```powershell
 (Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name 
 ```
 
-To get **resources with a specific tag**, use:
+*Adott címkével rendelkező erőforrások* lekéréséhez használja a következőt:
 
 ```powershell
 (Find-AzureRmResource -TagName Dept -TagValue Finance).Name
 ```
 
-Every time you apply tags to a resource or resource group, you overwrite the existing tags on that resource or resource group. Therefore, you must use a different approach based on whether the resource or resource group has existing tags. 
+Minden alkalommal, amikor címkével lát el egy erőforrást vagy erőforráscsoportot, felülírja a hozzá tartozó korábbi címkéket. Ezért különböző megközelítéseket kell alkalmaznia annak függvényében, hogy az adott erőforrás vagy erőforráscsoport rendelkezik-e címkével. 
 
-To add tags to a **resource group without existing tags**, use:
+Ha *meglévő címkék nélküli erőforráscsoporthoz* szeretne címkéket adni, használja a következőt:
 
 ```powershell
 Set-AzureRmResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
 ```
 
-To add tags to a **resource group with existing tags**, retrieve the existing tags, add the new tag, and reapply the tags:
+Ha *meglévő címkékkel rendelkező erőforráscsoporthoz* szeretne címkéket adni, kérje le a meglévő címkéket, adja hozzá az új címkét, és alkalmazza ismét a címkéket:
 
 ```powershell
 $tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
@@ -67,13 +67,13 @@ $tags += @{Status="Approved"}
 Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
 ```
 
-To add tags to a **resource without existing tags**, use:
+Ha *meglévő címkék nélküli erőforráshoz* szeretne címkéket adni, használja a következőt:
 
 ```powershell
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName examplevnet -ResourceGroupName exampleroup
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName examplevnet -ResourceGroupName examplegroup
 ```
 
-To add tags to a **resource with existing tags**.
+Ha *meglévő címkékkel rendelkező erőforráshoz* szeretne címkéket adni, használja a következőt:
 
 ```powershell
 $tags = (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
@@ -81,7 +81,7 @@ $tags += @{Status="Approved"}
 Set-AzureRmResource -Tag $tags -ResourceName examplevnet -ResourceGroupName examplegroup
 ```
 
-To apply all tags from a resource group to its resources, and **not retain existing tags on the resources**, use the following script:
+Ha az erőforráscsoport összes címkéjét szeretné alkalmazni a csoport erőforrásaira, és *nem szeretné megőrizni az erőforrások meglévő címkéit*, használja a következő szkriptet:
 
 ```powershell
 $groups = Get-AzureRmResourceGroup
@@ -91,7 +91,7 @@ foreach ($g in $groups)
 }
 ```
 
-To apply all tags from a resource group to its resources, and **retain existing tags on resources that are not duplicates**, use the following script:
+Ha az erőforráscsoport összes címkéjét szeretné alkalmazni a csoport erőforrásaira, és *nem szeretné megőrizni az erőforrások meglévő, nem ismétlődő címkéit*, a következő szkriptet kell használnia:
 
 ```powershell
 $groups = Get-AzureRmResourceGroup
@@ -113,7 +113,7 @@ foreach ($g in $groups)
 }
 ```
 
-To remove all tags, pass an empty hash table.
+Az összes címke eltávolításához adjon át egy üres kivonattáblát:
 
 ```powershell
 Set-AzureRmResourceGroup -Tag @{} -Name examplegroup

@@ -13,36 +13,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2017
+ms.date: 07/25/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: e0e658fc392bf6a53f777f22a2e0b6e7bd742f97
-ms.lasthandoff: 04/25/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 8bad198488c4940a83eb32ec02122a91d47ca86c
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>A prediktív karbantartási előre konfigurált megoldás áttekintése
 
 A *prediktív karbantartás* [előre konfigurált megoldás][lnk_preconfigured_solutions] a [Microsoft Azure IoT Suite][lnk_iot_suite] előre konfigurált megoldásainak egyike. Ez a megoldás a valós idejű eszköztelemetria-gyűjtést az [Azure Machine Learning][lnk-machine-learning] használatával létrehozott prediktív modellel integrálja.
 
-Az Azure IoT Suite segítségével a vállalatok gyorsan és könnyedén figyelhetik az objektumokat és csatlakozhatnak hozzájuk, valamint valós időben elemezhetik az adatokat. A prediktív karbantartási előre konfigurált megoldás részletes irányítópultokkal és látványtervekkel használja fel ezeket az adatokat, így a hatékonyságot és a bevételeket növelő új elemzéseket biztosít.
+Az Azure IoT Suite segítségével gyorsan és könnyedén figyelheti az objektumokat és csatlakozhatnak hozzájuk, valamint valós időben elemezheti a telemetriát irányítópultok és látványtervek segítségével. A prediktív karbantartási megoldás irányítópultjai és látványtervei hatékonyságot és a bevételeket növelő új elemzéseket biztosítanak.
 
 ## <a name="the-scenario"></a>A forgatókönyv
-A Fabrikam egy regionális légitársaság, amely a nagyszerű ügyfélélményre összpontosít versenyképes árakon. A járatok késésének egyik okai a karbantartási problémák, és a repülőmotorok karbantartása különösen nagy kihívást jelent. A repülés közbeni motorhibákat minden áron el kell kerülni, így a Fabrikam rendszeresen megvizsgálja a motorokat, és ütemezett karbantartási programot követ. A repülők motorja azonban nem mindig ugyanolyan ütemben használódik el. Időnként feleslegesen végeznek karbantartást a motorokon. Még fontosabb, hogy olyan problémák merülnek fel, amelyek miatt a repülő nem szállhat fel a karbantartásig. Ezek a problémák költséges késéseket okoznak, különösen, ha egy repülő olyan helyen van, ahol nincsenek megfelelő szerelők vagy pótalkatrészek.
 
-A Fabrikam repülőmotorjai olyan érzékelőkkel vannak felszerelve, amelyek megfigyelik a motor állapotát repülés közben. A Fabrikam a prediktív karbantartási előre konfigurált megoldás használatával gyűjti be a repülés alatt begyűjtött érzékelőadatokat. A motor működési és meghibásodási adatainak többéves begyűjtése után a Fabrikam adatszakértői olyan módszert alkottak meg, amely előrejelzi a repülőmotor fennmaradó hasznos élettartamát (RUL). Összefüggést találtak a négy motorérzékelőből érkező adatok és a meghibásodáshoz vezető motorkopás között. A Fabrikam továbbra is rendszeres vizsgálatokat végez a biztonság érdekében, azonban mostantól a modellek használatával kiszámíthatja mindegyik motor RUL értékét minden egyes repülőút után. A modell a repülőút alatt a motorokból gyűjtött telemetriát használja. A Fabrikam így előre jelezheti a jövőbeli meghibásodási pontokat, és megtervezheti a karbantartást és a javítást.
+A Fabrikam egy regionális légitársaság, amely a nagyszerű ügyfélélményre összpontosít versenyképes árakon. A járatok késésének egyik okai a karbantartási problémák, és a repülőmotorok karbantartása különösen nagy kihívást jelent. A Fabrikamnak minden áron el kell kerülnie a repülés közbeni motorhibákat, így rendszeresen megvizsgálja a motorokat, és tervszerűen ütemezi a karbantartást. A repülők motorja azonban nem mindig ugyanolyan ütemben használódik el. Időnként feleslegesen végeznek karbantartást a motorokon. Még fontosabb, hogy olyan problémák merülnek fel, amelyek miatt a repülő nem szállhat fel a karbantartásig. Ezek a problémák különösen költségesek lehetnek, ha egy repülő olyan helyen van, ahol nincsenek megfelelő szerelők vagy pótalkatrészek.
+
+A Fabrikam repülőmotorjai olyan érzékelőkkel vannak felszerelve, amelyek megfigyelik a motor állapotát repülés közben. A Fabrikam a prediktív karbantartási megoldás használatával gyűjti be a repülés alatt begyűjtött érzékelőadatokat. A motor működési és meghibásodási adatainak többéves begyűjtése után a Fabrikam adatszakértői olyan módszert alkottak meg, amely előrejelzi a repülőmotor fennmaradó hasznos élettartamát (RUL). A modell a négy motorérzékelőből érkező adatok és a meghibásodáshoz vezető motorkopás közötti összefüggést alkalmazza. A Fabrikam továbbra is rendszeres vizsgálatokat végez a biztonság érdekében, azonban mostantól a modellek használatával kiszámíthatja mindegyik motor RUL értékét minden egyes repülőút után. A modell a repülőút alatt a motorokból gyűjtött telemetriát használja. A Fabrikam így előre jelezheti a jövőbeli meghibásodási pontokat, és megtervezheti a karbantartást és a javítást.
 
 > [!NOTE]
 > A megoldásmodell tényleges motorkopási adatokat használ.
 
-A karbantartás várható idejének előrejelzésével a Fabrikam optimalizálhatja a műveleteket a költségek csökkentése érdekében. A karbantartási koordinátorok és a menetrendek készítői együttműködve elvégzik a következőket:
+A karbantartás várható idejének előrejelzésével a Fabrikam optimalizálhatja a műveleteket a költségek csökkentése érdekében.
+
+A karbantartási koordinátorok és a menetrendek készítői együttműködve elvégzik a következőket:
 
 - Megtervezik a karbantartást, hogy az egybeessen a repülő adott helyen való megállásával.
 - Biztosítják, hogy elegendő idő maradjon a repülő karbantartására a menetrend megzavarása nélkül.
 - Beosztják a technikusokat, hogy biztosítsák a repülőgépek hatékony, várakozás nélküli szervizelését.
 
-A készletgazdálkodási vezetők karbantartási terveket kapnak, hogy optimalizálhassák a rendelési folyamatokat és a pótalkatrészek készletét. A Fabrikam mindezeknek köszönhetően képes minimálisra csökkenteni a repülő földön töltött idejét és csökkenteni a működési költségeket, miközben az utasok és a személyzet biztonságát is garantálja.
+A készletgazdálkodási vezetők karbantartási terveket kapnak, hogy optimalizálhassák a rendelési folyamatokat és a pótalkatrészek készletét.
+
+A Fabrikam mindezeknek köszönhetően képes minimálisra csökkenteni a repülő földön töltött idejét és csökkenteni a működési költségeket, miközben az utasok és a személyzet biztonságát is garantálja.
 
 Annak megértéséhez, hogy az [Azure IoT Suite][lnk_iot_suite] hogyan nyújt az ügyfeleknek olyan képességeket, amelyekre a prediktív karbantartás lehetőségeinek kiaknázásához szükségük van, tekintse át ezt az [információs grafikát][lnk_infographic].
 
@@ -50,7 +55,7 @@ Annak megértéséhez, hogy az [Azure IoT Suite][lnk_iot_suite] hogyan nyújt az
 
 A megoldás egy sablonként elérhető meglévő Azure Machine Learning-modellel mutatja be ezeket a képességeket, amely az IoT Suite szolgáltatásokon keresztül gyűjtött eszköztelemetriából dolgozik. A Microsoft nyilvánosan elérhető adatok alapján<sup>\[1\]</sup> felépítette egy repülőmotor [regressziós modelljét][lnk_regression_model] és a modell használatának lépésenkénti útmutatóját.
 
-Az Azure IoT prediktív karbantartási előre konfigurált megoldás az ebből a sablonból létrehozott regressziós modellt használja. A rendszer az Azure-előfizetésben helyezi üzembe a modellt, és egy automatikusan létrehozott API-n keresztül teszi közzé. A megoldásban a tesztadatok egy része szerepel, amely (összesen 100-ból) 4 motort és (összesen 21-ből) 4 érzékelőadat-streamet ábrázol. Ezek az adatok elegendők ahhoz, hogy pontos eredményt biztosítsanak a betanított modellből.
+Az Azure IoT prediktív karbantartási megoldás az ebből a sablonból létrehozott regressziós modellt használja. A rendszer az Azure-előfizetésben helyezi üzembe a modellt, és egy automatikusan létrehozott API-n keresztül teszi közzé. A megoldásban a tesztadatok egy része szerepel, amely (összesen 100-ból) 4 motort és (összesen 21-ből) 4 érzékelőadat-streamet ábrázol. Ezek az adatok elegendők ahhoz, hogy pontos eredményt biztosítsanak a betanított modellből.
 
 *\[1\] A. Saxena és K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set”, NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
 
@@ -86,17 +91,19 @@ Hiányol bizonyos részleteket a megoldásával kapcsolatban? A [felhasználói 
 Ez a szakasz végigvezeti a megoldás felhasználói felületén.
 
 ### <a name="predictive-maintenance-dashboard"></a>Prediktív karbantartási irányítópult
+
 A webalkalmazás ezen oldala PowerBI JavaScript-vezérlőket használ (lásd a [PowerBI-vizualizációk tárát][lnk-powerbi]) a következők megjelenítéséhez:
 
 * A Blob Storage-ban lévő Stream Analytics-feladatok kimeneti adatai.
 * Az RUL és a ciklusszám repülőmotoronként.
 
 ### <a name="observing-the-behavior-of-the-cloud-solution"></a>A felhőmegoldás viselkedésének megfigyelése
+
 A kiépített erőforrások megtekintéséhez az Azure Portalon keresse meg a kiválasztott megoldásnévvel rendelkező erőforráscsoportot.
 
 ![][img-resource-group]
 
-Az előre konfigurált megoldás kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon lévő csempéről is elérheti ezt a Machine Learning-munkaterületet a kiépített megoldáshoz, amikor a megoldás **Kész** állapotban van.
+Az előre konfigurált megoldás kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. Az [azureiotsuite.com][lnk-azureiotsuite] oldalon is elérheti ezt a Machine Learning-munkaterületet a kiépített megoldáshoz. Amikor a megoldás **Kész** állapotban van, elérhetővé válik egy csempe ezen az oldalon.
 
 ![][img-machine-learning]
 
@@ -104,11 +111,11 @@ A megoldás portálján láthatja, hogy a minta négy szimulált eszközzel van 
 
 ![][img-simulation-stopped]
 
-Kattintson a **Start simulation** (Szimuláció indítása) elemre a szimuláció elindításához, amelyben az érzékelő előzményei, az RUL, a ciklusok és az RUL előzményei töltik ki az irányítópultot.
+Kattintson a **Start simulation** (Szimuláció indítása) elemre a szimuláció elindításához. Az irányítópultot az érzékelő előzményei, az RUL, a ciklusok és az RUL előzményei töltik ki.
 
 ![][img-simulation-running]
 
-Ha az RUL 160-nál kisebb (amely egy bemutatási célra véletlenszerűen kiválasztott küszöbérték), a megoldás portálja egy figyelmeztető szimbólumot jelenít meg az RUL kijelzése mellett, és a repülő motorját sárga színnel emeli ki. Látható, hogy az RUL értékek összesítve jellemzően csökkennek, de felfelé és lefelé is változnak. Ez a viselkedés a változó ciklushosszokból és modellpontosságból következik.
+Ha az RUL 160-nál kisebb (amely egy bemutatási célra véletlenszerűen kiválasztott küszöbérték), a megoldás portálja egy figyelmeztető szimbólumot jelenít meg az RUL kijelzése mellett. A megoldásportál emellett a repülő motorját sárga színnel emeli ki. Látható, hogy az RUL értékek összesítve jellemzően csökkennek, de felfelé és lefelé is változnak. Ez a viselkedés a változó ciklushosszokból és modellpontosságból következik.
 
 ![][img-simulation-warning]
 
@@ -122,7 +129,7 @@ Bármikor leállíthatja a szimulációt, de a **Start Simulation** (Szimuláci�
 
 További információ arról, hogyan teszi lehetővé az Azure IoT a prediktív karbantartási forgatókönyveket: [Capture value from the Internet of Things][lnk_capture_value] (Érték rögzítése az eszközök internetes hálózatáról).
 
-Tekintse át a prediktív karbantartás előre konfigurált megoldás [bemutatóját][lnk-predictive-walkthrough].
+Tekintse át a prediktív karbantartási megoldás [bemutatóját][lnk-predictive-walkthrough].
 
 Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltatásait és funkcióit is:
 

@@ -1,6 +1,6 @@
 ---
 title: "Csatlakozás a PostgreSQL-hez készült Azure Database-hez a C# segítségével | Microsoft Docs"
-description: "Az alábbi gyors útmutatóban egy olyan C# (.Net) kódminta található, amely a PostgreSQL-hez készült Azure Database csatlakoztatására és adatlekérdezésre használható."
+description: "Ez a rövid útmutató egy C# (.NET) mintakódot biztosít, amelyekkel csatlakozhat a PostgreSQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla."
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,23 +11,19 @@ ms.custom: mvc
 ms.devlang: csharp
 ms.topic: hero-article
 ms.date: 06/23/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 87854637471fa15a76ae216cb57c549962810b7b
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 9f393e9ab1b3b6ab7f1ff085d625362d50adc97c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
-<a id="azure-database-for-postgresql-use-net-c-to-connect-and-query-data" class="xliff"></a>
-
-# A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés .NET (C#) használatával
+# <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés .NET (C#) használatával
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet C# nyelven írt alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a C# használatával kapcsolatban, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
-Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
+## <a name="prerequisites"></a>Előfeltételek
+A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
 - [DB létrehozása – portál](quickstart-create-server-database-portal.md)
 - [DB létrehozása – CLI](quickstart-create-server-database-azure-cli.md)
 
@@ -36,22 +32,16 @@ Emellett a következőket kell elvégezni:
 - A [Visual Studio](https://www.visualstudio.com/downloads/) telepítése
 - Az [Npgsql](http://www.npgsql.org/doc/index.html) telepítése 
 
-<a id="install-visual-studio-and-net" class="xliff"></a>
-
-## A Visual Studio és a .NET telepítése
+## <a name="install-visual-studio-and-net"></a>A Visual Studio és a .NET telepítése
 A jelen szakaszban ismertetett lépések feltételezik, hogy Ön rendelkezik .NET-fejlesztési tapasztalatokkal.
 
-<a id="windows-net-framework-and-net-core" class="xliff"></a>
-
-### **A Windows .NET-keretrendszer és a .NET Core**
+### <a name="windows-net-framework-and-net-core"></a>**A Windows .NET-keretrendszer és a .NET Core**
 A Visual Studio 2017 Community egy minden funkcióval ellátott, bővíthető, ingyenes IDE, amellyel korszerű alkalmazásokat hozhat létre Android, iOS és Windows operációs rendszerekre, valamint webes illetve adatbázis-alkalmazásokhoz és felhőszolgáltatásokhoz. Telepítheti a teljes .NET-keretrendszert vagy csak a .NET Core-t. A rövid útmutatóban foglalt kódrészletek mindkettővel működnek. Ha a Visual Studio már telepítve van a számítógépén, a következő pár lépés kihagyható.
 
 1. Töltse le a [Visual Studio 2017 telepítőt](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
 2. Futtassa a telepítőt, és kövesse a telepítési utasításokat a telepítés befejezéséhez.
 
-<a id="mac-os" class="xliff"></a>
-
-### **Mac OS**
+### <a name="mac-os"></a>**Mac OS**
 Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a .NET Core projektet. A **brew**, az **OpenSSL** és a **.NET Core** telepítéséhez használja a következő parancsokat. 
 
 ```bash
@@ -65,9 +55,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 Telepítse a .NET Core-t a macOS rendszeren. Töltse le a [hivatalos telepítőt](https://go.microsoft.com/fwlink/?linkid=843444). Ez a telepítő feltelepíti az eszközöket, és az elérési útra helyezi őket, így a dotnet elindítható a konzolról.
 
-<a id="linux-ubuntu" class="xliff"></a>
-
-### **Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a .NET Core projektet. A **.NET Core** telepítéséhez használja a következő parancsokat.
 
 ```bash
@@ -77,10 +65,8 @@ sudo apt-get update
 sudo apt-get install dotnet-dev-1.0.1
 ```
 
-<a id="install-npgsql-references-into-your-visual-studio-solution" class="xliff"></a>
-
-## Telepítse az Npgsql-hivatkozásokat Visual Studio megoldásába
-A C#-alkalmazásból a PostgreSQL-hez való kapcsolódáshoz használja a Npgsql nevű nyílt forráskódú ADO.Net-kódtárat. A NuGet segítségével könnyedén letöltheti és kezelheti a hivatkozásokat.
+## <a name="install-npgsql-references-into-your-visual-studio-solution"></a>Telepítse az Npgsql-hivatkozásokat Visual Studio megoldásába
+A C# alkalmazásról a PostgreSQL-hez történő csatlakozáshoz használja az Npgsql nevű nyílt forráskódú ADO.NET-könyvtárat. A NuGet segítségével könnyedén letöltheti és kezelheti a hivatkozásokat.
 
 1. Hozzon létre egy új C#-megoldást, vagy nyisson meg egy meglévőt: 
    - A Visual Studióban hozzon létre egy megoldást a Fájl menü **Új** > **Projekt** parancsára kattintva.
@@ -92,21 +78,17 @@ A C#-alkalmazásból a PostgreSQL-hez való kapcsolódáshoz használja a Npgsql
    - A **Package Manager Console** (Csomagkezelő konzol) ablakban írja be a `Install-Package Npgsql` parancsot.
    - A telepítési parancs letölti a Npgsql.dll-t és a kapcsolódó szerelvényeket, és hozzáadja őket függőségeként a megoldásban.
 
-<a id="get-connection-information" class="xliff"></a>
-
-## Kapcsolatadatok lekérése
-Kérje le a PostgreSQL-hez készült Azure Database csatlakoztatásához szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
+## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
+Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra, például **mypgserver-20170401**.
+2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mypgserver-20170401**).
 3. Kattintson a **mypgserver-20170401** kiszolgálónévre.
 4. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
- ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-csharp/1-connection-string.png)
+ ![PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-csharp/1-connection-string.png)
 5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Overview** (Áttekintés) oldalra, és itt megtudhatja a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén visszaállíthatja a jelszót.
 
-<a id="connect-create-table-and-insert-data" class="xliff"></a>
-
-## Csatlakozás, táblák létrehozása és adatok beszúrása
+## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kód használatával csatlakozhat és töltheti be az adatokat a **CREATE TABLE** és az **INSERT INTO** SQL-utasítások segítségével. A kód az NpgsqlCommand osztályt használja az [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) metódussal egy PostgreSQL-kapcsolat létesítésére. A kód ezután a [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQuery()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) metódust az adatbázis-parancsok futtatásához. 
 
 Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
@@ -137,7 +119,7 @@ namespace Driver
             //
             string connString =
                 String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};",
+                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4}; SSL Mode=Prefer; Trust Server Certificate=true",
                     Host,
                     User,
                     DBname,
@@ -183,9 +165,7 @@ namespace Driver
 }
 ```
 
-<a id="read-data" class="xliff"></a>
-
-## Adatok olvasása
+## <a name="read-data"></a>Adatok olvasása
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását az adott **SELECT** SQL-utasítás segítségével. A kód az NpgsqlCommand osztályt használja az [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) metódussal egy PostgreSQL-kapcsolat létesítésére. A kód ezután a [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) és az [ExecuteReader()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader) metódust használja az adatbázis-parancsok futtatásához. Ezután a kód a [Read()](http://www.npgsql.org/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read) metódust használja az eredményekben lévő rekordokra lépéshez. Ezt követően a kód a [GetInt32()](http://www.npgsql.org/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) és a [GetString()](http://www.npgsql.org/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) metódus használatával elemzi a bejegyzésben szereplő értékeket.
 
 Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
@@ -255,9 +235,7 @@ namespace Driver
 ```
 
 
-<a id="update-data" class="xliff"></a>
-
-## Adatok frissítése
+## <a name="update-data"></a>Adatok frissítése
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását az adott **UPDATE** SQL-utasítás segítségével. A kód az NpgsqlCommand osztályt használja az [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) metódussal egy PostgreSQL-kapcsolat létesítésére. A kód ezután a [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQuery()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) metódust az adatbázis-parancsok futtatásához.
 
 Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
@@ -321,9 +299,7 @@ namespace Driver
 ```
 
 
-<a id="delete-data" class="xliff"></a>
-
-## Adat törlése
+## <a name="delete-data"></a>Adat törlése
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását egy **DELETE** SQL-utasítás segítségével. 
 
  A kód az NpgsqlCommand osztályt használja az [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) metódussal egy PostgreSQL-kapcsolat létesítésére. A kód ezután a [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQuery()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) metódust az adatbázis-parancsok futtatásához.
@@ -385,9 +361,7 @@ namespace Driver
 }
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Adatbázis migrálása az Exportálás és importálás lehetőség használatával](./howto-migrate-using-export-and-import.md)
+> [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)
 

@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 05/11/2017
+ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a818a41e2e11926c2dee27e081ae8ffc0a4a6298
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 9bee0344ba70c50cda36a87ea617906283040ff9
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
@@ -78,7 +77,7 @@ Ebben a cikkben az Interaktív bejelentkezést fogjuk használni az Azure-ba tö
 az login
 ```
 
-Ahogy az itt látható, az `az login` parancs egy tokent ad vissza, amelyet a hitelesítéshez fog használni. A megjelenő utasításoknak megfelelően nyisson meg egy weblapot és küldje el a tokent az Azure-nak:
+Ahogyan az itt látható, az `az login` parancs egy tokent ad vissza, amely a hitelesítéshez használható. A megjelenő utasításoknak megfelelően nyisson meg egy weblapot és küldje el a tokent az Azure-nak:
 
 ![Jelentkezzen be az Azure-ba](./media/batch-cli-get-started/az-login.png)
 
@@ -119,6 +118,10 @@ A Batch-fiók hitelesítését két módon is elvégezheti:
     ```
 
 A [Shell-szkript minták](#sample-shell-scripts) rész példákon keresztül mutatja be, hogyan jelentkezhet be az Azure CLI-vel Batch-fiókjába mind az Azure AD, mind a megosztott kulcsos hitelesítés használatával.
+
+## <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának (előzetes verzió) használata
+
+Az Azure parancssori felületén végpontok között futtathat Batch-feladatokat kódírás nélkül. A Batch sablonfájljai támogatják készletek, feladatok és tevékenységek létrehozását az Azure parancssori felületéről. Az Azure parancssori felületéről feltöltheti a feladatok bemeneti fájljait a Batch-fiókhoz társított Azure Storage-fiókba, és onnan letöltheti a feladat kimeneti fájljait. További információk: [Az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának (előzetes verzió) használata](batch-cli-templates.md).
 
 ## <a name="sample-shell-scripts"></a>Shell-szkript minták
 
@@ -187,7 +190,7 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 
 * További információt az Azure CLI-vel kapcsolatban az [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure/overview) talál.
 * További információt a Batch-erőforrásokkal kapcsolatban a [Az Azure Batch áttekintése fejlesztők számára](batch-api-basics.md) című cikkben talál.
-* A szolgáltatás Batch számítási csomópontokon futtatott alkalmazások kezelésére és üzembe helyezésére való használatával kapcsolatban lásd a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikket.
+* További információkat készletek, feladatok és tevékenységek Batch-sablonokkal, kódírás nélkül történő létrehozásáról [az Azure Batch parancssori felületi sablonjainak és (előzetes verziójú) fájlátviteli funkciójának használatával kapcsolatos](batch-cli-templates.md) cikkben talál.
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md

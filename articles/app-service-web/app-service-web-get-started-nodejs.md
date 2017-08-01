@@ -22,8 +22,7 @@ ms.contentlocale: hu-hu
 ms.lasthandoff: 07/06/2017
 
 ---
-# Node.js-webalkalmazás létrehozása az Azure-ban
-<a id="create-a-nodejs-web-app-in-azure" class="xliff"></a>
+# <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
 Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a Node.js-alkalmazások Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a Git szoftver használatával pedig üzembe helyezheti a Node.js-mintakódot a webalkalmazásban.
 
@@ -31,8 +30,7 @@ Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az előfeltételek telepítése után a lépések végrehajtása nagyjából öt percet vesz igénybe.
 
-## Előfeltételek
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>Előfeltételek
 
 A gyorsútmutató elvégzéséhez:
 
@@ -45,8 +43,7 @@ A gyorsútmutató elvégzéséhez:
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## A minta letöltése
-<a id="download-the-sample" class="xliff"></a>
+## <a name="download-the-sample"></a>A minta letöltése
 
 Egy terminálablakban futtassa a következő parancsot a mintaalkalmazás-tárház helyi számítógépre történő klónozásához.
 
@@ -62,8 +59,7 @@ Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
 cd nodejs-docs-hello-world
 ```
 
-## Az alkalmazás futtatása helyben
-<a id="run-the-app-locally" class="xliff"></a>
+## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
 
 Az alkalmazás a terminálablak megnyitásával és a `npm start` szkript használatával helyben futtatható a beépített Node.js HTTP-kiszolgáló indításához.
 
@@ -131,8 +127,7 @@ To https://<app_name>.scm.azurewebsites.net:443/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## Az alkalmazás megkeresése tallózással
-<a id="browse-to-the-app" class="xliff"></a>
+## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
 Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
 
@@ -146,8 +141,7 @@ A Node.js mintakód az Azure App Service webalkalmazásban fut.
 
 **Gratulálunk!** Elvégezte az első Node.js-app üzembe helyezését az App Service-ben.
 
-## A kód frissítése és ismételt üzembe helyezése
-<a id="update-and-redeploy-the-code" class="xliff"></a>
+## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
 
 Egy szövegszerkesztő használatával nyissa meg a Node.js-alkalmazáson belüli `index.js` fájlt, majd módosítsa annak szövegét a `response.end` hívásán belül:
 
@@ -166,8 +160,7 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
-## Az új Azure-webapp kezelése
-<a id="manage-your-new-azure-web-app" class="xliff"></a>
+## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
 
 A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
@@ -183,8 +176,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Node.js és MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)

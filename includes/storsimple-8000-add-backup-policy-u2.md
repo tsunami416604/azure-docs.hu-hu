@@ -1,44 +1,42 @@
 <!--author=alkohli last changed: 02/10/17-->
 
-<a id="to-add-a-storsimple-backup-policy" class="xliff"></a>
+#### <a name="to-add-a-storsimple-backup-policy"></a>StorSimple biztonsági mentési házirend hozzáadása
 
-#### To add a StorSimple backup policy
+1. A StorSimple-eszközben kattintson a **Biztonsági mentési szabályzat** lehetőségre.
 
-1. Go to your StorSimple device and click **Backup policy**.
-
-2. In the **Backup policy** blade, click **+ Add policy** from the command bar.
+2. A **Biztonsági mentési szabályzat** panelen kattintson a **+ Szabályzat hozzáadása** gombra a parancssávon.
    
-    ![Add a backup policy](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
+    ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
 
-3. In the **Create backup policy** blade, do the following steps:
+3. Hajtsa végre a következő lépéseket a **Biztonsági mentési szabályzat létrehozása** panelen:
    
-   1. **Select device** is automatically populated based on the device you selected.
+   1. Az **Eszköz kiválasztása** mezőt a rendszer automatikusan kitölti a kiválasztott eszköz alapján.
    
-   2. Specify a backup **Policy name** that contains between 3 and 150 characters.
+   2. Adjon egy 3–150 karakter hosszúságú nevet a biztonsági mentési **szabályzat neveként**. A szabályzat nem nevezhető át a létrehozása után.
        
-   3. To assign volumes to this backup policy, select **Add volumes** and then from the tabular listing of volumes, click the check box(es) to assign one or more volumes to this backup policy.
+   3. Ha köteteket szeretne hozzárendelni ehhez a biztonsági mentési szabályzathoz, válassza a **Kötetek hozzáadása** lehetőséget, majd a kötetek táblázatos listájában a jelölőnégyzet(ek)re kattintva rendeljen hozzá egy vagy több kötetet a biztonsági mentési szabályzathoz.
 
-       ![Add a backup policy](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
 
-   4. To define a schedule for this backup policy, click **First schedule** and then modify the following parameters:
+   4. Ha ütemezést szeretne meghatározni a biztonsági mentési szabályzathoz, kattintson az **Első ütemezés** lehetőségre, majd módosítsa a következő paramétereket:
 
-       ![Add a backup policy](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
 
-       1. For **Snapshot type**, select **Cloud** or **Local**.
+       1. A **Pillanatkép típusa** területen válassza a **Felhő** vagy a **Helyi** lehetőséget.
 
-       2. Indicate the frequency of backups (specify a number and then choose **Days** or **Weeks** from the drop-down list.
+       2. Határozza meg a biztonsági mentések gyakoriságát (adjon meg egy számot, majd válassza a **Nap** vagy **Hét** lehetőséget a legördülő listából).
 
-       3. Enter a retention schedule.
+       3. Adja meg a megőrzés ütemezését.
 
-       4. Enter a time and date for the backup policy to begin.
+       4. Adja meg a biztonsági házirend indítási időpontját és dátumát.
 
-       5. Click **OK** to define the schedule.
+       5. Kattintson az **OK** gombra az ütemezés meghatározásához.
 
-   5. Click **Create** to create a backup policy.
+   5. Biztonsági mentési szabályzat létrehozásához kattintson a **Létrehozás** gombra.
 
-       ![Add a backup policy](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
+       ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
-   6. You are notified when the backup policy is created. The newly added policy is displayed in the tabular view on the **Backup Policy** blade.
+   6. A biztonsági mentési szabályzat létrehozásáról értesítést kap. Az újonnan felvett szabályzat megjelenik a **Biztonsági mentési szabályzat** panel táblázatos nézetében.
 
-       ![Add a backup policy](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
+       ![Biztonsági mentési szabályzat hozzáadása](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
 

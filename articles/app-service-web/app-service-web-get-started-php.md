@@ -16,15 +16,15 @@ ms.date: 07/21/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 9a53216e326e63bd4fe36c0e5d5d5e85b2098d8c
+ms.sourcegitcommit: 3b15d6645b988f69f1f05b27aff6f726f34786fc
+ms.openlocfilehash: 7667cf679821cc99d6e8b3ec4aa466067d8a6b32
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
-Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a PHP-alkalmazás Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a Git szoftver használatával pedig üzembe helyezheti a PHP-mintakódot a webalkalmazásban.
+Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató a PHP-alkalmazás Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. A Cloud Shellben az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozza a webalkalmazást, a Gittel pedig üzembe helyezi a PHP-mintakódot a webalkalmazásban.
 
 ![Az Azure-ban futó mintaalkalmazás]](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -39,23 +39,12 @@ A gyorsútmutató elvégzéséhez:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="download-the-sample-locally"></a>Minta helyi letöltése
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
-
-## <a name="download-the-sample"></a>A minta letöltése
-
-Egy terminálablakban futtassa a következő parancsot a mintaalkalmazás-tárház helyi számítógépre történő klónozásához.
+Futtassa a következő parancsokat egy terminálablakban. Ezzel klónozza a mintaalkalmazást a helyi gépre, és a mintakódot tartalmazó könyvtárba lép.
 
 ```bash
 git clone https://github.com/Azure-Samples/php-docs-hello-world
-```
-
-Ezt a terminálablakot használhatja az összes parancs gyorsútmutatóban történő futtatásához.
-
-Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
-
-```bash
 cd php-docs-hello-world
 ```
 
@@ -75,15 +64,15 @@ Az oldalon látható mintaalkalmazáson ekkor a **Hello World!** üzenet jelenik
 
 A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolgálóból történő kilépéshez.
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
 
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)] 
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)]
 
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)] 
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)]
 
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)]
 
 ![Üres webalkalmazás oldal](media/app-service-web-get-started-php/app-service-web-service-created.png)
 
@@ -118,7 +107,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
    cc39b1e..25f1805  master -> master
 ```
 
-## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
+## <a name="browse-to-the-app-locally"></a>Alkalmazás megkeresése tallózással, helyileg
 
 Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
 
@@ -132,7 +121,7 @@ A PHP mintakód az Azure App Service webalkalmazásban fut.
 
 **Gratulálunk!** Elvégezte az első PHP-webapp üzembe helyezését az App Service-ben.
 
-## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
+## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
 Egy helyi szövegszerkesztő használatával nyissa meg a `index.php` fájlt a PHP-alkalmazáson belül, majd módosítsa kissé annak szövegét a `echo` melletti karakterláncon belül:
 
@@ -159,7 +148,7 @@ A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azur
 
 ![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
+Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 
 ![Az App Service panel az Azure Portalon](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 

@@ -12,13 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/26/2017
+ms.date: 07/24/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
-ms.openlocfilehash: 7d2cc99925e01f8135f04f5863f798e13d7413e3
-ms.lasthandoff: 02/11/2017
-
+ms.reviewer: kairaz.contractor
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 2cc2b63312b331a19c61cd7b59a4cac78edf32e6
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="managing-groups-in-azure-active-directory"></a>Csoportkezelés az Azure Active Directoryban
@@ -35,6 +38,9 @@ Az Azure Active Directory (Azure AD) egyik felhasználó-kezelési szolgáltatá
 * olyan címtáron kívül található erőforrásokhoz, mint például az SaaS-alkalmazások, az Azure-szolgáltatások, a SharePoint-webhelyek vagy a helyszíni erőforrások
 
 Ezenkívül az erőforrás tulajdonosa erőforrás-hozzáférési jogosultságot rendelhet egy más tulajdonában álló Azure AD-csoporthoz. Ezzel az adott csoport tagjai számára hozzáférést biztosít az erőforráshoz. Innentől kezdve a csoporttagság kezelését a csoport tulajdonosa végzi. A gyakorlatban az erőforrás tulajdonosa ad jogosultságot a csoport tulajdonosának arra, hogy felhasználókat rendeljen a saját erőforrásához.
+
+> [!IMPORTANT]
+> A Microsoft javasolja, hogy az Azure Portalon található [Azure AD felügyeleti központból](https://aad.portal.azure.com) kezelje az Azure AD-t az ebben a cikkben javasolt klasszikus Azure portál helyett. A csoportok az Azure AD felügyeleti központban való felügyeletével kapcsolatos további információkért lásd [az Azure Active Directoryban csoportok létrehozását és tagok hozzáadását ismertető](active-directory-groups-create-azure-portal.md) cikket.
 
 ## <a name="how-do-i-create-a-group"></a>Hogyan hozható létre csoport?
 Attól függően, hogy a szervezet melyik szolgáltatásokra fizetett elő, a következők használatával hozhat létre csoportot:

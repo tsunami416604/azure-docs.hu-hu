@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 93f80018d71368c800abd3dceb42b2ab51e60659
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 346e7abf862330afe64dc5685737a9301d7d861a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
@@ -47,7 +46,7 @@ Az alább olvasható elméleti szintű munkafolyamat gyakorlatilag a Batch szolg
 A következő részekben bemutatjuk a Batch fentiekben említett funkcióit és más erőforrásait, amelyek segítségével létrehozhatja elosztott számítási megoldásait.
 
 > [!NOTE]
-> A Batch szolgáltatás használatához [Batch-fiókra](#account) van szüksége. Ezenfelül gyakorlatilag az összes megoldáshoz szüksége van [Azure Storage][azure_storage]-fiókra a fájlok tárolásához és lekéréséhez. A Batch jelenleg kizárólag az **Általános célú** tárfióktípust támogatja, amelynek leírása a Tudnivalók az [Azure Storage-fiókokról](../storage/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) című szakaszában található.
+> A Batch szolgáltatás használatához [Batch-fiókra](#account) van szüksége. A legtöbb Batch-megoldás esetében szükség van [Azure Storage][azure_storage]-fiókra is a fájlok tárolásához és lekéréséhez. A Batch jelenleg kizárólag az **általános célú** tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) című szakaszában található.
 >
 >
 
@@ -74,35 +73,51 @@ A Batch-fiókok a Batch szolgáltatáson belül egyedileg azonosított entitáso
 
 Azure Batch-fiókot az [Azure Portalon](batch-account-create-portal.md)hozhat létre, vagy programozott módon, például a [Batch Management .NET könyvtár](batch-management-dotnet.md) használatával. Egy fiók létrehozásakor társíthatja azt egy Azure Storage-fiókhoz.
 
-A Batch két fiókkonfigurációt támogat. Batch-fiókja létrehozásakor ki kell jelölnie a megfelelő konfigurációt. A két fiókkonfiguráció közötti különbség a Batch-[készletek](#pool) a fiókhoz való lefoglalásának mikéntjében rejlik. Lefoglalhatja számítási csomópontok készleteit egy, az Azure Batch által kezelt előfizetésben, vagy pedig lefoglalhatja őket saját előfizetésében. A használt konfigurációt a fiók *készletlefoglalási mód* tulajdonsága határozza meg. 
+### <a name="pool-allocation-mode"></a>Készletlefoglalási mód
 
-A használandó fiókkonfiguráció eldöntéséhez fontolja meg, melyik felel meg legjobban az adott szituációban:
+Batch-fiók létrehozásakor megadhatja, hogyan történjen a számítási csomópontok [készleteinek](#pool) lefoglalása. Lefoglalhatja számítási csomópontok készleteit egy, az Azure Batch által kezelt előfizetésben, vagy lefoglalhatja őket saját előfizetésében. A készletek lefoglalási helyét a fiók *készletlefoglalási mód* tulajdonsága határozza meg. 
 
-* **Batch Service**: A Batch Service az alapértelmezett fiókkonfiguráció. Egy ezzel a konfigurációval létrehozott fiók esetében az Azure által kezelt előfizetésekben a rendszer Batch-készleteket foglal le a háttérben. A Batch szolgáltatás fiókkonfigurációjával kapcsolatban tartsa szem előtt az alábbi alapvető szempontokat:
+A megfelelő készletlefoglalási mód kiválasztásához gondolja végig, melyik felel meg legjobban az adott forgatókönyvhöz:
 
-    - A Batch szolgáltatás fiókkonfigurációja mind a Cloud Service-, mind a virtuálisgép-készleteket támogatja.
-    - A Batch szolgáltatás fiókkonfigurációja támogatja a Batch API elérését megosztott kulcsos hitelesítéssel vagy [Azure Active Directory-hitelesítéssel](batch-aad-auth.md). 
-    - A Batch szolgáltatás fiókkonfigurációjában dedikált vagy alacsony prioritású számítási csomópontok készletei is használhatók.
-    - Ne használja a Batch szolgáltatás fiókkonfigurációját, ha virtuális hálózat használatát tervezi, vagy azt, hogy egyéni virtuálisgép-rendszerképekből hoz létre Azure-os virtuálisgép-készleteket. Ehelyett hozza létre a fiókot az előfizetett felhasználói fiók konfigurációjával.
-    - A Batch Service-előfizetés fiókjának konfigurációjával kiépített virtuálisgép-készleteket az [Azure Virtual Machines Marketplace][vm_marketplace] rendszerképeiből kell létrehozni.
+* **Batch szolgáltatás**: A Batch szolgáltatás az alapértelmezett készletlefoglalási mód, ahol a készleteket a rendszer a háttérben foglalja le Azure által felügyelt előfizetésekben. A Batch szolgáltatás készletlefoglalási módjával kapcsolatban tartsa szem előtt az alábbi alapvető szempontokat:
 
-* **Felhasználói előfizetés**: Az előfizetett felhasználói fiók konfigurációjával a Batch-készletek azon Azure-előfizetésben kerülnek lefoglalásra, amelyben a fiókot létrehozták. Az előfizetett felhasználói fiók konfigurációjával kapcsolatban tartsa szem előtt az alábbi alapvető szempontokat:
+    - A Batch szolgáltatás készletlefoglalási módja a felhőszolgáltatás- és a virtuálisgép-készleteket is támogatja.
+    - A Batch szolgáltatás készletlefoglalási módja a megosztott kulcsos hitelesítést és az [Azure Active Directory-hitelesítést](batch-aad-auth.md) is támogatja. 
+    - A Batch szolgáltatás készletlefoglalási módjával lefoglalt készletekben dedikált vagy alacsony prioritású számítási csomópontok használhatóak.
+    - Ne használja a Batch szolgáltatás készletlefoglalási módját, ha virtuális hálózat használatát tervezi, vagy ha egyéni virtuálisgép-rendszerképekből kíván Azure-beli virtuálisgép-készleteket létrehozni. Ehelyett hozza létre a fiókot a felhasználói előfizetés készletlefoglalási móddal.
+    - A Batch szolgáltatás készletlefoglalási módjával létrehozott fiókban kiépített virtuálisgép-készleteket az [Azure Virtual Machines Marketplace][vm_marketplace] rendszerképeiből kell létrehozni.
+
+* **Felhasználói előfizetés**: A felhasználói előfizetés készletlefoglalási móddal a Batch-készletek azon Azure-előfizetésben lesznek lefoglalva, amelyben a fiókot létrehozták. A felhasználói előfizetés készletlefoglalási móddal kapcsolatban tartsa szem előtt az alábbi alapvető szempontokat:
      
-    - Az előfizetett felhasználói fiók konfigurációja csak virtuálisgép-készleteket támogat. A Cloud Services-készletek nem támogatottak.
-    - Virtuálisgép-készletek egyéni virtuálisgép-rendszerképekből való létrehozásához, vagy egy, virtuálisgép-készletekkel rendelkező virtuális hálózat használatához az előfizetett felhasználó konfigurációját kell használnia.  
-    - A Batch szolgáltatáshoz intézett kérelmeket az [Azure Active Directory-alapú hitelesítés](batch-aad-auth.md) használatával kell hitelesítenie. 
-    - Az előfizetett felhasználói fiók konfigurációjához egy Azure Key Vault létrehozása szükséges a Batch-fiókjához. 
-    - Csak az előfizetett felhasználói fiók konfigurációjával létrehozott készletekben található dedikált számítási csomópontok használhatók. Alacsony prioritású csomópontok nem támogatottak.
-    - Az előfizetett felhasználói fiók konfigurációjával kiépített virtuálisgép-készleteket az [Azure Virtual Machines Marketplace][vm_marketplace] rendszerképeiből vagy az Ön által megadott egyéni rendszerképekből lehet létrehozni.
+    - A felhasználói előfizetés készletlefoglalási mód csak virtuálisgép-készleteket támogat. A Cloud Services-készletek nem támogatottak.
+    - Virtuálisgép-készletek egyéni virtuálisgép-rendszerképekből való létrehozásához, vagy egy, virtuálisgép-készletekkel rendelkező virtuális hálózat használatához a felhasználói előfizetés készletlefoglalási módot kell használnia.  
+    - A felhasználói előfizetésben lefoglalt készletek esetében [Azure Active Directory-hitelesítést](batch-aad-auth.md) kell használni. 
+    - Ha a készletlefoglalási mód Felhasználói előfizetés értékűre van állítva, egy Azure Key Vaultot kell létrehozni a Batch-fiókhoz. 
+    - A felhasználói előfizetés készletlefoglalási móddal létrehozott fiókban csak dedikált számítási csomópontok használhatók a készletekben. Alacsony prioritású csomópontok nem támogatottak.
+    - A felhasználói előfizetés készletlefoglalási móddal rendelkező fiókban kiépített virtuálisgép-készleteket az [Azure Virtual Machines Marketplace][vm_marketplace] rendszerképeiből vagy az Ön által megadott egyéni rendszerképekből lehet létrehozni.
 
-> [!IMPORTANT]
-> A Batch jelenleg kizárólag az általános célú tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) című szakaszában található. A Batch-tevékenységeknek (beleértve a szabványos tevékenységeket, az indítási tevékenységeket, a feladat-előkészítési és a feladatkiadási tevékenységeket) olyan erőforrásfájlokat kell meghatározniuk, amelyek általános célú tárfiókokban találhatóak.
->
->
+Az alábbi táblázatban összehasonlítjuk a Batch szolgáltatás és a felhasználói előfizetés készletlefoglalási módot.
+
+| **Készletlefoglalási mód:**                 | **Batch szolgáltatás**                                                                                       | **Felhasználói előfizetés**                                                              |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| **A készletek lefoglalásának helye:**               | Azure által felügyelt előfizetés                                                                           | Az a felhasználói előfizetés, amelyben a Batch-fiók létrejött                        |
+| **Támogatott konfigurációk:**             | <ul><li>Felhőszolgáltatás konfigurációja</li><li>Virtuálisgép-konfiguráció (Linux és Windows)</li></ul> | <ul><li>Virtuálisgép-konfiguráció (Linux és Windows)</li></ul>                |
+| **Támogatott virtuálisgép-rendszerképek:**                  | <ul><li>Azure Marketplace-rendszerképek</li></ul>                                                              | <ul><li>Azure Marketplace-rendszerképek</li><li>Egyéni rendszerképek</li></ul>                   |
+| **Támogatott számításicsomópont-típusok:**         | <ul><li>Dedikált csomópontok</li><li>Alacsony prioritású csomópontok</li></ul>                                            | <ul><li>Dedikált csomópontok</li></ul>                                                  |
+| **Támogatott hitelesítés:**             | <ul><li>Megosztott kulcsos</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
+| **Azure Key Vault szükséges:**             | Nem                                                                                                      | Igen                                                                                |
+| **Magkvóta:**                           | A Batch-magkvóta határozza meg                                                                          | Az előfizetés magkvótája határozza meg                                              |
+| **Azure Virtual Network- (Vnet-) támogatás:** | Felhőszolgáltatás-konfigurációval létrehozott készletek                                                      | Virtuálisgép-konfigurációval létrehozott készletek                               |
+| **Vnet üzembehelyezési modell támogatása:**      | Klasszikus üzemi modellel létrehozott Vnetek                                                             | Klasszikus üzemi modellel vagy Azure Resource Managerrel létrehozott Vnetek |
+## <a name="azure-storage-account"></a>Azure Storage-fiók
+
+Az erőforrásfájlok és a kimeneti fájlok tárolására a legtöbb Batch-megoldás az Azure Storage-ot használja.  
+
+A Batch jelenleg kizárólag az általános célú tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) című szakaszában található. A Batch-tevékenységeknek (beleértve a szabványos tevékenységeket, az indítási tevékenységeket, a feladat-előkészítési és a feladatkiadási tevékenységeket) olyan erőforrásfájlokat kell meghatározniuk, amelyek általános célú tárfiókokban találhatóak.
 
 
 ## <a name="compute-node"></a>Számítási csomópont
-A számítási csomópontok olyan Azure-alapú virtuális gépek vagy Cloud Service-virtuális gépek, amelyek az alkalmazás adott számítási feladatának feldolgozására vannak kijelölve. A csomópont mérete határozza meg a CPU-magok számát, a memóriakapacitást és a csomóponthoz lefoglalt helyi fájlrendszeri méretet. A Windows- és Linux-csomópontokból az Azure Cloud Servicesből vagy a Virtual Machines-piactérről származó rendszerképek segítségével hozhat létre készleteket. Ezekről a lehetőségekről további információkat tudhat meg az alábbi, [Készlet](#pool) című fejezetben.
+A számítási csomópontok olyan Azure-alapú virtuális gépek vagy Cloud Service-virtuális gépek, amelyek az alkalmazás adott számítási feladatának feldolgozására vannak kijelölve. A csomópont mérete határozza meg a CPU-magok számát, a memóriakapacitást és a csomóponthoz lefoglalt helyi fájlrendszeri méretet. Windows- és Linux-csomópontokból az Azure Cloud Services, az [Azure Virtual Machines Marketplace][vm_marketplace]-ről származó rendszerképek vagy az Ön által előkészített egyéni rendszerképek segítségével hozhat létre készleteket. Ezekről a lehetőségekről további információkat tudhat meg az alábbi, [Készlet](#pool) című fejezetben.
 
 A csomópontok minden olyan végrehajtható fájlt vagy parancsprogramot képesek futtatni, amelyet a csomópont operációsrendszer-környezete támogat. Ezek közé Windows esetén az \*.exe-, a \*.cmd-, a \*.bat-fájlok és a PowerShell-parancsfájlok tartoznak, Linux esetén pedig a bináris fájlok, valamint rendszerhéj- és Python-parancsfájlok.
 
@@ -134,9 +149,11 @@ Készlet létrehozásakor a következő attribútumokat adhatja meg. Néhány be
 Ezen beállítások részletesebb leírását az alábbi szakaszokban találja.
 
 > [!IMPORTANT]
-> Az összes, a Batch szolgáltatás konfigurációjával létrehozott fiókhoz alapértelmezett kvóta tartozik, amely korlátozza a magok számát a Batch-fiókokban. A magok száma a számítási csomópontok számának felel meg. Az alapértelmezett kvótákat és a [kvóták növelésével](batch-quota-limit.md#increase-a-quota) kapcsolatos útmutatásokat [Quotas and limits for the Azure Batch service](batch-quota-limit.md) (Az Azure Batch szolgáltatás kvótái és korlátai) című témakörben találja. A magkvóta lehet az oka, hogy a készlet esetleg nem éri el a csomópontok kitűzött számát.
+> A Batch szolgáltatás készletlefoglalási módjával létrehozott Batch-fiókokhoz alapértelmezett kvóta tartozik, amely korlátozza a magok számát a Batch-fiókokban. A magok száma a számítási csomópontok számának felel meg. Az alapértelmezett kvótákat és a [kvóták növelésével](batch-quota-limit.md#increase-a-quota) kapcsolatos útmutatásokat [Quotas and limits for the Azure Batch service](batch-quota-limit.md) (Az Azure Batch szolgáltatás kvótái és korlátai) című témakörben találja. A magkvóta lehet az oka, hogy a készlet esetleg nem éri el a csomópontok kitűzött számát.
 >
->Az előfizetett felhasználói fiók konfigurációjával létrehozott Batch-fiókok nem veszik figyelembe a Batch szolgáltatás kvótáit. Ehelyett az előfizetés számára megadott magkvótán osztoznak. További információkért lásd [az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozásokat, kvótákat és megkötéseket](../azure-subscription-service-limits.md) ismertető témakör [a virtuális gépek korlátaira](../azure-subscription-service-limits.md#virtual-machines-limits) vonatkozó részét.
+>A felhasználói előfizetés készletlefoglalási móddal létrehozott Batch-fiókok nem veszik figyelembe a Batch szolgáltatás kvótáit. Ehelyett az előfizetés számára megadott magkvótán osztoznak. További információkért lásd [az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozásokat, kvótákat és megkötéseket](../azure-subscription-service-limits.md) ismertető témakör [a virtuális gépek korlátaira](../azure-subscription-service-limits.md#virtual-machines-limits) vonatkozó részét.
+>
+>
 
 ### <a name="compute-node-operating-system-and-version"></a>A számítási csomópont operációs rendszere és verziója
 
@@ -158,7 +175,12 @@ A [Fiók](#account) szakaszban olvashat a készletlefoglalási mód beállítás
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Egyéni rendszerképek virtuálisgép-készletekhez
 
-Ahhoz, hogy egyéni lemezképeket használhasson virtuálisgép-készleteihez, az előfizetett felhasználói fiók konfigurációjával hozza létre Batch-fiókját. Ezzel a konfigurációval a Batch-készletek a fiókot tartalmazó előfizetésben kerülnek lefoglalásra. A [Fiók](#account) szakaszban olvashat a készletlefoglalási mód beállításáról a Batch-fiók létrehozásakor.
+Ahhoz, hogy egyéni lemezképeket használhasson virtuálisgép-készletek kiépítéséhez, a felhasználói előfizetés készletlefoglalási móddal hozza létre Batch-fiókját. Ennek a módnak a használatakor a Batch-készletek abban az előfizetésben lesznek lefoglalva, amelyben a fiók található. A [Fiók](#account) szakaszban olvashat a készletlefoglalási mód beállításáról a Batch-fiók létrehozásakor.
+
+Egyéni rendszerkép használatához elő kell készítenie a rendszerképet annak normalizálásával. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Linux-rendszerképek előkészítéséről az [Azure-beli, Linux rendszerű virtuális gépek sablonként történő használathoz való rögzítését ismertető](../virtual-machines/linux/capture-image-nodejs.md) cikkben találhat. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Windows-rendszerképek előkészítéséről az [egyéni virtuálisgép-rendszerképek Azure PowerShell-lel való létrehozását ismertető](../virtual-machines/windows/tutorial-custom-images.md) cikkben találhat. A rendszerkép előkészítésekor tartsa szem előtt a következőket:
+
+- Ellenőrizze, hogy a Batch-készletek kiépítéséhez használt alap operációsrendszer-képen nincs-e semmilyen előre telepített Azure-bővítmény, például egyéni szkriptbővítmény. Ha a rendszerkép előre telepített bővítményt tartalmaz, az Azure problémába ütközhet a virtuális gép üzembe helyezése során.
+- Ügyeljen rá, hogy az Ön által biztosított alap operációsrendszer-kép az alapértelmezett ideiglenes meghajtót használja, mivel a Batch-csomópontügynök jelenleg ezt várja el.
 
 Virtuálisgép-konfigurációs készletek egyéni rendszerkép használatával való létrehozása esetén az egyéni virtuálismerevlemez-képek tárolásához szüksége lesz egy vagy több szabványos Azure Storage-tárfiókra. Az egyéni lemezképek blobként vannak tárolva. A készletek létrehozásakor az egyéni rendszerképekre való hivatkozáshoz a [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/add-a-pool-to-an-account#bk_vmconf) tulajdonság [osDisk](https://docs.microsoft.com/rest/api/batchservice/add-a-pool-to-an-account#bk_osdisk) tulajdonságához adja meg az egyéni virtuálismerevlemez-blobok URI-azonosítóját.
 
@@ -166,7 +188,7 @@ Győződjön meg arról, hogy a tárfiókok megfelelnek a következő feltétele
 
 - Az egyéni virtuálismerevlemez-blobokat tartalmazó tárfiókoknak ugyanahhoz az előfizetéshez kell tartozniuk, mint a Batch-fióknak (az előfizetett felhasználónak).
 - A megadott tárfiókoknak ugyanabban a régióban kell lennie, mint a Batch-fióknak.
-- Jelenleg csak a standard szintű tárfiókok támogatottak. A jövőben a prémium szintű Azure Storage is támogatott lesz.
+- Jelenleg csak a standard szintű, általános célú tárfiókok támogatottak. A jövőben a prémium szintű Azure Storage is támogatott lesz.
 - Megadhat több egyéni virtuálismerevlemez-blobbal rendelkező tárfiókot, vagy több tárfiókot egyetlen blobhoz. A jobb teljesítmény érdekében javasolt több tárfiókot használni.
 - Egyetlen egyedi egyéni lemezkép virtuálismerevlemez-blobja legfeljebb 40 linuxos virtuálisgép-példányt vagy 20 windowsos virtuálisgép-példányt képes támogatni. Több virtuális géppel rendelkező készletek létrehozásához másolatokat kell készíteni a virtuálismerevlemez-blobról. Például egy 200 Windows rendszerű virtuális géppel rendelkező készlethez 10 egyedi virtuálismerevlemez-blobot kell megadni az **osDisk** tulajdonságban.
 
@@ -418,26 +440,46 @@ A másik végletet akkor érdemes választani, ha a feladatok azonnali indítás
 
 A változó természetű, ám folyamatos terhelések kezeléséhez általában a fenti két megoldás kombinációját használjuk. Létrehozhat egy készletet, amelynek akár több feladatot is el lehet küldeni, de beállíthatja, hogy a rendszer a feladathoz tartozó terhelés alapján csökkentse vagy növelje a csomópontok számát (lásd a következő, [A számítási erőforrások méretezése](#scaling-compute-resources) című fejezetet). Ez reaktív módon, az aktuális terhelés alapján is elvégezhető, de proaktív módszert is használhat, ha a terhelés előrejelezhető.
 
-## <a name="pool-network-configuration"></a>Készlet hálózati konfigurációja
+## <a name="virtual-network-vnet-and-firewall-configuration"></a>A virtuális hálózat (VNet) és a tűzfal konfigurálása 
 
-Amikor számítási csomópontok készletét hozza létre az Azure Batch-ben, megadhatja annak az Azure [virtuális hálózatnak (VNet)](../virtual-network/virtual-networks-overview.md) az alhálózati azonosítóját, amelyen létre szeretné hozni a készlet számítási csomópontjait.
+Amikor számítási csomópontok készletét hozza létre az Azure Batchben, hozzárendelheti a készletet egy Azure [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatához. További információkat VNetek alhálózatokkal történő létrehozásáról az [alhálózatokkal rendelkező Azure virtuális hálózat létrehozását ismertető](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) cikkben találhat. 
 
-* A VNetnek:
+ * A készlethez tartozó VNetnek a következő követelményeknek kell megfelelnie:
 
    * Az Azure Batch-fiókkal megegyező **Azure-régióban** kell lennie.
    * Az Azure Batch-fiókkal megegyező **előfizetésben** kell lennie.
 
 * A támogatott virtuálishálózat-típus attól függ, hogyan kerülnek lefoglalásra a készletek a Batch-fiókhoz:
-    - Ha a Batch-fiókot „BatchService” értékű **poolAllocationMode** tulajdonsággal hozták létre, akkor a megadott virtuális hálózatnak egy klasszikus virtuális hálózatnak kell lennie.
-    - Ha a Batch-fiókot „UserSubscription” értékű **poolAllocationMode** tulajdonsággal hozták létre, akkor a megadott virtuális hálózat lehet klasszikus virtuális hálózat, vagy egy Azure Resource Manager-alapú virtuális hálózat. Virtuális hálózat használatához a készleteket virtuálisgép-konfigurációval kell létrehozni. A felhőszolgáltatás-konfigurációval létrehozott készletek nem támogatottak.
 
-* Ha a Batch-fiókot „BatchService” értékű **poolAllocationMode** tulajdonsággal hozták létre, akkor meg kell adnia a Batch szolgáltatás egyszerű szolgáltatásnevéhez tartozó engedélyeket a virtuális hálózat eléréséhez. A Batch „Microsoft Azure Batch” vagy „MicrosoftAzureBatch” egyszerű szolgáltatásának rendelkeznie kell a [Klasszikus virtuális gép közreműködő szerepköralapú hozzáférés-vezérlés (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/#classic-virtual-machine-contributor) szerepkörrel az adott virtuális hálózaton. Ha a megadott RBAC-szerepkör nem áll rendelkezésre, a Batch szolgáltatás 400 (Hibás kérés) hibakódot adja vissza.
+    - Ha a Batch-fiók készletlefoglalási módja a Batch szolgáltatás, akkor csak azokhoz a készletekhez rendelhet VNetet, amelyek a **felhőszolgáltatás-konfigurációval** lettek létrehozva. Továbbá a megadott VNetet a klasszikus üzemi modellel kell létrehozni. Az Azure Resource Manager-alapú üzemi modellel létrehozott VNetek nem támogatottak.
+ 
+    - Ha a Batch-fiók készletlefoglalási módja a Felhasználói előfizetés, akkor csak azokhoz a készletekhez rendelhet VNetet, amelyek a **virtuálisgép-konfigurációval** lettek létrehozva. A **felhőszolgáltatás-konfigurációval** létrehozott készletek nem támogatottak. A társított VNet a klasszikus üzemi modellel vagy az Azure Resource Manager-alapú üzemi modellel hozható létre.
+
+    A készletlefoglalási mód szerinti VNet-támogatást összegző táblázatot lásd a [Készletlefoglalási mód](#pool-allocation-mode) szakaszban.
+
+* Ha a Batch-fiók készletlefoglalási módja a Batch szolgáltatás, akkor meg kell adnia a Batch egyszerű szolgáltatása számára a megfelelő engedélyeket a VNet eléréséhez. A VNetnek hozzá kell rendelnie a [Klasszikus virtuális gép közreműködő szerepköralapú hozzáférés-vezérlés (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/#classic-virtual-machine-contributor) szerepkört a Batch egyszerű szolgáltatásához. Ha a megadott RBAC-szerepkör nem áll rendelkezésre, a Batch szolgáltatás 400 (Hibás kérés) hibakódot adja vissza. A szerepkör hozzáadása az Azure Portalon:
+
+    1. Válassza ki a **VNetet**, majd kattintson a **Hozzáférés-vezérlés (IAM)** > **Szerepkörök** > **Virtuálisgép-közreműködő** > **Hozzáadás** elemre.
+    2. Az **Engedélyek hozzáadása** panelen válassza ki a **Virtuálisgép-közreműködő** szerepkört.
+    3. Az **Engedélyek hozzáadása** panelen keressen rá a Batch API kifejezésre. Egymás után keressen rá az egyes karakterláncokra, amíg meg nem találja az API-t:
+        1. **MicrosoftAzureBatch**.
+        2. **Microsoft Azure Batch**. Újabb Azure AD-bérlők ezt a nevet használhatják.
+        3. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója. 
+    3. Válassza ki a Batch API egyszerű szolgáltatását. 
+    4. Kattintson a **Save** (Mentés) gombra.
+
+        ![Virtuálisgép-közreműködői szerepkör hozzárendelése a Batch egyszerű szolgáltatásához](./media/batch-api-basics/iam-add-role.png)
+
 
 * A megadott alhálózatnak elegendő szabad **IP-címmel** kell rendelkeznie a célcsomópontok teljes számához, azaz a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összegéhez. Ha az alhálózaton nincs elegendő szabad IP-cím, akkor a Batch szolgáltatás részlegesen lefoglalja a készlet számítási csomópontjait, és átméretezési hibát jelez.
 
 * A megadott alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon. Ha a számítási csomópontok felé irányuló kommunikációt a VNethez társított **Hálózati biztonsági csoport (NSG)** letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát.
 
-* Ha a megadott virtuális hálózathoz társított hálózati biztonsági csoportok (NSG) találhatók, néhány fenntartott portot engedélyezni kell a bejövő kommunikációhoz. A virtuálisgép-konfigurációval létrehozott készletek esetén engedélyezze a 29876-os és a 29877-es portokat, valamint a 22-es portot Linux, illetve a 3389-es portot Windows rendszer esetén. A felhőszolgáltatás-konfigurációval létrehozott készletek esetén engedélyezze a 10100-as, 20100-as és 30100-as portokat. Engedélyezze az Azure Storage-hoz a 443-as porton a kimenő kapcsolatokat.
+* Ha a megadott VNethez **hálózati biztonsági csoportok (NSG)** és/vagy **tűzfal** van társítva, néhány fenntartott rendszerportot engedélyezni kell a bejövő kommunikációhoz:
+
+- A virtuálisgép-konfigurációval létrehozott készletek esetén engedélyezze a 29876-os és a 29877-es portokat, valamint a 22-es portot Linux, illetve a 3389-es portot Windows rendszer esetén. 
+- A felhőszolgáltatás-konfigurációval létrehozott készletek esetén engedélyezze a 10100-as, 20100-as és 30100-as portokat. 
+- Engedélyezze az Azure Storage-hoz a 443-as porton a kimenő kapcsolatokat. Arról is győződjön meg, hogy az Azure Storage-végpont feloldható bármely, a VNET-et kiszolgáló egyéni DNS-kiszolgáló által. Az `<account>.table.core.windows.net` űrlap URL-címének feloldhatónak kell lennie.
 
     A virtuálisgép-konfigurációval létrehozott készletek esetén engedélyezendő bejövő portokat a következő táblázat ismerteti:
 
@@ -451,29 +493,6 @@ Amikor számítási csomópontok készletét hozza létre az Azure Batch-ben, me
     |    Kimenő port(ok)    |    Cél    |    Hozzáad a Batch NSG-ket?    |    Szükséges a virtuális gép használatához?    |    Felhasználói művelet    |
     |------------------------|-------------------|----------------------------|-------------------------------------|------------------------|
     |    443    |    Azure Storage    |    Nem    |    Igen    |    Ha hozzáadott NSG-t, győződjön meg arról, hogy nyitva van a port a kimenő forgalom számára.    |
-
-
-A virtuális hálózat további beállításai a Batch-fiók készletlefoglalási módjától függnek.
-
-### <a name="vnets-for-pools-provisioned-in-the-batch-service"></a>Virtuális hálózatok a Batch szolgáltatásban kiépített készletekhez
-
-A Batch szolgáltatás lefoglalási módjában virtuális hálózat csak a **Cloud Services-konfigurációt** használó készletekhez társítható. Ezenkívül a megadott VNet-nek **klasszikus** VNet-nek kell lennie. Az Azure Resource Manager-alapú üzemi modellel létrehozott VNetek nem támogatottak.
-
-
-
-* A *MicrosoftAzureBatch* egyszerű szolgáltatásnak rendelkeznie kell a [Klasszikus virtuális gép közreműködő](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor) szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörrel az adott VNeten. Az Azure Portalon:
-
-  * Válassza ki a **VNetet**, majd kattintson az **Access control (IAM)** (Hozzáférés-vezérlés (IAM)) > **Roles** (Szerepkörök) > **Classic Virtual Machine Contributor** (Klasszikus virtuális gép közreműködő) > **Add** (Hozzáadás) elemre.
-  * A **Search** (Keresés) mezőbe írja be a „MicrosoftAzureBatch” kifejezést.
-  * Jelölje be a **MicrosoftAzureBatch** jelölőnégyzetet.
-  * Kattintson a **Select** (Kiválasztás) gombra.
-
-
-
-### <a name="vnets-for-pools-provisioned-in-a-user-subscription"></a>VNet-ek felhasználói előfizetésben kiépített készletekhez
-
-A felhasználói előfizetés lefoglalási módjában csak a **Virtuálisgép-konfiguráció** típusú készletek támogatottak, és csak ezekhez lehet VNet-et rendelni. Emellett a megadott VNet-nek **Resource Manager**-alapú VNet-nek kell lennie. A klasszikus üzemi modellel létrehozott VNet-ek nem támogatottak.
-
 
 
 ## <a name="scaling-compute-resources"></a>A számítási erőforrások méretezése

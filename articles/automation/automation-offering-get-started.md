@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 0e80e0a1c334bcca0bb15dd16c54306a60f2486e
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 7ef31d7d72844c0ed3be0701549e49e26aac9abf
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -35,9 +35,9 @@ Az Azure Automation olyan szolgáltatott szoftverként (SaaS) biztosított alkal
 
 Az Azure-ban futtatott runbookok Automation-tesztkörnyezetekben futnak, amelyek szolgáltatásként nyújtott platformalapú (PaaS) Azure virtuális gépeken üzemelnek.  Az Automation-tesztkörnyezetek a runbookok futtatásának minden aspektusában biztosítják a bérlők elkülönítését, legyen szó modulokról, tárterületről, memóriáról, hálózati kommunikációról, feladatstreamekről stb. Ezt a szerepkört a szolgáltatás felügyeli, és a vezérlése nem érhető el az Ön Azure- vagy Azure Automation-fiókjából.         
 
-A helyi adatközpontban vagy egyéb felhőszolgáltatásban tárolt erőforrások automatikus üzembe helyezéséhez vagy felügyeletéhez – Automation-fiók létrehozását követően – megadhat egy vagy több olyan gépet, amely a [hibrid runbook-feldolgozó (HRW)](automation-hybrid-runbook-worker.md) szerepkört futtatja.  Minden HRW-hez szükség van egy Log Analytics-munkaterülethez csatlakozó Microsoft Management Agentre (MMA) és egy Automation-fiókra.  A Log Analytics a telepítés indításához, az MMA-ügynök karbantartásához és a HRW funkcióinak figyeléséhez használható.  A runbookok kézbesítését és a futtatási utasítást az Azure Automation végzi.
+A helyi adatközpontban vagy egyéb felhőszolgáltatásban tárolt erőforrások automatikus üzembe helyezéséhez vagy felügyeletéhez – Automation-fiók létrehozását követően – megadhat egy vagy több olyan gépet, amely a [hibrid runbook-feldolgozó (HRW)](automation-hybrid-runbook-worker.md) szerepkört futtatja.  Minden HRW-hez szükség van egy Log Analytics-munkaterülethez csatlakozó Microsoft Management Agentre és egy Automation-fiókra.  A Log Analytics a telepítés indításához, a Microsoft Management Agent karbantartásához és a HRW funkcióinak monitorozásához használható.  A runbookok kézbesítését és a futtatási utasítást az Azure Automation végzi.
 
-Több HRW-t is üzembe helyezhet a runbook magas rendelkezésre állásának biztosításához, a runbookfeladatok terheléselosztásához, és bizonyos esetekben adott számítási feladatokhoz vagy környezetekhez való kiosztásukhoz.  A HRW a 443-as kimenő TCP-porton keresztül kommunikál az Automation szolgáltatással.  Ha már van az adatközpont egyik HRW-jén belül futó runbookja, és szeretné, hogy a runbook kezelési feladatokat végezzen az adatközpont más gépekein vagy szolgáltatásain, akkor előfordulhat, hogy más portokhoz is hozzáférést kell biztosítania a runbooknak.  Ha az informatikai biztonsági szabályzatok nem engedélyezik, hogy a hálózat számítógépei kapcsolódjanak az internetre, olvassa el az [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) című cikket. Az átjáró proxyként működik a HRW számára, és gyűjti a feladatállapotokat, valamint konfigurációs információkat fogad az Automation-fióktól.
+Több HRW-t is üzembe helyezhet a runbook magas rendelkezésre állásának biztosításához, a runbookfeladatok terheléselosztásához, és bizonyos esetekben adott számítási feladatokhoz vagy környezetekhez való kiosztásukhoz.  A Microsoft Monitoring Agent a HRW-n kommunikációt kezdeményez az Automation szolgáltatással a 443-as TCP-porton, bejövő tűzfalra vonatkozó követelmények nélkül.  Ha már van a környezet egyik HRW-jén futó runbookja, és szeretné, hogy a runbook kezelési feladatokat végezzen a környezet más gépekein vagy szolgáltatásain, akkor előfordulhat, hogy más portokhoz is hozzáférést kell biztosítania a runbooknak.  Ha az informatikai biztonsági szabályzatok nem engedélyezik, hogy a hálózat számítógépei kapcsolódjanak az internetre, olvassa el az [OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md) című cikket. Az átjáró proxyként működik a HRW számára, és gyűjti a feladatállapotokat, valamint konfigurációs információkat fogad az Automation-fióktól.
 
 A HRW-n futó runbookok a számítógép helyi rendszerfiókjának kontextusában futnak, ami a helyi Windows-gép adminisztrációs műveleteinek végrehajtásához ajánlott biztonsági kontextus. Ha azt szeretné, hogy a runbook a helyi gépen kívüli erőforrásokon futtasson feladatokat, akkor lehetséges, hogy biztonságos hitelesítési objektumokat kell megadnia az Automation-fiókban, amelyeket elérhet a runbookból és használhat a külső erőforrással való hitelesítéshez. A [Hitelesítő adat](automation-credentials.md), [Tanúsítvány](automation-certificates.md) és [Kapcsolat](automation-connections.md) adategységeket olyan parancsmagokkal használhatja a runbookban, amelyekben hitelesítő adatokat is megadhat a hitelesítéshez.
 

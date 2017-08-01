@@ -23,8 +23,7 @@ ms.lasthandoff: 07/05/2017
 
 
 ---
-# Mi az Azure SQL Data Warehouse?
-<a id="what-is-azure-sql-data-warehouse" class="xliff"></a>
+# <a name="what-is-azure-sql-data-warehouse"></a>Mi az Azure SQL Data Warehouse?
 Az Azure SQL Data Warehouse egy nagymértékben párhuzamos feldolgozási (MPP) kialakítású, felhőalapú, horizontálisan felskálázható relációs adatbázis, amely nagy mennyiségű adatot képes feldolgozni. 
 
 SQL Data Warehouse:
@@ -38,8 +37,7 @@ SQL Data Warehouse:
 
 A cikk az SQL Data Warehouse főbb szolgáltatásait ismerteti.
 
-## Nagymértékben párhuzamos feldolgozási architektúra
-<a id="massively-parallel-processing-architecture" class="xliff"></a>
+## <a name="massively-parallel-processing-architecture"></a>Nagymértékben párhuzamos feldolgozási architektúra
 Az SQL Data Warehouse egy nagymértékben párhuzamos feldolgozási (MPP) elosztott adatbázisrendszerre épül. Az SQL Data Warehouse a háttérben számos olyan tárolóban és feldolgozási egységen osztja el az adatokat, amelyek nem osztanak meg semmit. A rendszer az adatokat a helyileg redundáns Premium tárolórétegben tárolja, amelyen a dinamikusan csatolt számítási csomópontok lekérdezéseket hajtanak végre. Az SQL Data Warehouse az „oszd meg és uralkodj” elv alapján futtatja a műveleteket és az összetett lekérdezéseket. A vezérlő csomópont fogadja a kérelmeket, optimalizálja őket az elosztáshoz, majd átadja őket a számítási csomópontoknak a feladatok párhuzamos végrehajtása érdekében.
 
 Az SQL Data Warehouse a tárterület és a számítási műveletek elkülönítésével a következőkre képes:
@@ -61,8 +59,7 @@ Az architektúrát a következő ábra szemlélteti.
 
 **Adatátviteli szolgáltatás:** az adatátviteli szolgáltatás (DMS) az adatok csomópontok közötti áthelyezését végzi. A DMS hozzáférést biztosít a számítási csomópontoknak az összekapcsolásokhoz és az aggregációhoz szükséges adatokhoz. A DMS nem Azure-szolgáltatás. Ez egy Windows-szolgáltatás, amely minden csomóponton együtt fut az SQL Database szolgáltatással. A DMS egy háttérfolyamat, amellyel nem lehet közvetlenül kapcsolatba lépni. Azonban megtekintheti a lekérdezésterveket annak megtekintéséhez, hogy mikor történnek a DMS-műveletek, mivel a lekérdezések párhuzamos futtatásához szükség van az adatmozgatásra.
 
-## Az adatraktár munkaterhelésére optimalizálva
-<a id="optimized-for-data-warehouse-workloads" class="xliff"></a>
+## <a name="optimized-for-data-warehouse-workloads"></a>Az adatraktár munkaterhelésére optimalizálva
 Az MPP megközelítést számos adattárházra vonatkozó teljesítményoptimalizálás segíti, beleértve a következőket:
 
 * Egy elosztott lekérdezésoptimalizáló és az összes adatra vonatkozó összetett statisztikák készlete. Az adatok méretével és a terjesztésével kapcsolatos információk felhasználásával a szolgáltatás képes optimalizálni a lekérdezéseket, mivel felméri az elosztott lekérdezési műveletek költségét.
@@ -70,8 +67,7 @@ Az MPP megközelítést számos adattárházra vonatkozó teljesítményoptimali
 * Alapértelmezés szerint fürtözött **oszlopcentrikus** indexek. Az oszlopalapú tárolás használatával az SQL Data Warehouse akár 5-ször nagyobb szintű tömörítésre is képes, mint a hagyományos, soralapú tárolással, és akár 10-szeres vagy nagyobb lekérdezési teljesítménynövekedést érhet el. A sok sort vizsgáló elemzési lekérdezések jobban működnek az oszlopcentrikus indexekkel.
 
 
-## Kiszámítható és méretezhető teljesítmény adattárházegységekkel
-<a id="predictable-and-scalable-performance-with-data-warehouse-units" class="xliff"></a>
+## <a name="predictable-and-scalable-performance-with-data-warehouse-units"></a>Kiszámítható és méretezhető teljesítmény adattárházegységekkel
 Az SQL Data Warehouse ugyanolyan technológiával készült, mint az SQL Database, így a felhasználók egységes és kiszámítható teljesítményt várhatnak el az elemzési lekérdezéseknél. A felhasználóknak számítaniuk kell a teljesítmény lineáris skálázására a számítási csomópontok hozzáadásával vagy eltávolításával. Az erőforrások SQL Data Warehouse szolgáltatásnak történő kiosztása az adattárházegységekkel (DWU) mérhető. A DWU-val az SQL Data Warehouse számára kiosztott háttérerőforrások, például a processzor, a memória és az IOPS mérhető. A DWU-k számának növelése növeli az erőforrásokat és a teljesítményt. A DWU-k a következőket biztosítják:
 
 * Az adattárházak skálázhatók anélkül, hogy aggódni kellene a mögöttes hardver vagy szoftver miatt.
@@ -88,8 +84,7 @@ Az adattárházegységek három mérőszámból álló mértéknek tekinthetők,
 
 **Create Table As Select (CTAS):** A CTAS a táblák másolásának képességét méri. Ebbe beletartozik az adatok beolvasása a tárfiókból, az adatok szétosztása a készülék csomópontjai között és az adatok tárfiókba történő újbóli írása. Ez egy processzor-, I/O- és hálózatigényes művelet.
 
-## Alapja az SQL Server
-<a id="built-on-sql-server" class="xliff"></a>
+## <a name="built-on-sql-server"></a>Alapja az SQL Server
 Az SQL Data Warehouse az SQL Server relációs adatbázismotorján alapul, és számos, a vállalati adatraktáraktól elvárt szolgáltatást tartalmaz. Ha már ismeri a T-SQL nyelvet, könnyűszerrel hasznosíthatja ismereteit az SQL Data Warehouse szolgáltatásban. Függetlenül attól, hogy kezdő vagy haladó, a dokumentációban található példák segítenek a kezdésben. Gondoljon arra, hogyan épülnek fel az SQL Data Warehouse nyelvi elemei:
 
 * Az SQL Data Warehouse számos művelethez a T-SQL szintaxisát használja. Ezenkívül a hagyományos SQL-szerkezetek széles körét támogatja, például a tárolt eljárásokat, a felhasználó által definiált függvényeket, a táblaparticionálást, az indexeket és a rendezéseket.
@@ -98,12 +93,10 @@ Az SQL Data Warehouse az SQL Server relációs adatbázismotorján alapul, és s
 
 A Transact-SQL nyelv és az SQL Server, az SQL Data Warehouse, az SQL Database és az Analytics Platform System egyező szolgáltatásai segítségével olyan megoldást fejleszthet, amely megfelel az adattárolási igényeinek. A teljesítmény, a biztonság és a méretezési követelmények alapján eldöntheti, hol szeretné tárolni az adatait, majd szükség szerint továbbíthatja az adatokat a különböző rendszerek között.
 
-## Adatvédelem
-<a id="data-protection" class="xliff"></a>
+## <a name="data-protection"></a>Adatvédelem
 Az SQL Data Warehouse minden adatot az Azure Premium helyileg redundáns tárolóban tárol. A rendszer több szinkron másolatot tart az adatokról a helyi adatközpontban, így transzparens adatvédelmet garantál a helyi hibák ellen. Emellett az SQL Data Warehouse rendszeres időközönként automatikusan végrehajtja az aktív (nem szüneteltetett) adatbázisok biztonsági mentését az Azure Storage Snapshots használatával. A biztonsági mentés és a visszaállítás működésének részletes ismertetését [A biztonsági mentés és a visszaállítás áttekintése][Backup and restore overview] című cikkben olvashatja el.
 
-## Integráció a Microsoft eszközeivel
-<a id="integrated-with-microsoft-tools" class="xliff"></a>
+## <a name="integrated-with-microsoft-tools"></a>Integráció a Microsoft eszközeivel
 Az SQL Data Warehouse együttműködik számos olyan eszközzel, amelyet az SQL Server felhasználói jól ismernek. Ezek az eszközök a következőket foglalják magukban:
 
 **Hagyományos SQL Server-eszközök:** az SQL Data Warehouse szolgáltatás teljesen integrálható az SQL Server Analysis Services, az Integration Services és a Reporting Services szolgáltatással.
@@ -112,20 +105,17 @@ Az SQL Data Warehouse együttműködik számos olyan eszközzel, amelyet az SQL 
 
 **Harmadik felektől származó eszközök:** Számos külső eszközszolgáltató tanúsított módon integrálta az eszközeit az SQL Data Warehouse szolgáltatással. A teljes listát lásd: [Az SQL Data Warehouse megoldáspartnerei][SQL Data Warehouse solution partners].
 
-## Hibrid adatforrások forgatókönyvei
-<a id="hybrid-data-sources-scenarios" class="xliff"></a>
+## <a name="hybrid-data-sources-scenarios"></a>Hibrid adatforrások forgatókönyvei
 A PolyBase lehetővé teszi a különböző forrásokból származó adatok használatát a jól ismert T-SQL parancsokkal. A PolyBase lehetővé teszi az Azure Blob tárolóban tárolt nem relációs adatok normál táblákhoz hasonló lekérdezését. A PolyBase szolgáltatást akkor használja, ha nem relációs adatokat szeretne lekérdezni vagy nem relációs adatokat szeretne importálni az SQL Data Warehouse szolgáltatásba.
 
 * A PolyBase külső táblák segítségével fér hozzá a nem relációs adatokhoz. A tábladefiníciókat az SQL Data Warehouse tárolja, és az SQL-eszközökkel, illetve a relációs adatok elérésére használt szokásos eszközökkel érheti el őket.
 * A PolyBase integrációs szempontból rendszerfüggetlen. Minden általa támogatott forrás ugyanazokat a szolgáltatásokat és funkciókat érheti el. A PolyBase által beolvasott adatok különböző formátumúak lehetnek, a tagolt fájlokat és az ORC-fájlokat is beleértve.
 * A PolyBase technológiával hozzá lehet férni azokhoz a blobtárolókhoz, amelyet egy HD Insight-fürt tárolóként használ. Így ugyanazokat az adatokat relációs és nem relációs eszközökkel is elérheti.
 
-## SLA
-<a id="sla" class="xliff"></a>
+## <a name="sla"></a>SLA
 Az SQL Data Warehouse a Microsoft Online Services SLA részeként termékszintű szolgáltatói szerződést biztosít. További információ: [SQL Data Warehouse SLA][SLA for SQL Data Warehouse]. Minden más termék szolgáltatói szerződése a [Szolgáltatói szerződések] Azure-oldalon található, vagy letölthető a [Mennyiségi licencelés][Volume Licensing] oldalról. 
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg többet az [SQL Data Warehouse gyors létrehozásáról][create a SQL Data Warehouse] és a [mintaadatok betöltéséről][load sample data]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
 
 * [Ügyfelek sikertörténetei]

@@ -1,36 +1,32 @@
 ---
 title: "Események küldése Azure Time Series Insights-környezetbe | Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan küldhet eseményeket a Time Series Insights-környezetbe"
+description: "Ez az oktatóanyag bemutatja az események a Time Series Insights-környezetbe való küldéséhez szükséges lépéseket"
 keywords: 
-services: time-series-insights
+services: tsi
 documentationcenter: 
 author: venkatgct
-manager: almineev
-editor: cgronlun
+manager: jhubbard
+editor: 
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 07/21/2017
 ms.author: venkatja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 9f2d3b57a42efb7b04566278d3267b3cdbed713a
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/24/2017
 
 ---
-<a id="send-events-to-a-time-series-insights-environment-via-event-hub" class="xliff"></a>
-
-# Események küldése Time Series Insights-környezetbe eseményközponton keresztül
+# <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Események küldése Time Series Insights-környezetbe eseményközponton keresztül
 
 Az oktatóanyag elmagyarázza, hogyan hozhat létre és konfigurálhat egy eseményközpontot, és hogyan futtathat egy mintaalkalmazást események leküldéséhez. Ha már van JSON formátumú eseményeket tartalmazó eseményközpontja, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetet a [Time Series Insightsban](https://insights.timeseries.azure.com).
 
-<a id="configure-an-event-hub" class="xliff"></a>
-
-## Eseményközpont konfigurálása
+## <a name="configure-an-event-hub"></a>Eseményközpont konfigurálása
 1. Eseményközpont létrehozásához kövesse az Event Hubs [dokumentációjában](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) foglalt utasításokat.
 
 2. Olyan fogyasztói csoportot hozzon létre, amelyet csak a Time Series Insights-eseményforrás használ.
@@ -46,18 +42,14 @@ Az oktatóanyag elmagyarázza, hogyan hozhat létre és konfigurálhat egy esem�
 
   ![Új megosztott elérési házirend hozzáadása](media/send-events/shared-access-policy-2.png)  
 
-<a id="create-time-series-insights-event-source" class="xliff"></a>
-
-## Time Series Insights-eseményforrás létrehozása
-1. Ha még nem hozott létre eseményforrást, tegye ezt meg az [itt](time-series-insights-add-event-source.md) található utasításokat követve.
+## <a name="create-time-series-insights-event-source"></a>Time Series Insights-eseményforrás létrehozása
+1. Ha még nem hozott létre eseményforrást, tegye ezt meg [ezeket az utasításokat](time-series-insights-add-event-source.md) követve.
 
 2. Adja meg a „deviceTimestamp” értéket az időbélyegző-tulajdonság neveként – ezt a tulajdonságot használja a rendszer a tényleges időbélyegzőként a C#-példában. Az időbélyegző-tulajdonság neve megkülönbözteti a kis- és nagybetűket, és az értékeknek __éééé-HH-nnTÓÓ:pp:mm.FFFFFFFK__ formátumban kell lenniük, ha JSON formátumban lesznek elküldve az eseményközpontba. Ha a tulajdonság nem létezik az eseményben, akkor a rendszer azt az időpontot használja, amikor az eseményt sorba helyezték az eseményközpontban.
 
   ![Eseményforrás létrehozása](media/send-events/event-source-1.png)
 
-<a id="sample-code-to-push-events" class="xliff"></a>
-
-## Mintakód események leküldéséhez
+## <a name="sample-code-to-push-events"></a>Mintakód események leküldéséhez
 1. Lépjen a „MySendPolicy” eseményközpont-házirendhez, és másolja a házirendkulccsal rendelkező kapcsolati karakterláncot.
 
   ![A MySendPolicy kapcsolati karakterlánc másolása](media/send-events/sample-code-connection-string.png)
@@ -131,16 +123,10 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-<a id="supported-json-shapes" class="xliff"></a>
+## <a name="supported-json-shapes"></a>Támogatott JSON-alakzatok
+### <a name="sample-1"></a>1. példa
 
-## Támogatott JSON-alakzatok
-<a id="sample-1" class="xliff"></a>
-
-### 1. példa
-
-<a id="input" class="xliff"></a>
-
-#### Input (Bemenet)
+#### <a name="input"></a>Input (Bemenet)
 
 Egyszerű JSON-objektum.
 
@@ -150,21 +136,15 @@ Egyszerű JSON-objektum.
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-<a id="output---1-event" class="xliff"></a>
-
-#### Kimenet – 1 esemény
+#### <a name="output---1-event"></a>Kimenet – 1 esemény
 
 |id|időbélyeg|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 
-<a id="sample-2" class="xliff"></a>
+### <a name="sample-2"></a>2. példa
 
-### 2. példa
-
-<a id="input" class="xliff"></a>
-
-#### Input (Bemenet)
+#### <a name="input"></a>Input (Bemenet)
 JSON-tömb két JSON-objektummal. Minden JSON-objektum eseménnyé lesz átalakítva.
 ```json
 [
@@ -178,21 +158,15 @@ JSON-tömb két JSON-objektummal. Minden JSON-objektum eseménnyé lesz átalak�
     }
 ]
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### Kimenet – 2 esemény
+#### <a name="output---2-events"></a>Kimenet – 2 esemény
 
 |id|időbélyeg|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
-<a id="sample-3" class="xliff"></a>
+### <a name="sample-3"></a>3. példa
 
-### 3. példa
-
-<a id="input" class="xliff"></a>
-
-#### Input (Bemenet)
+#### <a name="input"></a>Input (Bemenet)
 
 Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-objektum.
 ```json
@@ -211,9 +185,7 @@ Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-obje
 }
 
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### Kimenet – 2 esemény
+#### <a name="output---2-events"></a>Kimenet – 2 esemény
 A „location” tulajdonság mindegyik eseménybe át van másolva.
 
 |location|events.id|events.timestamp|
@@ -221,13 +193,9 @@ A „location” tulajdonság mindegyik eseménybe át van másolva.
 |WestUs|device1|2016-01-08T01:08:00Z|
 |WestUs|device2|2016-01-08T01:17:00Z|
 
-<a id="sample-4" class="xliff"></a>
+### <a name="sample-4"></a>4. példa
 
-### 4. példa
-
-<a id="input" class="xliff"></a>
-
-#### Input (Bemenet)
+#### <a name="input"></a>Input (Bemenet)
 
 Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-objektum. Ez a bemenet azt szemlélteti, hogy a komplex JSON-objektumban a globális tulajdonságok is szerepelhetnek.
 
@@ -260,18 +228,14 @@ Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-obje
     ]
 }
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### Kimenet – 2 esemény
+#### <a name="output---2-events"></a>Kimenet – 2 esemény
 
 |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A környezet megtekintése a [Time Series Insights portálon](https://insights.timeseries.azure.com)
 

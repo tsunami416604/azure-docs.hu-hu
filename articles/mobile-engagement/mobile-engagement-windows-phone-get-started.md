@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
-ms.openlocfilehash: 3f1f8d74eb2f562991b351cae87c372897644cf8
-ms.lasthandoff: 02/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: c05a3a24ea8cc663edb8232dc31d664be77a9597
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-phone-silverlight-apps"></a>Ismerkedés az Azure Mobile Engagement Windows Phone Silverlight-alkalmazásokkal való használatával
@@ -26,6 +26,9 @@ ms.lasthandoff: 02/28/2017
 
 Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobile Engagement az alkalmazáshasználat megértéséhez, valamint leküldéses értesítések Windows Phone Silverlight-alkalmazások szegmentált felhasználói számára való küldéséhez.
 Ez az oktatóanyag a Mobile Engagementet használó egyszerű küldési forgatókönyvet mutat be. Az oktatóanyagban létrehoz egy üres Windows Phone Silverlight-alkalmazást, amely alapszintű adatokat gyűjt, és leküldéses értesítéseket fogad a Microsoft leküldéses értesítéseket kezelő szolgáltatása (MPNS) használatával.
+
+> [!NOTE]
+> A Windows Phone 8.1-es és korábbi verziójú projektek nem támogatottak a Visual Studio 2017-ben.  További információ: [A Visual Studio 2017 platform célcsoportkezelése és kompatibilitása](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
 > [!NOTE]
 > A Windows Phone 8.1 (nem Silverlight) rendszerre vonatkozó útmutatásért lásd az [univerzális Windows-alkalmazásokkal kapcsolatos oktatóanyagot](mobile-engagement-windows-store-dotnet-get-started.md).
@@ -42,10 +45,10 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 > 
 > 
 
-## <a name="a-idsetup-azmeasetup-mobile-engagement-for-your-windows-phone-app"></a><a id="setup-azme"></a>A Mobile Engagement beállítása a Windows Phone-alkalmazáshoz
+## <a id="setup-azme"></a>A Mobile Engagement beállítása a Windows Phone-alkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnecting-appaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez és leküldéses értesítés küldéséhez. A teljes integrációs dokumentáció itt található: [Mobile Engagement Windows Phone SDK-integráció](mobile-engagement-windows-phone-sdk-overview.md)
 
 Létre fogunk hozni egy alapszintű alkalmazást a Visual Studio segítségével az integráció bemutatásához.
@@ -92,7 +95,7 @@ Létrehozott egy új Windows Phone Silverlight-alkalmazást, amelybe integrálni
                EngagementAgent.Instance.OnActivated(e);
             }
 
-## <a name="a-idmonitoraenable-real-time-monitoring"></a><a id="monitor"></a>Valós idejű figyelés engedélyezése
+## <a id="monitor"></a>Valós idejű figyelés engedélyezése
 Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felhasználók aktívak, legalább egy képernyőt (tevékenységet) el kell küldenie a Mobile Engagement háttérrendszere számára.
 
 1. A MainPage.xaml.cs fájlban adja hozzá a következő `using` utasítást:
@@ -109,10 +112,10 @@ Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felh
    
     b. Az XML-címke nevének `phone:PhoneApplicationPage` részét cserélje le a következőre: `engagement:EngagementPage`.
 
-## <a name="a-idmonitoraconnect-app-with-real-time-monitoring"></a><a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegrate-pushaenable-push-notifications-and-in-app-messaging"></a><a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
+## <a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 A Mobile Engagement lehetővé teszi a felhasználókkal folytatott interakciót és a felhasználók elérését a kampányok részeként megjelenő leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
 Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
@@ -142,7 +145,7 @@ Adja hozzá a `WMAppManifest.xml` fájlhoz a következő új képességeket:
 
 Készen is van. Most ellenőrizzük, hogy ezt az alapszintű integrációt megfelelően végezte-e el.
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>Értesítés küldése az alkalmazásnak
+## <a id="send"></a>Értesítés küldése az alkalmazásnak
 [!INCLUDE [Create Windows Push campaign](../../includes/mobile-engagement-windows-push-campaign.md)]
 
 Az eszközén egy értesítésnek kell megjelennie, amely egy alkalmazásbeli értesítés, ha az alkalmazás meg van nyitva, egyéb esetben pedig az alábbihoz hasonló bejelentési értesítés: 

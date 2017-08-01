@@ -1,6 +1,6 @@
 Ha üzembe helyezés közben szeretne címkével ellátni egy erőforrást, adja hozzá a `tags` elemet ahhoz az erőforráshoz, amelyet éppen üzembe helyez. Adja meg a címke nevét és értékét.
 
-### <a name="apply-literal-value-to-tag-name"></a>Szövegkonstansérték alkalmazása címkenévre
+### <a name="apply-a-literal-value-to-the-tag-name"></a>Szövegkonstansérték alkalmazása a címkenévre
 Az alábbi példában egy tárfiók látható két címkével (`Dept` és `Environment`), amelyek szövegkonstansértékre vannak beállítva:
 
 ```json
@@ -27,7 +27,7 @@ Az alábbi példában egy tárfiók látható két címkével (`Dept` és `Envir
 }
 ```
 
-### <a name="apply-object-to-tag-element"></a>Objektum alkalmazása címkeelemre
+### <a name="apply-an-object-to-the-tag-element"></a>Objektum alkalmazása a címkeelemre
 Megadhat olyan objektumparamétert, amely több címkét tartalmaz, majd alkalmazhatja azt az objektumot a címkeelemre. Az objektum minden tulajdonsága az erőforrás külön címkéjévé válik. Az alábbi példa egy `tagValues` nevű paramétert tartalmaz, amely a címkeelemre van alkalmazva.
 
 ```json
@@ -60,7 +60,7 @@ Megadhat olyan objektumparamétert, amely több címkét tartalmaz, majd alkalma
 }
 ```
 
-### <a name="apply-json-string-to-tag-name"></a>JSON-karakterlánc alkalmazása címkenévre
+### <a name="apply-a-json-string-to-the-tag-name"></a>JSON-karakterlánc alkalmazása a címkenévre
 
 Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelelő értékeket képviselő JSON-karakterláncot. A teljes JSON-karakterlánc egyetlen címkeként tárolódik, amelynek hossza nem lépheti túl a 256 karaktert. Az alábbi példában egy `CostCenter` nevű címke szerepel, amely egy JSON-karakterlánc számos értékét tartalmazza:  
 
@@ -86,7 +86,3 @@ Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelel
     ]
 }
 ```
-
-<!--HONumber=Feb17_HO1-->
-
-

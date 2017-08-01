@@ -11,43 +11,75 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: hero-article
 ms.date: 06/29/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: f3e7e57993b5253a895640854672da431c00854b
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a80adae0359aac6aa8c9e7922e3f4c3883dd8056
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
-<a id="azure-database-for-postgresql-use-go-language-to-connect-and-query-data" class="xliff"></a>
+# <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>PostgreSQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go nyelv használatával
+Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz [Go](https://golang.org/) nyelven írt kóddal (golang). Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikk feltételezi, hogy Ön ismeri a Go-t használó fejlesztéseket, de még járatlan a PostgreSQL-hez készült Azure-adatbázis használatában.
 
-# PostgreSQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go nyelv használatával
-Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz [Go](https://golang.org/) nyelven írt kóddal. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikk feltételezi, hogy Ön ismeri a Go-t használó fejlesztéseket, de még járatlan a PostgreSQL-hez készült Azure-adatbázis használatában.
-
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
 - [DB létrehozása – portál](quickstart-create-server-database-portal.md)
 - [DB létrehozása – Azure CLI](quickstart-create-server-database-azure-cli.md)
 
-<a id="install-go-and-pq" class="xliff"></a>
+## <a name="install-go-and-pq-connector"></a>A Go és a pq-összekötő telepítése
+Telepítse a [Go](https://golang.org/doc/install)-t és a [Pure Go Postgres illesztőprogramot (pq)](https://github.com/lib/pq) a saját számítógépére. Kövesse az egyes platformoknak megfelelő lépéseket:
 
-## A Go és a pq telepítése
-- Töltse le és telepítse a Go-t a platformjának megfelelő [telepítési utasítások](https://golang.org/doc/install) szerint.
-- Hozzon létre egy mappát a projekt számára (például C:\Postgresql\). A parancssorban módosítsa a könyvtárat a projektmappára (például `cd C:\Postgres\`).
-- Töltse le a [Pure Go Postgres illesztőprogramot (pq)](https://github.com/lib/pq) a projektmappába. Ehhez írja be a `go get github.com/lib/pq` parancsot, miközben a mappában van.
+### <a name="windows"></a>Windows
+1. [Töltse le](https://golang.org/dl/) és telepítse a Microsoft Windowshoz készült Go-t a [telepítési utasítások](https://golang.org/doc/install) szerint.
+2. Nyissa meg a parancssort a Start menüből.
+3. Hozzon létre egy mappát a projekt számára, például `mkdir  %USERPROFILE%\go\src\postgresqlgo`.
+4. Nyissa meg a projektmappát (például `cd %USERPROFILE%\go\src\postgresqlgo`).
+5. Úgy állítsa be a GOPATH környezeti változóját, hogy a forráskód könyvtárára mutasson. `set GOPATH=%USERPROFILE%\go`.
+6. Telepítse a [Pure Go Postgres illesztőt (pq)](https://github.com/lib/pq) a `go get github.com/lib/pq` parancs futtatásával.
 
-<a id="build-and-run-go-code" class="xliff"></a>
+   Összefoglalva, telepítse a Go-t, majd futtassa ezeket a parancsokat a parancssorban:
+   ```cmd
+   mkdir  %USERPROFILE%\go\src\postgresqlgo
+   cd %USERPROFILE%\go\src\postgresqlgo
+   set GOPATH=%USERPROFILE%\go
+   go get github.com/lib/pq
+   ```
 
-## Go kód felépítése és futtatása 
-- Mentse a kódot egy szövegfájlba *.go kiterjesztéssel, majd mentse a szövegfájlt a projektmappába (például `C:\postgres\read.go`).
-- A kód futtatásához módosítsa a könyvtárt a projektmappára (`cd postgres`), majd írja be a `go run read.go` parancsot az alkalmazás lefordításához és futtatásához.
-- A kód natív alkalmazásba való beépítéséhez írja be a `go build read.go` parancsot, majd indítsa el a read.exe fájlt az alkalmazás futtatásához.
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
+1. Indítsa el a Bash felületet. 
+2. Telepítse a Go-t a `sudo apt-get install golang-go` parancs futtatásával.
+3. Hozzon létre egy mappát a projekt számára a kezdőkönyvtárban (például `mkdir -p ~/go/src/postgresqlgo/`).
+4. Nyissa meg a projektmappát (például `cd ~/go/src/postgresqlgo/`).
+5. Úgy állítsa be a GOPATH környezeti változót, hogy egy érvényes forráskönyvtárra mutasson, például az aktuális kezdőkönyvtár Go mappájára. A bash felületen futtassa az `export GOPATH=~/go` parancsot, amellyel a Go könyvtárát GOPATH útvonalként adhatja meg az aktuális felületi munkamenetre.
+6. Telepítse a [Pure Go Postgres illesztőt (pq)](https://github.com/lib/pq) a `go get github.com/lib/pq` parancs futtatásával.
 
-<a id="get-connection-information" class="xliff"></a>
+   Összefoglalva, futtassa ezeket a bash-parancsokat:
+   ```bash
+   sudo apt-get install golang-go
+   mkdir -p ~/go/src/postgresqlgo/
+   cd ~/go/src/postgresqlgo/
+   export GOPATH=~/go/
+   go get github.com/lib/pq
+   ```
 
-## Kapcsolatadatok lekérése
+### <a name="apple-macos"></a>Apple macOS
+1. Töltse le és telepítse a Go-t a platformjának megfelelő [telepítési utasítások](https://golang.org/doc/install) szerint. 
+2. Indítsa el a Bash felületet. 
+3. Hozzon létre egy mappát a projekt számára a kezdőkönyvtárban (például `mkdir -p ~/go/src/postgresqlgo/`).
+4. Nyissa meg a projektmappát (például `cd ~/go/src/postgresqlgo/`).
+5. Úgy állítsa be a GOPATH környezeti változót, hogy egy érvényes forráskönyvtárra mutasson, például az aktuális kezdőkönyvtár Go mappájára. A bash felületen futtassa az `export GOPATH=~/go` parancsot, amellyel a Go könyvtárát GOPATH útvonalként adhatja meg az aktuális felületi munkamenetre.
+6. Telepítse a [Pure Go Postgres illesztőt (pq)](https://github.com/lib/pq) a `go get github.com/lib/pq` parancs futtatásával.
+
+   Összefoglalva, telepítse a Go-t, majd futtassa ezeket a bash-parancsokat:
+   ```bash
+   mkdir -p ~/go/src/postgresqlgo/
+   cd ~/go/src/postgresqlgo/
+   export GOPATH=~/go/
+   go get github.com/lib/pq
+   ```
+
+## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
@@ -57,15 +89,20 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
  ![PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-go/1-connection-string.png)
 5. Amennyiben elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az **Áttekintés** oldalra, és keresse ki a kiszolgáló-rendszergazda bejelentkezési nevét. Szükség esetén kérjen új jelszót.
 
-<a id="connect-and-create-a-table" class="xliff"></a>
+## <a name="build-and-run-go-code"></a>Go kód felépítése és futtatása 
+1. Golang-kód írásához használhat egy egyszerű szövegszerkesztőt, ilyen például Microsoft Windows rendszeren a Jegyzettömb, Ubuntu rendszeren a [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy a [Nano](https://www.nano-editor.org/), macOS rendszeren pedig a TextEdit. Ha a funkciógazdagabb interaktív fejlesztési környezeteket (IDE-ket) részesít előnyben, próbálja ki a Jetbrains [Gogland](https://www.jetbrains.com/go/) a Microsoft [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/) eszközt.
+2. Az alábbi szakaszokban található Golang-kódokat illessze be szövegfájlokba, és mentse a fájlokat a projektmappába \*.go kiterjesztéssel, például `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (Windows) vagy `~/go/src/postgresqlgo/createtable.go` (Linux) elérési úton.
+3. Keresse meg a `HOST`, a `DATABASE`, a `USER` és a `PASSWORD` állandót a kódban, és a példaértékeket cserélje le a saját értékeire.  
+4. Nyissa meg a parancssort vagy a bash rendszerhéjat. Lépjen a projektmappára. Windowson például: `cd %USERPROFILE%\go\src\postgresqlgo\`. Linuxon: `cd ~/go/src/postgresqlgo/`. A fentiekben említettek közül egyes IDE-környezetek hibakeresési és futásidejű képességeket biztosítanak anélkül, hogy rendszerhéjparancsokra lenne szükség.
+5. A kód futtatásához írja be a `go run createtable.go` parancsot az alkalmazás lefordításához és futtatásához. 
+6. Vagy a kód natív alkalmazásba való beépítéséhez írja be a `go build createtable.go` parancsot, majd indítsa el a `createtable.exe` fájlt az alkalmazás futtatásához.
 
-## Csatlakozás és tábla létrehozása
+## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
 A következő kód használatával csatlakozhat, és létrehozhat egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasításokkal sorokat adhat hozzá a táblához.
 
 A kód három csomagot importál, az [sql package](https://golang.org/pkg/database/sql/) és a [pq package](http://godoc.org/github.com/lib/pq) csomagot illesztőprogramként a Postgres-kiszolgálóval való kommunikációhoz, illetve az [fmt package](https://golang.org/pkg/fmt/) csomagot a nyomtatott bemenetekhez és kimenetekhez a parancssoron.
 
 A kód meghívja az [sql.Open()](http://godoc.org/github.com/lib/pq#Open) metódust a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz, majd a [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) metódussal ellenőrzi a kapcsolatot. A rendszer a folyamat során [adatbázis-leírót](https://golang.org/pkg/database/sql/#DB) használ, amely az adatbázis-kiszolgáló kapcsolatkészletét tárolja. A kód többször is meghívja az [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) metódust, hogy különböző SQL-parancsokat futtasson. A rendszer minden alkalommal egyéni checkError() metódust hív meg, hogy ellenőrizze a hibákat, és hiba esetén kilépjen.
-
 
 Cserélje le a `HOST`, `DATABASE`, `USER` és `PASSWORD` paramétereket a saját értékeire. 
 
@@ -126,9 +163,7 @@ func main() {
 }
 ```
 
-<a id="read-data" class="xliff"></a>
-
-## Adatok beolvasása
+## <a name="read-data"></a>Adatok beolvasása
 A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással. 
 
 A kód három csomagot importál, az [sql package](https://golang.org/pkg/database/sql/) és a [pq package](http://godoc.org/github.com/lib/pq) csomagot illesztőprogramként a Postgres-kiszolgálóval való kommunikációhoz, illetve az [fmt package](https://golang.org/pkg/fmt/) csomagot a nyomtatott bemenetekhez és kimenetekhez a parancssoron.
@@ -195,9 +230,7 @@ func main() {
 }
 ```
 
-<a id="update-data" class="xliff"></a>
-
-## Adatok frissítése
+## <a name="update-data"></a>Adatok frissítése
 A következő kód használatával csatlakozhat, és frissítheti az adatokat az **UPDATE** SQL-utasítással.
 
 A kód három csomagot importál, az [sql package](https://golang.org/pkg/database/sql/) és a [pq package](http://godoc.org/github.com/lib/pq) csomagot illesztőprogramként a Postgres-kiszolgálóval való kommunikációhoz, illetve az [fmt package](https://golang.org/pkg/fmt/) csomagot a nyomtatott bemenetekhez és kimenetekhez a parancssoron.
@@ -250,9 +283,7 @@ func main() {
 }
 ```
 
-<a id="delete-data" class="xliff"></a>
-
-## Adat törlése
+## <a name="delete-data"></a>Adat törlése
 A következő kód használatával csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. 
 
 A kód három csomagot importál, az [sql package](https://golang.org/pkg/database/sql/) és a [pq package](http://godoc.org/github.com/lib/pq) csomagot illesztőprogramként a Postgres-kiszolgálóval való kommunikációhoz, illetve az [fmt package](https://golang.org/pkg/fmt/) csomagot a nyomtatott bemenetekhez és kimenetekhez a parancssoron.
@@ -305,9 +336,7 @@ func main() {
 }
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)
 
