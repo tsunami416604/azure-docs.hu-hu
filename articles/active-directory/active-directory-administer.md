@@ -11,15 +11,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/20/2017
+ms.date: 07/25/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 07b9f4626e9129c7eeb94d43883417f324da5292
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: d68b641ac934c3930366be3dbf89a86e9611c7b7
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="administer-your-azure-ad-directory"></a>Az Azure AD-címtár felügyelete
@@ -65,7 +65,7 @@ Ha még nem rendelkezik előfizetéssel egyetlen Microsoft felhőszolgáltatásh
 
 * [Microsoft Azure](https://account.windowsazure.com/organization)
 * [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
-* [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
+* [Microsoft Intune](https://portal.office.com/Signup/Signup.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&dl=INTUNE_A&ali=1#0%20)
 
 ### <a name="manage-an-azure-provisioned-default-directory"></a>Azure által kiosztott alapértelmezett címtár kezelése
 A címtár az Azure szolgáltatásra történő feliratkozással együtt, automatikusan létrejön, és az előfizetése ehhez a címtárhoz lesz társítva. Ha azonban még 2013 októbere előtt iratkozott fel az Azure szolgáltatásra, a címtár nem jött létre automatikusan. Ebben az esetben előfordulhat, hogy az Azure „visszatöltötte” a fiókját úgy, hogy kiosztott hozzá egy alapértelmezett címtárat. Az előfizetése innentől ehhez az alapértelmezett címtárhoz van társítva.
