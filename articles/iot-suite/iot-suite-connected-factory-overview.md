@@ -13,18 +13,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/24/2017
+ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: d9d4dcf16954b0cd831e017ecb305d30e3b36dc7
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: a7d31be48ef06064b01cdb2dfd0331b34adbec4d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>Az előre konfigurált csatlakoztatott gyár első lépései
-
-## <a name="introduction"></a>Bevezetés
 
 Az Azure IoT Suite [előre konfigurált megoldások][lnk-preconfigured-solutions] több Azure IoT-szolgáltatást kombinálnak, hogy általános IoT üzleti forgatókönyveket megvalósító végpontok közötti megoldásokat nyújtsanak. Az előre konfigurált *csatlakoztatott gyár* megoldás csatlakozik ipari eszközeihez, és megfigyeli azokat. Ez a megoldás az eszközökről származó adatstream elemzésére, ezáltal pedig az üzemeltetés hatékonyságának és nyereségességének növelésére használható.
 
