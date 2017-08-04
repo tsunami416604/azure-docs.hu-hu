@@ -12,14 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2017
+ms.date: 08/02/2017
 ms.author: markvi
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: 5c60fa737c0133482af8b653f795bf9086c39969
 ms.contentlocale: hu-hu
 ms.lasthandoff: 03/28/2017
-
 
 ---
 # <a name="understand-azure-active-directory-architecture"></a>Az Azure Active Directory architektúrájának ismertetése
@@ -31,10 +30,10 @@ Az Azure AD-vel felhasználókat és csoportokat hozhat létre és kezelhet, val
 Az Azure AD földrajzilag eltérő helyeken található architektúrája a széles körű megfigyelés, az automatikus átirányítás, a feladatátvétel és a helyreállítási funkciók kombinálásával lehetővé teszi, hogy vállalati szintű rendelkezésre állást és teljesítményt nyújthatunk az ügyfeleink számára.
 
 Ez a cikk a következő architektúraelemeket tárgyalja:
- *    Szolgáltatásarchitektúra kialakítása
- *    Méretezhetőség 
- *    Folyamatos rendelkezésre állás
- *    Adatközpontok
+ *  Szolgáltatásarchitektúra kialakítása
+ *  Méretezhetőség 
+ *  Folyamatos rendelkezésre állás
+ *  Adatközpontok
 
 ### <a name="service-architecture-design"></a>Szolgáltatásarchitektúra kialakítása
 A méretezhető, magas rendelkezésre állású, adatokban gazdag rendszerek felépítésének legáltalánosabb módszere a független építőelemek vagy skálázási egységek alkalmazása. Az Azure AD adatrétege esetében a skálázási egységeket *partícióknak* nevezik. 
@@ -87,7 +86,7 @@ Az Azure AD a következő jellemzőkkel rendelkező adatközpontokon működik:
 
  * A hitelesítés, a Graph és a további AD-szolgáltatások az átjárószolgáltatás mögött helyezkednek el. Az átjáró kezeli ezen szolgáltatások terheléselosztását. Automatikus feladatátvételt hajt végre, ha a rendszer a tranzakciós állapot-mintavétel használatával nem megfelelő állapotú kiszolgálókat észlel. Ezen állapot-mintavételek alapján az átjáró dinamikusan átirányítja a forgalmat a kifogástalan állapotú adatközpontokhoz.
  * Az *olvasások* esetében a címtár másodlagos replikákkal és megfelelő előtér-szolgáltatásokkal rendelkezik egy több adatközpontban működő aktív-aktív konfigurációban. A teljes adatközpont meghibásodása esetén a rendszer automatikusan átirányítja a forgalmat egy másik adatközpontra.
- *    Az *írások* esetében a címtár tervezett (az új elsődleges replika szinkronizálása a régi elsődleges replikára) vagy vészhelyzeti feladatátvételi eljárásokon keresztül hajtja végre elsődleges (fő-) replika feladatátvételét az adatközpontokon. Az adatok tartóssága minden véglegesítés legalább két adatközpontra történő replikálásával valósul meg.
+ *  Az *írások* esetében a címtár tervezett (az új elsődleges replika szinkronizálása a régi elsődleges replikára) vagy vészhelyzeti feladatátvételi eljárásokon keresztül hajtja végre elsődleges (fő-) replika feladatátvételét az adatközpontokon. Az adatok tartóssága minden véglegesítés legalább két adatközpontra történő replikálásával valósul meg.
 
 **Adatkonzisztencia**
 

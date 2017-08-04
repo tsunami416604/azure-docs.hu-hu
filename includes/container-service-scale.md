@@ -32,7 +32,7 @@ Az ügynökcsomópontok számának módosításához futtassa az `az acs scale` 
 Például ha az előző fürtben az ügynökök számát 10-re szeretné módosítani, a következő parancsot adja meg:
 
 ```azurecli
-azure acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
+az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
 Az Azure CLI 2.0 egy JSON-karakterláncot ad vissza, amely a tárolószolgáltatás új konfigurációját jelöli, beleértve az ügynökök új számát is.
