@@ -33,6 +33,7 @@
 ### [Létrehozás és kezelés a CLI 2.0 használatával](key-vault-manage-with-cli2.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
 ## [PowerShell](/powershell/module/azurerm.keyvault)
 ## [Azure CLI 2](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
@@ -55,3 +56,4 @@
 ## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)
 ## [Fórumok](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

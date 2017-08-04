@@ -85,6 +85,7 @@
 ## [A SOAP WCF-szolgáltatásainak használata HTTP-n keresztül](http://mostlydotnetdev.blogspot.nl/2015/03/azure-api-management-apim-consuming.html)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/api-management/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [RBAC-hoz hasonló hozzáférés biztosítása REST API használatával](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=api-management)
 ## [A PostMan beállítása az API Management API-jainak hívására](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)

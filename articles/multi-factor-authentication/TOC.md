@@ -51,3 +51,4 @@
 ### [NPS-bővítmény hibái](multi-factor-authentication-nps-errors.md)
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

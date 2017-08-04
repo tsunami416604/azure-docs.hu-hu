@@ -82,18 +82,22 @@
 
 ## Betöltés
 
-### [Áttekintés](sql-data-warehouse-overview-load.md)
-### [Mintaadatok](sql-data-warehouse-load-sample-databases.md)
-### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
-### [AzCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
-### [BCP](sql-data-warehouse-load-with-bcp.md)
-### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
-### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
-### [PolyBase-útmutatás](sql-data-warehouse-load-polybase-guide.md)
-### [PolyBase Blob Storage-ból](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-### [PolyBase SQL Serverről](sql-data-warehouse-load-from-sql-server-with-polybase.md)
-### [RedGate](sql-data-warehouse-load-with-redgate.md)
-### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
+### Alapelvek
+#### [Áttekintés](sql-data-warehouse-overview-load.md)
+#### [PolyBase-útmutatás](sql-data-warehouse-load-polybase-guide.md)
+
+### oktatóanyagokat
+#### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
+
+### Útmutatók
+#### [Mintaadatok](sql-data-warehouse-load-sample-databases.md)
+#### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
+#### [BCP](sql-data-warehouse-load-with-bcp.md)
+#### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
+#### [PolyBase Blob Storage-ból](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+#### [PolyBase SQL Serverről](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+#### [RedGate](sql-data-warehouse-load-with-redgate.md)
+#### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 
 ## Migrate (Áttelepítés)
 
@@ -144,6 +148,7 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=databases)
 ## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)

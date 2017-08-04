@@ -24,10 +24,6 @@
 # Útmutató
 ## Tervezés és kialakítás
 ### [Az Azure AD architektúrájának ismertetése](active-directory-architecture.md)
-### [Ajánlott biztonsági szabályzatok és konfigurációk](secure-email-introduction.md)
-#### [Ajánlott biztonságos levelezési szabályzatok](secure-email-recommended-policies.md)
-##### [Ajánlott biztonságos levelezési szabályzatok üzembe helyezése](secure-email-deploy-recommended-policies.md)
-#### [EMS- és Office 365-szolgáltatások áttekintése](secure-email-ems-office365-service-descriptions.md)
 ### [Hibrid identitáskezelési megoldás üzembe helyezése](active-directory-hybrid-identity-design-considerations-overview.md)
 ### [Jogcímtársítások az Azure Active Directoryban](active-directory-claims-mapping.md)
 #### Követelmények meghatározása
@@ -167,7 +163,6 @@
 ## Alkalmazások kezelése
 ### [Áttekintés](active-directory-enable-sso-scenario.md)
 ### [Első lépések](active-directory-integrating-applications-getting-started.md)
-
 ### [Felhőalkalmazások felderítése](active-directory-cloudappdiscovery-whatis.md)
 #### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
@@ -178,7 +173,7 @@
 ##### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
 ##### [Alkalmazások közzététele](application-proxy-publish-azure-portal.md)
 ##### [Egyéni tartományok](active-directory-application-proxy-custom-domains.md)
-#### [Egyszeri bejelentkezéses hozzáférés](active-directory-appssoaccess-whatis.md)
+#### [Egyszeri bejelentkezés](application-proxy-sso-overview.md)
 ##### [Egyszeri bejelentkezés KCD-vel](active-directory-application-proxy-sso-using-kcd.md)
 ##### [Egyszeri bejelentkezés fejlécekkel](application-proxy-ping-access.md)
 ##### [Egyszeri bejelentkezés jelszótárolással](application-proxy-sso-azure-portal.md)
@@ -219,6 +214,7 @@
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)
+#### [Egyszeri bejelentkezéses hozzáférés](active-directory-appssoaccess-whatis.md)
 #### [Egyszeri bejelentkezés tanúsítványai](active-directory-sso-certs.md)
 #### [Bérlőkorlátozások](active-directory-tenant-restrictions.md)
 #### [SCIM használata a felhasználók átadására](active-directory-scim-provisioning.md)
@@ -370,6 +366,7 @@
 
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [PowerShell-parancsmagok](/powershell/azure/overview)
 ## [Java API-referencia](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
@@ -387,6 +384,7 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)

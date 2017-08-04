@@ -40,11 +40,12 @@
 ## [DNS-zónák és -rekordok védelme](dns-protect-zones-recordsets.md)
 ## [DNS-műveletek automatizálása a .NET SDK használatával](dns-sdk.md)
 
-## [Az Azure DNS integrálása Azure-erőforrásokkal](dns-custom-domain.md)
+## [Egyéni tartományok az Azure-erőforrásokhoz](dns-custom-domain.md)
 ## Hibaelhárítás
 ### [Hibaelhárítási útmutató](dns-troubleshoot.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=dns)
 ## [PowerShell](/powershell/module/azurerm.dns)
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
@@ -68,4 +69,5 @@
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/dns/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=dns)

@@ -27,6 +27,7 @@
 ### [Az Azure Traffic Manager csökkentett teljesítményének elhárítása](traffic-manager-troubleshooting-degraded.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
 ## [PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
@@ -45,6 +46,7 @@
 ## [Blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/traffic-manager/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md#traffic-manager-limits)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=traffic-manager)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/traffic-manager/)

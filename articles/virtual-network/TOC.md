@@ -22,10 +22,6 @@
 #### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [Parancssori felület](virtual-networks-create-vnet-arm-cli.md)
 #### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
-#### Klasszikus
-##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
-##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
-##### [Parancssori felület](virtual-networks-create-vnet-classic-cli.md)
 
 ### Network security groups (Hálózati biztonsági csoportok)
 #### [Portál](virtual-networks-create-nsg-arm-pportal.md)
@@ -99,6 +95,12 @@
 ##### [Szegélyhálózat tűzfallal, felhasználó által megadott útvonallal (UDR-rel) és NSG-kkel](virtual-networks-dmz-nsg-fw-udr-asm.md)
 ##### [Mintaalkalmazás](virtual-networks-sample-app.md)
 
+### Klasszikus
+#### [Virtuális hálózat](create-virtual-network-classic.md)
+##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [Parancssori felület](virtual-networks-create-vnet-classic-cli.md)
+
 ## Konfigurálás
 ### Virtual machines (Virtuális gépek)
 #### [Hálózati adapterek hozzáadása vagy eltávolítása](virtual-network-network-interface-vm.md)
@@ -140,6 +142,7 @@
 ### [Nem lehet törölni a virtuális hálózatokat](virtual-network-troubleshoot-cannot-delete-vnet.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.network)
 ## [PowerShell (klasszikus)](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)
@@ -162,4 +165,5 @@
 ## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
 ## [Hálózatkezelési fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-network)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)

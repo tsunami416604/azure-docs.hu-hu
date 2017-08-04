@@ -68,6 +68,7 @@
 
 # Referencia
 
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=search)
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (Felügyelet)](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python (Felügyelet)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
@@ -78,6 +79,7 @@
 ## [API-verziók](search-api-versions.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/search/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=search)
 ## Oktatóanyagok és -programok

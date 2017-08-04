@@ -101,3 +101,4 @@
 ## [Következő lépések](azure-operations-guide.md#next-steps)
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

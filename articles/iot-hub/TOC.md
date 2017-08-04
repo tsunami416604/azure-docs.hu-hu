@@ -17,6 +17,7 @@
 ### [Fizikai eszköz használata](iot-hub-get-started-physical.md)
 #### [Raspberry Pi és Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [Raspberry Pi és C](iot-hub-raspberry-pi-kit-c-get-started.md)
+#### [Raspberry Pi és Python](iot-hub-raspberry-pi-kit-python-get-started.md)
 
 #### [Intel Edison és Node.js](iot-hub-intel-edison-kit-node-get-started.md)
 #### [Intel Edison és C](iot-hub-intel-edison-kit-c-get-started.md)
@@ -84,6 +85,7 @@
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-getstarted.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-getstarted.md)
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-getstarted.md)
+#### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-getstarted.md)
 ### Közvetlen metódusok használata
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-direct-methods.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-direct-methods.md)
@@ -103,6 +105,7 @@
 ### Feladatok ütemezése és szórása
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-schedule-jobs.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-schedule-jobs.md)
+#### [Java](iot-hub-java-java-schedule-jobs.md)
 ## Kezelés
 ### IoT Hub létrehozása 
 #### [A portál használata](iot-hub-create-through-portal.md)
@@ -150,6 +153,7 @@
 #### [Natív modulszolgáltató](https://github.com/Azure/iot-edge/tree/master/samples/native_module_host_sample)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
 ## [Azure CLI](/cli/azure/iot)
 ## [.NET (Szolgáltatás)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (Eszközök)](/dotnet/api/microsoft.azure.devices.client)
@@ -180,6 +184,7 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=iot-hub)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-iot-hub)
 ## [Műszaki esettanulmányok](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)

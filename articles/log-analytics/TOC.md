@@ -31,12 +31,22 @@
 #### [IIS-naplók](log-analytics-data-sources-iis-logs.md)
 #### [Egyéni naplók](log-analytics-data-sources-custom-logs.md)
 #### [Egyéni mezők](log-analytics-custom-fields.md)
+
 ## Adatok lekérdezése
 ### [Naplókeresés – Áttekintés](log-analytics-log-searches.md)
 ### [A Search leírása](log-analytics-search-reference.md)
 #### [Reguláris kifejezések](log-analytics-log-searches-regex.md)
 ### [Műveletek végrehajtása a keresési eredményekből](log-analytics-log-search-takeaction.md)
 ### [Számítógépcsoportok](log-analytics-computer-groups.md)
+
+## Új naplókeresés
+### [Munkaterület frissítése](log-analytics-log-search-upgrade.md)
+### [Gyakori kérdések](log-analytics-log-search-faq.md)
+### [Naplókeresés – Áttekintés](log-analytics-log-search-new.md)
+### [Naplókeresési portálok](log-analytics-log-search-portals.md)
+#### [Naplókeresési portál használata](log-analytics-log-search-log-search-portal.md)
+### [Váltás az örökölt nyelvről](log-analytics-log-search-transition.md)
+
 ## Adatok elemzése
 ### [Irányítópultok](log-analytics-dashboards.md)
 ### [Nézettervező](log-analytics-view-designer.md)
@@ -101,5 +111,6 @@
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=log-analytics)
 ## [Windows Analytics](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)

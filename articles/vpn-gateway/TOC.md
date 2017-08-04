@@ -17,7 +17,6 @@
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
-### [Klasszikus portál (klasszikus)](vpn-gateway-site-to-site-create.md)
 ## Pont–hely közötti kapcsolat konfigurálása
 ### [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -59,8 +58,7 @@
 ### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (klasszikus)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [VPN-átjáró konfigurálása (klasszikus)](vpn-gateway-configure-vpn-gateway-mp.md)
-## [Átjáró termékváltozatai (régi)](vpn-gateway-about-skus-legacy.md)
+## [Átjáró-termékváltozatok (örökölt)](vpn-gateway-about-skus-legacy.md)
 ## Külső VPN-eszközök konfigurálása
 ### [Áttekintés és Azure-konfiguráció](vpn-gateway-3rdparty-device-config-overview.md)
 ### [Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
@@ -91,5 +89,6 @@
 ## [Blog](https://azure.microsoft.com/blog/topics/networking)
 ## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway)

@@ -30,3 +30,4 @@
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/time-series-insights/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

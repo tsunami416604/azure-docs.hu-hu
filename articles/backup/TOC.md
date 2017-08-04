@@ -4,7 +4,7 @@
 
 # Bevezetés
 ## [Azure-beli virtuális gépek biztonsági mentése](backup-azure-vms-first-look-arm.md)
-## [Fájlok és mappák biztonsági mentése](backup-try-azure-backup-in-10-mins.md)
+## [Windows Server vagy Windows rendszerű számítógépek biztonsági mentése](backup-try-azure-backup-in-10-mins.md)
 ## [VMware-kiszolgálók biztonsági mentése](backup-azure-backup-server-vmware.md)
 
 # Útmutató
@@ -27,16 +27,19 @@
 #### [A Resource Managerrel üzembe helyezett virtuális gépek visszaállítása az Azure Portalon](backup-azure-arm-restore-vms.md)
 #### [Titkosított virtuális gépek visszaállítása](backup-azure-vms-encryption.md)
 #### [Virtuális gépek visszaállítása az Azure-ban](backup-azure-restore-vms.md)
-#### [A titkosított virtuális gépekhez tartozó Key Vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával](backup-azure-restore-key-secret.md)
+#### [A titkosított virtuális gépekhez tartozó Key Vault-kulcs és titkos kulcs visszaállítása](backup-azure-restore-key-secret.md)
 
 
-## Windows-fájlok és -mappák
-### [A Resource Manager-alapú üzemi modellt használó Windows Server](backup-configure-vault.md)
-### [Klasszikus üzemi modellt használó Windows Server](backup-configure-vault-classic.md)
+## Windows Server
+### [Windows Serveren lévő fájlok és mappák biztonsági mentése](backup-configure-vault.md)
+### [A Windows Server rendszerállapotának biztonsági mentése](backup-azure-system-state.md)
+### [Azure-beli fájlok helyreállítása Windows Serverre](backup-azure-restore-windows-server.md)
+### [A Windows Server rendszerállapotának visszaállítása](backup-azure-restore-system-state.md)
 ### [Recovery Services-tárolók figyelése és kezelése](backup-azure-manage-windows-server.md)
-### [Backup-tárolók kezelése a klasszikus üzemi modellel](backup-azure-manage-windows-server-classic.md)
-### [Fájlok helyreállítása a Windows-kiszolgálóra a Resource Manager-alapú üzemi modell használatával](backup-azure-restore-windows-server.md)
-### [Fájlok helyreállítása a Windows-kiszolgálóra a klasszikus üzemi modell használatával](backup-azure-restore-windows-server-classic.md)
+### Biztonsági mentés és visszaállítás a klasszikus portállal
+#### [Klasszikus üzemi modellt használó Windows Server](backup-configure-vault-classic.md)
+#### [Backup-tárolók kezelése a klasszikus üzemi modellel](backup-azure-manage-windows-server-classic.md)
+#### [Fájlok helyreállítása a Windows-kiszolgálóra a klasszikus üzemi modell használatával](backup-azure-restore-windows-server-classic.md)
 
 ## Azure Backup Server
 ### [Azure Backup Server védelmi mátrix](backup-mabs-protection-matrix.md)
@@ -108,5 +111,6 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/backup/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=backup)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=backup)

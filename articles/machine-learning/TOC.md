@@ -173,6 +173,7 @@
 
 # Referencia
 
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=machine-learning)
 ## [PowerShell modul (Új)](/powershell/module/azurerm.machinelearning)
 ## [PowerShell modul (Klasszikus)](machine-learning-powershell-module.md)
 ## [Algoritmusokra és modulokra vonatkozó referenciák](https://msdn.microsoft.com/library/azure/dn905974.aspx)
@@ -215,6 +216,7 @@
 
 ## [Net# neurális hálózati nyelv](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/machine-learning/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [Blog](http://blogs.technet.com/b/machinelearning/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)

@@ -179,6 +179,7 @@
 #### [Meghajtójegyzékek biztonsági mentése](storage-import-export-backing-up-drive-manifests.md)
 #### [Import/Export-feladatok diagnosztizálása és hibajavítása](storage-import-export-diagnostics-and-error-recovery.md)
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=storage)
 ## [PowerShell](/powershell/module/azure.storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
@@ -210,6 +211,7 @@
 ## [Azure Storage-ügyféleszközök](storage-explorers.md)
 ## [Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storage)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storage)
@@ -218,6 +220,7 @@
 ### [Storage Explorer (előzetes verzió)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 ### [Blobok kezelése a Storage Explorerrel (előzetes verzió)](../vs-azure-tools-storage-explorer-blobs.md)
 ### [A Storage Explorer (előzetes verzió) használata az Azure File Storage szolgáltatással](../vs-azure-tools-storage-explorer-files.md)
+### [A Storage Explorer (előzetes verzió) kibocsátási megjegyzései](../vs-azure-tools-storage-explorer-relnotes.md)
 
 ## NuGet-csomagok
 ### [Az Azure Storage .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/)

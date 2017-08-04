@@ -64,6 +64,7 @@
 ## [Közösségi sablonok](https://azure.microsoft.com/resources/templates/)
 ## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
 ## [Díjszabás](https://azure.microsoft.com/pricing)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)

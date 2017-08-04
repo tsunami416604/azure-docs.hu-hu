@@ -30,5 +30,6 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/service-bus/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Példák](https://github.com/azure/azure-relay/tree/master/samples)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)

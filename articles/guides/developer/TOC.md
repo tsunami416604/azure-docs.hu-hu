@@ -112,5 +112,6 @@
 # Erőforrások
 ## [Azure-régiók](https://azure.microsoft.com/regions/)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Példák](https://azure.microsoft.com/resources/samples/)
 ## [Videók](https://azure.microsoft.com/resources/videos/home/)

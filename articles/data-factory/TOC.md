@@ -93,6 +93,7 @@
 ### [Az Adatkezelési átjáró használatával hibáinak elhárítása](data-factory-troubleshoot-gateway-issues.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory)
 ## [PowerShell](/powershell/module/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [REST](/rest/api/datafactory/)
@@ -104,6 +105,7 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/data-factory)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-factory/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Az Adatkezelési átjáró kibocsátási megjegyzései](data-factory-gateway-release-notes.md)
 ## [Funkció kérése](https://feedback.azure.com/forums/270578-azure-data-factory)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-factory)

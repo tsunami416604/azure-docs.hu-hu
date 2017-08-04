@@ -3,6 +3,7 @@
 ## [Adatbázis-biztonság](azure-database-security-overview.md)
 ## [Tárbiztonság](security-storage-overview.md)
 ## [Számítási biztonság](security-virtual-machines-overview.md)
+## [Működési biztonság](azure-operational-security-overview.md)
 ## [Biztonságkezelés és megfigyelés](security-management-and-monitoring-overview.md)
 ## [Identitáskezelés](security-identity-management-overview.md)
 ## [IoT-biztonság](../iot-suite/iot-security-architecture.md#security-in-iot)
@@ -35,6 +36,8 @@
 ### [Ajánlott eljárások IaaS számítási feladatokhoz ](azure-security-iaas.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
 ### [Lemeztitkosítás IaaS virtuális gépekhez](azure-security-disk-encryption.md)
+#### [Lemeztitkosítás – gyakori kérdések](azure-security-disk-encryption-faq.md)
+#### [Lemeztitkosítási hibaelhárítás](azure-security-disk-encryption-tsg.md)
 ### [Azure-beli virtuális gép titkosítása](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 ## Biztonságkezelés és megfigyelés
@@ -53,8 +56,10 @@
 ## PaaS szolgáltatások
 ### [PaaS-környezetek védelme](security-paas-deployments.md)
 #### [PaaS web- és mobilalkalmazások védelme SQL-lel](security-paas-applications-using-sql.md)
-#### [Ajánlott eljárások az SQL Database-re vonatkozóan](azure-database-security-best-practices.md)
+#### [Ajánlott biztonsági eljárások az SQL Database-re vonatkozóan](azure-database-security-best-practices.md)
+#### [SQL Database biztonsági ellenőrzőlista](azure-database-security-checklist.md)
 #### [PaaS web- és mobilalkalmazások védelme az App Services segítségével](security-paas-applications-using-app-services.md)
+####[Működési biztonsági ellenőrzőlista](azure-operational-security-checklist.md)
 
 ## Eszközök internetes hálózata
 ### [Az IoT-környezet biztonságossá tétele](../iot-suite/iot-suite-security-deployment.md)
@@ -79,6 +84,7 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Azure biztonsági MVP program](azure-security-mvp.md)
 ## [Kiberbiztonsági tanácsadás](azure-security-cyber-services.md)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Biztonsági és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)
 ## [Biztonsági kurzusok a Virtuális Akadémián](security-microsoft-virtual-academy.md)
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](security-channel-nine.md)

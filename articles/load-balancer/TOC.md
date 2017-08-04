@@ -48,6 +48,7 @@
 ### [Azure Load Balancer hibaelhárítása](load-balancer-troubleshoot.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)
 ## [PowerShell](/powershell/module/azurerm.network)
 ## [Azure CLI 2.0](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
@@ -69,4 +70,5 @@
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/load-balancer/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=load-balancer)

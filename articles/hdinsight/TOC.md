@@ -99,7 +99,6 @@
 #### [Események feldolgozása Java-topológiákkal](hdinsight-storm-develop-java-event-hub-topology.md)
 #### [A Power BI használata topológiákkal](hdinsight-storm-power-bi-topology.md)
 #### [Valós idejű érzékelőadatok elemzése](hdinsight-storm-sensor-data-analysis.md)
-#### [Járműérzékelő-adatok feldolgozása](hdinsight-storm-iot-eventhub-documentdb.md)
 #### [Események korrelációinak megállapítása az idő múlásával](hdinsight-storm-correlation-topology.md)
 #### [Topológiák fejlesztése a Pythonnal](hdinsight-storm-develop-python-topology.md)
 ## A tartományhoz csatlakoztatott HDInsight (előzetes verzió) használata
@@ -137,6 +136,7 @@
 ### [Webhelynaplók elemzése a Hive használatával](hdinsight-hive-analyze-website-log.md)
 ### [Application Insights-telemetrianaplók elemzése](hdinsight-spark-analyze-application-insight-logs.md)
 ## Fürtök kiterjesztése
+### [Biztonságos, engedélyezett tárfiók használata](hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)
 ### [Fürtök testreszabása a Bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [Fürtök testreszabása szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)
 ### [A HDInsight csatlakoztatása a helyszíni hálózathoz](connect-on-premises-network.md)
@@ -207,6 +207,7 @@
 #### [Hive-lekérdezések optimalizálása](hdinsight-hadoop-optimize-hive-query.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight)
 ## [PowerShell](/powershell/module/azurerm.hdinsight)
 ## [.NET (Hadoop)](https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet)
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
@@ -240,4 +241,5 @@
 ## [Segítség kérése a fórumokon](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 ## [Microsoft Professional Program big data-megoldásokhoz](https://academy.microsoft.com/en-us/professional-program/big-data/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [A HDInsight Windows-eszközei](hdinsight-hadoop-windows-tools.md)

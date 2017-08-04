@@ -71,3 +71,4 @@
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

@@ -42,6 +42,7 @@
 ### [Eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal](event-hubs-resource-manager-namespace-event-hub.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=event-hubs)
 ## Java
 ### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
 ### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)
@@ -60,6 +61,7 @@
 ## [Kódminták](event-hubs-samples.md)
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/event-hubs/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=event-hubs)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-eventhub)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=event-hubs)

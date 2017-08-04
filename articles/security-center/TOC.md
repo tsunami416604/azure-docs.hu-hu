@@ -75,6 +75,7 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure biztonsági, adatvédelmi és megfelelőségi blog](http://blogs.msdn.com/b/azuresecurity/)
 ## [Díjszabás](security-center-pricing.md)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatás áttekintése](https://azure.microsoft.com/services/security-center/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=security-center)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=security-center)

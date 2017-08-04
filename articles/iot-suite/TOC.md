@@ -54,6 +54,7 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Gyakori kérdések](iot-suite-faq.md)
 ## [IoT Suite képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
 
 

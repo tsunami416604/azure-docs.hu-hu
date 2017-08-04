@@ -24,6 +24,7 @@
 ### [Sorszintű biztonság a Power BI Embedded szolgáltatással](power-bi-embedded-rls.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=power-bi-embedded)
 ## [PowerShell](/powershell/module/azurerm.powerbiembedded)
 ## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
 ## [.NET SDK letöltése](https://www.nuget.org/profiles/powerbi)
@@ -38,5 +39,6 @@
 ## [JavaScript Git-tárház](https://github.com/Microsoft/PowerBI-JavaScript)
 ## [Power BI C# Git-tárház](https://github.com/Microsoft/PowerBI-CSharp)
 ## [Power BI-közösség](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Mintaalkalmazás](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)

@@ -44,6 +44,7 @@
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
 ## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 ## [SQL Server-eszközök](https://msdn.microsoft.com/library/mt238365.aspx)

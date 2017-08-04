@@ -28,7 +28,6 @@
 ## Automatizálás
 ### [Runbook indítása](automation-starting-a-runbook.md)
 ### [Runbook indítása webhookból](automation-webhooks.md)
-### [Runbookok futtatása hibrid runbook-feldolgozón](automation-hybrid-runbook-worker.md)
 ### [Runbook bemeneti paramétereinek konfigurálása](automation-runbook-input-parameters.md)
 ### [Hibakezelés grafikus runbookokban](automation-runbook-graphical-error-handling.md)
 ### [Runbook-feladat nyomon követése](automation-runbook-execution.md)
@@ -36,6 +35,9 @@
 ### [Azure Automation-adatok kezelése](automation-managing-data.md)
 ### [Azure Automation-runbook hívása Log Analytics-riasztásból](automation-invoke-runbook-from-omsla-alert.md)
 ### [JSON-objektum továbbítása Azure Automation-runbookba](automation-pass-json-string.md)
+## hibrid runbook-feldolgozó
+### [Hibrid runbook-feldolgozó üzembe helyezése](automation-hybrid-runbook-worker.md)
+### [Runbookok futtatása feldolgozón](automation-hrw-run-runbooks.md)
 ## Konfigurációkezelés (DSC) üzembe helyezése
 ### [A célállapot-konfiguráló (DSC) áttekintése](automation-dsc-overview.md)
 ### [Első lépések](automation-dsc-getting-started.md)
@@ -87,6 +89,7 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/automation/)  
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Kibocsátási megjegyzések](https://azure.microsoft.com/updates/?product=automation)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=automation)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)

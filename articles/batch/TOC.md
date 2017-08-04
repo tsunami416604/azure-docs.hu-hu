@@ -8,6 +8,7 @@
 ## [.NET-útmutató a Batchhez](batch-dotnet-get-started.md)
 ## [Python-útmutató a Batchhez](batch-python-tutorial.md)
 ## [Node.js-útmutató a Batchhez](batch-nodejs-get-started.md)
+## [Batch-renderelési szolgáltatás](batch-rendering-service.md)
 # Útmutató
 ## Fejlesztés
 ### [Alkalmazáscsomagok](batch-application-packages.md)
@@ -15,6 +16,7 @@
 ### Azure AD-hitelesítés
 #### [Azure AD a Batch szolgáltatással](batch-aad-auth.md)
 #### [Azure AD a Batch Managementtel](batch-aad-auth-management.md)
+### [Nagy számítási igényű virtuális gépek](batch-pool-compute-intensive-sizes.md)
 ### [Párhuzamosan futó csomóponti feladatok](batch-parallel-node-tasks.md)
 ### [Hatékony listázó lekérdezések](batch-efficient-list-queries.md)
 ### [Feladatok előkészítési és befejezési műveletei](batch-job-prep-release.md)
@@ -36,8 +38,8 @@
 #### [Alkalmazás hozzáadása](./scripts/batch-cli-sample-add-application.md)
 #### [Készletek kezelése](./scripts/batch-cli-sample-manage-pool.md)
 #### [Feladatok és tevékenységek futtatása](./scripts/batch-cli-sample-run-job.md)
-
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
 ## [PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
@@ -69,6 +71,7 @@
 ## [C#-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/batch/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Python-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)

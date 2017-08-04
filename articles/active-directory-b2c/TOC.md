@@ -74,6 +74,7 @@
 ### [Kibocsátási megjegyzések](active-directory-b2c-developer-notes-custom.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## Szószedet
 ### [Alkalmazástípusok](active-directory-b2c-apps.md)
 ### [Hitelesítési protokollok](active-directory-b2c-reference-protocols.md)
@@ -92,6 +93,7 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Gyakori kérdések](active-directory-b2c-faqs.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [Támogatás](active-directory-b2c-support.md)

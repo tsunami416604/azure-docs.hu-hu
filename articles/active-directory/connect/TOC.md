@@ -38,6 +38,7 @@
 ##### [Első lépések](active-directory-aadconnect-pass-through-authentication-quick-start.md)
 ##### [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [Hogyan működik?](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
+##### [Előzetes verziójú ügynökök frissítése](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)
 ##### [Intelligens zárolás](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [Gyakori kérdések](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Hibaelhárítás](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
@@ -82,6 +83,7 @@
 ### [Helyreállítás 10 GB-ra korlátozott LocalDB adatbázisból](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Identitásszinkronizálás és ismétlődő attribútumok rugalmassága](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [Hibrid identitás – szükséges portok és protokollok](active-directory-aadconnect-ports.md)
 ## [Az előzetes verzió szolgáltatásai](active-directory-aadconnect-feature-preview.md)
@@ -109,3 +111,5 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect – gyakori kérdések](active-directory-aadconnect-faq.md)
 ##[DirSync elavulása](active-directory-aadconnect-dirsync-deprecated.md)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
+

@@ -26,6 +26,7 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/biztalk-services/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Kibocsátási megjegyzések](biztalk-release-notes.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=biztalk-services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/biztalk-services)

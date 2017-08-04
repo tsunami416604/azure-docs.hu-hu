@@ -29,6 +29,7 @@
 ### [Kártevőfelmérés](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Rendszerfrissítési felmérés](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Biztonsági termékek csatlakoztatása](oms-security-connect-products.md)
+### [Webes alapkonfiguráció-felmérés](oms-security-web-baseline-assessment.md)
 
 ## Megoldások használata
 ### [Felügyeleti megoldások](operations-management-suite-solutions.md)
@@ -77,3 +78,4 @@
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

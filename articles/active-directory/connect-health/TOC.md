@@ -12,6 +12,7 @@
 ## [Hibák a szinkronizálás során](../active-directory-aadconnect-troubleshoot-sync-errors.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Az Azure AD Connect Health verzióelőzményei](active-directory-aadconnect-health-version-history.md)
 
 # Kapcsolódó
@@ -22,4 +23,4 @@
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
-
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

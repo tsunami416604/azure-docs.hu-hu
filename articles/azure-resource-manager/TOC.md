@@ -7,10 +7,11 @@
 
 # Bevezetés
 ## [Sablon exportálása](resource-manager-export-template.md)
-## [Az első saját sablon létrehozása](resource-manager-create-first-template.md)
+## [Sablon létrehozása és üzembe helyezése](resource-manager-create-first-template.md)
 ## [A Visual Studio és a Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
 # Példák
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
 ## PowerShell
 ### [Sablon üzembe helyezése](resource-manager-samples-powershell-deploy.md)
 
@@ -102,6 +103,7 @@
 ### [Tömb- és objektumfüggvények](resource-group-template-functions-array.md)
 ### [Összehasonlító függvények](resource-group-template-functions-comparison.md)
 ### [Üzembehelyezési függvények](resource-group-template-functions-deployment.md)
+### [Logikai függvények](resource-group-template-functions-logical.md)
 ### [Numerikus függvények](resource-group-template-functions-numeric.md)
 ### [Erőforrásfüggvények](resource-group-template-functions-resource.md)
 ### [Karakterlánc-függvények](resource-group-template-functions-string.md)
@@ -129,6 +131,7 @@
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Kérelmek szabályozása](resource-manager-request-limits.md)

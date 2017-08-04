@@ -44,3 +44,4 @@
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Kapcsolatfelvétel az ügyfélszolgálattal](../azure-supportability/how-to-create-azure-support-request.md)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

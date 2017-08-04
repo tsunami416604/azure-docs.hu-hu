@@ -130,6 +130,7 @@
 ## [.NET API-minta](mobile-engagement-dotnet-sdk-service-api.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/mobile-engagement/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Bemutatóalkalmazás-minták](mobile-engagement-demo-apps.md)
 ## [Szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/mobile-engagement/)
 ## [Videók és frissítések](https://azure.microsoft.com/documentation/services/mobile-engagement/)

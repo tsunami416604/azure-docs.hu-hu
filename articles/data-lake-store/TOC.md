@@ -58,6 +58,7 @@
 ### [Tervezés magas rendelkezésre álláshoz](data-lake-store-troubleshooting-guidance.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)
 ## [PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
@@ -73,6 +74,7 @@
 ## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Stack Overflow fórum](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

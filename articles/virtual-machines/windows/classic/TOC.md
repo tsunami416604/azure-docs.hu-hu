@@ -98,6 +98,7 @@
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)

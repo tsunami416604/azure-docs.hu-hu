@@ -15,3 +15,4 @@
 ### [Gyakori kérdések](microsoft-authenticator-app-faq.md)
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

@@ -359,6 +359,7 @@
 ## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/storsimple/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storsimple)
 ## [Támogatási blog](http://blogs.msdn.com/b/storsimple/)
 ## [Harmadik felekkel kapcsolatos közlemények](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)

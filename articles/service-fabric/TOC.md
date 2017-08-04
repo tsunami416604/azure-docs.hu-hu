@@ -16,6 +16,7 @@
 ### [2. .NET-alkalmazás üzembe helyezése a Docker Compose használatával](service-fabric-host-app-in-a-container.md)
 
 # Példák
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
 ## [Azure CLI](samples-cli.md)
 # Alapelvek
@@ -131,7 +132,6 @@
 ### Tárolószolgáltatás készítése
 #### [Tárolóalkalmazás létrehozása Windowshoz](service-fabric-get-started-containers.md)
 #### [Tárolóalkalmazás létrehozása Linuxhoz](service-fabric-get-started-containers-linux.md)
-#### [Windows-tároló üzembe helyezése](service-fabric-deploy-container.md)
 #### [Linux-tároló üzembe helyezése](service-fabric-deploy-container-linux.md)
 #### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
 #### [Tárolók és szolgáltatások erőforrás-szabályozása](service-fabric-resource-governance.md)
@@ -328,6 +328,7 @@
 ## [Képzési terv](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/service-fabric/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Mintakód](http://aka.ms/servicefabricsamples)
 ## [Támogatási lehetőségek](service-fabric-support.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-fabric)

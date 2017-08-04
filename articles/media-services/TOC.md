@@ -215,6 +215,7 @@
 ### [Újrapróbálkozási logika](media-services-retry-logic-in-dotnet-sdk.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [PowerShell (Szolgáltatásfelügyelet)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
@@ -224,5 +225,6 @@
 ## [Azure Media Services-közösség](media-services-community.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Kibocsátási megjegyzések](media-services-release-notes.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)

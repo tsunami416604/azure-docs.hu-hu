@@ -5,3 +5,4 @@
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

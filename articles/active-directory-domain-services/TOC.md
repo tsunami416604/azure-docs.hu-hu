@@ -47,6 +47,9 @@
 ### [Az Azure portál előnézeti felületének engedélyezése](active-directory-ds-azure-portal-enable-preview-access.md)
 ### [Eltérő bérlők hibáinak megoldása](active-directory-ds-mismatched-tenant-error.md)
 
+# Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+
 # Kapcsolódó
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
@@ -57,4 +60,5 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Kapcsolat](active-directory-ds-contact-us.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/active-directory-ds/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-ds)

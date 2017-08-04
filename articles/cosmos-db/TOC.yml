@@ -5,8 +5,7 @@
     - name: Az Azure Cosmos DB bemutatása
       href: introduction.md
     - name: Üdvözöljük DocumentDB-ügyfeleinket!
-      href: >-
-        https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
+      href: 'https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/'
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -138,6 +137,8 @@
               href: documentdb-resources.md
             - name: SQL-lekérdezések
               href: documentdb-sql-query.md
+            - name: SQL-lekérdezések teljesítménye
+              href: documentdb-sql-query-metrics.md
             - name: SQL-játszótér
               href: 'https://www.documentdb.com/sql/demo'
             - name: Particionálás
@@ -195,8 +196,7 @@
                 - name: Stack Overflow
                   href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
                 - name: Videók
-                  href: >-
-                    https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db
+                  href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: Szolgáltatási hírek
                   href: 'https://azure.microsoft.com/updates/?product=cosmos-db'
                 - name: Közösségi portál
@@ -224,8 +224,7 @@
         - name: Tábla API
           items:
             - name: Table Storage
-              href: >-
-                https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts
+              href: 'https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts'
         - name: Csatorna módosítása
           href: change-feed.md
         - name: Térinformatikai
@@ -284,8 +283,12 @@
           href: powerbi-visualize.md
         - name: Az ODBC-illesztő felhasználása az adatmegjelenítéshez
           href: odbc-driver.md
+        - name: Spring Boot Starter használata DocumentDB API-kkal
+          href: documentdb-java-spring-boot-starter-with-cosmos-db.md
 - name: Referencia
   items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
     - name: DocumentDB API-k
       items:
         - name: Java

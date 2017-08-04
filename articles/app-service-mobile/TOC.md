@@ -222,6 +222,7 @@
 ## [A WebJobs-erőforrások listája](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
 ## [Díjszabás](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)

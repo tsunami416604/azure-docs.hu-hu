@@ -42,6 +42,7 @@
 ## Konfigurálás
 ### Azure
 #### [Profilkészítő](app-insights-profiler.md)
+#### [Profilkészítő engedélyezése](enable-profiler-cloud-services.md)
 #### [Diagnosztika](app-insights-azure-diagnostics.md)
 #### [Előnézetek](app-insights-previews.md)
 
@@ -140,7 +141,7 @@
 ### [Java](app-insights-java-troubleshoot.md)
 
 # Referencia
-## [Elemzés](app-insights-analytics-reference.md)
+## [Elemzés](https://docs.loganalytics.io/)
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
@@ -154,6 +155,7 @@
 ### [Metrika](application-insights-data-model-metric-telemetry.md)
 ### [Környezet](application-insights-data-model-context.md)
 ## [Telemetriai korreláció](application-insights-correlation.md)
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=application-insights)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
@@ -161,6 +163,7 @@
 ## [Nyelvek és platformok](app-insights-platforms.md)
 
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/application-insights/)  
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
 ## Hírek
 

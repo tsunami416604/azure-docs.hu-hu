@@ -23,8 +23,12 @@
 ### [MFA megkövetelése](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ### [Az auditnapló használata](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
+# Referencia
+## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+
 # Kapcsolódó
 ## [Azure Active Directory](/azure/active-directory/)
 ## [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control-what-is.md)
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

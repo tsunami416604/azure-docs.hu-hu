@@ -32,6 +32,7 @@
 ### [Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása](expressroute-howto-coexist-resource-manager.md)
+## [Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása](how-to-routefilter-powershell.md)
 ## [Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra](expressroute-howto-move-arm.md)
 ## [Kapcsolódó virtuális hálózatok áttelepítése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-migration-classic-resource-manager.md)
 ## Útválasztó konfigurálása ExpressRoute-hoz
@@ -67,6 +68,7 @@
 ## [Esettanulmányok](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [Hálózatkezelési blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/expressroute/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=expressroute)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)

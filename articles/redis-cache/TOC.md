@@ -45,8 +45,11 @@
 ## Méretezés
 ###[Módosítás más méretre és szintre](cache-how-to-scale.md)
 ###[Vertikális és horizontális leskálázás Redis-fürttel](cache-how-to-premium-clustering.md)
+## Integráció a Spring Boottal
+###[Spring Boot inicializáló alkalmazás használata Redis Cache-sel](cache-java-spring-boot-initializer-with-redis-cache.md)
 
 # Referencia
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=redis-cache)
 ## [PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI 2.0 előzetes verzió](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)

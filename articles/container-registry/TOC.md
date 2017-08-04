@@ -30,6 +30,7 @@
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=containers)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/container-registry/)
+## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Régiónkénti elérhetőség](https://azure.microsoft.com/regions/services/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=container-registry&updatetype=&platform=)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-container-registry)
