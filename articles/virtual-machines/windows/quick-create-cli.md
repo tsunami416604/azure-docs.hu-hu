@@ -53,11 +53,7 @@ Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) para
 Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa az *azureuser* rendszergazdanevet és a *myPassword12* jelszót használja. Az értékeket módosítsa a környezetének megfelelően. Ezekre az értékekre akkor van szükség, amikor kapcsolódik a virtuális géphez.
 
 ```azurecli-interactive 
-az vm create `
-  --resource-group myResourceGroup `
-  --name myVM --image win2016datacenter `
-  --admin-username azureuser `
-  --admin-password myPassword12
+az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --admin-username azureuser --admin-password myPassword12
 ```
 
 A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a `publicIpAaddress` értékét. Ez a cím használható a virtuális gép eléréséhez.

@@ -197,8 +197,8 @@ A kimenet a következőhöz hasonló lesz:
   - az üzembe helyezés gyökértartománya, amelyet konfigurált a Kubernetes bejövő forgalmának külső IP-címének leképezésére (itt `squillace.io`)
 
   A `draft init` parancs hívását követően a konfigurációs folyamat bekéri a fenti értékeket. A folyamat az első futtatáskor a következőhöz lesz hasonló.
-    ```
-    draft init
+ ```bash
+    $ draft init
     Creating pack ruby...
     Creating pack node...
     Creating pack gradle...
