@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 9353ad6df121ebd2e92a5d34214c32e852ed60a3
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 9b50f1cca81348b69f7ff2d702c6c72871afe0a0
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/05/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="getting-started-with-notification-hubs-for-windows-universal-platform-apps"></a>Ismerkedés a Notification Hubs univerzális platformon futó Windows-alkalmazásokkal történő használatával
@@ -49,33 +48,30 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, univerzá
 Leküldéses értesítéseknek UWP-alkalmazásokba való küldéséhez társítania kell az alkalmazást a Windows Áruházhoz. Ezután konfigurálnia kell az értesítési központot a WNS-sel való integrációra.
 
 1. Ha még nem regisztrálta az alkalmazást, nyissa meg a [Windows fejlesztőközpontját](https://dev.windows.com/overview), jelentkezzen be Microsoft-fiókjával, majd kattintson az **Új alkalmazás létrehozása** elemre.
-2. Írja be az alkalmazás nevét, majd kattintson az **Alkalmazásnév lefoglalása** parancsra.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-name.png)
-   
-   Ezzel létrehoz egy új Windows Áruházbeli regisztrációt az alkalmazás számára.
-3. A Visual Studióban hozzon létre egy új Visual C# Áruházbeli alkalmazások projektet a **Blank App** (Üres alkalmazás) sablonnal, majd kattintson az **OK** gombra.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-windows-universal-app.png)
+
+2. Írja be az alkalmazás nevét, majd kattintson az **Alkalmazásnév lefoglalása** parancsra. Ezzel létrehoz egy új Windows Áruházbeli regisztrációt az alkalmazás számára.
+
+3. A Visual Studióban hozzon létre egy új Visual C# Áruházbeli alkalmazások projektet a Windows Universal **Blank App** (Üres alkalmazás) sablonnal, majd kattintson az **OK** gombra.
+
 4. A cél- és a minimális platformverziók esetében fogadja el az alapértelmezett értékeket.
-5. A Megoldáskezelőben kattintson a jobb gombbal a Windows Áruházbeli alkalmazás projektjére, kattintson a **Store** (Áruház), majd az **Associate App with the Store...** (Alkalmazás társítása az Áruházzal…) elemre.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png)
 
-   Megjelenik az **Associate Your App with the Windows Store** (Alkalmazás társítása a Windows Áruházzal) varázsló.
+5. A Megoldáskezelőben kattintson a jobb gombbal a Windows Áruházbeli alkalmazás projektjére, kattintson a **Store** (Áruház), majd az **Associate App with the Store...** (Alkalmazás társítása az Áruházzal…) elemre. Megjelenik az **Associate Your App with the Windows Store** (Alkalmazás társítása a Windows Áruházzal) varázsló.
 
-1. A varázslóban kattintson a **Sign in** (Bejelentkezés) elemre, és jelentkezzen be Microsoft-fiókjával.
-2. Kattintson a 2. lépésben regisztrált alkalmazásra, majd kattintson a **Next** (Tovább), végül az **Associate** (Társítás) gombra.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-app-name.png)
-   
-   Ezzel hozzáadja a szükséges Windows Áruházbeli regisztrációs adatokat az alkalmazásjegyzékhez.
-3. Visszatérve az új alkalmazás [Windows fejlesztőközpontbeli](http://go.microsoft.com/fwlink/p/?LinkID=266582) oldalára, kattintson a **Szolgáltatások**, a **Leküldéses értesítések**, majd a **Live Services webhely** elemre **A Windows leküldéses értesítési szolgáltatása (WNS) és a Microsoft Azure Mobile Apps** részen.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-live-services.png)
-4. Az alkalmazás regisztrációs lapján jegyezze fel az **Alkalmazáskulcs** jelszót és a **Csomag biztonsági azonosítóját (SID)**, amelyek a **Windows Áruház** platformbeállításai között találhatóak meg.
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-push-auth.png)
+6. A varázslóban jelentkezzen be Microsoft-fiókjával.
+
+7. Kattintson a 2. lépésben regisztrált alkalmazásra, majd kattintson a **Next** (Tovább), végül az **Associate** (Társítás) gombra. Ezzel hozzáadja a szükséges Windows Áruházbeli regisztrációs adatokat az alkalmazásjegyzékhez.
+
+8. Visszatérve az új alkalmazás [Windows fejlesztőközpontbeli](http://dev.windows.com/overview) oldalára, kattintson a **Services** (Szolgáltatások), a **Push notifications** (Leküldéses értesítések), majd a **WNS/MPNS** elemre.
+
+9. Kattintson az **New Notification** (Új értesítés) elemre.
+
+10. Kattintson az **Blank (Toast)** (Üres (Bejelentési)) sablonra, majd kattintson az **OK** gombra.
+
+11. Adja meg az értesítés **nevét** és egy vizualizáció **környezetfüggő** üzenetet. Ezután kattintson a **Save as draft** (Mentés vázlatként) gombra.
+
+12. Lépjen az [alkalmazásregisztrációs portálhoz](http://apps.dev.microsoft.com), és jelentkezzen be.
+
+13. Kattintson az alkalmazás nevére. Jegyezze fel az **Application Secret** (Alkalmazáskulcs) jelszót és a **Package security identifier (SID)** (Csomag biztonsági azonosítója (SID)) értékét, amelyek a **Windows Store** (Windows Áruház) platformbeállításai között találhatóak meg.
 
      > [AZURE.WARNING]
     Az alkalmazáskulcs és a csomag biztonsági azonosítója fontos biztonsági hitelesítő adatok. Ezeket az értékeket ne ossza meg senkivel, és ne terjessze az alkalmazással.
@@ -137,8 +133,6 @@ Az értesítési központ konfigurálva lett a WNS-sel való együttműködésre
    
     Ezzel biztosítja azt, hogy a csatorna URI azonosítója legyen regisztrálva az értesítési központban az alkalmazás minden indításakor.
 6. Nyomja le az **F5** billentyűt az alkalmazás futtatásához. Megjelenik egy felugró párbeszédpanel a regisztrációs kulccsal.
-   
-     ![][19]
 
 Az alkalmazás készen áll bejelentési értesítéseket fogadni.
 
@@ -162,9 +156,8 @@ Ha .NET-konzolalkalmazás használatával szeretne értesítéseket küldeni, k�
 
 1. Kattintson a jobb gombbal a megoldásra, válassza a **Hozzáadás** és az **Új projekt…** elemet, majd a **Visual C#** részen kattintson a **Windows** és a **Konzolalkalmazás** elemre, majd az **OK** gombra.
    
-     ![][13]
-   
     Ezzel hozzáad egy új Visual C#-konzolalkalmazást a megoldáshoz. Ezt egy külön megoldásban is megteheti.
+
 2. A Visual Studióban kattintson az **Eszközök**, a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Package Manager Console** (Csomagkezelő konzol) elemre.
    
     Megjelenik a Package Manager Console (Csomagkezelő konzol) ablak a Visual Studióban.
@@ -199,8 +192,6 @@ Ha .NET-konzolalkalmazás használatával szeretne értesítéseket küldeni, k�
          SendNotificationAsync();
          Console.ReadLine();
 7. Kattintson a jobb gombbal a konzolalkalmazás-projektre a Visual Studióban, kattintson a **Beállítás kezdőprojektként** elemre a projekt beállításához kezdőprojektként. Ezután nyomja le az **F5** billentyűt az alkalmazás futtatásához.
-   
-     ![][14]
    
     Egy bejelentési értesítést fog kapni az összes regisztrált eszközön. A bejelentési szalagcímre kattintva vagy koppintva a rendszer betölti az alkalmazást.
 

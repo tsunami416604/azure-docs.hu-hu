@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2017
+ms.date: 07/27/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: aefec15c72c6cf8389a29b03be70abb4c7f020b9
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: f4e3f74ce3f342eecf633cd748e2b7b21b2ccdd2
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Biztonsági szabályzatok beállítása az Azure Security Centerben
 Ez a dokumentum végigvezeti a Security Center biztonsági szabályzatainak beállításához szükséges lépéseken.
 
 >[!NOTE] 
->2017 júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
+>2017. júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
 >
 
 ## <a name="what-are-security-policies"></a>Mik azok a biztonsági szabályzatok?
@@ -45,11 +45,11 @@ Az egyes előfizetésekhez külön-külön biztonsági szabályzatot állíthat 
    * **Prevention policy** (Megelőzési szabályzat): Ezzel a beállítással előfizetésenként konfigurálhatók a szabályzatok.  
    * **Email notification** (E-mailes értesítés): Ezzel a beállítással olyan e-mailes értesítés konfigurálható, amelyet a rendszer a nagyon súlyos riasztások napi első előfordulása esetében küld. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatók. Az e-mailes értesítések konfigurálásával kapcsolatos további információkért olvassa el a [Biztonsági kapcsolattartási adatok megadása az Azure Security Centerben](security-center-provide-security-contact-details.md) című cikket.
    * **Pricing tier** (Tarifacsomag): Ez a beállítás a kiválasztott tarifacsomag frissítéséhez használható. Az árképzési beállításokkal kapcsolatban további információkat a [Security Center díjszabását](security-center-pricing.md) ismertető oldalon talál.
-4. A **Collect data from virtual machines** (Adatgyűjtés a virtuális gépekről) beállítás értéke legyen **On** (Bekapcsolva). Ezzel engedélyezi a meglévő és az új erőforrásokra vonatkozó automatikus naplógyűjtést a Microsoft Monitoring Agenttel. Ez ugyanaz az ügynök, amelyet az Operations Management Suite és a Log Analytics szolgáltatás is használ. A rendszer az ügynökből összegyűjtött adatokat az Azure-előfizetéséhez társított, meglévő Log Analytics-munkaterületen tárolja, illetve egy új munkaterületen, a virtuális gép földrajzi helyét is figyelembe véve.
+4. A **Collect data from virtual machines** (Adatgyűjtés a virtuális gépekről) beállítás értéke legyen **On** (Bekapcsolva). Ezzel engedélyezi a meglévő és az új erőforrásokra vonatkozó automatikus naplógyűjtést a Microsoft Monitoring Agenttel. Ez ugyanaz az ügynök, amelyet az Operations Management Suite és a Log Analytics szolgáltatás is használ. Az ettől az ügynöktől gyűjtött adatok tárolása vagy egy már meglévő, Azure-előfizetéséhez társított Log Analytics-munkaterület(ek)en történik, vagy új munkaterülete(ke)n, a virtuális gép földrajzi helyének figyelembevételével.
 
 5. A **Security Policy** (Biztonsági szabályzat) panelen kattintson a **Prevention policy** (Megelőzési szabályzat) elemre a rendelkezésre álló beállítások megtekintéséhez. Kattintson az **On** (Bekapcsolás) elemre az előfizetés esetében releváns biztonsági javaslatok engedélyezéséhez.
 
-    ![A biztonsági szabályzatok kiválasztása](./media/security-center-policies/security-center-policies-fig4-newUI.png)
+    ![A biztonsági szabályzatok kiválasztása](./media/security-center-policies/security-center-policies-fig7.png)
 
 Az egyes beállítások megértéséhez használja az alábbi táblázatot:
 
@@ -65,7 +65,8 @@ Az egyes beállítások megértéséhez használja az alábbi táblázatot:
 | SQL-naplózás és fenyegetésészlelés |Javasolja, hogy a megfelelés, a jobb fenyegetésészlelés és a támadások hatékonyabb kivizsgálásához engedélyezze az Azure Database-hozzáférések naplózását. |
 | SQL-titkosítás |Javasolja, hogy engedélyezze az inaktív adatok titkosítását az Azure SQL Database számára, valamint az azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra vonatkozóan. Így hiába jutnak be illetéktelen személyek a rendszerbe, az adatokat nem fogják tudni olvasni. |
 | Sebezhetőségi felmérés |Javasolja, hogy telepítsen egy biztonsági rések felmérése szolgáló megoldást a virtuális gépére. |
-| Storage-titkosítás |Ez a szolgáltatás jelenleg Azure-blobok és -fájlok számára érhető el. Vegye figyelembe, hogy a Storage szolgáltatás titkosításának engedélyezése után csak az új adatok lesznek titkosítva, és a tárfiók meglévő fájljai titkosítatlanok maradnak. |
+| Storage-titkosítás |Ez a szolgáltatás jelenleg Azure-blobok és -fájlok számára érhető el. A Storage szolgáltatás titkosításának engedélyezése után csak az új adatok lesznek titkosítva, és a tárfiók meglévő fájljai titkosítatlanok maradnak. |
+| JIT hálózati hozzáférés |Ha az igény szerinti hozzáférés engedélyezve van, a Security Center minden, az Azure-beli virtuális gépekre érkező forgalmat zárol egy NSG-szabály létrehozásával. Ön választja ki a virtuális gép azon portjait, amelyeken a beérkező forgalmat a rendszer zárolja. További információk: [Manage virtual machine access using just in time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) (A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáférés használata esetén). |
 
 Miután minden beállítást konfigurált, kattintson a javaslatokat tartalmazó **Security Policy** (Biztonsági szabályzat) panel **OK** gombjára, majd az eredeti beállításokat tartalmazó **Security Policy** (Biztonsági szabályzat) panel **Save** (Mentés) gombjára.
 

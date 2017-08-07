@@ -1,62 +1,59 @@
-## <a name="create-the-webapi-project"></a>Create the WebAPI Project
-A new ASP.NET WebAPI backend will be created in the sections that follow and it will have three main purposes:
+## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
+A következő szakaszokban létrehozunk egy új ASP.NET WebAPI háttérrendszert a következő három fő céllal:
 
-1. **Authenticating Clients**: A message handler will be added later to authenticate client requests and associate the user with the request.
-2. **Client Notification Registrations**: Later, you will add a controller to handle new registrations for a client device to receive notifications. The authenticated user name will automatically be added to the registration as a [tag](https://msdn.microsoft.com/library/azure/dn530749.aspx).
-3. **Sending Notifications to Clients**: Later, you will also add a controller to provide a way for a user to trigger a secure push to devices and clients associated with the tag. 
+1. **Ügyfelek hitelesítése**: Az ügyfélkérések hitelesítéséhez és a kérés adott felhasználóhoz való hozzárendeléséhez a későbbiekben egy üzenetkezelőt fogunk hozzáadni a rendszerhez.
+2. **Ügyfélértesítési regisztrációk**: Annak érdekében, hogy az ügyféleszközön értesítéseket lehessen fogadni, a későbbiekben egy vezérlőt ad majd hozzá az új regisztrációk kezeléséhez. A rendszer [címke](https://msdn.microsoft.com/library/azure/dn530749.aspx) formájában automatikusan hozzáadja a hitelesített felhasználó nevét a regisztrációhoz.
+3. **Értesítések küldése az ügyfeleknek**: A későbbiekben egy vezérlőt is hozzáad majd, hogy a felhasználók biztonságos leküldést indíthassanak az eszközökre és a címkéhez társított ügyfelek számára. 
 
-The following steps show how to create the new ASP.NET WebAPI backend: 
+A következő lépések bemutatják az új ASP.NET WebAPI háttérrendszer létrehozását: 
 
 > [!NOTE]
-> **Important**: Before starting this tutorial, please ensure that you have installed the latest version of the NuGet Package Manager. To check, start Visual Studio. From the **Tools** menu, click **Extensions and Updates**. Search for **NuGet Package Manager for Visual Studio 2013**, and make sure you have version 2.8.50313.46 or later. If not, please uninstall, then reinstall the NuGet Package Manager.
+> **Fontos**: Ha a Visual Studio 2015-ös vagy régebbi változatát használja, az oktatóanyag elkezdése előtt ellenőrizze, hogy telepítette-e a NuGet-csomagkezelő legfrissebb verzióját. Az ellenőrzéshez indítsa el a Visual Studiót. A **Tools** (Eszközök) menüben kattintson az **Extensions and Updates** (Bővítmények és frissítések) elemre. Keresse meg az Ön által használt Visual Studio-verzióhoz tartozó **NuGet-csomagkezelőt**, és ellenőrizze, hogy a legfrissebb verzió van-e telepítve a gépén. Ha nem, távolítsa el, és telepítse újra a NuGet-csomagkezelőt.
 > 
 > ![][B4]
 > 
 > [!NOTE]
-> Make sure you have installed the Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) for website deployment.
+> Ellenőrizze, hogy telepítette-e a Visual Studio webhely-üzembehelyezési [Azure SDK-ját](https://azure.microsoft.com/downloads/).
 > 
 > 
 
-1. Start Visual Studio or Visual Studio Express. Click **Server Explorer** and sign in to your Azure account. Visual Studio will need you signed in to create the web site resources on your account.
-2. In Visual Studio, click **File**, then click **New**, then **Project**, expand **Templates**, **Visual C#**, then click **Web** and **ASP.NET Web Application**, type the name **AppBackend**, and then click **OK**. 
+1. Indítsa el a Visual Studiót vagy a Visual Studio Expresst. Kattintson a **Server Explorer** (Kiszolgálókezelő) elemre, és jelentkezzen be az Azure-fiókjába. Ahhoz, hogy a fiókban létrehozhassa a webhelyerőforrásokat, be kell jelentkeznie a Visual Studióba.
+2. A Visual Studióban kattintson a **File** (Fájl), a **New** (Új), majd a **Project** (Projekt) elemre, bontsa ki a **Templates** (Sablonok), **Visual C#** csomópontot, kattintson a **Web** és az **ASP.NET Web Application** (ASP.NET-webalkalmazás) elemre, adja meg az **AppBackend** nevet, majd kattintson az **OK** gombra. 
    
     ![][B1]
-3. In the **New ASP.NET Project** dialog, click **Web API**, then click **OK**.
+3. A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanelen kattintson a **Web API** (Webes API), majd az **OK** gombra.
    
     ![][B2]
-4. In the **Configure Microsoft Azure Web App** dialog, choose a subscription, and an **App Service plan** you have already created. You can also choose **Create a new app service plan** and create one from the dialog. You do not need a database for this tutorial. Once you have selected your app service plan, click **OK** to create the project.
+4. Válasszon ki egy előfizetést a **Configure Microsoft Azure Web App** (Microsoft Azure-webalkalmazás konfigurálása) párbeszédpanelen, és egy már előzőleg létrehozott **App Service-csomagot**. Vagy választhatja a **Create a new app service plan** (Új App Service-csomag létrehozása) lehetőséget is, és létrehozhat egy csomagot a párbeszédablakban. Az oktatóanyag elvégzéséhez nincs szükség adatbázisra. Az App Service-csomag kiválasztása után kattintson az **OK** gombra a projekt létrehozásához.
    
     ![][B5]
 
-## <a name="authenticating-clients-to-the-webapi-backend"></a>Authenticating Clients to the WebAPI Backend
-In this section, you will create a new message handler class named **AuthenticationTestHandler** for the new backend. This class is derived from [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) and added as a message handler so it can process all requests coming into the backend. 
+## <a name="authenticating-clients-to-the-webapi-backend"></a>Ügyfelek hitelesítése a WebAPI háttérrendszeren
+Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-osztályt fog létrehozni az új háttérrendszer számára. A rendszer ezt az osztályt a [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) kezelőből származtatja, és üzenetkezelőként adja hozzá, így az képes a háttérrendszerhez beérkező összes kérés feldolgozására. 
 
-1. In Solution Explorer, right-click the **AppBackend** project, click **Add**, then click **Class**. Name the new class **AuthenticationTestHandler.cs**, and click **Add** to generate the class. This class will be used to authenticate users using *Basic Authentication* for simplicity. Note that your app can use any authentication scheme.
-2. In AuthenticationTestHandler.cs, add the following `using` statements:
+1. A Megoldáskezelőben kattintson a jobb gombbal az **AppBackend** projektre, kattintson az **Add** (Hozzáadás) parancsra, majd a **Class** (Osztály) elemre. Nevezze el az új osztályt **AuthenticationTestHandler.cs** néven, és kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához. Az egyszerűség kedvéért a rendszer ezt az osztályt fogja használni a felhasználók *alapszintű hitelesítéséhez*. Vegye figyelembe, hogy az alkalmazása bármilyen hitelesítési séma alkalmazására képes.
+2. Az AuthenticationTestHandler.cs osztályban adja hozzá a következő `using`-utasításokat:
    
         using System.Net.Http;
         using System.Threading;
         using System.Security.Principal;
         using System.Net;
-        using System.Web;
-3. In AuthenticationTestHandler.cs, replacing the `AuthenticationTestHandler` class definition with the following code. 
+        using System.Text;
+        using System.Threading.Tasks;
+
+3. Az AuthenticationTestHandler.cs osztályban cserélje le az `AuthenticationTestHandler` osztálydefiníciót az alábbi kódra. 
    
-    This handler will authorize the request when the following three conditions are all true:
+    A kezelő akkor engedélyezi a kérést, ha a következő három feltétel mindegyike teljesül:
    
-   * The request included an *Authorization* header. 
-   * The request uses *basic* authentication. 
-   * The user name string and the password string are the same string.
+   * A kérés tartalmaz *engedélyezési* fejlécet. 
+   * A kérés *alapszintű* hitelesítést használ. 
+   * A felhasználónév és a jelszó karakterlánc azonos.
      
-     Otherwise, the request will be rejected. This is not a true authentication and authorization approach. It is just a very simple example for this tutorial.
+     Minden más esetben a rendszer a kérést elutasítja. Ez nem egy valós hitelesítési és engedélyezési módszer, csak egy nagyon egyszerű példa az oktatóanyag céljára.
      
-     If the request message is authenticated and authorized by the `AuthenticationTestHandler`, then the basic authentication user will be attached to the current request on the [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx). User information in the HttpContext will be used by another controller (RegisterController) later to add a [tag](https://msdn.microsoft.com/library/azure/dn530749.aspx) to the notification registration request.
+     Ha az `AuthenticationTestHandler` hitelesíti és engedélyezi a kérésüzenetet, az alapszintű hitelesítést használó felhasználót a rendszer hozzákapcsolja az aktuális kéréshez a [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) felületén. A HttpContext felhasználói adatait a későbbiekben egy másik vezérlő (RegisterController) fogja használni egy [címke](https://msdn.microsoft.com/library/azure/dn530749.aspx) az értesítésregisztrációs kéréshez való hozzáadásához.
      
-       public class AuthenticationTestHandler : DelegatingHandler   {
-     
-           protected override Task<HttpResponseMessage> SendAsync(
-           HttpRequestMessage request, CancellationToken cancellationToken)
-           {
-               var authorizationHeader = request.Headers.GetValues("Authorization").First();
+       public class AuthenticationTestHandler : DelegatingHandler   {       protected override Task<HttpResponseMessage> SendAsync(       HttpRequestMessage request, CancellationToken cancellationToken)       {           var authorizationHeader = request.Headers.GetValues("Authorization").First();
      
                if (authorizationHeader != null && authorizationHeader
                    .StartsWith("Basic ", StringComparison.InvariantCultureIgnoreCase))
@@ -99,29 +96,29 @@ In this section, you will create a new message handler class named **Authenticat
        }
      
      > [!NOTE]
-     > **Security Note**: The `AuthenticationTestHandler` class does not provide true authentication. It is used only to mimic basic authentication and is not secure. You must implement a secure authentication mechanism in your production applications and services.                
+     > **Biztonsági megjegyzés**: Az `AuthenticationTestHandler` osztály nem biztosít valós hitelesítést. A rendszer azt csak az alapszintű hitelesítés utánzására használja, és nem tekinthető biztonságosnak. Az éles alkalmazásokban és szolgáltatásokban implementálnia kell egy biztonságos hitelesítési mechanizmust.                
      > 
      > 
-4. Add the following code at the end of the `Register` method in the **App_Start/WebApiConfig.cs** class to register the message handler:
+4. Az üzenetkezelő regisztrálásához adja hozzá a következő kódot a `Register` metódus végéhez az **App_Start/WebApiConfig.cs** osztályban:
    
         config.MessageHandlers.Add(new AuthenticationTestHandler());
-5. Save your changes.
+5. Mentse a módosításokat.
 
-## <a name="registering-for-notifications-using-the-webapi-backend"></a>Registering for Notifications using the WebAPI Backend
-In this section, we will add a new controller to the WebAPI backend to handle requests to register a user and device for notifications using the client library for notification hubs. The controller will add a user tag for the user that was authenticated and attached to the HttpContext by the `AuthenticationTestHandler`. The tag will have the string format, `"username:<actual username>"`.
+## <a name="registering-for-notifications-using-the-webapi-backend"></a>Értesítések regisztrálása a WebAPI háttérrendszerben
+Ebben a szakaszban egy új vezérlőt adunk a WebAPI háttérrendszerhez a felhasználók és az eszközök értesítés-regisztrációs kéréseinek kezeléséhez az értesítési központ ügyfélkönyvtárával. A vezérlő hozzáad egy felhasználói címkét a hitelesített és az `AuthenticationTestHandler` által a HttpContext elemhez kapcsolt felhasználóhoz. A címke `"username:<actual username>"` karakterlánc-formátumú lesz.
 
-1. In Solution Explorer, right-click the **AppBackend** project and then click **Manage NuGet Packages**.
-2. On the left-hand side, click **Online**, and search for **Microsoft.Azure.NotificationHubs** in the **Search** box.
-3. In the results list, click **Microsoft Azure Notification Hubs**, and then click **Install**. Complete the installation, then close the NuGet package manager window.
+1. A Megoldáskezelőben kattintson a jobb gombbal az **AppBackend** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
+2. A képernyő bal oldalán kattintson az **Online** lehetőségre, és keressen rá a következőre a **Search** (Keresés) mezőben: **Microsoft.Azure.NotificationHubs**.
+3. Az eredmények listájában kattintson a **Microsoft Azure Notification Hubs** elemre, majd az **Install** (Telepítés) lehetőségre. Fejezze be a telepítést, majd zárja be a NuGet-csomagkezelő ablakát.
    
-    This adds a reference to the Azure Notification Hubs SDK using the <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet package</a>.
-4. We will now create a new class file that represents the connection with notification hub used to send notifications. In the Solution Explorer, right-click the **Models** folder, click **Add**, then click **Class**. Name the new class **Notifications.cs**, then click **Add** to generate the class. 
+    Ezzel hozzáad a <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet-csomagot</a> használó Azure Notification Hubs SDK-ra mutató hivatkozást.
+4. Most létrehozunk egy új osztályfájlt, amely az értesítések küldésére használt értesítési központtal való kapcsolatot jelöli. A Megoldáskezelőben kattintson a jobb gombbal a **Models** (Modellek) mappára, majd kattintson az **Add** (Hozzáadás) parancsra, végül pedig a **Class** (Osztály) gombra. Nevezze el az új osztályt **Notifications.cs** névre, majd kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához. 
    
     ![][B6]
-5. In Notifications.cs, add the following `using` statement at the top of the file:
+5. Adja hozzá a következő `using`-utasítást a Notifications.cs fájl elejéhez:
    
         using Microsoft.Azure.NotificationHubs;
-6. Replace the `Notifications` class definition with the following and make sure to replace the two placeholders with the connection string (with full access) for your notification hub, and the hub name (available at [Azure Classic Portal](http://manage.windowsazure.com)):
+6. Cserélje le a(z) `Notifications` osztálydefiníciót a következőre, és mindenképpen cserélje a két helyőrzőt az értesítési központ kapcsolati sztringjével (teljes hozzáféréssel) és a központ nevével (a [klasszikus Azure portálon](http://manage.windowsazure.com) érhető el):
    
         public class Notifications
         {
@@ -134,19 +131,19 @@ In this section, we will add a new controller to the WebAPI backend to handle re
                                                                              "<hub name>");
             }
         }
-7. Next we will create a new controller named **RegisterController**. In Solution Explorer, right-click the **Controllers** folder, then click **Add**, then click **Controller**. Click the **Web API 2 Controller -- Empty** item, and then click **Add**. Name the new class **RegisterController**, and then click **Add** again to generate the controller.
+7. A következőkben egy új vezérlőt fogunk létrehozni **RegisterController** néven. A Megoldáskezelőben kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra. Válassza a **Web API 2 Controller -- Empty** (Web API 2 vezérlő – Üres) elemet, majd kattintson az **Add** (Hozzáadás) gombra. Nevezze el az új osztályt **RegisterController** névre, majd kattintson újból az **Add** (Hozzáadás) gombra a vezérlő létrehozásához.
    
     ![][B7]
    
     ![][B8]
-8. In RegisterController.cs, add the following `using` statements:
+8. Adja hozzá a következő `using`-utasításokat a RegisterController.cs fájlhoz:
    
         using Microsoft.Azure.NotificationHubs;
         using Microsoft.Azure.NotificationHubs.Messaging;
         using AppBackend.Models;
         using System.Threading.Tasks;
         using System.Web;
-9. Add the following code inside the `RegisterController` class definition. Note that in this code, we add a user tag for the user this is attached to the HttpContext. The user was authenticated and attached to the HttpContext by the message filter we added, `AuthenticationTestHandler`. You can also add optional checks to verify that the user has rights to register for the requested tags.
+9. Adja hozzá a következő kódot a(z) `RegisterController` osztálydefiníciójához: Vegye figyelembe, hogy ebben a kódban felhasználói címkét fogunk hozzáadni a HttpContexthez csatolt felhasználóhoz. A felhasználó hitelesítését és a HttpContexthez való csatolását a hozzáadott üzenetszűrő (`AuthenticationTestHandler`) végezte. További választható ellenőrzéseket is hozzáadhat, amelyekkel ellenőrizheti, hogy a felhasználó jogosult-e a kért címkékre történő regisztráláshoz.
    
         private NotificationHubClient hub;
    
@@ -251,22 +248,22 @@ In this section, we will add a new controller to the WebAPI backend to handle re
                     throw new HttpRequestException(HttpStatusCode.Gone.ToString());
             }
         }
-10. Save your changes.
+10. Mentse a módosításokat.
 
-## <a name="sending-notifications-from-the-webapi-backend"></a>Sending Notifications from the WebAPI Backend
-In this section you add a new controller that exposes a way for client devices to send a notification based on the username tag using Azure Notification Hubs Service Management Library in the ASP.NET WebAPI backend.
+## <a name="sending-notifications-from-the-webapi-backend"></a>Értesítések küldése a WebAPI-háttérrendszerről
+Ebben a szakaszban egy új vezérlőt adunk hozzá, amely lehetővé teszi az ügyféleszközök számára, hogy a felhasználónév-címke alapján küldjenek értesítést az ASP.NET WebAPI-háttérrendszeren lévő Azure Notification Hubs Service Management Library használatával.
 
-1. Create another new controller named **NotificationsController**. Create it the same way you created the **RegisterController** in the previous section.
-2. In NotificationsController.cs, add the following `using` statements:
+1. Hozzon létre egy másik új vezérlőt **NotificationsController** néven. Ugyanúgy járjon el a létrehozása során, mint az előző szakaszban a **RegisterController** esetében.
+2. Adja hozzá a következő `using`-utasításokat a NotificationsController.cs fájlhoz:
    
         using AppBackend.Models;
         using System.Threading.Tasks;
         using System.Web;
-3. Add the following method to the **NotificationsController** class.
+3. Adja hozzá a következő metódust a **NotificationsController** osztályhoz:
    
-    This code send a notification type based on the Platform Notification Service (PNS) `pns` parameter. The value of `to_tag` is used to set the *username* tag on the message. This tag must match a username tag of an active notification hub registration. The notification message is pulled from the body of the POST request and formatted for the target PNS. 
+    Ez a kód egy értesítéstípust fog küldeni a platformértesítési szolgáltatás (PNS) `pns` paramétere alapján. A(z) `to_tag` értékét a rendszer az üzenet *felhasználónév*-címkéjének beállítására használja. A címkének egyeznie kell egy aktív értesítésiközpont-regisztráció felhasználónév-címkéjével. Az értesítési üzenetet a rendszer a POST-kérés törzséből nyeri ki, és a cél PNS-nek megfelelően formázza. 
    
-    Depending on the Platform Notification Service (PNS) that your supported devices use to receive notifications, different notifications are supported using different formats. For example on Windows devices, you could use a [toast notification with WNS](https://msdn.microsoft.com/library/windows/apps/br230849.aspx) that isn't directly supported by another PNS. So your backend would need to format the notification into a supported notification for the PNS of devices you plan to support. Then use the appropriate send API on the [NotificationHubClient class](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx)
+    A támogatott eszközök által az értesítések fogadására használt platformértesítési szolgáltatástól (PNS) függően a különböző értesítések különböző formátumok használatával támogatottak. Windows rendszerű eszközökön például használhat [bejelentési értesítéseket a WNS formátummal](https://msdn.microsoft.com/library/windows/apps/br230849.aspx), amelyet egy másik PNS nem támogat közvetlenül. Így a háttérrendszernek a támogatni kívánt eszközök PNS-e által támogatott formátum szerint kell formáznia az értesítést. Ezt követően használja a megfelelő küldési API-t a [NotificationHubClient osztályon](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx).
    
         public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
         {
@@ -309,19 +306,20 @@ In this section you add a new controller that exposes a way for client devices t
    
             return Request.CreateResponse(ret);
         }
-4. Press **F5** to run the application and to ensure the accuracy of your work so far. The app should launch a web browser and display the ASP.NET home page. 
+4. Nyomja le az **F5** billentyűt az alkalmazás futtatásához, valamint eddigi munkája pontosságának ellenőrzéséhez. Az alkalmazásnak ekkor el kell indítania egy webböngészőt, amelyen az ASP.NET kezdőlapja jelenik meg. 
 
-## <a name="publish-the-new-webapi-backend"></a>Publish the new WebAPI Backend
-1. Now we will deploy this app to an Azure Website in order to make it accessible from all devices. Right-click on the **AppBackend** project and select **Publish**.
-2. Select **Microsoft Azure Web Apps** as your publish target.
-   
+## <a name="publish-the-new-webapi-backend"></a>Tegye közzé az új WebAPI háttérrendszert
+1. Most üzembe fogjuk helyezni ezt az alkalmazást egy Azure-webhelyen, hogy minden eszközről elérhető legyen. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
+2. Közzétételi célként válassza a **Microsoft Azure App Service** lehetőséget, majd kattintson a **New** (Új) gombra. Ez megnyitja a Create App Service (App Service létrehozása) párbeszédpanelt, amely segítségével létrehozhatja az összes, az ASP.NET-webalkalmazás Azure-ban való futtatásához szükséges Azure-erőforrást.
+
     ![][B15]
-3. Log in with your Azure account and select an existing or new Web App.
-   
-    ![][B16]
-4. Make a note of the **destination URL** property in the **Connection** tab. We will refer to this URL as your *backend endpoint* later in this tutorial. Click **Publish**.
-   
-    ![][B18]
+3. A **Create App Service** (App Service létrehozása) párbeszédpanelen válassza ki az Azure-fiókját. Kattintson a **Change Type** (Típus módosítása) elemre, és válassza a **Web App** (Webalkalmazás) lehetőséget. Tartsa meg a megadott **webalkalmazás-nevet**, majd válassza a **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **App Service Plan** (App Service-csomag) elemeket.  Kattintson a **Create** (Létrehozás) gombra.
+
+4. Jegyezze fel a **Summary** (Összegzés) szakaszban lévő **Site URL** (Webhely URL-címe) tulajdonságot. Az oktatóanyag további részében erre az URL-címre fogunk hivatkozni a *háttérrendszer végpontjaként*. Kattintson a **Publish** (Közzététel) gombra.
+
+5. Miután a varázsló befejeződött, közzéteszi az ASP.NET webalkalmazást az Azure-on, majd elindítja azt az alapértelmezett böngészőben.  Az alkalmazását az Azure App Servicesben tekintheti meg.
+
+Az URL-cím a webalkalmazás korábban megadott nevét használja, a következő formátumban: http://<alkalmazás_neve>.azurewebsites.net.
 
 [B1]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push1.png
 [B2]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push2.png
@@ -332,6 +330,6 @@ In this section you add a new controller that exposes a way for client devices t
 [B7]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push7.png
 [B8]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push8.png
 [B14]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push14.png
-[B15]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users15.PNG
+[B15]: ./media/notification-hubs-aspnet-backend-notifyusers/publish-to-app-service.png
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG

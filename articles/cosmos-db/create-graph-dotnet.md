@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/14/2017
+ms.date: 07/28/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 1794341ed0d4519eef7f065d04ccf86a7e48a4a4
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: a973b81ea5b06c5826cc31c399aae9dec43f5b72
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-alkalmazás létrehozása a Graph API-val
@@ -54,7 +54,7 @@ Most pedig klónozunk egy Graph API-alkalmazást a GitHubról, beállítjuk a ka
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started.git
     ```
 
-3. Ezután nyissa meg a megoldásfájlt a Visual Studióban. 
+3. Ezután nyissa meg a Visual Studiót, majd a megoldásfájlt. 
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
@@ -103,23 +103,19 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs f�
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Az Azure Portalon az Azure Cosmos DB-fiók bal oldali oldalsávján kattintson az **Áttekintés** elemre. A következő lépésben a **Gremlin URI** értéket az App.config fájlba másolja. 
+1. Nyissa meg az App.config fájlt a Visual Studio 2017-ben. 
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-graph-dotnet/gremlin-uri.png)
-
-    Ha a **Gremlin URI** érték üres, létrehozhatja az értéket a portál **Kulcsok** oldalán az **URI** értékkel a https:// előtag eltávolításával és a dokumentumok gráfokká módosításával. 
-
-2. Nyissa meg az App.config fájlt a Visual Studio 2017-ben. 
-
-3. Másolja a **Gremlin URI** értéket a portálról, és adja meg az App.config fájl végpont kulcsának értékeként. 
-
-    `<add key="Endpoint" value="FILLME.graphs.azure.com:443" />`
-
-4. Az Azure Portalon kattintson a bal oldali navigációs menü **Kulcsok** elemére, másolja az **ELSŐDLEGES KULCS** értékét a portálról, és adja meg az App.config fájl AuthKey kulcsaként, majd mentse a módosításokat. 
-
-    `<add key="AuthKey" value="FILLME" />`
+2. Az Azure Portalon az Azure Cosmos DB-fiók bal oldali navigációs sávján kattintson a **Kulcsok** elemre. 
 
     ![Elsődleges kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-dotnet/keys.png)
+
+3. Másolja az **URI** értéket a portálról, és adja meg az App.config fájl végpontkulcsának értékeként. Az értéket az előző képernyőképen látható Másolás gombbal másolhatja.
+
+    `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
+
+4. Másolja az **ELSŐDLEGES KULCS** értékét a portálról, és adja meg az App.config fájl AuthKey kulcsaként, majd mentse a módosításokat. 
+
+    `<add key="AuthKey" value="FILLME" />`
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
@@ -131,6 +127,8 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 3. Az eredmények közül telepítse a **Microsoft.Azure.DocumentDB** kódtárat. Ezzel telepíti az Azure Cosmos DB gráfbővítmény kódtárcsomagja és annak összes függőségét.
 
+    Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
+
 4. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
    A konzolablakban megjelennek a gráfhoz hozzáadandó csúcspontok és élek. Miután a parancsfájl futása befejeződött, nyomja meg kétszer az ENTER billentyűt a konzolablak bezárásához. 
@@ -139,9 +137,13 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és lekérdezheti az új gráfadatokat.
 
-* Az új adatbázis az Adatkezelőben a Gyűjtemények ablaktáblán jelenik meg. Bontsa ki a **graphdb**, **graphcoll** pontokat, és kattintson a **Gráf** lehetőségre.
+1. Az Adatkezelőben az új adatbázis a Gráfok ablaktáblán jelenik meg. Bontsa ki a **graphdb**, **graphcollz** pontokat, és kattintson a **Gráf** lehetőségre.
 
-    A mintaalkalmazás által létrehozott adatokat a Gráfok ablaktáblán találja.
+2. Kattintson a **Szűrő alkalmazása** gombra a gráf összes csúcspontjának megtekintéséhez az alapértelmezett lekérdezéssel. A mintaalkalmazás által létrehozott adatokat a Gráfok ablaktáblán találja.
+
+    Szabadon nagyíthatja és kicsinyítheti a gráfot, kibonthatja a gráf megjelenítési területét, további csúcspontokat vehet fel, illetve áthelyezheti a csúcspontokat a megjelenítési felületen.
+
+    ![A gráf megtekintése az Azure Portal Adatkezelőjében](./media/create-graph-dotnet/graph-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

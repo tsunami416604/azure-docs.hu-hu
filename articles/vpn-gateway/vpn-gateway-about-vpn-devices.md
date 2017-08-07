@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: yushwang;cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 8a7419c7a759060dc91f11ec94085ff0afd4a457
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: c8e1db0a5488b1296206a4d557e47599edc59a88
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
-Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigurálásához VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságossá teheti a kapcsolatot a helyszíni és a virtuális hálózatok között. Ez a cikk felsorolja az Azure VPN Gatewayek IPsec/IKE-paramétereinek listáját, és az Azure VPN Gatewayhez kapcsolódó ellenőrzött VPN-eszközök listáját.
-
+Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigurálásához VPN-eszközre van szükség. A helyek közötti kapcsolat segítségével hibrid megoldást hozhat létre, illetve biztonságossá teheti a kapcsolatot a helyszíni és a virtuális hálózatok között. Ez a cikk ellenőrzött VPN-eszközök listáját, valamint a VPN-átjárók IPsec-/IKE-paramétereinek listáját tartalmazza.
 
 > [!IMPORTANT]
-> Ha problémákat tapasztal a helyszíni VPN-eszközök és az Azure VPN-átjárók közötti kapcsolatban, tekintse meg az [ismert eszközkompatibilitási problémákkal kapcsolatos szakaszt](#known). 
+> Ha problémákat tapasztal a helyszíni VPN-eszközök és a VPN-átjárók közötti kapcsolatban, tekintse meg az [ismert eszközkompatibilitási problémákkal kapcsolatos szakaszt](#known).
+>
+>
 
+### <a name="items-to-note-when-viewing-the-tables"></a>A táblák megtekintésekor figyelembe veendő elemek:
 
-###<a name="items-to-note-when-viewing-the-tables"></a>A táblák megtekintésekor figyelembe veendő elemek:
-
-* Az Azure VPN Gateway esetében terminológiai változás történt. A funkció nem változik. Csak a nevek változnak.
+* Az Azure VPN Gateway esetében terminológiai változás történt. Csak a nevek változtak. A funkció nem változik.
   * Statikus útválasztás = Házirendalapú
   * Dinamikus útválasztás = Útvonalalapú
-* A Nagy teljesítményű és az útvonalalapú VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök az Azure Nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek.
+* A nagy teljesítményű (HighPerformance) és az útvonalalapú (RouteBased) VPN-átjárók specifikációi azonosak, hacsak a szöveg másként nem jelzi. Például az útvonalalapú VPN-átjárókkal kompatibilis, ellenőrzött VPN-eszközök a nagy teljesítményű VPN-átjárókkal is kompatibilisek lesznek.
+
+## <a name="devicetable"></a>Ellenőrzött VPN-eszközök és eszközkonfigurációs útmutatók
 
 > [!NOTE]
 > Helyek közötti kapcsolat konfigurálásakor a VPN-eszköz számára egy nyilvános IPv4 IP-címre van szükség.
->                
+>
 
-## <a name="devicetable"></a>Ellenőrzött VPN-eszközök és eszközkonfigurációs útmutatók
-Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis az Azure VPN-átjárókkal. A konfigurálni kívánt megoldáshoz létrehozandó átjárótípus ellenőrzésének lépéseit az [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md) című cikk ismerteti.
+Eszközszállítói partnereinkkel különböző standard VPN-eszközöket ellenőriztünk. Az alábbi listában szereplő eszközcsaládokban megtalálható összes eszköz kompatibilis a VPN-átjárókkal. A konfigurálni kívánt VPN Gateway-megoldáshoz használt VPN-típusok (házirendalapú vagy útvonalalapú) megismeréséhez lásd: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
 
 A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartozó hivatkozásokat. A konfigurációs utasításokra mutató hivatkozásokat képességeinkhez mérten biztosítjuk. A VPN-eszközök támogatásával kapcsolatban lépjen kapcsolatba az eszköze gyártójával.
 
@@ -77,9 +77,11 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 (*) Az ISR 7200 sorozatba tartozó útválasztók csak a házirendalapú VPN-eket támogatják.
 
 ## <a name="additionaldevices"></a>Nem ellenőrzött VPN-eszközök
+
 Ha nem látja az eszközt a fenti Ellenőrzött VPN-eszközök táblázatban, attól még az eszköz képes lehet helyek közötti kapcsolat létesítésére. További támogatásért és konfigurációs útmutatásért lépjen kapcsolatba az eszköze gyártójával.
 
 ## <a name="editing"></a>Az eszköz konfigurációs mintáinak szerkesztése
+
 A megadott VPN-eszközkonfigurációs minta letöltését követően egyes értékeket a környezeti beállításoknak megfelelően le kell cserélni.
 
 ### <a name="to-edit-a-sample"></a>A minta szerkesztéséhez tegye a következőket:
@@ -102,8 +104,9 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | &lt;SP_PresharedKey&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon a Kulcskezelés cím alatt található meg. |
 
 ## <a name="ipsec"></a>IPsec/IKE-paraméterek
+
 > [!NOTE]
-> Bár az Azure VPN Gateway támogatja az alábbi táblázatban felsorolt értékeket, jelenleg nincs mód algoritmusok vagy paraméterek adott kombinációinak megadására és kiválasztására az Azure VPN Gateway felületén. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni. Ezenfelül az **MSS** korlátozását **1350-re** kell állítani.
+> Bár a VPN-átjárók támogatják az alábbi táblázatban felsorolt értékeket, jelenleg nincs mód algoritmusok vagy paraméterek adott kombinációinak megadására és kiválasztására a VPN-átjárón. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni. Ezenfelül az **MSS** korlátozását **1350-re** kell állítani.
 > 
 >
 
@@ -114,6 +117,7 @@ A következő táblázatokban:
 * Az IKE 2. fázis másik elnevezése: „Quick Mode” (Gyors mód)
 
 ### <a name="ike-phase-1-main-mode-parameters"></a>Az IKE 1. fázis (Elsődleges mód) paraméterei
+
 | **Tulajdonság**          |**Házirendalapú**    | **Útvonalalapú**    |
 | ---                   | ---               | ---               |
 | IKE verziószám           |IKEv1              |IKEv2              |
@@ -123,6 +127,7 @@ A következő táblázatokban:
 | SA élettartama           |28 800 másodperc     |28 800 másodperc     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>Az IKE 2. fázis (Gyors mód) paraméterei
+
 | **Tulajdonság**                  |**Házirendalapú**| **Útvonalalapú**                              |
 | ---                           | ---           | ---                                         |
 | IKE verziószám                   |IKEv1          |IKEv2                                        |
@@ -134,9 +139,11 @@ A következő táblázatokban:
 
 
 ### <a name ="RouteBasedOffers"></a>Útvonalalapú VPN IPsec biztonsági társítás (IKE – gyors mód SA) ajánlatai
+
 Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. Az ajánlatok prioritási sorrendben vannak felsorolva a választáshoz.
 
 #### <a name="azure-gateway-as-initiator"></a>Azure-átjáró, mint kezdeményező
+
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |None         |
@@ -147,6 +154,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 | 6 |3DES          |SHA256            |None         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure-átjáró, mint válaszadó
+
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |None         |
@@ -176,7 +184,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |
 
-* Az IPsec ESP NULL titkosítás útvonalalapú és Nagy teljesítményű VPN-átjárók segítségével adható meg. A nullalapú titkosítás nem biztosít védelmet az adatok számára az átvitel során, ezért használata csak abban az esetben indokolt, ha maximális átviteli sebességre és minimális késleltetésre van szükség.  Az ügyfelek virtuális hálózatok közötti kapcsolatoknál dönthetnek ennek használata mellett, vagy ha más helyen a rendszer titkosítást alkalmaz.
+* Az IPsec ESP NULL titkosítás útvonalalapú és nagy teljesítményű VPN-átjárók segítségével adható meg. A nullalapú titkosítás nem biztosít védelmet az adatok számára az átvitel során, ezért használata csak abban az esetben indokolt, ha maximális átviteli sebességre és minimális késleltetésre van szükség. Az ügyfelek virtuális hálózatok közötti kapcsolatoknál dönthetnek ennek használata mellett, vagy ha más helyen a rendszer titkosítást alkalmaz.
 * A létesítmények közötti internetes kapcsolat esetében az alapértelmezett Azure VPN-átjáróbeállításokat a fenti táblákban található titkosítási és kivonatolási algoritmusokkal használja a kritikus fontosságú kommunikáció biztonságának megteremtéséhez.
 
 ## <a name="known"></a>Ismert eszközkompatibilitási problémák
@@ -193,4 +201,3 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 1. Ellenőrizze a Palo Alto Networks-eszköz belső vezérlőprogramjának verzióját. Ha a PAN-OS verziója a 7.1.4-esnél régebbi, frissítsen a 7.1.4-es verzióra.
 2. A Palo Alto Networks-eszközön módosítsa a 2. fázisú biztonsági társítás (Gyorsmódú biztonsági társítás) élettartamát 28 800 másodpercre (8 órára) az Azure-beli VPN-átjáróhoz való csatlakozáskor.
 3. Ha továbbra is csatlakozási problémákat tapasztal, hozzon létre egy támogatási kérést az Azure Portalon.
-

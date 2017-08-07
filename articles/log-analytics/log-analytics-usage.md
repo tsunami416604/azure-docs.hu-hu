@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 5f57cbdb1678dd61eda449d2103125d8db83892e
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
@@ -141,6 +141,8 @@ Szükség esetén végezzen további elemzést a megoldásokban vagy adattípuso
 + **Rendszernapló** adattípus
   - `Type=Syslog | measure count() by Facility, SeverityLevel`
   - `Type=Syslog | measure count() by ProcessName`
++ **AzureDiagnostics** adattípus
+  - `Type=AzureDiagnostics | measure count() by ResourceProvider, ResourceId`
 
 A következő lépésekkel csökkentheti a gyűjtött naplók mennyiségét:
 
@@ -150,6 +152,7 @@ A következő lépésekkel csökkentheti a gyűjtött naplók mennyiségét:
 | Teljesítményszámlálók       | Módosítsa a [teljesítményszámlálók konfigurációját](log-analytics-data-sources-performance-counters.md): <br> – Csökkentse a gyűjtés gyakoriságát <br> – Csökkentse a teljesítményszámlálók számát |
 | Eseménynaplók                 | Módosítsa az [eseménynaplók konfigurációját](log-analytics-data-sources-windows-events.md): <br> – Csökkentse a gyűjtött eseménynaplók számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* szintű eseményeket |
 | Rendszernapló                     | Módosítsa a [rendszernapló konfigurációját](log-analytics-data-sources-syslog.md): <br> – Csökkentse a gyűjtésben részt vevő létesítmények számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* vagy *Hibakeresés* szintű eseményeket |
+| AzureDiagnostics           | Az erőforrásnapló-gyűjtés módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
 | Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Annak ellenőrzése, hogy a vártnál több csomópont küld-e adatokat

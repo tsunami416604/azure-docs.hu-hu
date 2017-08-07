@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 6/14/2017
+ms.date: 8/2/2017
 ms.author: markgal;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 61328e32763faea90074fc6d499e660c4109ab6d
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 1a0e738cfac01d90e91959412b1ad5591705f617
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="first-look-backing-up-azure-virtual-machines"></a>Áttekintés: Azure virtuális gépek biztonsági mentése
@@ -49,8 +48,8 @@ A Backup-tároló egy olyan entitás, amely tárolja az idők során létrehozot
 
 > [!IMPORTANT]
 > 2017 márciusától már nem hozhat létre Backup-tárolókat a klasszikus portálon.
-> A biztonsági mentési tárakról mostantól lehetőség van helyreállítási tárakra váltani. A részletekről bővebben az [Upgrade a Backup vault to a Recovery Services vault](backup-azure-upgrade-backup-to-recovery-services.md) (Váltás biztonsági mentési tárról helyreállítási tárra) című cikkben olvashat. A Microsoft arra biztat, hogy a biztonsági mentési tárról váltson helyreállítási tárra.<br/> **2017. november 1-től kezdődően**:
->- A rendszer automatikusan elvégzi valamennyi megmaradó biztonsági mentési tár helyreállítási tárra való frissítését.
+> A Backup-tárolóit Recovery Services-tárolókra frissítheti. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> 2017. október 15-től a PowerShell nem használható Backup-tárolók létrehozására. **2017. november 1-től**:
+>- Minden fennmaradó Backup-tároló automatikusan Recovery Services-tárolóra frissül.
 >- A klasszikus portálon nem lehet majd hozzáférni a biztonsági másolati adatokhoz. Helyette az Azure Portal segítségével férhet hozzá a helyreállítási tárakban található biztonsági másolati adatokhoz.
 >
 

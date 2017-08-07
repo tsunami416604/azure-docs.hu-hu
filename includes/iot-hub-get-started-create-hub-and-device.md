@@ -1,57 +1,60 @@
-## <a name="create-an-iot-hub"></a>Create an IoT hub
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-1. In the [Azure portal](https://portal.azure.com/), click **New** > **Internet of Things** > **IoT Hub**.
+1. Az [Azure Portalon](https://portal.azure.com/) kattintson az **Új** > **Eszközök internetes hálózata** > **IoT Hub** elemre.
 
-   ![Create an IoT hub in the Azure portal](../articles/iot-hub/media/iot-hub-create-hub-and-device/1_create-azure-iot-hub-portal.png)
-2. In the **IoT hub** pane, enter the following information for your IoT hub:
+   ![IoT Hub létrehozása az Azure Portalon](../articles/iot-hub/media/iot-hub-create-hub-and-device/1_create-azure-iot-hub-portal.png)
+2. Az **IoT Hub** panelen adja meg a következő adatokat az IoT Hub számára:
 
-     **Name**: Enter the name of your IoT hub. If the name you enter is valid, a green check mark appears.
+     **Név**: Adja meg az IoT Hub nevét. Ha a megadott név érvényes, egy zöld pipa jelenik meg.
 
-     **Pricing and scale tier**: Select the **F1 - Free** tier. This option is sufficient for this demo. For more information, see the [Pricing and scale tier](https://azure.microsoft.com/pricing/details/iot-hub/).
+     **Tarifacsomag és méret**: Válassza az **F1 – Ingyenes** szintet. Ebben a demóban elegendő ezt a beállítást megadni. További információkat a [díjszabással](https://azure.microsoft.com/pricing/details/iot-hub/) kapcsolatos lapon olvashat.
 
-     **Resource group**: Create a resource group to host the IoT hub or use an existing one. For more information, see [Use resource groups to manage your Azure resources](../articles/azure-resource-manager/resource-group-portal.md).
+     **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot az IoT Hub üzemeltetéséhez, vagy használjon egy meglévőt. További információkat az [Azure-erőforrások erőforráscsoportokkal való kezeléséről](../articles/azure-resource-manager/resource-group-portal.md) szóló cikkben olvashat.
 
-     **Location**: Select the closest location to you where the IoT hub is created.
+     **Hely**: Válassza ki azt az Önhöz legközelebbi helyet, ahol az IoT Hubot létre kívánja hozni.
 
-     **Pin to dashboard**: Select this option for easy access to your IoT hub from the dashboard.
+     **Rögzítés az irányítópulton**: Ezt a lehetőséget kiválasztva könnyen hozzáférhet az IoT Hubhoz az irányítópultról.
 
-   ![Enter information to create your IoT hub](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
+   ![Az IoT Hub létrehozási adatainak megadása](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-3. Click **Create**. Your IoT hub might take a few minutes to create. You can see progress in the **Notifications** pane.
+3. Kattintson a **Create** (Létrehozás) gombra. Az IoT Hub létrehozása eltarthat néhány percig. A létrehozás folyamatát az **Értesítések** panelen követheti nyomon.
 
-   ![See progress notifications for your IoT hub](../articles/iot-hub/media/iot-hub-create-hub-and-device/3_notification-azure-iot-hub-creation-progress-portal.png)
+   ![Az IoT Hub folyamatértesítéseinek megtekintése](../articles/iot-hub/media/iot-hub-create-hub-and-device/3_notification-azure-iot-hub-creation-progress-portal.png)
 
-4. After your IoT hub is created, click it on the dashboard. Make a note of the **Hostname**, and then click **Shared access policies**.
+4. Miután létrehozta az IoT Hubot, kattintson rá az irányítópulton. Jegyezze fel az **állomásnevet**, majd kattintson a **Megosztott elérési házirendek** elemre.
 
-   ![Get the hostname of your IoT hub](../articles/iot-hub/media/iot-hub-create-hub-and-device/4_get-azure-iot-hub-hostname-portal.png)
+   ![Az IoT Hub gazdanevének beszerzése](../articles/iot-hub/media/iot-hub-create-hub-and-device/4_get-azure-iot-hub-hostname-portal.png)
 
-5. In the **Shared access policies** pane, click the **iothubowner** policy, and then copy and make a note of the **Connection string** of your IoT hub. For more information, see [Control access to IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
+5. A **Megosztott elérési házirendek** panelen kattintson az **iothubowner** szabályzatra, majd másolja ki és jegyezze fel az IoT Hub **kapcsolati karakterláncát**. További információt [az IoT Hub-hozzáférés szabályozásával](../articles/iot-hub/iot-hub-devguide-security.md) kapcsolatos cikkben találhat.
 
-   ![Get your IoT hub connection string](../articles/iot-hub/media/iot-hub-create-hub-and-device/5_get-azure-iot-hub-connection-string-portal.png)
+> [!NOTE] 
+Ennek a beállítási oktatóanyagnak az elvégzéséhez szüksége lesz erre az iothubowner kapcsolati karakterláncra. Lehetséges azonban, hogy a beállítás elvégzése után a különböző IoT-forgatókönyvek egyes oktatóanyagaihoz is szüksége lesz rá.
 
-## <a name="register-a-device-in-the-iot-hub-for-your-device"></a>Register a device in the IoT hub for your device
+   ![Az IoT Hub kapcsolati karakterláncának beszerzése](../articles/iot-hub/media/iot-hub-create-hub-and-device/5_get-azure-iot-hub-connection-string-portal.png)
 
-1. In the [Azure portal](https://portal.azure.com/), open your IoT hub.
+## <a name="register-a-device-in-the-iot-hub-for-your-device"></a>Eszköz regisztrálása az eszközéhez az IoT Hubon
 
-2. Click **Device Explorer**.
-3. In the Device Explorer pane, click **Add** to add a device to your IoT hub. Then do the following:
+1. Az [Azure Portalon](https://portal.azure.com/) nyissa meg az IoT Hubot.
 
-   **Device ID**: Enter the ID of the new device. Device IDs are case sensitive.
+2. Kattintson a **Device Explorer** elemre.
+3. A Device Explorer panelen a **Hozzáadás** gombra kattintva vehet fel eszközt az IoT Hubba. Ezután tegye a következőket:
 
-   **Authentication Type**: Select **Symmetric Key**.
+   **Eszközazonosító**: Adja meg az új eszköz azonosítóját. Az eszközazonosítókban különbözőnek számítanak a kis- és nagybetűk.
 
-   **Auto Generate Keys**: Select this check box.
+   **Hitelesítés típusa**: Válassza a **Szimmetrikus kulcs** lehetőséget.
 
-   **Connect device to IoT Hub**: Click **Enable**.
+   **Kulcsok automatikus létrehozása**: Jelölje be ezt a jelölőnégyzetet.
 
-   ![Add a device in the Device Explorer of your IoT hub](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+   **Eszköz csatlakoztatása az IoT Hubhoz**: Kattintson az **Engedélyezés** lehetőségre.
+
+   ![Eszköz felvétele a Device Explorerben az IoT Hubon](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-4. Click **Save**.
-5. After the device is created, open the device in the **Device Explorer** pane.
-6. Make a note of the primary key of the connection string.
+4. Kattintson a **Save** (Mentés) gombra.
+5. Az eszköz létrehozása után nyissa meg azt a **Device Explorer** panelen.
+6. Jegyezze fel a kapcsolati karakterlánc elsődleges kulcsának értékét.
 
-   ![Get the device connection string](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)
+   ![Az eszköz kapcsolati karakterláncának beszerzése](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)

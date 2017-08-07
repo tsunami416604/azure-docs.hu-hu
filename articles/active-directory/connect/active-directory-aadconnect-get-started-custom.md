@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/02/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 82e8d7e0ea975f140eaf73a625d181a4ec68eaa7
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 1580e2841790b7c1b6c9540da4940eef2c487256
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
@@ -317,6 +317,15 @@ További információkért lásd: [Átmeneti mód](active-directory-aadconnectsy
 
 ### <a name="verify-your-federation-configuration"></a>Összevonási konfiguráció ellenőrzése
 Amikor a Verify (Ellenőrzés) gombra kattint, az Azure AD Connect ellenőrzi a DNS-beállításokat.
+
+**Intranetkapcsolat ellenőrzése**
+
+* Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy az összevonási FQDN feloldható-e DNS-sel a kapcsolat létrehozásához. Ha az Azure AD Connect nem tudja feloldani az FQDN-t, az ellenőrzés sikertelen lesz. Az ellenőrzés sikeres befejezéséhez biztosítsa egy DNS-rekord meglétét az FQDN összevonási szolgáltatás számára.
+* DNS A-rekord: Az Azure AD Connect ellenőrzi, hogy az összevonási szolgáltatáshoz létezik-e egy A-rekord. Az A-rekord hiányában az ellenőrzés sikertelen lesz. Az ellenőrzés sikeres befejezéséhez hozzon létre az összevonási FQDN számára egy A-rekordot (és ne egy CNAME-rekordot).
+
+**Extranet kapcsolat ellenőrzése**
+
+* Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy az összevonási FQDN feloldható-e DNS-sel a kapcsolat létrehozásához.
 
 ![Befejezve](./media/active-directory-aadconnect-get-started-custom/completed.png)
 

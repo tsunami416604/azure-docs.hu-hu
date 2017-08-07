@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 07/13/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: ee4298b91f4e2b215b5faabaad96323f4ef234b8
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: f0ee0d23f28df2824ea41f7c9f7490e1ec62d041
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>R Server a HDInsightban – első lépések
@@ -367,7 +367,7 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
 
 4. A WASB stíluscímzést is használhatja.
 
-    rxHadoopListFiles("wasbs:///")
+    rxHadoopListFiles("wasb:///")
 
 
 ## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Az R Server használata HDI-n a Microsoft R Server vagy a Microsoft R ügyfél egy távoli példányáról

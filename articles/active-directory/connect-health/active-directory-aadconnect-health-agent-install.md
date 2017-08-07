@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 7aa1363c3d4164edb5199a21e75b2b08a3218bf5
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 8ef8a1cc2393f0befbf83c3124b67b405ae06898
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/12/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
@@ -37,6 +37,7 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 | A kimenő forgalom SSL-vizsgálata le van tiltva, illetve a rendszer szűri | Az ügynök regisztrációja vagy adatfeltöltési műveletei meghiúsulhatnak, ha a hálózati rétegen SSL-ellenőrzés vagy megszakítás van érvényben a kimenő forgalomra. |
 | Az ügynököt futtató kiszolgáló tűzfalportjai. |Az ügynök a következőt tűzfalportok megnyitását igényli, hogy kommunikálhasson az Azure AD Health szolgáltatásvégpontjaival.</br></br><li>443-as TCP-port</li><li>5671-es TCP-port</li> |
 | Az alábbi webhelyek engedélyezése, amennyiben az Internet Explorer - Fokozott biztonsági beállítások be van kapcsolva |Amennyiben az Internet Explorer – Fokozott biztonsági beállítások be van kapcsolva, az alábbi webhelyeket engedélyezni kell azon a kiszolgálón, amelyiken az ügynök telepítve lesz.</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>A szervezet Azure Active Directory által megbízhatóként megjelölt összevonási kiszolgálója. Például: https://sts.contoso.com</li> |
+|A FIPS letiltása|Az Azure AD Connect Health-ügynökök nem támogatják a FIPS-t.|
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Az Azure AD Connect Health-ügynök telepítése az AD FS szolgáltatáshoz
 Az ügynök telepítésének indításához kattintson duplán a letöltött .exe-fájlra. Az első képernyőn kattintson az Install (Telepítés) elemre.
@@ -90,7 +91,7 @@ Annak érdekében, hogy a használatelemzés szolgáltatás adatokat gyűjthesse
 1. Kattintson a **Start** gombra, mutasson a **Programok**, majd a **Felügyeleti eszközök** pontra, végül kattintson a **Helyi biztonsági házirend** parancsra.
 2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kezelése** mappára, majd kattintson duplán a Biztonsági naplózás létrehozása elemre.
 3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS 2.0 szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** gombra kattintva adja hozzá, majd kattintson az **OK** gombra.
-4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot:<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
+4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
 5. Zárja be a Helyi biztonsági házirendet, majd nyissa meg a felügyeleti beépülő modult. A felügyeleti beépülő modul megnyitásához kattintson a **Start** gombra, mutasson a **Programok**, majd a **Felügyeleti eszközök** pontra, végül kattintson az AD FS 2.0 Management parancsra.
 6. A Műveletek panelen kattintson az Összevonási szolgáltatás tulajdonságainak szerkesztése elemre.
 7. Az **Összevonási szolgáltatás tulajdonságai** párbeszédpanelen kattintson az **Események** lapra.
@@ -111,7 +112,7 @@ Annak érdekében, hogy a használatelemzés szolgáltatás adatokat gyűjthesse
 1. A **Helyi biztonsági házirend** megnyitásához kattintson a **Kiszolgálókezelő** elemre a Kezdőképernyőn, vagy a Kiszolgálókezelő elemre az asztali tálcán, majd kattintson az **Eszközök/Helyi biztonsági házirend** elemre.
 2. Lépjen a **Biztonsági beállítások\Helyi házirendek\Felhasználói jogosultságok kiosztása** mappára, majd kattintson duplán a **Biztonsági naplózás létrehozása** elemre.
 3. A **Helyi biztonsági beállítások** lapon ellenőrizze, hogy az AD FS szolgáltatásfiók szerepel-e a listában. Ha nincs a listában, a **Felhasználó vagy csoport hozzáadása** elemre kattintva adja hozzá az AD FS-szolgáltatásfiókot, majd kattintson az **OK** gombra.
-4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot:<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
+4. A naplózás engedélyezéséhez nyisson meg egy parancssort emelt szintű jogosultságokkal, és futtassa a következő parancsot: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
 5. Zárja be a **Helyi biztonsági házirendet**, majd nyissa meg az **AD FS kezelő** beépülő modulját (a Kiszolgálókezelőben kattintson az Eszközök, majd az AD FS kezelő elemre).
 6. A Műveletek panelen kattintson az **Összevonási szolgáltatás tulajdonságainak szerkesztése** elemre.
 7. Az Összevonási szolgáltatás tulajdonságai párbeszédpanelen kattintson az **Események** lapra.

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/05/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6ab2b4c905d2095e8eec09ccebcb8ebdfa91bb3a
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 0f26a9b62a376daf2b1314ff5972293a2bc7f379
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="about-vpn-gateway"></a>Információk a VPN Gateway-ről
@@ -44,11 +44,11 @@ A VPN-átjárós kapcsolatok több erőforrást használnak, amelyek speciális 
 
 ### <a name="settings"></a>Beállítások
 
-Az egyes erőforrások megfelelő beállítása kritikus fontosságú a sikeres kapcsolat létrehozásához. További információ a VPN Gateway önálló erőforrásairól és beállításairól: [About VPN Gateway settings](vpn-gateway-about-vpn-gateway-settings.md) (Információk a VPN Gateway beállításairól). Az átjáró-, a VPN- és a kapcsolattípusokról, az átjáró-alhálózatokról, a helyi hálózati átjárókról, valamint a különböző erőforrások beállításairól további hasznos információkat olvashat.
+Az egyes erőforrások megfelelő beállítása kritikus fontosságú a sikeres kapcsolat létrehozásához. További információ a VPN Gateway önálló erőforrásairól és beállításairól: [About VPN Gateway settings](vpn-gateway-about-vpn-gateway-settings.md) (Információk a VPN Gateway beállításairól). A cikk az átjáró-, a VPN- és a kapcsolattípusokkal, az átjáró-alhálózatokkal, a helyi hálózati átjárókkal, valamint a különböző erőforrások beállításaival kapcsolatos további hasznos információkat tartalmaz.
 
 ### <a name="deployment-tools"></a>Üzembe helyezési eszközök
 
-Az erőforrások létrehozásának és konfigurálásának megkezdéséhez használjon egy konfigurációs eszközt, például az Azure Portalt. Később átválthat egy másik eszközre, például a PowerShellre, a további erőforrások konfigurálásához, vagy adott esetekben a létező erőforrások módosításához. Jelenleg nem lehet a minden erőforrást és erőforrás-beállítást az Azure Portalon konfigurálni. Az egyes kapcsolati topológiákhoz tartozó cikkekben lévő utasítások egyértelműsítik, hogy mikor van szükség egy speciális konfigurációs eszközre. 
+Az erőforrások létrehozásának és konfigurálásának megkezdéséhez használjon egy konfigurációs eszközt, például az Azure Portalt. A további erőforrások konfigurálásához, vagy adott esetekben a létező erőforrások módosításához később átválthat egy másik eszközre, például a PowerShellre. Jelenleg nem lehet a minden erőforrást és erőforrás-beállítást az Azure Portalon konfigurálni. Az egyes kapcsolati topológiákhoz tartozó cikkekben lévő utasítások egyértelműsítik, hogy mikor van szükség egy speciális konfigurációs eszközre. 
 
 ### <a name="deployment-model"></a>Üzemi modell
 
@@ -68,7 +68,7 @@ Az ábrák és a leírások segítségével kiválaszthatja az igényeinek megfe
 
 ### <a name="S2S"></a>Helyek közötti kapcsolat
 
-A helyek közötti (Site-to-Site, S2S) VPN Gateway-kapcsolat egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztüli kapcsolat. Ehhez a típusú kapcsolathoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy nyilvános IP-cím, és nem NAT mögött helyezkedik el. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.   
+A helyek közötti (Site-to-Site, S2S) VPN Gateway-kapcsolat egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztüli kapcsolat. A helyek közötti kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy nyilvános IP-cím, és nem NAT mögött helyezkedik el. A helyek közötti kapcsolatok létesítmények közötti és hibrid konfigurációk esetében is alkalmazhatók.   
 
 ![Azure VPN Gateway helyek közti kapcsolat – példa](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 

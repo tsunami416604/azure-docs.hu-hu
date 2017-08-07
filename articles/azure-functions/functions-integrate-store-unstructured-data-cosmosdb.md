@@ -10,87 +10,74 @@ tags:
 keywords: "azure functions, függvények, eseményfeldolgozás, Cosmos DB, dinamikus számítás, kiszolgáló nélküli architektúra"
 ms.assetid: 
 ms.service: functions
-ms.devlang: multiple
+ms.devlang: csharp
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 07/08/2017
-ms.author: rachelap
+ms.date: 08/03/2017
+ms.author: rachelap, glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 492c916a493bb8d5c5415fc517506e5c1ccffc56
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 00e9a76fed5743d7d74bafd333b87edf59a4f8bb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-cosmos-db"></a>Strukturálatlan adatok tárolása az Azure Functions és a Cosmos DB használatával
 
-Az Azure Cosmos DB kiválóan alkalmas strukturálatlan és JSON-adatok tárolására. A Cosmos DB, az Azure Functions szolgáltatással kombinálva felgyorsítja és megkönnyíti az adattárolást, hiszen lényegesen kevesebb kódot igényel, mint amennyi egy relációs adatbázisban történő adattároláshoz szükséges.
+Az [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) kiválóan alkalmas strukturálatlan és JSON-adatok tárolására. A Cosmos DB, az Azure Functions szolgáltatással kombinálva felgyorsítja és megkönnyíti az adattárolást, hiszen lényegesen kevesebb kódot igényel, mint amennyi egy relációs adatbázisban történő adattároláshoz szükséges.
 
-Ez az oktatóanyag végigvezeti egy olyan Azure-függvény Azure Portal használatával történő létrehozásán, amely egy Cosmos DB-dokumentumban tárol strukturálatlan adatokat. 
+Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztosítanak a külső szolgáltatások adataihoz a függvényből történő csatlakozásra. Ebben a témakörben megtudhatja, hogyan módosíthat egy meglévő C#-függvényt egy kimeneti kötés hozzáadásához, amely strukturálatlan adatokat tárol egy Cosmos DB-dokumentumban. 
+
+![Cosmos DB](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-cosmosdb.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+Az oktatóanyag elvégzéséhez:
+
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
-
-## <a name="create-a-function"></a>Függvény létrehozása
-
-Hozzon létre egy új, C# nyelvű általános webhookot `MyTaskList` néven.
-
-1. Bontsa ki a meglévő saját függvények listáját, majd kattintson a + jelre az új függvény létrehozásához
-1. Jelölje ki a Select GenericWebHook-CSharp elemet, és rendelje hozzá a `MyTaskList` nevet.
-
-![Új, C# nyelvű általános webhook-függvényalkalmazás hozzáadása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-new-functionapp.png)
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
-Egy Azure-függvényhez egy trigger és tetszőleges számú bemeneti vagy kimeneti kötés tartozhat. Ebben a példában a kimeneti kötés egy HTTP-kérelem típusú trigger és a Cosmos DB-dokumentum lesz.
+1. Bontsa ki a függvényalkalmazást és a függvényt.
 
-1. Nyissa meg a függvény *Integrálás* lapját, ahol megtekintheti vagy módosíthatja a függvény triggerét és kötéseit.
-1. Kattintson az oldal jobb felső sarkában található *Új kimenet* hivatkozásra.
+1. Válassza az oldal jobb felső sarkában található **Integráció** és **+ Új kimenet** elemeket. Válassza az **Azure Cosmos DB** elemet, majd kattintson a **Kiválasztás** lehetőségre.
 
-Megjegyzés: A HTTP-kérelem típusú trigger már konfigurálva van, de a Cosmos DB-dokumentumkötést hozzá kell adnia.
+    ![Cosmos DB kimeneti kötésének hozzáadása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-add-new-output-binding.png)
 
-![Új kimeneti Cosmos DB-kötés hozzáadása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-add-new-output-binding.png)
+3. Használja a táblázatban megadott **Azure Cosmos DB kimeneti** beállításokat: 
 
-1. Adja meg a szükséges adatokat a kötés létrehozásához. Határozza meg az értékeket az alábbi táblázat segítségével.
+    ![A Cosmos DB kimeneti kötésének konfigurálása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
 
-![A Cosmos DB kimeneti kötésének konfigurálása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
+    | Beállítás      | Ajánlott érték  | Leírás                                |
+    | ------------ | ---------------- | ------------------------------------------ |
+    | **Dokumentumparaméter neve** | taskDocument | A Cosmos DB-objektumra utaló név a kódban. |
+    | **Adatbázis neve** | taskDatabase | Adatbázis neve a dokumentumok mentéséhez. |
+    | **Gyűjtemény neve** | TaskCollection | A Cosmos DB-adatbázisok gyűjteményének neve. |
+    | **Ha az értéke true, létrehozza a Cosmos DB-adatbázist és -gyűjteményt** | Bejelölve | A gyűjtemény még nem létezik, hozza létre. |
 
-|  Mező | Érték  |
-|---|---|
-| Dokumentumparaméter neve | A Cosmos DB-objektumra utaló név a kódban |
-| Adatbázis neve | Adatbázis neve a dokumentumok mentéséhez |
-| Gyűjtemény neve | Név a Cosmos DB-adatbázisok csoportosításához |
-| Szeretné, ha automatikusan létrejönne a Cosmos DB-adatbázis és -gyűjtemény? | Igen vagy Nem |
-| Cosmos DB-fiókkapcsolat | Cosmos DB-adatbázisra mutató kapcsolati sztring |
+4. Kattintson a **Cosmos DB-dokumentumkapcsolat** címke melletti **Új** gombra, és válassza az **+ Új létrehozása** lehetőséget. 
 
-Konfigurálnia kell a Cosmos DB-adatbázishoz történő kapcsolódást is.
+5. Használja a táblázatban megadott, **új fiókra** vonatkozó beállításokat: 
 
-1. Kattintson a *Cosmos DB document connection (Cosmos DB-dokumentumkapcsolat) címke melletti Új hivatkozásra.
-1. Töltse ki a mezőket, és válassza ki a megfelelő beállításokat a Cosmos DB-dokumentum létrehozásához.
+    ![A Cosmos DB-kapcsolat konfigurálása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-CosmosDB.png)
 
-![A Cosmos DB-kapcsolat konfigurálása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-CosmosDB.png)
+    | Beállítás      | Ajánlott érték  | Leírás                                |
+    | ------------ | ---------------- | ------------------------------------------ |
+    | **Azonosító** | Az adatbázis neve | A Cosmos DB adatbázis egyedi azonosítója  |
+    | **API** | SQL (DocumentDB) | Válassza ki a dokumentum-adatbázis API-ját.  |
+    | **Előfizetés** | Azure-előfizetés | Azure-előfizetés  |
+    | **Erőforráscsoport** | myResourceGroup |  Használja a függvényalkalmazást tartalmazó meglévő erőforráscsoportot. |
+    | **Hely**  | WestEurope | Olyan helyet válasszon, amely közel van a függvényalkalmazáshoz vagy a tárolt dokumentumokat használó egyéb alkalmazásokhoz.  |
 
-|  Mező | Érték  |
-|---|---|
-| Azonosító | A Cosmos DB adatbázis egyedi azonosítója  |
-| NoSQL API | Cosmos DB vagy MongoDB  |
-| Előfizetés | MSDN-előfizetés  |
-| Erőforráscsoport  | Hozzon létre új csoportot, vagy válasszon ki egy már meglévőt.  |
-| Hely  | WestEurope  |
-
-1. Kattintson az *OK* gombra. Lehet, hogy néhány percet várnia kell, amíg az Azure létrehozza az erőforrásokat.
-1. Kattintson a *Mentés* gombra.
+6. Az adatbázis létrehozásához kattintson az **OK** gombra. Az adatbázis létrehozása eltarthat néhány percig. Az adatbázis létrehozása után a rendszer az adatbázis kapcsolati karakterláncát függvényalkalmazás-beállításként tárolja. Ennek az alkalmazásbeállításnak a neve van beszúrva a **Cosmos DB-fiókkapcsolatba**. 
+ 
+8. A kapcsolati karakterlánc beállítása után a kötés létrehozásához válassza a **Mentés** lehetőséget.
 
 ## <a name="update-the-function-code"></a>A függvénykód módosítása
 
-Cserélje le a függvény sablonkódját a következőre:
-
-Vegye figyelembe, hogy ez a mintakód csak C#-környezetben érvényes.
+Cserélje le a meglévő C#-függvénykódot a következő kódra:
 
 ```csharp
 using System.Net;
@@ -124,38 +111,31 @@ public static HttpResponseMessage Run(HttpRequestMessage req, out object taskDoc
 }
 
 ```
-
-A mintakód beolvassa a HTTP-kérelem lekérdezési sztringjeit, és egy `taskDocument` objektum tagjaként jelöli ki őket. A `taskDocument` objektum automatikusan menti az adatokat a Cosmos DB adatbázisba, és még létre is hozza az adatbázist az első használatkor.
+A mintakód beolvassa a HTTP-kérelem karakterláncait, és egy `taskDocument` objektum mezőihez rendeli azokat. A `taskDocument` kötés elküldi az ezen kötési paramétertől származó objektumadatokat a kötött dokumentum-adatbázisba tárolásra. Az adatbázis a függvény első futtatásakor jön létre.
 
 ## <a name="test-the-function-and-database"></a>A függvény és az adatbázis tesztelése
 
-1. A függvény lapon kattintson a portál jobb oldalán látható *Teszt* hivatkozásra, majd adja meg a következő HTTP-lekérdezési sztringeket:
+1. Bontsa ki a jobb oldali ablakot, és válassza a **Teszt** elemet. A **Lekérdezés** területen kattintson a **+ Paraméter hozzáadása** elemre, és adja hozzá a következő paramétereket a lekérdezési karakterlánchoz:
 
-| Lekérdezési sztring | Érték |
-|---|---|
-| név | Kenyeres Péter |
-| feladat | Szalonnás szendvics elkészítése |
-| határidő | 05/12/2017 |
+    + `name`
+    + `task`
+    + `duedate`
 
-1. Kattintson a *Futtatás* hivatkozásra.
-1. Ellenőrizze, hogy a függvény visszaadta-e a *HTTP 200 OK* válaszkódot.
+2. Kattintson a **Futtatás** parancsra, és ellenőrizze, hogy a rendszer 200-as állapotüzenetet ad-e vissza.
 
-![A Cosmos DB kimeneti kötésének konfigurálása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png)
+    ![A Cosmos DB kimeneti kötésének konfigurálása](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png)
 
-Ellenőrizze, hogy került-e bejegyzés a Cosmos DB adatbázisba.
+1. Az Azure Portal bal oldali menüjében bontsa ki az ikonsort, gépelje be a `cosmos` szöveget a keresőmezőbe, és válassza az **Azure Cosmos DB** lehetőséget.
 
-1. Keresse meg az adatbázist az Azure Portalon, és jelölje ki.
-1. Kattintson az *Adatkezelő* elemre.
-1. Bontsa ki a csomópontokat addig, amíg el nem éri a dokumentum bejegyzéseit.
-1. Ellenőrizze az adatbázis-bejegyzést. Az adatbázisban a saját adatai mellett további metaadatokat is találni fog.
+    ![A Cosmos DB szolgáltatás megkeresése](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
 
-![A Cosmos DB-bejegyzés ellenőrzése](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
+2. Válassza ki a létrehozott adatbázist, majd válassza az **Adatkezelő** elemet. Bontsa ki a **Gyűjtemények** csomópontokat, válassza ki az új dokumentumot, és győződjön meg arról, hogy a dokumentum tartalmazza a lekérdezési karakterlánc értékeit, valamint további metaadatokat. 
 
-Ha az adatok megvannak a dokumentumban, akkor sikeresen hozott létre egy olyan Azure-függvényt, amely strukturálatlan adatokat tárol egy Cosmos DB-adatbázisban.
+    ![A Cosmos DB-bejegyzés ellenőrzése](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Sikeresen hozzáadott egy kötést a Cosmos DB-adatbázisban strukturálatlan adatokat tároló HTTP-eseményindítóhoz.
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
+[!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,15 +1,14 @@
-The old VPN gateway SKUs are:
+A VPN-átjárók örökölt (régi) termékváltozatai:
 
 * Basic
 * Standard
 * HighPerformance
 
-VPN Gateway does not use the UltraPerformance gateway SKU. For information about the UltraPerformance SKU, see the [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) documentation.
+A VPN Gateway nem használja az UltraPerformance átjáró-termékváltozatot. Az UltraPerformance termékváltozattal kapcsolatos információkért lásd az [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) dokumentációját.
 
-When working with the old SKUs, consider the following:
+Örökölt termékváltozatok használata esetén vegye figyelembe a következőket:
 
-* If you want to use a PolicyBased VPN type, you must use the Basic SKU. PolicyBased VPNs (previously called Static Routing) are not supported on any other SKU.
-* BGP is not supported on the Basic SKU.
-* ExpressRoute-VPN Gateway coexist configurations are not supported on the Basic SKU.
-* Active-active S2S VPN Gateway connections can be configured on the HighPerformance SKU only.
-
+* PolicyBased-típusú VPN-ekhez az alapszintű átjáró-termékváltozatot kell használni. A PolicyBased VPN-eket (régebbi nevén Statikus útválasztás) semmilyen más termékváltozat nem támogatja.
+* A BGP az alapszintű termékváltozathoz nem támogatott.
+* Az alapszintű termékváltozat nem támogatja az ExpressRoute-VPN-átjárók egyszerre konfigurált beállításait.
+* Aktív/aktív módú S2S VPN Gateway-kapcsolatokat csak a nagy teljesítményű termékváltozaton lehet konfigurálni.

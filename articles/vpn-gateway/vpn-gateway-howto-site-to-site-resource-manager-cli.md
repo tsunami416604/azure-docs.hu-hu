@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/01/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: b7076980781898573eca14291d718cceac5aa784
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: d97dfa3bc14c54e4c7097b5418c5b61e204e7676
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a parancssori felület használatával
@@ -31,7 +31,6 @@ Ez a cikk bemutatja, hogyan használhatja az Azure CLI-t egy helyek közötti VP
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
-> * [Klasszikus portál (klasszikus)](vpn-gateway-site-to-site-create.md)
 > 
 >
 
@@ -105,7 +104,6 @@ Ehhez a konfigurációhoz átjáróalhálózat is szükséges. A virtuális hál
 Az Ön által megadott átjáróalhálózat mérete a létrehozni kívánt VPN-átjárókonfigurációtól függ. Bár akár /29-es átjáróalhálózatot is létrehozhat, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: /27-eset vagy /28-asat. Nagyobb átjáróalhálózat használatával elegendő IP-cím áll rendelkezésre az esetleges jövőbeni konfigurációk megvalósításához.
 
 Az átjáróalhálózat létrehozásához használja az [az network vnet subnet create](/cli/azure/network/vnet/subnet#create) parancsot.
-
 
 ```azurecli
 az network vnet subnet create --address-prefix 10.12.255.0/27 --name GatewaySubnet --resource-group TestRG1 --vnet-name TestVNet1
@@ -197,8 +195,8 @@ Ez a szakasz a helyek közötti konfigurációk használatakor hasznos gyakori p
 
 ## <a name="next-steps"></a>Következő lépések
 
-*  Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+* Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 * Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
-* Információk a kényszerített bújtatásról: [Kényszerített bújtatás konfigurálása](vpn-gateway-forced-tunneling-rm.md).
+* Információk a kényszerített bújtatásról: [Információk a kényszerített bújtatásról](vpn-gateway-forced-tunneling-rm.md).
+* Információk a magas rendelkezésre állású aktív-aktív kapcsolatokról: [Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között](vpn-gateway-highlyavailable.md).
 * Az Azure CLI hálózati parancsainak listáját lásd: [Azure CLI](https://docs.microsoft.com/cli/azure/network).
-

@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 07/27/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 3011fd608ba83561c319e57c8a7b5a4f3c4c2284
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 81ecd5771be544e250ea0df31aa274f0850527ad
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Előre konfigurált csatlakoztatott gyár megoldás – bemutató
@@ -47,6 +46,13 @@ Ebben a cikkben bemutatjuk a csatlakoztatott gyár megoldás néhány fontos ele
 A következő diagram az előre konfigurált megoldás logikai összetevőit vázolja fel:
 
 ![Csatlakoztatott gyár logikai architektúrája][connected-factory-logical]
+
+## <a name="communication-patterns"></a>Kommunikációs minták
+
+A megoldás az [OPC UA Pub/Sub specifikációt](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/) használja az OPC UA telemetriai adatok JSON-formátumban való küldésére az IoT Hub részére. A megoldás az [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) IoT Edge-modult használja erre a célra.
+
+A megoldás webalkalmazásba integrált OPC UA-ügyféllel is rendelkezik, amely képes kapcsolatot létesíteni a helyszíni OPC UA-kiszolgálókkal. Az ügyfél [fordított proxyt](https://wikipedia.org/wiki/Reverse_proxy) használ, és az IoT Hub segítségével anélkül képes létrehozni a kapcsolatot, hogy nyitott portokra lenne szüksége a helyszíni tűzfalon. Ezt a kommunikációs mintát [szolgáltatás által támogatott kommunikációnak](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/) hívják. A megoldás az [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge-modult használja erre a célra.
+
 
 ## <a name="simulation"></a>Szimuláció
 

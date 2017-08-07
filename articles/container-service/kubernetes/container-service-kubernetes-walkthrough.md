@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 08/01/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 51c70dcacfba82255532f3222ecb391a43eccbb4
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: a278f76fc0ac2aa42633ed0ce2ad4fbc4e7290da
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
 # <a name="deploy-kubernetes-cluster-for-linux-containers"></a>Kubernetes-fürt üzembe helyezése Linux-tárolók esetén
 
-Ebben a rövid útmutatóban egy Kubernetes-fürtöt helyezünk üzembe az Azure CLI-vel. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
+Ebben a rövid útmutatóban egy Kubernetes-fürtöt helyezünk üzembe az Azure CLI-vel. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást helyezünk üzembe és futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
@@ -80,7 +80,7 @@ Kubernetes-fürtök kezeléséhez használja a [kubectl](https://kubernetes.io/d
 
 Ha az Azure CloudShellt használja, a kubectl már telepítve van. Ha helyileg szeretné telepíteni, használja az [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) parancsot.
 
-A kubectl a Kubernetes-fürthöz való csatlakozásra konfigurálásához futtassa az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) parancsot.
+A kubectl a Kubernetes-fürthöz való csatlakozásra konfigurálásához futtassa az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) parancsot. Ebben a lépésben a rendszer hitelesítő adatokat tölt le, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
@@ -216,7 +216,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 Ebben a rövid útmutatóban előre létrehozott tárolórendszerképekkel hoztunk létre egy üzemelő Kubernetes-példányt. A kapcsolódó alkalmazáskód, Docker-fájl és Kubernetes-jegyzékfájl a GitHubon érhetőek el.
 
-[Azure Vote alkalmazás Redisszel](https://github.com/Azure-Samples/azure-voting-app-redis.git)
+[https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>Következő lépések
 

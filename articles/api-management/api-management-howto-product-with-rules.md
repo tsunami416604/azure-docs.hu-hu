@@ -3,7 +3,7 @@ title: "Az API-k védelme az Azure API Management szolgáltatással | Microsoft 
 description: "Megtudhatja, hogyan védheti meg az API-kat kvótákkal és szabályozási (sebességhatároló) házirendekkel."
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 450dc368-d005-401d-ae64-3e1a2229b12f
@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 73c9675490f95f68450716cd67e58df9c84daef8
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 9dba928b78c11213d4b0098986561b09678444eb
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Az API-k védelme sebességkorlátokkal az Azure API Management használatával
@@ -53,7 +54,7 @@ Kattintson a **Termék hozzáadása** lehetőségre az **Új termék hozzáadás
 
 A **Cím** mezőbe írja be az **Ingyenes próbaverzió** kifejezést.
 
-A **Leírás** mezőbe írja be az alábbi szöveget:  **Az előfizetők percenként 10 hívást indíthatnak, hetente pedig akár 200 hívást, ami után meg lesz tagadva a hozzáférés.**
+A **Leírás** mezőbe írja be az alábbi szöveget: **Az előfizetők percenként 10 hívást indíthatnak, hetente pedig akár 200 hívást, ami után meg lesz tagadva a hozzáférés.**
 
 Az API Management termékei védettek vagy nyitottak lehetnek. A védett termékeket csak az előfizetők használhatják. A nyitott termékeket előfizetés nélkül is lehet használni. Győződjön meg arról, hogy az **Előfizetés szükséges** lehetőség ki van választva, ha egy előfizetést igénylő védett terméket kíván létrehozni. Ez az alapértelmezett beállítás.
 
@@ -95,7 +96,9 @@ Válassza ki az **Echo API** elemet, majd kattintson a **Mentés** gombra.
 ![Echo API hozzáadása][api-management-add-echo-api]
 
 ## <a name="policies"> </a>A hívások sebességkorlátozása és a kvótaházirendek konfigurálása
-A sebességkorlátokat és a kvótákat a házirendszerkesztőben lehet konfigurálni. Kattintson a bal oldali **API Management** menü alatt található**Házirendek** lehetőségre. A **Termék** listán kattintson az **Ingyenes próbaverzió** lehetőségre.
+A sebességkorlátokat és a kvótákat a házirendszerkesztőben lehet konfigurálni. A két szabályzat, amelyet ebben az oktatóanyagban hozzáadunk a [Hívások számának korlátozása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) és a [Használati kvóta beállítása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota). Ezeket a szabályzatokat termékszinten kell alkalmazni.
+
+Kattintson a bal oldali **API Management** menü alatt található**Házirendek** lehetőségre. A **Termék** listán kattintson az **Ingyenes próbaverzió** lehetőségre.
 
 ![Termékházirend][api-management-product-policy]
 
@@ -103,11 +106,11 @@ Kattintson a **Házirend hozzáadása** lehetőségre a házirendsablon importá
 
 ![Házirend hozzáadása][api-management-add-policy]
 
-A házirendek beszúrásához vigye a kurzort a házirendsablon **inbound** vagy **outbound** részére. A sebességkorlát- és kvótaházirendek bejövő házirendek, ezért vigye a kurzort az „inbound” elemre.
+A sebességkorlát- és kvótaházirendek bejövő házirendek, ezért vigye a kurzort az „inbound” elemre.
 
 ![Házirendszerkesztő][api-management-policy-editor-inbound]
 
-A két házirend, amelyet ebben az oktatóanyagban hozzáadunk, a [Hívások számának korlátozása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) és a [Használati kvóta beállítása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota).
+szabályzat Görgessen végig a szabályzatok listáján, és keresse meg a **Hívások számának korlátozása előfizetésenként** szabályzatbejegyzést.
 
 ![Házirend-utasítások][api-management-limit-policies]
 
@@ -121,7 +124,7 @@ Miután a kurzort odavitte az **inbound** házirend elemre, kattintson a **Hív�
 </rate-limit>
 ```
 
-A **Hívások számának korlátozása előfizetésenként** házirendet a termék szintjén, valamint az API és az egyéni műveletnév szintjén is lehet használni. Ebben az oktatóanyagban csak termékszintű házirendeket használunk, ezért törölje az **api** és az **operation** elemeket a **rate-limit** elemből, hogy csak a külső **rate-limit** elem maradjon, az alábbi példában látható módon.
+Ahogy a kódrészletből is látható, ezzel a szabályzattal korlátozások állíthatók be a termék API-jaira és műveleteire vonatkozóan. Ebben az oktatóanyagban nem használjuk ezt a képességet, ezért törölje az **api** és az **operation** elemet a **rate-limit** elemből, hogy csak a külső **rate-limit** elem maradjon az alábbi példában látható módon.
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -135,7 +138,7 @@ Az Ingyenes próbaverzió termékben a maximálisan engedélyezett hívások sz�
 </rate-limit>
 ```
 
-A **Használati kvóta beállítása előfizetésenként** házirend konfigurálásához vigye a kurzort az újonnan hozzáadott **rate-limit** elem alá az **inbound** elemen belül, majd kattintson a **Használati kvóta beállítása előfizetésenként** házirend melletti nyílra.
+A **Használati kvóta beállítása előfizetésenként** szabályzat konfigurálásához helyezze az egérmutatót az újonnan hozzáadott **rate-limit** elem alá az **inbound** elemen belül, majd keresse meg és kattintson a **Használati kvóta beállítása előfizetésenként** szabályzat bal oldalán lévő nyílra.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -145,7 +148,7 @@ A **Használati kvóta beállítása előfizetésenként** házirend konfigurál
 </quota>
 ```
 
-Mivel ez a házirend is a termék szintjén működik, törölje az **api** és az **operation** névelemeket az alábbi példában látható módon.
+A **Használati kvóta beállítása előfizetésenként** szabályzathoz hasonlóan a **Használati kvóta beállítása előfizetésenként** szabályzattal korlátokat adhatunk meg a termék API-jaira és műveleteire vonatkozóan. Ebben az oktatóanyagban nem használjuk ezt a képességet, ezért törölje az **api** és az **operation** elemet a **quota** elemből az alábbi példában látható módon.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -166,7 +169,7 @@ Az Ingyenes próbaverzió termékben a kvóta 200 hívás hetente. Adja meg a **
 </quota>
 ```
 
-> A házirendidőközök másodpercekben vannak megadva. A heti időköz kiszámításához szorozza össze a napok számát (7) a nap óráinak számával (24), az óra perceinek számával (60) és a perc másodperceinek számával (60): 7 * 24 * 60 * 60 = 604800.
+> A házirendidőközök másodpercekben vannak megadva. A heti időköz kiszámításához szorozza össze a napok számát (7) a nap óráinak számával (24), az óra perceinek számával (60) és a perc másodperceinek számával (60): 7 * 24 * 60 * 60 = 604 800.
 > 
 > 
 
@@ -323,9 +326,4 @@ Ha a 10 hívás percenként sebességkorlátozási házirend van érvényben, a 
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

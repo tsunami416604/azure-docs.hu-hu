@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/16/2017
+ms.date: 07/31/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: a8e69933b977f60d09837f0f0360a274ef1b5dcd
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: e80fe0970ec130754c2c058789e1d1e2a9492216
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/18/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -88,7 +88,7 @@ A streamvégpont elindításához tegye a következőket:
 
 A .NET-keretrendszerű Media Services-szolgáltatások használatakor a **CloudMediaContext** osztályt kell használnia a legtöbb Media Services-programozási feladathoz – ilyenek például a Media Services-fiókhoz való csatlakozás, továbbá az adategységek, adategységfájlok, feladatok, hozzáférési házirendek, keresők és egyebek létrehozása, frissítése, elérése és törlése.
 
-Írja felül az alapértelmezett Program osztályt a következő kóddal. A kód bemutatja, hogyan olvashatja be a csatlakozási értékeket az App.config fájlból, és hogyan hozhatja létre a Media Services-csatlakozáshoz szükséges **CloudMediaContext** objektumot. További információk a Media Services szolgáltatásokhoz való csatlakozásról: [Csatlakozás a Media Services szolgáltatásokhoz a .NET-keretrendszerhez készült Media Services SDK használatával](media-services-dotnet-connect-programmatically.md)
+Írja felül az alapértelmezett Program osztályt a következő kóddal. A kód bemutatja, hogyan olvashatja be a csatlakozási értékeket az App.config fájlból, és hogyan hozhatja létre a Media Services-csatlakozáshoz szükséges **CloudMediaContext** objektumot. További információ: [Connecting to the Media Services API](media-services-use-aad-auth-to-access-ams-api.md) (Csatlakozás a Media Services API-hoz).
 
 Ne feledje frissíteni a fájl nevét és elérési útvonalát a médiafájl helyének megfelelően.
 

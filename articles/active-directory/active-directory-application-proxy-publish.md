@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: harshja
-ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 526efc5b025f8050f40c49d0a07a9c2713509493
+ms.custom: it-pro; oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -63,9 +63,9 @@ Az Azure AD alkalmazásproxy segít a távoli feldolgozók támogatásában azá
 6. A varázsló bezárásához kattintson a képernyő alján található pipára. Az alkalmazás így már meg van adva az Azure AD-ben.
 
 ## <a name="assign-users-and-groups-to-the-application"></a>Felhasználók és csoportok hozzárendelése az alkalmazáshoz
-Ahhoz, hogy a felhasználók hozzáférjenek a közzétett alkalmazáshoz, egyénileg vagy csoportosan hozzá kell őket rendelni. (Ne feledkezzen meg a saját hozzáférésének hozzárendeléséről.) Ehhez arra van szükség, hogy minden felhasználó rendelkezzen Azure Basic vagy nagyobb licenccel. Licenceket egyénekhez vagy csoportokhoz is hozzárendelhet. További részletek: [Felhasználók hozzárendelése egy alkalmazáshoz](active-directory-applications-guiding-developers-assigning-users.md). 
+Ahhoz, hogy a felhasználók hozzáférjenek a közzétett alkalmazáshoz, egyénileg vagy csoportosan hozzá kell őket rendelni. (Ne feledkezzen meg a saját hozzáférésének hozzárendeléséről.) Minden hozzárendelt felhasználónak rendelkeznie kell egy Azure Basic vagy magasabb szintű licenccel. Licenceket egyénekhez vagy csoportokhoz is hozzárendelhet. További információkat a [felhasználók egy alkalmazáshoz történő hozzárendelését](active-directory-applications-guiding-developers-assigning-users.md) ismertető cikkben talál. 
 
-Az előhitelesítést igénylő alkalmazások esetében ezzel jogosultságot is kapnak az alkalmazás használatára. Az előhitelesítést nem igénylő alkalmazások esetében is hozzárendelhetők a felhasználók az alkalmazáshoz, amely így megjelenik az alkalmazáslistájukban (például: MyApps).
+Az előhitelesítést igénylő alkalmazások esetében a felhasználók a hozzárendeléssel jogosultságot is kapnak az alkalmazás használatára. Az előhitelesítést nem igénylő alkalmazások esetében a felhasználók a hozzárendelés után az alkalmazáshoz a hozzáférés panelen keresztül férhetnek hozzá.
 
 1. Az Alkalmazás hozzáadása varázsló befejezését követően megjelenik az alkalmazás első lépéseinek oldala. Az alkalmazás-hozzáférés kezeléséhez válassza a **Felhasználók és csoportok** lehetőséget.
    
@@ -90,7 +90,7 @@ A Konfigurálás oldalon módosíthatja a közzétett alkalmazásokat, illetve s
 
 Az Azure Active Directory alkalmazásproxyjával történő alkalmazás-közzétételt követően az alkalmazások megjelennek és kezelhetővé válnak az Azure AD alkalmazáslistájában.
 
-Ha letiltja az alkalmazásproxy-szolgáltatásokat az alkalmazások közzétételét követően, azok a továbbiakban nem érhetők el a magánhálózaton kívülről. Ezzel nem törli az alkalmazásokat.
+Ha letiltja az alkalmazásproxy-szolgáltatásokat az alkalmazások közzétételét követően, azok a továbbiakban nem érhetők el a magánhálózaton kívülről. A felhasználók továbbra is a szokásos módon férhetnek hozzá a helyszíni alkalmazásokhoz.
 
 Egy alkalmazás megtekintéséhez és hozzáférhetőségének ellenőrzéséhez kattintson duplán az alkalmazás nevére. Ha az alkalmazásproxy le van tiltva, és az alkalmazás nem érhető el, a képernyő tetején figyelmeztető üzenet jelenik meg.
 

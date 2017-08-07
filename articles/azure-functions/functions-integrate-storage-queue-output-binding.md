@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: d1ddfbe9a0a0c7c7e0a060776938bd68a87e1ba5
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 3eae02f7cf756e8e24d4f1952d12c37f2ad4b400
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
@@ -35,8 +35,6 @@ Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztos�
 
 * Telepítse a [Microsoft Azure Storage Explorert](http://storageexplorer.com/).
 
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
-
 ## <a name="add-binding"></a>Kimeneti kötés hozzáadása
  
 1. Bontsa ki a függvényalkalmazást és a függvényt.
@@ -45,7 +43,7 @@ Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztos�
     
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. Használja a táblázatban megadott beállításokat, majd kattintson a **Mentés** elemre: 
+3. Használja a táblázatban megadott beállításokat: 
 
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -55,6 +53,8 @@ Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztos�
     | **Tárfiók kapcsolata** | AzureWebJobStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |
     | **Üzenet-paraméter neve** | outQueueItem | A kimeneti kötés paraméterének neve. | 
 
+4. Kattintson a **Mentés** gombra a kötés felvételéhez.
+ 
 Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az a kötés használatával üzeneteket adjon hozzá az üzenetsorhoz.  
 
 ## <a name="update-the-function-code"></a>A függvénykód módosítása

@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 07/10/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c9aafa13ebdeeb84a35e55e25650f334ddc71af5
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 396d8b9532eb55341670ad61bd4c2a16882b35e4
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>Application Gateway – áttekintés
 
-A Microsoft Azure Application Gateway egy alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosító dedikált virtuális berendezés, amely számos 7. rétegbeli terheléselosztási lehetőséget nyújt alkalmazásának. Az ügyfelek optimalizálhatják a webfarmok termelékenységét a processzorigényes SSL-lezárások Application Gateway felé történő kiszervezésével. Ezen túlmenően egyéb 7. rétegbeli útválasztási lehetőségeket is kínál, beleértve a bejövő forgalom ciklikus időszeleteléses elosztását, a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást, valamint egyetlen Application Gateway mögött több webhelyet is üzemeltethet. Az Application Gateway WAF termékváltozata tartalmaz egy webapp tűzfalat is, amely védelmet biztosít a webappok számára a gyakori internetes biztonsági rések és az azokat kihasználó támadások ellen. Az Application Gateway szolgáltatást internetes átjáróként, csak belső használatú átjáróként vagy a kettő kombinációjaként lehet konfigurálni. 
+A Microsoft Azure Application Gateway egy alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosító dedikált virtuális berendezés, amely számos 7. rétegbeli terheléselosztási lehetőséget nyújt alkalmazásának. Az ügyfelek optimalizálhatják a webfarmok termelékenységét a processzorigényes SSL-lezárások Application Gateway felé történő kiszervezésével. Ezen túlmenően egyéb 7. rétegbeli útválasztási lehetőségeket is kínál, beleértve a bejövő forgalom ciklikus időszeleteléses elosztását, a cookie-alapú munkamenet-affinitást, az URL-alapú útválasztást, valamint egyetlen Application Gateway mögött több webhelyet is üzemeltethet. Az Application Gateway WAF termékváltozata tartalmaz egy webalkalmazási tűzfalat is, amely védelmet biztosít a webalkalmazások számára a gyakori internetes biztonsági rések és az azokat kihasználó támadások ellen. Az Application Gateway szolgáltatást internetes átjáróként, csak belső használatú átjáróként vagy a kettő kombinációjaként lehet konfigurálni. 
 
 ![forgatókönyv](./media/application-gateway-introduction/scenario.png)
 
@@ -38,11 +38,12 @@ Az Application Gateway jelenleg a következő képességeket biztosítja:
 * **Cookie-alapú munkamenet-affinitás** – Ez a funkció akkor hasznos, ha egy felhasználói munkamenetet egy adott háttérkiszolgálón szeretne tartani. Az átjáróval kezelt cookie-k használatával az Application Gateway képes egy felhasználói munkamenet minden újabb forgalmát ugyanarra a háttérkiszolgálóra irányítani feldolgozásra. Ez a funkció olyan esetekben lehet fontos, amelyekben egy felhasználói munkamenethez tartozó munkamenet-állapotot helyileg ment a rendszer a háttérkiszolgálón.
 * **[A biztonságos szoftvercsatorna (SSL) kiszervezése](application-gateway-ssl-arm.md)** – Ez a funkció leveszi a HTTPS-forgalom visszafejtése költséges feladatának terhét az Ön webkiszolgálóiról. Ha lezárja az SSL-kapcsolatot az Application Gatewayben, és a kérést titkosítás nélkül irányítja át a kiszolgálóra, a webkiszolgálónak nem kell feloldania a titkosítást.  Az Application Gateway újratitkosítja a választ, mielőtt visszaküldené az ügyfélnek. Ez a funkció akkor hasznos, ha a háttérkiszolgáló ugyanazon a biztonságos virtuális hálózaton van, mint az Azure Application Gateway.
 * **[Végpontok közötti SSL](application-gateway-backend-ssl.md)** – Az Application Gateway támogatja a forgalom végpontok közötti titkosítását. Az Application Gateway ehhez lezárja az SSL-kapcsolatot az alkalmazásátjáróban. Az átjáró ezután alkalmazza az útválasztási szabályokat a forgalomra, újratitkosítja a csomagot, majd a megadott útválasztási szabályok alapján továbbítja azt a megfelelő háttérkiszolgálóra. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz.
-* **[URL-alapú tartalom-útválasztás](application-gateway-url-route-overview.md)** – Ez a funkció lehetővé teszi, hogy különböző jellegű forgalmakat adott háttérkiszolgálókhoz irányítson. Egy webkiszolgálón lévő mappához vagy egy CDN-hez kapcsolódó forgalom például egy másik háttérkiszolgálóhoz irányítható, csökkentve azoknak a háttérkiszolgálóknak a terhelését, amelyek nem adott tartalmat szolgálnak ki.
+* **[URL-alapú tartalom-útválasztás](application-gateway-url-route-overview.md)** – Ez a funkció lehetővé teszi, hogy különböző jellegű forgalmakat adott háttérkiszolgálókhoz irányítson. Egy webkiszolgálón lévő mappához vagy egy CDN-hez kapcsolódó forgalom például egy másik háttérkiszolgálóhoz irányítható. Ez a lehetőség csökkenti azoknak a háttérkiszolgálóknak a felesleges terhelését, amelyek nem adott tartalmat szolgálnak ki.
 * **[Többhelyes útválasztás](application-gateway-multi-site-overview.md)** - Az Application Gateway szolgáltatással akár 20 webhelyet is összevonhat egyetlen alkalmazásátjáróba.
 * **[WebSocket-támogatás](application-gateway-websocket.md)** – Az Application Gateway egy másik nagyszerű szolgáltatása a natív WebSocket-támogatás.
 * **[Állapotfigyelés](application-gateway-probe-overview.md)** – Az Application Gateway alapértelmezés szerint végzi a háttérerőforrások állapotfigyelését, és egyéni mintavételek létrehozását teszi lehetővé a különlegesebb esetek megfigyelésére.
 * **[Átirányítás kérése](application-gateway-redirect-overview.md)** – Ez a szolgáltatás lehetővé teszi, hogy a HTTP-kéréseket egy HTTPS-figyelőre irányítsa át.
+* **[Több-bérlős háttérszolgáltatások támogatása](application-gateway-web-app-overview.md)** – Az Application Gateway támogatja olyan több-bérlős háttérszolgáltatások konfigurálását háttérkészlet-tagokként, mint az Azure Web Apps és az API Gateway. 
 * **[Speciális diagnosztika](application-gateway-diagnostics.md)** – Az Application Gateway teljes diagnosztikát és hozzáférési naplókat biztosít. A tűzfalnaplók olyan Application Gateway-erőforrásokhoz érhetők el, amelyekhez engedélyezve van a WAF.
 
 ## <a name="benefits"></a>Előnyök
@@ -82,17 +83,17 @@ Az alábbi táblázatban az egyes SSL-alapú kiszervezéshez engedélyezett alka
 
 ## <a name="health-monitoring"></a>Állapotfigyelés
 
-Az Azure Application Gateway automatikusan végzi a háttérpéldányok állapotfigyelését egyszerű vagy egyéni állapotmintákkal. Ha állapotmintákat használ, biztosíthatja, hogy csak kifogástalan állapotú gazdagépek válaszoljanak a forgalomra. További információt az [Application Gateway-állapotfigyelés – áttekintés](application-gateway-probe-overview.md) című témakörben talál.
+Az Azure Application Gateway automatikusan végzi a háttérpéldányok állapotfigyelését egyszerű vagy egyéni állapotmintákkal. Az állapotminták használatával biztosítható, hogy csak kifogástalan állapotú gazdagépek válaszoljanak a forgalomra. További információt az [Application Gateway-állapotfigyelés – áttekintés](application-gateway-probe-overview.md) című témakörben talál.
 
 ## <a name="configuring-and-managing"></a>Beállítás és felügyelet
 
-Az alkalmazásátjáró végpontjához nyilvános és privát IP-címet is hozzárendelhet, vagy akár mindkettőt, ha a beállítások engedik. Az Application Gateway beállítása egy virtuális hálózaton történik, egy saját alhálózaton. Az alkalmazásátjáró számára létrehozott vagy használt alhálózaton nem lehet más típusú erőforrás, kizárólag más alkalmazásátjárók. A háttérerőforrások védelmét úgy biztosíthatja, hogy a háttérkiszolgálókat a virtuális hálózat egy olyan alhálózatán üzemelteti, amely különbözik az alkalmazásátjáró alhálózatától. Ilyen további alhálózat a háttéralkalmazásokhoz nem szükséges – amíg az alkalmazásátjáró el tudja érni az IP-címet, addig biztosítja az ADC-képességeket a háttérkiszolgálóknak. 
+Az alkalmazásátjáró végpontjához nyilvános és privát IP-címet is hozzárendelhet, vagy akár mindkettőt, ha a beállítások engedik. Az Application Gateway beállítása egy virtuális hálózaton történik, egy saját alhálózaton. Az alkalmazásátjáró számára létrehozott vagy használt alhálózaton nem lehet más típusú erőforrás, kizárólag más alkalmazásátjárók. A háttérerőforrások védelmét úgy biztosíthatja, hogy a háttérkiszolgálókat a virtuális hálózat egy olyan alhálózatán üzemelteti, amely különbözik az alkalmazásátjáró alhálózatától. Ez az alhálózat nem szükséges a háttéralkalmazásokhoz. Amíg az alkalmazásátjáró el tudja érni az IP-címet, addig biztosítja az ADC-képességeket a háttérkiszolgálóknak. 
 
 Alkalmazásátjárókat REST API-k, PowerShell-parancsmagok, az Azure parancssori felülete vagy az [Azure Portal](https://portal.azure.com/) segítségével hozhat lére. Az Application Gatewayhez kapcsolódó további gyakori kérdések listáját itt találja meg: [Application Gateway – gyakori kérdések](application-gateway-faq.md).
 
 ## <a name="pricing"></a>Díjszabás
 
-A díjszabás az átjárópéldányok óránkénti díján és az adatfeldolgozási díjon alapul. A WAF termékváltozathoz tartozó óránkénti átjáródíj eltér a normál termékváltozat díjaitól, és az [Application Gateway díjszabását](https://azure.microsoft.com/pricing/details/application-gateway/) ismertető webhelyen tekinthető meg. Az adatfeldolgozási díjak nem változnak.
+A díjszabás az átjárópéldányok óránkénti díján és az adatfeldolgozási díjon alapul. A WAF termékváltozathoz tartozó óránkénti átjáródíj eltér a normál termékváltozat díjaitól. A díjszabás az [Application Gateway díjszabását](https://azure.microsoft.com/pricing/details/application-gateway/) ismertető webhelyen tekinthető meg. Az adatfeldolgozási díjak nem változnak.
 
 ## <a name="faq"></a>GYIK
 

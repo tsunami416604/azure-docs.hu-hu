@@ -1,6 +1,6 @@
 ---
-title: "Számítógép csatlakoztatása Azure-beli virtuális hálózathoz pont–hely kapcsolat használatával: PowerShell | Microsoft Docs"
-description: "Biztonságosan csatlakoztathat egy számítógépet az Azure Virtual Networkhöz pont–hely VPN Gateway-kapcsolat létrehozásával."
+title: "Számítógép csatlakoztatása Azure-beli virtuális hálózathoz pont–hely kapcsolat és tanúsítványalapú hitelesítés használatával: PowerShell | Microsoft Docs"
+description: "A tanúsítványalapú hitelesítés használatával biztonságosan csatlakoztathat egy számítógépet az Azure Virtual Networkhöz pont–hely VPN Gateway-kapcsolat létrehozásával. Ez a cikk a Resource Manager-alapú üzemi modellre vonatkozik, és a PowerShellt használja."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 7abc3f238d08694c9f7359479cdce07bfb3d87bd
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 27484932f13a85bef29b7a19b4f06b75722b4c38
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz a PowerShell segítségével
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-powershell"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz tanúsítványalapú hitelesítés használatával: PowerShell
 
-
-Ebből a cikkből megtudhatja, hogyan hozhat létre pont–hely kapcsolattal rendelkező virtuális hálózatot a Resource Manager-alapú üzemi modellben a PowerShell használatával. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
+Ebből a cikkből megtudhatja, hogyan hozhat létre pont–hely kapcsolattal rendelkező virtuális hálózatot a Resource Manager-alapú üzemi modellben a PowerShell használatával. Ez a konfiguráció tanúsítványokat használ a kapcsolódó ügyfelek hitelesítéséhez. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
@@ -39,15 +37,16 @@ A pont–hely (P2S) konfiguráció lehetővé teszi biztonságos kapcsolat léte
 
 ![Számítógép csatlakoztatása Azure-beli virtuális hálózathoz – pont-hely kapcsolati diagram](./media/vpn-gateway-howto-point-to-site-rm-ps/point-to-site-diagram.png)
 
-A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. A P2S-kapcsolat SSTP (Secure Socket Tunneling Protocol) használatával hozza létre a VPN-kapcsolatot. A kiszolgálói oldalon az SSTP 1.0, 1.1 és 1.2 verziója támogatott. Az ügyfél dönti el, hogy melyik verziót használja. Windows 8.1 és újabb kiadások esetén az SSTP alapértelmezés szerint az 1.2 verziót használja. A Pont–hely kapcsolatokról további információt a cikk végén, a [Pont–hely kapcsolatok – gyakori kérdések](#faq) című részben talál.
-
-A pont–hely kapcsolatokhoz a következőkre van szükség:
+A pont–hely tanúsítvánnyal hitelesített kapcsolatokhoz a következőkre van szükség:
 
 * Útvonalalapú VPN-átjáró.
-* A nyilvános kulcs (.cer fájl) egy főtanúsítványhoz, az Azure-ba feltöltve. A rendszer ezt megbízható tanúsítványnak tekinti, és ezt használja hitelesítéshez.
+* A nyilvános kulcs (.cer fájl) egy főtanúsítványhoz, amely az Azure-ba van feltöltve. A rendszer ezt megbízható tanúsítványnak tekinti, és ezt használja hitelesítéshez.
 * A főtanúsítványból létrejön egy ügyféltanúsítvány, majd települ az egyes csatlakozó ügyfélszámítógépekre. A rendszer ezt a tanúsítványt használja ügyfélhitelesítéshez.
 * Minden csatlakozó ügyfélszámítógépen létre kell hozni és telepíteni kell egy VPN-ügyfélkonfigurációs csomagot. Az ügyfélkonfigurációs csomag konfigurálja a már az operációs rendszeren lévő natív VPN-ügyfelet a virtuális hálózathoz való csatlakozáshoz szükséges adatokkal.
 
+A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy helyszíni nyilvános IP-címet. A VPN-kapcsolat kiépítése SSTP (Secure Socket Tunneling Protocol) használatával történik. A kiszolgálói oldalon az SSTP 1.0, 1.1 és 1.2 verziója támogatott. Az ügyfél dönti el, hogy melyik verziót használja. Windows 8.1 és újabb kiadások esetén az SSTP alapértelmezés szerint az 1.2 verziót használja. 
+
+A Pont–hely kapcsolatokról további információt a cikk végén, a [Pont–hely kapcsolatok – gyakori kérdések](#faq) című részben talál.
 
 ## <a name="before-beginning"></a>Mielőtt hozzálát
 
@@ -227,11 +226,7 @@ Ha a tanúsítvány létrehozásához használttól eltérő ügyfélszámítóg
 
   ![A kapcsolat létrejött](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png)
 
-Ha kapcsolódási problémákat észlel, ellenőrizze az alábbiakat:
-
-- Nyissa meg a **Felhasználói tanúsítványok kezelése** ablakot, és navigáljon a **Megbízható legfelső szintű hitelesítésszolgáltatók\Tanúsítványok** részhez. Ellenőrizze, hogy a főtanúsítvány szerepel-e a listában. A főtanúsítvány a hitelesítés működéséhez szükséges. Ha .pfx formátumú ügyféltanúsítványt exportál az alapértelmezett „Minden tanúsítvány belefoglalása a tanúsítványláncba” érték használatával, a főtanúsítvány információit is exportálja a program. Amikor telepíti az ügyféltanúsítványt, az alkalmazás a főtanúsítványt is telepíti az ügyfélszámítógépre. 
-
-- Ha vállalati hitelesítésszolgáltatói megoldás használatával kiadott tanúsítványt használ, és problémák merülnek fel a hitelesítés során, ellenőrizze a hitelesítési sorrendet az ügyféltanúsítványon. A hitelesítési lista sorrendjének ellenőrzéséhez kattintson duplán az ügyféltanúsítványra, és lépjen a **Részletek > Kibővített kulcshasználat** részre. Ellenőrizze, hogy a listán az „ügyfél-hitelesítés” jelenik-e meg első helyen. Ha nem, ki kell adnia egy ügyféltanúsítványt, amely az ügyfél-hitelesítést a lista első helyén tartalmazó felhasználói sablonon alapul.  
+[!INCLUDE [verify client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
 
 ## <a name="verify"></a>9 – A kapcsolat ellenőrzése
 
@@ -250,7 +245,6 @@ Ha kapcsolódási problémákat észlel, ellenőrizze az alábbiakat:
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
   ```
-
 
 ## <a name="connectVM"></a>Csatlakozás virtuális géphez
 
@@ -375,4 +369,3 @@ Vissza is állíthatja az ügyféltanúsítványok érvényességét. Ehhez tör
 
 ## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/#pivot=services&panel=Compute). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/linux/azure-vm-network-overview.md).
-

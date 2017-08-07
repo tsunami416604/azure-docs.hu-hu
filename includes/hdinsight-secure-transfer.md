@@ -1,0 +1,2 @@
+> [!NOTE]
+> A [Biztonságos átvitel szükséges](../articles/storage/storage-require-secure-transfer.md) funkció minden, a fiókra beérkező kérést biztonságos kapcsolat használatára kényszerít. Ezt a funkciót csak a HDInsight-fürt csak 3.6-os vagy újabb verziója támogatja. További információkért lásd: [Create Hadoop cluster with secure transfer storage accounts in Azure HDInsight](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) (Biztonságos átvitelű tárfiókokkal rendelkező Hadoop-fürt létrehozása az Azure HDInsightban).

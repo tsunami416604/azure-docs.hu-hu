@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/09/2017
+ms.date: 07/27/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 8f83f5d13cb61709653f255c756dc78453073626
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: e463102a4b21253e28b01d6d149aba55bab18674
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="update-management-solution-in-oms"></a>Frissítéskezelési megoldás az OMS-ben
@@ -65,10 +64,10 @@ A frissítéstelepítésben megadott helyen és időben a célszámítógépek e
     > [!NOTE]
     > A Windows-ügynök ezzel egyidejűleg nem felügyelhető a System Center Configuration Manager használatával.  
     >
-* CentOS 6 (x86/x64) és 7 (x64)
-* Red Hat Enterprise 6 (x86/x64) és 7 (x64)
-* SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)
-* Ubuntu 12.04 LTS és újabb x86/x64  
+* CentOS 6 (x86/x64) és 7 (x64)  
+* Red Hat Enterprise 6 (x86/x64) és 7 (x64)  
+* SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)  
+* Ubuntu 12.04 LTS és újabb x86/x64   
     > [!NOTE]  
     > Ahhoz, hogy Ubuntu rendszeren elkerülje a karbantartási időszakon kívüli frissítéstelepítést, konfigurálja újra az Unattended-Upgrade csomagot az automatikus frissítések letiltásához. A konfigurációval kapcsolatos útmutatásért lásd [az Ubuntu Server útmutatójának automatikus frissítésekkel kapcsolatos témakörét](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
@@ -79,6 +78,9 @@ A frissítéstelepítésben megadott helyen és időben a célszámítógépek e
     >
 
 További információért a Linuxhoz készült OMS-ügynök telepítéséről és a legújabb verzió letöltéséről tekintse meg a [Linuxhoz készült Operations Management Suite-ügynökkel](https://github.com/microsoft/oms-agent-for-linux) kapcsolatos részt.  További információért a Windowshoz készült OMS-ügynök telepítésével kapcsolatban tekintse meg a [Windowshoz készült Operations Management Suite-ügynökkel](../log-analytics/log-analytics-windows-agents.md) kapcsolatos részt.  
+
+### <a name="permissions"></a>Engedélyek
+A frissítéstelepítések létrehozásához közreműködői szerepkörrel kell rendelkeznie az Automation-fiókjában és Log Analytics-munkaterületén egyaránt.  
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 Ez a megoldás a következő erőforrásokból áll, amelyek az Automation-fiókjába lesznek felvéve, és ügynökökhöz vagy az Operations Managerhez kapcsolt felügyeleti csoporthoz lesznek közvetlenül hozzákapcsolva.
@@ -156,7 +158,7 @@ A Frissítéskezelési megoldás hozzáadásakor az OMS-munkaterületen a **Fris
 ## <a name="viewing-update-assessments"></a>A frissítési felmérések megtekintése
 A **Frissítéskezelés** irányítópultjának megnyitásához kattintson a **Frissítéskezelés** csempére.<br><br> ![Frissítéskezelés – áttekintő irányítópult](./media/oms-solution-update-management/update-management-dashboard.png)<br>
 
-Az irányítópult részletes áttekintést kínál a frissítési állapotokról az operációs rendszer típusa és frissítési besorolása alapján kategorizálva – kritikus, biztonsági vagy egyéb (például egy definíciófrissítés). A **Frissítéstelepítések** csempe kijelölésekor a rendszer átirányítja a Frissítéstelepítések oldalra, ahol megtekintheti az ütemezéseket, az aktuálisan futó telepítéseket, a befejezett telepítéseket, vagy ütemezhet új telepítést.  
+Az irányítópult részletes áttekintést kínál a frissítési állapotokról az operációs rendszer típusa és frissítési besorolása alapján kategorizálva – kritikus, biztonsági vagy egyéb (például egy definíciófrissítés). Az aktuális irányítópulton lévő egyes csempék eredményei csak az üzembe helyezésre jóváhagyott frissítéseket tükrözik. Ez a számítógépek szinkronizációs forrásán alapul.   A **Frissítéstelepítések** csempe kijelölésekor a rendszer átirányítja a Frissítéstelepítések oldalra, ahol megtekintheti az ütemezéseket, az aktuálisan futó telepítéseket, a befejezett telepítéseket, vagy ütemezhet új telepítést.  
 
 Futtathat naplókeresést, amely minden bejegyzést visszaad a megfelelő csempére kattintva. Egy adott kategória és előre meghatározott feltételek lekérdezéséhez válasszon a **Gyakori frissítési lekérdezések** oszlop alatt elérhető listából.    
 
@@ -310,6 +312,17 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ebben a szakaszban arról talál információkat, hogyan háríthatja el a frissítéskezelési megoldásban felmerülő hibákat.  
+
+### <a name="how-do-i-troubleshoot-onboarding-issues"></a>Hogyan háríthatom el a bevezetési hibákat?
+Ha problémák merülnek fel a megoldás vagy virtuális gépek bevezetése során, ellenőrizze az **Application and Services Logs\Operations Manager** (Alkalmazási és szolgáltatási naplók\Operations Manager) eseménynaplóban a 4502-es eseményazonosítóval ellátott eseményeket, valamint a következőt tartalmazó eseményüzeneteket: **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**.  Az alábbi táblázat konkrét hibaüzeneteket, illetve egy-egy lehetséges megoldásukat ismerteti.  
+
+| Üzenet | Ok | Megoldás |   
+|----------|----------|----------|  
+| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.InvalidOperationException: {„Üzenet”:„A gép már<br>regisztrálva van egy másik fiókhoz. "} | A gép már be lett vezetve egy másik munkaterületre a frissítéskezeléshez | Végezze el a régi összetevők tisztítását [a hibrid runbook-csoport törlésével](../automation/automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|  
+| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---><br>System.Net.WebException: Az alapul szolgáló kapcsolat<br>megszakadt: Váratlan hiba<br>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:<br>Az ügyfél és a kiszolgáló nem képes kommunikálni,<br>mert nem rendelkeznek közös algoritmussal | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](../automation/automation-offering-get-started.md#network-planning)|  
+| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](../automation/automation-offering-get-started.md#network-planning)| 
+| Az <wsid>.oms.opinsights.azure.com szolgáltatás által bemutatott tanúsítványt<br>nem a Microsoft szolgáltatásaihoz használt<br>hitelesítésszolgáltató bocsátotta ki. Kérjük, érdeklődjön<br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a<br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](../automation/automation-offering-get-started.md#network-planning)|  
+| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Nem sikerült önaláírt tanúsítványt létrehozni. ---><br>System.UnauthorizedAccessException: A hozzáférés megtagadva. | Hiba az önaláírt tanúsítvány létrehozásakor | Ellenőrizze, hogy a rendszerfióknak<br>van-e olvasási hozzáférése a következő mappához:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
 
 ### <a name="how-do-i-troubleshoot-update-deployments"></a>Hogyan háríthatom el a frissítéstelepítési hibákat?
 Megtekintheti a frissítések telepítéséért felelős runbook eredményeit. Ezek az ezt a megoldást támogató OMS-munkaterülettel összekapcsolt Automation-fiókjának Feladatok paneljén, az ütemezett frissítéstelepítésekben találhatóak.  A **Patch-MicrosoftOMSComputer** runbook egy gyermekrunbook, amely egy megadott, felügyelt számítógépet céloz meg. A részletes stream áttekintése részletes információt jelenít meg erről a telepítésről.  A kimenet megjeleníti, mely szükséges frissítések alkalmazhatóak, valamint mutatja a letöltési állapotot, a telepítési állapotot és további részleteket.<br><br> ![Frissítéstelepítési feladat állapota](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>

@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/14/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 153b4cc668fdebd28cec5f3d95093a595064202a
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 6d14719938af0ce825955389824441e111024869
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Node.js-alkalmazás létrehozása a Graph API-val
@@ -141,11 +141,13 @@ module.exports = config;
 
 Most visszaléphet az Adatkezelőbe az Azure Portalon, és megtekintheti, lekérdezheti, módosíthatja, és használatba veheti az új gráfadatokat.
 
-Az Adatkezelőben az új adatbázis a **Gyűjtemények** ablaktáblán jelenik meg. Bontsa ki a **graphdb**, **graphcoll** pontokat, és kattintson a **Gráf** lehetőségre.
+Az Adatkezelőben az új adatbázis a **Gráfok** ablaktáblán jelenik meg. Bontsa ki az adatbázist, majd a gyűjteményt, és kattintson a **Gráf** elemre.
 
-A mintaalkalmazás által létrehozott adatokat a **Gráfok** ablaktáblán találja.
+A mintaalkalmazás által létrehozott adatok a **Gráf** lap következő panelén jelennek meg, amikor a **Szűrő alkalmazása** gombra kattint.
 
-## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
+A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: `.has('firstName', 'Thomas')`. Vegye figyelembe, hogy ez az érték megkülönbözteti a kis- és nagybetűket.
+
+## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

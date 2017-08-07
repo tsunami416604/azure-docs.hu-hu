@@ -14,7 +14,7 @@ A szolgáltatói szerződések és a szolgáltatáskészletek eltérései miatt 
 | **Dev-test vagy a koncepció igazolása**   | Basic                  |
 |                                    |                        |
 
-Ha a régi termékváltozatokat használja, a termelési termékváltozatnak a Standard és a Nagy teljesítményű termékváltozatot javasoljuk. További információ a régi termékváltozatokról: [Átjáró termékváltozatai (régi)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
+Ha a régi termékváltozatokat használja, a termelési termékváltozatnak a Standard és a Nagy teljesítményű termékváltozatot javasoljuk. További információ a régi termékváltozatokról: [Átjáró termékváltozatai (örökölt termékváltozatok)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
 
 ###  <a name="feature"></a>Átjáró termékváltozatainak szolgáltatáskészletei
 

@@ -1,9 +1,9 @@
 
-* Az M-sorozat nyújtja a legnagyobb processzorszámot (legfeljebb 128 vCPU) és a legnagyobb mértékű memóriát (legfeljebb 2,0 TiB) a felhőben lévő összes virtuális gép közül.  Ideális a rendkívül nagy méretű adatbázisokhoz vagy olyan egyéb alkalmazásokhoz, amelyek ki tudják használni a nagy processzorszámot és a nagy memóriamennyiséget.
+* Az M-sorozat biztosítja a legnagyobb vCPU-számot (legfeljebb 128 vCPU) és a legtöbb memóriát (legfeljebb 2,0 TiB) a felhőben lévő összes virtuális gép közül.  Ideális a rendkívül nagy méretű adatbázisokhoz vagy olyan egyéb alkalmazásokhoz, amelyek ki tudják használni a nagy vCPU-számot és a nagy memóriamennyiséget.
 
-* A Dv2-, a D- és a G-sorozat, valamint ezek DS/GS megfelelői gyorsabb processzort, jobb helyi lemezteljesítményt vagy több memóriát igényló alkalmazásokhoz ideálisak.  Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
+* A Dv2-, a D- és a G-sorozat, valamint ezek DS/GS megfelelői gyorsabb virtuális processzort (vCPU), jobb ideiglenes tárteljesítményt vagy több memóriát igényló alkalmazásokhoz ideálisak.  Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
 
-* A D-sorozat virtuális gépei nagyobb számítási teljesítményt és ideiglenes lemezteljesítményt igénylő alkalmazások futtatására lettek kialakítva. A D-sorozat virtuális gépei gyorsabb processzorokat, nagyobb magonkénti memóriaarányt, valamint az ideiglenes lemezteljesítményhez SSD meghajtókat kínálnak. Részletekért lásd az Azure blogon megjelent bejelentést [a D-sorozat új virtuális gépméreteit](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) ismertető bejegyzésben.
+* A D-sorozat virtuális gépei nagyobb számítási teljesítményt és ideiglenes lemezteljesítményt igénylő alkalmazások futtatására lettek kialakítva. A D-sorozat virtuális gépei gyorsabb processzorokat, nagyobb memória–vCPU arányt, valamint az ideiglenes tároláshoz SSD meghajtókat kínálnak. Részletekért lásd az Azure blogon megjelent bejelentést [a D-sorozat új virtuális gépméreteit](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) ismertető bejegyzésben.
 
 * A Dv2-sorozat az eredeti D-sorozat újabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációs 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzoron alapul, és a teljesítménye az Intel Turbo Boost Technology 2.0 alkalmazásával akár 3,1 GHz-re is növelhető. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
@@ -14,14 +14,15 @@ ACU: 160–190
 
 Az ESv3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) processzoron alapulnak, amelynek az órajele akár 3,5 GHz-re is növelhető az Intel Turbo Boost Technology 2.0 alkalmazásával, valamint prémium szintű tárolás használatára is képes. Az Ev3-sorozat példányai ideálisak a memóriaigényes vállalati alkalmazásokhoz.
 
-| Méret             | vCPU | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
-|------------------|-----------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
-| Standard_E2s_v3  | 2         | 16          | 32             | 4              | 4,000 / 32 (50)                                                       | 3,200 / 48                                | 2/közepes                                   |
-| Standard_E4s_v3  | 4         | 32          | 64             | 8              | 8,000 / 64 (100)                                                      | 6,400 / 96                                | 2/közepes                                   |
-| Standard_E8s_v3  | 8         | 64          | 128            | 16             | 16,000 / 128 (200)                                                    | 12,800 / 192                              | 4/magas                                       |
-| Standard_E16s_v3 | 16        | 128         | 256            | 32             | 32,000 / 256 (400)                                                    | 25,600 / 384                              | 8/magas                                       |
-| Standard_E32s_v3 | 32        | 256         | 512            | 32             | 64,000 / 512 (800)                                                    | 51,200 / 768                              | 8/rendkívül magas                             |
-| Standard_E64s_v3 | 64        | 432         | 864            | 32             | 128,000/1024 (1600)                                                   | 80,000 / 1200                             | 8/rendkívül magas                             |
+
+| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+|------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
+| Standard_E2s_v3  | 2      | 16          | 32             | 4              | 4,000 / 32 (50)                                                       | 3,200 / 48                                | 2/közepes                                   |
+| Standard_E4s_v3  | 4      | 32          | 64             | 8              | 8,000 / 64 (100)                                                      | 6,400 / 96                                | 2/közepes                                   |
+| Standard_E8s_v3  | 8      | 64          | 128            | 16             | 16,000 / 128 (200)                                                    | 12,800 / 192                              | 4/magas                                       |
+| Standard_E16s_v3 | 16     | 128         | 256            | 32             | 32,000 / 256 (400)                                                    | 25,600 / 384                              | 8/magas                                       |
+| Standard_E32s_v3 | 32     | 256         | 512            | 32             | 64,000 / 512 (800)                                                    | 51,200 / 768                              | 8/rendkívül magas                             |
+| Standard_E64s_v3 | 64     | 432         | 864            | 32             | 128,000/1024 (1600)                                                   | 80,000 / 1200                             | 8/rendkívül                                  |
 
 
 
@@ -33,21 +34,22 @@ Az Ev3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) pro
 
 Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Prémium szintű tárolólemezek használatához ESv3-méreteket vegyen igénybe. Az Esv3-méretek díjszabása és számlázási mérőszámai megegyeznek az Ev3-sorozatéval. 
 
-| Méret             | vCPU | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
-|------------------|-----------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
-| Standard_E2_v3  | 2         | 16          | 32             | 4              | 4,000 / 32 (50)                                                       | 3,200 / 48                                | 2/közepes                                   |
-| Standard_E4_v3  | 4         | 32          | 64             | 8              | 8,000 / 64 (100)                                                      | 6,400 / 96                                | 2/közepes                                   |
-| Standard_E8_v3  | 8         | 64          | 128            | 16             | 16,000 / 128 (200)                                                    | 12,800 / 192                              | 4/magas                                       |
-| Standard_E16_v3 | 16        | 128         | 256            | 32             | 32,000 / 256 (400)                                                    | 25,600 / 384                              | 8/magas                                       |
-| Standard_E32_v3 | 32        | 256         | 512            | 32             | 64,000 / 512 (800)                                                    | 51,200 / 768                              | 8/rendkívül magas                             |
-| Standard_E64_v3 | 64        | 432         | 864            | 32             | 128,000/1024 (1600)                                                   | 80,000 / 1200                             | 8/rendkívül magas                             |
+
+| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
+|-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
+| Standard_E2_v3  | 2         | 16          | 50             | 4              | 3000/46/23                                               | 2/közepes                 |
+| Standard_E4_v3  | 4         | 32          | 100            | 8              | 6000/93/46                                               | 2/közepes                 |
+| Standard_E8_v3  | 8         | 64          | 200            | 16             | 12000/187/93                                             | 4/magas                     |
+| Standard_E16_v3 | 16        | 128         | 400            | 32             | 24000/375/187                                            | 8/magas                     |
+| Standard_E32_v3 | 32        | 256         | 800            | 32             | 48000/750/375                                            | 8/rendkívül magas           |
+| Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8/rendkívül magas           |
 
 
 ## <a name="m-series"></a>M-sorozat*
 
 ACU: 160–180
 
-| Méret            | vCPU | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
 | Standard_M64ms  | 64   | 1792        | 2048           | 32             | 80,000 / 800 (6348)       | 40,000 / 1,000                            | 8 / 16000          |
 | Standard_M128s** | 128  | 2048        | 4096           | 64             | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 25000          |
@@ -64,7 +66,7 @@ ACU: 160–180
 
 ACU: 180–240
 
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_GS1 |2 |28 |56 |4 |10,000 / 100 (264) |5,000 / 125 |2 / 2000 |
 | Standard_GS2 |4 |56 |112 |8 |20,000 / 200 (528) |10,000 / 250 |2 / 4000 |
@@ -83,7 +85,7 @@ ACU: 180–240
 
 ACU: 180–240
 
-| Méret         | Processzormagok | Memória: GiB | Helyi SSD: GiB | Helyi lemez max. teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 4 / 4 x 500                       | 2 / 2000                     |
 | Standard_G2  | 4         | 56          | 768            | 12000 / 187 / 93                                         | 8 / 8x500                       | 2 / 4000                     |
@@ -99,7 +101,7 @@ ACU: 180–240
 
 ACU: 210–250
 
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2 |2 |14 |28 |4 |8,000 / 64 (72) |6,400 / 96 |2 / 1500 |
 | Standard_DS12_v2 |4 |28 |56 |8 |16,000 / 128 (144) |12,800 / 192 |4 / 3000 |
@@ -119,7 +121,7 @@ ACU: 210–250
 
 ACU: 210–250
 
-| Méret              | Processzormagok | Memória: GiB | Helyi SSD: GiB | Helyi lemez max. teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret              | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11_v2   | 2         | 14          | 100            | 6000 / 93 / 46                                           | 4 / 4x500                         | 2 / 1500                     |
 | Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 8 / 8x500                         | 4 / 3000                     |
@@ -137,7 +139,7 @@ ACU: 210–250
 
 ACU: 160
 
-| Méret | Processzormagok | Memória: GiB | Helyi SSD: GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és helyi lemezteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11 |2 |14 |28 |4 |8,000 / 64 (72) |6,400 / 64 |2 / 1000 |
 | Standard_DS12 |4 |28 |56 |8 |16,000 / 128 (144) |12,800 / 128 |4 / 2000 |
@@ -151,7 +153,7 @@ ACU: 160
 
 ACU: 160
 
-| Méret         | Processzormagok | Memória: GiB | Helyi SSD: GiB | Helyi lemez max. teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 4 / 4x500                         | 2 / 1000                     |
 | Standard_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 8 / 8x500                         | 4 / 2000                     |

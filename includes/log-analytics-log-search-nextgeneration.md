@@ -1,0 +1,2 @@
+>[!NOTE]
+> Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](../articles/log-analytics/log-analytics-log-search-upgrade.md), akkor a következő lekérdezéseket át kell alakítani. A fordításhoz a [nyelvátalakítót](../articles/log-analytics/log-analytics-log-search-transition.md#language-converter) használhatja.

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: terminal
 ms.topic: hero-article
-ms.date: 07/14/2017
+ms.date: 07/27/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: c999eb5d6b8e191d4268f44d10fb23ab951804e7
-ms.openlocfilehash: 82ddc351359318dab82c95d3e3b9b97ba3e3b4a8
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 1749c4233e2b90f0a207033276b31093f7bf667f
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/17/2017
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
@@ -66,6 +66,9 @@ Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell len
 
 3. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](http://tinkerpop.apache.org/docs/3.2.4/tutorials/getting-started/) elindításához.
 4. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
+
+    > [!TIP]
+    > Ha a rendszer `No appenders could be found for logger` hibát ad vissza, győződjön meg arról, hogy frissítette a szerializáló értékét a remote-secure.yaml fájlban a 2. lépésben leírtak szerint. 
 
 Remek! Most, hogy befejeztük a beállítást, futtassunk néhány konzolparancsot!
 

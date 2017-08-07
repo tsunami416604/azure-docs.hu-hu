@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/30/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 1571d30890a428fb73d31861c4f1ae395f9de374
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: a863cf3ad08040906850f64db6505f30bcfa72eb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
@@ -59,7 +58,7 @@ Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó 
    > Az űrlapon a mintaadatbázist kell kiválasztania, mivel a rövid útmutató hátralévő részében ezt használjuk majd.
    > 
 
-4. Töltse ki az SQL-kiszolgáló (logikai kiszolgáló) űrlapját a következő adatokkal az előző képen látható módon:   
+4. A **Server** (Kiszolgáló) területen kattintson a **Configure required settings** (Kötelező beállítások konfigurálása) elemre, majd töltse ki az SQL-kiszolgáló (logikai kiszolgáló) űrlapját a következő adatokkal a következő képen látható módon:   
 
    | Beállítás       | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 

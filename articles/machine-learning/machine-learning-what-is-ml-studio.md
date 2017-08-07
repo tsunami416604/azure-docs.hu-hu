@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/20/2017
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
-ms.openlocfilehash: b8115f1fb72b0ba89fd0c8afa3358878a0fab92b
-ms.lasthandoff: 12/14/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 70a1d0acb8ec9bbb591f696281ea5e975b443a15
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
@@ -78,7 +78,7 @@ A kísérletek adathalmazokból állnak, amelyek adatokat szolgáltatnak az elem
 * A modulok összes bemeneti portjának rendelkeznie kell valamilyen kapcsolattal az adatfolyamhoz
 * Minden modul összes szükséges paraméterét meg kell adni
 
-A kísérleteket létrehozhatja nulláról, vagy egy meglévő mintakísérletet sablonként használva További információért tekintse meg az [Új kísérletek létrehozása a mintakísérletek használatával](machine-learning-sample-experiments.md) című cikket.
+A kísérleteket létrehozhatja nulláról, vagy egy meglévő mintakísérletet sablonként használva További információkért lásd: [Copy example experiments to create new machine learning experiments](machine-learning-sample-experiments.md) (Új Machine Learning-kísérletek létrehozása példakísérletek másolásával).
 
 Egy egyszerű kísérlet létrehozására láthat példát az [Egyszerű kísérlet létrehozása az Azure Machine Learning Studio eszközben](machine-learning-create-experiment.md) című cikkben.
 

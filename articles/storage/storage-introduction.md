@@ -12,14 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/24/2017
+ms.date: 07/26/2017
 ms.author: marsma
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 1cab34785d6e4f7751245ebf77b29fa8dc3c685b
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 98670b60daca7091e09ce2ab03cf2eaff015070e
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/27/2017
 
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
@@ -110,13 +109,19 @@ A méretezhető alkalmazások tervezésekor az alkalmazás összetevői gyakran 
 Egy tárfiók tetszőleges számú üzenetsort tartalmazhat. Egy üzenetsor a tárfiók kapacitásán belül korlátlan számú üzenetet tartalmazhat. Az egyes üzenetek akár a 64 KB-os méretet is elérhetik.
 
 ## <a name="file-storage"></a>File Storage
-Az Azure File Storage felhőalapú SMB-fájlmegosztásokat kínál, így költséges újraírások nélkül, gyorsan megoldható a fájlmegosztásra támaszkodó örökölt alkalmazások áttelepítése az Azure-ra. Az Azure File Storage szolgáltatással az Azure virtuális gépeken vagy felhőszolgáltatásában üzemelő alkalmazások fájlmegosztást csatlakoztathatnak a felhőben. Ez a megosztás hasonló ahhoz a csatlakoztatott SMB-megosztáshoz, amelyet az asztali alkalmazások használnak. Ezután bármennyi alkalmazás-összetevő egyszerre csatlakoztathatja a File Storage-megosztást, és hozzá is férhet.
+Az Azure Files szolgáltatás segítségével magas rendelkezésre állású hálózati fájlmegosztásokat hozhat létre, amelyek a szabványos kiszolgálói üzenetblokk (SMB) protokollon keresztül érhetőek el. Ez azt jelenti hogy ugyanazokhoz a fájlokhoz több virtuális gép is hozzáférhet olvasási és írási jogosultsággal. A fájlokat a REST-felület vagy a Storage klienskódtáraival is olvashatja.
 
-Mivel a File Storage-megosztás egy szabványos SMB-fájlmegosztás, az Azure-ban futó alkalmazások a fájlrendszer adatátviteli API-jain keresztül férhetnek hozzá a megosztás adataihoz. A fejlesztők épp ezért meglévő kódjaik és képességeik felhasználásával áttelepíthetik az alkalmazásokat. Az informatikai szakemberek az Azure-alkalmazások rendszergazdai feladatainak részeként PowerShell-parancsmagokkal hozhatják létre, csatlakoztathatják és kezelhetik a File Storage-megosztásokat.
+Az egyik dolog, ami megkülönbözteti az Azure File Storage tárolót a fájlok a vállalati fájlmegosztásokon való tárolásától, hogy a fájlokat a világ bármely pontjáról elérheti a rájuk mutató URL-címekkel, amelyek közös hozzáférésű jogosultságkód- (SAS-) tokenekkel rendelkeznek. SAS-tokeneket Ön is létrehozhat: ezek határozott ideig biztosítanak egyedi hozzáférést a privát objektumokhoz.
 
-Az egyéb Azure Storage-szolgáltatásokhoz hasonlóan a File Storage is közzétesz egy REST API-t egy megosztás adatainak eléréséhez. A helyszíni alkalmazások hívhatják a File Storage REST API-jának meghívásával érhetik el egy fájlmegosztás adatait. Épp ezért egy vállalat dönthet úgy, hogy néhány örökölt alkalmazást áttelepít az Azure-ra, míg más alkalmazásokat továbbra is a szervezeten belül futtat. Vegye figyelembe, hogy a fájlmegosztások csatlakoztatása csak az Azure-ban futó alkalmazások számára lehetséges. A helyszíni alkalmazások csak a REST API-n keresztül férhetnek hozzá a fájlmegosztáshoz.
+A fájlmegosztások számos gyakori forgatókönyvhöz használhatók:
 
-Az elosztott alkalmazások is használhatják a File Storage szolgáltatást a hasznos alkalmazásadatok, valamint a fejlesztési és teszteszközök tárolására és megosztására. Egy alkalmazás például tárolhat konfigurációs fájlokat és diagnosztikai adatokat (naplókat, metrikákat és összeomlási memóriaképeket) egy File Storage-megosztásban, hogy több virtuális gép vagy szerepkör is elérhesse őket. A fejlesztők és rendszergazdák az alkalmazások felépítéséhez és kezeléséhez szükséges segédprogramokat tárolhatnak a minden összetevő számára elérhető File Storage-megosztásban, így nem szükséges minden virtuális gépre és szerepkörpéldányra telepíteni őket.
+* Számos helyszíni alkalmazás használ fájlmegosztásokat. Ezzel a szolgáltatással könnyebb migrálni azokat az alkalmazásokat, amelyek az Azure-ban osztják meg az adatokat. Ha a fájlmegosztást ugyanarra a meghajtóhelyre csatlakoztatja, amelyet a helyszíni alkalmazás használ, az alkalmazás fájlmegosztáshoz kapcsolódó része minimális vagy semennyi módosítással használható.
+
+* A konfigurációs fájlok fájlmegosztásokon tárolhatók, és több virtuális gépről is elérhetők. A több fejlesztő által egy csoportban használt eszközök és segédprogramok is tárolhatók fájlmegosztásokon, így mindenki elérheti őket, és mindenki ugyanazt a verziót használhatja.
+
+* A diagnosztikai naplók, metrikák és összeomlási memóriaképek is a fájlmegosztásra írható, és később onnan feldolgozható és elemezhető adattípusok közé tartoznak.
+
+Jelenleg az Active Directory-alapú hitelesítés és a hozzáférés-vezérlési listák (ACL-ek) még nem támogatottak, azonban a későbbiekben ez is megvalósul majd. A fájlmegosztáshoz való hozzáférés a tárfiók hitelesítő adataival hitelesíthető. Ez azt jelenti, hogy bárki, akinél a fájlmegosztás csatlakoztatva van, teljes írási/olvasási jogosultsággal rendelkezik rajta.
 
 ## <a name="access-to-blob-table-queue-and-file-resources"></a>Hozzáférés a Blob-, Table-, Queue- és File-erőforrásokhoz
 Alapértelmezés szerint csak a tárfiók tulajdonosa férhet hozzá a tárfiók erőforrásaihoz. Az adatok biztonsága érdekében a fiók erőforrásai felé irányuló összes kérelmet hitelesíteni kell. A hitelesítés megosztott kulcsos modellen alapszik. A blobokat beállíthatja úgy is, hogy támogassák a névtelen hitelesítést.

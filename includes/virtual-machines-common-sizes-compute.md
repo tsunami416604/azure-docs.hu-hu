@@ -1,16 +1,16 @@
 <!-- F-series, Fs-series* -->
 
-F-series is based on the 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) processor, which can achieve clock speeds as high as 3.1 GHz with the Intel Turbo Boost Technology 2.0. This is the same CPU performance as the Dv2-series of VMs.  At a lower per-hour list price, the F-series is the best value in price-performance in the Azure portfolio based on the Azure Compute Unit (ACU) per core. 
+Az F-sorozat a legújabb generációs 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzoron alapul, amelynek az órajele akár 3,1 GHz-re is növelhető az Intel Turbo Boost Technology 2.0 alkalmazásával. Ez ugyanakkora teljesítményt jelent, mint a Dv2-sorozat virtuális gépei esetében.  Az alacsonyabb óránkénti listaáron elérhető F-sorozat képviseli a legjobb ár–teljesítmény arányt az Azure-portfólióban az egy vCPU-ra jutó Azure-alapú számítási egységek (Azure Compute Unit, ACU) alapján. 
 
-F-series VMs are an excellent choice for workloads that demand faster CPUs but do not need as much memory or local SSD per CPU core.  Workloads such as analytics, gaming servers, web servers, and batch processing will benefit from the value of the F-series.
+Az F-sorozat virtuális gépei remek választásnak bizonyulnak az olyan számítási feladatokhoz, amelyekhez gyorsabb processzor szükséges, azonban kisebb a vCPU-nkénti memória- vagy ideiglenes tárterületigényük.  Az analitikai alkalmazások, játékkiszolgálók, webkiszolgálók vagy kötegelt feldolgozások számítási feladatai számára előnyös az F-sorozat használata.
 
-The Fs-series provides all the advantages of the F-series, in addition to Premium storage.
+Az Fs-sorozat az F-sorozat összes előnyét biztosítja a prémium szintű tárterület mellett.
 
-## <a name="fs-series"></a>Fs-series*
+## <a name="fs-series"></a>Fs-sorozat*
 
-ACU: 210 - 250
+ACU: 210–250
 
-| Size | CPU cores | Memory: GiB | Local SSD: GiB | Max data disks | Max cached and local disk throughput: IOPS / MBps (cache size in GiB) | Max uncached disk throughput: IOPS / MBps | Max NICs / Expected network performance (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |2 |4,000 / 32 (12) |3,200 / 48 |2 / 750 |
 | Standard_F2s |2 |4 |8 |4 |8,000 / 64 (24) |6,400 / 96 |2 / 1500 |
@@ -18,17 +18,18 @@ ACU: 210 - 250
 | Standard_F8s |8 |16 |32 |16 |32,000 / 256 (96) |25,600 / 384 |8 / 6000 |
 | Standard_F16s |16 |32 |64 |32 |64,000 / 512 (192) |51,200 / 768 |8 / 6000-12000 &#8224; |
 
-MBps = 10^6 bytes per second, and GiB = 1024^3 bytes.
+MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
-*The maximum disk throughput (IOPS or MBps) possible with a Fs series VM may be limited by the number, size and striping of the attached disk(s).  For details, see [Premium Storage: High-performance storage for Azure virtual machine workloads](../articles/storage/storage-premium-storage.md).
+*Az Fs-sorozatba tartozó virtuális gépek lehetséges maximális lemezteljesítményét (IOPS vagy MBps) a csatolt lemezek mennyisége, mérete és szétosztottsága befolyásolhatja.  Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/storage/storage-premium-storage.md) című cikket.
 
 
 <br>
-## <a name="f-series"></a>F-series
 
-ACU: 210 - 250
+## <a name="f-series"></a>F-sorozat
 
-| Size         | CPU cores | Memory: GiB | Local SSD: GiB | Max local disk throughput: IOPS / Read MBps / Write MBps | Max data disks / throughput: IOPS | Max NICs / Expected network performance (Mbps) |
+ACU: 210–250
+
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 2 / 2x500                         | 2 / 750                 |
 | Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 4 / 4x500                         | 2 / 1500                     |

@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 346e7abf862330afe64dc5685737a9301d7d861a
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 824f900545136428f6e377c52e2dda7e3ab97cfe
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
@@ -177,10 +177,14 @@ A [Fiók](#account) szakaszban olvashat a készletlefoglalási mód beállítás
 
 Ahhoz, hogy egyéni lemezképeket használhasson virtuálisgép-készletek kiépítéséhez, a felhasználói előfizetés készletlefoglalási móddal hozza létre Batch-fiókját. Ennek a módnak a használatakor a Batch-készletek abban az előfizetésben lesznek lefoglalva, amelyben a fiók található. A [Fiók](#account) szakaszban olvashat a készletlefoglalási mód beállításáról a Batch-fiók létrehozásakor.
 
-Egyéni rendszerkép használatához elő kell készítenie a rendszerképet annak normalizálásával. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Linux-rendszerképek előkészítéséről az [Azure-beli, Linux rendszerű virtuális gépek sablonként történő használathoz való rögzítését ismertető](../virtual-machines/linux/capture-image-nodejs.md) cikkben találhat. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Windows-rendszerképek előkészítéséről az [egyéni virtuálisgép-rendszerképek Azure PowerShell-lel való létrehozását ismertető](../virtual-machines/windows/tutorial-custom-images.md) cikkben találhat. A rendszerkép előkészítésekor tartsa szem előtt a következőket:
+Egyéni rendszerkép használatához elő kell készítenie a rendszerképet annak normalizálásával. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Linux-rendszerképek előkészítéséről az [Azure-beli, Linux rendszerű virtuális gépek sablonként történő használathoz való rögzítését ismertető](../virtual-machines/linux/capture-image-nodejs.md) cikkben találhat. További tudnivalókat az Azure-beli virtuális gépekről származó egyéni Windows-rendszerképek előkészítéséről az [egyéni virtuálisgép-rendszerképek Azure PowerShell-lel való létrehozását ismertető](../virtual-machines/windows/tutorial-custom-images.md) cikkben találhat. 
 
-- Ellenőrizze, hogy a Batch-készletek kiépítéséhez használt alap operációsrendszer-képen nincs-e semmilyen előre telepített Azure-bővítmény, például egyéni szkriptbővítmény. Ha a rendszerkép előre telepített bővítményt tartalmaz, az Azure problémába ütközhet a virtuális gép üzembe helyezése során.
-- Ügyeljen rá, hogy az Ön által biztosított alap operációsrendszer-kép az alapértelmezett ideiglenes meghajtót használja, mivel a Batch-csomópontügynök jelenleg ezt várja el.
+> [!IMPORTANT]
+> Az egyéni rendszerkép előkészítésekor tartsa szem előtt a következőket:
+> - Ellenőrizze, hogy a Batch-készletek kiépítéséhez használt alap operációsrendszer-képen nincs-e semmilyen előre telepített Azure-bővítmény, például egyéni szkriptbővítmény. Ha a rendszerkép előre telepített bővítményt tartalmaz, az Azure problémába ütközhet a virtuális gép üzembe helyezése során.
+> - Ügyeljen rá, hogy az Ön által biztosított alap operációsrendszer-kép az alapértelmezett ideiglenes meghajtót használja, mivel a Batch-csomópontügynök jelenleg ezt várja el.
+>
+>
 
 Virtuálisgép-konfigurációs készletek egyéni rendszerkép használatával való létrehozása esetén az egyéni virtuálismerevlemez-képek tárolásához szüksége lesz egy vagy több szabványos Azure Storage-tárfiókra. Az egyéni lemezképek blobként vannak tárolva. A készletek létrehozásakor az egyéni rendszerképekre való hivatkozáshoz a [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/add-a-pool-to-an-account#bk_vmconf) tulajdonság [osDisk](https://docs.microsoft.com/rest/api/batchservice/add-a-pool-to-an-account#bk_osdisk) tulajdonságához adja meg az egyéni virtuálismerevlemez-blobok URI-azonosítóját.
 

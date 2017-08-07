@@ -1,6 +1,6 @@
 Mielőtt hozzálát a művelethez, be kell jelentkeznie az Azure-fiókjába. A parancsmag kéri az Azure-fiók bejelentkezési hitelesítő adatait. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára. További információ: [A Windows PowerShell használata a Resource Managerrel](../articles/powershell-azure-resource-manager.md).
 
-Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
+A bejelentkezéshez nyissa meg emelt szintű jogosultságokkal a PowerShell-konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
 ```powershell
 Login-AzureRmAccount

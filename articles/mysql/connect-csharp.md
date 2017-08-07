@@ -1,6 +1,6 @@
 ---
 title: "Csatlakozás a MySQL-hez készült Azure Database-hez a C# segítségével | Microsoft Docs"
-description: "Ez a rövid útmutató egy C# (.Net) mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla."
+description: "Ez a rövid útmutató egy C# (.NET) mintakódot biztosít, amellyel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla."
 services: MySQL
 author: seanli1988
 ms.author: seal
@@ -12,10 +12,10 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: ffe3ae320a61031cf314cc1d70e0c093b033f85c
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: e0db2d0a59d62eebbb624a3ad32f19fa634ad5db
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
@@ -28,43 +28,9 @@ Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehoz
 - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Emellett a következőket kell elvégezni:
-- A [.NET-keretrendszer](https://www.microsoft.com/net/download) telepítése
-- A [Visual Studio](https://www.visualstudio.com/downloads/) telepítése
-- [ODBC-illesztő telepítése MySQL-hez](https://dev.mysql.com/downloads/connector/odbc/) 
-
-## <a name="install-visual-studio-and-net"></a>A Visual Studio és a .NET telepítése
-A jelen szakaszban ismertetett lépések feltételezik, hogy Ön rendelkezik .NET-fejlesztési tapasztalatokkal.
-
-### <a name="windows-net-framework-and-net-core"></a>**A Windows .NET-keretrendszer és a .NET Core**
-A Visual Studio 2017 Community egy minden funkcióval ellátott, bővíthető, ingyenes IDE, amellyel korszerű alkalmazásokat hozhat létre Android, iOS és Windows operációs rendszerekre, valamint webes illetve adatbázis-alkalmazásokhoz és felhőszolgáltatásokhoz. Telepítheti a teljes .NET-keretrendszert vagy csak a .NET Core-t. A rövid útmutatóban foglalt kódrészletek mindkettővel működnek. Ha a Visual Studio már telepítve van a számítógépén, a következő pár lépés kihagyható.
-
-1. Töltse le a [Visual Studio 2017 telepítőt](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
-2. Futtassa a telepítőt, és kövesse a telepítési utasításokat a telepítés befejezéséhez.
-
-### <a name="mac-os"></a>**Mac OS**
-Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a .NET Core projektet. A **brew**, az **OpenSSL** és a **.NET Core** telepítéséhez használja a következő parancsokat. 
-
-```bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew update
-brew install openssl
-mkdir -p /usr/local/lib
-ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-```
-
-Telepítse a .NET Core-t a macOS rendszeren. Töltse le a [hivatalos telepítőt](https://go.microsoft.com/fwlink/?linkid=843444). Ez a telepítő feltelepíti az eszközöket, és az elérési útra helyezi őket, így a .net elindítható a konzolról.
-
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a .NET Core projektet. A **.NET Core** telepítéséhez használja a következő parancsokat.
-
-```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-sudo apt-get update
-sudo apt-get install dotnet-dev-1.0.1
-```
-
+- A [.NET](https://www.microsoft.com/net/download) telepítése. A .NET-keretrendszer az adott platformon (Windows, Ubuntu Linux vagy macOS) történő telepítéséhez kövesse a hivatkozott cikk lépéseit. 
+- A [Visual Studio](https://www.visualstudio.com/downloads/) telepítése.
+- A [MySQL-hez készült ODBC-illesztő](https://dev.mysql.com/downloads/connector/odbc/) telepítése.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.

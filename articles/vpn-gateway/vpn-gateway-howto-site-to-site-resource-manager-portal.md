@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: cc0715b9f2c531ad493beec854202d2211a84daa
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 690aa3ddc6ec0889936565ea732cd714734abecb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
@@ -31,10 +31,8 @@ Ez a cikk bemutatja, hogyan használhatja az Azure Portalt egy helyek közötti 
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [Parancssori felület](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
-> * [Klasszikus portál (klasszikus)](vpn-gateway-site-to-site-create.md)
 > 
 >
-
 
 A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható létre a helyszíni hálózat és egy Azure-beli virtuális hálózat között egy IPsec/IKE (IKEv1 vagy IKEv2) VPN-alagúton keresztül. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. További információk a VPN-átjárókról: [Információk a VPN Gatewayről](vpn-gateway-about-vpngateways.md).
 
@@ -54,8 +52,8 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 
 * **Virtuális hálózat neve:** TestVNet1
 * **Címtér:** 
-    * 10.11.0.0/16
-    * 10.12.0.0/16 (nem kötelező ehhez a gyakorlathoz)
+  * 10.11.0.0/16
+  * 10.12.0.0/16 (nem kötelező ehhez a gyakorlathoz)
 * **Alhálózatok:**
   * Előtér: 10.11.0.0/24
   * Háttér: 10.12.0.0/24 (nem kötelező ehhez a gyakorlathoz)
@@ -87,7 +85,6 @@ A helyek közötti kapcsolatok létrehozásához nincs szükség DNS-re. Ha azon
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-s2s-rm-portal-include.md)]
 
-
 ## <a name="VNetGateway"></a>4. A VPN-átjáró létrehozása
 
 [!INCLUDE [vpn-gateway-add-gw-s2s-rm-portal](../../includes/vpn-gateway-add-gw-s2s-rm-portal-include.md)]
@@ -105,7 +102,6 @@ A helyszíni hálózaton a helyek közötti kapcsolatok létesítéséhez VPN-es
 - Megosztott kulcs. Ez ugyanaz a megosztott kulcs, amelyet a helyek közötti VPN-kapcsolat létrehozásakor ad meg. A példákban alapvető megosztott kulcsot használunk. Javasoljuk egy ennél összetettebb kulcs létrehozását.
 - A virtuális hálózati átjáró nyilvános IP-címe. A nyilvános IP-címet az Azure Portalon, valamint a PowerShell vagy a CLI használatával is megtekintheti. A VPN-átjáró nyilvános IP-címének Azure Portal használatával történő megkereséséhez válassza a **Virtual network gateways** (Virtuális hálózati átjárók) elemet, majd kattintson az átjárója nevére.
 
-
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 ## <a name="CreateConnection"></a>7. VPN-kapcsolat létrehozása
@@ -122,9 +118,17 @@ Hozzon létre egy helyek közötti VPN-kapcsolatot a virtuális hálózati átj�
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
+## <a name="how-to-reset-a-vpn-gateway"></a>VPN-átjáró alaphelyzetbe állítása
+
+Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több helyek közötti VPN-alagúton elveszíti a létesítmények közötti VPN-kapcsolatot. Ebben az esetben a helyszíni VPN-eszközei megfelelően működnek, de nem tudnak Ipsec-alagutakat létesíteni az Azure VPN Gateway átjárókkal. A lépéseket lásd: [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md).
+
+## <a name="how-to-change-a-gateway-sku-resize-a-gateway"></a>Az átjárók termékváltozatainak módosítása (átjáró átméretezése)
+
+Az átjárók termékváltozatainak módosításához szükséges lépéseket lásd: [Átjáró-termékváltozatok](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ## <a name="next-steps"></a>Következő lépések
 
-*  Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
-*  Információk a kényszerített bújtatásról: [Információk a kényszerített bújtatásról](vpn-gateway-forced-tunneling-rm.md)
-*  Információk a magas rendelkezésre állású aktív-aktív kapcsolatokról: [Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között](vpn-gateway-highlyavailable.md).
+* Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).
+* Információk a kényszerített bújtatásról: [Információk a kényszerített bújtatásról](vpn-gateway-forced-tunneling-rm.md).
+* Információk a magas rendelkezésre állású aktív-aktív kapcsolatokról: [Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között](vpn-gateway-highlyavailable.md).
+

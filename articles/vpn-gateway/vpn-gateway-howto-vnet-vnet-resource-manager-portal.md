@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/05/2017
+ms.date: 08/02/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 818f7756189ed4ceefdac9114a0b89ef9ee8fb7a
-ms.openlocfilehash: bf028b0e49833385837fa7bdd68f215ed27e0325
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 0293495a9cbdab1fc797d9948e4cbb7759b1ba54
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/14/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Virtuális hálózatok közötti VPN-átjárókapcsolat konfigurálása az Azure Portalon
 
 Ebből a cikkből megtudhatja, hogyan hozható létre VPN Gateway-kapcsolat virtuális hálózatok között. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. Amikor különböző előfizetésekről csatlakoztat virtuális hálózatokat, az előfizetéseket nem kell társítani ugyanazzal az Active Directory-bérlővel. 
 
-A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre és az Azure Portalra vonatkoznak az ugyanazon előfizetésben lévő virtuális hálózatok esetén. Ha a virtuális hálózatok különböző előfizetésekben találhatóak, nem hozhatja létre a kapcsolatot a portálon. Ehelyett használhatja a [PowerShellt](vpn-gateway-vnet-vnet-rm-ps.md) vagy a [parancssori felületet](vpn-gateway-howto-vnet-vnet-cli.md). Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
+A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak, és az Azure Portalt használják. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

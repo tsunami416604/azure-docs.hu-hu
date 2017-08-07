@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: da09e09bb0605da583716e125f5d961bfb7af0c7
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: b25f3dd41c8dc381258bb42d8802ba4b56e05903
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure-webapp teljesítményének figyelése
@@ -31,7 +30,7 @@ A figyelés konfigurálásához kétféle módon alakíthatja ki az alkalmazást
 * **Felépítési idő** – Telepíthet egy csomagot fejlesztés alatt álló alkalmazásába. Ez a lehetőség jóval sokoldalúbb. A standard csomagkészlet mellett kódolással testreszabhatja a telemetriát, vagy elküldheti saját telemetriáját. Naplózhat konkrét tevékenységeket vagy rögzíthet eseményeket alkalmazástartománya szemantikájának megfelelően. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Futási idő kialakítása az Application Insights segítségével
-Ha már futtat egy webappot az Azure-ban, a kéréseket és a hibák gyakoriságát a rendszer már figyeli. Az Application Insights hozzáadásával további figyelési funkciók érhetőek el, például a válaszidők figyelése, a függőségek hívásainak figyelése, az intelligens észlelés és a hatékony Analytics lekérdezési nyelv. 
+Ha már futtat egy webappot az Azure-ban, a kéréseket és a hibák gyakoriságát a rendszer már figyeli. Az Application Insights hozzáadásával további figyelési funkciók érhetők el, például a válaszidők figyelése, a függőségek hívásainak figyelése, az intelligens észlelés és a hatékony Log Analytics lekérdezési nyelv. 
 
 1. Webappja Azure-kezelőpaneljén válassza az **Application Insights** elemet.
    
@@ -102,7 +101,7 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
    
     [Testreszabhatja a kereséseket](app-insights-diagnostic-search.md).
 
-Telemetriája még hatékonyabb kereséséhez használja az [Analytics lekérdezési nyelvet](app-insights-analytics-tour.md).
+Telemetriája még hatékonyabb kereséséhez használja a [Log Analytics lekérdezési nyelvet](app-insights-analytics-tour.md).
 
 ## <a name="more-telemetry"></a>További telemetria
 

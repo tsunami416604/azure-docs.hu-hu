@@ -6,43 +6,38 @@ documentationcenter:
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/18/2017
+ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 80fd9d79652e4f0d9c4c524e3a762bcc3462bb53
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 49086b51e2db1aebed45746306ae14b6f1feb631
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/31/2017
 
 ---
 
-# <a name="create-your-first-azure-resource-manager-template"></a>Az első Azure-Resource Manager-sablon létrehozása
+# <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Az első Azure Resource Manager-sablon létrehozása ás üzembe helyezése
 Ez a témakör bemutatja azon lépéseket, amelyekkel elkészítheti az első Resource Manager-sablonját. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md). Ha már rendelkezik erőforrásokkal, és azokhoz kíván sablont használni, lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
 
-A sablonok létrehozásához és átalakításához JSON-szerkesztő szükséges. A [Visual Studio Code](https://code.visualstudio.com/) egy könnyen használható, nyílt forráskódú, platformfüggetlen kódszerkesztő. Egy bővítményével lehetővé teszi a Resource Manager-sablonok létrehozását és szerkesztését. Ez a témakör a VS Code használatát feltételezi, de használhat egyéb JSON-szerkesztőt is (pl. Visual Studio).
+A sablonok létrehozásához és átalakításához JSON-szerkesztő szükséges. A [Visual Studio Code](https://code.visualstudio.com/) egy könnyen használható, nyílt forráskódú, platformfüggetlen kódszerkesztő. A Resource Manager-sablonok létrehozásához kifejezetten javasoljuk a Visual Studio Code használatát. Ez a témakör a VS Code használatát feltételezi, de használhat egyéb JSON-szerkesztőt is (pl. Visual Studio).
 
-## <a name="get-vs-code-and-extension"></a>A VS Code és a bővítmény beszerzése
-1. Ha szükséges,a VS Code a következő címről telepíthető: [https://code.visualstudio.com/](https://code.visualstudio.com/).
+## <a name="prerequisites"></a>Előfeltételek
 
-2. Telepítse az [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) bővítményt. Ehhez jelenítse meg a gyorsmegnyitási listát (Ctrl+P), majd futtassa a következőt: 
+* Visual Studio Code. Ha szükséges, a következő címről telepíthető: [https://code.visualstudio.com/](https://code.visualstudio.com/).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-   ```
-   ext install msazurermtools.azurerm-vscode-tools
-   ```
+## <a name="create-template"></a>Sablon létrehozása
 
-3. A bővítmény engedélyezéséhez indítsa újra a VS Code alkalmazást, amikor a rendszer kéri.
+Kezdjük egy egyszerű sablonnal, amely egy tárfiókot helyez üzembe az előfizetésben.
 
-## <a name="create-blank-template"></a>Üres sablon létrehozása
+1. Válassza a **File** (Fájl) > **New File** (Új fájl) lehetőséget. 
 
-Kezdjük egy üres sablonnal, amely csak az alapvető szakaszokat tartalmazza.
-
-1. Hozzon létre egy fájlt. 
+   ![Új fájl](./media/resource-manager-create-first-template/new-file.png)
 
 2. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
 
@@ -50,248 +45,176 @@ Kezdjük egy üres sablonnal, amely csak az alapvető szakaszokat tartalmazza.
    {
      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
      "contentVersion": "1.0.0.0",
-     "parameters": {  },
-     "variables": {  },
-     "resources": [  ],
-     "outputs": {  }
-   }
-   ```
-
-3. Mentse ezt a fájlt **azuredeploy.json** néven. 
-
-## <a name="add-storage-account"></a>Tárfiók hozzáadása
-1. Egy tárfiók üzembe helyezéshez való meghatározásához adja hozzá azt a sablon **resources** (erőforrások) szakaszához. A tárfiókhoz elérhető értékek azonosításához tekintse meg a [tárfióksablonok referenciáját](/azure/templates/microsoft.storage/storageaccounts). Másolja a vágólapra a tárfiókhoz megjelenített JSON-t. 
-
-3. Másolja ezt a JSON-t a sablonja **resources** (erőforrások) szakaszába az alábbi példában látható módon: 
-
-   ```json
-   {
-     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.0",
-     "parameters": {  },
-     "variables": {  },
+     "parameters": {
+     },
+     "variables": {
+     },
      "resources": [
        {
-         "name": "string",
+         "name": "[concat('storage', uniqueString(resourceGroup().id))]",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-12-01",
+         "apiVersion": "2016-01-01",
          "sku": {
-           "name": "string"
+           "name": "Standard_LRS"
          },
-         "kind": "string",
-         "location": "string",
+         "kind": "Storage",
+         "location": "South Central US",
          "tags": {},
-         "properties": {
-           "customDomain": {
-             "name": "string",
-             "useSubDomain": boolean
-           },
-           "encryption": {
-             "services": {
-               "blob": {
-                 "enabled": boolean
-               }
-             },
-             "keySource": "Microsoft.Storage"
-           },
-           "accessTier": "string"
-         }
+         "properties": {}
        }
      ],
      "outputs": {  }
    }
    ```
 
-  A VS Code esetleg jelezheti, hogy a 2016-12-01 nem egy érvényes API-verzió. Ha a sablon referenciadokumentációjából származó verziószámot használ, figyelmen kívül hagyhatja ezt a figyelmeztetést. Ez a figyelmeztetés akkor látható, ha a séma nem lett frissítve az erőforrás-szolgáltatótól származó legutolsó verziószámmal. 
-  
-  A megelőző példában sok helyőrző érték és néhány olyan tulajdonság szerepel, amelyek nem feltétlenül szükségesek az Ön tárfiókjához.
+   A tárfiókok neveire több korlátozás vonatkozik, amelyek bonyolulttá teszik a megadásukat. A név 3–24 karakter hosszúságú lehet, csak számokból és kisbetűkből állhat, és egyedinek kell lennie. Az előző példa a [uniqueString](resource-group-template-functions-string.md#uniquestring) függvény használatával létrehoz egy kivonatértéket. A kivonatolt érték könnyebb értelmezése érdekében hozzáadja a *storage* (tárhely) előtagot. 
 
-## <a name="set-values-for-storage-account"></a>Értékek beállítása a tárfiókhoz
+3. Mentse ezt a fájlt **azuredeploy.json** néven egy helyi mappába.
 
-Készen áll arra, hogy értékeket állítson be a tárfiókjához. 
+   ![Sablon mentése](./media/resource-manager-create-first-template/save-template.png)
 
-1. Nézze meg újra a [tárfióksablonok referenciáját](/azure/templates/microsoft.storage/storageaccounts), ahonnan a JSON-t másolta. Számos táblát láthat, amelyek leírják a tulajdonságokat és megadják az elérhető értékeket. 
+## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-2. Figyelje meg, hogy a **properties** (tulajdonságok) elemen belüli **customDomain** (egyéni tartomány), **encryption** (titkosítás) és **accessTier** (hozzáférési szint) tulajdonságok nem szükségesként vannak jelölve. Előfordulhat, hogy ezek az értékek az Ön forgatókönyvei esetében fontosak, de ebben a példában az egyszerűség kedvéért távolítsa el őket.
+Készen áll a sablon üzembe helyezésére. A PowerShell vagy az Azure CLI használatával hozzon létre egy erőforráscsoportot. Ezután helyezze üzembe a tárfiókot az adott erőforráscsoporton.
 
-   ```json
-   "resources": [
-     {
-       "name": "string",
-       "type": "Microsoft.Storage/storageAccounts",
-       "apiVersion": "2016-12-01",
-       "sku": {
-         "name": "string"
-       },
-       "kind": "string",
-       "location": "string",
-       "tags": {},
-       "properties": {
-       }
-     }
-   ],
+* A PowerShell esetében használja az alábbi parancsokat a sablont tartalmazó könyvtárban:
+
+   ```powershell
+   Login-AzureRmAccount
+   
+   New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+   New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json
    ```
 
-3. A **kind** (altípus) elem jelenleg a „string” (karakterlánc) helyőrző értékre van állítva. A VS Code számos funkciót tartalmaz, amelyek segítségével értelmezheti a sablonban használandó értékeket. Megfigyelheti, hogy a VS Code érvénytelennek jelöli ezt az értéket. Ha a kurzort a „string” fölé helyezi, megjelenik a VS Code javaslata, amely szerint a **kind** érvényes értékei a következők lehetnek: `Storage` vagy `BlobStorage`. 
+* Az Azure CLI helyi telepítése esetében használja az alábbi parancsokat a sablont tartalmazó könyvtárban:
 
-   ![a VS Code javasolt értékeinek megjelenítése](./media/resource-manager-create-first-template/vs-code-show-values.png)
+   ```azurecli
+   az login
 
-   Az elérhető értékek megjelenítéséhez törölje az idézőjelek közötti karaktereket és nyomja le a **Ctrl+Szóköz** billentyűkombinációt. Válassza a **Storage** (Tároló) lehetőséget az elérhető lehetőségek közül.
-  
-   ![intellisense megjelenítése](./media/resource-manager-create-first-template/intellisense.png)
-
-   Ha nem a VS Code-ot használja, tekintse meg a tárfióksablonok referenciájának oldalát. Figyelje meg, hogy a leírás ugyanezeket az érvényes értékeket sorolja fel. Állítsa az elemet **Storage** (Tároló) értékre.
-
-   ```json
-   "kind": "Storage",
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
 
-A sablon most a következőképpen néz ki:
+Az üzembe helyezés után a tárfiók létrejön az erőforráscsoportban.
+
+## <a name="deploy-template-from-cloud-shell"></a>Sablon üzembe helyezése a Cloud Shellből
+
+Az Azure CLI-parancsokat a [Cloud Shell](../cloud-shell/overview.md) használatával is futtathatja a sablon üzembe helyezéséhez. Ehhez azonban először be kell töltenie a sablont a Cloud Shell fájlmegosztásába. Ha még nem használta a Cloud Shellt, a telepítésével kapcsolatban lásd [Az Azure Cloud Shell áttekintése](../cloud-shell/overview.md) című cikket.
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).   
+
+2. Válassza ki a Cloud Shell-erőforráscsoportot. A névminta a következő: `cloud-shell-storage-<region>`.
+
+   ![Erőforráscsoport kiválasztása](./media/resource-manager-create-first-template/select-cs-resource-group.png)
+
+3. Válassza ki a Cloud Shell tárfiókját.
+
+   ![Adattároló fiók kiválasztása](./media/resource-manager-create-first-template/select-storage.png)
+
+4. Válassza a **Files** (Fájlok) lehetőséget.
+
+   ![Fájlok kiválasztása](./media/resource-manager-create-first-template/select-files.png)
+
+5. Válassza ki a Cloud Shell fájlmegosztását. A névminta a következő: `cs-<user>-<domain>-com-<uniqueGuid>`.
+
+   ![Fájlmegosztás kiválasztása](./media/resource-manager-create-first-template/select-file-share.png)
+
+6. Válassza az **Add directory** (Könyvtár hozzáadása) lehetőséget.
+
+   ![Könyvtár hozzáadása](./media/resource-manager-create-first-template/select-add-directory.png)
+
+7. Nevezze el a könyvtárat **templates** (sablonok) néven, és válassza az **Okay** (OK) gombot.
+
+   ![Könyvtár elnevezése](./media/resource-manager-create-first-template/name-templates.png)
+
+8. Jelölje ki az új könyvtárat.
+
+   ![Könyvtár kijelölése](./media/resource-manager-create-first-template/select-templates.png)
+
+9. Válassza a **Feltöltés** lehetőséget.
+
+   ![Feltöltés kiválasztása](./media/resource-manager-create-first-template/select-upload.png)
+
+10. Keresse meg és töltse fel a sablont.
+
+   ![Fájl feltöltése](./media/resource-manager-create-first-template/upload-files.png)
+
+11. Nyissa meg a parancssort.
+
+   ![Cloud Shell megnyitása](./media/resource-manager-create-first-template/start-cloud-shell.png)
+
+12. Írja be a következő parancsokat a Cloud Shellbe:
+
+   ```azurecli
+   az group create --name examplegroup --location "South Central US"
+   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
+   ```
+
+Az üzembe helyezés után a tárfiók létrejön az erőforráscsoportban.
+
+## <a name="customize-the-template"></a>A sablon testreszabása
+
+A sablon jól működik, de nem rugalmas. Minden esetben üzembe helyez egy helyileg redundáns tárolót az USA déli középső régiójában. A név minden esetben *storage* lesz, amelyet egy kivonatérték követ. Ha lehetővé kívánja tenni a sablont különféle forgatókönyvekben való használatát, adjon hozzá paramétereket.
+
+Az alábbi példában a paraméterek szakasz látható két paraméterrel. Az első paraméterrel (`storageSKU`) a redundancia típusát adhatja meg. A paraméter a tárfiókok esetében érvényes értékekre korlátozza a beadható értékeket. Emellett egy alapértelmezett értéket is megad. A második paraméterrel (`storageNamePrefix`) megadható egy legfeljebb 11 hosszúságú karakterkorlát. A paraméter megad egy alapértelmezett értéket.
 
 ```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {  },
-  "variables": {  },
-  "resources": [
-    {
-      "name": "string",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
-      "sku": {
-        "name": "string"
-      },
-      "kind": "Storage",
-      "location": "string",
-      "tags": {},
-      "properties": {
-      }
+"parameters": {
+  "storageSKU": {
+    "type": "string",
+    "allowedValues": [
+      "Standard_LRS",
+      "Standard_ZRS",
+      "Standard_GRS",
+      "Standard_RAGRS",
+      "Premium_LRS"
+    ],
+    "defaultValue": "Standard_LRS",
+    "metadata": {
+      "description": "The type of replication to use for the storage account."
     }
-  ],
-  "outputs": {  }
-}
-```
-
-## <a name="add-template-function"></a>Sablonfüggvény hozzáadása
-
-A sablonban függvények használatával egyszerűsítheti a sablon szintaxisát, valamint kinyerheti azokat az értékeket, amelyek csak a sablon üzembe helyezésekor érhetők el. A sablonokban használható függvények teljes listáját lásd: [Az Azure Resource Manager-sablonok függvényei](resource-group-template-functions.md).
-
-Annak meghatározásához, hogy a tárfiók ugyanazon a helyen üzemeljen, mint az erőforráscsoport, állítsa a **location** (hely) tulajdonságot a következő értékre:
-
-```json
-"location": "[resourceGroup().location]",
-```
-
-A VS Code ebben az esetben is javasol elérhető függvényeket. 
-
-![függvények megjelenítése](./media/resource-manager-create-first-template/show-functions.png)
-
-Figyelje meg, hogy a függvény szögletes zárójelek közt jelenik meg. A [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) függvény a következő tulajdonsággal rendelkező objektumot adja vissza: `location`. Az erőforráscsoport tartalmazza a megoldás összes kapcsolódó erőforrását. A hely tulajdonságot szoftveresen kötött módon is megadhatná, például az „USA középső régiója” érték használatával, de ez azt jelentené, hogy a más régiókban való üzembe helyezéshez manuálisan módosítania kellene a sablont. A `resourceGroup` függvény használatával a sablon egyszerűen üzembe helyezhető egy másik régióban lévő erőforráscsoportban.
-
-A sablon most a következőképpen néz ki:
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {  },
-  "variables": {  },
-  "resources": [
-    {
-      "name": "string",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
-      "sku": {
-        "name": "string"
-      },
-      "kind": "Storage",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "properties": {
-      }
+  },
+  "storageNamePrefix": {
+    "type": "string",
+    "maxLength": 11,
+    "defaultValue": "storage",
+    "metadata": {
+      "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
     }
-  ],
-  "outputs": {  }
-}
+  }
+},
 ```
 
-## <a name="add-parameters-and-variables"></a>Paramétereket és változók hozzáadása
-Már csak két értéket kell megadni a sablonhoz: a **name** (név) és az **sku.name** (SKU-név) értékét. Ezekhez az értékekhez olyan paramétereket kell adni, amelyek lehetővé teszik az értékek testreszabását az üzembe helyezés során. 
+A változók szakaszban adjon meg egy `storageName` nevű változót. Ez a paraméterekből származó előtagértéket és a [uniqueString](resource-group-template-functions-string.md#uniquestring) függvényből származó kivonatértéket kombinálja. A [toLower](resource-group-template-functions-string.md#tolower) függvény használatával az összes karaktert kisbetűs karakterekké alakítja.
 
-A tárfiókok neveire több korlátozás vonatkozik, amelyek bonyolulttá teszik a megadásukat. A név 3–24 karakter hosszúságú lehet, csak számokból és kisbetűkből állhat, és egyedinek kell lennie. Ahelyett, hogy megpróbálna kitalálni egy, a korlátozásoknak megfelelő egyedi nevet, használja a [uniqueString](resource-group-template-functions-string.md#uniquestring) függvényt egy kivonatolt érték létrehozásához. Ahhoz, hogy a kivonatolt érték könnyebben értelmezhető legyen, adjon hozzá egy előtagot, amely alapján az üzembe helyezés után felismerhető lesz tárfiókként. 
+```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
+```
 
-1. Az Ön elnevezési konvencióinak megfelelő előtag megadásához lépjen a sablon **parameters** (paraméterek) szakaszára. Adjon egy olyan paramétert a sablonhoz, amely elfogadja a tárfiók nevéhez adott előtagot:
+Az új értékek a tárfiókra való alkalmazásához módosítsa az erőforrás definícióját:
 
-   ```json
-   "parameters": {
-     "storageNamePrefix": {
-       "type": "string",
-       "maxLength": 11,
-       "defaultValue": "storage",
-       "metadata": {
-         "description": "The value to use for starting the storage account name."
-       }
-     }
-   },
-   ```
+```json
+"resources": [
+  {
+    "name": "[variables('storageName')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2016-01-01",
+    "sku": {
+      "name": "[parameters('storageSKU')]"
+    },
+    "kind": "Storage",
+    "location": "[resourceGroup().location]",
+    "tags": {},
+    "properties": {}
+  }
+],
+```
 
-  Az előtag legfeljebb 11 karakter hosszúságú lehet, mert a `uniqueString` 13 karaktert ad vissza, és a név nem haladhatja meg a 24 karaktert. Ha nem ad meg értéket a paraméterhez az üzembe helyezés során, a rendszer az alapértelmezett értéket használja.
+Figyelje meg, hogy a tárfiók neve megváltozott a hozzáadott változóra. Az SKU neve a paraméter értékére változik. A hely az erőforráscsoporttal egyező helyre van beállítva.
 
-2. Lépjen a sablon **variables** (változók) szakaszára. Adja hozzá a következő változót, hogy az előtagból és az egyedi karakterláncból létrejöjjön a név:
-
-   ```json
-   "variables": {
-     "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
-   },
-   ```
-
-3. A **resources** (erőforrások) szakaszban állítsa a tárfiók nevét erre a változóra.
-
-   ```json
-   "name": "[variables('storageName')]",
-   ```
-
-3. A különböző SKU-k megadásának engedélyezéséhez a tárfiókhoz lépjen a **parameters** (paraméterek) szakaszra. A tárfiók nevének előtagjához tartozó paraméter után adjon hozzá egy paramétert, amely meghatározza az engedélyezett SKU-értékeket és egy alapértelmezett értéket. Az engedélyezett értékeket megtalálhatja a sablon referenciaoldalán vagy a VS Code-ban. A következő példában az összes érvényes értéket fel fogja venni az SKU-hoz. Azonban korlátozhatja ezeket az engedélyezett értékeket csak azon SKU-típusokra, amelyeket a sablonnal kíván üzembe helyezni.
-
-   ```json
-   "parameters": {
-     "storageNamePrefix": {
-       "type": "string",
-       "maxLength": 11,
-       "defaultValue": "storage",
-       "metadata": {
-         "description": "The value to use for starting the storage account name."
-       }
-     },
-     "storageSKU": {
-       "type": "string",
-       "allowedValues": [
-         "Standard_LRS",
-         "Standard_ZRS",
-         "Standard_GRS",
-         "Standard_RAGRS",
-         "Premium_LRS"
-       ],
-       "defaultValue": "Standard_LRS",
-       "metadata": {
-         "description": "The type of replication to use for the storage account."
-       }
-     }
-   },
-   ```
-
-3. Módosítsa az SKU tulajdonságot úgy, hogy az a következő paraméter értékét használja:
-
-   ```json
-   "sku": {
-     "name": "[parameters('storageSKU')]"
-   },
-   ```    
-
-4. Mentse a fájlt.
-
-## <a name="final-template"></a>Végső sablon
+Mentse a fájlt. 
 
 A cikkben ismertetett lépések végrehajtása után a sablon a következőképpen néz ki:
 
@@ -300,14 +223,6 @@ A cikkben ismertetett lépések végrehajtása után a sablon a következőképp
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "storageNamePrefix": {
-      "type": "string",
-      "maxLength": 11,
-      "defaultValue": "storage",
-      "metadata": {
-        "description": "The value to use for starting the storage account name."
-      }
-    },
     "storageSKU": {
       "type": "string",
       "allowedValues": [
@@ -321,32 +236,77 @@ A cikkben ismertetett lépések végrehajtása után a sablon a következőképp
       "metadata": {
         "description": "The type of replication to use for the storage account."
       }
+    },   
+    "storageNamePrefix": {
+      "type": "string",
+      "maxLength": 11,
+      "defaultValue": "storage",
+      "metadata": {
+        "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+      }
     }
   },
   "variables": {
-    "storageName": "[concat(parameters('storageNamePrefix'), uniqueString(resourceGroup().id))]"
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
       "name": "[variables('storageName')]",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2016-12-01",
+      "apiVersion": "2016-01-01",
       "sku": {
         "name": "[parameters('storageSKU')]"
       },
       "kind": "Storage",
       "location": "[resourceGroup().location]",
       "tags": {},
-      "properties": {
-      }
+      "properties": {}
     }
   ],
   "outputs": {  }
 }
 ```
 
+## <a name="redeploy-template"></a>Sablon ismételt üzembe helyezése
+
+Újra üzembe helyezheti a sablont eltérő értékekkel.
+
+PowerShell esetén használja az alábbi parancsot:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json -storageNamePrefix newstore -storageSKU Standard_RAGRS
+```
+
+Azure CLI esetén használja az alábbi parancsot:
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
+```
+
+A Cloud Shell esetén töltse fel a módosított sablont a fájlmegosztásba. Írja felül a meglévő fájlt. Ezután használja az alábbi parancsot:
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rájuk szükség, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
+
+PowerShell esetén használja az alábbi parancsot:
+
+```powershell
+Remove-AzureRmResourceGroup -Name examplegroup
+```
+
+Azure CLI esetén használja az alábbi parancsot:
+
+```azurecli
+az group delete --name examplegroup
+```
+
 ## <a name="next-steps"></a>Következő lépések
-* A sablon elkészült, és készen áll az előfizetésben való üzembe helyezésre. Az üzembe helyezéshez lásd: [Erőforrások üzembe helyezése az Azure-ban](resource-manager-quickstart-deploy.md).
 * A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
+* A tárfiókok tulajdonságaival kapcsolatos információkért lásd a [tárfióksablonok referenciáját](/azure/templates/microsoft.storage/storageaccounts).
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 
