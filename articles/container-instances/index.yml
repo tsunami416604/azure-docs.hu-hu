@@ -37,3 +37,11 @@ sections:
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Alkalmazás becsomagolása tárolórendszerképbe</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Azure-tároló beállításjegyzékének létrehozása és a tárolórendszerkép feltöltése</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">A tárolórendszerkép üzembe helyezése egy Azure-tárolópéldányon</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Azure CLI
+            html: <p><a href="/cli/azure/container">Azure CLI 2.0</a></p>

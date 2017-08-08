@@ -2,9 +2,11 @@
 layout: LandingPage
 title: "A Service Bus Relay dokumentációja"
 description: "Megismerheti, hogyan működik az Azure Relay a hibrid felhőben és helyszíni környezetben, valamint többek között a témával kapcsolatos útmutatókat, oktatóanyagokat, videókat és API-referenciákat tekinthet meg."
-translationtype: Human Translation
-ms.sourcegitcommit: ef8188d6790dac8b420348887c480cd4fdab07c4
-ms.openlocfilehash: 911ad28e0e93b9b46b368de2cfbbbbc9f1183b7b
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 43d2c5ca34e4903a41160496fdb4d975cb665de7
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="service-bus-relay-documentation"></a>A Service Bus Relay dokumentációja
@@ -30,7 +32,7 @@ Megismerheti, hogyan segíti az Azure Relay szolgáltatás a helyszíni környez
         </a>
     </li>
     <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus-relay">
+        <a href="https://azure.microsoft.com/documentation/videos/index/?services=service-bus">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -112,8 +114,8 @@ Megismerheti, hogyan segíti az Azure Relay szolgáltatás a helyszíni környez
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Példák</h3>
-                        <p><a href="/azure/service-bus-relay/service-bus-relay-samples">Service Bus Relay-minták</a></p>
+                        <h3>Parancssor</h3>
+                        <p><a href="/powershell/module/azurerm.servicebus">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -124,9 +126,8 @@ Megismerheti, hogyan segíti az Azure Relay szolgáltatás a helyszíni környez
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p><a href="/dotnet/api/microsoft.servicebus.messaging">Microsoft.ServiceBus.Messaging</a></p>
-                        <p><a href="/dotnet/api/microsoft.azure.relay">Microsoft.Azure.Relay</a></p>
+                        <h3>Nyelvek</h3>
+                        <p><a href="/dotnet/api/overview/azure/service-bus-relay">.NET</a></p>
                     </div>
                 </div>
             </div>
@@ -137,17 +138,12 @@ Megismerheti, hogyan segíti az Azure Relay szolgáltatás a helyszíni környez
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Egyéb</h3>
-                        <p><a href="service-bus-relay-port-settings.md">Portbeállítások</a></p>
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/servicebus/">REST API-referencia</a></p>
                    </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

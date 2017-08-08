@@ -94,7 +94,6 @@
 #### [Írás a Data Lake Store-ba](hdinsight-storm-write-data-lake-store.md)
 #### [Java-alapú topológiák fejlesztése a Maven használatával](hdinsight-storm-develop-java-topology.md)
 #### [C#-topológiák fejlesztése Hadoop-eszközökkel](hdinsight-storm-develop-csharp-visual-studio-topology.md)
-#### [Népszerű Twitter-témakörök meghatározása](hdinsight-storm-twitter-trending.md)
 #### [Események feldolgozása C#-topológiákkal](hdinsight-storm-develop-csharp-event-hub-topology.md)
 #### [Események feldolgozása Java-topológiákkal](hdinsight-storm-develop-java-event-hub-topology.md)
 #### [A Power BI használata topológiákkal](hdinsight-storm-power-bi-topology.md)

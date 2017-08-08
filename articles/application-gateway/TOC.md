@@ -27,16 +27,20 @@
 ## Webalkalmazási tűzfal konfigurálása
 ### [Portál](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
+### [Azure CLI 2.0](application-gateway-web-application-firewall-cli.md)
 ## Webalkalmazási tűzfalszabályok testreszabása
 ### [Portal](application-gateway-customize-waf-rules-portal.md)
+### [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
 ## Az SSL-alapú kiszervezés konfigurálása
 ### [Portál](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (klasszikus)](application-gateway-ssl.md)
+### [Azure CLI 2.0](application-gateway-ssl.md)
 ### [Házirend és végpontok közötti](application-gateway-end-to-end-ssl-powershell.md)
 ## URL-alapú útválasztás konfigurálása
 ### [Portál](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)
+### [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 ## Többhelyes üzemeltetés konfigurálása
 ### [Portál](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
