@@ -18,6 +18,7 @@
 #### [Azure AD a Batch Managementtel](batch-aad-auth-management.md)
 ### [Nagy számítási igényű virtuális gépek](batch-pool-compute-intensive-sizes.md)
 ### [Párhuzamosan futó csomóponti feladatok](batch-parallel-node-tasks.md)
+### [Feladatok számlálása állapot szerint](batch-get-task-counts.md)
 ### [Hatékony listázó lekérdezések](batch-efficient-list-queries.md)
 ### [Feladatok előkészítési és befejezési műveletei](batch-job-prep-release.md)
 ### [Linuxos számítási csomópontok](batch-linux-nodes.md)

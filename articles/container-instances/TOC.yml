@@ -25,10 +25,14 @@
       href: container-instances-orchestrator-relationship.md
 - name: Útmutatók
   items:
-    - name: Többtárolós csoportok
+    - name: Többtárolós csoportok üzembe helyezése
       href: container-instances-multi-container-group.md
     - name: Állapot kezelése Azure-fájlmegosztásokkal
       href: container-instances-mounting-azure-files-volume.md
+    - name: Üzembe helyezés az Azure Container Registryből
+      href: container-instances-using-azure-container-registry.md
+    - name: Az Azure Container Instances szolgáltatásban való üzembe helyezés hibaelhárítása
+      href: container-instances-troubleshooting.md
 - name: Referencia
   items:
     - name: Azure CLI 2.0

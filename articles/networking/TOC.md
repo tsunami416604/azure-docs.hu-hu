@@ -11,7 +11,9 @@
 ## Tervezés és kialakítás
 ### [Virtuális hálózatok](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Forgalomszűrés](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Helyszíni kapcsolatok](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Létesítmények közötti kapcsolatok – VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Létesítmények közötti kapcsolatok – dedikált privát](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
+
 ##  Alapelvek
 ### [Virtuális hálózatok](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Hálózati terheléselosztás](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
@@ -35,21 +37,24 @@
 ### [Magánkiszolgálók alkalmazásterhelés-elosztása](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Virtuális hálózatok összekapcsolása (egyazon helyen)](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Virtuális hálózatok összekapcsolása (eltérő helyeken)](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-## Helyszíni kapcsolatok
-### [Helyszíni hálózat csatlakoztatása (dedikált)](../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Helyszíni hálózat csatlakoztatása (VPN)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+## Létesítmények közötti kapcsolatok
+### [S2S VPN-kapcsolat létrehozása (IPsec/IKE)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [P2S VPN-kapcsolat létrehozása (SSTP tanúsítvánnyal)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Dedikált privát kapcsolat létrehozása (ExpressRoute)](../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json)
+
 ## Kezelés
 ### [Hálózati topológia megtekintése](../network-watcher/network-watcher-topology-powershell.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Csomagrögzítés kezelése](../network-watcher/network-watcher-packet-capture-manage-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Útválasztás következő ugrásának meghatározása](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Virtuális gép IP-forgalmának ellenőrzése](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+
 ## Mintaszkriptek
 ### [Azure CLI](cli-samples.md)
 ### [PowerShell](powershell-samples.md)
+
 ## oktatóanyagokat
 ### [Virtuális gépek terheléselosztása](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Számítógép csatlakoztatása egy virtuális hálózathoz](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-
 
 # Referencia
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/network)

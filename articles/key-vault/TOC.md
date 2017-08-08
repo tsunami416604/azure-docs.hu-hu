@@ -15,22 +15,24 @@
 ### [HSM által védett kulcsok](key-vault-hsm-protected-keys.md)
 ### [Áttelepítés az .NET 2.0-ba](key-vault-dotnet2api-release-notes.md)
 ### Áttekintések
-#### [Biztonsági világok áttekintése](key-vault-ovw-security-worlds.md)
-#### [Helyreállítható törlés áttekintése](key-vault-ovw-soft-delete.md)
-#### [Tárfiókok kulcsainak áttekintése](key-vault-ovw-storage-keys.md)
-#### [Szabályozás áttekintése](key-vault-ovw-throttling.md)
+#### [Biztonsági világok](key-vault-ovw-security-worlds.md)
+#### [Helyreállítható törlés](key-vault-ovw-soft-delete.md)
+#### [Tárfiókkulcsok](key-vault-ovw-storage-keys.md)
+#### [Szabályozás](key-vault-ovw-throttling.md)
 
 ## Kezelés
 ### [Az Azure Key Vault naplózása](key-vault-logging.md)
 ### [Tűzfal mögötti hozzáférés](key-vault-access-behind-firewall.md)
-### [Bérlőazonosító módosítása](key-vault-subscription-move-fix.md)
-### [Hozzáférés megadása csoportok használatával](key-vault-group-permissions-for-apps.md)
 ### [Elérhetőség és redundancia](key-vault-disaster-recovery-guidance.md)
+### [Bérlőazonosító módosítása](key-vault-subscription-move-fix.md)
+### [Létrehozás és kezelés a CLI 2.0 használatával](key-vault-manage-with-cli2.md)
+### [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](key-vault-soft-delete-cli.md)
+### [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](key-vault-soft-delete-powershell.md)
+### [Hozzáférés megadása csoportok használatával](key-vault-group-permissions-for-apps.md)
 ### [Kulcstartó védelme](key-vault-secure-your-key-vault.md)
 
 ## Automatizálás
 ### [Azure Automation](automation-manage-key-vault.md)
-### [Létrehozás és kezelés a CLI 2.0 használatával](key-vault-manage-with-cli2.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)

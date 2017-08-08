@@ -92,6 +92,7 @@
 
 ### Használat
 #### [Áttekintés](app-insights-usage-overview.md)
+#### [Felhasználói környezet küldése](app-insights-usage-send-user-context.md)
 #### [Felhasználók, munkamenetek, események](app-insights-usage-segmentation.md)
 #### [Tölcsérek](usage-funnels.md)
 #### [Megőrzés](app-insights-usage-retention.md)

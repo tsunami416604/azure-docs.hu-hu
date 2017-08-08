@@ -1,10 +1,10 @@
 # Áttekintés
 ## [Mi az Azure Analysis Services?](analysis-services-overview.md)
-## [Támogatott adatforrások](analysis-services-datasource.md)
 
 # Gyors útmutatók
 ## [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md)
-## [Modell üzembe helyezése – SSDT](analysis-services-deploy.md)
+## [Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)
+## [Modell üzembe helyezése – Visual Studio](analysis-services-deploy.md)
 
 # oktatóanyagokat
 ## Modell létrehozása és üzembe helyezése
@@ -27,6 +27,7 @@
 ### [Kiegészítő lecke – Hézagos hierarchiák](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)
 
 # Alapelvek
+## [Támogatott adatforrások](analysis-services-datasource.md)
 ## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
 ## [Magas rendelkezésre állás](analysis-services-bcdr.md)
 
