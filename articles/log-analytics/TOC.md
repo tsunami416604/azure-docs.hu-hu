@@ -84,6 +84,7 @@
 ### [Kártevőfelmérés](log-analytics-malware.md)
 ### [Hálózatelemzés](log-analytics-azure-networking-analytics.md)
 ### [Hálózati teljesítményfigyelő](log-analytics-network-performance-monitor.md)
+### [Office 365](../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [SCOM-elemzés](log-analytics-scom-assessment.md)
 ### [Biztonsági naplózás](../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [Service Fabric](log-analytics-service-fabric.md)
