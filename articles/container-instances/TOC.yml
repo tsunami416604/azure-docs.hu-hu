@@ -23,6 +23,8 @@
   items:
     - name: Vezénylőkkel fennálló kapcsolat
       href: container-instances-orchestrator-relationship.md
+    - name: Tárolócsoportok
+      href: container-instances-container-groups.md
 - name: Útmutatók
   items:
     - name: Többtárolós csoportok üzembe helyezése

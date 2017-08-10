@@ -9,6 +9,7 @@
 ## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
 ## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
 ## [Azure-előfizetések társítása](active-directory-how-subscriptions-associated-directory.md)
+## [Rövid útmutató: Új jelszó önkiszolgáló kérése](active-directory-passwords-getting-started.md)
 ## Az Azure AD-licencek kezelése
 ### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
 ### [Klasszikus portál](active-directory-licensing-what-is.md)
@@ -18,7 +19,7 @@
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
-## [Hogyan kérhet támogatást az Azure Active Directoryhoz](active-directory-troubleshooting-support-howto.md)
+## [Támogatás az Azure Active Directoryhoz](active-directory-troubleshooting-support-howto.md)
 ## [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
 
 # Útmutató
@@ -78,6 +79,7 @@
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
+### [Office 365-csoportok lejáratának beállítása](active-directory-groups-lifecycle-azure-portal.md)
 ### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
 ### [Dedikált csoportok engedélyezése](active-directory-accessmanagement-dedicated-groups.md)
 ### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
@@ -124,7 +126,6 @@
 #### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
 #### [Ajánlott eljárások a jelszavakhoz](active-directory-secure-passwords.md)
 #### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
-### [Rövid útmutató: Új jelszó kérése önkiszolgáló eljárással](active-directory-passwords-getting-started.md)
 ### [SSPR licenc](active-directory-passwords-licensing.md)
 ### [Az SSPR üzembe helyezése](active-directory-passwords-best-practices.md)
 ### Informatikai rendszergazdák: Új jelszavak kérése

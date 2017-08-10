@@ -1,13 +1,27 @@
 # Áttekintés
 ## [Mi az Azure Analysis Services?](analysis-services-overview.md)
+## [Támogatott adatforrások](analysis-services-datasource.md)
+## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
+## [Kompatibilitási szint](analysis-services-compat-level.md)
+## [Magas rendelkezésre állás](analysis-services-bcdr.md)
 
-# Gyors útmutatók
-## [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md)
-## [Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)
-## [Modell üzembe helyezése – Visual Studio](analysis-services-deploy.md)
+# Bevezetés
+## [Kiszolgáló létrehozása az Azure Portalon](analysis-services-create-server.md)
+## [Kiszolgáló létrehozása a PowerShell-lel](analysis-services-create-powershell.md)
+## [Modell üzembe helyezése a Visual Studióból](analysis-services-deploy.md)
+## [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
 
-# oktatóanyagokat
-## Modell létrehozása és üzembe helyezése
+# Használati útmutató 
+## [Kiszolgáló kezelése](analysis-services-manage.md)
+## [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
+## [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
+## [Helyszíni adatátjáró telepítése](analysis-services-gateway.md)
+## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
+## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
+## [Kapcsolódás Excellel](analysis-services-connect-excel.md)
+## [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
+## [.odc fájl létrehozása](analysis-services-odc.md)
+## oktatóanyagokat
 ### [Az Adventure Works oktatóanyaga](tutorials/aas-adventure-works-tutorial.md)
 ### [1. lecke: Új táblázatos modellprojekt létrehozása](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 ### [2. lecke: Az adatok beszerzése](tutorials/aas-lesson-2-get-data.md)
@@ -24,24 +38,7 @@
 ### [13. lecke: Üzembe helyezés](tutorials/aas-lesson-13-deploy.md)
 ### [Kiegészítő lecke – Részletsorok](tutorials/aas-supplemental-lesson-detail-rows.md)
 ### [Kiegészítő lecke – Dinamikus biztonság](tutorials/aas-supplemental-lesson-dynamic-security.md)
-### [Kiegészítő lecke – Hézagos hierarchiák](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)
-
-# Alapelvek
-## [Támogatott adatforrások](analysis-services-datasource.md)
-## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
-## [Magas rendelkezésre állás](analysis-services-bcdr.md)
-
-# Használati útmutató 
-## [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
-## [Kiszolgáló kezelése](analysis-services-manage.md)
-## [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
-## [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
-## [Helyszíni adatátjáró telepítése](analysis-services-gateway.md)
-## [Kapcsolódás Excellel](analysis-services-connect-excel.md)
-## [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
-## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
-## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
-## [.odc fájl létrehozása](analysis-services-odc.md)
+### [Kiegészítő lecke – Hézagos hierarchiák](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # Referencia
 ## [PowerShell](analysis-services-powershell.md)

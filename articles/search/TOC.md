@@ -28,10 +28,12 @@
 ### [Kialakítási minták a több-bérlős módhoz](search-modeling-multitenant-saas-applications.md)
 
 ## Fejlesztés
+### [API-verziók](search-api-versions.md)
 ### [Az SDK frissítése](search-dotnet-sdk-migration.md)
 ### [A REST API frissítése](search-api-migration.md)
 ### [Összetett adattípusok modellezése](search-howto-complex-data-types.md)
 ### [Egyidejű frissítések kezelése](search-howto-concurrency.md)
+### [Kódminták](https://azure.microsoft.com/resources/samples/?service=search)
 
 ## Kezelés
 ### Az Azure Search felügyelete
@@ -68,31 +70,33 @@
 
 # Referencia
 
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=search)
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (Felügyelet)](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python (Felügyelet)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST](/rest/api/searchservice)
 ## [.REST (Felügyelet)](/rest/api/searchmanagement)
+## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
 
 # Erőforrások
-## [API-verziók](search-api-versions.md)
+
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=web-mobile)
+## [GYIK – Gyakori kérdések](search-faq-frequently-asked-questions.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/search/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=search)
 ## Oktatóanyagok és -programok
-## Bemutató webhelyek
-## Partner és közösség
-### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
-### [Fórum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureSearch)
-### [Feladatlistázó alkalmazás](http://aka.ms/azjobsdemo)
-### [Élő bemutató alkalmazások](https://searchsamples.azurewebsites.net/)
-### [Relációs adatok modellezése](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
-### [Többszintű jellemzőkezelés](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
-### [Search Analyzer Demo](http://alice.unearth.ai/)
-### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
 ### [Videók és oktatóanyagok](search-video-demo-tutorial-list.md)
 ### [Virtuális akadémia](https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382)
+## Bemutató webhelyek
+### [Search Analyzer Demo](http://alice.unearth.ai/)
+### [Élő bemutató alkalmazások](https://searchsamples.azurewebsites.net/)
+### [Feladatlistázó alkalmazás](http://aka.ms/azjobsdemo)
+## Partner és közösség
+### [Azure Search GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
+### [MSDN-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureSearch)
+### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
+### [blog: relációs adatok modellezése](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
+### [[blog: többszintű jellemzőkezelés](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
+
+
+
