@@ -1,8 +1,8 @@
 
-To deploy the resources to Azure, you must be logged in to your Azure account and you must use the Azure Resource Manager module. To learn about using Azure Resource Manager with either Azure PowerShell or Azure CLI, see:
+Ha üzembe kívánja helyezni ezeket az erőforrásokat az Azure-ban, be kell jelentkeznie az Azure-ba, és az Azure Resource Manager modult kell használnia. További információ az Azure Resource Manager Azure PowerShell-lel vagy Azure CLI-vel való használatáról:
 
-* [Using Azure PowerShell with Azure Resource Manager](../articles/azure-resource-manager/powershell-azure-resource-manager.md)
-* [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md).
+* [Az Azure PowerShell használata az Azure Resource Managerrel](../articles/azure-resource-manager/powershell-azure-resource-manager.md)
+* [A maces, linuxos és windowsos Azure CLI használata az Azure Resource Managerrel](../articles/azure-resource-manager/xplat-cli-azure-resource-manager.md).
 
-The following examples assume you already have a resource group in your account with the specified name. 
+A következő példák feltételezik, hogy a fiókjában már létezik egy erőforráscsoport a megadott névvel. 
 
