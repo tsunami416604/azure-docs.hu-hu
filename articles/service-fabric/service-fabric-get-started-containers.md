@@ -35,14 +35,14 @@ Egy fejlesztői számítógép, amelyen a következők futnak:
 * [Service Fabric SDK és -eszközök](service-fabric-get-started.md).
 *  Windows rendszerhez készült Docker.  [A Docker CE for Windows (stable) letöltése](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
-Egy Windows-fürt legalább három, Windows Server 2016 rendszerű, a Containerst futtató csomóponttal. Ehhez [hozzon létre egy fürtöt](service-fabric-cluster-creation-via-portal.md) vagy [próbálja ki ingyen a Service Fabricot](https://aka.ms/tryservicefabric). 
+Egy Windows-fürt legalább három, Windows Server 2016 rendszerű, a Containerst futtató csomóponttal. Ehhez [hozzon létre egy fürtöt](service-fabric-cluster-creation-via-portal.md) vagy [próbálja ki ingyen a Service Fabricot](https://aka.ms/tryservicefabric).
 
-Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében. 
+Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
 
 ## <a name="define-the-docker-container"></a>A Docker-tároló definiálása
-Állítson össze egy rendszerképet a Docker Hubban található [Python-rendszerkép](https://hub.docker.com/_/python/) alapján. 
+Állítson össze egy rendszerképet a Docker Hubban található [Python-rendszerkép](https://hub.docker.com/_/python/) alapján.
 
-Definiálja a Docker-tárolót egy Docker-fájlban. A Docker-fájl tartalmazza a környezet tárolón belüli beállítására, a futtatni kívánt alkalmazás betöltésére és a portok hozzárendelésére vonatkozó utasításokat. A Docker-fájl a `docker build` parancs bemenete, amely a rendszerképet létrehozza. 
+Definiálja a Docker-tárolót egy Docker-fájlban. A Docker-fájl tartalmazza a környezet tárolón belüli beállítására, a futtatni kívánt alkalmazás betöltésére és a portok hozzárendelésére vonatkozó utasításokat. A Docker-fájl a `docker build` parancs bemenete, amely a rendszerképet létrehozza.
 
 Hozzon létre egy üres könyvtárat és a *Docker-fájlt* (fájlkiterjesztés nélkül). Adja hozzá a következőket a *Docker-fájlhoz*, és mentse a módosításokat:
 
@@ -86,13 +86,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    
+
     return 'Hello World!'
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
+<a id="Build-Containers"></a>
 ## <a name="build-the-image"></a>Rendszerkép létrehozása
 Futtassa a(z) `docker build` parancsot a webalkalmazást futtató rendszerkép létrehozásához. Nyisson meg egy PowerShell-ablakot, és lépjen a Docker-fájlt tartalmazó könyvtárra. Futtassa az alábbi parancsot:
 
@@ -106,7 +107,7 @@ Miután az összeállító parancs lefutott, futtassa a `docker images` parancso
 
 ```
 $ docker images
-    
+
 REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
 helloworldapp                 latest              8ce25f5d6a79        2 minutes ago       10.4 GB
 ```
@@ -141,6 +142,7 @@ Törölje a tárolót a fejlesztői gépről:
 docker rm my-web-site
 ```
 
+<a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>A rendszerkép leküldése a tároló-beállításjegyzékbe
 Miután ellenőrizte, hogy a tároló fut-e a fejlesztői gépen, küldje le a rendszerképet a beállításjegyzékébe az Azure Container Registryben.
 
@@ -170,7 +172,7 @@ A Service Fabric SDK és -eszközök egy szolgáltatássablont biztosítanak, am
 1. Indítsa el a Visual Studiót.  Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
 2. Válassza a **Service Fabric application** (Service Fabric-alkalmazás) lehetőséget, nevezze el „MyFirstContainer” néven, és kattintson az **OK** gombra.
 3. A **szolgáltatássablonok** listájában válassza a **Guest Container** (Vendégtároló) elemet.
-4. Az **Image Name** (Rendszerkép neve) mezőben adja meg a „myregistry.azurecr.io/samples/helloworldapp” rendszerképet, amelyet leküldött a tároló-beállításjegyzékbe. 
+4. Az **Image Name** (Rendszerkép neve) mezőben adja meg a „myregistry.azurecr.io/samples/helloworldapp” rendszerképet, amelyet leküldött a tároló-beállításjegyzékbe.
 5. Nevezze el a szolgáltatást, és kattintson az **OK** gombra.
 
 ## <a name="configure-communication"></a>A kommunikáció konfigurálása
@@ -183,8 +185,8 @@ A tárolóalapú szolgáltatáshoz szükség van egy kommunikációs végpontra.
   </Endpoints>
 </Resources>
 ```
-    
-Egy végpont megadásával a Service Fabric közzéteszi a végpontot az elnevezési szolgáltatásban.  A fürtben futó más szolgáltatások feloldhatják ezt a tárolót.  Tárolók közötti kommunikációt is folytathat a [fordított proxyval](service-fabric-reverseproxy.md).  A kommunikációhoz környezeti változókként adja meg a fordított proxy HTTP-figyelő portját és azon szolgáltatások nevét, amelyekkel kommunikálni kíván. 
+
+Egy végpont megadásával a Service Fabric közzéteszi a végpontot az elnevezési szolgáltatásban.  A fürtben futó más szolgáltatások feloldhatják ezt a tárolót.  Tárolók közötti kommunikációt is folytathat a [fordított proxyval](service-fabric-reverseproxy.md).  A kommunikációhoz környezeti változókként adja meg a fordított proxy HTTP-figyelő portját és azon szolgáltatások nevét, amelyekkel kommunikálni kíván.
 
 ## <a name="configure-and-set-environment-variables"></a>Környezeti változók konfigurálása és beállítása
 A szolgáltatásjegyzékben minden kódcsomaghoz megadhatók környezeti változók. Ez a funkció az összes szolgáltatáshoz elérhető attól függetlenül, hogy tárolókként, folyamatokként vagy vendég futtatható fájlokként vannak-e üzembe helyezve. A környezeti változó értékeit felülbírálhatja az alkalmazásjegyzékben, vagy az üzembe helyezés alatt megadhatja őket alkalmazásparaméterekként.
@@ -211,7 +213,7 @@ Ezek a környezeti változók bírálhatók felül az alkalmazásjegyzékben:
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>Tárolóport–gazdagépport hozzárendelés és tároló–tároló felderítés konfigurálása
-Konfiguráljon egy gazdagépportot a tárolóval való kommunikációhoz. A portkötés a gazdagép egyik portjához rendeli hozzá a szolgáltatás által figyelt tárolóportot. Adjon hozzá egy `PortBinding` elemet az ApplicationManifest.xml fájl `ContainerHostPolicies` eleméhez.  Ebben a cikkben a `ContainerPort` értéke 80 (a tároló a 80-as portot használja a Docker-fájlban foglalt beállítások szerint), az `EndpointRef` pedig „Guest1TypeEndpoint” (a szolgáltatásjegyzékben korábban definiált végpont).  A szolgáltatáshoz a 8081-es porton beérkező kérések a tárolón a 80-as portra vannak leképezve. 
+Konfiguráljon egy gazdagépportot a tárolóval való kommunikációhoz. A portkötés a gazdagép egyik portjához rendeli hozzá a szolgáltatás által figyelt tárolóportot. Adjon hozzá egy `PortBinding` elemet az ApplicationManifest.xml fájl `ContainerHostPolicies` eleméhez.  Ebben a cikkben a `ContainerPort` értéke 80 (a tároló a 80-as portot használja a Docker-fájlban foglalt beállítások szerint), az `EndpointRef` pedig „Guest1TypeEndpoint” (a szolgáltatásjegyzékben korábban definiált végpont).  A szolgáltatáshoz a 8081-es porton beérkező kérések a tárolón a 80-as portra vannak leképezve.
 
 ```xml
 <Policies>
@@ -312,7 +314,7 @@ Mentse az összes módosítást, és hozza létre az alkalmazást. Az alkalmazá
 
 A **Kapcsolati végpont** területen adja meg a fürt kezelési végpontját,  például a „containercluster.westus2.cloudapp.azure.com:19000” végpontot. Az ügyfél csatlakozási végpontját a fürt Áttekintés paneljén találja az [Azure Portalon](https://portal.azure.com).
 
-Kattintson a **Publish** (Közzététel) gombra. 
+Kattintson a **Publish** (Közzététel) gombra.
 
 A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) egy webalapú eszköz az alkalmazások és csomópontok vizsgálatához és kezeléséhez a Service Fabric-fürtökben. Nyisson meg egy böngészőt, lépjen a http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ helyre, és folytassa az alkalmazás üzembe helyezését.  Az alkalmazás üzembe lesz helyezve, azonban hibaállapotban van, amíg a rendszerkép le nem töltődik a fürtcsomópontokra (ez a rendszerkép méretétől függően némi időt vehet igénybe): ![Hiba][1]
 
@@ -360,17 +362,17 @@ Itt találja a jelen cikkben használt teljes szolgáltatás- és alkalmazásjeg
       <EnvironmentVariable Name="HttpGatewayPort" Value=""/>
       <EnvironmentVariable Name="BackendServiceName" Value=""/>
     </EnvironmentVariables>
-    
+
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
+      <!-- This endpoint is used by the communication listener to obtain the port on which to
+           listen. Please note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
       <Endpoint Name="Guest1TypeEndpoint" UriScheme="http" Port="8081" Protocol="http"/>
     </Endpoints>
@@ -388,8 +390,8 @@ Itt találja a jelen cikkben használt teljes szolgáltatás- és alkalmazásjeg
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>
-  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
-       should match the Name and Version attributes of the ServiceManifest element defined in the 
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
+       should match the Name and Version attributes of the ServiceManifest element defined in the
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
@@ -411,10 +413,10 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
-    <!-- The section below creates instances of service types, when an instance of this 
-         application type is created. You can also create one or more instances of service type using the 
+    <!-- The section below creates instances of service types, when an instance of this
+         application type is created. You can also create one or more instances of service type using the
          ServiceFabric PowerShell module.
-         
+
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
     <Service Name="Guest1">
       <StatelessService ServiceTypeName="Guest1Type" InstanceCount="[Guest1_InstanceCount]">
