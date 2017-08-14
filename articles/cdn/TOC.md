@@ -10,6 +10,8 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Eltérő eredetű erőforrások megosztása](cdn-cors.md)
+### [Egyéni tartomány leképezése a CDN szolgáltatásba](cdn-map-content-to-custom-domain.md)
+### [HTTPS engedélyezése egyéni tartományon](cdn-custom-ssl.md)
 ## Tartalom optimalizálása
 ### [Optimalizálás áttekintése](cdn-optimization-overview.md)
 ####[Nagyméretű fájlok optimalizálása](cdn-large-file-optimization.md)
@@ -17,12 +19,10 @@
 ####[Dinamikus helygyorsítás](cdn-dynamic-site-acceleration.md)
  
 ## Kezelés
-### [HTTPS engedélyezése egyéni tartományon](cdn-custom-ssl.md)
 ### [Kezelés a Powershell-lel](cdn-manage-powershell.md)
 ### Az élettartam konfigurálása
 #### [Web Apps-/Cloud Services-, ASP.NET- vagy IIS-tartalom](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Tárolási blobszolgáltatás-tartalom](cdn-manage-expiration-of-blob-content.md)
-### [Egyéni tartomány leképezése a CDN szolgáltatásba](cdn-map-content-to-custom-domain.md)
 ### [Elérés korlátozása ország szerint](cdn-restrict-access-by-country.md)
 ### [A teljesítmény javítása a fájlok tömörítésével](cdn-improve-performance.md)
 ### Tartalom gyorsítótárazása lekérdezési karakterlánc szerint

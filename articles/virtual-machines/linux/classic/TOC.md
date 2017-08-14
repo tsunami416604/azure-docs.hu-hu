@@ -4,13 +4,13 @@
 ## [Rendelkezésre állás](configure-availability.md)
 ## [Gyakori kérdések](faq.md)
 
-# [Első lépések](../opensource-links.md)
+# Első lépések
 ## [Linux rendszerű virtuális gép létrehozása a portálról](createportal.md)
 ## [Az Azure parancssori felület telepítése](../../../cli-install-nodejs.md)
 ## [SSH-kulcsok létrehozása](../mac-create-ssh-keys.md)
 
 # Útmutató
-## [Számítás](../intro-on-azure.md)
+## Számítás
 ### [Egyéni virtuális gép létrehozása](create-custom.md)
 ### [Virtuális gép rögzítése](capture-image.md)
 ### [Távoli asztal használata Linux rendszerű virtuális géppel](remote-desktop.md)

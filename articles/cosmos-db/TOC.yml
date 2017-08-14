@@ -105,9 +105,6 @@
       href: consistency-levels.md
     - name: Teljesítmény
       href: request-units.md
-      items:
-        - name: Kérelemegységek percenként
-          href: request-units-per-minute.md
     - name: Többmodelles API-k
       items:
         - name: DocumentDB
