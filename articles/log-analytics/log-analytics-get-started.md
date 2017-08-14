@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
+ms.date: 08/08/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 9147d2f349f59417e44e288ef057e5857a266815
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 7bdbdf8654ae22ba143d5f87384e04fe4a11d10e
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-a-log-analytics-workspace"></a>Ismerkedés a Log Analytics-munkaterülettel
@@ -59,7 +58,12 @@ A következő lépés egy munkaterület létrehozása.
 4. Válasszon ki egy munkaterületet, hogy megtekinthesse a részleteit az Azure Portalon.       
     ![munkaterület részletei](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
 
-## <a name="3-add-solutions-and-solution-offerings"></a>3 Megoldások és megoldásajánlatok hozzáadása
+## <a name="3-upgrade-workspace-to-new-log-search"></a>3 A munkaterület frissítése új naplókeresésre
+Új Log Analytics lekérdezési nyelv érhető el. A nyelv által kínált előnyök kihasználásához át kell alakítania a munkaterületét.  Ha a régió, amelyben a munkaterület üzemeltetve van, frissül, egy lila szalagcím jelenik meg a munkaterület tetején, amely felkéri Önt az átalakításra. A frissítés teljesen önkéntes, és nincs hatással a Log Analytics és a hozzáadott megoldások által biztosított felhasználói élményre.  
+
+Az előnyöket, a szempontokat és a frissítés folyamatát ismertető további információkért tekintse meg [az Azure Log Analytics új naplókeresésre való frissítését](log-analytics-log-search-upgrade.md) bemutató cikket.  
+
+## <a name="4-add-solutions-and-solution-offerings"></a>4 Megoldások és megoldásajánlatok hozzáadása
 
 A következő lépésben adjon hozzá megoldásokat és megoldásajánlatokat. A felügyeleti megoldások egy adott problématerületet érintő mérőszámokat szolgáltató logikai, adatábrázolási és adatgyűjtési szabályok gyűjteményei. A megoldásajánlat alatt csomagba foglalt felügyeleti megoldásokat értünk.
 
@@ -95,11 +99,11 @@ A következő lépésben hozzon létre egy egyszerű virtuális gépet az Azure-
 
 - Kövesse az [Azure-beli virtuális gépek a Log Analyticshez történő csatlakoztatását](log-analytics-azure-vm-extension.md) ismertető témakör útmutatásait a virtuális gép és a Log Analytics az Azure Portal segítségével történő csatlakoztatásához.
 
-## <a name="5-view-and-act-on-data"></a>5 Adatok megtekintése és reagálás
+## <a name="6-view-and-act-on-data"></a>6 Adatok megtekintése és reagálás
 
 Előzőleg már engedélyezte az Activity Log Analytics megoldást, valamint a Biztonság és megfelelőség és az Automatizálás és vezérlés szolgáltatásajánlatot. A következő lépésben elkezdjük áttekinteni a megoldások által gyűjtött adatokat és a naplókeresések során kapott eredményeket.
 
-Kezdésképp nézzük meg a megoldásokon belül megjelenített adatokat. Ezután nézzünk meg néhány, a naplókeresésekben elérhető keresési eredményt. A naplókeresések segítségével a környezetben lévő különféle forrásokból származó adatokat ötvözhet, és feltárhatja az összefüggéseket. További információkért lásd a [naplókereséseket a Log Analyticsben](log-analytics-log-searches.md). Végül az Azure Portalon kívül található OMS portál segítségével reagálhatunk a talált adatokra.
+Kezdésképp nézzük meg a megoldásokon belül megjelenített adatokat. Ezután nézzünk meg néhány, a naplókeresésekben elérhető keresési eredményt. A naplókeresések segítségével a környezetben lévő különféle forrásokból származó adatokat ötvözhet, és feltárhatja az összefüggéseket. További információkért tekintse meg [a Log Analyticsben végzett naplókeresésekkel kapcsolatos](log-analytics-log-searches.md) cikket, vagy ha már átalakította a munkaterületet az új lekérdezési nyelvre, tekintse meg [a Log Analytics naplókereséseit ismertető](log-analytics-log-search-new.md) cikket. 
 
 ### <a name="to-view-antimalware-data"></a>A kártevőirtó adatainak megtekintése
 

@@ -1,130 +1,130 @@
-## <a name="meaning-of-migration-of-iaas-resources-from-classic-to-resource-manager"></a>Meaning of migration of IaaS resources from classic to Resource Manager
-Before we drill down into the details, let's look at the difference between data-plane and management-plane operations on the IaaS resources.
+## <a name="meaning-of-migration-of-iaas-resources-from-classic-to-resource-manager"></a>Mit jelent az IaaS-erőforrások klasszikus környezetből Azure Resource Manager-alapú környezetbe migrálása?
+A részletes elemzés előtt tekintsük át az adatsíkon és a felügyeleti síkon végzett műveletek közötti különbségeket az IaaS-erőforrásokon.
 
-* *Management/Control plane* describes the calls that come into the management/control plane or the API for modifying resources. For example, operations like creating a VM, restarting a VM, and updating a virtual network with a new subnet manage the running resources. They don't directly affect connecting to the instances.
-* *Data plane* (application) describes the runtime of the application itself and involves interaction with instances that don’t go through the Azure API. Accessing your website or pulling data from a running SQL Server instance or a MongoDB server would be considered data plane or application interaction. Copying a blob from a storage account and accessing a public IP address to RDP or SSH into the virtual machine also are data plane. These operations keep the application running across compute, networking, and storage.
+* A *felügyeleti/vezérlősík* a felügyeleti/vezérlősíkra vagy az erőforrások módosítását végző API-ra érkező hívásokat írja le. Például az olyan műveletek, mint a virtuális gépek létrehozása vagy újraindítása, vagy a virtuális hálózatok új alhálózattal való frissítése a futó erőforrások felügyeletét szolgálják. A példányokhoz való csatlakozásra közvetlenül nincsenek hatással.
+* Az *adatsík* (alkalmazás) magának az alkalmazásnak a futtatókörnyezetét írja le, és olyan példányokkal való interakciót foglal magában, amely nem az Azure API-n keresztül történik. Egy webhely elérése vagy adatok lekérése egy futó SQL Server-példányból vagy egy MongoDB-kiszolgálóról adatsík- vagy alkalmazásinterakciónak minősül. Egy blob átmásolása egy tárfiókból vagy egy nyilvános IP-cím elérése RDP-n vagy SSH-n keresztül a virtuális gépről szintén adatsíkművelet. Ezek a műveletek működtetik az alkalmazást a számítási, hálózati és tárolási erőforrásokon.
 
-![Screenshot that illustrates difference between management/control plane and data plane](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
-
-> [!NOTE]
-> In some migration scenarios, the Azure platform stops, deallocates, and restarts your virtual machines. This incurs a short data-plane downtime.
->
->
-
-## <a name="the-migration-experience"></a>The migration experience
-Before you start the migration experience, the following is recommended:
-
-* Ensure that the resources that you want to migrate don't use any unsupported features or configurations. Usually the platform detects these issues and generates an error.
-* If you have VMs that are not in a virtual network, they will be stopped and deallocated as part of the prepare operation. If you don't want to lose the public IP address, look into reserving the IP address before triggering the prepare operation. However, if the VMs are in a virtual network, they are not stopped and deallocated.
-* Plan your migration during non-business hours to accommodate for any unexpected failures that might happen during migration.
-* Download the current configuration of your VMs by using PowerShell, command-line interface (CLI) commands, or REST APIs to make it easier for validation after the prepare step is complete.
-* Update your automation/operationalization scripts to handle the Resource Manager deployment model before you start the migration. You can optionally do GET operations when the resources are in the prepared state.
-* Evaluate the RBAC policies that are configured on the classic IaaS resources, and plan for after the migration is complete.
-
-The migration workflow is as follows
-
-![Screenshot that shows the migration workflow](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![A felügyeleti/vezérlősík és az adatsík közötti különbségeket bemutató képernyőkép](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 > [!NOTE]
-> All the operations described in the following sections are idempotent. If you have a problem other than an unsupported feature or a configuration error, it is recommended that you retry the prepare, abort, or commit operation. The Azure platform tries the action again.
+> Egyes migrálási forgatókönyvekben az Azure platform leállítja, felszabadítja és újraindítja a virtuális gépeket. Ez rövid állásidőt eredményez az adatsíkon.
 >
 >
 
-### <a name="validate"></a>Validate
-The validate operation is the first step in the migration process. The goal of this step is to analyze data in the background for the resources under migration and return success/failure if the resources are capable of migration.
+## <a name="the-migration-experience"></a>A migrálási folyamat
+Mielőtt belekezdene a migrálási folyamatba, érdemes elvégeznie a következőket:
 
-You select the virtual network or the hosted service (if it’s not a virtual network) that you want to validate for migration.
+* Győződjön meg róla, hogy a migrálni kívánt erőforrások nem használnak nem támogatott szolgáltatásokat vagy konfigurációkat. A platform általában észleli ezeket a problémákat, és hibát jelez.
+* Ha rendelkezik olyan virtuális gépekkel, amelyek nem részei virtuális hálózatnak, azok az előkészítési művelet keretében le lesznek állítva és fel lesznek szabadítva. Ha nem szeretné elveszteni a nyilvános IP-címet, gondoskodjon annak megőrzéséről az előkészítési művelet elindítása előtt. Ha azonban a virtuális gépek egy virtuális hálózaton találhatóak, nem lesznek leállítva és felszabadítva.
+* A migrálást ütemezze munkaidőn kívülre, hogy a migrálás során esetlegesen felmerülő nem várt hibák kezelhetőek legyenek.
+* Töltse le a virtuális gépek aktuális konfigurációját a PowerShell vagy a parancssori felület (CLI) parancsai, illetve REST API-k segítségével, hogy könnyebb legyen az érvényesítés az előkészítési lépés után.
+* Frissítse az automatizálási/működőképesség tételi szkripteket a Resource Manager-alapú üzemi modell kezelésére a migrálás megkezdése előtt. GET műveleteket is használhat, ha az erőforrások már előkészített állapotban vannak.
+* Értékelje ki a klasszikus IaaS-erőforrásokon konfigurált RBAC-házirendeket, és tervezze meg, mi történjen a migrálás után.
 
-* If the resource is not capable of migration, the Azure platform lists all the reasons for why it’s not supported for migration.
+A migrálási munkafolyamat a következő:
 
-When validating storage services you will find the migrated account in a resource group named the same as your storage account with "-Migrated" appended.  For example if your storage account is named "mystorage" you will find the Azure Resource Manager enabled resource in a resource group named "mystorage-Migrated" and it will contain a storage account named "mystorage".
-
-### <a name="prepare"></a>Prepare
-The prepare operation is the second step in the migration process. The goal of this step is to simulate the transformation of the IaaS resources from classic to Resource Manager resources and present this side by side for you to visualize.
-
-You select the virtual network or the hosted service (if it’s not a virtual network) that you want to prepare for migration.
-
-* If the resource is not capable of migration, the Azure platform stops the migration process and lists the reason why the prepare operation failed.
-* If the resource is capable of migration, the Azure platform first locks down the management-plane operations for the resources under migration. For example, you are not able to add a data disk to a VM under migration.
-
-The Azure platform then starts the migration of metadata from classic to Resource Manager for the migrating resources.
-
-After the prepare operation is complete, you have the option of visualizing the resources in both classic and Resource Manager. For every cloud service in the classic deployment model, the Azure platform creates a resource group name that has the pattern `cloud-service-name>-Migrated`.
+![A migrálási munkafolyamatot bemutató képernyőkép](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
-> It is not possible to select the name of Resource Group created for migrated resources (i.e. "-Migrated") but after migration is complete, you can use Azure Resource Manager move feature to move resources to any Resource Group you want. To read more about this see [Move resources to new resource group or subscription](../articles/resource-group-move-resources.md)
+> A következő szakaszokban ismertetett összes művelet idempotens. Ha valamely előkészítési, megszakítási vagy véglegesítési művelet során a olyan probléma lép fel, amely nem a támogatás hiányának vagy konfigurációs hibának köszönhető, próbálja újra végrehajtani az adott műveletet. Az Azure platform újrapróbálkozik a művelettel.
+>
+>
 
-Here are two screens that show the result after a succesful Prepare operation. First screen shows a Resource Group that contains the original cloud service. Second screen shows the new "-Migrated" resource group that contains the equivalent Azure Resource Manager resources.
+### <a name="validate"></a>Érvényesítés
+Az érvényesítés művelet a migrálási folyamat első lépése. A lépés célja, hogy a háttérben elemezze a migrálás alatt álló erőforrások adatait, valamint sikeres/sikertelen eredményt adjon vissza, ha az erőforrások migrálhatók.
 
-![Screenshot that shows Portal classic cloud service](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+Ki kell választania a virtuális hálózatot vagy üzemeltetett szolgáltatást (ha az nem virtuális hálózat), amelyet érvényesíteni kíván a migrálásra.
 
-![Screenshot that shows Portal Azure Resource Manager resources in Prepare](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+* Ha az erőforrás nem migrálható, az Azure platform felsorolja a támogatás hiányának okait.
+
+A tárolási szolgáltatások érvényesítésekor a migrált fiókot egy olyan erőforráscsoportban fogja találni, amelynek a neve megegyezik a tárfiókkal, a „-Migrated” karakterlánccal kiegészítve.  Például, ha a tárfiókja neve „mystorage”, az Azure Resource Manager-kompatibilis erőforrást a „mystorage-Migrated” nevű erőforráscsoportban fogja találni, amely egy „mystorage” nevű tárfiókot tartalmaz.
+
+### <a name="prepare"></a>Előkészítés
+Az előkészítés művelet a migrálási folyamat második lépése. A lépés célja, hogy szimulálja az IaaS-erőforrások átalakítását klasszikusból Resource Manager-alapú erőforrásokká, valamint ezt egymás mellett vizuálisan megjelenítse.
+
+Ki kell választania a virtuális hálózatot vagy üzemeltetett szolgáltatást (ha az nem virtuális hálózat), amelyet elő kíván készíteni a migrálásra.
+
+* Ha az erőforrás nem migrálható, az Azure platform leállítja a migrálási folyamatot, és felsorolja az előkészítés művelet sikertelenségének okait.
+* Ha az erőforrás migrálható, az Azure platform először lezárja a felügyeleti sík műveleteit a migrálás alatt álló erőforrásokon. Például nem csatolhat adatlemezt egy migrálás alatt álló virtuális géphez.
+
+Az Azure platform ezután elindítja a migrálandó erőforrások metaadatainak migrálását a klasszikus környezetből Resource Manager-alapúba.
+
+Az előkészítési művelet befejezése után lehetősége van az erőforrások megjelenítésére a klasszikus és a Resource Manager-alapú környezetben is. Az Azure platform a klasszikus üzemi modellben minden egyes felhőszolgáltatáshoz létrehoz egy erőforráscsoport-nevet a következő mintának megfelelően: `cloud-service-name>-Migrated`.
 
 > [!NOTE]
-> Virtual Machines that are not in a classic Virtual Network are stopped deallocated in this phase of migration.
->
->
+> A migrált erőforrásokhoz létrehozott (azaz a „-Migrated”) erőforráscsoport nevét nem választhatja ki, azonban a migrálás befejezése után az Azure Resource Manager áthelyezés szolgáltatásával az erőforrásokat bármely erőforráscsoportban elhelyezheti. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../articles/resource-group-move-resources.md)
 
-### <a name="check-manual-or-scripted"></a>Check (manual or scripted)
-In the check step, you can optionally use the configuration that you downloaded earlier to validate that the migration looks correct. Alternatively, you can sign in to the portal and spot check the properties and resources to validate that metadata migration looks good.
+Itt két képernyőkép látható, amelyek egy sikeres előkészítési művelet eredményét mutatják. Az első képernyőképen egy erőforráscsoport látható, amely az eredeti felhőszolgáltatást tartalmazza. A második képernyőképen az új „-Migrated” erőforráscsoport látható, amely a fentieknek megfelelő Azure Resource Manager-erőforrásokat tartalmazza.
 
-If you are migrating a virtual network, most configuration of virtual machines is not restarted. For applications on those VMs, you can validate that the application is still up and running.
+![Képernyőkép a Portal klasszikus felhőszolgáltatásáról](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
 
-You can test your monitoring/automation and operational scripts to see if the VMs are working as expected and if your updated scripts work correctly. Only GET operations are supported when the resources are in the prepared state.
-
-There is no set time window before which you need to commit the migration. You can take as much time as you want in this state. However, the management plane is locked for these resources until you either abort or commit.
-
-If you see any issues, you can always abort the migration and go back to the classic deployment model. After you go back, the Azure platform will open the management-plane operations on the resources so that you can resume normal operations on those VMs in the classic deployment model.
-
-### <a name="abort"></a>Abort
-Abort is an optional step that you can use to revert your changes to the classic deployment model and stop the migration.
+![Képernyőkép a Portal Azure Resource Manager-erőforrásairól előkészítés közben](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
 
 > [!NOTE]
-> This operation cannot be executed after you have triggered the commit operation.     
+> A nem klasszikus virtuális hálózatban lévő virtuális gépek felszabadítva leállnak a migrálás ezen lépésében.
 >
 >
 
-### <a name="commit"></a>Commit
-After you finish the validation, you can commit the migration. Resources do not appear anymore in classic and are available only in the Resource Manager deployment model. The migrated resources can be managed only in the new portal.
+### <a name="check-manual-or-scripted"></a>Ellenőrzés (manuális vagy szkriptalapú)
+Az ellenőrzés lépésben dönthet úgy, hogy a korábban letöltött konfigurációval megerősíti, hogy a migrálás megfelelő. Alternatív megoldásként bejelentkezhet a portálra, és a tulajdonságok és az erőforrások szúrópróbaszerű ellenőrzésével megerősítheti, hogy a metaadatok migrálása megfelelő.
+
+Ha virtuális hálózatot migrál, a virtuális gépek legtöbb konfigurációja nem indul újra. Az ezeken a virtuális gépeken található alkalmazások esetén ellenőrizheti, hogy továbbra is megfelelően működnek és futnak-e.
+
+A megfigyelési/automatizálási és működési szkriptek tesztelésével ellenőrizheti, hogy a virtuális gépek és a frissített parancsfájlok a várakozásoknak megfelelően működnek-e. Csak a GET műveletek támogatottak, amikor az erőforrások az előkészített állapotban vannak.
+
+Nincs megadott időtartam, miután véglegesítenie kell a migrálást. Bármennyi időt eltölthet ebben az állapotban. A felügyeleti sík azonban zárolva van ezekhez az erőforrásokhoz, amíg meg nem szakítja vagy véglegesíti a műveletet.
+
+Ha bármilyen problémát észlel, mindig megszakíthatja a migrálást, és visszatérhet a klasszikus üzemi modellhez. Miután visszatér, az Azure platform megnyitja a felügyeleti sík műveleteket az erőforráson, hogy folytathassa a normál üzemeltetést a virtuális gépeken a klasszikus üzemi modellben.
+
+### <a name="abort"></a>Megszakítás
+A megszakítás egy választható lépés, amellyel visszaállíthatja a klasszikus üzemi modell módosításait, és leállíthatja a migrálást.
 
 > [!NOTE]
-> This is an idempotent operation. If it fails, it is recommended that you retry the operation. If it continues to fail, create a support ticket or create a forum post with a ClassicIaaSMigration tag on our [VM forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows).
+> Ezt a műveletet nem lehet végrehajtani, miután elindította a véglegesítés műveletet.     
+>
+>
+
+### <a name="commit"></a>Véglegesítés
+Az ellenőrzés befejezése után véglegesítheti a migrálást. Az erőforrások ezután nem jelennek meg a klasszikus modellben, és csak a Resource Manager-alapú üzemi modellben érhetők el. A migrált erőforrások csak az új portálon kezelhetők.
+
+> [!NOTE]
+> Ez egy idempotens művelet. Ha sikertelen, javasoljuk, hogy próbálja újra a műveletet. Ha továbbra is sikertelen, hozzon létre egy támogatási jegyet, vagy egy fórumbejegyzést ClassicIaaSMigration címkével a [VM fórumunkon](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows).
 >
 >
 <br>
-Here is a flowchart of the steps during a migration process
+Folyamatábra a migrálási folyamat lépéseiről
 
-![Screenshot that shows the migration steps](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Képernyőkép a migrálási lépésekről](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="translation-of-classic-to-azure-resource-manager-resources"></a>Translation of classic to Azure Resource Manager resources
-You can find the classic and Resource Manager representations of the resources in the following table. Other features and resources are not currently supported.
+## <a name="translation-of-classic-to-azure-resource-manager-resources"></a>Erőforrások fordítása klasszikusból Azure Resource Manager-alapúba
+Az erőforrások klasszikus és Resource Manager-alapú ábrázolását a következő táblázatban találja. Az egyéb szolgáltatások és erőforrások jelenleg nem támogatottak.
 
-| Classic representation | Resource Manager representation | Detailed notes |
+| Klasszikus ábrázolás | Resource Manager-ábrázolás | Részletes megjegyzések |
 | --- | --- | --- |
-| Cloud service name |DNS name |During migration, a new resource group is created for every cloud service with the naming pattern `<cloudservicename>-migrated`. This resource group contains all your resources. The cloud service name becomes a DNS name that is associated with the public IP address. |
-| Virtual machine |Virtual machine |VM-specific properties are migrated unchanged. Certain osProfile information, like computer name, is not stored in the classic deployment model and remains empty after migration. |
-| Disk resources attached to VM |Implicit disks attached to VM |Disks are not modeled as top-level resources in the Resource Manager deployment model. They are migrated as implicit disks under the VM. Only disks that are attached to a VM are currently supported. Resource Manager VMs can now use classic storage accounts, which allows the disks to be easily migrated without any updates. |
-| VM extensions |VM extensions |All the resource extensions, except XML extensions, are migrated from the classic deployment model. |
-| Virtual machine certificates |Certificates in Azure Key Vault |If a cloud service contains service certificates, a new Azure key vault per cloud service and moves the certificates into the key vault. The VMs are updated to reference the certificates from the key vault. <br><br> **NOTE:** Please do not delete the keyvault as it can cause the VM to go into a failed state. We're working on improving things in the backend so that Key Vaults can be deleted safely or moved along with the VM to a new subscription. |
-| WinRM configuration |WinRM configuration under osProfile |Windows Remote Management configuration is moved unchanged, as part of the migration. |
-| Availability-set property |Availability-set resource | Availability-set specification was a property on the VM in the classic deployment model. Availability sets become a top-level resource as part of the migration. The following configurations are not supported: multiple availability sets per cloud service, or one or more availability sets along with VMs that are not in any availability set in a cloud service. |
-| Network configuration on a VM |Primary network interface |Network configuration on a VM is represented as the primary network interface resource after migration. For VMs that are not in a virtual network, the internal IP address changes during migration. |
-| Multiple network interfaces on a VM |Network interfaces |If a VM has multiple network interfaces associated with it, each network interface becomes a top-level resource as part of the migration in the Resource Manager deployment model, along with all the properties. |
-| Load-balanced endpoint set |Load balancer |In the classic deployment model, the platform assigned an implicit load balancer for every cloud service. During migration, a new load-balancer resource is created, and the load-balancing endpoint set becomes load-balancer rules. |
-| Inbound NAT rules |Inbound NAT rules |Input endpoints defined on the VM are converted to inbound network address translation rules under the load balancer during the migration. |
-| VIP address |Public IP address with DNS name |The virtual IP address becomes a public IP address and is associated with the load balancer. |
-| Virtual network |Virtual network |The virtual network is migrated, with all its properties, to the Resource Manager deployment model. A new resource group is created with the name `-migrated`. |
-| Reserved IPs |Public IP address with static allocation method |Reserved IPs associated with the load balancer are migrated, along with the migration of the cloud service or the virtual machine. Unassociated reserved IP migration is not currently supported. |
-| Public IP address per VM |Public IP address with dynamic allocation method |The public IP address associated with the VM is converted as a public IP address resource, with the allocation method set to static. |
-| NSGs |NSGs |Network security groups associated with a subnet are cloned as part of the migration to the Resource Manager deployment model. The NSG in the classic deployment model is not removed during the migration. However, the management-plane operations for the NSG are blocked when the migration is in progress. |
-| DNS servers |DNS servers |DNS servers associated with a virtual network or the VM are migrated as part of the corresponding resource migration, along with all the properties. |
-| UDRs |UDRs |User-defined routes associated with a subnet are cloned as part of the migration to the Resource Manager deployment model. The UDR in the classic deployment model is not removed during the migration. The management-plane operations for the UDR are blocked when the migration is in progress. |
-| IP forwarding property on a VM's network configuration |IP forwarding property on the NIC |The IP forwarding property on a VM is converted to a property on the network interface during the migration. |
-| Load balancer with multiple IPs |Load balancer with multiple public IP resources |Every public IP associated with the load balancer is converted to a public IP resource and associated with the load balancer after migration. |
-| Internal DNS names on the VM |Internal DNS names on the NIC |During migration, the internal DNS suffixes for the VMs are migrated to a read-only property named “InternalDomainNameSuffix” on the NIC. The suffix remains unchanged after migration and VM resolution should continue to work as previously. |
-| Virtual Network Gateway |Virtual Network Gateway |Virtual Network Gateway properties are migrated unchanged. The VIP associated with the gateway does not change either. |
-| Local network site |Local Network Gateway |Local network site properties are migrated unchanged to a new resource called Local Network Gateway. This represent on premises address prefixes and remote gateway IP. |
-| Connections references |Connection |Connectivity references between gateway and local network site in network configuration is represented by a newly created resource called Connection in resource manager after migration. All properties of connectivity reference in network configuration files are copied unchanged to the newly created Connection resource. VNet to VNet connectivity in classic is achieved by creating two IPsec tunnels to local network sites representing the VNets. This is transformed to Vnet2Vnet connection type in resource manager model without requiring local network gateways. |
+| Felhőszolgáltatás neve |DNS-név |A migrálás során minden felhőszolgáltatáshoz egy új erőforráscsoport jön létre a következő elnevezési mintának megfelelően: `<cloudservicename>-migrated`. Ez az erőforráscsoport tartalmazza az összes erőforrást. A felhőszolgáltatás egy DNS-névvé alakul, amely a nyilvános IP-címhez van társítva. |
+| Virtuális gép |Virtuális gép |A virtuális gépre jellemző tulajdonságok a migrálás során nem változnak. Bizonyos osProfile-adatok, például a számítógép neve, nincsenek a klasszikus üzemi modellben tárolva, ezért üresek maradnak a migrálás után. |
+| A virtuális géphez csatolt lemezerőforrások |A virtuális géphez csatolt implicit lemezek |A lemezek nem legfelső szintű erőforrásként vannak modellezve a Resource Manager-alapú üzemi modellben. A virtuális gép implicit lemezeiként lesznek migrálva. Jelenleg csak a virtuális géphez csatolt lemezek támogatottak. A Resource Manager virtuális gépek mostantól használhatnak klasszikus tárfiókokat, amelyek lehetővé teszik a lemezek egyszerű migrálását frissítések nélkül. |
+| Virtuálisgép-bővítmények |Virtuálisgép-bővítmények |Az összes erőforrás-bővítmény, az XML-bővítmények kivételével, migrálva lett a klasszikus üzemi modellből. |
+| A virtuális gép tanúsítványai |Tanúsítványok az Azure Key Vaultban |Ha egy felhőszolgáltatás szolgáltatási tanúsítványokat tartalmaz, a rendszer felhőszolgáltatásonként létrehoz egy új Azure-kulcstartót, amelybe áthelyezi a tanúsítványokat. A virtuális gépek frissülnek, hogy a kulcstartóban található tanúsítványokra hivatkozzanak. <br><br> **MEGJEGYZÉS:** Ne törölje a kulcstartót, mivel ez sikertelen állapotba helyezheti a virtuális gépet. Jelenleg a háttérrendszer fejlesztésén dolgozunk, hogy a kulcstartók biztonságosan törölhetők, illetve a virtuális géppel együtt egy új előfizetésbe áthelyezhetők legyenek. |
+| WinRM-konfiguráció |WinRM-konfiguráció osProfile alatt |A Rendszerfelügyeleti webszolgáltatások konfiguráció az áthelyezésekor változatlan marad a migrálás során. |
+| Rendelkezésre állási csoport tulajdonsága |Rendelkezésre állási csoport erőforrás | A rendelkezésre állási csoport specifikációja egy tulajdonság volt a virtuális gépen a klasszikus üzemi modellben. A rendelkezésre állási csoportok legfelső szintű erőforrásokká alakulnak a migrálás részeként. A következő konfigurációk nem támogatottak: több rendelkezésre állási csoport felhőszolgáltatásonként, illetve egy vagy több rendelkezésre állási csoport olyan virtuális gépekkel, amelyek nem tartoznak egy rendelkezésre állási csoporthoz sem egy felhőszolgáltatásban. |
+| Hálózati konfiguráció egy virtuális gépen |Elsődleges hálózati adapter |A hálózati konfiguráció egy virtuális gépen az elsődleges hálózati adapter erőforrásként jelenik meg a migrálás után. Azoknál a virtuális gépeknél, amelyek nem tagjai virtuális hálózatnak, a belső IP-cím módosul a migrálás során. |
+| Több hálózati adapter egy virtuális gépen |Hálózati illesztők |Ha egy virtuális géphez több hálózati adapter is van társítva, mindegyik hálózati adapter legfelső szintű erőforrássá alakul a migrálás részeként a Resource Manager-alapú üzemi modellben az összes tulajdonsággal együtt. |
+| Elosztott terhelésű végpont csoport |Terheléselosztó |A klasszikus üzemi modellben a platform egy implicit terheléselosztót rendel minden felhőszolgáltatáshoz. A migrálás során egy új terheléselosztó erőforrás jön létre, és a terheléselosztó végpont csoport terheléselosztó szabályokká alakul. |
+| Bejövő NAT-szabályok |Bejövő NAT-szabályok |A virtuális gépen meghatározott bemeneti végpontok a terheléselosztó hálózati címfordításra vonatkozó bejövő szabályaivá alakulnak a migrálás során. |
+| Virtuális IP-cím |Nyilvános IP-cím DNS-névvel |A virtuális IP-cím nyilvános IP-címmé alakul, és a terheléselosztóhoz lesz társítva. A virtuális IP-cím csak akkor migrálható, ha társítva van hozzá egy bemeneti végpont. |
+| Virtuális hálózat |Virtuális hálózat |A virtuális hálózat az összes tulajdonságával a Resource Manager-alapú üzemi modellbe lesz migrálva. Létrejön egy új erőforráscsoport a következő névvel: `-migrated`. |
+| Fenntartott IP-címek |Nyilvános IP-cím statikus kiosztási módszerrel |A terheléselosztóhoz társított fenntartott IP-címek a felhőszolgáltatással vagy a virtuális géppel együtt migrálódnak. A nem társított fenntartott IP-címek migrálása jelenleg nem támogatott. |
+| Nyilvános IP-cím virtuális gépenként |Nyilvános IP-cím dinamikus kiosztási módszerrel |A virtuális géphez társított nyilvános IP-cím nyilvános IP-cím erőforrássá alakul, statikus kiosztási módszerrel beállítva. |
+| NSG-k |NSG-k |Az alhálózatokhoz társított hálózati biztonsági csoportokat a Resource Manager-alapú üzemi modellbe való migrálás részeként a rendszer klónozza. A hálózati biztonsági csoportok a klasszikus üzemi modellben nem törlődnek a migráláskor. A hálózati biztonsági csoportok felügyeletisík-műveletei azonban zárolva vannak, amíg a migrálás folyamatban van. |
+| DNS-kiszolgálók |DNS-kiszolgálók |A virtuális hálózathoz vagy virtuális géphez társított DNS-kiszolgálók a megfelelő erőforrás-migrálás részeként migrálódnak az összes tulajdonsággal együtt. |
+| UDR-ek |UDR-ek |Az alhálózatokhoz társított felhasználó által megadott útvonalakat a Resource Manager-alapú üzemi modellbe való migrálás részeként a rendszer klónozza. A felhasználó által megadott útvonalak a klasszikus üzemi modellben nem törlődnek a migráláskor. A felhasználó által megadott útvonalak felügyeletisík-műveletei zárolva vannak, amíg a migrálás folyamatban van. |
+| IP-továbbítási tulajdonság a virtuális gép hálózati konfigurációjában |IP-továbbítási tulajdonság a hálózati adapteren |A virtuális gép IP-továbbítási tulajdonsága a hálózati adapter tulajdonságává alakul a migrálás közben. |
+| Terheléselosztó több IP-címmel |Terheléselosztó több nyilvános IP-erőforrással |A terheléselosztóhoz társított összes nyilvános IP-cím a terheléselosztóhoz társított nyilvános IP-erőforrássá alakul a migrálás után. |
+| Belső DNS-nevek a virtuális gépen |Belső DNS-nevek a hálózati adapteren |A migrálás során a virtuális gép belső DNS-utótagjai egy „InternalDomainNameSuffix” nevű csak olvasható tulajdonságba migrálódnak a hálózati adapteren. Az utótag változatlan marad a migrálás után, és a virtuális gép feloldása továbbra is a korábbiaknak megfelelően kell, hogy működjön. |
+| Virtuális hálózati átjáró |Virtuális hálózati átjáró |A virtuális hálózati átjáró tulajdonságai a migrálás során nem változnak. Az átjáróhoz társított virtuális IP-cím sem változik. |
+| Helyi hálózati hely |Helyi hálózati átjáró |A helyi hálózati hely tulajdonságai módosítás nélkül migrálódnak egy Helyi hálózati átjáró nevű új erőforrásba. Ez a helyszíni címelőtagokat és a távoli átjárók IP-címét képviseli. |
+| Kapcsolati hivatkozások |Kapcsolat |Az átjáró és a helyi hálózati hely közötti kapcsolati hivatkozásokat a hálózati konfigurációban egy Connection nevű újonnan létrehozott erőforrás képviseli a Resource Managerben a migrálás után. A rendszer a hálózati konfigurációs fájlokban található kapcsolati hivatkozások összes tulajdonságát módosítás nélkül másolja át az újonnan létrehozott Connection erőforrásba. VNetek közötti kapcsolatot klasszikus modellben a VNeteket képviselő helyi hálózati helyre vezető két IPsec-alagút létrehozásával létesíthet. Ez a Resource Manager-modellben Vnet2Vnet kapcsolati típusra alakul anélkül, hogy szükség lenne helyi hálózati átjárókra. |
 
-## <a name="changes-to-your-automation-and-tooling-after-migration"></a>Changes to your automation and tooling after migration
-As part of migrating your resources from the Classic deployment model to the Resource Manager deployment model, you have to update your existing automation or tooling to ensure that it continues to work after the migration.
+## <a name="changes-to-your-automation-and-tooling-after-migration"></a>Az automatizálás és az eszközök módosítása a migrálás után
+Az erőforrásoknak a klasszikus üzemi modellből Resource Manager-alapú üzemi modellbe való migrálása részeként frissítenie kell a meglévő automatizálást vagy eszközöket, hogy biztosítsa a megfelelő működésüket a migrálás után.

@@ -1,11 +1,10 @@
-* If the unmanaged disk is in a storage account previously encrypted through Azure Storage Service Encryption, you can't convert it to a managed disk. For steps to copy and use these virtual hard disks (VHDs) in managed disks, see the [Managed disks and Azure Storage Service Encryption](#managed-disks-and-azure-storage-service-encryption) section later in this article.
 
-* The conversion requires a restart of the VM, so schedule the migration of your VMs during a pre-existing maintenance window. 
+* Az átalakításhoz újra kell indítani a virtuális gépet, ezért ütemezze a virtuális gépek migrálását egy meglévő karbantartási időszakra. 
 
-* The conversion is not reversible. 
+* Az átalakítás nem vonható vissza. 
 
-* Be sure to test the conversion. Migrate a test virtual machine before you perform the migration in production.
+* Mindenképpen tesztelje az átalakítást. Migráljon egy tesztcélú virtuális gépet, mielőtt végrehajtja a migrálást éles környezetben.
 
-* During the conversion, you deallocate the VM. The VM receives a new IP address when it is started after the conversion. If needed, you can [assign a static IP address](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) to the VM.
+* Az átalakítás közben felszabadítja a virtuális gépet. A virtuális gép új IP-címet kap, amikor elindul az átalakítás után. Szükség esetén [hozzárendelhet egy statikus IP-címet](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) a virtuális géphez.
 
-* The original VHDs and the storage account used by the VM before conversion are not deleted. They continue to incur charges. To avoid being billed for these artifacts, delete the original VHD blobs after you verify that the conversion is complete.
+* A virtuális gép által az átalakítás előtt használt eredeti virtuális merevlemezeket és a tárfiókot nem törli a rendszer. A futtatásuk továbbra is költségekkel jár. Annak érdekében, hogy ezekért az összetevőkért a továbbiakban ne fizessen, törölje az eredeti virtuálismerevlemez-blobokat, miután meggyőződött arról, hogy az átalakítás befejeződött.

@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/12/2017
+ms.date: 08/06/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 5b4a2b7646a2ead1df459c5d9a17d125821c86a5
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: ff4c937fe06d88c6189d39cf799a5d349d0e280a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/21/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
@@ -108,7 +107,60 @@ Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>A Log Analyticshez való hozzáférés szabályozása Azure-engedélyekkel
 Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../active-directory/role-based-access-control-configure.md) című rész lépéseit.
 
-Ha legalább olvasási Azure-engedéllyel rendelkezik a Log Analytics-munkaterületen, az **OMS-portál** feladatra kattintva nyithatja meg az OMS-portált a Log Analytics-munkaterület megtekintésekor.
+Az Azure két beépített felhasználói szerepkört biztosít a Log Analyticshez:
+- Log Analytics olvasó
+- Log Analytics közreműködő
+
+A *Log Analytics olvasó* szerepkör tagjai a következőket végezhetik el:
+- Az összes monitorozási adat megtekintése és keresése 
+- A monitorozási beállítások megtekintése, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson.
+
+| Típus    | Engedély | Leírás |
+| ------- | ---------- | ----------- |
+| Műveletek | `*/read`   | Az összes erőforrás és erőforrás-konfiguráció megtekintése. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai |
+| Műveletek | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Log Search v2-lekérdezések végrehajtása |
+| Műveletek | `Microsoft.OperationalInsights/workspaces/search/action` | Log Search v1-lekérdezések végrehajtása |
+| Műveletek | `Microsoft.Support/*` | Támogatási esetek nyitása |
+|Nem művelet | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Meggátolja az adatgyűjtési API használatához és az ügynökök telepítéséhez szükséges munkaterületkulcsok olvasását |
+
+
+A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik el:
+- Az összes monitorozási adat olvasása 
+- Automation-fiókok létrehozása és konfigurálása
+- Felügyeleti megoldások hozzáadása és eltávolítása
+- A tárfiókkulcsok olvasása 
+- Az Azure Storage-naplók gyűjtésének konfigurálása
+- Azure-erőforrások monitorozási beállításainak szerkesztése, beleértve a következőket:
+  - Virtuális gépi bővítmények hozzáadása a virtuális gépekhez
+  - Az Azure Diagnostics konfigurálása az összes Azure-erőforráson
+
+> [!NOTE] 
+> Ezzel a funkcióval virtuális gépi bővítményt adhat a virtuális gépekhez a virtuális gép teljes körű irányítása érdekében.
+
+| Engedély | Leírás |
+| ---------- | ----------- |
+| `*/read`     | Az összes erőforrás és erőforrás-konfiguráció megtekintése. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai |
+| `Microsoft.Automation/automationAccounts/*` | Azure Automation-fiókok létrehozása és konfigurálása, beleértve runbookok hozzáadását és szerkesztését |
+| `Microsoft.ClassicCompute/virtualMachines/extensions/*` <br> `Microsoft.Compute/virtualMachines/extensions/*` | Virtuális gépi bővítmények hozzáadása, frissítése és eltávolítása, beleértve a Microsoft Monitoring Agent bővítményt és a Linuxhoz készült OMS-ügynök bővítményt |
+| `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | A tárfiókkulcs megtekintése. A Log Analytics az Azure Storage-fiókok naplóinak olvasására való konfigurálásához szükséges |
+| `Microsoft.Insights/alertRules/*` | Riasztási szabályok hozzáadása, frissítése és eltávolítása |
+| `Microsoft.Insights/diagnosticSettings/*` | Diagnosztikai beállítások hozzáadása, frissítése és eltávolítása az Azure-erőforrásokról |
+| `Microsoft.OperationalInsights/*` | Konfigurációk hozzáadása, frissítése és eltávolítása a Log Analytics-munkaterületekről |
+| `Microsoft.OperationsManagement/*` | Felügyeleti megoldások hozzáadása és eltávolítása |
+| `Microsoft.Resources/deployments/*` | Üzemelő példányok létrehozása és törlése. Megoldások, munkaterületek és Automation-fiókok hozzáadásához és eltávolításához szükséges |
+| `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | Üzemelő példányok létrehozása és törlése. Megoldások, munkaterületek és Automation-fiókok hozzáadásához és eltávolításához szükséges |
+
+Felhasználók a felhasználói szerepkörökhöz való hozzáadásához `Microsoft.Authorization/*/Delete` és `Microsoft.Authorization/*/Write` engedély szükséges.
+
+Ezen szerepkörökkel különféle hatókörökben biztosíthat hozzáférést a felhasználók számára:
+- Előfizetés – Hozzáférés az előfizetésben lévő összes munkaterülethez
+- Erőforráscsoport – Hozzáférés az erőforráscsoportban lévő összes munkaterülethez
+- Erőforrás – Hozzáférés kizárólag az adott erőforráshoz
+
+Az [egyéni szerepkörök](../active-directory/role-based-access-control-custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
+
+### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Az Azure felhasználói szerepkörei és a Log Analytics-portál felhasználói szerepkörei
+Ha legalább olvasási Azure-engedéllyel rendelkezik a Log Analytics-munkaterületen, az **OMS-portál** feladatra kattintva nyithatja meg a Log Analytics-portált a Log Analytics-munkaterület megtekintésekor.
 
 A Log Analytics-portál megnyitásával átvált a korábbi Log Analytics felhasználói szerepkörök használatára. Ha nem rendelkezik szerepkör-hozzárendeléssel a Log Analytics-portálon, a szolgáltatás [ellenőrzi a munkaterületre érvényes Azure-engedélyeit](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
 A Log Analytics-portálon érvényes szerepkör-hozzárendelés meghatározása a következők használatával történik:
@@ -195,7 +247,7 @@ A következő lépésekkel távolíthat el egy felhasználót egy munkaterületr
 4. Jelölje ki a csoportot a kapott listán, majd kattintson a **Hozzáadás** gombra.
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Meglévő munkaterület csatolása Azure-előfizetéshez
-Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor kell társítani egy Azure-előfizetéshez. Az e dátum előtt létrehozott munkaterületeket a legközelebbi bejelentkezéskor kell társítani egy munkaterülethez. Amikor az Azure Portalon hoz létre egy munkaterületet, vagy ha munkaterületét egy Azure-előfizetéshez társítja, az Azure Active Directory a szervezeti fiókjaként lesz társítva.
+Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor kell társítani egy Azure-előfizetéshez. Az ezen dátum előtt létrehozott munkaterületeket a bejelentkezéskor kell társítani egy munkaterülethez. Amikor az Azure Portalon hoz létre egy munkaterületet, vagy ha munkaterületét egy Azure-előfizetéshez társítja, az Azure Active Directory a szervezeti fiókjaként lesz társítva.
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>Munkaterület társítása egy Azure-előfizetéshez az OMS-portálon
 

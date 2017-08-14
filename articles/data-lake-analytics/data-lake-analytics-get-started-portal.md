@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: b004310a3b2667134c9ad890bd907dc8ae439dd9
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Az Azure Data Lake Analytics használatának első lépései az Azure Portallal
@@ -36,7 +35,7 @@ Az oktatóanyag elindításához **Azure-előfizetéssel** kell rendelkeznie. L�
 A következő lépésben egyidejűleg hozhat létre fiókot a Data Lake Analytics és a Data Lake Store szolgáltatáshoz.  Ez az egyszerű lépés csupán 60 másodpercet vesz igénybe.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson az **Új** >  **Intelligencia és elemzés** > **Data Lake Analytics** elemre.
+2. Kattintson az **Új** >  **Adatok + analitika** > **Data Lake Analytics** elemre.
 3. Adja meg az alábbi elemek értékeit:
    * **Név**: Nevezze el a Data Lake Analytics-fiókot (kizárólag kisbetűk és számok használhatók).
    * **Előfizetés:** Válassza ki az Analytics-fiókhoz használt Azure-előfizetést.
@@ -71,7 +70,7 @@ OUTPUT @a
 3. Kattintson a **Feladat elküldése** elemre.   
 4. Várjon, amíg a feladat állapota **Sikeres** nem lesz.
 5. Sikertelen művelet esetén lásd: [Data Lake Analytics-feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
-6. Kattintson a **Kimenet** fülre, majd a `SearchLog-from-Data-Lake.csv` elemre. 
+6. Kattintson a **Kimenet** fülre, majd a `data.csv` elemre. 
 
 ## <a name="see-also"></a>Lásd még:
 

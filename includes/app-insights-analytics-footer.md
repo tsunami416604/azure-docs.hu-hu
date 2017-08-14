@@ -1,17 +1,17 @@
 
-## <a name="analytics"></a>Analytics
-* [Overview](../articles/application-insights/app-insights-analytics.md)
-* [Tour of Analytics](../articles/application-insights/app-insights-analytics-tour.md)
-  * Start here. A tutorial covering the main features.
-* [Queries](../articles/application-insights/app-insights-analytics-reference.md#queries-and-operators)
-  * Use operators such as `where` and `count` to build queries.
-* [Aggregation](../articles/application-insights/app-insights-analytics-reference.md#aggregations)
-  * Used to compute statistics over groups of records
-* [Scalars](../articles/application-insights/app-insights-analytics-reference.md#scalars)
-  * Numbers, strings, and other expressions used to form query parameters.
-* [Using Analytics](../articles/application-insights/app-insights-analytics-using.md)
-  * Using Analytics.
-* [Language Reference](../articles/application-insights/app-insights-analytics-reference.md)
-  * One-page reference.
-* [Troubleshooting](../articles/application-insights/app-insights-analytics-troubleshooting.md)
+## <a name="analytics"></a>Elemzés
+* [Áttekintés](../articles/application-insights/app-insights-analytics.md)
+* [Az Elemzés bemutatása](../articles/application-insights/app-insights-analytics-tour.md)
+  * Itt érdemes kezdenie. Ez a fő funkciókat bemutató oktatóanyag.
+* [Lekérdezések](../articles/application-insights/app-insights-analytics-reference.md)
+  * Lekérdezések összeállítása a `where` és a `count` operátorok segítségével.
+* [Összesítés](../articles/application-insights/app-insights-analytics-reference.md)
+  * Statisztikák kiszámítására szolgál egy rekordcsoportban
+* [Skalárok](../articles/application-insights/app-insights-analytics-reference.md)
+  * Lekérdezési paraméterek kialakítására szolgáló számok, karakterláncok és egyéb kifejezések.
+* [Az Elemzés használata](../articles/application-insights/app-insights-analytics-using.md)
+  * Az Elemzés használata.
+* [Nyelvi referencia](../articles/application-insights/app-insights-analytics-reference.md)
+  * Egyoldalas referencia.
+* [hibaelhárítással](../articles/application-insights/app-insights-analytics-troubleshooting.md)
 

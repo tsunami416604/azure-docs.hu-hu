@@ -10,18 +10,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 08/01/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: e21b7733bc0f6b8625fbdcec3529ad603ce306c1
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: f66c4c0b7c391b3fc5ee042cc7a6643e46566d3f
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 08/04/2017
 
 ---
-# Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
-<a id="risky-sign-ins-report-in-the-azure-active-directory-portal" class="xliff"></a>
+# <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
 
 Az Azure Active Directory (Azure AD) biztonsági jelentéseivel megtudhatja, hogy a környezetben mekkora valószínűséggel sérült egyes felhasználói fiókok biztonsága. 
 
@@ -38,8 +37,20 @@ Az [Azure Portalon](https://portal.azure.com) a biztonsági jelentések az **Azu
 ![Kockázatos bejelentkezések](./media/active-directory-reporting-security-risky-sign-ins/10.png)
 
 
-## Azure Active Directory – ingyenes és alapszintű kiadások
-<a id="azure-active-directory-free-and-basic-edition" class="xliff"></a>
+## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Milyen Azure AD-licencre van szükség a biztonsági jelentések eléréséhez?  
+
+Az Azure Active Directory minden kiadása biztosítja a kockázatos bejelentkezések jelentéseit.  
+A jelentések részletességi szintje azonban különbözik a kiadások között: 
+
+- Már az **Azure Active Directory ingyenes és alapszintű kiadásaiban** is szerepel a kockázatos bejelentkezések listája. 
+
+- Az **Azure Active Directory 1. prémium** kiadása kibővíti ezt a modellt, mert lehetővé teszi azt is, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázatos eseményt. 
+
+- Az **Azure Active Directory 2. prémium** kiadása nyújtja a legrészletesebb információkat a mögöttes kockázatos eseményekről, és lehetővé teszi olyan biztonsági házirendek konfigurálását, amelyek automatikusan, a konfigurált kockázati szinteknek megfelelően válaszolnak.
+
+
+
+## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – ingyenes és alapszintű kiadások
 
 Az Azure Active Directory ingyenes és alapszintű kiadása biztosít egy listát, amely az észlelt kockázatos bejelentkezéseket tartalmazza a felhasználókra vonatkozóan. A kockázati eseményekről szóló jelentés a következőket biztosítja:
 
@@ -64,8 +75,7 @@ A kockázatos bejelentkezéssel kapcsolatos vizsgálata alapján visszajelzést 
 
 További részletek: [Kockázati események manuális lezárása](active-directory-identityprotection.md#closing-risk-events-manually).
 
-## Azure Active Directory – prémium szintű kiadások
-<a id="azure-active-directory-premium-editions" class="xliff"></a>
+## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – prémium szintű kiadások
 
 Az Azure Active Directory prémium szintű kiadásaiban a kockázatos bejelentkezési jelentések a következőket tartalmazzák:
 
@@ -114,8 +124,7 @@ Ekkor megnyílik az eseményre vonatkozó **Részletek** panel. A **Részletek**
 
 
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Active Directory Identity Protectionnel kapcsolatos további részletekért lásd: [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 

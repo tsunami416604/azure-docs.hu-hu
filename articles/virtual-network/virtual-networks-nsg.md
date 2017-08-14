@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 4043c68a3c8559eab6f5e4352bb599015366e5b5
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: fac6ee69b5f0377e0515ac9abeb28788cbef9b79
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Hálózati forgalom szűrése hálózati biztonsági csoportokkal
@@ -50,7 +49,7 @@ Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák:
 | --- | --- | --- | --- |
 | **Name (Név)** |A szabály neve. |Egyedinek kell lennie a régión belül.<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat.<br/>Betűvel vagy számmal kell kezdődnie.<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie.<br/>Nem lehet hosszabb 80 karakternél. |Egy NSG-n belül több szabály is lehet, ezért győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel azonosíthatja a szabályok funkcióját. |
 | **Protocol (Protokoll)** |A szabálynak megfelelő protokoll. |TCP, UDP vagy * |A * protokollként történő használata tartalmazza az ICMP-t (csak a kiszolgálók közötti forgalom), valamint az UDP-t és a TCP-t, és csökkentheti a szükséges szabályok számát.<br/>A * használata azonban túl széles körű lehet, ezért ügyeljen arra, hogy csak szükség esetén használja. |
-| **Source port range (Forrásporttartomány)** |A szabálynak megfelelő forrásporttartomány. |Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65635) vagy * (minden porthoz). |A forrásportok rövid élettartamúak is lehetnek. Ha az ügyfélprogram nem egy adott portot használ, a legtöbb esetben a * jelet használja.<br/>A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra.<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani. |
+| **Source port range (Forrásporttartomány)** |A szabálynak megfelelő forrásporttartomány. |Egy portszám 1 és 65535 között, egy porttartomány (például 1–65535) vagy * (minden porthoz). |A forrásportok rövid élettartamúak is lehetnek. Ha az ügyfélprogram nem egy adott portot használ, a legtöbb esetben a * jelet használja.<br/>A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra.<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani. |
 | **Destination port range (Célporttartomány)** |A szabálynak megfelelő célporttartomány. |Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65535) vagy \* (minden porthoz). |A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra.<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani. |
 | **Source address prefix (Forráscímelőtag)** |A szabálynak megfelelő forráscím-előtag vagy címke. |Egy IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez). |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez. |
 | **Destination address prefix (Célcímelőtag)** |A szabálynak megfelelő célcím-előtag vagy címke. | Egy IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez). |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez. |

@@ -1,7 +1,7 @@
-Az Adatkezelővel gráftárolókat hozhat létre, és adatokat adhat hozzá adatbázisához. 
+Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozására is használhatja. 
 
-1. Az Azure Portalon kattintson a navigációs menü **Adatkezelő** elemére. 
-2. Az Adatkezelő panelen kattintson az **Új gráf** elemre, majd töltse ki a lapot az alábbi információk alapján.
+1. Az Azure Portalon kattintson a bal oldali navigációs menü **Adatkezelő (előzetes verzió)** elemére. 
+2. Az **Adatkezelő (előzetes verzió)** panelen kattintson az **Új gráf** lehetőségre, majd töltse ki a lapot a következő információk alapján.
 
     ![Adatkezelő az Azure Portalon](./media/cosmos-db-create-graph/azure-cosmosdb-data-explorer.png)
 

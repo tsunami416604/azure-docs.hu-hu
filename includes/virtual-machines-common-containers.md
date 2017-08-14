@@ -1,4 +1,4 @@
-Az Azure felhőmegoldásai virtuális gépekre (fizikai számítógép hardverelemeinek emulációira) épülnek, ami lehetőséget teremt a szoftvertelepítések gyors csomagolására, illetve a fizikai hardvereknél jobb erőforrás-konszolidációra. A [Docker](https://www.docker.com)-tárolók és -ökoszisztéma révén lényegesen szélesebb körben lehet képes az elosztott szoftverek fejlesztésére, kiadására és kezelésére. A tárolók alkalmazáskódjai el vannak különítve a virtuális gazdagéptől, illetve az ugyanazon virtuális gépen található más tárolóktól. Ez az elkülönítés gyorsabb fejlesztést és üzembe helyezést tesz lehetővé.
+Az Azure felhőmegoldásai virtuális gépekre (fizikai számítógép hardverelemeinek emulációira) épülnek, ami lehetőséget teremt a szoftvertelepítések gyors csomagolására, illetve a fizikai hardvereknél jobb erőforrás-konszolidációra. A [Docker](https://www.docker.com)-tárolók és -ökoszisztéma révén lényegesen több lehetőség áll rendelkezésére az elosztott szoftverek fejlesztésére, kiadására és kezelésére. A tárolók alkalmazáskódjai el vannak különítve a virtuális gazdagéptől, illetve az ugyanazon virtuális gépen található más tárolóktól. Ez az elkülönítés gyorsabb fejlesztést és üzembe helyezést tesz lehetővé.
 
 Az Azure a következő, a Dockerre jellemző előnyöket biztosítja:
 
@@ -100,13 +100,13 @@ Számos népszerű rendszeren helyezhet üzembe teljes virtuálisgép-csoportoka
 
 A Docker saját virtuálisgép-létrehozási ([docker-machine](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)), valamint a Docker és a tároló közötti terheléselosztást vezérlő fürtkezelő eszközökkel ([Swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) is rendelkezik. Ezen kívül az [Azure Docker VM-bővítmény](https://github.com/Azure/azure-docker-extension/blob/master/README.md) alapértelmezés szerint támogatja a [`docker-compose`](https://docs.docker.com/compose/) parancsot, amellyel a konfigurált alkalmazástárolók több tárolón is üzembe helyezhetők.
 
-Mindezek mellett kipróbálhatja a [Mesosphere Data Center Operating System (DCOS)](http://docs.mesosphere.com/install/azurecluster/) rendszerét is. A DCOS alapjául a nyílt forráskódú [Mesos](http://mesos.apache.org/) „elosztottrendszer-kernel” szolgál, amelynek segítségével adatközpontját egyetlen címezhető szolgáltatásként kezelheti. A DCOS több fontos rendszerhez (többek között a [Sparkhoz](http://spark.apache.org/) és a [Kafkához](http://kafka.apache.org/)) való beépített csomagokkal, valamint beépített szolgáltatásokkal (többek között a [Marathon](https://mesosphere.github.io/marathon/) tárolóvezérlő rendszerrel és a [Chronos](https://mesos.github.io/chronos/) elosztott ütemezővel) rendelkezik. A Mesost a Twitter, az AirBnb és egyéb webes vállalkozások tapasztalatai alapján fejlesztették ki. A **Swarm** vezénylési motorként is használható.
+Mindezek mellett kipróbálhatja a [Mesosphere Data Center Operating System (DCOS)](http://docs.mesosphere.com) rendszerét is. A DCOS alapjául a nyílt forráskódú [Mesos](http://mesos.apache.org/) „elosztottrendszer-kernel” szolgál, amelynek segítségével adatközpontját egyetlen címezhető szolgáltatásként kezelheti. A DCOS több fontos rendszerhez (többek között a [Sparkhoz](http://spark.apache.org/) és a [Kafkához](http://kafka.apache.org/)) való beépített csomagokkal, valamint beépített szolgáltatásokkal (többek között a [Marathon](https://mesosphere.github.io/marathon/) tárolóvezérlő rendszerrel és a [Chronos](https://mesos.github.io/chronos/) elosztott ütemezővel) rendelkezik. A Mesost a Twitter, az AirBnb és egyéb webes vállalkozások tapasztalatai alapján fejlesztették ki. A **Swarm** vezénylési motorként is használható.
 
 A [Kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) szintén egy nyílt forráskódú virtuálisgép- és tárolócsoport-kezelési rendszer, amely a Google tapasztalatai alapján lett összeállítva. [A megfelelő hálózati támogatás biztosításához a Kubernetes és a Weave együtt](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave) is használható.
 
-A [Deis](http://deis.io/overview/) egy olyan nyílt forráskódú „szolgáltatásként nyújtott platform” (PaaS), amelynek segítségével leegyszerűsíthető az alkalmazások üzembe helyezése és kezelése a saját kiszolgálóin. Egy egyszerűsített, Heroku típusú munkafolyamattal rendelkező PaaS biztosításához a Deis a Docker és a CoreOS platformokra épül. Így egyszerűen [létrehozhat egy 3 csomópontot tartalmazó Azure virtuálisgép-csoportot és telepítheti a Deist](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) az Azure-on, majd [telepíthet egy Hello World Go alkalmazást](../articles/virtual-machines/linux/deis-cluster.md#deploy-and-scale-a-hello-world-application).
+A [Deis](http://deis.com/) egy olyan nyílt forráskódú „szolgáltatásként nyújtott platform” (PaaS), amelynek segítségével leegyszerűsíthető az alkalmazások üzembe helyezése és kezelése a saját kiszolgálóin. Egy egyszerűsített, Heroku típusú munkafolyamattal rendelkező PaaS biztosításához a Deis a Docker és a CoreOS platformokra épül. Így egyszerűen [létrehozhat egy 3 csomópontot tartalmazó Azure virtuálisgép-csoportot és telepítheti a Deist](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) az Azure-on, majd [telepíthet egy Hello World Go alkalmazást](../articles/virtual-machines/linux/deis-cluster.md#deploy-and-scale-a-hello-world-application).
 
-A [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html), egy optimalizált tárhelyszükségletű, Docker-támogatással és saját, [rkt](https://github.com/coreos/rkt) nevű tárolórendszerrel ellátott Linux-disztribúció is rendelkezik egy [Fleet](https://coreos.com/using-coreos/clustering/) nevű tárolócsoport-kezelési eszközzel.
+A [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html), egy optimalizált tárhelyszükségletű, Docker-támogatással és saját, [rkt](https://github.com/coreos/rkt) nevű tárolórendszerrel ellátott Linux-disztribúció is rendelkezik egy [Fleet](https://coreos.com/fleet/docs/latest/) nevű tárolócsoport-kezelési eszközzel.
 
 Az Ubuntu (egy másik nagyon népszerű Linux-disztribúció) széles körű támogatást biztosít a Dockernek, ugyanakkor a [Linux- (LXC stílusú) fürtöket](https://help.ubuntu.com/lts/serverguide/lxc.html) is támogatja.
 
@@ -133,7 +133,7 @@ Hivatkozások Windows-tárolókhoz:
 
 Hivatkozások a Visual Studio Dockerhez:
 
-* [Visual Studio 2015 RC Tools for Docker – Előzetes verzió](https://visualstudiogallery.msdn.microsoft.com/6f638067-027d-4817-bcc7-aa94163338f0)
+* [Dockerhez készült Visual Studio-eszközök](https://docs.microsoft.com/en-us/dotnet/core/docker/visual-studio-tools-for-docker)
 
 Docker-eszközök:
 
@@ -161,7 +161,7 @@ Linux-disztribúciók és példák az Azure-on:
 
 Konfigurálás, fürtfelügyelet és tárolóvezénylés:
 
-* [CoreOS-flotta](https://coreos.com/using-coreos/clustering/)
+* [CoreOS-flotta](https://coreos.com/fleet/docs/latest/)
 * Deis
 
   * [3 csomópontot tartalmazó Azure virtuálisgép-csoport létrehozása, a Deis telepítése és a Hello World Go alkalmazás elindítása](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -171,10 +171,10 @@ Konfigurálás, fürtfelügyelet és tárolóvezénylés:
   * [Kubernetes megjelenítő](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/)
 * [Mesos](http://mesos.apache.org/)
 
-  * [Mesosphere Data Center Operating System (DCOS)](http://beta-docs.mesosphere.com/install/azurecluster/)
-* [Jenkins](https://jenkins-ci.org/) és [Hudson](http://hudson-ci.org/)
+  * [Mesosphere Data Center Operating System (DCOS)](https://docs.mesosphere.com/1.7/overview/design/azure-container-service/)
+* [Jenkins](https://jenkins.io/) és [Hudson](http://hudson-ci.org/)
 
-  * [Blog: Jenkins alárendelt beépülő modul Azure-hoz](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
+  * [Jenkins virtuálisgép-ügynök beépülő modulja Azure-hoz](https://wiki.jenkins.io/display/JENKINS/Azure+VM+Agents+plugin)
   * [GitHub-tár: Jenkins tároló beépülő modul Azure-hoz](https://github.com/jenkinsci/windows-azure-storage-plugin)
   * [Külső gyártó: Hudson alárendelt beépülő modul Azure-hoz](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
   * [Külső gyártó: Hudson tároló beépülő modul Azure-hoz](https://github.com/hudson3-plugins/windows-azure-storage-plugin)

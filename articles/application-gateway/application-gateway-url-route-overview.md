@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 4b649379ce41a4d6cea93b42fc492fdc0940e689
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 75c3279d2d02cb3c6e949d191c88a1eb18b58a27
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
@@ -33,7 +32,10 @@ Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
 A http://contoso.com/video* URL-hez kapcsolódó kérések a VideoServerPool, a http://contoso.com/images* URL-hez kapcsolódóak pedig az ImageServerPool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
-    
+
+> [!IMPORTANT]
+> A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
+
 ## <a name="urlpathmap-configuration-element"></a>Az UrlPathMap konfigurációs elem
 
 Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-kiszolgálókészletek leképezésében. Az alábbi kódpélda a sablonfájlból származó urlPathMap elem kódrészlete.
@@ -68,7 +70,7 @@ Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-k
 ```
 
 > [!NOTE]
-> PathPattern: ez a beállítás tartalmazza az elérésiút-minták listáját. Minden mintának a / jellel kell kezdődnie, a * jel pedig kizárólag a mintavégi / jel után állhat. Az elérésiút-megfeleltetőben megadott sztring nem tartalmaz szöveget az első ? vagy # után, és ezek a karakterek itt nem megengedettek.
+> PathPattern: ez a beállítás tartalmazza az elérésiút-minták listáját. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérésiút-megfeleltetőben megadott sztring nem tartalmaz szöveget az első ? vagy # után, és ezek a karakterek itt nem megengedettek.
 
 További információért tekintse át az [URL-alapú átirányításhoz készült Resource Manager-sablonokat](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 

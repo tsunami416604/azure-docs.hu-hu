@@ -11,7 +11,7 @@ Az Azure-alapú számítási egység (Azure Compute Unit, ACU) fogalmát azért 
 
 <br>
 
-| Termékváltozat-család | ACU |
+| Termékváltozat-család | ACU \ vCPU |
 | --- | --- |
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 |
 | [A1–A4](../articles/virtual-machines/windows/sizes-general.md) |100 |

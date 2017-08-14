@@ -14,21 +14,21 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ec2a69ff5a7f1f3a954eae70f1cd776242b0b7f4
-ms.lasthandoff: 12/07/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: df3bbda15e1245b6068c2b8290d0c96856051f1f
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Ismerkedés a Notification Hubs Baiduval való használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Áttekintés
-A felhőalapú Baidu-értesítés egy kínai felhőszolgáltatás, amellyel leküldéses értesítések küldhetők mobileszközökre. Ez a szolgáltatás különösen Kínában használható hatékonyan, ahol a leküldéses értesítések Androidra történő kézbesítése összetett feladat. Ennek az az oka, hogy különböző alkalmazás-áruházak és leküldési szolgáltatások érhetők el, továbbá a GCM-hez (Google Cloud Messaging) nem csatlakozó Android-eszközöket is használnak.
+A felhőalapú Baidu-értesítés egy kínai felhőszolgáltatás, amellyel leküldéses értesítések küldhetők mobileszközökre. Ez a szolgáltatás Kínában használható hatékonyan, ahol a leküldéses értesítések Androidra történő kézbesítése összetett feladat. Ennek az az oka, hogy különböző alkalmazás-áruházak és leküldési szolgáltatások érhetők el, továbbá a GCM-hez (Google Cloud Messaginghez) nem csatlakozó Android-eszközök is használatban vannak.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyaghoz az alábbiakra lesz szükség:
+Az oktatóanyaghoz a következőkre lesz szükség:
 
 * Android SDK (feltételezzük, hogy Eclipse-et használ), amelyet az <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android webhelyéről</a> tölthet le
 * [Mobile Services Android SDK]
@@ -40,7 +40,7 @@ Az oktatóanyaghoz az alábbiakra lesz szükség:
 > 
 
 ## <a name="create-a-baidu-account"></a>Baidu-fiók létrehozása
-A Baidu használatához Baidu-fiókkal kell rendelkeznie. Ha már rendelkezik ilyen fiókkal, jelentkezzen be a [Baidu portálra], és ugorjon a következő lépésre. Ellenkező az alábbiakban megtekintheti a Baidu-fiók létrehozásának lépéseit.  
+A Baidu használatához Baidu-fiókkal kell rendelkeznie. Ha már rendelkezik ilyen fiókkal, jelentkezzen be a [Baidu portálra], és ugorjon a következő lépésre. Egyéb esetben a következőkben leírtak szerint hozhat létre Baidu-fiókot.  
 
 1. Lépjen a [Baidu portálra], és kattintson a **登录** (**Bejelentkezés**) hivatkozásra. A fiókregisztrálás megkezdéséhez kattintson a **立即注册** gombra.
    
@@ -70,7 +70,7 @@ A Baidu-fiók aktiválása után jelentkezzen be a [Baidu portálra].
 4. A következő oldalon kattintson a **注册开发者** (**Regisztrált fejlesztők**) pontra a jobb felső sarokban található menüben.
    
       ![][8]
-5. Adja meg a nevét, a leírást és a telefonszámot, amelyre meg kívánja kapni az ellenőrző SMS-t, majd kattintson az **送验证码** (**Ellenőrzőkód elküldése**) elemre. Nemzetközi telefonszámok esetében az országkódot is meg kell adni zárójelben. Egyesült államokbeli telefonszámok esetében például a következőképpen: **(1)1234567890**.
+5. Adja meg a nevét, a leírást és a telefonszámot, amelyre meg kívánja kapni az ellenőrző SMS-t, majd kattintson az **送验证码** (**Ellenőrzőkód elküldése**) elemre. Nemzetközi telefonszámok esetén az országkódot is meg kell adni zárójelben. Egyesült államokbeli telefonszámok esetén például a következőképpen: **(1)1234567890**.
    
       ![][9]
 6. Ezután a rendszer elküld egy ellenőrzőszámot tartalmazó SMS-t, ahogy az alábbi példában is látható:
@@ -96,7 +96,7 @@ Felhőalapú Baidu-értesítési projekt létrehozásakor megkapja az alkalmazá
 4. A következő oldalon kattintson a **云推送** (**Felhőalapú leküldés**) gombra a **云服务** (**Felhőszolgáltatások**) szakaszban.
    
       ![][12]
-5. A fejlesztői regisztráció után a felső menüben megjelenik egy **管理控制台** (**Felügyeleti konzol**) elem. Kattintson a **开发者服务管理** (**Fejlesztői szolgáltatások kezelése**) parancsra.
+5. A fejlesztői regisztráció után a felső menüben megjelenik a **管理控制台** (**Felügyeleti konzol**) elem. Kattintson a **开发者服务管理** (**Fejlesztői szolgáltatások kezelése**) parancsra.
    
       ![][13]
 6. A következő oldalon kattintson a **创建工程** (**Projekt létrehozása**) elemre.
@@ -171,10 +171,10 @@ Ekkor megjelenik a **保存成功！** (**Sikeresen mentve!**) üzenet.
         <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
         <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
         <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-8. Adja hozzá az **android:name** tulajdonságot az **AndroidManifest.xml** fájl **alkalmazás** eleméhez, a *yourprojectname* (például **com.example.BaiduTest**) elem helyére. Győződjön meg arról, hogy ez a projektnév megegyezik a Baidu-konzol konfigurálásakor megadottal.
+8. Adja hozzá az **android:name** tulajdonságot az **AndroidManifest.xml** fájl **application** eleméhez, a *yourprojectname* (például **com.example.BaiduTest**) elem helyett. Győződjön meg arról, hogy ez a projektnév megegyezik a Baidu-konzol konfigurálásakor megadottal.
    
         <application android:name="yourprojectname.DemoApplication"
-9. Cserélje le a *yourprojectname* (pl. **com.example.BaiduTest**) részt a következő konfigurációra az alkalmazáselemben a **.MainActivity** tevékenységelem után:
+9. Cserélje le a *yourprojectname* (például **com.example.BaiduTest**) részt a következő konfigurációra az alkalmazáselemben a **.MainActivity** tevékenységelem után:
    
         <receiver android:name="yourprojectname.MyPushMessageReceiver">
             <intent-filter>
@@ -355,17 +355,17 @@ Ekkor megjelenik a **保存成功！** (**Sikeresen mentve!**) üzenet.
             import com.baidu.android.pushservice.PushManager;
 
 ## <a name="send-notifications-to-your-app"></a>Értesítések küldése az alkalmazásnak
-Az értesítések fogadásának az alkalmazásban való gyors teszteléséhez értesítéseket küldhet az [Azure Portalról](https://portal.azure.com/) az értesítési központ **Tesztküldés** gombjának használatával, az alábbi képernyőn látható módon.
+Az értesítések fogadásának az alkalmazásban való gyors teszteléséhez értesítéseket küldhet az [Azure Portalról](https://portal.azure.com/) az értesítési központ **Küldés** gombjával az alábbi képernyőn látható módon:
 
-![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
+![](./media/notification-hubs-baidu-get-started/notification-hub-test-send-baidu.png)
 
-A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis kódtár használatával, mint a Mobile Services vagy az ASP.NET. Az értesítések küldéséhez használhatja közvetlenül a REST API-t is, ha a háttérszolgáltatáshoz nem érhető el kódtár.
+A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis kódtár használatával, mint a Mobile Services vagy az ASP.NET. Ha a háttérszolgáltatáshoz nem érhető el könyvtár, az értesítési üzenetek küldéséhez használhatja közvetlenül a REST API-t.
 
-Ebben az oktatóanyagban az egyszerűbb megoldást választjuk, és az ügyfélalkalmazás tesztelését egy konzolalkalmazás értesítési központjának .NET SDK-ja használatával küldött értesítésekkel mutatjuk be háttérszolgáltatás használata helyett. Az értesítéseknek ASP.NET-háttérrendszerből történő küldéséhez következő lépésként [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) oktatóanyagot ajánljuk. Értesítések küldéséhez azonban az alábbi megközelítések is alkalmazhatók:
+Ebben az oktatóanyagban az egyszerűbb megoldást választjuk, és az ügyfélalkalmazást egy konzolalkalmazás értesítési központjának .NET SDK-jával küldött értesítésekkel teszteljük háttérszolgáltatás használata helyett. Az értesítéseknek ASP.NET-háttérrendszerből történő küldéséhez következő lépésként [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) oktatóanyagot ajánljuk. Értesítések küldéséhez azonban az alábbi megközelítések is alkalmazhatók:
 
 * **REST-felület**: A [REST-felület](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) használatával bármilyen háttérplatformon támogathatja az értesítéseket.
 * **Microsoft Azure Notification Hubs .NET SDK**: A Visual Studio NuGet-csomagkezelőjében futtassa a következő parancsot: [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
-* **Node.js**: [A Notification Hub használata a Node.js-ből](notification-hubs-nodejs-push-notification-tutorial.md).
+* **Node.js**: [A Notification Hubs használata a Node.js-ből](notification-hubs-nodejs-push-notification-tutorial.md).
 * **Mobile Apps**: A [Leküldéses értesítések hozzáadása Mobile Apps-alkalmazáshoz](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) témakörben találhat példát arra, hogy hogyan küldhetők értesítések a Notification Hubs szolgáltatással integrált Azure App Service Mobile Apps háttéralkalmazásból.
 * **Java/PHP**: „A Notification Hubs használata Javából/PHP-ből” ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) témakörben találhat példát arra, hogyan küldhetők értesítések a REST API-k használatával.
 
@@ -379,7 +379,7 @@ Ebben a szakaszban az értesítések .NET-konzolalkalmazásból történő küld
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    Ezzel hozzáad a <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet-csomagot</a> használó Azure Notification Hubs SDK-ra mutató hivatkozást.
+    Ez az utasítás hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet-csomaggal</a>.
    
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 3. Nyissa meg a **Program.cs** fájlt, és adja hozzá a következő using utasítást:
@@ -399,13 +399,13 @@ Ebben a szakaszban az értesítések .NET-konzolalkalmazásból történő küld
          Console.ReadLine();
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
-Ha egy valódi telefonon kívánja tesztelni az alkalmazást, csak csatlakoztassa a telefont a számítógéphez egy USB-kábellel. Az alkalmazás feltöltődik a csatlakoztatott telefonra.
+Ha egy valódi telefonon kívánja tesztelni az alkalmazást, csak csatlakoztassa a telefont a számítógéphez egy USB-kábellel. Ez a művelet feltölti az alkalmazást a csatlakoztatott telefonra.
 
-Az alkalmazás emulátorral történő teszteléséhez kattintson a **Run** (Futtatás) elemre az Eclipse felső eszköztárán, majd válassza ki az alkalmazást. Ekkor elindul az emulátor, majd a rendszer betölti és futtatja az alkalmazást.
+Az alkalmazás az emulátorral való teszteléséhez kattintson a **Futtatás** elemre az Eclipse felső eszköztárán, majd válassza ki az alkalmazást: ez elindítja az emulátort, majd betölti és futtatja az alkalmazást.
 
 Az alkalmazás lekéri a „userId” és a „channelId” azonosítókat a Baidu leküldéses értesítési szolgáltatásból, és regisztrál az értesítési központban.
 
-Tesztértesítést a klasszikus Azure portál hibakeresési lapjáról küldhet. Ha a .NET konzolalkalmazást a Visual Studióhoz készítette, az alkalmazás futtatásához csak nyomja le az F5 billentyűt a Visual Studióban. Az alkalmazás elküld egy értesítést, amely az eszköz vagy az emulátor felső értesítési területén fog megjelenni.
+Tesztértesítést a klasszikus Azure portál hibakeresési lapjáról küldhet. Ha a .NET konzolalkalmazást a Visual Studióhoz készítette, az alkalmazás futtatásához csak nyomja le az F5 billentyűt a Visual Studióban. Az alkalmazás elküld egy értesítést, amely az eszköz vagy az emulátor felső értesítési területén jelenik meg.
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-baidu-get-started/BaiduRegistration.png

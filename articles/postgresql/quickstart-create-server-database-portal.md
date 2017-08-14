@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 07/12/2017
+ms.date: 08/04/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: c065d692d2a4ac369cb13a70d09b30498e6c9106
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: e89058a500aeb542ae4c7dc6bb4a9b9ae54db7f2
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -33,30 +33,32 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 Az Azure-adatbázis PostgreSQL-kiszolgálóhoz [számítási és tárolási erőforrások](./concepts-compute-unit-and-storage.md) egy meghatározott készletével együtt jön létre. A kiszolgáló egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül jön létre.
 
 Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásához:
-1.  Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1.  Kattintson az Azure Portal bal felső sarkában található **Új** gombra (+).
 2.  Az **Új** panelen válassza az **Adatbázisok** lehetőséget, majd az **Adatbázisok** panelen válassza az **Azure-adatbázis PostgreSQL-kiszolgálóhoz** lehetőséget.
  ![Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása](./media/quickstart-create-database-portal/1-create-database.png)
 
 3.  Töltse ki az új kiszolgáló adatai űrlapot a következő információkkal az előző képen látható módon:
-    - Kiszolgáló neve: **mypgserver-20170401** (válasszon globálisan egyedi kiszolgálónevet, mivel ez a DNS-névre van leképezve)
-    - Feliratkozás: Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van.
-    - Erőforráscsoport: **myresourcegroup**
-    - Az Ön által választott kiszolgálói rendszergazdai bejelentkezési név és jelszó
-    - Hely: válassza az Önhöz legközelebbi helyet.
-    - PostgreSQL-verzió: válassza a legújabb verziót.
+
+    Beállítás|Ajánlott érték|Leírás
+    ---|---|---
+    Kiszolgálónév |*mypgserver-20170401*|Válasszon egy egyedi nevet, amely azonosítja a PostgreSQL-kiszolgálóhoz készült Azure-adatbázist. A rendszer hozzáfűzi a *postgres.database.azure.com* tartománynevet ahhoz a kiszolgálónévhez, amelyet az alkalmazások számára megad a csatlakozáshoz. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja, és 3–63 karakter hosszú lehet.
+    Előfizetés|*Az Ön előfizetése*|A kiszolgálóhoz használni kívánt Azure-előfizetés. Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás terhelve van.
+    Erőforráscsoport|*myresourcegroup*| Meghatározhat egy új erőforráscsoport-nevet, vagy használhat egy meglévőt az előfizetéséből.
+    Kiszolgáló-rendszergazdai bejelentkezés |*mylogin*| Hozzon létre saját bejelentkezési fiókot a kiszolgálóhoz való csatlakozáshoz. A rendszergazdai bejelentkezési név nem lehet „azure_superuser”, „azure_pg_admin”, „admin”, „administrator”, „root”, „guest” vagy „public”, és nem kezdődhet a „pg_” előtaggal.
+    Jelszó |*A választása szerint* | Hozzon létre egy új jelszót a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
+    Hely|*A felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz legközelebb eső helyet.
+    PostgreSQL-verzió|*Válassza a legújabb verziót*| Válassza a legújabb verziót, ha nincsenek egyedi igényei.
+    Tarifacsomag | **Alapszintű**, **50 számítási egység** **50 GB** | Kattintson a **Tarifacsomag** parancsra az új adatbázis szolgáltatás- és teljesítményszintjének megadásához. Válassza a felső fülön az Alapszintű tarifacsomagot. Kattintson a Számítási egységek csúszka bal oldali végére az ebben a rövid útmutatóban elérhető legkisebb mennyiség kiválasztásához. Kattintson az **OK** gombra a tarifacsomag-beállítás mentéséhez. Tekintse meg a következő képernyőképet.
+    | Rögzítés az irányítópulton | Jelölőnégyzet | A **Rögzítés az irányítópulton** lehetőség kiválasztásával egyszerűen nyomon követheti a kiszolgálót az Azure Portal irányítópultjának első lapján.
 
   > [!IMPORTANT]
   > A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia a rövid útmutató későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
 
-4.  Kattintson a **Tarifacsomag** parancsra az új adatbázis szolgáltatás- és teljesítményszintjének megadásához. Ehhez a rövid útmutatóhoz válassza az **Alapszintű** szolgáltatásszintet, **50 Számítási egységet**, és a szolgáltatási keretbe foglalt **50 GB** tárterületet.
- ![Azure-adatbázis PostgreSQL-hez - válassza ki a szolgáltatásszintet](./media/quickstart-create-database-portal/2-service-tier.png)
-5.  Kattintson az **OK** gombra.
-6.  A kiszolgáló üzembe helyezéséhez kattintson a **Létrehozás** elemre. Az üzembe helyezés eltarthat néhány percig.
+    ![PostgreSQL-hez készült Azure-adatbázis – tarifacsomag kiválasztása](./media/quickstart-create-database-portal/2-service-tier.png)
 
-  > [!TIP]
-  > A **Rögzítés az irányítópulton** lehetőséggel egyszerűen nyomon követheti az üzembe helyezést.
+4.  A kiszolgáló üzembe helyezéséhez kattintson a **Létrehozás** elemre. Az üzembe helyezés eltarthat néhány percig, de legfeljebb 20 percet vesz igénybe.
 
-7.  Az eszköztáron kattintson az **Értesítések** parancsra az üzembe helyezési folyamat megfigyeléséhez.
+5.  Az eszköztáron kattintson az **Értesítések** parancsra az üzembe helyezési folyamat megfigyeléséhez.
  ![Azure-adatbázis PostgreSQL-hez - Értesítések megtekintése](./media/quickstart-create-database-portal/3-notifications.png)
    
   Alapértelmezés szerint a **postgres** adatbázis a kiszolgáló alatt jön létre. A [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) adatbázis egy alapértelmezett adatbázis, amelyet a felhasználók, segédprogramok és külső féltől származó alkalmazások általi használatra szántak. 
@@ -65,64 +67,87 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
 
 Az Azure-adatbázis PostgreSQL-hez szolgáltatás a kiszolgáló szintjén hoz létre tűzfalat. Ez a tűzfal megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha olyan tűzfalszabályt hoz létre, amely adott IP-címek számára megnyitja a tűzfalat. 
 
-1.  Miután befejeződött a telepítés, kattintson az **Összes erőforrás** lehetőségre a bal oldali menüben, és írja be az újonnan létrehozott kiszolgáló nevét **mypgserver-20170401**. Kattintson a keresési eredményekben listázott kiszolgálónévre. Megnyílik a kiszolgáló **Áttekintés** oldala, amely további konfigurációs lehetőségeket biztosít.
+1.  Az üzembe helyezés befejeződése után keresse meg a kiszolgálót. Ha szükséges, használja a keresési funkciót. Például kattintson a **Minden erőforrás** lehetőségre a bal oldali menüben, és írja be a kiszolgáló nevét (például: mypgserver-20170401) az újonnan létrehozott kiszolgáló megkereséséhez. Kattintson a kiszolgálónévre a találatok listájában. Megnyílik a kiszolgáló Áttekintés oldala, amely további konfigurációs lehetőségeket biztosít.
  
- ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés ](./media/quickstart-create-database-portal/4-locate.png)
+    ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés ](./media/quickstart-create-database-portal/4-locate.png)
 
-2.  A kiszolgáló panelen válassza a **Kapcsolatbiztonság** elemet. 
-3.  Kattintson a **Szabálynév** alatti szövegmezőbe, és adjon hozzá egy új tűzfalszabályt az IP-címtartomány összekapcsolhatóságának engedélyezéséhez. Ebben a rövid útmutatóban engedélyezzünk minden IP-címet, írja be a következőket: **Rule Name = AllowAllIps**, **Start IP = 0.0.0.0** és **End IP = 255.255.255.255**, majd kattintson a **Mentés** gombra. Beállíthat egy olyan tűzfalszabályt, amely lefed egy IP-címtartományt, annak érdekében, hogy csatlakozni tudjon a saját hálózatából.
+2.  A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet. 
+    ![PostgreSQL-hez készült Azure-adatbázis – Tűzfalszabály létrehozása](./media/quickstart-create-database-portal/5-firewall-2.png)
 
- ![Azure-adatbázis PostgreSQL-hez - Tűzfalszabály létrehozása](./media/quickstart-create-database-portal/5-firewall-2.png)
+3.  A **Tűzfalszabályok** szakaszban kattintson az üres mezőbe a **Szabály neve** oszlopban új tűzfalszabály létrehozásának megkezdéséhez. 
 
-4.  Kattintson a **Mentés** gombra, majd kattintson az **X-re** a **Kapcsolatbiztonság** oldal bezárásához.
+    Ebben a rövid útmutatóban engedélyezzünk minden bemenő IP-címet a kiszolgálón. Ehhez adjuk meg az egyes oszlopokban a következő értékeket:
 
-  > [!NOTE]
-  > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben addig nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, amíg az informatikai részleg nem nyitja meg az 5432-es portot.
+    Szabály neve | Kezdő IP-cím | Záró IP-cím 
+    ---|---|---
+    AllowAllIps |  0.0.0.0 | 255.255.255.255
+
+4. A Kapcsolatbiztonság lap felső eszköztárában kattintson a **Mentés** gombra. Ezután kattintson az **X** gombra a Kapcsolatbiztonság lap bezárásához.
+
+    > [!NOTE]
+    > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben addig nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, amíg az informatikai részleg nem nyitja meg az 5432-es portot.
   >
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
-Az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásakor, az alapértelmezett **postgres** adatbázis is létrejön. A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat.
+A PostgreSQL-kiszolgálóhoz készült Azure-adatbázis létrehozásakor egy **postgres** nevű alapértelmezett adatbázis jön létre. Az adatbázis-kiszolgálóhoz való csatlakozáshoz meg kell adnia a teljes kiszolgálónevet és a rendszergazdai bejelentkezési hitelesítő adatokat. Ezeket a rövid útmutatóban korábban már feljegyezhette. Ha nem jegyezte fel, a kiszolgáló nevét és bejelentkezési adatait megtalálhatja a kiszolgáló Áttekintés lapján az Azure Portalon.
 
-1. Az Azure Portal baloldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá az újonnan létrehozott kiszolgálóra **mypgserver-20170401**.
-
-  ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés ](./media/quickstart-create-database-portal/4-locate.png)
-
-2. Kattintson a **mypgserver-20170401** kiszolgálónévre.
-3. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
+1. Nyissa meg kiszolgáló **Áttekintés** lapját. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
+    Helyezze az egérmutatót az egyes mezők fölé. Ekkor a szövegtől jobbra megjelenik a másolási ikon. Az értékek másolásához kattintson igény szerint a másolási ikonra.
 
  ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló-rendszergazdai bejelentkezés](./media/quickstart-create-database-portal/6-server-name.png)
 
 ## <a name="connect-to-postgresql-database-using-psql-in-cloud-shell"></a>Csatlakozás a PostgreSQL-adatbázishoz a psql használatával a Cloud Shell-ben
 
-Használjuk a psql parancssori segédprogramot az Azure-adatbázis PostgreSQL-kiszolgálóhoz való kapcsolódáshoz. 
+Számos különféle alkalmazással csatlakozhat a PostgreSQL-kiszolgálóhoz készült Azure-adatbázishoz. Először használjuk a psql parancssori segédprogramot a kiszolgálóhoz való csatlakozás bemutatásához.  Az itt leírtak szerint használhatja a webböngészőt és az Azure Cloud Shellt, és nem szükséges más szoftvert telepítenie. Ha a gépén helyileg telepítve van a psql segédprogram, onnan is csatlakozhat.
+
 1. Indítsa el az Azure Cloud Shell-t a felső navigációs ablakban található terminálikonnal.
 
    ![Azure-adatbázis PostgreSQL-hez - Azure Cloud Shell terminálikon](./media/quickstart-create-database-portal/7-cloud-console.png)
 
-2. Az Azure Cloud Shell megnyílik a böngészőben, amely lehetővé teszi a bash-parancsok beírását.
+2. Az Azure Cloud Shell megnyílik a böngészőben, ami lehetővé teszi Bash rendszerhéjparancsok beírását.
 
    ![Azure-adatbázis PostgreSQL-hez - Azure Shell Bash parancssor](./media/quickstart-create-database-portal/8-bash.png)
 
-3. A Cloud Shell parancssornál csatlakozzon az Azure-adatbázis PostgreSQL-kiszolgálóhoz. Ehhez írja be a psql parancsot a parancssorba. A következő formátum segítségével kapcsolódhat egy [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal rendelkező Azure-adatbázis PostgreSQL-kiszolgálóhoz:
-   ```bash
-   psql --host=<myserver> --port=<port> --username=<server admin login> --dbname=<database name>
-   ```
+3. A Cloud Shell parancssornál csatlakozzon a PostgreSQL-kiszolgálóhoz készült Azure-adatbázisban lévő adatbázishoz. Ehhez írja be a psql parancsot a zöld színű parancssorba.
 
-   Például a következő parancs a **postgres** nevű alapértelmezett adatbázishoz kapcsolódik a PostgreSQL-kiszolgálón **mypgserver-20170401.postgres.database.azure.com** a hozzáférési hitelesítő adatok használatával. A csatlakozáskor mindig használja az **5432-es** portot. Adja meg a kiszolgáló-rendszergazdai jelszavát, amikor a rendszer kéri. Tegyen szóközöket a parancsban a --kapcsolók közé az itt látható módon, de ne használjon szóközöket az egyenlőségjelek és a paraméterértékek között.
+    A következő formátum segítségével kapcsolódhat egy [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal rendelkező Azure-adatbázis PostgreSQL-kiszolgálóhoz:
+    ```bash
+    psql --host=<yourserver> --port=<port> --username=<server admin login> --dbname=<database name>
+    ```
 
-   ```bash
-   psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
-   ```
-4.  Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amikor a rendszer kéri.
-```bash
-CREATE DATABASE mypgsqldb;
-```
+    Például a következő parancs egy példakiszolgálóhoz csatlakozik:
+
+    ```bash
+    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
+    ```
+
+    psql paraméter |Ajánlott érték|Leírás
+    ---|---|---
+    --host | *kiszolgáló neve* | Adja meg azt a kiszolgálónevet, amelyet korábban a PostgreSQL-hez készült Azure-adatbázis létrehozásakor használt. Az itt látható példakiszolgáló a mypgserver-20170401.postgres.database.azure.com. Használja a teljes tartománynevet (\*.postgres.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a csatlakozási adatok elérését tekintse meg az előző szakaszban. 
+    --port | **5432** | A PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáskor mindig használja az 5432-es portot. 
+    --username | *kiszolgáló-rendszergazdai bejelentkezési név* |Írja be a kiszolgáló-rendszergazdai bejelentkezési felhasználónevet, amelyet korábban a PostgreSQL-hez készült Azure-adatbázis létrehozásakor adott meg. Ha nem emlékszik a felhasználónévre, a csatlakozási adatok elérését tekintse meg az előző szakaszban.  A formátum *username@servername*.
+    --dbname | **postgres** | Az első kapcsolathoz használja a rendszer által létrehozott alapértelmezett *postgres* adatbázisnevet. Később létrehozhatja a saját adatbázisát.
+
+    Miután a saját paraméterértékeivel futtatta a psql parancsot, a rendszer felkéri, hogy adja meg a kiszolgáló-rendszergazdai jelszót. Ez az a jelszó, amelyet a kiszolgáló létrehozásakor adott meg. 
+
+    psql paraméter |Ajánlott érték|Leírás
+    ---|---|---
+    jelszó | *az Ön rendszergazdai jelszava* | Vegye figyelembe, hogy a beírt jelszókarakterek nem jelennek meg a Bash parancssorban. Írja be az összes karaktert, majd nyomja le az Enter billentyűt a hitelesítéshez és a csatlakozáshoz.
+
+4.  Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist a következő parancs a parancssorba való beírásával:
+    ```bash
+    CREATE DATABASE mypgsqldb;
+    ```
 
 5.  Amikor a rendszer kéri, hajtsa végre a következő parancsot, a kapcsolat átváltásához az újonnan létrehozott adatbázisra **mypgsqldb**.
-```bash
-\c mypgsqldb
-```
+    ```bash
+    \c mypgsqldb
+    ```
+
+6.  A psql-ből való kilépéshez írja be a \q karakterláncot, majd nyomja le az ENTER billentyűt. Bezárhatja az Azure Cloud Shellt.
+
+Ezzel csatlakozott a PostgreSQL-hez készült Azure-adatbázishoz, és létrehozott egy üres felhasználói adatbázist. Folytassa a következő szakasszal, amelyből megtudhatja, hogyan csatlakozhat egy másik ismert eszköz, a pgAdmin segítségével.
 
 ## <a name="connect-to-postgresql-database-using-pgadmin"></a>Csatlakozás a PostgreSQL-adatbázishoz a pgAdmin használatával
 

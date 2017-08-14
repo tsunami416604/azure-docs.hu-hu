@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/08/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6037c1ea1655aa027a0933b1eea5f864103cfd5b
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 88f20287e2a6935b9694a25a21b607d658b8eb68
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
@@ -127,11 +126,12 @@ A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az Exchange
 ## <a name="protect-sap"></a>Az SAP védelme
 A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az SAP védelmét:
 
-* Lehetővé teszi a teljes SAP-környezet védelmét a különféle környezeti szintek replikálásával az Azure-ba vagy egy másodlagos helyre.
+* Lehetővé teszi a helyszínen futó SAP NetWeaver és nem NetWeaver éles alkalmazások védelmét az összetevők az Azure-ba való replikálásával.
+* Lehetővé teszi az Azure-t futtató SAP NetWeaver és nem NetWeaver éles alkalmazások védelmét az összetevők egy másik Azure-adatközpontba való replikálásával.
 * Megkönnyíti a felhőre való áttelepítést, mivel az SAP üzemelő példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
-* Leegyszerűsíti az SAP-fejlesztést és tesztelést, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre az alkalmazások teszteléséhez és a hibakereséséhez.
+* Leegyszerűsíti az SAP projektek frissítését, tesztelését és prototípuskészítését, mivel a segítségével egy igény szerinti éles klón hozható létre az SAP alkalmazások teszteléséhez.
 
-[Itt részletesen tájékozódhat](http://aka.ms/asr-sap) az SAP védelméről.
+[Itt részletesen tájékozódhat](site-recovery-sap.md) az SAP védelméről.
 
 ## <a name="protect-iis"></a>Az IIS védelme
 A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemelő IIS-példány védelmét:
@@ -152,11 +152,11 @@ A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemel�
 * Az üzemelő Citrix XenApp- és XenDesktop-példányok védelmének engedélyezése a különféle környezeti szintek (például AD DNS-kiszolgáló, SQL Database-kiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló) az Azure-ba való replikálásával történik.
 * Megkönnyíti a felhőre való áttelepítést, mivel az üzemelő Citrix XenApp- és XenDesktop-példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
 * Leegyszerűsíti a Citrix XenApp-/XenDesktop-fejlesztést és -tesztelést, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre az alkalmazások teszteléséhez és a hibakereséséhez.
-* Ez a megoldás kizárólag a Windows Server operációs rendszer virtuális asztali környezeteire alkalmazható, az ügyfelek virtuális asztali környezetei esetében nem, mivel azok licencelése az Azure-ban még nem támogatott. 
+* Ez a megoldás kizárólag a Windows Server operációs rendszer virtuális asztali környezeteire alkalmazható, az ügyfelek virtuális asztali környezetei esetében nem, mivel azok licencelése az Azure-ban még nem támogatott.
 [Itt részletesen tájékozódhat](https://azure.microsoft.com/pricing/licensing-faq/) az ügyfél/kiszolgáló asztali környezeteinek Azure-ban történő licenceléséről.
 
-[Itt részletesen tájékozódhat](site-recovery-citrix-xenapp-and-xendesktop.md) az üzemelő Citrix XenApp- és XenDesktop-példányok védelméről. Másik lehetőségként megtekintheti [a Citrix tanulmányát](https://aka.ms/citrix-xenapp-xendesktop-with-asr), amely ugyanezt részletezi. 
+[Itt részletesen tájékozódhat](site-recovery-citrix-xenapp-and-xendesktop.md) az üzemelő Citrix XenApp- és XenDesktop-példányok védelméről. Másik lehetőségként megtekintheti [a Citrix tanulmányát](https://aka.ms/citrix-xenapp-xendesktop-with-asr), amely ugyanezt részletezi.
 
 ## <a name="next-steps"></a>Következő lépések
-[Előfeltételek ellenőrzése](site-recovery-prereq.md) 
+[Előfeltételek ellenőrzése](site-recovery-prereq.md)
 

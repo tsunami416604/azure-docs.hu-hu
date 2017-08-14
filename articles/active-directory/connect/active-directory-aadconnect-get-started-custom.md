@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/02/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 1580e2841790b7c1b6c9540da4940eef2c487256
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 51906e8d68b5f951a75b8141644bbaf4cf6a43ce
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
@@ -278,6 +278,9 @@ Az AD FS szolgáltatás egy tartományi szolgáltatásfiókot igényel a felhasz
 * **Tartományi felhasználói fiók** – Az ilyen típusú fiókhoz meg kell adnia egy jelszót, és azt rendszeresen frissíteni, amikor változik vagy lejár. Ezt a lehetőséget kizárólag akkor alkalmazza, ha nem rendelkezik Windows Server 2012 tartományvezérlőkkel a tartományban, amelyhez az AD FS-kiszolgálók tartoznak.
 
 Amennyiben a Csoportosan felügyelt szolgáltatásfiók lehetőséget választotta, és ez a szolgáltatás még nem volt használva az Active Directoryban, a rendszer vállalati rendszergazdai hitelesítő adatokat kér. A hitelesítő adatok a kulcstároló indításához és a szolgáltatás az Active Directoryban való engedélyezéséhez szükségesek.
+
+> [!NOTE]
+> Az Azure AD Connect ellenőrzést futtat, hogy észlelje, az AD FS szolgáltatás már regisztrálva van-e a tartományban egyszerű szolgáltatásnévként.  Az AD DS nem engedélyezi az ismétlődő egyszerű szolgáltatásnevek regisztrálását.  Ha a rendszer ismétlődő egyszerű szolgáltatásnevet talál, az eltávolításáig a folyamat nem folytatódik.
 
 ![AD FS-szolgáltatásfiók](./media/active-directory-aadconnect-get-started-custom/adfs5.png)
 

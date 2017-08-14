@@ -1,6 +1,6 @@
 ---
-title: "Bevezetés a Prémium szintű Azure Active Directory használatába"
-description: "Ismerteti, hogyan regisztrálhat a Prémium szintű Active Directory-kiadásra a mennyiségi licencelési webhelyen."
+title: "Prémium szintű Azure Active Directory – Regisztráció"
+description: "Azt ismerteti, hogyan regisztrálhat a Prémium szintű Azure Active Directory-kiadásra."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -11,44 +11,50 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/24/2017
+ms.date: 08/09/2017
 ms.author: curtand
-ms.custom: oldportal;it-pro;
+ms.custom: it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: fac41a05c97088b55f07455133d960687227af0e
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: fe9f4fa6f776a0c2edb572d0526c7520d1c1c7a0
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/10/2017
 
 ---
-# <a name="getting-started-with-azure-active-directory-premium"></a>Bevezetés a Prémium szintű Azure Active Directory használatába
-Ez a cikk ismerteti a mennyiségi licencelési program keretében vásárolt Prémium szintű Active Directory használatának első lépéseit. Ha még nem ismeri az Azure Active Directory különböző kiadásait, olvassa el a következő cikket: [Azure Active Directory-kiadások](active-directory-editions.md).  
+# <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>Gyors útmutató: Prémium szintű Azure Active Directory – Regisztráció
+Az Azure Active Directory (Azure AD) Prémium szintű kiadásával folytatott munka megkezdéséhez meg kell vásárolnia a licenceket, és hozzá kell rendelnie őket Azure-előfizetéséhez. Ha új Azure-előfizetést hoz létre, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is a következő szakaszokban leírtak szerint. 
 
-> [!IMPORTANT]
-> A Microsoft javasolja, hogy az Azure Portalon található [Azure AD felügyeleti központból](https://aad.portal.azure.com) kezelje az Azure AD-t az ebben a cikkben javasolt klasszikus Azure portál helyett. 
-
+## <a name="sign-up-for-active-directory-premium"></a>Regisztrálás Prémium szintű Active Directory-kiadásra
 A Prémium szintű Active Directory-kiadásra történő regisztrálásra több lehetősége van: 
 
-**Azure vagy Office 365** – Azure- vagy Office 365-előfizetőként az interneten vásárolhatja meg a Prémium szintű Active Directory-kiadást. A részletes lépésekért lásd: [A Prémium szintű Active Directory megvásárlása – meglévő ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) vagy [A Prémium szintű Active Directory megvásárlása – új ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).  
+### <a name="azure-or-office-365"></a>Azure vagy Office 365 
+Azure- vagy Office 365-előfizetőként az interneten vásárolhatja meg a Prémium szintű Azure Active Directory-kiadást. 
 
-**Nagyvállalati mobilitás és biztonság** – A Nagyvállalati mobilitás és biztonság (korábbi nevén Nagyvállalati mobilitási csomag) révén a szervezetek költséghatékony módon használhatják a következő szolgáltatásokat együttesen, egy licenccsomagban: Prémium szintű Active Directory, Azure Rights Management, Microsoft Intune. További információt a [Nagyvállalati mobilitás és biztonság](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) webhelyén talál. 30 napos ingyenes próbaverzióért kattintson [ide](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0).
+A részletes lépésekért lásd: [A Prémium szintű Active Directory megvásárlása – meglévő ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) vagy [A Prémium szintű Active Directory megvásárlása – új ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).  
 
-**Microsoft mennyiségi licencelés** – A Prémium szintű Active Directory a [Microsoft Nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 vagy több licenc esetén) vagy a [Open mennyiségi licencelés](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5–250 licenc esetén) keretén belül érhető el.
+### <a name="enterprise-mobility--security"></a>Enterprise Mobility + Security
+Az Enterprise Mobility + Security (EMS) csomaggal a szervezetek költséghatékony módon, együttesen, egy licenccsomagban használhatják a következő szolgáltatásokat: Prémium szintű Active Directory, Azure Information Protection és Microsoft Intune. Az EMS-ről az [Enterprise Mobility + Security weboldalán](https://www.microsoft.com/cloud-platform/enterprise-mobility-security) tájékozódhat, a megvásárolható EMS licenctípusokról pedig az [Enterprise Mobility + Security díjszabási lehetőségeit](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing) ismertető oldal nyújt további információkat.  
+
+Az Azure AD használatát EMS-licenceken keresztül a következő licenclehetőségek egyikével kezdheti meg:
+
+- Próbálja ki az EMS-t az [Enterprise Mobility + Security E5 ingyenes próba-előfizetésével](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+- Vásároljon [Enterprise Mobility + Security E5 licenceket](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
+- Vásároljon [Enterprise Mobility + Security E3 licenceket](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
+
+### <a name="microsoft-volume-licensing"></a>Microsoft mennyiségi licencelés
+A Prémium szintű Active Directory a [Microsoft Nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 vagy több licenc esetén) vagy a [Open mennyiségi licencelés](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5–250 licenc esetén) keretén belül érhető el.
+
+A nagybani licencbeadási vásárlási lehetőségekről a [nagybani licencbeadáson keresztüli vásárlást](https://www.microsoft.com/licensing/how-to-buy/how-to-buy.aspx) ismertető oldalon tájékozódhat.
 
 > [!NOTE]
 > Az Azure Active Directory Prémium és Alapszintű kiadásai az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure Active Directory Prémium és Alapszintű kiadásai jelenleg nem támogatottak Kínában a 21Vianet által működtetett Microsoft Azure szolgáltatásban. További információkért lépjen velünk kapcsolatba az [Azure Active Directory fórumán](https://feedback.azure.com/forums/169401-azure-active-directory/).
 > 
 > 
 
-## <a name="step-1-sign-up-for-active-directory-premium"></a>1. lépés: A Prémium szintű Active Directory-kiadás regisztrálása
-A regisztrációhoz lásd: [Vásárlás mennyiségi licencelésen keresztül](http://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
+Ha már vásárolt és aktivált Azure AD-licenceket az előző lépésekben használt Azure-előfizetéshez, a licenceket a rendszer automatikusan aktiválja ugyanabban a címtárban. Ebben az esetben nem kell folytatnia az ebben a cikkben alább leírt lépésekkel.
 
-## <a name="step-2-activate-your-license-plan"></a>2. lépés: A licenccsomag aktiválása
-Ez az első licenccsomag, amelyet a Microsofttól vásárol a Vállalati mennyiségi licencelési programon keresztül?
-Ebben az esetben egy visszaigazoló e-mailt kap a vásárlása végén.
-Az első licenccsomag aktiválásához szüksége lesz erre az e-mailre.
-
-Az ezen címtárhoz történő minden további vásárláskor a rendszer automatikusan aktiválja a licenceket ugyanebben a címtárban.
+## <a name="activate-your-license-plan"></a>A licenccsomag aktiválása
+Ez az első Azure AD-licenccsomag, amelyet a Microsofttól vásárolt? Ha igen, visszaigazoló e-mailt fog kapni a vásárlás végeztével. Az első licenccsomag aktiválásához szüksége lesz erre az e-mailre.
 
 **A licenccsomag aktiválásához hajtsa végre az alábbi lépések egyikét:**
 
@@ -56,77 +62,42 @@ Az ezen címtárhoz történő minden további vásárláskor a rendszer automat
    
     ![Bejelentkezés][1]
 
-    - Ha rendelkezik meglévő bérlővel, kattintson a **Bejelentkezés** gombra, hogy bejelentkezzen a meglévő rendszergazdai fiókjával. Azon címtárból származó globális rendszergazdai hitelesítő adatokkal kell bejelentkeznie, ahol a licenceket aktiválni szeretné.
+    - Ha rendelkezik meglévő bérlővel, kattintson a **Bejelentkezés** gombra, hogy bejelentkezzen a meglévő rendszergazdai fiókjával. Jelentkezzen be az azon címtárból származó globális rendszergazdai hitelesítő adatokkal, ahol a licenceket aktiválni szeretné.
 
-    - Ha új Azure Active Directory-bérlőt szeretne aktiválni a licenccsomaghoz, kattintson a **Regisztráció** gombra a **Fiókprofil létrehozása** párbeszédpanel megnyitásához.
+    - Ha új Azure AD-bérlőt szeretne aktiválni a licenccsomaghoz, kattintson a **Regisztráció** gombra a **Fiókprofil létrehozása** párbeszédpanel megnyitásához.
 
         ![Fiókprofil létrehozása][2]
 
-Amikor végzett, megjelenik a következő párbeszédpanel a bérlő licenccsomagja aktiválásának megerősítéseként.
+Amikor végzett, megjelenik a következő párbeszédpanel a bérlő licenccsomagja aktiválásának megerősítéseként:
 
 ![Megerősítés][3]
 
-## <a name="step-3-activate-your-azure-active-directory-access"></a>3. lépés: Az Azure Active Directory-hozzáférés aktiválása
-Ha korábban már használta a Microsoft Azure-t, folytathatja a [4. lépéssel](#step-4-assign-license-to-user-accounts). 
+## <a name="activate-your-azure-active-directory-access"></a>Az Azure Active Directory-hozzáférés aktiválása
+Ha új Prémium szintű Azure AD-licenceket egy létező előfizetéshez rendel hozzá, az Azure AD-hozzáférés már valószínűleg aktív. Más esetekben aktiválnia kell az **üdvözlő e-mail** fogadása után.  
 
-Amikor a licencek érvénybe lépnek a címtárban, egy **üdvözlő e-mailt** kap. Az e-mail megerősíti, hogy elkezdheti a Prémium szintű Active Directory vagy a Nagyvállalati mobilitási csomag licenceinek és funkcióinak kezelését. 
+Amikor az Ön által megvásárolt licencek érvénybe lépnek a címtárban, egy **üdvözlő e-mailt** kap. Az e-mail megerősíti, hogy elkezdheti a Prémium szintű Active Directory vagy az Enterprise Mobility + Security licenceinek és funkcióinak kezelését. 
 
-Ha megpróbálja aktiválni az Azure Active Directory-hozzáférését az üdvözlő e-mail fogadása előtt, a következő hibaüzenetet kapja. 
+> [!TIP]
+> Az Azure AD-t nem érheti el az új bérlőjéhez, amíg nem aktiválja az Azure AD címtárhozzáférését a licenckiosztási folyamat végén automatikusan megkapott üdvözlő e-maillel. 
 
-![A hozzáférés nem érhető el][9]
-
-Próbálkozzon újra néhány perc múlva, miután megkapta az e-mailt.
-
-Az előfizetésének új rendszergazdái is aktiválhatják a hozzáférésüket a klasszikus Azure portálra ezen a hivatkozáson keresztül.
-
-**Az Azure Active Directory-hozzáférésének aktiválásához végezze el a következő lépéseket:**
+**Azure AD-hozzáférésének aktiválásához végezze el a következő lépéseket:**
 
 1. Az **üdvözlő e-mailben** kattintson a **Bejelentkezés** hivatkozásra. 
    
     ![Üdvözlő e-mail][4]
-2. Amikor sikeresen bejelentkezett, el kell végeznie egy kéttényezős hitelesítést mobileszközös ellenőrzés formájában:
+2. Miután sikeresen bejelentkezett, el kell végeznie egy kéttényezős hitelesítést is egy mobileszköz használatával:
    
     ![Mobileszközös ellenőrzés][5]
 
-Az aktiválás eltarthat pár percig. Ha a hozzáférése aktív, a barna színű sáv eltűnik, és kattinthatóvá válik a **Portál** gomb.
+Az aktiválás mindössze néhány percet vesz igénybe. Ezután hozzáférhet Azure AD-jéhez, és kezelni is tudja. 
 
-![Várjon, amíg elkészülünk a beállítással][6]
+## <a name="next-steps"></a>Következő lépések
+Ebben a gyors útmutatóban megismerheti, hogyan regisztrálhat a Prémium szintű Azure AD-kiadásra, és hogyan aktiválhatja az Azure Active Directory hozzáférését. 
 
-Ebben az esetben az Azure-hozzáférése az Azure Active Directoryra van korlátozva.
+Ha már van Azure-előfizetése, a következő hivatkozással megkezdhet egy próbaidőszakot, vagy vásárolhat Prémium szintű licenceket az Azure Portalon.
 
-![Azure-képességek][7]
-
-Lehet, hogy korábbról már van Azure-hozzáférése. Ezenkívül az Azure Active Directory-hozzáférését a teljes Azure-hozzáférésre frissítheti további Azure-előfizetések aktiválásával. Ezekben az esetekben a klasszikus Azure portálon több képesség is használható.
-
-![Azure-képességek][8]
-
-## <a name="step-4-assign-license-to-user-accounts"></a>4. lépés: Licenc hozzárendelése felhasználói fiókokhoz
-A megvásárolt csomag használatának elkezdése előtt manuálisan kell licenceket rendelnie a szervezeten belüli felhasználói fiókokhoz, hogy használhassák a Prémium kiadásban szereplő funkciók gazdag választékát. A következő lépésekkel rendelhet licenceket a felhasználókhoz, hogy használhassák a Prémium szintű Active Directory-funkciókat.
-
-**Ha licenceket szeretne a felhasználókhoz rendelni, végezze el a következő lépéseket:**
-
-1. Jelentkezzen be a klasszikus Azure portálra a testreszabni kívánt címtár globális rendszergazdájaként.
-2. Kattintson az **Active Directory** lehetőségre, majd válassza ki azt a címtárat, ahol licenceket szeretne hozzárendelni felhasználókhoz.
-3. Válassza a **Licencek** lapot, válassza a **Prémium szintű Active Directory** vagy a **Nagyvállalati mobilitási csomag** lehetőséget, majd kattintson a **Hozzárendelés** gombra.
-   
-    ![Licenccsomagok][10]
-4. A párbeszédpanelen válassza ki azokat a felhasználókat, akikhez licenceket szeretne rendelni, majd kattintson a pipa ikonra a módosítások mentéséhez.
-   
-    ![Licencek hozzárendelése][11]
-
-### <a name="license-restrictions"></a>Licenckorlátozások
-Néhány licenccsomag más licenccsomagok alkészletének vagy kibővítésének számít. Általában a felhasználókhoz nem rendelhető olyan licenccsomag, amely már hozzájuk lett rendelve. Ha kibővített licenccsomagot szeretne valakihez hozzárendelni, először el kell távolítania az alkészletet alkotó licenccsomagot.
-
-### <a name="license-requirements"></a>Licenckövetelmények
-Amikor licencet rendel egy felhasználóhoz, megadhat egy elsődleges felhasználási helyet a felhasználó fiókjának tulajdonságaiban. Ha a felhasználási hely nincs meghatározva, a bérlő helye lesz automatikusan hozzárendelve a felhasználóhoz.
-
-![Felhasználó helye][12]
-
-A Microsoft felhőalapú szolgáltatásainak és funkcióinak rendelkezésre állása ország vagy régió szerint változik. A szolgáltatások (például a Voice over Internet Protocol (VoIP)) elérhetőek lehetnek egy országban vagy régióban, míg egy másikban pedig nem. A szolgáltatásokon belüli funkciók bizonyos országokban vagy régiókban jogi okokból korlátozottak lehetnek. Annak megtekintéséhez, hogy egy szolgáltatás vagy funkció korlátozásokkal érhető-e el vagy azok nélkül, keresse meg a szolgáltatás licenckorlátozásait tartalmazó webhelyen az országát vagy régióját.
-
-## <a name="whats-next"></a>A következő lépések
-* [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon](active-directory-add-company-branding.md)
-* [A hozzáférési és használati jelentések megtekintése](active-directory-view-access-usage-reports.md)
+> [!div class="nextstepaction"]
+> [Azure AD Prémium szintű licencek aktiválása](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/TryBuyProductBlade) 
 
 <!--Image references-->
 [1]: ./media/active-directory-get-started-premium/MOLSEmail.png
@@ -141,4 +112,3 @@ A Microsoft felhőalapú szolgáltatásainak és funkcióinak rendelkezésre ál
 [10]: ./media/active-directory-get-started-premium/contosolicenseplan.png
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
-

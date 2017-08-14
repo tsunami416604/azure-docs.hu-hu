@@ -13,13 +13,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: hero-article
-ms.date: 07/10/2017
+ms.date: 08/08/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 54454e98a2c37736407bdac953fdfe74e9e24d37
-ms.openlocfilehash: 01418c00f94edcb810b23e828273a7e749925177
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 3a43472ad2be4a0fd6f7126f72433acd8b5f25fd
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="use-php-to-query-an-azure-sql-database"></a>PHP használata Azure SQL Database-adatbázis lekérdezéséhez
@@ -41,8 +41,8 @@ A gyors üzembehelyezési útmutató elvégzéséhez győződjön meg arról, ho
 - Telepítette a PHP-t és az operációs rendszerének megfelelő kapcsolódó szoftvereket.
 
     - **MacOS**: Telepítse a Homebrew-t és a PHP-t, telepítse az ODBC-illesztőt és az SQLCMD-t, majd telepítse az SQL Serverhez készült PHP-illesztőt. Lásd az [1.2, 1.3 és 2.1 lépést](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/mac/).
-    - **Ubuntu**: Telepítse a PHP-t és a többi szükséges csomagot, majd telepítse az SQL Serverhez készült PHP-illesztőt. Lásd az [1.2 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
-    - **Windows**: Telepítse az IIS Expresshez készült PHP legújabb verzióját, az SQL Server Microsoft-illesztőinek legújabb verzióját az IIS Expressben, a Chocolatey-t, az ODBC-illesztőt és az SQLCMD-t. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).    
+    - **Ubuntu**: Telepítse a PHP-t és a többi szükséges csomagot, majd telepítse az SQL Serverhez készült PHP-illesztőt. Lásd az [1.2 és 2.1 lépést](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/).
+    - **Windows**: Telepítse az IIS Expresshez készült PHP legújabb verzióját, az SQL Server Microsoft-illesztőinek legújabb verzióját az IIS Expressben, a Chocolatey-t, az ODBC-illesztőt és az SQLCMD-t. Lásd az [1.2 és 1.3 lépést](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).    
 
 ## <a name="sql-server-connection-information"></a>Az SQL-kiszolgáló kapcsolatadatai
 

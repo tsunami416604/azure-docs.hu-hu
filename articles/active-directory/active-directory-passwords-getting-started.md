@@ -1,5 +1,5 @@
 ---
-title: "Gyors üzembe helyezés: Azure AD SSPR | Microsoft Docs"
+title: "Gyors útmutató: Azure AD SSPR | Microsoft Docs"
 description: "Az Azure AD önkiszolgáló jelszó-visszaállításának gyors üzembe helyezése"
 services: active-directory
 keywords: 
@@ -13,17 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 08/07/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 52f89520fef8fc9ddb6e8e10a59ec35600affb2a
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: c41a16a3c43064a094b0980bc1a8294b093c6130
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/05/2017
+ms.lasthandoff: 08/08/2017
 
 ---
-# <a name="quick-start-azure-ad-self-service-password-reset"></a>Gyors üzembe helyezés: Azure AD önkiszolgáló jelszó-visszaállítás
+# <a name="quickstart-azure-ad-self-service-password-reset"></a>Gyors útmutató: Az Azure AD új jelszó kérésére vonatkozó önkiszolgáló folyamata
+
+> [!IMPORTANT]
+> **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
 
 ## <a name="rapidly-deploy-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás gyors üzembe helyezése
 
@@ -74,9 +77,15 @@ Annak engedélyezéséhez, hogy a helyszíni identitás szinkronizálhasson az A
 
 ## <a name="disabling-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás letiltása
 
-Az önkiszolgáló jelszóátállítás letiltása egyszerű: nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása, majd a Tulajdonságok** elemet, és válassza a **Senki** lehetőséget az **Önkiszolgáló jelszóátállítás engedélyezve** alatt
+Az önkiszolgáló jelszókérés letiltása egyszerű: nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása, majd a Tulajdonságok** elemet, és válassza a **Senki** lehetőséget az **Önkiszolgáló jelszóátállítás engedélyezve** alatt.
 
 ## <a name="next-steps"></a>Következő lépések
+
+Ebben a gyors útmutatóban megismerhette, hogyan konfigurálhat önkiszolgáló jelszókérést felhasználói számára. Az alábbi hivatkozással az Azure Portalra léphet, ahol elvégezheti a szükséges lépeseket.
+
+> [!div class="nextstepaction"]
+> [Önkiszolgáló jelszóátállítás engedélyezése](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+
 Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
 
 * [**Licencelés**](active-directory-passwords-licensing.md) – Az Azure AD licencelésének konfigurálása.

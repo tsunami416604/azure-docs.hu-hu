@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/27/2017
+ms.date: 08/03/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 6735049b6068d9afe192b6ea4450e970fcf5f7d4
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 6b0faf24963c6055ce7c54b9d46b5aa0851f40b2
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-classic-azure-portal"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz tanúsítványalapú hitelesítés használatával (klasszikus): Azure Portal
@@ -95,7 +95,7 @@ Ha még nem rendelkezik virtuális hálózattal, akkor hozzon létre egyet. A k�
 
   ![Virtuális hálózat csempéjének létrehozása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png)
 10. Miután létrejött a virtuális hálózata, a **Létrehozva** érték jelenik meg az **Állapot** tulajdonságban a klasszikus Azure-portál Networks (Hálózatok) lapján.
-11. Adjon meg egy DNS-kiszolgálót (nem kötelező). Miután létrehozta a virtuális hálózatot, a névfeloldás érdekében hozzáadhatja egy DNS-kiszolgáló IP-címét. A megadott DNS-kiszolgálónak olyan kiszolgálónak kell lennie, amely fel tudja oldani a virtuális hálózatban található erőforrások nevét.<br>A DNS-kiszolgáló hozzáadásához nyissa meg a virtuális hálózat beállításait, kattintson a DNS-kiszolgálókra, majd adja hozzá a használni kívánt DNS-kiszolgáló IP-címét. Az ügyfél-konfigurációs csomag, amelyet egy későbbi lépésben fog létrehozni, tartalmazza az ebben a beállításban megadott DNS-kiszolgálók IP-címét. Ha a későbbiekben frissíteni szeretné a DNS-kiszolgálók listáját, létrehozhat és telepíthet egy új VPN-ügyfélkonfigurációs csomagot, amely a frissített listát tartalmazza.
+11. Adjon meg egy DNS-kiszolgálót (nem kötelező). Miután létrehozta a virtuális hálózatot, a névfeloldás érdekében hozzáadhatja egy DNS-kiszolgáló IP-címét. A DNS-kiszolgáló megadott IP-címének egy olyan DNS-kiszolgáló címének kell lennie, amely fel tudja oldani a virtuális hálózatban található erőforrások nevét.<br>A DNS-kiszolgáló hozzáadásához nyissa meg a virtuális hálózat beállításait, kattintson a DNS-kiszolgálókra, majd adja hozzá a használni kívánt DNS-kiszolgáló IP-címét.
 
 ### <a name="gateway"></a>2. rész: Átjáróalhálózat és dinamikus útválasztású átjáró létrehozása
 
@@ -161,7 +161,7 @@ Az átjáró létrehozása után töltse fel a megbízható főtanúsítványhoz
 
 ## <a name="vpnclientconfig"></a>4. szakasz – Az ügyfél konfigurálása
 
-Ha pont–hely típusú VPN-kapcsolattal szeretne kapcsolódni egy virtuális hálózathoz, minden ügyfélen telepíteni kell egy csomagot a natív Windows VPN-ügyfél konfigurálásához. A konfigurációs csomag konfigurálja a natív Windows VPN-ügyfelet a virtuális hálózathoz való csatlakozáshoz szükséges beállításokkal, továbbá, ha megadott egy DNS-kiszolgálót a virtuális hálózat számára, akkor tartalmazza a DNS-kiszolgáló IP-címét, amelyet az ügyfél a névfeloldáshoz fog használni. Ha később, az ügyfél-konfigurációs csomag létrehozása után módosítja a megadott DNS-kiszolgálót, ne felejtsen el új ügyfél-konfigurációs csomagot létrehozni az ügyfélszámítógépeken való telepítéshez.
+Ha pont–hely típusú VPN-kapcsolattal szeretne kapcsolódni egy virtuális hálózathoz, minden ügyfélen telepíteni kell egy csomagot a natív Windows VPN-ügyfél konfigurálásához. A konfigurációs csomag konfigurálja a natív Windows VPN-ügyfelet a virtuális hálózathoz való csatlakozáshoz szükséges beállításokkal.
 
 Használhatja a VPN-ügyfél azonos konfigurációs csomagját minden ügyfélszámítógépen, feltéve, hogy a verzió megfelel az ügyfél architektúrájának. A támogatott ügyfél operációs rendszerek listáját a cikk végén, a [Pont–hely kapcsolatok – gyakori kérdések](#faq) című szakaszban tekintheti meg.
 

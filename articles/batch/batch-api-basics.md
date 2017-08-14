@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 824f900545136428f6e377c52e2dda7e3ab97cfe
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 233965bf54cbca79c7ff059aaccfa5780d672cab
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
@@ -98,17 +98,18 @@ A megfelelő készletlefoglalási mód kiválasztásához gondolja végig, melyi
 
 Az alábbi táblázatban összehasonlítjuk a Batch szolgáltatás és a felhasználói előfizetés készletlefoglalási módot.
 
-| **Készletlefoglalási mód:**                 | **Batch szolgáltatás**                                                                                       | **Felhasználói előfizetés**                                                              |
+| **Készletlefoglalási mód**                 | **Batch szolgáltatás**                                                                                       | **Felhasználói előfizetés**                                                              |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| **A készletek lefoglalásának helye:**               | Azure által felügyelt előfizetés                                                                           | Az a felhasználói előfizetés, amelyben a Batch-fiók létrejött                        |
-| **Támogatott konfigurációk:**             | <ul><li>Felhőszolgáltatás konfigurációja</li><li>Virtuálisgép-konfiguráció (Linux és Windows)</li></ul> | <ul><li>Virtuálisgép-konfiguráció (Linux és Windows)</li></ul>                |
-| **Támogatott virtuálisgép-rendszerképek:**                  | <ul><li>Azure Marketplace-rendszerképek</li></ul>                                                              | <ul><li>Azure Marketplace-rendszerképek</li><li>Egyéni rendszerképek</li></ul>                   |
-| **Támogatott számításicsomópont-típusok:**         | <ul><li>Dedikált csomópontok</li><li>Alacsony prioritású csomópontok</li></ul>                                            | <ul><li>Dedikált csomópontok</li></ul>                                                  |
-| **Támogatott hitelesítés:**             | <ul><li>Megosztott kulcsos</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
-| **Azure Key Vault szükséges:**             | Nem                                                                                                      | Igen                                                                                |
-| **Magkvóta:**                           | A Batch-magkvóta határozza meg                                                                          | Az előfizetés magkvótája határozza meg                                              |
-| **Azure Virtual Network- (Vnet-) támogatás:** | Felhőszolgáltatás-konfigurációval létrehozott készletek                                                      | Virtuálisgép-konfigurációval létrehozott készletek                               |
-| **Vnet üzembehelyezési modell támogatása:**      | Klasszikus üzemi modellel létrehozott Vnetek                                                             | Klasszikus üzemi modellel vagy Azure Resource Managerrel létrehozott Vnetek |
+| **A készletek lefoglalásának helye**               | Azure által felügyelt előfizetés                                                                           | Az a felhasználói előfizetés, amelyben a Batch-fiók létrejött                        |
+| **Támogatott konfigurációk**             | <ul><li>Felhőszolgáltatás konfigurációja</li><li>Virtuálisgép-konfiguráció (Linux és Windows)</li></ul> | <ul><li>Virtuálisgép-konfiguráció (Linux és Windows)</li></ul>                |
+| **Támogatott virtuálisgép-rendszerképek**                  | <ul><li>Azure Marketplace-rendszerképek</li></ul>                                                              | <ul><li>Azure Marketplace-rendszerképek</li><li>Egyéni rendszerképek</li></ul>                   |
+| **Támogatott számításicsomópont-típusok**         | <ul><li>Dedikált csomópontok</li><li>Alacsony prioritású csomópontok</li></ul>                                            | <ul><li>Dedikált csomópontok</li></ul>                                                  |
+| **Támogatott hitelesítés**             | <ul><li>Megosztott kulcsos</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
+| **Azure Key Vault szükséges**             | Nem                                                                                                      | Igen                                                                                |
+| **Magkvóta**                           | A Batch-magkvóta határozza meg                                                                          | Az előfizetés magkvótája határozza meg                                              |
+| **Azure Virtual Network- (Vnet-) támogatás** | Felhőszolgáltatás-konfigurációval létrehozott készletek                                                      | Virtuálisgép-konfigurációval létrehozott készletek                               |
+| **Vnet üzembehelyezési modell támogatása**      | Klasszikus üzemi modellel létrehozott Vnetek                                                             | Klasszikus üzemi modellel vagy Azure Resource Managerrel létrehozott Vnetek |
+
 ## <a name="azure-storage-account"></a>Azure Storage-fiók
 
 Az erőforrásfájlok és a kimeneti fájlok tárolására a legtöbb Batch-megoldás az Azure Storage-ot használja.  
@@ -171,6 +172,8 @@ A Batch-készlet létrehozásakor megadhatja az Azure virtuálisgép-konfigurác
     * Ahogy a Cloud Services feldolgozói szerepkörei esetében, itt is megadhatja az *operációs rendszer verzióját* (a feldolgozói szerepkörökkel kapcsolatos további információkért olvassa el a [Cloud Services overview](../cloud-services/cloud-services-choose-me.md) (A Cloud Services áttekintése) című cikk [Tell me about cloud services](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services) (További információk a Cloud Servicesről) című fejezetét).
     * A feldolgozói szerepkörökhöz hasonlóan ajánlott a `*` értéket megadni az *Operációs rendszer verziója* beállításnál, hogy a csomópontok automatikusan frissüljenek, és ne kelljen semmilyen műveletet végeznie, ha új verzió jelenik meg. Azért tanácsos megadni a konkrét operációsrendszer-verziót, mert így garantálható az alkalmazások kompatibilitása, hogy így a korábbi verziókkal való kompatibilitási tesztet lehessen végezni a verziófrissítés engedélyezése előtt. Az ellenőrzést követően frissítheti a készlet *operációsrendszer-verzióját*, és telepítheti az új operációsrendszer-képet. A rendszer ilyenkor megszakítja a futó feladatokat, és újból a várólistára helyezi őket.
 
+Készletek létrehozásakor ki kell választania a megfelelő **nodeAgentSkuId** értéket a virtuális merevlemez alapképének operációs rendszerétől függően. A rendelkezésre álló csomóponti ügynök SKU-knak az operációsrendszerkép-hivatkozásokra való leképezéséhez hívhatja [Támogatott csomóponti ügynökök SKU-azonosítói](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) műveletet.
+
 A [Fiók](#account) szakaszban olvashat a készletlefoglalási mód beállításáról a Batch-fiók létrehozásakor.
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Egyéni rendszerképek virtuálisgép-készletekhez
@@ -195,8 +198,6 @@ Győződjön meg arról, hogy a tárfiókok megfelelnek a következő feltétele
 - Jelenleg csak a standard szintű, általános célú tárfiókok támogatottak. A jövőben a prémium szintű Azure Storage is támogatott lesz.
 - Megadhat több egyéni virtuálismerevlemez-blobbal rendelkező tárfiókot, vagy több tárfiókot egyetlen blobhoz. A jobb teljesítmény érdekében javasolt több tárfiókot használni.
 - Egyetlen egyedi egyéni lemezkép virtuálismerevlemez-blobja legfeljebb 40 linuxos virtuálisgép-példányt vagy 20 windowsos virtuálisgép-példányt képes támogatni. Több virtuális géppel rendelkező készletek létrehozásához másolatokat kell készíteni a virtuálismerevlemez-blobról. Például egy 200 Windows rendszerű virtuális géppel rendelkező készlethez 10 egyedi virtuálismerevlemez-blobot kell megadni az **osDisk** tulajdonságban.
-
-Készletek létrehozásakor ki kell választania a megfelelő **nodeAgentSkuId** értéket a virtuális merevlemez alapképének operációs rendszerétől függően. A rendelkezésre álló csomóponti ügynök SKU-knak az operációsrendszerkép-hivatkozásokra való leképezéséhez hívhatja [Támogatott csomóponti ügynökök SKU-azonosítói](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) műveletet.
 
 Készlet készítése egyéni lemezképből az Azure Portal használatával:
 

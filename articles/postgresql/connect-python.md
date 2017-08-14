@@ -1,6 +1,6 @@
 ---
 title: "Csatlakozás a PostgreSQL-hez készült Azure Database-hez a Pythonnal | Microsoft Docs"
-description: "Biztosítja a PostgreSQL-hez készült Azure Database-hez csatlakozásra és adatlekérdezésre használható Python-kódmintát."
+description: "Ez a rövid útmutató egy olyan Python-kódmintát biztosít, amellyel csatlakozhat egy PostgreSQL-hez készült Azure-adatbázishoz, és adatokat kérdezhet le arról."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -10,12 +10,12 @@ ms.service: postgresql-database
 ms.custom: mvc
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 07/07/2017
+ms.date: 08/10/2017
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: f6ae1ef3855711a86333857f26400f29dfd7c54e
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 0d52a7728e2292946e9328065b973ca7ad37b4f5
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Python használatával
@@ -49,7 +49,7 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 5. Amennyiben elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az **Áttekintés** oldalra, ahol kikeresheti a kiszolgáló-rendszergazda bejelentkezési nevét, valamint szükség esetén új jelszót kérhet.
 
 ## <a name="how-to-run-python-code"></a>Python-kód futtatása
-- A kedvenc szövegszerkesztőjével hozza létre a postgres.py nevű fájlt, és mentse egy projektmappába. Másolja és illessze be az alább látható mintakódot a szövegfájlba, és mentse azt. Válassza az UTF-8 kódolást, ha a fájlt a Windows operációs rendszerben menti. 
+- A kedvenc szövegszerkesztőjével hozza létre a postgres.py nevű fájlt, és mentse egy projektmappába. Másolja és illessze be az alábbiakban látható mintakódot a szövegfájlba. Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. Ezután mentse a fájlt. Válassza az UTF-8 kódolást, ha a fájlt a Windows operációs rendszerben menti. 
 - A kód futtatásához nyissa meg a parancssort vagy a bash rendszerhéjat. Módosítsa a könyvtárat a projektmappájára, például: `cd postgresql`. Ezután írja be a python-parancsot, majd a fájlnevet, például: `python postgres.py`.
 
 > [!NOTE]

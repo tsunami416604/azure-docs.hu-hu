@@ -12,23 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 76fd245f91e1bfab3df68120859c69e459283e5b
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: cbb67ef92386a6288b3317bf77ebb67f15ce7fb2
 ms.contentlocale: hu-hu
-ms.lasthandoff: 01/27/2017
+ms.lasthandoff: 08/08/2017
 
 ---
-# Igény szerinti tartalomtovábbítás az Azure Portal használatával
-<a id="get-started-with-delivering-content-on-demand-using-the-azure-portal" class="xliff"></a>
+# <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Igény szerinti tartalomtovábbítás az Azure Portal használatával
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portal segítségével, az Azure Media Services (AMS) alkalmazással.
 
-## Előfeltételek
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>Előfeltételek
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
@@ -42,8 +40,7 @@ Az oktatóanyag a következő feladatokat tartalmazza:
 4. Az objektum közzététele, majd a streamelési és a progresszív letöltési URL-cím lekérése  
 5. Tartalom lejátszása
 
-## Streamvégpontok elindítása
-<a id="start-streaming-endpoints" class="xliff"></a> 
+## <a name="start-streaming-endpoints"></a>Streamvégpontok elindítása 
 
 Az Azure Media Services egyik leggyakrabban használt funkciója a videók továbbítása az adaptív sávszélességű streamelés használatával. A Media Services dinamikus csomagolást biztosít, amelynek köszönhetően adaptív sávszélességű, MP4 formátumban kódolt tartalmait a Media Services által támogatott streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming) továbbíthatja igény szerint, mindezt anélkül, hogy az adott formátumban előcsomagolt verziót tárolna.
 
@@ -61,8 +58,7 @@ A streamvégpont elindításához tegye a következőket:
 4. Kattintson a Start ikonra.
 5. Mentse a módosításokat a Save (Mentés) gombra kattintva.
 
-## Fájlok feltöltése
-<a id="upload-files" class="xliff"></a>
+## <a name="upload-files"></a>Fájlok feltöltése
 Ha az Azure Media Services használatával kíván videókat streamelni, fel kell töltenie a forrásvideókat, különböző bitsebességekre kell kódolnia azokat, majd közzé kell tennie az eredményt. Ez a rész a folyamat első lépését írja le. 
 
 1. A **Settings** (Beállítások) ablakban kattintson az **Assets** (Objektumok) elemre.
@@ -82,36 +78,33 @@ Ha az Azure Media Services használatával kíván videókat streamelni, fel kel
 
 A feltöltés befejezését követően az új objektum bekerül az **Objektumok** ablakban található listába. 
 
-## Objektumok kódolása
-<a id="encode-assets" class="xliff"></a>
+## <a name="encode-assets"></a>Objektumok kódolása
+
 Az Azure Media Services egyik legnépszerűbb funkciója, amikor a portál használatával adaptív sávszélességű streamelést biztosítunk az ügyfelek számára. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH. A videók adaptív sávszélességű streameléséhez többszörös sávszélességű fájlokká kell kódolnia a forrásvideókat. Javasoljuk, hogy a videók kódolásához használja a **Media Encoder Standard** kódolót.  
 
 A Media Services dinamikus csomagolást is biztosít, aminek köszönhetően anélkül lehet MPEG DASH, HLS és Smooth Streaming formátumban közvetíteni többszörös sávszélességű MP4-streameket, hogy át kellene őket csomagolni ezekbe a streamformátumokba. A dinamikus csomagolás használatával csak egyféle formátumban kell tárolnia a fájlokat és fizetnie azok alapján, a Media Services pedig az ügyfelek igényeihez igazodva hozza létre és továbbítja számukra a megfelelő választ.
 
 Annak érdekében, hogy kihasználhassa a dinamikus csomagolást, kódolja többszörös sávszélességű MP4-fájlokká a forrásfájlt (a kódolás lépéseit egy későbbi részben találja meg).
 
-### Kódolás a portál használatával
-<a id="to-use-the-portal-to-encode" class="xliff"></a>
+### <a name="to-use-the-portal-to-encode"></a>Kódolás a portál használatával
 Ebben a részben leírjuk, milyen lépéseket kell elvégeznie a tartalmaknak a Media Encoder Standard segítségével történő kódolásához.
 
 1. A **Settings** (Beállítások) ablakban válassza az **Assets** (Objektumok) lehetőséget.  
 2. Az **Assets** (Objektumok) ablakban válassza ki a kódolni kívánt objektumot.
 3. Nyomja meg az **Encode** (Kódolás) gombot.
-4. Az **Encode an asset** (Objektum kódolása) ablakban válassza a „Media Encoder Standard” feldolgozóeszközt, és egy beállításkészletet. Ha például tudja, hogy a bemeneti videó felbontása 1920 x 1080 képpont, akkor használja a „H264 Multiple Bitrate 1080p” beállításkészletet. A beállításkészletekkel kapcsolatban [ebben](media-services-mes-presets-overview.md) a cikkben talál további információkat – rendkívül fontos, hogy a bemeneti videóhoz leginkább megfelelő készletet válassza. Ha például alacsony felbontású (640 x 360) videót szeretne kódolni, ne válassza az alapértelmezett „H264 Multiple Bitrate 1080p” beállításkészletet.
+4. Az **Encode an asset** (Objektum kódolása) ablakban válassza a „Media Encoder Standard” feldolgozóeszközt, és egy beállításkészletet. A beállításkészletekkel kapcsolatos információkért lásd [a sávszélességi skála automatikus létrehozását](media-services-autogen-bitrate-ladder-with-mes.md) és a [MES előre beállított feladatait](media-services-mes-presets-overview.md) ismertető részeket. Ha szeretné szabályozni, hogy a rendszer mely kódolási beállításkészletet használja, ne feledje: rendkívül fontos, hogy a bemeneti videóhoz leginkább megfelelő készletet válassza. Ha például tudja, hogy a bemeneti videó felbontása 1920 x 1080 képpont, akkor használja a „H264 Multiple Bitrate 1080p” beállításkészletet. Ha például alacsony felbontású (640 x 360) videót szeretne kódolni, ne válassza a „H264 Multiple Bitrate 1080p” beállításkészletet.
    
    Az egyszerűbb kezelés érdekében lehetősége van módosítani a kimeneti objektum nevét, illetve a feladat nevét.
    
    ![Objektumok kódolása](./media/media-services-portal-vod-get-started/media-services-encode1.png)
 5. Nyomja meg a **Create** (Létrehozás) gombot.
 
-### Kódolási feladatok előrehaladásának figyelése
-<a id="monitor-encoding-job-progress" class="xliff"></a>
+### <a name="monitor-encoding-job-progress"></a>Kódolási feladatok előrehaladásának figyelése
 A kódolási feladat előrehaladásának figyeléséhez kattintson az oldal tetején található **Settings** (Beállítások), majd a **Jobs** (Feladatok) elemre.
 
 ![Feladatok](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-## Tartalom közzététele
-<a id="publish-content" class="xliff"></a>
+## <a name="publish-content"></a>Tartalom közzététele
 Ahhoz, hogy átadhassa a tartalmak streamelésére vagy letöltésére használható URL-címet a felhasználónak, először „közzé kell tennie” az objektumot. Ehhez létre kell hoznia egy lokátort. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services két lokátortípust támogat: 
 
 * Streamelési (OnDemandOrigin) lokátorokat, amelyek adaptív streameléshez (például MPEG DASH, HLS vagy Smooth Streaming adatok streameléséhez) használhatók. A streamelési lokátorok létrehozásához az objektumnak tartalmaznia kell egy .ism-fájlt. 
@@ -141,8 +134,7 @@ Az SAS URL-cím formátuma a következő:
 
 A lokátor lejárati idejének módosításához használjon [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) vagy [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API-t. Az SAS-keresők lejárati dátumának frissítésekor az URL-cím is módosul.
 
-### Az objektum portál segítségével történő közzététele
-<a id="to-use-the-portal-to-publish-an-asset" class="xliff"></a>
+### <a name="to-use-the-portal-to-publish-an-asset"></a>Az objektum portál segítségével történő közzététele
 Az objektumnak a portál segítségével történő közzétételéhez tegye a következőket:
 
 1. Válassza a **Settgings (Beállítások)** > **Assets (Objektumok)** lehetőséget.
@@ -155,8 +147,7 @@ Az objektumnak a portál segítségével történő közzétételéhez tegye a k
 
 Az URL-cím bekerül a **Közzétett URL-címek** listájába.
 
-## Tartalom lejátszása a portálról
-<a id="play-content-from-the-portal" class="xliff"></a>
+## <a name="play-content-from-the-portal"></a>Tartalom lejátszása a portálról
 Az Azure Portalon talál egy tartalomlejátszót, amellyel tesztelheti a videót.
 
 Kattintson a kívánt videóra, majd a **Lejátszás** gombra.
@@ -165,17 +156,16 @@ Kattintson a kívánt videóra, majd a **Lejátszás** gombra.
 
 Vegye figyelembe a következőket:
 
+* A streamelés megkezdéséhez futtassa az **alapértelmezett** streamvégpontot.
 * Ellenőrizze, hogy közzétette-e a videót.
 * A **Media Player** az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, rákattintva másolja az URL-címet, és használjon másik lejátszót. Például az [Azure Media Services lejátszót](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## Visszajelzés küldése
-<a id="provide-feedback" class="xliff"></a>
+## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
