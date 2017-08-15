@@ -67,7 +67,7 @@ Logikai alkalmazásain belül csatlakozhat vállalati alkalmazásaihoz.
 
 |  |  |
 | --- | --- |
-|[! [API-ikon] [MQicon] <br/>**MQ**][mqdoc]|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API-ikon][MQicon]<br/>**MQ**][mqdoc]|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>Betűrend szerinti teljes lista
