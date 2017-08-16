@@ -96,6 +96,7 @@
 #### [Felhasználók, munkamenetek, események](app-insights-usage-segmentation.md)
 #### [Tölcsérek](usage-funnels.md)
 #### [Megőrzés](app-insights-usage-retention.md)
+#### [Folyamatok](app-insights-usage-flows.md)
 #### [Munkafüzetek](app-insights-usage-workbooks.md)
 
 ### Elemzés

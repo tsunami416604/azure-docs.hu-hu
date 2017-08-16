@@ -3,13 +3,13 @@
 ## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
 ## [Az Azure identitáskezelési megoldásainak ismertetése](understand-azure-identity-solutions.md)
 ## [Hibrid identitáskezelési megoldás](choose-hybrid-identity-solution.md)
+## [Azure-előfizetések társítása](active-directory-how-subscriptions-associated-directory.md)
 ## [Gyakori kérdések](active-directory-faq.md)
 
 # Bevezetés
-## [Azure AD-bérlő beszerzése](active-directory-howto-tenant.md)
 ## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
-## [Azure-előfizetések társítása](active-directory-how-subscriptions-associated-directory.md)
-## [Rövid útmutató: Új jelszó önkiszolgáló kérése](active-directory-passwords-getting-started.md)
+## [Egyéni tartománynév hozzáadása](add-custom-domain.md)
+## [Új jelszó önkiszolgáló kérésének konfigurálása](active-directory-passwords-getting-started.md)
 ## Az Azure AD-licencek kezelése
 ### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
 ### [Klasszikus portál](active-directory-licensing-what-is.md)
@@ -19,8 +19,7 @@
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
-## [Támogatás az Azure Active Directoryhoz](active-directory-troubleshooting-support-howto.md)
-## [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
+
 
 # Útmutató
 ## Tervezés és kialakítás
@@ -55,7 +54,6 @@
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
-
 ### [Más címtárakban szereplő felhasználók felvétele (klasszikus portál)](active-directory-create-users-external.md)
 ### [Felhasználók törlése](active-directory-users-delete-user-azure-portal.md)
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
@@ -164,6 +162,7 @@
 ## Alkalmazások kezelése
 ### [Áttekintés](active-directory-enable-sso-scenario.md)
 ### [Első lépések](active-directory-integrating-applications-getting-started.md)
+### [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
 ### [Felhőalkalmazások felderítése](active-directory-cloudappdiscovery-whatis.md)
 #### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
@@ -239,11 +238,6 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Egyéni tartománynevek
 #### [Áttekintés](active-directory-add-domain-concepts.md)
-#### Tartománynév hozzáadása
-##### [Azure Portal](active-directory-domains-add-azure-portal.md)
-##### [Klasszikus portál](active-directory-add-domain.md)
-##### [AD FS használatával](active-directory-add-domain-federated.md)
-#### [Felhasználók hozzárendelése](active-directory-add-domain-add-users.md)
 #### Tartománynevek kezelése
 ##### [Azure Portal](active-directory-domains-manage-azure-portal.md)
 ##### [Klasszikus portál](active-directory-add-manage-domain-names.md)
@@ -270,6 +264,7 @@
 #### [Minta önkiszolgáló bejelentkezési portálhoz](active-directory-b2b-self-service-portal.md)
 #### [Meghívó e-mail](active-directory-b2b-invitation-email.md)
 #### [Meghívó beváltása](active-directory-b2b-redemption-experience.md)
+#### [B2B-felhasználók hozzáadása meghívás nélkül](active-directory-b2b-add-user-without-invite.md)
 #### [Feltételes hozzáférés B2B-hez](active-directory-b2b-mfa-instructions.md)
 #### [B2B megosztási szabályzatok](active-directory-b2b-delegate-invitations.md)
 #### [B2B-felhasználó hozzáadása szerepkörhöz](active-directory-b2b-add-guest-to-role.md)
@@ -357,7 +352,8 @@
 ### [Magas rendelkezésre állás](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [Az aláírás-kivonatoló algoritmus módosítása](active-directory-federation-sha256-guidance.md)
 
-## [Hibaelhárítás](active-directory-troubleshooting.md)
+## [Hibaelhárítás](active-directory-troubleshooting-support-howto.md)
+### [Egy Active Directory-elem hiányzik vagy nem érhető el – Hibaelhárítás](active-directory-troubleshooting.md)
 
 ## Az Azure AD központi telepítése – A koncepció igazolása (Proof of Concept, PoC)
 ### [PoC-útmutató: Bevezetés](active-directory-playbook-intro.md)

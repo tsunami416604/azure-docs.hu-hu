@@ -69,6 +69,7 @@
 ##### [DNS-szolgáltatás](service-fabric-dnsservice.md)
 ##### [Fordított proxy](service-fabric-reverseproxy.md)
 ##### [Fordított proxy konfigurálása biztonságos kommunikációhoz](service-fabric-reverseproxy-configure-secure-communication.md)
+##### [Fordítottproxy-diagnosztika](service-fabric-reverse-proxy-diagnostics.md)
 ### [Az alkalmazások méretezhetősége](service-fabric-concepts-scalability.md)
 ### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
@@ -136,6 +137,7 @@
 #### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
 #### [Tárolók és szolgáltatások erőforrás-szabályozása](service-fabric-resource-governance.md)
 #### [Kötet- és naplózási illesztők](service-fabric-containers-volume-logging-drivers.md)
+#### [Tárolókon belüli szolgáltatások](service-fabric-services-inside-containers.md)
 
 ### Reliable Services-szolgáltatás összeállítása
 #### [Áttekintés](service-fabric-reliable-services-introduction.md)
@@ -173,10 +175,10 @@
 #### Bevezetés
 ##### [C# Windowson](service-fabric-reliable-actors-get-started.md)
 ##### [Java Linuxon](service-fabric-reliable-actors-get-started-java.md)
-#### [Értesítések küldése](service-fabric-reliable-actors-events.md) 
+#### [Értesítések küldése](service-fabric-reliable-actors-events.md)
 #### [Időzítők és emlékeztetők beállítása](service-fabric-reliable-actors-timers-reminders.md)
 #### [KvsActorStateProvider konfigurálása](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
-#### [Kommunikációs beállítások konfigurálása](service-fabric-reliable-actors-fabrictransportsettings.md) 
+#### [Kommunikációs beállítások konfigurálása](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [ReliableDictionaryActorStateProvider konfigurálása](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
 ### [Fordított proxy konfigurálása biztonságos kommunikációhoz](service-fabric-reverseproxy-configure-secure-communication.md)
@@ -240,17 +242,17 @@
 
 ## Fürtök létrehozása és felügyelete
 ### Fürtök az Azure-on
-#### Létrehozás 
+#### Létrehozás
 ##### [Az első saját fürt létrehozása az Azure-on](service-fabric-get-started-azure-cluster.md)
 ##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-#### Méretezés 
+#### Méretezés
 ##### [Manuálisan](service-fabric-cluster-scale-up-down.md)
 ##### [Programozott módon](service-fabric-cluster-programmatic-scaling.md)
 #### [Frissítés](service-fabric-cluster-upgrade.md)
 #### [Hozzáférés-vezérlés beállítása](service-fabric-cluster-security-roles.md)
 #### [Konfigurálás](service-fabric-cluster-fabric-settings.md)
-#### [Fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md) 
+#### [Fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md)
 #### [Törlés](service-fabric-cluster-delete.md)
 
 ### Önálló fürtök
@@ -264,7 +266,7 @@
 #### [Méretezés](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [Hozzáférés-vezérlés beállítása](service-fabric-cluster-security-roles.md)
 #### [Konfigurálás](service-fabric-cluster-manifest.md)
-#### [Frissítés](service-fabric-cluster-upgrade-windows-server.md) 
+#### [Frissítés](service-fabric-cluster-upgrade-windows-server.md)
 
 ### [Fürt ábrázolása](service-fabric-visualizing-your-cluster.md)
 ### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
@@ -333,4 +335,3 @@
 ## [Támogatási lehetőségek](service-fabric-support.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
-

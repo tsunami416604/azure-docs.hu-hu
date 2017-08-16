@@ -49,6 +49,7 @@
 ##### [Útmutatás](operations-management-suite-walkthrough-servicemap.md)
 ##### [Használat](operations-management-suite-service-map.md)
 ##### [Konfigurálás](operations-management-suite-service-map-configure.md)
+##### [Integrálás az Operations Managerrel](operations-management-suite-service-map-scom.md)
 #### [SQL-elemzés](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)

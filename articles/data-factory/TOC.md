@@ -61,7 +61,10 @@
 #### [Sybase](data-factory-onprem-sybase-connector.md)
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Webtábla](data-factory-web-table-connector.md)
-### [Adatkezelési átjáró](data-factory-data-management-gateway.md)
+### Adatkezelési átjáró
+#### [Áttekintés](data-factory-data-management-gateway.md)
+#### [Magas rendelkezésre állás és méretezhetőség (előzetes verzió)](data-factory-data-management-gateway-high-availability-scalability.md)
+#### [Bemutató: Adatok áthelyezése helyszíni SQL Serverről az Azure Blob Storage-ba](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## [Adatok átalakítása](data-factory-data-transformation-activities.md)

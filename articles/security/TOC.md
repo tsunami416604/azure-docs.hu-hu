@@ -5,10 +5,11 @@
 ## [Számítási biztonság](security-virtual-machines-overview.md)
 ## [Működési biztonság](azure-operational-security-overview.md)
 ## [Biztonságkezelés és megfigyelés](security-management-and-monitoring-overview.md)
+## [A Service Fabric biztonsága](azure-service-fabric-security-overview.md)
 ## [Identitáskezelés](security-identity-management-overview.md)
 ## [IoT-biztonság](../iot-suite/iot-security-architecture.md#security-in-iot)
 ## [Biztonsági architektúra](azure-security-architecture-overview.md)
-### [Működési biztonság](azure-operational-security.md)
+### [Működési biztonság engedélyezése](azure-operational-security.md)
 ### [Fejlett fenyegetésészlelés](azure-threat-detection.md)
 ### [Naplózás](azure-log-audit.md)
 ### [Elkülönítés a nyilvános felhőben](azure-isolation.md)
@@ -40,6 +41,9 @@
 #### [Lemeztitkosítási hibaelhárítás](azure-security-disk-encryption-tsg.md)
 ### [Azure-beli virtuális gép titkosítása](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
+## Működési biztonság
+### [Működési biztonság – ajánlott eljárások](azure-operational-security-best-practices.md)
+
 ## Biztonságkezelés és megfigyelés
 ### [Biztonság kezelése](azure-security-management.md)
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
@@ -49,6 +53,10 @@
 #### [A Security Center riasztásainak integrálása](security-azure-log-integration-security-center.md)
 #### [Key Vault-naplók integrálása az Event Hubs használatával](security-azure-log-integration-keyvault-eventhub.md)
 #### [Gyakori kérdések](security-azure-log-integration-faq.md)
+
+## Service Fabric
+### [Service Fabric – ajánlott eljárások](azure-service-fabric-security-best-practices.md)
+### [Service Fabric – ellenőrzőlista](azure-service-fabric-security-checklist.md)
 
 ## Identitáskezelés
 ### [Ajánlott identitáskezelési biztonsági eljárások](azure-security-identity-management-best-practices.md)

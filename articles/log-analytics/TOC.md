@@ -46,6 +46,7 @@
 ### [Naplókeresési portálok](log-analytics-log-search-portals.md)
 #### [Naplókeresési portál használata](log-analytics-log-search-log-search-portal.md)
 ### [Váltás az örökölt nyelvről](log-analytics-log-search-transition.md)
+### [Folyamat-összekötő](log-analytics-flow-tutorial.md)
 
 ## Adatok elemzése
 ### [Irányítópultok](log-analytics-dashboards.md)

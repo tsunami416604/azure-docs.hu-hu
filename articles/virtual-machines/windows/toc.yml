@@ -50,34 +50,28 @@
     - name: Régiók és rendelkezésre állás
       href: regions-and-availability.md
     - name: Tárolás
-      href: >-
-        ../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Hálózat
       href: network-overview.md
     - name: Virtuális gépek méretezési csoportjai
-      href: >-
-        ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Példány-metaadat szolgáltatás
       href: ../virtual-machines-instancemetadataservice-overview.md
     - name: Tárolók
       href: containers.md
     - name: Resource Manager
-      href: >-
-        ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
       items:
         - name: Üzembe helyezési modellek
-          href: >-
-            ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Sablonok virtuális gépekhez
           href: template-description.md
     - name: Azure Windows-ügynök
       href: agent-user-guide.md
     - name: Azure Security Center
-      href: >-
-        ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Vészhelyreállítás
-      href: >-
-        ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Tervezett karbantartás
       href: planned-maintenance.md
       items:
@@ -107,196 +101,157 @@
           href: acu.md
         - name: Számításiteljesítmény-mérési pontszámok
           href: compute-benchmark-scores.md
-        - name: Ajánlott eljárások Windows rendszerű virtuális gépek futtatásához
-          href: guidance-compute-single-vm.md
     - name: Telepítési szempontok
       items:
-        - name: Infrastruktúrával kapcsolatos irányelvek
-          href: infrastructure-virtual-machine-guidelines.md
-        - name: Előfizetések és fiókok
-          href: infrastructure-subscription-accounts-guidelines.md
-        - name: Elnevezés
-          href: infrastructure-naming-guidelines.md
-        - name: Erőforráscsoportok
-          href: infrastructure-resource-groups-guidelines.md
-        - name: Tárolás
-          href: infrastructure-storage-solutions-guidelines.md
-        - name: Hálózat
-          href: infrastructure-networking-guidelines.md
-        - name: Rendelkezésre állási csoportok
-          href: infrastructure-availability-sets-guidelines.md
-        - name: Példa infrastruktúrára
+        - name: Példa az alapszintű üzembe helyezésre
           href: infrastructure-example.md
 - name: Útmutatók
   items:
     - name: Virtuális gépek létrehozása
       items:
-        - name: A virtuális gépek létrehozásának áttekintése
-          href: creation-choices.md
-        - name: Virtuális gép létrehozása specializált virtuális merevlemezből
-          href: create-vm-specialized.md
-        - name: Virtuális gép létrehozása sablon alapján
-          href: ps-template.md
-        - name: 'Virtuális gép létrehozása / kezelése C# használatával'
+        - name: 'A C# használata'
           href: csharp.md
-        - name: 'Virtuális gép létrehozása C# használatával sablon alapján'
+        - name: 'Sablon használata a C#-vel'
           href: csharp-template.md
-        - name: Virtuális gép létrehozása Chef használatával
-          href: chef-automation.md
-        - name: Virtuális gép létrehozása / kezelése Python használatával
+        - name: A Python használata
           href: python.md
-        - name: Virtuális gép létrehozása Terraform használatával
-          items:
-            - name: Telepítés és konfigurálás
-              href: ../terraform-install-configure.md
-            - name: Alapszintű infrastruktúra létrehozása
-              href: ../terraform-create-complete-vm.md
-        - name: >-
-            Népszerű alkalmazás-keretrendszereket futtató virtuális gép
-            létrehozása
-          href: app-frameworks.md
-        - name: Virtuális gép áthelyezése előfizetések között
-          href: move-vm.md
-    - name: Virtuális gépek konfigurálása
+        - name: Sablon használata
+          href: ps-template.md
+        - name: Kapcsolódás virtuális géphez
+          href: connect-logon.md
+        - name: AHUB típusú licenckezelés használata
+          href: hybrid-use-benefit-licensing.md
+    - name: Virtuális gépek védelme
       items:
-        - name: Virtuális gép átméretezése
-          href: resize-vm.md
-        - name: Címkék használata
-          href: >-
-            ../../resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-          items:
-            - name: Virtuális gép címkézése
-              href: tag.md
-        - name: Biztonsági mentés a Recovery Services-zel
-          href: >-
-            ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: Biztonsági másolatok kezelése a PowerShell-lel
-          href: >-
-            ../../backup/backup-azure-vms-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: Virtuálisgép-sablon letöltése
-          href: download-template.md
+        - name: Titkosítás
+          href: encrypt-disks.md
+        - name: A WinRM használata
+          href: winrm.md
+        - name: Hozzáférés-vezérlők használata
+          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Szabályzatok használata
+          href: policy.md
+        - name: Kulcstartó létrehozása
+          href: key-vault-setup.md
+    - name: Virtuális gépek kezelése
+      items:
         - name: Általános PowerShell-feladatok
           href: ps-common-ref.md
-        - name: Általános CLI-feladatok
-          href: cli-manage.md
-        - name: Virtuális gépek kezelése a parancssori felületről
-          href: cli-deploy-templates.md
-    - name: Kapcsolódás RDP-vel
+        - name: Virtuális gép áthelyezése
+          href: move-vm.md
+        - name: Virtuális gép méretének módosítása
+          href: resize-vm.md
+        - name: Virtuális gép címkézése
+          href: tag.md
+        - name: Szkriptek futtatása virtuális gépeken
+          href: extensions-customscript.md
+        - name: Ideiglenes meghajtó betűjelének módosítása
+          href: change-drive-letter.md
+        - name: Rendelkezésre állási csoport módosítása
+          href: change-availability-set.md
+        - name: Sablon letöltése
+          href: download-template.md
+        - name: Azure virtuálisgép-ügynök
+          href: agent-user-guide.md
+    - name: Rendszerképek használata
       items:
-        - name: Bejelentkezés virtuális gépre
-          href: connect-logon.md
-    - name: Virtuálisgép-rendszerképek kezelése
-      items:
-        - name: Virtuálisgép-rendszerképek keresése a piactéren
+        - name: Rendszerképek keresése és használata
           href: cli-ps-findimage.md
-        - name: Azure hibrid használati előnyhöz tartozó licencek
-          href: hybrid-use-benefit-licensing.md
+        - name: Virtuális gép előkészítése feltöltéshez
+          href: prepare-for-upload-vhd-image.md
+        - name: Általános rendszerkép használata
+          href: create-vm-generalized-managed.md
+        - name: Specializált rendszerkép használata
+          href: create-vm-specialized.md
+        - name: Virtuális gép rögzítése rendszerképben
+          href: capture-image-resource.md
+        - name: Rendszerkép összeállítása a Packerrel
+          href: build-image-with-packer.md
         - name: Windows-ügyfélrendszerképek használata
           href: client-images.md
-        - name: VHD letöltése
+        - name: Meglévő lemez letöltése
           href: download-vhd.md
-        - name: Virtuális merevlemez előkészítése feltöltéshez
-          href: prepare-for-upload-vhd-image.md
-        - name: Felügyelt lemez rendszerképének létrehozása
-          href: capture-image-resource.md
-        - name: Virtuális gép létrehozása általános felügyelt lemez rendszerképéből
-          href: create-vm-generalized-managed.md
-        - name: Rendszerkép létrehozása a Packerrel
-          href: build-image-with-packer.md
-    - name: Virtuális gép tárolójának kezelése
+    - name: Rendelkezésre állás és méretezés
       items:
-        - name: Felügyelt lemezek létrehozása
-          href: create-managed-disk-ps.md
-        - name: Virtuális gépek migrálása felügyelt lemezekre
-          href: migrate-to-managed-disks.md
+        - name: Virtual Machine Scale Sets
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Magas rendelkezésre állás
+          href: manage-availability.md
+        - name: Függőleges skálázás
+          href: vertical-scaling-automation.md
+    - name: Automatizálási eszközök használata
+      items:
+        - name: Chef
+          href: chef-automation.md
+    - name: Alkalmazások futtatása
+      items:
+        - name: SQL Server
+          href: /sql/virtual-machines-windows-sql-server-iaas-overview
+        - name: MongoDB
+          href: install-mongodb.md
+        - name: Az SAP az Azure-on
+          href: ../workloads/sap/get-started.md
+        - name: MATLAB fürt
+          href: matlab-mdcs-cluster.md
+        - name: Nagy teljesítményű számítástechnika (HPC)
+          href: hpcpack-cluster-options.md
           items:
-            - name: Konvertálás nem felügyeltről felügyelt lemezzé
-              href: convert-unmanaged-to-managed-disks.md
-            - name: Klasszikus virtuális gép migrálása felügyelt lemezekre
-              href: migrate-single-classic-to-resource-manager.md
-        - name: Felügyelt lemez pillanatfelvételének elkészítése
-          href: snapshot-copy-managed-disk.md
-        - name: Adatlemez csatolása
+            - name: HPC Pack 2016 fürt
+              href: hpcpack-2016-cluster.md
+            - name: A HPC Pack 2016 integrációja az Azure Active Directoryval
+              href: hpcpack-cluster-active-directory.md
+            - name: HPC Pack 2012 R2 átjárócsomópont
+              href: hpcpack-cluster-headnode.md
+            - name: Helyszíni feladatok küldése a HPC Pack 2012 R2-be
+              href: hpcpack-cluster-submit-jobs.md
+            - name: Excel a HPC Packen
+              href: excel-cluster-hpcpack.md
+    - name: Tárhely kezelése
+      items:
+        - name: Lemez hozzáadása
           items:
             - name: Azure PowerShell
               href: attach-disk-ps.md
             - name: Azure Portal
               href: attach-managed-disk-portal.md
-        - name: Adatlemez leválasztása
+        - name: Lemez leválasztása
           href: detach-disk.md
-        - name: Operációsrendszer-lemez kibontása
+        - name: Lemez átméretezése
           href: expand-os-disk.md
-        - name: Adatlemez kibontása
-          href: expand-data-disks.md
-        - name: Fájlmegosztás használata
+        - name: Lemez pillanatképének elkészítése
+          href: snapshot-copy-managed-disk.md
+        - name: Lemez konvertálása a standard és a prémium szint között
+          href: convert-disk-storage.md
+        - name: Lemezek – Gyakori kérdések
+          href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Fájltároló használata
           href: mount-azure-file-storage.md
-        - name: A D meghajtó használata adatlemezként
-          href: change-drive-letter.md
-    - name: Virtuális gépek hálózatkezelése
+        - name: Migrálás felügyelt lemezekre
+          href: migrate-to-managed-disks.md
+          items:
+            - name: Felügyeletlen virtuális gépek felügyelt lemezekre
+              href: convert-unmanaged-to-managed-disks.md
+            - name: Egyetlen klasszikus virtuális gép a Resource Managerre
+              href: migrate-single-classic-to-resource-manager.md
+    - name: Hálózatkezelés felügyelete
       href: ps-common-network-ref.md
       items:
-        - name: Virtuális hálózatok létrehozása
-          href: >-
-            ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: Több hálózati adapterrel rendelkező virtuális gép létrehozása
-          href: multiple-nics.md
-        - name: Statikus nyilvános IP-cím létrehozása
-          href: >-
-            ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 'A portok, a végpontok és a biztonság konfigurálása'
-          href: endpoints-in-resource-manager.md
-        - name: Virtuális géphez való hozzáférés engedélyezése
+        - name: Virtuális hálózat létrehozása
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Portok megnyitása virtuális géphez
           items:
-            - name: Azure PowerShell
-              href: nsg-quickstart-powershell.md
             - name: Azure Portal
               href: nsg-quickstart-portal.md
-        - name: DNS-névfeloldási beállítások
-          href: >-
-            ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: FQDN létrehozása a portálról
+            - name: Azure PowerShell
+              href: nsg-quickstart-powershell.md
+        - name: Nyilvános IP-cím hozzárendelése
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+        - name: Több hálózati adapter használata
+          href: multiple-nics.md
+        - name: Nyilvános DNS-név hozzárendelése
           href: portal-create-fqdn.md
-    - name: Méretezés és rendelkezésre állás
-      items:
-        - name: Virtuális gépek rendelkezésre állása
-          href: manage-availability.md
-        - name: Rendelkezésre állási csoport létrehozása
-          href: create-availability-set.md
-        - name: Virtuális gép rendelkezésre állási csoportjának módosítása
-          href: change-availability-set.md
-        - name: A Load Balancer áttekintése
-          href: load-balance.md
-          items:
-            - name: Terheléselosztó létrehozása
-              href: >-
-                ../../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: Több virtuális gép méretezése a VMSS-sel
-          href: vmss-powershell-creating.md
-        - name: Több Azure virtuális gép létrehozása
-          href: multiple-vms.md
-        - name: Virtuális gépek függőleges méretezése az Azure Automationnel
-          href: vertical-scaling-automation.md
-        - name: Virtuális gép létrehozása figyelési és diagnosztikai funkciókkal
-          href: extensions-diagnostics-template.md
-        - name: Az Azure Automation áttekintése
-          href: manage-using-azure-automation.md
-    - name: A virtuális gépek biztonságának kezelése
-      items:
-        - name: Új jelszó létrehozása
-          href: reset-local-password-without-agent.md
-        - name: Munkahelyi vagy iskolai identitás létrehozása az Azure AD-ban
-          href: create-aad-work-id.md
-        - name: Hozzáférés kezelése
-          href: >-
-            ../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: Lemez titkosítása
-          href: encrypt-disks.md
-        - name: Házirendek alkalmazása a virtuális gépekre
-          href: policy.md
-        - name: A Key Vault beállítása
-          href: key-vault-setup.md
-        - name: A WinRM beállítása
-          href: winrm.md
+        - name: DNS feloldása
+          href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Virtuálisgép-bővítmények használata
       items:
         - name: Virtuálisgép-bővítmények – Áttekintés
@@ -316,47 +271,25 @@
           href: log-collector-extension.md
         - name: Azure diagnosztikai bővítmény
           href: ps-extensions-diagnostics.md
-        - name: Sablonokban megtalálható bővítmények
-          href: extensions-authoring-templates.md
         - name: Virtuálisgép-bővítmények exportálása
           href: extensions-export-templates.md
-        - name: Konfigurációs minták
-          href: extensions-configuration-samples.md
         - name: Bővítmények hibaelhárítása
           href: extensions-troubleshoot.md
-    - name: Alkalmazások futtatása
-      items:
-        - name: SQL Server
-          href: ./sql/virtual-machines-windows-sql-server-iaas-overview.md
-        - name: SharePoint
-          href: sharepoint-farm.md
-        - name: >-
-            Webes üzletági alkalmazás telepítése hibrid felhőben tesztelés
-            céljára
-          href: ps-hybrid-cloud-test-env-lob.md
-        - name: Szimulált hibridfelhő-környezet kialakítása teszteléshez
-          href: ps-hybrid-cloud-test-env-sim.md
-        - name: MongoDB
-          href: install-mongodb.md
-        - name: Nagy teljesítményű feldolgozás (HPC)
-          href: hpcpack-cluster-options.md
-        - name: MATLAB
-          href: matlab-mdcs-cluster.md
-        - name: Az SAP az Azure-on
-          href: ../workloads/sap/get-started.md
+        - name: Figyelési és diagnosztikai bővítmény
+          href: extensions-diagnostics-template.md
+        - name: Network Watcher-ügynök
+          href: extensions-nwa.md
     - name: Virtuális gépek áttelepítése
       items:
-        - name: >-
-            AWS és helyszíni virtuális gépek áttelepítése az Azure-ba –
-            áttekintés
+        - name: AWS és helyszíni virtuális gépek migrálása
           href: on-prem-to-azure.md
           items:
-            - name: Áttelepítés Amazon Web Servicesből (AWS) Azure-ba
-              href: aws-to-azure.md
-            - name: >-
-                Virtuális gép feltöltése és létrehozása általánosított virtuális
-                merevlemezből
+            - name: Helyszíni virtuális gép feltöltése
               href: upload-generalized-managed.md
+            - name: Az Amazon Web Servicesből (AWS)
+              href: aws-to-azure.md
+            - name: Az Azure Site Recovery használata
+              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Áttelepítés a klasszikusból Azure Resource Manager-alapú környezetbe
           href: migration-classic-resource-manager-overview.md
           items:
@@ -374,12 +307,6 @@
               href: migration-classic-resource-manager-faq.md
     - name: Hibaelhárítás
       items:
-        - name: >-
-            Azure-beli virtuális gépek meglévő rendelkezésre állási csoporthoz
-            történő hozzáadásának támogatási lehetőségei
-          href: ../virtual-machines-availability-set-supportability.md
-        - name: Rendszer-újraindítás ismertetése
-          href: understand-vm-reboot.md
         - name: Távoli asztali kapcsolatok
           href: troubleshoot-rdp-connection.md
           items:
@@ -389,6 +316,10 @@
               href: troubleshoot-specific-rdp-errors.md
         - name: RDP-jelszó visszaállítása
           href: reset-rdp.md
+        - name: Helyi jelszó visszaállítása az Azure-ügynök nélkül
+          href: reset-local-password-without-agent.md
+        - name: Rendszer-újraindítás ismertetése
+          href: understand-vm-reboot.md
         - name: Hálózati adapter alaphelyzetbe állítása
           href: reset-network-interface.md
         - name: Rendszerindítási diagnosztika
@@ -409,15 +340,13 @@
           href: redeploy-to-new-node.md
         - name: Gyakori hibaüzenetek
           href: error-messages.md
-        - name: Virtuális merevlemez csatlakoztatása a hibaelhárító virtuális géphez
+        - name: Virtuálisgép-helyreállítási hozzáférés
           items:
             - name: Azure PowerShell
               href: troubleshoot-recovery-disks.md
             - name: Azure Portal
               href: troubleshoot-recovery-disks-portal.md
-        - name: >-
-            A PerfInsights használata teljesítménnyel kapcsolatos hibák
-            elhárítására
+        - name: A PerfInsights használata
           href: how-to-use-perfInsights.md
 - name: Referencia
   items:
@@ -440,8 +369,7 @@
 - name: Erőforrások
   items:
     - name: Szerzői sablonok
-      href: >-
-        ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Közösségi sablonok
@@ -453,7 +381,6 @@
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: Videók
-      href: >-
-        https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: GYIK
       href: faq.md

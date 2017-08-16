@@ -109,6 +109,8 @@
           href: functions-bindings-event-hubs.md
         - name: Külső fájl
           href: functions-bindings-external-file.md
+        - name: Külső tábla
+          href: functions-bindings-external-table.md
         - name: HTTP és webhookok
           href: functions-bindings-http-webhook.md
         - name: Mobile Apps

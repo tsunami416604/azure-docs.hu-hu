@@ -39,6 +39,7 @@
 ### [Tevékenységnapló streamelése az Event Hubs szolgáltatásba](monitoring-stream-activity-logs-event-hubs.md)
 ### [Auditálási műveletek a Resource Managerben](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Tevékenységnapló-riasztások létrehozása a Resource Managerrel](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+### [Migrálás a tevékenységnapló-riasztásokba](monitoring-migrate-management-alerts.md)
 ## Szolgáltatási értesítések használata
 ### [Szolgáltatási értesítések megtekintése](monitoring-service-notifications.md)
 ### [Riasztások beállítása szolgáltatási értesítésekhez](monitoring-activity-log-alerts-on-service-notifications.md)

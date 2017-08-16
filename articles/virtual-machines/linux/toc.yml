@@ -39,7 +39,7 @@
       href: tutorial-azure-security.md
     - name: 12 - A Jenkins üzembe helyezése
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 13 - A CI/CD beállítása a Team Services használatával
+    - name: 13 - CI/CD a Team Services használatával
       href: tutorial-build-deploy-jenkins.md
 - name: Példák
   items:
@@ -109,42 +109,104 @@
           href: compute-benchmark-scores.md
     - name: Telepítési szempontok
       items:
-        - name: Infrastruktúrával kapcsolatos irányelvek
-          href: infrastructure-virtual-machine-guidelines.md
-        - name: Előfizetések és fiókok
-          href: infrastructure-subscription-accounts-guidelines.md
-        - name: Elnevezés
-          href: infrastructure-naming-guidelines.md
-        - name: Erőforráscsoportok
-          href: infrastructure-resource-groups-guidelines.md
-        - name: Tárolás
-          href: infrastructure-storage-solutions-guidelines.md
-        - name: Hálózat
-          href: infrastructure-networking-guidelines.md
-        - name: Rendelkezésre állási csoportok
-          href: infrastructure-availability-sets-guidelines.md
-        - name: Példa infrastruktúrára
+        - name: Példa az alapszintű üzembe helyezésre
           href: infrastructure-example.md
 - name: Útmutatók
   items:
     - name: Virtuális gépek létrehozása
       items:
-        - name: A virtuális gépek létrehozásának áttekintése
-          href: creation-choices.md
-        - name: Teljes virtuális gép létrehozása
+        - name: A parancssori felület (CLI) használata
           href: create-cli-complete.md
-        - name: Virtuális gép létrehozása sablon használatával
+        - name: Sablon használata
           href: create-ssh-secured-vm-from-template.md
-        - name: Virtuális gép másolása
+        - name: Virtuális gép másolása vagy klónozása
           href: copy-vm.md
-        - name: Virtuális gép áthelyezése előfizetések között
-          href: move-vm.md
-        - name: Terraform
+    - name: Virtuális gépek védelme
+      items:
+        - name: Titkosítás
+          href: encrypt-disks.md
+        - name: Hozzáférés-vezérlők használata
+          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Szabályzatok használata
+          href: policy.md
+        - name: Kulcstartó létrehozása
+          href: key-vault-setup.md
+        - name: SSH-kulcsok létrehozása és használata
           items:
-            - name: Telepítés és konfigurálás
-              href: ../terraform-install-configure.md
-            - name: Alapszintű infrastruktúra létrehozása
-              href: ../terraform-create-complete-vm.md
+            - name: Linux vagy macOS rendszeren
+              href: mac-create-ssh-keys.md
+            - name: Windows rendszeren
+              href: ssh-from-windows.md
+            - name: Részletes lépések
+              href: create-ssh-keys-detailed.md
+    - name: Virtuális gépek kezelése
+      items:
+        - name: Általános CLI-feladatok
+          href: cli-manage.md
+        - name: Virtuális gép áthelyezése
+          href: move-vm.md
+        - name: Virtuális gép méretének módosítása
+          href: change-vm-size.md
+        - name: Virtuális gép címkézése
+          href: tag.md
+        - name: A cloud-init használata
+          href: using-cloud-init.md
+        - name: Szkriptek futtatása virtuális gépeken
+          href: extensions-customscript.md
+        - name: A Távoli asztal használata
+          href: use-remote-desktop.md
+        - name: Virtuális gép csatlakoztatása az Azure Active Directoryhoz
+          href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+        - name: Frissítések és javítások
+          items:
+            - name: A Red Hat frissítési infrastruktúrája
+              href: update-infrastructure-redhat.md
+        - name: Azure virtuálisgép-ügynök
+          items:
+            - name: Áttekintés
+              href: agent-user-guide.md
+            - name: Ügynök frissítése
+              href: update-agent.md
+    - name: Rendszerképek használata
+      items:
+        - name: Rendszerképek keresése és használata
+          href: cli-ps-findimage.md
+        - name: Egyéni kép létrehozása
+          items:
+            - name: Általános lépések
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: Virtuális gép rögzítése rendszerképben
+          href: capture-image.md
+        - name: Rendszerkép összeállítása a Packerrel
+          href: build-image-with-packer.md
+        - name: Meglévő lemez letöltése
+          href: download-vhd.md
+    - name: Rendelkezésre állás és méretezés
+      items:
+        - name: Automatikus méretezés
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Magas rendelkezésre állás
+          href: manage-availability.md
+        - name: Függőleges skálázás
+          href: vertical-scaling-automation.md
+    - name: Automatizálási eszközök használata
+      items:
         - name: Ansible
           items:
             - name: Telepítés és konfigurálás
@@ -153,91 +215,55 @@
               href: ansible-create-vm.md
             - name: Teljes virtuális gép létrehozása
               href: ansible-create-complete-vm.md
-        - name: Alkalmazás üzembe helyezése virtuálisgép-sablon használatával
+        - name: Terraform
           items:
-            - name: Az oktatóanyag áttekintése
-              href: dotnet-core-1-landing.md
-            - name: Alkalmazásarchitektúra
-              href: dotnet-core-2-architecture.md
-            - name: Hozzáférés és biztonság
-              href: dotnet-core-3-access-security.md
-            - name: Rendelkezésre állás és méretezés
-              href: dotnet-core-4-availability-scale.md
-            - name: Az alkalmazás üzembe helyezése
-              href: dotnet-core-5-app-deployment.md
-    - name: Virtuális gépek konfigurálása
+            - name: Telepítés és konfigurálás
+              href: terraform-install-configure.md
+            - name: Teljes virtuális gép létrehozása
+              href: terraform-create-complete-vm.md
+    - name: Tárolók futtatása
       items:
-        - name: A cloud-init használata
-          href: using-cloud-init.md
-        - name: Felhasználó hozzáadása virtuális géphez
-          href: add-user.md
-        - name: Virtuális gép átméretezése
-          href: change-vm-size.md
-        - name: Címkék használata
-          href: ../../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-          items:
-            - name: Virtuális gép címkézése
-              href: tag.md
-        - name: Linuxos virtuális gép optimalizálása
-          href: optimization.md
-        - name: Azure Linux-ügynök frissítése
-          href: update-agent.md
-        - name: Biztonsági mentés a Recovery Services-zel
-          href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: RedHat virtuális gép csatlakoztatása Azure Active Directory tartományi szolgáltatáshoz
-          href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
-    - name: Kapcsolódás az SSH-val
+        - name: Docker-gazdagép létrehozása
+          href: dockerextension.md
+        - name: A Docker Machine használata
+          href: docker-machine.md
+        - name: A Docker Compose használata
+          href: docker-compose-quickstart.md
+    - name: Alkalmazások futtatása
       items:
-        - name: SSH-kulcsok létrehozása Linux és Mac rendszerben
-          href: mac-create-ssh-keys.md
+        - name: Cloud Foundry
           items:
-            - name: Részletes lépések
-              href: create-ssh-keys-detailed.md
-        - name: Az SSH-kulcsok és a Windows együttes használata Linux rendszerű virtuális gépek esetében
-          href: ssh-from-windows.md
-        - name: Távoli asztal használata Linux virtuális géphez való csatlakozáshoz
-          href: use-remote-desktop.md
-    - name: Virtuálisgép-rendszerképek kezelése
+            - name: Áttekintés
+              href: cloudfoundry-get-started.md
+            - name: Az első alkalmazás üzembe helyezése
+              href: cloudfoundry-deploy-your-first-app.md
+        - name: OpenShift
+          href: openshift-get-started.md
+        - name: Az SAP az Azure-on
+          href: ../workloads/sap/get-started.md
+        - name: Oracle
+          href: ../workloads/oracle/oracle-database-quick-create.md
+        - name: FreeBSD csomagszűrő
+          href: freebsd-pf-nat.md
+        - name: Adatbázisok
+          items:
+            - name: MySQL
+              href: mysql-install.md
+            - name: MongoDB
+              href: install-mongodb.md
+            - name: PostgreSQL
+              href: postgresql-install.md
+            - name: MS SQL Linux rendszeren
+              href: /sql/linux/sql-server-linux-azure-virtual-machine
+        - name: Nagy teljesítményű számítástechnika (HPC)
+          href: hpcpack-cluster-options.md
+          items:
+            - name: Az NAMD futtatása
+              href: classic/hpcpack-cluster-namd.md
+            - name: NVIDIA GPU-illesztők telepítése
+              href: n-series-driver-setup.md
+    - name: Tárhely kezelése
       items:
-        - name: Virtuálisgép-rendszerképek keresése a piactéren
-          href: cli-ps-findimage.md
-        - name: Egyéni virtuálisgép-rendszerképek létrehozása
-          href: create-upload-generic.md
-        - name: VHD letöltése
-          href: download-vhd.md
-        - name: Egyéni virtuálisgép-rendszerképek feltöltése
-          href: upload-vhd.md
-        - name: Meglévő virtuális gép rögzítése rendszerképben
-          href: capture-image.md
-        - name: Rendszerkép létrehozása a Packerrel
-          href: build-image-with-packer.md
-        - name: Azure-rendszerképek létrehozása
-          items:
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-    - name: Virtuális gép tárolójának kezelése
-      items:
-        - name: Azure Managed Disks
-          href: ../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-          items:
-            - name: Gyakori kérdések
-              href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Fájlok másolása Linux rendszerű virtuális gépre
-          href: copy-files-to-linux-vm-using-scp.md
-        - name: Virtuális gép konvertálása a felügyelt lemezekké
-          href: convert-unmanaged-to-managed-disks.md
-        - name: Felügyelt lemez pillanatfelvételének elkészítése
-          href: snapshot-copy-managed-disk.md
         - name: Lemez hozzáadása
           items:
             - name: Azure CLI
@@ -246,68 +272,44 @@
               href: attach-disk-portal.md
         - name: Lemez leválasztása
           href: detach-disk.md
-        - name: Operációsrendszer-lemez kibontása
+        - name: Lemez átméretezése
           href: expand-disks.md
-        - name: Szoftveres RAID konfigurálása
-          href: configure-raid.md
-        - name: LVM konfigurálása
-          href: configure-lvm.md
-        - name: Az Azure File Storage csatlakoztatása az SMB-vel
+        - name: Lemez pillanatképének elkészítése
+          href: snapshot-copy-managed-disk.md
+        - name: Konvertálás felügyelt lemezekké
+          href: convert-unmanaged-to-managed-disks.md
+        - name: Lemezek – Gyakori kérdések
+          href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Lemez konvertálása a standard és a prémium szint között
+          href: convert-disk-storage.md
+        - name: Fájlok másolása virtuális gépre
+          href: copy-files-to-linux-vm-using-scp.md
+        - name: Fájltároló használata
           href: mount-azure-file-storage-on-linux-using-smb.md
-    - name: Virtuális gépek hálózatkezelése
-      items:
-        - name: Virtuális hálózatok létrehozása
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Virtuális gép üzembe helyezése meglévő virtuális hálózaton
+        - name: Teljesítmény optimalizálása
+          href: optimization.md
           items:
-            - name: Azure CLI
-              href: deploy-linux-vm-into-existing-vnet-using-cli.md
-            - name: Azure Portal
-              href: deploy-linux-vm-into-existing-vnet-using-portal.md
-        - name: Több hálózati adapterrel rendelkező virtuális gép létrehozása
-          href: multiple-nics.md
-        - name: Statikus nyilvános IP-cím létrehozása
-          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: 'A portok, a végpontok és a biztonság konfigurálása'
-          href: endpoints-in-resource-manager.md
-        - name: Virtuális géphez való hozzáférés engedélyezése
+            - name: Szoftveres RAID konfigurálása
+              href: configure-raid.md
+            - name: LVM konfigurálása
+              href: configure-lvm.md
+    - name: Hálózatkezelés felügyelete
+      items:
+        - name: Virtuális hálózat létrehozása
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Portok megnyitása virtuális géphez
           href: nsg-quickstart.md
-        - name: A FreeBSD csomagszűrőjének használata
-          href: freebsd-pf-nat.md
-        - name: DNS-névfeloldási beállítások
-          href: azure-dns.md
-        - name: Belső DNS használata a virtuális gépek névfeloldásához
-          href: static-dns-name-resolution-for-linux-on-azure.md
-        - name: FQDN létrehozása
+        - name: Nyilvános IP-cím hozzárendelése
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Több hálózati adapter használata
+          href: multiple-nics.md
+        - name: Nyilvános DNS-név hozzárendelése
           href: portal-create-fqdn.md
-        - name: Felhasználó által megadott útvonalak létrehozása
-          href: ../../virtual-network/virtual-network-create-udr-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Méretezés és rendelkezésre állás
-      items:
-        - name: Virtuális gépek rendelkezésre állása
-          href: manage-availability.md
-        - name: Terheléselosztó létrehozása
-          href: ../../load-balancer/load-balancer-get-started-internet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Több virtuális gép létrehozása méretezési csoportokkal
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Virtuális gépek függőleges méretezése az Azure Automationnel
-          href: vertical-scaling-automation.md
-        - name: Virtuális gép figyelése
-          href: vm-monitoring.md
-    - name: A virtuális gépek biztonságának kezelése
-      items:
-        - name: SSH-jelszavak letiltása az SSHD konfigurálásával
-          href: mac-disable-ssh-password-usage.md
-        - name: 'SSH-hozzáférés visszaállítása, felhasználók kezelése és lemezek ellenőrzése'
-          href: using-vmaccess-extension.md
-        - name: Gyökérszintű jogosultságok használata
-          href: use-root-privileges.md
-        - name: Virtuális gép lemezének titkosítása
-          href: encrypt-disks.md
-        - name: Házirendek alkalmazása a virtuális gépekre
-          href: policy.md
-        - name: A Key Vault beállítása
-          href: key-vault-setup.md
+        - name: DNS feloldása
+          href: azure-dns.md
+          items:
+            - name: Belső DNS használata
+              href: static-dns-name-resolution-for-linux-on-azure.md
     - name: Virtuálisgép-bővítmények használata
       items:
         - name: Áttekintés a virtuálisgép-bővítményekről
@@ -318,82 +320,47 @@
           href: extensions-oms.md
         - name: Linux diagnosztikai bővítmény
           href: diagnostic-extension.md
-    - name: Alkalmazások futtatása
-      items:
-        - name: Cloud Foundry
-          items:
-            - name: Áttekintés
-              href: cloudfoundry-get-started.md
-            - name: Az első alkalmazás üzembe helyezése
-              href: cloudfoundry-deploy-your-first-app.md
-        - name: Az adatelemzési virtuális gépek áttekintése
-          href: ../../machine-learning/machine-learning-data-science-virtual-machine-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: MongoDB
-          href: install-mongodb.md
-        - name: MySQL
-          href: mysql-install.md
-        - name: OpenShift
-          href: openshift-get-started.md
-        - name: PostgreSQL
-          href: postgresql-install.md
-        - name: LAMP verem telepítése
-          href: create-lamp-stack.md
-        - name: 3 csomópontot tartalmazó Deis-fürt üzembe helyezése
-          href: deis-cluster.md
-        - name: Node.js-alkalmazás üzembe helyezése
-          href: ../../virtual-machines-linux-nodejs-deploy.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Django-webapp
-          href: python-django-web-app.md
-        - name: Jupyter notebook
-          href: jupyter-notebook.md
-        - name: Alkalmazás-keretrendszerek üzembe helyezése sablonból
-          href: app-frameworks.md
-        - name: Nagy teljesítményű számítástechnika (HPC)
-          href: hpcpack-cluster-options.md
-          items:
-            - name: NAMD futtatása a Microsoft HPC Packkel
-              href: classic/hpcpack-cluster-namd.md
-        - name: Az SAP az Azure-on
-          href: ../workloads/sap/get-started.md
-        - name: Az Oracle az Azure-on
-          href: ../workloads/oracle/oracle-considerations.md
-    - name: Docker a virtuális gépeken
-      items:
-        - name: Docker-gazdagépek létrehozása az Azure Docker virtuálisgép-bővítménnyel
-          href: dockerextension.md
-        - name: A Docker Machine használata az Azure-ral
-          href: docker-machine.md
-        - name: A Docker Compose használata az Azure-ral
-          href: docker-compose-quickstart.md
+        - name: Network Watcher-ügynök
+          href: extensions-nwa.md
+        - name: VMAccess bővítmény
+          href: using-vmaccess-extension.md
     - name: Virtuális gépek áttelepítése
       items:
-        - name: Az áttelepítés áttekintése
+        - name: AWS és helyszíni virtuális gépek migrálása
+          href: ../windows/on-prem-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          items:
+            - name: Áttelepítés Amazon Web Servicesből (AWS) Azure-ba
+              href: ../windows/aws-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: Helyszíni virtuális gép feltöltése
+              href: upload-vhd.md
+            - name: Az Azure Site Recovery használata
+              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Áttelepítés a klasszikusból Azure Resource Manager-alapú környezetbe
           href: migration-classic-resource-manager-overview.md
-        - name: Az áttelepítés részletes bemutatása
-          href: migration-classic-resource-manager-deep-dive.md
-        - name: Az áttelepítés megtervezése
-          href: migration-classic-resource-manager-plan.md
-        - name: Áttelepítés a parancssori felületről
-          href: migration-classic-resource-manager-cli.md
-        - name: Gyakori áttelepítési hibák
-          href: migration-classic-resource-manager-errors.md
-        - name: Közösségi eszközök áttelepítéshez
-          href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: GYIK
-          href: migration-classic-resource-manager-faq.md
+          items:
+            - name: Az áttelepítés részletes bemutatása
+              href: migration-classic-resource-manager-deep-dive.md
+            - name: Az áttelepítés megtervezése
+              href: migration-classic-resource-manager-plan.md
+            - name: Áttelepítés a parancssori felületről
+              href: migration-classic-resource-manager-cli.md
+            - name: Gyakori áttelepítési hibák
+              href: migration-classic-resource-manager-errors.md
+            - name: Közösségi eszközök áttelepítéshez
+              href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: GYIK
+              href: migration-classic-resource-manager-faq.md
     - name: Hibaelhárítás
       items:
-        - name: Azure-beli virtuális gépek meglévő rendelkezésre állási csoporthoz történő hozzáadásának támogatási lehetőségei
-          href: ../virtual-machines-availability-set-supportability.md
-        - name: Jelszó visszaállítása Linux rendszerű virtuális gépen
-          href: virtual-machines-linux-reset-password.md
-        - name: Rendszer-újraindítás ismertetése
-          href: understand-vm-reboot.md
         - name: SSH-kapcsolatok
           href: troubleshoot-ssh-connection.md
           items:
             - name: Részletes hibaelhárítási útmutató
               href: detailed-troubleshoot-ssh-connection.md
+        - name: Jelszó visszaállítása Linux rendszerű virtuális gépen
+          href: reset-password.md
+        - name: A rendszer-újraindítás ismertetése
+          href: understand-vm-reboot.md
         - name: Rendszerindítási diagnosztika
           href: boot-diagnostics.md
         - name: Hozzáférés az alkalmazásokhoz
@@ -410,7 +377,7 @@
           href: redeploy-to-new-node.md
         - name: Gyakori hibaüzenetek
           href: error-messages.md
-        - name: Virtuális merevlemez csatlakoztatása hibaelhárítás céljából
+        - name: Virtuálisgép-helyreállítási hozzáférés
           items:
             - name: Azure CLI
               href: troubleshoot-recovery-disks.md

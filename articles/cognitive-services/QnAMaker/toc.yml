@@ -1,35 +1,37 @@
-- name: QnAMaker API Documentation
+- name: QnAMaker API-dokumentáció
   href: ../index.md
-- name: Overview
+- name: Áttekintés
   items:
-  - name: Learn about QnAMaker
-    href: Home.md
-- name: Quickstarts
+    - name: A QnAMaker ismertetése
+      href: Home.md
+- name: Gyors útmutatók
   expanded: true
-  items: 
-  - name: Get started with QnAMaker
-    href: Quickstart.md
-- name: How to Guides
-  items: 
-  - name: Create a knowledge base
-    href: Guides/CreateKB.md
-  - name: Train a knowledge base
-    href: Guides/TrainKB.md
-  - name: Share a knowledge base
-    href: Guides/share-knowledgebase-qnamaker.md
-  - name: Update a knowledge base
-    href: Guides/UpdateKB.md
-  - name: Publish a knowledge base
-    href: Guides/PublishKB.md
-  - name: Authentication
-    href: SubscriptionKeys.md
-- name: Reference
-  items: 
-  - name: API Reference
-    href: HTTPEndPoint.md
-  - name: FAQ
-    href: FAQs.md
-- name: Resources
   items:
-  - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/
+    - name: A QnAMaker használatának első lépései
+      href: Quickstart.md
+- name: Útmutatók
+  items:
+    - name: Tudásbázis létrehozása
+      href: Guides/CreateKB.md
+    - name: Tudásbázis oktatása
+      href: Guides/TrainKB.md
+    - name: Tudásbázis megosztása
+      href: Guides/share-knowledgebase-qnamaker.md
+    - name: Tudásbázis frissítése
+      href: Guides/UpdateKB.md
+    - name: Tudásbázis közzététele
+      href: Guides/PublishKB.md
+    - name: Aktív tanulás
+      href: Guides/active-learning-qnamaker.md
+    - name: Authentication
+      href: SubscriptionKeys.md
+- name: Referencia
+  items:
+    - name: API-hivatkozás
+      href: HTTPEndPoint.md
+    - name: GYIK
+      href: FAQs.md
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
