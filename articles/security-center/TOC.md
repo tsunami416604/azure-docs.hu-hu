@@ -57,9 +57,10 @@
 ## Észlelés és válasz
 ### [Észlelési képességek](security-center-detection-capabilities.md)
 ### [Biztonsági riasztások kezelése](security-center-managing-and-responding-alerts.md)
+### [A biztonsági riasztások típusai](security-center-alerts-type.md)
+### [Riasztások érvényesítése](security-center-alert-validation.md)
 ### [Biztonsági incidensek kezelése](security-center-incident.md)
 ### [Azure-naplók integrációja](security-center-integrating-alerts-with-log-integration.md)
-### [A biztonsági riasztások típusai](security-center-alerts-type.md)
 ### [Fenyegetésfelderítési jelentés](security-center-threat-report.md)
 
 ## Hibaelhárítás
