@@ -59,8 +59,6 @@
       href: azure-vm-network-overview.md
     - name: Virtuális gépek méretezési csoportjai
       href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-    - name: Példány-metaadat szolgáltatás
-      href: ../virtual-machines-instancemetadataservice-overview.md
     - name: Tárolók
       href: containers.md
     - name: Resource Manager
@@ -167,6 +165,10 @@
               href: agent-user-guide.md
             - name: Ügynök frissítése
               href: update-agent.md
+        - name: Ütemezett események
+          href: scheduled-events.md
+        - name: Metaadatok monitorozása
+          href: instance-metadata-service.md
     - name: Rendszerképek használata
       items:
         - name: Rendszerképek keresése és használata

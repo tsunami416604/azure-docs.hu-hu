@@ -7,6 +7,8 @@
 - name: Gyors útmutatók
   expanded: true
   items:
+    - name: Docker Swarm Linux
+      href: container-service-swarm-walkthrough.md
     - name: DC/OS Linux
       href: container-service-dcos-quickstart.md
 - name: oktatóanyagokat
@@ -29,7 +31,7 @@
       href: container-service-connect.md
     - name: ACS-fürt méretezése
       href: container-service-scale.md
-    - name: Kezelés a DC/OS-sel
+    - name: DC/OS
       items:
         - name: Tárolókezelés – DC/OS felhasználói felület
           href: container-service-mesos-marathon-ui.md
@@ -55,8 +57,10 @@
               href: container-service-monitoring-sysdig.md
             - name: Monitorozás a Dynatrace-szel
               href: container-service-monitoring-dynatrace.md
-    - name: Kezelés a Docker Swarmmal
+    - name: Docker Swarm
       items:
+        - name: 'A Swarm mód: rövid útmutató'
+          href: container-service-swarm-mode-walkthrough.md
         - name: A Docker és a Docker Compose
           href: container-service-docker-swarm.md
         - name: CI/CD – Docker Swarm és VSTS

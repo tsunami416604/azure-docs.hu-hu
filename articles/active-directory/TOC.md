@@ -9,6 +9,7 @@
 # Bevezetés
 ## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
 ## [Egyéni tartománynév hozzáadása](add-custom-domain.md)
+## [Vállalati arculat konfigurálása](customize-branding.md)
 ## [Új jelszó önkiszolgáló kérésének konfigurálása](active-directory-passwords-getting-started.md)
 ## Az Azure AD-licencek kezelése
 ### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
@@ -142,6 +143,7 @@
 
 
 ## Eszközök kezelése
+### [Bevezetés](device-management-introduction.md)
 ### [Eszközök regisztrálása](active-directory-device-registration-overview.md)
 #### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
@@ -241,10 +243,6 @@
 #### Tartománynevek kezelése
 ##### [Azure Portal](active-directory-domains-manage-azure-portal.md)
 ##### [Klasszikus portál](active-directory-add-manage-domain-names.md)
-### A bejelentkezési oldal testreszabása
-#### [Azure Portal](active-directory-branding-custom-signon-azure-portal.md)
-#### [Nyelvspecifikus](active-directory-branding-localize-azure-portal.md)
-#### [Klasszikus portál](active-directory-add-company-branding.md)
 ### [A címtár felügyelete](active-directory-administer.md)
 ### [Több címtár](active-directory-licensing-directory-independence.md)
 ### [O365-címtárak](active-directory-manage-o365-subscription.md)

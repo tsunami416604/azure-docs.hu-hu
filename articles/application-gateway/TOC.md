@@ -7,6 +7,7 @@
 ## [URL-útválasztás](application-gateway-url-route-overview.md)
 ## [Többhelyes kapcsolat](application-gateway-multi-site-overview.md)
 ## [Végpontok közötti SSL-szolgáltatások](application-gateway-backend-ssl.md)
+## [SSL-szabályzat](application-gateway-ssl-policy-overview.md)
 ## [Átirányítás](application-gateway-redirect-overview.md)
 ## [Több-bérlős támogatás](application-gateway-web-app-overview.md)
 ## [WebSocket](application-gateway-websocket.md)
@@ -31,12 +32,13 @@
 ## Webalkalmazási tűzfalszabályok testreszabása
 ### [Portal](application-gateway-customize-waf-rules-portal.md)
 ### [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
-## Az SSL-alapú kiszervezés konfigurálása
-### [Portál](application-gateway-ssl-portal.md)
+## Az SSL konfigurálása
+### [Portal](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (klasszikus)](application-gateway-ssl.md)
 ### [Azure CLI 2.0](application-gateway-ssl.md)
-### [Házirend és végpontok közötti](application-gateway-end-to-end-ssl-powershell.md)
+### [Végpontok közötti](application-gateway-end-to-end-ssl-powershell.md)
+### [SSL-szabályzat](application-gateway-configure-ssl-policy-powershell.md)
 ## URL-alapú útválasztás konfigurálása
 ### [Portál](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)

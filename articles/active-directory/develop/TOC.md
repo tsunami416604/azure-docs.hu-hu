@@ -33,6 +33,7 @@
 # Útmutatók
 ## [Alkalmazásregisztráció](active-directory-integrating-applications.md)
 ## [Több-bérlős alkalmazások](active-directory-devhowto-multi-tenant-overview.md)
+## [Feltételes hozzáférés](active-directory-conditional-access-developer.md)
 ## OAuth és OpenID Connect
 ### [OpenID Connect-protokoll](active-directory-protocols-openid-connect-code.md)
 ### [Oauth 2.0 hitelesítésikód-engedélyezés](active-directory-protocols-oauth-code.md)
@@ -52,13 +53,13 @@
 ## [Azure AD Graph API](active-directory-graph-api.md)
 ### [Az AAD Graph használatának első lépései](active-directory-graph-api-quickstart.md)
 ## [AppSource-tanúsítvány](active-directory-devhowto-appsource-certified.md)
-## [Azure AD appkatalógus](active-directory-app-gallery-listing.md)
+## [Azure AD alkalmazáskatalógus](active-directory-app-gallery-listing.md)
 ## [Office 365-értékesítői információközpont](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 ## A Visual Studio használata
 ### [Ismerkedés a Visual Studio kapcsolódó szolgáltatásaival](vs-active-directory-dotnet-getting-started.md)
 ### [Hiba a hitelesítés észlelésekor](vs-active-directory-error.md)
 ### [Bevezetés a WebApi használatába](vs-active-directory-webapi-getting-started.md)
-### [Mi történt a WebApi-projektemmel?](vs-active-directory-webapi-what-happened.md)
+### [Mi történt a webes API-projektemmel?](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)

@@ -133,11 +133,12 @@
 ### Tárolószolgáltatás készítése
 #### [Tárolóalkalmazás létrehozása Windowshoz](service-fabric-get-started-containers.md)
 #### [Tárolóalkalmazás létrehozása Linuxhoz](service-fabric-get-started-containers-linux.md)
-#### [Linux-tároló üzembe helyezése](service-fabric-deploy-container-linux.md)
+#### [Tárolóbiztonság](service-fabric-securing-containers.md)
 #### [Docker Compose (előzetes verzió)](service-fabric-docker-compose.md)
 #### [Tárolók és szolgáltatások erőforrás-szabályozása](service-fabric-resource-governance.md)
 #### [Kötet- és naplózási illesztők](service-fabric-containers-volume-logging-drivers.md)
 #### [Tárolókon belüli szolgáltatások](service-fabric-services-inside-containers.md)
+#### [Tárolóalapú hálózatkezelés módjai](service-fabric-networking-modes.md)
 
 ### Reliable Services-szolgáltatás összeállítása
 #### [Áttekintés](service-fabric-reliable-services-introduction.md)
