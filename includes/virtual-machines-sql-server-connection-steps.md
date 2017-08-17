@@ -1,5 +1,4 @@
-### A Windows-tűzfal TCP-portjainak megnyitása az Adatbázismotor alapértelmezett példányában
-<a id="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine" class="xliff"></a>
+### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>A Windows-tűzfal TCP-portjainak megnyitása az Adatbázismotor alapértelmezett példányában
 1. Csatlakozzon a virtuális géphez a távoli asztalról. Részletes útmutatás a virtuális géphez való csatlakozásról: [SQL virtuális gép megnyitása a távoli asztalról](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#open-the-vm-with-remote-desktop).
 2. Miután bejelentkezett, a kezdőképernyőn írja be a **WF.msc** szöveget, majd nyomja le az ENTER billentyűt.
    
@@ -28,24 +27,11 @@
 
 Szükség szerint nyisson meg további portokat a többi összetevőhöz. További információ: [A Windows Tűzfal konfigurálása SQL Server-hozzáféréshez](http://msdn.microsoft.com/library/cc646023.aspx).
 
-### Az SQL Server konfigurálása a TCP-protokoll figyeléséhez
-<a id="configure-sql-server-to-listen-on-the-tcp-protocol" class="xliff"></a>
-1. A virtuális géphez csatlakozva a kezdőlapon írja be az **SQL Server Konfigurációkezelő** kifejezést, és nyomja le az ENTER billentyűt.
-   
-    ![Az SSCM megnyitása](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
-2. Az SQL Server Konfigurációkezelő konzolablakában bontsa ki az **SQL Server Network Configuration** elemet.
-3. A konzolablakban kattintson az **MSSQLSERVER protokolljai** (az alapértelmezett példánynév) elemre. A részleteket tartalmazó ablaktáblán kattintson a jobb gombbal a **TCP** elemre, majd az **Engedélyezés** lehetőségre, ha még nincs engedélyezve.
-   
-    ![A TCP engedélyezése](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
-4. A konzolablakban kattintson az **SQL Server Services** lehetőségre. Az SQL Server példányának leállításához és újraindításához a részleteket tartalmazó ablaktáblán kattintson a jobb gombbal az **SQL Server (*példánynév*)** (az alapértelmezett példány az **SQL Server (MSSQLSERVER)**) lehetőségre, majd az **Újraindítás** lehetőségre.
-   
-    ![Az Adatbázismotor újraindítása](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
-5. Zárja be az SQL Server Konfigurációkezelőt.
+### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>Az SQL Server konfigurálása a TCP-protokoll figyeléséhez
 
-További információ az SQL Server Adatbázismotor protokolljainak engedélyezéséről: [Kiszolgálói hálózati protokoll engedélyezése vagy letiltása](http://msdn.microsoft.com/library/ms191294.aspx).
+[!INCLUDE [Enable TCP](virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-### Az SQL Server konfigurálása vegyes módú hitelesítéshez
-<a id="configure-sql-server-for-mixed-mode-authentication" class="xliff"></a>
+### <a name="configure-sql-server-for-mixed-mode-authentication"></a>Az SQL Server konfigurálása vegyes módú hitelesítéshez
 Az SQL Server Adatbázismotor nem használhatja a Windows-hitelesítést egy tartománykörnyezet nélkül. Ha az Adatbázismotorhoz egy másik számítógépről szeretne csatlakozni, konfigurálja az SQL Servert vegyes módú hitelesítéshez. A vegyes módú hitelesítés az SQL Server-hitelesítést és a Windows-hitelesítést is lehetővé teszi.
 
 > [!NOTE]
@@ -71,8 +57,7 @@ Az SQL Server Adatbázismotor nem használhatja a Windows-hitelesítést egy tar
     ![Újraindítás](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
 7. Az SQL Server Management Studio párbeszédpanelen kattintson az **Igen** lehetőségre az SQL Server újraindításának megerősítését kérő üzenet elfogadásához.
 
-### SQL Server-hitelesítési bejelentkezés létrehozása
-<a id="create-sql-server-authentication-logins" class="xliff"></a>
+### <a name="create-sql-server-authentication-logins"></a>SQL Server-hitelesítési bejelentkezés létrehozása
 Ha az Adatbázismotorhoz egy másik számítógépről szeretne csatlakozni, létre kell hoznia legalább egy SQL Server hitelesítési bejelentkezést.
 
 1. Az SQL Server Management Studio Object Explorer felületén bontsa ki azon kiszolgáló példányának mappáját, amelyben létre szeretné hozni az új bejelentkezést.

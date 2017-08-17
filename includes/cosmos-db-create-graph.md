@@ -11,7 +11,7 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
     Gráfazonosító|sample-graph|Az új gráfhoz tartozó azonosító. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
     Tárkapacitás| 10 GB|Ne módosítsa az alapértelmezett értéket. Ez az adatbázis tárkapacitása.
     Teljesítmény|400 kérelemegység|Ne módosítsa az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-    kérelemegység/m|Ki|Ne módosítsa az alapértelmezett értéket. Ha később spiky munkaterhelések kezelésére van szüksége, bekapcsolhatja a [kérelemegység/m](../articles/cosmos-db/request-units-per-minute.md) funkciót.
+    kérelemegység/m|Ki|Ne módosítsa az alapértelmezett értéket. 
     Partíciókulcs|/userid|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciókulcs kiválasztása fontos a nagy teljesítményű gráfok létrehozásához. Erről bővebben a [Particionálásra tervezés](../articles/cosmos-db/partition-data.md#designing-for-partitioning) című részben olvashat.
 
 3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.

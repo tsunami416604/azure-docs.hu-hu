@@ -7,7 +7,7 @@ Létrehozhat egy egyedi tanúsítványt minden ügyfél számára, vagy használ
 - **Vállalati tanúsítvány:**
 
   - Ha vállalati tanúsítványmegoldást használ, az általános „name@yourdomain.com” formátumban hozza létre az ügyféltanúsítványokat a „tartománynév\felhasználónév” formátum helyett.
-  - Ellenőrizze, hogy az ügyféltanúsítvány azon a „felhasználói” tanúsítványsablonon alapul-e, amely használati listájának első helyén az „ügyfél-hitelesítés” áll, nem pedig az intelligens kártyás bejelentkezés vagy egyebek. A tanúsítvány ellenőrzéséhez kattintson duplán az ügyféltanúsítványra, és tekintse meg a *Részletek > Kibővített kulcshasználat* részt.
+  - Ellenőrizze, hogy az ügyféltanúsítvány azon a „felhasználói” tanúsítványsablonon alapul-e, amely használati listájának első helyén az „ügyfél-hitelesítés” áll, nem pedig az intelligens kártyás bejelentkezés vagy egyebek. A tanúsítvány ellenőrzéséhez kattintson duplán az ügyféltanúsítványra, és tekintse meg a **Részletek > Kibővített kulcshasználat** részt.
 
 - **Önaláírt főtanúsítvány:** Fontos, hogy lépésről lépésre betartsa a P2S-tanúsítványokkal foglalkozó valamelyik alábbi cikk utasításait. Ellenkező esetben a létrehozott ügyféltanúsítványok nem lesznek kompatibilisek a P2S-kapcsolatokkal, és az ügyfelek hibákat kapnak majd a kapcsolódás során. Az alábbi cikkekben ismertetett lépésekkel kompatibilis ügyféltanúsítványok hozhatóak létre: 
 

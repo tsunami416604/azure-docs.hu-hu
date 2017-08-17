@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 08/07/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: afa4fe6cdef298e4504ddcf3e344ee6a5c181653
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: f29e9dcc2bed968937627d48f1a98e3b084853b9
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Java és az Azure Portal használatával
@@ -61,7 +61,7 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
     Gráfazonosító|sample-graph|Az új gráfhoz tartozó azonosító. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
     Tárkapacitás| 10 GB|Ne módosítsa az alapértelmezett értéket. Ez az adatbázis tárkapacitása.
     Teljesítmény|400 kérelemegység|Ne módosítsa az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-    kérelemegység/m|Ki|Ne módosítsa az alapértelmezett értéket. Ha később spiky munkaterhelések kezelésére van szüksége, bekapcsolhatja a [kérelemegység/m](request-units-per-minute.md) funkciót.
+    kérelemegység/m|Ki|Ne módosítsa az alapértelmezett értéket.
     Partíciókulcs|Hagyja üresen|A rövid útmutató során hagyja üresen a Partíciókulcs mezőt.
 
 3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.

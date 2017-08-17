@@ -17,10 +17,10 @@ ms.date: 08/07/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: c41a16a3c43064a094b0980bc1a8294b093c6130
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 07c7f3ad066c735054cb339f6e09aa4d7d23f23a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="quickstart-azure-ad-self-service-password-reset"></a>Gyors útmutató: Az Azure AD új jelszó kérésére vonatkozó önkiszolgáló folyamata
@@ -79,13 +79,7 @@ Annak engedélyezéséhez, hogy a helyszíni identitás szinkronizálhasson az A
 
 Az önkiszolgáló jelszókérés letiltása egyszerű: nyissa meg Azure AD-bérlőjét, keresse meg a **Jelszó visszaállítása, majd a Tulajdonságok** elemet, és válassza a **Senki** lehetőséget az **Önkiszolgáló jelszóátállítás engedélyezve** alatt.
 
-## <a name="next-steps"></a>Következő lépések
-
-Ebben a gyors útmutatóban megismerhette, hogyan konfigurálhat önkiszolgáló jelszókérést felhasználói számára. Az alábbi hivatkozással az Azure Portalra léphet, ahol elvégezheti a szükséges lépeseket.
-
-> [!div class="nextstepaction"]
-> [Önkiszolgáló jelszóátállítás engedélyezése](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
-
+### <a name="learn-more"></a>Részletek
 Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
 
 * [**Licencelés**](active-directory-passwords-licensing.md) – Az Azure AD licencelésének konfigurálása.
@@ -97,4 +91,12 @@ Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvas
 * [**Részletes műszaki bemutatás**](active-directory-passwords-how-it-works.md) – Egy pillantás a függöny mögé, hogy megértse, hogyan is működik.
 * [**Gyakori kérdések**](active-directory-passwords-faq.md) – Hogyan? Hogy miért? Mi? Hová? Ki? Mikor? – Válaszok olyan kérdésekre, amiket mindig is fel akart tenni
 * [**Hibaelhárítás**](active-directory-passwords-troubleshoot.md) – Ismerje meg, hogyan oldhat meg általános, az SSPR működése során jelentkező hibákat.
+
+## <a name="next-steps"></a>Következő lépések
+
+Ebben a gyors útmutatóban megismerhette, hogyan konfigurálhat önkiszolgáló jelszókérést felhasználói számára. Az alábbi hivatkozással az Azure Portalra léphet, ahol elvégezheti a szükséges lépeseket.
+
+> [!div class="nextstepaction"]
+> [Önkiszolgáló jelszóátállítás engedélyezése](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+
 

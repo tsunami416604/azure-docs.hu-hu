@@ -16,10 +16,10 @@ ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f892ec7bd61124f7958a50ebdfb49c7310d4ee18
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 06d6d305eb9711768dc62a04726359e6280d1b69
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 
@@ -48,7 +48,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Azure gyorsindítási sablonjai lehetővé teszik a bonyolult technológiák gyors és megbízható bevezetését az Azure-on.  Az Azure Resource Manager lehetővé teszi, hogy alkalmazásait egy [deklaratív sablon](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins) használatával helyezze üzembe. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont újra és újra, az alkalmazás életciklusának minden fázisában felhasználhatja az alkalmazás üzembe helyezéséhez.
 
-Tekintse meg a sablonhoz a [csomag- és árképzési](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.jenkins?tab=PlansAndPrice) információt, hogy megtudja, milyen költségekkel számolhat.
+Tekintse meg a sablonhoz a [csomag- és árképzési](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview) információt, hogy megtudja, milyen költségekkel számolhat.
 
 Lépjen a [A Jenkins képe a Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview) lapra, kattintson a **LETÖLTÉS MOST** gombra.  
 
