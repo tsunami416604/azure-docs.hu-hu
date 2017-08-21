@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/23/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 8c3cc27f1fa708371d415d00cdff59f77712cd41
-ms.lasthandoff: 05/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 6f8ee3449244b12d2c8b5714e6ad893e2f0b10ee
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Az Azure Multi-Factor Authentication-megoldás kiválasztása
@@ -39,7 +39,7 @@ A megfelelő kétlépéses ellenőrzési megoldás meghatározásához először
 | SaaS-alkalmazások az alkalmazáskatalógusban |● |  |
 | Az Azure AD-alkalmazásproxyn keresztül közzétett webalkalmazások |● |  |
 | Nem az Azure AD-alkalmazásproxyn keresztül közzétett IIS-alkalmazások | |● |
-| Távelérés, például VPN vagy RDG | |● |
+| Távelérés, például VPN vagy RDG | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>Hol tárolja a rendszer a felhasználókat?
 Ezután annak alapján, hogy a rendszer hol tárolja a felhasználókat, meghatározhatja a megfelelő megoldást, legyen az a felhőben, vagy a helyszínen az MFA-kiszolgálót használva.
@@ -53,7 +53,7 @@ Ezután annak alapján, hogy a rendszer hol tárolja a felhasználókat, meghat�
 | Helyszíni Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Mely szolgáltatásokra van szükségem?
-A következő táblázat a felhőbeli elérhető Multi-Factor Authentication és a Multi-Factor Authentication-kiszolgáló szolgáltatásait hasonlítja össze.
+A következő táblázat a felhőbeli Multi-Factor Authentication és a Multi-Factor Authentication-kiszolgáló szolgáltatásait hasonlítja össze.
 
 | Szolgáltatás | MFA a felhőben | MFA-kiszolgáló |
 | --- |:---:|:---:|
@@ -76,13 +76,14 @@ A következő táblázat a felhőbeli elérhető Multi-Factor Authentication és
 | Feltételes hozzáférés | ● | ● |
 | Gyorsítótár |  | ● |
 
-Most, hogy eldöntöttük, hogy a felhőalapú többtényezős hitelesítést vagy a helyszíni MFA-kiszolgálót érdemes használni, megkezdhetjük az Azure Multi-Factor Authentication beállítását és használatát. **Válassza ki az ikont, amely a forgatókönyvéhez tartozik.**
+## <a name="next-steps"></a>Következő lépések
+
+Most, hogy eldöntöttük, hogy a felhőalapú többtényezős hitelesítést vagy a helyszíni MFA-kiszolgálót érdemes használni, megkezdhetjük az Azure Multi-Factor Authentication beállítását és használatát. **Válassza ki az ikont, amely a forgatókönyvéhez tartozik**
 
 <center>
 
 
 
 
-[![Felhő](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</center>
+[![Felhőalapú](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Kiszolgáló](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
 

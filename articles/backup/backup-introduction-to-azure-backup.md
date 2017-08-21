@@ -13,15 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 6/14/2017
+ms.date: 8/11/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 629b3c54a35f939845349e6f2ed7743885e41f3b
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7cc29feaf7411bac1d081f7f7aa3daf92fae88d1
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
@@ -224,12 +223,12 @@ Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskis
 ## <a name="what-is-a-recovery-services-vault"></a>Mi az a Recovery Services-tároló?
 A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. A Recovery Services-tároló az Azure-szolgáltatások, valamint a helyszíni kiszolgálók és munkaállomások biztonsági mentési adatainak tárolására szolgál. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. Egy előfizetésen belül tetszőleges számú Recovery Services-tárolót hozhat létre.
 
-Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első verziói. Az Azure Resource Manager modelljellemzőit biztosító Recovery Services-tárolók képezték a tároló második verzióját. A szolgáltatások közötti különbségekről teljes leírást a [Recovery Services-tároló áttekintő cikkében](backup-azure-recovery-services-vault-overview.md) talál. Biztonsági mentési tárolók a továbbiakban nem hozhatók létre az Azure Portalon, viszont továbbra is támogatottak.
+Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első verziói. Az Azure Resource Manager modelljellemzőit biztosító Recovery Services-tárolók képezték a tároló második verzióját. A szolgáltatások közötti különbségekről teljes leírást a [Recovery Services-tároló áttekintő cikkében](backup-azure-recovery-services-vault-overview.md) talál. A portált már nem használhatja Backup-tárolók létrehozásához, a Backup-tárolók azonban továbbra is támogatottak.
 
 > [!IMPORTANT]
-> A biztonsági mentési tárolókról mostantól lehetőség van Recovery Services-tárolókra váltani. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> **2017. november 1-től kezdődően**:
+> A biztonsági mentési tárolókról mostantól lehetőség van Recovery Services-tárolókra váltani. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> **2017. október 15-től** a PowerShell a továbbiakban nem használható Backup-tárolók létrehozására. <br/> **2017. november 1-től**:
 >- A rendszer automatikusan elvégzi valamennyi megmaradó biztonsági mentési tároló átváltását Recovery Services-tárolókra.
->- A klasszikus portálon nem tud majd hozzáférni a biztonsági mentési adataihoz. Helyette az Azure Portal segítségével férhet hozzá a Recovery Services-tárolókban található biztonsági mentési adatokhoz.
+>- A klasszikus portálon nem lehet majd hozzáférni a biztonsági másolati adatokhoz. Helyette az Azure Portal segítségével férhet hozzá a Recovery Services-tárolókban található biztonsági mentési adatokhoz.
 >
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Miben különbözik az Azure Backup az Azure Site Recoverytől?

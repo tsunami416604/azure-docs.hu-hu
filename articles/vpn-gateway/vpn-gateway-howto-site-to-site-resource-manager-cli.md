@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: d97dfa3bc14c54e4c7097b5418c5b61e204e7676
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 019c5421dc470b18c9087417b93c241cc5730f77
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a parancssori felület használatával
@@ -48,7 +48,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
 * Győződjön meg arról, hogy telepítette a CLI-parancsok legújabb verzióját (2.0-s vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI 2.0-s verziójának telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI 2.0-s verziójának használatába](/cli/azure/get-started-with-azure-cli).
 
-### <a name="example-values"></a>Példaértékek
+### <a name="example"></a>Példaértékek
 
 Az alábbi értékek használatával létrehozhat egy tesztkörnyezetet, vagy segítségükkel értelmezheti a cikkben szereplő példákat:
 
@@ -77,7 +77,7 @@ ConnectionName          = VNet1toSite2
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="2-create-a-resource-group"></a>2. Hozzon létre egy erőforráscsoportot
+## <a name="rg"></a>2. Hozzon létre egy erőforráscsoportot
 
 A következő példában létrehozunk egy „TestRG1” nevű erőforráscsoportot az „eastus” helyen. Ha már rendelkezik erőforráscsoporttal abban a régióban, ahol létre kívánja hozni a virtuális hálózatát, használhatja azt is.
 
@@ -187,7 +187,7 @@ Ha másik módszerrel kívánja ellenőrizni a kapcsolatot: [VPN Gateway-kapcsol
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="common-tasks"></a>Gyakori feladatok
+## <a name="tasks"></a>Gyakori feladatok
 
 Ez a szakasz a helyek közötti konfigurációk használatakor hasznos gyakori parancsokat tartalmazza. A CLI hálózati parancsainak teljes listájáért lásd az [Azure CLI-hálózatkezelést](/cli/azure/network) bemutató cikket.
 

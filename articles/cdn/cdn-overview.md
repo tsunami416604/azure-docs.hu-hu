@@ -3,7 +3,7 @@ title: "Az Azure CDN áttekintése | Microsoft Docs"
 description: "Megismerheti, mi is az az Azure Content Delivery Network (CDN), valamint hogyan használható a tartalmak nagy sávszélességű kézbesítéséhez a blobok és a statikus tartalom gyorsítótárazása révén."
 services: cdn
 documentationcenter: 
-author: lichard
+author: smcevoy
 manager: akucer
 editor: 
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
-ms.author: rli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 299e55e095ac323ed0ded7c7844d7cd103174af2
+ms.author: v-semcev
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 0517f35a43e99181075dc5a6836e406c2c06824e
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Az Azure Content Delivery Network (CDN) áttekintése
@@ -51,28 +50,37 @@ Három Azure CDN termék áll rendelkezésre: az **Akamai Azure CDN Standard**, 
 
 |  | Akamai Standard | Verizon Standard | Verizon Premium |
 | --- | --- | --- | --- |
-| Egyszerű integráció az Azure-szolgáltatásokkal – például a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Cloud Services](cdn-cloud-service-with-cdn.md), a [Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md) és a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) szolgáltatással. |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| Felügyelet [REST API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) vagy [PowerShell](cdn-manage-powershell.md) használatával. |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| HTTPS-támogatás CDN-végponttal |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| Egyéni tartomány HTTPS | |**&#x2713;;** |**&#x2713;;** |
-| Terheléselosztás |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| Védelem [DDOS](https://www.us-cert.gov/ncas/tips/ST04-015)-támadások ellen |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| Kettős verem (IPv4/IPv6) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| [Egyéni tartománynevek támogatása](cdn-map-content-to-custom-domain.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| [Lekérdezési sztringek gyorsítótárazása](cdn-query-string.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
-| [Geoszűrés](cdn-restrict-access-by-country.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __Teljesítménnyel kapcsolatos szolgáltatások és optimalizálási lehetőségek__ |
+| [Dinamikus helygyorsítás](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration) | **&#x2713;;**  | **&#x2713;;** | **&#x2713;;** |
+| [Online streamelés optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization) | **&#x2713;;**  | \* |  \* |
+| [Nagyméretű fájlok optimalizálása](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization) | **&#x2713;;**  | \* |  \* |
+| [Globális kiszolgálói terheléselosztás (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Gyors végleges törlés](cdn-purge-endpoint.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Objektumok előzetes betöltése](cdn-preload-endpoint.md) | |**&#x2713;;** |**&#x2713;;** |
-| [Egyszerűsített analitika](cdn-analyze-usage-patterns.md) | |**&#x2713;;** |**&#x2713;;** |
+| [Lekérdezési sztringek gyorsítótárazása](cdn-query-string.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
+| Kettős verem (IPv4/IPv6) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [HTTP/2-támogatás](cdn-http2.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __Biztonság__ |
+| HTTPS-támogatás CDN-végponttal |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
+| Egyéni tartomány HTTPS | |**&#x2713;;** |**&#x2713;;** |
+| [Egyéni tartománynevek támogatása](cdn-map-content-to-custom-domain.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
+| [Geoszűrés](cdn-restrict-access-by-country.md) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
+| [Jogkivonat-hitelesítés](cdn-token-auth.md)|  |  |**&#x2713;;**| 
+| [Védelem DDOS-támadások ellen](https://www.us-cert.gov/ncas/tips/ST04-015) |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __Elemzések és jelentéskészítés__ |
+| [Egyszerűsített analitika](cdn-analyze-usage-patterns.md) | **&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Speciális HTTP-jelentések](cdn-advanced-http-reports.md) | | |**&#x2713;;** |
 | [Valós idejű statisztikák](cdn-real-time-stats.md) | | |**&#x2713;;** |
 | [Valós idejű riasztások](cdn-real-time-alerts.md) | | |**&#x2713;;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __Könnyű használat__ |
+| Egyszerű integráció az Azure-szolgáltatásokkal – például a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Cloud Services](cdn-cloud-service-with-cdn.md), a [Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md) és a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) szolgáltatással. |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
+| Felügyelet [REST API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) vagy [PowerShell](cdn-manage-powershell.md) használatával. |**&#x2713;;** |**&#x2713;;** |**&#x2713;;** |
 | [Testreszabható, szabályalapú tartalomkézbesítési motor](cdn-rules-engine.md) | | |**&#x2713;;** |
 | Gyorsítótár-/fejlécbeállítások (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;;** |
 | URL-átirányítás/átírás (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;;** |
 | Mobileszközökre vonatkozó szabályok (a [szabálymotorral](cdn-rules-engine.md)) | | |**&#x2713;;** |
-| [Jogkivonat-hitelesítés](cdn-token-auth.md)|  |  |**&#x2713;;**| 
+
+\* A Verizon támogatja a nagy méretű fájlok és médiatartalmak küldését általános webes kézbesítésen keresztül.
 
 
 > [!TIP]

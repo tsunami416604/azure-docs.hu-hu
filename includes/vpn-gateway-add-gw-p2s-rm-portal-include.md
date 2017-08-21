@@ -1,17 +1,18 @@
 1. A portálon a bal oldalon kattintson a **+** gombra, és írja be a „Virtuális hálózati átjáró” kifejezést a keresőmezőbe. A keresési eredmények között keresse meg a **Virtuális hálózati átjáró** elemet, és kattintson a bejegyzésre. A **Virtuális hálózati átjáró** lap alsó részén kattintson a **Létrehozás** gombra a **Virtuális hálózati átjáró létrehozása** lap megnyitásához.
 2. A **Virtuális hálózati átjáró létrehozása** lapon töltse ki a virtuális hálózati átjáró értékeit.
 
-  ![Virtuális hálózati átjáró létrehozása lap mezői](./media/vpn-gateway-add-gw-rm-portal-include/gw.png "Virtuális hálózati átjáró létrehozása lap mezői")
-3. **Név**: adjon nevet az átjárónak. Az átjáró neve nem azonos egy átjáró alhálózatának elnevezésével. Ez a létrehozni kívánt átjáróobjektum neve.
+  ![Virtuális hálózati átjáró létrehozása lap mezői](./media/vpn-gateway-add-gw-p2s-rm-portal-include/p2sgw.png "Virtuális hálózati átjáró létrehozása lap mezői")
+3. **Név**: adjon nevet az átjárónak. Az átjáró elnevezése nem azonos az átjáró alhálózatának elnevezésével. Ez a létrehozni kívánt átjáróobjektum neve.
 4. **Átjáró típusa**: válassza ki a **VPN** elemet. A VPN-átjárók a **VPN** virtuális hálózati átjárótípust használják.
 5. **VPN típusa**: válassza ki a konfigurációjához megadott VPN-típust. A legtöbb konfigurációhoz útvonalalapú VPN-típus szükséges.
 6. **SKU**: válassza ki az átjáró SKU-ját a legördülő listából. A legördülő listában szereplő SKU-k a kiválasztott VPN-típustól függenek.
 7. **Hely**: Állítsa be úgy a **Hely** mezőt, hogy a virtuális hálózat helyére mutasson. Ha a hely nem egyezik meg azzal a régióval, ahol a virtuális hálózat található, a virtuális hálózat nem jelenik meg a Virtuális hálózat választása legördülő menüben.
 8. Válassza ki azt a virtuális hálózatot, amelyhez hozzá kívánja adni ezt az átjárót. Kattintson a **Virtuális hálózat** elemre a **Virtuális hálózat választása** lap megnyitásához. Válassza ki a VNet elemet. Ha a VNet nem jelenik meg, ellenőrizze, hogy a **Hely** mező arra a régióra mutat-e, amelyikben a virtuális hálózata található.
 9. **Nyilvános IP-cím**: Létrehoz egy nyilvános IP-címobjektumot, amelyhez dinamikusan hozzá lesz rendelve egy nyilvános IP-cím. A **Nyilvános IP-cím** elemre kattintva nyissa meg a **Nyilvános IP-cím választása** lapot. Ezután az **+Új létrehozása** elemre kattintva nyissa meg a **Nyilvános IP-cím létrehozása** lapot. Adjon egy nevet a nyilvános IP-címnek. Kattintson az **OK** gombra a módosítások mentéséhez. Az IP-címet a rendszer dinamikusan rendeli hozzá a VPN Gateway létrehozásakor. A VPN Gateway jelenleg csak a *Dinamikus* nyilvános IP-cím lefoglalását támogatja. Ez azonban nem jelenti azt, hogy az IP-cím módosul a VPN Gatewayhez való hozzárendelése után. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
-11. **Előfizetés**: ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
-12. **Erőforráscsoport**: Az Erőforráscsoport beállítást a kiválasztott virtuális hálózat határozza meg.
-1. Ne módosítsa a **Helyet** az előbbi beállítások megadása után.
-2. Ellenőrizze a beállításokat. Ha azt szeretné, hogy az átjáró megjelenjen az irányítópulton, válassza a lap alján lévő **Rögzítés az irányítópulton** elemet.
-3. A **Létrehozás** gombra kattintva hozzákezdhet az átjáró létrehozásához. A rendszer érvényesíti a beállításokat, és az átjáró üzembe helyezése megtörténik. Az átjáró létrehozása akár 45 percet is igénybe vehet.
-4. Az átjáró létrehozása után úgy tekintheti meg a hozzárendelt IP-címet, ha megnézi a virtuális hálózat lapot. Az átjáró csatlakoztatott eszközként fog megjelenni. A csatlakoztatott eszközre (azaz a virtuális hálózati átjáróra) kattintva további információkat jeleníthet meg.
+10. **Előfizetés**: ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
+11. **Erőforráscsoport**: ezt a beállítást a kiválasztott virtuális hálózat határozza meg.
+12. Ne módosítsa a **Helyet** az előbbi beállítások megadása után.
+13. Ellenőrizze a beállításokat. Ha azt szeretné, hogy az átjáró megjelenjen az irányítópulton, válassza a lap alján lévő **Rögzítés az irányítópulton** elemet.
+14. A **Létrehozás** gombra kattintva hozzákezdhet az átjáró létrehozásához. A rendszer érvényesíti a beállításokat, és az átjáró üzembe helyezése megtörténik. Az átjáró létrehozása akár 45 percet is igénybe vehet.
+
+Az átjáró létrehozása után úgy tekintheti meg a hozzárendelt IP-címet, ha megnézi a virtuális hálózatot. Az átjáró csatlakoztatott eszközként fog megjelenni. A csatlakoztatott eszközre (azaz a virtuális hálózati átjáróra) kattintva további információkat jeleníthet meg.

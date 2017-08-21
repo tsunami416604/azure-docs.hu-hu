@@ -13,14 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 08/15/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 5121861dc9fa11bbde32c12f3987bb60f2dda057
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 83fc6db1ddb43eb87e7c58684505d7196c1e53d0
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>A HDInsight-alapú Apache Storm rendszer használatának első lépései Storm Starter-példákkal
@@ -65,7 +65,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
     * **Operációs rendszer**: Linux
 
-    * **Verzió**: Storm 1.0.1 (HDI 3.5)
+    * **Verzió**: Storm 1.1.0 (HDI 3.6)
 
     * **Fürt szintje**: Standard
 
@@ -110,7 +110,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
     >
     > A WordCount-példa és más Storm Starter-példák már megtalálhatók a fürtön a következő helyen: `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-A Storm Starter-példák forráskódját a következő helyen tekintheti meg: [https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.0.x-branch/examples/storm-starter). A hivatkozás a Storm 1.0.x-es verzió példáira mutat, amely a HDInsight 3.5-ben érhető el. A Storm egyéb verziói esetében használja a __Branch__ (Ág) gombot a lap tetején egy másik Storm-verzió kiválasztásához.
+A Storm Starter-példák forráskódját a [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter) helyen tekintheti meg. A hivatkozás a Storm 1.1.x-es verzió példáira mutat, amely a HDInsight 3.6-ban érhető el. A Storm egyéb verziói esetében használja a __Branch__ (Ág) gombot a lap tetején egy másik Storm-verzió kiválasztásához.
 
 ## <a name="monitor-the-topology"></a>A topológia figyelése
 

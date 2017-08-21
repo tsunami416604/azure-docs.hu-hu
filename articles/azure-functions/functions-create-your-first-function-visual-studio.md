@@ -17,20 +17,17 @@ ms.workload: na
 ms.date: 07/05/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 4a6b706b63c4e1b0df3c46bce4ff6877efca4ead
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: f3aa6740751db9aa979a88f9600f68cf4353643c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
 Az Azure Functions lehetővé teszi a kód végrehajtását kiszolgáló nélküli környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet vagy közzé kellene tennie egy webalkalmazást.
 
-> [!IMPORTANT]
-> Ez a témakör a Visual Studio előzetes verzióját használja a lépések végrehajtásához. A folytatás előtt ellenőrizze, hogy telepítette-e a [Visual Studio 2017 15.3-as előzetes verzióját](https://www.visualstudio.com/vs/preview/).
-
-Ebben a témakörben megtudhatja, hogy az Azure Functions Tools for Visual Studio 2017 használatával miként hozhat létre és tesztelhet helyileg egy „Helló világ!”-függvényt. Ezután közzéteheti a függvénykódot az Azure-ban.
+Ebben a témakörben megtudhatja, hogy az Azure Functions Tools for Visual Studio 2017 használatával miként hozhat létre és tesztelhet helyileg egy „Helló világ!”-függvényt. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 15.3-as és újabb verziójában található Azure-fejlesztési számítási feladat részeként érhetők el.
 
 ![Azure-függvénykód Visual Studio-projektben](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
@@ -38,17 +35,11 @@ Ebben a témakörben megtudhatja, hogy az Azure Functions Tools for Visual Studi
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* A [Visual Studio 2017 Preview 15.3-as verziója](https://www.visualstudio.com/vs/preview/), amely tartalmazza az **Azure-fejlesztési** számítási feladatot is.
+* A [Visual Studio 2017 15.3-as verziója](https://www.visualstudio.com/vs/preview/), amely tartalmazza az **Azure-fejlesztési** számítási feladatot is.
 
     ![Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017 telepítése](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="install-azure-functions-tools-for-visual-studio-2017"></a>Az Azure Functions Tools for Visual Studio 2017 telepítése
-
-Mielőtt nekifogna, töltse le és telepítse az Azure Functions Tools for Visual Studio 2017-et. Ezekhez az eszközökhöz legalább a Visual Studio 2017 Preview 15.3-as vagy későbbi verziója szükséges. Ha már telepítette az Azure Function Toolst, kihagyhatja ezt a részt.
-
-[!INCLUDE [Install the Azure Functions Tools for Visual Studio](../../includes/functions-install-vstools.md)]   
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 ## <a name="create-an-azure-functions-project-in-visual-studio"></a>Hozzon létre egy Azure Functions-projektet a Visual Studióban
 

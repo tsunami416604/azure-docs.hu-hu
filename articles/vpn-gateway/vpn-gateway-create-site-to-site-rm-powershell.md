@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 9afd12380926d4e16b7384ff07d229735ca94aaa
-ms.openlocfilehash: 9edaa81111d9439bfbad4775e49c3e29454ad31f
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 27f4a8fb9a83b98e99df635bf4c80f6048ce348c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/15/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Helyek közötti VPN-kapcsolattal rendelkező virtuális hálózat létrehozása a PowerShell használatával
@@ -40,7 +40,7 @@ A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható lé
 
 ![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-create-site-to-site-rm-powershell/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -49,7 +49,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
 * Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. A PowerShell-parancsmagok gyakran frissülnek, és általában frissítenie kell a PowerShell-parancsmagokat a legújabb szolgáltatásfunkciók eléréséhez. Ha nem frissíti a PowerShell-parancsmagokat, a megadott értékek sikertelenek lehetnek. A PowerShell-parancsmagok letöltéséről és telepítéséről további információért lásd: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 
-### <a name="example-values"></a>Példaértékek
+### <a name="example"></a>Példaértékek
 
 A cikkben szereplő példák a következő értékeket használják. Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat.
 
@@ -88,7 +88,7 @@ Ha még nem rendelkezik virtuális hálózattal, akkor hozzon létre egyet. Virt
 
 [!INCLUDE [No NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="to-create-a-virtual-network-and-a-gateway-subnet"></a>Virtuális hálózat és átjáró-alhálózat létrehozása
+### <a name="vnet"></a>Virtuális hálózat és átjáró-alhálózat létrehozása
 
 Ebben a példában egy virtuális hálózatot és egy átjáróalhálózatot hozunk létre. Ha már rendelkezik virtuális hálózattal, amelyhez hozzá szeretne adni egy átjáróalhálózatot, lásd: [Átjáróalhálózat hozzáadása már létrehozott virtuális hálózathoz](#gatewaysubnet).
 

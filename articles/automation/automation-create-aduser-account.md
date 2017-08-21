@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 0092496ea13c862a1717f4fdcb882139cbd8a177
-ms.lasthandoff: 04/15/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 4eaa3e36ededddeb5268ec4f49b9daee2f824cee
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Runbookok hitelesítése a klasszikus Azure üzemi modellel és a Resource Managerrel
@@ -68,7 +68,7 @@ Ebben a szakaszban végre fogja hajtani a következő lépéseket egy Azure Auto
 3. Az Automation-fiókok panelen kattintson a **Hozzáadás** elemre.<br><br>![Automation-fiók hozzáadása](media/automation-create-aduser-account/add-automation-acct-properties.png)
 4. Az **Automation-fiók hozzáadása** panel **Név** mezőjébe adjon meg egy nevet az új Automation-fióknak.
 5. Ha egynél több előfizetéssel rendelkezik, adja meg az új fiókhoz használni kívántat, valamint egy új vagy meglévő **Erőforráscsoport** és egy Azure adatközpont **Hely** elemet.
-6. Válassza a **Nem** értéket az **Azure-beli futtató fiók létrehozása** beállításnál, és kattintson a **Létrehozás** gombra.  
+6. Válassza az **Igen** értéket az **Azure-beli futtató fiók létrehozása** beállításnál, és kattintson a **Létrehozás** gombra.  
    
     > [!NOTE]
     > Ha a **Nem** beállítás kiválasztásával úgy dönt, hogy nem hozza létre a futtató fiókot, egy figyelmeztető üzenet jelenik meg az **Automation-fiók hozzáadása** panelen.  Miközben a fiók létrejön, és csatolva lesz az előfizetés **Közreműködő** szerepköréhez, nem fog hozzá tartozó hitelesítési identitással rendelkezni az előfizetések könyvtáron belül, és így nem fog hozzáférni erőforrásokhoz az előfizetésben.  Ez megakadályozza a fiókra hivatkozó forgatókönyveket abban, hogy hitelesítsenek és feladatokat végezzenek el az Azure Resource Manager-erőforrásokon.

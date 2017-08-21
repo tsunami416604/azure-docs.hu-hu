@@ -1,27 +1,27 @@
 
 
 
-To create virtual machines based on Oracle images, sign in to the [Azure portal](https://portal.azure.com/), click **Marketplace**, click **Compute**, and then type **Oracle** into the Search box. Select an image and follow the instructions to set up the image on Microsoft Azure. Note that Oracle images by Microsoft on the [Azure portal](https://portal.azure.com/) run on Windows, and Oracle images by Oracle run on Oracle Linux.
+A virtuális gépek Oracle-rendszerképek alapján történő létrehozásához jelentkezzen be az [Azure Portalra](https://portal.azure.com/), kattintson a **Marketplace**, majd a **Compute** elemre, ezt követően pedig a keresőmezőbe írja be az **Oracle** kifejezést. Válasszon ki egy rendszerképet, majd kövesse az utasításokat a rendszerkép a Microsoft Azure-on történő üzembe helyezéséhez. Vegye figyelembe, hogy a Microsoft az [Azure Portalon](https://portal.azure.com/) található Oracle-rendszerképei Windows rendszeren futnak, az Oracle által közzétett Oracle-rendszerképek pedig Oracle Linuxon futnak.
 
-## <a name="windows-based-virtual-machine-images"></a>Windows-based virtual machine images
-The following is a list of the available Oracle virtual machine images that run on Windows Server on Azure. These images are pay-as-you-go, meaning that Oracle license fees are included in the usage of these images. Microsoft no longer publishes Oracle Database or WebLogic images in Azure Marketplace.  You can still create your own custom image and use the Bring Your Own License model in order to run Oracle software on Microsoft Azure. 
+## <a name="windows-based-virtual-machine-images"></a>Windows-alapú virtuálisgép-rendszerképek
+A következő lista azokat az elérhető Oracle virtuálisgép-rendszerképeket tartalmazza, amelyek az Azure-on Windows Serveren futnak. Ezen rendszerképek esetében használatalapú fizetés van érvényben, ami azt jelenti, hogy az Oracle-licencdíjakat tartalmazza a rendszerképek használata. A Microsoft már nem tesz közzé Oracle Database- vagy WebLogic-rendszerképeket az Azure Marketplace-en.  Ettől függetlenül létrehozhatja saját egyéni rendszerképét, illetve a saját licenc használata modellt alkalmazva a Microsoft Azure-on is futtathatja az Oracle szoftvereit. 
 
-### <a name="java-virtual-machine-images"></a>Java virtual machine images
-* JDK 8 on Windows Server 2012 R2
-* JDK 7 on Windows Server 2012
-* JDK 6 on Windows Server 2012
+### <a name="java-virtual-machine-images"></a>Java virtuálisgép-rendszerképek
+* JDK 8 Windows Server 2012 R2 rendszeren
+* JDK 7 Windows Server 2012 rendszeren
+* JDK 6 Windows Server 2012 rendszeren
 
-## <a name="oracle-linux-virtual-machine-images"></a>Oracle Linux virtual machine images
-The following is a list of the available preconfigured Oracle virtual machine images that run on Oracle Linux on Azure. You are expected to bring your own license for these images, as Oracle license fees are not included in the usage of these preconfigured virtual machine images. You can also bring your own license to install and run Oracle software on custom virtual machines on Windows or Linux. Here are complete details on [Oracle licensing on Azure](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support). And here are details on creating virtual machines using [your own images](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). To learn about this and other methods of migrating Oracle and other workloads to Azure, see [Different ways to create a Windows-based virtual machine](../articles/virtual-machines/windows/creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="oracle-linux-virtual-machine-images"></a>Oracle Linux virtuálisgép-rendszerképek
+A következő lista azokat az előre konfigurált Oracle virtuálisgép-rendszerképeket tartalmazza, amelyek az Azure-on Oracle Linux rendszeren futnak. Ezen rendszerképek esetében a saját licenc használata modellt veheti igénybe, mivel az Oracle-licencdíjakat nem tartalmazza az előre konfigurált virtuálisgép-rendszerképek használata. A saját licencét használhatja az Oracle szoftvereinek Windows vagy Linux rendszert használó egyéni virtuális gépekre való telepítéséhez és futtatásához. További információk az [Oracle-licenckezelésről az Azure-on](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support). A virtuális gépek [saját rendszerképek](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) használatával történő létrehozásáról itt olvashat bővebben.
 
-* Oracle Database 12c Enterprise Edition on Oracle Linux
-* Oracle Database 12c Standard Edition on Oracle Linux
-* Oracle WebLogic Server 12c Enterprise Edition on Oracle Linux
+* Oracle Database 12c Enterprise Edition Oracle Linux rendszeren
+* Oracle Database 12c Standard Edition Oracle Linux rendszeren
+* Oracle WebLogic Server 12c Enterprise Edition Oracle Linux rendszeren
 * Oracle Linux 6.4.0.0.0
 * Oracle Linux 6.7.0.0.0
 * Oracle Linux 7.0.0.0.0
 * Oracle Linux 7.2.0.0.0
 
-## <a name="additional-resources"></a>Additional resources
-[Oracle virtual machine images - miscellaneous considerations](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
+## <a name="additional-resources"></a>További források
+[Oracle virtuálisgép-rendszerképek – egyéb megfontolandó szempontok](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
 

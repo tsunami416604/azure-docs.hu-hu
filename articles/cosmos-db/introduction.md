@@ -16,10 +16,10 @@ ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 600894bffe367ee1412df6a82f668143829688cc
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: c9d04ae0bc11b99f893e5f003f136fbfe0dfccc9
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -50,7 +50,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB az aláb
         * Hamarosan további adatmodellek is elérhetővé válnak 
 
 * **Igény szerinti rugalmas átviteli sebesség és tárterület, világszerte**
-    * Az adatbázis átviteli sebességét könnyedén méretezheti [másodpercalapú](request-units.md) vagy [percalapú](request-units-per-minute.md) finomsággal, és igény szerint bármikor megváltoztathatja. 
+    * Az adatbázis átviteli sebességét könnyedén méretezheti [másodpercalapú](request-units.md) részletességgel, és igény szerint bármikor megváltoztathatja. 
     * A méretigények mindenkori kielégítéséhez a tárterület méretét [átláthatóan és automatikusan](partition-data.md) méretezheti.
 
 * **Gyors válaszidejű és alapvető fontosságú alkalmazásokat hozhat létre**

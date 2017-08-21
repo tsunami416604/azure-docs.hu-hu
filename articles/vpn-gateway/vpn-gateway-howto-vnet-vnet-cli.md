@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 85d89568f5022dafd44ae7f8578e0bebb22d472d
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ae42f661b39e8b6170fd415d758404fb33009ccc
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
@@ -44,7 +44,7 @@ A virtuális hálózatok közötti kommunikáció kombinálható többhelyes kon
 
 ![Tudnivalók a kapcsolatokról](./media/vpn-gateway-howto-vnet-vnet-cli/aboutconnections.png)
 
-### <a name="why-connect-virtual-networks"></a>Miért érdemes összekapcsolni a virtuális hálózatokat?
+### <a name="why"></a>Miért érdemes összekapcsolni a virtuális hálózatokat?
 
 A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
@@ -185,11 +185,11 @@ A példákban a következő értékeket használjuk:
   az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-4---create-the-connections"></a>4. lépés – A kapcsolatok létrehozása
+### <a name="createconnect"></a>4. lépés – A kapcsolatok létrehozása
 
 Most már két, VPN-átjáróval rendelkező virtuális hálózata van. A következő lépésként létre kell hoznia a VPN-átjáró kapcsolatait a virtuális hálózat átjárói között. Ha a fenti példákat követte, a virtuális hálózat átjárói eltérő erőforráscsoportokban találhatók. Ha az átjárók eltérő erőforráscsoportokban vannak, a kapcsolatok létrehozásakor meg kell határoznia és azonosítania kell minden átjáró erőforrás-azonosítóját. Ha a virtuális hálózatok ugyanabban az erőforráscsoportban találhatók, követheti a [második útmutatót](#samerg), ugyanis nem kell meghatároznia az erőforrás-azonosítókat.
 
-### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a>Eltérő erőforráscsoportokban található virtuális hálózatok csatlakoztatása
+### <a name="diffrg"></a>Eltérő erőforráscsoportokban található virtuális hálózatok csatlakoztatása
 
 1. Az alábbi parancs kimenetéből olvassa le a VNet1GW erőforrás-azonosítóját:
 
@@ -322,7 +322,7 @@ Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvég
   az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-8---create-the-connections"></a>8. lépés – A kapcsolatok létrehozása
+### <a name="connections5"></a>8. lépés – A kapcsolatok létrehozása
 
 Ezt a lépést két CLI-munkamenetre osztottuk fel, amelyek jelölése **[1. előfizetés]** és **[5. előfizetés]**, mivel az átjárók eltérő előfizetésekben találhatók. Ha váltani szeretne az előfizetések között, használja az „az account list --all” parancsot a fiókban elérhető előfizetések listájának megjelenítéséhez, majd az „az account set --subscription <subscriptionID>” parancsot a használni kívánt előfizetésre váltáshoz.
 

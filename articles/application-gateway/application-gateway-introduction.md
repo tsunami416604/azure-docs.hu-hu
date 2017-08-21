@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 07/10/2017
+ms.date: 07/19/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 396d8b9532eb55341670ad61bd4c2a16882b35e4
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 49ca4ed2452d71dec17cedebaf48bbd5ab9e615f
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>Application Gateway – áttekintés
@@ -42,6 +42,7 @@ Az Application Gateway jelenleg a következő képességeket biztosítja:
 * **[Többhelyes útválasztás](application-gateway-multi-site-overview.md)** - Az Application Gateway szolgáltatással akár 20 webhelyet is összevonhat egyetlen alkalmazásátjáróba.
 * **[WebSocket-támogatás](application-gateway-websocket.md)** – Az Application Gateway egy másik nagyszerű szolgáltatása a natív WebSocket-támogatás.
 * **[Állapotfigyelés](application-gateway-probe-overview.md)** – Az Application Gateway alapértelmezés szerint végzi a háttérerőforrások állapotfigyelését, és egyéni mintavételek létrehozását teszi lehetővé a különlegesebb esetek megfigyelésére.
+* **[SSL-szabályzat és titkosítások](application-gateway-ssl-policy-overview.md)** – Ez a szolgáltatás lehetővé teszi az SSL-protokollverziók, a támogatott titkosítási készletek és ezek feldolgozási sorrendjének a korlátozását.
 * **[Átirányítás kérése](application-gateway-redirect-overview.md)** – Ez a szolgáltatás lehetővé teszi, hogy a HTTP-kéréseket egy HTTPS-figyelőre irányítsa át.
 * **[Több-bérlős háttérszolgáltatások támogatása](application-gateway-web-app-overview.md)** – Az Application Gateway támogatja olyan több-bérlős háttérszolgáltatások konfigurálását háttérkészlet-tagokként, mint az Azure Web Apps és az API Gateway. 
 * **[Speciális diagnosztika](application-gateway-diagnostics.md)** – Az Application Gateway teljes diagnosztikát és hozzáférési naplókat biztosít. A tűzfalnaplók olyan Application Gateway-erőforrásokhoz érhetők el, amelyekhez engedélyezve van a WAF.
@@ -105,5 +106,5 @@ Ha elsajátította a szükséges ismereteket, [hozzon létre egy alkalmazásátj
 
 Ha szeretné megtudni, hogyan hozhat létre egy URL-alapú tartalom-útválasztást használó alkalmazásátjárót, bővebb tájékoztatást a [Create an application gateway using URL-based routing](application-gateway-create-url-route-arm-ps.md) (URL-alapú tartalom-útválasztást használó alkalmazásátjáró létrehozása) című témakörben talál.
 
-További információ az Azure egyéb fő hálózati képességeiről: [Azure Networking]((../networking/networking-overview.md).
+További információ az Azure egyéb fő hálózati képességeiről az [Azure hálózatkezeléssel](../networking/networking-overview.md) foglalkozó témakörben.
 

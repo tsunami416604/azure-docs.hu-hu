@@ -7,8 +7,8 @@ A következő szakaszokban létrehozunk egy új ASP.NET WebAPI háttérrendszert
 
 A következő lépések bemutatják az új ASP.NET WebAPI háttérrendszer létrehozását: 
 
-> [!NOTE]
-> **Fontos**: Ha a Visual Studio 2015-ös vagy régebbi változatát használja, az oktatóanyag elkezdése előtt ellenőrizze, hogy telepítette-e a NuGet-csomagkezelő legfrissebb verzióját. Az ellenőrzéshez indítsa el a Visual Studiót. A **Tools** (Eszközök) menüben kattintson az **Extensions and Updates** (Bővítmények és frissítések) elemre. Keresse meg az Ön által használt Visual Studio-verzióhoz tartozó **NuGet-csomagkezelőt**, és ellenőrizze, hogy a legfrissebb verzió van-e telepítve a gépén. Ha nem, távolítsa el, és telepítse újra a NuGet-csomagkezelőt.
+> [!IMPORTANT]
+> Ha a Visual Studio 2015-ös vagy régebbi verzióját használja, az oktatóanyag elkezdése előtt ellenőrizze, hogy telepítette-e a NuGet-csomagkezelő legfrissebb verzióját. Az ellenőrzéshez indítsa el a Visual Studiót. A **Tools** (Eszközök) menüben kattintson az **Extensions and Updates** (Bővítmények és frissítések) elemre. Keresse meg az Ön által használt Visual Studio-verzióhoz tartozó **NuGet-csomagkezelőt**, és ellenőrizze, hogy a legfrissebb verzió van-e telepítve a gépén. Ha nem, távolítsa el, és telepítse újra a NuGet-csomagkezelőt.
 > 
 > ![][B4]
 > 

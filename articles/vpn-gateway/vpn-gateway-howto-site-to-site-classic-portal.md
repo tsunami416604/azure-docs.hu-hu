@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 08/010/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: e3fa1705e1f4e0805409eee83d5797bee7f6603d
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0be8dd6d90edb7b32b6777c76c9778cda0dcd5ea
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
@@ -64,9 +64,9 @@ A cikkben szereplő példák a következő értékeket használják. Ezekkel az 
 * **Átjáróalhálózat:** 10.11.255.0/27
 * **Erőforráscsoport:** TestRG1
 * **Hely:** az USA keleti régiója
-* **DNS-kiszolgáló:** 8.8.8.8 (nem kötelező ehhez a gyakorlathoz)
+* **DNS-kiszolgáló:** 10.11.0.3 (nem kötelező ehhez a gyakorlathoz)
 * **Helyi hely neve:** Site2
-* **Ügyfélcímtér:** Ez a helyszíni helyen található címtér.
+* **Ügyfélcímtér:** A helyszíni helyen található címtér.
 
 ## <a name="CreatVNet"></a>1. Virtuális hálózat létrehozása
 
@@ -79,43 +79,43 @@ Amikor helyek közötti használatra hoz létre virtuális hálózatot, gondosko
 ### <a name="to-create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
 1. Egy böngészőből keresse fel az [Azure portált](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
-2. Kattintson az **+** elemre. A **Piactér keresése** mezőbe írja be a „Virtuális hálózat” kifejezést. A visszaadott listában keresse meg a **Virtuális hálózat** elemet, és rákattintva nyissa meg a **Virtuális hálózat** panelt.
+2. Kattintson az **+** elemre. A **Piactér keresése** mezőbe írja be a „Virtuális hálózat” kifejezést. A visszaadott listában keresse meg a **Virtuális hálózat** elemet, és rákattintva nyissa meg a **Virtuális hálózat** lapot.
 
-  ![Virtuális hálózat keresése panel](./media/vpn-gateway-howto-site-to-site-classic-portal/newvnetportal700.png)
-3. A Virtuális hálózat panel alján, az **Üzemi modell kiválasztása** legördülő listában válassza ki a **Klasszikus** lehetőséget, majd kattintson a **Létrehozás** elemre.
+  ![Virtuális hálózat keresése lap](./media/vpn-gateway-howto-site-to-site-classic-portal/newvnetportal700.png)
+3. A Virtuális hálózat lap alján, az **Üzemi modell kiválasztása** legördülő listában válassza ki a **Klasszikus** lehetőséget, majd kattintson a **Létrehozás** elemre.
 
   ![Üzemi modell kiválasztása](./media/vpn-gateway-howto-site-to-site-classic-portal/selectmodel.png)
-4. A **Virtuális hálózat létrehozása (klasszikus)** panelen konfigurálja a virtuális hálózat beállításait. Ezen a panelen adhatja hozzá az első címterét és egy önálló alhálózati címtartományt. A virtuális hálózat létrehozása után visszaléphet, és további alhálózatokat és címtereket vehet fel.
+4. A **Virtuális hálózat létrehozása (klasszikus)** lapon konfigurálja a virtuális hálózat beállításait. Ezen a lapon adhatja hozzá az első címterét és egy önálló alhálózati címtartományt. A virtuális hálózat létrehozása után visszaléphet, és további alhálózatokat és címtereket vehet fel.
 
-  ![Virtuális hálózat létrehozása panel](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Virtuális hálózat létrehozása panel")
+  ![Virtuális hálózat létrehozása lap](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Virtuális hálózat létrehozása lap")
 5. Ellenőrizze, hogy a megfelelő előfizetés jelenik-e meg az **Előfizetés** résznél. Az előfizetéseket a legördülő menüben módosíthatja.
-6. Kattintson az **Erőforráscsoport** elemre, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat az új erőforráscsoport nevének beírásával. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../azure-resource-manager/resource-group-overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
+6. Kattintson az **Erőforráscsoport** elemre, és válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat egy név beírásával. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../azure-resource-manager/resource-group-overview.md#resource-groups) (Az Azure Resource Manager áttekintése).
 7. Ezután válassza ki a virtuális hálózatához tartozó **Hely** beállításokat. Ez a hely határozza meg a VNeten üzembe helyezett erőforrások helyét.
-8. Ha szeretné könnyen megtalálni virtuális hálózatát az irányítópulton, akkor válassza a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Létrehozás** gombra.
+8. Ha szeretné könnyen megtalálni a VNetet az irányítópulton, akkor válassza a **Rögzítés az irányítópulton** lehetőséget. A VNet létrehozásához kattintson a **Létrehozás** gombra.
 
   ![Rögzítés az irányítópulton](./media/vpn-gateway-howto-site-to-site-classic-portal/pintodashboard150.png "Rögzítés az irányítópulton")
 9. A Létrehozás gombra kattintva létrejön egy csempe az irányítópulton, amely a virtuális hálózat állapotát mutatja. A virtuális hálózat létrejöttével a csempe is módosul.
 
   ![Virtuális hálózat létrehozása csempe](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png "Virtuális hálózat létrehozása")
 
-Miután létrejött a virtuális hálózata, megjelenik a **Létrehozva** elem a klasszikus Azure-portál Hálózatok lapján az **Állapot** listában.
+Miután létrejött a virtuális hálózata, a **Létrehozva** érték jelenik meg az **Állapot** tulajdonságban a klasszikus Azure-portál hálózatok lapján.
 
 ## <a name="additionaladdress"></a>2. További címterek felvétele
 
 Miután létrehozta a virtuális hálózatot, hozzáadhat további címtereket. A további címterek felvétele nem kötelező lépése az S2S-konfigurációnak, de ha több címtérre van szüksége, kövesse az alábbi lépéseket:
 
 1. Keresse meg a virtuális hálózatokat a portálon.
-2. A virtuális hálózat paneljének **Beállítások** szakasza alatt kattintson a **Címtér** elemre.
-3. A Címtér panelen kattintson a **+Hozzáadás** gombra, és adjon meg egy címteret.
+2. A virtuális hálózat lapjának **Beállítások** szakasza alatt kattintson a **Címtér** elemre.
+3. A Címtér lapon kattintson a **+Hozzáadás** gombra, és adjon meg egy címteret.
 
 ## <a name="dns"></a>3. DNS-kiszolgáló megadása
 
-A DNS-beállítások megadása nem kötelező lépése az S2S-konfigurációnak, de a névfeloldáshoz szükség van DNS-re.
+A DNS-beállítások megadása nem kötelező lépése az S2S-konfigurációnak, de a névfeloldáshoz szükség van DNS-re. Az érték megadásával nem jön létre új DNS-kiszolgáló. A megadott DNS-kiszolgáló IP-címének olyan DNS-kiszolgálónak kell lennie, amely fel tudja oldani azoknak az erőforrásoknak a nevét, amelyekkel Ön kapcsolatot fog létesíteni. A példabeállításokban egy magánhálózati IP-címet használtunk. A használt IP-cím valószínűleg nem az Ön DNS-kiszolgálójának IP-címe. Ügyeljen arra, hogy a saját értékeit használja.
 
-Miután létrehozta a virtuális hálózatot, hozzáadhatja a DNS-kiszolgáló IP-címét a névfeloldás kezelésének érdekében. Nyissa meg a virtuális hálózat beállításait, kattintson a DNS-kiszolgálókra, majd adja hozzá a névfeloldáshoz használni kívánt DNS-kiszolgáló IP-címét. A beállítás nem hoz létre DNS-kiszolgálót. A például szolgáló beállításokban egy nyilvános DNS-kiszolgálót használunk. Általában érdemesebb egy privát DNS-kiszolgálót használni. Ügyeljen arra, hogy olyan DNS-kiszolgálókat adjon hozzá, amelyekkel az erőforrások kommunikálni tudnak.
+Miután létrehozta a virtuális hálózatot, hozzáadhatja a DNS-kiszolgáló IP-címét a névfeloldás kezelésének érdekében. Nyissa meg a virtuális hálózat beállításait, kattintson a DNS-kiszolgálókra, majd adja hozzá a névfeloldáshoz használni kívánt DNS-kiszolgáló IP-címét.
 
 1. Keresse meg a virtuális hálózatokat a portálon.
-2. A virtuális hálózat paneljének **Beállítások** szakasza alatt kattintson a **DNS-kiszolgálók** elemre.
+2. A virtuális hálózat lapjának **Beállítások** szakasza alatt kattintson a **DNS-kiszolgálók** elemre.
 3. Adjon meg egy DNS-kiszolgálót.
 4. A beállítások mentéséhez kattintson a lap tetején található **Mentés** gombra.
 
@@ -124,11 +124,11 @@ Miután létrehozta a virtuális hálózatot, hozzáadhatja a DNS-kiszolgáló I
 A helyi hely általában a használat helyszínét jelenti. Tartalmazza azon VPN-eszköz IP-címét, amelyhez kapcsolatot szeretne létesíteni, valamint azokat az IP-címtartományokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva.
 
 1. Keresse meg a portálon azt a virtuális hálózatot, amelyhez létre kíván hozni egy átjárót.
-2. A virtuális hálózat paneljén, az **Áttekintés** panel VPN-kapcsolatok szakaszában kattintson az **Átjáró** elemre az **Új VPN-kapcsolat** panel megnyitásához.
+2. A virtuális hálózat lapján, az **Áttekintés** panel VPN-kapcsolatok szakaszában kattintson a **Átjáró** elemre az **Új VPN-kapcsolat** lap megnyitásához.
 
   ![Kattintson az átjáró beállításainak konfigurálásához](./media/vpn-gateway-howto-site-to-site-classic-portal/beforegw125.png "Kattintson az átjáró beállításainak konfigurálásához")
-3. Az **Új VPN-kapcsolat** panelen válassza a **Helyek közötti** beállítást.
-4. A **Helyi hely** panel megnyitásához kattintson a **Helyi hely – Kötelező beállítások megadása** elemre. Konfigurálja a beállításokat, majd kattintson az **OK** gombra a beállítások mentéséhez.
+3. Az **Új VPN-kapcsolat** lapon válassza a **Helyek közötti** beállítást.
+4. A **Helyi hely** lap megnyitásához kattintson a **Helyi hely – Kötelező beállítások megadása** elemre. Konfigurálja a beállításokat, majd kattintson az **OK** gombra a beállítások mentéséhez.
   - **Név**: Adjon olyan nevet a helyi helynek, amely alapján könnyen azonosíthatja.
   - **VPN-átjáró IP-címe**: Ez a helyszíni hálózaton található VPN-eszköz nyilvános IP-címe. A VPN-eszköznek nyilvános IPv4 IP-címmel kell rendelkeznie. Adjon meg egy érvényes nyilvános IP-címet azon VPN-eszköznek, amelyhez csatlakozni kíván. Ez nem lehet a NAT mögött, és elérhetőnek kell lennie az Azure számára. Ha nem ismeri a VPN-eszköz IP-címét, használhat egy helyőrző értéket (érvényes nyilvános IP-cím formátumban), amelyet később módosíthat.
   - **Ügyfélcímtér**: A helyszíni hálózatra ezen az átjárón keresztül átirányítani kívánt IP-címtartományok listája. Több címtartományt is felvehet. Ügyeljen arra, hogy az itt megadott tartományok ne legyenek átfedésben olyan egyéb hálózatok tartományaival, amelyekhez a virtuális hálózat csatlakozik, illetve magának a virtuális hálózatnak a címtartományaival.
@@ -139,14 +139,14 @@ A helyi hely általában a használat helyszínét jelenti. Tartalmazza azon VPN
 
 Létre kell hoznia egy átjáróalhálózatot a VPN-átjáróhoz. Az átjáróalhálózat tartalmazza a VPN-átjáró szolgáltatásai által használt IP-címeket.
 
-1. Az **Új VPN-kapcsolat** panelen jelölje be az **Átjáró azonnali létrehozása** jelölőnégyzetet. Megjelenik az „Átjáró opcionális konfigurálása” panel. Ha nem jelöli be a jelölőnégyzetet, nem jelenik meg az átjáróalhálózat konfigurálását lehetővé tevő panel.
+1. Az **Új VPN-kapcsolat** lapon jelölje be az **Átjáró azonnali létrehozása** jelölőnégyzetet. Megjelenik az „Átjáró opcionális konfigurálása” lap. Ha nem jelöli be a jelölőnégyzetet, nem jelenik meg az átjáróalhálózat konfigurálását lehetővé tevő lap.
 
   ![Átjáró konfigurálása – Alhálózat, méret, útválasztási típus](./media/vpn-gateway-howto-site-to-site-classic-portal/optional.png "Átjáró konfigurálása – Alhálózat, méret, útválasztási típus")
-2. Kattintson az **Átjáró konfigurálása – Alhálózat, méret és útválasztási típus** elemre az **Átjáró konfigurációja** panel megnyitásához.
-3. Az **Átjáró konfigurációja** panelen kattintson az **Alhálózat – Kötelező beállítások konfigurálása** elemre az **Alhálózat hozzáadása** panel megnyitásához.
+2. Az **Átjáró konfigurálása** lap megnyitásához kattintson az **Átjáró opcionális konfigurálása – Alhálózat, méret és útválasztási típus** elemre.
+3. Az **Átjáró konfigurálása** lapon kattintson az **Alhálózat – Kötelező beállítások konfigurálása** elemre az **Alhálózat hozzáadása** lap megnyitásához.
 
   ![Átjáró konfigurációja – átjáróalhálózat](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "Átjáró konfigurációja – átjáró-alhálózat")
-4. Az **Alhálózat hozzáadása** panelen adja meg az átjáróalhálózatot. Az Ön által megadott átjáróalhálózat mérete a létrehozni kívánt VPN-átjárókonfigurációtól függ. Bár akár /29-es átjáróalhálózatot is létrehozhat, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: /27-eset vagy /28-asat. Nagyobb átjáróalhálózat használatával elegendő IP-cím áll rendelkezésre az esetleges jövőbeni konfigurációk megvalósításához.
+4. Az **Alhálózat hozzáadása** lapon adja meg az átjáróalhálózatot. Az Ön által megadott átjáróalhálózat mérete a létrehozni kívánt VPN-átjárókonfigurációtól függ. Bár akár /29-es átjáróalhálózatot is létrehozhat, javasolt /27-eset vagy /28-asat használni. Ez nagyobb, több címet tartalmazó alhálózatot hoz létre. Nagyobb átjáróalhálózat használatával elegendő IP-cím áll rendelkezésre az esetleges jövőbeni konfigurációk megvalósításához.
 
   ![Átjáróalhálózat hozzáadása](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "Átjáróalhálózat hozzáadása")
 
@@ -157,7 +157,7 @@ Létre kell hoznia egy átjáróalhálózatot a VPN-átjáróhoz. Az átjáróal
   ![A termékváltozat és a VPN típusának kiválasztása](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "A termékváltozat és a VPN típusának kiválasztása")
 2. Válassza ki az átjáró **útválasztási típusát**. Ez VPN-típus néven is ismert. Fontos a megfelelő átjárótípus kiválasztása, mert azt később nem lehet módosítani. A VPN-eszköznek kompatibilisnek kell lennie a kiválasztott útválasztási típussal. További, a VPN-típusokra vonatkozó információkért lásd [a VPN-átjárók beállításaival](vpn-gateway-about-vpn-gateway-settings.md#vpntype) foglalkozó témakört. A „RouteBased” és „PolicyBased” VPN-típusokkal további cikkek is foglalkozhatnak. A „Dynamic” (Dinamikus) a „RouteBased”, a „Static” (Statikus) a „PolicyBased” típusra utal.
 3. Kattintson az **OK** gombra a beállítások mentéséhez.
-4. A **New VPN Connection** (Új VPN-kapcsolat) panel alján kattintson az **OK** gombra a virtuális hálózati átjáró létrehozásához. Ennek végrehajtása 45 percig is eltarthat.
+4. Az **Új VPN-kapcsolat** lap alján kattintson az **OK** gombra a virtuális hálózati átjáró létrehozásához. A kiválasztott SKU függvényében egy virtuális hálózati átjáró létrehozása akár 45 percet is igénybe vehet.
 
 ## <a name="vpndevice"></a>7. VPN-eszköz konfigurálása
 
@@ -202,7 +202,7 @@ A PowerShell és a klasszikus üzemi modell használatakor a portálon találhat
   ```powershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   ```
-2. Nyissa meg a hálózati konfigurációs fájlt egy xml-szerkesztővel, majd ellenőrizze a „LocalNetworkSite name” és a „VirtualNetworkSite name” értékeit. Módosítsa úgy a példát, hogy tükrözze ezeket az értékeket. Amikor szóközt tartalmazó nevet ad meg, zárja az értéket szimpla idézőjelek közé.
+2. Nyissa meg a hálózati konfigurációs fájlt egy xml-szerkesztővel, majd ellenőrizze a „LocalNetworkSite name” és a „VirtualNetworkSite name” értékeit. Módosítsa úgy a példát, hogy tükrözze a szükséges értékeket. Amikor szóközt tartalmazó nevet ad meg, zárja az értéket szimpla idézőjelek közé.
 
 3. Állítsa be a megosztott kulcsot, és hozza létre a kapcsolatot. A „-SharedKey” egy Ön által létrehozott és megadott érték. A példában az „abc123” értéket használtuk, de érdemesebb egy ennél összetettebb értéket használni. Vegye figyelembe, hogy az itt megadott értéknek meg kell egyeznie a VPN-eszköz konfigurálásakor meghatározott értékkel.
 
@@ -218,11 +218,11 @@ Amikor létrejött a kapcsolat, az eredmény **Status: Successful** (Állapot: S
 
 Ha nem tud csatlakozni, tekintse át a **Hibaelhárítás** című szakaszt a tartalomjegyzékben a bal oldali panelen.
 
-## <a name="how-to-reset-a-vpn-gateway"></a>VPN-átjáró alaphelyzetbe állítása
+## <a name="reset"></a>VPN-átjáró alaphelyzetbe állítása
 
 Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több helyek közötti VPN-alagúton elveszíti a létesítmények közötti VPN-kapcsolatot. Ebben az esetben a helyszíni VPN-eszközei megfelelően működnek, de nem tudnak Ipsec-alagutakat létesíteni az Azure VPN Gateway átjárókkal. A lépéseket lásd: [VPN Gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md).
 
-## <a name="how-to-change-a-gateway-sku"></a>Az átjárók termékváltozatainak módosítása
+## <a name="changesku"></a>Az átjárók termékváltozatainak módosítása
 
 Az átjárók termékváltozatainak módosításához szükséges lépésekért lásd: [Átjáró-termékváltozatok átméretezése](vpn-gateway-about-SKUS-legacy.md).
 

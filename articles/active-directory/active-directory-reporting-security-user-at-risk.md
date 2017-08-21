@@ -1,6 +1,6 @@
 ---
-title: "A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon | Microsoft Docs"
-description: "Ismerje meg az Azure Active Directory portál veszélyeztetett felhasználókról szóló biztonsági jelentését"
+title: "Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon | Microsoft Docs"
+description: "Ismerje meg az Azure Active Directory portál kockázatosként megjelölt felhasználókról szóló biztonsági jelentését"
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -10,27 +10,27 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/01/2017
+ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: bfcaee441c54453677e7747b0bca55a8afc59391
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 76413d6e9c619a66ae34f032eb0b8f9d42c27c9d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>A veszélyeztetett felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon
+# <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon
 
 Az Azure Active Directory (Azure AD) biztonsági jelentéseivel megtudhatja, hogy a környezetben mekkora valószínűséggel sérült egyes felhasználói fiókok biztonsága. 
 
-Az Azure Active Directory észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenységeket. A rendszer minden egyes észlelt tevékenység esetében létrehoz egy *kockázati esemény* nevű rekordot. További részletek: [Az Azure Active Directory kockázati eseményei](active-directory-identity-protection-risk-events.md). 
+Az Azure Active Directory észleli a felhasználói fiókokhoz kapcsolódó gyanús tevékenységeket. A rendszer minden egyes észlelt tevékenység esetében létrehoz egy *kockázati esemény* nevű rekordot. További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](active-directory-identity-protection-risk-events.md) foglalkozó cikket. 
 
 A rendszer az észlelt kockázati eseményeket a következők kiszámítására használja:
 
-- **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. További részletek: [Kockázatos bejelentkezések](active-directory-identityprotection.md#risky-sign-ins). 
+- **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. További információkért lásd a [kockázatos bejelentkezésekkel](active-directory-identityprotection.md#risky-sign-ins) foglalkozó részt. 
 
-- **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. További részletek: [Kockázatosként megjelölt felhasználók](active-directory-identityprotection.md#users-flagged-for-risk).  
+- **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. További információkért lásd a [kockázatosként megjelölt felhasználókkal](active-directory-identityprotection.md#users-flagged-for-risk) foglalkozó részt.  
 
 Az Azure Portalon a biztonsági jelentések az **Azure Active Directory** panel **Biztonság** szakaszában találhatók.  
 
@@ -47,13 +47,13 @@ A jelentések részletességi szintje azonban különbözik a kiadások között
 
 - Az **Azure Active Directory 1. prémium** kiadása kibővíti ezt a modellt, mert lehetővé teszi azt is, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázatos eseményt. 
 
-- Az **Azure Active Directory 2. prémium** kiadása nyújtja a legrészletesebb információkat a mögöttes kockázatos eseményekről, és lehetővé teszi olyan biztonsági házirendek konfigurálását, amelyek automatikusan, a konfigurált kockázati szinteknek megfelelően válaszolnak.
+- Az **Azure Active Directory 2. prémium** kiadása nyújtja a legrészletesebb információkat minden mögöttes kockázatos eseményről, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan, a konfigurált kockázati szinteknek megfelelően válaszolnak.
 
 
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – ingyenes és alapszintű kiadások
 
-Az Azure Active Directory ingyenes és alapszintű kiadásának Veszélyeztetett felhasználókról szóló jelentése azokról a felhasználói fiókokról biztosít listát, amelyeknek elképzelhető, hogy sérült a biztonsága. 
+Az Azure Active Directory ingyenes és alapszintű kiadásának kockázatosként megjelölt felhasználókról szóló jelentése azokról a felhasználói fiókokról biztosít listát, amelyeknek elképzelhető, hogy sérült a biztonsága. 
 
 
 ![Kockázatos bejelentkezések](./media/active-directory-reporting-security-user-at-risk/03.png)
@@ -65,7 +65,7 @@ A veszélyeztetett felhasználók esetében áttekintheti a felhasználó bejele
 
 ## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – prémium szintű kiadások
 
-Az Azure Active Directory prémium kiadásaiban a Veszélyeztetett felhasználókról szóló jelentés a következőket tartalmazza:
+Az Azure Active Directory prémium kiadásaiban a kockázatosként megjelölt felhasználókról szóló jelentés a következőket tartalmazza:
 
 - Egy [lista azokról a felhasználói fiókokról](active-directory-identityprotection.md#users-flagged-for-risk), amelyeknek elképzelhető, hogy sérült a biztonsága. 
 
@@ -92,8 +92,7 @@ Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelenté
 ![Kockázatos bejelentkezések](./media/active-directory-reporting-security-user-at-risk/324.png)
 
 
-Egy kockázati esemény vizsgálatához válassza ki azt a listából.  
-Ekkor megnyílik az eseményre vonatkozó **Részletek** panel. A **Részletek** panelen [manuálisan bezárhatja a kockázati eseményeket](active-directory-identityprotection.md#closing-risk-events-manually) vagy újra aktiválhatja a manuálisan bezárt kockázati eseményeket. 
+Egy kockázati esemény vizsgálatához válassza ki azt a listából a kockázati eseményhez tartozó **Részletek** panel megnyitásához. A **Részletek** panelen [manuálisan bezárhatja a kockázati eseményeket](active-directory-identityprotection.md#closing-risk-events-manually) vagy újra aktiválhatja a manuálisan bezárt kockázati eseményeket. 
 
 
 ![Kockázatos bejelentkezések](./media/active-directory-reporting-security-user-at-risk/325.png)

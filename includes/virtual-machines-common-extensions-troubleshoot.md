@@ -1,9 +1,9 @@
 
 
-## <a name="overview-of-azure-resource-manager-templates"></a>Overview of Azure Resource Manager templates
-Azure Resource Manager templates allows you to declaratively specify the Azure IaaS infrastructure in JSON language by defining the dependencies between resources.
+## <a name="overview-of-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok áttekintése
+Az Azure Resource Manager-sablonok segítségével deklaratívan megadhatja az Azure IaaS-infrastruktúrát JSON nyelven az erőforrások közötti függőségek meghatározásával.
 
-See  [Authoring extension templates](../articles/virtual-machines/windows/extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) to learn more about authoring templates for using extensions.
+A bővítmények használatához alkalmas sablonok létrehozásáról a [Bővítménysablonok létrehozása](../articles/virtual-machines/windows/template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) című cikkben talál további információt.
 
-In this article we'll learn about troubleshooting some of the common VM extension failures.
+Ez a cikk a virtuálisgép-bővítmények gyakori hibáinak elhárítását ismerteti.
 

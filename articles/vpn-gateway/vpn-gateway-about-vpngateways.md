@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/05/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 0f26a9b62a376daf2b1314ff5972293a2bc7f379
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: db280ff801c6e501e7ab7890f67d22ae16444491
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="about-vpn-gateway"></a>Információk a VPN Gateway-ről
@@ -28,7 +28,7 @@ A VPN-átjáró a virtuális hálózati átjárók egy olyan típusa, amely titk
 
 Minden egyes virtuális hálózat kizárólag egy VPN-átjáróval rendelkezhet, de egy VPN-átjáróhoz létrehozhat több kapcsolatot is. Erre egy példa a Többhelyes csatlakozás konfiguráció. Amikor többhelyes csatlakozást hoz létre egyetlen VPN-átjáróhoz, az összes VPN-alagút, így a pont–hely VPN-ek is az átjáró számára elérhető sávszélességen osztozkodnak.
 
-### <a name="what-is-a-virtual-network-gateway"></a>Mi az a virtuális hálózati átjáró?
+### <a name="whatis"></a>Mi az a virtuális hálózati átjáró?
 
 A virtuális hálózat átjáró két vagy több virtuális gépből áll, amelyek egy átjáróalhálózat nevű speciális alhálózatra vannak telepítve. Az átjáróalhálózatban található virtuális gépek a virtuális hálózati átjáró létrehozásakor jönnek létre. A virtuális hálózati átjáró virtuális gépei úgy vannak konfigurálva, hogy az átjáróra jellemző táblákat és átjárószolgáltatásokat tartalmazzanak. A virtuális hálózati átjáró virtuális gépeit nem konfigurálhatja közvetlenül, és nem szabad további erőforrásokat telepíteni az átjáróalhálózatra.
 
@@ -38,7 +38,7 @@ Amikor a „Vpn” átjárótípussal hoz létre virtuális hálózati átjáró
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-## <a name="configuring-a-vpn-gateway"></a>VPN Gateway átjáró konfigurálása
+## <a name="configuring"></a>VPN Gateway-átjáró konfigurálása
 
 A VPN-átjárós kapcsolatok több erőforrást használnak, amelyek speciális beállításokkal konfigurálhatók. Az erőforrások többsége külön konfigurálható, néhány esetben azonban egy bizonyos sorrendben kell őket konfigurálni.
 
@@ -46,11 +46,11 @@ A VPN-átjárós kapcsolatok több erőforrást használnak, amelyek speciális 
 
 Az egyes erőforrások megfelelő beállítása kritikus fontosságú a sikeres kapcsolat létrehozásához. További információ a VPN Gateway önálló erőforrásairól és beállításairól: [About VPN Gateway settings](vpn-gateway-about-vpn-gateway-settings.md) (Információk a VPN Gateway beállításairól). A cikk az átjáró-, a VPN- és a kapcsolattípusokkal, az átjáró-alhálózatokkal, a helyi hálózati átjárókkal, valamint a különböző erőforrások beállításaival kapcsolatos további hasznos információkat tartalmaz.
 
-### <a name="deployment-tools"></a>Üzembe helyezési eszközök
+### <a name="tools"></a>Üzembehelyezési eszközök
 
 Az erőforrások létrehozásának és konfigurálásának megkezdéséhez használjon egy konfigurációs eszközt, például az Azure Portalt. A további erőforrások konfigurálásához, vagy adott esetekben a létező erőforrások módosításához később átválthat egy másik eszközre, például a PowerShellre. Jelenleg nem lehet a minden erőforrást és erőforrás-beállítást az Azure Portalon konfigurálni. Az egyes kapcsolati topológiákhoz tartozó cikkekben lévő utasítások egyértelműsítik, hogy mikor van szükség egy speciális konfigurációs eszközre. 
 
-### <a name="deployment-model"></a>Üzemi modell
+### <a name="models"></a>Üzemi modell
 
 A VPN Gateway konfigurálásakor a követendő lépések a virtuális hálózat létrehozásához használt üzemi modelltől függenek. Ha például a virtuális hálózatot a klasszikus üzembe helyezési modellel hozta létre, a VPN-átjáró beállításinak létrehozására és konfigurálására a klasszikus üzembe helyezési modell irányelvei és utasításai vonatkoznak. További információk az üzembe helyezési modellekről: [Az erőforrás-kezelői és a klasszikus üzembe helyezési modellek ismertetése](../azure-resource-manager/resource-manager-deployment-model.md).
 
@@ -64,7 +64,7 @@ Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző k
 
 Az ábrák és a leírások segítségével kiválaszthatja az igényeinek megfelelő kapcsolati topológiát. Az ábrák bemutatják a fő alapvető topológiákat, az ábrákat útmutatásként használva azonban lehetséges összetettebb konfigurációk létrehozása is.
 
-## <a name="site-to-site-and-multi-site-ipsecike-vpn-tunnel"></a>Helyek közötti és többhelyes (IPsec/IKE VPN-alagút)
+## <a name="s2smulti"></a>Helyek közötti és többhelyes (IPsec/IKE VPN-alagút)
 
 ### <a name="S2S"></a>Helyek közötti kapcsolat
 

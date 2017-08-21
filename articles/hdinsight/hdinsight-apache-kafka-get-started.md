@@ -13,13 +13,13 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/23/2017
+ms.date: 08/14/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 80d4aced5e4f4b053b3b5f30a6fc383f1c4d6d27
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 03e6996f0f44e04978080b3bd267e924f342b7fc
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="start-with-apache-kafka-preview-on-hdinsight"></a>Az Apache Kafka (előzetes verzió) használatának első lépései a HDInsightban
@@ -27,15 +27,9 @@ ms.lasthandoff: 07/04/2017
 Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat [Apache Kafka](https://kafka.apache.org)-fürtöt az Azure HDInsightban. A Kafka egy, a HDInsighthoz is elérhető, nyílt forráskódú elosztott adatstreamelési platform. Sokszor használják üzenetközvetítőként, mivel a közzétételi-feliratkozási üzenetsorokhoz hasonló funkcionalitást kínál.
 
 > [!NOTE]
-> Jelenleg a Kafka két verziója érhető el a HDInsighttal: a 0.9.0 (HDInsight 3.4) és a 0.10.0 (HDInsight 3.5). A dokumentum lépései azt feltételezik, hogy a Kafkát a HDInsight 3.5-ös verzióján használja.
+> Jelenleg a Kafka két verziója érhető el a HDInsighttal: a 0.9.0 (HDInsight 3.4) és a 0.10.0 (HDInsight 3.5 és 3.6). A dokumentum lépései azt feltételezik, hogy a Kafkát a HDInsight 3.6-os verzióján használja.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
-
-## <a name="prerequisites"></a>Előfeltételek
-
-* [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) vagy azzal egyenértékű, például az OpenJDK.
-
-* [Apache Maven](http://maven.apache.org/) 
 
 ## <a name="create-a-kafka-cluster"></a>Kafka-fürt létrehozása
 
@@ -45,7 +39,7 @@ Egy Kafka HDInsight-fürtön történő létrehozásához kövesse az alábbi l�
    
     ![HDInsight-fürt létrehozása](./media/hdinsight-apache-kafka-get-started/create-hdinsight.png)
 
-2. Az **Alapvető beállítások** panelen adja meg a következőket:
+2. Az **Alapvető beállítások** képernyőn adja meg a következő információkat:
 
     * **Fürt neve**: A HDInsight-fürt neve.
     * **Előfizetés**: Válassza ki a használni kívánt előfizetést.
@@ -54,29 +48,29 @@ Egy Kafka HDInsight-fürtön történő létrehozásához kövesse az alábbi l�
     * **Erőforráscsoport**: Az az erőforráscsoport, amelyben a fürt létre lesz hozva.
     * **Hely**: Az az Azure-régió, amelyben a fürt létre lesz hozva.
    
-    ![Előfizetés kiválasztása](./media/hdinsight-apache-kafka-get-started/hdinsight-basic-configuration.png)
+ ![Előfizetés kiválasztása](./media/hdinsight-apache-kafka-get-started/hdinsight-basic-configuration.png)
 
 3. Válassza ki a **Fürt típusát**, majd állítsa be a következő értékeket a **Fürtkonfiguráció** panelen:
    
     * **Fürt típusa**: Kafka
 
-    * **Verzió**: Kafka 0.10.0 (HDI 3.5)
+    * **Verzió**: Kafka 0.10.0 (HDI 3.6)
 
     * **Fürt szintje**: Standard
      
-    Végül mentse a beállításokat a **Kiválasztás** gomb használatával.
+ Végül mentse a beállításokat a **Kiválasztás** gomb használatával.
      
-    ![Fürttípus kiválasztása](./media/hdinsight-apache-kafka-get-started/set-hdinsight-cluster-type.png)
+ ![Fürttípus kiválasztása](./media/hdinsight-apache-kafka-get-started/set-hdinsight-cluster-type.png)
 
 4. A fürt típusának kijelölése után erősítse meg a beállítást a __Kiválasztás__ gombbal. Ezután kattintson a __Tovább__ gombra az alapszintű konfiguráció befejezéséhez.
 
-5. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépések esetében a panel többi mezőjét hagyja az alapértelmezett értékeken. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
+5. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
 
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/hdinsight-apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. A folytatáshoz válassza a __Tovább__ lehetőséget az __Alkalmazások (opcionális)__ panelen. Az alábbi példához nem szükséges alkalmazás.
+6. Az __Alkalmazások (opcionális)__ területen kattintson a __Tovább__ gombra a folytatáshoz. Az alábbi példához nem szükséges alkalmazás.
 
-7. A __Fürt mérete__ panelen válassza a __Tovább__ lehetőséget.
+7. A __Fürtméret__ lapon kattintson a __Tovább__ gombra a folytatáshoz.
 
     > [!WARNING]
     > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia.
@@ -84,9 +78,9 @@ Egy Kafka HDInsight-fürtön történő létrehozásához kövesse az alábbi l�
     ![A Kafka-fürt méretének beállítása](./media/hdinsight-apache-kafka-get-started/kafka-cluster-size.png)
 
     > [!NOTE]
-    > A lemezek feldolgozó csomópontonkénti számával szabályozható a HDInsightban futó Kafka méretezhetősége. További információ: [Configure storage and scalability of Kafka on HDInsight](hdinsight-apache-kafka-scalability.md) (A HDInsightban futó Kafka tárolójának és méretezhetőségének konfigurálása).
+    > A **lemezek száma feldolgozó csomópontonként** bejegyzés a HDInsighton futó Kafka skálázhatóságát szabályozza. További információ: [Configure storage and scalability of Kafka on HDInsight](hdinsight-apache-kafka-scalability.md) (A HDInsightban futó Kafka tárolójának és méretezhetőségének konfigurálása).
 
-8. A folytatáshoz kattintson a __Tovább__ lehetőségre a __Speciális beállítások__ panelen.
+8. A __Speciális beállítások__ lapon kattintson a __Tovább__ gombra a folytatáshoz.
 
 9. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a__Létrehozás__ gombra a fürt létrehozásához.
    
@@ -96,6 +90,9 @@ Egy Kafka HDInsight-fürtön történő létrehozásához kövesse az alábbi l�
     > A fürt létrehozása 20 percig is eltarthat.
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
+
+> [!IMPORTANT]
+> Az alábbi lépések végrehajtásakor SSH-ügyfelet kell használnia. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Az ügyfélről SSH használatával csatlakozhat a fürthöz:
 
@@ -119,24 +116,32 @@ Az alábbi lépésekkel létrehozhatja a gazdagép adatait tartalmazó környeze
     sudo apt -y install jq
     ```
 
-2. A következő parancsokkal beállíthatja a környezeti változókat az Ambariból lekért adatokkal. Cserélje le a __CLUSTERNAME__ elemet a Kafka-fürt nevére. Cserélje le a __PASSWORD__ elemet a fürt létrehozásakor használt bejelentkezési (rendszergazdai) jelszavára.
+2. A következő parancsokkal állíthatja be a környezeti változókat az Ambariból lekért adatokkal:
 
     ```bash
-    export KAFKAZKHOSTS=`curl --silent -u admin:'PASSWORD' -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")'`
+    CLUSTERNAME='your cluster name'
+    PASSWORD='your cluster password'
+    export KAFKAZKHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
 
-    export KAFKABROKERS=`curl --silent -u admin:'PASSWORD' -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'`
+    export KAFKABROKERS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
 
     echo '$KAFKAZKHOSTS='$KAFKAZKHOSTS
     echo '$KAFKABROKERS='$KAFKABROKERS
     ```
 
+    > [!IMPORTANT]
+    > A `CLUSTERNAME=` értékét állítsa a Kafka-fürt nevére. A `PASSWORD=` értékét állítsa a fürt létrehozásakor használt bejelentkezési (rendszergazdai) jelszavára.
+
     A következő szöveg egy példa a `$KAFKAZKHOSTS` tartalmára:
    
-    `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk3-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
+    `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
    
     A következő szöveg egy példa a `$KAFKABROKERS` tartalmára:
    
     `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
+
+    > [!NOTE]
+    > A `cut` paranccsal a gazdagépek listáját két gazdagép bejegyzésre szűkítheti. A Kafka-fogyasztók vagy -előállítók létrehozásakor nem kell megadnia a gazdagépek teljes listáját.
    
     > [!WARNING]
     > Ne bízzon abban, hogy az ebben a munkamenetben visszaadott adatok mindig pontosak lesznek. A fürt átméretezésekor új közvetítők lesznek hozzáadva vagy eltávolítva. Ha hiba esetén egy fürt lecserélődik, a fürt gazdaneve változhat.
@@ -185,7 +190,16 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 ## <a name="producer-and-consumer-api"></a>Előállítói és fogyasztói API
 
-Szoftveresen is létrehozhat és felhasználhat rekordokat a [Kafka API-k](http://kafka.apache.org/documentation#api) használatával. Az alábbi lépéseket követve töltsön le, és hozzon létre egy Java-alapú előállítót és fogyasztót:
+Szoftveresen is létrehozhat és felhasználhat rekordokat a [Kafka API-k](http://kafka.apache.org/documentation#api) használatával. Java-előállítók és -fogyasztók létrehozásához hajtsa végre az alábbi lépéseket a fejlesztési környezetében.
+
+> [!IMPORTANT]
+> A fejlesztési környezetben a következő összetevőket kell telepítenie:
+>
+> * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) vagy azzal egyenértékű, például az OpenJDK.
+>
+> * [Apache Maven](http://maven.apache.org/)
+>
+> * Egy SSH-ügyfél és az `scp` parancs. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 1. A példákat a [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) címről töltheti le. Az előállítói/fogyasztói példához használja a `Producer-Consumer` könyvtárban található projektet. Ez a példa az alábbi osztályokat tartalmazza:
    
@@ -195,7 +209,7 @@ Szoftveresen is létrehozhat és felhasználhat rekordokat a [Kafka API-k](http:
 
     * **Consumer** – rekordokat olvas be a témakörből.
 
-2. Váltson a példa `Producer-Consumer` könyvtárára, majd az alábbi paranccsal hozzon létre egy JAR-csomagot:
+2. Egy jar-csomag létrehozásához lépjen a `Producer-Consumer` könyvtár helyére, majd használja az alábbi parancsot:
 
     ```
     mvn clean package
@@ -214,18 +228,13 @@ Szoftveresen is létrehozhat és felhasználhat rekordokat a [Kafka API-k](http:
 4. Amint az `scp` parancs végez a fájl másolásával, csatlakozzon a fürthöz SSH használatával. Az alábbi paranccsal írhat rekordokat a próbatémakörhöz:
 
     ```bash
-    ./kafka-producer-consumer.jar producer $KAFKABROKERS
+    java -jar kafka-producer-consumer.jar producer $KAFKABROKERS
     ```
-
-    Megjelenik egy számláló, így láthatja, hogy hány rekord írása történt meg.
-
-    > [!NOTE]
-    > Ha az engedély megtagadását jelző hibaüzenetet kap, használja a következő parancsot a fájl végrehajthatóvá tételéhez: ```chmod +x kafka-producer-consumer.jar```
 
 5. A folyamat befejeződését követően használja az alábbi parancsot a témakörből történő olvasáshoz:
    
     ```bash
-    ./kafka-producer-consumer.jar consumer $KAFKABROKERS
+    java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS
     ```
    
     A rendszer megjeleníti a beolvasott rekordokat a rekordok számával együtt. Kicsivel több mint 1 000 000 naplózást láthat, mivel számos rekordot elküldött a témakörbe az egyik korábbi lépés szkriptjének használatával.
@@ -234,13 +243,15 @@ Szoftveresen is létrehozhat és felhasználhat rekordokat a [Kafka API-k](http:
 
 ### <a name="multiple-consumers"></a>Több fogyasztó
 
-A Kafka egyik fontos vonása, hogy a fogyasztók fogyasztói csoportot (amelyet egy csoportazonosító határoz meg) használnak a rekordok olvasásánál. Ugyanazon csoport használata több fogyasztó esetén a terhelés szempontjából kiegyensúlyozott olvasást eredményez a témakörökből történő olvasáskor. A csoport mindegyik fogyasztója a rekordok egy részét kapja meg. Ha szeretné látni, hogy hogyan zajlik a folyamat, kövesse az alábbi lépéseket:
+A Kafka-fogyasztók egy fogyasztói csoportot használnak a rekordok olvasásakor. Ugyanazon csoport használata több fogyasztó esetén a terhelés szempontjából kiegyensúlyozott olvasást eredményez a témakörökből történő olvasáskor. A csoport mindegyik fogyasztója a rekordok egy részét kapja meg. Ha szeretné látni, hogy hogyan zajlik a folyamat, kövesse az alábbi lépéseket:
 
-1. Nyisson meg egy új, a fürttel létesített SSH-munkamenetet, így már kettővel fog rendelkezni. Az egyes munkamenetekben használja az alábbi parancsot az ugyanazon csoportazonosítóval rendelkező fogyasztó elindításához:
+1. Nyisson meg egy új, a fürttel létesített SSH-munkamenetet, így már kettővel fog rendelkezni. Az egyes munkamenetekben használja az alábbi parancsot egy ugyanazon csoportazonosítóval rendelkező fogyasztó elindításához:
    
     ```bash
-    ./kafka-producer-consumer.jar consumer $KAFKABROKERS mygroup
+    java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS mygroup
     ```
+
+    Ez a parancs elindít egy fogyasztót a `mygroup` csoportazonosítóval.
 
     > [!NOTE]
     > Ehhez az SSH-munkamenethez használja [A Zookeeper és a közvetítő gazdagép információinak lekérése](#getkafkainfo) című szakaszban található parancsokat a `$KAFKABROKERS` beállításához.
@@ -250,7 +261,7 @@ A Kafka egyik fontos vonása, hogy a fogyasztók fogyasztói csoportot (amelyet 
 Az ugyanazon csoportban található ügyfelek általi felhasználás kezelése a témakör partícióinak használatával történik. A korábban létrehozott `test` témakör nyolc partícióval rendelkezik. Ha megnyit nyolc SSH-munkamenetet, és mindegyikben elindít egy fogyasztót, az egyes fogyasztók a témakör egyetlen partíciójából fognak rekordokat olvasni.
 
 > [!IMPORTANT]
-> A fogyasztói csoportban található fogyasztói példányok száma nem haladhatja meg a partíciók számát. Ebben a példában egy fogyasztói csoport legfeljebb 8 fogyasztót tartalmazhat, mivel a témakörben ennyi partíció található. Emellett lehet több, legfeljebb 8 fogyasztóval rendelkező fogyasztói csoportja is.
+> A fogyasztói csoportban található fogyasztói példányok száma nem haladhatja meg a partíciók számát. Ebben a példában egy fogyasztói csoport legfeljebb nyolc fogyasztót tartalmazhat, mivel a témakörben ennyi partíció található. Emellett lehet több, legfeljebb nyolc fogyasztóval rendelkező fogyasztói csoportja is.
 
 A Kafkában tárolt rekordok mentése a partíción belüli fogadásuk sorrendje szerint történik. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *egy partíción belül*, hozzon létre egy fogyasztói csoportot, amelyben a fogyasztói példányok száma egyezik a partíciók számával. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *a témakörön belül*, hozzon létre egy olyan fogyasztói csoportot, amely csak egyetlen fogyasztói példánnyal rendelkezik.
 
@@ -287,7 +298,7 @@ A streamelési API a Kafka 0.10.0-s verziójában vált elérhetővé, a korább
 5. Ezután indítsa el a streamelési folyamatot az alábbi paranccsal:
    
     ```bash
-    ./kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS 2>/dev/null &
+    java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS 2>/dev/null &
     ```
    
     A parancs elindítja a streamelési folyamatot a háttérben.
@@ -295,13 +306,13 @@ A streamelési API a Kafka 0.10.0-s verziójában vált elérhetővé, a korább
 6. Üzeneteknek a `test` témakörbe történő küldéséhez használja az alábbi parancsot. Az üzeneteket a streamelési példa dolgozza fel:
    
     ```bash
-    ./kafka-producer-consumer.jar producer $KAFKABROKERS &>/dev/null &
+    java -jar kafka-producer-consumer.jar producer $KAFKABROKERS &>/dev/null &
     ```
 
 7. A streamelési folyamat által a `wordcounts` témakörbe írt kimenet megtekintéséhez használja az alábbi parancsot:
    
     ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --topic wordcounts --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
     ```
    
     > [!NOTE]

@@ -4,7 +4,7 @@ description: "Ismerje meg a Stream Analytics nevű felügyelt szolgáltatást, a
 keywords: "szolgáltatásként kínált elemzés, felügyelt szolgáltatások, streamfeldolgozás, streamelemzés, mi a stream analytics"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: jenniehubbard
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 613c9b01-d103-46e0-b0ca-0839fee94ca8
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/16/2017
-ms.author: jeffstok
+ms.date: 08/08/2017
+ms.author: jhubbard
 ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
-ms.openlocfilehash: 2fda07b8444b196d831e5e9fe7ade3e5017d36f9
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 5081ecaf569aef9e2f99cc27e91c4b64a25b0deb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 07/19/2017
 
 Az Azure Stream Analytics teljes körűen felügyelt eseményfeldolgozó motor, amellyel valós idejű elemző számítások állíthatók be adatfolyamokra. Az adatok származhatnak egyebek között eszközöktől, érzékelőktől, webhelyektől, közösségi hírcsatornákról, alkalmazásoktól vagy infrastruktúra-rendszerektől. 
 
-## <a name="what-can-i-use-stream-analytics-for"></a>Mire használható a Stream Analytics?
+## <a name="what-can-i-do-with-stream-analytics"></a>Mire használhatom a Stream Analytics szolgáltatást?
 
-A Stream Analytics használatával az eszközöktől vagy eljárásoktól származó nagy tömegű adat vizsgálható át, hogy mintázatokat, trendeket és összefüggéseket kereshessen az adatfolyamból kivont információk között. Az alkalmazás az adattartalom alapján műveleteket hajthat végre. Kiadhat például riasztást, indíthat automatizált munkafolyamatokat, információt adhat át olyan jelentéskészítő eszköznek, mint a Power BI, vagy tárolhatja az adatokat későbbi vizsgálat céljára. 
+A Stream Analytics használatával az eszközöktől vagy folyamatoktól származó nagy mennyiségű adat vizsgálható át, továbbá mintázatokat, trendeket és összefüggéseket kereshet, illetve információkat vonhat ki a streamből. Az alkalmazás az adattartalom alapján műveleteket hajthat végre. Kiadhat például riasztást, indíthat automatizált munkafolyamatokat, információt adhat át olyan jelentéskészítő eszköznek, mint a Power BI, vagy tárolhatja az adatokat későbbi vizsgálat céljára. 
 
-Példák Stream Analytics-forgatókönyvekre:
+Példák:
 
 * Pénzügyi szolgáltatók által kínált személyre szabott, valós idejű tőzsdeelemzések és riasztások.
 * Tranzakciós adatok vizsgálatán alapuló valós idejű csalásészlelés. 
@@ -42,7 +42,7 @@ Példák Stream Analytics-forgatókönyvekre:
 
 ## <a name="how-does-stream-analytics-work"></a>Hogyan működik a Stream Analytics?
 
-Az alábbi diagram a Stream Analytics folyamatábráját ismerteti, bemutatva az adatok feldolgozását, elemzését, valamint a bemutatás vagy műveletek végrehajtása céljából történő továbbküldését. 
+Az alábbi ábra a Stream Analytics-folyamatot ismerteti, bemutatva az adatok feldolgozását, elemzését, valamint a bemutatás vagy a műveletek végrehajtása céljából történő továbbküldését. 
 
 ![Stream Analytics folyamatábra](./media/stream-analytics-introduction/stream_analytics_intro_pipeline.png)
 
@@ -57,7 +57,7 @@ A feladat megad végül egy kimenetet is, ahová a transzformált adatokat tová
 * Adatot küld egy Power BI irányítópultnak jelentés készítéséhez.
 * Adatot küld egy adattárba, amilyen a Data Lake Store, SQL Server adatbázis, Azure Blob vagy Table Storage.
 
-Figyelhet egy feladatot a futása közben és átállíthatja a másodpercenként feldolgozott események számát. Beállíthat feladatokat diagnosztikai naplók előállítására hibaelhárításhoz.
+Figyelhet egy feladatot a futása közben, és átállíthatja a másodpercenként feldolgozott események számát. Beállíthat feladatokat diagnosztikai naplók előállítására hibaelhárításhoz.
 
 ## <a name="key-capabilities-and-benefits"></a>Főbb képességek és előnyök
 
@@ -69,7 +69,7 @@ A Stream Analytics a közvetlen [Azure Event Hubs-](https://azure.microsoft.com/
 
 A feladat bemenete referenciaadatokat (statikus vagy lassan változó adatokat) is tartalmazhat. Az adatfolyamot ezekhez a referenciaadatokhoz társítva ugyanúgy végezhet keresési műveleteket, mint egy adatbázis-lekérdezés esetén.
 
-Egy Stream Analytics-feladat kimenete sokfelé átirányítható. Kiírható olyan tárhelyre, mint egy Azure Storage blob vagy tábla, egy Azure SQL Database, Azure Data Lake Store vagy Azure Cosmos Database. Az adatok innen továbbkerülhetnek például kötegelt elemzésre az Azure HDInsighttal. A kimenet egy másik szolgáltatásnak, például eseményközpontnak, Azure Service Bus témakörnek, vagy feldolgozási sornak is átadható, hogy egy másik eljárás dolgozza fel. A kimenet a Power BI felé is továbbítható a képi megjelenítéshez.
+A Stream Analytics-feladat kimenetét különböző célok felé továbbíthatja. Kiírhatja olyan tárhelyre, mint egy Azure Storage-blob vagy -tábla, egy Azure SQL Database, Azure Data Lake Store vagy Azure Cosmos Database. Az adatok innen továbbkerülhetnek például kötegelt elemzésre az Azure HDInsighttal. A kimenet egy másik szolgáltatásnak, például eseményközpontnak, Azure Service Bus témakörnek, vagy feldolgozási sornak is átadható, hogy egy másik eljárás dolgozza fel. A kimenet a Power BI felé is továbbítható a képi megjelenítéshez.
 
 ### <a name="ease-of-use"></a>Könnyű használat
 
@@ -98,6 +98,6 @@ A Stream Analytics felügyelt felhőbeli szolgáltatás segít megakadályozni a
 * Ismerje meg a Stream Analytics SQL-re hasonlító lekérdező nyelvét és az olyan egyedi fogalmakat, mint az [ablakfüggvények](stream-analytics-window-functions.md).
 * Megismerheti [a Stream Analytics-feladatok skálázását](stream-analytics-scale-jobs.md). 
 * Megtudhatja, hogyan [integrálhatja a Stream Analytics és az Azure Machine Learning szolgáltatást](stream-analytics-machine-learning-integration-tutorial.md).
-* Találjon választ a Stream Analytics-szel kapcsolatos kérdéseire az [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
+* A Stream Analyticsszel kapcsolatos kérdéseire az [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics) kaphat választ.
 
 

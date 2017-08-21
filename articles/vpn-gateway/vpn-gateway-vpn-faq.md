@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2017
 ms.author: cherylmc,yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 3627b3dfa5067883625b9a714645164ec99c8a51
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 27e5dbff8d4a9a2ed82ab6691aa82c2668fec958
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
@@ -58,7 +57,7 @@ A **pont–hely** (SSTP-alapú VPN) konfigurációkkal csatlakozhat egy tetszől
 
 A virtuális hálózatát konfigurálhatja úgy, hogy helyek közötti és pont–hely kapcsolatokat használjon egyidejűleg – ha a helyek közötti kapcsolatot útvonalalapú VPN-típussal hozza létre az átjáróhoz. Az útvonalalapú VPN-típusok korábbi megnevezése dinamikus átjáró volt a klasszikus üzemi modellben.
 
-## <a name="virtual-network-gateways"></a>Virtuális hálózati átjárók
+## <a name="gateways"></a>Virtuális hálózati átjárók
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>A VPN Gateway virtuális hálózati átjáró?
 
@@ -132,7 +131,7 @@ A VPN-átjáró alapvetően egy többhelyű eszköz, amelynek egy hálózati ada
 
 További információ: [Információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md).
 
-## <a name="site-to-site-connections-and-vpn-devices"></a>Helyek közötti kapcsolatok és VPN-eszközök
+## <a name="s2s"></a>Helyek közötti kapcsolatok és VPN-eszközök
 
 ### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>Mit érdemes figyelembe venni a VPN-eszköz kiválasztásakor?
 
@@ -196,7 +195,7 @@ Igen, a pont–hely (P2S) VPN-ek több helyszíni helyhez és egyéb virtuális 
 
 Igen, ez támogatott. További információk: [Párhuzamosan fennálló ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása](../expressroute/expressroute-howto-coexist-classic.md).
 
-## <a name="ipsecike-policy"></a>IPsec/IKE-szabályzat
+## <a name="ipsecike"></a>IPsec/Internetes kulcscsere házirendje
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-ipsecikepolicy-faq-include.md)]
 
@@ -205,7 +204,7 @@ Igen, ez támogatott. További információk: [Párhuzamosan fennálló ExpressR
 
 [!INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
 
-## <a name="cross-premises-connectivity-and-vms"></a>Létesítmények közötti kapcsolatok és virtuális gépek
+## <a name="vms"></a>Létesítmények közötti kapcsolatok és virtuális gépek
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-and-i-have-a-cross-premises-connection-how-should-i-connect-to-the-vm"></a>Ha a virtuális gépem egy virtuális hálózaton található, és rendelkezem egy létesítmények közötti kapcsolattal, hogyan csatlakozhatok a virtuális géphez?
 
@@ -222,7 +221,7 @@ Nem. Csak az az adatforgalom fog áthaladni a virtuális hálózati átjárón, 
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
 
-## <a name="virtual-network-faq"></a>Virtual Network – gyakori kérdések
+## <a name="faq"></a>Virtuális hálózat – gyakori kérdések
 
 A virtuális hálózatokkal kapcsolatos további információk: [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md) (Virtual Network – gyakori kérdések).
 

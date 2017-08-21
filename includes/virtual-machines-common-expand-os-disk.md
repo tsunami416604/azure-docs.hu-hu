@@ -1,40 +1,40 @@
-## <a name="overview"></a>Overview
-When you create a new virtual machine (VM) in a Resource Group by deploying an image from [Azure Marketplace](https://azure.microsoft.com/marketplace/), the default OS drive is 127 GB. Even though it’s possible to add data disks to the VM (how many depending upon the SKU you’ve chosen) and moreover it’s recommended to install applications and CPU intensive workloads on these addendum disks, oftentimes customers need to expand the OS drive to support certain scenarios such as following:
+## <a name="overview"></a>Áttekintés
+Amikor létrehoz egy új virtuális gépet egy erőforráscsoportban egy [Azure Marketplace-ről](https://azure.microsoft.com/marketplace/) származó rendszerképből, az operációs rendszer meghajtójának alapértelmezett mérete 127 GB. Bár hozzáadhat adatlemezeket a virtuális géphez (ezeknek száma a választott termékváltozattól függ), és ajánlott ezekre a kiegészítő lemezekre telepíteni az alkalmazásokat és a processzorigényes számítási feladatokat, az ügyfeleknek gyakran bővíteniük kell az operációs rendszer meghajtóját bizonyos forgatókönyvek támogatásához, mint például a következők:
 
-1. Support legacy applications that install components on OS drive.
-2. Migrate a physical PC or virtual machine from on-premises with a larger OS drive.
+1. Az operációs rendszer meghajtójára összetevőket telepítő, régebbi alkalmazások támogatása.
+2. Nagyobb operációsrendszer-meghajtóval rendelkező fizikai számítógép vagy virtuális gép migrálása a helyszínről.
 
 > [!IMPORTANT]
-> Azure has two different deployment models for creating and working with resources: Resource Manager and Classic. This article covers using the Resource Manager model. Microsoft recommends that most new deployments use the Resource Manager model.
+> Az Azure két különböző üzemi modellel rendelkezik az erőforrások létrehozásához és használatához: Resource Manager-alapú és klasszikus. Ez a cikk a Resource Manager-alapú modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 > 
 > 
 
-## <a name="resize-the-os-drive"></a>Resize the OS drive
-In this article we’ll accomplish the task of resizing the OS drive using resource manager modules of [Azure Powershell](/powershell/azureps-cmdlets-docs). Open your Powershell ISE or Powershell window in administrative mode and follow the steps below:
+## <a name="resize-the-os-drive"></a>Az operációs rendszer meghajtójának átméretezése
+Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powershell/azureps-cmdlets-docs) erőforrás-kezelő moduljaival történő átméretezését ismerteti. Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, és kövesse az alábbi lépéseket:
 
-1. Sign-in to your Microsoft Azure account in resource management mode and select your subscription as follows:
+1. Jelentkezzen be a Microsoft Azure-fiókjába erőforrás-kezelő módban, és válassza ki az előfizetését a következő módon:
    
    ```Powershell
    Login-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
-2. Set your resource group name and VM name as follows:
+2. Állítsa az erőforráscsoport és a virtuális gép nevét a következőre:
    
    ```Powershell
    $rgName = 'my-resource-group-name'
    $vmName = 'my-vm-name'
    ```
-3. Obtain a reference to your VM as follows:
+3. Szerezzen be egy hivatkozást a virtuális gépre a következő módon:
    
    ```Powershell
    $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
    ```
-4. Stop the VM before resizing the disk as follows:
+4. A lemez átméretezése előtt állítsa le a virtuális gépet a következő módon:
    
     ```Powershell
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. And here comes the moment we’ve been waiting for! Set the size of the OS disk to the desired value and update the VM as follows:
+5. Íme a pillanat, amire vártunk! Állítsa az operációsrendszer-lemez méretét a kívánt értékre, és frissítse a virtuális gépet a következő módon:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -42,19 +42,19 @@ In this article we’ll accomplish the task of resizing the OS drive using resou
    ```
    
    > [!WARNING]
-   > The new size should be greater than the existing disk size. The maximum allowed is 1023 GB.
+   > Az új méretnek nagyobbnak kell lennie a meglévő lemezméretnél. A maximálisan megengedett méret 1023 GB.
    > 
    > 
-6. Updating the VM may take a few seconds. Once the command finishes executing, restart the VM as follows:
+6. A virtuális gép frissítése eltarthat néhány másodpercig. Miután a parancs végrehajtása befejeződött, indítsa újra a virtuális gépet a következő módon:
    
    ```Powershell
    Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
    ```
 
-And that’s it! Now RDP into the VM, open Computer Management (or Disk Management) and expand the drive using the newly allocated space.
+Készen is van. Csatlakozzon RDP-kapcsolaton keresztül a virtuális géphez, nyissa meg a Számítógép-kezelés (vagy Lemezkezelés) elemet, és bővítse ki a meghajtót az újonnan kiosztott tárhellyel.
 
-## <a name="summary"></a>Summary
-In this article, we used Azure Resource Manager modules of Powershell to expand the OS drive of an IaaS virtual machine. Reproduced below is the complete script for your reference:
+## <a name="summary"></a>Összefoglalás
+Ebben a cikkben a Powershell Azure Resource Manager-moduljaival bővítettük egy IaaS-beli virtuális gép operációsrendszer-meghajtóját. Az alábbiakban találja a teljes szkriptet:
 
 ```Powershell
 Login-AzureRmAccount
@@ -68,17 +68,17 @@ Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="next-steps"></a>Next Steps
-Though in this article, we focused primarily on expanding the OS disk of the VM, the developed script may also be used for expanding the data disks attached to the VM by changing a single line of code. For example, to expand the first data disk attached to the VM, replace the ```OSDisk``` object of ```StorageProfile``` with ```DataDisks``` array and use a numeric index to obtain a reference to first attached data disk, as shown below:
+## <a name="next-steps"></a>Következő lépések
+Ez a cikk elsősorban a virtuális gép operációsrendszer-lemezének bővítéséről szól, azonban a létrehozott szkript egyetlen sor módosításával a virtuális géphez csatolt adatlemezek bővítésére is használható. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a ```StorageProfile``` ```OSDisk``` objektumát a ```DataDisks``` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
 
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ```
-Similarly you may reference other data disks attached to the VM, either by using an index as shown above or the ```Name``` property of the disk as illustrated below:
+Hasonlóképpen hivatkozhat más, a virtuális géphez csatolt adatlemezekre is, akár a fent látható módon egy index használatával, akár a lemez ```Name``` tulajdonságával, az alább látható módon:
 
 ```Powershell
 ($vm.StorageProfile.DataDisks | Where {$_.Name -eq 'my-second-data-disk'})[0].DiskSizeGB = 1023
 ```
 
-If you want to find out how to attach disks to an Azure Resource Manager VM, check this [article](../articles/virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ha arról szeretne tájékozódni, hogyan csatlakoztathat lemezeket egy Azure Resource Manager-alapú virtuális géphez, tekintse meg ezt a [cikket](../articles/virtual-machines/windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
