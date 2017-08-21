@@ -28,7 +28,6 @@
 ## [REST](/rest/api/datacatalog/)
 ## [Keresési szintaxis referenciája](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Fejlesztői fogalmak](data-catalog-developer-concepts.md)
-## [Fejlesztői minták](data-catalog-samples.md)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

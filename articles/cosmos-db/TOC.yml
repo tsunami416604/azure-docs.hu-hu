@@ -4,8 +4,6 @@
   items:
     - name: Az Azure Cosmos DB bemutatása
       href: introduction.md
-    - name: Üdvözöljük DocumentDB-ügyfeleinket!
-      href: 'https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/'
 - name: Gyors útmutatók
   expanded: true
   items:

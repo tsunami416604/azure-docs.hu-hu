@@ -199,7 +199,6 @@
 #### [Hadoop – memória és teljesítmény](hdinsight-hadoop-stack-trace-error-messages.md)
 #### [Hadoop YARN-alkalmazásnaplók elérése Linuxon](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 #### [Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-#### [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)
 #### [WebHCat-hibák megértése és megoldása](hdinsight-hadoop-templeton-webhcat-debug-errors.md)
 #### [Hive-beállítások a Nincs elég memória hiba javításához](hdinsight-hadoop-hive-out-of-memory-error-oom.md)
 #### [Ambari-nézetek használata a Tez-feladatok hibakereséséhez](hdinsight-debug-ambari-tez-view.md)
