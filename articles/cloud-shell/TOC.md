@@ -14,6 +14,7 @@
 
 # Referencia
 ## [Azure CLI 2.0](/cli/azure) 
+
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

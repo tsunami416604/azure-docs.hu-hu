@@ -76,8 +76,9 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást fog létrehozni, amely egy esz
 6. Adja hozzá a következő kódot egy eszközdefiníció létrehozásához az IoT Hub identitásjegyzékében. Ez a kód létrehozza az eszközt, ha az eszközazonosító nem létezik az identitásjegyzékben, ellenkező esetben pedig a meglévő eszköz kulcsát adja vissza:
    
     ```
-    var device = new iothub.Device(null);
-    device.deviceId = 'myFirstNodeDevice';
+    var device = {
+      deviceId: 'myFirstNodeDevice'
+    }
     registry.create(device, function(err, deviceInfo, res) {
       if (err) {
         registry.get(device.deviceId, printDeviceInfo);
