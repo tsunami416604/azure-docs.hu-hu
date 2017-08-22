@@ -54,14 +54,12 @@
 ### [Webalkalmazás a Visual Studióval](web-app-visual-studio.md)
 ### [RDMA-fürt MPI-alkalmazások futtatásához](rdma-cluster.md)
 ### [Az Azure alárendelt beépülő modul használata Hudson CI-vel](../../virtual-machines-azure-slave-plugin-for-hudson.md)
-
-
-## HPC Pack
-### [Windows RDMA-fürt MPI-alkalmazások futtatásához](hpcpack-cluster.md)
-### [Windows rendszerű nagy teljesítményű számítási (HPC-) fürt HPC Pack IaaS telepítési szkripttel](hpcpack-cluster-starccm.md)
-### [Számítási csomópontok számának és rendelkezésre állásának kezelése](hpcpack-cluster-powershell-script.md)
-### [Igény szerinti csomópontok hozzáadása](hpcpack-cluster-openfoam.md)
-### [Erőforrások automatikus méretezése](hpcpack-cluster-namd.md)
+### HPC Pack
+#### [Fürt létrehozása linuxos számítási feladatokhoz](hpcpack-cluster-powershell-script.md)
+#### [Linux-csomópontokat tartalmazó fürtök kezelése](hpcpack-cluster.md)
+#### [A STAR-CCM+ futtatása](hpcpack-cluster-starccm.md)
+#### [Az OpenFOAM futtatása](hpcpack-cluster-openfoam.md)
+#### [Az NAMD futtatása](hpcpack-cluster-namd.md)
 
 ## Hibaelhárítás
 ### [Virtuális gépek üzembe helyezése](troubleshoot-deployment-new-vm.md)

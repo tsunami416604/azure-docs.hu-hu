@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Event Grid dokumentációja
+metadata:
+  title: Az Azure Event Grid dokumentációja – oktatóanyagok és API-referencia
+  description: Az Azure Event Grid használatával szinte azonnal válaszolhat az Azure-beli és az azon kívüli eseményekre is.
+  services: event-grid
+  author: banisadr
+  manager: timlt
+  ms.service: event-grid
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/10/2017
+  ms.author: banisadr
+abstract:
+  description: 'A teljeskörűen felügyelt Azure Event Grid intelligens esemény-útválasztó szolgáltatás közzétételi-feliratkozási modell alkalmazásával teszi lehetővé az egységesített eseményfelhasználást. Az Azure Event Grid használatával szinte azonnal válaszolhat az Azure-beli és az azon kívüli eseményekre is. Gyors útmutatóink, oktatóanyagaink és vonatkozó példáink segítenek az Azure Event Grid használatának megismerésében.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: További információk egyéni események létrehozásáról és közzétételéről.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/app-service-api/media/index/cli.svg
+            text: Azure CLI
+            href: /azure/event-grid/custom-event-quickstart
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: További információk az eseményekre reagáló alkalmazások fejlesztéséről.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Virtuális gépek változásainak monitorozása logikai alkalmazásokkal</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API-k
+            html: <p><a href="/rest/api/eventgrid">REST</a></p>
+          - title: Sémák
+            html: <p><a href="/azure/event-grid/subscription-creation-schema ">Előfizetési séma</a></p><p><a href="/azure/event-grid/event-schema">Eseményséma</a></p>

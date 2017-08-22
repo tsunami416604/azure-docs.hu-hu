@@ -3,9 +3,10 @@
 ## [Mi a Machine Learning?](machine-learning-what-is-machine-learning.md)
 
 ## Csoportos adatelemzési folyamat
-### [Áttekintés](http://aka.ms/datascienceprocess)
-### [Életciklus](data-science-process-overview.md)
+### [Áttekintés](data-science-process-overview.md)
+### [Életciklus](data-science-process-lifecycle.md)
 ### [Útmutatók](data-science-process-walkthroughs.md)
+### [Azure ML használatával](http://aka.ms/datascienceprocess)
 
 ## Machine Learning Studio
 ### [Mi a Studio?](machine-learning-what-is-ml-studio.md)

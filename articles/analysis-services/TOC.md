@@ -2,6 +2,7 @@
 ## [Mi az Azure Analysis Services?](analysis-services-overview.md)
 ## [Támogatott adatforrások](analysis-services-datasource.md)
 ## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
+## [Csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)
 ## [Kompatibilitási szint](analysis-services-compat-level.md)
 ## [Magas rendelkezésre állás](analysis-services-bcdr.md)
 
@@ -15,7 +16,7 @@
 ## [Kiszolgáló kezelése](analysis-services-manage.md)
 ## [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
 ## [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
-## [Helyszíni adatátjáró telepítése](analysis-services-gateway.md)
+## [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
 ## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
 ## [Kapcsolódás Excellel](analysis-services-connect-excel.md)

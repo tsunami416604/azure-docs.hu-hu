@@ -83,6 +83,7 @@
 ## [Számlázás engedélyezése](active-directory-b2c-how-to-enable-billing.md)
 ## [Fenyegetések kezelése](active-directory-b2c-reference-threat-management.md)
 ## [Címtárak készítésekor előforduló problémák](active-directory-b2c-support-create-directory.md)
+## [Bővítményalkalmazás](active-directory-b2c-reference-extensions-app.md)
 
 # Kapcsolódó
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

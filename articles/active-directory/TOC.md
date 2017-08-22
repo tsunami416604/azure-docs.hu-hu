@@ -144,8 +144,14 @@
 
 ## Eszközök kezelése
 ### [Bevezetés](device-management-introduction.md)
-### [Eszközök regisztrálása](active-directory-device-registration-overview.md)
-#### [Telepítés](active-directory-conditional-access-automatic-device-registration-setup.md)
+### [Gyakori kérdések](device-management-faq.md)
+### Feladatok
+#### [Hibrid Azure AD-csatlakoztatott eszközök konfigurálása](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### Hibaelhárítás
+##### [Hibrid Azure AD-csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök](device-management-troubleshoot-hybrid-join-windows-current.md)
+##### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+
+### Eszközök regisztrálása
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
 #### [Gyakori kérdések](active-directory-device-registration-faq.md)
 #### Hibaelhárítás

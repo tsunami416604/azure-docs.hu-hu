@@ -17,7 +17,7 @@
 ### [Meglévő hálózatiházirend-kiszolgálók használata](multi-factor-authentication-nps-extension.md)
 #### [Speciális konfiguráció az NPS-bővítményhez](nps-extension-advanced-configuration.md)
 ### [Hitelesítési szolgáltató létrehozása](multi-factor-authentication-get-started-auth-provider.md)
-### Helyszíni Azure MFA
+### MFA helyszíni üzembe helyezése
 #### [A felhasználói portál telepítése](multi-factor-authentication-get-started-portal.md)
 #### [Speciális VPN-konfigurációk](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [Mobile App Web Service](multi-factor-authentication-get-started-server-webservice.md)
@@ -31,16 +31,19 @@
 ### [MFA – felhasználói útmutató](./end-user/multi-factor-authentication-end-user.md)
 
 ## Integrálás
-### [Federation Services](multi-factor-authentication-get-started-adfs.md)
-#### [Az AD FS használata](multi-factor-authentication-get-started-adfs-cloud.md)
-#### [Az AD FS 2.0 használata](multi-factor-authentication-get-started-adfs-adfs2.md)
-#### [A Windows Server 2012 R2 AD FS használata](multi-factor-authentication-get-started-adfs-w2k12.md)
-### Könyvtárak
-#### [LDAP-hitelesítés](multi-factor-authentication-get-started-server-ldap.md)
-#### [Radius-hitelesítés](multi-factor-authentication-get-started-server-radius.md)
-#### [Active Directory](multi-factor-authentication-get-started-server-dirint.md)
-### [IIS-webalkalmazások](multi-factor-authentication-get-started-server-iis.md)
-### [Távoli asztali átjáró](multi-factor-authentication-get-started-server-rdg.md)
+### [Távoli asztali átjáró](nps-extension-remote-desktop-gateway.md)
+### [VPN](nps-extension-vpn.md)
+### MFA helyszíni integrálása
+#### [Federation Services](multi-factor-authentication-get-started-adfs.md)
+##### [Az AD FS használata](multi-factor-authentication-get-started-adfs-cloud.md)
+##### [Az AD FS 2.0 használata](multi-factor-authentication-get-started-adfs-adfs2.md)
+##### [A Windows Server 2012 R2 AD FS használata](multi-factor-authentication-get-started-adfs-w2k12.md)
+#### Könyvtárak
+##### [LDAP-hitelesítés](multi-factor-authentication-get-started-server-ldap.md)
+##### [Radius-hitelesítés](multi-factor-authentication-get-started-server-radius.md)
+##### [Active Directory](multi-factor-authentication-get-started-server-dirint.md)
+#### [IIS-webalkalmazások](multi-factor-authentication-get-started-server-iis.md)
+#### [Távoli asztali átjáró](multi-factor-authentication-get-started-server-rdg.md)
 
 ## Fejlesztés
 ### [Beépítés egyéni alkalmazásokba (SDK)](multi-factor-authentication-sdk.md)
@@ -49,6 +52,7 @@
 ### [Gyakori kérdések](multi-factor-authentication-faq.md)
 ### [Kérdezzen](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 ### [NPS-bővítmény hibái](multi-factor-authentication-nps-errors.md)
+
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
