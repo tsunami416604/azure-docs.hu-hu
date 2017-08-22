@@ -6,6 +6,7 @@
 ### [Incidensmegoldás](security-center-incident-response.md)
 ### [Javaslatok használata a biztonság növelése érdekében](security-center-using-recommendations.md)
 ## [Platformok migrálása](security-center-platform-migration.md)
+### [Platformok migrálásával kapcsolatos gyakori kérdések](security-center-platform-migration-faq.md)
 
 # Bevezetés
 ## [Első lépések](security-center-get-started.md)
