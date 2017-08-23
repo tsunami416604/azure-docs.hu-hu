@@ -3,7 +3,7 @@ title: "Önálló Azure Service Fabric-fürt telepítése | Microsoft Docs"
 description: "Hozzon létre egy önálló fejlesztési fürtöt három csomóponttal, amelyek ugyanazon a számítógépen futnak. A telepítés befejezése után készen áll majd egy többgépes fürt létrehozására."
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 
@@ -13,13 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
-ms.author: ryanwi
+ms.author: dekapur
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
 ms.contentlocale: hu-hu
 ms.lasthandoff: 04/27/2017
-
 
 ---
 

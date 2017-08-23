@@ -5,7 +5,7 @@ metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
   title: Az Azure PostgreSQL dokumentációja – oktatóanyagok és API-referencia
   description: 'A PostgreSQL-hez készült Azure Database egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú PostgreSQL adatbázismotoron alapszik.'
-  services: app-service
+  services: postgresql
   author: jasonwhowell
   manager: jhubbard
   ms.service: postgresql
