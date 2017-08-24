@@ -17,9 +17,9 @@
 ### [Node.js-alkalmazás fejlesztése és üzembe helyezése](cloud-services-nodejs-develop-deploy-app.md)
 ### [Node.js-webalkalmazás fejlesztése az Express használatával](cloud-services-nodejs-develop-deploy-express-app.md)
 ### Tárolás és a Visual Studio
-#### [A Blob Storage és a kapcsolódó szolgáltatások](../storage/vs-storage-cloud-services-getting-started-blobs.md)
-#### [A Queue Storage és a kapcsolódó szolgáltatások](../storage/vs-storage-cloud-services-getting-started-queues.md)
-#### [A Table Storage és a kapcsolódó szolgáltatások](../storage/vs-storage-cloud-services-getting-started-tables.md)
+#### [A Blob Storage és a kapcsolódó szolgáltatások](../visual-studio/vs-storage-cloud-services-getting-started-blobs.md)
+#### [A Queue Storage és a kapcsolódó szolgáltatások](../visual-studio/vs-storage-cloud-services-getting-started-queues.md)
+#### [A Table Storage és a kapcsolódó szolgáltatások](../visual-studio/vs-storage-cloud-services-getting-started-tables.md)
 ### Csomagok konfigurálása folyamatos fejlesztéshez és üzembe helyezéshez
 #### [TFS és Team Build](cloud-services-dotnet-continuous-delivery.md)
 ### [Szerepkör adatforgalmi szabályainak konfigurálása](cloud-services-enable-communication-role-instances.md)

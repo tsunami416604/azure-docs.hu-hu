@@ -64,12 +64,12 @@
 ### [Linux rendszerű virtuális gép sablonból](../../virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows rendszerű virtuális gép sablonból](../../virtual-machines/virtual-machines-windows-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## Adattárolás
-### [Blobok](../../storage/storage-dotnet-how-to-use-blobs.md)
-### [Fájlmegosztások](../../storage/storage-dotnet-how-to-use-files.md)
-### [Kulcs-érték párok](../../storage/storage-dotnet-how-to-use-tables.md)
+### [Blobok](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+### [Fájlmegosztások](../../storage/files/storage-dotnet-how-to-use-files.md)
+### [Kulcs-érték párok](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 ### [JSON-dokumentumok](../../documentdb/documentdb-get-started.md)
 ### [Kapcsolati táblák](../../sql-database/sql-database-get-started.md)
-### [Üzenetsorok](../../storage/storage-dotnet-how-to-use-queues.md)
+### [Üzenetsorok](../../storage/queues/storage-dotnet-how-to-use-queues.md)
 
 ## Méretezés
 ### [Web- és mobilalkalmazások](../../app-service-web/web-sites-scale.md)

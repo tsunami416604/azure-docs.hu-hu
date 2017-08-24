@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Információ a virtuális gépekről](../../virtual-machines-windows-about.md)
-## [Lemezek és virtuális merevlemezek](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+## [Lemezek és virtuális merevlemezek](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Virtuális hálózatok](../../../virtual-network/virtual-networks-overview.md)
 ## [Gyakori kérdések](faq.md)
 ## [Virtuális gépek, webhelyek és felhőszolgáltatások összehasonlítása](../../../app-service-web/choose-web-site-cloud-service-vm.md)
