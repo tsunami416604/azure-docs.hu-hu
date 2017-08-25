@@ -1,30 +1,30 @@
-| Erőforrás | Alapértelmezett korlát | Felső korlát |
+| Resource | Default Limit | Maximum Limit |
 | --- | --- | --- |
-| Virtuális gépek [előfizetésenként](../articles/billing-buy-sign-up-azure-subscription.md) |10 000 <sup>1</sup> régiónként |10 000 régiónként |
-| Virtuálisgép-magok összesen, [előfizetésenként](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> régiónként | Kapcsolatfelvétel a támogatási szolgáltatással |
-| Sorozatonkénti (Dv2, F stb.) virtuálisgép-magok [előfizetésenként](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> régiónként | Kapcsolatfelvétel a támogatási szolgáltatással |
-| [Társadminisztrátorok](../articles/billing-add-change-azure-subscription-administrator.md) előfizetésenként |Korlátlan |Korlátlan |
-| [Tárfiókok](../articles/storage/storage-create-storage-account.md) előfizetésenként |200 |200<sup>2</sup> |
-| [Erőforráscsoportok](../articles/azure-resource-manager/resource-group-overview.md) előfizetésenként |800 |800 |
-| [Rendelkezésre állási csoportok](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) előfizetésenként |2000 régiónként |2000 régiónként |
-| Resource Manager API-olvasási műveletek |15 000 óránként |15 000 óránként |
-| Resource Manager API-írási műveletek |1200 óránként |1200 óránként |
-| Resource Manager API-kérések mérete |4 194 304 bájt |4 194 304 bájt |
-| Címkék előfizetésenként<sup>3</sup> |korlátlan |korlátlan |
-| Egyedi címkeszámítások előfizetésenként<sup>3</sup> | 10,000 | 10,000 |
-| [Felhőszolgáltatások](../articles/cloud-services/cloud-services-choose-me.md) előfizetésenként |Nem alkalmazható<sup>4</sup> |Nem alkalmazható<sup>4</sup> |
-| [Affinitáscsoportok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) előfizetésenként |Nem alkalmazható<sup>4</sup> |Nem alkalmazható<sup>4</sup> |
+| VMs per [subscription](../articles/billing-buy-sign-up-azure-subscription.md) |10,000 <sup>1</sup> per Region |10,000 per Region |
+| VM total cores per [subscription](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per Region | Contact support |
+| VM per series (Dv2, F, etc.) cores per [subscription](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per Region | Contact support |
+| [Co-administrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription |Unlimited |Unlimited |
+| [Storage accounts](../articles/storage/common/storage-create-storage-account.md) per subscription |200 |200<sup>2</sup> |
+| [Resource Groups](../articles/azure-resource-manager/resource-group-overview.md) per subscription |800 |800 |
+| [Availability Sets](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per subscription |2,000 per Region |2,000 per Region |
+| Resource Manager API Reads |15,000 per hour |15,000 per hour |
+| Resource Manager API Writes |1,200 per hour |1,200 per hour |
+| Resource Manager API request size |4,194,304 bytes |4,194,304 bytes |
+| Tags per subscription<sup>3</sup> |unlimited |unlimited |
+| Unique tag calculations per subscription<sup>3</sup> | 10,000 | 10,000 |
+| [Cloud services](../articles/cloud-services/cloud-services-choose-me.md) per subscription |Not Applicable<sup>4</sup> |Not Applicable<sup>4</sup> |
+| [Affinity groups](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) per subscription |Not Applicable<sup>4</sup> |Not Applicable<sup>4</sup> |
 
-<sup>1</sup>Az alapértelmezett korlátok az ajánlat kategóriája (pl. ingyenes próba, használatalapú fizetés) és a sorozat (Dv2, F, G stb.) szerint változnak.
+<sup>1</sup>Default limits vary by offer Category Type, such as Free Trial, Pay-As-You-Go, and series, such as Dv2, F, G, etc.
 
-<sup>2</sup>Ebbe a standard és a prémium szintű tárfiókok is beletartoznak. Ha több mint 200 tárfiókra van szüksége, nyújtson be egy kérést az [Azure ügyfélszolgálatán](https://azure.microsoft.com/support/faq/) keresztül. Az Azure Storage csapata kiértékeli az Ön vállalkozását, és jóváhagyhat legfeljebb 250 tárfiókot.
+<sup>2</sup>This includes both Standard and Premium storage accounts. If you require more than 200 storage accounts, make a request through [Azure Support](https://azure.microsoft.com/support/faq/). The Azure Storage team will review your business case and may approve up to 250 storage accounts.
 
-<sup>3</sup>Az előfizetésenként alkalmazott címkék számának nincs korlátja. Az erőforrásonként vagy erőforráscsoportonként alkalmazható címkék száma legfeljebb 15 lehet. A Resource Manager csak akkor adja meg az előfizetésben használt [egyedi címkenevek és értékek listáját](/rest/api/resources/tags#Tags_List), ha a címkék száma nem több 10 000-nél. Ugyanakkor az erőforrásokat címke alapján akkor is meg lehet keresni, ha a címkék száma meghaladja a 10 000-et.  
+<sup>3</sup>You can apply an unlimited number of tags per subscription. The number of tags per resource or resource group is limited to 15. Resource Manager only returns a [list of unique tag name and values](/rest/api/resources/tags#Tags_List) in the subscription when the number of tags is 10,000 or less. However, you can still find a resource by tag when the number exceeds 10,000.  
 
-<sup>4</sup>Ezek a funkciók már nem szükségesek az Azure-erőforráscsoportok és az Azure Resource Manager használatához.
+<sup>4</sup>These features are no longer required with Azure Resource Groups and the Azure Resource Manager.
 
 > [!NOTE]
-> Fontos kiemelni, hogy a virtuálisgép-magokra egy régió szerinti teljes korlát és egy régió szerinti sorozatonkénti (Dv2, F stb.) korlát is vonatkozik, amelyek egymástól függetlenek.  Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30.  Ez az előfizetés üzembe helyezhet 30 A1 virtuális gépet, 30 D1 virtuális gépet, vagy a kettő valamilyen kombinációját, amely nem haladja meg az összesen 30 magot (pl. 10 A1 virtuális gép és 20 D1 virtuális gép).  
+> It is important to emphasize that virtual machine cores have a regional total limit as well as a regional per size series (Dv2, F, etc.) limit that are separately enforced.  For example, consider a subscription with a US East total VM core limit of 30, an A series core limit of 30, and a D series core limit of 30.  This subscription would be allowed to deploy 30 A1 VMs, or 30 D1 VMs, or a combination of the two not to exceed a total of 30 cores (for example, 10 A1 VMs and 20 D1 VMs).  
 > <!-- -->
 > 
 > 
