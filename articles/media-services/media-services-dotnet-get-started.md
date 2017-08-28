@@ -4,7 +4,7 @@ description: "Ez az útmutató lépésről lépésre ismerteti, hogyan valósít
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 388b8928-9aa9-46b1-b60a-a918da75bd7b
 ms.service: media-services
