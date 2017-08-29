@@ -1,104 +1,48 @@
+Azure periodically performs updates to improve the reliability, performance, and security of the host infrastructure for virtual machines. These updates range from patching software components in the hosting environment (like operating system, hypervisor, and various agents deployed on the host), upgrading networking components, to hardware decommissioning. The majority of these updates are performed without any impact to the hosted virtual machines. However, there are cases where updates do have an impact:
+
+- If the maintenance does not require a reboot, Azure uses in-place migration to pause the VM while the host is updated.
+
+- If maintenance requires a reboot, you get a notice of when the maintenance is planned. In these cases, you'll also be given a time window where you can start the maintenance yourself, at a time that works for you.
+
+This page describes how Microsoft Azure performs both types of maintenance. For more information about unplanned events (outages), see Manage the availability of virtual machines for [Windows] (../articles/virtual-machines/windows/manage-availability.md) or [Linux](../articles/virtual-machines/linux/manage-availability.md).
+
+Applications running in a virtual machine can gather information about upcoming updates by using the Azure Metadata Service for [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) or [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md).
+
+## <a name="in-place-vm-migration"></a>In-place VM migration
+
+When updates don't require a full reboot, an in-place live migration is used. During the update the virtual machine is paused for about 30 seconds, preserving the memory in RAM, while the hosting environment applies the necessary updates and patches. The virtual machine is then resumed and the clock of the virtual machine is automatically synchronized.
+
+For VMs in availability sets, update domains are updated one at a time. All VMs in one update domain (UD) are paused, updated and then resumed before planned maintenance moves on to the next UD.
+
+Some applications may be impacted by these types of updates. Applications that perform real-time event processing, like media streaming or transcoding, or high throughput networking scenarios, may not be designed to tolerate a 30 second pause. <!-- sooooo, what should they do? --> 
 
 
-## <a name="memory-preserving-updates"></a>Memóriamegőrző frissítések
-A Microsoft Azure-ban elérhető frissítések egy része semmilyen hatással nincs az ügyfelek futó virtuális gépeinek teljesítményére. A frissítések sok esetben olyan összetevőkhöz vagy szolgáltatásokhoz tartoznak, amelyek frissíthetők a futó példány zavarása nélkül. A frissítések néhány esetben platforminfrastruktúra-frissítések a gazdagép operációs rendszerén, amelyek a virtuális gépek teljes újraindítása nélkül alkalmazhatók.
+## <a name="maintenance-requiring-a-reboot"></a>Maintenance requiring a reboot
 
-Ezeket a frissítéseket olyan technológia biztosítja, amely lehetővé teszi a helyszíni élő áttelepítést, más néven „memóriamegőrző” frissítést. A frissítés közben a virtuális gép „szüneteltetett” állapotba kerül, megőrizve a memóriát RAM-ban, amíg az alapjául szolgáló gazda operációs rendszer megkapja a szükséges frissítéseket és javításokat. A virtuális gép a szüneteltetés után 30 másodpercen belül folytatja a működését. A virtuális gép órája a folytatás után automatikusan szinkronizálódik.
+When VMs need to be rebooted for planned maintenance, you are notified in advance. Planned maintenance has two phases: the self-service window and a scheduled maintenance window.
 
-Nem minden frissítés helyezhető üzembe ezzel a mechanizmussal, de a rövid felfüggesztési időszak miatt a frissítések ilyen telepítése nagymértékben csökkenti a virtuális gépekre gyakorolt hatást.
+The **self-service window** lets you initiate the maintenance on your VMs. During this time, you can query each VM to see their status and check the result of your last maintenance request.
 
-A többpéldányos frissítések (a rendelkezésre állási csoportokban lévő virtuális gépeken) végrehajtása frissítési tartományonként történik.  
+When you start self-service maintenance, your VM is moved to a node that has already been updated and then powers it back on. Because the VM reboots, the temporary disk is lost and dynamic IP addresses associated with virtual network interface are updated.
 
-## <a name="virtual-machine-configurations"></a>Virtuálisgép-konfigurációk
-Kétféle virtuálisgép-konfiguráció létezik: többpéldányos és egypéldányos. A többpéldányos konfigurációban hasonló virtuális gépek kerülnek egy rendelkezésre állási csoportba.
+If you start self-service maintenance and there is an error during the process, the operation is stopped, the VM is not updated and it is also removed from the planned maintenance iteration. You will be contacted in a later time with a new schedule and offered a new opportunity to do self-service maintenance. 
 
-A többpéldányos konfiguráció redundanciát biztosít a fizikai gépek, a teljesítmény és a hálózat terén, és ez az ajánlott konfiguráció az alkalmazás rendelkezésre állásának biztosításához. A rendelkezésre állási csoportban található összes virtuális gépnek ugyanazt a célt kell szolgálnia az alkalmazásban.
+When the self-service window has passed, the **scheduled maintenance window** begins. During this time window, you can still query for the maintenance window, but no longer be able to start the maintenance yourself.
 
-További információ a virtuális gépek magas rendelkezésre állásra való konfigurálásáról: [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [Linux rendszerű virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="availability-considerations-during-planned-maintenance"></a>Availability Considerations during Planned Maintenance 
 
-Ezzel szemben az egypéldányos konfiguráció különálló, rendelkezésre állási csoportba nem tartozó virtuális gépekhez használható. Ezek a virtuális gépek nem felelnek meg a szolgáltatói szerződésnek (SLA), amely szerint legalább két virtuális gépet kell ugyanabban a rendelkezésre állási csoportban üzembe helyezni.
+If you decide to wait until the planned maintenance window, there are a few things to consider for maintaining the highest availabilty of your VMs. 
 
-Az SLA-król a [Szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/) „felhőszolgáltatásokra és virtuális gépekre” vonatkozó szakaszában talál további információt.
+### <a name="paired-regions"></a>Paired Regions
 
-## <a name="multi-instance-configuration-updates"></a>Többpéldányos konfigurációfrissítések
-A tervezett karbantartás során az Azure platform először a többpéldányos konfigurációban futó virtuális gépeket frissíti. A frissítés miatt ezek a virtuális gépek újraindulnak, körülbelül 15 perces állásidővel.
+Each Azure region is paired with another region within the same geography, together they make a regional pair. During planned maintenance, Azure will only update the VMs in a single region of a region pair. For example, when updating the Virtual Machines in North Central US, Azure will not update any Virtual Machines in South Central US at the same time. However, other regions such as North Europe can be under maintenance at the same time as East US. Understanding how region pairs work can help you better distribute your VMs across regions. For more information, see [Azure region pairs](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-A többpéldányos konfigurációfrissítés feltételezi, hogy minden virtuálisgép-kiszolgáló hasonló funkciót tölt be, mint a többi gép a rendelkezésre állási csoportban. Ebben a helyzetben a virtuális gépek úgy frissülnek, hogy a folyamat során biztosítva legyen a rendelkezésre állás.
+### <a name="availability-sets-and-scale-sets"></a>Availability sets and scale sets
 
-A mögöttes Azure platform a rendelkezésre állási csoportban lévő mindegyik virtuális gépnek kioszt egy frissítési tartományt és egy tartalék tartományt. Minden frissítési tartomány olyan virtuális gépek csoportjából áll, amelyek ugyanabban az időtartományban indulnak újra. A tartalék tartományok azonos tápforrással és hálózati kapcsolóval rendelkező virtuális gépek csoportjai.
+When deploying a workload on Azure VMs, you can create the VMs within an availability set to provide high availability to your application. This ensures that during either an outage or maintenance events, at least one virtual machine is available.
 
+Within an availability set, individual VMs are spread across up to 20 update domains (UDs). During planned maintenance, only a single update domain is impacted at any given time. Be aware that the order of update domains being impacted does not necessarily happen sequentially. 
 
-További tudnivalók a frissítési tartományokról és a tartalék tartományokról: [Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+Virtual machine scale sets are an Azure compute resource that enables you to deploy and manage a set of identical VMs as a single resource. The scale set is automatically deployed across update domains, like VMs in an availability set. Just like with availability sets, with scale sets only a single update domain is impacted at any given time.
 
-A rendelkezésre állás fenntartása érdekében frissítés közben az Azure frissítési tartományonként végzi el a karbantartást, és egyszerre csak egy tartományt frissít. A karbantartás a frissítési tartományokban található összes virtuális gép leállításából, a frissítés gazdagépekre való alkalmazásából és a virtuális gépek újraindításából áll. Ha a tartományban befejeződött a karbantartás, az Azure megismétli a folyamatot a következő frissítési tartománnyal, és a folyamat addig folytatódik, amíg nem frissül minden tartomány.
-
-A frissítési tartományok újraindítása nem haladhat szekvenciálisan a tervezett karbantartás során, hanem csak egyetlen frissítési tartományt lehet újraindítani egyszerre. Az Azure jelenleg egyhetes előzetes értesítést küld a többpéldányos konfigurációban található virtuális gépek tervezett karbantartásáról.
-
-Egy virtuális gép visszaállítása után a Windows eseménynaplója például a következőt jelenítheti meg:
-
-<!--Image reference-->
-![][image2]
-
-
-Az eseménynaplóval jelentést készíthet azokról a virtuális gépekről, amelyek többpéldányos konfigurációban vannak konfigurálva az Azure Portal, az Azure PowerShell vagy az Azure CLI használatával. Az Azure Portallal például hozzáadhatja a _Rendelkezésre állási csoportot_ a **Virtuális gépek (klasszikus)** böngésző-párbeszédpanelhez. Az ugyanazon rendelkezésre állási csoportról jelentést készítő virtuális gépek egy többpéldányos konfigurációhoz tartoznak. A következő példában a többpéldányos konfiguráció az SQLContoso01 és az SQLContoso02 virtuális gépekből áll.
-
-<!--Image reference-->
-  ![Virtuális gépek (klasszikus) nézet az Azure Portalról][image4]
-
-## <a name="single-instance-configuration-updates"></a>Egypéldányos konfigurációfrissítések
-Miután a többpéldányos konfigurációfrissítések befejeződtek, az Azure végrehajtja az egypéldányos konfigurációfrissítéseket. Ezek a frissítések is újraindítják azokat a virtuális gépeket, amelyek nem rendelkezésre állási csoportokban futnak.
-
-> [!NOTE]
-> Ha egy rendelkezésre állási csoportban csak egy virtuálisgép-példány fut, az Azure platform többpéldányos konfigurációfrissítésként kezeli.
->
-
-Az egypéldányos konfigurációban a karbantartás a gazdagépen futó összes virtuális gép leállításából, a gazdagép frissítéséből, majd a virtuális gépek újraindításából áll. A karbantartáshoz körülbelül 15 perc állásidő szükséges. A tervezett karbantartási esemény régiónként minden virtuális gépen ugyanabban a karbantartási időszakban fut.
-
-
-A tervezett karbantartási események hatással vannak az egypéldányos konfigurációkhoz tartozó alkalmazás rendelkezésre állására. Az Azure egyhetes előzetes értesítést küld az egypéldányos konfigurációban található virtuális gépek tervezett karbantartásáról.
-
-## <a name="email-notification"></a>E-mailes értesítés
-Az Azure csak az egypéldányos és többpéldányos virtuálisgép-konfigurációk esetén küld e-mailben figyelmeztetést az elkövetkező tervezett karbantartásról (egy héttel előre). Ezt az e-mailt az előfizetés adminisztrátorának és társadminisztrátora e-mail-fiókjába küldi el a rendszer. Példa az ilyen típusú e-mailre:
-
-<!--Image reference-->
-![][image1]
-
-## <a name="region-pairs"></a>Régiópárok
-
-A karbantartás végrehajtása közben az Azure csak a párjához tartozó, egy régióban található virtuálisgép-példányokat frissíti. Például ha az USA északi középső régiójában található virtuális gépeket frissíti, az Azure nem fogja frissíteni az USA déli középső régiójában található virtuális gépeket ugyanabban az időben. Ez egy másik időpontra lesz ütemezve a régiók közötti feladatátvétel vagy terheléselosztás érdekében. Azonban más régiók (például Észak-Európa) karbantarthatók ugyanabban az időben, mint az USA keleti régiója.
-
-Az aktuális régiópárokat a következő táblázatban tekintheti meg:
-
-| 1. régió | 2. régió |
-|:--- | ---:|
-| USA keleti régiója |USA nyugati régiója |
-| USA 2. keleti régiója |USA középső régiója |
-| USA északi középső régiója |USA déli középső régiója |
-| USA nyugati középső régiója |USA nyugati régiója, 2. |
-| Kelet-Kanada |Közép-Kanada |
-| Dél-Brazília |USA déli középső régiója |
-| USA-beli államigazgatás – Iowa |USA-beli államigazgatás – Virginia |
-| US DoD – Kelet |US DoD – Középső régió |
-| Észak-Európa |Nyugat-Európa |
-| Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
-| Közép-Németország |Északkelet-Németország |
-| Délkelet-Ázsia |Kelet-Ázsia |
-| Délkelet-Ausztrália |Kelet-Ausztrália |
-| Közép-India |Dél-India |
-| Nyugat-India |Dél-India |
-| Kelet-Japán |Nyugat-Japán |
-| Korea középső régiója |Korea déli régiója |
-| Kelet-Kína |Észak-Kína |
-
-
-<!--Anchors-->
-[image1]: ./media/virtual-machines-common-planned-maintenance/vmplanned1.png
-[image2]: ./media/virtual-machines-common-planned-maintenance/EventViewerPostReboot.png
-[image3]: ./media/virtual-machines-planned-maintenance/RegionPairs.PNG
-[image4]: ./media/virtual-machines-common-planned-maintenance/availabilitysetexample.png
-
-
-<!--Link references-->
-[Virtual Machines Manage Availability]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
-
-[Understand planned versus unplanned maintenance]: ../articles/virtual-machines/windows/manage-availability.md#Understand-planned-versus-unplanned-maintenance/
+For more information about configuring your virtual machines for high availability, see Manage the availability of your virtual machines for Windows (../articles/virtual-machines/windows/manage-availability.md) or [Linux](../articles/virtual-machines/linux/manage-availability.md).
