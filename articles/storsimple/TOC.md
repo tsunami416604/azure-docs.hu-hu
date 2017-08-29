@@ -166,11 +166,13 @@
 #### [Egyéb tárolóeszközökből](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Frissítés
-#### [A 4-es frissítés telepítése – aktuális](storsimple-8000-install-update-4.md)
+#### [A 5-ös frissítés telepítése – aktuális](storsimple-8000-install-update-5.md)
+#### [A 4-es frissítés telepítése](storsimple-8000-install-update-4.md)
 
 
 ## Kibocsátási megjegyzések
-### [4-es frissítés – aktuális](storsimple-update4-release-notes.md)
+### [5-ös frissítés – aktuális](storsimple-update5-release-notes.md)
+### [4-es frissítés](storsimple-update4-release-notes.md)
 ### [3-as frissítés](storsimple-update3-release-notes.md)
 ### [2.2-es frissítés](storsimple-update21-release-notes.md)
 

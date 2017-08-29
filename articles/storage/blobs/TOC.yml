@@ -1,0 +1,315 @@
+- name: Áttekintés
+  items:
+    - name: Bevezetés
+      href: storage-blobs-introduction.md
+    - name: 'Blobok, fájlok vagy adatlemezek választása'
+      href: ../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- name: Bevezetés
+  items:
+    - name: Create a storage account
+      href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Fejlesztés
+      items:
+        - name: .NET
+          href: storage-dotnet-how-to-use-blobs.md
+        - name: Java
+          href: storage-java-how-to-use-blob-storage.md
+        - name: Node.js
+          href: storage-nodejs-how-to-use-blob-storage.md
+        - name: C++
+          href: storage-c-plus-plus-how-to-use-blobs.md
+        - name: PHP
+          href: storage-php-how-to-use-blobs.md
+        - name: Python
+          href: storage-python-how-to-use-blob-storage.md
+        - name: Ruby
+          href: storage-ruby-how-to-use-blob-storage.md
+        - name: iOS
+          href: storage-ios-how-to-use-blob-storage.md
+        - name: Xamarin
+          href: storage-xamarin-blob-storage.md
+- name: Útmutató
+  items:
+    - name: Tervezés és kialakítás
+      items:
+        - name: Replikáció
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 'A gyakran és a ritkán használt, valamint az archivált adatok rétege'
+          href: storage-blob-storage-tiers.md
+        - name: HA-alkalmazások tervezése RA-GRS használatával
+          href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Méretezhetőségi és teljesítménycélok
+          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Teljesítmény és kapacitás – ellenőrzőlista
+          href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Egyidejűség
+          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Vészhelyreállítási útmutató
+          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Prémium szintű Storage
+          items:
+            - name: Nagy teljesítményű Premium Storage szolgáltatás virtuálisgép-lemezekhez
+              href: ../common/storage-premium-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Áttelepítés a Premium Storage-ba az Azure Site Recoveryvel
+              href: ../common/storage-migrate-to-premium-storage-using-azure-site-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Nagy teljesítményű rendszer tervezése
+              href: ../common/storage-premium-storage-performance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Standard szintű Storage
+          items:
+            - name: 'Költséghatékony Standard Storage, valamint nem felügyelt és felügyelt virtuálisgép-lemezek'
+              href: ../common/storage-standard-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Fejlesztés
+      items:
+        - name: Példák
+          items:
+            - name: .NET
+              href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Java
+              href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Csatlakozási karakterláncok konfigurálása
+          href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Blobok titkosítása és visszafejtése az Azure Key Vaulttal
+          href: storage-encrypt-decrypt-blobs-key-vault.md
+        - name: Tulajdonságok és metaadatok beállítása és lekérése
+          href: storage-properties-metadata.md
+        - name: A Storage Emulator használata
+          href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Egyéni tartományok
+          href: storage-custom-domain-name.md
+        - name: Keresés a Blob Storage-tárolókban az Azure Search szolgáltatással
+          href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Kezelés
+      items:
+        - name: PowerShell
+          href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure CLI 2.0
+          href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure CLI 1.0
+          href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Blobok kezelése a Storage Explorerrel
+          href: ../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure Automation
+          href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Biztonságos
+      items:
+        - name: Biztonsági útmutató
+          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Ügyféloldali titkosítás
+          items:
+            - name: .NET
+              href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Java
+              href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Python
+              href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Inaktív adatok titkosítása
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Titkosítás inaktív állapotban ügyfélkulcsokkal
+          href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Megosztott kulcsos hitelesítés
+          href: /rest/api/storageservices/Authentication-for-the-Azure-Storage-Services
+        - name: Közös hozzáférésű jogosultságkódok (SAS)
+          href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Biztonságos átvitel megkövetelése
+          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Névtelen hozzáférés a blobokhoz
+          href: storage-manage-access-to-resources.md
+        - name: Egyéni tartománnyal rendelkező blobok elérése az Azure CDN használatával HTTPS-kapcsolaton keresztül
+          href: storage-https-custom-domain-cdn.md
+    - name: Figyelés és hibaelhárítás
+      items:
+        - name: Oktatóanyag a hibaelhárításhoz
+          href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 'Figyelés, diagnosztika és hibaelhárítás'
+          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Metrikák és naplózás
+          items:
+            - name: Storage Analytics
+              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Metrikák engedélyezése és megtekintése
+              href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Adatátvitel
+      items:
+        - name: Adatok áthelyezése a Storage-ba és a Storage-ból
+          href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: AzCopy Windowson
+          href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: AzCopy Linuxon
+          href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Az Import/Export szolgáltatás használata
+          href: ../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Az Import/Export eszköz használata
+          href: ../common/storage-import-export-tool-how-to.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          items:
+            - name: Az Import/Export eszköz beállítása
+              href: ../common/storage-import-export-tool-setup.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Merevlemezek előkészítése importálási feladatokhoz
+              href: ../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Tulajdonságok és metaadatok beállítása az importálási folyamat során
+                  href: ../common/storage-import-export-tool-setting-properties-metadata-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére
+                  href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Az importálási feladatokhoz használt gyakori parancsok rövid áttekintése
+                  href: ../common/storage-import-export-tool-quick-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Meghajtóhasználat előnézete exportálási feladatokhoz
+              href: ../common/storage-import-export-tool-previewing-drive-usage-export-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Feladatok állapotának áttekintése a másolási naplófájlokkal
+              href: ../common/storage-import-export-tool-reviewing-job-status-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Importálási feladat javítása
+              href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Exportálási feladat javítása
+              href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Import/Export eszköz hibaelhárítása
+              href: ../common/storage-import-export-tool-troubleshooting-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Import/Export szolgáltatásjegyzékének fájlformátuma
+              href: ../common/storage-import-export-file-format-manifest.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Import/Export szolgáltatás metaadat- és tulajdonságfájljainak formátuma
+              href: ../common/storage-import-export-file-format-metadata-and-properties.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Import/Export szolgáltatás naplófájljainak formátuma
+              href: ../common/storage-import-export-file-format-log.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Az Import/Export eszköz használata (v1)
+          href: ../common/storage-import-export-tool-how-to-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          items:
+            - name: Az Import/Export eszköz beállítása
+              href: ../common/storage-import-export-tool-setup-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Merevlemezek előkészítése importálási feladatokhoz
+              href: ../common/storage-import-export-tool-preparing-hard-drives-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: Tulajdonságok és metaadatok beállítása az importálási folyamat során
+                  href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére
+                  href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Az importálási feladatokhoz használt gyakori parancsok rövid áttekintése
+                  href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Meghajtóhasználat előnézete exportálási feladatokhoz
+              href: ../common/storage-import-export-tool-previewing-drive-usage-export-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Feladatok állapotának áttekintése a másolási naplófájlokkal
+              href: ../common/storage-import-export-tool-reviewing-job-status-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Importálási feladat javítása
+              href: ../common/storage-import-export-tool-repairing-an-import-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Exportálási feladat javítása
+              href: ../common/storage-import-export-tool-repairing-an-export-job-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Import/Export eszköz hibaelhárítása
+              href: ../common/storage-import-export-tool-troubleshooting-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Import/Export szolgáltatásjegyzékének fájlformátuma
+              href: ../common/storage-import-export-file-format-manifest.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Import/Export szolgáltatás metaadat- és tulajdonságfájljainak formátuma
+              href: ../common/storage-import-export-file-format-metadata-and-properties.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Import/Export szolgáltatás naplófájljainak formátuma
+              href: ../common/storage-import-export-file-format-log.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Az Azure Import/Export szolgáltatás REST API-jának használata
+          href: ../common/storage-import-export-using-the-rest-api.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          items:
+            - name: Importálási feladat létrehozása
+              href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Exportálási feladat létrehozása
+              href: ../common/storage-import-export-creating-an-export-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Feladat állapotinformációinak lekérése
+              href: ../common/storage-import-export-retrieving-state-info-for-a-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Feladatok enumerálása
+              href: ../common/storage-import-export-enumerating-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Feladatok megszakítása és törlése
+              href: ../common/storage-import-export-cancelling-and-deleting-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Meghajtójegyzékek biztonsági mentése
+              href: ../common/storage-import-export-backing-up-drive-manifests.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Import/Export-feladatok diagnosztizálása és hiba utáni helyreállítása
+              href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Példák
+      href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=blob'
+- name: Referencia
+  items:
+    - name: PowerShell
+      href: /powershell/module/azure.storage
+    - name: Azure CLI
+      href: /cli/azure/storage
+    - name: .NET
+      items:
+        - name: Resource Manager
+          href: /dotnet/api/microsoft.azure.management.storage
+        - name: Adatáthelyezés
+          href: /dotnet/api/microsoft.windowsazure.storage.datamovement
+        - name: 'Blobok, üzenetsorok, táblák és fájlok'
+          href: 'https://docs.microsoft.com/en-us/dotnet/api/overview/azure/storage?view=azure-dotnet'
+    - name: Java
+      href: 'http://azure.github.io/azure-storage-java/'
+    - name: Node.js
+      href: 'http://azure.github.io/azure-storage-node'
+    - name: Ruby
+      href: 'http://azure.github.io/azure-storage-ruby'
+    - name: PHP
+      href: 'http://azure.github.io/azure-storage-php/'
+    - name: Python
+      href: 'https://azure-storage.readthedocs.io/en/latest/index.html'
+    - name: C++
+      href: 'http://azure.github.io/azure-storage-cpp'
+    - name: iOS
+      href: 'http://azure.github.io/azure-storage-ios/'
+    - name: Android
+      href: 'http://azure.github.io/azure-storage-android'
+    - name: REST
+      items:
+        - name: 'Blobok, üzenetsorok, táblák és fájlok'
+          href: /rest/api/storageservices
+        - name: Erőforrás-szolgáltató
+          href: /rest/api/storagerp
+        - name: Import/Export
+          href: /rest/api/storageimportexport
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure Storage-ügyféleszközök
+      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=storage'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+    - name: Azure Storage Explorer
+      items:
+        - name: Storage Explorer
+          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: A Storage Explorer kibocsátási megjegyzései
+          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: A Storage Explorer hibaelhárítása
+          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: NuGet-csomagok
+      items:
+        - name: Az Azure Storage .NET-hez készült ügyféloldali kódtára
+          href: 'https://www.nuget.org/packages/WindowsAzure.Storage/'
+        - name: Azure Storage adatátviteli könyvtár
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Azure Configuration Manager
+          href: 'https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/'
+    - name: Forráskód
+      items:
+        - name: .NET
+          items:
+            - name: 'Blob, üzenetsor, tábla és fájl'
+              href: 'https://github.com/Azure/azure-storage-net'
+            - name: Adatáthelyezés
+              href: 'https://github.com/Azure/azure-storage-net-data-movement'
+            - name: Erőforrás-szolgáltató
+              href: 'https://github.com/Azure/azure-sdk-for-net'
+        - name: Node.js
+          href: 'http://azure.github.io/azure-storage-node/'
+        - name: Java
+          href: 'https://github.com/Azure/azure-storage-java'
+        - name: C++
+          href: 'https://github.com/Azure/azure-storage-cpp'
+        - name: PHP
+          href: 'https://github.com/Azure/azure-storage-php'
+        - name: Python
+          href: 'https://github.com/Azure/azure-storage-python'
+        - name: Ruby
+          href: 'https://github.com/Azure/azure-storage-ruby'
+        - name: iOS
+          href: 'https://github.com/Azure/azure-storage-ios'

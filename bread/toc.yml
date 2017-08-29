@@ -295,9 +295,19 @@
     - name: SQL Server Stretch Database
       tocHref: /azure/sql-server-stretch-database/
       topicHref: /azure/sql-server-stretch-database/
-    - name: Tárolás
+    - name: Storage
       tocHref: /azure/storage/
       topicHref: /azure/storage/
+      items:
+        - name: Blobok
+          tocHref: /azure/storage/blobs/
+          topicHref: /azure/storage/blobs/storage-blobs-introduction
+        - name: Fájlok
+          tocHref: /azure/storage/files/
+          topicHref: /azure/storage/files/storage-files-introduction
+        - name: Üzenetsorok
+          tocHref: /azure/storage/queues/
+          topicHref: /azure/storage/queues/storage-queues-introduction
     - name: StorSimple
       tocHref: /azure/storsimple/
       topicHref: /azure/storsimple/

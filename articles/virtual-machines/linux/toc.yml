@@ -41,6 +41,14 @@
       href: tutorial-jenkins-github-docker-cicd.md
     - name: 13 - CI/CD a Team Services használatával
       href: tutorial-build-deploy-jenkins.md
+    - name: 14a – LAMP-verem létrehozása
+      href: tutorial-lamp-stack.md
+    - name: 14b – LEMP-verem létrehozása
+      href: tutorial-lemp-stack.md
+    - name: 14c – MEAN-verem létrehozása
+      href: tutorial-mean-stack.md
+    - name: 15 – Webkiszolgáló védelme SSL-lel
+      href: tutorial-secure-web-server.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -261,6 +269,10 @@
               href: n-series-driver-setup.md
     - name: Tárhely kezelése
       items:
+        - name: Információk a felügyelt lemezekről
+          href: managed-disks-overview.md
+        - name: Lemezek – Gyakori kérdések
+          href: faq-for-disks.md
         - name: Lemez hozzáadása
           items:
             - name: Azure CLI
@@ -273,16 +285,18 @@
           href: expand-disks.md
         - name: Lemez pillanatképének elkészítése
           href: snapshot-copy-managed-disk.md
+        - name: Nem felügyelt lemezek biztonsági mentése
+          href: incremental-snapshots.md
         - name: Konvertálás felügyelt lemezekké
           href: convert-unmanaged-to-managed-disks.md
-        - name: Lemezek – Gyakori kérdések
-          href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Lemez konvertálása a standard és a prémium szint között
           href: convert-disk-storage.md
         - name: Fájlok másolása virtuális gépre
           href: copy-files-to-linux-vm-using-scp.md
         - name: Fájltároló használata
           href: mount-azure-file-storage-on-linux-using-smb.md
+        - name: Lemezek üzembe helyezése sablonnal
+          href: using-managed-disks-template-deployments.md
         - name: Teljesítmény optimalizálása
           href: optimization.md
           items:

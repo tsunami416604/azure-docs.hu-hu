@@ -33,17 +33,15 @@
   items:
     - name: Biztonságos tárolók
       href: container-service-security.md
-    - name: Szolgáltatásnév – Kubernetes
-      href: container-service-kubernetes-service-principal.md
 - name: Útmutatók
   items:
-    - name: Kubernetes Windows gyorsindítással
+    - name: Kubernetes Windowszal
       href: container-service-kubernetes-windows-walkthrough.md
-    - name: Tárolókezelés – Kubernetes felhasználói felület
+    - name: Kubernetes webes felület
       href: container-service-kubernetes-ui.md
     - name: Helm-diagramok központi telepítése
       href: container-service-kubernetes-helm.md
-    - name: CI/CD – Kubernetes és Jenkins
+    - name: A Jenkins és az ACS Kubernetes
       href: container-service-kubernetes-jenkins.md
     - name: Vázlat használata ACR-rel és ACS-szel
       href: container-service-draft-up.md

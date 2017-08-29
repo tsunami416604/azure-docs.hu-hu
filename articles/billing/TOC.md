@@ -32,6 +32,7 @@
 ### [Regisztrálással kapcsolatos problémák](billing-troubleshoot-azure-sign-up-issues.md)
 ### [Elutasított bankkártya](billing-credit-card-fails-during-azure-sign-up.md)
 ### [Bejelentkezéssel kapcsolatos problémák](billing-cannot-login-subscription.md)
+### [Nem található előfizetés](billing-no-subscriptions-found.md)
 
 # Referencia
 ## [API – Áttekintés](billing-usage-rate-card-overview.md)
