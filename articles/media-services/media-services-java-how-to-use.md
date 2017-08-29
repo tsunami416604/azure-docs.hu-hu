@@ -4,7 +4,7 @@ description: "Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítség�
 services: media-services
 documentationcenter: java
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services

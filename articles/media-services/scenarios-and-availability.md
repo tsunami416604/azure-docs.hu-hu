@@ -4,7 +4,7 @@ description: "Ez a témakör a Microsoft Azure Media Services-forgatókönyvek �
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

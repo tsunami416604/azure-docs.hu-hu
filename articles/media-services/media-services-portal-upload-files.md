@@ -4,7 +4,7 @@ description: "Ez az oktatóprogram végigvezeti azon lépéseken, amelyek segít
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
 ms.service: media-services
