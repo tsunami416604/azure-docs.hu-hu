@@ -65,6 +65,10 @@
           href: sql-database-servers-databases.md
         - name: Szolgáltatásszintek
           href: sql-database-service-tiers.md
+        - name: Erőforráskorlátok
+          href: sql-database-resource-limits.md
+        - name: Önálló adatbázisok
+          href: sql-database-single-database-resources.md
         - name: Rugalmas készletek
           href: sql-database-elastic-pool.md
         - name: Kapcsolati architektúra
@@ -75,8 +79,6 @@
           href: sql-database-what-is-a-dtu.md
         - name: DTU-teljesítményteszt
           href: sql-database-benchmark-overview.md
-        - name: Korlátok
-          href: sql-database-resource-limits.md
         - name: PaaS vagy IaaS
           href: sql-database-paas-vs-sql-server-iaas.md
         - name: Naplózás
@@ -416,7 +418,7 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?service=sql-database'
-    - name: Architektúra-útmutató
-      href: /azure/architecture/guide/
+    - name: Architektúra-központ
+      href: /azure/architecture/
     - name: Ügyfelek történetei
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'

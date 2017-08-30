@@ -162,7 +162,6 @@
 ##### [Támogatási csomag létrehozása](storsimple-8000-create-manage-support-package.md)
 
 ### Migrate (Áttelepítés)
-#### [Az 5000–7000-es sorozatból](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
 #### [Egyéb tárolóeszközökből](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Frissítés
@@ -301,16 +300,17 @@
 ##### [Támogatási csomag létrehozása](storsimple-create-manage-support-package.md)
 
 ### Migrate (Áttelepítés)
-#### [Az 5000–7000-es sorozatból](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
 #### [Egyéb tárolóeszközökből](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Frissítés
+#### [A 5-ös frissítés telepítése – aktuális](storsimple-install-update-5.md)
 #### [A 4-es frissítés telepítése](storsimple-install-update-4.md)
 #### [A 3-as frissítés telepítése](storsimple-install-update-3.md)
 #### [Az eszköz frissítése](storsimple-update-device.md)
 
 ## Kibocsátási megjegyzések
-### [4-es frissítés – aktuális](storsimple-update4-release-notes.md)
+### [5-ös frissítés – aktuális](storsimple-update5-release-notes.md)
+### [4-es frissítés](storsimple-update4-release-notes.md)
 ### [3-as frissítés](storsimple-update3-release-notes.md)
 ### [2.2-es frissítés](storsimple-update21-release-notes.md)
 
