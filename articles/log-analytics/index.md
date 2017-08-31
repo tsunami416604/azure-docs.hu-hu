@@ -2,7 +2,7 @@
 title: "Az Azure Log Analytics dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogy a Log Analytics hogyan gyűjti össze és elemzi a felhőben és a helyszíni környezetekben található erőforrások által létrehozott adatokat."
 services: log-analytics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b44e02d3e22722c05adce10c3b527adf9be20f00
 ms.openlocfilehash: 9d5d1ada86a2cb1b6f6f70d9c662708f81b5bcc6
+ms.contentlocale: hu-hu
 ms.lasthandoff: 02/23/2017
 
 ---

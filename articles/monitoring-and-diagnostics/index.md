@@ -2,7 +2,7 @@
 title: "Az Azure Monitor dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan használhatja a felügyeleti és diagnosztikai szolgáltatásokat a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. API-referenciák, ajánlott eljárások és egyebek."
 services: monitoring-and-diagnostics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

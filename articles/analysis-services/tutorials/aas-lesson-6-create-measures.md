@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag - 6. lecke: Mértékek létrehozás
 description: "A lecke a mértékek létrehozását ismerteti az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

@@ -3,7 +3,7 @@ title: "Az Azure Analysis Services oktatóanyaga – 10. lecke: Partíciók lét
 description: "A lecke a partíciók létrehozását ismerteti az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

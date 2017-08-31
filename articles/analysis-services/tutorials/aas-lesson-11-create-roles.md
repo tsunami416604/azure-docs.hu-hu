@@ -3,7 +3,7 @@ title: "Az Azure Analysis Services oktatóanyaga – 11. lecke: Szerepkörök l�
 description: "A lecke azt ismerteti, hogyan hozhat létre szerepköröket az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

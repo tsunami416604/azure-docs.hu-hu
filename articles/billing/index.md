@@ -2,7 +2,7 @@
 title: "Az Azure Billing dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg az Azure számlázását, valamint a használat és költségek kezelését és felügyeletét. Oktatóanyagok, gyakori kérdések, API-referenciák és egyéb dokumentáció."
 services: billing
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

@@ -2,7 +2,7 @@
 title: "Az Azure Application Gateway dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan helyezhet üzembe felhőalapú alkalmazáskézbesítési vezérlőt. A dokumentáció bemutatja, hogyan állíthat be alkalmazásszintű útválasztást és terheléselosztást egy webes kezelőfelülethez."
 services: application-gateway
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
 ms.openlocfilehash: 535364a9da46b137c4d32e1c3049a5be3496e5d2
+ms.contentlocale: hu-hu
 ms.lasthandoff: 03/15/2017
 
 ---
@@ -161,7 +162,7 @@ Ismerje meg, hogyan helyezheti üzembe szolgáltatásként az Application Gatewa
             </div>
         </div>
     </li>
-</ul>    
+</ul>   
 
 
 

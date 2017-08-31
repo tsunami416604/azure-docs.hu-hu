@@ -2,7 +2,7 @@
 title: "Az Azure DevTest Labs dokumentációja – oktatóanyagok | Microsoft Docs"
 description: "Ismerje meg, hogy az újrahasznosítható összetevőkkel hogyan hozhat létre alkalmazástesztelési környezetet. Oktatóanyagok, videók és egyéb anyagok, amelyekből megtudhatja, hogyan hozza létre, kezelje és tegye biztonságossá a laborokat."
 services: devtest-lab
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: 3c54e0f89529fb159c3940f5792c4c0e095ee3fb
+ms.contentlocale: hu-hu
 ms.lasthandoff: 05/03/2017
 
 ---

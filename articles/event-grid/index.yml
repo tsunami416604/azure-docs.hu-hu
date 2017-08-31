@@ -5,14 +5,14 @@ metadata:
   title: Az Azure Event Grid dokumentációja – oktatóanyagok és API-referencia
   description: Az Azure Event Grid használatával szinte azonnal válaszolhat az Azure-beli és az azon kívüli eseményekre is.
   services: event-grid
-  author: banisadr
-  manager: timlt
+  author: czeumault
+  manager: carolz
   ms.service: event-grid
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/10/2017
-  ms.author: banisadr
+  ms.author: carolz
 abstract:
   description: 'A teljeskörűen felügyelt Azure Event Grid intelligens esemény-útválasztó szolgáltatás közzétételi-feliratkozási modell alkalmazásával teszi lehetővé az egységesített eseményfelhasználást. Az Azure Event Grid használatával szinte azonnal válaszolhat az Azure-beli és az azon kívüli eseményekre is. Gyors útmutatóink, oktatóanyagaink és vonatkozó példáink segítenek az Azure Event Grid használatának megismerésében.'
 sections:

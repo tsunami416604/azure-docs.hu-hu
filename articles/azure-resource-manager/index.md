@@ -2,7 +2,7 @@
 title: "Az Azure Resource Manager dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan használhatja a Resource Managert a megoldásokkal kapcsolatos forrásanyagok csoportként történő üzembe helyezésére és kezelésére, valamint a sablonok létrehozására az erőforrások egységes és megismételhető üzembe helyezéséhez."
 services: azure-resource-manager
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

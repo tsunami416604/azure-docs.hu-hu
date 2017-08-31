@@ -2,7 +2,7 @@
 title: "Az Azure Site Recovery dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogy a fizikai kiszolgálók és virtuális gépek vészhelyreállítása és a folyamatos üzletmenet érdekében hogyan helyezheti üzembe és kezelheti a replikációt."
 services: site-recovery
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

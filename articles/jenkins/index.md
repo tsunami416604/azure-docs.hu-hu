@@ -2,15 +2,15 @@
 title: "A Jenkins és az Azure"
 description: "A Jenkins üzembe helyezése és integrálása az Azure használatával"
 services: multiple
-author: mlearned
-manager: douge
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.service: multiple
 ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/20/2017
-ms.author: mlearned
+ms.author: carolz
 ms.custom: Jenkins
 ms.translationtype: HT
 ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df

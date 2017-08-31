@@ -2,7 +2,7 @@
 title: "Az Azure Notification Hubs dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre a Notification Hubs használatával. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 services: notification-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

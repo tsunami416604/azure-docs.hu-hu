@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag – kiegészítő lecke: Részletso
 description: "Ismerteti a részletsor-kifejezés létrehozását az Azure Analysis Services oktatóanyagban."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

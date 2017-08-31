@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag – 3. lecke: Megjelölés dátumt�
 description: "A lecke a dátumtáblák megjelölését ismerteti az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

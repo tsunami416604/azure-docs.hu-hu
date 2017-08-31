@@ -2,7 +2,7 @@
 title: "Az Azure Security dokumentációja – oktatóanyagok | Microsoft Docs"
 description: "Ismerje meg az Azure-szolgáltatások biztonsági beállításainak testre szabását, hogy azok megfeleljenek a felhőben található szolgáltatások és adatok követelményeinek."
 services: security
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

@@ -2,7 +2,7 @@
 title: "Az Azure Event Hubs dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogy az Event Hubs hogyan használható másodpercenként több milliónyi esemény feldolgozására, amelyek a csatlakoztatott IoT-eszközökből és alkalmazásokból érkeznek, számos különböző platformról."
 services: event-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

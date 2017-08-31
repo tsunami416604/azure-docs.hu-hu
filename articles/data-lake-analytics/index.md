@@ -2,8 +2,8 @@
 title: "Az Azure Data Lake Analytics dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerkedjen meg a big data-elemzéssel a Data Lake Analytics használatával. Az oktatóanyagok bemutatják, hogyan futtathat kötegelt, valós idejű és interaktív elemzéseket, és hogyan írhat U-SQL lekérdezéseket."
 services: data-lake-analytics
-author: saveenr
-manager: saveenr
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.assetid: 
 ms.service: data-lake-analytics

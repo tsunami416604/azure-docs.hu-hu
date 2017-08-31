@@ -2,7 +2,7 @@
 title: "Az Azure Storage dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg a Azure Storage – felhőbeli blob-, tábla-, üzenetsor-, fájl- és virtuálisgéplemez-tárolók használatát. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 services: storage
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

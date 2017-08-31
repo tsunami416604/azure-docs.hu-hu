@@ -6,14 +6,14 @@ metadata:
   title: Az Azure PostgreSQL dokumentációja – oktatóanyagok és API-referencia
   description: 'A PostgreSQL-hez készült Azure Database egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú PostgreSQL adatbázismotoron alapszik.'
   services: postgresql
-  author: jasonwhowell
-  manager: jhubbard
+  author: czeumault
+  manager: carolz
   ms.service: postgresql
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: jasonh
+  ms.author: carolz
 abstract:
   description: 'A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik.  A teljes körűen felügyelt, szolgáltatásként nyújtott adatbázis kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat.  A PostgreSQL-hez készült Azure Database-ben végzett alkalmazásfejlesztéssel kihasználhatja a nyílt forráskódú eszközöket, Ön választhatja ki a kívánt platformot.  Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát.'
 sections:

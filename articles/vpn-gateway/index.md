@@ -2,7 +2,7 @@
 title: "Az Azure VPN Gateway dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg a virtuális magánhálózat (VPN) átjáróinak konfigurálását, hogy irányítani tudja a forgalmat a felhőben működő virtuális hálózat, helyszíni hálózat vagy a felhőben futó VNetek között."
 services: vpn-gateway
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

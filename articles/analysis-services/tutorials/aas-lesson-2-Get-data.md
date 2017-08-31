@@ -3,7 +3,7 @@ title: "Az Azure Analysis Services oktatóanyaga – 2. lecke: Az adatok beszerz
 description: "A lecke az adatok beszerzését és importálását ismerteti az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

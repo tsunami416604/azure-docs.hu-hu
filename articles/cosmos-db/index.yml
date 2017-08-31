@@ -6,7 +6,7 @@ metadata:
   title: 'Azure Cosmos DB-dokumentáció – oktatóanyagok, API-referencia'
   description: 'Ismerje meg, hogyan építhet fel globálisan elosztott, többmodelles adatbázisokat az Azure Cosmos DB használatával. Az oktatóanyagok bemutatják a dokumentum-, kulcs/érték- és Graph-adatbázisok felépítésének és lekérdezésének folyamatát.'
   services: cosmos-db
-  author: carolz
+  author: czeumault
   manager: carolz
   ms.service: cosmos-db
   ms.tgt_pltfrm: na

@@ -1,20 +1,22 @@
 ---
 title: "Azure App Service – API Apps-dokumentáció – oktatóanyagok | Microsoft Docs"
 description: "Ismerje meg, hogyan használhatja az Azure App Service-ben futtatott API Apps szolgáltatást a felhőben működő és helyszíni API-k fejlesztéséhez, üzemeltetéséhez és felhasználásához. Oktatóanyagok, videók és egyéb dokumentáció."
-services: app-service\api
-author: carolz
+services: app-service-api
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
-ms.service: app-service\api
+ms.service: app-service-api
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 741a6f2be3c8c689884cdeb180ff10dac046032b
 ms.openlocfilehash: b1a568d7a8f856c7d17aa7ebd14148452c1d29db
+ms.contentlocale: hu-hu
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="app-service---api-apps-documentation"></a>App Service – Api Apps-dokumentáció
@@ -132,10 +134,5 @@ Ismerje meg, hogyan használhatja az Azure App Service-ben futtatott API Apps sz
     </li>     
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

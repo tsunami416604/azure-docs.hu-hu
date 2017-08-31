@@ -2,7 +2,7 @@
 title: "Az Azure Data Lake Store dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogy hogyan hozhat létre, kezelhet, és érhet el egy nagykapacitású, Hadoop-kompatibilis Data Lake adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet."
 services: data-lake-store
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

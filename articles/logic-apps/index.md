@@ -2,7 +2,7 @@
 title: "Az Azure Logic Apps dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan fejleszthet Logic Apps alkalmazásokat a helyszíni és a felhőben futó üzleti munkafolyamatok automatizálására és egyszerűbbé tételére. Oktatóanyagok, sablonok és API-referenciák."
 services: logic-apps
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

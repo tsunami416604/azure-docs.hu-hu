@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag – 7. lecke: Fő teljesítménymut
 description: "Ismerteti a Fő teljesítménymutatók létrehozását az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

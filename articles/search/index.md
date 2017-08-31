@@ -2,7 +2,7 @@
 title: "Az Azure Search dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Tekintse meg, hogy az egyéni webes és mobilalkalmazások hogyan bővíthetők erőteljes keresési képességekkel és tevékenységfigyeléssel. API-referenciák és egyéb dokumentációk."
 services: search
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
 ms.openlocfilehash: 7fffe78bebd6799cad544c12c20eb1926975a68f
+ms.contentlocale: hu-hu
 ms.lasthandoff: 05/03/2017
 
 ---

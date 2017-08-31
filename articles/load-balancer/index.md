@@ -2,7 +2,7 @@
 title: "Az Azure Load Balancer dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Megtudhatja, hogy hogyan használja a Load Balancer szolgáltatást az appok hálózati teljesítményének biztosítására. Kezelheti a virtuális gépek és felhőalapú erőforrások, illetve a helyszínek közötti virtuális hálózatok forgalmát."
 services: load-balancer
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
 ms.openlocfilehash: 96da506c8545a1b863e62133706a2687c2498bbd
+ms.contentlocale: hu-hu
 ms.lasthandoff: 03/22/2017
 
 ---

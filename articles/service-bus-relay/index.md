@@ -1,13 +1,24 @@
 ---
-layout: LandingPage
 title: "A Service Bus Relay dokumentációja"
 description: "Megismerheti, hogyan működik az Azure Relay a hibrid felhőben és helyszíni környezetben, valamint többek között a témával kapcsolatos útmutatókat, oktatóanyagokat, videókat és API-referenciákat tekinthet meg."
+services: service-bus
+author: czeumault
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: service-bus
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 03/14/2017
+ms.author: carolz
 ms.translationtype: HT
 ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: 43d2c5ca34e4903a41160496fdb4d975cb665de7
 ms.contentlocale: hu-hu
 ms.lasthandoff: 08/04/2017
 
+---
 ---
 # <a name="service-bus-relay-documentation"></a>A Service Bus Relay dokumentációja
 Megismerheti, hogyan segíti az Azure Relay szolgáltatás a helyszíni környezet és a felhő közötti hibrid alkalmazásokat egy vállalati hálózaton belül és a nyilvános felhőben anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene végrehajtani a vállalati hálózati infrastruktúrán.

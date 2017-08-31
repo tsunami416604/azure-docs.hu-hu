@@ -5,7 +5,7 @@ metadata:
   title: Az Azure Container Instances dokumentációja – oktatóanyagok | Microsoft Docs
   description: 'Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia.'
   services: container-instances
-  author: carolz
+  author: czeumault
   manager: carolz
   ms.service: container-instances
   ms.tgt_pltfrm: na

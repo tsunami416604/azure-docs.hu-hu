@@ -2,7 +2,7 @@
 title: "Az Azure Key Vault dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan hozhatja létre és tarthatja karban a Key Vault használatával a kulcsokat, amelyekkel elérheti és titkosíthatja a felhőalapú erőforrásokat, alkalmazásokat és megoldásokat. Oktatóanyagok, API-referenciák és egyebek."
 services: key-vault
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

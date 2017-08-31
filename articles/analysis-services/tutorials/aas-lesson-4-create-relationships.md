@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag – 4. lecke: Kapcsolatok létrehoz
 description: "A lecke a kapcsolatok létrehozását ismerteti az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

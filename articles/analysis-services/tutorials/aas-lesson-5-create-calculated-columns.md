@@ -3,7 +3,7 @@ title: "Az Azure Analysis Services oktatóanyaga – 5. lecke: Számított oszlo
 description: "A lecke azt ismerteti, hogyan hozhat létre számított oszlopokat az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

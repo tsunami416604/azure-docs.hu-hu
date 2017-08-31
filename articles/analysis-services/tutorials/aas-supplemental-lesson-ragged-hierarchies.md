@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag – kiegészítő lecke: Hézagos h
 description: "Ismerteti a hézagos hierarchiák javításának módját az Azure Analysis Services oktatóanyagában."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

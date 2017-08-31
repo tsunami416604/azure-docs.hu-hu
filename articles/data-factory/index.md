@@ -2,7 +2,7 @@
 title: "Az Azure Data Factory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan telepíthet a helyszíni és felhőalapú erőforrásokba és azokból kivezető automatizált adatfeldolgozási folyamatokat a Data Factory használatával az adatok áthelyezéséhez és elemzésre való előkészítéséhez."
 services: data-factory
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

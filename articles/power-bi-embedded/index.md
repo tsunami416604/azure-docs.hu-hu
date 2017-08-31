@@ -2,7 +2,7 @@
 title: "Az Azure Power BI Embedded dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan ágyazhat be Power BI-adatmegjelenítéseket és interaktív jelentéseket az alkalmazásokba. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 services: power-bi-embedded
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 48f9fe41b94016e54a2ec622df9684b7dcd4dfed
 ms.openlocfilehash: c1e12dc71ce823425971beeb9db1cc5abd2aa12b
+ms.contentlocale: hu-hu
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded – dokumentáció
@@ -139,10 +141,5 @@ Ismerje meg, hogyan adhat hozzá adatmegjelenítéseket és interaktív jelenté
         </div>
     </li>
 </ul>
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

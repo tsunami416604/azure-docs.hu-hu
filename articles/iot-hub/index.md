@@ -2,7 +2,7 @@
 title: "Az Azure IoT Hub dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan csatlakoztathatja, figyelheti és irányíthatja az eszközök internetes hálózatához (IoT) csatlakozó eszközök millióit az IoT Hub használatával. Oktatóanyagok, API-referenciák, videók és egyéb dokumentáció."
 services: iot-hub
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

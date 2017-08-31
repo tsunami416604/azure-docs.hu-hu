@@ -2,7 +2,7 @@
 title: "Az Azure Mobile Engagement dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan nyerhet betekintést a mobilalkalmazások használatába és a valós idejű felhasználószegmentálásba, és hogyan engedélyezheti a környezetfüggő leküldéses értesítéseket és az alkalmazáson belüli üzenetküldést."
 services: mobile-engagement
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3de3024e93aee7ace0e243eef0beb4008dc50db5
 ms.openlocfilehash: 738cc1fc5b5cca411c08fda4229950f481cd0aa6
+ms.contentlocale: hu-hu
+ms.lasthandoff: 02/09/2017
 
 ---
 
@@ -207,10 +209,5 @@ Ismerje meg, hogyan javíthatja a Mobile Engagement segítségével a mobilappok
 
 ---
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

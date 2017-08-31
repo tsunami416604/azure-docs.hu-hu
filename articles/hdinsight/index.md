@@ -2,7 +2,7 @@
 title: "Az Azure HDInsight dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Információk a HDInsight-alapú Hadoopról. A dokumentációból megismerheti a Hadoop, Spark, HBase, R-Server stb. használatát a big data-betekintések feldolgozásához, elemzéséhez és kinyeréséhez."
 services: hdinsight
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

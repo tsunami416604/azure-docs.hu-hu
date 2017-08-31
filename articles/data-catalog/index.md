@@ -2,7 +2,7 @@
 title: "Az Azure Data Catalog dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan állíthat be egy adatkatalógust, ahol a szervezete megtalálhat, megismerhet és felhasználhat adatforrásokat. Oktatóanyagok, API-referenciák és egyéb dokumentáció."
 services: data-catalog
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

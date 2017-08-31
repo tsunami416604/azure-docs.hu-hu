@@ -2,7 +2,7 @@
 title: "Az Azure Batch dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogy a Batch hogyan használható a nagy léptékű párhuzamos és nagy teljesítményű feldolgozási alkalmazások futtatására. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 services: batch
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

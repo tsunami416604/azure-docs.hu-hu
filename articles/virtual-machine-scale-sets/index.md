@@ -2,7 +2,7 @@
 title: "Az Azure Virtual Machine Scale Sets dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan használhatja a virtuálisgép-méretezési csoportokat automatikus skálázási, nagy számítási igényű, „big data” típusú, és tárolóalapú megoldásokkal rendelkező Windows vagy Linux rendszerű virtuális gépek létrehozására."
 services: virtual-machine-scale-sets
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,10 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
 ms.openlocfilehash: c03fc321082b8be9044faf0e57e2f26ddc22c243
+ms.contentlocale: hu-hu
 ms.lasthandoff: 04/12/2017
 
 ---

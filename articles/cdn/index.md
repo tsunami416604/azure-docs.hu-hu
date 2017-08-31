@@ -2,7 +2,7 @@
 title: "Az Azure CDN dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan használhatja a Content Delivery Network (CDN) szolgáltatást a tartalom globális adatközpontból bármilyen eszközre végzett továbbítására. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
 services: cdn
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

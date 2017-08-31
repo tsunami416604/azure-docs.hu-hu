@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag – 8. lecke: Perspektívák létre
 description: "Ismerteti a perspektívák létrehozását az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

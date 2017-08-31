@@ -2,7 +2,7 @@
 title: "Az Azure Operations Management Suite (OMS) dokumentációja – oktatóanyagok | Microsoft Docs"
 description: "A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében. Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz."
 services: operations-management-suite
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,9 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ccfbd45def1ecf036a2464f560aa89817c37b419
 ms.openlocfilehash: 54b3ce2c8c3966ee36350fed71bdc48aa5bffa63
+ms.contentlocale: hu-hu
+ms.lasthandoff: 02/09/2017
 
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Mi az az Operations Management Suite (OMS)?
@@ -51,10 +53,5 @@ A biztonsági és megfelelőségi funkciók segítenek azonosítani, felmérni �
 * További tudnivalók az [Azure Automation](../automation/automation-intro.md) szolgáltatásról.
 * További tudnivalók az [Azure Backup](http://azure.microsoft.com/documentation/services/backup) szolgáltatásról.
 * További tudnivalók az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) szolgáltatásról.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

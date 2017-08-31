@@ -1,23 +1,18 @@
-| Erőforrás | Alapértelmezett korlát | Megjegyzés |
+| Resource | Default limit | Note |
 | --- | --- | --- |
-| Application Gateway |előfizetésenként&50; | |
-| Előtérbeli IP-konfigurációk |2 |1 nyilvános és 1 magán |
-| Előtérbeli portok |20 | |
-| Háttércímkészletek |20 | |
-| Készletenkénti háttérkiszolgálók |100 | |
-| HTTP-figyelők |20 | |
-| HTTP-terheléselosztási szabályok |200 |# HTTP-figyelők száma * n, n=10 (alapértelmezett érték) |
-| Háttérbeli HTTP-beállítások |20 |Háttércímkészletenként&1; |
-| Átjárónkénti példányok száma |10 | |
-| SSL-tanúsítványok |20 |HTTP-figyelőnként&1; |
-| Hitelesítési tanúsítványok |5 | Legfeljebb 10 |
-| Kérelem minimális időtúllépése |1 másodperc | |
-| Kérelem maximális időtúllépése |24 óra | |
-| Helyek száma |20 |HTTP-figyelőnként&1; |
-| Figyelőnkénti URL-címleképezések száma |1 | |
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+| Application Gateway |50 per subscription | Maximum 100 |
+| Frontend IP Configurations |2 |1 public and 1 private |
+| Frontend Ports |20 | |
+| Backend Address Pools |20 | |
+| Backend Servers per pool |100 | |
+| HTTP Listeners |20 | |
+| HTTP load balancing rules |200 |# of HTTP Listeners * n, n=10 Default |
+| Backend HTTP settings |20 |1 per Backend Address Pool |
+| Instances per gateway |10 | |
+| SSL certificates |20 |1 per HTTP Listeners |
+| Authentication certificates |5 | Maximum 10 |
+| Request time out min |1 second | |
+| Request time out max |24 hrs | |
+| Number of sites |20 |1 per HTTP Listeners |
+| URL Maps per listener |1 | |
 

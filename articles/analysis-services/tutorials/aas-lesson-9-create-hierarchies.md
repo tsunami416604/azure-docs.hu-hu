@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag – 9. lecke: Hierarchiák létreho
 description: 
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

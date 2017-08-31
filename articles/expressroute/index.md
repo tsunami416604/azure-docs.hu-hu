@@ -2,7 +2,7 @@
 title: "Az Azure ExpressRoute dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan konfigurálhat és kezelhet egy, a Microsoft felhőszolgáltatáshoz a helyszíni infrastruktúráról vagy közös elhelyezési létesítményből csatlakozó privát ExpressRoute-kapcsolatot."
 services: expressroute
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

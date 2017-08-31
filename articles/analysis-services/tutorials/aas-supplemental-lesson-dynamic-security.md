@@ -3,7 +3,7 @@ title: "Azure Analysis Services oktatóanyag – kiegészítő lecke: Dinamikus 
 description: "Ismerteti a dinamikus biztonság sorszűrőkkel való használatát az Azure Analysis Services oktatóanyagban."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

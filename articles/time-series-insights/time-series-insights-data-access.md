@@ -8,7 +8,7 @@ author: op-ravi
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -33,8 +33,8 @@ A Time Series Insights-környezetek két különböző típusú hozzáférési h
 Mindkét házirend különféle engedélyeket biztosít az Azure Active Directory rendszerbiztonsági tagjai (felhasználók és alkalmazások) számára egy adott környezetre vonatkozóan. A rendszerbiztonsági tagoknak (felhasználóknak és alkalmazásoknak) a környezetet tartalmazó előfizetéshez társított Active Directoryhoz (vagy „Azure-bérlőhöz”) kell tartozniuk.
 
 A felügyeleti hozzáférési házirendek a környezet konfigurálásához kapcsolódó engedélyeket biztosítanak, például:
-*    A környezet létrehozása vagy törlése, eseményforrások, referencia-adatkészletek; valamint
-*    Az adathozzáférési házirendek felügyelete.
+*   A környezet létrehozása vagy törlése, eseményforrások, referencia-adatkészletek; valamint
+*   Az adathozzáférési házirendek felügyelete.
 
 Az adathozzáférési házirendek a következőkhöz biztosítanak engedélyeket: adatlekérdezések kiadása, referenciaadatok módosítása a környezetben, valamint a környezethez társított mentett lekérdezések és perspektívák megosztása.
 
@@ -43,30 +43,30 @@ A házirendek két típusa lehetővé teszi a környezet felügyeletéhez tört�
 ## <a name="grant-data-access"></a>Adathozzáférés biztosítása
 A következő lépések bemutatják, hogyan biztosítható adathozzáférés egy felhasználó rendszerbiztonsági tag számára:
 
-1.    Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2.    Az Azure Portal bal oldali menüjében kattintson a „Minden erőforrás” lehetőségre.
-3.    Válassza ki az Azure Time Series Insights-környezetet.
+1.  Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+2.  Az Azure Portal bal oldali menüjében kattintson a „Minden erőforrás” lehetőségre.
+3.  Válassza ki az Azure Time Series Insights-környezetet.
 
   ![A Time Series Insights-forrás felügyelete – környezet](media/data-access/getstarted-grant-data-access1.png)
 
-4.    Válassza az „Adatsík-hozzáférés” lehetőséget, majd kattintson a „Hozzáadás” gombra.
+4.  Válassza az „Adatsík-hozzáférés” lehetőséget, majd kattintson a „Hozzáadás” gombra.
 
   ![A Time Series Insights-forrás felügyelete – hozzáadás](media/data-access/getstarted-grant-data-access2.png)
 
-5.    Kattintson a „Felhasználó kiválasztása” gombra.
-6.    Keresse meg és válassza ki a felhasználót e-mail-cím alapján.
-7.    Kattintson a „Kiválasztás” gombra a „Felhasználó kiválasztása” panelen.
+5.  Kattintson a „Felhasználó kiválasztása” gombra.
+6.  Keresse meg és válassza ki a felhasználót e-mail-cím alapján.
+7.  Kattintson a „Kiválasztás” gombra a „Felhasználó kiválasztása” panelen.
 
   ![A Time Series Insights-forrás felügyelete – felhasználó kiválasztása](media/data-access/getstarted-grant-data-access3.png)
 
-8.    Kattintson a „Szerepkör kiválasztása” gombra.
-9.    Válassza a „Közreműködő” lehetőséget, ha engedélyezni szeretné a felhasználó számára, hogy módosítsa a referenciaadatokat és megoszthassa a mentett lekérdezéseket és perspektívákat a környezet más felhasználóival. Egyéb esetben válassza az „Olvasó” lehetőséget. Ekkor a felhasználó lekérdezheti a környezet adatait, és személyes (nem megosztott) lekérdezéseket menthet a környezetben.
-10.    Kattintson az „OK” gombra a „Szerepkör kiválasztása” panelen.
+8.  Kattintson a „Szerepkör kiválasztása” gombra.
+9.  Válassza a „Közreműködő” lehetőséget, ha engedélyezni szeretné a felhasználó számára, hogy módosítsa a referenciaadatokat és megoszthassa a mentett lekérdezéseket és perspektívákat a környezet más felhasználóival. Egyéb esetben válassza az „Olvasó” lehetőséget. Ekkor a felhasználó lekérdezheti a környezet adatait, és személyes (nem megosztott) lekérdezéseket menthet a környezetben.
+10. Kattintson az „OK” gombra a „Szerepkör kiválasztása” panelen.
 
   ![A Time Series Insights-forrás felügyelete – szerepkör kiválasztása](media/data-access/getstarted-grant-data-access4.png)
 
-11.    Kattintson az „OK” gombra a „Felhasználói szerepkör kiválasztása” panelen.
-12.    A következőnek kell megjelennie:
+11. Kattintson az „OK” gombra a „Felhasználói szerepkör kiválasztása” panelen.
+12. A következőnek kell megjelennie:
 
   ![A Time Series Insights-forrás felügyelete – eredmények](media/data-access/getstarted-grant-data-access5.png)
 

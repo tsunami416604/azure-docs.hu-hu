@@ -2,7 +2,7 @@
 title: "Az Azure Backup dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "A biztonsági mentések felhőben való létrehozásának folyamatát a Backup dokumentációjából ismerheti meg. Tekintse meg az alkalmazások, Windows-kiszolgálók és Azure virtuális gépek biztonsági mentését bemutató oktatóanyagokat és videókat."
 services: backup
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

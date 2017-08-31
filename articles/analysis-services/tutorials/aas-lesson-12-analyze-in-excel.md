@@ -3,7 +3,7 @@ title: "Azure Analysis Services-oktatóanyag – 12. lecke: Elemzés az Excelben
 description: "A lecke azt ismerteti, hogyan használható az Elemzés az Excelben az Azure Analysis Services oktatóprojektjében."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
