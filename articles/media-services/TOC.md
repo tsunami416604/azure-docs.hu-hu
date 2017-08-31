@@ -190,6 +190,7 @@
 #### [Adobe Open Source Media Framework-lejátszók](media-services-use-osmf-smooth-streaming-client-plugin.md)
 ### [Hirdetések ügyféloldali beillesztése](media-services-inserting-ads-on-client-side.md)
 ### [A Microsoft Smooth Streaming ügyfélportolási készlet licencelése](media-services-sspk.md)
+### [AES-sel titkosított HLS lejátszása a Safariban](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
 
 ## Integrálás
 ### [Az Azure Functions használata a Media Services szolgáltatással](media-services-dotnet-how-to-use-azure-functions.md)

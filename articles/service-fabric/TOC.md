@@ -18,7 +18,9 @@
 # Példák
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
-## [Azure CLI](samples-cli.md)
+## [Service Fabric parancssori felület](samples-cli.md)
+### [Minta üzembe helyezése](scripts/cli-deploy-application.md)
+### [Minta eltávolítása](scripts/cli-remove-application.md)
 # Alapelvek
 ## [A mikroszolgáltatások ismertetése](service-fabric-overview-microservices.md)
 ## [Nagyméretű kép](service-fabric-content-roadmap.md)
@@ -176,11 +178,14 @@
 #### Bevezetés
 ##### [C# Windowson](service-fabric-reliable-actors-get-started.md)
 ##### [Java Linuxon](service-fabric-reliable-actors-get-started-java.md)
+##### [Java Actor Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
 #### [Értesítések küldése](service-fabric-reliable-actors-events.md)
 #### [Időzítők és emlékeztetők beállítása](service-fabric-reliable-actors-timers-reminders.md)
 #### [KvsActorStateProvider konfigurálása](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [Kommunikációs beállítások konfigurálása](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [ReliableDictionaryActorStateProvider konfigurálása](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
+
+### [Régi Java-alkalmazás migrálása a Maven támogatására](service-fabric-migrate-old-javaapp-to-use-maven.md)
 
 ### [Fordított proxy konfigurálása biztonságos kommunikációhoz](service-fabric-reverseproxy-configure-secure-communication.md)
 
@@ -218,7 +223,7 @@
 ### Alkalmazások üzembe helyezése vagy eltávolítása
 #### [Alkalmazások telepítése helyi fürtre](service-fabric-get-started-with-a-local-cluster.md)
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
-#### [Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md)
+#### [Service Fabric parancssori felület](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API-k](service-fabric-deploy-remove-applications-fabricclient.md)
 
@@ -253,6 +258,7 @@
 #### [Frissítés](service-fabric-cluster-upgrade.md)
 #### [Hozzáférés-vezérlés beállítása](service-fabric-cluster-security-roles.md)
 #### [Konfigurálás](service-fabric-cluster-fabric-settings.md)
+#### [Port megnyitása a terheléselosztóban](create-load-balancer-rule.md)
 #### [Fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md)
 #### [Törlés](service-fabric-cluster-delete.md)
 
@@ -272,8 +278,7 @@
 ### [Fürt ábrázolása](service-fabric-visualizing-your-cluster.md)
 ### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
 
-### [Fürt kezelése az XPlat CLI használatával](service-fabric-azure-cli.md)
-### [Fürt kezelése az Azure CLI-2.0-parancsokkal](service-fabric-azure-cli-2-0.md)
+### [Fürt kezelése a Service Fabric parancssori felülettel](service-fabric-cli.md)
 ### [Fürtcsomópontok javítása](service-fabric-patch-orchestration-application.md)
 
 ### Fürterőforrások kezelése és összehangolása

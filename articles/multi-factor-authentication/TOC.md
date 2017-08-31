@@ -21,6 +21,7 @@
 #### [A felhasználói portál telepítése](multi-factor-authentication-get-started-portal.md)
 #### [Speciális VPN-konfigurációk](multi-factor-authentication-advanced-vpn-configurations.md)
 #### [Mobile App Web Service](multi-factor-authentication-get-started-server-webservice.md)
+#### [Magas rendelkezésre állás konfigurálása](mfa-server-high-availability.md)
 #### [Windows-hitelesítés](multi-factor-authentication-get-started-server-windows.md)
 #### [MFA-kiszolgáló frissítése](multi-factor-authentication-server-upgrade.md)
 #### [Frissítés a PhoneFactor szolgáltatásról](multi-factor-authentication-get-started-server-upgrade.md)

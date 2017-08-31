@@ -56,9 +56,12 @@
 ## [Egyéni szabályzatok](active-directory-b2c-overview-custom.md)
 ## Útmutatók
 ### [Első lépések](active-directory-b2c-get-started-custom.md)
-### OIDC-szolgáltatók konfigurálása
+### OIDC/OAUTH2-szolgáltatók konfigurálása
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
+#### [Microsoft-fiók](active-directory-b2c-custom-setup-msa-idp.md)
+#### [Google +](active-directory-b2c-custom-setup-goog-idp.md)
 ### SAML-szolgáltatók konfigurálása
+#### [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md)
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### RESTful API-k integrálása
 #### [Felhasználó által megadott adatok érvényesítése](active-directory-b2c-rest-api-validation-custom.md)
@@ -72,7 +75,7 @@
 #### [Naplók gyűjtése az Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)
 ## Referencia
 ### [Kibocsátási megjegyzések](active-directory-b2c-developer-notes-custom.md)
-
+### [A bizalmi keretrendszer meghatározása](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## Szószedet

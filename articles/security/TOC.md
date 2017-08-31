@@ -8,6 +8,7 @@
 ## [A Service Fabric biztonsága](azure-service-fabric-security-overview.md)
 ## [Identitáskezelés](security-identity-management-overview.md)
 ## [IoT-biztonság](../iot-suite/iot-security-architecture.md#security-in-iot)
+## [Az Azure-titkosítás áttekintése](security-azure-encryption-overview.md)
 ## [Biztonsági architektúra](azure-security-architecture-overview.md)
 ### [Működési biztonság engedélyezése](azure-operational-security.md)
 ### [Fejlett fenyegetésészlelés](azure-threat-detection.md)
@@ -30,7 +31,7 @@
 
 ## Tárbiztonság
 ### [Az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások](azure-security-data-encryption-best-practices.md)
-### [Biztonsági útmutató a tároláshoz](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Biztonsági útmutató a tároláshoz](../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 ## Számítási biztonság
 ### [Ajánlott eljárások Azure-beli virtuális gépekhez](azure-security-best-practices-vms.md)
@@ -63,11 +64,12 @@
 
 ## PaaS szolgáltatások
 ### [PaaS-környezetek védelme](security-paas-deployments.md)
-#### [PaaS web- és mobilalkalmazások védelme SQL-lel](security-paas-applications-using-sql.md)
-#### [Ajánlott biztonsági eljárások az SQL Database-re vonatkozóan](azure-database-security-best-practices.md)
-#### [SQL Database biztonsági ellenőrzőlista](azure-database-security-checklist.md)
 #### [PaaS web- és mobilalkalmazások védelme az App Services segítségével](security-paas-applications-using-app-services.md)
+#### [PaaS web- és mobilalkalmazások védelme SQL-lel](security-paas-applications-using-sql.md)
+##### [Ajánlott biztonsági eljárások az SQL Database-re vonatkozóan](azure-database-security-best-practices.md)
+##### [SQL Database biztonsági ellenőrzőlista](azure-database-security-checklist.md)
 ####[Működési biztonsági ellenőrzőlista](azure-operational-security-checklist.md)
+#### [PaaS web- és mobilalkalmazások védelme az Azure Storage segítségével](security-paas-applications-using-storage.md)
 
 ## Eszközök internetes hálózata
 ### [Az IoT-környezet biztonságossá tétele](../iot-suite/iot-suite-security-deployment.md)
@@ -97,13 +99,17 @@
 ## [Biztonsági kurzusok a Virtuális Akadémián](security-microsoft-virtual-academy.md)
 ## [Biztonsággal kapcsolatos videók a Channel 9 blogon](security-channel-nine.md)
 ## [Fenyegetésmodellezési eszköz](azure-security-threat-modeling-tool.md)
-###[Audit és naplózás](azure-security-threat-modeling-tool-auditing-and-logging.md)
-###[Hitelesítés](azure-security-threat-modeling-tool-authentication.md)
-###[Engedélyezés](azure-security-threat-modeling-tool-authorization.md)
-###[Kommunikációs biztonság](azure-security-threat-modeling-tool-communication-security.md)
-###[Konfigurációkezelés](azure-security-threat-modeling-tool-configuration-management.md)
-###[Titkosítás](azure-security-threat-modeling-tool-cryptography.md)
-###[Kivételek kezelése](azure-security-threat-modeling-tool-exception-management.md)
-###[Bemenet-ellenőrzés](azure-security-threat-modeling-tool-input-validation.md)
-###[Bizalmas adatok](azure-security-threat-modeling-tool-sensitive-data.md)
-###[Munkamenet-kezelés](azure-security-threat-modeling-tool-session-management.md)
+### [Első lépések](azure-security-threat-modeling-tool-getting-started.md)
+### [A funkciók áttekintése](azure-security-threat-modeling-tool-feature-overview.md)
+### [Fenyegetések](azure-security-threat-modeling-tool-threats.md)
+### [Kezelési lehetőségek](azure-security-threat-modeling-tool-mitigations.md)
+#### [Audit és naplózás](azure-security-threat-modeling-tool-auditing-and-logging.md)
+#### [Hitelesítés](azure-security-threat-modeling-tool-authentication.md)
+#### [Engedélyezés](azure-security-threat-modeling-tool-authorization.md)
+#### [Kommunikációs biztonság](azure-security-threat-modeling-tool-communication-security.md)
+#### [Konfigurációkezelés](azure-security-threat-modeling-tool-configuration-management.md)
+#### [Titkosítás](azure-security-threat-modeling-tool-cryptography.md)
+#### [Kivételek kezelése](azure-security-threat-modeling-tool-exception-management.md)
+#### [Bemenet-ellenőrzés](azure-security-threat-modeling-tool-input-validation.md)
+#### [Bizalmas adatok](azure-security-threat-modeling-tool-sensitive-data.md)
+#### [Munkamenet-kezelés](azure-security-threat-modeling-tool-session-management.md)

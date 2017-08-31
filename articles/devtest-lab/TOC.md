@@ -42,8 +42,11 @@
 ## Újrahasznosítható sablonok kezelése
 ### [Git-adattár hozzáadása összetevők és sablonok tárolásához](devtest-lab-add-artifact-repo.md)
 ### [Resource Manager-sablon használata](devtest-lab-use-resource-manager-template.md)
-### [Egyéni összetevők létrehozása](devtest-lab-artifact-author.md)
 ### [Képletek kezelése](devtest-lab-manage-formulas.md)
+
+## Összetevők kezelése
+### [Egyéni összetevők létrehozása](devtest-lab-artifact-author.md)
+### [Az összetevők hibáinak diagnosztizálása](devtest-lab-troubleshoot-artifact-failure.md)
 
 ## Virtuális hálózatok kezelése
 ### [Virtuális hálózatok konfigurálása](devtest-lab-configure-vnet.md)

@@ -18,89 +18,92 @@ abstract:
   description: 'Az Azure Linux virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Red Hat, Ubuntu vagy bármely tetszőleges Linux disztribúció használatával. Ismerje meg, hogyan hozhat létre, konfigurálhat, felügyelhet és méretezhet Linux virtuális gépeket a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png
-      width: 250  
+      src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png'
+      width: 250
     title: 'Hozzon létre egy Linux rendszerű virtuális gépet. (4:11)'
-    href: https://azure.microsoft.com/en-us/resources/videos/create-linux-virtual-machine/
+    href: 'https://azure.microsoft.com/en-us/resources/videos/create-linux-virtual-machine/'
     width: 250
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan lehet egy Ubuntut futtató virtuális gépet üzembe helyezni egy NGINX-webkiszolgálón belül:'
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan telepíthet, kezelhet és méretezhet biztonságos Linux rendszerű virtuális gépeket az Azure-ban'
-  - type: list
-    style: ordered
+  - title: 5 perces gyors útmutatók
     items:
-    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Linux rendszerű virtuális gépek létrehozása és felügyelete</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">Virtuálisgép-lemezek létrehozása és kezelése</a></li>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">Virtuálisgép-konfiguráció létrehozása</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">Egyéni virtuálisgép-rendszerképek létrehozása</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">Magas rendelkezésre állású virtuális gépek létrehozása</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">Virtuálisgép-méretezési csoport létrehozása</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Virtuális gépek terheléselosztása</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Virtuális gépek és virtuális hálózatok kezelése</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Virtuális gépek biztonsági mentése</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Virtuális gépek figyelése</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Virtuális gépek biztonságának kezelése</a>
-    - html: '<a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">CI/CD-infrastruktúra létrehozása a Jenkins, a Docker és a GitHub használatával</a>'
-- title: Ingyenes PluralSight videós képzés
-  items:
-  - type: list
-    style: cards
-    className: cardsW
+      - type: paragraph
+        text: 'Megtudhatja, hogyan lehet egy Ubuntut futtató virtuális gépet üzembe helyezni egy NGINX-webkiszolgálón belül:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
+            text: Azure CLI
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/portal.svg'
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+  - title: Részletes útmutatók
     items:
-    - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Infrastruktúra kezelése</a></p>'
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-infrastructure.png
-        href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">A Virtual Machines használatának első lépései</a></p>'
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-vms.png
-        href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Az IaaS megfigyelés használatának első lépései</a></p>'
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-iaas-monitoring.png
-        href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-- title: Példák
-  items:
-  - type: paragraph
-    text: Az első alkalmazás telepítése az Azure-ban.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Megtudhatja, hogyan telepíthet, kezelhet és méretezhet biztonságos Linux rendszerű virtuális gépeket az Azure-ban'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Linux rendszerű virtuális gépek létrehozása és felügyelete</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">Virtuálisgép-lemezek létrehozása és kezelése</a></li>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">Virtuálisgép-konfiguráció létrehozása</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">Egyéni virtuálisgép-rendszerképek létrehozása</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">Magas rendelkezésre állású virtuális gépek létrehozása</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">Virtuálisgép-méretezési csoport létrehozása</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Virtuális gépek terheléselosztása</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Virtuális gépek és virtuális hálózatok kezelése</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Virtuális gépek biztonsági mentése</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Virtuális gépek figyelése</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Virtuális gépek biztonságának kezelése</a>
+          - html: '<a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">CI/CD-infrastruktúra létrehozása a Jenkins, a Docker és a GitHub használatával</a>'
+          - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">CI/CD a Team Services használatával</a>
+          - html: 'Webkiszolgáló-verem létrehozása a <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, a <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> vagy a <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a> segítségével'
+          - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Webkiszolgáló védelme SSL-lel</a>
+  - title: Ingyenes PluralSight videós képzés
     items:
-    - html: <a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Azure CLI</a>
-    - html: <a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsW
+        items:
+          - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Infrastruktúra kezelése</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-infrastructure.png'
+              href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">A Virtual Machines használatának első lépései</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-vms.png'
+              href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Az IaaS megfigyelés használatának első lépései</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-iaas-monitoring.png'
+              href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+  - title: Példák
     items:
-    - title: Parancssor
-      html: <p><a href="/cli/azure/vm">Azure CLI</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-    - title: Nyelvek
-      html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
-    - title: REST
-      html: <p><a href="/rest/api/compute">REST API-referencia</a></p>
+      - type: paragraph
+        text: Az első alkalmazás telepítése az Azure-ban.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Azure CLI</a>
+          - html: <a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/cli/azure/vm">Azure CLI</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
+          - title: Nyelvek
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/compute">REST API-referencia</a></p>

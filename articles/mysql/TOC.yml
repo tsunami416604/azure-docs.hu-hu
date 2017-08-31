@@ -29,6 +29,8 @@
           href: connect-cpp.md
         - name: Indítás
           href: connect-go.md
+        - name: MySQL Workbench
+          href: connect-workbench.md
 - name: oktatóanyagokat
   items:
     - name: 1 – Adatbázis-tervezés

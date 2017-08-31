@@ -15,11 +15,11 @@
 ### [Online szimulátor használata](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
 ### [Fizikai eszköz használata](iot-hub-get-started-physical.md)
+#### [Raspberry Pi és Python](iot-hub-raspberry-pi-kit-python-get-started.md)
 #### [Raspberry Pi és Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [Raspberry Pi és C](iot-hub-raspberry-pi-kit-c-get-started.md)
-#### [Raspberry Pi és Python](iot-hub-raspberry-pi-kit-python-get-started.md)
 
-#### [IoT fejlesztői készlet Visual Studio Code-dal](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+#### [MXChip IoT fejlesztői készlet és Arduino](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 
 #### [Intel Edison és Node.js](iot-hub-intel-edison-kit-node-get-started.md)
 #### [Intel Edison és C](iot-hub-intel-edison-kit-c-get-started.md)

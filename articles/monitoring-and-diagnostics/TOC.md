@@ -64,6 +64,7 @@
 ## [Megfigyelési adatok forrásai](monitoring-data-sources.md)
 ## [A támogatott mérőszámok listája](monitoring-supported-metrics.md)
 ## [Tevékenységnapló eseménysémája](monitoring-activity-log-schema.md)
+## [Támogatott szolgáltatások, kategóriák és sémák a diagnosztikai naplókhoz](monitoring-diagnostic-logs-schema.md)
 ## [PowerShell](/powershell/module/azurerm.insights)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST](/rest/api/monitor/)

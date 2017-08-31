@@ -59,7 +59,7 @@
               href: container-service-monitoring-dynatrace.md
     - name: Docker Swarm
       items:
-        - name: 'A Swarm mód: rövid útmutató'
+        - name: A Docker CE rövid útmutatója
           href: container-service-swarm-mode-walkthrough.md
         - name: A Docker és a Docker Compose
           href: container-service-docker-swarm.md

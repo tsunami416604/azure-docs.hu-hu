@@ -39,6 +39,8 @@
       href: tutorial-azure-security.md
     - name: 12 – Team Services CI/CD
       href: tutorial-vsts-iis-cicd.md
+    - name: 13 – Biztonságos webkiszolgáló SSL-lel
+      href: tutorial-secure-web-server.md
 - name: Példák
   items:
     - name: PowerShell
@@ -50,7 +52,7 @@
     - name: Régiók és rendelkezésre állás
       href: regions-and-availability.md
     - name: Tárolás
-      href: ../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: about-disks-and-vhds.md
     - name: Hálózat
       href: network-overview.md
     - name: Virtuális gépek méretezési csoportjai
@@ -106,6 +108,10 @@
           href: csharp.md
         - name: 'Sablon használata a C#-vel'
           href: csharp-template.md
+        - name: Virtuális gép létrehozása Chef használatával
+          href: chef-automation.md
+        - name: Java használata
+          href: java.md
         - name: A Python használata
           href: python.md
         - name: Sablon használata
@@ -205,6 +211,10 @@
               href: excel-cluster-hpcpack.md
     - name: Tárhely kezelése
       items:
+        - name: Információk a felügyelt lemezekről
+          href: managed-disks-overview.md
+        - name: Lemezek – Gyakori kérdések
+          href: faq-for-disks.md
         - name: Lemez hozzáadása
           items:
             - name: Azure PowerShell
@@ -217,12 +227,14 @@
           href: expand-os-disk.md
         - name: Lemez pillanatképének elkészítése
           href: snapshot-copy-managed-disk.md
+        - name: Nem felügyelt lemezek biztonsági mentése
+          href: incremental-snapshots.md
         - name: Lemez konvertálása a standard és a prémium szint között
           href: convert-disk-storage.md
-        - name: Lemezek – Gyakori kérdések
-          href: ../../storage/storage-faq-for-disks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Fájltároló használata
           href: mount-azure-file-storage.md
+        - name: Lemezek üzembe helyezése sablonnal
+          href: using-managed-disks-template-deployments.md
         - name: Migrálás felügyelt lemezekre
           href: migrate-to-managed-disks.md
           items:

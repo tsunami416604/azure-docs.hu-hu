@@ -4,7 +4,7 @@ title: Windows rendszerű virtuális gépek – dokumentáció
 metadata:
   document_id: 1d98d530-28c7-635f-d41b-8da3ae02970c
   title: Az Azure Windows Virtual Machines dokumentációja – oktatóanyagok és API-referencia
-  meta.description: Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.
+  meta.description: 'Learn how to create Windows virtual machines. Documentation helps you plan, deploy, and manage a virtual machine computing environment in the cloud.'
   services: virtual-machines\windows
   author: czeumault
   manager: carolz
@@ -18,89 +18,90 @@ abstract:
   description: 'Az Azure Windows virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Windows Server használatával. Ismerje meg, hogyan hozhat létre, konfigurálhat, felügyelhet és méretezhet Windows virtuális gépeket a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/create-windows-server-virtual-machine.png
-      width: 250  
+      src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/create-windows-server-virtual-machine.png'
+      width: 250
     title: 'Hozzon létre egy Windows Server virtuális gépet. (3:58)'
-    href: https://azure.microsoft.com/en-us/resources/videos/create-windows-server-virtual-machine/
+    href: 'https://azure.microsoft.com/en-us/resources/videos/create-windows-server-virtual-machine/'
     width: 250
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan lehet egy Windows Server 2016-ot futtató virtuális gépet üzembe helyezni egy IIS webkiszolgálón belül:'
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan telepíthet, kezelhet és figyelhet biztonságos Windows rendszerű virtuális gépeket az Azure-ban'
-  - type: list
-    style: ordered
+  - title: 5 perces gyors útmutatók
     items:
-    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-vm">Windows rendszerű virtuális gépek létrehozása és felügyelete</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">Virtuálisgép-lemezek létrehozása és kezelése</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">Virtuálisgép-konfiguráció létrehozása</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-custom-images">Egyéni virtuálisgép-rendszerképek létrehozása</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-availability-sets">Magas rendelkezésre állású virtuális gépek létrehozása</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-create-vmss">Virtuálisgép-méretezési csoport létrehozása</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-load-balancer">Virtuális gépek terheléselosztása</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-virtual-network">Virtuális gépek kezelése virtuális hálózatokkal</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-backup-vms">Virtuális gépek biztonsági mentése</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">Virtuális gépek figyelése</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Virtuális gépek biztonságának kezelése</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Folyamatos integrációs folyamat létrehozása a Visual Studio használatával</a>
-- title: Ingyenes PluralSight videós képzés
-  items:
-  - type: list
-    style: cards
-    className: cardsW
+      - type: paragraph
+        text: 'Megtudhatja, hogyan lehet egy Windows Server 2016-ot futtató virtuális gépet üzembe helyezni egy IIS webkiszolgálón belül:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/portal.svg'
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/cli.svg'
+            text: Azure CLI
+            href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json'
+  - title: Részletes útmutatók
     items:
-    - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Infrastruktúra kezelése</a></p>'
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-infrastructure.png
-        href: https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">A Virtual Machines használatának első lépései</a></p>'
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-vms.png
-        href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Az IaaS megfigyelés használatának első lépései</a></p>'
-      image: 
-        src: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-iaas-monitoring.png
-        href: https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-- title: Példák
-  items:
-  - type: paragraph
-    text: Az első alkalmazás telepítése az Azure-ban.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Megtudhatja, hogyan telepíthet, kezelhet és figyelhet biztonságos Windows rendszerű virtuális gépeket az Azure-ban'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-machines/windows/tutorial-manage-vm">Windows rendszerű virtuális gépek létrehozása és felügyelete</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-manage-data-disk">Virtuálisgép-lemezek létrehozása és kezelése</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-automate-vm-deployment">Virtuálisgép-konfiguráció létrehozása</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-custom-images">Egyéni virtuálisgép-rendszerképek létrehozása</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-availability-sets">Magas rendelkezésre állású virtuális gépek létrehozása</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-create-vmss">Virtuálisgép-méretezési csoport létrehozása</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-load-balancer">Virtuális gépek terheléselosztása</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-virtual-network">Virtuális gépek kezelése virtuális hálózatokkal</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-backup-vms">Virtuális gépek biztonsági mentése</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">Virtuális gépek figyelése</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Virtuális gépek biztonságának kezelése</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Folyamatos integrációs folyamat létrehozása a Visual Studio használatával</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">Webkiszolgáló védelme SSL-lel</a>
+  - title: Ingyenes PluralSight videós képzés
     items:
-    - html: <a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a>
-    - html: <a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsW
+        items:
+          - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Infrastruktúra kezelése</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-infrastructure.png'
+              href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">A Virtual Machines használatának első lépései</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-vms.png'
+              href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+          - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Az IaaS megfigyelés használatának első lépései</a></p>'
+            image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-iaas-monitoring.png'
+              href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
+  - title: Példák
     items:
-    - title: Parancssor
-      html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/vm">Azure CLI</a></p>
-    - title: Nyelvek
-      html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
-    - title: REST
-      html: <p><a href="/rest/api/compute">Compute – REST API-referencia</a></p>
+      - type: paragraph
+        text: Az első alkalmazás telepítése az Azure-ban.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure CLI</a>
+          - html: <a href="/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json">Azure PowerShell</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/vm">Azure CLI</a></p>
+          - title: Nyelvek
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/compute">Compute – REST API-referencia</a></p>

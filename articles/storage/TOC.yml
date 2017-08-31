@@ -1,0 +1,16 @@
+- name: Áttekintés
+  items:
+    - name: Bevezetés
+      href: ./common/storage-introduction.md
+    - name: 'Blobok, fájlok vagy adatlemezek választása'
+      href: ./common/storage-decide-blobs-files-disks.md
+- name: Blobok
+  href: ./blobs/storage-blobs-introduction.md
+- name: Fájlok
+  href: ./files/storage-files-introduction.md
+- name: Üzenetsorok
+  href: ./queues/storage-queues-introduction.md
+- name: Táblák
+  href: ../cosmos-db/table-storage-overview.md
+- name: Lemezek
+  href: ../virtual-machines/windows/managed-disks-overview.md
