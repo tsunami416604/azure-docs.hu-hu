@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4d7704c03bece51957efa2a56577b8808cc62c79
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: d86e47507f7a578e8a0affb690b6d96673b6b69a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Innen nem érheti el Windows-eszközről
@@ -47,7 +47,7 @@ Ha egy erőforráshoz egy nem támogatott böngésző miatt nem férhet hozzá, 
 
 ![„Innen nem érheti el” üzenetek nem támogatott böngészők esetén](./media/active-directory-conditional-access-device-remediation/02.png "Forgatókönyv")
 
-Az egyetlen javítási megoldás egy olyan böngésző használata, amelyet az alkalmazás támogat az adott eszközplatformon. A támogatott böngészők teljes listáját a [támogatott böngészők](active-directory-conditional-access-supported-apps.md#supported-browsers-for-device-based-policies) című témakörben találja.  
+Az egyetlen javítási megoldás egy olyan böngésző használata, amelyet az alkalmazás támogat az adott eszközplatformon. A támogatott böngészők teljes listáját a [támogatott böngészők](active-directory-conditional-access-supported-apps.md) című témakörben találja.  
 
 
 ## <a name="supported-versions-of-windows"></a>A Windows támogatott verziói

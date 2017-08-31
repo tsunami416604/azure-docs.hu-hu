@@ -13,24 +13,20 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/14/2017
+ms.date: 08/29/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 6d14719938af0ce825955389824441e111024869
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 60cb187cf40f72fce86c421891bea02d3d6d708a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Node.js-alkalmazás létrehozása a Graph API-val
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogy az Azure Portal segítségével hogyan hozhat létre Azure Cosmos DB-fiókot az előzetes verzióként elérhető Graph API-hoz, valamint adatbázist és gráfot. Ezután a nyílt forráskódú [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.  
-
-> [!NOTE]
-> A `gremlin-secure` npm-modul a `gremlin` modul módosított verziója, amely támogatja az Azure Cosmos DB-hez történő csatlakozáshoz szükséges SSL és SASL protokollt. A forráskód elérhető a [GitHubon](https://github.com/CosmosDB/gremlin-javascript).
->
+Ez a rövid útmutató bemutatja, hogy az Azure Portal segítségével hogyan hozhat létre Azure Cosmos DB-fiókot az előzetes verzióként elérhető Graph API-hoz, valamint adatbázist és gráfot. Ezután a nyílt forráskódú [Gremlin Node.js](https://www.npmjs.com/package/gremlin)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -133,7 +129,7 @@ module.exports = config;
 
 1. Nyisson meg egy terminálablakot, és a `cd` parancs használatával váltson a projektben lévő package.json fájl telepítési könyvtárára.  
 
-2. Futtassa az `npm install` parancsot a szükséges npm-modulok (köztük a `gremlin-secure`) telepítéséhez.
+2. Futtassa az `npm install` parancsot a szükséges npm-modulok (köztük a `gremlin`) telepítéséhez.
 
 3. Futtassa a `node app.js` parancsot egy terminálban a node-alkalmazás elindításához.
 

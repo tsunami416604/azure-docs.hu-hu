@@ -4,7 +4,7 @@ description: "Ismerje meg a Stream Analytics nevű felügyelt szolgáltatást, a
 keywords: "szolgáltatásként kínált elemzés, felügyelt szolgáltatások, streamfeldolgozás, streamelemzés, mi a stream analytics"
 services: stream-analytics
 documentationcenter: 
-author: jenniehubbard
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 613c9b01-d103-46e0-b0ca-0839fee94ca8
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/08/2017
-ms.author: jhubbard
+ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 5081ecaf569aef9e2f99cc27e91c4b64a25b0deb
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 6bb70ba7588b8c6e9261fca097403e7fccb041eb
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -98,6 +98,6 @@ A Stream Analytics felügyelt felhőbeli szolgáltatás segít megakadályozni a
 * Ismerje meg a Stream Analytics SQL-re hasonlító lekérdező nyelvét és az olyan egyedi fogalmakat, mint az [ablakfüggvények](stream-analytics-window-functions.md).
 * Megismerheti [a Stream Analytics-feladatok skálázását](stream-analytics-scale-jobs.md). 
 * Megtudhatja, hogyan [integrálhatja a Stream Analytics és az Azure Machine Learning szolgáltatást](stream-analytics-machine-learning-integration-tutorial.md).
-* A Stream Analyticsszel kapcsolatos kérdéseire az [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics) kaphat választ.
+* A Stream Analyticsszel kapcsolatos kérdéseire az [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) kaphat választ.
 
 

@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 14e2a14c74e00709e18a80325fbdd3cbcd71da37
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 89fa80b3e3409b7cd2f600776fffdeb3a5271b5d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>R Server a HDInsightban – első lépések
@@ -342,32 +342,37 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
 
 2. A következőhöz hasonló kimenetnek kell megjelennie:
     
-    R 3.2.2 (2015-08-14) verzió – „Fire Safety”  Copyright (C) 2015 The R Foundation for Statistical Computing  Platform: x86_64-pc-linux-gnu (64 bites)
+        R version 3.2.2 (2015-08-14) -- "Fire Safety"
+        Copyright (C) 2015 The R Foundation for Statistical Computing
+        Platform: x86_64-pc-linux-gnu (64-bit)
 
-    Az R egy ingyenes szoftver, és EGYÁLTALÁN SEMMILYEN JÓTÁLLÁS SEM vonatkozik rá.
-    Bizonyos feltételek teljesítése esetén nyugodtan terjesztheti.
-    A terjesztésre vonatkozó részletekért írja be a 'license()' vagy a 'licence()' parancsot.
+        R is free software and comes with ABSOLUTELY NO WARRANTY.
+        You are welcome to redistribute it under certain conditions.
+        Type 'license()' or 'licence()' for distribution details.
 
     Támogatja a természetes nyelveket, de angol területi beállítással fut
 
-    Az R egy együttműködésen alapuló projekt, sok hozzájárulóval.
-    További információért írja be a 'contributors()' parancsot, az R vagy az R-csomagok publikációkban történő idézésének módját pedig a 'citation()' beírásával ismerheti meg.
+        R is a collaborative project with many contributors.
+        Type 'contributors()' for more information and
+        'citation()' on how to cite R or R packages in publications.
 
-    Írja be a 'demo()' parancsot néhány bemutató, a 'help()' parancsot az online súgó megtekintéséhez vagy a 'help.start()' parancsot, ha HTML-böngészőfelületen szeretné megtekinteni a súgót.
-    Írja be a 'q()' parancsot a kilépéshez.
+        Type 'demo()' for some demos, 'help()' for on-line help, or
+        'help.start()' for an HTML browser interface to help.
+        Type 'q()' to quit R.
 
-    Microsoft R Server 8.0-s verzió: az R Microsoft-csomagok továbbfejlesztett terjesztési verziója Copyright (C) 2016 Microsoft Corporation
+        Microsoft R Server version 8.0: an enhanced distribution of R
+        Microsoft packages Copyright (C) 2016 Microsoft Corporation
 
     A kiadási megjegyzések megtekintéséhez írja be a 'readme()' parancsot.
     >
 
 3. A `>` adatkérésben beírhatja az R-kódot. Az R Server olyan csomagokat tartalmaz, amelyekkel könnyedén használhatja a Hadoopot és futtathat elosztott számításokat. A HDInsight-fürt alapértelmezett fájlrendszerének gyökerét például a következő paranccsal tekintheti meg:
 
-    rxHadoopListFiles("/")
+        rxHadoopListFiles("/")
 
 4. A WASB stíluscímzést is használhatja.
 
-    rxHadoopListFiles("wasb:///")
+        rxHadoopListFiles("wasb:///")
 
 
 ## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Az R Server használata HDI-n a Microsoft R Server vagy a Microsoft R ügyfél egy távoli példányáról
