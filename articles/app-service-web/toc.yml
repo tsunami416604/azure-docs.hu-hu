@@ -115,8 +115,8 @@
           items:
             - name: Áttekintés
               href: app-service-linux-intro.md
-            - name: Webapp létrehozása Linuxon
-              href: app-service-linux-how-to-create-web-app.md
+            - name: Felügyelet a parancssori felületen keresztül
+              href: app-service-linux-cli.md
             - name: Ruby-webapp Linuxon
               href: app-service-linux-ruby-get-started.md
             - name: Node.js-webapp Linuxon

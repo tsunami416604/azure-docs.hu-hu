@@ -6,6 +6,14 @@
 ### [Áttekintés](data-science-process-overview.md)
 ### [Életciklus](data-science-process-lifecycle.md)
 ### [Útmutatók](data-science-process-walkthroughs.md)
+####[Spark PySparkkal és Scalával](data-science-process-walkthroughs-spark.md)
+##### [Adatok megismerése](machine-learning-data-science-spark-data-exploration-modeling.md)
+##### [Relevanciamodellek](machine-learning-data-science-spark-model-consumption.md)
+##### [Speciális adatfeltárás](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
+####[Hive a HDInsight Hadooppal](data-science-process-walkthroughs-hdinsight-hadoop.md)
+####[U-SQL az Azure Data Lake-kel](data-science-process-walkthroughs-azure-data-lake.md)
+####[R, Python és T-SQL az SQL Serverrel](data-science-process-walkthroughs-sql-server.md)
+####[T-SQL és Python az SQL DW-vel](data-science-process-walkthroughs-sql-data-warehouse.md)
 ### [Azure ML használatával](http://aka.ms/datascienceprocess)
 
 ## Machine Learning Studio
@@ -100,12 +108,6 @@
 ##### [Az Azure Data Lake használata](machine-learning-data-science-process-data-lake-walkthrough.md)
 ##### [SQL virtuális gép használata](machine-learning-data-science-process-sql-server-virtual-machine.md)
 ##### [Adatfolyamat használata](machine-learning-automated-data-pipeline-cheat-sheet.md)
-#### Adatfeldolgozás a Spark használatával
-##### [Áttekintés](machine-learning-data-science-spark-overview.md)
-##### [Adatok megismerése](machine-learning-data-science-spark-data-exploration-modeling.md)
-##### [Relevanciamodellek](machine-learning-data-science-spark-model-consumption.md)
-##### [Speciális adatfeltárás](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)
-##### [Scala és Spark használata](machine-learning-data-science-process-scala-walkthrough.md)
 
 ## Modellek fejlesztése
 ### Funkciók tervezése és kiválasztása
@@ -166,11 +168,7 @@
 ### [Kísérleteket szemléltető példák](machine-learning-sample-experiments.md)
 ### [Mintaadatkészletek](machine-learning-use-sample-datasets.md)
 ### [Ügyfélforgalom példa](machine-learning-azure-ml-customer-churn-scenario.md)
-### Végpontok közötti forgatókönyvek
-#### [Hadoop-fürtök használata](machine-learning-data-science-process-hive-walkthrough.md)
-#### [1 TB-os Hadoop használata](machine-learning-data-science-process-hive-criteo-walkthrough.md)
-#### [SQL Server használata](machine-learning-data-science-process-sql-walkthrough.md)
-#### [SQL Data Warehouse használata](machine-learning-data-science-process-sqldw-walkthrough.md)
+
 
 # Referencia
 
