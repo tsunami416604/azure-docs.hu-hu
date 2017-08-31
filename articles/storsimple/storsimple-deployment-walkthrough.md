@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a14be6bf8135cdfc7e5b9eb3b6d7af3bdd4561a7
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2063acbafd6766d00dee9509ee7def73bdc5b982
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="deploy-your-on-premises-storsimple-device"></a>A helyszíni StorSimple eszköz üzembe helyezése
@@ -182,7 +183,7 @@ Hajtsa végre a következő lépéseket a klasszikus Azure portálon.
 > 
 > 
 
-A StorSimple-höz készült Windows PowerShell-lel végezze el a StorSimple eszköz kezdeti beállítását az alábbiakban ismertetett eljárás alapján. A lépés végrehajtásához terminálemulációs szoftverre lesz szüksége. További információ: [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz.](#use-putty-to-connect-to-the-device-serial-console).
+A StorSimple-höz készült Windows PowerShell-lel végezze el a StorSimple eszköz kezdeti beállítását az alábbiakban ismertetett eljárás alapján. A lépés végrehajtásához terminálemulációs szoftverre lesz szüksége. További információ: [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-configure-and-register-device](../../includes/storsimple-configure-and-register-device.md)]
 
@@ -239,7 +240,7 @@ Manuális biztonsági mentést bármikor létrehozhat. Az eljárásokat a [Manu�
 ## <a name="configure-a-new-storage-account-for-the-service"></a>Új tárfiók konfigurálása a szolgáltatáshoz
 Ez egy opcionális lépés, amelyet csak akkor kell végrehajtania, ha nem engedélyezte a tárfiók automatikus létrehozását a szolgáltatással. A StorSimple-kötettároló létrehozásához Microsoft Azure Storage-fiók szükséges.
 
-Ha az Azure-tárfiókot egy másik régióban szeretné létrehozni, tekintse meg a részletes utasításokat a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) című szakaszban.
+Ha az Azure-tárfiókot egy másik régióban szeretné létrehozni, tekintse meg a részletes utasításokat a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) című szakaszban.
 
 Hajtsa végre a következő lépéseket a klasszikus Azure portál **StorSimple Manager szolgáltatás** lapján.
 
@@ -282,10 +283,5 @@ Ha szeretne egy azonnali manuális mentést létrehozni a StorSimple eszköze eg
 ## <a name="next-steps"></a>Következő lépések
 * [Virtuális eszköz](storsimple-virtual-device-u2.md) konfigurálása.
 * A StorSimple eszközt a [StorSimple Manager szolgáltatás](https://msdn.microsoft.com/library/azure/dn772396.aspx) segítségével kezelheti.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

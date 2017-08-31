@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 3c7a6ac092854bc2d78ac23079d168cf8b5a2201
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cf8fdca51a6a4ad1b7cd4fe6980543199f6b36e0
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Bevezetés a megoldások létrehozásába a Batch ügyfél .NET-es kódtárával
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/04/2017
 >
 >
 
-Ebben a cikkben megismerheti az [Azure Batch][azure_batch] alapjait és a [Batch .NET][net_api] kódtárat, ahogy egy C# mintaalkalmazást tárgyalunk meg lépésről lépésre. Megismerjük, hogyan használja a mintaalkalmazás a Batch szolgáltatást párhuzamos számítási feladatok feldolgozásához a felhőben, valamint hogyan használja az [Azure-tárolót](../storage/storage-introduction.md) a fájlok előkészítéséhez és lekéréséhez. Megismerheti a Batch-alkalmazások általános munkafolyamatát, és a Batch fő összetevőivel, például a tevékenységekkel, feladatokkal, készletekkel és számítási csomópontokkal kapcsolatos alapvető ismereteket is elsajátíthatja.
+Ebben a cikkben megismerheti az [Azure Batch][azure_batch] alapjait és a [Batch .NET][net_api] kódtárat, ahogy egy C# mintaalkalmazást tárgyalunk meg lépésről lépésre. Megismerjük, hogyan használja a mintaalkalmazás a Batch szolgáltatást párhuzamos számítási feladatok feldolgozásához a felhőben, valamint hogyan használja az [Azure-tárolót](../storage/common/storage-introduction.md) a fájlok előkészítéséhez és lekéréséhez. Megismerheti a Batch-alkalmazások általános munkafolyamatát, és a Batch fő összetevőivel, például a tevékenységekkel, feladatokkal, készletekkel és számítási csomópontokkal kapcsolatos alapvető ismereteket is elsajátíthatja.
 
 ![Batch-megoldás munkafolyamata (alapszintű)][11]<br/>
 
@@ -41,10 +41,10 @@ Ez a cikk a C# és a Visual Studio gyakorlati ismeretét feltételezi. Azt is fe
 ### <a name="accounts"></a>Fiókok
 * **Azure-fiók**: Ha még nincs Azure-előfizetése, [hozzon létre egy ingyenes Azure-fiókot][azure_free_account].
 * **Batch-fiók**: Ha már rendelkezik Azure-előfizetéssel, [hozzon létre egy Azure Batch-fiókot](batch-account-create-portal.md).
-* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) cikk [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) szakaszát.
+* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) cikk [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md#create-a-storage-account) szakaszát.
 
 > [!IMPORTANT]
-> A Batch jelenleg *csak* az **általános célú** tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) című szakaszában található.
+> A Batch jelenleg *csak* az **általános célú** tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md#create-a-storage-account) című szakaszában található.
 >
 >
 
@@ -128,7 +128,7 @@ Az 1. lépés elkezdéséhez keresse meg a *DotNetTutorial* projekt `Program.cs`
 ![Tárolók létrehozása az Azure Storage-ban][1]
 <br/>
 
-A Batch beépített támogatást tartalmaz az Azure Storage használatához. A Storage-fiókban lévő tárolók biztosítják a Batch-fiókban futó tevékenységekhez szükséges fájlokat. A tárolók a tevékenységek által létrehozott kimeneti adatok tárolásához is helyet biztosítanak. A *DotNetTutorial*-ügyfélalkalmazás először három tárolót hoz létre az [Azure Blob Storage](../storage/storage-introduction.md)-ban:
+A Batch beépített támogatást tartalmaz az Azure Storage használatához. A Storage-fiókban lévő tárolók biztosítják a Batch-fiókban futó tevékenységekhez szükséges fájlokat. A tárolók a tevékenységek által létrehozott kimeneti adatok tárolásához is helyet biztosítanak. A *DotNetTutorial*-ügyfélalkalmazás először három tárolót hoz létre az [Azure Blob Storage](../storage/common/storage-introduction.md)-ban:
 
 * **application**: Ez a tároló tárolja a tevékenységek által futtatott alkalmazást, valamint annak függőségeit, például a DLL-eket.
 * **input**: A tevékenységek az *input* tárolóból töltik le a feldolgozni kívánt adatfájlokat.
@@ -188,7 +188,7 @@ private static async Task CreateContainerIfNotExistAsync(
 A tárolók létrehozása után az alkalmazás feltöltheti a tevékenységek által használandó fájlokat.
 
 > [!TIP]
-> A [How to use Blob Storage from .NET](../storage/storage-dotnet-how-to-use-blobs.md) (A Blob Storage használata .NET-ből) szakasz hasznos áttekintést nyújt az Azure Storage-tárolók és blobok használatáról. A Batch használatának elkezdésekor ez az egyik legfontosabb forrásanyag.
+> A [How to use Blob Storage from .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) (A Blob Storage használata .NET-ből) szakasz hasznos áttekintést nyújt az Azure Storage-tárolók és blobok használatáról. A Batch használatának elkezdésekor ez az egyik legfontosabb forrásanyag.
 >
 >
 
@@ -286,7 +286,7 @@ A közös hozzáférésű jogosultságkódok olyan karakterláncok, amelyek – 
 * **Tároló közös hozzáférésű jogosultságkódjai**: Amikor az egyes tevékenységek befejezik a munkájukat a számítási csomóponton, feltöltik a kimeneti fájljukat az Azure Storage *output* tárolójába. Ehhez a TaskApplication egy tároló közös hozzáférésű jogosultságkódját használja, amely írási hozzáférést nyújt a tárolóhoz az elérési út részeként a fájl feltöltésekor. A tároló közös hozzáférésű jogosultságkódjának beszerzése hasonlóan végezhető, mint a blob közös hozzáférésű jogosultságkódjának beszerzése. A DotNetTutorial-oktatóprogramban láthatja, hogy a `GetContainerSasUrl` segédmetódus ehhez a [CloudBlobContainer.GetSharedAccessSignature][net_sas_container] metódust hívja meg. A „6. lépés: Tevékenységek figyelése” című szakaszban olvashat többet arról, hogyan használja a TaskApplication a tárolók közös hozzáférésű jogosultságkódját.
 
 > [!TIP]
-> A tárfiókon lévő adatok biztonságos hozzáférésének biztosításával kapcsolatos további információkért tekintse meg a közös hozzáférésű jogosultságkódokkal kapcsolatos két részből álló sorozatot: [Part 1: Understanding the shared access signature (SAS) model](../storage/storage-dotnet-shared-access-signature-part-1.md) (1. rész: A közös hozzáférésű jogosultságkód (SAS) modell ismertetése) és a [Part 2: Create and use a shared access signature (SAS) with Blob storage](../storage/storage-dotnet-shared-access-signature-part-2.md) (2. rész: Közös hozzáférésű jogosultságkód (SAS) létrehozása és használata Blob Storage tárolóval).
+> A tárfiókon lévő adatok biztonságos hozzáférésének biztosításával kapcsolatos további információkért tekintse meg a közös hozzáférésű jogosultságkódokkal kapcsolatos két részből álló sorozatot: [Part 1: Understanding the shared access signature (SAS) model](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (1. rész: A közös hozzáférésű jogosultságkód (SAS) modell ismertetése) és a [Part 2: Create and use a shared access signature (SAS) with Blob storage](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) (2. rész: Közös hozzáférésű jogosultságkód (SAS) létrehozása és használata Blob Storage tárolóval).
 >
 >
 

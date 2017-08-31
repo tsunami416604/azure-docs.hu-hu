@@ -39,9 +39,9 @@ A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 Az útmutatóban lévő példákat kétféle környezetben futtathatja:
 
 * A kódot futtathatja a felhőben, egy Azure Storage-fiókban. 
-* A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../articles/storage/storage-use-emulator.md)
+* A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../articles/storage/common/storage-use-emulator.md)
 
-Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információért lásd: [View and copy storage access keys](../articles/storage/storage-create-storage-account.md#view-and-copy-storage-access-keys) (A tárelérési kulcsok megtekintése és másolása).
+Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információért lásd: [View and copy storage access keys](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys) (A tárelérési kulcsok megtekintése és másolása).
 
 > [!NOTE]
 > A Storage Emulator megcélzásával elkerülheti az Azure Storage-hoz kapcsolódó költségeket. Ha azonban mégis egy Azure Storage-fiókot céloz meg a felhőben, az oktatóanyag végrehajtásával járó költségek elhanyagolhatóak.
@@ -51,7 +51,7 @@ Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődle
 ### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
 A .NET-hez készült Azure Storage ügyféloldali kódtár támogatja a tárolási szolgáltatások eléréséhez használt végpontok és hitelesítő adatok tárolási kapcsolati karakterlánccal történő konfigurálását. A tárolási kapcsolati karakterlánc egy konfigurációs fájlban tartható fenn a legjobban. 
 
-A kapcsolati karakterláncokkel kapcsolatos további információkért lásd: [Az Azure Storage kapcsolati karakterláncának konfigurálása](../articles/storage/storage-configure-connection-string.md).
+A kapcsolati karakterláncokkel kapcsolatos további információkért lásd: [Az Azure Storage kapcsolati karakterláncának konfigurálása](../articles/storage/common/storage-configure-connection-string.md).
 
 > [!NOTE]
 > A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure Portal segítségével hozza létre újra.

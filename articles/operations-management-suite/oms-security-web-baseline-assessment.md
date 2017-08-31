@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/28/2017
+ms.date: 08/18/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 8be49b182df675fe3235d148b87379e1dff3a384
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 40b0c6ca933ea02ac9f5fe3bfaaf87a310542a8d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="web-baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>A webes alapkonfiguráció értékelése az Operations Management Suite biztonsági és auditálási megoldásában
@@ -29,6 +29,9 @@ Ez a dokumentum segít az OMS biztonsági és auditálási megoldás webes alapk
 Jelenleg az OMS biztonsági megoldása biztosít alapkonfiguráció-értékelést az operációs rendszerekhez. 24 óránként ellenőrzi a kiszolgálók operációsrendszer-beállításait, és lehetővé teszi a potenciálisan sebezhető beállítások áttekintését. Ezzel kapcsolatban további információkat olvashat [az alapkonfiguráció az Operations Management Suite biztonsági és auditálási megoldásában történő értékelését](https://docs.microsoft.com/azure/operations-management-suite/oms-security-baseline) ismertető cikkben.
 
 A webes alapkonfiguráció-értékelés célja a potenciálisan sebezhető webkiszolgáló-beállítások megkeresése. A három elsődleges forrás a webes alapkonfigurációkhoz a .NET-, az ASP.NET- és az IIS-konfiguráció.  Az operációs rendszer alapkonfigurációjának értékeléséhez hasonlóan az OMS biztonsági megoldása 24 óránként fogja ellenőrizni a webkiszolgálóit, majd lehetővé teszi azok biztonsági állapotának áttekintését.  Az Internet Information Services-ben (IIS) a konfigurációk nagy mértékben testreszabhatók, ez pedig lehetővé teszi számos hely- és alkalmazásszint felülbírálását. A vizsgáló az alapértelmezett gyökérszinten felül minden alkalmazás-/helyszinten ellenőrzi a beállításokat. Ez segít a potenciálisan sebezhető beállítások azonosításában és gyors javításában, valamint javaslatokat tesz ezekre a beállításokra.
+
+>[!NOTE] 
+>Az OMS Security által használt gyakori konfigurációs azonosítók és alapkonfigurációs szabályok [ezen az oldalon](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335?redir=0) tölthetők le.
 
 
 ## <a name="web-security-baseline-assessment"></a>A webes biztonsági alapkonfiguráció értékelése

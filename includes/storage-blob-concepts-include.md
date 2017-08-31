@@ -14,7 +14,7 @@ A Blob szolgáltatás az alábbi összetevőkből áll:
 
 ![Blob-architektúra](./media/storage-blob-concepts-include/blob1.png)
 
-* **Tárfiók:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. Ez a tárfiók lehet **általános célú tárfiók** vagy **Blob Storage-fiók**, amely kifejezetten objektumok/blobok tárolására szolgál. További információk: [Tudnivalók az Azure Storage-fiókokról](../articles/storage/storage-create-storage-account.md).
+* **Tárfiók:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. Ez a tárfiók lehet **általános célú tárfiók** vagy **Blob Storage-fiók**, amely kifejezetten objektumok/blobok tárolására szolgál. További információk: [Tudnivalók az Azure Storage-fiókokról](../articles/storage/common/storage-create-storage-account.md).
 * **Tároló:** A tárolók blobkészletek csoportosítását biztosítják. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható. Vegye figyelembe, hogy a tároló neve csak kisbetűket tartalmazhat.
 * **Blob:** Bármilyen típusú és bármekkora méretű fájl. Az Azure Storage háromféle blobot biztosít: blokkblobokat, lapblobokat és hozzáfűző blobokat.
   

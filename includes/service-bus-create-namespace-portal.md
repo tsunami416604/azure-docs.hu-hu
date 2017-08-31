@@ -1,4 +1,4 @@
-A Service Bus-üzenetsorok Azure-ban való használatához először létre kell hoznia egy névteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül. 
+A Service Bus-üzenetsorok Azure-ban való használatához először létre kell hoznia egy névteret, amelynek az Azure-ban egyedi a neve. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
 
 Névtér létrehozása:
 

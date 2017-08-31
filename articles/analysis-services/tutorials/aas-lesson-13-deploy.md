@@ -3,7 +3,7 @@ title: "Az Azure Analysis Services oktatóanyaga – 13. lecke: Üzembe helyezé
 description: "A lecke az oktatóanyag projektjének az Azure Analysis Services szolgáltatásban való üzembe helyezését ismerteti."
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/17/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
-ms.openlocfilehash: 6f56d017702391b2027ad421de4c1919fa53090a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 70dbf5786262f75199270aa8009e03b9b48b8559
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="lesson-13-deploy"></a>13. lecke: Üzembe helyezés
@@ -28,7 +28,7 @@ ms.lasthandoff: 07/19/2017
 
 Ebben a leckében az üzembehelyezési tulajdonságokat fogja konfigurálni: megad egy Azure Analysis Services-kiszolgálót, amelyen az üzembe helyezést végzi, majd elnevezi a modellt. Ezután üzembe helyezi a modellt az adott példányon. Miután a modell üzembe lett helyezve, a felhasználók egy jelentéskészítő ügyfélalkalmazás segítségével csatlakozhatnak hozzá. További információkért lásd [az Azure Analysis Servicesben történő üzembe helyezést](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy) ismertető cikket.  
   
-A lecke elvégzésének várható időtartama: **5 perc**.  
+A lecke elvégzésének várható időtartama: **5 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A jelen leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét ([12. lecke: Elemzés az Excelben](../tutorials/aas-lesson-12-analyze-in-excel.md)).  

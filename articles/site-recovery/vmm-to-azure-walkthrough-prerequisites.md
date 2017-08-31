@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/24/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 87a5d721ca785329b407d31126bd0b211b17ccf3
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 47c178c66ec98fe5d333edd725b64465026e73ed
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 
@@ -33,7 +33,7 @@ Miután áttekintette a [forgatókönyv-architektúrát](vmm-to-azure-walkthroug
 **Követelmény** | **Részletek**
 --- | ---
 **Azure-fiók** | Szüksége van egy [Microsoft Azure-fiókra](http://azure.microsoft.com/).
-**Azure Storage** | A replikált adatok tárolásához Azure-tárfiókra van szükség.<br/><br/> A tárfióknak és az Azure Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.<br/><br/>[Georedundáns tárolást](../storage/storage-redundancy.md#geo-redundant-storage) és helyileg redundáns tárolást is használhat. A georedundáns tárolást javasoljuk. A georedundáns tárolás akár regionális kimaradás során, illetve az elsődleges régió helyreállíthatatlansága esetében is gondoskodik az adatok hibatűréséről.<br/><br/> Standard szintű Azure Storage-tárfiókot vagy Azure [Prémium szintű tárolást](../storage/storage-premium-storage.md) is használhat. A Prémium szintű tárolás képes I/O-igényes számítási feladatok futtatására, és általában olyan virtuális gépekhez használják, amelyek számára elengedhetetlen a folyamatosan magas I/O-teljesítmény és a kis késés. Ha Prémium szintű tárolást használ a replikált adatokhoz, Standard szintű tárfiókra is szüksége van. A Standard szintű tárfiók a helyszíni adatokban bekövetkező folyamatos változásokat rögzítő replikációs naplókat tárolja.
+**Azure Storage** | A replikált adatok tárolásához Azure-tárfiókra van szükség.<br/><br/> A tárfióknak és az Azure Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.<br/><br/>[Georedundáns tárolást](../storage/common/storage-redundancy.md#geo-redundant-storage) és helyileg redundáns tárolást is használhat. A georedundáns tárolást javasoljuk. A georedundáns tárolás akár regionális kimaradás során, illetve az elsődleges régió helyreállíthatatlansága esetében is gondoskodik az adatok hibatűréséről.<br/><br/> Standard szintű Azure Storage-tárfiókot vagy Azure [Prémium szintű tárolást](../storage/common/storage-premium-storage.md) is használhat. A Prémium szintű tárolás képes I/O-igényes számítási feladatok futtatására, és általában olyan virtuális gépekhez használják, amelyek számára elengedhetetlen a folyamatosan magas I/O-teljesítmény és a kis késés. Ha Prémium szintű tárolást használ a replikált adatokhoz, Standard szintű tárfiókra is szüksége van. A Standard szintű tárfiók a helyszíni adatokban bekövetkező folyamatos változásokat rögzítő replikációs naplókat tárolja.
 **Azure-hálózat** | Szükség van egy [Azure-hálózatra](../virtual-network/virtual-network-get-started-vnet-subnet.md), amelyhez a feladatátvételt követően a Azure-beli virtuális gépek csatlakozni tudnak. Az Azure-hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
 **Helyszíni VMM-kiszolgálók** | Egy vagy több, a System Center 2012 R2 vagy újabb verziójával futó VMM-kiszolgálóra van szüksége.<br/><br/> Minden VMM-kiszolgálón legalább egy magánfelhőnek kell üzemelnie. Mindegyik felhőben legalább egy gazdagépcsoportnak kell lennie.<br/><br/> A VMM-kiszolgálónak internetkapcsolatra van szüksége.
 **Helyszíni Hyper-V** | A Hyper-V-kiszolgálókon legalább a Windows Server 2012 R2 verziónak kell futnia engedélyezett Hyper-V szerepkörrel vagy a Microsoft Hyper-V Server 2012 R2 verziónak. Telepíteni kell a legújabb frissítéseket.<br/><br/> A Hyper-V-gazdagépnek egy VMM-gazdagépcsoportban kell elhelyezkednie (egy VMM-felhőben).<br/><br/> A gazdagépeknek egy vagy több olyan virtuális géppel kell rendelkezniük, amelyet replikálni szeretne.<br/><br/> A Hyper-V-gazdagépeknek csatlakozniuk kell az internethez az Azure-ba közvetlenül vagy proxy-n keresztül történő replikációhoz. A Hyper-V kiszolgálóknak rendelkezniük kell a [2961977.](https://support.microsoft.com/kb/2961977) cikkben leírt javításokkal.

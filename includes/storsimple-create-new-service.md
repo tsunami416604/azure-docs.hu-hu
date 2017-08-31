@@ -10,7 +10,7 @@
    2. Adjon meg egy **helyet** a szolgáltatáshoz. Általában az eszköz telepítésének földrajzi helyéhez legközelebb eső hely a legoptimálisabb választás. Ezenkívül az alábbiakat is érdemes figyelembe vennie: 
       
       * Ha olyan folyamatban lévő számítási feladatai vannak az Azure rendszerben, amelyeket a StorSimple-eszközre is telepíteni szeretne, akkor válassza azt az adatközpontot.
-      * A StorSimple Manager és az Azure Storage szolgáltatás helye eltérő is lehet. Ilyen esetben a StorSimple Manager-fiókot és az Azure-tárfiókot külön kell létrehoznia. Azure-tárfiók létrehozásához keresse meg az Azure Storage szolgáltatást a klasszikus Azure portálon, és kövesse az [Azure-tárfiók létrehozása](../articles/storage/storage-create-storage-account.md#create-a-storage-account) című szakasz lépéseit. Ha létrehozta a fiókot, az [Új tárfiók konfigurálása a szolgáltatáshoz](../articles/storsimple/storsimple-deployment-walkthrough.md#configure-a-new-storage-account-for-the-service) című szakasz lépéseit követve adja hozzá azt a StorSimple Manager szolgáltatáshoz.
+      * A StorSimple Manager és az Azure Storage szolgáltatás helye eltérő is lehet. Ilyen esetben a StorSimple Manager-fiókot és az Azure-tárfiókot külön kell létrehoznia. Azure-tárfiók létrehozásához keresse meg az Azure Storage szolgáltatást a klasszikus Azure portálon, és kövesse az [Azure-tárfiók létrehozása](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) című szakasz lépéseit. Ha létrehozta a fiókot, az [Új tárfiók konfigurálása a szolgáltatáshoz](../articles/storsimple/storsimple-deployment-walkthrough.md#configure-a-new-storage-account-for-the-service) című szakasz lépéseit követve adja hozzá azt a StorSimple Manager szolgáltatáshoz.
    3. A legördülő listából válasszon egy **előfizetést**. Az előfizetés az Ön számlázási fiókjához lesz társítva. Ez a mező nem jelenik meg abban az esetben, ha csak egy előfizetéssel rendelkezik.
    4. A szolgáltatáshoz tartozó tárfiók automatikus létrehozásához válassza az **Új tárfiók létrehozása** lehetőséget. Ez a tárfiók egy speciális névvel jön létre, pl.: „storsimplebwv8c6dcnf”. Ha máshová szeretné menteni az adatokat, akkor törölje a pipát a jelölőnégyzetből. 
    5. A szolgáltatás létrehozásához kattintson a **StorSimple Manager létrehozása** elemre.
@@ -24,9 +24,4 @@
 ![Videó elérhető](./media/storsimple-create-new-service/Video_icon.png) **Videó elérhető**
 
 Az új StorSimple Manager szolgáltatás létrehozását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/).
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

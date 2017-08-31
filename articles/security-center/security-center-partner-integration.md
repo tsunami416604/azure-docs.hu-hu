@@ -12,14 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2017
+ms.date: 08/18/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 4d0909e926de14a0cbe9799b969ac7a1946d69d1
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 44beafeff5cbe58ac8ca37632879f6ffc2b67e53
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="partner-integration-in-azure-security-center"></a>Partnerintegráció az Azure Security Centerben
@@ -62,9 +61,9 @@ Az Azure-környezet beállítása és az Ön által meghatározott biztonsági s
 
 ## <a name="manage-partner-solutions"></a>A partnermegoldások kezelése
 
-Az üzembe helyezés után a megoldás állapotinformációinak megtekintéséhez és alapszintű felügyeleti feladatok elvégzéséhez a **Security Center** panelen válassza a **Partnermegoldások** csempét. A partnermegoldások Security Centerben való kezelésével kapcsolatos további információkért tekintse meg a [Partnermegoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) című cikket.
+Az üzembe helyezés után a megoldás állapotinformációinak megtekintéséhez és alapszintű felügyeleti feladatok elvégzéséhez a **Security Center** panelen válassza a **Partnermegoldások** lehetőséget. A partnermegoldások Security Centerben való kezelésével kapcsolatos további információkért tekintse meg a [Partnermegoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) című cikket.
 
-![Partnerintegráció](./media/security-center-partner-integration/security-center-partner-integration-fig1-1-newUI.png)
+![Partnerintegráció](./media/security-center-partner-integration/security-center-partner-integration-fig1-new2.png)
 
 > [!NOTE]
 > A Symantec Endpoint Protection támogatása a felderítésre korlátozódik. Az állapotriasztások nem érhetők el.

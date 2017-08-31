@@ -12,13 +12,13 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 8/21/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 4baf144cc28eeff0ab8f8b60e837f8a2bad903af
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: adcafaa5522fcddc0a01eb1dc8deba04ebfc38f2
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
@@ -34,10 +34,29 @@ A Service Fabric SDK-kat biztosít Linux-szolgáltatások létrehozásához a .N
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt elkezdené, győződjön meg arról, hogy [beállította a Linux-fejlesztőkörnyezetet](service-fabric-get-started-linux.md). Amennyiben a Mac OS X rendszert használja, [beállíthat egy beépített Linux-környezetet egy virtuális gépen a Vagrant használatával](service-fabric-get-started-mac.md).
 
-Az alkalmazás üzembe helyezéséhez érdemes konfigurálni az [Azure CLI 2.0](service-fabric-azure-cli-2-0.md)-t (ajánlott) vagy az [XPlat CLI](service-fabric-azure-cli.md)-t.
+Telepítse a [Service Fabric parancssori felületét](service-fabric-cli.md) is
+
+### <a name="install-and-set-up-the-generators-for-csharp"></a>A CSharp generátorainak telepítése és beállítása
+A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel Service Fabric CSharp-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával biztosíthatja, hogy a Service Fabric Yeoman sablongenerátor elérhető legyen a gépen lévő CSharp használatához.
+1. A node.js és az NPM telepítése a gépre
+
+  ```bash
+  sudo apt-get install npm
+  sudo apt install nodejs-legacy
+  ```
+2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
+
+  ```bash
+  sudo npm install -g yo
+  ```
+3. A Service Fabric Yeo Java-alkalmazásgenerátor telepítése az NPM-ből
+
+  ```bash
+  sudo npm install -g generator-azuresfcsharp
+  ```
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
-A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. A Linux Service Fabric SDK tartalmaz egy [Yeoman](http://yeoman.io/)-generátort, amely megkönnyíti az első szolgáltatás létrehozását, és a továbbiak hozzáadását a későbbiekben. Hozzunk létre egy egyetlen szolgáltatással rendelkező alkalmazást a Yeoman használatával.
+A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. A CSharphoz készült Service Fabric [Yeoman](http://yeoman.io/) generátor, amelyet az utolsó lépésben telepített, megkönnyíti az első szolgáltatás létrehozását, és a továbbiak hozzáadását a későbbiekben. Hozzunk létre egy egyetlen szolgáltatással rendelkező alkalmazást a Yeoman használatával.
 
 1. Írja be a terminálba az alábbi parancsot a keret létrehozásához: `yo azuresfcsharp`
 2. Adjon nevet az alkalmazásnak.
@@ -62,12 +81,10 @@ A Service Fabric Yeoman-sablonok tartalmaznak egy felépítési szkriptet, amely
 
 Az alkalmazást a létrehozása után telepítheti a helyi fürtben.
 
-### <a name="using-xplat-cli"></a>Az XPlat CLI használatával
-
 1. Csatlakozzon a helyi Service Fabric-fürthöz.
 
     ```bash
-    azure servicefabric cluster connect
+    sfctl cluster select --endpoint http://localhost:19080
     ```
 
 2. Futtassa a sablonban megadott telepítési szkriptet az alkalmazáscsomagnak a fürt lemezképtárolójába való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
@@ -76,14 +93,11 @@ Az alkalmazást a létrehozása után telepítheti a helyi fürtben.
     ./install.sh
     ```
 
-### <a name="using-azure-cli-20"></a>Az Azure CLI 2.0 használatával
-
-A kész alkalmazás a többi Service Fabric-alkalmazással azonos módon telepíthető. Részletesebb útmutatást talál a [Service Fabric-alkalmazás kezelése az Azure CLI-vel](service-fabric-application-lifecycle-azure-cli-2-0.md) című dokumentációban.
+A kész alkalmazás a többi Service Fabric-alkalmazással azonos módon telepíthető. Részletesebb útmutatást talál a [Service Fabric-alkalmazás kezelése a Service Fabric parancssori felülettel](service-fabric-application-lifecycle-sfctl.md) című dokumentációban.
 
 Ezen parancsok paraméterezése megtalálható az alkalmazáscsomagon belül, a generált jegyzékfájlokban.
 
-Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)-t a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) URL-címen.
-Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
+Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)-t a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) URL-címen. Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Tesztügyfél elindítása és feladatátvétel végrehajtása
 Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást vagy alkalmazást igényelnek, amely üzeneteket küld a számukra. Az aktorsablon egy egyszerű tesztszkriptet tartalmaz, amelyet az aktorszolgáltatással való kommunikációra használhat.
@@ -101,7 +115,7 @@ Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást 
 
 ## <a name="adding-more-services-to-an-existing-application"></a>További szolgáltatások hozzáadása meglévő alkalmazáshoz
 
-Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket: 
+Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 1. Lépjen a meglevő alkalmazás gyökérkönyvtárába.  Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
 2. Futtassa a `yo azuresfcsharp:AddService` parancsot.
 
@@ -111,14 +125,11 @@ Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már l�
 3. A projekt-fájlok neveit átírja csproj fájlokká a build.sh fájlban.
 
 ## <a name="next-steps"></a>Következő lépések
+
 * [További tudnivalók a Reliable Actorsről](service-fabric-reliable-actors-introduction.md)
-* [Service Fabric-fürtökkel folytatott interakció az Azure parancssori felületének használatával](service-fabric-azure-cli.md)
+* [Service Fabric-fürtök használata a Service Fabric parancssori felületén](service-fabric-cli.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése
-
-## <a name="related-articles"></a>Kapcsolódó cikkek
-
-* [A Service Fabric első lépései az Azure CLI 2.0 használatával](service-fabric-azure-cli-2-0.md)
-* [Első lépések a Service Fabric XPlat CLI használatával](service-fabric-azure-cli.md)
+* [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-csharp/yeoman-csharp.png

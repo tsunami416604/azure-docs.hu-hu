@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 04/25/2017
 ms.author: rachelap;robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 26011d72644f8b13a711d847d83175ce384f2053
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e38c540071cb49b0177e79178566d72ecb5f8886
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="build-and-deploy-a-java-api-app-in-azure-app-service"></a>Java API-alkalmazás buildjének elkészítése és telepítése az Azure App Service platformon
@@ -278,7 +277,7 @@ Erre a példára építve részletesen megismerheti, hogyan használhatja a [Sto
 <a name="see-also"></a>
 
 ## <a name="see-also"></a>Lásd még:
-Az Azure Javával való használatáról további információ: [Azure Java fejlesztői központ].
+További információk az Azure és a Java együttes használatáról lásd: [Azure Java-fejlesztőknek](/java/azure).
 
 <!-- URL List -->
 
@@ -287,14 +286,14 @@ Az Azure Javával való használatáról további információ: [Azure Java fejl
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
 [Ingyenes]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
-[Azure Java fejlesztői központ]: /develop/java/
+[Azure Java Developer Center]: /develop/java/
 [Java Developer's Kit 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
 [Microsoft Azure]: https://azure.microsoft.com/
 [Online Swagger Editort]: http://editor2.swagger.io/
 [Postman]: https://www.getpostman.com/
-[Storage SDK for Java]: ../storage/storage-java-how-to-use-blob-storage.md
+[Storage SDK for Java]:../storage/blobs/storage-java-how-to-use-blob-storage.md
 [Swagger]: http://swagger.io/
 [Swagger Editor]: http://editor.swagger.io/
 [Visual Studio Code]: https://code.visualstudio.com

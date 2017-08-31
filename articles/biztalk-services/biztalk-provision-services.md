@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 299a6fb23cd0fa725324bbdbdc669ff125a99d1b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: eca77b4a82eb67e1755717bb4429f8d450a64dc5
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
@@ -31,7 +30,7 @@ ms.lasthandoff: 05/31/2017
 > Az Azure Portalra való bejelentkezéshez Azure-fiókra és Azure-előfizetésre van szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. Lásd: [Ingyenes Azure-próbafiók](http://go.microsoft.com/fwlink/p/?LinkID=239738).
 
 
-## <a name="create-a-biztalk-service"></a>BizTalk-szolgáltatás létrehozása
+## <a name="CreateService"></a>BizTalk-szolgáltatás létrehozása
 A kiválasztott kiadástól függően lehet, hogy nem mindegyik BizTalk-szolgáltatásbeállítás érhető el.
 
 1. Jelentkezzen be az [Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
@@ -233,13 +232,14 @@ Azure BizTalk Services-szolgáltatások létrehozásakor létrejön a BizTalk Se
 
 <ul>
 <li><strong>Kibővített kulcshasználat</strong>: Az Azure BizTalk Services legalább kiszolgálói hitelesítést igényel.</li>
-<li><strong>Köznapi név</strong>: Adja meg az Azure BizTalk Services-szolgáltatás URL-jének teljes tartománynevét (FQDN-jét). Lásd ezen cikk <a HREF="#BizTalk">BizTalk Services-szolgáltatás létrehozása</a> szakaszát.</li>
+<li><strong>Köznapi név</strong>: Adja meg az Azure BizTalk Services-szolgáltatás URL-jének teljes tartománynevét (FQDN-jét). Lásd ezen cikk <a HREF="#CreateService">BizTalk Services-szolgáltatás létrehozása</a> szakaszát.</li>
 </ul>
 <br/>
 A BizTalk szolgáltatás létrehozása után hozzáadható egy új vagy másik tanúsítvány.
 </td>
 </tr>
 </table>
+<!---Loc Comment: Please, check link [Create a BizTalk Service] since it is not redirecting to any location.--->
 
 
 

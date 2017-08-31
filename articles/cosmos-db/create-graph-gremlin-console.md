@@ -14,10 +14,10 @@ ms.topic: hero-article
 ms.date: 07/27/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 1749c4233e2b90f0a207033276b31093f7bf667f
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: fd5cc93ce1ed2a8c7da090666ef539b338ac61c3
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
@@ -28,7 +28,7 @@ Ez a rövid útmutató bemutatja egy Azure Cosmos DB-fiók, egy adatbázis és e
 
 ![Azure Cosmos DB az Apache Gremlin-konzolból](./media/create-graph-gremlin-console/gremlin-console.png)
 
-A Gremlin konzol egy Groovy/Java-alapú program, mely Linux, Mac és Windows rendszereken futtatható. A konzol az [Apache TinkerPop webhelyről](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.4/apache-tinkerpop-gremlin-console-3.2.4-bin.zip) tölthető le.
+A Gremlin konzol egy Groovy/Java-alapú program, mely Linux, Mac és Windows rendszereken futtatható. A konzol az [Apache TinkerPop webhelyről](https://www.apache.org/dyn/closer.lua/tinkerpop/3.2.5/apache-tinkerpop-gremlin-console-3.2.5-bin.zip) tölthető le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ A bevezető során az Azure Cosmos DB-fiók létrehozásához Azure-előfizetés
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell lennie. A program 3.2.4-es vagy újabb verzióját használja.
+Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell lennie. A 3.2.5-ös vagy újabb verziót használja.
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -47,7 +47,7 @@ Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell len
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a id="ConnectAppService"></a>Csatlakozás az alkalmazásszolgáltatáshoz
-1. A Gremlin-konzol elindítása előtt hozza létre vagy módosítsa a remote-secure.yaml konfigurációs fájlt az apache-tinkerpop-gremlin-console-3.2.4/conf könyvtárban.
+1. A Gremlin konzol elindítása előtt hozza létre vagy módosítsa a remote-secure.yaml konfigurációs fájlt az apache-tinkerpop-gremlin-console-3.2.5/conf könyvtárban.
 2. Adja meg a *host* (gazdagép), *Port*, *username* (felhasználónév), *password* (jelszó), *ConnectionPool* (kapcsolatkészlet), és *serializer* (szerializáló) beállításokat:
 
     Beállítás|Ajánlott érték|Leírás
@@ -64,7 +64,7 @@ Emellett a [Gremlin-konzolnak](http://tinkerpop.apache.org/) telepítve kell len
     A jelszó értékéhez másolja az **Elsődleges kulcs** értékét a **Kulcsok** lapról: ![Az Azure Portal Kulcsok lapján található elsődleges kulcs megtekintése és másolása](./media/create-graph-gremlin-console/keys.png)
 
 
-3. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](http://tinkerpop.apache.org/docs/3.2.4/tutorials/getting-started/) elindításához.
+3. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](http://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
 4. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
 
     > [!TIP]

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 94d228f38a760b40f1acb4685702e6244f03bb5d
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: ff03ce6463176bad8e8d89985441d23c7d76b183
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
@@ -34,7 +34,7 @@ Az Analysis Services segítségével több forrásból egyesítheti és kombiná
 Tekintse meg [ezt a videót](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) arról, hogyan illik az Azure Analysis Services a Microsoft általános BI-képességei közé, és hogyan használhatja ki az adatmodellek a felhőben történő tárolásából adódó előnyöket.
 
 ## <a name="built-on-sql-server-analysis-services"></a>Az SQL Server Analysis Servicesre épül
-Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és 1400-as [kompatibilitási szinteken](https://docs.microsoft.com/sql/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services). Támogatja a partíciókat, a sorszintű biztonságot, a kétirányú kapcsolatokat és a fordításokat. A memóriában tárolt és a DirectQuery módok villámgyors lekérdezéseket tesznek lehetővé nagy és összetett adatkészletekben.
+Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és 1400-as [kompatibilitási szinteken](analysis-services-compat-level.md). Támogatja a partíciókat, a sorszintű biztonságot, a kétirányú kapcsolatokat és a fordításokat. A memóriában tárolt és a DirectQuery módok villámgyors lekérdezéseket tesznek lehetővé nagy és összetett adatkészletekben.
 
 A táblázatos modellek gyors fejlesztést biztosítanak, és nagymértékben testre szabhatók. A fejlesztők a táblázatos modellek között a táblázatos objektummodellt (TOM) is használhatják a modellobjektumok leírásához. A TOM a JSON-ban van közzétéve a [Táblázatos modell parancsnyelv (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) és az AMO adatdefiníciós nyelv segítségével a [Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx) névtérben.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: d32d91f7bbfcea61caba6ccc3033929d307f14be
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 348e154f8398b5e60ad5a698cd319fa381de2fa5
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="run-any-windows-app-on-any-device-with-azure-remoteapp"></a>Windows-alkalmazások futtatása bármely Azure RemoteAppet használó eszközön
@@ -88,7 +88,7 @@ Az első részt Ön mint a rendszergazda végzi el. Ezután néhány lépést a 
 1. Először tegye közzé a parancssori felületet (cmd.exe). A **Közzététel** lapon válassza a **cmd** elemet, majd kattintson a **Közzététel > Program közzététele elérési út használatával** lehetőségre.
 2. Adja meg az alkalmazás nevét és az elérési utat. Ebben az esetben a név legyen „Fájlkezelő”, az elérési út pedig „%SYSTEMDRIVE%\windows\explorer.exe”.
    ![Tegye közzé a cmd.exe fájlt.](./media/remoteapp-anyapp/ra-publishcmd.png)
-3. Most hozzon létre egy Azure [Storage-fiókot](../storage/storage-create-storage-account.md). Mi az „accessstorage” nevet adtuk a sajátunknak, válasszon Ön is valamilyen beszédes nevet. (A Hegylakó után szabadon: csak egy „accessstorage” maradhat.)![Azure-tárfiókunk](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
+3. Most hozzon létre egy Azure [Storage-fiókot](../storage/common/storage-create-storage-account.md). Mi az „accessstorage” nevet adtuk a sajátunknak, válasszon Ön is valamilyen beszédes nevet. (A Hegylakó után szabadon: csak egy „accessstorage” maradhat.)![Azure-tárfiókunk](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
 4. Most lépjen vissza az irányítópultra, és nézze meg a tároló elérési útját (végponthelyét). Erre később még szükség lesz, ezért másolja ki valahová.
    ![A tárfiók elérési útja](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
 5. Miután a tárfiók elkészült, a következő lépésben az elsődleges elérési kulcsra lesz szükség. Kattintson az **Elérési kulcsok kezelése** lehetőségre, majd másolja ki az elsődleges elérési kulcsot.

@@ -17,10 +17,10 @@ ms.date: 8/11/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 7cc29feaf7411bac1d081f7f7aa3daf92fae88d1
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5a6aad672ddaa43f993daf4cf48975e91d2657da
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
@@ -35,7 +35,7 @@ A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt 
 
 **Korlátlan méretezés** – Az Azure Backup az Azure-felhő mögöttes teljesítményét és korlátlan méretezhetőségét használja fel a magas rendelkezésre állás biztosításához – a karbantartás és a figyelés többletterhe nélkül. Beállíthat riasztásokat az egyes eseményekre vonatkozó információszolgáltatás céljából, de nem kell aggódnia a felhőben tárolt adatainak magas rendelkezésre állása miatt.
 
-**Többféle tárolási lehetőség** – A magas rendelkezésre állás egyik megoldása a tárolóreplikáció. Az Azure Backup két replikációtípust nyújt: [helyileg redundáns tárolást](../storage/storage-redundancy.md#locally-redundant-storage) és [georedundáns tárolást](../storage/storage-redundancy.md#geo-redundant-storage). A biztonságimásolat-tárolási lehetőségek közül válassza az Önnek megfelelőt:
+**Többféle tárolási lehetőség** – A magas rendelkezésre állás egyik megoldása a tárolóreplikáció. Az Azure Backup két replikációtípust nyújt: [helyileg redundáns tárolást](../storage/common/storage-redundancy.md#locally-redundant-storage) és [georedundáns tárolást](../storage/common/storage-redundancy.md#geo-redundant-storage). A biztonságimásolat-tárolási lehetőségek közül válassza az Önnek megfelelőt:
 
 * A helyileg redundáns tárolás (LRS) háromszor replikálja az adatokat (az adatok három másolatát hozza létre) egy párosított adatközpontban, ugyanabban a régióban. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
 
@@ -95,10 +95,10 @@ Az alábbi táblázat tartalmazza a Linuxot támogató Azure Backup-összetevők
 | Azure IaaS virtuális gép biztonsági mentése |Alkalmazáskonzisztens biztonsági mentés [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/> [Részletes fájlhelyreállítás](backup-azure-restore-files-from-vm.md)<br/> [Az összes virtuálisgép-lemez visszaállítása](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [Virtuális gép visszaállítása](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Premium Storage virtuális gépek használata az Azure Backup szolgáltatással
-Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Részletesebb áttekintés talál a [Premium Storage szolgáltatást mint az Azure virtuális gépek számítási feladataihoz használható nagy teljesítményű tárterületet](../storage/storage-premium-storage.md) ismertető cikkben.
+Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Részletesebb áttekintés talál a [Premium Storage szolgáltatást mint az Azure virtuális gépek számítási feladataihoz használható nagy teljesítményű tárterületet](../storage/common/storage-premium-storage.md) ismertető cikkben.
 
 ### <a name="back-up-premium-storage-vms"></a>A Premium Storage virtuális gépek biztonsági mentése
-Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatás átmeneti, „AzureBackup-” nevű előkészítési helyet hoz létre a Premium Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével. Győződjön meg arról, hogy megfelelő mennyiségű szabad hely áll rendelkezésre a Prémium szintű Storage-fiókban az átmeneti előkészítési hely számára. További információért tekintse meg a [Premium Storage korlátozásaival](../storage/storage-premium-storage.md#scalability-and-performance-targets) foglalkozó témakört. A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet. Az előkészítési helyhez használt tároló ára megfelel a [Premium Storage díjszabásnak](../storage/storage-premium-storage.md#pricing-and-billing).
+Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatás átmeneti, „AzureBackup-” nevű előkészítési helyet hoz létre a Premium Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével. Győződjön meg arról, hogy megfelelő mennyiségű szabad hely áll rendelkezésre a Prémium szintű Storage-fiókban az átmeneti előkészítési hely számára. További információért tekintse meg a [Premium Storage korlátozásaival](../storage/common/storage-premium-storage.md#scalability-and-performance-targets) foglalkozó témakört. A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet. Az előkészítési helyhez használt tároló ára megfelel a [Premium Storage díjszabásnak](../storage/common/storage-premium-storage.md#pricing-and-billing).
 
 > [!NOTE]
 > Ne módosítsa vagy szerkessze az előkészítési helyet.

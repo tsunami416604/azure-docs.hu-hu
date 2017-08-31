@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 3c7f97b72f3813abe2357ae3202eaba285583bb8
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d2c197db73477d06d86d1c4faa8c4a2f58c7b391
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
@@ -172,7 +171,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
 
 4. A **Replikáció** legördülő listában válassza a **Helyileg redundáns tárolás** elemet.
 
-    Ha a georeplikáció engedélyezve van a tárfiókban, a tárolt tartalom replikálása egy másodlagos adatközpontba történik, amely ezáltal a feladatátvétel helyévé válik, amennyiben az elsődleges helyen jelentős katasztrófa következik be. A georeplikáció további költségeket vonhat maga után. A teszt- és fejlesztői fiókok esetében általában nem érdemes fizetni a georeplikációért. További információ: [Tárfiók létrehozása, kezelése vagy törlése](../storage/storage-create-storage-account.md).
+    Ha a georeplikáció engedélyezve van a tárfiókban, a tárolt tartalom replikálása egy másodlagos adatközpontba történik, amely ezáltal a feladatátvétel helyévé válik, amennyiben az elsődleges helyen jelentős katasztrófa következik be. A georeplikáció további költségeket vonhat maga után. A teszt- és fejlesztői fiókok esetében általában nem érdemes fizetni a georeplikációért. További információ: [Tárfiók létrehozása, kezelése vagy törlése](../storage/common/storage-create-storage-account.md).
 
 5. Az **Erőforráscsoport** szakaszban kattintson a **Meglévő használata** elemre, majd válassza ki a felhőszolgáltatáshoz használt erőforráscsoportot.
 6. A **Hely** legördülő listában válassza ugyanazt a régiót, amelyet a felhőszolgáltatás számára is választott.

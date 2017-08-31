@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: f6a49be148ded1a90a642b83d3d70a83e572f4e4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 1976c52bd7fa56bb07104e205ab3699b2dfa4c50
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="introducing-apache-kafka-on-hdinsight-preview"></a>A HDInsight alatt futó Apache Kafka (előzetes verzió) bemutatása
@@ -42,7 +42,7 @@ A Kafka a következő funkciókat biztosítja:
 
 * Integráció az Azure Managed Disks szolgáltatással: Az Azure Managed Disks jobb méretezést és teljesítményt biztosít a HDInsight-fürt által használt virtuális gépek lemezei számára.
 
-    Alapértelmezés szerint a felügyelt lemezek engedélyezve vannak a HDInsight-alapú Kafka számára, és a csomópontonként használt lemezek száma konfigurálható a HDInsight létrehozása során. További tudnivalók a felügyelt lemezekről: [Azure Managed Disks](../storage/storage-managed-disks-overview.md).
+    Alapértelmezés szerint a felügyelt lemezek engedélyezve vannak a HDInsight-alapú Kafka számára, és a csomópontonként használt lemezek száma konfigurálható a HDInsight létrehozása során. További tudnivalók a felügyelt lemezekről: [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
     További tudnivalók a felügyelt lemezek HDInsight-alapú Kafkával való konfigurálásáról: [A HDInsight-alapú Kafka méretezhetőségének javítása](hdinsight-apache-kafka-scalability.md).
 

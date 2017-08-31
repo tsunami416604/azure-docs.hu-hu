@@ -366,7 +366,7 @@ Ezt a lépést két CLI-munkamenetre osztottuk fel, amelyek jelölése **[1. el�
 [!INCLUDE [verify connections v2v cli](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 ## <a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

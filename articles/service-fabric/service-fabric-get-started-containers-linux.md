@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/28/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 35b7e0a730d73f646462b9cde3c8bbabac4d7c67
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 8355478cb2fff3a63bc4a9b359ec8e2b132c80f6
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -33,6 +33,7 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Linux-tárolókban v
 * Egy fejlesztői számítógép, amelyen a következők futnak:
   * [Service Fabric SDK és -eszközök](service-fabric-get-started-linux.md).
   * [Linuxhoz készült Docker CE](https://docs.docker.com/engine/installation/#prior-releases). 
+  * [Service Fabric parancssori felület](service-fabric-cli.md)
 
 * Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében. 
 
@@ -201,12 +202,12 @@ gradle
 ```
 
 ## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
-Az alkalmazást a létrehozása után az Azure parancssori felülettel telepítheti a helyi fürtben.
+Az alkalmazást a létrehozása után a Service Fabric parancssori felülettel telepítheti a helyi fürtben.
 
 Csatlakozzon a helyi Service Fabric-fürthöz.
 
 ```bash
-azure servicefabric cluster connect
+sfctl cluster select --endpoint http://localhost:19080
 ```
 
 Használja a sablonban megadott telepítési szkriptet az alkalmazáscsomag a fürt lemezképtárolójába való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.

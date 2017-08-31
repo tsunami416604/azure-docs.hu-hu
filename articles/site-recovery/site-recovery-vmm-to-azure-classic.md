@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: ed97f2aeb19566b12342e5194ac8a01293f453bf
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ac0931a71a2814723380256fc5326fc431c82f2c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure"></a>VMM-felhőkben futó Hyper-V virtuális gépek replikálása az Azure-ba
@@ -52,7 +51,7 @@ A következőkre lesz szüksége az Azure-ban.
 | **Előfeltétel** | **Részletek** |
 | --- | --- |
 | **Azure-fiók** |Szüksége lesz egy [Microsoft Azure](https://azure.microsoft.com/)-fiókra. Kezdésként használhatja az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) is. [További információk](https://azure.microsoft.com/pricing/details/site-recovery/) a Site Recovery díjszabásáról. |
-| **Azure Storage** |A replikált adatok tárolásához Azure-tárfiókra lesz szüksége. A replikált adatokat az Azure Storage tárolja, ha pedig feladatátvétel következik be, a rendszer Azure virtuális gépeket hoz létre. <br/><br/>Ehhez [standard georedundáns tárfiókot kell használnia](../storage/storage-redundancy.md#geo-redundant-storage). A fióknak és a Site Recovery szolgáltatásnak ugyanabban a régióban kell elhelyezkednie, és ugyanahhoz az előfizetéshez kell társulnia. Ne feledje, hogy a Prémium szintű tárfiókokba történő replikációt jelenleg nem támogatja a rendszer, ezért ne használjon ilyen típusú fiókokat.<br/><br/>[Itt részletesebben olvashat](../storage/storage-introduction.md) az Azure Storage-ről. |
+| **Azure Storage** |A replikált adatok tárolásához Azure-tárfiókra lesz szüksége. A replikált adatokat az Azure Storage tárolja, ha pedig feladatátvétel következik be, a rendszer Azure virtuális gépeket hoz létre. <br/><br/>Ehhez [standard georedundáns tárfiókot kell használnia](../storage/common/storage-redundancy.md#geo-redundant-storage). A fióknak és a Site Recovery szolgáltatásnak ugyanabban a régióban kell elhelyezkednie, és ugyanahhoz az előfizetéshez kell társulnia. Ne feledje, hogy a Prémium szintű tárfiókokba történő replikációt jelenleg nem támogatja a rendszer, ezért ne használjon ilyen típusú fiókokat.<br/><br/>[Itt részletesebben olvashat](../storage/common/storage-introduction.md) az Azure Storage-ről. |
 | **Azure-hálózat** |Szüksége lesz egy Azure virtuális hálózatra, amelyhez az Azure virtuális gépek tudnak csatlakozni, ha a rendszer feladatátvételt hajt végre. Az Azure virtuális hálózatnak és a Site Recovery-tárolónak ugyanabban a régióban kell elhelyezkednie. |
 
 ## <a name="on-premises-prerequisites"></a>Helyszíni előfeltételek

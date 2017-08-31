@@ -1,5 +1,5 @@
 ---
-title: "A fejlesztési környezet beállítása Mac OS X-en | Microsoft Docs"
+title: "A fejlesztési környezet beállítása Mac OS X-en az Azure Service Fabric használatához | Microsoft Docs"
 description: "Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások Mac OS X-en történő létrehozására."
 services: service-fabric
 documentationcenter: java
@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/06/2017
+ms.date: 08/21/2017
 ms.author: saysa
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: e5d14eb0a656d67030f4c0d3d510aec0e9cafae7
-ms.lasthandoff: 03/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 8b4fc0ab9034263418cac42ced203035e0a8fcad
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
@@ -51,7 +51,6 @@ Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehoz
     ```
     Ezzel a lépéssel lekéri a virtuálisgép-konfigurációt tartalmazó `Vagrantfile` fájlt valamint azt a helyet, ahonnan a virtuális gép le lett töltve.
 
-
 2. Navigáljon az adattár helyi klónjához
 
     ```bash
@@ -75,24 +74,46 @@ Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehoz
 
     ![A fürt beállításának megkezdése a virtuális gép kiépítése után][cluster-setup-script]
 
->[!TIP]
-> Ha a virtuális gép letöltése hosszú ideig tart, letöltheti a wget vagy a curl használatával, vagy egy böngészőből a `Vagrantfile` fájlban található **config.vm.box_url** által megadott hivatkozásra lépve. Miután letöltötte helyileg, szerkessze a `Vagrantfile`-t, hogy arra a helyi elérési útra mutasson, ahová a rendszerképet letöltötte. Ha a rendszerképet például a /home/users/test/azureservicefabric.tp8.box helyre töltötte le, állítsa a **config.vm.box_url** címet erre az elérési útra.
->
+    >[!TIP]
+    > Ha a virtuális gép letöltése hosszú ideig tart, letöltheti a wget vagy a curl használatával, vagy egy böngészőből a `Vagrantfile` fájlban található **config.vm.box_url** által megadott hivatkozásra lépve. Miután letöltötte helyileg, szerkessze a `Vagrantfile`-t, hogy arra a helyi elérési útra mutasson, ahová a rendszerképet letöltötte. Ha a rendszerképet például a /home/users/test/azureservicefabric.tp8.box helyre töltötte le, állítsa a **config.vm.box_url** címet erre az elérési útra.
+    >
 
 5. Keresse fel a Service Fabric Explorert a http://192.168.50.50:19080/Explorer címen (feltéve, hogy megtartotta az alapértelmezett magánhálózati IP-címet) a fürt megfelelő beállításának teszteléséhez.
 
     ![A Service Fabric Explorer a Mac gazdagépről megtekintve][sfx-mac]
 
+
+## <a name="create-application-on-mac-using-yeoman"></a>Alkalmazás létrehozása Mac gépen a Yeoman használatával
+A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek segítségével Service Fabric-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával ellenőrizze, hogy a Service Fabric Yeoman sablongenerátor működik-e a gépen.
+
+1. A Node.js-nek és az NPM-nek telepítve kell lennie Mac gépén. Ha a Node.js és az NPM nincs telepítve, a következők használatával telepítheti azokat a Homebrew-val. A Mac gépén telepített Node.js és NPM verzióinak ellenőrzéséhez használhatja a ``-v`` beállítást.
+
+  ```bash
+  brew install node
+  node -v
+  npm -v
+  ```
+2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
+
+  ```bash
+  npm install -g yo
+  ```
+3. Telepítse a használni kívánt Yeoman generátort az első lépéseket ismertető [dokumentációban](service-fabric-get-started-linux.md) leírt lépések végrehajtásával. Service Fabric-alkalmazások a Yeoman használatával való létrehozásához kövesse az alábbi lépéseket –
+
+  ```bash
+  npm install -g generator-azuresfjava       # for Service Fabric Java Applications
+  npm install -g generator-azuresfguest      # for Service Fabric Guest executables
+  npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
+  ```
+4. Service Fabric Java-alkalmazások Mac gépen való létrehozásához a JDK 1.8-nak és a Gradle-nek telepítve kell lennie a gépen.
+
+
 ## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése
 
 A Service Fabric egy beépülő modult biztosít a **Java Eclipse Neon IDE-hez**, amely leegyszerűsítheti a Java-szolgáltatások összeállításának, létrehozásának és üzembe helyezésének folyamatát. A Service Fabric Eclipse beépülő modul telepítéséhez és frissítéséhez érdemes az ebben az általános [dokumentációban](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon) szereplő telepítési lépéseket követnie.
 
-## <a name="using-service-fabric-eclipse-plugin-on-mac"></a>A Service Fabric Eclipse beépülő modul használata Mac gépen
-
-Győződjön meg arról, hogy elvégezte a [Service Fabric Eclipse beépülő modul dokumentációjában](service-fabric-get-started-eclipse.md) szereplő lépéseket. Service Fabric Java-alkalmazások Mac-gazdagépen vagrant-vendégtároló használatával történő összeállításának, létrehozásának és üzembe helyezésének lépései nagyrészt megegyeznek az általános dokumentációban szereplőkkel, a következők kivételével:
-
-* Mivel a Service Fabric Java-alkalmazáshoz szükségesek a Service Fabric-könyvtárak, az Eclipse-projektet megosztott elérési úton kell létrehozni. Alapméretezés szerint a ``Vagrantfile``-t tartalmazó gazdagép elérési útján található tartalmak a ``/vagrant`` elérési úton vannak megosztva a vendéggépen.
-* Ha a ``Vagrantfile`` például a ``~/home/john/allprojects/`` elérési úton található, akkor a ``MyActor`` Service Fabric-projektet a ``~/home/john/allprojects/MyActor`` helyen kell létrehoznia, és az Eclipse-munkaterületének elérési útja a ``~/home/john/allprojects`` lesz.
+>[!TIP]
+> Alapértelmezés szerint támogatjuk az alapértelmezett IP-címet a létrehozott alkalmazás ``Local.json`` fájljában lévő ``Vagrantfile``-ban leírtak szerint. Amennyiben ezt módosítja, és a Vagrant telepítéséhez más IP-címet használ, frissítse a megfelelő IP-címet az alkalmazás ``Local.json`` fájljában is.
 
 ## <a name="next-steps"></a>Következő lépések
 <!-- Links -->

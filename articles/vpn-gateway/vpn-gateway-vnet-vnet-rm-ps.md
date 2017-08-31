@@ -463,7 +463,7 @@ Ebben a példában, mivel az átjárók különböző előfizetésekben találha
 
 ## <a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

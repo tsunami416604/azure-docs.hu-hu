@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
-ms.openlocfilehash: c344941c59c52d260999c29f448bb94df24fba1d
-ms.lasthandoff: 04/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
@@ -197,7 +197,7 @@ Az egyéni szerepkör, meghatározása után, csak ahhoz az előfizetéshez rend
 
 A fejlesztők/operátorok egyéniszerep-hozzárendelése „üzembe helyezés/művelet” engedélyezéséhez az erőforráscsoport hatókörén belül van. Így csak a „ContosoAppRG” erőforráscsoportban létrehozott virtuális gépek kapják meg a titkos kulcsokat (SSL-tanúsítványt és a rendszerindítási tanúsítványt). A fejlesztők/operátorok csapatának tagjai által másik erőforráscsoportban létrehozott egyetlen virtuális gép sem olvashatja be ezeket a titkos kulcsokat, még abban az esetben sem, ha ismerték a titkos URI-ket.
 
-Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a valós életbeli forgatókönyvek bonyolultabbak, és szükség lehet a kulcstartóengedélyek igényei szerinti módosítására. Példánkban abból indulunk ki, hogy a biztonsági csapat adja azokat a kulcs- és titkoskulcs-referenciákat (URI-k és ujjlenyomatok), amelyekre a fejlesztők/operátorok csapatának hivatkoznia kell alkalmazásaiban. Ezért nem kell semmilyen adatsík-hozzáférést biztosítania a fejlesztők/operátorok számára. Fontos megjegyezni, hogy ebben a példában legfőképpen a kulcstartó biztonságossá tételére összpontosítunk. Hasonló figyelmet kell fordítani [virtuális gépei](https://azure.microsoft.com/services/virtual-machines/security/), [tárfiókjai](../storage/storage-security-guide.md) és egyéb Azure-erőforrásai biztosítására is.
+Ez a példa egy egyszerű forgatókönyvet mutat be. Előfordulhat, hogy a valós életbeli forgatókönyvek bonyolultabbak, és szükség lehet a kulcstartóengedélyek igényei szerinti módosítására. Példánkban abból indulunk ki, hogy a biztonsági csapat adja azokat a kulcs- és titkoskulcs-referenciákat (URI-k és ujjlenyomatok), amelyekre a fejlesztők/operátorok csapatának hivatkoznia kell alkalmazásaiban. Ezért nem kell semmilyen adatsík-hozzáférést biztosítania a fejlesztők/operátorok számára. Fontos megjegyezni, hogy ebben a példában legfőképpen a kulcstartó biztonságossá tételére összpontosítunk. Hasonló figyelmet kell fordítani [virtuális gépei](https://azure.microsoft.com/services/virtual-machines/security/), [tárfiókjai](../storage/common/storage-security-guide.md) és egyéb Azure-erőforrásai biztosítására is.
 
 > [!NOTE]
 > Megjegyzés: Ez a példa bemutatja, hogyan lesz zárolva a kulcstartó-hozzáférés üzemi környezetben. A fejlesztőknek saját előfizetéssel vagy erőforráscsoporttal kell rendelkezniük, ahol teljes körű engedélyekkel rendelkeznek kulcstartóik, virtuális gépeik és a tárfiókjuk kezelésére az alkalmazás fejlesztésének helyén.

@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: a8854c0f6313238ee846ad1c537d23d8fd20c66f
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 2cb4bd74ea973c8ff980d208a8c5f63a98ec1edd
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="introduction-to-azure-cosmos-db-documentdb-api"></a>Bevezetés az Azure Cosmos DB: DocumentDB API-ba
@@ -48,6 +48,8 @@ Az Azure Cosmos DB a DocumentDB API-n keresztül az alábbi főbb képességeket
 * **Nyílt kialakítás:** Hamar munkához láthat a meglévő ismeretei és eszközei használatával. A DocumentDB API programozása könnyű, elérhető és nem igényli új eszközök megismerését vagy egyéni kiterjesztések használatát a JSON és a JavaScript formátumhoz. Egy egyszerű RESTful HTTP-felületen keresztül érheti el az adatbázis összes funkcióját, mint a CRUD, a lekérdezés és a JavaScript-feldolgozás. A DocumentDB API támogatja a meglévő formátumokat, nyelveket és standardokat, miközben értékes adatbázis-képességeket is kínál.
 
 * **Automatikus indexelés:** Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli az adatbázisban szereplő összes dokumentumot, nem vár vagy igényel semmilyen sémát, és nem szükséges másodlagos indexek létrehozása sem. Szeretne mindent indexelni? Ne aggódjon, [a JSON-fájlok elérési útjainak indexelését](indexing-policies.md) is ki lehet kapcsolni.
+
+* **Módosítási hírcsatorna támogatása:** A módosítási hírcsatorna a módosításuk ideje szerint sorba rendezve sorolja fel az Azure Cosmos DB-gyűjteményben található dokumentumokat. Ezzel a hírcsatornával nyomon követhetők az adatok módosításai az adatok replikálása, API-hívások aktiválása vagy a frissítések streamfeldolgozása céljából. A módosítási hírcsatorna automatikusan engedélyezve van, és egyszerűen használható: [további információk a módosítási hírcsatornáról](https://docs.microsoft.com/azure/cosmos-db/change-feed). 
 
 ## <a name="data-management"></a>Hogyan kezelhetők az adatok a DocumentDB API-val?
 A DocumentDB API jól meghatározott adatbázis-erőforrások használatával kezeli a JSON-adatokat. A magas rendelkezésre állás érdekében a rendszer replikálja ezeket az erőforrásokat, amelyek a logikai URI-juk alapján egyedi módon címezhetők. A DocumentDB API egy egyszerű, HTTP-alapú RESTful programozási modellt kínál minden erőforráshoz. 

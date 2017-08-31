@@ -187,7 +187,7 @@ Kattintson duplán az egyes kapcsolatokra az adott kapcsolat információinak me
 ## <a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
 A virtuális hálózatok közötti kapcsolatokról további információt a gyakori kérdésekben talál.
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért tekintse meg a [Virtual Machines-dokumentációt](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).

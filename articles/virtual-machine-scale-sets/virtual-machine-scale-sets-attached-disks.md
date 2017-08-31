@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 451d3c956b863ab90f86509fd80a5c96e27525ce
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 22c7e589efa9a9f401549ec9b95c58c4eaf07b94
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és csatlakoztatott adatlemezek
@@ -99,10 +99,21 @@ Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScale
     }          
 ]
 ```
+
 Ezután válassza ki a _PUT_ parancsot, és alkalmazza a módosításokat a méretezési csoportra. Ez a példa akkor működik, ha a használt virtuális gép mérete kettőnél több csatlakoztatott adatlemezt támogat.
 
 > [!NOTE]
 > Ha módosítja egy méretezési csoport definícióját (pl. adatlemezt ad hozzá vagy távolít el róla), akkor a módosítás minden újonnan létrehozott virtuális gépre érvényes lesz. Már létező virtuális gépekre azonban csak akkor lesz érvényes, ha az _upgradePolicy_ tulajdonság „Automatic” (Automatikus) értékre van állítva. Ha ez a tulajdonság „Manual” (Manuális) értékre van állítva, akkor manuálisan kell alkalmazni az új modellt a már létező virtuális gépekre. Ezt a portálon az _Update-AzureRmVmssInstance_ PowerShell-parancs, vagy az Azure parancssori felület _az vmss update-instances_ parancsának használatával teheti meg.
+
+## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>Adatokkal előre feltöltött adatlemezek hozzáadása már létező méretezési csoporthoz 
+> Amikor lemezeket ad hozzá egy már létező méretezésicsoport-modellhez, az elvárt működésnek megfelelően a lemezek minden esetben üresen jönnek létre. Ez a forgatókönyv a méretezési csoport által létrehozott új példányokra is vonatkozik. Ennek az oka, hogy a méretezési csoport definíciójában üres adatlemez van meghatározva. Ha adatokkal előre feltöltött adatlemezeket szeretne létrehozni egy meglévő méretezésicsoport-modellhez, az alábbi két lehetőség közül választhat:
+
+* Átmásolhatja a 0. virtuálisgép-példány adatait a többi virtuális gépre egy egyéni szkript futtatásával.
+* Létrehozhat egy felügyelt rendszerképet, amely az operációs rendszer adatai mellett az adatlemezt is tartalmazza (a szükséges adatokkal), és létrehozhat egy új méretezési csoportot ezzel a rendszerképpel. Ezzel a módszerrel minden újonnan létrehozott virtuális gép rendelkezik majd egy adatlemezzel, amely a méretezési csoport definíciójában van megadva. Mivel a definíció egy olyan rendszerképre hivatkozik, amely tartalmaz egy testre szabott adatokkal rendelkező adatlemezt, a méretezési csoportban lévő összes virtuális gép automatikusan tartalmazza majd ezeket a módosításokat.
+
+> Az egyéni rendszerkép létrehozásának lépéseit itt találja: [Create a managed image of a generalized VM in Azure](/azure/virtual-machines/windows/capture-image-resource/) (Általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban). 
+
+> A felhasználónak rögzítenie kell a szükséges adatokat tartalmazó 0. virtuálisgép-példányt, majd ezt a virtuális merevlemezt kell használnia a rendszerkép definíciójában.
 
 ## <a name="removing-a-data-disk-from-a-scale-set"></a>Adatlemez eltávolítása méretezési csoportból
 Adatlemez az Azure parancssori felület _az vmss disk detach_ parancsával távolítható el a virtuálisgép-méretezési csoportokból. Az alábbi parancs például a 2. logikai egységben definiált lemezt távolítja el:

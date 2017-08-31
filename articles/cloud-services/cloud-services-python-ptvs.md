@@ -14,16 +14,16 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 6b21f38ddd64278db26d7042349470805b799203
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7d2bc89943087323e92cf06981bbacaf4b8ff060
 ms.contentlocale: hu-hu
-ms.lasthandoff: 04/18/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
 
-Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual Studio][Python Tools for Visual Studio] eszközben történő használatát ismerteti. Megtudhatja, hogyan hozhat létre és telepíthet egy, a Pythont használó alapszintű felhőszolgáltatást a Visual Studióval.
+Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual Studio][Python Tools for Visual Studio] eszközben történő használatát ismerteti. Megtudhatja, hogyan hozhat létre és telepíthet egy Pythont használó alapszintű felhőszolgáltatást a Visual Studióval.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Visual Studio 2013, 2015 vagy 2017](https://www.visualstudio.com/)
@@ -36,7 +36,7 @@ Ez a cikk a Python webes és feldolgozói szerepkörök [Python Tools for Visual
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Mik a Python webes és feldolgozói szerepkörök?
-Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service-ben][execution model-web sites], [Azure Virtual Machines][execution model-vms] és [Azure Cloud Services][execution model-cloud services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói interakcióktól vagy bemenettől.
+Az Azure három számítási modellt biztosít az alkalmazások futtatásához: [Web Apps szolgáltatás az Azure App Service-ben][execution model-web sites], [Azure Virtual Machines][execution model-vms] és [Azure Cloud Services][execution model-cloud services]. Mindhárom modell támogatja a Python eszközt. A webes és feldolgozói szerepköröket is tartalmazó Cloud Services *platformszolgáltatást (PaaS)* kínál. A felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót biztosít az előtéri webalkalmazásokhoz, míg a feldolgozói szerepkör aszinkron, hosszan futó vagy folyamatos feladatokat futtat függetlenül a felhasználói műveletektől vagy bemenettől.
 
 További információ: [Mi az a Cloud Service?].
 
@@ -56,7 +56,7 @@ Az Azure Cloud Service varázslóban létrehozhat új webes és feldolgozói sze
 
 ![Azure Cloud Service párbeszédpanel](./media/cloud-services-python-ptvs/new-service-wizard.png)
 
-A feldolgozói szerepkör bolierplate kóddal rendelkezik, hogy csatlakozhasson egy Azure-tárfiókhoz vagy Azure Service Bus szolgáltatáshoz.
+A feldolgozói szerepkör sablonja sablonkóddal rendelkezik, hogy csatlakozhasson egy Azure-tárfiókhoz vagy az Azure Service Bus szolgáltatáshoz.
 
 ![Cloud Service megoldás](./media/cloud-services-python-ptvs/worker.png)
 
@@ -72,9 +72,9 @@ A felhőszolgáltatás tartalmazhat különböző nyelveken kialakított szerepk
 > 
 > 
 
-A telepítési parancsfájlok fő problémája, hogy nem telepítik a Pythont. Először határozzon meg két [indítási feladatot](cloud-services-startup-tasks.md) a [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) fájlban. Az első feladat (**PrepPython.ps1**) letölti és telepíti a Python-futtatókörnyezetet. A második feladat (**PipInstaller.ps1**) a pipet futtatja a vonatkozó függőségek telepítéséhez.
+A telepítési szkriptek fő problémája, hogy nem telepítik a Pythont. Először határozzon meg két [indítási feladatot](cloud-services-startup-tasks.md) a [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) fájlban. Az első feladat (**PrepPython.ps1**) letölti és telepíti a Python-futtatókörnyezetet. A második feladat (**PipInstaller.ps1**) a pipet futtatja a vonatkozó függőségek telepítéséhez.
 
-Az alábbi parancsfájlok a Python 3.5-ösre vonatkoznak. Ha a Python 2.x verzióját szeretné használni, állítsa a **PYTHON2** változófájlt **be** értékre a két indítási és a futtatókörnyezeti feladathoz: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
+Az alábbi parancsfájlok a Python 3.5-ös verziójára vonatkoznak. Ha a Python 2.x verzióját szeretné használni, állítsa a **PYTHON2** változófájlt **be** értékre a két indítási és a futtatókörnyezeti feladathoz: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
 
 ```xml
 <Startup>
@@ -101,7 +101,7 @@ Az alábbi parancsfájlok a Python 3.5-ösre vonatkoznak. Ha a Python 2.x verzi�
 </Startup>
 ```
 
-A **PYTHON2** és a **PYPATH** változót hozzá kell adni a feldolgozó indítási feladatához. A **PYPATH** változót csak akkor használja a rendszer, ha a **PYTHON2** változó **be** értékű.
+A **PYTHON2** és a **PYPATH** változókat hozzá kell adnia a feldolgozó indítási feladatához. A **PYPATH** változót csak akkor használja a rendszer, ha a **PYTHON2** változó **be** értékű.
 
 ```xml
 <Runtime>
@@ -170,7 +170,7 @@ A **PYTHON2** és a **PYPATH** változót hozzá kell adni a feldolgozó indít�
 Ezután hozza létre a **PrepPython.ps1** és a **PipInstaller.ps1** fájlokat a szerepkör **./bin** mappájában.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Ez a parancsfájl telepíti a Pythont. Ha a **PYTHON2** környezeti változó **be** értékű, akkor a rendszer a Python 2.7-et telepíti. Egyéb esetben a Python 3.5 lesz telepítve.
+Ez a parancsfájl telepíti a Pythont. Ha a **PYTHON2** környezeti változó értéke **on**, akkor a rendszer a Python 2.7-et telepíti. Egyéb esetben a Python 3.5 lesz telepítve.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -216,7 +216,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Ez a parancsfájl meghívja a pipet, és telepíti a **requirements.txt** fájlban található összes függőséget. Ha a **PYTHON2** környezeti változó **be** értékű, a rendszer a Python 2.7-et használja. Egyéb esetben a Python 3.5 lesz használatban.
+Ez a parancsfájl meghívja a pipet, és telepíti a **requirements.txt** fájlban található összes függőséget. Ha a **PYTHON2** környezeti változó értéke **on**, akkor a rendszer a Python 2.7-et használja, egyéb esetben pedig a Python 3.5-öt.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -251,7 +251,7 @@ if (-not $is_emulated){
 
 A **bin\LaunchWorker.ps1** eredetileg azért jött létre, hogy előkészítési munkákat végezzen, de nem igazán működik. Cserélje le a fájl tartalmát a következő parancsfájllal.
 
-A parancsfájl meghívja a **worker.py** fájlt a Python-projektből. Ha a **PYTHON2** környezeti változó **be** értékű, a rendszer a Python 2.7-et használja. Egyéb esetben a Python 3.5 lesz használatban.
+A parancsfájl meghívja a **worker.py** fájlt a Python-projektből. Ha a **PYTHON2** környezeti változó értéke **on**, akkor a rendszer a Python 2.7-et használja, egyéb esetben pedig a Python 3.5-öt.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -303,9 +303,9 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 
 ## <a name="run-locally"></a>Helyi futtatás
-Ha a felhőszolgáltatási projektet állítja be kiindulási projektnek, és megnyomja az F5 billentyűt, a felhőszolgáltatás a helyi Azure emulátorban fog futni.
+Ha a felhőszolgáltatási projektet állítja be kiindulási projektnek, és lenyomja az F5 billentyűt, a felhőszolgáltatás a helyi Azure-emulátorban fut.
 
-Bár a PVTS támogatja az indítást az emulátorban, a hibakeresés (például töréspontok keresése) nem fog működni.
+Bár a PVTS támogatja az emulátorban való indítást, a hibakeresés (például a töréspontok keresése) nem működik.
 
 A webes és feldolgozói szerepkörök hibakereséséhez állítsa be a szerepkörprojektet kiindulási projektként, és végezzen azon hibakeresést  Beállíthat több kiindulási projektet is.  Kattintson a jobb gombbal a megoldásra, majd válassza az **Indítási projektek beállítása** lehetőséget.
 
@@ -320,21 +320,21 @@ Kövesse a varázsló utasításait. Szükség esetén engedélyezze a távoli a
 
 Ha elkészült a beállítások konfigurálásával, kattintson a **Közzététel** gombra.
 
-Egy folyamatjelző jelenik meg a kimeneti ablakban, majd megnyílik a Microsoft Azure tevékenységnapló ablak.
+Egy folyamatjelző jelenik meg a kimeneti ablakban, majd megnyílik a Microsoft Azure-tevékenységnapló ablak.
 
 ![Microsoft Azure tevékenységnapló ablak](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
-A telepítés néhány percet vesz igénybe, ezután a webes és/vagy feldolgozói szerepkörök el is indulnak az Azure portálon!
+Az üzembe helyezés néhány percet vesz igénybe, majd a webes és/vagy feldolgozói szerepkörök el is indulnak az Azure-ban!
 
 ### <a name="investigate-logs"></a>Naplók vizsgálata
-A felhőszolgáltatás virtuális gépének elindulása és a Python telepítése után áttekintheti, hogy vannak-e a naplókban hibaüzenetek. Ezek a naplók a **C:\Resources\Directory\\{szerepkör}\LogFiles** mappában találhatók. A **PrepPython.err.txt** fájlban legalább egy hiba elő fog fordulni, amely akkor keletkezik, amikor a parancsfájl megpróbálja észlelni, hogy a Python telepítve van-e. Az is előfordulhat, hogy a **PipInstaller.err.txt** jelzi a pip elavult verziójának használatát.
+A felhőszolgáltatás virtuális gépének elindulása és a Python telepítése után áttekintheti, hogy vannak-e a naplókban hibaüzenetek. Ezek a naplók a **C:\Resources\Directory\\{szerepkör}\LogFiles** mappában találhatók. A **PrepPython.err.txt** fájlban legalább egy hiba található, amely akkor keletkezik, amikor a szkript megpróbálja észlelni, hogy a Python telepítve van-e. Az is előfordulhat, hogy a **PipInstaller.err.txt** jelzi a pip elavult verziójának használatát.
 
 ## <a name="next-steps"></a>Következő lépések
 A PVTS dokumentációban további információkat találhat a webes és feldolgozói szerepkörök használatáról Python Tools for Visual Studio eszközben:
 
 * [Cloud Service-projektek][Cloud Service Projects]
 
-Ha további részletekre kíváncsi az Azure szolgáltatások használatáról webes és feldolgozói szerepkörökből, mint az Azure Storage vagy a Service Bus, olvassa el a következő cikkeket.
+Ha további részletekre kíváncsi az Azure-szolgáltatások webes és feldolgozói szerepkörökből történő használatáról, például az Azure Storage vagy a Service Bus használatáról, olvassa el a következő cikkeket:
 
 * [Blob Service][Blob Service]
 * [Table Service][Table Service]
@@ -350,9 +350,9 @@ Ha további részletekre kíváncsi az Azure szolgáltatások használatáról w
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[Blob Service]: ../storage/storage-python-how-to-use-blob-storage.md
-[Queue Service]: ../storage/storage-python-how-to-use-queue-storage.md
-[Table Service]: ../storage/storage-python-how-to-use-table-storage.md
+[Blob Service]:../storage/blobs/storage-python-how-to-use-blob-storage.md
+[Queue Service]: ../storage/queues/storage-python-how-to-use-queue-storage.md
+[Table Service]:../cosmos-db/table-storage-how-to-use-python.md
 [Service Bus Queues]: ../service-bus-messaging/service-bus-python-how-to-use-queues.md
 [Service Bus Topics]: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
 

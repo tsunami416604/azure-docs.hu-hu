@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 8a03e28045019a4beb423d95a4fa00637cd66294
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 958b61f5de732a882e0a2682b8dd4e18504a6ae7
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>VMM-felhőben lévő Hyper-V virtuális gépek replikálása az Azure-ba az Azure Portal Site Recovery szolgáltatásának használatával
@@ -81,8 +81,8 @@ Szükség van egy Azure-hálózatra, amelyhez a feladatátvételt követően lé
 A Site Recovery által használt Azure-hálózatok nem [mozgathatók](../azure-resource-manager/resource-group-move-resources.md) az előfizetésen belül vagy előfizetések között.
 
 ### <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók beállítása
-* Az Azure-ba replikált adatok tárolásához standard/prémium Azure Storage-fiókra lesz szüksége. A [Prémium Storage-ot](../storage/storage-premium-storage.md) azok a virtuális gépek használják, amelyeknek folyamatosan nagy I/O-teljesítményre és alacsony késleltetésre van szüksége az I/O-igényes számítási feladatokhoz. Ha Prémium szintű fiókot kíván használni a replikált adatok tárolására, a helyszíni adatokban bekövetkező változásokat rögzítő replikálási naplók tárolására be kell állítania egy standard szintű Storage-fiókot is. A fióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
-* Az átadott Azure virtuális gépekhez használni kívánt erőforrásmodelltől függően a fiókot is [Resource Manager üzemmódban](../storage/storage-create-storage-account.md) vagy [klasszikus üzemmódban](../storage/storage-create-storage-account-classic-portal.md) kell beállítani.
+* Az Azure-ba replikált adatok tárolásához standard/prémium Azure Storage-fiókra lesz szüksége. A [Prémium Storage-ot](../storage/common/storage-premium-storage.md) azok a virtuális gépek használják, amelyeknek folyamatosan nagy I/O-teljesítményre és alacsony késleltetésre van szüksége az I/O-igényes számítási feladatokhoz. Ha Prémium szintű fiókot kíván használni a replikált adatok tárolására, a helyszíni adatokban bekövetkező változásokat rögzítő replikálási naplók tárolására be kell állítania egy standard szintű Storage-fiókot is. A fióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
+* Az átadott Azure virtuális gépekhez használni kívánt erőforrásmodelltől függően a fiókot is [Resource Manager üzemmódban](../storage/common/storage-create-storage-account.md) vagy [klasszikus üzemmódban](../storage/common/storage-create-storage-account.md) kell beállítani.
 * Javasoljuk, hogy még a kezdés előtt állítsa be a fiókot. Ha most kihagyja ezt a lépést, a Site Recovery üzembe helyezése közben kell majd elvégeznie.
 - Vegye figyelembe, hogy a Site Recovery által használt tárfiókok nem [mozgathatók](../azure-resource-manager/resource-group-move-resources.md) az előfizetésen belül vagy eltérő előfizetések között.
 
@@ -221,7 +221,7 @@ Adja meg a replikációhoz használni kívánt Azure-tárfiókot, valamint az Az
    ![Tárolás](./media/site-recovery-vmm-to-azure/gs-createstorage.png)
 
 
-   * Ha a klasszikus modellt használó tárfiókot szeretne létrehozni, azt az Azure-portálon teheti meg. [További információ](../storage/storage-create-storage-account-classic-portal.md)
+   * Ha a klasszikus modellt használó tárfiókot szeretne létrehozni, azt az Azure-portálon teheti meg. [További információ](../storage/common/storage-create-storage-account.md)
    * Ha Prémium szintű tárfiókot használ a replikált adatok tárolására, a helyszíni adatokban bekövetkező változásokat rögzítő replikálási naplók tárolására be kell állítania egy standard tárfiókot is.
 5. Ha még nem hozott létre Azure-hálózatot, és ezt szeretné most megtenni a Resource Managerben, kattintson a **+Hálózat** elemre. A **Virtuális hálózat létrehozása** panelen adja meg a hálózat nevét, a címtartományt, az alhálózati adatokat, az előfizetést, valamint a helyet. A hálózatnak és a Recovery Services-tárolónak ugyanazon a helyen kell lennie.
 
@@ -261,7 +261,7 @@ Ez történik a hálózatleképezés megkezdésekor:
 3. A **Másolás gyakorisága** elemmel meghatározhatja, hogy milyen gyakran szeretné replikálni a módosult adatokat a kezdeti replikációt követően (ez lehet 30 másodperc, 5 perc vagy 15 perc).
 
     > [!NOTE]
-    >  Prémium szintű tárterületre replikálás esetén nem támogatott a 30 másodperces gyakoriság. A korlátozás a Prémium szintű Storage által támogatott blobonkénti pillanatképek számától (100) függ. [További információ](../storage/storage-premium-storage.md#snapshots-and-copy-blob)
+    >  Prémium szintű tárterületre replikálás esetén nem támogatott a 30 másodperces gyakoriság. A korlátozás a Prémium szintű Storage által támogatott blobonkénti pillanatképek számától (100) függ. [További információ](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)
 
 4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy hány órás legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A védelemmel ellátott gépeket az időtartamon belüli bármelyik pontra visszaállíthatja.
 5. Az **Alkalmazáskonzisztens pillanatkép gyakorisága** beállítás azt határozza meg, hogy milyen gyakran hozzon létre a rendszer alkalmazáskonzisztens pillanatképeket tartalmazó helyreállítási pontokat (a beállítás értéke 1 és 12 óra között változhat). A Hyper-V két különböző pillanatképtípust használ: az egyik a standard pillanatkép, amely a virtuális gép egészét lefedő növekményes pillanatképet, a másik pedig az alkalmazáskonzisztens pillanatkép, amely a virtuális gépen futó alkalmazások adatairól készült, időponthoz kötött pillanatképet jelent. Az alkalmazáskonzisztens pillanatképek a kötet árnyékmásolása szolgáltatás (VSS) segítségével garantálják, hogy az alkalmazások konzisztens állapotban legyenek a pillanatkép készítésének időpontjában. Ne feledje, hogy az alkalmazáskonzisztens pillanatképek bekapcsolása negatív hatással lesz a forrás virtuális gépeken futó alkalmazások teljesítményére. Ügyeljen rá, hogy az itt megadott érték kisebb legyen a további beállított helyreállítási pontok számánál.
@@ -307,7 +307,7 @@ Most már engedélyezheti a replikációt a következők szerint:
 3. A **Cél** résznél válassza ki az előfizetést, a feladatátvételt követő üzembe helyezési modellt, valamint a replikált adatok tárolására használni kívánt tárfiókot.
 
     ![A replikáció engedélyezése](./media/site-recovery-vmm-to-azure/enable-replication-target.png)
-4. Válassza ki a használni kívánt tárfiókot. Ha a rendelkezésre álló tárfiókok helyett egy másikat szeretne használni, [hozza létre](#set-up-an-azure-storage-account). Ha Prémium szintű Storage-fiókot használ a replikált adatok tárolására, a helyszíni adatokban bekövetkező változásokat rögzítő replikálási naplók tárolására be kell állítania egy Standard Storage-fiókot is. A Storage-fiók Resource Manager-alapú modellel történő létrehozásához kattintson az **Új létrehozása** elemre. Ha a klasszikus modellt használó tárfiókot szeretne létrehozni, azt az [Azure-portálon teheti meg](../storage/storage-create-storage-account-classic-portal.md). Ezután kattintson az **OK** gombra.
+4. Válassza ki a használni kívánt tárfiókot. Ha a rendelkezésre álló tárfiókok helyett egy másikat szeretne használni, [hozza létre](#set-up-an-azure-storage-account). Ha Prémium szintű Storage-fiókot használ a replikált adatok tárolására, a helyszíni adatokban bekövetkező változásokat rögzítő replikálási naplók tárolására be kell állítania egy Standard Storage-fiókot is. A Storage-fiók Resource Manager-alapú modellel történő létrehozásához kattintson az **Új létrehozása** elemre. Ha a klasszikus modellt használó tárfiókot szeretne létrehozni, azt az [Azure-portálon teheti meg](../storage/common/storage-create-storage-account.md). Ezután kattintson az **OK** gombra.
 5. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak. Ha a megadott hálózati beállításokat az összes védelemre kijelölt gépre szeretné alkalmazni, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre. Ha a rendelkezésre álló hálózatok helyett másikat szeretne használni, [hozza létre](#set-up-an-azure-network). A hálózat Resource Manager-modell használatával történő létrehozásához kattintson az **Új létrehozása** elemre. Ha a klasszikus modellt használó hálózatot szeretne létrehozni, azt az [Azure-portálon](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) teheti meg. Ha szükséges, válassza ki az alhálózatot. Ezután kattintson az **OK** gombra.
 6. A **Virtuális gépek** > **Virtuális gépek kijelölése** menüben kattintással jelölje ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Végül kattintson az **OK** gombra.
 

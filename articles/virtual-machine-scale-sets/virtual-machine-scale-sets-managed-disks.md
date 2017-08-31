@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 8ec9709bfb553f6ee89611e92330dedb6129055d
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és felügyelt lemezek
@@ -45,7 +45,7 @@ Vagy az [Azure-gyorsindítási sablonok GitHub-adattárában](https://github.com
 
 ## <a name="next-steps"></a>Következő lépések
 
-A felügyelt lemezekkel kapcsolatban [ebben a cikkben](../storage/storage-managed-disks-overview.md) talál további információt.
+A felügyelt lemezekkel kapcsolatban [ebben a cikkben](../virtual-machines/windows/managed-disks-overview.md) talál további információt.
 
 [Ebben a cikkben](./virtual-machine-scale-sets-convert-template-to-md.md) láthatja, hogyan alakíthat át egy Resource Manager-sablont, hogy felügyelt lemezekkel lássa el a méretezési csoportokat. A Resource Manager-sablonok ugyanezen módosításai érvényesek az Azure REST API-ra is.
 

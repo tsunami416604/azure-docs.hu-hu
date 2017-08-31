@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 8de3df11a59178b782d50b7662aa5d8cab11a260
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Ismerkedés a Pythonhoz készült Batch SDK-val
@@ -32,7 +31,7 @@ ms.lasthandoff: 07/06/2017
 >
 >
 
-Ebben a cikkben megismerheti az [Azure Batch][azure_batch] alapjait és a [Batch Python][py_azure_sdk]-ügyfelet egy Pythonban írt kisméretű Batch-alkalmazás részletes ismertetésén keresztül. Áttekintjük, hogyan használja ez a két mintául szolgáló parancsfájl a Batch szolgáltatást párhuzamos számítási feladat feldolgozásához Linux virtuális gépeken a felhőben, valamint hogyan használják az [Azure Storage-ot](../storage/storage-introduction.md) a fájlok előkészítéséhez és lekéréséhez. Megismerheti a Batch-alkalmazások általános munkafolyamatát, és a Batch fő összetevőivel, például a tevékenységekkel, feladatokkal, készletekkel és számítási csomópontokkal kapcsolatos alapvető ismereteket is elsajátíthatja.
+Ebben a cikkben megismerheti az [Azure Batch][azure_batch] alapjait és a [Batch Python][py_azure_sdk]-ügyfelet egy Pythonban írt kisméretű Batch-alkalmazás részletes ismertetésén keresztül. Áttekintjük, hogyan használja ez a két mintául szolgáló parancsfájl a Batch szolgáltatást párhuzamos számítási feladat feldolgozásához Linux virtuális gépeken a felhőben, valamint hogyan használják az [Azure Storage-ot](../storage/common/storage-introduction.md) a fájlok előkészítéséhez és lekéréséhez. Megismerheti a Batch-alkalmazások általános munkafolyamatát, és a Batch fő összetevőivel, például a tevékenységekkel, feladatokkal, készletekkel és számítási csomópontokkal kapcsolatos alapvető ismereteket is elsajátíthatja.
 
 ![Batch-megoldás munkafolyamata (alapszintű)][11]<br/>
 
@@ -42,7 +41,7 @@ Ez a cikk a Python és a Linux gyakorlati ismeretét feltételezi. Azt is felté
 ### <a name="accounts"></a>Fiókok
 * **Azure-fiók**: Ha még nincs Azure-előfizetése, [hozzon létre egy ingyenes Azure-fiókot][azure_free_account].
 * **Batch-fiók**: Ha már rendelkezik Azure-előfizetéssel, [hozzon létre egy Azure Batch-fiókot](batch-account-create-portal.md).
-* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) cikk [Tárfiók létrehozása](../storage/storage-create-storage-account.md#create-a-storage-account) szakaszát.
+* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) cikk [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md#create-a-storage-account) szakaszát.
 
 ### <a name="code-sample"></a>Kódminta
 A Python-oktatóprogram [kódmintája][github_article_samples] a GitHubon lévő [azure-batch-samples][github_samples] tárban található számos Batch-kódminta egyike. Az összes minta letöltéséhez kattintson a **Clone or download > Download ZIP** (Klónozás vagy letöltés > ZIP letöltése) elemre a tár kezdőlapján, vagy kattintson az [azure-batch-samples-master.zip][github_samples_zip] közvetlen letöltésére szolgáló hivatkozásra. Amikor kibontotta a ZIP-fájl tartalmát, az oktatóprogram két parancsfájlja található meg az `article_samples` könyvtárban:
@@ -153,7 +152,7 @@ if __name__ == '__main__':
 ![Tárolók létrehozása az Azure Storage-ban][1]
 <br/>
 
-A Batch beépített támogatást tartalmaz az Azure Storage használatához. A Storage-fiókban lévő tárolók biztosítják a Batch-fiókban futó tevékenységekhez szükséges fájlokat. A tárolók a tevékenységek által létrehozott kimeneti adatok tárolásához is helyet biztosítanak. A *python_tutorial_client.py* parancsfájl először három tárolót hoz létre az [Azure Blob Storage](../storage/storage-introduction.md#blob-storage)-tárolóban:
+A Batch beépített támogatást tartalmaz az Azure Storage használatához. A Storage-fiókban lévő tárolók biztosítják a Batch-fiókban futó tevékenységekhez szükséges fájlokat. A tárolók a tevékenységek által létrehozott kimeneti adatok tárolásához is helyet biztosítanak. A *python_tutorial_client.py* parancsfájl először három tárolót hoz létre az [Azure Blob Storage](../storage/common/storage-introduction.md#blob-storage)-tárolóban:
 
 * **application**: Ez a tároló tárolja a feladatok által futtatott, *python_tutorial_task.py* nevű Python-parancsfájlt.
 * **input**: A tevékenységek az *input* tárolóból töltik le a feldolgozni kívánt adatfájlokat.
@@ -183,7 +182,7 @@ blob_client.create_container(OUTPUT_CONTAINER_NAME, fail_on_exist=False)
 A tárolók létrehozása után az alkalmazás feltöltheti a tevékenységek által használandó fájlokat.
 
 > [!TIP]
-> [How to use Azure Blob storage from Python](../storage/storage-python-how-to-use-blob-storage.md) (A Blob-tároló használata Pythonból) szakasz jó áttekintést nyújt az Azure Storage-tárolók és blobok használatáról. A Batch használatának elkezdésekor ez az egyik legfontosabb forrásanyag.
+> [How to use Azure Blob storage from Python](../storage/blobs/storage-python-how-to-use-blob-storage.md) (A Blob-tároló használata Pythonból) szakasz jó áttekintést nyújt az Azure Storage-tárolók és blobok használatáról. A Batch használatának elkezdésekor ez az egyik legfontosabb forrásanyag.
 >
 >
 
@@ -277,7 +276,7 @@ A közös hozzáférésű jogosultságkódok olyan karakterláncok, amelyek bizt
 * **Tároló közös hozzáférésű jogosultságkódja**: Amikor az egyes tevékenységek befejezik a munkájukat a számítási csomóponton, feltöltik a kimeneti fájljukat az Azure Storage *output* tárolójába. Ehhez a *python_tutorial_task.py* tároló közös hozzáférésű jogosultságkódot használ, amely írási hozzáférést nyújt a tárolóhoz. A *python_tutorial_client.py* `get_container_sas_token` függvénye beszerzi a tároló közös hozzáférésű jogosultságkódját, amelyet ezután parancssori argumentumként kapnak meg a feladatok. Az 5. lépés, a [Tevékenységek hozzáadása a feladathoz](#step-5-add-tasks-to-job), a tároló SAS használatát tárgyalja.
 
 > [!TIP]
-> A Storage-fiókban található adatok biztonságos elérésének biztosításával kapcsolatos további információkért tekintse meg a közös hozzáférésű jogosultságkódokkal kapcsolatos, két részből álló sorozatot: [Part 1: Understanding the SAS model](../storage/storage-dotnet-shared-access-signature-part-1.md) (1. rész: A SAS-modell ismertetése) és a [Part 2: Create and use a SAS with the Blob service](../storage/storage-dotnet-shared-access-signature-part-2.md) (2. rész: SAS létrehozása és használata a Blob szolgáltatással).
+> A Storage-fiókban található adatok biztonságos elérésének biztosításával kapcsolatos további információkért tekintse meg a közös hozzáférésű jogosultságkódokkal kapcsolatos, két részből álló sorozatot: [Part 1: Understanding the SAS model](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (1. rész: A SAS-modell ismertetése) és a [Part 2: Create and use a SAS with the Blob service](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) (2. rész: SAS létrehozása és használata a Blob szolgáltatással).
 >
 >
 

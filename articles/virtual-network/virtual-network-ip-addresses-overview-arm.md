@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1156135200e05f8a2585467f37805a72d67279ba
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 144f4ea213b8ed0a3530495e185f489155c474c9
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
@@ -36,7 +35,7 @@ IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a
 Ha a klasszikus üzemi modellt ismeri, tekintse meg a következőt: [Az IP-címkezelés különbségei a klasszikus és a Resource Manager modellek között](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments).
 
 ## <a name="public-ip-addresses"></a>Nyilvános IP-címek
-A nyilvános IP-címek lehetővé teszik az Azure-erőforrások számára, hogy kommunikáljanak az internettel és az Azure más nyilvános szolgáltatásaival, például az [Azure Redis Cache](https://azure.microsoft.com/services/cache/) és az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatásokkal, valamint az [SQL-adatbázisokkal](../sql-database/sql-database-technical-overview.md) és az [Azure-tárolóval](../storage/storage-introduction.md).
+A nyilvános IP-címek lehetővé teszik az Azure-erőforrások számára, hogy kommunikáljanak az internettel és az Azure más nyilvános szolgáltatásaival, például az [Azure Redis Cache](https://azure.microsoft.com/services/cache/) és az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatásokkal, valamint az [SQL-adatbázisokkal](../sql-database/sql-database-technical-overview.md) és az [Azure-tárolóval](../storage/common/storage-introduction.md).
 
 Az Azure Resource Manager szolgáltatásban a [nyilvános IP-cím](resource-groups-networking.md#public-ip-address) olyan erőforrás, amely saját tulajdonságokkal rendelkezik. A nyilvános IP-cím-erőforrást a következő erőforrások bármelyikéhez hozzárendelheti:
 
