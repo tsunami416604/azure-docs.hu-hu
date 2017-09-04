@@ -66,7 +66,7 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](http://blogs.msdn.com/b/streamanalytics/)
 ## [Visszajelzési fórum](http://feedback.azure.com/forums/270577-azure-stream-analytics)
-## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+## [Fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Kibocsátási megjegyzések](stream-analytics-release-notes.md)

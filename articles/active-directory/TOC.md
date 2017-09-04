@@ -10,16 +10,9 @@
 ## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
 ## [Egyéni tartománynév hozzáadása](add-custom-domain.md)
 ## [Vállalati arculat konfigurálása](customize-branding.md)
+## [Felhasználók hozzáadása az Azure AD-hez](add-users-azure-active-directory.md)
+## [Licencek hozzárendelése felhasználókhoz](license-users-groups.md)
 ## [Új jelszó önkiszolgáló kérésének konfigurálása](active-directory-passwords-getting-started.md)
-## Az Azure AD-licencek kezelése
-### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
-### [Klasszikus portál](active-directory-licensing-what-is.md)
-### [Licencek hozzárendelése csoportok használatával](active-directory-licensing-whatis-azure-portal.md)
-#### [Licencek hozzárendelése egy csoporthoz](active-directory-licensing-group-assignment-azure-portal.md)
-#### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
-#### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
-#### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
-#### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 
 
 # Útmutató
@@ -44,11 +37,6 @@
 #### [Eszközök összehasonlítása](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## Felhasználók kezelése
-### Felhasználók hozzáadása
-#### [Azure Portal](active-directory-users-create-azure-portal.md)
-#### [Klasszikus portál](active-directory-create-users.md)
-
-
 ### [Licencek hozzárendelése csoportok használatával](active-directory-licensing-whatis-azure-portal.md)
 #### [Licencek hozzárendelése egy csoporthoz](active-directory-licensing-group-assignment-azure-portal.md)
 #### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
@@ -56,7 +44,6 @@
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 ### [Más címtárakban szereplő felhasználók felvétele (klasszikus portál)](active-directory-create-users-external.md)
-### [Felhasználók törlése](active-directory-users-delete-user-azure-portal.md)
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
 ### [Új jelszó létrehozása](active-directory-users-reset-password-azure-portal.md)
 ### [A felhasználók munkahelyi adatainak kezelése](active-directory-users-work-info-azure-portal.md)
@@ -144,19 +131,14 @@
 
 ## Eszközök kezelése
 ### [Bevezetés](device-management-introduction.md)
+### [Az Azure Portal használata](device-management-azure-portal.md)
 ### [Gyakori kérdések](device-management-faq.md)
 ### Feladatok
 #### [Hibrid Azure AD-csatlakoztatott eszközök konfigurálása](device-management-hybrid-azuread-joined-devices-setup.md) 
-#### Hibaelhárítás
-##### [Hibrid Azure AD-csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök](device-management-troubleshoot-hybrid-join-windows-current.md)
-##### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](device-management-troubleshoot-hybrid-join-windows-legacy.md)
-
-### Eszközök regisztrálása
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
-#### [Gyakori kérdések](active-directory-device-registration-faq.md)
-#### Hibaelhárítás
-##### [Hibaelhárítás Windows 10 és Windows Server 2016 esetén](active-directory-device-registration-troubleshoot-windows.md)
-##### [Hibaelhárítás korábbi verziójú Windows-ügyfelek esetén](active-directory-device-registration-troubleshoot-windows-legacy.md)
+### Hibaelhárítás
+#### [Hibrid Azure AD-csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök](device-management-troubleshoot-hybrid-join-windows-current.md)
+#### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](device-management-troubleshoot-hybrid-join-windows-legacy.md)
 ### [Azure AD-csatlakozás](active-directory-azureadjoin-overview.md)
 #### [Csomag](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [Az eszközregisztráció beállítása](active-directory-azureadjoin-setup.md)
