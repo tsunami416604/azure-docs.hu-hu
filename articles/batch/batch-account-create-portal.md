@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 331d08da8a70eee893fb1b01b1fef4475cc8bca0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e6e27595f625fcb3ffdb0a6bccf75ad2dcc77cb3
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/21/2017
 
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
@@ -154,7 +154,7 @@ Dönthet úgy, hogy általános célú Azure Storage-fiókot csatol a Batch-fió
 ![Általános célú tárfiók létrehozása][storage_account]
 
 > [!NOTE]
-> Az Azure Batch jelenleg kizárólag az általános célú Storage-fiók típusát támogatja. Erről a fióktípusról leírást találhat az 5. lépésben [Create a storage account] (../storage/storage-create-storage-account.md#create-a-storage-account) a [Tudnivalók az Azure Storage-fiókokról](../storage/storage-create-storage-account.md) oldalon.
+> Az Azure Batch jelenleg kizárólag az általános célú Storage-fiók típusát támogatja. Erről a fióktípusról a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) oldal 5. lépésében [Create a storage account] (../storage/common/storage-create-storage-account.md#create-a-storage-account) talál leírást.
 >
 >
 
