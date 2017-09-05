@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: darosa;sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: a916f643c7e6727d6053865d1c0bd2f683a53b3f
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: a0c169e0580468e83a07c077f8c60e83d3fb52f2
 ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei
@@ -47,7 +47,7 @@ Az alábbi szakaszokban a prémium és a standard szintű üzenetkezelési szint
 
 ### <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
-A prémium szintű üzenetkezelés támogatja a particionált üzenetsorokat és témaköröket. Ezek az entitások tulajdonképpen mindig particionáltak (és nem tilthatók le). A prémium szintű particionált üzenetsorok és témakörök viszont nem ugyanúgy működnek, mint a standard és az alapszintű Service Bus-üzenetkezelés. A prémium szintű üzenetkezelés nem használ SQL-t az adattároláshoz, és már nem jelentkezik a megosztott platformokhoz társuló erőforrásverseny. Ennek köszönhetően a particionálás nem kötelező a teljesítmény növeléséhez. Ezen felül a partíciók száma a standard szint 16 partíciójáról a prémium szinten 2 partícióra változott. A két partíció biztosítja a rendelkezésre állást, és megfelelőbb szám a prémium szintű futtatókörnyezethez. 
+A prémium szintű üzenetkezelés támogatja a particionált üzenetsorokat és témaköröket. Ezek az entitások tulajdonképpen mindig particionáltak (és nem tilthatók le). A prémium szintű particionált üzenetsorok és témakörök viszont nem ugyanúgy működnek, mint a standard Service Bus-üzenetkezelés. A prémium szintű üzenetkezelés nem használ SQL-t az adattároláshoz, és már nem jelentkezik a megosztott platformokhoz társuló erőforrásverseny. Ennek köszönhetően a particionálás nem kötelező a teljesítmény növeléséhez. Ezen felül a partíciók száma a standard szint 16 partíciójáról a prémium szinten 2 partícióra változott. A két partíció biztosítja a rendelkezésre állást, és megfelelőbb szám a prémium szintű futtatókörnyezethez. 
 
 Amikor prémium szintű üzenetkezelésnél a [MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) használatával adja meg egy entitás méretét, ezt a méretet a rendszer egyenlően elosztja a 2 partíció között, nem úgy, mint a [Szabványos partícionált entitások esetében](service-bus-partitioning.md#standard), ahol a teljes méret a megadott méret 16-szorosa. 
 

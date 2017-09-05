@@ -1,25 +1,31 @@
 
-1. Kattintson az **App Services** elemre > válassza ki a Mobile Apps-háttéralkalmazást > kattintson a **Gyorsindítás** elemre > kattintson az ügyfélplatformra (iOS, Android, Xamarin, Cordova).
+1. Kattintson az **App Services** gombra, válassza a Mobile Apps-háttéralkalmazást, majd a **Gyorsindítás** lehetőséget, végül pedig válassza ki az ügyfélplatformot (iOS, Android, Xamarin, Cordova).
 
-![Azure Portal a kiemelt Mobile Apps Quickstarttal][quickstart]
+    ![Azure Portal a kiemelt Mobile Apps Quickstarttal][quickstart]
 
-2. Ha nincs konfigurálva kapcsolat az adatbázissal, létre kell hoznia egy adatkapcsolatot.
+2. Ha nincs konfigurált adatbázis-kapcsolat, hozzon létre egyet a következő módon:
 
-![Azure Portal Mobile Appsszel – csatlakozás a BD-hez][connect]
+    ![Azure Portal Mobile Appsszel – csatlakozás adatbázishoz][connect]
 
-  * Hozzon létre egy új SQL-adatbázist és -kiszolgálót.
+    a. Hozzon létre egy új SQL-adatbázist és -kiszolgálót.
 
-  ![Azure Portal Mobile Appsszel – új BD és kiszolgáló létrehozása][server]
+    ![Azure Portal Mobile Appsszel – új adatbázis és kiszolgáló létrehozása][server]
 
-  * Várjon az adatkapcsolat sikeres létrehozásáig.
+    b. Várjon az adatkapcsolat sikeres létrehozásáig.
 
-  ![Azure Portal Mobile Appsszel – értesítés az adatkapcsolat létrehozásakor][notification]
+    ![Az Azure Portal értesítése az adatkapcsolat sikeres létrejöttéről][notification]
 
-  * Az adatkapcsolatnak sikeresnek kell lennie.
+    c. Az adatkapcsolatnak sikeresnek kell lennie.
 
-  ![Azure Portal Mobile Appsszel – értesítés az adatkapcsolat létrehozásakor][already-connection]
+    ![Az Azure Portal értesítése: „Már van adatkapcsolata”][already-connection]
 
-3. A **2. Tábla API létrehozása** elemnél a **Háttérrendszer nyelveként** válassza a Node.js-t. Fogadja el a nyugtázást, majd kattintson a **TodoItem tábla létrehozása** elemre. Ez létrehoz egy új *TodoItem* táblát az adatbázisban. Ne feledje, hogy a létező háttérrendszerek Node.js nyelvűre történő átállítása minden tartalmat felülír. Ha inkább egy .NET-hátteret szeretne létrehozni, [kövesse ezeket az utasításokat][instructions].
+3. A **2. Tábla API létrehozása** elemnél a **Háttérrendszer nyelveként** válassza a Node.js-t. 
+ 
+4. Fogadja el a nyugtázást, majd válassza a **TodoItem tábla létrehozása** elemet.  
+    Ez a művelet létrehoz egy új teendőtáblát az adatbázisban. 
+
+    >[!IMPORTANT]
+    > A létező háttérrendszerek Node.js nyelvűre történő átállítása minden tartalmat felülír. Ehelyett egy .NET-háttérrendszer létrehozásához lásd: [A Mobile Appshez készült .NET háttérkiszolgálói SDK használata][instructions].
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png

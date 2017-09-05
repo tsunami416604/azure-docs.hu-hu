@@ -12,17 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/28/2017
+ms.date: 08/28/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 457519b00b65b0157effe2d4aba033a1c99852e8
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: c0d3f90c0f15fbb7aad00fe24c2946738e24ffd8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="create-or-select-a-virtual-network-for-azure-active-directory-domain-services"></a>Virtuális hálózat létrehozása vagy kiválasztása az Azure Active Directory Domain Services-hez
+
+> [!IMPORTANT]
+> A jelen cikkben ismertetett Azure AD Domain Services engedélyezéséhez használatos klasszikus Azure portál felület hamarosan el lesz távolítva. Új példányok üzembe helyezéséhez [**használja ehelyett az új (előzetes verziójú) Azure portál felületét**](active-directory-ds-getting-started.md).
+>
+
 ## <a name="before-you-begin"></a>Előkészületek
 Tekintse át a [Hálózati megfontolások az Azure Active Directory Domain Services-hez](active-directory-ds-networking.md) című dokumentumot.
 
@@ -30,7 +34,7 @@ Tekintse át a [Hálózati megfontolások az Azure Active Directory Domain Servi
 A következő konfigurálási feladat egy Azure-alapú virtuális hálózat és azon belül egy alhálózat létrehozása. Engedélyezze az Azure Active Directory Domain Services-t a virtuális hálózatának ezen az alhálózatán. Ha létező virtuális hálózatot szeretne használni, kihagyhatja ezt a lépést.
 
 > [!NOTE]
-> Győződjön meg arról, hogy az Active Directory Domain Services-szel való használathoz létrehozott vagy kiválasztott Azure-alapú virtuális hálózat az Azure Active Directory Domain Services által támogatott Azure-régióhoz tartozik. Annak megállapításához, hogy az Azure Active Directory Domain Services mely régiókban érhető el, lásd: [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/).
+> Győződjön meg arról, hogy az Active Directory Domain Services-szel való használathoz létrehozott vagy kiválasztott Azure-alapú virtuális hálózat az Azure Active Directory Domain Services által támogatott Azure-régióhoz tartozik. Annak megtekintéséhez, hogy az Azure Active Directory Domain Services mely régiókban érhető el, lásd: [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/).
 >
 >Jegyezze fel a virtuális hálózat nevét annak érdekében, hogy valóban a megfelelő virtuális hálózatot válassza majd ki, amikor egy későbbi konfigurációs lépésben engedélyezi az Azure Active Directory Domain Services-t.
 

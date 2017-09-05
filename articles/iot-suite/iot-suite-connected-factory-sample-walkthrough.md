@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 81ecd5771be544e250ea0df31aa274f0850527ad
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Előre konfigurált csatlakoztatott gyár megoldás – bemutató
 
 Az IoT Suite [előre konfigurált][lnk-preconfigured-solutions] csatlakoztatott gyár megoldással egy teljes körű ipari megoldást implementálhat, amely:
 
-* Szimulált gyártósorokon OPC UA-kiszolgálókat futtató szimulált ipari eszközökhöz és valódi OPC UA-kiszolgálóeszközökhöz is csatlakozik. Az OPC UA architektúráról további információt talál a [gyakran ismételt kérdések][lnk-faq] között.
+* Szimulált gyártósorokon OPC UA-kiszolgálókat futtató szimulált ipari eszközökhöz és valódi OPC UA-kiszolgálóeszközökhöz is csatlakozik. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md) fejezetben talál további információt.
 * Megjeleníti ezen eszközök és gyártósorok működési KPI- és OEE-értékeit.
 * Bemutatja, hogyan lehet kommunikálni az OPC UA-kiszolgálórendszerekkel felhőalapú alkalmazások használatával.
 * Lehetővé teszi, hogy összekapcsolja saját OPC UA-kiszolgálóeszközeit.
@@ -40,6 +40,8 @@ Ebben a cikkben bemutatjuk a csatlakoztatott gyár megoldás néhány fontos ele
 * Elháríthatja a megoldásban felmerülő hibákat.
 * Megtervezheti, hogy miképpen érdemes testre szabni a megoldást úgy, hogy az megfeleljen egyedi igényeinek.
 * Kialakíthatja saját, Azure-szolgáltatásokat használó IoT-megoldását.
+
+További információ: [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
@@ -128,6 +130,7 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
 Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 
 * [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
+* [Átjáró üzembe helyezése Windows vagy Linux rendszeren az előre konfigurált csatlakoztatott gyár megoldáshoz](iot-suite-connected-factory-gateway-deployment.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
@@ -138,4 +141,4 @@ Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
 [lnk-permissions]: iot-suite-permissions.md
-[lnk-faq]: iot-suite-faq.md
+

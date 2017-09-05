@@ -4,7 +4,7 @@ description: "IoT-érzékelőcímkék és -adatfolyamok streamelemzéssel és va
 keywords: "iot-megoldás, bevezetés az iot használatába"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
-ms.openlocfilehash: 9624405d8bc454e886e8011c1cb4920fdf7e0640
-ms.lasthandoff: 01/24/2017
-
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 3146604dd2dbc626d8179d5c91e3cf895b9f67da
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását
@@ -65,7 +65,7 @@ A használat megkönnyítése érdekében ez a Kezdeti lépések útmutató val�
 4. Jelölje be a négyzetet a feladat irányítópultra való helyezéséhez, majd kattintson a **LÉTREHOZÁS** elemre.
    
     ![feladat létrehozása folyamatban](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
-5. „Központi telepítés elindítva...” üzenetet kell látnia a böngészőablak jobb felső sarkában. Hamarosan a befejezést jelző ablakra vált, az alábbiakban látható módon.
+5. A böngészőablak jobb felső sarkában a „Központi telepítés elindítva...” üzenetet kell látnia. Hamarosan a befejezést jelző ablakra vált, az alábbiakban látható módon.
    
     ![feladat létrehozása folyamatban](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
@@ -111,7 +111,7 @@ Tegyük részletesebbé a lekérdezést. Az átlaghőmérsékletet minden érzé
 Látható, hogy az eredmények most csak 245 sorban jelenítik meg azoknak az érzékelőknek a nevét, amelyeknél az átlaghőmérséklet nagyobb 100 foknál. Ez a lekérdezés az események streamjét a **dspl** szerint csoportosítja, ami az érzékelő neve, az **Átfedésmentes ablak** pedig 30 másodperc. A historikus lekérdezések esetében elengedhetetlen az időköz megadása. A **TIMESTAMP BY** záradékkal az **OUTPUTTIME** oszlopot adtuk meg, amely minden historikus számításhoz társít egy időközt. Részletes információkat az [időkezelést](https://msdn.microsoft.com/library/azure/mt582045.aspx) és az [ablakkezelési függvényeket](https://msdn.microsoft.com/library/azure/dn835019.aspx) ismertető MSDN-témakörökben talál.
 
 ### <a name="query-detect-absence-of-events"></a>Lekérdezés: Események hiányának észlelése
-Hogyan írható olyan lekérdezés, amely a bemeneti események hiányát keresi? Keressük meg a legutóbbi esetet, amikor az érzékelő adatokat küldött, majd a következő percben nem küldött eseményeket. A lekérdezés a AbsenseOfEvent.txt fájlban található.
+Hogyan írható olyan lekérdezés, amely a bemeneti események hiányát keresi? Keressük meg azt a legutóbbi esetet, amikor az érzékelő adatokat küldött, majd a következő 5 másodpercben nem küldött eseményeket. A lekérdezés a AbsenseOfEvent.txt fájlban található.
 
 ![Események hiányának észlelése](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 

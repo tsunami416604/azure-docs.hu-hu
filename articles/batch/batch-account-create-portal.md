@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e6e27595f625fcb3ffdb0a6bccf75ad2dcc77cb3
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 520d1d42d35b25db1a35d4317e9eb616cf5de565
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
@@ -137,7 +137,7 @@ A fiók létrehozása után megnyithatja a **Batch-fiók panelt** a beállítás
 
 ![A Batch-fiók URL-címe a portálon][account_url]
 
-* **Hozzáférési kulcsok** (Batch szolgáltatás mód): Ahhoz, hogy hozzáférjen a Batch-fiókhoz az alkalmazásból, szüksége lesz a fiók hozzáférési kulcsára. (Ez a beállítás nem áll rendelkezésre felhasználói előfizetés módban, ha Azure Active Directory-hitelesítést használ.)
+* **Hozzáférési kulcsok** (Batch szolgáltatás mód): Ahhoz, hogy hozzáférjen a Batch-fiókhoz az alkalmazásból, szüksége lesz a fiók hozzáférési kulcsára. (Ez a beállítás nem áll rendelkezésre felhasználói előfizetés módban, amelyben Azure Active Directory-hitelesítést használ.)
 
     A Batch-fiók hozzáférési kulcsainak megtekintéséhez vagy újbóli létrehozásához írja be a `keys` kifejezést a bal oldali menü **Keresés** mezőjébe a Batch-fiók panelen, majd válassza a **Kulcsok** lehetőséget.
 

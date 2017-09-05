@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2017
+ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: f31482a8b37858b93391afc561223a1b1110a1a9
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 45a6f63bd920c9a70c25b8dfae084ea030256cf4
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
@@ -52,7 +52,7 @@ A jelentések részletességi szintje azonban különbözik a kiadások között
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – ingyenes és alapszintű kiadások
 
-Az Azure Active Directory ingyenes és alapszintű kiadása biztosít egy listát, amely az észlelt kockázatos bejelentkezéseket tartalmazza a felhasználókra vonatkozóan. A kockázati eseményekről szóló jelentés a következőket biztosítja:
+Az Azure Active Directory ingyenes és alapszintű kiadása biztosít egy listát, amely az észlelt kockázatos bejelentkezéseket tartalmazza a felhasználókra vonatkozóan. Ez a jelentés a következőket listázza:
 
 - **Felhasználó** – A bejelentkezési művelet során használt felhasználónév
 - **IP** – Az Azure Active Directoryhoz való csatlakozáshoz használt eszköz IP-címe
@@ -60,7 +60,6 @@ Az Azure Active Directory ingyenes és alapszintű kiadása biztosít egy listá
 - **Bejelentkezés ideje** – A bejelentkezés végrehajtásának időpontja
 - **Állapot** – A bejelentkezés állapota
 
-A jelentés adatai le is tölthetők.
 
 ![Kockázatos bejelentkezések](./media/active-directory-reporting-security-risky-sign-ins/01.png)
 
@@ -74,6 +73,15 @@ A kockázatos bejelentkezéssel kapcsolatos vizsgálata alapján visszajelzést 
 ![Kockázatos bejelentkezések](./media/active-directory-reporting-security-risky-sign-ins/21.png)
 
 További részletek: [Kockázati események manuális lezárása](active-directory-identityprotection.md#closing-risk-events-manually).
+
+Ez a jelentés a következő lehetőségeket kínálja:
+
+- Erőforrások keresése
+- A jelentésadatok letöltése
+
+
+![Kockázatos bejelentkezések](./media/active-directory-reporting-security-risky-sign-ins/93.png)
+
 
 ## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory – prémium szintű kiadások
 

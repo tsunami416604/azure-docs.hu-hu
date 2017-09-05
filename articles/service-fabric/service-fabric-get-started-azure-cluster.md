@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/05/2017
+ms.date: 08/24/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 98c5bacd0a040d3a2d83bfe088b11d0f15449ed9
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: ec59450052b377412a28f7eaf55d1f1512b55195
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -40,9 +40,11 @@ Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azur
 
     ![A fürtbeállítás kimenete][cluster-setup-basics]
 
-4. Töltse ki a **Fürtkonfiguráció** űrlapot.  A **Csomóponttípusok száma** elemnél adja meg az „1”, a [Tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) elemnél a „Bronz” értéket.
+4. Töltse ki a **Fürtkonfiguráció** űrlapot.  A **Csomóponttípusok száma** elemnél adja meg az „1” értéket.
 
-5. Válassza **Az egyes csomóponttípusok konfigurálása** lehetőséget, és töltse ki a **Csomóponttípus konfigurációja** űrlapot. A csomóponttípusok határozzák meg a virtuális gépek méretét, számát, egyedi végpontjait, valamint az adott típusú virtuális gépek egyéb beállításait. Mindegyik megadott csomóponttípus külön virtuálisgép-méretezési csoportként lesz beállítva, amely a virtuális gépek csoportként való üzembe helyezésére és felügyeletére használható. Mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy föl, eltérő nyitott portokkal rendelkezik, és eltérő kapacitásmetrikái lehetnek.  Az első – vagy elsődleges – csomóponttípus az, ahol a Service Fabric rendszerszolgáltatásai futnak, és ennek öt vagy annál több virtuális gépet kell tartalmaznia.
+5. Válassza az **1. csomóponttípus (elsődleges)** lehetőséget, és töltse ki a **Csomóponttípus konfigurációja** űrlapot.  Írjon be egy csomóponttípust, és adja meg a [Tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) elemnél a „Bronz” értéket.  Válassza ki a virtuális gép méretét.
+
+    A csomóponttípusok határozzák meg a virtuális gépek méretét, számát, egyedi végpontjait, valamint az adott típusú virtuális gépek egyéb beállításait. Mindegyik megadott csomóponttípus külön virtuálisgép-méretezési csoportként lesz beállítva, amely a virtuális gépek csoportként való üzembe helyezésére és felügyeletére használható. Mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy föl, eltérő nyitott portokkal rendelkezik, és eltérő kapacitásmetrikái lehetnek.  Az első – vagy elsődleges – csomóponttípus az, ahol a Service Fabric rendszerszolgáltatásai futnak, és ennek öt vagy annál több virtuális gépet kell tartalmaznia.
 
     A [kapacitástervezés](service-fabric-cluster-capacity.md) az éles rendszerek üzembe helyezésének lényeges lépése.  A jelen rövid útmutatóban azonban nem fog alkalmazásokat futtatni, így válassza a *DS1_v2 Standard* VM-méretet.  [Megbízhatósági szintként](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) adja meg az „Ezüst” értéket, a virtuálisgép-méretezési csoport kezdő kapacitását pedig állítsa 5-re.  
 
@@ -84,20 +86,20 @@ A fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalm
 Ha ellenőrizni szeretné, hogy a fürt fut-e, csatlakozzon hozzá a PowerShell-lel.  A ServiceFabric PowerShell-modul a [Service Fabric SDK](service-fabric-get-started.md)-val települ.  A [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag kiépít egy kapcsolatot a fürttel.   
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
+Connect-ServiceFabricCluster -ConnectionEndpoint quickstartcluster.westus2.cloudapp.azure.com:19000
 ```
 A fürtökhöz való csatlakozást bemutató egyéb példákért lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md). Miután csatlakozott a fürthöz, a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) parancsmaggal listázza a fürtben lévő csomópontokat és az egyes csomópontok állapotinformációit. A **HealthState** tulajdonságnak *OK* értékűnek kell lennie minden csomópont esetében.
 
 ```powershell
-PS C:\> Get-ServiceFabricNode |Format-Table
+PS C:\Users\sfuser> Get-ServiceFabricNode |Format-Table
 
-NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
--------------------- --------     --------------- --------  ----------- ------------- ---------- ---------- ------------ -----------
-                     _nodetype1_2 10.0.0.6        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_1 10.0.0.5        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_0 10.0.0.4        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_4 10.0.0.8        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
-                     _nodetype1_3 10.0.0.7        nodetype1 5.5.216.0   1                     Up 00:59:04   00:00:00              Ok
+NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion  ConfigVersion NodeStatus NodeUpTime NodeDownTime HealthState
+-------------------- --------     --------------- --------  -----------  ------------- ---------- ---------- ------------ -----------
+                     _nodetype1_2 10.0.0.6        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_1 10.0.0.5        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_0 10.0.0.4        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_4 10.0.0.8        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
+                     _nodetype1_3 10.0.0.7        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
 ```
 
 ### <a name="remove-the-cluster"></a>A fürt eltávolítása
@@ -106,65 +108,58 @@ A Service Fabric-fürtben a fürt erőforrásán felül egyéb Azure-erőforrás
 Erőforráscsoport törlése az Azure Portalon:
 1. Lépjen a törölni kívánt Service Fabric-fürtre.
 2. Kattintson az **Erőforráscsoport** nevére a fürt alapvető erőforrásainak lapján.
-3. Az **Erőforráscsoport alapvető erőforrásai** oldalon kattintson a **Törlés** gombra, és kövesse a lapon megjelenő utasításokat az erőforráscsoport törléséhez.
+3. Az **Erőforráscsoport alapvető erőforrásai** oldalon kattintson az **Erőforráscsoport törlése** gombra, és kövesse a lapon megjelenő utasításokat az erőforráscsoport törléséhez.
     ![Az erőforráscsoport törlése][cluster-delete]
 
 
 ## <a name="use-azure-powershell-to-deploy-a-secure-cluster"></a>Biztonságos fürt üzembe helyezése az Azure PowerShell használatával
+1. Töltse le a számítógépre az [Azure PowerShell-modul 4.0-s vagy újabb](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) verzióját.
 
-
-1) Töltse le a számítógépre az [Azure PowerShell-modul 4.0-s vagy újabb](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) verzióját.
-
-2) Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsot. 
+2. Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsot. 
     
-```powershell
+    ```powershell
 
-Get-Command -Module AzureRM.ServiceFabric 
-```
+    Get-Command -Module AzureRM.ServiceFabric 
+    ```
 
-Az alábbihoz hasonló kimenetnek kell megjelennie.
+    Az alábbihoz hasonló kimenetnek kell megjelennie.
 
-![ps-list][ps-list]
+    ![ps-list][ps-list]
 
-3) Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetést, amelyikben létre szeretné hozni a fürtöt
+3. Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetést, amelyikben létre szeretné hozni a fürtöt
 
-```powershell
+    ```powershell
 
-Login-AzureRmAccount
+    Login-AzureRmAccount
 
-Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
+    Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
+    ```
 
-```
+4. Futtassa az alábbi parancsot egy biztonságos fürt létrehozásához. Ne felejtse el testre szabni a paramétereket. 
 
-4) Futtassa az alábbi parancsot egy biztonságos fürt létrehozásához. Ne felejtse el testre szabni a paramétereket. 
+    ```powershell
+    $certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+    $RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
+    $RDPuser="vmadmin"
+    $RGname="mycluster" # this is also the name of your cluster
+    $clusterloc="SouthCentralUS"
+    $subname="$RGname.$clusterloc.cloudapp.azure.com"
+    $certfolder="c:\mycertificates\"
+    $clustersize=1 # can take values 1, 3-99
 
+    New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
+    ```
 
-````powershell
+    A parancs végrehajtása 10 perctől akár 30 percig is eltarthat, és a végén az alábbihoz hasonló kimenetnek kell megjelennie. A kimenet információkat tartalmaz a tanúsítványról, arról a KeyVault tárolóról, ahová feltöltötték, és a helyi mappáról, ahová másolták. 
 
-$certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
-$RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
-$RDPuser="vmadmin"
-$RGname="mycluster" # this is also the name of your cluster
-$clusterloc="SouthCentralUS"
-$subname="$RGname.$clusterloc.cloudapp.azure.com"
-$certfolder="c:\mycertificates\"
-$clustersize=1 # can take values 1, 3-99
+    ![ps-out][ps-out]
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
+5. Másolja ki a teljes kimenetet, és mentse egy szövegfájlba, mivel később hivatkoznia kell rá. Jegyezze fel az alábbi, kimenetből származó adatokat. 
 
-````
-
-A parancs végrehajtása 10 perctől akár 30 percig is eltarthat, és a végén az alábbihoz hasonló kimenetnek kell megjelennie. A kimenet információkat tartalmaz a tanúsítványról, arról a KeyVault tárolóról, ahová feltöltötték, és a helyi mappáról, ahová másolták. 
-
-![ps-out][ps-out]
-
-5) Másolja ki a teljes kimenetet, és mentse egy szövegfájlba, mivel később hivatkoznia kell rá. Jegyezze fel az alábbi, kimenetből származó adatokat.
- 
-
-- **CertificateSavedLocalPath** : c:\mycertificates\mycluster20170504141137.pfx
-- **CertificateThumbprint** : C4C1E541AD512B8065280292A8BA6079C3F26F10
-- **ManagementEndpoint** : https://mycluster.southcentralus.cloudapp.azure.com:19080
-- **ClientConnectionEndpointPort** : 19000
+    - **CertificateSavedLocalPath** : c:\mycertificates\mycluster20170504141137.pfx
+    - **CertificateThumbprint** : C4C1E541AD512B8065280292A8BA6079C3F26F10
+    - **ManagementEndpoint** : https://mycluster.southcentralus.cloudapp.azure.com:19080
+    - **ClientConnectionEndpointPort** : 19000
 
 ### <a name="install-the-certificate-on-your-local-machine"></a>A tanúsítvány telepítése helyi számítógépre
   

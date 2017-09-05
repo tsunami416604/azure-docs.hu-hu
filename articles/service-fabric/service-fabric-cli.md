@@ -9,10 +9,10 @@ ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 5ce9adf6c82e3a5521883c5de1e0689d5bf0d94e
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 2faca2887f25b45d833dea7b2259277466290670
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-service-fabric-command-line"></a>Azure Service Fabric-parancssor
@@ -23,17 +23,75 @@ Az Azure Service Fabric parancssori felület (sfctl) egy parancssori eszköz az 
 
 A telepítés előtt győződjön meg arról, hogy a környezetben a Python és a pip is telepítve van. További információkért olvassa el a [pip rövid útmutatót dokumentációját](https://pip.pypa.io/en/latest/quickstart/) és a hivatalos [Python-telepítési dokumentációt](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-A Python 2.7-es és 3.6-os verziója is támogatott, de javasoljuk a Python 3.6 használatát.
+A Python 2.7-es és 3.6-os verziója is támogatott, de javasoljuk a Python 3.6 használatát. A következő szakasz ismerteti, hogyan telepítheti az összes előfeltételt és a parancssori felületet.
 
-## <a name="install"></a>Telepítés
+## <a name="install-pip-python-and-sfctl"></a>A pip, a python és az sfctl telepítése
 
-Az Azure Service Fabric parancssori felület (sfctl) egy Python-csomagként van csomagolva. A legfrissebb verzió telepítéséhez futtassa a következőt:
+Bár sokféleképpen telepítheti a pipet és a pythont a platformra, itt találja a python 3.6 és a pip gyors telepítésének néhány lépését a főbb operációs rendszerekhez:
 
-```bash
-pip install sfctl
+### <a name="windows"></a>Windows
+
+A Windows 10, Server 2016 és Server 2012 R2 esetén használhatja a szokásos hivatalos telepítési utasításokat. A python telepítője alapértelmezés szerint a pipet is telepíti.
+
+- Látogasson el a hivatalos [python letöltési oldalra](https://www.python.org/downloads/), és töltse le a python 3.6 legújabb kiadását
+- Indítsa el a telepítőt
+- Válassza ki a parancssor alján lévő lehetőséget a következőhöz: `Add Python 3.6 to PATH`
+- A következők szerint válasszon: `Install Now`
+- Fejezze be a telepítést
+
+Most meg kell tudnia nyitni egy új parancsablakot, és le tudja kérni a python és a pip verzióját:
+
+```bat
+python --version
+pip --version
 ```
 
-A telepítés után az `sfctl -h` futtatásával kaphat további információkat az elérhető parancsokról.
+Futtassa a következőt a Service Fabric parancssori felületének telepítéséhez:
+
+```
+pip install sfctl
+sfctl -h
+```
+
+### <a name="ubuntu"></a>Ubuntu
+
+Az Ubuntu 16.04 asztali verziójához telepítheti a python 3.6-ot egy külső gyártótól származó PPA-val:
+
+A terminálból futtassa a következő parancsokat:
+
+```bash
+sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt-get update
+sudo apt-get install python3.6
+sudo apt-get install python3-pip
+```
+
+Ezután, ha csak a python 3.6-os telepítéshez szeretné telepíteni az sfctl-t, futtassa a következő parancsot:
+
+```bash
+python3.6 -m pip install sfctl
+sfctl -h
+```
+
+Ezek a lépések nincsenek hatással a rendszerre telepített python 3.5-re és 2.7-re. Ne kísérelje meg módosítani ezeket a telepítéseket, ha nem ismeri az Ubuntut.
+
+### <a name="macos"></a>MacOS
+
+MacOS rendszer esetén javasoljuk a [HomeBrew csomagkezelő](https://brew.sh) használatát. A következő parancs futtatásával telepítse a HomeBrew-t, ha még nincs telepítve:
+
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+Ezután a terminálról telepítse a python 3.6-ot, a pipet és az sfctl-t
+
+```bash
+brew install python3
+pip3 install sfctl
+sfctl -h
+```
+
+Ezek a lépések nem módosítják a rendszerre telepített python 2.7-t.
 
 ## <a name="cli-syntax"></a>A parancssori felület szintaxisa
 

@@ -12,33 +12,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/09/2017
+ms.date: 08/29/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: ef57753aeeace0086c815d83600f92422996032a
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 3ccc3b176df2f0a5d864554a74508292d272bd5a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
 
-Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Az Azure Cosmos DB az [iparág legjobb szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/cosmos-db/) által biztosított [teljes körű, globális terjesztést](distribute-data-globally.md) kínál, valamint [a teljesítmény és a tárterület rugalmas méretezését](partition-data.md) világszerte, az esetek 99%-ában egyszámjegyű ezredmásodperces késéseket, [öt jól meghatározott konzisztenciaszintet](consistency-levels.md) és garantált magas rendelkezésre állást. Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Egy többmodelles szolgáltatásról van szó, amely támogatja a dokumentum, a kulcs-érték, a gráf és az oszlop típusú adatmodelleket. 
+Az [Azure Cosmos DB](introduction.md) az Azure Table Storage szolgáltatáshoz írt alkalmazások Table API-ját (előzetes verzió) biztosítja és olyan prémium képességekre van szüksége, mint a [teljes körű, globális terjesztés](distribute-data-globally.md), világszintű [dedikált teljesítmény](partition-data.md), az esetek 99%-ában tíz ezredmásodperc alatti késések, garantált magas rendelkezésre állás és [automatikus másodlagos indexelés](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Ezek az alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és k tudják használni a prémium képességek előnyeit.
 
-![Az Azure Table Storage API és az Azure Cosmos DB](./media/table-introduction/premium-tables.png) 
+Ajánlott először megnézni a következő videót, amelyben Aravind Ramachandran az Azure Cosmos DB-hez készült Table API használatának első lépéseit ismerteti.
 
-Az Azure Cosmos DB biztosítja a Tábla API előzetes verzióját az olyan alkalmazások számára, amelyeknek rugalmas sémájú kulcs-érték tárolóra, kiszámítható teljesítményre, globális disztribúcióra és magas átviteli sebességre van szükségük. A Tábla API ugyanazokat a funkciókat biztosítja, mint az Azure Table Storage, de tartalmazza az Azure Cosmos DB-motor előnyeit is. 
-
-Az Azure Table Storage továbbra is használható nagy tárigényű és alacsonyabb átviteli sebességet megkövetelő táblákkal. Az Azure Cosmos DB hamarosan be fogja vezetni a tárolásra optimalizált táblák támogatását, valamint a meglévő és az új Azure Table Storage-fiókok Azure Cosmos DB szolgáltatásra való frissítése is meg fog történni.
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Table-API-for-Azure-Cosmos-DB/player]
+> 
+> 
 
 ## <a name="premium-and-standard-table-apis"></a>Prémium és standard szintű tábla API-k
 Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előnyökben részesülhet az Azure Cosmos DB előzetes verziójú, prémium szintű tábláira való áttéréskor:
 
 |  | Azure Table Storage | Azure Cosmos DB: Table Storage (előzetes verzió) |
 | --- | --- | --- |
-| Késés | Gyors, de nincs felső korlátja a késésnek | Egyszámjegyű ezredmásodperces késés az olvasás/írás műveleteknél – az olvasási műveleteknél 10 ms alatti, az írási műveleteknél 15 ms alatti késés garantált a 99. percentilisben bármilyen méret esetén, bárhol a világon |
-| Átviteli sebesség | Hatékonyan skálázható, de nincs dedikált teljesítménymodell. A táblák skálázhatósági korlátja másodpercenként 20 000 művelet | Hatékonyan skálázható a [táblánként dedikált és fenntartott átviteli sebességgel](request-units.md), amelynek rendelkezésre állását SLA-k szavatolják. A fiókokban nincs korlátozva az átviteli sebesség felső határa, és a szolgáltatás táblánként és másodpercenként legalább 10 millió műveletet támogat |
+| Késés | Gyors, de nincs felső korlátja a késésnek | Egy számjegyű ezredmásodperces késés az olvasás/írás műveleteknél – az olvasási műveleteknél 10 ms alatti, az írási műveleteknél 15 ms alatti késés garantált az esetek 99%-ában bármilyen méret esetén, bárhol a világon |
+| Teljesítmény | Változó teljesítménymodell. A táblák skálázhatósági korlátja másodpercenként 20 000 művelet | Hatékonyan skálázható a [táblánként dedikált és fenntartott átviteli sebességgel](request-units.md), amelynek rendelkezésre állását SLA-k szavatolják. A fiókokban nincs korlátozva az átviteli sebesség felső határa, és a szolgáltatás táblánként és másodpercenként legalább 10 millió műveletet támogat |
 | Globális terjesztés | Egyetlen régió – egyetlen opcionális, olvasható, másodlagos olvasási régióval a magas rendelkezésre állás céljából. Nem kezdeményezhető feladatátvétel | [Kulcsrakész globális terjesztés](distribute-data-globally.md) legalább 1–30 régióból. Támogatja az [automatikus és manuális feladatátvételt](regional-failover.md) – bármikor és bárhol a világon |
 | Indexelés | Csak elsődleges indexelés a PartitionKey és a RowKey tulajdonságok esetén. Nincsenek másodlagos indexek | Az összes tulajdonság automatikus és teljes indexelése, nincs indexkezelés |
 | Lekérdezés | A lekérdezés végrehajtásakor az elsődleges kulcshoz tartozó indexet használja, és egyéb esetben csak vizsgálati műveletet végez. | A lekérdezések a gyorsaság céljából kihasználhatják a tulajdonságok automatikus indexelését. Az Azure Cosmos DB adatbázismotorja összesítési, térinformatikai és rendezési lehetőségeket egyaránt támogat. |
@@ -53,7 +52,9 @@ Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azu
 ## <a name="next-steps"></a>Következő lépések
 
 Íme, pár hivatkozás az első lépések megtételéhez:
-* Ismerkedés az [Azure Cosmos DB tábla API szolgáltatásával](create-table-dotnet.md) meglévő .NET tábla SDK esetén.
-* További információ az [Azure Cosmos DB szolgáltatással történő globális terjesztésről](distribute-data-globally.md).
-* További információ az [Azure Cosmos DB-ben kiépített átviteli sebességről](request-units.md).
+* [.NET-alkalmazás létrehozása a Table API-val](create-table-dotnet.md)
+* [Fejlesztés a Table API-val .NET-keretrendszerben](tutorial-develop-table-dotnet.md)
+* [Táblaadatok lekérdezése a Table API-val](tutorial-query-table.md)
+* [Azure Cosmos DB globális terjesztésének beállítása a Table API-val](tutorial-global-distribution-table.md)
+* [Azure Cosmos DB Table API SDK .NET-keretrendszerhez](table-sdk-dotnet.md)
 

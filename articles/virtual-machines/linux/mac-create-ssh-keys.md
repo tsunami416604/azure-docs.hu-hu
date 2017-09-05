@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 49541306c66e066a9d9f75d90bed2f4dfd21ce9d
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 6fcdcc96c7762e2362aebf909ef25f4a5ab62f99
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -57,6 +57,6 @@ Az SSH-kulcsokkal létrehozott virtuális gépek alapértelmezés szerint letilt
 Az Azure Portal, a parancssori felület és sablonok segítségével is létrehozhat olyan virtuális gépeket, amelyek saját SSH-kulcspárját használják:
 
 * [Biztonságos Linux virtuális gép létrehozása az Azure Portal használatával](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Biztonságos Linux virtuális gép létrehozása az Azure 2.0 parancssori felülettel](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Biztonságos linuxos virtuális gép létrehozása az Azure CLI 2.0-val](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Biztonságos Linux virtuális gép létrehozása Azure-sablon alapján](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

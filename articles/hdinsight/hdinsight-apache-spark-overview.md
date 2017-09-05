@@ -15,21 +15,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/12/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: acb80aa98cc978a906ccd6e4b4132a439e505bc8
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b8955acc83b0fbb0612e7042d62170ae8078b9ad
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="introduction-to-spark-on-hdinsight"></a>A HDInsight-alapú Spark bemutatása
 
-Ez a cikk a HDInsight-alapú Spark rendszert mutatja be. Az <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memóriabeli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. A HDInsight-alapú Spark-fürt kompatibilis az Azure Storage (WASB) és az Azure Data Lake Store szolgáltatással, így a Spark-fürt segítségével könnyen feldolgozhatók az Azure-ban tárolt meglévő adatok.
+Ez a cikk a HDInsight-alapú Spark rendszert mutatja be. Az <a href="http://spark.apache.org/" target="_blank">Apache Spark</a> egy nyílt forráskódú, párhuzamos feldolgozást végző keretrendszer, amely támogatja a memóriabeli feldolgozást a big data elemző alkalmazások teljesítményének növelése érdekében. A HDInsight-alapú Spark-fürt az Azure Storage-dzsal (WASB) és az Azure Data Lake Store-ral kompatibilis. A jelenleg az Azure-ban tárolt adatait így egy Spark-fürtön keresztül is könnyen feldolgozhatja.
 
-A HDInsight-alapú Spark-fürt létrehozásával egyben olyan Azure-beli számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. Egy Spark-fürt HDInsightban történő létrehozása nagyjából tíz percet vesz igénybe. A feldolgozásra váró adatokat az Azure Storage vagy az Azure Data Lake Store tárolja. Lásd: [Az Azure Storage és a HDInsight együttes használata](hdinsight-hadoop-use-blob-storage.md).
+A HDInsight-alapú Spark-fürt létrehozásával egyben olyan Azure-beli számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. Egy Spark-fürt HDInsightban történő létrehozása nagyjából 10 percet vesz igénybe. A feldolgozásra váró adatokat az Azure Storage vagy az Azure Data Lake Store tárolja. Lásd: [Az Azure Storage és a HDInsight együttes használata](hdinsight-hadoop-use-blob-storage.md).
 
 **HDInsight-alapú Spark-fürt létrehozásához** lásd: [Gyorsútmutató: HDInsight -alapú Spark-fürt létrehozása és interaktív lekérdezés futtatása a Jupyter használatával](hdinsight-apache-spark-jupyter-spark-sql.md).
 
@@ -39,8 +38,8 @@ A HDInsight-alapú Spark-fürtök teljes körűen felügyelt Spark szolgáltatá
 
 | Szolgáltatás | Leírás |
 | --- | --- |
-| A Spark-fürtök könnyen létrehozhatók |Az Azure Portal, az Azure PowerShell vagy a HDInsight.NET.SDK segítségével percek alatt létrehozhatja az új HDInsight-alapú Spark-fürtöt. Lásd: [Spark-fürt a HDInsightban – első lépések](hdinsight-apache-spark-jupyter-spark-sql.md) |
-| Könnyű használat |A HDInsight-alapú Spark-fürt tartalmazza a Jupyter és a Zeppelin notebookokat. Ezeket interaktív adatfeldolgozásra és -megjelenítésre használhatja.|
+| A Spark-fürtök könnyen létrehozhatók |Az Azure Portal, az Azure PowerShell vagy a HDInsight .NET SDK használatával percek alatt létrehozható egy új Spark-fürt a HDInsight platformon. Lásd: [Spark-fürt a HDInsightban – első lépések](hdinsight-apache-spark-jupyter-spark-sql.md) |
+| Könnyű használat |A HDInsight-alapú Spark-fürt tartalmazza a Jupyter és a Zeppelin notebookokat. Ezeket a notebookokat interaktív adatfeldolgozásra és -vizualizációra használhatja.|
 | REST API-k |A HDInsight-alapú Spark-fürtök tartalmazzák a [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) REST API-alapú Spark-feladatkiszolgálót, amely a feladatok távoli elküldését és figyelését teszi lehetővé. |
 | Az Azure Data Lake Store támogatása | A HDInsight-alapú Spark-fürt egyaránt konfigurálható az Azure Data Lake Store kiegészítő és elsődleges tárhelyként való használatára is (elsődleges tárhelyként való használatra csak HDInsight 3.5-fürtök esetén). További információk a Data Lake Store-ról: [Áttekintés: Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). |
 | Integráció az Azure-szolgáltatásokkal |A HDInsight-alapú Spark-fürt Azure Event Hubs-összekötőt is tartalmaz. Az Event Hubs használatával az ügyfelek streamelési alkalmazásokat állíthatnak elő a már a Spark részeként elérhető [Kafka](http://kafka.apache.org/) mellett. |

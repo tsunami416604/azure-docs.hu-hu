@@ -1,6 +1,6 @@
 ---
-title: "Rövid útmutató – Azure Docker Swarm módú fürt létrehozása Linux rendszeren | Microsoft Docs"
-description: "Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Docker Swarm módú fürtöt Linux-tárolókhoz az Azure Container Service-ben."
+title: "Rövid útmutató – Azure Docker CE-fürt létrehozása Linux rendszeren | Microsoft Docs"
+description: "Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Docker CE-fürtöt Linux-tárolókhoz az Azure Container Service-ben."
 services: container-service
 documentationcenter: 
 author: neilpeterson
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/14/2017
+ms.date: 08/25/2017
 ms.author: nepeters
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 3f49e72fa647d2b6c854123c271a88e1a8ff3cf8
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 7b8336e3865e7032e3ee0d5e4ee712bcb95aa4b5
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
-# <a name="deploy-docker-swarm-mode-cluster"></a>Docker Swarm módú fürt üzembe helyezése
+# <a name="deploy-docker-ce-cluster"></a>Docker CE-fürt üzembe helyezése
 
-Ebben a rövid útmutatóban egy Docker Swarm módú fürtöt helyezünk üzembe az Azure CLI-vel. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást helyezünk üzembe és futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
+Ebben a rövid útmutatóban egy Docker CE-fürtöt helyezünk üzembe az Azure CLI-vel. Ezután egy webes előtérrendszert és egy Redis-példányt magában foglaló többtárolós alkalmazást helyezünk üzembe és futtatunk a fürtön. Miután végeztünk ezzel, az alkalmazás elérhető lesz az interneten.
 
-Az Azure Container Service Docker Swarm módja előzetes verzióban érhető el, és **éles számítási feladatokra nem használható**.
+A Docker CE az Azure Container Service-ben előzetes verzióban érhető el, és **éles számítási feladatokra nem használható**.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -62,7 +62,7 @@ Kimenet:
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm-fürt létrehozása
 
-Docker Swarm módú fürtöt az [az acs create](/cli/azure/acs#create) paranccsal hozhat létre az Azure Container Service-ben. 
+Az Azure Container Service-ben az [az acs create](/cli/azure/acs#create) paranccsal hozhat létre Docker CE-fürtöt. 
 
 A következő példa egy *mySwarmCluster* nevű fürtöt hoz létre egy Linux-főcsomóponttal és három Linux-ügyfélcsomóponttal.
 

@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 35d30e90a8a390e21b08b0796f441f0e9154c499
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felületének 2.0-s verziójával
@@ -109,7 +108,7 @@ az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Sour
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
-A Data Lake Analytics az Azure Blob Storage-hoz is rendelkezik hozzáféréssel.  A fájlok az Azure Blob Storage-ba történő feltöltéséhez lásd: [Using the Azure CLI with Azure Storage](../storage/storage-azure-cli.md) (Az Azure parancssori felület és az Azure Storage használata).
+A Data Lake Analytics az Azure Blob Storage-hoz is rendelkezik hozzáféréssel.  A fájlok az Azure Blob Storage-ba történő feltöltéséhez lásd: [Using the Azure CLI with Azure Storage](../storage/common/storage-azure-cli.md) (Az Azure parancssori felület és az Azure Storage használata).
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Data Lake Analytics-feladatok küldése
 A Data Lake Analytics-feladatok nyelve a U-SQL. A U-SQL-ről további tudnivalók [A U-SQL nyelv – első lépések](data-lake-analytics-u-sql-get-started.md) című cikkben és [a U-SQL nyelvvel foglalkozó segédanyagban](http://go.microsoft.com/fwlink/?LinkId=691348) találhatók.
@@ -180,7 +179,7 @@ az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
-##<a name="retrieve-job-results"></a>Feladatok eredményeinek lekérése
+## <a name="retrieve-job-results"></a>Feladatok eredményeinek lekérése
 
 A feladat befejezése után az alábbi parancsok segítségével listázhatja ki a kimeneti fájlokat, és töltheti le a fájlokat:
 
@@ -195,6 +194,26 @@ Példa:
 
 ```
 az dls fs downlod --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "C:\DLA\myfile.csv"
+```
+
+## <a name="pipelines-and-recurrences"></a>Folyamatok és ismétlődések
+
+**Folyamatok és ismétlődések adatainak lekérése**
+
+A korábban elküldött feladatok folyamatadatait az `az dla job pipeline` paranccsal tekintheti meg.
+
+```
+az dla job pipeline list --account "<Data Lake Analytics Account Name>"
+
+az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
+```
+
+A korábban elküldött feladatok ismétlődési adatait az `az dla job recurrence` paranccsal tekintheti meg.
+
+```
+az dla job recurrence list --account "<Data Lake Analytics Account Name>"
+
+az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
 ## <a name="next-steps"></a>Következő lépések

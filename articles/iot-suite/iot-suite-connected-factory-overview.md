@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: a7d31be48ef06064b01cdb2dfd0331b34adbec4d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: d502c8e2e2715899279f6ebcf7ed89c19a1bb9a6
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>Az előre konfigurált csatlakoztatott gyár első lépései
@@ -53,7 +53,7 @@ Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 4. Kattintson a csempére, és a jobb oldali panelen láthatja a megoldás részleteit.
 
 > [!NOTE]
-> Ha problémái vannak az előre konfigurált megoldás telepítésekor, tekintse meg az [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions] és a [GYIK][lnk-faq] fejezetet. Ha a problémák továbbra is fennállnak, hozzon létre egy szolgáltatásjegyet a [portálon][lnk-portal].
+> Ha problémái vannak az előre konfigurált megoldás telepítésekor, tekintse meg az [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions] és a [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md) fejezetet. Ha a problémák továbbra is fennállnak, hozzon létre egy szolgáltatásjegyet a [portálon][lnk-portal].
 
 Hiányol bizonyos részleteket a megoldásával kapcsolatban? A [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/321918-azure-iot) elküldheti a szolgáltatásokkal kapcsolatos javaslatait.
 
@@ -81,7 +81,7 @@ A megoldás irányítópultján kezelheti az üzembe helyezett megoldást. Az ir
 
 Az irányítópult az alábbi információkat jeleníti meg:
 
-* A **Factory list** (Gyárak listája) panelt, amelyen ellenőrizhető a megoldás állapota, helye és aktuális termelési konfigurációja. A megoldás első futtatásakor már rendelkezésre áll néhány szimulált eszköz. A gyártósor-szimuláció három valós OPC UA-kiszolgálót tartalmaz gyártósoronként, amelyek szimulált feladatokat hajtanak végre és adatokat osztanak meg. Az OPC UA architektúráról további információt talál a [gyakran ismételt kérdések][lnk-faq] között.
+* A **Factory list** (Gyárak listája) panelt, amelyen ellenőrizhető a megoldás állapota, helye és aktuális termelési konfigurációja. A megoldás első futtatásakor már rendelkezésre áll néhány szimulált eszköz. A gyártósor-szimuláció három valós OPC UA-kiszolgálót tartalmaz gyártósoronként, amelyek szimulált feladatokat hajtanak végre és adatokat osztanak meg. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md) fejezetben talál további információt.
 * A megoldáshoz csatlakoztatott egyes eszközök helyét megjelenítő **térképet**. A megoldás a Bing Maps API-val képes megjeleníteni az információkat a térképen. Ha az előfizetéshez engedélyezve van a Bing Maps Enterprise API használata, a rendszer automatikusan ezt használja. Ha nincs engedélyezve, a [gyakori kérdésekből][lnk-faq] megtudhatja, hogyan teheti dinamikussá a térképet.
 * Egy **Alerts** (Riasztások) panelt, amely riasztásokat jelenít meg, ha egy telemetria- vagy OEE/KPI-érték meghalad egy adott küszöbértéket.
 * Egy **Overall Equipment Efficiency** (Teljes eszközhatékonyság) panelt, amely a teljes vállalat vagy a megtekintett gyár/gyártósor/állomás OEE-értékeit jeleníti meg. Az érték az állomásnézettől a vállalati szintig összesítve van. Az OEE értéke és annak összetevői részletesebben is elemezhetők.
