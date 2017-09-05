@@ -13,6 +13,7 @@
 ### [Közösségi média](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [Valós idejű kiértékelés a Machine Learninggel](stream-analytics-machine-learning-integration-tutorial.md)
 ### [Valós idejű eseményfeldolgozás](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [Anomáliadetektálás az Azure-ban – használati útmutató (előzetes verzió)](stream-analytics-machine-learning-anomaly-detection.md)
 
 ## Feladatok létrehozása
 ### [Bemenetek létrehozása](stream-analytics-define-inputs.md)

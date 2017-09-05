@@ -19,8 +19,6 @@
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
 ## [Service Fabric parancssori felület](samples-cli.md)
-### [Minta üzembe helyezése](scripts/cli-deploy-application.md)
-### [Minta eltávolítása](scripts/cli-remove-application.md)
 # Alapelvek
 ## [A mikroszolgáltatások ismertetése](service-fabric-overview-microservices.md)
 ## [Nagyméretű kép](service-fabric-content-roadmap.md)
@@ -115,11 +113,14 @@
 #### [Szabályozás](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [Szolgáltatás áthelyezése](service-fabric-cluster-resource-manager-movement-cost.md)
 
+## [Integráció az API Management szolgáltatással](service-fabric-api-management-overview.md)
+
 ## Megfigyelés és diagnosztika
 ### [Áttekintés](service-fabric-diagnostics-overview.md)
 ### [Állapotmodell](service-fabric-health-introduction.md)
 ### [A Stateful Reliable Services diagnosztikai funkciói](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors-diagnosztika](service-fabric-reliable-actors-diagnostics.md)
+### [Teljesítményszámlálók a Reliable Service szolgáltatás táveléréséhez](service-fabric-reliable-serviceremoting-diagnostics.md)
 
 # Útmutatók
 ## A fejlesztési környezet beállítása
@@ -128,6 +129,7 @@
 ### [Mac OS](service-fabric-get-started-mac.md)
 
 ## Alkalmazás készítése
+### [Az első saját C# alkalmazás létrehozása a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md)
 ### Futtatható vendégszolgáltatás készítése
 #### [Node.js-alkalmazás üzemeltetése Windowsban](quickstart-guest-app.md)
 #### [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
@@ -208,9 +210,7 @@
 ### [Java szolgáltatás hibakeresése az Eclipse-ben](service-fabric-debugging-your-application-java.md)
 ### [Helyi monitorozás és diagnosztika](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## Integrálás az API Management szolgáltatással
-### [Áttekintés](service-fabric-api-management-overview.md)
-### [Első lépések](service-fabric-api-management-quick-start.md)
+## [Az API Management és a Service Fabric üzembe helyezése az Azure-ban](service-fabric-api-management-quick-start.md)
 
 ## Áttelepítés a Cloud Servicesből
 ### [A Cloud Services és a Service Fabric összehasonlítása](service-fabric-cloud-services-migration-differences.md)

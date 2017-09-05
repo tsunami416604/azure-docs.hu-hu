@@ -46,6 +46,7 @@
 ## [Jogkivonatok konfigurálása](active-directory-b2c-token-session-sso.md)
 ## [MFA engedélyezése](active-directory-b2c-reference-mfa.md)
 ## [Egyéni attribútumok használata](active-directory-b2c-reference-custom-attr.md)
+## [Jelszó testreszabása](active-directory-b2c-reference-password-complexity.md)
 ## [A felhasználói felület testreszabása](active-directory-b2c-reference-ui-customization.md)
 ### [Segédeszköz testreszabáshoz](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [Nyelvi testreszabás](active-directory-b2c-reference-language-customization.md)
@@ -71,6 +72,7 @@
 #### [Egyéni attribútumok](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [Felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md)
 #### [Jogkivonatok testreszabása](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
+#### [Jelszó testreszabása](active-directory-b2c-reference-password-complexity-custom.md)
 ### Hibaelhárítás
 #### [Naplók gyűjtése az Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)
 ## Referencia

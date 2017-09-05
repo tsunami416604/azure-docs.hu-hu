@@ -134,8 +134,11 @@
 ### [Az Azure Portal használata](device-management-azure-portal.md)
 ### [Gyakori kérdések](device-management-faq.md)
 ### Feladatok
+#### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök konfigurálása](device-management-azuread-registered-devices-windows10-setup.md)
+#### [Azure AD-csatlakoztatott eszközök konfigurálása](device-management-azuread-joined-devices-setup.md)
 #### [Hibrid Azure AD-csatlakoztatott eszközök konfigurálása](device-management-hybrid-azuread-joined-devices-setup.md) 
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
+#### [Azure AD-csatlakozás a Windows 10 első futtatási élménye alkalmával](device-management-azuread-joined-devices-frx.md)
 ### Hibaelhárítás
 #### [Hibrid Azure AD-csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök](device-management-troubleshoot-hybrid-join-windows-current.md)
 #### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](device-management-troubleshoot-hybrid-join-windows-legacy.md)
@@ -297,7 +300,6 @@
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
 #### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
-#### [Támogatott alkalmazások](active-directory-conditional-access-supported-apps.md)
 #### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
 #### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
 #### [Kijavítás](active-directory-conditional-access-device-remediation.md)

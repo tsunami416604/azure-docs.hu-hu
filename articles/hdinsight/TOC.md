@@ -57,14 +57,11 @@
 ### [A DataFu és a Pig együttes használata](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [Igény szerinti fürtök](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [Hadoop-feladatok elküldése](hdinsight-submit-hadoop-jobs-programmatically.md)
-## Az R Server használata
-### [Tárolási lehetőségek](hdinsight-hadoop-r-server-storage.md)
-### [Az RStudio telepítése](hdinsight-hadoop-r-server-install-r-studio.md)
-### [Számítási környezetek](hdinsight-hadoop-r-server-compute-contexts.md)
-### [ScaleR és SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## A Spark használata memórián belüli feldolgozáshoz
+### Első lépések – Spark fejlesztő
+#### [Önálló alkalmazás létrehozása](hdinsight-apache-spark-create-standalone-application.md)
+#### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md) 
 ### [A Data Lake Store adattárral](hdinsight-apache-spark-use-with-data-lake-store.md)
-### [Önálló alkalmazás létrehozása](hdinsight-apache-spark-create-standalone-application.md)
 ### [Alkalmazások létrehozása az Eclipse-szel](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [Alkalmazások létrehozása az IntelliJ-vel](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [Streamelési események feldolgozása](hdinsight-apache-spark-eventhub-streaming.md)
@@ -78,9 +75,13 @@
 ### [Külső csomagok használata Jupyterrel, cellafunkciók használatával](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 ### [Külső csomagok használata Jupyterrel, szkriptműveletek használatával](hdinsight-apache-spark-python-package-installation.md)
 ### [Helyi Jupyter notebook használata](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
-### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md)
 ### [Feladatok távoli hibakeresése az IntelliJ-vel VPN-en keresztül](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [Ismert problémák](hdinsight-apache-spark-known-issues.md)
+## Az R Server használata
+### [Tárolási lehetőségek](hdinsight-hadoop-r-server-storage.md)
+### [Az RStudio telepítése](hdinsight-hadoop-r-server-install-r-studio.md)
+### [Számítási környezetek](hdinsight-hadoop-r-server-compute-contexts.md)
+### [ScaleR és SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## A HBase használata
 ### [A Phoenix és az SQLLine használata](hdinsight-hbase-phoenix-squirrel-linux.md)
 ### [Valós idejű tweetek elemzése](hdinsight-hbase-analyze-twitter-sentiment.md)

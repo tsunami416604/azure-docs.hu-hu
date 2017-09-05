@@ -1,20 +1,22 @@
 ---
 title: "Az Azure Mobile Apps dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan használhatja az Azure App Service Mobile Apps szolgáltatását natív iOS-, Android- vagy Windows-alkalmazás, illetve Xamarin és Cordova segítségével platformfüggetlen alkalmazások készítésére és üzemeltetésére."
-services: app-service\mobile
-author: carolz
+services: app-service-mobile
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
-ms.service: app-service\mobile
+ms.service: app-service-mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-translationtype: Human Translation
-ms.sourcegitcommit: 6f1ca5fe5125728b51a6d46e55415afb72405910
-ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
+ms.translationtype: HT
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 0286d0cab7eb774a13066beb838840892dfeeda5
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="mobile-apps-documentation"></a>A Mobile Apps dokumentációja
@@ -208,9 +210,4 @@ Ismerje meg, hogyan használhatja az Azure App Service Mobile Apps szolgáltatá
         </div>
     </li>
 </ul>
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

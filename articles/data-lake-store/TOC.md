@@ -39,12 +39,14 @@
 ### [Teljesítmény-finomhangolási útmutató a Storm on HDInsighthoz és az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-storm.md)
 
 ## Integráció az Azure-szolgáltatásokkal
+### HDInsighttal
+#### [A Portal használata](data-lake-store-hdinsight-hadoop-use-portal.md)
+#### [A PowerShell használata (alapértelmezett tároló)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+#### [A PowerShell használata (további tároló)](data-lake-store-hdinsight-hadoop-use-powershell.md)
+#### [Az Azure-sablon használata](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [Hozzáférés virtuális gépekről az Azure VNET-ben](data-lake-store-connectivity-from-vnets.md)
 ### [Használat a Data Lake Analytics-szel](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-### [HDInsight Data Lake Store-ral – portál](data-lake-store-hdinsight-hadoop-use-portal.md)
-### [HDInsight Data Lake Store-ral alapértelmezett tárolóként – PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-### [HDInsight Data Lake Store-ral kiegészítő tárolóként– PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
-### [HDInsight Data Lake Store-ral – Azure-sablon](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+### [Használat az Azure Event Hubs-eseményközpontokkal](data-lake-store-archive-eventhub-capture.md)
 ### [Használat a Data Factory-val](../data-factory/data-factory-azure-datalake-connector.md)
 ### [Használat a Stream Analytics-szel](data-lake-store-stream-analytics.md)
 ### [Használat a Power BI-jal](data-lake-store-power-bi.md)

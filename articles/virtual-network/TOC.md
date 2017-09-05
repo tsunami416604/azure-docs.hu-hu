@@ -140,6 +140,7 @@
 #### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### [Az átviteli sebesség tesztelése](virtual-network-bandwidth-testing.md)
 ### [Nem lehet törölni a virtuális hálózatokat](virtual-network-troubleshoot-cannot-delete-vnet.md)
+### [Virtuális gépek közötti kapcsolódási problémák](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)

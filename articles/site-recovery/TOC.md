@@ -140,6 +140,8 @@
 ## Figyelés és hibaelhárítás
 ### [Az Azure-ból Azure-ba végzett replikáció problémái](site-recovery-azure-to-azure-troubleshoot-errors.md)
 ### [A helyszínről Azure-ba történő replikáció problémái](site-recovery-vmware-to-azure-protection-troubleshoot.md)
+### [A mobilitási szolgáltatás telepítésének problémái](site-recovery-vmware-to-azure-push-install-error-codes.md)
+### [Az Azure-ba irányuló feladatátvétel problémái](site-recovery-failover-to-azure-troubleshoot.md)
 ### [Naplók gyűjtése és helyszíni problémák hibaelhárítása](site-recovery-monitoring-and-troubleshooting.md)
 
 # Referencia
