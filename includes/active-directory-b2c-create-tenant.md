@@ -1,21 +1,21 @@
-Kattintson az **Új** gombra. A **Keresés a piactéren** mezőbe írja be a következőt: `Azure Active Directory B2C`.
+Click the **New** button. In the **Search the marketplace** field, enter `Azure Active Directory B2C`.
 
-![A kiemelt Hozzáadás gomb és az Azure Active Directory B2C szöveg a Keresés a piactéren mezőben](./media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![Add button highlighted and the text Azure Active Directory B2C in the search the marketplace field](./media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
-A találatok listájában válassza ki az **Azure Active Directory B2C** elemet.
+In the results list, select **Azure Active Directory B2C**.
 
-![A kiválasztott Azure Active Directory B2C elem a találatok listájában](./media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
+![Azure Active Directory B2C selected in the results list](./media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
 
-Ekkor megjelennek az Azure Active Directory B2C-vel kapcsolatos részletek. Az új Azure Active Directory B2C-bérlő konfigurálásának megkezdéséhez kattintson a **Létrehozás** gombra.
+Details about Azure Active Directory B2C are shown. To begin configuring your new Azure Active Directory B2C tenant, click the **Create** button.
 
-Válassza az **Új Azure AD B2C-bérlő létrehozása** lehetőséget. Ezután használja a táblázatban megadott beállításokat.
+Select **Create a new Azure AD B2C Tenant**. The settings specified in the following table use the company name Contoso as an example. You will need to provide your own organization name and a unique tenant name when creating your tenant.  
 
-![Azure AD B2C-bérlő, mintaszöveggel a rendelkezésre álló mezőkben](./media/active-directory-b2c-create-tenant/create-new-b2c-tenant.png)
+![Azure AD B2C create tenant with sample text in the available fields](./media/active-directory-b2c-create-tenant/create-new-b2c-tenant.png)
 
-| Beállítás      | Mintaérték  | Leírás                                        |
+| Setting      | Sample value  | Description                                        |
 | ------------ | ------- | -------------------------------------------------- |
-| **Szervezet neve** | Contoso | A szervezet neve. | 
-| **Kezdeti tartománynév** |  ContosoB2CTenant | A B2C-bérlő tartományneve. Alapértelmezés szerint a kezdeti tartománynévnek részét képezi a .microsoft.com. A cége vagy szervezete által használt tartománynevet később is megadhatja. Nem hozható létre bérlő olyan névvel, amely megegyezik egy korábban törölt bérlő nevével. Ha ez egy tesztcélra használt bérlő, adjon meg egy nem éles használatra szánt nevet, például ContosoB2CTesting. |
-| **Ország vagy régió** | Egyesült Államok | Válassza ki a címtár országát vagy régióját. A címtár ezen a helyen fog létrejönni, és ez később nem változtatható meg.  |
+| **Organization name** | Contoso | Name of the organization. | 
+| **Initial domain name** |  ContosoB2CTenant | Domain name for the B2C tenant. By default, the initial domain name includes .onmicrosoft.com. If you are creating a test tenant, choose a non-production name such as ContosoB2CTesting. |
+| **Country or region** | United States | Choose the country or region for the directory. The directory will be created in this location and cannot be changed later.  |
 
-A bérlő létrehozásához kattintson a **Létrehozás** gombra. A bérlő létrehozása eltarthat néhány percig. Amikor a folyamat befejeződött, a rendszer figyelmeztetni fogja az értesítések között.
+Click the **Create** button to create your tenant. Creating the tenant may take a few minutes. You are alerted in your notifications when it is complete.

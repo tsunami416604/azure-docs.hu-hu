@@ -1,8 +1,8 @@
 > [!TIP]
 > 
-> **Próbálja ki a Microsoft Azure Storage Explorert**
+> **Try Microsoft Azure Storage Explorer**
 > 
-> A [Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
+> [Microsoft Azure Storage Explorer](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft. You can use it to work visually with Azure Storage data on Windows, macOS, and Linux.
 > 
 > 
 
