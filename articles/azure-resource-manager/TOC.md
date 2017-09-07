@@ -6,8 +6,8 @@
 ## [Felügyelt alkalmazások](managed-application-overview.md)
 
 # Bevezetés
-## [Sablon exportálása](resource-manager-export-template.md)
 ## [Sablon létrehozása és üzembe helyezése](resource-manager-create-first-template.md)
+## [VS Code-bővítmény sablonokhoz](resource-manager-vscode-extension.md)
 ## [A Visual Studio és a Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
 # Példák
@@ -20,8 +20,8 @@
 
 # Útmutató
 ## Sablonok létrehozása
-### [Ajánlott eljárások a sablonokhoz](resource-manager-template-best-practices.md)
 ### [Sablon szakaszai](resource-group-authoring-templates.md)
+### [Ajánlott eljárások a sablonokhoz](resource-manager-template-best-practices.md)
 ### [Hivatkozás más sablonokra](resource-group-linked-templates.md)
 ### [Függőség megadása két erőforrás között](resource-group-define-dependencies.md)
 ### [Több példány létrehozása](resource-group-create-multiple.md)
@@ -33,6 +33,7 @@
 ### [Állapot megosztása hivatkozott sablonok között](best-practices-resource-manager-state.md)
 ### [Minták sablonok tervezéséhez](best-practices-resource-manager-design-templates.md)
 
+
 ## Üzembe helyezés
 ### PowerShell
 #### [Sablon üzembe helyezése](resource-group-template-deploy.md)
@@ -42,7 +43,9 @@
 #### [Sablon üzembe helyezése](resource-group-template-deploy-cli.md)
 #### [Sablon üzembe helyezése SAS-token használatával](resource-manager-cli-sas-token.md)
 #### [Sablon exportálása és újbóli üzembe helyezése](resource-manager-export-template-cli.md)
-### [Portal](resource-group-template-deploy-portal.md)
+### Portál
+#### [Erőforrások üzembe helyezése](resource-group-template-deploy-portal.md)
+#### [Sablon exportálása](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [Erőforráscsoportok közötti üzembe helyezés](resource-manager-cross-resource-group-deployment.md)
 ### [Folyamatos integráció a Visual Studio Team Services szolgáltatással](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)

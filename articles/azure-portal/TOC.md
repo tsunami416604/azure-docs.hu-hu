@@ -6,11 +6,13 @@
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Billentyűparancsok](azure-portal-keyboard-shortcuts.md)
 ## [Támogatott böngészők és eszközök](../azure-preview-portal-supported-browsers-devices.md)
+## [Az Azure-irányítópultok struktúrája](azure-portal-dashboards-structure.md)
 # Útmutatók
 ## Üzembe helyezés
 ### [Azure Resource Manager-sablonok létrehozása](../azure-resource-manager/resource-group-authoring-templates.md)
 ### [Üzembe helyezés Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md)
 ### [Azure-irányítópultok létrehozása és megosztása](azure-portal-dashboards.md)
+### [Azure-irányítópultok szoftveres létrehozása](azure-portal-dashboards-create-programmatically.md)
 ## Kezelés
 ### [Kontrasztos megjelenítés bekapcsolása és téma módosítása](azure-portal-change-theme-high-contrast.md)
 ### [Erőforrások kezelése a portálon](../azure-resource-manager/resource-group-portal.md)

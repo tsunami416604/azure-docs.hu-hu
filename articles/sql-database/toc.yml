@@ -43,11 +43,7 @@
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 – Az SQL DB biztonságossá tétele
       href: sql-database-security-tutorial.md
-    - name: 4 – A SQL DB teljesítményének növelése
-      href: sql-database-performance-tutorial.md
-    - name: 5 – Több-bérlős alkalmazás implementálása
-      href: sql-database-multi-tenant-application.md
-    - name: 6 – Földrajzilag elosztott adatbázis implementálása
+    - name: 4 – Földrajzilag elosztott adatbázis implementálása
       href: sql-database-implement-geo-distributed-database.md
 - name: Példák
   items:

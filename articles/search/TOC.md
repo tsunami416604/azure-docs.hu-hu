@@ -59,7 +59,8 @@
 #### [Lucene lekérdezési szintaxis ](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 #### [Példák Lucene szintaxisú lekérdezésekre](search-query-lucene-examples.md)
 #### [Kifejezési szintaxis szűrése](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
-### Egyéni keresés
+### Elemzők az Azure Search szolgáltatásban
+#### [Áttekintés](search-analyzers.md)
 #### [Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [Lapozás eredményei](search-pagination-page-layout.md)
