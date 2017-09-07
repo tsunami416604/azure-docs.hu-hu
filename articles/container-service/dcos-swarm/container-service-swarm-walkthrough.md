@@ -76,7 +76,7 @@ A rövid útmutató során szükség lesz a Docker Swarm-főkiszolgáló és a D
 
 
 ```bash
-az network public-ip list --resource-group myResourceGroup --query '[*].{Name:name,IPAddress:ipAddress}' -o table
+az network public-ip list --resource-group myResourceGroup --query "[*].{Name:name,IPAddress:ipAddress}" -o table
 ```
 
 Kimenet:
