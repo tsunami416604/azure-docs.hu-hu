@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/24/2017
+ms.date: 09/08/2017
 ms.author: ramical
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
 ms.openlocfilehash: c1345dcda6e52267a8037ffd7207e6bc3b0d3b31
+ms.contentlocale: hu-hu
 ms.lasthandoff: 03/28/2017
-
 
 ---
 # <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Adatok lekérése az Azure AD Reporting API és tanúsítványok használatával
@@ -26,10 +26,10 @@ Ez a cikk azt ismerteti, hogy hogyan kérhetők le adatok címtárakból felhasz
 
 ## <a name="use-the-azure-ad-reporting-api"></a>Az Azure AD Reporting API használata 
 Az Azure AD Reporting API megköveteli a következő lépések elvégzését:
- *    Az előfeltételek telepítése
- *    A tanúsítvány beállítása az appban
- *    Hozzáférési jogkivonat lekérése
- *    A Graph API meghívása a hozzáférési jogkivonattal
+ *  Az előfeltételek telepítése
+ *  A tanúsítvány beállítása az appban
+ *  Hozzáférési jogkivonat lekérése
+ *  A Graph API meghívása a hozzáférési jogkivonattal
 
 További információ a forráskódról: [A Report API modul használata](https://github.com/AzureAD/azure-activedirectory-powershell/tree/gh-pages/Modules/AzureADUtils). 
 
