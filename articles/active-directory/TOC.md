@@ -132,6 +132,7 @@
 ## Eszközök kezelése
 ### [Bevezetés](device-management-introduction.md)
 ### [Az Azure Portal használata](device-management-azure-portal.md)
+### [Az Azure AD Join megtervezése](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Gyakori kérdések](device-management-faq.md)
 ### Feladatok
 #### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök konfigurálása](device-management-azuread-registered-devices-windows10-setup.md)
@@ -142,15 +143,6 @@
 ### Hibaelhárítás
 #### [Hibrid Azure AD-csatlakoztatott Windows 10 és Windows Server 2016 rendszerű eszközök](device-management-troubleshoot-hybrid-join-windows-current.md)
 #### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](device-management-troubleshoot-hybrid-join-windows-legacy.md)
-### [Azure AD-csatlakozás](active-directory-azureadjoin-overview.md)
-#### [Csomag](active-directory-azureadjoin-deployment-aadjoindirect.md)
-#### [Az eszközregisztráció beállítása](active-directory-azureadjoin-setup.md)
-#### [Új eszközök regisztrálása](active-directory-azureadjoin-user-frx.md)
-#### [Üzembe helyezés](active-directory-azureadjoin-devices-group-policy.md)
-#### [A Windows 10-es integrációval kapcsolatos tudnivalók](active-directory-azureadjoin-windows10-devices-overview.md)
-#### [Windows 10-eszközök használata](active-directory-azureadjoin-windows10-devices.md)
-#### [Eszköz csatlakoztatása](active-directory-azureadjoin-personal-device.md)
-#### [Windows 10-es eszköz csatlakoztatása](active-directory-azureadjoin-user-upgrade.md)
 
 ## Alkalmazások kezelése
 ### [Áttekintés](active-directory-enable-sso-scenario.md)
@@ -299,6 +291,8 @@
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
+#### [VPN-kapcsolat](active-directory-conditional-access-vpn-connectivity-windows10.md)
+#### [Mobilalkalmazás-kezelés](active-directory-conditional-access-mam.md)
 #### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
 #### [Az eszközszabályzatokkal kapcsolatos tudnivalók](active-directory-conditional-access-device-policies.md)
 #### [Hozzáférés beállítása a csatlakoztatott alkalmazásokhoz](active-directory-conditional-access-policy-connected-applications.md)
@@ -306,7 +300,6 @@
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
 #### [Klasszikus portál](active-directory-conditional-access.md)
 ##### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
-
 
 ### Windows Hello
 #### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)

@@ -52,7 +52,13 @@
 
 ## Kezelés
 ### [Service Bus felügyeleti könyvtárak](service-bus-management-libraries.md)
-### [Az Azure Resource Manager-sablonok használata](service-bus-resource-manager-overview.md)
+### [Használjon Azure Resource Manager-sablonokat](service-bus-resource-manager-overview.md)
+#### [Névtér létrehozása](service-bus-resource-manager-namespace.md)
+#### [Névtér és üzenetsor létrehozása](service-bus-resource-manager-namespace-queue.md)
+#### [Névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
+#### [Engedélyezési szabály létrehozása névtérhez és üzenetsorhoz](service-bus-resource-manager-namespace-auth-rule.md)
+#### [Névtér létrehozása témakörrel, előfizetéssel és szabállyal](service-bus-resource-manager-namespace-topic-with-rule.md)
+#### 
 ### [A PowerShell használata entitások üzembe helyezésére](service-bus-manage-with-ps.md)
 
 # Referencia
