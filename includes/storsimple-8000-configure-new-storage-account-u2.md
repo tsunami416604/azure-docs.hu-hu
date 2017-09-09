@@ -1,9 +1,7 @@
 <!--author=alkohli last changed: 01/20/17-->
 
 
-<a id="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service" class="xliff"></a>
-
-#### Tárfiók hitelesítő adatainak hozzáadása a StorSimple-eszközkezelővel meggyező Azure-előfizetésben
+#### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>Tárfiók hitelesítő adatainak hozzáadása a StorSimple-eszközkezelővel meggyező Azure-előfizetésben
 
 1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A **Konfigurálás** szakaszban kattintson a **Tárfiók hitelesítő adatai** elemre.
 

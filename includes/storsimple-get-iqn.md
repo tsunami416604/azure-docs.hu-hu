@@ -7,8 +7,3 @@
     ![iSCSI-kezdeményező tulajdonságai](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
 3. Mentse ezt a karakterláncot.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

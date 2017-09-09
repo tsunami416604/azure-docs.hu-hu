@@ -1,8 +1,6 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-<a id="to-take-a-backup" class="xliff"></a>
-
-### Biztonsági mentés végrehajtása
+### <a name="to-take-a-backup"></a>Biztonsági mentés végrehajtása
 
 1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Az eszközök táblázatos listájából válassza ki az eszközt és kattintson rá, majd kattintson az **Összes beállítás** elemre. A **Beállítások** panelen lépjen a **Beállítások > Kezelés > Biztonsági mentési szabályzat** részhez.
 

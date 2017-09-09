@@ -1,7 +1,6 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### Kötet csatlakoztatása, inicializálása és formázása
-<a id="to-mount-initialize-and-format-a-volume" class="xliff"></a>
+#### <a name="to-mount-initialize-and-format-a-volume"></a>Kötet csatlakoztatása, inicializálása és formázása
 1. Indítsa el a Microsoft iSCSI-kezdeményezőt.
 2. Az **iSCSI-kezdeményező tulajdonságai** ablakban a **Felderítés** lapon kattintson a **Kapu felderítése** elemre.
 3. A **Tárolókapu felderítése** párbeszédablakban adja meg az iSCSI-kompatibilis hálózati adaptert, majd kattintson az **OK** gombra. 

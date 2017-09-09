@@ -1,9 +1,7 @@
 
 <!--author=alkohli last changed: 01/20/2017-->
 
-<a id="to-create-a-manual-backup" class="xliff"></a>
-
-#### Manuális biztonsági mentés létrehozása
+#### <a name="to-create-a-manual-backup"></a>Manuális biztonsági mentés létrehozása
 
 1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Az eszközök táblázatos listájából válassza ki az eszközt. Lépjen a **Beállítások > Kezelés > Biztonsági mentési házirendek** részhez.
 

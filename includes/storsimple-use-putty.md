@@ -26,8 +26,3 @@
      > 
 7. Soros munkamenet indításához kattintson a **Megnyitás** elemre.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-
