@@ -33,6 +33,8 @@
   items:
     - name: Biztonságos tárolók
       href: container-service-security.md
+    - name: Szolgáltatásnév – Kubernetes
+      href: container-service-kubernetes-service-principal.md
 - name: Útmutatók
   items:
     - name: Kubernetes Windowszal
@@ -49,8 +51,12 @@
       href: container-service-connect.md
     - name: ACS-fürt méretezése
       href: container-service-scale.md
+    - name: Kubernetes ACS-fürt terheléselosztása
+      href: container-service-kubernetes-load-balancing.md
     - name: Figyelés
       items:
+        - name: Monitorozás az OMS-szel
+          href: container-service-kubernetes-oms.md
         - name: Monitorozás a Datadoggal
           href: container-service-kubernetes-datadog.md
         - name: Monitorozás a Sysdiggel
@@ -68,7 +74,7 @@
     - name: Azure CLI 2.0
       href: /cli/azure/acs
     - name: REST
-      href: /rest/api/compute/containerservices
+      href: /rest/api/container-services
 - name: Erőforrások
   items:
     - name: Azure-ütemterv

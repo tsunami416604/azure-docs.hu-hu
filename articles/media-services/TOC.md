@@ -143,6 +143,8 @@
 #### [Portál](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)
 #### [REST](media-services-rest-configure-content-key-auth-policy.md)
+### [AES-sel titkosított HLS lejátszása a Safariban](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
+### [Hitelesítési jogkivonatok átadása](http://mingfeiy.com/how-client-pass-tokens-to-azure-media-services-key-delivery-services)
 
 ## [Elemzés](media-services-analytics-overview.md)
 ### [Média elemzése a portállal](media-services-portal-analyze.md)
@@ -190,7 +192,6 @@
 #### [Adobe Open Source Media Framework-lejátszók](media-services-use-osmf-smooth-streaming-client-plugin.md)
 ### [Hirdetések ügyféloldali beillesztése](media-services-inserting-ads-on-client-side.md)
 ### [A Microsoft Smooth Streaming ügyfélportolási készlet licencelése](media-services-sspk.md)
-### [AES-sel titkosított HLS lejátszása a Safariban](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
 
 ## Integrálás
 ### [Az Azure Functions használata a Media Services szolgáltatással](media-services-dotnet-how-to-use-azure-functions.md)

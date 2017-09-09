@@ -13,14 +13,14 @@ ms.date: 06/20/2017
 ms.author: carolz
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: aad1e4839154b552b39258f65e6ed97bf1de90fb
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: e2f5caf8c4d3eab600bb015db5a4403314a4f6e3
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 <div class="content">
-    <h1>A Jenkins az Azure-on</h1>
+    <h1>A Jenkins® az Azure-on</h1>
     <div class="introHolder" style="justify-content: space-between;">
        <div class="intro" style="min-width: 200px">
             <img src="media/Jenkins.png" align="right" alt="Jenkins Logo"> A Jenkins egy népszerű, nyílt forráskódú automatizáló kiszolgáló, amely zökkenőmentesen integrálható az Azure-ral a folyamatos integráció (CI) és a folyamatos továbbítás (CD) érdekében.  Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a Jenkins telepítésének, konfigurálásának, illetve az Azure eszközeivel és szolgáltatásaival való használatának módját.
@@ -43,5 +43,7 @@ ms.lasthandoff: 08/04/2017
 <a href="https://plugins.jenkins.io/azure-vm-agents">Az Azure virtuálisgép-ügynökök beépülő modulja</a><br/>
 <a href="https://plugins.jenkins.io/windows-azure-storage">Az Azure Storage beépülő modulja</a><br/>
 <a href="https://jenkins.io">A Jenkins ismertetése</a><br/>
+<h4>      
+A Jenkins® a Software in the Public Interest, Inc. bejegyzett védjegye. A [Jenkins® embléma](https://wiki.jenkins.io/display/JENKINS/Logo) licencelése a [Jenkins projektből](https://jenkins.io) a [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) alapján történik.</h4>
 </div>
 

@@ -120,6 +120,8 @@
           href: connect-logon.md
         - name: AHUB típusú licenckezelés használata
           href: hybrid-use-benefit-licensing.md
+        - name: "Többvállalatos üzemeltetési jogosultságok használata Windows\_10-hez"
+          href: windows-desktop-multitenant-hosting-deployment.md
     - name: Virtuális gépek védelme
       items:
         - name: Titkosítás

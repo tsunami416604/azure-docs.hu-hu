@@ -16,7 +16,7 @@
 ### [Egyéni beállítások](active-directory-aadconnect-get-started-custom.md)
 ### [Frissítés a DirSync szolgáltatásról](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 ### [Frissítés korábbi verzióról](active-directory-aadconnect-upgrade-previous-version.md)
-
+### [Telepítés meglévő ADSync-adatbázis használatával](active-directory-aadconnect-existing-database.md)
 
 # Útmutató
 ## Tervezés és kialakítás

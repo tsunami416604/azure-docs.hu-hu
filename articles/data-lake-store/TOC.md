@@ -57,7 +57,7 @@
 
 ## Kezelés
 ### [Diagnosztikai naplók elérése](data-lake-store-diagnostic-logs.md)
-### [Tervezés magas rendelkezésre álláshoz](data-lake-store-troubleshooting-guidance.md)
+### [Tervezés magas rendelkezésre álláshoz](data-lake-store-disaster-recovery-guidance.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)

@@ -21,6 +21,8 @@
           href: container-instances-tutorial-deploy-app.md
 - name: Alapelvek
   items:
+    - name: Régiók és rendelkezésre állás
+      href: container-instances-region-availability.md
     - name: Vezénylőkkel fennálló kapcsolat
       href: container-instances-orchestrator-relationship.md
     - name: Tárolócsoportok

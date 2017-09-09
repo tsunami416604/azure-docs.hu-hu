@@ -13,7 +13,7 @@
 ## [Bevezetés megtekintése](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # Első lépések
-## [Azure-beli virtuális gépek replikálása (előzetes verzió)](site-recovery-azure-to-azure.md)
+## [Azure-beli virtuális gépek replikálása az Azure-ba (előzetes verzió)](site-recovery-azure-to-azure.md)
 ## [VMware virtuális gépek replikálása az Azure-ba](vmware-walkthrough-overview.md)
 ### [1. lépés: Az architektúra áttekintése](vmware-walkthrough-architecture.md)
 ### [2. lépés: Előfeltételek és korlátozások áttekintése](vmware-walkthrough-prerequisites.md)

@@ -2,7 +2,7 @@
   items:
     - name: Bevezetés
       href: ./common/storage-introduction.md
-    - name: 'Blobok, fájlok vagy adatlemezek választása'
+    - name: 'Blobok, fájlok vagy lemezek választása'
       href: ./common/storage-decide-blobs-files-disks.md
 - name: Blobok
   href: ./blobs/storage-blobs-introduction.md
