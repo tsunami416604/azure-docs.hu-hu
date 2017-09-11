@@ -13,12 +13,6 @@
 ### [3. feladat: rendszergazdai csoport konfigurálása és az Azure AD Domain Services engedélyezése](active-directory-ds-getting-started-admingroup.md)
 ### [4. feladat: a virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
 ### [5. feladat: jelszavak szinkronizálásának engedélyezése](active-directory-ds-getting-started-password-sync.md)
-## Klasszikus Azure portál (elavult)
-### [1. feladat: a rendszergazdák csoportjának létrehozása](active-directory-ds-getting-started-create-group.md)
-### [2. feladat: virtuális hálózat létrehozása vagy kiválasztása](active-directory-ds-getting-started-vnet.md)
-### [3. feladat: az Azure AD Domain Services engedélyezése](active-directory-ds-getting-started-enableaadds.md)
-### [4. feladat: a virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-update-dns.md)
-### [5. feladat: jelszavak szinkronizálásának engedélyezése](active-directory-ds-getting-started-password-sync.md)
 
 # Útmutató
 ## Csatlakozás egy felügyelt tartományhoz

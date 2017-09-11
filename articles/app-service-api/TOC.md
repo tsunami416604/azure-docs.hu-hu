@@ -35,7 +35,6 @@
 ### [Hitelesítés és engedélyezés az APIApps-ban](app-service-api-authentication.md)
 
 ### [Azure App Service – ajánlott eljárások](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [Azure App Service és a meglévő Azure-szolgáltatások](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Az App Service-csomagok részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Nagy sűrűségű üzemeltetés](../app-service/app-service-high-density-hosting.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [WebJobs használata az Azure App Service-ben](../app-service/app-service-webjobs-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -83,7 +82,6 @@
 #### [Egyéni tartományok létrehozása a Traffic Managerrel](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ### [Meglévő alkalmazás klónozása](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [Helyszíni kapcsolatok](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Speciális konfiguráció](../app-service-web/web-sites-transform-extend.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Erőforráscsoportok](../app-service-web/app-service-move-resources.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -98,7 +96,6 @@
 #### [Hálózati konfiguráció részletei az ExpressRoute-tal](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## [Biztonságos](../app-service/app-service-security-readme.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [Alkalmazás védelme az Azure App Service-ben](../app-service-web/web-sites-security.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Hitelesítés és engedélyezés](../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Egyszerű szolgáltatás hitelesítése](app-service-api-dotnet-service-principal-auth.md)
 ### [Felhasználóhitelesítés](app-service-api-dotnet-user-principal-auth.md)
@@ -123,7 +120,6 @@
 ## Biztonsági mentés
 ### [Alkalmazás biztonsági mentése az Azure-ban](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Alkalmazás visszaállítása az Azure-ban](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [A REST használata App Service-alkalmazások biztonsági mentésére és visszaállítására](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## [Figyelés](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Diagnosztikai naplózás engedélyezése](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -132,18 +128,12 @@
 ## Automatizálás
 ### [Agile fejlesztés](../app-service-web/app-service-agile-software-development.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Az Azure Resource Manager üzembe helyezése](../app-service-web/app-service-deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Web és GitHub](../app-service-web/app-service-web-arm-from-github-provision.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Web és SQL](../app-service-web/app-service-web-arm-with-sql-database-provision.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [MSDeploy egyéni állomásnévvel és SSL-tanúsítvánnyal](../app-service-web/app-service-web-arm-with-msdeploy-provision.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### PowerShell
 #### [Biztonsági mentés és helyreállítás automatizálása](../app-service/app-service-powershell-backup.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Alkalmazásklónozás](../app-service-web/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [SSL-tanúsítványok kötése](../app-service-web/app-service-web-app-powershell-ssl-binding.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [Az Azure Resource Manager és a PowerShell együttes használata](../app-service-web/app-service-web-app-azure-resource-manager-powershell.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-### [Alkalmazások kezelése az Azure Automation használatával](../app-service-web/automation-manage-web-app.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## Integrálás
-### [Helyszíni erőforrások elérése hibrid kapcsolatokkal](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [E-mail küldése a SendGrid és az Azure használatával](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [Exportálás a PowerAppsbe és a Microsoft Flow-ba](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
@@ -154,8 +144,6 @@
 
 # Erőforrások
 ## [App Service – ajánlott eljárások](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-## [App Service-referencia](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-## [Azure Portal](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [A WebJobs-erőforrások listája](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

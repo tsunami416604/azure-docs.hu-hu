@@ -5,10 +5,10 @@
 ## [SDK-k és eszközök](../../index.md#pivot=sdkstools)
 
 # Első lépések
-## [Web Apps](../../app-service-web/web-sites-dotnet-get-started.md)
+## [Web Apps](../../app-service-web/app-service-web-get-started-html.md)
 ## Virtual machines (Virtuális gépek)
-### [Linux](../../virtual-machines/virtual-machines-linux-quick-create-portal.md)
-### [Windows](../../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+### [Linux](../../virtual-machines/linux/quick-create-portal.md)
+### [Windows](../../virtual-machines/windows/quick-create-portal.md)
 ## [Kiszolgáló nélküli](../../azure-functions/functions-create-first-azure-function.md)
 ## Mikroszolgáltatások
 ### [Service Fabric](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)
@@ -16,16 +16,16 @@
 
 # oktatóanyagokat
 ## Webalkalmazás létrehozása és üzembe helyezése
-### [ASP.NET](../../app-service-web/web-sites-dotnet-get-started.md)
-### [Java](../../app-service-web/web-sites-python-ptvs-django-mysql.md)
-### [Node.js](../../app-service-web/app-service-web-nodejs-get-started.md)
-### [PHP](../../app-service-web/app-service-web-php-get-started.md)
-### [Python](../../app-service-web/web-sites-python-ptvs-django-mysql.md)
+### [ASP.NET](../../app-service-web/app-service-web-get-started-dotnet.md)
+### [Java](../../app-service-web/app-service-web-get-started-java.md)
+### [Node.js](../../app-service-web/app-service-web-get-started-nodejs.md)
+### [PHP](../../app-service-web/app-service-web-get-started-php.md)
+### [Python](../../app-service-web/app-service-web-get-started-python.md)
 ## Összetett virtuálisgép-sablonok üzembe helyezése
 ### [Linux](../../virtual-machines/virtual-machines-linux-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows](../../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Azure-kapcsolattal rendelkező függvény létrehozása](../../azure-functions/functions-create-an-azure-connected-function.md)
-## [Dockerrel üzembe helyezett webalkalmazás Linuxon](../../app-service-web/app-service-linux-using-custom-docker-image.md) 
+## [Dockerrel üzembe helyezett webalkalmazás Linuxon](../../app-service/containers/quickstart-custom-docker-image.md) 
 
 # Példák
 ## Azure CLI
@@ -48,12 +48,11 @@
 
 # Útmutatók
 ## Felkészülés
-### [Webalkalmazás-architektúrák](../../guidance/guidance-ra-app-service.md)
-### [Virtuálisgép-architektúrák](../../guidance/guidance-ra-compute.md)
-### [Csatlakozás helyszíni hálózatokhoz](../../guidance/guidance-ra-hybrid-networking.md)
+### [Webalkalmazás-architektúrák](/azure/architecture/reference-architectures/managed-web-app/)
+### [Virtuálisgép-architektúrák](/azure/architecture/reference-architectures/virtual-machines-windows/)
+### [Csatlakozás helyszíni hálózatokhoz](/azure/architecture/reference-architectures/hybrid-networking/)
 ### [Mikroszolgáltatások mintái/forgatókönyvei](../../service-fabric/service-fabric-patterns-and-scenarios.md)
 ## Fejlesztés
-### [WordPress-alkalmazások](../../app-service-web/web-sites-php-web-site-gallery.md)
 ### [Linux rendszerű virtuális gép](../../virtual-machines/virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows rendszerű virtuális gép](../../virtual-machines/virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Kiszolgáló nélküli alkalmazások](../../azure-functions/functions-reference.md)
@@ -67,8 +66,8 @@
 ### [Blobok](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 ### [Fájlmegosztások](../../storage/files/storage-dotnet-how-to-use-files.md)
 ### [Kulcs-érték párok](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-### [JSON-dokumentumok](../../documentdb/documentdb-get-started.md)
-### [Kapcsolati táblák](../../sql-database/sql-database-get-started.md)
+### [JSON-dokumentumok](../../cosmos-db/documentdb-get-started.md)
+### [Kapcsolati táblák](../../sql-database/sql-database-get-started-portal.md)
 ### [Üzenetsorok](../../storage/queues/storage-dotnet-how-to-use-queues.md)
 
 ## Méretezés
@@ -77,7 +76,7 @@
 ### [Mikroszolgáltatások alkalmazásai](../../service-fabric/service-fabric-concepts-scalability.md)
 
 ## Biztonságos
-### [Web- és mobilalkalmazások](../../app-service-web/web-sites-security.md)
+### [Web- és mobilalkalmazások](../../app-service-web/app-service-web-tutorial-custom-ssl.md)
 
 ## Biztonsági mentés
 ### [Web- és mobilalkalmazások](../../app-service-web/web-sites-backup.md)
@@ -85,7 +84,7 @@
 
 ## Figyelés
 ### [Web- és mobilalkalmazások](../../app-service-web/web-sites-enable-diagnostic-log.md)
-### [Linux rendszerű virtuális gép](../../virtual-machines/virtual-machines-linux-vm-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json.md)
+### [Linux rendszerű virtuális gép](../../virtual-machines/linux/tutorial-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [Windows rendszerű virtuális gép](../../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ### [Mikroszolgáltatások](../../service-fabric/service-fabric-diagnostics-overview.md)
 ### [Számlázási értesítések](../../billing/billing-set-up-alerts.md)
