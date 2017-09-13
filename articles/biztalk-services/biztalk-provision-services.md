@@ -152,7 +152,7 @@ A **Manage** (Felügyelet) gombra kattintva megnyitja a hozzáférés-vezérlés
 A hozzáférés-vezérlési szolgáltatásidentitás olyan hitelesítő adatok készlete, amelyekkel az alkalmazások vagy ügyfelek közvetlenül hitelesíthetnek a hozzáférés-vezérléssel, és tokent kaphatnak.
 
 > [!IMPORTANT]
-> A BizTalk Services-szolgáltatás a **Tulajdonost** használja az alapértelmezett szolgáltatásidentitáshoz és a **Jelszó** értékéhez. Ha a Szimmetrikus kulcs értéket használja a Jelszó érték helyett, a következő hiba fordulhat elő.<br/><br/>*Nem lehet kapcsolódni a hozzáférés-vezérlési felügyeleti szolgáltatásfiókhoz a megadott hitelesítő adatokkal*
+> A BizTalk Services-szolgáltatás a **Tulajdonost** használja az alapértelmezett szolgáltatásidentitáshoz és a **Jelszó** értékéhez. Ha a Szimmetrikus kulcs értéket használja a Jelszó érték helyett, a következő hiba fordulhat elő.<br/><br/>*Could not connect to the Access Control Management Service account with the specified credentials*
 > 
 > 
 
