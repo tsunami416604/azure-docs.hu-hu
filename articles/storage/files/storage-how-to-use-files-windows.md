@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 67b8e2e0039c8bc63f50f177e3c0d18b07df45e6
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: a8e4900bee81763300d976f0c966d7d20662ca27
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -27,16 +27,19 @@ Az [Azure-fájlmegosztás](../storage-dotnet-how-to-use-files.md) a Microsoft k�
 
 Ha egy Azure-fájlmegosztást az üzemeltető Azure-régión kívül kíván csatlakoztatni, például a helyszínen vagy más Azure-régióban, az operációs rendszernek támogatnia kell az SMB 3.0-s verziót. 
 
-Az Azure-fájlmegosztás az operációs rendszer verziójától függően egy helyszíni vagy Azure-beli virtuális gépen lévő Windows-gépen csatlakoztatható. Az alábbi tábla a következőket mutatja be: 
+Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy helyszínen futó Windows-telepítésekre. Az alábbi táblázatban látható, hogy melyik operációsrendszer-verzió melyik környezetekben támogatja a fájlmegosztások csatlakoztatását:
 
-| Windows-verzió        | SMB-verzió |Azure-beli virtuális gépen csatlakoztatható|Helyszínen csatlakoztatható|
-|------------------------|-------------|---------------------|---------------------|
-| Windows 7              | SMB 2.1     | Igen                 | Nem                  |
-| Windows Server 2008 R2 | SMB 2.1     | Igen                 | Nem                  |
-| Windows 8              | SMB 3.0     | Igen                 | Igen                 |
-| Windows Server 2012    | SMB 3.0     | Igen                 | Igen                 |
-| Windows Server 2012 R2 | SMB 3.0     | Igen                 | Igen                 |
-| Windows 10             | SMB 3.0     | Igen                 | Igen                 |
+| Windows-verzió        | SMB-verzió | Azure-beli virtuális gépeken csatlakoztatható | Helyszínen csatlakoztatható |
+|------------------------|-------------|-----------------------|----------------------|
+| Windows 10<sup>1</sup>  | SMB 3.0 | Igen | Igen |
+| Windows Server 2016    | SMB 3.0     | Igen                   | Igen                  |
+| Windows 8.1            | SMB 3.0     | Igen                   | Igen                  |
+| Windows Server 2012 R2 | SMB 3.0     | Igen                   | Igen                  |
+| Windows Server 2012    | SMB 3.0     | Igen                   | Igen                  |
+| Windows 7              | SMB 2.1     | Igen                   | Nem                   |
+| Windows Server 2008 R2 | SMB 2.1     | Igen                   | Nem                   |
+
+<sup>1</sup>A Windows 10 1507-es, 1511-es, 1607-es és 1703-as verziói
 
 > [!Note]  
 > Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja.

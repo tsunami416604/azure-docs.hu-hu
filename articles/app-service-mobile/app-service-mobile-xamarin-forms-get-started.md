@@ -36,7 +36,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Visual Studio és Xamarin. További információk: [A Visual Studio és a Xamarin beállítása és telepítése](https://msdn.microsoft.com/library/mt613162.aspx) oldal.
 
-* Mac számítógép 7.0 vagy-s újabb verziójú Xcode-dal és Xamarin Studio Communityvel. További információk: [A Visual Studio és a Xamarin beállítása és telepítése[ és ](https://msdn.microsoft.com/library/mt488770.aspx)Beállítás, telepítés és ellenőrzés Mac felhasználók részére](https://msdn.microsoft.com/library/mt613162.aspx) (MSDN).
+* Mac számítógép 7.0 vagy-s újabb verziójú Xcode-dal és Xamarin Studio Communityvel. További információk: [A Visual Studio és a Xamarin beállítása és telepítése](https://msdn.microsoft.com/library/mt613162.aspx) és [Beállítás, telepítés és ellenőrzés Mac felhasználók részére](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Új Mobile Apps-háttéralkalmazás létrehozása
 

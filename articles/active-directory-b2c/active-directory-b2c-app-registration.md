@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 3d4fe2fa10d848c8b29e4d22d284c0d378f07ae0
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 0e91d249116d39675d6e4bdf429442b6bc8af391
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Az alkalmazás regisztrációja
@@ -31,6 +31,8 @@ A felhasználói regisztrációt és bejelentkezést elfogadó alkalmazás létr
 
 Az Azure Portal Azure AD B2C paneljén létrehozott alkalmazásokat ugyanarról a helyről kell kezelnie. Ha a B2C-alkalmazásokat a PowerShell vagy egy másik portál használatával szerkeszti, a rendszer nem támogatja többé az alkalmazásokat, és nem fognak működni az Azure AD B2C-vel. További részletek a [hibás alkalmazások](#faulted-apps) szakaszban. 
 
+A jelen cikkben bemutatott példák segítségével megismerkedhet a minták használatával. A következő cikkekből többet is megtudhat ezekről a mintákról.
+
 ## <a name="navigate-to-b2c-settings"></a>Navigálás a B2C beállításaihoz
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a B2C-bérlő globális rendszergazdájaként. 
@@ -39,13 +41,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a B2C-bérlő glo
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](../../includes/active-directory-b2c-portal-navigate-b2c-service.md)]
 
-Válassza ki a következő lépéseket a regisztrálandó alkalmazás típusától függően:
+## <a name="choose-next-steps-based-on-your-application-type"></a>Válassza ki a következő lépéseket az alkalmazás típusától függően
 
 * [Webalkalmazás regisztrációja](#register-a-web-app)
 * [Webes API regisztrálása](#register-a-web-api)
 * [Mobil vagy natív alkalmazás regisztrálása](#register-a-mobile-or-native-app)
  
-## <a name="register-a-web-app"></a>Webalkalmazás regisztrációja
+### <a name="register-a-web-app"></a>Webalkalmazás regisztrációja
 
 [!INCLUDE [active-directory-b2c-register-web-app](../../includes/active-directory-b2c-register-web-app.md)]
 
@@ -59,7 +61,7 @@ Ha webalkalmazása az Azure AD B2C által védett webes API-t hív meg, kövesse
 
 [Ugrás a **következő lépésekre**](#next-steps)
 
-## <a name="register-a-web-api"></a>Webes API regisztrálása
+### <a name="register-a-web-api"></a>Webes API regisztrálása
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
@@ -67,7 +69,7 @@ Szükség szerint több hatókört is felvehet a **Közzétett hatókörök** le
 
 [Ugrás a **következő lépésekre**](#next-steps)
 
-## <a name="register-a-mobile-or-native-app"></a>Mobil vagy natív alkalmazás regisztrálása
+### <a name="register-a-mobile-or-native-app"></a>Mobil vagy natív alkalmazás regisztrálása
 
 [!INCLUDE [active-directory-b2c-register-mobile-native-app](../../includes/active-directory-b2c-register-mobile-native-app.md)]
 

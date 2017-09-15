@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/27/2017
+ms.date: 09/03/2017
 ms.topic: get-started-article
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 49086b51e2db1aebed45746306ae14b6f1feb631
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: d07b2354906994ef7842a64d9f58bcbcc18f96e7
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Az első Azure Resource Manager-sablon létrehozása ás üzembe helyezése
 Ez a témakör bemutatja azon lépéseket, amelyekkel elkészítheti az első Resource Manager-sablonját. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md). Ha már rendelkezik erőforrásokkal, és azokhoz kíván sablont használni, lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
 
-A sablonok létrehozásához és átalakításához JSON-szerkesztő szükséges. A [Visual Studio Code](https://code.visualstudio.com/) egy könnyen használható, nyílt forráskódú, platformfüggetlen kódszerkesztő. A Resource Manager-sablonok létrehozásához kifejezetten javasoljuk a Visual Studio Code használatát. Ez a témakör a VS Code használatát feltételezi, de használhat egyéb JSON-szerkesztőt is (pl. Visual Studio).
+A sablonok létrehozásához és átalakításához JSON-szerkesztő szükséges. A [Visual Studio Code](https://code.visualstudio.com/) egy könnyen használható, nyílt forráskódú, platformfüggetlen kódszerkesztő. A Resource Manager-sablonok létrehozásához kifejezetten javasoljuk a Visual Studio Code használatát. A cikk a VS Code használatát feltételezi. Ha más JSON-szerkesztője van (például a Visual Studio), azt is használhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -216,7 +216,7 @@ Figyelje meg, hogy a tárfiók neve megváltozott a hozzáadott változóra. Az 
 
 Mentse a fájlt. 
 
-A cikkben ismertetett lépések végrehajtása után a sablon a következőképpen néz ki:
+A sablon most a következőképpen néz ki:
 
 ```json
 {
@@ -289,6 +289,141 @@ A Cloud Shell esetén töltse fel a módosított sablont a fájlmegosztásba. Í
 az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
+## <a name="use-autocomplete"></a>Az automatikus kiegészítés használata
+
+Eddig a sablonon végzett munka csak a cikkben szereplő JSON másolásából és beillesztéséből állt. Amikor azonban saját sablonokat fejleszt, az erőforrástípushoz elérhető tulajdonságokat és értékeket szeretné megkeresni és megadni. A VS Code beolvassa az erőforrástípus sémáját és tulajdonságokat és értékeket javasol. Az automatikus kiegészítés szolgáltatás megtekintéséhez lépjen a sablon tulajdonságok eleméhez, és adjon hozzá egy új sort. Írjon be egy idézőjelet, és figyelje meg, hogy a VS Code azonnal a tulajdonságok elemben elérhető neveket javasol.
+
+![Elérhető tulajdonságok megjelenítése](./media/resource-manager-create-first-template/show-properties.png)
+
+Válassza az **titkosítás** lehetőséget. Írjon be egy kettőspontot (:), és a VS Code új objektum hozzáadását javasolja.
+
+![Objektum hozzáadása](./media/resource-manager-create-first-template/add-object.png)
+
+Nyomja le a Tab vagy az Enter billentyűt az objektum hozzáadásához.
+
+Ismét írjon be egy idézőjelet, és figyelje meg, hogy a VS Code most a titkosításhoz elérhető tulajdonságokat javasol.
+
+![Titkosítás tulajdonságainak megjelenítése](./media/resource-manager-create-first-template/show-encryption-properties.png)
+
+Válassza a **szolgáltatások** lehetőséget, és folytassa az értékek VS Code-bővítmények alapján végzett hozzáadását, amíg el nem éri a következőket:
+
+```json
+"properties": {
+    "encryption":{
+        "services":{
+            "blob":{
+              "enabled":true
+            }
+        }
+    }
+}
+```
+
+Engedélyezte a tárfiók blob titkosítását. A VS Code azonban problémát észlelt. Figyelje meg, hogy a titkosítás figyelmeztetéssel rendelkezik.
+
+![Titkosítás figyelmeztetése](./media/resource-manager-create-first-template/encryption-warning.png)
+
+A figyelmeztetés megtekintéséhez helyezze a mutatót a zöld sor fölé.
+
+![Hiányzó tulajdonság](./media/resource-manager-create-first-template/missing-property.png)
+
+Látja, hogy a titkosítás eleme keySource tulajdonságot igényel. Adjon egy vesszőt a szolgáltatások objektum után, és adja hozzá a keySource tulajdonságot. A VS Code a **"Microsoft.Storage"** értéket javasolja érvényes értékként. Amikor végzett, a tulajdonságok elem a következő:
+
+```json
+"properties": {
+    "encryption":{
+        "services":{
+            "blob":{
+              "enabled":true
+            }
+        },
+        "keySource":"Microsoft.Storage"
+    }
+}
+```
+
+A végső sablon a következő:
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageSKU": {
+      "type": "string",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_ZRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Premium_LRS"
+      ],
+      "defaultValue": "Standard_LRS",
+      "metadata": {
+        "description": "The type of replication to use for the storage account."
+      }
+    },   
+    "storageNamePrefix": {
+      "type": "string",
+      "maxLength": 11,
+      "defaultValue": "storage",
+      "metadata": {
+        "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+      }
+    }
+  },
+  "variables": {
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "name": "[variables('storageName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "sku": {
+        "name": "[parameters('storageSKU')]"
+      },
+      "kind": "Storage",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {
+        "encryption":{
+          "services":{
+            "blob":{
+              "enabled":true
+            }
+          },
+          "keySource":"Microsoft.Storage"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+## <a name="deploy-encrypted-storage"></a>Titkosított tárterület üzembe helyezése
+
+Ismét helyezze üzembe a sablont, és adjon meg egy új nevet a tárfiókhoz.
+
+PowerShell esetén használja az alábbi parancsot:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json -storageNamePrefix storesecure
+```
+
+Azure CLI esetén használja az alábbi parancsot:
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
+```
+
+A Cloud Shell esetén töltse fel a módosított sablont a fájlmegosztásba. Írja felül a meglévő fájlt. Ezután használja az alábbi parancsot:
+
+```azurecli
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
+```
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
@@ -306,6 +441,7 @@ az group delete --name examplegroup
 ```
 
 ## <a name="next-steps"></a>Következő lépések
+* Ha több segítségre van szüksége a sablonok fejlesztéséhez, telepíthet egy VS Code-bővítményt. További információkért lásd: [Azure Resource Manager-sablon létrehozása Visual Studio Code-bővítménnyel](resource-manager-vscode-extension.md)
 * A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * A tárfiókok tulajdonságaival kapcsolatos információkért lásd a [tárfióksablonok referenciáját](/azure/templates/microsoft.storage/storageaccounts).
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).

@@ -13,15 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/03/2017
+ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 8b2fbc230faf01797109114d6ebdffe5ec50e48b
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: bdd0fd0d1919f61fe586f495adadaf4eabde2dae
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Mik azok a virtuálisgép-méretezési csoportok az Azure-ban?
@@ -123,7 +122,7 @@ Ez a szakasz a méretezési csoportok használatának néhány tipikus esetét s
    A megközelítést bemutató [példában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) az [Azure Container Service](https://azure.microsoft.com/services/container-service/) egy tárolóvezénylővel rendelkező méretezési csoportokon alapuló fürtöt helyez üzembe.
 
 ## <a name="scale-set-performance-and-scale-guidance"></a>A virtuálisgép-méretezési csoportok teljesítményével és skálázásával kapcsolatos útmutató
-* A méretezési csoportok legfeljebb 1000 virtuális gépet támogatnak. Ha a saját VM-rendszerképeit hozza létre és tölti fel, a korlát 100. A nagy méretezési csoportok használatánál megfontolandó szempontokról a [nagyméretű virtuálisgép-méretezési csoportok használatát](virtual-machine-scale-sets-placement-groups.md) ismertető cikkben olvashat.
+* A méretezési csoportok legfeljebb 1000 virtuális gépet támogatnak. Ha a saját VM-rendszerképeit hozza létre és tölti fel, a korlát 300. A nagy méretezési csoportok használatánál megfontolandó szempontokról a [nagyméretű virtuálisgép-méretezési csoportok használatát](virtual-machine-scale-sets-placement-groups.md) ismertető cikkben olvashat.
 * A méretezési csoporthoz nem szükséges előzetesen Azure tárfiókot létrehozni. A méretezési csoportok támogatják az Azure Managed Disks használatát, amely megszünteti a tárfiókonkénti lemezek számával kapcsolatos teljesítményproblémákat. További információ: [Azure virtuálisgép-méretezési csoportok és felügyelt lemezek](virtual-machine-scale-sets-managed-disks.md).
 * Érdemes megfontolni az Azure Prémium Storage használatát az Azure Storage helyett a gyorsabb és kiszámíthatóbb VM-üzembehelyezési idők és a jobb I/O-teljesítmény érdekében.
 * A létrehozható virtuális gépek számának a telepítést végrehajtó régióban érvényes magkvóta szab határt. Előfordulhat, hogy kapcsolatba kell lépnie az ügyfélszolgálattal a számítási kvótahatár további növelése érdekében, még akkor is, ha az Azure Cloud Serviceshez használt magok esetében magas a határérték. A kvóta lekérdezéséhez futtathatja a következő Azure CLI-parancsot: `azure vm list-usage`. Vagy futtassa ezt a PowerShell-parancsot: `Get-AzureRmVMUsage`.
@@ -131,7 +130,7 @@ Ez a szakasz a méretezési csoportok használatának néhány tipikus esetét s
 ## <a name="frequently-asked-questions-for-scale-sets"></a>A méretezési csoportokkal kapcsolatos gyakori kérdések
 **K.** Hány virtuális gépet tartalmazhat egy méretezési csoport?
 
-**V.** A méretezési csoport 0–1000, platformrendszerképen alapuló virtuális gépet, vagy 0–100, egyéni rendszerképen alapuló virtuális gépet tartalmazhat. 
+**V.** A méretezési csoport 0–1000, platformrendszerképen alapuló virtuális gépet, vagy 0–300, egyéni rendszerképen alapuló virtuális gépet tartalmazhat. 
 
 **K.** Támogatott az adatlemezek használata a méretezési csoportokon belül?
 

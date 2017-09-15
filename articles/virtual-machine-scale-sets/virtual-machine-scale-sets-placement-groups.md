@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/7/2017
+ms.date: 9/1/2017
 ms.author: guybo
 ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
-ms.openlocfilehash: 9e9eae1623e55c1c05e97aa0b836819ce5dc16f9
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 12303e4283de3d179590e599d4d2fe8f14167eda
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
@@ -37,7 +37,7 @@ Annak eldöntéséhez, hogy az alkalmazás hatékony tudja-e használni a nagym�
 
 - A nagyméretű méretezési csoportokhoz az Azure Managed Disks szükséges. Azokhoz a méretezési csoportokhoz, amelyeket nem a Managed Disksszel hoztak létre, több tárfiókra van szükség (egyre minden 20 virtuális géphez). A nagyméretű méretezési csoportokat arra tervezték, hogy kizárólag a Managed Disksszel működjenek annak érdekében, hogy csökkenjen a tárolókezelés munkaterhelése, és hogy megszűnjön a tárfiókhoz tartozó előfizetés-korlát elérésének veszélye. Ha nem használja a Managed Diskst, a méretezési csoport legfeljebb 100 virtuális gép méretű lehet.
 - Az Azure Marketplace rendszerképekből létrehozott méretezési csoportok akár 1000 virtuális gépig skálázhatók.
-- Az egyéni rendszerképekből (olyan virtuálisgép-rendszerképek, amelyeket a felhasználó maga hoz létre és tölt fel) létrehozott méretezési csoportok akár 100 virtuális gépig skálázhatók.
+- Az egyéni rendszerképekből (olyan virtuálisgép-rendszerképek, amelyeket a felhasználó maga hoz létre és tölt fel) létrehozott méretezési csoportok akár 300 virtuális gépig skálázhatók.
 - A 4. rétegbeli terheléselosztás az Azure Load Balancerrel még nem támogatott a több elhelyezési csoportból álló méretezési csoportok esetén. Ha az Azure Load Balancert szeretné használni, győződjön meg róla, hogy a méretezési csoport egyetlen elhelyezési csoport használatára van konfigurálva, ami az alapértelmezett beállítás is.
 - A 7. rétegbeli terheléselosztás az Azure Application Gatewayjel minden méretezési csoporthoz támogatott.
 - A méretezési csoport egyetlen alhálózattal van meghatározva – győződjön meg róla, hogy az alhálózat megfelelő méretű névtérrel rendelkezik minden virtuális géphez. A méretezési csoport alapértelmezés szerint a szükségesnél több erőforrást hoz létre (további virtuális gépeket hoz létre az üzembe helyezés során vagy a felskálázáskor, amelyek nem járnak többletköltséggel), hogy javítsa az üzembe helyezés megbízhatóságát és teljesítményét. Lehetővé teszi egy címtér számára, hogy 20%-kal nagyobb legyen, mint a virtuális gépek száma, amelyekhez skálázni szeretne.

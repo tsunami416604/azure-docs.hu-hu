@@ -24,6 +24,10 @@ Nem. A virtuális hálózatok lehetnek azonos vagy eltérő Azure-régiókban (h
 
 Nem.
 
+### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>Összekapcsolhatok egymással különböző Azure-példányokban található virtuális hálózatokat? 
+
+Nem. A virtuális hálózatok közötti kapcsolat az azonos Azure-példányon belüli virtuális hálózatok csatlakoztatását támogatja. Például nem hozható létre kapcsolat nyilvános Azure- és kínai/német/az Amerikai Egyesült Államok kormánya által használt Azure-példányok között. Ezekben az esetekben érdemes lehet inkább helyek közötti VPN-kapcsolatot használni.
+
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>A virtuális hálózatok közötti kapcsolatot használhatom többhelyes kapcsolatokhoz?
 
 Igen. A virtuális hálózati kapcsolat használható többhelyes virtuális VPN-ekkel együtt.

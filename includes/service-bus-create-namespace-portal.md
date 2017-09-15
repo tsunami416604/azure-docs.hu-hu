@@ -14,6 +14,7 @@ Névtér létrehozása:
 8. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
 
 ### <a name="obtain-the-management-credentials"></a>A felügyeleti hitelesítő adatok beszerzése
+Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkód (SAS) szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amely teljes hozzáférést biztosít a névtér minden területéhez. A normál küldők és fogadók számára kialakítható, korlátozottabb jogokat biztosító további szabályok létrehozásával kapcsolatban lásd: [Service Bus-hitelesítés és -engedélyezés](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md). A kezdeti szabály másolásához kövesse az alábbi lépéseket: 
 
 1. A névterek listájában kattintson az újonnan létrehozott névtér nevére.
 2. A névtér panelen kattintson a **Megosztott elérési házirendek** elemre.

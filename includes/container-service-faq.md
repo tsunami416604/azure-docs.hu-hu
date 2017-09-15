@@ -24,6 +24,8 @@ Az Azure Container Service egy SLA-alapú Azure-szolgáltatás, amely az Azure P
 
 Az [ACS Engine](http://github.com/Azure/acs-engine) egy nyílt forráskódú projekt, amely lehetővé teszi a kiemelt felhasználók számára a fürtkonfiguráció egyéni beállítását minden szinten. Az infrastruktúra és a szoftverek konfigurációjának módosíthatósága azzal jár, hogy nem kínálunk SLA-t az ACS Engine esetén. A támogatás kezelése a GitHubon található nyílt forráskódú projekt segítségével történik a hivatalos Microsoft-csatornák helyett. 
 
+További részleteket a [tárolókra vonatkozó támogatási szabályzatban](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers) talál.
+
 ## <a name="cluster-management"></a>Fürtkezelés
 
 ### <a name="how-do-i-create-ssh-keys-for-my-cluster"></a>Hogyan hozhatok létre SSH-kulcsokat a fürtöm számára?

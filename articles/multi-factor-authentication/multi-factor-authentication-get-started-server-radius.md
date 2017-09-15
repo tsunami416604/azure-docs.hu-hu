@@ -3,7 +3,7 @@ title: "RADIUS-hitelesítés és Azure MFA-kiszolgáló | Microsoft Docs"
 description: "Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a RADIUS-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez."
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: f4ba0fb2-2be9-477e-9bea-04c7340c8bce
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/25/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017, it-pro
 ms.translationtype: HT

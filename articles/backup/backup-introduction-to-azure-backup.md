@@ -17,10 +17,10 @@ ms.date: 8/11/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5a6aad672ddaa43f993daf4cf48975e91d2657da
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 699ec578832e894b5bfc0cfad35528eac377c4ff
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
@@ -78,6 +78,7 @@ A következő táblázat az Azure Backup használatával védhető adatokat és 
 | Fájlok és mappák |Windows rendszerű számítógép |<p>[Az Azure Backup ügynöke](backup-configure-vault.md),</p> <p>[System Center DPM](backup-azure-dpm-introduction.md) (+ az Azure Backup ügynöke),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (tartalmazza az Azure Backup ügynökét)</p> |
 | Hyper-V virtuális gép (Windows) |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ az Azure Backup ügynöke),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (tartalmazza az Azure Backup ügynökét)</p> |
 | Hyper-V virtuális gép (Linux) |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ az Azure Backup ügynöke),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (tartalmazza az Azure Backup ügynökét)</p> |
+| VMware virtuális gép |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ az Azure Backup ügynöke),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (tartalmazza az Azure Backup ügynökét)</p> |
 | Microsoft SQL Server |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ az Azure Backup ügynöke),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (tartalmazza az Azure Backup ügynökét)</p> |
 | Microsoft SharePoint |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ az Azure Backup ügynöke),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (tartalmazza az Azure Backup ügynökét)</p> |
 | Microsoft Exchange |Windows Server |<p>[System Center DPM](backup-azure-backup-sql.md) (+ az Azure Backup ügynöke),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (tartalmazza az Azure Backup ügynökét)</p> |

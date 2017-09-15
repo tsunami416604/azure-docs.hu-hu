@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/18/2017
+ms.date: 08/31/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 54f137b26bf1c8f966e8ef110dcf3d25abf7ac5b
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 3269af400d091435af56b0093abbb839d8dd7068
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -170,8 +170,7 @@ Az Automation bevezetésének ajánlott módja a Marketplace Automatizálás és
    - Adja meg az új **OMS-munkaterület** nevét.
    - A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
    - Az **Erőforráscsoport** területen létrehozhat egy erőforráscsoportot, vagy kiválaszthat egy meglévőt.  
-   - Válasszon ki egy **helyet**.  Jelenleg csak a következő helyek közül választhat: **Délkelet-Ausztrália**, **USA keleti régiója**, **Délkelet-Ázsia**, **USA nyugati középső régiója** és **Nyugat-Európa**.
-   - Válasszon egy tarifacsomagot a **Tarifacsomag** területen.  A megoldás két tarifacsomagban érhető el: ingyenes és csomópontalapú (OMS-) csomagban.  Az ingyenes csomagnál korlátozva van a naponta összegyűjtött adatok mennyisége, a megőrzési időtartam és a runbook-feladatok futásideje (perc).  A csomópontalapú (OMS) csomagnál a naponta összegyűjtött adatok mennyisége nincs korlátozva.  
+   - Válasszon ki egy **helyet**.  További információkért tekintse meg, hogy [mely régiókban érhető el az Azure Automation](https://azure.microsoft.com/regions/services/).  A megoldások két tarifacsomagban érhetők el: ingyenes és csomópontalapú (OMS-) csomagban.  Az ingyenes csomagnál korlátozva van a naponta összegyűjtött adatok mennyisége, a megőrzési időtartam és a runbook-feladatok futásideje (perc).  A csomópontalapú (OMS) csomagnál a naponta összegyűjtött adatok mennyisége nincs korlátozva.  
    - Válassza az **Automation-fiók** elemet.  Új OMS-munkaterület létrehozásakor egy hozzá társított új Automation-fiókot is létre kell hoznia, valamint meg kell adnia az Azure-előfizetését, az erőforráscsoportot és a régiót.  Kiválaszthatja az **Automation-fiók létrehozása** lehetőséget, és az **Automation-fiók** panelen megadhatja a következő adatokat: 
   - A **Név** mezőbe írja be az Automation-fiók nevét.
 

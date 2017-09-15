@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/23/2017
+ms.date: 08/30/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: ebc5fd442c1f0dd9841c1423c174a073d286911a
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: df847c370817c0702163b5e22c35c7e4f1d3cfee
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
@@ -54,7 +54,7 @@ Győződjön meg róla, hogy az Azure Multi-Factor Authenticationhöz használt 
 | Az Azure Multi-Factor Authentication-kiszolgáló követelményei | Leírás |
 |:--- |:--- |
 | Hardver |<li>200 MB merevlemez-terület</li><li>x32-es vagy x64-es verzió futtatására képes processzor</li><li>Legalább 1 GB RAM</li> |
-| Szoftver |<li>Windows Server 2008 vagy újabb, ha a gazdagép egy kiszolgálói operációs rendszer</li><li>Windows 7 vagy újabb, ha a gazdagép egy ügyfél operációs rendszer</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
+| Szoftver |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, minden kiadás</li><li>Windows 8, minden kiadás</li><li>Windows 7, minden kiadás</li><li>Windows Vista, minden kiadás, SP1, SP2</li><li>Microsoft .NET-keretrendszer 4.0</li><li>IIS 7.0 vagy újabb a felhasználói portál vagy a web service SDK telepítésekor</li> |
 
 ### <a name="azure-mfa-server-components"></a>Az Azure MFA-kiszolgáló összetevői
 
