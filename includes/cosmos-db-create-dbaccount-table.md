@@ -1,31 +1,31 @@
-1. Egy új ablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A bal oldali menüben kattintson az **Új**, az **Adatbázisok**, majd az **Azure Cosmos DB** elemre, végül a **Létrehozás** parancsra.
+1. In a new window, sign in to the [Azure portal](https://portal.azure.com/).
+2. In the left menu, click **New**, click **Databases**, and then under **Azure Cosmos DB**, click **Create**.
    
-   ![Képernyőfelvétel az Azure portálról, a További szolgáltatások és az Azure Cosmos DB menüpont kiemelve](./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png)
+   ![Screen shot of the Azure portal, highlighting More Services, and Azure Cosmos DB](./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png)
 
-3. Az **Új fiók** panelen adja meg az Azure Cosmos DB-fiók kívánt beállításait. 
+3. In the **New account** blade, specify the desired configuration for the Azure Cosmos DB account. 
 
-    Az Azure Cosmos DB használata esetén négy programozási modell közül választhat: Gremlin (gráf), MongoDB, SQL (DocumentDB) és a tábla (kulcs-érték). 
+    With Azure Cosmos DB, you can choose one of four programming models: Gremlin (graph), MongoDB, SQL (DocumentDB), and Table (key-value). 
     
-    Ebben a rövid útmutatóban a Table API használatával fogunk programozni, tehát a **Table (kulcs-érték)** lehetőséget fogja választani az űrlap kitöltésekor. Ha azonban közösségi média gráfadataival, a katalógusalkalmazásból származó dokumentumadatokkal vagy MongoDB-alkalmazásból áttelepített adatokkal dolgozik, vegye figyelembe, hogy az Azure Cosmos DB magas rendelkezésre állású, globálisan elosztott adatbázis-szolgáltatási platformot tud biztosítani az összes alapvető fontosságú alkalmazáshoz.
+    In this quick start we'll be programming against the Table API so you'll choose **Table (key-value)** as you fill out the form. But if you have graph data for a social media app, document data from a catalog app, or data migrated from a MongoDB app, realize that Azure Cosmos DB can provide a highly available, globally-distributed database service platform for all your mission-critical applications.
 
-    Adja meg az adatokat az Új fiók panelen a képernyőfelvételen látható információk alapján. A fiók beállítása során egyedi értékeket fog választani, vagyis az értékek nem fognak pontosan egyezni a képernyőképen szereplő adatokkal. 
+    Fill out the New account blade using the information in the screenshot as a guide. You will choose unique values as you set up your account so your values will not match the screenshot exactly. 
  
-    ![Képernyőfelvétel az Új Azure Cosmos DB panelről](./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-2.png)
+    ![Screen shot of the New Azure Cosmos DB blade](./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-2.png)
 
-    Beállítás|Ajánlott érték|Leírás
+    Setting|Suggested value|Description
     ---|---|---
-    ID (Azonosító)|*Egyedi érték*|Az Azure Cosmos DB-fiók azonosításához választott egyedi név. A rendszer a *documents.azure.com* utótaggal egészíti ki a megadott azonosítót az URI létrehozásához, ezért válasszon egyedi, de felismerhető azonosítót. Az azonosító csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet.
-    API|Table (kulcs-érték)|Ebben a cikkben a [Table API](../articles/cosmos-db/table-introduction.md) használatával fogunk programozni.|
-    Előfizetés|*Az Ön előfizetése*|Az Azure Cosmos DB-fiókhoz használni kívánt Azure-előfizetés. 
-    Erőforráscsoport|*Megegyezik az azonosítóval*|A fiók új erőforráscsoport-neve. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet. 
-    Hely|*A felhasználókhoz legközelebb eső régió*|Az a földrajzi hely, ahol az Azure Cosmos DB-fiókot üzemeltetni fogja. Válassza ki a felhasználókhoz legközelebb lévő helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz.   
+    ID|*Unique value*|A unique name you choose to identify the Azure Cosmos DB account. *documents.azure.com* is appended to the ID you provide to create your URI, so use a unique but identifiable ID. The ID may contain only lowercase letters, numbers, and the '-' character, and must be between 3 and 50 characters.
+    API|Table (key-value)|We'll be programming against the [Table API](../articles/cosmos-db/table-introduction.md) later in this article.|
+    Subscription|*Your subscription*|The Azure subscription that you want to use for the Azure Cosmos DB account. 
+    Resource Group|*The same value as ID*|The new resource group name for your account. For simplicity, you can use the same name as your ID. 
+    Location|*The region closest to your users*|The geographic location in which to host your Azure Cosmos DB account. Choose the location closest to your users to give them the fastest access to the data.   
 
-4. A fiók létrehozásához kattintson a **Létrehozás** gombra.
-5. Az eszköztáron kattintson az **Értesítések** parancsra az üzembe helyezési folyamat megfigyeléséhez.
+4. Click **Create** to create the account.
+5. On the toolbar, click **Notifications** to monitor the deployment process.
 
-    ![Központi telepítés elindítva értesítés](./media/cosmos-db-create-dbaccount-table/notification.png)
+    ![Deployment started notification](./media/cosmos-db-create-dbaccount-table/notification.png)
 
-6.  Amikor befejeződött a telepítés, nyissa meg az új fiókot az Összes erőforrás csempén. 
+6.  When the deployment is complete, open the new account from the All Resources tile. 
 
-    ![DocumentDB-fiók az Összes erőforrás csempén](./media/cosmos-db-create-dbaccount-table/all-resources.png)
+    ![Azure Cosmos DB account on the All Resources tile](./media/cosmos-db-create-dbaccount-table/all-resources.png)

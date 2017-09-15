@@ -1,7 +1,7 @@
-Most, hogy alkalmazása fut, a következő lépés az üzletmenet folytonosságának biztosítása, valamint a felhasználói hozzáférések felügyelete a magas fokú rendelkezésre állás biztosítása érdekében. Az Azure Portalon különböző adatokat tekinthet meg gyűjteménye rendelkezésre állásáról, késéséről, átviteli sebességéről és konzisztenciájáról. 
+Now that your app is up and running, you'll want to ensure business continuity and watch user access to ensure high availability. You can use the Azure portal to review the availability, latency, throughput, and consistency of your collection. 
 
-Az [Azure Cosmos DB szolgáltatói szerződésekre (SLA-k)](https://azure.microsoft.com/support/legal/sla/documentdb/) vonatkozó egyes gráfokon egy-egy vonal jelöli az SLA-k feltételeinek teljesítéséhez szükséges kvótákat és a tényleges használatot, így átlátható képet adnak az adatbázis teljesítményéről. A portálon további metrikák is megtekinthetők, így a tárhelyhasználat és a kérelmek percenkénti száma is.
+Each graph that's associated with the [Azure Cosmos DB Service Level Agreements (SLAs)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) provides a line that shows the quota required to meet the SLA and your actual usage. This information gives you a clear view into your database performance. Additional metrics, such as storage usage and number of requests per minute, are also included in the portal.
 
-* Ezek az Azure Portal bal oldali ablaktábláján, a **Figyelés** > **Metrikák** lehetőségre kattintva érhetők el.
+* In the Azure portal, in the pane on the left, under **Monitoring**, select **Metrics**.
 
-   ![Teendőkezelő alkalmazás mintaadatokkal](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-portal-metrics-slas.png)
+   ![Todo app with sample data](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-portal-metrics-slas.png)

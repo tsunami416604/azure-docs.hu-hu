@@ -1,16 +1,17 @@
-Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozására is használhatja. 
+You can now use the Data Explorer tool in the Azure portal to create a graph database. 
 
-1. Az Azure Portalon kattintson a bal oldali navigációs menü **Adatkezelő (előzetes verzió)** elemére. 
-2. Az **Adatkezelő (előzetes verzió)** panelen kattintson az **Új gráf** lehetőségre, majd töltse ki a lapot a következő információk alapján.
+1. In the Azure portal, in the menu on the left, select **Data Explorer (Preview)**.
 
-    ![Adatkezelő az Azure Portalon](./media/cosmos-db-create-graph/azure-cosmosdb-data-explorer.png)
+2. Under **Data Explorer (Preview)**, select **New Graph**. Then fill in the page by using the following information:
 
-    Beállítás|Ajánlott érték|Leírás
+    ![Data Explorer in the Azure portal](./media/cosmos-db-create-graph/azure-cosmosdb-data-explorer.png)
+
+    Setting|Suggested value|Description
     ---|---|---
-    Adatbázis azonosítója|sample-database|Az új adatbázis azonosítója. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóközt.
-    Gráfazonosító|sample-graph|Az új gráfhoz tartozó azonosító. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
-    Tárkapacitás| 10 GB|Ne módosítsa az alapértelmezett értéket. Ez az adatbázis tárkapacitása.
-    Teljesítmény|400 kérelemegység|Ne módosítsa az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-    Partíciókulcs|/userid|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciókulcs kiválasztása fontos a nagy teljesítményű gráfok létrehozásához. Erről bővebben a [Particionálásra tervezés](../articles/cosmos-db/partition-data.md#designing-for-partitioning) című részben olvashat.
+    Database id|sample-database|The ID for your new database. Database names must be between 1 and 255 characters and can't contain `/ \ # ?` or a trailing space.
+    Graph id|sample-graph|The ID for your new graph. Graph names have the same character requirements as database IDs.
+    Storage capacity| 10 GB|Leave the default value. This is the storage capacity of the database.
+    Throughput|400 RUs|Leave the default value. You can scale up the throughput later if you want to reduce latency.
+    Partition key|/userid|A partition key that distributes data evenly to each partition. Selecting the correct partition key is important in creating a performant graph. For more information, see [Designing for partitioning](../articles/cosmos-db/partition-data.md#designing-for-partitioning).
 
-3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.
+3. After the form is filled out, select **OK**.

@@ -6,7 +6,7 @@ A gazdagépnév, a portok és a hozzáférési kulcsok Azure portalon történő
 ![A Redis Cache-gyorsítótár beállításai](media/redis-cache-access-keys/redis-cache-hostname-ports-keys.png)
 
 ### <a name="retrieve-host-name-ports-and-access-keys-using-azure-cli"></a>Gazdagépnév, portok és hozzáférési kulcsok lekérése az Azure CLI-vel
-A gazdagépnév és a portok Azure CLI 2.0-val való lekéréséhez hívja meg az [az redis show](https://docs.microsoft.com/cli/azure/redis#show), a kulcsok lekéréséhez pedig az [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#list-keys) parancsot. A következő szkript meghívja ezt a két parancsot, majd továbbítja a gazdagépnevet, a portokat és a kulcsokat a konzolnak.
+A gazdagépnév és a portok Azure CLI 2.0-val való lekéréséhez hívja meg az [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show), a kulcsok lekéréséhez pedig az [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys) parancsot. A következő szkript meghívja ezt a két parancsot, majd továbbítja a gazdagépnevet, a portokat és a kulcsokat a konzolnak.
 
 ```azurecli
 #/bin/bash
