@@ -4,8 +4,10 @@
 
 # Gyors útmutatók
 ## [.NET-alkalmazás létrehozása](service-fabric-quickstart-dotnet.md)
+## [Windows-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers.md)
+## [Linux-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers-linux.md)
 
-# Oktatóanyagok
+# oktatóanyagokat
 ## .NET-alkalmazás üzembe helyezése
 ### [1. .NET-alkalmazás összeállítása](service-fabric-tutorial-create-dotnet-app.md)
 ### [2. Az alkalmazás telepítése](service-fabric-tutorial-deploy-app-to-party-cluster.md)
@@ -278,7 +280,7 @@
 ### [Fürt ábrázolása](service-fabric-visualizing-your-cluster.md)
 ### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
 
-### [Fürt kezelése a Service Fabric parancssori felülettel](service-fabric-cli.md)
+### [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)
 ### [Fürtcsomópontok javítása](service-fabric-patch-orchestration-application.md)
 
 ### Fürterőforrások kezelése és összehangolása

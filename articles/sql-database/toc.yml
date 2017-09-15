@@ -261,10 +261,6 @@
           href: sql-database-long-term-backup-retention-configure.md
         - name: Georeplikáció – Portál
           href: sql-database-geo-replication-portal.md
-        - name: Georeplikáció – T-SQL – konfigurálás
-          href: sql-database-geo-replication-transact-sql.md
-        - name: Georeplikáció – T-SQL – feladatátvétel
-          href: sql-database-geo-replication-failover-transact-sql.md
         - name: Egyetlen tábla helyreállítása
           href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
     - name: Adatok betöltése és áthelyezése
@@ -299,8 +295,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure Automation
           href: sql-database-manage-automation.md
-        - name: Azure RemoteApp
-          href: sql-database-ssms-remoteapp.md
     - name: Horizontális felskálázás
       items:
         - name: Szilánkokra osztott alkalmazás létrehozása
