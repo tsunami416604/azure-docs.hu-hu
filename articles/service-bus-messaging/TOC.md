@@ -37,6 +37,7 @@
 ### [Üzenetsorokat használó alkalmazások](service-bus-create-queues.md)
 ### [Témákat vagy előfizetéseket használó alkalmazások](service-bus-create-topics-subscriptions.md)
 ### [Hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md)
+#### [Migrálás ACS-ről SAS rendszerre](service-bus-migrate-acs-sas.md)
 #### [Hitelesítés közös hozzáférésű jogosultságkódokkal](service-bus-sas.md)
 ### [Particionált üzenetsorok és témakörök](service-bus-partitioning.md)
 ### [Kézbesíthetetlen levelek sorai](service-bus-dead-letter-queues.md)

@@ -1,0 +1,52 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure IoT Hub eszközkiépítési szolgáltatás (előzetes verzió) dokumentációja
+metadata:
+  title: 'Az Azure IoT Hub eszközkiépítési szolgáltatás (előzetes verzió) dokumentációja – Oktatóanyagok, API-referencia'
+  meta.description: Overview of Azure IoT Hub Device Provisioning Service.
+  services: iot-dps
+  author: nberdy
+  manager: timlt
+  ms.service: iot-dps
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/23/2017
+  ms.author: nberdy
+abstract:
+  description: 'Az IoT Hub eszközkiépítési szolgáltatás (előzetes verzió) az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT hubon való érintésmentes, igény szerinti üzembe helyezést, és amely által az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az eszközök IoT hub(ok)on történő kiépítésével.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerje meg, hogyan állíthatja be az Eszközkiépítési szolgáltatás első példányát, és hogyan építhet ki egy szimulált eszközt az IoT hubon.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: Automatikus kiépítés beállítása
+            href: /azure/iot-dps/quick-setup-auto-provision
+          - image:
+              src: /azure/sql-database/media/index/portal.svg
+            text: Szimulált eszköz létrehozása
+            href: /azure/iot-dps/quick-create-simulated-device
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerje meg, hogyan használhatja az IoT Hub eszközkiépítési szolgáltatást (előzetes verzió) biztonságos eszközök automatikus kiépítésére egy vagy több IoT hubon.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">Felhőerőforrások konfigurálása</a>
+          - html: <a href="/azure/iot-dps/tutorial-set-up-device">Az eszköz beállítása az Azure-hoz való csatlakozásra</a>
+          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">Eszközök kiépítése egyetlen IoT hubon</a>
+          - html: '<a href="/azure/iot-dps/tutorial-provision-multiple-hubs">Eszközök kiépítése több, elosztott terhelésű IoT hubon</a>'
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/iot-dps">REST API</a></p>

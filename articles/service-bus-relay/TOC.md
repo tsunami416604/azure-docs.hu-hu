@@ -13,6 +13,7 @@
 # Útmutató
 ## Tervezés és kialakítás
 ### [Hitelesítés és biztonság](relay-authentication-and-authorization.md)
+#### [Migrálás ACS-ről SAS rendszerre](relay-migrate-acs-sas.md)
 ### [Hibrid kapcsolatok protokollja](relay-hybrid-connections-protocol.md)
 ## Fejlesztés
 ### [Elérhető API-k](relay-api-overview.md)

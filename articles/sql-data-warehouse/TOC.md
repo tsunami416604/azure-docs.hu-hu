@@ -10,7 +10,7 @@
 ## [Kezdő szintű oktatóanyag](sql-data-warehouse-get-started-tutorial.md)
 ## [Ajánlott eljárások](sql-data-warehouse-best-practices.md)
 ## [Kezelés](sql-data-warehouse-overview-manage.md)
-## [Támogatás kérése](sql-data-warehouse-get-started-create-support-ticket.md)
+
 
 
 # Útmutató
@@ -139,18 +139,22 @@
 # Referencia
 
 ## [Kapacitási korlátok](sql-data-warehouse-service-capacity-limits.md)
-## [A T-SQL nyelvi elemei](sql-data-warehouse-reference-tsql-language-elements.md)
-## [T-SQL-utasítások](sql-data-warehouse-reference-tsql-statements.md)
-## [T-SQL-rendszernézetek](sql-data-warehouse-reference-tsql-system-views.md)
+## T-SQL
+### [Teljes referencia](https://docs.microsoft.com/sql/t-sql/language-reference/)
+### [Az SQL DW nyelvi elemei](sql-data-warehouse-reference-tsql-language-elements.md)
+### [Az SQL DW utasításai](sql-data-warehouse-reference-tsql-statements.md)
+## [Rendszernézetek](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell-parancsmagok](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=databases)
-## [Fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [Fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
+## [Funkciókérések](https://feedback.azure.com/forums/307516-sql-data-warehouse/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [Támogatás](sql-data-warehouse-get-started-create-support-ticket.md)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## Partnerek
