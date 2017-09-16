@@ -4,6 +4,8 @@
   items:
     - name: Tudnivalók a Web Appsról
       href: app-service-web-overview.md
+    - name: Információk a tárolókhoz készült Web Appsról
+      href: ../app-service/containers/app-service-linux-intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
       href: choose-web-site-cloud-service-vm.md
 - name: Gyors útmutatók
@@ -29,10 +31,8 @@
       href: app-service-web-tutorial-nodejs-mongodb-app.md
     - name: 1 – PHP és MySQL
       href: app-service-web-tutorial-php-mysql.md
-    - name: 1 – WordPress és MySQL
-      href: app-service-web-create-web-app-from-marketplace.md
-    - name: 1 – Python és PostgreSQL
-      href: app-service-web-tutorial-docker-python-postgresql-app.md
+    - name: 1 – Java és MySQL
+      href: app-service-web-tutorial-java-mysql.md
     - name: 2 – Egyéni tartomány leképezése
       href: app-service-web-tutorial-custom-domain.md
     - name: 3 – SSL-tanúsítvány kötése
@@ -73,14 +73,8 @@
               href: app-service-web-php-get-started.md
             - name: PHP-projekt beállítása
               href: web-sites-php-configure.md
-            - name: Többhelyes WordPress-konfiguráció beállítása
-              href: web-sites-php-convert-wordpress-multisite.md
         - name: Node.js
           items:
-            - name: Sails.js-alkalmazás és NOSQL DB
-              href: app-service-web-nodejs-sails.md
-            - name: Az io.js használata
-              href: web-sites-nodejs-iojs.md
             - name: Hibakeresés a Node.js-alkalmazásokban
               href: web-sites-nodejs-debug.md
         - name: Java
@@ -89,14 +83,8 @@
               href: app-service-web-eclipse-create-hello-world-web-app.md
             - name: Java-alkalmazás és IntelliJ
               href: app-service-web-intellij-create-hello-world-web-app.md
-            - name: Javához készült Azure SDK használata
-              href: java-create-azure-website-using-java-sdk.md
             - name: Meglévő alkalmazás feltöltése
               href: web-sites-java-add-app.md
-        - name: Python
-          items:
-            - name: Django-alkalmazás és MySQL
-              href: web-sites-python-ptvs-django-mysql.md
         - name: E-mailek küldése a SendGriddel
           href: sendgrid-dotnet-how-to-send-email.md
         - name: A futtatókörnyezet konfigurálása
@@ -111,28 +99,6 @@
           items:
             - name: Alkalmazásbeállítások használata
               href: web-sites-configure.md
-        - name: Webappok Linuxon
-          items:
-            - name: Áttekintés
-              href: app-service-linux-intro.md
-            - name: Felügyelet a parancssori felületen keresztül
-              href: app-service-linux-cli.md
-            - name: Ruby-webapp Linuxon
-              href: app-service-linux-ruby-get-started.md
-            - name: Node.js-webapp Linuxon
-              href: app-service-linux-using-nodejs-pm2.md
-            - name: .NET Core-webapp Linuxon
-              href: app-service-linux-using-dotnetcore.md
-            - name: Egyéni Docker-webapp Linuxon
-              href: app-service-linux-using-custom-docker-image.md
-            - name: Kapcsolódás SSH-n keresztül
-              href: app-service-linux-ssh-support.md
-            - name: Folyamatos üzembe helyezés
-              href: app-service-linux-ci-cd.md
-            - name: Üzembe helyezés típusa – egyéni rendszerkép vagy beépített?
-              href: app-service-linux-choose-deployment-type.md
-            - name: Webappok Linuxon – GYIK
-              href: app-service-linux-faq.md
     - name: Üzembe helyezés az Azure-ban
       href: web-sites-deploy.md
       items:
@@ -162,12 +128,6 @@
               href: web-sites-traffic-manager-custom-domain-name.md
             - name: Aktív tartomány migrálása
               href: app-service-custom-domain-name-migrate.md
-        - name: Áttelepítés IIS-ből
-          href: web-sites-migration-from-iis-server.md
-        - name: Tesztelés éles környezetben
-          href: app-service-web-test-in-production-get-start.md
-        - name: Funkcionalitás hozzáadása webappokhoz
-          href: app-service-web-get-started-2.md
         - name: Spring Boot-alkalmazás üzembe helyezése az Azure Web Appsben a Maven bővítménnyel
           href: app-service-web-deploy-spring-boot-app-with-maven-plugin.md
         - name: Tárolóalapú Spring Boot-alkalmazás üzembe helyezése a Maven bővítménnyel
@@ -178,8 +138,6 @@
           href: ../azure-toolkit-for-intellij-hello-world-web-app-linux.md
     - name: Csatlakozás adatbázishoz/erőforrásokhoz
       items:
-        - name: Csatlakozás helyszíni adatokhoz
-          href: web-sites-hybrid-connection-get-started.md
         - name: Csatlakozás Azure VNethez
           href: web-sites-integrate-with-vnet.md
         - name: Csatlakozás Azure VNethez a PowerShell használatával
@@ -214,8 +172,6 @@
           href: web-sites-scale.md
         - name: Horizontális felskálázás
           href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-        - name: Terheléselosztás a Traffic Managerrel
-          href: web-sites-traffic-manager.md
         - name: Nagy léptékű méretezés App Service Environment-környezetekkel
           href: ../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-web%2ftoc.json
         - name: Globális elérhetőség az Azure CDN használatával
@@ -224,8 +180,6 @@
           href: web-sites-connect-to-redis-using-memcache-protocol.md
         - name: Redis Cache létrehozása
           href: ../redis-cache/cache-redis-cache-arm-provision.md?toc=%2fazure%2fapp-service-web%2ftoc.json
-        - name: Munkamenetállapot-kezelés az Azure Redis Cache használatával
-          href: web-sites-dotnet-session-state-caching.md
     - name: Figyelés
       items:
         - name: Alkalmazások figyelése
@@ -240,8 +194,6 @@
           href: web-sites-backup.md
         - name: Az alkalmazás biztonsági másolatának visszaállítása
           href: web-sites-restore.md
-        - name: Biztonsági mentés a REST API-val
-          href: websites-csm-backup.md
     - name: Alkalmazás-erőforrások kezelése
       items:
         - name: Alkalmazás klónozása a PowerShell használatával
@@ -250,10 +202,6 @@
           href: app-service-web-app-cloning-portal.md
         - name: Erőforrások áthelyezése
           href: app-service-move-resources.md
-        - name: Az Azure Resource Manager és a PowerShell együttes használata
-          href: app-service-web-app-azure-resource-manager-powershell.md
-        - name: Alkalmazások kezelése az Azure Automation használatával
-          href: automation-manage-web-app.md
     - name: Integrálás
       items:
         - name: Exportálás a PowerAppsbe és a Microsoft Flow-ba
