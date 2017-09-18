@@ -18,7 +18,7 @@ ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: eca77b4a82eb67e1755717bb4429f8d450a64dc5
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/18/2017
 
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
@@ -152,7 +152,7 @@ A **Manage** (Felügyelet) gombra kattintva megnyitja a hozzáférés-vezérlés
 A hozzáférés-vezérlési szolgáltatásidentitás olyan hitelesítő adatok készlete, amelyekkel az alkalmazások vagy ügyfelek közvetlenül hitelesíthetnek a hozzáférés-vezérléssel, és tokent kaphatnak.
 
 > [!IMPORTANT]
-> A BizTalk Services-szolgáltatás a **Tulajdonost** használja az alapértelmezett szolgáltatásidentitáshoz és a **Jelszó** értékéhez. Ha a Szimmetrikus kulcs értéket használja a Jelszó érték helyett, a következő hiba fordulhat elő.<br/><br/>*Could not connect to the Access Control Management Service account with the specified credentials*
+> A BizTalk Services-szolgáltatás a **Tulajdonost** használja az alapértelmezett szolgáltatásidentitáshoz és a **Jelszó** értékéhez. Ha a Szimmetrikus kulcs értéket használja a Jelszó érték helyett, a következő hiba fordulhat elő.<br/><br/>*Nem lehet kapcsolódni a hozzáférés-vezérlési felügyeleti szolgáltatásfiókhoz a megadott hitelesítő adatokkal*
 > 
 > 
 
