@@ -358,6 +358,8 @@
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Az Azure Cosmos DB ingyenes kipróbálása
+      href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
     - name: GYIK

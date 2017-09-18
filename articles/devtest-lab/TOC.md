@@ -28,6 +28,7 @@
 ### [Szabályzatok és ütemezések beállítása ](devtest-lab-set-lab-policy.md)
 ### [Költségkezelés konfigurálása](devtest-lab-configure-cost-management.md)
 ### [Piactér képeinek konfigurálása](devtest-lab-configure-marketplace-images.md)
+### [Címke hozzáadása egy laborhoz](devtest-lab-add-tag.md)
 
 ## [Egyéni rendszerkép vagy képlet kiválasztása](devtest-lab-comparing-vm-base-image-types.md)
 

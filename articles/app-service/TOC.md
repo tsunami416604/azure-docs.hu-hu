@@ -130,6 +130,7 @@
 ## Integrálás
 ### [E-mail küldése a SendGrid és az Azure használatával](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Exportálás a PowerAppsbe és a Microsoft Flow-ba](app-service-export-api-to-powerapps-and-flow.md)
+### [Felügyeltszolgáltatás-identitás használata](app-service-managed-service-identity.md)
 
 ## Hibaelhárítás
 ### [Diagnosztikai naplózás engedélyezése](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2ftoc.json)

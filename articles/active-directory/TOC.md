@@ -135,9 +135,9 @@
 ### [Az Azure AD Join megtervezése](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [Gyakori kérdések](device-management-faq.md)
 ### Feladatok
-#### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök konfigurálása](device-management-azuread-registered-devices-windows10-setup.md)
-#### [Azure AD-csatlakoztatott eszközök konfigurálása](device-management-azuread-joined-devices-setup.md)
-#### [Hibrid Azure AD-csatlakoztatott eszközök konfigurálása](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök beállítása](device-management-azuread-registered-devices-windows10-setup.md)
+#### [Az Azure AD-hez csatlakoztatott eszközök beállítása](device-management-azuread-joined-devices-setup.md)
+#### [Hibrid Azure AD-hez csatlakoztatott eszközök beállítása](device-management-hybrid-azuread-joined-devices-setup.md) 
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
 #### [Azure AD-csatlakozás a Windows 10 első futtatási élménye alkalmával](device-management-azuread-joined-devices-frx.md)
 ### Hibaelhárítás
@@ -266,34 +266,21 @@
 
 ### [Helyszíni identitások integrálása az Azure AD Connecttel](./connect/active-directory-aadconnect.md)
 
+## [Az Azure-hoz való hozzáférés kezelése](toc.yml)
+
 ## Erőforrások hozzáférésének delegálása
 ### [Rendszergazdai szerepkörök](active-directory-assign-admin-roles.md)
 #### [Rendszergazdai szerepkörök hozzárendelése](active-directory-users-assign-role-azure-portal.md)
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
-### [Erőforrás-hozzáférés az Azure-ban](active-directory-understanding-resource-access.md)
-### [Szerepköralapú hozzáférés-vezérlés](role-based-access-control-what-is.md)
-#### Hozzáférés-hozzárendelések kezelése
-##### [Felhasználó szerint](role-based-access-control-manage-assignments.md)
-##### [Erőforrás szerint](role-based-access-control-configure.md)
-#### [Beépített szerepkörök](role-based-access-built-in-roles.md)
-#### [Egyéni szerepkörök](role-based-access-control-custom-roles.md)
-#### [Egyéni szerepkörök hozzárendelése belső és külső felhasználókhoz](role-based-access-control-create-custom-roles-for-internal-external-users.md)
-#### [Jelentéskészítés](role-based-access-control-access-change-history-report.md)
-#### Szerepkörök kezelésének további módjai
-##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
-##### [PowerShell](role-based-access-control-manage-access-powershell.md)
-##### [REST](role-based-access-control-manage-access-rest.md)
-#### [Bérlői rendszergazda hozzáférési szintjének emelése](role-based-access-control-tenant-admin-access.md)
-#### [Hibaelhárítás](role-based-access-control-troubleshooting.md)
-#### [Erőforrás-szolgáltatói műveletek](role-based-access-control-resource-provider-operations.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 
 ## Identitások védelme
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
+#### [Vezérlők](active-directory-conditional-access-controls.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
 #### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)
-#### [Feladatok]
+#### Feladatok
 ##### [Eszközalapú feltételes hozzáférés beállítása](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Alkalmazásalapú feltételes hozzáférés beállítása](active-directory-conditional-access-mam.md)
 ##### [VPN-kapcsolat beállítása](active-directory-conditional-access-vpn-connectivity-windows10.md)

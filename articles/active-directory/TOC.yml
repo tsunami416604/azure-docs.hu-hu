@@ -1,0 +1,74 @@
+- name: Erőforrás-hozzáférés az Azure-ban
+  href: active-directory-understanding-resource-access.md
+- name: Szerepköralapú hozzáférés-vezérlés
+  href: role-based-access-control-what-is.md
+  items:
+    - name: Hozzáférés-hozzárendelések kezelése
+      items:
+        - name: Felhasználó szerint
+          href: role-based-access-control-manage-assignments.md
+        - name: Erőforrás szerint
+          href: role-based-access-control-configure.md
+    - name: Beépített szerepkörök
+      href: role-based-access-built-in-roles.md
+    - name: Egyéni szerepkörök
+      href: role-based-access-control-custom-roles.md
+    - name: Egyéni szerepkörök hozzárendelése belső és külső felhasználókhoz
+      href: role-based-access-control-create-custom-roles-for-internal-external-users.md
+    - name: Jelentéskészítés
+      href: role-based-access-control-access-change-history-report.md
+    - name: Szerepkörök kezelésének további módjai
+      items:
+        - name: Az Azure CLI-vel
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: A PowerShell-lel
+          href: role-based-access-control-manage-access-powershell.md
+        - name: A REST-tel
+          href: role-based-access-control-manage-access-rest.md
+    - name: Bérlői rendszergazda hozzáférési szintjének emelése
+      href: role-based-access-control-tenant-admin-access.md
+    - name: Hibaelhárítás
+      href: role-based-access-control-troubleshooting.md
+    - name: Erőforrás-szolgáltatói műveletek
+      href: role-based-access-control-resource-provider-operations.md
+- name: Felügyeltszolgáltatás-identitás
+  href: msi-overview.md
+  items:
+    - name: Az MSI konfigurálása Windows rendszerű virtuális géphez
+      items:
+        - name: Az Azure Portallal
+          href: msi-qs-configure-portal-windows-vm.md
+        - name: A PowerShell-lel
+          href: msi-qs-configure-powershell-windows-vm.md
+        - name: Az Azure CLI-vel
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: Azure Resource Manager-sablonnal
+          href: msi-qs-configure-template-windows-vm.md
+    - name: Az MSI használata az Azure Resource Manager eléréséhez
+      items:
+        - name: Windows rendszerű virtuális géppel
+          href: msi-tutorial-windows-vm-access-arm.md
+        - name: Linux rendszerű virtuális géppel
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: Az MSI használata az Azure Storage eléréséhez
+      items:
+        - name: Windows rendszerű virtuális géppel
+          href: msi-tutorial-windows-vm-access-storage.md
+        - name: Linux rendszerű virtuális géppel
+          href: msi-tutorial-linux-vm-access-storage.md
+    - name: Az MSI használata nem Azure AD-erőforrás eléréséhez
+      items:
+        - name: Windows rendszerű virtuális géppel
+          href: msi-tutorial-windows-vm-access-nonaad.md
+        - name: Linux rendszerű virtuális géppel
+          href: msi-tutorial-linux-vm-access-nonaad.md
+    - name: MSI-hozzáférés hozzárendelése egy Azure-erőforráshoz
+      items:
+        - name: Az Azure Portallal
+          href: msi-howto-assign-access-portal.md
+        - name: A PowerShell-lel
+          href: msi-howto-assign-access-powershell.md
+        - name: Az Azure CLI-vel
+          href: msi-howto-assign-access-cli.md
+    - name: Ismert problémák
+      href: msi-known-issues.md

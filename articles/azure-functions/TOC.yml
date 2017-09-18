@@ -103,6 +103,8 @@
           href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Függvény hívása a PowerAppsből
           href: functions-powerapps-scenario.md
+        - name: Felügyeltszolgáltatás-identitás használata
+          href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: Referencia
   items:
     - name: Kötések
@@ -147,6 +149,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Videók
+      href: 'https://www.youtube.com/c/AzureFunctions'
     - name: MSDN-fórum
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
     - name: Stack Overflow

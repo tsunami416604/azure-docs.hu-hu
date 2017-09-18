@@ -57,60 +57,35 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
-    - name: Azure által támogatott disztribúciók
-      href: endorsed-distros.md
+    - name: Azure Resource Manager
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Régiók és rendelkezésre állás
       href: regions-and-availability.md
-    - name: Tárolás
+    - name: Virtuálisgép-típusok és -méretek
+      href: sizes.md
+    - name: Támogatott disztribúciók
+      href: endorsed-distros.md
+    - name: Karbantartás és frissítések
+      href: maintenance-and-updates.md
+    - name: Storage
       href: azure-vm-storage-overview.md
     - name: Hálózat
-      href: azure-vm-network-overview.md
-    - name: Virtuális gépek méretezési csoportjai
-      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md
-    - name: Tárolók
-      href: containers.md
-    - name: Resource Manager
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      items:
-        - name: Üzembe helyezési modellek
-          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Sablonok virtuális gépekhez
-          href: ../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Azure Linux-ügynök
-      href: agent-user-guide.md
-    - name: Azure Security Center
-      href: ../../security-center/security-center-linux-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Vészhelyreállítás
-      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Tervezett karbantartás
-      href: planned-maintenance.md
-    - name: A virtuális gépek mérete
-      items:
-        - name: Áttekintés a virtuális gépek méreteiről
-          href: sizes.md
-          items:
-            - name: Általános célú
-              href: sizes-general.md
-            - name: Számításra optimalizált
-              href: sizes-compute.md
-            - name: Memóriaoptimalizált
-              href: sizes-memory.md
-            - name: Tárolásra optimalizált
-              href: sizes-storage.md
-            - name: GPU
-              href: sizes-gpu.md
-              items:
-                - name: GPU-illesztők
-                  href: n-series-driver-setup.md
-            - name: Nagy teljesítményű számítás
-              href: sizes-hpc.md
-        - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
-          href: acu.md
-        - name: Számításiteljesítmény-mérési pontszámok
-          href: compute-benchmark-scores.md
+      href: network-overview.md
+    - name: Automatikus méretezési alkalmazások
+      href: autoscale.md
+    - name: Infrastruktúra automatizálása
+      href: infrastructure-automation.md
+    - name: Biztonság és szabályzatok
+      href: security-policy.md
+    - name: Figyelés
+      href: monitor.md
+    - name: Biztonsági másolat és helyreállítás
+      href: backup-recovery.md
+    - name: Nagy teljesítményű feldolgozás
+      href: high-performance-computing.md
     - name: Telepítési szempontok
       items:
-        - name: Példa az alapszintű üzembe helyezésre
+        - name: Infrastruktúrával kapcsolatos irányelvek
           href: infrastructure-example.md
 - name: Útmutatók
   items:

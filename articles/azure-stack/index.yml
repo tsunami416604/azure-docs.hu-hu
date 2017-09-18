@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Stack – dokumentáció
+metadata:
+  document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
+  title: Az Azure Stack dokumentációja – oktatóanyagok és API-referencia
+  description: 'Ismerje meg, hogyan használhatja az Azure Stack előzetes verzióját Azure-szolgáltatások továbbítására az adatközpontból. Megvalósíthatósági példakörnyezetből származó szolgáltatások megismerése és bemutatása.'
+  services: azure-stack
+  author: czeumault
+  manager: carolz
+  ms.service: azure-stack
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/28/2017
+  ms.author: carolz
+abstract:
+  description: 'A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat biztosíthat az adatközpontjából. Rövid útmutatóink és oktatóanyagaink ismertetik az Azure Stack üzembe helyezését és a szolgáltatásokat biztosítását.'
+sections:
+  - title: Első lépések
+    items:
+      - type: paragraph
+        text: 'A hardver beállítása és az Azure Stack üzembe helyezése:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
+            text: Az Azure Stack üzembe helyezése
+            href: azure-stack-deploy-overview.md
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Szolgáltatások hozzáadása az Azure Stack üzemelő példányához – ismertetés:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Virtuális gépek engedélyezése az Azure Stackben</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">SQL Database-adatbázisok engedélyezése az Azure Stackben</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Webalkalmazások engedélyezése az Azure Stackben</a>
+          - html: <a href="/azure/azure-stack/azure-stack-solution-pipeline">Alkalmazások üzembe helyezése az Azure-ban és az Azure Stackben</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">PowerShell</a></p>

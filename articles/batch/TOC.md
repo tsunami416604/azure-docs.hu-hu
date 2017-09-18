@@ -64,11 +64,10 @@
 # Kapcsolódó
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
 ## [Adatfeldolgozás a Batch és a Data Factory segítségével](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
-## [Batch- és HPC-megoldások az Azure-felhőben | Microsoft Azure](batch-hpc-solutions.md)
+## [Batch, HPC és Big Compute megoldások az Azure-ban](../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
-## [Big Compute erőforrások](big-compute-resources.md)
 ## [Blog](https://blogs.technet.microsoft.com/windowshpc/)
 ## [C#-kódminták](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)

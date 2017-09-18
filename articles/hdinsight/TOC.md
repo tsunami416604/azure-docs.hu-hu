@@ -61,10 +61,12 @@
 ## A Spark használata memórián belüli feldolgozáshoz
 ### Első lépések – Spark fejlesztő
 #### [Önálló alkalmazás létrehozása](hdinsight-apache-spark-create-standalone-application.md)
-#### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md) 
+#### [Interaktív Spark Shell használata](hdinsight-spark-shell.md)
+#### [Távoli feladatok a Livyvel](hdinsight-apache-spark-livy-rest-interface.md)
 ### [A Data Lake Store adattárral](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [Alkalmazások létrehozása az Eclipse-szel](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [Alkalmazások létrehozása az IntelliJ-vel](hdinsight-apache-spark-intellij-tool-plugin.md)
+### [Mi az a Spark Streaming?](hdinsight-spark-streaming-overview.md)
 ### [Streamelési események feldolgozása](hdinsight-apache-spark-eventhub-streaming.md)
 ### [HVAC-teljesítmény előrejelzése](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [Élelmiszer-vizsgálati eredmények előrejelzése](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
@@ -109,6 +111,7 @@
 ### [Kafka-adatok replikálása](hdinsight-apache-kafka-mirroring.md)
 ### [A Kafka tárolójának és skálázhatóságának konfigurálása](hdinsight-apache-kafka-scalability.md)
 ### [Az adatok magas rendelkezésre állásának konfigurálása](hdinsight-apache-kafka-high-availability.md)
+### [Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
 ### [Használat a Virtual Network szolgáltatással](hdinsight-apache-kafka-connect-vpn-gateway.md)
 ### [Használat a Sparkkal (strukturált stream)](hdinsight-apache-kafka-spark-structured-streaming.md)
 ### [Használat a Sparkkal (DStream)](hdinsight-apache-spark-with-kafka.md)

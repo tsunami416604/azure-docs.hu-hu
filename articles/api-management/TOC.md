@@ -11,6 +11,8 @@
 ### [Műveletek hozzáadása](api-management-howto-add-operations.md)
 ### [API létrehozása](api-management-howto-create-apis.md)
 ### [API-definíció importálása](api-management-howto-import-api.md)
+### [Bevezetés a változatok használatába](api-management-get-started-revise-api.md)
+### [Bevezetés a verziók használatába](api-management-get-started-publish-versions.md)
 ## A háttérmodul védelme
 ### [A Web API háttérmodul védelme az AAD-vel](api-management-howto-protect-backend-with-aad.md)
 ### [Csatlakozás virtuális hálózathoz](api-management-using-with-vnet.md)

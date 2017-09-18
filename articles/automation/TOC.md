@@ -5,6 +5,7 @@
 ## Runbook-oktatóanyag
 ### [Grafikus runbook létrehozása](automation-first-runbook-graphical.md)
 ### [PowerShell-alapú runbook létrehozása](automation-first-runbook-textual-powershell.md)
+### [Az első Python-runbookom](automation-first-runbook-textual-python2.md)
 ### [PowerShell-alapú munkafolyamati runbook létrehozása](automation-first-runbook-textual.md)
 # Útmutató
 ## Hitelesítés és biztonság
@@ -37,7 +38,10 @@
 ### [JSON-objektum továbbítása Azure Automation-runbookba](automation-pass-json-string.md)
 ## hibrid runbook-feldolgozó
 ### [Hibrid runbook-feldolgozó üzembe helyezése](automation-hybrid-runbook-worker.md)
+### [Az Azure Automation hibrid runbook-feldolgozója Windowsra](automation-windows-hrw-install.md)
+### [Az Azure Automation hibrid runbook-feldolgozója Linuxra](automation-linux-hrw-install.md)
 ### [Runbookok futtatása feldolgozón](automation-hrw-run-runbooks.md)
+### [Az Azure Automation hibrid runbook-feldolgozóinak eltávolítása](automation-remove-hrw.md)
 ## Konfigurációkezelés (DSC) üzembe helyezése
 ### [A célállapot-konfiguráló (DSC) áttekintése](automation-dsc-overview.md)
 ### [Első lépések](automation-dsc-getting-started.md)
