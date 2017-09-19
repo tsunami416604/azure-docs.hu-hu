@@ -16,6 +16,7 @@
 ## [Kiszolgáló kezelése](analysis-services-manage.md)
 ## [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
 ## [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
+## [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
 ## [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
 ## [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
