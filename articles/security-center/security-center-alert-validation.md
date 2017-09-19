@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 09/07/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 121b5d8f023a9b663d0e7af26dce8f81db27672c
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: d7aa8544f50b42bacfa1e1f16fdce468d8fc81ef
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Riasztások érvényesítése az Azure Security Centerben
@@ -35,12 +35,15 @@ Miután telepítette a számítógépére a Security Centert, kövesse az alább
 3. Nyissa meg a parancssort, és hajtsa végre a fájlt egy argumentummal (egy hamis argumentumnévvel), például: *ASC_AlertTest_662jfi039N.exe -foo*
 4. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Ott az alábbihoz hasonló riasztást fog találni:
 
-    ![Riasztások érvényesítése](./media/security-center-alert-validation/security-center-alert-validation-fig1.png)
+    ![Riasztások érvényesítése](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
 
 Amikor ellenőrzi ezt a riasztást, győződjön meg róla, hogy az Argumentumok naplózása beállítás értéke Igaz. Ha hamisként jelenik meg, engedélyezze a parancssori argumentumok naplózását. Ezt a beállítást a következő parancssorral engedélyezheti:
 
 *reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"*
 
+
+> [!NOTE]
+> A funkció bemutatójáért tekintse meg a [Riasztások érvényesítése az Azure Security Centerben](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center) című videót. 
 
 ## <a name="see-also"></a>Lásd még:
 Ez a cikk a riasztások érvényesítési folyamatát mutatta be. Most, hogy már ismeri az érvényesítést, tekintse meg a következő cikkeket:

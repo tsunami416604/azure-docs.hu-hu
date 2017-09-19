@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: 
 author: rothja
 manager: jhubbard
-editor: 
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
@@ -13,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/07/2017
+ms.date: 09/12/2017
 ms.author: jroth
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: f0100423550046d18642180ce98e93ce3609749b
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: b9d42e393e696187d2299e033402db8ee565593a
 ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés
@@ -27,34 +26,8 @@ Ez a témakör az SQL Server Azure virtuális gépeken (VM) történő futtatás
 
 > [!NOTE]
 > Ha már ismeri az SQL Servert, és csak azt szeretné megtudni, hogyan helyezhet üzembe egy SQL Servert futtató virtuális gépet, tekintse meg az [SQL Server rendszerű virtuális gép létrehozása az Azure portálon](virtual-machines-windows-portal-sql-server-provision.md) című cikket.
-> 
-> 
 
-## <a name="overview"></a>Áttekintés
-Amennyiben Ön adatbázis-rendszergazda vagy fejlesztő, az Azure virtuális gépek lehetőséget nyújtanak a helyszíni SQL Server számítási feladatok és alkalmazások áthelyezésére a felhőbe. A következő videó az SQL Server Azure virtuális gépek műszaki áttekintését tartalmazza.
-
-> [!VIDEO https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016/player]
-> 
-> 
-
-A videó a következő területeket fedi le:
-
-| Time | Terület |
-| --- | --- |
-| 00:21 |Mik azok az Azure virtuális gépek? |
-| 01:45 |Biztonság |
-| 02:50 |Kapcsolatok |
-| 03:30 |Tárolómegbízhatóság és -teljesítmény |
-| 05:20 |A virtuális gépek mérete |
-| 05:54 |Magas rendelkezésre állás és szolgáltatásszint-szerződés |
-| 07:30 |Konfigurációs támogatás |
-| 08:00 |Figyelés |
-| 08:32 |Bemutató: SQL Server 2016 virtuális gép létrehozása |
-
-> [!NOTE]
-> A videó középpontjában az SQL Server 2016 áll, de az Azure az SQL Server több verziójához (köztük a 2012-es, 2014-es és 2016-os verziókhoz) biztosít virtuálisgép-rendszerképet. 
-> 
-> 
+Amennyiben Ön adatbázis-rendszergazda vagy fejlesztő, az Azure virtuális gépek lehetőséget nyújtanak a helyszíni SQL Server számítási feladatok és alkalmazások áthelyezésére a felhőbe.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 Számos oka lehet annak, amiért úgy dönt, az adatokat az Azure-ban tárolja. Ha az alkalmazást áthelyezi az Azure-ba, az növeli a teljesítményt az adatok áthelyezéséhez. De a használata további előnyökkel is jár. Automatikusan hozzáférést kap több különböző adatközponthoz is a globális jelenlét érdekében, illetve vészhelyreállítás esetére. Emellett az adatok is tartósak, és magas szintű biztonság védi őket.
@@ -126,7 +99,7 @@ Az Azure virtuális gépek az [automatikus javítás](virtual-machines-windows-s
 ### <a name="customer-experience-improvement-program-ceip"></a>Felhasználói élmény fokozása program (CEIP)
 A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. 
 
-Tovább információért lásd a [Licencfeltételek elfogadása](https://msdn.microsoft.com/library/ms143343.aspx) című témakör CEIP-ről szóló szakaszát. 
+Az adatgyűjtésről további információért tekintse meg az [SQL Server adatvédelmi nyilatkozatát](https://www.microsoft.com/EN-US/privacystatement/SQLServer/Default.aspx). 
 
 ## <a name="next-steps"></a>Következő lépések
 

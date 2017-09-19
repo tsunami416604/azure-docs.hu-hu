@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/28/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 5420c1cdefa99ff30320dd757e04aa0cafc792bc
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 4a4ab1ee022b6b33d35217df916d01f32e04d3a4
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -44,24 +44,8 @@ Az adatok Azure Data Lake Store-ban történő rögzítéséhez létre kell hozn
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Azure Data Lake Store-fiók és -mappák létrehozása
 
-1. A Data Lake Store-fiók létrehozásához kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](../data-lake-store/data-lake-store-get-started-portal.md) című témakör utasításait. 
-2. Hozzon létre egy mappát ebben a fiókban a [Mappák létrehozása az Azure Data Lake Store-fiókban](../data-lake-store/data-lake-store-get-started-portal.md#createfolder) szakasz útmutatásai szerint.
-3. A Data Lake Store-fiók oldalán kattintson az **Adatkezelő** elemre.
-4. Kattintson a **Hozzáférés** elemre.
-5. Kattintson az **Add** (Hozzáadás) parancsra.
-6. A **Keresés név vagy e-mail-cím alapján** mezőbe írja be a **Microsoft.EventHubs** kifejezést, majd válassza ki ezt a beállítást. 
-7. Megjelenik az **Engedélyek** lap. Állítsa be az engedélyeket az alábbi ábrán látható módon:
-
-    ![][6]
-
-8. Kattintson az **OK** gombra.
-9. Most hozzon létre egy mappát a gyökérmappában. Ehhez navigáljon a célmappához, és kattintson a mappa nevére.
-10. Kattintson a **Hozzáférés** elemre.
-11. Kattintson az **Add** (Hozzáadás) parancsra.
-12. A **Keresés név vagy e-mail-cím alapján** mezőbe írja be a **Microsoft.EventHubs** kifejezést, majd válassza ki ezt a beállítást.
-13. Ekkor újra megjelenik az **Engedélyek** lap. Állítsa be az engedélyeket az alábbi ábrán látható módon:
-
-    ![][5]
+1. A Data Lake Store-fiók létrehozásához kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](../data-lake-store/data-lake-store-get-started-portal.md) című témakör utasításait.
+2. Kövesse az [engedélyek az Event Hubs számára való kiosztását ismertető](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) szakasz utasításait egy, a Data Lake Store-fiókon belüli mappa létrehozásához, amelyben rögzíteni szeretné az Event Hubs adatait, és engedélyek kiosztásához az Event Hubs számára, hogy adatokat írhasson a Data Lake Store-fiókba.  
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
@@ -87,12 +71,11 @@ A Capture-t olyan meglévő eseményközpontokon konfigurálhatja, amelyek az Ev
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
-[5]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture5.png
-[6]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture6.png
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ az Event Hub Capture-ről: [Az Event Hubs Capture áttekintése][capture-overview].
 - Az Azure Resource Manager-sablonok használatával is konfigurálhatja az Event Hubs Capture-t. További információkért lásd: [Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).
+- [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](../data-lake-store/data-lake-store-get-started-portal.md)
 
 [capture-overview]: event-hubs-capture-overview.md

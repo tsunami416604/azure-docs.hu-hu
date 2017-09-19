@@ -1,5 +1,5 @@
 ---
-title: "Partnerintegráció az Azure Security Centerben | Microsoft Docs"
+title: "Partner- és megoldásintegráció az Azure Security Centerben | Microsoft Docs"
 description: "Megtudhatja, hogy az Azure Security Center hogyan integrálható a partnerekkel az Azure-erőforrások általános biztonságának növelése érdekében."
 services: security-center
 documentationcenter: na
@@ -12,22 +12,18 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2017
+ms.date: 09/13/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 44beafeff5cbe58ac8ca37632879f6ffc2b67e53
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 8cc44da0f61362018d2757da58ca4fb3a9a43764
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/14/2017
 
 ---
-# <a name="partner-integration-in-azure-security-center"></a>Partnerintegráció az Azure Security Centerben
+# <a name="partner-and-solutions-integration-in-azure-security-center"></a>Partner- és megoldásintegráció az Azure Security Centerben
 
 Ebben a cikkben leírjuk, hogy az Azure Security Center hogyan integrálható a partnerekkel az általános biztonság növelése érdekében. A Security Center integrált Azure-felületet kínál, és kihasználja az Azure Marketplace partnertanúsítványainak és számlázási funkcióinak előnyeit.
-
-> [!NOTE] 
-> 2017 júniusától a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További információk: [Az Azure Security Center platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
->
 
 ## <a name="why-deploy-partner-solutions-from-security-center"></a>Miért érdemes a Security Centerből üzembe helyezni a partnermegoldásokat?
 
@@ -41,7 +37,7 @@ A négy fő érv a Security Center partnerintegrációjának használata mellett
 
 ## <a name="partners-that-integrate-with-security-center"></a>Security Center-integrációt kínáló partnerek
 
-A Security Center jelenleg ezekkel a megoldásokkal van integrálva:
+A jelenleg az Azure Marketplace piactéren a Security Centerrel elérhető partnermegoldások natív integrációi a következők:
 
 - Végpontvédelem ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), Symantec és [Microsoft Antimalware az Azure Cloud Services és Virtual Machines szolgáltatásokhoz](https://docs.microsoft.com/azure/security/azure-security-antimalware)) 
 - Webalkalmazás-tűzfal ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets) és [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/)) 
@@ -61,13 +57,57 @@ Az Azure-környezet beállítása és az Ön által meghatározott biztonsági s
 
 ## <a name="manage-partner-solutions"></a>A partnermegoldások kezelése
 
-Az üzembe helyezés után a megoldás állapotinformációinak megtekintéséhez és alapszintű felügyeleti feladatok elvégzéséhez a **Security Center** panelen válassza a **Partnermegoldások** lehetőséget. A partnermegoldások Security Centerben való kezelésével kapcsolatos további információkért tekintse meg a [Partnermegoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) című cikket.
+Az üzembe helyezés után a megoldás állapotinformációinak megtekintéséhez és alapszintű felügyeleti feladatok elvégzéséhez a **Security Center** irányítópulton válassza a **Partnermegoldások** lehetőséget.
 
-![Partnerintegráció](./media/security-center-partner-integration/security-center-partner-integration-fig1-new2.png)
+![Partnermegoldások integrációja](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
+
+A Security Solutions megnyitásakor megjelenő tartalmak az infrastruktúrájától függően változhatnak. Ez előző képet példaként használva, ez a lap három szakaszra osztható:
+
+- **Csatlakoztatott megoldások**: a Security Centerhez csatlakozó megoldásokat jeleníti meg.
+- **Felderített megoldások**: a Security Centerhez nem csatlakozó megoldásokat jeleníti meg. Csatlakoztathatja ezeket a megoldásokat, és ebben az esetben a csatlakoztatott megoldások közt jelennek majd meg.  Ha a Security Center nem észlel nem csatlakozó megoldásokat, ez a szakasz rejtve marad.
+- **Adatforrások hozzáadása**: a Security Centerhez hozzáadható Azure-beli és nem Azure-beli adatforrásokat jeleníti meg.
+
+### <a name="connected-solutions"></a>Csatlakoztatott megoldások
+
+A **Csatlakoztatott megoldások** szakasz a Security Centerhez aktuálisan csatlakozó összes biztonsági megoldást jeleníti meg. 
+
+![Csatlakoztatott megoldások](./media/security-center-partner-integration/security-center-partner-integration-fig10.png)
+
+Az egyes megoldásoknál látható adatok az adott megoldásoktól függően változhatnak. Az egyes csempéken elérhető információk például a következők lehetnek:
+
+- A partner vállalatának ikonja.  Ha a Security Centerben nem látható a vállalat ikonja, úgy a partner nevének első karaktere(i) látható(ak).
+- Megoldás típusa.
+- A számítógépnév is megjelenhet.
+- Állapot.  Ha a megoldás nem küld állapotjelző adatokat, a Security Center a legutolsó fogadott esemény dátumát és időpontját jeleníti meg, amely jelzi, hogy a berendezés küld-e jelentést vagy sem. Ha a Security Center nem kap állapotjelző információt egy adott megoldástól, a megoldás csempéje nem látszik ebben a szakaszban.
 
 > [!NOTE]
-> A Symantec Endpoint Protection támogatása a felderítésre korlátozódik. Az állapotriasztások nem érhetők el.
->
+> A Watch Security Center a legutolsó fogadott esemény dátumát és időpontját mutatja, amely jelzi, hogy a berendezés küld-e jelentést vagy sem. Az állapotjelző adatokat nem küldő megoldások csatlakoztatott megoldásként vannak feltüntetve, ha az elmúlt 14 napban érkezett tőlük riasztás vagy esemény.
+>  
+
+A megoldások némelyike teljesen integrálva van az Azure-ba, mások esetleg helyszíni megoldások. Mivel a Security Center támogatja a [Common Event Format (CEF)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-connect-products#what-is-cef) formátumot, képes csatlakozni a CEF-et használó alkalmazásokhoz, például a CEF-et támogató tűzfalakhoz. Miután a megoldást hozzáadja a Security Centerhez, a Tűzfal a naplókat CEF-formátumban küldi a Security Centernek, amely azokat a [Log Analyticsben](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) kezeli. A Tűzfal egy nem Azure-beli erőforrás, amely eseményeket igen, állapotjelző adatokat azonban nem küld.  A Security Center így csupán annyi információval rendelkezik a berendezés állapotáról, hogy mikor küldött utoljára eseményt.  Az összes nem Azure-beli folyamat esetében a Security Center a csempe állapotjelző területén az utolsó esemény fogadásának dátumát és időpontját jeleníti meg, ami mutatja, hogy az adott nem Azure-beli erőforrás még küld jelentést.
+
+### <a name="discovered-solutions"></a>Felderített megoldások
+
+A **Felderített megoldások** szakaszban az összes az Azure-on keresztül hozzáadott megoldás látható, amelyek csatlakoztatását a Security Center javasolja.
+
+![Felderített megoldások](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
+
+A Security Center integrálható a beépített Azure-beli megoldásokkal, például az [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) megoldással. Ha rendelkezik ugyan egy Azure AD Identity Protection-licenccel, azonban a megoldás nem csatlakozik a Security Centerhez, az Azure AD Identity Protection a **Felderített megoldások** listájában szerepel majd. A megoldás a Security Centerrel való integrálásához kattintson a **CSATLAKOZÁS** elemre az **Azure AD Identity Protection** csempéjén, amire a következő ablak jelenik meg:
+
+![Azure AD Identity Protection](./media/security-center-partner-integration/security-center-partner-integration-fig6.png)
+
+Az Azure AD Identity Protection csatlakoztatásának befejezéséhez ki kell választania egy munkaterületet, ahová az adatok mentve lesznek. Az Azure AD Identity Protection minden adata az ebben a lépésben kiválasztott munkaterület-régióból lesz szolgáltatva.  A munkaterület-választó lépéseit követve kiválasztja a munkaterületet, és az adatok elkezdenek oda áramlani.
+
+A Security Center csatlakoztatásához globális rendszergazdai vagy biztonsági rendszergazdai jogosultsággal kell rendelkeznie.  Amennyiben nem rendelkezik a megfelelő jogosultsággal, a **Csatlakozás** gomb le lesz tiltva, és egy üzenet tájékoztatja, hogy ez miért van így.
+
+Az Azure AD Identity Protection riasztásai a Security Center észlelési folyamatán keresztül haladnak át, így a Security Centertől is kaphat riasztásokat az Azure Active Directory Identity Protection mellett. A Security Center az összes relevánsnak tűnő riasztás összevonásával [biztonsági incidenseket](https://docs.microsoft.com/azure/security-center/security-center-incident) hoz létre. A biztonsági incidens leírásában részletesebb információkat talál a gyanús tevékenységekkel kapcsolatban.
+
+### <a name="add-data-sources"></a>Adatforrások hozzáadása
+
+Azure-beli és nem Azure-beli számítógépeket is integrálhat a Security Centerrel.  A nem Azure-beli számítógépek hozzáadása azt jelenti, hogy helyszíni számítógépeket vagy a CEF-formátumot támogató berendezéseket is hozzáadhat. 
+
+![Adatforrások](./media/security-center-partner-integration/security-center-partner-integration-fig11.png)
+
 
 ## <a name="see-also"></a>Lásd még:
 

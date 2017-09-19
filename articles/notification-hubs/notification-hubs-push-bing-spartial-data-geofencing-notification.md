@@ -13,12 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/31/2016
+ms.date: 09/13/2017
 ms.author: dendeli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
-
+ms.translationtype: HT
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 8db82ae9f37a89b6b7049208133949a7f49e9d92
+ms.contentlocale: hu-hu
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="geo-fenced-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Geokerítéses leküldéses értesítések az Azure Notification Hubs és a Bing térbeli adatainak használatával
@@ -30,9 +31,9 @@ ms.openlocfilehash: b2a84e0479aac9ded08bb64e1ea20ddee6636cce
 Ebben az oktatóanyagban elsajátíthatja, hogyan kézbesíthet helyalapú leküldéses értesítéseket egy Univerzális Windows Platform-alkalmazásból az Azure Notification Hubs és a Bing térbeli adatainak használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Mindenekelőtt arról kell meggyőződnie, hogy rendelkezik az összes szoftveres és szolgáltatási előfeltétellel:
+Először is győződjön meg arról, hogy rendelkezik az összes szoftveres és szolgáltatási előfeltétellel:
 
-* [Visual Studio 2015 Update 1](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) vagy újabb (a [Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) is megfelelő). 
+* [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) vagy újabb (a [Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) is megfelelő). 
 * Az [Azure SDK](https://azure.microsoft.com/downloads/) legújabb verziója. 
 * [Fiók a Bing Térképek fejlesztői központjához](https://www.bingmapsportal.com/) (ingyenesen létrehozható, és hozzárendelhető a Microsoft-fiókjához). 
 
@@ -54,11 +55,11 @@ A következő paramétereket kell megadnia a rendszer működéséhez:
 Most tekintsük át részletesen a fenti elemek beállításait.
 
 ## <a name="setting-up-the-data-source"></a>Az adatforrás beállítása
-Ezt a Bing Térképek fejlesztői központjában végezheti el. Kattintson a felső navigációs sáv **Data Sources** (Adatforrások) elemére, és válassza az **Manage Data Sources** (Adatforrások kezelése) lehetőséget.
+Az adatforrást a Bing Térképek fejlesztői központjában állíthatja be. A felső navigációs sávban válassza a **Data sources** (Adatforrások) > **Manage Data Sources** (Adatforrások kezelése) lehetőséget.
 
 ![](./media/notification-hubs-geofence/bing-maps-manage-data.png)
 
-Ha még nem használta korábban a Bing Térképek API-t, valószínűleg nincs elérhető adatforrás. Az Adatok feltöltése egy adatforrásba elemre kattintva létrehozhat egy újat. Győződjön meg arról, hogy az összes kötelező mezőt kitöltötte:
+Ha még nem használta korábban a Bing Térképek API-t, valószínűleg nincs elérhető adatforrás. A **Data sources** (Adatforrások) > **Upload data** (Adatok feltöltése) elemet kiválasztva létrehozhat egy újat. Győződjön meg arról, hogy az összes kötelező mezőt kitöltötte:
 
 ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
 
@@ -72,7 +73,7 @@ A fentiek a következő entitást képviselik:
 
 ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 
-Csak másolja át és illessze be a fenti karakterláncot egy új fájlba, mentse a fájt **NotificationHubsGeofence.pipe** néven, majd töltse fel a Bing fejlesztői központba.
+Másolja és illessze be a fenti karakterláncot egy új fájlba, mentse a fájt **NotificationHubsGeofence.pipe** néven, majd töltse fel a Bing fejlesztői központba.
 
 > [!NOTE]
 > Lehetséges, hogy új, a **Lekérdezési kulcstól** eltérő **Főkulcsot** kell megadnia. Csak hozzon létre egy új kulcsot az irányítópulton, és frissítse az adatforrás-feltöltési oldalt.
@@ -81,25 +82,25 @@ Csak másolja át és illessze be a fenti karakterláncot egy új fájlba, ments
 
 Az adatfájl feltöltése után közzé kell tennie az adatforrást. 
 
-A fentiekhez hasonló módon lépjen a **Manage Data Sources** (Adatforrások kezelése) oldalra, keresse meg az adatforrást a listában, majd kattintson a **Publish** (Közzététel) elemre az **Actions** (Műveletek) oszlopban. Az adatforrás rövid időn belül megjelenik a **Published Data Sources** (Közzétett adatforrások) lapon:
+A fentiekhez hasonló módon lépjen a **Manage Data Sources** (Adatforrások kezelése) oldalra, keresse meg az adatforrást a listában, majd válassza ki a **Publish** (Közzététel) elemet az **Actions** (Műveletek) oszlopban. Az adatforrás rövid időn belül megjelenik a **Published Data Sources** (Közzétett adatforrások) lapon:
 
 ![](./media/notification-hubs-geofence/bing-maps-published-data.png)
 
-Az **Edit** (Szerkesztés) gombra kattintva egy pillantással áttekintheti a létrehozott helyeket:
+Az **Edit** (Szerkesztés) gombra kattintva (egy pillantással) áttekintheti a létrehozott helyeket:
 
 ![](./media/notification-hubs-geofence/bing-maps-data-details.png)
 
-A portál ekkor még nem jeleníti meg a létrehozott geokerítés határvonalait. Ehhez csak meg kell erősítenünk, hogy a megadott hely a megfelelő környéken található.
+A portál ekkor még nem jeleníti meg a létrehozott geokerítés határvonalait. Ehhez csak meg kell erősítenie, hogy a megadott hely a megfelelő környéken található.
 
-Most már az adatforrás minden követelménye teljesül. Az API-hívás kérési URL-jének részleteit úgy szerezheti be, ha a Bing Térképek fejlesztői központban a **Data Sources** (Adatforrások) elemre, majd a **Data Source Information** (Adatforrás adatai) elemre kattint.
+Most már az adatforrás minden követelménye teljesül. Az API-hívás kérési URL-jének részleteit úgy szerezheti be, ha a Bing Térképek fejlesztői központban kiválasztja a **Data Sources** (Adatforrások), majd a **Data Source Information** (Adatforrás adatai) elemet.
 
 ![](./media/notification-hubs-geofence/bing-maps-data-info.png)
 
-Most a **Query URL** (Lekérdezési URL) az, amit keresünk. Ez az a végpont, ahol lekérdezéseket végezhetünk annak ellenőrzésére, hogy az eszköz egy adott hely határvonalain belül vagy kívül található-e. Ennek az ellenőrzésnek az elvégzéséhez egyszerűen GET hívást kell végrehajtanunk a lekérdezés URL-címén, a következő paraméterek hozzáfűzésével:
+Most a **Query URL** (Lekérdezési URL) az, amit keresünk. Ez az a végpont, ahol lekérdezéseket végezhetünk annak ellenőrzésére, hogy az eszköz egy adott hely határvonalain belül vagy kívül található-e. Ennek az ellenőrzésnek az elvégzéséhez egyszerűen egy GET hívást kell végrehajtanunk a lekérdezés URL-címén a következő paraméterek hozzáfűzésével:
 
     ?spatialFilter=intersects(%27POINT%20LONGITUDE%20LATITUDE)%27)&$format=json&key=QUERY_KEY
 
-Így az eszközről beszerzett célpontot ad meg, és a Bing Térképek automatikusan kiszámítja, hogy az a geokerítésen belül van-e. Ha böngésző (vagy a cURL) használatával hajtja végre a kérést, standard JSON-választ kap:
+Így az eszközről beszerzett célpontot ad meg, és a Bing Térképek automatikusan kiszámítja, hogy az a geokerítésen belül van-e. Ha böngésző (vagy a cURL) használatával hajtja végre a kérést, szabványos JSON-választ kap:
 
 ![](./media/notification-hubs-geofence/bing-maps-json.png)
 
@@ -110,11 +111,11 @@ Ez a válasz csak akkor jelenik meg, ha a pont a kijelölt határokon belül tal
 ## <a name="setting-up-the-uwp-application"></a>Az UWP-alkalmazás beállítása
 Most, hogy az adatforrás rendelkezésre áll, elkezdhetünk dolgozni a korábban elindított UWP-alkalmazással.
 
-Mindenekelőtt engedélyezni kell a helyalapú szolgáltatásokat az alkalmazásban. Ehhez kattintson duplán a `Package.appxmanifest` fájlra a **Megoldáskezelőben**.
+Mindenekelőtt engedélyezni kell a helyalapú szolgáltatásokat az alkalmazásban. Ehhez nyissa meg a `Package.appxmanifest` fájlt a **Megoldáskezelőben**.
 
 ![](./media/notification-hubs-geofence/vs-package-manifest.png)
 
-A csomagtulajdonságokat tartalmazó megnyíló lapon kattintson a **Képességek** elemre, és válassza ki a **Hely** elemet:
+A csomagtulajdonságokat tartalmazó megnyíló lapon válassza a **Capabilities** (Képességek) elemet, majd a **Location** (Hely) elemet:
 
 ![](./media/notification-hubs-geofence/vs-package-location.png)
 
@@ -215,7 +216,7 @@ A projekt már konfigurálva van leküldéses értesítések céleszközökre t�
 
 A kapcsolati karakterlánc konfigurálásához a `Models` mappában nyissa meg a következőt: `Notifications.cs`. A `NotificationHubClient.CreateClientFromConnectionString`függvénynek tartalmaznia kell az értesítési központ adatait, amelyet az [Azure Portalon](https://portal.azure.com) szerezhet be (nyissa meg a **Beállítások** menü **Hozzáférési házirendek** paneljét). Mentse a frissített konfigurációs fájlt.
 
-Most létre kell hoznunk egy modellt a Bing Térképek API-eredményéhez. Ennek a legegyszerűbb módja, ha a jobb gombbal a `Models` mappára, majd a **Hozzáadás** > **Osztály** elemre kattint. Nevezze el a következőképpen: `GeofenceBoundary.cs`. Ezután másolja át a JSON-t az első szakaszban tárgyalt API-válaszból, majd a Visual Studióban válassza a következőt: **Szerkesztés** > **Irányított beillesztés** > **Paste JSON as Classes**(JSON beillesztése osztályokként). 
+Most létre kell hoznunk egy modellt a Bing Térképek API-eredményéhez. Ennek a legegyszerűbb módja, ha megnyitja a `Models` mappát, majd az **Add** (Hozzáadás) > **Class** (Osztály) elemet választja. Nevezze el a következőképpen: `GeofenceBoundary.cs`. Ezután másolja át a JSON-t az első szakaszban tárgyalt API-válaszból, majd a Visual Studióban válassza a következőt: **Szerkesztés** > **Irányított beillesztés** > **Paste JSON as Classes**(JSON beillesztése osztályokként). 
 
 Így biztosítható, hogy az objektum deszerializálása pontosan a kívánt módon történjen. Az eredményül kapott osztály a következőhöz hasonló lesz:
 
@@ -337,23 +338,23 @@ Az UWP-alkalmazásban most már tudjuk tesztelni az értesítéseket. A `Locatio
 > 
 > 
 
-Most regisztráljuk az UWP-alkalmazást a leküldéses értesítésekre. A Visual Studióban kattintson a következőkre: **Projekt** > **Áruház** > **Associate app with the store** (Alkalmazás társítása az Áruházzal).
+Most regisztráljuk az UWP-alkalmazást a leküldéses értesítésekre. A Visual Studióban válassza a **Project** (Projekt) > **Store** (Áruház) > **Associate app with the store** (Alkalmazás társítása az Áruházzal) lehetőséget.
 
 ![](./media/notification-hubs-geofence/vs-associate-with-store.png)
 
 Amikor bejelentkezik a fejlesztői fiókba, válasszon ki egy meglévő alkalmazást, vagy hozzon létre egy újat, és társítsa hozzá a csomagot. 
 
-Nyissa meg a fejlesztői központot, és nyissa meg a most létrehozott alkalmazást. Kattintson a következőkre: **Services** (Szolgáltatások)  > **Push Notifications** (Leküldéses értesítések)  > **Live Services site** (Live Services webhely).
+Nyissa meg a fejlesztői központot, és nyissa meg a most létrehozott alkalmazást. Válassza a **Szolgáltatások** > **Leküldéses értesítések** > **Live Services webhely** lehetőséget.
 
 ![](./media/notification-hubs-geofence/ms-live-services.png)
 
-A webhelyen jegyezze fel az **Application Secret** (Alkalmazástitok) és a **Package SID** (Csomag biztonsági azonosítója) értékeit. Az Azure Portalon mindkettőre szüksége lesz. Nyissa meg az értesítési központot, kattintson a **Beállítások** > **Értesítési szolgáltatások** > **Windows (WNS)** elemre, majd töltse ki a kötelező mezőket.
+A webhelyen jegyezze fel az **Application Secret** (Alkalmazástitok) és a **Package SID** (Csomag biztonsági azonosítója) értékeit. Az Azure Portalon mindkettőre szüksége lesz. Nyissa meg az értesítési központot, válassza ki a **Beállítások** > **Értesítési szolgáltatások** > **Windows (WNS)** elemet, majd töltse ki a kötelező mezőket.
 
 ![](./media/notification-hubs-geofence/notification-hubs-wns.png)
 
-Kattintson a **Mentés** gombra.
+Válassza a **Mentés** elemet.
 
-Kattintson a jobb gombbal a **Hivatkozások** elemre a **Megoldáskezelőben**, és válassza a **NuGet-csomagok kezelése** lehetőséget. Fel kell vennünk egy, a **Microsoft Azure Service Bus felügyelt kódtárára mutató hivatkozást**. Ehhez csak keressen a `WindowsAzure.Messaging.Managed` elemre, és adja hozzá a projekthez.
+Nyissa meg a **References** (Hivatkozások) elemet a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget. Fel kell vennünk egy, a **Microsoft Azure Service Bus felügyelt kódtárára mutató hivatkozást**. Ehhez csak keressen a `WindowsAzure.Messaging.Managed` elemre, és adja hozzá a projekthez.
 
 ![](./media/notification-hubs-geofence/vs-nuget.png)
 
@@ -390,10 +391,5 @@ Ezután [címkézéssel](notification-hubs-tags-segment-push-message.md) megadha
 A fenti megoldás egy olyan forgatókönyvet ismertet, amelyben sokféle célplatform lehetséges, ezért a geokerítést nem korlátoztuk rendszerspecifikus képességekkel. A Univerzális Windows-platform ugyanakkor a [geokerítések azonnali észlelésére](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence) szolgáló képességekkel rendelkezik.
 
 A Notification Hubs képességeiről a [dokumentációs portálon](https://azure.microsoft.com/documentation/services/notification-hubs/) talál további részleteket.
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

@@ -1,21 +1,28 @@
 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson a **+ÚJ** gombra a képernyő bal felső részén.
-2. Kattintson az **Új** elemre, majd a **Web + Mobil** elemre. Kattintson a **Notification Hub** lehetőségre (ha szükséges, görgessen le hozzá).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+
+2. Válassza az **Új** > **Web + mobil** > **Értesítési központ** elemet.
    
-      ![Azure Portal – Notification Hub létrehozása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
+      ![Azure Portal – Értesítési központ létrehozása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
       
-3. Ügyeljen arra, hogy a **Notification Hub** mezőben megadott név egyedi legyen. Válassza ki a kívánt **Helyet**, **Előfizetést** és **Erőforráscsoportot** (ha már rendelkezik ilyennel). 
+3. Az **Értesítési központ** mezőbe írjon be egy egyedi nevet. Válassza ki a **Helyet**, **Előfizetést** és **Erőforráscsoportot** (ha már rendelkezik ilyennel). 
    
-    Ha már rendelkezik egy szolgáltatásbusz-névtérrel, amelyben létrehozná a központot, válassza ki azt a **Meglévő használata** lehetőségen keresztül a **Namespace** (Névtér) mezőben.  Egyéb esetben használhatja a központ nevén alapulva létrehozott alapértelmezett nevet, ha a névtér neve elérhető. 
+    Ha már rendelkezik egy szolgáltatásbusz-névtérrel, amelyben létrehozná a központot, tegye a következőket:
+
+    a. A **Névtér** területen válassza a **Meglévő használata** hivatkozást. 
    
-    Ha készen áll, kattintson a **Létrehozás** gombra.
+    b. Kattintson a **Létrehozás** gombra.
+
+    Ha még nem rendelkezik szolgáltatásbusz-névtérrel, használhatja a központ neve alapján létrehozott alapértelmezett nevet (ha a névtér neve elérhető).
    
-      ![Azure Portal – Notification hub tulajdonságainak megadása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
-4. Miután létrejött a névtér és az értesítési központ, megnyílik a megfelelő portál oldala. 
+      ![Azure Portal – értesítési központ tulajdonságainak megadása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
+
+    A névtér és az értesítési központ létrehozása után megnyílik az Azure Portal. 
    
-      ![Azure Portal – Notification hub portáloldala](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
-5. Kattintson a **Beállítások**, majd a **Hozzáférési házirendek** lehetőségre – jegyezze fel a két rendelkezésre álló kapcsolati karakterláncot, mert ezekre később szükség lesz a leküldéses értesítések kezeléséhez.
+      ![Azure Portal – értesítési központ portáloldala](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
+
+4. Válassza a **Beállítások** > **Hozzáférési szabályzatok** lehetőséget. Figyelje meg a két elérhető kapcsolati karakterláncot. Ezekre később szükség lesz a leküldéses értesítések kezeléséhez.
    
-      ![Azure Portal - Értesítési központ kapcsolati karakterláncai](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
+      ![Azure Portal – értesítési központ kapcsolati karakterláncai](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 

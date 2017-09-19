@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 519ea43bfaa9d61de6ff962d838c197eb9e4edc0
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: a96f64e41b090cb60bbbb007a3913fd23ce8f609
 ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -63,7 +63,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Csatolt IoT Hubok** lehetőséget. Kattintson a felül látható **+ Hozzáadás** gombra. 
 
-3. A **Hivatkozás hozzáadása IoT Hubhoz vagy készlethez** portálpanelen válassza ki az aktuális előfizetést, vagy írja be egy másik előfizetés nevét és kapcsolati karakterláncát. Válassza az *IoT Hub* elemet az **Erőforrás típusaként**, és válassza ki a hub nevét a legördülő listából. Amikor végzett, kattintson a **Mentés** gombra. 
+3. A **Hivatkozás hozzáadása IoT Hubhoz** portálpanelen válassza ki az aktuális előfizetést, vagy írja be egy másik előfizetés nevét és kapcsolati karakterláncát. Válassza ki a hub nevét a legördülő listából. Amikor végzett, kattintson a **Mentés** gombra. 
 
     ![A hub nevének csatolása a DPS példányhoz a portálpanelen](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 

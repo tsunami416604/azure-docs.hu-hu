@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 5553bcb8f9fd38630f694151dc644a684266387c
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Az API-k védelme sebességkorlátokkal az Azure API Management használatával
@@ -148,7 +148,7 @@ A **Használati kvóta beállítása előfizetésenként** szabályzat konfigur�
 </quota>
 ```
 
-A **Használati kvóta beállítása előfizetésenként** szabályzathoz hasonlóan a **Használati kvóta beállítása előfizetésenként** szabályzattal korlátokat adhatunk meg a termék API-jaira és műveleteire vonatkozóan. Ebben az oktatóanyagban nem használjuk ezt a képességet, ezért törölje az **api** és az **operation** elemet a **quota** elemből az alábbi példában látható módon.
+A **Hívások számának korlátozása előfizetésenként** szabályzathoz hasonlóan a **Használati kvóta beállítása előfizetésenként** szabályzattal korlátokat adhat meg a termék API-jaira és műveleteire vonatkozóan. Ebben az oktatóanyagban nem használjuk ezt a képességet, ezért törölje az **api** és az **operation** elemet a **quota** elemből az alábbi példában látható módon.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">

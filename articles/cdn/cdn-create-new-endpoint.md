@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: mazha
-translationtype: Human Translation
-ms.sourcegitcommit: bdf6e27463fcc6186a3b15a55653fa468da91bdc
-ms.openlocfilehash: d263e911d0d0b3cdc1e48e300a3c8a0994b38c39
-ms.lasthandoff: 01/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 09b26f2fe83a24b351cafa06afad6f15a31fe77c
+ms.contentlocale: hu-hu
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="getting-started-with-azure-cdn"></a>Az Azure CDN használatának első lépései
@@ -33,8 +33,13 @@ Ez a témakör egy új CDN-profil és -végpont létrehozásán keresztül vezet
 A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-végpontot tartalmaz.  Előfordulhat, hogy több profil használatával rendszerezni szeretné a CDN-végpontokat internetes tartomány, webalkalmazás vagy más feltétel alapján.
 
 > [!NOTE]
-> Alapértelmezés szerint egy Azure-előfizetéssel nyolc CDN-profil használható. Az egyes CDN-profilokban legfeljebb tíz CDN-végpont lehet.
-> 
+> Az Azure-előfizetések alapértelmezett korlátokkal rendelkeznek a következő erőforrásokhoz:
+> - A létrehozható CDN-profilok száma
+> - A CDN-profilokban létrehozható végpontok száma 
+> - A végpontokra leképezhető egyéni tartományok száma
+>
+> A CDN-előfizetés korlátaival kapcsolatos információért lásd a [CDN-korlátokkal](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits) kapcsolatos szakaszt.
+>
 > A CDN-díjszabást a CDN-profilok szintjén alkalmazzuk. Ha több Azure CDN-tarifacsomagot szeretne vegyesen használni, több CDN-profilra lesz szüksége.
 > 
 > 
@@ -44,7 +49,7 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 ## <a name="create-a-new-cdn-endpoint"></a>Új CDN-végpont létrehozása
 **Új CDN-végpont létrehozása**
 
-1. Az [Azure portálon](https://portal.azure.com) lépjen a CDN-profilra.  Lehetséges, hogy a profilt az előző lépésben az irányítópulton rögzítette.  Amennyiben nem rögzítette, kattintson **Tallózás** gombra, majd a **CDN-profilok** elemre, végül kattintson arra a profilra, amelyet hozzá szeretne adni a végponthoz.
+1. Az [Azure Portalon](https://portal.azure.com) lépjen a CDN-profilra.  Lehetséges, hogy a profilt az előző lépésben az irányítópulton rögzítette.  Amennyiben nem rögzítette, kattintson **Tallózás** gombra, majd a **CDN-profilok** elemre, végül kattintson arra a profilra, amelyet hozzá szeretne adni a végponthoz.
    
     Megjelenik a CDN-profil panelje.
    
@@ -56,11 +61,11 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
     Megjelenik a **Végpont hozzáadása** panel.
    
     ![Végpont hozzáadása panel][cdn-add-endpoint]
-3. Adja meg a CDN-végpont kívánt nevét a **Név** mezőben.  A rendszer ezt a nevet fogja használni a gyorsítótárazott erőforrások eléréséhez a `<endpointname>.azureedge.net` tartományban.
+3. Adja meg a CDN-végpont kívánt nevét a **Név** mezőben.  A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a(z) `<endpointname>.azureedge.net` tartományban.
 4. A **Forrása típusa** legördülő menüben válassza ki a forrástípust.  Azure Storage-fiók esetén válassza a **Storage**, Azure Cloud Service szolgáltatás esetén a **Cloud Service**, Azure Web Apps esetén a **Webalkalmazás**, az összes többi nyilvánosan elérhető (az Azure rendszerben vagy máshol tárolt) webkiszolgáló-forrás esetén pedig az **Egyéni forrás** lehetőséget.
    
     ![A CDN-forrása típusa](./media/cdn-create-new-endpoint/cdn-origin-type.png)
-5. A **Forrás állomásneve** legördülő menüben válassza ki vagy adja meg a forrástartományt.  A legördülő menüben szerepelni fog a 4. lépésben megadott típusú összes rendelkezésre álló forrás.  Ha a **Forrása típusa** számára az *Egyéni forrás* beállítást választotta ki, akkor be kell írnia az egyéni forrás tartományát.
+5. A **Forrás állomásneve** legördülő menüben válassza ki vagy adja meg a forrástartományt.  A legördülő menüben szerepel a 4. lépésben megadott típusú összes rendelkezésre álló forrás.  Ha a **Forrása típusa** számára az *Egyéni forrás* beállítást választotta ki, akkor be kell írnia az egyéni forrás tartományát.
 6. A **Forrás elérési útvonala** szövegmezőbe írja be a gyorsítótárazni kívánt erőforrások elérési útját. A mezőt üresen is hagyhatja, ha engedélyezni szeretné az 5. lépésben megadott tartomány bármely erőforrásának gyorsítótárazását.
 7. A **Forrás állomásfejléce** mezőben adja meg azt az állomásfejlécet, amelyet a CDN-nek minden egyes kérelemmel el kell küldenie; vagy hagyja meg az alapértelmezett értéket.
    
@@ -71,14 +76,16 @@ A CDN-profil CDN-végpontok gyűjteménye.  Minden profil egy vagy több CDN-vé
 8. A **Protokoll** és a **Forrásport** mezőben adja meg a forráson az erőforrások eléréséhez használt protokollokat és portokat.  Legalább egy protokollt (a HTTP vagy a HTTPS protokollt) ki kell választani.
    
    > [!NOTE]
-   > A **Forrásport** értéke csak azt befolyásolja, hogy a végpont melyik portot használja az információk forrásról való lekéréséhez.  Magát a végpontot a végügyfelek – a **Forrásport** értékétől függetlenül – csak az alapértelmezett HTTP- és HTTPS-porton (azaz a 80-as és a 443-as porton) keresztül érik el.  
+   > A **Forrásport** értéke csak azt befolyásolja, hogy a végpont melyik portot használja az információk forrásról való lekéréséhez.  Magát a végpontot a végfelhasználók – a **Forrásport** értékétől függetlenül – csak az alapértelmezett HTTP- és HTTPS-porton (azaz a 80-as és a 443-as porton) érik el.  
    > 
    > Az **Akamai Azure CDN** típusú végpontok esetén a források számára nem áll rendelkezésre a teljes TCP-porttartomány.  A nem engedélyezett forrásportok listáját lást: [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Az Akamai Azure CDN engedélyezett forrásportjai).  
    > 
    > A CDN-tartalom HTTPS-kapcsolaton keresztüli elérésére a következő korlátozások vonatkoznak:
    > 
    > * A CDN által biztosított SSL-tanúsítványt kell használni. A rendszer nem támogatja a harmadik féltől származó tanúsítványokat.
-   > * A HTTPS-tartalom eléréséhez a CDN által biztosított tartományt (`<endpointname>.azureedge.net`) kell használni. A HTTPS nem támogatott az egyéni tartománynevek (CNAME) esetén, mivel a CDN jelenleg nem támogatja az egyéni tanúsítványokat.
+   > * Az Azure CDN egyéni tartományok HTTPS-támogatása csak a **Verizon Azure CDN** termékekkel érhető el (Standard és Prémium). Nem támogatott az **Akamai Azure CDN** termékeken. További információkért lásd: [HTTPS engedélyezése Azure CDN egyéni tartományon](cdn-custom-ssl.md).
+
+A HTTPS-tartalmak eléréséhez a CDN által biztosított tartományt (`<endpointname>.azureedge.net`) használja. A HTTPS nem támogatott az egyéni tartománynevek (CNAME) esetén, mivel a CDN jelenleg nem támogatja az egyéni tanúsítványokat.
    > 
    > 
 9. Az új végpont létrehozásához kattintson a **Hozzáadás** gombra.

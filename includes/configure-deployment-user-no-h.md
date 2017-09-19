@@ -1,4 +1,4 @@
-Hozza létre az üzembe helyezési hitelesítő adatokat az [az webapp deployment user set](/cli/azure/webapp/deployment/user#set) paranccsal.
+A Cloud Shellben hozza létre az üzembehelyezési hitelesítő adatokat az [az webapp deployment user set](/cli/azure/webapp/deployment/user#set) paranccsal.
 
 Az FTP és a helyi Git webalkalmazásban történő üzembe helyezéséhez üzembe helyező felhasználóra van szükség. A felhasználónevek és a jelszavak megadása fiókszinten történik. _Ezek nem azonosak az Azure-előfizetés hitelesítő adataival._
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/30/2017
+ms.date: 09/07/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 265a968f902f53c7561c8c7e937f8eacfdb37167
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 9657a4681f6bd9cc126de50883ce7a66357156e0
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Labor létrehozása az Azure DevTest Labs szolgáltatásban
@@ -38,21 +38,22 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
     ![További szolgáltatások menüpont](./media/devtest-lab-create-lab/more-services-menu-option.png)
 
 1. Válassza ki a **DevTest Labs** lehetőséget az elérhető szolgáltatások listájából.
-1. A **DevTest Labs** panelen válassza a **Hozzáadás** lehetőséget.
+1. A **DevTest Labs** területen válassza a **Hozzáadás** lehetőséget.
    
     ![Labor hozzáadása](./media/devtest-lab-create-lab/add-lab-button.png)
 
-1. A **Fejlesztési és tesztelési labor létrehozása** panelen:
+1. A **Fejlesztési és tesztelési labor létrehozása** területen:
    
     1. Adja meg a **Labor nevét**.
     2. Válassza ki a laborhoz társítani kívánt **Előfizetést**.
     3. Válassza ki a labor tárolásának **Helyét**.
-    4. Válassza az **Automatikus leállítás** elemet annak megadásához, hogy engedélyezi-e az automatikus leállítást a labor összes virtuális gépénél (valamint az automatikus leállítás paramétereit is megadhatja). Az automatikus rendszerleállítási funkció elsősorban költségkímélő szolgáltatás, amelynek segítségével megadhatja a virtuális gép automatikus leállásának időpontját. A tesztkörnyezet létrehozása után módosíthatja az automatikus rendszerleállítás beállításait, ha követi az [Manage all policies for a lab in Azure DevTest Labs](./devtest-lab-set-lab-policy.md#set-auto-shutdown) (Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelése) témakörben leírt lépéseket.
+    4. Válassza az **Automatikus leállítás** elemet annak megadásához, hogy engedélyezi-e az automatikus leállítást a labor összes virtuális gépénél (valamint az automatikus leállítás paramétereit is megadhatja). Az automatikus rendszerleállítási funkció elsősorban költségkímélő szolgáltatás, amelynek segítségével megadhatja a virtuális gép automatikus leállásának időpontját. A tesztkörnyezet létrehozása után módosíthatja az automatikus rendszerleállítás beállításait, ha követi az [Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelését](./devtest-lab-set-lab-policy.md#set-auto-shutdown) ismertető témakörben leírt lépéseket.
+    1. Írja be a **Címkék** **NÉV** és **ÉRTÉK** információit, ha a laborban létrehozni kívánt minden erőforráshoz hozzáadott egyéni címkéket szeretne létrehozni. A címkék hasznos segítséget nyújtanak a laborerőforrások kategória alapján való kezeléséhez és rendezéséhez. A címkékről további információért (beleértve a labor létrehozása után a címkék hozzáadását) lásd: [Címke hozzáadása laborhoz](devtest-lab-add-tag.md).
     5. Ha azt szeretné, hogy a labor parancsikonja megjelenjen a portál irányítópultján, válassza a **Rögzítés az irányítópulton** elemet.
     6. Az **Automatizálási beállítások** lehetőséget választva elérheti az Azure Resource Manager-sablonokat a konfigurálás automatizálásához. 
-    7. Kattintson a **Létrehozás** gombra. A **Létrehozás** gombra kattintva megjelenítheti a **DevTest Labs** panelt. A tesztkörnyezet létrehozásának folyamatát az **Értesítések** területen figyelheti. A művelet végeztével frissítse az oldalt, ekkor a tesztkörnyezetek listájában megjelenik az újonnan létrehozott tesztkörnyezet.  
+    7. Kattintson a **Létrehozás** gombra. A tesztkörnyezet létrehozásának folyamatát az **Értesítések** területen figyelheti. A művelet végeztével frissítse az oldalt, ekkor a tesztkörnyezetek listájában megjelenik az újonnan létrehozott tesztkörnyezet.  
     
-    ![Laborpanel létrehozása](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+    ![A DevTest Labs labor szakaszának létrehozása](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
