@@ -142,7 +142,6 @@ Mivel jelenleg kiszolgálói rendszergazdaként van bejelentkezve, rendelkezik m
 
     ```sql
     CREATE LOGIN MedRCLogin WITH PASSWORD = 'a123reallySTRONGpassword!';
-    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
 3. Most az *SQL Data Warehouse-adatbázis* lekérdezéséhez hozzon létre egy adatbázis-felhasználót azon bejelentkezés alapján, amelyet az adatbázishoz való hozzáféréshez és az azon való tevékenységek elvégzéséhez hozott létre.

@@ -20,7 +20,6 @@ ms.openlocfilehash: 64af585f81d39daaa5373d7cf080404ee5f1b037
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="what-are-logic-apps"></a>Mi a Logic Apps szolgáltatás?
 A Logic Apps lehetőséget teremt a skálázható integrálások és munkafolyamatok felhőbe implementálásának leegyszerűsítésére és implementálása. Egy vizuális tervezőt biztosít a folyamatai lépéssorozatként, más néven munkafolyamatként történő modellezésére és automatizálására.  Sok helyszíni és felhőben található [összekötő](../connectors/apis-list.md) létezik, amelyeket gyorsan integrálni lehet a szolgáltatások és protokollok között.  A logikai alkalmazás egy eseményindítóval kezdődik (például „amikor egy fiókot hozzáadnak a Dynamics CRM-hez”), és az indítás után számos műveleti, konverziós és feltétellogikai kombinációt kezdhet.
@@ -73,7 +72,7 @@ Az alábbiakban a Logic Apps használatának kulcsfontosságú elemeit emeljük 
 * [A Logic Apps segítségével történő rendszerintegráció módjainak megismerése](http://channel9.msdn.com/Events/Build/2016/P462)
 
 [biztalk]: logic-apps-enterprise-integration-accounts.md
-[appservice]: ../app-service/app-service-value-prop-what-is.md
+[appservice]: ../app-service/app-service-web-overview.md
 [create]: logic-apps-create-a-logic-app.md
 [managedapis]: ../connectors/apis-list.md
 [tpm]: logic-apps-enterprise-integration-accounts.md

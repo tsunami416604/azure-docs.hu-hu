@@ -100,7 +100,7 @@
         - name: Open API 2.0-definíció létrehozása
           href: functions-api-definition-getting-started.md
         - name: Exportálás a PowerAppsbe és a Microsoft Flow-ba
-          href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fazure-functions%2ftoc.json
+          href: app-service-export-api-to-powerapps-and-flow.md
         - name: Függvény hívása a PowerAppsből
           href: functions-powerapps-scenario.md
         - name: Felügyeltszolgáltatás-identitás használata

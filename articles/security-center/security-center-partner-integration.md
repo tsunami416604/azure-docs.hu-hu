@@ -12,7 +12,7 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2017
+ms.date: 09/12/2017
 ms.author: yurid
 ms.translationtype: HT
 ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
@@ -71,7 +71,7 @@ A Security Solutions megnyitásakor megjelenő tartalmak az infrastruktúráját
 
 A **Csatlakoztatott megoldások** szakasz a Security Centerhez aktuálisan csatlakozó összes biztonsági megoldást jeleníti meg. 
 
-![Csatlakoztatott megoldások](./media/security-center-partner-integration/security-center-partner-integration-fig10.png)
+![Csatlakoztatott megoldások](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
 Az egyes megoldásoknál látható adatok az adott megoldásoktól függően változhatnak. Az egyes csempéken elérhető információk például a következők lehetnek:
 
@@ -106,7 +106,7 @@ Az Azure AD Identity Protection riasztásai a Security Center észlelési folyam
 
 Azure-beli és nem Azure-beli számítógépeket is integrálhat a Security Centerrel.  A nem Azure-beli számítógépek hozzáadása azt jelenti, hogy helyszíni számítógépeket vagy a CEF-formátumot támogató berendezéseket is hozzáadhat. 
 
-![Adatforrások](./media/security-center-partner-integration/security-center-partner-integration-fig11.png)
+![Adatforrások](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
 
 ## <a name="see-also"></a>Lásd még:

@@ -92,8 +92,6 @@ A hibrid kapcsolatok a következő TCP-portokat használják:
 
 ## <a name="next-steps"></a>Következő lépések
 [Create and Manage Hybrid Connections (Hibrid kapcsolatok létrehozása és felügyelete)](integration-hybrid-connection-create-manage.md)<br/>
-<!-- [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
-[Connect to on-premises SQL Server from an Azure web app](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/> -->
 
 ## <a name="see-also"></a>Lásd még:
 [REST API a BizTalk Services felügyeletéhez a Microsoft Azure-ban](http://msdn.microsoft.com/library/azure/dn232347.aspx)
@@ -102,7 +100,4 @@ A hibrid kapcsolatok a következő TCP-portokat használják:
 [BizTalk Services: Irányítópult, Figyelés és Méret lapok](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
-[HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
-[HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
-[HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 

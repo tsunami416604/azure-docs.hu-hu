@@ -183,7 +183,7 @@
 ### [Továbbítás letöltésen keresztül](media-services-deliver-asset-download.md)
 ### [Feladatátvételi streamelési forgatókönyv](media-services-implement-failover.md)
 
-## Lejátszás
+## Felhasználás
 ### [Médiatartalom lejátszása meglévő lejátszókkal](media-services-playback-content-with-existing-players.md)
 ### [Médiatartalom lejátszása a Media Playerrel](media-services-develop-video-players.md)
 ### Egyéb lejátszási beállítások

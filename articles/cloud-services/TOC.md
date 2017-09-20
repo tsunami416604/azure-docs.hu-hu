@@ -60,7 +60,6 @@
 ### Az automatikus méretezés konfigurálása
 #### [Portál](cloud-services-how-to-scale-portal.md)
 #### [Klasszikus portál](cloud-services-how-to-scale.md)
-#### [PowerShell](cloud-services-how-to-scale-powershell.md)
 ### [Azure-erőforrások felügyelete a Pythonnal](cloud-services-python-how-to-use-service-management.md)
 
 ### [Vendég operációs rendszer javításai](cloud-services-guestos-msrc-releases.md)
