@@ -1,12 +1,17 @@
 # Áttekintés
 ## [Fejlesztői útmutató](azure-developer-guide.md) 
+### [Mi az Azure?](azure-developer-guide.md#what-is-azure)
+### [Hogyan kezdjek hozzá?](azure-developer-guide.md#where-do-i-start)
+### [Azure-régiók](azure-developer-guide.md#azure-regions)
+### [Hogyan kezelhetem az alkalmazásaimat és a projektjeimet?](azure-developer-guide.md#how-do-i-manage-my-applications-and-projects)
+### [A fiókok, az előfizetések és a számlázás ismertetése](azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)
 
-## [Az Azure szolgáltatásainak áttekintése](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure)
-## [A portál áttekintése](https://docs.microsoft.com/azure/azure-portal-overview)
+## [Az Azure szolgáltatásainak áttekintése](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
+## [A portál áttekintése](https://docs.microsoft.com/azure/azure-portal-overview?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
 ## [SDK-k és eszközök](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # Első lépések
-## [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-html)
+## [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)
 ## Virtual machines (Virtuális gépek)
 ### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
 ### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
@@ -17,10 +22,10 @@
 
 # oktatóanyagokat
 ## Webalkalmazás létrehozása és üzembe helyezése
-### [.NET és SQL DB](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase)
-### [Node.js és MongoDB](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app)
-### [PHP és MySQL](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-php-mysql)
-### [Java és MySQL](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-java-mysql)
+### [.NET és SQL DB](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
+### [Node.js és MongoDB](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+### [PHP és MySQL](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-php-mysql)
+### [Java és MySQL](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-java-mysql)
 ## Összetett virtuálisgép-sablonok üzembe helyezése
 ### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -29,25 +34,25 @@
 
 # Példák
 ## Azure CLI
-### [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-cli-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-cli-samples)
 ### [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
 ### [Windows rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
 ## PowerShell
-### [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-powershell-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-powershell-samples)
 ### [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
 ### [Windows rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples)
 
 # Alapelvek
 ## [Számlázás és előfizetés](https://docs.microsoft.com/azure/billing/billing-getting-started)
-## [Üzemeltetési lehetőségek összehasonlítása](https://docs.microsoft.com/azure/app-service-web/choose-web-site-cloud-service-vm)
-## [Mi az App Service?](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)
+## [Üzemeltetési lehetőségek összehasonlítása](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
+## [Mi az App Service?](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
 ## Virtual machines (Virtuális gépek)
 ### [Linux rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 ### [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/overview)
 ## [A Service Fabric áttekintése](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)
 
 # Útmutatók
-## [Csomag](https://docs.microsoft.com/azure/architecture/guide/)
+## Felkészülés
 ### [Webalkalmazás-architektúrák](https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/)
 ### [Virtuálisgép-architektúrák](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/)
 ### [Csatlakozás helyszíni hálózatokhoz](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
@@ -58,7 +63,7 @@
 ### [Kiszolgáló nélküli alkalmazások](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [Mikroszolgáltatások fürtje](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## Üzembe helyezés
-### [Webes és mobilalkalmazások a forráskezelőből](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)
+### [Webes és mobilalkalmazások a forráskezelőből](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
 ### [Helyi mikroszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -71,26 +76,25 @@
 ### [Üzenetsorok](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues)
 
 ## Méretezés
-### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service-web/web-sites-scale)
+### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/web-sites-scale)
 ### [Virtuális gépek](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)
 ### [Mikroszolgáltatások alkalmazásai](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability)
 
 ## Biztonságos
-### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-custom-ssl)
+### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
 ## Biztonsági mentés
-### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service-web/web-sites-backup)
+### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/web-sites-backup)
 ### [Virtuális gépek](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## Figyelés
-### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)
+### [Web- és mobilalkalmazások](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)
 ### [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
 ### [Windows rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
 ### [Mikroszolgáltatások](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)
 ### [Számlázási értesítések](https://docs.microsoft.com/azure/billing/billing-set-up-alerts)
 
 ## Automatizálás
-### [Webalkalmazások rugalmas fejlesztése](https://docs.microsoft.com/azure/app-service-web/app-service-agile-software-development)
 ### [Linux rendszerű virtuális gép skálázása](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-create-vmss)
 ### [Windows rendszerű virtuális gép skálázása](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-create-vmss)
 

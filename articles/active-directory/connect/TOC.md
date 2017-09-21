@@ -27,6 +27,7 @@
 ### [Ha már rendelkezik az Azure AD-vel](active-directory-aadconnect-existing-tenant.md)
 ## [Az Azure AD Connect kezelése](active-directory-aadconnect-whats-next.md)
 ### [O365- és Azure AD-tanúsítványok megújítása](active-directory-aadconnect-o365-certs.md)
+### [Active Directory összevonási szolgáltatások- (AD FS-) farm SSL-tanúsítványának frissítése](active-directory-aadconnectfed-ssl-update.md)
 ### [Eszközvisszaírás engedélyezése](active-directory-aadconnect-feature-device-writeback.md)
 ### [Felhasználói bejelentkezési lehetőségek](active-directory-aadconnect-user-signin.md)
 #### [Közvetlen egyszeri bejelentkezés](active-directory-aadconnect-sso.md)

@@ -1,0 +1,230 @@
+- name: App Service – dokumentáció
+- name: Áttekintés
+  items:
+    - name: Tudnivalók a Web Appsról
+      href: app-service-web-overview.md
+    - name: Tudnivalók a tárolókhoz készült Web Appról
+      href: containers/app-service-linux-intro.md
+    - name: Tudnivalók az App Service-környezetekről
+      href: environment/intro.md
+    - name: Az üzemeltetési lehetőségek összehasonlítása
+      href: choose-web-site-cloud-service-vm.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: .NET-alkalmazás létrehozása
+      href: app-service-web-get-started-dotnet.md
+    - name: Node.js-alapú alkalmazás létrehozása
+      href: app-service-web-get-started-nodejs.md
+    - name: PHP-alkalmazás létrehozása
+      href: app-service-web-get-started-php.md
+    - name: Java-alkalmazás létrehozása
+      href: app-service-web-get-started-java.md
+    - name: Python-alkalmazás létrehozása
+      href: app-service-web-get-started-python.md
+    - name: Statikus HTML-webhely létrehozása
+      href: app-service-web-get-started-html.md
+- name: oktatóanyagokat
+  items:
+    - name: 1 – Adatbázist használó alkalmazás
+      items:
+        - name: .NET és SQL DB
+          href: app-service-web-tutorial-dotnet-sqldatabase.md
+        - name: PHP és MySQL
+          href: app-service-web-tutorial-php-mysql.md
+        - name: Node.js és MongoDB
+          href: app-service-web-tutorial-nodejs-mongodb-app.md
+        - name: Java és MySQL
+          href: app-service-web-tutorial-java-mysql.md
+    - name: 1 – RESTful API létrehozása
+      href: app-service-web-tutorial-rest-api.md
+    - name: 2 – Egyéni tartomány leképezése
+      href: app-service-web-tutorial-custom-domain.md
+    - name: 3 – SSL-tanúsítvány kötése
+      href: app-service-web-tutorial-custom-ssl.md
+    - name: 4 – CDN hozzáadása
+      href: app-service-web-tutorial-content-delivery-network.md
+    - name: 5 – Csatlakozás helyszíni erőforrásokhoz
+      href: web-sites-integrate-with-vnet.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: app-service-cli-samples.md
+    - name: PowerShell
+      href: app-service-powershell-samples.md
+- name: Alapelvek
+  items:
+    - name: Az App Service működése
+      href: app-service-how-works-readme.md
+    - name: App Service-csomagok
+      href: azure-web-sites-web-hosting-plans-in-depth-overview.md
+    - name: OS-funkciók
+      href: web-sites-available-operating-system-functionality.md
+    - name: Hitelesítés és engedélyezés
+      href: app-service-authentication-overview.md
+    - name: Hibrid kapcsolatok
+      href: app-service-hybrid-connections.md
+    - name: A Traffic Manager integrálása
+      href: web-sites-traffic-manager.md
+- name: Útmutatók
+  items:
+    - name: Alkalmazás konfigurálása
+      items:
+        - name: Alkalmazásbeállítások használata
+          href: web-sites-configure.md
+        - name: Meglévő Java-alkalmazás feltöltése
+          href: web-sites-java-add-app.md
+        - name: A PHP konfigurálása
+          href: web-sites-php-configure.md
+        - name: Python
+          href: web-sites-python-configure.md
+    - name: Üzembe helyezés az Azure-ban
+      items:
+        - name: Az alkalmazás üzembe helyezése
+          items:
+            - name: Üzembe helyezés FTP használatával
+              href: app-service-deploy-ftp.md
+            - name: Üzembe helyezés felhőalapú szinkronizálással
+              href: app-service-deploy-content-sync.md
+            - name: Folyamatos üzembe helyezés
+              href: app-service-continuous-deployment.md
+            - name: Üzembe helyezés a helyi Gitből
+              href: app-service-deploy-local-git.md
+            - name: Üzembe helyezés sablon használatával
+              href: app-service-deploy-complex-application-predictably.md
+        - name: Telepítési hitelesítő adatok beállítása
+          href: app-service-deployment-credentials.md
+        - name: Átmeneti környezetek létrehozása
+          href: web-sites-staged-publishing.md
+    - name: Egyéni tartomány leképezése
+      items:
+        - name: Tartomány vásárlása
+          href: custom-dns-web-site-buydomains-web-app.md
+        - name: Tartományok leképezése a Traffic Managerrel
+          href: web-sites-traffic-manager-custom-domain-name.md
+        - name: Aktív tartomány migrálása
+          href: app-service-custom-domain-name-migrate.md
+    - name: Az alkalmazás védelme
+      items:
+        - name: SSL-tanúsítvány vásárlása
+          href: web-sites-purchase-ssl-web-site.md
+        - name: Felhasználók hitelesítése
+          items:
+            - name: Hitelesítés az Azure AD-vel
+              href: app-service-mobile-how-to-configure-active-directory-authentication.md
+            - name: Hitelesítés a Facebookkal
+              href: app-service-mobile-how-to-configure-facebook-authentication.md
+            - name: Hitelesítés a Google-lel
+              href: app-service-mobile-how-to-configure-google-authentication.md
+            - name: Hitelesítés Microsoft-fiókkal
+              href: app-service-mobile-how-to-configure-microsoft-authentication.md
+            - name: Hitelesítés a Twitterrel
+              href: app-service-mobile-how-to-configure-twitter-authentication.md
+        - name: Felügyeltszolgáltatás-identitás használata
+          href: app-service-managed-service-identity.md
+        - name: TLS kölcsönös hitelesítés beállítása
+          href: app-service-web-configure-tls-mutual-auth.md
+    - name: Az alkalmazás méretezése
+      items:
+        - name: Kiszolgálókapacitás vertikális felskálázása
+          href: web-sites-scale.md
+        - name: Horizontális felskálázás több példányra
+          href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json
+    - name: Alkalmazás monitorozása
+      items:
+        - name: Kvóták és riasztások
+          href: web-sites-monitor.md
+        - name: Naplók engedélyezése
+          href: web-sites-enable-diagnostic-log.md
+    - name: Alkalmazás kezelése
+      items:
+        - name: Alkalmazás biztonsági mentése
+          href: web-sites-backup.md
+        - name: Visszaállítás biztonsági másolatból
+          href: web-sites-restore.md
+        - name: Alkalmazás klónozása
+          href: app-service-web-app-cloning.md
+        - name: Erőforrások áthelyezése
+          href: app-service-move-resources.md
+    - name: Háttérfeladatok futtatása
+      items:
+        - name: WebJobs-feladatok létrehozása
+          href: web-sites-create-web-jobs.md
+        - name: WebJobs-feladatok fejlesztése VS használatával
+          href: websites-dotnet-deploy-webjobs.md
+- name: Referencia
+  items:
+    - name: CLI 2.0
+      href: /cli/azure/appservice
+    - name: PowerShell
+      href: /powershell
+    - name: REST API
+      href: /rest/api/appservice/
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/app-service/'
+    - name: Kvótákra vonatkozó információk
+      href: '../azure-subscription-service-limits.md#app-service-limits'
+    - name: Szolgáltatási hírek és kibocsátási megjegyzések
+      items:
+        - name: Azure-frissítések
+          href: 'https://azure.microsoft.com/updates/?product=app-service'
+        - name: Azure SDK for .NET 3.0
+          href: azure-sdk-dotnet-release-notes-3-0.md
+        - name: Azure SDK for .NET 2.9
+          href: azure-sdk-dotnet-release-notes-2-9.md
+        - name: Azure SDK for .NET 2.8
+          href: azure-sdk-dotnet-release-notes-2-8.md
+        - name: Azure SDK for .NET 2.7
+          href: azure-sdk-dotnet-release-notes-2-7.md
+        - name: Azure SDK for .NET 2.6
+          href: azure-sdk-dotnet-release-notes-2-6.md
+        - name: Azure SDK for .NET 2.5.1
+          href: app-service-release-notes.md
+        - name: Azure SDK for .NET 2.5
+          href: 'https://msdn.microsoft.com/library/azure/dn873976.aspx'
+        - name: Azure SDK for .NET 2.4
+          href: 'https://msdn.microsoft.com/library/azure/dn794167.aspx'
+        - name: Azure SDK for .NET 2.3
+          href: 'https://msdn.microsoft.com/library/azure/dn655054.aspx'
+        - name: Azure SDK for .NET 2.2
+          href: 'https://msdn.microsoft.com/library/azure/dn459835.aspx'
+        - name: Azure SDK for .NET 2.1
+          href: 'https://msdn.microsoft.com/library/azure/dn407359.aspx'
+        - name: Azure SDK for .NET 2.0
+          href: 'https://msdn.microsoft.com/library/azure/dn169556.aspx'
+    - name: Ajánlott eljárások
+      href: app-service-best-practices.md
+    - name: Példák
+      href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
+    - name: Részletes útmutatók
+      items:
+        - name: Referenciaarchitektúrák
+          href: ../guidance/guidance-ra-app-service.md
+        - name: Üzembehelyezési szkriptek
+          href: 'https://azure.microsoft.com/documentation/scripts/'
+    - name: Hibaelhárítás
+      items:
+        - name: Hibaelhárítás a Visual Studióval
+          href: web-sites-dotnet-troubleshoot-visual-studio.md
+        - name: Node.js-alapú alkalmazások hibaelhárítása
+          href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
+        - name: HTTP 502-es és 503-as hibák elhárítása
+          href: app-service-web-troubleshoot-http-502-http-503.md
+        - name: Teljesítményproblémák elhárítása
+          href: app-service-web-troubleshoot-performance-degradation.md
+        - name: GYIK
+          items:
+            - name: 'Rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos gyakori kérdések'
+              href: app-service-web-availability-performance-application-issues-faq.md
+            - name: Üzembe helyezéssel kapcsolatos gyakori kérdések
+              href: app-service-web-deployment-faq.md
+            - name: Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések
+              href: app-service-web-open-source-technologies-faq.md
+            - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
+              href: app-service-web-configuration-and-management-faq.md

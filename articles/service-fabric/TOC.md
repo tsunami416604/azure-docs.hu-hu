@@ -12,8 +12,9 @@
 ### [1. .NET-alkalmazás összeállítása](service-fabric-tutorial-create-dotnet-app.md)
 ### [2. Az alkalmazás telepítése](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 ### [3. A CI/CD beállítása](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+### [4. Monitorozás és diagnosztika](service-fabric-tutorial-monitoring-aspnet.md)
 
-## Egy alkalmazás átemelése
+## Meglévő .NET-alkalmazás tárolóba helyezése
 ### [1. Biztonságos fürt létrehozása az Azure-ban](service-fabric-tutorial-create-cluster-azure-ps.md)
 ### [2. .NET-alkalmazás üzembe helyezése a Docker Compose használatával](service-fabric-host-app-in-a-container.md)
 

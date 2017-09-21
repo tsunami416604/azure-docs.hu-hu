@@ -27,7 +27,7 @@
 ### [Kimenetek létrehozása](stream-analytics-define-outputs.md)
 ### [Kimenet az Azure Functionshöz](stream-analytics-functions-redis.md)
 ### [Kimenet a Data Lake Store-ba](stream-analytics-data-lake-output.md)
-### [Kimenet a DocumentDB-be](stream-analytics-documentdb-output.md)
+### [Kimenet a Cosmos DB-be](stream-analytics-documentdb-output.md)
 
 ## Monitorozás és optimalizálás
 ### [Riasztások hozzáadása](stream-analytics-set-up-alerts.md)

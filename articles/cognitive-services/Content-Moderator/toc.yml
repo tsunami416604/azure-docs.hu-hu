@@ -4,6 +4,30 @@
   items:
     - name: A tartalommoderátor ismertetése
       href: overview.md
+- name: Gyors útmutatók
+  items:
+    - name: Felülvizsgálati eszköz
+      href: quick-start.md
+    - name: Moderálási API-k
+      items:
+        - name: Kép API
+          href: try-image-api.md
+        - name: Képlista API
+          href: try-image-list-api.md
+        - name: Szöveg API
+          href: try-text-api.md
+        - name: Kifejezéslista API
+          href: try-terms-list-api.md
+    - name: API-k áttekintése
+      items:
+        - name: Feladatok
+          href: try-review-api-job.md
+        - name: Felülvizsgálatok
+          href: try-review-api-review.md
+        - name: Munkafolyamatok
+          href: try-review-api-workflow.md
+- name: Alapelvek
+  items:
     - name: Képmoderálás
       href: image-moderation-api.md
     - name: Szövegmoderálás
@@ -14,31 +38,9 @@
       href: video-moderation-api.md
     - name: API-k áttekintése
       href: review-api.md
-- name: Bevezetés
+- name: Útmutatók
   items:
-    - name: A felülvizsgálati eszköz
-      href: quick-start.md
-    - name: Próbálja ki a moderálási API-kat
-      items:
-        - name: Képek
-          href: try-image-api.md
-        - name: Rendszerképlisták
-          href: try-image-list-api.md
-        - name: Szöveg
-          href: try-text-api.md
-        - name: Kifejezéslisták
-          href: try-terms-list-api.md
-    - name: A felülvizsgálati API-k kipróbálása
-      items:
-        - name: Feladatok
-          href: try-review-api-job.md
-        - name: Felülvizsgálatok
-          href: try-review-api-review.md
-        - name: Munkafolyamatok
-          href: try-review-api-workflow.md
-- name: Útmutató
-  items:
-    - name: A felülvizsgálati eszköz használata
+    - name: Felülvizsgálati eszköz
       items:
         - name: Human in the loop
           href: Review-Tool-User-Guide/human-in-the-loop.md

@@ -1,0 +1,134 @@
+- name: App Service-környezet
+- name: Áttekintés
+  items:
+    - name: Tudnivalók az App Service-környezetekről
+      href: intro.md
+    - name: Az üzemeltetési lehetőségek összehasonlítása
+      href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Alkalmazás létrehozása App Service-környezetben
+      href: create-external-ase.md
+    - name: Létrehozás sablonból
+      href: create-from-template.md
+- name: oktatóanyagokat
+  items:
+    - name: Elkülönített alkalmazás létrehozása
+      href: create-ilb-ase.md
+    - name: Integrálás WAP-pal
+      href: app-service-app-service-environment-web-application-firewall.md
+    - name: Bejövő forgalom átirányítása nyilvános alkalmazásba
+      href: app-service-app-service-environment-control-inbound-traffic.md
+    - name: Alkalmazás horizontális felskálázása az ASE-ben
+      href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: ../app-service-cli-samples.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+    - name: PowerShell
+      href: ../app-service-powershell-samples.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+- name: Alapelvek
+  items:
+    - name: Hálózati architektúra
+      href: network-info.md
+    - name: Felügyeleti címek
+      href: management-addresses.md
+    - name: Földrajzilag elosztott skálázás
+      href: app-service-app-service-environment-geo-distributed-scale.md
+    - name: ASEv1
+      items:
+        - name: Az ASEv1 bemutatása
+          href: app-service-app-service-environment-intro.md
+        - name: Hálózati architektúra
+          href: app-service-app-service-environment-network-architecture-overview.md
+- name: Útmutatók
+  items:
+    - name: ASE konfigurálása
+      items:
+        - name: ASE használata
+          href: using-an-ase.md
+        - name: Csatlakozás háttérrendszerhez
+          href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
+        - name: ExpressRoute konfigurálása
+          href: app-service-app-service-environment-network-configuration-expressroute.md
+    - name: Az ASE védelme
+      items:
+        - name: TLS konfigurálása
+          href: app-service-app-service-environment-custom-settings.md
+        - name: Többrétegű védelem használata
+          href: app-service-app-service-environment-layered-security.md
+    - name: ASE monitorozása
+      items:
+        - name: Monitorozás a portálon
+          href: app-service-web-configure-an-app-service-environment.md
+    - name: ASE1 használata
+      items:
+        - name: Automatikus skálázás konfigurálása
+          href: app-service-environment-auto-scale.md
+        - name: ASEv1 létrehozása
+          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: Webalkalmazás létrehozása az ASEv1-ben
+          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
+        - name: Belső alkalmazás létrehozása az ASEv1-ben
+          href: app-service-environment-with-internal-load-balancer.md
+        - name: Belső alkalmazás létrehozása sablonnal
+          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
+        - name: Nagy sűrűségű üzemeltetés
+          href: app-service-high-density-hosting.md
+- name: Referencia
+  items:
+    - name: CLI 2.0
+      href: /cli/azure/appservice
+    - name: PowerShell
+      href: /powershell
+    - name: REST API
+      href: /rest/api/appservice/
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/app-service/'
+    - name: Kvótákra vonatkozó információk
+      href: '../../azure-subscription-service-limits.md#app-service-limits'
+    - name: Szolgáltatási hírek és kibocsátási megjegyzések
+      href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Ajánlott eljárások
+      href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+    - name: Példák
+      href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
+    - name: Videók
+      items:
+        - name: Azure-videók
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
+        - name: A nagyvállalati modern PaaS használatának elsajátítása az Azure App Service-szel
+          href: 'https://channel9.msdn.com/Events/Ignite/2016/BRK3205/player'
+        - name: Hatékonyan skálázható és biztonságos alkalmazások üzembe helyezése
+          href: 'https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON325/player'
+        - name: Nagyvállalati web- és mobilalkalmazások futtatása az Azure App Service-ben
+          href: 'https://channel9.msdn.com/Events/Ignite/2015/BRK3715/player'
+    - name: Részletes útmutatók
+      items:
+        - name: Üzembehelyezési szkriptek
+          href: 'https://azure.microsoft.com/documentation/scripts/'
+    - name: Hibaelhárítás
+      items:
+        - name: Hibaelhárítás a Visual Studióval
+          href: ../web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+        - name: Node.js-alapú alkalmazások hibaelhárítása
+          href: ../app-service-web-nodejs-best-practices-and-troubleshoot-guide.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+        - name: HTTP 502-es és 503-as hibák elhárítása
+          href: ../app-service-web-troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+        - name: Teljesítményproblémák elhárítása
+          href: ../app-service-web-troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+        - name: GYIK
+          items:
+            - name: 'Rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos gyakori kérdések'
+              href: ../app-service-web-availability-performance-application-issues-faq.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+            - name: Üzembe helyezéssel kapcsolatos gyakori kérdések
+              href: ../app-service-web-deployment-faq.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+            - name: Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések
+              href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
+            - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
+              href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json

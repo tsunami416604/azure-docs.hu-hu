@@ -95,10 +95,24 @@
 ## Hibaelhárítás
 ### [Gyakori telepítési hibák](resource-manager-common-deployment-errors.md)
 ### [A telepítési hibák értelmezése](resource-manager-troubleshoot-tips.md)
-### [RequestDisallowedByPolicy hiba](resource-manager-policy-requestdisallowedbypolicy-error.md)
+### Hibák elhárítása
+#### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
+#### [InvalidTemplate](resource-manager-invalid-template-errors.md)
+#### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
+#### [NotFound](resource-manager-not-found-errors.md)
+#### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
+#### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+#### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
+#### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
 ### Virtuális gépek telepítési hibái
-#### [Linux](../virtual-machines/linux/troubleshoot-deploy-vm.md)
-#### [Windows](../virtual-machines/windows/troubleshoot-deploy-vm.md)
+#### Linux
+##### [Üzembe helyezési problémák](../virtual-machines/linux/troubleshoot-deploy-vm.md)
+##### [Kiépítéssel és foglalással kapcsolatos problémák](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
+##### [Gyakori hibaüzenetek](../virtual-machines/linux/error-messages.md)
+#### Windows
+##### [Üzembe helyezési problémák](../virtual-machines/windows/troubleshoot-deploy-vm.md)
+##### [Kiépítéssel és foglalással kapcsolatos problémák](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
+##### [Gyakori hibaüzenetek](../virtual-machines/windows/error-messages.md)
 
 # Referencia
 ## [Sablon formátuma](/azure/templates/)

@@ -42,6 +42,7 @@
 #### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
+#### [A felhasználókra és az alkalmazásra vonatkozó használati feltételek biztosítása](active-directory-tou.md)
 #### [PowerShell forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 ### [Más címtárakban szereplő felhasználók felvétele (klasszikus portál)](active-directory-create-users-external.md)
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
@@ -197,6 +198,7 @@
 #### [Az összes alkalmazás megtekintése](active-directory-coreapps-view-azure-portal.md)
 #### [Felhasználói fiók üzembe helyezésének kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Egyszeri bejelentkezés kezelése nagyvállalati alkalmazások esetében](active-directory-enterprise-apps-manage-sso.md)
+#### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](active-directory-enterprise-apps-advance-certificate-options.md)
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)
@@ -273,6 +275,17 @@
 #### [Rendszergazdai szerepkörök hozzárendelése](active-directory-users-assign-role-azure-portal.md)
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
+
+## Hozzáférési felülvizsgálatok
+### [Hozzáférési felülvizsgálatok áttekintése](active-directory-azure-ad-controls-access-reviews-overview.md)
+### [Hozzáférési felülvizsgálat befejezése](active-directory-azure-ad-controls-complete-access-review.md)
+### [Hozzáférési felülvizsgálat létrehozása](active-directory-azure-ad-controls-create-access-review.md)
+### [Hozzáférési felülvizsgálat végrehajtása](active-directory-azure-ad-controls-perform-access-review.md)
+### [A hozzáférés felülvizsgálata](active-directory-azure-ad-controls-how-to-review-your-access.md)
+### [Vendéghozzáférés hozzáférési felülvizsgálatokkal](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
+### [Felhasználói hozzáférések kezelése felülvizsgálatokkal](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
+### [Programok és vezérlők kezelése](active-directory-azure-ad-controls-manage-programs-controls.md)
+
 
 ## Identitások védelme
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)

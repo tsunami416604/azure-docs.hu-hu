@@ -32,6 +32,7 @@
 ##### [Az Intel NUC beállítása átjáróként](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 ##### [Az IoT Hub és az átjáró összekapcsolása](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 ##### [Az átjáró használata adatátalakításra](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+##### [hibaelhárítással](iot-hub-gateway-kit-c-troubleshooting.md)
 
 ## Bővített IoT-forgatókönyvek
 ### [Eszközök felhőalapú üzenetkezelése az iothub-explorerrel](iot-hub-explorer-cloud-device-messaging.md)
@@ -82,7 +83,9 @@
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
-### [Fájlok feltöltése eszközökről](iot-hub-csharp-csharp-file-upload.md)
+### [Fájlok feltöltése eszközökről]
+#### [.NET](iot-hub-csharp-csharp-file-upload.md)
+#### [Java](iot-hub-java-java-file-upload.md)
 ### Ikereszközök – első lépések
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-getstarted.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-getstarted.md)
@@ -96,11 +99,13 @@
 ### Ismerkedés az eszközfelügyelettel
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-device-management-get-started.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-device-management-get-started.md)
+#### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-device-management-getstarted.md)
 ### Az ikertulajdonságok használata
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-how-to-configure.md)
+#### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-how-to-configure.md)
 ### Eszközfeladatok használata az eszköz belső vezérlőprogramjának frissítéséhez
 #### [Node-háttérrendszer/Node-eszköz](iot-hub-node-node-firmware-update.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-firmware-update.md)
