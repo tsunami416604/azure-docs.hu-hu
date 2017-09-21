@@ -7,16 +7,15 @@
 ## [Kompatibilis külső szoftverek](active-directory-ds-compatible-software.md)
 
 # Bevezetés
-## Azure Portal (előnézet)
-### [1. feladat: az alapvető beállítások konfigurálása](active-directory-ds-getting-started.md)
-### [2. feladat: a hálózati beállítások konfigurálása](active-directory-ds-getting-started-network.md)
-### [3. feladat: rendszergazdai csoport konfigurálása és az Azure AD Domain Services engedélyezése](active-directory-ds-getting-started-admingroup.md)
-### [4. feladat: a virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
-### [5. feladat: jelszavak szinkronizálásának engedélyezése](active-directory-ds-getting-started-password-sync.md)
+## [1. feladat: az alapvető beállítások konfigurálása](active-directory-ds-getting-started.md)
+## [2. feladat: a hálózati beállítások konfigurálása](active-directory-ds-getting-started-network.md)
+## [3. feladat: rendszergazdai csoport konfigurálása és az Azure AD Domain Services engedélyezése](active-directory-ds-getting-started-admingroup.md)
+## [4. feladat: a virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
+## [5. feladat: jelszavak szinkronizálásának engedélyezése](active-directory-ds-getting-started-password-sync.md)
 
 # Útmutató
 ## Csatlakozás egy felügyelt tartományhoz
-### [Csatlakozás Windows Server rendszerű virtuális géphez](active-directory-ds-admin-guide-join-windows-vm.md)
+### [Csatlakozás Windows Server rendszerű virtuális géphez](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Csatlakozás Windows Server rendszerű virtuális géphez a PowerShell használatával](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
 ### [Csatlakozás Linux rendszerű virtuális géphez](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 ## Felügyelt tartomány kezelése

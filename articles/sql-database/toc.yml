@@ -257,14 +257,6 @@
           href: sql-database-ssms-mfa-authentication-configure.md
     - name: Az üzletmenet folytonossága
       items:
-        - name: Tároló konfigurálása – biztonsági másolatok
-          href: sql-database-long-term-backup-retention-configure.md
-        - name: Georeplikáció – Portál
-          href: sql-database-geo-replication-portal.md
-        - name: Egyetlen tábla helyreállítása
-          href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
-    - name: Adatok betöltése és áthelyezése
-      items:
         - name: Adatok betöltése a BCP használatával
           href: sql-database-load-from-csv-with-bcp.md
         - name: Adatok betöltése az ADF használatával

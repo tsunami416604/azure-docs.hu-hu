@@ -131,6 +131,8 @@
           href: download-template.md
         - name: Azure virtuálisgép-ügynök
           href: agent-user-guide.md
+        - name: Tervezett karbantartás
+          href: maintenance-notifications.md
         - name: Ütemezett események
           href: scheduled-events.md
         - name: Metaadatok monitorozása
