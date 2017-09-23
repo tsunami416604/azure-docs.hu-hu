@@ -1,6 +1,4 @@
-<a id="to-configure-and-register-the-cloud-appliance" class="xliff"></a>
-
-#### A felhőalapú berendezés konfigurálása és regisztrálása
+#### <a name="to-configure-and-register-the-cloud-appliance"></a>A felhőalapú berendezés konfigurálása és regisztrálása
 
 1. Az **Eszközök** panelen válassza ki a létrehozott StorSimple Cloud Appliance-t, majd kattintson rá.
 

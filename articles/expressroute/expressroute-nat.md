@@ -20,7 +20,6 @@ ms.openlocfilehash: d3de566ff2825ef0c41d88d4a86157dc23d9f46b
 ms.contentlocale: hu-hu
 ms.lasthandoff: 05/15/2017
 
-
 ---
 # <a name="expressroute-nat-requirements"></a>Az ExpressRoute NAT-követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, NAT-okat kell beállítania és kezelnie. Egyes kapcsolatszolgáltatók felügyelt szolgáltatásként kínálják a NAT beállítását és kezelését. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínál-e ilyen szolgáltatást. Ha nem, akkor meg kell felelnie az alább ismertetett követelményeknek. 

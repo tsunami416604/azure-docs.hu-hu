@@ -52,8 +52,8 @@ A Data Lake Store a titkosítási főkulcsok (Master Encryption Key, MEK) kezel�
 
 A titkosítási főkulcs kezelésének kétféle módja a következő:
 
-*    Szolgáltatás által kezelt kulcsok
-*    Felhasználó által kezelt kulcsok
+*   Szolgáltatás által kezelt kulcsok
+*   Felhasználó által kezelt kulcsok
 
 A titkosítási főkulcs mindkét mód esetében az Azure Key Vaultban van biztonságosan tárolva. A Key Vault az Azure teljes körűen felügyelt, magas biztonsági szinten lévő szolgáltatása, amely biztosítja a titkosítási kulcsok védelmét. További információkért lásd a [Key Vaultról](https://azure.microsoft.com/services/key-vault) szóló cikket.
 
@@ -74,8 +74,8 @@ Ezen, a MEK kezelőjét és a Key Vault-példány elhelyezkedését illető elt�
 
 A titkosítási főkulcsok kezelési módjának megválasztásakor fontos szem előtt tartani a következőket:
 
-*    A Data Lake Store-fiók létrehozásakor kiválaszthatja, hogy felhasználó által vagy a szolgáltatás által kezelt kulcsokat kíván-e használni.
-*    Ez a mód a Data Lake Store-fiókok üzembe helyezése után nem módosítható.
+*   A Data Lake Store-fiók létrehozásakor kiválaszthatja, hogy felhasználó által vagy a szolgáltatás által kezelt kulcsokat kíván-e használni.
+*   Ez a mód a Data Lake Store-fiókok üzembe helyezése után nem módosítható.
 
 ### <a name="encryption-and-decryption-of-data"></a>Adattitkosítás és -visszafejtés
 
@@ -92,20 +92,20 @@ Az alapelveket a következő ábra mutatja be:
 ![Adattitkosítási kulcsok](./media/data-lake-store-encryption/fig2.png)
 
 #### <a name="pseudo-algorithm-when-a-file-is-to-be-decrypted"></a>A fájl visszafejtésekor használatos pszeudoalgoritmus:
-1.    Ellenőrizze, hogy a Data Lake Store-fiók adattitkosítási kulcsa gyorsítótárazva van-e és használatra kész-e.
+1.  Ellenőrizze, hogy a Data Lake Store-fiók adattitkosítási kulcsa gyorsítótárazva van-e és használatra kész-e.
     - Ha nem, olvassa ki a titkosított adattitkosítási kulcsot az állandó tárolóból, és visszafejtésre küldje el a Key Vaultba. Gyorsítótárazza a visszafejtett adattitkosítási kulcsot. A fájl ezzel használatra kész.
-2.    A fájl minden adatblokkja esetében:
+2.  A fájl minden adatblokkja esetében:
     - Olvassa ki a titkosított adatblokkot az állandó tárolóból.
     - Hozza létre a blokktitkosítási kulcsot az adattitkosítási kulcsból és a titkosított adatblokkból.
     - A blokktitkosítási kulcs használatával fejtse vissza az adatokat.
 
 
 #### <a name="pseudo-algorithm-when-a-block-of-data-is-to-be-encrypted"></a>Az adatblokk titkosításakor használatos pszeudoalgoritmus:
-1.    Ellenőrizze, hogy a Data Lake Store-fiók adattitkosítási kulcsa gyorsítótárazva van-e és használatra kész-e.
+1.  Ellenőrizze, hogy a Data Lake Store-fiók adattitkosítási kulcsa gyorsítótárazva van-e és használatra kész-e.
     - Ha nem, olvassa ki a titkosított adattitkosítási kulcsot az állandó tárolóból, és visszafejtésre küldje el a Key Vaultba. Gyorsítótárazza a visszafejtett adattitkosítási kulcsot. A fájl ezzel használatra kész.
-2.    Hozzon létre egy egyedi blokktitkosítási kulcsot az adatblokk számára az adattitkosítási kulcsból.
-3.    AES-256 titkosítással végezze el a blokktitkosítási kulccsal ellátott adatblokk titkosítását.
-4.    A titkosított adatblokk az állandó tárolóban lesz tárolva.
+2.  Hozzon létre egy egyedi blokktitkosítási kulcsot az adatblokk számára az adattitkosítási kulcsból.
+3.  AES-256 titkosítással végezze el a blokktitkosítási kulccsal ellátott adatblokk titkosítását.
+4.  A titkosított adatblokk az állandó tárolóban lesz tárolva.
 
 > [!NOTE] 
 > A titkosítatlan adattitkosítási kulcsot a rendszer a teljesítmény javítása érdekében egy rövid időre gyorsítótárazza a memóriában, és annak elteltével azonnal törli azt. Az állandó adathordozón a tárolás mindig a titkosítási főkulcs által titkosítva történik.
@@ -127,15 +127,15 @@ Vegye figyelembe, hogy az alapértelmezett titkosítási beállítások használ
 
     ![Képernyőkép a Key Vaultról](./media/data-lake-store-encryption/keyvault.png)
 
-3.    Válassza ki a Data Lake Store-fiókhoz társított kulcsot, és hozza létre annak egy új verzióját. A Data Lake Store kizárólag az új kulcsverzióra történő kulcsrotálást támogatja. A más kulcsra történő kulcsrotálás nem támogatott.
+3.  Válassza ki a Data Lake Store-fiókhoz társított kulcsot, és hozza létre annak egy új verzióját. A Data Lake Store kizárólag az új kulcsverzióra történő kulcsrotálást támogatja. A más kulcsra történő kulcsrotálás nem támogatott.
 
    ![Képernyőkép a Kulcsok ablakról, amelyen az Új verzió elem van kiemelve](./media/data-lake-store-encryption/keynewversion.png)
 
-4.    Nyissa meg a Data Lake Store-tárfiókot, és válassza a **Titkosítás** elemet.
+4.  Nyissa meg a Data Lake Store-tárfiókot, és válassza a **Titkosítás** elemet.
 
     ![Képernyőkép a Data Lake Store-tárfiók ablakról, amelyen a Titkosítás van kiemelve](./media/data-lake-store-encryption/select-encryption.png)
 
-5.    Megjelenik egy tájékoztató üzenet arról, hogy a kulcs egy új verziója érhető el. A kulcs új verzióra történő frissítéséhez kattintson a **Kulcs rotálása** lehetőségre.
+5.  Megjelenik egy tájékoztató üzenet arról, hogy a kulcs egy új verziója érhető el. A kulcs új verzióra történő frissítéséhez kattintson a **Kulcs rotálása** lehetőségre.
 
     ![Képernyőkép a Data Lake Store ablakról, amelyen az üzenet és a Kulcs rotálása van kiemelve](./media/data-lake-store-encryption/rotatekey.png)
 

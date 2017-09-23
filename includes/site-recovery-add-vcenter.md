@@ -4,8 +4,3 @@
 
    > [!NOTE]
    > Ha egy olyan fiókkal adja hozzá a VMware vCenter-kiszolgálót vagy VMware vSphere-gazdagépet, amely nem rendelkezik rendszergazdai jogosultsággal a vCenter- vagy a gazdagép-kiszolgálón, győződjön meg róla, hogy a fiókon engedélyezve vannak a következő jogosultságok: Adatközpont, Adattár, Mappa, Gazdagép, Hálózat, Erőforrás, Virtuális gép és vSphere elosztott kapcsoló. Emellett a VMware vCenter-kiszolgálón engedélyeznie kell a Storage-nézetek jogosultságot.
-
-
-<!--HONumber=Feb17_HO2-->
-
-

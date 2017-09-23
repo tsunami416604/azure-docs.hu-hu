@@ -28,8 +28,3 @@ Az alábbi korlátok vonatkoznak az egyes Log Analytics-munkaterületekre:
 | Data Collector API | Az egyedi közzétételek maximális mérete 30 MB<br>A mezőértékek maximális mérete 32 KB | A nagyobb mennyiségeket bontsa több közzétételre<br>A 32 KB-nál hosszabb mezők csonkolva lesznek. |
 | Keresési API | 5000 visszaadott rekord a nem összesített adatok esetében<br>500 000 rekord az összesített adatok esetében | Az összesített adatok a `measure` parancsot tartalmazó kereséssel lekért adatok
  
-
-
-<!--HONumber=Feb17_HO3-->
-
-

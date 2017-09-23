@@ -20,7 +20,6 @@ ms.openlocfilehash: c502e4363dbaa37455d1aad90d1e9fa855fd09b0
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/17/2017
 
-
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikusok, megoldástervezők, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák számára készült, akik az Azure Security Center egész vállalatra kiterjedő bevezetését tervezik.

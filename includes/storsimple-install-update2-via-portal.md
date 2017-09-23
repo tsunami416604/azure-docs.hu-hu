@@ -34,8 +34,3 @@
 9. A frissítés elvégzése néhány órát igényel. Válassza ki a frissítési feladatot, és kattintson a **Részletek** gombra, így bármikor megtekintheti a feladat részleteit.
 10. A feladat elvégzése után lépjen a **Maintenance** (Karbantartás) lapra, és görgessen le a **Software Updates** (Szoftverfrissítések) elemhez.
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

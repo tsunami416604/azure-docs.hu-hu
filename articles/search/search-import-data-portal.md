@@ -21,7 +21,6 @@ ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
 ms.contentlocale: hu-hu
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>Adatok importálása az Azure Search szolgáltatásba a portál használatával
 Az Azure portál Azure Search irányítópultján található **Adatok importálása** varázsló segítségével az adatok betölthetők egy indexbe. 

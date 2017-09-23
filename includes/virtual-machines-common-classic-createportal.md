@@ -25,8 +25,3 @@ Az *egyéni* virtuális gép egyszerűen egy olyan virtuális gép, amelyet a **
 >
 
 ## <a name="to-create-the-virtual-machine"></a>A virtuális gép létrehozása
-
-
-<!--HONumber=Feb17_HO3-->
-
-

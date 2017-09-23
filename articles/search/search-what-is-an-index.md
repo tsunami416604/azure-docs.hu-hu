@@ -12,10 +12,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
 ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
-
+ms.contentlocale: hu-hu
+ms.lasthandoff: 12/10/2016
 
 ---
 # <a name="create-an-azure-search-index"></a>Azure Search-index létrehozása
@@ -65,10 +66,5 @@ Részletesebb információkat az Azure Search [indexattribútumairól itt](https
 Az index kialakításakor szánjon időt a tervezési fázisban az egyes döntések átgondolására. Fontos, hogy az index megtervezésekor a felhasználóként szerzett keresési tapasztalatának és üzleti igényeinek szem előtt tartásával járjon el, és az egyes mezőkhöz a [megfelelő attribútumokat](https://docs.microsoft.com/rest/api/searchservice/Create-Index) rendelje. Az index üzembe helyezést követő módosítása annak újraépítésével és az adatok újbóli feltöltésével jár.
 
 Amennyiben az adattárolási követelmények idővel változnak, a partíciók hozzáadásával vagy eltávolításával növelheti vagy csökkentheti a rendszer kapacitását. Részletes információkat [A Search szolgáltatás kezelése az Azure-ban](search-manage.md) vagy a [Szolgáltatásokra vonatkozó korlátozások](search-limits-quotas-capacity.md) című cikkekben talál.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -20,7 +20,6 @@ ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
 ms.contentlocale: hu-hu
 ms.lasthandoff: 05/17/2017
 
-
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure virtuális gép titkosítása
 Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes virtuális gépek nincsenek titkosítva. Ezek a riasztások magas súlyossági szinttel jelennek meg. A rendszer ilyenkor javasolja, hogy titkosítsa az érintett virtuális gépeket.

@@ -7,8 +7,3 @@ A cikk a következőket feltételezi:
 
 > [!TIP]
 > Ellenőrizze, hogy tud-e csatlakozni a (helyszínen futó) konfigurációs kiszolgáló 443-as portjához abból az Azure Virtual Networkből, amelybe a virtuális gépek feladatátadása megtörtént.
-
-
-<!--HONumber=Feb17_HO1-->
-
-

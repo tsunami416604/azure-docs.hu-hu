@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: vybavar
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: a9b48f149427e5ceb69bcaa97b1bf08519499b6f
 ms.openlocfilehash: 01657619cbe579c6818a790cc3ab95a33936a565
-
+ms.contentlocale: hu-hu
+ms.lasthandoff: 02/17/2017
 
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Bevezetés a magánsablonok használatába az Azure portálon
@@ -132,10 +133,5 @@ Kattintson a **Kijelölés**, majd az **OK** gombra. A megjelenő képernyőn l�
 * A Resource Manager-sablonok létrehozásával kapcsolatos további információk: [Authoring templates](../azure-resource-manager/resource-group-authoring-templates.md) (Sablonok készítése)
 * A Resource Manager-sablonokban használható függvények ismertetése: [Template functions](../azure-resource-manager/resource-group-template-functions.md) (Sablonfüggvények)
 * A sablonok kialakításával kapcsolatos útmutatásért lásd: [Best practices for designing Azure Resource Manager templates](../azure-resource-manager/best-practices-resource-manager-design-templates.md) (Azure Resource Manager-sablonok tervezésének ajánlott eljárásai)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

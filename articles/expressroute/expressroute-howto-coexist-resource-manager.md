@@ -21,7 +21,6 @@ ms.openlocfilehash: ffa791cf4c4be15645a67fef4e94bf6ebdc42a6a
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/07/2017
 
-
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása
 > [!div class="op_single_selector"]

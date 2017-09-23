@@ -1,6 +1,4 @@
-<a id="to-stop-and-start-a-cloud-appliance" class="xliff"></a>
-
-#### Felhőalapú készülék leállítása és indítása
+#### <a name="to-stop-and-start-a-cloud-appliance"></a>Felhőalapú készülék leállítása és indítása
 
 1. Felhőalapú készülék leállításához lépjen a felhőalapú berendezéshez tartozó virtuális gépre.
     ![StorSimple Cloud Appliance virtuális gépe](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)
@@ -27,9 +25,7 @@ A felhőalapú készülékeket az alábbi parancsmagok segítségével állítha
 
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-<a id="to-restart-a-cloud-appliance" class="xliff"></a>
-
-#### Felhőalapú készülék újraindítása
+#### <a name="to-restart-a-cloud-appliance"></a>Felhőalapú készülék újraindítása
 
 Felhőalapú készülék újraindításához lépjen a felhőalapú berendezéshez tartozó virtuális gépre. A parancssávon kattintson az **Újraindítás** elemre. A rendszer kérésére erősítse meg az újraindítást. Ha a felhőalapú készülék használatra kész, az eszköz állapota **Fut**.
 

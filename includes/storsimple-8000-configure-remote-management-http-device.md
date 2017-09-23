@@ -1,7 +1,5 @@
 
-<a id="to-configure-remote-management-on-cloud-appliance" class="xliff"></a>
-
-#### A távfelügyelet konfigurálása a felhőalapú készüléken
+#### <a name="to-configure-remote-management-on-cloud-appliance"></a>A távfelügyelet konfigurálása a felhőalapú készüléken
 
 1. A StorSimple-eszközkezelő szolgáltatásban kattintson az **Eszközök** elemre. Válassza ki a felhőalapú készüléket a szolgáltatáshoz csatlakoztatott eszközök listájából, majd kattintson rá.
     ![Felhőalapú készülék kiválasztása a StorSimple-ben](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage1.png)

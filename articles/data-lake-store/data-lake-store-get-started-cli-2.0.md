@@ -20,11 +20,8 @@ ms.openlocfilehash: ed78d25f2bac0a9996f1796ee503f31a36940977
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/01/2017
 
-
 ---
-<a id="get-started-with-azure-data-lake-store-using-azure-cli-20" class="xliff"></a>
-
-# Az Azure Data Lake Store használatának első lépései az Azure CLI 2.0 használatával
+# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Az Azure Data Lake Store használatának első lépései az Azure CLI 2.0 használatával
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -42,25 +39,19 @@ Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure CLI 2.0
 Az Azure CLI 2.0 az Azure új parancssori felülete, amely Azure-erőforrások felügyeletére szolgál. A szolgáltatás macOS, Linux és Windows rendszereken használható. További információért lásd: [Az Azure CLI 2.0 áttekintése](https://docs.microsoft.com/cli/azure/overview). A parancsok és a szintaxis teljes listája az [Azure Data Lake Store CLI 2.0 dokumentációjában](https://docs.microsoft.com/cli/azure/dls) található.
 
 
-<a id="prerequisites" class="xliff"></a>
-
-## Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure CLI 2.0** – az utasításokért lásd: [Az Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-<a id="authentication" class="xliff"></a>
-
-## Authentication
+## <a name="authentication"></a>Authentication
 
 Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ral, ahol Ön végfelhasználóként jelentkezik be. Ezután a Data Lake Store-fiókhoz és a fájlrendszerhez való hozzáférés szintje a bejelentkezett felhasználó hozzáférési szintjétől függ. Azonban a Data Lake Store-ral más módokon is lehet hitelesíteni. Ezek a következők: **végfelhasználói hitelesítés** vagy **szolgáltatások közötti hitelesítés**. Útmutatás a hitelesítéshez és további tudnivalók a [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md) vagy a [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md) című témakörben.
 
 
-<a id="log-in-to-your-azure-subscription" class="xliff"></a>
-
-## Bejelentkezés az Azure-előfizetésbe
+## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
 
 1. Jelentkezzen be az Azure-előfizetésébe.
 
@@ -76,9 +67,7 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ra
     az account set --subscription <subscription id> 
     ```
 
-<a id="create-an-azure-data-lake-store-account" class="xliff"></a>
-
-## Azure Data Lake Store-fiók létrehozása
+## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store-fiók létrehozása
 
 1. Hozzon létre egy új erőforráscsoportot. Az alábbi parancsban adja meg a használni kívánt paraméterértékeket. Ha a hely neve tartalmaz szóközöket, használjon idézőjeleket. Például: „USA 2. keleti régiója”. 
    
@@ -92,9 +81,7 @@ Ez a cikk egy egyszerűbb hitelesítési módszert használ a Data Lake Store-ra
     az dls account create --account mydatalakestore --resource-group myresourcegroup
     ```
 
-<a id="create-folders-in-a-data-lake-store-account" class="xliff"></a>
-
-## Mappák létrehozása Data Lake Store-fiókban
+## <a name="create-folders-in-a-data-lake-store-account"></a>Mappák létrehozása Data Lake Store-fiókban
 
 Mappákat hozhat létre az Azure Data Lake Store-fiókjában az adatok kezelése és tárolása céljából. Az alábbi parancs segítségével hozzon létre egy **mynewfolder** nevű mappát a Data Lake Store gyökérmappájában.
 
@@ -107,9 +94,7 @@ az dls fs create --account mydatalakestore --path /mynewfolder --folder
 > 
 >
 
-<a id="upload-data-to-a-data-lake-store-account" class="xliff"></a>
-
-## Adatok feltöltése a Data Lake Store-fiókba
+## <a name="upload-data-to-a-data-lake-store-account"></a>Adatok feltöltése a Data Lake Store-fiókba
 
 Az adatokat közvetlenül a Data Lake Store gyökérmappájába vagy a fiókban létrehozott egyik mappába töltheti fel. Az alábbi kódtöredékek bemutatják, hogyan tölthet fel néhány adatot az előző szakaszban létrehozott mappába (**mynewfolder**).
 
@@ -125,9 +110,7 @@ az dls fs upload --account mydatalakestore --source-path "C:\SampleData\Ambulanc
 >
 
 
-<a id="list-files-in-a-data-lake-store-account" class="xliff"></a>
-
-## A Data Lake Store-fiók fájljainak listázása
+## <a name="list-files-in-a-data-lake-store-account"></a>A Data Lake Store-fiók fájljainak listázása
 
 Az alábbi parancs segítségével kilistázhatja a Data Lake Store-fiók fájljait.
 
@@ -155,9 +138,7 @@ A kimenet az alábbihoz hasonló lesz:
         }
     ]
 
-<a id="rename-download-and-delete-data-from-a-data-lake-store-account" class="xliff"></a>
-
-## A Data Lake Store-fiókban lévő adatok átnevezése, letöltése és törlése 
+## <a name="rename-download-and-delete-data-from-a-data-lake-store-account"></a>A Data Lake Store-fiókban lévő adatok átnevezése, letöltése és törlése 
 
 * **Fájlok átnevezéséhez** használja az alábbi parancsot:
   
@@ -188,9 +169,7 @@ A kimenet az alábbihoz hasonló lesz:
     az dls fs delete --account mydatalakestore --path /mynewfolder --recurse
     ```
 
-<a id="work-with-permissions-and-acls-for-a-data-lake-store-account" class="xliff"></a>
-
-## A Data Lake Store-fiókhoz tartozó engedélyek és a hozzáférés-vezérlési listák használata
+## <a name="work-with-permissions-and-acls-for-a-data-lake-store-account"></a>A Data Lake Store-fiókhoz tartozó engedélyek és a hozzáférés-vezérlési listák használata
 
 Ebben a szakaszban a hozzáférés-vezérlési listák és az engedélyek Azure CLI 2.0-beli felügyeletét ismerheti meg. A hozzáférés-vezérlési listák Azure Data Lake Store-beli használatának részletes leírásáért lásd: [Az Azure Data Lake Store szolgáltatásban található hozzáférés-vezérlés](data-lake-store-access-control.md).
 
@@ -250,9 +229,7 @@ Ebben a szakaszban a hozzáférés-vezérlési listák és az engedélyek Azure 
     az dls fs access remove-all --account mydatalakestore --path /mynewfolder
     ```
     
-<a id="delete-a-data-lake-store-account" class="xliff"></a>
-
-## Data Lake Store-fiók törlése
+## <a name="delete-a-data-lake-store-account"></a>Data Lake Store-fiók törlése
 Az alábbi parancs segítségével törölheti a Data Lake Store-fiókját.
 
 ```azurecli
@@ -261,9 +238,7 @@ az dls account delete --account mydatalakestore
 
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
-<a id="next-steps" class="xliff"></a>
-
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Data Lake Store CLI 2.0 dokumentációja](https://docs.microsoft.com/cli/azure/dls)
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)

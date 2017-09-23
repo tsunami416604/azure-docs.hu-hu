@@ -21,7 +21,6 @@ ms.openlocfilehash: 6b1fb9e7ae810df21cbcd592fef2b43309e2269c
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/10/2017
 
-
 ---
 # <a name="azure-automation-overview"></a>Az Azure Automation áttekintése
 A Microsoft Azure Automation segítségével a felhasználók automatizálhatják a manuális, hosszan tartó, sok hibalehetőséget rejtő és gyakran ismétlődő feladatokat, amelyeket gyakran hajtanak végre a felhőben és vállalati környezetben. Ezzel idő takarítható meg, továbbá nő a rendszeres adminisztratív feladatok megbízhatósága, valamint még ütemezhetők is a feladatok, hogy adott időközönként automatikusan végrehajtsa őket a rendszer. A folyamatokat automatizálhatja forgatókönyvek segítségével, vagy automatizálhat konfigurációkezelést a Célállapot-konfigurációval (DSC). Ez a cikk röviden áttekinti az Azure Automationt, valamint választ ad néhány gyakran felmerülő kérdésre. A különböző témakörök részletesebb leírásáért tekintse meg a könyvtár egyéb cikkeit.

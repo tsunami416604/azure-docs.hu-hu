@@ -12,8 +12,3 @@ A **Redis Cache** panelen megtekintheti és konfigurálhatja a gyorsítótárat.
 
 ![A Redis Cache-gyorsítótár összes beállítása](media/redis-cache-browse/redis-cache-blade.png)
 
-
-
-<!--HONumber=Dec16_HO3-->
-
-

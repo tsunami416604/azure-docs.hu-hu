@@ -5,8 +5,3 @@
 
 ## <a name="get-security-updates-for-our-products"></a>Biztonsági frissítések termékeinkhez
 Javasoljuk, hogy kérjen értesítést a bekövetkező biztonsági incidensekről. Látogasson el [a Microsoft műszaki biztonsági értesítéseinek fenntartott TechCenter-oldalra](https://technet.microsoft.com/security/dd252948), és iratkozzon fel a biztonsági tanácsadói riasztásokra.
-
-
-<!--HONumber=Feb17_HO2-->
-
-

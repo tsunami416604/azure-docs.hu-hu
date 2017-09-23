@@ -20,7 +20,6 @@ ms.openlocfilehash: 19f71e0d5a8a4642b86ae60a3ab2a4042fa2990e
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/17/2017
 
-
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztásainak megismerése
 Ez a cikk segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait, valamint a kapcsolódó elemzéseket. A riasztások és incidensek kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.

@@ -1,5 +1,4 @@
-### TCP-végpont létrehozása a virtuális géphez
-<a id="create-a-tcp-endpoint-for-the-virtual-machine" class="xliff"></a>
+### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>TCP-végpont létrehozása a virtuális géphez
 Ha az internetről szeretné elérni az SQL Servert, a virtuális gépnek rendelkeznie kell egy, a bejövő TCP-kommunikációt figyelő végponttal. Ez az Azure-konfigurációs lépés a TCP-port bejövő forgalmát egy olyan TCP-portra irányítja, amelyet elér a virtuális gép.
 
 > [!NOTE]

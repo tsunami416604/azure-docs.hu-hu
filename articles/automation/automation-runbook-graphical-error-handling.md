@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/26/2016
 ms.author: magoedte
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 08cba012cca61eeb03187d2b4165e2a79b15bc3d
 ms.openlocfilehash: 12313f7f245d32c33882f1036f7d4b48bfb3ddc5
+ms.contentlocale: hu-hu
+ms.lasthandoff: 02/03/2017
 
 ---
 
@@ -73,9 +75,4 @@ Az ezen tevékenységekből származó hibahivatkozások egyetlen **hibakezelés
 * További információk a hivatkozásokról és a grafikus runbookokban szereplő hivatkozástípusokról: [Grafikus létrehozás az Azure Automationben](automation-graphical-authoring-intro.md#links-and-workflow).
 
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

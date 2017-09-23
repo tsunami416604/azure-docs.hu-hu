@@ -20,7 +20,6 @@ ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/28/2017
 
-
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Mi az az Operations Management Suite (OMS)?
 A cikk az Operations Management Suite (OMS) csomagot mutatja be, és az üzleti értékének, a benne található szolgáltatásoknak és felügyeleti megoldásoknak, valamint a különböző szolgáltatásokhoz és megoldásokhoz kapcsolódó ajánlatoknak a rövid áttekintését tartalmazza.  Az egyes szolgáltatások és megoldások telepítését és használatát ismertető részletes dokumentációra mutató hivatkozásokat is tartalmaz.

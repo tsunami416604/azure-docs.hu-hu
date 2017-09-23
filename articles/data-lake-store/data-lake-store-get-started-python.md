@@ -20,7 +20,6 @@ ms.openlocfilehash: 375a603360ac249fc1b08923a94c85652390a3fc
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/01/2017
 
-
 ---
 
 # <a name="get-started-with-azure-data-lake-store-using-python"></a>Az Azure Data Lake Store használatának első lépései a Python használatával

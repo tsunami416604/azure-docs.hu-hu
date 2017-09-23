@@ -20,7 +20,6 @@ ms.openlocfilehash: 8817b511d779029421491194b50120d51ec9dbad
 ms.contentlocale: hu-hu
 ms.lasthandoff: 06/26/2017
 
-
 ---
 # <a name="overview-of-microsoft-azure-data-lake-analytics"></a>A Microsoft Azure Data Lake Analytics áttekintése
 ## <a name="what-is-azure-data-lake-analytics"></a>Mi az az Azure Data Lake Analytics?

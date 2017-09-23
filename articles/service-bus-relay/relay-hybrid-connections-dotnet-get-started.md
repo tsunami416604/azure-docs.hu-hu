@@ -20,7 +20,6 @@ ms.openlocfilehash: 1af23bfd46dd7d3781505473f7c1d86e65ea9bc7
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/10/2017
 
-
 ---
 
 # <a name="get-started-with-relay-hybrid-connections"></a>Ismerkedés a hibrid Relay-kapcsolatokkal

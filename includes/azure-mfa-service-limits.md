@@ -9,8 +9,3 @@
 | A felhasználói fiók zárolása **X** egymást követő MFA-elutasítást követően |Nincs beállítva |99 |
 | Fiókzárolás feloldása **X** perc után |Nincs beállítva |9999 |
 | Fiókzárolás feloldása **X** perc után |Nincs beállítva |9999 |
-
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -1,6 +1,4 @@
-<a id="to-create-public-endpoints-on-the-cloud-appliance" class="xliff"></a>
-
-#### Nyilvános végpontok létrehozása a felhőalapú készüléken
+#### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Nyilvános végpontok létrehozása a felhőalapú készüléken
 
 1. Jelentkezzen be az Azure portálra.
 2. Lépjen a **Virtuális gépek** elemre, majd válassza ki a felhőalapú készülékként használt virtuális gépet, és kattintson rá.

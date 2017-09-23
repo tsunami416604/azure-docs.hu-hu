@@ -5,8 +5,3 @@
 * [Alkalmazások integrálása az Azure Active Directoryval](../articles/active-directory/active-directory-integrating-applications.md)
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../articles/active-directory/active-directory-apps-index.md)
 
-
-
-<!--HONumber=Dec16_HO4-->
-
-

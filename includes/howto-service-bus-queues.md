@@ -12,8 +12,3 @@ A Service Bus-üzenetsor egy olyan általános célú technológia, amely széle
 Az üzenetsorok használata lehetővé teszi az alkalmazások könnyebb méretezését, valamint nagyobb mértékű rugalmasságot biztosít az architektúrák számára.
 
 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

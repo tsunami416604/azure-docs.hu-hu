@@ -7,8 +7,3 @@
 
 A fenti korlátokkal kapcsolatos további részletekért és a díjszabással kapcsolatos információkért lásd [a Notification Hubs díjszabását](https://azure.microsoft.com/pricing/details/notification-hubs/). 
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-

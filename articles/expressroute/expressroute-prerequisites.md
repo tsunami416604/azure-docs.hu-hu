@@ -20,7 +20,6 @@ ms.openlocfilehash: 8629235511e0dda149ceef6a9c834c3042f64f90
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/04/2017
 
-
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute-előfeltételek és ellenőrzőlista
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, ellenőriznie kell az alábbi szakaszokban felsorolt követelmények teljesülését.

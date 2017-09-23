@@ -21,7 +21,6 @@ ms.openlocfilehash: 575c49f83c8845edcea984459f3907490c62d269
 ms.contentlocale: hu-hu
 ms.lasthandoff: 07/05/2017
 
-
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Mi az Azure SQL Data Warehouse?
 Az Azure SQL Data Warehouse egy nagymértékben párhuzamos feldolgozási (MPP) kialakítású, felhőalapú, horizontálisan felskálázható relációs adatbázis, amely nagy mennyiségű adatot képes feldolgozni. 

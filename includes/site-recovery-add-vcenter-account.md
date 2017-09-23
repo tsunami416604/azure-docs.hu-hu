@@ -8,8 +8,3 @@
 
     > [!Note]
   > Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez kattintson a **Konfigurációs kiszolgálók** > ***kiszolgáló neve*** > **Kiszolgáló frissítése** elemre.
-
-
-<!--HONumber=Feb17_HO2-->
-
-

@@ -20,7 +20,6 @@ ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
 ms.contentlocale: hu-hu
 ms.lasthandoff: 05/03/2017
 
-
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
 Ez a cikk azt tekinti át, hogy az Azure ExpressRoute-kapcsolatcsoportok hogyan helyezhetők át a klasszikusból az Azure Resource Manager-alapú üzemi modellbe.

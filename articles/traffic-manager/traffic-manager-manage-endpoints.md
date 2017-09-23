@@ -45,8 +45,8 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
     5. A **Prioritásnál** válassza az **1-es** értéket. Ennek eredményeképpen a teljes forgalom erre a végpontra irányul, ha ez nem befolyásolja a rendszer megfelelő működését.
     6. A **Beállítás letiltottként** jelölőnégyzetet ne jelölje ki.
     7. Kattintson az **OK** gombra
-6.    A 4–5. lépés megismétlésével adja hozzá a következő Azure-végpontot. Ennek a **Prioritása** mindenképpen **2-es** legyen.
-7.    Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
+6.  A 4–5. lépés megismétlésével adja hozzá a következő Azure-végpontot. Ennek a **Prioritása** mindenképpen **2-es** legyen.
+7.  Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
 > [!NOTE]
 > Miután a *Feladatátvitel* forgalom-útválasztási módszer segítségével hozzáad vagy eltávolít egy végpontot a profilból, előfordulhat, hogy a feladatátvitel prioritási listát nem rendezheti át úgy, ahogy szeretné. A feladatátvétel prioritási lista sorrendjét a konfigurációs lapon adhatja meg. További információkért tekintse meg a [Feladatátvételi forgalom-útválasztás beállítása](traffic-manager-configure-failover-routing-method.md) szakaszt.

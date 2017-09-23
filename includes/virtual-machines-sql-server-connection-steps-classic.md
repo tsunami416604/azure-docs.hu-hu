@@ -1,5 +1,4 @@
-### A virtuális gép DNS-nevének meghatározása
-<a id="determine-the-dns-name-of-the-virtual-machine" class="xliff"></a>
+### <a name="determine-the-dns-name-of-the-virtual-machine"></a>A virtuális gép DNS-nevének meghatározása
 Ha egy másik számítógépről szeretne az SQL Server Adatbázismotorhoz csatlakozni, ismernie kell a virtuális gép Tartománynév-szolgáltatójának (DNS) nevét. (Az internet ezzel a névvel azonosítja a virtuális gépet. Az IP-címet is használhatja, azonban az megváltozhat, ha az Azure erőforrásokat helyez át redundancia vagy karbantartás miatt. A DNS-név mindig stabil, mivel átirányítható egy új IP-címre.)  
 
 1. Az Azure Portalon (vagy az előző lépésben) válassza a **Virtuális gépek (klasszikus)** lehetőséget.
@@ -8,8 +7,7 @@ Ha egy másik számítógépről szeretne az SQL Server Adatbázismotorhoz csatl
    
     ![DNS-név](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
 
-### Csatlakozás az adatbázismotorhoz egy másik számítógépről
-<a id="connect-to-the-database-engine-from-another-computer" class="xliff"></a>
+### <a name="connect-to-the-database-engine-from-another-computer"></a>Csatlakozás az adatbázismotorhoz egy másik számítógépről
 1. Nyissa meg az SQL Server Management Studio alkalmazást egy internethez csatlakozó számítógépen.
 2. A **Kapcsolódás a kiszolgálóhoz** vagy a **Kapcsolódás az Adatbázismotorhoz** párbeszédpanel **Kiszolgálónév** mezőjében adja meg a virtuális gép DNS-nevét (amelyet az előző feladatban határozott meg), valamint egy nyilvános végponthoz tartozó portszámot az alábbi formátumban: *DNSNév, portszám*, például **mysqlvm.cloudapp.net,57500**.
    
