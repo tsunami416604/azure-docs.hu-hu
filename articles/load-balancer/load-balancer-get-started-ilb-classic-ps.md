@@ -3,7 +3,7 @@ title: "Azure-alapú belső terheléselosztó létrehozása – klasszikus Power
 description: "Ismerje meg, hogyan hozható létre belső terheléselosztó a PowerShell használatával a klasszikus üzembehelyezési modellben"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management

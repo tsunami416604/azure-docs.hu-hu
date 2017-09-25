@@ -3,7 +3,7 @@ title: "Internetkapcsolattal rendelkező terheléselosztó létrehozása – kla
 description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó klasszikus üzembehelyezési modellel a klasszikus Azure portál használatával"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
