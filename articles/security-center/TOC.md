@@ -74,6 +74,7 @@
 
 ## Felhővédelmi funkciók
 ### [Igény szerinti hozzáférés](security-center-just-in-time.md)
+### [Adaptív alkalmazásvezérlők](security-center-adaptive-application.md)
 
 ## Automatizálás és vezénylés
 ### [Útmutatók](security-center-playbooks.md)

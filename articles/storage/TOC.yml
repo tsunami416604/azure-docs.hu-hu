@@ -1,3 +1,5 @@
+- name: Azure Storage-dokumentáció
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Bevezetés
