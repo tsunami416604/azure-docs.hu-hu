@@ -32,7 +32,7 @@ ms.lasthandoff: 07/01/2017
 > * [Node.js](data-lake-store-manage-use-nodejs.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
->
+> 
 
 Ismerje meg, hogyan hozhat létre Azure Data Lake Store-fiókot az Azure CLI 2.0 használatával, illetve hogyan végezhet el olyan alapvető műveleteket, mint például mappák létrehozása, adatfájlok le- és feltöltése, fiók törlése stb. További információk a Data Lake Store-ról: [Overview of Data Lake Store](data-lake-store-overview.md) (A Data Lake Store áttekintése).
 
