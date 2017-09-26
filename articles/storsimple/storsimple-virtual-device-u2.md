@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: f9a9ff81913dda1457123525fe509d194798db14
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>A StorSimple virtuális eszköz üzembe helyezése és kezelése az Azure-ban
@@ -64,7 +64,7 @@ Az alábbi táblázat a StorSimple virtuális eszköz és a StorSimple fizikai e
 | **Szolgáltatásadat-titkosítási kulcs** |Újra létrejön a fizikai eszközön, majd az új kulccsal frissíti a virtuális eszközt. |A virtuális eszközről nem tud újra létrejönni. |
 
 ## <a name="prerequisites-for-the-virtual-device"></a>A virtuális eszköz előfeltételei
-Az alábbi szakaszok ismertetik a StorSimple virtuális eszköz előfeltételeit. A virtuális eszközök üzembe helyezése előtt tekintse meg [a virtuális eszközök használatának biztonsági szempontjait](storsimple-security.md#storsimple-virtual-device-security).
+Az alábbi szakaszok ismertetik a StorSimple virtuális eszköz előfeltételeit. A virtuális eszközök üzembe helyezése előtt tekintse meg [a virtuális eszközök használatának biztonsági szempontjait](storsimple-security.md).
 
 #### <a name="azure-requirements"></a>Azure-követelmények
 A virtuális eszköz kiépítése előtt a következő előkészületekre lesz szükség az Azure-környezetben:

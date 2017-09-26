@@ -21,7 +21,7 @@
       > 
    7. Ha tudomásul vette, hogy a virtuális eszközön lévő adatokat egy Microsoft-adatközpont tárolja, kattintson a pipára. Amikor csak fizikai eszközt használ, a titkosítási kulcs az eszközön található, ezért a Microsoft nem tudja feloldani a titkosítást. 
       
-       Amikor virtuális eszközt használ, a titkosítási és a visszafejtési kulcs tárolása is a Microsoft Azure-ban történik. További információkért tekintse meg a [virtuális eszközök használatára vonatkozó biztonsági szempontokat](../articles/storsimple/storsimple-security.md#storsimple-virtual-device-security).
+       Amikor virtuális eszközt használ, a titkosítási és a visszafejtési kulcs tárolása is a Microsoft Azure-ban történik. További információkért tekintse meg a [virtuális eszközök használatára vonatkozó biztonsági szempontokat](../articles/storsimple/storsimple-security.md).
    8. A virtuális eszköz létrehozásához kattintson a pipa ikonra. Az eszköz kiépítése körülbelül 30 percet vesz igénybe.
       
       ![StorSimple-virtuáliseszköz létrehozási fázisa](./media/storsimple-create-virtual-device-u2/StorSimple_VirtualDeviceCreating1M.png)
