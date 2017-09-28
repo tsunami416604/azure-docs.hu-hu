@@ -17,15 +17,15 @@ ms.date: 07/17/2017
 ms.author: davidmu
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 52113e1240b81299ae3338f35b2934891017adbf
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 2944021cbaf777137512f4bfe0eb4cf5e6f996dc
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Windows rendszerű virtuális gépek áttekintése az Azure-ban
 
-Az Azure Virtual Machines (VM) az Azure által kínált számos különböző típusú, [igény szerinti, méretezhető számítási erőforrás](../../app-service-web/choose-web-site-cloud-service-vm.md) közé tartozik. Virtuális gépet általában akkor érdemes választani, ha a számítási környezet átfogóbb vezérlésére van szüksége annál, amelyet az egyéb lehetőségek kínálnak. Ez a cikk bemutatja, hogy mit kell szem előtt tartania egy virtuális gép létrehozása előtt, valamint hogy hogyan hozhatja létre és kezelheti azt.
+Az Azure Virtual Machines (VM) az Azure által kínált számos különböző típusú, [igény szerinti, méretezhető számítási erőforrás](../../app-service/choose-web-site-cloud-service-vm.md) közé tartozik. Virtuális gépet általában akkor érdemes választani, ha a számítási környezet átfogóbb vezérlésére van szüksége annál, amelyet az egyéb lehetőségek kínálnak. Ez a cikk bemutatja, hogy mit kell szem előtt tartania egy virtuális gép létrehozása előtt, valamint hogy hogyan hozhatja létre és kezelheti azt.
 
 Az Azure VM a virtualizálás rugalmasságát biztosítja anélkül, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. A virtuális gép karbantartásához azonban így is szükséges elvégeznie néhány feladatot, például a virtuális gépen futó szoftver konfigurálását, javítását és telepítését.
 
@@ -38,7 +38,7 @@ Az Azure virtuális gépek különféle módon használhatóak. Néhány példa:
 Az alkalmazás által használt virtuális gépek száma az Ön igényei szerint skálázható.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Mit kell átgondolnom egy virtuális gép létrehozása előtt?
-Az Azure-ban futó alkalmazás-infrastruktúrák kiépítésekor mindig számos [kialakítási szempontot](/architecture/reference-architectures/virtual-machines-linux?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kell figyelembe venni. A kezdés előtt a virtuális gépek következő tulajdonságait fontos átgondolni:
+Az Azure-ban futó alkalmazás-infrastruktúrák kiépítésekor mindig számos [kialakítási szempontot](/azure/architecture/reference-architectures/virtual-machines-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kell figyelembe venni. A kezdés előtt a virtuális gépek következő tulajdonságait fontos átgondolni:
 
 * Az alkalmazás erőforrásainak nevei
 * Az erőforrások tárolásának helye
@@ -49,7 +49,7 @@ Az Azure-ban futó alkalmazás-infrastruktúrák kiépítésekor mindig számos 
 * A virtuális gép által igényelt kapcsolódó erőforrások
 
 ### <a name="naming"></a>Elnevezés
-A virtuális gépeknek van egy hozzárendelt [nevük](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), valamint egy, az operációs rendszer részeként konfigurálható számítógépnevük. A virtuális gépek neve legfeljebb 15 karakter hosszú lehet.
+A virtuális gépeknek van egy hozzárendelt [nevük](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), valamint egy, az operációs rendszer részeként konfigurálható számítógépnevük. A virtuális gépek neve legfeljebb 15 karakter hosszú lehet.
 
 Ha az operációs rendszert tartalmazó lemezt az Azure használatával hozza létre, akkor a számítógépnév és a virtuális gép neve ugyanaz. Ha egy korábban már konfigurált operációs rendszert tartalmazó [saját rendszerképet tölt fel és használ](upload-generalized-managed.md) egy virtuális gép létrehozásához, akkor a nevek különbözőek lehetnek. Javasoljuk, hogy a saját rendszerkép feltöltésekor állítsa be, hogy az operációs rendszerben megadott számítógépnév és a virtuális gép neve ugyanaz legyen.
 
