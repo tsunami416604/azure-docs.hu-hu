@@ -93,14 +93,20 @@
           href: local-emulator.md
         - name: Tanúsítványok exportálása
           href: local-emulator-export-ssl-certificates.md
+    - name: 6 – Integrálás a függvényekkel
+      items:
+        - name: HTTP eseményindító
+          href: tutorial-functions-http-trigger.md
 - name: Példák
   items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: cli-samples.md
-    - name: Azure PowerShell
+    - name: PowerShell
       href: powershell-samples.md
 - name: Alapelvek
   items:
+    - name: Kiszolgáló nélküli adatbázis
+      href: serverless-computing-database.md
     - name: Globális terjesztés
       href: distribute-data-globally.md
     - name: Particionálás
@@ -268,6 +274,8 @@
           href: geospatial.md
         - name: Indexelés
           href: indexing-policies.md
+        - name: Connected Service a Visual Studióban
+          href: connected-service.md
     - name: Kezelés
       items:
         - name: Költséghatékony írások és olvasások
@@ -282,8 +290,14 @@
           href: set-throughput.md
         - name: SLA-k figyelése
           href: monitor-accounts.md
+        - name: Használati mérőszámok
+          href: use-metrics.md
+        - name: Diagnosztikai naplózás
+          href: logging.md
         - name: Kulcsok és konzisztencia kezelése
           href: manage-account.md
+        - name: Azure Storage Explorer
+          href: tutorial-documentdb-and-mongodb-in-storage-explorer.md
         - name: Biztonság
           items:
             - name: Titkosítás inaktív állapotban
@@ -309,7 +323,7 @@
         - name: Integrálás az Azure Search szolgáltatással
           href: ../search/search-howto-index-documentdb.md
         - name: Adatok áthelyezése az Azure Data Factoryvel
-          href: ../data-factory/data-factory-azure-documentdb-connector.md
+          href: ../data-factory/connector-azure-cosmos-db.md
         - name: Valós idejű adatok elemzése az Azure Stream Analyticsszel
           href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
         - name: Módosított HL7 FHIR-rekord beszerzése a Logic Apps használatával

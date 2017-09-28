@@ -7,7 +7,7 @@
 ## [Tárolók](../../virtual-machines-windows-containers.md)
 
 # Bevezetés
-## [Virtuális gép létrehozása a portálról](tutorial.md)
+## [Virtuális gép létrehozása az Azure Portalon](tutorial.md)
 ## [Bejelentkezés virtuális gépre](connect-logon.md)
 ## [Az Azure PowerShell telepítése](/powershell/azure/overview)
 ## [Az Azure parancssori felület telepítése](../../../cli-install-nodejs.md)
@@ -85,7 +85,7 @@
 ### [Virtuális merevlemez csatlakoztatása a hibaelhárító virtuális géphez](troubleshoot-recovery-disks-portal.md)
 
 # Referencia
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)

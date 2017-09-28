@@ -67,12 +67,17 @@
 ### RESTful API-k integrálása
 #### [Felhasználó által megadott adatok érvényesítése](active-directory-b2c-rest-api-validation-custom.md)
 #### [További jogcímek beszerzése](active-directory-b2c-rest-api-step-custom.md)
-### Bejelentkezés testreszabása
+### Felhasználói folyamatok
 #### [Felhasználó által megadott adatok konfigurálása](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [Egyéni attribútumok](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [Felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md)
 #### [Jogkivonatok testreszabása](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
-#### [Jelszó testreszabása](active-directory-b2c-reference-password-complexity-custom.md)
+#### [Jelszó bonyolultsága](active-directory-b2c-reference-password-complexity-custom.md)
+
+#### [Jelszó módosítása](active-directory-b2c-reference-password-change-custom.md)
+
+#### [A bejelentkezve maradás engedélyezése](active-directory-b2c-reference-kmsi-custom.md)
+
 ### Hibaelhárítás
 #### [Naplók gyűjtése az Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)
 ## Referencia

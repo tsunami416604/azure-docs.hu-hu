@@ -54,11 +54,11 @@
 ## Automatizálás
 ### [Visual Studio-eszközök](stream-analytics-tools-for-visual-studio.md)
 ### [A Management .NET SDK használata](stream-analytics-dotnet-management-sdk.md)
-### [Egykattintásos PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
+### [Egy kattintással indítható Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
-## [PowerShell](/powershell/module/azurerm.streamanalytics)
+## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [Lekérdezés nyelve](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST](/rest/api/streamanalytics)

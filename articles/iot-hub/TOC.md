@@ -109,23 +109,24 @@
 ### Eszközfeladatok használata az eszköz belső vezérlőprogramjának frissítéséhez
 #### [Node-háttérrendszer/Node-eszköz](iot-hub-node-node-firmware-update.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-firmware-update.md)
+#### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-firmware-update.md)
 ### Feladatok ütemezése és szórása
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-schedule-jobs.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-schedule-jobs.md)
 #### [Java](iot-hub-java-java-schedule-jobs.md)
 ## Kezelés
 ### IoT Hub létrehozása 
-#### [A portál használata](iot-hub-create-through-portal.md)
-#### [A PowerShell használata](iot-hub-create-using-powershell.md)
-#### [A CLI 2.0 használata](iot-hub-create-using-cli.md)
+#### [Az Azure Portal használata](iot-hub-create-through-portal.md)
+#### [Azure PowerShell használata](iot-hub-create-using-powershell.md)
+#### [Az Azure parancssori felület használata](iot-hub-create-using-cli.md)
 #### [A CLI használata](iot-hub-create-using-cli-nodejs.md)
 #### [A REST API használata](iot-hub-rm-rest.md)
-#### [A PowerShell sablonjának használata](iot-hub-rm-template-powershell.md)
+#### [Az Azure PowerShell sablonjának használata](iot-hub-rm-template-powershell.md)
 #### [A .NET-keretrendszer sablonjának használata](iot-hub-rm-template.md)
 ### Fájlfeltöltés konfigurálása
-#### [A portál használata](iot-hub-configure-file-upload.md)
-#### [A PowerShell használata](iot-hub-configure-file-upload-powershell.md)
-#### [A CLI 2.0 használata](iot-hub-configure-file-upload-cli.md)
+#### [Az Azure Portal használata](iot-hub-configure-file-upload.md)
+#### [Azure PowerShell használata](iot-hub-configure-file-upload-powershell.md)
+#### [Az Azure parancssori felület használata](iot-hub-configure-file-upload-cli.md)
 ### [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
 ### [Használati metrikák](iot-hub-metrics.md)
 ### [Műveletek figyelése](iot-hub-operations-monitoring.md)

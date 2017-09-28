@@ -8,7 +8,7 @@
 
 # Bevezetés
 ## [Kiszolgáló létrehozása az Azure Portalon](analysis-services-create-server.md)
-## [Kiszolgáló létrehozása a PowerShell-lel](analysis-services-create-powershell.md)
+## [Kiszolgáló létrehozása az Azure PowerShell-lel](analysis-services-create-powershell.md)
 ## [Modell üzembe helyezése a Visual Studióból](analysis-services-deploy.md)
 ## [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
 
@@ -43,7 +43,7 @@
 ### [Kiegészítő lecke – Hézagos hierarchiák](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # Referencia
-## [PowerShell](analysis-services-powershell.md)
+## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)

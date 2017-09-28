@@ -2,7 +2,7 @@
 ## [Mik a virtuálisgép-méretezési csoportok?](virtual-machine-scale-sets-overview.md)
 
 # Első lépések
-## [Méretezési csoport üzembe helyezése a portálon](virtual-machine-scale-sets-portal-create.md)
+## [Méretezési csoport üzembe helyezése az Azure Portalon](virtual-machine-scale-sets-portal-create.md)
 ## [Méretezési csoport üzembe helyezése a PowerShell-lel vagy az Azure CLI-vel](virtual-machine-scale-sets-create.md)
 ## [Automatikus méretezést végző alkalmazás üzembe helyezése sablon használatával](virtual-machine-scale-sets-deploy-scaling-app-template.md)
 
@@ -17,9 +17,9 @@
 ### [Vendégalapú automatikus méretezés használata Linux rendszerű méretezésicsoport-sablonnal](virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)
 
 ## Üzembe helyezés
-### [Létrehozás a portálon](virtual-machine-scale-sets-portal-create.md)
+### [Létrehozás az Azure Portalon](virtual-machine-scale-sets-portal-create.md)
 ### [Létrehozás a Visual Studióval](virtual-machine-scale-sets-vs-create.md)
-### [Létrehozás a PowerShell-lel vagy az Azure CLI-vel](virtual-machine-scale-sets-create.md)
+### [Létrehozás az Azure PowerShell-lel vagy az Azure CLI-vel](virtual-machine-scale-sets-create.md)
 ### [Méretezési csoport a Managed Disksszel](virtual-machine-scale-sets-managed-disks.md)
 ### [Linux rendszerű méretezési csoport automatikus skálázással](virtual-machine-scale-sets-linux-autoscale.md)
 ### [Windows rendszerű méretezési csoport automatikus skálázással](virtual-machine-scale-sets-windows-autoscale.md)
@@ -31,7 +31,7 @@
 
 
 ## Kezelés
-### [Windows rendszerű méretezési csoport PowerShell-lel](virtual-machine-scale-sets-windows-manage.md)
+### [Windows rendszerű méretezési csoport Azure PowerShell-lel](virtual-machine-scale-sets-windows-manage.md)
 ### [Automatikus méretezés és méretezési csoportok](virtual-machine-scale-sets-autoscale-overview.md)
 ### [Automatikus skálázás haladó szinten](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Függőleges méretezés méretezési csoportban](virtual-machine-scale-sets-vertical-scale-reprovision.md)
@@ -47,7 +47,7 @@
 ### [Méretezési csoport – gyakran ismételt kérdések](virtual-machine-scale-sets-faq.md)
 
 # Referencia
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
 ## [REST](/rest/api/virtualmachinescalesets/)
 

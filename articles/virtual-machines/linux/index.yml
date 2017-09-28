@@ -15,7 +15,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: 'Az Azure Linux virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Red Hat, Ubuntu vagy bármely tetszőleges Linux disztribúció használatával. Ismerje meg, hogyan hozhat létre, konfigurálhat, felügyelhet és méretezhet Linux virtuális gépeket a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
+  description: 'Az Azure Linux virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Red Hat, Ubuntu vagy bármely tetszőleges Linux disztribúció használatával. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan hozhat létre, konfigurálhat, felügyelhet, frissíthet és méretezhet Linux virtuális gépeket.'
   aside:
     image:
       alt: null
@@ -61,29 +61,32 @@ sections:
           - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">Virtuális gépek terheléselosztása</a>
           - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">Virtuális gépek és virtuális hálózatok kezelése</a>
           - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">Virtuális gépek biztonsági mentése</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Virtuális gépek figyelése</a>
+          - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Virtuális gépek monitorozása és frissítése</a>
           - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Virtuális gépek biztonságának kezelése</a>
           - html: '<a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">CI/CD-infrastruktúra létrehozása a Jenkins, a Docker és a GitHub használatával</a>'
           - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">CI/CD a Team Services használatával</a>
           - html: 'Webkiszolgáló-verem létrehozása a <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, a <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> vagy a <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a> segítségével'
           - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Webkiszolgáló védelme SSL-lel</a>
-  - title: Ingyenes PluralSight videós képzés
+  - title: Ingyenes Pluralsight videós képzés
     items:
       - type: list
         style: cards
-        className: cardsW
+        className: cardsFTitle
         items:
-          - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Infrastruktúra kezelése</a></p>'
+          - title: Infrastruktúra kezelése az Azure-on
+            href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-infrastructure.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-          - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">A Virtual Machines használatának első lépései</a></p>'
+          - title: Az Azure Virtual Machines használatának első lépései
+            href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-vms.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-          - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Az IaaS megfigyelés használatának első lépései</a></p>'
+          - title: Az IaaS Monitoring használatának első lépései
+            href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/video-training-iaas-monitoring.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
   - title: Példák
     items:

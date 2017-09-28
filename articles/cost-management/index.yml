@@ -1,0 +1,38 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Cost Management dokumentációja
+metadata:
+  title: A Cost Management dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: 'Az Azure Cost Management by Cloudyn egy többfelhős költségkezelő megoldás, amely segítséget nyújt az Azure és egyéb felhőerőforrások használatához. Rövid útmutatóink és oktatóanyagaink segítségével megismerheti, hogyan tekinthető át a használat és a költségek, hogyan kezelhetők aktívan és optimalizálhatók a költségek, illetve hogyan jelezhetők előre a kiadások.'
+  services: cost-management
+  author: czeumault
+  manager: carolz
+  ms.service: cost-management
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/18/2017
+  ms.author: carolz
+abstract:
+  description: 'Az Azure Cost Management by Cloudyn egy többfelhős költségkezelő megoldás, amely segítséget nyújt az Azure és egyéb felhőerőforrások lehető leghatékonyabb kihasználásához és kezeléséhez. Rövid útmutatóink és oktatóanyagaink segítségével megismerheti, hogyan tekinthető át a használat és a költségek, hogyan kezelhetők aktívan és optimalizálhatók a költségek, illetve hogyan jelezhetők előre a kiadások.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerje meg, hogyan regisztrálhatja Azure-szerződési vagy -előfizetési információit a Cost Managementtel a költségadatok megtekintéséhez.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Költségadatok megtekintése
+            href: quick-register-azure-sub
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Megismerheti, hogyan tekinthető át a használat és a költségek, hogyan kezelhetők aktívan és optimalizálhatók a költségek, illetve hogyan jelezhetők előre a kiadások a Cost Management használatával.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-review-usage">A használat és a költségek áttekintése az anomáliák és hatékonyságok észleléséhez</a>
+          - html: <a href="tutorial-user-access">A Cost Management adataihoz való hozzáférés hozzárendelése</a>

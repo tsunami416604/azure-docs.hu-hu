@@ -8,6 +8,7 @@
 # Első lépések
 
 ## [Kezdő szintű oktatóanyag](sql-data-warehouse-get-started-tutorial.md)
+## [Rugalmas lekérdezés – Oktatóanyag](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [Ajánlott eljárások](sql-data-warehouse-best-practices.md)
 ## [Kezelés](sql-data-warehouse-overview-manage.md)
 
@@ -20,7 +21,7 @@
 ### [A biztonsági mentés áttekintése](sql-data-warehouse-backups.md)
 ### [Visszaállítás áttekintése](sql-data-warehouse-restore-database-overview.md)
 #### [Azure Portal](sql-data-warehouse-restore-database-portal.md)
-#### [PowerShell](sql-data-warehouse-restore-database-powershell.md)
+#### [Azure PowerShell](sql-data-warehouse-restore-database-powershell.md)
 #### [REST](sql-data-warehouse-restore-database-rest-api.md)
 
 ## Kapcsolódás
@@ -34,7 +35,7 @@
 
 ## Létrehozás
 ### [Azure Portal](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [Azure PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 ### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## Fejlesztés
@@ -79,6 +80,8 @@
 ### [Power BI](sql-data-warehouse-integrate-power-bi.md)
 ### [Power BI-megjelenítés](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 ### [Stream Analytics](sql-data-warehouse-integrate-azure-stream-analytics.md)
+
+### [Rugalmas lekérdezés az SQL Database és az SQL Data Warehouse használatával](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 ## Betöltés
 

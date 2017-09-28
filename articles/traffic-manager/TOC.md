@@ -5,6 +5,8 @@
 ## [Beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md)
 ## [Végponttípusok](traffic-manager-endpoint-types.md)
 ## [Végpontmonitoring](traffic-manager-monitoring.md)
+## [Valós felhasználói mérések](traffic-manager-rum-overview.md)
+## [Forgalomnézet](traffic-manager-traffic-view-overview.md)
 ## [Gyakori kérdések](traffic-manager-FAQs.md)
 
 # Első lépések
@@ -16,19 +18,22 @@
 ## [Prioritásos útválasztási mód konfigurálása](traffic-manager-configure-priority-routing-method.md)
 ## [Súlyozott útválasztási mód konfigurálása](traffic-manager-configure-weighted-routing-method.md)
 ## [Teljesítménycentrikus útválasztási mód beállítása](traffic-manager-configure-performance-routing-method.md)
+## Valós felhasználói mérések küldése a Traffic Managerbe 
+### [A Visual Studio SDK használata](traffic-manager-create-rum-visual-studio.md)
+### [Weblapok használata](traffic-manager-create-rum-web-pages.md)
 ## [Végpontkezelés](traffic-manager-manage-endpoints.md)
 ## [Profilok kezelése](traffic-manager-manage-profiles.md)
 ## [Traffic Manager-beállítások ellenőrzése](traffic-manager-testing-settings.md)
 ## [Többféle terheléselosztási szolgáltatás használata](traffic-manager-load-balancing-azure.md)
 ## [A Traffic Manager teljesítményének mérése](traffic-manager-performance-considerations.md)
-## [A Traffic Manager kezelése a PowerShell használatával](traffic-manager-powershell-arm.md)
+## [A Traffic Manager kezelése az Azure PowerShell-lel](traffic-manager-powershell-arm.md)
 ## [Az internetes tartomány átirányítása a Traffic Managerhez](traffic-manager-point-internet-domain.md)
 ## Hibaelhárítás
 ### [Az Azure Traffic Manager csökkentett teljesítményének elhárítása](traffic-manager-troubleshooting-degraded.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
-## [PowerShell](/powershell/module/azurerm.trafficmanager)
+## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/)

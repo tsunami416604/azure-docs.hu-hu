@@ -25,9 +25,9 @@
 ### [Tűzfal mögötti hozzáférés](key-vault-access-behind-firewall.md)
 ### [Elérhetőség és redundancia](key-vault-disaster-recovery-guidance.md)
 ### [Bérlőazonosító módosítása](key-vault-subscription-move-fix.md)
-### [Létrehozás és kezelés a CLI 2.0 használatával](key-vault-manage-with-cli2.md)
+### [Létrehozás és kezelés az Azure CLI-vel](key-vault-manage-with-cli2.md)
 ### [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](key-vault-soft-delete-cli.md)
-### [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](key-vault-soft-delete-powershell.md)
+### [A Key Vault helyreállítható törlés funkciójának használata az Azure PowerShell-lel](key-vault-soft-delete-powershell.md)
 ### [Hozzáférés megadása csoportok használatával](key-vault-group-permissions-for-apps.md)
 ### [Kulcstartó védelme](key-vault-secure-your-key-vault.md)
 
@@ -36,8 +36,8 @@
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
-## [PowerShell](/powershell/module/azurerm.keyvault)
-## [Azure CLI 2](/cli/azure/keyvault)
+## [Azure PowerShell](/powershell/module/azurerm.keyvault)
+## [Azure CLI](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
 ## [Java](/java/api/com.microsoft.azure.keyvault)
 ## Node.js

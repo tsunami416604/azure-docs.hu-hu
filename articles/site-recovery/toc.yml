@@ -1,0 +1,248 @@
+- name: A Site Recovery dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Site Recovery?
+      href: site-recovery-overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Azure-beli virtuális gép replikálása másodlagos régióba
+      href: azure-to-azure-quickstart.md
+- name: oktatóanyagokat
+  items:
+    - name: Azure-beli virtuális gépek
+      items:
+        - name: Vészhelyreállítás beállítása
+          href: azure-to-azure-tutorial-enable-replication.md
+        - name: Vészhelyreállítási próba végrehajtása
+          href: azure-to-azure-tutorial-dr-drill.md
+        - name: Feladatátvétel és feladat-visszavétel futtatása
+          href: azure-to-azure-tutorial-failover-failback.md
+    - name: VMware virtuális gépek
+      items:
+        - name: Az Azure előkészítése
+          href: tutorial-prepare-azure.md
+        - name: Helyszíni VMware előkészítése
+          href: tutorial-prepare-on-premises-vmware.md
+        - name: Vészhelyreállítás beállítása
+          href: tutorial-vmware-to-azure.md
+        - name: Vészhelyreállítási próba végrehajtása
+          href: tutorial-dr-drill-azure.md
+        - name: Feladatátvétel és feladat-visszavétel futtatása
+          href: tutorial-vmware-to-azure-failover-failback.md
+    - name: Áttelepítés az Azure-ba
+      items:
+        - name: Az Azure előkészítése
+          href: tutorial-prepare-azure.md
+        - name: Helyszíni gépek áttelepítése az Azure-ba
+          href: tutorial-migrate-on-premises-to-azure.md
+        - name: AWS-példányok áttelepítése az Azure-ba
+          href: tutorial-migrate-aws-to-azure.md
+- name: Alapelvek
+  items:
+    - name: Azure-ról Azure-ra architektúra
+      href: concepts-azure-to-azure-architecture.md
+    - name: VMware-ről Azure-ra architektúra
+      href: concepts-vmware-to-azure-architecture.md
+    - name: Hyper-V-ről Azure-ra architektúra
+      href: concepts-hyper-v-to-azure-architecture.md
+    - name: Fizikairól Azure-ra architektúra
+      href: concepts-physical-to-azure-architecture.md
+    - name: Hyper-V-ről másodlagos helyre architektúra
+      href: concepts-hyper-v-to-secondary-architecture.md
+    - name: Helyszíniről Azure-ra támogatási mátrix
+      href: site-recovery-support-matrix-to-azure.md
+    - name: Helyszíniről másodlagos helyre támogatási mátrix
+      href: site-recovery-support-matrix-to-sec-site.md
+    - name: Számítási feladatok vészhelyreállítása
+      href: site-recovery-workload.md
+    - name: Azure-ról Azure-ra hálózatkezelése (előnézet)
+      href: site-recovery-azure-to-azure-networking-guidance.md
+    - name: Virtuális gépek kapcsolatai az Azure-ba történő feladatátadás után
+      href: concepts-on-premises-to-azure-networking.md
+    - name: Virtuális gépek kapcsolatai másodlagos helyre történő feladatátadás után
+      href: concepts-on-premises-to-on-premises-networking.md
+    - name: Hálózatleképezés Azure-beli virtuális gépek replikálásához
+      href: site-recovery-network-mapping-azure-to-azure.md
+    - name: Hálózatleképezés Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
+      href: site-recovery-network-mapping.md
+    - name: Szerepköralapú hozzáférési engedélyek
+      href: site-recovery-role-based-linked-access-control.md
+    - name: GYIK
+      href: site-recovery-faq.md
+    - name: Kapacitás megtervezése a VMware Azure-ba történő replikálásához
+      href: site-recovery-plan-capacity-vmware.md
+      items:
+        - name: Deployment Planner a VMware Azure-ba történő replikálásához
+          href: site-recovery-deployment-planner.md
+    - name: Capacity Planner Hyper-V-replikáláshoz
+      href: site-recovery-capacity-planner.md
+- name: Útmutatók
+  items:
+    - name: Vészhelyreállítás
+      items:
+        - name: Az Azure-ba Hyper-V virtuális gépekhez
+          href: tutorial-hyper-v-to-azure.md
+        - name: Az Azure-ba fizikai kiszolgálókhoz
+          href: tutorial-physical-to-azure.md
+        - name: Másodlagos helyre Hyper-V rendszerű virtuális gépekhez
+          href: tutorial-vmm-to-vmm.md
+        - name: Másodlagos helyre VMware rendszerű virtuális gépekhez és fizikai kiszolgálókhoz
+          href: tutorial-vmware-to-vmware.md
+        - name: Vészhelyreállítási próba végrehajtása az Azure-ba
+          href: tutorial-dr-drill-azure.md
+        - name: Vészhelyreállítási próba végrehajtása másodlagos helyre
+          href: tutorial-dr-drill-secondary.md
+        - name: Feladatátvétel és feladat-visszavétel futtatása fizikai kiszolgálókhoz
+          href: tutorial-vmware-to-azure-failover-failback.md
+        - name: Feladatátvétel és feladat-visszavétel futtatása Hyper-V rendszerű virtuális gépekhez
+          href: tutorial-hyper-v-to-azure-failover-failback.md
+        - name: Feladatátvétel és feladat-visszavétel futtatása helyszíni helyek között
+          href: tutorial-vmm-to-vmm-failover-failback.md
+    - name: Konfigurálás
+      items:
+        - name: A forráskörnyezet beállítása
+          items:
+            - name: 'Forráskörnyezet: VMware-ről Azure-ba'
+              href: site-recovery-set-up-vmware-to-azure.md
+            - name: 'Forráskörnyezet: fizikairól az Azure-ba'
+              href: site-recovery-set-up-physical-to-azure.md
+        - name: A célkörnyezet beállítása
+          items:
+            - name: 'Célkörnyezet: VMware-ről Azure-ba'
+              href: site-recovery-prepare-target-vmware-to-azure.md
+            - name: 'Célkörnyezet: fizikairól az Azure-ba'
+              href: site-recovery-prepare-target-physical-to-azure.md
+        - name: Replikációs beállítások konfigurálása
+          href: site-recovery-setup-replication-settings-vmware.md
+        - name: A mobilitási szolgáltatás üzembe helyezése VMware-replikáláshoz
+          href: site-recovery-vmware-to-azure-install-mob-svc.md
+          items:
+            - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
+              href: site-recovery-install-mobility-service-using-sccm.md
+            - name: A mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel
+              href: site-recovery-automate-mobility-service-install.md
+        - name: A replikáció engedélyezése
+          items:
+            - name: Azure-ról Azure-ba történő replikálás engedélyezése
+              href: site-recovery-replicate-azure-to-azure.md
+            - name: VMware-ről Azure-ba történő replikálás engedélyezése
+              href: site-recovery-replicate-vmware-to-azure.md
+    - name: Feladatátadás és feladatátvétel
+      items:
+        - name: Helyreállítási tervek beállítása
+          href: site-recovery-create-recovery-plans.md
+          items:
+            - name: Azure runbookok hozzáadása helyreállítási tervekhez
+              href: site-recovery-runbook-automation.md
+        - name: Feladatátvételi teszt futtatása
+          items:
+            - name: Azure-ba irányuló feladatátvételi teszt futtatása
+              href: site-recovery-test-failover-to-azure.md
+            - name: VMM-felhők közötti feladatátvételi teszt futtatása
+              href: site-recovery-test-failover-vmm-to-vmm.md
+        - name: Védett gépek feladatátvétele
+          href: site-recovery-failover.md
+        - name: Gépek ismételt védelme feladatátvétel után
+          items:
+            - name: Ismételt védelem – Egy másodlagos Azure-régióról egy elsődlegesre
+              href: site-recovery-how-to-reprotect-azure-to-azure.md
+            - name: Ismételt védelem – Azure-ból helyszíni rendszerbe
+              href: site-recovery-how-to-reprotect.md
+        - name: Feladat-visszavétel az Azure-ból
+          items:
+            - name: Feladat-visszavétel az Azure-ból a VMware-be
+              href: site-recovery-failback-azure-to-vmware.md
+            - name: Feladat-visszavétel az Azure-ból a Hyper-V-be
+              href: site-recovery-failback-from-azure-to-hyper-v.md
+    - name: Automatizálás
+      items:
+        - name: Hyper-V-replikálás beállítása az Azure-ba (VMM nélkül) a PowerShell-lel
+          href: site-recovery-deploy-with-powershell-resource-manager.md
+        - name: Hyper-V-replikálás beállítása az Azure-ba (VMM-el) a PowerShell-lel
+          href: site-recovery-vmm-to-azure-powershell-resource-manager.md
+        - name: Hyper-V-replikálás beállítása másodlagos VMM-helyre a PowerShell-lel
+          href: site-recovery-vmm-to-vmm-powershell-resource-manager.md
+    - name: Migrate (Áttelepítés)
+      items:
+        - name: Migrált gépek replikálása másik Azure-régióba
+          href: site-recovery-azure-to-azure-after-migration.md
+    - name: Számítási feladatok
+      items:
+        - name: Active Directory és DNS
+          href: site-recovery-active-directory.md
+        - name: SQL Server replikálása
+          href: site-recovery-sql.md
+        - name: SharePoint
+          href: site-recovery-sharepoint.md
+        - name: Dynamics AX
+          href: site-recovery-dynamicsax.md
+        - name: Távoli asztali szolgáltatások
+          href: 'site-recovery-workload.md#protect-rds'
+        - name: Exchange
+          href: 'site-recovery-workload.md#protect-exchange'
+        - name: SAP
+          href: site-recovery-sap.md
+        - name: IIS-alapú webalkalmazások
+          href: site-recovery-iis.md
+        - name: Citrix XenApp és XenDesktop
+          href: site-recovery-citrix-xenapp-and-xendesktop.md
+        - name: Egyéb számítási feladatok
+          href: 'site-recovery-workload.md#workload-summary'
+    - name: Kezelés
+      items:
+        - name: Site Recovery-tárolók frissítése Recovery Services-tárolókra
+          href: upgrade-site-recovery-vaults.md
+        - name: Folyamatkiszolgálók kezelése az Azure-ban
+          href: site-recovery-vmware-setup-azure-ps-resource-manager.md
+        - name: A konfigurációs kiszolgáló kezelése
+          href: site-recovery-vmware-to-azure-manage-configuration-server.md
+        - name: Horizontálisan felskálázott folyamatkiszolgálók kezelése
+          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
+        - name: vCenter-kiszolgálók kezelése
+          href: site-recovery-vmware-to-azure-manage-vCenter.md
+        - name: Kiszolgálók eltávolítása és a védelem letiltása
+          href: site-recovery-manage-registration-and-protection.md
+        - name: A Recovery Services-tároló törlése
+          href: delete-vault.md
+    - name: Hibaelhárítás
+      items:
+        - name: Az Azure-ból Azure-ba végzett replikálás problémái
+          href: site-recovery-azure-to-azure-troubleshoot-errors.md
+        - name: A helyszínről az Azure-ba történő replikálás problémái
+          href: site-recovery-vmware-to-azure-protection-troubleshoot.md
+        - name: A mobilitási szolgáltatás telepítésének problémái
+          href: site-recovery-vmware-to-azure-push-install-error-codes.md
+        - name: Az Azure-ba történő feladatátadás problémái
+          href: site-recovery-failover-to-azure-troubleshoot.md
+        - name: Naplók gyűjtése és helyszíni problémák hibaelhárítása
+          href: site-recovery-monitoring-and-troubleshooting.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.siterecovery
+    - name: Azure PowerShell (klasszikus)
+      href: /powershell/module/azure/?view=azuresmps-3.7.0
+    - name: REST
+      href: 'https://msdn.microsoft.com/en-us/library/mt750497'
+- name: Kapcsolódó
+  items:
+    - name: Azure Automation
+      href: /azure/automation/
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Blog
+      href: 'http://azure.microsoft.com/blog/tag/azure-site-recovery/'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: Képzési terv
+      href: 'https://azure.microsoft.com/documentation/learning-paths/site-recovery/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/site-recovery/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=site-recovery'

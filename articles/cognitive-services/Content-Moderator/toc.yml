@@ -62,6 +62,10 @@
           href: Review-Tool-User-Guide/Workflows.md
         - name: Az irányítópult megtekintése
           href: Review-Tool-User-Guide/View-Dashboard.md
+- name: oktatóanyagokat
+  items:
+    - name: Facebook-hozzászólások moderálása
+      href: facebook-post-moderation.md
 - name: API-hivatkozások
   items:
     - name: Minden API
@@ -73,6 +77,6 @@
     - name: Windows SDK
       href: 'https://github.com/MicrosoftContentModerator/Microsoft.CognitiveServices.ContentModerator-Windows/'
     - name: Példák
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services'
+      href: 'https://github.com/MicrosoftContentModerator'
     - name: GYIK
       href: FAQs.md

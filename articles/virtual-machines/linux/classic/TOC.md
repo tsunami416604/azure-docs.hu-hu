@@ -5,7 +5,7 @@
 ## [Gyakori kérdések](faq.md)
 
 # Első lépések
-## [Linux rendszerű virtuális gép létrehozása a portálról](createportal.md)
+## [Linux rendszerű virtuális gép létrehozása az Azure Portalról](createportal.md)
 ## [Az Azure parancssori felület telepítése](../../../cli-install-nodejs.md)
 ## [SSH-kulcsok létrehozása](../mac-create-ssh-keys.md)
 
@@ -22,7 +22,7 @@
 ### [Linux-jelszavak vagy -kulcsok visszaállítása, az SSH javítása és a lemezek ellenőrzése](reset-access.md)
 ### [Karbantartás](planned-maintenance-schedule.md)
 ### [Docker-gazdagép létrehozása a parancssori felületről](cli-use-docker.md)
-### [Docker-gazdagép létrehozása a portálról](portal-use-docker.md)
+### [Docker-gazdagép létrehozása az Azure Portalról](portal-use-docker.md)
 ### [A Docker és a Swarm együttes használata](../../virtual-machines-linux-docker-swarm.md)
 
 ## A Storage használata
@@ -67,7 +67,7 @@
 ### [Virtuális merevlemez csatlakoztatása a hibaelhárító virtuális géphez](troubleshoot-recovery-disks-portal.md)
 
 # Referencia
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [Resource Manager-sablonok készítése](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -75,6 +75,7 @@ sections:
           - html: 'Adatok lekérdezése a Cosmos DB&#58; használatával <a href="/azure/cosmos-db/tutorial-query-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Graph</a>'
           - html: 'Globális adatbázis-replikáció a Cosmos DB&#58; használatával <a href="/azure/cosmos-db/tutorial-global-distribution-documentdb">DocumentDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>'
           - html: <a href="local-emulator">Alkalmazás helyszíni fejlesztése az emulátor használatával</a>
+          - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">HTTP eseményindító létrehozása Azure Cosmos DB bemeneti kötéssel</a>
   - title: Példák
     items:
       - type: list

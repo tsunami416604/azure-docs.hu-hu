@@ -1,0 +1,31 @@
+- name: Áttekintés
+  items:
+    - name: Az Azure szabályzatának áttekintése
+      href: azure-policy-introduction.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Szabályzat hozzárendelése – Portál
+      href: assign-policy-definition.md
+    - name: Szabályzat hozzárendelése – PowerShell
+      href: assign-policy-definition-ps.md
+    - name: Szabályzat hozzárendelése – Azure CLI
+      href: assign-policy-definition-cli.md
+- name: oktatóanyagokat
+  items:
+    - name: Azure-szabályzat létrehozása és kezelése
+      href: create-manage-policy.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/policy?view=azure-cli-latest'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.3.1'
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/azure-policy/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'

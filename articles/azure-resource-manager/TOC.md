@@ -12,7 +12,7 @@
 
 # Példák
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## PowerShell
+## Azure PowerShell
 ### [Sablon üzembe helyezése](resource-manager-samples-powershell-deploy.md)
 
 ## Azure CLI
@@ -35,7 +35,7 @@
 
 
 ## Üzembe helyezés
-### PowerShell
+### Azure PowerShell
 #### [Sablon üzembe helyezése](resource-group-template-deploy.md)
 #### [Sablon üzembe helyezése SAS-token használatával](resource-manager-powershell-sas-token.md)
 #### [Sablon exportálása és újbóli üzembe helyezése](resource-manager-export-template-powershell.md)
@@ -43,7 +43,7 @@
 #### [Sablon üzembe helyezése](resource-group-template-deploy-cli.md)
 #### [Sablon üzembe helyezése SAS-token használatával](resource-manager-cli-sas-token.md)
 #### [Sablon exportálása és újbóli üzembe helyezése](resource-manager-export-template-cli.md)
-### Portál
+### Azure Portal
 #### [Erőforrások üzembe helyezése](resource-group-template-deploy-portal.md)
 #### [Sablon exportálása](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
@@ -52,9 +52,9 @@
 ### [Biztonságos értékek továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md)
 
 ## Kezelés
-### [PowerShell](powershell-azure-resource-manager.md)
+### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
-### [Portál](resource-group-portal.md)
+### [Azure Portal](resource-group-portal.md)
 ### [REST API](resource-manager-rest-api.md)
 ### [Címkék használata az erőforrások rendszerezéséhez](resource-group-using-tags.md)
 ### [Erőforrások áthelyezése új csoportba vagy előfizetésbe](resource-group-move-resources.md)
@@ -62,16 +62,16 @@
 
 ## Vezérlési hozzáférés
 ### Egyszerű szolgáltatás létrehozása
-#### [PowerShell](resource-group-authenticate-service-principal.md)
-#### [Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Azure PowerShell](resource-group-authenticate-service-principal.md)
+#### [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Azure CLI 1.0](resource-group-authenticate-service-principal-cli.md)
-#### [Portal](resource-group-create-service-principal-portal.md)
+#### [Azure Portal](resource-group-create-service-principal-portal.md)
 ### [Hitelesítési API az előfizetések hozzáféréséhez](resource-manager-api-authentication.md)
 ### [Erőforrások zárolása](resource-group-lock-resources.md)
 
 ## Erőforrás-házirendek beállítása
 ### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
-### [Szabályzat hozzárendelése a portál használatával](resource-manager-policy-portal.md)
+### [Szabályzat hozzárendelése az Azure Portal használatával](resource-manager-policy-portal.md)
 ### [Szabályzat hozzárendelése szkriptek használatával](resource-manager-policy-create-assign.md)
 ### Példák
 #### [Címkék](resource-manager-policy-tags.md)

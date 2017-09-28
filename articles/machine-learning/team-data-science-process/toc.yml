@@ -1,0 +1,234 @@
+- name: Csoportos adatelemzési folyamat dokumentációja
+- name: Áttekintés
+  href: overview.md
+- name: Életciklus
+  href: lifecycle.md
+  items:
+    - name: 1. Üzleti ismertetés
+      href: lifecycle-business-understanding.md
+    - name: 2. Adatgyűjtés és adatértelmezés
+      href: lifecycle-data.md
+    - name: 3. Modellezés
+      href: lifecycle-modeling.md
+    - name: 4. Környezet
+      href: lifecycle-deployment.md
+    - name: 5. Felhasználói elfogadás
+      href: lifecycle-acceptance.md
+    - name: Azure ML használatával
+      href: 'http://aka.ms/datascienceprocess'
+- name: Szerepkörök és feladatok
+  href: roles-tasks.md
+  items:
+    - name: Csoportkezelő
+      href: group-manager-tasks.md
+    - name: Csapatvezető
+      href: team-lead-tasks.md
+    - name: Projektvezető
+      href: project-lead-tasks.md
+    - name: Egyéni közreműködő
+      href: project-ic-tasks.md
+- name: Projektstruktúra
+  href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
+- name: Projekt végrehajtása
+  href: project-execution.md
+- name: oktatóanyagokat
+  href: walkthroughs.md
+  items:
+    - name: Azure Machine Learning Workbench
+      href: walkthroughs-aml-with-tdsp.md
+      items:
+        - name: Egyesült államokbeli bevételek besorolása
+          href: ../preview/scenario-tdsp-classifying-us-incomes.md
+          maintainContext: true
+        - name: Orvosbiológiai entitásfelismerés
+          href: ../preview/scenario-tdsp-biomedical-recognition.md
+          maintainContext: true
+    - name: Spark PySparkkal és Scalával
+      href: walkthroughs-spark.md
+      items:
+        - name: Adatok megismerése
+          href: spark-data-exploration-modeling.md
+        - name: Relevanciamodellek
+          href: spark-model-consumption.md
+        - name: Speciális adatfeltárás
+          href: spark-advanced-data-exploration-modeling.md
+    - name: Hive a HDInsight Hadooppal
+      href: walkthroughs-hdinsight-hadoop.md
+    - name: U-SQL az Azure Data Lake-kel
+      href: walkthroughs-azure-data-lake.md
+    - name: 'R, Python és T-SQL az SQL Serverrel'
+      href: walkthroughs-sql-server.md
+    - name: T-SQL és Python az SQL DW-vel
+      href: walkthroughs-sql-data-warehouse.md
+- name: Útmutató
+  items:
+    - name: TSDP használata az Azure ML-ben
+      href: ../preview/how-to-use-tdsp-in-azure-ml.md
+      maintainContext: true
+    - name: Adatelemzési környezetek beállítása
+      href: environment-setup.md
+      items:
+        - name: Azure Storage-fiókok
+          href: ../../storage/common/storage-create-storage-account.md
+          maintainContext: true
+        - name: Platformok és eszközök
+          href: platforms-and-tools.md
+        - name: Hadoop testreszabása
+          href: customize-hadoop-cluster.md
+        - name: Azure Machine Learning-munkaterület
+          href: ../studio/create-workspace.md
+          maintainContext: true
+        - name: Virtuális gépek telepítése
+          href: virtual-machines.md
+    - name: Üzleti igények elemzése
+      items:
+        - name: A szituáció azonosítása
+          href: plan-your-environment.md
+    - name: Adatok beszerzése és megértése
+      items:
+        - name: Adatlogisztika felügyelete
+          items:
+            - name: Áttekintés
+              href: ingest-data.md
+            - name: Blob Storage
+              href: move-azure-blob.md
+            - name: A Storage Explorer használata
+              href: move-data-to-azure-blob-using-azure-storage-explorer.md
+            - name: Az AzCopy használata
+              href: move-data-to-azure-blob-using-azcopy.md
+            - name: A Python használata
+              href: move-data-to-azure-blob-using-python.md
+            - name: Az SSIS használata
+              href: move-data-to-azure-blob-using-ssis.md
+            - name: Áthelyezés virtuális gépre
+              href: move-sql-server-virtual-machine.md
+            - name: Áthelyezés SQL Database szolgáltatásra
+              href: move-sql-azure.md
+            - name: Betöltés Hive táblákba
+              href: move-hive-tables.md
+            - name: Betöltés helyszíni SQL-ből
+              href: move-sql-azure-adf.md
+            - name: Betöltés SQL partíciós táblákból
+              href: parallel-load-sql-partitioned-tables.md
+        - name: Adatok felfedezése és vizualizálása
+          items:
+            - name: Adatok előkészítése
+              href: prepare-data.md
+            - name: Adatok megismerése
+              items:
+                - name: Áttekintés
+                  href: explore-data.md
+                - name: Pandas használata
+                  href: explore-data-blob.md
+                - name: SQL-alapú virtuális gép használata
+                  href: explore-data-sql-server.md
+                - name: Hive-táblák használata
+                  href: explore-data-hive-tables.md
+            - name: Mintaadatok
+              items:
+                - name: Áttekintés
+                  href: sample-data.md
+                - name: Blob Storage használata
+                  href: sample-data-blob.md
+                - name: SQL Server használata
+                  href: sample-data-sql-server.md
+                - name: Hive-táblák használata
+                  href: sample-data-hive.md
+            - name: Adatok feldolgozása
+              items:
+                - name: Hozzáférés Pythonnal
+                  href: python-data-access.md
+                - name: Blobadatok feldolgozása
+                  href: data-blob.md
+                - name: Az Azure Data Lake használata
+                  href: data-lake-walkthrough.md
+                - name: SQL-alapú virtuális gép használata
+                  href: sql-server-virtual-machine.md
+                - name: Adatfolyamat használata
+                  href: automated-data-pipeline-cheat-sheet.md
+                - name: Spark használata
+                  href: spark-overview.md
+                - name: Scala és Spark használata
+                  href: scala-walkthrough.md
+    - name: Modellek fejlesztése
+      items:
+        - name: Funkciók tervezése
+          items:
+            - name: Áttekintés
+              href: create-features.md
+            - name: Pandas használata
+              href: create-features-blob.md
+            - name: SQL + Python használata
+              href: create-features-sql-server.md
+            - name: Hive-lekérdezések használata
+              href: create-features-hive.md
+        - name: Funkciók kiválasztása
+          href: select-features.md
+        - name: Modellek létrehozása és betanítása
+          items:
+            - name: Algoritmusok kiválasztása
+              href: ../studio/algorithm-choice.md
+              maintainContext: true
+            - name: Algoritmus-adatlap
+              href: ../studio/algorithm-cheat-sheet.md
+              maintainContext: true
+    - name: Modellek üzembe helyezése
+      items:
+        - name: Webszolgáltatással
+          href: ../studio/publish-a-machine-learning-web-service.md
+          maintainContext: true
+        - name: Webszolgáltatás felhasználása
+          href: ../studio/consume-web-services.md
+          maintainContext: true
+- name: Kapcsolódó
+  items:
+    - name: Microsoft Cognitive Toolkit – CNTK
+      href: 'https://docs.microsoft.com/en-us/cognitive-toolkit/'
+      maintainContext: true
+    - name: Cortana Intelligence partnermegoldások
+      items:
+        - name: Cortana Intelligence Gallery
+          href: 'https://gallery.cortanaintelligence.com'
+        - name: Cortana Intelligence közzétételi útmutató
+          href: cortana-intelligence-appsource-publishing-guide.md
+        - name: Cortana Intelligence megoldásértékelési eszköz
+          href: cortana-intelligence-appsource-evaluation-tool.md
+    - name: Cortana Analytics
+      items:
+        - name: API-k
+          items:
+            - name: Rendellenességek észlelése
+              href: apps-anomaly-detection-api.md
+            - name: Cognitive Services
+              href: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
+            - name: Prediktív karbantartás
+              items:
+                - name: Áttekintés
+                  href: cortana-analytics-playbook-predictive-maintenance.md
+                - name: Architektúra
+                  href: cortana-analytics-architecture-predictive-maintenance.md
+                - name: Műszaki útmutató
+                  href: cortana-analytics-technical-guide-predictive-maintenance.md
+            - name: Járműtelemetria
+              items:
+                - name: Áttekintés
+                  href: cortana-analytics-playbook-vehicle-telemetry.md
+                - name: Útmutató
+                  href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
+                - name: Beállítás
+                  href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
+- name: Erőforrások
+  items:
+    - name: TDSP-eszközök és -segédprogramok – GitHub
+      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
+      items:
+        - name: A Csoportos adatelemzési folyamat legújabb segédprogramjai
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
+    - name: Cortana Intelligence and Machine Learning blog
+      href: 'https://blogs.technet.microsoft.com/machinelearning/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'

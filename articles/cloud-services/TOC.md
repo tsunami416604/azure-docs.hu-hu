@@ -34,13 +34,13 @@
 #### [A .NET telepítése egy Cloud Service szerepkörre feladat használatával](cloud-services-dotnet-install-dotnet.md)
 
 ### A Távoli asztal konfigurálása
-#### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [Klasszikus portál](cloud-services-role-enable-remote-desktop.md)
-#### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Azure PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## Üzembe helyezés
 ### Felhőszolgáltatás létrehozása és üzembe helyezése a portálon
-#### [Portál](cloud-services-how-to-create-deploy-portal.md)
+#### [Azure Portal](cloud-services-how-to-create-deploy-portal.md)
 #### [Klasszikus portál](cloud-services-how-to-create-deploy.md)
 ### [Üres felhőszolgáltatás-tároló létrehozása PowerShellben](cloud-services-powershell-create-cloud-container.md)
 ### Egyéni tartománynév konfigurálása
@@ -51,14 +51,14 @@
 
 ## Szolgáltatás kezelése
 ### Általános kezelési feladatok
-#### [Portál](cloud-services-how-to-manage-portal.md)
+#### [Azure Portal](cloud-services-how-to-manage-portal.md)
 #### [Klasszikus portál](cloud-services-how-to-manage.md)
 ### Felhőszolgáltatás konfigurálása
-#### [Portál](cloud-services-how-to-configure-portal.md)
+#### [Azure Portal](cloud-services-how-to-configure-portal.md)
 #### [Klasszikus portál](cloud-services-how-to-configure.md)
 ### [Egy Cloud Service felügyelete az Azure Automationnel](automation-manage-cloud-services.md)
 ### Az automatikus méretezés konfigurálása
-#### [Portál](cloud-services-how-to-scale-portal.md)
+#### [Azure Portal](cloud-services-how-to-scale-portal.md)
 #### [Klasszikus portál](cloud-services-how-to-scale.md)
 ### [Azure-erőforrások felügyelete a Pythonnal](cloud-services-python-how-to-use-service-management.md)
 
@@ -80,7 +80,7 @@
 ### [Teljesítmény tesztelése](../vs-azure-tools-performance-profiling-cloud-services.md)
 #### [Tesztelés a Visual Studio Profilerével](cloud-services-performance-testing-visual-studio-profiler.md)
 ### Diagnosztika engedélyezése
-#### [PowerShell](cloud-services-diagnostics-powershell.md)
+#### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 ### [Teljesítményszámlálók használata az Azure Diagnosticsban](cloud-services-dotnet-diagnostics-performance-counters.md)
@@ -108,8 +108,14 @@
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
-## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
-## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
+## [.csdef XML-séma](schema-csdef-file.md)
+### [LoadBalancerProbe séma](schema-csdef-loadbalancerprobe.md)
+### [WebRole séma](schema-csdef-webrole.md)
+### [WorkerRole séma](schema-csdef-workerrole.md)
+### [NetworkTrafficRules séma](schema-csdef-networktrafficrules.md)
+## [.cscfg XML-séma](schema-cscfg-file.md)
+### [Szerepkörséma](schema-cscfg-role.md)
+### [NetworkConfiguration séma](schema-cscfg-networkconfiguration.md)
 ## [REST](https://msdn.microsoft.com/library/azure/ee460812)
 
 # Erőforrások

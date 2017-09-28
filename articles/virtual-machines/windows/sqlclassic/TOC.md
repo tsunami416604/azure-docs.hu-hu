@@ -30,12 +30,12 @@
 ## Üzleti intelligencia
 ### [SQL Server Business Intelligence az Azure virtuális gépeken](virtual-machines-windows-classic-ps-sql-bi.md)
 ### [A ReportViewer használata az Azure-ban üzemeltetett webhelyeken](virtual-machines-windows-classic-sql-server-reportviewer.md)
-### [Jelentéskészítő kiszolgálóval rendelkező Azure virtuális gép létrehozása PowerShell használatával](virtual-machines-windows-classic-ps-sql-report.md)
+### [Jelentéskészítő kiszolgálóval rendelkező Azure virtuális gép létrehozása az Azure PowerShell használatával](virtual-machines-windows-classic-ps-sql-report.md)
 ## [A teljesítménnyel kapcsolatos ajánlott eljárások](../sql/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 ## [Alkalmazásminták](../sql/virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 
 # Referencia
-## [Klasszikus PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
+## [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)
 ## [SQL Server-illesztőprogramok](https://docs.microsoft.com/sql/connect/sql-server-drivers)

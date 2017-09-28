@@ -1,0 +1,52 @@
+- name: Adatelemzési virtuális gép dokumentációja
+  items: null
+- name: Áttekintés
+  items:
+    - name: Mi az az adatelemzési virtuális gép?
+      href: overview.md
+    - name: Mi az a mélytanulási virtuális gép?
+      href: deep-learning-dsvm-overview.md
+- name: Bevezetés
+  items:
+    - name: Windows rendszerű adatelemzési virtuális gép létrehozása
+      href: provision-vm.md
+    - name: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
+      href: dsvm-ubuntu-intro.md
+    - name: CentOS rendszerű adatelemzési virtuális gép létrehozása
+      href: linux-dsvm-intro.md
+    - name: Mélytanulási virtuális gép létrehozása
+      href: provision-deep-learning-dsvm.md
+- name: Útmutató
+  items:
+    - name: Windows rendszerű adatelemzési virtuális gép használata
+      href: vm-do-ten-things.md
+    - name: Linux rendszerű adatelemzési virtuális gép használata
+      href: linux-dsvm-walkthrough.md
+    - name: Mélytanulási virtuális gép használata
+      href: use-deep-learning-dsvm.md
+- name: Referencia
+  items:
+    - name: Mély tanulás és mesterségesintelligencia-keretrendszerek
+      href: dsvm-deep-learning-ai-frameworks.md
+    - name: Gépi tanulási és adatelemzési eszközök
+      href: dsvm-ml-data-science-tools.md
+    - name: Nyelvek
+      href: dsvm-languages.md
+    - name: Fejlesztési eszközök
+      href: dsvm-tools-development.md
+    - name: Adatfeldolgozási eszközök
+      href: dsvm-tools-ingestion.md
+    - name: Adatáttekintési és vizualizációs eszközök
+      href: dsvm-tools-explore-and-visualize.md
+    - name: Adatplatformok
+      href: dsvm-data-platforms.md
+    - name: Minták és útmutatók
+      href: dsvm-samples-and-walkthroughs.md
+- name: Erőforrások
+  items:
+    - name: Blog
+      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
+    - name: MSDN-fórum
+      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=dsvm'

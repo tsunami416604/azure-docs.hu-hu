@@ -69,6 +69,8 @@
           href: container-service-deploy-spring-boot-app-on-linux.md
         - name: Spring Boot-alkalmazás üzembe helyezése Kubernetes-fürtön az Azure Container Service-ben
           href: container-service-deploy-spring-boot-app-on-kubernetes.md
+        - name: Spring Boot-alkalmazás üzembe helyezése a fabric8 Maven bővítménnyel
+          href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
 - name: Referencia
   items:
     - name: Azure CLI 2.0

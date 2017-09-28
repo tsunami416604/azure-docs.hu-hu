@@ -45,6 +45,7 @@
 ## Konfigurációkezelés (DSC) üzembe helyezése
 ### [A célállapot-konfiguráló (DSC) áttekintése](automation-dsc-overview.md)
 ### [Első lépések](automation-dsc-getting-started.md)
+### [Kiszolgálók célállapotba történő konfigurálása és eltéréskezelés az Azure Automation használatával](tutorial-configure-servers-desired-state.md)
 ### [Gépek előkészítése kezelésre](automation-dsc-onboarding.md)
 ### [Célállapot-konfigurálók fordítása](automation-dsc-compile.md)
 ### [Folyamatos üzembe helyezés a Chocolatey használatával](automation-dsc-cd-chocolatey.md)
@@ -68,8 +69,12 @@
 ### [Azure Automation-runbook hívása Log Analytics-riasztásból](automation-invoke-runbook-from-omsla-alert.md)
 ### [Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban](automation-deploy-template-runbook.md)
 ## Megoldások
-### [Változáskövetés](../log-analytics/log-analytics-change-tracking.md)
 ### [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md)
+#### [Frissítések kezelése több virtuális gép esetén](manage-update-multi.md)
+#### [SCCM-integráció OMS-frissítéskezeléssel](oms-solution-updatemgmt-sccmintegration.md)
+### [Változások követése](../log-analytics/log-analytics-change-tracking.md)
+### [Virtuális gépek változásainak követése](automation-vm-change-tracking.md)
+### [Virtuális gépek kezelése leltár használatával](automation-vm-inventory.md)
 ### [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
 ## Figyelés
 ### [Azure Automation-feladat adatainak továbbítása a Log Analyticsbe](automation-manage-send-joblogs-log-analytics.md)
@@ -81,8 +86,8 @@
 ### [Gyakori hibák elhárítása](automation-troubleshooting-automation-errors.md)
 ### [A hibrid runbook-feldolgozó hibaelhárítása](automation-troubleshooting-hybrid-runbook-worker.md)
 # Referencia
-## [PowerShell](/powershell/module/azurerm.automation)
-## [PowerShell (klasszikus)](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell](/powershell/module/azurerm.automation)
+## [Azure PowerShell (klasszikus)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](/rest/api/automation)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/mt163781)

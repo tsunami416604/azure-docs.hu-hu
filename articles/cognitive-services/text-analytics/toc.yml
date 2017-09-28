@@ -4,6 +4,8 @@
   items:
     - name: A szövegelemzés ismertetése
       href: overview.md
+    - name: Támogatott nyelvek
+      href: text-analytics-supported-languages.md
 - name: Gyors útmutatók
   items:
     - name: 'C#'

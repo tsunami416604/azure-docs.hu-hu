@@ -1,0 +1,129 @@
+- name: Az Azure Stack felhasználói dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Fő szempontok
+      href: azure-stack-considerations.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Windows rendszerű virtuális gép létrehozása – Portál
+      href: azure-stack-quick-windows-portal.md
+    - name: Windows rendszerű virtuális gép létrehozása – PowerShell
+      href: azure-stack-quick-create-vm-windows-powershell.md
+    - name: Windows rendszerű virtuális gép létrehozása – Parancssori felület
+      href: azure-stack-quick-create-vm-windows-cli.md
+    - name: Linux rendszerű virtuális gép létrehozása – Portál
+      href: azure-stack-quick-linux-portal.md
+    - name: Linux rendszerű virtuális gép létrehozása – PowerShell
+      href: azure-stack-quick-create-vm-linux-powershell.md
+    - name: Linux rendszerű virtuális gép létrehozása – Parancssori felület
+      href: azure-stack-quick-create-vm-linux-cli.md
+- name: oktatóanyagokat
+  items:
+    - name: Alkalmazások üzembe helyezése az Azure-ban és az Azure Stackben
+      href: azure-stack-solution-pipeline.md
+- name: Útmutatók
+  items:
+    - name: Az Azure Stack Portal használata
+      href: azure-stack-use-portal.md
+    - name: Biztonság és megfelelőség
+      items:
+        - name: Az RBAC kezelése
+          href: azure-stack-manage-permissions.md
+        - name: Szolgáltatásnevek létrehozása
+          href: Azure-stack-create-service-principals.md
+    - name: Szolgáltatások használata
+      items:
+        - name: Fő szempontok
+          href: azure-stack-considerations.md
+        - name: Számítás
+          items:
+            - name: Áttekintés
+              href: azure-stack-compute-overview.md
+            - name: A virtuális gépekkel kapcsolatos szempontok
+              href: azure-stack-vm-considerations.md
+        - name: Storage
+          items:
+            - name: Áttekintés
+              href: azure-stack-storage-overview.md
+            - name: A tárterülettel kapcsolatos szempontok
+              href: azure-stack-acs-differences.md
+            - name: Tárolásfejlesztési eszközök
+              href: azure-stack-storage-dev.md
+            - name: Adatátviteli eszközök
+              href: azure-stack-storage-transfer.md
+            - name: A Storage Explorer csatlakoztatása
+              href: azure-stack-storage-connect-se.md
+        - name: Network (Hálózat)
+          items:
+            - name: Áttekintés
+              href: azure-stack-network-overview.md
+            - name: Hálózati megfontolások
+              href: azure-stack-network-differences.md
+            - name: iDNS az Azure Stackhez
+              href: azure-stack-understanding-dns.md
+            - name: DNS az Azure Stackben
+              href: azure-stack-dns.md
+        - name: Key Vault
+          items:
+            - name: Áttekintés
+              href: azure-stack-kv-intro.md
+            - name: Felügyelet a Portalon keresztül
+              href: azure-stack-kv-manage-portal.md
+            - name: Kezelés a Powershell-lel
+              href: azure-stack-kv-manage-powershell.md
+            - name: Virtuális gép létrehozása titkos kóddal
+              href: azure-stack-kv-deploy-vm-with-secret.md
+            - name: Virtuális gép létrehozása tanúsítvánnyal
+              href: azure-stack-kv-push-secret-into-vm.md
+            - name: KeyVault-mintaalkalmazás
+              href: azure-stack-kv-sample-app.md
+    - name: Alkalmazások készítése
+      items:
+        - name: Fejlesztés az Azure Stackhez
+          href: azure-stack-developer.md
+        - name: Fejlesztési környezet beállítása
+          items:
+            - name: Az Azure Stack PowerShell telepítése
+              href: azure-stack-powershell-install.md
+            - name: Eszközök letöltése
+              href: azure-stack-powershell-download.md
+            - name: A PowerShell konfigurálása – Felhasználó
+              href: azure-stack-powershell-configure-user.md
+            - name: Az Azure Stack parancssori felület telepítése és konfigurálása
+              href: azure-stack-connect-cli.md
+            - name: A Visual Studio telepítése
+              href: azure-stack-install-visual-studio.md
+            - name: API-verzióprofilok kezelése
+              href: azure-stack-version-profiles.md
+        - name: Szabályzatmodul használata
+          href: azure-stack-policy-module.md
+        - name: Sablonok használata
+          items:
+            - name: Sablonok áttekintése
+              href: azure-stack-arm-templates.md
+            - name: Sablonok fejlesztése
+              href: azure-stack-develop-templates.md
+            - name: Sablonok ellenőrzése
+              href: azure-stack-validate-templates.md
+            - name: Üzembe helyezés a Portallal
+              href: azure-stack-deploy-template-portal.md
+            - name: Üzembe helyezés a PowerShell-lel
+              href: azure-stack-deploy-template-powershell.md
+            - name: Üzembe helyezés a Visual Studióval
+              href: azure-stack-deploy-template-visual-studio.md
+- name: Referencia
+  items:
+    - name: Azure Stack PowerShell
+      href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: Díjszabási információk
+      href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-stack'

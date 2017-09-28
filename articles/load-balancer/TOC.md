@@ -1,8 +1,10 @@
 # Áttekintés
 ## [Mi az a Load Balancer?](load-balancer-overview.md)
+## [Mi az a Load Balancer Standard?](load-balancer-standard-overview.md)
 ## [Internetes Load Balancer](load-balancer-internet-overview.md)
 ## [Belső terheléselosztó](load-balancer-internal-overview.md)
 ## [A terheléselosztó vizsgálatok ismertetése](load-balancer-custom-probe-overview.md)
+## [A magas rendelkezésre állású portok ismertetése](load-balancer-ha-ports-overview.md)
 ## [Azure Resource Manager-támogatás](load-balancer-arm.md)
 ## [IPv6-támogatás](load-balancer-ipv6-overview.md)
 ## [Több virtuális IP-cím](load-balancer-multivip-overview.md)
@@ -33,6 +35,10 @@
 ### [Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal (parancssori felület)](load-balancer-ipv6-internet-cli.md)
 ### [Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal (sablon)](load-balancer-ipv6-internet-template.md)
 
+## [Zónaredundáns nyilvános Load Balancer Standard létrehozása](load-balancer-get-started-internet-az-portal.md)
+### [Zónaredundáns nyilvános Load Balancer Standard létrehozása (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [Zónaredundáns nyilvános Load Balancer Standard létrehozása (parancssori felület)](load-balancer-get-started-internet-az-cli.md)
+
 # Útmutató
 ## [TCP üresjárati időkorlát konfigurálása Load Balancer](load-balancer-tcp-idle-timeout.md)
 ## [Elosztási mód konfigurálása a Load Balancer számára](load-balancer-distribution-mode.md)
@@ -44,13 +50,17 @@
 ### [Több IP-konfiguráció használata (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Naplóelemzés az Azure Load Balancerhez](load-balancer-monitor-log.md)
 ## [A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez](load-balancer-ipv6-for-linux.md)
+## [Magas rendelkezésre állású portok konfigurálása belső Load Balancerhez](load-balancer-configure-ha-ports.md)
+## [Nyilvános IP-cím létrehozása rendelkezésre állási zónában](../virtual-network/create-public-ip-availability-zone-portal.md)
+## [Nyilvános IP-cím létrehozása rendelkezésre állási zónában (PowerShell)](../virtual-network/create-public-ip-availability-zone-powershell.md)
+## [Nyilvános IP-cím létrehozása rendelkezésre állási zónában (parancssori felület)](../virtual-network/create-public-ip-availability-zone-cli.md)
 ## Hibaelhárítás
 ### [Azure Load Balancer hibaelhárítása](load-balancer-troubleshoot.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)
-## [PowerShell](/powershell/module/azurerm.network)
-## [Azure CLI 2.0](/cli/azure/network/lb)
+## [Azure PowerShell](/powershell/module/azurerm.network)
+## [Azure Azure CLI](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
 ## [Java](/java/api/com.microsoft.azure.management.network)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html)

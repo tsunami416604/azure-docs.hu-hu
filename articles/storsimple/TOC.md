@@ -36,6 +36,7 @@
 #### [Feladatok kezelése](storsimple-virtual-array-manage-jobs.md)
 #### [Az eszköz jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md)
 #### [Az MPIO konfigurálása Windows Server-gazdagépen](storsimple-virtual-array-configure-mpio-windows-server.md)
+#### [Monitorozás riasztások segítségével](storsimple-virtual-array-manage-alerts.md)
 #### [Diagnosztika és hibaelhárítás](storsimple-virtual-array-diagnose-problems.md)
 #### [Naplótámogatási kérelem](storsimple-virtual-array-log-support-ticket.md)
 
@@ -56,6 +57,7 @@
 ### [Mi a megoldás?](storsimple-overview.md)
 ### [StorSimple – tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Biztonsági szempontok](storsimple-8000-security.md)
+### [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md)
 
 ## Bevezetés
 

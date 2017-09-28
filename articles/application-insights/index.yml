@@ -1,0 +1,83 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Application Insights dokumentációja
+metadata:
+  title: Az Application Insights dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: 'Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás a több platformon alkalmazásokat fejlesztő és kezelő webfejlesztőknek. Rövid útmutatóink, oktatóanyagaink és referenciadokumentációink segítségével megismerheti, hogyan észlelhetők és diagnosztizálhatók a webalkalmazások és szolgáltatások problémái, és hogyan értelmezhetők azok használati adatai.'
+  services: application-insights
+  author: czeumault
+  manager: carolz
+  ms.service: application-insights
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/15/2017
+  ms.author: carolz
+abstract:
+  description: 'Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás a több platformon alkalmazásokat fejlesztő és kezelő webfejlesztőknek. Rövid útmutatóink, oktatóanyagaink és referenciadokumentációink segítségével megismerheti, hogyan észlelhetők és diagnosztizálhatók a webalkalmazások és szolgáltatások problémái, és hogyan értelmezhetők azok használati adatai.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerje meg, hogyan figyelhetők az alkalmazások az Azure Application Insights használatával.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/dotnet.svg'
+            text: .NET
+            href: quick-monitor-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
+            text: .NET Core
+            href: app-insights-dotnetcore-quick-start
+          - image:
+              src: 'https://docs.microsoft.com/media/common/nodejs.svg'
+            text: Node.js
+            href: app-insights-nodejs-quick-start
+          - image:
+              src: 'https://docs.microsoft.com/media/common/java.svg'
+            text: Java
+            href: app-insights-java-quick-start
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Bemutatjuk, hogy miként javítható folyamatosan a webalkalmazások elérhetősége és teljesítménye.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="app-insights-tutorial-runtime-exceptions">Futásidejű kivételek észlelése és diagnosztizálása</a>
+          - html: <a href="app-insights-tutorial-performance">Teljesítményproblémák észlelése és diagnosztizálása</a>
+          - html: <a href="app-insights-tutorial-alert">Alkalmazásállapot-figyelés és riasztások</a>
+          - html: <a href="app-insights-tutorial-users">Ügyfelek használati adatainak elemzése</a>
+          - html: <a href="app-insights-tutorial-dashboards">Egyéni KPI irányítópultok létrehozása</a>
+  - title: Ingyenes Pluralsight videós képzés
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Fejlesztés a .NET használatával az Azure-ban
+            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+          - title: Fejlesztés a Node.js használatával az Azure-ban
+            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Nyelvek
+            html: '<p><a href="https://docs.loganalytics.io/">Elemzés</a></p><p><a href="/dotnet/api/microsoft.applicationinsights">.NET</a></p><p><a href="/java/api/com.microsoft.applicationinsights">Java</a></p><p><a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">JavaScript</a></p><p><a href="https://dev.applicationinsights.io/">Adathozzáférési API</a></p>'
+          - title: Adatmodell
+            html: <p><a href="application-insights-data-model-request-telemetry">Kérés</a></p><p><a href="application-insights-data-model-dependency-telemetry">Függőség</a></p><p><a href="application-insights-data-model-exception-telemetry">Kivétel</a></p><p><a href="application-insights-data-model-trace-telemetry">Nyomkövetés</a></p><p><a href="application-insights-data-model-event-telemetry">Esemény</a></p><p><a href="application-insights-data-model-metric-telemetry">Metrika</a></p><p><a href="application-insights-data-model-context">Kapcsolatfelvétel</a></p>
+          - title: Telemetriai korreláció
+            html: <p><a href="application-insights-correlation">Telemetriai korreláció</a></p>
+          - title: Kódminták
+            html: '<p><a href="https://azure.microsoft.com/en-us/resources/samples/?service=application-insights">Kódminták</a></p>'

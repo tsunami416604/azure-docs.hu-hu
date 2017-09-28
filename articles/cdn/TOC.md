@@ -19,7 +19,7 @@
 ####[Dinamikus helygyorsítás](cdn-dynamic-site-acceleration.md)
  
 ## Kezelés
-### [Kezelés a Powershell-lel](cdn-manage-powershell.md)
+### [Kezelés az Azure PowerShell-lel](cdn-manage-powershell.md)
 ### Az élettartam konfigurálása
 #### [Web Apps-/Cloud Services-, ASP.NET- vagy IIS-tartalom](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Tárolási blobszolgáltatás-tartalom](cdn-manage-expiration-of-blob-content.md)
@@ -53,7 +53,7 @@
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
-## [PowerShell](/powershell/module/azurerm.cdn)
+## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)

@@ -11,7 +11,7 @@
       href: quick-create-cli.md
     - name: Virtuális gép létrehozása – portál
       href: quick-create-portal.md
-    - name: Virtuális gép létrehozása – PowerShell
+    - name: Virtuális gép létrehozása – Azure PowerShell
       href: quick-create-powershell.md
 - name: oktatóanyagokat
   items:
@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 – Virtuális gépek biztonsági mentése
       href: tutorial-backup-vms.md
-    - name: 10 – Virtuális gépek figyelése
+    - name: 10 – Virtuális gépek figyelése és frissítése
       href: tutorial-monitoring.md
     - name: 11 – A virtuális gépek biztonságának kezelése
       href: tutorial-azure-security.md
@@ -53,7 +53,7 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: PowerShell
+    - name: Azure PowerShell
       href: powershell-samples.md
 - name: Alapelvek
   items:
@@ -187,6 +187,8 @@
           href: manage-availability.md
         - name: Függőleges skálázás
           href: vertical-scaling-automation.md
+        - name: Virtuális gép létrehozása rendelkezésre állási zónában
+          href: create-cli-availability-zone.md
     - name: Automatizálási eszközök használata
       items:
         - name: Ansible

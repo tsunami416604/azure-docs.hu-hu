@@ -1,0 +1,177 @@
+- name: Az Azure Machine Learning dokumentációja (előnézet)
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi az Azure Machine Learning?
+      href: overview-what-is-azure-ml.md
+    - name: A modellkezelés áttekintése
+      href: model-management-overview.md
+- name: Gyors útmutatók
+  items:
+    - name: Telepítés és létrehozás
+      href: quickstart-installation.md
+- name: oktatóanyagokat
+  items:
+    - name: 1 – Adatok előkészítése
+      href: tutorial-classifying-iris-part-1.md
+    - name: 2 – Modell létrehozása
+      href: tutorial-classifying-iris-part-2.md
+    - name: 3 – Modell üzembe helyezése
+      href: tutorial-classifying-iris-part-3.md
+    - name: 4 – Fejlett adatelőkészítés
+      href: tutorial-bikeshare-dataprep.md
+- name: Alapelvek
+  items:
+    - name: Fő fogalmak
+      href: overview-general-concepts.md
+- name: Útmutatók
+  items:
+    - name: A Machine Learning Workbench használata
+      items:
+        - name: A Python IDE-k használata
+          href: how-to-configure-your-IDE.md
+        - name: A Jupyter notebookok használata
+          href: how-to-use-jupyter-notebooks.md
+        - name: Integráció Git-adattárral
+          href: using-git-ml-project.md
+        - name: Projekt strukturálása TDSP-vel
+          href: how-to-use-tdsp-in-azure-ml.md
+        - name: A barangolás és az együttműködés használata
+          href: roaming-and-collaboration.md
+    - name: A Visual Studio eszközeinek használata
+      href: quickstart-visual-studio-tools.md
+    - name: A számítási környezet konfigurálása
+      items:
+        - name: A végrehajtási célok konfigurálása
+          href: experiment-execution-configuration.md
+        - name: Képzés GPU-k használatával
+          href: how-to-use-gpu.md
+    - name: Adatok beszerzése és megértése
+      items:
+        - name: Hozzáférés az adatokhoz az Adatforrás varázslóval
+          href: data-source-wizard.md
+        - name: Bevezetés az adatelőkészítésbe
+          href: data-prep-getting-started.md
+        - name: Adatelőkészítési útmutató
+          href: data-prep-user-guide.md
+        - name: Adatelőkészítési átalakítások
+          items:
+            - name: Oszlopok egyesítése példa alapján
+              href: data-prep-combine-columns-by-example.md
+            - name: Oszlopok származtatása példa alapján
+              href: data-prep-derive-column-by-example.md
+            - name: Oszlopok felosztása példa alapján
+              href: data-prep-split-column-by-example.md
+            - name: JSON kiterjesztése
+              href: data-prep-expand-json.md
+    - name: Modellek fejlesztése
+      items:
+        - name: Írisz besorolása a parancssori felületről
+          href: tutorial-iris-azure-cli.md
+        - name: Futtatási előzmények és modellmérőszámok nyomon követése
+          href: how-to-use-run-history-model-metrics.md
+        - name: Fájlok beolvasása és írása
+          href: how-to-read-write-files.md
+        - name: MMLSpark könyvtár
+          href: how-to-use-mmlspark.md
+    - name: Modellek üzembe helyezése
+      items:
+        - name: Modellkezelés beállítása
+          href: deployment-setup-configuration.md
+        - name: Webszolgáltatás üzembe helyezése
+          href: model-management-service-deploy.md
+        - name: Webszolgáltatás felhasználása
+          href: model-management-consumption.md
+        - name: A modelladatgyűjtés használata
+          href: how-to-use-model-data-collection.md
+    - name: Valós életből vett példák
+      items:
+        - name: Dokumentumgyűjtemény elemzése
+          href: scenario-document-collection-analysis.md
+        - name: Kérdések és válaszok egyeztetése
+          href: scenario-qna-matching.md
+        - name: Prediktív karbantartás
+          href: scenario-predictive-maintenance.md
+        - name: Légifelvételek besorolása
+          href: scenario-aerial-image-classification.md
+        - name: Kiszolgáló számítási feladatokra vonatkozó előrejelzése adatok terabájtjai esetében
+          href: scenario-big-data.md
+        - name: Idősorozat-előrejelzés az energiaszükségletről
+          href: scenario-time-series-forecasting.md
+        - name: Hiperparaméterek elosztott hangolása
+          href: scenario-distributed-tuning-of-hyperparameters.md
+        - name: Az ügyfélforgalom előrejelzése
+          href: scenario-churn-prediction.md
+        - name: Hangulatelemzés mély tanulással
+          href: scenario-sentiment-analysis-deep-learning.md
+        - name: Orvosbiológiai entitásfelismerés – TDSP projekt
+          href: scenario-tdsp-biomedical-recognition.md
+        - name: Egyesült államokbeli bevételek besorolása – TDSP projekt
+          href: scenario-tdsp-classifying-us-incomes.md
+- name: Referencia
+  items:
+    - name: Adatok előkészítése
+      items:
+        - name: Python-bővítmények adatok előkészítéséhez
+          href: data-prep-python-extensibility-overview.md
+        - name: Támogatott adatforrások
+          href: data-prep-appendix2-supported-data-sources.md
+        - name: Támogatott átalakítások
+          href: data-prep-appendix3-supported-transforms.md
+        - name: Támogatott vizsgálók
+          href: data-prep-appendix4-supported-inspectors.md
+        - name: Támogatott adatcélok
+          href: data-prep-appendix5-supported-destinations.md
+        - name: Támogatott végrehajtási és adatkörnyezet-kombinációk
+          href: data-prep-supported-runtime-data-environments.md
+        - name: Példák Python-szűrőkifejezésekre
+          href: data-prep-appendix6-sample-filter-expressions-python.md
+        - name: Példák egyedi DataFlow-átalakításokra a Pythonban
+          href: data-prep-appendix7-sample-transform-data-flow-python.md
+        - name: Példák Python-forráskapcsolatokra
+          href: data-prep-appendix8-sample-source-connections-python.md
+        - name: Példák Python-célkapcsolatokra
+          href: data-prep-appendix9-sample-destination-connections-python.md
+        - name: Példák oszlopátalakításokra a Pythonban
+          href: data-prep-appendix10-sample-custom-column-transforms-python.md
+        - name: Adatelőkészítés-végrehajtási API
+          href: data-prep-python-execution-api.md
+    - name: Kísérletezés
+      items:
+        - name: Végrehajtási konfiguráció
+          href: experiment-execution-configuration-reference.md
+    - name: Modellkezelés
+      items:
+        - name: Modellkezelési API
+          href: model-management-api-reference.md
+        - name: Modellkezelési parancssori felület
+          href: model-management-cli-reference.md
+        - name: Modelladat-gyűjtési API
+          href: model-data-collection-api-reference.md
+- name: Erőforrások
+  items:
+    - name: GYIK
+      href: frequently-asked-questions.md
+    - name: Útmutató az ismert problémákhoz és a hibaelhárításhoz
+      href: known-issues-and-troubleshooting-guide.md
+    - name: Csoportos adatelemzési folyamat dokumentációja
+      href: ../team-data-science-process/overview.md
+    - name: Adatelemzési virtuális gép dokumentációja
+      href: ../data-science-virtual-machine/overview.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=MachineLearning'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
+    - name: Visszajelzési fórum
+      href: 'https://feedback.azure.com/forums/257792-machine-learning'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Támogatási lehetőségek
+      href: 'https://azure.microsoft.com/support/options/'

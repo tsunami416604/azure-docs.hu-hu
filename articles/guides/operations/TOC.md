@@ -32,9 +32,9 @@
 
 
 ### Windows rendszerű virtuális gép gyors létrehozása
-#### [Az Azure CLI-vel](../../virtual-machines/windows/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [A portállal](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [A PowerShell-lel](../../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Az Azure parancssori felület használata](../../virtual-machines/windows/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Az Azure Portal használata](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Az Azure PowerShell használata](../../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Virtuális gépekre vonatkozó oktatóanyagok Windowshoz
 #### [Virtuális gépek létrehozása és kezelése](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Lemezek létrehozása és kezelése](../../virtual-machines/windows/tutorial-manage-data-disk.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -50,9 +50,9 @@
 #### [Team Services CI/CD](../../virtual-machines/windows/tutorial-vsts-iis-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ### Linux rendszerű virtuális gép gyors létrehozása
-#### [Az Azure CLI-vel](../../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [A portállal](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [A PowerShell-lel](../../virtual-machines/linux/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Az Azure parancssori felület használata](../../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Az Azure Portal használata](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Az Azure PowerShell használata](../../virtual-machines/linux/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Virtuális gépekre vonatkozó oktatóanyagok Linuxhoz
 #### [Virtuális gépek létrehozása és kezelése](../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Lemezek létrehozása és kezelése](../../virtual-machines/linux/tutorial-manage-disks.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -89,7 +89,7 @@
 
 ## [Virtuális hálózatok](azure-operations-guide.md#azure-virtual-network)
 ### [Virtuális hálózat létrehozása az Azure Portallal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Virtuális hálózat létrehozása a PowerShell használatával](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Virtuális hálózat létrehozása az Azure PowerShell használatával](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Virtuális hálózat létrehozása az Azure CLI-vel](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Virtuális hálózatkezeléssel kapcsolatos oktatóanyagok

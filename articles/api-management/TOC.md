@@ -6,6 +6,10 @@
 ## [Gyorsítótárazás hozzáadása a hatékonyabb működés érdekében](api-management-howto-cache.md)
 ## [Gyakori kérdések](api-management-faq.md)
 # Útmutató
+## APIM szolgáltatás beállítása
+### [APIM-példány létrehozása](get-started-create-service-instance.md)
+### [Frissítés és skálázás](upgrade-and-scale.md)
+### [Egyéni tartomány konfigurálása](configure-custom-domain.md)
 ## API-k fejlesztése
 ### [API-termék hozzáadása és közzététele](api-management-howto-add-products.md)
 ### [Műveletek hozzáadása](api-management-howto-add-operations.md)
@@ -51,7 +55,7 @@
 #### [Első lépések](../service-fabric/service-fabric-api-management-quick-start.md)
 
 # Referencia
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [REST](/rest/api/apimanagement/)
 ## [REST (eredeti)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
 ## [Házirendek](api-management-policies.md)

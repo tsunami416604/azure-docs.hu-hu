@@ -15,53 +15,53 @@
 # Bevezetés
 ## Application Gateway létrehozása
 ### Nyilvános
-#### [Portál](application-gateway-create-gateway-portal.md)
-#### [PowerShell](application-gateway-create-gateway-arm.md)
+#### [Azure Portal](application-gateway-create-gateway-portal.md)
+#### [Azure PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
 #### [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md)
-#### [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
-#### [PowerShell (klasszikus)](application-gateway-create-gateway.md)
+#### [Azure CLI](application-gateway-create-gateway-cli.md)
+#### [Azure PowerShell (klasszikus)](application-gateway-create-gateway.md)
 ### Belső hálózatra irányuló
-#### [PowerShell](application-gateway-ilb-arm.md)
-#### [PowerShell (klasszikus)](application-gateway-ilb.md)
+#### [Azure PowerShell](application-gateway-ilb-arm.md)
+#### [Azure PowerShell (klasszikus)](application-gateway-ilb.md)
 # Útmutató
 ## Webalkalmazási tűzfal konfigurálása
-### [Portál](application-gateway-web-application-firewall-portal.md)
-### [PowerShell](application-gateway-web-application-firewall-powershell.md)
-### [Azure CLI 2.0](application-gateway-web-application-firewall-cli.md)
+### [Azure Portal](application-gateway-web-application-firewall-portal.md)
+### [Azure PowerShell](application-gateway-web-application-firewall-powershell.md)
+### [Azure CLI](application-gateway-web-application-firewall-cli.md)
 ## Webalkalmazási tűzfalszabályok testreszabása
-### [Portal](application-gateway-customize-waf-rules-portal.md)
-### [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
+### [Azure Portal](application-gateway-customize-waf-rules-portal.md)
+### [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 ## Az SSL konfigurálása
-### [Portal](application-gateway-ssl-portal.md)
-### [PowerShell](application-gateway-ssl-arm.md)
-### [PowerShell (klasszikus)](application-gateway-ssl.md)
-### [Azure CLI 2.0](application-gateway-ssl.md)
+### [Azure Portal](application-gateway-ssl-portal.md)
+### [Azure PowerShell](application-gateway-ssl-arm.md)
+### [Azure PowerShell (klasszikus)](application-gateway-ssl.md)
+### [Azure CLI](application-gateway-ssl.md)
 ### [Végpontok közötti](application-gateway-end-to-end-ssl-powershell.md)
 ### [SSL-szabályzat](application-gateway-configure-ssl-policy-powershell.md)
 ## URL-alapú útválasztás konfigurálása
-### [Portál](application-gateway-create-url-route-portal.md)
-### [PowerShell](application-gateway-create-url-route-arm-ps.md)
-### [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
+### [Azure Portal](application-gateway-create-url-route-portal.md)
+### [Azure PowerShell](application-gateway-create-url-route-arm-ps.md)
+### [Azure CLI](application-gateway-create-url-route-cli.md)
 ## Többhelyes üzemeltetés konfigurálása
-### [Portál](application-gateway-create-multisite-portal.md)
-### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
+### [Azure Portal](application-gateway-create-multisite-portal.md)
+### [Azure PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 ## Átirányítás konfigurálása
-### [PowerShell](application-gateway-configure-redirect-powershell.md)
+### [Azure PowerShell](application-gateway-configure-redirect-powershell.md)
 ## Webalkalmazások konfigurálása háttérkészlet-tagként
-### [PowerShell](application-gateway-web-app-powershell.md)
+### [Azure PowerShell](application-gateway-web-app-powershell.md)
 ## Állapotminták konfigurálása
-### [Portál](application-gateway-create-probe-portal.md)
-### [PowerShell](application-gateway-create-probe-ps.md)
-### [PowerShell (klasszikus)](application-gateway-create-probe-classic-ps.md)
+### [Azure Portal](application-gateway-create-probe-portal.md)
+### [Azure PowerShell](application-gateway-create-probe-ps.md)
+### [Azure PowerShell (klasszikus)](application-gateway-create-probe-classic-ps.md)
 ## [Azure Security Center – integráció](application-gateway-integration-security-center.md)
 ## [Többféle terheléselosztási szolgáltatás használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## Hibaelhárítás
 ### [Az Application Gatewayben észlelt hibák elhárítása](application-gateway-troubleshooting-502.md)
 ### [Diagnosztikai naplózás és mérőszámok](application-gateway-diagnostics.md)
 # Referencia
-## [PowerShell](/powershell/azure/overview)
-## [Azure CLI 2.0](/cli/azure/network/application-gateway)
+## [Azure PowerShell](/powershell/azure/overview)
+## [Azure CLI](/cli/azure/network/application-gateway)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/com.microsoft.azure.management.network)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)

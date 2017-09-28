@@ -1,0 +1,51 @@
+- name: Azure Container Registry
+  href: ./index.yml
+- name: Áttekintés
+  items:
+    - name: Információk a Container Registry szolgáltatásról
+      href: container-registry-intro.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Container Registry – Parancssori felület
+      href: container-registry-get-started-azure-cli.md
+    - name: Container Registry – Portál
+      href: container-registry-get-started-portal.md
+    - name: Container Registry – PowerShell
+      href: container-registry-get-started-powershell.md
+- name: oktatóanyagokat
+  items:
+    - name: Azure Container Instances
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure Container Service
+      href: ../container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app.md
+- name: Útmutatók
+  items:
+    - name: Rendszerképek küldése és lekérése
+      href: container-registry-get-started-docker-cli.md
+    - name: Az adattárak megtekintése
+      href: container-registry-repositories.md
+    - name: Egyszerű szolgáltatás létrehozása
+      href: ../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.json
+    - name: Hitelesítés beállításjegyzékkel
+      href: container-registry-authentication.md
+    - name: ACR-webhookok használata
+      href: ./container-registry-webhook.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/acr
+    - name: REST
+      href: /rest/api/containerregistry
+    - name: PowerShell
+      href: /powershell/module/azurerm.containerregistry
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-registry'

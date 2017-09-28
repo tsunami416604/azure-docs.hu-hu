@@ -1,0 +1,8 @@
+- name: A Machine Learning előzetes verziójú funkciói
+  href: preview/index.yml
+- name: Machine Learning Studio
+  href: studio/index.md
+- name: Adatelemzési virtuális gép
+  href: data-science-virtual-machine/overview.md
+- name: Csoportos adatelemzési folyamat
+  href: team-data-science-process/overview.md

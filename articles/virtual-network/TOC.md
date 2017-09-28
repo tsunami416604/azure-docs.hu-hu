@@ -2,9 +2,13 @@
 ## [Virtuális hálózatok](virtual-networks-overview.md)
 ## [Felhasználó által megadott útvonalak és IP-továbbítás](virtual-networks-udr-overview.md)
 ## [Társviszony létesítése virtuális hálózatok között](virtual-network-peering-overview.md)
+## [Virtuális hálózati szolgáltatásvégpontok](virtual-network-service-endpoints-overview.md)
+## [Virtuális hálózatot az Azure-szolgáltatásokhoz](virtual-network-for-azure-services.md)
+## [Biztonság](security-overview.md)
 ## [Az üzletmenet folytonossága](virtual-network-disaster-recovery-guidance.md)
 ## [Gyakori kérdések](virtual-networks-faq.md)
 ## [IP-címzés](virtual-network-ip-addresses-overview-arm.md)
+## [Védelem DDOS-támadások ellen](ddos-protection-overview.md)
 ## Klasszikus
 ### [IP-címzés](virtual-network-ip-addresses-overview-classic.md)
 ### [Hozzáférés-vezérlési listák](virtual-networks-acl.md)
@@ -19,26 +23,27 @@
 
 ## Üzembe helyezés
 ### [Virtuális hálózatok](virtual-networks-create-vnet-arm-pportal.md)
-#### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [Parancssori felület](virtual-networks-create-vnet-arm-cli.md)
+#### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
+#### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
 
 ### Network security groups (Hálózati biztonsági csoportok)
-#### [Portál](virtual-networks-create-nsg-arm-pportal.md)
-#### [PowerShell](virtual-networks-create-nsg-arm-ps.md)
-#### [Parancssori felület](virtual-networks-create-nsg-arm-cli.md)
+#### [Azure Portal](virtual-networks-create-nsg-arm-pportal.md)
+#### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
+#### [Azure CLI](virtual-networks-create-nsg-arm-cli.md)
 #### [Sablon](virtual-networks-create-nsg-arm-template.md)
+#### [Alkalmazás biztonsági csoportjai](create-network-security-group-preview.md)
 #### Klasszikus
-##### [PowerShell](virtual-networks-create-nsg-classic-ps.md)
-##### [Parancssori felület](virtual-networks-create-nsg-classic-cli.md)
+##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
+##### [Azure CLI](virtual-networks-create-nsg-classic-cli.md)
 
 ### Felhasználó által megadott útvonalak
-#### [PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [Parancssori felület](virtual-network-create-udr-arm-cli.md)
+#### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
+#### [Azure CLI](virtual-network-create-udr-arm-cli.md)
 #### [Sablon](virtual-network-create-udr-arm-template.md)
 #### Klasszikus
-##### [PowerShell](virtual-network-create-udr-classic-ps.md)
-##### [Parancssori felület](virtual-network-create-udr-classic-cli.md)
+##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
+##### [Azure CLI](virtual-network-create-udr-classic-cli.md)
 
 ### Társviszony létesítése virtuális hálózatok között
 #### [Egyazon üzemi modell – egyazon előfizetés](virtual-network-create-peering.md)
@@ -46,35 +51,42 @@
 #### [Különböző üzemi modellek – egyazon előfizetés](create-peering-different-deployment-models.md)
 #### [Különböző üzemi modellek – különböző előfizetések](create-peering-different-deployment-models-subscriptions.md)
 
+### [Virtuális hálózati szolgáltatásvégpontok](virtual-network-service-endpoints-configure.md)
+
+### Nyilvános IP-cím – rendelkezésre állási zóna
+#### [Azure Portal](create-public-ip-availability-zone-portal.md)
+#### [Azure CLI](create-public-ip-availability-zone-cli.md)
+#### [PowerShell](create-public-ip-availability-zone-powershell.md)
+
 ### Virtual machines (Virtuális gépek)
 #### Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása
-##### [Portal](virtual-network-deploy-static-pip-arm-portal.md)
-##### [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-##### [Parancssori felület](virtual-network-deploy-static-pip-arm-cli.md)
+##### [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
+##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+##### [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [Sablon](virtual-network-deploy-static-pip-arm-template.md)
 ##### Klasszikus
-###### [PowerShell](virtual-networks-reserved-public-ip.md)
+###### [Azure PowerShell](virtual-networks-reserved-public-ip.md)
 
 #### Statikus magánhálózati IP-címmel rendelkező virtuális gép létrehozása
-##### [Portal](virtual-networks-static-private-ip-arm-pportal.md)
-##### [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
-##### [Parancssori felület](virtual-networks-static-private-ip-arm-cli.md)
+##### [Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
+##### [Azure PowerShell](virtual-networks-static-private-ip-arm-ps.md)
+##### [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
 ##### Klasszikus
-###### [Portal](virtual-networks-static-private-ip-classic-pportal.md)
-###### [PowerShell](virtual-networks-static-private-ip-classic-ps.md)
-###### [Parancssori felület](virtual-networks-static-private-ip-classic-cli.md)
+###### [Azure Portal](virtual-networks-static-private-ip-classic-pportal.md)
+###### [Azure PowerShell](virtual-networks-static-private-ip-classic-ps.md)
+###### [Azure CLI](virtual-networks-static-private-ip-classic-cli.md)
 
 #### Több hálózati adapterrel rendelkező virtuális gép létrehozása
-##### [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [Parancssori felület](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### Klasszikus
-###### [PowerShell](virtual-network-deploy-multinic-classic-ps.md)
-###### [Parancssori felület](virtual-network-deploy-multinic-classic-cli.md)
+###### [Azure PowerShell](virtual-network-deploy-multinic-classic-ps.md)
+###### [Azure CLI](virtual-network-deploy-multinic-classic-cli.md)
 
 #### Több IP-címmel rendelkező virtuális gép létrehozása
 ##### [Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
-##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-##### [Parancssori felület](virtual-network-multiple-ip-addresses-cli.md)
+##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+##### [Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [Sablon](virtual-network-multiple-ip-addresses-template.md)
 
 #### [Gyorsított hálózatkezeléssel rendelkező virtuális gép létrehozása](virtual-network-create-vm-accelerated-networking.md)
@@ -97,9 +109,9 @@
 
 ### Klasszikus
 #### [Virtuális hálózat](create-virtual-network-classic.md)
-##### [Portal](virtual-networks-create-vnet-classic-pportal.md)
-##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
-##### [Parancssori felület](virtual-networks-create-vnet-classic-cli.md)
+##### [Azure Portal](virtual-networks-create-vnet-classic-pportal.md)
+##### [Azure PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [Azure CLI](virtual-networks-create-vnet-classic-cli.md)
 
 ## Konfigurálás
 ### Virtual machines (Virtuális gépek)
@@ -109,8 +121,8 @@
 #### [Gazdagépnevek megtekintése és módosítása](virtual-networks-viewing-and-modifying-hostnames.md)
 ### Klasszikus
 #### Hozzáférés-vezérlési listák
-##### [Portal](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [PowerShell](virtual-networks-acl-powershell.md)
+##### [Azure Portal](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure PowerShell](virtual-networks-acl-powershell.md)
 
 ## Kezelés
 ### [Virtuális hálózatok](virtual-network-manage-network.md)
@@ -120,9 +132,9 @@
 ##### [Hálózati konfigurációs fájl](virtual-networks-using-network-configuration-file.md)
 ##### [Migrálás affinitáscsoportból régióba](virtual-networks-migrate-to-regional-vnet.md)
 ### Network security groups (Hálózati biztonsági csoportok)
-#### [Portál](virtual-network-manage-nsg-arm-portal.md)
-#### [PowerShell](virtual-network-manage-nsg-arm-ps.md)
-#### [Parancssori felület](virtual-network-manage-nsg-arm-cli.md)
+#### [Azure Portal](virtual-network-manage-nsg-arm-portal.md)
+#### [Azure PowerShell](virtual-network-manage-nsg-arm-ps.md)
+#### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 #### [Naplók](virtual-network-nsg-manage-log.md)
 ### Hálózati adapterek (NIC-k)
 #### [Hálózati adapterek létrehozása, módosítása vagy törlése](virtual-network-network-interface.md)
@@ -130,22 +142,25 @@
 ### Virtual machines (Virtuális gépek)
 #### [Virtuális gép áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md)
 ### [Nyilvános IP-címek](virtual-network-public-ip-address.md)
+### Védelem DDOS-támadások ellen
+#### [Azure Portal](ddos-protection-manage-portal.md)
+#### [Azure PowerShell](ddos-protection-manage-ps.md)
 
 ## Hibaelhárítás
 ### Network security groups (Hálózati biztonsági csoportok)
-#### [Portál](virtual-network-nsg-troubleshoot-portal.md)
-#### [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
+#### [Azure Portal](virtual-network-nsg-troubleshoot-portal.md)
+#### [Azure PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
 ### Útvonalak
-#### [Portál](virtual-network-routes-troubleshoot-portal.md)
-#### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
+#### [Azure Portal](virtual-network-routes-troubleshoot-portal.md)
+#### [Azure PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### [Az átviteli sebesség tesztelése](virtual-network-bandwidth-testing.md)
 ### [Nem lehet törölni a virtuális hálózatokat](virtual-network-troubleshoot-cannot-delete-vnet.md)
 ### [Virtuális gépek közötti kapcsolódási problémák](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
-## [PowerShell (Resource Manager)](/powershell/module/azurerm.network)
-## [PowerShell (klasszikus)](/powershell/module/azure/)
+## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.network)
+## [Azure PowerShell (klasszikus)](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)
 ## [Java](/java/api/)
 ## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)

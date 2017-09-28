@@ -65,23 +65,26 @@ sections:
           - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Virtuális gépek biztonságának kezelése</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Folyamatos integrációs folyamat létrehozása a Visual Studio használatával</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">Webkiszolgáló védelme SSL-lel</a>
-  - title: Ingyenes PluralSight videós képzés
+  - title: Ingyenes Pluralsight videós képzés
     items:
       - type: list
         style: cards
-        className: cardsW
+        className: cardsFTitle
         items:
-          - html: '<p><a href="https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Infrastruktúra kezelése</a></p>'
+          - title: Infrastruktúra kezelése
+            href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-infrastructure.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-          - html: '<p><a href="https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">A Virtual Machines használatának első lépései</a></p>'
+          - title: A Virtual Machines használatának első lépései
+            href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-vms.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-          - html: '<p><a href="https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02">Az IaaS megfigyelés használatának első lépései</a></p>'
+          - title: Az IaaS megfigyelés használatának első lépései
+            href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
             image:
-              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/media/index/video-training-iaas-monitoring.png'
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
               href: 'https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
   - title: Példák
     items:

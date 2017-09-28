@@ -24,7 +24,7 @@
 ###[A gyorsítótár védelme virtuális hálózattal](cache-how-to-premium-vnet.md)
 ###[A gyorsítótár elosztása klaszterezéssel](cache-how-to-premium-clustering.md)
 ## Automatizálás
-###[Üzembe helyezés és kezelés a Powershell-lel](cache-howto-manage-redis-cache-powershell.md)
+###[Üzembe helyezés és kezelés az Azure PowerShell használatával](cache-howto-manage-redis-cache-powershell.md)
 ###[Üzembe helyezés és kezelés az Azure parancssori felület használatával](cli-samples.md)
 ###[Redis Cache gyorsítótár üzembe helyezése](cache-redis-cache-arm-provision.md)
 ###[Webalkalmazás üzembe helyezése a Redis Cache használatával](cache-web-app-arm-with-redis-cache-provision.md)
@@ -32,13 +32,13 @@
 ###[Munkamenetállapot-szolgáltató](cache-aspnet-session-state-provider.md)
 ###[Kimeneti gyorsítótár-szolgáltató](cache-aspnet-output-cache-provider.md)
 ## Kezelés
-###[Konfigurálás a portálon](cache-configure.md)
+###[Konfigurálás az Azure Portalon](cache-configure.md)
 ###[Georeplikáció konfigurálása](cache-how-to-geo-replication.md)
 ###[Adatok importálása és exportálása](cache-how-to-import-export-data.md)
 ###[Újraindítás](cache-administration.md#reboot)
 ###[Frissítések ütemezése](cache-administration.md#schedule-updates)
 ## Figyelés és hibaelhárítás
-###[Figyelés a portálon](cache-how-to-monitor.md)
+###[Figyelés az Azure Portalon](cache-how-to-monitor.md)
 ###[Gyorsítótárral kapcsolatos problémák megoldása](cache-how-to-troubleshoot.md)
 ###[Riasztások beállítása kivételekhez](cache-how-to-monitor.md#operations-and-alerts)
 ## Méretezés
@@ -49,8 +49,8 @@
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=redis-cache)
-## [PowerShell](/powershell/module/azurerm.rediscache)
-## [Azure CLI 2.0 előzetes verzió](/cli/azure/redis)
+## [Azure PowerShell](/powershell/module/azurerm.rediscache)
+## [Azure CLI előzetes verzió](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis ügyfelek](http://redis.io/clients)

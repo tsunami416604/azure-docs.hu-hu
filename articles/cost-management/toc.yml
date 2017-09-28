@@ -1,0 +1,29 @@
+- name: Az Azure Cost Management dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Cost Management?
+      href: overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Költségadatok megtekintése
+      href: quick-register-azure-sub.md
+    - name: Költségadatok megtekintése – EA
+      href: quick-register-ea.md
+    - name: Költségadatok megtekintése – CSP
+      href: quick-register-csp.md
+- name: oktatóanyagokat
+  items:
+    - name: 1 – A használat és a költségek áttekintése
+      href: tutorial-review-usage.md
+    - name: 2 – Az adathozzáférés szabályozása
+      href: tutorial-user-access.md
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure-staging.microsoft.com/en-us/regions/services/'

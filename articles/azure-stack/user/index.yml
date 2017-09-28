@@ -1,0 +1,71 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Stack felhasználói dokumentációja
+metadata:
+  document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
+  title: Az Azure Stack dokumentációja – oktatóanyagok és API-referencia
+  description: 'Ismerje meg, hogyan használhatja az Azure Stack előzetes verzióját Azure-szolgáltatások továbbítására az adatközpontból. Megvalósíthatósági példakörnyezetből származó szolgáltatások megismerése és bemutatása.'
+  services: azure-stack
+  author: carolz
+  manager: carolz
+  ms.service: azure-stack
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/23/2017
+  ms.author: carolz
+abstract:
+  description: 'A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat használhat a szervezete vagy a szolgáltatója adatközpontjából. Fejlesztőként létrehozhat alkalmazásokat az Azure Stackben. Ezeket üzembe helyezheti magában az Azure Stackben vagy az Azure-ban is, vagy létrehozhat valódi hibrid alkalmazásokat is, amelyek az Azure Stack felhő és az Azure közötti kapcsolatot használják ki.  Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat és helyezhet üzembe alkalmazásokat.'
+sections:
+  - title: Első lépések
+    items:
+      - type: paragraph
+        text: 'Ismerje meg, hogyan helyezhetők üzembe Windows virtuális gépek az Azure Stacken:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Portál
+            href: azure-stack-quick-windows-portal.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: PowerShell
+            href: azure-stack-quick-create-vm-windows-powershell.md
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
+            text: parancssori felület
+            href: azure-stack-quick-create-vm-windows-cli.md
+      - type: paragraph
+        text: 'Ismerje meg, hogyan helyezhetők üzembe Linux virtuális gépek az Azure Stacken:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Portál
+            href: azure-stack-quick-linux-portal.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: PowerShell
+            href: azure-stack-quick-create-vm-linux-powershell.md
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/media/index/cli.svg'
+            text: parancssori felület
+            href: azure-stack-quick-create-vm-linux-cli.md
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Alkalmazások üzembe helyezése az Azure-ban és az Azure Stackben egyaránt:'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">Alkalmazások üzembe helyezése az Azure Stacken és az Azure-ban</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>

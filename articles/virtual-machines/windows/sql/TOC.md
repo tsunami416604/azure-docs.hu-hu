@@ -16,8 +16,8 @@
 #### [Automatikus – sablonnal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 #### [Manuális – előfeltételek](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [Manuális – oktatóanyag](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [Load Balancer – portál](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [Load Balancer – PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Load Balancer – Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+#### [Load Balancer – Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
 #### [Több régió](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Feladatátvevőfürt-példány
 #### [Konfigurálás](virtual-machines-windows-portal-sql-create-failover-cluster.md)
@@ -36,7 +36,7 @@
 ## [Alkalmazásminták](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 # Referencia
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
 ## [SQL Server-illesztőprogramok](https://msdn.microsoft.com/library/mt654049.aspx)

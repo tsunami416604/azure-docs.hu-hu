@@ -2,11 +2,12 @@
 ## [Biztonságos emelt szintű hozzáférés](active-directory-securing-privileged-access.md)
 ## [Mi az Azure AD PIM?](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Szerepkörök](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Privileged Identity Management Azure-hoz](azure-pim-resource-rbac.md)
 ## [A Privileged Identity Management jóváhagyási munkafolyamatai](azure-ad-pim-approval-workflow.md)
 
 # Bevezetés
 ## [Előfizetési követelmények](subscription-requirements.md)
-## [Bevezetés a portál használatába](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Bevezetés az Azure Portal használatába](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [A biztonsági varázsló](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [A PIM-hez való hozzáférés megadása](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 

@@ -38,7 +38,7 @@
 ## Kezelés
 ### Az Azure Search felügyelete
 #### [Azure Portal](search-manage.md)
-#### [PowerShell](search-manage-powershell.md)
+#### Azure [Azure PowerShell](search-manage-powershell.md)
 ### [Használat és statisztikák figyelése](search-monitor-usage.md)
 ### [Forgalmi elemzések keresése](search-traffic-analytics.md)
 ### [Teljesítmény és optimalizálás](search-performance-optimization.md)
