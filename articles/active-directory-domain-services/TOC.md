@@ -16,7 +16,7 @@
 # Útmutató
 ## Csatlakozás egy felügyelt tartományhoz
 ### [Csatlakozás Windows Server rendszerű virtuális géphez](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Csatlakozás Windows Server rendszerű virtuális géphez a PowerShell használatával](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [Csatlakozás Windows Server rendszerű virtuális géphez az Azure PowerShell használatával](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
 ### [Csatlakozás Linux rendszerű virtuális géphez](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 ## Felügyelt tartomány kezelése
 ### [Felügyelt tartomány kezelése](active-directory-ds-admin-guide-administer-domain.md)

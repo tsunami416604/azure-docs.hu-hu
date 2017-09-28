@@ -60,13 +60,14 @@
 #### [Engedélyezési szabály létrehozása névtérhez és üzenetsorhoz](service-bus-resource-manager-namespace-auth-rule.md)
 #### [Névtér létrehozása témakörrel, előfizetéssel és szabállyal](service-bus-resource-manager-namespace-topic-with-rule.md)
 #### 
-### [A PowerShell használata entitások üzembe helyezésére](service-bus-manage-with-ps.md)
+### [Az Azure PowerShell használata entitások üzembe helyezésére](service-bus-manage-with-ps.md)
 
 # Referencia
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
-## [PowerShell](/powershell/module/azurerm.servicebus)
+## [Java](/java/api/overview/azure/servicebus)
+## [Azure PowerShell](/powershell/module/azurerm.servicebus)
 ## [REST](/rest/api/servicebus)
 ## [Kivételek](service-bus-messaging-exceptions.md)
 ## [Kvóták](service-bus-quotas.md)

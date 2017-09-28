@@ -1,6 +1,6 @@
 - name: Erőforrás-hozzáférés az Azure-ban
   href: active-directory-understanding-resource-access.md
-- name: Szerepköralapú hozzáférés-vezérlés
+- name: Szerepköralapú hozzáférés-vezérlés (RBAC)
   href: role-based-access-control-what-is.md
   items:
     - name: Hozzáférés-hozzárendelések kezelése
@@ -31,10 +31,14 @@
       href: role-based-access-control-troubleshooting.md
     - name: Erőforrás-szolgáltatói műveletek
       href: role-based-access-control-resource-provider-operations.md
+- name: Privileged Identity Management (PIM) RBAC-hez
+  href: pim-azure-resource.md
+- name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
+  href: conditional-access-azure-management.md
 - name: Felügyeltszolgáltatás-identitás
   href: msi-overview.md
   items:
-    - name: Az MSI konfigurálása Windows rendszerű virtuális géphez
+    - name: Az MSI konfigurálása Azure-beli virtuális géphez
       items:
         - name: Az Azure Portallal
           href: msi-qs-configure-portal-windows-vm.md

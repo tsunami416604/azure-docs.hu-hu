@@ -19,8 +19,19 @@
 ### [Kötegelt feldolgozási üzenetek](logic-apps-batch-process-send-receive-messages.md)
 ### [Logikaialkalmazás-definíciók készítése](logic-apps-author-definitions.md)
 ### [Logikai alkalmazások hívása, aktiválása vagy beágyazása](logic-apps-http-endpoint.md)
-### [Egyéni API-k létrehozása logikai alkalmazásokhoz](logic-apps-create-api-app.md)
-### [Egyéni API-k meghívása logikai alkalmazásokhoz](logic-apps-custom-hosted-api.md)
+### Egyéni összekötők fejlesztése
+#### [Egyéni összekötők áttekintése](custom-connector-overview.md)
+#### [Összekötők létrehozása webes API-kból](custom-connector-build-web-api-app-tutorial.md)
+#### [Összekötők védelmének biztosítása az Azure AD-vel](custom-connector-azure-active-directory-authentication.md)
+#### [API-k leírása a Postman használatával](custom-connector-api-postman-collection.md)
+#### [OpenAPI-k kiterjesztése egyéni összekötőkhöz](custom-connector-openapi-extensions.md)
+#### [Összekötő regisztrálása](logic-apps-custom-connector-register.md)
+#### [Összekötő tanúsítása](custom-connector-submit-certification.md)
+#### [Egyéni összekötőkkel kapcsolatos gyakori kérdések](custom-connector-faq.md)
+### Egyéni API-k fejlesztése
+#### [Egyéni API-k létrehozása logikai alkalmazásokhoz](logic-apps-create-api-app.md)
+#### [Egyéni API-k biztonságos hívása](logic-apps-custom-api-authentication.md)
+#### [Egyéni API-k üzembe helyezése és hívása](logic-apps-custom-api-host-deploy-call.md)
 ### [Hibák és kivételek kezelése](logic-apps-exception-handling.md)
 ### [Tartalomtípusok kezelése](logic-apps-content-type.md)
 ### [A logikai alkalmazások védelme](logic-apps-securing-a-logic-app.md)
@@ -73,8 +84,7 @@
 #### [X12-követési séma](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [Egyéni követési séma](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## Példák, forgatókönyvek és útmutatók
-### [Áttekintés](logic-apps-examples-and-scenarios.md)
+## [Példák, forgatókönyvek és útmutatók](logic-apps-examples-and-scenarios.md)
 ### [Kiszolgáló nélküli közösségi irányítópult létrehozása](logic-apps-scenario-social-serverless.md)
 ### [Logikai alkalmazások meghívása Azure Functions-függvényekkel](logic-apps-scenario-function-sb-trigger.md)
 ### [Hiba- és kivételkezelés hozzáadása](logic-apps-scenario-error-and-exception-handling.md)
@@ -98,7 +108,7 @@
 ## [Munkafolyamat-definíciós nyelv](logic-apps-workflow-definition-language.md)
 ## [Munkafolyamat-műveletek és eseményindítók](logic-apps-workflow-actions-triggers.md)
 ## [REST API](/rest/api/logic/)
-## [PowerShell](/powershell/module/azurerm.logicapp)
+## [Azure PowerShell](/powershell/module/azurerm.logicapp)
 ## Összekötők: részletes témák
 ### [AS2](logic-apps-enterprise-integration-as2.md)
 ### [Azure Blob Storage](../connectors/connectors-create-api-azureblobstorage.md)

@@ -4,8 +4,8 @@
 
 # Gyors útmutatók
 ## [.NET-alkalmazás létrehozása](service-fabric-quickstart-dotnet.md)
-## [Windows-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers.md)
 ## [Linux-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers-linux.md)
+## [Windows-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers.md)
 
 # oktatóanyagokat
 ## .NET-alkalmazás üzembe helyezése
@@ -17,11 +17,24 @@
 ## Meglévő .NET-alkalmazás tárolóba helyezése
 ### [1. Biztonságos fürt létrehozása az Azure-ban](service-fabric-tutorial-create-cluster-azure-ps.md)
 ### [2. .NET-alkalmazás üzembe helyezése a Docker Compose használatával](service-fabric-host-app-in-a-container.md)
+### [3 – A tároló figyelése](service-fabric-tutorial-monitoring-wincontainers.md)
+
+## Linux rendszerű tárolóalkalmazás létrehozása
+### [1 – Tárolórendszerképek létrehozása](service-fabric-tutorial-create-container-images.md)
+### [2 – Csomagolás és tárolók üzembe helyezése](service-fabric-tutorial-package-containers.md)
+### [3 – Feladatátadás és skálázás](service-fabric-tutorial-containers-failover.md)
+
+## Fürt létrehozása és felügyelete
+### 1 – Fürt létrehozása az Azure-ban
+#### [1a – Biztonságos Windows-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+#### [1b – Biztonságos Linux-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+### [2 – Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
 # Példák
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
-## [PowerShell](service-fabric-powershell-samples.md)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=service-fabric)
+## [Azure PowerShell](service-fabric-powershell-samples.md)
 ## [Service Fabric parancssori felület](samples-cli.md)
+
 # Alapelvek
 ## [A mikroszolgáltatások ismertetése](service-fabric-overview-microservices.md)
 ## [Nagyméretű kép](service-fabric-content-roadmap.md)
@@ -67,6 +80,8 @@
 #### [Szolgáltatás állapota](service-fabric-concepts-state.md)
 #### [Szolgáltatás particionálása](service-fabric-concepts-partitioning.md)
 #### [A szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
+#### [Replikák és példányok](service-fabric-concepts-replica-lifecycle.md)
+#### [Újrakonfigurálás](service-fabric-concepts-reconfiguration.md)
 #### A szolgáltatások közötti kommunikáció
 ##### [Áttekintés](service-fabric-connect-and-communicate-with-services.md)
 ##### [DNS-szolgáltatás](service-fabric-dnsservice.md)
@@ -91,7 +106,6 @@
 
 ## Fürtök létrehozása és felügyelete
 ### [Áttekintés](service-fabric-deploy-anywhere.md)
-### [Service Fabric a Linuxon](service-fabric-linux-overview.md)
 ### Tervezés és előkészítés
 #### [Kapacitástervezés](service-fabric-cluster-capacity.md)
 #### [Vészhelyreállítás](service-fabric-disaster-recovery.md)
@@ -130,6 +144,8 @@
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
 ### [Mac OS](service-fabric-get-started-mac.md)
+
+## [A Service Fabric parancssori felület beállítása](service-fabric-cli.md)
 
 ## Alkalmazás készítése
 ### [Az első saját C# alkalmazás létrehozása a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md)
@@ -225,13 +241,13 @@
 
 ### Alkalmazások üzembe helyezése vagy eltávolítása
 #### [Alkalmazások telepítése helyi fürtre](service-fabric-get-started-with-a-local-cluster.md)
-#### [PowerShell](service-fabric-deploy-remove-applications.md)
+#### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric parancssori felület](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API-k](service-fabric-deploy-remove-applications-fabricclient.md)
 
 ### Alkalmazások frissítése
-#### [Magasabb szintű verzióra váltás a PowerShell használatával](service-fabric-application-upgrade-tutorial-powershell.md)
+#### [Frissítés az Azure PowerShell-lel](service-fabric-application-upgrade-tutorial-powershell.md)
 #### [Frissítés a Visual Studio használatával](service-fabric-application-upgrade-tutorial.md)
 #### [Alkalmazásfrissítési hibák elhárítása](service-fabric-application-upgrade-troubleshooting.md)
 
@@ -280,8 +296,6 @@
 
 ### [Fürt ábrázolása](service-fabric-visualizing-your-cluster.md)
 ### [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md)
-
-### [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)
 ### [Fürtcsomópontok javítása](service-fabric-patch-orchestration-application.md)
 
 ### Fürterőforrások kezelése és összehangolása
@@ -326,7 +340,7 @@
 ### [A helyi fürt hibaelhárítása](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # Referencia
-## [PowerShell (Azure)](/powershell/module/azurerm.servicefabric/)
+## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
 ## [Azure CLI](/cli/azure/sf)
 ## [Java API](/java/api/overview/azure/servicefabric)
