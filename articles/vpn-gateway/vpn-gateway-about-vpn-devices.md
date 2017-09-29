@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: yushwang;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: c8e1db0a5488b1296206a4d557e47599edc59a88
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 7b7e5f0f089cc87c9e63eee1fd3d29b7a2c0d49f
 ms.contentlocale: hu-hu
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
@@ -28,7 +28,6 @@ Létesítmények közötti, VPN-átjárót használó S2S VPN-kapcsolat konfigur
 
 > [!IMPORTANT]
 > Ha problémákat tapasztal a helyszíni VPN-eszközök és a VPN-átjárók közötti kapcsolatban, tekintse meg az [ismert eszközkompatibilitási problémákkal kapcsolatos szakaszt](#known).
->
 >
 
 ### <a name="items-to-note-when-viewing-the-tables"></a>A táblák megtekintésekor figyelembe veendő elemek:
@@ -56,9 +55,9 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 | Barracuda Networks, Inc. |Barracuda NextGen tűzfal, X sorozat |Barracuda tűzfal, 6.5-ös verzió |[Konfigurációs útmutató](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Nem kompatibilis |
 | Brocade            |Vyatta 5400 vRouter   |Virtual Router 6.6R3 GA|[Konfigurációs útmutató](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |Nem kompatibilis |
 | Ellenőrzőpont |Biztonsági átjáró |R77.30 |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |Nem kompatibilis |
+| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[Konfigurációs útmutató*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |Házirendalapú: IOS 15.1<br>Útvonalalapú: IOS 15.2 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |Házirendalapú: IOS 15.0<br>Útvonalalapú*: IOS 15.1 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurációs minták*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |ISR |Házirendalapú: IOS 15.0<br>Útvonalalapú*: IOS 15.1 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurációs minták**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1-es vagy újabb verzió |[Konfigurációs útmutató](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nem kompatibilis |
 | F5 |BIG-IP sorozat |12.0 |[Konfigurációs útmutató](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurációs útmutató](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.4.2 |  |[Konfigurációs útmutató](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-54) |
@@ -69,12 +68,15 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 | Juniper |SSG |ScreenOS 6.2 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |[Konfigurációs minták](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG |Mission Control biztonsági átjáró |N/A |[Konfigurációs útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Nem kompatibilis |
-| Openswan |Openswan |2.6.32 |(Hamarosan elérhető) |Nem kompatibilis |
 | Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú: 6.1.5 vagy újabb<br>Útvonalalapú: 7.1.4 |[Konfigurációs útmutató](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurációs útmutató](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
-| SonicWall |TZ sorozat, NSA sorozat<br>SuperMassive sorozat<br>E-Class NSA sorozat |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |[Beállítási útmutató a SonicOS 6.2 rendszerhez](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Beállítási útmutató a SonicOS 5.9 rendszerhez](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |[Beállítási útmutató a SonicOS 6.2 rendszerhez](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646)<br>[Beállítási útmutató a SonicOS 5.9 rendszerhez](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| SonicWall |TZ sorozat, NSA sorozat<br>SuperMassive sorozat<br>E-Class NSA sorozat |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nem támogatott|[Konfigurációs útmutató](https://www.sonicwall.com/en-us/support/knowledge-base/170505320011694) |
 | WatchGuard |Összes |Fireware XTM<br> Házirendalapú: v11.11.x<br>Útvonalalapú: v11.12.x |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
-(*) Az ISR 7200 sorozatba tartozó útválasztók csak a házirendalapú VPN-eket támogatják.
+> [!NOTE]
+>
+> (*) A CISCO ASA 8.4 és újabb verziói biztosítják az IKEv2-támogatást, valamint képesek csatlakozni egy Azure VPN-átjáróhoz egyéni IPsec/Internetes kulcscsere-házirend és a „UsePolicyBasedTrafficSelectors” beállítás használatával. További információkat [ebben a részletes útmutatóban](vpn-gateway-connect-multiple-policybased-rm-ps.md) olvashat.
+>
+> (**) Az ISR 7200 sorozatba tartozó útválasztók csak a házirendalapú VPN-eket támogatják.
 
 ## <a name="additionaldevices"></a>Nem ellenőrzött VPN-eszközök
 
@@ -105,9 +107,10 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 
 ## <a name="ipsec"></a>IPsec/IKE-paraméterek
 
-> [!NOTE]
-> Bár a VPN-átjárók támogatják az alábbi táblázatban felsorolt értékeket, jelenleg nincs mód algoritmusok vagy paraméterek adott kombinációinak megadására és kiválasztására a VPN-átjárón. Az esetleges korlátozásokat a helyszíni VPN-eszközről kell megadni. Ezenfelül az **MSS** korlátozását **1350-re** kell állítani.
-> 
+> [!IMPORTANT]
+> 1. Az alábbi táblázat tartalmazza azon algoritmusok és paraméterek kombinációit, amelyeket az Azure VPN-átjárók alapértelmezés szerint használnak. Az Azure Resource Management üzembehelyezési modelljének használatával létrehozott, útvonalalapú VPN-átjárók esetében minden egyes kapcsolathoz külön egyéni szabályzatok adhatók meg. Részletes útmutatás: [IPsec/Internetes kulcscsere házirendje](vpn-gateway-ipsecikepolicy-rm-powershell.md).
+>
+> 2. Ezenfelül a TCP **MSS** korlátozását **1350-re** kell állítani. Ha a VPN-eszköze nem támogatja az MSS korlátozását, akkor ehelyett beállíthatja az alagútkapcsolaton az **MTU**-t **1400** bájtra.
 >
 
 A következő táblázatokban:

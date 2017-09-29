@@ -5,7 +5,7 @@ Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtath
 
 [![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)
 
-A gombra kattintva interaktív kezelőfelület jelenik meg, amelyet az ebben a témakörben található valamennyi lépés futtatására használhat:
+A gombra kattintva interaktív kezelőfelület jelenik meg, amelyet az ebben a témakörben található lépések futtatására használhat:
 
 [![Képernyőkép a Portalon lévő Cloud Shell-ablakról](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)
 

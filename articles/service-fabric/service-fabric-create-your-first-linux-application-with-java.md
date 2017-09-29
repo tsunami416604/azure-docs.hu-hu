@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2017
+ms.date: 09/20/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: baf948587ede31fe3d5b4f6f0981269b4cfe4d3d
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 68f9492231d367b1ede6ab032ec1c66c75150957
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
@@ -127,7 +127,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
 A Service Fabric Explorerben látni fogja, hogy az alkalmazás és az alkalmazástípus már nem jelenik meg az **Alkalmazások** csomópont alatt.
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Service Fabric Java-kódtárak a Mavenben
-A Service Fabric Java-kódtárak a Mavenben üzemelnek. A függőségeket a projektek ``pom.xml`` vagy ``build.gradle`` fájljában adhatja hozzá a **mavenCentral** Service Fabric Java-kódtárainak használatához.
+A Service Fabric Java-kódtárak a Mavenben üzemelnek. A függőségeket a projektek ``pom.xml`` vagy ``build.gradle`` fájljában adhatja hozzá a **mavenCentral** Service Fabric Java-kódtárainak használatához. 
 
 ### <a name="actors"></a>Aktorok
 
@@ -137,7 +137,7 @@ A Service Fabric Reliable Actor támogatása az alkalmazáshoz.
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-actors-preview</artifactId>
-      <version>0.10.0</version>
+      <version>0.12.0</version>
   </dependency>
   ```
 
@@ -146,19 +146,19 @@ A Service Fabric Reliable Actor támogatása az alkalmazáshoz.
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-actors-preview:0.10.0'
+      compile 'com.microsoft.servicefabric:sf-actors-preview:0.12.0'
   }
   ```
 
 ### <a name="services"></a>Szolgáltatások
 
-A Service Fabric állapotmentes szolgáltatás támogatása az alkalmazáshoz.
+A Service Fabric Reliable Services támogatása az alkalmazáshoz.
 
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-services-preview</artifactId>
-      <version>0.10.0</version>
+      <version>0.12.0</version>
   </dependency>
   ```
 
@@ -167,7 +167,7 @@ A Service Fabric állapotmentes szolgáltatás támogatása az alkalmazáshoz.
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-services-preview:0.10.0'
+      compile 'com.microsoft.servicefabric:sf-services-preview:0.12.0'
   }
   ```
 
@@ -180,7 +180,7 @@ Az átviteli réteg támogatása a Service Fabric Java-alkalmazáshoz. Ezt a fü
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-transport-preview</artifactId>
-      <version>0.10.0</version>
+      <version>0.12.0</version>
   </dependency>
   ```
 
@@ -189,7 +189,7 @@ Az átviteli réteg támogatása a Service Fabric Java-alkalmazáshoz. Ezt a fü
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-transport-preview:0.10.0'
+      compile 'com.microsoft.servicefabric:sf-transport-preview:0.12.0'
   }
   ```
 
@@ -201,7 +201,7 @@ A natív Service Fabric-futtatókörnyezettel kommunikáló Service Fabric rends
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
       <artifactId>sf-preview</artifactId>
-      <version>0.10.0</version>
+      <version>0.12.0</version>
   </dependency>
   ```
 
@@ -210,7 +210,7 @@ A natív Service Fabric-futtatókörnyezettel kommunikáló Service Fabric rends
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-preview:0.10.0'
+      compile 'com.microsoft.servicefabric:sf-preview:0.12.0'
   }
   ```
 

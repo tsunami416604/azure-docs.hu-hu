@@ -1,4 +1,4 @@
-Az [ az webapp create](/cli/azure/webapp#create) paranccsal hozzon létre egy [webalkalmazást](../articles/app-service-web/app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban. 
+A Cloud Shellben az [az webapp create](/cli/azure/webapp#create) paranccsal hozzon létre egy [webalkalmazást](../articles/app-service/app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban. 
 
 A webalkalmazás üzemeltetési tárterületet biztosít a kódhoz, valamint megadja az üzembe helyezett alkalmazás megtekintéséhez szükséges URL-címet.
 
