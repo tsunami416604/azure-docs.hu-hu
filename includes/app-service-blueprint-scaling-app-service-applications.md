@@ -1,16 +1,16 @@
-* [Scale Azure App Service](../articles/app-service-web/web-sites-scale.md)
+* [Az Azure App Service skálázása](../articles/app-service/web-sites-scale.md)
   
-  * Understanding Redundancy and Reliability
-  * StateFULL vs StateLESS applications
-    * [Configuring your Stateless app](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
-* Load Testing apps in App Service   
-* App Service scaling best practices
+  * A redundancia és a megbízhatóság ismertetése
+  * Állapotalapú és állapot nélküli alkalmazások
+    * [Az állapot nélküli appok konfigurálása](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
+* Tesztappok betöltése az App Service-ben   
+* Az App Service skálázása – ajánlott eljárások
   
-  * Port exhaustion and connection pooling
-  * [Leveraging Azure Storage from your App Service app](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md)
-  * [Leveraging Azure CDN from your App Service app](../articles/cdn/cdn-overview.md)
-  * [Leveraging Azure Redis Cache from your App Service app](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
-* Geo distribution
+  * Portfogyás és kapcsolatkészletezés
+  * [Az Azure Storage használata az App Service-appból](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md)
+  * [Az Azure CDN használata az App Service-appból](../articles/cdn/cdn-overview.md)
+  * [Az Azure Redis Cache használata az App Service-appból](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)
+* Földrajzi eloszlás
   
-  * [Leveraging Traffic Manager to achive global scale](../articles/traffic-manager/traffic-manager-overview.md)
+  * [A Traffic Manager használata globális méret eléréséhez](../articles/traffic-manager/traffic-manager-overview.md)
 

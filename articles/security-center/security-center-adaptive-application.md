@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 09/20/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 18ae6a970455646b7a25170f5abefa52a98b0ba2
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: 9c3a9a7255bbbdab8f4c356eb07022d7f1d242d7
 ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben (előzetes verzió)
@@ -33,6 +33,9 @@ Az adaptív alkalmazásvezérlők segítségével szabályozhatja, hogy mely alk
 - Az elavult és nem támogatott alkalmazások futtatásának letiltását.
 - A szervezetben nem engedélyezett szoftvereszközök használatának megelőzését.
 - Azt, hogy az informatikai részleg szabályozhassa a bizalmas adatokhoz való hozzáférést az alkalmazások használata során.
+
+> [!NOTE]
+> Az adaptív alkalmazásvezérlők a Standard szintű Azure Security Center-ügyfelek számára korlátozott nyilvános előzetes verzió keretében érhetők el. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_appcontrol@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Az adaptív alkalmazásvezérlők engedélyezése
 Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált erőforráscsoportokon futtatható alkalmazások csoportját. Ez a funkció csak Windows rendszerű gépeken használható (minden verziója, legyen klasszikus vagy Azure Resource Manager). Az alkalmazások engedélyezési listáinak konfigurálásához kövesse az alábbi lépéseket a Security Centerben:
@@ -144,10 +147,6 @@ A Security Center csak az olyan virtuális gépeken javasolja az alkalmazásenge
 A lista a következőket tartalmazza:
 - **NAME** (Név): az előfizetés és az erőforráscsoport neve.
 - **VMS** (Virtuális gépek): a virtuális gépek száma az erőforráscsoportban.
-
-## <a name="preview-registration"></a>Előzetes verzió regisztrációja
-
-Az adaptív alkalmazásvezérlők a Standard szintű Azure Security Center-ügyfelek számára korlátozott nyilvános előzetes verzió keretében érhetők el. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_appcontrol@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.
 
 ## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megismerte, hogyan használhatja az adaptív alkalmazásvezérlőket az Azure Security Centerben az Azure-beli virtuális gépeken futó alkalmazások engedélyezési listákra való felvételéhez. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
