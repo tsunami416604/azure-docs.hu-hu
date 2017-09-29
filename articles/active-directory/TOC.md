@@ -42,7 +42,6 @@
 #### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
-#### [A felhasználókra és az alkalmazásra vonatkozó használati feltételek biztosítása](active-directory-tou.md)
 #### [Azure PowerShell-példák csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
 ### [Új jelszó létrehozása](active-directory-users-reset-password-azure-portal.md)
@@ -149,13 +148,14 @@
 ### [Első lépések](active-directory-integrating-applications-getting-started.md)
 ### [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
 ### [Felhőalkalmazások felderítése](cloudappdiscovery-overview.md)
-#### [Mit jelent a felhőalkalmazások felderítése?](active-directory-cloudappdiscovery-whatis.md)
-#### [Beállítási lépések](cloudappdiscovery-get-started.md)
+#### [Ügynök nélküli felderítés beállítása](cloudappdiscovery-get-started.md)
 #### [Pillanatkép-jelentések létrehozása](cloudappdiscovery-set-up-snapshots.md)
 #### [Folyamatos jelentéskészítés konfigurálása](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [Egyéni naplóelemző használata](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)
-#### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-#### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
+#### [Egyéni naplóelemző használata](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
+#### Ügynökalapú felderítés
+##### [Mit jelent a felhőalkalmazások felderítése?](active-directory-cloudappdiscovery-whatis.md)
+##### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
+##### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [Appok távoli elérése az App Proxyval](active-directory-application-proxy-get-started.md)
@@ -300,6 +300,7 @@
 #### Feladatok
 ##### [Eszközalapú feltételes hozzáférés beállítása](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Alkalmazásalapú feltételes hozzáférés beállítása](active-directory-conditional-access-mam.md)
+##### [A felhasználókra és az alkalmazásra vonatkozó használati feltételek biztosítása](active-directory-tou.md)
 ##### [VPN-kapcsolat beállítása](active-directory-conditional-access-vpn-connectivity-windows10.md)
 ##### [A SharePoint és az Exchange Online beállítása](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Kijavítás](active-directory-conditional-access-device-remediation.md)

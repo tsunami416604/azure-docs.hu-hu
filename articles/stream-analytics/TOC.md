@@ -29,6 +29,11 @@
 ### [Kimenet a Data Lake Store-ba](stream-analytics-data-lake-output.md)
 ### [Kimenet a Cosmos DB-be](stream-analytics-documentdb-output.md)
 
+## A Visual Studio eszközeinek használata
+### [Telepítés](stream-analytics-tools-for-visual-studio-install.md)
+### [Első lépések](stream-analytics-tools-for-visual-studio.md)
+### [CI-/CD-folyamatok beállítása](stream-analytics-tools-for-visual-studio-cicd.md)
+
 ## Monitorozás és optimalizálás
 ### [Riasztások hozzáadása](stream-analytics-set-up-alerts.md)
 ### [Feladatok figyelése](stream-analytics-monitoring.md)
@@ -52,7 +57,6 @@
 ### [Diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)
 
 ## Automatizálás
-### [Visual Studio-eszközök](stream-analytics-tools-for-visual-studio.md)
 ### [A Management .NET SDK használata](stream-analytics-dotnet-management-sdk.md)
 ### [Egy kattintással indítható Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 

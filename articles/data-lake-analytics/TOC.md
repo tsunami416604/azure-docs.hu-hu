@@ -33,6 +33,7 @@
 
 ## U-SQL-programok hibakeresése
 ### [Feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+### [Rendellenes ismétlődő feladat hibaelhárítása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
 ### [C#-kód hibaelhárítása a U-SQL-ben](data-lake-analytics-debug-u-sql-jobs.md)
 ### [A feladatböngésző és a Feladat nézet használata](data-lake-analytics-data-lake-tools-view-jobs.md)
 ### [A Vertex végrehajtási nézet használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)

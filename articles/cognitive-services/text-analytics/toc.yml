@@ -24,6 +24,8 @@
   items:
     - name: Szövegelemzés a Power BI-jal
       href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Szövegelemzés a Power Appsben
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
 - name: Útmutatók
   items:
     - name: Regisztráció

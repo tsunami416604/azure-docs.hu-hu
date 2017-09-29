@@ -26,9 +26,8 @@
 ### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (parancssori felület)](load-balancer-get-started-internet-arm-cli.md)
 ### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (sablon)](load-balancer-get-started-internet-arm-template.md)
 
-## [Internetkapcsolattal rendelkező Load Balancer konfigurálása (klasszikus portál)](load-balancer-get-started-internet-classic-portal.md)
+## [Internetkapcsolattal rendelkező Load Balancer konfigurálása – (klasszikus PowerShell)](load-balancer-get-started-internet-classic-ps.md)
 ### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (klasszikus felhő)](load-balancer-get-started-internet-classic-cloud.md)
-### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (klasszikus PS)](load-balancer-get-started-internet-classic-ps.md)
 ### [Internetkapcsolattal rendelkező Load Balancer konfigurálása (klasszikus parancssori felület)](load-balancer-get-started-internet-classic-cli.md)
 
 ## [Internetkapcsolattal rendelkező terheléselosztó konfigurálása IPv6-tal](load-balancer-ipv6-internet-ps.md)

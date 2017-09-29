@@ -45,6 +45,8 @@
       items:
         - name: A végrehajtási célok konfigurálása
           href: experiment-execution-configuration.md
+        - name: DSVM és HDI Spark-fürt létrehozása
+          href: how-to-create-dsvm-hdi.md
         - name: Képzés GPU-k használatával
           href: how-to-use-gpu.md
     - name: Adatok beszerzése és megértése
@@ -141,6 +143,8 @@
       items:
         - name: Végrehajtási konfiguráció
           href: experiment-execution-configuration-reference.md
+        - name: API naplózása
+          href: reference-logging-api.md
     - name: Modellkezelés
       items:
         - name: Modellkezelési API
