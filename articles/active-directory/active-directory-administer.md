@@ -16,10 +16,10 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b1390ba45f52473129dce6b904690b040af8f7e2
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 85e24587f07a4dc65a2f116499f3f7e00c3ac2b8
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="manage-your-azure-ad-directory"></a>Azure AD-címtár kezelése
@@ -59,12 +59,14 @@ Ha még nem rendelkezik előfizetéssel egyetlen Microsoft felhőszolgáltatásh
 
 ### <a name="how-to-change-the-default-directory-for-a-subscription"></a>Az előfizetés alapértelmezett könyvtárának módosítása
 
-1. Az előfizetés tulajdonjogának átadásához jelentkezzen be az előfizetés fiókadminisztrátori fiókjával az [Azure Account Centerbe](https://account.windowsazure.com/Home/Index).
+1. Az előfizetés tulajdonjogának átadásához jelentkezzen be az előfizetés fiókadminisztrátori fiókjával az [Azure Account Centerbe](https://account.azure.com/Subscriptions).
 2. Bizonyosodjon meg róla, hogy az előfizetés tulajdonosaként megadni kívánt felhasználó szerepel a megcélzott címtárban.
 3. Kattintson az **Előfizetés átadása** elemre.
 4. Adja meg a címzettet. A címzett automatikusan kapni fog egy elfogadási hivatkozást tartalmazó e-mailt.
 5. A címzett a hivatkozásra való kattintás után követnie kell az utasításokat, többek között a fizetési információk megadásával. Ha ez sikeresen befejeződött, a rendszer átadja az előfizetést. 
 6. Az előfizetés tulajdonjogának sikeres átadása esetén az előfizetés alapértelmezett könyvtára arra módosul, amelyikben a felhasználó szerepel.
+
+További tudnivalókért lásd: [Az Azure-előfizetés tulajdonjogának átadása másik fiók számára](../billing/billing-subscription-transfer.md)
 
 ### <a name="manage-the-default-directory-in-azure"></a>Az alapértelmezett címtár kezelése az Azure-ban
 Amikor feliratkozik az Azure szolgáltatásra, a rendszer egy alapértelmezett Azure AD-címtárat társít az előfizetéséhez. Az Azure AD használata ingyenes, és a címtárak ingyenes erőforrásként használhatóak. Léteznek fizetős Azure AD szolgáltatások is, amelyek licencelése külön történik, és olyan további funkciókat biztosítanak, mint például a vállalati arculat megjelenítése a bejelentkezési felületen vagy az önkiszolgáló jelszó-visszaállítás. Egyéni tartományt is létrehozhat egy saját tulajdonú DNS-név használatával az alapértelmezett *.onmicrosoft.com tartomány helyett.

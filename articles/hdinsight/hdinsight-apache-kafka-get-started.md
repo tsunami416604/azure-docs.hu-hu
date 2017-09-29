@@ -13,13 +13,13 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/14/2017
+ms.date: 09/20/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 03e6996f0f44e04978080b3bd267e924f342b7fc
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 1e51f546d6c256e1d8f1a1be50c6a2102fe26529
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="start-with-apache-kafka-preview-on-hdinsight"></a>Az Apache Kafka (előzetes verzió) használatának első lépései a HDInsightban
@@ -47,6 +47,9 @@ Egy Kafka HDInsight-fürtön történő létrehozásához kövesse az alábbi l�
     * **SSH-felhasználónév**: A fürt SSH-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Alapértelmezés szerint a jelszó megegyezik a fürt bejelentkezési jelszavával.
     * **Erőforráscsoport**: Az az erőforráscsoport, amelyben a fürt létre lesz hozva.
     * **Hely**: Az az Azure-régió, amelyben a fürt létre lesz hozva.
+
+        > [!IMPORTANT]
+        > Az adatok Magas rendelkezésre állásának biztosításához javasoljuk egy __három tartalék tartományt__ tartalmazó hely (régió) kiválasztását. További információkért lásd az [Adatok magas rendelkezésre állása](#data-high-availability) szakaszt.
    
  ![Előfizetés kiválasztása](./media/hdinsight-apache-kafka-get-started/hdinsight-basic-configuration.png)
 
@@ -73,12 +76,12 @@ Egy Kafka HDInsight-fürtön történő létrehozásához kövesse az alábbi l�
 7. A __Fürtméret__ lapon kattintson a __Tovább__ gombra a folytatáshoz.
 
     > [!WARNING]
-    > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia.
+    > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. További információkért lásd az [Adatok magas rendelkezésre állása](#data-high-availability) szakaszt.
 
     ![A Kafka-fürt méretének beállítása](./media/hdinsight-apache-kafka-get-started/kafka-cluster-size.png)
 
-    > [!NOTE]
-    > A **lemezek száma feldolgozó csomópontonként** bejegyzés a HDInsighton futó Kafka skálázhatóságát szabályozza. További információ: [Configure storage and scalability of Kafka on HDInsight](hdinsight-apache-kafka-scalability.md) (A HDInsightban futó Kafka tárolójának és méretezhetőségének konfigurálása).
+    > [!IMPORTANT]
+    > A **lemezek száma feldolgozó csomópontonként** bejegyzés a HDInsighton futó Kafka skálázhatóságát szabályozza. A HDInsight-beli Kafka a fürt virtuális gépeinek helyi lemezét használja. Mivel a Kafka nagy ki- és bemenő adatforgalmat kezel, az [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) szolgáltatás gondoskodik a magas átviteli sebességről és csomópontonként több tárhelyről. A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. Prémium lemezeket DS és GS sorozatbeli virtuális gépek használnak. Minden más virtuálisgép-típus standard lemezeket használ.
 
 8. A __Speciális beállítások__ lapon kattintson a __Tovább__ gombra a folytatáshoz.
 
@@ -340,6 +343,27 @@ A streamelési API a Kafka 0.10.0-s verziójában vált elérhetővé, a korább
 
 7. Használja a __Ctrl + C__ billentyűparancsot a fogyasztóból történő kilépéshez, majd az `fg` paranccsal hozza az előtérbe a háttérben futó streamelési feladatot. Használja a __Ctrl + C__ billentyűparancsot a feladatból való kilépéshez.
 
+## <a name="data-high-availability"></a>Adatok magas rendelkezésre állása
+
+Minden egyes Azure-régió (hely) _tartalék tartományokat_ biztosít. A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight-fürtön belül a csomópontokat implementáló virtuális gépek és felügyelt lemezek ezek között a tartalék tartományok között vannak elosztva. Ez az architektúra csökkenti a fizikai hardverhibák lehetséges hatását.
+
+Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
+
+> [!IMPORTANT]
+> Javasoljuk, hogy olyan Azure-régiót használjon, amely három tartalék tartományt tartalmaz, és használjon 3-as replikációs tényezőt.
+
+Ha kénytelen olyan régiót használni, amely csak két tartalék tartomány tartalmaz, használjon 4-es replikációs tényezőt, hogy egyenletesen ossza el a replikákat a két tartalék tartományban.
+
+### <a name="kafka-and-fault-domains"></a>A Kafka és a tartalék tartományok
+
+A Kafka nem kezeli a tartalék tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat. A magas rendelkezésre állás biztosításához használja a [Kafka vissza-egyensúlyozási eszközét](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-munkamenetből kell futtatni a Kafka-fürt főcsomópontjához.
+
+A Kafka-adatok lehető legmagasabb rendelkezésre állásának biztosításához a következő időpontokban kell újra egyensúlyoznia a partícióreplikákat a témaköréhez:
+
+* Új témakör vagy partíció létrehozásakor
+
+* Fürt vertikális felskálázásakor
+
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -352,11 +376,10 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 A jelen dokumentumban megismerkedett az Apache Kafka HDInsightban való használatának az alapjaival. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 
-* [Magas rendelkezésre állású adatok biztosítása a HDInsightban futó Kafka platformmal](hdinsight-apache-kafka-high-availability.md)
-* [A méretezhetőség növelése felügyelt lemezek HDInsightban futó Kafkával történő konfigurálásával](hdinsight-apache-kafka-scalability.md)
-* Az [Apache Kafka dokumentációja](http://kafka.apache.org/documentation.html) a kafka.apache.org webhelyen.
-* [A MirrorMaker használata a Kafka replikájának HDInsighton való létrehozásához](hdinsight-apache-kafka-mirroring.md)
+* [Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
+* [Adatreplikálás Kafka-fürtök között](hdinsight-apache-kafka-mirroring.md)
+* [Az Apache Spark stream (DStream) használata a Kafkával a HDInsighton](hdinsight-apache-spark-with-kafka.md)
+* [Az Apache Spark strukturált stream használata a Kafkával a HDInsighton](hdinsight-apache-kafka-spark-structured-streaming.md)
 * [Az Apache Storm használata a HDInsighton futó Kafkával](hdinsight-apache-storm-with-kafka.md)
-* [Az Apache Spark használata a Kafkával a HDInsighton](hdinsight-apache-spark-with-kafka.md)
 * [Csatlakozás a Kafkához Azure Virtual Networkön keresztül](hdinsight-apache-kafka-connect-vpn-gateway.md)
 

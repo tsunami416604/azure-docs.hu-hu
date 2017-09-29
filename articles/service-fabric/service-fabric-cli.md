@@ -9,15 +9,17 @@ ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 851f04c8b5eee762ec43060f02c8b83f00c1782e
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: f246ee8aaecf3a398182debdea07832c75c1bd9c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
 Az Azure Service Fabric parancssori felület (CLI) egy parancssori eszköz a Service Fabric-entitások használatához és kezeléséhez. A Service Fabric parancssori felület Windows- vagy Linux-fürtökön is használható. A Service Fabric parancssori felület bármilyen platformon fut, amely támogatja a Pythont.
+
+[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,6 +57,13 @@ pip install sfctl
 sfctl -h
 ```
 
+Ha „`sfctl` nem található” hibába ütközik, futtassa az alábbi parancsokat:
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 ### <a name="ubuntu"></a>Ubuntu
 
 Az Ubuntu 16.04 asztali verziójához telepítheti a Python 3.6-ot egy külső gyártótól származó személyes csomagarchívummal (PPA-val).
@@ -75,6 +84,13 @@ python3.6 -m pip install sfctl
 sfctl -h
 ```
 
+Ha „`sfctl` nem található” hibába ütközik, futtassa az alábbi parancsokat:
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 Ezek a lépések nincsenek hatással a rendszeren telepített Python 3.5-re és 2.7-re. Ne próbálja módosítani ezeket a telepítéseket, ha nem ismeri az Ubuntut.
 
 ### <a name="macos"></a>MacOS
@@ -92,6 +108,15 @@ brew install python3
 pip3 install sfctl
 sfctl -h
 ```
+
+
+Ha „`sfctl` nem található” hibába ütközik, futtassa az alábbi parancsokat:
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 
 Ezek a lépések nem módosítják a rendszerre telepített Python 2.7-t.
 
@@ -120,10 +145,10 @@ sfctl cluster select --endpoint http://testcluster.com:19080
 
 A fürt végpontját `http` vagy `https` előtaggal kell ellátni. Tartalmaznia kell a HTTP-átjáróhoz tartozó portot. A port és a cím megegyezik a Service Fabric Explorer URL-címével.
 
-A tanúsítvánnyal védett fürtök esetében megadhat egy PEM-kódolású tanúsítványt. Ez a tanúsítvány megadható egyetlen fájlként vagy egy tanúsítványból és egy kulcsból álló párként.
+A tanúsítvánnyal védett fürtök esetében megadhat egy PEM-kódolású tanúsítványt. Ez a tanúsítvány megadható egyetlen fájlként vagy egy tanúsítványból és egy kulcsból álló párként. Ha ez az önaláírt tanúsítvány nem rendelkezik hitelesítésszolgáltatói aláírással, a `--no-verify` beállítás átadásával kerülheti meg a hitelesítésszolgáltatói ellenőrzést.
 
 ```azurecli
-sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 További információ: [Csatlakozás védett Azure Service Fabric-fürthöz](service-fabric-connect-to-secure-cluster.md).
@@ -175,6 +200,12 @@ A Service Fabric parancssori felület PEM- (.pem kiterjesztésű) fájlok formá
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
+Ehhez hasonlóan a PEM-fájlok PFX-fájlokká történő konvertálásához a következő parancsot használhatja (itt nem kell jelszót megadnia):
+
+```bash
+openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
+```
+
 További információt az [OpenSSL-dokumentációban](https://www.openssl.org/docs/) találhat.
 
 ### <a name="connection-problems"></a>Csatlakozási problémák
@@ -202,6 +233,16 @@ Egy másik példa:
 ```azurecli
 sfctl application create -h
 ```
+
+## <a name="updating-the-service-fabric-cli"></a>A Service Fabric parancssori felület frissítése 
+
+A Service Fabric parancssori felületének frissítéséhez futtassa a következő parancsokat (az eredeti telepítéskor használt paramétertől függően a `pip` helyett írjon be `pip3`-at):
+
+```bash
+pip uninstall sfctl 
+pip install sfctl 
+```
+
 
 ## <a name="next-steps"></a>Következő lépések
 

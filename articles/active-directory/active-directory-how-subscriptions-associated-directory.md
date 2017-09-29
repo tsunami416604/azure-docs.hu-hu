@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 283c9903501a1e497e4dde81146d21edb869e9e2
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 081cf2bde44a0b55508cc7f0197fa7f8e378189b
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/22/2017
 
 ---
 # <a name="how-azure-subscriptions-are-associated-with-azure-active-directory"></a>How Azure subscriptions are associated with Active Directory? (Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?)
@@ -48,13 +48,14 @@ Az Azure AD szolgáltatáshoz ingyenesen hozzáférhet, ha regisztrál bármelyi
 ## <a name="to-add-an-existing-subscription-to-your-azure-ad-directory"></a>Meglévő előfizetés hozzáadása az Azure AD-címtárhoz
 Egy olyan fiókkal kell bejelentkeznie, amely az előfizetéshez jelenleg társított címtárban és abban a címtárban is létezik, amelyhez az előfizetést hozzá szeretné rendelni. 
 
-1. Jelentkezzen be az [Azure Account Centerbe](https://account.windowsazure.com/Home/Index) annak az előfizetésnek a fiókadminisztrátori fiókjával, amelynek a tulajdonjogát át szeretné adni.
+1. Jelentkezzen be az [Azure Account Centerbe](https://account.azure.com/Subscriptions) annak az előfizetésnek a fiókadminisztrátori fiókjával, amelynek a tulajdonjogát át szeretné adni.
 2. Bizonyosodjon meg róla, hogy az előfizetés tulajdonosaként megadni kívánt felhasználó szerepel a megcélzott címtárban.
 3. Kattintson az **Előfizetés átadása** elemre.
 4. Adja meg a címzettet. A címzett automatikusan kapni fog egy elfogadási hivatkozást tartalmazó e-mailt.
 5. A címzett a hivatkozásra való kattintás után követnie kell az utasításokat, többek között a fizetési információk megadásával. Ha ez sikeresen befejeződött, a rendszer átadja az előfizetést. 
 6. Az előfizetés alapértelmezett címtára arra módosul, amelyikben a felhasználó szerepel.
 
+További tudnivalókért lásd: [Az Azure-előfizetés tulajdonjogának átadása másik fiók számára](../billing/billing-subscription-transfer.md)
 
 ## <a name="suggestions-to-manage-both-a-subscription-and-a-directory"></a>Javaslatok az előfizetés és a címtár kezeléséhez
 Az Azure-előfizetések rendszergazdai szerepkörei kezelik az Azure-előfizetéshez társított erőforrásokat. Ez a szakasz ismerteti az Azure-előfizetések rendszergazdái és az Azure AD-címtár rendszergazdái közti különbségeket. A rendszergazdai szerepkörökről és az előfizetés kezelésére való használatukról a [Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban](active-directory-assign-admin-roles.md) című szakaszban olvashat.
