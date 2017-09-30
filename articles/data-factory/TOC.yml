@@ -172,22 +172,34 @@
           href: control-flow-expression-language-functions.md
         - name: Rendszerváltozók
           href: control-flow-system-variables.md
-    - name: Hitelesítő adatok tárolása kulcstartóban
-      href: store-credentials-in-key-vault.md
+    - name: Biztonság
+      items:
+        - name: Az adatáthelyezés biztonsági szempontjai
+          href: data-movement-security-considerations.md
+        - name: Hitelesítő adatok tárolása az Azure Key Vaultban
+          href: store-credentials-in-key-vault.md
+        - name: Hitelesítő adatok titkosítása helyi integrációs modul számára
+          href: encrypt-credentials-self-hosted-integration-runtime.md
     - name: Monitorozás és kezelés
       items:
         - name: A .NET használata
           href: 'quickstart-create-data-factory-dot-net.md#monitor-pipeline-run'
         - name: Az Azure Monitor használata
           href: monitor-using-azure-monitor.md
+        - name: Az Azure SSIS integrációs modul kezelése
+          href: manage-azure-ssis-integration-runtime.md
+        - name: Integrációs modul monitorozása
+          href: monitor-integration-runtime.md
     - name: Integrációs modul létrehozása
       items:
         - name: Azure integrációs modul
           href: create-azure-integration-runtime.md
-        - name: Azure SSIS integrációs modul
-          href: create-azure-ssis-integration-runtime.md
         - name: Helyi integrációs modul
           href: create-self-hosted-integration-runtime.md
+        - name: Azure SSIS integrációs modul
+          href: create-azure-ssis-integration-runtime.md
+        - name: Az Azure SSIS integrációs modul csatlakoztatása virtuális hálózathoz
+          href: join-azure-ssis-integration-runtime-virtual-network.md
 - name: Referencia
   items:
     - name: .NET
@@ -200,6 +212,8 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: Erőforrások
   items:
+    - name: GYIK
+      href: frequently-asked-questions.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Díjszabás

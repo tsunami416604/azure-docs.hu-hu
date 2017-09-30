@@ -226,6 +226,13 @@
       items:
         - name: Folyamatos exportálás
           href: app-insights-export-telemetry.md
+          items:
+            - name: Kódminták
+              items:
+                - name: SQL-exportálás a Stream Analytics használatával
+                  href: app-insights-code-sample-export-sql-stream-analytics.md
+                - name: Stream Analytics-exportálás
+                  href: app-insights-export-stream-analytics.md
         - name: Adatmodell exportálása
           href: app-insights-export-data-model.md
         - name: Power BI-exportálás

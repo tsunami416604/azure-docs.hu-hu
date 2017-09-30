@@ -3,25 +3,19 @@
   items:
     - name: Tudnivalók az App Service-környezetekről
       href: intro.md
-    - name: Az üzemeltetési lehetőségek összehasonlítása
-      href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Alkalmazás létrehozása App Service-környezetben
+    - name: Külső ASE létrehozása
       href: create-external-ase.md
-    - name: Létrehozás sablonból
-      href: create-from-template.md
+    - name: Belső ASE létrehozása
+      href: create-ilb-ase.md
 - name: oktatóanyagokat
   items:
-    - name: Elkülönített alkalmazás létrehozása
-      href: create-ilb-ase.md
-    - name: Integrálás WAP-pal
+    - name: Integrálás WAF-fal
       href: app-service-app-service-environment-web-application-firewall.md
-    - name: Bejövő forgalom átirányítása nyilvános alkalmazásba
-      href: app-service-app-service-environment-control-inbound-traffic.md
-    - name: Alkalmazás horizontális felskálázása az ASE-ben
-      href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+    - name: TLS konfigurálása
+      href: app-service-app-service-environment-custom-settings.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -32,50 +26,49 @@
   items:
     - name: Hálózati architektúra
       href: network-info.md
-    - name: Felügyeleti címek
-      href: management-addresses.md
     - name: Földrajzilag elosztott skálázás
       href: app-service-app-service-environment-geo-distributed-scale.md
     - name: ASEv1
-      items:
-        - name: Az ASEv1 bemutatása
-          href: app-service-app-service-environment-intro.md
-        - name: Hálózati architektúra
-          href: app-service-app-service-environment-network-architecture-overview.md
+      href: app-service-app-service-environment-intro.md
 - name: Útmutatók
   items:
-    - name: ASE konfigurálása
+    - name: ASE használata
+      href: using-an-ase.md
+    - name: ASE létrehozása sablonból
+      href: create-from-template.md
+- name: Referencia
+  items:
+    - name: Felügyeleti címek
+      href: management-addresses.md
+    - name: Az ASEv1 dokumentációja
       items:
-        - name: ASE használata
-          href: using-an-ase.md
-        - name: Csatlakozás háttérrendszerhez
+        - name: ASEv1 létrehozása
+          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: ASEv1 konfigurálása
+          href: app-service-web-configure-an-app-service-environment.md
+        - name: Belső ASEv1 létrehozása
+          href: app-service-environment-with-internal-load-balancer.md
+        - name: Belső ASEv1 létrehozása sablonból
+          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
+        - name: Automatikus skálázás konfigurálása az ASEv1-ben
+          href: app-service-environment-auto-scale.md
+        - name: Alkalmazások horizontális felskálázása az ASEv1-ben
+          href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+        - name: Hálózati architektúra
+          href: app-service-app-service-environment-network-architecture-overview.md
+        - name: Webalkalmazás létrehozása az ASEv1-ben
+          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
+        - name: Nagy sűrűségű üzemeltetés
+          href: app-service-high-density-hosting.md
+        - name: Csatlakozás háttéralkalmazáshoz
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: ExpressRoute konfigurálása
           href: app-service-app-service-environment-network-configuration-expressroute.md
-    - name: Az ASE védelme
-      items:
-        - name: TLS konfigurálása
-          href: app-service-app-service-environment-custom-settings.md
+        - name: Bejövő forgalom átirányítása nyilvános alkalmazásba
+          href: app-service-app-service-environment-control-inbound-traffic.md
         - name: Többrétegű védelem használata
           href: app-service-app-service-environment-layered-security.md
-    - name: ASE monitorozása
-      items:
-        - name: Monitorozás a portálon
-          href: app-service-web-configure-an-app-service-environment.md
-    - name: ASE1 használata
-      items:
-        - name: Automatikus skálázás konfigurálása
-          href: app-service-environment-auto-scale.md
-        - name: ASEv1 létrehozása
-          href: app-service-web-how-to-create-an-app-service-environment.md
-        - name: Webalkalmazás létrehozása az ASEv1-ben
-          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
-        - name: Belső alkalmazás létrehozása az ASEv1-ben
-          href: app-service-environment-with-internal-load-balancer.md
-        - name: Belső alkalmazás létrehozása sablonnal
-          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
-        - name: Nagy sűrűségű üzemeltetés
-          href: app-service-high-density-hosting.md
+    - name: CLI 2.0
 - name: Referencia
   items:
     - name: Azure CLI

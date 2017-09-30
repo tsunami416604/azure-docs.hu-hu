@@ -43,6 +43,7 @@
 ### [Partnerek](logic-apps-enterprise-integration-partners.md)
 ### [Egyezmények](logic-apps-enterprise-integration-agreements.md)
 ### [B2B feldolgozás](logic-apps-enterprise-integration-b2b.md)
+### [EDI-üzenetek küldése kötegként](logic-apps-scenario-edi-send-batch-messages.md)
 ### [XML-feldolgozás](logic-apps-enterprise-integration-xml.md)
 ### [Egybesimított fájlok feldolgozása](logic-apps-enterprise-integration-flatfile.md)
 ### [XML érvényességének ellenőrzése](logic-apps-enterprise-integration-xml-validation.md)
@@ -88,7 +89,7 @@
 ### [Kiszolgáló nélküli közösségi irányítópult létrehozása](logic-apps-scenario-social-serverless.md)
 ### [Logikai alkalmazások meghívása Azure Functions-függvényekkel](logic-apps-scenario-function-sb-trigger.md)
 ### [Hiba- és kivételkezelés hozzáadása](logic-apps-scenario-error-and-exception-handling.md)
-### [B2B feldolgozás](logic-apps-enterprise-integration-b2b.md)
+### [B2B feldolgozás](logic-apps-enterprise-integration-b2b.md) 
 
 ## Díjszabás és számlázás
 ### [Díjszabás](https://azure.microsoft.com/pricing/details/logic-apps/)

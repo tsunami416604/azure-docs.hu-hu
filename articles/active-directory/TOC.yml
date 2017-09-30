@@ -1,3 +1,5 @@
+- name: Hozzáférés kezelésének áttekintése
+  href: manage-access-to-azure-resources.md
 - name: Erőforrás-hozzáférés az Azure-ban
   href: active-directory-understanding-resource-access.md
 - name: Szerepköralapú hozzáférés-vezérlés (RBAC)

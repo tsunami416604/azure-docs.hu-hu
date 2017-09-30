@@ -82,6 +82,8 @@
   items:
     - name: Vészhelyreállítás
       items:
+        - name: Az Azure-ba több bérlős támogatással rendelkező VMware virtuális gépekhez
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
         - name: Az Azure-ba Hyper-V virtuális gépekhez
           href: tutorial-hyper-v-to-azure.md
         - name: Az Azure-ba fizikai kiszolgálókhoz

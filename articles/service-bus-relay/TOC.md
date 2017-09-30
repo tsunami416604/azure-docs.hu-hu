@@ -9,6 +9,8 @@
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Csomópont](relay-hybrid-connections-node-get-started.md)
 ## [WCF-továbbító](relay-wcf-dotnet-get-started.md)
+## [Útmutató a WCF-továbbítóhoz](service-bus-relay-tutorial.md)
+## [WCF Relay REST oktatóanyag](service-bus-relay-rest-tutorial.md)
 
 # Útmutató
 ## Tervezés és kialakítás

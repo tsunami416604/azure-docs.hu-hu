@@ -23,7 +23,7 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
-    - name: GYIK
+    - name: Log Analytics – gyakori kérdések
       href: log-analytics-faq.md
     - name: Adathasználat
       href: log-analytics-usage.md
@@ -31,6 +31,14 @@
       href: log-analytics-manage-access.md
     - name: Funkciók a szolgáltatók számára
       href: log-analytics-service-providers.md
+    - name: Naplók keresése
+      items:
+        - name: Naplók keresése – gyakori kérdések
+          href: log-analytics-log-search-faq.md
+        - name: A naplókeresések áttekintése
+          href: log-analytics-log-search-new.md
+        - name: Naplókeresési portálok
+          href: log-analytics-log-search-portals.md
 - name: Útmutató
   items:
     - name: Adatok gyűjtése
@@ -92,15 +100,6 @@
       items:
         - name: Munkaterület frissítése
           href: log-analytics-log-search-upgrade.md
-        - name: GYIK
-          href: log-analytics-log-search-faq.md
-        - name: A naplókeresések áttekintése
-          href: log-analytics-log-search-new.md
-        - name: Naplókeresési portálok
-          href: log-analytics-log-search-portals.md
-          items:
-            - name: Naplókeresési portál használata
-              href: log-analytics-log-search-log-search-portal.md
         - name: Váltás az örökölt nyelvről
           href: log-analytics-log-search-transition.md
         - name: Folyamat-összekötő

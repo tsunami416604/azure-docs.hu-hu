@@ -24,8 +24,7 @@
 ### Biztonságos LDAP konfigurálása felügyelt tartományhoz
 #### [1. feladat: tanúsítvány beszerzése biztonságos LDAP-hoz](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [2. feladat: a megbízható LDAP-tanúsítványának exportálása](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [3. feladat: biztonságos LDAP engedélyezése a felügyelt tartományhoz klasszikus Azure portállal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
-#### [3. feladat: biztonságos LDAP engedélyezése a felügyelt tartományhoz az Azure portállal (előnézet)](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [3. feladat: biztonságos LDAP engedélyezése a felügyelt tartományhoz az Azure portállal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [Szervezeti egység létrehozása egy felügyelt tartományon](active-directory-ds-admin-guide-create-ou.md)
 ### [Csoportházirend-kezelése felügyelt tartományon](active-directory-ds-admin-guide-administer-group-policy.md)

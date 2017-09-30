@@ -43,6 +43,7 @@
 ### [Kézbesíthetetlen levelek sorai](service-bus-dead-letter-queues.md)
 ### [Tranzakciófeldolgozás](service-bus-transactions.md)
 ### [Diagnosztikai naplók](service-bus-diagnostic-logs.md)
+### [Párosított névterek implementációja](service-bus-paired-namespaces.md)
 ### AMQP
 #### [Az AMQP áttekintése](service-bus-amqp-overview.md)
 #### [.NET](service-bus-amqp-dotnet.md)
