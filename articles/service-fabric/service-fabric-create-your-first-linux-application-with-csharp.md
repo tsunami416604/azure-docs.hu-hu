@@ -12,32 +12,33 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/21/2017
+ms.date: 9/19/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: adcafaa5522fcddc0a01eb1dc8deba04ebfc38f2
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: e18dcad73486ab7610c53c269fbc81de73b5147e
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
 > [!div class="op_single_selector"]
 > * [C# – Windows](service-fabric-create-your-first-application-in-visual-studio.md)
-> * [Java – Linux](service-fabric-create-your-first-linux-application-with-java.md)
-> * [C# – Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
+> * [Java – Linux (előzetes verzió)](service-fabric-create-your-first-linux-application-with-java.md)
+> * [C# – Linux (előzetes verzió)](service-fabric-create-your-first-linux-application-with-csharp.md)
 >
 >
 
-A Service Fabric SDK-kat biztosít Linux-szolgáltatások létrehozásához a .NET és a Java használatával egyaránt. A jelen oktatóanyagban áttekintjük, hogyan hozhat létre alkalmazásokat a Linux rendszerre, valamint szolgáltatásokat a C# (.NET Core) használatával.
+A Service Fabric SDK-kat biztosít Linux-szolgáltatások létrehozásához a .NET és a Java használatával egyaránt. A jelen oktatóanyagban áttekintjük, hogyan hozhat létre alkalmazásokat a Linux rendszerre, valamint szolgáltatásokat a C# használatával .NET Core 2.0 alatt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt elkezdené, győződjön meg arról, hogy [beállította a Linux-fejlesztőkörnyezetet](service-fabric-get-started-linux.md). Amennyiben a Mac OS X rendszert használja, [beállíthat egy beépített Linux-környezetet egy virtuális gépen a Vagrant használatával](service-fabric-get-started-mac.md).
 
 Telepítse a [Service Fabric parancssori felületét](service-fabric-cli.md) is
 
-### <a name="install-and-set-up-the-generators-for-csharp"></a>A CSharp generátorainak telepítése és beállítása
-A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel Service Fabric CSharp-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával biztosíthatja, hogy a Service Fabric Yeoman sablongenerátor elérhető legyen a gépen lévő CSharp használatához.
+### <a name="install-and-set-up-the-generators-for-c"></a>A C# generátorainak telepítése és beállítása
+A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek segítségével Service Fabric-alkalmazásokat hozhat létre a terminálból Yeoman-sablongenerátorok használatával. Hajtsa végre ezeket a lépéseket a Service Fabric Yeoman sablongenerátorok beállításához C#-hoz:
+
 1. A node.js és az NPM telepítése a gépre
 
   ```bash
@@ -56,7 +57,7 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel S
   ```
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
-A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. A CSharphoz készült Service Fabric [Yeoman](http://yeoman.io/) generátor, amelyet az utolsó lépésben telepített, megkönnyíti az első szolgáltatás létrehozását, és a továbbiak hozzáadását a későbbiekben. Hozzunk létre egy egyetlen szolgáltatással rendelkező alkalmazást a Yeoman használatával.
+A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. A C#-hoz készült Service Fabric [Yeoman](http://yeoman.io/) generátor, amelyet az utolsó lépésben telepített, megkönnyíti az első szolgáltatás létrehozását, és a továbbiak hozzáadását a későbbiekben. Hozzunk létre egy egyetlen szolgáltatással rendelkező alkalmazást a Yeoman használatával.
 
 1. Írja be a terminálba az alábbi parancsot a keret létrehozásához: `yo azuresfcsharp`
 2. Adjon nevet az alkalmazásnak.
@@ -126,7 +127,6 @@ Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már l�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További tudnivalók a Reliable Actorsről](service-fabric-reliable-actors-introduction.md)
 * [Service Fabric-fürtök használata a Service Fabric parancssori felületén](service-fabric-cli.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

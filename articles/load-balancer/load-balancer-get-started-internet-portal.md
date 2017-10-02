@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: annahar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: db7c328b2ba7008b9d34275341fa4bad9522b028
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 922c33f712e160835256ad9ad040e523dfbf76db
 ms.contentlocale: hu-hu
-ms.lasthandoff: 01/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -31,11 +31,13 @@ ms.lasthandoff: 01/24/2017
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [Sablon](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [azt is megismerheti, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó a klasszikus üzemelő példány használatával](load-balancer-get-started-internet-classic-portal.md)
+Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti.
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -83,7 +85,7 @@ További információkat szerezhet a terheléselosztónak az Azure Resource Mana
     A terheléselosztó Beállítások menüjéből válassza ki a Mintavételek elemet. Ezután kattintson a panel tetején található **Hozzáadás** gombra.
 
     Két módszer van a mintavétel konfigurálására: HTTP vagy TCP. Ez a példa a HTTP módszert mutatja be, de a TCP is hasonló módon konfigurálható.
-    Frissítse a szükséges információkat. Amint már említettük, a **myLoadBalancer** betölti a 80-as portra az elosztott terhelésű forgalmat. A kiválasztott elérési út a HealthProbe.aspx, az időköz 15 másodperc, a nem kifogástalan állapot küszöbértéke pedig 2. Ha végzett, a projekt létrehozásához kattintson az **OK** gombra.
+    Frissítse a szükséges információkat. Amint már említettük, a **myLoadBalancer** elosztja a 80-as port forgalmának terhelését. A kiválasztott elérési út a HealthProbe.aspx, az időköz 15 másodperc, a nem kifogástalan állapot küszöbértéke pedig 2. Ha végzett, a projekt létrehozásához kattintson az **OK** gombra.
 
     Mozgassa a mutatót az „i” ikon fölé, ha többet szeretne megtudni az egyes konfigurációkról, és arról, hogyan lehet azokat módosítani az igényei szerint.
 

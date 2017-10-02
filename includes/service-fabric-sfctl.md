@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> A Service Fabrichez két parancssori felületi eszközt lehet használni. Az [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)-vel kezelhetők az Azure-erőforrások, például az Azure-ban tárolt Service Fabric-fürtök. A Service Fabric parancssori felületével közvetlenül a Service Fabric-fürthöz kapcsolódva lehet kezelni a fürtöt, az alkalmazásokat és a szolgáltatásokat (függetlenül attól, hogy a fürt hol található). 

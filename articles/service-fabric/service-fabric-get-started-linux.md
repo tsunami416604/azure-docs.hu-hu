@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/23/2017
+ms.date: 9/19/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 8d902ba9e2077b4b70762c76cfb3ebf12752fb11
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: da9aff17c16e179be200677bfbfd1287fff269e3
 ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
@@ -29,13 +29,28 @@ ms.lasthandoff: 09/14/2017
 >
 >  
 
-Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-hoz készült opcionális SDK-kat is telepítheti.
+Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-fejlesztéshez készült opcionális SDK-kat is telepítheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 * Ubuntu 16.04 (`Xenial Xerus`)
+
+## <a name="installation-methods"></a>Telepítési módok
+
+### <a name="1-script-installation"></a>1. Telepítés szkripttel
+
+Az egyszerű használat érdekében megadunk egy szkriptet a Service Fabric-futtatókörnyezet és a Service Fabric általános SDK az **sfctl** CLI felülettel együtt történő telepítéséhez. Kövesse a következő szakaszban található manuális telepítési lépéseket, ha el szeretné dönteni, mi legyen telepítve és mely licenceket fogadja el. A szkript a futtatáskor azt feltételezi, hogy Ön átolvasta és elfogadja a telepített szoftverek licencfeltételeit. 
+
+A szkript sikeres végrehajtását követően közvetlenül a [Helyi fürt beállítása](#set-up-a-local-cluster) lépéssel folytathatja.
+
+```bash
+sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
+```
+
+### <a name="2-manual-installation"></a>2. Manuális telepítés
+A Service Fabric-futtatókörnyezet és az általános SDK manuális telepítéséhez kövesse ezt az útmutatót.
 
 ## <a name="update-your-apt-sources"></a>Frissítse az APT-forrásait
 Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz használatával történő telepítéséhez először frissítenie kell az Advanced Packaging Tool- (APT-) forrásait.
@@ -79,7 +94,7 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
     sudo apt-get update
     ```
 
-## <a name="install-and-set-up-the-sdk-for-local-cluster-setup"></a>Az SDK telepítése és beállítása helyi fürtbeállításhoz
+## <a name="install-and-set-up-the-service-fabric-sdk-for-local-cluster-setup"></a>A Service Fabric SDK telepítése és beállítása helyi fürtbeállításhoz
 
 A források frissítése után telepítheti az SDK-t. Telepítse a Service Fabric SDK-csomagot, erősítse meg a telepítést, és fogadja el a licencszerződést.
 
@@ -90,12 +105,12 @@ sudo apt-get install servicefabricsdkcommon
 >   [!TIP]
 >   A következő parancsok automatizálják a Service Fabric-csomagok licenceinek elfogadását:
 >   ```bash
->   echo "servicefabric servicefabric/accepted-eula-v1 select true" | sudo debconf-set-selections
->   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | sudo debconf-set-selections
+>   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
 >   ```
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
-  Ha a telepítés sikeres volt, elindíthatja a helyi fürtöt.
+  Ha a telepítés befejeződött, elindíthatja a helyi fürtöt.
 
   1. Futtassa a fürttelepítési szkriptet.
 
@@ -111,7 +126,7 @@ sudo apt-get install servicefabricsdkcommon
 
 
   > [!NOTE]
-  > Az önálló fürtök Linuxon nem támogatottak. Az előzetes verzió csak a beépített és az Azure Linux többgépes fürtöket támogatja.
+  > Az önálló fürtök Linuxon nem támogatottak.
   >
 
 ## <a name="set-up-the-service-fabric-cli"></a>A Service Fabric parancssori felület beállítása
@@ -120,8 +135,8 @@ A [Service Fabric parancssori felület](service-fabric-cli.md) a Service Fabric-
 A parancssori felület telepítéséhez kövesse a [Service Fabric parancssori felület](service-fabric-cli.md) utasításait.
 
 
-## <a name="install-and-set-up-the-generators-for-containers-and-guest-executables"></a>A generátorok telepítése és beállítása tárolókhoz és futtatható vendégalkalmazásokhoz
-A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek segítségével Service Fabric-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával biztosíthatja, hogy a Service Fabric Yeoman sablongenerátor elérhető legyen a gépen való munkához.
+## <a name="set-up-yeoman-generators-for-containers-and-guest-executables"></a>Yeoman-generátorok beállítása a tárolókhoz és vendégalkalmazásokhoz
+A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek segítségével Service Fabric-alkalmazásokat hozhat létre a terminálból Yeoman-sablongenerátorok használatával. Hajtsa végre ezeket a lépéseket a Service Fabric Yeoman-sablongenerátorok beállításához:
 
 1. A node.js és az NPM telepítése a gépre
 
@@ -141,11 +156,15 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
   sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
   ```
 
-A fenti generátorok telepítése után futtatható vendégalkalmazásokkal vagy tárolószolgáltatásokkal rendelkező alkalmazások hozhatók létre a `yo azuresfguest` vagy a `yo azuresfcontainer` futtatásával.
+A generátorok telepítése után futtatható vendégalkalmazásokat vagy tárolószolgáltatásokat hozhat létre a `yo azuresfguest` vagy a `yo azuresfcontainer` futtatásával.
 
-## <a name="install-the-necessary-java-artifacts-optional-if-you-want-to-use-the-java-programming-models"></a>A szükséges Java-összetevők telepítése (nem kötelező, csak ha használni kívánja a Java programozási modelleket)
+## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 fejlesztői környezet beállítása
 
-A Service Fabric-szolgáltatások Java használatával történő létrehozásához telepítve kell lennie a JDK 1.8 készletnek és a Gradle-nek, amely az összeállítási feladatok futtatásához használható. Az Open JDK 1.8 és a Gradle az alábbi kódrészlettel telepíthető. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
+Telepítse az [Ubuntu rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#linuxubuntu) [a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen érhetők el, jelenleg előzetes verzióban.
+
+## <a name="set-up-java-development"></a>Java fejlesztői környezet beállítása
+
+A Service Fabric-szolgáltatások Java használatával történő létrehozásához telepítse a JDK 1.8-at és a Gradle-t az összeállítási feladatok futtatásához. Az Open JDK 1.8 és a Gradle az alábbi kódrészlettel telepíthető. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
 
   ```bash
   sudo apt-get install openjdk-8-jdk-headless
@@ -154,7 +173,7 @@ A Service Fabric-szolgáltatások Java használatával történő létrehozásá
 
 ## <a name="install-the-eclipse-neon-plug-in-optional"></a>Az Eclipse Neon beépülő modul telepítése (nem kötelező)
 
-A Service Fabric Eclipse beépülő modulját a **Java-fejlesztőknek készült Eclipse IDE-ből** is telepítheti. Az Eclipse segítségével új Service Fabric futtatható vendégalkalmazásokat és tárolóalkalmazásokat, valamint Service Fabric Java-alkalmazásokat hozhat létre.
+A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek készült Eclipse IDE-ből telepítheti. Az Eclipse segítségével új Service Fabric futtatható vendégalkalmazásokat és tárolóalkalmazásokat, valamint Service Fabric Java-alkalmazásokat hozhat létre.
 
 1. Az Eclipse-ben győződjön meg arról, hogy telepítve van a legújabb Eclipse Neon és a Buildship 1.0.17-es vagy újabb verziója. A telepített összetevők verzióját a **Súgó** > **Telepítés részletei** lehetőség kiválasztásával ellenőrizheti. A Buildship frissítéséhez kövesse az [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Eclipse beépülő modulok a Gradle-hez) című témakör utasításait.
 
@@ -174,26 +193,28 @@ Ha a Service Fabric Eclipse beépülő modul már telepítve van, győződjön m
 
 További információ: [Service Fabric beépülő modul az Eclipse-alapú Java-alkalmazásfejlesztéshez](service-fabric-get-started-eclipse.md).
 
-
-## <a name="install-the-net-core-sdk-optional-if-you-want-to-use-the-net-core-programming-models"></a>A .NET Core SDK telepítése (nem kötelező, csak ha használni szeretné a .NET Core programozási modelleket)
-A .NET Core SDK biztosítja a .NET Core-t használó Service Fabric-szolgáltatások létrehozásához szükséges kódtárakat és sablonokat. Telepítse a .NET Core SDK-csomagot a következő futtatásával –
-
-   ```bash
-   sudo apt-get install servicefabricsdkcsharp
-   ```
-
 ## <a name="update-the-sdk-and-runtime"></a>Az SDK és a futtatókörnyezet frissítése
 
-Az SDK és a futtatókörnyezet legújabb verziójára történő frissítéshez futtassa a következő parancsokat (távolítsa el a listából a frissíteni nem kívánt SDK-kat):
+Az SDK és a futtatókörnyezet legújabb verziójára történő frissítéshez futtassa a következő parancsokat:
 
 ```bash
 sudo apt-get update
-sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp
+sudo apt-get install servicefabric servicefabricsdkcommon
 ```
 A Java SDK bináris fájljainak a Mavenből való frissítéséhez frissítenie kell a megfelelő bináris fájl verzióadatait a ``build.gradle`` fájlban, hogy azok a legfrissebb verzióra mutassanak. A verzió frissítésének pontos helyét bármelyik ``build.gradle`` fájlból megtudhatja a Service Fabric első lépéseit bemutató példákból [ezen a helyen](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 > [!NOTE]
 > A csomagok frissítése miatt előfordulhat, hogy a helyi fejlesztési fürt leáll. Frissítés után az oldalon található utasításokat követve indítsa újra a helyi fürtöt.
+
+## <a name="remove-the-sdk"></a>Az SDK eltávolítása
+A Service Fabric SDK-k eltávolításához futtassa a következőket:
+
+```bash
+sudo apt-get remove servicefabric servicefabicsdkcommon
+sudo npm uninstall generator-azuresfcontainer
+sudo npm uninstall generator-azuresfguest
+sudo apt-get install -f
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

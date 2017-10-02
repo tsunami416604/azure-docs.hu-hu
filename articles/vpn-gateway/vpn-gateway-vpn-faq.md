@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2017
 ms.author: cherylmc,yushwang
 ms.translationtype: HT
-ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
-ms.openlocfilehash: 9f7eb8e63f30d0f3450ad913620e59cd461b75bc
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: b12eab7a430e620d0b6e872551c0252ccb5d4c14
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
@@ -113,7 +113,7 @@ Hitelesítésként csak az előmegosztott kulcsok (PSK-k) használhatók.
 * Azure Portal esetén: Lépjen a klasszikus virtuális hálózat > VPN connections (VPN-kapcsolatok) > Site-to-site VPN connections (Helyek közötti VPN-kapcsolatok) > Helyi hely neve > Helyi hely > Client address space (Ügyfélcímtér) felületre. 
 * Klasszikus portál esetén: A Networks (Hálózatok) lap Local Networks (Helyi hálózatok) részében adja hozzá az összes tartományt, amelyet átküldene az átjárón a virtuális hálózathoz. 
 
-### <a name="can-i-configure-forced-tunneling"></a>Konfigurálhatok kényszerített bújtatást?
+### <a name="can-i-configure-force-tunneling"></a>Konfigurálhatok kényszerített bújtatást?
 
 Igen. Lásd: [Kényszerített bújtatás konfigurálása](vpn-gateway-about-forced-tunneling.md).
 
@@ -159,9 +159,13 @@ A helyek közötti létesítmények közötti konfigurációkhoz támogatottak a
 
 Az egyéb szoftveres VPN-megoldások szintén működhetnek, ha megfelelnek az iparági szabványos IPsec-megvalósításoknak. A konfigurációs és támogatási útmutatáshoz vegye fel a kapcsolatot a szoftver szállítójával.
 
-## <a name="P2S"></a>Pont–hely kapcsolatok
+## <a name="P2S"></a>Pont–hely kapcsolat – hitelesítés natív Azure-tanúsítvánnyal
 
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-point-to-site-include.md)]
+[!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
+
+## <a name="P2SRADIUS"></a>Pont–hely kapcsolat – RADIUS-hitelesítés
+
+[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
 ## <a name="V2VMulti"></a>Virtuális hálózatok közötti kapcsolat és többhelyes kapcsolatok
 

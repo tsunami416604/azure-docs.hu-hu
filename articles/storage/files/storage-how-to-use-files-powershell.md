@@ -1,6 +1,6 @@
 ---
-title: "Az Azure File Storage kezelése PowerShell használatával | Microsoft Docs"
-description: "Itt megismerheti, hogyan kezelheti az Azure File Storage szolgáltatást PowerShell használatával."
+title: "Az Azure Files kezelése a PowerShell-lel | Microsoft Docs"
+description: "Itt megismerheti, hogyan kezelheti az Azure Files szolgáltatást a PowerShell használatával."
 services: storage
 documentationcenter: 
 author: RenaShahMSFT
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ce62d4423ce711a6902aed7b8174ff4e827f6083
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f919e1880f709b416867a29de14f1dcc63a165fe
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="how-to-use-powershell-to-manage-azure-file-storage"></a>Az Azure File Storage kezelése PowerShell használatával
+# <a name="how-to-use-powershell-to-manage-azure-files"></a>Az Azure Files kezelése a PowerShell-lel
 Az Azure PowerShell szolgáltatást is használhatja fájlmegosztások létrehozására és kezelésére.
 
 ## <a name="install-the-powershell-cmdlets-for-azure-storage"></a>Az Azure Storage PowerShell-parancsmagjainak telepítése
@@ -96,7 +96,7 @@ Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt 
 Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
 ```
 ## <a name="next-steps"></a>Következő lépések
-Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.
+Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 
 * [Gyakori kérdések](../storage-files-faq.md)
 * [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      

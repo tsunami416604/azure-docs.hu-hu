@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bc3d67745afb8bbffe7ec3462e995104daff9632
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 6e71a13f99160fdd310be1e9a59717c9fecbf35d
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Azure-fájlmegosztás csatlakoztatása SMB protokoll segítségével macOS rendszeren
-Az [Azure File Storage](../storage-dotnet-how-to-use-files.md) egy Microsoft-szolgáltatás, amely lehetővé teszi a hálózati fájlmegosztások Azure-ban történő létrehozását és használatát az iparági szabványok használatával. Az Azure-fájlmegosztások a macOS rendszer Sierra (10.12) és El Capitan (10.11) verzióra csatlakoztathatók. Ez a cikk kettő különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására macOS rendszeren: a Finder felhasználói felület és a Terminál használatával.
+Az [Azure Files](storage-files-introduction.md) egy Microsoft-szolgáltatás, amely lehetővé teszi a hálózati fájlmegosztások Azure-ban történő létrehozását és használatát az iparági szabványok használatával. Az Azure-fájlmegosztások a macOS rendszer Sierra (10.12) és El Capitan (10.11) verzióra csatlakoztathatók. Ez a cikk kettő különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására macOS rendszeren: a Finder felhasználói felület és a Terminál használatával.
 
 > [!Note]  
 > Az Azure-fájlmegosztás SMB protokollon keresztül történő csatlakoztatása előtt javasoljuk, hogy tiltsa le az SMB-csomagaláírást. Ha ezt nem teszi meg, az gyenge teljesítményt eredményezhet, amikor macOS rendszerről próbál meg hozzáférni az Azure-fájlmegosztáshoz. Az SMB-kapcsolat titkosítva lesz, tehát ez nem befolyásolja a kapcsolat biztonságát. A terminálból az alábbi parancsok segítségével tilthatja le az SMB-csomagaláírást, ahogyan azt ez [az SMB-csomagaláírás letiltásával foglalkozó Apple-támogatási cikk](https://support.apple.com/HT205926) is ismerteti:  
@@ -65,7 +65,7 @@ Az [Azure File Storage](../storage-dotnet-how-to-use-files.md) egy Microsoft-szo
     ![Pillanatfelvétel a csatlakoztatott Azure-fájlmegosztásról](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
 ## <a name="next-steps"></a>Következő lépések
-Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.
+Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 
 * [Apple-támogatási cikk – Kapcsolódás a Mac fájlmegosztás funkciójának segítségével](https://support.apple.com/HT204445)
 * [Gyakori kérdések](../storage-files-faq.md)

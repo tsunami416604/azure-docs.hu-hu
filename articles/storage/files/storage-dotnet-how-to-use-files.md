@@ -1,6 +1,6 @@
 ---
-title: "Fejlesztés az Azure File Storage szolgáltatáshoz a .NET keretrendszerrel | Microsoft Docs"
-description: "Itt megismerkedhet azzal, hogyan fejleszthet az Azure File Storage szolgáltatást használó .NET-alkalmazásokat és -szolgáltatásokat a fájladatok tárolásához."
+title: "Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel | Microsoft Docs"
+description: "Itt megismerkedhet azzal, hogyan fejleszthet az Azure Files szolgáltatást használó .NET-alkalmazásokat és -szolgáltatásokat a fájladatok tárolásához."
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7b94e70619324bb8dc8e7f8306f00f06e7476c1f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3ff076f1b5c708423ee40e723875c221847258b0
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="develop-for-azure-file-storage-with-net"></a>Fejlesztés az Azure File Storage szolgáltatáshoz a .NET keretrendszerrel 
+# <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan kezelheti az Azure File Storage szolgáltatást .NET-kód használatával. Az Azure File Storage szolgáltatással kapcsolatos további információkért lásd: [Az Azure File Storage ismertetése](storage-files-introduction.md).
+> Ez a cikk bemutatja, hogyan kezelheti az Azure Files szolgáltatást .NET-kóddal. Az Azure Files szolgáltatással kapcsolatos további információkért lásd: [Bevezetés az Azure Files használatába](storage-files-introduction.md).
 >
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -32,7 +32,7 @@ ms.lasthandoff: 08/21/2017
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-Ez a oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET használatával az Azure File Storage szolgáltatást használó alkalmazásokat vagy szolgáltatásokat a fájladatok tárolásához. Ez a oktatóanyagban egy egyszerű konzolalkalmazást hozunk majd létre, és bemutatjuk, hogyan hajthat végre alapszintű műveleteket a .NET keretrendszer és az Azure File Storage használatával:
+Ez az oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET használatával az Azure Files szolgáltatást használó alkalmazásokat vagy szolgáltatásokat a fájladatok tárolásához. Ebben az oktatóanyagban egy egyszerű konzolalkalmazást hozunk majd létre, és bemutatjuk, hogyan hajthat végre alapszintű műveleteket a .NET-keretrendszer és az Azure Files használatával:
 
 * Egy fájl tartalmának lekérése
 * Egy fájlmegosztás kvótájának (maximális méretének) beállítása.
@@ -42,7 +42,7 @@ Ez a oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET használat
 * Hibaelhárítás az Azure Storage Metrics segítségével
 
 > [!Note]  
-> Mivel az Azure File Storage SMB-n keresztül is elérhető, lehetőség van olyan egyszerű alkalmazások írására, amelyek a fájlbemenet/-kimenet System.IO osztályait használják az Azure File Storage eléréséhez. Ez a cikk azt ismerteti, hogyan írhat az Azure File Storage szolgáltatással az [Azure File Storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) révén kommunikáló Azure Storage .NET SDK-t használó alkalmazásokat. 
+> Mivel az Azure Files SMB-n keresztül is elérhető, lehetőség van olyan egyszerű alkalmazások írására, amelyek a fájl I/O System.IO osztályait használják az Azure-fájlmegosztás eléréséhez. Ez a cikk azt ismerteti, hogyan írhat az Azure Files szolgáltatással a [Fájl REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) révén kommunikáló Azure Storage .NET SDK-t használó alkalmazásokat. 
 
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>A konzolalkalmazás létrehozása és az összeállítás elérése
@@ -86,7 +86,7 @@ Mentse el a hitelesítő adatokat a projekt app.config fájljába. Szerkessze az
 ```
 
 > [!NOTE]
-> Az Azure Storage Emulator legújabb verziója nem támogatja az Azure File Storage-ot. A kapcsolati karakterláncnak egy Azure Storage-tárfiókot kell céloznia a felhőben, hogy használni lehessen az Azure File Storage szolgáltatással.
+> Az Azure Storage Emulator legújabb verziója nem támogatja az Azure Filest. A kapcsolati karakterláncnak egy Azure Storage-fiókot kell megcéloznia a felhőben, hogy használni lehessen az Azure Files szolgáltatással.
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 Nyissa meg a `Program.cs` fájlt a Solution Explorer (Megoldáskezelő) felületén, és irányelvekkel adja hozzá az alábbiakat a fájl elejéhez.
@@ -95,7 +95,7 @@ Nyissa meg a `Program.cs` fájlt a Solution Explorer (Megoldáskezelő) felület
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
 using Microsoft.WindowsAzure.Storage; // Namespace for Storage Client Library
 using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Azure Blobs
-using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure File storage
+using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure Files
 ```
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
@@ -104,7 +104,7 @@ using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure File storage
 Adja hozzá az alábbi kódot a `Main()` módszerhez (a fent látható kód után) a kapcsolati karakterlánc lekéréséhez. Ez a kód lekér egy hivatkozást a korábban létrehozott fájlra, és eredményül megjeleníti annak tartalmát a konzolablakban.
 
 ```csharp
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Get a reference to the file share we created previously.
@@ -149,7 +149,7 @@ Az alábbi példa bemutatja, hogyan ellenőrizheti egy megosztás aktuális kiha
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Get a reference to the file share we created previously.
@@ -184,7 +184,7 @@ Az alábbi példa létrehoz egy megosztott elérési házirendet egy megosztáso
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Get a reference to the file share we created previously.
@@ -242,7 +242,7 @@ Az AzCopy segítségével is átmásolhat egy fájlt egy másikba, egy blobot eg
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Get a reference to the file share we created previously.
@@ -286,7 +286,7 @@ if (share.Exists())
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create a CloudFileClient object for credentialed access to Azure File storage.
+// Create a CloudFileClient object for credentialed access to Azure Files.
 CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Create a new file share, if it does not already exist.
@@ -327,14 +327,12 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 Ugyanígy másolhat blobokat fájlokba. Ha a forrásobjektum egy blob, hozzon létre egy SAS-t, amely hitelesíti a blobhoz való hozzáférést a másolási művelet során.
 
-## <a name="troubleshooting-azure-file-storage-using-metrics"></a>Az Azure File Storage hibaelhárítása mérőszámok segítségével
-Az Azure Storage Analytics mostantól az Azure File Storage esetén is támogatja a mérőszámok használatát. A metrikai adatok segítségével nyomon követheti a kéréseket, és diagnosztizálhatja a problémákat.
+## <a name="troubleshooting-azure-files-using-metrics"></a>Azure Files-problémák hibaelhárítása mérőszámok segítségével
+Az Azure Storage Analytics mostantól az Azure Files esetén is támogatja a mérőszámok használatát. A metrikai adatok segítségével nyomon követheti a kéréseket, és diagnosztizálhatja a problémákat.
 
+Az Azure Files mérőszámait az [Azure Portalon](https://portal.azure.com) engedélyezheti. A mérőszámokat szoftveresen is lehet engedélyezni. Ehhez hívja meg a Set File Service Properties (Fájl szolgáltatástulajdonságainak beállítása) műveletet a REST API vagy valamelyik, a Storage ügyféloldali kódtárában megtalálható megfelelője segítségével.
 
-Az Azure File Storage mérőszámait az [Azure Portalon](https://portal.azure.com) engedélyezheti. A mérőszámokat szoftveresen is lehet engedélyezni. Ehhez hívja meg a Set File Service Properties (Fájl szolgáltatástulajdonságainak beállítása) műveletet a REST API vagy valamelyik, a Storage ügyféloldali kódtárában megtalálható megfelelője segítségével.
-
-
-Az alábbi példakód bemutatja, hogyan használható a Storage .NET-hez készült ügyféloldali kódtára arra, hogy engedélyezze a mérőszámok használatát az Azure File Storage-hoz.
+Az alábbi példakód bemutatja, hogyan használható a Storage .NET-hez készült ügyféloldali kódtára arra, hogy engedélyezze a mérőszámok használatát az Azure Fileshoz.
 
 Először adja hozzá a következő `using` irányelveket a `Program.cs` fájlhoz a fentiekben hozzáadottak kiegészítéseként:
 
@@ -343,7 +341,7 @@ using Microsoft.WindowsAzure.Storage.File.Protocol;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 ```
 
-Ne feledje, hogy amíg az Azure-blobok, az Azure Table és az Azure Queues a megosztott `ServiceProperties` típust használják a `Microsoft.WindowsAzure.Storage.Shared.Protocol` névtérben, az Azure File Storage a saját típusát, a `FileServiceProperties` típust használja a `Microsoft.WindowsAzure.Storage.File.Protocol` névtérben. Mindkét névtérre hivatkozni kell a kódban, hogy az alábbi kód fordítható legyen.
+Ne feledje, hogy míg az Azure-blobok, az Azure Table és az Azure-üzenetsorok a megosztott `ServiceProperties` típust használják a `Microsoft.WindowsAzure.Storage.Shared.Protocol` névtérben, az Azure Files a saját típusát, a `FileServiceProperties` típust használja a `Microsoft.WindowsAzure.Storage.File.Protocol` névtérben. Mindkét névtérre hivatkozni kell a kódban, hogy az alábbi kód fordítható legyen.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -386,26 +384,26 @@ Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
 Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ```
 
-Emellett olvassa el az [Azure File Storage hibaelhárításáról szóló cikk](storage-troubleshoot-windows-file-connection-problems.md) átfogó hibaelhárítási útmutatóját.
+Emellett olvassa el az [Azure-fájlok hibaelhárításáról szóló cikk](storage-troubleshoot-windows-file-connection-problems.md) átfogó hibaelhárítási útmutatóját.
 
 ## <a name="next-steps"></a>Következő lépések
-Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.
+Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 
 ### <a name="conceptual-articles-and-videos"></a>Elméleti cikkek és videók
-* [Azure File Storage: zökkenőmentes felhőalapú SMB fájlrendszer Windows és Linux rendszerekhez](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Az Azure File Storage használata Linuxszal](storage-how-to-use-files-linux.md)
+* [Azure Files: zökkenőmentes felhőalapú SMB-fájlrendszer Windows és Linux rendszerekhez](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Az Azure Files használata Linuxszal](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage-eszköztámogatás
 * [How to use AzCopy with Microsoft Azure Storage (Az AzCopy használata a Microsoft Azure Storage szolgáltatással)](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Using the Azure CLI with Azure Storage (Az Azure parancssori felülete és az Azure Storage együttes használata)](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Azure File Storage-problémák hibaelhárítása](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+* [Azure Files-problémák hibaelhárítása](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Referencia
 * [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Referencia a fájlszolgáltatás REST API-jához](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 
 ### <a name="blog-posts"></a>Blogbejegyzések
-* [Azure File storage is now generally available (Mostantól általánosan elérhető az Azure File Storage)](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Az Azure File Storage ismertetése](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Mostantól általánosan elérhető az Azure Files](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Az Azure Files ismertetése](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [A Microsoft Azure File Storage kapcsolatainak megőrzése](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Persisting connections to Microsoft Azure Files (A Microsoft Azure Files-kapcsolatok megőrzése)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

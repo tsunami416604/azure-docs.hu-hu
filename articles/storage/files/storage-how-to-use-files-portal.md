@@ -1,6 +1,6 @@
 ---
-title: "Az Azure File Storage felügyelete az Azure Portalról | Microsoft Docs"
-description: "Itt megismerheti, hogyan felügyelheti az Azure File Storage szolgáltatást az Azure Portal használatával."
+title: "Az Azure Files felügyelete az Azure Portalról | Microsoft Docs"
+description: "Itt megismerheti, hogyan felügyelheti az Azure Files szolgáltatást az Azure Portal használatával."
 services: storage
 documentationcenter: 
 author: RenaShahMSFT
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d5ffa7cff0a31e36f5a96aaa4b2d477fa39333fb
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: fc521fa40428caacebb072cb1aacdebf0ce977ac
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="how-to-use-azure-file-storage-from-the-azure-portal"></a>Az Azure File Storage használata az Azure Portal használatával
-Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhasználók számára az Azure File Storage kezelésére. Az alábbi műveleteket hajthatja végre a webböngészőjéből:
+# <a name="how-to-use-azure-files-from-the-azure-portal"></a>Az Azure Files használata az Azure Portalról
+Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhasználók számára az Azure Files kezelésére. Az alábbi műveleteket hajthatja végre a webböngészőjéből:
 
 * Fájlmegosztás létrehozása
 * Fájlok fel- és letöltése a fájlmegosztásból.
@@ -49,7 +49,7 @@ Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhaszn�
 
     ![Képernyőkép a fájlmegosztás létrehozásáról a portálon](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share4.png)
 
-6. Adja meg a fájlmegosztás nevét és méretét (legfeljebb 5120 GB), és hozza létre első fájlmegosztását. Ha a fájlmegosztás létrejött, bármely, SMB 2.1 vagy SMB 3.0 protokollt támogató fájlrendszerről csatlakoztathatja azt. A fájlmegosztás **Kvóta** elemére kattintva módosíthatja a fájl méretét legfeljebb 5120 GB-ra. Az Azure File Storage használatával járó tárolási költségek becsléséhez tekintse meg az [Azure díjkalkulátort](https://azure.microsoft.com/pricing/calculator/).
+6. Adja meg a fájlmegosztás nevét és méretét (legfeljebb 5120 GB), és hozza létre első fájlmegosztását. Ha a fájlmegosztás létrejött, bármely, SMB 2.1 vagy SMB 3.0 protokollt támogató fájlrendszerről csatlakoztathatja azt. A fájlmegosztás **Kvóta** elemére kattintva módosíthatja a fájl méretét legfeljebb 5120 GB-ra. Az Azure Files használatával járó tárolási költségek becsléséhez tekintse meg az [Azure díjkalkulátort](https://azure.microsoft.com/pricing/calculator/).
 
     ![Képernyőkép a fájlmegosztás létrehozásáról a portálon](./media/storage-how-to-use-files-portal/use-files-portal-create-file-share5.png)
 
@@ -63,7 +63,7 @@ Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhaszn�
     ![Képernyőkép a fájlok feltöltéséről a portálon](./media/storage-how-to-use-files-portal/use-files-portal-upload-file2.png)
 
 ## <a name="connect-to-file-share"></a>Kapcsolódás a fájlmegosztáshoz
--  Kattintson a **Csatlakoztatás** gombra a fájlmegosztás Windows és Linux rendszeren való csatlakoztatásához szükséges parancssor lekéréséhez. Az egyéb Linux-disztribúciókra vonatkozó csatlakoztatási utasításokért lásd: [Az Azure File Storage használata Linuxszal](../storage-how-to-use-files-linux.md).
+-  Kattintson a **Csatlakoztatás** gombra a fájlmegosztás Windows és Linux rendszeren való csatlakoztatásához szükséges parancssor lekéréséhez. Az egyéb Linux-disztribúciókra vonatkozó csatlakoztatási utasításokért lásd: [az Azure Files Linuxszal való használatát](../storage-how-to-use-files-linux.md) ismertető cikket.
 
     ![Képernyőkép a fájlmegosztás csatlakoztatásáról](./media/storage-how-to-use-files-portal/use-files-portal-connect.png)
 -  A Windows és Linux rendszeren való csatlakoztatáshoz szükséges parancsokat átmásolhatja és futtathatja az Azure virtuális gépen vagy a helyszíni számítógépen.
@@ -74,7 +74,7 @@ Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhaszn�
 A csatlakoztatáshoz szükséges tárelérési kulcsok megkereséséhez kattintson a csatlakoztatási oldal alján található **A tárfiók elérési kulcsainak megtekintése** lehetőségre.
 
 ## <a name="see-also"></a>Lásd még:
-Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.
+Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 
 * [Gyakori kérdések](../storage-files-faq.md)
 * [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      

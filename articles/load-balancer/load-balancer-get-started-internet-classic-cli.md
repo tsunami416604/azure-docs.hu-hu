@@ -3,7 +3,7 @@ title: "Internetkapcsolattal rendelkező terheléselosztó létrehozása – kla
 description: "Ismerje meg, hogyan hozható létre internetkapcsolattal rendelkező terheléselosztó klasszikus üzembehelyezési modellben az Azure parancssori felület használatával"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-service-management
 ms.assetid: e433a824-4a8a-44d2-8765-a74f52d4e584
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: da3a908f17ff5c6d3923549a884ecc0a13cb8e9e
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 0813cb0ccf976b7e47420b33ec65714fd8e60ac1
 ms.contentlocale: hu-hu
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/21/2017
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="step-by-step-creating-an-internet-facing-load-balancer-using-cli"></a>Internetkapcsolattal rendelkező terheléselosztó parancssori felület használatával történő létrehozásának lépései
+## <a name="create-an-internet-facing-load-balancer-using-cli"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása a parancssori felület használatával
 
 Ez az útmutató bemutatja, hogyan hozhat létre internetkapcsolattal rendelkező terheléselosztót a fenti forgatókönyv alapján.
 
@@ -65,7 +65,7 @@ Hozza létre az első végpontot és terheléselosztó készletet a következő 
 azure vm endpoint create web1 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2. lépés
 
 Adjon hozzá egy második virtuális gépet a terheléselosztó készlethez „web2” néven.
 
@@ -73,7 +73,7 @@ Adjon hozzá egy második virtuális gépet a terheléselosztó készlethez „w
 azure vm endpoint create web2 80 --local-port 80 --protocol tcp --probe-port 80 --load-balanced-set-name lbset
 ```
 
-## <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3. lépés
 
 Ellenőrizze a terheléselosztó konfigurációját a következő használatával: `azure vm show`.
 

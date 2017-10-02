@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: a8e4900bee81763300d976f0c966d7d20662ca27
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
 ms.contentlocale: hu-hu
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Azure-fájlmegosztás csatlakoztatása és a megosztás elérése Windows rendszeren
-Az [Azure-fájlmegosztás](../storage-dotnet-how-to-use-files.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows és Windows Server rendszeren csatlakoztathatók. Ez a cikk három különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására Windows rendszeren: a Fájlkezelő felhasználói felület, a PowerShell és a parancssor használatával. 
+Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows és Windows Server rendszeren csatlakoztathatók. Ez a cikk három különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására Windows rendszeren: a Fájlkezelő felhasználói felület, a PowerShell és a parancssor használatával. 
 
 Ha egy Azure-fájlmegosztást az üzemeltető Azure-régión kívül kíván csatlakoztatni, például a helyszínen vagy más Azure-régióban, az operációs rendszernek támogatnia kell az SMB 3.0-s verziót. 
 
@@ -39,7 +39,7 @@ Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy
 | Windows 7              | SMB 2.1     | Igen                   | Nem                   |
 | Windows Server 2008 R2 | SMB 2.1     | Igen                   | Nem                   |
 
-<sup>1</sup>A Windows 10 1507-es, 1511-es, 1607-es és 1703-as verziói
+<sup>1</sup>A Windows 10 1507-es, 1511-es, 1607-es, 1703-as és 1709-es verziói.
 
 > [!Note]  
 > Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja.
@@ -49,7 +49,7 @@ Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy
 
 * **Tárfiók kulcsa**: Az Azure-fájlmegosztások csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárkulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
 
-* **Győződjön meg arról, hogy a 445-ös port nyitva van**: Az Azure File Storage SMB protokollt használ. Az SMB a 445-ös TCP-porton keresztül kommunikál – ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös TCP-portot az ügyfél gépéről.
+* **Győződjön meg arról, hogy a 445-ös port nyitva van**: Az Azure Files SMB protokollt használ. Az SMB a 445-ös TCP-porton keresztül kommunikál – ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös TCP-portot az ügyfél gépéről.
 
 ## <a name="mount-the-azure-file-share-with-file-explorer"></a>Az Azure-fájlmegosztás csatlakoztatása a Fájlkezelővel
 > [!Note]  
@@ -63,7 +63,7 @@ Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy
 
 3. **Másolja az Azure Portal Csatlakozás ablaktábláján található UNC-útvonalat**: Az információ megkereséséről [itt](storage-how-to-use-files-portal.md#connect-to-file-share) talál részletes információt.
 
-    ![Az UNC-útvonal az Azure File Storage Csatlakozás oldaláról](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
+    ![Az UNC-útvonal az Azure Files Csatlakozás oldaláról](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
 4. **Válassza ki a meghajtó betűjelét, és írja be az UNC-útvonalat.** 
     
@@ -121,24 +121,24 @@ Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy
 >   ```
 
 ## <a name="next-steps"></a>Következő lépések
-Az alábbi hivatkozások további információkat tartalmaznak az Azure File Storage-ról.
+Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 
 * [Gyakori kérdések](../storage-files-faq.md)
 * [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      
 
 ### <a name="conceptual-articles-and-videos"></a>Elméleti cikkek és videók
-* [Azure File Storage: zökkenőmentes felhőalapú SMB fájlrendszer Windows és Linux rendszerekhez](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Az Azure File Storage használata Linuxszal](../storage-how-to-use-files-linux.md)
+* [Azure Files: zökkenőmentes felhőalapú SMB-fájlrendszer Windows és Linux rendszerekhez](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Az Azure Files használata Linuxszal](../storage-how-to-use-files-linux.md)
 
-### <a name="tooling-support-for-azure-file-storage"></a>Azure File Storage-eszköztámogatás
+### <a name="tooling-support-for-azure-files"></a>Azure Files-eszköztámogatás
 * [How to use AzCopy with Microsoft Azure Storage (Az AzCopy használata a Microsoft Azure Storage szolgáltatással)](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Using the Azure CLI with Azure Storage (Az Azure parancssori felülete és az Azure Storage együttes használata)](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Azure File Storage-problémák hibaelhárítása – Windows](storage-troubleshoot-windows-file-connection-problems.md)
-* [Azure File Storage-problémák hibaelhárítása – Linux](storage-troubleshoot-linux-file-connection-problems.md)
+* [Azure Files-problémák hibaelhárítása – Windows](storage-troubleshoot-windows-file-connection-problems.md)
+* [Azure Files-problémák hibaelhárítása – Linux](storage-troubleshoot-linux-file-connection-problems.md)
 
 ### <a name="blog-posts"></a>Blogbejegyzések
-* [Azure File storage is now generally available (Mostantól általánosan elérhető az Azure File Storage)](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Az Azure File Storage ismertetése](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Mostantól általánosan elérhető az Azure Files](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Az Azure Files ismertetése](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [Adatok áttelepítése Azure File szolgáltatásba ](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)
 

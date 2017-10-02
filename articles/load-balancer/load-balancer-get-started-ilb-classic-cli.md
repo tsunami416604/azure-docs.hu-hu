@@ -3,7 +3,7 @@ title: "Belső terheléselosztó létrehozása – klasszikus Azure CLI | Micros
 description: "Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure parancssori felület használatával a klasszikus üzembehelyezési modellben"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: d24b95f75b5ffd1116b07cf9f8bac33767a9c835
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f740633230b2479f77d7d09a31dbbf3f72ffb174
 ms.contentlocale: hu-hu
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -41,9 +41,9 @@ ms.lasthandoff: 03/21/2017
 
 Belső terheléselosztó készlet, illetve a forgalmukat a készletnek küldő kiszolgálók konfigurálásához tegye a következőket:
 
-1. Hozzon létre egy belső terheléselosztási példányt, amely annak a bejövő forgalomnak a végpontja lesz, amelynek a terhelését el kell osztani az elosztott terhelésű készlet kiszolgálóin.
-2. Adja hozzá a virtuális gépekhez rendelt végpontokat, amelyek a bejövő forgalmat fogják kapni.
-3. Konfigurálja úgy a kiszolgálókat, amelyek a terheléselosztóra fogják küldeni a forgalmat, hogy azt a belső terheléselosztási példány virtuális IP-címére (VIP) küldjék.
+1. Hozzon létre egy belső terheléselosztási példányt, amely annak a bejövő forgalomnak a végpontja, amelynek a terhelését el kell osztani az elosztott terhelésű készlet kiszolgálóin.
+2. Adja hozzá a virtuális gépekhez rendelt végpontokat, amelyek a bejövő forgalmat tudják fogadni.
+3. Konfigurálja úgy a kiszolgálókat, hogy a forgalmat a belső terheléselosztási példány virtuális IP-címére (VIP) küldjék.
 
 ## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Belső terheléselosztó parancssori felület használatával történő létrehozásának lépései
 
@@ -93,7 +93,7 @@ A kimenet például a következő lehet:
 
 ### <a name="step-2"></a>2. lépés
 
-A belső terheléselosztó készlet konfigurálását az első végpont hozzáadásakor kell elvégezni. Ebben a lépésben a végpontot, a virtuális gépet és a mintavételi portot társítja a belső terheléselosztó készlethez.
+A belső terheléselosztó készlet konfigurálását az első végpont hozzáadásakor kell elvégezni. Ebben a lépésben a végpontot, a virtuális gépet és a mintavételi portot társíthatja a belső terheléselosztó készlethez.
 
 ```azurecli
 azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 1433 --probe-protocol tcp --probe-interval 300 --probe-timeout 600 --internal-load-balancer-name ilbset
@@ -107,7 +107,7 @@ Ellenőrizze a terheléselosztó konfigurációját a következő használatáva
 azure vm show DB1
 ```
 
-A kimenet a következő lesz:
+A kimenet a következő:
 
     azure vm show DB1
     info:    Executing command vm show

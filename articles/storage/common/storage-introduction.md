@@ -3,7 +3,7 @@ title: "Bevezetés az Azure Storage használatába | Microsoft Docs"
 description: "Bevezetés az Azure Storage, a Microsoft felhőalapú adattároló szolgáltatásának használatába."
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 163f35682a4fdaa971f715c7429153bfdcf6a584
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: a854a0033c365336c5ab13fb65524d84da92618c
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-<!-- this is the same version that is in the MVC branch -->
+
 # <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
 A Microsoft Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns tárolást tesz lehetővé. A karbantartást és a kritikus problémák kezelését a Microsoft végzi el Önnek. 
@@ -37,13 +37,9 @@ Ebben a cikkben megismerkedhet a következőkkel:
 * az adatok a tárolóba vagy a tárolóból való áthelyezése,
 * valamint a számos elérhető Storage ügyfélkódtár. 
 
-
-<!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-To get up and running with Azure Storage quickly, check out one of the following Quickstarts:
-* [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
-* [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
--->
-
+Az Azure Storage gyors üzembe helyezésével kapcsolatban tekintse meg az alábbi rövid útmutatókat:
+* [Storage-fiók létrehozása a PowerShell-lel](storage-quickstart-create-storage-account-powershell.md)
+* [Storage-fiók létrehozása a CLI-vel](storage-quickstart-create-storage-account-cli.md)
 
 ## <a name="introducing-the-azure-storage-services"></a>Az Azure Storage szolgáltatásainak bemutatása
 
@@ -55,7 +51,7 @@ A blobok lényegében ugyanolyan fájlok, mint amilyeneket a számítógépén (
 
 A fájlok Blob Storage tárolóban való elhelyezése után a világ bármely pontjáról elérheti azokat URL-címek, a REST-felület vagy az Azure SDK-tároló ügyfélkódtárai használatával. A tárolók ügyfélkódtárai több nyelvhez, köztük a Node.js, a Java, a PHP, a Ruby, a Python és a .NET nyelvekhez is elérhetők. 
 
-A bloboknak három típusa létezik: a blokkblobok, a hozzáfűző blobok és lapblobok (ezek a VHD-fájlokhoz használatosak).
+A bloboknak három típusa létezik: a blokkblobok, a lapblobok (ezek a VHD-fájlokhoz használatosak) és a hozzáfűző blobok.
 
 * A blokkblobokban hagyományos fájlok tárolhatók legfeljebb nagyjából 4,7 TB méretig. 
 * A lapblobokban közvetlen elérésű fájlok tárolhatók legfeljebb 8 TB méretig. Ezek a virtuális gépek alapját képező VHD-fájlokhoz használatosak.
@@ -63,11 +59,10 @@ A bloboknak három típusa létezik: a blokkblobok, a hozzáfűző blobok és la
 
 A nagy adatkészleteknél, ahol a hálózati korlátok miatt irreális lenne az adatok vezetékes le- vagy feltöltése a Blob Storage-ba, elküldhet a Microsoftnak egy teljes merevlemez-készletet, hogy az adatokat közvetlenül az adatközpontból importálják vagy oda exportálják. Lásd: [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage](../storage-import-export-service.md) (A Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob Storage-ba).
 
-## <a name="file-storage"></a>File Storage
+## <a name="azure-files"></a>Azure Files
+Az [Azure Files](../files/storage-files-introduction.md) segítségével magas rendelkezésre állású hálózati fájlmegosztásokat hozhat létre, amelyek az SMB protokollon keresztül érhetőek el. Ez azt jelenti hogy ugyanazokhoz a fájlokhoz több virtuális gép is hozzáférhet olvasási és írási jogosultsággal. A fájlokat a REST-felület vagy a Storage klienskódtáraival is olvashatja. 
 
-Az Azure Files szolgáltatás segítségével magas rendelkezésre állású hálózati fájlmegosztásokat hozhat létre, amelyek a szabványos kiszolgálói üzenetblokk (SMB) protokollon keresztül érhetőek el. Ez azt jelenti hogy ugyanazokhoz a fájlokhoz több virtuális gép is hozzáférhet olvasási és írási jogosultsággal. A fájlokat a REST-felület vagy a Storage klienskódtáraival is olvashatja. 
-
-Az egyik dolog, ami megkülönbözteti az Azure File Storage tárolót a fájlok a vállalati fájlmegosztásokon való tárolásától, hogy a fájlokat a világ bármely pontjáról elérheti a rájuk mutató URL-címekkel, amelyek közös hozzáférésű jogosultságkód- (SAS-) tokenekkel rendelkeznek. SAS-tokeneket Ön is létrehozhat: ezek határozott ideig biztosítanak egyedi hozzáférést a privát objektumokhoz. 
+Az egyik dolog, ami megkülönbözteti az Azure Files szolgáltatást a fájlok a vállalati fájlmegosztásokon való tárolásától, hogy a fájlokat a világ bármely pontjáról elérheti a rájuk mutató URL-címekkel, amelyek közös hozzáférésű jogosultságkód- (SAS-) tokenekkel rendelkeznek. SAS-tokeneket Ön is létrehozhat: ezek határozott ideig biztosítanak egyedi hozzáférést a privát objektumokhoz. 
 
 A fájlmegosztások számos gyakori forgatókönyvhöz használhatók: 
 
@@ -85,14 +80,13 @@ Az Azure Queue szolgáltatás üzenetek tárolására és lehívására használ
 
 Tegyük fel például, hogy biztosítani szeretné az ügyfelei számára, hogy képeket tölthessenek fel, az egyes képekhez pedig miniatűröket szeretne létrehozni. Választhatná azt, hogy az ügyfeleknek a feltöltéskor várniuk kelljen a miniatűrök létrehozására. Alternatív megoldásként azonban használhat üzenetsort is. Amint az ügyfél befejezte a feltöltést, írjon egy üzenetet az üzenetsorba. Ezután egy Azure-függvénnyel hívja le az üzenetet az üzenetsorból, és hozza létre a miniatűrt. Ennek az eljárásnak minden egyes része külön méretezhető, és így szabadabban hangolhatja a felhasználási céloknak megfelelően.
 
-<!-- this bookmark is used by other articles; you'll need to update them before this goes into production ROBIN-->
 ## <a name="table-storage"></a>Table Storage
-<!-- add a link to the old table storage to this paragraph once it's moved -->
-A standard Azure Table Storage mostantól a Cosmos DB része. Emellett az Azure Table Storage prémium táblákra vonatkozó ajánlata is elérhető, teljesítményoptimalizált táblákkal, globális elosztással és automatikus másodlagos indexekkel. Ha további információra van szüksége, vagy szeretné kipróbálni az új prémium ajánlatot, tekintse meg az [Azure Cosmos DB: tábla API](https://aka.ms/premiumtables)-t ismertető cikket.
+
+A standard Azure Table Storage mostantól a Cosmos DB része. A dokumentációt lásd: [Az Azure Table Storage áttekintése](../../cosmos-db/table-storage-overview.md). Emellett az Azure Table Storage prémium táblákra vonatkozó ajánlata is elérhető, teljesítményoptimalizált táblákkal, globális elosztással és automatikus másodlagos indexekkel. Ha további információra van szüksége, vagy szeretné kipróbálni az új prémium ajánlatot, tekintse meg az [Azure Cosmos DB: tábla API](https://aka.ms/premiumtables)-t ismertető cikket.
 
 ## <a name="disk-storage"></a>Lemezes tárolás
 
-Az Azure Storage csapat emellett a Disks szolgáltatás is a tulajdonában van, amely a virtuális gépek által használt felügyelt és nem felügyelt lemezképességeket tartalmazza. További információkért ezekkel a szolgáltatásokkal kapcsolatban lásd a [Számítási szolgáltatások dokumentációját](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+Az Azure Storage emellett a virtuális gépek által használt felügyelt és nem felügyelt lemez képességeket is tartalmazza. További információkért ezekkel a szolgáltatásokkal kapcsolatban lásd a [Számítási szolgáltatások dokumentációját](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai 
 
@@ -125,7 +119,7 @@ A gyakran használt adatok hozzáférési szintje a gyakran elérni kívánt ada
 
 Mindegyik tárfiók két hitelesítési kulccsal rendelkezik, amely bármelyike használható bármilyen művelethez. Mivel két kulcs van, időről-időre leválthatja ezeket, így növelhető a biztonság. A kulcsok biztonságba helyezése kritikus fontosságú, mivel a fiók nevével együtt korlátlan hozzáférést biztosítanak a tárfiókban tárolt összes adathoz. 
 
-Ebben a szakaszban két módját ismertetjük a tárfiók és a benne lévő adatok védelmének. A tárfiók és a benne lévő adatok védelmével kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
+Ebben a szakaszban két módját ismertetjük a Storage-fiók és a benne lévő adatok védelmének. A tárfiók és a benne lévő adatok védelmével kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
 
 ### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>A tárfiókokhoz való hozzáférés biztonságossá tétele az Azure AD használatával
 
@@ -155,11 +149,11 @@ A Storage ügyfélkódtárai tartalmaznak olyan metódusokat, amelyek meghívás
 
 További információ a közös hozzáférésű jogosultságkódokról: [Using Shared Access Signatures (SAS)](../storage-dotnet-shared-access-signature-part-1.md) (Közös hozzáférésű jogosultságkódok (SAS) használata). További információ a tárfiók biztonságos hozzáféréséről: [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése) és [Az Azure Storage szolgáltatásainak hitelesítése](https://msdn.microsoft.com/library/azure/dd179428.aspx).
 
-A tárfiók védelmével és a titkosítással kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
+A Storage-fiók védelmével és a titkosítással kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
 
 ## <a name="replication"></a>Replikáció
 
-Az adatok tartósságának biztosítása érdekében az Azure Storage egyszerre több példányban képes tárolni (és kezelni) az adatokat. Ezt replikációnak vagy más néven redundanciának nevezzük. A tárfiók üzembe helyezésekor meg kell választania a replikáció típusát. A legtöbb esetben ez a beállítás a tárfiók üzembe helyezését követően módosítható. 
+Az adatok tartósságának biztosítása érdekében az Azure Storage egyszerre több példányban képes tárolni (és kezelni) az adatokat. Ezt replikációnak vagy más néven redundanciának nevezzük. A Storage-fiók üzembe helyezésekor meg kell választania a replikáció típusát. A legtöbb esetben ez a beállítás a tárfiók üzembe helyezését követően módosítható. 
 
 Mindegyik tárfiókban elérhető a **helyileg redundáns tárolás (LRS)**. Ez azt jelenti, hogy az Azure Storage három példányban tárolja az adatokat a tárfiók beállításakor megadott adatközpontban. Az adatok egyik példányának módosításakor a rendszer frissíti a másik két példányt is, mielőtt sikeres eredményt adna vissza. Ez azt jelenti, hogy a három replika mindig szinkronban van. Emellett a rendszer a három példányt külön tartalék tartományokban és frissítési tartományokban tárolja, aminek következtében az adatok akkor is elérhetők maradnak, ha az azokat tároló valamelyik tárolócsomópont meghibásodik, vagy frissítés következtében offline állapotba kerül. 
 
@@ -227,11 +221,9 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 * [További tudnivalók a File Storage-ról](../storage-files-introduction.md)
 * [További tudnivalók a Queue Storage-ról](../queues/storage-queues-introduction.md)
 
-<!-- RE-ENABLE THESE AFTER MVC GOES LIVE 
-To get up and running with Azure Storage quickly, check out one of the following Quickstarts:
-* [Create a storage account using PowerShell](storage-quick-create-storage-account-powershell.md)
-* [Create a storage account using CLI](storage-quick-create-storage-account-cli.md)
--->
+Az Azure Storage gyors üzembe helyezésével kapcsolatban tekintse meg az alábbi rövid útmutatókat:
+* [Storage-fiók létrehozása a PowerShell-lel](storage-quickstart-create-storage-account-powershell.md)
+* [Storage-fiók létrehozása a CLI-vel](storage-quickstart-create-storage-account-cli.md)
 
 <!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
 
@@ -273,9 +265,6 @@ To learn more about Azure Storage, explore these resources:
 * [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
 * [Create a storage account](../storage-create-storage-account.md)
 
-<!-- after our quick starts are available, replace this link with a link to one of those. 
-Had to remove this article, it refers to the VS quickstarts, and they've stopped publishing them. Robin --> 
-<!--* [Get started with Azure Storage in five minutes](storage-getting-started-guide.md)
 -->
 
 ### <a name="for-administrators"></a>Rendszergazdáknak
@@ -284,15 +273,15 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 
 ### <a name="for-net-developers"></a>.NET-fejlesztőknek
 * [Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel](../blobs/storage-dotnet-how-to-use-blobs.md)
+* [Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel](../files/storage-dotnet-how-to-use-files.md)
 * [Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel](../storage-dotnet-how-to-use-queues.md)
-* [Ismerkedés a Windowshoz készült Azure File Storage szolgáltatással](../storage-dotnet-how-to-use-files.md)
 
 ### <a name="for-javaandroid-developers"></a>Java/Android-fejlesztőknek
 * [How to use Blob storage from Java (A Blob Storage használata Javával)](../blobs/storage-java-how-to-use-blob-storage.md)
+* [Fejlesztés az Azure Files szolgáltatáshoz Javával](../files/storage-java-how-to-use-file-storage.md)
 * [How to use Table storage from Java (A Table Storage használata Javával)](../../cosmos-db/table-storage-how-to-use-java.md)
 * [How to use Queue Storage from Java (A Queue Storage használata Javával)](../storage-java-how-to-use-queue-storage.md)
-* [How to use File Storage from Java (A File Storage használata Javával)](../storage-java-how-to-use-file-storage.md)
 
 ### <a name="for-nodejs-developers"></a>Node.js-fejlesztőknek
 * [How to use Blob storage from Node.js (A Blob Storage használata Node.js-sel)](../blobs/storage-nodejs-how-to-use-blob-storage.md)
@@ -311,7 +300,6 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 
 ### <a name="for-python-developers"></a>Python-fejlesztőknek
 * [How to use Blob storage from Pythonnal (A Blob Storage használata Pythonnal)](../blobs/storage-python-how-to-use-blob-storage.md)
+* [Fejlesztés az Azure Files szolgáltatáshoz Pythonnal](../files/storage-python-how-to-use-file-storage.md)
 * [How to use Table storage from Python (A Table Storage használata Pythonnal)](../../cosmos-db/table-storage-how-to-use-python.md)
-* [How to use Queue storage from Python (A Queue Storage használata Pythonnal)](../storage-python-how-to-use-queue-storage.md)   
-* [How to use File Storage from Python (A File Storage használata Pythonnal)](../storage-python-how-to-use-file-storage.md) 
--->
+* [How to use Queue storage from Python (A Queue Storage használata Pythonnal)](../storage-python-how-to-use-queue-storage.md)

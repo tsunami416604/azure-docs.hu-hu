@@ -1,6 +1,6 @@
 ---
 title: "Különbségek az Azure Service Fabric Linux- és Windows-verziója között | Microsoft Docs"
-description: "Az Azure Service Fabric előzetes verzió Linux- és Windows-verziója közötti különbségek."
+description: "Az Azure Service Fabric Linux- és Windows-verziója közötti különbségek."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -12,36 +12,28 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 09/19/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 7b80bb7d4a4e6a1b4cf47ce87200f47339785c53
+ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
+ms.openlocfilehash: 25976ba919454e26f1dd7965de5db7c4f80b9355
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>A Service Fabric Linux (előzetes verziójú) és Windows (általánosan elérhető) rendszerhez készült verziója közötti különbségek
+# <a name="differences-between-service-fabric-on-linux-and-windows"></a>A Service Fabric Linux és Windows rendszerhez készült verziója közötti különbségek
 
-Mivel a Service Fabric Linux rendszeren még előzetes verzióban van, ezért néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, amikor a Service Fabric általánosan elérhetővé válik Linux rendszeren. A jövőbeli kiadásokban a funkciók eltérései egyre csekélyebbé válnak. A legújabb elérhető kiadások (Windows rendszeren 5.6, Linuxon 5.5) között az alábbi eltérések állnak fenn: 
+Néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Idővel ugyanazok a szolgáltatások lesznek elérhetőek, és minden újabb kiadással egyre csökkennek a szolgáltatásbeli különbségek. A legújabb elérhető kiadások (Windows rendszeren 6.0, Linuxon 6.0) között az alábbi eltérések állnak fenn: 
 
-* Reliable Collections (és a Reliable Stateful Services) 
-* ReverseProxy 
-* Önálló telepítő 
-* Jegyzékfájlok XML-sémaérvényesítése 
-* Konzol-átirányítás 
-* Fault Analysis Service (FAS)
-* Docker compose, kötet- és naplózási illesztők tárolókhoz 
-* Tárolók és szolgáltatások erőforrás-szabályozása 
-* DNS-szolgáltatás
-* Azure Active Directory-támogatás
-* Egyes PowerShell-parancsok parancssori felületi megfelelője 
-* Csak a PowerShell-parancsok egy része futtatható Linux-fürtökön (a következő szakaszban leírtak szerint).
+* Minden programozási modell előzetes verzióként érhető el (Java/C# Reliable Actors, Reliable Stateless Services és Reliable Stateful Services)
+* Az Envoy (ReverseProxy) előzetes verzióként érhető el Linuxon
+* Önálló Linuxos telepítő még nem érhető el Linux rendszeren.
+* Konzolátirányítás (nem támogatott az éles fürtökben sem Linux, sem Windows rendszeren)
+* A Fault Analysis Service (FAS) Linuxon
+* DNS szolgáltatás a Service Fabric-szolgáltatásokhoz (a DNS szolgáltatás a tárolók esetében támogatott a Linuxon)
+* Egyes PowerShell-parancsok parancssori felületi megfelelője (lásd az alábbi listát; a parancsok nagy része csak önálló fürtökre vonatkozik)
 
->[!NOTE]
->A konzolátirányítás nem támogatott éles fürtökben, még Windows rendszeren sem.
-
-A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendszeren a VisualStudio, a PowerShell, a VSTS és az ETW, míg Linuxon a Yeoman, az Eclipse, a Jenkins és az LTTng érhető el.
+A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendszeren a Visual Studio, a PowerShell, a VSTS és az ETW, míg Linuxon a Yeoman, az Eclipse, a Jenkins és az LTTng érhető el.
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-parancsmagok, amelyek nem működnek Linux rendszerű Service Fabric-fürtökön
 
@@ -67,7 +59,6 @@ A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendsze
 * Start-ServiceFabricPartitionRestart
 * Stop-ServiceFabricChaos
 * Stop-ServiceFabricTestCommand
-* Cmd
 * Get-ServiceFabricNodeConfiguration
 * Get-ServiceFabricClusterConfiguration
 * Get-ServiceFabricClusterConfigurationUpgradeStatus

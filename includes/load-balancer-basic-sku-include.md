@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. Az Alapszintű Load Balancer általánosan elérhető, míg a Standard Load Balancer jelenleg nyilvános előzetes verzióban érhető el. További információ a Standard Load Balancerről: [A Standard Load Balancer áttekintése](https://aka.ms/AzureLoadBalancerStandard).
