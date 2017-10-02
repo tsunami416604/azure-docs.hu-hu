@@ -64,7 +64,7 @@
 ## [Virtuális gép](/azure/virtual-machines/)
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
-## [Webalkalmazások](/azure/app-service-web/)
+## [Webalkalmazások](/azure/app-service/)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
