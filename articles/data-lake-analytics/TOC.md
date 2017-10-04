@@ -9,7 +9,7 @@
 
 # Útmutató
 
-## Data Lake Analytics-fiókok kezelése
+## A Data Lake Analytics kezelése
 ### [Azure Portal](data-lake-analytics-manage-use-portal.md)
 ### [Azure CLI](data-lake-analytics-manage-use-cli.md)
 ### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)

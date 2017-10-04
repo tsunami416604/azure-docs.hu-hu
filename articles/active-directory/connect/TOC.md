@@ -43,7 +43,7 @@
 ##### [Intelligens zárolás](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [Gyakori kérdések](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Hibaelhárítás](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
-##### [A biztonság részletes bemutatása](active-directory-aadconnect-pta-security-deep-dive.md)
+##### [A biztonság részletes bemutatása](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
 ### [Többtartományos támogatás összevonási szolgáltatásokhoz](active-directory-aadconnect-multiple-domains.md)
 ### [Automatikus frissítés](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez](active-directory-aadconnect-federation-saml-idp.md)

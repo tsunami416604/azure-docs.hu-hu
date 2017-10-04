@@ -1,11 +1,5 @@
 # Áttekintés
 ## [Fejlesztői útmutató](azure-developer-guide.md) 
-### [Mi az Azure?](azure-developer-guide.md#what-is-azure)
-### [Hogyan kezdjek hozzá?](azure-developer-guide.md#where-do-i-start)
-### [Azure-régiók](azure-developer-guide.md#azure-regions)
-### [Hogyan kezelhetem az alkalmazásaimat és a projektjeimet?](azure-developer-guide.md#how-do-i-manage-my-applications-and-projects)
-### [A fiókok, az előfizetések és a számlázás ismertetése](azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)
-
 ## [Az Azure szolgáltatásainak áttekintése](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
 ## [A portál áttekintése](https://docs.microsoft.com/azure/azure-portal-overview?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
 ## [SDK-k és eszközök](https://docs.microsoft.com/azure/index#pivot=sdkstools)
