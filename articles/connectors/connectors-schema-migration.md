@@ -39,7 +39,7 @@ A meglévő Logic Apps alkalmazásoknak az új sémára való áttelepítéséhe
 ## <a name="best-practices-when-migrating-your-logic-apps-to-the-latest-schema-version"></a>Ajánlott eljárások a Logic Apps alkalmazások áttelepítéséhez a legújabb sémaverzióra:
 * Az áttelepített parancsfájlt új Logic Apps alkalmazásba másolja – ne írja felül a régit, amíg el nem végezte a tesztelést, és meg nem győződött róla, hogy az áttelepített alkalmazás a vártnak megfelelően működik.
 * Tesztelje a Logic Apps alkalmazást, **mielőtt** éles környezetben használná.
-* Az áttelepítés befejezését követően kezdje el frissíteni a Logic Apps alkalmazásokat a [felügyelt API-k](apis-list.md) használatára, ha lehetséges. Megkezdheti például a Dropbox&2;-es verziójának használatát azon alkalmazások esetén, amelyek a DropBox&1;-es verzióját használják.
+* Az áttelepítés befejezését követően kezdje el frissíteni a Logic Apps alkalmazásokat a [felügyelt API-k](apis-list.md) használatára, ha lehetséges. Megkezdheti például a Dropbox 2-es verziójának használatát azon alkalmazások esetén, amelyek a DropBox 1-es verzióját használják.
 
 ## <a name="whats-next"></a>A következő lépések
 * [Információk a Logic Apps alkalmazások manuális áttelepítésével kapcsolatban](../logic-apps/logic-apps-schema-2015-08-01.md)
