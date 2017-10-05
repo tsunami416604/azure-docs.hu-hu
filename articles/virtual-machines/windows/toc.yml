@@ -344,6 +344,8 @@
               href: troubleshoot-recovery-disks-portal.md
         - name: A PerfInsights használata
           href: how-to-use-perfInsights.md
+        - name: Teljesítménydiagnosztikai virtuálisgép-bővítmény
+          href: performance-diagnostics-vm-extension.md
 - name: Referencia
   items:
     - name: Azure CLI

@@ -26,8 +26,8 @@
 
 ## Fürt létrehozása és felügyelete
 ### 1 – Fürt létrehozása az Azure-ban
-#### [1a – Biztonságos Windows-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-#### [1b – Biztonságos Linux-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+#### [1a – Windows rendszerű fürt létrehozása](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+#### [1b – Linux rendszerű fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 ### [2 – Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
 # Példák
@@ -198,7 +198,6 @@
 ### Reliable Actors-szolgáltatás összeállítása
 #### Bevezetés
 ##### [C# Windowson](service-fabric-reliable-actors-get-started.md)
-##### [Java Linuxon](service-fabric-reliable-actors-get-started-java.md)
 ##### [Java Actor Linuxon](service-fabric-create-your-first-linux-application-with-java.md)
 #### [Értesítések küldése](service-fabric-reliable-actors-events.md)
 #### [Időzítők és emlékeztetők beállítása](service-fabric-reliable-actors-timers-reminders.md)

@@ -19,6 +19,8 @@
       href: tutorial-review-usage.md
     - name: 2 – Az adathozzáférés szabályozása
       href: tutorial-user-access.md
+    - name: 3 - Kiadások előrejelzése
+      href: tutorial-forecast-spending.md
 - name: Erőforrások
   items:
     - name: Azure-ütemterv

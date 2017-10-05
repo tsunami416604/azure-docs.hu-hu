@@ -1,44 +1,42 @@
 # Áttekintés
-## [Mi a Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
-## [A Power BI Embedded újdonságai](power-bi-embedded-whats-new.md)
+## [Mi a Power BI Embedded?](what-is-power-bi-embedded.md)
 
 # Bevezetés
-## [Ismerkedés a Power BI Embedded szolgáltatással](power-bi-embedded-get-started.md)
-## [Ismerkedés egy minta segítségével](power-bi-embedded-get-started-sample.md)
-## [Gyakori kérdések](power-bi-embedded-faq.md)
+## [Ismerkedés a Power BI Embedded szolgáltatással](get-started.md)
+## [Ismerkedés egy minta segítségével](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/)
 
 # Útmutató
-## Tervezés és kialakítás
-### [Gyakori forgatókönyvek](power-bi-embedded-scenarios.md)
+## Kapacitás kezelése
+### [Kapacitás létrehozása](create-capacity.md)
+### [Kapacitás méretezése](scale-capacity.md)
+### [Kapacitás szünetelése és elindítása](pause-start.md)
+## [Azure AD-alkalmazás regisztrálása](https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/)
+## [Power BI-tartalom beágyazása](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)
 
-## Kezelés
-### [Kapcsolódás adatforráshoz](power-bi-embedded-connect-datasource.md)
-### [Power BI-jelentés beágyazása](power-bi-embedded-embed-report.md)
-### [Jelentések kezelése](power-bi-embedded-interact-with-reports.md)
-### [Új jelentés létrehozása adatkészletből](power-bi-embedded-create-report-from-dataset.md)
-### [Jelentések mentése](power-bi-embedded-save-reports.md)
-### [Váltás megtekintés és szerkesztés között](power-bi-embedded-toggle-mode.md)
+## Migrálás
+### [Migrálás Power BI munkaterületi gyűjteményekből](migrate-from-power-bi-workspace-collections.md)
+### [Migrálási eszköz](migrate-tool.md)
+### [Migrálási kódrészletek](migrate-code-snippets.md)
 
-## Biztonságos
-### [Hitelesítés és engedélyezés](power-bi-embedded-app-token-flow.md)
-### [Sorszintű biztonság a Power BI Embedded szolgáltatással](power-bi-embedded-rls.md)
+# Példák
+## [Kódminták](https://github.com/Microsoft/PowerBI-Developer-Samples)
+## [Mintaútmutató](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=power-bi-embedded)
-## [Azure PowerShell](/powershell/module/azurerm.powerbiembedded)
-## [.NET Azure Resource Manager](/dotnet/api/microsoft.azure.management.powerbiembedded)
-## [.NET SDK letöltése](https://www.nuget.org/profiles/powerbi)
-## [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
-## [Felügyeleti REST API-k](/rest/api/powerbiembedded/)
-## [REST API-k](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-
+## API-k
+### [Az Azure erőforráskezelési REST API-jai](/rest/api/powerbiembedded/)
+### [REST API-k](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
+## SDK-k
+### [.NET SDK letöltése](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)
+### [A JavaScript SDK letöltése](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)
-## [JavaScript Git-tárház](https://github.com/Microsoft/PowerBI-JavaScript)
-## [Power BI C# Git-tárház](https://github.com/Microsoft/PowerBI-CSharp)
-## [Power BI-közösség](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [Apiary](http://docs.powerbi.apiary.io/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Mintaalkalmazás](https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi)
+## GitHub-adattárak
+### [.NET](https://github.com/Microsoft/PowerBI-CSharp)
+### [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
+## [Power BI-közösség](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+

@@ -145,7 +145,11 @@
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
-    - name: OpenAPI-dokumentáció
+    - name: host.json-referencia
+      href: functions-host-json.md
+    - name: Alkalmazásbeállítási referencia
+      href: functions-app-settings.md
+    - name: OpenAPI-referencia
       href: functions-api-definition.md
 - name: Erőforrások
   items:

@@ -25,7 +25,6 @@
 ### [Felhasználói JavaScript-függvények integrálása](stream-analytics-javascript-user-defined-functions.md)
 ### [A REST API és a Machine Learning integrálása](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [Kimenetek létrehozása](stream-analytics-define-outputs.md)
-### [Kimenet az Azure Functionshöz](stream-analytics-functions-redis.md)
 ### [Kimenet a Data Lake Store-ba](stream-analytics-data-lake-output.md)
 ### [Kimenet a Cosmos DB-be](stream-analytics-documentdb-output.md)
 
@@ -39,7 +38,8 @@
 ### [Feladatok figyelése](stream-analytics-monitoring.md)
 ### [Feladatok programozott figyelése](stream-analytics-monitor-jobs.md)
 ### [Feladatok figyelése a PowerShell-lel](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
-### [Streamelési egységek optimalizálása](stream-analytics-streaming-unit-consumption.md)
+### [A streamelési egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md)
+### [A párhuzamos lekérdezési folyamatok előnyeinek kihasználása](stream-analytics-parallelization.md)
 ### [Teljesítménynövelés skálázással](stream-analytics-scale-jobs.md)
 ### [Skálázás Machine Learning-függvények esetén](stream-analytics-scale-with-machine-learning-functions.md)
 

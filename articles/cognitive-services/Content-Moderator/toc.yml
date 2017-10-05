@@ -66,6 +66,8 @@
   items:
     - name: Facebook-hozzászólások moderálása
       href: facebook-post-moderation.md
+    - name: E-kereskedelmi katalógusok moderálása
+      href: ecommerce-retail-catalog-moderation.md
 - name: API-hivatkozások
   items:
     - name: Minden API

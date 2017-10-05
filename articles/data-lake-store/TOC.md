@@ -1,22 +1,18 @@
 # Áttekintés
 ## [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
 ## [Az Azure Data Lake Store és az Azure Storage összehasonlítása](data-lake-store-comparison-with-blob-storage.md)
-## [Az Azure Data Lake Store használata big data-feldolgozáshoz](data-lake-store-data-scenarios.md)
+## [Azure Data Lake Store a big data-feldolgozáshoz](data-lake-store-data-scenarios.md)
 ## [Az Azure Data Lake Store-ral működő nyílt forráskódú alkalmazások](data-lake-store-compatible-oss-other-applications.md)
 
 # Bevezetés
-## [Az Azure Portal használata](data-lake-store-get-started-portal.md)
-## [Az Azure PowerShell használata](data-lake-store-get-started-powershell.md)
-## [A .NET SDK használata](data-lake-store-get-started-net-sdk.md)
-## [A Java SDK használata](data-lake-store-get-started-java-sdk.md)
-## [A REST API használata](data-lake-store-get-started-rest-api.md)
-## [Az Azure parancssori felület használata](data-lake-store-get-started-cli-2.0.md)
-## [A Node.js használata](data-lake-store-manage-use-nodejs.md)
-## [A Python használata](data-lake-store-get-started-python.md)
+## [A Portal használata](data-lake-store-get-started-portal.md)
+## [A PowerShell-lel](data-lake-store-get-started-powershell.md)
+## [Az Azure CLI 2.0 használata](data-lake-store-get-started-cli-2.0.md)
+
 
 # Útmutató
-## Adatok másolása
-### [Az Azure Data Factory használata](../data-factory/connector-azure-data-lake-store.md)
+## Adatok betöltése és áthelyezése
+### [Az Azure Data Factory használata](../data-factory/data-factory-azure-datalake-connector.md)
 ### [Az AdlCopy használata](data-lake-store-copy-data-azure-storage-blob.md)
 ### [A DistCp használata](data-lake-store-copy-data-wasb-distcp.md)
 ### [A Sqoop használata](data-lake-store-data-transfer-sql-sqoop.md)
@@ -27,12 +23,35 @@
 ### [Biztonsági áttekintés](data-lake-store-security-overview.md)
 ### [Hozzáférés-vezérlés a Data Lake Store-ban](data-lake-store-access-control.md)
 ### [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
-### [Szolgáltatások közötti hitelesítés](data-lake-store-authenticate-using-active-directory.md)
-### [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md)
 ### [Titkosítás](data-lake-store-encryption.md)
+
+## Hitelesítés a Data Lake Store-ral
+### [Hitelesítési lehetőségek](data-lakes-store-authentication-using-azure-active-directory.md)
+### [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md)
+#### [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
+#### [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
+#### [A REST API használata](data-lake-store-end-user-authenticate-rest-api.md)
+#### [A Python használata](data-lake-store-end-user-authenticate-python.md)
+### [Szolgáltatások közötti hitelesítés](data-lake-store-service-to-service-authenticate-using-active-directory.md)
+#### [A Java használata](data-lake-store-service-to-service-authenticate-java.md)
+#### [A .NET SDK használata](data-lake-store-service-to-service-authenticate-net-sdk.md)
+#### [A REST API használata](data-lake-store-service-to-service-authenticate-rest-api.md)
+#### [A Python használata](data-lake-store-service-to-service-authenticate-python.md)
+
+## A Data Lake Store használata
+### Fiókkezelési műveletek
+#### [A .NET SDK használata](data-lake-store-get-started-net-sdk.md)
+#### [A REST API használata](data-lake-store-get-started-rest-api.md)
+#### [A Python használata](data-lake-store-get-started-python.md)
+### Fájlrendszeri műveletek
+#### [A .NET SDK használata](data-lake-store-data-operations-net-sdk.md)
+#### [A Java SDK használata](data-lake-store-get-started-java-sdk.md)
+#### [A REST API használata](data-lake-store-data-operations-rest-api.md)
+#### [A Python használata](data-lake-store-data-operations-python.md)
 
 ## Teljesítmény
 ### [Teljesítmény-finomhangolási útmutató az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-guidance.md)
+### [Teljesítmény-finomhangolási útmutató az Azure Data Lake Store-ral használt PowerShellhez](data-lake-store-performance-tuning-powershell.md)
 ### [Teljesítmény-finomhangolási útmutató a Spark on HDInsighthoz és az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-spark.md)
 ### [Teljesítmény-finomhangolási útmutató a Hive on HDInsighthoz és az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-hive.md)
 ### [Teljesítmény-finomhangolási útmutató a MapReduce on HDInsighthoz és az Azure Data Lake Store-hoz](data-lake-store-performance-tuning-mapreduce.md)

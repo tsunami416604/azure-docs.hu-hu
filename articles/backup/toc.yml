@@ -39,6 +39,8 @@
           href: backup-azure-vm-backup-faq.md
         - name: A fájlok és mappák Azure Backup-ügynökkel végzett biztonsági mentésével kapcsolatos gyakori kérdések
           href: backup-azure-file-folder-backup-faq.md
+        - name: A biztonsági mentési tár automatikus frissítése – GYIK
+          href: backup-upgrade-backup-vault.md
     - name: Szerepköralapú hozzáférés-vezérlés
       href: backup-rbac-rs-vault.md
     - name: Biztonsági szolgáltatások hibrid biztonsági mentésekhez

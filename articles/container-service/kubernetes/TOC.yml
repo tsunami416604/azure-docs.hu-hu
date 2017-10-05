@@ -1,15 +1,15 @@
-- name: ACS és Kubernetes együttes használata
+- name: A Kubernetes az Azure-on
   href: ./index.yml
 - name: Áttekintés
   items:
-    - name: A Container Service ismertetése
+    - name: A Kubernetes az Azure-on
       href: container-service-intro-kubernetes.md
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Kubernetes Linux
+    - name: A Kubernetes az Azure-on
       href: container-service-kubernetes-walkthrough.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Tárolórendszerképek létrehozása
       href: container-service-tutorial-kubernetes-prepare-app.md
@@ -25,14 +25,8 @@
       href: container-service-tutorial-kubernetes-app-update.md
     - name: 7 – Monitorozás az OMS-szel
       href: container-service-tutorial-kubernetes-monitor.md
-- name: Példák
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
 - name: Alapelvek
   items:
-    - name: Biztonságos tárolók
-      href: container-service-security.md
     - name: Szolgáltatásnév – Kubernetes
       href: container-service-kubernetes-service-principal.md
 - name: Útmutatók
@@ -41,18 +35,14 @@
       href: container-service-kubernetes-windows-walkthrough.md
     - name: Kubernetes webes felület
       href: container-service-kubernetes-ui.md
-    - name: Helm-diagramok központi telepítése
+    - name: Helm-diagramok használata
       href: container-service-kubernetes-helm.md
-    - name: A Jenkins és az ACS Kubernetes
+    - name: A Jenkins használata az ACS-sel
       href: container-service-kubernetes-jenkins.md
-    - name: Vázlat használata ACR-rel és ACS-szel
+    - name: Vázlat használata az ACS-sel
       href: container-service-draft-up.md
-    - name: Kapcsolódás ACS-fürthöz
-      href: container-service-connect.md
-    - name: ACS-fürt méretezése
+    - name: Fürt méretezése
       href: container-service-scale.md
-    - name: Kubernetes ACS-fürt terheléselosztása
-      href: container-service-kubernetes-load-balancing.md
     - name: Figyelés
       items:
         - name: Monitorozás az OMS-szel
@@ -73,10 +63,10 @@
           href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
 - name: Referencia
   items:
-    - name: Azure CLI 2.0
+    - name: Azure CLI
       href: /cli/azure/acs
     - name: REST
-      href: /rest/api/container-services
+      href: /rest/api/container-service
 - name: Erőforrások
   items:
     - name: Azure-ütemterv

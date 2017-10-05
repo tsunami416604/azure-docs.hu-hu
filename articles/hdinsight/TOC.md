@@ -12,6 +12,7 @@
 ### [Archívum](hdinsight-release-notes-archive.md)
 
 # Első lépések
+## [A HDInsight-fürt kapacitásának megtervezése](hdinsight-capacity-planning.md)
 ## [Első lépések a Hadoopban](hdinsight-hadoop-linux-tutorial-get-started.md)
 ## Első lépések a Sparkban
 ### [Spark-fürt létrehozása](hdinsight-apache-spark-jupyter-spark-sql.md)
@@ -167,6 +168,8 @@
 ### [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [SSH-alagútkezelés használata](hdinsight-linux-ambari-ssh-tunnel.md)
 ### [Adatokhoz hozzáférésének korlátozása](hdinsight-storage-sharedaccesssignature-permissions.md)
+### [Az Ambari Views használatának engedélyezése felhasználók számára](hdinsight-authorize-users-to-ambari.md)
+### [Felhasználói engedélyek kezelése a fájlok és mappák szintjén](hdinsight-add-acls-at-file-folder-levels.md)
 ## Kezelés
 ### [Linux-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
 #### [Azure PowerShell használata](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -200,6 +203,7 @@
 ### [Az Azure Log Analytics használata](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 ### [Fürtre jellemző irányítópultok](hdinsight-hadoop-oms-log-analytics-management-solutions.md)
 ### [Lekérdezések használata a Log Analytics szolgáltatással](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+### [Fürtteljesítmény monitorozása](hdinsight-key-scenarios-to-monitor.md)
 ## [Hibaelhárítás](hdinsight-troubleshoot-guide.md)
 ### [HBASE-hibaelhárítás](hdinsight-troubleshoot-hbase.md)
 ### [HDFS-hibaelhárítás](hdinsight-troubleshoot-hdfs.md)

@@ -40,6 +40,8 @@
 - name: Felügyeltszolgáltatás-identitás
   href: msi-overview.md
   items:
+    - name: Útmutató a bejelentkezéshez és a tokenek beszerzéséhez
+      href: msi-how-to-get-access-token-using-msi.md
     - name: Az MSI konfigurálása Azure-beli virtuális géphez
       items:
         - name: Az Azure Portallal
@@ -50,6 +52,8 @@
           href: msi-qs-configure-cli-windows-vm.md
         - name: Azure Resource Manager-sablonnal
           href: msi-qs-configure-template-windows-vm.md
+        - name: Azure SDK-val
+          href: msi-qs-configure-sdk-windows-vm.md
     - name: MSI-hozzáférés hozzárendelése egy Azure-erőforráshoz
       items:
         - name: Az Azure Portallal

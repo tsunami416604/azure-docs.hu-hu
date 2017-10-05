@@ -16,8 +16,9 @@
 # Útmutató
 ## Csatlakozás egy felügyelt tartományhoz
 ### [Csatlakozás Windows Server rendszerű virtuális géphez](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Csatlakozás Windows Server rendszerű virtuális géphez az Azure PowerShell használatával](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-### [Csatlakozás Linux rendszerű virtuális géphez](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [Csatlakozás Windows Server rendszerű virtuális géphez a PowerShell használatával](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [RedHat Enterprise Linux](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## Felügyelt tartomány kezelése
 ### [Felügyelt tartomány kezelése](active-directory-ds-admin-guide-administer-domain.md)
 ### [DNS-kezelés felügyelt tartományon](active-directory-ds-admin-guide-administer-dns.md)
@@ -36,7 +37,6 @@
 ## Hibaelhárítás
 ### [Gyakori kérdések](active-directory-ds-faqs.md)
 ### [Hibaelhárítási útmutató](active-directory-ds-troubleshooting.md)
-### [Az Azure portál előnézeti felületének engedélyezése](active-directory-ds-azure-portal-enable-preview-access.md)
 ### [Eltérő bérlők hibáinak megoldása](active-directory-ds-mismatched-tenant-error.md)
 
 # Referencia

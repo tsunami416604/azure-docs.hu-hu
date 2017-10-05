@@ -73,6 +73,8 @@
           href: tutorial-iris-azure-cli.md
         - name: Futtatási előzmények és modellmérőszámok nyomon követése
           href: how-to-use-run-history-model-metrics.md
+        - name: A legpontosabb és legrövidebb futtatások megkeresése
+          href: how-to-find-best-accuracy-cli.md
         - name: Fájlok beolvasása és írása
           href: how-to-read-write-files.md
         - name: MMLSpark könyvtár
