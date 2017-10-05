@@ -3,7 +3,7 @@ title: "Az első Azure Automation PowerShell-alapú munkafolyamat-runbookom | Mi
 description: "Ez az oktatóanyag bemutatja egy egyszerű szöveges forgatókönyv PowerShell-munkafolyamattal való létrehozását, tesztelését és közzétételét."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "powershell-munkafolyamat, powershell-munkafolyamat példák, munkafolyamat powershell"

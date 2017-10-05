@@ -3,7 +3,7 @@ title: "Hibakezelés az Azure Automation grafikus runbookokban | Microsoft Docs"
 description: "Ez a cikk ismerteti a hibakezelési logika megvalósítását az Azure Automation grafikus runbookokban."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 

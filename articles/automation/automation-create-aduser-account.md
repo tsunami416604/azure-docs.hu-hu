@@ -3,7 +3,7 @@ title: "Azure AD felhasználói fiók létrehozása | Microsoft Docs"
 description: "Ez a cikk azt ismerteti, hogyan kell egy Azure AD felhasználói fiók hitelesítő adatait létrehozni az Azure Automation runbookjaihoz úgy, hogy Azure- és klasszikus Azure-hitelesítést is végezzen."
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: "azure active directory felhasználó, azure szolgáltatás kezelése, azure ad és felhasználói fiók"

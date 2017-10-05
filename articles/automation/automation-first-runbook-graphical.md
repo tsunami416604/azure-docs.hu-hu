@@ -3,7 +3,7 @@ title: "Az első Azure Automation grafikus runbookom | Microsoft Azure"
 description: "Ez az oktatóanyag bemutatja egy egyszerű grafikus forgatókönyv létrehozását, tesztelését és közzétételét."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: runbook, runbook-sablon, runbook automation, azure runbook

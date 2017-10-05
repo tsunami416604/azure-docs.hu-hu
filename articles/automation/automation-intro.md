@@ -3,7 +3,7 @@ title: "Az Azure Automation bemutatása | Microsoft Docs"
 description: "Megtudhatja, mit kínál az Azure Automation, és választ kaphat gyakori kérdésekre, hogy nekiláthasson a forgatókönyvek Azure Automation DSC-ben való létrehozásának és használatának."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "az Automation ismertetése, Azure Automation, Azure Automation példák"

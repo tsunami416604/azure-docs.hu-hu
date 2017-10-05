@@ -3,7 +3,7 @@ title: "Az első Azure Automation PowerShell-runbookom | Microsoft Docs"
 description: "Ez az oktatóanyag bemutatja egy egyszerű PowerShell-forgatókönyv létrehozását, tesztelését és közzétételét."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "azure powershell, powershell-szkript oktatóanyag, powershell automation"

@@ -3,7 +3,7 @@ title: "Bevezetés az Azure Automation használatába | Microsoft Docs"
 description: "Ez a cikk a kialakítás és az implementálás részleteinek áttekintésével áttekintést nyújt az Azure Automation szolgáltatásról az Azure Marketplace-ről származó ajánlat bevezetésének előkészítéséhez."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 

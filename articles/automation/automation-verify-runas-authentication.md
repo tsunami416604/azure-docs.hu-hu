@@ -3,7 +3,7 @@ title: "Azure Automation-fiók konfigurációjának ellenőrzése | Microsoft Do
 description: "Ez a cikk azt ismerteti, hogyan lehet ellenőrizni, hogy az Automation-fiók konfigurációja megfelelő-e."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 

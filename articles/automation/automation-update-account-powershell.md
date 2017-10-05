@@ -3,7 +3,7 @@ title: "Azure Automation futtató fiók létrehozása PowerShell használatával
 description: "Ez a cikk ismerteti, hogyan frissítheti Automation-fiókját a PowerShell használatával, hogy futtató fiókokat hozzon létre, ha a portálon a létrehozás során nem végezte el ezt a lépést."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
