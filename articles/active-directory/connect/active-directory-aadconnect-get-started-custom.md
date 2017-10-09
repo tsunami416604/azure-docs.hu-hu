@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/02/2017
+ms.date: 09/27/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 51906e8d68b5f951a75b8141644bbaf4cf6a43ce
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: a3a4a90221821de690f72260b2adca07680d30a9
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
@@ -50,12 +50,12 @@ A szükséges összetevők telepítését követően a rendszer megkéri, hogy v
 
 | Egyszeri bejelentkezési beállítás | Leírás |
 | --- | --- |
-| Jelszó-szinkronizálás |A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak. A felhasználók jelszavai szinkronizálva vannak az Azure AD szolgáltatásba jelszókivonatként, és a hitelesítés a felhőben történik. További információkért lásd: [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md). |
-|Átmenő hitelesítés (előzetes verzió)|A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer a felhasználói jelszókat az őket ellenőrző helyszíni Active Directory-vezérlőn keresztül továbbítja.
+| Jelszókivonat szinkronizálása |A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak. A felhasználók jelszavai szinkronizálva vannak az Azure AD szolgáltatásba jelszókivonatként, és a hitelesítés a felhőben történik. További információkért lásd a [jelszókivonat szinkronizálásával](active-directory-aadconnectsync-implement-password-synchronization.md) foglalkozó részt. |
+|Átmenő hitelesítés|A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer a felhasználói jelszókat az őket ellenőrző helyszíni Active Directory-vezérlőn keresztül továbbítja.
 | Összevonás az AD FS rendszerrel |A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer átirányítja a felhasználókat helyszíni AD FS-példányukra a bejelentkezéshez, és a hitelesítés a helyszíni rendszeren történik. |
 | Nincs konfigurálás |Egyik szolgáltatás sincs telepítve és konfigurálva. Válassza ezt a lehetőséget, ha már rendelkezik külső fél által biztosított összevonási kiszolgálóval vagy más meglévő megoldással. |
 |Egyszeri bejelentkezés engedélyezése|Ez a lehetőség jelszó-szinkronizálás és átmenő hitelesítés mellett is elérhető, és egyszeri bejelentkezést biztosít az asztali gépek felhasználóinak a vállalati hálózaton.  További információkért tekintse meg az [egyszeri bejelentkezést](active-directory-aadconnect-sso.md) ismertető témakört. </br>Vegye figyelembe, hogy ez a lehetőség az AD FS-ügyfelek számára nem érhető el, mert az AD FS már tartalmaz ennek megfelelő szintű egyszeri bejelentkezési funkciót.</br>(Ha az átmenő hitelesítés ugyanakkor nincs kibocsátva.)
-|Bejelentkezési beállítás|Ez a lehetőség a jelszó-szinkronizálást alkalmazó ügyfelek számára érhető el, és egyszeri bejelentkezést biztosít az asztali gépek felhasználóinak a vállalati hálózaton.  </br>További információkért tekintse meg az [egyszeri bejelentkezést](active-directory-aadconnect-sso.md) ismertető témakört. </br>Vegye figyelembe, hogy ez a lehetőség az AD FS-ügyfelek számára nem érhető el, mert az AD FS már tartalmaz ennek megfelelő szintű egyszeri bejelentkezési funkciót.
+|Bejelentkezési beállítás|Ez a lehetőség a jelszókivonat-szinkronizálást alkalmazó ügyfelek számára érhető el, és egyszeri bejelentkezést biztosít az asztali gépek felhasználóinak a vállalati hálózaton.  </br>További információkért tekintse meg az [egyszeri bejelentkezést](active-directory-aadconnect-sso.md) ismertető témakört. </br>Vegye figyelembe, hogy ez a lehetőség az AD FS-ügyfelek számára nem érhető el, mert az AD FS már tartalmaz ennek megfelelő szintű egyszeri bejelentkezési funkciót.
 
 
 ### <a name="connect-to-azure-ad"></a>Csatlakozás az Azure AD szolgáltatáshoz
@@ -169,7 +169,7 @@ A képernyő segítségével beállíthatja a választható szolgáltatásokat a
 | Exchange Hybrid Deployment (Exchange hibrid telepítés) |Az Exchange hibrid telepítés lehetővé teszi, hogy az Exchange postafiókok a helyszínen és az Office 365-ben egy időben létezzenek. Az Azure AD Connect visszaszinkronizálja az [attribútumok](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) egy adott halmazát az Azure AD szolgáltatásból a helyszíni címtárba. |
 | Exchange Mail Public Folders (Exchange-levelezés – nyilvános mappák) | Az Exchange-levelezés nyilvános mappák funkciójával szinkronizálhatja a levelezési célú nyilvánosmappa-objektumokat a helyszíni Active Directoryból az Azure AD-be. |
 | Azure AD app and attribute filtering (Azure AD alkalmazás- és attribútumszűrés) |Az Azure AD alkalmazás- és attribútumszűrés engedélyezésével a szinkronizált attribútumok halmaza testre szabható. Ez a beállítás két további konfigurációs oldallal bővíti a varázslót. További információkért lásd: [Azure AD alkalmazás- és attribútumszűrés](#azure-ad-app-and-attribute-filtering). |
-| Jelszó-szinkronizálás |Amennyiben az összevonás megoldást választotta a bejelentkezéshez, engedélyezheti ezt a beállítást. A jelszó-szinkronizálás ezt követően használható másodlagos beállításként. További információkért lásd: [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md). </br></br>Ha az átmenő hitelesítést választotta, ez a beállítás alapértelmezés szerint engedélyezve van, hogy támogassa a régebbi ügyfelek biztonsági mentési lehetőségként történő használatát. További információkért lásd: [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md).|
+| Jelszó-szinkronizálás |Amennyiben az összevonás megoldást választotta a bejelentkezéshez, engedélyezheti ezt a beállítást. A jelszó-szinkronizálás ezt követően használható másodlagos beállításként. További információkért lásd: [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md). </br></br>Ha az átmenő hitelesítést választotta, ez a beállítás is engedélyezhető, hogy támogassa a régebbi ügyfelek biztonsági mentési lehetőségként történő használatát. További információkért lásd: [Jelszó-szinkronizálás](active-directory-aadconnectsync-implement-password-synchronization.md).|
 | Jelszóvisszaíró |A jelszóvisszaíró engedélyezésével az Azure AD szolgáltatásban végrehajtott jelszómódosítások visszaíródnak a helyszíni címtárba. További részletekért lásd: [A jelszókezelés első lépései](../active-directory-passwords-getting-started.md). |
 | Group writeback (Csoportvisszaíró) |Amennyiben használja az **Office 365 Csoportok** szolgáltatást, ezeket a csoportokat szerepeltetheti a helyszíni Active Directory szolgáltatásban is. Ez a beállítás kizárólag akkor elérhető, ha az Exchange jelen van a helyszíni Active Directory szolgáltatásban. További információkért lásd: [Csoportvisszaíró](active-directory-aadconnect-feature-preview.md#group-writeback). |
 | Eszközvisszaíró |A használatával visszaírhatja az Azure AD-eszközobjektumokat a helyszíni Active Directory szolgáltatásba feltételes hozzáférésű forgatókönyvekhez. További információkért lásd: [Eszközvisszaírás engedélyezése az Azure AD Connectben](active-directory-aadconnect-feature-device-writeback.md). |

@@ -15,197 +15,135 @@ ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 78306672e812745fd1902ae264c2adea196ab721
+ms.sourcegitcommit: d07d5d59632791a52bcb3a2f54bebe194cc76a54
+ms.openlocfilehash: 44eaaae123490934bc62b4ea30968656900d48fc
 ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 10/04/2017
 
 ---
 
-# <a name="deploy-a-service-fabric-linux-container-application-on-azure"></a>Linux-alapú Service Fabric-tároló üzembe helyezése az Azure-on
+# <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Linux-alapú Azure Service Fabric-tároló üzembe helyezése az Azure-on
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
 
-A meglévő alkalmazások Service Fabric-fürtökön lévő Linux-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe a Docker-tárolók előre összeállított rendszerképeit egy Service Fabric-alkalmazásban. Ha elkészült, rendelkezni fog egy futó Nginx-tárolóval.  Ez a rövid útmutató a Linux-tárolók üzembe helyezését mutatja be. A Windows-tárolók üzembe helyezését lásd [ebben a rövid útmutatóban](service-fabric-quickstart-containers.md).
+Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe a Linux-tárolókat Service Fabric-fürtön. Miután elkészült, egy szavazóalkalmazást kap, amely egy Python-alapú webes előtérrendszert és egy Redis-alapú háttérrendszert tartalmaz, amely egy Service Fabric-fürtben fut. 
 
-![Nginx][nginx]
+![quickstartpic][quickstartpic]
 
 Ezen rövid útmutató segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
-> * Docker-rendszerképtároló becsomagolása
-> * A kommunikáció konfigurálása
-> * Service Fabric-alkalmazás felépítése és becsomagolása
-> * A tárolóalkalmazás üzembe helyezése az Azure-on
+> * Linux-tárolók üzembe helyezése a Service Fabric szolgáltatásban
+> * Méretezési és feladatátvételi tárolók a Service Fabric szolgáltatásban
 
-## <a name="prerequisites"></a>Előfeltételek
-Telepítse a következőket: [Service Fabric SDK, Service Fabric parancssori felület, Service Fabric Yeoman sablongenerátorok](service-fabric-get-started-linux.md).
+## <a name="prerequisite"></a>Előfeltétel
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/en-us/free/) a virtuális gép létrehozásának megkezdése előtt.
   
-## <a name="package-a-docker-image-container-with-yeoman"></a>Docker-rendszerképtároló becsomagolása a Yeomannal
-A Linux Service Fabric SDK tartalmaz egy [Yeoman](http://yeoman.io/)-generátort, amely megkönnyíti az alkalmazás létrehozását és egy tárolórendszerkép hozzáadását. 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Service Fabric-tárolóalkalmazás létrehozásához nyisson meg egy terminálablakot, és futtassa a következőt: `yo azuresfcontainer`.  
+Ha a parancssori felület (CLI) helyi telepítését és használatát választja, győződjön meg róla, hogy az Azure CLI 2.0.4-es vagy újabb verzióját használja. A verzió megkereséséhez futtassa a következő parancsot: az --version. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
-Nevezze el az alkalmazást „MyFirstContainer” néven, az alkalmazásszolgáltatást pedig „MyContainerService” néven.
+## <a name="get-application-package"></a>Az alkalmazáscsomag beszerzése
+A tárolók a Service Fabric szolgáltatásban való üzembe helyezéséhez jegyzékfájlok egy készletére lesz szükség (az alkalmazásdefinícióra), amelyek leírják az egyes tárolókat és az alkalmazást.
 
-Nevezze el a tároló rendszerképét „nginx:latest” névén (ez az [Nginx-tároló rendszerképe](https://hub.docker.com/r/_/nginx/) a Docker Hubon). 
+A Cloud Shellben a git használatával klónozással készítsen egy másolatot az alkalmazásdefinícióról.
 
-Ez a rendszerkép meghatározott számításifeladat-belépési ponttal rendelkezik, így a bemeneti parancsokat explicit módon kell megadnia. 
+```azurecli-interactive
+git clone https://github.com/Azure-Samples/service-fabric-dotnet-containers.git
 
-Adja meg az „1” példányszámát.
-
-![Tárolókhoz készült Service Fabric Yeoman-generátor][sf-yeoman]
-
-## <a name="configure-communication-and-container-port-to-host-port-mapping"></a>A kommunikáció és a tárolóport–gazdagépport hozzárendelés konfigurálása
-Konfiguráljon egy olyan HTTP-végpontot, amelyen az ügyfelek kommunikálhatnak a szolgáltatással.  Nyissa meg a *./MyFirstContainer/MyContainerServicePkg/ServiceManifest.xml* fájlt, és adjon meg egy végponterőforrást a **ServiceManifest** elemben.  Adja hozzá a protokoll, a port és a név adatokat. Ebben a rövid útmutatóban a szolgáltatás a 80-as portot figyeli: 
-
-```xml
-<Resources>
-  <Endpoints>
-    <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-    <Endpoint Name="myserviceTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
-  </Endpoints>
-</Resources>
-
-```
-Az `UriScheme` megadásával a tároló végpontja automatikusan regisztrálva lesz a Service Fabric elnevezési szolgáltatásban, így felderíthető lesz. A cikk végén talál egy például szolgáló teljes ServiceManifest.xml fájlt. 
-
-Végezze el egy tárolóport `Endpoint` szolgáltatásra történő leképezését egy `PortBinding` szabályzat használatával az ApplicationManifest.xml fájl `ContainerHostPolicies` elemében.  Ebben a rövid útmutatóban a(z) `ContainerPort` értéke 80 (a tároló a 80-as portot használja), a(z) `EndpointRef` értéke pedig „myserviceTypeEndpoint” (a szolgáltatásjegyzékben korábban definiált végpont).  A szolgáltatáshoz a 80-as porton beérkező kérések a tárolón a 80-as portra vannak leképezve.  
-
-```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code">
-    <PortBinding ContainerPort="80" EndpointRef="myserviceTypeEndpoint"/>
-  </ContainerHostPolicies>
-</Policies>
+cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
 ```
 
-## <a name="build-and-package-the-service-fabric-application"></a>Service Fabric-alkalmazás felépítése és becsomagolása
-A Service Fabric Yeoman-sablonok tartalmaznak egy [Gradle](https://gradle.org/) felépítési szkriptet, amelyet felhasználhat az alkalmazás terminálból történő létrehozásához. Mentse az összes módosítást.  Az alkalmazás felépítéséhez és becsomagolásához futtassa a következő parancsot:
+## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>Helyezze üzembe a tárolókat egy Service Fabric-fürtön az Azure-ban
+Az alkalmazás Azure-fürtön történő üzembe helyezéséhez használhat egy saját vagy egy nyilvános fürtöt is.
 
-```bash
-cd MyFirstContainer
-gradle
-```
-## <a name="create-a-cluster"></a>Fürt létrehozása
-Az alkalmazás Azure-fürtön történő üzembe helyezéséhez létrehozhat egy saját fürtöt, vagy használhat nyilvános fürtöt is.
-
-A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi, és amelyeken bárki üzembe helyezhet alkalmazásokat, és megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric).  
+A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. A Service Fabric csapata tartja karban ezeket, és bárki üzembe helyezhet rajtuk alkalmazásokat, illetve megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
 
 További információk saját fürtök létrehozásáról: [Az első saját Service Fabric-fürt létrehozása az Azure-on](service-fabric-get-started-azure-cluster.md).
 
-Jegyezze fel a kapcsolati végpont értékét, mert azt használni fogja a következő lépésben.
+> [!Note]
+> A webes előtérrendszer a konfigurációja szerint a 80-as porton figyeli a bejövő forgalmat. Győződjön meg róla, hogy a port nyitva van a fürtön. Ha nyilvános fürtöt használ, a port nyitva van.
+>
 
-## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
-Az alkalmazást a létrehozása után a Service Fabric parancssori felülettel telepítheti az Azure-fürtben.
+### <a name="deploy-the-application-manifests"></a>Az alkalmazásjegyzékek üzembe helyezése 
+Telepítse a [Service Fabric parancssori felületet (sfctl)](service-fabric-cli.md) a parancssori felületi környezetben
 
-Csatlakozzon az Azure Service Fabric-fürthöz.
+```azurecli-interactive
+pip3 install --user sfctl 
+export PATH=$PATH:~/.local/bin
+```
+Csatlakozzon az Azure Service Fabric-fürthöz az Azure CLI használatával. A végpont a fürt felügyeleti végpontja, például `http://linh1x87d1d.westus.cloudapp.azure.com:19080`.
 
-```bash
-sfctl cluster select --endpoint http://lnxt10vkfz6.westus.cloudapp.azure.com:19080
+```azurecli-interactive
+sfctl cluster select --endpoint http://linh1x87d1d.westus.cloudapp.azure.com:19080
 ```
 
-Használja a sablonban megadott telepítési szkriptet az alkalmazáscsomag a fürt lemezképtárolójába való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
+Használja a megadott telepítési szkriptet a szavazóalkalmazás definíciójának a fürtbe való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
 
-```bash
+```azurecli-interactive
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorert a http://lnxt10vkfz6.westus.cloudapp.azure.com:19080/Explorer címen. Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
+Nyisson meg egy böngészőt, majd navigáljon a Service Fabric Explorerre a http://\<my-azure-service-fabric-cluster-url>:19080/Explorer címen – például: `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`. Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés a szavazóalkalmazás típusához, és az Ön által létrehozott példányhoz.
 
 ![Service Fabric Explorer][sfx]
 
-Csatlakozzon a futó tárolóhoz.  Nyisson meg egy webböngészőt, majd a 80-as porton visszaadott IP-címet, például „lnxt10vkfz6.westus.cloudapp.azure.com:80”. Ekkor a Nginx kezdőlapjának kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz.  Nyissa meg egy webböngészőben a fürt URL-címét – például: `http://linh1x87d1d.westus.cloudapp.azure.com:80`. Ekkor a szavazóalkalmazásnak kell megjelennie a böngészőben.
 
-![Nginx][nginx]
+![quickstartpic][quickstartpic]
+
+## <a name="fail-over-a-container-in-a-cluster"></a>Tároló feladatátvétele a fürtben
+A Service Fabric biztosítja, hogy meghibásodás esetén a tárolópéldányok automatikusan áthelyeződjenek a fürt más csomópontjaira. Manuálisan is ürítheti a csomópontokat a tárolók tekintetében, és azokat zökkenőmentesen helyezheti át a fürt más csomópontjaira. A szolgáltatásokat többféleképpen is méretezheti – ebben a példában a Service Fabric Explorert használjuk.
+
+Az előtértároló feladatátvételéhez hajtsa végre a következő lépéseket:
+
+1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`.
+2. Kattintson a **fabric:/Voting/azurevotefront** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli). Figyelje meg a csomópont nevét a fanézetben, amely azokat a csomópontokat mutatja, amelyeken a tároló jelenleg fut – például: `_nodetype_4`.
+3. Bontsa ki a **Csomópontok** csomópontot a fanézetben. Kattintson a három pontra a tárolót futtató csomópont mellett.
+4. Válassza az **Újraindítás** lehetőséget a csomópont újraindításához, majd erősítse meg az újraindítási műveletet. Az újraindítás kikényszeríti a tároló feladatátvételét a fürt egy másik csomópontjára.
+
+![sfxquickstartshownodetype][sfxquickstartshownodetype]
+
+## <a name="scale-applications-and-services-in-a-cluster"></a>Alkalmazások és szolgáltatások méretezése a fürtökben
+A Service Fabric-szolgáltatások könnyen méretezhetők egy adott fürtben a szolgáltatások terhelésének megfelelően. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik.
+
+A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lépéseket:
+
+1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://linh1x87d1d.westus.cloudapp.azure.com:19080`.
+2. Kattintson a három pontra a fanézetben a **fabric:/Voting/azurevotefront** csomópont mellett, és válassza a **Szolgáltatás méretezése** lehetőséget.
+
+    ![containersquickstartscale][containersquickstartscale]
+
+  Most már méretezheti a webes előtér-szolgáltatás példányainak számát.
+
+3. Módosítsa a számot **2**-re, és kattintson a **Szolgáltatás méretezése** gombra.
+4. Kattintson a **fabric:/Voting/azurevotefront** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
+
+    ![containersquickstartscaledone][containersquickstartscaledone]
+
+    Most láthatja, hogy a szolgáltatás két példánnyal rendelkezik. A fanézetben megtekintheti, hogy a példányok melyik csomópontokon futnak.
+
+Ezzel az egyszerű felügyeleti eljárással megdupláztuk az előtér-szolgáltatás számára a felhasználói terhelések feldolgozásához rendelkezésre álló erőforrások mennyiségét. Fontos megérteni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány kezdjen futni a fürtben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldánynak a fürtről történő törléséhez, és törölje az alkalmazástípus regisztrációját.
+Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldánynak a fürtről történő törléséhez, és törölje az alkalmazástípus regisztrációját. A parancsnak némi időre van szüksége, hogy kiürítse a példányt, ezért az „install'sh” parancsot nem érdemes azonnal a szkript után futtatni. 
 
 ```bash
 ./uninstall.sh
 ```
 
-## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Példa teljes Service Fabric-alkalmazásra és szolgáltatásjegyzékre
-Itt találja a jelen rövid útmutatóban használt teljes szolgáltatás- és alkalmazásjegyzéket.
-
-### <a name="servicemanifestxml"></a>ServiceManifest.xml
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<ServiceManifest Name="MyContainerServicePkg" Version="1.0.0"
-                 xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
-
-   <ServiceTypes>
-      <StatelessServiceType ServiceTypeName="MyContainerServiceType" UseImplicitHost="true">
-   </StatelessServiceType>
-   </ServiceTypes>
-   
-   <CodePackage Name="code" Version="1.0.0">
-      <EntryPoint>
-         <ContainerHost>
-            <ImageName>nginx:latest</ImageName>
-            <Commands></Commands>
-         </ContainerHost>
-      </EntryPoint>
-      <EnvironmentVariables> 
-      </EnvironmentVariables> 
-   </CodePackage>
-<Resources>
-    <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="myserviceTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
-    </Endpoints>
-  </Resources>
- </ServiceManifest>
-
-```
-### <a name="applicationmanifestxml"></a>ApplicationManifest.xml
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest  ApplicationTypeName="MyFirstContainerType" ApplicationTypeVersion="1.0.0"
-                      xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="MyContainerServicePkg" ServiceManifestVersion="1.0.0" />
-   <Policies>
-      <ContainerHostPolicies CodePackageRef="Code">
-        <PortBinding ContainerPort="80" EndpointRef="myserviceTypeEndpoint"/>
-      </ContainerHostPolicies>
-    </Policies>
-</ServiceManifestImport>
-   
-   <DefaultServices>
-      <Service Name="MyContainerService">
-        <!-- On a local development cluster, set InstanceCount to 1.  On a multi-node production 
-        cluster, set InstanceCount to -1 for the container service to run on every node in 
-        the cluster.
-        -->
-        <StatelessService ServiceTypeName="MyContainerServiceType" InstanceCount="1">
-            <SingletonPartition />
-        </StatelessService>
-      </Service>
-   </DefaultServices>
-   
-</ApplicationManifest>
-
-```
-
 ## <a name="next-steps"></a>Következő lépések
-Ezen rövid útmutató segítségével megtanulhatja a következőket:
+Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 > [!div class="checklist"]
-> * Docker-rendszerképtároló becsomagolása
-> * A kommunikáció konfigurálása
-> * Service Fabric-alkalmazás felépítése és becsomagolása
-> * A tárolóalkalmazás üzembe helyezése az Azure-on
+> * Linux-alapú tárolóalkalmazás üzembe helyezése az Azure-ban
+> * Tároló feladatátvétele Service Fabric-fürtben
+> * Tároló méretezése Service Fabric-fürtben
 
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
-* Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).
-* Tekintse meg [a Service Fabric-tárolók mintakódjait](https://github.com/Azure-Samples/service-fabric-dotnet-containers) a GitHubon.
+* A [Service Fabric tárolók mintakódjainak](https://github.com/Azure-Samples/service-fabric-dotnet-containers) megtekintése a GitHubon.
 
-[sfx]: ./media/service-fabric-quickstart-containers-linux/SFX.png
-[nginx]: ./media/service-fabric-quickstart-containers-linux/nginx.png
-[sf-yeoman]: ./media/service-fabric-quickstart-containers-linux/YoSF.png
+[sfx]: ./media/service-fabric-quickstart-containers-linux/containersquickstartappinstance.png
+[quickstartpic]: ./media/service-fabric-quickstart-containers-linux/votingapp.png
+[sfxquickstartshownodetype]:  ./media/service-fabric-quickstart-containers-linux/containersquickstartrestart.png
+[containersquickstartscale]: ./media/service-fabric-quickstart-containers-linux/containersquickstartscale.png
+[containersquickstartscaledone]: ./media/service-fabric-quickstart-containers-linux/containersquickstartscaledone.png
 

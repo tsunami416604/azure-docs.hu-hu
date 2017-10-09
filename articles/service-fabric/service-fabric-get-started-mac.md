@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2017
+ms.date: 09/26/2017
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8b4fc0ab9034263418cac42ced203035e0a8fcad
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: c447a92e076bacc9b208b837493400b70cd067e1
 ms.contentlocale: hu-hu
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
@@ -49,7 +49,7 @@ Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehoz
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
-    Ezzel a lépéssel lekéri a virtuálisgép-konfigurációt tartalmazó `Vagrantfile` fájlt valamint azt a helyet, ahonnan a virtuális gép le lett töltve.
+    Ezzel a lépéssel letölti a virtuálisgép-konfigurációt tartalmazó `Vagrantfile` fájlt, valamint lekéri azt a helyet, ahonnan a virtuális gép le lett töltve.  A fájl egy tárolt Ubuntu-képre mutat.
 
 2. Navigáljon az adattár helyi klónjához
 
@@ -70,9 +70,24 @@ Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehoz
     vagrant up
     ```
 
-   Ebben a lépésben megtörténik az előre konfigurált virtuálisgép-rendszerkép letöltése, helyi indítása, és végül egy helyi Service Fabric-fürt beállítása. Ez eltarthat néhány percig. Ha a beállítás sikeres, a kimenetben megjelenik egy üzenet, amely jelzi, hogy a fürt indítása folyamatban van.
 
-    ![A fürt beállításának megkezdése a virtuális gép kiépítése után][cluster-setup-script]
+5. Jelentkezzen be a virtuális gépre, és telepítse a Service Fabric SDK-t.
+
+    ```bash
+    vagrant ssh
+    ```
+
+   Telepítse az SDK-t az [SDK telepítését](service-fabric-get-started-linux.md) ismertető részben foglaltaknak megfelelően.  Az egyszerű használat érdekében alább megadunk egy szkriptet a Service Fabric-futtatókörnyezet és a Service Fabric általános SDK az sfctl CLI felülettel együtt történő telepítéséhez. A szkript a futtatáskor azt feltételezi, hogy Ön átolvasta és elfogadja a telepített szoftverek licencfeltételeit.
+
+    ```bash
+    sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
+    ```
+
+5.  Indítsa el a Service Fabric-fürtöt
+
+    ```bash
+    sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
+    ```
 
     >[!TIP]
     > Ha a virtuális gép letöltése hosszú ideig tart, letöltheti a wget vagy a curl használatával, vagy egy böngészőből a `Vagrantfile` fájlban található **config.vm.box_url** által megadott hivatkozásra lépve. Miután letöltötte helyileg, szerkessze a `Vagrantfile`-t, hogy arra a helyi elérési útra mutasson, ahová a rendszerképet letöltötte. Ha a rendszerképet például a /home/users/test/azureservicefabric.tp8.box helyre töltötte le, állítsa a **config.vm.box_url** címet erre az elérési útra.
@@ -82,6 +97,23 @@ Egy 5 csomópontos Service Fabric-fürtöt tartalmazó virtuális gép létrehoz
 
     ![A Service Fabric Explorer a Mac gazdagépről megtekintve][sfx-mac]
 
+## <a name="install-the-necessary-java-artifacts-on-vagrant-to-use-service-fabric-java-programming-model"></a>A Service Fabric Java programozási modelljének használatához telepítse a szükséges Java-összetevőket a Vagrantra
+
+A Service Fabric-szolgáltatások Java használatával történő létrehozásához telepítve kell lennie a JDK 1.8 készletnek és a Gradle-nek, amely az összeállítási feladatok futtatásához használható. Az Open JDK 1.8 és a Gradle az alábbi kódrészlettel telepíthető. A Service Fabric Java-kódtárakat a Mavenből kéri le a rendszer.
+
+  ```bash
+  vagrant ssh
+  sudo apt-get install openjdk-8-jdk-headless
+  sudo apt-get install gradle
+```
+
+## <a name="set-up-the-service-fabric-cli"></a>A Service Fabric parancssori felület beállítása
+
+A [Service Fabric parancssori felület](service-fabric-cli.md) a Service Fabric-entitásokkal, többek között fürtökkel és alkalmazásokkal folytatott interakcióra szolgáló parancsokat is tartalmaz. A felület Python-alapú, ezért a következő parancs kiadása előtt ellenőrizze, hogy a Python és a pip telepítve vannak-e:
+
+```bash
+pip install sfctl
+```
 
 ## <a name="create-application-on-mac-using-yeoman"></a>Alkalmazás létrehozása Mac gépen a Yeoman használatával
 A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek segítségével Service Fabric-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával ellenőrizze, hogy a Service Fabric Yeoman sablongenerátor működik-e a gépen.
@@ -107,6 +139,10 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
   ```
 4. Service Fabric Java-alkalmazások Mac gépen való létrehozásához a JDK 1.8-nak és a Gradle-nek telepítve kell lennie a gépen.
 
+## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 fejlesztői környezet beállítása
+
+Telepítse az [Mac rendszerre készült .NET Core 2.0 SDK-t](https://www.microsoft.com/net/core#macos) [a C# Service Fabric-alkalmazások létrehozásának](service-fabric-create-your-first-linux-application-with-csharp.md) első lépéseként. A .NET Core 2.0 Service Fabric-alkalmazások csomagjai a NuGet.org webhelyen érhetők el, jelenleg előzetes verzióban.
+
 
 ## <a name="install-the-service-fabric-plugin-for-eclipse-neon"></a>Az Eclipse Neonhoz készült Service Fabric beépülő modul telepítése
 
@@ -122,6 +158,7 @@ A Service Fabric egy beépülő modult biztosít a **Java Eclipse Neon IDE-hez**
 * [Service Fabric-fürt létrehozása az Azure Portalon](service-fabric-cluster-creation-via-portal.md)
 * [Service Fabric-fürt létrehozása az Azure Resource Managerrel](service-fabric-cluster-creation-via-arm.md)
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
+* [A Service Fabric parancssori felület használata az alkalmazások kezeléséhez](service-fabric-application-lifecycle-sfctl.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png

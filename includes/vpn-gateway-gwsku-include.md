@@ -22,7 +22,7 @@ Az átjárók új termékváltozatai egyszerűbbé teszik az átjárókon elérh
 
 | **Termékváltozat**| **Szolgáltatások**|
 | ---    | ---         |
-|**Basic**   | **Útvonalalapú VPN**: 10 alagút P2S-sel<br><br>**Házirend-alapú VPN** (IKEv1): 1 alagút, P2S nélkül|
+|**Basic**   | **Útvonalalapú VPN**: 10 alagút P2S-sel; RADIUS-hitelesítés nélkül; IKEv2 nélkül<br>**Házirend-alapú VPN** (IKEv1): 1 alagút, P2S nélkül|
 | **VpnGw1, VpnGw2 és VpnGw3** | **Útvonalalapú VPN**: legfeljebb 30 alagút (*), P2S, BGP, aktív-aktív, egyéni IPsec/IKE-házirend, ExpressRoute/VPN együttes jelenléte |
 |        |             |
 
