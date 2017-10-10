@@ -51,7 +51,7 @@ Vegyünk példaként egy olyan runbookot, amely egy virtuális gépet próbál e
 1. Értesítést küld a problémáról.
 2. Elindít egy másik runbookot, amely automatikusan új virtuális gépet helyez üzembe.
 
-Az egyik megoldás, ha a hibahivatkozás egy, az&1;. lépést kezelő tevékenységre mutat. A **Write-Warning** parancsmagot például összekapcsolhatja a&2;. lépéshez szükséges tevékenységgel, például a **Start-AzureRmAutomationRunbook** parancsmaggal.
+Az egyik megoldás, ha a hibahivatkozás egy, az 1. lépést kezelő tevékenységre mutat. A **Write-Warning** parancsmagot például összekapcsolhatja a 2. lépéshez szükséges tevékenységgel, például a **Start-AzureRmAutomationRunbook** parancsmaggal.
 
 Ezt a viselkedést a további runbookokban való használat céljából általánosíthatja is, ha a két tevékenységet külön hibakezelési runbookba helyezi a korábban ajánlott útmutatás szerint. A hibakezelési runbook meghívása előtt egyéni üzenetet hozhat létre az eredeti runbook adataiból, majd paraméterként továbbviheti azt a hibakezelési runbookba.
 
