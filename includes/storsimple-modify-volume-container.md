@@ -1,19 +1,19 @@
 <!--author=SharS last changed: 1/7/2016-->
 
-#### <a name="to-modify-a-volume-container"></a>To modify a volume container
-1. On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.
-2. In the tabular listing of the volume containers, select the setting that you want to modify, and click **Modify**.
-3. In the **Modify Volume container** dialog box, do the following:
+#### <a name="to-modify-a-volume-container"></a>A kötettároló módosítása
+1. Az a **eszközök** lapon válassza ki az eszközt, kattintson rá duplán, és kattintson a **kötettárolók** fülre.
+2. A kötettárolók táblázatos listája, válassza ki a beállítás módosításához, és kattintson a kívánt **módosítás**.
+3. Az a **módosítása kötettároló** párbeszédpanelen tegye a következőket:
    
-   1. Change the name of the volume container and modify the associated bandwidth setting. 
+   1. Változtassa meg a kötettároló nevét, és módosítsa a hozzárendelt sávszélesség beállítást. 
       
-       ![Modify Volume Container with Bandwidth Template 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
-   2. The encryption key and storage account cannot be changed after they are specified. If you specified **Select a bandwidth template**, click the arrow to proceed to the next page.
-4. In the next page of the **Modify Volume Container** dialog box:
+       ![Módosítsa a sávszélesség 1 sablonnal Kötettároló](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
+   2. A titkosítási kulcs és a tárolási fiók nem módosítható, miután azokat. Ha a megadott **sávszélességsablon kiválasztása**, kattintson a nyílra a következő lapra lép.
+4. A következő oldalon, a **Kötettároló módosítása** párbeszédpanel:
    
-   1. From the drop-down list, choose an existing bandwidth template.
-   2. Review the schedule settings for the specified bandwidth template.
+   1. A legördülő listából válassza ki egy meglévő sávszélesség-sablont.
+   2. Tekintse át a megadott sávszélességsablon ütemezési beállításait.
       
-       ![Modify Volume Container with Bandwidth Template 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
-   3. Click the check icon ![check icon](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) to save the updated settings. The **Volume containers** page will be updated to reflect the changes.
+       ![Sávszélesség-sablonhoz 2 Kötettároló módosítása](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
+   3. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) menti a frissített beállításokat. A **kötettárolók** oldal frissül a módosításokkal.
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
 ms.openlocfilehash: d3de566ff2825ef0c41d88d4a86157dc23d9f46b
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/15/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="expressroute-nat-requirements"></a>Az ExpressRoute NAT-követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, NAT-okat kell beállítania és kezelnie. Egyes kapcsolatszolgáltatók felügyelt szolgáltatásként kínálják a NAT beállítását és kezelését. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínál-e ilyen szolgáltatást. Ha nem, akkor meg kell felelnie az alább ismertetett követelményeknek. 
@@ -75,5 +74,4 @@ A Microsoft társviszony-létesítési útvonal lehetővé teszi, hogy az Azure 
   * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-classic.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-classic.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-classic.md)
-
 

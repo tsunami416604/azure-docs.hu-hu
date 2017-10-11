@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 22f2bcfdd8c3978a6924c8c8cdea2744001000fe
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/10/2017
-
+ms.openlocfilehash: 436bf5905d2b203dc4cceea97f4fb90593df7111
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
-
 #<a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Több Azure AD-példány összevonása egyetlen AD FS-példánnyal
 
 Egyetlen magas rendelkezésre állású AD FS farm összevonhat több erdőt, ha azok között kétirányú megbízhatósági kapcsolat áll fenn. Ezek az erdők megfelelhetnek ugyanannak az Azure Active Directory-címtárnak, vagy sem. Ez a cikk útmutatást nyújt az összevonás konfigurálásához egyetlen AD FS környezet és egynél több, más Azure AD-címtárra szinkronizáló erdő között.
@@ -66,4 +64,3 @@ A fenti művelet összevonja a fabrikam.com tartományt ugyanazon AD FS-szel. Mi
 
 ## <a name="next-steps"></a>Következő lépések
 [Az Active Directory csatlakoztatása az Azure Active Directoryhoz](active-directory-aadconnect.md)
-

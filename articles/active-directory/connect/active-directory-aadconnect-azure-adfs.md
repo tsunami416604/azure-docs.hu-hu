@@ -16,12 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 9119a4523c66415925223b5de10ca0fb4a7147b2
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: ddd29a1230286de8999175498ee793f3b3ea24e2
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Az Active Directory összevonási szolgáltatások üzembe helyezése az Azure-ban
 Az AD FS egyszerű, mégis biztonságos identitás-összevonást, valamint webes egyszeri bejelentkezési (SSO) funkciókat biztosít. Az Azure AD vagy O365 segítségével megvalósított összevonás lehetővé teszi a felhasználóknak a helyszíni bejelentkezési adatok segítségével történő hitelesítést, valamint a felhőben futó erőforrások elérését. Ezért fontos, hogy magas rendelkezésre állást biztosító AD FS-infrastruktúrát alkalmazzon, amely garantálja a helyszíni és a felhőben lévő erőforrások elérhetőségét. Az AD FS Azure-ban történő üzembe helyezésével minimális erőfeszítéssel kialakíthatja a magas rendelkezésre állást.
@@ -355,5 +354,4 @@ A sablon telepítése közben használhat egy meglévő virtuális hálózatot, 
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
 * [Az AD FS konfigurálása és felügyelete az Azure AD Connect segítségével](active-directory-aadconnectfed-whatis.md)
 * [Az AD FS nagy rendelkezésre állású, több földrajzi régióra kiterjedő üzembe helyezése az Azure Traffic Managerrel](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-
 

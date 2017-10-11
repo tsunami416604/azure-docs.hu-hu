@@ -14,7 +14,7 @@ Ha engedélyezni szeretné, hogy a Mobile Engagement leküldéses értesítések
    
     ![](./media/mobile-engagement-android-send-push/api-key.png)
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>Értesítés küldése az alkalmazásnak
+## <a id="send"></a>Értesítés küldése az alkalmazásnak
 Ezután létrehozunk egy egyszerű leküldéses értesítési kampányt, amely elküld egy leküldéses értesítést az alkalmazásnak.
 
 1. Lépjen a Mobile Engagement portál **REACH** (ELÉRÉS) lapjára.
@@ -41,9 +41,4 @@ Ezután létrehozunk egy egyszerű leküldéses értesítési kampányt, amely e
 6. Utolsó lépés: Kattintson az **Activate** (Aktiválás) lehetőségre a kampány aktiválásához és a leküldéses értesítések küldésének megkezdéséhez.
    
     ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

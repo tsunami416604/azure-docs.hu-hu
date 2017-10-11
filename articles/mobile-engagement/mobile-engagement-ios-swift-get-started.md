@@ -14,11 +14,11 @@ ms.devlang: swift
 ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-swift"></a>Ismerkedés az Azure Mobile Engagement Swift nyelven írt iOS-alkalmazásokkal való használatával
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -44,10 +44,10 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
 > 
 > 
 
-## <a name="a-idsetupazmeasetup-mobile-engagement-for-your-ios-app"></a><a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
+## <a id="setup-azme"></a>A Mobile Engagement beállítása az iOS-alkalmazáshoz
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="a-idconnectingappaconnect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
+## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása a Mobile Engagement háttérrendszeréhez
 Ez az oktatóanyag egy „alapszintű integrációt” mutat be, ami minimálisan szükséges az adatok gyűjtéséhez és leküldéses értesítés küldéséhez. A teljes integrációs dokumentáció itt található: [Mobile Engagement iOS SDK-integráció](mobile-engagement-ios-sdk-overview.md)
 
 Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az integráció bemutatásához:
@@ -96,17 +96,17 @@ Létre fogunk hozni egy alapszintű alkalmazást az XCode segítségével az int
               [...]
         }
 
-## <a name="a-idmonitoraenabling-realtime-monitoring"></a><a id="monitor"></a>Valós idejű figyelés engedélyezése
+## <a id="monitor"></a>Valós idejű figyelés engedélyezése
 Az adatok küldésének megkezdéséhez és annak biztosításához, hogy a felhasználók aktívak, legalább egy képernyőt (tevékenységet) el kell küldenie a Mobile Engagement háttérrendszere számára.
 
 1. Nyissa meg a **ViewController.swift** fájlt, és cserélje le a **ViewController** alapszintű osztályát az **EngagementViewController** osztályra:
    
     `class ViewController : EngagementViewController {`
 
-## <a name="a-idmonitoraconnect-app-with-realtime-monitoring"></a><a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
+## <a id="monitor"></a>Az alkalmazás csatlakoztatása a valós idejű megfigyeléshez
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a name="a-idintegratepushaenabling-push-notifications-and-inapp-messaging"></a><a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
+## <a id="integrate-push"></a>Leküldéses értesítések és alkalmazáson belüli üzenetek engedélyezése
 A Mobile Engagement lehetővé teszi a felhasználókkal folytatott interakciót és a felhasználók elérését a kampányok részeként megjelenő leküldéses értesítésekkel és alkalmazáson belüli üzenetekkel. Ez a modul REACH (Elérés) néven érhető el a Mobile Engagement portálon.
 Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 
@@ -197,9 +197,3 @@ Az alábbi szakaszok állítják be az alkalmazást a fogadásukra.
 [4]: ./media/mobile-engagement-ios-swift-get-started/add-header-file.png
 [5]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 [6]: ./media/mobile-engagement-ios-swift-get-started/add-bridging-header.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

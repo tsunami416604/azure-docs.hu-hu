@@ -1,25 +1,25 @@
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Előfeltételek
 
-To complete this tutorial, you need an active Azure subscription.
+Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 
 > [!NOTE]
-> If you don’t have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][lnk-free-trial].
+> Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].
 
-### <a name="required-software"></a>Required software
+### <a name="required-software"></a>Szükséges szoftverek
 
-You need SSH client on your desktop machine to enable you to remotely access the command line on the Intel NUC.
+SSH-ügyfél van szüksége ahhoz, hogy a parancssor az Intel NUC a távoli eléréséhez a asztali számítógépen.
 
-- Windows does not include an SSH client. We recommend using [PuTTY](http://www.putty.org/).
-- Most Linux distributions and Mac OS include the command-line SSH utility.
+- A Windows tartalmaz egy SSH-ügyfél. Azt javasoljuk, [PuTTY](http://www.putty.org/).
+- A legtöbb Linux terjesztéseket, a Mac OS közé tartoznak az SSH parancssori segédprogramot.
 
-### <a name="required-hardware"></a>Required hardware
+### <a name="required-hardware"></a>Szükséges hardver
 
-A desktop computer to enable you to connect remotely to the command line on the Intel NUC.
+Ahhoz, hogy a parancssor az Intel NUC a távoli csatlakozás egy asztali számítógépen.
 
-[IoT Commercial Gateway Kit][lnk-starter-kits]. This tutorial uses the following items from the kit:
+[Az IoT kereskedelmi átjáró Kit][lnk-starter-kits]. Ez az oktatóanyag a csomagot a következő elemeket használja:
 
-- Intel® NUC Kit DE3815TYKE with 4G Memory and Bluetooth expansion card
-- Power adaptor
+- Intel® NUC Kit DE3815TYKE 4G memória és a Bluetooth bővítése kártya
+- Energiagazdálkodási adapter
 
 [lnk-starter-kits]: https://azure.microsoft.com/develop/iot/starter-kits/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

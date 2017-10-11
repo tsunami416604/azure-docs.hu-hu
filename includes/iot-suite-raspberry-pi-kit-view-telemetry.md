@@ -1,31 +1,31 @@
-## <a name="view-the-telemetry"></a>View the telemetry
+## <a name="view-the-telemetry"></a>A telemetriai adatok megtekintése
 
-The Raspberry Pi is now sending telemetry to the remote monitoring solution. You can view the telemetry on the solution dashboard. You can also send messages to your Raspberry Pi from the solution dashboard.
+A málna Pi telemetriai most küld a távoli figyelési megoldást igényelnek. A telemetriai adatokat a megoldás irányítópultján tekintheti meg. A málna Pi a megoldás irányítópultról is küldhet üzeneteket.
 
-- Navigate to the solution dashboard.
-- Select your device in the **Device to View** dropdown.
-- The telemetry from the Raspberry Pi displays on the dashboard.
+- Nyissa meg a megoldás irányítópultja.
+- Válassza ki az eszköz a **nézet eszköz** legördülő menüből.
+- A málna Pi a telemetriai adatok megjelenítése az irányítópulton.
 
-![Display telemetry from the Raspberry Pi][img-telemetry-display]
+![A málna Pi a telemetriai adatok megjelenítéséhez][img-telemetry-display]
 
-## <a name="act-on-the-device"></a>Act on the device
+## <a name="act-on-the-device"></a>Az eszközön működésre
 
-From the solution dashboard, you can invoke methods on your Raspberry Pi. When the Raspberry Pi connects to the remote monitoring solution, it sends information about the methods it supports.
+A megoldás irányítópultról módszerek hívhatók meg a málna Pi. A málna Pi csatlakozik a távoli felügyeleti megoldás, ha az támogatja-e a módszerekkel kapcsolatos információk küld.
 
-- In the solution dashboard, click **Devices** to visit the **Devices** page. Select your Raspberry Pi in the **Device List**. Then choose **Methods**:
+- A megoldás irányítópulton kattintson **eszközök** és látogasson el a **eszközök** lap. Válassza ki a Raspberry Pi a a **eszközlista**. Válassza a **módszerek**:
 
-    ![List devices in dashboard][img-list-devices]
+    ![Az irányítópult eszközök][img-list-devices]
 
-- On the **Invoke Method** page, choose **LightBlink** in the **Method** dropdown.
+- Az a **metódus meghívása** lapon, válassza ki **LightBlink** a a **metódus** legördülő menüből.
 
-- Choose **InvokeMethod**. The LED connected to the Raspberry Pi flashes several times. The app on the Raspberry Pi sends an acknowledgment back to the solution dashboard:
+- Válasszon **InvokeMethod**. A Pi málna villanás több alkalommal csatlakozik a LED-jét. Az alkalmazás a málna Pi nyugtázás visszaküldi a megoldás irányítópultja:
 
-    ![Show method history][img-method-history]
+    ![Módszer előzmények megjelenítése][img-method-history]
 
-- You can switch the LED on and off using the **ChangeLightStatus** method with a **LightStatusValue** set to **1** for on or **0** for off.
+- Megváltoztathatja a LED be és ki használja a **ChangeLightStatus** metódust egy **LightStatusValue** beállítása **1** a a vagy **0** a ki.
 
 > [!WARNING]
-> If you leave the remote monitoring solution running in your Azure account, you are billed for the time it runs. For more information about reducing consumption while the remote monitoring solution runs, see [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config]. Delete the preconfigured solution from your Azure account when you have finished using it.
+> Ha nem adja meg a távoli figyelési megoldást igényelnek fut az Azure-fiókjával, a futtatásakor a kell fizetni. További információ a felhasználás csökkentése a távoli felügyeleti megoldás futtatása közben: [konfigurálása Azure IoT Suite megoldások bemutató céljára előre konfigurált][lnk-demo-config]. Ha befejezte, használja az előkonfigurált megoldás törlése az Azure-fiókjával.
 
 
 [img-telemetry-display]: media/iot-suite-raspberry-pi-kit-view-telemetry/telemetry.png

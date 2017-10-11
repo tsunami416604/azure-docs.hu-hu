@@ -1,14 +1,14 @@
 
 <!--author=alkohli last changed: 9/11/15-->
 
-#### <a name="to-add-a-storsimple-backup-policy"></a>To add a StorSimple backup policy
-1. On the device **Quick Start** page, click the **Backup Policies** tab. This will take you to the **Backup Policies** page.
-2. At the bottom of the page, click **Add**.
-3. In the **Add Backup Policy** dialog box, do the following:
+#### <a name="to-add-a-storsimple-backup-policy"></a>StorSimple biztonsági mentési házirend hozzáadása
+1. Az eszköz **Gyors üzembe helyezés** oldalán kattintson a **Biztonsági mentési házirendek** fülre. Ekkor a **Biztonsági mentési házirendek** oldalra kerül.
+2. Kattintson a lap alján **Hozzáadás**.
+3. Az a **biztonsági mentési házirend hozzáadása** párbeszédpanelen tegye a következőket:
    
-   1. Specify a backup policy name that contains between 3 and 150 characters.
-   2. Assign one or more volumes to this backup policy. If you are using other cloud service providers, based on your first selection, the drop-down list will show volumes belonging to only that cloud service provider. This will allow you to group volumes belonging to a single cloud service provider for taking a snapshot.
-   3. Click the check icon ![check icon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) to save the policy.
+   1. Adjon egy 3–150 karakter hosszúságú nevet a biztonsági mentési házirendnek.
+   2. Rendelje hozzá egy vagy több kötetet a biztonsági mentési házirend. Ha használ egyéb felhőszolgáltatók, az elsőként kiválasztott szempont alapján a legördülő listából válassza ki a felhőbeli szolgáltatás szolgáltatója tartozó kötetek jelennek meg. Ez lehetővé teszi a pillanatkép létrehozása van folyamatban egy felhőszolgáltató tartozó csoport kötetekre.
+   3. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) a házirend mentéséhez.
 
-The newly added policy will be displayed in the tabular view on the **Backup Policies** page.
+Az újonnan felvett házirend megjelenik a **Biztonsági mentési házirendek** oldal táblázatos nézetében.
 

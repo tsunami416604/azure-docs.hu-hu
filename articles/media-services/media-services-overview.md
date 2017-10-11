@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/04/2017
 ms.author: juliako;anilmur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 38c3637cc477e24ac8d056611e7fda9a4d693cdb
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 2a175aed40b9775d9a4de6877eb3467b43819568
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
@@ -88,4 +87,3 @@ Az adatközpontokban lévő rendelkezésre állásról információért lásd a 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

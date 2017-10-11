@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
 ms.openlocfilehash: fac6ee69b5f0377e0515ac9abeb28788cbef9b79
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Hálózati forgalom szűrése hálózati biztonsági csoportokkal
 
@@ -263,4 +262,3 @@ Mivel néhány NSG önálló hálózati adapterhez van hozzárendelve, a szabál
 * [NSG-k telepítése a klasszikus modellel](virtual-networks-create-nsg-classic-ps.md).
 * [Manage NSG logs](virtual-network-nsg-manage-log.md) (NSG-naplók kezelése).
 * [NSG-k hibaelhárítása] (virtual-network-nsg-troubleshoot-portal.md)
-

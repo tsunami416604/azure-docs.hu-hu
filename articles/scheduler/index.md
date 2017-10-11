@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ad88288056956ab29d446efbe105157f6b732d5f
 ms.openlocfilehash: 4883e5689a639259ec1c0bcd31e1016f85af5d66
-ms.contentlocale: hu-hu
-ms.lasthandoff: 02/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/19/2017
 ---
 # <a name="scheduler-documentation"></a>A Scheduler dokumentációja
 
@@ -109,6 +108,5 @@ Ismerje meg, hogyan ütemezheti és hívhatja meg automatikusan a felhőbeli ism
         </div>
     </li>
 </ul>
-
 
 

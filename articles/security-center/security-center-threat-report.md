@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
-ms.openlocfilehash: 99c5ea06a0970c360eb711a8b10894d416146693
-ms.lasthandoff: 01/31/2017
-
-
+ms.openlocfilehash: b4310cf4e6849c67031b3ec8b1fd5957e35f7ea6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center fenyegetésfelderítési jelentés
 Ez a dokumentum ismerteti, hogy az Azure Security Center fenyegetésfelderítési jelentés segítségével hogyan tudhat meg többet az olyan fenyegetésekről, amelyek biztonsági riasztást hoztak létre.
@@ -76,4 +75,3 @@ Ebben a dokumentumban megismerkedhetett azzal, hogyan segítheti Önt az Azure S
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md). A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
 * [Biztonsági incidens kezelése az Azure Security Centerben](security-center-incident.md)
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-

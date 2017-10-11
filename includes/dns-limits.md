@@ -1,8 +1,8 @@
 
-| Resource | Default limit |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Zones per subscription |100 <sup>1</sup> |
-| Record sets per zone |5000 <sup>1</sup> |
-| Records per record set |20 |
+| Zónák előfizetésenként |100 <sup>1</sup> |
+| Egyes zónák rekordhalmazok |5000 <sup>1</sup> |
+| Rekordok száma rekordkészlete |20 |
 
-<sup>1</sup> Contact Azure Support in case you need to increase these limits.
+<sup>1</sup> forduljon a támogatási szolgálathoz Azure esetben ezek a korlátozások növelnie kell.

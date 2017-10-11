@@ -1,7 +1,7 @@
-## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Associate an Azure Storage account to IoT Hub
+## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Az IoT hubhoz Azure Storage-fiók társítása
 
-Because the simulated device app uploads a file to a blob, you must have an [Azure Storage](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) account associated to IoT Hub. When you associate an Azure Storage account with an IoT hub, the IoT hub generates a SAS URI. A device can use this SAS URI to securely upload a file to a blob container. The IoT Hub service and the device SDKs coordinate the process that generates the SAS URI and makes it available to a device to use to upload a file.
+Mivel a szimulált eszköz alkalmazásának feltölt egy fájlt egy blobba, rendelkeznie kell egy [Azure Storage](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) az IoT hubhoz tartozó fiókot. Egy Azure Storage-fiók társítása az IoT-központ, az IoT hub hoz létre egy SAS URI-t. Egy eszköz a SAS URI segítségével biztonságosan fájl feltöltése a blob-tároló. Az IoT-központ szolgáltatás és az eszköz SDK-k koordinálja a folyamat, amely a SAS URI-t állít elő, és lehetővé teszi az eszközöket, hogy a fájl feltöltéséhez használja.
 
-Follow the instructions in [Configure file uploads using the Azure portal](../articles/iot-hub/iot-hub-configure-file-upload.md) to associate an Azure Storage account to your IoT hub. Make sure that a blob container is associated with your IoT hub and that file notifications are enabled.
+Kövesse az utasításokat a [fájlfeltöltések konfigurálása az Azure portál használatával](../articles/iot-hub/iot-hub-configure-file-upload.md) rendelje hozzá a az IoT hub az Azure Storage-fiók. Győződjön meg arról, hogy az IoT hub társítva-e a blob-tároló, és hogy engedélyezve vannak-e a fájl értesítések.
 
-![Enable File Notifications in portal](media/iot-hub-associate-storage/enable-file-notifications.png)
+![A portál fájl értesítések engedélyezése](media/iot-hub-associate-storage/enable-file-notifications.png)

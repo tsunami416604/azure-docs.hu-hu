@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
 ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.contentlocale: hu-hu
-ms.lasthandoff: 02/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Azure Mobile Engagement-alkalmazás létrehozása
 Ez a cikk bemutatja, hogyan használható a **Gyors létrehozás** módszer új **Azure Mobile Engagement**-alkalmazás létrehozására. A cikk azt is ismerteti, hogyan nyithatja meg a **Mobile Engagement** portált az alkalmazások figyelésének és kezelésének megkezdéséhez. 
@@ -48,5 +47,4 @@ Miután belépett a Mobile Engagement portálra, elemezheti, létrehozhatja és 
 [A Mobile Engagement-stratégia kidolgozása](mobile-engagement-define-your-mobile-engagement-strategy.md)
 
 [Ismerkedés az Azure Mobile Engagement szolgáltatással](mobile-engagement-windows-store-dotnet-get-started.md) (a lap tetején választhat másik mobilplatformot).
-
 

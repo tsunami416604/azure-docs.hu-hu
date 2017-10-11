@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>Automatikus méretezést végző alkalmazás üzembe helyezése sablon használatával
 
 Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Ez az oktatóanyag az [egyszerű méretezési csoport üzembe helyezését](virtual-machine-scale-sets-mvss-start.md) ismertető cikkre épít, és bemutatja, hogyan lehet üzembe helyezni egy automatikus méretezést végző egyszerű alkalmazást egy méretezési csoportban Azure Resource Manager-sablon használatával.  Az automatikus méretezést a PowerShell, a CLI vagy a portál használatával is beállíthatja. További információért lásd az [automatikus méretezést áttekintő](virtual-machine-scale-sets-autoscale-overview.md) témakört.
@@ -309,4 +307,3 @@ fi
 ## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-

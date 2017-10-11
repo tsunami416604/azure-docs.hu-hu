@@ -1,19 +1,19 @@
 
 
 
-This topic describes how to:
+Ez a témakör ismerteti, hogyan:
 
-* Inject data into an Azure virtual machine (VM) when it is being provisioned.
-* Retrieve it for both Windows and Linux.
-* Use special tools available on some systems to detect and handle custom data automatically.
+* Szúrjon be egy Azure virtuális gép (VM) adatokat, amikor folyamatban van.
+* Beolvasni a Windows és Linux.
+* Egyes rendszerek különleges elérhető eszközök segítségével észleli és automatikusan kezelni az egyéni adatokat.
 
 > [!NOTE]
-> This article describes how custom data can be injected by using a VM created with the Azure Service Management API. To see how to use the Azure Resource Management API, see [the example template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+> Ez a cikk ismerteti, hogyan egyéni adatok beszúrhatja egy virtuális Gépet létrehozni az Azure szolgáltatásfelügyeleti API használatával. Az Azure erőforrás-kezelési API használatával, olvassa el [a példa sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
 > 
 > 
 
-## <a name="injecting-custom-data-into-your-azure-virtual-machine"></a>Injecting custom data into your Azure virtual machine
-This feature is currently supported only in the [Azure Command-Line Interface](https://github.com/Azure/azure-xplat-cli). Here we create a `custom-data.txt` file that contains our data, then inject that in to the VM during provisioning. Although you may use any of the options for the `azure vm create` command, the following demonstrates one very basic approach:
+## <a name="injecting-custom-data-into-your-azure-virtual-machine"></a>Egyéni adatok beszúrva közzététele az Azure virtuális gépen
+Ez a funkció jelenleg csak a támogatott a [Azure parancssori felület](https://github.com/Azure/azure-xplat-cli). Itt létrehozhatunk egy `custom-data.txt` fájlt, amely tartalmazza az adatokat, majd szúrjon, hogy a virtuális gép kiépítése során. De használhat, a beállításokat a `azure vm create` parancsot a következő egy nagyon egyszerű módszert mutatja be:
 
 ```
     azure vm create <vmname> <vmimage> <username> <password> \  
@@ -22,33 +22,33 @@ This feature is currently supported only in the [Azure Command-Line Interface](h
 ```
 
 
-## <a name="using-custom-data-in-the-virtual-machine"></a>Using custom data in the virtual machine
-* If your Azure VM is a Windows-based VM, then the custom data file is saved to `%SYSTEMDRIVE%\AzureData\CustomData.bin`. Although it was base64-encoded to transfer from the local computer to the new VM, it is automatically decoded and can be opened or used immediately.
+## <a name="using-custom-data-in-the-virtual-machine"></a>Egyéni adatok használata a virtuális gép
+* Ha az Azure virtuális gép egy Windows-alapú virtuális Gépet, akkor az egyéni adatok fájlt ment `%SYSTEMDRIVE%\AzureData\CustomData.bin`. Bár a helyi számítógépről át az új virtuális gép base64-kódolású volt, akkor automatikusan dekódolt és megnyitható vagy azonnal.
   
   > [!NOTE]
-  > If the file exists, it is overwritten. The security on the directory is set to **System:Full Control** and **Administrators:Full Control**.
+  > Ha a fájl létezik, a rendszer felülírja. A könyvtár biztonsági beállítása **System: Full Control** és **rendszergazdák: Full Control**.
   > 
   > 
-* If your Azure VM is a Linux-based VM, then the custom data file will be located in one of the following places depending on your distro. The data may be base64-encoded, so you may need to decode the data first:
+* Ha az Azure virtuális gép egy Linux-alapú virtuális Gépet, majd egyéni adatok találhatók attól függően, hogy a distro az alábbi helyek egyikét. Valószínűleg az adatok base64 kódolású, szükség lehet az adatok első dekódolási:
   
   * `/var/lib/waagent/ovf-env.xml`
   * `/var/lib/waagent/CustomData`
   * `/var/lib/cloud/instance/user-data.txt` 
 
-## <a name="cloud-init-on-azure"></a>Cloud-init on Azure
-If your Azure VM is from an Ubuntu or CoreOS image, then you can use CustomData to send a cloud-config to cloud-init. Or if your custom data file is a script, then cloud-init can simply execute it.
+## <a name="cloud-init-on-azure"></a>Azure cloud inicializálás
+Ha az Azure virtuális gép Ubuntu vagy CoreOS lemezképből CustomData egy felhő-config küldendő felhő inicializálás használhatja. Vagy ha az egyéni fájlját egy parancsfájlt, majd felhő inicializálás egyszerűen végrehajtható.
 
-### <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Images
-In most Azure Linux images, you would edit "/etc/waagent.conf" to configure the temporary resource disk and swap file. See [Azure Linux Agent user guide](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) for more information.
+### <a name="ubuntu-cloud-images"></a>Ubuntu felhő lemezképek
+A legtöbb Azure Linux-lemezképekben volna szerkesztése "/ etc/waagent.conf" ideiglenes fájl és az ideiglenes erőforrás lemez konfigurálni. Lásd: [Azure Linux ügynök felhasználói útmutató](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további információt.
 
-However, on the Ubuntu Cloud Images, you must use cloud-init to configure the resource disk (that is, the "ephemeral" disk) and swap partition. See the following page on the Ubuntu wiki for more details: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
+Azonban az Ubuntu felhő képek kell használnia felhő inicializálás konfigurálása az erőforrás (Ez azt jelenti, hogy a "elmúló") lemez és partíció felcserélése. A következő oldal jelenik meg a további részletekért Ubuntu wiki: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps-using-cloud-init"></a>Next steps: Using cloud-init
-For further information, see the [cloud-init documentation for Ubuntu](https://help.ubuntu.com/community/CloudInit).
+## <a name="next-steps-using-cloud-init"></a>További lépések: Felhő inicializálás használatával
+További információkért lásd: a [Ubuntu felhő inicializálás dokumentációja](https://help.ubuntu.com/community/CloudInit).
 
 <!--Link references-->
-[Add Role Service Management REST API Reference](http://msdn.microsoft.com/library/azure/jj157186.aspx)
+[Adja hozzá a szerepkör Service Management REST API-referencia](http://msdn.microsoft.com/library/azure/jj157186.aspx)
 
-[Azure Command-line Interface](https://github.com/Azure/azure-xplat-cli)
+[Azure parancssori felület](https://github.com/Azure/azure-xplat-cli)
 

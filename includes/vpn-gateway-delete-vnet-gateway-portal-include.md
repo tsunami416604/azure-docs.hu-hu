@@ -1,17 +1,17 @@
-### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>Step 1: Navigate to the virtual network gateway
+### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>1. lépés: Nyissa meg a virtuális hálózati átjáró
 
-1. In the [Azure portal](https://portal.azure.com), navigate to **All resources**. 
-2. To open the virtual network gateway blade, navigate to the virtual network gateway that you want to delete and click it.
+1. Az a [Azure-portálon](https://portal.azure.com), navigáljon a **összes erőforrás**. 
+2. Nyissa meg a virtuális hálózati átjáró panelt, navigáljon a virtuális hálózati átjáró törlése, és kattintson rá a kívánt.
 
-### <a name="step-2-delete-connections"></a>Step 2: Delete connections
+### <a name="step-2-delete-connections"></a>2. lépés: Delete kapcsolatok
 
-1. On the blade for your virtual network gateway, click **Connections** to view all connections to the gateway.
-2. Click the **'...'** on the row of the name of the connection, then select **Delete** from the dropdown.
-3. Click **Yes** to confirm that you want to delete the connection. If you have multiple connections, delete each connection.
+1. A virtuális hálózati átjáró paneljén kattintson **kapcsolatok** összes kapcsolatot az átjáró megtekintéséhez.
+2. Kattintson a **"..."** a sorban található a kapcsolat neve, majd válassza ki **törlése** a legördülő listából.
+3. Kattintson a **Igen** annak megerősítéséhez, hogy törölni kívánja a kapcsolatot. Ha több kapcsolatot, minden kapcsolat törlése.
 
-### <a name="step-3-delete-the-virtual-network-gateway"></a>Step 3: Delete the virtual network gateway
+### <a name="step-3-delete-the-virtual-network-gateway"></a>3. lépés: A virtuális hálózati átjáró törlése
 
-Be aware that if you have a P2S configuration to this VNet in addition to your S2S configuration, deleting the virtual network gateway will automatically disconnect all P2S clients without warning.
+Vegye figyelembe, hogy ha egy P2S-konfigurációt a vneten mellett S2S-konfigurációjáról, a virtuális hálózati átjáró törlése folyamatban lesz automatikusan ügyfelek leválasztása a összes P2S figyelmeztetés nélkül.
 
-1. On the virtual network gateway blade, click **Overview**.
-2. On the **Overview** blade, click **Delete** to delete the gateway.
+1. A virtuális hálózati átjáró paneljén kattintson **áttekintése**.
+2. Az a **áttekintése** panelen kattintson a **törlése** törölni az átjárót.

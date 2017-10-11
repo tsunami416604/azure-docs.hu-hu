@@ -1,20 +1,20 @@
-### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>Prepare for a push installation on a Windows computer
+### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>Egy leküldéses telepítését a Windows-számítógép előkészítése
 
-1. Ensure that there’s network connectivity between the Windows computer and the process server.
-2. Create an account that the process server can use to access the computer. The account should have administrator rights (local or domain). (Use this account only for the push installation and for agent updates.)
+1. Győződjön meg arról, hogy van-e hálózati kapcsolat a Windows-számítógép és a folyamatkiszolgáló között.
+2. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fiók (helyi vagy tartományi) rendszergazdai jogosultságokkal kell rendelkeznie. (Ez a fiók csak a leküldéses telepítés és használjon frissítéseihez.)
 
    > [!NOTE]
-   > If you're not using a domain account, disable Remote User Access control on the local computer. To disable Remote User Access control, under the HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System registry key, add a new DWORD: **LocalAccountTokenFilterPolicy**. Set the value to **1**. To do this at a command prompt, run the following command:  
+   > Ha nem használ egy olyan tartományi fiók, tiltsa le a távoli felhasználói hozzáférés-vezérlés a helyi számítógépen. Tiltsa le a távoli felhasználó hozzáférés-vezérlés, a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System beállításkulcs alatt hozzáadása egy új DWORD: **LocalAccountTokenFilterPolicy**. Állítsa be az értéket **1**. Ehhez a parancssorba a következő parancsot:  
    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
    >
    >
-2. In Windows Firewall on the computer you want to protect, select **Allow an app or feature through Firewall**. Enable **File and Printer Sharing** and **Windows Management Instrumentation (WMI)**. For computers that belong to a domain, you can configure the firewall settings by using a Group Policy object (GPO).
+2. A Windows tűzfal a védeni kívánt számítógépen, válassza ki a **lehetővé teszi egy alkalmazás vagy szolgáltatás átengedése a tűzfalon**. Engedélyezése **fájl- és nyomtatómegosztás** és **Windows Management Instrumentation (WMI)**. Egy tartományba tartozó számítógépek esetében egy csoportházirend-objektumot (GPO) segítségével konfigurálhatja a tűzfal beállításait.
 
-   ![Firewall settings](./media/site-recovery-prepare-push-install-mob-svc-win/mobility1.png)
+   ![Tűzfalbeállítások](./media/site-recovery-prepare-push-install-mob-svc-win/mobility1.png)
 
-3. Add the account that you created in CSPSConfigtool.
-    1.  Sign in to your configuration server.
-    2.  Open **cspsconfigtool.exe**. (It's available as a shortcut on the desktop and in the %ProgramData%\home\svsystems\bin folder.)
-    3.  On the **Manage Accounts** tab, select **Add Account**.
-    4.  Add the account you created.
-    5.  Enter the credentials you use when you enable replication for a computer.
+3. Adja hozzá a CSPSConfigtool eszközben létrehozott fiókot.
+    1.  Jelentkezzen be a konfigurációs kiszolgálóra.
+    2.  Nyissa meg a következőt: **cspsconfigtool.exe**. (A parancsikonja elérhető az asztalon, az alkalmazás pedig a %ProgramData%\home\svsystems\bin mappában található.)
+    3.  Az a **fiókok kezelése** lapon jelölje be **fiók hozzáadása**.
+    4.  Adja hozzá a létrehozott fiókot.
+    5.  Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.

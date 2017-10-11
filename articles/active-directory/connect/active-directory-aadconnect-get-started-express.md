@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: 8a08f6e441a856a06bf7870747ca20af45a0364e
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Első lépések az Azure AD Connecttel a gyorsbeállítások használatával
 Az Azure AD Connect **Express Settings** (Gyorsbeállítások) akkor használható, ha egyerdős topológiával rendelkezik, és a hitelesítéshez [jelszó-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md) alkalmaz. Az **Express Settings** (Gyorsbeállítások) az alapértelmezett beállítás, és ez használatos a leggyakoribb üzembe helyezési forgatókönyvhöz. Csak pár rövid kattintásnyira van attól, hogy kiterjessze helyszíni címtárát a felhőre.
@@ -73,5 +72,4 @@ További információ: [Helyszíni identitások integrálása az Azure Active Di
 | Telepítés testreszabott beállítások használatával |
 | Frissítés a DirSync szolgáltatásról |
 | Telepítési fiókok |
-
 

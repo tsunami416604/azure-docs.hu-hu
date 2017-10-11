@@ -1,5 +1,5 @@
 ---
-title: "Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsightban | Microsoft Docs"
+title: "Tartományhoz csatlakoztatott HDInsight - Azure Hive szabályzatok konfigurálására |} Microsoft Docs"
 description: "Információk ...."
 services: hdinsight
 documentationcenter: 
@@ -9,17 +9,18 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 3fade1e5-c2e1-4ad5-b371-f95caea23f6d
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 20ae053057e74e0bc874391dd8a9cd19e0a293e7
-ms.openlocfilehash: 2d244187585f716af8c4e6d65a445e0ab8217890
-
-
+ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight-preview"></a>Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-ban (előzetes verzió)
 Útmutató ahhoz, hogyan lehet az Apache Ranger-házirendeket a Hive számára konfigurálni. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
@@ -90,7 +91,7 @@ Az utasítások a [Hive ODBC-adatforrás létrehozása](hdinsight-connect-excel-
     Hive Server típusa|Válassza ki a <strong>Hive Server 2</strong> típust
     Mechanizmus|Válassza ki az <strong>Azure HDInsight szolgáltatást</strong>
     HTTP elérési útja|Hagyja üresen.
-    Felhasználónév|Írja be a következőt: hiveuser1@contoso158.onmicrosoft.com.. Frissítse a tartománynevet, ha eltérő.
+    Felhasználónév|Adja meg hiveuser1@contoso158.onmicrosoft.com. Frissítse a tartomány nevét, ha más.
     Jelszó|Adja meg a hiveuser1 jelszavát.
     </table>
 
@@ -138,14 +139,8 @@ Az utolsó szakaszban létrehozott második (read-hivesampletable-devicemake) h�
 
 ## <a name="next-steps"></a>Következő lépések
 * A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](hdinsight-domain-joined-configure.md).
-* A tartományhoz csatlakoztatott HDInsight-fürt kezeléséhez lásd a [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md) című részt.
-* Ha SSH használatával Hive-lekérdezéseket szeretne futtatni a tartományhoz csatlakoztatott HDInsight-fürtökön, olvassa el [Az SSH használata a HDInsight-ra épülő Linux-alapú Hadooppal Linux, Unix vagy OS X rendszerben](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined) című részt.
+* A tartományhoz csatlakoztatott HDInsight-fürtök kezeléséhhez lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md).
+* Az SSH használata a tartományhoz csatlakoztatott HDInsight-fürtökön Hive-lekérdezéseket futtat, tekintse meg a [az SSH a Hdinsighttal](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 * A Hive JDBC segítségével történő Hive-csatlakoztatáshoz olvassa el a [Csatlakozás a Hive-hoz az Azure HDInsight rendszerben a Hive JDBC-illesztőprogrammal](hdinsight-connect-hive-jdbc-driver.md) című részt
 * Ha az Excelt a Hive ODBC segítségével szeretné a Hadoophoz csatlakoztatni, olvassa el [Az Excel csatlakoztatása a Hadoophoz a Microsoft Hive ODBC-meghajtó segítségével](hdinsight-connect-excel-hive-odbc-driver.md) című részt
 * Ha az Excelt a Power Query segítségével szeretné a Hadoophoz csatlakoztatni, olvassa el [Az Excel csatlakoztatása a Hadoophoz a Power Query segítségével](hdinsight-connect-excel-power-query.md) című részt
-
-
-
-<!--HONumber=Dec16_HO1-->
-
-

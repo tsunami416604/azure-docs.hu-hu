@@ -11,7 +11,7 @@ Ha engedélyezni szeretné, hogy a Mobile Engagement leküldéses értesítések
    
     ![](./media/mobile-engagement-ios-send-push/native-push-settings.png)
 
-## <a name="a-idsendasend-a-notification-to-your-app"></a><a id="send"></a>Értesítés küldése az alkalmazásnak
+## <a id="send"></a>Értesítés küldése az alkalmazásnak
 Most létrehozunk egy egyszerű leküldéses értesítési kampányt, amely elküld egy leküldéses értesítést az alkalmazásnak.
 
 1. Lépjen a Mobile Engagement portál **Reach** (Elérés) lapjára.
@@ -39,9 +39,4 @@ Most létrehozunk egy egyszerű leküldéses értesítési kampányt, amely elk�
 8. Ha rendelkezik egy, az iOS-eszközzel párosított Apple Watchcsal, akkor az értesítés az óráján jelenik majd meg.
    
     ![](./media/mobile-engagement-ios-send-push/apple-watch.png)
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

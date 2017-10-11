@@ -39,8 +39,3 @@
       ![Kötet hozzáadása](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
 4. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). Létrejön egy kötet a megadott beállításokkal.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

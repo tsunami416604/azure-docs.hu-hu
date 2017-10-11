@@ -10,8 +10,3 @@ Az Azure Backup szolgáltatás két típusú tárolóval rendelkezik – a Backu
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

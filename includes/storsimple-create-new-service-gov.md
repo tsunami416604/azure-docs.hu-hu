@@ -1,20 +1,20 @@
 <!--author=SharS last changed: 9/17/15-->
 
 
-#### <a name="to-create-a-new-service"></a>To create a new service
-1. Use your Microsoft account credentials to log on to the [Microsoft Azure Government Portal](https://manage.windowsazure.us/).
-2. In the Government Portal, click **New** > **Data Services** > **StorSimple Manager** > **Quick Create**.
-3. In the form that is displayed, do the following:
+#### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
+1. A Microsoft-fiók hitelesítő adatainak használatával jelentkezzen be a [Microsoft Azure Government Portal](https://manage.windowsazure.us/).
+2. A kormányzati portálon kattintson **új** > **adatszolgáltatások** > **StorSimple Manager** > **gyors létrehozás** .
+3. A megjelenő adatlapon tegye a következőket:
    
-   1. Supply a unique **Name** for your service. This is a friendly name that can be used to identify the service. The name can have between 2 and 50 characters that can be letters, numbers, and hyphens. The name must start and end with a letter or a number.
-   2. Supply a **Location** for your service. Location refers to the geographical region where you want to deploy your device. Select **US Govt Iowa** or **US Govt Virgina**.
-   3. Choose a **Subscription** from the drop-down list. The subscription is linked to your billing account. This field is not present if you have only one subscription.
-   4. Select **Create a new storage account** to automatically create a storage account with the service. This storage account will have a special name such as "storsimplebwv8c6dcnf."
-   5. Click **Create StorSimple Manager** to create the service.
+   1. Adjon egy egyedi **nevet** a szolgáltatásnak. Ez a szolgáltatás azonosítására szolgáló rövid név. A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.
+   2. Adjon meg egy **helyet** a szolgáltatáshoz. Helyre hivatkozik, az a földrajzi régió, ahol az eszközt telepíteni szeretné. Válassza ki **USA Govt Iowa** vagy **USA Govt Virgina**.
+   3. A legördülő listából válasszon egy **előfizetést**. Az előfizetés az Ön számlázási fiókjához lesz társítva. Ez a mező nem jelenik meg abban az esetben, ha csak egy előfizetéssel rendelkezik.
+   4. A szolgáltatáshoz tartozó tárfiók automatikus létrehozásához válassza az **Új tárfiók létrehozása** lehetőséget. Ez a tárfiók egy speciális névvel jön létre, pl.: „storsimplebwv8c6dcnf”.
+   5. A szolgáltatás létrehozásához kattintson a **StorSimple Manager létrehozása** elemre.
       
-       ![create a service](./media/storsimple-create-new-service-gov/HCS_CreateAService-gov-include.png)
+       ![Szolgáltatás létrehozása](./media/storsimple-create-new-service-gov/HCS_CreateAService-gov-include.png)
       
-      You will be directed to the **Service** landing page. The service creation will take a few minutes. After the service is successfully created, you will be notified appropriately and the status of the service will change to **Active**.
+      Ekkor a **Szolgáltatás** kezdőlapjára kerül. A szolgáltatás létrehozása eltarthat néhány percig. A szolgáltatás sikeres létrehozásáról a rendszer értesítést küld, a szolgáltatás pedig **Aktív** állapotú lesz.
       
-       ![service creation](./media/storsimple-create-new-service-gov/HCS_StorSimpleManagerServicePage-gov-include.png)
+       ![szolgáltatás létrehozása](./media/storsimple-create-new-service-gov/HCS_StorSimpleManagerServicePage-gov-include.png)
 

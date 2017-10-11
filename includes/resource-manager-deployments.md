@@ -1,36 +1,36 @@
-## <a name="incremental-and-complete-deployments"></a>Incremental and complete deployments
-When deploying your resources, you specify that the deployment is either an incremental update or a complete update. The primary difference between these two modes is how Resource Manager handles existing resources in the resource group that are not in the template:
+## <a name="incremental-and-complete-deployments"></a>Növekményes és teljes központi telepítések
+Az erőforrások telepítésekor Megadja, hogy a központi telepítés egy növekményes frissítés vagy egy teljes frissítés. E két mód között az elsődleges különbség az, hogyan kezeli az erőforrás-kezelő a meglévő erőforrások az erőforráscsoportban, amelyek nincsenek a sablonban:
 
-* In complete mode, Resource Manager **deletes** resources that exist in the resource group but are not specified in the template. 
-* In incremental mode, Resource Manager **leaves unchanged** resources that exist in the resource group but are not specified in the template.
+* Teljes módban, erőforrás-kezelő **törli** erőforrásokat, az erőforráscsoport szerepel, de nincs megadva a sablonban. 
+* Növekményes módban, erőforrás-kezelő **hagyja változatlanul** erőforrásokat, az erőforráscsoport szerepel, de nincs megadva a sablonban.
 
-For both modes, Resource Manager attempts to provision all resources specified in the template. If the resource already exists in the resource group and its settings are unchanged, the operation results in no change. If you change the settings for a resource, the resource is provisioned with those new settings. If you attempt to update the location or type of an existing resource, the deployment fails with an error. Instead, deploy a new resource with the location or type that you need.
+Mindkét módnál az erőforrás-kezelő megpróbálja a sablonban megadott összes erőforrások biztosításához. Ha az erőforrás már létezik az erőforráscsoporthoz tartozik, és a beállítások nem változnak, a művelet nincs változás eredményezi. Ha egy erőforrás beállításait módosítja, az erőforrás ki van építve a új beállítások. Ha úgy próbálja frissíteni a helyet vagy a meglévő erőforrás típusa, a telepítés sikertelen, a hibaüzenet. Ehelyett egy új erőforrást a hely telepítése, vagy adjon meg, hogy van szüksége.
 
-By default, Resource Manager uses the incremental mode.
+Alapértelmezés szerint az erőforrás-kezelő a növekményes módot használ.
 
-To illustrate the difference between incremental and complete modes, consider the following scenario.
+Növekményes és teljes mód közötti különbséget mutatja be, a következő eset.
 
-**Existing Resource Group** contains:
+**Meglévő erőforráscsoport** tartalmazza:
 
-* Resource A
-* Resource B
-* Resource C
+* Erőforrás
+* B erőforrás
+* Erőforrás C
 
-**Template** defines:
+**Sablon** határozza meg:
 
-* Resource A
-* Resource B
-* Resource D
+* Erőforrás
+* B erőforrás
+* D erőforrás
 
-When deployed in **incremental** mode, the resource group contains:
+Ha telepítve **növekményes** módot, az erőforráscsoport tartalmazza:
 
-* Resource A
-* Resource B
-* Resource C
-* Resource D
+* Erőforrás
+* B erőforrás
+* Erőforrás C
+* D erőforrás
 
-When deployed in **complete** mode, Resource C is deleted. The resource group contains:
+Ha telepítve **teljes** mód, erőforrás-C törlődik. Az erőforráscsoport tartalmazza:
 
-* Resource A
-* Resource B
-* Resource D
+* Erőforrás
+* B erőforrás
+* D erőforrás

@@ -1,48 +1,48 @@
-## <a name="build-iot-edge"></a>Build IoT Edge
+## <a name="build-iot-edge"></a>Az IoT-Edge összeállítása
 
-This tutorial uses custom IoT Edge modules to communicate with the remote monitoring preconfigured solution. Therefore, you need to build the IoT Edge modules from custom source code. The following sections describe how to install IoT Edge and build the custom IoT Edge module.
+Ez az oktatóanyag IoT peremhálózati az egyéni modulok kommunikálni a távoli figyelési előkonfigurált megoldást használja. Ezért kell felépítenie az IoT él modulok egyéni forrás kódból. Az alábbi szakaszok azt ismertetik, hogyan IoT peremhálózati telepítéséhez, és hozni az egyéni IoT peremhálózati modult.
 
-### <a name="install-iot-edge"></a>Install IoT Edge
+### <a name="install-iot-edge"></a>Az IoT-Edge telepítése
 
-The following steps describe how to install the pre-compiled IoT Edge software on the Intel NUC:
+Az Intel NUC előre lefordított IoT peremhálózati szoftver telepítése a következő lépésekből áll:
 
-1. Configure the required smart package repositories by running the following commands on the Intel NUC:
+1. Adja meg a szükséges intelligens csomag tárházak találhatók az Intel NUC a következő parancsok futtatásával:
 
     ```bash
     smart channel --add IoT_Cloud type=rpm-md name="IoT_Cloud" baseurl=http://iotdk.intel.com/repos/iot-cloud/wrlinux7/rcpl13/ -y
     smart channel --add WR_Repo type=rpm-md baseurl=https://distro.windriver.com/release/idp-3-xt/public_feeds/WR-IDP-3-XT-Intel-Baytrail-public-repo/RCPL13/corei7_64/
     ```
 
-    Enter `y` when the command prompts you to **Include this channel?**.
+    Adja meg `y` Ha a parancs felszólítja, hogy **tartalmazzák ezt a csatornát?**.
 
-1. Update the smart package manager by running the following command:
+1. Az intelligens Csomagkezelő frissítése a következő parancs futtatásával:
 
     ```bash
     smart update
     ```
 
-1. Install the Azure IoT Edge package by running the following command:
+1. Telepítse az Azure IoT biztonsági csomagot a következő parancs futtatásával:
 
     ```bash
     smart config --set rpm-check-signatures=false
     smart install packagegroup-cloud-azure -y
     ```
 
-1. Verify the installation by running the "Hello world" sample. This sample writes a hello world message to the log.txT file every five seconds. The following commands run the "Hello world" sample:
+1. Ellenőrizze a telepítést a "Hello world" példával futtatásával. Ez a minta hello world üzenet log.txT fájlba írja öt másodpercenként. Az alábbi parancsokat futtassa a "Hello world" példával:
 
     ```bash
     cd /usr/share/azureiotgatewaysdk/samples/hello_world/
     ./hello_world hello_world.json
     ```
 
-    Ignore any **invalid argument** messages when you stop the sample.
+    Figyelmen kívül hagyása **érvénytelen argumentum** üzenetek a minta leállításakor.
 
-    Use the following command to view the contents of the log file:
+    A következő paranccsal tekintheti meg a naplófájl tartalmát:
 
     ```bash
     cat log.txt | more
     ```
 
-### <a name="troubleshooting"></a>Troubleshooting
+### <a name="troubleshooting"></a>Hibaelhárítás
 
-If you receive the error "No package provides util-linux-dev", try rebooting the Intel NUC.
+Ha hibaüzenetet kap, a "nincs csomag biztosítja a fejlesztői linux util", próbálkozzon az Intel NUC újraindul.

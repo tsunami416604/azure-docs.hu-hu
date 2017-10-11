@@ -1,20 +1,20 @@
-#### <a name="expressroute-limits"></a>ExpressRoute Limits
-The following limits apply to ExpressRoute resources per subscription.
+#### <a name="expressroute-limits"></a>Az ExpressRoute-korlátok
+A következő korlátozások vonatkoznak az ExpressRoute-erőforrások előfizetésenként.
 
-| Resource | Default Limit |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| ExpressRoute circuits per subscription |10 |
-| ExpressRoute circuits per region per subscription for ARM |10 |
-| Maximum number of routes for Azure private peering with ExpressRoute standard |4,000 |
-| Maximum number of routes for Azure private peering with ExpressRoute premium add-on |10,000 |
-| Maximum number of routes for Azure public peering with ExpressRoute standard |200 |
-| Maximum number of routes for Azure public peering with ExpressRoute premium add-on |200 |
-| Maximum number of routes for Azure Microsoft peering with ExpressRoute standard |200 |
-| Maximum number of routes for Azure Microsoft peering with ExpressRoute premium add-on |200 |
-| Number of virtual network links allowed per ExpressRoute circuit |see table below |
+| ExpressRoute-Kapcsolatcsoportok előfizetésenként |10 |
+| Az ARM régiónként ExpressRoute-Kapcsolatcsoportok |10 |
+| Az Azure magánhálózati társviszony-létesítés ExpressRoute szabványnak útvonalakat maximális száma |4,000 |
+| Az Azure magánhálózati társviszony-létesítés ExpressRoute prémium bővítmény útvonalakat maximális száma |10,000 |
+| Az Azure nyilvános társviszony-létesítés ExpressRoute standard útvonalakat maximális száma |200 |
+| Az Azure nyilvános társviszony-létesítés ExpressRoute prémium szintű bővítmény útvonalakat maximális száma |200 |
+| A Azure Microsoft ExpressRoute standard társviszony-létesítés útvonalait maximális száma |200 |
+| A prémium szintű bővítmény ExpressRoute-társviszony létesítése – Azure Microsoft útvonalait maximális száma |200 |
+| Egy ExpressRoute-kapcsolatcsoportot lehet virtuális hálózati kapcsolatok száma |Az alábbi táblázatban találja |
 
-#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Number of Virtual Networks per ExpressRoute circuit
-| **Circuit Size** | **Number of VNet links for standard** | **Number of VNet Links with Premium add-on** |
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Virtuális hálózatok száma ExpressRoute-kapcsolatcsoportot
+| **Kör mérete** | **A standard VNet hivatkozások száma** | **Prémium szintű bővítmény VNet hivatkozások száma** |
 | --- | --- | --- |
 | 50 Mbps |10 |20 |
 | 100 Mbps |10 |25 |

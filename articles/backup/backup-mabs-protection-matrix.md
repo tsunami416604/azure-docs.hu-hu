@@ -1,0 +1,112 @@
+---
+title: "What is Azure Backup Server biztonsági mentése |} Microsoft Docs"
+description: "A cikkben egy támogatási mátrixban minden munkaterhelések, az adattípusokat és telepítések Azure Backup Server v2 védő listázása."
+services: backup
+documentation center: 
+author: markgalioto
+ms.assetid: 
+ms.service: backup
+ms.workload: storage-backup-recovery
+keywords: 
+ms.date: 05/15/2017
+ms.topic: article
+ms.author: markgal,masaran
+manager: carmonm
+ms.openlocfilehash: 3608c310f43ff9f97563d252437d50d962162f47
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/18/2017
+---
+# <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
+
+Ez a cikk ismerteti a különböző kiszolgálók és munkaterhelések védelmét tudják az Azure Backup Server. A következő mátrix sorolja fel, hogy mi az Azure Backup Server v1 és v2 védhetők.
+
+## <a name="protection-support-matrix"></a>Védelem támogatási mátrixa
+
+|Számítási feladat|Verzió|Azure Backup Server</br> installation|Azure Backup</br> Kiszolgáló v2|Azure Backup</br> Kiszolgáló v1 |Védelem és helyreállítás|
+|------------|-----------|--------------------|--------------------------------------------|--------------------------------|---------------------------|
+|A System Center VMM|A VMM 2016.<br/>A VMM 2012 SP1 R2|Fizikai kiszolgáló<br /><br />Hyper-V virtuális gép|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 10|Fizikai kiszolgáló<br /><br />Hyper-V virtuális gép<br /><br />VMware virtuális gép|I|I|Fájlok<br /><br />Védett köteteket NTFS kell lennie. FAT és FAT32 nem támogatottak.<br /><br />Kötetek legalább 1 GB-os kell lennie. A DPM a kötet árnyékmásolata szolgáltatás (VSS) használatával az adatok pillanatképének elkészítéséhez, és a pillanatkép csak akkor működik, ha a kötet mérete legalább 1 GB.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8.1|Fizikai kiszolgáló<br /><br />Hyper-V virtuális gép|I|I|Fájlok<br /><br />Védett köteteket NTFS kell lennie. FAT és FAT32 nem támogatottak.<br /><br />Kötetek legalább 1 GB-os kell lennie. A DPM a kötet árnyékmásolata szolgáltatás (VSS) használatával az adatok pillanatképének elkészítéséhez, és a pillanatkép csak akkor működik, ha a kötet mérete legalább 1 GB.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8.1|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Fájlok<br /><br />Védett köteteket NTFS és legalább 1 GB-os lehet.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Fájlok<br /><br />Védett köteteket NTFS és legalább 1 GB-os lehet.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Fájlok<br /><br />Védett köteteket NTFS és legalább 1 GB-os lehet.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 7|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Fájlok<br /><br />Védett köteteket NTFS és legalább 1 GB-os lehet.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 7|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I |Fájlok<br /><br />Védett köteteket NTFS és legalább 1 GB-os lehet.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows Vista SP2|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Fájlok<br /><br />Védett köteteket NTFS és legalább 1 GB-os lehet.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows Vista SP1|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Fájlok<br /><br />Védett köteteket NTFS és legalább 1 GB-os lehet.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows Vista|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Fájlok<br /><br />Védett köteteket NTFS és legalább 1 GB-os lehet.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows Vista|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli system), a deduplikált kötetek|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2016|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)<br /><br />Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)<br /><br />Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I<br /><br />Nem a Nano server|N|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli system), a deduplikált kötetek|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2012 R2 – Datacenter és Standard|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I|I |Kötet, megosztás, mappa, fájl<br /><br />A DPM futtató legalább Windows Server 2012 R2 védelme a Windows Server 2012 deduplikált kötetek.|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2012 R2 – Datacenter és Standard|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli system)<br /><br />A Windows Server 2012 vagy 2012 R2, Windows Server 2012 deduplikált kötetek védelméhez a DPM futnia kell.|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2012/2012 SP1 – Datacenter és Standard|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer<br /><br />A DPM futtató legalább Windows Server 2012 R2 védelme a Windows Server 2012 deduplikált kötetek.|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2012/2012 SP1 – Datacenter és Standard|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I|I|Kötet, megosztás, mappa, fájl<br /><br />A DPM futtató legalább Windows Server 2012 R2 védelme a Windows Server 2012 deduplikált kötetek.|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2012/2012 SP1 – Datacenter és Standard|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer<br /><br />A DPM futtató legalább Windows Server 2012 R2 védelme a Windows Server 2012 deduplikált kötetek.|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I<br /><br />SP1 és a telepítés futnia kell [Windows Management keret 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=40855)|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I<br /><br />SP1 és a telepítés futnia kell [Windows Management keret 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=40855)|I |Kötet, megosztás, mappa, fájl|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2 SP1 – Standard és Enterprise|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I<br /><br />SP1 és a telepítés futnia kell [Windows Management keret 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=40855)|I |Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|N|I|Kötet, megosztás, mappa, fájl|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008 R2|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|N|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|N|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer|
+|Kiszolgálók (32 bites és 64 bites)|Windows Server 2008|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I |Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer|
+|Kiszolgálók (32 bites és 64 bites)|A Windows Storage Server 2008|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Kötet, megosztás, mappa, fájl, rendszerállapot/operációs rendszer nélküli rendszer|
+|SQL Server|SQL Server 2016|Fizikai kiszolgáló <br /><br /> A helyszíni Hyper-V virtuális gép <br /> <br /> Azure-os virtuális gép <br /><br /> Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I |N|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2014|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I|I |Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2014|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2012 SP2|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I |Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2012 SP2|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2012 SP2|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2012, SQL Server 2012 SP1|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2012, SQL Server 2012 SP1|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2012, SQL Server 2012 SP1|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2008 R2|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2008 R2|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2008 R2|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I |Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2008|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2008|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|SQL Server|SQL Server 2008|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Minden központi telepítési forgatókönyve: adatbázis|
+|Exchange|Exchange 2016|Fizikai kiszolgáló<br/><br/> A helyszíni Hyper-V virtuális gép|I|I|Védelmét (az összes központi telepítési forgatókönyv): önálló Exchange-kiszolgáló, adatbázis egy adatbázis-elérhetőségi csoportban (DAG)<br /><br />Helyreállítás (összes központi telepítési forgatókönyv): postaláda, egy DAG tartozó postaláda-adatbázisok|
+|Exchange|Exchange 2016|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Védelmét (az összes központi telepítési forgatókönyv): önálló Exchange-kiszolgáló, adatbázis egy adatbázis-elérhetőségi csoportban (DAG)<br /><br />Helyreállítás (összes központi telepítési forgatókönyv): postaláda, egy DAG tartozó postaláda-adatbázisok|
+|Exchange|Exchange 2013|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelmét (az összes központi telepítési forgatókönyv): önálló Exchange-kiszolgáló, adatbázis egy adatbázis-elérhetőségi csoportban (DAG)<br /><br />Helyreállítás (összes központi telepítési forgatókönyv): postaláda, egy DAG tartozó postaláda-adatbázisok|
+|Exchange|Exchange 2013|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I |Védelmét (az összes központi telepítési forgatókönyv): önálló Exchange-kiszolgáló, adatbázis egy adatbázis-elérhetőségi csoportban (DAG)<br /><br />Helyreállítás (összes központi telepítési forgatókönyv): postaláda, egy DAG tartozó postaláda-adatbázisok|
+|Exchange|Exchange 2010|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelmét (az összes központi telepítési forgatókönyv): önálló Exchange-kiszolgáló, adatbázis egy adatbázis-elérhetőségi csoportban (DAG)<br /><br />Helyreállítás (összes központi telepítési forgatókönyv): postaláda, egy DAG tartozó postaláda-adatbázisok|
+|Exchange|Exchange 2010|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I |Védelmét (az összes központi telepítési forgatókönyv): önálló Exchange-kiszolgáló, adatbázis egy adatbázis-elérhetőségi csoportban (DAG)<br /><br />Helyreállítás (összes központi telepítési forgatókönyv): postaláda, egy DAG tartozó postaláda-adatbázisok|
+|Exchange|Az Exchange 2007|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelmét (az összes központi telepítési forgatókönyv): tárolócsoport<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: tárolócsoport, adatbázis, postaláda|
+|Exchange|Az Exchange 2007|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I |Védelmét (az összes központi telepítési forgatókönyv): tárolócsoport<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: tárolócsoport, adatbázis, postaláda|
+|SharePoint|A SharePoint 2016|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép<br /><br />Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)<br /><br />Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I |N|Védelmét (az összes központi telepítési forgatókönyv): Farm, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló<br /><br />Vegye figyelembe, hogy az SQL Server 2012 AlwaysOn szolgáltatást a tartalom-adatbázisokhoz használó SharePoint-farm védelme nem támogatott.|
+|SharePoint|SharePoint 2013|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelmét (az összes központi telepítési forgatókönyv): Farm, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló<br /><br />Vegye figyelembe, hogy az SQL Server 2012 AlwaysOn szolgáltatást a tartalom-adatbázisokhoz használó SharePoint-farm védelme nem támogatott.|
+|SharePoint|SharePoint 2013|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut) – a DPM 2012 R2 3. kumulatív frissítéssel és újabb verziók esetében|I|I|Védelmét (az összes központi telepítési forgatókönyv): Farm, SharePoint-keresés, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló<br /><br />Vegye figyelembe, hogy az SQL Server 2012 AlwaysOn szolgáltatást a tartalom-adatbázisokhoz használó SharePoint-farm védelme nem támogatott.|
+|SharePoint|SharePoint 2013|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I |Védelmét (az összes központi telepítési forgatókönyv): Farm, SharePoint-keresés, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló<br /><br />Vegye figyelembe, hogy az SQL Server 2012 AlwaysOn szolgáltatást a tartalom-adatbázisokhoz használó SharePoint-farm védelme nem támogatott.|
+|SharePoint|A SharePoint 2010|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelmét (az összes központi telepítési forgatókönyv): Farm, SharePoint-keresés, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló|
+|SharePoint|A SharePoint 2010|Azure virtuális gép (Ha a munkaterhelés Azure virtuális gépként fut)|I|I |Védelmét (az összes központi telepítési forgatókönyv): Farm, SharePoint-keresés, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló|
+|SharePoint|A SharePoint 2010|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Védelmét (az összes központi telepítési forgatókönyv): Farm, SharePoint-keresés, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló|
+|SharePoint|SharePoint 2007|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelmét (az összes központi telepítési forgatókönyv): Farm, SharePoint-keresés, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló|
+|SharePoint|SharePoint 2007|Windows virtuális gépként VMWare (a Windows virtuális gépként VMWare munkaterheléseinek védelme)|I|I|Védelmét (az összes központi telepítési forgatókönyv): Farm, SharePoint-keresés, előtér-webkiszolgálói tartalom<br /><br />(Az összes központi telepítési forgatókönyv) helyreállítás: Farm, adatbázis, webes alkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgáló|
+|Hyper-V gazdagép – DPM védelmi ügynököt a Hyper-V gazdagép-kiszolgálón, a fürt vagy a virtuális gép|Windows Server 2016|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|N|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV)<br /><br />Helyreállítás: virtuális gép, fájlok és a mappa, a kötetek, a virtuális merevlemezek elemszintű helyreállítása|
+|Hyper-V gazdagép – DPM védelmi ügynököt a Hyper-V gazdagép-kiszolgálón, a fürt vagy a virtuális gép|Windows Server 2012 R2 – Datacenter és Standard|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV)<br /><br />Helyreállítás: virtuális gép, fájlok és a mappa, a kötetek, a virtuális merevlemezek elemszintű helyreállítása|
+|Hyper-V gazdagép – DPM védelmi ügynököt a Hyper-V gazdagép-kiszolgálón, a fürt vagy a virtuális gép|Windows Server 2012 – Datacenter és Standard|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV)<br /><br />Helyreállítás: virtuális gép, fájlok és a mappa, a kötetek, a virtuális merevlemezek elemszintű helyreállítása|
+|Hyper-V gazdagép – DPM védelmi ügynököt a Hyper-V gazdagép-kiszolgálón, a fürt vagy a virtuális gép|Windows Server 2008 R2 SP1 – Enterprise és Standard|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|I|I|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV)<br /><br />Helyreállítás: virtuális gép, fájlok és a mappa, a kötetek, a virtuális merevlemezek elemszintű helyreállítása|
+|Hyper-V gazdagép – DPM védelmi ügynököt a Hyper-V gazdagép-kiszolgálón, a fürt vagy a virtuális gép|Windows Server 2008|Fizikai kiszolgáló<br /><br />A helyszíni Hyper-V virtuális gép|N|N|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV)<br /><br />Helyreállítás: virtuális gép, fájlok és a mappa, a kötetek, a virtuális merevlemezek elemszintű helyreállítása|
+|VMware virtuális gépek|VMware server 5.5 vagy 6.0 vagy 6.5 |A helyszíni Hyper-V virtuális gép|I|"Y" (UR1)|VMware virtuális gépek a fürt megosztott kötetei (CSV-k), NFS- és a SAN-tároló<br /> Elemszintű helyreállítás csak a Windows mappák és fájlok<br /> Nem támogatott VMware vapp alkalmazások|
+|Linux|Hyper-V vagy VMware vendégként futó Linux|A helyszíni Hyper-V virtuális gép|I|I|Hyper-V Windows Server 2012 R2 vagy Windows Server 2016 kell futnia. Védelme: Az egész virtuális gép<br /><br />Helyreállítás: Az egész virtuális gép|
+
+## <a name="cluster-support"></a>Fürt támogatása
+Az Azure Backup Server védheti az adatokat az alábbi fürtözött alkalmazásokban:
+
+-   Fájlkiszolgálók
+
+-   SQL Server
+
+-   Hyper-V - Ha a Hyper-V fürt kiterjesztett DPM védelemmel látná, nem adhat hozzá másodlagos védelmet a védett Hyper-V munkaterhelések számára.
+
+    Ha a Hyper-V Windows Server 2008 R2 rendszeren futtatja, akkor telepítse a Tudásbáziscikkben leírt frissítést [975354](https://support.microsoft.com/en-us/kb/975354).
+    Ha a Hyper-V Windows Server 2008 R2 rendszeren, fürtkonfigurációban futtatja, ellenőrizze, hogy SP2 telepítése és KB [971394](https://support.microsoft.com/en-us/kb/971394).
+
+-   Az Exchange - kiszolgáló Azure Backup Server megvédheti a nem megosztott lemezfürtöket az Exchange Server támogatott verziói (fürt folyamatos replikálásával), és a helyi folyamatos replikálásra konfigurált Exchange Servert is védheti.
+
+-   SQL Server - Azure Backup-kiszolgáló nem támogatja a fürt megosztott kötetei (CSV) lévő SQL Server-adatbázisainak biztonsági mentése.
+
+Az Azure Backup Server megvédheti a munkaterhelések, amely a DPM-kiszolgálóval azonos tartományban, és egy gyermektartományban vagy megbízható tartományban találhatók. Ha azt szeretné, nem megbízható tartományban vagy munkacsoportban levő adatforrások védelmét, használható Tanúsítványalapú hitelesítés, illetve egy önálló kiszolgáló NTLM vagy Tanúsítványalapú hitelesítés csak egy fürt számára.

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: b810e37e393ddab55500f636b72450789285a4f0
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
 #  <a name="agent-health-solution-in-oms"></a>Ügynökállapot megoldás
 Az ügynökállapot megoldás segít átlátni, hogy az OMS munkaterület vagy egy OMS-hez csatlakozó System Center Operations Manager-felügyeleticsoport felé jelentő ügynökök közül melyik nem válaszol, és melyik küld működési adatokat.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
@@ -135,4 +134,3 @@ A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsol
 ## <a name="next-steps"></a>Következő lépések
 
 * A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](../log-analytics/log-analytics-alerts.md).
-

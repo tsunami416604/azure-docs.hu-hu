@@ -1,79 +1,79 @@
-The availability group listener is an IP address and network name that the SQL Server availability group listens on. To create the availability group listener, do the following:
+A rendelkezésre állási csoport figyelőjének egy IP-cím és a hálózati nevet, amely az SQL Server rendelkezésre állási csoport figyeli. A rendelkezésre állási csoport figyelőjének létrehozásához tegye a következőket:
 
-1. <a name="getnet"></a>Get the name of the cluster network resource.
+1. <a name="getnet"></a>A fürt hálózati erőforrás nevének beolvasása.
 
-    a. Use RDP to connect to the Azure virtual machine that hosts the primary replica. 
+    a. RDP segítségével csatlakozzon az Azure virtuális géphez, amelyen az elsődleges replika. 
 
-    b. Open Failover Cluster Manager.
+    b. Nyissa meg a Feladatátvevőfürt-kezelőt.
 
-    c. Select the **Networks** node, and note the cluster network name. Use this name in the `$ClusterNetworkName` variable in the PowerShell script. In the following image the cluster network name is **Cluster Network 1**:
+    c. Válassza ki a **hálózatok** csomópont, és figyelje meg a fürt hálózati nevét. Ennek a névnek a `$ClusterNetworkName` változó a PowerShell parancsfájl. Az alábbi ábrán a hálózati fürtnév **fürt hálózati 1**:
 
-   ![Cluster Network Name](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
+   ![Fürt hálózati név](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-2. <a name="addcap"></a>Add the client access point.  
-    The client access point is the network name that applications use to connect to the databases in an availability group. Create the client access point in Failover Cluster Manager.
+2. <a name="addcap"></a>Az ügyfél-hozzáférési pont hozzáadása.  
+    Az ügyfél-hozzáférési pont a hálózatnév az adatbázisokat a rendelkezésre állási csoportban való kapcsolódáshoz használt alkalmazások. Az ügyfél hozzáférési pontjának létrehozása a Feladatátvevőfürt-kezelőben.
 
-    a. Expand the cluster name, and then click **Roles**.
+    a. Bontsa ki a fürt nevét, és kattintson a **szerepkörök**.
 
-    b. In the **Roles** pane, right-click the availability group name, and then select **Add Resource** > **Client Access Point**.
+    b. Az a **szerepkörök** ablaktáblájában kattintson a jobb gombbal a rendelkezésre állási csoport nevét, majd válassza ki **erőforrás hozzáadása** > **ügyfél-hozzáférési pont**.
 
-   ![Client Access Point](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![Ügyfél-hozzáférési pont](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
-    c. In the **Name** box, create a name for this new listener. 
-   The name for the new listener is the network name that applications use to connect to databases in the SQL Server availability group.
+    c. Az a **neve** hozzon létre egy nevet az új figyelőt. 
+   Az új figyelőt az neve: a hálózat nevét használják az SQL Server rendelkezésre állási csoportban adatbázisaihoz való kapcsolódásra.
    
-    d. To finish creating the listener, click **Next** twice, and then click **Finish**. Do not bring the listener or resource online at this point.
+    d. A figyelő létrehozásának befejezéséhez kattintson **következő** kétszer, majd **Befejezés**. Nem kapcsolja a figyelő vagy erőforrás online ezen a ponton.
 
-3. <a name="congroup"></a>Configure the IP resource for the availability group.
+3. <a name="congroup"></a>Az IP-erőforrás a rendelkezésre állási csoport konfigurálása.
 
-    a. Click the **Resources** tab, and then expand the client access point you created.  
-    The client access point is offline.
+    a. Kattintson a **erőforrások** lapot, és bontsa ki a létrehozott ügyfél-hozzáférési pontját.  
+    Az ügyfél-hozzáférési pont offline állapotban.
 
-   ![Client Access Point](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
+   ![Ügyfél-hozzáférési pont](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. Right-click the IP resource, and then click properties. Note the name of the IP address, and use it in the `$IPResourceName` variable in the PowerShell script.
+    b. Kattintson a jobb gombbal az IP-erőforrás, és kattintson a tulajdonságok. Jegyezze fel az IP-címet, és ezért a `$IPResourceName` változó a PowerShell parancsfájl.
 
-    c. Under **IP Address**, click **Static IP Address**. Set the IP address as the same address that you used when you set the load balancer address on the Azure portal.
+    c. A **IP-cím**, kattintson a **statikus IP-cím**. Állítsa be az IP-cím a címmel, ha úgy állítja be a terheléselosztói címet, az Azure portálon használt.
 
-   ![IP Resource](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
-4. <a name = "dependencyGroup"></a>Make the SQL Server availability group resource dependent on the client access point.
+4. <a name = "dependencyGroup"></a>Ellenőrizze az SQL Server rendelkezésre állási csoport erőforrása függ, az ügyfél-csatlakozási pont.
 
-    a. In Failover Cluster Manager, click **Roles**, and then click your availability group.
+    a. A Feladatátvevőfürt-kezelőben kattintson **szerepkörök**, majd kattintson a rendelkezésre állási csoporthoz.
 
-    b. On the **Resources** tab, under **Other Resources**, right-click the availability resource group, and then click **Properties**. 
+    b. Az a **erőforrások** lap **egyéb erőforrások**, kattintson a jobb gombbal a rendelkezésre állási csoport, és kattintson a **tulajdonságok**. 
 
-    c. On the dependencies tab, add the name of the client access point (the listener) resource.
+    c. A függőségek lapon adja meg az ügyfél hozzáférési pont (figyelő) erőforrás nevét.
 
-   ![IP Resource](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-    d. Click **OK**.
+    d. Kattintson az **OK** gombra.
 
-5. <a name="listname"></a>Make the client access point resource dependent on the IP address.
+5. <a name="listname"></a>Ellenőrizze az ügyfél hozzáférési pont erőforrás függ, az IP-címet.
 
-    a. In Failover Cluster Manager, click **Roles**, and then click your availability group. 
+    a. A Feladatátvevőfürt-kezelőben kattintson **szerepkörök**, majd kattintson a rendelkezésre állási csoporthoz. 
 
-    b. On the **Resources** tab, right-click the client access point resource under **Server Name**, and then click **Properties**. 
+    b. Az a **erőforrások** lapra, kattintson a jobb gombbal az ügyfél hozzáférési pont erőforrásra **kiszolgálónév**, és kattintson a **tulajdonságok**. 
 
-   ![IP Resource](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. Click the **Dependencies** tab. Verify that the IP address is a dependency. If it is not, set a dependency on the IP address. If there are multiple resources listed, verify that the IP addresses have OR, not AND, dependencies. Click **OK**. 
+    c. Kattintson a **függőségek** fülre. Győződjön meg arról, hogy az IP-cím egy függőséget. Ha nem, függőség beállítása az IP-címet. Ha nincsenek felsorolva több erőforrást, győződjön meg arról, hogy az IP-címek vagy nem rendelkezik-e és függőségeit. Kattintson az **OK** gombra. 
 
-   ![IP Resource](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
+   ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
-    d. Right-click the listener name, and then click **Bring Online**. 
+    d. Kattintson a jobb gombbal a figyelő nevét, és kattintson **online állapotba hozás**. 
 
     >[!TIP]
-    >You can validate that the dependencies are correctly configured. In Failover Cluster Manager, go to Roles, right-click the availability group, click **More Actions**, and then click  **Show Dependency Report**. When the dependencies are correctly configured, the availability group is dependent on the network name, and the network name is dependent on the IP address. 
+    >Ellenőrizheti, hogy a függőségek megfelelően vannak-e konfigurálva. A Feladatátvevőfürt-kezelőben, nyissa meg a szerepkörökhöz, kattintson a jobb gombbal a rendelkezésre állási csoporthoz, kattintson a **további műveletek**, és kattintson a **függőségi jelentés megjelenítése**. A függőségek megfelelően vannak konfigurálva, amikor a rendelkezésre állási csoport függ a hálózat neve, pedig a hálózati név függ az IP-címet. 
 
 
-6. <a name="setparam"></a>Set the cluster parameters in PowerShell.
+6. <a name="setparam"></a>A fürt paraméterek beállítása a PowerShellben.
     
-    a. Copy the following PowerShell script to one of your SQL Server instances. Update the variables for your environment.     
+    a. Másolja a következő PowerShell-parancsfájlt az SQL Server-példányok közül. A változók a környezet frissítése.     
     
     ```PowerShell
     $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -86,7 +86,7 @@ The availability group listener is an IP address and network name that the SQL S
     Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
     ```
 
-    b. Set the cluster parameters by running the PowerShell script on one of the cluster nodes.  
+    b. Állítsa be a fürt paramétereket a PowerShell-parancsfájl futtatásával a fürtcsomópontok egyike.  
 
     > [!NOTE]
-    > If your SQL Server instances are in separate regions, you need to run the PowerShell script twice. The first time, use the `$ILBIP` and `$ProbePort` from the first region. The second time, use the `$ILBIP` and `$ProbePort` from the second region. The cluster network name and the cluster IP resource name are the same. 
+    > Ha az SQL Server-példány külön régióban, kétszer a PowerShell parancsfájl futtatásához szükséges. Az első alkalommal használja a `$ILBIP` és `$ProbePort` első régióban. A második alkalommal használja a `$ILBIP` és `$ProbePort` második régióban. A fürthálózat nevének és a fürt IP-erőforrás neve megegyezik. 

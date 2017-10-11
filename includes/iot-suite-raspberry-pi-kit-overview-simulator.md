@@ -1,35 +1,35 @@
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Áttekintés
 
-In this tutorial, you complete the following steps:
+Ebben az oktatóanyagban végezze el a következő lépéseket:
 
-- Deploy an instance of the remote monitoring preconfigured solution to your Azure subscription. This step automatically deploys and configures multiple Azure services.
-- Set up your device to communicate with your computer and the remote monitoring solution.
-- Update the sample device code to connect to the remote monitoring solution, and send simulated telemetry that you can view on the solution dashboard.
+- Telepítse a távoli felügyeleti előkonfigurált megoldás egy példányát az Azure-előfizetéshez. Ebben a lépésben automatikusan telepíti és konfigurálja a több Azure-szolgáltatásokhoz.
+- Konfigurálja az eszközt, a számítógép és a távoli felügyeleti megoldás folytatott kommunikációhoz.
+- Frissítse a mintakódot eszköz csatlakozni a távoli felügyeleti megoldás, és, amely megtalálható a megoldás irányítópultja szimulált telemetriai adatokat küldhet.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Előfeltételek
 
-To complete this tutorial, you need an active Azure subscription.
+Az oktatóanyag elvégzéséhez aktív Azure-előfizetésre lesz szüksége.
 
 > [!NOTE]
-> If you don’t have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][lnk-free-trial].
+> Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].
 
-### <a name="required-software"></a>Required software
+### <a name="required-software"></a>Szükséges szoftverek
 
-You need SSH client on your desktop machine to enable you to remotely access the command line on the Raspberry Pi.
+SSH-ügyfél van szüksége az asztali gépen ahhoz, hogy a parancssor a málna Pi a érheti el távolról.
 
-- Windows does not include an SSH client. We recommend using [PuTTY](http://www.putty.org/).
-- Most Linux distributions and Mac OS include the command-line SSH utility. For more information, see [SSH Using Linux or Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- A Windows tartalmaz egy SSH-ügyfél. Azt javasoljuk, [PuTTY](http://www.putty.org/).
+- A legtöbb Linux terjesztéseket, a Mac OS közé tartoznak az SSH parancssori segédprogramot. További információkért lásd: [SSH használatával Linux és Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-hardware"></a>Required hardware
+### <a name="required-hardware"></a>Szükséges hardver
 
-A desktop computer to enable you to connect remotely to the command line on the Raspberry Pi.
+Ahhoz, hogy a parancssor a málna Pi a távoli csatlakozás egy asztali számítógépen.
 
-[Microsoft IoT Starter Kit for Raspberry Pi 3][lnk-starter-kits] or equivalent components. This tutorial uses the following items from the kit:
+[Microsoft IoT Starter Kit málna Pi 3] [ lnk-starter-kits] vagy ezzel egyenértékű összetevőket. Ez az oktatóanyag a csomagot a következő elemeket használja:
 
 - Raspberry Pi 3
-- MicroSD Card (with NOOBS)
-- A USB Mini cable
-- An Ethernet cable
+- (A NOOBS) MicroSD-kártyán
+- A USB Mini-kábellel
+- Kábel
 
 [lnk-starter-kits]: https://azure.microsoft.com/develop/iot/starter-kits/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

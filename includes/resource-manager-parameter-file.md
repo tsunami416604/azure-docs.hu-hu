@@ -1,4 +1,4 @@
-If you use a parameter file to pass parameter values during deployment, you need to create a JSON file with a format similar to the following example:
+A paraméterfájl használata paraméterértékek felelt meg a telepítés során, ha szüksége hozzon létre egy JSON-fájl formátuma nem a következőhöz hasonló:
 
 ```json
 {
@@ -26,7 +26,7 @@ If you use a parameter file to pass parameter values during deployment, you need
 }
 ```
 
-The size of the parameter file cannot be more than 64 KB.
+A paraméter-fájl mérete nem lehet több mint 64 KB.
 
-If you need to provide a sensitive value for a parameter (such as a password), add that value to a key vault. Retrieve the key vault during deployment as shown in the previous example. For more information, see [Pass secure values during deployment](../articles/azure-resource-manager/resource-manager-keyvault-parameter.md). 
+Meg kell adnia a kényes értéket a paraméterhez (például jelszót), ha hozzá kulcstároló ezt az értéket. Olvashatók be a key vault üzembe helyezése során, mert az előző példában látható módon. További információkért lásd: [biztonságos értéket átadni a telepítés során](../articles/azure-resource-manager/resource-manager-keyvault-parameter.md). 
 

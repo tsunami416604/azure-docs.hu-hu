@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2017
 ms.author: charwen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0b53a5ab59779dc16825887b3c970927f1f30821
 ms.openlocfilehash: c3a85b9445d69330c3f6c7d298169efddb6ecca0
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/07/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.
@@ -75,4 +74,3 @@ A megoldás egyszerű. Mivel tudja, hogy hol vannak a VNetek és a kapcsolatcsop
 > A VNetről a helyszíni hálózatra irányuló útválasztást is befolyásolhatja, ha több ExpressRoute-kapcsolatcsoportja van. Ehhez konfigurálja egy kapcsolat súlyát ahelyett, hogy AS PATH előtag-beillesztést használna, amelyet a fenti második eset ismertet. Mindegyik előtag esetében először mindig a kapcsolat súlyát vesszük figyelembe az AS PATH hossza előtt a forgalom elküldési módjának meghatározásához.
 >
 >
-

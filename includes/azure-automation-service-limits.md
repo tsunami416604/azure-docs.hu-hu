@@ -1,10 +1,10 @@
-| Resource | Maximum Limit |
+| Erőforrás | Felső korlát |
 | --- | --- |
-| Max number of new jobs that can be submitted every 30 seconds per Automation Account (non Scheduled jobs) |100 |
-| Max number of concurrent running jobs at the same instance of time per Automation Account (non Scheduled jobs) |200 |
-| Max number of modules that can be imported every 30 seconds per Automation Account |5 |
-| Max size of a Module |100 MB |
-| Job Run Time - Free tier |500 minutes per subscription per calendar month |
-| Max amount of memory given to a job |400 MB |
-| Max number of network sockets allowed per job |1000 |
+| Új Automation-fiók (nem ütemezett feladatok) / 30 másodpercenként küldheti el feladatok maximális száma |100 |
+| Automation-fiók (nem ütemezett feladatok) idő ugyanazt a példányát, egyidejűleg futó feladatok maximális száma |200 |
+| Automation-fiók / 30 másodpercenként importálható modulok maximális száma |5 |
+| A modul maximális mérete |100 MB |
+| A feladat futtatása időpontja - ingyenes szint |naptári hónaponként előfizetésenként 500 perc |
+| Egy feladathoz megadott memória maximális mennyisége |400 MB |
+| Hálózati sockets feladat telepítésenként engedélyezett maximális száma |1000 |
 

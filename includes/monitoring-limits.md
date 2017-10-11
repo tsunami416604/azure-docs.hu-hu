@@ -1,5 +1,5 @@
 
-| Resource | Limit |
+| Erőforrás | Korlát |
 | --- | --- |
-| Autoscale Settings |100 per region per subscription |
-| Metric Alerts |100 active alert rules per subscription |
+| Automatikus skálázási beállításokat |régiónként 100 |
+| Metrikákhoz kapcsolódó riasztások |előfizetésenként 100 aktív riasztási szabályok |

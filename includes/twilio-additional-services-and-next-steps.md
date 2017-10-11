@@ -1,14 +1,14 @@
-## <a name="AdditionalServices"></a>How to: Use additional Twilio services
-In addition to the examples shown here, Twilio offers web-based APIs that you can use to leverage additional Twilio functionality from your Azure application. For full details, see the [Twilio API documentation][twilio_api_documentation].
+## <a name="AdditionalServices"></a>Útmutató: további Twilio-szolgáltatásokkal
+Az itt bemutatott példák Twilio lehetőséget biztosít webes API-k segítségével kihasználhatja az Azure alkalmazásról további Twilio-funkciókat. Teljes részletekért lásd: a [Twilio API-JÁNAK dokumentációja][twilio_api_documentation].
 
-## <a name="NextSteps"></a>Next steps
-Now that you've learned the basics of the Twilio service, follow these links to learn more:
+## <a name="NextSteps"></a>Következő lépések
+Most, hogy megismerte a Twilio szolgáltatáshoz alapjait, az alábbi hivatkozásokból további:
 
-* [Twilio Security Guidelines][twilio_security_guidelines]
-* [Twilio HowTos and Example Code][twilio_howtos]
-* [Twilio Quickstart Tutorials][twilio_quickstarts] 
-* [Twilio on GitHub][twilio_on_github]
-* [Talk to Twilio Support][twilio_support]
+* [Twilio biztonsági irányelvek][twilio_security_guidelines]
+* [Twilio HowTos és példakódot][twilio_howtos]
+* [Twilio gyors üzembe helyezési oktatóanyag][twilio_quickstarts] 
+* [A Githubon Twilio][twilio_on_github]
+* [Kérdezze meg a Twilio-támogatás][twilio_support]
 
 [twilio_api_documentation]: http://www.twilio.com/api
 [twilio_security_guidelines]: http://www.twilio.com/docs/security

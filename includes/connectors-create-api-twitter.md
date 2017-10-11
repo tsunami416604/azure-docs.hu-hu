@@ -1,18 +1,18 @@
-### <a name="prerequisites"></a>Prerequisites
-* A Twitter account 
+### <a name="prerequisites"></a>Előfeltételek
+* Twitter-fiók 
 
-Before you can use your Twitter account in a logic app, you must authorize the logic app to connect to your Twitter account. Fortunately, you can do this easily from within your logic app on the Azure Portal. 
+A Twitter-fiók a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazást, a Twitter-fiók való kapcsolódáshoz. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
 
-Here are the steps to authorize your logic app to connect to your Twitter account:
+A Logic Apps alkalmazást, a Twitter-fiók való csatlakozáshoz engedélyezni lépései a következők:
 
-1. To create a connection to Twitter, in the logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Twitter* in the search box. Select the trigger or action you'll like to use:  
-   ![Twitter connection image 0](./media/connectors-create-api-twitter/twitter-0.png)
-2. If you haven't created any connections to Twitter before, you'll get prompted to provide your Twitter credentials. These credentials will be used to authorize your logic app to connect to, and access your Twitter account's data:  
-   ![Twitter connection image 1](./media/connectors-create-api-twitter/twitter-1.png)  
-3. Provide your Twitter user name and password to authorize your logic app:  
-   ![Twitter connection image 2](./media/connectors-create-api-twitter/twitter-2.png)  
-4. Confirm your authorization:  
-   ![Twitter connection image 3](./media/connectors-create-api-twitter/twitter-3.png)  
-5. Notice the connection has been created and you are now free to proceed with the other steps in your logic app:  
-   ![Twitter connection image 4](./media/connectors-create-api-twitter/twitter-4.png)
+1. A logic app designer Twitter, kapcsolat létrehozásához válassza **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *Twitter* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
+   ![Kép: a 0 Twitter kapcsolat](./media/connectors-create-api-twitter/twitter-0.png)
+2. Ha még nem hozott létre előtt Twitter fennálló kapcsolatokat, a rendszer Twitter hitelesítő adatok megadása fog kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használandó, és a Twitter-fiók adatok eléréséhez:  
+   ![Kép: Csatlakozás 1 Twitter](./media/connectors-create-api-twitter/twitter-1.png)  
+3. A Twitter-felhasználónevet és jelszót kell megadniuk a Logic Apps alkalmazást engedélyezése:  
+   ![Kép: Csatlakozás 2 Twitter](./media/connectors-create-api-twitter/twitter-2.png)  
+4. Erősítse meg az Ön jogosultságait:  
+   ![Kép: csatlakozás 3 Twitter](./media/connectors-create-api-twitter/twitter-3.png)  
+5. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
+   ![Kép: csatlakozás 4 Twitter](./media/connectors-create-api-twitter/twitter-4.png)
 

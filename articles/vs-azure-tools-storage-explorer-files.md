@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: 964691758254531cb92a5b1cbe055ef61d25dba8
-ms.contentlocale: hu-hu
-ms.lasthandoff: 03/14/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="using-storage-explorer-preview-with-azure-file-storage"></a>A Storage Explorer (előzetes verzió) használata az Azure File Storage szolgáltatással
 
 Az Azure File storage egy felhőalapú fájlmegosztást kínáló, SMB protokollt használó szolgáltatás. Az SMB 2.1 és az SMB 3.0 protokollt is támogatja. Az Azure File Storage szolgáltatással költséges újraírások nélkül, gyorsan megoldható a fájlmegosztásra támaszkodó, régi típusú alkalmazások áttelepítése az Azure-ra. A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat alkalmazásadatokat. Ez a cikk ismerteti, hogyan használhatja a fájlmegosztásokat és fájlokat a Storage Explorer előzetes verziójában.
@@ -263,4 +261,3 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
 - A [Storage Explorer (előzetes verzió) legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com/).
 
 - Annak megismerése, hogyan [hozhat létre alkalmazásokat Azure-blobok, -táblák, -üzenetsorok és -fájlok használatával](https://azure.microsoft.com/documentation/services/storage/).
-

@@ -15,8 +15,3 @@
 
 Az Xcode most létrehozza a bemutatóalkalmazást, amelybe integrálni fogja a Mobile Engagementet.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

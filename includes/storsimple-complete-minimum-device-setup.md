@@ -37,8 +37,3 @@
 
 A minimális eszközbeállítás befejezését bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/).
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

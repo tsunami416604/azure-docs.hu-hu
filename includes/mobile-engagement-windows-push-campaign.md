@@ -23,8 +23,3 @@ Ezután létrehozunk egy egyszerű leküldéses értesítési kampányt, amely e
    
     ![](./media/mobile-engagement-windows-push-campaign/campaign-activate.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

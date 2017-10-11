@@ -1,46 +1,46 @@
-The Azure CLI 2.0 allows you to create and manage your Azure resources on macOS, Linux, and Windows. This article details some of the most common commands to create and manage virtual machines (VMs).
+Az Azure CLI 2.0 macOS, a Linux és a Windows az Azure erőforrások kezeléséhez teszi lehetővé. Ez a cikk részletesen a leggyakrabban használt parancsainak létrehozását és kezelését virtuális gépek (VM).
 
-This article requires the Azure CLI version 2.0.4 or later. Run `az --version` to find the version. If you need to upgrade, see [Install Azure CLI 2.0](/cli/azure/install-azure-cli). You can also use [Cloud Shell](/azure/cloud-shell/quickstart) from your browser.
+Ez a cikk igényel az Azure parancssori felület 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Is [felhő rendszerhéj](/azure/cloud-shell/quickstart) a böngészőből.
 
-## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Basic Azure Resource Manager commands in Azure CLI
-For more detailed help with specific command line switches and options, you can use the online command help and options by typing `az <command> <subcommand> --help`.
+## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Alapszintű Azure Resource Manager-parancsok az Azure CLI-ben
+Segítségért adott parancssori kapcsolók és a lehetőségek részletes, használhatja a online utasítás segítséget és beállítások beírásával `az <command> <subcommand> --help`.
 
-### <a name="create-vms"></a>Create VMs
-| Task | Azure CLI commands |
+### <a name="create-vms"></a>Virtuális gépek létrehozása
+| Tevékenység | Az Azure parancssori felület parancsai |
 | --- | --- |
-| Create a resource group | `az group create --name myResourceGroup --location eastus` |
-| Create a Linux VM | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
-| Create a Windows VM | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
+| Hozzon létre egy erőforráscsoportot | `az group create --name myResourceGroup --location eastus` |
+| Linux rendszerű virtuális gép létrehozása | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
+| Windows rendszerű virtuális gép létrehozása | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
 
-### <a name="manage-vm-state"></a>Manage VM state
-| Task | Azure CLI commands |
+### <a name="manage-vm-state"></a>VM állapotának kezelése
+| Tevékenység | Az Azure parancssori felület parancsai |
 | --- | --- |
-| Start a VM | `az vm start --resource-group myResourceGroup --name myVM` |
-| Stop a VM | `az vm stop --resource-group myResourceGroup --name myVM` |
-| Deallocate a VM | `az vm deallocate --resource-group myResourceGroup --name myVM` |
-| Restart a VM | `az vm restart --resource-group myResourceGroup --name myVM` |
-| Redeploy a VM | `az vm redeploy --resource-group myResourceGroup --name myVM` |
-| Delete a VM | `az vm delete --resource-group myResourceGroup --name myVM` |
+| Virtuális gép elindítása | `az vm start --resource-group myResourceGroup --name myVM` |
+| Virtuális gép leállítása | `az vm stop --resource-group myResourceGroup --name myVM` |
+| Virtuális gép felszabadítása | `az vm deallocate --resource-group myResourceGroup --name myVM` |
+| Virtuális gép újraindítása | `az vm restart --resource-group myResourceGroup --name myVM` |
+| Virtuális gép ismételt üzembe helyezése | `az vm redeploy --resource-group myResourceGroup --name myVM` |
+| Virtuális gép törlése | `az vm delete --resource-group myResourceGroup --name myVM` |
 
-### <a name="get-vm-info"></a>Get VM info
-| Task | Azure CLI commands |
+### <a name="get-vm-info"></a>Virtuálisgép-adatok beolvasása
+| Tevékenység | Az Azure parancssori felület parancsai |
 | --- | --- |
-| List VMs | `az vm list` |
-| Get information about a VM | `az vm show --resource-group myResourceGroup --name myVM` |
-| Get usage of VM resources | `az vm list-usage --location eastus` |
-| Get all available VM sizes | `az vm list-sizes --location eastus` |
+| Virtuális gépek felsorolása | `az vm list` |
+| Virtuális gép adatainak lekérése | `az vm show --resource-group myResourceGroup --name myVM` |
+| A virtuálisgép-erőforrások használatának megtekintése | `az vm list-usage --location eastus` |
+| Minden elérhető virtuálisgép-méret megtekintése | `az vm list-sizes --location eastus` |
 
-## <a name="disks-and-images"></a>Disks and images
-| Task | Azure CLI commands |
+## <a name="disks-and-images"></a>A lemezek és lemezképek
+| Tevékenység | Az Azure parancssori felület parancsai |
 | --- | --- |
-| Add a data disk to a VM | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
-| Remove a data disk from a VM | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
-| Resize a disk | `az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 256` |
-| Snapshot a disk | `az snapshot create --resource-group myResourceGroup --name mySnapshot --source myDataDisk` |
-| Create image of a VM | `az image create --resource-group myResourceGroup --source myVM --name myImage` |
-| Create VM from image | `az vm create --resource-group myResourceGroup --name myNewVM --image myImage` |
+| Adatlemez hozzáadása egy virtuális géphez | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
+| Adatlemez eltávolítása egy virtuális gépből | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
+| Lemez átméretezése | `az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 256` |
+| Lemez pillanatképének elkészítése | `az snapshot create --resource-group myResourceGroup --name mySnapshot --source myDataDisk` |
+| Hozzon létre egy virtuális gép képe | `az image create --resource-group myResourceGroup --source myVM --name myImage` |
+| Hozzon létre virtuális Gépet lemezképből | `az vm create --resource-group myResourceGroup --name myNewVM --image myImage` |
 
 
-## <a name="next-steps"></a>Next steps
-For additional examples of the CLI commands, see the [Create and Manage Linux VMs with the Azure CLI](../articles/virtual-machines/linux/tutorial-manage-vm.md) tutorial.
+## <a name="next-steps"></a>Következő lépések
+A parancssori felület parancsait további példákért lásd a [létrehozása és kezelése a Linux virtuális gépek az Azure parancssori felülettel](../articles/virtual-machines/linux/tutorial-manage-vm.md) oktatóanyag.
 

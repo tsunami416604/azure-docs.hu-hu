@@ -14,15 +14,12 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: a4d9394983539da52105bda6cf06273205f8b0ad
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/18/2017
-
-
+ms.openlocfilehash: c85b8f8434d1e837ac96ac63b9b37f990677ed6e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Bejelentkezés felvétele Node.js-webalkalmazásokba
 
 A **Passport** a Node.js-hez készült közbenső hitelesítési szoftver. A rendkívül rugalmasan működő, moduláris Passport gyakorlatilag bármely Express- vagy Restify-alapú webalkalmazásba diszkréten telepíthető. A program számos különböző lehetőséget kínál a felhasználók hitelesítésére: felhasználónév/jelszó, Facebook- vagy Twitter-fiók és így tovább.
@@ -426,4 +423,3 @@ You can now move on to more advanced B2C topics. You might try:
 [Customizing the your B2C App's UX >>]()
 
 -->
-

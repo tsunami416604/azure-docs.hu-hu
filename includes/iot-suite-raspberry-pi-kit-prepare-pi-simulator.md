@@ -1,42 +1,42 @@
-## <a name="prepare-your-raspberry-pi"></a>Prepare your Raspberry Pi
+## <a name="prepare-your-raspberry-pi"></a>Készítse elő a Raspberry Pi
 
-### <a name="install-raspbian"></a>Install Raspbian
+### <a name="install-raspbian"></a>Raspbian telepítése
 
-If this is the first time you are using your Raspberry Pi, you need to install the Raspbian operating system using NOOBS on the SD card included in the kit. The [Raspberry Pi Software Guide][lnk-install-raspbian] describes how to install an operating system on your Raspberry Pi. This tutorial assumes you have installed the Raspbian operating system on your Raspberry Pi.
+Ha ez az első alkalommal használja a málna Pi, telepítendő a Raspbian operációs rendszer NOOBS használja a csomag tartalmazza az SD-kártyára. A [málna Pi szoftver útmutató] [ lnk-install-raspbian] ismerteti, hogyan lehet a málna Pi operációs rendszer telepítéséhez. Ez az oktatóanyag feltételezi, hogy telepítette a Raspbian operációs rendszer a málna Pi.
 
 > [!NOTE]
-> The SD card included in the [Microsoft Azure IoT Starter Kit for Raspberry Pi 3][lnk-starter-kits] already has NOOBS installed. You can boot the Raspberry Pi from this card and choose to install the Raspbian OS.
+> Az SD-kártya szerepel a [a Microsoft Azure IoT Starter Kit málna Pi 3] [ lnk-starter-kits] már rendelkezik telepített NOOBS. Indítsa el a málna Pi a kártyáról, és a Raspbian operációs rendszer telepítése.
 
-To complete the hardware setup, you need to:
+A hardver-telepítés befejezéséhez kell:
 
-- Connect your Raspberry Pi to the power supply included in the kit.
-- Connect your Raspberry Pi to your network using the Ethernet cable included in your kit. Alternatively, you can set up [Wireless Connectivity][lnk-pi-wireless] for your Raspberry Pi.
+- Csatlakoztassa a málna Pi Kit része tápegység.
+- A málna Pi csatlakoznak a hálózathoz, a csomag tartalmazza az Ethernet-kábelen keresztül. Másik lehetőségként beállíthatja [vezeték nélküli kapcsolat] [ lnk-pi-wireless] a málna pi.
 
-You have now completed the hardware setup of your Raspberry Pi.
+Ezzel befejezte a málna pi a hardverbeállításokat.
 
-### <a name="sign-in-and-access-the-terminal"></a>Sign in and access the terminal
+### <a name="sign-in-and-access-the-terminal"></a>Bejelentkezhet és elérheti a Terminálszolgáltatások
 
-You have two options to access a terminal environment on your Raspberry Pi:
+A Terminálszolgáltatások tesztkörnyezetben, a málna Pi eléréséhez két lehetőség közül választhat:
 
-- If you have a keyboard and monitor connected to your Raspberry Pi, you can use the Raspbian GUI to access a terminal window.
+- Ha a figyelő a málna Pi csatlakoztatott és a billentyűzeten, használhatja a Raspbian grafikus felhasználói felület egy terminálablakot eléréséhez.
 
-- Access the command line on your Raspberry Pi using SSH from your desktop machine.
+- A parancssorban meg az SSH használata a asztali gépen málna Pi eléréséhez.
 
-#### <a name="use-a-terminal-window-in-the-gui"></a>Use a terminal Window in the GUI
+#### <a name="use-a-terminal-window-in-the-gui"></a>A grafikus felhasználói felületen terminálablakot használni
 
-The default credentials for Raspbian are username **pi** and password **raspberry**. In the task bar in the GUI, you can launch the **Terminal** utility using the icon that looks like a monitor.
+Az alapértelmezett Raspbian a hitelesítő adatok felhasználónév **pi** és a jelszó **málna**. A tálcán a grafikus felhasználói felületén, elindíthatja a **Terminálszolgáltatások** segédprogram használatával egy figyelőt a ikon.
 
-#### <a name="sign-in-with-ssh"></a>Sign in with SSH
+#### <a name="sign-in-with-ssh"></a>SSH bejelentkezés
 
-You can use SSH for command-line access to your Raspberry Pi. The article [SSH (Secure Shell)][lnk-pi-ssh] describes how to configure SSH on your Raspberry Pi, and how to connect from [Windows][lnk-ssh-windows] or [Linux & Mac OS][lnk-ssh-linux].
+SSH használható parancssori hozzáférést a málna Pi. A cikk [SSH (Secure Shell)] [ lnk-pi-ssh] útmutatás a málna Pi SSH konfigurálása, valamint csatlakozhat a [Windows] [ lnk-ssh-windows] vagy [ Linux és Mac OS][lnk-ssh-linux].
 
-Sign in with username **pi** and password **raspberry**.
+Jelentkezzen be a felhasználónevet **pi** és a jelszó **málna**.
 
-#### <a name="optional-share-a-folder-on-your-raspberry-pi"></a>Optional: Share a folder on your Raspberry Pi
+#### <a name="optional-share-a-folder-on-your-raspberry-pi"></a>Választható lehetőség: A málna Pi a mappa megosztása
 
-Optionally, you may want to share a folder on your Raspberry Pi with your desktop environment. Sharing a folder enables you to use your preferred desktop text editor (such as [Visual Studio Code](https://code.visualstudio.com/) or [Sublime Text](http://www.sublimetext.com/)) to edit files on your Raspberry Pi instead of using `nano` or `vi`.
+Ha szükséges érdemes lehet a málna Pi a mappa megosztása az asztali környezetet. A mappa megosztása lehetővé teszi az előnyben részesített asztali szövegszerkesztővel (például [Visual Studio Code](https://code.visualstudio.com/) vagy [Sublime Text](http://www.sublimetext.com/)) a málna Pi használata helyett a fájlok szerkesztésére `nano` vagy `vi`.
 
-To share a folder with Windows, configure a Samba server on the Raspberry Pi. Alternatively, use the built-in [SFTP](https://www.raspberrypi.org/documentation/remote-access/) server with an SFTP client on your desktop.
+A Windows mappa megosztásához a málna Pi Samba kiszolgáló konfigurálása. Másik megoldásként használhatja a beépített [SFTP](https://www.raspberrypi.org/documentation/remote-access/) kiszolgáló az asztalon egy SFTP-ügyféllel.
 
 [lnk-install-raspbian]: https://www.raspberrypi.org/learning/software-guide/quickstart/
 [lnk-pi-wireless]: https://www.raspberrypi.org/documentation/configuration/wireless/README.md

@@ -6,19 +6,17 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/29/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: a80adae0359aac6aa8c9e7922e3f4c3883dd8056
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/24/2017
-
+ms.openlocfilehash: a7555464879826c5e4f55929d23163b002664e81
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>PostgreSQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go nyelv használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz [Go](https://golang.org/) nyelven írt kóddal (golang). Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikk feltételezi, hogy Ön ismeri a Go-t használó fejlesztéseket, de még járatlan a PostgreSQL-hez készült Azure-adatbázis használatában.
 
@@ -93,7 +91,7 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 1. Golang-kód írásához használhat egy egyszerű szövegszerkesztőt, ilyen például Microsoft Windows rendszeren a Jegyzettömb, Ubuntu rendszeren a [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy a [Nano](https://www.nano-editor.org/), macOS rendszeren pedig a TextEdit. Ha a funkciógazdagabb interaktív fejlesztési környezeteket (IDE-ket) részesít előnyben, próbálja ki a Jetbrains [Gogland](https://www.jetbrains.com/go/) a Microsoft [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/) eszközt.
 2. Az alábbi szakaszokban található Golang-kódokat illessze be szövegfájlokba, és mentse a fájlokat a projektmappába \*.go kiterjesztéssel, például `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (Windows) vagy `~/go/src/postgresqlgo/createtable.go` (Linux) elérési úton.
 3. Keresse meg a `HOST`, a `DATABASE`, a `USER` és a `PASSWORD` állandót a kódban, és a példaértékeket cserélje le a saját értékeire.  
-4. Nyissa meg a parancssort vagy a bash rendszerhéjat. Lépjen a projektmappára. Windowson például: `cd %USERPROFILE%\go\src\postgresqlgo\`. Linuxon: `cd ~/go/src/postgresqlgo/`. A fentiekben említettek közül egyes IDE-környezetek hibakeresési és futásidejű képességeket biztosítanak anélkül, hogy rendszerhéjparancsokra lenne szükség.
+4. Nyissa meg a parancssort vagy a bash rendszerhéjat. Lépjen a projektmappára. Windows rendszer például a következővel: `cd %USERPROFILE%\go\src\postgresqlgo\`. Linuxon: `cd ~/go/src/postgresqlgo/`. A fentiekben említettek közül egyes IDE-környezetek hibakeresési és futásidejű képességeket biztosítanak anélkül, hogy rendszerhéjparancsokra lenne szükség.
 5. A kód futtatásához írja be a `go run createtable.go` parancsot az alkalmazás lefordításához és futtatásához. 
 6. Vagy a kód natív alkalmazásba való beépítéséhez írja be a `go build createtable.go` parancsot, majd indítsa el a `createtable.exe` fájlt az alkalmazás futtatásához.
 
@@ -339,4 +337,3 @@ func main() {
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)
-

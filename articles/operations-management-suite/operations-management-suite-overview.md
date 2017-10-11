@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Mi az az Operations Management Suite (OMS)?
 A cikk az Operations Management Suite (OMS) csomagot mutatja be, és az üzleti értékének, a benne található szolgáltatásoknak és felügyeleti megoldásoknak, valamint a különböző szolgáltatásokhoz és megoldásokhoz kapcsolódó ajánlatoknak a rövid áttekintését tartalmazza.  Az egyes szolgáltatások és megoldások telepítését és használatát ismertető részletes dokumentációra mutató hivatkozásokat is tartalmaz.
@@ -172,5 +171,4 @@ A Microsoft és partnerei rendszeresen bővítik új megoldásokkal az OMS-t, í
 * További tudnivalók az [Azure Backup](http://azure.microsoft.com/documentation/services/backup) szolgáltatásról.
 * További tudnivalók az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) szolgáltatásról.
 * Ismerje meg a különböző OMS-ajánlatokban [elérhető megoldásokat](../log-analytics/log-analytics-add-solutions.md). 
-
 

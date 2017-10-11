@@ -1,21 +1,21 @@
-When adding data disks to a Linux VM, you may encounter errors if a disk does not exist at LUN 0. If you are adding a disk manually using the `azure vm disk attach-new` command and you specify a LUN (`--lun`) rather than allowing the Azure platform to determine the appropriate LUN, take care that a disk already exists / will exist at LUN 0. 
+Amikor adatlemezt ad hozzá egy Linux virtuális gép, esetleg felmerülő problémákat, ha a lemez nem létezik: LUN 0. Ha egy lemez segítségével manuálisan hozzáadni a `azure vm disk attach-new` parancsot, és adja meg a LUN-t (`--lun`) ahelyett, hogy engedélyezi a megfelelő logikai meghatározásához az Azure platformon, mi gondoskodunk, hogy a lemez már létezik / LUN azonosítójú 0 van jelen. 
 
-Consider the following example showing a snippet of the output from `lsscsi`:
+Vegye figyelembe a következő példa egy kódrészletet a kimenetét megjelenítő `lsscsi`:
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-The two data disks exist at LUN 0 and LUN 1 (the first column in the `lsscsi` output details `[host:channel:target:lun]`). Both disks should be accessbile from within the VM. If you had manually specified the first disk to be added at LUN 1 and the second disk at LUN 2, you may not see the disks correctly from within your VM.
+A két adatlemezek lehet létrehozni a LUN 0 és LUN-1 (az első oszlop a `lsscsi` részletek kimeneti `[host:channel:target:lun]`). Mindkét lemeznek kell lennie a accessbile a virtuális Gépen belül. Ha az első lemezt lehet hozzáadni a logikai egység 1 és a második lemezről LUN 2 manuálisan kellett megadott, a virtuális Gépen belül nem jelenhet meg a lemezeket megfelelően.
 
 > [!NOTE]
-> The Azure `host` value is 5 in these examples, but this may vary depending on the type of storage you select.
+> Az Azure `host` érték 5 ezekben a példákban, de ez eltérhetnek attól függően, hogy a tároló típusa szerinti választja.
 > 
 > 
 
-This disk behavior is not an Azure problem, but the way in which the Linux kernel follows the SCSI specifications. When the Linux kernel scans the SCSI bus for attached devices, a device must be found at LUN 0 in order for the system to continue scanning for additional devices. As such:
+Ez lemez azonban nem egy Azure probléma, de a, amelyben a Linux kernel követi a SCSI-specifikációk módját. A Linux kernel a SCSI-buszhoz csatlakoztatott eszközöket keres, ha egy eszköz kell található LUN azonosítójú 0 ahhoz, hogy a rendszer folytatja a további eszközök keresése. Ilyen:
 
-* Review the output of `lsscsi` after adding a data disk to verify that you have a disk at LUN 0.
-* If your disk does not show up correctly within your VM, verify a disk exists at LUN 0.
+* Tekintse át a kimenetet a `lsscsi` ellenőrzése, hogy rendelkezik-e a lemez 0 LUN azonosítójú adatlemez hozzáadása után.
+* Ha a lemez nem jelenik meg helyesen a virtuális Gépen belül, a lemez LUN azonosítójú 0 meglétének ellenőrzése.
 

@@ -1,53 +1,53 @@
-## <a name="prerequisites"></a>Prerequisites
-Before we can write CDN management code, we need to do some preparation to enable our code to interact with the Azure Resource Manager.  To do this, you'll need to:
+## <a name="prerequisites"></a>Előfeltételek
+Azt írhat CDN felügyeleti kódját, igazolnia kell ahhoz, hogy az Azure Resource Manager interaktív kód bizonyos előkészítés tegye.  Ehhez meg kell:
 
-* Create a resource group to contain the CDN profile we create in this tutorial
-* Configure Azure Active Directory to provide authentication for our application
-* Apply permissions to the resource group so that only authorized users from our Azure AD tenant can interact with our CDN profile
+* Hozzon létre egy erőforráscsoportot tartalmazó nem ez az oktatóanyag létrehozni a CDN-profil
+* A hitelesítés az alkalmazás Azure Active Directory konfigurálása
+* Engedélyek alkalmazása az erőforráscsoportot, hogy csak az Azure AD-bérlő engedéllyel rendelkező felhasználók használhatják a CDN-profil
 
-### <a name="creating-the-resource-group"></a>Creating the resource group
-1. Log into the [Azure Portal](https://portal.azure.com).
-2. Click the **New** button in the upper left, and then **Management**, and **Resource Group**.
+### <a name="creating-the-resource-group"></a>Az erőforráscsoport létrehozása
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com).
+2. Kattintson a **új** bal felső sarokban, gombra, majd **felügyeleti**, és **erőforráscsoport**.
 
-    ![Creating a new resource group](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
-3. Call your resource group *CdnConsoleTutorial*.  Select your subscription and choose a location near you.  If you wish, you may click the **Pin to dashboard** checkbox to pin the resource group to the dashboard in the portal.  This will make it easier to find later.  After you've made your selections, click **Create**.
+    ![Új erőforráscsoport létrehozása](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
+3. Az erőforráscsoport hívás *CdnConsoleTutorial*.  Jelölje ki az előfizetését, és válassza ki azt a helyet környéken.  Ha kívánja, kattintson a **rögzítés az irányítópulton** jelölőnégyzetet, hogy az erőforráscsoport az irányítópulton rögzítheti a portálon.  Ez megkönnyíti a később található.  Beállítás megadása után kattintson **létrehozása**.
 
-    ![Naming the resource group](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
-4. After the resource group is created, if you didn't pin it to your dashboard, you can find it by clicking **Browse**, then **Resource Groups**.  Click the resource group to open it.  Make a note of your **Subscription ID**.  We'll need it later.
+    ![Az erőforráscsoport elnevezése](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+4. Az erőforráscsoport létrehozása, ha az irányítópulton nem rögzíti, után megtalálja kattintva **Tallózás**, majd **erőforráscsoportok**.  Kattintson az erőforráscsoport való megnyitásához.  Jegyezze fel a **előfizetés-azonosító**.  Szükség lesz az később.
 
-    ![Naming the resource group](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+    ![Az erőforráscsoport elnevezése](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
-### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Creating the Azure AD application and applying permissions
-There are two approaches to app authentication with Azure Active Directory: Individual users or a service principal. A service principal is similar to a service account in Windows.  Instead of granting a particular user permissions to interact with the CDN profiles, we instead grant the permissions to the service principal.  Service principals are generally used for automated, non-interactive processes.  Even though this tutorial is writing an interactive console app, we'll focus on the service principal approach.
+### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Az Azure AD-alkalmazás létrehozása és alkalmazása engedélyek
+Kétféleképpen app hitelesítés az Azure Active Directoryval: egyéni felhasználók számára, vagy egy egyszerű szolgáltatást. Egy egyszerű szolgáltatásnév hasonlít a Windows szolgáltatás-fiók.  Helyett a jogosultságokat egy adott felhasználó kommunikál a CDN-profilra, azt helyette adja meg az egyszerű szolgáltatásnév a engedélyeket.  Automatikus, nem interaktív folyamatok szolgáltatásnevekről általában használják.  Annak ellenére, hogy ez az oktatóanyag egy interaktív Konzolalkalmazás ír, a lesz a szolgáltatás egyszerű módszer összpontosítanak.
 
-Creating a service principal consists of several steps, including creating an Azure Active Directory application.  To do this, we're going to [follow this tutorial](../articles/resource-group-create-service-principal-portal.md).
-
-> [!IMPORTANT]
-> Be sure to follow all the steps in the [linked tutorial](../articles/resource-group-create-service-principal-portal.md).  It is *extremely important* that you complete it exactly as described.  Make sure to note your **tenant ID**, **tenant domain name** (commonly a *.onmicrosoft.com* domain unless you've specified a custom domain), **client ID**, and **client authentication key**, as we will need these later.  Be very careful to guard your **client ID** and **client authentication key**, as these credentials can be used by anyone to execute operations as the service principal.
->
-> When you get to the step named Configure multi-tenant application, select **No**.
->
-> When you get to the step [Assign application to role](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role), use the resource group we created earlier,  *CdnConsoleTutorial*, but instead of the **Reader** role, assign the **CDN Profile Contributor** role.  After you assign the application the **CDN Profile Contributor** role on your resource group, return to this tutorial. 
->
->
-
-Once you've created your service principal and assigned the **CDN Profile Contributor** role, the **Users** blade for your resource group should look similar to this.
-
-![Users blade](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
-
-### <a name="interactive-user-authentication"></a>Interactive user authentication
-If, instead of a service principal, you'd rather have interactive individual user authentication, the process is very similar to that for a service principal.  In fact, you will need to follow the same procedure, but make a few minor changes.
+Egy egyszerű szolgáltatás létrehozása áll több lépésből áll, többek között az Azure Active Directory-alkalmazás létrehozása.  Ehhez fogjuk [Ez az oktatóanyag](../articles/resource-group-create-service-principal-portal.md).
 
 > [!IMPORTANT]
-> Only follow these next steps if you are choosing to use individual user authentication instead of a service principal.
+> Kövesse a lépéseket a a [csatolt oktatóanyag](../articles/resource-group-create-service-principal-portal.md).  Az *rendkívül fontos* végezze el az pontosan leírtak szerint.  Ügyeljen arra, hogy vegye figyelembe a **bérlői azonosító**, **bérlő tartománynevét** (általában egy *. onmicrosoft.com* tartomány kivéve, ha a megadott egyéni tartományt), **ügyfél-azonosító** , és **ügyfél-hitelesítési kulcs**, mert ezekre később fel kell.  Legyen körültekintő, amelyek védelmet a **ügyfél-azonosító** és **ügyfél-hitelesítési kulcs**, mivel ezeket a hitelesítő adatokat a műveletek végrehajtása a szolgáltatás egyszerű, bárki által használható.
+>
+> Amikor az alkalmazás konfigurálása több-bérlős nevű lépést, válassza ki a **nem**.
+>
+> Amikor elér a lépés [szerepkör alkalmazást](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role), használja a korábban létrehozott erőforráscsoport *CdnConsoleTutorial*, de ahelyett, hogy a **olvasó** szerepkör, rendelje hozzá a  **CDN-profil közreműködői** szerepkör.  Az alkalmazás hozzárendelése után a **CDN-profil közreműködői** az erőforráscsoport ebben az oktatóanyagban lépjen vissza a szerepkört. 
 >
 >
 
-1. When creating your application, instead of **Web Application**, choose **Native application**.
+Miután elkészítette az egyszerű szolgáltatásnév és hozzárendelve a **CDN-profil közreműködői** szerepkör, a **felhasználók** az erőforráscsoport panel ez hasonlóan kell kinéznie.
 
-    ![Native application](./media/cdn-app-dev-prep/cdn-native-application-include.png)
-2. On the next page, you will be prompted for a **redirect URI**.  The URI won't be validated, but remember what you entered.  You'll need it later.
-3. There is no need to create a **client authentication key**.
-4. Instead of assigning a service principal to the **CDN Profile Contributor** role, we're going to assign individual users or groups.  In this example, you can see that I've assigned  *CDN Demo User* to the **CDN Profile Contributor** role.  
+![Felhasználók panel](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
 
-    ![Individual user access](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
+### <a name="interactive-user-authentication"></a>Interaktív felhasználói hitelesítéssel
+Ha, helyett egy egyszerű szolgáltatást, akkor ahelyett, hogy egyes interaktív felhasználói hitelesítéssel, a folyamat nagyon hasonlít, amely a szolgáltatásnevet.  Valójában akkor kövesse ugyanazt az eljárást, de néhány kisebb módosításokat.
+
+> [!IMPORTANT]
+> Csak kövesse a következő lépések, ha egyéni felhasználói hitelesítés használata helyett egy egyszerű szolgáltatás kiválasztása.
+>
+>
+
+1. Ahelyett, hogy az alkalmazás létrehozásakor **webalkalmazás**, válassza a **natív alkalmazás**.
+
+    ![Natív alkalmazás](./media/cdn-app-dev-prep/cdn-native-application-include.png)
+2. A következő oldalon kérni fogja a egy **átirányítási URI**.  Az URI-azonosítója nem érvényesíthető, de ne feledje, hogy a megadott.  Erre később még szüksége lesz.
+3. Nincs szükség létrehozásához egy **ügyfél-hitelesítési kulcs**.
+4. Ne az egyszerű szolgáltatás a **CDN-profil közreműködői** szerepkör, az oktatóanyagban módosítjuk rendelhető hozzá a felhasználókhoz és csoportokhoz.  Ebben a példában láthatja, hogy korábban kiosztott *CDN bemutató felhasználó* számára a **CDN-profil közreműködői** szerepkör.  
+
+    ![Egyes felhasználók hozzáférését](./media/cdn-app-dev-prep/cdn-aad-user-include.png)

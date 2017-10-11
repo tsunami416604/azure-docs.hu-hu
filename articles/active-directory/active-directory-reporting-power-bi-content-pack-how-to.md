@@ -13,12 +13,11 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
 ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Az Azure Active Directory Power BI-tartalomcsomag használata
 
@@ -150,4 +149,3 @@ Tekintse meg a [hibaelhárítási útmutatót](active-directory-reporting-troubl
 ## <a name="next-steps"></a>Következő lépések
 
 A jelentéskészítés áttekintéséért lásd: [Jelentéskészítés az Azure Active Directoryban](active-directory-reporting-azure-portal.md).
-

@@ -1,4 +1,4 @@
 > [!TIP]
 >
-> If you plan to use the HTTP or WebHook bindings, plan to avoid port exhaustion that can be caused by improper instantiation of `HttpClient`. For more information, review the article [Improper Instantiation antipattern](https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/).
+> Ha le szeretné használni a HTTP- vagy a WebHook kötések, tervezze meg, amely a nem megfelelő példánylétrehozás okozhatja port Erőforrásfogyás elkerülése érdekében `HttpClient`. További információkért tekintse át a [helytelen példánylétrehozás antipattern](https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/).
 >

@@ -1,18 +1,18 @@
 
 <!--author=alkohli last changed: 01/02/17-->
 
-#### <a name="to-delete-a-storsimple-backup-policy"></a>To delete a StorSimple backup policy
+#### <a name="to-delete-a-storsimple-backup-policy"></a>A StorSimple biztonsági mentési házirend törlése
 
-1. Go to your StorSimple device and click **Backup policy**.
+1. A StorSimple-eszközben kattintson a **Biztonsági mentési szabályzat** lehetőségre.
 
-2. In the tabular listing of backup policies, select the policy you want to delete. Right-click and from the context menu, select **Delete**.
+2. A biztonsági mentési házirendek táblázatos listája, válassza ki a törölni kívánt házirendet. Kattintson a jobb gombbal, és válassza ki a helyi menüből **törlése**.
 
-    ![Select a backup policy to delete](./media/storsimple-8000-delete-backup-policy/deletebupol1.png)
+    ![Válassza ki a biztonsági mentési házirend törlése](./media/storsimple-8000-delete-backup-policy/deletebupol1.png)
 
-3. You will be prompted for confirmation. Keep in mind that deleting a backup policy will delete all the associated backups. Click **Yes** to delete.
+3. Megerősítést kér bekéri. Ne feledje, hogy a biztonsági mentési házirend törlése törli a társított biztonsági másolatok. Kattintson a **Igen** törlése.
 
-    ![Confirm delete](./media/storsimple-8000-delete-backup-policy/deletebupol2.png)
+    ![Törlés megerősítése](./media/storsimple-8000-delete-backup-policy/deletebupol2.png)
 
-The backup policies list will be updated to display the new list of policies.
+A biztonsági mentési házirendek lista frissíti az új házirendek listájának megjelenítéséhez.
 
-![Updated backup policy list](./media/storsimple-8000-delete-backup-policy/deletebupol5.png)
+![A biztonsági mentési házirend lista frissítése](./media/storsimple-8000-delete-backup-policy/deletebupol5.png)

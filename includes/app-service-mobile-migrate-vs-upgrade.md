@@ -1,5 +1,5 @@
-There are two options for moving from Mobile Services to App Service: migration or upgrade. Either option will give you access to all of the hosting capabilities of App Service:
+Az App Service Mobile Services áthelyezése esetén két lehetőség áll rendelkezésre: áttelepítés vagy frissítés. Bármelyiket rendszerében, hozzáférhet az összes, az App Service üzemeltetési lehetőségeit:
 
-* *Migrating* a service just changes the underlying environment that hosts your mobile backend. It requires **no code changes** to either the mobile client or the mobile server project. If you use the automated migration option, this preserves your **service.azure-mobile.net** URL. 
-* *Upgrading* a service does **require code changes** to both your server and client project, but allows you to take advantage of new mobile SDK features, such as improvements to authentication and more flexibility for your server project. 
+* *Áttelepítés* egy szolgáltatás éppen módosítja az alapul szolgáló környezetben, amelyen a mobil-háttéralkalmazást. Szükségel **nem kódmódosításokat** a mobil ügyfél vagy a mobil kiszolgálóprojektet. Ha az automatizált áttelepítési funkciót használja, ez megőrzi a **service.azure-mobile.net** URL-CÍMÉT. 
+* *Frissítés* egy szolgáltatásnak nincs **kód módosítására** a kiszolgáló és ügyfél-projekt, de lehetővé teszi új mobil SDK szolgáltatásait, például a hitelesítés és a nagyobb rugalmasságot fejlesztések a kiszolgáló-projektet. 
 

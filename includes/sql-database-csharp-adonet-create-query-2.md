@@ -1,51 +1,51 @@
 
 <a name="cs_0_csharpprogramexample_h2"/>
 
-## <a name="c-program-example"></a>C# program example
+## <a name="c-program-example"></a>C# programban – példa
 
-The next sections of this article present a C# program that uses ADO.NET to send Transact-SQL statements to the SQL database. The C# program performs the following actions:
+Ez a cikk a következő szakaszokban jelent-e az SQL database Transact-SQL-utasítások küldendő ADO.NET használó C# programot. A C# programban a következő műveleteket hajtja végre:
 
-1. [Connects to our SQL database using ADO.NET](#cs_1_connect).
-2. [Creates tables](#cs_2_createtables).
-3. [Populates the tables with data, by issuing T-SQL INSERT statements](#cs_3_insert).
-4. [Updates data by use of a join](#cs_4_updatejoin).
-5. [Deletes data by use of a join](#cs_5_deletejoin).
-6. [Selects data rows by use of a join](#cs_6_selectrows).
-7. Closes the connection (which drops any temporary tables from tempdb).
+1. [Az ADO.NET használatával SQL Database adatbázishoz kapcsolódó](#cs_1_connect).
+2. [Táblák létrehozása](#cs_2_createtables).
+3. [Helyezze be a T-SQL utasítás kiadása tölti fel adatokkal, a táblák](#cs_3_insert).
+4. [Frissíti az adatokat a csatlakozzon használatával](#cs_4_updatejoin).
+5. [Törli az adatokat a csatlakozzon használatával](#cs_5_deletejoin).
+6. [Kiválasztja a adatsorok használata illesztés](#cs_6_selectrows).
+7. Bezárja a kapcsolatot (amely elutasítja azokat az ideiglenes táblák bármelyikét tempdb).
 
-The C# program contains:
+A C# programban tartalmazza:
 
-- C# code to connect to the database.
-- Methods that return the T-SQL source code.
-- Two methods that submit the T-SQL to the database.
+- C#-kódban az adatbázishoz való kapcsolódáshoz.
+- Az módszereket, amelyek a T-SQL-forrás kóddal tér vissza.
+- Küldje el a T-SQL az adatbázis két módszert.
 
-#### <a name="to-compile-and-run"></a>To compile and run
+#### <a name="to-compile-and-run"></a>Fordítása és futtatása
 
-This C# program is logically one .cs file. But here the program is physically divided into several code blocks, to make each block easier to see and understand. To compile and run this program, do the following:
+A C# program logikailag egy .cs fájl. De itt a program fizikailag osztva több kódblokkok valamennyi blokkja könnyebben áttekinthetők és megérteni. Fordítsa le, és futtassa a programot, tegye a következőket:
 
-1. Create a C# project in Visual Studio.
-    - The project type should be a *console* application, from something like the following hierarchy: **Templates** > **Visual C#** > **Windows Classic Desktop** > **Console App (.NET Framework)**.
-3. In the file **Program.cs**, erase the small starter lines of code.
-3. Into Program.cs, copy and paste each of the following blocks, in the same sequence they are presented here.
-4. In Program.cs, edit the following values in the **Main** method:
+1. Hozzon létre egy C#-projektet a Visual Studióban.
+    - A projekt típusnak kell lennie egy *konzol* alkalmazás, a következőhöz hasonlóan a következő hierarchia: **sablonok** > **Visual C#** >  **Klasszikus Windows asztal** > **Konzolalkalmazásból (.NET-keretrendszer)**.
+3. A fájl **Program.cs**, a kis alapszintű sornyi kód törlésére.
+3. A program.cs fájlt másolja be a következő blokkok mindegyikének itt bemutatott ugyanabban a sorrendben.
+4. A program.cs fájlban szerkessze a következő értékeket a **fő** módszert:
 
-   - **cb.DataSource**
-   - **cd.UserID**
-   - **cb.Password**
+   - **CB. Adatforrás**
+   - **CD-ről. Felhasználói azonosítóját**
+   - **CB. Jelszó**
    - **InitialCatalog**
 
-5. Verify that the assembly **System.Data.dll** is referenced. To verify, expand the **References** node in the **Solution Explorer** pane.
-6. To build the program in Visual Studio, click the **Build** menu.
-7. To run the program from Visual Studio, click the **Start** button. The report output is displayed in a cmd.exe window.
+5. Ellenőrizze, hogy a szerelvény **System.Data.dll** hivatkozik. Annak ellenőrzéséhez, bontsa ki a **hivatkozások** csomópontja a **Megoldáskezelőben** ablaktáblán.
+6. A Visual Studio program létrehozásához kattintson a **Build** menü.
+7. A program futtatásához a Visual Studio eszközből, kattintson a **Start** gombra. A jelentés kimenetében a cmd.exe ablakban jelenik meg.
 
 > [!NOTE]
-> You have the option of editing the T-SQL to add a leading **#** to the table names, which creates them as temporary tables in **tempdb**. This can be useful for demonstration purposes, when no test database is available. Temporary tables are deleted automatically when the connection closes. Any REFERENCES for foreign keys are not enforced for temporary tables.
+> Lehetősége van a T-SQL szerkesztési hozzáadása egy bevezető  **#**  a táblanevek, amely létrehozza azokat az ideiglenes táblák **tempdb**. Ez akkor lehet hasznos, bemutatási célokra, ha vizsgálat adatbázis érhető el. Az ideiglenes táblák automatikusan törli a kapcsolat bezárása után. Az idegen kulcsok HIVATKOZÁSOKAT ideiglenes táblák nem kényszeríti ki.
 >
 
 <a name="cs_1_connect"/>
-### <a name="c-block-1-connect-by-using-adonet"></a>C# block 1: Connect by using ADO.NET
+### <a name="c-block-1-connect-by-using-adonet"></a>C# block 1: Csatlakozás az ADO.NET használatával
 
-- [Next](#cs_2_createtables)
+- [Következő](#cs_2_createtables)
 
 
 ```csharp
@@ -99,9 +99,9 @@ namespace csharp_db_test
 
 
 <a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>C# block 2: T-SQL to create tables
+### <a name="c-block-2-t-sql-to-create-tables"></a>C# block 2: T-SQL-táblák létrehozása
 
-- [Previous](#cs_1_connect) &nbsp; / &nbsp; [Next](#cs_3_insert)
+- [Előző](#cs_1_connect) &nbsp;  /  &nbsp; [tovább](#cs_3_insert)
 
 ```csharp
       static string Build_2_Tsql_CreateTables()
@@ -131,19 +131,19 @@ CREATE TABLE tabEmployee
       }
 ```
 
-#### <a name="entity-relationship-diagram-erd"></a>Entity Relationship Diagram (ERD)
+#### <a name="entity-relationship-diagram-erd"></a>Entitás kapcsolati Diagram (helyreállító lemez)
 
-The preceding CREATE TABLE statements involve the **REFERENCES** keyword to create a *foreign key* (FK) relationship between two tables.  If you are using tempdb, comment out the `--REFERENCES` keyword using a pair of leading dashes.
+Az előző CREATE TABLE utasítás tartalmaz, amely a **hivatkozások** kulcsszó létrehozásához egy *idegen kulcs* két tábla közötti kapcsolat (FK).  Ha a TempDB adatbázist használ, megjegyzéssé a `--REFERENCES` kulcsszó használatával vezető kötőjelek két.
 
-Next is an ERD that displays the relationship between the two tables. The values in the #tabEmployee.DepartmentCode *child* column are limited to the values present in the #tabDepartment.Department *parent* column.
+Ezután van Helyreállító, amely megjeleníti a kapcsolat a két tábla között. A #tabEmployee.DepartmentCode értékeinek *gyermek* oszlop szerepel a #tabDepartment.Department értékek korlátozódnak *szülő* oszlop.
 
-![ERD showing foreign key](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
+![Helyreállító lemez ábrázoló idegen kulcs](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 
 <a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>C# block 3: T-SQL to insert data
+### <a name="c-block-3-t-sql-to-insert-data"></a>C# block 3: T-SQL adatok beszúrása
 
-- [Previous](#cs_2_createtables) &nbsp; / &nbsp; [Next](#cs_4_updatejoin)
+- [Előző](#cs_2_createtables) &nbsp;  /  &nbsp; [tovább](#cs_4_updatejoin)
 
 
 ```csharp
@@ -173,9 +173,9 @@ INSERT INTO tabEmployee
 
 
 <a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>C# block 4: T-SQL to update-join
+### <a name="c-block-4-t-sql-to-update-join"></a>C# block 4: T-SQL frissítési-illesztés
 
-- [Previous](#cs_3_insert) &nbsp; / &nbsp; [Next](#cs_5_deletejoin)
+- [Előző](#cs_3_insert) &nbsp;  /  &nbsp; [tovább](#cs_5_deletejoin)
 
 
 ```csharp
@@ -201,9 +201,9 @@ UPDATE empl
 
 
 <a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>C# block 5: T-SQL to delete-join
+### <a name="c-block-5-t-sql-to-delete-join"></a>C# block 5: T-SQL delete-illesztés
 
-- [Previous](#cs_4_updatejoin) &nbsp; / &nbsp; [Next](#cs_6_selectrows)
+- [Előző](#cs_4_updatejoin) &nbsp;  /  &nbsp; [tovább](#cs_6_selectrows)
 
 
 ```csharp
@@ -233,9 +233,9 @@ DELETE tabDepartment
 
 
 <a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>C# block 6: T-SQL to select rows
+### <a name="c-block-6-t-sql-to-select-rows"></a>C# block 6: T-SQL sorok kiválasztásához
 
-- [Previous](#cs_5_deletejoin) &nbsp; / &nbsp; [Next](#cs_6b_datareader)
+- [Előző](#cs_5_deletejoin) &nbsp;  /  &nbsp; [tovább](#cs_6b_datareader)
 
 
 ```csharp
@@ -263,9 +263,9 @@ SELECT
 <a name="cs_6b_datareader"/>
 ### <a name="c-block-6b-executereader"></a>C# block 6b: ExecuteReader
 
-- [Previous](#cs_6_selectrows) &nbsp; / &nbsp; [Next](#cs_7_executenonquery)
+- [Előző](#cs_6_selectrows) &nbsp;  /  &nbsp; [tovább](#cs_7_executenonquery)
 
-This method is designed to run the T-SQL SELECT statement that is built by the **Build_6_Tsql_SelectEmployees** method.
+Ez a módszer az célja, hogy a T-SQL SELECT utasítás által épített a **Build_6_Tsql_SelectEmployees** metódust.
 
 
 ```csharp
@@ -299,9 +299,9 @@ This method is designed to run the T-SQL SELECT statement that is built by the *
 <a name="cs_7_executenonquery"/>
 ### <a name="c-block-7-executenonquery"></a>C# block 7: ExecuteNonQuery
 
-- [Previous](#cs_6b_datareader) &nbsp; / &nbsp; [Next](#cs_8_output)
+- [Előző](#cs_6b_datareader) &nbsp;  /  &nbsp; [tovább](#cs_8_output)
 
-This method is called for operations that modify the data content of tables without returning any data rows.
+Ezt a módszert nevezik műveletekhez táblák adatok tartalmát módosító adatok sorokat visszatérés nélkül.
 
 
 ```csharp
@@ -335,11 +335,11 @@ This method is called for operations that modify the data content of tables with
 
 
 <a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>C# block 8: Actual test output to the console
+### <a name="c-block-8-actual-test-output-to-the-console"></a>C# block 8: tényleges tesztkimenet a konzolhoz
 
-- [Previous](#cs_7_executenonquery)
+- [Előző](#cs_7_executenonquery)
 
-This section captures the output that the program sent to the console. Only the guid values vary between test runs.
+Ez a szakasz a program elküldött a konzol kimenetét rögzíti. A guid értékek csak tesztelési futtatják változhat.
 
 
 ```text

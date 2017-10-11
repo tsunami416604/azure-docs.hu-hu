@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>Prerequisites
-* A [MailChimp](https://www.MailChimp.com/) account 
+### <a name="prerequisites"></a>Előfeltételek
+* A [MailChimp](https://www.MailChimp.com/) fiók 
 
-Before you can use your MailChimp account in a Logic app, you must authorize the Logic app to connect to your MailChimp account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+A MailChimp-fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás MailChimp-fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
 
-Here are the steps to authorize your Logic app to connect to your MailChimp account:
+A Logic Apps alkalmazást MailChimp-fiókjához történő engedélyezéséhez lépései a következők:
 
-1. To create a connection to MailChimp, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *MailChimp* in the search box. Select the trigger or action you'll like to use:  
-   ![MailChimp step 1](./media/connectors-create-api-mailchimp/mailchimp-1.png)
-2. If you haven't created any connections to MailChimp before, you'll get prompted to provide your MailChimp credentials. These credentials will be used to authorize your Logic app to connect to, and access your MailChimp account's data:  
-   ![MailChimp step 2](./media/connectors-create-api-mailchimp/mailchimp-2.png)
-3. Provide your MailChimp user name and password to authorize your Logic app:  
-   ![MailChimp step 3](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
-4. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
-   ![MailChimp step 4](./media/connectors-create-api-mailchimp/mailchimp-4.png)
+1. A Logic app designer MailChimp, kapcsolat létrehozásához válassza **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *MailChimp* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
+   ![1. lépés MailChimp](./media/connectors-create-api-mailchimp/mailchimp-1.png)
+2. Ha még nem hozott létre a MailChimp előtt fennálló kapcsolatokat, a rendszer MailChimp hitelesítő adatok megadása fog kérni. Ezeket a hitelesítő adatokat engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használt, és a MailChimp fiók adatok eléréséhez:  
+   ![2. lépés MailChimp](./media/connectors-create-api-mailchimp/mailchimp-2.png)
+3. A MailChimp-felhasználónevet és jelszót kell megadniuk engedélyezik a Logic Apps alkalmazást:  
+   ![3. lépés MailChimp](./media/connectors-create-api-mailchimp/mailchimp-3.png)   
+4. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
+   ![4. lépés MailChimp](./media/connectors-create-api-mailchimp/mailchimp-4.png)
 

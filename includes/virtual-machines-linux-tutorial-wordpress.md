@@ -1,27 +1,27 @@
-## <a name="install-wordpress"></a>Install WordPress
+## <a name="install-wordpress"></a>WordPress telepítése
 
-If you want to try your stack, install a sample app. As an example, the following steps install the open source [WordPress](https://wordpress.org/) platform to create websites and blogs. Other workloads to try include [Drupal](http://www.drupal.org) and [Moodle](https://moodle.org/). 
+Ha ki szeretné próbálni a Jegyzettömböt, a minta-alkalmazások telepítése. Tegyük fel, a következő lépéseket a nyílt forráskódú telepítése [WordPress](https://wordpress.org/) platform webhelyek és blogok létrehozásához. Más munkaterhelésekhez, próbálja meg a következők [Drupal](http://www.drupal.org) és [Moodle](https://moodle.org/). 
 
-This WordPress setup is for proof of concept. For more information and settings for production installation, see the [WordPress documentation](https://codex.wordpress.org/Main_Page). 
+A WordPress-telepítő a koncepció igazolása szolgál. További információk és éles telepítési beállításait, a [WordPress dokumentáció](https://codex.wordpress.org/Main_Page). 
 
 
 
-### <a name="install-the-wordpress-package"></a>Install the WordPress package
+### <a name="install-the-wordpress-package"></a>A WordPress telepítéséhez
 
-Run the following command:
+Futtassa az alábbi parancsot:
 
 ```bash
 sudo apt install wordpress
 ```
 
-### <a name="configure-wordpress"></a>Configure WordPress
+### <a name="configure-wordpress"></a>A WordPress konfigurálása
 
-Configure WordPress to use MySQL and PHP. Run the following command to open a text editor of your choice and create the file `/etc/wordpress/config-localhost.php`:
+WordPress MySQL és a PHP használatára konfigurálja. Nyisson meg egy szövegszerkesztőt, az Ön által választott, és a fájl létrehozásához a következő parancsot `/etc/wordpress/config-localhost.php`:
 
 ```bash
 sudo sensible-editor /etc/wordpress/config-localhost.php
 ```
-Copy the following lines to the file, substituting your database password for *yourPassword* (leave other values unchanged). Then save the file.
+Másolja a következő sorokat a fájlt, és az adatbázis-jelszót *yourPassword* (hagyja változatlanul más értékek). Ezután mentse a fájlt.
 
 ```php
 <?php
@@ -33,13 +33,13 @@ define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
 ?>
 ```
 
-In a working directory, create a text file `wordpress.sql` to configure the WordPress database: 
+Egy munkakönyvtárba, hozzon létre egy szövegfájlt `wordpress.sql` a WordPress-adatbázis konfigurálása: 
 
 ```bash
 sudo sensible-editor wordpress.sql
 ```
 
-Add the following commands, substituting your database password for *yourPassword* (leave other values unchanged). Then save the file.
+Adja hozzá a következő parancsokat, és az adatbázis-jelszót *yourPassword* (hagyja változatlanul más értékek). Ezután mentse a fájlt.
 
 ```sql
 CREATE DATABASE wordpress;
@@ -51,15 +51,15 @@ FLUSH PRIVILEGES;
 ```
 
 
-Run the following command to create the database:
+A következő parancsot az adatbázis létrehozásához:
 
 ```bash
 cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
 ```
 
-After the command completes, delete the file `wordpress.sql`.
+A parancs befejezése után törölje a fájlt `wordpress.sql`.
 
-Move the WordPress installation to the web server document root:
+Helyezze át a WordPress telepítése a web server dokumentumgyökér:
 
 ```bash
 sudo ln -s /usr/share/wordpress /var/www/html/wordpress
@@ -67,6 +67,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-Now you can complete the WordPress setup and publish on the platform. Open a browser and go to `http://yourPublicIPAddress/wordpress`. Substitute the public IP address of your VM. It should look similar to this image.
+Most már a WordPress beállításának befejezése és közzététele a platformon. Nyisson meg egy böngészőt, és navigáljon `http://yourPublicIPAddress/wordpress`. Helyettesítse be a virtuális gép nyilvános IP-címét. Ez a rendszerkép hasonlóan kell kinéznie.
 
-![WordPress installation page](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)
+![WordPress telepítése oldal](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

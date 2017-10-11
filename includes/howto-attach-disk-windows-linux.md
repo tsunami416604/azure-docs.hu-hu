@@ -1,59 +1,59 @@
 
 
 
-## <a name="attach-an-empty-disk"></a>Attach an empty disk
-Attaching an empty disk is a simple way to add a data disk, because Azure creates the .vhd file for you and stores it in the storage account.
+## <a name="attach-an-empty-disk"></a>Üres lemez csatlakoztatása
+Üres lemez csatolása módja a egyszerű hozzá adatlemezt, mert az Azure létrehozza a .vhd fájlt, és azt a tárfiók tárolja.
 
-1. Click **Virtual Machines (classic)**, and then select the appropriate VM.
+1. Kattintson a **virtuális gépek (klasszikus)**, majd válassza ki a megfelelő virtuális gép.
 
-2. In the Settings menu, click **Disks**.
+2. A beállítások menüben kattintson a **lemezek**.
 
-   ![Attach a new empty disk](./media/howto-attach-disk-windows-linux/menudisksattachnew.png)
+   ![Egy új üres lemez csatolása](./media/howto-attach-disk-windows-linux/menudisksattachnew.png)
 
-3. On the command bar, click **Attach new**.  
-    The **Attach new disk** dialog box appears.
+3. A parancssávon kattintson **új Attach**.  
+    A **új lemez csatolása** párbeszédpanel jelenik meg.
 
-    ![Attach a new disk](./media/howto-attach-disk-windows-linux/newdiskdetail.png)
+    ![Új lemez csatolása](./media/howto-attach-disk-windows-linux/newdiskdetail.png)
 
-    Fill in the following information:
-    - In **File Name**, accept the default name or type another one for the .vhd file. The data disk uses an automatically generated name, even if you type another name for the .vhd file.
-    - Select the **Type** of the data disk. All virtual machines support standard disks. Many virtual machines also support premium disks.
-    - Select the **Size (GB)** of the data disk.
-    - For **Host caching**, choose none or Read Only.
-    - Click OK to finish.
+    Írja be a következő adatokat:
+    - A **Fájlnév**, fogadja el az alapértelmezett nevet, vagy írja be a .vhd fájl egy másikat. Az adatok lemez egy automatikusan létrehozott nevet használ, akkor is, ha beírja a .vhd fájlt egy másik nevet.
+    - Válassza ki a **típus** az adatok lemez. Az összes virtuális gép támogatja a normál lemezeket. Több virtuális gép is támogatja a premium lemezek.
+    - Válassza ki a **méret (GB)** az adatok lemez.
+    - A **állomás-gyorsítótárazása**, válasszon none, vagy csak olvasható.
+    - Kattintson az OK gombra a befejezéshez.
 
-4. After the data disk is created and attached, it's listed in the disks section of the VM.
+4. Miután a adatlemez létrehozták, és a kapcsolódó, a virtuális lemezek szakaszában szerepel.
 
-   ![New and empty data disk successfully attached](./media/howto-attach-disk-windows-linux/newdiskemptysuccessful.png)
+   ![Sikeresen csatolta az új és üres adatlemez](./media/howto-attach-disk-windows-linux/newdiskemptysuccessful.png)
 
 > [!NOTE]
-> After you add a data disk, you need to log on to the VM and initialize the disk so that it can be used.
+> Adatlemez hozzáadása után kell jelentkezzen be a virtuális Gépet, és végezze el a lemez inicializálását, hogy használható.
 
-## <a name="how-to-attach-an-existing-disk"></a>How to: Attach an existing disk
-Attaching an existing disk requires that you have a .vhd available in a storage account. Use the [Add-AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet to upload the .vhd file to the storage account. After you've created and uploaded the .vhd file, you can attach it to a VM.
+## <a name="how-to-attach-an-existing-disk"></a>Hogyan: meglévő lemez csatolása
+Meglévő lemez csatlakoztatása esetén rendelkeznie kell egy tárfiókban elérhető .vhd-vel. Használja a [Add-AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) parancsmagot, hogy a .vhd fájl feltöltése a tárfiókba. Létrehozott, és a .vhd fájl feltöltése után hozzácsatolhat egy virtuális géphez.
 
-1. Click **Virtual Machines (classic)**, and then select the appropriate virtual machine.
+1. Kattintson a **virtuális gépek (klasszikus)**, majd válassza ki a megfelelő virtuális gép.
 
-2. In the Settings menu, click **Disks**.
+2. A beállítások menüben kattintson a **lemezek**.
 
-3. On the command bar, click **Attach existing**.
+3. A parancssávon kattintson **Csatolás meglévő**.
 
-    ![Attach data disk](./media/howto-attach-disk-windows-linux/menudisksattachexisting.png)
+    ![Adatlemez csatolása](./media/howto-attach-disk-windows-linux/menudisksattachexisting.png)
 
-4. Click **Location**. The available storage accounts display. Next, select an appropriate storage account from those listed.
+4. Kattintson a **hely**. A rendelkezésre álló tár fiókokat jeleníti meg. Ezután válassza ki a megfelelő tárolási fiók felsorolt.
 
-    ![Provide disk storage account](./media/howto-attach-disk-windows-linux/existdiskstorageaccounts.png)
+    ![Adja meg a storage-fiók](./media/howto-attach-disk-windows-linux/existdiskstorageaccounts.png)
 
-5. A **Storage account** holds one or more containers that contain disk drives (vhds). Select the appropriate container from those listed.
+5. A **tárfiók** rendelkezik egy vagy több olyan tárolók, amelyek tartalmazzák a meghajtók (VHD-k). Válassza ki a megfelelő tárolót felsorolt.
 
-    ![Provide container of virtual-machines-windows](./media/howto-attach-disk-windows-linux/existdiskcontainers.png)
+    ![Adja meg a virtuális gépek windows tároló](./media/howto-attach-disk-windows-linux/existdiskcontainers.png)
 
-6. The **vhds** panel lists the disk drives held in the container. Click one of the disks, and then click Select.
+6. A **VHD-k** panel a tárolóban tárolt a merevlemez-meghajtók listája. Kattintson egy lemezt, majd válassza ki.
 
-    ![Provide disk image for virtual-machines-windows](./media/howto-attach-disk-windows-linux/existdiskvhds.png)
+    ![Adja meg a lemezképet a virtuális gépek windows](./media/howto-attach-disk-windows-linux/existdiskvhds.png)
 
-7. The **Attach existing disk** panel displays again, with the location containing the storage account, container, and selected hard disk (vhd) to add to the virtual machine.
+7. A **meglévő lemez csatolása** panel megjeleníti újra, a helyen lévő tartalmazó a tárfiókot, a tároló és a kijelölt merevlemez (vhd) a virtuális géphez való hozzáadásához.
 
-  Set **Host caching** to none or Read only, then click OK.
+  Állítsa be **állomás-gyorsítótárazása** None vagy olvasási csak, majd kattintson az OK gombra.
 
-    ![Data disk successfully attached](./media/howto-attach-disk-windows-linux/exisitingdisksuccessful.png)
+    ![Sikeresen csatolta adatlemez](./media/howto-attach-disk-windows-linux/exisitingdisksuccessful.png)

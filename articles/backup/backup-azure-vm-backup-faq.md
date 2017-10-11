@@ -1,4 +1,3 @@
-
 ---
 title: "Azure VM Backup – gyakori kérdések | Microsoft Docs"
 description: "Válaszok a következő gyakori kérdésekre: hogyan működik az Azure-beli virtuális gépek biztonsági mentése, mik a korlátozások, és mi történik, ha módosítások történnek a szabályzatban"
@@ -13,15 +12,14 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.translationtype: HT
-ms.sourcegitcommit: 0425da20f3f0abcfa3ed5c04cec32184210546bb
-ms.openlocfilehash: 8c06a90f58cf56ebb4e75e7567e237de7414a300
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/20/2017
-
+ms.openlocfilehash: 1372a9e05cb47f6c68240bffccd46b0fbebb5464
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -62,4 +60,3 @@ A lemezek visszaállítását a következőkhöz használhatja:
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Mi történik, ha módosítom a biztonsági mentési szabályzatot a virtuális gépen vagy gépeken?
 Amikor új szabályzatot alkalmaznak egy virtuális gépen, az új szabályzat ütemezése és megőrzése lesz érvényes. Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítás során törlendőként lesznek megjelölve. 
-

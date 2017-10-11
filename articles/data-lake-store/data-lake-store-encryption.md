@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 4/14/2017
 ms.author: yagupta
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: 20444d368c568ee716ff242e33323b91ffd198eb
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Az adatok titkosítása az Azure Data Lake Store-ban
 
 A titkosítás az Azure Data Lake Store-ban segíti az adatok védelmét, vállalati biztonsági szabályzatok implementálását és az előírt megfelelőségi követelmények teljesítését. Ez a cikk áttekintést nyújt a kialakításról, és ismerteti az implementálás egyes technikai aspektusait.
@@ -140,4 +138,3 @@ Vegye figyelembe, hogy az alapértelmezett titkosítási beállítások használ
     ![Képernyőkép a Data Lake Store ablakról, amelyen az üzenet és a Kulcs rotálása van kiemelve](./media/data-lake-store-encryption/rotatekey.png)
 
 Ez a művelet kevesebb mint két percet vehet igénybe, és a kulcsrotálás nem jár várt leállással. A művelet befejezését követően a kulcs új verziója lesz használatban.
-

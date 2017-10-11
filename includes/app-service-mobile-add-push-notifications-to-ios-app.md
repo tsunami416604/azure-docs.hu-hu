@@ -1,16 +1,16 @@
 
 **Objective-C**:
 
-1. In **QSAppDelegate.m**, import the iOS SDK and **QSTodoService.h**:
+1. A **QSAppDelegate.m**, importálja az iOS SDK és **QSTodoService.h**:
    
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
-2. In `didFinishLaunchingWithOptions` in **QSAppDelegate.m**, insert the following lines right before `return YES;`:
+2. A `didFinishLaunchingWithOptions` a **QSAppDelegate.m**, a következő közvetlenül előtt sor beszúrása `return YES;`:
    
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. In **QSAppDelegate.m**, add the following handler methods. Your app is now updated to support push notifications. 
+3. A **QSAppDelegate.m**, adja hozzá a következő kezelő metódusokat. Az alkalmazás most frissíteni leküldéses értesítések támogatásához használható. 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -77,17 +77,17 @@
    
         }
 
-**Swift**:
+**SWIFT**:
 
-1. Add file **ClientManager.swift** with the following contents. Replace *%AppUrl%* with the URL of the Azure Mobile App backend.
+1. Adja hozzá a fájl **ClientManager.swift** a következő tartalommal. Cserélje le *AppUrl %* az Azure Mobile Apps-háttéralkalmazás URL-címét.
    
         class ClientManager {
             static let sharedClient = MSClient(applicationURLString: "%AppUrl%")
         }
-2. In **ToDoTableViewController.swift**, replace the `let client` line that initializes an `MSClient` with this line:
+2. A **ToDoTableViewController.swift**, cserélje le a `let client` inicializálja sor egy `MSClient` ehhez a sorhoz:
    
         let client = ClientManager.sharedClient
-3. In **AppDelegate.swift**, replace the body of `func application` as follows:
+3. A **AppDelegate.swift**, cserélje le a törzsét `func application` az alábbiak szerint:
    
         func application(application: UIApplication,
           didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. In **AppDelegate.swift**, add the following handler methods. Your app is now updated to support push notifications.
+4. A **AppDelegate.swift**, adja hozzá a következő kezelő metódusokat. Az alkalmazás most frissíteni leküldéses értesítések támogatásához használható.
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

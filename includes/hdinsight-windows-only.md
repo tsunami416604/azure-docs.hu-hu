@@ -1,5 +1,5 @@
 > [!NOTE]
-> The information in this document only applies to Windows-based HDInsight clusters.
+> A jelen dokumentumban szereplő információk csak a Windows-alapú HDInsight-fürtök vonatkozik.
 > 
 > 
 

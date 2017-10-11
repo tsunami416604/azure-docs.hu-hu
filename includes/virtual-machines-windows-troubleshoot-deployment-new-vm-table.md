@@ -1,7 +1,7 @@
-The following table lists the possible upload and capture combinations of Windows generalized (gen.) and specialized (spec.) OS images. The combinations that will process without any errors are indicated by a Y, and those that will throw errors are indicated by an N. The causes and resolutions for the different errors you will run into are given below the table.
+A következő táblázat felsorolja a lehetséges feltöltés és a Windows rögzítési kombinációi általánosítva (főkönyvi), és kifejezetten (egyedi). Operációsrendszer-lemezképek. Egy Y jelzi a kombinációit, amelyek a hibák nélkül fel fogja dolgozni, és a hibák kivételhibát jelzi az n billentyűt. A okaik és megoldásaik felsorolását, be fogja futtatni a különböző hibákat adta a táblázat alatti.
 
-| OS | Upload spec. | Upload gen. | Capture spec. | Capture gen. |
+| Operációs rendszer | Töltse fel specifikációi. | Töltse fel a generációból. | Egyedi rögzíti. | Generációs rögzíti. |
 | --- | --- | --- | --- | --- |
-| Windows gen. |N<sup>1</sup> |Y |N<sup>3</sup> |Y |
-| Windows spec. |Y |N<sup>2</sup> |Y |N<sup>4</sup> |
+| Windows generációs. |N<sup>1</sup> |I |N<sup>3</sup> |I |
+| Windows-specifikáció. |I |N<sup>2</sup> |I |N<sup>4</sup> |
 

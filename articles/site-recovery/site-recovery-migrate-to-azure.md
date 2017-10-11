@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: f4dfe430fba51bd009431ca72279a21be55e3a40
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="migrate-to-azure-with-site-recovery"></a>Áttelepítés Azure-ra a Site Recoveryvel
 
@@ -83,4 +81,3 @@ AWS-példányokat is áttelepíthet Azure virtuális gépekre. Ebben a forgatók
 - [AWS-példányok áttelepítése az Azure-ba](site-recovery-migrate-aws-to-azure.md)
 - [Migrált gépek felkészítése egy másik régióba való migrálás engedélyezéséhez](site-recovery-azure-to-azure-after-migration.md) vészhelyreállítás esetében.
 - Gondoskodjon számítási feladatai védelméről az [Azure virtuális gépek replikálásával](site-recovery-azure-to-azure.md).
-

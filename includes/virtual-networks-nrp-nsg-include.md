@@ -1,30 +1,30 @@
-## <a name="network-security-group"></a>Network Security Group
-An NSG resource enables the creation of security boundary for workloads, by implementing allow and deny rules. Such rules can be applied to a VM, a NIC, or a subnet.
+## <a name="network-security-group"></a>Hálózati biztonsági csoport
+Az NSG-erőforrás létrehozását lehetővé tevő biztonsági határ munkaterhelésekhez, implementálásával engedélyezése, és megtagadási szabályoknak. Ezek a szabályok alkalmazhatók a virtuális gép, egy hálózati adapter vagy egy alhálózatot.
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **subnets** |List of subnet ids the NSG is applied to. |/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd |
-| **securityRules** |List of security rules that make up the NSG |See [Security rule](#Security-rule) below |
-| **defaultSecurityRules** |List of default security rules present in every NSG |See [Default security rules](#Default-security-rules) below |
+| **alhálózatok** |Az NSG vonatkozik, az alhálózati azonosítók listáját. |/Subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/TestRG/Providers/Microsoft.Network/virtualNetworks/TestVNet/Subnets/FrontEnd |
+| **securityRules** |Az NSG alkotó biztonsági szabályok listája |Lásd: [biztonsági szabály](#Security-rule) alatt |
+| **defaultSecurityRules** |Minden NSG található alapértelmezett biztonsági szabályok listája |Lásd: [alapértelmezett biztonsági szabályok](#Default-security-rules) alatt |
 
-* **Security rule** - An NSG can have multiple security rules defined. Each rule can allow or deny different types of traffic.
+* **A biztonsági szabály** -egy NSG rendelkezhet több biztonsági szabály lett meghatározva. Minden egyes szabály engedélyezheti vagy tagadhatja különböző típusú forgalom.
 
-### <a name="security-rule"></a>Security rule
-A security rule is a child resource of an NSG containing the properties below.
+### <a name="security-rule"></a>A biztonsági szabály
+A szabály egy NSG-t az alábbi tulajdonságait tartalmazó gyermek erőforrása.
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **description** |Description for the rule |Allow inbound traffic for all VMs in subnet X |
-| **protocol** |Protocol to match for the rule |TCP, UDP, or * |
-| **sourcePortRange** |Source port range to match for the rule |80, 100-200, * |
-| **destinationPortRange** |Destination port range to match for the rule |80, 100-200, * |
-| **sourceAddressPrefix** |Source address prefix to match for the rule |10.10.10.1, 10.10.10.0/24, VirtualNetwork |
-| **destinationAddressPrefix** |Destination address prefix to match for the rule |10.10.10.1, 10.10.10.0/24, VirtualNetwork |
-| **direction** |Direction of traffic to match for the rule |inbound or outbound |
-| **priority** |Priority for the rule. Rules are checked int he order of priority, once a rule applies, no more rules are tested for matching. |10, 100, 65000 |
-| **access** |Type of access to apply if the rule matches |allow or deny |
+| **Leírás** |Egy leírást a szabályhoz |Bejövő adatforgalom engedélyezésére X alhálózatban lévő virtuális gépen |
+| **protokoll** |A szabálynak megfelelő protokoll |TCP, UDP vagy * |
+| **sourcePortRange** |A szabálynak megfelelő forrásporttartomány |80, 100-200, * |
+| **destinationPortRange** |A szabálynak megfelelő célporttartomány |80, 100-200, * |
+| **sourceAddressPrefix** |A szabálynak megfelelő forráscím-előtag |10.10.10.1, 10.10.10.0/24, VirtualNetwork |
+| **destinationAddressPrefix** |A szabálynak megfelelő célcím-előtag |10.10.10.1, 10.10.10.0/24, VirtualNetwork |
+| **iránya** |A forgalom szabálynak megfelelő iránya |bejövő vagy kimenő |
+| **prioritás** |A szabály prioritását. Szabályok prioritás szerinti sorrendben ellenőrzi, a szabály vonatkozik, ha nincsenek további szabályok kiértékelésének egyeztetéséhez. |10, 100, 65000 |
+| **hozzáférés** |Az alkalmazandó hozzáférés típusa, ha a csomag megfelel a szabálynak |engedélyezés vagy megtagadás |
 
-Sample NSG in JSON format:
+NSG a JSON formátum. minta:
 
     {
         "name": "NSG-BackEnd",
@@ -67,11 +67,11 @@ Sample NSG in JSON format:
         }
     }
 
-### <a name="default-security-rules"></a>Default security rules
+### <a name="default-security-rules"></a>Alapértelmezett szabályok
 
-Default security rules have the same properties available in security rules. They exist to provide basic connectivity between resources that have NSGs applied to them. Make sure you know which [default security rules](../articles/virtual-network/virtual-networks-nsg.md#default-rules) exist.
+Alapértelmezett szabályok érhető el a biztonsági szabályok azonos tulajdonságokkal rendelkezik. Adja meg, amelyek az NSG-k vonatkoznak annak biztosítása érdekében erőforrások közötti hálózati kapcsolat léteznek. Ellenőrizze, hogy tudja, amely [alapértelmezett biztonsági szabályok](../articles/virtual-network/virtual-networks-nsg.md#default-rules) létezik.
 
-### <a name="additional-resources"></a>Additional resources
-* Get more information about [NSGs](../articles/virtual-network/virtual-networks-nsg.md).
-* Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163615.aspx) for NSGs.
-* Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163580.aspx) for security rules.
+### <a name="additional-resources"></a>További források
+* További információk [NSG-k](../articles/virtual-network/virtual-networks-nsg.md).
+* Olvassa el a [REST API referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt163615.aspx) az NSG-ket.
+* Olvassa el a [REST API referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt163580.aspx) a biztonsági szabályok.

@@ -1,8 +1,8 @@
-#### <a name="to-configure-mpio-for-storsimple-volumes"></a>To configure MPIO for StorSimple volumes
-1. Open the **MPIO configuration**. Click **Server Manager > Dashboard > Tools > MPIO**.
-2. In the **MPIO Properties** dialog box, select the **Discover Multi-Paths** tab.
-3. Select **Add support for iSCSI devices**, and then click **Add**.  
+#### <a name="to-configure-mpio-for-storsimple-volumes"></a>Az MPIO konfigurálása a StorSimple-köteteket
+1. Nyissa meg a **az MPIO konfigurációja**. Kattintson a **Kiszolgálókezelő > irányítópult > eszközök > MPIO**.
+2. Az a **többutas I/O tulajdonságai** párbeszédpanelen jelölje ki a **felderítése többutas** fülre.
+3. Válassza ki **az iSCSI-eszközök támogatását**, és kattintson a **Hozzáadás**.  
    
-    ![MPIO Properties Discover Multi Paths](./media/storsimple-configure-mpio-volumes/IC741003.png)
-4. Reboot the server when prompted.
+    ![Többutas I/O tulajdonságai többféle elérési utak felderítése](./media/storsimple-configure-mpio-volumes/IC741003.png)
+4. Indítsa újra a kiszolgálót, amikor a rendszer kéri.
 

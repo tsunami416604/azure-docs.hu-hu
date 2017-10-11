@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: facdbff229eaf5ee20d98214c62c8b2b46acc0fd
-ms.openlocfilehash: 80617b203bf5efa4cd6bed590ea937b2e68db9e1
-ms.contentlocale: hu-hu
-ms.lasthandoff: 01/18/2017
-
+ms.openlocfilehash: f87b5837c7a786c8b309a6a52e69b53c0ad4c9d8
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hibrid identitás: a címtár-integrációs eszközök összehasonlítása
 Az évek során a címtár-integrációs eszközök bővültek és továbbfejlődtek.  Ez a dokumentum ezen eszközök egyesített nézetét is elérhetővé teszi, valamint az egyes eszközökben elérhető funkciók összehasonlíthatóságát biztosítja.
@@ -92,5 +91,4 @@ NyE = Nyilvános előzetes verzió
 
 ## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
-
 

@@ -1,2 +1,2 @@
 > [!IMPORTANT]
-> This feature is available with **Azure CDN from Verizon** products (Standard and Premium). It is not supported on **Azure CDN from Akamai**.  For a comparison of CDN features, see [Azure CDN Overview](../articles/cdn/cdn-overview.md#azure-cdn-features).
+> Ez a funkció megtalálható **Azure CDN Verizon** termékek (Standard és prémium). Nem támogatott az **Akamai Azure CDN** termékeken.  A CDN szolgáltatásai, lásd: [Azure CDN áttekintése](../articles/cdn/cdn-overview.md#azure-cdn-features).

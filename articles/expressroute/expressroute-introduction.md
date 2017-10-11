@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a998ec92ad58932c5f71e84fbffcd7783cbb459b
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/21/2017
-
+ms.openlocfilehash: 7390462d79506e63989baadac2b2cee00eef325d
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="expressroute-overview"></a>ExpressRoute – áttekintés
 A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365.
@@ -114,4 +113,3 @@ Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyak
   * [Az ExpressRoute-kapcsolatcsoport társviszony-létesítésének konfigurálása](expressroute-howto-routing-portal-resource-manager.md)
   * [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-portal-resource-manager.md)
 * Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.
-

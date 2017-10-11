@@ -6,16 +6,15 @@ author: sanagama
 ms.author: sanagama
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.devlang: azure-cli
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: b2be9e265075c58ed53a0a49c01a08e05db35a06
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: d78243abc140c7b3f0b99bdf56821b7920568550
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz az Azure CLI használatával
 A PostgreSQL-hez készült Azure Database felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure-adatbázist PostgreSQL-kiszolgálóhoz az Azure CLI használatával az [Azure-erőforráscsoportban](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
@@ -165,4 +164,3 @@ az postgres server delete --resource-group myresourcegroup --name mypgserver-201
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)
-

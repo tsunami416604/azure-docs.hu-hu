@@ -1,18 +1,18 @@
-## <a name="sample-scenario"></a>Sample Scenario
-To better illustrate how to manage NSGs, this article uses the scenario below.
+## <a name="sample-scenario"></a>Mintaforgatókönyv
+Jobb szemléltetéséhez NSG-k kezelése, ez a cikk az alábbi forgatókönyvet használja.
 
-![VNet scenario](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
+![VNet-forgatókönyv](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
 
-In this scenario you will create an NSG for each subnet in the **TestVNet** virtual network, as described below: 
+Ebben a forgatókönyvben egy NSG-t az egyes alhálózatokon hoz létre a **TestVNet** virtuális hálózatban, folyamata az alábbiakban olvasható: 
 
-* **NSG-FrontEnd**. The front end NSG will be applied to the *FrontEnd* subnet, and contain two rules:    
-  * **rdp-rule**. This rule will allow RDP traffic to the *FrontEnd* subnet.
-  * **web-rule**. This rule will allow HTTP traffic to the *FrontEnd* subnet.
-* **NSG-BackEnd**. The back end NSG will be applied to the *BackEnd* subnet, and contain two rules:    
-  * **sql-rule**. This rule allows SQL traffic only from the *FrontEnd* subnet.
-  * **web-rule**. This rule denies all internet bound traffic from the *BackEnd* subnet.
+* **NSG-előtérbeli**. Az NSG alkalmazandó előtér a *előtér* alhálózatot, és két szabályt tartalmaz:    
+  * **RDP-szabály**. Ez a szabály lehetővé teszi az RDP-forgalmát a *előtér* alhálózat.
+  * **webalkalmazás-szabály**. Ez a szabály lehetővé teszi a HTTP-forgalom a *előtér* alhálózat.
+* **NSG-háttérrendszer**. A háttérben NSG alkalmazandó a *háttér* alhálózatot, és két szabályt tartalmaz:    
+  * **SQL-szabály**. Ez a szabály lehetővé teszi, hogy az SQL-forgalom csak az *előtér* alhálózat.
+  * **webalkalmazás-szabály**. Ez a szabály letiltja az összes internetes forgalom kötött a *háttér* alhálózat.
 
-The combination of these rules create a DMZ-like scenario, where the back end subnet can only receive incoming traffic for SQL traffic from the front end subnet, and has no access to the Internet, while the front end subnet can communicate with the Internet, and receive incoming HTTP requests only.
+Ezek a szabályok kombinációját, hozzon létre egy DMZ-szerű forgatókönyv, ahol a háttérrendszer alhálózati csak fogadhat SQL forgalom a bejövő forgalom az előtér-alhálózatot, és nem fér hozzá az internethez az előtérben lévő alhálózat alhálózat az internettel kommunikál, és fogadni bejövő HTTP-kérelmek csak.
 
-To deploy the scenario described above, follow [this link](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), click **Deploy to Azure**, replace the default parameter values if necessary, and follow the instructions in the portal. In the sample instructions below, the template was used to deploy a resource group names **RG-NSG**. 
+A fent leírt forgatókönyv telepítéséhez kövesse [Ez a hivatkozás](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), kattintson a **az Azure telepítéséhez**, cserélje le az alapértelmezett paraméterértékek, ha szükséges, és kövesse az utasításokat a portálon. Az alábbi minta utasításokat, a sablon telepítése egy erőforráscsoport-nevek használatával **RG-NSG**. 
 

@@ -1,35 +1,35 @@
-1. Copy the installer to a local folder (for example, /tmp) on the server that you want to protect. In a terminal, run the following commands:
+1. A telepítő másolja egy helyi mappába (például /tmp) azon a kiszolgálón, amelyet védeni kíván. A terminálban a következő parancsokat:
   ```
   cd /tmp
   tar -xvzf Microsoft-ASR_UA*release.tar.gz
   ```
-2. To install Mobility Service, run the following command:
+2. Szeretné telepíteni a mobilitási szolgáltatást, futtassa a következő parancsot:
 
   ```
   sudo ./install -d <Install Location> -r MS -v VmWare -q
   ```
-3. Once installation is complete, the Mobility Service needs to get registered to the configuration server. Run the following command to register the Mobility Service with Configuration server.
+3. Telepítés befejezése után kell a mobilitási szolgáltatás és a konfigurációs kiszolgáló regisztrálva. A következő parancsot a mobilitási szolgáltatás regisztrálása a konfigurációs kiszolgáló.
 
   ```
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
   ```
 
-#### <a name="mobility-service-installer-command-line"></a>Mobility Service installer command-line
+#### <a name="mobility-service-installer-command-line"></a>Mobilitási szolgáltatások telepítőjének parancssori
 
 ```
 Usage:
 ./install -d <Install Location> -r <MS|MT> -v VmWare -q
 ```
 
-|Parameter|Type|Description|Possible values|
+|Paraméter|Típus|Leírás|Lehetséges értékek|
 |-|-|-|-|
-|-r |Mandatory|Specifies whether Mobility Service (MS) should be installed or MasterTarget(MT) should be installed|MS </br> MT|
-|-d |Optional|Location where Mobility Service will be installed|/usr/local/ASR|
-|-v|Mandatory|Specifies the platform on which the Mobility Service is getting installed </br> </br>- **VMware** : use this value if you are installing mobility service on a VM running on *VMware vSphere ESXi Hosts*, *Hyper-V Hosts* and *Phsyical Servers* </br> - **Azure** : use this value if you are installing agent on a Azure IaaS VM| VMware </br> Azure|
-|-q|Optional|Specifies to run installer in silent mode| N/A|
+|-r |Kötelező|Megadja, hogy kell telepíteni a mobilitási szolgáltatás (MS), vagy MasterTarget(MT) kell telepíteni.|MS </br> FŐ CÉLKISZOLGÁLÓ|
+|-d |Optional|Hely, ahol a mobilitási szolgáltatás telepítve lesz|/usr/local/ASR|
+|-v|Kötelező|Adja meg a platform, amelyen a mobilitási szolgáltatás található első </br> </br>- **VMware** : használja ezt az értéket, ha egy virtuális gépen futó mobilitási szolgáltatás telepít *VMware vSphere ESXi-gazdagépek*, *Hyper-V-gazdagépek* és *Phsyical kiszolgálók* </br> - **Azure** : használja ezt az értéket, ha telepíti az ügynököt egy Azure IaaS virtuális Gépen| VMware </br> Azure|
+|-k|Optional|Meghatározza, hogy a telepítő futtatásához csendes módban| N/A|
 
 
-#### <a name="mobility-service-configuration-command-line"></a>Mobility Service configuration command-line
+#### <a name="mobility-service-configuration-command-line"></a>Parancssori mobilitási szolgáltatás konfigurációja
 
 ```
 Usage:
@@ -37,7 +37,7 @@ cd /usr/local/ASR/Vx/bin
 UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
 ```
 
-|Parameter|Type|Description|Possible values|
+|Paraméter|Típus|Leírás|Lehetséges értékek|
 |-|-|-|-|
-|-i |Mandatory|IP of the Configuration Server|Any valid IP Address|
-|-P |Mandatory|Full file path the file where the connection passphrase is saved|Any valid folder|
+|-i |Kötelező|IP-címe a konfigurációs kiszolgálón|Bármilyen érvényes IP-cím|
+|-P |Kötelező|A kapcsolat jelszava mentett tartalmazó fájl teljes elérési út|Bármilyen érvényes mappa|

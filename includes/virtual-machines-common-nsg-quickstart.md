@@ -1,13 +1,13 @@
-You open a port, or create an endpoint, to a virtual machine (VM) in Azure by creating a network filter on a subnet or VM network interface. You place these filters, which control both inbound and outbound traffic, on a Network Security Group attached to the resource that receives the traffic.
+Nyissa meg a portot, vagy hozzon létre egy végpontot a virtuális gép (VM), az Azure-ban egy alhálózatot vagy a virtuális gép hálózati illesztő hálózati szűrő létrehozásával. Ezek a szűrők, amely szabályozza a bejövő és kimenő forgalmat, a hálózati biztonsági csoport az erőforrás a forgalmat fogadó csatolva helyezze el.
 
-Let's use a common example of web traffic on port 80. Once you have a VM that is configured to serve web requests on the standard TCP port 80 (remember to start the appropriate services and open any OS firewall rules on the VM as well), you:
+Ilyenek például a webes forgalom most használja a 80-as porton. Ha elvégezte a kiszolgálására konfigurált virtuális gépek a szabványos TCP a webes kérelmek port 80-as (ne felejtse el a indítsa el a megfelelő szolgáltatásokat, és nyissa meg az összes operációs rendszer tűzfalszabályok, valamint a virtuális gépen), hogy:
 
-1. Create a Network Security Group.
-2. Create an inbound rule allowing traffic with:
-   * the destination port range of "80"
-   * the source port range of "*" (allowing any source port)
-   * a priority value of less 65,500 (to be higher in priority than the default catch-all deny inbound rule)
-3. Associate the Network Security Group with the VM network interface or subnet.
+1. Hálózati biztonsági csoport létrehozása.
+2. Hozzon létre egy bejövő forgalomra vonatkozó szabály átengedi a forgalmat:
+   * a "80" Célporttartomány
+   * a Forrásporttartomány a "*" (amely lehetővé teszi bármely forrásportból)
+   * a prioritás értéke kevesebb 65 500 (a magasabb prioritású, mint az alapértelmezett catch-all a kell megtagadási bejövő szabály)
+3. A hálózati biztonsági csoport társítani a virtuális gép hálózati adapter vagy az alhálózatot.
 
-You can create complex network configurations to secure your environment using Network Security Groups and rules. Our example uses only one or two rules that allow HTTP traffic or remote management. For more information, see the following ['More Information'](#more-information-on-network-security-groups) section or [What is a Network Security Group?](../articles/virtual-network/virtual-networks-nsg.md)
+Létrehozhat összetett hálózati konfigurációt megvédeni környezetét a hálózati biztonsági csoportok és a szabályok használatával. A példában csak egy vagy két olyan szabályok, amelyek lehetővé teszik a HTTP-forgalom vagy a távoli felügyelet. További információkért tekintse meg a következőt ["További információk"](#more-information-on-network-security-groups) szakasz vagy [Mi az a hálózati biztonsági csoport?](../articles/virtual-network/virtual-networks-nsg.md)
 

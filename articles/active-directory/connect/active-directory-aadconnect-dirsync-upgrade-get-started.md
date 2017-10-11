@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 19be73fd0aec3a8f03a7cd83c12cfcc060f6e5e7
 ms.openlocfilehash: 7049af4567947d3d799a38c5a3940ba25a2c0f18
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/13/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Frissítés a DirSync szolgáltatásról
 Az Azure AD Connect a DirSync utóda. A DirSync szolgáltatásról való frissítés lehetőségeit találja meg ebben a témakörben. Ezek lépések nem használhatóak az Azure AD Connect másik kiadásáról vagy az Azure AD Syncről való frissítéshez.
 
@@ -218,4 +216,3 @@ Ismerkedjen meg a következő, a telepítéssel engedélyezett új szolgáltatá
 Ismerje meg részletesebben a következő általános témaköröket: [az ütemező és a szinkronizálási események indítása](active-directory-aadconnectsync-feature-scheduler.md).
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
-

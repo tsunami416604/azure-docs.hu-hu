@@ -1,43 +1,43 @@
 <!--author=alkohli last changed:02/22/16-->
 
-#### <a name="to-attach-the-sas-cables"></a>To attach the SAS cables
-1. Identify the primary and the EBOD enclosures. The two enclosures can be identified by looking at their respective back planes. See the following image for guidance. 
+#### <a name="to-attach-the-sas-cables"></a>Csatolása a SAS-kábel
+1. Azonosítsa az elsődleges és a EBOD mindegyikéből. A két házak pedig a megfelelő hátsó síkok alapján azonosíthatók. Tekintse meg az alábbi képen útmutatót. 
    
-    ![Back plane of primary and EBOD enclosures](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
+    ![Biztonsági elsődleges vezérlősík és EBOD ház](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
    
-    **Back view of primary and EBOD enclosures**
+    **Biztonsági másolatot az elsődleges és a EBOD ház ábrázolása**
    
-   | Label | Description |
+   | Címke | Leírás |
    |:--- |:--- |
-   | 1 |Primary enclosure |
-   | 2 |EBOD enclosure |
-2. Locate the serial numbers on the primary and the EBOD enclosures. The serial number sticker is affixed to the back ear of each enclosure. The serial numbers must be identical on both enclosures. [Contact Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) immediately if the serial numbers do not match. See the following illustration to locate the serial numbers.
+   | 1 |Elsődleges ház |
+   | 2 |EBOD ház |
+2. Keresse meg a sorozatszámok az elsődleges és a EBOD mindegyikéből. A sorozatszám címkéje a hátsó fülön az egyes ház rögzítettek. A sorozatszámok mindkét ház azonosnak kell lennie. [Forduljon a Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) azonnal, ha a sorozatszám nem egyezik. Tekintse meg a következő ábra a sorozatszám megkereséséhez.
    
-    ![Rear view of enclosure showing serial number](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
+    ![Hátsó ház sorozatszám megjelenítő ábrázolása](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
-    **Location of serial number sticker**
+    **Sorozatszám színű ragasztócsíkon helye**
    
-   | Label | Description |
+   | Címke | Leírás |
    |:--- |:--- |
-   | 1 |Ear of the enclosure |
-3. Use the provided SAS cables to connect the EBOD enclosure to the primary enclosure as follows:
+   | 1 |Az a ház EAR |
+3. A megadott SAS-kábel segítségével csatlakozzon a EBOD ház az elsődleges ház az alábbiak szerint:
    
-   1. Identify the four SAS ports on the primary enclosure and the EBOD enclosure. The SAS ports are labeled as EBOD on the primary enclosure and correspond to port A on the EBOD enclosure, as shown in the SAS cabling illustration, below.
-   2. Use the provided SAS cables to connect the EBOD port to port A.
-   3. The EBOD port on controller 0 should be connected to the port A on EBOD controller 0. The EBOD port on controller 1 should be connected to the port A on EBOD controller 1. See the following illustration for guidance. 
+   1. Azonosítsa az elsődleges ház és a EBOD ház négy SAS-porttal. A SAS-porttal címkézve EBOD a elsődleges tárolóeszközön, és meg port A a EBOD tárolóeszközön, ahogy az alábbi ábrán látható, kábelek SAS.
+   2. A megadott SAS-kábel segítségével csatlakozzon a EBOD port a port azonosítójához.
+   3. Vezérlő 0 EBOD portját a port a 0 EBOD tartományvezérlőn kell csatlakoztatni. 1. vezérlő EBOD portját a port a EBOD tartományvezérlőn 1 kell csatlakoztatni. Tekintse meg az alábbi ábrán látható útmutatót. 
       
-      ![SAS cabling for your device](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
+      ![Az eszköz kábelek SAS](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
       
-      **SAS cabling**
+      **SAS-kábelek**
       
-      | Label | Description |
+      | Címke | Leírás |
       |:--- |:--- |
-      | A |Primary enclosure |
-      | B |EBOD enclosure |
-      | 1 |Controller 0 |
-      | 2 |Controller 1 |
-      | 3 |EBOD Controller 0 |
-      | 4 |EBOD Controller 1 |
-      | 5, 6 |SAS ports on primary enclosure (labeled EBOD) |
-      | 7, 8 |SAS ports on EBOD enclosure (Port A) |
+      | A |Elsődleges ház |
+      | B |EBOD ház |
+      | 1 |A vezérlő 0 |
+      | 2 |1. vezérlő |
+      | 3 |EBOD vezérlő 0 |
+      | 4 |1. EBOD vezérlő |
+      | 5, 6 |SAS-portot az elsődleges ház (címkézett EBOD) |
+      | 7, 8 |SAS-portot a EBOD ház (Port A) |
 

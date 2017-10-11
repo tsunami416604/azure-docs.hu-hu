@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: syntaxc4
-ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
 ms.openlocfilehash: 8dc965df2cd45366970effb29f246b0045a94717
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/05/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS-alkalmazás létrehozása
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -89,4 +88,3 @@ Konfigurálja a kiszolgálóprojektet a Node.js vagy a .NET-háttéralkalmazás 
 
 <!-- URLs. -->
 [Azure Portal]: https://portal.azure.com/
-

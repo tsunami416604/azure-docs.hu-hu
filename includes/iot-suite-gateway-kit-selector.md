@@ -1,3 +1,3 @@
 > [!div class="op_single_selector"]
-> * [Simulated devices](../articles/iot-suite/iot-suite-gateway-kit-get-started-simulator.md)
-> * [SensorTag device](../articles/iot-suite/iot-suite-gateway-kit-get-started-sensortag.md)
+> * [Szimulált eszköz](../articles/iot-suite/iot-suite-gateway-kit-get-started-simulator.md)
+> * [SensorTag-eszköz](../articles/iot-suite/iot-suite-gateway-kit-get-started-sensortag.md)

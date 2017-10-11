@@ -1,20 +1,20 @@
 
 
 
-## <a name="viewing-your-tags-in-the-usage-details"></a>Viewing your tags in the usage details
-Tags placed on Compute, Network, and Storage resources in the Resource Manager deployment model will be populated in your usage details in the [billing portal](https://account.windowsazure.com/).
+## <a name="viewing-your-tags-in-the-usage-details"></a>A használat részleteiről a címkék megtekintése
+Címkék helyezve a számítási, hálózati, és a használat részleteiről a tárolási erőforrások a Resource Manager üzembe helyezési modellel lesz kitöltve a [számlázási portal](https://account.windowsazure.com/).
 
-Click on **Download usage details** to view the usage details in your subscription.
+Kattintson a **töltse le a használat részleteiről** a használati adatok megtekintéséhez az előfizetésben.
 
-![Usage details in Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Használat részletei az Azure portálon](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-Select your billing statement and the **Version 2** usage details:
+Válassza ki a számlakivonatok és a **2-es verzió** használat részleteiről:
 
-![Version 2 Preview Usage Details in Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![2. verziójú Preview használat részleteiről Azure-portálon](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-From the usage details, you can see all of the tags in the **Tags** column:
+A használat részleteiről a címkék láthatja a **címkék** oszlop:
 
-![Tags column in Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![Címkék oszlop Azure-portálon](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-By analyzing these tags along with usage, organizations will be able to gain new insights into their consumption data.
+Ezekkel a címkékkel együtt használati elemzésével szervezetek fog tudni betekintést nyerhet új azok fogyasztási adatokhoz.
 

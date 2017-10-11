@@ -1,8 +1,8 @@
-## <a name="prerequisite-install-the-azure-cli"></a>Prerequisite: Install the Azure CLI
-To perform the steps in this article, you need to [install the Azure Command-Line Interface for Mac, Linux, and Windows (Azure CLI)](../articles/cli-install-nodejs.md) and you need to [log on to Azure](../articles/xplat-cli-connect.md). 
+## <a name="prerequisite-install-the-azure-cli"></a>Előfeltétel: Az Azure parancssori felület telepítése
+Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (Azure CLI)](../articles/cli-install-nodejs.md) és kell [jelentkezzen be Azure](../articles/xplat-cli-connect.md). 
 
 > [!NOTE]
-> If you don't have an Azure account, you need one. Go sign up for a [free trial here](../articles/active-directory/sign-up-organization.md). In addition, to follow along completely you need to have either [jq](https://stedolan.github.io/jq/) or some other JSON parsing tool or library installed.
+> Ha az Azure-fiók nem rendelkezik, meg kell egyet. Itt regisztrálhat az [ingyenes próbaverzióra](../articles/active-directory/sign-up-organization.md). Ezenkívül követéséhez teljesen kell rendelkeznie [jq](https://stedolan.github.io/jq/) vagy néhány más eszköz vagy telepíteni szalagtár elemzése JSON.
 > 
 > 
 

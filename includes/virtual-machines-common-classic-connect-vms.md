@@ -1,42 +1,42 @@
 
 
-![Virtual machines in a standalone cloud service](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
+![Önálló virtuális gépek a felhőalapú szolgáltatás](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
 
-If you place your virtual machines in a virtual network, you can decide how many cloud services you want to use for load balancing and availability sets. Additionally, you can organize the virtual machines on subnets in the same way as your on-premises network and connect the virtual network to your on-premises network. Here's an example:
+Ha a virtuális gépeket helyez egy virtuális hálózatot, megadhatja, hogy a használni kívánt hány felhőszolgáltatások betölteni a terheléselosztás és a rendelkezésre állási készletek. Emellett rendezheti a virtuális gépek alhálózatok ugyanúgy a helyszíni hálózat és a virtuális hálózathoz csatlakozni a helyszíni hálózat. Íme egy példa:
 
-![Virtual machines in a virtual network](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
+![A virtuális hálózatban lévő virtuális gépek](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
 
-Virtual networks are the recommended way to connect virtual machines in Azure. The best practice is to configure each tier of your application in a separate cloud service. However, you may need to combine some virtual machines from different application tiers into the same cloud service to remain within the maximum of 200 cloud services per subscription. To review this and other limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](../articles/azure-subscription-service-limits.md).
+Virtuális hálózatok az ajánlott módszer a virtuális gépek Azure-ban való csatlakoztatásához. Az ajánlott eljárás az alkalmazás egyes rétegeinek konfigurálása külön felhőszolgáltatásban. Azonban szükség lehet néhány virtuális gépnél, a másik alkalmazási rétegek egyesítése a azonos felhőszolgáltatás 200 felhőszolgáltatások előfizetésenként legfeljebb belül maradjon. Ezzel és más korlátozások ellenőrzéséhez tekintse meg [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../articles/azure-subscription-service-limits.md).
 
-## <a name="connect-vms-in-a-virtual-network"></a>Connect VMs in a virtual network
-To connect virtual machines in a virtual network:
+## <a name="connect-vms-in-a-virtual-network"></a>Csatlakozás a virtuális gépek virtuális hálózatban
+A virtuális hálózatban lévő virtuális gépek csatlakozni:
 
-1. Create the virtual network in the [Azure portal](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) and specify 'classic deployment'.
-2. Create the set of cloud services for your deployment to reflect your design for availability sets and load balancing. In the Azure portal, click **New > Compute > Cloud service** for each cloud service.
+1. A virtuális hálózat létrehozása a [Azure-portálon](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) , és adja meg a "klasszikus üzembe helyezési".
+2. Hozzon létre a felhőalapú szolgáltatások a környezetet, hogy tükrözze a tervező a rendelkezésre állási csoportok és a terheléselosztás. Az Azure portálon kattintson **új > számítási > Felhőszolgáltatás** minden felhőalapú szolgáltatás.
 
-  As you fill out the cloud service details, choose the same _resource group_ used with the virtual network.
+  Mivel kitöltötte a felhőalapú szolgáltatás részleteit, válassza ki ugyanazt _erőforráscsoport_ együtt a virtuális hálózat.
 
-3. To create each new virtual machine, click **New > Compute**, then select the appropriate VM image from the **Featured apps**.
+3. Minden új virtuális gép létrehozásához kattintson a **új > számítási**, majd válassza ki a megfelelő Virtuálisgép-lemezkép a **a kiemelt alkalmazások**.
 
-  In the VM **Basics** blade, choose the same _resource group_ used with the virtual network.
+  A virtuális gép **alapjai** panelen válassza ki ugyanazt _erőforráscsoport_ együtt a virtuális hálózat.
 
-  ![VM Basics blade when using a VNet](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_VN.png)
+  ![Virtuális gép alapvető beállítások panel egy virtuális hálózat használatakor](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_VN.png)
 
-4. As you fill out the VM **Settings**, choose the correct _Cloud service_ or _virtual network_ for the VM.
+4. Adja meg a virtuális Gépet, **beállítások**, válassza ki a megfelelő _felhőalapú szolgáltatás_ vagy _virtuális hálózati_ a virtuális gép számára.
 
-  Azure will select the other item based on your selection.
+  Azure fogja kiválasztani az egyéb elem a kijelölés alapján.
 
-  ![VM Settings blade when using a VNet](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_VN.png)
+  ![Virtuálisgép-beállítások panel egy virtuális hálózat használatakor](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_VN.png)
 
 
-## <a name="connect-vms-in-a-standalone-cloud-service"></a>Connect VMs in a standalone cloud service
-To connect virtual machines in a standalone cloud service:
+## <a name="connect-vms-in-a-standalone-cloud-service"></a>Csatlakozás a virtuális gépek önálló felhőszolgáltatásban
+Önálló felhőalapú szolgáltatásként lévő virtuális gépek csatlakozni:
 
-1. Create the cloud service in the [Azure portal](http://portal.azure.com). Click **New > Compute > Cloud service**. Or, you can create the cloud service for your deployment when you create your first virtual machine.
-2. When you create the virtual machines, choose the same resource group used with the cloud service.
+1. A felhőszolgáltatás létrehozása a [Azure-portálon](http://portal.azure.com). Kattintson a **új > számítási > Felhőszolgáltatás**. Vagy a felhőalapú szolgáltatás, az üzembe helyezéshez hozhat létre, amikor az első virtuális gép létrehozása.
+2. A virtuális gépek létrehozásakor válassza ki a felhőalapú szolgáltatással használt ugyanabban az erőforráscsoportban.
 
-  ![Add a virtual machine to an existing cloud service](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_SA.png)
+  ![A virtuális gépek hozzáadása egy meglévő felhőszolgáltatáshoz](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_SA.png)
 
-3.  As you fill out the VM details, choose the name of cloud service created in the first step.
+3.  Adja meg az a virtuális gép részleteit, mivel válassza ki az első lépésben létrehozott felhőalapú szolgáltatás nevét.
 
-  ![Selecting a cloud service for a virtual machine](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_SA.png)
+  ![A virtuális gép egy felhőalapú szolgáltatás kiválasztása](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_SA.png)

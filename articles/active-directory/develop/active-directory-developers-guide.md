@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: dce813b885d492343428428056a2e8aada27b461
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory fejlesztők számára
 Az Azure Active Directory egy olyan felhőalapú identitásszolgáltatás, amely lehetővé teszi a fejlesztők számára bármely munkahelyi vagy iskolai Microsoft-fiókkal rendelkező felhasználó biztonságos bejelentkeztetését.  E dokumentációban megtekintheti, hogyan történik az Azure AD-támogatás hozzáadása az alkalmazásához iparági szabvány szerinti hitelesítési protokollok (OAuth és OpenID Connect) használatával.
@@ -73,4 +72,3 @@ Az Azure Active Directoryban történő fejlesztéshez ezeken a helyeken találh
 
 > [!NOTE]
 > Ha szeretne bejelentkezni a személyes Microsoft-fiókjaiba, érdemes megfontolnia az [Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) használatát.  Az Azure AD v2.0-végpont egyetlen hitelesítési rendszerben egyesíti a személyes és munkahelyi Microsoft-fiókjait (az Azure AD-ből).
-

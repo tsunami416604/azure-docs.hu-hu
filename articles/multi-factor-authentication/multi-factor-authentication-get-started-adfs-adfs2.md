@@ -15,12 +15,11 @@ ms.date: 06/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017, it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
-ms.openlocfilehash: ea0853929cd8670b6458a546e7fb1b3a229c09d7
-ms.contentlocale: hu-hu
-ms.lasthandoff: 02/28/2017
-
+ms.openlocfilehash: a05219398aefa158321ae63934743dd43841e33f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS 2.0-val való használathoz
 Ez a cikk az Azure Active Directory összevonási szolgáltatást használó szervezeteknek szól, amelyek szeretnék biztosítani a helyszíni és a felhőben található erőforrásaik védelmét. Biztosítsa erőforrásai védelmét a Multi-Factor Authentication-kiszolgáló segítségével, illetve az AD FS-sel való együttműködés beállításával a nagy értékű végpontok kétlépéses ellenőrzésének aktiválása érdekében.
@@ -117,4 +116,3 @@ A Megbízható IP-címek segítségével a felhasználók adott IP-címekről va
 4. Adja meg az engedélyezési listához hozzáadni kívánt IP-címet, IP-címtartományt vagy alhálózatot. Ha alhálózatot ad meg, válassza ki a megfelelő hálózati maszkot, és kattintson az **OK** gombra. A rendszer hozzáadta a megbízható IP-címet.
 
 <center>![Telepítés](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
-

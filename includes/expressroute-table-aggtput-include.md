@@ -1,7 +1,7 @@
-|  | **ExpressRoute Gateway throughput (up to)** | **VPN Gateway and ExpressRoute coexist** |
+|  | **ExpressRoute-átjáró átviteli (be)** | **VPN Gateway és ExpressRoute párhuzamos használata** |
 | --- | --- | --- |
-| **Basic SKU (deprecated)** |500 Mbps |No |
-| **Standard SKU** |1000 Mbps |Yes |
-| **High Performance SKU** |2000 Mbps |Yes |
-| **Ultra Performance SKU** |9000 Mbps |Yes |
+| **(Elavult) alapszintű Termékváltozat** |500 Mbps |Nem |
+| **Standard Termékváltozat** |1000 Mbps |Igen |
+| **Nagy teljesítményű Termékváltozat** |2000 Mbps |Igen |
+| **Ultra teljesítményű Termékváltozat** |9000 MB/s |Igen |
 

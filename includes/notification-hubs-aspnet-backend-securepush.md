@@ -1,6 +1,6 @@
-## <a name="webapi-project"></a>WebAPI Project
-1. In Visual Studio, open the **AppBackend** project that you created in the **Notify Users** tutorial.
-2. In Notifications.cs, replace the whole **Notifications** class with the following code. Be sure to replace the placeholders with your connection string (with full access) for your notification hub, and the hub name. You can obtain these values from the [Azure Classic Portal](http://manage.windowsazure.com). This module now represents the different secure notifications that will be sent. In a complete implementation, the notifications will be stored in a database; for simplicity, in this case we store them in memory.
+## <a name="webapi-project"></a>WebAPI projekt
+1. A Visual Studióban nyissa meg a **AppBackend** a projekt a **felhasználók értesítése** oktatóanyag.
+2. Notifications.cs, cserélje le a teljes **értesítések** osztály a következő kóddal. Ne felejtse el a helyőrzőket cserélje le a kapcsolati karakterlánc (teljes hozzáférés) az értesítési központot, és a központ nevét. Ezt úgy szerezheti be ezeket az értékeket a [klasszikus Azure portál](http://manage.windowsazure.com). Ez a modul most a különböző biztonságos értesítések küldendő jelöli. A megvalósítás az értesítések tárolódnak adatbázis; Az egyszerűség kedvéért ebben az esetben tároljuk őket a memóriában.
    
         public class Notification
         {
@@ -40,7 +40,7 @@
             }
         }
 
-1. In NotificationsController.cs, replace the code inside the **NotificationsController** class definition with the following code. This component implements a way for the device to retrieve the notification securely, and also provides a way (for the purposes of this tutorial) to trigger a secure push to your devices. Note that when sending the notification to the notification hub, we only send a raw notification with the ID of the notification (and no actual message):
+1. NotificationsController.cs, cserélje le a kódot a **NotificationsController** osztály definícióját a következő kóddal. Ez az összetevő valósítja meg az értesítés biztonságosan beolvasása az eszköz olyan módon, és is lehetővé teszi a (a jelen oktatóanyag céljából) való biztonságos leküldéses az eszközökön. Vegye figyelembe, hogy az értesítési központnak küldött, amikor csak értesítést fog kapni, a nyers azonosítójú az értesítés (és nem tényleges üzenet):
    
        public NotificationsController()
        {
@@ -75,8 +75,8 @@
         }
 
 
-Note that the `Post` method now does not send a toast notification. It sends a raw notification that contains only the notification ID, and not any sensitive content. Also, make sure to comment the send operation for the platforms for which you do not have credentials configured on your notification hub, as they will result in errors.
+Vegye figyelembe, hogy a `Post` metódus most nem küld egy bejelentési értesítést. Az értesítés-azonosítója és a nem bizalmas tartalmat tartalmazó nyers értesítést küld. Emellett győződjön meg arról, a küldési művelet, amelynek nincs konfigurálva az értesítési központ, a hitelesítő adatokat, azok hibákat eredményez a platformok megtételére.
 
-1. Now we will re-deploy this app to an Azure Website in order to make it accessible from all devices. Right-click on the **AppBackend** project and select **Publish**.
-2. Select Azure Website as your publish target. Log in with your Azure account and select an existing or new Website, and make a note of the **destination URL** property in the **Connection** tab. We will refer to this URL as your *backend endpoint* later in this tutorial. Click **Publish**.
+1. Most azt újra telepíti ezt a webalkalmazást az Azure-webhely annak érdekében, hogy minden eszköz érhető el. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
+2. A közzétételi célként válassza az Azure webhelyén. Jelentkezzen be az Azure-fiókjával, és válassza ki a meglévő vagy új webhely létrehozása, és jegyezze fel a a **URL-címre** tulajdonságot a **kapcsolat** fülre. Az oktatóanyag további részében erre az URL-címre fogunk hivatkozni a *háttérrendszer végpontjaként*. Kattintson a **Publish** (Közzététel) gombra.
 

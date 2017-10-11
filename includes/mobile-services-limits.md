@@ -1,16 +1,16 @@
 
-| TIER: | FREE | BASIC | STANDARD |
+| SZINT: | INGYENES | ALAPSZINTŰ | STANDARD |
 | --- | --- | --- | --- |
-| API Calls |500 K |1.5 M / unit |15 M / unit |
-| Active Devices |500 |Unlimited |Unlimited |
-| Scale |N/A |Up to 6 units |Unlimited units |
-| Push Notifications |Notification Hubs Free Tier included, up to 1 M pushes |Notification Hubs Basic Tier included, up to 10 M pushes |Notification Hubs Standard Tier included, up to 10 M pushes |
-| Real time messaging/<br/>Web Sockets |Limited |350 / mobile service |Unlimited |
-| Offline synchronizations |Limited |Included |Included |
-| Scheduled jobs |Limited |Included |Included |
-| SQL Database (required) <br/>Standard rates apply for additional capacity |20 MB included |20 MB included |20 MB included |
-| CPU capacity |60 minutes / day |Unlimited |Unlimited |
-| Outbound data transfer |165 MB per day (daily Rollover) |Included |Included |
+| API-hívások |500 KB-OS |1.5-ös M / egység |15 M / egység |
+| Aktív eszközök |500 |Korlátlan |Korlátlan |
+| Méretezés |N/A |Legfeljebb 6 egység |Korlátlan számú egység |
+| Leküldéses értesítések |Notification Hubs ingyenes szint tartalmazza, akár 1 M kimenő |Notification Hubs az alapszintű csomag része, legfeljebb 10 millió leküldéses értesítések |Notification Hubs Standard csomag része, legfeljebb 10 millió leküldéses értesítések |
+| Valós idejű üzenetküldés /<br/>Web Sockets |Korlátozott |350 / mobil szolgáltatás |Korlátlan |
+| Offline szinkronizálások |Korlátozott |Tartalmazza |Tartalmazza |
+| Ütemezett feladatok |Korlátozott |Tartalmazza |Tartalmazza |
+| SQL-adatbázis (kötelező) <br/>További kapacitást normál díjszabás érvényes. |20 MB tartalmazza |20 MB tartalmazza |20 MB tartalmazza |
+| CPU teljesítménye |60 perc / nap |Korlátlan |Korlátlan |
+| Kimenő adatforgalom |165 MB naponkénti (napi helyettesítő) |Tartalmazza |Tartalmazza |
 
-For additional details on these limits and for information on pricing, see [Mobile Services Pricing](https://azure.microsoft.com/pricing/details/mobile-services/). 
+További részleteket a működés felső korlátjának és az árakkal kapcsolatos információkat lásd: [Mobile Services díjszabása](https://azure.microsoft.com/pricing/details/mobile-services/). 
 

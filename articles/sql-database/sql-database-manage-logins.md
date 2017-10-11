@@ -1,5 +1,5 @@
 ---
-title: "Az SQL Database hitelesítése és engedélyezése | Microsoft Docs"
+title: "Azure SQL-bejelentkezések és -felhasználók | Microsoft Docs"
 description: "Megismerheti az SQL Database biztonsági felügyeletét, azon belül is az adatbázis-hozzáférés és a bejelentkezési biztonság felügyeletét a kiszolgálószintű elsődleges fiókon keresztül."
 keywords: "sql database biztonság,adatbázis biztonságának felügyelete,bejelentkezési biztonság,adatbázis biztonsága,adatbázis-hozzáférés"
 services: sql-database
@@ -10,18 +10,18 @@ editor:
 tags: 
 ms.assetid: 0a65a93f-d5dc-424b-a774-7ed62d996f8c
 ms.service: sql-database
-ms.custom: authentication and authorization
+ms.custom: security
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/17/2017
+ms.date: 01/23/2017
 ms.author: rickbyh
-translationtype: Human Translation
-ms.sourcegitcommit: 8ff9c07fbc6e3d2a44414b485bd0f32b68b5d494
-ms.openlocfilehash: 127303bce70801ab93992273fd8f86d6f3c41605
-
-
+ms.openlocfilehash: 51edd390c065dd7312ecc54694b5a95ecc11eab8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="controlling-and-granting-database-access"></a>Adatbázis-hozzáférés szabályozása és biztosítása
 
@@ -29,6 +29,12 @@ Ha a tűzfalszabályok konfigurálása megtörtént, a felhasználók a rendszer
 
 >  [!NOTE]  
 >  Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. 
+>
+
+> [!TIP]
+> Az oktatóanyagok esetén lásd: [az Azure SQL Database biztonságos](sql-database-security-tutorial.md).
+>
+
 
 ## <a name="unrestricted-administrative-accounts"></a>Nem korlátozott rendszergazdai fiókok
 Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai**). Ha azonosítani szeretné ezeket a rendszergazdai fiókokat az SQL-kiszolgáló esetében, nyissa meg az Azure Portalt, és lépjen az SQL-kiszolgáló tulajdonságaira.
@@ -50,10 +56,8 @@ A **kiszolgáló-rendszergazdai** és **Azure AD-rendszergazdai** fiókok az al�
 - Ezek a fiókok tagokat adhatnak hozzá és távolíthatnak el a `dbmanager` és a `loginmanager` szerepkörből.
 - Ezek a fiókok megtekinthetik a `sys.sql_logins` rendszertáblát.
 
-
-
 ### <a name="configuring-the-firewall"></a>A tűzfal konfigurálása
-Ha a kiszolgálószintű tűzfal egy önálló IP-címhez vagy -tartományhoz van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** a master adatbázishoz és az összes felhasználói adatbázishoz csatlakozhat. A kezdeti kiszolgálószintű tűzfal az [Azure Portalon](sql-database-configure-firewall-settings.md) konfigurálható a [PowerShell](sql-database-configure-firewall-settings-powershell.md) vagy a [REST API](sql-database-configure-firewall-settings-rest.md) segítségével. A kapcsolat létrehozása után további kiszolgálószintű tűzfalszabályok is konfigurálhatók a [Transact-SQL](sql-database-configure-firewall-settings-tsql.md) segítségével.
+Ha a kiszolgálószintű tűzfal egy önálló IP-címhez vagy -tartományhoz van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** a master adatbázishoz és az összes felhasználói adatbázishoz csatlakozhat. A kezdeti kiszolgálószintű tűzfal az [Azure Portalon](sql-database-get-started-portal.md) konfigurálható a [PowerShell](sql-database-get-started-powershell.md) vagy a [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) segítségével. A kapcsolat létrehozása után további kiszolgálószintű tűzfalszabályok is konfigurálhatók a [Transact-SQL](sql-database-configure-firewall-settings.md) segítségével.
 
 ### <a name="administrator-access-path"></a>Rendszergazdai hozzáférés elérési útja
 Ha a kiszolgálószintű tűzfal megfelelően van konfigurálva, az **SQL Server-rendszergazda** és az **Azure Active Directory-rendszergazda** olyan ügyféleszközökkel csatlakozhat, mint az SQL Server Management Studio vagy az SQL Server Data Tools. Csak a legújabb verziójú eszközök teszik elérhetővé az összes rendelkezésre álló funkciót és képességet. Az alábbi ábrán a két rendszergazdai fiók tipikus konfigurációja látható.
@@ -63,7 +67,7 @@ Ha a kiszolgálószintű tűzfal megfelelően van konfigurálva, az **SQL Server
 Amikor nyitott portot használ a kiszolgálószintű tűzfalon, a rendszergazdák bármely SQL Database-adatbázishoz csatlakozhatnak.
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Csatlakozás egy adatbázishoz az SQL Server Management Studióval
-Ha útmutatót szeretne egy kiszolgáló, adatbázis vagy kiszolgálószintű tűzfalszabályok létrehozásához és az SQL Server Management Studio adatbázis-lekérdezéshez való használatához tekintse meg a következőt: [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései](sql-database-get-started.md).
+Ha útmutatót szeretne egy kiszolgáló, adatbázis vagy kiszolgálószintű tűzfalszabályok létrehozásához és az SQL Server Management Studio adatbázis-lekérdezéshez való használatához tekintse meg a következőt: [Az Azure SQL Database-kiszolgálók, -adatbázisok és -tűzfalszabályok Azure Portallal és az SQL Server Management Studióval történő használatának első lépései](sql-database-get-started-portal.md).
 
 > [!IMPORTANT]
 > Javasoljuk, hogy mindig a Management Studio legfrissebb verzióját használja, hogy kihasználhassa a Microsoft Azure és az SQL Database legújabb frissítései által nyújtott előnyöket. [Az SQL Server Management Studio frissítése](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -73,7 +77,7 @@ Ha útmutatót szeretne egy kiszolgáló, adatbázis vagy kiszolgálószintű t�
 A korábban már tárgyalt kiszolgálószintű rendszergazdai szerepkörökön kívül az SQL Database két korlátozott rendszergazdai szerepkört tesz elérhetővé a master adatbázisban, amelyekhez felhasználói fiókok adhatók, és amelyek hozzáférést biztosítanak adatbázisok létrehozásához vagy bejelentkezések kezeléséhez.
 
 ### <a name="database-creators"></a>Adatbázis-létrehozók
-Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerepkör tagjai létrehozhatnak új adatbázisokat. A szerepkör használatához hozzon létre egy felhasználót az `master` adatbázisban, majd adja hozzá a felhasználót a **dbmanager** adatbázis-szerepkörhöz. A felhasználó lehet egy tartalmazottadatbázis-felhasználó, vagy egy SQL Server-bejelentkezésen alapuló felhasználó a master adatbázisban.
+Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerepkör tagjai létrehozhatnak új adatbázisokat. A szerepkör használatához hozzon létre egy felhasználót az `master` adatbázisban, majd adja hozzá a felhasználót a **dbmanager** adatbázis-szerepkörhöz. Adatbázis létrehozásához a felhasználónak SQL Server-bejelentkezésen alapuló felhasználónak kell lennie a master adatbázisban, vagy Azure Active Directory-felhasználón alapuló tartalmazottadatbázis-felhasználónak kell lennie.
 
 1. Egy rendszergazdai fiókkal csatlakozzon a master adatbázishoz.
 2. Nem kötelező lépés: Hozzon létre egy SQL Server-hitelesítési bejelentkezést a [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) utasítással. Mintautasítás:
@@ -157,7 +161,7 @@ Az SQL Database-ben több mint 100 engedély adható vagy tagadható meg külön
 ### <a name="considerations-and-restrictions"></a>Megfontolandó szempontok és korlátozások
 Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye figyelembe a következőket:
 
-* A ** utasítások futtatásához csatlakoznia kell a **master adatbázishoz`CREATE/ALTER/DROP DATABASE`.   
+* A  **utasítások futtatásához csatlakoznia kell a** master adatbázishoz`CREATE/ALTER/DROP DATABASE`.   
 * A **kiszolgáló-rendszergazdai** bejelentkezéshez tartozó felhasználó nem módosítható és nem vethető el. 
 * A **kiszolgáló-rendszergazdai** bejelentkezés alapértelmezett nyelve az amerikai angol (US-English).
 * Csak a rendszergazdák (**kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master** adatbázis **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és a `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
@@ -185,14 +189,6 @@ Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye fig
 
 - A tűzfalszabályokkal kapcsolatos további információk: [Azure SQL Database-tűzfal](sql-database-firewall-configure.md).
 - Az SQL Database összes biztonsági szolgáltatásáról [az SQL biztonsági szolgáltatásainak áttekintése](sql-database-security-overview.md) biztosít áttekintést.
-- Útmutatásért tekintse meg az [SQL-biztonságra vonatkozó első lépéseket](sql-database-control-access-sql-authentication-get-started.md) ismertető leírást.
+- Az oktatóanyagok esetén lásd: [az Azure SQL Database biztonságos](sql-database-security-tutorial.md).
 - Információk a nézetekről és a tárolt eljárásokról: [Nézetek és tárolt eljárások létrehozása](https://msdn.microsoft.com/library/ms365311.aspx)
 - Információk adatbázis-objektumhoz való hozzáférés biztosításáról: [Adatbázis-objektumhoz való hozzáférés biztosítása](https://msdn.microsoft.com/library/ms365327.aspx)
-- Az SQL Server-hitelesítés használatával foglalkozó oktatóanyagért lásd: [SQL Database-oktatóanyag: SQL Server-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-sql-authentication-get-started.md).
-- Az Azure Active Directory-hitelesítés használatával foglalkozó oktatóanyagért lásd: [SQL Database-oktatóanyag: AAD-hitelesítés, bejelentkezések és felhasználói fiókok, adatbázis-szerepkörök, engedélyek, kiszolgálószintű tűzfalszabályok és adatbázisszintű tűzfalszabályok](sql-database-control-access-aad-authentication-get-started.md).
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-

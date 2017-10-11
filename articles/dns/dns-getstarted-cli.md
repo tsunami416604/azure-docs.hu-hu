@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 5cb387c4d1a2a2ae5ee8822241b11e79f53f0d6a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/25/2017
-
+ms.openlocfilehash: 6958d61b29961f59cb22f62bec55f2d467e7e7cb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Az Azure DNS használatának első lépései az Azure CLI 2.0-val
 
 > [!div class="op_single_selector"]
@@ -123,4 +121,3 @@ Az Azure DNS-sel kapcsolatos további információért lásd [az Azure DNS átte
 DNS-zónák az Azure DNS-ben való kezelésével kapcsolatos további információért lásd [a DNS-zónák az Azure DNS-ben az Azure CLI 2.0-val való kezelésével kapcsolatos](dns-operations-dnszones-cli.md) témakört.
 
 DNS-rekordok az Azure DNS-ben való kezelésével kapcsolatos további információért lásd [a DNS-rekordok és -rekordhalmazok az Azure DNS-ben az Azure CLI 2.0-val való kezelésével kapcsolatos](dns-operations-recordsets-cli.md) témakört.
-

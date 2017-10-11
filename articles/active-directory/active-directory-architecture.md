@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/02/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 5c60fa737c0133482af8b653f795bf9086c39969
-ms.contentlocale: hu-hu
-ms.lasthandoff: 03/28/2017
-
+ms.openlocfilehash: 50dad848cfbdab7f5b1fff0fcec3b5f754e6ae74
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="understand-azure-active-directory-architecture"></a>Az Azure Active Directory architektúrájának ismertetése
 Az Azure Active Directory (Azure AD) lehetővé teszi, hogy biztonságosan kezelje az Azure-szolgáltatások és -erőforrások elérését a felhasználók számára. Az Azure AD-ben megtalálható az identitáskezelési megoldások teljes palettája. Az Azure AD-funkciókkal kapcsolatos információért lásd: [Mi az az Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)
@@ -38,7 +37,7 @@ Ez a cikk a következő architektúraelemeket tárgyalja:
 ### <a name="service-architecture-design"></a>Szolgáltatásarchitektúra kialakítása
 A méretezhető, magas rendelkezésre állású, adatokban gazdag rendszerek felépítésének legáltalánosabb módszere a független építőelemek vagy skálázási egységek alkalmazása. Az Azure AD adatrétege esetében a skálázási egységeket *partícióknak* nevezik. 
 
-Az adatréteg több előtér-szolgáltatással rendelkezik, amelyek olvasási-írási képességeket nyújtanak. Az alábbi ábra bemutatja, hogyan vannak elosztva egy egy címtárból álló partíció összetevői a földrajzilag elosztott adatközpontokban. 
+Az adatréteg több front-end szolgáltatással rendelkezik, amelyek olvasási és írási képességeket nyújtanak. Az alábbi ábra bemutatja, hogyan vannak elosztva egy egy címtárból álló partíció összetevői a földrajzilag elosztott adatközpontokban. 
 
   ![Egy címtárból álló partíciók](./media/active-directory-architecture/active-directory-architecture.png)
 
@@ -58,7 +57,7 @@ A méretezhetőség azon képesség, amellyel a szolgáltatások ki tudnak bőv�
 
 A címtáralkalmazásokból érkező kérések általában a fizikailag legközelebbi adatközponthoz vannak irányítva. Az írások transzparens módon vannak átirányítva az elsődleges replikához az írás-olvasás konzisztenciájának biztosítása érdekében. A másodlagos replikák jelentősen kibővítik a partíciók méretét, mert a címtárak leginkább olvasásokat szolgáltatnak.
 
-A címtáralkalmazások a legközelebbi adatközpontokhoz csatlakoznak. Ez javítja a teljesítményt, és így lehetséges a méretezés. Mivel egy másodlagos partíció sok másodlagos replikával rendelkezhet, a másodlagos replikák közelebb helyezhetők a címtár ügyfeleihez. Csak a belső címtárszolgáltatás írásigényes összetevői célozzák meg közvetlenül az aktív elsődleges replikát.
+A címtáralkalmazások a legközelebbi adatközpontokhoz csatlakoznak. Ez javítja a teljesítményt, és így lehetséges a felskálázás. Mivel egy címtárpartíció sok másodlagos replikával rendelkezhet, a másodlagos replikák közelebb helyezhetők a címtár ügyfeleihez. Csak a belső címtárszolgáltatás írásigényes összetevői célozzák meg közvetlenül az aktív elsődleges replikát.
 
 ### <a name="continuous-availability"></a>Folyamatos rendelkezésre állás
 
@@ -74,30 +73,30 @@ Az olvasási műveletek (amelyek száma nagyságrendekkel meghaladja az írások
 
 **Adatok tartóssága**
 
-Az írásoknak legalább két adatközpontban tartósan használatban kell lenniük a nyugtázásuk előtt. Ehhez először véglegesíteni kell az írást az elsődleges replikán, majd azonnal replikálni kell legalább egy másik adatközpontba. Ez biztosítja, hogy az elsődleges replikát üzemeltető adatközpont lehetséges végzetes elvesztése ne eredményezzen adatvesztést.
+Az írások tartós véglegesítése legalább két adatközpontban megtörténik a nyugtázásuk előtt. Ehhez először véglegesíteni kell az írást az elsődleges replikán, majd azonnal replikálni kell legalább egy másik adatközpontba. Ez biztosítja, hogy az elsődleges replikát üzemeltető adatközpont lehetséges végzetes elvesztése ne eredményezzen adatvesztést.
 
-Az Azure AD a [Helyreállítási időre vonatkozó célkitűzés (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) tekintetében a nulla értékét tartja fenn a jogkivonatok kiadásához és a címtárolvasásokhoz, a címtárírások esetében pedig perces nagyságrendű értéket (~5 perc). A [Helyreállítási időkorláthoz (RPO)](https://en.wikipedia.org/wiki/Recovery_point_objective) is nulla értéket tartunk fenn, így nem veszítünk adatokat a feladatátvételek során.
+Az Azure AD-ben a [helyreállítási időre vonatkozó célkitűzés (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) a jogkivonatok kiadása és a címtárolvasások esetében nullával egyenlő, a címtárírások esetében pedig néhány perces nagyságrendű (~5 perc). A [helyreállítási időkorlát (RPO)](https://en.wikipedia.org/wiki/Recovery_point_objective) szintén nulla, így nem veszítünk adatokat a feladatátvételek során.
 
 ### <a name="data-centers"></a>Adatközpontok
 
-Az Azure AD replikái a világ számos részén található adatközpontokban vannak tárolva. További információk: [Azure adatközpontok](https://azure.microsoft.com/en-us/overview/datacenters).
+Az Azure AD replikái a világ számos részén található adatközpontokban vannak tárolva. További információk: [Azure-adatközpontok](https://azure.microsoft.com/en-us/overview/datacenters).
 
 Az Azure AD a következő jellemzőkkel rendelkező adatközpontokon működik:
 
- * A hitelesítés, a Graph és a további AD-szolgáltatások az átjárószolgáltatás mögött helyezkednek el. Az átjáró kezeli ezen szolgáltatások terheléselosztását. Automatikus feladatátvételt hajt végre, ha a rendszer a tranzakciós állapot-mintavétel használatával nem megfelelő állapotú kiszolgálókat észlel. Ezen állapot-mintavételek alapján az átjáró dinamikusan átirányítja a forgalmat a kifogástalan állapotú adatközpontokhoz.
+ * A hitelesítés, a Graph és a további AD-szolgáltatások az átjárószolgáltatás mögött helyezkednek el. Az átjáró kezeli ezen szolgáltatások terheléselosztását. Automatikus feladatátvételt hajt végre, ha a rendszer a tranzakciós állapottesztek során nem megfelelő állapotú kiszolgálókat észlel. Ezen állapot-mintavételek alapján az átjáró dinamikusan átirányítja a forgalmat a kifogástalan állapotú adatközpontokhoz.
  * Az *olvasások* esetében a címtár másodlagos replikákkal és megfelelő előtér-szolgáltatásokkal rendelkezik egy több adatközpontban működő aktív-aktív konfigurációban. A teljes adatközpont meghibásodása esetén a rendszer automatikusan átirányítja a forgalmat egy másik adatközpontra.
- *  Az *írások* esetében a címtár tervezett (az új elsődleges replika szinkronizálása a régi elsődleges replikára) vagy vészhelyzeti feladatátvételi eljárásokon keresztül hajtja végre elsődleges (fő-) replika feladatátvételét az adatközpontokon. Az adatok tartóssága minden véglegesítés legalább két adatközpontra történő replikálásával valósul meg.
+ *  Az *írások* esetében a címtár tervezett (az új elsődleges replika szinkronizálása a régi elsődleges replikára) vagy vészhelyzeti feladatátvételi eljárásokon keresztül hajtja végre az elsődleges (fő-) replika feladatátvételét az adatközpontokon. Az adatok tartóssága minden véglegesítés legalább két adatközpontra történő replikálásával valósul meg.
 
 **Adatkonzisztencia**
 
 A címtármodell végleges konzisztenciával rendelkezik. Az elosztott aszinkron replikációs rendszerek egyik általános problémája, hogy egy „adott” replikáról lekért adatok nem feltétlenül naprakészek. 
 
-Az Azure AD olvasási-írási konzisztenciát biztosít a másodlagos replikát megcélzó alkalmazások számára az írások az elsődleges replikára történő irányításával, illetve az írások a másodlagos replikára történő szinkron módon történő visszahúzásával.
+Az Azure AD-ben a másodlagos replikát megcélzó alkalmazások  olvasási és írási konzisztenciája úgy valósul meg, hogy az írásokat a rendszer az elsődleges replikára irányítja, és ezzel egyidejűleg visszahúzza azokat a másodlagos replikára.
 
 Az Azure AD Graph API-t használó alkalmazások írásai számára nem kötelező az affinitás fenntartása egy címtár replikája felé az olvasási-írási konzisztencia érdekében. Az Azure AD Graph szolgáltatása egy logikai munkamenetet tart fenn, amely affinitással rendelkezik egy olvasáshoz használt másodlagos replikához. Az affinitás egy „replika-jogkivonatban” van rögzítve, amelyet a Graph szolgáltatás egy elosztott gyorsítótár használatával gyorsítótáraz. A jogkivonat ezután a logikai munkamenet következő műveleteihez lesz felhasználva. 
 
  >[!NOTE]
- >Az írásokat a rendszer azonnal replikálja arra másodlagos replikára, amelyre a logikai munkamenet olvasásai ki lettek adva.
+ >Az írásokat a rendszer azonnal replikálja arra a másodlagos replikára, amelyre a logikai munkamenet olvasásai ki lettek adva.
  >
 
 **Biztonsági másolatok védelme**
@@ -108,15 +107,14 @@ Az Azure AD naponta biztonsági másolatot készít az összes adatról, ezért 
 
 **Mérőszámok és figyelők**
 
-Egy magas rendelkezésre állású szolgáltatás futtatásához világszínvonalú mérési és megfigyelési képességekre van szükség. Az Azure AD folyamatosan elemzi a szolgáltatások állapotával kapcsolatos legfontosabb mérőszámokat és az egyes szolgáltatások sikerességi feltételeit, illetve jelentést készít azokról. Folyamatosan fejlesztjük és hangoljuk az egyes forgatókönyvekhez tartozó mérőszámokat, figyelést és riasztást az egyes Azure AD szolgáltatásokban, illetve az összes szolgáltatásban.
+Egy magas rendelkezésre állású szolgáltatás futtatásához világszínvonalú metrikára és monitorozási képességekre van szükség. Az Azure AD folyamatosan elemzi a szolgáltatások állapotával kapcsolatos legfontosabb mérőszámokat és az egyes szolgáltatások sikerességi feltételeit, illetve jelentést készít azokról. Folyamatosan fejlesztjük és hangoljuk az egyes forgatókönyvekhez tartozó mérőszámokat, figyelést és riasztást az egyes Azure AD szolgáltatásokban, illetve az összes szolgáltatásban.
 
-Ha bármelyik Azure AD szolgáltatás nem a várt módon működik, azonnal munkához látunk a működőképesség lehető leggyorsabb helyreállítása érdekében. Az Azure AD által nyomon követett legfontosabb mérőszám az, hogy milyen gyorsan tudjuk észlelni és elhárítani egy ügyféllel vagy egy élő webhellyel kapcsolatos problémát. Komoly erőfeszítéseket teszünk a megfigyelés és a riasztások területén, hogy minimalizáljuk az észleléshez szükséges időt (cél: <5 perc), illetve a működésre való készenlét terén is, hogy minimálisra csökkentsük az elhárításhoz szükséges időt (cél: <30 perc).
+Ha bármelyik Azure AD szolgáltatás nem a várt módon működik, azonnal munkához látunk a működőképesség lehető leggyorsabb helyreállítása érdekében. Az Azure AD által nyomon követett legfontosabb metrika az, hogy milyen gyorsan tudunk észlelni és elhárítani egy ügyféllel vagy egy webhellyel kapcsolatos problémát. Komoly erőfeszítéseket teszünk a monitoring és a riasztások területén azért, hogy minimalizáljuk az észleléshez szükséges időt (cél: <5 perc). A működőképesség javításával pedig a hiba súlyosságának mérsékléséhez szükséges időt igyekszünk csökkenteni (cél: <30 perc).
 
 **Biztonságos műveletek**
 
-Műveleti vezérlőket, például többtényezős hitelesítést (MFA) alkalmazunk minden művelet esetében, valamint naplózzuk az összes műveletet. Emellett igényalapú szintemelési rendszert használunk ahhoz, hogy folyamatosan meg tudjuk adni a szükséges ideiglenes hozzáférést bármilyen igény szerinti műveleti feladathoz. További információkért lásd: [The Trusted Cloud](https://azure.microsoft.com/en-us/support/trust-center) (A megbízható felhő).
+Műveleti vezérlőket, például többtényezős hitelesítést (MFA) alkalmazunk minden művelet esetében, valamint naplózzuk az összes műveletet. Emellett igényalapú szintemelési rendszert használunk ahhoz, hogy folyamatosan meg tudjuk adni a szükséges ideiglenes hozzáférést bármilyen igény szerinti műveleti feladathoz. További információkért lásd: [A megbízható felhő](https://azure.microsoft.com/en-us/support/trust-center).
 
 ## <a name="next-steps"></a>Következő lépések
 [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
-
 

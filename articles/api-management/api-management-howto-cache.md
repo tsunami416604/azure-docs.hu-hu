@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: d4ba7c276b0ad8539cfbad9b9a6afe193af3a0b8
-
-
+ms.openlocfilehash: 59c595f0d5ce849f44c46fdb6cab0b44d35fffa0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 Az API Management műveleteit konfigurálni lehet a válaszok gyorsítótárazásához. A válaszok gyorsítótárazása jelentősen csökkentheti az API-k késleltetését, sávszélesség-használatát és a webszolgáltatások terhelését olyan adatok esetén, amelyek nem változnak gyakran.
@@ -171,9 +171,3 @@ Vegye figyelembe, hogy a **sampleheader** értéke a válaszban most már **valu
 [Review the caching policies]: #caching-policies
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-

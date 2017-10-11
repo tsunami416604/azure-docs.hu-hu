@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: 47358c6c209488d7a12e8afbf7a2d9b3f872f0de
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="what-is-api-management"></a>Mi az API Management?
 Az API Management segít a szervezeteknek közzétenni az API-kat külső, partneri és belső fejlesztők számára, hogy ki tudják bontakoztatni az adataikban és szolgáltatásaikban rejlő lehetőségeket. A vállalkozások világszerte digitális platformon szeretnék bővíteni a működésüket, új csatornákat szeretnének létrehozni, új ügyfeleket szeretnének találni és mélyíteni szeretnék a meglévő ügyfelekkel kialakított kapcsolatot. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez.
@@ -126,11 +127,5 @@ Ha többet szeretne megtudni az API Management szolgáltatásról, tekintse meg 
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 
-
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

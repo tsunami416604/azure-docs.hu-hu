@@ -1,5 +1,5 @@
-When you try to create a new Azure Virtual Machine (VM), the common errors you encounter are provisioning failures or allocation failures.
+Amikor megpróbál létrehozni egy új Azure virtuális gép (VM), a előforduló gyakori hibák hibákat vagy olyan pufferallokációs hibák kiépíteni.
 
-* A provisioning failure happens when the OS image fails to load either due to incorrect preparatory steps or because of selecting the wrong settings during the image capture from the portal.
-* An allocation failure results when the cluster or region either does not have resources available or cannot support the requested VM size.
+* Üzembe helyezési hiba történik, ha az operációs rendszer lemezképének miatt helytelen előkészítő lépések vagy miatt a megfelelő beállítások kiválasztása során a lemezkép felvételén a portálról betöltése sikertelen.
+* Egy memóriafoglalási hiba eredménye, ha a fürt vagy a régió nincs rendelkezésre álló erőforrások vagy nem támogatja a kért Virtuálisgép-méretet.
 

@@ -1,22 +1,22 @@
 
-The previous example showed a standard sign-in, which requires the client to contact both the identity provider and the back-end Azure service every time the app starts. This method is inefficient, and you can have usage-related issues if many customers try to start your app simultaneously. A better approach is to cache the authorization token returned by the Azure service, and try to use this first before using a provider-based sign-in.
+Az előző példában bemutatta szabványos bejelentkezéshez, ami megköveteli, hogy az ügyfél, mind az identitásszolgáltató, és a háttér-Azure szolgáltatás kapcsolódni az alkalmazás minden indításakor. Ez a módszer nem hatékony, és akkor használati kapcsolatos problémák, ha sok ügyfél próbál meg egyidejűleg indítsa el az alkalmazást. Egy jobb megoldás, a gyorsítótár az engedélyezési jogkivonatot az Azure-szolgáltatás által visszaadott, és próbálja meg használni az első olyan szolgáltató alapú bejelentkezés használata előtt.
 
 > [!NOTE]
-> You can cache the token issued by the back-end Azure service regardless of whether you are using client-managed or service-managed authentication. This tutorial uses service-managed authentication.
+> A háttér-függetlenül használja-e ügyfél által felügyelt vagy a szolgáltatás által kezelt hitelesítés az Azure szolgáltatás által kiadott tokennek képes gyorsítótárazni. Ez az oktatóanyag a szolgáltatás által kezelt hitelesítést használ.
 >
 >
 
-1. Open the ToDoActivity.java file and add the following import statements:
+1. Nyissa meg a ToDoActivity.java fájlban, és adja hozzá a következő importálási utasításokat:
 
         import android.content.Context;
         import android.content.SharedPreferences;
         import android.content.SharedPreferences.Editor;
-2. Add the following members to the `ToDoActivity` class.
+2. A következő tagokat adjanak hozzá a `ToDoActivity` osztály.
 
         public static final String SHAREDPREFFILE = "temp";    
         public static final String USERIDPREF = "uid";    
         public static final String TOKENPREF = "tkn";    
-3. In the ToDoActivity.java file, add the following definition for the `cacheUserToken` method.
+3. A ToDoActivity.java fájlban adja hozzá a következő definícióját a `cacheUserToken` metódust.
 
         private void cacheUserToken(MobileServiceUser user)
         {
@@ -27,13 +27,13 @@ The previous example showed a standard sign-in, which requires the client to con
             editor.commit();
         }    
 
-    This method stores the user ID and token in a preference file that is marked private. This should protect access to the cache so that other apps on the device do not have access to the token. The preference is sandboxed for the app. However, if someone gains access to the device, it is possible that they may gain access to the token cache through other means.
+    Ez a módszer is meg van jelölve személyes beállításokat szabályozó fájlban tárolja a felhasználói Azonosítót és a jogkivonatot. Hogy más alkalmazások az eszközön nincs hozzáférése a jogkivonatot, ez a gyorsítótár a hozzáférést kell védeni. A beállítás ki az alkalmazás elkülönített. Azonban ha valaki hozzáfér az eszközre, akkor lehet, hogy előfordulhat, hogy a jogkivonat gyorsítótára más módon hozzáférést kapnak.
 
    > [!NOTE]
-   > You can further protect the token with encryption, if token access to your data is considered highly sensitive and someone may gain access to the device. A completely secure solution is beyond the scope of this tutorial, however, and depends on your security requirements.
+   > Ha a adatokhoz való hozzáférés a jogkivonatokhoz szigorúan bizalmas minősül, és hozzáférhet az eszközt valaki, további védelmet biztosíthat a titkosítás, a jogkivonatot. Teljesen biztonságos megoldást ebben az oktatóanyagban terjed, és attól függ, a biztonsági követelményeinek.
    >
    >
-4. In the ToDoActivity.java file, add the following definition for the `loadUserTokenCache` method.
+4. A ToDoActivity.java fájlban adja hozzá a következő definícióját a `loadUserTokenCache` metódust.
 
         private boolean loadUserTokenCache(MobileServiceClient client)
         {
@@ -51,7 +51,7 @@ The previous example showed a standard sign-in, which requires the client to con
 
             return true;
         }
-5. In the *ToDoActivity.java* file, replace the `authenticate` method with the following method, which uses a token cache. Change the login provider if you want to use an account other than Google.
+5. Az a *ToDoActivity.java* fájlt, cserélje le a `authenticate` metódus a következő módszerrel, amely jogkivonatok gyorsítótárát használja. Módosítsa a bejelentkezés-szolgáltató, ha szeretné használni a Google nem.
 
         private void authenticate() {
             // We first try to load a token cache if one exists.
@@ -81,4 +81,4 @@ The previous example showed a standard sign-in, which requires the client to con
                 });
             }
         }
-6. Build the app and test authentication using a valid account. Run it at least twice. During the first run, you should receive a prompt to sign in and create the token cache. After that, each run attempts to load the token cache for authentication. You should not be required to sign in.
+6. Hozhat létre. az alkalmazás és a teszt hitelesítési érvényes fiók használatával. Legalább két alkalommal futtassa. Az első futtatás során jelenít meg bejelentkezni, és hozzon létre a jogkivonatok gyorsítótárát kell kapnia. Ezután minden egyes futtatásához megkísérli betölteni a hitelesítési jogkivonat gyorsítótárában. Ön nem köteles jelentkezzen be.

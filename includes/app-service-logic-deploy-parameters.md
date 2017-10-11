@@ -1,12 +1,12 @@
-With Azure Resource Manager, you define parameters for values you want to specify when the template is deployed. The template includes a section called Parameters that contains all of the parameter values.
-You should define a parameter for those values that will vary based on the project you are deploying or based on the environment you are deploying to. Do not define parameters for values that will always stay the same. Each parameter value is used in the template to define the resources that are deploy. 
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon nevű paraméterek szakaszban, amely tartalmazza az összes paraméter értékét tartalmazza.
+Meg kell határozni egy paramétert ezeket az értékeket, amelyek a projekt telepít vagy telepít, hogy a környezet alapján változhatnak. Az értékeket, amelyeket a rendszer mindig ugyanaz maradjon paraméterek nem határoznak meg. Minden paraméter értéke szolgál a sablon határozza meg az erőforrásokat, vannak-e telepíteni. 
 
-When defining parameters, use the **allowedValues** field to specify which values a user can provide during deployment. Use the **defaultValue** field to assign a value to the parameter, if no value is provided during deployment.
+Ha paraméterek megadása a **Storageaccount_accounttype** mezőben adja meg, mely felhasználó értékekkel biztosíthat a telepítés során. Használja a **defaultValue** mezőben rendelhet értéket a paraméternek, ha nincs érték megadva üzembe helyezése során.
 
-We will describe each parameter in the template.
+Azt ismerteti, egyes paramétereket a sablonban.
 
 ### <a name="logicappname"></a>logicAppName
-The name of the logic app to create.
+A logikai alkalmazás létrehozása neve.
 
     "logicAppName": {
         "type": "string"
