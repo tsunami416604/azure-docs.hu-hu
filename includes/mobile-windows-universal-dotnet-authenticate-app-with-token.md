@@ -1,9 +1,9 @@
 
-1. In the MainPage.xaml.cs project file, add the following **using** statements:
+1. A MainPage.xaml.cs projekt fájlban adja hozzá a következő **használatával** utasításokat:
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Replace the **AuthenticateAsync** method with the following code:
+2. Cserélje le a **AuthenticateAsync** metódus a következő kóddal:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -72,13 +72,13 @@
             return success;
         }
    
-    In this version of **AuthenticateAsync**, the app tries to use credentials stored in the **PasswordVault** to access the service. A regular sign-in is also performed when there is no stored credential.
+    Ezen verziója **AuthenticateAsync**, az alkalmazás megkísérli a tárolt hitelesítő adatok használatát a **PasswordVault** a szolgáltatás eléréséhez. Rendszeres bejelentkezés is történik, amikor nincs nem tárolt hitelesítő adatok.
    
    > [!NOTE]
-   > A cached token may be expired, and token expiration can also occur after authentication when the app is in use. To learn how to determine if a token is expired, see [Check for expired authentication tokens](http://aka.ms/jww5vp). For a solution to handling authorization errors related to expiring tokens, see the post [Caching and handling expired tokens in Azure Mobile Services managed SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > Előfordulhat, hogy egy gyorsítótárazott token lejárt, és jogkivonat lejáratáról is esetén fordul elő a hitelesítés után az alkalmazás használatban van. Annak megállapítása, ha a jogkivonat lejárt-e további tudnivalókért lásd: [lejárt a hitelesítési tokenek keressen](http://aka.ms/jww5vp). Lejáró jogkivonatok kapcsolatban a hitelesítési hibák kezelési megoldást, lásd: a feladás egy vagy több [gyorsítótárazáshoz és kezelése az Azure Mobile Services lejárt jogkivonatok felügyelt SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
    > 
    > 
-3. Restart the app twice.
+3. Indítsa újra az alkalmazást kétszer.
    
-    Notice that on the first start-up, sign-in with the provider is again required. However, on the second restart the cached credentials are used and sign-in is bypassed. 
+    Figyelje meg, hogy az első indításkor, jelentkezzen be a szolgáltató újra szükség. Azonban a második újraindítás közben a gyorsítótárazott hitelesítő adatokat használja, és a bejelentkezési elmarad. 
 

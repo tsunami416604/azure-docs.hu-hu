@@ -1,100 +1,100 @@
-# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Back up Azure unmanaged VM disks with incremental snapshots
-## <a name="overview"></a>Overview
-Azure Storage provides the capability to take snapshots of blobs. Snapshots capture the blob state at that point in time. In this article, we describe a scenario in which you can maintain backups of virtual machine disks using snapshots. You can use this methodology when you choose not to use Azure Backup and Recovery Service, and wish to create a custom backup strategy for your virtual machine disks.
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Készítsen biztonsági másolatot az Azure nem felügyelt méretű lemezek növekményes pillanatképek
+## <a name="overview"></a>Áttekintés
+Az Azure Storage lehetővé teszi a pillanatképek készítése a blobokat. Pillanatképek a blob állapot abban az idő rögzítése. Ez a cikk azt ismerteti egy olyan forgatókönyvet, amelyben akkor is fenntartható a pillanatképek használata virtuális gépek lemezeinek biztonsági másolatait. Ez a módszer segítségével használhatja, ha nem az Azure biztonsági mentési és helyreállítási szolgáltatás, és létrehozza a virtuális gépek lemezeit egyéni biztonsági mentési stratégiáját.
 
-Azure virtual machine disks are stored as page blobs in Azure Storage. Since we are describing a backup strategy for virtual machine disks in this article, we refer to snapshots in the context of page blobs. To learn more about snapshots, refer to [Creating a Snapshot of a Blob](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+Azure virtuális gépek lemezeit, az Azure Storage lapblobokat tárolódnak. Azt is leíró virtuális gépek lemezeit a cikkben egy biztonsági mentési stratégiája, mivel azt tekintse meg a pillanatképek lapblobokat környezetében. A pillanatképek kapcsolatos további tudnivalókért tekintse meg [egy pillanatképet készíteni egy Blob](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
-## <a name="what-is-a-snapshot"></a>What is a snapshot?
-A blob snapshot is a read-only version of a blob that is captured at a point in time. Once a snapshot has been created, it can be read, copied, or deleted, but not modified. Snapshots provide a way to back up a blob as it appears at a moment in time. Until REST version 2015-04-05, you had the ability to copy full snapshots. With the REST version 2015-07-08 and above, you can also copy incremental snapshots.
+## <a name="what-is-a-snapshot"></a>Mi az a pillanatképet?
+Egy blob pillanatképet egy időben rögzített blob csak olvasható verziója telepítve. Pillanatkép létrehozása, azt is kell olvasni, másolja, vagy törölni, de nem módosított. A pillanatképek lehetőséget nyújtanak olyan biztonsági mentése blob, ahogyan megjelenik egy időben el. REST 2015-04-05-ös verzióját, amíg nem volt teljes pillanatképek másolása lehetőséget. A többi verzió 2015-07-08 és újabb verzióiban meg is másolhatja növekményes pillanatképek.
 
-## <a name="full-snapshot-copy"></a>Full snapshot copy
-Snapshots can be copied to another storage account as a blob to keep backups of the base blob. You can also copy a snapshot over its base blob, which is like restoring the blob to an earlier version. When a snapshot is copied from one storage account to another, it occupies the same space as the base page blob. Therefore, copying whole snapshots from one storage account to another is slow and consumes much space in the target storage account.
+## <a name="full-snapshot-copy"></a>Teljes pillanatkép másolása
+A pillanatképek másik tárolási fiókot, egy blobot alap BLOB biztonsági mentések megtartása másolhat. Pillanatkép a alap, mint a blob visszaállítása egy korábbi blob keresztül is másolhatja. Amikor a pillanatképet egy tárfiók lesz átmásolva a másikra, az ugyanazon a kiinduló lap blob lemezterületet foglal el. Ezért teljes pillanatképek másolása egy tárfiókot másik lassú, és fel a céloldali tárfiók térközt.
 
 > [!NOTE]
-> If you copy the base blob to another destination, the snapshots of the blob are not copied along with it. Similarly, if you overwrite a base blob with a copy, snapshots associated with the base blob are not affected and stay intact under the base blob name.
+> Ha az alap blob másolása másik célhelyet, a pillanatképek a BLOB nem kerülnek. Hasonlóan alap blob felülírása egy másolatot, ha az alap blob tartozó pillanatképet nem érinti és nem sérültek az alap blob neve alatt maradnak.
 > 
 > 
 
-### <a name="back-up-disks-using-snapshots"></a>Back up disks using snapshots
-As a backup strategy for your virtual machine disks, you can take periodic snapshots of the disk or page blob, and copy them to another storage account using tools like [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) operation or [AzCopy](../articles/storage/common/storage-use-azcopy.md). You can copy a snapshot to a destination page blob with a different name. The resulting destination page blob is a writeable page blob and not a snapshot. Later in this article, we describe steps to take backups of virtual machine disks using snapshots.
+### <a name="back-up-disks-using-snapshots"></a>Készítsen biztonsági másolatot készített pillanatfelvételek segítségével történő lemezek
+A virtuális gépek lemezeit a biztonsági mentési stratégia, mint a lemez vagy a lap BLOB rendszeres időközönként pillanatképek tarthat, és azokat egy másik tárolási fiókot használva másolási eszközökkel, mint például [másolási Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) művelet vagy [AzCopy](../articles/storage/common/storage-use-azcopy.md). A cél az oldalakra vonatkozó blob egy eltérő nevű pillanatkép másolhatja. Az eredményül kapott cél oldalakra vonatkozó blob írható oldalakra vonatkozó blob és a pillanatkép nem. A cikk későbbi részében pillanatképek használata virtuális gépek lemezeinek biztonsági másolatait végrehajtandó lépések azt ismertetik.
 
-### <a name="restore-disks-using-snapshots"></a>Restore disks using snapshots
-When it is time to restore your disk to a stable version that was previously captured in one of the backup snapshots, you can copy a snapshot over the base page blob. After the snapshot is promoted to the base page blob, the snapshot remains, but its source is overwritten with a copy that can be both read and written. Later in this article we describe steps to restore a previous version of your disk from its snapshot.
+### <a name="restore-disks-using-snapshots"></a>A lemezek pillanatképek visszaállítása
+Ha a lemez állítani egy stabil verzióját, a biztonsági mentési pillanatképek egyikében rögzítésének időt, pillanatkép másolhatja a kiinduló lap blob keresztül. Követően a pillanatkép van előléptetve a kiinduló lap blob, a pillanatkép marad, de a forrás, amely képes is olvashatók és írhatók másolatot felülírja. A cikk azt a pillanatkép visszaállítása egy korábbi verzióját a lemez lépéseket írja le.
 
-### <a name="implementing-full-snapshot-copy"></a>Implementing full snapshot copy
-You can implement a full snapshot copy by doing the following,
+### <a name="implementing-full-snapshot-copy"></a>Végrehajtási teljes pillanatkép másolása
+Megvalósíthat egy teljes pillanatképet másolása a következő tevékenységek végrehajtásával
 
-* First, take a snapshot of the base blob using the [Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) operation.
-* Then, copy the snapshot to a target storage account using [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob).
-* Repeat this process to maintain backup copies of your base blob.
+* Először készítsen pillanatképet az alap blob használatával a [pillanatkép Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) műveletet.
+* A célként megadott tárolási fiók használatával, majd másolja a pillanatkép [másolási Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob).
+* Ismételje meg a folyamatot, az alap blobba biztonsági másolatait.
 
-## <a name="incremental-snapshot-copy"></a>Incremental snapshot copy
-The new feature in the [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) API provides a much better way to back up the snapshots of your page blobs or disks. The API returns the list of changes between the base blob and the snapshots, which reduces the amount of storage space used on the backup account. The API supports page blobs on Premium Storage as well as Standard Storage. Using this API, you can build faster and more efficient backup solutions for Azure VMs. This API will be available with the REST version 2015-07-08 and higher.
+## <a name="incremental-snapshot-copy"></a>Növekményes pillanatképet másolása
+Az új funkciója a [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) API készítsen biztonsági másolatot a pillanatképek a lapblobokat és lemezek javulás lehetőséget kínál. Az API-t adja vissza azokat a változásokat az alap blob és a pillanatképek között, ami csökkenti a biztonsági mentési fiók felhasznált tárterület. Az API támogatja a lapblobokat prémium szintű Storage, valamint a standard szintű tárolót. Ez az API használatával, Azure virtuális gépek biztonsági mentési megoldások gyorsabb és hatékonyabb hozhat létre. Ez az API rendelkezésre álljanak, a többi verziójával 2015-07-08 és magasabb.
 
-Incremental Snapshot Copy allows you to copy from one storage account to another the difference between,
+Növekményes pillanatképet másolási lehetővé teszi másolhat egy tárfiók egy másikra a különbség a között,
 
-* Base blob and its Snapshot OR
-* Any two snapshots of the base blob
+* Alap blob és a pillanatkép vagy
+* A kiinduló BLOB bármely két pillanatképek
 
-Provided the following conditions are met,
+A következő feltételek teljesülnek, a megadott
 
-* The blob was created on Jan-1-2016 or later.
-* The blob was not overwritten with [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) or [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) between two snapshots.
+* A blob Jan-1-2016 vagy újabb hozták létre.
+* A blob nem írja felül a [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) vagy [másolási Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) két pillanatképek között.
 
-**Note**: This feature is available for Premium and Standard Azure Page Blobs.
+**Megjegyzés:**: Ez a funkció érhető el prémium és Standard Azure Lapblobokat.
 
-When you have a custom backup strategy using snapshots, copying the snapshots from one storage account to another can be slow and can consume much storage space. Instead of copying the entire snapshot to a backup storage account, you can write the difference between consecutive snapshots to a backup page blob. This way, the time to copy and the space to store backups is substantially reduced.
+Ha egy egyéni biztonsági mentési stratégia készített pillanatfelvételek segítségével történő, a pillanatképek másolását egy tárfiókot a másikra, és ez sok tárhelyet is felhasználhatnak. Helyett másolja át a teljes pillanatkép biztonsági mentési tárfiókba, a biztonsági mentési oldalakra vonatkozó blob egymást követő pillanatképek közötti különbség is írhat. Ezzel a módszerrel a másolási és a biztonsági mentések tárolására szolgáló terület ideje jelentősen csökken.
 
-### <a name="implementing-incremental-snapshot-copy"></a>Implementing Incremental Snapshot Copy
-You can implement incremental snapshot copy by doing the following,
+### <a name="implementing-incremental-snapshot-copy"></a>Végrehajtási növekményes pillanatképet másolása
+A következőképpen valósíthatja növekményes pillanatképet másolása
 
-* Take a snapshot of the base blob using [Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
-* Copy the snapshot to the target backup storage account using [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). This is the backup page blob. Take a snapshot of the backup page blob and store it in the backup account.
-* Take another snapshot of the base blob using Snapshot Blob.
-* Get the difference between the first and second snapshots of the base blob using [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges). Use the new parameter **prevsnapshot**, to specify the DateTime value of the snapshot you want to get the difference with. When this parameter is present, the REST response includes only the pages that were changed between target snapshot and previous snapshot including clear pages.
-* Use [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) to apply these changes to the backup page blob.
-* Finally, take a snapshot of the backup page blob and store it in the backup storage account.
+* Pillanatkép készítése a alap blob használatával [pillanatkép Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
+* A cél biztonsági másolatok tárolási fiók használatával másolja a pillanatkép [másolási Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Ez az a biztonsági mentési oldalakra vonatkozó blob. Pillanatkép készítése a biztonsági mentési oldalakra vonatkozó blob, és tárolja a biztonsági mentési fiók.
+* Egy másik pillanatképet, az alap blob pillanatkép Blob használatával.
+* Az első és második pillanatképek alap blob használva közötti különbség beolvasása [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges). Használja az új paramétert **prevsnapshot**, hogy a pillanatkép le szeretné kérdezni a különbség a dátum/idő értéket adja meg. Amikor ez a paraméter meg adva, a többi válasz lapjain csak a cél pillanatkép és a korábbi pillanatképből, többek között a tiszta lapok között megváltozott.
+* Használjon [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) változtatásait szeretné alkalmazni ezeket a biztonsági mentési oldalakra vonatkozó blob.
+* Végezetül pillanatkép készítése a biztonsági mentési oldalakra vonatkozó blob, és tárolja a biztonsági mentési tárfiókot.
 
-In the next section, we will describe in more detail how you can maintain backups of disks using Incremental Snapshot Copy
+A következő szakaszban azt ismerteti, részletesebben hogyan kezelheti a biztonsági mentések lemezek növekményes pillanatképet-másolással
 
-## <a name="scenario"></a>Scenario
-In this section, we describe a scenario that involves a custom backup strategy for virtual machine disks using snapshots.
+## <a name="scenario"></a>Forgatókönyv
+Ez a szakasz azt ismerteti olyan forgatókönyvekben, amelyek a virtuális gépek lemezeit készített pillanatfelvételek segítségével történő egyéni biztonsági mentési stratégiája magában foglalja.
 
-Consider a DS-series Azure VM with a premium storage P30 disk attached. The P30 disk called *mypremiumdisk* is stored in a premium storage account called *mypremiumaccount*. A standard storage account called *mybackupstdaccount* is used for storing the backup of *mypremiumdisk*. We would like to keep a snapshot of *mypremiumdisk* every 12 hours.
+Vegye figyelembe a DS sorozatnak Azure virtuális gépek csatolt prémium szintű storage P30 lemezzel. A P30 lemez nevű *mypremiumdisk* tárolódik a prémium szintű storage-fiók neve *mypremiumaccount*. Standard szintű tárfiók nevű *mybackupstdaccount* biztonsági mentésének tárolásához használt *mypremiumdisk*. Azt szeretné tartani a pillanatképet *mypremiumdisk* 12 óránként.
 
-To learn about creating storage account and disks, refer to [About Azure storage accounts](../articles/storage/storage-create-storage-account.md).
+A tárfiók és a lemezek létrehozásával kapcsolatos további tudnivalókért tekintse meg [tudnivalók az Azure storage-fiókok](../articles/storage/storage-create-storage-account.md).
 
-To learn about backing up Azure VMs, refer to [Plan Azure VM backups](../articles/backup/backup-azure-vms-introduction.md).
+Az Azure virtuális gépek biztonsági mentéséről további tudnivalókért tekintse meg [tervezze meg az Azure virtuális gép biztonsági mentések](../articles/backup/backup-azure-vms-introduction.md).
 
-## <a name="steps-to-maintain-backups-of-a-disk-using-incremental-snapshots"></a>Steps to maintain backups of a disk using incremental snapshots
-The following steps describe how to take snapshots of *mypremiumdisk* and maintain the backups in *mybackupstdaccount*. The backup is a standard page blob called *mybackupstdpageblob*. The backup page blob always reflects the same state as the last snapshot of *mypremiumdisk*.
+## <a name="steps-to-maintain-backups-of-a-disk-using-incremental-snapshots"></a>Ismerteti a végrehajtás lépéseit egy lemez növekményes készített pillanatfelvételek segítségével történő biztonsági mentés karbantartása
+A következő lépések végrehajtásával pillanatképek készítése *mypremiumdisk* és karbantartása a biztonsági másolatok *mybackupstdaccount*. A biztonsági másolat nevű szabványos oldalakra vonatkozó blob *mybackupstdpageblob*. A biztonsági mentési oldalakra vonatkozó blob mindig tükrözi az utolsó pillanatképét a egyező állapotban *mypremiumdisk*.
 
-1. Create the backup page blob for your premium storage disk, by taking a snapshot of *mypremiumdisk* called *mypremiumdisk_ss1*.
-2. Copy this snapshot to mybackupstdaccount as a page blob called *mybackupstdpageblob*.
-3. Take a snapshot of *mybackupstdpageblob* called *mybackupstdpageblob_ss1*, using [Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) and store it in *mybackupstdaccount*.
-4. During the backup window, create another snapshot of *mypremiumdisk*, say *mypremiumdisk_ss2*, and store it in *mypremiumaccount*.
-5. Get the incremental changes between the two snapshots, *mypremiumdisk_ss2* and *mypremiumdisk_ss1*, using [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) on *mypremiumdisk_ss2* with the **prevsnapshot** parameter set to the timestamp of *mypremiumdisk_ss1*. Write these incremental changes to the backup page blob *mybackupstdpageblob* in *mybackupstdaccount*. If there are deleted ranges in the incremental changes, they must be cleared from the backup page blob. Use [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) to write incremental changes to the backup page blob.
-6. Take a snapshot of the backup page blob *mybackupstdpageblob*, called *mybackupstdpageblob_ss2*. Delete the previous snapshot *mypremiumdisk_ss1* from premium storage account.
-7. Repeat steps 4-6 every backup window. In this way, you can maintain backups of *mypremiumdisk* in a standard storage account.
+1. A prémium szintű tároló lemez, a biztonsági mentési oldalakra vonatkozó blob létrehozása pillanatkép készítése a *mypremiumdisk* nevű *mypremiumdisk_ss1*.
+2. Másolja a pillanatkép mybackupstdaccount nevű oldalblobként *mybackupstdpageblob*.
+3. Pillanatkép készítése *mybackupstdpageblob* nevű *mybackupstdpageblob_ss1*használatával [pillanatkép Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) és tárolja a *mybackupstdaccount*.
+4. A biztonsági mentési időszakban egy másik pillanatkép létrehozása a *mypremiumdisk*, azaz *mypremiumdisk_ss2*, és tárolja a *mypremiumaccount*.
+5. A növekményes módosult a két pillanatképek közötti *mypremiumdisk_ss2* és *mypremiumdisk_ss1*használatával [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) a *mypremiumdisk_ ss2* rendelkező a **prevsnapshot** paraméter értéke a időbélyegzője *mypremiumdisk_ss1*. Ezek a növekményes változásokat írni a biztonsági mentési oldalakra vonatkozó blob *mybackupstdpageblob* a *mybackupstdaccount*. Ha a növekményes változásokat törölt tartománya, akkor törölni kell a biztonsági mentési oldalakra vonatkozó blob a. Használjon [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) a növekményes változásokat írni a biztonsági mentési oldalakra vonatkozó blob.
+6. Pillanatkép készítése a biztonsági mentési oldalakra vonatkozó blob *mybackupstdpageblob*néven *mybackupstdpageblob_ss2*. Törölje az előző pillanatképet *mypremiumdisk_ss1* a prémium szintű storage-fiók.
+7. Minden biztonsági mentés időszakának ismételje meg a 4 – 6. Így akkor is fenntartható a biztonsági másolatainak *mypremiumdisk* szabványos tárfiókokban.
 
-![Back up disk using incremental snapshots](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-1.png)
+![Készítsen biztonsági másolatot növekményes pillanatképek használatával](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-1.png)
 
-## <a name="steps-to-restore-a-disk-from-snapshots"></a>Steps to restore a disk from snapshots
-The following steps, describe how to restore the premium disk, *mypremiumdisk* to an earlier snapshot from the backup storage account *mybackupstdaccount*.
+## <a name="steps-to-restore-a-disk-from-snapshots"></a>A lemez a visszaállítandó pillanatképek lépései
+A következő lépések azt ismertetik, hogyan visszaállítása a prémium szintű lemez *mypremiumdisk* egy korábbi pillanatkép biztonsági másolatokat tároló-fiókból való *mybackupstdaccount*.
 
-1. Identify the point in time that you wish to restore the premium disk to. Let's say that it is snapshot *mybackupstdpageblob_ss2*, which is stored in the backup storage account *mybackupstdaccount*.
-2. In mybackupstdaccount, promote the snapshot *mybackupstdpageblob_ss2* as the new backup base page blob *mybackupstdpageblobrestored*.
-3. Take a snapshot of this restored backup page blob, called *mybackupstdpageblobrestored_ss1*.
-4. Copy the restored page blob *mybackupstdpageblobrestored* from *mybackupstdaccount* to *mypremiumaccount* as the new premium disk *mypremiumdiskrestored*.
-5. Take a snapshot of *mypremiumdiskrestored*, called *mypremiumdiskrestored_ss1* for making future incremental backups.
-6. Point the DS series VM to the restored disk *mypremiumdiskrestored* and detach the old *mypremiumdisk* from the VM.
-7. Begin the Backup process described in previous section for the restored disk *mypremiumdiskrestored*, using the *mybackupstdpageblobrestored* as the backup page blob.
+1. Azonosítsa a pont, a prémium szintű lemez visszaállítani kívánt időben. Tegyük fel a pillanatkép van *mybackupstdpageblob_ss2*, amely tárolja a biztonsági mentési tárfiók *mybackupstdaccount*.
+2. A mybackupstdaccount, előléptetni a pillanatkép *mybackupstdpageblob_ss2* , az új biztonsági mentési alap oldalakra vonatkozó blob *mybackupstdpageblobrestored*.
+3. Pillanatkép készítése a visszaállított biztonsági mentési oldalakra vonatkozó blob, úgynevezett *mybackupstdpageblobrestored_ss1*.
+4. Másolja a visszaállított oldalakra vonatkozó blob *mybackupstdpageblobrestored* a *mybackupstdaccount* való *mypremiumaccount* az új premium tárolására *mypremiumdiskrestored*.
+5. Pillanatkép készítése *mypremiumdiskrestored*néven *mypremiumdiskrestored_ss1* jövőbeli növekményes biztonsági mentést készíteni.
+6. A DS adatsorozat VM mutasson a visszaállított lemez *mypremiumdiskrestored* és a régi leválasztási *mypremiumdisk* a virtuális gépről.
+7. A visszaállított lemez előző szakaszban ismertetett biztonsági mentés megkezdéséhez *mypremiumdiskrestored*használatával a *mybackupstdpageblobrestored* , a biztonsági mentési oldalakra vonatkozó blob.
 
-![Restore disk from snapshots](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)
+![A pillanatképek lemez visszaállítása](../articles/virtual-machines/windows/media/incremental-snapshots/storage-incremental-snapshots-2.png)
 
-## <a name="next-steps"></a>Next Steps
-Use the following links to learn more about creating snapshots of a blob and planning your VM backup infrastructure.
+## <a name="next-steps"></a>Következő lépések
+Az alábbi hivatkozások segítségével pillanatképeinek blob és a virtuális gép biztonsági mentési infrastruktúrájának megtervezésével kapcsolatos további.
 
-* [Creating a Snapshot of a Blob](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)
-* [Plan your VM Backup Infrastructure](../articles/backup/backup-azure-vms-introduction.md)
+* [Egy BLOB pillanatkép létrehozása](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)
+* [A virtuális gép biztonsági mentési infrastruktúra megtervezése](../articles/backup/backup-azure-vms-introduction.md)
 

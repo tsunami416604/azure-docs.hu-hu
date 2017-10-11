@@ -1,41 +1,41 @@
 <!--author=alkohli last changed: 9/16/15-->
 
 
-#### <a name="to-cable-your-device-for-power"></a>To cable your device for power
+#### <a name="to-cable-your-device-for-power"></a>A bekapcsolási az eszköz bekábelezése
 > [!NOTE]
-> Both enclosures on your StorSimple device include redundant PCMs. For each enclosure, the PCMs must be installed and connected to different power sources to ensure high availability.
+> A StorSimple eszköz mindkét ház redundáns PCMs tartalmazza. Az egyes ház a PCMs telepítve legyen, és csatlakozik a különböző áramforrásokból magas rendelkezésre állásának biztosításához.
 > 
 > 
 
-1. Make sure that the power switches on all the PCMs are in the OFF position.
-2. On the primary enclosure, connect the power cords to both PCMs. The power cords are identified in red in the power cabling diagram, below.
-3. Make sure that the two PCMs on the primary enclosure use separate power sources.
-4. Attach the power cords to the power on the rack distribution units as shown in the power cabling diagram.
-5. Repeat steps 2 through 4 for the EBOD enclosure.
-6. Turn on the EBOD enclosure by flipping the power switch on each PCM to the ON position.
-7. Verify that the EBOD enclosure is turned on by checking that the green LEDs on the back of the EBOD controller are turned ON.
-8. Turn on the primary enclosure by flipping each PCM switch to the ON position.
-9. Verify that the system is on by ensuring the device controller LEDs have turned ON.
-10. Make sure that the connection between the EBOD controller and the device controller is active by verifying that the four LEDs next to the SAS port on the EBOD controller are green.
+1. Győződjön meg arról, hogy az összes PCMs power kapcsolókkal megfelelő jogkörrel OFF.
+2. A elsődleges tárolóeszközön csatlakoztassa a tápkábelek mindkét PCMs. A tápkábelek alatt a power kábelezési diagramon piros azonosítja.
+3. Győződjön meg arról, hogy a két PCMs a elsődleges tárolóeszközön külön áramforrásokból.
+4. Ahogy az ábra kábelek a power vezeték csatlakoztatni az állvány Áramelosztó egységekből bekapcsolása.
+5. Ismételje meg a 2 – 4. a EBOD ház.
+6. Kapcsolja be a EBOD ház által az egyes PCM az ON-pozíció a kikapcsolás tükrözés.
+7. Győződjön meg arról, hogy a a EBOD ház úgy, hogy a EBOD vezérlő hátulján zöld LED vannak kapcsolja be van kapcsolva.
+8. Kapcsolja be az elsődleges ház minden PCM kapcsoló átállításával a ON helyre.
+9. Győződjön meg arról, hogy a rendszer a biztosításával, hogy az eszköz tartományvezérlő LED be van kapcsolva.
+10. Ellenőrizze, hogy a kapcsolatot a EBOD vezérlő és az eszköz vezérlő aktív szerint annak ellenőrzése, hogy a négy LED a SAS-port a EBOD vezérlőn melletti zöld.
     
     > [!IMPORTANT]
-    > To ensure high availability for your system, we recommend that you strictly adhere to the power cabling scheme shown in the following diagram.
+    > A rendszer magas rendelkezésre állás biztosítása érdekében azt javasoljuk, hogy Ön szigorúan igazodnia kell a energiagazdálkodási séma a következő ábrán is látható kábelek.
     > 
     > 
     
-    ![Cable your 4U device for power](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
+    ![Az energiagazdálkodási 4U eszköz bekábelezése](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
     
-    **Power cabling**
+    **Energiagazdálkodási kábelek**
     
-    | Label | Description |
+    | Címke | Leírás |
     |:--- |:--- |
-    | 1 |Primary enclosure |
+    | 1 |Elsődleges ház |
     | 2 |PCM 0 |
     | 3 |PCM 1 |
-    | 4 |Controller 0 |
-    | 5 |Controller 1 |
-    | 6 |EBOD controller 0 |
-    | 7 |EBOD controller 1 |
-    | 8 |EBOD enclosure |
-    | 9 |PDUs |
+    | 4 |A vezérlő 0 |
+    | 5 |1. vezérlő |
+    | 6 |EBOD vezérlő 0 |
+    | 7 |1. EBOD vezérlő |
+    | 8 |EBOD ház |
+    | 9 |PDU-k |
 

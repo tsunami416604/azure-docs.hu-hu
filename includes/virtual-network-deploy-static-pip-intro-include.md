@@ -1,4 +1,4 @@
-You can create virtual machines (VMs) in Azure and expose them to the public Internet by using a public IP address. By default, Public IPs are dynamic and the address associated to them may change when the VM is deleted. To guarantee that the VM always uses the same public IP address, you need to create a static Public IP. 
+Virtuális gépek (VM) létrehozása az Azure-ban, és tegye őket elérhetővé a nyilvános internethez egy nyilvános IP-cím használatával. Alapértelmezés szerint a nyilvános IP-címek dinamikusak, és a hozzájuk tartozó címre módosíthatja a virtuális gép törlésekor. Garantálja, hogy a virtuális gép mindig használja az ugyanazon nyilvános IP-cím, szeretne létrehozni egy statikus nyilvános IP-cím. 
 
-Before you can implement static Public IPs in VMs, it is necessary to understand when you can use static Public IPs, and how they are used. Read the [IP addressing overview](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) to learn more about IP addressing in Azure.
+Statikus nyilvános IP-címek a virtuális gépek is alkalmazható, mielőtt fontos tudni, ha a statikus nyilvános IP-címeket, és megismerkedhet használatukkal. Olvassa el a [IP-címzés – áttekintés](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) további információt az IP-címzést, az Azure-ban.
 

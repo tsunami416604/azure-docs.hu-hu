@@ -1,8 +1,8 @@
 >[!NOTE]
-> You can leave comments on this page for feedback or through [Azure feedback](https://feedback.azure.com/forums/216843-virtual-machines) with #azerrormessage tag.
+> Ezen a lapon, a visszajelzés vagy a megjegyzések hagyhatja [Azure visszajelzés](https://feedback.azure.com/forums/216843-virtual-machines) #azerrormessage címkével.
 
-## <a name="error-response-format"></a>Error Response Format 
-Azure VMs use the following JSON format for error response:
+## <a name="error-response-format"></a>Hiba történt a válasz formátuma 
+Azure virtuális gépek hibaválaszba használja a következő JSON formátummal:
 
 ```json
 {
@@ -20,175 +20,175 @@ Azure VMs use the following JSON format for error response:
 }
 ```
 
-An error response always includes a status code and an error object. Each error object always contains an error code and a message. If the VM is created with a template, the error object also contains a details section that contains an inner level of error codes and message. Normally, the most inner level of error message is the root failure.
+Egy hiba történt egy válasz mindig tartalmazza a állapotkódot és hiba objektum. Minden egyes hiba objektum mindig tartalmazza a hibakódot és egy üzenetet. A virtuális Gépet a sablon jön létre, ha a hiba objektum is tartalmaz, amely egy belső szintű hibakódok és az üzenet tartalmaz egy részletes adatait tartalmazó részben. Általában a legtöbb belső hibaüzenet szintje a legfelső szintű sikertelen.
 
 
-## <a name="common-virtual-machine-management-errors"></a>Common virtual machine management errors
+## <a name="common-virtual-machine-management-errors"></a>Általános virtuális gép felügyeleti hibák
 
-This section lists the common error messages you may encounter when managing VMs:
+Ez a szakasz a leggyakoribb hibaüzenetek jelentkezhetnek, ha a virtuális gépek kezelése:
 
-|  Error Code  |  Error Message  |  
+|  Hibakód:  |  Hibaüzenet  |  
 |  :------| :-------------|  
-|  AcquireDiskLeaseFailed  |  Failed to acquire lease while creating disk '{0}' using blob with URI {1}. Blob is already in use.  |  
-|  AllocationFailed  |  Allocation failed. Please try reducing the VM size or number of VMs, retry later, or try deploying to a different Availability Set or different Azure location.  |  
-|  AllocationFailed  |  The VM allocation failed due to an internal error. Please retry later or try deploying to a different location.  |
-|  ArtifactNotFound  |  The VM extension with publisher '{0}' and type '{1}' could not be found in location '{2}'.  |
-|  ArtifactNotFound  |  Extension with publisher '{0}', type '{1}', and type handler version '{2}' could not be found in the extension repository.  |
-|  ArtifactVersionNotFound  |  No version found in the artifact repository that satisfies the requested version '{0}'.  |
-|  ArtifactVersionNotFound  |  No version found in the artifact repository that satisfies the requested version '{0}' for VM extension with publisher '{1}' and type '{2}'.  |
-|  AttachDiskWhileBeingDetached  |  Cannot attach data disk '{0}' to VM '{1}' because the disk is currently being detached. Please wait until the disk is completely detached and then try again.  |
-|  BadRequest  |  Aligned' Availability Sets are not yet supported in this region.  |
-|  BadRequest  |  Addition of a VM with managed disks to non-managed Availability Set or addition of a VM with blob based disks to managed Availability Set is not supported. Please create an Availability Set with 'managed' property set in order to add a VM with managed disks to it.  |
-|  BadRequest  |  Managed Disks are not supported in this region.  |
-|  BadRequest  |  Multiple VMExtensions per handler not supported for OS type '{0}'. VMExtension '{1}' with handler '{2}' already added or specified in input.  |
-|  BadRequest  |  Operation '{0}' is not supported on Resource '{1}' with managed disks.  |
-|  CertificateImproperlyFormatted  |  The secret's JSON representation retrieved from {0} has a data field which is not a properly formatted PFX file, or the password provided does not decode the PFX file correctly.  |
-|  CertificateImproperlyFormatted  |  The data retrieved from {0} is not deserializable into JSON.  |
-|  Conflict  |  Disk resizing is allowed only when creating a VM or when the VM is deallocated.  |
-|  ConflictingUserInput  |  Disk '{0}' cannot be attached as the disk is already owned by VM '{1}'.  |
-|  ConflictingUserInput  |  Source and destination resource groups are the same.  |
-|  ConflictingUserInput  |  Source and destination storage accounts for disk {0} are different.  |
-|  ContainerAlreadyOnLease  |  There is already a lease on the storage container holding the blob with URI {0}.  |
-|  CrossSubscriptionMoveWithKeyVaultResources  |  The Move resources request contains KeyVault resources which are referenced by one or more {0}s in the request. This is not supported currently in Cross subscription Move. Please check the error details for the KeyVault resource Ids.  |
-|  DiagnosticsOperationInternalError  |  An internal error occurred while processing diagnostics profile of VM {0}.  |
-|  DiskBlobAlreadyInUseByAnotherDisk  |  Blob {0} is already in use by another disk belonging to VM '{1}'. You can examine the blob metadata for the disk reference information.  |
-|  DiskBlobNotFound  |  Unable to find VHD blob with URI {0} for disk '{1}'.  |
-|  DiskBlobNotFound  |  Unable to find VHD blob with URI {0}.  |
-|  DiskEncryptionKeySecretMissingTags  |  {0} secret doesn't have the {1} tags. Please update the secret version, add the required tags and retry.  |
-|  DiskEncryptionKeySecretUnwrapFailed  |  Unwrap of secret {0} value using key {1} failed.  |
-|  DiskImageNotReady  |  Disk image {0} is in {1} state. Please retry when image is ready.  |
-|  DiskPreparationError  |  One or more errors occurred while preparing VM disks. See disk instance view for details.  |
-|  DiskProcessingError  |  Disk processing halted as the VM has other disks in failed disks.  |
-|  ImageBlobNotFound  |  Unable to find VHD blob with URI {0} for disk '{1}'.  |
-|  ImageBlobNotFound  |  Unable to find VHD blob with URI {0}.  |
-|  IncorrectDiskBlobType  |  Disk blobs can only be of type page blob. Blob {0} for disk '{1}' is of type block blob.  |
-|  IncorrectDiskBlobType  |  Disk blobs can only be of type page blob. Blob {0} is of type '{1}'.  |
-|  IncorrectImageBlobType  |  Disk blobs can only be of type page blob. Blob {0} for disk '{1}' is of type block blob.  |
-|  IncorrectImageBlobType  |  Disk blobs can only be of type page blob. Blob {0} is of type '{1}'.  |
-|  InternalOperationError  |  Could not resolve storage account {0}. Please ensure it was created through the Storage Resource Provider in the same location as the compute resource.  |
-|  InternalOperationError  |  {0} goal seeking tasks failed.  |
-|  InternalOperationError  |  Error occurred in validating the network profile of VM '{0}'.  |
-|  InvalidAccountType  |  The AccountType {0} is invalid.  |
-|  InvalidParameter  |  The value of parameter {0} is invalid.  |
-|  InvalidParameter  |  The Admin password specified is not allowed.  |
-|  InvalidParameter  |  "The supplied password must be between {0}-{1} characters long and must satisfy at least {2} of password complexity requirements from the following: <ol><li> Contains an uppercase character</li><li>Contains a lowercase character</li><li>Contains a numeric digit</li><li>Contains a special character.</li></ol>  |
-|  InvalidParameter  |  The Admin Username specified is not allowed.  |
-|  InvalidParameter  |  Cannot attach an existing OS disk if the VM is created from a platform or user image.  |
-|  InvalidParameter  |  Container name {0} is invalid. Container names must be 3-63 characters in length and may contain only lower-case alphanumeric characters and hyphen. Hyphen must be preceeded and followed by an alphanumeric character.  |
-|  InvalidParameter  |  Container name {0} in URL {1} is invalid. Container names must be 3-63 characters in length and may contain only lower-case alphanumeric characters and hyphen. Hyphen must be preceeded and followed by an alphanumeric character.  |
-|  InvalidParameter  |  The blob name in URL {0} contains a slash. This is presently not supported for disks.  |
-|  InvalidParameter  |  The URI {0} does not look to be correct blob URI.  |
-|  InvalidParameter  |  A disk named '{0}' already uses the same LUN: {1}.  |
-|  InvalidParameter  |  A disk named '{0}' already exists.  |
-|  InvalidParameter  |  Cannot specify user image overrides for a disk already defined in the specified image reference.  |
-|  InvalidParameter  |  A disk named '{0}' already uses the same VHD URL {1}.  |
-|  InvalidParameter  |  The specified fault domain count {0} must fall in the range {1} to {2}.  |
-|  InvalidParameter  |  The license type {0} is invalid. Valid license types are: Windows_Client or Windows_Server, case sensitive.  |
-|  InvalidParameter  |  Linux host name cannot exceed {0} characters in length or contain the following characters: {1}.  |
-|  InvalidParameter  |  Destination path for Ssh public keys is currently limited to its default value {0}  due to a known issue in Linux provisioning agent.  |
-|  InvalidParameter  |  A disk at LUN {0} already exists.  |
-|  InvalidParameter  |  Subscription {0} of the request must match the subscription {1} contained in the managed disk id.  |
-|  InvalidParameter  |  Custom data in OSProfile must be in Base64 encoding and with a maximum length of {0} characters.  |
-|  InvalidParameter  |  Blob name in URL {0} must end with '{1}' extension.  |
-|  InvalidParameter  |  {0}' is not a valid captured VHD blob name prefix. A valid prefix matches regex '{1}'.  |
-|  InvalidParameter  |  Certificates cannot be added to your VM if the VM agent is not provisioned.  |
-|  InvalidParameter  |  A disk at LUN {0} already exists.  |
-|  InvalidParameter  |  Unable to create the VM because the requested size {0} is not available in the cluster where the availability set is currently allocated. The available sizes are: {1}. Read more on VM resizing strategy at https://aka.ms/azure-resizevm.  |
-|  InvalidParameter  |  The requested VM size {0} is not available in the current region. The sizes available in the current region are: {1}. Find out more on the available VM sizes in each region at https://aka.ms/azure-regions.  |
-|  InvalidParameter  |  The requested VM size {0} is not available in the current region. Find out more on the available VM sizes in each region at https://aka.ms/azure-regions.  |
-|  InvalidParameter  |  Windows admin user name cannot be more than {0} characters long, end with a period(.), or contain the following characters: {1}.  |
-|  InvalidParameter  |  Windows computer name cannot be more than {0} characters long, be entirely numeric, or contain the following characters: {1}.  |
-|  MissingMoveDependentResources  |  The move resources request does not contain all the dependent resources. Please check error details for missing resource ids.  |
-|  MoveResourcesHaveInvalidState  |  The Move Resources request contains VMs which are associated with invalid storage accounts. Please check details for these resource ids and referenced storage account names.  |
-|  MoveResourcesHavePendingOperations  |  The move resources request contains resources for which an operation is pending. Please check details for these resource ids. Retry your operation once the pending operations complete.  |
-|  MoveResourcesNotFound  |  The move resources request contains resources that cannot be found. Please check details for these resource ids.  |
-|  NetworkingInternalOperationError  |  Unknown network allocation error.  |
-|  NetworkingInternalOperationError  |  Unknown network allocation error  |
-|  NetworkingInternalOperationError  |  An internal error occurred in processing network profile of the VM.  |
-|  NotFound  |  The Availability Set {0} cannot be found.  |
-|  NotFound  |  Source Virtual Machine '{0}' specified in the request does not exist in this Azure location.  |
-|  NotFound  |  Tenant with id {0} not found.  |
-|  NotFound  |  The Image {0} cannot be found.  |
-|  NotSupported  |  The license type is {0}, but the image blob {1} is not from on-premises.  |
-|  OperationNotAllowed  |  Availability Set {0} cannot be deleted. Before deleting an Availability Set please ensure that it does not contain any VM.  |
-|  OperationNotAllowed  |  Changing availability set SKU from 'Aligned' to 'Classic' is not allowed.  |
-|  OperationNotAllowed  |  Cannot modify extensions in the VM when the VM is not running.  |
-|  OperationNotAllowed  |  The Capture action is only supported on a Virtual Machine with blob based disks. Please use the 'Image' resource APIs to create an Image from a managed Virtual Machine.  |
-|  OperationNotAllowed  |  The resource {0} cannot be created from Image {1} until Image has been successfully created.  |
-|  OperationNotAllowed  |  Updates to encryptionSettings is not allowed when VM is allocated, Please retry after VM is deallocated  |
-|  OperationNotAllowed  |  Addition of a managed disk to a VM with blob based disks is not supported.  |
-|  OperationNotAllowed  |  The maximum number of data disks allowed to be attached to a VM of this size is {0}.  |
-|  OperationNotAllowed  |  Addition of a blob based disk to VM with managed disks is not supported.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on Image '{1}' since the Image is marked for deletion. You can only retry the Delete operation (or wait for an ongoing one to complete).  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on VM '{1}' since the VM is generalized.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed as Restore point collection '{1}' is marked for deletion.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on VM extension '{1}' since it is marked for deletion. You can only retry the Delete operation (or wait for an ongoing one to complete).  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed since the Virtual Machines '{1}' are being provisioned using the Image '{2}'.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed since the Virtual Machine ScaleSet '{1}' is currently using the Image '{2}'.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on VM '{1}' since the VM is marked for deletion. You can only retry the Delete operation (or wait for an ongoing one to complete).  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on VM '{1}' since the VM is either deallocated or marked to be deallocated.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on VM '{1}' since the VM is running. Please power off explicitly in case you shut down the VM from inside the guest operating system.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on VM '{1}' since the VM is not deallocated.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on VM '{1}' since VM has extension '{2}' in failed state.  |
-|  OperationNotAllowed  |  Operation '{0}' is not allowed on VM '{1}' since another operation is in progress.  |
-|  OperationNotAllowed  |  The operation '{0}' requires the Virtual Machine '{1}' to be Generalized.  |
-|  OperationNotAllowed  |  The operation requires the VM to be running (or set to run).  |
-|  OperationNotAllowed  |  Disk with size {0}GB, which is smaller than the size {1}GB of corresponding disk in Image, is not allowed.  |
-|  OperationNotAllowed  |  VM Scale Set extensions of handler '{0}' can be added only at the time of VM Scale Set creation.  |
-|  OperationNotAllowed  |  VM Scale Set extensions of handler '{0}' can be deleted only at the time of VM Scale Set deletion.  |
-|  OperationNotAllowed  |  VM '{0}' is already using managed disks.  |
-|  OperationNotAllowed  |  VM '{0}' belongs to 'Classic' availability set '{1}'. Please update the availability set to use 'Aligned' SKU and then retry the Conversion.  |
-|  OperationNotAllowed  |  VM created from Image cannot have blob based disks. All disks have to be managed disks.  |
-|  OperationNotAllowed  |  Capture operation cannot be completed because the VM is not generalized.  |
-|  OperationNotAllowed  |  Management operations on VM '{0}' are disallowed because VM disks are being converted to managed disks.  |
-|  OperationNotAllowed  |  An ongoing operation is changing power state of Virtual Machine {0} to {1}. Please perform operation {2} after some time.  |
-|  OperationNotAllowed  |  Unable to add or update the VM. The requested VM size {0} may not be available in the existing allocation unit. Read more on VM resizing strategy at https://aka.ms/azure-resizevm.  |
-|  OperationNotAllowed  |  Unable to resize the VM because the requested size {0} is not available in the cluster where the availability set is currently allocated. The available sizes are: {1}. Read more on VM resizing strategy at https://aka.ms/azure-resizevm.  |
-|  OperationNotAllowed  |  Unable to resize the VM because the requested size {0} is not available in the cluster where the VM is currently allocated. To resize your VM to {1} please deallocate (this is Stop operation in the Azure portal) and try the resize operation again. Read more on VM resizing strategy at https://aka.ms/azure-resizevm.  |
-|  OSProvisioningClientError  |  OS Provisioning failed for VM '{0}' because the guest OS is currently being provisioned.  |
-|  OSProvisioningClientError  |  OS provisioning for VM '{0}' failed. Error details: {1} Make sure the image has been properly prepared (generalized). <ul><li>Instructions for Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH host key generation failed. Error details: {0}. To resolve this issue verify if Linux agent is set up properly. <ul><li>You can check the instructions at : https://azure.microsoft.com/documentation/articles/virtual-machines-linux-agent-user-guide/ </li></ul> |
-|  OSProvisioningClientError  |  Username specified for the VM is invalid for this Linux distribution. Error details: {0}.  |
-|  OSProvisioningInternalError  |  OS Provisioning failed for VM '{0}' due to an internal error.  |
-|  OSProvisioningTimedOut  |  OS Provisioning for VM '{0}' did not finish in the allotted time. The VM may still finish provisioning successfully. Please check provisioning state later.  |
-|  OSProvisioningTimedOut  |  OS Provisioning for VM '{0}' did not finish in the allotted time. The VM may still finish provisioning successfully. Please check provisioning state later. Also, make sure the image has been properly prepared (generalized).   <ul><li>Instructions for Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instructions for Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OSProvisioningTimedOut  |  OS Provisioning for VM '{0}' did not finish in the allotted time. However, the VM guest agent was detected running. This suggests the guest OS has not been properly prepared to be used as a VM image (with CreateOption=FromImage). To resolve this issue, either use the VHD as is with CreateOption=Attach or prepare it properly for use as an image:   <ul><li>Instructions for Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instructions for Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OverConstrainedAllocationRequest  |  The required VM size is not currently available in the selected location.  |
-|  ResourceUpdateBlockedOnPlatformUpdate  |  Resource cannot be updated at this time due to ongoing platform update. Please try again later.  |
-|  StorageAccountLimitation  |  Storage account '{0}' does not support page blobs which are required to create disks.  |
-|  StorageAccountLimitation  |  Storage account '{0}' has exceeded its allocated quota.  |
-|  StorageAccountLocationMismatch  |  Could not resolve storage account {0}. Please ensure it was created through the Storage Resource Provider in the same location as the compute resource.  |
-|  StorageAccountNotFound  |  Storage account {0} not found. Ensure storage account is not deleted and belongs to the same Azure location as the VM.  |
-|  StorageAccountNotRecognized  |  Please use a storage account managed by Storage Resource Provider. Use of {0} is not supported.  |
-|  StorageAccountOperationInternalError  |  Internal error occurred while accessing storage account {0}.  |
-|  StorageAccountSubscriptionMismatch  |  Storage account {0} doesn't belong to subscription {1}.  |
-|  StorageAccountTooBusy  |  Storage account '{0}' is too busy currently. Consider using another account.  |
-|  StorageAccountTypeNotSupported  |  Disk {0} uses {1} which is a Blob storage account. Please retry with General purpose storage account.  |
-|  StorageAccountTypeNotSupported  |  Storage account {0} is of {1} type. Boot Diagnostics supports {2} storage account types.  |
-|  SubscriptionNotAuthorizedForImage  |  The subscription is not authorized.  |
-|  TargetDiskBlobAlreadyExists  |  Blob {0} already exists. Please provide a different blob URI to create a new blank data disk '{1}'.  |
-|  TargetDiskBlobAlreadyExists  |  Capture operation cannot continue because target image blob {0} already exists and the flag to overwrite VHD blobs is not set. Either delete the blob or set the flag to overwrite VHD blobs and retry.  |
-|  TargetDiskBlobAlreadyExists  |  Capture operation cannot continue because target image blob {0} has an active lease on it.   |
-|  TargetDiskBlobAlreadyExists  |  Blob {0} already exists. Please provide a different blob URI as target for disk '{1}'.  |
-|  TooManyVMRedeploymentRequests  |  Too many redeployment requests have been received for VM '{0}' or the VMs in the same availabilityset with this VM. Please retry later.  |
-|  VHDSizeInvalid  |  The specified disk size value of {0} for disk '{1}' with blob {2} is invalid. Disk size must be between {3} and {4}.  |
-|  VMAgentStatusCommunicationError  |  VM '{0}' has not reported status for VM agent or extensions. Please verify the VM has a running VM agent, and can establish outbound connections to Azure storage.  |
-|  VMArtifactRepositoryInternalError  |  An error occurred while communicating with the artifact repository to retrieve VM artifact details.  |
-|  VMArtifactRepositoryInternalError  |  An internal error occurred while retrieving the VM artifact data from the artifact repository.  |
-|  VMExtensionHandlerNonTransientError  |  Handler '{0}' has reported failure for VM Extension '{1}' with terminal error code '{2}' and error message: '{3}'  |
-|  VMExtensionManagementInternalError  |  Internal error occurred while processing VM extension '{0}'.  |
-|  VMExtensionManagementInternalError  |  Multiple errors occured while preparing the VM extensions. See VM extension instance view for details.  |
-|  VMExtensionProvisioningError  |  VM has reported a failure when processing extension '{0}'. Error message: "{1}".  |
-|  VMExtensionProvisioningError  |  Multiple VM extensions failed to be provisioned on the VM. Please see the VM extension instance view for details.  |
-|  VMExtensionProvisioningTimeout  |  Provisioning of VM extension '{0}' has timed out. Extension installation may be taking too long, or extension status could not be obtained.  |
-|  VMMarketplaceInvalidInput  |  Creating a virtual machine from a non Marketplace image does not need Plan information, please remove the Plan information in the request. OS disk name is {0}.  |
-|  VMMarketplaceInvalidInput  |  The purchase information does not match. Unable to deploy from the Marketplace image. OS disk name is {0}.  |
-|  VMMarketplaceInvalidInput  |  Creating a virtual machine from Marketplace image requires Plan information in the request. OS disk name is {0}.  |
-|  VMNotFound  |  The VM '{0}' cannot be found.  |
-|  VMRedeploymentFailed  |  VM '{0}' redeployment failed due to an internal error. Please retry later.  |
-|  VMRedeploymentTimedOut  |  Redeployment of VM '{0}' didn't finish in the allotted time. It might finish successfully in sometime. Else, you can retry the request.  |
-|  VMStartTimedOut  |  VM '{0}' did not start in the allotted time. The VM may still start successfully. Please check the power state later.  |
+|  AcquireDiskLeaseFailed  |  Nem sikerült bérleti jogot szerezni a(z) "{0}' URI {1} rendelkező blob használatával lemez létrehozásakor. A BLOB már használatban van.  |  
+|  AllocationFailed  |  A lefoglalás sikertelen. Próbálja meg csökkenteni a virtuális gép méretét vagy a virtuális gépek számát, próbálkozzon újra később, vagy próbálkozzon egy másik rendelkezésre állási csoportban vagy más Azure-beli hely telepítése.  |  
+|  AllocationFailed  |  A virtuális gép foglalása belső hiba miatt sikertelen. Próbálkozzon újra később, vagy próbálja üzembe helyezni a másik helyet.  |
+|  ArtifactNotFound  |  A Virtuálisgép-bővítmény a közzétevő "{0}" és a típus "{1}" nem "{2}" helyen található.  |
+|  ArtifactNotFound  |  A közzétevő "{0}", kiterjesztés írja be a "{1}", és típuskezelő verziója "{2}" nem található a bővítménytárban.  |
+|  ArtifactVersionNotFound  |  Nem található olyan verzió az összetevőtárban, amely megfelelne a kért verziónak ({0}).  |
+|  ArtifactVersionNotFound  |  Nincs verzió az összetevőtárban, amely eleget tesz a kért verzió: "{0}' Virtuálisgép-bővítmény a közzétevő"{1}", írja be a"{2}".  |
+|  AttachDiskWhileBeingDetached  |  Adatlemez a(z) "{0}" "{1}" virtuális gép nem csatolható, mert a lemez van jelenleg leválasztás alatt áll. Várjon, amíg a lemez leválasztása, és próbálkozzon újra.  |
+|  BadRequest  |  Illesztett "rendelkezésre állási készletek még nem támogatottak ebben a régióban.  |
+|  BadRequest  |  A virtuális gépek a rendelkezésre állási csoport nem felügyelt kezelt lemezek hozzáadása vagy a virtuális gép és a felügyelt rendelkezésre állási csoport blobalapú lemezek hozzáadása nem támogatott. Hozzon létre egy rendelkezésre állási csoport "kezelt" tulajdonsága felügyelt lemezzel rendelkező virtuális gép hozzá.  |
+|  BadRequest  |  Felügyelt lemezek nem támogatottak ebben a régióban.  |
+|  BadRequest  |  Kezelőnként több operációs rendszer nem támogatott írja be a "{0}". VMExtension "{1}" leírójú "{2}" már hozzáadott, vagy a megadott bemeneti adatok.  |
+|  BadRequest  |  "{0}" művelet nem támogatott az erőforrás "{1}" felügyelt lemezzel.  |
+|  CertificateImproperlyFormatted  |  A kulcshoz lekért JSON-megjelenítés (forrás: {0}) olyan adatmezővel rendelkezik, amely nem megfelelően formázott PFX-fájl, vagy a megadott jelszó nem dekódolja megfelelően a PFX-fájlt.  |
+|  CertificateImproperlyFormatted  |  A(z) {0} forrásból beolvasott adat nem deszerializálható JSON formátumba.  |
+|  Ütközés  |  A lemezek átméretezése csak virtuális gép létrehozásakor vagy felszabadított virtuális gép esetén engedélyezett.  |
+|  ConflictingUserInput  |  Lemez "{0}" nem lehet csatolni, mert a lemez már van tulajdonosa a virtuális gép "{1}".  |
+|  ConflictingUserInput  |  A forrásként és a célként megadott erőforráscsoport megegyezik.  |
+|  ConflictingUserInput  |  A(z) {0} forrás és cél tárfiókjai különbözők.  |
+|  ContainerAlreadyOnLease  |  Már vonatkozik bérleti jog a(z) {0} URI-vel rendelkező blobot tartalmazó tárolóra.  |
+|  CrossSubscriptionMoveWithKeyVaultResources  |  Az áthelyezési kérelem tartalmazza a Key Vault-erőforrásokat, amelyek egy vagy több {0} s a kérésben hivatkozott. Ez nem támogatott a jelenleg Áthelyezés az előfizetések közötti. Ellenőrizze a hiba részleteit a KeyVault erőforrás-azonosítók.  |
+|  DiagnosticsOperationInternalError  |  Belső hiba történt a(z) {0} virtuális gép diagnosztikai profiljának feldolgozása során.  |
+|  DiskBlobAlreadyInUseByAnotherDisk  |  A BLOB {0} már használja egy másik, "{1}" virtuális Géphez tartozó lemez által. Láthatja, hogy a lemez útmutatót a blob metaadatait.  |
+|  DiskBlobNotFound  |  Nem található a VHD-blob URI {0} lemez "{1}".  |
+|  DiskBlobNotFound  |  Nem található a VHD-blob URI-azonosítóhoz: {0}.  |
+|  DiskEncryptionKeySecretMissingTags  |  {0} titkos kulcs nem rendelkezik a {1} címkék. Frissítse a titkos, adja hozzá a szükséges címkéket, és próbálja meg újra.  |
+|  DiskEncryptionKeySecretUnwrapFailed  |  Való kibontása nem sikerült kulcs {1} használatával titkos {0} értéket.  |
+|  DiskImageNotReady  |  Lemez kép {0} {1} állapotban van. Próbálkozzon újra, amikor készen áll a lemezképet.  |
+|  DiskPreparationError  |  Egy vagy több hiba történt a Virtuálisgép-lemezek előkészítése során. Tekintse meg a lemez példányait tartalmazó nézetet.  |
+|  DiskProcessingError  |  Lemez feldolgozás leállt a virtuális gép levő többi lemezzel rendelkezik, a hibás lemezeket.  |
+|  ImageBlobNotFound  |  Nem található a VHD-blob URI {0} lemez "{1}".  |
+|  ImageBlobNotFound  |  Nem található a VHD-blob URI-azonosítóhoz: {0}.  |
+|  IncorrectDiskBlobType  |  Az oldalakra vonatkozó blob típusú lemezblobok csak lehet. Lemez "{1}" {0} BLOB blokkblob típusú paraméter.  |
+|  IncorrectDiskBlobType  |  Az oldalakra vonatkozó blob típusú lemezblobok csak lehet. A BLOB {0} paraméter típusa "{1}".  |
+|  IncorrectImageBlobType  |  Az oldalakra vonatkozó blob típusú lemezblobok csak lehet. Lemez "{1}" {0} BLOB blokkblob típusú paraméter.  |
+|  IncorrectImageBlobType  |  Az oldalakra vonatkozó blob típusú lemezblobok csak lehet. A BLOB {0} paraméter típusa "{1}".  |
+|  InternalOperationError  |  Nem sikerült feloldani a tárfiók {0}. Ellenőrizze, hogy a számítási erőforrással azonos helyen a tárolási erőforrás-szolgáltató használatával hozták létre.  |
+|  InternalOperationError  |  {0} célkeresési feladat sikertelen volt.  |
+|  InternalOperationError  |  Hiba történt a(z) {0} virtuális gép hálózati profiljának érvényesítése során.  |
+|  InvalidAccountType  |  A AccountType {0} érvénytelen.  |
+|  InvalidParameter  |  A(z) {0} paraméter értéke érvénytelen.  |
+|  InvalidParameter  |  A megadott Rendszergazdai jelszó nem engedélyezett.  |
+|  InvalidParameter  |  "A megadott jelszónak kell lennie a(z) {0} közötti-\ {1\} karakterből állnak, és meg kell felelnie a legalább {2} összetettségi követelménynek a következő: <ol><li> Nagybetűs karaktert tartalmaz</li><li>A kisbetűs karaktert tartalmaz</li><li>Egy numerikus számjegyet tartalmaz</li><li>Speciális karaktert tartalmaz.</li></ol>  |
+|  InvalidParameter  |  A megadott Rendszergazdai felhasználónév nem engedélyezett.  |
+|  InvalidParameter  |  Ha a virtuális gépet platform vagy felhasználói rendszerkép alapján hozza létre, nem csatolhat hozzá meglévő operációsrendszer-lemezt.  |
+|  InvalidParameter  |  Érvénytelen a tároló neve {0}. A tároló neve 3 – 63 karakter hosszúságúnak kell lennie, és csak kisbetűs alfanumerikus karaktereket és kötőjelet tartalmazhat. Kötőjel előtt és után alfanumerikus karakternek.  |
+|  InvalidParameter  |  Tároló neve {0} {1} URL-cím érvénytelen. A tároló neve 3 – 63 karakter hosszúságúnak kell lennie, és csak kisbetűs alfanumerikus karaktereket és kötőjelet tartalmazhat. Kötőjel előtt és után alfanumerikus karakternek.  |
+|  InvalidParameter  |  A blob nevének az URL-cím {0} perjelet tartalmaz. Ez jelenleg nem támogatott a lemezeket.  |
+|  InvalidParameter  |  A(z) {0} URI nem tűnik megfelelő blob URI-nek.  |
+|  InvalidParameter  |  A lemez "{0}" nevű már használja ugyanezt a LUN: {1}.  |
+|  InvalidParameter  |  A lemez "{0}" nevű már létezik.  |
+|  InvalidParameter  |  A megadott lemezkép-hivatkozásban már definiált lemezek nem bírálhatók felül felhasználói lemezképekkel.  |
+|  InvalidParameter  |  A "{0}" nevű már lemez ugyanahhoz a virtuális merevlemez URL-cím {1} használ.  |
+|  InvalidParameter  |  A megadott tartalék tartományt száma {0} való {2} a tartomány {1} kell lennie.  |
+|  InvalidParameter  |  A licenc típusa {0} érvénytelen. Érvényes licenctípusok a következők: Windows_Client vagy Windows_Server, és a nagybetűk között.  |
+|  InvalidParameter  |  Linux-gazdagépnév nem lehet {0} karakternél hosszabb és nem tartalmazhatja a következő karaktereket: {1}.  |
+|  InvalidParameter  |  A Linux-telepítőügynök ismert hibája miatt az SSH nyilvános kulcsok célja jelenleg csak az alapértelmezett elérési út ({0}) lehet.  |
+|  InvalidParameter  |  Már létezik lemez a(z) {0} LUN-értékkel.  |
+|  InvalidParameter  |  A kérelem előfizetés {0} meg kell egyeznie az előfizetés {1} a felügyelt lemezazonosítóban szereplő.  |
+|  InvalidParameter  |  Az operációsrendszer-profilban (OSProfile) szereplő egyéni adatoknak a Base64 kódolást kell követniük, és legfeljebb {0} karakteresek lehetnek.  |
+|  InvalidParameter  |  Az URL-cím {0} BLOB neve "{1}" kiterjesztést kell végződnie.  |
+|  InvalidParameter  |  {0} "értéke nem egy érvényes rögzített VHD blob előtagja. Egy érvényes előtagnak meg regex "{1}".  |
+|  InvalidParameter  |  Nem vehetők fel tanúsítványok a virtuális gépre, ha a virtuálisgép-ügynök nincs telepítve.  |
+|  InvalidParameter  |  Már létezik lemez a(z) {0} LUN-értékkel.  |
+|  InvalidParameter  |  Nem sikerült létrehozni a virtuális Gépet, mert a kért méret {0} nem érhető el a fürt, ahol a rendelkezésre állási csoport jelenleg lefoglalt. Az elérhető értékek: {1}. Olvassa el a következő https://aka.ms/azure-resizevm stratégia átméretezése további a virtuális gép.  |
+|  InvalidParameter  |  A kért VM mérete {0} nem érhető el az aktuális régióban. A jelenlegi régióban elérhető méret: {1}. További információkért a rendelkezésre álló Virtuálisgép-méretek a következő https://aka.ms/azure-regions minden régióban.  |
+|  InvalidParameter  |  A kért VM mérete {0} nem érhető el az aktuális régióban. További információkért a rendelkezésre álló Virtuálisgép-méretek a következő https://aka.ms/azure-regions minden régióban.  |
+|  InvalidParameter  |  Windows Rendszergazda felhasználóneve nem lehet több mint {0} karakter hosszú, végződhet ponttal (.), vagy tartalmazhatja a következő karaktereket: {1}.  |
+|  InvalidParameter  |  Windows-számítógép neve nem lehet több mint {0} karakter hosszú, nem állhat csak számokból, vagy tartalmazhatja a következő karaktereket: {1}.  |
+|  MissingMoveDependentResources  |  Az áthelyezési kérelem nem tartalmaz a tőle függő összes erőforrásról. Ellenőrizze a hiba részleteit a hiányzó erőforrás-azonosítók.  |
+|  MoveResourcesHaveInvalidState  |  Az áthelyezési kérelem tartalmazza a virtuális gépek, amely érvénytelen storage-fiókok kapcsolódik. A részletekben ezen erőforrás-azonosítók és a hivatkozott tárfiókok neve.  |
+|  MoveResourcesHavePendingOperations  |  Az áthelyezési kérelem tartalmazza az erőforrásokat, amelyhez egy művelet folyamatban. Részletekben ezen erőforrás-azonosítók. Próbálja megismételni a műveletet, a függőben lévő műveletek befejeződése után.  |
+|  MoveResourcesNotFound  |  Az áthelyezési kérelem olyan erőforrásokat tartalmaz, nem található. Részletekben ezen erőforrás-azonosítók.  |
+|  NetworkingInternalOperationError  |  Ismeretlen hálózatfoglalási hiba.  |
+|  NetworkingInternalOperationError  |  Ismeretlen hálózatfoglalási hiba  |
+|  NetworkingInternalOperationError  |  Belső hiba történt a virtuális gép hálózati profiljának feldolgozása során.  |
+|  notFound  |  A(z) {0} rendelkezésre állási csoport nem található.  |
+|  notFound  |  Az Azure ezen a helyen nem létezik a forrás virtuális gép a kérelemben megadott "{0}".  |
+|  notFound  |  Nem található {0} azonosítóval rendelkező bérlő.  |
+|  notFound  |  A(z) {0} lemezkép nem található.  |
+|  NotSupported  |  A licenc típusa {0}, de a lemezkép blob {1} nem helyszíni.  |
+|  OperationNotAllowed  |  Rendelkezésre állási készlet {0} nem lehet törölni. Rendelkezésre állási csoport törlése előtt győződjön meg arról, hogy a virtuális gép nem tartalmaz.  |
+|  OperationNotAllowed  |  A rendelkezésre állási csoport "Klasszikus" a "Igazított" Termékváltozat nem módosítható.  |
+|  OperationNotAllowed  |  A virtuális gép bővítményei nem módosíthatók, ha a virtuális gép nem fut.  |
+|  OperationNotAllowed  |  A rögzítési művelet csak egy virtuális gépen a blobalapú lemezek támogatott. Egy felügyelt virtuális gépről a képfájl létrehozásához használja a "Kép" erőforrás API-k.  |
+|  OperationNotAllowed  |  A erőforrás {0} nem hozható létre kép {1} alapján, amíg a kép létrehozása sikeresen befejeződött.  |
+|  OperationNotAllowed  |  Az encryptionSettings elem frissítése nem engedélyezett, ha a virtuális gép le van foglalva. Próbálkozzon újra a virtuális gép felszabadítása után  |
+|  OperationNotAllowed  |  A felügyelt lemezek egy blobalapú lemezekkel rendelkező virtuális géphez való hozzáadása nem támogatott.  |
+|  OperationNotAllowed  |  Az adatlemezek ekkora egy virtuális géphez csatolása engedélyezett maximális számának a(z) {0}.  |
+|  OperationNotAllowed  |  A blobalapú lemezek egy felügyelt lemezekkel rendelkező virtuális géphez való hozzáadása nem támogatott.  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a lemezkép "{1}", mert a kép be van jelölve törlésre. Csak próbálkozhat a törlési művelet (vagy várjon, amíg a folyamatban lévő egyikét végrehajtásához).  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a virtuális gép "{1}", mert a virtuális gép általánosítva van.  |
+|  OperationNotAllowed  |  "{0}" művelet nem lehetséges, mert a törlésre megjelölt visszaállítási pont gyűjtemény "{1}".  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a Virtuálisgép-bővítmény "{1}", mert meg van jelölve törlésre. Csak próbálkozhat a törlési művelet (vagy várjon, amíg a folyamatban lévő egyikét végrehajtásához).  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett, mert a virtuális gépek "{1}" alatt törlődnek a lemezkép "{2}".  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett, mert a virtuális gép ScaleSet "{1}" jelenleg használ a kép "{2}".  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a virtuális gép "{1}", mert a virtuális gép ki van jelölve törlésre. Csak próbálkozhat a törlési művelet (vagy várjon, amíg a folyamatban lévő egyikét végrehajtásához).  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a virtuális gép "{1}", mert a virtuális gép van szabadítva, vagy meg van jelölve felszabadításra.  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a virtuális gép "{1}", mert a virtuális gép fut-e. Kérjük, energiagazdálkodási ki explicit módon abban az esetben, ha leállítja a virtuális gép vendég operációs rendszerében.  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a virtuális gép "{1}", mert a virtuális gép nem felszabadítása.  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a virtuális gép "{1}", mert a virtuális gép kiterjesztése "{2}" hibaállapotban van.  |
+|  OperationNotAllowed  |  "{0}" művelet nem engedélyezett a virtuális gép "{1}", mert egy másik művelet van folyamatban.  |
+|  OperationNotAllowed  |  A(z) "{0}" művelethez a virtuális gép "{1}" általánosítva.  |
+|  OperationNotAllowed  |  A művelethez a virtuális gépnek futnia kell (vagy be kell lennie állítva futásra).  |
+|  OperationNotAllowed  |  Lemez méretével, {0} GB, amely kisebb, mint {1}GB megfelelő lemez a lemezkép nem engedélyezett.  |
+|  OperationNotAllowed  |  A(z) {0} kezelőhöz tartozó virtuális gépek méretezési csoportjának bővítményei a virtuális gépek méretezési csoportjának létrehozásakor adhatók hozzá.  |
+|  OperationNotAllowed  |  A(z) {0} kezelőhöz tartozó virtuális gépek méretezési csoportjának bővítményei a virtuális gépek méretezési csoportjának törlésekor törölhetők.  |
+|  OperationNotAllowed  |  Virtuális gép "{0}" felügyelt lemezek már használja.  |
+|  OperationNotAllowed  |  Virtuális gép "{0}" "Klasszikus" rendelkezésre állási készlet "{1}" tartozik. Frissítse a rendelkezésre állási csoportot használja a "Igazított" SKU, majd próbálkozzon újra az átalakításhoz.  |
+|  OperationNotAllowed  |  VM-lemezkép alapján létre blobalapú lemezek nem rendelkezhet. Az összes lemez kell felügyelt lemezek.  |
+|  OperationNotAllowed  |  A rögzítési művelet nem hajtható végre, mert a virtuális gép nincs általánosítva.  |
+|  OperationNotAllowed  |  Felügyeleti műveletek a virtuális gép "{0}", mert a virtuális gépek lemezei felügyelt lemezek konvertálása nem engedélyezettek.  |
+|  OperationNotAllowed  |  A folyamatban lévő művelet van módosítása a virtuális gép: {0} energiaállapot {1}. Hajtson végre műveletet {2} egy kis idő múlva.  |
+|  OperationNotAllowed  |  Nem lehet hozzáadni, vagy frissítse a virtuális Gépet. A kért VM mérete {0} nem a meglévő foglalási egység érhetők el. Olvassa el a következő https://aka.ms/azure-resizevm stratégia átméretezése további a virtuális gép.  |
+|  OperationNotAllowed  |  Nem sikerült átméretezni a virtuális Gépet, mert a kért méret {0} nem érhető el a fürt, ahol a rendelkezésre állási csoport jelenleg lefoglalt. Az elérhető értékek: {1}. Olvassa el a következő https://aka.ms/azure-resizevm stratégia átméretezése további a virtuális gép.  |
+|  OperationNotAllowed  |  Nem sikerült átméretezni a virtuális gép, mert a kért méret {0} nem érhető el a fürt, ahol a virtuális gép jelenleg lefoglalt. Átméretezni a virtuális Gépet {1} adjon felszabadítani (Ez a Stop műveletet az Azure portálon), és próbálkozzon újra az átméretezés. Olvassa el a következő https://aka.ms/azure-resizevm stratégia átméretezése további a virtuális gép.  |
+|  OSProvisioningClientError  |  Sikertelen volt az operációs rendszer telepítése a(z) {0} virtuális gépen, mert jelenleg folyamatban van a vendég operációs rendszer telepítése.  |
+|  OSProvisioningClientError  |  Nem sikerült az operációs rendszer üzembe helyezni a virtuális gép "{0}". Hiba legutolsó részletes adatai: {1} győződjön meg arról, hogy a lemezkép megfelelően elő van készítve (általánosítva van). <ul><li>Windows vonatkozó utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  SSH állomás kulcs létrehozása sikertelen volt. Hiba részletei: {0}. Oldja meg a probléma ellenőrizze Ha Linux-ügynök megfelelően van-e beállítva. <ul><li>Ellenőrizheti a következő utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-agent-user-guide/ </li></ul> |
+|  OSProvisioningClientError  |  A virtuális géphez megadott felhasználónévnek a Linux-disztribúció érvénytelen. Hiba részletei: {0}.  |
+|  OSProvisioningInternalError  |  Belső hiba miatt sikertelen volt az operációs rendszer telepítése a(z) {0} virtuális gépen.  |
+|  OSProvisioningTimedOut  |  A virtuális gép "{0}" operációs rendszer telepítése nem fejeződött be a megadott időn belül. A virtuális gép továbbra is lehetséges, hogy befejezése sikeres. Ellenőrizze később a telepítés állapotát.  |
+|  OSProvisioningTimedOut  |  A virtuális gép "{0}" operációs rendszer telepítése nem fejeződött be a megadott időn belül. A virtuális gép továbbra is lehetséges, hogy befejezése sikeres. Ellenőrizze később a telepítés állapotát. Bizonyosodjon meg arról, hogy a lemezkép megfelelően elő van készítve (általánosítva van).   <ul><li>Windows vonatkozó utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Útmutatás Linux rendszerhez: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  A virtuális gép "{0}" operációs rendszer telepítése nem fejeződött be a megadott időn belül. Azonban a virtuális gép vendégügynökének futtató volt észlelhető. Ez azt sugallja, a vendég operációs rendszer nem lett megfelelően előkészített Virtuálisgép-lemezképet használ (az CreateOption = FromImage). A probléma megoldásához, vagy használja a virtuális Merevlemezt, mert CreateOption a csatolás = vagy képként használatra megfelelően előkészítése:   <ul><li>Windows vonatkozó utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Útmutatás Linux rendszerhez: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OverConstrainedAllocationRequest  |  A virtuális gép előírt mérete jelenleg nem érhető el a kijelölt helyszínen.  |
+|  ResourceUpdateBlockedOnPlatformUpdate  |  Erőforrás nem frissíthető, mert a platform folyamatban lévő frissítés. Később próbálja meg újra.  |
+|  StorageAccountLimitation  |  A(z) {0} tárfiók nem támogatja a lapblobokat, amelyek azonban szükségesek a lemezek létrehozásához.  |
+|  StorageAccountLimitation  |  A(z) {0} tárfiók túllépte a számára lefoglalt kvótát.  |
+|  StorageAccountLocationMismatch  |  Nem sikerült feloldani a tárfiók {0}. Ellenőrizze, hogy a számítási erőforrással azonos helyen a tárolási erőforrás-szolgáltató használatával hozták létre.  |
+|  StorageAccountNotFound  |  Tárolási fiók {0} nem található. Győződjön meg arról, a tárfiók nem törlődik, és a virtuális Gépet a azonos Azure-beli helyhez tartozik.  |
+|  StorageAccountNotRecognized  |  A szolgáltató által kezelt tárfiókot használja. : {0} használata nem támogatott.  |
+|  StorageAccountOperationInternalError  |  A(z) {0} tárfiók elérése során hiba történt.  |
+|  StorageAccountSubscriptionMismatch  |  Tárolási fiók {0} előfizetés {1} nem tartozik.  |
+|  StorageAccountTooBusy  |  "{0}" tárfiók jelenleg túlságosan elfoglalt. Érdemes lehet egy másik fiókot.  |
+|  StorageAccountTypeNotSupported  |  Lemez {0} {1}, amely egy Blob storage-fiókot használ. Próbálja meg újra egy általános célú tárfiókkal.  |
+|  StorageAccountTypeNotSupported  |  Tárolási fiók {0} {1} típusa nem. Rendszerindítási diagnosztika {2} tárfióktípusokat támogatja.  |
+|  SubscriptionNotAuthorizedForImage  |  Az előfizetés nem rendelkezik megfelelő jogosultsággal.  |
+|  TargetDiskBlobAlreadyExists  |  A BLOB {0} már létezik. Adjon meg egy másik blob URI-t hozzon létre egy új üres adatok lemez "{1}".  |
+|  TargetDiskBlobAlreadyExists  |  Rögzítési művelet nem folytatható, mert a cél lemezképet blob {0} már létezik, és a VHD-blobok felülírására vonatkozó jelölő nincs beállítva. A blob törölje vagy állítsa be a jelzőt, amely a VHD-blobok felülírására, és próbálkozzon újra.  |
+|  TargetDiskBlobAlreadyExists  |  A rögzítési művelet nem folytatódhat, mert a cél lemezképblobra ({0}) egy aktív bérleti jog vonatkozik.   |
+|  TargetDiskBlobAlreadyExists  |  A BLOB {0} már létezik. Adjon meg egy másik blob URI célként lemez "{1}".  |
+|  TooManyVMRedeploymentRequests  |  Túl sok újbóli üzembe helyezése kérést kapott a virtuális gép "{0}" vagy a virtuális gépek azonos availabilityset rendelkező virtuális Gépet. Próbálkozzon újra később.  |
+|  VHDSizeInvalid  |  A megadott lemez méret: {0} lemez a blob {2} "{1}" értéke érvénytelen. Lemez méretének {3}, {4} és között kell lennie.  |
+|  VMAgentStatusCommunicationError  |  Virtuális gép ({0}) nem küldött állapotjelentést a Virtuálisgép-ügynök vagy a bővítmények. Ellenőrizze, hogy a virtuális gép futó Virtuálisgép-ügynök, és az Azure storage kimenő kapcsolatok hozhatnak létre.  |
+|  VMArtifactRepositoryInternalError  |  Hiba történt az összetevőtárral folytatott kommunikáció során, amely a virtuális gép összetevőadatainak lekérésére irányult.  |
+|  VMArtifactRepositoryInternalError  |  Belső hiba történt a virtuális gép összetevőadatainak az összetevőtárból való lekérésére során.  |
+|  VMExtensionHandlerNonTransientError  |  Eseménykezelő "{0}" kapcsolatos hibát jelzett Virtuálisgép-bővítmény "{1}" Terminálszolgáltatások hiba kód "{2}" és a hibaüzenet: "{3}"  |
+|  VMExtensionManagementInternalError  |  Belső hiba történt a(z) {0} virtuálisgép-bővítmény feldolgozása során.  |
+|  VMExtensionManagementInternalError  |  A Virtuálisgép-bővítmények előkészítése során több hiba történt. Tekintse meg a virtuális gép bővítmény példányait tartalmazó nézetet.  |
+|  VMExtensionProvisioningError  |  Virtuális gép hibát jelzett a(z) "{0}' bővítmény feldolgozása során. Hibaüzenet: "{1}".  |
+|  VMExtensionProvisioningError  |  Több Virtuálisgép-bővítmény telepítése sikertelen volt a virtuális Gépen. Tekintse meg a virtuális gép bővítmény példányait tartalmazó nézetet.  |
+|  VMExtensionProvisioningTimeout  |  A(z) "{0}' Virtuálisgép-bővítmény telepítése túllépte az időkorlátot. Bővítmény telepítése előfordulhat, hogy túl sokáig tart, vagy a bővítmény állapota nem határozható meg.  |
+|  VMMarketplaceInvalidInput  |  A virtuális gép létrehozása egy nem Piactéri rendszerképből nem kell tervezze meg információkat, távolítsa el a terv adatai a kérelemben. Az operációs rendszer lemezének neve a következő: {0}.  |
+|  VMMarketplaceInvalidInput  |  A vásárlási információk nem egyezik. Nem lehet üzembe helyezést végezni a Piactéri lemezképhez. Az operációs rendszer lemezének neve a következő: {0}.  |
+|  VMMarketplaceInvalidInput  |  Terv adatainak a kérelem egy virtuális gép létrehozásához a Piactéri lemezképből van szükség. Az operációs rendszer lemezének neve a következő: {0}.  |
+|  VMNotFound  |  Nem található a virtuális gép "{0}".  |
+|  VMRedeploymentFailed  |  Virtuális gép a(z) "{0}' újbóli üzembe helyezése belső hiba miatt sikertelen. Próbálkozzon újra később.  |
+|  VMRedeploymentTimedOut  |  Virtuális gép a(z) "{0}' újbóli üzembe helyezése nem fejeződött be a megadott időn belül. Akkor lehet, hogy a Befejezés sikeresen egy kis ideig. Más esetben újra a kérelmet.  |
+|  VMStartTimedOut  |  Virtuális gép "{0}" nem indult el a megadott időn belül. A virtuális gép továbbra is kezdheti el sikeresen. Az áramellátási állapot később próbálja meg.  |
 
 
-## <a name="next-steps"></a>Next steps
-If you need more help, you can contact the Azure experts on [the MSDN Azure and Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.
+## <a name="next-steps"></a>Következő lépések
+Ha további segítségre van szüksége, forduljon az Azure-szakértők a [az MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatja az beszerzése**.

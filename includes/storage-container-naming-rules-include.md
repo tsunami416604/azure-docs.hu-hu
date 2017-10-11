@@ -15,8 +15,3 @@ A tároló nevének egy érvényes DNS-névnek kell lennie, amely megfelel az al
 > 
 > 
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

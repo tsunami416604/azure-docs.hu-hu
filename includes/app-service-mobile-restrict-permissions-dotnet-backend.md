@@ -1,20 +1,20 @@
 
-By default, APIs in a Mobile Apps back end can be invoked anonymously. Next, you need to restrict access to only authenticated clients.  
+Alapértelmezés szerint a API-k a Mobile Apps háttérből névtelenül meghívható. Ezt követően kell csak hitelesített ügyfelek korlátozza a hozzáférést.  
 
-* **Node.js back end (via the Azure portal)** :  
+* **NODE.js vissza (az Azure portálon) end** :  
 
-    In your Mobile Apps settings, click **Easy Tables** and select your table. Click **Change permissions**, select **Authenticated access only** for all permissions, and then click **Save**.
-* **.NET back end (C#)**:  
+    A Mobile Apps beállításaiban kattintson **könnyen táblák** és ki kell jelölnie a táblázatot. Kattintson a **engedélyeinek módosítása**, jelölje be **hitelesített hozzáférés csak** összes engedélyeket, és kattintson a **mentése**.
+* **Háttér .NET (C#)**:  
 
-    In the server project, navigate to **Controllers** > **TodoItemController.cs**. Add the `[Authorize]` attribute to the **TodoItemController** class, as follows. To restrict access only to specific methods, you can also apply this attribute just to those methods instead of the class. Republish the server project.
+    A projekt, lépjen a **tartományvezérlők** > **TodoItemController.cs**. Adja hozzá a `[Authorize]` attribútumot a **TodoItemController** osztály, az alábbiak szerint. Csak a megadott metódusok való hozzáférés korlátozása, is alkalmazhat Ez az attribútum csak azokat a módszereket az osztály helyett. A projekt közzé.
 
         [Authorize]
         public class TodoItemController : TableController<TodoItem>
 
-* **Node.js backend (via Node.js code)** :  
+* **NODE.js-háttéralkalmazáshoz (Node.js-kódot) keresztül** :  
 
-    To require authentication for table access, add the following line to the Node.js server script:
+    A tábla hozzáféréshez hitelesítés szükséges, vegye fel a következő sort a Node.js server-parancsfájlt:
 
         table.access = 'authenticated';
 
-    For more details, see [How to: Require authentication for access to tables](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). To learn how to download the quickstart code project from your site, see [How to: Download the Node.js backend quickstart code project using Git](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart).
+    További részletekért lásd: [Útmutató: hitelesítés megkövetelése a hozzáféréshez táblákra](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). A kód gyorsútmutató-projekt letöltése a hely további tudnivalókért lásd: [hogyan: Töltse le a Node.js háttérrendszer gyors üzembe helyezés kód projekt Git használatával](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart).

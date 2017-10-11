@@ -1,6 +1,6 @@
-## <a name="displaying-the-azure-explorer-tool-window"></a>Displaying the Azure Explorer Tool Window
+## <a name="displaying-the-azure-explorer-tool-window"></a>Az Azure eszköz ablak megjelenítése
 
-If the **Azure Explorer** tool window is not visible in IntelliJ, click **View**, then click **Tool Windows**, and then click **Azure Explorer**.
+Ha a **Azure Explorer** eszköz ablak nem látható az intellij-t, kattintson a **nézet**, majd kattintson a **eszköz Windows**, és kattintson a **Azure Explorer**.
 
-![Show Azure Explorer Tool Window](./media/azure-toolkit-for-intellij-show-azure-explorer/show-az-exp-01.png)
+![Az Azure Explorer eszköz ablak megjelenítése](./media/azure-toolkit-for-intellij-show-azure-explorer/show-az-exp-01.png)
 

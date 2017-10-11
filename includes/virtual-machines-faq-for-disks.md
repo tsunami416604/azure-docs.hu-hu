@@ -1,222 +1,222 @@
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Frequently asked questions about Azure IaaS VM disks and managed and unmanaged premium disks
+# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gép és a kezelt és kezeletlen premium lemezek kapcsolatos gyakori kérdések
 
-This article answers some frequently asked questions about Azure Managed Disks and Azure Premium Storage.
+Ebben a cikkben megválaszolunk néhány Azure felügyelt lemezek és a prémium szintű Azure Storage kapcsolatos gyakori kérdésekre.
 
 ## <a name="managed-disks"></a>Managed Disks
 
-**What is Azure Managed Disks?**
+**Mi az Azure Managed lemezek?**
 
-Managed Disks is a feature that simplifies disk management for Azure IaaS VMs by handling storage account management for you. For more information, see the [Managed Disks overview](../articles/virtual-machines/windows/managed-disks-overview.md).
+Felügyelt lemezek olyan szolgáltatás, amely egyszerűbbé teszi a Lemezkezelés Azure IaaS virtuális gépek kezelése a tárolási fiók kezelése az Ön által. További információkért lásd: a [felügyelt lemezekhez – áttekintés](../articles/virtual-machines/windows/managed-disks-overview.md).
 
-**If I create a standard managed disk from an existing VHD that's 80 GB, how much will that cost me?**
+**Ha egy standard szintű felügyelt lemezes I készíteni egy meglévő VHD-t, amely 80 GB, mennyi lesz, amely költségeket, me?**
 
-A standard managed disk created from an 80-GB VHD is treated as the next available standard disk size, which is an S10 disk. You're charged according to the S10 disk pricing. For more information, see the [pricing page](https://azure.microsoft.com/pricing/details/storage).
+80 GB-os virtuális merevlemezről létrehozott egy standard szintű felügyelt lemezes a rendszer a következő elérhető standard méretű lemez méretet, amelyet egy S10 lemez. Most a S10 lemez díjszabás alapján számítjuk fel. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/storage) olvasható.
 
-**Are there any transaction costs for standard managed disks?**
+**Vannak-e a standard szintű felügyelt lemez tranzakciós költségeket?**
 
-Yes. You're charged for each transaction. For more information, see the [pricing page](https://azure.microsoft.com/pricing/details/storage).
+Igen. Minden tranzakció még fizetnie. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/storage) olvasható.
 
-**For a standard managed disk, will I be charged for the actual size of the data on the disk or for the provisioned capacity of the disk?**
+**Az egy standard szintű felügyelt lemezes I megterheljük a lemezen lévő adatok tényleges mérete, vagy a lemez kiosztott kapacitást?**
 
-You're charged based on the provisioned capacity of the disk. For more information, see the [pricing page](https://azure.microsoft.com/pricing/details/storage).
+A lemez kiosztott kapacitást alapján még fel. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/storage) olvasható.
 
-**How is pricing of premium managed disks different from unmanaged disks?**
+**Hogyan azonos a nem felügyelt lemezek felügyelt premium lemezek árképzési?**
 
-The pricing of premium managed disks is the same as unmanaged premium disks.
+A felügyelt premium lemezek árképzési megegyezik a nem felügyelt premium lemezek.
 
-**Can I change the storage account type (Standard or Premium) of my managed disks?**
+**A tárfiók típusa (Standard vagy prémium) a kezelt lemezek is megváltozik?**
 
-Yes. You can change the storage account type of your managed disks by using the Azure portal, PowerShell, or the Azure CLI.
+Igen. Az Azure-portálon, a PowerShell vagy az Azure parancssori felület használatával módosíthatja a tárfiók típusa a felügyelt lemezek.
 
-**Is there a way that I can copy or export a managed disk to a private storage account?**
+**Van mód, hogy lehet másolni, vagy egy felügyelt lemezes exportálása a titkos storage-fiók?**
 
-Yes. You can export your managed disks by using the Azure portal, PowerShell, or the Azure CLI.
+Igen. A felügyelt lemezek exportálhatja az Azure-portálon, a PowerShell vagy az Azure parancssori felület használatával.
 
-**Can I use a VHD file in an Azure storage account to create a managed disk with a different subscription?**
+**Az Azure-tárfiók VHD-fájl használatával hozzon létre egy felügyelt lemezes egy másik előfizetést?**
 
-No.
+Nem.
 
-**Can I use a VHD file in an Azure storage account to create a managed disk in a different region?**
+**Az Azure-tárfiók VHD-fájl használatával hozzon létre egy felügyelt lemezes egy másik régióban?**
 
-No.
+Nem.
 
-**Are there any scale limitations for customers that use managed disks?**
+**Vannak-e a felügyelt lemezeket használó ügyfelek skálázási korlátozások?**
 
-Managed Disks eliminates the limits associated with storage accounts. However, the number of managed disks per subscription is limited to 2,000 by default. You can call support to increase this number.
+Kezelt lemezek megszünteti a társított tárfiókok korlátok. Azonban a előfizetésenként felügyelt lemezek számát korlátozódik 2000 alapértelmezés szerint. Ezt a számot növelheti a támogatási hívása.
 
-**Can I take an incremental snapshot of a managed disk?**
+**Eltarthat egy kezelt lemez növekményes pillanatképet?**
 
-No. The current snapshot capability makes a full copy of a managed disk. However, we are planning to support incremental snapshots in the future.
+Nem. Az aktuális pillanatkép-készítés révén felügyelt lemezes teljes másolata. Azonban azt tervezi, hogy a jövőben támogatja a növekményes pillanatképek.
 
-**Can VMs in an availability set consist of a combination of managed and unmanaged disks?**
+**Virtuális gépek rendelkezésre állási csoport által felügyelt és nem kezelt lemezek kombinációja állhat?**
 
-No. The VMs in an availability set must use either all managed disks or all unmanaged disks. When you create an availability set, you can choose which type of disks you want to use.
+Nem. A virtuális gépek rendelkezésre állási csoportba kell használnia, vagy az összes felügyelt lemeznek, vagy a nem felügyelt összes lemez. Amikor létrehoz egy rendelkezésre állási csoportot, kiválaszthatja a használni kívánt lemezek milyen típusú.
 
-**Is Managed Disks the default option in the Azure portal?**
+**Felügyelt lemezek van az alapértelmezett beállítás, az Azure-portálon?**
 
-Not currently, but it will become the default in the future.
+Jelenleg nem de ez a jövőben lesz az alapértelmezett.
 
-**Can I create an empty managed disk?**
+**Hozhat létre egy üres felügyelt lemezes?**
 
-Yes. You can create an empty disk. A managed disk can be created independently of a VM, for example, without attaching it to a VM.
+Igen. Üres lemez hozhat létre. Felügyelt lemezes hozhatók létre függetlenül a virtuális gépek, például egy virtuális Géphez való csatlakoztatás nélkül.
 
-**What is the supported fault domain count for an availability set that uses Managed Disks?**
+**Mi a támogatott tartalék tartományok számának a rendelkezésre állási beállítása felügyelt lemezeket használó?**
 
-Depending on the region where the availability set that uses Managed Disks is located, the supported fault domain count is 2 or 3.
+Attól függően, hogy a régió, ahol a rendelkezésre állási csoport által felügyelt lemezeket használó a támogatott tartalék tartományok számának, 2 vagy 3.
 
-**How is the standard storage account for diagnostics set up?**
+**Hogyan van a standard szintű tárfiók beállítása diagnosztikai?**
 
-You set up a private storage account for VM diagnostics. In the future, we plan to switch diagnostics to Managed Disks as well.
+A Virtuálisgép-diagnosztika titkos tárolási fiók beállítása. A jövőben tervezzük diagnosztika váltani kezelt lemezeken is.
 
-**What kind of Role-Based Access Control support is available for Managed Disks?**
+**Milyen típusú szerepköralapú hozzáférés-vezérlés támogatásának felügyelt lemezek érhető el?**
 
-Managed Disks supports three key default roles:
+Felügyelt lemezek által támogatott három fő alapértelmezett szerepkörök:
 
-* Owner: Can manage everything, including access
-* Contributor: Can manage everything except access
-* Reader: Can view everything, but can't make changes
+* Tulajdonos: Mindent felügyelhetnek, beleértve a hozzáférést
+* Társszerző: Hozzáférés kivételével mindent felügyelhetnek
+* Olvasó: Mindent megtekinthetnek, de nem módosítható
 
-**Is there a way that I can copy or export a managed disk to a private storage account?**
+**Van mód, hogy lehet másolni, vagy egy felügyelt lemezes exportálása a titkos storage-fiók?**
 
-You can get a read-only shared access signature URI for the managed disk and use it to copy the contents to a private storage account or on-premises storage.
+A csak olvasható közös hozzáférésű jogosultságkód URI lekérése a felügyelt lemezes és a segítségével a saját tárolási fiók vagy a helyszíni tárolási másolja.
 
-**Can I create a copy of my managed disk?**
+**A felügyelt lemezes másolatát hozhat létre?**
 
-Customers can take a snapshot of their managed disks and then use the snapshot to create another managed disk.
+Ügyfelek pillanatkép készítése a felügyelt lemezek és a pillanatkép segítségével hozzon létre egy másik kezelt lemezre.
 
-**Are unmanaged disks still supported?**
+**Nem felügyelt lemezek továbbra is támogatottak?**
 
-Yes. We support unmanaged and managed disks. We recommend that you use managed disks for new workloads and migrate your current workloads to managed disks.
+Igen. Nem felügyelt és a felügyelt támogatjuk. Javasoljuk, hogy új munkaterhelések esetén használja a felügyelt lemezeit, és az aktuális munkaterheléseket telepít át kezelt lemezek.
 
 
-**If I create a 128-GB disk and then increase the size to 130 GB, will I be charged for the next disk size (512 GB)?**
+**Ha megkezdtem 128 GB-os lemez létrehozása, és növelje a 130 GB-os méret, I megterheljük a következő lemez méretét (512 GB)?**
 
-Yes.
+Igen.
 
-**Can I create locally redundant storage, geo-redundant storage, and zone-redundant storage managed disks?**
+**Létrehozhatok helyileg redundáns tárolás, a georedundáns tárolás és zónaredundáns tárolás által kezelt lemezeken?**
 
-Azure Managed Disks currently supports only locally redundant storage managed disks.
+Azure-lemezeket felügyelt jelenleg csak a helyileg redundáns tárolás felügyelt lemezeit támogatja.
 
-**Can I shrink or downsize my managed disks?**
+**Csökkenhessen vagy a felügyelt lemezek downsize?**
 
-No. This feature is not supported currently. 
+Nem. Ez a funkció jelenleg nem támogatott. 
 
-**Can I change the computer name property when a specialized (not created by using the System Preparation tool or generalized) operating system disk is used to provision a VM?**
+**Módosítható a számítógép neve tulajdonság amikor egy speciális (nem hozta létre a rendszer-előkészítő eszközzel vagy általánosított) operációsrendszer-lemez a virtuális gép létrehozásához használt?**
 
-No. You can't update the computer name property. The new VM inherits it from the parent VM, which was used to create the operating system disk. 
+Nem. A számítógép name tulajdonság nem frissíthető. Az új virtuális gép örökli a szülő virtuális gép, amelyen az operációsrendszer-lemez létrehozásához használt. 
 
-**Where can I find sample Azure Resource Manager templates to create VMs with managed disks?**
-* [List of templates using Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
+**Hol találnak a minta Azure Resource Manager-sablonok felügyelt lemezzel rendelkező virtuális gépek létrehozásához?**
+* [Felügyelt lemezekkel sablonok listája](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
-## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks and Storage Service Encryption 
+## <a name="managed-disks-and-storage-service-encryption"></a>Lemezek és a Storage szolgáltatás titkosítási felügyelt 
 
-**Is Azure Storage Service Encryption enabled by default when I create a managed disk?**
+**Azure Storage szolgáltatás titkosítási alapértelmezés szerint engedélyezve van egy felügyelt lemezes létrehozásakor?**
 
-Yes.
+Igen.
 
-**Who manages the encryption keys?**
+**A titkosítási kulcsok kezelő?**
 
-Microsoft manages the encryption keys.
+A Microsoft kezeli a titkosítási kulcsokat.
 
-**Can I disable Storage Service Encryption for my managed disks?**
+**Képes-e letiltása Storage szolgáltatás titkosítási a felügyelt lemezek?**
 
-No.
+Nem.
 
-**Is Storage Service Encryption only available in specific regions?**
+**Érhető Storage szolgáltatás titkosítási csak meghatározott régióiba?**
 
-No. It's available in all the regions where Managed Disks is available. Managed Disks is available in all public regions and Germany.
+Nem. Érhető el minden olyan régióban, amennyiben rendelkezésre áll-e felügyelt lemezek. Felügyelt lemezek minden nyilvános régiók és Németországban érhető el.
 
-**How can I find out if my managed disk is encrypted?**
+**Hogyan tudhatom meg titkosítottak, ha a felügyelt lemezes?**
 
-You can find out the time when a managed disk was created from the Azure portal, the Azure CLI, and PowerShell. If the time is after June 9, 2017, then your disk is encrypted. 
+A felügyelt lemezes az Azure-portálon az Azure CLI és PowerShell létrehozásának ideje talál. Ha az időpont után 2017. június 9., a lemez titkosítva. 
 
-**How can I encrypt my existing disks that were created before June 10, 2017?**
+**Hogyan titkosíthatja a meglévő lemezek 2017. június 10. előtt létrehozott?**
 
-As of June 10, 2017, new data written to existing managed disks is automatically encrypted. We are also planning to encrypt existing data, and the encryption will happen asynchronously in the background. If you must encrypt existing data now, create a copy of your disk. New disks will be encrypted.
+Től 2017. június 10. a meglévő felügyelt lemezekre írt új adatokat automatikusan titkosítva. Azt is tervezi, hogy a meglévő adatok titkosítása, és a titkosítás aszinkron módon történik a háttérben. Ha meglévő adatokat most titkosítani kell, hozzon létre egy másolatot a lemezen. Új lemez titkosítva legyen.
 
-* [Copy managed disks by using the Azure CLI](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [Copy managed disks by using PowerShell](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+* [Felügyelt lemezeket másolja az Azure parancssori felület használatával](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+* [Felügyelt lemezeket másolja a PowerShell használatával](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-**Are managed snapshots and images encrypted?**
+**Felügyelt pillanatfelvételek és lemezképek titkosítva van?**
 
-Yes. All managed snapshots and images created after June 9, 2017, are automatically encrypted. 
+Igen. Az összes kezelt pillanatképeket és lemezképek létrehozása után 2017. június 9., automatikusan titkosítva vannak. 
 
-**Can I convert VMs with unmanaged disks that are located on storage accounts that are or were previously encrypted to managed disks?**
+**Is virtuális gépek is átalakítása nem felügyelt a storage-fiókok vagy kezelt lemezek korábban titkosított lévő lemezek?**
 
-Yes
+Igen
 
-**Will an exported VHD from a managed disk or a snapshot also be encrypted?**
+**A felügyelt lemezes vagy a pillanatképet egy exportált VHD-t is titkosítva lesznek?**
 
-No. But if you export a VHD to an encrypted storage account from an encrypted managed disk or snapshot, then it's encrypted. 
+Nem. De ha egy virtuális Merevlemezt egy titkosított tárfiókba történő exportálását egy titkosított kezelt lemez vagy a pillanatképet, majd titkosítva van. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Premium disks: Managed and unmanaged
+## <a name="premium-disks-managed-and-unmanaged"></a>Prémium szintű lemezekhez: felügyelt és nem felügyelt
 
-**If a VM uses a size series that supports Premium Storage, such as a DSv2, can I attach both premium and standard data disks?** 
+**Egy virtuális gép használ, amely támogatja a prémium szintű Storage, például egy DSv2 mérete több premium és a szabványos adatlemezek csatolható?** 
 
-Yes.
+Igen.
 
-**Can I attach both premium and standard data disks to a size series that doesn't support Premium Storage, such as D, Dv2, G, or F series?**
+**Csatolható prémium és standard adatlemezek is, amely nem támogatja a prémium szintű Storage, például a D, Dv2, G vagy F adatsorozat mérete több?**
 
-No. You can attach only standard data disks to VMs that don't use a size series that supports Premium Storage.
+Nem. Csak a standard adatlemezek csatolhat a virtuális gépek, amelyek nem használják, amely támogatja a prémium szintű Storage mérete több.
 
-**If I create a premium data disk from an existing VHD that was 80 GB, how much will that cost?**
+**Ha egy meglévő virtuális merevlemezről, de a 80 GB prémium adatlemezt hozok létre, mennyire, amely ára?**
 
-A premium data disk created from an 80-GB VHD is treated as the next-available premium disk size, which is a P10 disk. You're charged according to the P10 disk pricing.
+80 GB-os virtuális merevlemezről létrehozott prémium adatlemezt a rendszer a következő érhető el prémium szintű lemez méretet, amelyet P10 lemez. Most a P10 lemez díjszabás alapján számítjuk fel.
 
-**Are there transaction costs to use Premium Storage?**
+**Vannak-e a prémium szintű Storage tranzakciós költségek?**
 
-There is a fixed cost for each disk size, which comes provisioned with specific limits on IOPS and throughput. The other costs are outbound bandwidth and snapshot capacity, if applicable. For more information, see the [pricing page](https://azure.microsoft.com/pricing/details/storage).
+Nincs minden lemez méretét, amelyet adott határral kiosztott iops-érték és az átvitel meg egy rögzített költséget. Az egyéb költségekkel kimenő sávszélesség és a pillanatkép-kapacitást, ha van ilyen. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/storage) olvasható.
 
-**What are the limits for IOPS and throughput that I can get from the disk cache?**
+**Az iops-érték és a teljesítményt, amelyek szeretnék lekérheti a lemezgyorsítótár korlátai**
 
-The combined limits for cache and local SSD for a DS series are 4,000 IOPS per core and 33 MB per second per core. The GS series offers 5,000 IOPS per core and 50 MB per second per core.
+A kombinált korlátozhatja a gyorsítótár és a DS-ben több helyi SSD is core 4000 iops-értéket core másodpercenként 33 MB. A GS adatsorozat 5000 iops teljesítményt nyújtanak core és 50 MB / s / core kínál.
 
-**Is the local SSD supported for a Managed Disks VM?**
+**A lemezek felügyelt virtuális gépek támogatja a helyi SSD?**
 
-The local SSD is temporary storage that is included with a Managed Disks VM. There is no extra cost for this temporary storage. We recommend that you do not use this local SSD to store your application data because it isn't persisted in Azure Blob storage.
+A helyi SSD az ideiglenes tároló, a lemezek felügyelt virtuális gépek részét képező. Nincs ingyenesen a ideiglenes tárolására. Azt javasoljuk, hogy nem használja a helyi SSD az alkalmazásadatok tárolására, mert azt az Azure Blob storage nem megőrzött.
 
-**Are there any repercussions for the use of TRIM on premium disks?**
+**Vannak-e bármilyen következményekkel VÁGÁSHOZ a premium lemezek használatát?**
 
-There is no downside to the use of TRIM on Azure disks on either premium or standard disks.
+Nincs vágás használatához Azure-lemezeket vagy Premium vagy a standard lemezek hátránya van.
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>New disk sizes: Managed and unmanaged
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>Új lemezméret: felügyelt és nem felügyelt
 
-**What is the largest disk size supported for operating system and data disks?**
+**Mi az a legnagyobb lemez méretét a támogatott operációs rendszer és az adatlemezek?**
 
-The partition type that Azure supports for an operating system disk is the master boot record (MBR). The MBR format supports a disk size up to 2 TB. The largest size that Azure supports for an operating system disk is 2 TB. Azure supports up to 4 TB for data disks. 
+A partíció típusa, amely Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). Egy lemezt a fő rendszertöltő rekord formátum támogatja legfeljebb 2 TB-os méret. A legnagyobb, amely Azure támogatja az operációsrendszer-lemez mérete 2 TB. Azure akár 4 TB adatlemezek támogatja. 
 
-**What is the largest page blob size that's supported?**
+**Mi az a legnagyobb blob mérete támogatott?**
 
-The largest page blob size that Azure supports is 8 TB (8,191 GB). We don't support page blobs larger than 4 TB (4,095 GB) attached to a VM as data or operating system disks.
+A legnagyobb blob mérete, amely támogatja az Azure rendszeren 8 TB (8,191 GB). Nagyobb, mint 4 TB-os (4095 GB) egy virtuális Géphez csatlakozik, adatok vagy az operációs rendszer lemezek lapblobokat nem támogatottak.
 
-**Do I need to use a new version of Azure tools to create, attach, resize, and upload disks larger than 1 TB?**
+**Kell létrehozni, csatolja, átméretezése és 1 TB-nál nagyobb lemezek feltöltése Azure eszközök új verziójának segítségével?**
 
-You don't need to upgrade your existing Azure tools to create, attach, or resize disks larger than 1 TB. To upload your VHD file from on-premises directly to Azure as a page blob or unmanaged disk, you need to use the latest tool sets:
+Nem kell frissíteni a meglévő Azure-eszközök létrehozására, csatolja, és 1 TB-nál nagyobb lemezek átméretezése. Töltse fel a VHD-fájl a helyszíni közvetlenül az Azure oldalakra vonatkozó blob vagy nem felügyelt lemezt, kell használnia az eszköz legújabb beállítása:
 
-|Azure tools      | Supported versions                                |
+|Azure-eszközök      | Támogatott verziók                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Version number 4.1.0: June 2017 release or later|
-|Azure CLI v1     | Version number 0.10.13: May 2017 release or later|
-|AzCopy           | Version number 6.1.0: June 2017 release or later|
+|Azure PowerShell | 4.1.0 verziószám: június 2017 kiadás vagy újabb verzió|
+|Az Azure CLI 1-es verzió     | Verziószám 0.10.13: Előfordulhat, hogy 2017 kiadás vagy újabb verzió|
+|AzCopy           | 6.1.0 verziószám: június 2017 kiadás vagy újabb verzió|
 
-The support for Azure CLI v2 and Azure Storage Explorer is coming soon. 
+Az Azure parancssori felület v2 és Azure Tártallózó támogatása hamarosan elérhető. 
 
-**Are P4 and P6 disk sizes supported for unmanaged disks or page blobs?**
+**Nem felügyelt lemezek vagy lapblobokat támogatott P4 és P6 mérete?**
 
-No. P4 (32 GB) and P6 (64 GB) disk sizes are supported only for managed disks. Support for unmanaged disks and page blobs is coming soon.
+Nem. P4 (32 GB) és P6 (64 GB-os) lemezméret csak felügyelt lemezek támogatottak. Nem felügyelt lemezek és a lapblobokat támogatása hamarosan elérhető.
 
-**If my existing premium managed disk less than 64 GB was created before the small disk was enabled (around June 15, 2017), how is it billed?**
+**Ha a meglévő prémium szintű felügyelt lemez kevesebb, mint 64 GB-os jött létre a kisebb lemezt (körülbelül 2017. június 15.) engedélyezése előtt, hogyan azt számlázása?**
 
-Existing small premium disks less than 64 GB continue to be billed according to the P10 pricing tier. 
+Meglévő kis premium lemezek kisebb, mint 64 GB-os továbbra is fizetnie kell ezért a P10 tarifacsomag alapján. 
 
-**How can I switch the disk tier of small premium disks less than 64 GB from P10 to P4 or P6?**
+**Hogyan válthat a lemez réteg P4 vagy P6 P10 a 64 GB-nál kisebb kis premium lemezek?**
 
-You can take a snapshot of your small disks and then create a disk to automatically switch the pricing tier to P4 or P6 based on the provisioned size. 
+Pillanatkép készítése a kis kapacitású lemezeket, és ezután automatikusan Váltás az árképzési szint P4 vagy a kiosztott mérete alapján P6 lemez létrehozása. 
 
 
-## <a name="what-if-my-question-isnt-answered-here"></a>What if my question isn't answered here?
+## <a name="what-if-my-question-isnt-answered-here"></a>Mi történik, ha a fentiekben itt nem választ?
 
-If your question isn't listed here, let us know and we'll help you find an answer. You can post a question at the end of this article in the comments. To engage with the Azure Storage team and other community members about this article, use the MSDN [Azure Storage forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
+Ha kérdését itt nem látható, ossza meg velünk, és segítünk talált választ. A megjegyzések is közzétesz egy kérdést, ez a cikk végén. Az Azure Storage csapat és a Közösség más tagjaival kapcsolatos cikkben bevonásához, használja az MSDN [Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 
-To request features, submit your requests and ideas to the [Azure Storage feedback forum](https://feedback.azure.com/forums/217298-storage).
+Kérelem szolgáltatások, a kérelmek és ötleteket a a [Azure Storage-visszajelzési fórumon](https://feedback.azure.com/forums/217298-storage).

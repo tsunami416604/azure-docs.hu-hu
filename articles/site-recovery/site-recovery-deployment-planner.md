@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -612,4 +611,3 @@ Az Azure Site Recovery Deployment Planner 1.0-s nyilvános előzetes verziója a
 * Az eszköz csak a VMware – Azure forgatókönyvek esetén működik, Hyper-V – Azure irányú üzembe helyezések esetében nem. A Hyper-V – Azure forgatókönyvekhez használja a [Hyper-V Capacity Planner eszközt](./site-recovery-capacity-planning-for-hyper-v-replication.md).
 * A GetThroughput művelet nem támogatott az US Government és kínai Microsoft Azure-régiókban.
 * Az eszköz nem képes profilt készíteni a virtuális gépekről, ha a vCenter-kiszolgáló különböző ESXi-gazdagépein több azonos nevű vagy IP-című virtuális gép található. Ebben a verzióban az eszköz kihagyja a profilkészítést abban az esetben, ha a VMListFile fájlban ismétlődik egy virtuális gép neve vagy IP-címe. Ez áthidalható úgy, hogy a vCenter-kiszolgáló helyett az ESXi-gazdagéppel készíti el a virtuális gépek profilját. Minden ESXi-gazdagép esetében futtatnia kell egy példányt.
-

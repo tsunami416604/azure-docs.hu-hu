@@ -13,12 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/19/2017
 ms.author: brjohnst
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: 52bd0fd4cf70401dcf881c7f28d5cd91397bb059
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Az Azure Search-index lekérdezése a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -171,5 +170,4 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 ```
 
 A fenti mintakód a keresési eredményeket a konzolon jeleníti meg. A keresési eredményeket hasonlóképpen kell megjeleníteni a saját alkalmazásában is. Az ASP.NET MVC-alapú webalkalmazásokban történő keresésieredmény-rendelerelésre itt láthat példát: [a GitHub-on lévő minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample).
-
 

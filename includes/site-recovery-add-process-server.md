@@ -34,8 +34,3 @@
 9. Az **Összefoglalás** területen ellenőrizze az adatokat, majd kattintson a **Telepítés** gombra. A telepítés után a rendszer létrehoz egy hozzáférési kódot. Erre szüksége lesz, amikor engedélyezi a replikálást, ezért másolja le, és tárolja biztonságos helyen.
 
      ![7. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-8.png)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

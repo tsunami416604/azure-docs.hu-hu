@@ -1,18 +1,18 @@
-In this step, you test the availability group listener by using a client application that's running on the same network.
+Ebben a lépésben a rendelkezésre állási csoport figyelőjének ugyanazon a hálózaton futtató ügyfél-alkalmazás segítségével tesztelheti.
 
-Client connectivity has the following requirements:
+Ügyfélkapcsolat követelményei a következők:
 
-* Client connections to the listener must come from machines that reside in a different cloud service than the one that hosts the Always On availability replicas.
-* If the Always On replicas are in different subnets, clients must specify *MultisubnetFailover=True* in the connection string. This condition results in parallel connection attempts to replicas in the various subnets. This scenario includes a cross-region Always On availability group deployment.
+* A figyelő-ügyfélkapcsolatokat gépeket, amelyek tárolása a másik felhőalapú szolgáltatást, amely futtatja az Always On rendelkezésre állási másodpéldányok kell származnia.
+* Ha az Always On replikák külön alhálózatokon vannak, ügyfeleknek meg kell adniuk *MultisubnetFailover = True* a kapcsolati karakterláncban. Ez a feltétel a különböző alhálózatokon replikákra párhuzamos kapcsolódási kísérletek eredményez. Ez az eset tartalmazza a kereszt-régió Always On rendelkezésre állási csoport központi telepítése.
 
-One example is to connect to the listener from one of the VMs in the same Azure virtual network (but not one that hosts a replica). An easy way to complete this test is to try to connect SQL Server Management Studio to the availability group listener. Another simple method is to run [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx), as follows:
+Egy példája egy, az azonos Azure virtuális hálózat (de nem egy, a replikát tartalmazó) a virtuális gépek csatlakozni a figyelő. Ez a teszt elvégzéséhez egyszerűen az SQL Server Management Studio és a rendelkezésre állási csoport figyelőjének csatlakozni próbálnak. Egy másik egyszerű módszer a következő: futtatásához [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx), az alábbiak szerint:
 
     sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
 
 > [!NOTE]
-> If the EndpointPort value is *1433*, you are not required to specify it in the call. The previous call also assumes that the client machine is joined to the same domain and that the caller has been granted permissions on the database by using Windows authentication.
+> Ha a EndpointPort érték *1433*, nem kell adnia a hívást. A korábbi hívás is feltételezi, hogy az ügyfélszámítógép csatlakozik ugyanabban a tartományban, és, hogy a hívó rendelkezik engedéllyel az adatbázis Windows-hitelesítés használatával.
 > 
 > 
 
-When you test the listener, be sure to fail over the availability group to make sure that clients can connect to the listener across failovers.
+A figyelő tesztelésekor ügyeljen arra, hogy a rendelkezésre állási csoportot, győződjön meg arról, hogy az ügyfelek kapcsolódni tud a figyelő közötti feladatátvétel feladatátvételt.
 

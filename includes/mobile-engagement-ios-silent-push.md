@@ -24,8 +24,3 @@
    
    * Engedélyezze a **Push Notifications** (leküldéses értesítések) beállítást a Targets (Célok) > Your Target Name (Saját cél neve) > Capabilities (Képességek) menüben.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

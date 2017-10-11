@@ -1,5 +1,5 @@
 
-* In Xcode, press **Run** and start the app on an iOS device (note that push will not work on simulators). Click **OK** to accept push notifications; this request occurs the first time the app runs.
-* In the app, add a new item and click **+**.
-* Verify that a notification is received, then click **OK** to dismiss the notification. You have now successfully completed this tutorial.
+* Az xcode-ban, nyomja le az **futtatása** és (vegye figyelembe, hogy leküldéses nem fog működni a szimulátoros oktatás módszereiről) iOS-eszközön indítsa el az alkalmazást. Kattintson a **OK** fogadására a leküldéses értesítések; ehhez a kérelemhez akkor fordul elő, az alkalmazás első futtatásakor.
+* Az alkalmazásban vegyen fel egy új elemet, és kattintson a  **+** .
+* Győződjön meg arról, hogy értesítést kap, majd kattintson az **OK** az értesítés bezárásának engedélyezése. Most már sikeresen befejeződött az oktatóanyag.
 

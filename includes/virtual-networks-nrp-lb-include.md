@@ -1,17 +1,17 @@
 ## <a name="load-balancer"></a>Load Balancer
-A load balancer is used when you want to scale your applications. Typical deployment scenarios involve applications running on multiple VM instances. The VM instances are fronted by a load balancer that helps to distribute network traffic to the various instances. 
+A terheléselosztó szolgál az alkalmazások méretezésére. Tipikus telepítési forgatókönyvek tartalmaz, amely több Virtuálisgép-példányok futó alkalmazások. A Virtuálisgép-példányok által olyan terheléselosztóhoz, amely segíti a különböző példányok hálózati forgalom elosztását vannak fronted. 
 
-![NIC's on a single VM](./media/resource-groups-networking/figure8.png)
+![A hálózati adapter által a egyetlen virtuális gép](./media/resource-groups-networking/figure8.png)
 
-| Property | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| *frontendIPConfigurations* |a Load balancer can include one or more front end IP addresses, otherwise known as a virtual IPs (VIPs). These IP addresses serve as ingress for the traffic and can be public IP or private IP |
-| *backendAddressPools* |these are IP addresses associated with the VM NICs to which load will be distributed |
-| *loadBalancingRules* |a rule property maps a given front end IP and port combination to a set of back end IP addresses and port combination. With a single definition of a load balancer resource, you can define multiple load balancing rules, each rule reflecting a combination of a front end IP and port and back end IP and port associated with virtual machines. The rule is one port in the front end pool to many virtual machines in the back end pool |
-| *Probes* |probes enable you to keep track of the health of VM instances. If a health probe fails, the virtual machine instance will be taken out of rotation automatically |
-| *inboundNatRules* |NAT rules defining the inbound traffic flowing through the front end IP and distributed to the back end IP to a specific virtual machine instance. NAT rule is one port in the front end pool to one virtual machine in the back end pool |
+| *frontendipconfiguration osztálya lehet* |a terheléselosztó tartalmazhat egy vagy több előtérbeli IP-címek, más néven a virtuális IP-címek (VIP). Az IP-címeket szolgál a forgalom érkező és nyilvános IP-cím vagy a magánhálózati IP-címe |
+| *backendaddresspools készletek* |Ezek azok a virtuális gép hálózati adaptert, amelyre terhelés eloszlik a társított IP-címek |
+| *esetén a terheléselosztási szabályok* |egy szabály tulajdonság leképezi a megadott előtér-IP és port kombinációján a háttérbeli IP-címek egy készletének – port kombináció. A terheléselosztó erőforrást egyetlen definícióját meghatározhatja, hogy több terheléselosztási szabályok, minden egyes szabály egy első kombinációja tükröző befejező IP-cím és port és a záró IP-cím és port társított virtuális gépek biztonsági. A szabály a háttérkészlethez a több virtuális gép az előtér-készlet egy port |
+| *Mintavétel* |mintavételt lehetővé teszik a Virtuálisgép-példányok állapotának nyomon követéséhez. Ha egy állapotmintáihoz nem sikerül, a virtuálisgép-példányt lesz kívül Elforgatás automatikusan |
+| *inboundNatRules* |NAT-szabályok meghatározása a bejövő forgalom haladnak keresztül az első IP befejezését, majd a háttérbeli IP-címhez egy adott virtuális gép példányhoz elosztott. NAT-szabály egy virtuális gépre a háttérkészlethez előtér-készletben egyetlen port |
 
-Example of load balancer template in Json format:
+Példa a terheléselosztó-sablon Json formátumban:
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -186,6 +186,6 @@ Example of load balancer template in Json format:
       ]
     }
 
-### <a name="additional-resources"></a>Additional resources
-Read [load balancer REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx) for more information.
+### <a name="additional-resources"></a>További források
+Olvasási [terheléselosztó REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx) további információt.
 

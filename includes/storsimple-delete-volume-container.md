@@ -1,9 +1,9 @@
 <!--author=SharS last changed: 9/16/15-->
 
-#### <a name="to-delete-a-volume-container"></a>To delete a volume container
-1. On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.
-2. Select the volume container you want to delete.
-3. If a volume container has no associated volumes, then it can be deleted. Click **Delete** at the bottom of the page to delete this container. When prompted for confirmation, click **Yes**. This will delete the volume container.
+#### <a name="to-delete-a-volume-container"></a>A kötettároló törlése
+1. Az a **eszközök** lapon válassza ki az eszközt, kattintson rá duplán, és kattintson a **kötettárolók** fülre.
+2. Válassza ki a törölni kívánt kötettároló.
+3. Ha a kötettároló társított kötet, majd akkor is törlődik. Kattintson a **törlése** törölni a tárolót a lap alján. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A kötettároló törlése.
 
-If the volume container has associated volumes, you will first need to take those volumes offline by following the steps in [Take a volume offline](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline). After the volumes are offline, you can delete them. When the volume container has no associated volumes, delete the volume container as described above.
+A kötettároló kötetek vannak társítva, ha először a lépéseket követve ezek a kötetek offline érvénybe [kötet offline állapotba](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline). Miután a kötetek offline módban, törölhetik azokat. A kötettároló nincs társított kötetek, ha törli a kötettároló fent leírt módon.
 

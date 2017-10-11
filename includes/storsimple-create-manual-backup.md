@@ -18,8 +18,3 @@
    
    Ezután a biztonsági mentés megjelenik a katalógusban szereplő biztonságimentés-készletek listájában.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

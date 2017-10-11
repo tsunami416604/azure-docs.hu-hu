@@ -1,22 +1,22 @@
-## <a name="customize-and-extend-the-device-management-actions"></a>Customize and extend the device management actions
+## <a name="customize-and-extend-the-device-management-actions"></a>Testreszabására és kibővítésére az eszköz felügyeleti műveletei
 
-Your IoT solutions can expand the defined set of device management patterns or enable custom patterns by using the device twin and cloud-to-device method primitives. Other examples of device management actions include factory reset, firmware update, software update, power management, network and connectivity management, and data encryption.
+Az IoT-megoldások bontsa ki az eszköz felügyeleti minták meghatározott készletét, vagy egyéni minták engedélyezése az eszköz iker és a felhő eszközre metódus primitívek használatával. Más eszközök felügyeleti műveletei közé a gyári beállítások visszaállítása, belső vezérlőprogram frissítése, szoftverfrissítés, az energiagazdálkodás, hálózat és kapcsolatok kezelése és az adattitkosítás.
 
-## <a name="device-maintenance-windows"></a>Device maintenance windows
+## <a name="device-maintenance-windows"></a>Eszköz karbantartási időszakok
 
-Typically, you configure devices to perform actions at a time that minimizes interruptions and downtime. Device maintenance windows are a commonly used pattern to define the time when a device should update its configuration. Your back-end solutions can use the desired properties of the device twin to define and activate a policy on your device that enables a maintenance window. When a device receives the maintenance window policy, it can use the reported property of the device twin to report the status of the policy. The back-end app can then use device twin queries to attest to compliance of devices and each policy.
+Általában konfigurálnia eszközök ütemezze, hogy a megszakítások számát és az állásidő minimálisra csökkenti a műveletek elvégzéséhez. Eszköz karbantartási időszakok határozzák meg, ha egy eszköz konfigurációjában frissítenie kell a gyakran használt mintát. A háttér-megoldások az eszköz iker kívánt tulajdonságainak segítségével határozza meg, és az eszközön, amely lehetővé teszi, hogy a karbantartási időszak egy házirendet aktiválja. Ha az eszköz a karbantartási ablak házirendet kap, azt az eszköz iker jelentett tulajdonságának segítségével jelenteni a házirend állapota. A háttér-alkalmazás majd eszköz iker lekérdezések segítségével eszközről és minden egyes házirend megfelelőségi igazolnia.
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Következő lépések
 
-In this tutorial, you used a direct method to trigger a remote reboot on a device. You used the reported properties to report the last reboot time from the device, and queried the device twin to discover the last reboot time of the device from the cloud.
+Ebben az oktatóanyagban használt közvetlen módszer a indul el, a távoli újra kell indítani az eszközön. A jelentésben szereplő tulajdonságok használatával jelentés az utolsó újraindítás ideje az eszközről, és az eszköz iker felderíteni az eszköz a felhőre a legutóbbi újraindítás lekérdezett.
 
-To continue getting started with IoT Hub and device management patterns such as remote over the air firmware update, see:
+A folytatáshoz, a légkondicionáló frissítést keresztül Ismerkedés az IoT-központ és az eszköz felügyeleti minták például távolról, lásd:
 
-[Tutorial: How to do a firmware update][lnk-fwupdate]
+[Oktatóanyag: Módjáról a belső vezérlőprogram frissítése][lnk-fwupdate]
 
-To learn how to extend your IoT solution and schedule method calls on multiple devices, see the [Schedule and broadcast jobs][lnk-tutorial-jobs] tutorial.
+Megtudhatja, hogyan terjeszthető ki az IoT-megoldás és az ütemezések metódushívások több eszközön, tekintse meg a [ütemezés és a szórásos feladatok] [ lnk-tutorial-jobs] oktatóanyag.
 
-To continue getting started with IoT Hub, see [Getting started with IoT Edge][lnk-iot-edge].
+Ismerkedés az IoT-központ a folytatáshoz tekintse meg a [Ismerkedés az IoT-Edge][lnk-iot-edge].
 
 [lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md

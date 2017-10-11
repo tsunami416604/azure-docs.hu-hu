@@ -1,19 +1,19 @@
-The following table describes each of the major quotas, limits, defaults, and throttles in Azure Scheduler.
+A következő táblázat ismerteti a fő kvóták, korlátok, alapértelmezett és az Azure Scheduler szabályozások.
 
-| Resource | Limit Description |
+| Erőforrás | Korlát leírása |
 | --- | --- |
-| **Job size** |Maximum job size is 16K. If a PUT or a PATCH results in a job larger than these limits, a 400 Bad Request status code is returned. |
-| **Request URL size** |Maximum size of the request URL is 2048 chars. |
-| **Aggregate header size** |Maximum aggregate header size is 4096 chars. |
-| **Header count** |Maximum header count is 50 headers. |
-| **Body size** |Maximum body size is 8192 chars. |
-| **Recurrence span** |Maximum recurrence span is 18 months. |
-| **Time to start time** |Maximum “time to start time” is 18 months. |
-| **Job history** |Maximum response body stored in job history is 2048 bytes. |
-| **Frequency** |The default max frequency quota is 1 hour in a free job collection and 1 minute in a standard job collection. The max frequency is configurable on a job collection to be lower than the maximum. All jobs in the job collection are limited the value set on the job collection. If you attempt to create a job with a higher frequency than the maximum frequency on the job collection then request will fail with a 409 Conflict status code. |
-| **Jobs** |The default max jobs quota is 5 jobs in a free job collection and 50 jobs in a standard job collection. The maximum number of jobs is configurable on a job collection. All jobs in the job collection are limited the value set on the job collection. If you attempt to create more jobs than the maximum jobs quota, then the request fails with a 409 Conflict status code. |
-| **Job collections** |Maximum number of job collection per subscription is 200,000. |
-| **Job history retention** |Job history is retained for up to 2 months or up to the last 1000 executions. |
-| **Completed and faulted job retention** |Completed and faulted jobs are retained for 60 days. |
-| **Timeout** |There’s a static (not configurable) request timeout of 60 seconds for HTTP actions. For longer running operations, follow HTTP asynchronous protocols; for example, return a 202 immediately but continue working in the background. |
+| **Feladat mérete** |Feladat maximális mérete 16 KB-os. Ha egy PUT vagy egy javítás egy nagyobb, mint a működés felső korlátjának feladatot eredményez, 400 Hibás kérés állapotkód adja vissza. |
+| **Kérelem URL-cím mérete** |A kérelem URL-cím maximális mérete 2048 karakter. |
+| **Összesített fejléc mérete** |Maximális összesített fejléc mérete 4096 karakter. |
+| **Fejléc száma** |A fejléc maximális száma 50 fejlécek. |
+| **Törzs mérete** |Maximális törzs mérete: 8192 karakter. |
+| **Ismétlődés span** |Maximális ismétlődésére span 18 hónap. |
+| **A kezdési időpont idő** |"Idő kezdési idő" legfeljebb 18 hónap. |
+| **Feladatelőzmények** |A feladatelőzmények tárolt maximális választörzs mérete 2048 bájt. |
+| **Gyakoriság** |Az alapértelmezett maximális gyakoriság kvóta a tartalmaz szabad feladatgyűjteményt 1 óra és a szabványos feladatgyűjteményben 1 perc. A maximális gyakoriság nem konfigurálható egy kisebb, mint a maximális gyűjteményen. A feladatgyűjtemény levő összes feladatnak korlátozódnak értéke a feladatgyűjtemény állítható be. Ha egy feladat létrehozásakor egy nagyobb gyakorisággal, mint a feladatgyűjtemény maximális gyakorisága majd kérelem sikertelen lesz, és ütközés 409 állapotkódot. |
+| **Feladatok** |Az alapértelmezett maximális feladatok kvóta tartalmaz szabad feladatgyűjteményt 5 feladatok és a szabványos feladatgyűjteményben 50 feladat. A maximális számú feladat lehet konfigurálni egy gyűjteményen. A feladatgyűjtemény levő összes feladatnak korlátozódnak értéke a feladatgyűjtemény állítható be. Ha több, mint a maximális feladatok kvóta feladat létrehozásához, majd a kérés nem teljesíthető 409 ütközés állapotkóddal. |
+| **Feladatgyűjtemények** |Előfizetésenként feladatgyűjtemény maximális száma érték 200 000. |
+| **Feladat előzményeinek megőrzése** |Legfeljebb 2 hónapra vagy akár az utolsó 1000 végrehajtások feladat előzményei őrződnek meg. |
+| **Feladat befejeződött, és a hibás megőrzése** |Befejeződött, és a hibás feladatok 60 napig maradnak. |
+| **Időtúllépés** |Nincs olyan statikus (nem konfigurálható) kérelmi időkorlátot. a HTTP-műveletek 60 másodperc. A hosszabb ideig futó műveletek kövesse a HTTP aszinkron protokollok; például egy 202 azonnal vissza, de továbbra is működik-e a háttérben. |
 

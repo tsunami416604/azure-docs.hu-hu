@@ -1,13 +1,13 @@
-## <a name="scenario"></a>Scenario
-A VM with a single NIC is created and connected to a virtual network. The VM requires three different *private* IP addresses and two *public* IP addresses. The IP addresses are assigned to the following IP configurations:
+## <a name="scenario"></a>Forgatókönyv
+Virtuális gép egyetlen hálózati adapter és létrehozása és egy virtuális hálózathoz csatlakoztatva van. A virtuális gép igényel három különböző *titkos* IP címeket és a két *nyilvános* IP-címeket. Az IP-címek vannak rendelve a következő IP-konfigurációk:
 
-* **IPConfig-1:** Assigns a *static* private IP address and a *static* public IP address.
-* **IPConfig-2:** Assigns a *static* private IP address and a *static* public IP address.
-* **IPConfig-3:** Assigns a *static* private IP address and no public IP address.
+* **IPConfig-1:** hozzárendel egy *statikus* magánhálózati IP-címet és egy *statikus* nyilvános IP-cím.
+* **IPConfig-2:** hozzárendel egy *statikus* magánhálózati IP-címet és egy *statikus* nyilvános IP-cím.
+* **IPConfig-3:** hozzárendel egy *statikus* magánhálózati IP-cím és a nyilvános IP-cím.
   
-    ![Multiple IP addresses](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
+    ![Több IP-cím](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
-The IP configurations are associated to the NIC when the NIC is created and the NIC is attached to the VM when the VM is created. The types of IP addresses used for the scenario are for illustration. You can assign whatever IP address and assignment types you require.
+Az IP-konfigurációk esetén a hálózati adapterhez társított hálózati adapter jön létre, és a hálózati Adaptert a virtuális Géphez van csatolva a virtuális gép létrehozásakor. Az a forgatókönyvhöz használt IP-címek vannak az ábrán látható. Rendelhet, hogy bármilyen IP cím és a hozzárendelés típusa van szüksége.
 
 > [!NOTE]
-> Though the steps in this article assigns all IP configurations to a single NIC, you can also assign multiple IP configurations to any NIC in a multi-NIC VM. To learn how to create a VM with multiple NICs, read the [Create a VM with multiple NICs](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) article.
+> Bár a cikkben leírt lépéseket az összes IP-konfigurációk rendel hozzá egyetlen hálózati adapter, is rendelhet több IP-konfigurációk a hálózati adapterek virtuális gépen több hálózati Adapterrel. Több hálózati adapterrel rendelkező virtuális gép létrehozása, olvassa el a [több hálózati adapterrel rendelkező virtuális gép létrehozása](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) cikk.

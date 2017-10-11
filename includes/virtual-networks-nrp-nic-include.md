@@ -1,32 +1,32 @@
-## <a name="nic"></a>NIC
-A network interface card (NIC) resource provides network connectivity to an existing subnet in a VNet resource. Although you can create a NIC as a stand alone object, you need to associate it to another object to actually provide connectivity. A NIC can be used to connect a VM to a subnet, a public IP address, or a load balancer.  
+## <a name="nic"></a>A HÁLÓZATI ADAPTER
+Kártya (NIC) erőforrás hálózati illesztő hálózati kapcsolatot biztosít annak VNet az erőforrás egy létező alhálózatot. Bár létrehozhat egy hálózati adapter nem önálló objektumként, rendelje hozzá azt egy másik objektum ténylegesen összekapcsolhatóság kell. Egy hálózati Adaptert egy virtuális gép csatlakozni egy alhálózatot, egy nyilvános IP-címet vagy egy terheléselosztó használható.  
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **virtualMachine** |VM the NIC is associated with. |/subscriptions/{guid}/../Microsoft.Compute/virtualMachines/vm1 |
-| **macAddress** |MAC address for the NIC |any value between 4 and 30 |
-| **networkSecurityGroup** |NSG associated to the NIC |/subscriptions/{guid}/../Microsoft.Network/networkSecurityGroups/myNSG1 |
-| **dnsSettings** |DNS settings for the NIC |see [PIP](#Public-IP-address) |
+| **virtualMachine** |Virtuális gép hálózati adapter társítva van. |/Subscriptions/{GUID}/../microsoft.COMPUTE/virtualMachines/vm1 |
+| **macAddress** |A hálózati adapter MAC-címe |4 és 30 közötti értéket |
+| **hálózati biztonsági csoporthoz tartozik** |A hálózati adapterhez társított NSG-t |/Subscriptions/{GUID}/../microsoft.Network/networkSecurityGroups/myNSG1 |
+| **dnsSettings** |A hálózati adapter DNS-beállítások |Lásd: [PIP](#Public-IP-address) |
 
-A Network Interface Card, or NIC, represents a network interface that can be associated to a virtual machine (VM). A VM can have one or more NICs.
+A hálózati kártyát, vagy a hálózati adapter, jelöli meg a hálózati adaptert egy virtuális gép (VM) társítható. A virtuális gép egy vagy több hálózati adapterrel rendelkezhet.
 
-![NIC's on a single VM](./media/resource-groups-networking/Figure3.png)
+![A hálózati adapter által a egyetlen virtuális gép](./media/resource-groups-networking/Figure3.png)
 
-### <a name="ip-configurations"></a>IP configurations
-NICs have a child object named **ipConfigurations** containing the following properties:
+### <a name="ip-configurations"></a>IP-konfigurációk
+Hálózati adapterei nevű gyermekobjektum **IP-konfigurációk** tartalmaz a következő tulajdonságokat:
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **subnet** |Subnet the NIC is onnected to. |/subscriptions/{guid}/../Microsoft.Network/virtualNetworks/myvnet1/subnets/mysub1 |
-| **privateIPAddress** |IP address for the NIC in the subnet |10.0.0.8 |
-| **privateIPAllocationMethod** |IP allocation method |Dynamic or Static |
-| **enableIPForwarding** |Whether the NIC can be used for routing |true or false |
-| **primary** |Whether the NIC is the primary NIC for the VM |true or false |
-| **publicIPAddress** |PIP associated with the NIC |see [DNS Settings](#DNS-settings) |
-| **loadBalancerBackendAddressPools** |Back end address pools the NIC is associated with | |
-| **loadBalancerInboundNatRules** |Inbound load balancer NAT rules the NIC is associated with | |
+| **alhálózat** |Alhálózatot a hálózati adapter az onnected. |/Subscriptions/{GUID}/../microsoft.Network/virtualNetworks/myvnet1/Subnets/mysub1 |
+| **privateipaddress tulajdonságot** |A hálózati kártyának az alhálózat IP-cím |10.0.0.8 |
+| **címkiosztási** |IP-címkiosztási módszerét |Dinamikus vagy statikus |
+| **enableIPForwarding** |Hogy a hálózati adapter is használható Útválasztás |IGAZ vagy HAMIS eredményt ad |
+| **elsődleges** |A hálózati adapter-e a virtuális gép az elsődleges hálózati adapter |IGAZ vagy HAMIS eredményt ad |
+| **Nyilvános** |A PIP társított hálózati adapter |Lásd: [DNS-beállítások](#DNS-settings) |
+| **konfigurációja terheléselosztói Háttércímkészletet** |Biztonsági end címkészlet társítva van a hálózati adapter | |
+| **loadBalancerInboundNatRules** |A bejövő terhelés terheléselosztó NAT-szabályok a hálózati adapter társítva | |
 
-Sample public IP address in JSON format:
+A minta nyilvános IP-cím JSON formátumban:
 
     {
         "name": "lb-nic1-be",
@@ -72,6 +72,6 @@ Sample public IP address in JSON format:
         }
     }
 
-### <a name="additional-resources"></a>Additional resources
-* Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163579.aspx) for NICs.
+### <a name="additional-resources"></a>További források
+* Olvassa el a [REST API referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt163579.aspx) a hálózati adapterek.
 

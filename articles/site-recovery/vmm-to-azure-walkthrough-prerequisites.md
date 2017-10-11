@@ -14,16 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/24/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 47c178c66ec98fe5d333edd725b64465026e73ed
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
-
-
-
 # <a name="step-2-review-the-prerequisites-for-hyper-v-with-vmm-to-azure-replication"></a>2. lépés: A (VMM-mel felügyelt) Hyper-V-ről az Azure-ba történő replikáció előfeltételeinek áttekintése
 
 Miután áttekintette a [forgatókönyv-architektúrát](vmm-to-azure-walkthrough-architecture.md), olvassa el ezt a cikket, hogy biztosan megértse az üzembe helyezés előfeltételeit. 
@@ -45,4 +41,3 @@ Miután áttekintette a [forgatókönyv-architektúrát](vmm-to-azure-walkthroug
 ## <a name="next-steps"></a>Következő lépések
 
 Folytassa a [3. lépés: Kapacitás megtervezése](vmm-to-azure-walkthrough-capacity.md) szakasszal.
-

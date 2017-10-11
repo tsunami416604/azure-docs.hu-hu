@@ -1,12 +1,12 @@
 ## <a name="vpn-gateway"></a>VPN Gateway
-A VPN gateway resource enables you to create a secure connection between their on-premises data center and Azure. A VPN gateway resource can be configured in three different ways:
+A VPN-átjáró erőforrás lehetővé teszi a helyszíni adatközpont és az Azure közötti biztonságos kapcsolat létrehozásához. A VPN-átjáró erőforrás három különböző módon konfigurálhatók:
 
-* **Point to Site** – you can securely access your Azure resources hosted in a VNET by using a VPN client from any computer. 
-* **Multi-site connection** – you can securely connect from your on-premises data centers to resources running in a VNET. 
-* **VNET to VNET** – you can securely connect across Azure VNETS within the same region, or across regions to build workloads with geo-redundancy.
+* **Mutasson a hely** – az Azure-erőforrások bármely olyan számítógépről egy VPN-ügyfél használatával a VNETEN belül futó biztonságosan elérhet. 
+* **Többhelyes kapcsolat** – biztonságosan csatlakozhat a helyszíni adatközpont a erőforrásaihoz, a VNETEN belül. 
+* **Virtuális hálózat virtuális hálózatba** – biztonságos kapcsolódás Azure VNETEKHEZ ugyanabban a régióban belül, vagy az régiók földrajzi redundanciával munkaterhelések létrehozásához.
 
-Key properties of a VPN gateway include:
+A VPN-átjáró kulcstulajdonságok közé tartozik:
 
-* **Gateway type** - dynamically routed or a static routed gateway. 
-* **VPN Client Address Pool Prefix** – IP addresses to be assigned to clients connecting in a point to site configuration.
+* **Átjáró típusa** - dinamikusan irányíthatja át vagy a statikus útválasztást átjáró. 
+* **VPN ügyfél készlet címelőtagja** – IP-címek hozzárendelését a webhely konfigurációs pont csatlakozó ügyfeleket.
 

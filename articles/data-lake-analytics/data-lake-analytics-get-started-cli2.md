@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felületének 2.0-s verziójával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -221,4 +220,3 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 * A Data Lake Analytics parancssori felületének 2.0-s verziójával foglalkozó referenciadokumentum megtekintéséhez lásd: [Data Lake Analytics](https://docs.microsoft.com/cli/azure/dla).
 * A Data Lake Store parancssori felületének 2.0-s verziójával foglalkozó referenciadokumentum megtekintéséhez lásd: [Data Lake Store](https://docs.microsoft.com/cli/azure/dls).
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával).
-

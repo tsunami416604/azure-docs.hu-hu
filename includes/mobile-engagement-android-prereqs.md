@@ -1,7 +1,7 @@
-Before starting this tutorial, you must first complete the [Getting Started](../articles/mobile-engagement/mobile-engagement-android-get-started.md) tutorial.
+Az oktatóanyag elindítása előtt először végezze el a [bevezetés](../articles/mobile-engagement/mobile-engagement-android-get-started.md) oktatóanyag.
 
 > [!IMPORTANT]
-> Your minimum Android SDK API level must be 10 or higher (Android 2.3.3 or higher).
+> A minimális Android SDK API-szintet kell lennie, 10 vagy újabb rendszer (Android 2.3.3 vagy újabb).
 > 
 > 
 

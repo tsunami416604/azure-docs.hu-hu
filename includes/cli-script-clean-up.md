@@ -1,6 +1,6 @@
-## <a name="clean-up-deployment"></a>Clean up deployment
+## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-After the script sample has been run, the follow command can be used to remove the resource group and all resources associated with it.
+A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
 
 ```azurecli
 az group delete --name myResourceGroup

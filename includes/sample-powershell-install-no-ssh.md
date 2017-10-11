@@ -1,3 +1,3 @@
-This sample requires the Azure PowerShell module version 4.0 or later. Run ` Get-Module -ListAvailable AzureRM` to find the version. If you need to install or upgrade, see [Install Azure PowerShell module](/powershell/azure/install-azurerm-ps). 
+Ez a minta az Azure PowerShell 4.0-s vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. 
 
-Run `Login-AzureRmAccount` to create a connection with Azure. 
+Futtatás `Login-AzureRmAccount` kapcsolat létrehozása az Azure-ral. 

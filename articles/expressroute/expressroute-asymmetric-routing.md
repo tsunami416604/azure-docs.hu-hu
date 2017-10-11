@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamam
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 10166e6b8b9144f0a5dde4f2fc10b492120e85d7
-ms.lasthandoff: 12/07/2016
-
-
+ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Aszimmetrikus útválasztás több hálózati elérési úttal
 A cikk leírja, hogy hogyan követhet a kimenő és a bejövő hálózati forgalom különböző utakat, amikor a hálózati forrás és cél között több elérési út is rendelkezésre áll.
@@ -72,5 +71,4 @@ Az aszimmetrikus útválasztás által okozott problémák megoldásának másik
 
 ## <a name="asymmetric-routing-detection"></a>Az aszimmetrikus útválasztás észlelése
 A Traceroute a legjobb módszer annak vizsgálatához, hogy a forgalom a várt útvonalat járja-e be. Ha azt várja, hogy a helyszíni SMTP-kiszolgálóról a Microsoft felé irányuló forgalom az interneten haladjon keresztül, a traceroute által megjelenített útvonalnak az SMTP-kiszolgálótól kell indulnia és az Office 365 szolgáltatásnál kell végződnie. Az eredmény alapján ellenőrizheti, hogy a forgalom valóban az internet felé, és nem az ExpressRoute irányában hagyja el a hálózatot.
-
 

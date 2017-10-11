@@ -1,14 +1,14 @@
 
-1. Select your VM in the portal. The *DNS name* is currently blank. Select **Public IP address**:
+1. Válassza ki a virtuális Gépet a portálon. A *DNS-név* jelenleg üres. Válassza ki **nyilvános IP-cím**:
    
-   ![Click Public IP resource in the portal](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
+   ![Kattintson a nyilvános IP-cím erőforrás a portálon](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
 
-2. Enter the desired DNS name and then select **Save**.
+2. Adja meg a kívánt DNS-nevet, és válassza ki **mentése**.
    
-   ![Enter a DNS name label for your public IP resource](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
+   ![Adjon meg egy DNS-névcímke a nyilvános IP-erőforrás](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
  
 
-3. To return to the VM overview blade, close the *Public IP address* blade. Verify that the *DNS name* is now shown.
+3. Térjen vissza a virtuális gép – áttekintés panelt, zárja be a *nyilvános IP-cím* panelen. Ellenőrizze, hogy a *DNS-név* most látható.
    
-   ![Confirm your new DNS label is set](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
+   ![Erősítse meg az új DNS-címke beállítása](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 

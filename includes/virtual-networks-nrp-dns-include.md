@@ -1,28 +1,28 @@
 ## <a name="azure-dns"></a>Azure DNS
-Azure DNS is a hosting service for DNS domains, providing name resolution using Microsoft Azure infrastructure.
+Az Azure DNS egy olyan üzemeltetési szolgáltatás DNS-tartományok, biztosítani a névfeloldást a Microsoft Azure-infrastruktúra használatával.
 
-| Property | Description | Sample Value |
+| Tulajdonság | Leírás | A minta értéke |
 | --- | --- | --- |
-| **DNSzones** |Domain zone information to host DNS records of a particular domain |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com" |
+| **DNSzones** |Tartományi zóna adatainak állomás DNS-rekordok az adott tartományban |/ subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com " |
 
-### <a name="dns-record-sets"></a>DNS record sets
-DNS zones have a child object named record set. Record sets are a collection of host records by type for a DNS zone. Record types are A, AAAA, CNAME, MX, NS, SOA,SRV and TXT.
+### <a name="dns-record-sets"></a>DNS-rekordhalmazok
+DNS-zónák nevű rekordkészlet gyermekobjektum rendelkezik. Rekordhalmazok kivételt jelentenek a DNS-zónák típusonként állomásrekordokat gyűjteménye. Típusok A, AAAA, CNAME, MX, NS, SOA, SRV és TXT.
 
-| Property | Description | Sample value |
+| Tulajdonság | Leírás | Mintaérték |
 | --- | --- | --- |
-| A |IPv4 record type |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/A/www |
-| AAAA |IPv6 record type |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/AAAA/hostrecord |
-| CNAME |canonical name record type <sup>1</sup> |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/CNAME/www |
-| MX |mail record type |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/MX/mail |
-| NS |name server record type |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/NS/ |
-| SOA |Start of Authority record type <sup>2</sup> |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SOA |
-| SRV |service record type |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SRV |
+| A |IPv4-rekord típusa |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/A/www |
+| AAAA |IPv6-rekord típusa |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/AAAA/hostrecord |
+| CNAME |kanonikus név rekordtípus <sup>1</sup> |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/CNAME/www |
+| MX |mail bejegyzéstípus |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/MX/mail |
+| NS |server type nevű |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/NS/ |
+| SOA |Szolgáltató rekordtípus kezdetét <sup>2</sup> |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/SOA |
+| SRV |szolgáltatás bejegyzéstípus |/Subscriptions/{GUID}/.../Providers/Microsoft.Network/dnszones/contoso.com/SRV |
 
-<sup>1</sup> only allows one value per record set.
+<sup>1</sup> csak lehetővé teszi, hogy egy érték / rekordhalmaz.
 
-<sup>2</sup> only allows one record type SOA per DNS zone. 
+<sup>2</sup> csak lehetővé teszi, hogy egy rekordtípus SOA / DNS-zónát. 
 
-Sample of DNS zone in Json format:
+Minta DNS-zóna Json formátumban:
 
     {
       "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
@@ -77,8 +77,8 @@ Sample of DNS zone in Json format:
           ]
     }
 
-## <a name="additional-resources"></a>Additional resources
-Read the [REST API documentation for DNS zones ](https://msdn.microsoft.com/library/azure/mt130626.aspx) for more information.
+## <a name="additional-resources"></a>További források
+Olvassa el a [DNS-zónák REST API dokumentációja ](https://msdn.microsoft.com/library/azure/mt130626.aspx) további információt.
 
-Read the [REST API documentation for DNS record sets](https://msdn.microsoft.com/library/azure/mt130627.aspx) for more information.
+Olvassa el a [DNS-rekordhalmazok REST API dokumentációja](https://msdn.microsoft.com/library/azure/mt130627.aspx) további információt.
 

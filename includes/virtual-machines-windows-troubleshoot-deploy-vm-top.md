@@ -1,4 +1,4 @@
-The following top issues may help resolve your issue. To start troubleshooting, review these steps:
+A következő legfőbb problémákat is megoldhatja a problémát. Hibaelhárítás indítása, tekintse át az alábbi lépéseket:
 
-- [The cluster cannot support the requested VM size](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
-- [The cluster does not have free resources](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)
+- [A fürt nem támogatja a kért Virtuálisgép-méret](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
+- [A fürt nem rendelkezik szabad erőforrást](../articles/virtual-machines/windows/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)

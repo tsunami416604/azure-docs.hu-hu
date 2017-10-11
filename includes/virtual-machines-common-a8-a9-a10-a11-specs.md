@@ -1,14 +1,14 @@
 
 
-## <a name="deployment-considerations"></a>Deployment considerations
-* **Azure subscription** – To deploy more than a few compute-intensive instances, consider a pay-as-you-go subscription or other purchase options. If you're using an [Azure free account](https://azure.microsoft.com/free/), you can use only a limited number of Azure compute cores.
+## <a name="deployment-considerations"></a>Telepítési szempontok
+* **Azure-előfizetés** – a használatalapú előfizetés vagy egyéb beszerzési lehetőségek csak néhány számítási igényű példányok telepítése érdekében. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
 
-* **Pricing and availability** - These VM sizes are offered only in the Standard pricing tier. Check [Products available by region] (https://azure.microsoft.com/regions/services/) for availability in Azure regions. 
-* **Cores quota** – You might need to increase the cores quota in your Azure subscription from the default value. Your subscription might also limit the number of cores you can deploy in certain VM size families, including the H-series. To request a quota increase, [open an online customer support request](../articles/azure-supportability/how-to-create-azure-support-request.md) at no charge. (Default limits may vary depending on your subscription category.)
+* **Tarifa- és rendelkezésre állás** -ezek a Virtuálisgép-méretek érhető el csak a Standard tarifacsomagot. Ellenőrizze a [régió elérhető termékek] (https://azure.microsoft.com/regions/services/) a Azure-régiók rendelkezésre állás érdekében. 
+* **Magok kvóta** – szükség lehet az Azure-előfizetéshez az alapértelmezett érték a magok kvótájának növeléséhez. Az előfizetés is lehet, hogy korlátozza az egyes virtuális gép mérete családok, többek között a H-sorozat telepítheti magok száma. A kvóta növelését [nyissa meg az online támogatás ügyfélkérés](../articles/azure-supportability/how-to-create-azure-support-request.md) díjmentesen. (Alapértelmezett korlátokat eltérhetnek attól függően, hogy az előfizetés kategória.)
   
   > [!NOTE]
-  > Contact Azure Support if you have large-scale capacity needs. Azure quotas are credit limits, not capacity guarantees. Regardless of your quota, you are only charged for cores that you use.
+  > Ha nagyméretű kapacitási igényeihez van, forduljon az Azure támogatási szolgálatához. Azure-kvótákról jóváírás korlátozza, nem a kapacitás garanciát. Függetlenül attól, a kvóta van csak szó, a magok használatát.
   > 
   > 
-* **Virtual network** – An Azure [virtual network](https://azure.microsoft.com/documentation/services/virtual-network/) is not required to use the compute-intensive instances. However, for many deployments you need at least a cloud-based Azure virtual network, or a site-to-site connection if you need to access on-premises resources. When needed, create a new virtual network to deploy the instances. Adding compute-intensive VMs to a virtual network in an affinity group is not supported.
-* **Resizing** – Because of their specialized hardware, you can only resize compute-intensive instances within the same size family (H-series or compute-intensive A-series). For example, you can only resize an H-series VM from one H-series size to another. In addition, resizing from a non-compute-intensive size to a compute-intensive size is not supported.  
+* **Virtuális hálózati** – az Azure [virtuális hálózati](https://azure.microsoft.com/documentation/services/virtual-network/) a számítási igényű példányok használatához nem szükséges. Azonban a számos olyan telepítése esetén kell legalább egy felhőalapú Azure virtuális hálózat vagy a hely-hely kapcsolatot, ha a helyszíni erőforrások eléréséhez szükséges. Szükség esetén hozzon létre egy új virtuális hálózat a példányok telepítése. Az affinitáscsoportokban lévő virtuális hálózathoz számítási igényű virtuális gépek hozzáadása nem támogatott.
+* **Átméretezése** – miatt a speciális hardverre átméretezése csak az ugyanazon mérete család (H-méretek és számítási igényű A-sorozatú) számítási igényű példányokat. Például csak átméretezheti H-sorozat VM egy H sorozatnak megfelelő méretűre egy másikra. A számítási igényű méretre eltér egy nem számítási intenzív átméretezése ezenkívül nem támogatott.  

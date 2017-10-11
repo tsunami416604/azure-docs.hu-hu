@@ -1,52 +1,52 @@
-1. Sign in to the [Azure classic portal](http://manage.windowsazure.com).  
-2. On the command bar at the bottom of the window, click **New**.
-3. Under **Compute**, click **Virtual Machine**, and then click **From Gallery**.
+1. Jelentkezzen be a [klasszikus Azure portálra](http://manage.windowsazure.com).  
+2. A parancssávon az ablak alján kattintson **új**.
+3. A **számítási**, kattintson a **virtuális gép**, és kattintson a **a gyűjtemény**.
    
-    ![Create a New Virtual Machine][Image1]
-4. Under the **SUSE** group, select an OpenSUSE virtual machine image, and then click the arrow to continue.
-5. On the first **Virtual machine configuration** page:
+    ![Új virtuális gép létrehozása][Image1]
+4. Az a **SUSE** csoportban, OpenSUSE virtuálisgép-lemezkép válassza ki, majd kattintson a nyílra, a folytatáshoz.
+5. Az első **virtuálisgép-konfiguráció** lap:
    
-   * Type a **Virtual Machine Name**, such as "testlinuxvm". The name must contain between 3 and 15 characters, can contain only letters, numbers, and hyphens, and must start with a letter and end with either a letter or number.
-   * Verify the **Tier** and pick a **Size**. The tier determines the sizes you can choose from. The size affects the cost of using it, as well as configuration options such as how many data disks you can attach. For details, see [Sizes for virtual machines](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-   * Type a **New User Name**, or accept the default, **azureuser**. This name is added to the Sudoers list file.
-   * Decide which type of **Authentication** to use. For general password guidelines, see [Strong passwords](http://msdn.microsoft.com/library/ms161962.aspx).
-6. On the next **Virtual machine configuration** page:
+   * Adjon meg egy **virtuális gép neve**, például a "testlinuxvm". A név kell csak 3 és 15 karakter közötti lehet, is tartalmazhat, csak betűket, számokat és kötőjeleket tartalmazhat, és kell betűvel kezdődhet és betűvel vagy számmal végződhet.
+   * Ellenőrizze a **réteg** , és válasszon egy **mérete**. A réteg meghatározza, hogy a méretek közül választhat. A mérete befolyásolja költségét, valamint csatolhat a konfigurációs beállítások, például hogy hány adatok lemezek. További információkért lásd: [virtuális gépek méretei](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+   * Adjon meg egy **új felhasználónevet**, vagy fogadja el az alapértelmezett **azureuser**. Ez a név a Sudoers listáját tartalmazó fájl kerül.
+   * Döntse el, hogy milyen típusú **hitelesítési** használatára. Általános jelszó útmutatást lásd: [erős jelszavak](http://msdn.microsoft.com/library/ms161962.aspx).
+6. A következő **virtuálisgép-konfiguráció** lap:
    
-   * Use the default **Create a new cloud service**.
-   * In the **DNS Name** box, type a unique DNS name to use as part of the address, such as "testlinuxvm".
-   * In the **Region/Affinity Group/Virtual Network** box, select a region where this virtual image will be hosted.
-   * Under **Endpoints**, keep the SSH endpoint. You can add others now, or add, change, or delete them after the virtual machine is created.
+   * Használja az alapértelmezett **hozzon létre egy új felhőalapú szolgáltatás**.
+   * Az a **DNS-név** mezőbe írja be a címet, például "testlinuxvm" része egy egyedi DNS-név.
+   * Az a **régió/affinitás csoport/virtuális hálózati** mezőben válasszon ki egy régiót, ahol a virtuális lemezképet fog üzemelni.
+   * A **végpontok**, tartsa meg az SSH-végpontot. Mások, vegye fel vagy hozzáadása, módosítása, vagy törölje azokat, a virtuális gép létrehozása után.
      
      > [!NOTE]
-     > If you want a virtual machine to use a virtual network, you **must** specify the virtual network when you create the virtual machine. You can't add a virtual machine to a virtual network after you create the virtual machine. For more information, see [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md).
+     > Ha azt szeretné, hogy a virtuális gép egy virtuális hálózatot, akkor **kell** adja meg a virtuális hálózatot, a virtuális gép létrehozásakor. Nem adható hozzá a virtuális gép virtuális hálózathoz, a virtuális gép létrehozása után. További információkért lásd: [virtuális hálózat áttekintése](../articles/virtual-network/virtual-networks-overview.md).
      > 
      > 
-7. On the last **Virtual machine configuration** page, keep the default settings and then click the check mark to finish.
+7. Utolsó **virtuálisgép-konfiguráció** lapon. az alapértelmezett beállítások megtartásához, majd kattintson a pipa jelre a Befejezés gombra.
 
-The portal lists the new virtual machine under **Virtual Machines**. While the status is reported as **(Provisioning)**, the virtual machine is being set up. When the status is reported as **Running**, you can move on to the next step.
+A portál megjeleníti az új virtuális gépek **virtuális gépek**. Amíg az állapota **(kiépítése)**, a virtuális gép beállítása folyamatban van. Ha az állapot az elvártnak megfelelően **futtató**, a következő lépéssel továbbléphet.
 
-## <a name="connect-to-the-virtual-machine"></a>Connect to the Virtual Machine
-You'll use SSH or PuTTY to connect to the virtual machine, depending on the operating system on the computer you'll connect from:
+## <a name="connect-to-the-virtual-machine"></a>Csatlakozzon a virtuális géphez
+SSH vagy PuTTY fogja használni a virtuális gép, attól függően, hogy az operációs rendszer azon a számítógépen történő csatlakozás fog csatlakozni:
 
-* From a computer running Linux, use SSH. At the command prompt, type:
+* Linux rendszerű számítógépeken az SSH használata. A parancssorba írja be:
   
     `$ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180`
   
-    Type the user's password.
-* From a computer running Windows, use PuTTY. If you don't have it installed, download it from the [PuTTY Download Page][PuTTYDownload].
+    Írja be a jelszót.
+* Windows rendszerű számítógépeken a PuTTY használata. Ha nincs telepítve, töltse le a [PuTTY letöltési oldalát][PuTTYDownload].
   
-    Save **putty.exe** to a directory on your computer. Open a command prompt, navigate to that folder, and run **putty.exe**.
+    Mentés **putty.exe** könyvtárra a számítógépen. Nyisson meg egy parancssort, keresse meg azt a mappát, és futtassa **putty.exe**.
   
-    Type the host name, such as "testlinuxvm.cloudapp.net", and type "22" for the **Port**.
+    Írja be a gazdagép nevét, például a "testlinuxvm.cloudapp.net", és írja be a "22" a **Port**.
   
-    ![PuTTY Screen][Image6]  
+    ![PuTTY képernyő][Image6]  
 
-## <a name="update-the-virtual-machine-optional"></a>Update the Virtual Machine (optional)
-1. After you're connected to the virtual machine, you can optionally install system updates and patches. To run the update, type:
+## <a name="update-the-virtual-machine-optional"></a>Frissítse a virtuális gép (nem kötelező)
+1. Miután a virtuális gép csatlakozik, rendszer frissítések és javítások igény szerint telepítheti. A frissítés futtatásához írja be:
    
     `$ sudo zypper update`
-2. Select **Software**, then **Online Update** to list available updates. Select **Accept** to start the installation and apply all new available patches (except the optional ones).
-3. After installation is done, select **Finish**.  Your system is now up to date.
+2. Válassza ki **szoftver**, majd **Online frissítés** rendelkezésre álló frissítések listáját. Válassza ki **elfogadás** a telepítés megkezdéséhez és javításokat minden új érhető el (kivéve a választható megfelelően).
+3. Telepítés után válassza ki a **Befejezés**.  A rendszer már naprakészek legyenek.
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
 

@@ -74,8 +74,3 @@ Ha az eszköz regisztrálása sikeres volt, viszont mégsem kerül online állap
 
 Az eszköz StorSimple szolgáltatásban való, a Windows PowerShell segítségével történő konfigurálását és regisztrálását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/).
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

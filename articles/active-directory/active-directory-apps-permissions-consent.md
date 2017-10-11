@@ -17,14 +17,12 @@ ms.date: 07/31/2017
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Alkalmazások, engedélyek és jóváhagyás az Azure Active Directoryban
 Az Azure Active Directoryban hozzáadhat alkalmazásokat a címtárhoz.  Az alkalmazások az alkalmazás típusától függően eltérőek lehetnek.  Az alkalmazások megtekintéséhez a klasszikus portálon válasszon ki egy címtárat, és válasszon alkalmazásokat.
 
@@ -220,5 +218,4 @@ A FabrikamMail esetében ez nagyjából a következők szerint néz ki:
 (A **ClientId** a FabrikamMail ServicePrincipal objektumának azonosítója (amelyet a rendszer éppen létrehozott), a **PrincipalId** a felhasználói objektum azonosítója (a jóváhagyást adó felhasználóé), a **ResourceId** az Exchange ServicePrincipal objektumának azonosítója, a Scope pedig az Exchange azon engedélye, amelyet a felhasználó jóváhagy.)
 
 Ha a felhasználók nem adhatnak maguktól jóváhagyást, egy olyan képernyő jelenik meg, amely közli, hogy engedélyre van szükség.
-
 

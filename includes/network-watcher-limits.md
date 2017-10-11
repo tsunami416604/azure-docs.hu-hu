@@ -1,6 +1,6 @@
-| Resource | Default limit | Note |
+| Erőforrás | Alapértelmezett korlát | Megjegyzés |
 | --- | --- | --- |
-| Network Watcher | 1 per region  | |
-| Packet Capture sessions |10 per region |# of sessions only, not saved captures |
+| Network Watcher | régiónként 1  | |
+| Csomag rögzítési munkamenetek |régiónként eltérő 10 |a munkamenetek csak, nem mentett # rögzíti. |
 
 

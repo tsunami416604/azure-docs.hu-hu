@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 2063acbafd6766d00dee9509ee7def73bdc5b982
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device"></a>A helyszíni StorSimple eszköz üzembe helyezése
 > [!div class="op_single_selector"]
@@ -283,5 +282,4 @@ Ha szeretne egy azonnali manuális mentést létrehozni a StorSimple eszköze eg
 ## <a name="next-steps"></a>Következő lépések
 * [Virtuális eszköz](storsimple-virtual-device-u2.md) konfigurálása.
 * A StorSimple eszközt a [StorSimple Manager szolgáltatás](https://msdn.microsoft.com/library/azure/dn772396.aspx) segítségével kezelheti.
-
 

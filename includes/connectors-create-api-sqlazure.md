@@ -1,42 +1,42 @@
-### <a name="prerequisites"></a>Prerequisites
-* An Azure account; you can create a [free account](https://azure.microsoft.com/free)
-* An [Azure SQL Database](../articles/sql-database/sql-database-get-started.md) with its connection information, including the server name, database name, and username/password. This information is included in the SQL Database connection string:
+### <a name="prerequisites"></a>Előfeltételek
+* Az Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
+* Egy [Azure SQL Database](../articles/sql-database/sql-database-get-started.md) és annak kapcsolati adatait, beleértve a kiszolgáló neve, az adatbázisnév és a felhasználónév/jelszó. Ez az információ az SQL adatbázis-kapcsolati karakterlánc szerepel:
   
-    Server=tcp:*yoursqlservername*.database.windows.net,1433;Initial Catalog=*yourqldbname*;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    Kiszolgáló = tcp:*yoursqlservername*. database.windows.net,1433;Initial katalógus =*yourqldbname*; Biztonsági információ megőrzése = False; Felhasználói azonosító = {your_username}; Jelszó = {your_password}; MultipleActiveResultSets eredménykészleteket = False; Titkosítani = True; TrustServerCertificate = False; Kapcsolódási időtúllépés = 30.
   
-    Read more about [Azure SQL Databases](https://azure.microsoft.com/services/sql-database).
+    Tudjon meg többet az [Azure SQL-adatbázisok](https://azure.microsoft.com/services/sql-database).
 
 > [!NOTE]
-> When you create an Azure SQL Database, you can also create the sample databases included with SQL. 
+> Egy Azure SQL-adatbázis létrehozásakor az SQL mellékelt mintaadatbázisokat is létrehozhat. 
 > 
 > 
 
-Before using your Azure SQL Database in a logic app, connect to your SQL Database. You can do this easily within your logic app on the Azure portal.  
+A logikai alkalmazást az Azure SQL Database használatához csatlakozni az SQL-adatbázis. Ehhez egyszerűen a logikai alkalmazásban, az Azure portálon.  
 
-Connect to your Azure SQL Database using the following steps:  
+Csatlakozás az Azure SQL-adatbázis, az alábbi lépéseket követve:  
 
-1. Create a logic app. In the Logic Apps designer, add a trigger, and then add an action. Select **Show Microsoft managed APIs** in the drop down list, and then enter "sql" in the search box. Select one of the actions:  
+1. Logikai alkalmazás létrehozása. A Logic Apps-tervezőben adja hozzá egy eseményindító, és adja hozzá az műveletet. Válassza ki **megjelenítése Microsoft felügyelt API-k** a legördülő listában, majd adja meg az "sql" be a keresőmezőbe. A műveletek közül választhat:  
    
-    ![SQL Azure connection creation step](./media/connectors-create-api-sqlazure/sql-actions.png)
-2. If you haven't previously created any connections to SQL Database, you are prompted for the connection details:  
+    ![Az SQL Azure kapcsolat létrehozását lépést](./media/connectors-create-api-sqlazure/sql-actions.png)
+2. Ha még nem korábban hozott létre a kapcsolatokat, az SQL Database, kéri a kapcsolat adatai:  
    
-    ![SQL Azure connection creation step](./media/connectors-create-api-sqlazure/connection-details.png) 
-3. Enter the SQL Database details. Properties with an asterisk are required.
+    ![Az SQL Azure kapcsolat létrehozását lépést](./media/connectors-create-api-sqlazure/connection-details.png) 
+3. Írja be az SQL-adatbázis adatait. Tulajdonságok csillaggal szükség.
    
-   | Property | Details |
+   | Tulajdonság | Részletek |
    | --- | --- |
-   | Connect via Gateway |Leave this unchecked. This is used when connecting to an on-premises SQL Server. |
-   | Connection Name * |Enter any name for your connection. |
-   | SQL Server Name * |Enter the server name; which is something like *servername.database.windows.net*. The server name is displayed in the SQL Database properties in the Azure portal, and also displayed in the connection string. |
-   | SQL Database Name * |Enter the name you gave your SQL Database. This is listed in the SQL Database properties in the connection string: Initial Catalog=*yoursqldbname*. |
-   | Username * |Enter the username you created when the SQL Database was created. This is listed in the SQL Database properties in the Azure portal. |
-   | Password * |Enter the password you created when the SQL Database was created. |
+   | Csatlakozás az átjárón keresztül |Hagyja üresen ezt. Ez használatos, amikor csatlakozik egy helyszíni SQL Server. |
+   | Kapcsolat neve * |Adjon meg egy tetszőleges nevet a kapcsolat. |
+   | SQL Server neve * |Adja meg a kiszolgáló nevét; Ez az hasonlót *servername.database.windows.net*. A kiszolgáló nevét az SQL adatbázis-tulajdonságok az Azure-portálon jelenik meg, és a kapcsolati karakterláncot is megjelenik. |
+   | SQL-adatbázis neve * |Adja meg a neve, mint az SQL-adatbázis. Ez az SQL adatbázis-tulajdonságok a kapcsolati karakterláncban szereplő: Initial Catalog =*yoursqldbname*. |
+   | Felhasználónév * |Megadja a felhasználónevét, az SQL-adatbázis létrehozásakor létrehozott. Ez az SQL adatbázis-tulajdonságok az Azure-portálon jelenik meg. |
+   | Jelszó * |Adja meg a jelszót, amelyet az SQL-adatbázis létrehozásakor. |
    
-    These credentials are used to authorize your logic app to connect, and access your SQL data. Once complete, your connection details look similar to the following:  
+    Ezek a hitelesítő adatok segítségével engedélyezik a Logic Apps alkalmazást, és az SQL-adatok elérése. Művelet befejeződése után a kapcsolat adatai keressen a következőhöz hasonló:  
    
-    ![SQL Azure connection creation step](./media/connectors-create-api-sqlazure/sample-connection.png) 
-4. Select **Create**. 
-5. Notice the connection has been created. Now, proceed with the other steps in your logic app: 
+    ![Az SQL Azure kapcsolat létrehozását lépést](./media/connectors-create-api-sqlazure/sample-connection.png) 
+4. Kattintson a **Létrehozás** gombra. 
+5. Figyelje meg, a kapcsolat létrejött. Most folytassa a Logic Apps alkalmazást más lépéseket: 
    
-    ![SQL Azure connection creation step](./media/connectors-create-api-sqlazure/table.png)
+    ![Az SQL Azure kapcsolat létrehozását lépést](./media/connectors-create-api-sqlazure/table.png)
 

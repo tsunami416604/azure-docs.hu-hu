@@ -30,8 +30,3 @@
 
 A StorSimple-kötet létrehozását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/).
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

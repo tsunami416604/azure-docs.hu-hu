@@ -1,14 +1,14 @@
-| Resource | Limit |
+| Erőforrás | Korlát |
 | --- | --- |
-| Cache size |530 GB |
-| Databases |64 |
-| Max connected clients |40,000 |
-| Redis Cache replicas (for high availability) |1 |
-| Shards in a premium cache with clustering |10 |
+| Gyorsítótár mérete |530 GB |
+| Adatbázisok |64 |
+| Maximális csatlakozott ügyfelek |40,000 |
+| Redis gyorsítótár-replikák (a magas rendelkezésre állás érdekében) |1 |
+| A prémium szintű gyorsítótár fürtözési szilánkok |10 |
 
-Azure Redis Cache limits and sizes are different for each pricing tier. To see the pricing tiers and their associated sizes, see [Azure Redis Cache Pricing](https://azure.microsoft.com/pricing/details/cache/).
+Azure Redis Cache korlátozza, és értékek egyes tarifacsomagok különböző. A tarifacsomagok és azok kapcsolódó méretek, olvassa el [Azure Redis Cache szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/cache/).
 
-For more information on Azure Redis Cache configuration limits, see [Default Redis server configuration](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
+Azure Redis Cache konfigurációs korlátozások további információkért lásd: [kiszolgálókonfiguráció alapértelmezett Redis](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
 
-Because configuration and management of Azure Redis Cache instances is done by Microsoft, not all Redis commands are supported in Azure Redis Cache. For more information, see [Redis commands not supported in Azure Redis Cache](../articles/redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache).
+Konfigurálása és kezelése az Azure Redis Cache példány Microsoft végezhető el, mert nem minden Redis-parancsok az Azure Redis Cache támogatottak. További információkért lásd: [parancsok nem támogatott az Azure Redis Cache Redis](../articles/redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache).
 

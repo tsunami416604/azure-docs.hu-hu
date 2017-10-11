@@ -1,42 +1,42 @@
-## <a name="download-install-and-register-the-azure-backup-agent"></a>Download, install, and register the Azure Backup agent
-After creating the Azure Backup vault, an agent should be installed on each of your Windows machines (Windows Server, Windows client, System Center Data Protection Manager server, or Azure Backup Server machine) that enables back up of data and applications to Azure.
+## <a name="download-install-and-register-the-azure-backup-agent"></a>Letöltése, telepítése és regisztrálása az Azure Backup szolgáltatás ügynöke
+Miután létrehozta az Azure Backup-tárolóban, az ügynök telepíthető mindegyik a Windows gép (Windows Server, a Windows ügyfél, a System Center Data Protection Manager-kiszolgáló vagy Azure biztonsági mentési kiszolgálóként működő számítógép), amely lehetővé teszi, hogy készítsen biztonsági másolatot az adat és alkalmazás az Azure-bA.
 
-1. Sign in to the [Management Portal](https://manage.windowsazure.com/)
-2. Click **Recovery Services**, then select the backup vault that you want to register with a server. The Quick Start page for that backup vault appears.
+1. Jelentkezzen be a [felügyeleti portálon](https://manage.windowsazure.com/)
+2. Kattintson a **Recovery Services**, majd válassza ki a mentési tároló, amelyet szeretne regisztrálni egy kiszolgálóval. A mentési tároló gyors kezdés lapon jelenik meg.
    
-    ![Quick start](./media/backup-install-agent/quickstart.png)
-3. On the Quick Start page, click the **For Windows Server or System Center Data Protection Manager or Windows client** option under **Download Agent**. Click **Save** to copy it to the local machine.
+    ![Első lépések](./media/backup-install-agent/quickstart.png)
+3. A gyors kezdés lapon kattintson a **For Windows Server, a System Center Data Protection Manager vagy a Windows ügyfél** lehetőség alatt **ügynök letöltése**. Kattintson a **mentése** másolja azt a helyi számítógépen.
    
-    ![Save agent](./media/backup-install-agent/agent.png)
-4. Once the agent is installed, double click MARSAgentInstaller.exe to launch the installation of the Azure Backup agent. Choose the installation folder and scratch folder required for the agent. The cache location specified must have free space which is at least 5% of the backup data.
-5. If you use a proxy server to connect to the internet, in the **Proxy configuration** screen, enter the proxy server details. If you use an authenticated proxy, enter the user name and password details in this screen.
-6. The Azure Backup agent installs .NET Framework 4.5 and Windows PowerShell (if it’s not available already) to complete the installation.
-7. Once the agent is installed, click the **Proceed to Registration** button to continue with the workflow.
+    ![Ügynök mentése](./media/backup-install-agent/agent.png)
+4. Az ügynök telepítése után kattintson duplán az Azure Backup szolgáltatás ügynökének telepítésének indításakor MARSAgentInstaller.exe. Válassza ki a telepítési mappa és az ügynök számára szükséges ideiglenes mappa. A gyorsítótár helyére szabad területet, amely a biztonsági mentési adatok legalább 5 %-át kell rendelkeznie.
+5. Ha csatlakozni az internethez, a proxykiszolgálót használni a **proxykonfigurációt** képernyőn, írja be a proxy-kiszolgáló adatait. Ha egy hitelesített proxykiszolgálót használ, adja meg a felhasználói nevet és jelszót adatokat ezen a képernyőn.
+6. Az Azure Backup szolgáltatás ügynökének telepíti a .NET-keretrendszer 4.5 és Windows PowerShell (Ha még nem érhető el) a telepítés befejezéséhez.
+7. Az ügynök telepítése után kattintson a **továbblépni a regisztrációra** gomb a munkafolyamat folytatásához.
    
-   ![Register](./media/backup-install-agent/register.png)
-8. In the vault credentials screen, browse to and select the vault credentials file which was previously downloaded.
+   ![Regisztráljon](./media/backup-install-agent/register.png)
+8. A tároló hitelesítő adatait képernyőn keresse meg és válassza ki a korábban letöltött tárolói hitelesítő adatok fájlt.
    
-    ![Vault credentials](./media/backup-install-agent/vc.png)
+    ![Tárolói hitelesítő adatokat](./media/backup-install-agent/vc.png)
    
-    The vault credentials file is valid only for 48 hrs (after it’s downloaded from the portal). If you encounter any error in this screen (e.g “Vault credentials file provided has expired”), login to the Azure portal and download the vault credentials file again.
+    A tároló hitelesítési adatait tartalmazó fájlt csak esetén érvényes 48 óra (után a portálról letöltés). Ha az Azure portálra a képernyő (például "tárolói hitelesítő adatok fájlját megadott lejárt"), bejelentkezési hibákat tapasztal, és töltse le újból a tároló hitelesítési adatait tartalmazó fájlt.
    
-    Ensure that the vault credentials file is available in a location which can be accessed by the setup application. If you encounter access related errors, copy the vault credentials file to a temporary location in this machine and retry the operation.
+    Győződjön meg arról, hogy a tároló hitelesítési adatait tartalmazó fájlt elérhető egy helyen, a telepítő alkalmazás is elérhetők. Ha eléréséhez kapcsolódó hibák, másolja a tároló hitelesítési adatait tartalmazó fájlt egy ideiglenes helyre erre a gépre, és próbálja megismételni a műveletet.
    
-    If you encounter an invalid vault credential error (e.g “Invalid vault credentials provided") the file is either corrupted or does not have the latest credentials associated with the recovery service. Retry the operation after downloading a new vault credential file from the portal. This error is typically seen if the user clicks on the **Download vault credential** option in the Azure portal, in quick succession. In this case, only the second vault credential file is valid.
-9. In the **Encryption setting** screen, you can either generate a passphrase or provide a passphrase (minimum of 16 characters). Remember to save the passphrase in a secure location.
+    Ha érvénytelen tárolói hitelesítő adatok hibát észlel (például "érvénytelen megadott tárolói hitelesítő adatok") a fájl sérült, vagy nem nem rendelkezik a legújabb hitelesítő adatokat a helyreállítási szolgáltatáshoz tartozó. Próbálja megismételni a műveletet, miután egy új tárolói hitelesítő adatok fájlját letöltése a portálról. Ez a hiba általában látható, ha a felhasználó a hivatkozásra kattint a **letöltési tárolóhitelesítő adatokat** az Azure portálon, gyors egymásutánban lehetőséget. Ebben az esetben csak a második tárolói hitelesítő adatok fájlját esetén érvényes.
+9. Az a **titkosítási beállítás** képernyő, megadhat egy hozzáférési kódot létrehozni, vagy adjon meg egy jelszót (minimum 16 karakter). Ne felejtse el a hozzáférési kód mentse egy biztonságos helyre.
    
-    ![Encryption](./media/backup-install-agent/encryption.png)
+    ![Titkosítás](./media/backup-install-agent/encryption.png)
    
    > [!WARNING]
-   > If the passphrase is lost or forgotten; Microsoft cannot help in recovering the backup data. The end user owns the encryption passphrase and Microsoft does not have visibility into the passphrase used by the end user. Please save the file in a secure location as it is required during a recovery operation.
+   > Ha a jelszó elvesztése vagy elfelejtése; A Microsoft nem megkönnyíti a biztonsági mentési adatok helyreállítása. A felhasználó tulajdonában van a titkosítás jelszava és a Microsoft nem látnak bele a végfelhasználó által használt jelszót. Mentse a fájlt egy biztonságos helyre az előírt módon a helyreállítási művelet során.
    > 
    > 
-10. Once you click the **Finish** button, the machine is registered successfully to the vault and you are now ready to start backing up to Microsoft Azure.
-11. When using Microsoft Azure Backup standalone you can modify the settings specified during the registration workflow by clicking on the **Change Properties** option in the Azure Backup mmc snap in.
+10. Miután rákattintott a **Befejezés** gombra, a gép sikeresen regisztrálva van a tárolóba, és most már készen indítsa el a biztonsági mentés a Microsoft Azure.
+11. A Microsoft Azure Backup szolgáltatás önálló használata esetén a során megadott beállítások a regisztrációs munkafolyamat kattintva módosíthatja a **tulajdonságainak módosítása** beállítása az Azure Backup szolgáltatás mmc beépülő modul.
     
-    ![Change Properties](./media/backup-install-agent/change.png)
+    ![Tulajdonságainak módosítása](./media/backup-install-agent/change.png)
     
-    Alternatively, when using Data Protection Manager, you can modify the settings specified  during the registration workflow by clicking the **Configure** option by selecting **Online** under the **Management** Tab.
+    Azt is megteheti, a Data Protection Manager használata esetén is a beállítások módosítása gombra kattintva a regisztrációs munkamenet során megadott a **konfigurálása** lehetőség kiválasztásával **Online** alatt a **Felügyeleti** fülre.
     
-    ![Configure Azure Backup](./media/backup-install-agent/configure.png)
+    ![Az Azure Backup konfigurálása](./media/backup-install-agent/configure.png)
 

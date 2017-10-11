@@ -1,25 +1,25 @@
-## <a name="route-tables"></a>Route tables
-Route table resources contains routes used to define how traffic flows within your Azure infrastructure. You can use user defined routes (UDR) to send all traffic from a given subnet to a virtual appliance, such as a firewall or intrusion detection system (IDS). You can associate a route table to subnets. 
+## <a name="route-tables"></a>Az útvonaltáblák
+Útválasztási táblázat erőforrások hogyan a forgalom belül az Azure-infrastruktúra meghatározásához használt útvonalak tartalmazza. Felhasználó által megadott útvonalakat (UDR) segítségével az összes forgalom küldése az adott alhálózat virtuális készülékre, például egy tűzfal vagy behatolás észlelési rendszert (Azonosítók). Az alhálózatokhoz egy útválasztási táblázatot lehet társítani. 
 
-Route tables contain the following properties.
+Az útvonaltáblák az alábbi tulajdonságokat tartalmazzák.
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **routes** |Collection of user defined routes in the route table |see [user defined routes](#User-defined-routes) |
-| **subnets** |Collection of subnets the route table is applied to |see [subnets](#Subnets) |
+| **útvonalak** |Felhasználó által megadott útvonalak útvonaltábla |Lásd: [felhasználó által megadott útvonalak](#User-defined-routes) |
+| **alhálózatok** |Az útvonaltábla vonatkozik, az alhálózatok gyűjteménye |Lásd: [alhálózatok](#Subnets) |
 
-### <a name="user-defined-routes"></a>User defined routes
-You can create UDRs to specify where traffic should be sent to, based on its destination address. You can think of a route as the default gateway definition based on the destination address of a network packet.
+### <a name="user-defined-routes"></a>Felhasználó által definiált útvonalak
+Létrehozhat udr-EK adhatja meg, ha forgalmat kell küldeni, a cél címe alapján. Az eltolásokat tekintheti útvonal az alapértelmezett átjáró definíciófrissítések a hálózati csomagok célcím alapján.
 
-UDRs contain the following properties. 
+Udr-EK az alábbi tulajdonságokat tartalmazzák. 
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **addressPrefix** |Address prefix, or full IP address for the destination |192.168.1.0/24, 192.168.1.101 |
-| **nextHopType** |Type of device the traffic will be sent to |VirtualAppliance, VPN Gateway, Internet |
-| **nextHopIpAddress** |IP address for the next hop |192.168.1.4 |
+| **addressPrefix** |Cím előtagján vagy a teljes IP-címet a cél |192.168.1.0/24, 192.168.1.101 |
+| **nexthoptype elem** |A forgalom kapnak eszköz típusa |VirtualAppliance, VPN-átjárót, az Internet |
+| **nexthopipaddress eleme** |A következő ugrás IP-címe |192.168.1.4 |
 
-Sample route table in JSON format:
+A minta útvonaltábla JSON formátumban:
 
     {
         "name": "UDR-BackEnd",
@@ -50,8 +50,8 @@ Sample route table in JSON format:
         }
     }
 
-### <a name="additional-resources"></a>Additional resources
-* Get more information about [UDRs](../articles/virtual-network/virtual-networks-udr-overview.md).
-* Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt502549.aspx) for route tables.
-* Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt502539.aspx) for user defined routes (UDRs).
+### <a name="additional-resources"></a>További források
+* További információk [udr-EK](../articles/virtual-network/virtual-networks-udr-overview.md).
+* Olvassa el a [REST API referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt502549.aspx) az útválasztási táblázatokat.
+* Olvassa el a [REST API referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt502539.aspx) felhasználó által megadott útvonalak (udr-EK).
 

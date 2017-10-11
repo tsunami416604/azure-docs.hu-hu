@@ -1,20 +1,20 @@
-#### <a name="vpn-type---resource-manager-deployment-model"></a>VPN type - Resource Manager deployment model
-|  | **RouteBased** | **PolicyBased** |
+#### <a name="vpn-type---resource-manager-deployment-model"></a>VPN-típus - erőforrás-kezelő telepítési modell
+|  | **Útvonalalapú** | **Házirendalapú** |
 | --- | --- | --- |
-| **Site-to-Site** |Supported |Supported |
-| **VNet-to-VNet** |Supported |Not Supported |
-| **Multi-Site** |Supported |Not Supported |
-| **S2S and ExpressRoute coexist** |Supported |Not Supported |
-| **Point-to-Site** |Supported |Not Supported |
-| **Classic to Resource Manager** |Supported |Not Supported |
+| **Pont-pont** |Támogatott |Támogatott |
+| **VNet – VNet** |Támogatott |Nem támogatott |
+| **Többhelyes** |Támogatott |Nem támogatott |
+| **S2S és ExpressRoute párhuzamos használata** |Támogatott |Nem támogatott |
+| **Pont-pont** |Támogatott |Nem támogatott |
+| **Klasszikus az erőforrás-kezelő** |Támogatott |Nem támogatott |
 
-#### <a name="vpn-type---classic-deployment-model"></a>VPN type - classic deployment model
-|  | **Dynamic** | **Static** |
+#### <a name="vpn-type---classic-deployment-model"></a>VPN-típus - klasszikus telepítési modell
+|  | **Dinamikus** | **Statikus** |
 | --- | --- | --- |
-| **Site-to-Site** |Supported |Supported |
-| **VNet-to-VNet** |Supported |Not Supported |
-| **Multi-Site** |Supported |Not Supported |
-| **S2S and ExpressRoute coexist** |Supported |Not Supported |
-| **Point-to-Site** |Supported |Not Supported |
-| **Classic to Resource Manager** |Supported |Not Supported |
+| **Pont-pont** |Támogatott |Támogatott |
+| **VNet – VNet** |Támogatott |Nem támogatott |
+| **Többhelyes** |Támogatott |Nem támogatott |
+| **S2S és ExpressRoute párhuzamos használata** |Támogatott |Nem támogatott |
+| **Pont-pont** |Támogatott |Nem támogatott |
+| **Klasszikus az erőforrás-kezelő** |Támogatott |Nem támogatott |
 

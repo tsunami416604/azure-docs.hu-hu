@@ -14,12 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/27/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: ffb134085c8555b22a317213622ca6c9490497d8
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: c8654ed547a9001e2e968d2a45d990a73ef27d3b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Service Bus-névtér létrehozása az Azure Portal használatával
 
@@ -40,4 +39,3 @@ Tekintse meg a [GitHub-mintáinkat][github-samples], ahol további példákat ta
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples
-

@@ -1,44 +1,44 @@
 
 
 
-## <a name="tagging-a-virtual-machine-through-templates"></a>Tagging a Virtual Machine through Templates
-First, let’s look at tagging through templates. [This template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) places tags on the following resources: Compute (Virtual Machine), Storage (Storage Account), and Network (Public IP Address, Virtual Network, and Network Interface). This template is for a Windows VM but can be adapted for Linux VMs.
+## <a name="tagging-a-virtual-machine-through-templates"></a>A sablonok használatával virtuálisgép-címkézés
+Első lépésként nézzük címkézés sablonok keresztül. [Ez a sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) címkék helyez el a következőket: számítási (virtuális gép), a tároló (Tárfiók) és a hálózaton (a nyilvános IP-cím, a virtuális hálózati és a hálózati adapter). Ez a sablon a Windows virtuális gépek azonban Linux virtuális gépek módosítani kell.
 
-Click the **Deploy to Azure** button from the [template link](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). This will navigate to the [Azure portal](https://portal.azure.com/) where you can deploy this template.
+Kattintson a **az Azure telepítéséhez** gombot a [Sablonhivatkozás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Ez jelenik meg, hogy a [Azure-portálon](https://portal.azure.com/) sablon telepíthető.
 
-![Simple deployment with Tags](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
+![Egyszerű telepítés címkékkel](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-This template includes the following tags: *Department*, *Application*, and *Created By*. You can add/edit these tags directly in the template if you would like different tag names.
+Ez a sablon tartalmazza a következő címkékkel: *részleg*, *alkalmazás*, és *létrehozta*. Akkor is felvehet és szerkeszthet ezekkel a címkékkel, közvetlenül a sablonban, ha azt szeretné, hogy különböző címkenevek.
 
-![Azure tags in a template](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
+![Egy Azure címkék](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 
-As you can see, the tags are defined as key/value pairs, separated by a colon (:). The tags must be defined in this format:
+Ahogy látja, a címkék is meg van adva kulcs/érték párok, egymástól kettősponttal (:). A címkék a következő formátumban kell megadni:
 
         “tags”: {
             “Key1” : ”Value1”,
             “Key2” : “Value2”
         }
 
-Save the template file after you finish editing it with the tags of your choice.
+A sablonfájl mentési a címkékkel, az Ön által választott a Szerkesztés befejezése után.
 
-Next, in the **Edit Parameters** section, you can fill out the values for your tags.
+Ezután a **paraméterek szerkesztése** szakaszban kitöltheti az értékeket a címkék.
 
-![Edit Tags in Azure portal](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
+![Címkék szerkesztése az Azure-portálon](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
 
-Click **Create** to deploy this template with your tag values.
+Kattintson a **létrehozása** a címke értékekkel a sablon telepítéséhez.
 
-## <a name="tagging-through-the-portal"></a>Tagging through the Portal
-After creating your resources with tags, you can view, add, and delete tags in the portal.
+## <a name="tagging-through-the-portal"></a>A portálon keresztül címkézés
+Miután létrehozta az erőforrások címkékkel, megtekintheti, vegye fel, és a portál címkék törlése.
 
-Select the tags icon to view your tags:
+Válassza ki a címkék ikonra a címkék megtekintéséhez:
 
-![Tags icon in Azure portal](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
+![Azure-portálon címkék ikon](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
 
-Add a new tag through the portal by defining your own Key/Value pair, and save it.
+A portálon keresztül új címke hozzáadása a saját kulcs/érték pár meghatározásával, és mentse.
 
-![Add new Tag in Azure portal](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
+![Új címke hozzáadása az Azure-portálon](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
 
-Your new tag should now appear in the list of tags for your resource.
+Az új címke ekkor meg kell jelennie az erőforrás címkék listájában.
 
-![New Tag saved in Azure portal](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
+![Új címke az Azure portálon mentése](./media/virtual-machines-common-tag/azure-portal-saved-new-tag.png)
 

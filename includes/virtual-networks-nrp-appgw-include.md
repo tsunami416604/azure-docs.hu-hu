@@ -1,16 +1,16 @@
 ## <a name="application-gateway"></a>Application Gateway
-Application Gateway provides an Azure-managed HTTP load balancing solution based on layer 7 load balancing. Application load balancing allows the use of routing rules for network traffic based on HTTP. 
+Alkalmazásátjáró egy Azure által kezelt HTTP terheléselosztási réteg 7 terheléselosztás megoldást biztosít. Alkalmazás terheléselosztás lehetővé teszi, hogy az a HTTP-alapú hálózati forgalom-útválasztási szabályok használatát. 
 <BR>
 
-| Property | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| **backendAddressPools** |The list of IP addresses of the back end servers. The IP addresses listed should either belong to the virtual network subnet, or should be a public IP/VIP or private IP |
-| **backendHttpSettingsCollection** |Every pool has settings like port, protocol, and cookie based affinity. These settings are tied to a pool and are applied to all servers within the pool |
-| **frontendPorts** |This port is the public port opened on the application gateway. Traffic hits this port, and then gets redirected to one of the back end servers |
-| **httpListeners** |Listener has a frontend port, a protocol (Http or Https, these are case-sensitive), and the SSL certificate name (if configuring SSL offload) |
-| **requestRoutingRules** |The rule binds the listener and the back end server pool and defines which back end server pool the traffic should be directed. Currently works only as Round-robin |
+| **backendaddresspools készletek** |A háttér-kiszolgálók IP-címek listáját. A felsorolt IP-címek vagy a virtuális hálózati alhálózat kell tartoznia, vagy egy nyilvános IP-cím/VIP vagy a magánhálózati IP-címe legyen. |
+| **backendHttpSettingsCollection** |Minden készlethez beállítások, például a portot, a protokoll és a cookie-alapú kapcsolat van. Ezek a beállítások a készletben vannak kötve, és a készletben lévő összes kiszolgálót is vonatkozik |
+| **frontendports portok** |Ez a port nem a nyilvános portot nyit meg az Alkalmazásátjáró. Forgalom találatok ezt a portot, és az egyik a háttérkiszolgálók átirányítja beolvasása |
+| **httpListeners** |Figyelő rendelkezik egy elülső rétegbeli portot, a protokollt (Http vagy Https, amelyek kis-és nagybetűket), és az SSL-tanúsítvány neve (ha az SSL beállításának kiszervezése) |
+| **requestroutingrules szabályok** |A szabály a figyelőt van kötve, és a háttér kiszolgálókészlet befejezését, majd határozza meg, amely vissza end kiszolgálókészlet kell irányítani a forgalmat. Jelenleg csak a ciklikus multiplexelés szerint működik |
 
-Example of an application gateway Json template:
+Példa: egy alkalmazás átjáró Json-sablont:
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -216,6 +216,6 @@ Example of an application gateway Json template:
     }
 
 
-### <a name="additional-resources"></a>Additional resources
-Read [ application gateway REST API](https://msdn.microsoft.com/library/azure/mt299388.aspx) for more information.
+### <a name="additional-resources"></a>További források
+Olvasási [ Alkalmazásátjáró REST API](https://msdn.microsoft.com/library/azure/mt299388.aspx) további információt.
 

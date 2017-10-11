@@ -10,14 +10,12 @@ ms.topic: hero-article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Jenkins-kiszolgáló létrehozása Azure-beli linuxos virtuális gépen az Azure Portalról
 
 Ez a rövid útmutató bemutatja, hogyan telepítheti a [Jenkins](https://jenkins.io)-kiszolgálót Ubuntu Linux rendszerű virtuális gépre az Azure-ral való együttműködésre konfigurált eszközökkel és beépülő modulokkal együtt. Ha elkészült, rendelkezni fog egy Azure-ban futó Jenkins-kiszolgálóval, amely egy Java-mintaalkalmazást hoz létre a [GitHubról](https://github.com).
@@ -113,4 +111,3 @@ Navigáljon a `complete/build/libs` könyvtárhoz, és a létrehozás sikeressé
 
 > [!div class="nextstepaction"]
 > [Azure-beli virtuális gépek hozzáadása Jenkins-ügynökökként](jenkins-azure-vm-agents.md)
-

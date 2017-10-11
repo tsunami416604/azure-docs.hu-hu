@@ -1,6 +1,6 @@
-| Item | Description | Link |
+| Elem | Leírás | Hivatkozás |
 | --- | --- | --- |
-| Runtime |Script Host, Triggers & Bindings, Language Support |[File an Issue](https://github.com/Azure/azure-webjobs-sdk-script/issues) |
-| Templates |Code Issues with Creation Template |[File an Issue](https://github.com/Azure/azure-webjobs-sdk-templates/issues) |
-| Portal |User Interface or Experience Issue |[File an Issue](https://github.com/ProjectKudu/AzureFunctionsPortal/issues) |
+| Futásidejű |Parancsfájlfuttató, eseményindítók és kötések, nyelvi támogatás |[Fájl problémát](https://github.com/Azure/azure-webjobs-sdk-script/issues) |
+| Sablonok |Kód létrehozása sablon problémái |[Fájl problémát](https://github.com/Azure/azure-webjobs-sdk-templates/issues) |
+| Portál |Felhasználói felület vagy a felhasználói élmény probléma |[Fájl problémát](https://github.com/ProjectKudu/AzureFunctionsPortal/issues) |
 

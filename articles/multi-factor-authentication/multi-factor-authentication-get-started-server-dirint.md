@@ -15,12 +15,11 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 5250c0cbc71450eb66f79226a1ecb062a9335ee3
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
-
+ms.openlocfilehash: c469dfaccf515bcd1ced43279decfefe6be8375b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
 Az Azure MFA-kiszolgáló Címtár-integráció szakaszának használatával integrálhatja a címtárat az Active Directoryval vagy egy másik LDAP-címtárral. Konfigurálhatja az attribútumokat, hogy megfeleljenek a címtársémának, illetve beállíthatja a felhasználók automatikus szinkronizálását.
@@ -139,4 +138,3 @@ A Feljebb és Lejjebb gombbal a rendszergazda módosíthatja a szinkronizált el
 További Multi-Factor Auth-kiszolgálókat beállíthat úgy, hogy tartalék RADIUS-proxyként, LDAP-proxyként, illetve IIS-hitelesítési kiszolgálóként szolgáljanak. A szinkronizálási konfiguráció az összes ügynökre érvényes. Azonban csak az egyik ügynökön futhat a Multi-Factor Auth-kiszolgáló szolgáltatás. Ezen a lapon kiválaszthatja a szinkronizálásra engedélyezett Multi-Factor Auth-kiszolgálót.
 
 ![Multi-Factor-Auth-kiszolgálók](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
-

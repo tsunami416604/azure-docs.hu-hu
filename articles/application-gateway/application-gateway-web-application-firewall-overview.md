@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
 ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/07/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
 A webalkalmazási tűzfal (WAF) az Application Gateway egyik szolgáltatása, amely központi védelmet nyújt a webalkalmazásoknak a gyakori biztonsági rések ellen. 
@@ -173,5 +171,4 @@ A WAF számlázási időszaka 2017. május 5-től indul, addig a WAF termékvál
 ## <a name="next-steps"></a>Következő lépések
 
 Miután részletesebben megismerkedett a WAF képességeivel, tekintse meg a [webalkalmazási tűzfal Application Gatewayen történő konfigurálását](application-gateway-web-application-firewall-portal.md) ismertető cikket.
-
 

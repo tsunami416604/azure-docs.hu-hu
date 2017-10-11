@@ -1,229 +1,229 @@
-# <a name="internet-of-things-security-architecture"></a>Internet of Things security architecture
-When designing a system, it is important to understand the potential threats to that system, and add appropriate defenses accordingly, as the system is designed and architected. It is particularly important to design the product from the start with security in mind because understanding how an attacker might be able to compromise a system helps make sure appropriate mitigations are in place from the beginning. 
+# <a name="internet-of-things-security-architecture"></a>Az eszközök internetes hálózatát biztonsági architektúrája
+A rendszer tervezésekor fontos megérteni, hogy a rendszer potenciális fenyegetések, majd a megfelelő védelmekkel ennek megfelelően adja meg, a rendszer tervezett és tervezett. Különösen fontos tervezési kezdetétől a termék a biztonságot szem előtt tartva, mert ismertetése, hogy egy támadó lehet a rendszerbe segítségével győződjön meg arról, hogy megfelelő megoldást legyenek érvényben az elejétől. 
 
-## <a name="security-starts-with-a-threat-model"></a>Security starts with a threat model
-Microsoft has long used threat models for its products and has made the company’s threat modeling process publically available. The company experience demonstrates that the modelling has unexpected benefits beyond the immediate understanding of what threats are the most concerning. For example, it also creates an avenue for an open discussion with others outside the development team, which can lead to new ideas and improvements in the product.
+## <a name="security-starts-with-a-threat-model"></a>Biztonsági kezdődik-e a fenyegetések modellezése
+A Microsoft fenyegetés modellek hosszú által használt termékek, és rendelkezik a modellezési folyamatának nyilvánosan elérhető a vállalati fenyegetést. A vállalat élmény mutatja be, hogy rendelkezik a modellezési fenyegetések Mik a legtöbb azonnali megértése túl nem várt előnyök vonatkozó. Például is létrehoz egy erőfeszítések egy megnyitott vitafórum másokkal a fejlesztői csapat, ami új ötleteket, valamint a termék kívül.
 
-The objective of threat modeling is to understand how an attacker might be able to compromise a system and then make sure appropriate mitigations are in place. Threat modeling forces the design team to consider mitigations as the system is designed rather than after a system is deployed. This fact is critically important, because retrofitting security defenses to a myriad of devices in the field is infeasible, error prone and will leave customers at risk.
+Modellezni célja megértése, hogyan egy támadó a rendszerbe, és gondoskodjon arról, hogy megfelelő megoldást hely lehet. Fenyegetés modellezési kényszeríti a tervezési csapat kell figyelembe venni azok mérséklési, mivel a rendszer úgy van kialakítva, hanem után a rendszer van telepítve. A tény különösen fontos, mert alkalmazásával az eszközök a mezőben a számtalan biztonsági védelmekkel lehessen hozni, nagyon eséllyel fordulnak elő hiba, és bezárja az ügyfelek veszélyben.
 
-Many development teams do an excellent job capturing the functional requirements for the system that benefit customers. However, identifying non-obvious ways that someone might misuse the system is more challenging. Threat modeling can help development teams understand what an attacker might do and why. Threat modeling is a structured process that creates a discussion about the security design decisions in the system, as well as changes to the design that are made along the way that impact security. While a threat model is simply a document, this documentation also represents an ideal way to ensure continuity of knowledge, retention of lessons learned, and help new team onboard rapidly. Finally, an outcome of threat modeling is to enable you to consider other aspects of security, such as what security commitments you wish to provide to your customers. These commitments in conjunction with threat modeling will inform and drive testing of your Internet of Things (IoT) solution.
+Sok a fejlesztési csapat munkaköre egy kiválóan alkalmas a rendszer a funkcionális követelményeinek ügyfelek előnyeit kihasználó rögzítése. Azonban, hogy valaki visszaél előfordulhat, hogy a rendszer nem egyértelmű módon azonosító további kihívást. Modellezni segít megérteni, hogy egy támadó előfordulhat, hogy mit a fejlesztési csapat és okát. Modellezni egy strukturált folyamat, amely létrehoz egy vitafórum a biztonsággal kapcsolatos tervezési döntések a rendszerben, valamint a Tervező menet végzett a hatás biztonsági változik. Ugyan a fenyegetések modellezése egyszerűen egy dokumentumot, az ebben a dokumentációban is ideális, a Tudásbázis, a megszerzett megőrzést folytonosságának megtanulta, és új súgó gyorsan csapat bevezetésében jelöli. Végezetül modellezni egy eredményeit is figyelembe kell venni más vonatkozásai, például hogy milyen biztonsági kötelezettségeit, az ügyfelek számára kívánja engedélyezni. E kötelezettségvállalások modellezni együtt értesíti, és a meghajtó vizsgálata a az eszközök internetes hálózatát (IoT) megoldás.
 
-### <a name="when-to-threat-model"></a>When to threat model
-[Threat modeling](http://www.microsoft.com/security/sdl/adopt/threatmodeling.aspx) offers the greatest value if it is incorporated into the design phase. When you are designing, you have the greatest flexibility to make changes to eliminate threats. Eliminating threats by design is the desired outcome. It is much easier than adding mitigations, testing them, and ensuring they remain current and moreover, such elimination is not always possible. It becomes harder to eliminate threats as a product becomes more mature, and in turn will ultimately require more work and a lot harder tradeoffs than threat modeling early on in the development.
+### <a name="when-to-threat-model"></a>Mikor érdemes a fenyegetés modell
+[Modellezni](http://www.microsoft.com/security/sdl/adopt/threatmodeling.aspx) biztosít a legnagyobb értéket, ha a tervezési szakaszban részét képezi. Tervezésekor, hogy a legnagyobb rugalmasságot módosításokat elkerülése érdekében a fenyegetések. A kívánt eredmény fenyegetések kiküszöbölése azért. Sokkal egyszerűbb, mint azok mérséklési hozzáadása, kipróbálása és biztosítása naprakészek maradjanak és továbbá ilyen eltávolítási nem mindig lehetséges legyen. Fenyegetések kiküszöbölhetők a termék több érett válik, és több munkát és a fenyegetések modellezése a korai fejlesztésében mint sokkal nehezebb kompromisszumot pedig végső soron szükséges nehezebben válik.
 
-### <a name="what-to-threat-model"></a>What to threat model
-You should thread model the solution as a whole and also focus in the following areas:
+### <a name="what-to-threat-model"></a>Mi a fenyegetések modellezése
+Meg kell szál modell a teljes megoldás és is összpontosítson, a következő területeken:
 
-* The security and privacy features
-* The features whose failures are security relevant
-* The features that touch a trust boundary 
+* A biztonsági és adatvédelmi szolgáltatások
+* A funkciókat, amelyek hibák a megfelelő biztonsági
+* A funkciókat, amelyeket a megbízhatósági kapcsolat határán touch 
 
-### <a name="who-threat-models"></a>Who threat models
-Threat modeling is a process like any other.  It is a good idea to treat the threat model document like any other component of the solution and validate it. Many development teams do an excellent job capturing the functional requirements for the system that benefit customers. However, identifying non-obvious ways that someone might misuse the system is more challenging. Threat modeling can help development teams understand what an attacker might do and why.
+### <a name="who-threat-models"></a>Ki a fenyegetés modellek
+Modellezni az a folyamat más.  Jó ötlet a fenyegetés modell dokumentumot mint bármely más összetevő megoldás kezeli, és ellenőrizze azt is. Sok a fejlesztési csapat munkaköre egy kiválóan alkalmas a rendszer a funkcionális követelményeinek ügyfelek előnyeit kihasználó rögzítése. Azonban, hogy valaki visszaél előfordulhat, hogy a rendszer nem egyértelmű módon azonosító további kihívást. Modellezni segít megérteni, hogy egy támadó előfordulhat, hogy mit a fejlesztési csapat és okát.
 
-### <a name="how-to-threat-model"></a>How to threat model
-The threat modeling process is composed of four steps; the steps are:
+### <a name="how-to-threat-model"></a>Fenyegetések modellezése hogyan
+A fenyegetés modellezési folyamatának áll négy lépést; a lépések a következők:
 
-* Model the application
-* Enumerate Threats
-* Mitigate threats
-* Validate the mitigations
+* Az alkalmazás minta
+* Fenyegetések számbavétele
+* Veszélyek mérséklése.
+* A megoldást ellenőrzése
 
-#### <a name="the-process-steps"></a>The process steps
-Three rules of thumb to keep in mind when building a threat model:
+#### <a name="the-process-steps"></a>A folyamat lépései
+Három szabályok megoldás szem előtt tartani a fenyegetések modellezése felépítése közben:
 
-1. Create a diagram out of reference architecture. 
-2. Start breadth-first. Get an overview, and understand the system as a whole, before deep-diving.  This helps ensure that you deep-dive in the right places.
-3. Drive the process, don’t let the process drive you. If you find an issue in the modeling phase and want to explore it, go for it!  Don’t feel you need to follow these steps slavishly.  
+1. Hozzon létre egy referencia-architektúrában kívül diagramja. 
+2. Indítsa el a szélesség-első. Áttekintheti, és megismerje a rendszer egészének előtt mély-ról.  Ezzel biztosíthatja, hogy Ön részletesen a megfelelő helyeken.
+3. A folyamat meghajtó, ne engedje a folyamat, a meghajtó. Ha problémát talál a modellezési fázisban, és megismerheti, hogy nyissa meg azt a!  Nem látja, hogy slavishly kövesse az alábbi lépéseket.  
 
-#### <a name="threats"></a>Threats
-The four core elements of a threat model are:
+#### <a name="threats"></a>Fenyegetések
+A fenyegetések modellezése négy fő elemei a következők:
 
-* Processes (web services, Win32 services, *nix daemons, etc. Note that some complex entities (for example field gateways and sensors) can be abstracted as a process when a technical drill down in these areas is not possible.
-* Data stores (anywhere data is stored, such as a configuration file or database)
-* Data flow (where data moves between other elements in the application)
-* External Entities (anything that interacts with the system, but is not under the control of the application, examples include users and satellite feeds)
+* Folyamatok (web services, a Win32-szolgáltatások, * nix démonok stb. Vegye figyelembe, hogy bizonyos összetett entitások (például a mező átjárók és az érzékelők) azért, mivel nincs lehetőség egy folyamatot, ha egy műszaki részletezés ezeken a területeken.
+* Adatokat tárolja (bárhol tárolja, például a konfigurációs fájlban vagy adatbázis)
+* (Ha az adatok áthelyezése az alkalmazás egyéb elemek között) adatfolyama
+* Külső entitások (semmit, amely együttműködik a rendszerrel, de nem ellenőrzés alatt áll, az alkalmazás, például használó felhasználók belefoglalásához és hírcsatornák műholdas)
 
-All elements in the architectural diagram are subject to various threats; we will use the STRIDE mnemonic. Read [Threat Modeling Again, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) to know more about the STRIDE elements.
+A architekturális diagramja szereplő összes elem tartoznak a különböző fenyegetések; a STRIDE válasszanak használjuk. Olvasási [fenyegetés újra modellezési, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) további információkat a STRIDE elemeket.
 
-Different elements of the application diagram are subject to certain STRIDE threats:
+Az alkalmazás diagram különböző elemeinek bizonyos STRIDE fenyegetések vonatkoznak:
 
-* Processes are subject to STRIDE
-* Data flows are subject to TID
-* Data stores are subject to TID, and sometimes R, if the data stores are log files.
-* External entities are subject to SRD
+* Folyamatok STRIDE vonatkoznak.
+* Data flow TID vonatkoznak.
+* Adattároló TID és vonatkoznak néha R, ha az adattároló naplófájlokat.
+* Külső entitások SRD vonatkoznak.
 
-## <a name="security-in-iot"></a>Security in IoT
-Connected special-purpose devices have a significant number of potential interaction surface areas and interaction patterns, all of which must be considered to provide a framework for securing digital access to those devices. The term “digital access” is used here to distinguish from any operations that are carried out through direct device interaction where access security is provided through physical access control. For example, putting the device into a room with a lock on the door. While physical access cannot be denied using software and hardware, measures can be taken to prevent physical access from leading to system interference. 
+## <a name="security-in-iot"></a>Az IoT biztonsági
+Speciális csatlakoztatott eszközök lehetséges interakció területére és interakció kombinációját, amelyek figyelembe kell venni egy keretrendszert biztosít ezen eszközök digitális hozzáférésének biztonságossá tétele jelentős számú rendelkezik. "Digitális hozzáférés" kifejezés itt megkülönböztetni a közvetlen interakció keresztül végzett műveleteket biztonsági amennyiben a fizikai hozzáférés-vezérlés használatával. Például üzembe helyezése az eszköz ellátott zárolást ajtón. Fizikai hozzáférés nem lehet nem engedélyezett a szoftver- és hardverkonfigurációiról, amíg intézkedéseket is bevezető rendszer zavaró tényező való fizikai hozzáférés megakadályozása. 
 
-As we explore the interaction patterns, we will look at “device control” and “device data” with the same level of attention. “Device control” can be classified as any information that is provided to a device by any party with the goal of changing or influencing its behavior towards its state or the state of its environment. “Device data” can be classified as any information that a device emits to any other party about its state and the observed state of its environment.
+A kommunikáció minták tájékozódáshoz azt követően áttekintjük "eszköz control" és "eszköz adatok" a figyelmet a azonos szinten. "Eszköz control" semmilyen információt, amely bármelyik fél által biztosított egy eszközön, azzal a céllal, módosítása vagy felé állapotában vagy a környezet állapotát annak viselkedését befolyásoló meghatározhassa. "Eszköz adatok" meghatározhassa semmilyen információt, amely az eszköz állapotát és a megfigyelt állapotáról a környezet más felek bocsát ki.
 
-In order to optimize security best practices, it is recommended that a typical IoT architecture be divided into several component/zones as part of the threat modeling exercise. These zones are described fully throughout this section and include:
+Ahhoz, hogy az ajánlott biztonsági eljárások optimalizálása érdekében javasoljuk, hogy egy tipikus IoT-architektúra kell osztani több összetevő/zóna a gyakorlatban modellezési fenyegetés részeként. A zónák teljesen ebben a szakaszban leírt, többek között:
 
-* Device,
-* Field Gateway,
-* Cloud gateways, and
-* Services.
+* Eszköz,
+* A mező átjáró
+* A felhő átjárók, és
+* Szolgáltatások.
 
-Zones are broad way to segment a solution; each zone often has its own data and authentication and authorization requirements. Zones can also be used to isolation damage and restrict the impact of low trust zones on higher trust zones.
+Zónák széleskörű módon a szegmenseket, a megoldás; az egyes zónák gyakran van a saját adatok és a hitelesítési és engedélyezési követelményeinek. Zónák is használható elkülönítési kárt és alacsony megbízhatósági zónák magasabb megbízhatósági zónák hatásának korlátozása.
 
-Each zone is separated by a Trust Boundary, which is noted as the dotted red line in the diagram below. It represents a transition of data/information from one source to another. During this transition, the data/information could be subject to Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service and Elevation of Privilege (STRIDE).
+Minden egyes zónában van eltérő megbízhatósági tartományba, az alábbi ábrán a pontozott piros sorban észlelt. Ezt az adatok/információk átmenet egy forrás egy másikra. Ez a változás során az/adatait lehet Spoofing, Tampering, Letagadhatóság, Információfelfedés, szolgáltatásmegtagadásos és jogosultság jogosultságszint-emelés (STRIDE).
 
-![IoT Security Zones](media/iot-security-architecture/iot-security-architecture-fig1.png) 
+![Az IoT biztonsági zónák](media/iot-security-architecture/iot-security-architecture-fig1.png) 
 
-The components depicted within each boundary are also subjected to STRIDE, enabling a full 360 threat modeling view of the solution. The sections below elaborate on each of the components and specific security concerns and solutions that should be put into place.
+Az összetevők belül minden határ kitaláltak is kell alávetni STRIDE engedélyezése a teljes 360 fenyegetések modellezése nézet a megoldás. Az alábbi szakaszok ismertetik az egyes összetevők és adott biztonsági problémáit és megoldások, amelyek kell bevezetni.
 
-The sections that follows will discuss standard components typically found in these zones.
+Az alábbi szakaszok ismertetik szabványos összetevők ezekben a zónákban található.
 
-### <a name="the-device-zone"></a>The Device Zone
-The device environment is the immediate physical space around the device where physical access and/or “local network” peer-to-peer digital access to the device is feasible. A “local network” is assumed to be a network that is distinct and insulated from – but potentially bridged to – the public Internet, and includes any short-range wireless radio technology that permits peer-to-peer communication of devices. It does *not* include any network virtualization technology creating the illusion of such a local network and it does also not include public operator networks that require any two devices to communicate across public network space if they were to enter a peer-to-peer communication relationship.
+### <a name="the-device-zone"></a>Az eszköz zóna
+Az eszköz környezet egy körül az eszköz azonnali fizikai hely, ahol fizikai hozzáférés, illetve a "helyi hálózat" az eszköz társ-társ digitális elérése esetén valósítható meg. A "helyi hálózat" feltételezett, hogy önálló, és a – szigetelt, de számára – a nyilvános internethez potenciálisan össze, és bármely rövid hatótávolságú vezeték nélküli rádió technológia, amely lehetővé teszi az eszközök társ-társ kommunikációs magában foglalja a hálózat lehet. Létezik *nem* közé tartozik a hálózati virtualizálási technológia létrehozása a helyi hálózaton érhet, és nem is szerepelnek a két eszközök kommunikálhassanak a nyilvános hálózati helyet, ha azok egy társ-társ kommunikációs kapcsolat megadását igénylő nyilvános operátor hálózatok.
 
-### <a name="the-field-gateway-zone"></a>The Field Gateway Zone
-Field gateway is a device/appliance or some general-purpose server computer software that acts as communication enabler and, potentially, as a device control system and device data processing hub. The field gateway zone includes the field gateway itself and all devices that are attached to it. As the name implies, field gateways act outside dedicated data processing facilities, are usually location bound, are potentially subject to physical intrusion, and will have limited operational redundancy. All to say that a field gateway is commonly a thing one can touch and sabotage while knowing what its function is. 
+### <a name="the-field-gateway-zone"></a>A mező átjáró zóna
+A mező az átjáró az eszköz/berendezés vagy néhány általános célú kiszolgáló számítógépes szoftverek kommunikációs engedélyező, és esetleg eszköz verziókezelő rendszer-és eszköz adatfeldolgozási hub szolgáló. A mező átjáró tartozik az a mező átjáró és minden hozzá kapcsolt eszközöket. Foglalja, mező átjárók külső dedikált adatfeldolgozási berendezések működésre, általában kötött helyét, fizikai behatolás potenciálisan vonatkoznak, és csak korlátozott működési redundanciát. Minden, a tegyük fel például, győződjön meg arról, hogy egy mező átjáró általában egy dolog egy touch és szabotálására tudatában funkciójához van. 
 
-A field gateway is different from a mere traffic router in that it has had an active role in managing access and information flow, meaning it is an application addressed entity and network connection or session terminal. An NAT device or firewall, in contrast, do not qualify as field gateways since they are not explicit connection or session terminals, but rather a route (or block) connections or sessions made through them. The field gateway has two distinct surface areas. One faces the devices that are attached to it and represents the inside of the zone, and the other faces all external parties and is the edge of the zone.   
+Egy mező átjáró eltér puszta forgalom útválasztó, hogy ez volt-e a hozzáférés-kezelés aktív szerepet és információáramlás, ami azt jelenti, az alkalmazás címzett entitás és a hálózati kapcsolat vagy terminál-munkamenet. Egy NAT-eszköz vagy tűzfal, ezzel szemben nem felel meg a mező átjáróként mivel azok nem explicit kapcsolat vagy a munkamenet terminálok, de a ahelyett, hogy egy útvonalat (vagy blokk) kapcsolatok vagy a munkamenetek keresztül őket. A mező átjáró két különböző területére rendelkezik. Egy előtt álló az eszközöket, amelyek kapcsolódnak, és a zóna belső jelöli, és a másik oldal összes külső felek és a zónát a peremhálózaton.   
 
-### <a name="the-cloud-gateway-zone"></a>The cloud gateway zone
-Cloud gateway is a system that enables remote communication from and to devices or field gateways from several different sites across public network space, typically towards a cloud-based control and data analysis system, a federation of such systems. In some cases, a cloud gateway may immediately facilitate access to special-purpose devices from terminals such as tablets or phones. In the context discussed here, “cloud” is meant to refer to a dedicated data processing system that is not bound to the same site as the attached devices or field gateways. Also in a Cloud Zone, operational measures prevent targeted physical access and is not necessarily exposed to a “public cloud” infrastructure.  
+### <a name="the-cloud-gateway-zone"></a>A felhő átjáró zóna
+Átjáró a rendszer, amely lehetővé teszi a távoli kommunikációs eszközök vagy több különböző helyére a mező átjárók és nyilvános hálózati helyet, általában egy felhőalapú vezérlő és az adatok elemző rendszer, az ilyen rendszerek összevonási felé között. Bizonyos esetekben egy felhőátjáróhoz azonnal megkönnyíthetik hozzáférés speciális eszközökre például táblagépek és telefonok részére. Az itt tárgyalt környezetében a "felhő" célja, hogy egy dedikált adatfeldolgozási rendszer, amely nincs kötve ugyanazon a helyen, a csatlakoztatott eszközök vagy mező átjárók hivatkozik. Is felhő zónában, operatív intézkedések célzott fizikai hozzáférés megakadályozása, és nem feltétlenül tesz elérhetővé a "nyilvános felhő" infrastruktúrához.  
 
-A cloud gateway may potentially be mapped into a network virtualization overlay to insulate the cloud gateway and all of its attached devices or field gateways from any other network traffic. The cloud gateway itself is neither a device control system nor a processing or storage facility for device data; those facilities interface with the cloud gateway. The cloud gateway zone includes the cloud gateway itself along with all field gateways and devices directly or indirectly attached to it. The edge of the zone is a distinct surface area where all external parties communicate through.
+Egy felhőátjáróhoz potenciálisan társítja a hálózati virtualizálási átmeneti területre az átjáró és az összes csatlakoztatott eszközök vagy bármely más hálózati forgalmaktól mező átjárók háromszintű. A felhő átjáró sem egy eszköz, sem a feldolgozási vagy a tárolási létesítmény eszköz adatok; azok a felhő-átjáróval való kapcsolat. A felhő átjáró felhő magához az átjáróhoz valamint mező átjárók és az eszköz közvetlenül vagy közvetve csatlakoztatva tartozik. A zónát a peremhálózaton egy eltérő felületet biztosít, ahol az összes külső felek keresztül kommunikálnak.
 
-### <a name="the-services-zone"></a>The services zone
-A “service” is defined for this context as any software component or module that is interfacing with devices through a field- or cloud gateway for data collection and analysis, as well as for command and control.  Services are mediators. They act under their identity towards gateways and other subsystems, store and analyze data, autonomously issue commands to devices based on data insights or schedules and expose information and control capabilities to authorized end-users.
+### <a name="the-services-zone"></a>A szolgáltatások zóna
+A "szolgáltatás" definiálva van ebben a környezetben, a szoftverfrissítési összetevő vagy modul, amely az eszközök mező vagy felhő átjárón keresztül az adatok gyűjtése és elemzése, valamint a parancs és a vezérlés vele.  Szolgáltatások a közvetítő folyamatok. Azok az identitásukat, átjárók és az egyéb alrendszerek alatt működjön, tárolását és elemzését az adatok, önállóan eszközökre parancsokat adatok insights vagy az ütemezések alapján és információt teszi közzé és szabályozhatja a funkciókat az engedéllyel rendelkező végfelhasználók számára.
 
-### <a name="information-devices-vs-special-purpose-devices"></a>Information-devices vs. special-purpose devices
-PCs, phones, and tablets are primarily interactive information devices. Phones and tablets are explicitly optimized around maximizing battery lifetime. They preferably turn off partially when not immediately interacting with a person, or when not providing services like playing music or guiding their owner to a particular location. From a systems perspective, these information technology devices are mainly acting as proxies towards people. They are “people actuators” suggesting actions and “people sensors” collecting input. 
+### <a name="information-devices-vs-special-purpose-devices"></a>Eszközök információk, és speciális eszközök összehasonlítása
+Számítógépek, telefonok és táblagépek olyan eszközök elsősorban interaktív információk. Telefonok és táblagépek körül akkumulátor élettartama maximalizálva explicit módon vannak optimalizálva. Lehetőleg kikapcsolása részben Ha egy személy való interakció nem azonnal, vagy ha nem nyújt szolgáltatásokat, például zene lejátszása, vagy a tulajdonos irányítsa egy adott helyen. Rendszerek szempontjából ezek az információk technológia eszközök főként, személyek felé proxyként működő. "Személyek rákötni" arra vonatkozóan, műveletek és a "személyek érzékelők" bemeneti gyűjtése. 
 
-Special-purpose devices, from simple temperature sensors to complex factory production lines with thousands of components inside them, are different. These devices are much more scoped in purpose and even if they provide some user interface, they are largely scoped to interfacing with or be integrated into assets in the physical world. They measure and report environmental circumstances, turn valves, control servos, sound alarms, switch lights, and do many other tasks. They help to do work for which an information device is either too generic, too expensive, too big, or too brittle. The concrete purpose immediately dictates their technical design as well the available monetary budget for their production and scheduled lifetime operation. The combination of these two key factors constrains the available operational energy budget, physical footprint, and thus available storage, compute, and security capabilities.  
+Speciális eszközöket, az összetett gyári éles sorok több ezer összetevőket tartalmaz, egyszerű hőmérséklet-érzékelők eltérőek. Ezek az eszközök sokkal több hatóköre rendeltetésüket, és akkor is, ha a felhasználói felület egyes biztosítanak, nagy mértékben hatóköre való együttműködésre vagy integrálni kell a fizikai világ eszközök. Azok mérésére és környezeti körülmények jelentést, szelepek kapcsolja, vezérlését servos, riasztások hangkártya, fény kapcsoló és számos egyéb feladatok elvégzéséhez. Azok a Súgó gombra működnek, amelyek olyan információkat eszköz esetében túl általános, olcsóbbá túl, túl nagy vagy túl rideg. A konkrét, meghatározott célú azonnal határozzák meg, hogy a műszaki tervezést, is a rendelkezésre álló pénzügyi költségvetési éles és ütemezett élettartama műveletet. Ez a két kulcsfontosságú tényező kombinációja korlátozza az elérhető működési energia költségvetési, fizikai kezdjen, és így rendelkezésre álló tár, számítási és biztonsági képességeket.  
 
-If something “goes wrong” with automated or remote controllable devices, for example, physical defects or control logic defects to willful unauthorized intrusion and manipulation. The production lots may be destroyed, buildings may be looted or burned down, and people may be injured or even die. This is, of course, a whole different class of damage than someone maxing out a stolen credit card's limit. The security bar for devices that make things move, and also for sensor data that eventually results in commands that cause things to move, must be higher than in any e-commerce or banking scenario. 
+Ha valami "is megnőnek hibás" az automatikus és a távoli vezérelhető eszközök, például fizikai hibák vagy a vezérlő logikai hibák willful jogosulatlan behatolás és módosítását. A termelési sok meg kell semmisíteni, épületek esetleg looted, vagy írása és személyek lehet, hogy sérült, vagy még akkor is, die. Ez az, természetesen teljes különböző osztály kárt valaki maxing kimenő korlátja egy lopott hitelkártya-nál. A biztonsági eszköztár áthelyezése művelet eszközök és parancsok, amelyek helyezi át, a következőkre végül eredményezi érzékelő adatokat elektronikus kereskedelmi vagy banki adathierarchia nagyobbnak kell lennie. 
 
-### <a name="device-control-and-device-data-interactions"></a>Device control and device data interactions
-Connected special-purpose devices have a significant number of potential interaction surface areas and interaction patterns, all of which must be considered to provide a framework for securing digital access to those devices. The term “digital access” is used here to distinguish from any operations that are carried out through direct device interaction where access security is provided through physical access control. For example, putting the device into a room with a lock on the door. While physical access cannot be denied using software and hardware, measures can be taken to prevent physical access from leading to system interference. 
+### <a name="device-control-and-device-data-interactions"></a>Eszköz vezérlő és eszköz adatok interakciók
+Speciális csatlakoztatott eszközök lehetséges interakció területére és interakció kombinációját, amelyek figyelembe kell venni egy keretrendszert biztosít ezen eszközök digitális hozzáférésének biztonságossá tétele jelentős számú rendelkezik. "Digitális hozzáférés" kifejezés itt megkülönböztetni a közvetlen interakció keresztül végzett műveleteket biztonsági amennyiben a fizikai hozzáférés-vezérlés használatával. Például üzembe helyezése az eszköz ellátott zárolást ajtón. Fizikai hozzáférés nem lehet nem engedélyezett a szoftver- és hardverkonfigurációiról, amíg intézkedéseket is bevezető rendszer zavaró tényező való fizikai hozzáférés megakadályozása. 
 
-As we explore the interaction patterns, we will look at “device control” and “device data” with the same level of attention while threat modeling. “Device control” can be classified as any information that is provided to a device by any party with the goal of changing or influencing its behavior towards its state or the state of its environment. “Device data” can be classified as any information that a device emits to any other party about its state and the observed state of its environment. 
+A kommunikáció minták tájékozódáshoz azt követően áttekintjük "eszköz control" és "eszköz adatok" hitelesítésszolgáltatóéval azonos szintű figyelmét modellezni közben. "Eszköz control" semmilyen információt, amely bármelyik fél által biztosított egy eszközön, azzal a céllal, módosítása vagy felé állapotában vagy a környezet állapotát annak viselkedését befolyásoló meghatározhassa. "Eszköz adatok" meghatározhassa semmilyen információt, amely az eszköz állapotát és a megfigyelt állapotáról a környezet más felek bocsát ki. 
 
-## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Threat modeling the Azure IoT reference architecture
-Microsoft uses the framework outlined above to do threat modelling for Azure IoT. In the section below we therefore use the concrete example of Azure IoT Reference Architecture to demonstrate how to think about threat modelling for IoT and how to address the threats identified. In our case we identified four main areas of focus:
+## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Az Azure IoT-referenciaarchitektúra modellezési fenyegetés
+A Microsoft Azure IoT a modellezési fenyegetés a fent vázolt keretében használja. Az alábbi szakaszban ezért használjuk Azure IoT-Referenciaarchitektúra konkrét példája bemutatják, gondolja át az IoT modellezés fenyegetés és a fenyegetések azonosított megoldására. A mi esetünkben felismertük fókusz négy fő területet:
 
-* Devices and Data Sources,
-* Data Transport,
-* Device and Event Processing, and
-* Presentation
+* Eszközök és az adatforrás,
+* Adatok átvitel
+* Eszköz és az események feldolgozásával, és
+* Bemutató
 
-![Threat Modeling for Azure IoT](media/iot-security-architecture/iot-security-architecture-fig2.png) 
+![Az Azure IoT modellezési fenyegetés](media/iot-security-architecture/iot-security-architecture-fig2.png) 
 
-The diagram below provides a simplified view of Microsoft’s IoT Architecture using a Data Flow Diagram model that is used by the Microsoft Threat Modeling Tool:
+Az alábbi ábrán a Microsoft fenyegetések modellezése eszköz által használt adatfolyam-Diagram modell segítségével a Microsoft IoT-architektúra egyszerűsített nézetét biztosítja:
 
-![Threat Modeling for Azure IoT using MS Threat Modeling Tool](media/iot-security-architecture/iot-security-architecture-fig3.png)
+![Az Azure IoT eszközzel MS fenyegetések modellezése modellezési fenyegetés](media/iot-security-architecture/iot-security-architecture-fig3.png)
 
-It is important to note that the architecture separates the device and gateway capabilities. This allows the user to leverage gateway devices that are more secure: they are capable of communicating with the cloud gateway using secure protocols, which typically requires greater processing overhead that a native device  - such as a thermostat - could provide on its own. In the Azure services zone, we assume that the Cloud Gateway is represented by the Azure IoT Hub service.
+Fontos megjegyezni, hogy a architektúra elválasztja az eszköz- és átjáró lehetőségeket. Ez lehetővé teszi, hogy a felhasználót, hogy kihasználja az átjáró eszközök, amelyek nagyobb biztonságot nyújt: képesek kommunikálni a átjáró biztonságos protokollal, amelyhez általában kisebb feldolgozási terhelés, hogy a natív eszköz -, például egy termosztát - önállóan biztosítani. Az Azure-szolgáltatások zóna feltételezzük, hogy az átjáró az Azure IoT-központ szolgáltatás által képviselt.
 
-### <a name="device-and-data-sourcesdata-transport"></a>Device and data sources/data transport
-This section explores the architecture outlined above through the lens of threat modeling and gives an overview of how we are addressing some of the inherent concerns. We will focus on the core elements of a threat model:
+### <a name="device-and-data-sourcesdata-transport"></a>Eszközök és adatok források/adatok átvitel
+Ez a szakasz a fent vázolt modellezni identitásalapú architektúra felderíti, és áttekintést hogyan jelenleg éppen aktuális néhány rejlő fontos szempont. A fő elemei a fenyegetések modellezése tárgyaljuk:
 
-* Processes (those under our control and external items)
-* Communication (also called data flows)
-* Storage (also called data stores)
+* (Azok alatt a vezérlő és a külső elemek) folyamatok
+* Kommunikációs (más néven adatfolyamok)
+* Tárhely (más néven adattároló)
 
-#### <a name="processes"></a>Processes
-In each of the categories outlined in the Azure IoT architecture, we try to mitigate a number of different threats across the different stages data/information exists in: process, communication, and storage. Below we give an overview of the most common ones for the “process” category, followed by an overview of how these could be best mitigated: 
+#### <a name="processes"></a>Folyamatok
+Az egyes kategóriák az Azure IoT-architektúra leírt, az azt próbálja számos különböző fenyegetések mérséklésére között szerepel az/adatait különböző szakaszokat: folyamat, a kommunikáció és a tároló. Az alábbiakban azt áttekintést a leggyakrabban a "folyamat" kategória, hogyan ezek sikerült legjobb szüntethető áttekintése után: 
 
-**Spoofing (S)**: An attacker may extract cryptographic key material from a device, either at the software or hardware level, and subsequently access the system with a different physical or virtual device under the identity of the device the key material has been taken from. A good illustration is remote controls that can turn any TV and that are popular prankster tools.
+**(S)-címek hamisítását**: támadó egy eszközről, akár szoftveres vagy hardveres szinten, előfordulhat, hogy kibontása kriptográfiai kulcsokat tárol, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitás alatt az eszköz a kulcsokat tárol hozzáférés foglalt a. Egy jó ábra, amely bekapcsolja a TV és népszerű prankster eszközök távoli szabályozza.
 
-**Denial of Service (D)**: A device can be rendered incapable of functioning or communicating by interfering with radio frequencies or cutting wires. For example, a surveillance camera that had its power or network connection intentionally knocked out will not report data, at all.
+**Letiltja a szolgáltatást (D)**: egy eszköz nem működik, vagy történő kommunikációhoz választógomb-használati vagy kivágáshoz fenyegetéseknek zavarja alkalmas megjeleníthetők. Például a felügyeleti fényképezőgép, amelyekről a szándékosan kiejtett power vagy a hálózati kapcsolat nem küld adatokat, minden.
 
-**Tampering (T)**: An attacker may partially or wholly replace the software running on the device, potentially allowing the replaced software to leverage the genuine identity of the device if the key material or the cryptographic facilities holding key materials were available to the illicit program. For example, an attacker may leverage extracted key material to intercept and suppress data from the device on the communication path and replace it with false data that is authenticated with the stolen key material.
+**(T) illetéktelen**: támadó részben vagy egészben helyettesítheti az eszközön futó szoftver kihasználhatják a valódi identitás, az eszköz, ha a kulcs anyagot vagy a titkosítási kulcs anyagok okozó létesítményekben álltak rendelkezésre a tiltott program a kicserélt szoftver lehetővé. Például egy támadó előfordulhat, hogy kihasználja elfogására és ne jelenjen meg többé a kommunikációs elérési úton az eszköz adatait, és cserélje le a lopott kulcsokat tárol a hitelesített hamis adatok kibontott kulcsokat tárol.
 
-**Information Disclosure (I)**: If the device is running manipulated software, such manipulated software could potentially leak data to unauthorized parties. For example, an attacker may leverage extracted key material to inject itself into the communication path between the device and a controller or field gateway or cloud gateway to siphon off information.
+**Információk felfedése (I)**: Ha az eszközt úgy szoftvert futtat, úgy szoftverhez sikerült potenciálisan szivárgás lépett fel adatokat a jogosulatlan felek. Például egy támadó előfordulhat, hogy kihasználja behelyezése maga az eszköz és a vezérlő vagy mező átjáró vagy siphon ki adatokat az átjáró közötti kommunikáció elérési kibontott kulcsokat tárol.
 
-**Elevation of Privilege (E)**: A device that does specific function can be forced to do something else. For example, a valve that is programmed to open half way can be tricked to open all the way.
+**A jogosultság E illetéktelen**: egy eszköz, amelyet megadott funkciót is kényszeríthető, valami mással. Például, hogy nyissa meg a fele módon van programozott szelep is megtevésztve egészen megnyitásához.
 
-| **Component** | **Threat** | **Mitigation** | **Risk** | **Implementation** |
+| **Összetevő** | **Fenyegetések** | **Megoldás** | **Kockázati** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
-| Device |S |Assigning identity to the device and authenticating the device |Replacing device or part of the device with some other device. How do we know we are talking to the right device? |Authenticating the device, using Transport Layer Security (TLS) or IPSec. Infrastructure should support using pre-shared key (PSK) on those devices that cannot handle full asymmetric cryptography. Leverage Azure AD, [OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt) |
-| TRID |Apply tamperproof mechanisms to the device for example by making it very hard to impossible to extract keys and other cryptographic material from the device. |The risk is if someone is tampering the device (physical interference). How are we sure, that device has not tampered with. |The most effective mitigation is a trusted platform module (TPM) capability that allows storing keys in special on-chip circuitry from which the keys cannot be read, but can only be used for cryptographic operations that use the key but never disclose the key. Memory encryption of the device. Key management for the device. Signing the code. | |
-| E |Having access control of the device. Authorization scheme. |If the device allows for individual actions to be performed based on commands from an outside source, or even compromised sensors, it will allow the attack to perform operations not otherwise accessible. |Having authorization scheme for the device | |
-| Field Gateway |S |Authenticating the Field gateway to Cloud Gateway (cert based, PSK, Claim based,..) |If someone can spoof Field Gateway, then it can present itself as any device. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). All the same key storage and attestation concerns of devices in general – best case is use TPM. 6LowPAN extension for IPSec to support Wireless Sensor Networks (WSN). |
-| TRID |Protect the Field Gateway against tampering (TPM?) |Spoofing attacks that trick the cloud gateway thinking it is talking to field gateway could result in information disclosure and data tampering |Memory encryption, TPM’s, authentication. | |
-| E |Access control mechanism for Field Gateway | | | |
+| Eszköz |S |Identitás hozzárendelése az eszközt, és az eszköz hitelesítése |Eszköz vagy az eszköz része cseréje egy másik eszköz. Hogyan azt, hogy azt a megfelelő eszközre van szó? |Az eszköz használata a Transport Layer Security (TLS) vagy az IPSec-hitelesítéséhez. Infrastruktúra támogatnia kell a előmegosztott kulccsal (PSK), amely nem tudja kezelni a teljes aszimmetrikus titkosítási eszközökön. Használja ki az Azure AD [OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt) |
+| TRID |Alkalmazni tamperproof mechanizmusok az eszközön például oly módon, hogy nagyon nehéz a kulcsokat és más kriptográfiai anyag kibontani az eszköz nem lehetséges. |A kockázat, ha valaki van illetéktelen módosítását az eszköz (fizikai zavaró tényező). Hogyan történik a Microsoft, az eszköz nem illetéktelenül módosítva. |A leghatékonyabb megoldás egy platformmegbízhatósági modul (TPM) képesség, amely lehetővé teszi a kulcsok tárolása, amelyből a kulcsok nem olvasható, de csak akkor használható, amelyek a kulcsot használják, de soha nem fedjük fel a kulcs titkosítási műveletek különleges-chip áramkört. Az eszköz titkosítása memória. Az eszköz kulcskezelést. A kód aláírása. | |
+| E |Ha az eszköz hozzáférés-vezérlés. Hitelesítési séma. |Ha az eszköz lehetővé teszi, hogy az egyes műveletek végrehajtása a külső forrásból, vagy akár sérült biztonságú érzékelők parancsok, engedélyezi a támadás műveletek elvégzésére, egyéb módon nem érhető el. |Ha az eszköz a hitelesítési séma | |
+| A mező átjáró |S |Az átjáró (tanúsítványalapú, PSK, a jogcím-alapú,...) mezőben átjáró hitelesítése |Ha valaki mező átjáró hamis, majd azt is jelenthet maga mint bármely olyan eszközről. |A TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Ugyanazokat általános – eszközök kulcs tárolására és a tanúkiszolgáló aggályokat legjobb esetben van TPM használatát. Az IPSec támogatja a vezeték nélküli érzékelő hálózatok (WSN) bővítmény 6LowPAN. |
+| TRID |A mező átjáró (TPM?) hamisítás elleni védelme |Információk felfedése és az adatok illetéktelen módosítását hamisításra épülő támadásoknak, amely megtéveszteni a felhő átjáró számbavétele, mező-átjáróra van szó okozhat |Memória titkosítás, a TPM által, hitelesítés. | |
+| E |Hozzáférés-vezérlési mechanizmus mező átjáró | | | |
 
-Here are some examples of threats in this category:
+Íme néhány példa a ebbe a kategóriába tartozó fenyegetések:
 
-Spoofing: An attacker may extract cryptographic key material from a device, either at the software or hardware level, and subsequently access the system with a different physical or virtual device under the identity of the device the key material has been taken from.
+Címhamisítást: Támadó előfordulhat, hogy kinyerése kriptográfiai kulcsokat tárol egy eszközt, vagy a szoftver vagy hardverszintű, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitás alatt az eszköz a kulcsokat tárol vették a hozzáférés.
 
-**Denial of Service**: A device can be rendered incapable of functioning or communicating by interfering with radio frequencies or cutting wires. For example, a surveillance camera that had its power or network connection intentionally knocked out will not report data, at all.
+**Szolgáltatásmegtagadást**: egy eszköz nem működik, vagy történő kommunikációhoz választógomb-használati vagy kivágáshoz fenyegetéseknek zavarja alkalmas megjeleníthetők. Például a felügyeleti fényképezőgép, amelyekről a szándékosan kiejtett power vagy a hálózati kapcsolat nem küld adatokat, minden.
 
-**Tampering**: An attacker may partially or wholly replace the software running on the device, potentially allowing the replaced software to leverage the genuine identity of the device if the key material or the cryptographic facilities holding key materials were available to the illicit program.
+**Illetéktelen**: támadó részben vagy egészben helyettesítheti az eszközön futó szoftver kihasználhatják a valódi identitás, az eszköz, ha a kulcs anyagot vagy a titkosítási kulcs anyagok okozó létesítményekben álltak rendelkezésre a tiltott program a kicserélt szoftver lehetővé.
 
-**Tampering**: A surveillance camera that’s showing a visible-spectrum picture of an empty hallway could be aimed at a photograph of such a hallway. A smoke or fire sensor could be reporting someone holding a lighter under it. In either case, the device may be technically fully trustworthy towards the system, but it will report manipulated information.
+**Illetéktelen**: egy felügyeleti kamera, amely egy üres Előszoba látható pontszámot képe látható ilyen Előszoba fényképe célzó sikerült. Füst vagy tűz érzékelő sikerült készítőnek tekintene valaki rendelkezik egy világosabb rajta. Mindkét esetben az eszköz valószínűleg technikailag teljesen megbízható-e a rendszer felé, de úgy adatokat fog jelenteni.
 
-**Tampering**: An attacker may leverage extracted key material to intercept and suppress data from the device on the communication path and replace it with false data that is authenticated with the stolen key material.
+**Illetéktelen**: támadó előfordulhat, hogy kihasználja a elfogására és ne jelenjen meg többé a kommunikációs elérési úton az eszköz adatait, és cserélje le a lopott kulcsokat tárol a hitelesített hamis adatok kibontott kulcsokat tárol.
 
-**Tampering**: An attacker may partially or completely replace the software running on the device, potentially allowing the replaced software to leverage the genuine identity of the device if the key material or the cryptographic facilities holding key materials were available to the illicit program.
+**Illetéktelen**: támadó részben vagy teljesen helyettesítheti az eszközön futó szoftver kihasználhatják a valódi identitás, az eszköz, ha a kulcs anyagot vagy a titkosítási kulcs anyagok okozó létesítményekben álltak rendelkezésre a tiltott program a kicserélt szoftver lehetővé.
 
-**Information Disclosure**: If the device is running manipulated software, such manipulated software could potentially leak data to unauthorized parties.
+**Információk felfedése**: Ha az eszközt úgy szoftvert futtat, úgy szoftverhez sikerült potenciálisan szivárgás lépett fel adatokat a jogosulatlan felek.
 
-**Information Disclosure**: An attacker may leverage extracted key material to inject itself into the communication path between the device and a controller or field gateway or cloud gateway to siphon off information.
+**Információk felfedése**: támadó előfordulhat, hogy kihasználja a behelyezése maga az eszköz és a tartományvezérlő vagy mező átjáró vagy siphon információk ki felhő-átjáró közötti kommunikáció elérési kibontott kulcsokat tárol.
 
-**Denial of Service**: The device can be turned off or turned into a mode where communication is not possible (which is intentional in many industrial machines).
+**Szolgáltatásmegtagadást**: az eszköz ki van kapcsolva, vagy egy módba kapcsolva, ahol kommunikáció nincs lehetőség (ez utóbbi érték az ipari gépekről sok szándékos).
 
-**Tampering**: The device can be reconfigured to operate in a state unknown to the control system (outside of known calibration parameters) and thus provide data that can be misinterpreted
+**Illetéktelen**: az eszköz képes arra, hogy ismeretlen a rendszerbe (kívül ismert hitelesítési paraméterek) állapotban működjön, és így adja meg hibásan lesznek értelmezve adatok
 
-**Elevation of Privilege**: A device that does specific function can be forced to do something else. For example, a valve that is programmed to open half way can be tricked to open all the way.
+**Jogok kiterjesztése**: egy eszköz, amelyet megadott funkciót is kényszeríthető, valami mással. Például, hogy nyissa meg a fele módon van programozott szelep is megtevésztve egészen megnyitásához.
 
-**Denial of Service**: The device can be turned into a state where communication is not possible.
+**Szolgáltatásmegtagadást**: az eszközt be kell kapcsolni az olyan állapotban, amelyben kommunikáció nem lehetséges.
 
-**Tampering**: The device can be reconfigured to operate in a state unknown to the control system (outside of known calibration parameters) and thus provide data that can be misinterpreted.
+**Illetéktelen**: az eszköz képes arra, hogy ismeretlen a rendszerbe (kívül ismert hitelesítési paraméterek) állapotban működjön, és így biztosít az adatokat, hibásan lesznek értelmezve.
 
-**Spoofing/Tampering/Repudiation**: If not secured (which is rarely the case with consumer remote controls) an attacker can manipulate the state of a device anonymously. A good illustration is remote controls that can turn any TV and that are popular prankster tools.
+**-Címek hamisítását vagy Tampering/Repudiation**: Ha nem biztonságos (ez utóbbi érték ritkán fogyasztói távoli vezérlők esetében) a támadó névtelenül kezelhető az eszköz állapotát. Egy jó ábra, amely bekapcsolja a TV és népszerű prankster eszközök távoli szabályozza.
 
-#### <a name="communication"></a>Communication
-Threats around communication path between devices, devices and field gateways and device and cloud gateway. The table below has some guidance around open sockets on the device/VPN:
+#### <a name="communication"></a>Kommunikáció
+Eszközök, eszközök és a mező átjárók és az eszköz és a felhő átjáró közötti kommunikáció görbe körül fenyegetéseket. Az alábbi táblázat néhány útmutatás körül nyitott sockets meg az eszköz és a VPN rendelkezik:
 
-| **Component** | **Threat** | **Mitigation** | **Risk** | **Implementation** |
+| **Összetevő** | **Fenyegetések** | **Megoldás** | **Kockázati** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
-| Device IoT Hub |TID |(D)TLS (PSK/RSA) to encrypt the traffic |Eavesdropping or interfering the communication between the device and the gateway |Security on the protocol level. With custom protocols, we need to figure out how to protect them. In most cases, the communication takes place from the device to the IoT Hub (device initiates the connection). |
-| Device Device |TID |(D)TLS (PSK/RSA) to encrypt the traffic. |Reading data in transit between devices. Tampering with the data. Overloading the device with new connections |Security on the protocol level (MQTT/AMQP/HTTP/CoAP. With custom protocols, we need to figure out how to protect them. The mitigation for the DoS threat is to peer devices through a cloud or field gateway and have them only act as clients towards the network. The peering may result in a direct connection between the peers after having been brokered by the gateway |
-| External Entity Device |TID |Strong pairing of the external entity to the device |Eavesdropping the connection to the device. Interfering the communication with the device |Securely pairing the external entity to the device NFC/Bluetooth LE. Controlling the operational panel of the device (Physical) |
-| Field Gateway Cloud Gateway |TID |TLS (PSK/RSA) to encrypt the traffic. |Eavesdropping or interfering the communication between the device and the gateway |Security on the protocol level (MQTT/AMQP/HTTP/CoAP). With custom protocols, we need to figure out how to protect them. |
-| Device Cloud Gateway |TID |TLS (PSK/RSA) to encrypt the traffic. |Eavesdropping or interfering the communication between the device and the gateway |Security on the protocol level (MQTT/AMQP/HTTP/CoAP). With custom protocols, we need to figure out how to protect them. |
+| Az IoT-központ eszköz |TID |(D) A TLS (PSK/RSA) a forgalom titkosításához |Lehallgatást, vagy zavaró az eszköz és az átjáró közötti kommunikáció |A biztonsági protokoll szintjén. Az egyéni protokollok igazolnia kell a rájönni arra, hogyan lehet megvédeni őket. A legtöbb esetben a kommunikáció akkor történik meg az adott eszközről az IoT hubhoz (eszköz kezdeményezi a kapcsolatot). |
+| Eszköz eszköz |TID |(D) TLS (PSK/RSA) a forgalom titkosításához. |Az eszközök közötti átvitel során adatainak olvasása. Az adatok illetéktelen módosításának. Túl van terhelve az eszközt az új kapcsolatok |A biztonsági protokoll szint (MQTT/AMQP/HTTP/CoAP. Az egyéni protokollok igazolnia kell a rájönni arra, hogyan lehet megvédeni őket. A megoldás a DoS fenyegetés felhő vagy mező átjárón keresztül eszközök partnert, és lehet őket az ügyfelek felé a hálózat csak act. A társviszony-létesítést azt eredményezheti, hogy az átjáró által lett közvetítőalapú után a partnerek között közvetlen kapcsolat |
+| Külső entitás eszköz |TID |Az eszközhöz külső entitás erős párosítás |A kapcsolat az eszköz lehallgatás. A kommunikációs zavarja a eszköz |Az eszköz NFC/Bluetooth LE a külső entitás biztonságosan párosításhoz. Az eszköz (tényleges) működési panel vezérlése |
+| A mező átjáró átjáró |TID |TLS (PSK/RSA) a forgalom titkosításához. |Lehallgatást, vagy zavaró az eszköz és az átjáró közötti kommunikáció |Biztonsági szint (MQTT/AMQP/HTTP/CoAP) protokollt. Az egyéni protokollok igazolnia kell a rájönni arra, hogyan lehet megvédeni őket. |
+| Eszköz átjáró |TID |TLS (PSK/RSA) a forgalom titkosításához. |Lehallgatást, vagy zavaró az eszköz és az átjáró közötti kommunikáció |Biztonsági szint (MQTT/AMQP/HTTP/CoAP) protokollt. Az egyéni protokollok igazolnia kell a rájönni arra, hogyan lehet megvédeni őket. |
 
-Here are some examples of threats in this category:
+Íme néhány példa a ebbe a kategóriába tartozó fenyegetések:
 
-**Denial of Service**: Constrained devices are generally under DoS threat when they actively listen for inbound connections or unsolicited datagrams on a network, because an attacker can open many connections in parallel and not service them or service them very slowly, or the device can be flooded with unsolicited traffic. In both cases, the device can effectively be rendered inoperable on the network.
+**Szolgáltatásmegtagadást**: korlátozott eszközök általában alatt álló DoS amikor azokat aktívan figyelni a bejövő kapcsolatok vagy kéretlen datagramok a hálózaton, mert megnyithat egy támadó sok kapcsolattal párhuzamosan és nem szolgáltatás őket vagy nagyon lassan szolgáltatás őket, vagy lehet, hogy az eszköz árasztott kéretlen forgalommal. Mindkét esetben az eszköz hatékonyan megjeleníthetők működésképtelenné válik a hálózaton.
 
-**Spoofing, Information Disclosure**: Constrained devices and special-purpose devices often have one-for-all security facilities like password or PIN protection, or they wholly rely on trusting the network, meaning they will grant access to information when a device is on the same network, and that network is often only protected by a shared key. That means that when the shared secret to device or network is disclosed, it is possible to control the device or observe data emitted from the device.  
+**Címek hamisítása, az információk felfedése**: korlátozott és speciális eszközre gyakran rendelkezik egy összes biztonsági létesítményekben például jelszó vagy PIN-kód védelmet, vagy teljesen támaszkodnak megbízó a hálózaton, ami azt jelenti, számára biztosított információk elérését, amikor egy eszköz ugyanazon a hálózaton, és erre a hálózatra gyakran csak védik a megosztott kulcs. Amely azt jelenti, hogy a megosztott titkot az eszköz vagy a hálózati felfedett, ha lehetséges, hogy az eszköz vezérléséhez, és vegye figyelembe az adatok az eszközről a kibocsátott.  
 
-**Spoofing**: an attacker may intercept or partially override the broadcast and spoof the originator (man in the middle)
+**-Címek hamisítását**: támadó előfordulhat, hogy intercept vagy részben bírálja felül a szórás és a kezdeményező (a középső man) hamisításának
 
-**Tampering**: an attacker may intercept or partially override the broadcast and send false information 
+**Illetéktelen**: támadó előfordulhat, hogy intercept vagy részben bírálja felül a szórás, és hamis információk küldése 
 
-**Information Disclosure:** an attacker may eavesdrop on a broadcast and obtain information without authorization **Denial of Service:** an attacker may jam the broadcast signal and deny information distribution
+**Információk felfedése:** egy támadó előfordulhat, hogy kihallgassa a közvetítés és engedély nélkül információkhoz **szolgáltatásmegtagadást:** egy támadó előfordulhat, hogy a szórási jel dzsem, és a megtagadási információk terjesztési
 
 #### <a name="storage"></a>Storage
-Every device and field gateway has some form of storage (temporary for queuing the data, operating system (OS) image storage).
+Minden eszköz és a mező átjáró storage (az adatok, az operációs rendszer lemezkép tárolási Queuing ideiglenes) rendelkezik.
 
-| **Component** | **Threat** | **Mitigation** | **Risk** | **Implementation** |
+| **Összetevő** | **Fenyegetések** | **Megoldás** | **Kockázati** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
-| Device storage |TRID |Storage encryption, signing the logs |Reading data from the storage (PII data), tampering with telemetry data. Tampering with queued or cached command control data. Tampering with configuration or firmware update packages while cached or queued locally can lead to OS and/or system components being compromised |Encryption, message authentication code (MAC) or digital signature. Where possible, strong access control through resource access control lists (ACLs) or permissions. |
-| Device OS image |TRID | |Tampering with OS /replacing the OS components |Read-only OS partition, signed OS image, Encryption |
-| Field Gateway storage (queuing the data) |TRID |Storage encryption, signing the logs |Reading data from the storage (PII data), tampering with telemetry data, tampering with queued or cached command control data. Tampering with configuration or firmware update packages (destined for devices or field gateway) while cached or queued locally can lead to OS and/or system components being compromised |BitLocker |
-| Field Gateway OS image |TRID | |Tampering with OS /replacing the OS components |Read-only OS partition, signed OS image, Encryption |
+| Eszköz tárhelyén |TRID |Tárolás titkosítását, a naplók aláírása |A tároló (személyazonosításra alkalmas adatokat), telemetriai adatok illetéktelen módosításának adatok olvasása. Illetéktelenül aszinkron vagy gyorsítótárazott parancs vezérlő adatokat. Konfiguráció vagy a belső vezérlőprogram frissítési csomagokat illetéktelenül során gyorsítótárazva, vagy helyileg várólistára vezethet feltörésének az operációs rendszer és/vagy a rendszer összetevők |Titkosítás, az üzenethitelesítő kódot (MAC) vagy a digitális aláírás. Ha lehetséges, erős hozzáférés keresztül erőforrásokhoz való hozzáférést vezérlő listák (ACL) vagy hozzáférési engedélyekkel. |
+| Az eszköz operációs rendszere kép |TRID | |Az operációs rendszer illetéktelenül / az operációs rendszer összetevőit cseréje |Csak olvasható az operációs rendszer partíció aláírt operációsrendszer-lemezképek, a titkosítás |
+| A mező átjárói tárolás (az adatok queuing) |TRID |Tárolás titkosítását, a naplók aláírása |A tároló (személyazonosításra alkalmas adatokat), telemetriai adatok illetéktelen módosításának adatok olvasása illetéktelenül módosítsák a várólistára vagy gyorsítótárazott parancs vezérlő adatokat. (Az eszközök vagy mező átjáró szánt) konfigurációja vagy a belső vezérlőprogram frissítési csomagokat illetéktelenül során gyorsítótárazva, vagy helyileg várólistára vezethet feltörésének az operációs rendszer és/vagy a rendszer összetevők |A BitLocker |
+| A mező az átjáró operációsrendszer-lemezképek |TRID | |Az operációs rendszer illetéktelenül / az operációs rendszer összetevőit cseréje |Csak olvasható az operációs rendszer partíció aláírt operációsrendszer-lemezképek, a titkosítás |
 
-### <a name="device-and-event-processingcloud-gateway-zone"></a>Device and event processing/cloud gateway zone
-A cloud gateway is system that enables remote communication from and to devices or field gateways from several different sites across public network space, typically towards a cloud-based control and data analysis system, a federation of such systems. In some cases, a cloud gateway may immediately facilitate access to special-purpose devices from terminals such as tablets or phones. In the context discussed here, “cloud” is meant to refer to a dedicated data processing system that is not bound to the same site as the attached devices or field gateways, and where operational measures prevent targeted physical access but is not necessarily to a “public cloud” infrastructure.  A cloud gateway may potentially be mapped into a network virtualization overlay to insulate the cloud gateway and all of its attached devices or field gateways from any other network traffic. The cloud gateway itself is neither a device control system nor a processing or storage facility for device data; those facilities interface with the cloud gateway. The cloud gateway zone includes the cloud gateway itself along with all field gateways and devices directly or indirectly attached to it.
+### <a name="device-and-event-processingcloud-gateway-zone"></a>Eszköz és az esemény feldolgozása/felhő átjáró zóna
+Egy átjáró a rendszer, amely lehetővé teszi a távoli kommunikációs eszközök vagy több különböző helyére a mező átjárók és nyilvános hálózati helyet, általában egy felhőalapú vezérlő és az adatok elemző rendszer, az ilyen rendszerek összevonási felé között. Bizonyos esetekben egy felhőátjáróhoz azonnal megkönnyíthetik hozzáférés speciális eszközökre például táblagépek és telefonok részére. A környezetben, az itt tárgyalt célja, hogy "a felhő" hivatkozik egy dedikált adatfeldolgozási rendszer, amely nincs kötve a csatlakoztatott eszközök vagy mező átjárók ugyanazon a helyen, és ahol a működési intézkedések megakadályozása megcélzott fizikai hozzáféréssel, de nem feltétlenül "nyilvános felhő" infrastruktúrára.  Egy felhőátjáróhoz potenciálisan társítja a hálózati virtualizálási átmeneti területre az átjáró és az összes csatlakoztatott eszközök vagy bármely más hálózati forgalmaktól mező átjárók háromszintű. A felhő átjáró sem egy eszköz, sem a feldolgozási vagy a tárolási létesítmény eszköz adatok; azok a felhő-átjáróval való kapcsolat. A felhő átjáró felhő magához az átjáróhoz valamint mező átjárók és az eszköz közvetlenül vagy közvetve csatlakoztatva tartozik.
 
-Cloud gateway is mostly custom built piece of software running as a service with exposed endpoints to which field gateway and devices connect. As such it must be designed with security in mind. Please follow [SDL](http://www.microsoft.com/sdl) process for designing and building this service. 
+Átjáró többnyire egyéni beépített, amelyhez a mező átjáró és az eszközök csatlakozni kitett végpontokon szolgáltatásként futó szoftver. Ilyen úgy kell megtervezni a biztonságot szem előtt. Kövesse az [SDL](http://www.microsoft.com/sdl) folyamatok tervezéséről és kiépítéséről ezt a szolgáltatást. 
 
-#### <a name="services-zone"></a>Services zone
-A control system (or controller) is a software solution that interfaces with a device, or a field gateway, or cloud gateway for the purpose of controlling one or multiple devices and/or to collect and/or store and/or analyze device data for presentation, or subsequent control purposes. Control systems are the only entities in the scope of this discussion that may immediately facilitate interaction with people. The exception are intermediate physical control surfaces on devices, like a switch that allows a person to turn the device off or change other properties, and for which there is no functional equivalent that can be accessed digitally. 
+#### <a name="services-zone"></a>Szolgáltatások zóna
+A rendszer (vagy a tartományvezérlő) nem egy szoftveres megoldás, amely egy eszközt, vagy egy mező átjáróval vagy a felhő-átjáró egy vagy több eszköz ellenőrzésére és/vagy gyűjtése és/vagy tárolására és/vagy eszköz adatelemzés bemutató vagy későbbi ellenőrzési célból felületek. Vezérlő rendszereket, amely személyek való együttműködéshez azonnal elősegíti az ismertető a hatókör csak entitást. A kivétel olyan eszközök, például egy kapcsoló, amely lehetővé teszi, hogy egy személy, hogy az eszköz kikapcsolása vagy más tulajdonságainak módosítása, és amelynek nincs digitálisan elérhető funkcionális egyenértékű köztes fizikai vezérlő felületek. 
 
-Intermediate physical control surfaces are those where any sort of governing logic constrains the function of the physical control surface such that an equivalent function can be initiated remotely or input conflicts with remote input can be avoided – such intermediated control surfaces are conceptually attached to a local control system that leverages the same underlying functionality as any other remote control system that the device may be attached to in parallel. Top threats to the cloud computing can be read at [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) page.
+Köztes fizikai vezérlő felületek azok hol tetszőleges logika szabályozó korlátozza a fizikai vezérlő felület függvény úgy, hogy megfelelője távolról kezdeményezhetők, vagy távoli bemeneti bemeneti ütközik elkerülhetők – ilyen intermediated vezérlő felületek elméleti szinten van csatolva egy helyi verziókezelő rendszer, amely kihasználja a azonos alapul szolgáló bármely más távvezérlési rendszert, hogy az eszköz párhuzamosan is kapcsolódhat. A felhőre lehet olvasni a felső veszélyek [felhőalapú biztonsági Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) lap.
 
-## <a name="additional-resources"></a>Additional resources
-Refer to the following articles for additional information:
+## <a name="additional-resources"></a>További források
+További információt a következő cikkekben talál:
 
-* [SDL Threat Modeling Tool](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
-* [Microsoft Azure IoT reference architecture](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
+* [SDL fenyegetés modellezési eszköz](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
+* [A Microsoft Azure IoT-referenciaarchitektúra](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
 

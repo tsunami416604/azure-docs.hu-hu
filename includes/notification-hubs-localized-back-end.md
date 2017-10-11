@@ -2,7 +2,7 @@
 
 
 
-When you send template notifications you only need to provide a set of properties, in our case we will send the set of properties containing the localized version of the current news, for instance:
+Csak meg kell adnia a tulajdonságait sablon értesítéseket küld, amikor a mi esetünkben küldünk a tulajdonságkészletbe honosított verziója az aktuális híreket tartalmazó példány:
 
     {
         "News_English": "World News in English!",
@@ -11,12 +11,12 @@ When you send template notifications you only need to provide a set of propertie
     }
 
 
-This section shows how to send notifications using a console app
+Ez a szakasz bemutatja, hogyan küldhetők értesítések egy konzolalkalmazás használatával
 
-The included code broadcasts to both Windows Store and iOS devices, since the backend can broadcast to any of the supported devices.
+A befoglalt kódot közzéteszi Windows áruház és az iOS-eszközökre, mivel a háttérkiszolgálón is szórási bármely, a támogatott eszközök.
 
-### <a name="to-send-notifications-using-a-c-console-app"></a>To send notifications using a C# console app
-Modify the `SendTemplateNotificationAsync` method in the console app you previously created with the following code. Notice how in this case there is no need to send multiple notifications for different locales and platforms.
+### <a name="to-send-notifications-using-a-c-console-app"></a>Egy C# Konzolalkalmazás használatával az értesítések küldéséhez
+Módosítsa a `SendTemplateNotificationAsync` módszer a korábban létrehozott kódot a következő konzol alkalmazás. Figyelje meg, hogyan ebben az esetben nincs szükség a különböző területi beállításokhoz és platformokra több értesítések küldéséhez.
 
         private static async void SendTemplateNotificationAsync()
         {
@@ -52,10 +52,10 @@ Modify the `SendTemplateNotificationAsync` method in the console app you previou
         }
 
 
-Note that this simple call will deliver the localized piece of news to **all** your devices, irrespective of the platform, as your Notification Hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
+Vegye figyelembe, hogy a egyszerű hívás fog továbbítani az honosított adat híreket, **összes** az eszközök, függetlenül a platform, az értesítési központ hoz létre, és kézbesíti az összes eszközt egy adott előfizetni a megfelelő natív forgalma címke.
 
-### <a name="sending-the-notification-with-mobile-services"></a>Sending the notification with Mobile Services
-In your Mobile Service scheduler, you can use the following script:
+### <a name="sending-the-notification-with-mobile-services"></a>A Mobile Services értesítés küldése
+A Mobile Service ütemező a következő parancsfájlt használhatja:
 
     var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');

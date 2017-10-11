@@ -9,17 +9,18 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
+ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: cd57f3a43142b3af3546eafd9749123fadd333c2
-ms.openlocfilehash: 27cb0cda5d836e042e9eca3c053577db0bd8c148
-
-
+ms.openlocfilehash: 303be1d303df8074283cb1d37c74923cca80ae59
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters-preview"></a>Bevezetés a Hadoop-biztonság használatába a tartományhoz csatlakoztatott HDInsight-fürtök esetében (Előnézet)
 
@@ -27,8 +28,9 @@ Az Azure HDInsight eddig csak egyetlen felhasználói helyi rendszergazdát tám
 
 > [!NOTE]
 > Az előnézetben leírt új funkciók kizárólag a Linux-alapú HDInsight-fürtöknél érhetők el a Hive számítási feladatokhoz. Az egyéb számítási feladatokat, például a HBase-t, a Sparkot, a Stormot és a Kafkát a jövőbeli kiadások teszi elérhetővé.
->
->
+
+> [!IMPORTANT]
+> Oozie nincs engedélyezve a HDInsight-tartományhoz.
 
 ## <a name="benefits"></a>Előnyök
 A vállalati biztonság négy pillérre támaszkodik – szegélyhálózat-alapú biztonság, hitelesítés, engedélyezés és titkosítás.
@@ -48,16 +50,10 @@ A legtöbb vállalat által követett ajánlott eljárás az, hogy nem minden al
 A HDInsight-fürt erőforrásainak illetéktelen felhasználóktól való védelme és az adatok biztosítása mellett szükséges az összes fürterőforráshoz és adathoz történő hozzáférés naplózása is, hogy nyomon követhetőek legyenek az illetéktelen vagy nem szándékos hozzáférések az erőforrásokhoz. Ezzel az előzetes verzióval a rendszergazda megtekintheti és jelentheti az összes hozzáférést a HDInsight-fürtök erőforrásaihoz és adataihoz. Ezenkívül a rendszergazda megtekintheti és jelentheti a hozzáférés-vezérlés Apache Ranger által támogatott végpontokban végzett változtatásait. A tartományhoz csatlakoztatott HDInsight-fürt a már ismert Apache Ranger felhasználói felületet használja a keresésre a naplókban. A háttérben a Ranger az [Apache Solr](http://hortonworks.com/apache/solr/) platformot használja a tárolásra és a keresésre a naplókban.
 
 ### <a name="encryption"></a>Titkosítás
-Az adatok védelme fontos a szervezeti biztonság és a megfelelési követelmények teljesítése érdekében, és az illetéktelen alkalmazottak adatokhoz való hozzáférésének korlátozása mellett ajánlott titkosítással is védeni őket. A HDInsight-fürtök, az Azure Storage-blob adattárolók, illetve az Azure Data Lake Storage is támogatja a transzparens kiszolgálóoldali inaktív [adattikosítást](../storage/storage-service-encryption.md). A biztonságos HDInsight-fürtök zökkenőmentesen működnek a kiszolgálóoldali inaktív adattitkosítás funkcióval.
+Az adatok védelme fontos a szervezeti biztonság és a megfelelési követelmények teljesítése érdekében, és az illetéktelen alkalmazottak adatokhoz való hozzáférésének korlátozása mellett ajánlott titkosítással is védeni őket. A HDInsight-fürtök, az Azure Storage-blob adattárolók, illetve az Azure Data Lake Storage is támogatja a transzparens kiszolgálóoldali inaktív [adattikosítást](../storage/common/storage-service-encryption.md). A biztonságos HDInsight-fürtök zökkenőmentesen működnek a kiszolgálóoldali inaktív adattitkosítás funkcióval.
 
 ## <a name="next-steps"></a>Következő lépések
 * A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](hdinsight-domain-joined-configure.md).
 * A tartományhoz csatlakoztatott HDInsight-fürtök kezeléséhhez lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md).
 * A Hive-házirendek konfigurálásához és a Hive-lekérdezések futtatásához lásd: [Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtökben](hdinsight-domain-joined-run-hive.md).
-* A Hive-lekérdezések futtatásához az SSH használatával a tartományhoz csatlakoztatott HDInsight-fürtökben lásd: [Az SSH használata a HDInsightra épülő Linuxalapú Hadooppal Linux, Unix vagy OS X rendszerben](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-
+* Az SSH használata a tartományhoz csatlakoztatott HDInsight-fürtökön Hive-lekérdezéseket futtat, tekintse meg a [az SSH a Hdinsighttal](hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

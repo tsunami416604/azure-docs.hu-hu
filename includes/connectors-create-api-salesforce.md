@@ -1,18 +1,18 @@
-### <a name="prerequisites"></a>Prerequisites
-* A [Salesforce](https://salesforce.com) account  
+### <a name="prerequisites"></a>Előfeltételek
+* A [Salesforce](https://salesforce.com) fiók  
 
-Before you can use your Salesforce account in a logic app, you must authorize the logic app to connect to your Salesforce account.Fortunately, you can do this easily from within your logic app on the Azure Portal.  
+A Salesforce-fiókhoz a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazást a Salesforce-fiókhoz való csatlakozáshoz. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon.  
 
-Here are the steps to authorize your logic app to connect to your Salesforce account:  
+A Logic Apps alkalmazást a Salesforce-fiókhoz való csatlakozás engedélyezése lépései a következők:  
 
-1. To create a connection to Salesforce, in the logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Salesforce* in the search box. Select the trigger or action you'll like to use:  
-   ![Salesforce connection image 1](./media/connectors-create-api-salesforce/salesforce-1.png)  
-2. If you haven't created any connections to Salesforce before, you'll get prompted to provide your Salesforce credentials. These credentials will be used to authorize your logic app to connect to, and access your Salesforce account's data:  
-   ![Salesforce connection image 2](./media/connectors-create-api-salesforce/salesforce-2.png)  
-3. Provide your Salesforce user name and password to authorize your logic app:  
-   ![Salesforce connection image 3](./media/connectors-create-api-salesforce/salesforce-3.png)  
-4. Allow us to connect to Salesforce:  
-   ![Salesforce connection image 4](./media/connectors-create-api-salesforce/salesforce-4.png)  
-5. Notice the connection has been created and you are now free to proceed with the other steps in your logic app:  
-   ![Salesforce connection image 5](./media/connectors-create-api-salesforce/salesforce-5.png)  
+1. A logic app designer Salesforce, kapcsolat létrehozásához válassza **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *Salesforce* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
+   ![Kép: a 1 Salesforce kapcsolat](./media/connectors-create-api-salesforce/salesforce-1.png)  
+2. Ha még nem hozott létre a Salesforce előtt fennálló kapcsolatokat, a rendszer a Salesforce hitelesítő fog kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használt, és a Salesforce-fiókhoz adatok eléréséhez:  
+   ![Kép: Salesforce kapcsolat 2](./media/connectors-create-api-salesforce/salesforce-2.png)  
+3. A Salesforce-felhasználónevet és jelszót kell megadniuk engedélyezik a Logic Apps alkalmazást:  
+   ![Kép: a 3 Salesforce kapcsolat](./media/connectors-create-api-salesforce/salesforce-3.png)  
+4. Tartózkodási Salesforce való csatlakozáshoz:  
+   ![Kép: a 4 Salesforce kapcsolat](./media/connectors-create-api-salesforce/salesforce-4.png)  
+5. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
+   ![Kép: a 5 Salesforce kapcsolat](./media/connectors-create-api-salesforce/salesforce-5.png)  
 

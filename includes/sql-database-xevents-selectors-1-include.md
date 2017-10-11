@@ -1,7 +1,7 @@
 > [!div class="op_single_selector"]
-> * [Overview](../articles/sql-database/sql-database-xevent-db-diff-from-svr.md)
-> * [Ring Buffer](../articles/sql-database/sql-database-xevent-code-ring-buffer.md)
-> * [Event File](../articles/sql-database/sql-database-xevent-code-event-file.md)
+> * [Áttekintés](../articles/sql-database/sql-database-xevent-db-diff-from-svr.md)
+> * [Gyűrűpuffer](../articles/sql-database/sql-database-xevent-code-ring-buffer.md)
+> * [Esemény](../articles/sql-database/sql-database-xevent-code-event-file.md)
 > 
 > 
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/27/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 A Log Analytics információkat biztosít a gyűjtött adatok mennyiségéről, valamint arról, hogy mely számítógépek küldték az adatokat és milyen típusú adatokat küldtek.  A **Log Analytics használati** irányítópultján megtekintheti, hogy mennyi adatot küld a rendszer a Log Analytics szolgáltatásnak. Az irányítópult megjeleníti, hogy az egyes megoldások mennyi adatot gyűjtenek össze, és a számítógépek mennyi adatot küldenek.
@@ -173,4 +172,3 @@ A [megoldáscélzási](../operations-management-suite/operations-management-suit
 * A [teljesítményszámlálók konfigurációjának](log-analytics-data-sources-performance-counters.md) módosítása
 * Az [eseménynaplók konfigurációjának](log-analytics-data-sources-windows-events.md) módosítása
 * A [rendszernapló konfigurációjának](log-analytics-data-sources-syslog.md) módosítása
-

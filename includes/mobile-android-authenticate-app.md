@@ -1,7 +1,7 @@
 
-1. Open the project in Android Studio.
+1. Nyissa meg a projekt az Android Studio.
 
-2. In **Project Explorer** in Android Studio, open the ToDoActivity.java file and add the following import statements:
+2. A **Project Explorer** az Android Studióban nyissa meg a ToDoActivity.java fájlban, és adja hozzá a következő importálási utasításokat:
 
         import java.util.concurrent.ExecutionException;
         import java.util.concurrent.atomic.AtomicBoolean;
@@ -13,7 +13,7 @@
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
 
-3. Add the following method to the **ToDoActivity** class:
+3. Adja hozzá a következő metódust a **ToDoActivity** osztály:
 
         // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
         public static final int GOOGLE_LOGIN_REQUEST_CODE = 1;
@@ -43,18 +43,18 @@
             }
         }
 
-    This code creates a method to handle the Google authentication process. A dialog displays the ID of the authenticated user. You can only proceed on a successful authentication.
+    Ez a kód egy metódust a Google hitelesítést hoz létre. Egy párbeszédpanel megjeleníti a hitelesített felhasználó Azonosítóját. Csak a sikeres hitelesítés lépne.
 
     > [!NOTE]
-    > If you are using an identity provider other than Google, change the value passed to the **login** method to one of the following values: _MicrosoftAccount_, _Facebook_, _Twitter_, or _windowsazureactivedirectory_.
+    > Ha eltérő Google identitásszolgáltató használ, módosítsa az értéket, átadott a **bejelentkezési** metódus a következő értékek egyikére: _MicrosoftAccount_, _Facebook_, _Twitter_, vagy _windowsazureactivedirectory_.
 
-4. In the **onCreate** method, add the following line of code after the code that instantiates the `MobileServiceClient` object.
+4. Az a **onCreate** módszer, példányosítja kód után adja hozzá a következő kódsort a `MobileServiceClient` objektum.
 
         authenticate();
 
-    This call starts the authentication process.
+    Ez a hívás a hitelesítési folyamat elindul.
 
-5. Move the remaining code after `authenticate();` in the **onCreate** method to a new **createTable** method:
+5. Helyezze át a többi kód után `authenticate();` a a **onCreate** egy új módszer **createTable** módszert:
 
         private void createTable() {
 
@@ -72,7 +72,7 @@
             refreshItemsFromTable();
         }
 
-6. To ensure redirection works as expected, add the following snippet of _RedirectUrlActivity_ to _AndroidManifest.xml_:
+6. Átirányítás works elvárt érdekében adja hozzá a következő szövegrészletet _RedirectUrlActivity_ való _AndroidManifest.xml_:
 
         <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
             <intent-filter>
@@ -84,7 +84,7 @@
             </intent-filter>
         </activity>
 
-7. Add redirectUriScheme to _build.gradle_ of your Android application.
+7. Adja hozzá a redirectUriScheme _build.gradle_ az Android alkalmazás.
 
         android {
             buildTypes {
@@ -99,13 +99,13 @@
             }
         }
 
-8. Add com.android.support:customtabs:23.0.1 to the dependencies in your build.gradle:
+8. Vegye fel a függőségeket a build.gradle com.android.support:customtabs:23.0.1:
 
-      dependencies {        // ...        compile 'com.android.support:customtabs:23.0.1'    }
+      függőségek {/ /... "com.android.support:customtabs:23.0.1" fordítási}
 
-9. From the **Run** menu, click **Run app** to start the app and sign in with your chosen identity provider.
+9. Az a **futtassa** menüben kattintson **-alkalmazás futtatása** el az alkalmazást, és jelentkezzen be a választott identitásszolgáltató számára.
 
 > [!WARNING]
-> The URL Scheme mentioned is case-sensitive.  Ensure that all occurrences of `{url_scheme_of_you_app}` use the same case.
+> Az URL-séma említett a kis-és nagybetűket.  Győződjön meg arról, hogy minden előfordulását `{url_scheme_of_you_app}` nagybetűket.
 
-When you are successfully signed in, the app should run without errors, and you should be able to query the back-end service and make updates to data.
+Ha Ön sikeresen bejelentkezett, futtasson-e az alkalmazás nem jelenik meg hibaüzenet, és meg tudják lekérdezni a háttér-szolgáltatást, és hogy adatok.

@@ -1,6 +1,6 @@
-1. From the Visual Studio menu, select **File > New > Project**.
-2. Under the **Templates** section of the **New Project** dialog box, select **Visual C# > Web**.
-3. Select **ASP.NET Core Web Application (.NET Core)**.
-4. Give your new application a name (or take the default) and select **OK**.
-5. Under **ASP.NET Core 1.1 Templates**, select **Web Application** and select **OK**.
+1. A Visual Studio menüjében válassza **fájl > Új > projekt**.
+2. Az a **sablonok** szakasza a **új projekt** párbeszédpanelen jelölje ki **Visual C# > Web**.
+3. Válassza ki **ASP.NET Core webes alkalmazás (.NET Core)**.
+4. Nevezze el az új alkalmazás (vagy az alapértelmezett igénybe), majd **OK**.
+5. A **ASP.NET Core 1.1 sablonok**, jelölje be **webalkalmazás** válassza **OK**.
 

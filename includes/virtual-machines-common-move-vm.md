@@ -1,29 +1,29 @@
 
 
-## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>Use the portal to move a VM to a different subscription
-You can move a VM and it's associated resources to a different subscription using the portal.
+## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>A portál használatával egy virtuális gép áthelyezése egy másik előfizetésben található
+Áthelyezheti egy virtuális Gépet, és a hozzá társított erőforrásokat egy másik előfizetést, a portál használatával.
 
-1. Open the [Azure portal](https://portal.azure.com).
-2. Click **Browse** > **Virtual machines** and select the VM you would like to move from the list.
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
+2. Kattintson a **Tallózás** > **virtuális gépek** válassza ki a virtuális Gépet szeretne áthelyezni a listából.
    
-    ![Screenshot of the Essentials section where you click the pencil icon to open the Move resources blade.](./media/virtual-machines-common-move-vm/move-button.png)
-3. In the **Essentials** section, click on the **Change subscription** pencil icon next to the subscription name. The **Move resources** blade will open.
+    ![Képernyőfelvétel az Essentials szakaszban, ahol, kattintson a ceruza ikonra áthelyezés erőforrások panel megnyitásához.](./media/virtual-machines-common-move-vm/move-button.png)
+3. Az a **Essentials** területen kattintson a a **előfizetés módosítása** előfizetés neve melletti ceruza ikonra. A **erőforrások áthelyezése** panel nyílik meg.
    
-    ![Screenshot of the Move resources blade.](./media/virtual-machines-common-move-vm/move.png)
-4. Select each of the resources to move. In most cases, you should move all of the listed optional resources.
-5. Select the **Subscription** where you want the VM to be moved.
-6. Select an existing **Resource group** or type a name to have a new resource group created.
-7. When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**.
+    ![Az áthelyezési erőforrások paneljét bemutató képernyőkép.](./media/virtual-machines-common-move-vm/move.png)
+4. Jelölje ki az áthelyezni kívánt erőforrásokat. A legtöbb esetben helyezze át a listában szereplő választható erőforrásokat.
+5. Válassza ki a **előfizetés** Ha azt szeretné, hogy a virtuális gép lesz áthelyezve.
+6. Válasszon ki egy létező **erőforráscsoport** vagy adjon meg egy nevet, hogy az új erőforráscsoport létrehozása.
+7. Amikor elkészült, válassza ki, hogy megismerte az, hogy új erőforrás-azonosítók jön létre, és szeretne használni a virtuális gép áthelyezése, miután kattintson **OK**.
 
-## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a>Use the portal to move a VM to another resource group
-You can move a VM and it's associated resources to another resource group using the portal.
+## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a>A portál használatával egy virtuális gép áthelyezése egy másik erőforráscsoportban
+Áthelyezheti egy virtuális Gépet, és a hozzá társított erőforrásokat egy másik erőforráscsoportban, a portál használatával.
 
-1. Open the [Azure portal](https://portal.azure.com).
-2. Click **Browse** > **Resource groups** and select the resource group that contains the VM.
-3. In the **Resource group** blade, select **Move** from the menu.
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
+2. Kattintson a **Tallózás** > **erőforráscsoportok** válassza ki a virtuális Gépet tartalmazó erőforráscsoportot.
+3. Az a **erőforráscsoport** panelen válassza **áthelyezése** a menüből.
    
-    ![Screenshot of the Move button on the Resource groups menu.](./media/virtual-machines-common-move-vm/move-rg.png)
-4. In the **Move resources** blade, select the resources to be moved and then either type an existing resource group name or choose to create a new resource group. When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**
+    ![Az Áthelyezés gombra az erőforrás-csoportok menü képernyőképe.](./media/virtual-machines-common-move-vm/move-rg.png)
+4. Az a **erőforrások áthelyezése** panelen válassza az erőforrások áthelyezése, és ezután vagy írja be a meglévő erőforrás csoport neve, vagy válasszon egy új erőforráscsoport létrehozásához. Amikor elkészült, válassza ki, hogy megismerte az, hogy új erőforrás-azonosítók jön létre, és szeretne használni a virtuális gép áthelyezése, miután kattintson **OK**
    
-    ![Screenshot of the Move resources blade.](./media/virtual-machines-common-move-vm/move-rg-list.png)
+    ![Az áthelyezési erőforrások paneljét bemutató képernyőkép.](./media/virtual-machines-common-move-vm/move-rg-list.png)
 

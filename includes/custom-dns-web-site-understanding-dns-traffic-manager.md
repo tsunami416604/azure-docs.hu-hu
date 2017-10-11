@@ -1,25 +1,25 @@
-The Domain Name System (DNS) is used to locate things on the internet. For example, when you enter an address in your browser, or click a link on a web page, it uses DNS to translate the domain into an IP address. The IP address is sort of like a street address, but it's not very human friendly. For example, it is much easier to remember a DNS name like **contoso.com** than it is to remember an IP address such as 192.168.1.88 or 2001:0:4137:1f67:24a2:3888:9cce:fea3.
+A tartománynévrendszer (DNS) segítségével keresse meg a művelet az interneten. Például adjon meg egy címet a böngészőben, vagy egy hivatkozásra egy weblap, azt használja DNS lefordítani a tartományhoz tartozó IP-címet. Az IP-cím rendezésére a hasonlít egy utca, házszám, de nem nagyon emberi leíró. Például sokkal egyszerűbb, egy DNS-nevet, például a megjegyzése **contoso.com** meghaladja a megjegyezhető például 192.168.1.88 vagy 2001:0:4137:1f67:24a2:3888:9cce:fea3 IP-címet.
 
-The DNS system is based on *records*. Records associate a specific *name*, such as **contoso.com**, with either an IP address or another DNS name. When an application, such as a web browser, looks up a name in DNS, it finds the record, and uses whatever it points to as the address. If the value it points to is an IP address, the browser will use that value. If it points to another DNS name, then the application has to do resolution again. Ultimately, all name resolution will end in an IP address.
+A DNS-rendszerében alapuló *rekordok*. Rekordok társítson egy adott *neve*, például a **contoso.com**, IP-címet vagy egy másik DNS-nevét. Amikor egy alkalmazás, például egy webes böngésző keres a DNS-nevét, a rekord keresése, és bármilyen mutat címként használja. Ha az érték mutat egy IP-címet, a böngésző ezt az értéket fogja használni. Mutat egy másik DNS-nevét, majd az alkalmazás rendelkezik feloldási újra elvégzéséhez. Végső soron minden névfeloldás véget ér az IP-címet.
 
-When you create an Azure Website, a DNS name is automatically assigned to the site. This name takes the form of **&lt;yoursitename&gt;.azurewebsites.net**. When you add your website as an Azure Traffic Manager endpoint, your website is then accessible through the **&lt;yourtrafficmanagerprofile&gt;.trafficmanager.net** domain.
-
-> [!NOTE]
-> When your website is configured as a Traffic Manager endpoint, you will use the **.trafficmanager.net** address when creating DNS records.
-> 
-> You can only use CNAME records with Traffic Manager
-> 
-> 
-
-There are also multiple types of records, each with their own functions and limitations, but for websites configured to as Traffic Manager endpoints, we only care about one; *CNAME* records.
-
-### <a name="cname-or-alias-record"></a>CNAME or Alias record
-A CNAME record maps a *specific* DNS name, such as **mail.contoso.com** or **www.contoso.com**, to another (canonical) domain name. In the case of Azure Websites using Traffic Manager, the canonical domain name is the **&lt;myapp>.trafficmanager.net** domain name of your Traffic Manager profile. Once created, the CNAME creates an alias for the **&lt;myapp>.trafficmanager.net** domain name. The CNAME entry will resolve to the IP address of your **&lt;myapp>.trafficmanager.net** domain name automatically, so if the IP address of the website changes, you do not have to take any action.
-
-Once traffic arrives at Traffic Manager, it then routes the traffic to your website, using the load balancing method it is configured for. This is completely transparent to visitors to your website. They will only see the custom domain name in their browser.
+Amikor egy Azure-webhelyet hoz létre, a DNS-név automatikusan a helyhez. Ez a név formájában történik  **&lt;yoursitename&gt;. azurewebsites.net**. Ha a webhely egy Azure Traffic Manager-végpontot, a webhely majd érhető el a  **&lt;yourtrafficmanagerprofile&gt;. trafficmanager.net** tartomány.
 
 > [!NOTE]
-> Some domain registrars only allow you to map subdomains when using a CNAME record, such as **www.contoso.com**, and not root names, such as **contoso.com**. For more information on CNAME records, see the documentation provided by your registrar, <a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record</a>, or the <a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> document.
+> Ha a webhely egy Traffic Manager-végpont van konfigurálva, használhatja a **. trafficmanager.net** címet a DNS-rekordok létrehozásához.
+> 
+> Csak használhatja a CNAME-rekordok a Traffic Managerrel
+> 
+> 
+
+Van még több típusú bejegyzés – mindegyiket a saját funkciók és -korlátozások, de a Traffic Manager-végpontként konfigurált webhelyek esetén csak ügyelünk egy; *CNAME* rögzíti.
+
+### <a name="cname-or-alias-record"></a>CNAME- vagy aliasnév rekord
+A CNAME rekord rendeli hozzá a *adott* DNS-nevével, például a **mail.contoso.com** vagy **www.contoso.com**, egy másik (kanonikus) tartománynévvel. A kanonikus tartománynév megadása esetén a Traffic Manager használata az Azure Websites, a  **&lt;myapp >. trafficmanager.net** a Traffic Manager-profil tartománynevére. Létrehozása után a CNAME REKORDOT hoz létre egy aliast a  **&lt;myapp >. trafficmanager.net** tartomány nevét. A CNAME-bejegyzés feloldja az IP-címére a  **&lt;myapp >. trafficmanager.net** tartománynév automatikusan, így ha megváltozik az IP-cím, a webhely, nincs teendője.
+
+Miután forgalom a Traffic Manager megérkeznek, majd irányítja a forgalmat webhelyéhez, használja a terheléselosztási mód van konfigurálva. Ez az teljesen átlátható a webhely látogatóinak. Csak akkor jelenik meg az egyéni tartománynév a böngészőbe.
+
+> [!NOTE]
+> Néhány tartomány regisztráló szervezetek engedélyezése csak csatlakoztatható altartományt, például egy olyan CNAME rekordot használatakor **www.contoso.com**, és nem neveket, többek között a **contoso.com**. További információ a CNAME-rekordot, a regisztráló által dokumentációjában talál <a href="http://en.wikipedia.org/wiki/CNAME_record">CNAME rekordot a Wikipedia bevitelének</a>, vagy a <a href="http://tools.ietf.org/html/rfc1035">IETF tartománynév - megvalósítása és meghatározása</a> dokumentum.
 > 
 > 
 

@@ -1,14 +1,14 @@
-It is important to realize that there are two ways to configure an availability group listener in Azure. The ways differ in the type of Azure load balancer you use when you create the listener. The following table describes the differences:
+Fontos fontos megjegyezni, hogy egy rendelkezésre állási csoport figyelőjének beállítása az Azure-ban két módja van. A módszer a figyelő létrehozásakor használja az Azure terheléselosztó a következő típusban eltérőek lehetnek. Az alábbi táblázat a különbségeket ismerteti:
 
-| Load balancer type | Implementation | Use when: |
+| Terheléselosztó típusa | Megvalósítás | A következő esetekben használja: |
 | --- | --- | --- |
-| **External** |Uses the *public virtual IP address* of the cloud service that hosts the virtual machines (VMs). |You need to access the listener from outside the virtual network, including from the Internet. |
-| **Internal** |Uses an *internal load balancer* with a private address for the listener. |You can access the listener only from within the same virtual network. This access includes site-to-site VPN in hybrid scenarios. |
+| **Külső** |Használja a *nyilvános virtuális IP-cím* a felhőalapú szolgáltatás, amely a virtuális gépek (VM) üzemelteti. |A figyelő a virtuális hálózaton, beleértve az internetről kívül az eléréséhez szükséges. |
+| **Belső** |Használja az *belső terheléselosztó* a magán-címet a figyelőhöz. |A figyelőt csak az azonos virtuális hálózaton belül érheti el. A hozzáférés a hibrid környezetek telephelyek közötti VPN tartalmazza. |
 
 > [!IMPORTANT]
-> For a listener that uses the cloud service's public VIP (external load balancer), as long as the client, listener, and databases are in the same Azure region, you will not incur egress charges. Otherwise, any data returned through the listener is considered egress, and it is charged at normal data-transfer rates. 
+> Egy figyelő, amely a felhőalapú szolgáltatás nyilvános VIP (külső terheléselosztó), amennyiben az ügyfél használ, a figyelő, és adatbázisokat azonos Azure-régióban, után nem számítunk kilépő díjakat. Ellenkező esetben a figyelő a visszaadott adatok tekinthető kimenő, és normál adatátvitel ütemben fel van töltve. 
 > 
 > 
 
-An ILB can be configured only on virtual networks with a regional scope. Existing virtual networks that have been configured for an affinity group cannot use an ILB. For more information, see [Internal load balancer overview](../articles/load-balancer/load-balancer-internal-overview.md).
+Egy ILB csak virtuális hálózatokat regionális hatókörbe és konfigurálhatja. Meglévő virtuális hálózatot, amely egy affinitáscsoporthoz konfigurált egy ILB nem használható. További információkért lásd: [belső load balancer áttekintése](../articles/load-balancer/load-balancer-internal-overview.md).
 

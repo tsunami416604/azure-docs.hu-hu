@@ -1,46 +1,46 @@
 <!--author=alkohli last changed: 07/07/17-->
 
-#### <a name="to-install-an-update-from-the-azure-portal"></a>To install an update from the Azure portal
+#### <a name="to-install-an-update-from-the-azure-portal"></a>Frissítés telepítése az Azure Portalról
 
-1. On the StorSimple service page, select your device.
+1. A StorSimple szolgáltatás oldalán válassza ki az eszközét.
 
-    ![Select device](./media/storsimple-8000-install-update4-via-portal/update1.png)
+    ![Válassza ki az eszköz](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
-2. Navigate to **Device settings** > **Device updates**.
+2. Navigáljon a **eszközbeállítások** > **eszközfrissítésekhez**.
 
-    ![Click Device updates](./media/storsimple-8000-install-update4-via-portal/update2.png)
+    ![Kattintson az eszköz frissítése](./media/storsimple-8000-install-update4-via-portal/update2.png)
 
-2. A notification appears if new updates are available. Alternatively, in the **Device updates** blade, click **Scan Updates**. A job is created to scan for available updates. You are notified when the job completes successfully.
+2. Megjelenik egy értesítés, ha új frissítések érhetők el. Másik lehetőségként a a **eszközfrissítésekhez** panelen kattintson a **frissítések keresése**. Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
 
-    ![Click Device updates](./media/storsimple-8000-install-update4-via-portal/update3.png)
+    ![Kattintson az eszköz frissítése](./media/storsimple-8000-install-update4-via-portal/update3.png)
 
-3. We recommend that you review the release notes before you apply an update on your device. To apply updates, click **Install updates**. In the **Confirm regular updates** blade, review the prerequisites to complete before you apply updates. Select the checkbox to indicate that you are ready to update the device and then click **Install**.
+3. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. Frissítések alkalmazásához kattintson **frissítések telepítése**. Az a **erősítse meg a rendszeres frissítések** panelt, tekintse át az előfeltételek telepítése előtt. Válassza ki a jelölőnégyzet bejelölésével jelezze, hogy készen áll az eszköz frissítése, és kattintson a **telepítése**.
 
-    ![Click Device updates](./media/storsimple-8000-install-update4-via-portal/update4.png)
+    ![Kattintson az eszköz frissítése](./media/storsimple-8000-install-update4-via-portal/update4.png)
 
-6. A set of prerequisite checks starts. These checks include:
+6. Megkezdődik az előfeltételek ellenőrzése. Ezekbe az ellenőrzésekbe a következők tartoznak:
    
-   * **Controller health checks** to verify that both the device controllers are healthy and online.
-   * **Hardware component health checks** to verify that all the hardware components on your StorSimple device are healthy.
-   * **DATA 0 checks** to verify that DATA 0 is enabled on your device. If this interface is not enabled, you must enable it and then retry.
+   * **A vezérlő állapotának ellenőrzései** annak ellenőrzéséhez, hogy mindkét eszközvezérlő kifogástalan állapotú és online legyen.
+   * **A hardverösszetevők állapotának ellenőrzései** annak ellenőrzéséhez, hogy a StorSimple eszközön lévő összes hardverösszetevő kifogástalan állapotú legyen.
+   * **DATA 0 ellenőrzések** annak ellenőrzéséhez, hogy a DATA 0 engedélyezett legyen az eszközön. Ha ez az illesztőfelület nem engedélyezett, engedélyeznie kell, majd újra kell próbálkoznia.
 
-    The update is downloaded and installed only if all the checks are successfully completed. You are notified when the checks are in progress. If the prechecks fail, then you will be provided with the reasons for failure. Address those issues and then retry the operation. You may need to contact Microsoft Support if you cannot address these issues by yourself.
+    A frissítés letöltése és telepítése csak akkor, ha minden ellenőrzés sikeresen befejeződtek. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha meghibásodik a prechecks, majd azt fogják ellátni a hiba lehetséges okait. Hárítsa el ezeket a problémákat, és próbálkozzon újra a művelettel. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
 
-7. After the prechecks are successfully completed, an update job is created. You are notified when the update job is successfully created.
+7. A prechecks sikeres elvégzése után létrejön egy frissítési feladatot. A frissítési feladat sikeres létrehozásáról értesítést kap.
    
-    ![Update job creation](./media/storsimple-8000-install-update4-via-portal/update6.png)
+    ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update6.png)
    
-    The update is then applied on your device.
+    A rendszer ezután alkalmazza a frissítést az eszközre.
 
-9. The update takes a few hours to complete. Select the update job and click **Details** to view the details of the job at any time.
+9. A frissítés elvégzése néhány órát igényel. Válassza ki a frissítési feladatot, és kattintson a **Részletek** gombra, így bármikor megtekintheti a feladat részleteit.
 
-    ![Update job creation](./media/storsimple-8000-install-update4-via-portal/update8.png)
+    ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update8.png)
 
-     You can also monitor the progress of the update job from **Device settings > Jobs**. On the **Jobs** blade, you can see the update progress.
+     Ugyanígy figyelheti a frissítési feladat előrehaladásának **eszközbeállítások > feladatok**. Az a **feladatok** panelen láthatja, hogy a frissítés folyamatban van.
 
-     ![Update job creation](./media/storsimple-8000-install-update4-via-portal/update7.png)
+     ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update7.png)
 
-10. After the job is complete, navigate to the **Device settings > Device updates**. The software version should now be updated.
+10. A feladat befejezése után nyissa meg a **eszközbeállítások > eszközfrissítésekhez**. A szoftver verziója most frissíteni kell.
 
-    ![Update job creation](./media/storsimple-8000-install-update4-via-portal/update9.png)
+    ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

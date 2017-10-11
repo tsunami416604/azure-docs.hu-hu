@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="create-your-first-virtual-network"></a>Az első virtuális hálózat létrehozása
 
 Megtudhatja, hogyan hozhat létre virtuális hálózatot (VNet) két alhálózattal, hogyan hozhat létre két virtuális gépet (VM), illetve hogyan csatlakoztathatja az egyes virtuális gépeket az alhálózatok egyikéhez az alábbi ábrának megfelelően:
@@ -253,4 +251,3 @@ Ebben a példában egy VNetet és két virtuális gépet hozott létre. A virtu�
 - [Hálózati illesztők](virtual-network-network-interface.md)
 - [Hálózati biztonsági csoportok](virtual-networks-nsg.md)
 - [Virtuális gépek](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-

@@ -1,12 +1,12 @@
-## <a name="display-the-azure-explorer-view"></a>Display the Azure Explorer view
+## <a name="display-the-azure-explorer-view"></a>Az Azure-kezelővel megjelenítése
 
-If the **Azure Explorer** view is not visible in Eclipse, display it by doing the following:
+Ha a **Azure Explorer** nézetet ugyanis nem látható az eclipse-ben, megjeleníti azt a következő tevékenységek végrehajtásával:
 
-1. Click **Window**, click **Show View**, and then click **Other**.
+1. Kattintson a **ablak**, kattintson a **nézet megjelenítése**, és kattintson a **más**.
 
-   ![Show View command](./media/azure-toolkit-for-eclipse-show-azure-explorer/show-az-exp-01.png)
+   ![View parancs megjelenítése](./media/azure-toolkit-for-eclipse-show-azure-explorer/show-az-exp-01.png)
 
-2. In the **Show View** dialog box, select **Azure Explorer**, and then click **OK**.
+2. Az a **nézet megjelenítése** párbeszédpanelen jelölje ki **Azure Explorer**, és kattintson a **OK**.
 
-   ![Show View dialog box](./media/azure-toolkit-for-eclipse-show-azure-explorer/show-az-exp-02.png)
+   ![Nézet párbeszédpanel megjelenítése](./media/azure-toolkit-for-eclipse-show-azure-explorer/show-az-exp-02.png)
 
