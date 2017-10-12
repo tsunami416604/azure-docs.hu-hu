@@ -2,7 +2,7 @@
 ## [Kiadások](biztalk-editions-feature-chart.md)
 
 # Első lépések
-## [BizTalk Services létrehozása](biztalk-provision-services.md)
+## [BizTalk-szolgáltatások létrehozása](biztalk-provision-services.md)
 
 # Útmutató
 ## Tervezés és kialakítás

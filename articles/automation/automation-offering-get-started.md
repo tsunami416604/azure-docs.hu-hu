@@ -1,4 +1,4 @@
---- 
+---
 title: "Bevezetés az Azure Automation használatába | Microsoft Docs"
 description: "Ez a cikk a kialakítás és az implementálás részleteinek áttekintésével áttekintést nyújt az Azure Automation szolgáltatásról az Azure Marketplace-ről származó ajánlat bevezetésének előkészítéséhez."
 services: automation
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
+ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 3269af400d091435af56b0093abbb839d8dd7068
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="getting-started-with-azure-automation"></a>Bevezetés az Azure Automation használatába
 
 Ez a kezdeti lépéseket ismertető útmutató az Azure Automation üzembe helyezésével kapcsolatos alapfogalmakat mutatja be. Ha még nem ismeri az Azure Automationt, vagy nincs tapasztalata a System Center Orchestratorhöz hasonló munkafolyamat-automatizálási szoftverekkel, ez az útmutató bemutatja az Automation előkészítését és bevezetését.  Ezt követően már felkészült lesz a folyamatautomatizálási szükségletek támogatására szolgáló runbookfejlesztés megkezdésére. 
@@ -191,6 +189,5 @@ Az ajánlat bevezetését követően hozzáláthat a runbookok létrehozásához
 ## <a name="next-steps"></a>Következő lépések
 * Ellenőrizheti, hogy az új Automation-fiók el tudja végezni a hitelesítést az Azure-erőforrásokkal: [Azure Automation futtató fiók hitelesítésének tesztelése](automation-verify-runas-authentication.md).
 * A runbookok létrehozásának első lépéseihez először tekintse át a támogatott [Automation-runbooktípusokat](automation-runbook-types.md) és a kapcsolódó szempontokat.
-
 
 

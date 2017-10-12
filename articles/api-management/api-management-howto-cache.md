@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 59c595f0d5ce849f44c46fdb6cab0b44d35fffa0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 Az API Management műveleteit konfigurálni lehet a válaszok gyorsítótárazásához. A válaszok gyorsítótárazása jelentősen csökkentheti az API-k késleltetését, sávszélesség-használatát és a webszolgáltatások terhelését olyan adatok esetén, amelyek nem változnak gyakran.
@@ -33,7 +33,7 @@ Jelen útmutató ismerteti, hogyan adhatja hozzá az API-hoz a válaszok gyorsí
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt belekezdene az útmutató lépéseibe, rendelkeznie kell egy API Management szolgáltatáspéldánnyal, amelyhez konfigurálva van egy API és egy termék. Ha még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg az [Ismerkedés az Azure API Management szolgáltatással][Get started with Azure API Management] oktatóanyag [API Management szolgáltatáspéldány létrehozása][Create an API Management service instance] című szakaszát.
 
-## <a name="configure-caching"> </a>Művelet konfigurálása gyorsítótárazáshoz
+## <a name="configure-caching"></a>Művelet konfigurálása gyorsítótárazáshoz
 Ebben a lépésben a minta Echo API **GET Resource (cached)** műveletének gyorsítótárazási beállításait fogja ellenőrizni.
 
 > [!NOTE]
@@ -65,7 +65,7 @@ Az **Időtartam** megadja a gyorsítótárazott válaszok lejárati időközét.
 
 Ha a példa gyorsítótárazási konfigurációját használja, a **GET Resource (cached)** műveletre irányuló első kérés a háttérszolgáltatásból küld vissza választ. Ez a válasz gyorsítótárazva lesz, és egy kulccsal lesz ellátva a megadott fejlécek és lekérdezési karakterlánc paraméterek alapján. A művelet későbbi, egyező paraméterekkel rendelkező hívásai a gyorsítótárazott választ küldik vissza, egészen addig, amíg a gyorsítótárazás időköze le nem jár.
 
-## <a name="caching-policies"> </a>A gyorsítótárazási házirendek áttekintése
+## <a name="caching-policies"></a>A gyorsítótárazási házirendek áttekintése
 Ebben a lépésben a minta Echo API **GET Resource (cached)** műveletének gyorsítótárazási beállításait ellenőrzi.
 
 Amikor a **Gyorsítótárazás** lapon konfigurálják egy művelet gyorsítótárazási beállításait, a rendszer gyorsítótárazási házirendeket ad művelethez. Ezeket a házirendeket a házirendszerkesztőben lehet megtekinteni és szerkeszteni.
@@ -102,7 +102,7 @@ A művelet házirend-definíciójába beletartoznak azok a házirendek is, amely
 > 
 > 
 
-## <a name="test-operation"> </a>Művelet meghívása és a gyorsítótárazás tesztelése
+## <a name="test-operation"></a>Művelet meghívása és a gyorsítótárazás tesztelése
 A gyorsítótárazás működés közbeni megtekintéséhez meghívhatjuk a műveletet a fejlesztői portálról. Kattintson a **Fejlesztői portál** lehetőségre a jobb felső menüben.
 
 ![Fejlesztői portál][api-management-developer-portal-menu]
@@ -139,7 +139,7 @@ Vegye figyelembe, hogy a **sampleheader** értéke a válaszban is **value1**. P
 
 Vegye figyelembe, hogy a **sampleheader** értéke a válaszban most már **value2**. Mivel a művelet eredményei egy kulccsal vannak ellátva a lekérdezési karakterlánc alapján, a rendszer nem küldte vissza az előző gyorsítótárazott választ.
 
-## <a name="next-steps"> </a>Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 

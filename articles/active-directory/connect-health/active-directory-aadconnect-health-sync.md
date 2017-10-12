@@ -15,10 +15,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4b06338cb62cc458e7b097db36023f0746d4e969
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
 Az alábbi dokumentáció az Azure AD Connect (szinkronizálási) szolgáltatás Azure AD Connect Health szolgáltatással végzett megfigyelésére vonatkozik.  Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md). Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -67,8 +67,7 @@ Ez a funkció olyan szinkronizálási hibákról készít jelentést, amelyek a 
 * A jelentésben a szinkronizáló ügyfél (az Azure AD Connect 1.1.281.0 vagy újabb verziói) által rögzített hibák szerepelnek
 * Azokat a hibákat tartalmazza, amelyek a szinkronizálási motor legutóbbi szinkronizálási művelete során jelentkeztek. („Exportálás” az Azure AD Connectoron.)
 * Ahhoz, hogy a jelentés a legfrissebb adatokat tartalmazza, az Azure AD Connect Health szinkronizálási ügynöknek a megfelelő végpontokra irányuló kimenő kapcsolattal kell rendelkeznie.
-* A jelentés **30 percenként frissül** az Azure AD Connect Health szinkronizálási ügynök által feltöltött adatokkal.
-  A jelentés az alábbi fő lehetőségeket nyújtja
+* A jelentés **30 percenként frissül** az Azure AD Connect Health szinkronizálási ügynök által feltöltött adatokkal. A jelentés az alábbi fő lehetőségeket nyújtja
 
   * Hibák kategorizálása
   * Objektumlista kategóriánként összesített hibákkal

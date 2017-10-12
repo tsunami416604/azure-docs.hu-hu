@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: 9fcf23f5ff47bd7457e5afa69eb2b9b33e0bf0fe
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-log-analytics"></a>Mi az a Log Analytics?
 A Log Analytics az [Operations Management Suite\(OMS\)](../operations-management-suite/operations-management-suite-overview.md) egy szolgáltatása, amely figyeli a felhőbeli és helyszíni környezeteket az elérhetőségük és a teljesítményük fenntartása érdekében.  A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.  Ez a cikk tömören összefoglalja a Log Analytics nyújtotta értékeket, áttekintés nyújt a működéséről, és részletes tartalmakra mutató hivatkozásokat tartalmaz, így még többet tudhat meg.
@@ -80,5 +79,4 @@ A Log Analytics telepítési követelményei minimálisak, hiszen a központi ö
 * [Regisztráljon ingyenes Log Analytics-fiókra](log-analytics-get-started.md), és saját környezetében tesztelheti működését.
 * Tekintse meg a különböző elérhető, az adatokat az OMS-tárházba gyűjtő [Adatforrásokat](log-analytics-data-sources.md).
 * [Böngésszen a Megoldástárban az elérhető megoldások között](log-analytics-add-solutions.md), ha funkciókkal szeretné bővíteni a Log Analytics-szolgáltatást.
-
 

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 7f9b886259c065627055f62a3636ab65434ca57b
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/23/2017
-
+ms.openlocfilehash: d49ad2ff584f42c0e4732a5cff60d23cdf631512
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Fejlesztői elemzések: nyelvek, platformok és integrációk
 Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósításai, amelyekről hallottunk, beleértve néhány harmadik fél által létrehozottat.
@@ -27,9 +26,9 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [C#|VB (.NET)](app-insights-asp-net.md)
 * [Java](app-insights-java-get-started.md)
 * [JavaScript-weblapok](app-insights-javascript.md)
+* [Node.JS](app-insights-nodejs.md)
 
 ## <a name="languages---community-supported"></a>Közösség által támogatott nyelvek
-* [Node.JS](https://github.com/Microsoft/ApplicationInsights-node.js)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
@@ -84,4 +83,3 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 
 ## <a name="projects"></a> Saját SDK kialakítása
 Ha még nem készült SDK az Ön nyelvéhez vagy platformjához, akár Ön is létrehozhat egyet. Tekintse meg a meglévő SDK-k kódjainak listáját a [GitHubon elérhető Application Insights SDK-projektben](https://github.com/Microsoft/AppInsights-Home).
-

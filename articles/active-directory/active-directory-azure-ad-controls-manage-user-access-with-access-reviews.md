@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 0459eb5cc71939202c8491f6b2714e28bd8e202d
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
 Az Azure Active Directoryval könnyedén biztosíthatja a felhasználók megfelelő hozzáférését úgy, hogy magukat a felhasználókat, esetleg egy döntéshozót megkéri a hozzáférési felülvizsgálatban való részvételre és a felhasználó hozzáférésének újbóli hitelesítésére (vagy „igazolására”).  A felülvizsgálatot végzők az Azure AD-ből származó javaslatok alapján dönthetnek arról, hogy az egyes felhasználóknak szükségük van-e folyamatos hozzáférésre. A hozzáférési felülvizsgálat lezárása után módosításokat végezhet, és eltávolíthatja azon felhasználók hozzáférését, akiknek többé nincs rá szükségük.
@@ -51,7 +49,6 @@ A hozzáférési felülvizsgálatokban egy vagy több felhasználó is szerepelh
 ## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési felülvizsgálat létrehozása egy csoport tagjai számára vagy egy alkalmazáshoz való hozzáférés céljából](active-directory-azure-ad-controls-create-access-review.md)
-
 
 
 

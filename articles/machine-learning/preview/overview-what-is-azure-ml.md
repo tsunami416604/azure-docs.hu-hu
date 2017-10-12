@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
+ms.openlocfilehash: 3bf9227a7ee432f036c57dd9d1c3807c7a867f3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4919fb679eeb4d25eb0066b9bf617b057d44354
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
 Az Azure Machine Learning egy integrált, átfogó és fejlett adatelemzési megoldás. Az adatszakértők számára lehetővé teszi az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését.
@@ -179,7 +177,7 @@ Akkor érdemes a Microsoft Machine Learning-kiszolgálót használnia, ha:
 - R- vagy Python-betanítást szeretne nagy méretben kiosztani egy Hadoop- vagy Spark-fürtön
 
 ### <a name="data-science-virtual-machine"></a>Adatelemzési virtuális gép
-Az [Adatelemzési virtuális gép (DSVM)](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) egy személyre szabott virtuálisgép-lemezkép a Microsoft Azure-felhőben, amelyet kifejezetten adatelemzésre hoztak létre. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását. Elérhető Windows Server és Linux rendszeren. A DSVM Windows-kiadását Server 2016 és Server 2012 rendszeren tesszük elérhetővé. A DSVM Linux-kiadását Ubuntu 16.04 LTS rendszeren és az OpenLogic 7.2 CentOS-alapú Linux-disztribúcióin tesszük elérhetővé. 
+Az [Adatelemzési virtuális gép (DSVM)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) egy személyre szabott virtuálisgép-lemezkép a Microsoft Azure-felhőben, amelyet kifejezetten adatelemzésre hoztak létre. Számos népszerű adatelemzési és egyéb eszköz található meg rajta előre telepítve és konfigurálva, amelyek jelentősen felgyorsítják az intelligens alkalmazások fejlett elemzésekhez történő összeállítását. Elérhető Windows Server és Linux rendszeren. A DSVM Windows-kiadását Server 2016 és Server 2012 rendszeren tesszük elérhetővé. A DSVM Linux-kiadását Ubuntu 16.04 LTS rendszeren és az OpenLogic 7.2 CentOS-alapú Linux-disztribúcióin tesszük elérhetővé. 
 
 Akkor érdemes az Adatelemzési virtuális gépet használnia, ha egyetlen csomóponton kell futtatnia a feladatait. Illetve ha távolról kell virtuálisan felskáláznia a feldolgozást egyetlen gépen. Az Azure Machine Learning-kísérletezés és az Azure Machine Learning Modellkezelés is célként támogatja az Adatelemzési virtuális gépet. 
 
@@ -219,4 +217,3 @@ A Microsoft Cognitive Services különböző eszközökre és platformokra tört
 
 ## <a name="next-steps"></a>Következő lépések
 * [Az Azure Machine Learning telepítése és létrehozása](quickstart-installation.md)
-

@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: cbee070c6bfe17135f37a82c545bf8ee7db2db43
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-redirection-on-application-gateway-with-powershell"></a>Átirányítás konfigurálása az Application Gatewayen PowerShell-lel
 
 Az Application Gateway támogatja a forgalom meghatározott konfiguráció alapján való átirányításának lehetőségét. Ha többet szeretne megtudni általában az átirányításról, tekintse meg az [Application Gateway átirányítás áttekintése](application-gateway-redirect-overview.md) témakört. Ez a cikk példákat nyújt a HTTP–HTTPS átirányításról, az elérésiút-alapú átirányításokról, a többhelyes átirányításokról és a külső helyekre való átirányításokról.

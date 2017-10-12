@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 336d4f80f0357796fb29eb9314c11edfce831a69
-ms.openlocfilehash: bd08eb476a4bd7298c5650977b88ba0b24deddec
-ms.contentlocale: hu-hu
-ms.lasthandoff: 02/23/2017
-
+ms.openlocfilehash: 89baf60d0204a1701e93309f09b90bc94c4ca57b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>A fejlesztői portál stílusainak testreszabása az Azure API Managementben
 A fejlesztői portál három alapvető módon szabható testre az Azure API Managementben:
@@ -28,7 +27,7 @@ A fejlesztői portál három alapvető módon szabható testre az Azure API Mana
 * [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles] (részletesen ebben az útmutatóban)
 * [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például: API-dokumentáció, termékek, felhasználói hitelesítés stb.)
 
-## <a name="change-headers-styling"> </a>Oldalelemek stílusának módosítása
+## <a name="change-headers-styling"></a>Oldalelemek stílusának módosítása
 
 A portál oldalain megjelenő színeket, betűtípusokat, méreteket, sorközöket és más stíluselemeket a stílusszabályok határozzák meg. 
 
@@ -67,7 +66,7 @@ A módosítások előnézete valós időben, végrehajtásukkal egyidejűleg meg
 > 
 
 
-## <a name="next-steps"> </a>Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan szabhatja testre a fejlesztői portál oldalainak tartalmát a [fejlesztői portál sablonjainak](api-management-developer-portal-templates.md) használatával.
 
 [Change the styling of the headers]: #change-headers-styling
@@ -88,4 +87,3 @@ A módosítások előnézete valós időben, végrehajtásukkal egyidejűleg meg
 
 [bootstrap]: http://getbootstrap.com/
 [LESS variables]: http://getbootstrap.com/css/
-

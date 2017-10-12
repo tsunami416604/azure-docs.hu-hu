@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 8933c77013d7b0d886d3e309dc0b1a72026eb677
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: a0a9b69824829d0b7a07583210eaddb1f39bcf88
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-documentation"></a>Azure Active Directory-dokumentáció
 
 Ismerje meg, hogyan szinkronizálhatja a címtárakat és engedélyezheti az egyszeri bejelentkezést az Azure Active Directory (Azure AD) használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan integrálhatja az identitáskezelési képességeket, beleértve a többtényezős hitelesítést, az eszközregisztrációt, a szerepköralapú hozzáférés-vezérlést, valamint a biztonsági figyelést és riasztásokat.
@@ -141,4 +139,3 @@ Ismerje meg, hogyan szinkronizálhatja a címtárakat és engedélyezheti az egy
         </div>
     </li>
 </ul>
-
