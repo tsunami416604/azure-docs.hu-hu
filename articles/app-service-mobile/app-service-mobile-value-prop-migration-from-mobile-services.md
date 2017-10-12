@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: glenga
+ms.openlocfilehash: 22397b6b448b418d5b54a457c3bafaf5c68ecc7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: e23a4f182e6bb0ba53927aa6195967c2464e4233
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started"> </a>A Mobile Services-t használom, miben válhat előnyömre az App Service?
+# <a name="getting-started"></a>A Mobile Services-t használom, miben válhat előnyömre az App Service?
 ## <a name="overview"></a>Áttekintés
 Az Ön által jelenleg használt Mobile Services mobilszolgáltatás biztonságban van, és a továbbiakban is támogatni fogjuk. Az *Azure App Service* platform azonban számos olyan előnyt kínál mobilalkalmazása számára, amelyek a Mobile Services szolgáltatásban nem érhetők el:
 
@@ -64,4 +63,3 @@ A szolgáltatás automatikus biztonsági mentést készít a háttéralkalmazás
 Az *Azure App Service* segítségével több különböző privát tesztelési és átmeneti előkészítő környezet hozható létre a mobilalkalmazásokhoz. Ezek segítségével még a végleges telepítés előtt alaposan tesztelheti az alkalmazásokat. Majd egyetlen perc leállási idő nélkül éles üzemre válthat. A webalkalmazásokat a rendszer előre betölti, ami hozzájárul a lehető legjobb felhasználói élményhez.
 
 Az *App Service* meglévő Mobile Service szolgáltatáshoz való használatát máris megkezdheti ezzel az [oktatóanyaggal](app-service-mobile-migrating-from-mobile-services.md).
-

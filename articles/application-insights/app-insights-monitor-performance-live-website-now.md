@@ -14,10 +14,10 @@ ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: bwren
 ms.openlocfilehash: d07a0c81f89100c378456bbea8dca1c009cc8d77
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Webalkalmazások futásidejű kialakítása az Application Insights használatával
 
@@ -28,7 +28,7 @@ Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélk
 
 Háromféleképpen alkalmazhatja az Application Insights szolgáltatást a .NET-webalkalmazásokra:
 
-* **Felépítési idő:** [Adja az Application Insights SDK-t][greenbrown] a webalkalmazás kódjához.
+* **Felépítési idő:**[Adja az Application Insights SDK-t][greenbrown] a webalkalmazás kódjához.
 * **Futási idő:** A webalkalmazását a kiszolgálón, az alábbiakban leírtak szerint, a kód újraépítése és újratelepítése nélkül alakíthatja ki.
 * **Mindkettő:** Az SDK-t beépítheti a webalkalmazás-kódba, és alkalmazhatja a futásidejű bővítményeket is. Így mindkét lehetőség előnyeivel élhet.
 

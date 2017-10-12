@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
 ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Ismerkedés az Azure portál Azure Scheduler szolgáltatásával
 Az Azure Scheduler szolgáltatásban egyszerűen hozhat létre ütemezett feladatokat. Ezen oktatóanyag segítségével elsajátíthatja egy feladat létrehozásának műveletét. Megismerkedhet a Scheduler megfigyelési és felügyeleti képességeivel is.
@@ -30,14 +30,14 @@ Az Azure Scheduler szolgáltatásban egyszerűen hozhat létre ütemezett felada
     ![][marketplace-create]
 3. Hozzunk létre egy olyan feladatot, amely egy GET kéréssel egyszerűen rákeres a http://www.microsoft.com/ webhelyre. A **Scheduler-feladat** képernyőn adja meg a következő információkat:
    
-   1. **Név:** `getmicrosoft`  
+   1. **Név:**`getmicrosoft`  
    2. **Előfizetés:** Az Ön Azure-előfizetése   
    3. **Feladatgyűjtemény:** Válasszon ki egy létező feladatgyűjteményt, vagy kattintson az **Új létrehozása** lehetőségre, és adjon meg egy nevet.
 4. Ezt követően határozza meg a következő értékeket a **Művelet beállításai** területen:
    
-   1. **Művelettípus:** ` HTTP`  
-   2. **Módszer:** `GET`  
-   3. **URL-cím:** ` http://www.microsoft.com`  
+   1. **Művelettípus:**` HTTP`  
+   2. **Módszer:**`GET`  
+   3. **URL-cím:**` http://www.microsoft.com`  
       
       ![][action-settings]
 5. Végül határozzon meg egy ütemezést. A feladat egyszeriként is megadható, most azonban vegyünk fel egy ismétlődési ütemezést:

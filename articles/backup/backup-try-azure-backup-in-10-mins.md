@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 8/15/2017
 ms.author: markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 7a016ed92c68ce624aeb09d766adbc6fc8ba2b42
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>Áttekintés: Fájlok és mappák biztonsági mentése a Resource Manager-alapú üzemelő példányban
 Ez a cikk leírja, hogyan készíthet biztonsági másolatot a Windows Server (vagy Windows-számítógép) fájljairól és mappáiról az Azure-ba Resource Manager-alapú üzemelő példány használatával. Ez az oktatóanyag végigvezeti az alapokon. Ha el szeretné kezdeni az Azure Backup használatát, jó helyen van.
@@ -229,4 +228,3 @@ Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne,
 * További részletek a [Windows rendszerű gépek biztonsági mentéséről](backup-configure-vault.md).
 * Most, hogy biztonsági másolatot készített a fájlokról és mappákról, [kezelheti a tárlókat és a kiszolgálókat](backup-azure-manage-windows-server.md).
 * Ha vissza kell állítania egy biztonsági másolatot, ezzel a cikkel [állíthat vissza fájlokat Windows rendszerű gépre](backup-azure-restore-windows-server.md).
-

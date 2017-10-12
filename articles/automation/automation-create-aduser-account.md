@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
+ms.openlocfilehash: 8f24e6e57c2eec5950c8c12d9f4383ce11cf5c11
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 4eaa3e36ededddeb5268ec4f49b9daee2f824cee
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Runbookok hitelesítése a klasszikus Azure üzemi modellel és a Resource Managerrel
 Ez a cikk azokat a lépéseket ismerteti, amelyeket végre kell hajtania egy Azure AD felhasználói fiók konfigurálásához klasszikus Azure üzemi modellen vagy Azure Resource Manager-erőforrásokon futó Azure Automation-runbookokhoz.  Miközben ez továbbra is egy támogatott hitelesítési identitás az Azure Resource Manager-alapú runbookok számára, a javasolt módszer egy Azure-beli futtató fiók használata.       
@@ -91,5 +90,4 @@ A forgatókönyv minden [ellenőrzőpontja](http://technet.microsoft.com/library
 
 ## <a name="next-steps"></a>Következő lépések
 * Tekintse át a különböző forgatókönyvtípusokat és lépéseket a saját forgatókönyveinek létrehozásához a következő cikkben: [Azure Automation forgatókönyvtípusok](automation-runbook-types.md)
-
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
 ms.openlocfilehash: 3b6327b1f5150f32afd71639f32c55d823f1d1f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operations-management-suite-security-and-audit-solution-data-security"></a>Adatbiztonság az Operations Management Suite biztonsági és auditálási megoldásban
 Annak érdekében, hogy segítse az ügyfeleket a fenyegetések kiküszöbölésében, felderítésében, illetve a rájuk való válaszadásban, az [Operations Management Suite (OMS) biztonsági és auditálási megoldás](operations-management-suite-overview.md) adatokat gyűjt, illetve dolgoz fel az Ön erőforrásairól, többek között a következőkről:

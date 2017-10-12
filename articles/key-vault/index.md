@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: 41db3ea23bc1e9895893201078b1ada3297418cb
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 3267373f6db336c34d13709cc0392631531313f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="key-vault-documentation"></a>Key Vault – dokumentáció
 
 Ismerje meg, hogyan védheti és felügyelheti a Key Vault használatával a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkos kulcsokat. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhatja létre és tarthatja karban a kulcsokat, amelyekkel elérheti és titkosíthatja erőforrásait és megoldásait.
@@ -175,5 +173,4 @@ Ismerje meg, hogyan védheti és felügyelheti a Key Vault használatával a fel
 </ul>
 
 ---
-
 

@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 08/23/2016
 ms.author: deonhe
 ms.openlocfilehash: a5a73a9f124e5339b61dbc49021444a208a471f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>Logic Apps alkalmazások áttelepítése a 2015. 08. 01. dátumú előzetes sémaverzióra
 A meglévő Logic Apps alkalmazásoknak az új sémára való áttelepítéséhez tegye az alábbiakat:  

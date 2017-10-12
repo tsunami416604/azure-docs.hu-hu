@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: b590fb06a3dba8aec66a380217269e1ca39bb5e7
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Oktatóanyag: A DevOps és az Azure Portal
 Az Azure platform számos rugalmas DevOps-munkafolyamatot tartalmaz. Az oktatóanyagból megtudhatja, hogyan használhatja az Azure Portal funkcióit alkalmazások fejlesztéséhez, teszteléséhez, üzembe helyezéséhez, hibaelhárításához, figyeléséhez és felügyeletéhez. Ez az oktatóanyag a következő témákkal foglalkozik:
@@ -335,4 +334,3 @@ Ez az oktatóanyag bemutatta az Azure platform néhány hatékony funkcióját: 
 [image67]: ./media/tutorial-azureportal-devops/image67.png
 [image68]: ./media/tutorial-azureportal-devops/image68.png
 [image69]: ./media/tutorial-azureportal-devops/image69.png
-

@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>Adatok importálása az Azure Search szolgáltatásba a portál használatával
 Az Azure portál Azure Search irányítópultján található **Adatok importálása** varázsló segítségével az adatok betölthetők egy indexbe. 
@@ -120,5 +119,4 @@ Az alábbi hivatkozások további információkat nyújtanak az indexelőkről:
 
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
-
 

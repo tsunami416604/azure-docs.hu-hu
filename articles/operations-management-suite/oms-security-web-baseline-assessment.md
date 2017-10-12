@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 40b0c6ca933ea02ac9f5fe3bfaaf87a310542a8d
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="web-baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>A webes alapkonfiguráció értékelése az Operations Management Suite biztonsági és auditálási megoldásában
 Ez a dokumentum segít az OMS biztonsági és auditálási megoldás webes alapkonfiguráció-értékelési képességeinek használatában, hogy hozzáférhessen a monitorozott erőforrások biztonsági állapotához.
@@ -79,5 +78,4 @@ Ebben a dokumentumban az OMS biztonsági és auditálási megoldásának webes a
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
 * [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
 * [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
-
 

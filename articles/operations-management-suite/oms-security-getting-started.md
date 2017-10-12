@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 5753511d26c06f385fd4ff717d8592c321338172
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/17/2017
-
+ms.openlocfilehash: eb5283c8f32fddaa8a20a565e4b877821de979a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Az Operations Management Suite biztonsági és auditálási megoldás használatának első lépései
 Ez a dokumentum végigkalauzolja Önt az egyes beállításokon, így segít gyorsan használatba venni az Operations Management Suite (OMS) biztonsági és auditálási megoldás képességeit.
@@ -200,5 +199,4 @@ E dokumentumban az OMS biztonsági és auditálási megoldást mutattuk be. Az O
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
 * [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
 * [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
-
 

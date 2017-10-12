@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
+ms.openlocfilehash: c9f5c346350a62540ba29444b1b00cc9dc398d56
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 6b1fb9e7ae810df21cbcd592fef2b43309e2269c
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-overview"></a>Az Azure Automation áttekintése
 A Microsoft Azure Automation segítségével a felhasználók automatizálhatják a manuális, hosszan tartó, sok hibalehetőséget rejtő és gyakran ismétlődő feladatokat, amelyeket gyakran hajtanak végre a felhőben és vállalati környezetben. Ezzel idő takarítható meg, továbbá nő a rendszeres adminisztratív feladatok megbízhatósága, valamint még ütemezhetők is a feladatok, hogy adott időközönként automatikusan végrehajtsa őket a rendszer. A folyamatokat automatizálhatja forgatókönyvek segítségével, vagy automatizálhat konfigurációkezelést a Célállapot-konfigurációval (DSC). Ez a cikk röviden áttekinti az Azure Automationt, valamint választ ad néhány gyakran felmerülő kérdésre. A különböző témakörök részletesebb leírásáért tekintse meg a könyvtár egyéb cikkeit.
@@ -84,5 +83,4 @@ Számos erőforrás áll rendelkezésére, hogy további információkat kapjon 
 
 ## <a name="can-i-provide-feedback"></a>Küldhetek visszajelzést?
 **Várjuk a visszajelzését!** Ha egy Azure Automation-forgatókönyv megoldást vagy egy integrációs modult keres, küldjön egy Parancsfájlkérelmet a Script Centerbe. Ha visszajelzést vagy funkciókérést küldene az Azure Automation vonatkozásában, tegye azt közzé a [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) fórumon. Köszönjük! 
-
 

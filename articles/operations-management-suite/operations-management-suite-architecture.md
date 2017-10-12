@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: df1a5b2c200b7fa69961247ac036ee35fd14f54d
-ms.lasthandoff: 12/07/2016
-
-
+ms.openlocfilehash: 76f69946724b5297b1f9a1f715819c69c4a4a51d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="oms-architecture"></a>OMS-architektúra
 Az [Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) felhőalapú szolgáltatások gyűjteménye a helyszíni és a felhőalapú környezet kezeléséhez.  Ez a cikk az OMS különböző helyszíni és felhőalapú összetevőit és az összetevők magas szintű felhőszámítási architektúráját ismerteti.  További részleteket az egyes szolgáltatásokhoz tartozó dokumentáció tartalmaz.
@@ -84,5 +83,4 @@ Az Azure Site Recovery három alapvető replikációs helyzetben használható.
 * További tudnivalók az [Azure Automation](https://azure.microsoft.com/documentation/services/automation) szolgáltatásról.
 * További tudnivalók az [Azure Backup](http://azure.microsoft.com/documentation/services/backup) szolgáltatásról.
 * További tudnivalók az [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) szolgáltatásról.
-
 

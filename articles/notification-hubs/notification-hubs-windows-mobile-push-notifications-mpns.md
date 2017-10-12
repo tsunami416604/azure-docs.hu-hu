@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f0bfe81f849813d146d644b32490af657b1071b5
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-on-windows-phone"></a>Leküldéses értesítések küldése az Azure Notification Hubs használatával Windows Phone rendszerű eszközökre
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -216,17 +216,11 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 
 <!-- URLs. -->
 [Windows Phone-hoz készült Visual Studio 2012 Express]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-[Notification Hubs – áttekintés]: http://msdn.microsoft.com/library/jj927170.aspx
-[Az MPNS hitelesített módja]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
+[MPNS authenticated mode]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[A legfrissebb hírek elküldése a Notification Hubs használatával]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[bejelentéskatalógus]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
+[Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
+[bejelentéskatalógussal]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [csempekatalógussal]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
-[Notification Hubs – Windows Phone Silverlight-oktatóanyag]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
-
-
-
-
-<!--HONumber=Nov16_HO2-->
-
+[Notification Hubs – Windows Phone Silverlight-oktatóanyagot]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 

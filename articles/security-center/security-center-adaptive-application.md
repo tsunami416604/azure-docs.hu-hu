@@ -1,6 +1,6 @@
 ---
 title: "Adaptív alkalmazásvezérlők az Azure Security Centerben | Microsoft Docs"
-description: "Ebből a dokumentumból megismerheti az adaptív alkalmazásvezérlők használatát az Azure Security Centerben az Azure-beli virtuális gépeken futó alkalmazások engedélyezési listákra való felvételéhez."
+description: "Ebből a dokumentumból megismerheti, hogyan használható az adaptív alkalmazásvezérlés az Azure Security Centerben az Azure-beli virtuális gépeken futó alkalmazások engedélyezési listákra való felvételéhez."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
 ms.openlocfilehash: 9c3a9a7255bbbdab8f4c356eb07022d7f1d242d7
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben (előzetes verzió)
-Az útmutató segítségével elsajátíthatja az alkalmazásvezérlők konfigurálását az Azure Security Centerben.
+Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Mire szolgálnak a Security Center adaptív alkalmazásvezérlői?
 Az adaptív alkalmazásvezérlők segítségével szabályozhatja, hogy mely alkalmazások futhatnak az Azure-beli virtuális gépeken, ami többek között segít felvértezni virtuális gépeit a kártevők ellen. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában. Ez a képesség nagyban leegyszerűsíti az alkalmazások engedélyezési listáinak konfigurálását és karbantartását, és ezáltal lehetővé teszi a következőket:
@@ -38,10 +37,10 @@ Az adaptív alkalmazásvezérlők segítségével szabályozhatja, hogy mely alk
 > Az adaptív alkalmazásvezérlők a Standard szintű Azure Security Center-ügyfelek számára korlátozott nyilvános előzetes verzió keretében érhetők el. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_appcontrol@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Az adaptív alkalmazásvezérlők engedélyezése
-Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált erőforráscsoportokon futtatható alkalmazások csoportját. Ez a funkció csak Windows rendszerű gépeken használható (minden verziója, legyen klasszikus vagy Azure Resource Manager). Az alkalmazások engedélyezési listáinak konfigurálásához kövesse az alábbi lépéseket a Security Centerben:
+Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált erőforráscsoportokon futtatható alkalmazások csoportját. Ez a funkció csak Windows rendszerű (akár klasszikus, akár Azure Resource Manager típusú) gépeken használható. Az alkalmazások engedélyezési listáinak konfigurálásához kövesse az alábbi lépéseket a Security Centerben:
 
-1.  Nyissa meg a **Security Center** irányítópultját, és kattintson az **Overview** (Áttekintés) gombra.
-2.  Az **Advanced cloud defense** (Speciális felhővédelem) terület **Adaptive application controls** (Adaptív alkalmazásvezérlők) csempéjén tekinthető át, hogy az összes virtuális gép közül hányan működnek éppen vezérlők. A csempe emellett az elmúlt hét folyamán felmerült problémák számát is mutatja: 
+1.  Nyissa meg a **Security Center** irányítópultját, és kattintson az **Áttekintés** elemre.
+2.  A **Speciális felhővédelem** terület **Adaptív alkalmazásvezérlés** csempéjén tekinthető át, hogy az összes virtuális gép közül hányon működik éppen a vezérlés. A csempe emellett az elmúlt hét folyamán felmerült problémák számát is mutatja: 
 
     ![Adaptív alkalmazásvezérlők](./media/security-center-adaptive-application\security-center-adaptive-application-fig1.png)
 
@@ -56,7 +55,7 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurál
 
 Az alábbi szakaszokban részletesebben kitérünk majd az egyes alternatívákra és azok használatára.
 
-### <a name="configure-a-new-application-control-policy"></a>Új alkalmazásvezérlési házirend konfigurálása
+### <a name="configure-a-new-application-control-policy"></a>Új alkalmazásvezérlési szabályzat konfigurálása
 Kattintson a **Recommended** (Ajánlott) lapra azon erőforráscsoportok listájáért, amelyeken javasolt bevezetni az alkalmazásvezérlést:
 
 ![Ajánlott](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
@@ -105,7 +104,7 @@ A **Protection Mode** (Védelem módja) alatt a következő lehetőségek közü
 - **Audit** (Felügyelet): ebben a módban az alkalmazásvezérlési megoldás nem kényszeríti ki a szabályokat, és csak naplózza a tevékenységeket a védett virtuális gépeken. A használata olyan forgatókönyvek esetén javasolt, amikor először szeretné megfigyelni az általános működést, mielőtt blokkolná egy adott alkalmazás futtatását a cél virtuális gépen.
 - **Enforce** (Kényszerítés): ebben a módban az alkalmazásvezérlési megoldás kikényszeríti a szabályokat, és gondoskodik róla, hogy blokkolva legyenek azok az alkalmazások, amelyeknek a futtatása nem engedélyezett. 
 
-Amint azt fent említettük, az új alkalmazásvezérlési házirendek alapértelmezés szerint minden esetben *felügyeleti* módban lesznek konfigurálva. A **Policy extension** (Szabályzat kiterjesztése) területen felveheti saját alkalmazásai elérési útját is az engedélyezettek közé. Az elérési utak felvétele után a Security Center ezekhez az alkalmazásokhoz is létrehozza a megfelelő szabályokat a már érvényben lévő szabályok mellett. Az **Issues** (Hibák) szakasz az aktuális szabálysértéseket sorolja fel.
+Amint azt fent említettük, az új alkalmazásvezérlési szabályzatok alapértelmezés szerint minden esetben *Naplózás* módban lesznek konfigurálva. A **Policy extension** (Szabályzat kiterjesztése) területen felveheti saját alkalmazásai elérési útját is az engedélyezettek közé. Az elérési utak felvétele után a Security Center ezekhez az alkalmazásokhoz is létrehozza a megfelelő szabályokat a már érvényben lévő szabályok mellett. Az **Issues** (Hibák) szakasz az aktuális szabálysértéseket sorolja fel.
 
 ![Hibák](./media/security-center-adaptive-application/security-center-adaptive-application-fig7.png)
 
@@ -115,7 +114,7 @@ A lista a következőket tartalmazza:
     - **ViolationsBlocked** (Blokkolt szabálysértések): ha a megoldás kényszerítési módban működik, az engedélyezési listán nem szereplő valamely alkalmazás végrehajtására tett kísérlet.
     - **ViolationsAudited** (Naplózott szabálysértések): ha a megoldás felügyeleti módban működik, az engedélyezési listán nem szereplő valamely alkalmazás végrehajtása.
     - **RulesViolatedManually** (Manuálisan megsértett szabályok): ha egy felhasználó manuálisan, és nem az ASC felügyeleti portálján keresztül próbálja konfigurálni a szabályokat a virtuális gépeken.
-- **NO. OF VMS** (Virtuális gépek száma): azon virtuális gépek száma, amelyeket a hiba jelentkezik.
+-  **NO. OF VMS** (Virtuális gépek száma): azon virtuális gépek száma, amelyeket a hiba jelentkezik.
 
 Az egyes sorokra kattintva a rendszer átirányítja az [Azure-tevékenységnapló](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) oldalára, ahol minden olyan virtuális gép adatait megtekintheti, amelyen az adott típusú szabálysértés jelentkezik. Az egyes sorok végén található három pontra kattintva törölheti az adott bejegyzéseket. A **Configured virtual machines** (Konfigurált virtuális gépek) szakasz azokat a virtuális gépeket sorolja fel, amelyekre az adott szabályok vonatkoznak. 
 
@@ -157,5 +156,4 @@ Ebben a dokumentumban megismerte, hogyan használhatja az adaptív alkalmazásve
 * [Azure Security Center – Hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti. 
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-
 

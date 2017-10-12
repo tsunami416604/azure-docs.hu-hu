@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: 5a3445aee7722579405b67830ca49ef8c0b29d0e
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Ismerkedés az Azure Data Catalog szolgáltatással
 Az Azure Data Catalog teljes körűen felügyelt felhőszolgáltatás, amely vállalati adategységek regisztrációs és felderítőrendszereként szolgál. A szolgáltatás részletes bemutatásáért olvassa el a [Mi az az Azure Data Catalog?](data-catalog-what-is-data-catalog.md) című cikket.
@@ -363,5 +362,4 @@ Ebben az oktatóanyagban bemutattuk az Azure Data Catalog alapvető funkcióit, 
 * [Adategységek dokumentálása](data-catalog-how-to-documentation.md)
 * [Adategységekhez való kapcsolódás](data-catalog-how-to-connect.md)
 * [Adategységek felügyelete](data-catalog-how-to-manage.md)
-
 

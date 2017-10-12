@@ -1,9 +1,9 @@
---- 
+---
 title: "Azure Automation integrációs modul létrehozása | Microsoft Docs"
 description: "Ez az oktatóprogram végigvezeti az integrációs modulok létrehozásán, tesztelésén és példahasználatán az Azure Automationben."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 ms.assetid: 27798efb-08b9-45d9-9b41-5ad91a3df41e
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/13/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: ea2ad80f348c80856c525218aad45a8fcf47bcb8
-ms.openlocfilehash: aeb06276a52e5472667ae0a741fb3007a91910fe
-
+ms.openlocfilehash: 061a9856ef4a9bc4f569b812a061fad98b044f04
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-automation-integration-modules"></a>Azure Automation integrációs modulok
 Az Azure Automation mögötti alapvető technológia a PowerShell. Minthogy az Azure Automation a PowerShellre épül, a PowerShell-modulok kulcsfontosságúak az Azure Automation bővíthetősége szempontjából. Ez a cikk bemutatja az Azure Automation „integrációs modulnak” nevezett PowerShell-moduljainak használati jellemzőit, valamint gyakorlati tanácsokat nyújt saját PowerShell-moduljainak létrehozására, hogy azok biztosan működjenek integrációs modulként az Azure Automationben. 
 
@@ -173,7 +173,7 @@ Bár az integrációs modulok lényegében PowerShell modulok, számos dolog van
     }
     ``` 
     <br>
-    Ez pedig a helyes módszer: befogad egy primitívet, amelynek belső használatával a parancsmag befogadhatja és használhatja a komplex objektumot. Minthogy a parancsmagokat a rendszer a PowerShell környezetében hajtja végre, nem a PowerShell-munkafolyamatéban, a parancsmagon belül $process lesz a helyes [System.Diagnostic.Process] típus.  
+    Ez pedig a helyes mód: befogad egy primitívet, amely belső használatával a parancsmag befogadhatja és használhatja a komplex objektumot. Minthogy a parancsmagokat a rendszer a PowerShell környezetében hajtja végre, nem a PowerShell-munkafolyamatéban, a parancsmagon belül $process lesz a helyes [System.Diagnostic.Process] típus.  
    
     ```
     function Get-ProcessDescription {
@@ -211,10 +211,4 @@ Bár az integrációs modulok lényegében PowerShell modulok, számos dolog van
 
 * A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)
 * További információk PowerShell-modulok létrehozásáról: [Windows PowerShell-modul írása](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -11,14 +11,12 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
 
 > [!div class="op_single_selector"]
@@ -363,5 +361,4 @@ A portálon részletesen megtekinthetők a tevékenységek és a feladatok álla
 
 - Ha korábban nem használta a szolgáltatást, olvassa el [az Azure Batch szolgáltatásainak áttekintését](batch-api-basics.md) tartalmazó cikket.
 - A Batch API megismeréséhez lásd a [Batch – Node.js-referenciát](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/).
-
 

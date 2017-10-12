@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
 ms.openlocfilehash: 600b1b7e5f3987c9a0acc33b7049f7118442b931
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="send-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Leküldéses értesítések küldése Chrome-alkalmazásokba az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -427,7 +427,7 @@ Tesztelési célra a Chrome leküldéses értesítéseit egy .NET-konzolalkalmaz
 > 
 > 
 
-## <a name="next-steps"> </a>Következő lépések
+## <a name="next-steps"></a>Következő lépések
 További tudnivalók a Notification Hubsról: [Notification Hubs – áttekintés].
 
 Ha adott felhasználóknak szeretne értesítést küldeni, tekintse meg az [Azure Notification Hubs – Felhasználók értesítése] oktatóanyagot. 

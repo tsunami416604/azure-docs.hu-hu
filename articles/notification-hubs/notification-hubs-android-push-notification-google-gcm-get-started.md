@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 5ef9e96ae78b02da9dff1456608d73b9e78516a1
 ms.openlocfilehash: 808fc10ef1ebb3288facbdf2e9e817b27d4fc6bc
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Leküldéses értesítések küldése Androidra az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -59,7 +59,7 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Android-a
 
 Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
+## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
 ### <a name="create-a-new-android-project"></a>Új Android-projekt létrehozása
 1. Az Android Studióban indítson el egy új Android Studio-projektet.
    
@@ -669,9 +669,3 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Feb17_HO1-->
-
-

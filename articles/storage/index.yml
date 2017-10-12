@@ -39,7 +39,7 @@ sections:
         style: ordered
         items:
           - html: <a href="/azure/storage/blobs/storage-upload-process-images">Felhőbeli rendszerkép-adatok feltöltése és lekérése</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Az Azure Functions aktiválása a blobok feldolgozásához</a>
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Az Azure Functions aktiválása a blobok feldolgozásához</a>
           - html: <a href="/azure/storage/blobs/storage-secure-access-application">Az alkalmazásadatok védelme</a>
           - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Tárterület figyelése és hibaelhárítása</a>
   - title: Példák

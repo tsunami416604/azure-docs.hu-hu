@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c3ae8da65e03fe9e11b5657a6a40d02de0567da6
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="integrate-system-center-configuration-manager-with-oms-update-management-preview"></a>System Center Configuration Manager integrálása az OMS-frissítéskezeléssel [előzetes verzió]
 
 Azok a felhasználók, akik befektettek a System Center Configuration Managerbe a számítógépek, kiszolgálók és mobileszközök kezelése érdekében, a teljesítményét és fejlettségét a szoftverfrissítések kezelése során, a szoftverfrissítés-kezelési (SUM) ciklus részeként is kihasználják.  
@@ -56,5 +54,4 @@ Az OMS-megoldással végzett frissítéstelepítés után azon célszámítógé
 Azon Windows Server rendszerű virtuális gépek frissítéseinek kezeléséhez, amelyek egyben Configuration Manager-ügyfelek is, a megoldás által kezelt minden ügyfél esetében egy ügyfélszabályzatot kell beállítania a szoftverfrissítés-kezelési funkció letiltásához.  Alapértelmezés szerint az ügyfélbeállítások minden eszközt megcéloznak a hierarchiában.  A szabályzattal és annak beállításával kapcsolatos információkért lásd [az ügyfélbeállítások a System Center Configuration Managerben történő konfigurálását](https://docs.microsoft.com/sccm/core/clients/deploy/configure-client-settings) ismertető részt.  
 
 A konfigurációs módosítás elvégzése után hozzon létre egy új telepítést a [frissítéstelepítés létrehozását](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment) ismertető részben leírtakat követve, majd a legördülő listából válassza a megfelelő, OMS-számítógépcsoportként megjelenő Configuration Manager-gyűjteményt. 
-
 

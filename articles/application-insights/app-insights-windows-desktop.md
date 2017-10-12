@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: 35ca040ed123f6330f09f7fb1bc6be9ddaf61808
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/07/2017
-
+ms.openlocfilehash: 9d7e2a390adf10cbf5d88dd0084ce09136987309
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>Windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
@@ -38,7 +37,7 @@ Az [Azure Application Insights](app-insights-overview.md) és a [HockeyApp](http
 3. A Visual Studióban szerkessze az alkalmazási projekt NuGet-csomagjait, és vegye fel a Microsoft.ApplicationInsights.WindowsServer csomagot. (Vagy válassza a Microsoft.ApplicationInsights csomagot, ha csak az API-ra van szüksége a normál telemetriai adatgyűjtő modulok nélkül.)
 4. Állítsa be a kialakítási kulcsot a kódban:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *az Ön kulcsa* `";` 
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*az Ön kulcsa*`";` 
    
     vagy az ApplicationInsights.config fájlban (ha telepítette valamelyik normál telemetriai csomagot):
    
@@ -90,5 +89,4 @@ Az [Azure Application Insights](app-insights-overview.md) és a [HockeyApp](http
 * [Diagnosztikai keresés](app-insights-diagnostic-search.md)
 * [Metrikák böngészése](app-insights-metrics-explorer.md)
 * [Analytics-lekérdezések](app-insights-analytics.md)
-
 
