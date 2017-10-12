@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/28/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f798ac1b46d702dbb96a2384d96f2d14eb3cac0e
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-example-experiments-to-create-new-machine-learning-experiments"></a>Új Machine Learning-kísérletek létrehozása példakísérletek másolásával
 Ebből a cikkből megtudhatja, hogy teljesen új Machine Learning-kísérletek létrehozása helyett hogyan kezdhet hozzá a munkához a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) példakísérleteivel. A példák segítségével felépítheti saját Machine Learning-megoldását.
@@ -69,4 +68,3 @@ A mintakísérletet példaként használva új kísérlet jön létre a Machine 
 * [Adatok importálása különböző forrásokból](import-data.md)
 * [Gyors üzembe helyezési oktatóanyag az R nyelvhez a Machine Learning eszközben](r-quickstart.md)
 * [Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
-

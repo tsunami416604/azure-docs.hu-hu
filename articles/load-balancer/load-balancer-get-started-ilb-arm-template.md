@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5559f610a2556aaecff61eabd19759250904c379
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: f3f89bd85e6e91e84b603abc9824a51b54ccee47
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Belső terheléselosztó létrehozása sablon használatával
 
 > [!div class="op_single_selector"]
@@ -85,5 +83,4 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
 [A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
-
 

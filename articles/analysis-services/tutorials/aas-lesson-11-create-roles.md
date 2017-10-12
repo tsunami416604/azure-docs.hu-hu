@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 085a36edd2a0e80123ac8754b438bceadfa6c0e9
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 0dfcb9d9fc8cd32f95c5097ec653864364b27bcc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-11-create-roles"></a>11. lecke: Szerepkörök létrehozása
 
@@ -97,4 +96,3 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 
   
   
-

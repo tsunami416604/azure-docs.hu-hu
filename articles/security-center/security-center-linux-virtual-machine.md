@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
 ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Az Azure Security Center és Linux rendszerű Azure-beli virtuális gépek
 [Az Azure Security Center](https://azure.microsoft.com/services/security-center/) lehetővé teszi a fenyegetések megelőzését, észlelését és kezelését. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.

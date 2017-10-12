@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
 ms.author: bwren
+ms.openlocfilehash: cb247ee68da88265f7c51258644064463d44f8b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 1960fa0e17ea9aa0ca15bc3ecb8ce5b1f6630a60
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -162,4 +161,3 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
 ### <a name="automation"></a>Automatizálás
 
 * [Application Insights-erőforrások létrehozásának automatizálása](app-insights-powershell.md)
-

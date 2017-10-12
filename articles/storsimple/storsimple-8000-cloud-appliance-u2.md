@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/10/2017
 ms.author: alkohli
 ms.openlocfilehash: e7f58c8c1414f41d1d43e98b2faa327165f6eb75
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
 
@@ -43,13 +43,13 @@ A StorSimple felhőalapú készülék két modellben érhető el: a hagyományos
 | --- | --- | --- |
 | **Maximális kapacitás** |30 TB |64 TB |
 | **Azure virtuális gép** |Standard_A3 (4 mag, 7 GB memória)| Standard_DS3 (4 mag, 14 GB memória)|
-| **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot támogató Azure-régiók és DS3 Azure-beli virtuális gépek<br></br>[Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek > DS-sorozat** és a **Storage > Disk Storage** termékek egyaránt elérhetők-e az adott régióban. |
+| **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot támogató Azure-régiók és DS3 Azure-beli virtuális gépek<br></br>[Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban. |
 | **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../storage/common/storage-premium-storage.md) |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek <br></br>Kis késés és nagyobb teljesítményű számítási feladatok<br></br>Másodlagos vészhelyreállítási eszköz |
 
-<sup>1</sup> *Korábbi nevén az 1100-as*.
+<sup>1</sup>*Korábbi nevén az 1100-as*.
 
-<sup>2</sup> *A 8010-es és a 8020-as modellek egyaránt Azure Standard szintű tárolást használnak a felhő szintjén. Csak az eszközön belül, a helyi rétegen van különbség*.
+<sup>2</sup>*A 8010-es és a 8020-as modellek egyaránt Azure Standard szintű tárolást használnak a felhő szintjén. Csak az eszközön belül, a helyi rétegen van különbség*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>A felhőalapú készülék és a fizikai eszköz közötti különbségek
 

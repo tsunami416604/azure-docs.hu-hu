@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f30a450c7d3aa73bb2fb196ca7de94436916bed0
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: f88e3cf6672d975793b4836434ec31d9f7d37016
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása sablon használatával
 
 > [!div class="op_single_selector"]
@@ -86,4 +84,3 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
 [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
-

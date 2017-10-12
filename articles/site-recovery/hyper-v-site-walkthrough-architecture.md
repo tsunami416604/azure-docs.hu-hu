@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: d57cbc5b205cfb020070d567097f3bb648ce5300
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="step-1-review-the-architecture-for-hyper-v-replication-to-azure"></a>1. lépés: Az architektúra áttekintése a Hyper-V Azure-ba történő replikációjához
 
 
@@ -116,4 +113,3 @@ Ha hiba lép fel a replikáció során, a rendszer automatikusan újrapróbálko
 ## <a name="next-steps"></a>Következő lépések
 
 Ugrás a [2. lépés: Az üzembe helyezési előfeltételek áttekintés](hyper-v-site-walkthrough-prerequisites.md) műveletre
-

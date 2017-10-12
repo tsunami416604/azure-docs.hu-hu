@@ -8,14 +8,12 @@ ms.author: darosa
 ms.date: 08/15/2017
 ms.topic: hero-article
 ms.service: event-grid
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: cd285471196f75f6a8c8ead0e2895fd71414f223
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-route-custom-events-with-azure-event-grid"></a>Egyéni események létrehozása és átirányítása az Azure Event Griddel
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk a témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [RequestBin](https://requestb.in/) nevű nyílt forráskódú, külső fél által biztosított eszközzel fogjuk létrehozni.
@@ -122,4 +120,3 @@ Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és esemény
 - [Azure Blob Storage-események átirányítása egyéni webes végpontra (előzetes verzió)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps segítségével](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)
-

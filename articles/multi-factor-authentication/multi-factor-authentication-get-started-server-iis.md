@@ -15,12 +15,11 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017,it-pro
+ms.openlocfilehash: ab6f9110dccd3cfc15092f535650e8d8cb1af13c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: b1841aea07140a855a1978e7c3141f76aa2d8862
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Az Azure Multi-Factor Authentication-kiszolgáló konfigurálása IIS-webalkalmazásokhoz
 
@@ -77,4 +76,3 @@ A Megbízható IP-címek segítségével a felhasználók adott IP-címekről va
 2. Kattintson az **Add** (Hozzáadás) parancsra.
 3. A Megbízható IP-címek hozzáadása párbeszédpanel megjelenésekor válassza az **Egyetlen IP-cím**, az **IP-címtartomány** vagy az **Alhálózat** választógombot.
 4. Adja meg az engedélyezési listához hozzáadni kívánt IP-címet, IP-címtartományt vagy alhálózatot. Ha alhálózatot ad meg, válassza ki a megfelelő hálózati maszkot, és kattintson az **OK** gombra. Ezzel az engedélyezési lista hozzáadása megtörtént.
-

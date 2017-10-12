@@ -21,7 +21,7 @@
    
    ![Szolgáltatás létrehozása](./media/storsimple-create-new-service/HCS_StorSimpleManagerServicePage-include.png)
 
-![Videó elérhető](./media/storsimple-create-new-service/Video_icon.png) **Videó elérhető**
+![Videó elérhető](./media/storsimple-create-new-service/Video_icon.png)**Videó elérhető**
 
 Az új StorSimple Manager szolgáltatás létrehozását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/).
 

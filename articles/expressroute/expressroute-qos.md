@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
 ms.openlocfilehash: c097a9ccba91f59b323215d42d37e6d85e0981ce
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-qos-requirements"></a>Az ExpressRoute QoS-követelményei
 A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, amelyek különböző QoS-kezelést igényelnek. Ha hangszolgáltatásokat tervez használni az ExpressRoute-on keresztül, teljesítenie kell az alábbiakban ismertetett követelményeket.
@@ -52,5 +51,4 @@ A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöl
   * [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-classic.md)
   * [Útválasztás konfigurálása](expressroute-howto-routing-classic.md)
   * [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-classic.md)
-
 

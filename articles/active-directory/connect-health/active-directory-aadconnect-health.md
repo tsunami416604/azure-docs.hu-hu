@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 26c07d30f9166e0e52cb396cdd0576530939e442
 ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben
 Az Azure Active Directory (Azure AD) Connect Health segít megfigyelni a helyszíni identitás-infrastruktúrát és a szinkronizálási szolgáltatásokat, és további betekintést nyújt a működésükbe. Megbízható Office 365- és Microsoft Online Services-kapcsolat fenntartását teszi lehetővé olyan fontos identitás-összetevők megfigyelésével, mint például az Active Directory összevonási szolgáltatások (AD FS) kiszolgálói, az Azure AD Connect-kiszolgálók (más néven a szinkronizálási motor) vagy az Active Directory-tartományvezérlők stb. Ezen összetevők legfontosabb adatpontjait is könnyen hozzáférhetővé teszi, így lekérdezhetővé válnak a használatra és egyéb lényeges jellemzőkre vonatkozó adatok, hogy megalapozott döntéseket hozhasson.
@@ -125,4 +124,3 @@ Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési ada
 * [Az Azure AD Connect Health használata az AD DS szolgáltatással](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
 * [Az Azure AD Connect Health verzióelőzményei](active-directory-aadconnect-health-version-history.md)
-

@@ -12,22 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/24/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
+ms.openlocfilehash: a29bc68e966a3706af557af0c626d369d04149aa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 2cc2b63312b331a19c61cd7b59a4cac78edf32e6
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-groups-in-azure-active-directory"></a>Csoportkezelés az Azure Active Directoryban
 > [!div class="op_single_selector"]
 > * [Azure Portal](active-directory-groups-create-azure-portal.md)
-> * [klasszikus Azure portál](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 >
 >
@@ -107,4 +105,3 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 * [Mi az az Azure Active Directory?](active-directory-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
-

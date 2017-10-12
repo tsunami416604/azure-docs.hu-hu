@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/23/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: fe504d826b6c40099f1f8706ef7e8780eed5cf9a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>Részletes útmutató: A hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése az Azure Machine Learning Studio használatával
 
@@ -59,4 +58,3 @@ A hitelkockázat-értékelési megoldás létrehozásához az alábbi lépéseke
 > Az ebben az útmutatóban kifejlesztett kísérlet működő példányát megtalálja a [Cortana Intelligence Galleryben](https://gallery.cortanaintelligence.com). Lépjen **[a hitelkockázat előrejelzésével kapcsolatos útmutatóra](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)**, és kattintson az **Open in Studio** (Megnyitás a Studióban) lehetőségre a kísérlet egy példányának a Machine Learning Studio-munkaterületre való letöltéséhez.
 > 
 > Ez az útmutató [a hitelkockázat bináris osztályozás útján való előrejelzésével](http://go.microsoft.com/fwlink/?LinkID=525270) kapcsolatos mintakísérlet egyszerűsített verzióján alapul, amely szintén a [Galleryben](http://gallery.cortanaintelligence.com/) érhető el.
-

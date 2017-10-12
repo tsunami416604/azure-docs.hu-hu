@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: jgao
+ms.openlocfilehash: 62b2700c368c4b0c66df140e8961408840beb626
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: c8857076faa37f5b0d7c70f40b494465b3b99af2
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/18/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-hadoop"></a>Mi az a HBase a HDInsight eszközben: Egy NoSQL-adatbázis, amely BigTable-szerű képességeket nyújt a Hadoophoz
 Az Apache HBase egy nyílt forráskódú NoSQL-adatbázis, amely a Hadoopra épült, és a Google BigTable után van modellezve. A HBase véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára egy séma nélküli adatbázisban oszlopcsaládok szerint rendezve.
@@ -61,7 +60,6 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 * [A HBase első lépései a Hadooppal a HDInsightban][hbase-get-started]
 * [HDInsight-fürtök létrehozása az Azure Virtual Network-ön][hbase-provision-vnet]
 * [HBase-replikálás konfigurálása a HDInsightban](hdinsight-hbase-replication.md)
-* [Twitter-vélemények elemzése a HBase-szel a HDInsightban][hbase-twitter-sentiment]
 * [A Maven használata a HDInsight (Hadoop) eszközzel HBase-t használó Java-alkalmazások építéséhez][hbase-build-java-maven]
 
 ## <a name="see-also"></a>Lásd még:
@@ -69,8 +67,6 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 * [Bigtable: Elosztott tárolórendszer strukturált adatokhoz](http://research.google.com/archive/bigtable.html)
 
 [hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
-
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
 [hbase-build-java-maven]: hdinsight-hbase-build-java-maven.md
 
@@ -87,4 +83,3 @@ A kanonikus használati eset, amelyhez a BigTable (és így a HBase) létrejött
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
-

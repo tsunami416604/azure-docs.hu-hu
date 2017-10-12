@@ -16,10 +16,10 @@ ms.date: 07/19/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.openlocfilehash: fe33d490b754e2f793f5c7a13dc55ca038b1b71c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Azure AD-bérlő beszerzése
 Az Azure Active Directory (Azure AD) alatt a [bérlők](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) a szervezetek képviselői.  Ez az Azure AD szolgáltatás egy dedikált példánya, amelyet a szervezetek megkapnak és a tulajdonukban áll, amikor regisztrálnak egy Microsoft-felhőszolgáltatásra, például az Azure, a Microsoft Intune vagy az Office 365 szolgáltatásra.  Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől.  

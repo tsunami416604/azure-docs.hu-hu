@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/25/2017
+ms.date: 10/10/2017
 ms.author: curtand
+ms.reviewer: rodejo
 ms.custom: oldportal;it-pro;
+ms.openlocfilehash: 497beb75d1bd4c0709929948a9f857a034364f44
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: b520a5e96417fb766a757fabc384a1fc4eb0f14e
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-the-directory-for-your-office-365-subscription-in-azure"></a>Manage the directory for your Office 365 subscription in Azure (Office 365-előfizetéshez tartozó címtár kezelése az Azure-ban)
 Ez a cikk ismerteti, hogyan kezelheti az Office 365-előfizetéshez létrehozott címtárakat a klasszikus Azure portál használatával. Az Azure-előfizetés szolgáltatás-rendszergazdájának vagy társadminisztrátorának kell lennie, hogy bejelentkezhessen a klasszikus Azure Portalra. Ha még nem rendelkezik Azure-előfizetéssel, regisztrálhat egy [30 napos ingyenes próbaverzióra](https://azure.microsoft.com/trial/get-started-active-directory/), és kevesebb mint 5 perc alatt üzembe helyezheti az első felhőalapú megoldást ezen hivatkozás használatával. Azt a munkahelyi vagy iskolai fiókot használja, amelyet az Office 365-ba történő bejelentkezéshez használ.
@@ -34,8 +34,8 @@ Ha már van Azure-előfizetése, a további címtárak kezelésének folyamata i
 
 | Előfizetés | Office 365 | Azure |
 | --- | --- | --- |
-|   Megjelenített név |Contoso |Alapértelmezett Azure Active Directory (Azure AD) címtár |
-|   Tartománynév |contoso.com |msmithhotmail.onmicrosoft.com |
+|   Megjelenített név | Contoso | Alapértelmezett Azure Active Directory (Azure AD) címtár |
+|   Tartománynév | contoso.com | msmithhotmail.onmicrosoft.com |
 
 Kezelni szeretné a felhasználói identitásokat a Contoso címtárban, mialatt a Microsoft-fiókjával van bejelentkezve az Azure-ba, hogy olyan Azure AD-funkciókat engedélyezhessen, mint a többtényezős hitelesítés. A következő diagram segíthet ábrázolni a folyamatot.
 
@@ -70,4 +70,3 @@ Most tegyük fel, hogy Jane Doe-nak az msmith@hotmail.com fiók Azure-előfizet�
 
 ## <a name="next-steps"></a>Következő lépések
 Az előfizetések és a címtárak közötti kapcsolatról további információ: [Hogyan vannak társítva az előfizetések a címtárakkal](active-directory-how-subscriptions-associated-directory.md).
-

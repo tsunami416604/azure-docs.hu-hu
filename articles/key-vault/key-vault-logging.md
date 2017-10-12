@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: cabailey
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 924fce8245a88fd7c12636182336e503237fe4dc
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: e9a4f16f048833dab49f7db79892fe47a5aeff37
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -275,4 +274,3 @@ Programozási hivatkozások: [Azure Key Vault developer’s guide](key-vault-dev
 Az Azure Key Vaultra vonatkozó Azure PowerShell 1.0-parancsmagok listáját az [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Az Azure Key Vault parancsmagjai) című témakörben találja.
 
 A kulcsrotálással és a naplózással kapcsolatos oktatóanyag: [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md) (A Key Vault beállítása átfogó kulcsrotálással és naplózással).
-

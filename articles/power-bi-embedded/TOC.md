@@ -13,7 +13,7 @@
 ## [Azure AD-alkalmazás regisztrálása](https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/)
 ## [Power BI-tartalom beágyazása](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)
 
-## Migrálás
+## Migrate (Áttelepítés)
 ### [Migrálás Power BI munkaterületi gyűjteményekből](migrate-from-power-bi-workspace-collections.md)
 ### [Migrálási eszköz](migrate-tool.md)
 ### [Migrálási kódrészletek](migrate-code-snippets.md)

@@ -15,12 +15,11 @@ ms.date: 09/07/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro;
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 4b86ececefd3724b9e7791d2609b146de052f605
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>Gyors útmutató: Prémium szintű Azure Active Directory – Regisztráció
 Az Azure Active Directory (Azure AD) Prémium szintű kiadásával folytatott munka megkezdéséhez megvásárolhatja a licenceket, és hozzárendelheti őket Azure-előfizetéséhez. Ha új Azure-előfizetést hoz létre, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is a következő szakaszokban leírtak szerint. 

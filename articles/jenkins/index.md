@@ -12,12 +12,11 @@ ms.topic: landing-page
 ms.date: 06/20/2017
 ms.author: carolz
 ms.custom: Jenkins
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: e2f5caf8c4d3eab600bb015db5a4403314a4f6e3
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 <div class="content">
     <h1>A Jenkins® az Azure-on</h1>
@@ -46,4 +45,3 @@ ms.lasthandoff: 08/31/2017
 <h4>      
 A Jenkins® a Software in the Public Interest, Inc. bejegyzett védjegye. A [Jenkins® embléma](https://wiki.jenkins.io/display/JENKINS/Logo) licencelése a [Jenkins projektből](https://jenkins.io) a [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) alapján történik.</h4>
 </div>
-

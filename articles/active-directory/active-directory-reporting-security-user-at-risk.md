@@ -13,12 +13,11 @@ ms.workload: identity
 ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 04f15384a7cd0fa03300acdf159d371569ecf9fc
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon
 
@@ -112,5 +111,4 @@ Egy kockázati esemény vizsgálatához válassza ki azt a listából a kockáza
 ## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Active Directory Identity Protectionnel kapcsolatos további részletekért lásd: [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
-
 

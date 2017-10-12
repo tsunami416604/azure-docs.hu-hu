@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.translationtype: HT
-ms.sourcegitcommit: 49bc337dac9d3372da188afc3fa7dff8e907c905
 ms.openlocfilehash: 645f68d836babf11f32fc391e6dacc9430f0070c
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
@@ -130,5 +129,4 @@ Nincs szükség változtatásra az útválasztási szabályban. Az alapszintű �
 ## <a name="next-steps"></a>Következő lépések
 
 Miután megismerte a többhelyes üzemeltetést, látogasson el a [Create an application gateway using multiple site hosting](application-gateway-create-multisite-azureresourcemanager-powershell.md) (Alkalmazásátjáró létrehozása többhelyes üzemeltetéssel) weboldalra, ahonnan megtudhatja, hogyan hozhat létre egynél több webalkalmazást támogató alkalmazásátjárót.
-
 

@@ -15,14 +15,12 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: ed14a5a762bab20a1ccde699504dd21f25009b52
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="getting-started-with-an-azure-multi-factor-auth-provider"></a>Első lépések az Azure Multi-Factor Auth szolgáltatóval
 A kétlépéses ellenőrzés alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](multi-factor-authentication-whats-next.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
 
@@ -88,4 +86,3 @@ Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolg
 [A Multi-Factor Authentication SDK letöltése](multi-factor-authentication-sdk.md)
 
 [A Multi-Factor Authentication beállításainak konfigurálása](multi-factor-authentication-whats-next.md)
-

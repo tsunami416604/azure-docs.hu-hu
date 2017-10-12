@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f41fbee742daf2107b57caa528e53537018c88c6
-ms.openlocfilehash: 1091abef19121ac4ce65fdaf7299b091bf41eb1c
-ms.contentlocale: hu-hu
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 10f7b8f20cc41a5ebb1b1376e2bf17be02600ae4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-insights-from-azure-security-center-data-with-power-bi"></a>Mélyebb betekintés az Azure Security Center adataiba a Power BI segítségével
 Az Azure Security Center [Power BI irányítópultja](http://aka.ms/azure-security-center-power-bi) lehetővé teszi a javaslatok és biztonsági riasztások megjelenítését, elemzését és szűrését bárhonnan, akár a mobileszközökről is. A Power BI irányítópult segítségével feltárhatja a trendeket és támadási mintákat - tekintse meg a biztonsági riasztásokat az erőforrás vagy a forrás IP-címe szerint, a cím nélküli biztonsági kockázatokat pedig erőforrás vagy kor szerint.
@@ -120,4 +119,3 @@ Ebben a dokumentumban megismerkedhetett az Azure Security Center Power BI irány
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-

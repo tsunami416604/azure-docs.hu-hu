@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: d803e814828132aa5c8355de6192e45cd9e902b0
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-ad-access-reviews-preview"></a>Azure AD hozzáférési felülvizsgálatok (előzetes verzió)
 
 A hozzáférési felülvizsgálatokkal a cégek hatékonyan kezelhetik a csoporttagságokat és a vállalati alkalmazásokhoz való hozzáférést. 
@@ -41,4 +39,3 @@ A hozzáférési felülvizsgálatokkal a cégek hatékonyan kezelhetik a csoport
 - [Programok és vezérlők felügyelete az Azure AD hozzáférési felülvizsgálatokkal](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [Hozzáférési felülvizsgálat létrehozása egy csoport tagjai számára vagy egy alkalmazáshoz való hozzáférés céljából](active-directory-azure-ad-controls-create-access-review.md)
 - [Hozzáférési felülvizsgálat létrehozása Azure AD rendszergazdai szerepkörrel rendelkező felhasználókhoz](active-directory-privileged-identity-management-how-to-start-security-review.md)
-

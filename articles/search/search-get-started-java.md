@@ -14,12 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
-ms.contentlocale: hu-hu
-ms.lasthandoff: 03/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
 > [!div class="op_single_selector"]
@@ -110,7 +109,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 7. Kattintson a **Finish** (Befejezés) gombra.
 8. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Java** > **Installed JREs** (Telepített JRE-k)  > **Add** (Hozzáadás) lehetőséget.
 9. Az **Add JRE** (JRE hozzáadása) panelen válassza ki a **Standard VM** elemet.
-10. Kattintson a **Next** (Tovább) gombra.
+10. Kattintson a **Tovább** gombra.
 11. A JRE Definition (JRE_definíció) ablakban, a JRE kezdőlapján kattintson a **Directory** (Könyvtár) elemre.
 12. Navigáljon a **Program Files** (Programfájlok)  > **Java** könyvtárra, és válassza ki a korábban telepített JDK-t. Fontos, hogy a JDK-t JRE-ként válassza ki.
 13. Az Installed JREs (Telepített JRE-k) panelen válassza ki a **JDK** elemet. A beállításainak az alábbi képernyőfelvételhez hasonlóan kell kinéznie.
@@ -180,4 +179,3 @@ Mik az Azure Search újdonságai? Azt javasoljuk, próbáljon ki más oktatóany
 [10]: ./media/search-get-started-java/AzSearch-Java-BuildProject1.PNG
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
-

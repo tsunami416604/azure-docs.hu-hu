@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: dastrock
-ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
 ms.openlocfilehash: 51001feb17ae99d3bd391a9f980d514e07f97099
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: Alkalmazások típusai
 Az Azure Active Directory (Azure AD) B2C számos különböző modern alkalmazásarchitektúrához használható hitelesítést tartalmaz. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ebben a dokumentumban röviden leírjuk, hogy milyen típusú alkalmazásokat hozhat létre. Mindez független a programozási nyelvtől vagy a használt platformtól. A cikk segíthet az összetettebb feladatok megértésében, ezért érdemes elolvasni, mielőtt nekifog [az alkalmazások létrehozásának](active-directory-b2c-overview.md#get-started).
@@ -132,4 +131,3 @@ Az Azure AD B2C jelenleg nem támogatja a folyamatot. Ezek az alkalmazások csak
 Számos architektúrában szerepelnek olyan webes API-k, amelyek más, alsóbb rétegbeli webes API-kat hívnak meg, és mindkét API biztonságát az Azure AD B2C garantálja. Ez gyakori a webes API-háttérrel rendelkező natív ügyfelek esetében. Ez aztán meghív egy Microsoft online szolgáltatást, például az Azure AD Graph API-t.
 
 Ez a láncolatba fűzött webes API-megoldás az OAuth 2.0 JWT tulajdonosi hitelesítő adatok megadásával (vagy más néven a meghatalmazásos folyamat) segítségével valósítható meg.  A meghatalmazásos folyamatot azonban még nem implementáltuk az Azure AD B2C-be.
-

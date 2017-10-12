@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: b78cd0d5a5395873afaddc8856004775f447e8ea
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-1-review-the-architecture-for-hyper-v-replication-to-a-secondary-site"></a>1. lépés: Az architektúra áttekintése a Hyper-V másodlagos helyre történő replikációjához
 
@@ -65,4 +64,3 @@ A Hyper-V-alapú virtuális gépek másodlagos VMM-helyre való replikálásáho
 ## <a name="next-steps"></a>Következő lépések
 
 Folytassa a [2. lépés: Az előfeltételek és korlátozások áttekintése](vmm-to-vmm-walkthrough-prerequisites.md) művelettel.
-

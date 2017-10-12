@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/04/2017
 ms.author: haining;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f4e53fa46a6b7f8811e4fee67b1466786b81cdc9
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Az Azure Machine Learning Studio képességeit áttekintő diagram
 A **Microsoft Azure Machine Learning Studio képességeinek áttekintése** diagram átfogó képet nyújt a Machine Learning Studio prediktív elemzési kísérletek kifejlesztéséhez, és azok Azure felhőben történő üzembe helyezéséhez való használatáról.
@@ -51,5 +50,4 @@ Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekint
 * A Machine Learning Studióban található gépi tanulási algoritmusok részletes leírását az [Algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md) című fejezetben találja.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: d3817d44bb21162afe799fd13368fbf902521416
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure virtuális gép titkosítása
 Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes virtuális gépek nincsenek titkosítva. Ezek a riasztások magas súlyossági szinttel jelennek meg. A rendszer ilyenkor javasolja, hogy titkosítsa az érintett virtuális gépeket.
@@ -116,7 +115,7 @@ A parancsprogram eredményének a következőhöz hasonlóan kell kinéznie:
 ## <a name="encrypt-the-azure-virtual-machine"></a>Az Azure virtuális gép titkosítása
 Most már készen áll a virtuális gép titkosítására. Ha a virtuális gép ugyanahhoz az erőforráscsoporthoz tartozik, mint a kulcstároló, továbbléphet a titkosításhoz szükséges lépésekre. Ha azonban a virtuális gép nem ugyanahhoz az erőforráscsoporthoz tartozik, mint a kulcstároló, írja be a következő parancsot a PowerShell ISE konzoljába:
 
-**$resourceGroupName = <Virtuális_gép_erőforráscsoportja>**
+**$resourceGroupName = &lt;Virtuális_gép_erőforráscsoportja&gt;**
 
 A **<Virtuális_gép_erőforráscsoportja>** helyére szimpla idézőjelbe téve írja be a virtuális gépet tartalmazó erőforráscsoport nevét. Nyomja le az **ENTER** billentyűt.
 Ha szeretné ellenőrizni, hogy a megfelelő erőforráscsoport-nevet adta-e meg, írja be a következőt a PowerShell ISE konzoljába:
@@ -130,7 +129,7 @@ Nyomja le az **ENTER** billentyűt. Meg kell jelennie a virtuális gépeket tart
 ### <a name="encryption-steps"></a>A titkosítás lépései
 Először közölnie kell a PowerShell-lel a titkosítani kívánt virtuális gép nevét. Írja be a konzolba a következőt:
 
-**$vmName = <’virtuális_gép_neve’>**
+**$vmName = &lt;’virtuális_gép_neve’&gt;**
 
 A **<’virtuális_gép_neve’>** helyére írja be a virtuális gép nevét (ne feledkezzen meg a szimpla idézőjelekről), majd nyomja le az **ENTER** billentyűt.
 
@@ -179,4 +178,3 @@ Ebből a dokumentumból megtanulta, hogyan lehet Azure virtuális gépeket titko
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben) – Ebből az írásból megtanulhatja a biztonsági riasztások kezelésének és megoldásának módját.
 * [Azure Security Center: GYIK](security-center-faq.md) – Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-

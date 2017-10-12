@@ -14,14 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/28/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 089a60ebccabac99771cd06ca8fbf0ea1fb2f1a2
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-event-hubs-namespace-with-an-event-hub-and-enable-capture-using-an-azure-resource-manager-template"></a>Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával
 
 Ez a cikk ismerteti egy olyan Azure Resource Manager-sablon használatát, amely egy Event Hubs-névteret hoz létre egy Event Hubs-példánnyal, valamint leírja az eseményközpont [Capture funkciójának](event-hubs-capture-overview.md) engedélyezését is. A cikk leírja továbbá, hogyan kell meghatározni, hogy mely erőforrások lesznek üzembe helyezve, és hogyan kell meghatározni az üzembe helyezés végrehajtásakor megadandó paramétereket. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.

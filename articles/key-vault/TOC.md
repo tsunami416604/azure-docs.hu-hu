@@ -49,7 +49,7 @@
 ## [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 ## [Azure Rights Management](https://technet.microsoft.com/en-US/dn175750)
 ## [Bővíthető kulcskezelés a Key Vaulttal](https://msdn.microsoft.com/en-us/library/azure/dn198405)
-## [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
+## [Többtényezős hitelesítés](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
 # Erőforrások
 ## [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)

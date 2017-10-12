@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 128b91c685b5f7e494a69ca5b04165a0ee7cbb78
-ms.contentlocale: hu-hu
-ms.lasthandoff: 03/21/2017
-
+ms.openlocfilehash: 83cf027d95018de61ea906268d8f24700203e0c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-internal-load-balancer-by-using-the-azure-cli"></a>Belső terheléselosztó létrehozása az Azure parancssori felület használatával
 
 > [!div class="op_single_selector"]
@@ -218,5 +216,4 @@ azure network lb delete --resource-group nrprg --name ilbset
 [A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
-
 

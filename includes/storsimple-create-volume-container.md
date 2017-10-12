@@ -16,12 +16,7 @@
    
    Az újonnan létrehozott kötettároló megjelenik a **Kötettárolók** oldalon lévő listán.
 
-![Videó elérhető](./media/storsimple-create-volume-container/Video_icon.png) **Videó elérhető**
+![Videó elérhető](./media/storsimple-create-volume-container/Video_icon.png)**Videó elérhető**
 
 A kötettároló a StorSimple megoldásban való létrehozását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/).
-
-
-
-<!--HONumber=Nov16_HO2-->
-
 

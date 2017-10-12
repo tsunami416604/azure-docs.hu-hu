@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
+ms.openlocfilehash: 42a2542b7564f1692146b3e3927792ac339f30be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d07d5d59632791a52bcb3a2f54bebe194cc76a54
-ms.openlocfilehash: 44eaaae123490934bc62b4ea30968656900d48fc
-ms.contentlocale: hu-hu
-ms.lasthandoff: 10/04/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Linux-alapú Azure Service Fabric-tároló üzembe helyezése az Azure-on
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
 
@@ -146,4 +144,3 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 [sfxquickstartshownodetype]:  ./media/service-fabric-quickstart-containers-linux/containersquickstartrestart.png
 [containersquickstartscale]: ./media/service-fabric-quickstart-containers-linux/containersquickstartscale.png
 [containersquickstartscaledone]: ./media/service-fabric-quickstart-containers-linux/containersquickstartscaledone.png
-

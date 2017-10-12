@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/18/2017
 ms.author: magoedte
+ms.openlocfilehash: e3c18c7886c8338efc6168464b63a9557909a769
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 85ae54f76fff47b16d7a365ccee87866d0424f82
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 Ez a témakör bemutatja, hogyan hozhat létre Automation-fiókot az Azure Portalról, ha szeretné kipróbálni és megismerni az Azure Automationt anélkül, hogy más felügyeleti megoldásokat vagy OMS Log Analytics-integrációt venne igénybe a runbook-feladatok hatékonyabb figyeléséhez.  A felügyeleti megoldások, illetve a Log Analytics-integráció a későbbiekben bármikor igénybe vehetőek.  Az Automation-fiókkal hitelesítheti az Azure Resource Managerben vagy a klasszikus Azure üzemelő példányokon lévő erőforrásokat kezelő runbookokat.
 
@@ -92,4 +90,3 @@ Az alábbi táblázat a klasszikus futtató fiókhoz kapcsolódó erőforrásoka
 * A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).
 * A PowerShell-alapú munkafolyamat-runbookok első lépéseit [Az első PowerShell-alapú munkafolyamat-runbookom](automation-first-runbook-textual.md) című témakör ismerteti.
 * A Python2-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első Python2-forgatókönyvem](automation-first-runbook-textual-python2.md).
-

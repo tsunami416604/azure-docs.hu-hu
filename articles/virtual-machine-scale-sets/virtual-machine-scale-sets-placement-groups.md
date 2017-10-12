@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/1/2017
 ms.author: guybo
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 12303e4283de3d179590e599d4d2fe8f14167eda
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
 Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](/azure/virtual-machine-scale-sets/) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg (_singlePlacementGroup=False_). 
@@ -85,6 +84,5 @@ Ahhoz, hogy egy már meglévő virtuálisgép-méretezési csoport több mint 10
 
 >[!NOTE] 
 Módosíthat egy méretezési csoportot, hogy ne csak (az alapértelmezett működés szerinti) egy, hanem több elhelyezési csoportot támogasson, de ennek fordítottjára nincs lehetőség. Ezért a konvertálás előtt győződjön meg róla, hogy tisztában van a nagyméretű méretezési csoportok tulajdonságaival. Különösen ügyeljen arra, hogy ne legyen szüksége a 4. rétegbeli terheléselosztásra az Azure Load Balancerrel.
-
 
 

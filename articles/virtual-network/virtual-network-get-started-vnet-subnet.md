@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2016
 ms.author: jdial
 ms.openlocfilehash: e653764d7cb514d50b44fadd0cc5963dd404d99e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-virtual-network"></a>Az első virtuális hálózat létrehozása
 
@@ -56,7 +56,7 @@ Virtuális hálózat két alhálózattal történő létrehozásához hajtsa vé
     |**Alhálózat neve**|*Előtér*|Az alhálózat nevének egyedinek kell lennie a virtuális hálózaton belül.|
     |**Alhálózati címtartomány**|*10.0.0.0/24*| A megadott tartománynak léteznie kell a virtuális hálózathoz megadott címtéren belül.|
     |**Előfizetés**|*[Az Ön előfizetése]*|Válasszon ki egy előfizetést, amelyben létrehozza a virtuális hálózatot. A virtuális hálózat egyetlen előfizetésben jön létre.|
-    |**Erőforráscsoport**|**Új létrehozása:** *MyRG*|Hozzon létre egy erőforráscsoportot. Az erőforráscsoport nevének egyedinek kell lennie a kiválasztott előfizetésen belül. Az erőforráscsoportokkal kapcsolatos további információkért olvassa el [A Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) áttekintése című cikket.|
+    |**Erőforráscsoport**|**Új létrehozása:***MyRG*|Hozzon létre egy erőforráscsoportot. Az erőforráscsoport nevének egyedinek kell lennie a kiválasztott előfizetésen belül. Az erőforráscsoportokkal kapcsolatos további információkért olvassa el [A Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) áttekintése című cikket.|
     |**Hely**|*USA nyugati régiója*| Általában a fizikai helyéhez legközelebbi hely van kiválasztva.|
 
     A virtuális hálózat néhány másodperc alatt létrejön. A létrehozást követően megjelenik az Azure Portal irányítópultja.

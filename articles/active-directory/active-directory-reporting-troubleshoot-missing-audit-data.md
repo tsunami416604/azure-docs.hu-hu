@@ -15,39 +15,31 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 18af51e95a283a5cd33688484a0d7477eb4b957d
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/08/2017
-
+ms.openlocfilehash: 47617f8f727027de113a0f503308c8accc58859e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
-# Nem találom az Azure Active Directory-tevékenységnaplóban a végrehajtott műveleteket
-<a id="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log" class="xliff"></a>
+# <a name="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log"></a>Nem találom az Azure Active Directory-tevékenységnaplóban a végrehajtott műveleteket
 
 
-## Probléma
-<a id="symptoms" class="xliff"></a>
+## <a name="symptoms"></a>Probléma
 
 Végrehajtottam bizonyos műveleteket az Azure Portalon, és arra számítottam, hogy látom a műveletek naplóit a `Activity logs > Audit Logs` panelen, de nem találtam meg őket.
 
  ![Jelentéskészítés](./media/active-directory-reporting-troubleshoot-missing-audit-data/01.png)
  
 
-## Ok
-<a id="cause" class="xliff"></a>
+## <a name="cause"></a>Ok
 
 A műveletek nem jelennek meg azonnal a tevékenységnaplóban. 15 perctől akár egy óráig is eltarthat, hogy a művelet végrehajtása után megjelenjenek a naplók a portálon.
 
-## Megoldás:
-<a id="resolution" class="xliff"></a>
+## <a name="resolution"></a>Megoldás:
 
 Várja ki 15 perc és egy óra közötti időtartamot, hogy lássa, megjelennek-e a műveletek a naplóban. Ha még mindig nem látja őket, hozzon létre egy támogatási jegyet, és megvizsgáljuk az ügyet.
 
 
-## Következő lépések
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>Következő lépések
 További információ: [Jelentéskészítés az Azure Active Directoryban – gyakori kérdések](active-directory-reporting-faq.md).
-
 

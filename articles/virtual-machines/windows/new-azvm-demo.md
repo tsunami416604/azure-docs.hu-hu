@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/21/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
+ms.openlocfilehash: 3be46c8c02ad136edb1936fbb39560d479b27277
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: c303235ead2af7cfaa368a5b5f00567ae44cfb86
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-new-azvm-preview-in-cloud-shell"></a>Windows rendszerű virtuális gép létrehozása New-AzVM parancsmag (előzetes verzió) használatával a Cloud Shellben 
 
 A New-AzVM (előzetes verziójú) parancsmaggal egyszerűbben hozhat létre új virtuális gépet a PowerShell használatával. Ez az útmutató részletesen bemutatja a PowerShell használatát az Azure Cloud Shellben előre telepített New-AzVM parancsmaggal, illetve új, Windows Server 2016-ot futtató Azure virtuális gép létrehozásakor. Az üzembe helyezés végeztével RDP használatával csatlakozunk a kiszolgálóhoz.  
@@ -83,4 +81,3 @@ Ebben a témakörben egy egyszerű virtuális gépet helyezett üzembe a New-AzV
 
 > [!div class="nextstepaction"]
 > [Windowsos virtuális gépek az Azure-ban – oktatóanyagok](./tutorial-manage-vm.md)
-

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Azure-fájlmegosztás csatlakoztatása és a megosztás elérése Windows rendszeren
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows és Windows Server rendszeren csatlakoztathatók. Ez a cikk három különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására Windows rendszeren: a Fájlkezelő felhasználói felület, a PowerShell és a parancssor használatával. 
 
@@ -145,4 +143,3 @@ Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesró
 ### <a name="reference"></a>Referencia
 * [Az Azure Storage .NET-hez készült ügyféloldali kódtára – referencia](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Referencia a fájlszolgáltatás REST API-jához](http://msdn.microsoft.com/library/azure/dn167006.aspx)
-

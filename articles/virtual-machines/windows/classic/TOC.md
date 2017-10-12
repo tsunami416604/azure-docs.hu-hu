@@ -1,5 +1,5 @@
 # Áttekintés
-## [Információ a virtuális gépekről](../../virtual-machines-windows-about.md)
+## [Információ a virtuális gépekről](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [Lemezek és virtuális merevlemezek](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [Virtuális hálózatok](../../../virtual-network/virtual-networks-overview.md)
 ## [Gyakori kérdések](faq.md)

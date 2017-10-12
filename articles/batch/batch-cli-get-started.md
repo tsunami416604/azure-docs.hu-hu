@@ -3,7 +3,7 @@ title: "A Batch Azure CLI használatának első lépései | Microsoft Docs"
 description: "Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásainak kezelésére szolgáló Batch parancsokhoz az Azure CLI-ben"
 services: batch
 documentationcenter: 
-author: tamram
+author: v-dotren
 manager: timlt
 editor: 
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 07/20/2017
+ms.date: 09/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 68a5493282fa4a0b54ba551c48ae963a42b94dca
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 45c611e1c429e8c17c0fb1537577a4cbd037c23a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -32,7 +31,7 @@ A Microsoft az Azure CLI legújabb, 2.0-ás verziójának használatát ajánlja
 
 ## <a name="set-up-the-azure-cli"></a>Az Azure CLI beállítása
 
-Az Azure CLI telepítéséhez kövesse a [Telepítse az Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli.md) című cikk lépéseit.
+Az Azure CLI telepítéséhez kövesse a [Telepítse az Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli) című cikk lépéseit.
 
 > [!TIP]
 > Ajánlott gyakran frissíteni az Azure CLI telepítést a szolgáltatásfrissítések és -fejlesztések kihasználása érdekében.
@@ -97,9 +96,7 @@ A Batch-fiók hitelesítését két módon is elvégezheti:
 
     Az Azure AD előnye a szerepköralapú hozzáférés-vezérlés (RBAC) használatában rejlik. Szerepköralapú hozzáférés-vezérlés használatával a felhasználók hozzáférése a kiosztott szerepkörtől függ, nem pedig attól, hogy rendelkeznek-e a fiókhoz tartozó hitelesítőkulccsal. Így ahelyett, hogy hozzáférési kulcsokat kellene kezelnie, elég ha a szerepköröket kezeli, a hozzáférést és a hitelesítést pedig az Azure AD-ra bízhatja.  
 
-    Az Azure AD-val történő hitelesítés mindenképpen szükséges, ha Azure Batch-fiókját úgy hozta létre, hogy annak készletfelosztási módja „Felhasználói előfizetés”-re lett állítva. 
-
-    Ahhoz, hogy az Azure AD használatával jelentkezzen be Batch-fiókjába, használja a [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) parancsot: 
+        To log in to your Batch account using Azure AD, call the [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) command: 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -182,7 +179,7 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 
 * A `-h` segítségével **súgószöveget** kérhet bármely CLI parancshoz
 * A `-v` és a `-vv` segítségével **részletes** parancskimenetet jeleníthet meg. Ha a parancs tartalmazza a `-vv` jelzőt, az Azure CLI megjeleníti a tényleges REST-kérelmeket és válaszokat is. Ezek a kapcsolók jól jönnek a teljes hibakimenet megjelenítéséhez.
-* A **kapcsolóval megtekintheti a** parancskimenetet JSON-fájlként `--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezt követően másolhatja és módosíthatja ezt a kimenetet, hogy felhasználhassa egy `--json-file` kapcsolóval (lásd a[JSON-fájlok](#json-files) szakaszt a jelen cikk korábbi részében).
+* A  **kapcsolóval megtekintheti a** parancskimenetet JSON-fájlként`--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezt követően másolhatja és módosíthatja ezt a kimenetet, hogy felhasználhassa egy `--json-file` kapcsolóval (lásd a[JSON-fájlok](#json-files) szakaszt a jelen cikk korábbi részében).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 * A [Batch fórumát][batch_forum] a Batch fejlesztőcsapat tagjai is figyelik. Ott felteheti kérdéseit, ha problémákba ütközne, vagy segítségre lenne szüksége egy adott művelethez.
 
@@ -196,4 +193,3 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-

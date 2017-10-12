@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.openlocfilehash: 3b4181701c5df03a3df7e0446b313eac201ad99e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló
 A távoli asztali (RD) átjáró gyakran a helyi hálózati házirend szolgáltatások (NPS) használatával hitelesíti a felhasználókat. Ez a cikk azt ismerteti, hogyan továbbíthatóak a távoli asztali átjáró RADIUS-kérései (a helyi NPS-en keresztül) a Multi-Factor Authentication-kiszolgáló számára. Az Azure MFA és a távoli asztali átjáró kombinációja azt jelenti, hogy a felhasználói bárhonnan elérhetik a munkahelyi környezeteiket, erős hitelesítés mellett. 

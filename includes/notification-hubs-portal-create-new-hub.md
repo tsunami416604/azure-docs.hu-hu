@@ -1,6 +1,6 @@
 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Válassza az **Új** > **Web + mobil** > **Értesítési központ** elemet.
    

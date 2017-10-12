@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.translationtype: HT
-ms.sourcegitcommit: 2ad539c85e01bc132a8171490a27fd807c8823a4
 ms.openlocfilehash: 9a64d1436471e406b7d9b700257d3dd96b5edcde
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/12/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Azure Search-index létrehozása REST API használatával
 > [!div class="op_single_selector"]
@@ -109,4 +108,3 @@ Miután végzett az index használatával, és törölni szeretné, csak küldj�
 
 ## <a name="next-steps"></a>Következő lépések
 Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a tartalmát az indexbe](search-what-is-data-import.md), és megkezdje az adatok keresését.
-

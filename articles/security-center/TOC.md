@@ -19,6 +19,7 @@
 # Útmutató
 
 ## Biztonsági házirend
+### [Áttekintés](security-center-policies-overview.md)
 ### [Adatgyűjtés](security-center-enable-data-collection.md)
 ### [Biztonsági szabályzat](security-center-policies.md)
 ### [E-mail-értesítések](security-center-provide-security-contact-details.md)
@@ -26,7 +27,7 @@
 
 ## [Előkészítés](security-center-onboarding.md)
 ## [Események](security-center-events-dashboard.md)
-## [Keresés](security-center-search.md)
+## [Search](security-center-search.md)
 
 ## Megelőzés
 ### [Biztonsági ajánlások megvalósítása](security-center-recommendations.md)
@@ -53,7 +54,6 @@
 #### [Endpoint Protection telepítése](security-center-install-endpoint-protection.md)
 #### [Rendszerfrissítések utáni újraindítás](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [Operációs rendszerek sebezhetőségeinek javítása](security-center-remediate-os-vulnerabilities.md)
-#### [Endpoint Protection-állapotriasztások feloldása](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [Operációs rendszer verziójának frissítése](security-center-update-os-version.md)
 #### [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md)
 ### [A biztonsági állapot figyelése](security-center-monitoring.md)

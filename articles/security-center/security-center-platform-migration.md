@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-platform-migration"></a>Az Azure Security Center platform migrációja
 
@@ -78,5 +77,4 @@ A platformmigrálással összefüggésben néhány további kisebb frissítést 
 - A standard tarifacsomagú ügyfelek számára az adatgyűjtés kötelező és automatikusan engedélyezett lesz.
 - Az Azure Security Center meg fogja kezdeni az olyan kártevőirtó megoldások észlelését, amelyek nem az Azure-bővítményeken keresztül lettek telepítve. Elsőként a Symantec Endpoint Protection és a Defender for Windows 2016 lesz elérhető.
 - A megelőzési szabályzatok és az értesítések csak az *Előfizetés* szintjén konfigurálhatók, de a díjszabás az *Erőforráscsoport* szintjén is beállítható
-
 

@@ -15,14 +15,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 1ea9dfcaec188bac2e92909f4811568b589357d4
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="indexers-in-azure-search"></a>Indexelők az Azure Search szolgáltatásban
 > [!div class="op_single_selector"]
 >
@@ -44,7 +42,7 @@ Az indexelők futtatása történhet igény szerint vagy ismétlődő adatfriss�
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Indexelők létrehozásának és kezelésének módszerei
 Az olyan, mindenki számára elérhető indexelők esetében, mint az Azure SQL vagy az Azure Cosmos DB, az indexelők létrehozása és kezelése a következő módszerekkel történhet:
 
-* [Portál > Adatok importálása varázsló ](search-get-started-portal.md)
+* [Portál &gt; Adatok importálása varázsló ](search-get-started-portal.md)
 * [Szolgáltatás REST API-ja](https://msdn.microsoft.com/library/azure/dn946891.aspx)
 * [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx)
 
@@ -76,4 +74,3 @@ Az alapok megismerése után következő lépés a követelmények és az egyes 
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [CSV-blobok indexelése az Azure Search Blob indexelőjével](search-howto-index-csv-blobs.md)
 * [JSON-blobok indexelése az Azure Search Blob indexelőjével](search-howto-index-json-blobs.md)
-

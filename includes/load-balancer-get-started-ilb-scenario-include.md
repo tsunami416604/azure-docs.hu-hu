@@ -9,8 +9,3 @@ Belső terheléselosztó van konfigurálva a virtuális hálózatban
 * 2 virtuális gép, a nevük DB1 és DB2
 * Végpontok
 * Belső terheléselosztó
-
-
-<!--HONumber=Nov16_HO2-->
-
-

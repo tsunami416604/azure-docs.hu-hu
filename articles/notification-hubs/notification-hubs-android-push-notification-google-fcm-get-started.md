@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/14/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 45a3fa5c7190e039fd637c78a41eeb3f6ede9bc7
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Leküldéses értesítések küldése Androidra az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -70,7 +70,7 @@ Az oktatóanyag teljes kódja [itt](https://github.com/Azure/azure-notificationh
 
 Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## <a name="a-idconnecting-appaconnect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
+## <a id="connecting-app"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
 ### <a name="add-google-play-services-to-the-project"></a>Google Play-szolgáltatások felvétele a projektbe
 [!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
@@ -669,17 +669,11 @@ A Notification Hubs használatával kapcsolatban a [Notification Hubs használat
 
 
 <!-- URLs. -->
-[Bevezetés a leküldéses értesítések használatába a Mobile Servicesben]: ../mobile-services-javascript-backend-android-get-started-push.md  
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Kódtárprojekt hivatkozása]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Klasszikus Azure portál]: https://manage.windowsazure.com/
+[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs használatával]: notification-hubs-push-notification-overview.md
 [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

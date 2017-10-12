@@ -9,8 +9,3 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatja az alkalmazást a Mobile Engage
    
      ![](./media/mobile-engagement-connect-app-with-monitor/monitor.png)
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

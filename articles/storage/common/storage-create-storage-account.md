@@ -12,16 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-f1_keywords:
-- sql13.swb.windowsazurestorage.connect.f1
+f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 01/23/2017
 ms.author: tamram
+ms.openlocfilehash: cdca35f8ae339d02b44490cd61e2684d81d88365
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 848f6b07e51b58b00b81dd42ca1d478fdba20d06
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Tudnivalók az Azure Storage-fiókokról
 [!INCLUDE [storage-selector-portal-create-storage-account](../../../includes/storage-selector-portal-create-storage-account.md)]
@@ -149,5 +147,4 @@ Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy 
 * [Configure Azure Storage connection strings (Az Azure Storage kapcsolati karakterláncok konfigurálása)](../storage-configure-connection-string.md)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)
 * Látogasson el [az Azure Storage csapat blogjára](http://blogs.msdn.com/b/windowsazurestorage/).
-
 

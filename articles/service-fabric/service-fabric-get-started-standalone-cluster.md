@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 5c8f4c784eed7b64810a3dd1c36c043d22a66936
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Az első önálló Service Fabric-fürt létrehozása
 Bármilyen, Windows Server 2012 R2 vagy Windows Server 2016 rendszerű, helyszíni vagy a felhőben futó virtuális gépen vagy számítógépen létrehozhat önálló Service Fabric-fürtöt. A rövid útmutató segítségével csupán pár perc alatt létrehozhat egy önálló fejlesztési fürtöt.  Amikor végzett, egy egyetlen számítógépen futó, három csomópontot tartalmazó fürttel fog rendelkezni, amelyre appokat telepíthet.
 
@@ -95,4 +93,3 @@ Most, hogy telepített egy önálló fejlesztési fürtöt, tekintse meg az alá
 * [Appokat helyezhet üzembe a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 
 [service-fabric-explorer]: ./media/service-fabric-get-started-standalone-cluster/sfx.png
-

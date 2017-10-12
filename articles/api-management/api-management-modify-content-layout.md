@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ecae1da20551d8372331124b07c4aca2e15f55bb
 ms.openlocfilehash: 708c803c36c182ed90e04731b12d4ade00ae7ffb
-ms.contentlocale: hu-hu
-ms.lasthandoff: 02/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Oldalak tartalmának és elrendezésének módosítása a fejlesztői portálon az Azure API Managementben
 A fejlesztői portál három alapvető módon szabható testre az Azure API Managementben:
@@ -28,7 +27,7 @@ A fejlesztői portál három alapvető módon szabható testre az Azure API Mana
 * [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
 * [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például: API-dokumentáció, termékek, felhasználói hitelesítés stb.)
 
-## <a name="page-structure"> </a>A fejlesztői portál oldalainak szerkezete
+## <a name="page-structure"></a>A fejlesztői portál oldalainak szerkezete
 
 A fejlesztői portál egy tartalomkezelő rendszeren alapul. Az egyes oldalak elrendezése kis oldalelemek készleteire, más néven widgetekre épül:
 
@@ -40,7 +39,7 @@ Az összes widget szerkeszthető.
 
 A napi szintű oldalszerkesztés során általában csak a Tartalom widget szerkesztésére kerül sor, amely minden egyes laphoz különböző tartalommal rendelkezik.
 
-## <a name="modify-layout-widget"> </a>Elrendezési widget tartalmának módosítása
+## <a name="modify-layout-widget"></a>Elrendezési widget tartalmának módosítása
 
 A fejlesztői portál tartalmát az Azure Portalon keresztül elérhető közzétevő portálon lehet módosítani. Az eléréséhez kattintson a **Közzétevő portál** elemre az API Management-példány szolgáltatási eszköztárából.
 
@@ -58,7 +57,7 @@ Most már a fejlesztői portál mindegyik oldalán az új fejléc fog megjelenni
 > 
 > 
 
-## <a name="edit-page-contents"> </a>Oldal tartalmának szerkesztése
+## <a name="edit-page-contents"></a>Oldal tartalmának szerkesztése
 
 A létező tartalomoldalak listájának megtekintéséhez kattintson a **Tartalom** lehetőségre a közzétevő portál **Fejlesztői portál** menüjében.
 
@@ -70,7 +69,7 @@ A fejlesztői portál kezdőlapján megjelenített tartalmak szerkesztéséhez k
 > 
 > 
 
-## <a name="next-steps"> </a>Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
 * [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például: API-dokumentáció, termékek, felhasználói hitelesítés stb.)
 
@@ -87,4 +86,3 @@ A fejlesztői portál kezdőlapján megjelenített tartalmak szerkesztéséhez k
 [api-management-management-console]: ./media/api-management-modify-content-layout/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-modify-content-layout/api-management-widgets-header.png
 [api-management-customization-manage-content]: ./media/api-management-modify-content-layout/api-management-customization-manage-content.png
-

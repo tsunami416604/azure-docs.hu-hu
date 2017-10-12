@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/24/2017
 ms.author: raynew
 ms.openlocfilehash: df4e227d02901153d3cfcfd4dfd4f11de180763a
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-1-review-the-architecture"></a>1. lépés: Az architektúra áttekintése
 
@@ -60,8 +60,7 @@ Az egyes összetevők telepítési előfeltételeiről és követelményeiről a
 1. Miután engedélyezte a védelmet egy Hyper-V-alapú virtuális gép esetében az Azure Portalon vagy a helyszíni környezetben, elindul a **Védelem engedélyezése** feladat.
 2. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, mielőtt meghívja a [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) metódust, amely az Ön által megadott beállításoknak megfelelően beállítja a replikációt.
 3. A feladat elindítja a kezdeti replikációt a [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) metódus meghívásával egy teljes körű virtuálisgép-replikáció elindítása céljából, majd a virtuális gépek virtuális lemezeit továbbítja az Azure-ba.
-4. A feladatot a **Feladatok** lapon követheti nyomon.
-        ![Feladatok listája](media/vmm-to-azure-walkthrough-architecture/image1.png) ![Védelem engedélyezésének részletei](media/vmm-to-azure-walkthrough-architecture/image2.png)
+4. A feladatot a **Feladatok** lapon követheti nyomon.      ![Feladatok listája](media/vmm-to-azure-walkthrough-architecture/image1.png)![Védelem engedélyezésének részletei](media/vmm-to-azure-walkthrough-architecture/image2.png)
 
 ### <a name="replicate-the-initial-data"></a>A kezdeti adatok replikálása
 

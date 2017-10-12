@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
 Az Azure Key Vault egy felhőszolgáltatás, mely a titkosítási kulcsokat és titkos kulcsokat (pl. tanúsítványok, kapcsolati karakterláncok, jelszavak) védi az Ön felhőalkalmazásainál. Mivel ezek érzékeny és üzleti szempontból kritikus jellegű adatok, fontos, hogy Ön csak jogosult alkalmazások és felhasználók számára engedélyezzen kulcstartó-hozzáférést. Ez a cikk áttekintést ad a kulcstartó-hozzáférési modellről, elmagyarázza, mi a hitelesítés és az engedélyezés, és egy példával szemlélteti, hogyan biztosíthat kulcstartó-hozzáférést felhőalkalmazásai számára.
@@ -250,5 +249,4 @@ A kulcstartó használatának naplózásával kapcsolatos további információk
 A kulcsok és a titkos kulcsok Azure Key Vaulttal történő használatával kapcsolatos további információkért tekintse meg az [About Keys and Secrets](https://msdn.microsoft.com/library/azure/dn903623.aspx) (Kulcsok és titkos kulcsok) című cikket.
 
 Amennyiben a kulcstartóval kapcsolatban kérdése merülne fel, tekintse meg az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
-
 

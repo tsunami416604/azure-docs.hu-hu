@@ -15,12 +15,11 @@ ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1778a4af004afd45464e37e198d78b4f0977c1c4
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure data factory létrehozása Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector"]
@@ -332,7 +331,7 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 
 ## <a name="monitor-pipeline"></a>Folyamat figyelése
 1. Miután bejelentkezett az [Azure Portalra](https://portal.azure.com/), kattintson a **Tallózás** elemre, és válassza az **Adat-előállítók** lehetőséget.
-     ![Tallózás->Data Factories](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
+     ![Tallózás-&gt;Data Factories](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2. A **Data Factories** panelen kattintson a létrehozott data factoryre (**TutorialFactoryARM**).    
 3. A data factoryhoz tartozó **Data Factory** panelen kattintson a **Diagram** elemre.
 
@@ -623,5 +622,4 @@ Ez a sablon létrehozza a GatewayUsingArmDF nevű data factoryt a GatewayUsingAR
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
 | [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) |Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. |
-
 

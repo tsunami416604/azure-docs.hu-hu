@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
 ms.author: bwren
+ms.openlocfilehash: 4b9f8c618a69c4c157dafeb7f726aae24efad428
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: e7b78907fafcee99c807bfe8f7b311986ba7ffcc
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Az Application Insights manuális beállítása a .NET-alkalmazásokhoz
 
@@ -90,14 +89,14 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
 
 * Állítsa be a rendszerállapotkulcsot a kódban, például `main()`: 
   
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *az Ön kulcsa* `";` 
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*az Ön kulcsa*`";` 
 * [Írjon saját telemetriát az API-val](app-insights-api-custom-events-metrics.md#ikey).
 
 **Ha más Application Insights-csomagokat is telepített,** akkor a .config fájl segítségével igény szerint beállíthatja a rendszerállapotkulcsot:
 
 * Szerkessze az ApplicationInsights.config fájlt (ezt korábban a NuGet telepítése során adta hozzá). A címke zárása elé illessze be a következőt:
   
-    `<InstrumentationKey>` *a kimásolt kialakítási kulcs* `</InstrumentationKey>`
+    `<InstrumentationKey>`*a kimásolt kialakítási kulcs*`</InstrumentationKey>`
 * Győződjön meg arról, hogy az ApplicationInsights.config tulajdonságait a következőre állította a Megoldáskezelőben: **Build Action = Content, Copy to Output Directory = Copy**.
 
 Hasznos lehet a kialakítási kulcsot kódból megadni, ha [a különböző felépítéskonfigurációkban váltogatni szeretné a kulcsot](app-insights-separate-resources.md). Ha a kulcsot kódból adja meg, nem kell azt beállítania a `.config` fájlban.
@@ -149,5 +148,4 @@ Tekintse meg [ezt a Hibaelhárítási cikket](app-insights-asp-net-troubleshoot-
 
 ## <a name="next-steps"></a>Következő lépések
 * [További telemetriák hozzáadásával](app-insights-asp-net-more.md) az alkalmazást teljes körűen megfigyelheti.
-
 

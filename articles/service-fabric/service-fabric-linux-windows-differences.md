@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/19/2017
 ms.author: subramar
-ms.translationtype: HT
-ms.sourcegitcommit: 7dceb7bb38b1dac778151e197db3b5be49dd568a
 ms.openlocfilehash: 25976ba919454e26f1dd7965de5db7c4f80b9355
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>A Service Fabric Linux és Windows rendszerhez készült verziója közötti különbségek
 
@@ -99,4 +98,3 @@ A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendsze
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren az Eclipse Service Fabric beépülő modul használatával](service-fabric-get-started-eclipse.md)
 * [Az első CSharp-alkalmazás létrehozása Linuxon](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [A Service Fabric parancssori felület használata az alkalmazások kezeléséhez](service-fabric-application-lifecycle-sfctl.md)
-

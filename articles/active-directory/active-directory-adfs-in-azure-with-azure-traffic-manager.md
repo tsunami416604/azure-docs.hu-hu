@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
-translationtype: Human Translation
-ms.sourcegitcommit: 3170abb4f9bd7f7996b1c0dd2e20f648ea1b9fe5
-ms.openlocfilehash: e2125c56a958e8ed6b02ec7e92dd7cf4dcf326f3
-
-
+ms.openlocfilehash: 077710049894d2690299ce0fcb0ead9911aa4bb6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Magas rendelkezésre állású AD FS telepítése az Azure-ban Azure Traffic Managerrel
 Az [AD FS telepítése az Azure-ban](active-directory-aadconnect-azure-adfs.md) című cikk részletesen ismerteti egy egyszerű AD FS-infrastruktúra telepítésének lépéseit az Azure-ban a szervezete számára. A cikk bemutatja az AD FS az Azure-ba történő, földrajzi határokon átívelő telepítésének további lépéseit az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) használatával. Az Azure Traffic Managerrel egy földrajzilag kiterjedt, magas rendelkezésre állású és nagy teljesítményű AD FS-infrastruktúrát hozhat létre szervezete számára, amelyhez számos útválasztási módszer áll rendelkezésre a különböző igények infrastruktúrából történő kielégítésére.
@@ -85,7 +85,7 @@ Kövesse az alábbi lépéseket a Traffic Manager-profil létrehozásához. Tov�
     ![Mintavétel konfigurálása](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/mystsconfig.png) 
    
    > [!NOTE]
-   > **Győződjön meg arról, hogy a konfigurálás végeztével a végpontok állapota ONLINE legyen.**. Ha minden végpont „csökkentett teljesítményű” állapotban van, az Azure Traffic Manager igyekszik a lehető legjobb módon irányítani a forgalmat, feltételezve, hogy a diagnosztika hibás, és minden végpont elérhető.
+   > **Győződjön meg arról, hogy a konfigurálás végeztével a végpontok állapota ONLINE legyen**. Ha minden végpont „csökkentett teljesítményű” állapotban van, az Azure Traffic Manager igyekszik a lehető legjobb módon irányítani a forgalmat, feltételezve, hogy a diagnosztika hibás, és minden végpont elérhető.
    > 
    > 
 5. **Az Azure Traffic Manager DNS-rekordjainak módosítása:** Az összevonási szolgáltatásnak egy, az Azure Traffic Manager DNS-névre mutató CNAME-rekordnak kell lennie. Hozzon létre egy CNAME-rekordot a nyilvános DNS-rekordokban, hogy amikor valaki az összevonási szolgáltatást próbálja elérni, valójában az Azure Traffic Managert érje el.
@@ -122,10 +122,4 @@ Az AD FS a legegyszerűbb módon az IdpInitiatedSignon.aspx oldal használatáva
 ## <a name="next-steps"></a>Következő lépések
 * [Az Azure Traffic Manager-profilok kezelése](../traffic-manager/traffic-manager-manage-profiles.md)
 * [Végpontok felvétele, letiltása, engedélyezése és törlése](../traffic-manager/traffic-manager-endpoints.md) 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

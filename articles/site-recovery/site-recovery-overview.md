@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/25/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: aa657c92f347f7529affee78ad1842e5e066b74d
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-site-recovery"></a>Mi a Site Recovery?
 
@@ -79,4 +78,3 @@ A Site Recovery a következők replikációját képes kezelni:
 ## <a name="next-steps"></a>Következő lépések
 * További információk a [támogatott számítási feladatokról](site-recovery-workload.md)
 * Első lépések: [Azure virtuális gép replikációja régiók között](site-recovery-azure-to-azure.md), [VMware replikáció az Azure-ba](vmware-walkthrough-overview.md), vagy [Hyper-V replikáció az Azure-ba](hyper-v-site-walkthrough-overview.md).
-

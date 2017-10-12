@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/27/2017
 ms.author: yurid
 ms.openlocfilehash: a302f8cb2555eef469a24da2523fdd9b97cc5730
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>Biztonsági incidensek kezelése az Azure Security Centerben
 A biztonsági riasztások osztályba sorolása és kivizsgálása még a legképzettebb biztonsági elemzők számára is időigényes feladat lehet, sokak számára pedig már annak megtalálása is nehézséget okoz, hogy hol kezdjenek hozzá. A különálló [biztonsági riasztások](security-center-managing-and-responding-alerts.md) adatait összekapcsoló [elemzési szolgáltatások](security-center-detection-capabilities.md) alkalmazásával a Security Center a támadássorozatot és az összes kapcsolódó riasztást egyetlen nézetben jeleníti meg, így gyorsan áttekinthetővé válnak a támadó által végrehajtott műveletek és az érintett erőforrások.

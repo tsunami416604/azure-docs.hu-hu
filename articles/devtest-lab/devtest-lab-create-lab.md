@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/07/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 9657a4681f6bd9cc126de50883ce7a66357156e0
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Labor létrehozása az Azure DevTest Labs szolgáltatásban
 Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet erőforráscsoportokat, például virtuális gépeket (VM-eket) magában foglaló infrastruktúra, amely korlátok és kvóták meghatározásával segíti ezen erőforráscsoportok jobb kezelését. Ez a cikk végigvezeti a tesztkörnyezet Azure Portalon való létrehozásának folyamatán.
@@ -65,5 +64,4 @@ A labor létrehozása után ezeket a lépéseket érdemes figyelembe venni:
 * [Laborsablon létrehozása](devtest-lab-create-template.md).
 * [Egyéni összetevők létrehozása a virtuális géphez](devtest-lab-artifact-author.md).
 * [Összetevőkkel rendelkező virtuális gép hozzáadása egy laborhoz](https://azure.microsoft.com/resources/videos/how-to-create-vms-with-artifacts-in-a-devtest-lab/).
-
 

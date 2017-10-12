@@ -35,6 +35,7 @@
 ## Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása
 ### [Azure Portal](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
+### [Azure CLI](how-to-routefilter-cli.md)
 ## [Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra](expressroute-howto-move-arm.md)
 ## [Kapcsolódó virtuális hálózatok áttelepítése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-migration-classic-resource-manager.md)
 ## Útválasztó konfigurálása ExpressRoute-hoz
@@ -45,7 +46,7 @@
 ### [Hálózati biztonság és felhőszolgáltatások – ajánlott eljárások](../best-practices-network-security.md)
 ### [Útválasztás optimalizálása](expressroute-optimize-routing.md)
 ### [Aszimmetrikus útválasztás](expressroute-asymmetric-routing.md)
-### [NAT az ExpressRoute-hoz](expressroute-routing-nat.md)
+### [NAT az ExpressRoute-hoz](expressroute-nat.md)
 
 ## Hibaelhárítás
 ### [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)

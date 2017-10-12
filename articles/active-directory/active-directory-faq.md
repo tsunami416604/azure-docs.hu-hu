@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/16/2017
 ms.author: markvi
-ms.translationtype: HT
-ms.sourcegitcommit: 2d978248c78b84fe4ad37ecf7429e827a25d896f
 ms.openlocfilehash: 8d4460b3059558de2253c6f6a2d2fc8e7564d6d9
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -213,4 +212,3 @@ További információ: [A felhasználókiépítés és -megszüntetés automatiz
 **K: Állíthatok be biztonságos LDAP-kapcsolatot az Azure AD-vel?**
 
 **V.:** Nem. Az Azure AD nem támogatja az LDAP protokollt.
-

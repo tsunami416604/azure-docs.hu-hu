@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 8dbc951416d577fa7f534c2eab1605c6bee61fce
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 6616c26ede13919b94a098dc38bdd6e2f0fc0b5b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>Bevezetés a belső terheléselosztó (klasszikus) felhőszolgáltatásokhoz történő létrehozásába
 
 > [!div class="op_single_selector"]
@@ -98,5 +96,4 @@ A hálózati forgalom terhelésének elosztása a testLB terheléselosztóval v�
 [A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
 
 [A terheléselosztó üresjárati TCP-időtúllépési beállításainak konfigurálása](load-balancer-tcp-idle-timeout.md)
-
 

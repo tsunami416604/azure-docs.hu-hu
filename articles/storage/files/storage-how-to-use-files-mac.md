@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6e71a13f99160fdd310be1e9a59717c9fecbf35d
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Azure-fájlmegosztás csatlakoztatása SMB protokoll segítségével macOS rendszeren
 Az [Azure Files](storage-files-introduction.md) egy Microsoft-szolgáltatás, amely lehetővé teszi a hálózati fájlmegosztások Azure-ban történő létrehozását és használatát az iparági szabványok használatával. Az Azure-fájlmegosztások a macOS rendszer Sierra (10.12) és El Capitan (10.11) verzióra csatlakoztathatók. Ez a cikk kettő különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására macOS rendszeren: a Finder felhasználói felület és a Terminál használatával.
 

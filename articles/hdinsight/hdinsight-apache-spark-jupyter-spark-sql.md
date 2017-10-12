@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/07/2017
 ms.author: maxluk
+ms.openlocfilehash: e64720efa168a84193dc3f351def0e58979f7f86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 78051b9df15c62d4caf56d800c9a5f4421ea2254
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>Apache Spark-fürt létrehozása az Azure HDInsightban
 
@@ -131,7 +130,6 @@ Ebből a cikkből megtudhatta, hogyan hozható létre egy HDInsight Spark-fürt 
 
 > [!div class="nextstepaction"]
 >[Interaktív lekérdezések futtatása HDInsight Spark-fürtön](hdinsight-apache-spark-load-data-run-query.md)
-
 
 
 

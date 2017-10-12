@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2017
 ms.author: yurid
+ms.openlocfilehash: d610a4ae97657013f6bb784790f073c3d986959f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 4752199803f1fab04608e6a8618e3294e85fb38a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Biztonsági állapotfigyelés az Azure Security Centerben
 Ez a cikk az Azure Security Center figyelési funkcióknak használatához nyújt segítséget a szabályzatoknak való megfelelés ellenőrzése érdekében.
@@ -222,4 +221,3 @@ Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióin
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md): Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-

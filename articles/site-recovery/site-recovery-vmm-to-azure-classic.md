@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: ac0931a71a2814723380256fc5326fc431c82f2c
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure"></a>VMM-felhőkben futó Hyper-V virtuális gépek replikálása az Azure-ba
 > [!div class="op_single_selector"]
@@ -348,4 +347,3 @@ A feladatátvételi teszt futtatásához tegye a következőket:
 
 ## <a name="next-steps"></a>Következő lépések
 Tájékozódjon a [helyreállítási tervek beállításáról](site-recovery-create-recovery-plans.md) és a [feladatátvételről](site-recovery-failover.md).
-

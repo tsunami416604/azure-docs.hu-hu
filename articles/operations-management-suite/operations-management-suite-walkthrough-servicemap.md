@@ -1,6 +1,6 @@
 ---
-title: "Szolgáltatástérkép-megoldás – saját ütemben megtekinthető bemutató | Microsoft Docs"
-description: "A Szolgáltatástérkép az Operations Management Suite (OMS) egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt.  Ez egy saját ütemben megtekinthető bemutató, amely végigvezeti a Szolgáltatástérkép használatán egy webalkalmazás szimulált hibájának azonosításához és diagnosztizálásához."
+title: "A Service Map megoldás saját ütemben megtekinthető bemutatója | Microsoft Docs"
+description: "A Szolgáltatástérkép az Operations Management Suite (OMS) egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt.  A saját ütemben megtekinthető bemutató a Service Map megoldást használja arra, hogy azonosítsa és diagnosztizálja egy webalkalmazás szimulált hibáját."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 7f469fb309f92b86dbf289d3a0462ba9042af48a
 ms.openlocfilehash: c3548d24c74f8ad865b22d6af3490d0b5cc77a84
-ms.lasthandoff: 04/13/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="operations-management-suite-oms-self-paced-demo---service-map"></a>Operations Management Suite (OMS) saját ütemben megtekinthető bemutató – Szolgáltatástérkép
-Ez egy saját ütemben megtekinthető bemutató, amely végigvezeti az Operations Management Suite (OMS) [Szolgáltatástérkép-megoldásának](operations-management-suite-service-map.md) használatán egy webalkalmazás szimulált hibájának azonosításához és diagnosztizálásához.  A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt.  Emellett összevonja a többi OMS-szolgáltatás által gyűjtött adatokat, hogy segítsen a teljesítményelemzésben és a problémák azonosításában.  A [Log Analytics naplókereséseivel](../log-analytics/log-analytics-log-searches.md) lefúrhat a gyűjtött adatokba a kiindulási probléma azonosítása érdekében.
+Ebben a saját ütemben megtekinthető bemutatóban az Operations Management Suite (OMS) [Service Map megoldását](operations-management-suite-service-map.md) használjuk arra, hogy egy webalkalmazás szimulált hibáját azonosítsuk és diagnosztizáljuk.  A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt.  Emellett összevonja a többi OMS-szolgáltatás által gyűjtött adatokat, hogy segítsen a teljesítményelemzésben és a problémák azonosításában.  A [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md) a gyűjtött adatok részletes elemzésén keresztül azonosíthatja a kiindulási problémát.
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -37,7 +35,7 @@ Ez egy saját ütemben megtekinthető bemutató, amely végigvezeti az Operation
 ## <a name="walk-through"></a>Útmutató
 
 ### <a name="1-connect-to-the-oms-experience-center"></a>1. Csatlakozás az OMS Experience Centerhez
-Ez az útmutató az [Operations Management Suite Experience Centert](https://experience.mms.microsoft.com/) használja, amely egy teljes OMS-környezetet biztosít mintaadatokkal. Először kattintson erre a hivatkozásra, adja meg az adatait, majd válassza a **Betekintések és elemzés** forgatókönyvet.
+Ez az útmutató az [Operations Management Suite Experience Centert](https://experience.mms.microsoft.com/) használja, amely egy teljes OMS-környezetet biztosít mintaadatokkal. Először kattintson erre a hivatkozásra, adja meg az adatait, majd válassza az **Insight and Analytics** forgatókönyvet.
 
 
 ### <a name="2-start-service-map"></a>2. Szolgáltatástérkép indítása
@@ -105,7 +103,7 @@ Lássuk, találunk-e további részleteket a gyűjtött teljesítményadatokban,
 
 A lekérdezés az **acmetomcat** 5 legnagyobb processzorigényű folyamatát adja vissza.  Ha megvizsgálja a lekérdezést, megismerkedhet a naplókeresésekhez használt lekérdezési nyelvvel.  Ha a többi számítógépen lévő folyamatok is érdekelik, a lekérdezés módosításával ezek adatait is lekérheti.
 
-Esetünkben láthatjuk, hogy a biztonsági mentési folyamat folyamatosan az alkalmazáskiszolgáló processzorának 60%-át használja.  Egyértelmű, hogy ez az új folyamat a felelős a teljesítményproblémákért.  A megoldás az új biztonsági mentési szoftver eltávolítása az alkalmazáskiszolgálóról.  Az Azure Automation által kezelt célállapot-konfigurálóval (DSC) meghatározhatunk olyan házirendeket, amelyek biztosítják, hogy ez a folyamat soha ne fusson kritikus fontosságú rendszereken.
+Esetünkben láthatjuk, hogy a biztonsági mentési folyamat folyamatosan az alkalmazáskiszolgáló processzorának 60%-át használja.  Egyértelmű, hogy ez az új folyamat a felelős a teljesítményproblémákért.  A megoldás az új biztonsági mentési szoftver eltávolítása az alkalmazáskiszolgálóról.  Az Azure Automation által kezelt célállapot-konfigurálóval (DSC) meghatározhatunk olyan szabályzatokat, amelyek biztosítják, hogy ez a folyamat soha ne fusson kritikus fontosságú rendszereken.
 
 
 ## <a name="summary-points"></a>Összefoglaló pontok

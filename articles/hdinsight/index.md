@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 7d639ca03261f3a9cad537dd92103c5aa6cd0af9
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight – dokumentáció
 
 Ismerje meg, hogyan használhatja a Hadoopot a HDInsight alatt futó felhőben streamelt vagy előzményadatok elemzésére. Oktatóanyagok és egyéb dokumentáció, amelyek bemutatják a fürtök létrehozását, big data feldolgozását és elemzését, illetve megoldások fejlesztését Hadoop, Spark, HBase, R-Server, Storm vagy a Hadoop-ökoszisztémában található egyéb technológiák használatával.
@@ -198,6 +196,5 @@ Ismerje meg, hogyan használhatja a Hadoopot a HDInsight alatt futó felhőben s
         </div>
     </li>
 </ul>
-
 
 

@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 7ddfe44918b358a1749640d1c93dba490855cc5a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Fájlok feltöltése Media Services-fiókba az Azure Portalon
 > [!div class="op_single_selector"]
-> * [Portal](media-services-portal-upload-files.md)
+> * [Portál](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
 > 
@@ -64,6 +63,5 @@ A feltöltést követően az új objektum megjelenik az **Objektumok** panelen.
 * Ismerkedjen meg a [feltöltött objektumok kódolásának](media-services-portal-encode.md) módjával.
 
 * Emellett az Azure Functions használatával is elindíthatja a kódolási feladatokat a fájloknak a konfigurált tárolóba történő érkezésekor. További információkért tekintse meg a [Media Services: Az Azure Media Services integrálása Azure Functions- és Logic Apps- alkalmazásokkal](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) cikkben található mintát.
-
 
 

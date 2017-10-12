@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a3bf1aacd6978499d7ef77cbcb451a06b857ac38
-ms.contentlocale: hu-hu
-ms.lasthandoff: 12/07/2016
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-scheduler"></a>Mi az Azure Scheduler?
 Az Azure Scheduler lehetőséget biztosít a felhőben futtatandó műveletek deklaratív leírására. A rendszer ezt követően a műveletek ütemezését és futtatását automatikusan végzi el.  A Scheduler ezt [az Azure portál](scheduler-get-started-portal.md), a kód, [a REST API](https://msdn.microsoft.com/library/mt629143.aspx) vagy az Azure PowerShell használatával végzi el.
@@ -53,5 +52,4 @@ A Scheduler segítségével szoftveresen hozhat létre, frissíthet, törölhet,
  [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
 
  [Kimenő hitelesítés az Azure Schedulerben](scheduler-outbound-authentication.md)
-
 

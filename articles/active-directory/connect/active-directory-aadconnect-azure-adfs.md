@@ -17,10 +17,10 @@ ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ddd29a1230286de8999175498ee793f3b3ea24e2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Az Active Directory összevonási szolgáltatások üzembe helyezése az Azure-ban
 Az AD FS egyszerű, mégis biztonságos identitás-összevonást, valamint webes egyszeri bejelentkezési (SSO) funkciókat biztosít. Az Azure AD vagy O365 segítségével megvalósított összevonás lehetővé teszi a felhasználóknak a helyszíni bejelentkezési adatok segítségével történő hitelesítést, valamint a felhőben futó erőforrások elérését. Ezért fontos, hogy magas rendelkezésre állást biztosító AD FS-infrastruktúrát alkalmazzon, amely garantálja a helyszíni és a felhőben lévő erőforrások elérhetőségét. Az AD FS Azure-ban történő üzembe helyezésével minimális erőfeszítéssel kialakíthatja a magas rendelkezésre állást.

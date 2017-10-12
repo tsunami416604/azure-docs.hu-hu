@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/13/2017
 ms.author: brjohnst
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: bdd952869143c6ca6374bb9264db5bcba1f32b50
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Adatfeltöltés az Azure Search szolgáltatásba, a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -238,5 +237,4 @@ Ezért javasoljuk, hogy a modellosztályokban nullázható értéktípusokat has
 
 ## <a name="next-steps"></a>Következő lépések
 Az Azure Search-index feltöltését követően készen áll a dokumentumkeresési lekérdezések kiadásának elindítására. Részletes információk: [Az Azure Search-index lekérdezése](search-query-overview.md).
-
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: b810618b485b631e1d72b24c2a9587017d635cc4
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-architecture"></a>Service Bus-architektúra
 Ez a cikk ismerteti az Azure Service Bus üzenetfeldolgozási architektúrát.
@@ -48,6 +47,5 @@ Most, hogy elolvasta a Service Bus architektúrájának áttekintését, tovább
 * [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
 * [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Üzenetsor-kezelési megoldás a Service Bus által kezelt üzenetsorok használatával](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
-
 
 

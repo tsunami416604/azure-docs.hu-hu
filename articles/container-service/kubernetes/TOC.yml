@@ -9,7 +9,7 @@
   items:
     - name: A Kubernetes az Azure-on
       href: container-service-kubernetes-walkthrough.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: 1 – Tárolórendszerképek létrehozása
       href: container-service-tutorial-kubernetes-prepare-app.md
@@ -65,6 +65,8 @@
   items:
     - name: Azure CLI
       href: /cli/azure/acs
+    - name: PowerShell
+      href: /powershell/module/azurerm.compute
     - name: REST
       href: /rest/api/container-service
 - name: Erőforrások

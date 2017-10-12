@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 28f775afaf72b11eec0c22f755e4dbd6a485c895
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="how-does-hyper-v-replication-to-azure-work-in-site-recovery"></a>Hogyan működik a Hyper-V-replikáció az Azure-ba a Site Recoveryben?
 
 
@@ -43,7 +40,7 @@ Hyper-V virtuális gépek Azure-ba történő replikálásában számos összete
 **Azure** | Az Azure-ban szüksége van egy Microsoft Azure-fiókra, és Azure Storage-fiókra és egy Azure-hálózatra. | A replikált adatokat a tárfiók tárolja, ha pedig feladatátvétel következik be a helyszíni helyről, a rendszer Azure virtuális gépeket hoz létre a replikált adatokkal.<br/><br/> Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
 **VMM-kiszolgáló** | A Hyper-V-gazdagépek VMM-felhőkben helyezkednek el | Ha a Hyper-V-gazdagépeket VMM felhőben felügyeli, a Recovery Services-tárolóban regisztrálja a VMM-kiszolgálót.<br/><br/> A VMM-kiszolgálón telepítse a Site Recovery Providert az Azure-ral való replikáció vezényléséhez.<br/><br/> A hálózatleképezés konfigurálásához logikai és virtuálisgép-hálózatokat is be kell állítania. Egy virtuálisgép-hálózatot össze kell kötnie egy felhőhöz társított logikai hálózattal.
 **Hyper-V gazdagép** | A Hyper-V gazdagépek és fürtök VMM-kiszolgálóval vagy anélkül is üzembe helyezhetők. | Ha nincs VMM-kiszolgáló, a Site Recovery Providert a gazdagépen kell telepíteni, hogy vezényelni tudja az internetes replikációt a Site Recoveryval. Ha van VMM-kiszolgáló, a Provider azon van telepítve, és nem a gazdagépen.<br/><br/> A Recovery Services-ügynököt a gazdagépen kell telepíteni az adatreplikáció kezelése érdekében.<br/><br/> A Provider és az Agent kommunikációja biztonságos, titkosított csatornákon történik. Ezenfelül az Azure-tárfiókba replikált adatok is titkosítást kapnak.
-**Hyper-V virtuális gépek** | Legalább egy virtuális gépnek futnia kell egy Hyper-V gazdakiszolgálón. | A virtuális gépekre semmit nem kell explicit módon telepíteni.
+**Hyper-V virtuális gépek** | Legalább egy virtuális gépnek futnia kell egy Hyper-V-gazdakiszolgálón. | A virtuális gépekre semmit nem kell explicit módon telepíteni.
 
 Az egyes összetevők telepítési előfeltételeiről és követelményeiről a [támogatási mátrix](site-recovery-support-matrix-to-azure.md) ad tájékoztatást.
 
@@ -67,9 +64,7 @@ Az egyes összetevők telepítési előfeltételeiről és követelményeiről a
 1. Miután engedélyezte a védelmet egy Hyper-V-alapú virtuális gép esetében az Azure Portalon vagy a helyszíni környezetben, elindul a **Védelem engedélyezése** feladat.
 2. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, mielőtt meghívja a [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) metódust, amely az Ön által megadott beállításoknak megfelelően beállítja a replikációt.
 3. A feladat elindítja a kezdeti replikációt a [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) metódus meghívásával egy teljes körű virtuálisgép-replikáció elindítása céljából, majd a virtuális gépek virtuális lemezeit továbbítja az Azure-ba.
-4. A feladatot a **Feladatok** lapon követheti nyomon.
-        ![Feladatok listája](media/site-recovery-hyper-v-azure-architecture/image1.png)
-        ![Védelem engedélyezésének részletei](media/site-recovery-hyper-v-azure-architecture/image2.png)
+4. A feladatot a **Feladatok** lapon követheti nyomon.      ![Feladatok listája](media/site-recovery-hyper-v-azure-architecture/image1.png)![Védelem engedélyezésének részletei](media/site-recovery-hyper-v-azure-architecture/image2.png)
 
 ### <a name="replicate-the-initial-data"></a>A kezdeti adatok replikálása
 
@@ -125,5 +120,4 @@ Ha hiba lép fel a replikáció során, a rendszer automatikusan újrapróbálko
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Támogatási mátrix](site-recovery-support-matrix-to-azure.md) áttekintése
-
+A [támogatási mátrix](site-recovery-support-matrix-to-azure.md) áttekintése

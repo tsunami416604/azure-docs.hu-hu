@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/20/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 1e51f546d6c256e1d8f1a1be50c6a2102fe26529
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="start-with-apache-kafka-preview-on-hdinsight"></a>Az Apache Kafka (előzetes verzió) használatának első lépései a HDInsightban
 
@@ -382,4 +381,3 @@ A jelen dokumentumban megismerkedett az Apache Kafka HDInsightban való használ
 * [Az Apache Spark strukturált stream használata a Kafkával a HDInsighton](hdinsight-apache-kafka-spark-structured-streaming.md)
 * [Az Apache Storm használata a HDInsighton futó Kafkával](hdinsight-apache-storm-with-kafka.md)
 * [Csatlakozás a Kafkához Azure Virtual Networkön keresztül](hdinsight-apache-kafka-connect-vpn-gateway.md)
-
