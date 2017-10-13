@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
+ms.openlocfilehash: e86fcb4dbf170e5bc07553165e09d6fc3d3cf283
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c863dbdcb242bdea208f7e72f6c1f61b5ba04844
-ms.openlocfilehash: 0c81829e94f35025980216c1ce059c70a6cc7524
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Windows rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában a PowerShell használatával
 
 Ez a cikk részletesen bemutatja, hogyan lehet egy Windows Server 2016-ot futtató Azure virtuális gépet létrehozni egy Azure rendelkezésre állási zónában az Azure PowerShell használatával. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.

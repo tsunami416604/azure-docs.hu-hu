@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 300958a69fc854cb8db02120a383a4cbbfcacd7b
-ms.openlocfilehash: e975c6d8f217bc73948c0c046204b16b1a742bc7
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/20/2017
-
+ms.openlocfilehash: 5258bf5de6f7aa1ea246f1235e7d362b1b7d0181
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Adathozzáférés biztosítása egy Time Series Insights-környezethez az Azure Portal segítségével
 
 A Time Series Insights-környezetek két különböző típusú hozzáférési házirenddel rendelkeznek:
@@ -75,4 +73,3 @@ A következő lépések bemutatják, hogyan biztosítható adathozzáférés egy
 * [Eseményforrás létrehozása](time-series-insights-add-event-source.md)
 * [Események küldése](time-series-insights-send-events.md) az eseményforrásnak
 * A környezet megtekintése a [Time Series Insights portálon](https://insights.timeseries.azure.com)
-

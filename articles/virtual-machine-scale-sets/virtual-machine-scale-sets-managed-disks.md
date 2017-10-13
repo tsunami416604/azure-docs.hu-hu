@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 338144eb103c68c7fff407cbeccce11734c1c34b
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és felügyelt lemezek
 
@@ -52,6 +51,5 @@ A felügyelt lemezekkel kapcsolatban [ebben a cikkben](../virtual-machines/windo
 A felügyelt adatlemezek méretezési csoportokkal való használatáról [ebben a cikkben](./virtual-machine-scale-sets-attached-disks.md) talál további információt.
 
 A nagyméretű méretezési csoportok használatának elkezdéséről [ebben a cikkben](./virtual-machine-scale-sets-placement-groups.md) olvashat.
-
 
 

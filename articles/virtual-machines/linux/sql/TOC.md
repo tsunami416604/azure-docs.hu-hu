@@ -1,6 +1,7 @@
 # Áttekintés
 ## [Linux SQL Server virtuális gépek](sql-server-linux-virtual-machines-overview.md)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)
+## [Gyakori kérdések](sql-server-linux-faq.md)
 
 # Első lépések
 ## [Virtuális gép létrehozása az Azure Portalon](provision-sql-server-linux-virtual-machine.md)

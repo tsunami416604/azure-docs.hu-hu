@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 22c7e589efa9a9f401549ec9b95c58c4eaf07b94
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és csatlakoztatott adatlemezek
 Az Azure-beli [virtuálisgép-méretezési csoportok](/azure/virtual-machine-scale-sets/) mostantól támogatják a csatlakoztatott adatlemezekkel rendelkező virtuális gépeket. Adatlemezeket az Azure Managed Disks használatával létrehozott méretezési csoportok tárolóprofiljában lehet definiálni. Korábban a méretezési csoportokban található virtuális gépekhez csak az operációs rendszer meghajtóját és az ideiglenes meghajtókat lehetett közvetlenül csatlakoztatni.
@@ -128,6 +127,5 @@ Az Azure Managed Disks, valamint a csatlakoztatott adatlemezzel rendelkező mér
 A csatlakoztatott lemezek méretezési csoportok esetében való támogatásának kezdeti implementációjában nincs lehetőség adatlemezek csatlakoztatására, vagy azok eltávolítására a méretezési csoportokba tartozó különálló virtuális gépek esetében.
 
 Az Azure Portal kezdetben csak korlátozott támogatást biztosít a méretezési csoportok csatlakoztatott adatlemezei számára. A követelményektől függően Azure-sablonok, a parancssori felület, a PowerShell, SDK-k és a REST API használatával is kezelheti a csatlakoztatott lemezeket.
-
 
 

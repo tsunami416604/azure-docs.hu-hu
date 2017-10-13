@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: omravi
+ms.openlocfilehash: 1814459e47280af62450a4093140ab6ab9b765fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: abd66208ab7ac30831f3f1eddb2891ed7bcd3995
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure Time Series Insights?
 
 Az Azure Time Series Insights egy felügyelt felhőszolgáltatás tárolási, elemzési és megjelenítési összetevőkkel, amelyekkel könnyen dolgozható fel, tárolható, deríthető fel és elemezhető akár több milliárd esemény egyszerre. A Time Series Insights globális áttekintést nyújt az adatokról, így gyorsan ellenőrizheti IoT-megoldásait, és elkerülheti az eszközök költséges leállását, mivel a rendszer segít a rejtett trendek és rendellenességek felderítésében, valamint a problémák kiváltó okainak közel valós idejű elemzésében. A Time Series Insights feldolgozza az eseményközvetítőktől (pl. IoT Huboktól vagy eseményközpontoktól) származó idősorozat-adatokat, indexeli azokat, és egy konfigurálható adatmegőrzési házirend alapján kivonja őket. A felhasználók az adatokat egy intuitív felületen vagy REST lekérdezési API-kon keresztül használhatják fel.
@@ -51,4 +49,3 @@ Az Azure Time Series Insights egy felügyelt felhőszolgáltatás tárolási, el
 * **Környezet**: A környezet egy Azure-erőforrás, amely bejövő adatforgalmi és tárolási kapacitással rendelkezik.  Az ügyfelek az Azure Portalon hozhatnak létre környezeteket a szükséges kapacitással.
 * **Eseményforrás**: Az eseményforrás egy eseményközvetítőből, például az Azure Event Hubsból származik.  A Time Series Insights közvetlenül csatlakozik az eseményforrásokhoz, és kód írása nélkül dolgozza fel az adatstreamet. A Time Series Insights jelenleg az Azure Event Hubs és Azure IoT Hubs forrásokat támogatja.
 * **Referenciaadat**: A Time Series Insights lehetővé teszi a felhasználók számára, hogy az idősorozat-adatokat referenciaadatokkal kapcsolják össze.  A referenciaadatok lehetnek az eszközökkel kapcsolatos metaadatok vagy egyéb statikus adatok, amelyek viszonylag ritkán változnak. A Time Series Insights összekapcsolja a referenciaadatokat az adatstreamekkel, így a felhasználók majdnem valós időben jeleníthetik meg és elemezhetik őket.
-

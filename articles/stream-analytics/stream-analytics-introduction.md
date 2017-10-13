@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/08/2017
 ms.author: samacha
-ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 6bb70ba7588b8c6e9261fca097403e7fccb041eb
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-stream-analytics"></a>Mi a Stream Analytics?
 
 Az Azure Stream Analytics teljes körűen felügyelt eseményfeldolgozó motor, amellyel valós idejű elemző számítások állíthatók be adatfolyamokra. Az adatok származhatnak egyebek között eszközöktől, érzékelőktől, webhelyektől, közösségi hírcsatornákról, alkalmazásoktól vagy infrastruktúra-rendszerektől. 
@@ -99,5 +97,4 @@ A Stream Analytics felügyelt felhőbeli szolgáltatás segít megakadályozni a
 * Megismerheti [a Stream Analytics-feladatok skálázását](stream-analytics-scale-jobs.md). 
 * Megtudhatja, hogyan [integrálhatja a Stream Analytics és az Azure Machine Learning szolgáltatást](stream-analytics-machine-learning-integration-tutorial.md).
 * A Stream Analyticsszel kapcsolatos kérdéseire az [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) kaphat választ.
-
 

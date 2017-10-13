@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2017
 ms.author: iainfou
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 6fcdcc96c7762e2362aebf909ef25f4a5ab62f99
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/30/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
 Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan hozhat létre gyorsan és hogyan használhat az SSH-protokoll 2. verziójára épülő nyilvános és titkosított RSA-kulcspárt a Linux rendszerű virtuális gépekhez. Részletes lépéseket és a további példákat az [SSH-kulcspárok és -tanúsítványok létrehozásának lépései](create-ssh-keys-detailed.md) között talál.
 
@@ -59,4 +57,3 @@ Az Azure Portal, a parancssori felület és sablonok segítségével is létreho
 * [Biztonságos Linux virtuális gép létrehozása az Azure Portal használatával](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Biztonságos linuxos virtuális gép létrehozása az Azure CLI 2.0-val](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Biztonságos Linux virtuális gép létrehozása Azure-sablon alapján](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
