@@ -247,6 +247,7 @@
             - name: NVIDIA GPU-illesztők telepítése
               href: n-series-driver-setup.md
     - name: Tárhely kezelése
+      href: about-disks-and-vhds.md
       items:
         - name: Információk a felügyelt lemezekről
           href: managed-disks-overview.md
