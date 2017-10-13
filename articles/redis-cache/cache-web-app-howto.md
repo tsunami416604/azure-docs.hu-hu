@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/09/2017
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 21dc87b3e8c26bfbda36202b31b3b4d44be32179
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-a-web-app-with-redis-cache"></a>Webalkalmazás létrehozása a Redis Cache használatával
 > [!div class="op_single_selector"]
@@ -707,7 +706,7 @@ Az alkalmazásnak az Azure-on történő üzemeltetéséhez először is létre 
 
 Ezen szolgáltatások új vagy létező, szabadon választott erőforráscsoporton történő üzembe helyezéséhez kattintson az alábbi **Deploy to Azure** (Üzembe helyezés az Azure-ban) gombra.
 
-[![Deploy to Azure][deploybutton]](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-redis-cache-sql-database%2Fazuredeploy.json)
+[![Üzembe helyezés az Azure-ban][deploybutton]](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-redis-cache-sql-database%2Fazuredeploy.json)
 
 Ez az **Deploy to Azure** (Üzembe helyezés az Azure-ban) gomb a [Webalkalmazás, Redis Cache és SQL Database egyidejű létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) [Azure gyors üzembe helyezés](https://github.com/Azure/azure-quickstart-templates) sablonját használja ezen szolgáltatások kiépítéséhez, illetve az SQL Database kapcsolati karakterláncának megadásához és az Azure Redis Cache-kapcsolatikarakterlánc alkalmazás-beállításához.
 
@@ -867,5 +866,4 @@ A használni kívánt gyorsítótár kiválasztása vagy létrehozása után ker
 [cache-publish]: ./media/cache-web-app-howto/cache-publish.png
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
-
 

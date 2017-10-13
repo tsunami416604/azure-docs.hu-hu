@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 5939af4cf071664415d57ccbaee3413d61aa69e9
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-azure-cli"></a>Windowsos virtuális gép létrehozása az Azure parancssori felülettel
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató részletesen bemutatja, hogyan lehet egy Windows Server 2016-ot futtató virtuális gépet az Azure CLI-vel üzembe helyezni. Az üzembe helyezés végeztével csatlakozunk a kiszolgálóhoz, és telepítjük az IIS-t.
@@ -116,4 +114,3 @@ Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, 
 
 > [!div class="nextstepaction"]
 > [Windowsos virtuális gépek az Azure-ban – oktatóanyagok](./tutorial-manage-vm.md)
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>A StorSimple virtuális eszköz üzembe helyezése és kezelése az Azure-ban
 ## <a name="overview"></a>Áttekintés
@@ -33,13 +32,13 @@ A StorSimple virtuális eszköz két modellben érhető el: a hagyományos 8010-
 | **Maximális kapacitás** |30 TB |64 TB |
 | **Azure virtuális gép** |Standard_A3 (4 mag, 7 GB memória) |Standard_DS3 (4 mag, 14 GB memória) |
 | **Verziók kompatibilitása** |A 2. frissítés előzetes verzióját vagy újabb verziókat futtató verziók |A 2. frissítést vagy újabb verziókat futtató verziók |
-| **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot és a DS3 csomagú Azure-beli virtuális gépeket támogató összes Azure-régió<br></br> [Ebben a listában](https://azure.microsoft.com/en-us/regions/services) ellenőrizheti, hogy a *Virtuális gépek > DS-sorozat* és a *Storage > Disk Storage* termékek egyaránt elérhetők-e az adott régióban. |
+| **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot és a DS3 csomagú Azure-beli virtuális gépeket támogató összes Azure-régió<br></br> [Ebben a listában](https://azure.microsoft.com/en-us/regions/services) ellenőrizheti, hogy a *Virtuális gépek &gt; DS-sorozat* és a *Storage &gt; Disk Storage* termékek egyaránt elérhetők-e az adott régióban. |
 | **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../storage/common/storage-premium-storage.md) |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek, kis késés, nagyobb teljesítményű számítási feladatok <br></br>Másodlagos vészhelyreállítási eszköz |
 
-<sup>1</sup> *Korábbi nevén az 1100-as*.
+<sup>1</sup>*Korábbi nevén az 1100-as*.
 
-<sup>2</sup> *A 8010-es és a 8020-as modellek egyaránt Azure Standard szintű tárolást használnak a felhő szintjén. Csak az eszközön belül, a helyi rétegen van különbség*.
+<sup>2</sup>*A 8010-es és a 8020-as modellek egyaránt Azure Standard szintű tárolást használnak a felhő szintjén. Csak az eszközön belül, a helyi rétegen van különbség*.
 
 Ez a cikk lépésenként mutatja be a StorSimple virtuális eszköz telepítésének folyamatát az Azure-ban. A cikk elolvasása után:
 
@@ -236,4 +235,3 @@ Ha nincs internetkapcsolat a virtuális eszköz létrehozása közben, a létreh
 ## <a name="next-steps"></a>Következő lépések
 * Tekintse át, hogyan végezhető el [a virtuális eszköz felügyelete a StorSimple Manager szolgáltatással](storsimple-manager-service-administration.md).
 * Ismerje meg, hogyan hajtható végre egy [StorSimple-kötet visszaállítása egy biztonságimentés-készletből](storsimple-restore-from-backup-set.md).
-

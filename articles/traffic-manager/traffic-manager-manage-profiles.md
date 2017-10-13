@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: a5164282264124835692bc72a4ab61891aa7af9d
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-an-azure-traffic-manager-profile"></a>Az Azure Traffic Manager-profilok kezelése
 
 A Traffic Manager-profilok forgalom-útválasztási módszereket használnak a felhőszolgáltatások vagy webhelyek végpontjaira érkező forgalom elosztásának szabályozásához. Ez a cikk ismerteti a profilok létrehozásának és kezelésének módját.
@@ -76,4 +74,3 @@ Letilthat létező profilokat, így a Traffic Manager nem hivatkozik a konfigur�
 * [Földrajzi útválasztási mód konfigurálása](traffic-manager-configure-geographic-routing-method.md) 
 * [Súlyozott útválasztási mód konfigurálása](traffic-manager-configure-weighted-routing-method.md)
 * [Teljesítménycentrikus útválasztási mód beállítása](traffic-manager-configure-performance-routing-method.md)
-

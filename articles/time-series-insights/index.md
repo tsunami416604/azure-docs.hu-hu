@@ -1,4 +1,4 @@
---- 
+---
 title: "Az Azure Time Series Insights dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
 description: "Ismerje meg, hogyan futtathat IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet például alkalmazásokból, érzékelőkből, eszközökből származó adatokat."
 services: time-series-insights
@@ -12,13 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2017
 ms.author: carolz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: d22a3f0484da78d03dbe8411e74eb408185b1f30
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/03/2017
-
---- 
+ms.openlocfilehash: ca41dab4f1488c0d172513e61b1960f236c7ebf0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
+---
 # <a name="azure-time-series-insights-documentation"></a>Az Azure Time Series Insights dokumentációja 
  
 Ismerje meg, hogyan állíthatja be a Time Series Insights-környezetet, és hogyan elemezheti IoT-megoldásai és összekapcsolt eszközei idősoradatait. A dokumentációban megtalálja az előfeltételeket, az útmutatókat, az API-referenciákat és a többi dokumentációt, amelyek segítségével néhány perc után elkezdheti a termék használatát. 

@@ -50,7 +50,7 @@
 ## [Táblázatos modell parancsnyelve (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # Erőforrások
-## [Analysis Services-kódminták a GitHubon](https://github.com/Microsoft/Analysis-Services)
+## [Példák](analysis-services-samples.md)
 ## [Analysis Services csapatblog](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
