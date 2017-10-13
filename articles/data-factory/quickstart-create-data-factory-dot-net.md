@@ -13,28 +13,26 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/06/2017
 ms.author: jingwang
+ms.openlocfilehash: d78176eca6bdbf32d6b4400ad2812dea98703d67
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ebd2520813cd27280171c0e05637eb5a8bd58a29
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Adat-előállító és folyamat létrehozása a .NET SDK használatával
-Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl.: Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket. 
+Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint például az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket. 
 
 Ez a rövid útmutató bemutatja, hogyan használható a .NET SDK egy Azure-beli adat-előállító létrehozásához. Az adat-előállító folyamata adatokat másol az Azure Blob Storage egyik mappájából egy másik mappába.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure Storage-fiók** A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozását] ismertető cikket. (../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket a létrehozás lépéseinek megismeréséhez. 
-* Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. 
+* **Azure Storage-fiók** A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikket. 
+* Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) és hozzá hasonló eszközökkel csatlakozhat az Azure Blob Storage-hoz, blobtárolókat hozhat létre, bemeneti fájlokat tölthet fel, és ellenőrizheti a kimeneti fájlokat.
 * **Visual Studio** 2013, 2015 vagy 2017. A jelen cikkben található útmutató a Visual Studio 2017-et használja.
 * **Az [Azure .NET SDK](http://azure.microsoft.com/downloads/)** letöltése és telepítése.
 * **Egy alkalmazás létrehozása az Azure Active Directoryban** [ennek az útmutatónak](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a lépéseit követve. Jegyezze fel a következő értékeket, amelyeket a későbbi lépésekben fog használni: **alkalmazásazonosító**, **hitelesítési kulcs** és **bérlőazonosító**. Rendelje hozzá az alkalmazást a **Közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve. 
-* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Ezzel az eszközzel csatlakozhat az Azure Blob Storage-hoz, blobtárolót hozhat létre, bemeneti fájlt tölthet fel és ellenőrizheti a kimeneti fájlt. 
+*  
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -55,6 +53,7 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
     Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
     Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+
     ```
 
 ## <a name="create-a-data-factory-client"></a>Adat-előállító ügyfél létrehozása
@@ -83,7 +82,7 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
     string resourceGroup = "<your resource group where the data factory resides>";
     // Currently, Data Factory V2 allows you to create data factories only in the East US and East US2 regions. 
     // Note that the data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by data factory can be in other regions
-    string region = "East US";
+    string region = "East US 2";
     string dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>";
     string storageAccount = "<your storage account name to copy data>";
     string storageKey = "<your storage account key>";
@@ -274,13 +273,10 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
    
     List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
     resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
- 
-
     if (pipelineRun.Status == "Succeeded")
         Console.WriteLine(activityRuns.First().Output);
     else
         Console.WriteLine(activityRuns.First().Error);
-
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -409,4 +405,3 @@ Az adat-előállító programkódból történő törléséhez adja hozzá az al
 
 ## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md). 
-

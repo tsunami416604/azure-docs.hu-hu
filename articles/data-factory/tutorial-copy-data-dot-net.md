@@ -3,7 +3,7 @@ title: "Adatok másolása az Azure Blob Storage-ból az SQL Database-be | Micros
 description: "Ez az oktatóanyag részletes útmutatást biztosít adatok másolásához az Azure Blob Storage-ból az Azure SQL Database-be."
 services: data-factory
 documentationcenter: 
-author: sharonlo101
+author: linda33wj
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
@@ -11,17 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/13/2017
-ms.author: shlo
+ms.date: 09/26/2017
+ms.author: jingwang
+ms.openlocfilehash: 6f1a93c2906eaab82dcfb9bae1ee4a54dce300bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 80abdd1524160427c17e05bd0086d2c7f6a54910
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
-Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl.: Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket. 
+Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint például az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket. 
 
 Ebben az oktatóanyagban olyan adat-előállító folyamatot hoz létre, amely az Azure Blob Storage-ból az Azure SQL Database-be másol adatokat. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
 
@@ -510,7 +509,6 @@ Checking copy activity run details...
   "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US)",
   "usedCloudDataMovementUnits": 2,
   "billedDuration": 2
-
 }
 
 Press any key to exit...
@@ -529,8 +527,7 @@ A példában szereplő folyamat adatokat másol az egyik helyről egy másikra e
 > * A folyamat és a tevékenységek futásának monitorozása
 
 
-Folytassa a következő oktatóanyaggal, amelyben az adatok a helyszíni rendszerből a felhőbe másolásának menetét ismerheti meg: 
+Folytassa a következő oktatóanyaggal, amelyben azzal ismerkedhet meg, hogyan másolhat adatokat a helyszíni rendszerből a felhőbe: 
 
 > [!div class="nextstepaction"]
 >[Adatok másolása a helyszínről a felhőbe](tutorial-hybrid-copy-powershell.md)
-
