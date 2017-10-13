@@ -5,8 +5,3 @@ Ebben a forgatókönyvben a következő feladatokat végezheti el:
 * Állapotminták létrehozása
 
 ![Terheléselosztói forgatókönyv](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
-
-
-<!--HONumber=Nov16_HO2-->
-
-

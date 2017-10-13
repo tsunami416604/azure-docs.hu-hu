@@ -14,8 +14,3 @@
       ![Tárfiók hozzáadása](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
 4. Az újonnan létrehozott tárfiók megjelenik a **Tárfiókok** terület **Konfigurálás** lapján. Az újonnan létrehozott tárfiók mentéséhez kattintson a **Mentés** gombra. Ha a rendszer megerősítést kér, kattintson az **OK** gombra.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

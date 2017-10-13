@@ -26,7 +26,7 @@
         ![Kötet hozzáadása](./media/storsimple-create-volume/AddVolume2-include.png)
 4. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-create-volume/HCS_CheckIcon-include.png). Létrejön egy kötet a megadott beállításokkal.
 
-![Videó elérhető](./media/storsimple-create-volume/Video_icon.png) **Videó elérhető**
+![Videó elérhető](./media/storsimple-create-volume/Video_icon.png)**Videó elérhető**
 
 A StorSimple-kötet létrehozását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/).
 

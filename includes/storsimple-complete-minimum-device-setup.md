@@ -33,7 +33,7 @@
    > 
    > 
 
-![Videó elérhető](./media/storsimple-complete-minimum-device-setup/Video_icon.png) **Videó elérhető**
+![Videó elérhető](./media/storsimple-complete-minimum-device-setup/Video_icon.png)**Videó elérhető**
 
 A minimális eszközbeállítás befejezését bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/).
 

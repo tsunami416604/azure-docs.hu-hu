@@ -1,4 +1,4 @@
-1. Jelentkezzen be az [Azure Portal].
+1. Jelentkezzen be az [Azure Portalra].
 
 2. Kattintson az **Új** lehetőségre.
 
@@ -16,4 +16,4 @@
 [quickstart]: ./media/app-service-mobile-dotnet-backend-create-new-service/search-mobile-apps-quickstart.png
 
 <!-- URLs. -->
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/

@@ -48,10 +48,6 @@ Az átviteli sebesség fenntartása nehéz a VPN-alagutakban. Az IPsec és az SS
 
 Nem. Az SSTP esetében csak a Windows natív VPN-ügyfele, az IKEv2 esetében pedig csak a Mac natív VPN-ügyfele használható. Tekintse át a támogatott ügyfél operációs rendszerek listáját.
 
-### <a name="can-i-access-the-internet-when-i-am-connected-over-p2s-vpn"></a>Elérhető az internet P2S VPN-kapcsolat mellett?
-
-Igen, P2S VPN-kapcsolattal elérhető az internet.
-
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Támogatja az Azure az IKEv2 VPN használatát Windows rendszeren?
 
 A felhasználók kapcsolódhatnak az Azure-hoz a Windows beépített VPN-ügyfelével, amely támogatja az IKEv2-t. A következő esetekben azonban nem működik az IKEv2-kapcsolat Windows-eszközökről:

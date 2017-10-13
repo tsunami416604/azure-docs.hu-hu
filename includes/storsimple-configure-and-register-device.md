@@ -70,7 +70,7 @@
 
 Ha az eszköz regisztrálása sikeres volt, viszont mégsem kerül online állapotba, akkor a `Test-HcsmConnection -Verbose` futtatásával ellenőrizheti a hálózat csatlakozási állapotát. A parancsmag használatának részletes leírása a [Test-HcsmConnection parancsmag használatának ismertetésében](https://technet.microsoft.com/library/dn715782.aspx) található.
 
-![Videó elérhető](./media/storsimple-configure-and-register-device/Video_icon.png) **Videó elérhető**
+![Videó elérhető](./media/storsimple-configure-and-register-device/Video_icon.png)**Videó elérhető**
 
 Az eszköz StorSimple szolgáltatásban való, a Windows PowerShell segítségével történő konfigurálását és regisztrálását bemutató videó megtekintéséhez kattintson [ide](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/).
 

@@ -63,8 +63,3 @@
        
         Ellenőrizze, hogy a 9354-es port kimenő kommunikációra nyitva van-e, mivel az a StorSimple Manager szolgáltatás és eszköz közötti kommunikációt lebonyolító Service Bus működéséhez szükséges.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-
