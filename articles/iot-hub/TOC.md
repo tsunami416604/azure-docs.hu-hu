@@ -114,6 +114,7 @@
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-schedule-jobs.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-schedule-jobs.md)
 #### [Java](iot-hub-java-java-schedule-jobs.md)
+
 ## Kezelés
 ### IoT Hub létrehozása 
 #### [Az Azure Portal használata](iot-hub-create-through-portal.md)
@@ -127,15 +128,24 @@
 #### [Az Azure Portal használata](iot-hub-configure-file-upload.md)
 #### [Azure PowerShell használata](iot-hub-configure-file-upload-powershell.md)
 #### [Az Azure parancssori felület használata](iot-hub-configure-file-upload-cli.md)
-### [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
+### [Monitorozás a diagnosztikával](iot-hub-monitor-resource-health.md)
+#### [Migrálás a diagnosztikai beállításokba](iot-hub-migrate-to-diagnostics-settings.md)
+#### [Műveletek figyelése](iot-hub-operations-monitoring.md)
 ### [Használati metrikák](iot-hub-metrics.md)
-### [Műveletek figyelése](iot-hub-operations-monitoring.md)
+### [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
 ### [IP-szűrés konfigurálása](iot-hub-ip-filtering.md)
+
 ## Biztonságos
 ### [Biztonság az alapoktól](iot-hub-security-ground-up.md)
 ### [Ajánlott biztonsági eljárások](iot-hub-security-best-practices.md)
 ### [Biztonsági architektúra](iot-hub-security-architecture.md)
 ### [Az IoT-környezet biztonságossá tétele](iot-hub-security-deployment.md)
+### Biztonságossá tétel X.509-es hitelesítésszolgáltatói tanúsítványokkal
+#### [X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](iot-hub-x509ca-overview.md)
+##### [X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági alapfogalmai](iot-hub-x509ca-concept.md)
+#### [Bevezetés az X.509-es hitelesítésszolgáltatói tanúsítványok használatába](iot-hub-security-x509-get-started.md)
+##### [Tanúsítványok létrehozása – PowerShell](iot-hub-security-x509-create-certificates.md)
+
 ## Azure IoT Edge
 ### [Áttekintés](iot-hub-iot-edge-overview.md)
 ### Bevezetés

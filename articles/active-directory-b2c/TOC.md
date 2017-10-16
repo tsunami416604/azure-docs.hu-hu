@@ -40,6 +40,9 @@
 ### [Weibo](active-directory-b2c-setup-weibo-app.md)
 ### [QQ](active-directory-b2c-setup-qq-app.md)
 ### [WeChat](active-directory-b2c-setup-wechat-app.md)
+## [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-b2c-reference-sspr.md)
+## [A felhasználói felület testreszabása](active-directory-b2c-reference-ui-customization.md)
+### [Segédeszköz testreszabáshoz](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [Az Azure AD Graph API használata](active-directory-b2c-devquickstarts-graph-dotnet.md)
 ## [Hozzáférési jogkivonatok beszerzése](active-directory-b2c-access-tokens.md)
 ## [E-mailes ellenőrzés letiltása](active-directory-b2c-reference-disable-ev.md)
@@ -47,30 +50,34 @@
 ## [MFA engedélyezése](active-directory-b2c-reference-mfa.md)
 ## [Egyéni attribútumok használata](active-directory-b2c-reference-custom-attr.md)
 ## [Jelszó testreszabása](active-directory-b2c-reference-password-complexity.md)
-## [A felhasználói felület testreszabása](active-directory-b2c-reference-ui-customization.md)
-### [Segédeszköz testreszabáshoz](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [Nyelvi testreszabás](active-directory-b2c-reference-language-customization.md)
 ## [A jelentéskészítő API használata](active-directory-b2c-reference-usage-reporting-api.md)
-## [Önkiszolgáló jelszó-visszaállítás beállítása](active-directory-b2c-reference-sspr.md)
+## [Felhasználók migrálása](active-directory-b2c-user-migration.md)
 
 # Identity Experience Framework
 ## [Egyéni szabályzatok](active-directory-b2c-overview-custom.md)
 ## Útmutatók
 ### [Első lépések](active-directory-b2c-get-started-custom.md)
-### OIDC/OAUTH2-szolgáltatók konfigurálása
+### OIDC/OAUTH-szolgáltatók konfigurálása
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft-fiók](active-directory-b2c-custom-setup-msa-idp.md)
 #### [Google +](active-directory-b2c-custom-setup-goog-idp.md)
+#### [LinkedIn](active-directory-b2c-custom-setup-li-idp.md)
+#### [Twitter](active-directory-b2c-custom-setup-twitter-idp.md)
 ### SAML-szolgáltatók konfigurálása
 #### [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md)
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### RESTful API-k integrálása
 #### [Felhasználó által megadott adatok érvényesítése](active-directory-b2c-rest-api-validation-custom.md)
 #### [További jogcímek beszerzése](active-directory-b2c-rest-api-step-custom.md)
+#### [Saját RESTful API hozzáadása](active-directory-b2c-custom-rest-api-netfw.md)
+#### [Biztonságos RESTful API-k egyszerű hitelesítéssel](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+#### [Biztonságos RESTful API-k tanúsítványhitelesítéssel](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 ### Felhasználói folyamatok
 #### [Felhasználó által megadott adatok konfigurálása](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [Egyéni attribútumok](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
-#### [Felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md)
+#### [A felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md)
+#### [A felhasználói felület dinamikus testreszabása](active-directory-b2c-ui-customization-custom-dynamic.md)
 #### [Jogkivonatok testreszabása](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 #### [Jelszó bonyolultsága](active-directory-b2c-reference-password-complexity-custom.md)
 

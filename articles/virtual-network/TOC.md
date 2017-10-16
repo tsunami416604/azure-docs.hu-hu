@@ -24,22 +24,25 @@
 ## Üzembe helyezés
 ### [Virtuális hálózatok](virtual-networks-create-vnet-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
+#### [Azure CLI 2.0](virtual-networks-create-vnet-arm-cli.md)
+#### [Azure CLI 1.0](virtual-networks-create-vnet-cli-nodejs.md)
 #### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
 
 ### Network security groups (Hálózati biztonsági csoportok)
 #### [Azure Portal](virtual-networks-create-nsg-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
-#### [Azure CLI](virtual-networks-create-nsg-arm-cli.md)
+#### [Azure CLI 2.0](virtual-networks-create-nsg-arm-cli.md)
+#### [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md)
 #### [Sablon](virtual-networks-create-nsg-arm-template.md)
 #### [Alkalmazás biztonsági csoportjai](create-network-security-group-preview.md)
 #### Klasszikus
 ##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
-##### [Azure CLI](virtual-networks-create-nsg-classic-cli.md)
+##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
 
 ### Felhasználó által megadott útvonalak
 #### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [Azure CLI](virtual-network-create-udr-arm-cli.md)
+#### [Azure CLI 2.0](virtual-network-create-udr-arm-cli.md)
+#### [Azure CLI 1.0](virtual-network-create-udr-arm-cli-nodejs.md)
 #### [Sablon](virtual-network-create-udr-arm-template.md)
 #### Klasszikus
 ##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
@@ -62,7 +65,8 @@
 #### Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása
 ##### [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-##### [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
+##### [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md)
+##### [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md)
 ##### [Sablon](virtual-network-deploy-static-pip-arm-template.md)
 ##### Klasszikus
 ###### [Azure PowerShell](virtual-networks-reserved-public-ip.md)
@@ -78,7 +82,10 @@
 
 #### Több hálózati adapterrel rendelkező virtuális gép létrehozása
 ##### [Azure PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure CLI 2.0](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure CLI 1.0](../virtual-machines/linux/multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Sablon](virtual-network-deploy-multinic-arm-template.md)
+
 ##### Klasszikus
 ###### [Azure PowerShell](virtual-network-deploy-multinic-classic-ps.md)
 ###### [Azure CLI](virtual-network-deploy-multinic-classic-cli.md)
@@ -86,7 +93,8 @@
 #### Több IP-címmel rendelkező virtuális gép létrehozása
 ##### [Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
 ##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-##### [Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
+##### [Azure CLI 2.0](virtual-network-multiple-ip-addresses-cli.md)
+##### [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md)
 ##### [Sablon](virtual-network-multiple-ip-addresses-template.md)
 
 #### [Gyorsított hálózatkezeléssel rendelkező virtuális gép létrehozása](virtual-network-create-vm-accelerated-networking.md)
@@ -102,9 +110,11 @@
 #### [Hálózatok biztonságossá tétele virtuális készülékekkel](virtual-network-scenario-udr-gw-nva.md)
 #### [Szegélyhálózat (DMZ) az Azure és az internet között](../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 #### [Felhőszolgáltatás és hálózati biztonság](../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [Egyszerű szegélyhálózat NSG-kkel](virtual-networks-dmz-nsg-asm.md)
-##### [Szegélyhálózat tűzfallal és NSG-kkel](virtual-networks-dmz-nsg-fw-asm.md)
-##### [Szegélyhálózat tűzfallal, felhasználó által megadott útvonallal (UDR-rel) és NSG-kkel](virtual-networks-dmz-nsg-fw-udr-asm.md)
+##### [Szegélyhálózat létrehozása NSG-kkel](virtual-networks-dmz-nsg.md)
+##### [Szegélyhálózat létrehozása NSG-kkel (Klasszikus)](virtual-networks-dmz-nsg-asm.md)
+##### [Szegélyhálózat létrehozása tűzfallal és NSG-kkel (Klasszikus)](virtual-networks-dmz-nsg-fw-asm.md)
+##### [Szegélyhálózat tűzfallal, felhasználó által megadott útválasztással és NSG-kkel (Klasszikus)](virtual-networks-dmz-nsg-fw-udr-asm.md)
+
 ##### [Mintaalkalmazás](virtual-networks-sample-app.md)
 
 ### Klasszikus
@@ -112,13 +122,22 @@
 ##### [Azure Portal](virtual-networks-create-vnet-classic-pportal.md)
 ##### [Azure PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
 ##### [Azure CLI](virtual-networks-create-vnet-classic-cli.md)
+#### [DNS-beállítások megadása egy virtuális hálózat konfigurációs fájljában](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
+#### [DNS-beállítások megadása egy szolgáltatáskonfigurációs fájlban](virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md)
 
 ## Konfigurálás
 ### Virtual machines (Virtuális gépek)
 #### [Hálózati adapterek hozzáadása vagy eltávolítása](virtual-network-network-interface-vm.md)
 #### [A virtuális gépek és felhőszolgáltatások névfeloldása](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+#### [Dinamikus DNS használata a gazdagépek regisztrálásához a saját DNS-kiszolgálón](virtual-networks-name-resolution-ddns.md)
 #### [Hálózati teljesítmény optimalizálása](virtual-network-optimize-network-bandwidth.md)
 #### [Gazdagépnevek megtekintése és módosítása](virtual-networks-viewing-and-modifying-hostnames.md)
+#### Klasszikus
+##### Statikus IP-címek
+###### [PowerShell](virtual-networks-reserved-private-ip.md)
+###### [Parancssori felület](virtual-networks-static-private-ip-cli-nodejs.md)
+##### [Példányszintű nyilvános IP-cím](virtual-networks-instance-level-public-ip.md)
+
 ### Klasszikus
 #### Hozzáférés-vezérlési listák
 ##### [Azure Portal](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -134,7 +153,9 @@
 ### Network security groups (Hálózati biztonsági csoportok)
 #### [Azure Portal](virtual-network-manage-nsg-arm-portal.md)
 #### [Azure PowerShell](virtual-network-manage-nsg-arm-ps.md)
-#### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
+#### [Azure CLI 2.0](virtual-network-manage-nsg-arm-cli.md)
+#### [Azure CLI 1.0](virtual-network-manage-nsg-cli-nodejs.md)
+
 #### [Naplók](virtual-network-nsg-manage-log.md)
 ### Hálózati adapterek (NIC-k)
 #### [Hálózati adapterek létrehozása, módosítása vagy törlése](virtual-network-network-interface.md)
@@ -183,3 +204,4 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-network)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
+## [Hálózati erőforrás-szolgáltató](resource-groups-networking.md)

@@ -18,7 +18,6 @@
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
-### [Klasszikus portál (klasszikus)](vpn-gateway-site-to-site-create.md)
 
 ## Pont–hely kapcsolatok konfigurálása – hitelesítés natív Azure-tanúsítvánnyal
 ### Pont–hely VPN-kapcsolat konfigurálása
@@ -57,6 +56,7 @@
 ### [Azure PowerShell](vpn-gateway-activeactive-rm-powershell.md)
 ## BGP konfigurálása egy VPN-átjáró számára
 ### [Azure PowerShell](vpn-gateway-bgp-resource-manager-ps.md)
+### [Azure CLI](bgp-how-to-cli.md)
 ## Kényszerített bújtatás konfigurálása
 ### [Azure PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [Azure PowerShell (klasszikus)](vpn-gateway-about-forced-tunneling.md)
@@ -81,6 +81,8 @@
 ### [Pont–hely kapcsolati probléma](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
 ### [A helyek közötti kapcsolat időnként megszakad](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [A helyek közötti kapcsolat nem hozható létre](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
+### [Application Gateway-munkamenet affinitási problémái](https://support.microsoft.com/help/4033827/troubleshooting-azure-application-gateway-session-affinity-issues)
+### [VNet- vagy VPN-kapcsolatok konfigurálása és érvényesítése](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

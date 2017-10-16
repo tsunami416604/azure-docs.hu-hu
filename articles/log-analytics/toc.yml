@@ -53,6 +53,8 @@
               href: log-analytics-azure-vm-extension.md
             - name: Azure-erőforrások
               href: log-analytics-azure-storage.md
+            - name: Diagnosztikai vagy naplóadatok az Azure Storage-ból
+              href: log-analytics-azure-storage-iis-table.md
             - name: Operations Manager
               href: log-analytics-om-agents.md
             - name: Configuration Manager
@@ -92,6 +94,8 @@
           items:
             - name: Reguláris kifejezések
               href: log-analytics-log-searches-regex.md
+            - name: Keresés több munkaterületen
+              href: log-analytics-cross-workspace-search.md
         - name: Műveletek végrehajtása a keresési eredményekből
           href: log-analytics-log-search-takeaction.md
         - name: Számítógépcsoportok
@@ -229,6 +233,10 @@
       href: /powershell/module/azurerm.operationalinsights
     - name: REST
       href: /rest/api/loganalytics
+    - name: Nézettervező csempe referenciája
+      href: log-analytics-view-designer-tiles.md
+    - name: Nézettervező vizualizációs részének referenciája
+      href: log-analytics-view-designer-parts.md
 - name: Erőforrások
   items:
     - name: Azure-ütemterv

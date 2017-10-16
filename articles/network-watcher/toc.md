@@ -59,17 +59,20 @@
 # Útmutató
 ## [VPN Gateway figyelése az Azure Automationnel](network-watcher-monitor-with-azure-automation.md)
 ## [Helyszíni kapcsolatok diagnosztizálása VPN Gateway használatával](network-watcher-diagnose-on-premises-connectivity.md)
-## [Rendellenességek keresése a csomagrögzítések elemzésével](network-watcher-deep-packet-inspection.md)
-## [Proaktív hálózatfigyelés Azure Functions-függvényekkel, csomagrögzítés használatával](network-watcher-alert-triggered-packet-capture.md)
-## [Forgalmi naplók megjelenítése a Power BI használatával](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-## [Forgalmi naplók megjelenítése nyílt forráskódú eszközök használatával](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-## [Forgalmi naplók megjelenítése az Azure-ban a Graylog használatával](network-watcher-analyze-nsg-flow-logs-graylog.md)
-## [Hálózati forgalmi minták megjelenítése nyílt forráskódú eszközök használatával](network-watcher-using-open-source-tools.md)
 ## [Megfelelőségi vizsgálat és naplózás végrehajtása a hálózaton a PowerShell használatával](network-watcher-nsg-auditing-powershell.md)
-## [NSG-forgalom naplóinak olvasása](network-watcher-read-nsg-flow-logs.md)
-## [Behatolásészlelés végrehajtása nyílt forráskódú eszközök használatával](network-watcher-intrusion-detection-open-source-tools.md)
 ## [Application Gateway-naplók elemzése az Azure Log Analyticsben](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
-## [Forgalmi naplók elemzése a Network Watcher és a Grafana használatával](network-watcher-nsg-grafana.md)
+## Csomagrögzítés
+### [Rendellenességek keresése](network-watcher-deep-packet-inspection.md)
+### [Proaktív hálózatmonitorozás Azure Functions-függvényekkel](network-watcher-alert-triggered-packet-capture.md)
+### [Behatolásészlelés végrehajtása nyílt forráskódú eszközök használatával](network-watcher-intrusion-detection-open-source-tools.md)
+### [Hálózati forgalmi minták megjelenítése nyílt forráskódú eszközök használatával](network-watcher-using-open-source-tools.md)
+## NSG-forgalom naplóinak elemzése
+### [NSG-forgalom naplóinak olvasása](network-watcher-read-nsg-flow-logs.md)
+### [A Power BI használata](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+### [Rugalmas verem használata](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+### [Grafana használata](network-watcher-nsg-grafana.md)
+### [Graylog használata](network-watcher-analyze-nsg-flow-logs-graylog.md)
+
 # Referencia
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [.NET](/dotnet/api)

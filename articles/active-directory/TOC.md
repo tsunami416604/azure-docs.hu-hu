@@ -7,6 +7,7 @@
 ## [Gyakori kérdések](active-directory-faq.md)
 
 # Bevezetés
+## [Bevezetés az Azure AD használatába](get-started-azure-ad.md)
 ## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
 ## [Egyéni tartománynév hozzáadása](add-custom-domain.md)
 ## [Vállalati arculat konfigurálása](customize-branding.md)

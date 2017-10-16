@@ -1,14 +1,13 @@
---- 
+---
 layout: HubPage
-hide_bc: true
+hide_bc: True
 title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
+ms.openlocfilehash: 05a288bf8ccbc70bb5ce5c52b0e85e0f784c7f3e
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 1e8b6749e445b7b8787b5b0246445a2bb810f80f
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -594,6 +593,12 @@ ms.lasthandoff: 09/25/2017
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/batch-ai/">
+                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
+                                                <p>Azure Batch AI</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-overview">
                                                 <img src="media/index/cs-decision-maker.svg" alt="" />
                                                 <p>Egyéni döntési szolgáltatás</p>
@@ -696,7 +701,7 @@ ms.lasthandoff: 09/25/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-entities-search/overview">
+                                            <a href="/azure/cognitive-services/bing-entities-search/search-the-web">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
                                                 <p>Bing – Entitáskeresés</p>
                                             </a>
@@ -2522,6 +2527,25 @@ ms.lasthandoff: 09/25/2017
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/batch-ai/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Azure_batch_ai.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Batch AI</h3>
+                                                    <p>Párhuzamosan, skálázva taníthatja be a mélytanulási és AI-modelljeit, illetve kísérletezhet velük</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="fullSpan">
                                 <h2 style="margin-top:24px;margin-bottom:18px;">Cognitive Services</h2>
                                 <ul id="cognitive-services" class="cardsL panelContent singlePanelContent" style="display:flex!important;">
@@ -2663,10 +2687,10 @@ ms.lasthandoff: 09/25/2017
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-autosuggest/get-suggested-search-terms"><img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />Bing – Automatikus kiegészítés</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing – Egyéni keresés&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing – Egyéni keresés</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing – Entitáskeresés&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing – Entitáskeresés</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-image-search/search-the-web"><img src="media/index/API_Sear_BingImageSearch.svg" alt="" />Bing – Képkeresés</a>
@@ -4186,4 +4210,3 @@ A felhőalapú alkalmazásokhoz ajánlott eljárások, amelyek olyan témákkal 
         </ul>
     </div>
 </div>
-

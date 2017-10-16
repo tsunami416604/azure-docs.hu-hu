@@ -240,6 +240,7 @@
 
 ### Alkalmazások üzembe helyezése vagy eltávolítása
 #### [Alkalmazások telepítése helyi fürtre](service-fabric-get-started-with-a-local-cluster.md)
+#### [Azure Resource Manager](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric parancssori felület](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -341,8 +342,8 @@
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
-## [Azure CLI](/cli/azure/sf)
-## [Service Fabric parancssori felület](service-fabric-sfctl.md)
+## [Azure CLI (az sf)](/cli/azure/sf)
+## [Service Fabric parancssori felület (sfctl)](service-fabric-sfctl.md)
 ### [sfctl-alkalmazás](service-fabric-sfctl-application.md)
 ### [sfctl-káosz](service-fabric-sfctl-chaos.md)
 ### [sfctl-fürt](service-fabric-sfctl-cluster.md)

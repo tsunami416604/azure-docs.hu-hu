@@ -1,5 +1,5 @@
 # Áttekintés
-## [Mi az az Azure virtuális gépeken futó SQL Server?](../sql/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
+## [Windows SQL Server virtuális gépek](../sql/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 ## [Gyakori kérdések](../sql/virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 

@@ -15,6 +15,8 @@
       href: functions-create-first-azure-function-azure-cli.md
     - name: Függvény létrehozása – Visual Studio
       href: functions-create-your-first-function-visual-studio.md
+    - name: Függvény létrehozása – Java/Maven
+      href: functions-create-first-java-maven.md
     - name: Eseményindítók
       items:
         - name: Blob Storage
@@ -67,12 +69,46 @@
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
+        - name: Java
+          href: functions-reference-java.md
     - name: A teljesítménnyel kapcsolatos megfontolások
       href: functions-best-practices.md
     - name: Functions-proxyk
       href: functions-proxies.md
     - name: A Functions futtatókörnyezete
       href: functions-runtime-overview.md
+    - name: Tartós függvények
+      items:
+        - name: Áttekintés
+          href: durable-functions-overview.md
+        - name: Kötések
+          href: durable-functions-bindings.md
+        - name: Ellenőrzőpont és visszajátszás
+          href: durable-functions-checkpointing-and-replay.md
+        - name: Példányfelügyelet
+          href: durable-functions-instance-management.md
+        - name: HTTP API
+          href: durable-functions-http-api.md
+        - name: Hibakezelés
+          href: durable-functions-error-handling.md
+        - name: Diagnosztika
+          href: durable-functions-diagnostics.md
+        - name: Időzítők
+          href: durable-functions-timers.md
+        - name: Külső események
+          href: durable-functions-external-events.md
+        - name: Külső vezénylések
+          href: durable-functions-eternal-orchestrations.md
+        - name: Egyszeres vezénylések
+          href: durable-functions-singletons.md
+        - name: Alvezénylések
+          href: durable-functions-sub-orchestrations.md
+        - name: Feladatközpontok
+          href: durable-functions-task-hubs.md
+        - name: Verziókezelés
+          href: durable-functions-versioning.md
+        - name: Teljesítmény és méret
+          href: durable-functions-perf-and-scale.md
 - name: Útmutatók
   items:
     - name: Fejlesztés
@@ -94,7 +130,11 @@
         - name: Helyszíni függvények
           href: functions-runtime-install.md
     - name: Konfigurálás
-      href: functions-how-to-use-azure-function-app-settings.md
+      items:
+        - name: Függvényalkalmazás kezelése
+          href: functions-how-to-use-azure-function-app-settings.md
+        - name: Futtatókörnyezet verziójának beállítása
+          href: functions-versions.md
     - name: Figyelés
       href: functions-monitoring.md
     - name: Integrálás
@@ -111,6 +151,18 @@
           href: functions-flow-scenario.md
         - name: Felügyeltszolgáltatás-identitás használata
           href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Tartós függvények
+      items:
+        - name: Telepítés
+          href: durable-functions-install.md
+        - name: Láncolás
+          href: durable-functions-sequence.md
+        - name: Elosztás/összevonás
+          href: durable-functions-cloud-backup.md
+        - name: Állapotalapú egyszeres
+          href: durable-functions-counter.md
+        - name: Emberi beavatkozás
+          href: durable-functions-phone-verification.md
 - name: Referencia
   items:
     - name: Kötések
