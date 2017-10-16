@@ -145,7 +145,7 @@
           href: prepare-for-upload-vhd-image.md
         - name: Általános rendszerkép használata
           href: create-vm-generalized-managed.md
-        - name: Specializált rendszerkép használata
+        - name: Speciális lemez használata
           href: create-vm-specialized.md
         - name: Virtuális gép rögzítése rendszerképben
           href: capture-image-resource.md

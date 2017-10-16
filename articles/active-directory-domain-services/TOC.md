@@ -15,9 +15,9 @@
 
 # Útmutató
 ## Csatlakozás egy felügyelt tartományhoz
-### [Csatlakozás Windows Server rendszerű virtuális géphez](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Csatlakozás Windows Server rendszerű virtuális géphez a PowerShell használatával](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-### [RedHat Enterprise Linux](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [Windows Server rendszerű virtuális gép](active-directory-ds-admin-guide-join-windows-vm-portal.md)
+### [Windows Server rendszerű, PowerShellt használó virtuális gép](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [RedHat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## Felügyelt tartomány kezelése
 ### [Felügyelt tartomány kezelése](active-directory-ds-admin-guide-administer-domain.md)

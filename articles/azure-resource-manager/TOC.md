@@ -58,13 +58,13 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [Címkék használata az erőforrások rendszerezéséhez](resource-group-using-tags.md)
 ### [Erőforrások áthelyezése új csoportba vagy előfizetésbe](resource-group-move-resources.md)
+### [Előfizetések rendszerezése felügyeleti csoportokkal](../billing/billing-enterprise-mgmt-group-overview.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Irányítási példák](resource-manager-subscription-examples.md)
 
 ## Vezérlési hozzáférés
 ### Egyszerű szolgáltatás létrehozása
 #### [Azure PowerShell](resource-group-authenticate-service-principal.md)
 #### [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Azure CLI 1.0](resource-group-authenticate-service-principal-cli.md)
 #### [Azure Portal](resource-group-create-service-principal-portal.md)
 ### [Hitelesítési API az előfizetések hozzáféréséhez](resource-manager-api-authentication.md)
 ### [Erőforrások zárolása](resource-group-lock-resources.md)

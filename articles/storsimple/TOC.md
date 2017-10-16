@@ -118,6 +118,7 @@
 ##### [A webproxy konfigurálása](storsimple-8000-configure-web-proxy.md)
 ##### [A DATA 0 beállításainak módosítása](storsimple-8000-modify-data-0.md)
 
+#### [Azure PowerShell-mintaszkriptek használata](storsimple-8000-automation-azurerm-scripts.md)
 
 #### [A StorSimple Snapshot Manager használata](storsimple-snapshot-manager-admin.md)
 ##### [Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)

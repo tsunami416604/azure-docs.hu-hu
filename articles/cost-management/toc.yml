@@ -23,6 +23,8 @@
       href: tutorial-forecast-spending.md
 - name: Erőforrások
   items:
+    - name: Költségkezelési videók
+      href: ref-videos.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás

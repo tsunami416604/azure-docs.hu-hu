@@ -117,8 +117,6 @@
               href: app-insights-snapshot-debugger.md
         - name: J2EE
           items:
-            - name: Eclipse
-              href: app-insights-java-eclipse.md
             - name: Nyomkövetési naplók
               href: app-insights-java-trace-logs.md
             - name: Unix-metrikák
@@ -140,8 +138,6 @@
               href: app-insights-proactive-failure-diagnostics.md
             - name: Teljesítményanomáliák
               href: app-insights-proactive-performance-diagnostics.md
-        - name: Dynamics CRM
-          href: app-insights-sample-mscrm.md
         - name: Erőforrás létrehozása
           href: app-insights-create-new-resource.md
     - name: Elemzés
@@ -188,14 +184,8 @@
           items:
             - name: Áttekintés
               href: app-insights-analytics.md
-            - name: Bemutató
-              href: app-insights-analytics-tour.md
-            - name: Használat
-              href: app-insights-analytics-using.md
-            - name: Importálás
+            - name: Egyéni naplók importálása
               href: app-insights-analytics-import.md
-            - name: Diagnosztika
-              href: app-insights-analytics-diagnostics.md
     - name: Automatizálás
       items:
         - name: Azure PowerShell-konfigurálás
@@ -259,7 +249,7 @@
           href: app-insights-java-troubleshoot.md
 - name: Referencia
   items:
-    - name: Elemzés
+    - name: Elemzés lekérdezési nyelve
       href: 'https://docs.loganalytics.io/'
     - name: .NET
       href: 'https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights'

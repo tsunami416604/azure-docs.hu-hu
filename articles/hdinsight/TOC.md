@@ -88,7 +88,6 @@
 ### [ScaleR és SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## A HBase használata
 ### [A Phoenix és az SQLLine használata](hdinsight-hbase-phoenix-squirrel-linux.md)
-### [Valós idejű tweetek elemzése](hdinsight-hbase-analyze-twitter-sentiment.md)
 ### [Fürtök létrehozása virtuális hálózaton](hdinsight-hbase-provision-vnet.md)
 ### [HBase-replikáció konfigurálása](hdinsight-hbase-replication.md)
 ### [Alkalmazás fejlesztése Javával](hdinsight-hbase-build-java-maven-linux.md)
@@ -100,7 +99,7 @@
 #### [Java-alapú topológiák fejlesztése a Maven használatával](hdinsight-storm-develop-java-topology.md)
 #### [C#-topológiák fejlesztése Hadoop-eszközökkel](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 #### [Események feldolgozása C#-topológiákkal](hdinsight-storm-develop-csharp-event-hub-topology.md)
-#### [Események feldolgozása Java-topológiákkal](hdinsight-storm-develop-java-event-hub-topology.md)
+#### [Események feldolgozása Java-topológiákkal](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
 #### [Valós idejű érzékelőadatok elemzése](hdinsight-storm-sensor-data-analysis.md)
 #### [Események korrelációinak megállapítása az idő múlásával](hdinsight-storm-correlation-topology.md)
 #### [Topológiák fejlesztése a Pythonnal](hdinsight-storm-develop-python-topology.md)
