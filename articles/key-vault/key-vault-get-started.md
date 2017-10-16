@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/19/2017
-ms.author: cabailey
-ms.openlocfilehash: 0299d931c5bf21775b68069afaa106279270226a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 09/27/2017
+ms.author: barclayn
 ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 73b4ae4b7baca434c6aed99a2e59a9102b0d96ed
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/22/2017
+
 ---
 # <a name="get-started-with-azure-key-vault"></a>Bevezetés az Azure Key Vault használatába
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -233,3 +234,4 @@ A kulcstartó használatának módjairól az [Azure Key Vault Logging](key-vault
 A legújabb Azure Key Vaultra vonatkozó Azure PowerShell-parancsmagok listáját az [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Az Azure Key Vault parancsmagjai) című témakörben találja.
 
 Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-vault-developers-guide.md).
+
