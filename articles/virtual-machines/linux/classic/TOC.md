@@ -72,9 +72,9 @@
 ## [Java](/java/api)
 ## [Resource Manager-sablonok készítése](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates)
-## [Számítási REST](/rest/api/compute)
-## [Hálózati REST](/rest/api)
-## [Tárolási REST](/rest/api/storageservices)
+## [Számítási REST](https://msdn.microsoft.com/library/jj157206.aspx)
+## [Hálózati REST](https://msdn.microsoft.com/library/jj157182.aspx)
+## [Tárolási REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
 
 # Erőforrások

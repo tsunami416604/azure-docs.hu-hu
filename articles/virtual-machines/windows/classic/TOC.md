@@ -91,9 +91,9 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Resource Manager-sablonok készítése](../../../resource-group-authoring-templates.md)
 ## [Közösségi sablonok](https://azure.microsoft.com/documentation/templates)
-## [Számítási REST](/rest/api/compute)
-## [Hálózati REST](/rest/api)
-## [Tárolási REST](/rest/api/storageservices)
+## [Számítási REST](https://msdn.microsoft.com/library/jj157206.aspx)
+## [Hálózati REST](https://msdn.microsoft.com/library/jj157182.aspx)
+## [Tárolási REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)
