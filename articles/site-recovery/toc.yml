@@ -51,6 +51,8 @@
       href: concepts-physical-to-azure-architecture.md
     - name: Hyper-V-ről másodlagos helyre architektúra
       href: concepts-hyper-v-to-secondary-architecture.md
+    - name: Azure-ról Azure-ra támogatási mátrix
+      href: site-recovery-support-matrix-azure-to-azure.md
     - name: Helyszíniről Azure-ra támogatási mátrix
       href: site-recovery-support-matrix-to-azure.md
     - name: Helyszíniről másodlagos helyre támogatási mátrix

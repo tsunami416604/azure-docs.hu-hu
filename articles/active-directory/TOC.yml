@@ -44,41 +44,49 @@
       href: msi-how-to-get-access-token-using-msi.md
     - name: Az MSI konfigurálása Azure-beli virtuális géphez
       items:
-        - name: Az Azure Portallal
+        - name: Az Azure Portal használata
           href: msi-qs-configure-portal-windows-vm.md
-        - name: A PowerShell-lel
+        - name: A PowerShell használata
           href: msi-qs-configure-powershell-windows-vm.md
-        - name: Az Azure CLI-vel
+        - name: Az Azure parancssori felület használata
           href: msi-qs-configure-cli-windows-vm.md
-        - name: Azure Resource Manager-sablonnal
+        - name: Az Azure Resource Manager-sablonok használata
           href: msi-qs-configure-template-windows-vm.md
-        - name: Azure SDK-val
+        - name: Az Azure SDK használata
           href: msi-qs-configure-sdk-windows-vm.md
-    - name: MSI-hozzáférés hozzárendelése egy Azure-erőforráshoz
+    - name: Virtuális gép MSI hozzáférésének biztosítása a Resource Managerhez
       items:
-        - name: Az Azure Portallal
+        - name: Az Azure Portal használata
           href: msi-howto-assign-access-portal.md
-        - name: A PowerShell-lel
+        - name: A PowerShell használata
           href: msi-howto-assign-access-powershell.md
-        - name: Az Azure CLI-vel
+        - name: Az Azure parancssori felület használata
           href: msi-howto-assign-access-cli.md
-    - name: Az MSI használata az Azure Resource Manager eléréséhez
+    - name: Virtuális gép MSI használata az Azure Resource Manager eléréséhez
       items:
-        - name: Windows rendszerű virtuális géppel
+        - name: Windows rendszerű virtuális gépről
           href: msi-tutorial-windows-vm-access-arm.md
-        - name: Linux rendszerű virtuális géppel
+        - name: Linux rendszerű virtuális gépről
           href: msi-tutorial-linux-vm-access-arm.md
-    - name: Az MSI használata az Azure Storage eléréséhez
+    - name: Virtuális gép MSI használata az Azure SQL eléréséhez
       items:
-        - name: Windows rendszerű virtuális géppel
+        - name: Windows rendszerű virtuális gépről
+          href: msi-tutorial-windows-vm-access-sql.md
+    - name: Virtuális gép MSI használata egy Azure-tároló eléréséhez
+      items:
+        - name: Windows rendszerű virtuális gépről hozzáférési kulccsal
           href: msi-tutorial-windows-vm-access-storage.md
-        - name: Linux rendszerű virtuális géppel
+        - name: Windows rendszerű virtuális gépről SAS-szel
+          href: msi-tutorial-windows-vm-access-storage-sas.md
+        - name: Linux rendszerű virtuális gépről hozzáférési kulccsal
           href: msi-tutorial-linux-vm-access-storage.md
-    - name: Az MSI használata nem Azure AD-erőforrás eléréséhez
+        - name: Linux rendszerű virtuális gépről SAS-szel
+          href: msi-tutorial-linux-vm-access-storage-sas.md
+    - name: Virtuális gép MSI használata az Azure Key Vault eléréséhez
       items:
-        - name: Windows rendszerű virtuális géppel
+        - name: Windows rendszerű virtuális gépről
           href: msi-tutorial-windows-vm-access-nonaad.md
-        - name: Linux rendszerű virtuális géppel
+        - name: Linux rendszerű virtuális gépről
           href: msi-tutorial-linux-vm-access-nonaad.md
     - name: Gyakori kérdések és ismert problémák
       href: msi-known-issues.md

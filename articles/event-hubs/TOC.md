@@ -22,6 +22,7 @@
 
 # Útmutató
 ## Tervezés és kialakítás
+### [Geo-vészhelyreállítás és georeplikáció](event-hubs-geo-dr.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)
 ### [Rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md)

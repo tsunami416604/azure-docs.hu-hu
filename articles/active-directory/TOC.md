@@ -44,6 +44,7 @@
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [Azure PowerShell-példák csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
+#### [Az Azure AD termékeinek és szolgáltatáscsomagjainak referenciája](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
 ### [Új jelszó létrehozása](active-directory-users-reset-password-azure-portal.md)
 ### [A felhasználók munkahelyi adatainak kezelése](active-directory-users-work-info-azure-portal.md)
@@ -65,6 +66,7 @@
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [Azure PowerShell-példák csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
+#### [Az Azure AD termékeinek és szolgáltatáscsomagjainak referenciája](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Office 365-csoportok lejáratának beállítása](active-directory-groups-lifecycle-azure-portal.md)
 ### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
 ### [Dedikált csoportok engedélyezése](active-directory-accessmanagement-dedicated-groups.md)
@@ -137,7 +139,7 @@
 ### Feladatok
 #### [Azure AD-ben regisztrált Windows 10 rendszerű eszközök beállítása](device-management-azuread-registered-devices-windows10-setup.md)
 #### [Az Azure AD-hez csatlakoztatott eszközök beállítása](device-management-azuread-joined-devices-setup.md)
-#### [Hibrid Azure AD-hez csatlakoztatott eszközök beállítása](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [Hibrid Azure AD-hez csatlakoztatott eszközök beállítása](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [Helyszíni üzembe helyezés](active-directory-device-registration-on-premises-setup.md)
 #### [Azure AD-csatlakozás a Windows 10 első futtatási élménye alkalmával](device-management-azuread-joined-devices-frx.md)
 ### Hibaelhárítás
@@ -204,6 +206,7 @@
 #### [Felhasználói fiók üzembe helyezésének kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Egyszeri bejelentkezés kezelése nagyvállalati alkalmazások esetében](active-directory-enterprise-apps-manage-sso.md)
 #### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](active-directory-enterprise-apps-advance-certificate-options.md)
+####[ Felhasználói élmény elrejtése az Azure Active Directoryban](active-directory-coreapps-hide-third-party-app.md)
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)

@@ -21,6 +21,12 @@
       href: ../container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+- name: Alapelvek
+  items:
+    - name: Tárolóregisztrációs adatbázis termékváltozatai
+      href: container-registry-skus.md
+    - name: Georeplikáció (előzetes verzió)
+      href: container-registry-geo-replication.md
 - name: Útmutatók
   items:
     - name: Rendszerképek küldése és lekérése
@@ -43,8 +49,8 @@
       href: /powershell/module/azurerm.containerregistry
 - name: Erőforrások
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ütemterv
+      href: 'https://aka.ms/acr/roadmap'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/container-registry/'
     - name: Régiónkénti elérhetőség

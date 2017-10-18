@@ -16,6 +16,7 @@
 ### [Virtuális gépek létrehozása](devtest-lab-add-vm.md)
 ### [Igényelhető virtuális gép létrehozása](devtest-lab-add-claimable-vm.md)
 ### [Virtuális gépek létrehozása és kezelése az Azure parancssori felülettel](devtest-lab-vmcli.md)
+### [Virtuális gép újraindítása](devtest-lab-restart-vm.md)
 
 ## Környezetek használata tesztkörnyezetben
 ### [Környezet létrehozása](devtest-lab-create-environment-from-arm.md)
@@ -28,6 +29,7 @@
 ### [Szabályzatok és ütemezések beállítása ](devtest-lab-set-lab-policy.md)
 ### [Költségkezelés konfigurálása](devtest-lab-configure-cost-management.md)
 ### [Piactér képeinek konfigurálása](devtest-lab-configure-marketplace-images.md)
+### [Licencelt kép engedélyezése](devtest-lab-enable-licensed-images.md)
 ### [Címke hozzáadása egy laborhoz](devtest-lab-add-tag.md)
 
 ## [Egyéni rendszerkép vagy képlet kiválasztása](devtest-lab-comparing-vm-base-image-types.md)
@@ -56,8 +58,8 @@
 ## [A labor skálázása](devtest-lab-scale-lab.md)
 
 # Referencia
-## [Azure CLI](/cli/azure/lab)
-## [Azure PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
+## [CLI 2.0](/cli/azure/lab)
+## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [Tesztkörnyezetek automatikus létrehozása vagy módosítása](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 ## [REST API](https://docs.microsoft.com/rest/api/dtl/)
 ## [Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Samples)

@@ -158,6 +158,10 @@
           href: model-management-cli-reference.md
         - name: Modelladat-gyűjtési API
           href: model-data-collection-api-reference.md
+    - name: Kibocsátási megjegyzések
+      items:
+        - name: Sprint 0 – 2017. október
+          href: release-notes-sprint-0.md
 - name: Erőforrások
   items:
     - name: Gyakori kérdések

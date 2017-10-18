@@ -28,6 +28,8 @@
           href: storage-secure-access-application.md
         - name: 4 – Tárterületek figyelése és hibaelhárítása
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: Strukturálatlan adatok keresése felhőalapú tárolóban
+      href: storage-unstructured-search.md
 - name: Példák
   items:
     - name: Azure PowerShell

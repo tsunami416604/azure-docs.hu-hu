@@ -135,12 +135,16 @@
           href: sql-database-disaster-recovery.md
         - name: Helyreállítási gyakorlat végrehajtása
           href: sql-database-disaster-recovery-drills.md
-    - name: Adatok betöltése és áthelyezése
+    - name: Migrálás az SQL Database-be
       items:
         - name: SQL Server-adatbázis migrálása
           href: sql-database-cloud-migrate.md
         - name: A T-SQL változtatásai
           href: sql-database-transact-sql-information.md
+        - name: Adatbázis kezelése a migrálás után
+          href: sql-database-manage-after-migration.md
+    - name: Adatok betöltése és áthelyezése
+      items:
         - name: Adatbázis másolása
           href: sql-database-copy.md
         - name: Adatbázis importálása
@@ -169,8 +173,6 @@
           href: sql-database-operate-query-store.md
         - name: Bővített események
           href: sql-database-xevent-db-diff-from-svr.md
-        - name: Kompatibilitási szintek
-          href: sql-database-compatibility-level-query-performance-130.md
         - name: Memóriabeli megfigyelés
           href: sql-database-in-memory-oltp-monitoring.md
     - name: Horizontális felskálázás
@@ -266,6 +268,12 @@
         - name: Virtuális hálózati szabályok – PowerShell
           href: sql-database-vnet-service-endpoint-rule-powershell.md
     - name: Az üzletmenet folytonossága
+      items:
+        - name: Tároló konfigurálása – biztonsági másolatok
+          href: sql-database-long-term-backup-retention-configure.md
+        - name: Georeplikáció – Portál
+          href: sql-database-geo-replication-portal.md
+    - name: Adatok betöltése és áthelyezése
       items:
         - name: Adatok betöltése a BCP használatával
           href: sql-database-load-from-csv-with-bcp.md

@@ -27,6 +27,10 @@ sections:
               src: 'https://docs.microsoft.com/en-us/azure/media/index/virtualmachine.svg'
             text: Azure-beli virtuális gépek
             href: /azure/log-analytics/log-analytics-quick-collect-azurevm
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/media/index/virtualmachine.svg'
+            text: Linux rendszerű számítógép
+            href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
   - title: Részletes útmutatók
     items:
       - type: paragraph

@@ -6,8 +6,12 @@
       href: overview.md
 - name: Gyors útmutatók
   items:
-    - name: Egyéni események létrehozása és útválasztása
+    - name: Egyéni esemény létrehozása – Azure CLI
       href: custom-event-quickstart.md
+    - name: Egyéni esemény létrehozása – Azure PowerShell
+      href: custom-event-quickstart-powershell.md
+    - name: Egyéni esemény létrehozása – Azure Portal
+      href: custom-event-quickstart-portal.md
 - name: oktatóanyagokat
   items:
     - name: Virtuális gépek változásainak monitorozása logikai alkalmazásokkal

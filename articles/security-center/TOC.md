@@ -13,15 +13,13 @@
 ## [Tervezés és műveletek](security-center-planning-and-operations-guide.md)
 ## [Engedélyek](security-center-permissions.md)
 ## [Támogatott platformok](security-center-os-coverage.md)
-## [Partnerintegráció](security-center-partner-integration.md)
 ## [Gyakori kérdések](security-center-faq.md)
 
 # Útmutató
-
-## Biztonsági házirend
-### [Áttekintés](security-center-policies-overview.md)
+## [Biztonsági szabályzat](security-center-policies-overview.md)
 ### [Adatgyűjtés](security-center-enable-data-collection.md)
 ### [Biztonsági szabályzat](security-center-policies.md)
+### [Biztonsági szabályzat az Azure Policyval](security-center-azure-policy.md)
 ### [E-mail-értesítések](security-center-provide-security-contact-details.md)
 ### [Tarifacsomag](security-center-pricing.md)
 
@@ -30,6 +28,10 @@
 ## [Search](security-center-search.md)
 
 ## Megelőzés
+### [Biztonsági megoldások](security-center-partner-integration.md)
+#### [Csatlakoztatott megoldások monitorozása](security-center-partner-solutions.md)
+#### [A Microsoft ATA csatlakoztatása](security-center-ata-integration.md)
+#### [Az Azure AD Identity Protection csatlakoztatása](security-center-aadip-integration.md)
 ### [Biztonsági ajánlások megvalósítása](security-center-recommendations.md)
 ### [Alkalmazásokkal kapcsolatos javaslatok](security-center-application-recommendations.md)
 #### [Webalkalmazási tűzfal hozzáadása](security-center-add-web-application-firewall.md)
@@ -57,7 +59,6 @@
 #### [Operációs rendszer verziójának frissítése](security-center-update-os-version.md)
 #### [A sebezhetőségi felmérés nincs telepítve](security-center-vulnerability-assessment-recommendations.md)
 ### [A biztonsági állapot figyelése](security-center-monitoring.md)
-### [Partneri megoldások megfigyelése](security-center-partner-solutions.md)
 ### [Identitás és hozzáférés](security-center-identity-access.md)
 
 ## Észlelés és válasz

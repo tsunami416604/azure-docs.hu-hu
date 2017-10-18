@@ -45,8 +45,8 @@ sections:
         style: ordered
         items:
           - html: <a href="service-fabric-tutorial-create-dotnet-app">.NET-alkalmazás üzembe helyezése</a>
-          - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">Meglévő .NET-alkalmazás átemelése</a>
-          - html: <a href="service-fabric-tutorial-create-container-images">Linux rendszerű tárolóalkalmazás létrehozása</a>
+          - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">Meglévő .NET-alkalmazás tárolóba helyezése</a>
+          - html: <a href="service-fabric-tutorial-create-container-images">Tárolóalkalmazás létrehozása Linuxhoz</a>
           - html: <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a> vagy <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a> rendszerű fürt létrehozása és kezelése
   - title: Ingyenes Pluralsight videós képzés
     items:

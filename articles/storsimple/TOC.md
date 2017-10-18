@@ -101,6 +101,7 @@
 ##### [Kötettárolók kezelése](storsimple-8000-manage-volume-containers.md)
 ##### [Kötetek kezelése – aktuális](storsimple-8000-manage-volumes-u2.md)
 ###### [Gyakori kérdések a helyileg rögzített kötetekről](storsimple-8000-local-volume-faq.md)
+##### [Szerepköralapú hozzáférés-vezérlés](storsimple-8000-role-based-access-control.md)
 ##### [ACR-ek kezelése](storsimple-8000-manage-acrs.md)
 ##### [Sávszélességsablonok kezelése](storsimple-8000-manage-bandwidth-templates.md)
 ##### [Feladatok megtekintése és kezelése](storsimple-8000-manage-jobs-u2.md)
@@ -188,7 +189,7 @@
 #### [Kiadás – GA](storsimple-july-2014-release-notes.md)
 
 ## Referencia
-### [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
+### [REST API](https://docs.microsoft.com/rest/api/storsimple)
 ### [StorSimple-höz készült Windows PowerShell-parancsmagok](https://technet.microsoft.com/library/dn688168.aspx)
 
 # StorSimple 8000 sorozat (Klasszikus portál)

@@ -68,7 +68,7 @@
 ### [Javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Jellemzőalapú navigáció](search-faceted-navigation.md)
 ### [Szinonimák előzetes verziója](search-synonyms.md)
-
+### [Biztonsági szűrők](search-security-trimming-for-azure-search.md)
 # Referencia
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)

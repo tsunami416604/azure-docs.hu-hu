@@ -3,11 +3,11 @@ layout: HubPage
 hide_bc: True
 title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
-ms.openlocfilehash: 05a288bf8ccbc70bb5ce5c52b0e85e0f784c7f3e
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: e87391e9662991a542ad58eafd9b4c2714f30d66
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -159,8 +159,7 @@ ms.lasthandoff: 10/11/2017
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
                                                     <li><a class="barLink" href="/azure/azure-functions/">Kiszolgáló nélküli funkciók</a></li>
-                                                    <li><a class="barLink" href="/azure/container-instances/">Tárolópéldányok</a></li>
-                                                    <li><a class="barLink" href="/azure/container-service/kubernetes/">Kubernetes-tárolók</a></li>
+                                                    <li><a class="barLink" href="/azure/containers/">Tárolók</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">Mikroszolgáltatások Service Fabric platformmal</a></li>
                                                 </ul>
                                             </div>
@@ -410,7 +409,7 @@ ms.lasthandoff: 10/11/2017
                                         <li>
                                             <a href="/azure/app-service/containers/">
                                                 <img src="media/index/AppService.svg" alt="" />
-                                                <p>Tárolókhoz készült Web App</p>
+                                                <p>Web App for Containers</p>
                                             </a>
                                         </li>
                                         <li>
@@ -635,7 +634,7 @@ ms.lasthandoff: 10/11/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-spell-check/proof-text">
+                                            <a href="/azure/cognitive-services/bing-spell-check/">
                                                 <img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />
                                                 <p>Bing – Helyesírás-ellenőrzés</p>
                                             </a>
@@ -671,31 +670,31 @@ ms.lasthandoff: 10/11/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-news-search/search-the-web">
+                                            <a href="/azure/cognitive-services/Bing-news-Search/search-the-web">
                                                 <img src="media/index/API_Sear_BingNewsSearch.svg" alt="" />
                                                 <p>Bing – Hírek</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-video-search/search-the-web">
+                                            <a href="/azure/cognitive-services/Bing-Video-Search/search-the-web">
                                                 <img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />
                                                 <p>Bing – Videokeresés</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-web-search/search-the-web">
+                                            <a href="/azure/cognitive-services/bing-web-search/">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
                                                 <p>Bing – Internetes keresés</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-autosuggest/get-suggested-search-terms">
+                                            <a href="/azure/cognitive-services/Bing-Autosuggest">
                                                 <img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />
                                                 <p>Bing – Automatikus kiegészítés</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-custom-search/overview">
+                                            <a href="/azure/cognitive-services/bing-custom-search">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
                                                 <p>Bing – Egyéni keresés</p>
                                             </a>
@@ -707,7 +706,7 @@ ms.lasthandoff: 10/11/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-image-search/search-the-web">
+                                            <a href="/azure/cognitive-services/bing-image-search">
                                                 <img src="media/index/API_Sear_BingImageSearch.svg" alt="" />
                                                 <p>Bing – Képkeresés</p>
                                             </a>
@@ -1030,7 +1029,7 @@ ms.lasthandoff: 10/11/2017
                                         <li>
                                             <a href="/azure/app-service/containers/">
                                                 <img src="media/index/AppService.svg" alt="" />
-                                                <p>Tárolókhoz készült Web App</p>
+                                                <p>Web App for Containers</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1850,7 +1849,7 @@ ms.lasthandoff: 10/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Tárolókhoz készült Web App</h3>
+                                                    <h3>Web App for Containers</h3>
                                                     <p>Az üzleti igényeknek megfelelően méretezhető, tárolóalapú webalkalmazások gyors és egyszerű üzembe helyezése</p>
                                                 </div>
                                             </div>
@@ -2083,7 +2082,7 @@ ms.lasthandoff: 10/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Tárolókhoz készült Web App</h3>
+                                                    <h3>Web App for Containers</h3>
                                                     <p>Az üzleti igényeknek megfelelően méretezhető, tárolóalapú webalkalmazások gyors és egyszerű üzembe helyezése</p>
                                                 </div>
                                             </div>
@@ -2613,7 +2612,7 @@ ms.lasthandoff: 10/11/2017
                                                         <h3>Nyelv</h3>
                                                         <ul class="noBullet">
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-spell-check/proof-text"><img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />Bing – Helyesírás-ellenőrzés</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />Bing – Helyesírás-ellenőrzés</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/luis/home"><img src="media/index/API_Lang_LanguageUnderstanding.svg" alt="" /><span>Language Understanding Intelligent Services (LUIS)&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
@@ -2678,22 +2677,21 @@ ms.lasthandoff: 10/11/2017
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-news-search/search-the-web"><img src="media/index/API_Sear_BingNewsSearch.svg" alt="" />Bing – Hírek</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-video-search/search-the-web"><img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />Bing – Videókeresés</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/search-the-web"><img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />Bing – Videókeresés</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-web-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" />Bing – Internetes keresés</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="media/index/API_Sear_BingSearch.svg" alt="" />Bing – Internetes keresés</a>
+                                                            </li>
+                                                            <li>                                                 <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />Bing – Automatikus kiegészítés</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-autosuggest/get-suggested-search-terms"><img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />Bing – Automatikus kiegészítés</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing – Egyéni keresés</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing – Egyéni keresés</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing – Entitáskeresés&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing – Entitáskeresés</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-image-search/search-the-web"><img src="media/index/API_Sear_BingImageSearch.svg" alt="" />Bing – Képkeresés</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="media/index/API_Sear_BingImageSearch.svg" alt="" />Bing – Képkeresés</a>
                                                             </li>
                                                         </ul>
                                                     </div>

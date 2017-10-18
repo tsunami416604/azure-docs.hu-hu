@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: A tárolókhoz készült Web Apps dokumentációja
+title: A Web Apps for Containers dokumentációja
 metadata:
   document_id: 2239df92-8506-4ee4-b5b0-9ab512c487b2
-  title: A tárolókhoz készült Azure Web Apps dokumentációja – oktatóanyagok és API-referencia
+  title: Az Azure Web App for Containers dokumentációja – oktatóanyagok és API-referencia
   meta.description: Learn how to use Web Apps for Containers to build and host websites and web applications leveraging Docker.
   services: app-service
   author: syntaxc4
@@ -35,11 +35,20 @@ sections:
           - image:
               src: 'https://docs.microsoft.com/en-us/azure/app-service-web/media/index/logo_java.svg'
             text: Java
-            href: 'https://docs.microsoft.com/en-us/azure/azure-toolkit-for-intellij-hello-world-web-app-linux?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json'
+            href: 'https://docs.microsoft.com/en-us/azure/azure-toolkit-for-intellij-hello-world-web-app-linux?toc=/azure/app-service/containers/toc.json'
+      - type: paragraph
+        text: 'Megtudhatja, hogyan végezhet folyamatos üzembe helyezést:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/media/index/logo_vs-team-services.svg'
+            text: VSTS
+            href: 'https://docs.microsoft.com/en-us/vsts/build-release/apps/cd/deploy-docker-webapp??toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json'
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Megtudhatja, hogyan telepíthet, kezelhet és figyelhet biztonságos webalkalmazásokat a tárolókhoz készült Azure Web Appsban'
+        text: 'Megtudhatja, hogyan telepíthet, kezelhet és figyelhet biztonságos webalkalmazásokat az Azure Web Apps for Containers szolgáltatásban'
       - type: list
         style: ordered
         items:
