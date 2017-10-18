@@ -13,15 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/15/2017
+ms.date: 10/06/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
+ms.openlocfilehash: 56905a457f972d1820e56dca00c42686bcad5453
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 83fc6db1ddb43eb87e7c58684505d7196c1e53d0
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>A HDInsight-alapú Apache Storm rendszer használatának első lépései Storm Starter-példákkal
 
@@ -44,7 +43,7 @@ Az Apache Storm egy skálázható, hibatűrő, elosztott, valós idejű számít
 
 HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com) válassza az **+ ÚJ**, **Intelligencia és analitika**, majd a **HDInsight** elemet.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **+ ÚJ**, **Adatok + analitika**, majd a **HDInsight** elemet.
 
     ![HDInsight-fürt létrehozása](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
@@ -57,7 +56,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
     * **Erőforráscsoport**: Az az erőforráscsoport, amelyben a fürt létre lesz hozva.
     * **Hely**: Az az Azure-régió, amelyben a fürt létre lesz hozva.
 
-    ![Előfizetés kiválasztása](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
+   ![Előfizetés kiválasztása](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
 3. Válassza ki a **Fürt típusát**, majd állítsa be a következő értékeket a **Fürtkonfiguráció** panelen:
 
@@ -69,7 +68,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
     * **Fürt szintje**: Standard
 
-    Végül mentse a beállításokat a **Kiválasztás** gomb használatával.
+   Végül mentse a beállításokat a **Kiválasztás** gomb használatával.
 
     ![Fürttípus kiválasztása](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
@@ -79,7 +78,7 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
-6. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a__Létrehozás__ gombra a fürt létrehozásához.
+6. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a __Létrehozás__ gombra a fürt létrehozásához.
 
     ![A fürtkonfiguráció összegzése](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
 
@@ -92,7 +91,11 @@ HDInsight alatt futó Storm-fürt létrehozásához kövesse az alábbi lépése
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    Ha az SSH-felhasználói fiókhoz jelszót használt, a rendszer felkéri annak megadására. Nyilvános kulcs használatakor lehetséges, hogy az `-i` paraméter használatára van szükség a megfelelő titkos kulcs megadásához. Például: `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
+    > [!TIP]
+    > Lehetséges, hogy az SSH-ügyfél szerint a gazdaszámítógép nem hitelesíthető. Ebben az esetben írja be a `yes` parancsot a folytatáshoz.
+
+    > [!NOTE]
+    > Ha az SSH-felhasználói fiókhoz jelszót használt, a rendszer felkéri annak megadására. Nyilvános kulcs használatakor lehetséges, hogy az `-i` paraméter használatára van szükség a megfelelő titkos kulcs megadásához. Például: `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
 
     További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -118,7 +121,7 @@ A HDInsight-fürtön elérhető Storm webes felhasználói felületet biztosít 
 
 Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületével történő figyeléséhez:
 
-1. A Storm felhasználói felületének megjelenítéséhez egy webböngészőben nyissa meg a következőt: https://CLUSTERNAME.azurehdinsight.net/stormui. Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
+1. A Storm felhasználói felületének megjelenítéséhez egy webböngészőben nyissa meg a `https://CLUSTERNAME.azurehdinsight.net/stormui` oldalt. Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
 
     > [!NOTE]
     > Ha a rendszer felkéri a felhasználónév és a jelszó megadására, a fürt létrehozásakor használt fürtrendszergazda (rendszergazda) nevét és jelszavát adja meg.
@@ -210,4 +213,3 @@ A HDInsight alatt futó Stormmal használható példatopológiákat az alábbiak
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [preview-portal]: https://portal.azure.com/
-

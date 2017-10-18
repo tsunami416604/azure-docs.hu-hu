@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 48749bfa2ab54a0e766a4aad4f39073cc4e90818
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 78a165d831796bb6bb23e51f415383eb925115ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: .NET webes API készítése
 
@@ -40,7 +39,7 @@ A következő lépésben hozzon létre egy webes API-alkalmazást a B2C-címtár
 * Az alkalmazás tartalmazzon egy **webalkalmazást** vagy **webes API-t**.
 * A webapphoz használja a `https://localhost:44332/` **URI-átirányítást**. Ez a webalkalmazás ügyféloldalának alapértelmezett helye ehhez a kódmintához.
 * Másolja az alkalmazáshoz rendelt **alkalmazásazonosítót**. Erre később még szüksége lesz.
-* Adjon meg egy alkalmazásazonosítót az **Alkalmazásazonosító URI** mezőben.
+* Adjon meg egy alkalmazásazonosítót az **Alkalmazásazonosító URI** mezőben. Másolja át a teljes **Alkalmazásazonosító URI-t**. Erre később még szüksége lesz.
 * Adjon hozzá engedélyeket a **Közzétett hatókörök** menüből.
 
   [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
@@ -83,6 +82,7 @@ A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és üg
     * Az `ida:SignUpSignInPolicyId` helyett szerepeljen a „regisztrálási vagy bejelentkezési” házirend neve
     * Az `ida:EditProfilePolicyId` helyett szerepeljen a „profil szerkesztése” házirend neve
     * Az `ida:ResetPasswordPolicyId` helyett szerepeljen a „Jelszó alaphelyzetbe állítása” házirend neve
+    * Az `api:ApiIdentifier` helyett szerepeljen az „Alkalmazásazonosító URI”
 
 
 ## <a name="secure-the-api"></a>Az API védelme
@@ -212,4 +212,3 @@ Végezetül készítse el és futtassa a következőket: `TaskWebApp` és `TaskS
 ## <a name="edit-your-policies"></a>Házirendek szerkesztése
 
 Miután az Azure AD B2C használatával biztonságossá tett egy API-t, kísérletezhet a bejelentkezési/regisztrálási szabályzattal, és megtekintheti ennek az API-ra gyakorolt hatásait (vagy a hatás hiányát). Módosíthatja a házirendekben az alkalmazás jogcímét és a webes API-n hozzáférhető felhasználói adatokat. Minden hozzáadott jogcím elérhető lesz a .NET MVC webes API számára a(z) `ClaimsPrincipal` objektumban az ebben a cikkben leírtak szerint.
-
