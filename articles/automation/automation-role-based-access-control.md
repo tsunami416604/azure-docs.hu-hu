@@ -3,7 +3,7 @@ title: "Szerepköralapú hozzáférés-vezérlés az Azure Automationben | Micro
 description: "A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Ez a cikk ismerteti az RBAC beállítását az Azure Automationben."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: "automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac"
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 09/30/2016
 ms.author: magoedte;sngun
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
-
-
+ms.openlocfilehash: 946d80d40ac0566db72c787f260f2d4faff01e6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
-A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az [RBAC](../active-directory/role-based-access-control-configure.md) használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amely a felhasználóknak a feladataik elvégzéséhez szükséges. A szerepköralapú hozzáférés az Azure portál, az Azure parancssori segédeszközök vagy az Azure felügyeleti API-k segítségével adható a felhasználóknak.
+A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az [RBAC](../active-directory/role-based-access-control-configure.md) használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amely a felhasználóknak a feladataik elvégzéséhez szükséges. A szerepköralapú hozzáférés az Azure Portal, az Azure parancssori segédeszközök vagy az Azure felügyeleti API-k segítségével adható a felhasználóknak.
 
 ## <a name="rbac-in-automation-accounts"></a>RBAC Automation-fiókokban
 Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szerepkörök rendelhetők az Automation-fiók tartományában lévő felhasználókhoz, csoportokhoz és alkalmazásokhoz. Alább láthatók az Automation-fiók által támogatott beépített szerepkörök:  
@@ -126,9 +126,9 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket a Felhaszn�
 | Automation-runbookvázlat tesztfeladat |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) | | | |
 | Automation-webhook |![Zöld állapot](media/automation-role-based-access-control/green-checkmark.png) | | | |
 
-## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Az Automation-fiókhoz tartozó RBAC konfigurálása az Azure portál segítségével
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/), és nyissa meg az Automation-fiókját az Automation-fiókok panelről.  
-2. Kattintson a jobb felső sarokban található **Hozzáférés** vezérlőre. Ezzel megnyitja a **Felhasználók** panelt, ahol hozzáadhat új felhasználókat, csoportokat vagy alkalmazásokat az Automation-fiók kezeléséhez, és megtekintheti a meglévő szerepköröket, amelyek konfigurálhatók az Automation-fiókhoz.  
+## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Az Automation-fiókhoz tartozó RBAC konfigurálása az Azure Portal segítségével
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Automation-fiókját az Automation-fiókok lapról.  
+2. Kattintson a jobb felső sarokban található **Hozzáférés** vezérlőre. Ezzel megnyitja a **Felhasználók** lapot, ahol hozzáadhat új felhasználókat, csoportokat vagy alkalmazásokat az Automation-fiók kezeléséhez, és megtekintheti a meglévő szerepköröket, amelyek konfigurálhatók az Automation-fiókhoz.  
    
    ![Hozzáférés gomb](media/automation-role-based-access-control/automation-01-access-button.png)  
 
@@ -138,24 +138,24 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket a Felhaszn�
 > 
 
 ### <a name="add-a-new-user-and-assign-a-role"></a>Új felhasználó hozzáadása és szerepkör hozzárendelése
-1. A Felhasználók panelen a **Hozzáadás** gombra kattintva nyissa meg a **Hozzáférés felvétele panelt**, ahol hozzáadhat egy felhasználót, csoportot vagy alkalmazást, majd hozzájuk rendelhet egy szerepkört.  
+1. A Felhasználók lapon a **Hozzáadás** gombra kattintva nyissa meg a **Hozzáférés felvétele** lapot, ahol hozzáadhat egy felhasználót, csoportot vagy alkalmazást, majd hozzájuk rendelhet egy szerepkört.  
    
    ![Felhasználó hozzáadása](media/automation-role-based-access-control/automation-02-add-user.png)  
 2. Válasszon egy szerepkört az elérhető szerepkörök listájáról. Az **Olvasó** szerepkört választjuk ki, de választhatja az Automation-fiók által támogatott bármelyik elérhető szerepkört, illetve bármely egyéni szerepkört, amelyet korábban definiált.  
    
    ![Szerepkör kiválasztása](media/automation-role-based-access-control/automation-03-select-role.png)  
-3. Kattintson a **Felhasználók hozzáadása** lehetőségre a **Felhasználók hozzáadása** panel megnyitásához. Ha hozzáadott felhasználókat, csoportokat vagy alkalmazásokat az előfizetés kezeléséhez, akkor azok a felhasználók megjelennek a listában, és kiválaszthatja őket hozzáférés hozzáadására. Ha nincs felhasználó a listán, vagy ha a hozzáadni kívánt felhasználó nem szerepel a listán, kattintson a **meghívás** lehetőségre a **Vendég meghívása** panel megnyitásához, ahol meghívhat egy érvényes Microsoft-fiókhoz tartozó e-mail-címmel (Outlook.com, OneDrive vagy Xbox Live Id) rendelkező felhasználót Ha beírta a felhasználó e-mail-címét, kattintson a **Kiválasztás** gombra a felhasználó hozzáadásához, majd kattintson az **OK** gombra. 
+3. Kattintson a **Felhasználók hozzáadása** lehetőségre a **Felhasználók hozzáadása** lap megnyitásához. Ha hozzáadott felhasználókat, csoportokat vagy alkalmazásokat az előfizetés kezeléséhez, akkor azok a felhasználók megjelennek a listában, és kiválaszthatja őket hozzáférés hozzáadására. Ha nincs felhasználó a listán, vagy ha a hozzáadni kívánt felhasználó nem szerepel a listán, kattintson a **meghívás** lehetőségre a **Vendég meghívása** lap megnyitásához, ahol meghívhat egy érvényes Microsoft-fiókhoz tartozó e-mail-címmel (Outlook.com, OneDrive vagy Xbox Live Id) rendelkező felhasználót. Ha beírta a felhasználó e-mail-címét, kattintson a **Kiválasztás** gombra a felhasználó hozzáadásához, majd kattintson az **OK** gombra. 
    
    ![Felhasználók hozzáadása](media/automation-role-based-access-control/automation-04-add-users.png)  
    
-   Most meg kell jelennie a **Felhasználók** panelhez hozzáadott felhasználónak, mégpedig a hozzá rendelt **Olvasó** szerepkörrel.  
+   Most meg kell jelennie a **Felhasználók** laphoz hozzáadott felhasználónak, mégpedig a hozzá rendelt **Olvasó** szerepkörrel.  
    
    ![Felhasználók listázása](media/automation-role-based-access-control/automation-05-list-users.png)  
    
-   A felhasználóhoz a **Szerepkörök** panelről is hozzárendelhet szerepkört. 
-4. A **Szerepkörök panel** megnyitásához kattintson a Felhasználók panelről a **Szerepkörök** elemre. Erről a panelről megtekintheti a szerepkör nevét, és az adott szerepkörhöz rendelt felhasználók és csoportok számát.
+   A felhasználóhoz a **Szerepkörök** lapról is hozzárendelhet szerepkört. 
+4. A **Szerepkörök** lap megnyitásához kattintson a Felhasználók lapon a **Szerepkörök** elemre. Itt megtekintheti a szerepkör nevét, és az adott szerepkörhöz rendelt felhasználók és csoportok számát.
    
-    ![Szerepkör hozzárendelése a Felhasználók panelről](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
+    ![Szerepkör hozzárendelése a Felhasználók lapról](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
    
    > [!NOTE]
    > A szerepköralapú vezérlés csak az Automation-fiók szintjén állítható be, az Automation-fiók alatti erőforrásoknál nem.
@@ -169,8 +169,8 @@ A következő táblázat azokat a műveleteket mutatja be, amelyeket a Felhaszn�
 ### <a name="remove-a-user"></a>Felhasználó eltávolítása
 Eltávolíthatja az Automation-fiókot nem kezelő, illetve már nem a szervezetnek dolgozó felhasználó engedélyeit. Alább láthatók egy felhasználó eltávolításának lépései: 
 
-1. A **Felhasználók** panelen válassza ki az eltávolítani kívánt szerepkört.
-2. A hozzárendelés részleteit megjelenítő panelen kattintson az **Eltávolítás** gombra.
+1. A **Felhasználók** lapon válassza ki az eltávolítani kívánt szerepkört.
+2. A hozzárendelés részleteit megjelenítő lapon kattintson az **Eltávolítás** gombra.
 3. Az **Igen** gombra kattintva erősítse meg az eltávolítást. 
    
    ![Felhasználók eltávolítása](media/automation-role-based-access-control/automation-08-remove-users.png)  
@@ -181,7 +181,7 @@ Ha egy szerepkörhöz rendelt felhasználó bejelentkezik az Automation-fiókjá
 ![Alapértelmezett könyvtár](media/automation-role-based-access-control/automation-09-default-directory-in-role-assigned-user.png)  
 
 ### <a name="user-experience-for-automation-operator-role"></a>Automation-operátori szerepkör felhasználói élménye
-Ha egy Automation-operátori szerepkörrel felruházott felhasználó megtekinti a számára kijelölt Automation-fiókot, csak az Automation-fiókban létrehozott forgatókönyvek, forgatókönyv-feladatok és -ütemezések listáját látja, de a definíciójukat nem. Elindíthatják, leállíthatják, felfüggeszthetik, folytathatják és ütemezhetik a forgatókönyv-feladatokat. A felhasználó nem fog hozzáférni az Automation-erőforrásokhoz, például konfigurációkhoz, hibrid munkacsoportokhoz vagy DSC-csomópontokhoz.  
+Ha egy Automation-operátori szerepkörrel felruházott felhasználó megtekinti a számára kijelölt Automation-fiókot, csak az Automation-fiókban létrehozott forgatókönyvek, forgatókönyv-feladatok és -ütemezések listáját látja, de a definíciójukat nem. Elindíthatják, leállíthatják, felfüggeszthetik, folytathatják és ütemezhetik a runbook-feladatokat. A felhasználó nem fér hozzá az Automation-erőforrásokhoz, például konfigurációkhoz, hibrid munkacsoportokhoz vagy DSC-csomópontokhoz.  
 
 ![Nincs hozzáférése az erőforrásokhoz](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)  
 
@@ -189,7 +189,7 @@ Ha a felhasználó rákattint a forgatókönyvre, a forrás megtekintésére vag
 
 ![Nincs engedélye a forgatókönyv szerkesztésére](media/automation-role-based-access-control/automation-11-no-access-to-edit-runbook.png)  
 
-A felhasználó jogosult lesz ütemezések megtekintésére és létrehozására, de nem kap jogosultságot más adategységtípusokhoz.  
+A felhasználó jogosult az ütemezések megtekintésére és létrehozására, de nem kap jogosultságot más adategységtípusokhoz.  
 
 ![Nincs hozzáférése az adategységekhez](media/automation-role-based-access-control/automation-12-no-access-to-assets.png)  
 
@@ -229,10 +229,4 @@ A fenti példákban cserélje ki a **bejelentkezési azonosítót**, az **előfi
 * Az RBAC for Azure Automation konfigurálásának különböző módjaira vonatkozó további információért lásd [az RBAC Azure PowerShellel folytatott kezelésével](../active-directory/role-based-access-control-manage-access-powershell.md) foglalkozó témakört.
 * További információk a forgatókönyvek elindításának különböző módjairól: [Forgatókönyv elindítása](automation-starting-a-runbook.md).
 * További információk a különböző forgatókönyv-típusokról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 6376faa50613288a797e2c0683a0890fa21879e1
-
-
+ms.openlocfilehash: 6e76d1ee08f804637999ef2ebf5d25becf6a0408
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-first-api-in-azure-api-management"></a>Az első API kezelése az Azure API Management szolgáltatásban
-## <a name="overview"> </a>Áttekintés
+## <a name="overview"></a>Áttekintés
 Ez az útmutató ismerteti, hogyan teheti meg gyorsan az első lépéseket az Azure API Management szolgáltatással, és hogyan indíthatja az első API-hívását.
 
-## <a name="concepts"> </a>Mi az Azure API Management?
+## <a name="concepts"></a>Mi az Azure API Management?
 Az Azure API Management szolgáltatással bármely háttérrendszer alapján elindíthat egy teljes értékű API-programot.
 
 A gyakori forgatókönyvek a következők:
@@ -57,7 +57,7 @@ A rendszer az alábbi összetevőkből áll:
   * Létrehozhatnak egy fiókot és előfizethetnek, hogy API-kulcsokat szerezzenek.
   * Hozzáférhetnek a használat adataikról készült elemzésekhez.
 
-## <a name="create-service-instance"> </a>API Management-példány létrehozása
+## <a name="create-service-instance"></a>API Management-példány létrehozása
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információ: [Ingyenes Azure-fiók létrehozása][Azure Free Trial].
 > 
@@ -71,7 +71,7 @@ A **Név** mezőben adjon meg egy egyedi altartománynevet, amely a szolgáltat�
 
 Válassza ki a kívánt **Előfizetést**, **Erőforráscsoportot** és **Helyet** a szolgáltatáspéldányához.
 
-Adja meg a **Contoso Ltd.** nevet a **Szervezet neve** mezőben, majd írja be az e-mail-címét a **Rendszergazda e-mail címe** mezőbe.
+Adja meg a **Contoso Ltd.** nevet a **Szervezet neve** mezőben, majd írja be az e-mail-címét a **Rendszergazda e-mail-címe** mezőbe.
 
 > [!NOTE]
 > Erre az e-mail-címre fognak érkezni az API Management rendszer értesítései. További információkat a [How to configure notifications and email templates in Azure API Management][How to configure notifications and email templates in Azure API Management] (Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban) című témakörben talál.
@@ -93,7 +93,7 @@ Kattintson a **Létrehozás** elemre a szolgáltatáspéldány kiépítésének 
 
 A szolgáltatáspéldány létrehozása után a következő lépés egy API létrehozása vagy importálása.
 
-## <a name="create-api"> </a>API importálása
+## <a name="create-api"></a>API importálása
 Az API egy ügyfélalkalmazásokból meghívható műveletkészletből áll. Az API-műveleteket létező webszolgáltatásokhoz használják proxyként.
 
 Az API-kat létre lehet hozni (és a műveleteket hozzá lehet adni) manuálisan, vagy importálni is lehet. Ebben az oktatóanyagban importálni fogjuk egy Microsoft által biztosított, Azure-ban üzemeltetett minta számológép webszolgáltatás API-ját.
@@ -140,7 +140,7 @@ Ebben az oktatóanyagban az API importálásakor a Kezdő termékhez adta hozzá
 
 Egy API meghívásához a fejlesztőknek először elő kell fizetniük egy termékre, amely hozzáférést biztosít az API-hoz. A fejlesztők előfizethetnek a termékekre a fejlesztői portálon, vagy a rendszergazdák előfizethetnek a termékekre a fejlesztők nevében a közzétevő portálon. Mivel az oktatóanyag korábbi lépéseiben már létrehozott egy API Management-példányt, rendszergazdának számít, és alapértelmezés szerint minden termékre elő van fizetve.
 
-## <a name="call-operation"> </a>Művelet meghívása a fejlesztői portálról
+## <a name="call-operation"></a>Művelet meghívása a fejlesztői portálról
 A műveleteket meg lehet hívni közvetlenül a fejlesztői portálról, ami egy kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére. Az oktatóanyag jelen lépésében az Egyszerű számológép API **Két egész szám összeadása** műveletét fogja meghívni. Kattintson a **Fejlesztői portál** lehetőségre a közzétevő portál jobb felső részén látható menüben.
 
 ![Fejlesztői portál][api-management-developer-portal-menu]
@@ -163,7 +163,7 @@ A művelet meghívása után a fejlesztői portál megjeleníti a **Válasz áll
 
 ![Válasz][api-management-invoke-get-response]
 
-## <a name="view-analytics"> </a>Elemzés megtekintése
+## <a name="view-analytics"></a>Elemzés megtekintése
 Az Egyszerű számológép elemzésének megtekintéséhez váltson vissza a közzétevő portálra a fejlesztői portál jobb felső részén látható menü **Kezelés** lehetőségének kiválasztásával.
 
 ![Kezelés][api-management-manage-menu]
@@ -196,7 +196,7 @@ Az **Elemzés** szakasz az alábbi négy lapból áll:
 * Az **Állapot** az állapotkódokkal, a gyorsítótárazás sikerességének mértékével, a válaszidőkkel, illetve az API-k és szolgáltatások válaszidejével foglalkozik.
 * A **Tevékenység** jelentéseket biztosít, amelyek egy adott tevékenységet részleteznek fejlesztő, termék, API és művelet szerint.
 
-## <a name="next-steps"> </a>Következő lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [védheti meg az API-kat sebességkorlátozással](api-management-howto-product-with-rules.md).
 
 [Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
@@ -254,9 +254,3 @@ Az **Elemzés** szakasz az alábbi négy lapból áll:
 [api-management-analytics-usage]: ./media/api-management-get-started/api-management-analytics-usage.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-

@@ -1,6 +1,6 @@
 ---
-title: "A Java SDK használata Azure Data Lake Store-alkalmazások fejlesztéséhez | Microsoft Docs"
-description: "Data Lake Store-fiók létrehozása és alapszintű műveletek végrehajtása a Data Lake Store-ban az Azure Data Lake Store Java SDK használatával"
+title: "Java SDK: Fájlrendszerműveletek az Azure Data Lake Store-ban | Microsoft Docs"
+description: "Az Azure Data Lake Store Java SDK használata fájlrendszerműveletek (például mappák létrehozása) végrehajtására a Data Lake Store-ban"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 09/29/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 91128b53a2f1cd3ddcbee5b07da0d67668944fb4
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/07/2017
-
+ms.openlocfilehash: e8c7b788061b3eb18b3e6c282339a03d93ab8b1c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-azure-data-lake-store-using-java"></a>Az Azure Data Lake Store használatának első lépései a Java használatával
+# <a name="filesystem-operations-on-data-lake-store-using-java-sdk"></a>Fájlrendszerműveletek a Data Lake Store-on a Java SDK használatával
 > [!div class="op_single_selector"]
-> * [Portál](data-lake-store-get-started-portal.md)
-> * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
+> * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
-> * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
-> * [Node.js](data-lake-store-manage-use-nodejs.md)
-> * [Python](data-lake-store-get-started-python.md)
+> * [REST API](data-lake-store-data-operations-rest-api.md)
+> * [Python](data-lake-store-data-operations-python.md)
 >
 > 
 
@@ -44,22 +39,12 @@ Az Azure Data Lake Store Java SDK API-dokumentációja [Az Azure Data Lake Store
 * [Maven](https://maven.apache.org/install.html). Ez az oktatóanyag a Mavent használja a build- és projektfüggőségek kezeléséhez. Bár lehetséges olyan rendszerek nélkül fejleszteni, mint például a Maven vagy a Gradle, ezekkel a fejlesztőrendszerekkel sokkal egyszerűbb a függőségek kezelése.
 * (Nem kötelező) [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), [Eclipse](https://www.eclipse.org/downloads/) vagy hasonló integrált fejlesztőkörnyezet.
 
-## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Hogyan végezhető el a hitelesítés az Azure Active Directory használatával?
-Ebben az oktatóanyagban az Azure AD-alkalmazás titkos ügyfélkulcsát használjuk az Azure Active Directory-jogkivonat beolvasásához (szolgáltatások közötti hitelesítés). A jogkivonat használatával hozzuk létre a fájl- és könyvtárműveletek végrehajtására szolgáló Data Lake Store-ügyfélobjektumot. Az Azure Data Lake Store-hitelesítés titkos ügyfélkulccsal való elvégzésének információiért az alábbi magas szintű lépéseket hajtjuk végre:
-
-1. Azure AD-webalkalmazás létrehozása
-2. Szerezze be az Azure AD-webalkalmazáshoz tartozó ügyfélazonosítót, a titkos ügyfélkulcsot és a jogkivonat végpontját.
-3. Végezze el az Azure AD-webalkalmazás hozzáférésének konfigurálását abban a Data Lake Store-fájlban vagy mappában, amelyet a létrehozandó Java-alkalmazásból szeretne elérni.
-
-A lépések végrehajtásával kapcsolatos útmutatóért tekintse meg az [Active Directory-alkalmazás létrehozása](data-lake-store-authenticate-using-active-directory.md) című témakört.
-
-Az Azure Active Directory egyéb lehetőségeket is kínál a jogkivonat beszerzésére. Számos különböző hitelesítési mechanizmus közül választhat az adott forgatókönyvnek megfelelően, például böngészőben futó alkalmazás, asztali alkalmazásként terjesztett alkalmazás, illetve helyszínen vagy Azure-beli virtuális gépen futó kiszolgálói alkalmazás. Továbbá különböző típusú hitelesítő adatok közül választhat, például jelszavak, tanúsítványok, kétfaktoros hitelesítés, stb. Ezen túlmenően az Azure Active Directory lehetővé teszi a helyszíni Active Directory-felhasználók felhővel való szinkronizálását is. További információt a [Hitelesítési eljárások az Azure Active Directoryhoz](../active-directory/active-directory-authentication-scenarios.md) című témakörben talál. 
-
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
 A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) elérhető kódminta végigvezeti a fájlok tárolóban való létrehozásának, a fájlok összetűzésének, a fájlok letöltésének és az egyes fájlok tárolóból való törlésének folyamatán. A cikk ezen szakasza a kód fő részeit mutatja be.
 
-1. Hozzon létre egy Maven-projektet az [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) használatával parancssorból vagy az integrált fejlesztőkörnyezetből. A Java-projektek IntelliJ használatával való létrehozási útmutatójáért [kattintson ide](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). A projektek Eclipse használatával való létrehozási útmutatójáért [kattintson ide](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
-2. Illessze be a következő függőségeket a Maven **pom.xml** nevű fájljába. Illessze be a következő szövegrészletet a **\</version>** és a **\</project>** címkék közé:
+1. Hozzon létre egy Maven-projektet az [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) használatával parancssorból vagy egy IDE használatával. A Java-projektek IntelliJ használatával való létrehozási útmutatójáért [kattintson ide](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). A projektek Eclipse használatával való létrehozási útmutatójáért [kattintson ide](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
+
+2. Illessze be a következő függőségeket a Maven **pom.xml** nevű fájljába. Illessze be a következő szövegrészletet a **\</project>** címke elé:
    
         <dependencies>
           <dependency>
@@ -74,71 +59,132 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
           </dependency>
         </dependencies>
    
-    Az első függőség a Data Lake Store SDK (`azure-data-lake-store-sdk`) használata a Maven tárházból. A második függőség (`slf4j-nop`) az alkalmazással használandó naplózási keretrendszer meghatározása. A Data Lake Store SDK az [slf4j](http://www.slf4j.org/) naplózási megoldást használja, amellyel számos elterjedt naplózási keretrendszer közül választhat (például log4j, Java-naplózás, Logback vagy nincs naplózás). Ebben a példában kikapcsoljuk a naplózást, mivel az **Slf4j Nop Binding** nevű eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
+    Az első függőség a Data Lake Store SDK (`azure-data-lake-store-sdk`) használata a Maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. A Data Lake Store SDK az [slf4j](http://www.slf4j.org/) naplózási megoldást használja, amellyel számos elterjedt naplózási keretrendszer közül választhat (például log4j, Java-naplózás, Logback vagy nincs naplózás). Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
 
-### <a name="add-the-application-code"></a>Az alkalmazáskód hozzáadása
-A kód három fő részből áll.
+3. Adja hozzá az alábbi importálási utasításokat az alkalmazáshoz.
 
-1. Az Azure Active Directory-jogkivonat beszerzése
-2. A jogkivonat használatával hozhat létre egy Data Lake Store-ügyfelet.
-3. Használja a Data Lake Store-ügyfelet a műveletek végrehajtásához.
+        import com.microsoft.azure.datalake.store.ADLException;
+        import com.microsoft.azure.datalake.store.ADLStoreClient;
+        import com.microsoft.azure.datalake.store.DirectoryEntry;
+        import com.microsoft.azure.datalake.store.IfExists;
+        import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
+        import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
 
-#### <a name="step-1-obtain-an-azure-active-directory-token"></a>1. lépés: Az Azure Active Directory-jogkivonat beszerzése.
-A Data Lake Store SDK kényelmes megoldásaival kezelheti a Data Lake Store-fiókkal való kommunikációhoz szükséges biztonsági jogkivonatokat. Azonban az SDK nem írja elő, hogy kizárólag ezek a módszerek használhatók. A jogkivonat beszerzésére más eszközöket is használhat, például az [Active Directory SDK-t](https://github.com/AzureAD/azure-activedirectory-library-for-java) , vagy saját egyéni kódot.
+        import java.io.*;
+        import java.util.Arrays;
+        import java.util.List;
 
-A Data Lake Store SDK és az `ClientCredsTokenProvider` egyik alosztályának (az alábbi példa a `AccessTokenProvider` osztályt használja) statikus metódusainak használatával szerezheti be a korábban létrehozott Active Directory-webalkalmazás jogkivonatát. A jogkivonat-szolgáltató a memóriában gyorsítótárazza a jogkivonat beszerzéséhez használt hitelesítő adatokat, és automatikusan megújítja azt, ha közeleg a lejárati ideje. Létrehozhatja az `AccessTokenProvider` saját alosztályait is, így a jogkivonatokat beszerezheti az ügyfélkódja segítségével, de egyelőre az SDK-ban biztosított alosztályt használjuk.
+## <a name="authentication"></a>Authentication
 
-Cserélje ki a **FILL-IN-HERE** értéket az Azure Active Directory-webalkalmazáshoz tartozó tényleges értékkel.
+* Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [Végfelhasználói hitelesítés a Data Lake Store-ban a Java használatával](data-lake-store-end-user-authenticate-java-sdk.md).
+* Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [Szolgáltatások közötti hitelesítés a Data Lake Store-ban a Java használatával](data-lake-store-service-to-service-authenticate-java.md).
 
-    private static String clientId = "FILL-IN-HERE";
-    private static String authTokenEndpoint = "FILL-IN-HERE";
-    private static String clientKey = "FILL-IN-HERE";
-
-    AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);
-
-#### <a name="step-2-create-an-azure-data-lake-store-client-adlstoreclient-object"></a>2. lépés: Az Azure Data Lake Store-ügyfél (ADLStoreClient) objektumának létrehozása
-Az [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum létrehozásakor meg kell adnia a Data Lake Store-fiók nevét és az előző lépésben létrehozott jogkivonat-szolgáltatót. Vegye figyelembe, hogy a Data Lake Store-fióknév csak teljes tartománynév lehet. A **FILL-IN-HERE** értéket például a következő tartománynévre cserélheti ki: **mydatalakestore.azuredatalakestore.net**.
+## <a name="create-an-azure-data-lake-store-client"></a>Azure Data Lake Store-ügyfél létrehozása
+Az [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum létrehozásakor meg kell adnia a Data Lake Store-fiók nevét és az előző lépésben létrehozott jogkivonat-szolgáltatót, ha megtörtént a Data Lake Store-hitelesítés (lásd a [Hitelesítés](#authentication) szakaszt). A Data Lake Store-fióknév csak teljes tartománynév lehet. A **FILL-IN-HERE** értéket például a következő tartománynévre cserélheti ki: **mydatalakestore.azuredatalakestore.net**.
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-### <a name="step-3-use-the-adlstoreclient-to-perform-file-and-directory-operations"></a>3. lépés: Az ADLStoreClient használata fájl- és könyvtárműveletek végrehajtására
-Az alábbi példakód néhány gyakori művelet kódrészletét tartalmazza. Az egyéb műveleteket az **ADLStoreClient** objektumhoz tartozó [Data Lake Store Java SDK teljes API-dokumentációjában](https://azure.github.io/azure-data-lake-store-java/javadoc/) tekintheti meg.
+Az alábbi szakaszokban szereplő kódrészletek néhány gyakori fájlrendszerműveletre mutatnak példát. Az egyéb műveleteket az **ADLStoreClient** objektumhoz tartozó [Data Lake Store Java SDK teljes API-dokumentációjában](https://azure.github.io/azure-data-lake-store-java/javadoc/) tekintheti meg.
 
-Vegye figyelmembe, hogy a fájlok olvasása és írása szabványos Java-adatfolyamok használatával történik. Ez azt jelenti, hogy bármilyen Java-adatfolyamot rétegként helyezhet el az Data Lake Store-adatfolyam felett, így kihasználhatja a szabványos Java-funkciókat (például adatfolyamok megjelenítése formázott kimenő adatként, valamint a további funkcionalitás érdekében tömörítési vagy titkosítási adatfolyamok, stb.).
+## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-     // create file and write some content
-     String filename = "/a/b/c.txt";
-     OutputStream stream = client.createFile(filename, IfExists.OVERWRITE  );
-     PrintStream out = new PrintStream(stream);
-     for (int i = 1; i <= 10; i++) {
-         out.println("This is line #" + i);
-         out.format("This is the same line (%d), but using formatted output. %n", i);
-     }
-     out.close();
-    
-    // set file permission
-    client.setPermission(filename, "744");
+Az alábbi kódrészlet könyvtárstruktúrát hoz létre a megadott Data Lake Store-fiók gyökérmappájában.
+
+    // create directory
+    client.createDirectory("/a/b/w");
+    System.out.println("Directory created.");
+
+## <a name="create-a-file"></a>Fájl létrehozása
+
+Az alábbi kódrészlet egy fájlt (c.txt) hoz létre a könyvtárstruktúrában, és adatokat ír ebbe a fájlba.
+
+    // create file and write some content
+    String filename = "/a/b/c.txt";
+    OutputStream stream = client.createFile(filename, IfExists.OVERWRITE  );
+    PrintStream out = new PrintStream(stream);
+    for (int i = 1; i <= 10; i++) {
+        out.println("This is line #" + i);
+        out.format("This is the same line (%d), but using formatted output. %n", i);
+    }
+    out.close();
+    System.out.println("File created.");
+
+Fájl (d.txt) létrehozásához bájttömbök is használhatók.
+
+    // create file using byte arrays
+    stream = client.createFile("/a/b/d.txt", IfExists.OVERWRITE);
+    byte[] buf = getSampleContent();
+    stream.write(buf);
+    stream.close();
+    System.out.println("File created using byte array.");
+
+Az előző kódrészletben használt `getSampleContent` függvény meghatározása a [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) található minta részeként érhető el. 
+
+## <a name="append-to-a-file"></a>Hozzáfűzés fájlhoz
+
+Az alábbi kódrészlet egy meglévő fájlhoz fűzi hozzá a tartalmakat.
 
     // append to file
     stream = client.getAppendStream(filename);
     stream.write(getSampleContent());
     stream.close();
+    System.out.println("File appended.");
+
+Az előző kódrészletben használt `getSampleContent` függvény meghatározása a [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) található minta részeként érhető el.
+
+## <a name="read-a-file"></a>Fájl beolvasása
+
+Az alábbi kódrészlet adatokat olvas be egy Data Lake Store-fiókban lévő fájlból.
 
     // Read File
     InputStream in = client.getReadStream(filename);
-    byte[] b = new byte[64000];
-    while (in.read(b) != -1) {
-        System.out.write(b);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+    String line;
+    while ( (line = reader.readLine()) != null) {
+        System.out.println(line);
     }
-    in.close();
+    reader.close();
+    System.out.println();
+    System.out.println("File contents read.");
+
+## <a name="concatenate-files"></a>Fájlok összefűzése
+
+Az alábbi kódrészlet két fájlt fűz össze a Data Lake Store-fiókban. Ha a művelet sikeres, a rendszer az összefűzött fájllal cseréli le a két meglévő fájlt.
 
     // concatenate the two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
     client.concatenateFiles("/a/b/f.txt", fileList);
+    System.out.println("Two files concatenated into a new file.");
+
+## <a name="rename-a-file"></a>Fájl átnevezése
+
+Az alábbi kódrészlet egy fájlt nevez át a Data Lake Store-fiókban.
 
     //rename the file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
+    System.out.println("New file renamed.");
+
+## <a name="get-metadata-for-a-file"></a>Fájl metaadatainak lekérése
+
+Az alábbi kódrészlet egy Data Lake Store-fiókban tárolt fájlt metaadatait kérdezi le.
+
+    // get file metadata
+    DirectoryEntry ent = client.getDirectoryEntry(filename);
+    printDirectoryInfo(ent);
+    System.out.println("File metadata retrieved.");
+
+## <a name="set-permissions-on-a-file"></a>Fájlengedélyek beállítása
+
+Az alábbi kódrészlet az előző szakaszban létrehozott fájlon állít be engedélyeket.
+
+    // set file permission
+    client.setPermission(filename, "744");
+    System.out.println("File permission set.");
+
+## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
+
+Az alábbi kódrészlet egy könyvtár tartalmát listázza ki rekurzív módon.
 
     // list directory contents
     List<DirectoryEntry> list = client.enumerateDirectory("/a/b", 2000);
@@ -146,18 +192,25 @@ Vegye figyelmembe, hogy a fájlok olvasása és írása szabványos Java-adatfol
     for (DirectoryEntry entry : list) {
         printDirectoryInfo(entry);
     }
+    System.out.println("Directory contents listed.");
+
+Az előző kódrészletben használt `printDirectoryInfo` függvény meghatározása a [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) található minta részeként érhető el.
+
+## <a name="delete-files-and-folders"></a>Fájlok és mappák törlése
+
+Az alábbi kódrészlet rekurzív módon törli a megadott fájlokat és mappákat egy Data Lake Store-fiókból.
 
     // delete directory along with all the subdirectories and files in it
     client.deleteRecursive("/a");
+    System.out.println("All files and folders deleted recursively");
+    promptEnterKey();
 
-#### <a name="step-4-build-and-run-the-application"></a>4. lépés: Az alkalmazás fordítása és futtatása
+## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 1. Az integrált fejlesztőkörnyezetben történő futtatáshoz keresse meg a **Futtatás** gombot, és kattintson rá. A Mavenben történő futtatáshoz használja az [exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) beépülő modult.
 2. Parancssorból futtatható, különálló jar-fájlt az összes függőség és a [Maven Assembly Plugin](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html) használatával hozhat létre. A [GitHubon található mintaforráskód](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) pom.xml fájlja egy példát tartalmaz a fenti műveletre.
 
 ## <a name="next-steps"></a>Következő lépések
 * [A Java SDK JavaDoc-dokumentációjának áttekintése](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
-* [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Az Azure HDInsight használata a Data Lake Store-ral](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 

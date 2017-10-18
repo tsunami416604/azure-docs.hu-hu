@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2017
+ms.date: 10/02/2017
 ms.author: billmath
+ms.openlocfilehash: a4b3c7543efc33d07dbd4f6c01b6e1bc354d1ed2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: a3a4a90221821de690f72260b2adca07680d30a9
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](active-directory-aadconnect-get-started-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -71,7 +70,7 @@ A globális rendszergazdai fiókon engedélyezve lehet a [Privileged Identity Ma
 
 Ha hibaüzenetet kap, és problémák adódnak a kapcsolódással, tekintse meg a [Troubleshoot connectivity problems](active-directory-aadconnect-troubleshoot-connectivity.md) (Kapcsolati problémák elhárítása) szakaszt.
 
-## <a name="pages-under-the-section-sync"></a>Oldalak a Sync (Szinkronizálás) szakaszban
+## <a name="pages-under-the-sync-section"></a>Oldalak a Sync (Szinkronizálás) szakaszban
 
 ### <a name="connect-your-directories"></a>Csatlakoztassa a címtárakat
 Az Active Directory tartományi szolgáltatások csatlakoztatásához az Azure AD Connectnek szüksége van az erdő nevére és egy megfelelő engedélyekkel rendelkező fiók hitelesítő adataira.
@@ -232,9 +231,12 @@ Egy számítógépen, amelyen telepítve vannak a csoportházirend-kezelési esz
 ## <a name="configuring-federation-with-ad-fs"></a>AD FS-összevonás konfigurálása
 Az AD FS konfigurálása az Azure AD Connecttel egyszerű feladat, amely mindössze néhány kattintást igényel. A konfigurálás előtt a következőkre van szükség.
 
-* Egy Windows Server 2012 R2 kiszolgálóra az összevonási kiszolgálóhoz, amelyen a távoli felügyelet engedélyezve van
-* Egy Windows Server 2012 R2 kiszolgálóra a webalkalmazás-proxyhoz, amelyen a távoli felügyelet engedélyezve van
+* Egy Windows Server 2012 R2 vagy újabb verziójú kiszolgálóra az összevonási kiszolgálóhoz, amelyen a távoli felügyelet engedélyezve van
+* Egy Windows Server 2012 R2 vagy újabb verziójú kiszolgálóra a webalkalmazás-proxyhoz, amelyen a távoli felügyelet engedélyezve van
 * Egy SSL-tanúsítványra az összevonási szolgáltatás használni kívánt nevéhez (például sts.contoso.com)
+
+>[!NOTE]
+>Az AD FS-farm SSL-tanúsítványát akkor is frissítheti az Azure AD Connect használatával, ha nem azzal kezeli az összevonási megbízhatósági kapcsolatot.
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>Az AD FS konfigurálásának előfeltételei
 Az AD FS farm konfigurálásához az Azure AD Connect használatával ellenőrizze, hogy a WinRM engedélyezve van-e a távoli kiszolgálókon. Emellett tekintse át a [3. táblázat – Azure AD Connect and Federation Servers/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) (Azure AD Connect és az összevonási kiszolgálók/WAP) listában szereplő portkövetelményeket.
@@ -245,6 +247,9 @@ Használhat egy meglévő AD FS farmot, vagy dönthet úgy, hogy létrehoz egy �
 ![AD FS farm](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
 Ha úgy döntött, hogy egy meglévő farmot használ, a következő lépés az AD FS és az Azure AD közti bizalmi viszony konfigurálása a megfelelő képernyőn.
+
+>[!NOTE]
+>Az Azure AD Connect segítségével csak egy AD FS-farm kezelhető. Ha rendelkezik meglévő összevonási megbízhatósági kapcsolattal, és a kiválasztott AD FS-farmon konfigurálva van az Azure AD, az Azure AD Connect akkor is teljesen újraépíti majd a megbízhatósági kapcsolatot.
 
 ### <a name="specify-the-ad-fs-servers"></a>Az AD FS kiszolgálók megadása
 Határozza meg a kiszolgálókat, amelyekre az AD FS szolgáltatást telepíteni kívánja. Egy vagy több kiszolgálót is hozzáadhat kapacitástervezési igényeitől függően. Csatlakoztassa az összes kiszolgálót az Active Directory szolgáltatáshoz, mielőtt elvégezné ezt a konfigurációt. A Microsoft a teszt- és próbatelepítésekhez egyetlen AD FS-kiszolgáló üzembe helyezését javasolja. Később, a kezdeti konfigurációt követően az Azure AD Connect ismételt futtatásával további kiszolgálókat adhat hozzá és helyezhet üzembe méretezési igényeitől függően.
@@ -350,4 +355,3 @@ Ismerkedjen meg a következő, a telepítéssel engedélyezett szolgáltatásokk
 Ismerje meg részletesebben a következő általános témaköröket: [az ütemező és a szinkronizálási események indítása](active-directory-aadconnectsync-feature-scheduler.md).
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
-

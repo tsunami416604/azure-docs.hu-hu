@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: d78808421dd5acd907aa9e9000bb3b770a42c061
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 9671136eea4e390a7763404e402cf94f1d351cac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-7-create-key-performance-indicators"></a>7. lecke: Fő teljesítménymutatók létrehozása
 
@@ -49,7 +48,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 
     Ez a mérték a KPI Alapmértékeként szolgál.  
   
-4.  Kattintson jobb gombbal az **InternetCurrentQuarterSalesPerformance** > **KPI létrehozása** lehetőségére.   
+4.  A mértékrácson kattintson jobb gombbal az **InternetCurrentQuarterSalesPerformance** > **KPI létrehozása** lehetőségére.   
   
 5.  A Fő teljesítménymutató (KPI) párbeszédpanel **Cél** részénél válassza az **Abszolútérték** lehetőséget, és írja be a következőt: **1.1**.  
   
@@ -88,4 +87,3 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
 [8. lecke: Perspektívák létrehozása](../tutorials/aas-lesson-8-create-perspectives.md).
   
   
-

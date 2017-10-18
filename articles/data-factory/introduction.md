@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 09/29/2017
 ms.author: shlo
+ms.openlocfilehash: ef7055342a04057acfba9dad350f654aa4de6096
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 09e514aee503b7cb045c81d8ddcb855ced9b072b
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +57,7 @@ Ha az adatok már jelen vannak egy központi adattárban a felhőben, akkor olya
 Most, hogy a nyers adatok át lettek alakítva üzleti használatra kész formába, feltöltheti azokat az Azure Data Warehouse-ba, az Azure SQL DB-be, az Azure Cosmos DB-be vagy bármely olyan elemzési motorra, amelyre üzleti felhasználói intelligens üzleti eszközeikkel rámutathatnak.
 
 ### <a name="monitor"></a>Figyelés
-Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, figyelemmel szeretné követni az ütemezett tevékenységek és folyamatok sikerességi arányát. Az Azure Data Factory beépített folyamatfigyelési támogatással rendelkezik az Azure Monitor, az API, a PowerShell, az OMS, valamint az Azure Portal állapotpaneljei révén.
+Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, figyelemmel szeretné követni az ütemezett tevékenységek és folyamatok sikerességi arányát. Az Azure Data Factory beépített folyamatfigyelési támogatással rendelkezik, amelyről az Azure Monitor, az API, a PowerShell, a Microsoft Operations Management Suite (OMS), valamint az Azure Portal állapotpaneljei gondoskodnak.
 
 ## <a name="whats-different-in-version-2"></a>Melyek a 2. verzió újdonságai?
 Az Azure Data Factory 2. verziója az eredeti Azure Data Factory adatáthelyezési és -átalakítási szolgáltatására épül, de a felhőt előnyben részesítő adatintegrációs forgatókönyvek szélesebb készletét használja. Az Azure Data Factory 2. verziójának képességei:
@@ -98,17 +97,21 @@ További információkért lásd: [Oktatóanyag: Átvitelvezérlés](tutorial-co
 Az SSIS számítási feladatok áthelyezéséhez létrehozhat 2. verziós Data Factoryt, és üzembe helyezhet ott egy Azure-SSIS integrációs modult. Az Azure-SSIS integrációs modul egy, az SSIS-csomagok felhőben történő futtatására dedikált Azure-beli virtuális gépekből (csomópontokból) álló, teljesen felügyelt fürt. Lépésenkénti útmutatásért lásd a következő oktatóanyagot: [SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-deploy-ssis-packages-azure.md). 
  
 
-## <a name="rich-cross-platform-sdks"></a>Részletes, platformfüggetlen SDK-k
+### <a name="sdks"></a>SDK-k
 Ha tapasztalt felhasználóként programozható felületet keres, a 2. verzió az SDK-k széles választékát kínálja, amelyeket a folyamatok létrehozásához, kezeléséhez és monitorozásához használhat, a kedvenc IDE-je használatával.
 
-- .NET SDK
-- PowerShell
-- Python SDK
+- .NET SDK – A .NET SDK frissült a 2. verzióban. 
+- PowerShell – A PowerShell-parancsmagok frissültek a 2. verzióban. A 2. verzió parancsmagjainak nevében szerepel a **DataFactoryV2** tag. Például: Get-AzureRmDataFactoryV2. 
+- Python SDK – Ez az SDK a 2. verzióban került bevezetésre.
+- REST API – A REST API frissült a 2. verzióban.  
 
-Az adat-előállítók létrehozásához REST API-k is használhatók. 
+A 2. verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek az 1. verzió ügyfeleivel. 
+
+### <a name="monitoring"></a>Figyelés
+Jelenleg a 2. verzió kizárólag SDK-k használatával támogatja az adat-előállítók monitorozását. A portál még nem támogatja a 2. verziójú adat-előállítók monitorozását. 
 
 ## <a name="load-the-data-into-a-lake"></a>Adatok betöltése egy adattárba
-A Data Factory továbbra is 30-nál több olyan összekötővel rendelkezik, amelyek lehetővé teszik az adatok hibrid, heterogén környezetekből történő betöltését az Azure-ba.  A belső tesztek legfrissebb, teljesítménnyel kapcsolatos eredményeit és a hangolási javaslatokat lásd: [Teljesítmény- és finomhangolási útmutató](copy-activity-performance.md). Mindezeken felül nemrégiben tettük elérhetővé a magas rendelkezésre állást és a méretezhetőséget a saját üzemeltetésű integrációs modulok esetében. Ezek telepítése magánhálózati környezetben történik a nagy, 1. szintű vállalatiügyfél-követelmények kielégítése, a jobb rendelkezésre állás és méretezhetőség érdekében.
+A Data Factory 30-nál több olyan összekötővel rendelkezik, amelyek lehetővé teszik az adatok hibrid, heterogén környezetekből történő betöltését az Azure-ba.  A belső tesztek legfrissebb, teljesítménnyel kapcsolatos eredményeit és a hangolási javaslatokat lásd: [Teljesítmény- és finomhangolási útmutató](copy-activity-performance.md). Mindezeken felül nemrégiben tettük elérhetővé a magas rendelkezésre állást és a méretezhetőséget a saját üzemeltetésű integrációs modulok esetében. Ezek telepítése magánhálózati környezetben történik a nagy, 1. szintű vállalatiügyfél-követelmények kielégítése, a jobb rendelkezésre állás és méretezhetőség érdekében.
 
 ## <a name="top-level-concepts-in-version-2"></a>Felső szintű alapelvek a 2. verzióban
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Az Azure Data Factory négy fő összetevőből áll, amelyek együtt alkotják azt a platformot, amelyen létrehozhatók az adatvezérelt munkafolyamatok, és amelyeknek a lépései áthelyezik és átalakítják az adatokat.
@@ -165,4 +168,3 @@ Tegyük fel például, hogy számítási környezetei, mint például az Azure H
 
 ## <a name="next-steps"></a>Következő lépések
 A következő gyors útmutatók részletes utasításait végrehajtva megismerkedhet az adat-előállítók létrehozásának módjával: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md) és Azure Portal. 
-

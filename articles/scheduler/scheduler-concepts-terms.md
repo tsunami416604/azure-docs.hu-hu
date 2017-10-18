@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>A Scheduler alapfogalmai, entitáshierarchiája és terminológiája
 ## <a name="scheduler-entity-hierarchy"></a>A Scheduler entitáshierarchiája
@@ -176,7 +176,7 @@ Ha egy Scheduler-feladat meghiúsul, újrapróbálkozási házirend adható meg 
 
 Egy újrapróbálkozási házirend beállításához a rendszer két további beállítás megadását kérheti: az újbóli próbálkozási időközt (**retryInterval**) és az újbóli próbálkozások számát (**retryCount**).
 
-A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbóli próbálkozások közötti időtartamot jelenti. Ennek alapértelmezett értéke 30 másodperc; minimum 15 másodperc, maximum 18 hónap állítható be. Az Ingyenes feladatok gyűjteményében szereplő feladatok minimális konfigurálható értéke 1 óra.  Ennek megadása ISO 8601 formátumban történik. Ehhez hasonlóan történik a **retryCount** objektummal megadott újbóli próbálkozási szám értékének megadása is; ez a megkísérelt újbóli próbálkozások száma. Ennek alapértelmezett értéke 4, és legfeljebb 20 lehet\. A **retryInterval** és a **retryCount** egyike sem kötelező. Ha a **retryType** objektum beállítása **fixed** (rögzített), és explicit módon nem lett megadva érték, az alapértelmezett értékek lesznek érvényesek.
+A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbóli próbálkozások közötti időtartamot jelenti. Ennek alapértelmezett értéke 30 másodperc; minimum 15 másodperc, maximum 18 hónap állítható be. Az Ingyenes feladatok gyűjteményében szereplő feladatok minimális konfigurálható értéke 1 óra.  Ennek megadása ISO 8601 formátumban történik. Ehhez hasonlóan történik a **retryCount** objektummal megadott újbóli próbálkozási szám értékének megadása is; ez a megkísérelt újbóli próbálkozások száma. Ennek alapértelmezett értéke 4, és legfeljebb 20 lehet. A **retryInterval** és a **retryCount** egyike sem kötelező. Ha a **retryType** objektum beállítása **fixed** (rögzített), és explicit módon nem lett megadva érték, az alapértelmezett értékek lesznek érvényesek.
 
 ## <a name="see-also"></a>Lásd még:
  [A Scheduler ismertetése](scheduler-intro.md)
@@ -196,10 +196,4 @@ A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbó
  [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
 
  [Kimenő hitelesítés az Azure Schedulerben](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

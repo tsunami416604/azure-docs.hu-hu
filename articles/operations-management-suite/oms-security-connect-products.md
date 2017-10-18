@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
-ms.openlocfilehash: 5cb5c6b6cc047974013df59d615d4f094d8d60a4
-ms.contentlocale: hu-hu
-ms.lasthandoff: 12/06/2016
-
+ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Biztonsági termékek csatlakoztatása az Operations Management Suite (OMS) biztonsági és auditálási megoldáshoz 
 A jelen dokumentum ahhoz nyújt segítséget, ha biztonsági termékeket szeretne csatlakoztatni az OMS biztonsági és auditálási megoldáshoz. Az alábbi források támogatottak:
@@ -64,7 +63,7 @@ Az ügynökgépen a helyi 25226-os UDP-portra kell küldeni az eseményeket a sy
     log { source(src); filter(f_local4_oms); destination(security_oms); };
     
 3. Töltse le a *security_events.conf* fájlt, és helyezze az */etc/opt/microsoft/omsagent/conf/omsagent.d/* mappába az OMS-ügynök számítógépén.
-4. Írja be az alábbi parancsot a syslog démon újraindításához:  *A syslog-ng futtatása esetén:*
+4. Írja be az alábbi parancsot a syslog démon újraindításához: *A syslog-ng futtatása esetén:*
     
     ```
     sudo service rsyslog restart
@@ -113,5 +112,4 @@ Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatja a CEF-megoldást a
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
 * [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
 * [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
-
 

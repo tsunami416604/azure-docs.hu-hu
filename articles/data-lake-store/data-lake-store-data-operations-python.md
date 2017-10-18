@@ -1,12 +1,11 @@
 ---
-title: "Python: Fiókkezelési műveletek az Azure Data Lake Store-ban | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan használhatja a Python SDK-t a Data Lake Store-fiókkezelési műveletekhez."
+title: "Python: Fájlrendszerműveletek az Azure Data Lake Store-ban | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogyan használhatja a Python SDK-t a Data Lake Store-fájlrendszer kezeléséhez."
 services: data-lake-store
 documentationcenter: 
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 75f6de6f-6fd8-48f4-8707-cb27d22d27a6
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,27 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 601d756e0d6554d8a4db9cc83f6919fc36d1e844
+ms.openlocfilehash: 0c3bda65bd40a5d24e4c4ab3dcbbbf27fbbb87c9
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Fiókkezelési műveletek az Azure Data Lake Store-ban a Python használatával
+# <a name="filesystem-operations-on-azure-data-lake-store-using-rest-api"></a>Fájlrendszerműveletek az Azure Data Lake Store-ban a REST API használatával
 > [!div class="op_single_selector"]
-> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
-> * [REST API](data-lake-store-get-started-rest-api.md)
-> * [Python](data-lake-store-get-started-python.md)
+> * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
+> * [Java SDK](data-lake-store-get-started-java-sdk.md)
+> * [REST API](data-lake-store-data-operations-rest-api.md)
+> * [Python](data-lake-store-data-operations-python.md)
 >
->
+> 
 
-A cikkből megtudhatja, hogyan végezhet el olyan alapszintű fiókkezelési műveleteket az Azure Data Lake Store-hoz készült Python SDK segítségével, mint például a Data Lake Store-fiókok létrehozása vagy a Data Lake Store-fiókok listázása. A Data Lake Store fájlrendszerműveleteinek Python használatával való végrehajtásával kapcsolatban lásd: [Fájlrendszerműveletek a Data Lake Store-on a Python használatával](data-lake-store-data-operations-python.md).
+Ebből a cikkből megtudhatja, hogyan hajthat végre fájlrendszerműveleteket a Python SDK használatával. A Data Lake Store fiókkezelési műveleteinek a Python használatával való végrehajtásával kapcsolatban lásd: [Az Azure Data Lake Store használatának első lépései a Python használatával](data-lake-store-get-started-python.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Python**. A Pythont [innen](https://www.python.org/downloads/) töltheti le. Ez a cikk a Python 3.6.2-es verzióját használja.
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+
+* **Azure Data Lake Store-fiók**. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md) című témakör utasításait.
 
 ## <a name="install-the-modules"></a>A modulok telepítése
 
@@ -56,7 +58,7 @@ pip install azure-datalake-store
 
 1. A választott IDE-ben hozzon létre egy új Python-alkalmazást, például **mysample.py** néven.
 
-2. Adja hozzá a következő kódrészletet a szükséges modulok importálásához
+2. Adja hozzá a következő sorokat a szükséges modulok importálásához.
 
     ```
     ## Use this only for Azure AD service-to-service authentication
@@ -92,30 +94,7 @@ Ebben a szakaszban az Azure AD-hitelesítés különböző módjait tárgyaljuk.
 * Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [Végfelhasználói hitelesítés a Data Lake Store-ban a Python használatával](data-lake-store-end-user-authenticate-python.md).
 * Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [Szolgáltatások közötti hitelesítés a Data Lake Store-ban a Python használatával](data-lake-store-service-to-service-authenticate-python.md).
 
-## <a name="create-an-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
-
-Azure-erőforráscsoport létrehozásához használja a következő kódrészletet:
-
-    ## Declare variables
-    subscriptionId= 'FILL-IN-HERE'
-    resourceGroup = 'FILL-IN-HERE'
-    location = 'eastus2'
-    
-    ## Create resource management client object
-    resourceClient = ResourceManagementClient(
-        credentials,
-        subscriptionId
-    )
-    
-    ## Create an Azure Resource Group
-    resourceClient.resource_groups.create_or_update(
-        resourceGroup,
-        ResourceGroup(
-            location=location
-        )
-    )
-
-## <a name="create-client-and-data-lake-store-account"></a>Ügyfél és Data Lake Store-fiók létrehozása
+## <a name="create-filesystem-client"></a>Fájlrendszerügyfél létrehozása
 
 Az alábbi kódrészlet először a Data Lake Store-fiókügyfelet hozza létre. Az ügyfélobjektum használatával hoz majd létre egy Data Lake Store-fiókot. Végül pedig létrehoz egy fájlrendszerügyfél-objektumot.
 
@@ -123,35 +102,33 @@ Az alábbi kódrészlet először a Data Lake Store-fiókügyfelet hozza létre.
     subscriptionId = 'FILL-IN-HERE'
     adlsAccountName = 'FILL-IN-HERE'
 
-    ## Create data lake store account management client object
-    adlsAcctClient = DataLakeStoreAccountManagementClient(credentials, subscriptionId)
+    ## Create a filesystem client object
+    adlsFileSystemClient = core.AzureDLFileSystem(token, store_name=adlsAccountName)
 
-    ## Create a Data Lake Store account
-    adlsAcctResult = adlsAcctClient.account.create(
-        resourceGroup,
-        adlsAccountName,
-        DataLakeStoreAccount(
-            location=location
-        )
-    ).wait()
+## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-    
-## <a name="list-the-data-lake-store-accounts"></a>A Data Lake Store-fiókok kilistázása
+    ## Create a directory
+    adlsFileSystemClient.mkdir('/mysampledirectory')
 
-    ## List the existing Data Lake Store accounts
-    result_list_response = adlsAcctClient.account.list()
-    result_list = list(result_list_response)
-    for items in result_list:
-        print(items)
+## <a name="upload-a-file"></a>Fájl feltöltése
 
-## <a name="delete-the-data-lake-store-account"></a>A Data Lake Store-fiók törlése
 
-    ## Delete the existing Data Lake Store accounts
-    adlsAcctClient.account.delete(adlsAccountName)
-    
+    ## Upload a file
+    multithread.ADLUploader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+
+
+## <a name="download-a-file"></a>Fájl letöltése
+
+    ## Download a file
+    multithread.ADLDownloader(adlsFileSystemClient, lpath='C:\\data\\mysamplefile.txt.out', rpath='/mysampledirectory/mysamplefile.txt', nthreads=64, overwrite=True, buffersize=4194304, blocksize=4194304)
+
+## <a name="delete-a-directory"></a>Könyvtár törlése
+
+    ## Delete a directory
+    adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 
 ## <a name="next-steps"></a>Következő lépések
-* [Fájlrendszerműveletek a Data Lake Store-on a Python használatával](data-lake-store-data-operations-python.md).
+* [Fiókkezelési műveletek a Data Lake Store-ban a Python használatával](data-lake-store-get-started-python.md).
 
 ## <a name="see-also"></a>Lásd még:
 * [Azure Data Lake Store – Python (fiókkezelés) referencia](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)

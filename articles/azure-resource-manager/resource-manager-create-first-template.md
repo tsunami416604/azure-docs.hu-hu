@@ -10,17 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/03/2017
+ms.date: 10/02/2017
 ms.topic: get-started-article
 ms.author: tomfitz
+ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: d07b2354906994ef7842a64d9f58bcbcc18f96e7
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Az első Azure Resource Manager-sablon létrehozása ás üzembe helyezése
 Ez a témakör bemutatja azon lépéseket, amelyekkel elkészítheti az első Resource Manager-sablonját. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md). Ha már rendelkezik erőforrásokkal, és azokhoz kíván sablont használni, lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
 
@@ -97,58 +95,21 @@ Készen áll a sablon üzembe helyezésére. A PowerShell vagy az Azure CLI hasz
 
 Az üzembe helyezés után a tárfiók létrejön az erőforráscsoportban.
 
-## <a name="deploy-template-from-cloud-shell"></a>Sablon üzembe helyezése a Cloud Shellből
+[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-Az Azure CLI-parancsokat a [Cloud Shell](../cloud-shell/overview.md) használatával is futtathatja a sablon üzembe helyezéséhez. Ehhez azonban először be kell töltenie a sablont a Cloud Shell fájlmegosztásába. Ha még nem használta a Cloud Shellt, a telepítésével kapcsolatban lásd [Az Azure Cloud Shell áttekintése](../cloud-shell/overview.md) című cikket.
+Azure CLI esetén használja az alábbi parancsokat:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).   
+```azurecli-interactive
+az group create --name examplegroup --location "South Central US"
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
+```
 
-2. Válassza ki a Cloud Shell-erőforráscsoportot. A névminta a következő: `cloud-shell-storage-<region>`.
+A PowerShell a Cloud Shellben jelenleg előzetes verzióban érhető el. PowerShell esetén használja az alábbi parancsokat:
 
-   ![Erőforráscsoport kiválasztása](./media/resource-manager-create-first-template/select-cs-resource-group.png)
-
-3. Válassza ki a Cloud Shell tárfiókját.
-
-   ![Adattároló fiók kiválasztása](./media/resource-manager-create-first-template/select-storage.png)
-
-4. Válassza a **Files** (Fájlok) lehetőséget.
-
-   ![Fájlok kiválasztása](./media/resource-manager-create-first-template/select-files.png)
-
-5. Válassza ki a Cloud Shell fájlmegosztását. A névminta a következő: `cs-<user>-<domain>-com-<uniqueGuid>`.
-
-   ![Fájlmegosztás kiválasztása](./media/resource-manager-create-first-template/select-file-share.png)
-
-6. Válassza az **Add directory** (Könyvtár hozzáadása) lehetőséget.
-
-   ![Könyvtár hozzáadása](./media/resource-manager-create-first-template/select-add-directory.png)
-
-7. Nevezze el a könyvtárat **templates** (sablonok) néven, és válassza az **Okay** (OK) gombot.
-
-   ![Könyvtár elnevezése](./media/resource-manager-create-first-template/name-templates.png)
-
-8. Jelölje ki az új könyvtárat.
-
-   ![Könyvtár kijelölése](./media/resource-manager-create-first-template/select-templates.png)
-
-9. Válassza a **Feltöltés** lehetőséget.
-
-   ![Feltöltés kiválasztása](./media/resource-manager-create-first-template/select-upload.png)
-
-10. Keresse meg és töltse fel a sablont.
-
-   ![Fájl feltöltése](./media/resource-manager-create-first-template/upload-files.png)
-
-11. Nyissa meg a parancssort.
-
-   ![Cloud Shell megnyitása](./media/resource-manager-create-first-template/start-cloud-shell.png)
-
-12. Írja be a következő parancsokat a Cloud Shellbe:
-
-   ```azurecli
-   az group create --name examplegroup --location "South Central US"
-   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-   ```
+```powershell
+New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
+```
 
 Az üzembe helyezés után a tárfiók létrejön az erőforráscsoportban.
 
@@ -445,4 +406,3 @@ az group delete --name examplegroup
 * A sablonok struktúrájával kapcsolatos további információk: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * A tárfiókok tulajdonságaival kapcsolatos információkért lásd a [tárfióksablonok referenciáját](/azure/templates/microsoft.storage/storageaccounts).
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
-

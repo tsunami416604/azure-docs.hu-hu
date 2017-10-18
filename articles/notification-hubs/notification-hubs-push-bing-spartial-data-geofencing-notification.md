@@ -13,14 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/13/2017
+ms.date: 09/15/2017
 ms.author: dendeli
+ms.openlocfilehash: a416edaded8aa04c3229a5788d648de0a6afe2b6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 8db82ae9f37a89b6b7049208133949a7f49e9d92
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="geo-fenced-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Geokerítéses leküldéses értesítések az Azure Notification Hubs és a Bing térbeli adatainak használatával
 > [!NOTE]
@@ -179,7 +178,7 @@ Az eseménykezelő megvalósítása a következő:
         }
     }
 
-Vegye figyelembe, hogy a kezelőt aszinkron módon deklaráltuk, mivel a `GetCurrentLocation` várható, ezért aszinkron környezetben kell végrehajtani. Továbbá mivel bizonyos körülmények között null helyadatot kaphatunk (például ha a helymeghatározási szolgáltatás le van tiltva, vagy az alkalmazásnak nincs engedélye a helyadatok eléréséhez), meg kell győződnünk a megfelelő kezeléséről egy null ellenőrzéssel.
+Vegye figyelembe, hogy a kezelőt aszinkron módon deklaráltuk, mivel a `GetCurrentLocation` várható, ezért aszinkron környezetben kell végrehajtani. Továbbá, mivel bizonyos körülmények között null helyadatot kaphatunk (például ha a helymeghatározási szolgáltatás le van tiltva, vagy az alkalmazásnak nincs engedélye a helyadatok eléréséhez), meg kell győződnünk annak megfelelő kezeléséről egy null ellenőrzéssel.
 
 Futtassa az alkalmazást. Engedélyezze a helyadatokhoz való hozzáférést:
 
@@ -381,7 +380,7 @@ Mivel nem a valós koordinátákat továbbítjuk (lehetséges, hogy ezek jelenle
 
 ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="whats-next"></a>Hogyan tovább?
+## <a name="next-steps"></a>Következő lépések
 A fentiek mellett további lépésekre is szükség lehet, hogy a megoldás éles környezetben is használható legyen.
 
 Mindenekelőtt a geokerítések dinamikus viselkedését kell biztosítania. Ehhez úgy kell beállítani a Bing API-t, hogy új határvonalakat tudjunk feltölteni a meglévő adatforráson belül. Erről további információkat a [Bing térbeliadat-szolgáltatási API-dokumentációjában](https://msdn.microsoft.com/library/ff701734.aspx) talál.
@@ -391,5 +390,4 @@ Ezután [címkézéssel](notification-hubs-tags-segment-push-message.md) megadha
 A fenti megoldás egy olyan forgatókönyvet ismertet, amelyben sokféle célplatform lehetséges, ezért a geokerítést nem korlátoztuk rendszerspecifikus képességekkel. A Univerzális Windows-platform ugyanakkor a [geokerítések azonnali észlelésére](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence) szolgáló képességekkel rendelkezik.
 
 A Notification Hubs képességeiről a [dokumentációs portálon](https://azure.microsoft.com/documentation/services/notification-hubs/) talál további részleteket.
-
 

@@ -2,23 +2,24 @@
 title: "Renderelés a felhőben az Azure Batch Rendering szolgáltatás használatával | Microsoft Docs"
 description: "Renderelési feladatok végezhetők Azure-alapú virtuális gépeken, közvetlenül a Maya szoftverből és használatalapú fizetéssel."
 services: batch
-author: tamram
+author: v-dotren
 manager: timlt
 ms.service: batch
 ms.topic: hero-article
-ms.date: 07/31/2017
-ms.author: tamram
+ms.date: 09/14/2017
+ms.author: danlep
+ms.openlocfilehash: 47ccbd89d5abf04034196ab735c6740d57099023
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4d22f92cafdbceee5213361d6d2b2f38904d12c6
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-the-batch-rendering-service"></a>Ismerkedés a Batch Rendering szolgáltatással
 
-Az Azure Batch Rendering szolgáltatás felhőméretű renderelési képességeket nyújt használatalapú fizetéssel. A Batch Rendering szolgáltatás elvégzi a feladatok ütemezését és sorba rendezését, a hibák és az újrapróbálkozások kezelését és a renderelési feladattal kapcsolatos automatikus skálázást. A Batch Rendering szolgáltatás támogatja az Autodesk Maya, 3ds Max és Arnold szoftver használatát, és a támogatott alkalmazások köre hamarosan tovább bővül. A Maya 2017-hez készült Batch beépülő modullal könnyedén elindíthat egy renderelési feladatot az Azure-on, rögtön a számítógépről. 
+Az Azure Batch Rendering szolgáltatás felhőméretű renderelési képességeket nyújt használatalapú fizetéssel. A Batch Rendering szolgáltatás elvégzi a feladatok ütemezését és sorba rendezését, a hibák és az újrapróbálkozások kezelését és a renderelési feladatokkal kapcsolatos automatikus skálázást. A Batch Rendering szolgáltatás támogatja az [Autodesk Maya](https://www.autodesk.com/products/maya/overview), a [3ds Max](https://www.autodesk.com/products/3ds-max/overview), az [Arnold](https://www.autodesk.com/products/arnold/overview) és a [V-Ray](https://www.chaosgroup.com/vray/maya) szoftver használatát. A Maya 2017-hez készült Batch beépülő modullal könnyedén elindíthat egy renderelési feladatot az Azure-on, rögtön a számítógépről.
+
+A Maya és a 3ds Max szoftverekkel a [Batch Labs](https://github.com/Azure/BatchLabs) asztali alkalmazás vagy a [Batch Templates parancssori felület](batch-cli-templates.md) használatával futtathat feladatokat. Az Azure Batch parancssori felületén kódírás nélkül futtathat Batch-feladatokat. Helyette sablonfájlok használatával hozhat létre Batch-készleteket, -feladatokat és -tevékenységeket. További információkért tekintse át [az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának használatával](batch-cli-templates.md) foglalkozó témakört.
+
 
 ## <a name="supported-applications"></a>Támogatott alkalmazások köre
 
@@ -26,52 +27,108 @@ A Batch Rendering szolgáltatás jelenleg a következő alkalmazások használat
 
 - Autodesk Maya
 - Autodesk 3ds Max
-- Autodesk Arnold
+- Autodesk Arnold for Maya
+- Autodesk Arnold for 3ds Max
+- Chaos Group V-Ray for Maya
+- Chaos Group V-Ray for 3ds Max
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A Batch szolgáltatás használatához a következőkre van szükség:
 
-- Egy [Azure-fiók](https://azure.microsoft.com/free/). 
+- Egy [Azure-fiók](https://azure.microsoft.com/free/).
 - **Egy Azure Batch-fiók.** Egy Batch-fiók az Azure Portalon történő létrehozásával kapcsolatos útmutatásért lásd a [Batch-fiókok az Azure Portalon történő létrehozását](batch-account-create-portal.md) ismertető cikket.
 - **Egy Azure Storage-fiók.** A renderelési feladathoz használt adategységeket az Azure Storage tárolja. A Batch-fiók beállításakor automatikusan létrehozható egy tárfiók. Vagy használhat egy létező tárfiókot is. További információkat a Storage-tárfiókokról a [tárfiókok az Azure Portalon történő létrehozását, kezelését vagy törlését](https://docs.microsoft.com/azure/storage/storage-create-storage-account) ismertető cikkben talál.
 
 A Maya alkalmazáshoz készült Batch beépülő modul használatához a következőkre van szükség:
 
-- **Maya 2017**
-- **Arnold for Maya**
-
-Az [Azure Portalon](https://portal.azure.com) létrehozhat olyan virtuálisgép-készleteket is, amelyek előre konfigurálva vannak a Maya, a 3ds Max és az Arnold használatára. A portálon a feladatok monitorozásához és a sikertelen feladatok diagnosztizálásához letölthet alkalmazásnaplókat, és távolról kapcsolódhat az egyes virtuális gépekhez az RDP vagy az SSH használatával.
+- [Autodesk Maya 2017](https://www.autodesk.com/products/maya/overview).
+- Egy támogatott megjelenítő, például az Arnold for Maya vagy a V-Ray for Maya.
 
 ## <a name="basic-batch-concepts"></a>Alapszintű Batch-fogalmak
 
-Mielőtt elkezdené használni a Batch Rendering szolgáltatást, nem árt, ha tisztában van néhány Batch-fogalommal, mint például a számítási csomópontok, a készletek és a feladatok jelentésével. Az Azure Batch szolgáltatással kapcsolatos általános információkért lásd [a belsőleg párhuzamos számítási feladatok a Batch használatával történő futtatását](batch-technical-overview.md) ismertető cikket.
+Mielőtt elkezdené használni a Batch Rendering szolgáltatást, nem árt, ha tisztában van néhány Batch-fogalommal, mint például a számítási csomópontok, a készletek és a feladatok jelentésével. Az Azure Batch szolgáltatással kapcsolatos általános információkért lásd [a párhuzamos számítási feladatok Batch használatával történő futtatását](batch-technical-overview.md) ismertető cikket.
 
 ### <a name="pools"></a>Készletek
 
 A Batch egy platformszolgáltatás nagy számítási igényű munkák, pl. renderelés egy **számítási csomópontokból** álló **készleten** történő futtatásához. Egy készleten belül minden számítási csomópont egy Azure-beli virtuális gép (VM), amely Linux vagy Windows rendszert futtat. 
 
-A Batch-készletekkel és -számításicsomópontokkal kapcsolatos további információkért lásd a [nagy léptékű párhuzamos számítási megoldások a Batch segítségével történő fejlesztését](batch-api-basics.md) ismertető cikk [Készlet](batch-api-basics.md#pool) és [Számítási csomópont](batch-api-basics.md#compute-node) elnevezésű szakaszát.
+A Batch készleteivel és számítási csomópontjaival kapcsolatos további információkért lásd a [nagy léptékű párhuzamos számítási megoldások Batch segítségével történő fejlesztését](batch-api-basics.md) ismertető cikk [Készlet](batch-api-basics.md#pool) és [Számítási csomópont](batch-api-basics.md#compute-node) elnevezésű szakaszát.
 
 ### <a name="jobs"></a>Feladatok
 
 A Batch-**feladatok** olyan tevékenységek gyűjteményei, amelyek egy készlet számítási csomópontjain futnak. Egy renderelési feladat elküldésekor a Batch tevékenységekre osztja a feladatot, és a futtatáshoz szétosztja a tevékenységeket a készlet számítási csomópontjai között.
 
-A Batch-feladatokkal kapcsolatos további információkért lásd a [nagy léptékű párhuzamos számítási megoldások a Batch segítségével történő fejlesztését](batch-api-basics.md) ismertető cikk [Feladat](batch-api-basics.md#job) elnevezésű szakaszát.
+Az [Azure Portalon](https://ms.portal.azure.com/) a feladatok monitorozásához és a sikertelen feladatok diagnosztizálásához letölthet alkalmazásnaplókat, és távolról kapcsolódhat az egyes virtuális gépekhez az RDP vagy az SSH használatával. Emellett felügyeleti, monitorozási és hibaelhárítási feladatokat is végezhet a [Batch Labs-ügyféllel](https://github.com/Azure/BatchLabs).
+
+A Batch-feladatokkal kapcsolatos további információkért lásd a [nagy léptékű párhuzamos számítási megoldások Batch segítségével történő fejlesztését](batch-api-basics.md) ismertető cikk [Feladat](batch-api-basics.md#job) elnevezésű szakaszát.
+
+## <a name="options-for-provisioning-required-applications"></a>Beállítások a szükséges alkalmazások üzembe helyezéséhez
+
+Adott feladatok rendereléséhez több alkalmazásra is szükség lehet, például a Mayára és az Arnoldra vagy a 3ds Maxra és a V-Rayre, valamint szükség szerint egyéb külső beépülő modulokra is. Egyes ügyfelek ezen alkalmazások adott verzióinak használatát is megkövetelhetik. Ezért több módszer is rendelkezésre áll a szükséges alkalmazások és szoftverek üzembe helyezésére:
+
+### <a name="pre-configured-vm-images"></a>Előre konfigurált virtuálisgép-rendszerképek
+
+Az Azure minden egyes Windows- és Linux-rendszerképre előre és használatra készen telepíti a Maya, a 3ds Max, az Arnold és a V-Ray egy-egy verzióját. A rendszerképeket az [Azure Portalon](https://portal.azure.com), a Maya beépülő modulban vagy a [Batch Labs](https://github.com/Azure/BatchLabs) alkalmazásban választhatja ki, amikor létrehoz egy készletet.
+
+Az Azure Portalon és a Batch Labsban a következők szerint telepítheti az előre telepített alkalmazásokkal rendelkező virtuálisgép-rendszerképeket: a Batch-fiók Készletek szakaszában válassza az **Új** lehetőséget, majd a **Készlet hozzáadása** területen a **Grafikus és megjelenítési szoftverek (Linux/Windows)** lehetőséget a **Lemezkép típusa** legördülő listából:
+
+![Batch-fiók lemezképtípusának kiválasztása](./media/batch-rendering-service/add-pool.png)
+
+Görgessen le és kattintson a **Grafikus és megjelenítési szoftverek licencelése** gombra a **Licencek kiválasztása** panel megjelenítéséhez, és válasszon ki egyet vagy többet a szoftverlicencek közül:
+
+![Grafikus és megjelenítési szoftverek licencének kiválasztása a készlethez](./media/batch-rendering-service/graphics-licensing.png)
+
+Az egyes rendelkezésre álló licencverziók a következők:
+
+- Maya 2017
+- 3ds Max 2018
+- Arnold for Maya 5.0.1.1
+- Arnold for 3ds Max 1.0.836
+- V-Ray for Maya 3.52.03
+- V-Ray for 3ds Max 3.60.01
+
+### <a name="custom-images"></a>Egyéni rendszerképek
+
+Az Azure Batch egyéni rendszerképek megadását is lehetővé teszi, így pontosan azokkal az alkalmazásokkal és verziókkal konfigurálhatja a virtuális gépet, amelyekre szüksége van. További információkért lásd a [virtuálisgép-készletek egyéni rendszerkép használatával történő létrehozásával](https://docs.microsoft.com/en-us/azure/batch/batch-custom-images) foglalkozó témakört. Vegye figyelembe, hogy az Autodesk és a Chaos Group módosították az Arnold és a V-Ray szoftvert, így azok a mi licencszolgáltatásunkkal érvényesíthetők. Emiatt ezeknek az alkalmazásoknak mindenképp olyan verzióját kell használnia, amely rendelkezik ilyen támogatással, máskülönben a használatalapú licencelés nem fog működni. A Maya és a 3ds Max esetében nincs szükség ilyen licencérvényesítésre, mivel ezeknek az aktuális közzétett verziói nem igényelnek licenckiszolgálót, ha távfelügyeleti módban (kötegelt/parancssori módban) futnak. Amennyiben nem tudja, hogyan használhatja ezt a lehetőséget, forduljon az Azure ügyfélszolgálatához.
+
+## <a name="options-for-submitting-a-render-job"></a>Renderelési feladatok elküldésének különböző lehetőségei
+
+A használt 3D-alkalmazástól függően különféle lehetőségek állnak rendelkezésre, hogy be tudja küldeni a renderelési feladatokat a szolgáltatásba:
+
+### <a name="maya"></a>Maya
+
+A Mayával a következőket használhatja:
+
+- [A Maya alkalmazáshoz készült Batch beépülő modult](https://docs.microsoft.com/en-us/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
+- A [Batch Labs](https://github.com/Azure/BatchLabs) asztali alkalmazást
+- A [Batch-sablonok parancssori felületét](batch-cli-templates.md)
+
+### <a name="3ds-max"></a>3ds Max
+
+A 3ds Maxszel a következőket használhatja:
+
+- A [Batch Labs](https://github.com/Azure/BatchLabs) asztali alkalmazást (a 3ds Max Batch Labs-sablonok használatára vonatkozó útmutatásért lásd a [Batch Labs-adatokat](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) összefoglaló témakört)
+- A [Batch-sablonok parancssori felületét](batch-cli-templates.md)
+
+A 3ds Max Batch Labs-sablonok segítségével VRay- és Arnold-jeleneteket renderelhet az Azure Batch renderelési szolgáltatásával. A VRay- és Arnold-sablonnak két változata létezik, az egyik a standard jelenetekhez, a másik pedig az olyan összetett jelenetekhez, amelyekhez egy 3ds Max-útvonalfájl szükséges az objektumokhoz és a textúrákhoz (.mxp fájl). A 3ds Max Batch Labs-sablonokkal kapcsolatos további információkért lásd a [Batch Labs-adatok](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) adattárat a GitHubon.
+
+Emellett használhatja a [Batch Python SDK-t](https://docs.microsoft.com/en-us/azure/batch/batch-python-tutorial) is, hogy a renderelési szolgáltatást integrálni tudja a meglévő folyamattal.
+
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Renderelési feladat elküldése a Maya alkalmazáshoz készült Batch beépülő modul használatával
 
 A Maya alkalmazáshoz készült Batch beépülő modul használatával közvetlenül a Mayából küldhet feladatokat a Batch Rendering szolgáltatásnak. A következő szakaszok a feladatnak a beépülő modulból történő konfigurálását, majd elküldését ismertetik. 
 
-### <a name="load-the-batch-plug-in-in-maya"></a>A Batch beépülő modul betöltése a Maya alkalmazásban
+### <a name="load-the-batch-plug-in-for-maya"></a>A Maya alkalmazáshoz készült Batch beépülő modul betöltése
 
-A Batch beépülő modul elérhető a [GitHubon](https://github.com/Azure/azure-batch-maya/releases). Tömörítse ki a fájlt egy szabadon választott könyvtárba. A beépülő modul közvetlenül betölthető az *azure_batch_maya* könyvtárból.
+A Batch beépülő modul elérhető a [GitHubon](https://github.com/Azure/azure-batch-maya/releases). Csomagolja ki a fájlt egy szabadon választott könyvtárba. A beépülő modul közvetlenül betölthető az *azure_batch_maya* könyvtárból.
 
 A beépülő modul betöltése a Maya alkalmazásban:
 
 1. Indítsa el a Maya alkalmazást.
 2. Nyissa meg a **Window** > **Settings/Preferences** > **Plug-in Manager** (Ablak/Beállítások/Beépülő modulok kezelése) elemet.
-3. Kattintson a **Tallózás** gombra.
+3. Kattintson a **Browse** (Tallózás) gombra.
 4. Keresse meg, majd válassza ki az *azure_batch_maya/plug-in/AzureBatch.py* fájlt.
 
 ### <a name="authenticate-access-to-your-batch-and-storage-accounts"></a>A Batch- és Storage-fiókok hozzáférésének engedélyezése
@@ -109,7 +166,7 @@ A renderelési feladathoz használni kívánt készlet megadásához válassza k
 
 - **Automatikusan létrehozhat egy készletet a feladathoz** (ez az alapértelmezett beállítás). Ha ezt a lehetőséget választja, a Batch kizárólag a jelenlegi feladat számára hozza létre a készletet, amelyet automatikusan töröl is a renderelési feladat befejeztével. Ez a lehetőség a legjobb választás, ha egyetlen renderelési feladatot szeretne elvégezni.
 - **Újrahasznosíthat egy meglévő állandó készletet.** Ha van egy meglévő, tétlen készlete, akkor a legördülő menüben kiválaszthatja, hogy az a készlet futtassa a renderelési feladatot. Egy meglévő állandó készlet újbóli felhasználásával megtakaríthatja a készlet létrehozásához szükséges időt.  
-- **Létrehozhat egy új állandó készletet.** Ha ezt a lehetőséget választja, a rendszer létrehoz egy új készletet a feladat futtatásához. A feladat befejeztével nem törli a készletet, így az a későbbiekben más feladatokhoz is újból használható lesz. Válassza ezt a lehetőséget, ha rendszeresen kell végeznie renderelési feladatokat. A későbbi feladatok során válassza a **meglévő állandó készlet újrahasznosítását**, ha az első feladathoz létrehozott állandó készletet szeretné felhasználni.
+- **Létrehozhat egy új állandó készletet.** Ha ezt a lehetőséget választja, a rendszer létrehoz egy új készletet a feladat futtatásához. A feladat befejeztével nem törli a készletet, így az a későbbiekben más feladatokhoz is újból használható lesz. Válassza ezt a lehetőséget, ha rendszeresen kell végeznie renderelési feladatokat. A későbbi feladatok során válassza a **reuse an existing persistent pool** beállítást, ha az első feladathoz létrehozott állandó készletet szeretné felhasználni.
 
 ![Készlet, operációsrendszer-kép, virtuálisgép-méret és licenc megadása](./media/batch-rendering-service/submit.png)
 
@@ -119,10 +176,10 @@ Az Azure-beli virtuális gépekre vonatkozó díjszabásokkal kapcsolatos bőveb
 
 Az **Env** (Környezet) lapon adhatja meg, hogy milyen típusú operációsrendszer-képet szeretne használni a készletben található számítási csomópontok létrehozásához. A Batch jelenleg a következő rendszerképek használatát támogatja a renderelési feladatokhoz:
 
-|Operációs rendszer  |Image (Kép)  |
+|Operációs rendszer  |Kép  |
 |---------|---------|
-|Linux     |Batch CentOS előzetes verzió |
-|Windows     |Batch Windows előzetes verzió |
+|Linux     |Batch CentOS Preview |
+|Windows     |Batch Windows Preview |
 
 #### <a name="choose-a-vm-size"></a>Virtuális gép méretének kiválasztása
 
@@ -137,7 +194,7 @@ A használni kívánt licenceket az **Env** (Környezet) lapon adhatja meg. A le
 - **Maya** – ez a beállítás alapértelmezés szerint engedélyezve van.
 - **Arnold** – ez a beállítás akkor van engedélyezve, ha a rendszer észleli, hogy a Maya aktív renderelési motorja az Arnold.
 
- Ha a saját licencét használva kíván renderelést futtatni, konfigurálhatja a licenc-végpontját úgy, hogy hozzáadja a táblázathoz a megfelelő környezeti változókat. Ebben az esetben ügyeljen arra, hogy az alapértelmezett licencelési beállítások jelölését törölje.
+ Ha a saját licencét használva kíván renderelést futtatni, konfigurálhatja a licencvégpontját úgy, hogy hozzáadja a táblázathoz a megfelelő környezeti változókat. Ebben az esetben ügyeljen arra, hogy az alapértelmezett licencelési beállítások jelölését törölje.
 
 > [!IMPORTANT]
 > A számlázás a licenchasználat alapján történik, amíg a készletben a virtuális gépek futnak, függetlenül attól, hogy a VM-ek éppen renderelést végeznek-e. A többletköltségek elkerüléséhez lépjen a **Pools** (Készletek) lapra, és méretezze át a készletet 0 csomópontra, ha éppen nem szeretne egy újabb renderelési feladatot futtatni. 
@@ -186,13 +243,13 @@ Ha a jelenethez további fájlok is szükségesek, amelyeket a beépülő modul 
 
 #### <a name="upload-assets-to-an-asset-project"></a>Adategységek feltöltése egy adategység-projektbe
 
-Egy renderelési feladat elküldésekor az **Assets** (Adategységek) lapon megjelenő hivatkozott fájlok automatikusan fel lesznek töltve az Azure Storage tárolóra egy adategység-projektként. Az adategység-fájlok a renderelési feladattól függetlenül is feltölthetők, az **Assets** (Adategységek) lap **Upload** (Feltöltés) gombjával. Az adategység-projekt nevét a **Project** (Projekt) mező adja meg. A projektek alapértelmezés szerint az aktuális Maya-projekt alapján kapnak nevet. Az adategység-fájlok feltöltésekor a helyi fájlszerkezet meglesz őrizve. 
+Egy renderelési feladat elküldésekor az **Assets** (Adategységek) lapon megjelenő hivatkozott fájlok automatikusan fel lesznek töltve az Azure Storage tárolóra egy adategység-projektként. Az adategység-fájlok a renderelési feladattól függetlenül is feltölthetők, az **Assets** (Adategységek) lap **Upload** (Feltöltés) gombjával. Az adategység-projekt nevét a **Project** (Projekt) mező adja meg. A projektek alapértelmezés szerint az aktuális Maya-projekt alapján kapnak nevet. Az adategység-fájlok feltöltésekor a helyi fájlszerkezetet a rendszer megőrzi. 
 
 A feltöltött adategység-fájlokra bármennyi renderelési feladat hivatkozhat. Bármely feltöltött adategység elérhető bármely, az adategység-projektre hivatkozó feladat számára, függetlenül attól, hogy szerepelnek-e a jelenetben. Ha módosítania kell a következő feladat által hivatkozott adategység-projektet, módosítsa a projekt nevét az **Assets** (Adategységek) lap **Project** (Projekt) mezőjében. Ha vannak olyan hivatkozott fájlok, amelyeket ki szeretne hagyni a feltöltésből, a lista melletti zöld gombokkal törölje a jelölésüket.
 
 #### <a name="submit-and-monitor-the-render-job"></a>A renderelési feladat küldése és monitorozása
 
-Miután a renderelési feladatot konfigurálta a beépülő modulban, kattintson a **Submit** (Küldés) lapon a **Submit Job** (Feladat küldése) gombra a feladat a Batch felé történő küldéséhez:
+Miután a renderelési feladatot konfigurálta a beépülő modulban, kattintson a **Submit** (Küldés) lapon a **Submit Job** (Feladat küldése) gombra a feladat Batch felé küldéséhez:
 
 ![A renderelési feladat küldése](./media/batch-rendering-service/submit_job.png)
 
@@ -206,4 +263,4 @@ A Maya alkalmazást bezárhatja, ez ugyanis nem zavarja meg a letöltési folyam
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Batch szolgáltatással kapcsolatos további információkért lásd [a belsőleg párhuzamos számítási feladatok a Batch használatával történő futtatását](batch-technical-overview.md) ismertető cikket.
+A Batch szolgáltatással kapcsolatos további információkért lásd [a párhuzamos számítási feladatok Batch használatával történő futtatását](batch-technical-overview.md) ismertető cikket.

@@ -1,6 +1,6 @@
 ---
 title: "Fájlok feltöltése Azure Media Services-fiókba az Aspera használatával | Microsoft Docs"
-description: "Ez az oktatóanyag végigvezeti azon lépéseken, amelyek segítségével fájlokat tölthet fel egy Media Services-fiókhoz társított tárfiókba az Azure **Aspera Server On Demand** szolgáltatásával."
+description: "Ez az oktatóanyag végigvezeti azokon a lépéseken, amelyek segítségével fájlokat tölthet fel egy Media Services-fiókhoz társított tárfiókba az Azure **Aspera Server On Demand** szolgáltatásával."
 services: media-services
 documentationcenter: 
 author: johndeu
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 86cb6a979d3aa429c0f501a5ebf37db4bff8ba99
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: e3090da9b2c5b8f99545a1f7f9601bfd8d5221f1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Fájlok feltöltése Media Services-fiókba az Azure Aspera Server On Demand szolgáltatásával
 
@@ -137,5 +136,4 @@ Most már tudja, hogyan [másolhat blobokat egy tárfiókból egy AMS-fiókba](m
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

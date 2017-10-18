@@ -3,7 +3,7 @@ title: "Azure Automation-fiók kezelése | Microsoft Docs"
 description: "Ez a cikk azt ismerteti, hogyan kezelheti az Automation-fiók konfigurációját, például hogyan újíthatja meg és törölheti a tanúsítványokat, és mit tehet hibás konfiguráció esetén."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 41efdbcacede74bac038342688362ff480cadc7e
-ms.contentlocale: hu-hu
-ms.lasthandoff: 04/15/2017
-
+ms.openlocfilehash: fa3109f15cf14a95af35e814fb61a505d3130462
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-azure-automation-account"></a>Azure Automation-fiók kezelése
 Az Automation-fiók lejárata előtt meg kell újítania a tanúsítványt. Ha úgy véli, hogy a futtató fiók biztonsága sérült, akkor törölheti, majd újra létrehozhatja a fiókot. Ebben a részben ezeknek a műveleteknek a végrehajtását ismertetjük.
 
@@ -35,10 +33,11 @@ A tanúsítvány megújításához tegye a következőket:
 
 1. Az Azure Portalon nyissa meg az Automation-fiókot.
 
-2. Az **Automation-fiók** panelen, a **Fióktulajdonságok** ablaktábla **Fiókbeállítások** területén válassza a **Futtató fiókok** lehetőséget.
+2. Az **Automation-fiók** panelen 
+3. a **Fióktulajdonságok** ablaktábla **Fiókbeállítások** területén válassza a **Futtató fiókok** lehetőséget.
 
     ![Az Automation-fiók tulajdonságpanelje](media/automation-manage-account/automation-account-properties-pane.png)
-3. A **Futtató fiókok** tulajdonságpaneljén válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelynek a tanúsítványát meg kívánja újítani.
+3. A **Futtató fiókok** tulajdonságlapján válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelynek a tanúsítványát meg kívánja újítani.
 
 4. A kiválasztott fiók **Tulajdonságok** paneljén kattintson a **Tanúsítvány megújítása** elemre.
 
@@ -51,15 +50,15 @@ Ez a témakör ismerteti, hogyan törölhet és hozhat újra létre futtató fi�
 
 1. Az Azure Portalon nyissa meg az Automation-fiókot.
 
-2. Az **Automation-fiók** panelen, a fiók tulajdonságait tartalmazó ablaktáblán válassza a **Futtató fiókok** lehetőséget.
+2. Az **Automation-fiók** oldalon válassza a **Futtató fiókok** lehetőséget.
 
-3. A **Futtató fiókok** tulajdonságpaneljén válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelyet törölni kíván. Ezután a kiválasztott fiók **Tulajdonságok** paneljén kattintson a **Törlés** elemre.
+3. A **Futtató fiókok** tulajdonságlapján válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelyet törölni kíván. Ezt követően a kiválasztott fiók **Tulajdonságok** paneljén kattintson a **Törlés** elemre.
 
  ![Futtató fiók törlése](media/automation-manage-account/automation-account-delete-runas.png)
 
 4. A fiók törlése során a menü **Értesítések** részén nyomon követheti a folyamat állapotát.
 
-5. A törlés után újra létrehozhatja a fiókot a **Futtató fiókok** tulajdonságpaneljén az **Azure-alapú futtató fiók** lehetőség kiválasztásával.
+5. A törlés után újra létrehozhatja a fiókot a **Futtató fiókok** tulajdonságlapon az **Azure-alapú futtató fiók** lehetőség kiválasztásával.
 
  ![Automation futtató fiók újbóli létrehozása](media/automation-manage-account/automation-account-create-runas.png)
 

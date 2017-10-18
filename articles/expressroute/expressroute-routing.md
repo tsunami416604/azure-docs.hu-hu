@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: osamam
+ms.openlocfilehash: ecb71e8cfc1d723521024ecb79665f4a3117bd4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: e6e2009717430a692528cd3ec3a2c6e46a12fe03
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -73,10 +72,18 @@ Eldöntheti, hogy nyilvános vagy magánhálózati IPv4-címeket szeretne-e hasz
 ### <a name="public-peering"></a>Nyilvános társviszony-létesítés
 Az Azure nyilvános társviszony-létesítési útvonal használatával az Azure-ban üzemeltetett összes szolgáltatáshoz csatlakozhat a nyilvános IP-címeiken keresztül. Ezen szolgáltatások közé tartoznak az [ExpressRoute – Gyakori kérdések](expressroute-faqs.md) című dokumentumban felsorolt szolgáltatások, valamint az ISV-k által a Microsoft Azure-ban üzemeltetett szolgáltatások. A Microsoft Azure-szolgáltatásokhoz a nyilvános társviszony-létesítéssel létrehozott kapcsolatokat mindig az Ön hálózata kezdeményezi a Microsoft hálózata felé. A Microsoft hálózatához tervezett forgalomhoz nyilvános IP-címeket kell használnia.
 
+> [!IMPORTANT]
+> Az Azure PaaS szolgáltatások mindegyike a Microsoft társviszony-létesítési szolgáltatáson keresztül érhető el. Javasoljuk a Microsoft társviszony-létesítés létrehozását, és Azure PaaS szolgáltatásokhoz Microsoft társviszony-létesítésen keresztül történő kapcsolódást.  
+>   
+
+
+A saját AS-számok nyilvános társviszony-létesítés esetében engedélyezettek.
+
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
-A Microsoft társviszony-létesítési útvonal lehetővé teszi, hogy az Azure nyilvános társviszony-létesítési útvonalon keresztül nem támogatott Microsoft-felhőszolgáltatásokhoz csatlakozzon. A szolgáltatások listájába beletartoznak az Office 365 szolgáltatásai, például az Exchange Online, a SharePoint Online, a Skype Vállalati verzió és a Dynamics 365. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
+A Microsoft társviszony-létesítési útvonal lehetővé teszi a nyilvános IP-címeken üzemeltetett összes Microsoft-felhőszolgáltatáshoz történő csatlakozást. A szolgáltatások listájába beletartozik az Office 365, a Dynamics 365 és a Microsoft Azure PaaS szolgáltatásai. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4- vagy IPv6-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
 
 Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az alábbi nyilvántartások egyikében:
+
 
 * [ARIN](https://www.arin.net/)
 * [APNIC](https://www.apnic.net/)
@@ -85,6 +92,10 @@ Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az
 * [RIPENCC](https://www.ripe.net/)
 * [RADB](http://www.radb.net/)
 * [ALTDB](http://altdb.net/)
+
+Amennyiben a rendszer nem rendeli Önhöz az előtagokat és az AS-számot a fenti beállításjegyzékekben, meg kell nyitnia egy támogatási esetet az előtagok és az ASN manuális érvényesítéséhez. Az ügyfélszolgálat olyan dokumentációt (például Engedélyezési nyilatkozatot) fog kérni, amely igazolja, hogy jogosult az erőforrások használatára.
+
+A saját AS-számok Microsoft társviszony-létesítés esetében engedélyezettek, de ebben az esetben is szükség van manuális érvényesítésre.
 
 > [!IMPORTANT]
 > A Microsoft számára ExpressRoute-on hirdetett nyilvános IP-címek nem hirdethetők meg az interneten. Ez megszakíthatja a más Microsoft-szolgáltatások kapcsolatait. Azonban azok a nyilvános IP-címek, amelyeket a hálózatban található kiszolgálók használnak, amelyek O365-végpontokkal kommunikálnak a Microsofton belül, meg lehetnek hirdetve az ExpressRoute-on. 
@@ -134,39 +145,40 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | **Microsoft Azure-régió** | **BGP-közösségérték** |
 | --- | --- |
 | **Észak-Amerika** | |
-| USA keleti régiója |12076:51004 |
-| USA 2. keleti régiója |12076:51005 |
-| USA nyugati régiója |12076:51006 |
-| USA nyugati régiója, 2. |12076:51026 |
-| USA nyugati középső régiója |12076:51027 |
-| USA északi középső régiója |12076:51007 |
-| USA déli középső régiója |12076:51008 |
-| USA középső régiója |12076:51009 |
-| Közép-Kanada |12076:51020 |
-| Kelet-Kanada |12076:51021 |
+| USA keleti régiója | 12076:51004 |
+| USA 2. keleti régiója | 12076:51005 |
+| USA nyugati régiója | 12076:51006 |
+| USA nyugati régiója, 2. | 12076:51026 |
+| USA nyugati középső régiója | 12076:51027 |
+| USA északi középső régiója | 12076:51007 |
+| USA déli középső régiója | 12076:51008 |
+| USA középső régiója | 12076:51009 |
+| Közép-Kanada | 12076:51020 |
+| Kelet-Kanada | 12076:51021 |
 | **Dél-Amerika** | |
-| Dél-Brazília |12076:51014 |
+| Dél-Brazília | 12076:51014 |
 | **Európa** | |
-| Észak-Európa |12076:51003 |
-| Nyugat-Európa |12076:51002 |
+| Észak-Európa | 12076:51003 |
+| Nyugat-Európa | 12076:51002 |
 | Az Egyesült Királyság déli régiója | 12076:51024 |
 | Az Egyesült Királyság nyugati régiója | 12076:51025 |
 | **Ázsia és a Csendes-óceáni térség** | |
-| Kelet-Ázsia |12076:51010 |
-| Délkelet-Ázsia |12076:51011 |
+| Kelet-Ázsia | 12076:51010 |
+| Délkelet-Ázsia | 12076:51011 |
 | **Japán** | |
-| Kelet-Japán |12076:51012 |
-| Nyugat-Japán |12076:51013 |
+| Kelet-Japán | 12076:51012 |
+| Nyugat-Japán | 12076:51013 |
 | **Ausztrália** | |
-| Kelet-Ausztrália |12076:51015 |
-| Délkelet-Ausztrália |12076:51016 |
+| Kelet-Ausztrália | 12076:51015 |
+| Délkelet-Ausztrália | 12076:51016 |
 | **India** | |
-| Dél-India |12076:51019 |
-| Nyugat-India |12076:51018 |
-| Közép-India |12076:51017 |
+| Dél-India | 12076:51019 |
+| Nyugat-India | 12076:51018 |
+| Közép-India | 12076:51017 |
 | **Korea** | |
-| Korea déli régiója |12076:51028 |
-| Korea középső régiója |12076:51029 |
+| Korea déli régiója | 12076:51028 |
+| Korea középső régiója | 12076:51029 |
+
 
 A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket tartalmazó címkével lesz ellátva. 
 
@@ -179,11 +191,11 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 
 | **Szolgáltatás** | **BGP-közösségérték** |
 | --- | --- |
-| Exchange Online |12076:5010 |
-| SharePoint Online |12076:5020 |
-| Skype Vállalati online verzió |12076:5030 |
-| Dynamics 365 |12076:5040 |
-| Egyéb Office 365-szolgáltatások |12076:5100 |
+| Exchange Online | 12076:5010 |
+| SharePoint Online | 12076:5020 |
+| Skype Vállalati online verzió | 12076:5030 |
+| Dynamics 365 | 12076:5040 |
+| Egyéb Office 365-szolgáltatások | 12076:5100 |
 
 > [!NOTE]
 > A Microsoft nem fogadja el a Microsoft számára meghirdetett útvonalakon beállított BGP-közösségértékeket.
@@ -218,5 +230,4 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
   * [ExpressRoute-kapcsolatcsoport létrehozása a klasszikus üzemi modellhez](expressroute-howto-circuit-classic.md) vagy [ExpressRoute-kapcsolatcsoport létrehozása vagy módosítása az Azure Resource Managerrel](expressroute-howto-circuit-arm.md)
   * [Útválasztás konfigurálása a klasszikus üzemi modellhez](expressroute-howto-routing-classic.md) vagy [Útválasztás konfigurálása a Resource Manager-alapú üzemi modellhez](expressroute-howto-routing-arm.md)
   * [Klasszikus VNet összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-classic.md) vagy [Resource Manager VNet összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-arm.md)
-
 

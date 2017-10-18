@@ -12,22 +12,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/14/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: d290ee8a3cee1242f14726b5cf7ca531a3f5830a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/20/2017
-
-
+ms.openlocfilehash: b5f44d2ae42ffc6f75887a64c9ef988fe6d8fd69
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-the-azure-iot-hub-service"></a>Az Azure IoT Hub szolgáltatás áttekintése
 
 Üdvözli az Azure IoT Hub. Ez a cikk áttekintést nyújt az Azure IoT Hubról, és leírja, hogy miért érdemes ezt a szolgáltatást használnia az Eszközök internetes hálózata- (IoT-) megoldások megvalósításához. Az Azure IoT Hub egy teljesen felügyelt szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz között, valamint megoldást biztosít a háttérrendszer kialakításához. Azure IoT Hub:
 
-* Több üzenetkezelési lehetőséget kínál az eszközök és a felhő között mindkét irányban, beleértve az egyirányú üzenetküldést, a fájlátvitelt és a kérés-válasz módszereket.
+* Több üzenetkezelési lehetőséget kínál az eszközök és a felhő között mindkét irányban. A lehetőségek közé tartozik az egyirányú üzenetküldés, a fájlátvitel és a kérés-válasz módszerek.
 * Beépített deklaratív útválasztást biztosít az üzenetek számára más Azure-szolgáltatások felé.
 * Egy lekérdezhető tárolót biztosít az eszközök metaadataihoz és szinkronizáltsági állapotával kapcsolatos információkhoz.
 * Az eszközönkénti biztonsági hitelesítő adatok vagy X.509 tanúsítványok segítségével lehetővé teszi a biztonságos kommunikációt és hozzáférés-vezérlést.
@@ -59,19 +57,19 @@ A fenti követelmények mellett minden egyes IoT-megoldásnak megfelelő mérete
 
 ## <a name="why-use-azure-iot-hub"></a>Miért érdemes az Azure IoT Hubot használni?
 
-Amellett, hogy az [eszköz-felhő][lnk-d2c-guidance] és [felhő-eszköz][lnk-c2d-guidance] kommunikációs lehetőségek gazdag tárházát kínálja, beleértve az üzenetküldést, a fájlátvitelt és a kérés-válasz módszereket, az Azure IoT Hub a következő módokon kezeli az eszközkapcsolattal kapcsolatos kihívásokat:
+Az Azure IoT Hub az [eszköz-felhő][lnk-d2c-guidance] és [felhő-eszköz][lnk-c2d-guidance] kommunikációs lehetőségek gazdag tárházát kínálja. Emellett az Azure IoT Hub az eszközök megbízható és biztonságos csatlakoztatásával kapcsolatos kihívásokat a következő módszerekkel kezeli:
 
-* **Ikereszközök**. Az [ikereszközök][lnk-twins] használatával tárolhatja, szinkronizálhatja és lekérdezheti az eszközök metaadatait és állapotinformációit. Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. Az IoT Hub a rácsatlakoztatott minden egyes eszközhöz fenntart egy ikereszközt.
+* **Ikereszközök**. Az [ikereszközök][lnk-twins] használatával tárolhatja, szinkronizálhatja és lekérdezheti az eszközök metaadatait és állapotinformációit. Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit, például a metaadatokat, konfigurációkat és állapotokat tárolják. Az IoT Hub a rácsatlakoztatott minden egyes eszközhöz fenntart egy ikereszközt.
 
 * **Eszközönkénti hitelesítés és biztonságos kapcsolat**. Mindegyik eszközhöz saját [biztonsági kulcsot][lnk-devguide-security] építhet ki az IoT Hub-kapcsolat biztosításához. Az [IoT Hub-identitásjegyzék][lnk-devguide-identityregistry] egy megoldásban tárolja az eszközidentitásokat és a kulcsokat. A megoldáshátterek engedélyezési vagy letiltási listákhoz adhatják az egyes eszközöket, ami biztosítja az eszközhozzáférés teljes vezérlését.
 
 * **Megadja az Azure-szolgáltatások felé irányuló eszköz–felhő üzenetek útválasztását a deklaratív szabályok alapján**. Az IoT Hub lehetővé teszi az üzenetek útvonalának szabályokkal történő definiálását, amelyekkel meghatározható, hogy a Hub hová küldi az eszköz–felhő üzeneteket. A szabályok nem igénylik bármilyen kód megírását, és helyettesíthetik a feldolgozás utáni egyéni üzenetkezelőket.
 
-* **Eszközkapcsolatok műveleteinek megfigyelése**. Részletes műveleti naplókat fogadhat az eszközidentitás-kezelési műveletekről és az eszközök kapcsolati eseményeiről. Ezzel a megfigyelési képességgel az IoT-megoldás azonosíthatja a kapcsolati hibákat, például a helytelen hitelesítő adatokkal kapcsolódni próbáló, túl gyakran üzenő vagy a felhőből az eszközre irányuló összes üzenetet elutasító eszközöket.
+* **Eszközkapcsolatok műveleteinek megfigyelése**. Részletes műveleti naplókat fogadhat az eszközidentitás-kezelési műveletekről és az eszközök kapcsolati eseményeiről. Ezzel a monitorozási képességgel az IoT-megoldás azonosíthatja a kapcsolati hibákat. Ezekkel a naplókkal azonosíthatja a helytelen hitelesítő adatokat megadó, túl gyakran üzenő vagy a felhőből az eszközre irányuló összes üzenetet elutasító eszközöket.
 
 * **Széles körű eszközkönyvtár-készlet**. Az [Azure IoT eszközoldali SDK-k][lnk-device-sdks] többféle nyelven és platformon elérhetők és támogatottak, például C nyelven sok Linux-disztribúcióhoz, Windowshoz és valós idejű operációs rendszerekhez. Az Azure IoT eszközoldali SDK-k a felügyelt nyelveket is támogatják, például a C#, Java és JavaScript nyelveket.
 
-* **IoT-protokollok és bővíthetőség**. Ha a megoldása nem tudja használni az eszközkódtárakat, az IoT Hub olyan nyilvános protokollt tesz közzé, amellyel az eszközök natív módon használhatják az MQTT v3.1.1, HTTP 1.1 vagy AMQP 1.0 protokollokat. A következőképpen ki is bővítheti az IoT Hubot, hogy támogassa az egyéni protokollokat:
+* **IoT-protokollok és bővíthetőség**. Ha a megoldása nem tudja használni az eszközkódtárakat, az IoT Hub olyan nyilvános protokollt tesz közzé, amellyel az eszközök natív módon használhatják az MQTT v3.1.1, HTTPS 1.1 vagy AMQP 1.0 protokollokat. A következő módszerekkel ki is bővítheti az IoT Hubot, hogy támogassa az egyéni protokollokat:
 
   * Helyszíni átjáró létrehozásával az [Azure IoT Edge][lnk-iot-edge] használatával, amely az egyéni protokollt az IoT Hub által használt három protokoll egyikévé alakítja.
   * Az [Azure IoT-protokollátjáró][protocol-gateway], felhőben futó nyílt forráskódú összetevő testre szabásával.
@@ -80,7 +78,7 @@ Amellett, hogy az [eszköz-felhő][lnk-d2c-guidance] és [felhő-eszköz][lnk-c2
 
 ## <a name="gateways"></a>Átjárók
 
-Az IoT-megoldások átjárója általában a felhőben telepített [protokollátjáró][lnk-iotedge] vagy helyben, az eszközökkel telepített [helyszíni átjáró][lnk-field-gateway]. A protokollátjárók protokollfordítást végeznek, például MQTT-ről AMQP-re. A helyszíni átjárók elemzéseket futtathatnak a peremhálózaton, a késést csökkentő időérzékeny döntéseket hozhatnak, eszközfelügyeleti szolgáltatásokat nyújthatnak, biztonsági és adatvédelmi kényszereket tartathatnak be és protokollfordítást is végezhetnek. Mindkét átjárótípus közvetítőként működik az eszközök és az IoT Hub között.
+Az IoT-megoldások átjárója általában egy, a felhőben telepített [protokollátjáró][lnk-iotedge], vagy egy helyben, az eszközökkel telepített [helyszíni átjáró][lnk-field-gateway]. A protokollátjárók protokollfordítást végeznek, például MQTT-ről AMQP-re. A helyszíni átjárók elemzéseket futtathatnak a peremhálózaton, a késést csökkentő időérzékeny döntéseket hozhatnak, eszközfelügyeleti szolgáltatásokat nyújthatnak, biztonsági és adatvédelmi kényszereket tartathatnak be és protokollfordítást is végezhetnek. Mindkét átjárótípus közvetítőként működik az eszközök és az IoT Hub között.
 
 A helyszíni átjárók különböznek az egyszerű forgalomirányító eszközöktől (például a hálózati címfordítási eszköztől vagy tűzfaltól), mert általában aktív szerepet játszanak a hozzáférés kezelésében és az információáramlásban a megoldáson belül.
 
@@ -88,7 +86,7 @@ Egy megoldás mindkét protokollt és helyszíni átjárót tartalmazhatja.
 
 ## <a name="how-does-iot-hub-work"></a>Hogyan működik az IoT Hub?
 
-Az Azure IoT Hub a [szolgáltatással támogatott kommunikációs][lnk-service-assisted-pattern] mintát valósítja meg az eszközök és a megoldásháttér közötti kommunikáció közvetítése érdekében. A szolgáltatással segített kommunikáció célja, hogy megbízható, kétirányú kommunikációs útvonalat hozzon létre egy vezérlőrendszer (például az IoT Hub) és olyan speciális célú eszközök között, amelyek nem megbízható fizikai helyen vannak üzembe helyezve. A minta a következő alapelveket valósítja meg:
+Az Azure IoT Hub a [szolgáltatással támogatott kommunikációs][lnk-service-assisted-pattern] mintát valósítja meg az eszközök és a megoldásháttér közötti kommunikáció közvetítése érdekében. A szolgáltatással segített kommunikáció célja, hogy megbízható, kétirányú kommunikációs útvonalat hozzon létre egy vezérlőrendszer (például az IoT Hub) és olyan speciális célú eszközök között, amelyek fizikai védelme nem feltétlenül biztosított. A minta a következő alapelveket valósítja meg:
 
 * A biztonság minden más képességgel szemben elsőbbséget élvez.
 
@@ -100,11 +98,11 @@ Az Azure IoT Hub a [szolgáltatással támogatott kommunikációs][lnk-service-a
 
 * A rendszerszintű engedélyezés és hitelesítés eszközönkénti identitásokon alapul. Ezek a hozzáférési hitelesítő adatokat és engedélyeket szinte azonnal visszavonhatóvá teszik.
 
-* Az áramellátással és csatlakozási okok miatt szórványosan kapcsolódó eszközök kétirányú kommunikációját megőrzési parancsok és eszközértesítések segítik elő, amíg az eszköz csatlakozik a lekérésükhöz. Az IoT Hub eszközspecifikus sorokat tart fent az általa küldött parancsokhoz.
+* Az áramellátási vagy csatlakozási okok miatt szórványosan kapcsolódó eszközök esetében a kétirányú kommunikáció úgy működik, hogy a parancsokat és eszközértesítéseket megőrzi, amíg az eszköz nem csatlakozik, hogy lekérje őket. Az IoT Hub eszközspecifikus sorokat tart fent az általa küldött parancsokhoz.
 
 * Az alkalmazás hasznos adatai külön védelmet élveznek egy adott szolgáltatás felé az átjárók keresztül zajló védett átvitel érdekében.
 
-A mobilágazat nagy mennyiségben használta a szolgáltatással támogatott kommunikációs mintát olyan leküldéses értesítési szolgáltatások megvalósításához, mint például [a Windows leküldéses értesítéseket kezelő szolgáltatásai][lnk-wns], a [Google Cloud Messaging][lnk-google-messaging] és az [Apple Push Notification szolgáltatás][lnk-apple-push].
+A mobilágazat a szolgáltatással támogatott kommunikációs mintát olyan leküldéses értesítési szolgáltatások megvalósításához használta, mint például [a Windows leküldéses értesítéseket kezelő szolgáltatásai][lnk-wns], a [Google Cloud Messaging][lnk-google-messaging] és az [Apple Push Notification Service][lnk-apple-push].
 
 Az IoT Hub használata az ExpressRoute nyilvános társhálózati útvonalain is támogatott.
 
@@ -142,4 +140,3 @@ Bevezetés a kódírásba és a példák futtatásába: [Bevezetés az IoT Hub h
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
 
 [lnk-security-ground-up]: iot-hub-security-ground-up.md
-

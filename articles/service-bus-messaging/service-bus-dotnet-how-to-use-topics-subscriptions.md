@@ -12,20 +12,17 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/30/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/01/2017
-
+ms.openlocfilehash: 3646d14be662af0fdf80790cb53ddc581b33a146
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
-
-## <a name="what-will-be-accomplished"></a>Az oktatóanyag célja
 
 Ez az oktatóanyag a következő lépéseken vezet végig:
 
@@ -37,7 +34,7 @@ Ez az oktatóanyag a következő lépéseken vezet végig:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-öt használják.
+1. [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
 2. Azure-előfizetés.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
@@ -66,7 +63,7 @@ Ha már létrehozta a Service Bus Messaging-névteret, lépjen a [Üzenettéma l
 ## <a name="3-create-a-subscription-to-the-topic"></a>3. Előfizetés létrehozása az üzenettémához
 
 1. A portál-erőforrások panelen kattintson az 1. lépésben létrehozott névtérre majd a 2. lépésben létrehozott üzenettéma nevére.
-2. Új előfizetést az áttekintő panel tetején az **Előfizetés** elem melletti plusz-jelre kattintva adhat az üzenettémához.
+2. Ha egy előfizetést szeretne hozzáadni ehhez a témakörhöz, kattintson az áttekintő panel tetején az **Előfizetés** melletti plusz jelre.
 
     ![Előfizetés létrehozása][createtopic4]
 
@@ -78,12 +75,12 @@ A Visual Studio használatával C# konzolalkalmazást írunk az üzeneteknek az 
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.NET Framework)** projektet.
+Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.NET-keretrendszer)** projektet.
 
 ### <a name="add-the-service-bus-nuget-package"></a>A Service Bus NuGet-csomag hozzáadása
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. 1Kattintson a **Browse** (Tallózás) fülre, és keressen a **Microsoft Azure Service Bus** kifejezésre, majd válassza ki a **WindowsAzure.ServiceBus** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
+2. Kattintson a **Browse** (Tallózás) fülre, keressen rá a **WindowsAzure.ServiceBus** kifejezésre, majd válassza ki a **WindowsAzure.ServiceBus** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
    
     ![NuGet-csomag kiválasztása][nuget-pkg]
 
@@ -157,7 +154,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. Adja hozzá a következő kódot a(z) `Main` metódushoz. A(z) `connectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati karakterláncot, `topicName` értékének pedig az üzenettéma létrehozásakor használt nevet.
+3. Adja hozzá a következő kódot a(z) `Main` metódushoz. A(z) `connectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati karakterláncot, `topicName` értékének pedig az üzenettéma létrehozásakor használt nevet. Győződjön meg továbbá arról, hogy a `<your subscription name>` helyett a 3. lépésben létrehozott előfizetés nevét adja meg. 
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -225,4 +222,3 @@ Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://githu
 [createtopic4]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic4.png
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 [azure-portal]: https://portal.azure.com
-
