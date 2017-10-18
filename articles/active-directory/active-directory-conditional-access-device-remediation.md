@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: d86e47507f7a578e8a0affb690b6d96673b6b69a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: d86e47507f7a578e8a0affb690b6d96673b6b69a
+ms.contentlocale: hu-hu
+ms.lasthandoff: 08/29/2017
+
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Innen nem érheti el Windows-eszközről
 
@@ -159,4 +160,5 @@ Ha az eszköze nincs tartományhoz csatlakoztatva és Windows 8.1 rendszert futt
 
 ## <a name="next-steps"></a>Következő lépések
 [Azure Active Directory feltételes hozzáférés](active-directory-conditional-access.md)
+
 
