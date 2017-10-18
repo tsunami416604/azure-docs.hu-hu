@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/15/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: e95d02e706b87eaa355951a34bbaa3abf2ac2370
-ms.contentlocale: hu-hu
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 417ca4b6ecc39cbdafd8e12b5360b370d0ce79fa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
@@ -35,7 +33,7 @@ Az Azure IoT Hub olyan Azure-szolgáltatás, amely biztonságos és megbízható
 
 Az IoT Hubbal saját megoldáshátteret valósíthat meg. Ezenkívül az IoT Hub tartalmaz egy identitásjegyzéket, amellyel kiépíthetők az eszközök, a biztonsági hitelesítő adataik és a hubhoz való csatlakozással kapcsolatos jogosultságaik. További információk az IoT Hubról: [Mi az IoT Hub?][lnk-iot-hub].
 
-További információk arról, hogyan felügyelheti, konfigurálhatja és frissítheti az eszközeit távolról, az Azure IoT Hub által biztosított szabványalapú eszközfelügyelet segítségével: [Az IoT Hub eszközkezelésének áttekintése][lnk-device-management].
+További információk arról, hogyan felügyelheti az eszközeit távolról az Azure IoT Hub által biztosított szabványalapú eszközfelügyelet segítségével: [Az IoT Hub eszközkezelésének áttekintése][lnk-device-management].
 
 Ha az ügyfélalkalmazásokat az eszközök hardveres platformjainak és operációs rendszereinek széles választékára szeretné telepíteni, használhatja az Azure IoT eszközoldali SDK-kat. Az eszközoldali SDK-k olyan kódtárakat tartalmaznak, amelyek elősegítik a telemetria küldését az IoT Hubra, valamint a felhőből az eszközre irányuló üzenetek fogadását. Amikor az eszköz SDK-kat használja, számos hálózati protokoll közül választhat az IoT Hubbal való kommunikációhoz. További tudnivalókért tekintse meg [az eszközoldali SDK-k ismertető oldalát][lnk-device-sdks].
 
@@ -49,4 +47,3 @@ Az [Azure IoT Suite][lnk-iot-suite] is hasznos lehet, amely egy előre konfigur�
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-device-management-overview.md
-

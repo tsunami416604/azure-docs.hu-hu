@@ -13,15 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/11/2017
+ms.date: 9/29/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 120810b2b112649e21ec4bfe0c0f58b1fe3d80ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 699ec578832e894b5bfc0cfad35528eac377c4ff
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -68,9 +67,7 @@ Ha nem tudja biztosan, hogy melyik Azure Backup-összetevő felel meg az igénye
 | Azure IaaS virtuális gép biztonsági mentése |<p>**Igen**</p><p>Az Azure-háló része</p><p>Az [Azure szolgáltatásként kínált infrastruktúra (IaaS) rendszerű virtuális gépek biztonsági mentéséhez](backup-azure-vms-introduction.md) készült.</p> |<p>**Nem**</p> <p>A System Center DPM-mel biztonsági mentést készíthet az adatközpontban lévő virtuális gépekről.</p> |<p>Recovery Services-tároló</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>Melyik alkalmazásokról és számítási feladatokról készíthető biztonsági mentés?
-A következő táblázat az Azure Backup használatával védhető adatokat és számítási feladatokat tartalmazza. Az Azure Backup-megoldás oszlopban az adott megoldás telepítési dokumentációjára mutató hivatkozások szerepelnek. Minden Azure Backup-összetevő klasszikus (Service Manager-alapú telepítés) és Resource Manager-alapú üzemi modell környezetben is telepíthető.
-
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+A következő táblázat az Azure Backup használatával védhető adatokat és számítási feladatokat tartalmazza. Az Azure Backup-megoldás oszlopban az adott megoldás telepítési dokumentációjára mutató hivatkozások szerepelnek. 
 
 | Adat vagy számítási feladat | Forráskörnyezet | Azure Backup-megoldás |
 | --- | --- | --- |
@@ -93,7 +90,7 @@ Az alábbi táblázat tartalmazza a Linuxot támogató Azure Backup-összetevők
 | Azure Backup (MARS) ügynöke |Nem (csak Windows-alapú ügynök) |
 | System Center DPM |<li> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/> <li> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása </br> </br>  *Azure-beli virtuális gépekhez nem érhető el fájlkonzisztens biztonsági mentés* <br/> |
 | Azure Backup Server |<li>Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/> <li> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása </br></br> *Azure-beli virtuális gépekhez nem érhető el fájlkonzisztens biztonsági mentés*  |
-| Azure IaaS virtuális gép biztonsági mentése |Alkalmazáskonzisztens biztonsági mentés [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/> [Részletes fájlhelyreállítás](backup-azure-restore-files-from-vm.md)<br/> [Az összes virtuálisgép-lemez visszaállítása](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [Virtuális gép visszaállítása](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
+| Azure IaaS virtuális gép biztonsági mentése |Alkalmazáskonzisztens biztonsági mentés [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/> [Részletes fájlhelyreállítás](backup-azure-restore-files-from-vm.md)<br/> [Az összes virtuálisgép-lemez visszaállítása](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [Virtuális gép visszaállítása](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Premium Storage virtuális gépek használata az Azure Backup szolgáltatással
 Az Azure Backup szolgáltatás a Premium Storage virtuális gépek védelmét is biztosítja. Az Azure Premium Storage egy SSD-alapú tárolási szolgáltatás, amely a nagy I/O-igényű számítási feladatok ellátására készült. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. Részletesebb áttekintés talál a [Premium Storage szolgáltatást mint az Azure virtuális gépek számítási feladataihoz használható nagy teljesítményű tárterületet](../storage/common/storage-premium-storage.md) ismertető cikkben.
@@ -224,13 +221,12 @@ Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskis
 ## <a name="what-is-a-recovery-services-vault"></a>Mi az a Recovery Services-tároló?
 A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. A Recovery Services-tároló az Azure-szolgáltatások, valamint a helyszíni kiszolgálók és munkaállomások biztonsági mentési adatainak tárolására szolgál. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. Egy előfizetésen belül tetszőleges számú Recovery Services-tárolót hozhat létre.
 
-Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első verziói. Az Azure Resource Manager modelljellemzőit biztosító Recovery Services-tárolók képezték a tároló második verzióját. A szolgáltatások közötti különbségekről teljes leírást a [Recovery Services-tároló áttekintő cikkében](backup-azure-recovery-services-vault-overview.md) talál. A portált már nem használhatja Backup-tárolók létrehozásához, a Backup-tárolók azonban továbbra is támogatottak.
+Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első verziói. Az Azure Resource Manager modelljellemzőit biztosító Recovery Services-tárolók képezték a tároló második verzióját. A szolgáltatások közötti különbségekről teljes leírást a [Recovery Services-tároló áttekintő cikkében](backup-azure-recovery-services-vault-overview.md) talál. A portált már nem használhatja Backup-tárolók létrehozásához, a Backup-tárolók azonban továbbra is támogatottak. A Backup-tárolók kezeléséhez minden esetben az Azure Portalt kell használnia.
 
 > [!IMPORTANT]
-> A biztonsági mentési tárolókról mostantól lehetőség van Recovery Services-tárolókra váltani. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> **2017. október 15-től** a PowerShell a továbbiakban nem használható Backup-tárolók létrehozására. <br/> **2017. november 1-től**:
->- A rendszer automatikusan elvégzi valamennyi megmaradó biztonsági mentési tároló átváltását Recovery Services-tárolókra.
->- A klasszikus portálon nem lehet majd hozzáférni a biztonsági másolati adatokhoz. Helyette az Azure Portal segítségével férhet hozzá a Recovery Services-tárolókban található biztonsági mentési adatokhoz.
->
+> A biztonsági mentési tárolókról mostantól lehetőség van Recovery Services-tárolókra váltani. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> **2017. október 15-től** a PowerShell már nem használható Backup-tárolók létrehozására. <br/> **2017. november 1-ig** a rendszer automatikusan elvégzi valamennyi megmaradó biztonsági mentési tároló frissítését Recovery Services-tárolókra.
+
+
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Miben különbözik az Azure Backup az Azure Site Recoverytől?
 Az Azure Backup és az Azure Site Recovery közös jellemzője, hogy mindkét szolgáltatás használható az adatok biztonsági mentésére és visszaállítására. Különböző szerepet töltenek be azonban a vállalkozásban az üzleti folytonosság és a vészhelyreállítás biztosítása során. Az Azure Backup segítségével részletesebben védheti meg és állíthatja vissza az adatokat. Ha például egy laptopon lévő bemutató megsérült, az Azure Backup segítségével állíthatja vissza a bemutatót. Ha egy virtuális gép konfigurációját és adatait szeretné replikálni egy másik adatközpontba, használja az Azure Site Recoveryt.
@@ -260,4 +256,3 @@ Egyéb számítási feladatok védelméről az alábbi cikkekből tájékozódha
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
-

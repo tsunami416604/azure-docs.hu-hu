@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: c14ac7592efabfec8668d7437463e2d8771ee072
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connectors-list"></a>Összekötők listája
 > [!TIP]
@@ -43,13 +42,13 @@ Több ezer olyan alkalmazás és több millió olyan végrehajtás létezik, ame
 
 | |  |  |  |
 | --- | --- | --- | --- |
-| [![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | Ha szeretné bármely feladatot a tárfiókjával automatizálni, akkor tekintse meg ezt az összekötőt. Támogatja a CRUD (create – létrehozás, read – olvasás, update – frissítés, delete – törlés) műveleteket. | [![API Icon][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | Létrehozhat C#- vagy node.js-környezetben készített, egyedi kódrészleteket futtatni képes függvényeket, majd logikai alkalmazásaiban felhasználhatja ezeket.  |
-| [![API Icon][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | Jelenleg ez az egyik legkeresettebb összekötő. Rendelkezik eseményindítókkal és műveletekkel, amelyek segítenek az érdeklődőkhöz kapcsolódó munkafolyamatok automatizálásában és számos egyébben. | [![API Icon][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Az Event Hubon eseményeket használhat fel és tehet közzé. Az Event Hubs használatával például lekérheti a logikai alkalmazás kimenetét, majd elküldheti a kimenetet valamely valós idejű elemzési szolgáltatónak. |
-| [![API Icon][FTPicon]<br/>**FTP**][FTPdoc] | Ha az FTP-kiszolgálója elérhető az interneten keresztül, akkor automatizálhatja a fájlokkal és mappákkal végzett munkameneteket. <br/><br/>Az SFTP szintén elérhető az SFTP-összekötővel. | [![API Icon][HTTPicon]<br/>**HTTP**][httpdoc] | A logikai alkalmazások segítségével HTTP protokollon keresztül bármilyen végponttal kommunikálhat. |
-| [![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | Rengeteg eseményindító és még több művelet, amelyekkel az Office 365 e-mailjeit és eseményeit a munkafolyamatain belül használhatja. <br/><br/>Ez az összekötő tartalmaz egy *jóváhagyó e-mailes* műveletet, amellyel jóváhagyhatja a szabadságkérelmeket, a kiadásokról szóló jelentéseket stb. <br/><br/>Az Office 365-felhasználók is elérhetők az Office 365 Users összekötővel.| [![API Icon][HTTP-Requesticon]<br/>**Request/Response**][HTTP-Requestdoc] | Ez az összekötő HTTPS URL-címet biztosít. A logikai alkalmazás elindul, amikor kérést kap erre az URL-címre. |
-| [![API Icon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Könnyen bejelentkezhet a Salesforce-fiókjával, és objektumokhoz – például érdeklődőkhöz – és sok egyébhez férhet hozzá. |  [![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | A logikai alkalmazásokon belüli legnépszerűbb összekötő. Olyan eseményindítókat és műveleteket tartalmaz, amelyekkel aszinkron üzenetkezelést végezhet, valamint közzétehet üzenetsorokat, előfizetéseket és témaköröket, illetve feliratkozhat rájuk. |
-|  [![API Icon][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Ha olyan jellegű munkát végez a SharePointtal, amely során hasznos lenne az automatizálás, javasoljuk, hogy tekintse meg ezt az összekötőt. A helyszíni SharePointtal és a SharePoint Online-nal is használható. | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | Az egyik leggyakrabban használt összekötő, amely egy helyszíni SQL Server és egy Azure SQL Database összekapcsolására szolgál. | 
-| [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | Könnyedén bejelentkezhet Twitter-fiók használatával, majd minden új Twitter-üzenet közzététele után elindíthat egy munkafolyamatot. Végül mentheti ezeket a Twitter-üzeneteket egy SQL-adatbázisba vagy SharePoint-listába. | | | 
+| [![API-ikon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | Ha szeretné bármely feladatot a tárfiókjával automatizálni, akkor tekintse meg ezt az összekötőt. Támogatja a CRUD (create – létrehozás, read – olvasás, update – frissítés, delete – törlés) műveleteket. | [![API-ikon][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | Létrehozhat C#- vagy node.js-környezetben készített, egyedi kódrészleteket futtatni képes függvényeket, majd logikai alkalmazásaiban felhasználhatja ezeket.  |
+| [![API-ikon][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | Jelenleg ez az egyik legkeresettebb összekötő. Rendelkezik eseményindítókkal és műveletekkel, amelyek segítenek az érdeklődőkhöz kapcsolódó munkafolyamatok automatizálásában és számos egyébben. | [![API-ikon][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Az Event Hubon eseményeket használhat fel és tehet közzé. Az Event Hubs használatával például lekérheti a logikai alkalmazás kimenetét, majd elküldheti a kimenetet valamely valós idejű elemzési szolgáltatónak. |
+| [![API-ikon][FTPicon]<br/>**FTP**][FTPdoc] | Ha az FTP-kiszolgálója elérhető az interneten keresztül, akkor automatizálhatja a fájlokkal és mappákkal végzett munkameneteket. <br/><br/>Az SFTP szintén elérhető az SFTP-összekötővel. | [![API-ikon][HTTPicon]<br/>**HTTP**][httpdoc] | A logikai alkalmazások segítségével HTTP protokollon keresztül bármilyen végponttal kommunikálhat. |
+| [![API-ikon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | Rengeteg eseményindító és még több művelet, amelyekkel az Office 365 e-mailjeit és eseményeit a munkafolyamatain belül használhatja. <br/><br/>Ez az összekötő tartalmaz egy *jóváhagyó e-mailes* műveletet, amellyel jóváhagyhatja a szabadságkérelmeket, a kiadásokról szóló jelentéseket stb. <br/><br/>Az Office 365-felhasználók is elérhetők az Office 365 Users összekötővel.| [![API-ikon][HTTP-Requesticon]<br/>**Request/Response**][HTTP-Requestdoc] | Ez az összekötő HTTPS URL-címet biztosít. A logikai alkalmazás elindul, amikor kérést kap erre az URL-címre. |
+| [![API-ikon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Könnyen bejelentkezhet a Salesforce-fiókjával, és objektumokhoz – például érdeklődőkhöz – és sok egyébhez férhet hozzá. |  [![API-ikon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | A logikai alkalmazásokon belüli legnépszerűbb összekötő. Olyan eseményindítókat és műveleteket tartalmaz, amelyekkel aszinkron üzenetkezelést végezhet, valamint közzétehet üzenetsorokat, előfizetéseket és témaköröket, illetve feliratkozhat rájuk. |
+|  [![API-ikon][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Ha olyan jellegű munkát végez a SharePointtal, amely során hasznos lenne az automatizálás, javasoljuk, hogy tekintse meg ezt az összekötőt. A helyszíni SharePointtal és a SharePoint Online-nal is használható. | [![API-ikon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | Az egyik leggyakrabban használt összekötő, amely egy helyszíni SQL Server és egy Azure SQL Database összekapcsolására szolgál. | 
+| [![API-ikon][Twittericon]<br/>**Twitter**][Twitterdoc] | Könnyedén bejelentkezhet Twitter-fiók használatával, majd minden új Twitter-üzenet közzététele után elindíthat egy munkafolyamatot. Végül mentheti ezeket a Twitter-üzeneteket egy SQL-adatbázisba vagy SharePoint-listába. | | | 
 
 ## <a name="integration-account-connectors"></a>Integrációs fiókok összekötői 
 
@@ -57,9 +56,9 @@ Az Enterprise Integration Pack (EIP) olyan összekötőket tartalmaz, amelyeket 
 
 |  |  |  |  |
 | --- | --- | --- | --- |
-| [![API Icon][as2icon]<br/>**AS2</br> decoding**][as2decode] | [![API Icon][as2icon]<br/>**AS2</br> encoding**][as2encode] | [![API Icon][x12icon]<br/>**EDIFACT</br> decoding**][EDIFACTdecode] | [![API Icon][x12icon]<br/>**EDIFACT</br> encoding**][EDIFACTencode] |
-[![API Icon][flatfileicon]<br/>**Flat file</br> encoding**][flatfiledoc] | [![API Icon][flatfiledecodeicon]<br/>**Flat file</br> decoding**][flatfiledecodedoc] | [![API Icon][integrationaccounticon]<br/>**Integration<br/>account**][integrationaccountdoc] | [![API Icon][xmltransformicon]<br/>**Transform<br/>XML**][xmltransformdoc] |
-| [![API Icon][x12icon]<br/>**X12</br> decoding**][x12decode] | [![API Icon][x12icon]<br/>**X12</br> encoding**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>validation**][xmlvalidatedoc] | |
+| [![API-ikon][as2icon]<br/>**AS2-</br>dekódolás**][as2decode] | [![API-ikon][as2icon]<br/>**AS2-</br>kódolás**][as2encode] | [![API-ikon][x12icon]<br/>**EDIFACT-</br>dekódolás**][EDIFACTdecode] | [![API-ikon][x12icon]<br/>**EDIFACT-</br>kódolás**][EDIFACTencode] |
+[![API-ikon][flatfileicon]<br/>**Egybesimított fájl</br> kódolása**][flatfiledoc] | [![API-ikon][flatfiledecodeicon]<br/>**Egybesimított fájl</br> dekódolása**][flatfiledecodedoc] | [![API-ikon][integrationaccounticon]<br/>**Integrációs<br/>fiók**][integrationaccountdoc] | [![API Icon][xmltransformicon]<br/>**XML-<br/>átalakítás**][xmltransformdoc] |
+| [![API-ikon][x12icon]<br/>**X12-</br>dekódolás**][x12decode] | [![API-ikon][x12icon]<br/>**X12-</br>kódolás**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML-<br/>érvényesítés**][xmlvalidatedoc] | |
 
 ## <a name="enterprise-connectors"></a>Vállalati összekötők
 
@@ -67,7 +66,7 @@ Logikai alkalmazásain belül csatlakozhat vállalati alkalmazásaihoz.
 
 |  |  |
 | --- | --- |
-|[![API-ikon][MQicon]<br/>**MQ**][mqdoc]|[![API Icon][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API-ikon][MQicon]<br/>**MQ**][mqdoc]|[![API-ikon][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>Betűrend szerinti teljes lista
@@ -315,4 +314,3 @@ Nem talál valamilyen összekötővel kapcsolatos témakört, illetve fontosnak 
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 [integrationaccounticon]: ./media/apis-list/integrationaccount.png
-

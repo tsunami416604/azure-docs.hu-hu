@@ -13,16 +13,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/19/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e77de4b9a74b528fa8a7ce86424fc14628b2cacc
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 07151fdf79d3b06f3144fbebff9015645b1ed000
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="lesson-2-get-data"></a>2. lecke: Az adatok beszerzése
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
@@ -30,6 +28,9 @@ ms.lasthandoff: 06/03/2017
 Ebben a leckében az SSDT Adatok lekérése utasításával csatlakozik az AdventureWorksDW2014 mintaadatbázishoz, kiválasztja az adatokat, megtekinti az előnézetüket, és szűri őket, majd importálja az adatokat a modell munkaterületére.  
   
 Az Adatok lekérése használatával olyan források széles választékából importálhatók adatok mint: Azure SQL Database, Oracle, Sybase, OData Feed, Teradata, fájlok és egyéb lehetőségek. Az adatok emellett lekérdezhetők Power Query M-képletekkel is.
+
+> [!NOTE]
+> Az oktatóanyag feladatai és rendszerképei egy helyszíni kiszolgálón található AdventureWorksDW2014 adatbázishoz való csatlakozást mutatnak be. Egyes esetekben az Azure AdventureWorksDW2014 adatbázisa ettől eltérő lehet.
   
 A lecke elvégzésének várható időtartama: **10 perc**.  
   
@@ -71,13 +72,19 @@ Az AdventureWorksDW2014 mintaadatbázisban lévő táblák olyan adatokat is tar
   
 #### <a name="to-filter-the-table-data-before-importing"></a>Táblák adatainak szűrése importálás előtt  
   
-1.  A Lekérdezésszerkesztőben válassza ki a **DimCustomer** táblát. Megjelenik a DimCustomer tábla adatforrás-oldali (az AdventureWorksDWQ2014 mintaadatbázis) nézete. 
+1.  A Lekérdezésszerkesztőben válassza ki a **DimCustomer** táblát. Megjelenik a DimCustomer tábla adatforrás-oldali (az AdventureWorksDW2014 mintaadatbázis) nézete. 
   
 2.  Válassza ki egyszerre (Ctrl + kattintással) a **SpanishEducation**, **FrenchEducation**, **SpanishOccupation** és **FrenchOccupation** táblát, majd kattintson valamelyikre a jobb gombbal, és válassza az **Oszlopok eltávolítása** parancsot. 
 
     ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-columns.png)
   
     Mivel ezeknek az oszlopoknak az értékei nem relevánsak az internetes értékesítések elemzésekor, nem szükséges importálni őket. A szükségtelen oszlopok eltávolításával csökken a modell mérete, és a modell hatékonyabbá válik.  
+
+    > [!TIP]
+    > Ha hibázna, az **ALKALMAZOTT LÉPÉSEK** listában lévő lépések törlésével visszaállíthatja a törölt oszlopokat.   
+    
+    ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-step.png)
+
   
 4.  Szűrje meg a többi táblát is a következő oszlopok az összes érintett táblából történő eltávolításával:  
     
@@ -85,7 +92,7 @@ Az AdventureWorksDW2014 mintaadatbázisban lévő táblák olyan adatokat is tar
     
       |Oszlop|  
       |--------|  
-      |DateKey|  
+      |**DateKey**|  
       |**SpanishDayNameOfWeek**|  
       |**FrenchDayNameOfWeek**|  
       |**SpanishMonthName**|  
@@ -130,11 +137,7 @@ Az AdventureWorksDW2014 mintaadatbázisban lévő táblák olyan adatokat is tar
   
     **FactInternetSales**
   
-      |Oszlop|  
-      |------------------|  
-      |**OrderDateKey**|  
-      |**DueDateKey**|  
-      |**ShipDateKey**|   
+      Nem lettek oszlopok törölve.
   
 ## <a name="Import"></a>A kiválasztott táblák és oszlopok adatainak importálása  
 Most, hogy megtekintette és kiszűrte a szükségtelen adatokat, a mér csak a szükséges adatokat fogja importálni. A varázsló a táblák adatait a táblák közötti kapcsolatokkal együtt importálja. Új táblák és oszlopok jönnek létre a modellben, és a rendszer a kiszűrt adatokat nem importálja.  
@@ -160,4 +163,3 @@ Fontos, hogy gyakran mentse a modellprojektet.
 
   
   
-

@@ -12,16 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2017
+ms.date: 10/02/2017
 ms.author: ryanwi
+ms.openlocfilehash: bc7bee3caed2eba0a3f49d79241cd8685333ba13
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: c4f8c94e23a165b22533ffd74e04c9a7310f2d22
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Windows-alapú Service Fabric-tároló üzembe helyezése az Azure-on
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
 
@@ -51,7 +49,7 @@ Válassza a **Service Fabric application** (Service Fabric-alkalmazás) lehetős
 
 Az **szolgáltatássablonok** listájában válassza a **Tároló** elemet.
 
-A **Rendszerkép neve** mezőbe írja be a „nanoserver/iis” karaktersort, amely a [Windows Server 2016 Nano Server- és IIS- alaprendszerképet](https://hub.docker.com/r/nanoserver/iis/) jelöli. 
+A **Rendszerkép neve** mezőbe írja be a „microsoft/iis:nanoserver” karaktersort, amely a [Windows Server Nano Server- és IIS-alaprendszerképet](https://hub.docker.com/r/microsoft/iis/) jelöli. 
 
 Nevezze el a szolgáltatást „MyContainerService” néven, majd kattintson az **OK** gombra.
 
@@ -68,6 +66,7 @@ A tárolóport-gazdagépport leképezés konfigurálásához adjon meg egy `Port
 ```xml
 <ServiceManifestImport>
 ...
+  <ConfigOverrides />
   <Policies>
     <ContainerHostPolicies CodePackageRef="Code">
       <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
@@ -94,7 +93,7 @@ A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **MyFir
 
 ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-A **Connection Endpoint** (Kapcsolati végpont) mezőbe írja be a fürt kapcsolati végpontját, majd kattintson a **Publish** (Közzététel) parancsra. Nyilvános fürtre való regisztráláskor a kapcsolati végpont a böngészőben szerepel, például: `winh1x87d1d.westus.cloudapp.azure.com:19000`.
+A **Connection Endpoint** (Kapcsolati végpont) mezőbe írja be a fürt kapcsolati végpontját. Nyilvános fürtre való regisztráláskor a kapcsolati végpont a böngészőben szerepel, például: `winh1x87d1d.westus.cloudapp.azure.com:19000`.  Kattintson a **Publish** (Közzététel) gombra az alkalmazás üzembe helyezéséhez.
 
 Nyisson meg egy böngészőt, majd navigáljon a http://winh1x87d1d.westus.cloudapp.azure.com:80 helyre. Ekkor az IIS alapértelmezett webhelyének kell megjelennie: ![Az IIS alapértelmezett webhelye][iis-default]
 
@@ -120,7 +119,7 @@ Itt találja a jelen rövid útmutatóban használt teljes szolgáltatás- és a
     <EntryPoint>
       <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
       <ContainerHost>
-        <ImageName>nanoserver/iis</ImageName>
+        <ImageName>microsoft/iis:nanoserver</ImageName>
       </ContainerHost>
     </EntryPoint>
     <!-- Pass environment variables to your container: -->
@@ -198,4 +197,3 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png
-

@@ -1,6 +1,6 @@
 ---
-title: "Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés | Microsoft Docs"
-description: "Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat Azure virtuális gépeken. Közvetlen hivatkozásokat talál az SQL Serverhez készült összes virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz."
+title: "Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Windows rendszeren) | Microsoft Docs"
+description: "Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat Azure-beli, Windows rendszerű virtuális gépeken. Közvetlen hivatkozásokat talál az SQL Serverhez készült összes virtuálisgép-rendszerképhez és a kapcsolódó tartalmakhoz."
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
@@ -12,20 +12,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/12/2017
+ms.date: 10/02/2017
 ms.author: jroth
+ms.openlocfilehash: b10c995fdd8e241d354c62537a0600b393795c1b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: b9d42e393e696187d2299e033402db8ee565593a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Az SQL Server használata az Azure Virtual Machines szolgáltatásban – áttekintés
-Ez a témakör az SQL Server Azure virtuális gépeken (VM) történő futtatásának lehetőségeit írja le, [hivatkozásokat tartalmaz a portálon elérhető rendszerképekhez](#option-1-create-a-sql-vm-with-per-minute-licensing), valamint tartalmazza a [gyakori feladatok](#manage-your-sql-vm) áttekintését.
+# <a name="overview-of-sql-server-on-azure-virtual-machines-windows"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Windows rendszeren)
+
+> [!div class="op_single_selector"]
+> * [Windows](virtual-machines-windows-sql-server-iaas-overview.md)
+> * [Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
+
+Ez a témakör az SQL Server Azure-beli, Windows rendszerű virtuális gépeken történő futtatásának lehetőségeit ismerteti, [hivatkozásokat tartalmaz a portálon elérhető rendszerképekhez](#option-1-create-a-sql-vm-with-per-minute-licensing), valamint tartalmazza a [gyakori feladatok](#manage-your-sql-vm) áttekintését.
 
 > [!NOTE]
-> Ha már ismeri az SQL Servert, és csak azt szeretné megtudni, hogyan helyezhet üzembe egy SQL Servert futtató virtuális gépet, tekintse meg az [SQL Server rendszerű virtuális gép létrehozása az Azure portálon](virtual-machines-windows-portal-sql-server-provision.md) című cikket.
+> Ha már ismeri az SQL Server használatát, és csak azt szeretné megtudni, hogyan helyezhet üzembe egy SQL Servert futtató, Windows rendszerű virtuális gépet, tekintse meg az [SQL Servert futtató, Windows rendszerű virtuális gép az Azure szolgáltatásban történő létrehozását](virtual-machines-windows-portal-sql-server-provision.md) ismertető cikket. Ha pedig egy Linux rendszerű virtuális gépet szeretne létrehozni egy SQL Server futtatásához, tekintse meg az [SQL Servert futtató, Linux rendszerű virtuális gép az Azure szolgáltatásban történő létrehozását](../../linux/sql/provision-sql-server-linux-virtual-machine.md) ismertető cikket.
 
 Amennyiben Ön adatbázis-rendszergazda vagy fejlesztő, az Azure virtuális gépek lehetőséget nyújtanak a helyszíni SQL Server számítási feladatok és alkalmazások áthelyezésére a felhőbe.
 
@@ -50,11 +54,13 @@ A következő táblázat a virtuálisgép-katalógus legújabb SQL Server-rendsz
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
+| **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP1** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1StandardWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1WebWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1ExpressWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1DeveloperWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2WebWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2ExpressWindowsServer2012R2) |
 | **SQL Server 2012 SP3** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3WebWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3ExpressWindowsServer2012R2) |
 
-E listán kívül az SQL Server-verziók valamint az operációs rendszerek egyéb kombinációi is elérhetők. További rendszerképeket az Azure Portal piacterén találhat. 
+> [!NOTE]
+> A Linux rendszerhez elérhető SQL Server-virtuálisgépek rendszerképeivel kapcsolatban lásd [az SQL Server használatának áttekintését az Azure Virtual Machines szolgáltatásban (Linux rendszeren)](../../linux/sql/sql-server-linux-virtual-machines-overview.md).
 
 ## <a id="BYOL"></a>2. lehetőség: SQL virtuális gép létrehozása meglévő licenchez
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül. A saját licenc használatához használja az SQL Server verzióinak, kiadásainak és operációs rendszereinek alábbi mátrixát. A portálon ezek a rendszerképnevek **{BYOL}** előtagot kapnak.
@@ -106,4 +112,3 @@ Az adatgyűjtésről további információért tekintse meg az [SQL Server adatv
 A díjszabással kapcsolatos kérdésekről bővebben [az SQL Server Azure virtuális gépek díjszabási útmutatójában](virtual-machines-windows-sql-server-pricing-guidance.md) és az [Azure díjszabási oldalán](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) olvashat. Az SQL Server célkiadását az **OS/Software** (Operációs rendszer/Szoftver) listájából választhatja ki. Ezt követően megtekintheti a különböző méretű virtuális gépekre vonatkozó díjakat.
 
 További kérdései vannak? Először tekintse át [Az SQL Server használatának első lépései az Azure Virtual Machines szolgáltatásban GYIK részét](virtual-machines-windows-sql-server-iaas-faq.md). Emellett a kérdéseit vagy megjegyzéseit az SQL virtuális gépekre vonatkozó bármelyik témakör alján megírhatja, így kapcsolatba léphet a Microsofttal és a közösséggel.
-

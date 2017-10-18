@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/25/2017
+ms.openlocfilehash: 273b94e9a53e36d7e8c699d3b7fa4305b881a001
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f1f270b95a60e847ce7d29c2d7d60c57891924cc
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="classifying-iris-part-2-build-a-model"></a>Írisz osztályozása, 2. rész: Modell létrehozása
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
 
@@ -38,6 +36,10 @@ Az oktatóanyag az egyszerűség kedvéért a jól ismert [Iris flower adatkész
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ajánlott elvégezni az oktatóanyag első részét. Mielőtt belekezdene az oktatóanyag végrehajtásába, kövesse az [Adatok előkészítése útmutató](tutorial-classifying-iris-part-1.md) lépéseit Azure Machine Learning-erőforrások létrehozásához és az Azure Machine Learning Workbench alkalmazás telepítéséhez.
+
+Opcionálisan kísérletezhet a szkriptek helyi Docker-tárolón történő futtatásával is. Ehhez telepíteni kell egy Docker-motort (a Community Edition is megfelelő), és azt helyileg el kell indítania Windows vagy macOS rendszerű gépén. További információ: [Docker – Telepítési utasítások](https://docs.docker.com/engine/installation/).
+
+Ha kísérletezni kíván a szkriptek távoli Azure-beli virtuális gépen található Docker-tárolókon vagy HDInsight Spark-fürtön történő futtatásával, kövesse az [Ubuntu-alapú Azure adatelemzési virtuális gép vagy HDI-fürt létrehozására vonatkozó utasításokat](how-to-create-dsvm-hdi.md).
 
 ## <a name="review-irissklearnpy-and-configuration-files"></a>Az iris_sklearn.py és a konfigurációs fájlok áttekintése
 1. Indítsa el az **Azure Machine Learning Workbench** alkalmazást, és nyissa meg az oktatóanyag előző részében létrehozott **myIris** projektet.
@@ -102,7 +104,7 @@ Készüljünk fel az **iris_sklearn.py** szkript első futtatására. A szkriptn
 
 8. Kattintson a **Befejezve** szóra a Feladatok panel állapotszöveg részén. Megnyílik egy előugró ablak az aktuálisan futó szkript standard kimeneti (stdout) szövegével. A stdout szöveg bezárásához kattintson az előugró ablak jobb felső sarkában található **X** gombra.
 
-9. A Feladatok panel ugyanazon feladatállapotában kattintson a **Befejezve** állapot és a kezdési időpont fölött látható kék színű **iris_sklearn.py [1]** feliratra. Megnyílik a **Futtatás tulajdonságai** oldal, és megjeleníti a futtatás tulajdonságait, a **kimeneti** fájlokat, illetve az adott futtatás **képi megjelenítéseit** és **naplóit**. 
+9. A Feladatok panel ugyanazon feladatállapotában kattintson a **Befejezve** állapot és a kezdési időpont fölött látható kék színű **iris_sklearn.py [n]** (futtatás száma: _n_) feliratra. Megnyílik a **Futtatás tulajdonságai** oldal, és megjeleníti a futtatás tulajdonságait, a **kimeneti** fájlokat, illetve az adott futtatás **képi megjelenítéseit** és **naplóit**. 
 
    Amikor a futtatás befejeződik, az előugró ablakban az alábbi eredmények jelennek meg:
 
@@ -367,4 +369,3 @@ Tovább léphet a sorozat harmadik részére. Most, hogy létrehoztuk a logiszti
 
 > [!div class="nextstepaction"]
 > [Modell üzembe helyezése](tutorial-classifying-iris-part-3.md)
-

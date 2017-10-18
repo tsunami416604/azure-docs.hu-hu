@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 09/29/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 88431377a36d5bc36220c630f0c8d4a46ab4a434
-ms.contentlocale: hu-hu
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 91a437345858cf3a9b00b6b4e8e72cd253f8f069
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Csatlakozás és bejelentkezés Windows rendszert futtató Azure virtuális gépre
 Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először csatlakozzon a virtuális géphez, majd jelentkezzen be.
@@ -29,9 +28,9 @@ Ha Mac gépről szeretne Windows-alapú virtuális géphez csatlakozni, telepít
 
 ## <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A központi menüben kattintson a **Virtuális gépek** elemre.
+2. A bal oldali menüben kattintson a **Virtuális gépek** elemre.
 3. Válassza ki a virtuális gépet a listából.
-4. A virtuális gép paneljén kattintson a **Csatlakozás** elemre.
+4. A virtuális gép oldalán kattintson a **Csatlakozás** parancsra.
    
     ![A virtuális géphez való csatlakozást ismertető képernyőkép az Azure Portalról.](./media/connect-logon/connect.png)
    
@@ -45,5 +44,4 @@ Ha Mac gépről szeretne Windows-alapú virtuális géphez csatlakozni, telepít
 
 ## <a name="next-steps"></a>Következő lépések
 A csatlakozási kísérlet során felmerülő hibákkal kapcsolatban tekintse meg [Távoli asztali kapcsolatok hibaelhárítása](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) című témakört. Ez a cikk útmutatást nyújt a gyakori problémák diagnosztizálásához és elhárításához.
-
 

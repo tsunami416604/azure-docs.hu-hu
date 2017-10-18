@@ -12,23 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: renash
+ms.openlocfilehash: 81de67334f66a61582bb2c5d5a2303cf3a1a086c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5a4a26957c115277e7558c210560777af63d2d0f
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-files"></a>Bevezetés az Azure Files használatába
 Az Azure Files egy felhőalapú, teljes körűen felügyelt fájlmegosztást kínáló, az iparági szabványnak számító [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven a Common Internet File System vagy CIFS) protokollon keresztül elérhető szolgáltatás. Az Azure-fájlmegosztások párhuzamosan több felhőalapú vagy helyszíni, Windows, Linux vagy macOS rendszerű üzemelő példány által is csatlakoztathatóak. Emellett az Azure-fájlmegosztások gyorsítótárazhatóak Windows Servereken az Azure File Sync (előzetes verzió) használatával az adatok felhasználási helyéhez közeli gyors elérés érdekében.
 
 ## <a name="videos"></a>Videók
-| Bevezetés az Azure Files használatába (27 perc) | Azure Files – oktatóanyag (5 perc)  |
+| Az Azure File Sync bemutatása (2 perc) | Azure Files Sync-kel (Ignite 2017) (85 perc)  |
 |-|-|
-| [![A Bevezetés az Azure Files használatába című videó képernyőképe – kattintson a lejátszáshoz!](./media/storage-files-introduction/azure-files-introduction-video-snapshot1.png)](https://www.youtube.com/watch?v=zlrpomv5RLs) | [![Az Azure Files – oktatóanyag című videó képernyőképe – kattintson a lejátszáshoz!](./media/storage-files-introduction/azure-files-introduction-video-snapshot2.png)](https://channel9.msdn.com/Blogs/Azure/Azure-File-storage-with-Windows/) |
+| [![A Bevezetés az Azure File Sync használatába című videó képernyőképe – kattintson a lejátszáshoz!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Az Azure Files Sync-kel bemutató képernyőképe – kattintson a lejátszáshoz!](./media/storage-files-introduction/azure-files-ignite-2017-video.png)](https://www.youtube.com/watch?v=r26jWDGF_rg) |
 
 ## <a name="why-azure-files-is-useful"></a>Miért hasznos az Azure Files?
 Az Azure-fájlmegosztások az alábbiakra használhatók:

@@ -12,36 +12,37 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/30/2017
+ms.date: 09/18/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4b6da997f44860dccb2aa2571ce099ab2d0231f3
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/08/2017
-
-
+ms.openlocfilehash: c0cd24e03c24655adfe851bc85b721c0b617efcc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Jelszavak szinkronizálásának engedélyezése az Azure Active Directory Domain Services tartományi szolgáltatásokra
 Az előző feladatokban engedélyezte az Active Directory Domain Servicest az Azure Active Directory (Azure AD) bérlő számára. A következő feladat az NT LAN Manager (NTLM) és Kerberos hitelesítésiadat-kivonatok Azure AD tartományi szolgáltatásokkal való szinkronizálásának engedélyezése. A bejelentkezési adatok szinkronizálásának beállítását követően a felhasználók a vállalati hitelesítői adataikkal jelentkezhetnek be a felügyelt tartományba.
 
-A folyamat lépései eltérőek a csak felhőalapú felhasználói fiókok és a helyszíni könyvtárból az Azure AD Connect használatával szinkronizált felhasználói fiókok esetében.  Ha az Azure AD-bérlő csak felhőalapú és a helyszíni AD-ből származó felhasználókkal is rendelkezik, mindkét lépést végre kell hajtania.
+A folyamat lépései eltérőek a csak felhőalapú felhasználói fiókok és a helyszíni könyvtárból az Azure AD Connect használatával szinkronizált felhasználói fiókok esetében. 
+
+<br>
+| **A felhasználói fiók típusa** | **A végrehajtandó lépések** |
+| --- |---|
+| **Az Azure AD-ben létrehozott felhőalapú felhasználói fiókok** |**&#x2713;** [Kövesse a cikkben megadott utasításokat](active-directory-ds-getting-started-password-sync.md#task-5-enable-password-synchronization-to-your-managed-domain-for-cloud-only-user-accounts) |
+| **Helyszíni címtárból szinkronizált felhasználói fiókok** |**&#x2713;** [Jelszavak szinkronizálása a felügyelt tartományra a helyszíni AD-ből szinkronizált felhasználói fiókok esetében](active-directory-ds-getting-started-password-sync-synced-tenant.md) | 
 
 <br>
 
-> [!div class="op_single_selector"]
-> * **Csak felhőalapú felhasználói fiókok**: [Jelszavak szinkronizálása a felügyelt tartományra csak felhőalapú felhasználói fiókok esetében](active-directory-ds-getting-started-password-sync.md)
-> * **Helyszíni felhasználói fiókok**: [Jelszavak szinkronizálása a felügyelt tartományra a helyszíni AD-ből szinkronizált felhasználói fiókok esetében](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+> [!TIP]
+> **Lehetséges, hogy mindkét lépéssorozatot végre kell hajtania.**
+> Ha az Azure AD-bérlő csak felhőalapú és a helyszíni AD-ből származó felhasználókkal is rendelkezik, mindkét lépéssorozatot végre kell hajtania.
 >
->
-
-<br>
 
 ## <a name="task-5-enable-password-synchronization-to-your-managed-domain-for-cloud-only-user-accounts"></a>5. feladat: jelszavak szinkronizálásának engedélyezése a felügyelt tartományra a csak felhőalapú felhasználói fiókok számára
 A felhasználók a felügyelt tartományon való hitelesítéséhez az Active Directory Domain Servicesnek az NTLM- és Kerberos-hitelesítéshez megfelelő formátumú hitelesítőadat-kivonatokra van szükségük. Az Azure AD nem az NTLM- vagy Kerberos-hitelesítéshez szükséges formátumban hozza létre vagy tárolja a hitelesítési adatok kivonatait, amíg nem engedélyezi az Active Directory Domain Servicest a bérlő számára. Nyilvánvaló biztonsági okokból az Azure AD nem tiszta szöveges formátumban tárolja a jelszóalapú hitelesítő adatokat. Az Azure AD ezért nem tudja automatikusan létrehozni az NTLM vagy Kerberos hitelesítésiadat-kivonatokat a felhasználók meglévő hitelesítő adatai alapján.
 
 > [!NOTE]
-> Ha a szervezet rendelkezik csak felhőalapú felhasználói fiókokkal, az Active Directory Domain Servicest használó felhasználóknak módosítaniuk kell jelszavukat. A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Az ilyen felhasználói fiókok nem a helyszíni címtárból szinkronizálódnak.
+> **Ha a szervezet rendelkezik csak felhőalapú felhasználói fiókokkal, az Active Directory Domain Servicest használó összes felhasználónak módosítania kell a jelszavát.** A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Az ilyen felhasználói fiókok nem a helyszíni címtárból szinkronizálódnak.
 >
 >
 
@@ -62,7 +63,7 @@ Az alábbi utasításokat küldje el a végfelhasználóknak a jelszavuk módos�
 
     ![Kattintson a „Jelszó módosítása” lehetőségre](./media/active-directory-domain-services-getting-started/user-change-password.png)
 
-   > [!NOTE]
+   > [!TIP]
    > Ha a hozzáférési panel ablakában nem jelenik meg a **Jelszó módosítása** lehetőség, győződjön meg róla, hogy a szervezethez be van állítva a [jelszókezelés az Azure AD-ben](../active-directory/active-directory-passwords-getting-started.md).
    >
    >
@@ -72,7 +73,7 @@ Az alábbi utasításokat küldje el a végfelhasználóknak a jelszavuk módos�
 
 5. Kattintson a **Submit** (Küldés) gombra.
 
-Néhány perccel azután, hogy módosította a jelszavát, az új jelszó használható lesz az Active Directory Domain Servicesben. Néhány további perc (átlagosan körülbelül 20 perc) múlva az új jelszavával bejelentkezhet a felügyelt tartományhoz kapcsolódó számítógépekre.
+Néhány perccel azután, hogy módosította a jelszavát, az új jelszó használható lesz az Active Directory Domain Servicesben. Körülbelül 20 perc múlva az új jelszavával bejelentkezhet a felügyelt tartományhoz kapcsolódó számítógépekre.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Saját jelszó frissítése](../active-directory/active-directory-passwords-update-your-own-password.md)
@@ -81,4 +82,3 @@ Néhány perccel azután, hogy módosította a jelszavát, az új jelszó haszn�
 * [Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja](active-directory-ds-admin-guide-administer-domain.md)
 * [Windows virtuális gép csatlakoztatása az Active Directory Domain Services által felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Red Hat Enterprise Linux virtuális gép csatlakoztatása az Active Directory Domain Services által felügyelt tartományhoz](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
-

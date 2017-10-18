@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
+ms.openlocfilehash: 8576f2b6adce044d2060c3ba6d19ac330e3637c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 166cebeb20ecc79b447dac25f243f07163a6d127
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started"> </a>A Mobile Apps az Azure App Service-ben
+# <a name="getting-started"></a>A Mobile Apps az Azure App Service-ben
 Az Azure App Service egy teljes körűen felügyelt [platformszolgáltatás](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) professzionális fejlesztők számára. A szolgáltatás számos lehetőséget kínál webes, mobil- és integrációs feladatokhoz. 
 
 Az Azure App Service-ben elérhető Mobile Apps egy rugalmasan méretezhető, globálisan elérhető mobilalkalmazás-fejlesztési platformot biztosít a nagyvállalati fejlesztőknek és rendszerintegrátoroknak.
@@ -68,7 +67,7 @@ A mobilos webhelyek számára hasznos platformfunkciók a következők:
 
 * **Folyamatos telepítés** – Az App Service integrálható a gyakran használt ellátásilánc-kezelési (SCM) rendszerekkel, így automatikusan telepítheti háttéralkalmazásának új verzióit az SCM-rendszer egyik ágára való leküldés révén.
 
-  Részletesebben is tájékozódhat a [telepítési lehetőségek] kapcsolatban.
+  Részletesebben is tájékozódhat a [telepítési lehetőségek](../app-service/app-service-deploy-local-git.md) kapcsolatban.
 
 * **Virtuális hálózatkezelés** – Az App Service képes virtuális hálózaton, Azure ExpressRoute-on vagy hibrid kapcsolaton keresztül csatlakozni a helyi erőforrásokhoz.
 
@@ -87,7 +86,6 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Első lépések]: app-service-mobile-ios-get-started.md
 [Azure Table Storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
 [Azure Cosmos DB]: ../cosmos-db/documentdb-get-started.md
@@ -100,12 +98,10 @@ Az Azure App Service platformmal kapcsolatos további tudnivalókért lásd az [
 [Xamarin.iOS és Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[automatikus skálázásról]: ../app-service-web/web-sites-scale.md
-[átmeneti környezet]: ../app-service-web/web-sites-staged-publishing.md
-[telepítési lehetőségek]: ../app-service-web/web-sites-deploy.md
+[automatikus skálázásról]: ../app-service/web-sites-scale.md
+[átmeneti környezet]: ../app-service/web-sites-staged-publishing.md
 [hibrid kapcsolatok]: ../biztalk-services/integration-hybrid-connection-overview.md
-[virtuális hálózatokkal]: ../app-service-web/web-sites-integrate-with-vnet.md
-[ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
-[App Service-környezetek]: ../app-service-web/app-service-app-service-environment-intro.md
+[virtuális hálózatokkal]: ../app-service/web-sites-integrate-with-vnet.md
+[ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
+[App Service-környezetek]: ../app-service/environment/intro.md
 [tanulási térképet]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
-

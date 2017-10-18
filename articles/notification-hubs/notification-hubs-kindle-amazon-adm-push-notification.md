@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Ismerkedés a Notification Hubs szolgáltatással Kindle-alkalmazásokhoz
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -74,7 +74,7 @@ A portálon adja hozzá a titkos ügyfélkulcsot és az ügyfél-azonosítót az
 Az ADM-kódtárak hozzáadása az Eclipse-projekthez:
 
 1. Az ADM-kódtár beszerzéséhez [töltse le az SDK-t]. Csomagolja ki az SDK zip-fájlját.
-2. Az Eclipse-ben kattintson a jobb gombbal a projektjére, majd kattintson a **Properties** (Tulajdonságok) elemre. A bal oldalon válassza a **Java Build Path** (Java-verzió elérési útja) lehetőséget, majd a fent található **Libraries ** (Kódtárak) lapot. Kattintson az **Add External Jar** (Külső jar-fájl hozzáadása) lehetőségre, és válassza az `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` fájlt abból a könyvtárból, ahová kicsomagolta az Amazon SDK-t.
+2. Az Eclipse-ben kattintson a jobb gombbal a projektjére, majd kattintson a **Properties** (Tulajdonságok) elemre. A bal oldalon válassza a **Java Build Path** (Java-verzió elérési útja) lehetőséget, majd a fent található **Libraries **(Kódtárak) lapot. Kattintson az **Add External Jar** (Külső jar-fájl hozzáadása) lehetőségre, és válassza az `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` fájlt abból a könyvtárból, ahová kicsomagolta az Amazon SDK-t.
 3. Töltse le a NotificationHubs Android SDK-t (hivatkozás).
 4. Tömörítse ki a csomagot, aztán húzza a `notification-hubs-sdk.jar` fájlt az Eclipse `libs` mappájába.
 
@@ -254,8 +254,8 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
 ![][7]
 
 <!-- URLs. -->
-[Amazon fejlesztői portál]: https://developer.amazon.com/home.html
-[SDK letöltése]: https://developer.amazon.com/public/resources/development-tools/sdk
+[Amazon fejlesztői portálján]: https://developer.amazon.com/home.html
+[töltse le az SDK-t]: https://developer.amazon.com/public/resources/development-tools/sdk
 
 [0]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
 [1]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal2.png
@@ -265,9 +265,3 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
 [5]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-cmd-window.png
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
-
-
-
-<!--HONumber=Nov16_HO2-->
-
-

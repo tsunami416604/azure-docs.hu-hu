@@ -9,8 +9,7 @@
   
 3. Az új SQL Server (logikai kiszolgáló) panel megnyitásához kattintson a **Létrehozás** gombra.
 
-   <kbd> ![logikai kiszolgáló paneljének megnyitása](./media/sql-data-warehouse-create-logical-server/open-logical-server-blade.png) </kbd>
-    <kbd>![logikai kiszolgáló panelje](./media/sql-data-warehouse-create-logical-server/logical-server-blade.png) </kbd>
+   <kbd> ![logikai kiszolgáló paneljének megnyitása](./media/sql-data-warehouse-create-logical-server/open-logical-server-blade.png) </kbd> <kbd>![logikai kiszolgáló panelje](./media/sql-data-warehouse-create-logical-server/logical-server-blade.png) </kbd>
   
 3. Az SQL Server (logikai kiszolgáló) panel Kiszolgáló neve szövegbeviteli mezőjében adjon meg egy érvényes nevet az új logikai kiszolgálónak. Zöld pipa jelzi, hogy érvényes nevet adott meg.
     

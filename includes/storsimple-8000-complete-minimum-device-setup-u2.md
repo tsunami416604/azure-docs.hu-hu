@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 01/12/17-->
+<!--author=alkohli last changed: 09/28/17-->
 
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>A minimális StorSimple eszközbeállítás befejezése
 
@@ -21,7 +21,7 @@
 
             ![A StorSimple minimális eszközbeállításának hálózati adapterei](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
-            A vezérlőhöz tartozó fix IP-címek az eszköz frissítéseinek karbantartásához használatosak. Ezért a fix IP-knek irányíthatóknak kell lenniük, és csatlakoztatva kell lenniük az internethez. A fix vezérlő IP-k irányíthatóságát a [Test-HcsmConnection][Test] parancsmaggal ellenőrizheti. Az alábbi példán olyan, az internetre átirányított fix vezérlő IP-k láthatók, amelyek hozzáférnek a Microsoft Update-kiszolgálókhoz.
+            A vezérlőhöz tartozó fix IP-címek az eszköz frissítéseinek karbantartásához és szemétgyűjtéshez használatosak. Ezért a fix IP-knek irányíthatóknak kell lenniük, és csatlakoztatva kell lenniük az internethez. A fix vezérlő IP-k irányíthatóságát a [Test-HcsmConnection][Test] parancsmaggal ellenőrizheti. Az alábbi példán olyan, az internetre átirányított fix vezérlő IP-k láthatók, amelyek hozzáférnek a Microsoft Update-kiszolgálókhoz.
 
             ![Test-HcsmConnection irányítható IP-kkel](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 

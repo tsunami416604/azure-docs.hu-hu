@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
-ms.openlocfilehash: f29b20ba11b030d98a7a5574f816ea132edc3f6d
-ms.lasthandoff: 12/06/2016
-
-
+ms.openlocfilehash: 6f4cfda6f367cb8a68d038fa0a3390442be034c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Az alapkonfiguráció értékelése az Operations Management Suite biztonsági és auditálási megoldásában
 Ez a dokumentum segít az [Operations Management Suite (OMS) biztonsági és auditálási megoldás](operations-management-suite-overview.md) alapkonfiguráció-értékelési képességeinek használatában, hogy hozzáférhessen a figyelt erőforrások biztonsági állapotához.
@@ -40,7 +39,7 @@ Három szabálytípus áll rendelkezésre:
 > 
 
 ## <a name="security-baseline-assessment"></a>A biztonsági alapkonfiguráció értékelése
-Az irányítópult használatával áttekintheti az OMS biztonsági és auditálási megoldás által figyelt összes számítógépére vonatkozó jelenlegi alapkonfiguráció-értékelést.  A biztonsági alapkonfiguráció-értékelési irányítópult eléréséhez hajtsa végre az alábbi lépéseket:
+Az irányítópult használatával áttekintheti az OMS biztonsági és auditálási megoldás által figyelt összes számítógépére vonatkozó jelenlegi alapkonfiguráció-értékelést. A biztonsági alapkonfiguráció-értékelési irányítópult eléréséhez hajtsa végre az alábbi lépéseket:
 
 1. A **Microsoft Operations Management Suite** fő irányítópultján kattintson a **Biztonság és auditálás** csempére.
 2. A **Biztonság és Audit** irányítópulton kattintson az **Alapkonfiguráció értékelése** lehetőségre a **Biztonsági tartományok** alatt. A **Biztonsági alapkonfiguráció értékelése** irányítópult a következő ábrának megfelelően jelenik meg:
@@ -85,5 +84,4 @@ Ebben a dokumentumban az OMS biztonság és audit alapkonfigurációs értékel�
 * [Az Operations Management Suite (OMS) áttekintése](operations-management-suite-overview.md)
 * [A biztonsági riasztások figyelése és megválaszolása az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-responding-alerts.md)
 * [Az erőforrások figyelése az Operations Management Suite biztonsági és auditálási megoldásban](oms-security-monitoring-resources.md)
-
 

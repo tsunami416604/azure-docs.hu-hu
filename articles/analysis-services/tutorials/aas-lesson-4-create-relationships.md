@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: d79af3915c718a79f60e5f589527eb4c2ae8b367
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 70812790348bbf525c7ed6299c656f7dd8e83dff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-4-create-relationships"></a>4. lecke: Kapcsolatok létrehozása
 
@@ -34,7 +33,10 @@ A lecke elvégzésének várható időtartama: **10 perc**.
 Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A leckében foglalt feladatok végrehajtása előtt el kell végeznie az előző leckét ([3. lecke: Megjelölés dátumtáblaként](../tutorials/aas-lesson-3-mark-as-date-table.md)). 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>Meglévő kapcsolatok áttekintése és új kapcsolatok létrehozása  
-Amikor az Adatok lekérése utasítás használatával importálta az adatokat, hét táblát hozott létre az AdventureWorksDW2014 adatbázisból. Általában amikor relációs forrásból importál adatokat, a meglévő kapcsolatok automatikusan importálva lesznek az adatokkal együtt. Mielőtt azonban folytatná a modell elkészítését, ellenőriznie kell, hogy a táblák közti kapcsolatok megfelelően lettek-e létrehozva. Ebben az oktatóanyagban három új kapcsolatot fog felvenni.  
+Amikor az Adatok lekérése utasítás használatával importálta az adatokat, hét táblát hozott létre az AdventureWorksDW2014 adatbázisból. Általában amikor relációs forrásból importál adatokat, a meglévő kapcsolatok automatikusan importálva lesznek az adatokkal együtt. Ahhoz, hogy az Adatok lekérése automatikusan létrehozza a kapcsolatokat az adatmodellben, az adatforrásban is kapcsolatoknak kell fennállnia a táblák között.
+
+Mielőtt folytatná a modell elkészítését, ellenőriznie kell, hogy a táblák közötti kapcsolatok megfelelően lettek-e létrehozva. Ebben az oktatóanyagban emellett három új kapcsolatot is fel fog venni.  
+
   
 #### <a name="to-review-existing-relationships"></a>Meglévő kapcsolatok áttekintése  
   
@@ -44,7 +46,10 @@ Amikor az Adatok lekérése utasítás használatával importálta az adatokat, 
     
     ![aas-lesson4-diagram](../tutorials/media/aas-lesson4-diagram.png)
   
-    A modelltervező jobb alsó sarkában lévő minitérkép-vezérlők használatával jeleníthet meg minél több táblát. A táblákra kattintva, és azokat a megfelelő helyre áthúzva közelebb húzhatja a táblákat egymáshoz, vagy adott sorrendbe rendezheti őket. A táblák áthelyezése a köztük már meglévő kapcsolatokat nem befolyásolja. Ha egy adott tábla összes oszlopát meg szeretné tekinteni, a tábla szélére kattintva, és odébb húzva növelheti vagy csökkentheti a tábla méretét.  
+    > [!NOTE]
+    > Ha nem lát kapcsolatokat a táblák közt, valószínű, hogy az adatforráson sincs közöttük kapcsolat.
+
+    A modelltervező jobb alsó sarkában lévő minitérkép-vezérlők használatával jeleníthet meg minél több táblát. A táblákra kattintva, és azokat a megfelelő helyre áthúzva közelebb húzhatja a táblákat egymáshoz, vagy adott sorrendbe rendezheti őket. A táblák áthelyezése a köztük meglévő kapcsolatokat nem befolyásolja. Ha egy adott tábla összes oszlopát meg szeretné tekinteni, a tábla szélére kattintva, és odébb húzva növelheti vagy csökkentheti a tábla méretét.  
   
 2.  Kattintson a folytonos vonalra a **DimCustomer** és a **DimGeography** tábla között. A folytonos vonal a két tábla között azt mutatja, hogy a kapcsolat aktív, azaz hogy alapértelmezés szerint a rendszer ezt használja a DAX-képletek számításához.  
   
@@ -63,7 +68,7 @@ Amikor az Adatok lekérése utasítás használatával importálta az adatokat, 
     |Igen|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |Igen|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    Ha bármelyik kapcsolat hiányzik, ellenőrizze, hogy a modell tartalmazza-e a következő táblákat: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory és FactInternetSales. Ha egyazon adatforrásból különböző időpontokban importál táblákat, az adott táblák közötti kapcsolatok nem lesznek létrehozva, és manuálisan kell létrehozni azokat.  
+    Ha bármelyik kapcsolat hiányzik, ellenőrizze, hogy a modell tartalmazza-e a következő táblákat: DimCustomer, DimDate, DimGeography, DimProduct, DimProductCategory, DimProductSubcategory és FactInternetSales. Ha egyazon adatforrásból különböző időpontokban importál táblákat, az adott táblák közötti kapcsolatok nem lesznek létrehozva, és manuálisan kell létrehozni azokat. Ha nem láthatók kapcsolatok, ez azt jelenti, hogy az adatforrásban sincsenek. Manuálisan létrehozhatja őket az adatmodellben.
 
 ### <a name="take-a-closer-look"></a>Közelebbi vizsgálat
 A Diagramnézetben észrevehet egy nyilat, egy csillagot és egy számot a táblák közötti kapcsolatokat mutató vonalakon.
@@ -102,4 +107,3 @@ Egyes esetekben további kapcsolatokat kell létrehozni a modell táblái közö
   
   
   
-

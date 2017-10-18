@@ -1,6 +1,6 @@
 ---
-title: "Azure-adatbázis PostgreSQL áttekintés |} Microsoft Docs"
-description: "Súgó tartalma az Azure Database az Azure portálon PostgreSQL-áttekintés"
+title: "Az Azure Database for PostgreSQL áttekintése | Microsoft Docs"
+description: "Az Azure Database for PostgreSQL áttekintő súgótartalmai az Azure Portalon"
 services: app-service
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: 9c930d1171b77ddf0bb6621fbf012f98816fd763
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>A PostgreSQL-hez készült Azure Database dokumentációja
 
@@ -29,7 +29,7 @@ További információ a PostgreSQL-adatbázisok a következőkkel való létreho
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- Egy adatbázis kialakítása: [Azure-portálon](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure parancssori felület](/azure/postgresql/tutorial-design-database-using-azure-cli)
+- Adatbázis tervezése: [Azure Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
 - [Webalkalmazás készítése a Python és a CLI használatával](/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>Példák 
@@ -38,7 +38,7 @@ Szkriptek keresése a gyakori feladatok kezeléséhez.
 
 - [Azure CLI](/azure/postgresql/sample-scripts-azure-cli)
 
-## <a name="more"></a>Több,
+## <a name="more"></a>Továbbiak
 
-- [Látogasson el a további dokumentáció](/azure/postgresql/index)
-- [További tudnivalók az összes Azure-szolgáltatások](https://aka.ms/j3wr7y)
+- [Dokumentáció megtekintése további információhoz](/azure/postgresql/index)
+- [Az összes Azure-szolgáltatás bemutatása](https://aka.ms/j3wr7y)

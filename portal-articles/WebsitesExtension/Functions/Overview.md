@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Functions áttekintése |} Microsoft Docs"
-description: "Súgó tartalma az Azure portálon az Azure Functions áttekintése"
+title: "Az Azure Functions áttekintése | Microsoft Docs"
+description: "Az Azure Functions áttekintő súgótartalmai az Azure Portalon"
 services: functions
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: fa593eef1c01311d20216f3ab3af7ffcb54e12f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-documentation"></a>Azure Functions – dokumentáció
 
@@ -20,16 +20,16 @@ Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amell
 
 ## <a name="5-minute-quickstarts"></a>5 perces gyors útmutatók
 
-Megtudhatja, hogyan hozzon létre egy Hello World függvény használatával:
+További információ a „Hello World” függvény létrehozásáról a következő használatával:
 
 - [Azure Portal](/azure/azure-functions/functions-create-first-azure-function)
 - [Azure CLI](/azure/azure-functions/functions-create-first-azure-function-azure-cli)
 
 ## <a name="step-by-step-tutorials"></a>Részletes útmutatók
 
-Megtudhatja, hogyan létrehozása és kezelése az Azure Functions.
+Ismerkedjen meg az Azure Functions-függvények létrehozásával és kezelésével.
 
-- [Egy kiszolgáló nélküli közösségi irányítópult létrehozása](/azure/azure-functions/functions-twitter-email)
+- [Kiszolgáló nélküli közösségimédia-irányítópult létrehozása](/azure/azure-functions/functions-twitter-email)
 - [Kiszolgáló nélküli API létrehozása az Azure Functions használatával](/azure/azure-functions/functions-create-serverless-api)
 
 ## <a name="samples"></a>Példák
@@ -38,7 +38,7 @@ Szkriptek keresése a gyakori feladatok kezeléséhez.
 
 - [Azure CLI](/azure/azure-functions/functions-cli-samples)
 
-## <a name="more"></a>Több,
+## <a name="more"></a>Továbbiak
 
-- [Látogasson el a további dokumentáció](/azure/app-functions/index)
-- [További tudnivalók az összes Azure-szolgáltatások](https://aka.ms/j3wr7y)
+- [Dokumentáció megtekintése további információhoz](/azure/app-functions/index)
+- [Az összes Azure-szolgáltatás bemutatása](https://aka.ms/j3wr7y)

@@ -8,12 +8,11 @@ ms.service: service-fabric
 ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
+ms.openlocfilehash: a938e300b1510a4f5f4eac3bd3d9a8bb728241ea
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: f246ee8aaecf3a398182debdea07832c75c1bd9c
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/22/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -25,11 +24,28 @@ Az Azure Service Fabric parancssori felület (CLI) egy parancssori eszköz a Ser
 
 A telepítés előtt győződjön meg arról, hogy a környezetben a Python és a pip is telepítve van. További információkért olvassa el a [pip rövid útmutató dokumentációját](https://pip.pypa.io/en/latest/quickstart/) és a hivatalos [Python-telepítési dokumentációt](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-A Python 2.7-es és 3.6-os verziója is támogatott, de javasoljuk a Python 3.6 használatát. A következő szakasz bemutatja, hogyan telepítheti az összes előfeltételt és a parancssori felületet.
+A parancssori felület a Python 2.7-es, 3.5-ös és 3.6-os verzióit támogatja. A Python 3.6-os az ajánlott verzió, mivel a Python 2.7 támogatottsága hamarosan véget ér.
+
+### <a name="service-fabric-target-runtime"></a>A Service Fabric cél futtatókörnyezete
+
+A Service Fabric parancssori felület a Service Fabric SDK legfrissebb futtatókörnyezet-verzióját hivatott támogatni. A következő táblázat segítségével határozhatja meg, hogy melyik parancssori felületet telepítse:
+
+| Parancssori felület verziója   | támogatott futtatókörnyezet-verzió |
+|---------------|---------------------------|
+| Legfrissebb (~=2)  | Legfrissebb (~=6.0)            |
+| 1.1.0         | 5.6, 5.7                  |
+
+A parancssori felület telepítendő célverzióját úgy is megadhatja, ha a `pip install` parancsot kiegészíti a `==<version>` kifejezéssel. Például az 1.1.0-s verzió esetén a szintaxis a következő:
+
+```
+pip install -I sfctl==1.1.0
+```
+
+Szükség esetén cserélje a `pip install` parancsot a korábban említett parancsra.
 
 ## <a name="install-pip-python-and-the-service-fabric-cli"></a>A pip, a Python és a Service Fabric parancssori felület telepítése
 
- Sokféleképpen telepítheti a pipet és a Pythont a platformra. Itt találja a Python 3.6 és a pip gyors telepítésének néhány lépését a főbb operációs rendszerekhez.
+Sokféleképpen telepítheti a pipet és a Pythont a platformra. Itt találja a Python 3 és a pip gyors telepítésének néhány lépését a főbb operációs rendszerekhez.
 
 ### <a name="windows"></a>Windows
 
@@ -52,47 +68,45 @@ pip --version
 
 Ezután futtassa a következő parancsot a Service Fabric parancssori felületének telepítéséhez:
 
-```
+```bat
 pip install sfctl
 sfctl -h
 ```
 
-Ha „`sfctl` nem található” hibába ütközik, futtassa az alábbi parancsokat:
+### <a name="ubuntu-and-windows-subsystem-for-linux"></a>Ubuntu és a Linux Windows alrendszere
+
+A Service Fabric parancssori felületének telepítéséhez futtassa a következő parancsokat:
 
 ```bash
-export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
-```
-
-### <a name="ubuntu"></a>Ubuntu
-
-Az Ubuntu 16.04 asztali verziójához telepítheti a Python 3.6-ot egy külső gyártótól származó személyes csomagarchívummal (PPA-val).
-
-A terminálból futtassa a következő parancsokat:
-
-```bash
-sudo add-apt-repository ppa:jonathonf/python-3.6
-sudo apt-get update
-sudo apt-get install python3.6
+sudo apt-get install python3
 sudo apt-get install python3-pip
+pip3 install sfctl
 ```
 
-Ezután, ha csak a Python 3.6-os telepítéshez szeretné telepíteni a Service Fabric parancssori felületet, futtassa a következő parancsot:
+Ezután a telepítést a következő paranccsal tesztelheti:
 
 ```bash
-python3.6 -m pip install sfctl
 sfctl -h
 ```
 
-Ha „`sfctl` nem található” hibába ütközik, futtassa az alábbi parancsokat:
+Ha egy „parancs nem található” hiba jelenik meg, például a következő:
+
+`sfctl: command not found`
+
+Ellenőrizze, hogy a `~/.local/bin` elérhető-e a `$PATH` útvonalon:
 
 ```bash
 export PATH=$PATH:~/.local/bin
 echo "export PATH=$PATH:~/.local/bin" >> .bashrc
 ```
 
-Ezek a lépések nincsenek hatással a rendszeren telepített Python 3.5-re és 2.7-re. Ne próbálja módosítani ezeket a telepítéseket, ha nem ismeri az Ubuntut.
+Ha a Linux Windows alrendszerén végzett telepítés nem megfelelő mappaengedélyek miatt meghiúsul, szükség lehet a telepítés újbóli megkísérlésére emelt szintű engedélyekkel:
 
+```bash
+sudo pip3 install sfctl
+```
+
+<a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
 
 MacOS rendszeren javasoljuk, hogy a [HomeBrew csomagkezelőt](https://brew.sh) használja. Ha a HomeBrew még nincs telepítve, a következő parancs futtatásával telepítse:
@@ -108,17 +122,6 @@ brew install python3
 pip3 install sfctl
 sfctl -h
 ```
-
-
-Ha „`sfctl` nem található” hibába ütközik, futtassa az alábbi parancsokat:
-
-```bash
-export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
-```
-
-
-Ezek a lépések nem módosítják a rendszerre telepített Python 2.7-t.
 
 ## <a name="cli-syntax"></a>A parancssori felület szintaxisa
 
@@ -239,13 +242,11 @@ sfctl application create -h
 A Service Fabric parancssori felületének frissítéséhez futtassa a következő parancsokat (az eredeti telepítéskor használt paramétertől függően a `pip` helyett írjon be `pip3`-at):
 
 ```bash
-pip uninstall sfctl 
-pip install sfctl 
+pip uninstall sfctl
+pip install sfctl
 ```
-
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazás üzembe helyezése az Azure Service Fabric parancssori felülettel](service-fabric-application-lifecycle-sfctl.md)
 * [A Service Fabric használatának első lépései Linuxon](service-fabric-get-started-linux.md)
-

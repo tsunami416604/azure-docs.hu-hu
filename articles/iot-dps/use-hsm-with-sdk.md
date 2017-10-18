@@ -1,6 +1,6 @@
 ---
-title: "Azure útmutató – Eltérő HSM használata az eszközkiépítési szolgáltatás ügyfél-SDK-jával | Microsoft Docs"
-description: "Azure útmutató – Eltérő HSM használata fizikai eszközökkel és szimulátorokkal az eszközkiépítési szolgáltatás ügyfél-SDK-jával"
+title: "Azure útmutató – Különböző hardverbiztonsági modellek használata az eszközkiépítési szolgáltatás ügyfél-SDK-jával | Microsoft Docs"
+description: "Azure útmutató – Különböző hardverbiztonsági modellek használata az eszközkiépítési szolgáltatás ügyfél-SDK-jával"
 services: iot-dps
 keywords: 
 author: yzhong94
@@ -12,14 +12,12 @@ documentationcenter:
 manager: 
 ms.devlang: na
 ms.custom: mvc
+ms.openlocfilehash: 620d86b62cf43c3e1a5f7f5c724fcf00174f30e8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: a5649ab873993d20803cb01a4b0ecc278c3ce16c
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-different-hardware-security-modules-with-device-provisioning-service-client-sdk"></a>Eltérő hardveres biztonsági modulok használata az eszközkiépítési szolgáltatás ügyfél-SDK-jával
 Ezek a lépések azt mutatják be, hogyan használhat eltérő [hardveres biztonsági modulokat (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) az eszközkiépítési szolgáltatás ügyfél-SDK-jával a C nyelv, valamint fizikai eszköz és szimulátor használatával.  A kiépítési szolgáltatás két hitelesítési módot támogat: az X**.**509 és a Platformmegbízhatósági modul (TPM) technológiát.
 
@@ -150,4 +148,3 @@ Miután megtörtént az eszköz kiépítése a kiépítési szolgáltatással, e
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```
-

@@ -3,7 +3,7 @@ title: "Frissítéskezelési megoldás az OMS-ben | Microsoft Docs"
 description: "Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldást Windows és Linux rendszerű számítógépek frissítéseinek kezelésére."
 services: operations-management-suite
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
@@ -13,19 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
-ms.author: magoedte
+ms.author: eslesar
+ms.openlocfilehash: 839689ab991fdc251608cf79d65a5810db5eeeb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: e463102a4b21253e28b01d6d149aba55bab18674
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/31/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-management-solution-in-oms"></a>Frissítéskezelési megoldás az OMS-ben
 
 ![Frissítéskezelési szimbólum](./media/oms-solution-update-management/update-management-symbol.png)
 
 Az OMS-beli frissítéskezelési megoldással az Azure-ban üzembe helyezett Windows és Linux rendszerű számítógépeken, helyszíni környezetekben vagy más felhőszolgáltatóknál kezelheti az operációs rendszer biztonsági frissítéseit.  Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
+
+## <a name="update-management-in-azure-automation"></a>Az Azure Automation frissítéseinek felügyelete
+
+A virtuális gépek frissítéseinek felügyeletét közvetlenül az [Azure Automation](../automation/automation-offering-get-started.md)-fiókjából engedélyezheti.
+Ha szeretné megtudni, hogyan engedélyezheti a virtuális gépek frissítéseinek felügyeletét az Automation-fiókjából, akkor tekintse meg a [több virtuális gép frissítéseinek felügyeletét](../automation/manage-update-multi.md) ismertető cikket.
 
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
@@ -307,11 +311,17 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 | Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |Minden olyan csomag, amelyhez kritikus vagy biztonsági rést javító frissítés érhető el | 
 | Type:UpdateRunProgress &#124; measure Count() by UpdateRunName |Azon frissítéstelepítések listája, amelyekhez módosított számítógépek találhatóak | 
 | Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |Az ebben a frissítésfuttatásban frissített számítógépek (cserélje le az értéket a saját frissítéstelepítésének nevére) | 
-| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |Minden olyan Ubuntu-gép, amelyhez bármilyen frissítés érhető el | 
+| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |Minden olyan Ubuntu-gép, amelyhez bármilyen frissítés érhető el |
+
+## <a name="integrate-with-system-center-configuration-manager"></a>Integrálás a System Center Configuration Managerrel
+
+Azok a felhasználók, akik befektettek a System Center Configuration Manager használatába a számítógépek, kiszolgálók és mobileszközök kezelése érdekében, a teljesítményét és fejlettségét a szoftverfrissítések kezelése során, a szoftverfrissítés-kezelési (SUM) ciklus részeként is kihasználják.
+
+Ha szeretné megtudni, hogyan integrálható az OMS frissítéskezelési megoldás a System Center Configuration Managerrel, tekintse át [a System Center Configuration Manager az OMS frissítéskezelési megoldással történő integrálását](../automation/oms-solution-updatemgmt-sccmintegration.md) ismertető cikket.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ebben a szakaszban arról talál információkat, hogyan háríthatja el a frissítéskezelési megoldásban felmerülő hibákat.  
+Ebben a szakaszban arról talál információkat, hogyan háríthatja el a frissítéskezelési megoldásban felmerülő hibákat.
 
 ### <a name="how-do-i-troubleshoot-onboarding-issues"></a>Hogyan háríthatom el a bevezetési hibákat?
 Ha problémák merülnek fel a megoldás vagy virtuális gépek bevezetése során, ellenőrizze az **Application and Services Logs\Operations Manager** (Alkalmazási és szolgáltatási naplók\Operations Manager) eseménynaplóban a 4502-es eseményazonosítóval ellátott eseményeket, valamint a következőt tartalmazó eseményüzeneteket: **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**.  Az alábbi táblázat konkrét hibaüzeneteket, illetve egy-egy lehetséges megoldásukat ismerteti.  
@@ -333,4 +343,3 @@ További információért tekintse meg az [Automation runbook-kimeneteivel és -
 * A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-searches.md) Naplókeresés funkciójával is megtekintheti.
 * [Saját irányítópult létrehozásával](../log-analytics/log-analytics-dashboards.md) megjelenítheti a felügyelt számítógépek frissítési megfelelőségét.
 * [Létrehozhat riasztásokat](../log-analytics/log-analytics-alerts.md) a számítógépekről hiányzó kritikus frissítések jelzésére vagy arra az estre, ha egy számítógép automatikus frissítése letiltott állapotba kerül.  
-

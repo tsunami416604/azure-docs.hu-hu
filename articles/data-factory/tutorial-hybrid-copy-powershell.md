@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/14/2017
 ms.author: jingwang
+ms.openlocfilehash: 74e2a57aa933c7025db952fa09de236f5dabb8c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 60641ddfef7846f0e8b5d850e716b2652bf62367
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="copy-data-between-on-premises-and-cloud"></a>Adatok másolása a helyszíni rendszer és a felhő között
 Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint például az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket. 
 
@@ -218,12 +216,12 @@ Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre
         "name": "SqlServerLinkedService"
     }
    ```
-2. A helyszíni saját üzemeltetésű integrációs modulban a bizalmas hasznos JSON-adatok titkosításához futtassa a **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** parancsot, és adja át a fenti hasznos JSON-adatokat. A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja és a saját üzemeltetésű integrációs modul csomópontján helyileg tárolja. A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az „encryptedLinkedService.json” fájlba), amely titkosított hitelesítő adatokat tartalmaz. 
+2. A helyszíni saját üzemeltetésű integrációs modulban a bizalmas hasznos JSON-adatok titkosításához futtassa a **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** parancsot, és adja át a fenti hasznos JSON-adatokat. A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja és a saját üzemeltetésű integrációs modul csomópontján helyileg tárolja. A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az „encryptedLinkedService.json” fájlba), amely titkosított hitelesítő adatokat tartalmaz. 
 
     A parancs futtatása előtt cserélje le az **&lt;integration runtime name&gt;** értéket az integrációs modul nevére.
 
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 3. Az **SqlServerLinkedService** létrehozásához az előző lépésben szereplő JSON használatával futtassa a következő parancsot:

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/29/2017
 ms.author: arramac
+ms.openlocfilehash: c184b02f46ac2ad66c6ce607967a687c82d31477
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 2073948d44ccc4b9b83e4eaf4f250dc272e46292
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
 
@@ -31,7 +30,7 @@ Az [Azure Cosmos DB](introduction.md) Table API-t biztosít olyan, az Azure Tabl
 * Garantáltan magas szintű rendelkezésre állás.
 * [Automatikus másodlagos indexelés](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
-Ezek az alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és ki tudják használni a prémium képességek előnyeit.
+Ezek az alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és ki tudják használni a prémium képességek előnyeit. A Table API .NET és Python esetében is rendelkezésre áll.
 
 Ajánlott megnézni a következő videót, amelyben Aravind Ramachandran az Azure Cosmos DB-hez készült Table API használatának első lépéseit ismerteti:
 
@@ -64,5 +63,6 @@ Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azu
 * [Fejlesztés a Table API-val .NET-keretrendszerben](tutorial-develop-table-dotnet.md)
 * [Táblaadatok lekérdezése a Table API-val](tutorial-query-table.md)
 * [Tudnivalók az Azure Cosmos DB globális terjesztésének beállításáról a Table API-val](tutorial-global-distribution-table.md)
-* [Azure Cosmos DB Table API SDK .NET-keretrendszerhez](table-sdk-dotnet.md)
+* [Azure Cosmos DB Table .NET API](table-sdk-dotnet.md)
+* [Azure Cosmos DB Table SDK Pythonhoz](table-sdk-python.md)
 

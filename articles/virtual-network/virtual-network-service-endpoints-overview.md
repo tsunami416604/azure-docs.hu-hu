@@ -15,17 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
+ms.openlocfilehash: 0a0fe6f0e353e33cec80a9e06a61e772931cdea6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: e2359bc6002bd5c823467a33a4660ebccd116374
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="virtual-network-service-endpoints-preview"></a>Virtuális hálózati szolgáltatásvégpontok (előzetes verzió)
 
-A virtuális hálózatok (VNet) szolgáltatásvégpontjai kiterjesztik a virtuális hálózat magáncímterét és a VNet identitását az Azure-szolgáltatásokra egy közvetlen kapcsolaton. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át.
+A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsolaton keresztül kiterjesztik a virtuális hálózat magáncímterét és a VNet identitását az Azure-szolgáltatásokra. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át.
 
 Ez a szolgáltatás előzetes verzióban érhető el a következő Azure-szolgáltatásokhoz és -régiókhoz:
 
@@ -57,8 +55,11 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 - A virtuális hálózatok szolgáltatásvégpontjai adják meg a virtuális hálózatok identitását az Azure-szolgáltatásnak. Ha a szolgáltatásvégpontok engedélyezve vannak a virtuális hálózaton, akkor Azure-szolgáltatásbeli erőforrásokat biztosíthat a virtuális hálózatnak úgy, hogy az erőforrásokhoz megad egy virtuális hálózati szabályt.
 - Manapság az Azure-szolgáltatások virtuális hálózatokról induló forgalma nyilvános IP-címeket használ forrás IP-ként. A szolgáltatásvégpontok használatakor a szolgáltatások forgalma átvált a virtuális hálózatok privát címeinek forrás IP-címekként való használatára a virtuális hálózatról az Azure-szolgáltatás felé irányuló forgalom esetén. Ez a váltás lehetővé teszi a szolgáltatások elérését anélkül, hogy szükség lenne az IP-tűzfalakban használt lefoglalt, nyilvános IP-címekre.
-- Az Azure-szolgáltatások helyszíni hozzáférésének biztosítása: Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgáltatási erőforrások nem érhetők el helyszíni hálózatokról. Ha engedélyezni szeretné a helyszíni eredetű forgalmat, ahhoz engedélyeznie kell a NAT IP-címeket is a helyszíni vagy ExpressRoute-kapcsolatcsoportokon. A NAT IP-címeket az Azure-szolgáltatási erőforrások IP-tűzfalainak konfigurálásával lehet megadni.
-- ExpressRoute: Ha [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-ot használ a helyszíni eredetű forgalomhoz, mindegyik ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezt a két IP-címet az erőforrás IP-tűzfalának beállításai között. Az ExpressRoute-kapcsolatcsoport IP-címeinek megtekintéséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon.
+- __Az Azure-szolgáltatások helyszíni hozzáférésének biztosítása:__
+
+  Alapértelmezés szerint a virtuális hálózatokhoz biztosított Azure-szolgáltatási erőforrások nem érhetők el helyszíni hálózatokról. Ha engedélyezni szeretné a helyszíni eredetű forgalmat, ahhoz engedélyeznie kell a nyilvános (általában NAT) IP-címeket is a helyszíni vagy ExpressRoute-kapcsolatokon. Ezeket az IP-címeket az Azure-szolgáltatási erőforrások IP-tűzfalainak konfigurálásával lehet megadni.
+
+  ExpressRoute: Ha [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-ot használ a helyszíni eredetű forgalomhoz vagy a nyilvános társviszony-létesítéshez, akkor mindegyik ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezt a két nyilvános IP-címet az erőforrás IP-tűzfalának beállításai között. Az ExpressRoute-kapcsolatcsoport IP-címeinek megtekintéséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk a [NAT az ExpressRoute nyilvános társviszony-létesítési szolgáltatásához történő beállításáról](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
 
 ![Azure-szolgáltatások biztosítása virtuális hálózatokhoz](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -76,9 +77,9 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
   Az IP-címváltás csak a virtuális hálózatról kimenő szolgáltatásforgalomra van hatással. A virtuális gépekhez rendelt nyilvános IPv4-címekre bejövő, illetve azokról kimenő bármilyen egyéb forgalomra a váltás nincs hatással. Azure-szolgáltatások esetében, ha a meglévő tűzfalszabályok az Azure nyilvános IP-címeit használják, akkor a virtuális hálózat privát címeire történő váltást követően nem működnek tovább.
 - A szolgáltatásvégpontok használatakor az Azure-szolgáltatások DNS-bejegyzései változatlanok maradnak, és továbbra is feloldják az Azure-szolgáltatáshoz rendelt nyilvános IP-címeket.
-- Hálózati biztonsági csoportok szolgáltatásvégpontokkal:
-  - Engedélyezik a kifelé irányuló internetes adatforgalmat, így engedélyezik a virtuális hálózatok adatforgalmát is az Azure-szolgáltatások nyilvános IP-címei felé.
-  - Lehetővé teszik a nyilvános IP-címek felé irányuló adatforgalom letiltását, az Azure-szolgáltatások címei felé irányuló forgalom kivételével. Ehhez [szolgáltatáscímkéket](security-overview.md#service-tags) használnak a hálózati biztonsági csoportokban. A hálózati biztonsági csoportok szabályai között meghatározhatja célként a támogatott Azure-szolgáltatásokat. Az egyes címkékhez tartozó IP-címek karbantartását az Azure biztosítja.
+- Hálózati biztonsági csoportok (NSG-k) szolgáltatásvégpontokkal:
+  - Alapértelmezés szerint az NSG-k engedélyezik a kimenő internetforgalmat, így a virtuális hálózatról az Azure-szolgáltatások felé tartó forgalmat is. Ez a szolgáltatásvégpontok használatával is ugyanígy működik. 
+  - Ha szeretne megtagadni minden kimenő internetforgalmat, és csak a meghatározott Azure-szolgáltatások felé menő forgalmat szeretné engedélyezni, ezt az NSG-kben az __Azure-szolgáltatáscímkék__ használatával teheti meg. Az NSG-szabályok között megadhatja célként a támogatott Azure-szolgáltatásokat, az egyes címkékhez tartozó IP-címek karbantartását pedig az Azure biztosítja. További információért lásd az [NSG-khez elérhető Azure-szolgáltatáscímkéket](https://aka.ms/servicetags) ismertető szakaszt. 
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
@@ -89,7 +90,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 ### <a name="logging-and-troubleshooting"></a>Naplózás és hibaelhárítás
 
 Ha konfigurálta a szolgáltatásvégpontokat egy adott szolgáltatáshoz, a következőképp ellenőrizheti, hogy a szolgáltatásvégpont útvonala érvényes-e: 
-
+ 
 - Szolgáltatáskérések forrás IP-címeinek hitelesítése a szolgáltatási diagnosztikában. Minden szolgáltatásvégponttal rendelkező új kérés esetében a forrás IP-címnél a virtuális hálózat magánjellegű IP-címe jelenik meg, amely a virtuális hálózatról a hozzáférést kérvényező ügyfélhez van rendelve. A végpont nélkül ez a cím egy Azure-beli nyilvános IP-cím.
 - Az érvényes útvonalak megtekintése az egyes alhálózatok hálózati adapterein. A szolgáltatásra mutató útvonal:
   - Egy pontosabban meghatározott alapértelmezett útvonalat jelent, az egyes szolgáltatások előtagtartományának megfelelően.
@@ -121,5 +122,4 @@ Az Azure-szolgáltatási erőforrások (például Azure-tárfiókok) esetében a
 - [Azure Storage-fiókok biztosítása virtuális hálózatokhoz](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) – útmutató
 - [Azure SQL Database biztosítása virtuális hálózatokhoz](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) – útmutató
 - [Azure-szolgáltatások integrálása virtuális hálózatokon](virtual-network-for-azure-services.md) – útmutató
-
 

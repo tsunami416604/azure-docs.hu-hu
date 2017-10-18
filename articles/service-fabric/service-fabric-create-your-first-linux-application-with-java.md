@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/20/2017
 ms.author: ryanwi
+ms.openlocfilehash: c7625a5670aca5d105601432fedfd0d7a78bb53c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
-ms.openlocfilehash: 68f9492231d367b1ede6ab032ec1c66c75150957
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/21/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Az első Java Service Fabric Reliable Actors-alkalmazás létrehozása Linuxon
 > [!div class="op_single_selector"]
@@ -49,11 +48,28 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel S
   ```bash
   sudo npm install -g yo
   ```
-3. A Service Fabric Yeo Java-alkalmazásgenerátor telepítése az NPM-ből
+3. A Service Fabric Yeoman Java-alkalmazásgenerátor telepítése az NPM-ből
 
   ```bash
   sudo npm install -g generator-azuresfjava
   ```
+
+## <a name="basic-concepts"></a>Alapfogalmak
+A Reliable Actors használatának elsajátításához csak néhány alapfogalommal kell tisztában lennie:
+
+* **Aktorszolgáltatás**. A Reliable Actors aktorai Reliable Services-szolgáltatásokba vannak csomagolva, amelyek a Service Fabric-infrastruktúrában helyezhetők üzembe. Az aktorpéldányok elnevezett szolgáltatáspéldányokban aktiválhatók.
+* **Aktorregisztráció**. Akárcsak a Reliable Services esetében, a Reliable Actor-szolgáltatásokat is regisztrálni kell a Service Fabric-futtatókörnyezetben. Emellett az aktor típusát regisztrálni kell az Actor-futtatókörnyezetben.
+* **Aktorillesztő**. Az aktor illesztője határozza meg az aktor erős típusmegadású nyilvános illesztőjét. A Reliable Actor modellterminológiában az aktor illesztője határozza meg azt, hogy az aktor milyen típusú üzeneteket képes értelmezni és feldolgozni. Az aktor illesztőjét használják a további aktorok és ügyfélalkalmazások, hogy üzeneteket „küldjenek” (aszinkron módon) az aktor felé. A Reliable Actors több illesztőt is képes implementálni.
+* **ActorProxy-osztály**. Az ActorProxy-osztály használatával hívják meg az ügyfélalkalmazások az aktor illesztőjén keresztül közzétett metódusokat. Az ActorProxy-osztály két fontos funkciót lát el:
+  
+  * Névfeloldás: Képes megállapítani az aktor helyét a fürtben (megtalálja a fürt azon csomópontját, ahol az aktor található).
+  * Hibakezelés: Képes újra megpróbálkozni a metódusok meghívásával, majd újra feloldani az aktor helyét például olyan esetben, ha egy hiba miatt az aktort át kellett helyezni a fürt egy másik csomópontjára.
+
+Az aktorok illesztőivel kapcsolatban a következő szabályokat érdemes megemlíteni:
+
+* Az aktorok illesztőmetódusait nem lehet túlterhelni.
+* Az aktorok illesztőmetódusainak nem lehetnek „out”, „ref” vagy opcionális paraméterei.
+* Az általános illesztők nem támogatottak.
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
 A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmaz, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. Az utolsó szakaszban telepített generátor megkönnyíti az első szolgáltatás létrehozását, és a továbbiak hozzáadását a későbbiekben.  Service Fabric Java-alkalmazásokat Eclipse beépülő modul használatával is létrehozhat, kiépíthet és telepíthet. Lásd: [Az első Java-alkalmazás létrehozása és telepítése az Eclipse használatával](service-fabric-get-started-eclipse.md). Ennek az útmutatónak a céljaira a Yeoman használatával hoz létre egy egyetlen szolgáltatást kezelő alkalmazást, amely egy számláló értékét olvassa be és tárolja.
@@ -62,6 +78,118 @@ A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmaz, melyek mi
 2. Adjon nevet az alkalmazásnak.
 3. Válassza ki az első szolgáltatása típusát, majd nevezze el. A jelen oktatóanyag céljaira válasszon egy Reliable Actor-szolgáltatást. A többi szolgáltatástípusról az [A Service Fabric programozási modell áttekintése](service-fabric-choose-framework.md) című fejezet nyújt bővebb tájékoztatást.
    ![Javához készült Service Fabric Yeoman-generátor][sf-yeoman]
+
+Ha az alkalmazásnak a „HelloWorldActorApplication”, az aktornak pedig a „HelloWorldActor” nevet adja, akkor a következő szerkezet jön létre:
+
+```bash
+HelloWorldActorApplication/
+├── build.gradle
+├── HelloWorldActor
+│   ├── build.gradle
+│   ├── settings.gradle
+│   └── src
+│       └── reliableactor
+│           ├── HelloWorldActorHost.java
+│           └── HelloWorldActorImpl.java
+├── HelloWorldActorApplication
+│   ├── ApplicationManifest.xml
+│   └── HelloWorldActorPkg
+│       ├── Code
+│       │   ├── entryPoint.sh
+│       │   └── _readme.txt
+│       ├── Config
+│       │   ├── _readme.txt
+│       │   └── Settings.xml
+│       ├── Data
+│       │   └── _readme.txt
+│       └── ServiceManifest.xml
+├── HelloWorldActorInterface
+│   ├── build.gradle
+│   └── src
+│       └── reliableactor
+│           └── HelloWorldActor.java
+├── HelloWorldActorTestClient
+│   ├── build.gradle
+│   ├── settings.gradle
+│   ├── src
+│   │   └── reliableactor
+│   │       └── test
+│   │           └── HelloWorldActorTestClient.java
+│   └── testclient.sh
+├── install.sh
+├── settings.gradle
+└── uninstall.sh
+```
+## <a name="reliable-actors-basic-building-blocks"></a>A Reliable Actors alapszintű építőelemei
+A korábban ismertetett alapfogalmak a Reliable Actor-szolgáltatások alapszintű építőelemeire is vonatkoznak.
+
+### <a name="actor-interface"></a>Aktorillesztő
+Az aktor illesztőjének definícióját tartalmazza. Ez az illesztő határozza meg azt az aktormegállapodást, amelyen az aktor implementálása és az aktort meghívó ügyfelek osztoznak. Érdemes az illesztőt egy olyan helyen definiálni, amely elkülönül az aktor implementálásától, és több egyéb szolgáltatás vagy ügyfélalkalmazás is osztozhat rajta.
+
+`HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`:
+
+```java
+public interface HelloWorldActor extends Actor {
+    @Readonly   
+    CompletableFuture<Integer> getCountAsync();
+
+    CompletableFuture<?> setCountAsync(int count);
+}
+```
+
+### <a name="actor-service"></a>Aktorszolgáltatás
+Az aktor implementálását és az aktor regisztrációs kódját tartalmazza. Az aktor osztálya határozza meg az aktor illesztőjét. Itt végzi el az aktor a feladatát.
+
+`HelloWorldActor/src/reliableactor/HelloWorldActorImpl`:
+
+```java
+@ActorServiceAttribute(name = "HelloWorldActor.HelloWorldActorService")
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+public class HelloWorldActorImpl extends ReliableActor implements HelloWorldActor {
+    Logger logger = Logger.getLogger(this.getClass().getName());
+
+    protected CompletableFuture<?> onActivateAsync() {
+        logger.log(Level.INFO, "onActivateAsync");
+
+        return this.stateManager().tryAddStateAsync("count", 0);
+    }
+
+    @Override
+    public CompletableFuture<Integer> getCountAsync() {
+        logger.log(Level.INFO, "Getting current count value");
+        return this.stateManager().getStateAsync("count");
+    }
+
+    @Override
+    public CompletableFuture<?> setCountAsync(int count) {
+        logger.log(Level.INFO, "Setting current count value {0}", count);
+        return this.stateManager().addOrUpdateStateAsync("count", count, (key, value) -> count > value ? count : value);
+    }
+}
+```
+
+### <a name="actor-registration"></a>Aktorregisztráció
+Az aktorszolgáltatást regisztrálni kell egy bizonyos szolgáltatástípusként a Service Fabric-futtatókörnyezetben. Ahhoz, hogy az aktorszolgáltatás futtatni tudja az aktorpéldányokat, az aktor típusát is regisztrálni kell az aktorszolgáltatásba. Az aktorok esetében ezt a feladatot az `ActorRuntime` regisztrációs metódus végzi el.
+
+`HelloWorldActor/src/reliableactor/HelloWorldActorHost`:
+
+```java
+public class HelloWorldActorHost {
+
+    public static void main(String[] args) throws Exception {
+
+        try {
+            ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new ActorServiceImpl(context, actorType, ()-> new HelloWorldActorImpl()), Duration.ofSeconds(10));
+
+            Thread.sleep(Long.MAX_VALUE);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+}
+```
 
 ## <a name="build-the-application"></a>Az alkalmazás létrehozása
 A Service Fabric Yeoman-sablonok tartalmaznak egy [Gradle](https://gradle.org/) felépítési szkriptet, amelyet felhasználhat az alkalmazás terminálból történő létrehozásához.
@@ -229,4 +357,3 @@ Nemrégiben áthelyeztük a Service Fabric Java-kódtárakat a Service Fabric Ja
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-java/sfx-primary.png
 [sf-eclipse-templates]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-eclipse-templates.png
-

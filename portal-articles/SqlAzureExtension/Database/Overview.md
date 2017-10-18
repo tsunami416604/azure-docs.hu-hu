@@ -1,6 +1,6 @@
 ---
-title: "SQL database áttekintése |} Microsoft Docs"
-description: "Súgó tartalma SQL adatbázis – áttekintés az Azure portálon"
+title: "Az SQL Database áttekintése | Microsoft Docs"
+description: "Az SQL Database áttekintő súgótartalmai az Azure Portalon"
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: b41b4b7d302b0f3c528fa424627b4446a5e2c0ca
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-database-documentation"></a>SQL Database-dokumentáció
 
@@ -28,7 +28,7 @@ Megtudhatja, hogyan hozhat létre SQL-adatbázist, illetve hogyan kezelheti azt 
 
 ## <a name="step-by-step-tutorials"></a>Részletes útmutatók
 
-Megtudhatja, hogyan létrehozására, kezelésére és SQL-Adatbázist használó adatbázisok áttelepítése.
+Megtudhatja, hogyan hozhat létre, kezelhet és migrálhat adatbázisokat az SQL DB használatával.
 
 - [Egy új SQL-adatbázis sémájának létrehozása és megtervezése](/azure/sql-database/sql-database-design-first-database)
 - [Egy meglévő SQL Server-adatbázis áttelepítése az Azure SQL Database szolgáltatásba](/azure/sql-database/sql-database-migrate-your-sql-server-database)
@@ -47,7 +47,7 @@ Szkriptek keresése a gyakori feladatok kezeléséhez.
 - [Azure CLI](/azure/sql-database/sql-database-cli-samples)
 - [Azure PowerShell](/azure/sql-database/sql-database-powershell-samples)
 
-## <a name="more"></a>Több,
+## <a name="more"></a>Továbbiak
 
-- [Látogasson el a további dokumentáció](/azure/sql-database/index)
-- [További tudnivalók az összes Azure-szolgáltatások](https://aka.ms/j3wr7y)
+- [Dokumentáció megtekintése további információhoz](/azure/sql-database/index)
+- [Az összes Azure-szolgáltatás bemutatása](https://aka.ms/j3wr7y)
