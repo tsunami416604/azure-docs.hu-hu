@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 8f16f23928977ef6bf53f41c79375290da70a2fa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 69296eb9ac2a74a97b632d27733a6a06500b4abd
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-your-device-to-your-iot-hub-using-net"></a>Az eszköz csatlakoztatása az IoT Hubhoz .NET-tel
 
@@ -201,7 +200,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre, amely egy, az eszköz
     Console.ReadLine();
     ```
 
-    Alapértelmezés szerint a **Create** metódus a .NET-keretrendszerre épülő alkalmazásokban létrehoz egy **DeviceClient** példányt, amely az AMQP protokollt használja az IoT Hubbal való kommunikációhoz. Az MQTT vagy a HTTP protokoll használatához használja a **Create** metódus felülbírálását, amely lehetővé teszi a protokoll megadását. Az UWP- és a PLC-ügyfelek alapértelmezés szerint a HTTP protokollt használják. Ha a HTTP protokollt használja, hozzá kell adnia a **Microsoft.AspNet.WebApi.Client** NuGet-csomagot a projekthez, hogy tartalmazza a **System.Net.Http.Formatting** névteret.
+    Alapértelmezés szerint a **Create** metódus a .NET-keretrendszerre épülő alkalmazásokban létrehoz egy **DeviceClient** példányt, amely az AMQP protokollt használja az IoT Hubbal való kommunikációhoz. Az MQTT vagy a HTTPS protokoll használatához használja a **Create** metódus felülbírálását, amely lehetővé teszi a protokoll megadását. Az UWP- és a PLC-ügyfelek alapértelmezés szerint a HTTPS protokollt használják. Ha a HTTPS protokollt használja, hozzá kell adnia a **Microsoft.AspNet.WebApi.Client** NuGet-csomagot a projekthez, hogy tartalmazza a **System.Net.Http.Formatting** névteret.
 
 Ez az oktatóanyag végigvezeti egy IoT Hub-eszközalkalmazás létrehozásának lépésein. A [Connected Service for Azure IoT Hub][lnk-connected-service] (Csatlakoztatott szolgáltatás Azure IoT Hubhoz) Visual Studio-bővítmény használatával is hozzáadhatja a szükséges kódot az eszközalkalmazáshoz.
 
@@ -263,4 +262,3 @@ Az IoT-megoldás kibővítésével és az eszközről a felhőbe irányuló üze
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-

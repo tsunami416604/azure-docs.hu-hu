@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 90833fa9744eac298b0da82cd3d12f27cc237510
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: ba0030ca25adf13a3a831facec2ded9cff0bd882
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-6-create-measures"></a>6. lecke: Mértékek létrehozása
 
@@ -53,7 +52,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
     DaysCurrentQuarterToDate:=COUNTROWS( DATESQTD( 'DimDate'[Date])) 
     ```
   
-    Láthatja, hogy a bal felső cella most egy mérték nevét tartalmazza (**DaysCurrentQuarterToDate**), amelyet egy eredmény követ (**92**).
+    Láthatja, hogy a bal felső cella most egy mérték nevét tartalmazza (**DaysCurrentQuarterToDate**), amelyet egy eredmény követ (**92**). Az eredmény jelenleg nem releváns, mivel nem lett alkalmazva felhasználói szűrő.
     
       ![aas-lesson6-newmeasure](../tutorials/media/aas-lesson6-newmeasure.png) 
     
@@ -102,7 +101,7 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
     |TaxAmt|InternetTotalTaxAmt|Összeg|=SZUM([TaxAmt])|  
     |Freight|InternetTotalFreight|Összeg|=SZUM([Freight])|  
   
-2.  Kattintson a mérték rács egy üres cellájára, és a szerkesztőléc segítségével hozza létre és nevezze el az alábbi mértékeket sorrendben:  
+2.  Kattintson a mérték rács egy üres cellájára, és a szerkesztőléc segítségével hozza létre sorrendben az alábbi egyéni mértékeket:  
   
       ```
       InternetPreviousQuarterMargin:=CALCULATE([InternetTotalMargin],PREVIOUSQUARTER('DimDate'[Date]))
@@ -134,4 +133,3 @@ A FactInternetSales táblához létrehozott mértékek használatával elemezhet
 [7. lecke: Fő teljesítménymutatók létrehozása](../tutorials/aas-lesson-7-create-key-performance-indicators.md)  
 
   
-

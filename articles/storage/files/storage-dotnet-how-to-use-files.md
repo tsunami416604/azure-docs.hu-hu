@@ -14,14 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 98e5964f4a2dffd728dae1c452facfa6ea488167
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3ff076f1b5c708423ee40e723875c221847258b0
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel 
 > [!NOTE]
 > Ez a cikk bemutatja, hogyan kezelheti az Azure Files szolgáltatást .NET-kóddal. Az Azure Files szolgáltatással kapcsolatos további információkért lásd: [Bevezetés az Azure Files használatába](storage-files-introduction.md).
@@ -32,7 +30,7 @@ ms.lasthandoff: 09/25/2017
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-Ez az oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET használatával az Azure Files szolgáltatást használó alkalmazásokat vagy szolgáltatásokat a fájladatok tárolásához. Ebben az oktatóanyagban egy egyszerű konzolalkalmazást hozunk majd létre, és bemutatjuk, hogyan hajthat végre alapszintű műveleteket a .NET-keretrendszer és az Azure Files használatával:
+Ez az oktatóanyag bemutatja annak alapjait, hogyan fejleszthet a .NET használatával az Azure Files szolgáltatást használó alkalmazásokat vagy szolgáltatásokat a fájladatok tárolásához. Ebben az oktatóanyagban egy egyszerű konzolalkalmazást hozunk létre, és bemutatjuk, hogyan hajthat végre alapszintű műveleteket a .NET-keretrendszer és az Azure Files használatával:
 
 * Egy fájl tartalmának lekérése
 * Egy fájlmegosztás kvótájának (maximális méretének) beállítása.
@@ -138,7 +136,7 @@ if (share.Exists())
 A kimenet megtekintéséhez futtassa a konzolalkalmazást.
 
 ## <a name="set-the-maximum-size-for-a-file-share"></a>Egy fájlmegosztás maximális méretének beállítása
-Az Azure Storage ügyféloldali kódtár 5.x-es verziójától kezdve megadhat gigabájtban kifejezve egy kvótát (vagy maximális méretet) egy fájlmegosztáshoz. Azt is ellenőrizheti, hogy aktuálisan mennyi adatot tárol a fájlmegosztás.
+Az Azure Storage ügyféloldali kódtár 5.x-es verziójától kezdve gigabájtokban kifejezve megadhat egy kvótát (vagy maximális méretet) egy fájlmegosztáshoz. Azt is ellenőrizheti, hogy aktuálisan mennyi adatot tárol a fájlmegosztás.
 
 Ha beállít egy kvótát egy megosztáshoz, korlátozhatja a megosztáson tárolt fájlok összesített méretét. Ha a megosztásban található fájlok teljes mérete meghaladja a megosztáshoz beállított kvótát, az ügyfelek nem növelhetik tovább a meglévő fájlok méretét, és csak olyan új fájlokat hozhatnak létre, amelyek üresek.
 
@@ -327,10 +325,84 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 Ugyanígy másolhat blobokat fájlokba. Ha a forrásobjektum egy blob, hozzon létre egy SAS-t, amely hitelesíti a blobhoz való hozzáférést a másolási művelet során.
 
+## <a name="share-snapshots-preview"></a>Megosztási pillanatképek (előzetes verzió)
+Az Azure Storage ügyféloldali kódtár 8.5-ös verziójától kezdve létrehozhat megosztási pillanatképeket (előzetes verzió). Ezekből felsorolást is készíthet, tallózhat köztük, és törölheti is a megosztási pillanatképeket. A megosztási pillanatképek csak olvashatók, így nem lehet rajtuk írási műveleteket végrehajtani.
+
+**Megosztási pillanatképek létrehozása**
+
+Az alábbi példával létrehozhat egy fájlmegosztási pillanatképet.
+
+```csharp
+storageAccount = CloudStorageAccount.Parse(ConnectionString); 
+fClient = storageAccount.CreateCloudFileClient(); 
+string baseShareName = "myazurefileshare"; 
+CloudFileShare myShare = fClient.GetShareReference(baseShareName); 
+var snapshotShare = myShare.Snapshot();
+
+```
+**Megosztási pillanatképek felsorolása**
+
+Az alábbi példa megjeleníti egy adott megosztás pillanatképeit.
+
+```csharp
+var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
+```
+
+**Megosztási pillanatképekben található fájlok és könyvtárak tallózása**
+
+Az alábbi példa bemutatja a megosztási pillanatképekben található fájlok és könyvtárak tallózását.
+
+```csharp
+CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); 
+var rootDirectory = mySnapshot.GetRootDirectoryReference(); 
+var items = rootDirectory.ListFilesAndDirectories();
+```
+
+**Megosztások és megosztási pillanatképek megjelenítése, valamint fájlmegosztások vagy fájlok visszaállítása megosztási pillanatképekből** 
+
+A fájlmegosztásokról készített pillanatképek lehetővé teszik az egyes fájlok vagy a teljes fájlmegosztás visszaállítását a későbbiekben. 
+
+A fájlmegosztási pillanatképekből a fájlok a pillanatkép lekérdezésével állíthatók vissza. Ezután lekérhet egy bizonyos megosztási pillanatképhez tartozó fájlt, és közvetlenül beolvashatja és összehasonlíthatja azt a verziót, vagy akár helyre is állíthatja.
+
+```csharp
+CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
+var rootDirOfliveShare = liveShare.GetRootDirectoryReference();
+
+       var dirInliveShare = rootDirOfliveShare.GetDirectoryReference(dirName);
+var fileInliveShare = dirInliveShare.GetFileReference(fileName);
+
+           
+CloudFileShare snapshot = fClient.GetShareReference(baseShareName, snapshotTime);
+var rootDirOfSnapshot = snapshot.GetRootDirectoryReference();
+
+       var dirInSnapshot = rootDirOfSnapshot.GetDirectoryReference(dirName);
+var fileInSnapshot = dir1InSnapshot.GetFileReference(fileName);
+
+string sasContainerToken = string.Empty;
+       SharedAccessFilePolicy sasConstraints = new SharedAccessFilePolicy();
+       sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
+       sasConstraints.Permissions = SharedAccessFilePermissions.Read;
+       //Generate the shared access signature on the container, setting the constraints directly on the signature.
+sasContainerToken = fileInSnapshot.GetSharedAccessSignature(sasConstraints);
+
+string sourceUri = (fileInSnapshot.Uri.ToString() + sasContainerToken + "&" + fileInSnapshot.SnapshotTime.ToString()); ;
+fileInliveShare.StartCopyAsync(new Uri(sourceUri));
+
+```
+
+
+**Megosztási pillanatképek törlése**
+
+Az alábbi példával törölhet egy fájlmegosztási pillanatképet.
+
+```csharp
+CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
+```
+
 ## <a name="troubleshooting-azure-files-using-metrics"></a>Azure Files-problémák hibaelhárítása mérőszámok segítségével
 Az Azure Storage Analytics mostantól az Azure Files esetén is támogatja a mérőszámok használatát. A metrikai adatok segítségével nyomon követheti a kéréseket, és diagnosztizálhatja a problémákat.
 
-Az Azure Files mérőszámait az [Azure Portalon](https://portal.azure.com) engedélyezheti. A mérőszámokat szoftveresen is lehet engedélyezni. Ehhez hívja meg a Set File Service Properties (Fájl szolgáltatástulajdonságainak beállítása) műveletet a REST API vagy valamelyik, a Storage ügyféloldali kódtárában megtalálható megfelelője segítségével.
+Az Azure Files mérőszámait az [Azure Portalon](https://portal.azure.com) engedélyezheti. A mérőszámokat szoftveresen is lehet engedélyezni. Ehhez hívja meg a Set File Service Properties (fájl szolgáltatástulajdonságainak beállítása) műveletet a REST API vagy valamelyik, a Storage ügyféloldali kódtárában megtalálható megfelelője segítségével.
 
 Az alábbi példakód bemutatja, hogyan használható a Storage .NET-hez készült ügyféloldali kódtára arra, hogy engedélyezze a mérőszámok használatát az Azure Fileshoz.
 

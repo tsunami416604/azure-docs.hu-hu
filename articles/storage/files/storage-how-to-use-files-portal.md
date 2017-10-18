@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: e56f8bf1057a8bc2cfcde841f69022104bafff27
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fc521fa40428caacebb072cb1aacdebf0ce977ac
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-azure-files-from-the-azure-portal"></a>Az Azure Files használata az Azure Portalról
 Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhasználók számára az Azure Files kezelésére. Az alábbi műveleteket hajthatja végre a webböngészőjéből:
 
@@ -66,7 +64,7 @@ Az [Azure Portal](https://portal.azure.com) kezelőfelületet nyújt a felhaszn�
 -  Kattintson a **Csatlakoztatás** gombra a fájlmegosztás Windows és Linux rendszeren való csatlakoztatásához szükséges parancssor lekéréséhez. Az egyéb Linux-disztribúciókra vonatkozó csatlakoztatási utasításokért lásd: [az Azure Files Linuxszal való használatát](../storage-how-to-use-files-linux.md) ismertető cikket.
 
     ![Képernyőkép a fájlmegosztás csatlakoztatásáról](./media/storage-how-to-use-files-portal/use-files-portal-connect.png)
--  A Windows és Linux rendszeren való csatlakoztatáshoz szükséges parancsokat átmásolhatja és futtathatja az Azure virtuális gépen vagy a helyszíni számítógépen.
+-  A Windows és Linux rendszeren való fájlmegosztás-csatlakoztatáshoz szükséges parancsokat kimásolhatja, és futtathatja az Azure-beli virtuális gépen vagy a helyszíni számítógépen.
 
     ![A Windows és Linux rendszeren való csatlakoztatáshoz szükséges parancsokat bemutató képernyőkép](./media/storage-how-to-use-files-portal/use-files-portal-show-mount-commands.png)
 

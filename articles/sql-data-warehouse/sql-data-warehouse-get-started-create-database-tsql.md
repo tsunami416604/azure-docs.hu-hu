@@ -16,13 +16,11 @@ ms.workload: data-services
 ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5d3bcc3c1434b16279778573ccf3034f9ac28a4d
-ms.openlocfilehash: 836d72e32e54ecef9691b55214766a1fc3ff9701
-ms.contentlocale: hu-hu
-ms.lasthandoff: 12/06/2016
-
-
+ms.openlocfilehash: 10d8aa2b3ab8d7d8a9b91e95ffccf03faa89d237
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-tsql"></a>SQL Data Warehouse-adatbázis létrehozása a Transact-SQL (TSQL) használatával
 > [!div class="op_single_selector"]
@@ -38,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy SQL Data Warehouse-adatb
 A kezdéshez a következők szükségesek:
 
 * **Azure-fiók**: A fiók létrehozásával kapcsolatban lásd: [Ingyenes Azure-fiók létrehozása][Azure Free Trial] vagy [Havi Azure-kredit a Visual Studio-előfizetőknek][MSDN Azure Credits].
-* **Azure SQL Server**: az [Azure SQL Database logikai kiszolgáló létrehozása az Azure portál használatával][Create an Azure SQL Database logical server with the Azure Portal] vagy az [Azure SQL Database logikai kiszolgáló létrehozása a PowerShell használatával][Create an Azure SQL Database logical server with PowerShell] című cikkekben talál további információt.
+* **Azure SQL-kiszolgáló**: További részletes információkért lásd az [Azure SQL Database logikai kiszolgáló az Azure Portal használatával történő létrehozását][Azure SQL Database logikai kiszolgáló az Azure Portal használatával történő létrehozását] vagy az [Azure SQL Database logikai kiszolgáló a PowerShell használatával történő létrehozását][Azure SQL Database logikai kiszolgáló a PowerShell használatával történő létrehozását] ismertető cikket.
 * **Erőforráscsoport**: Használja ugyanazt az erőforráscsoportot, mint az Azure SQL Server, vagy tekintse át az [erőforráscsoportok létrehozásával foglalkozó][how to create a resource group] cikket.
 * **T-SQL-végrehajtási környezet**: a T-SQL-ek végrehajtásához a [Visual Studio][Installing Visual Studio and SSDT], az [sqlcmd][sqlcmd], vagy az [SSMS][SSMS] alkalmazáskörnyezet használható.
 
@@ -89,4 +87,3 @@ Miután az SQL Data Warehouse befejezte a kiépítést, [mintaadatokat tölthet 
 [SQL Data Warehouse pricing]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Azure Free Trial]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure Credits]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-

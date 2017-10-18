@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: saysa
+ms.openlocfilehash: 0fae5fe35c25f97a9eb2c0d648cfb0f66b7f0725
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: c447a92e076bacc9b208b837493400b70cd067e1
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -107,15 +106,13 @@ A Service Fabric-szolgáltatások Java használatával történő létrehozásá
   sudo apt-get install gradle
 ```
 
-## <a name="set-up-the-service-fabric-cli"></a>A Service Fabric parancssori felület beállítása
+## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>A Service Fabric parancssori felület (sfctl) beállítása Mac gépen
 
-A [Service Fabric parancssori felület](service-fabric-cli.md) a Service Fabric-entitásokkal, többek között fürtökkel és alkalmazásokkal folytatott interakcióra szolgáló parancsokat is tartalmaz. A felület Python-alapú, ezért a következő parancs kiadása előtt ellenőrizze, hogy a Python és a pip telepítve vannak-e:
+A Service Fabric parancssori felület (`sfctl`) Mac gépre való telepítéséhez kövesse a [Service Fabric parancssori felület](service-fabric-cli.md#cli-mac) utasításait.
+A parancssori felület a Service Fabric-entitásokkal, többek között fürtökkel, alkalmazásokkal és szolgáltatásokkal folytatott interakciók elvégzésére szolgáló parancsokat is tartalmaz.
 
-```bash
-pip install sfctl
-```
+## <a name="create-application-on-you-mac-using-yeoman"></a>Alkalmazás létrehozása Mac gépen a Yeoman használatával
 
-## <a name="create-application-on-mac-using-yeoman"></a>Alkalmazás létrehozása Mac gépen a Yeoman használatával
 A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek segítségével Service Fabric-alkalmazásokat hozhat létre a terminálról a Yeoman sablongenerátor használatával. Az alábbi lépések végrehajtásával ellenőrizze, hogy a Service Fabric Yeoman sablongenerátor működik-e a gépen.
 
 1. A Node.js-nek és az NPM-nek telepítve kell lennie Mac gépén. Ha a Node.js és az NPM nincs telepítve, a következők használatával telepítheti azokat a Homebrew-val. A Mac gépén telepített Node.js és NPM verzióinak ellenőrzéséhez használhatja a ``-v`` beállítást.
@@ -165,4 +162,3 @@ A Service Fabric egy beépülő modult biztosít a **Java Eclipse Neon IDE-hez**
 [sfx-mac]: ./media/service-fabric-get-started-mac/sfx-mac.png
 [sf-eclipse-plugin-install]: ./media/service-fabric-get-started-mac/sf-eclipse-plugin-install.png
 [buildship-update]: https://projects.eclipse.org/projects/tools.buildship
-

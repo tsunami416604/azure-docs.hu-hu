@@ -12,16 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2017
+ms.date: 10/04/2017
 ms.author: ryanwi
+ms.openlocfilehash: 3c5a6ec70e1041d43b549c8e5a5416a9a65728bb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 606e8d63c29b754261621e583652f8209efea0f5
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
@@ -164,11 +162,11 @@ A Linux Service Fabric SDK tartalmaz egy [Yeoman](http://yeoman.io/)-generátort
 
 Service Fabric-tárolóalkalmazás létrehozásához nyisson meg egy terminálablakot, és futtassa a következőt: `yo azuresfcontainer`.  
 
-Adjon nevet az alkalmazásnak (például „mycontainer”). 
+Adjon nevet az alkalmazásnak (például: „mycontainer”) és az alkalmazásszolgáltatásnak (például: „myservice”).
 
-Adja meg a tárolóregisztrációs adatbázisban található tároló rendszerképéhez tartozó URL-címet (például: „myregistry.azurecr.io/samples/helloworldapp”). 
+A rendszerkép neveként adja meg a tárolóregisztrációs adatbázisban található tároló rendszerképéhez tartozó URL-címet (például: „myregistry.azurecr.io/samples/helloworldapp”). 
 
-Ez a rendszerkép meghatározott számításifeladat-belépési ponttal rendelkezik, így a bemeneti parancsokat (tárolón belül futó parancsok, amelyek az indítás után biztosítják a tároló futtatását) explicit módon kell megadnia. 
+Mivel ez a rendszerkép meghatározott számításifeladat-belépési ponttal rendelkezik, így nem kell explicit módon megadni a bemeneti parancsokat (tárolón belül futó parancsok, amelyek az indítás után biztosítják a tároló futtatását). 
 
 Adja meg az „1” példányszámát.
 
@@ -391,4 +389,3 @@ A `ContainerImagesToSkip` paraméternél megadhatja azokat a rendszerképeket, a
 
 [hello-world]: ./media/service-fabric-get-started-containers-linux/HelloWorld.png
 [sf-yeoman]: ./media/service-fabric-get-started-containers-linux/YoSF.png
-
