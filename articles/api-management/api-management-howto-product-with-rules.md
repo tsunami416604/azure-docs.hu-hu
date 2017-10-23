@@ -3,7 +3,7 @@ title: "Az API-k védelme az Azure API Management szolgáltatással | Microsoft 
 description: "Megtudhatja, hogyan védheti meg az API-kat kvótákkal és szabályozási (sebességhatároló) házirendekkel."
 services: api-management
 documentationcenter: 
-author: vladvino
+author: juliako
 manager: erikre
 editor: 
 ms.assetid: 450dc368-d005-401d-ae64-3e1a2229b12f
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
+ms.contentlocale: hu-hu
+ms.lasthandoff: 09/14/2017
+
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Az API-k védelme sebességkorlátokkal az Azure API Management használatával
 Ez az útmutató ismerteti, milyen könnyen adhat védelmet a háttérrendszerben futó API-khoz az Azure API Management szolgáltatásban a sebességkorlát- és kvótaházirendek konfigurálásával.
@@ -27,7 +28,7 @@ Ebben az oktatóanyagban létre fog hozni egy „Ingyenes próbaverzió” API-t
 
 A [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) és a [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) házirendeket használó speciálisabb szabályozási forgatókönyvekért tekintse meg a [Speciális kérésszabályzás az Azure API Management szolgáltatással](api-management-sample-flexible-throttling.md) szakaszt.
 
-## <a name="create-product"></a>Termék létrehozása
+## <a name="create-product"> </a>Termék létrehozása
 Ebben a lépésben létrehoz egy Ingyenes próbaverzió terméket, amely nem igényel jóváhagyott előfizetést.
 
 > [!NOTE]
@@ -75,7 +76,7 @@ Alapértelmezés szerint a **Rendszergazdák** csoport tagjai látják az új te
 
 Jelölje be a **Fejlesztők** jelölőnégyzetet, majd kattintson a **Mentés** gombra.
 
-## <a name="add-api"></a>API hozzáadása a termékhez
+## <a name="add-api"> </a>API hozzáadása a termékhez
 Az oktatóanyag ezen lépésében hozzáadjuk az Echo API-t az új Ingyenes próbaverzió termékhez.
 
 > Minden API Management szolgáltatáspéldányhoz előre konfigurálva van egy kipróbálható Echo API, amely segít megismerni az API Management szolgáltatást. További információkért lásd: [Az első API kezelése az Azure API Management szolgáltatásban][Manage your first API in Azure API Management].
@@ -94,7 +95,7 @@ Válassza ki az **Echo API** elemet, majd kattintson a **Mentés** gombra.
 
 ![Echo API hozzáadása][api-management-add-echo-api]
 
-## <a name="policies"></a>A hívások sebességkorlátozása és a kvótaházirendek konfigurálása
+## <a name="policies"> </a>A hívások sebességkorlátozása és a kvótaházirendek konfigurálása
 A sebességkorlátokat és a kvótákat a házirendszerkesztőben lehet konfigurálni. A két szabályzat, amelyet ebben az oktatóanyagban hozzáadunk a [Hívások számának korlátozása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) és a [Használati kvóta beállítása előfizetésenként](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota). Ezeket a szabályzatokat termékszinten kell alkalmazni.
 
 Kattintson a bal oldali **API Management** menü alatt található**Házirendek** lehetőségre. A **Termék** listán kattintson az **Ingyenes próbaverzió** lehetőségre.
@@ -196,7 +197,7 @@ Miután konfigurálta a kívánt házirendeket, kattintson a **Mentés** gombra.
 
 ![Házirend mentése][api-management-policy-save]
 
-## <a name="publish-product"></a>A termék közzététele
+## <a name="publish-product"> </a>A termék közzététele
 Most, hogy hozzáadta az API-kat és konfigurálta a házirendeket, közzé kell tenni a terméket, hogy a fejlesztők használhassák. Kattintson a bal oldali **API Management** menü **Termékek** elemére, majd kattintson az **Ingyenes próbaverzió** lehetőségre a termék konfigurálásához.
 
 ![Termék konfigurálása][api-management-configure-product]
@@ -205,7 +206,7 @@ Kattintson a **Közzététel** elemre, majd kattintson az **Igen, közzéteszem*
 
 ![Termék közzététele][api-management-publish-product]
 
-## <a name="subscribe-account"></a>Előfizetés a termékre egy fejlesztői fiók nevében
+## <a name="subscribe-account"> </a>Előfizetés a termékre egy fejlesztői fiók nevében
 Most, hogy a termék közzé lett téve, a fejlesztők elő tudnak rá fizetni és használni tudják.
 
 > Az API Management példányok rendszergazdái automatikusan előfizetnek az összes termékre. Az oktatóanyag ezen lépésében elő fogunk fizetni az egyik nem rendszergazdai fejlesztői fiókkal az Ingyenes próbaverzió termékre. Ha a fejlesztői fiókja a rendszergazdai szerepkör része, követheti a lépés utasításait, akkor is, ha már előfizetett.
@@ -235,7 +236,7 @@ Miután az **Előfizetés** lehetőségre kattint, a termék megjelenik a felhas
 
 ![Előfizetés hozzáadva][api-management-subscription-added]
 
-## <a name="test-rate-limit"></a>Művelet meghívása és a sebességkorlátozás tesztelése
+## <a name="test-rate-limit"> </a>Művelet meghívása és a sebességkorlátozás tesztelése
 Most, hogy konfigurálta és közzétette az Ingyenes próbaverzió terméket, meghívhatunk néhány műveletet, és tesztelhetjük a sebességkorlát-házirendet.
 Váltson át a fejlesztői portálra a jobb felső menü **Fejlesztői portál** lehetőségére kattintva.
 
@@ -270,7 +271,7 @@ A **Válasz tartalma** jelzi a hátralévő időközt, amely leteltével az újr
 
 Ha a 10 hívás percenként sebességkorlátozási házirend van érvényben, a későbbi hívások sikertelenek lesznek, amíg el nem telik 60 másodperc a sebességkorlát átlépése előtti 10 sikeres termékhívás első hívását követően. Ebben a példában a hátralévő időköz 54 másodperc.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"> </a>Következő lépések
 * A sebességkorlátok és a kvóták beállításáról az alábbi videó kínál egy bemutatót.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
@@ -325,3 +326,4 @@ Ha a 10 hívás percenként sebességkorlátozási házirend van érvényben, a 
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
+

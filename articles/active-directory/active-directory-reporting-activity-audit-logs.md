@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f2d0332d815c82d7d47625e020de2e9c5099deeb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.sourcegitcommit: c3ea7cfba9fbf1064e2bd58344a7a00dc81eb148
+ms.openlocfilehash: f2d0332d815c82d7d47625e020de2e9c5099deeb
+ms.contentlocale: hu-hu
+ms.lasthandoff: 07/19/2017
+
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -185,4 +186,5 @@ A nézetet tovább szűrheti csak a **csoportok** vagy csak a **felhasználók**
 ## <a name="next-steps"></a>Következő lépések
 
 A jelentéskészítés áttekintéséért lásd: [Jelentéskészítés az Azure Active Directoryban](active-directory-reporting-azure-portal.md).
+
 
