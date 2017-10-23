@@ -59,6 +59,7 @@
 ## Hibaelhárítás
 ### [Az Application Gatewayben észlelt hibák elhárítása](application-gateway-troubleshooting-502.md)
 ### [Diagnosztikai naplózás és mérőszámok](application-gateway-diagnostics.md)
+### [Application Gateway-munkamenet affinitási problémái](https://support.microsoft.com/help/4033827/troubleshooting-azure-application-gateway-session-affinity-issues)
 # Referencia
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/network/application-gateway)

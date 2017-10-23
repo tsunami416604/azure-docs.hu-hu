@@ -97,6 +97,7 @@
 #### [Késések](active-directory-reporting-latencies-azure-portal.md)
 #### [Értesítések](active-directory-reporting-notifications.md)
 #### [Bejelentkezési tevékenységek hibakódjai](active-directory-reporting-activity-sign-ins-errors.md)
+#### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md)
 ### Hibaelhárítás
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -150,8 +151,7 @@
 ### [Áttekintés](active-directory-enable-sso-scenario.md)
 ### [Első lépések](active-directory-integrating-applications-getting-started.md)
 ### [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
-### [Felhőalkalmazások felderítése](cloudappdiscovery-overview.md)
-#### [Ügynök nélküli felderítés beállítása](cloudappdiscovery-get-started.md)
+### [Felhőalkalmazások felderítése](cloudappdiscovery-get-started.md)
 #### [Pillanatkép-jelentések létrehozása](cloudappdiscovery-set-up-snapshots.md)
 #### [Folyamatos jelentéskészítés konfigurálása](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Egyéni naplóelemző használata](https://docs.microsoft.com/cloud-app-security/custom-log-parser)

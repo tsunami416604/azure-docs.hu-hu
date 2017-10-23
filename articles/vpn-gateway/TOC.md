@@ -81,7 +81,6 @@
 ### [Pont–hely kapcsolati probléma](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
 ### [A helyek közötti kapcsolat időnként megszakad](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [A helyek közötti kapcsolat nem hozható létre](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
-### [Application Gateway-munkamenet affinitási problémái](https://support.microsoft.com/help/4033827/troubleshooting-azure-application-gateway-session-affinity-issues)
 ### [VNet- vagy VPN-kapcsolatok konfigurálása és érvényesítése](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # Referencia

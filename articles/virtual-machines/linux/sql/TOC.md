@@ -1,6 +1,6 @@
 # Áttekintés
 ## [Linux SQL Server virtuális gépek](sql-server-linux-virtual-machines-overview.md)
-## [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)
+## [Díjszabás](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)
 ## [Gyakori kérdések](sql-server-linux-faq.md)
 
 # Első lépések

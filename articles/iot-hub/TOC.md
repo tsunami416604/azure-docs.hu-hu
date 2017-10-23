@@ -109,6 +109,7 @@
 ### Eszközfeladatok használata az eszköz belső vezérlőprogramjának frissítéséhez
 #### [Node-háttérrendszer/Node-eszköz](iot-hub-node-node-firmware-update.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-firmware-update.md)
+#### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-firmware-update.md)
 ### Feladatok ütemezése és szórása
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-schedule-jobs.md)
