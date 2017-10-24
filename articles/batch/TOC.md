@@ -20,6 +20,7 @@
 ### [Párhuzamosan futó csomóponti feladatok](batch-parallel-node-tasks.md)
 ### [Feladatok számlálása állapot szerint](batch-get-task-counts.md)
 ### [Készlet létrehozása egyéni rendszerképpel](batch-custom-images.md)
+### [Készlet létrehozása egy virtuális hálózaton belül](batch-virtual-network.md)
 ### [Hatékony listázó lekérdezések](batch-efficient-list-queries.md)
 ### [Feladatok előkészítési és befejezési műveletei](batch-job-prep-release.md)
 ### [Linuxos számítási csomópontok](batch-linux-nodes.md)
@@ -62,6 +63,7 @@
 ## [Azure Batch számítási csomópont környezeti változói](batch-compute-node-environment-variables.md)
 
 # Kapcsolódó
+## [Batch AI](../batch-ai/overview.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
 ## [Adatfeldolgozás a Batch és a Data Factory segítségével](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Batch- és HPC-megoldások az Azure-felhőben | Microsoft Azure](batch-hpc-solutions.md)

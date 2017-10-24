@@ -1,3 +1,5 @@
+- name: Azure Storage-dokumentáció
+  href: /azure/storage/
 - name: Áttekintés
   items:
     - name: Bevezetés
@@ -16,6 +18,8 @@
       href: storage-quickstart-blobs-cli.md
     - name: Blobok használata – .NET
       href: storage-quickstart-blobs-dotnet.md
+    - name: Blobok használata – Python
+      href: storage-quickstart-blobs-python.md
 - name: oktatóanyagokat
   items:
     - name: Rendszerképek feltöltése és feldolgozása
@@ -28,6 +32,12 @@
           href: storage-secure-access-application.md
         - name: 4 – Tárterületek figyelése és hibaelhárítása
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: Magas rendelkezésre állás tervezése felhőalapú tároláshoz
+      items:
+        - name: Biztosítsa alkalmazása magas rendelkezésre állását
+          href: storage-create-geo-redundant-storage.md
+        - name: Hiba szimulálás RA-GRS tárolóval
+          href: storage-simulate-failure-ragrs-account-app.md
     - name: Strukturálatlan adatok keresése felhőalapú tárolóban
       href: storage-unstructured-search.md
 - name: Példák

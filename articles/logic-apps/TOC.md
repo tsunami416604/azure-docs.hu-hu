@@ -5,8 +5,8 @@
 
 # Bevezetés
 ## [Az első logikai alkalmazás létrehozása](logic-apps-create-a-logic-app.md)
-## [Sablonok logikai alkalmazásokhoz](logic-apps-use-logic-app-templates.md)
-## [Logikai alkalmazások létrehozása sablonból](logic-apps-arm-provision.md)
+## [Logikai alkalmazások létrehozása sablonból](logic-apps-create-logic-apps-from-templates.md)
+## [Logikai alkalmazások létrehozása Resource Manager-sablonokból](logic-apps-create-deploy-azure-resource-manager-templates.md)
 ## [MABS-alkalmazások áthelyezése a logikai alkalmazásokhoz](logic-apps-move-from-mabs.md)
 
 # Útmutató

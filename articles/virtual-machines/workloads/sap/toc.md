@@ -20,9 +20,25 @@
 ## [SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója](cal-ides-erp6-erp7-sp3-sql.md)
 ## [SAP NetWeaver a Linux rendszerű, Azure-beli virtuális gépeken](suse-quickstart.md)
 ## [SAP NetWeaver tervezése és megvalósítása Azure-ban](planning-guide.md)
-## [Magas rendelkezésre állás Windowson](high-availability-guide.md)
-## [Magas rendelkezésre állás SUSE Linuxon](high-availability-guide-suse.md)
-## [Több SID-vel rendelkező konfigurációk](high-availability-multi-sid.md)
+## Magas rendelkezésre állás (HA) Windowson és Linuxon
+### [Áttekintés](sap-high-availability-guide-start.md)
+### Magas rendelkezésre állású architektúra
+#### [Magas rendelkezésre állású architektúra és forgatókönyvek](sap-high-availability-architecture-scenarios.md)
+#### [Magasabb rendelkezésre állású architektúra és forgatókönyvek](sap-higher-availability-architecture-scenarios.md)
+#### [Magas rendelkezésre állás Windows rendszeren közös lemezzel (A)SCS példányhoz](sap-high-availability-guide-wsfc-shared-disk.md)
+#### [Magas rendelkezésre állás Windows rendszeren SOFS fájlmegosztással (A)SCS példányhoz](sap-high-availability-guide-wsfc-file-share.md)
+#### [Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz](high-availability-guide-suse.md)
+### Az Azure infrastruktúra előkészítése
+#### [Windows közös lemezzel (A)SCS példányhoz](sap-high-availability-infrastructure-wsfc-shared-disk.md)
+#### [Windows SOFS fájlmegosztással (A)SCS példányhoz](sap-high-availability-infrastructure-wsfc-file-share.md)
+#### [SUSE Linux NFS-sel (A)SCS példányhoz](high-availability-guide-suse.md)
+### SAP-telepítés
+#### [Windows közös lemezzel (A)SCS példányhoz](sap-high-availability-installation-wsfc-shared-disk.md)
+#### [Windows SOFS fájlmegosztással (A)SCS példányhoz](sap-high-availability-installation-wsfc-file-share.md)
+#### [SUSE Linux NFS-sel (A)SCS példányhoz](high-availability-guide-suse.md)
+### SAP több biztonsági azonosítóval
+#### [Windows közös lemezzel (A)SCS példányhoz](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
+#### [Windows SOFS fájlmegosztással (A)SCS példányhoz](sap-ascs-ha-multi-sid-wsfc-file-share.md)
 ## [Üzembehelyezési útmutató](deployment-guide.md)
 ## [DBMS üzembehelyezési útmutató](dbms-guide.md)
 ## [Azure Site Recovery az SAP-vészhelyreállításhoz](../../../site-recovery/site-recovery-workload.md#protect-sap)

@@ -73,26 +73,19 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: GYIK
       href: site-recovery-faq.md
-    - name: Kapacitás megtervezése a VMware Azure-ba történő replikálásához
-      href: site-recovery-plan-capacity-vmware.md
-      items:
-        - name: Deployment Planner a VMware Azure-ba történő replikálásához
-          href: site-recovery-deployment-planner.md
-    - name: Capacity Planner Hyper-V-replikáláshoz
-      href: site-recovery-capacity-planner.md
 - name: Útmutatók
   items:
     - name: Vészhelyreállítás
       items:
-        - name: Az Azure-ba több bérlős támogatással rendelkező VMware virtuális gépekhez
+        - name: Több bérlős támogatással rendelkező VMware virtuális gépek az Azure-ba
           href: site-recovery-multi-tenant-support-vmware-using-csp.md
-        - name: Az Azure-ba Hyper-V virtuális gépekhez
+        - name: Hyper-V virtuális gépek az Azure-ba
           href: tutorial-hyper-v-to-azure.md
-        - name: Az Azure-ba fizikai kiszolgálókhoz
+        - name: Fizikai kiszolgálók az Azure-ba
           href: tutorial-physical-to-azure.md
-        - name: Másodlagos helyre Hyper-V rendszerű virtuális gépekhez
+        - name: Hyper-V virtuális gépek másodlagos helyre
           href: tutorial-vmm-to-vmm.md
-        - name: Másodlagos helyre VMware rendszerű virtuális gépekhez és fizikai kiszolgálókhoz
+        - name: VMware-alapú virtuális gépek és fizikai kiszolgálók másodlagos helyre
           href: tutorial-vmware-to-vmware.md
         - name: Vészhelyreállítási próba végrehajtása az Azure-ba
           href: tutorial-dr-drill-azure.md
@@ -104,6 +97,20 @@
           href: tutorial-hyper-v-to-azure-failover-failback.md
         - name: Feladatátvétel és feladat-visszavétel futtatása helyszíni helyek között
           href: tutorial-vmm-to-vmm-failover-failback.md
+    - name: Kapacitás és méretezés
+      items:
+        - name: Kapacitás megtervezése a VMware Azure-ba történő replikálásához
+          href: site-recovery-plan-capacity-vmware.md
+        - name: Deployment Planner eszköz a VMware Azure-ba történő replikálásához
+          href: site-recovery-deployment-planner.md
+        - name: Kapacitás megtervezése a Hyper-V Azure-ba történő replikálásához
+          href: site-recovery-capacity-planning-for-hyper-v-replication.md
+        - name: Capacity Planner eszköz a Hyper-V Azure-ba történő replikálásához
+          href: site-recovery-capacity-planner.md
+        - name: Folyamatkiszolgálók horizontális felskálázása VMware-replikációhoz
+          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
+        - name: Teljesítményskálázási tesztek a Hyper-V helyszíni helyek közötti replikációjához
+          href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md
     - name: Konfigurálás
       items:
         - name: A forráskörnyezet beállítása
@@ -120,6 +127,8 @@
               href: site-recovery-prepare-target-physical-to-azure.md
         - name: Replikációs beállítások konfigurálása
           href: site-recovery-setup-replication-settings-vmware.md
+        - name: Lemezek kizárása a replikációból
+          href: site-recovery-exclude-disk.md
         - name: A mobilitási szolgáltatás üzembe helyezése VMware-replikáláshoz
           href: site-recovery-vmware-to-azure-install-mob-svc.md
           items:
@@ -157,9 +166,11 @@
         - name: Feladat-visszavétel az Azure-ból
           items:
             - name: Feladat-visszavétel az Azure-ból a VMware-be
-              href: site-recovery-failback-azure-to-vmware.md
+              href: site-recovery-how-to-failback-azure-to-vmware.md
             - name: Feladat-visszavétel az Azure-ból a Hyper-V-be
               href: site-recovery-failback-from-azure-to-hyper-v.md
+        - name: Linux rendszerű fő célkiszolgáló beállítása feladat-visszavételhez
+          href: site-recovery-how-to-install-linux-master-target.md
     - name: Automatizálás
       items:
         - name: Hyper-V-replikálás beállítása az Azure-ba (VMM nélkül) a PowerShell-lel
@@ -202,8 +213,6 @@
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
         - name: A konfigurációs kiszolgáló kezelése
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
-        - name: Horizontálisan felskálázott folyamatkiszolgálók kezelése
-          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
         - name: vCenter-kiszolgálók kezelése
           href: site-recovery-vmware-to-azure-manage-vCenter.md
         - name: Kiszolgálók eltávolítása és a védelem letiltása

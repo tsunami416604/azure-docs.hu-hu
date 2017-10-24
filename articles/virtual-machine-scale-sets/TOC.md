@@ -21,19 +21,20 @@
 ### [Létrehozás a Visual Studióval](virtual-machine-scale-sets-vs-create.md)
 ### [Létrehozás az Azure PowerShell-lel vagy az Azure CLI-vel](virtual-machine-scale-sets-create.md)
 ### [Méretezési csoport a Managed Disksszel](virtual-machine-scale-sets-managed-disks.md)
-### [Linux rendszerű méretezési csoport automatikus skálázással](virtual-machine-scale-sets-linux-autoscale.md)
-### [Windows rendszerű méretezési csoport automatikus skálázással](virtual-machine-scale-sets-windows-autoscale.md)
+### [Méretezési csoport automatikus méretezése](virtual-machine-scale-sets-autoscale-overview.md)
+#### [Az Azure Portal használata](virtual-machine-scale-sets-autoscale-portal.md)
+#### [Az Azure CLI 2.0 használata](virtual-machine-scale-sets-autoscale-cli.md)
+#### [Azure PowerShell használata](virtual-machine-scale-sets-autoscale-powershell.md)
+#### [Automatikus skálázás haladó szinten](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Méretezésicsoport-alkalmazások](virtual-machine-scale-sets-deploy-app.md)
 ### [Adatlemezek használata méretezési csoportokkal](virtual-machine-scale-sets-attached-disks.md)
 ### [Nagyméretű méretezési csoportokkal végzett munka](virtual-machine-scale-sets-placement-groups.md)
 ### [Méretezési csoport sablonjának konvertálása felügyelt lemez használatához](virtual-machine-scale-sets-convert-template-to-md.md)
 
-
-
 ## Kezelés
-### [Windows rendszerű méretezési csoport Azure PowerShell-lel](virtual-machine-scale-sets-windows-manage.md)
-### [Automatikus méretezés és méretezési csoportok](virtual-machine-scale-sets-autoscale-overview.md)
-### [Automatikus skálázás haladó szinten](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
+### Általános kezelési feladatok
+#### [Az Azure CLI 2.0 használata](virtual-machine-scale-sets-manage-cli.md)
+#### [Azure PowerShell használata](virtual-machine-scale-sets-manage-powershell.md)
 ### [Függőleges méretezés méretezési csoportban](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [Méretezésicsoport-frissítések](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [DSC és méretezési csoportok használata](virtual-machine-scale-sets-dsc.md)

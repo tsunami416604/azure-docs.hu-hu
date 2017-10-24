@@ -10,7 +10,7 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [Eltérő eredetű erőforrások megosztása](cdn-cors.md)
-### [Egyéni tartomány leképezése a CDN szolgáltatásba](cdn-map-content-to-custom-domain.md)
+### [Egyéni tartomány hozzáadása a CDN-végponthoz](cdn-map-content-to-custom-domain.md)
 ### [HTTPS engedélyezése egyéni tartományon](cdn-custom-ssl.md)
 ## Tartalom optimalizálása
 ### [Optimalizálás áttekintése](cdn-optimization-overview.md)
@@ -39,6 +39,7 @@
 ## Elemzés
 ### [Az Azure CDN használati mintáinak elemzése](cdn-log-analysis.md)
 #### [Alapvető jelentések a Verizontól](cdn-analyze-usage-patterns.md)
+#### [Egyéni jelentések a Verizontól](cdn-verizon-custom-reports.md)
 #### [Azure-beli diagnosztikai naplók](cdn-azure-diagnostic-logs.md)
 ### Elemzési eszközök az Azure CDN-hez a Verizontól
 #### [Extra szintű HTTP-jelentések létrehozása](cdn-advanced-http-reports.md)
