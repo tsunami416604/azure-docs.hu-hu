@@ -34,6 +34,7 @@
 #### [Diagnosztikai naplók](event-hubs-diagnostic-logs.md)
 ### [AMQP 1.0 protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
 ## Kezelés
+### [Event Hubs-eseményközpontok monitorozása az Azure Monitoring segítségével](event-hubs-metrics-azure-monitor.md)
 ### [Event Hubs felügyeleti könyvtárak](event-hubs-management-libraries.md)
 ### Rögzítés
 #### [Event Hubs Capture](event-hubs-capture-overview.md)

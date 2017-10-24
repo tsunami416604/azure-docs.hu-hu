@@ -3,11 +3,11 @@ layout: HubPage
 hide_bc: True
 title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
-ms.openlocfilehash: e87391e9662991a542ad58eafd9b4c2714f30d66
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 552739da2429fd747101ae5e28e805ca8559b431
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 10/21/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -409,7 +409,7 @@ ms.lasthandoff: 10/14/2017
                                         <li>
                                             <a href="/azure/app-service/containers/">
                                                 <img src="media/index/AppService.svg" alt="" />
-                                                <p>Web App for Containers</p>
+                                                <p>Tárolókhoz készült Web App</p>
                                             </a>
                                         </li>
                                         <li>
@@ -658,7 +658,7 @@ ms.lasthandoff: 10/14/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/translator/">
+                                            <a href="/azure/cognitive-services/translator/translator-info-overview">
                                                 <img src="media/index/cognitive-services-translator.svg" alt="" />
                                                 <p>Translator Text API</p>
                                             </a>
@@ -712,7 +712,7 @@ ms.lasthandoff: 10/14/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/speech/">
+                                            <a href="/azure/cognitive-services/speech/home">
                                                 <img src="media/index/API_Spc_CustomSpeechService.svg" alt="" />
                                                 <p>Bing – Beszédszolgáltatás</p>
                                             </a>
@@ -791,6 +791,12 @@ ms.lasthandoff: 10/14/2017
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/virtual-machines/disks/">
+                                                <img src="media/index/Disks-color.svg" alt="" />
+                                                <p>Lemezes tárolás</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/storage/queues/storage-queues-introduction/">
                                                 <img src="media/index/logo_azure-storage-q.svg" alt="" />
                                                 <p>Queue Storage</p>
@@ -800,12 +806,6 @@ ms.lasthandoff: 10/14/2017
                                             <a href="/azure/storage/files/storage-files-introduction/">
                                                 <img src="media/index/logo_azure-storage-file.svg" alt="" />
                                                 <p>File Storage</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/virtual-machines/disks/">
-                                                <img src="media/index/Disks-color.svg" alt="" />
-                                                <p>Lemezes tárolás</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1029,7 +1029,7 @@ ms.lasthandoff: 10/14/2017
                                         <li>
                                             <a href="/azure/app-service/containers/">
                                                 <img src="media/index/AppService.svg" alt="" />
-                                                <p>Web App for Containers</p>
+                                                <p>Tárolókhoz készült Web App</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1682,6 +1682,25 @@ ms.lasthandoff: 10/14/2017
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/virtual-machines/windows/managed-disks-overview">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Disks-color.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Lemezes tárolás</h3>
+                                                    <p>Lemezes tárolás virtuális gépekhez</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/storage/queues/storage-queues-introduction/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -1713,25 +1732,6 @@ ms.lasthandoff: 10/14/2017
                                                 <div class="cardText">
                                                     <h3>File Storage</h3>
                                                     <p>Egyszerű, elosztott, platformközi fájlrendszer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/virtual-machines/windows/managed-disks-overview">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/Disks-color.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Lemezes tárolás</h3>
-                                                    <p>Lemezes tárolás virtuális gépekhez</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1849,7 +1849,7 @@ ms.lasthandoff: 10/14/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Web App for Containers</h3>
+                                                    <h3>Tárolókhoz készült Web App</h3>
                                                     <p>Az üzleti igényeknek megfelelően méretezhető, tárolóalapú webalkalmazások gyors és egyszerű üzembe helyezése</p>
                                                 </div>
                                             </div>
@@ -2082,7 +2082,7 @@ ms.lasthandoff: 10/14/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Web App for Containers</h3>
+                                                    <h3>Tárolókhoz készült Web App</h3>
                                                     <p>Az üzleti igényeknek megfelelően méretezhető, tárolóalapú webalkalmazások gyors és egyszerű üzembe helyezése</p>
                                                 </div>
                                             </div>
@@ -2590,7 +2590,7 @@ ms.lasthandoff: 10/14/2017
                                                         <h3>Beszéd</h3>
                                                         <ul class="noBullet">
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/speech/"><img src="media/index/API_Spc_CustomSpeechService.svg" alt="" />Bing – Beszédszolgáltatás</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/speech/home"><img src="media/index/API_Spc_CustomSpeechService.svg" alt="" />Bing – Beszédszolgáltatás</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><img src="media/index/API_Spc_CustomSpeechService.svg" alt="" /><span>Egyéni beszédszolgáltatás&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
@@ -2621,10 +2621,10 @@ ms.lasthandoff: 10/14/2017
                                                                 <a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="media/index/API_Lang_LinguisticAnalysis.svg" alt="" /><span>Nyelvi elemzés&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/text-analytics/overview"><img src="media/index/API_Lang_TextAnalytics.svg" alt="" /><span>Szövegelemzés&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/text-analytics/overview"><img src="media/index/API_Lang_TextAnalytics.svg" alt="" />Szövegelemzés</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/translator/"><img src="media/index/cognitive-services-translator.svg" alt="" />Translator Text API</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/translator/translator-info-overview"><img src="media/index/cognitive-services-translator.svg" alt="" />Fordítói szöveg</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/web-language-model/home"><img src="media/index/API_Lang_WebLM.svg" alt="" /><span>Webes nyelvi modell&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>

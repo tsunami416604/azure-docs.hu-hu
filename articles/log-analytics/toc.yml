@@ -11,6 +11,8 @@
       href: log-analytics-quick-collect-azurevm.md
     - name: Gyűjtés – Linux rendszerű számítógép
       href: log-analytics-quick-collect-linux-computer.md
+    - name: Gyűjtés – Windows rendszerű számítógép
+      href: log-analytics-quick-collect-windows-computer.md
 - name: oktatóanyagokat
   items:
     - name: 1 – Adatok elemzése
@@ -25,6 +27,8 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
+    - name: Munkaterület frissítése
+      href: log-analytics-log-search-upgrade.md
     - name: Log Analytics – gyakori kérdések
       href: log-analytics-faq.md
     - name: Adathasználat
@@ -35,10 +39,10 @@
       href: log-analytics-service-providers.md
     - name: Naplók keresése
       items:
-        - name: Naplók keresése – gyakori kérdések
-          href: log-analytics-log-search-faq.md
         - name: A naplókeresések áttekintése
           href: log-analytics-log-search-new.md
+        - name: Naplók keresése – gyakori kérdések
+          href: log-analytics-log-search-faq.md
         - name: Naplókeresési portálok
           href: log-analytics-log-search-portals.md
 - name: Útmutató
@@ -89,6 +93,20 @@
               href: log-analytics-custom-fields.md
     - name: Adatok lekérdezése
       items:
+        - name: Nyelvi dokumentáció
+          href: 'https://docs.loganalytics.io'
+        - name: Váltás az örökölt nyelvről
+          href: log-analytics-log-search-transition.md
+        - name: Keresés több munkaterületen
+          href: log-analytics-cross-workspace-search.md
+        - name: Műveletek végrehajtása a keresési eredményekből
+          href: log-analytics-log-search-takeaction.md
+        - name: Számítógépcsoportok használata
+          href: log-analytics-computer-groups.md
+        - name: Folyamat-összekötő
+          href: log-analytics-flow-tutorial.md
+    - name: Örökölt naplók keresése
+      items:
         - name: A naplókeresések áttekintése
           href: log-analytics-log-searches.md
         - name: Keresési referencia
@@ -96,26 +114,18 @@
           items:
             - name: Reguláris kifejezések
               href: log-analytics-log-searches-regex.md
-            - name: Keresés több munkaterületen
-              href: log-analytics-cross-workspace-search.md
-        - name: Műveletek végrehajtása a keresési eredményekből
-          href: log-analytics-log-search-takeaction.md
-        - name: Számítógépcsoportok
-          href: log-analytics-computer-groups.md
-    - name: Új naplókeresés
-      items:
-        - name: Munkaterület frissítése
-          href: log-analytics-log-search-upgrade.md
-        - name: Váltás az örökölt nyelvről
-          href: log-analytics-log-search-transition.md
-        - name: Folyamat-összekötő
-          href: log-analytics-flow-tutorial.md
     - name: Adatok elemzése
       items:
         - name: Irányítópultok
           href: log-analytics-dashboards.md
         - name: Nézettervező
-          href: log-analytics-view-designer.md
+          items:
+            - name: Áttekintés
+              href: log-analytics-view-designer.md
+            - name: Csempe referenciája
+              href: log-analytics-view-designer-tiles.md
+            - name: Vizualizációs rész referenciája
+              href: log-analytics-view-designer-parts.md
         - name: Power BI
           href: log-analytics-powerbi.md
     - name: Riasztások létrehozása
@@ -231,14 +241,12 @@
           href: log-analytics-api-alerts.md
 - name: Referencia
   items:
+    - name: Nyelvi referencia
+      href: 'https://docs.loganalytics.io/docs/Language-Reference'
     - name: Azure PowerShell
       href: /powershell/module/azurerm.operationalinsights
     - name: REST
       href: /rest/api/loganalytics
-    - name: Nézettervező csempe referenciája
-      href: log-analytics-view-designer-tiles.md
-    - name: Nézettervező vizualizációs részének referenciája
-      href: log-analytics-view-designer-parts.md
 - name: Erőforrások
   items:
     - name: Azure-ütemterv

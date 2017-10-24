@@ -13,6 +13,7 @@
 # Útmutató
 ## Üzembe helyezés és használat
 ### [Beállítások konfigurálása](multi-factor-authentication-whats-next.md)
+#### [A phonefactor portál használata](multi-factor-authentication-whats-next-pfweb.md)
 ### [Jelentések az MFA-ban](multi-factor-authentication-manage-reports.md)
 ### [Meglévő hálózatiházirend-kiszolgálók használata](multi-factor-authentication-nps-extension.md)
 #### [Speciális konfiguráció az NPS-bővítményhez](nps-extension-advanced-configuration.md)

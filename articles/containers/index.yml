@@ -47,10 +47,10 @@ sections:
         className: cardsM
         columns: 2
         items:
-          - href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
-            title: Tárolóalapú alkalmazás létrehozása az Azure Container Instances szolgáltatással
+          - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
+            title: Windows-alapú tárolóalkalmazás üzembe helyezése a Service Fabric segítségével
             image:
-              src: /azure/media/index/ContainerService.svg
+              src: /azure/media/index/Fabric.svg
           - href: 'https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough'
             title: Kubernetes-fürt létrehozása Linux-tárolókhoz
             image:
@@ -59,12 +59,16 @@ sections:
             title: Docker Swarm-fürt üzembe helyezése
             image:
               src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
-          - href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
-            title: DC/OS fürt üzembe helyezése
+          - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
+            title: Privát Docker-tárolójegyzék létrehozása az Azure Container Registry-ben
             image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+              src: /azure/media/index/container-registry.svg
           - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image'
             title: Tárolóalapú alkalmazás létrehozása az Azure Web Apps for Containers szolgáltatással
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+          - href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
+            title: DC/OS fürt üzembe helyezése
             image:
               src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
   - title: Ingyenes Pluralsight videós képzés az Azure-hoz és a tárolókhoz

@@ -37,7 +37,7 @@
 ## [Eszközinformációk a távoli figyelési megoldásban](iot-suite-remote-monitoring-device-info.md)
 ## [Átjáró telepítése csatlakoztatott factoryhoz](iot-suite-connected-factory-gateway-deployment.md)
 ## [Csatlakoztatott factory testreszabása](iot-suite-connected-factory-customize.md)
-
+## [Az OPC-kiadó használata a csatlakoztatott factoryhoz](iot-suite-connected-factory-publisher.md)
 # Referencia
 ## [Biztonsági architektúra](iot-security-architecture.md)
 ## [Ajánlott biztonsági eljárások](iot-security-best-practices.md)

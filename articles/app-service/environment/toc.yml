@@ -34,6 +34,8 @@
   items:
     - name: ASE használata
       href: using-an-ase.md
+    - name: Integrálás az Application Gateway szolgáltatással
+      href: integrate-with-application-gateway.md
     - name: ASE létrehozása sablonból
       href: create-from-template.md
 - name: Referencia

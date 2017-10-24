@@ -53,6 +53,8 @@
           href: concepts-extensions.md
         - name: Kiszolgálói naplók
           href: concepts-server-logs.md
+        - name: Magas rendelkezésre állás
+          href: concepts-high-availability.md
     - name: Erőforrások
       items:
         - name: Árképzési szintek
@@ -67,6 +69,8 @@
           href: concepts-firewall-rules.md
         - name: Az SSL konfigurálása
           href: concepts-ssl-connection-security.md
+    - name: Figyelés
+      href: concepts-monitoring.md
     - name: Fejlesztés
       items:
         - name: Adatkapcsolattárak
@@ -91,14 +95,20 @@
           href: howto-migrate-using-dump-and-restore.md
         - name: Importálás és exportálás
           href: howto-migrate-using-export-and-import.md
-    - name: Kiszolgáló konfigurációs paramétereinek testreszabása
+    - name: Kiszolgáló paramétereinek konfigurálása
       items:
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
-    - name: Kiszolgálói naplók
+    - name: Hozzáférés a kiszolgálói naplókhoz
       items:
+        - name: Azure Portal
+          href: howto-configure-server-logs-in-portal.md
         - name: Azure CLI
           href: howto-configure-server-logs-using-cli.md
+    - name: Figyelés
+      items:
+        - name: Riasztások létrehozása metrikákhoz
+          href: howto-alert-on-metric.md
 - name: Referencia
   items:
     - name: Azure CLI
