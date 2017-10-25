@@ -31,3 +31,5 @@
       href: 'https://azure.microsoft.com/pricing/details/cost-management'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure-staging.microsoft.com/en-us/regions/services/'
+    - name: GYIK
+      href: cost-mgt-faq.md

@@ -80,7 +80,7 @@ sections:
           - title: Nyelvek
             html: '<p><a href="https://docs.loganalytics.io/">Elemzés</a></p><p><a href="/dotnet/api/microsoft.applicationinsights">.NET</a></p><p><a href="/java/api/com.microsoft.applicationinsights">Java</a></p><p><a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md">JavaScript</a></p><p><a href="https://dev.applicationinsights.io/">Adathozzáférési API</a></p>'
           - title: Adatmodell
-            html: <p><a href="application-insights-data-model-request-telemetry">Kérés</a></p><p><a href="application-insights-data-model-dependency-telemetry">Függőség</a></p><p><a href="application-insights-data-model-exception-telemetry">Kivétel</a></p><p><a href="application-insights-data-model-trace-telemetry">Nyomkövetés</a></p><p><a href="application-insights-data-model-event-telemetry">Esemény</a></p><p><a href="application-insights-data-model-metric-telemetry">Metrika</a></p><p><a href="application-insights-data-model-context">Kapcsolatfelvétel</a></p>
+            html: <p><a href="application-insights-data-model-request-telemetry">Kérés</a></p><p><a href="application-insights-data-model-dependency-telemetry">Függőség</a></p><p><a href="application-insights-data-model-exception-telemetry">Kivétel</a></p><p><a href="application-insights-data-model-trace-telemetry">Nyomkövetés</a></p><p><a href="application-insights-data-model-event-telemetry">Esemény</a></p><p><a href="application-insights-data-model-metric-telemetry">Metrika</a></p><p><a href="application-insights-data-model-context">Környezet</a></p>
           - title: Telemetriai korreláció
             html: <p><a href="application-insights-correlation">Telemetriai korreláció</a></p>
           - title: Kódminták
