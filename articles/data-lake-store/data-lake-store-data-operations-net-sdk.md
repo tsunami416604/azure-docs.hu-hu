@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: f525bd81ebbc27a4730bdced5c8778b6f2ac69b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f6319dcf1ae66a686dd1c2ea2810b3041183098
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="filesystem-operations-on-azure-data-lake-store-using-net-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Store-ban a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -65,13 +65,17 @@ A Data Lake Store fiókkezelési műveleteinek a .NET SDK használatával való 
 
         using System;
         using System.IO;
-        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+        using System.Linq;
+        using System.Text;
         using System.Threading;
-
+        using System.Collections.Generic;
+        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+                
+        using Microsoft.Rest;
+        using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure.Management.DataLake.Store;
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using Microsoft.Rest.Azure.Authentication;
 
 7. Deklarálja a változókat az alább látható módon, majd adja meg a helyőrzők értékét. Arról is győződjön meg, hogy az itt megadott helyi elérési út és fájlnév létezik a számítógépen.
 
@@ -111,7 +115,7 @@ A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .
 A következő kódrészlet létrehozza a Data Lake Store-fiókot és a fájlrendszeri ügyfélobjektumokat. Ezek a szolgáltatásnak küldött kérések kiadására használatosak.
 
     // Create client objects
-    _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
+    _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(adlCreds);
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 Adja hozzá a következő metódust az osztályhoz. A részlet egy `CreateDirectory()` metódust mutat be, amely egy könyvtár létrehozására használható egy Data Lake Store-fiókon belül.
@@ -137,7 +141,7 @@ Adja hozzá a következő metódust az osztályhoz. A kódrészlet egy `UploadFi
         _adlsFileSystemClient.FileSystem.UploadFile(_adlsAccountName, srcFilePath, destFilePath, overwrite:force);
     }
 
-Adja hozzá a következő kódrészletet a `Main()` metódushoz az `UploadFile()` metódus meghívásához.
+Adja hozzá a következő kódrészletet a `Main()` metódushoz a `UploadFile()` metódus meghívásához.
 
     UploadFile(localFilePath, remoteFilePath, true);
     Console.WriteLine("Uploaded file in the directory. Press any key to continue...");
@@ -206,7 +210,7 @@ Az alábbi részlet egy `AppendToFile()` metódust mutat be, amely az adatok egy
         }
     }
 
-Adja hozzá a következő kódrészletet a `Main()` metódushoz az `AppendToFile()` metódus meghívásához.
+Adja hozzá a következő kódrészletet a `Main()` metódushoz a `AppendToFile()` metódus meghívásához.
 
     AppendToFile(remoteFilePath, "123");
     Console.WriteLine("Content appended. Press any key to continue ...");
