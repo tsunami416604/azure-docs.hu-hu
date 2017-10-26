@@ -1,10 +1,10 @@
-- name: Tárolókhoz készült Web App
+- name: App Service Linux rendszeren
   href: index.yml
 - name: Áttekintés
   items:
     - name: Tudnivalók a Web Appsról
       href: ../app-service-web-overview.md
-    - name: Tudnivalók a tárolókhoz készült Web Appról
+    - name: Tudnivalók a Linux rendszeren futó App Service-ről
       href: app-service-linux-intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
       href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json

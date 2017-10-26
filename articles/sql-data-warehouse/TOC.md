@@ -2,8 +2,6 @@
 
 ## [Mi az az SQL Data Warehouse?](sql-data-warehouse-overview-what-is.md)
 ## [Adatraktár-számítási feladat](sql-data-warehouse-overview-workload.md)
-## [Elosztott adatok](sql-data-warehouse-distributed-data.md)
-## [Gyakori kérdések](sql-data-warehouse-overview-faq.md)
 
 # Első lépések
 
@@ -12,9 +10,13 @@
 ## [Ajánlott eljárások](sql-data-warehouse-best-practices.md)
 ## [Kezelés](sql-data-warehouse-overview-manage.md)
 
-
-
 # Útmutató
+
+## Szolgáltatásjellemzők
+### [MPP-architektúra](massively-parallel-processing-mpp-architecture.md)
+### [Teljesítményszintek](performance-tiers.md)
+### [Adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [Gyakori kérdések](sql-data-warehouse-overview-faq.md)
 
 ## Biztonsági mentés és visszaállítás
 
@@ -118,13 +120,15 @@
 ### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
+### Erőforrásosztályok
+#### [Irányelvek](resource-classes-for-workload-management.md)
+#### [A számítási feladatok elemzése](analyze-your-workload.md)
 
 ## Teljesítmény
 
 ### [Áttekintés](sql-data-warehouse-overview-manage-user-queries.md)
 ### [Oszlopcentrikus tömörítés](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [Figyelés](sql-data-warehouse-manage-monitor.md)
-### [Számítási feladat](sql-data-warehouse-develop-concurrency.md)
 
 ## Biztonság
 

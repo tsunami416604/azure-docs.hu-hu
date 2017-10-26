@@ -5,6 +5,8 @@
 ## [Hibrid identitáskezelési megoldás](choose-hybrid-identity-solution.md)
 ## [Azure-előfizetések társítása](active-directory-how-subscriptions-associated-directory.md)
 ## [Gyakori kérdések](active-directory-faq.md)
+## [Újdonságok](whats-new.md)
+
 
 # Bevezetés
 ## [Bevezetés az Azure AD használatába](get-started-azure-ad.md)
@@ -302,6 +304,7 @@
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
 #### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)
 #### Feladatok
+##### [Klasszikus szabályzatok migrálása](active-directory-conditional-access-migration.md)
 ##### [Eszközalapú feltételes hozzáférés beállítása](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Alkalmazásalapú feltételes hozzáférés beállítása](active-directory-conditional-access-mam.md)
 ##### [A felhasználókra és az alkalmazásra vonatkozó használati feltételek biztosítása](active-directory-tou.md)

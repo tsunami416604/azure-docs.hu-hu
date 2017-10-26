@@ -20,6 +20,7 @@
 ### [Minta beviteli adatok](stream-analytics-sample-data-input.md)
 ### [Gyakori lekérdezési minták](stream-analytics-stream-analytics-query-patterns.md)
 ### [Ablakfüggvények](stream-analytics-window-functions.md)
+
 ### [Referenciaadatok használata](stream-analytics-use-reference-data.md)
 ### [Tesztlekérdezések](stream-analytics-test-query.md)
 ### [Felhasználói JavaScript-függvények integrálása](stream-analytics-javascript-user-defined-functions.md)
@@ -53,6 +54,7 @@
 ### [Feladatábra és metrikák](stream-analytics-job-diagram-with-metrics.md)
 ### [SELECT INTO hibakeresés](stream-analytics-select-into.md)
 ### [Eseménysorrend kezelése](stream-analytics-out-of-order-and-late-events.md)
+### [Eseményrendezési szempontok](stream-analytics-out-of-order-and-late-events.md)
 ### [Eseményközpont olvasói korlátai](stream-analytics-event-hub-consumer-groups.md)
 ### [Diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)
 

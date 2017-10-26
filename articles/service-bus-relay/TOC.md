@@ -20,7 +20,9 @@
 ## Fejlesztés
 ### [Elérhető API-k](relay-api-overview.md)
 #### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
-#### [Csomópont](relay-hybrid-connections-node-ws-api-overview.md)
+#### [Node](relay-hybrid-connections-node-ws-api-overview.md)
+## Kezelés
+### [Az Azure Relay monitorozása az Azure Monitoring segítségével](relay-metrics-azure-monitor.md)
 
 # Referencia
 ## .NET

@@ -80,16 +80,15 @@
 #### [A felhasználói felület dinamikus testreszabása](active-directory-b2c-ui-customization-custom-dynamic.md)
 #### [Jogkivonatok testreszabása](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 #### [Jelszó bonyolultsága](active-directory-b2c-reference-password-complexity-custom.md)
-
 #### [Jelszó módosítása](active-directory-b2c-reference-password-change-custom.md)
-
 #### [A bejelentkezve maradás engedélyezése](active-directory-b2c-reference-kmsi-custom.md)
-
 ### Hibaelhárítás
 #### [Naplók gyűjtése az Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)
 ## Referencia
 ### [Kibocsátási megjegyzések](active-directory-b2c-developer-notes-custom.md)
+### [Egyszeri bejelentkezés munkamenet-szolgáltatói](active-directory-b2c-reference-sso-custom.md)
 ### [A bizalmi keretrendszer meghatározása](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
+
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## Szószedet

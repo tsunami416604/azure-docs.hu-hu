@@ -119,7 +119,7 @@
 ##### [A webproxy konfigurálása](storsimple-8000-configure-web-proxy.md)
 ##### [A DATA 0 beállításainak módosítása](storsimple-8000-modify-data-0.md)
 
-#### [Azure PowerShell-mintaszkriptek használata](storsimple-8000-automation-azurerm-scripts.md)
+
 
 #### [A StorSimple Snapshot Manager használata](storsimple-snapshot-manager-admin.md)
 ##### [Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
@@ -131,6 +131,11 @@
 ##### [Biztonsági mentési feladatok kezelése a StorSimple Snapshot Managerrel](storsimple-snapshot-manager-manage-backup-jobs.md)
 ##### [Kötetek kezelése a StorSimple Snapshot Managerrel](storsimple-snapshot-manager-manage-volumes.md)
 ##### [MMC-műveletek használata a StorSimple Snapshot Managerben](storsimple-snapshot-manager-mmc-menu.md)
+
+### Automatizálás
+
+#### [Azure PowerShell-mintaszkriptek használata](storsimple-8000-automation-azurerm-scripts.md)
+#### [Azure Automation-runbookok használata](storsimple-8000-automation-azurerm-runbook.md)
 
 ### Megoldások kiépítése
 #### [StorSimple Veeammel](storsimple-configure-backup-target-veeam.md)

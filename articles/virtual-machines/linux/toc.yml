@@ -222,11 +222,25 @@
             - name: Az első alkalmazás üzembe helyezése
               href: cloudfoundry-deploy-your-first-app.md
         - name: OpenShift
-          href: openshift-get-started.md
+          items:
+            - name: OpenShift áttekintése
+              href: openshift-get-started.md
+            - name: OpenShift előfeltételei
+              href: openshift-prerequisites.md
+            - name: OpenShift Origin
+              href: openshift-origin.md
+            - name: OpenShift tárolóplatform
+              href: openshift-container-platform.md
+            - name: OpenShift telepítés utáni feladatai
+              href: openshift-post-deployment.md
+            - name: Környezetek hibaelhárítása
+              href: openshift-troubleshooting.md
         - name: Az SAP az Azure-on
           href: ../workloads/sap/get-started.md
         - name: Oracle
           href: ../workloads/oracle/oracle-database-quick-create.md
+        - name: Elasticsearch
+          href: tutorial-elasticsearch.md
         - name: FreeBSD csomagszűrő
           href: freebsd-pf-nat.md
         - name: Adatbázisok
@@ -247,7 +261,6 @@
             - name: NVIDIA GPU-illesztők telepítése
               href: n-series-driver-setup.md
     - name: Tárhely kezelése
-      href: about-disks-and-vhds.md
       items:
         - name: Információk a felügyelt lemezekről
           href: managed-disks-overview.md

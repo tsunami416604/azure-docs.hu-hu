@@ -1,0 +1,35 @@
+- name: Áttekintés
+  items:
+    - name: Az Azure-on futtatott Terraform ismertetése
+      href: terraform-overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: A Terraform telepítése és konfigurálása
+      href: /azure/virtual-machines/linux/terraform-install-configure
+      maintainContext: true
+    - name: Linux rendszerű virtuális gép létrehozása
+      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      maintainContext: true
+- name: oktatóanyagokat
+  items:
+    - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
+      href: terraform-create-vm-cluster-module.md
+    - name: Virtuálisgép-fürt létrehozása a Cloud Shell használatával
+      href: terraform-create-vm-cluster-with-infrastructure.md
+    - name: VM-méretezési készlet kiépítése infrastruktúrával
+      href: terraform-create-vm-scaleset-network-disks-hcl.md
+- name: Alapelvek
+  items:
+    - name: Cloud Shell-integráció
+      href: terraform-cloud-shell.md
+- name: Példák
+  items:
+    - name: Konfigurációs sablonok
+      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
+- name: Referencia
+  items:
+    - name: Azure-modulok beállításjegyzéke
+      href: 'https://registry.terraform.io/modules/Azure'
+    - name: Terraform-referencia
+      href: 'http://aka.ms/terraform'

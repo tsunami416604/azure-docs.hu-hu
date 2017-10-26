@@ -15,7 +15,7 @@ metadata:
   ms.date: 01-23-2017
   ms.author: carolz
 abstract:
-  description: 'Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel igény szerint, külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat kódokat. Az Azure Functions használatával különféle eseményekre reagálva futtathat szkripteket vagy kódrészleteket. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Functions használatát.'
+  description: 'Az Azure Functions egy <a href="https://azure.microsoft.com/overview/serverless-computing/">kiszolgáló nélküli</a> számítási szolgáltatás, amellyel igény szerint, külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat kódokat. Az Azure Functions használatával különféle eseményekre reagálva futtathat szkripteket vagy kódrészleteket. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Functions használatát.'
   aside:
     image:
       alt: null

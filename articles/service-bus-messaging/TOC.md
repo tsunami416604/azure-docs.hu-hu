@@ -63,6 +63,7 @@
 #### [Tranzakciófeldolgozás](service-bus-transactions.md)
 #### [Párosított névterek implementációja](service-bus-paired-namespaces.md)
 ## Kezelés
+### [Service Bus monitorozása az Azure Monitoring segítségével](service-bus-metrics-azure-monitor.md)
 ### [Service Bus felügyeleti könyvtárak](service-bus-management-libraries.md)
 ### [Diagnosztikai naplók](service-bus-diagnostic-logs.md)
 ### [Üzenetküldési entitások felfüggesztése és újraaktiválása](entity-suspend.md)
