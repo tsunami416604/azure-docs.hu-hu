@@ -14,16 +14,10 @@
 ## [Szolgáltatási korlátozások](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # Bevezetés
 ## Application Gateway létrehozása
-### Nyilvános
-#### [Azure Portal](application-gateway-create-gateway-portal.md)
-#### [Azure PowerShell](application-gateway-create-gateway-arm.md)
-#### [Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
-#### [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md)
-#### [Azure CLI](application-gateway-create-gateway-cli.md)
-#### [Azure PowerShell (klasszikus)](application-gateway-create-gateway.md)
-### Belső hálózatra irányuló
-#### [Azure PowerShell](application-gateway-ilb-arm.md)
-#### [Azure PowerShell (klasszikus)](application-gateway-ilb.md)
+### [Azure Portal](application-gateway-create-gateway-portal.md)
+### [Azure PowerShell](application-gateway-create-gateway-arm.md)
+### [Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
+### [Azure CLI](application-gateway-create-gateway-cli.md)
 # Útmutató
 ## Webalkalmazási tűzfal konfigurálása
 ### [Azure Portal](application-gateway-web-application-firewall-portal.md)
@@ -35,9 +29,7 @@
 ## Az SSL konfigurálása
 ### [Azure Portal](application-gateway-ssl-portal.md)
 ### [Azure PowerShell](application-gateway-ssl-arm.md)
-### [Azure PowerShell (klasszikus)](application-gateway-ssl.md)
-### [Azure CLI](application-gateway-ssl.md)
-### [Végpontok közötti](application-gateway-end-to-end-ssl-powershell.md)
+### [Azure CLI](application-gateway-ssl-cli.md)
 ### [SSL-szabályzat](application-gateway-configure-ssl-policy-powershell.md)
 ## URL-alapú útválasztás konfigurálása
 ### [Azure Portal](application-gateway-create-url-route-portal.md)
@@ -53,7 +45,6 @@
 ## Állapotminták konfigurálása
 ### [Azure Portal](application-gateway-create-probe-portal.md)
 ### [Azure PowerShell](application-gateway-create-probe-ps.md)
-### [Azure PowerShell (klasszikus)](application-gateway-create-probe-classic-ps.md)
 ## [Azure Security Center – integráció](application-gateway-integration-security-center.md)
 ## [Többféle terheléselosztási szolgáltatás használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## Hibaelhárítás
@@ -69,7 +60,6 @@
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations)
 ## [REST](https://docs.microsoft.com/rest/api/applicationgateway)
-## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/mt299393)
 # Kapcsolódó
 ## [ExpressRoute](/azure/expressroute/)
 ## [Virtuális hálózat](/azure/virtual-network/)

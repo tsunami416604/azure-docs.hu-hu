@@ -44,7 +44,7 @@
     - name: A számítási környezet konfigurálása
       items:
         - name: Kísérletezés konfigurálása
-          href: experiment-execution-configuration.md
+          href: experimentation-service-configuration.md
         - name: DSVM és HDI Spark-fürt létrehozása
           href: how-to-create-dsvm-hdi.md
         - name: Képzés GPU-k használatával
@@ -147,7 +147,7 @@
     - name: Kísérletezés
       items:
         - name: Kísérletezési szolgáltatás konfigurációja
-          href: experiment-execution-configuration-reference.md
+          href: experimentation-service-configuration-reference.md
         - name: API naplózása
           href: reference-logging-api.md
     - name: Modellkezelés
@@ -175,7 +175,7 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: MSDN-fórum
       href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
     - name: Stack Overflow

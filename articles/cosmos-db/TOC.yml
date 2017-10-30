@@ -139,6 +139,7 @@
     - name: Fejlesztés
       items:
         - name: DocumentDB API
+          href: documentdb-index.md
           items:
             - name: Erőforrások
               href: documentdb-resources.md
@@ -213,6 +214,7 @@
                 - name: 'S1, S2, S3 kivonása'
                   href: performance-levels.md
         - name: MongoDB API
+          href: mongodb-index.md
           items:
             - name: Csatlakozás a MongoDB-fiókhoz
               href: connect-mongodb-account.md
