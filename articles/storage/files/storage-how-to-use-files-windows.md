@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5134fab447f1d1842369aeda4ebc1948a5d78262
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Azure-fájlmegosztás csatlakoztatása és a megosztás elérése Windows rendszeren
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows és Windows Server rendszeren csatlakoztathatók. Ez a cikk három különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására Windows rendszeren: a Fájlkezelő felhasználói felület, a PowerShell és a parancssor használatával. 
@@ -29,7 +29,8 @@ Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy
 
 | Windows-verzió        | SMB-verzió | Azure-beli virtuális gépeken csatlakoztatható | Helyszínen csatlakoztatható |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows 10<sup>1</sup>  | SMB 3.0 | Igen | Igen |
+| Windows Server félévi csatorna<sup>1</sup> | SMB 3.0 | Igen | Igen |
+| Windows 10<sup>2</sup>  | SMB 3.0 | Igen | Igen |
 | Windows Server 2016    | SMB 3.0     | Igen                   | Igen                  |
 | Windows 8.1            | SMB 3.0     | Igen                   | Igen                  |
 | Windows Server 2012 R2 | SMB 3.0     | Igen                   | Igen                  |
@@ -37,7 +38,8 @@ Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy
 | Windows 7              | SMB 2.1     | Igen                   | Nem                   |
 | Windows Server 2008 R2 | SMB 2.1     | Igen                   | Nem                   |
 
-<sup>1</sup>A Windows 10 1507-es, 1511-es, 1607-es, 1703-as és 1709-es verziói.
+<sup>1</sup>A Windows Server 1709-es verziója.  
+<sup>2</sup>A Windows 10 1507-es, 1607-es, 1703-as és 1709-es verziói.
 
 > [!Note]  
 > Javasoljuk, hogy mindig a Windows-verziójához legutóbb kiadott frissítést használja.

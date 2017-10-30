@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 08/15/2017
-ms.openlocfilehash: 46aee37a00a923addc08dd185ce0326a64ccb48c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/16/2017
+ms.openlocfilehash: 73785cf8c4f1539cb52254ba316ed7d888b683aa
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával
 A MySQL-hez készült Azure Database egy felügyelt szolgáltatás, amellyel a magas rendelkezésre állású MySQL-adatbázisokat futtathatja, kezelheti és skálázhatja a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre nagyjából öt perc alatt egy Azure-adatbázist MySQL-kiszolgálóhoz az Azure Portal használatával.  
@@ -39,16 +39,16 @@ Kövesse az alábbi lépéseket egy, a MySQL-kiszolgálóhoz készült Azure-ada
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása** 
     ---|---|---
-    Kiszolgálónév | myserver4demo | Egy egyedi név, amely azonosítja a MySQL-kiszolgálóhoz készült Azure-adatbázist. A rendszer hozzáfűzi a *mysql.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
-    Előfizetés | Az Ön előfizetése | A kiszolgálóhoz használni kívánt Azure-előfizetés. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
-    Erőforráscsoport | myResourceGroup | Egy új vagy létező erőforráscsoport neve.
+    Kiszolgálónév | Egyedi kiszolgálónév | Válasszon egy egyedi nevet, amely azonosítja a MySQL-kiszolgálóhoz készült Azure-adatbázist. Például: myserver4demo. A rendszer hozzáfűzi a *mysql.database.azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
+    Előfizetés | Az Ön előfizetése | Válassza ki a kiszolgálóhoz használni kívánt Azure-előfizetést. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
+    Erőforráscsoport | myResourceGroup | Adjon meg egy új vagy egy létező erőforráscsoportnevet.
     Kiszolgáló-rendszergazdai bejelentkezés | myadmin | A kiszolgálóhoz való csatlakozáshoz használni kívánt bejelentkezési fiók. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
-    Jelszó | *A választása szerint* | Egy új jelszó a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
-    Jelszó megerősítése | *A választása szerint*| A rendszergazdafiók megerősített jelszava.
-    Hely | *A felhasználókhoz legközelebb eső régió*| A felhasználókhoz vagy más Azure-alkalmazásokhoz legközelebb eső hely.
+    Jelszó | *A választása szerint* | Adjon meg új jelszót a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
+    Jelszó megerősítése | *A választása szerint*| Erősítse meg a rendszergazdafiók jelszavát.
+    Hely | *A felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy más Azure-alkalmazásokhoz legközelebb eső helyet.
     Verzió | *A legújabb verzió*| A legújabb verzió (ha nincsenek más verzió használatát megkövetelő egyedi igényei).
-    Tarifacsomag | **Alapszintű**, **50 számítási egység**, **50 GB** | Az új adatbázis szolgáltatás- és teljesítményszintje. Válassza a felső fülön az **Alapszintű tarifacsomagot**. Válassza a **Számítási egységek** csúszka bal oldali végét az ebben a rövid útmutatóban elérhető legkisebb mennyiség kiválasztásához. Kattintson az **OK** gombra a tarifacsomag beállításának mentéséhez. További információkért tekintse meg a következő képernyőképet.
-    Rögzítés az irányítópulton | Jelölőnégyzet | Egyszerűen nyomon követheti a kiszolgálót az Azure Portal irányítópultjának első lapján.
+    Tarifacsomag | **Alapszintű**, **50 számítási egység**, **50 GB** | Válassza ki az új adatbázis szolgáltatás- és teljesítményszintjét. Válassza a felső fülön az **Alapszintű tarifacsomagot**. Válassza a **Számítási egységek** csúszka bal oldali végét az ebben a rövid útmutatóban elérhető legkisebb mennyiség kiválasztásához. Kattintson az **OK** gombra a tarifacsomag beállításának mentéséhez. További információkért tekintse meg a következő képernyőképet.
+    Rögzítés az irányítópulton | Jelölőnégyzet | Ha bejelöli ezt a lehetőséget, egyszerűen nyomon követheti a kiszolgálót az Azure Portal irányítópultjának első lapján.
 
     > [!IMPORTANT]
     > A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia a rövid útmutató későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
@@ -75,6 +75,8 @@ A MySQL szolgáltatáshoz készült Azure-adatbázis a kiszolgáló szintjén ho
     Szabály neve | Kezdő IP-cím | Záró IP-cím 
     ---|---|---
     AllowAllIps |  0.0.0.0 | 255.255.255.255
+    
+    Az összes IP-cím engedélyezése nem biztonságos. Ez a példa az egyszerűséget tartja szem előtt, de valós környezetben ismernie kell a pontos IP-címtartományokat az alkalmazások és felhasználók számára történő hozzáadáshoz. 
 
 4. A **Kapcsolatbiztonság** lap felső eszköztárában kattintson a **Mentés** gombra. A folytatás előtt várjon, amíg meg nem jelenik a frissítés sikeres befejezését jelző értesítés. 
 
@@ -109,20 +111,20 @@ Először használjuk a [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.ht
     A következő szintaxissal kapcsolódhat a mysql segédprogrammal egy MySQL-kiszolgálóhoz készült Azure-adatbázishoz:
 
     ```bash
-    mysql --host <yourserver> --user <server admin login> --password
+    mysql --host <fully qualified servername> --user <serveradminlogin@servername> -p
     ```
 
     Például a következő paranccsal a példakiszolgálónkhoz csatlakozhat:
 
     ```azurecli-interactive
-    mysql --host myserver4demo.mysql.database.azure.com --user myadmin@myserver4demo --password
+    mysql --host myserver4demo.mysql.database.azure.com --user myadmin@myserver4demo -p
     ```
 
     mysql-paraméter |Ajánlott érték|Leírás
     ---|---|---
     --host | *Kiszolgálónév* | Az a kiszolgálónév, amelyet korábban a MySQL-hez készült Azure-adatbázis létrehozásakor használt. A példakiszolgáló a **myserver4demo.mysql.database.azure.com**. Használja a teljes tartománynevet (**\*.mysql.database.azure.com**), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. 
     --user | *Kiszolgáló-rendszergazdai bejelentkezési név* |A kiszolgáló-rendszergazdai bejelentkezési felhasználónév, amelyet korábban a MySQL-kiszolgálóhoz készült Azure-adatbázis létrehozásakor adott meg. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum *username@servername*.
-    --password | *Várjon a hitelesítőadat-kérésig* |Az a jelszó, amelyet a kiszolgáló létrehozásakor adott meg. Vegye figyelembe, hogy a beírt jelszókarakterek nem jelennek meg a Bash parancssorban, amikor beírja őket. A jelszó beírása után nyomja le az **Enter** billentyűt.
+    -p | *Várjon a hitelesítőadat-kérésig* |Amikor a rendszer kéri, írja be a kiszolgáló létrehozásakor megadott jelszót. Vegye figyelembe, hogy a beírt jelszókarakterek nem jelennek meg a Bash parancssorban, amikor beírja őket. A jelszó beírása után nyomja le az **Enter** billentyűt.
 
    Miután csatlakozott, a mysql segédprogram egy `mysql>` parancssort jelenít meg a parancsok beviteléhez. 
 
@@ -182,7 +184,9 @@ Ha a MySQL Workbench GUI eszközzel szeretne csatlakozni a kiszolgálóhoz, vég
 
 1.  Nyissa meg a MySQL Workbench alkalmazást az ügyfélszámítógépen. A MySQL Workbench-et [a MySQL Workbench letöltési](https://dev.mysql.com/downloads/workbench/) oldaláról töltheti le és telepítheti.
 
-2.  A **Setup New Connection** (Új kapcsolat beállítása) párbeszédpanelen adja meg a következő információkat a **Parameters** (Paraméterek) lapon:
+2. Hozzon létre egy új kapcsolatot. Kattintson a **MySQL Connections** (MySQL-kapcsolatok) fejléc melletti plusz (+) ikonra.
+
+3. A **Setup New Connection** (Új kapcsolat beállítása) párbeszédpanelen írja be a kiszolgáló kapcsolatadatait a **Parameters** (Paraméterek) lapon. A helyőrző értékek példaként szerepelnek. A gazdanevet, a felhasználónevet és a jelszót cserélje le a saját értékeire.
 
     ![Új kapcsolat beállítása](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
@@ -195,7 +199,7 @@ Ha a MySQL Workbench GUI eszközzel szeretne csatlakozni a kiszolgálóhoz, vég
     Felhasználónév |  *Kiszolgáló-rendszergazdai bejelentkezési név* | A kiszolgáló-rendszergazdai bejelentkezési információk, amelyeket korábban a MySQL-kiszolgálóhoz készült Azure-adatbázis létrehozásakor adott meg. A példában szereplő felhasználónév a következő: **myadmin@myserver4demo**. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum *username@servername*.
     Jelszó | *Az Ön jelszava* | A jelszó mentéséhez kattintson a **Store in Vault...** (Tárolás a tárolóban) gombra. |
 
-3. Válassza a **Test Connection** (Kapcsolat tesztelése) lehetőséget annak teszteléséhez, hogy minden paraméter helyesen lett-e konfigurálva. Ezután a kapcsolat mentéséhez kattintson az **OK** gombra. 
+4. Válassza a **Test Connection** (Kapcsolat tesztelése) lehetőséget annak teszteléséhez, hogy minden paraméter helyesen lett-e konfigurálva. Ezután a kapcsolat mentéséhez kattintson az **OK** gombra. 
 
     > [!NOTE]
     > Alapértelmezés szerint az SSL kényszerítve van a kiszolgálón, és további konfigurációt igényel a sikeres csatlakozás érdekében. További információkért lásd [Az SSL-kapcsolatok a MySQL-hez készült Azure Database-hez való kapcsolódásra az alkalmazásban való konfigurálását](./howto-configure-ssl.md) bemutató cikket. Ha le szeretné tiltani a rövid útmutató során az SSL-t, látogasson el az Azure Portalra. A Kapcsolatbiztonság lapon használja az **SSL-kapcsolat kikényszerítése** váltógombot.

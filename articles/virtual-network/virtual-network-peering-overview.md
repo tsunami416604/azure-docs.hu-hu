@@ -14,39 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: 082cd8a6cf50f76c89fe5995047396c734f83034
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f055f1e87e73733b3f2ecfa87e4d372ade8a7868
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
-Az [Azure Virtual Network (VNet)](virtual-networks-overview.md) az Ön saját hálózati területe az Azure-ban, amely révén biztonságosan csatlakoztathatja egymáshoz az Azure-erőforrásokat.
-
-A virtuális hálózatok közötti társviszony lehetővé teszi a virtuális hálózatok zökkenőmentes összekapcsolását. A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális társhálózatokba tartozó virtuális gépek közvetlenül kommunikálhatnak egymással.
-A virtuális társhálózatokba tartozó virtuális gépek közötti forgalmat lényegében ugyanúgy továbbítja a rendszer a Microsoft gerincinfrastruktúráján keresztül, ahogyan az azonos virtuális hálózatba tartozó virtuális gépek közötti forgalmat, kizárólag *magánhálózati* IP-címeken keresztül.
-
->[!IMPORTANT]
-> Eltérő Azure-régiókban található virtuális hálózatok között is kialakítható társviszony. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. [Regisztrálhatja előfizetését az előzetes kiadásra](virtual-network-create-peering.md). Az azonos régióban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető.
->
+A virtuális hálózatok közötti társviszony lehetővé teszi két Azure [virtuális hálózat](virtual-networks-overview.md) zökkenőmentes összekapcsolását. A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális társhálózatokba tartozó virtuális gépek közötti forgalmat lényegében ugyanúgy továbbítja a rendszer a Microsoft gerincinfrastruktúráján keresztül, ahogyan az azonos virtuális hálózatba tartozó virtuális gépek közötti forgalmat, *magánhálózati* IP-címeken keresztül. 
 
 A virtuális társhálózatok használatának előnyei:
 
-* A virtuális társhálózatok közötti forgalom teljesen privát. Ez a forgalom a Microsoft gerinchálózatán halad át, és a nyilvános internetet vagy átjárókat nem érinti.
+* A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.
 * Kis késésű, nagy sávszélességű kapcsolat jön létre eltérő virtuális hálózatokba tartozó erőforrások között.
-* A virtuális társhálózatok erőforrásai egymás között használhatóak.
-* A virtuális hálózatok társításával adatok továbbíthatóak Azure-előfizetések, üzemi modellek és Azure-régiók között (előzetes verzió).
-* Létrehozható társviszony az Azure Resource Managerrel létrehozott virtuális hálózatok között, vagy egy, a Resource Managerrel létrehozott virtuális hálózat és egy, a klasszikus üzemi modellel létrehozott virtuális hálózat között. A két Azure üzembehelyezési modell közti különbségekkel kapcsolatos további információkért olvassa el [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című cikket.
+* Az egyes virtuális hálózatokban lévő erőforrások a hálózatok társítását követően képesek más virtuális hálózatokban lévő erőforrásokkal kommunikálni.
+* Adatok továbbíthatóak Azure-előfizetések, üzemi modellek és Azure-régiók között (előzetes verzió).
+* Létrehozható társviszony az Azure Resource Managerrel létrehozott virtuális hálózatok között, vagy egy, a Resource Managerrel létrehozott virtuális hálózat és egy, a klasszikus üzemi modellel létrehozott virtuális hálózat között. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Ez nem okoz leállást egyik virtuális hálózat erőforrásaiban sem a társításkor és azt követően sem.
 
 ## <a name="requirements-constraints"></a>Követelmények és korlátozások
 
-* Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban és az USA 2. nyugati régiójában. [Regisztrálhatja az előfizetését az előzetes verzióra.](virtual-network-create-peering.md)
+* Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban és az USA 2. nyugati régiójában. [Regisztrálhatja az előfizetését](virtual-network-create-peering.md) az előzetes verzióra.
     > [!WARNING]
-    > Az ezzel a forgatókönyvvel létrehozott virtuális társhálózatok rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadások forgatókönyveitől. Előfordulhat, hogy a virtuális társhálózatok korlátozott képességekkel rendelkeznek, vagy nem érhetőek el minden Azure-régióban. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
+    > A régiók között létrehozott virtuális társhálózatok rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadások társításaitól. Előfordulhat, hogy a virtuális társhálózatok korlátozott képességekkel rendelkeznek, vagy nem érhetőek el minden Azure-régióban. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
 * A virtuális társhálózatok IP-címterei nem fedhetik egymást.
-* Miután egy virtuális hálózat és egy másik virtuális hálózat között társviszony jött létre, nem adható hozzá és nem törölhető belőle címtér.
+* Miután egy virtuális hálózat és egy másik virtuális hálózat között társviszony jött létre, nem adhatóak hozzá és nem törölhetőek címtartományok a címtérben. Ha címtartományokat kell hozzáadnia egy társított virtuális hálózat címteréhez, előbb el kell távolítania a társítást, ezután hozzáadhatja a címtartományt, majd végül újra kell létesítenie a társítást.
 * A virtuális hálózati társviszony két virtuális hálózat között jön létre. A társviszonyok nem adódnak tovább tranzitív módon. Ha például az A virtuális hálózat társviszonyban áll a B virtuális hálózattal, és a B hálózat társviszonyban áll a C virtuális hálózattal, az *nem* jelenti azt, hogy az A virtuális hálózat társviszonyban van a C virtuális hálózattal.
 * Társviszonyt létesíthet két különböző előfizetésben található virtuális hálózat között, ha a társviszony-létesítést mindkét előfizetés esetében engedélyezi egy rendszergazdai engedéllyel rendelkező felhasználó (lásd a [konkrét engedélyeket](create-peering-different-deployment-models-subscriptions.md#permissions)), és az előfizetések ugyanahhoz az Azure Active Directory-bérlőhöz vannak társítva. Különböző Active Directory-bérlőkhöz társított előfizetésekben található virtuális hálózatok között [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) segítségével létesíthető társviszony.
 * A virtuális hálózatok társviszonyba állíthatók, ha mindkettő a Resource Manager-alapú üzemi modellel lett létrehozva, vagy ha az egyik virtuális hálózat a Resource Manager-alapú üzemi modellel, a másik pedig a klasszikus üzemi modellel lett létrehozva. Klasszikus üzemi modellel létrehozott virtuális hálózatok között azonban nem létesíthető társviszony. [VPN-átjáróval](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) összeköthetőek a klasszikus üzemi modellel létrehozott virtuális hálózatok.
@@ -60,18 +54,18 @@ Ha társviszony jött létre a virtuális hálózatok között, akkor a virtuál
 
 Az azonos régióban lévő virtuális társhálózaton belüli virtuális gépek közötti hálózati késés megegyezik az egyetlen virtuális hálózaton belüli hálózati késéssel. A hálózat átbocsátóképessége attól függ, hogy milyen, a virtuális gépek méretével arányos sávszélesség van engedélyezve. A társviszonyon belül más korlátozás nem vonatkozik a sávszélességre.
 
-A virtuális társhálózatok közötti forgalom közvetlenül a Microsoft gerincinfrastruktúráján halad át, nem pedig átjárón vagy a nyilvános interneten.
+A virtuális társhálózatokon belüli virtuális gépek közötti forgalom közvetlenül a Microsoft gerincinfrastruktúráján halad át, nem pedig átjárón vagy a nyilvános interneten.
 
-Az egyik virtuális hálózatba tartozó virtuális gépek elérhetik az azonos régióban lévő virtuális társhálózat belső terheléselosztóit. A belső terheléselosztók támogatása nem terjed ki a globális virtuális társhálózatokra az előzetes kiadásban. A globális virtuális társhálózatok általánosan elérhető kiadásában a belső terheléselosztók is támogatottak lesznek.
+Az egyik virtuális hálózatba tartozó virtuális gépek elérhetik az azonos régióban lévő virtuális társhálózat belső terheléselosztóit. A belső terheléselosztók támogatása nem terjed ki a globális virtuális társhálózatokra (előzetes kiadás). A globális virtuális társhálózatok általánosan elérhető kiadásában a belső terheléselosztók is támogatottak lesznek.
 
-Szükség esetén bármelyik virtuális hálózatban alkalmazhatók hálózati biztonsági csoportok más virtuális hálózatok vagy alhálózatok elérésének blokkolására.
-Virtuális hálózatok társviszonyának konfigurálásakor megnyithatja vagy lezárhatja a hálózati biztonsági csoportszabályokat a virtuális hálózatok között. Ha a virtuális társhálózatok között teljes körű kapcsolatot nyit (ez az alapértelmezett beállítás), akkor a hálózati biztonsági csoportok segítségével konkrét alhálózatokra vagy virtuális gépekre vonatkozóan blokkolhatja vagy megtagadhatja a megadott típusú hozzáférést. A hálózati biztonsági csoportokról további információt tartalmaz a [Hálózati biztonsági csoportok áttekintése](virtual-networks-nsg.md) című cikk.
+Szükség esetén bármelyik virtuális hálózatban alkalmazhatók hálózati biztonsági csoportok a más virtuális hálózatok vagy alhálózatok elérésének blokkolására.
+Virtuális hálózatok társviszonyának konfigurálásakor megnyithatja vagy lezárhatja a hálózati biztonsági csoportszabályokat a virtuális hálózatok között. Ha úgy dönt, hogy teljes körű kapcsolatra nyit lehetőséget a virtuális társhálózatok között (ez az alapértelmezett beállítás), akkor a hálózati biztonsági csoportok segítségével konkrét alhálózatokra vagy virtuális gépekre vonatkozóan blokkolhatja vagy megtagadhatja a megadott típusú hozzáférést. A hálózati biztonsági csoportokkal kapcsolatos további információk: [Hálózati biztonsági csoportok áttekintése](virtual-networks-nsg.md).
 
 ## <a name="service-chaining"></a>Szolgáltatásláncolás
 
 Konfigurálhatók olyan útvonalak, amelyekben a társviszonyban álló virtuális hálózatba tartozó virtuális gépek vannak megadva a „következő ugrás” IP-címeként, lehetővé téve a szolgáltatásláncolást. A szolgáltatásláncolás lehetővé teszi a forgalomnak a felhasználó által meghatározott útvonalon történő átirányítását egy virtuális hálózatból a virtuális társhálózatban működő virtuális berendezésre.
 
-Jó eredménnyel alakíthat ki csillagpontos típusú környezetet is, amelyben a csillag középponti hálózatában infrastrukturális összetevők (például virtuális hálózati berendezések) működhetnek. Az ágakon lévő virtuális hálózatok társhálózatai lehetnek a középponti hálózatnak. Az adatforgalom áthaladhat a középponti virtuális hálózatban futó virtuális hálózati berendezéseken. A virtuális hálózatok közötti társhálózati viszonnyal lehetőség nyílik arra, hogy a felhasználó által definiált útvonalon egy virtuális társhálózat egyik virtuális gépének IP-címe legyen a következő ugrás IP-címe. A felhasználó által megadott útvonalakkal kapcsolatos további információkat talál a [felhasználó által megadott útvonalakat áttekintő](virtual-networks-udr-overview.md) cikkben. További információ a [küllős hálózati topológiák](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering) létrehozásáról
+Jó eredménnyel alakíthat ki csillagpontos típusú környezetet is, amelyben a csillag középponti hálózatában infrastrukturális összetevők (például virtuális hálózati berendezések) működhetnek. Az ágakon lévő virtuális hálózatok társhálózatai lehetnek a középponti hálózatnak. Az adatforgalom áthaladhat a középponti virtuális hálózatban futó virtuális hálózati berendezéseken. A virtuális hálózatok közötti társhálózati viszonnyal lehetőség nyílik arra, hogy a felhasználó által definiált útvonalon egy virtuális társhálózat egyik virtuális gépének IP-címe legyen a következő ugrás IP-címe. A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd a [felhasználó által megadott útvonalak áttekintését](virtual-networks-udr-overview.md). A küllős hálózati topológiák létrehozásával kapcsolatos további információkért lásd a [küllős hálózati topológiákkal](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering) foglalkozó cikket
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Átjárók és kapcsolat helyszíni rendszerekkel
 
@@ -93,19 +87,19 @@ A virtuális hálózatok közötti társviszony-létesítés jogosultsághoz van
 
 Olyan felhasználó kezdeményezhet társviszony-létesítési műveletet egy másik virtuális hálózattal, aki rendszergazda, vagy fel van jogosítva a társviszony-létesítésre. A minimálisan szükséges jogosultság a Hálózati közreműködő. Ha a másik oldalon is van egy ennek megfelelő társviszony-létesítési kérelem, és ha teljesül a többi követelmény, létrejön a társviszony.
 
-Például ha a myvirtual networkA és a myvirtual networkB nevű virtuális hálózatokat kapcsolja össze, a fióknak az alábbi minimális szintű szerepkörökkel vagy engedélyekkel kell rendelkeznie az egyes virtuális hálózatok esetében:
+Ha például a myVirtualNetworkA és a myVirtualNetworkB nevű virtuális hálózatokat kapcsolja össze, a fióknak az alábbi minimális szintű szerepkörökkel vagy engedélyekkel kell rendelkeznie az egyes virtuális hálózatok esetében:
 
 |Virtuális hálózat|Üzemi modell|Szerepkör|Engedélyek|
 |---|---|---|---|
-|myvirtual networkA|Resource Manager|[Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+|myVirtualNetworkA|Resource Manager|[Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |Klasszikus|[Klasszikus hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N/A|
-|myvirtual networkB|Resource Manager|[Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
+|myVirtualNetworkB|Resource Manager|[Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Klasszikus|[Klasszikus hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 ## <a name="monitor"></a>Figyelés
 
 Két, Resource Managerrel létrehozott virtuális hálózat közötti társviszony létrehozása esetén mindkét érintett virtuális hálózathoz konfigurálni kell egy társítást.
-Nyomon követheti a társítási kapcsolat állapotát. A társítás állapota a következők egyike lehet:
+Nyomon követheti a társítási kapcsolat állapotát. A társítás állapota a következők állapotok egyike:
 
 * **Kezdeményezve**: Amikor létrehozza a társítást az első virtuális hálózatról a második virtuális hálózatra, a társítás állapota Kezdeményezve lesz.
 
@@ -121,7 +115,7 @@ A virtuális társhálózatokban lévő virtuális gépek kapcsolatának ellenő
 
 ## <a name="limits"></a>Korlátok
 
-Az egy virtuális hálózat esetében létesíthető társviszonyok mennyiségére korlátozás vonatkozik. A társviszonyok alapértelmezett száma 50. Növelheti a társviszonyok számát. Erről az [Azure hálózati korlátozásait](../azure-subscription-service-limits.md#networking-limits) ismertető cikk nyújt részletesebb tájékoztatást.
+Az egy virtuális hálózat esetében létesíthető társviszonyok mennyiségére korlátozás vonatkozik. További információkért lásd az [Azure hálózati korlátozásait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="pricing"></a>Díjszabás
 

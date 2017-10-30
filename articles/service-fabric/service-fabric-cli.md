@@ -6,13 +6,13 @@ author: samedder
 manager: timlt
 ms.service: service-fabric
 ms.topic: get-started-article
-ms.date: 08/22/2017
+ms.date: 10/20/2017
 ms.author: edwardsa
-ms.openlocfilehash: a938e300b1510a4f5f4eac3bd3d9a8bb728241ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d24c7618c5d53cfe2871d596bfc0fe2cadd5940a
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -32,7 +32,7 @@ A Service Fabric parancssori felület a Service Fabric SDK legfrissebb futtatók
 
 | Parancssori felület verziója   | támogatott futtatókörnyezet-verzió |
 |---------------|---------------------------|
-| Legfrissebb (~=2)  | Legfrissebb (~=6.0)            |
+| Legfrissebb (~=3)  | Legfrissebb (~=6.0)            |
 | 1.1.0         | 5.6, 5.7                  |
 
 A parancssori felület telepítendő célverzióját úgy is megadhatja, ha a `pip install` parancsot kiegészíti a `==<version>` kifejezéssel. Például az 1.1.0-s verzió esetén a szintaxis a következő:
@@ -42,6 +42,8 @@ pip install -I sfctl==1.1.0
 ```
 
 Szükség esetén cserélje a `pip install` parancsot a korábban említett parancsra.
+
+A Service Fabric parancssori felület kiadásaival kapcsolatos további információért tekintse meg a [GitHub-dokumentációt](https://github.com/Azure/service-fabric-cli/releases).
 
 ## <a name="install-pip-python-and-the-service-fabric-cli"></a>A pip, a Python és a Service Fabric parancssori felület telepítése
 

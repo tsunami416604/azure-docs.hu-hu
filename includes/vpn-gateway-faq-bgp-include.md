@@ -1,5 +1,5 @@
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN Gateway SKU-n támogatott a BGP?
-Nem, a BGP az Azure **Standard** és a **HighPerformance** VPN Gatewayeken támogatott. Az **alapszintű** SKU NEM támogatott.
+Nem, a BGP-t az Azure **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** és **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU NEM támogatott.
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>Használhatom a BGP-t Azure házirendalapú VPN Gatewayekkel?
 Nem, a BGP csak az útvonalalapú VPN Gatewayeken támogatott.

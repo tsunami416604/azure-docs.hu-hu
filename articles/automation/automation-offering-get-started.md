@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 486e2b2da7a78cdc39743e60f4140fc58275a8fc
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Bevezetés az Azure Automation használatába
 
@@ -59,6 +59,7 @@ A hibrid runbookfeladatok futtatására kijelölt számítógépnek az alábbiak
 
 * Windows Server 2012 vagy újabb
 * Windows PowerShell 4.0 vagy újabb.  A megbízhatóság növelése érdekében javasoljuk a Windows PowerShell 5.0 telepítését. A legújabb verziót letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=50395)
+* A .NET-keretrendszer 4.6.2-es vagy újabb verziója
 * Minimum két mag
 * Legalább 4 GB RAM
 
@@ -93,10 +94,10 @@ Az Azure-fiókokhoz tartozó Automation-erőforrások egy Azure-régióhoz tarto
 
 Amikor létrehoz egy Automation-fiókot az Azure Portalon, automatikusan két hitelesítési entitás jön létre:
 
-* Egy futtató fiók. Ez a fiók létrehoz egy egyszerű szolgáltatást az Azure Active Directory-ban (Azure AD), valamint egy tanúsítványt. Emellett kiosztja a Közreműködő szerepköralapú hozzáférés-vezérlést (RBAC), amely runbookok használatával kezeli a Resource Manager-erőforrásokat.
+* Egy futtató fiók. Ez a fiók létrehoz egy szolgáltatásnevet az Azure Active Directory-ban (Azure AD), valamint egy tanúsítványt. Emellett kiosztja a Közreműködő szerepköralapú hozzáférés-vezérlést (RBAC), amely runbookok használatával kezeli a Resource Manager-erőforrásokat.
 * Egy klasszikus futtató fiókot. Ez a fiók feltölt egy felügyeleti tanúsítványt, amellyel runbookok használatával kezelheti a klasszikus erőforrásokat.
 
-A szerepköralapú hozzáférés-vezérlés az Azure Resource Managerben érhető el, hogy hozzáférést adjon az engedélyezett műveleteknek egy Azure AD-felhasználói fiókhoz és futtatófiókhoz, és hitelesítse az egyszerű szolgáltatást.  Az Automation-engedélyek kezelésére használt modell fejlesztésére vonatkozó további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md) című cikket.  
+A szerepköralapú hozzáférés-vezérlés az Azure Resource Managerben érhető el, hogy hozzáférést adjon az engedélyezett műveleteknek egy Azure AD-felhasználói fiókhoz és futtatófiókhoz, és hitelesítse a szolgáltatásnevet.  Az Automation-engedélyek kezelésére használt modell fejlesztésére vonatkozó további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md) című cikket.  
 
 #### <a name="authentication-methods"></a>Hitelesítési módszerek
 A következő táblázat összefoglalja az Azure Automation által támogatott összes környezet különböző hitelesítési módszereit.

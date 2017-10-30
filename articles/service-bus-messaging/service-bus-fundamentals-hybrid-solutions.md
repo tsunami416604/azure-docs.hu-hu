@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/15/2017
+ms.date: 10/12/2017
 ms.author: sethm
-ms.openlocfilehash: af8b10f0a460e695a39879718174e81f78934ef8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b71814756a52f56ac6d0bb72a2f4bb1b1c2ea0b2
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
@@ -58,15 +58,15 @@ A folyamat egyszerű: A küldő egy üzenetet küld a Service Bus-üzenetsorba, 
 
 Mindegyik üzenet két részből áll: egy sor tulajdonságból, amelyek mindegyike egy kulcs/érték pár, valamint az üzenet hasznos adattartalmából. A hasznos adattartalom lehet bináris, szöveges vagy akár XML formátumú is. A használatuk módja attól függ, hogy mire szolgál az alkalmazás. A legutóbbi értékesítésről üzenetet küldő alkalmazás például az **Értékesítő="Ava"** és az **Összeg=10000** tulajdonságot tartalmazhatja. Az üzenettörzs tartalmazhatja az aláírt értékesítési szerződés beolvasott képét, vagy ha nincs ilyen, üres is lehet.
 
-A fogadó kétféleképpen olvashatja az üzeneteket a Service Bus-üzenetsorból. Az első lehetőség, a *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, eltávolítja az üzenetet a sorból, és azonnal törli. Ez a lehetőség egyszerű, ha azonban a fogadó összeomlik, mielőtt végzett az üzenet feldolgozásával, az üzenet elveszik. Mivel már el lett távolítva az üzenetsorból, más fogadó nem férhet hozzá. 
+A fogadó kétféleképpen olvashatja az üzeneteket a Service Bus-üzenetsorból. A *[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode)* nevű első lehetőség üzenetet kap a sorból, és azonnal törli. Ez a lehetőség egyszerű, ha azonban a fogadó összeomlik, mielőtt végzett az üzenet feldolgozásával, az üzenet elveszik. Mivel már el lett távolítva az üzenetsorból, más fogadó nem férhet hozzá. 
 
-A második lehetőség, a *[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, ezt a problémát hivatott kiküszöbölni. A **ReceiveAndDelete** lehetőséghez hasonlóan a **PeekLock** olvasás is eltávolítja az üzenetet a sorból. Nem törli azonban az üzenetet. Helyette zárolja, és a többi fogadó számára láthatatlanná teszi, majd vár az alábbi három esemény valamelyikének a bekövetkezésére:
+A második lehetőség, a *[PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)*, ezt a problémát hivatott kiküszöbölni. A **ReceiveAndDelete** lehetőséghez hasonlóan a **PeekLock** olvasás is eltávolítja az üzenetet a sorból. Nem törli azonban az üzenetet. Helyette zárolja, és a többi fogadó számára láthatatlanná teszi, majd vár az alábbi három esemény valamelyikének a bekövetkezésére:
 
-* Ha a fogadó sikeresen feldolgozza az üzenetet, meghívja a [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) metódust, és az üzenetsor törli az üzenetet. 
-* Ha a fogadó úgy dönt, hogy nem tudja sikeresen feldolgozni az üzenetet, meghívja az [Abandon()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) metódust. Az üzenetsor ekkor eltávolítja a zárolást az üzenetről, és elérhetővé teszi a többi fogadó számára.
+* Ha a fogadó sikeresen feldolgozza az üzenetet, meghívja a [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) metódust, és az üzenetsor törli az üzenetet. 
+* Ha a fogadó úgy dönt, hogy nem tudja sikeresen feldolgozni az üzenetet, meghívja az [Abandon()](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) metódust. Az üzenetsor ekkor eltávolítja a zárolást az üzenetről, és elérhetővé teszi a többi fogadó számára.
 * Ha a fogadó egyik metódust sem hívja meg a konfigurált időtartamon belül (alapértelmezés szerint 60 másodperc), az üzenetsor feltételezi, hogy a fogadó meghibásodott. Ebben az esetben úgy viselkedik, mintha a fogadó meghívta volna az **Abandon** metódust, és elérhetővé teszi az üzenetet a többi fogadó számára.
 
-Figyelje meg, mi történhet ebben az esetben: ugyanazon üzenet kézbesítésére kétszer is sor kerülhet, akár két különböző fogadónak is. A Service Bus-üzenetsorokat használó alkalmazásokat fel kell készíteni erre az esetre. A duplikált üzenetek észlelésének megkönnyítésére mindegyik üzenet rendelkezik egy egyedi [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) tulajdonsággal, amely alapértelmezés szerint változatlan marad, függetlenül attól, hogy hányszor történt meg az adott üzenet olvasása az üzenetsorból. 
+Figyelje meg, mi történhet ebben az esetben: ugyanazon üzenet kézbesítésére kétszer is sor kerülhet, akár két különböző fogadónak is. A Service Bus-üzenetsorokat használó alkalmazásokat fel kell készíteni erre az esetre. A duplikált üzenetek észlelésének megkönnyítésére mindegyik üzenet rendelkezik egy egyedi [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid#Microsoft_Azure_ServiceBus_Message_MessageId) tulajdonsággal, amely alapértelmezés szerint változatlan marad, függetlenül attól, hogy hányszor történt meg az adott üzenet olvasása az üzenetsorból. 
 
 Az üzenetsorok számos helyzetben lehetnek hasznosak. A használatukkal az alkalmazások akkor is kommunikálhatnak, ha nem egy időben futnak, ami különösen a kötegelt és a mobilalkalmazások esetén praktikus. A több fogadóval rendelkező üzenetsorok emellett automatikus terheléselosztást is biztosítanak, mivel a küldött üzenetek megoszlanak a fogadók között.
 
@@ -84,7 +84,7 @@ A *témakörök* sok szempontból hasonlóak az üzenetsorokhoz. A küldők ugya
 * Az 2. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ruby"* tulajdonságot és/vagy tartalmaznak egy *Összeg* tulajdonságot, amelynek az értéke nagyobb mint 100 000. Lehet, hogy Ruby az értékesítési igazgató, és szeretné látni a saját értékesítéseit, valamint minden nagy értékű értékesítést az értékesítő személyétől függetlenül.
 * A 3. előfizető a szűrőt *Igaz* értékűre állította, ami azt jelenti, hogy minden üzenetet megkap. Ez az alkalmazás például a naplózásért lehet felelős, és ezért minden üzenetet meg kell kapnia.
 
-Ahogy az üzenetsorok esetében is, az üzenetek olvasásakor a témakörök előfizetői is választhatnak a [ReceiveAndDelete és a PeekLock mód](/dotnet/api/microsoft.servicebus.messaging.receivemode) között. Az üzenetsoroktól eltérően azonban a témakörökbe küldött egyes üzeneteket több előfizetés is fogadhatja. Ez a gyakran *közzététel és előfizetés* (vagy *pub/sub*) néven ismert megközelítés hasznos, ha több alkalmazás is érdeklődik ugyanazon üzenetek iránt. A megfelelő szűrő meghatározásával mindegyik előfizető az üzenetfolyamnak csak azon részét látja, amelyet látnia kell.
+Ahogy az üzenetsorok esetében is, az üzenetek olvasásakor a témakörök előfizetői is választhatnak a [ReceiveAndDelete és a PeekLock mód](/dotnet/api/microsoft.azure.servicebus.receivemode) között. Az üzenetsoroktól eltérően azonban a témakörökbe küldött egyes üzeneteket több előfizetés is fogadhatja. Ez a gyakran *közzététel és előfizetés* (vagy *pub/sub*) néven ismert megközelítés hasznos, ha több alkalmazás is érdeklődik ugyanazon üzenetek iránt. A megfelelő szűrő meghatározásával mindegyik előfizető az üzenetfolyamnak csak azon részét látja, amelyet látnia kell.
 
 ## <a name="relays"></a>Továbbítók
 
