@@ -116,7 +116,7 @@
 ## [.cscfg XML-séma](schema-cscfg-file.md)
 ### [Szerepkörséma](schema-cscfg-role.md)
 ### [NetworkConfiguration séma](schema-cscfg-networkconfiguration.md)
-## [REST](https://msdn.microsoft.com/library/azure/ee460812)
+## [REST](/rest/api/compute/cloudservices/)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=compute)

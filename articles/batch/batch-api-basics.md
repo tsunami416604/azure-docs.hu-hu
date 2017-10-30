@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 010/04/2017
+ms.date: 10/12/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f182dff164b8baa7e2144231667adbd12fcc717d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f277f59982251eb66ca02e72b4ced7f765935b9d
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -75,7 +75,7 @@ Azure Batch-fiókot az [Azure Portalon](batch-account-create-portal.md)hozhat l�
 Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is oszthatja a számítási feladatokat ugyanazon előfizetéshez, de különböző Azure-régiókhoz tartozó Batch-fiókok között.
 
 > [!NOTE]
-> Egy Batch-fiók létrehozásakor általában érdemes az alapértelmezett **Batch szolgáltatás** módot választani, amelynek keretében a készleteket a rendszer a háttérben foglalja le az Azure által felügyelt előfizetésekben. A szintén választható **Felhasználói előfizetés** mód esetében, amelynek használata már nem javasolt, a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor.
+> Egy Batch-fiók létrehozásakor általában érdemes az alapértelmezett **Batch szolgáltatás** módot választani, amelynek keretében a készleteket a rendszer a háttérben foglalja le az Azure által felügyelt előfizetésekben. A szintén választható **Felhasználói előfizetés** mód esetében, amelynek használata már nem javasolt, a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. Ha felhasználói előfizetési módban szeretne létrehozni Batch-fiókot, azt egy Azure Key Vaulttal is társítania kell.
 >
 
 
@@ -129,7 +129,7 @@ A Batch-készlet létrehozásakor megadhatja az Azure virtuálisgép-konfigurác
 
 - A **Virtuális gépek konfigurációja** megadja, hogy a készlet Azure virtuális gépekből áll. Ezek a virtuális gépek Linux- vagy Windows-rendszerképből is létrehozhatók. 
 
-    Ha a virtuálisgép-konfiguráción alapuló készletet hoz létre, a csomópontok mérete és a létrehozásukhoz használt rendszerképek forrása mellett a **virtuális gép képhivatkozását** és a csomópontokra telepítendő **Batch-csomóponti ügynök SKU-ját** is meg kell adnia. A készlet e tulajdonságainak megadásával kapcsolatos további információk: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linuxos számítási csomópontok kiépítése Azure Batch-készletekben).
+    Ha a virtuálisgép-konfiguráción alapuló készletet hoz létre, a csomópontok mérete és a létrehozásukhoz használt rendszerképek forrása mellett a **virtuális gép képhivatkozását** és a csomópontokra telepítendő **Batch-csomóponti ügynök SKU-ját** is meg kell adnia. A készlet e tulajdonságainak megadásával kapcsolatos további információk: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linuxos számítási csomópontok kiépítése Azure Batch-készletekben). Csatolhat egy vagy több üres adatlemezt a Marketplace-ről származó lemezképekből létrehozott virtuális gépek készletté alakításához, vagy adatlemezeket foglalhat az egyéni rendszerképekbe a virtuális gépek létrehozásához.
 
 - A **Cloud Services-konfiguráció**, amely megadja, hogy a készlet Azure Cloud Services-csomópontokból áll. A Cloud Services *kizárólag* windowsos számítási csomópontok létrehozására használható.
 
@@ -148,9 +148,11 @@ Egyéni rendszerkép használatához elő kell készítenie a rendszerképet ann
 
 A részletes követelményekkel és lépésekkel kapcsolatban lásd a [virtuálisgép-készletek egyéni rendszerkép használatával történő létrehozását](batch-custom-images.md) ismertető témakört.
 
+#### <a name="container-support-in-virtual-machine-pools"></a>Tárolótámogatás a virtuálisgép-készletekben
 
+Amikor a Batch API-kkal hoz létre virtuálisgép-konfigurációs készletet, beállíthatja a készletet, hogy Docker-tárolókban futtasson feladatokat. Jelenleg a Windows Server 2016 Datacenterrel kell létrehoznia a készletet az Azure Marketplace-ről származó tárolói rendszerképpel, vagy olyan egyéni virtuálisgép-rendszerképet kell megadnia, amely tartalmazza a Docker Community Edition kiadását és az összes szükséges illesztőt. A készlet beállításainak tartalmazniuk kell egy [tárolókonfigurációt](/rest/api/batchservice/pool/add#definitions_containerconfiguration), amely tárolórendszerképeket másol a virtuális gépekre a készlet létrehozásakor. A készleten futó feladatok ezután hivatkozhatnak a tárolórendszerképre és a tároló által futtatott beállításokra.
 
-### <a name="compute-node-type-and-target-number-of-nodes"></a>A számítási csomópont típusa és a csomópontok kívánt száma
+## <a name="compute-node-type-and-target-number-of-nodes"></a>A számítási csomópont típusa és a csomópontok kívánt száma
 
 Készlet létrehozásakor megadható, hogy milyen típusú számítási csomópontokat és azokból mennyit kíván. A számítási csomópontok két típusa:
 
@@ -258,6 +260,7 @@ Amikor létrehozza a tevékenységet, a következőket kell megadnia:
 * Az alkalmazás számára szükséges **környezeti változók**. További információkért olvassa el a [Környezeti beállítások tevékenységekhez](#environment-settings-for-tasks) című fejezetet.
 * Azok a **korlátozások**, amelyeken belül a tevékenység végrehajtható. Korlátozás például a maximális időtartam, ameddig a tevékenység futhat, a meghiúsult tevékenységek újrapróbálásának maximális száma, valamint a tevékenység munkakönyvtárában tárolt fájlok megőrzésének maximális ideje.
 * Az ütemezett tevékenység futtatására beállított számítási csomópontra üzembe helyezni kívánt **alkalmazáscsomagok**. Az [alkalmazáscsomagok](#application-packages) leegyszerűsítik a tevékenységek által futtatott alkalmazások üzembe helyezését és verziókezelését. A tevékenységszintű alkalmazáscsomagok különösen megosztott készletes környezetekben hasznosak, ahol a különböző feladatok egy készletben futnak, és a rendszer nem törli a készletet a feladat befejezésekor. Ha a feladatnál a készletben kevesebb a tevékenység, mint a csomópont, az alkalmazáscsomagok használatával csökkentheti az adatátviteli igényt, mivel így a rendszer csak azokon a csomópontokon helyezi üzembe az alkalmazást, amelyek ténylegesen futtatják a tevékenységeket.
+* Egy, a Docker Hubban vagy egy privát beállításjegyzékben található **tárolórendszerkép**-referencia és további beállítások egy olyan Docker-tároló létrehozásához, amelyben a feladatok a csomóponton futnak. Ezt az információt csak akkor kell meghatározni, ha a készlet tárolókonfigurációval van beállítva.
 
 A csomóponton a számítások elvégzéséhez meghatározott tevékenységek mellett a Batch szolgáltatás a következő speciális tevékenységek használatát is lehetővé teszi:
 
@@ -386,39 +389,12 @@ A változó természetű, ám folyamatos terhelések kezeléséhez általában a
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>A virtuális hálózat (VNet) és a tűzfal konfigurálása 
 
-Amikor számítási csomópontok készletét hozza létre a Batchben, hozzárendelheti a készletet egy Azure-beli [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatához. További információkat VNetek alhálózatokkal történő létrehozásáról az [alhálózatokkal rendelkező Azure virtuális hálózat létrehozását ismertető](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) cikkben találhat. 
+Amikor számítási csomópontok készletét hozza létre a Batchben, hozzárendelheti a készletet egy Azure-beli [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatához. Egy Azure-beli virtuális hálózat használatához a Batch-ügyfél API-jának Azure Active Directory- (AD-) hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört.  
 
-A virtuális hálózat követelményei:
+### <a name="vnet-requirements"></a>A virtuális hálózat követelményei
+[!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
-* A virtuális hálózatnak az Azure Batch-fiókkal megegyező Azure-**régióban** és **-előfizetésben** kell lennie.
-
-* A virtuális hálózati konfigurációval létrehozott készletek esetében csak az Azure Resource Manager- (ARM-) alapú virtuális hálózatok támogatottak. A felhőszolgáltatás-konfigurációval létrehozott készletek esetében az ARM-alapú és a klasszikus virtuális hálózatok egyaránt támogatottak. 
-
-* Egy ARM-alapú hálózat használatához a Batch-ügyfél API-jának [Azure Active Directory-hitelesítést](batch-aad-auth.md) kell használnia. Egy klasszikus virtuális hálózat használatához a „MicrosoftAzureBatch” egyszerű szolgáltatásnak rendelkeznie kell a „Virtuális gépek hagyományos közreműködője” szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel az adott virtuális hálózaton. 
-
-* A megadott alhálózatnak elegendő szabad **IP-címmel** kell rendelkeznie a célcsomópontok teljes számához, azaz a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összegéhez. Ha az alhálózaton nincs elegendő szabad IP-cím, akkor a Batch szolgáltatás részlegesen lefoglalja a készlet számítási csomópontjait, és átméretezési hibát jelez.
-
-* A megadott alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon. Ha a számítási csomópontok felé irányuló kommunikációt a VNethez társított **Hálózati biztonsági csoport (NSG)** letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát.
-
-* Ha a megadott VNethez **hálózati biztonsági csoportok (NSG)** és/vagy **tűzfal** van társítva, néhány fenntartott rendszerportot engedélyezni kell a bejövő kommunikációhoz:
-
-- A virtuálisgép-konfigurációval létrehozott készletek esetén engedélyezze a 29876-os és a 29877-es portokat, valamint a 22-es portot Linux, illetve a 3389-es portot Windows rendszer esetén. 
-- A felhőszolgáltatás-konfigurációval létrehozott készletek esetén engedélyezze a 10100-as, 20100-as és 30100-as portokat. 
-- Engedélyezze az Azure Storage-hoz a 443-as porton a kimenő kapcsolatokat. Arról is győződjön meg, hogy az Azure Storage-végpont feloldható bármely, a VNET-et kiszolgáló egyéni DNS-kiszolgáló által. Az `<account>.table.core.windows.net` űrlap URL-címének feloldhatónak kell lennie.
-
-    A virtuálisgép-konfigurációval létrehozott készletek esetén engedélyezendő bejövő portokat a következő táblázat ismerteti:
-
-    |    Célport(ok)    |    Forrás IP-címe      |    Hozzáad a Batch NSG-ket?    |    Szükséges a virtuális gép használatához?    |    Felhasználói művelet   |
-    |---------------------------|---------------------------|----------------------------|-------------------------------------|-----------------------|
-    |    <ul><li>Virtuálisgép-konfigurációval létrehozott készletek esetén: 29876, 29877</li><li>Felhőszolgáltatás-konfigurációval létrehozott készletek esetén: 10100, 20100, 30100</li></ul>         |    Csak a Batch szolgáltatási szerepkör IP-címei |    Igen. A Batch az NSG-ket a virtuális gépekhez kapcsolt hálózati adapterek (NIC) szintjén adja hozzá. Ezek az NSG-k csak a Batch szolgáltatási szerepkör IP-címeiről érkező forgalmat engedélyezik. Még ha meg is nyitja ezeket a portokat a teljes web felé, a forgalom blokkolva lesz a hálózati adapteren. |    Igen  |  Nem kell megadnia NSG-t, mert a Batch szolgáltatás csak a Batch IP-címeit engedélyezi. <br /><br /> Ha azonban NSG-t ad meg, győződjön meg arról, hogy ezek a portok nyitva vannak a bejövő forgalom számára. <br /><br /> A Batch akkor is hozzáadja az NSG-ket a virtuális gépekhez csatlakoztatott hálózati adapter szintjén, ha az NSG-ben a forrás IP-címeként * van megadva. |
-    |    3389, 22               |    Felhasználói, hibakeresési célra használt gépek a virtuális gép távolról való eléréséhez.    |    Nem                                    |    Nem                     |    Adjon hozzá NSG-ket, ha engedélyezni szeretné a távoli elérést (RDP/SSH) a virtuális géphez.   |                 
-
-    A következő táblázat ismerteti az Azure Storage elérésének engedélyezéséhez engedélyezendő kimenő portot:
-
-    |    Kimenő port(ok)    |    Cél    |    Hozzáad a Batch NSG-ket?    |    Szükséges a virtuális gép használatához?    |    Felhasználói művelet    |
-    |------------------------|-------------------|----------------------------|-------------------------------------|------------------------|
-    |    443    |    Azure Storage    |    Nem    |    Igen    |    Ha hozzáadott NSG-t, győződjön meg arról, hogy nyitva van a port a kimenő forgalom számára.    |
-
+A Batch-készletek virtuális hálózatban való beállítására vonatkozó további információért lásd: [Virtuális gépek készletének létrehozása a virtuális hálózattal](batch-virtual-network.md).
 
 ## <a name="scaling-compute-resources"></a>A számítási erőforrások méretezése
 Az [automatikus méretezéssel](batch-automatic-scaling.md) megadhatja, hogy a Batch szolgáltatás dinamikusan állítsa be a számítási csomópontok számát a készletben az aktuális számítási feladatok és a számítási forgatókönyv erőforrás-használata alapján. Ez lehetővé teszi az alkalmazásfuttatás teljes költségeinek csökkentését, mivel csak a szükséges erőforrásokat használja, és felszabadítja a szükségteleneket.
@@ -525,11 +501,7 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
 ## <a name="next-steps"></a>Következő lépések
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * Tekintsen át lépésről lépésre egy Batch-mintaalkalmazást az [Ismerkedés az Azure Batch .NET-es kódtárával](batch-dotnet-get-started.md) című cikkben. Az oktatóanyagból [Python-verzió](batch-python-tutorial.md) is elérhető, amelyben a számítási feladat linuxos számítási csomópontokon fut.
-* Töltse le és állítsa össze a [Batch Explorer][github_batchexplorer] mintaprojektet, amelyet bármikor felhasználhat, ha a Batch-megoldások fejlesztése során segítségre van szüksége. A Batch Explorerrel többek között a következőket végezheti el:
-
-  * Készletek, feladatok és tevékenységek megfigyelése és módosítása a Batch-fiókban
-  * A `stdout.txt`, az `stderr.txt` és más fájlok letöltése csomópontokról
-  * Felhasználók létrehozása csomópontokon és RDP-fájlok letöltése távoli bejelentkezéshez
+* Töltse le és telepítse a [BatchLabs][batch_labs] alkalmazást, amelyet bármikor használhat, ha a Batch-megoldások fejlesztése során segítségre van szüksége. A BatchLabs alkalmazással Azure Batch-alkalmazásokat hozhat létre és monitorozhat, és a felmerülő hibáikat is elháríthatja. 
 * Tanulja meg, hogyan hozhat létre [készletet linuxos számítási csomópontokból](batch-linux-nodes.md).
 * Keresse fel az [Azure Batch fórumot][batch_forum] az MSDN-en. Akár még csak most tanulja a Batch használatát, akár képzett szakértőnek számít, a fórum remek terepet biztosít, ahol felteheti kérdéseit.
 
@@ -541,7 +513,7 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_sample_taskdeps]:  https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
-[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[batch_labs]: https://azure.github.io/BatchLabs/
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [msdn_env_vars]: https://msdn.microsoft.com/library/azure/mt743623.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx

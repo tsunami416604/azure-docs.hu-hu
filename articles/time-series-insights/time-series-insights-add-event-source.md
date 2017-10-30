@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: omravi
-ms.openlocfilehash: c247a7abd3d1682f8ccd1940e506ef54f9409263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 123ecca28f0d970851487827d0d18e244ce6d98e
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
-# <a name="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Eseményforrás létrehozása Azure Time Series Insights-környezethez az Ibiza Portal használatával
+# <a name="create-an-event-source-for-your-time-series-insights-environment-using-the-azure-portal"></a>Eseményforrás létrehozása Azure Time Series Insights-környezethez az Azure Portal használatával
 
 Egy Time Series Insights-eseményforrás egy eseményközvetítőből, például az Azure Event Hubsból származik. A Time Series Insights közvetlenül csatlakozik az eseményforrásokhoz, és anélkül dolgozza fel az adatfolyamot, hogy a felhasználóknak akár egy sor kódot is kéne írniuk. A Time Series Insights jelenleg az Azure Event Hubs és Azure IoT Hubs forrásokat támogatja. A jövőben további eseményforrásokkal is bővülni fog.
 
 ## <a name="steps-to-add-an-event-source-to-your-environment"></a>Eseményforrás környezethez való hozzáadásának lépései
 
-1.  Jelentkezzen be az [Ibiza Portalra](https://portal.azure.com).
-2.  Az Ibiza Portal bal oldali menüjében kattintson a „Minden erőforrás” lehetőségre.
+1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2.  Az Azure Portal bal oldali menüjében kattintson a „Minden erőforrás” lehetőségre.
 3.  Válassza ki az Azure Time Series Insights-környezetet.
 
   ![A Time Series Insights-eseményforrás létrehozása](media/add-event-source/getstarted-create-event-source-1.png)

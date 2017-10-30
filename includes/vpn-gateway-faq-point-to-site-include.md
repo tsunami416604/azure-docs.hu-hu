@@ -1,3 +1,5 @@
+Ez a GYIK a klasszikus üzemi modellt használó P2S-kapcsolatokra érvényes.
+
 ### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a>Milyen ügyfél operációs rendszereket használhatok pont–hely kapcsolatokhoz?
 
 A következő ügyféloldali operációs rendszerek támogatottak:

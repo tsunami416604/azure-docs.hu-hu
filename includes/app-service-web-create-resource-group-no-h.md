@@ -8,4 +8,4 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location "West Europe"
 ```
 
-Az erőforráscsoportot és az erőforrásokat általában a közelében található régiókban hozhatja létre. Az összes Azure Web Apps-t támogató hely megtekintéséhez futtassa az `az appservice list-locations` parancsot. 
+Az erőforráscsoportot és az erőforrásokat általában a közelében található régiókban hozhatja létre. Az összes Azure App Service-csomagot támogató hely megtekintéséhez futtassa az `az appservice list-locations` parancsot.

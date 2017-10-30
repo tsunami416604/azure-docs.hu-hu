@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
-ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f43196b88cf22aab66c913d0bd659b3d654cef0
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Előre konfigurált csatlakoztatott gyár megoldás – bemutató
 
@@ -34,7 +34,7 @@ Az IoT Suite [előre konfigurált][lnk-preconfigured-solutions] csatlakoztatott 
 
 A megoldást kiindulási pontként használhatja a saját implementációjához, és a saját üzleti igényeinek megfelelően [testreszabhatja][lnk-customize] azt.
 
-Ebben a cikkben bemutatjuk a csatlakoztatott gyár megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. Ezeknek az ismereteknek a birtokában:
+Ebben a cikkben bemutatjuk a csatlakoztatott gyár megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. A cikk azt is leírja, hogyan haladnak át az adatok a megoldáson. Ezeknek az ismereteknek a birtokában:
 
 * Elháríthatja a megoldásban felmerülő hibákat.
 * Megtervezheti, hogy miképpen érdemes testre szabni a megoldást úgy, hogy az megfeleljen egyedi igényeinek.
@@ -124,12 +124,116 @@ A megoldás Azure Blob Storage tárolót használ a virtuális gép lemezes tár
 ## <a name="web-app"></a>Webalkalmazás
 Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás integrált OPC UA-ügyfélből, riasztások feldolgozásából és a telemetria megjelenítéséből áll.
 
+## <a name="telemetry-data-flow"></a>Telemetria-adatfolyam
+
+![Telemetria-adatfolyam](media/iot-suite-connected-factory-walkthrough/telemetry_dataflow.png)
+
+### <a name="flow-steps"></a>A folyamat lépései
+
+1. Az OPC-közzétevő beolvassa a szükséges OPC UA X509 tanúsítványokat és IoT Hub biztonsági hitelesítő adatokat a helyi tanúsítványtárolóból.
+    - Szükség esetén az OPC-közzétevő létrehozza és tárolja a tanúsítványtárolóból hiányzó tanúsítványokat vagy hitelesítő adatokat.
+
+2. Az OPC-közzétevő regisztrálja magát az IoT Hubbal.
+    - A konfigurált protokollt használja. Az IoT Hub ügyfél SDK által támogatott bármelyik protokollt használhatja. Az alapértelmezett az MQTT.
+    - A protokollkommunikációt a TLS védi.
+
+3. Az OPC-közzétevő beolvassa a konfigurációs fájlt.
+
+4. Az OPC-közzétevő létrehoz egy OPC-munkamenetet mindegyik konfigurált OPC UA-kiszolgálóval.
+    - TCP-kapcsolatot használ.
+    - Az OPC-közzétevő és az OPC UA-kiszolgáló X509 tanúsítványokkal hitelesíti egymást.
+    - Az összes további OPC UA-forgalmat a konfigurált OPC UA titkosítási mechanizmus titkosítja.
+    - Az OPC-közzétevő minden konfigurált közzétételi intervallum OPC-munkamenetében létrehoz egy OPC-előfizetést.
+    - OPC által monitorozott elemeket hoz létre az OPC-csomópontokhoz az OPC-előfizetésben való közzétételhez.
+
+5. Ha egy monitorozott OPC-csomópont értéke módosul, az OPC UA-kiszolgáló frissítéseket küld az OPC-közzétevőhöz.
+
+6. Az OPC-közzétevő átkódolja az új értéket.
+    - Több módosítást kötegel, ha a kötegelés engedélyezett.
+    - IoT Hub-üzenetet hoz létre.
+
+7. Az OPC-közzétevő üzenetet küld az IoT Hubra.
+    - A konfigurált protokollt használja.
+    - A kommunikációt a TLS védi.
+
+8. A Time Series Insights (TSI) beolvassa az üzeneteket az IoT Hubról.
+    - AMQP-t használ TCP/TLS protokollon keresztül.
+    - Ez a lépés az adatközpontban történik.
+
+9. Inaktív adat a TSI-ben.
+
+10. Az Azure AppService-lekérdezésekben a csatlakoztatott gyári webalkalmazás a TSI-ből származó adatokat igényelt.
+    - TCP/TLS által védett kommunikációt használ.
+    - Ez a lépés az adatközpontban történik.
+
+11. A webböngésző a csatlakoztatott gyári webalkalmazáshoz csatlakozik.
+    - Rendereli a csatlakoztatott gyári irányítópultot.
+    - HTTPS-en keresztül csatlakozik.
+    - A csatlakoztatott gyári alkalmazás eléréséhez az Azure Active Directoryn keresztül kell hitelesíteni a felhasználót.
+    - A csatlakoztatott gyári alkalmazásba irányuló összes WebApi-hívást hamisítás elleni tokenek védik.
+
+12. Amikor adatfrissítés történik, a csatlakoztatott gyári webalkalmazás frissített adatokat küld a webböngészőnek.
+    - A SignalR protokollt használja.
+    - A TCP/TLS védi.
+
+## <a name="browsing-data-flow"></a>Böngészési adatfolyam
+
+![Böngészési adatfolyam](media/iot-suite-connected-factory-walkthrough/browsing_dataflow.png)
+
+### <a name="flow-steps"></a>A folyamat lépései
+
+1. Elindul az OPC-proxy (kiszolgáló-összetevő).
+    - Beolvassa a megosztott hozzáférési kulcsokat a helyi tárolóból.
+    - Szükség esetén a tárolóban tárolja a hiányzó hozzáférési kulcsokat.
+
+2. Az OPC-proxy (kiszolgáló-összetevő) regisztrálja magát az IoT Hubbal.
+    - Beolvassa az összes ismert eszközét az IoT Hubról.
+    - Socketen vagy Secure WebSocketen keresztüli TLS protokollon keresztüli MQTT-t használ.
+
+3. A webböngésző a csatlakoztatott gyári webalkalmazáshoz csatlakozik, és rendereli a csatlakoztatott gyári irányítópultot.
+    - HTTPS-t használ.
+    - A felhasználó kiválasztja azt az OPC UA-kiszolgálót, amelyhez csatlakozni kíván.
+
+4. A csatlakoztatott gyári webalkalmazás OPC UA-munkamenetet hoz létre a kiválasztott OPC UA-kiszolgálóval.
+    - OPC UA-vermet használ.
+
+5. Az OPC-proxyátvitel kérést kap az OPC UA-veremtől, hogy TCP szoftvercsatorna-kapcsolatot létesítsen az OPC UA-kiszolgálóval.
+    - Csak lekéri a TCP hasznos adatokat és módosítás nélkül használja őket.
+    - Ez a lépés a csatlakoztatott gyári webalkalmazásban történik.
+
+6. Az OPC-proxy (ügyfélösszetevő) megkeresi az OPC-proxy (kiszolgáló-összetevő) eszközt az IoT Hub eszközjegyzékében. Ezután meghívja az OPC-proxy (kiszolgáló-összetevő) eszközmetódusát az IoT Hubon.
+    - TCP/TLS protokollon keresztüli HTTPS-t használ az OPC-proxy kereséséhez.
+    - TCP/TLS protokollon keresztüli HTTPS-t használ, hogy TCP szoftvercsatorna-kapcsolatot létesítsen az OPC UA-kiszolgálóval.
+    - Ez a lépés az adatközpontban történik.
+
+7. Az IoT Hub meghívja az OPC-proxy (kiszolgáló-összetevő) eszköz egyik eszközmetódusát.
+    - Socket vagy Secure WebSocket kapcsolaton keresztüli TLS protokollon keresztüli létrehozott MQTT-t használ, hogy TCP szoftvercsatorna-kapcsolatot létesítsen az OPC UA-kiszolgálóval.
+
+8. Az OPC-proxy (kiszolgáló-összetevő) továbbküldi a TCP hasznos adatait a helyszíni hálózatára.
+
+9. Az OPC UA-kiszolgáló feldolgozza a hasznos adatokat, és visszaküldi a választ.
+
+10. Az OPC-proxy (kiszolgáló-összetevő) szoftvercsatornája fogadja a választ.
+    - Az OPC-proxy az eszközmetódus visszatérési értékeként küldi el az adatokat az IoT Hubra és az OPC-proxyra (ügyfélösszetevő).
+    - Ezeket az adatokat az OPC UA-szoftvercsatornára kézbesíti a rendszer a csatlakoztatott gyári alkalmazásban.
+
+11. A csatlakoztatott gyári webalkalmazás visszaküldi az OPC UA-kiszolgálótól kapott OPC UA-specifikus adatokkal kiegészült OPC UX-et a webböngészőnek renderelésre.
+    - Az OPC-címtérben való böngészés és az OPC-címtérben lévő csomópontokra történő függvényalkalmazás közben az OPC böngészői UX HTTPS-en keresztüli, hamisításgátló jogkivonatokkal védett AJAX-hívásokkal kéri le az adatokat a csatlakoztatott gyár webalkalmazásából.
+    - Szükség esetén az ügyfél a 4-10. lépésekben leírt kommunikációval cserél információkat az OPC UA-kiszolgálóval.
+
+> [!NOTE]
+> Az OPC-proxy (kiszolgáló-összetevő) és az OPC-proxy (ügyfél) összetevő elvégzi a 4-10. lépéseket az OPC UA-kommunikációhoz kapcsolódó összes TCP-forgalomhoz.
+
+> [!NOTE]
+> A csatlakoztatott gyár webalkalmazásán belüli OPC UA-kiszolgáló és OPC UA-verem esetén az OPC-proxy kommunikáció átlátszó, és a hitelesítésre és titkosításra vonatkozó összes OPC UA biztonsági funkció érvényben van.
+
 ## <a name="next-steps"></a>Következő lépések
 
 Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
 
 * [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
 * [Átjáró üzembe helyezése Windows vagy Linux rendszeren az előre konfigurált csatlakoztatott gyár megoldáshoz](iot-suite-connected-factory-gateway-deployment.md)
+* [OPC-közzétevő referenciamegvalósítása](iot-suite-connected-factory-publisher.md).
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 

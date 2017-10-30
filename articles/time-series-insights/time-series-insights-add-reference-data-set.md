@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 574f3c5b3a889733f47d729c795ec39009f2ef4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b94ca172dba71b407ee5e9a40c283a97602efd17
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Referencia-adatkészlet létrehozása Azure Time Series Insights-környezethez az Ibiza Portal használatával
 
@@ -27,8 +27,8 @@ Egy referencia-adatkészlet az eseményforrásbeli eseményekkel kibővített el
 
 ## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>Referencia-adatkészlet környezethez adása lépésenként
 
-1. Jelentkezzen be az [Ibiza Portalra](https://portal.azure.com).
-2. Az Ibiza Portal bal oldali menüjében kattintson a „Minden erőforrás” lehetőségre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Az Azure Portal bal oldali menüjében kattintson a „Minden erőforrás” lehetőségre.
 3. Válassza ki az Azure Time Series Insights-környezetet.
 
     ![A Time Series Insights referencia-adatkészlet létrehozása](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
@@ -38,7 +38,7 @@ Egy referencia-adatkészlet az eseményforrásbeli eseményekkel kibővített el
     ![A Time Series Insights referencia-adatkészlet létrehozása – részletesen](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
 
 5. Adja meg a referencia-adatkészlet nevét.
-6. Adja meg a kulcs nevét és típusát. E név és típus alapján lesz kiválasztva a megfelelő tulajdonság az eseményforrásbeli eseményből. Ha kulcsnévként például „EszkozAzon”-t ad meg, típusként pedig karakterláncot („String”), akkor a Time Series Insights bejövő forgalmat kezelő motorja egy „EszkozAzon” nevű, karakterlánc típusú tulajdonságot fog keresni a beérkező eseményben. Az eseményhez csatoláshoz egynél több kulcs is megadható. A tulajdonságnév egyeztetésénél számítanak a kis- és nagybetűk.
+6. Adja meg a kulcs nevét és típusát. A rendszer ezt a nevet és típust használja a helyes tulajdonság kiválasztásához az eseményforrásban található eseményből. Ha kulcsnévként például „EszkozAzon”-t ad meg, típusként pedig karakterláncot („String”), akkor a Time Series Insights bejövő forgalmat kezelő motorja egy „EszkozAzon” nevű, karakterlánc típusú tulajdonságot fog keresni a beérkező eseményben. Az eseményhez csatoláshoz egynél több kulcs is megadható. A kulcsnév egyeztetése megkülönbözteti a kis- és nagybetűket.
 
      ![A Time Series Insights referencia-adatkészlet létrehozása – részletesen](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 10/18/2017
 ms.author: yurid
-ms.openlocfilehash: 9c3a9a7255bbbdab8f4c356eb07022d7f1d242d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e68ec1b7d82a0e1d98953521b05f423044e6d2f2
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben (előzetes verzió)
 Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
@@ -37,14 +37,14 @@ Az adaptív alkalmazásvezérlők segítségével szabályozhatja, hogy mely alk
 > Az adaptív alkalmazásvezérlők a Standard szintű Azure Security Center-ügyfelek számára korlátozott nyilvános előzetes verzió keretében érhetők el. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_appcontrol@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Az adaptív alkalmazásvezérlők engedélyezése
-Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált erőforráscsoportokon futtatható alkalmazások csoportját. Ez a funkció csak Windows rendszerű (akár klasszikus, akár Azure Resource Manager típusú) gépeken használható. Az alkalmazások engedélyezési listáinak konfigurálásához kövesse az alábbi lépéseket a Security Centerben:
+Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurált erőforráscsoportokon futtatható alkalmazások csoportját. Ez a funkció csak Windows rendszerű (akár klasszikus, akár Azure Resource Manager típusú) gépeken használható. A következő lépésekkel konfigurálhatók az alkalmazások engedélyezési listái a Security Centerben:
 
 1.  Nyissa meg a **Security Center** irányítópultját, és kattintson az **Áttekintés** elemre.
 2.  A **Speciális felhővédelem** terület **Adaptív alkalmazásvezérlés** csempéjén tekinthető át, hogy az összes virtuális gép közül hányon működik éppen a vezérlés. A csempe emellett az elmúlt hét folyamán felmerült problémák számát is mutatja: 
 
     ![Adaptív alkalmazásvezérlők](./media/security-center-adaptive-application\security-center-adaptive-application-fig1.png)
 
-3. A további beállítások megjelenítéséhez kattintson az **Adaptive application controls** (Adaptív alkalmazásvezérlők) csempére.
+3. A további beállítások megjelenítéséhez kattintson az **Adaptív alkalmazásvezérlők** csempére.
 
     ![vezérlők](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
@@ -52,8 +52,6 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurál
     * **Recommended** (Ajánlott): azon erőforráscsoportok listája, amelyek esetében javasolt az alkalmazásvezérlés használata. A Security Center gépi tanulási módszerekkel azonosítja azokat a virtuális gépeket, amelyeken érdemes alkalmazásvezérlést beállítani, az alapján, hogy az adott virtuális gépek folyamatosan ugyanazokat az alkalmazásokat futtatják-e.
     * **Configured** (Konfigurált): azon erőforráscsoportok listája, amelyeken már konfigurálva van az alkalmazásvezérlés. 
     * **No recommendation** (Nincs javaslat): azon erőforráscsoportok listája, amelyek olyan virtuális gépeket tartalmaznak, amelyekhez nem tartoznak alkalmazásvezérlési javaslatok, például olyanokat, amelyeken az alkalmazások folyamatosan változnak, és még nem értek el egy stabil állapotot.
-
-Az alábbi szakaszokban részletesebben kitérünk majd az egyes alternatívákra és azok használatára.
 
 ### <a name="configure-a-new-application-control-policy"></a>Új alkalmazásvezérlési szabályzat konfigurálása
 Kattintson a **Recommended** (Ajánlott) lapra azon erőforráscsoportok listájáért, amelyeken javasolt bevezetni az alkalmazásvezérlést:
@@ -70,14 +68,16 @@ Jelölje ki az egyik erőforráscsoportot a **Create application control rules**
 
 ![Alkalmazásvezérlési szabályok](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
 
-A **Select VMs** (Virtuális gépek kiválasztása) felületen tekintse át a javasolt virtuális gépek listáját, és törölje a jelölést azok mellől, amelyeket nem szeretne bevonni az alkalmazásvezérlés hatókörébe. A **Select processes for whitelisting rules** (Az engedélyezési szabályokhoz tartozó folyamatok kiválasztása) felületen tekintse át a javasolt alkalmazások listáját, és törölje a jelölést azok mellől, amelyeket nem szeretne alkalmazni. A lista a következőket tartalmazza:
+A **Select VMs** (Virtuális gépek kiválasztása) felületen tekintse át a javasolt virtuális gépek listáját, és törölje a jelölést azok mellől, amelyeket nem szeretne bevonni az alkalmazásvezérlés hatókörébe. **Az engedélyezési szabályokhoz tartozó folyamatok kiválasztása** felületen tekintse át a javasolt alkalmazások listáját, és törölje a jelölést azok mellől, amelyeket nem szeretne alkalmazni. A lista a következőket tartalmazza:
 
 - **NAME** (Név): az alkalmazás teljes elérési útja
 - **PROCESSES** (Folyamatok): az egyes elérési utakon található alkalmazások száma
 - **COMMON** (Gyakori): a true (igaz) érték azt jelzi, hogy az adott folyamat az erőforráscsoport virtuális gépeinek többségén futtatva volt
-- **EXPLOITABLE** (Támadható): egy figyelmeztető ikon jelzi, ha az alkalmazás használatával az esetleges támadók megkerülhetik az alkalmazásengedélyezési rendszert Nyomatékosan javasoljuk, hogy tekintse át ezeket az alkalmazásokat az engedélyezésük előtt. 
+- **KIHASZNÁLHATÓ**: egy figyelmeztető ikon jelzi, ha az alkalmazás használatával az esetleges támadók megkerülhetik az alkalmazásengedélyezési rendszert. Érdemes áttekinteni ezeket az alkalmazásokat az engedélyezésük előtt. 
 
 Miután kiválasztotta az alkalmazásokat, kattintson a **Create** (Létrehozás) gombra. Alapértelmezés szerint a Security Center minden esetben *vizsgálati* üzemmódban engedélyezi az alkalmazásvezérlést. Miután ellenőrizte, hogy az engedélyezési lista nincs negatív hatással a számítási feladatokra, átválthat *kényszerítési* üzemmódba.
+
+A Security Centernek legalább kétheti adatra van szüksége ahhoz, hogy létrehozhassa az alapkonfigurációt, és feltölthesse a virtuálisgép-csoportok szerinti egyéni javaslatokat. A Security Center standard szintű változatának új ügyfelei számíthatnak arra, hogy a virtuálisgép-csoportjaik először a *nincs javaslat* lapon jelennek majd meg.
 
 > [!NOTE]
 > Ajánlott biztonsági eljárásként a Security Center minden esetben megkísérel létrehozni egy közzétételi szabályt azokra az alkalmazásokra, amelyeket engedélyezni kell, és csak akkor hoz létre elérésiút-szabályt az adott EXE fájl teljes elérési útjához, ha egy adott alkalmazás nem rendelkezik közzétevői adatokkal (azaz nincs aláírva).
@@ -124,7 +124,7 @@ A **Publisher whitelisting rules** (Közzétevői engedélyezési szabályok) sz
 
 ![Engedélyezési szabályok](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
 
-Az egyes sorok végén található három pontra kattintva törölheti az adott szabályokat. A **Path whitelisting rules** (Elérésiút-engedélyezési szabályok) szakasz azon alkalmazások teljes elérési útját tartalmazza (a végrehajtható fájllal együtt), amelyek nincsenek aláírva digitális tanúsítvánnyal, de az engedélyezési szabályokban még szerepelnek. 
+Az egyes sorok végén található három pontra kattintva törölheti az adott szabályokat. Az **Elérésiút-engedélyezési szabályok** szakasz azon alkalmazások teljes elérési útját tartalmazza (a végrehajtható fájllal együtt), amelyek nincsenek aláírva digitális tanúsítvánnyal, de az engedélyezési szabályokban még szerepelnek. 
 
 > [!NOTE]
 > Alapértelmezés szerint, ajánlott biztonsági eljárásként a Security Center minden esetben megkísérel létrehozni egy közzétételi szabályt az EXE-fájlokra, amelyeket engedélyezni kell, és csak akkor hoz létre elérésiút-szabályt az adott EXE fájl teljes elérési útjához, ha egy adott EXE nem rendelkezik közzétevői adatokkal (azaz nincs aláírva).
@@ -147,7 +147,7 @@ A lista a következőket tartalmazza:
 - **NAME** (Név): az előfizetés és az erőforráscsoport neve.
 - **VMS** (Virtuális gépek): a virtuális gépek száma az erőforráscsoportban.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban megismerte, hogyan használhatja az adaptív alkalmazásvezérlőket az Azure Security Centerben az Azure-beli virtuális gépeken futó alkalmazások engedélyezési listákra való felvételéhez. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.

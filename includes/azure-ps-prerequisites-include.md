@@ -1,6 +1,6 @@
-## <a name="prerequisite-install-the-azure-powershell-module"></a>Előfeltétel: az Azure Powershell modul telepítése
+## <a name="prerequisite-install-the-azure-powershell-module"></a>Előfeltétel: az Azure PowerShell modul telepítése
 
-A cikkben szereplő lépések végrehajtásához először [telepítse és konfigurálja az Azure PowerShellt](/powershell/azureps-cmdlets-docs), majd kövesse az utasításokat egészen az utolsó lépésig, hogy bejelentkezhessen az Azure-ba, és kiválaszthassa az előfizetését.
+A cikkben leírt lépések elvégzéséhez [telepítenie és konfigurálnia kell az Azure PowerShell modult](/powershell/azureps-cmdlets-docs). Ügyeljen arra, hogy kövesse az összes utasítást. A telepítés befejezése után jelentkezzen be az Azure-ba, és válassza ki az előfizetését.
 
 > [!NOTE]
-> Ha nem rendelkezik Azure-fiókkal, létre kell hoznia egyet. Itt regisztrálhat az [ingyenes próbaverzióra](../articles/active-directory/sign-up-organization.md).
+> A lépések elvégzéséhez szüksége lesz egy Azure-fiókra. Ha nincs Azure-fiókja, regisztráljon egy [ingyenes próbaverzióra](../articles/active-directory/sign-up-organization.md).

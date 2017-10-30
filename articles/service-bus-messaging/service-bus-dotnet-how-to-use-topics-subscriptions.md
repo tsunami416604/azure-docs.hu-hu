@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: sethm
-ms.openlocfilehash: 3646d14be662af0fdf80790cb53ddc581b33a146
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43064ddbdfec3e2ddae8de8c69f6c03dc7f8f45e
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
@@ -48,7 +48,7 @@ Ha már létrehozta a Service Bus Messaging-névteret, lépjen a [Üzenettéma l
 ## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Üzenettéma létrehozása az Azure Portal használatával
 
 1. Jelentkezzen be az [Azure Portalra][azure-portal].
-2. A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre (ha nem lát **Service Bus** elemet, kattintson a **További szolgáltatások** lehetőségre).
+2. A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre (ha nem lát **Service Bus** elemet, kattintson a **További szolgáltatások** vagy a **Minden erőforrás** lehetőségre).
 3. Kattintson a névtérre, amelyben az üzenettémát létre kívánja hozni. Megjelenik a névtér áttekintő panelje:
    
     ![Üzenettémakör létrehozása][createtopic1]
