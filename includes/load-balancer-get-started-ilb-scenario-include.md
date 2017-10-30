@@ -1,11 +1,11 @@
-## <a name="scenario"></a>Forgatókönyv
+## <a name="configuration-scenario"></a>Konfigurációs forgatókönyv
 
-Belső terheléselosztót hoz létre az alábbi forgatókönyv szerint
+Ebben a forgatókönyvben belső terheléselosztót hozunk létre egy virtuális hálózaton a következő ábrán látható módon:
 
-![KÉPLEÍRÁS](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
+![Belső terheléselosztói forgatókönyv](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 
-Belső terheléselosztó van konfigurálva a virtuális hálózatban
+A forgatókönyv konfigurációja a következő:
 
-* 2 virtuális gép, a nevük DB1 és DB2
-* Végpontok
-* Belső terheléselosztó
+* Két virtuális gép: **DB1** és **DB2**
+* A belső terheléselosztó végpontjai
+* Egy belső terheléselosztó

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 42a2542b7564f1692146b3e3927792ac339f30be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c1ac13d50180909bbe55b01f47721387d1195d7
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Linux-alapú Azure Service Fabric-tároló üzembe helyezése az Azure-on
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -29,7 +29,7 @@ Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe a Linux-tárolókat 
 
 Ezen rövid útmutató segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
-> * Linux-tárolók üzembe helyezése a Service Fabric szolgáltatásban
+> * Tárolók üzembe helyezése Azure Linux Service Fabric-fürtökön
 > * Méretezési és feladatátvételi tárolók a Service Fabric szolgáltatásban
 
 ## <a name="prerequisite"></a>Előfeltétel
@@ -52,6 +52,10 @@ cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
 
 ## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>Helyezze üzembe a tárolókat egy Service Fabric-fürtön az Azure-ban
 Az alkalmazás Azure-fürtön történő üzembe helyezéséhez használhat egy saját vagy egy nyilvános fürtöt is.
+
+> [!Note]
+> Az alkalmazást az Azure-ban lévő fürtre, és nem egy valamely helyi fejlesztői gépen lévő Service Fabric-fürtre kell telepíteni. 
+>
 
 A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. A Service Fabric csapata tartja karban ezeket, és bárki üzembe helyezhet rajtuk alkalmazásokat, illetve megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
 

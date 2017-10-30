@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24552ef153f5aa601b2998129a7bbacc8f9da6bf
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben
 Az Azure Active Directory (Azure AD) Connect Health segít megfigyelni a helyszíni identitás-infrastruktúrát és a szinkronizálási szolgáltatásokat, és további betekintést nyújt a működésükbe. Megbízható Office 365- és Microsoft Online Services-kapcsolat fenntartását teszi lehetővé olyan fontos identitás-összetevők megfigyelésével, mint például az Active Directory összevonási szolgáltatások (AD FS) kiszolgálói, az Azure AD Connect-kiszolgálók (más néven a szinkronizálási motor) vagy az Active Directory-tartományvezérlők stb. Ezen összetevők legfontosabb adatpontjait is könnyen hozzáférhetővé teszi, így lekérdezhetővé válnak a használatra és egyéb lényeges jellemzőkre vonatkozó adatok, hogy megalapozott döntéseket hozhasson.
@@ -27,8 +27,8 @@ Ez az információ az [Azure AD Connect Health portálon](https://aka.ms/aadconn
 
 ![Mi az az Azure AD Connect Health?](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
 
-Az Azure AD Connect Health funkcióinak bővülésével a portál egy identitásalapú irányítópultot kínál. Ezáltal egy nagy teljesítményű, kifogástalan állapotú és integrált környezetet biztosít, ahol a felhasználók még hatékonyabban dolgozhatnak.
 
+Az Azure AD Connect Health funkcióinak bővülésével a portál egy identitásalapú irányítópultot kínál. Ezáltal egy nagy teljesítményű, kifogástalan állapotú és integrált környezetet biztosít, ahol a felhasználók még hatékonyabban dolgozhatnak.
 ## <a name="why-use-azure-ad-connect-health"></a>Miért érdemes az Azure AD Connect Health eszközt használni?
 A helyszíni címtárak és az Azure AD integrálása révén a felhasználók munkája hatékonyabbá válik, mivel a felhőalapú és a helyszíni erőforrások eléréséhez közös identitás áll a rendelkezésükre. Ez az integráció azonban szükségessé teszi a környezet megfelelő állapotának biztosítását, hogy a felhasználók bármilyen eszközről megbízhatóan hozzáférhessenek a helyszíni és a felhőalapú erőforrásokhoz is. Az Azure AD Connect Health segít megfigyelni az Office 365 és más Azure AD-alkalmazások eléréséhez használt helyszíni identitás-infrastruktúrát, és további betekintést nyújt annak működésébe. Használata éppolyan egyszerű, mintha egy-egy ügynököt telepítene a helyszíni identitás-kiszolgálókra.
 
@@ -40,11 +40,14 @@ Az AD FS-hez készült Azure AD Connect Health a Windows Server 2008 R2, a Windo
 * Teljesítményadat-tendenciák, amelyek hasznosak az AD FS kapacitástervezéséhez;
 * Az AD FS használatának különböző területekre (például appokra, felhasználókra vagy hálózati helyekre) kiterjedő elemzései, amelyekkel felmérhetők az AD FS használatának módjai;
 * AD FS-jelentések, például a rossz felhasználónév/jelszó párossal legtöbbet próbálkozó 50 felhasználó, az utolsó IP-címükkel együtt
+  
+Itt olvashat többet [az Azure AD Connect Health használatáról az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md)
 
 Az alábbi videó az Azure AD Connect Health for AD FS működéséről nyújt áttekintést.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Connect-Health--Monitor-you-identity-bridge/player]
 >
+
 >
 
 ## <a name="azure-ad-connect-health-for-syncactive-directory-aadconnect-health-syncmd"></a>[Azure AD Connect Health szinkronizálási szolgáltatás](active-directory-aadconnect-health-sync.md)
@@ -55,6 +58,8 @@ Az Azure AD Connect Health szinkronizálási szolgáltatás figyelemmel kíséri
 * A szinkronizálási műveletek elemzései, beleértve a rájuk vonatkozó késési diagramokat és olyan különböző műveletek tendenciáit, mint például a hozzáadások, a frissítések vagy a törlések;
 * A szinkronizálási tulajdonságok és az Azure AD-re történt legutóbbi sikeres exportálási művelet gyors áttekintése
 * Az objektumszintű szinkronizációs hibákról való jelentésekhez \(nem szükséges Prémium szintű Microsoft Azure AD\)
+
+Itt olvashat többet [az Azure AD Connect Health szinkronizálási szolgáltatás használatáról](active-directory-aadconnect-health-sync.md)
 
 Az alábbi videó az Azure AD Connect Health szinkronizálás szolgáltatás működéséről nyújt áttekintést.
 
@@ -69,6 +74,8 @@ Az Active Directory Domain Serviceshez (AD DS) készült Azure AD Connect Health
 * A tartományvezérlő irányítópultja gyors betekintést biztosít a tartományvezérlők állapotába és üzemeltetési állapotába
 * A Replikáció állapota irányítópult, amely a legújabb replikációs adatokkal rendelkezik, a hibák észlelésekor hibaelhárítási útmutatókra mutató hivatkozásokkal szolgál
 * Gyors és helyfüggetlen hozzáférést biztosít a népszerű teljesítményszámlálók teljesítményadat-grafikonjaihoz, melyek hibaelhárítási és figyelési célból szükségesek
+
+Itt olvashat többet [az Azure AD Connect Health használatáról az AD DS szolgáltatással](active-directory-aadconnect-health-adds.md)
 
 Az alábbi videó az Azure AD Connect Health for AD DS működéséről nyújt áttekintést.
 

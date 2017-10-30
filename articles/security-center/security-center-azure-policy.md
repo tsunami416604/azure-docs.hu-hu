@@ -1,12 +1,12 @@
 ---
-title: "Biztonsági szabályzatok beállítása az Azure Security Centerben | Microsoft Docs"
-description: "Ebből a dokumentumból megismerheti az Azure Security Center biztonsági szabályzatainak konfigurálásához szükséges lépéseket."
+title: "Az Azure Security Center biztonsági szabályzatainak integrálása az Azure Policyvel | Microsoft Docs"
+description: "Ebből a dokumentumból megismerheti, hogyan konfigurálható az Azure Security Center biztonsági szabályzatainak integrálása az Azure Policyvel."
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
 editor: 
-ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
+ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security-center
 ms.devlang: na
 ms.topic: hero-article
@@ -14,36 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 1cebb6edecd13c6ab32c6854bfd6fe908c1f71f4
+ms.openlocfilehash: 5e07cd6891a5ab04012f819b5f6b9379312e530d
 ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/13/2017
 ---
-# <a name="set-security-policies-in-security-center"></a>Biztonsági szabályzatok beállítása a Security Centerben
-Ez a dokumentum végigvezeti a Security Center biztonsági szabályzatainak beállításához szükséges lépéseken. 
+# <a name="set-security-policies-in-security-center-powered-by-azure-policy"></a>Az Azure Policy által kezelt biztonsági szabályzatok beállítása a Security Centerben
+Ez a dokumentum végigvezeti a Security Center Azure Policy által kezelt biztonsági szabályzatainak beállításához szükséges lépéseken. 
 
 
 ## <a name="how-security-policies-work"></a>A biztonsági szabályzatok működése
-A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szabályzatot minden egyes Azure-előfizetéséhez. A Security Centerben szerkesztheti a szabályzatot, és felügyelheti az annak való megfelelőséget. 
+A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szabályzatot minden egyes Azure-előfizetéséhez. A szabályzatot a Security Centerben szerkesztheti, vagy az [Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) használatával létrehozhat új szabályzatdefiníciókat, valamint hozzárendelhet szabályzatokat a Felügyeleti csoportokhoz (ezek jelenthetik a teljes céget vagy szervezetet, egy üzleti egységet stb.), és felügyelheti a szabályzatoknak való megfelelőséget.
 
 > [!NOTE]
-> A korlátozott előzetes verzióban elérhető Azure Policy használatával most kiterjesztheti a Security Center szabályzatainak használati körét. Kattintson [ide](http://aka.ms/getpolicy) az előzetes verzióhoz való csatlakozáshoz, vagy tekintse meg a dokumentációt [itt](security-center-azure-policy.md).
-
-Különböző biztonsági követelmények vonatkozhatnak például a fejlesztésben vagy tesztelésben, illetve az éles környezetben használt erőforrásokra. A szabályozott adatokat, például személyazonosításra alkalmas adatokat használó alkalmazások is magasabb szintű biztonságot követelhetnek meg. Az Azure Security Centerben engedélyezett biztonsági szabályzatok biztonsági javaslatokkal szolgálnak, és figyelést biztosítanak, így segítenek Önnek felismerni a potenciális biztonsági réseket és elhárítani a fenyegetéseket. Az [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) cikkből további információkhoz juthat az Önnek legmegfelelőbb lehetőség meghatározásával kapcsolatban.
+> Az Azure Policy jelenleg csak korlátozott előzetes verzióban érhető el. Kattintson [ide](https://aka.ms/getpolicy) a csatlakozáshoz. Az Azure-szabályzatokkal kapcsolatos további információkért olvassa el a [megfelelőség szabályzatok létrehozásával és kezelésével történő kikényszerítésével](http://docs.microsoft.com/en-us/azure/azure-policy/create-manage-policy) foglalkozó témakört.
 
 ## <a name="edit-security-policies"></a>Biztonsági szabályzatok szerkesztése
-Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Security Centerben szerkesztheti. Biztonsági szabályzatok módosításához az előfizetésben tulajdonosi, közreműködői vagy biztonsági rendszergazdai szerepkörrel kell rendelkeznie. A Security Center biztonsági szabályzatainak konfigurálásához jelentkezzen be az Azure Portalra, és kövesse az alábbiakban megadott lépéseket: 
+Az egyes Azure-előfizetések alapértelmezett biztonsági szabályzatait a Security Centerben szerkesztheti. Biztonsági szabályzat módosításához az előfizetésben vagy az azt tartalmazó felügyeleti csoportban tulajdonos, közreműködő vagy biztonsági rendszergazda szerepkörrel kell rendelkeznie. A Security Center biztonsági szabályzatainak megtekintéséhez jelentkezzen be az Azure Portalra, és kövesse az alábbi lépéseket:
 
-1.  A **Security Center** irányítópultjának **Általános** területén kattintson a **Biztonsági szabályzat** elemre.
-2.  Válassza ki azt az előfizetést, amelyhez engedélyezni kívánja a biztonsági szabályzatot.
-3.  A **SZABÁLYZAT ÖSSZETEVŐI** szakaszban kattintson a **Biztonsági szabályzat** elemre.
-4.  Ez a Security Centerhez hozzárendelt alapértelmezett szabályzat. Ki- vagy bekapcsolhatja az elérhető biztonsági javaslatokat.
-5.  A szerkesztés befejeztével kattintson a **Mentés** gombra.
+1. A **Security Center** irányítópultjának **Általános** területén kattintson a **Biztonsági szabályzat** elemre.
+2. Válassza ki azt az előfizetést, amelyhez engedélyezni kívánja a biztonsági szabályzatot.
 
-## <a name="available-security-policy-options"></a>Elérhető biztonságiszabályzat-beállítások
+    ![Szabályzatkezelés](./media/security-center-policies/security-center-policies-fig10.png)
 
-Az egyes beállítások megértéséhez használja az alábbi táblázatot:
+3. A **SZABÁLYZAT ÖSSZETEVŐI** szakaszban kattintson a **Biztonsági szabályzat** elemre.
+
+    ![Szabályzat összetevői](./media/security-center-policies/security-center-policies-fig12.png)
+
+4. Ez a Security Centerhez az Azure Policyn keresztül hozzárendelt alapértelmezett szabályzat. Törölheti a **SZABÁLYZATOK ÉS PARAMÉTEREK** alatt felsorolt összetevőket, vagy új szabályzatdefiníciókat adhat meg az **ELÉRHETŐ LEHETŐSÉGEK** alatt. Ehhez kattintson egyszerűen a definíció neve mellett a plusz jelre.
+
+    ![Szabályzatdefiníciók](./media/security-center-policies/security-center-policies-fig11.png)
+
+5. Ha részletesebb ismertetőre van szüksége valamely szabályzattal kapcsolatban, kattintson a szabályzatra, és a megnyíló oldalon tekintse meg a részleteket és a [szabályzatdefiníció](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy/#policy-definition-structure) szerkezetű JSON-kódot:
+
+    ![JSON](./media/security-center-policies/security-center-policies-fig14.png)
+
+6. A szerkesztés befejeztével kattintson a **Mentés** gombra.
+
+
+## <a name="available-security-policy-definitions"></a>Elérhető biztonságiszabályzat-definíciók
+
+Az alapértelmezett biztonsági szabályzatban elérhető szabályzatdefiníciók megértéséhez használja az alábbi táblázatot: 
 
 | Szabályzat | Bekapcsolt állapotban |
 | --- | --- |

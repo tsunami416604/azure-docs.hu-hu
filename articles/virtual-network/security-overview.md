@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 98559cbb0acab91c4b2c30c6d0129e955eef85f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c5b5d79a18d8c4d370b1deb506285519fdbfbcf8
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="network-security"></a>Hálózati biztonság
 
@@ -151,7 +151,10 @@ Ha más szabályokat is létrehoz, amelyekben más alkalmazásbiztonsági csopor
  
 Az alkalmazásbiztonsági csoportok létrehozására és a biztonsági szabályokban való alkalmazására vonatkozó korlátozásokkal kapcsolatban tekintse meg az [Azure korlátairól](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) szóló cikket.
 
-Az alkalmazásbiztonsági csoportok előzetes kiadásban érhetőek el. Az alkalmazásbiztonsági csoportok használata előtt regisztráljon azok használatára a [hálózati biztonsági csoport alkalmazásbiztonsági csoportokkal való létrehozását](create-network-security-group-preview.md#powershell) ismertető szakasz 1–5. lépések végrehajtásával, és olvassa el az [előzetes kiadásban elérhető funkciókról](#preview-features) szóló cikket a legfontosabb információkért. Az előzetes kiadásban az alkalmazásbiztonsági csoportok hatóköre csak a virtuális hálózatra terjed ki. A hálózati biztonsági csoportokon lévő alkalmazásbiztonsági csoportokkal kereszthivatkozással társviszonyban lévő virtuális hálózatok nem lesznek alkalmazva. 
+Az alkalmazásbiztonsági csoportok előzetes kiadásban érhetőek el. Az alkalmazásbiztonsági csoportok használata előtt regisztráljon azok használatára a [hálózati biztonsági csoport alkalmazásbiztonsági csoportokkal való létrehozását](create-network-security-group-preview.md#powershell) ismertető szakasz 1–5. lépések végrehajtásával, és olvassa el az [előzetes kiadásban elérhető funkciókról](#preview-features) szóló cikket a legfontosabb információkért. Az alkalmazásbiztonsági csoportok a következő korlátozásokkal rendelkeznek:
+
+-   Egy alkalmazásbiztonsági csoportban lévő összes hálózati adapternek ugyanazon a virtuális hálózaton kell lennie. Nem adhat különböző virtuális hálózatokról származó hálózati adaptereket ugyanahhoz az alkalmazásbiztonsági csoporthoz. Az alkalmazásbiztonsági csoporthoz rendelt első hálózati adapter virtuális hálózata határozza meg az összes később hozzárendelt hálózati adapter virtuális hálózatát.
+- Ha biztonsági szabály forrásaként és céljaként határoz meg alkalmazásbiztonsági csoportokat, mindkét alkalmazásbiztonsági csoport hálózati adaptereinek ugyanazon a virtuális hálózaton kell lenniük. Ha például az ABCS1 a VNet1 hálózatról tartalmaz hálózati adaptereket, az ABCS2 pedig a VNet2 hálózatról, nem rendelheti hozzá az ABCS1 csoportot forrásként és az ABCS2 csoportot célként egy szabályban. Minden hálózati adapternek a VNet1 hálózaton kell lennie. 
 
 Az előzetes kiadásban elérhető szolgáltatások rendelkezésre állása és megbízhatósága eltér az általánosan elérhető kiadásokban lévőekétől. Az alkalmazásbiztonsági csoportok használata előtt regisztrálnia kell azok használatához. A szolgáltatások csak a következő régiókban érhetőek el: az USA nyugati középső régiója.
 

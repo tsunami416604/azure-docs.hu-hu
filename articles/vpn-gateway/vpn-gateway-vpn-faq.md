@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/30/2017
+ms.date: 10/19/2017
 ms.author: cherylmc,yushwang
-ms.openlocfilehash: b12eab7a430e620d0b6e872551c0252ccb5d4c14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8af984a7321d99faecb9d79903a442c938460919
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
 
@@ -70,6 +70,15 @@ A házirendalapú átjárók házirendalapú VPN-kapcsolatokat valósítanak meg
 
 Az útvonalalapú átjárók útvonalalapú VPN-kapcsolatokat valósítanak meg. Az útvonalalapú VPN-ek „útvonalakat” használnak az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. Az útvonalalapú VPN-ek házirendje (vagy forgalomválasztója) bármely két elem közöttiként (vagy helyettesítő karakterekként) van konfigurálva.
 
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Frissíthetem házirendalapú VPN-átjárómat útvonalalapúra?
+Nem. Az Azure VNet-átjáró típusa nem módosítható házirendalapúról útvonalalapúra vagy viszont. Ilyenkor törölni kell, majd újra létrehozni az átjárót, amely folyamat mintegy 60 percet vesz igénybe. Az átjáró IP-címe és az előmegosztott kulcs (PSK) nem marad meg.
+1. Törölje a törölni kívánt átjáróval társított kapcsolatokat.
+2. Törölje az átjárót:
+* [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+* [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+* [Azure PowerShell – klasszikus](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+3. [Hozzon létre egy megfelelő típusú új átjárót, majd végezze el a VPN beállítását](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+
 ### <a name="do-i-need-a-gatewaysubnet"></a>Szükségem van GatewaySubnetre?
 
 Igen. Az átjáróalhálózat tartalmazza a virtuális hálózati átjáró-szolgáltatások által használt IP-címeket. A virtuális hálózati átjáró konfigurálásához létre kell hozni egy átjáróalhálózatot a virtuális hálózathoz. A megfelelő működéshez az összes átjáró-alhálózatnak a „GatewaySubnet” névvel kell rendelkeznie. Ne nevezze el másként az átjáróalhálózatát, és ne helyezzen üzembe rajta virtuális gépeket vagy más eszközt.
@@ -110,7 +119,6 @@ Hitelesítésként csak az előmegosztott kulcsok (PSK-k) használhatók.
 #### <a name="classic-deployment-model"></a>Klasszikus üzemi modell
 
 * Azure Portal esetén: Lépjen a klasszikus virtuális hálózat > VPN connections (VPN-kapcsolatok) > Site-to-site VPN connections (Helyek közötti VPN-kapcsolatok) > Helyi hely neve > Helyi hely > Client address space (Ügyfélcímtér) felületre. 
-* Klasszikus portál esetén: A Networks (Hálózatok) lap Local Networks (Helyi hálózatok) részében adja hozzá az összes tartományt, amelyet átküldene az átjárón a virtuális hálózathoz. 
 
 ### <a name="can-i-configure-force-tunneling"></a>Konfigurálhatok kényszerített bújtatást?
 
@@ -160,9 +168,13 @@ Az egyéb szoftveres VPN-megoldások szintén működhetnek, ha megfelelnek az i
 
 ## <a name="P2S"></a>Pont–hely kapcsolat – hitelesítés natív Azure-tanúsítvánnyal
 
+Ez a szakasz a Resource Manager-alapú üzemi modellre vonatkozik.
+
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
 ## <a name="P2SRADIUS"></a>Pont–hely kapcsolat – RADIUS-hitelesítés
+
+Ez a szakasz a Resource Manager-alapú üzemi modellre vonatkozik.
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 

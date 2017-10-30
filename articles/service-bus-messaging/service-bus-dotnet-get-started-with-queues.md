@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/26/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c381489c3cb5b42505d0cdf01618edb370793304
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -56,7 +56,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
 
 ### <a name="add-the-service-bus-nuget-package"></a>A Service Bus NuGet-csomag hozzáadása
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Kattintson a **Browse** (Tallózás) fülre, és keressen a **Microsoft Azure Service Bus** kifejezésre, majd válassza ki a **WindowsAzure.ServiceBus** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
+2. Kattintson a **Browse** (Tallózás) fülre, keressen rá a **WindowsAzure.ServiceBus** kifejezésre, majd válassza ki a **WindowsAzure.ServiceBus** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
    
     ![NuGet-csomag kiválasztása][nuget-pkg]
 
@@ -115,7 +115,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
         }
     }
     ```
-3. Futtassa a programot, és ellenőrizze az Azure Portalon: kattintson az üzenetsor nevére a névtér **Áttekintés** paneljén. Megjelenik az üzenetsor **Essentials** (Alapok) panelje. Vegye figyelembe, hogy az **Aktív üzenetek száma** értékének ekkor 1-nek kell lennie. Minden alkalommal, amikor a küldő alkalmazást futtatja, és nem kapja meg az üzeneteket, ez az érték 1-el nő. Azt is vegye figyelembe, hogy az üzenetsor jelenlegi mérete minden alkalommal növekszik, amikor az alkalmazás egy üzenetet ad hozzá az üzenetsorhoz.
+3. Futtassa a programot, és ellenőrizze az Azure Portalon: kattintson az üzenetsor nevére a névtér **Áttekintés** ablakában. Megjelenik az üzenetsor **Alapok** ablaka. Vegye figyelembe, hogy az **Aktív üzenetek száma** értékének ekkor 1-nek kell lennie. Minden alkalommal, amikor a küldő alkalmazást futtatja, és nem kapja meg az üzeneteket, ez az érték 1-el nő. Azt is vegye figyelembe, hogy az üzenetsor jelenlegi mérete minden alkalommal növekszik, amikor az alkalmazás egy üzenetet ad hozzá az üzenetsorhoz.
    
       ![Üzenet mérete][queue-message]
 
@@ -178,7 +178,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
    
     ![Várólista hossza][queue-message-receive]
 
-Gratulálunk! Ezzel létrehozott egy üzenetsort, illetve küldött és fogadott is üzenetet.
+Gratulálunk! Ezzel létrehozott egy üzenetsort, elküldött egy üzenetet az üzenetsornak, és fogadott is üzenetet tőle.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -189,4 +189,4 @@ Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://githu
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
 [queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
 [queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
-[github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
+
