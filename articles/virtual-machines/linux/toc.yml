@@ -205,6 +205,17 @@
               href: terraform-install-configure.md
             - name: Teljes virtuális gép létrehozása
               href: terraform-create-complete-vm.md
+        - name: Jenkins
+          href: ../../jenkins/overview.md
+          items:
+            - name: Jenkins-kiszolgáló létrehozása
+              href: ../../jenkins/install-jenkins-solution-template.md
+            - name: Skálázás virtuálisgép-ügynökökkel
+              href: ../../jenkins/jenkins-azure-vm-agents.md
+            - name: Összetevők közzététele a Storage szolgáltatásban
+              href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
+            - name: Biztonságos Jenkins
+              href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Tárolók futtatása
       items:
         - name: Docker-gazdagép létrehozása

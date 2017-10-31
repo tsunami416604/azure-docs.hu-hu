@@ -34,7 +34,7 @@
 - name: oktatóanyagokat
   href: walkthroughs.md
   items:
-    - name: Azure Machine Learning Workbench
+    - name: Azure Machine Learning
       href: walkthroughs-aml-with-tdsp.md
       items:
         - name: Egyesült államokbeli bevételek besorolása
@@ -219,16 +219,37 @@
                   href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: Erőforrások
   items:
-    - name: TDSP-eszközök és -segédprogramok – GitHub
-      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
+    - name: TDSP-eszközök és -segédprogramok
       items:
-        - name: A Csoportos adatelemzési folyamat legújabb segédprogramjai
+        - name: Letöltés a GitHubról
+          href: 'https://github.com/Azure/Azure-TDSP-Utilities'
+        - name: A TDSP adatelemzési segédprogramjainak 0.11-es verziója
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
+        - name: A TDSP legújabb segédprogramjai
           href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-    - name: Cortana Intelligence and Machine Learning blog
-      href: 'https://blogs.technet.microsoft.com/machinelearning/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
-    - name: Videók
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
+    - name: Blogok
+      items:
+        - name: A TDSP legutóbbi frissítései
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
+        - name: TDSP használata az Azure Machine Learningben
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
+        - name: Adatelemzési projektek tervezősablonja
+          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
+        - name: Cortana Intelligence and Machine Learning blog
+          href: 'https://blogs.technet.microsoft.com/machinelearning/'
+    - name: TDSP-t használó szervezetek
+      items:
+        - name: Új aláírás
+          href: 'https://newsignature.com/services/professional-services/advanced-analytics/'
+        - name: Kék gránit
+          href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
+        - name: Microsoft Consulting Services
+          href: 'https://www.microsoft.com/en-us/microsoftservices/business-analytics.aspx'
+    - name: Kapcsolódó Microsoft-források
+      items:
+        - name: MSDN-fórum
+          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+        - name: Stack Overflow
+          href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
+        - name: Videók
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
