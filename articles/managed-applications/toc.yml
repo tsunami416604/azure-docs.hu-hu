@@ -1,0 +1,88 @@
+- name: Azure felügyelt alkalmazások
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók a felügyelt alkalmazásokról
+      href: overview.md
+- name: Gyors útmutatók
+  items:
+    - name: Felügyelt alkalmazás létrehozása az Azure CLI-vel
+      href: managed-apps-quickstart-cli.md
+- name: oktatóanyagokat
+  items:
+    - name: Szolgáltatáskatalógusban elérhető alkalmazás létrehozása
+      href: publish-service-catalog-app.md
+    - name: Piactéren elérhető alkalmazás létrehozása
+      href: publish-marketplace-app.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+    - name: Felügyelt alkalmazási megoldások
+      href: sample-projects.md
+- name: Útmutatók
+  items:
+    - name: Felhasználói felület megadása
+      href: create-uidefinition-overview.md
+    - name: Kezelt erőforrások frissítése
+      href: update-managed-resources.md
+    - name: Szolgáltatáskatalógusban elérhető alkalmazás közzététele – portál
+      href: publish-portal.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/managedapp
+    - name: PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: REST
+      href: /rest/api/resources/
+    - name: Felhasználó felület funkciói
+      href: create-uidefinition-functions.md
+    - name: Felhasználó felület elemei
+      href: create-uidefinition-elements.md
+      items:
+        - name: Közös
+          items:
+            - name: DropDown
+              href: microsoft-common-dropdown.md
+            - name: FileUpload
+              href: microsoft-common-fileupload.md
+            - name: OptionsGroup
+              href: microsoft-common-optionsgroup.md
+            - name: PasswordBox
+              href: microsoft-common-passwordbox.md
+            - name: Section
+              href: microsoft-common-section.md
+            - name: TextBox
+              href: microsoft-common-textbox.md
+        - name: Számítás
+          items:
+            - name: CredentialsCombo
+              href: microsoft-compute-credentialscombo.md
+            - name: SizeSelector
+              href: microsoft-compute-sizeselector.md
+            - name: UserNameTextBox
+              href: microsoft-compute-usernametextbox.md
+        - name: Network (Hálózat)
+          items:
+            - name: PublicIPAddressCombo
+              href: microsoft-network-publicipaddresscombo.md
+            - name: VirtualNetworkCombo
+              href: microsoft-network-virtualnetworkcombo.md
+        - name: Storage
+          items:
+            - name: MultiStorageAccountCombo
+              href: microsoft-storage-multistorageaccountcombo.md
+            - name: StorageAccountSelector
+              href: microsoft-storage-storageaccountselector.md
+- name: Erőforrások
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

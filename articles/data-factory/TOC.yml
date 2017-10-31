@@ -188,8 +188,8 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
     - name: Monitorozás és kezelés
       items:
-        - name: A .NET használata
-          href: 'quickstart-create-data-factory-dot-net.md#monitor-pipeline-run'
+        - name: SDK-k használata
+          href: monitor-programmatically.md
         - name: Az Azure Monitor használata
           href: monitor-using-azure-monitor.md
         - name: Vizuális megfigyelés

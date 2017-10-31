@@ -45,8 +45,10 @@
           href: log-analytics-log-search-faq.md
         - name: Naplókeresési portálok
           href: log-analytics-log-search-portals.md
-- name: Útmutató
+- name: Útmutatók
   items:
+    - name: Log Analytics-munkaterület létrehozása
+      href: log-analytics-quick-create-workspace.md
     - name: Adatok gyűjtése
       items:
         - name: Összekapcsolt források
@@ -154,7 +156,7 @@
           href: ../operations-management-suite/operations-management-suite-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: Activity Log Analytics
           href: log-analytics-activity.md
-        - name: AD Assessment
+        - name: AD állapotának ellenőrzése
           href: log-analytics-ad-assessment.md
         - name: AD Replication Status
           href: log-analytics-ad-replication-status.md
@@ -197,7 +199,7 @@
           href: log-analytics-network-performance-monitor.md
         - name: Office 365
           href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: SCOM Assessment
+        - name: SCOM állapotának ellenőrzése
           href: log-analytics-scom-assessment.md
         - name: Biztonsági naplózás
           href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
@@ -208,7 +210,7 @@
               href: log-analytics-service-fabric-azure-resource-manager.md
         - name: Szolgáltatástérkép
           href: ../operations-management-suite/operations-management-suite-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: SQL-felmérés
+        - name: SQL állapotának ellenőrzése
           href: log-analytics-sql-assessment.md
         - name: Surface Hub
           href: log-analytics-surface-hubs.md
