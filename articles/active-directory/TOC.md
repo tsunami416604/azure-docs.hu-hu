@@ -208,7 +208,7 @@
 #### [Felhasználói fiók üzembe helyezésének kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Egyszeri bejelentkezés kezelése nagyvállalati alkalmazások esetében](active-directory-enterprise-apps-manage-sso.md)
 #### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](active-directory-enterprise-apps-advance-certificate-options.md)
-####[ Felhasználói élmény elrejtése az Azure Active Directoryban](active-directory-coreapps-hide-third-party-app.md)
+#### [Külső gyártótól származó alkalmazás elrejtése a felhasználói felületen](active-directory-coreapps-hide-third-party-app.md)
 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Önkiszolgáló hozzáférés](active-directory-self-service-application-access.md)

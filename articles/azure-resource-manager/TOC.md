@@ -3,7 +3,6 @@
 ## [Erőforrás-szolgáltatók és típusaik](resource-manager-supported-services.md)
 ## [A Resource Manager-alapú és a klasszikus üzemi modell](resource-manager-deployment-model.md)
 ## [Előfizetés-irányítás](resource-manager-subscription-governance.md)
-## [Felügyelt alkalmazások](managed-application-overview.md)
 
 # Bevezetés
 ## [Sablon létrehozása és üzembe helyezése](resource-manager-create-first-template.md)
@@ -60,6 +59,7 @@
 ### [Erőforrások áthelyezése új csoportba vagy előfizetésbe](resource-group-move-resources.md)
 ### [Előfizetések rendszerezése felügyeleti csoportokkal](../billing/billing-enterprise-mgmt-group-overview.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Irányítási példák](resource-manager-subscription-examples.md)
+### [Felügyelt alkalmazások](../managed-applications/overview.md)
 
 ## Vezérlési hozzáférés
 ### Egyszerű szolgáltatás létrehozása
@@ -80,13 +80,6 @@
 #### [Storage](resource-manager-policy-storage.md)
 #### [Linux rendszerű virtuális gép](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Windows rendszerű virtuális gép](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-
-## Felügyelt alkalmazások használata
-### [Szolgáltatáskatalógusban elérhető alkalmazás közzététele](managed-application-publishing.md)
-### [Szolgáltatáskatalógusban elérhető alkalmazás felhasználása](managed-application-consumption.md)
-### [Piactéren elérhető alkalmazás közzététele](managed-application-author-marketplace.md)
-### [Piactéren elérhető alkalmazás felhasználása](managed-application-consume-marketplace.md)
-### [Felhasználóifelület-definíciók létrehozása](managed-application-createuidefinition-overview.md)
 
 ## Naplózás
 ### [Tevékenységnaplók megtekintése](resource-group-audit.md)
@@ -124,21 +117,6 @@
 ### [Numerikus függvények](resource-group-template-functions-numeric.md)
 ### [Erőforrásfüggvények](resource-group-template-functions-resource.md)
 ### [Karakterlánc-függvények](resource-group-template-functions-string.md)
-## [Felhasználói felületet definiáló függvények](managed-application-createuidefinition-functions.md)
-## [Felhasználói felületet definiáló elemek](managed-application-createuidefinition-elements.md)
-### [Microsoft.Common.DropDown](managed-application-microsoft-common-dropdown.md)
-### [Microsoft.Common.FileUpload](managed-application-microsoft-common-fileupload.md)
-### [Microsoft.Common.OptionsGroup](managed-application-microsoft-common-optionsgroup.md)
-### [Microsoft.Common.PasswordBox](managed-application-microsoft-common-passwordbox.md)
-### [Microsoft.Common.Section](managed-application-microsoft-common-section.md)
-### [Microsoft.Common.TextBox](managed-application-microsoft-common-textbox.md)
-### [Microsoft.Compute.CredentialsCombo](managed-application-microsoft-compute-credentialscombo.md)
-### [Microsoft.Compute.SizeSelector](managed-application-microsoft-compute-sizeselector.md)
-### [Microsoft.Compute.UserNameTextBox](managed-application-microsoft-compute-usernametextbox.md)
-### [Microsoft.Network.PublicIpAddressCombo](managed-application-microsoft-network-publicipaddresscombo.md)
-### [Microsoft.Network.VirtualNetworkCombo](managed-application-microsoft-network-virtualnetworkcombo.md)
-### [Microsoft.Storage.MultiStorageAccountCombo](managed-application-microsoft-storage-multistorageaccountcombo.md)
-### [Microsoft.Storage.StorageAccountSelector](managed-application-microsoft-storage-storageaccountselector.md)
 ## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

@@ -358,6 +358,7 @@
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
+## [Szolgáltatásmodell XML-sémája](service-fabric-service-model-schema.md)
 
 # Erőforrások
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
