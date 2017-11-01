@@ -13,7 +13,7 @@
       href: log-analytics-quick-collect-linux-computer.md
     - name: Gyűjtés – Windows rendszerű számítógép
       href: log-analytics-quick-collect-windows-computer.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Adatok elemzése
       href: log-analytics-tutorial-viewdata.md
@@ -128,6 +128,8 @@
               href: log-analytics-view-designer-tiles.md
             - name: Vizualizációs rész referenciája
               href: log-analytics-view-designer-parts.md
+            - name: Szűrők
+              href: log-analytics-view-designer-filters.md
         - name: Power BI
           href: log-analytics-powerbi.md
     - name: Riasztások létrehozása
