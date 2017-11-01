@@ -13,9 +13,9 @@
       href: container-registry-get-started-portal.md
     - name: Container Registry – PowerShell
       href: container-registry-get-started-powershell.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
-    - name: Georeplikáció
+    - name: Georeplikáció (előzetes verzió)
       items:
         - name: 1 – A tárolóregisztrációs adatbázis előkészítése
           href: container-registry-tutorial-prepare-registry.md

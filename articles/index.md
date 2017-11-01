@@ -3,11 +3,12 @@ layout: HubPage
 hide_bc: True
 title: "Microsoft Azure-dokumentáció"
 description: "Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmazásokat a Microsoft Azure Cloud Services használatával. Töltse le a dokumentációt, mintakódokat, oktatóanyagokat és sok egyebet."
-ms.openlocfilehash: 5ca26e7fc6230140ee424e35a8d174613a4a93f4
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+featureFlags: clicktale
+ms.openlocfilehash: 1cce8a0c31a7bb7e4c6e228261b27244a762b441
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/01/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -151,7 +152,7 @@ ms.lasthandoff: 10/27/2017
                                                             <img src="media/index/logo_PHP.svg" alt=""> PHP</a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="/nodejs/azure/?view=azure-node-2.0.0">
+                                                        <a class="barLink" href="/nodejs/azure/">
                                                             <img src="media/index/logo_nodejs.svg" alt=""> Node.js</a>
                                                     </li>
                                                 </ul></td></tr></table>
@@ -189,7 +190,7 @@ ms.lasthandoff: 10/27/2017
                                                 </ul>
                                                 <h4>AI és Cognitive Services</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/machine-learning/preview">Machine Learning-szolgáltatások</a></li>
+                                                    <li><a class="barLink" href="/azure/machine-learning/preview">Machine Learning services</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/computer-vision/">Számítógépes látástechnológiai API</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/face/">Arcfelismerési API</a></li>
                                                 </ul>
@@ -573,7 +574,7 @@ ms.lasthandoff: 10/27/2017
                                         <li>
                                             <a href="/azure/virtual-network/ddos-protection-overview">
                                                 <img src="media/index/ddos.svg" alt="" />
-                                                <p>Védelem DDOS-támadások ellen</p>
+                                                <p>DDoS elleni védelem</p>
                                             </a>
                                         </li>
                                         <li>
@@ -588,7 +589,7 @@ ms.lasthandoff: 10/27/2017
                                         <li>
                                             <a href="/azure/machine-learning/preview">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning-szolgáltatások</p>
+                                                <p>Machine Learning services</p>
                                             </a>
                                         </li>
                                         <li>
@@ -769,12 +770,6 @@ ms.lasthandoff: 10/27/2017
                                             <a href="/azure/cognitive-services/face/">
                                                 <img src="media/index/API_Face.svg" alt="" />
                                                 <p>Arcfelismerési API</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/cognitive-services/video/home">
-                                                <img src="media/index/API_Video.svg" alt="" />
-                                                <p>Videó API</p>
                                             </a>
                                         </li>
                                         <li>
@@ -994,7 +989,7 @@ ms.lasthandoff: 10/27/2017
                                         <li>
                                             <a href="/azure/machine-learning/preview">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning-szolgáltatások</p>
+                                                <p>Machine Learning services</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1122,7 +1117,7 @@ ms.lasthandoff: 10/27/2017
                                         <li>
                                             <a href="/azure/active-directory-domain-services">
                                                 <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>Azure Active Directory tartományi szolgáltatásokhoz</p>
+                                                <p>Azure Active Directory Domain Services</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1143,7 +1138,7 @@ ms.lasthandoff: 10/27/2017
                                         <li>
                                             <a href="/azure/azure-policy/">
                                                 <img src="media/index/governance.svg" alt="" />
-                                                <p>Azure szabályzat</p>
+                                                <p>Azure Policy</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1629,7 +1624,7 @@ ms.lasthandoff: 10/27/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Védelem DDOS-támadások ellen</h3>
+                                                    <h3>DDoS elleni védelem</h3>
                                                     <p>Az alkalmazások védelme az elosztott szolgáltatásmegtagadásos (DDoS-) támadásokkal szemben</p>
                                                 </div>
                                             </div>
@@ -2517,7 +2512,7 @@ ms.lasthandoff: 10/27/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning-szolgáltatások</h3>
+                                                    <h3>Machine Learning services</h3>
                                                     <p>Nagy teljesítményű felhőalapú prediktív elemzőeszköz a megelőző karbantartáshoz</p>
                                                 </div>
                                             </div>
@@ -2571,7 +2566,7 @@ ms.lasthandoff: 10/27/2017
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Vizuális elemek</h3>
+                                                        <h3>Látás</h3>
                                                         <ul class="noBullet">
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/computer-vision/"><img src="media/index/API_Computer_Vision.svg" alt="" />Számítógépes látástechnológia</a>
@@ -2587,9 +2582,6 @@ ms.lasthandoff: 10/27/2017
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/face/"><img src="media/index/API_Face.svg" alt="" />Arcfelismerési API</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/video/home"><img src="media/index/API_Video.svg" alt="" /><span>Videó API&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/video-indexer/video-indexer-overview"><img src="media/index/API_VideoIndexer.svg" alt="" /><span>Videóindexelő&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a>
@@ -2703,7 +2695,8 @@ ms.lasthandoff: 10/27/2017
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="media/index/API_Bing_Web_Search.svg" alt="" />Bing – Internetes keresés</a>
                                                             </li>
-                                                            <li>                                                 <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Bing_AutoSuggest.svg" alt="" />Bing – Automatikus kiegészítés</a>
+                                                            <li>
+                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Bing_AutoSuggest.svg" alt="" />Bing – Automatikus kiegészítés</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Bing_Custom_Search.svg" alt="" /><span>Bing – Egyéni keresés</a>
@@ -2852,7 +2845,7 @@ ms.lasthandoff: 10/27/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning-szolgáltatások</h3>
+                                                    <h3>Machine Learning services</h3>
                                                     <p>Nagy teljesítményű felhőalapú prediktív elemzőeszköz a megelőző karbantartáshoz</p>
                                                 </div>
                                             </div>
@@ -3423,7 +3416,7 @@ ms.lasthandoff: 10/27/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure szabályzat</h3>
+                                                    <h3>Azure Policy</h3>
                                                     <p>Szabályzatdefiníciók létrehozása, hozzárendelése és kezelése </p>
                                                 </div>
                                             </div>
@@ -3839,7 +3832,7 @@ ms.lasthandoff: 10/27/2017
                                                     <a href="/nodejs/azure/node-sdk-azure-install">A Node.js-hez készült Azure-kódtárak beszerzése</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/nodejs/azure/?view=azure-node-2.0.0">Első lépések</a>
+                                                    <a href="/nodejs/azure/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/nodejs/api/overview/azure">API-referencia</a>
