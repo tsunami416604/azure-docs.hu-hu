@@ -35,9 +35,9 @@
 ### [Office 365-bérlő csatolása](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [Előfizetések fizetése számla alapján](billing-how-to-pay-by-invoice.md)
 ## Hibaelhárítás
-### [Regisztrálással kapcsolatos problémák](billing-troubleshoot-azure-sign-up-issues.md)
-### [Elutasított bankkártya](billing-credit-card-fails-during-azure-sign-up.md)
-### [Bejelentkezéssel kapcsolatos problémák](billing-cannot-login-subscription.md)
+### [Regisztrálással kapcsolatos problémák](https://support.microsoft.com/en-us/help/4042959)
+### [Elutasított bankkártya](https://support.microsoft.com/en-us/help/4042960)
+### [Bejelentkezéssel kapcsolatos problémák](https://support.microsoft.com/en-us/help/4042961)
 ### [Nem található előfizetés](billing-no-subscriptions-found.md)
 ### [Vállalati költségek nézet letiltva](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
