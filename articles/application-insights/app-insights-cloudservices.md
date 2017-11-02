@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: mbullwin
+ms.openlocfilehash: 9e27ffe72986406031ba6cf9b1153090f6ff1113
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 692cd9e3113589142a7df84da88215eabe8f10fd
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure Cloud Servicesben
 Az [Application Insightsszal][start]monitorozható a [Microsoft Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állása, teljesítménye, hibái és használata az Application Insights SDK-iból származó adatok és a felhőszolgáltatások [Azure Diagnostics](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)-adatainak kombinálása révén. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -105,7 +104,7 @@ Ezzel a beállítással megnyílik a lehetőség, hogy egyéni üzleti telemetri
 
 A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes felhőalkalmazás-projektekhez.
 
-1. **Webes szerepkörök**: Kattintson jobb gombbal a projektre, és válassza a **Configure Application Insights** (Application Insights konfigurálása) vagy a **Add > Application Insights telemetry** (Hozzáadás > Application Insights Telemetria) lehetőséget.
+1. **Webes szerepkörök**: Kattintson jobb gombbal a projektre, és válassza a **Configure Application Insights** (Application Insights konfigurálása) vagy a **Add &gt; Application Insights telemetry** (Hozzáadás &gt; Application Insights Telemetria) lehetőséget.
 
 2. **Feldolgozói szerepkörök**: 
  * Kattintson a jobb gombbal a projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
@@ -252,4 +251,3 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? Az Azure Cloud Servi
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md 
-

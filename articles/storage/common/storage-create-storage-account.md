@@ -15,11 +15,11 @@ ms.topic: get-started-article
 f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: db878f257f64ccc573a220c675cd373539dd5b17
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: c9630e575de15b404bd91cbeefc60d698c5da667
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Tudnivalók az Azure Storage-fiókokról
 
@@ -79,7 +79,7 @@ Emellett konfigurálhat egy egyéni tartománynevet a tárfiókkal való haszná
 
 5. Válassza ki a tárfiók típusát: **Általános célú** vagy **Blob Storage-fiók**. Az **Általános célú** típus az alapértelmezett.
    
-    Ha az **Általános célú** lehetőséget választotta, adja meg a teljesítményszintet: **Standard** vagy **Prémium**. Az alapértelmezett beállítás a **Standard**. A standard és a prémium szintű tárfiókokkal kapcsolatos további információ: [A Microsoft Azure Storage bemutatása](storage-introduction.md) és [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](storage-premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
+    Ha az **Általános célú** lehetőséget választotta, adja meg a teljesítményszintet: **Standard** vagy **Prémium**. Az alapértelmezett beállítás a **Standard**. A standard és a prémium szintű tárfiókokkal kapcsolatos további információ: [A Microsoft Azure Storage bemutatása](storage-introduction.md) és [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../../virtual-machines/windows/premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
    
     Ha a **Blob Storage** volt kiválasztva, adja meg a hozzáférési szintet: **gyakran használt adatok** vagy **ritkán használt adatok**. Az alapértelmezett réteg a **gyakran használt adatok**. További részletek: [Azure Blob Storage: Cool and Hot tiers](../blobs/storage-blob-storage-tiers.md) (Azure Blob Storage: „ritkán használt adatok” és „gyakran használt adatok” hozzáférési szintek).
 6. Válassza ki a tárfiók replikációs beállítását: **LRS**, **GRS**, **RA-GRS** vagy **ZRS**. Az alapértelmezett beállítás az **RA-GRS**. Az Azure Storage replikálási beállításaival kapcsolatos további részletek: [Azure Storage replication](storage-redundancy.md) (Az Azure Storage replikációja).

@@ -11,14 +11,12 @@ ms.devlang: azure-cli
 ms.topic: hero-article
 ms.date: 06/13/2017
 ms.custom: mvc
+ms.openlocfilehash: 0da8e52ae568e1e471cb5556cfde063bdd94911c
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 3d66efa6935150c665a3f568e60c35ddbd70e8be
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/30/2017
 ---
-
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával
 Ez a rövid útmutató bemutatja, hogyan hozhat létre öt perc alatt egy Azure-adatbázist MySQL-kiszolgálóhoz az Azure CLI használatával az Azure-erőforráscsoportban. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható.
 
@@ -190,4 +188,3 @@ az group delete --name myresourcegroup
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis tervezése az Azure CLI-vel](./tutorial-design-database-using-cli.md)
-

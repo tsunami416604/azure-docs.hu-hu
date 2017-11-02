@@ -3,7 +3,7 @@ title: "SharePoint-hely megfigyelése az Application Insights segítségével"
 description: "Új alkalmazás figyelésének megkezdése új kialakítási kulccsal"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/24/2016
-ms.author: bwren
-ms.openlocfilehash: a3b37674469a131016f46af590e1eee3ba4cdc73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 9c07ba125e0f9eae2b8f94661abf6dc1efc0cdad
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
 Az Azure Application Insights figyeli alkalmazásai rendelkezésre állását, teljesítményét és használatát. Ebből a cikkből megismerheti, hogyan állíthatja be egy SharePoint-helyhez.

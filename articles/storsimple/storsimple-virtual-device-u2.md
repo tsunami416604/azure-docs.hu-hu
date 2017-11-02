@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29f33d01cc6b640a566dc371f4b9c704978da091
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>A StorSimple virtuális eszköz üzembe helyezése és kezelése az Azure-ban
 ## <a name="overview"></a>Áttekintés
@@ -33,7 +33,7 @@ A StorSimple virtuális eszköz két modellben érhető el: a hagyományos 8010-
 | **Azure virtuális gép** |Standard_A3 (4 mag, 7 GB memória) |Standard_DS3 (4 mag, 14 GB memória) |
 | **Verziók kompatibilitása** |A 2. frissítés előzetes verzióját vagy újabb verziókat futtató verziók |A 2. frissítést vagy újabb verziókat futtató verziók |
 | **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot és a DS3 csomagú Azure-beli virtuális gépeket támogató összes Azure-régió<br></br> [Ebben a listában](https://azure.microsoft.com/en-us/regions/services) ellenőrizheti, hogy a *Virtuális gépek &gt; DS-sorozat* és a *Storage &gt; Disk Storage* termékek egyaránt elérhetők-e az adott régióban. |
-| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../storage/common/storage-premium-storage.md) |
+| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../virtual-machines/windows/premium-storage.md) |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek, kis késés, nagyobb teljesítményű számítási feladatok <br></br>Másodlagos vészhelyreállítási eszköz |
 
 <sup>1</sup>*Korábbi nevén az 1100-as*.
@@ -82,7 +82,7 @@ A virtuális eszköz kiépítése előtt a következő előkészületekre lesz s
 Hajtsa végre a következő frissítéseket az Azure StorSimple eszközön a virtuális eszköz létrehozása előtt:
 
 * Vegyen fel [hozzáférés-vezérlési rekordokat](storsimple-manage-acrs.md) azokon a gépekhez, amelyek a virtuális eszköz gazdakiszolgálói lesznek.
-* A virtuális eszközével megegyező régióban lévő [tárfiókot](storsimple-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A virtuális eszközzel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók](../storage/common/storage-create-storage-account.md), illetve a [Premium Storage-fiók ](../storage/common/storage-premium-storage.md) létrehozásáról
+* A virtuális eszközével megegyező régióban lévő [tárfiókot](storsimple-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A virtuális eszközzel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók](../storage/common/storage-create-storage-account.md), illetve a [Premium Storage-fiók ](../virtual-machines/windows/premium-storage.md) létrehozásáról
 * A virtuális eszköz létrehozásához ne használja ugyanazt a tárfiókot, amelyet az adataihoz is használ. Ugyanazon tárfiók használata esetén a teljesítmény gyenge lehet.
 
 Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:
