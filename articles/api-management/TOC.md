@@ -50,6 +50,7 @@
 ### [Konfigurálás a Git használatával](api-management-configuration-repository-git.md)
 ### [Megfigyelés az Azure Monitor használatával](api-management-howto-use-azure-monitor.md)
 ### [Szerepköralapú hozzáférés-vezérlés alkalmazása](api-management-role-based-access-control.md)
+### [Felügyeltszolgáltatás-identitás használata](api-management-howto-use-managed-service-identity.md)
 ### Integrálás a Service Fabric platformmal
 #### [Áttekintés](../service-fabric/service-fabric-api-management-overview.md)
 #### [Első lépések](../service-fabric/service-fabric-api-management-quick-start.md)
