@@ -3,7 +3,7 @@ title: "Csoportkezelés az Azure Active Directoryban | Microsoft Docs"
 description: "Csoportok létrehozása és kezelése az Azure Active Directoryban az Azure-felhasználók kezeléséhez."
 services: active-directory
 documentationcenter: 
-author: curtand
+author: LizCasey
 manager: femila
 editor: 
 ms.assetid: d1f5451c-3807-423c-8bac-2822d27b893f
@@ -17,11 +17,11 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: a29bc68e966a3706af557af0c626d369d04149aa
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 33483f0db5fed9606fd531d03a6f7ddd2332fc6d
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="managing-groups-in-azure-active-directory"></a>Csoportkezelés az Azure Active Directoryban
 > [!div class="op_single_selector"]
