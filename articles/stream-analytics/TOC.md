@@ -24,6 +24,7 @@
 ### [Referenciaadatok használata](stream-analytics-use-reference-data.md)
 ### [Tesztlekérdezések](stream-analytics-test-query.md)
 ### [Felhasználói JavaScript-függvények integrálása](stream-analytics-javascript-user-defined-functions.md)
+### [Felhasználói JavaScript UDA-k integrálása](stream-analytics-javascript-user-defined-aggregates.md)
 ### [A REST API és a Machine Learning integrálása](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [Kimenetek létrehozása](stream-analytics-define-outputs.md)
 ### [Kimenet a Data Lake Store-ba](stream-analytics-data-lake-output.md)

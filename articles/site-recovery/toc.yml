@@ -9,7 +9,7 @@
   items:
     - name: Azure-beli virtuális gép replikálása másodlagos régióba
       href: azure-to-azure-quickstart.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Azure-beli virtuális gépek
       items:
@@ -59,6 +59,8 @@
       href: site-recovery-support-matrix-to-sec-site.md
     - name: Számítási feladatok vészhelyreállítása
       href: site-recovery-workload.md
+    - name: Migrálás az Azure Site Recoveryvel
+      href: site-recovery-migrate-to-azure.md
     - name: Azure-ról Azure-ra hálózatkezelése (előnézet)
       href: site-recovery-azure-to-azure-networking-guidance.md
     - name: Virtuális gépek kapcsolatai az Azure-ba történő feladatátadás után
@@ -104,9 +106,9 @@
         - name: Deployment Planner eszköz a VMware Azure-ba történő replikálásához
           href: site-recovery-deployment-planner.md
         - name: Kapacitás megtervezése a Hyper-V Azure-ba történő replikálásához
-          href: site-recovery-capacity-planning-for-hyper-v-replication.md
-        - name: Capacity Planner eszköz a Hyper-V Azure-ba történő replikálásához
           href: site-recovery-capacity-planner.md
+        - name: Capacity Planner eszköz a Hyper-V Azure-ba történő replikálásához
+          href: site-recovery-capacity-planning-for-hyper-v-replication.md
         - name: Folyamatkiszolgálók horizontális felskálázása VMware-replikációhoz
           href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
         - name: Teljesítményskálázási tesztek a Hyper-V helyszíni helyek közötti replikációjához
@@ -181,6 +183,8 @@
           href: site-recovery-vmm-to-vmm-powershell-resource-manager.md
     - name: Migrate (Áttelepítés)
       items:
+        - name: Azure-beli virtuális gépek migrálása másik Azure-régióba
+          href: site-recovery-migrate-azure-to-azure.md
         - name: Migrált gépek replikálása másik Azure-régióba
           href: site-recovery-azure-to-azure-after-migration.md
     - name: Számítási feladatok

@@ -1,20 +1,20 @@
 <!--author=SharS last changed: 1/7/2016-->
 
-#### <a name="to-add-a-volume-container"></a>To add a volume container
-1. On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.
-2. Click **Add** at the bottom of the page. In the **Create volume container** dialog box, do the following:
+#### <a name="to-add-a-volume-container"></a>A kötettároló hozzáadása
+1. Az a **eszközök** lapon válassza ki az eszközt, kattintson rá duplán, és kattintson a **kötettárolók** fülre.
+2. Kattintson a **Hozzáadás** az oldal alján. Az a **kötettároló létrehozása** párbeszédpanelen tegye a következőket:
    
-   1. Supply a unique **Name** for your volume container. This name can contain a maximum of 32 characters.
-   2. Select a **Storage Account** to be associated with this volume container. You can choose from an existing storage account within the same subscription or select **Add more** to select a storage account from another subscription. You can also choose the storage account that was first generated when the service was created.
-   3. Specify bandwidth as **Unlimited** if you want to consume all available bandwidth, or **Custom** to employ bandwidth controls. For a custom bandwidth, supply a value between 1 and 1000 Mbps. To allocate bandwidth based on a schedule, you can **Select a bandwidth template**.
-   4. We recommend that you keep **Enable Cloud Storage Encryption** selected to encrypt the data that is going to the cloud. Disable encryption only if you are employing other means to encrypt your data. You cannot modify the encryption setting once the volume container has been created.
-   5. Provide a **Cloud Storage Encryption Key** that contains between 8 and 32 characters. The device uses this key to access the encrypted data. In the **Confirm Cloud Storage Encryption Key** field, enter the cloud storage encryption key again to confirm it. 
-   6. Click the arrow to proceed to the next page.
+   1. Adjon egy egyedi **neve** a kötettároló. Ez a név tartalmazhat egy legfeljebb 32 karakter hosszú lehet.
+   2. Válassza ki a **Tárfiók** ehhez a kötettárolóhoz társítandó. Választhat belül az azonos előfizetés, vagy válasszon egy meglévő tárfiók **további hozzáadása** jelölje be a tárfiók egy másik előfizetésből. A tárfiók először lett létrehozva, a szolgáltatás létrehozásakor is beállíthatja.
+   3. Adja meg, mint a sávszélesség **korlátlan** használja a rendelkezésre álló sávszélességet, ha vagy **egyéni** el a sávszélesség szabályozását. Egy egyéni sávszélesség adjon meg egy 1 és 1000 MB/s közötti értéket. A sávszélesség ütemezett lefoglalni is **sávszélességsablon kiválasztása**.
+   4. Azt javasoljuk, hogy ne **felhőalapú tárolás titkosításának engedélyezése** titkosítja az adatokat, amelyek a felhőben lesz kiválasztva. Tiltsa le a titkosítást, csak akkor, ha meg vannak alkalmazó más módon titkosítja az adatokat. A titkosítási beállítás a kötettároló létrehozása után nem módosítható.
+   5. Adjon meg egy **felhőalapú tárolás titkosítási kulcsát** tartalmazó 8 – 32 karakter. Az eszköz kulccsal a titkosított adatok eléréséhez. Az a **megerősítése felhőalapú tárolás titkosítási kulcsát** mezőbe írja be újra a megerősítéshez a felhőalapú tárolás titkosítási kulcsát. 
+   6. Kattintson a nyílra a következő lapra lép.
       
-      ![Create volume container with bandwidth template 1](./media/storsimple-add-volume-container/HCS_CreateVCBT1-include.png) 
-3. If you specified **Select a bandwidth template**, choose from the dropdown list of existing bandwidth templates. Review the schedule settings and click the check icon ![check icon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png).
+      ![A sávszélesség 1 sablonnal kötettároló létrehozása](./media/storsimple-add-volume-container/HCS_CreateVCBT1-include.png) 
+3. Ha a megadott **sávszélességsablon kiválasztása**, válassza ki a legördülő listából a meglévő sávszélesség-sablonok. Tekintse át az ütemezési beállításokat, és kattintson a pipa ikonra ![pipa ikon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png).
    
-    ![Create volume container with bandwidth template 2](./media/storsimple-add-volume-container/HCS_CreateVCBT2-include.png) 
+    ![Sávszélesség-sablonhoz 2 kötettároló létrehozása](./media/storsimple-add-volume-container/HCS_CreateVCBT2-include.png) 
 
-The volume container will be saved and the newly created volume container will be listed on the **Volume container** page.
+A kötettároló a rendszer menti, és az újonnan létrehozott kötettároló megjelenik a a **kötettároló** lap.
 

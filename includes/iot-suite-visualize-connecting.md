@@ -1,40 +1,40 @@
-## <a name="view-device-telemetry-in-the-dashboard"></a>Eszköztelemetria megtekintése az irányítópulton
-A távoli figyelési megoldás irányítópultján megtekintheti az eszközök által az IoT Hubra küldött telemetriát.
+## <a name="view-device-telemetry"></a>Eszköztelemetria megtekintése
 
-1. A böngészőben térjen vissza a távoli figyelési megoldás irányítópultjára, és kattintson a bal oldali panelen az **Eszközök** elemre az **Eszközlista** megnyitásához.
-2. Az **Eszközlistában** az eszköznek **Fut** állapotúnak kell lennie. Ha ez nem így lenne, kattintson az **Eszköz engedélyezése** parancsra az **Eszköz részletei** panelen.
-   
-    ![Eszközállapot megtekintése][18]
-3. Kattintson az **Irányítópult** elemre, hogy visszatérjen az irányítópulthoz, és válassza ki az eszközt a **Megtekintendő eszköz** legördülő listában a telemetriájának megtekintéséhez. A mintaalkalmazás telemetriája 50 egység belső hőmérséklet esetén, 55 egység külső hőmérséklet esetén és 50 egység pára esetén.
-   
-    ![Eszköztelemetria megtekintése][img-telemetry]
+Az eszközről küldött telemetriai adatok megtekintheti a **eszközök** lap a megoldásban.
 
-## <a name="invoke-a-method-on-your-device"></a>Metódus meghívása az eszközön
-A távoli figyelési megoldás irányítópultján metódusokat hívhat meg az eszközein az IoT Hubon használatával. A távoli figyelési megoldásban például egy metódust hívhat meg egy eszköz újraindításához.
+1. Válassza ki az eszközt, az eszközök listájában kiépítve a **eszközök** lap. A panel az eszközt, beleértve a telemetriát rajzot információit jeleníti meg:
 
-1. A távoli figyelési megoldás irányítópultján kattintson a bal oldali panelen az **Eszközök** elemre az **Eszközlista** megnyitásához.
-2. Kattintson az **Eszközlistában** lévő eszköz **Eszközazonosító** elemére.
-3. Az **Eszköz részletei** panelen kattintson a **Metódusok** elemre.
-   
-    ![Eszközmetódusok][13]
-4. A **Metódus** legördülő listában válassza az **InitiateFirmwareUpdate** elemet, majd a **FWPACKAGEURI** területen írjon be egy nem létező URL-címet. Kattintson a **Metódus meghívása** gombra a metódus az eszközön történő elindításához.
-   
-    ![Eszközmetódus meghívása][14]
-   
+    ![Tekintse meg az eszköz részletei](media/iot-suite-visualize-connecting/devicesdetail.png)
 
-5. Az eszközkódot futtató konzolon egy üzenetet lát, amikor az eszköz kezeli a metódust. A metódus eredményei az előzményekhez lesznek adva a megoldásportálon:
+1. Válasszon **nyomás** telemetriai megjelenítésének módosítása:
 
-    ![Metódus előzményeinek megtekintése][img-method-history]
+    ![Nézet nyomás telemetriai adat](media/iot-suite-visualize-connecting/devicespressure.png)
+
+1. Az eszköz diagnosztikai adatainak megtekintésére, görgessen le a **diagnosztika**:
+
+    ![Nézet eszköz diagnosztika](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
+
+## <a name="act-on-your-device"></a>Az eszközön működésre
+
+Az eszközök metódusok meghívása, használja a **eszközök** lap a távoli felügyeleti megoldás. Például a távoli felügyeleti megoldás a **hűtő** eszközök valósítja meg a **újraindítás** metódust.
+
+1. Válasszon **eszközök** lehetőségre, és navigáljon a **eszközök** lap a megoldásban.
+
+1. Válassza ki az eszközt, az eszközök listájában kiépítve a **eszközök** lap:
+
+    ![Válassza ki a fizikai eszköz](media/iot-suite-visualize-connecting/devicesselect.png)
+
+1. A metódusok hívása az eszközön listájának megjelenítéséhez kattintson **ütemezés**. Ütemezés módszerét több eszközön futtassa, jelölje ki több eszközre a listában. A **ütemezés** panelen láthatók metódus általános a kiválasztott eszközök.
+
+1. Válasszon **újraindítás**, a feladat neve **RebootPhysicalChiller**, és válassza a **alkalmaz**:
+
+    ![Az Újraindítás ütemezése](media/iot-suite-visualize-connecting/deviceschedule.png)
+
+1. Egy üzenet jelenik meg a konzolon, a kód fut, amikor az eszköz a metódust.
+
+> [!NOTE]
+> A megoldásban a feladat állapotának nyomon követése, válassza a **nézet**.
 
 ## <a name="next-steps"></a>Következő lépések
-Az [előre konfigurált megoldások testreszabását][lnk-customize] ismertető cikkben további módokat találhat a minta kibővítésére. A lehetséges bővítmények közé tartozik a valódi érzékelők használata és további parancsok implementálása.
 
-Az [engedélyekről többet is megtudhat az azureiotsuite.com webhelyen][lnk-permissions].
-
-[13]: ./media/iot-suite-visualize-connecting/suite4.png
-[14]: ./media/iot-suite-visualize-connecting/suite7-1.png
-[18]: ./media/iot-suite-visualize-connecting/suite10.png
-[img-telemetry]: ./media/iot-suite-visualize-connecting/telemetry.png
-[img-method-history]: ./media/iot-suite-visualize-connecting/history.png
-[lnk-customize]: ../articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md
+A cikk [testre szabhatja a távoli felügyeleti előkonfigurált megoldás](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) testre szabhatja az előkonfigurált megoldás néhány módját ismerteti.

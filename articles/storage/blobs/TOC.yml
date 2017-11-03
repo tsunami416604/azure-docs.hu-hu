@@ -18,9 +18,11 @@
       href: storage-quickstart-blobs-cli.md
     - name: Blobok használata – .NET
       href: storage-quickstart-blobs-dotnet.md
+    - name: Blobok használata – Java
+      href: storage-quickstart-blobs-java.md
     - name: Blobok használata – Python
       href: storage-quickstart-blobs-python.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Rendszerképek feltöltése és feldolgozása
       items:

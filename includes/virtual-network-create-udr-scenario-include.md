@@ -1,14 +1,14 @@
-## <a name="scenario"></a>Scenario
-To better illustrate how to create UDRs, this document will use the scenario below.
+## <a name="scenario"></a>Forgatókönyv
+Jobb mutatja be udr-EK létrehozása, ez a dokumentum az alábbi forgatókönyvet fogja használni.
 
-![IMAGE DESCRIPTION](./media/virtual-network-create-udr-scenario-include/figure1.png)
+![KÉPLEÍRÁS](./media/virtual-network-create-udr-scenario-include/figure1.png)
 
-In this scenario you will create one UDR for the *Front end subnet* and another UDR for the *Back end subnet* , as described below: 
+Ebben a forgatókönyvben a egy UDR hoz létre a *első záró alhálózat* és az egy másik UDR a *vissza záró alhálózat* , az alábbiak szerint: 
 
-* **UDR-FrontEnd**. The front end UDR will be applied to the *FrontEnd* subnet, and contain one route:    
-  * **RouteToBackend**. This route will send all traffic to the back end subnet to the **FW1** virtual machine.
-* **UDR-BackEnd**. The back end UDR will be applied to the *BackEnd* subnet, and contain one route:    
-  * **RouteToFrontend**. This route will send all traffic to the front end subnet to the **FW1** virtual machine.
+* **UDR-előtérbeli**. Az előtér UDR alkalmazandó a *előtér* alhálózati, egy útvonalat, és:    
+  * **RouteToBackend**. Ez az útvonal által küldött összes forgalom a háttérrendszer alhálózat a **FW1** virtuális gépet.
+* **UDR-háttérrendszer**. A háttérben UDR alkalmazandó a *háttér* alhálózati, egy útvonalat, és:    
+  * **RouteToFrontend**. Ez az útvonal által küldött összes forgalom az előtér-alhálózat a **FW1** virtuális gépet.
 
-The combination of these routes will ensure that all traffic destined from one subnet to another will be routed to the **FW1** virtual machine, which is being used as a virtual appliance. You also need to turn on IP forwarding for that VM, to ensure it can receive traffic destined to other VMs.
+Ezeket az útvonalakat kombinációja biztosítja, hogy irányuló teljes forgalomra egy alhálózatból másik továbbítja a **FW1** virtuális gépet, mely a virtuális készülék használatos. Szükség kapcsolja be ezt a virtuális Gépet, annak érdekében, hogy más virtuális gépek irányuló forgalom fogadja az IP-továbbítást.
 

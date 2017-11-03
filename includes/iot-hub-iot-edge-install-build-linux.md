@@ -1,35 +1,35 @@
-## <a name="install-the-prerequisites"></a>Install the prerequisites
+## <a name="install-the-prerequisites"></a>Az előfeltételek telepítése
 
-The steps in this tutorial assume you are running Ubuntu Linux.
+A jelen oktatóanyagban szereplő lépések azt feltételezik, Ubuntu Linux futtatja.
 
-Open a shell and run the following commands to install the prerequisite packages:
+Az előfeltételként szükséges csomagok telepítéséhez nyisson meg egy kezelőfelületet, és futtassa a következő parancsokat:
 
 ```bash
 sudo apt-get update
-sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
+sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake pkg-config libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
 ```
 
-In the shell, run the following command to clone the Azure IoT Edge GitHub repository to your local machine:
+A rendszerhéj, az Azure IoT peremhálózati GitHub-tárházban, a helyi számítógép klónozása a következő parancsot:
 
 ```bash
 git clone https://github.com/Azure/iot-edge.git
 ```
 
-## <a name="how-to-build-the-sample"></a>How to build the sample
+## <a name="how-to-build-the-sample"></a>A minta létrehozása
 
-You can now build the IoT Edge runtime and samples on your local machine:
+Most már lefordíthatja az IoT él futásidejű és minták a helyi számítógépen:
 
-1. Open a shell.
+1. Nyisson meg egy rendszerhéjat.
 
-1. Navigate to the root folder in your local copy of the **iot-edge** repository.
+1. Az **iot-edge** adattár helyi példányában lépjen a gyökérmappába.
 
-1. Run the build script as follows:
+1. A build parancsfájl futtatása a következőképpen:
 
     ```sh
     tools/build.sh --disable-native-remote-modules
     ```
 
-This script uses the **cmake** utility to create a folder called **build** in the root folder of your local copy of the **iot-edge** repository and generate a makefile. The script then builds the solution, skipping unit tests and end to end tests. If you want to build and run the unit tests, add the `--run-unittests` parameter. If you want to build and run the end to end tests, add the `--run-e2e-tests`.
+Ez a szkript a **cmake** segédprogramot használja a **build** nevű mappa létrehozásához az **iot-edge** adattár helyi példányának gyökérmappájában, valamint a makefile előállításához. Ezt követően a szkript felépíti a megoldást, és kihagyja az egységteszteket és a teljes körű teszteket. Build a egység tesztek futtatása, és adja hozzá szeretné a `--run-unittests` paraméter. Ha szeretne build és a végpontok közötti tesztek, vegye fel a `--run-e2e-tests`.
 
 > [!NOTE]
-> Every time you run the **build.sh** script, it deletes and then recreates the **build** folder in the root folder of your local copy of the **iot-edge** repository.
+> A **build.sh** szkript minden futtatásakor törli, majd újra létrehozza a **build** mappát az **iot-edge** adattár helyi példányának gyökérmappájában.

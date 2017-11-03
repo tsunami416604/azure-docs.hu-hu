@@ -31,7 +31,7 @@
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
 - name: Projekt végrehajtása
   href: project-execution.md
-- name: oktatóanyagokat
+- name: Példák
   href: walkthroughs.md
   items:
     - name: Azure Machine Learning
@@ -60,6 +60,12 @@
       href: walkthroughs-sql-server.md
     - name: T-SQL és Python az SQL DW-vel
       href: walkthroughs-sql-data-warehouse.md
+- name: Képzés
+  items:
+    - name: TDSP adatszakértők számára
+      href: team-data-science-process-for-data-scientists.md
+    - name: TDSP fejlesztők és üzemeltetők számára
+      href: team-data-science-process-for-devops.md
 - name: Útmutató
   items:
     - name: TSDP használata az Azure ML-ben

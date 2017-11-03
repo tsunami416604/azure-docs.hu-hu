@@ -112,24 +112,23 @@
 #### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [Tanúsítványok használata](active-directory-reporting-api-with-certificates.md)
 
-## [Jelszavak kezelése](active-directory-passwords-overview.md)
+## Jelszavak kezelése
+### [Jelszavak áttekintése](active-directory-passwords-overview.md)
 ### Felhasználói dokumentumok
 #### [Jelszó visszaállítása vagy módosítása](active-directory-passwords-update-your-own-password.md)
 #### [Ajánlott eljárások a jelszavakhoz](active-directory-secure-passwords.md)
 #### [Regisztráció önkiszolgáló jelszó-visszaállításra](active-directory-passwords-reset-register.md)
-### [SSPR licenc](active-directory-passwords-licensing.md)
-### [Az SSPR üzembe helyezése](active-directory-passwords-best-practices.md)
+### [Az SSPR működése](active-directory-passwords-how-it-works.md)
+### [SSPR üzembehelyezési útmutató](active-directory-passwords-best-practices.md)
+### [SSPR-házirendek ](active-directory-passwords-policy.md)
+### [SSPR-testreszabás](active-directory-passwords-customize.md)
+### [SSPR-adatkövetelmények](active-directory-passwords-data.md)
+### [SSPR-jelentéskészítés](active-directory-passwords-reporting.md)
 ### Informatikai rendszergazdák: Új jelszavak kérése
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 #### [klasszikus Azure portál](active-directory-create-users-reset-password.md)
-### [Az SSPR-rel kapcsolatos tudnivalók ](active-directory-passwords-policy.md)
-### [Új jelszó kérésével kapcsolatos tudnivalók](active-directory-passwords-how-it-works.md)
-### [Az SSPR testreszabása](active-directory-passwords-customize.md)
-### [Az SSPR által felhasznált adatok](active-directory-passwords-data.md)
-### [Jelentéskészítés az SSPR-ben](active-directory-passwords-reporting.md)
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [SSPR licenc](active-directory-passwords-licensing.md)
 ### [Jelszóvisszaíró](active-directory-passwords-writeback.md)
-### [Jelszókivonat szinkronizálása](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
 ### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)
 ### [Gyakori kérdések](active-directory-passwords-faq.md)
 
@@ -313,8 +312,6 @@
 ##### [Kijavítás](active-directory-conditional-access-device-remediation.md)
 #### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
-#### [Klasszikus portál](active-directory-conditional-access.md)
-##### [Első lépések](active-directory-conditional-access-azuread-connected-apps.md)
 
 ### Windows Hello
 #### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)

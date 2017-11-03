@@ -1,3 +1,3 @@
-Name-value collection of custom properties. This collection is used to extend standard telemetry with the custom dimensions. Examples are deployment slot that produced telemetry or telemetry-item specific property like order number. 
+Egyéni tulajdonságok gyűjteménye név-érték. Ez a gyűjtemény az egyéni dimenziókkal szabványos telemetriai kiterjeszteni szolgál. Többek között az üzembe helyezési pont előállított telemetriai vagy a telemetria-cikk tulajdonság például sorszám. 
 
-Max key length: 150 Max value length: 8192
+Maximális kulcshossz: 150 maximális hossza: 8192
