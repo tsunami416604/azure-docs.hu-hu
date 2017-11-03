@@ -1,22 +1,10 @@
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszközalkalmazás. Az alábbi lépések bemutatják, hogyan hajthatja végre ezt a feladatot az Azure Portal segítségével.
 
-1. Jelentkezzen be az [Azure Portalra][lnk-portal].
-1. Az ugrósávon kattintson az **Új** > **Eszközök internetes hálózata** > **IoT Hub** elemre.
-   
-    ![Azure Portal – ugrósáv][1]
-1. Az **IoT Hub** ablakban válassza ki az IoT Hub konfigurációját.
-   
-    ![IoT Hub ablak][2]
-   
-   1. A **Név** mezőben adja meg az IoT Hub nevét. Ha a **Név** érvényes és elérhető, egy zöld pipa jelenik meg a **Név** mezőben.
-    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
-   
-   1. Válasszon ki egy [tarifacsomagot és méretet][lnk-pricing]. Az oktatóanyag teljesítéséhez nem kell egy konkrét csomagot kiválasztani. Az oktatóanyaghoz használja az ingyenes F1 csomagot.
-   1. Az **Erőforráscsoport** mezőben hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt. További információk: [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez][lnk-resource-groups].
-   1. A **Hely** mezőben válasszon ki egy helyet, ahol az IoT Hubot tárolni szeretné. A jelen oktatóanyag esetében válassza az Önhöz legközelebb eső helyet.
-1. Az IoT Hub konfigurációs beállításainak kiválasztása után kattintson a **Létrehozás** gombra.  Az IoT Hub létrehozása eltarthat néhány percig. A folyamat állapotát a kezdőpulton vagy az értesítési panelen ellenőrizheti.
-   
+[!INCLUDE [iot-hub-create-hub](iot-hub-create-hub.md)]
+
+Most, hogy létrehozta az IoT-központ, keresse meg az eszközök és alkalmazások számára az IoT hub kapcsolódni a fontos információkról. 
+
 1. Az IoT Hub sikeres létrehozása után kattintson az Azure Portalon az IoT Hub új csempéjére a hozzá tartozó Tulajdonságok ablak megnyitásához. Jegyezze fel az **állomásnevet**, majd kattintson a **Megosztott elérési házirendek** elemre.
    
     ![Új IoT Hub ablak][4]
@@ -25,13 +13,8 @@ Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszközalkalmaz�
     ![Megosztott elérési házirendek][5]
 
 <!-- Images. -->
-[1]: ./media/iot-hub-get-started-create-hub/create-iot-hub1.png
-[2]: ./media/iot-hub-get-started-create-hub/create-iot-hub2.png
 [4]: ./media/iot-hub-get-started-create-hub/create-iot-hub4.png
 [5]: ./media/iot-hub-get-started-create-hub/create-iot-hub5.png
 
 <!-- Links -->
-[lnk-resource-groups]: ../articles/azure-resource-manager/resource-group-portal.md
-[lnk-portal]: https://portal.azure.com/
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
