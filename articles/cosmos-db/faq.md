@@ -17,7 +17,7 @@ ms.date: 09/07/2017
 ms.author: mimig
 ms.openlocfilehash: e8ac4bef5af7a98857278b82304bb58f1ac6e342
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

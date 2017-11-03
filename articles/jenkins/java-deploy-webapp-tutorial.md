@@ -13,7 +13,7 @@ ms.author: routlaw
 ms.custom: Jenkins, devcenter
 ms.openlocfilehash: 3a2635ac968d843226f05dc51cf4a5f078235c11
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

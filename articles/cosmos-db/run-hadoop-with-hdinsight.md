@@ -17,7 +17,7 @@ ms.author: denlee
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 427864fc4e494c19fcda4cfd454a9923499f6337
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

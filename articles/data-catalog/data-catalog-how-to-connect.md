@@ -17,7 +17,7 @@ ms.date: 08/15/2017
 ms.author: maroche
 ms.openlocfilehash: fd687bb74a22b0483225c509171edaa67f1c49d4
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

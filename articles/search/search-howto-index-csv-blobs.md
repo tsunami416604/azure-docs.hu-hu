@@ -16,7 +16,7 @@ ms.date: 12/15/2016
 ms.author: eugenesh
 ms.openlocfilehash: af9da85c37211d2436c23cc05400031c661ef51e
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

@@ -16,7 +16,7 @@ ms.date: 04/22/2017
 ms.author: ccompy
 ms.openlocfilehash: fef9e7b280387934cb093f51b4c8aa134a3b87e7
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

@@ -17,7 +17,7 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 6ffcfcb7ed071a12b0b3495ad534fd00f6d6ad99
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

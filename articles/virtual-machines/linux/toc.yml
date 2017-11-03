@@ -13,7 +13,7 @@
       href: quick-create-portal.md
     - name: Virtuális gép létrehozása – Azure PowerShell
       href: quick-create-powershell.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Virtuális gépek létrehozása/kezelése
       href: tutorial-manage-vm.md
@@ -63,6 +63,27 @@
       href: regions-and-availability.md
     - name: Virtuálisgép-típusok és -méretek
       href: sizes.md
+      items:
+        - name: Általános célú
+          href: sizes-general.md
+          items:
+            - name: B sorozat – adatlöket-kezelés
+              href: b-series-burstable.md
+        - name: Számításra optimalizált
+          href: sizes-compute.md
+        - name: Memóriaoptimalizált
+          href: sizes-memory.md
+        - name: Tárolásra optimalizált
+          href: sizes-storage.md
+        - name: GPU-optimalizált
+          href: sizes-gpu.md
+          items:
+            - name: GPU-illesztők beállítása
+              href: n-series-driver-setup.md
+        - name: Nagy teljesítményű számítás
+          href: sizes-hpc.md
+        - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
+          href: sizes-general.md
     - name: Támogatott disztribúciók
       href: endorsed-distros.md
     - name: Karbantartás és frissítések

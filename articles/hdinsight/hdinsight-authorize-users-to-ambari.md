@@ -18,7 +18,7 @@ ms.date: 09/26/2017
 ms.author: maxluk
 ms.openlocfilehash: ad9aa6aee0a9f6407da6e9f45df71f8feb8b1500
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

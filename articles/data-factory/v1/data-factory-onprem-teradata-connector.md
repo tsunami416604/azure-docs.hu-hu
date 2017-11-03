@@ -17,7 +17,7 @@ ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d371604997d036aea6b4d4112bd124d127a2f3f1
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

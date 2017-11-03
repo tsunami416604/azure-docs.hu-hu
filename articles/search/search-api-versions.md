@@ -16,7 +16,7 @@ ms.date: 01/11/2017
 ms.author: brjohnst
 ms.openlocfilehash: a14131455ad94cbc4b729077568b12043401c08e
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

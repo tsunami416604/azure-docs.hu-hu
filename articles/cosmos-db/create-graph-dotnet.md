@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB .NET-alkalmazás létrehozása a Graph API-val | Microsoft Docs"
-description: "Egy .NET-kódmintát mutat be, amellyel csatlakozhat egy Cosmos DB-adatbázishoz, és lekérdezéseket hajthat végre."
+title: "A Graph API-jával Azure Cosmos DB .NET-keretrendszer vagy Core alkalmazás létrehozásához |} Microsoft Docs"
+description: "Megadja a .NET Framework/Core kódminta segítségével csatlakozhat és Azure Cosmos DB lekérdezése"
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -12,17 +12,16 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 07/28/2017
+ms.topic: quickstart
+ms.date: 10/06/2017
 ms.author: denlee
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: a973b81ea5b06c5826cc31c399aae9dec43f5b72
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/28/2017
-
+ms.openlocfilehash: 4c90ead99c513a56f8891b889e2c873952a33ec8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-alkalmazás létrehozása a Graph API-val
+# <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Az Azure Cosmos DB: Összeállíthat egy .NET-keretrendszer vagy Core alkalmazást, a Graph API-val
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
@@ -31,6 +30,8 @@ A bevezető bemutatja, hogyan hozhat létre az Azure Portal segítségével Azur
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+
+Ha már van telepítve a Visual Studio 2017, ügyeljen arra, hogy legfeljebb telepíthető [Visual Studio 2017 Update 3](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,6 +46,10 @@ Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ing
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
 Most pedig klónozunk egy Graph API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+
+Ez a minta-projekt .NET Core projekt formátumot használja, és van konfigurálva, amelyekre a következő keretek:
+ - netcoreapp2.0
+ - net461
 
 1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
 
@@ -103,35 +108,37 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs f�
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
 
-1. Nyissa meg az App.config fájlt a Visual Studio 2017-ben. 
+1. A Visual Studio 2017 nyissa meg a appsettings.json fájlt. 
 
 2. Az Azure Portalon az Azure Cosmos DB-fiók bal oldali navigációs sávján kattintson a **Kulcsok** elemre. 
 
     ![Elsődleges kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-dotnet/keys.png)
 
-3. Másolja az **URI** értéket a portálról, és adja meg az App.config fájl végpontkulcsának értékeként. Az értéket az előző képernyőképen látható Másolás gombbal másolhatja.
+3. Másolás a **URI** értékét a portálról, és tegye azt a appsettings.json a végpont-kulcsnak az értéke. Az értéket az előző képernyőképen látható Másolás gombbal másolhatja.
 
-    `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
+    `"endpoint": "https://FILLME.documents.azure.com:443/",`
 
 4. Másolja az **ELSŐDLEGES KULCS** értékét a portálról, és adja meg az App.config fájl AuthKey kulcsaként, majd mentse a módosításokat. 
 
-    `<add key="AuthKey" value="FILLME" />`
+    `"authkey": "FILLME"`
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
+Mielőtt futtatná az alkalmazást, javasoljuk, hogy frissíti a *Microsoft.Azure.Graphs* csomag a legújabb verzióra.
+
 1. A Visual Studióban kattintson a jobb gombbal a **GraphGetStarted** projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 
 
-2. A NuGet **Browse** (Tallózás) mezőjébe írja be *Microsoft.Azure.Graphs* kifejezést, és jelölje be az **Includes prerelease** (Előzetes verzió is) jelölőnégyzetet. 
+2. A NuGet Package Manager **frissítések** fülre, írja be *Microsoft.Azure.Graphs* , és ellenőrizze a **prerelease tartalmaz** mezőbe. 
 
-3. Az eredmények közül telepítse a **Microsoft.Azure.DocumentDB** kódtárat. Ezzel telepíti az Azure Cosmos DB gráfbővítmény kódtárcsomagja és annak összes függőségét.
+3. A találatokban frissítése a **Microsoft.Azure.Graphs** könyvtár a csomag legújabb verzióját. Ezzel telepíti az Azure Cosmos DB gráfbővítmény kódtárcsomagja és annak összes függőségét.
 
     Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
 
 4. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
-   A konzolablakban megjelennek a gráfhoz hozzáadandó csúcspontok és élek. Miután a parancsfájl futása befejeződött, nyomja meg kétszer az ENTER billentyűt a konzolablak bezárásához. 
+   A konzolablakban megjelennek a gráfhoz hozzáadandó csúcspontok és élek. Miután a parancsfájl futása befejeződött, nyomja meg kétszer az ENTER billentyűt a konzolablak bezárásához.
 
 ## <a name="browse-using-the-data-explorer"></a>Tallózás az Adatkezelővel
 
@@ -162,5 +169,4 @@ Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot l�
 
 > [!div class="nextstepaction"]
 > [Lekérdezés a Gremlin használatával](tutorial-query-graph.md)
-
 

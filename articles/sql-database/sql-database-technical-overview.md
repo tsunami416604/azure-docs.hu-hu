@@ -9,19 +9,18 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
-ms.custom: overview
+ms.custom: overview, mvc
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
-ms.workload: data-management
-ms.date: 06/30/2017
+ms.workload: Active
+ms.date: 09/20/2017
 ms.author: carlrab
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 54aa8c2f738ef92c211462498103d368e4cb4c5c
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/28/2017
-
+ms.openlocfilehash: f97a1e7977e28765985991ba9e38ed4618e00bda
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás? 
 
@@ -85,16 +84,20 @@ Az Azure szolgáltatói szerződésében [(SLA)](http://azure.microsoft.com/supp
 
 Az SQL Database-zel beépített intelligencia is jár, amely segít jelentősen mérsékelni az adatbázisok működtetésének és kezelésének költségét, ugyanakkor fokozni az alkalmazás teljesítményét és biztonságát. Az állandóan ügyfelek millióinak számítási feladatait futtató SQL Database hatalmas mennyiségű telemetriai adatot dolgoz fel, végig szem előtt tartva az ügyfelek adatainak teljes védelmét. A telemetriai adatokat szüntelenül különféle algoritmusok értékelik, hogy a szolgáltatás tanulhasson belőlük és idomulhasson az Ön alkalmazásához. Ezen elemzés alapján a szolgáltatás az adott számítási feladatnak megfelelő javaslatokat tesz a teljesítmény javítására. 
 
-### <a name="automatic-performance-tuning"></a>A teljesítmény automatikus finomhangolása
+### <a name="automatic-performance-monitoring-and-tuning"></a>Automatikus teljesítmény figyelése és beállítása
 
-Az SQL Database részletes betekintést nyújt a figyelést kívánó lekérdezésekbe. Az SQL Database megismeri az adatbázisaira jellemző mintázatokat, és segít az adatbázis-sémáit a számítási feladathoz igazítani. Az SQL Database az [SQL Database Advisor](sql-database-advisor.md) segítségével javaslatokat tesz a teljesítmény finomhangolására, amelyeket Ön felülvizsgálhat és alkalmazhat. Az adatbázisok folyamatos figyelése azonban nehéz, fárasztó feladat, különösen akkor, ha sok adatbázisról van szó. Nagyszámú adatbázis hatékony kezelése már az SQL Database és az Azure Portal által kínált valamennyi eszköz és jelentés birtokában is lehetetlennek bizonyulhat. Az adatbázis személyes figyelése és finomhangolása helyett érdemes megfontolni, hogy a figyelési és hangolási műveletek egy részét az SQL Database automatikus finomhangoló funkciójára bízza. Az SQL Database automatikusan alkalmazza a javasolt változásokat, de minden módosítást tesztel és ellenőriz, hogy a teljesítmény csak javulhasson. Az SQL Database ezáltal automatikusan, ellenőrzött és biztonságos módon alkalmazkodik a számítási feladathoz. Az automatikus finomhangolás azt jelenti, hogy ha az adatbázis egyes módosítások előtt és után gondosan mért teljesítményének összehasonlítása nem mutat javulást, akkor a módosító művelet visszavonásra kerül.
+Az SQL Database részletes betekintést nyújt a figyelést kívánó lekérdezésekbe. Az SQL Database megismeri az adatbázisaira jellemző mintázatokat, és segít az adatbázis-sémáit a számítási feladathoz igazítani. SQL Database is tartalmaz [teljesítményének hangolása javaslatok](sql-database-advisor.md), ahol megtekintheti hangolási műveleteket, és alkalmazza őket. 
+
+Az adatbázisok folyamatos figyelése azonban nehéz, fárasztó feladat, különösen akkor, ha sok adatbázisról van szó. [Intelligens Insights](sql-database-intelligent-insights.md) nem ez a feladat az Ön által automatikusan a léptékű SQL-adatbázis teljesítményének figyelése és az tájékoztatja a teljesítmény romlását problémák, azonosítja a problémát az okozza, és a teljesítmény fokozása biztosít javaslatok, amikor lehetséges.
+
+Nagyszámú adatbázis hatékony kezelése már az SQL Database és az Azure Portal által kínált valamennyi eszköz és jelentés birtokában is lehetetlennek bizonyulhat. Helyett figyelése, és az adatbázis manuálisan beállítása, amelyeket érdemes figyelembe venni delegálása néhány, a figyelést és SQL-adatbázishoz való műveletek hangolása [automatikus hangolása](sql-database-automatic-tuning.md). Az SQL Database automatikusan alkalmazza a javasolt változásokat, de minden módosítást tesztel és ellenőriz, hogy a teljesítmény csak javulhasson. Az SQL Database ezáltal automatikusan, ellenőrzött és biztonságos módon alkalmazkodik a számítási feladathoz. Az automatikus finomhangolás azt jelenti, hogy ha az adatbázis egyes módosítások előtt és után gondosan mért teljesítményének összehasonlítása nem mutat javulást, akkor a módosító művelet visszavonásra kerül.
 
 Jelenleg számos partnerünk, akik [több-bérlős SaaS-alkalmazásokat](sql-database-design-patterns-multi-tenancy-saas-applications.md) futtatnak SQL Database-en, az automatikus teljesítményhangolásra bízza az alkalmazása mindig stabil és kiszámítható működését. Ez a funkció nagy mértékben csökkenti számukra egy éjszaka közepén fellépő teljesítmény-visszaesés kockázatát. Ráadásul, mivel ügyfélkörük egy része szintén használ SQL Servert, az SQL Database által kínált azonos indexelési ajánlásokat alkalmazva nyújthatnak segítséget ezen ügyfeleknek.
 
-Az SQL Database két szempont alapján képes automatikus finomhangolást végezni:
+Két szempontot automatikus hangolási, amelyek [SQL-adatbázisban elérhető](sql-database-automatic-tuning.md):
 
-- **[Automatikus indexkezelés](sql-database-automatic-tuning.md#automatic-index-management)**: Azonosítja az adatbázishoz hozzáadandó és az abból eltávolítandó indexeket.
-- **[Automatikus terv-korrekció](sql-database-automatic-tuning.md#automatic-plan-choice-correction)**: Azonosítja a hibás terveket és javítja az SQL tervek teljesítmény-problémáit (hamarosan megjelenik, az SQL Server 2017-ben már elérhető).
+- **Az automatikus Indexkezelés**: azonosítja az indexek, amelyet hozzá kell adni az adatbázis és az indexek, el kell távolítani.
+- **Automatikus terv javítási**: problematikus tervek azonosítja, és kijavítja a SQL terv teljesítményproblémákat (hamarosan elkészül, már elérhető az SQL Server 2017).
 
 ### <a name="adaptive-query-processing"></a>Adaptív lekérdezés-feldolgozás
 
@@ -114,7 +117,7 @@ Az [SQL Database naplózási szolgáltatása](sql-database-auditing.md) nyomon k
 
 ### <a name="data-encryption-at-rest"></a>Adat-titkosítás inaktív állapotban
 
-Az SQL Database [transzparens adattitkosítása](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) azzal járul hozzá a rosszindulatú tevékenység elleni védelemhez, hogy valós időben titkosítja és fejti vissza az adatbázist, a hozzá tartozó biztonsági másolatokat és a tranzakciónapló fájlokat anélkül, hogy ehhez módosítani kellene az alkalmazást. 2017 májusától minden újonnan létrehozott Azure SQL adatbázis automatikusan transzparens adattitkosítás (TDE) védelmet kap. A TDE az SQL kipróbált inaktív-adattitkosítási technológiája, amelyet számos megfelelőségi szabvány előír az adattárolók eltulajdonítása esetén hatékony védelemként. Az ügyfelek biztonságosan és a szabályoknak megfelelően kezelhetik a TDE titkosítási kulcsokat és más titkos kulcsokat az Azure Key Vault kulcstároló használatával.
+Az SQL Database [transzparens adattitkosítása](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) azzal járul hozzá a rosszindulatú tevékenység elleni védelemhez, hogy valós időben titkosítja és fejti vissza az adatbázist, a hozzá tartozó biztonsági másolatokat és a tranzakciónapló fájlokat anélkül, hogy ehhez módosítani kellene az alkalmazást. 2017 májusától minden újonnan létrehozott Azure SQL adatbázis automatikusan transzparens adattitkosítás (TDE) védelmet kap. A TDE az SQL kipróbált inaktív-adattitkosítási technológiája, amelyet számos megfelelőségi szabvány előír az adattárolók eltulajdonítása esetén hatékony védelemként. Az ügyfelek biztonságosan és a szabályoknak megfelelően kezelhetik a TDE titkosítási kulcsokat és más titkos kulcsokat az Azure Key Vault kulcstároló használatával.
 
 ### <a name="data-encryption-in-motion"></a>Adattitkosítás menet közben
 
@@ -147,6 +150,14 @@ Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létreho
 
 Az SQL Database támogatja a Python, Java, Node.js, PHP, Ruby, és .NET alkalmazásfejlesztést a MacOS, Linux, és Windows rendszeren. Az SQL Database az SQL Serverrel azonos [adatkapcsolattárakat](sql-database-libraries.md) támogat.
 
+## <a name="engage-with-the-sql-server-engineering-team"></a>Kapcsolatfelvétel az SQL Server műszaki csoportjával
+
+- [DBA-veremcsere](https://dba.stackexchange.com/questions/tagged/sql-server): Kérdések az adatbázis rendszergazdájának
+- [Veremtúlcsordulás](http://stackoverflow.com/questions/tagged/sql-server): Kérdések a fejlesztőknek
+- [MSDN fórumok](https://social.msdn.microsoft.com/Forums/en-US/home?category=sqlserver): Műszaki kérdések
+- [Microsoft Connect](https://connect.microsoft.com/SQLServer/Feedback): Hibák jelentése és funkciók kérése
+- [Reddit](https://www.reddit.com/r/SQLServer/): Az SQL Server megvitatása
+
 ## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/sql-database/) az önálló adatbázisok és a rugalmas készletek költségeinek összehasonlításáért és árkalkulációjáért.
@@ -160,4 +171,3 @@ Az SQL Database támogatja a Python, Java, Node.js, PHP, Ruby, és .NET alkalmaz
 - Több Azure CLI és PowerShell-mintát talál itt:
   - [Azure CLI-minták az SQL Database-hez](sql-database-cli-samples.md)
   - [Azure PowerShell-minták az SQL Database-hez](sql-database-powershell-samples.md)
-

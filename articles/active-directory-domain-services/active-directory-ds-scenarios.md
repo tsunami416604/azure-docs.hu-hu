@@ -16,7 +16,7 @@ ms.date: 09/21/2017
 ms.author: maheshu
 ms.openlocfilehash: b73bfc7703d79681f0de345f4ec994da540aa2a5
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

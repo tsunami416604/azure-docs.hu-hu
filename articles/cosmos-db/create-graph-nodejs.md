@@ -12,21 +12,20 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 08/29/2017
 ms.author: denlee
-ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 60cb187cf40f72fce86c421891bea02d3d6d708a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/30/2017
-
+ms.openlocfilehash: 228d739ac4505d9f16c43bb484dd8050631f084e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Node.js-alkalmazás létrehozása a Graph API-val
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Azure Cosmos-adatbázis a Microsoft globálisan elosztott multimodel adatbázis-szolgáltatás. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogy az Azure Portal segítségével hogyan hozhat létre Azure Cosmos DB-fiókot az előzetes verzióként elérhető Graph API-hoz, valamint adatbázist és gráfot. Ezután a nyílt forráskódú [Gremlin Node.js](https://www.npmjs.com/package/gremlin)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.  
+Ez a gyors üzembe helyezés cikk bemutatja, hogyan Graph API-val (előzetes verzió), az adatbázis és a graph Azure Cosmos DB fiók létrehozása az Azure portál használatával. Ezután a nyílt forráskódú [Gremlin Node.js](https://www.npmjs.com/package/gremlin)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,9 +47,9 @@ Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltét
 
 A következő lépésekben elvégezheti a Graph API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy Git-terminálablakot, például a Git Bash eszközt, és a `cd` paranccsal váltson egy munkakönyvtárra.  
+1. Nyisson meg egy Git-terminálablakot, például a Git Bash eszközt, és a `cd` paranccsal váltson egy munkakönyvtárra.
 
-2. Futtassa a következő parancsot a mintatárház klónozásához. 
+2. A következő parancsot a minta-tárház klónozása: 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -60,7 +59,7 @@ A következő lépésekben elvégezheti a Graph API-alkalmazás klónozását a 
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg az `app.js` fájlt, amelyben a következő kódsorokat találja. 
+Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a `app.js` fájlt, és tekintse meg a következő sorokat. 
 
 * Létrejön a Gremlin-ügyfél.
 
@@ -99,19 +98,19 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg az `app.js` fá
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-graph-nodejs/gremlin-uri.png)
 
-   Ha a **Gremlin URI** érték üres, létrehozhatja az értéket a portál **Kulcsok** oldalán az **URI** értékkel a https:// előtag eltávolításával és a dokumentumok gráfokká módosításával.
+   Ha a **Gremlin URI** nincs megadva érték, a értéket is létrehozhat a **kulcsok** oldal a portálon. Használja a **URI** érték, távolítsa el a https:// és diagramokat a dokumentumok módosítására.
 
    A Gremlin-végpont csak protokoll/portszám nélküli gazdagépnév lehet, például `mygraphdb.graphs.azure.com` (és nem `https://mygraphdb.graphs.azure.com` vagy `mygraphdb.graphs.azure.com:433`).
 
-3. A config.js fájlban adja meg a config.primaryKey értéket az Azure Portal **Kulcsok** oldaláról származó **Elsődleges kulcs** értékkel. 
+3. A config.js, töltse ki a config.primaryKey értékét a **elsődleges kulcs** értéket a **kulcsok** az Azure-portálon oldalán. 
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   ![Kulcsok panel az Azure Portalon](./media/create-graph-nodejs/keys.png)
+   ![Az Azure portál "Kulcsok" panel](./media/create-graph-nodejs/keys.png)
 
 4. A config.database és a config.collection értékéhez adja meg az adatbázis és a gráf (tároló) nevét. 
 
-Az elkészült config.js fájl olyan lesz, ahogy az alábbi példában látható:
+Íme egy példa Mi a befejezett config.js fájl hasonlóan kell kinéznie:
 
 ```nodejs
 var config = {}
@@ -127,7 +126,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
-1. Nyisson meg egy terminálablakot, és a `cd` parancs használatával váltson a projektben lévő package.json fájl telepítési könyvtárára.  
+1. Nyisson meg egy terminálablakot, és a `cd` parancs használatával váltson a projektben lévő package.json fájl telepítési könyvtárára.
 
 2. Futtassa az `npm install` parancsot a szükséges npm-modulok (köztük a `gremlin`) telepítéséhez.
 
@@ -137,11 +136,11 @@ module.exports = config;
 
 Most visszaléphet az Adatkezelőbe az Azure Portalon, és megtekintheti, lekérdezheti, módosíthatja, és használatba veheti az új gráfadatokat.
 
-Az Adatkezelőben az új adatbázis a **Gráfok** ablaktáblán jelenik meg. Bontsa ki az adatbázist, majd a gyűjteményt, és kattintson a **Gráf** elemre.
+Az Adatkezelőben az új adatbázis a **Gráfok** ablaktáblán jelenik meg. Bontsa ki az adatbázist, kiegészítve a gyűjteményhez, és válassza ki **Graph**.
 
-A mintaalkalmazás által létrehozott adatok a **Gráf** lap következő panelén jelennek meg, amikor a **Szűrő alkalmazása** gombra kattint.
+A mintaalkalmazás által létrehozott adatokat a következő ablaktáblára belül jelenik meg a **Graph** kiválasztásakor lapon **szűrés**.
 
-A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: `.has('firstName', 'Thomas')`. Vegye figyelembe, hogy ez az érték megkülönbözteti a kis- és nagybetűket.
+A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: `.has('firstName', 'Thomas')`. Vegye figyelembe, hogy az érték kis-és nagybetűket.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 
@@ -151,13 +150,13 @@ A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: 
 
 Ha nem tervezi az alkalmazás további használatát, törölje a cikkben létrehozott összes erőforrást a következőképpen: 
 
-1. Az Azure Portal bal oldali navigációs menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd a létrehozott erőforrás nevére. 
-2. A saját erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét, majd kattintson a **Törlés** elemre.
+1. Válassza ki az Azure portálon a bal oldali navigációs menü **erőforráscsoportok**. Ezután válassza ki a létrehozott erőforrás nevét. 
+
+2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Írja be a törölni kívánt, majd válassza ki az erőforrás nevét **törlése**.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk bemutatta, hogyan lehet létrehozni egy Azure Cosmos DB-fiókot, létrehozni egy gráfot az Adatkezelő használatával, és futtatni egy alkalmazást. Mostantól a Gremlin használatával összetettebb lekérdezéseket is létrehozhat, és hatékony gráfbejárási logikákat implementálhat. 
+Ebben a cikkben megtanulta, Azure Cosmos DB-fiók létrehozása, hozzon létre egy grafikonon adatkezelő használatával, és futtassa az alkalmazást. Mostantól a Gremlin használatával összetettebb lekérdezéseket is létrehozhat, és hatékony gráfbejárási logikákat implementálhat. 
 
 > [!div class="nextstepaction"]
-> [Lekérdezés a Gremlin használatával](tutorial-query-graph.md)
-
+> [Gremlin használatával lekérdezése](tutorial-query-graph.md)

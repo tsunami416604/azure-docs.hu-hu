@@ -17,7 +17,7 @@ ms.date: 08/17/2017
 ms.author: spelluru
 ms.openlocfilehash: d498eac2d0dfe7d271bdb5e47159faa113545ab4
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

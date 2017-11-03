@@ -1,20 +1,20 @@
-## <a name="extended-iot-scenarios"></a>Extended IoT scenarios
+## <a name="extended-iot-scenarios"></a>Bővített IoT-forgatókönyvek
 
-Use other Azure services and tools. When you have connected your device to IoT Hub, you can explore additional scenarios that use other Azure tools and services:
+Más Azure-szolgáltatásokat és -eszközöket is használhat. Miután csatlakoztatta eszközét az IoT Hubhoz, további forgatókönyveket tekinthet át, amelyek más Azure-eszközöket és -szolgáltatásokat használnak:
 
-| Scenario                                                   | Azure service or tool              |
+| Forgatókönyv                                                   | Azure-szolgáltatás vagy -eszköz              |
 |----------------------------------------------------------- |------------------------------------|
-| [Manage IoT Hub messages][Mg_IoT_Hub_Msg]                  | iothub-explorer tool               |
-| [Manage your IoT device][Mg_IoT_Dv]                        | iothub-explorer tool               |
-| [Save IoT Hub messages to Azure storage][Sv_IoT_Msg_Stor]  | Azure table storage                |
-| [Visualize sensor data][Vis_Data_PBI]                      | Microsoft Power BI                 |
-| [Visualize sensor data][Vis_Data_Web]                      | Azure Web Apps                     |
-| [Forecast weather with sensor data][Weather_Forecast]      | Azure Machine Learning             |
-| [Automatic anomaly detection and reaction][Anomaly_Detect] | Azure Logic Apps                   |
+| [IoT Hub-üzenetek kezelése][Mg_IoT_Hub_Msg]                  | iothub-explorer eszköz               |
+| [IoT-eszközök felügyelete][Mg_IoT_Dv]                        | iothub-explorer eszköz               |
+| [IoT Hub-üzenetek mentése Azure-tárolóba][Sv_IoT_Msg_Stor]  | Azure Table Storage                |
+| [Érzékelőadatok megjelenítése][Vis_Data_PBI]                      | Microsoft Power BI                 |
+| [Érzékelőadatok megjelenítése][Vis_Data_Web]                      | Azure Web Apps                     |
+| [Időjárás-előrejelzés érzékelőadatokkal][Weather_Forecast]      | Azure Machine Learning             |
+| [Rendellenességek automatikus észlelése és reagálás][Anomaly_Detect] | Azure Logic Apps                   |
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Következő lépések
 
-When you have completed these tutorials, you can further explore the capabilities of IoT Hub in the [Developer guide][lnk-dev-guide]. You can find additional tutorials in the [How To][lnk-how-to] section.
+Miután végrehajtotta ezeket az oktatóanyagokat, az IoT Hub képességeiről továbbiakat a [fejlesztői útmutatóból][lnk-dev-guide] tudhat meg. További oktatóanyagokat az [Útmutató][lnk-how-to] részben találhat.
 
 
 [Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md

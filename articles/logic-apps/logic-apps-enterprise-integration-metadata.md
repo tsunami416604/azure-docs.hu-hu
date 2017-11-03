@@ -17,7 +17,7 @@ ms.date: 11/21/2016
 ms.author: LADocs; padmavc
 ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

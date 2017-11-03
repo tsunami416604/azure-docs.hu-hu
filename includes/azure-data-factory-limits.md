@@ -1,28 +1,53 @@
-Data factory is a multi-tenant service that has the following default limits in place to make sure customer subscriptions are protected from each other's workloads. Many of the limits can be easily raised for your subscription up to the maximum limit by contacting support.
+Adat-előállító egy több-bérlős szolgáltatást a következő alapértelmezett korlátokat érdekében győződjön meg arról, hogy az ügyfél-előfizetések védettek, a másik fél munkaterhelések érvényben. A korlátok számos könnyen emelhető az előfizetéséhez, a maximális határértéket akár lépjen kapcsolatba az ügyfélszolgálattal.
 
-| **Resource** | **Default Limit** | **Maximum Limit** |
+### <a name="version-2"></a>2-es verzió
+
+| Erőforrás | Alapértelmezett korlát | Felső korlát | 
+| -------- | ------------- | ------------- | 
+| az Azure-előfizetés adat-előállítók | 50 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| belül egy adat-előállító adatcsatornák | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| egy adat-előállító belül adatkészletek | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Egy adat-előállító belül eseményindítók | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Egy adat-előállító belül összekapcsolt szolgáltatások | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Egy adat-előállító belül integrációs futtatókörnyezetek <sup>4</sup> | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Folyamat fut egyidejűleg folyamat | 20 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Feldolgozási sor / maximális tevékenységek | 20 | 30 |
+| Feldolgozási sor / maximális paraméterek | 20 | 30 |
+| adatcsatorna objektumok objektumonként bájt <sup>1</sup> | 200 KB | 200 KB |
+| bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> | 100 KB | 2000 KB |
+| A felhő adatok adatátviteli egység <sup>3</sup> | 32 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Újbóli próbálkozások száma az adatcsatorna tevékenység fut | 1 day(timeout) | 1 nap (timeout) |
+| Az API-hívásokban írása | 2500/hr<br/><br/> Ez korlátozva által Azure erőforrás-kezelő nem az Azure Data Factory. | [Forduljon a támogatási szolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Olvassa el az API-hívásokban | 12 500/hr<br/><br/> Ez korlátozva által Azure erőforrás-kezelő nem az Azure Data Factory. | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+
+
+### <a name="version-1"></a>1-es verzió
+
+| **Erőforrás** | **Alapértelmezett korlát** | **Felső korlát** |
 | --- | --- | --- |
-| data factories in an Azure subscription |50 |[Contact support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| pipelines within a data factory |2500 |[Contact support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| datasets within a data factory |5000 |[Contact support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| concurrent slices per dataset |10 |10 |
-| bytes per object for pipeline objects <sup>1</sup> |200 KB |200 KB |
-| bytes per object for dataset and linked service objects <sup>1</sup> |100 KB |2000 KB |
-| HDInsight on-demand cluster cores within a subscription <sup>2</sup> |60 |[Contact support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Cloud data movement unit <sup>3</sup> |32 |[Contact support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Retry count for pipeline activity runs |1000 |MaxInt (32 bit) |
+| az Azure-előfizetés adat-előállítók |50 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| belül egy adat-előállító adatcsatornák |2500 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| egy adat-előállító belül adatkészletek |5000 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| adatkészlet száma párhuzamos szeletek |10 |10 |
+| adatcsatorna objektumok objektumonként bájt <sup>1</sup> |200 KB |200 KB |
+| bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> |100 KB |2000 KB |
+| A HDInsight fürt igény szerinti magok előfizetésen belül <sup>2</sup> |60 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| A felhő adatok adatátviteli egység <sup>3</sup> |32 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Újbóli próbálkozások száma az adatcsatorna tevékenység fut |1000 |MaxInt (32 bites) |
 
-<sup>1</sup> Pipeline, dataset, and linked service objects represent a logical grouping of your workload. Limits for these objects do not relate to amount of data you can move and process with the Azure Data Factory service. Data factory is designed to scale to handle petabytes of data.
+<sup>1</sup> folyamat, a DataSet adatkészlet és a társított szolgáltatás objektumok határoz meg a számítási feladatok logikai csoportosítása. Ezek az objektumok korlátairól áthelyezni, és az Azure Data Factory szolgáltatással feldolgozni adatok mennyisége nem kapcsolódnak. Adat-előállító méretezési adatmennyiségig kezelésére szolgál.
 
-<sup>2</sup> On-demand HDInsight cores are allocated out of the subscription that contains the data factory. As a result, the above limit is the Data Factory enforced core limit for on-demand HDInsight cores and is different from the core limit associated with your Azure subscription.
+<sup>2</sup> igény szerinti HDInsight magok kívül az előfizetést, amely tartalmazza az adat-előállítóban foglal le. Ennek eredményeképpen a fenti határértéke a Data Factory igény szerinti HDInsight magok core korlát érvényes, és eltér a fő korlát az Azure-előfizetéshez társított.
 
-<sup>3</sup> Cloud data movement unit (DMU) is being used in a cloud-to-cloud copy operation. It is a measure that represents the power (a combination of CPU, memory, and network resource allocation) of a single unit in Data Factory. You can achieve higher copy throughput by leveraging more DMUs for some scenarios. Refer to [Cloud data movement units](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) section on details.
+<sup>3</sup> felhő adatok adatátviteli egység (DMU) használja a felhő-felhő másolási műveletek. Egy mérték, amely jelöli az (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációja) adat-előállítóban egyetlen egységben. Nagyobb másolási átviteli teljesítményt érhet el, további DMUs használó egyes forgatókönyvek esetén. Tekintse meg [adatátviteli adategységek Cloud](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) részletei szakaszban.
 
-| **Resource** | **Default lower limit** | **Minimum limit** |
+<sup>4</sup> az integrációs futásidejű (IR) a számítási infrastruktúrát a következő adatok integrációs képességeket biztosítják a különböző hálózati környezetek között Azure Data Factory használatával: adatátvitelt jelölik a tevékenységeket érdemes olyan szolgáltatások, számítási terjesztéséhez SSIS-csomagok végrehajtását. További információkért lásd: [integrációs futásidejű áttekintése](../articles/data-factory/concepts-integration-runtime.md).
+
+| **Erőforrás** | **Alapértelmezett alacsonyabb korlátot** | **Minimális korlát** |
 | --- | --- | --- |
-| Scheduling interval |15 minutes |15 minutes |
-| Interval between retry attempts |1 second |1 second |
-| Retry timeout value |1 second |1 second |
+| Ütemezési időköz |15 perc |15 perc |
+| Újrapróbálkozási kísérletek közötti időközt |1 másodperc |1 másodperc |
+| Ismételje meg az időtúllépés értéke |1 másodperc |1 másodperc |
 
-### <a name="web-service-call-limits"></a>Web service call limits
-Azure Resource Manager has limits for API calls. You can make API calls at a rate within the [Azure Resource Manager API limits](../articles/azure-subscription-service-limits.md#resource-group-limits).
+#### <a name="web-service-call-limits"></a>Webes szolgáltatás hívása korlátok
+Az Azure Resource Manager API-hívások korlátairól rendelkezik. Az API-hívásokban belül sebességgel végezheti el a [Azure Resource Manager API korlátozza](../articles/azure-subscription-service-limits.md#resource-group-limits).

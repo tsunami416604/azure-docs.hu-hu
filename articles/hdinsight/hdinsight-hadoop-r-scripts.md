@@ -18,7 +18,7 @@ ms.author: jgao
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5b9b793d49217acd9f0c6c518596a7afb5600d69
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---

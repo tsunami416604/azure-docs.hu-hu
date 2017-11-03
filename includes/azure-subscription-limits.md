@@ -10,7 +10,7 @@
 | Fenntartott IP-címek előfizetésenként |20 |100 |
 | Üzemeltetett szolgáltatás tanúsítványok előfizetésenként |400 |400 |
 | [Affinitáscsoportok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) előfizetésenként |256 |256 |
-| A riasztási szabályok előfizetésenként |250 |250 |
+
 
 <sup>1</sup>extra Small-példányok száma szerint több processzormag, annak ellenére, hogy egy részleges core segítségével az alapvető határérték felé számolnak.
 
