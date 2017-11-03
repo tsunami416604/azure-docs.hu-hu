@@ -1,18 +1,18 @@
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Következő lépések
 
-After enabling Azure Key Vault Integration, you can enable SQL Server encryption on your SQL VM. First, you will need to create an asymmetric key inside your key vault and a symmetric key within SQL Server on your VM. Then, you will be able to execute T-SQL statements to enable encryption for your databases and backups.
+Miután engedélyezte az Azure Key Vault-integráció, az SQL virtuális gép az SQL Server titkosítási engedélyezhető. Először akkor a virtuális gépen belül a kulcstartót aszimmetrikus kulcsok és az SQL Serverben a szimmetrikus kulcs létrehozásához. Ezután lesz T-SQL utasítást, hogy engedélyezze a titkosítást az adatbázisok és a biztonsági mentések végrehajtásához.
 
-There are several forms of encryption you can take advantage of:
+Kihasználhatja a titkosítási több űrlap van:
 
-* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Encrypted backups](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Column Level Encryption (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Az átlátható adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Titkosított biztonsági mentések](https://msdn.microsoft.com/library/dn449489.aspx)
+* [Oszlop a blokkszintű titkosítás (törlése)](https://msdn.microsoft.com/library/ms173744.aspx)
 
-The following Transact-SQL scripts provide examples for each of these areas.
+A következő Transact-SQL-parancsfájlok példákat biztosítanak az egyes ezeket a területeket.
 
-### <a name="prerequisites-for-examples"></a>Prerequisites for examples
+### <a name="prerequisites-for-examples"></a>Példák előfeltételei
 
-Each example is based on the two prerequisites: an asymmetric key from your key vault called **CONTOSO_KEY** and a credential created by the AKV Integration feature called **Azure_EKM_TDE_cred**. The following Transact-SQL commands setup these prerequisites for running the examples.
+Minden egyes példa alapján a két Előfeltételek: a key vaultban aszimmetrikus kulcsok nevű **CONTOSO_KEY** és a hitelesítő adatokat az AKV-integrációs szolgáltatás által létrehozott **Azure_EKM_TDE_cred**. A következő Transact-SQL-parancsokat a telepítő futtatásához a példák az előfeltételek.
 
 ``` sql
 USE master;
@@ -51,9 +51,9 @@ WITH PROVIDER_KEY_NAME = 'keytestvault',  --key name
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
+### <a name="transparent-data-encryption-tde"></a>Az átlátható adattitkosítás (TDE)
 
-1. Create a SQL Server login to be used by the Database Engine for TDE, then add the credential to it.
+1. TDE az adatbázismotor által használandó SQL Server-bejelentkezés létrehozásával, majd a hitelesítő adatok hozzáadása.
 
    ``` sql
    USE master;
@@ -71,7 +71,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Create the database encryption key that will be used for TDE.
+1. Az adatbázis-titkosítási kulcs, amely jelzi a TDE létrehozása.
 
    ``` sql
    USE ContosoDatabase;
@@ -88,9 +88,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### <a name="encrypted-backups"></a>Encrypted backups
+### <a name="encrypted-backups"></a>Titkosított biztonsági mentések
 
-1. Create a SQL Server login to be used by the Database Engine for encrypting backups, and add the credential to it.
+1. Biztonsági másolatok titkosításához az adatbázismotor által használandó SQL Server-bejelentkezés létrehozásával, majd adja hozzá azt a hitelesítő adatokat.
 
    ``` sql
    USE master;
@@ -107,7 +107,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Backup the database specifying encryption with the asymmetric key stored in the key vault.
+1. A adja meg az adatbázis-titkosítás, az aszimmetrikus kulccsal a key vaultban tárolt biztonsági másolat.
 
    ``` sql
    USE master;
@@ -118,9 +118,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### <a name="column-level-encryption-cle"></a>Column Level Encryption (CLE)
+### <a name="column-level-encryption-cle"></a>Oszlop a blokkszintű titkosítás (törlése)
 
-This script creates a symmetric key protected by the asymmetric key in the key vault, and then uses the symmetric key to encrypt data in the database.
+Ez a parancsfájl létrehoz egy szimmetrikus kulcsot a key vaultban az aszimmetrikus kulcs által védett, és a szimmetrikus kulcs használatával titkosítsa az adatokat az adatbázisban.
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -143,8 +143,8 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-## <a name="additional-resources"></a>Additional resources
+## <a name="additional-resources"></a>További források
 
-For more information on how to use these encryption features, see [Using EKM with SQL Server Encryption Features](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
+Ezek a titkosítási szolgáltatások használatáról további információk: [EKM használata az SQL Server titkosítási szolgáltatások](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-Note that the steps in this article assume that you already have SQL Server running on an Azure virtual machine. If not, see [Provision a SQL Server virtual machine in Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). For other guidance on running SQL Server on Azure VMs, see [SQL Server on Azure Virtual Machines overview](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Vegye figyelembe, hogy ez a cikk a lépések azt feltételezik, hogy már rendelkezik egy Azure virtuális gépen futó SQL Server. Ha nem, lásd: [egy SQL Server rendszerű virtuális gép az Azure-ban](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Az Azure virtuális gépeken futó SQL Server más útmutatóért lásd: [SQL Server Azure virtuális gépek – áttekintés](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).

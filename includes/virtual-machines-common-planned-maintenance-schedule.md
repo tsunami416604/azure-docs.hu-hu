@@ -1,55 +1,55 @@
 
 
-## <a name="multi-and-single-instance-vms"></a>Multi and Single Instance VMs
-Many customers running on Azure count it critical that they can schedule when their VMs undergo planned maintenance due to the downtime--about 15 minutes--that occurs during maintenance. You can use availability sets to help control when provisioned VMs receive planned maintenance.
+## <a name="multi-and-single-instance-vms"></a>Többszörös és egypéldányos virtuális gépek
+Sok ügyfél futó Azure száma akkor fontos, hogy azok ütemezhető a virtuális gépek tervezett karbantartás miatt az állásidő--változni mintegy 15 percre leáll--, amely akkor fordul elő, karbantartás során. Rendelkezésre állási csoportok segítségével szabályozhatja, amikor kiosztott virtuális gépek tervezett karbantartás.
 
-There are two possible configurations for VMs running on Azure. VMs are either configured as multi-instance or single-instance. If VMs are in an availability set, then they are configured as multi-instance. Note, even single VMs can be deployed in an availability set, so that they are treated as multi-instance. If VMs are NOT in an availability set, then they are configured as single-instance.  For details on availability sets, see [Manage the Availability of your Windows Virtual Machines](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) or [Manage the Availability of your Linux Virtual Machines](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Nincsenek Azure-on futó virtuális gépek két lehetséges konfigurációkat. Virtuális gépek vagy többpéldányos vagy egypéldányos kell konfigurálni. Ha virtuális gépek rendelkezésre állási csoportba, majd vannak konfigurálva több példányt. Vegye figyelembe, még akkor is egyetlen, virtuális gépek is telepíthető egy rendelkezésre állási csoportot, hogy több példányt kezelje őket. Ha a virtuális gépek nincsenek egy rendelkezésre állási csoportot, majd vannak konfigurálva, Egypéldányos.  További részletek a rendelkezésre állási csoportok: [a Windows virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [a Linux virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Planned maintenance updates to single-instance and multi-instance VMs happen separately. By reconfiguring your VMs to be single-instance (if they are multi-instance) or to be multi-instance (if they are single-instance), you can control when their VMs receive the planned maintenance. See [Planned maintenance for Azure Linux virtual machines](../articles/virtual-machines/linux/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) or [Planned maintenance for Azure Windows virtual machines](../articles/virtual-machines/windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) for details on planned maintenance for Azure VMs.
+Egypéldányos és többpéldányos virtuális gépek tervezett karbantartás frissítések külön-külön fordulhat elő. A virtuális gépek kell egypéldányos (ha többpéldányos) vagy (ha egypéldányos) többpéldányos újrakonfigurálásával szabályozhatja, ha a virtuális Gépeik kapni a tervezett karbantartáshoz. Lásd: [a tervezett karbantartások Azure Linux virtuális gépek](../articles/virtual-machines/linux/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [a tervezett karbantartásról, a Azure Windows virtuális gépek](../articles/virtual-machines/windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Azure virtuális gépek tervezett karbantartása leírását.
 
-## <a name="for-multi-instance-configuration"></a>For Multi-instance Configuration
-You can select the time planned maintenance impacts your VMs that are deployed in an Availability Set configuration by removing these VMs from availability sets.
+## <a name="for-multi-instance-configuration"></a>Többpéldányos konfiguráció
+Kiválaszthatja, hogy a tervezett karbantartások hatással van a virtuális gépek üzembe helyezett egy rendelkezésre állási csoport konfigurációs feloldhatja a virtuális gépek rendelkezésre állási készletek idő.
 
-1. An email is sent to you seven calendar days before the planned maintenance to your VMs in a Multi-instance configuration. The subscription IDs and names of the affected Multi-instance VMs are included in the body of the email.
-2. During those seven days, you can choose the time your instances are updated by removing your multi-instance VMs in that region from their availability set. This change in configuration causes a reboot, as the Virtual Machine is moving from one physical host, targeted for maintenance, to another physical host that isn’t targeted for maintenance.
-3. You can remove the VM from its availability set in the Azure portal.
+1. E-mailt kap hét nappal a többpéldányos konfigurációban a virtuális gépek tervezett karbantartás előtt. Az előfizetés-azonosítók és a többpéldányos érintett virtuális gépek nevét az e-mail törzsében szerepelnek.
+2. E hét napban kiválaszthatja a frissítésekor a példányok vannak az adott régióban eltávolításával a többpéldányos virtuális gépek a rendelkezésre állási csoport. Ez a változás a konfigurációban újraindítás, azt eredményezi, mint egy fizikai gazdagép karbantartás, egy másik fizikai gazdagépre, amely nem érvényes az karbantartási szánt továbbítása a virtuális gép.
+3. A virtuális gép eltávolíthatja a rendelkezésre állási csoportban, az Azure portálon.
 
-   1. In the portal, select the VM to remove from the Availability Set.  
+   1. A portálon válassza ki a virtuális gép eltávolítása a rendelkezésre állási csoportban.  
 
-   2. Under **settings**, click **Availability set**.
+   2. A **beállítások**, kattintson a **rendelkezésre állási csoport**.
 
-      ![Availability Set Selection](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
+      ![Rendelkezésre állási csoport kiválasztása](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
 
-   3. In the availability set dropdown menu, select “Not part of an availability set.”
+   3. A rendelkezésre állási csoport legördülő menüre, válassza ki a "Nem részei egy rendelkezésre állási csoportnak."
 
-      ![Remove from Set](./media/virtual-machines-planned-maintenance-schedule/availabilitysetwarning.png)
+      ![Távolítsa el a készletből](./media/virtual-machines-planned-maintenance-schedule/availabilitysetwarning.png)
 
-   4. At the top, click **Save**. Click **Yes** to acknowledge that this action restarts the VM.
+   4. A lap tetején kattintson **mentése**. Kattintson a **Igen** megerősíti, hogy ez a művelet újraindítja a virtuális gép számára.
 
    >[!TIP]
-   >You can reconfigure the VM to multi-instance later by selecting one of the listed availability sets.
+   >A virtuális gépek a többpéldányos később újrakonfigurálhatja a listában szereplő rendelkezésre állási csoportok kiválasztásával.
 
-4. VMs removed from availability sets are moved to Single-Instance hosts and are not updated during the planned maintenance to Availability Set Configurations.
-5. Once the update to Availability Set VMs is complete (according to schedule outlined in the original email), you should add the VMs back into their availability sets. Becoming part of an Availability set reconfigures the VMs as multi-instance, and results in a reboot. Typically, once all multi-instance updates are completed across the entire Azure environment, single-instance maintenance follows.
+4. Virtuális gépek rendelkezésre állási készletek távolítva egypéldányos állomások kerülnek, és nem frissülnek a rendelkezésre állási beállítása beállításokat a tervezett karbantartás alatt.
+5. A rendelkezésre állási beállítása virtuális gépekhez a frissítés befejezése után (megfelelően az eredeti e-mailt leírt ütemezés), adja hozzá a virtuális gépek a rendelkezésre állási készletek programba. Rendelkezésre állási csoport tagjaivá újrakonfigurálja a virtuális gépek több példányt, és a újraindítását eredményezi. Általában ha minden többpéldányos frissítés a teljes Azure-környezetéhez között megadta, Egypéldányos karbantartási követi.
 
-Removing a VM from an availability set can also be achieved using Azure PowerShell:
+A virtuális gép eltávolítása a rendelkezésre állási csoport is elérhető Azure PowerShell használatával:
 
 ```
 Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
 ```
 
-## <a name="for-single-instance-configuration"></a>For Single-instance Configuration
-You can select the time planned maintenance impacts you VMs in a Single-instance configuration by adding these VMs into availability sets.
+## <a name="for-single-instance-configuration"></a>Egypéldányos konfiguráció
+Kiválaszthatja, hogy a tervezett karbantartások hatással van, virtuális gépek egypéldányos konfigurációban adja hozzá a virtuális gépeken a rendelkezésre állási készletek idő.
 
-Step-by-step
+Lépésről lépésre
 
-1. An email is sent to you seven calendar days before the planned maintenance to VMs in a Single-instance configuration. The subscription IDs and names of the affected Single-Instance VMs are included in the body of the email.
-2. During those seven days, you can choose the time your instance reboots by adding your Single-instance VMs to an availability set in that same region. This change in configuration causes a reboot, as the Virtual Machine is moving from one physical host, targeted for maintenance, to another physical host that isn’t targeted for maintenance.
-3. Follow instructions here to add existing VMs into availability sets using the Azure portal and Azure PowerShell. (See the Azure PowerShell sample that follows these steps.)
-4. Once these VMs are reconfigured as Multi-instance, they are excluded from the planned maintenance to Single-instance VMs.
-5. Once the single-instance VM update completes (according to schedule in the original email), you can return the VMs to single-instance by removing the VMs from their availability sets.
+1. E-mailt kap hét nappal egypéldányos konfigurációban a virtuális gépek tervezett karbantartás előtt. Az előfizetés-azonosítók és a érintett egypéldányos virtuális gépek nevét az e-mail törzsében szerepelnek.
+2. E hét napban kiválaszthatja az idő, a példány újraindítja az Egypéldányos virtuális gépek rendelkezésre állási készlet ugyanabban a régióban való hozzáadásával. Ez a változás a konfigurációban újraindítás, azt eredményezi, mint egy fizikai gazdagép karbantartás, egy másik fizikai gazdagépre, amely nem érvényes az karbantartási szánt továbbítása a virtuális gép.
+3. Kövesse az utasításokat itt meglévő virtuális gépek rendelkezésre állási készletek használata az Azure portál és az Azure PowerShell hozzáadni. (Lásd az Azure PowerShell-példa, amely ezeket a lépéseket.)
+4. Miután a virtuális gépek több példányt voltak, tartoznak a a tervezett karbantartások egypéldányos virtuális gépekhez.
+5. Az Egypéldányos VM frissítése (futtatása ütemezés szerint az eredeti e-mailben) után visszatérhet a virtuális gépek egypéldányos feloldhatja a virtuális gépek a rendelkezésre állási készletek.
 
-Adding a VM to an availability set also can be achieved using Azure PowerShell:
+A virtuális gépek felvétele a rendelkezésre állási készlet is elérhető Azure PowerShell használatával:
 
     Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 

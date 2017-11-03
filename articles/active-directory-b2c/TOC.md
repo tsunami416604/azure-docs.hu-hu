@@ -1,6 +1,9 @@
 # [Áttekintés](active-directory-b2c-overview.md)
 
 # Bevezetés
+## [Azure AD B2C webalkalmazás kipróbálása](active-directory-b2c-quickstarts-web-app.md)
+## [Azure AD B2C asztali alkalmazás kipróbálása](active-directory-b2c-quickstarts-desktop-app.md)
+## [Azure AD B2C egyoldalas alkalmazás kipróbálása](active-directory-b2c-quickstarts-spa.md)
 ## [Azure AD B2C-címtár létrehozása](active-directory-b2c-get-started.md)
 ## [Alkalmazás regisztrálása](active-directory-b2c-app-registration.md)
 ## [Beépített szabályzatok](active-directory-b2c-reference-policies.md)

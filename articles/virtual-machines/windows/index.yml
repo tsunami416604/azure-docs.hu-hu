@@ -73,6 +73,7 @@ sections:
           - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">Virtuális gépek figyelése</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Virtuális gépek biztonságának kezelése</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Folyamatos integrációs folyamat létrehozása a Visual Studio használatával</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-iis-sql">SQL\IIS\.NET-verem telepítése</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">Webkiszolgáló védelme SSL-lel</a>
   - title: Ingyenes Pluralsight videós képzés
     items:

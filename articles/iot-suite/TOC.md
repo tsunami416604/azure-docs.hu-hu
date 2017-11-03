@@ -1,44 +1,49 @@
 # Áttekintés
-## [Az Azure és az IoT](iot-suite-what-is-azure-iot.md)
-## [Mi az az IoT Suite?](iot-suite-overview.md)
-## [Mik azok az előre konfigurált megoldások?](iot-suite-what-are-preconfigured-solutions.md)
-
+## [Az IoT-architektúra alapelvei](iot-suite-what-is-azure-iot.md)
+## [Az Azure IoT lehetőségeinek összehasonlítása](iot-suite-options.md)
+## [Előre konfigurált megoldások áttekintése](iot-suite-what-are-preconfigured-solutions.md)
 
 # Első lépések
-## [Első lépések az előre konfigurált megoldásokkal](iot-suite-getstarted-preconfigured-solutions.md)
-## [Engedélyek az azureiotsuite.com webhelyen](iot-suite-permissions.md)
-## [A prediktív karbantartási megoldás áttekintése](iot-suite-predictive-overview.md)
-## [Csatlakoztatott factory-megoldás áttekintése](iot-suite-connected-factory-overview.md)
-## [A távoli figyelési megoldás bemutatója](iot-suite-remote-monitoring-sample-walkthrough.md)
-## [A prediktív karbantartási megoldás bemutatója](iot-suite-predictive-walkthrough.md)
-## [Csatlakoztatott gyáron alapuló megoldás bemutatója](iot-suite-connected-factory-sample-walkthrough.md)
-## [A Raspberry Pi csatlakoztatása](iot-suite-raspberry-pi-kit-get-started.md)
-### C használata
-#### [Szimulált adatok](iot-suite-raspberry-pi-kit-c-get-started-simulator.md)
-#### [Valódi érzékelők használata](iot-suite-raspberry-pi-kit-c-get-started-basic.md)
-#### [Vezérlőprogram-frissítés megvalósítása](iot-suite-raspberry-pi-kit-c-get-started-advanced.md)
-### Node.js használata
-#### [Szimulált adatok](iot-suite-raspberry-pi-kit-node-get-started-simulator.md)
-#### [Valódi érzékelők használata](iot-suite-raspberry-pi-kit-node-get-started-basic.md)
-#### [Vezérlőprogram-frissítés megvalósítása](iot-suite-raspberry-pi-kit-node-get-started-advanced.md)
-## Az Intel NUC-átjáró csatlakoztatása
-### [Szimulált adatok](iot-suite-gateway-kit-get-started-simulator.md)
-### [Valódi érzékelő használata](iot-suite-gateway-kit-get-started-sensortag.md)
+## Távoli figyelés
+### [Az előre konfigurált megoldás üzembe helyezése](iot-suite-remote-monitoring-deploy.md)
+### [Az előre konfigurált megoldás üzemeltetése](iot-suite-remote-monitoring-explore.md)
+
+## Prediktív karbantartás
+### [A prediktív karbantartási megoldás áttekintése](iot-suite-predictive-overview.md)
+### [A prediktív karbantartási megoldás bemutatója](iot-suite-predictive-walkthrough.md)
+
+## Csatlakoztatott gyár
+### [Csatlakoztatott factory-megoldás áttekintése](iot-suite-connected-factory-overview.md)
+### [Csatlakoztatott gyáron alapuló megoldás bemutatója](iot-suite-connected-factory-sample-walkthrough.md)
 
 # Útmutató
-## Szimulált eszköz csatlakoztatása
-### [C Windowson](iot-suite-connecting-devices.md)
-### [C Linuxon](iot-suite-connecting-devices-linux.md)
-### [Node.js](iot-suite-connecting-devices-node.md)
-## [Logikai alkalmazás csatlakoztatása a távoli figyelési megoldáshoz](iot-suite-logic-apps-tutorial.md)
-## [Előre konfigurált megoldás testreszabása](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
-## [Dinamikus telemetria használata a távoli figyelési megoldással](iot-suite-dynamic-telemetry.md)
-## [Egyéni szabály létrehozása a távoli figyelési megoldásban](iot-suite-custom-rule.md)
-## [Eszközinformációk a távoli figyelési megoldásban](iot-suite-remote-monitoring-device-info.md)
-## [Átjáró telepítése csatlakoztatott factoryhoz](iot-suite-connected-factory-gateway-deployment.md)
-## [Csatlakoztatott factory testreszabása](iot-suite-connected-factory-customize.md)
-## [Az OPC-kiadó használata a csatlakoztatott factoryhoz](iot-suite-connected-factory-publisher.md)
+## Távoli figyelés
+### [Speciális monitorozás végrehajtása](iot-suite-remote-monitoring-monitor.md)
+### [Hibák észlelése szabályokkal](iot-suite-remote-monitoring-automate.md)
+### [Saját eszközök kezelése](iot-suite-remote-monitoring-manage.md)
+### [Eszközökkel kapcsolatos problémák elhárítása](iot-suite-remote-monitoring-maintain.md)
+### [Szimulált eszközök használata](iot-suite-remote-monitoring-test.md)
+### [A megoldás testreszabása](iot-suite-remote-monitoring-customize.md)
+### [Üzembe helyezés parancssori felületről](iot-suite-remote-monitoring-deploy-cli.md)
+### Fizikai eszköz csatlakoztatása
+#### [C Windowson](iot-suite-connecting-devices.md)
+#### [C Linuxon](iot-suite-connecting-devices-linux.md)
+#### [Node.js (általános)](iot-suite-connecting-devices-node.md)
+#### [Node.js Raspberry Pi-on](iot-suite-connecting-pi-node.md)
+#### [C Raspberry Pi-on](iot-suite-connecting-pi-c.md)
+
+### Alapelvek
+#### [Távoli monitorozási architektúra](iot-suite-remote-monitoring-sample-walkthrough.md)
+
+## Csatlakoztatott gyár
+### [Átjáró telepítése csatlakoztatott factoryhoz](iot-suite-connected-factory-gateway-deployment.md)
+### [Csatlakoztatott factory testreszabása](iot-suite-connected-factory-customize.md)
+### [Az OPC-kiadó használata a csatlakoztatott factoryhoz](iot-suite-connected-factory-publisher.md)
+## [Engedélyek az azureiotsuite.com webhelyen](iot-suite-permissions.md)
+
 # Referencia
+## [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
+## [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
 ## [Biztonsági architektúra](iot-security-architecture.md)
 ## [Ajánlott biztonsági eljárások](iot-security-best-practices.md)
 ## [Az IoT-környezet biztonságossá tétele](iot-suite-security-deployment.md)
@@ -48,6 +53,7 @@
 ## [Stream Analytics](/azure/stream-analytics/)
 ## [Event Hubs](/azure/event-hubs/)
 ## [IoT Hub](/azure/iot-hub/)
+## [IoT-központ](/azure/index#pivot=services&panel=iot)
 ## [Machine Learning](/azure/machine-learning/)
 
 # Erőforrások
@@ -55,8 +61,3 @@
 ## [Gyakori kérdések](iot-suite-faq.md)
 ## [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md)
 ## [IoT Suite képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
-## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-
-
-
-
