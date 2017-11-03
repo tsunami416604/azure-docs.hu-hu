@@ -1,55 +1,55 @@
-Geo-redundant storage (GRS) replicates your data to a secondary region that is hundreds of miles away from the primary region. If your storage account has GRS enabled, then your data is durable even in the case of a complete regional outage or a disaster in which the primary region is not recoverable.
+Georedundáns tárolás (GRS) replikálja az adatokat egy másodlagos régióban, amelyek több száz miles elhagyja az elsődleges régióban van. Ha a tárfiók Georedundáns engedélyezve van, az adatok akkor tartós teljes regionális kimaradás vagy az elsődleges régióban nincs helyreállítható katasztrófa esetén is.
 
-For a storage account with GRS enabled, an update is first committed to the primary region, where it is replicated three times. Then the update is replicated asynchronously to the secondary region, where it is also replicated three times.
+A GRS engedélyezve van a tárfiókon egy frissítés először elkötelezte magát az elsődleges régióban, ahol azt rendszer háromszor replikálja. Majd a frissítés a rendszer replikálja aszinkron módon a másodlagos régióban, ahol azt az háromszor replikálja.
 
-With GRS, both the primary and secondary regions manage replicas across separate fault domains and upgrade domains within a storage scale unit as described with LRS.
+A GRS az elsődleges és másodlagos régióban külön tartalék tartományok közötti replikák kezelése, és frissítse a tárolási méretezési egység LRS leírt tartományban.
 
-Considerations:
+Szempontok:
 
-* Since asynchronous replication involves a delay, in the event of a regional disaster it is possible that changes that have not yet been replicated to the secondary region will be lost if the data cannot be recovered from the primary region.
-* The replica is not available unless Microsoft initiates failover to the secondary region. If Microsoft does initiate a failover to the secondary region, you will have read and write access to that data after the failover has completed. For more information, please see [Disaster Recovery Guidance](../articles/storage/common/storage-disaster-recovery-guidance.md). 
-* If an application wants to read from the secondary region, the user should enable RA-GRS.
+* Mivel a aszinkron replikációs késés, regionális katasztrófa esetén is lehetséges, hogy még nem replikálódott a másodlagos régióba módosítások elvesznek az adatokat nem lehet helyreállítani az elsődleges régióban.
+* A replika nem érhető el, kivéve, ha a Microsoft kezdeményezi a másodlagos régióba. Ha a Microsoft kezdeményezzen feladatátvételt a másodlagos régióban, akkor lesz olvasási és írási engedéllyel a feladatátvételt követően befejeződött. További információkért lásd: [vész-helyreállítási útmutatást](../articles/storage/common/storage-disaster-recovery-guidance.md). 
+* Ha egy alkalmazás szeretné a másodlagos régióba olvasni, a felhasználó engedélyeznie kell a RA-GRS.
 
-When you create a storage account, you select the primary region for the account. The secondary region is determined based on the primary region, and cannot be changed. The following table shows the primary and secondary region pairings.
+A storage-fiók létrehozásakor ki kell választania a fiók az elsődleges régióban. A másodlagos régióba az elsődleges régió alapján történik, és nem módosítható. A következő táblázat az elsődleges és másodlagos régióban párosítása.
 
-| Primary | Secondary |
+| Elsődleges | Másodlagos |
 | --- | --- |
-| North Central US | South Central US |
-| South Central US | North Central US |
-| East US | West US |
-| West US | East US |
-| US East 2 | Central US |
-| Central US | US East 2 |
-| North Europe | West Europe |
-| West Europe | North Europe |
-| South East Asia | East Asia |
-| East Asia | South East Asia |
-| East China | North China |
-| North China | East China |
-| Japan East | Japan West |
-| Japan West | Japan East |
-| Brazil South | South Central US |
-| Australia East | Australia Southeast |
-| Australia Southeast | Australia East |
-| India South | India Central |
-| India Central | India South |
-| India West | India South |
-| US Gov Iowa | US Gov Virginia |
-| US Gov Virginia | US Gov Texas |
-| US Gov Texas | US Gov Arizona |
-| US Gov Arizona | US Gov Texas |
-| Canada Central | Canada East |
-| Canada East | Canada Central |
-| UK West | UK South |
-| UK South | UK West |
-| Germany Central | Germany Northeast |
-| Germany Northeast | Germany Central |
-| West US 2 | West Central US |
-| West Central US | West US 2 |
+| USA északi középső régiója | USA déli középső régiója |
+| USA déli középső régiója | USA északi középső régiója |
+| USA keleti régiója | USA nyugati régiója |
+| USA nyugati régiója | USA keleti régiója |
+| USA 2. keleti régiója | USA középső régiója |
+| USA középső régiója | USA 2. keleti régiója |
+| Észak-Európa | Nyugat-Európa |
+| Nyugat-Európa | Észak-Európa |
+| Délkelet-Ázsia | Kelet-Ázsia |
+| Kelet-Ázsia | Délkelet-Ázsia |
+| Kelet-Kína | Észak-Kína |
+| Észak-Kína | Kelet-Kína |
+| Kelet-Japán | Nyugat-Japán |
+| Nyugat-Japán | Kelet-Japán |
+| Dél-Brazília | USA déli középső régiója |
+| Kelet-Ausztrália | Délkelet-Ausztrália |
+| Délkelet-Ausztrália | Kelet-Ausztrália |
+| Dél-India | Közép-India |
+| Közép-India | Dél-India |
+| Nyugat-India | Dél-India |
+| USA-beli államigazgatás – Iowa | USA-beli államigazgatás – Virginia |
+| USA-beli államigazgatás – Virginia | USA-beli államigazgatás – Texas |
+| USA-beli államigazgatás – Texas | USA-beli államigazgatás – Arizona |
+| USA-beli államigazgatás – Arizona | USA-beli államigazgatás – Texas |
+| Közép-Kanada | Kelet-Kanada |
+| Kelet-Kanada | Közép-Kanada |
+| Az Egyesült Királyság nyugati régiója | Az Egyesült Királyság déli régiója |
+| Az Egyesült Királyság déli régiója | Az Egyesült Királyság nyugati régiója |
+| Közép-Németország | Északkelet-Németország |
+| Északkelet-Németország | Közép-Németország |
+| USA nyugati régiója, 2. | USA nyugati középső régiója |
+| USA nyugati középső régiója | USA nyugati régiója, 2. |
 
-For up-to-date information about regions supported by Azure, see [Azure regions](https://azure.microsoft.com/regions/).
+Használható az Azure-régiók naprakész információkat, lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
 
 >[!NOTE]  
-> US Gov Virginia secondary region is US Gov Texas. Previously, US Gov Virginia utilized US Gov Iowa as a secondary region. Storage accounts still leveraging US Gov Iowa as a secondary region are being migrated to US Gov Texas as a seconday region. 
+> USA – (kormányzati) Virginia másodlagos régióba Velünk – (kormányzati) Texas. Velünk – (kormányzati) Virginia korábban, mint egy másodlagos régióban be a US – (kormányzati) Iowa. Tárfiókok továbbra is használhatja a US – (kormányzati) Iowa egy másodlagos régióban, egy másodlagos régióban, a US – (kormányzati) Texas is áttelepíti. 
 > 
 > 
