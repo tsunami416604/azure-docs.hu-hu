@@ -1,25 +1,25 @@
 <!--author=alkohli last changed: 01/02/17-->
 
 
-#### <a name="to-add-or-remove-a-volume"></a>To add or remove a volume
+#### <a name="to-add-or-remove-a-volume"></a>Szeretne felvenni vagy eltávolítani egy kötet
 
-1. Go to your StorSimple device and click **Backup policy**.
+1. A StorSimple-eszközben kattintson a **Biztonsági mentési szabályzat** lehetőségre.
 
-2. In the tabular listing of the policies, select and click the policy that you want to modify. Right-click to invoke the context menu and then select **Add/remove volume**.
+2. A házirendek táblázatos listája, jelölje ki és kattintson a módosítani kívánt szabályzatot. Kattintson a jobb gombbal a helyi menü meghívni, és jelölje ki **hozzáadása kötet**.
 
-    ![manage schedules](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol1.png)
+    ![ütemezések kezelése](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol1.png)
 
-3. In the **Add/remove volume** blade, select or deselect the checkbox(es) to add or remove the volume. Multiple volumes are selected/deselected by checking or unchecking the corresponding checkboxes.
+3. Az a **hozzáadása kötet** panelen, jelölje be, vagy törölje a checkbox(es) hozzáadásához, vagy távolítsa el a kötetet. Több kötet a kijelölt/bejelölve ellenőrzése vagy a megfelelő jelölőnégyzet jelölésének törlése.
 
-    ![manage schedules](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol3.png)
+    ![ütemezések kezelése](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol3.png)
 
-    If you assign volumes from different volume containers to a backup policy, then you will need to remember to fail over those volume containers together. You will see a warning to that effect.
+    Ha másik kötetre tárolókból kötetek rendel a biztonsági mentési házirend, majd akkor ne felejtse el a feladataikat együtt átadó e kötettárolók. Ebből a célból egy figyelmeztetés jelenik meg.
 
-    ![manage schedules](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol2.png)
+    ![ütemezések kezelése](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol2.png)
 
-4. You are notified when the backup policy is modified. The backup policy list is also updated.
+4. Értesítést kap a biztonsági mentési házirend módosítása. A biztonsági mentési házirend listán is frissül.
 
-    ![manage schedules](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol6.png)
+    ![ütemezések kezelése](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol6.png)
 
 
 

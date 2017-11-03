@@ -1,7 +1,7 @@
-This is reference information for Azure Functions developers. If you're new to Azure Functions, start with the following resources:
+Ez az Azure Functions fejlesztői útmutatót. Ha most ismerkedik az Azure Functions, kezdje a a következőket:
 
-* [Create your first function](../articles/azure-functions/functions-create-first-azure-function.md)
-* [Azure Functions developer reference](../articles/azure-functions/functions-reference.md)
-* [C#](../articles/azure-functions/functions-reference-csharp.md), [F#](../articles/azure-functions/functions-reference-fsharp.md), or [Node](../articles/azure-functions/functions-reference-node.md) developer reference
-* [Azure Functions triggers and bindings concepts](..\articles\azure-functions\functions-triggers-bindings.md)
+* [Az első függvény létrehozása](../articles/azure-functions/functions-create-first-azure-function.md).
+* [Az Azure Functions fejlesztői segédanyagai](../articles/azure-functions/functions-reference.md).
+* [C#](../articles/azure-functions/functions-reference-csharp.md), [F #](../articles/azure-functions/functions-reference-fsharp.md), [csomópont](../articles/azure-functions/functions-reference-node.md), vagy [Java](..\articles\azure-functions\functions-reference-java.md) fejlesztői leírás.
+* [Az Azure Functions eseményindítók és kötések fogalmak](..\articles\azure-functions\functions-triggers-bindings.md).
 

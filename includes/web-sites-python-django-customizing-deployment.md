@@ -25,10 +25,10 @@ Ha az üzembe helyezést még nagyobb mértékben szeretné irányítani, akkor 
     \.deployment
     \deploy.cmd
 
-A fájlokat az [Azure parancssori felületén][Azure parancssori felületén] hozhatja létre.  Futtassa a következő parancsot a projektmappából:
+Használhatja a [Azure parancssori felület] [ Azure command-line interface] a fájlok létrehozásához.  Futtassa a következő parancsot a projektmappából:
 
     azure site deploymentscript --python
 
 Ha ezek a fájlok nem léteznek, az Azure létrehoz, majd futtat egy ideiglenes üzembe helyezési parancsfájlt.  Ez megegyezik azzal, amelyet a fenti paranccsal hozhat létre.
 
-[Azure parancssori felületén]: http://azure.microsoft.com/downloads/
+[Azure command-line interface]: http://azure.microsoft.com/downloads/

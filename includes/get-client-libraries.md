@@ -1,5 +1,5 @@
-### <a name="install-via-composer"></a>Install via Composer
-1. Create a file named **composer.json** in the root of your project and add the following code to it:
+### <a name="install-via-composer"></a>Keresztül szerkesztő telepítése
+1. Hozzon létre egy fájlt **composer.json** a projekt gyökérkönyvtárában, és az alábbi kód felvétele:
    
     ```json
     {
@@ -8,14 +8,14 @@
       }
     }
     ```
-2. Download **[composer.phar][composer-phar]** in your project root.
-3. Open a command prompt and execute the following command in your project root
+2. Töltse le  **[composer.phar] [ composer-phar]**  a projekt gyökérkönyvtárában.
+3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökérkönyvtárában
    
     ```
     php composer.phar install
     ```
 
-Alternatively go to the [Azure Storage PHP Client Library][php-sdk-github] on GitHub to clone the source code.
+Másik lehetőségként keresse fel a [Azure Storage PHP ügyféloldali kódtár] [ php-sdk-github] a Githubon a forráskód klónozását.
 
 [php-sdk-github]: https://github.com/Azure/azure-storage-php
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git

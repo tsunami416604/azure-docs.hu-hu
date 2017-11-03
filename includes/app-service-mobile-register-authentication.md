@@ -1,14 +1,14 @@
 
-First, you need to register your app at an identity provider's site, and then you will set the provider-generated credentials in the Mobile Apps back end.
+Először kell regisztrálnia az alkalmazást az identitásszolgáltató helyen, és ezután állítja a szolgáltató által létrehozott hitelesítő adatokat a Mobile Apps háttérbeli.
 
-1. Configure your preferred identity provider by following the provider-specific instructions:
+1. Az előnyben részesített identitásszolgáltató konfigurálása a szolgáltatói utasításai szerint:
 
    * [Azure Active Directory](../articles/app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)
    * [Facebook](../articles/app-service/app-service-mobile-how-to-configure-facebook-authentication.md)
    * [Google](../articles/app-service/app-service-mobile-how-to-configure-google-authentication.md)
    * [Microsoft](../articles/app-service/app-service-mobile-how-to-configure-microsoft-authentication.md)
    * [Twitter](../articles/app-service/app-service-mobile-how-to-configure-twitter-authentication.md)
-2. Repeat the previous steps for each provider you want to support in your app.
+2. Ismételje az előző lépést az egyes szolgáltatók szeretne támogatni az alkalmazásban.
 
 <!-- URLs. -->
 [Azure portal]: https://portal.azure.com/

@@ -1,0 +1,208 @@
+---
+title: "Azure-házirend segítségével kényszeríteni a szervezeti megfelelőségi szabályzatok létrehozása és kezelése |} Microsoft Docs"
+description: "Azure házirend segítségével szabványok kényszerítése, szabályozási megfelelőségi és naplózási követelményeknek, kapcsolatos költségek szabályozását, biztosítja az egységességet biztonsági és teljesítménynövelő és vállalati széles tervezési alapelvek ugyanazok."
+services: azure-policy
+keywords: 
+author: Jim-Parker
+ms.author: jimpark
+ms.date: 10/06/2017
+ms.topic: tutorial
+ms.service: azure-policy
+ms.custom: mvc
+ms.openlocfilehash: 55e5a60294fc5ccb2a55b1e572af2fd27c68f462
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
+---
+# <a name="create-and-manage-policies-to-enforce-compliance"></a>Kényszeríteni a megfelelőségi szabályzatok létrehozása és kezelése
+
+Az Azure-ban a szabályzatok létrehozása és kezelése megértése fontos megfelel a vállalati szabványoknak és a szolgáltatásszint-szerződések marad. Ebben az oktatóanyagban lesz bemutatják, hogyan használhatja az Azure-házirend létrehozása, hozzárendelése és házirendek, mint a szervezeten belüli kezeléséhez kapcsolódó gyakori feladatok elvégzéséhez:
+
+> [!div class="checklist"]
+> * Egy házirendet hoz létre a jövőben erőforrások feltételt érvényesítését
+> * Létrehozni és hozzárendelni egy kezdeményezésére definíciója erőforrások több megfelelőségi követéséről
+> * Nem megfelelő, vagy az elutasított resource megoldásához
+> * Egy új házirend megvalósítása a szervezeten belül
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+## <a name="opt-in-to-azure-policy"></a>Az Azure házirend engedélyezve
+
+Azure házirend jelenleg korlátozott előzetes érhető el, a hozzáférés kéréséhez regisztrálnia kell.
+
+1. Keresse fel Azure házirend https://aka.ms/getpolicy, és válassza ki a **regisztráció** a bal oldali ablaktáblán.
+
+   ![Keresse meg a házirend](media/assign-policy-definition/sign-up.png)
+
+2. Az előfizetések kiválasztásával Azure házirend szeretné a **előfizetés** lista szeretne dolgozni. Válassza ki **regisztrálása**.
+
+   Az előfizetési lista tartalmazza az összes Azure-előfizetések.
+
+   ![Szeretné használni az Azure-házirend](media/assign-policy-definition/preview-opt-in.png)
+
+   Attól függően, hogy igény szerint akkor is tarthat néhány napot ki, hogy fogadja el a regisztrációs kérelmet. Ha a kérés elfogadva lekérdezi, értesítést fog kapni e-mailben, hogy a szolgáltatás segítségével megkezdheti.
+
+## <a name="assign-a-policy"></a>A házirend kijelölése
+
+Az első lépés betartása Azure házirend, hogy rendelje hozzá a házirend-definíció. Házirend-definíció határozza meg, milyen feltétel, a házirend kényszerítve van, és a végrehajtandó műveletet. Ebben a példában azt hozzárendelése nevű beépített házirend-definíció *szükséges SQL Server verziója 12.0*, kényszeríteni a feltétel, hogy az összes SQL Server-adatbázis megfelelőségének v12.0 kell lennie.
+
+1. Indítsa el az Azure szolgáltatás az Azure portálon keres, majd válassza **házirend** a bal oldali ablaktáblán.
+
+   ![Keresse meg a házirend](media/assign-policy-definition/search-policy.png)
+
+2. Válassza ki **hozzárendelések** a bal oldali ablaktáblában az Azure-szabályzatának oldaláról. Olyan házirendet, amely belül egy adott hatókörhöz van hozzárendelve.
+3. Válassza ki **házirend hozzárendelése** tetején a **hozzárendelések** ablaktáblán.
+
+   ![Rendelje hozzá a házirend-definíció](media/create-manage-policy/select-assign-policy.png)
+
+4. A a **házirend hozzárendelése** kattintson ![házirend-definíció gomb](media/assign-policy-definition/definitions-button.png) melletti **házirend** mezőt nyissa meg a rendelkezésre álló-definíciók listáján.
+
+   ![Nyissa meg az elérhető, házirend-definíciók](media/create-manage-policy/open-policy-definitions.png)
+
+5. Válassza ki **szükséges SQL Server verzió 12.0**.
+   
+   ![Keresse meg a házirend](media/create-manage-policy/select-available-definition.png)
+
+6. Adjon meg egy megjelenítési **neve** a házirend-hozzárendelés. Ebben az esetben most használja *szükséges SQL Server verziója 12.0*. Azt is megteheti egy nem kötelező **leírás**. A leírás előírja, hogyan biztosítja a házirend-hozzárendelést, ebben a környezetben létrehozott összes SQL-kiszolgálók adatait 12.0 verziója.
+7. A tarifacsomagjának módosítása a következőre módosítani **szabványos** annak érdekében, hogy a házirend alkalmazva lesz a meglévő erőforrásokat.
+
+   Nincsenek Azure házirend – két tarifacsomagok *szabad* és *szabványos*. Az ingyenes szint csak házirendjeinek betartatásával jövőbeli erőforrásokon, a Standard, is kényszerítheti azokat a meglévő erőforrásokat jobb megértése érdekében a megfelelőségi állapot. Mivel jelenleg korlátozott előzetes, nem még kiadtuk árképzési modellt, így Ön nem kap egy számlázási kiválasztásának *szabványos*. További vonatkozó, tekintse meg: [Azure házirend árképzési](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/).
+
+8. Válassza ki a **hatókör** -előfizetés (vagy erőforráscsoport) korábban regisztrált amikor Azure házirendbe választotta. A hatókör határozza meg, milyen erőforrásokat, vagy az erőforrások csoportosítása a házirend-hozzárendelés lekérdezi kényszeríti az. Ez terjedhet előfizetés erőforráscsoportokhoz.
+
+   Az ebben a példában ez az előfizetés - használjuk **Azure Analytics kapacitás fejlesztői**. Az előfizetés eltérnek.
+
+10. Válassza ki **hozzárendelése**.
+
+## <a name="implement-a-new-custom-policy"></a>Egy új egyéni házirend megvalósítása
+
+Most, hogy a házirend-definíció hozzárendelt igazolnia, az oktatóanyagban módosítjuk hozzon létre egy új házirendet költségek biztosításával, amely e a környezetben létrehozott virtuális gépek a G sorozat nem lehet menteni. Így minden alkalommal, amikor a szervezeti felhasználó próbál hozzon létre virtuális Gépet a G sorozat megtagadja a kérelmet fogja lekérni.
+
+1. Válassza ki **Definition** alatt **szerzői műveletek** a bal oldali ablaktáblán.
+
+   ![A szerzői definíciót](media/create-manage-policy/definition-under-authoring.png)
+
+2. Válassza ki **+ házirend-definíció**.
+3. Írja be a következőket:
+
+   - A házirend - definíció neve *szükséges VM kisebb, mint a G adatsorozat termékváltozatok*
+   - Leírja, hogy milyen a házirend-definíció az célja, hogy nincs – a házirend-definíció kényszeríti annak engedélyezése, ebben a hatókörben létrehozott összes virtuális gép rendelkezik-e termékváltozatok kisebb, mint a költségek csökkentése a G adatsorozat.
+   - Az előfizetés, a házirend-definíció rendszer élő – ebben az esetben a házirend-definíció lesz élő **Advisor Analytics kapacitás fejlesztői**. Az előfizetési lista eltérnek.
+   - Írás a json-kódot:
+      - A házirend-paraméterek.
+      - A szabályok/Házirendfeltételek, ebben az esetben – G adatsorozat egyenlő méretű Termékváltozat-méretét
+      - A házirend hatása ebben az esetben – **Megtagadás**.
+   
+   Ez mit kell hasonlítania a JSON-ban
+
+```json
+{
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachines/sku.name",
+            "like": "Standard_G*"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+}
+```
+
+   A mintákat a json-kód megtekintéséhez nézze meg a cikk - [erőforrás házirendek – áttekintés](../azure-resource-manager/resource-manager-policy.md)
+   
+4. Kattintson a **Mentés** gombra.
+
+## <a name="create-and-assign-an-initiative-definition"></a>Létrehozni és hozzárendelni egy kezdeményezésére definíciója
+
+Kezdeményezésére definition egy átfogó cél eléréséhez több házirend-definíciók csoportosíthatja. Győződjön meg arról, hogy az erőforrás-definícióban hatókörén belül maradnak megfelel a házirend-definíciók a kezdeményezésére definícióját alkotó egy kezdeményezésére definition hoz létre.  Tekintse meg a [Azure házirendek – áttekintés](./azure-policy-introduction.md) kezdeményezésére definíciók további információt.
+
+### <a name="create-an-initiative-definition"></a>Hozzon létre egy kezdeményezésére definíciója
+
+1. Válassza ki **definíciók** alatt **szerzői műveletek** a bal oldali ablaktáblán.
+
+   ![Válassza ki a definíciók](media/create-manage-policy/select-definitions.png)
+
+2. Válassza ki **kezdeményezésére Definition** az oldal tetején, ez a beállítás szükséges, hogy a **kezdeményezésére Definition** űrlap.
+3. Adja meg a név és leírás kezdeményezésére.
+
+   Ebben a példában azt szeretnénk, hogy megfelel a házirend-definíciók információkat biztonságos erőforrások vannak, a kezdeményező neve lenne **biztonságos beolvasása**, és a leírás lenne: **e kezdeményezés lett létrejön tartozó erőforrások biztonságossá tétele az összes házirend-definíciók kezeléséhez**.
+
+   ![Kezdeményezésére meghatározása](media/create-manage-policy/initiative-definition.png)
+
+4. Tallózzon a listája **definíciók** válassza ki a házirend definíciójában található szeretné, hogy kezdeményezésére hozzá. Az a **beolvasása biztonságos** kezdeményezés, adja hozzá a következő házirend-definíciók beépített:
+   - SQL Server verziója 12.0 megkövetelése
+   - A biztonsági központban nem védett webalkalmazások figyeléséhez.
+   - A figyelő megengedő hálózaton keresztül a Security Center.
+   - A figyelő lehetséges alkalmazás engedélyezése a biztonsági központban.
+   - A figyelő a virtuális gépek lemezei a biztonsági központban titkosítás nélkül.
+
+   ![Kezdeményezésére definíciók](media/create-manage-policy/initiative-definition-2.png)
+
+   A listáról a házirend-definíciók kiválasztása után megjelenik a **házirendek és a paraméterek**, ahogy fent látható.
+
+5. Kattintson a **Létrehozás** gombra.
+
+### <a name="assign-an-initiative-definition"></a>Rendelje hozzá egy kezdeményezésére definíciója
+
+1. Lépjen a **definíciók** lap **szerzői műveletek**.
+2. Keresse meg a **beolvasása biztonságos** létrehozott kezdeményezésére definíciója.
+3. A kezdeményezésére definíciót, majd válassza ki és **hozzárendelése**.
+
+   ![Rendelje hozzá a definíció](media/create-manage-policy/assign-definition.png)
+
+4. Töltse ki a **hozzárendelés** képernyőn írja be:
+   - Name: biztonságos-hozzárendelést kapnak
+   - Leírás: a kezdeményezésére hozzárendelés megfelelő csoportját, a házirend-definíciók kényszerítése felé a **Azure Advisor kapacitás fejlesztői** előfizetés
+   - IP-címek: Standard
+   - azt szeretné, hogy alkalmazza a hozzárendelt hatókör: **Azure Advisor kapacitás fejlesztői**
+
+5. Válassza ki **hozzárendelése**. 
+
+## <a name="resolve-a-non-compliant-or-denied-resource"></a>Nem megfelelő, vagy az elutasított resource megoldásához
+
+Követően a fenti példában a házirend-definíció szükséges az SQL server verziója 12.0 hozzárendelése után egy SQL server különböző verziójával szeretné beolvasni megtagadva. Ebben a részben azt még útmutató alapján létrehozott egy másik verziót az SQL server visszautasított kísérlete feloldása.
+
+1. Válassza ki **hozzárendelések** a bal oldali ablaktáblán.
+2. Tallózzon az összes házirend-hozzárendelést, és indítsa el a *szükséges SQL Server verziója 12.0* hozzárendelés.
+3. Az erőforráscsoportok, amelyben próbált létrehozni az SQL server kivételként kérelmet. Ebben az esetben, kivéve azt Microsoft.Sql/servers/databases: *baconandbeer/Cheetos* és *baconandbeer/Chorizo*.
+
+   ![Kizárási kérése](media/create-manage-policy/request-exclusion.png)
+
+   Elutasított erőforrás tudta feloldani más módokon tartalmazza: a házirendhez társított, ha egy erős indoklását kellene létrehozni az SQL-kiszolgáló, és közvetlenül a házirend szerkesztése, ha rendelkezik hozzáféréssel rendelkezik az ügyfél a elérése.
+
+4. Kattintson a **Mentés** gombra.
+
+Ebben a szakaszban irányuló kísérlet egy kivételt a erőforrások kérésével hozzon létre egy SQL server verziójával 12.0, szolgáltatásmegtagadásos feloldva.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha azt tervezi, folytassa a következő útmutatókból dolgozni, nem megszüntetése a jelen útmutató létrejött erőforrásokat. Ha nem szeretné folytatni, használja az alábbi lépéseket a hozzárendelések vagy a fenti létrehozott definíciók törléséhez:
+
+1. Válassza ki **definíciók** (vagy **hozzárendelések** Ha hozzárendelés törölni kívánt) a bal oldali ablaktáblán.
+2. Keresse meg a új kezdeményezés, vagy a házirend definition (vagy a hozzárendelés) most létrehozott.
+3. Válassza ki a definíciót vagy a hozzárendelés végén a három pontot, majd **definíció törlése** (vagy **hozzárendelés törlése**).
+
+## <a name="next-steps"></a>Következő lépések
+
+Ebben az oktatóanyagban hogy sikeresen valósítható meg a következő:
+
+> [!div class="checklist"]
+> * Egy házirend érvényesítését hoz létre a jövőben erőforrásokra vonatkozó feltétel
+> * Létrehozott, és rendelje hozzá egy kezdeményezésére definíciója erőforrások több megfelelőségi nyomon követésére
+> * Nem megfelelő, vagy az elutasított erőforrás feloldva
+> * Egy új házirendet megvalósítása a szervezeten belül
+
+További információt a házirend-definíciók struktúrák, tekintse meg a cikk:
+
+> [!div class="nextstepaction"]
+> [Házirend szerkezete](../azure-resource-manager/resource-manager-policy.md#policy-definition-structure)

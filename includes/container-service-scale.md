@@ -1,4 +1,3 @@
-# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Ügynökcsomópontok méretezése a Container Service-fürtökben
 [Az Azure Container Service-fürt üzembe helyezését követően](../articles/container-service/dcos-swarm/container-service-deployment.md) előfordulhat, hogy módosítania kell az ügynökcsomópontok számát. Például ha több ügynökre van szüksége további tárolóalkalmazások vagy -példányok futtatásához. 
 
 Az Azure Portal vagy az Azure CLI 2.0 használatával módosíthatja az ügynökcsomópontok számát DC/OS-, Docker Swarm- vagy Kubernetes-fürtökben. 

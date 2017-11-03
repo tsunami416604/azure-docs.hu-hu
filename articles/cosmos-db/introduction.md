@@ -11,46 +11,43 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: c9d04ae0bc11b99f893e5f003f136fbfe0dfccc9
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/11/2017
-
+ms.openlocfilehash: d5ae2a68f749310d4d6a2514055fb258978eec9c
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/12/2017
 ---
-
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázisa. Az Azure Cosmos DB segítségével egyetlen gombnyomással rugalmasan és függetlenül méretezhető az átviteli sebesség és a tárterület, akár több földrajzi Azure-régióra kiterjedően is. A rendszer az átviteli sebességre, a késére, a rendelkezésre állásra és a konzisztenciára vonatkozó garanciákat biztosít átfogó [szolgáltatói szerződésekkel](https://aka.ms/acdbsla) (SLA). Ilyet egyetlen másik adatbázis-szolgáltatás sem kínál.
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázisa. Az Azure Cosmos DB segítségével egyetlen gombnyomással rugalmasan és függetlenül méretezhető az átviteli sebesség és a tárterület, akár több földrajzi Azure-régióra kiterjedően is. A rendszer az átviteli sebességre, a késére, a rendelkezésre állásra és a konzisztenciára vonatkozó garanciákat biztosít átfogó [szolgáltatói szerződésekkel](https://aka.ms/acdbsla) (SLA). Ilyet egyetlen másik adatbázis-szolgáltatás sem kínál. Is [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/) díjmentesen és kötelezettségvállalás ingyenes Azure-előfizetéssel, nélkül.
 
-![Az Azure Cosmos DB a Microsoft globálisan elosztott adatbázis-szolgáltatása rugalmas horizontális felskálázási képességgel, garantáltan alacsony késéssel, öt konzisztenciamodellel, valamint átfogó garantált SLA-kkal.](./media/introduction/azure-cosmos-db.png)
+![Azure Cosmos-adatbázis a Microsoft globálisan elosztott adatbázis-szolgáltatás rugalmas kibővített, alacsony késleltetés, öt konzisztencia modellek és garantált garantált szolgáltatási szintek átfogó garantált a](./media/introduction/azure-cosmos-db.png)
 
-## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Az Azure Cosmos DB előnyeit kihasználó megoldások
-
-Bármely olyan [webes, mobil-, játék és IoT-alkalmazás](use-cases.md) esetén, amelynek nagy mennyiségű írási és olvasási műveletet kell kezelnie [globálisan](distribute-data-globally.md), és rövid válaszidőt kell biztosítani a különféle adatok kezelésekor, előnyt jelent az Azure Cosmos DB [garantált](https://azure.microsoft.com/support/legal/sla/cosmos-db/) rendelkezésre állása, magas átviteli sebessége, kis késése és beállítható konzisztenciája.
+> [!div class="nextstepaction"]
+> [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="key-capabilities"></a>Főbb képességek
 Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB az alábbi képességekkel segíti elő, hogy skálázható, gyors válaszidejű alkalmazásokat építhessen:
 
 * **Kulcsrakész globális terjesztés**
     * Tetszőleges számú [Azure-régióban](https://azure.microsoft.com/regions/) [terjesztheti az adatait](distribute-data-globally.md) [egyetlen gombnyomással](tutorial-global-distribution-documentdb.md). Ezáltal ott helyezheti el az adatokat, ahol a felhasználói vannak, így a lehető legkisebb késést garantálhatja a felhasználóknak. 
-    * Az Azure Cosmos DB többkiszolgálós API felületeivel az alkalmazás mindig tudni fogja, hol található a legközelebbi régió, és a legközelebbi adatközpontnak küldi el a kérelmeket. Mindehhez nem kell módosítania a konfigurációt. Megadhatja az írási régiót és tetszőleges számú olvasási régiót, a többit automatikusan elvégzi a rendszer.
+    * Azure Cosmos DB használatával többhelyű API-k, az alkalmazás mindig tudja, ahol a legközelebbi régiót, és kérelmek küldése a legközelebbi adatközpont. Mindez lehetséges konfigurációs módosítások nélküli. Megadta az írási-régiót szeretné, hogy annyi olvasás-régiók, ha Ön és a többi kell kezelni.
 
 * **Több adatmodell és népszerű API az adatok eléréséhez és lekérdezéséhez**
     * Az atom-rekord-szekvencián (ARS) alapuló adatmodell, amelyre az Azure Cosmos DB épült, natív módon támogat többféle adatmodellt, többek között a dokumentumokat, a diagramokat, a kulcs-értékeket, a táblákat és az oszlopos adatmodelleket.
     * Az alábbi adatmodellekhez készült API-kat több nyelven elérhető SDK-k támogatják:
-        * [DocumentDB API](documentdb-introduction.md)
-        * [MongoDB API](mongodb-introduction.md)
-        * [Tábla API](table-introduction.md)
-        * [Graph (Gremlin) API](graph-introduction.md)
-        * Hamarosan további adatmodellek is elérhetővé válnak 
+        * [A DocumentDB API](documentdb-introduction.md): egy séma nélküli JSON adatbázismotor SQL lekérdezési képességeket.
+        * [MongoDB API](mongodb-introduction.md): A MongoDB adatbázis-szolgáltatás Cosmos DB platformra épül. Kompatibilis a meglévő MongoDB szalagtárak, illesztőprogramok, eszközök és alkalmazások.
+        * [Tábla API](table-introduction.md): A kulcs-érték tároló adatbázis szolgáltatás biztosítja a prémium szintű funkciókat az Azure Table storage alkalmazások beépített.
+        * [Graph API (Gremlin)](graph-introduction.md): egy grafikonon adatbázis-szolgáltatás, amely következő a [Apache TinkerPop specification](http://tinkerpop.apache.org/).
+        * További adatok modellek hamarosan!
 
 * **Igény szerinti rugalmas átviteli sebesség és tárterület, világszerte**
-    * Az adatbázis átviteli sebességét könnyedén méretezheti [másodpercalapú](request-units.md) részletességgel, és igény szerint bármikor megváltoztathatja. 
+    * Könnyedén méretezhető, adatbázis-átviteli egy [másodpercenként](request-units.md) granularitási, és bármikor módosíthatja. 
     * A méretigények mindenkori kielégítéséhez a tárterület méretét [átláthatóan és automatikusan](partition-data.md) méretezheti.
 
 * **Gyors válaszidejű és alapvető fontosságú alkalmazásokat hozhat létre**
@@ -74,7 +71,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB az aláb
     * Az Azure Cosmos DB adatbázismotorja teljesen sémafüggetlen. Automatikusan indexel minden fogadott adatot bármiféle séma vagy index nélkül, és villámgyors lekérdezéseket kínál. 
 
 * **Alacsony tulajdonosi költségek**
-    * Öt-tízszer [költséghatékonyabb](https://aka.ms/cosmos-db-tco-paper), mint egy nem felügyelt megoldás.
+    * A 10-szer öt [költséghatékonyabb](https://aka.ms/cosmos-db-tco-paper) mint egy nem kezelt megoldás.
     * Harmadannyiba kerül, mint a DynamoDB.
 
 ## <a name="capability-comparison"></a>Képességek összehasonlítása
@@ -90,6 +87,9 @@ Az Azure Cosmos DB a relációs és nem relációs adatbázisok legjobb képess�
 | Adatmodell és API | Relációs és SQL | Többmodelles és OSS API | Többmodelles és SQL, valamint OSS API (továbbiak hamarosan elérhetőek) |
 | SLA-k | Igen | Nem | Igen, késésre, átviteli sebességre, konzisztenciára, rendelkezésre állásra vonatkozó átfogó SLA-k |
 
+## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Az Azure Cosmos DB előnyeit kihasználó megoldások
+
+Bármely olyan [webes, mobil-, játék és IoT-alkalmazás](use-cases.md) esetén, amelynek nagy mennyiségű írási és olvasási műveletet kell kezelnie [globálisan](distribute-data-globally.md), és rövid válaszidőt kell biztosítani a különféle adatok kezelésekor, előnyt jelent az Azure Cosmos DB [garantált](https://azure.microsoft.com/support/legal/sla/cosmos-db/) rendelkezésre állása, magas átviteli sebessége, kis késése és beállítható konzisztenciája. Megtudhatja, hogyan alkalmazható CosmosDB kapcsolatos [IoT telematikára](use-cases.md#iot-and-telematics), [kereskedelmi és marketing](use-cases.md#retail-and-marketing), [játékok](use-cases.md#gaming) és [webes és mobilalkalmazásokhoz](use-cases.md#web-and-mobile-applications) .
 
 ## <a name="next-steps"></a>Következő lépések
 Az alábbi rövid útmutatókkal könnyedén elkezdheti az Azure Cosmos DB használatát:
@@ -99,3 +99,5 @@ Az alábbi rövid útmutatókkal könnyedén elkezdheti az Azure Cosmos DB haszn
 * [Bevezetés az Azure Cosmos DB Graph API-jának használatába](create-graph-dotnet.md)
 * [Bevezetés az Azure Cosmos DB Table API-jának használatába](create-table-dotnet.md)
 
+> [!div class="nextstepaction"]
+> [Azure Cosmos DB szabad próbálja](https://azure.microsoft.com/try/cosmosdb/)

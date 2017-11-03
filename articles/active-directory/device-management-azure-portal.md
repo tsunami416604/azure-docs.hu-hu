@@ -1,0 +1,201 @@
+---
+title: "Kezelése az eszközök használatával az Azure portál – előzetes verzió |} Microsoft Docs"
+description: "Ismerje meg, hogyan használható az Azure-portálon eszközök kezelésére."
+services: active-directory
+documentationcenter: 
+author: MarkusVi
+manager: femila
+editor: 
+ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 08/24/2017
+ms.author: markvi
+ms.reviewer: jairoc
+ms.openlocfilehash: 4b46e1627a229b0649d9ccd2550cd28fda9849f8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
+---
+# <a name="managing-devices-using-the-azure-portal---preview"></a>Kezelés eszközök használatával az Azure portál – előzetes
+
+>[!NOTE]
+>Ez a funkció jelenleg nyilvános előzetes verziójához. Készüljön visszaállítja, vagy távolítsa el a módosításokat. A szolgáltatás bármely Azure Active Directory (Azure AD) előfizetés nyilvános előzetes érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a funkció az egyes funkcióit szükség lehet az Azure Active Directory premium előfizetéssel.
+
+
+Az eszköz kezelése az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről érnek el az erőforrásokat. 
+
+Ez a témakör:
+
+- Feltételezi, hogy Ön ismeri a [eszköz kezelése az Azure Active Directoryban bemutatása](device-management-introduction.md)
+
+- Az Azure portál használata az eszközök felügyeletével kapcsolatos információt
+
+
+Az Azure portálon lévő eszközök kezeléséhez, akkor kattintson **eszközök** a a **kezelése** szakasza a a **Azure Active Directory** panelen.
+
+![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/11.png)
+
+
+
+
+## <a name="configure-device-settings"></a>Eszközök beállításainak konfigurálása
+
+Az Azure portál használatával eszközei kezelésére, szükségük lesz regisztrálva vagy az Azure AD-tartományhoz. A rendszergazdák úgy finomhangolhatja, regisztrálása, illetve az eszközök csatlakoztatása az eszköz beállítások konfigurálásával folyamatán.
+
+![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/22.png)
+
+
+Az eszköz beállítások panel konfigurálását teszi lehetővé:
+
+- **Felhasználók eszközök regisztrálása az Azure AD** – a beállítások lehetővé teszi a felhasználók számára az Azure AD is kapcsolódhatnak eszközök. Az alapértelmezett érték **összes**.
+
+- **További Azure AD a helyi rendszergazdák csatlakoztatott eszközök** -kiválaszthatja, hogy az adott eszközön helyi rendszergazdai jogosultságokkal rendelkező felhasználók. Hozzá felhasználót adnak hozzá a *Eszközadminisztrátorok* szerepkört az Azure ad-ben. Az Azure AD globális rendszergazdák és eszköztulajdonosok alapértelmezés szerint kapnak helyi rendszergazdai jogosultságokkal. Ez a beállítás akkor premium edition-funkció termékek, például az Azure AD Premium vagy a nagyvállalati mobilitási csomag (EMS) keresztül érhető el. 
+
+- **Felhasználók előfordulhat, hogy regisztrálják az eszközeiket az Azure AD** -kell konfigurálnia ezt a beállítást, az eszközök regisztrálása az Azure ad-val. Ha **nincs**, eszközök regisztrálása, amelyek nincsenek tartományhoz az Azure AD vagy az Azure AD-tartományhoz hibrid nem engedélyezettek. Az Office 365 mobileszköz-felügyeleti (MDM) vagy a Microsoft Intune beléptetési regisztráció szükséges. Ha konfigurálta a szolgáltatások valamelyikét **minden** van kiválasztva és **NONE** nem érhető el.
+
+- **Csatlakoztathatják az eszközeiket a többtényezős hitelesítés megkövetelése** -dönthet úgy, hogy felhasználóknak meg kell adnia egy második hitelesítési tényezővel az eszköz csatlakoztatása az Azure AD. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy többtényezős hitelesítés megkövetelése eszközök regisztrálásakor. Mielőtt engedélyezné ezt a szolgáltatást a többtényezős hitelesítést, győződjön meg róla, hogy a többtényezős hitelesítés beállítása a felhasználók regisztrálják az eszközeiket. A különböző Azure multi-factor authentication szolgáltatások további információkért lásd: [Ismerkedés az Azure multi-factor Authentication hitelesítés](../multi-factor-authentication/multi-factor-authentication-get-started.md). 
+
+- **Eszközök maximális számát** – Ez a beállítás engedélyezi, hogy válassza ki, amelyeken az Azure ad-ben a felhasználói eszközök maximális számát. Ha a felhasználó eléri ezt a kvótát, amelyek nem tudják további eszközöket felvenni, amíg egy vagy több olyan meglévő eszközt a rendszer eltávolítja. Az eszköz ajánlat csatlakozott az Azure AD vagy az Azure AD ma regisztrált összes eszköz akkor számít. Az alapértelmezett érték **20**.
+
+- **Felhasználók is szinkronizálásának beállítások és alkalmazások adatainak eszközök** -alapértelmezés szerint ez a beállítás értéke **NONE**. Egyes felhasználók vagy csoportok, vagy az összes kijelölésével a felhasználói beállítások és alkalmazások adatainak a Windows 10-eszközök szinkronizálásának. További tudnivalókért a Windows 10-es sync működéséről.
+Ez a beállítás akkor a termékek, például az Azure AD Premium vagy a nagyvállalati mobilitási csomag (EMS) keresztül érhető el prémium funkció.
+ 
+    ![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/21.png)
+
+
+
+
+## <a name="locate-devices"></a>Keresse meg az eszközök
+
+A rendszergazdák az Azure portálon, két lehetősége van regisztrált és a csatlakoztatott eszköz kereséséhez:
+
+- **Minden eszköz** a a **kezelése** szakasza a **eszközök** panel  
+
+    ![Minden eszköz](./media/device-management-azure-portal/41.png)
+
+
+- **Eszközök** a a **kezelése** szakasza egy **felhasználói** panel
+ 
+    ![Minden eszköz](./media/device-management-azure-portal/43.png)
+
+
+
+Mindkét lehetőség érhet nézetet, amely:
+
+
+- Lehetővé teszi, hogy a megjelenített név használata szűrő eszközöket keres.
+
+- Lehetővé teszi a regisztrált és a csatlakoztatott eszközök részletes áttekintése
+
+- Lehetővé teszi az eszköz általános felügyeleti feladatai
+   
+
+![Minden eszköz](./media/device-management-azure-portal/51.png)
+
+
+## <a name="device-management-tasks"></a>Eszközfelügyeleti feladatokat
+
+A rendszergazdák a regisztrált vagy csatlakoztatott eszközöket kezelheti. Ez a szakasz a közös eszköz felügyeleti feladatokkal kapcsolatos információt nyújt.
+
+
+**Az Intune eszközök kezelésére** – Ha egy Intune-rendszergazda, jelölésű eszközöket kezelheti **a Microsoft Intune**. A rendszergazda további eszköz látható 
+
+![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/31.png)
+
+
+**Engedélyezi / letiltja az Azure AD-eszközök**
+
+Engedélyezheti vagy letilthatja az eszköz, kell lennie egy globális rendszergazda Azure AD-ben. Ha letilt egy eszközt megakadályozza, hogy az eszköz az Azure AD-erőforrások hozzáférését.  Az eszköz letiltása, vagy kattintson is *...* Kattintson a további részleteket.
+
+ 
+![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/33.png)
+
+Ha letilt egy eszközt a állapotát módosítja a **engedélyezve** oszlop **nem**.
+
+![Az eszköz letiltása](./media/device-management-azure-portal/32.png)
+
+
+**Egy Azure AD-eszköz törlése** -, eszköz törlése kell lennie egy globális rendszergazda Azure AD-ben.  
+Egy eszköz törlése:
+ 
+- Megakadályozza, hogy az eszköz az Azure AD-erőforrások elérése 
+
+- Eltávolítja az összes csatlakoztatott eszközön, például részletei, a BitLocker-kulcsok Windows-eszközök  
+
+- Nem állíthatók helyre tevékenységet jelent, és nem ajánlott, kivéve, ha szükséges
+
+Ha egy eszköz felügyelete egy másik felügyeleti hatóság (pl. Microsoft Intune), győződjön meg arról, hogy az eszközön tárolt adatok törléséig / már nincs az Azure ad-ben az eszköz törlése előtt.
+
+Kiválaszthatja "..." az eszköz törlése, vagy kattintson a további részleteket az eszközön
+ 
+![Eszköz törlése](./media/device-management-azure-portal/34.png)
+
+
+**Megtekintése vagy másolása Eszközazonosító** -Eszközazonosítót segítségével ellenőrizze az eszköz azonosító adatait az eszköz vagy a PowerShell használatával a hibaelhárítás során. A másolási lehetőséget szeretne használni, kattintson az eszközre.
+
+![Eszközazonosítót megtekintése](./media/device-management-azure-portal/35.png)
+  
+
+**Megtekintése vagy a BitLocker-kulcsok másolása** – Ha Ön rendszergazda, tekintheti meg és másolja a BitLocker-kulcsok számára, hogy a titkosított meghajtó helyreállítani segítségével. Ezek a kulcsok csak titkosított Windows-eszközökhöz elérhető, és a kulcsaikat az Azure ad-ben tárolt. Ezek a kulcsok másolhatja az eszköz részleteit való hozzáféréskor.
+ 
+![A BitLocker-kulcsok megtekintése](./media/device-management-azure-portal/36.png)
+
+
+
+## <a name="audit-logs"></a>Naplók
+
+
+Az eszköz tevékenységek a tevékenységi naplóit keresztül érhetők el. Ez magában foglalja az eszközregisztrációs szolgáltatást vagy a felhasználó által indított tevékenységek:
+
+- Eszköz létrehozása és hozzáadása tulajdonosai és felhasználói számára az eszközön
+
+- Eszköz beállításai
+
+- Eszköz műveletek, például a törlés vagy egy eszköz frissítése
+ 
+A belépési pont a naplózási adatok **naplók** a a **tevékenység** szakasza a **eszközök* panelen.
+
+![Naplók](./media/device-management-azure-portal/61.png)
+
+
+Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
+
+- az előfordulás dátuma és időpontját
+
+- a cél
+
+- a kezdeményező / szereplő (ki) tevékenység
+
+- a tevékenység (Mit)
+
+![Naplók](./media/device-management-azure-portal/63.png)
+
+A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
+ 
+![Naplók](./media/device-management-azure-portal/64.png)
+
+
+A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a naplózott adatokat:
+
+- Catergory
+- Tevékenység erőforrástípusa
+- Tevékenység
+- Dátumtartomány
+- cél
+- (Aktor) által kezdeményezett
+
+A szűrők mellett kereshet adott bejegyzéseket.
+
+![Naplók](./media/device-management-azure-portal/65.png)
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Kezelés az Azure Active Directoryban bemutatása](device-management-introduction.md)
+
+
+

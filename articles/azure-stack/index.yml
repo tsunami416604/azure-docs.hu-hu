@@ -4,7 +4,7 @@ title: Az Azure Stack operátori dokumentációja
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Az Azure Stack operátori dokumentációja – oktatóanyagok és API-referencia
-  description: 'Ismerje meg, hogyan használhatja az Azure Stack előzetes verzióját Azure-szolgáltatások továbbítására az adatközpontból. Megvalósíthatósági példakörnyezetből származó szolgáltatások megismerése és bemutatása.'
+  description: 'Ismerje meg, hogyan Azure verem használható Azure-szolgáltatások letölteni az Adatközpont. Ismerje meg, és funkciókat fogunk bemutatni, egy szoftverfejlesztői készlet vagy egy integrált rendszerek környezetben.'
   services: azure-stack
   author: czeumault
   manager: carolz
@@ -12,32 +12,32 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/23/2017
+  ms.date: 10/02/2017
   ms.author: carolz
 abstract:
-  description: 'A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat biztosíthat az adatközpontjából. Rövid útmutatóink és oktatóanyagaink ismertetik az Azure Stack üzembe helyezését és a szolgáltatásokat biztosítását.'
+  description: 'A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat biztosíthat az adatközpontjából. Útmutató: Azure verem szoftverfejlesztői készlet központi telepítése, integrált rendszerek és a csomag az infrastruktúra kezelése érdekében, és azokat a szolgáltatásokat, a quickstarts és oktatóanyagok biztosítani.<br/><br/>Ha olyan szolgáltatásokat használ, vagy hozza létre az alkalmazások Azure verem Azure verem felhasználó, tekintse meg a <a href="/azure/azure-stack/user">felhasználói dokumentáció</a>.'
 sections:
-  - title: 5 perces gyors útmutatók
+  - title: Első lépések
     items:
       - type: paragraph
-        text: 'A hardver beállítása és az Azure Stack üzembe helyezése:'
+        text: A hardver beállítása és telepítése Azure verem szoftverfejlesztői készlet.
       - type: list
         style: icon48
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            text: Az Azure Stack üzembe helyezése
+            text: Az Azure verem szoftverfejlesztői készlet telepítése
             href: azure-stack-deploy-overview.md
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Szolgáltatások hozzáadása az Azure Stack üzemelő példányához – ismertetés:'
+        text: Útmutató a szolgáltatások az Azure Alkalmazásveremben üzembe.
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Virtuális gépek engedélyezése az Azure Stackben</a>
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">SQL Database-adatbázisok engedélyezése az Azure Stackben</a>
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Webalkalmazások engedélyezése az Azure Stackben</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Virtuális gépek Azure-veremben ajánlat</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">SQL-adatbázisok Azure veremben ajánlat</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Kínál a webalkalmazások Azure veremben</a>
   - title: Ingyenes Pluralsight videós képzés
     items:
       - type: list
@@ -56,4 +56,4 @@ sections:
         className: cardsD
         items:
           - title: Parancssor
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>

@@ -9,17 +9,16 @@ editor:
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 08/23/2017
 ms.author: saysa
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 71e3d130f22515d22dc7f486f3dede936b874049
-ms.lasthandoff: 03/25/2017
-
-
+ms.openlocfilehash: d9870fafab3df3ab0ec72305e76a4d3547cc5b2c
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>A linuxos Java-alkalmazás felépítése és üzembe helyezése a Jenkins használatával
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
@@ -30,7 +29,7 @@ A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához 
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>A Jenkins beállítása egy Service Fabric-fürtben
 
-A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A következő szakaszok a fürtön belüli beállítást mutatják be.
+A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A következő szakaszok bemutatják, hogyan állítsa be a fürtben található Azure-tárfiók menteni az állapotot, a tároló-példány használata során.
 
 ### <a name="prerequisites"></a>Előfeltételek
 1. Szükséges egy kész linuxos Service Fabric-fürt. Az Azure Portallal létrehozott Service Fabric-fürtökön már telepítve van a Docker. A fürt helyi futtatása esetén ellenőrizze a ``docker info`` paranccsal, hogy a Docker telepítve van-e. Ha nincs telepítve, telepítse a következő parancsokkal:
@@ -38,40 +37,65 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
   ```sh
   sudo apt-get install wget
   wget -qO- https://get.docker.io/ | sh
-  ```
-2. Helyezze üzembe a Service Fabric tárolóalkalmazását a fürtön a következő lépésekkel:
+  ``` 
+
+   > [!NOTE]
+   > Győződjön meg arról, hogy a 8081 port van megadva egy egyéni végpont a fürtön.
+   >
+2. Az alkalmazás klónozása a következő lépések segítségével:
 
   ```sh
-git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git -b JenkinsDocker
+git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
 cd service-fabric-java-getting-started/Services/JenkinsDocker/
-azure servicefabric cluster connect http://PublicIPorFQDN:19080   # Azure CLI cluster connect command
+```
+
+3. A fájlmegosztás-tároló Jenkins állapot megőrzése:
+  * Az Azure storage-fiók létrehozása a **ugyanabban a régióban** egy névvel, mint a fürt ``sfjenkinsstorage1``.
+  * Hozzon létre egy **fájlmegosztás** alatt a tárolási fiók nevére, mint ``sfjenkins``.
+  * Kattintson a **Connect** fájlmegosztási és Megjegyzés: az értékek megjeleníti a **Linux csatlakozó**, az érték az alábbihoz hasonlóan kell kinéznie:
+```sh
+sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
+```
+
+> [!NOTE]
+> Csatlakoztatási cifs megosztások meg kell rendelkeznie a cifs-utils csomag, a fürtcsomópontok telepítve.         
+>
+
+4. Frissítse az helyőrző értékeket a ```setupentrypoint.sh``` parancsfájl az azure-tároló adatokkal a 3. lépéssel.
+```sh
+vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
+```
+  * Cserélje le ``[REMOTE_FILE_SHARE_LOCATION]`` értékű ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` kimenetében a csatlakozás a fenti 3. lépés.
+  * Cserélje le ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` értékű ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` a fenti 3. lépés.
+
+5. Csatlakozzon a fürthöz, és a tároló alkalmazás telepítéséhez.
+```sh
+sfctl cluster select --endpoint http://PublicIPorFQDN:19080   # cluster connect command
 bash Scripts/install.sh
 ```
 Ezzel telepít a fürtön egy Jenkins-tárolót, amely a Service Fabric Explorerrel figyelhető meg.
 
-### <a name="steps"></a>Lépések
-1. Nyissa meg a ``http://PublicIPorFQDN:8081`` URL-címet a böngészőben. Így megkapja a bejelentkezéshez szükséges kezdeti rendszergazdai jelszó elérési útját. Továbbra is használhatja a Jenkinst rendszergazdaként, de miután bejelentkezett a kezdeti rendszergazdai fiókkal, módosíthatja a felhasználót, és újat is létrehozhat.
-
    > [!NOTE]
-   > Ügyeljen arra, hogy a fürt létrehozásakor a 8081-es portot adja meg az alkalmazás végponti portjaként.
+   > Eltarthat néhány percig Jenkins kép le kell tölteni a fürtön.
    >
 
-2. Kérje le a tároló példányazonosítóját a ``docker ps -a`` paranccsal.
-3. Secure Shell-lel (SSH) jelentkezzen be a tárolóba, és illessze be a Jenkins portálon látott elérési utat. Például ha a portálon a `PATH_TO_INITIAL_ADMIN_PASSWORD` elérési út jelenik meg, futtassa a következőt:
+### <a name="steps"></a>Lépések
+1. Nyissa meg a ``http://PublicIPorFQDN:8081`` URL-címet a böngészőben. Így megkapja a bejelentkezéshez szükséges kezdeti rendszergazdai jelszó elérési útját. 
+2. Tekintse meg a Service Fabric Explorer állapítható meg, melyik csomópontján fut a Jenkins tároló. Secure Shell (SSH) jelentkezzen be ezt a csomópontot.
+```sh
+ssh user@PublicIPorFQDN -p [port]
+``` 
+3. Kérje le a tároló példányazonosítóját a ``docker ps -a`` paranccsal.
+4. Secure Shell-lel (SSH) jelentkezzen be a tárolóba, és illessze be a Jenkins portálon látott elérési utat. Például ha a portálon a `PATH_TO_INITIAL_ADMIN_PASSWORD` elérési út jelenik meg, futtassa a következőt:
 
   ```sh
   docker exec -t -i [first-four-digits-of-container-ID] /bin/bash   # This takes you inside Docker shell
-  cat PATH_TO_INITIAL_ADMIN_PASSWORD
   ```
-
-4. Állítsa be a GitHubot a Jenkins használatához az [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) foglalkozó cikkben található lépéseket követve.
-    * A GitHub utasításait követve hozza létre az SSH-kulcsot, majd adja hozzá ahhoz a GitHub-fiókhoz, amelyen az adattár üzemel.
-    * Futtassa a fenti hivatkozással elérhető parancsokat a Jenkins Docker-felületén (és ne a saját gazdagépén).
-    * Ahhoz, hogy a saját gazdagépéről jelentkezhessen be a Jenkinsbe, használja a következő parancsot:
-
   ```sh
-  docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
+  cat PATH_TO_INITIAL_ADMIN_PASSWORD # This displays the pasword value
   ```
+5. A Jenkins Gettting elindult a lapon választhatja ki a Select beépülő modulok telepítése lehetőséget, jelölje be a **nincs** jelölőnégyzetet, majd kattintson a telepítés.
+6. Hozzon létre egy felhasználó vagy, rendszergazdaként a folytatáshoz válasszon
 
 ## <a name="set-up-jenkins-outside-a-service-fabric-cluster"></a>A Jenkins beállítása Service Fabric-fürtön kívül
 
@@ -102,7 +126,7 @@ A Dockernek telepítve kell lennie. A következő parancsokkal telepítheti a Do
   5. Állítsa be a GitHubot a Jenkins használatához az [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) foglalkozó cikkben található lépéseket követve.
         * A GitHub utasításait követve hozza létre az SSH-kulcsot, majd adja hozzá ahhoz a GitHub-fiókhoz, amelyen az adattár üzemel.
         * Futtassa a fenti hivatkozással elérhető parancsokat a Jenkins Docker-felületén (és ne a saját gazdagépén).
-        * Ahhoz, hogy a saját gazdagépéről jelentkezhessen be a Jenkinsbe, használja a következő parancsokat:
+      * Ahhoz, hogy a saját gazdagépéről jelentkezhessen be a Jenkinsbe, használja a következő parancsokat:
 
       ```sh
       docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
@@ -114,7 +138,7 @@ Győződjön meg arról, hogy a fürt vagy gép, ahol a Jenkins-tároló rendsze
 
 1. Nyissa meg a következőt: ``http://PublicIPorFQDN:8081``
 2. A Jenkins irányítópultján válassza ki a következőt: **Manage Jenkins** (Jenkins kezelése)  > **Manage Plugins** (Beépülő modulok kezelése)  > **Advanced** (Speciális).
-Itt feltöltheti a beépülő modult. Válassza a **Choose file** (Fájl kiválasztása) lehetőséget, majd a **serviceFabric.hpi** fájlt, amelyet az előfeltételek szakaszban már letöltött. Ha kiválasztja az **Upload** (Feltöltés) lehetőséget, a Jenkins automatikusan telepíti a beépülő modult. Ha a rendszer kéri, engedélyezze az újraindítást.
+Itt feltöltheti a beépülő modult. Válassza ki **fájl kiválasztása**, majd válassza ki a **serviceFabric.hpi** fájlt, amely Előfeltételek a letöltött, vagy letöltheti [Itt](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi). Ha kiválasztja az **Upload** (Feltöltés) lehetőséget, a Jenkins automatikusan telepíti a beépülő modult. Ha a rendszer kéri, engedélyezze az újraindítást.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Jenkins-feladatok létrehozása és konfigurálása
 
@@ -122,7 +146,7 @@ Itt feltöltheti a beépülő modult. Válassza a **Choose file** (Fájl kivála
 2. Adjon nevet az elemnek (pl. **MyJob**). Válassza a **free-style project** (szabad projekt) lehetőséget, majd kattintson az **OK** gombra.
 3. Nyissa meg a feladat oldalát, majd kattintson a **Configure** (Konfigurálás) elemre.
 
-   a. Az általános beállítások **Github project** (GitHub-projekt) területén adja meg a GitHub-projekt URL-címét. Ez az URL-cím üzemelteti azt a Service Fabric Java-alkalmazást, amelyet integrálni szeretne a Jenkins folyamatos integrációs és üzembe helyezési (CI/CD) folyamatával (például: ``https://github.com/sayantancs/SFJenkins``).
+   a. Általános területen jelölje be a **GitHub-projekt**, és adja meg a GitHub-projekt URL-címe. Ez az URL-cím üzemelteti azt a Service Fabric Java-alkalmazást, amelyet integrálni szeretne a Jenkins folyamatos integrációs és üzembe helyezési (CI/CD) folyamatával (például: ``https://github.com/sayantancs/SFJenkins``).
 
    b. A **Source Code Management** (Forráskódkezelés) szakaszban válassza a **Git** elemet. Adja meg annak az adattárnak az URL-címét, amely a Jenkins CI/CD folyamatával integrálni kívánt Service Fabric Java-alkalmazást tartalmazza (például: ``https://github.com/sayantancs/SFJenkins.git``). Itt adhatja meg azt is, hogy melyik ágat kívánja létrehozni, például: **/master**.
 4. Adja meg a *GitHub* beállítását (amelyiken az adattár üzemel), így létrejöhet a kommunikáció a Jenkinsszel. Ehhez a következő lépések szükségesek:
@@ -137,7 +161,7 @@ Itt feltöltheti a beépülő modult. Válassza a **Choose file** (Fájl kivála
 
    e. A **Build Triggers** (Eseményindítók létrehozása) területen válassza ki a kívánt felépítési lehetőséget. Jelen esetben minden alkalommal szeretnénk elindítani egy felépítést, amikor valamilyen módosításra kerül sor az adattárban. Így a kiválasztandó lehetőség a következő: **GitHub hook trigger for GITScm polling** (GitHub beavatkozási pont eseményindító GITScm lekérdezés esetén). (Korábban ez **Build when a change is pushed to GitHub** (Felépítés módosítások GitHubon való közzétételekor) volt.)
 
-   f. A **Build** (Felépítés) szakaszban az **Add build step** (Felépítési lépés hozzáadása) legördülő listából válassza az **Invoke Gradle Script** (Gradle szkript meghívása) lehetőséget. A megjelenő widgeten adja meg a **fő felépítési szkript** elérési útját az alkalmazásához. A rendszer felveszi a build.gradle elemet a megadott elérési útból, és annak megfelelően működik. Ha (az Eclipse beépülő modul vagy a Yeoman-generátor használatával) létrehozott projekt neve ``MyActor``, akkor a fő felépítési szkriptnek tartalmaznia kell a következőt: ``${WORKSPACE}/MyActor``. Tekintse meg erre példaként az alábbi képernyőképet:
+   f. A **Build** (Felépítés) szakaszban az **Add build step** (Felépítési lépés hozzáadása) legördülő listából válassza az **Invoke Gradle Script** (Gradle szkript meghívása) lehetőséget. A widgetet részeként elérhető speciális menü megnyitásához, adja meg az elérési útját **legfelső szintű build script** az alkalmazáshoz. Felveszi a megadott elérési úton található build.gradle, és ennek megfelelően működik. Ha (az Eclipse beépülő modul vagy a Yeoman-generátor használatával) létrehozott projekt neve ``MyActor``, akkor a fő felépítési szkriptnek tartalmaznia kell a következőt: ``${WORKSPACE}/MyActor``. Tekintse meg erre példaként az alábbi képernyőképet:
 
     ![Service Fabric, Jenkins felépítési művelet][build-step]
 
@@ -155,4 +179,3 @@ A GitHub és a Jenkins beállítása kész. Érdemes lehet elvégezni néhány m
   <!-- Images -->
   [build-step]: ./media/service-fabric-cicd-your-linux-java-application-with-jenkins/build-step.png
   [post-build-step]: ./media/service-fabric-cicd-your-linux-java-application-with-jenkins/post-build-step.png
-

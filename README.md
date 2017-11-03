@@ -1,94 +1,54 @@
-# Szerzői kalauz az Azure műszaki dokumentációjának fejlesztéséhez
-Ez a GitHub-tárház (repository) a [http://azure.microsoft.com/documentation](http://azure.microsoft.com/documentation) címen üzemelő Azure Dokumentációs központban publikált műszaki dokumentáció forrása.
+## <a name="microsoft-open-source-code-of-conduct"></a>A Microsoft nyílt forrás etikai kódex
 
-A tárház a műszaki dokumentációk fejlesztésének módját és menetét is ismerteti.  Ajánljuk figyelmébe a szerzői segédanyagok [tartalomjegyzékét](https://github.com/Azure/azure-content/blob/master/contributor-guide/contributor-guide-index.md).
+A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik.
+További információ: a [kód a viselkedési szabályzat GYIK RÉSZÉT](https://opensource.microsoft.com/codeofconduct/faq/) , vagy forduljon [ opencode@microsoft.com ](mailto:opencode@microsoft.com) további kérdéseivel megjegyzések.
 
-## Részvétel az Azure dokumentálásában
-Örömmel vesszük az Azure dokumentációja iránti érdeklődését!
+## <a name="contribute-to-azure-technical-documentation"></a>Hozzájárul az Azure technikai dokumentációja
+Szívesen fogadjuk hozzájárulások (felhasználók, felhasználók, partnerek, MSFT alkalmazottak kívül core Azure termék egységek stb.) a Közösség vagy kiszolgálóról core Azure termék egységek dolgozó alkalmazottak számára. Hogyan járulhatnak attól függ, hogy kik tartoznak:
 
-* [Közreműködési lehetőségek](#ways-to-contribute)
-* [Etikai kódex](#code-of-conduct)
-* [Az Azure-tartalmak fejlesztéséről](#about-your-contributions-to-azure-content)
-* [A tárház szerkezete](#repository-organization)
-* [A GitHub, a Git és a jelen tárház használata](#use-github-git-and-this-repository)
-* [Tartalomformázás Markdown-szintaxissal](#how-to-use-markdown-to-format-your-topic)
-* [Visszajelzések, megjegyzések és támogatás](./contributor-guide/feedback-and-comments.md)
-* [További erőforrások](#more-resources)
-* [Szerzői segédanyagok jegyzéke](./contributor-guide/contributor-guide-index.md) (új lapon nyílik meg)
+* **Közösségi - kisebb frissítéseken estek**: kisebb frissítéseken kívül a szív goodness legnagyobb mértékben járulnak hozzá, ha akkor is a cikk a tárházban található, vagy látogasson el a [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure) , és kattintson a **Szerkesztése** , ez a cikk a Githubon forrás hivatkozásra. Ezt követően használja a GitHub felhasználói felületén a a frissítések. Vagy a tárházat elágazási Üdvözöljük, és az elágazáshoz a frissítések küldésére.
 
-## Közreműködési lehetőségek
-Az [Azure dokumentációjának](http://azure.microsoft.com/documentation/) fejlesztésében többféle formában vehet részt:
+* **Közösségi - új cikkek**: Ha Ön része az Azure közösségi és szeretne új cikkeket, úgy, hogy, hogy új tartalom védelméhez a nyilvános munkahelyi és személyes tárház alkalmazott együttműködve kell.
 
-* Bekapcsolódhat a [fórumokon](http://social.msdn.microsoft.com/Forums/windowsazure/home) zajló beszélgetésekbe.
-* Hozzászólhat az egyes cikkekhez (a Disqus rendszerén keresztül).
-* A GitHub felhasználói felületén keresztül egyszerűen részt vehet a műszaki cikkek fejlesztésében. Az egyes cikkeket a tárházban is megkeresheti, de a [http://azure.microsoft.com/documentation](http://azure.microsoft.com/documentation) portál oldalain látható GitHub-hivatkozásokon keresztül is eljuthat a szerkesztőfelületre.
-* Ha alapvető változtatásokat szeretne végezni egy cikken, képeket szeretne feltölteni hozzá (vagy módosítaná a cikkben szereplő képeket), esetleg új cikket írna, ágaztassa el a tárházat. Ehhez telepítenie a Git Basht és a Markdown Padet, és meg kell ismerkednie néhány git-paranccsal.
+* **Az alkalmazottak**: a műszaki író, a program manager, vagy az Azure-szolgáltatások, és azt a termékért felelős csoport a fejlesztői a feladat járulnak hozzá, vagy technikai cikkek hozhatnak létre, ha a titkos tárház (https://github.com/ kell használnia MicrosoftDocs/azure-docs-pr). Ha egy meglévő cikkben jelentős módosításokat végez, hozzá vagy módosíthat képek vagy legnagyobb mértékben járulnak hozzá egy új cikk szeretné ebben a tárházban forkolhatja, telepítse a Git bash eszközt, markdown-szerkesztő, és ismerje meg, néhány git-parancsokat. Lásd: [a belső közreműködői útmutató](https://review.docs.microsoft.com/en-us/help/contribute/?branch=master) további információt.
 
-## Etikai kódex
-A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. Kérdéseire választ találhat az [etikai kódex gyakori kérdései között](https://opensource.microsoft.com/codeofconduct/faq/)Az itt meg nem válaszolt kérdéseit, illetve egyéb gondolatait örömmel várjuk az [opencode@microsoft.com](mailto:opencode@microsoft.com) címen.
 
-## Az Azure-tartalmak fejlesztéséről
-### Kisebb korrekciók
-A dokumentációkban és példakódokban tett kisebb korrekciók és pontosítások az [Azure portál felhasználási feltételeinek](http://azure.microsoft.com/support/legal/website-terms-of-use/) hatálya alá esnek.
+## <a name="about-your-contributions-to-azure-content"></a>Az Azure-tartalmak fejlesztéséről
+### <a name="minor-corrections"></a>Kisebb korrekciók
+Kisebb korrekciók és pontosítások meg dokumentációkban és példakódokban kódpéldák tartoznak a [docs.microsoft.com használati](https://docs.microsoft.com/legal/termsofuse).
 
-### Jelentősebb mértékű hozzájárulások
-Ha nagyobb lélegzetvételű módosításokat végzett egy cikken vagy kódpéldán, a publikálási pull-kérelemre válaszul egy GitHub-hozzászólásban meg fogjuk kérni a tartalomszerzői licencszerződés (Contribution License Agreement; CLA) aláírására, hacsak nem tagja valamelyik alábbi csoportnak:
+### <a name="larger-submissions"></a>Jelentősebb mértékű hozzájárulások
+Ha új vagy jelentős módosításai kódpéldán pull-kérelemre, küldünk Megjegyzés a Githubon kéri, hogy küldje el az online hozzájárulás licenc szerződés (CLA), ha nincs Microsoft alkalmazottja. A nevéhez fűződő tartalmat csak a szerződés elfogadása után fogadhatjuk be.
 
-* Microsoft Open Technologies csoport
-* Nem a Microsoft alkalmazásában álló szerzők
+## <a name="tools-and-setup"></a>Eszközök és telepítés
+Közösségi közreműködők a GitHub felhasználói felületén vagy oszthatja ketté a tárházban közre is. Látogasson el az alkalmazott [a belső közreműködői útmutató](https://review.docs.microsoft.com/en-us/help/contribute/?branch=master) hozzájárulnak a műszaki dokumentáció olvashat be.
 
-A nevéhez fűződő tartalmat csak a szerződés elfogadása után fogadhatjuk be.
+## <a name="repository-organization"></a>A tárház szerkezete
+A tartalom az azure-dokumentumok tárházban található dokumentáció https://docs.microsoft.com/azure következik. A tárház két gyökérmappát tartalmaz:
 
-Részletek: [http://azure.github.io/guidelines/#cla](http://azure.github.io/guidelines/#cla).
+### <a name="articles"></a>\articles
+Az *\articles* mappa a dokumentáció cikkeit tartalmazza Markdown-fájlok formájában, *.md* kiterjesztéssel. Cikkek általában Azure szolgáltatás szerint vannak csoportosítva.
 
-## A tárház szerkezete
-Az azure-content tárház szerkezete azonos az [Azure.Microsoft.com](http://azure.microsoft.com) címen elérhető dokumentáció szerkezetével. A tárház két gyökérmappát tartalmaz:
+A *\articles* mappa tartalmazza a *\media* mappa legfelső szintű gyökérkönyvtár cikkek médiafájljainak, amelyben az egyes cikkekhez tartozó képeket találhatók.  A szolgáltatásokhoz kapcsolódó mappák saját Media mappával rendelkeznek. Ezekben találhatók az adott szolgáltatáshoz tartozó cikkek médiafájljai. A médiafájlokat tartalmazó mappák neve azonos a vonatkozó cikkfájl nevével, leszámítva az *.md* kiterjesztést.
 
-### \articles
-Az *\articles* mappa a dokumentáció cikkeit tartalmazza Markdown-fájlok formájában, *.md* kiterjesztéssel.
+### <a name="includes"></a>\includes
+A tárházban többször, több cikkben is felhasználható tartalomelemek is kialakíthatók. Ezeket tárolja ez a mappa. 
 
-A gyökérmappában lévő cikkek a *http://azure.microsoft.com/documentation/articles/{cikk-neve-md-nélkül}/* címen jelennek meg élesben.
-
-* **A cikkfájlok elnevezése:** lásd a [fájlelnevezési útmutatót](./contributor-guide/file-names-and-locations.md).
-
-Az egyes szolgáltatásokhoz tartozó mappákban lévő cikkek a *http://azure.microsoft.com/documentation/articles/{szolgáltatás-mappája}/{cikk-neve-md-nélkül}/* címen jelennek meg élesben.
-
-* **Media nevű almappák:** Az *\articles* mappában lévő *\media* mappában találhatók a főkönyvtárbeli cikkekhez tartozó médiafájlok – e mappán belül minden cikknek saját almappája van.  A szolgáltatásokhoz kapcsolódó mappák saját Media mappával rendelkeznek. Ezekben találhatók az adott szolgáltatáshoz tartozó cikkek médiafájljai. A médiafájlokat tartalmazó mappák neve azonos a vonatkozó cikkfájl nevével, leszámítva az *.md* kiterjesztést.
-
-### \includes
-A tárházban többször, több cikkben is felhasználható tartalomelemek is kialakíthatók. Ezeket tárolja ez a mappa. Részletek: [Műszaki tartalmakban használt saját bővítmények](./contributor-guide/custom-markdown-extensions.md).
-
-### \markdown templates
-A mappa a cikkek standard Markdown-sablonjait tartalmazza.
-
-### \contributor-guide
-Itt találhatók a szerzői útmutatók.  
-
-## A GitHub, a Git és a jelen tárház használata
-Az [GitHub-beli tartalomfejlesztési eszközök telepítését és beállítását ismertető oldalon](./contributor-guide/tools-and-setup.md) részletesen tájékozódhat a közreműködés módjáról; megtudhatja, hogyan tehet meg kisebb módosításokat a GitHub felhasználói felületén; valamint hogy hogyan forkolhatja, és hogyan klónozhatja a tárházat a jelentősebb módosítások megtétele előtt.
-
-Ha saját gépén szeretne dolgozni, és telepíti a GitBasht, az új helyi munkaág létrehozásáról, a módosítások megtételéről, illetve a módosult fájlok főágba történő visszavezetéséről [az új cikkek írásához és a cikkek szerkesztéséhez használandó Git-parancsokat ismertető oldalon](./contributor-guide/git-commands-for-master.md) olvashat.
-
-### Ágak
-Célszerű minden módosítási célra külön helyi ágat készíteni. Egy-egy ágnak csak egy-egy koncepciót vagy cikket kell felölelnie. Így hatékonyabbá tehető a fejlesztés, és az egyesítési ütközések száma is mérsékelhető.  Egy-egy ág tipikus terjedelme vagy célja:
-
-* Új cikk írása (a kapcsolódó képekkel)
-* Egy adott cikk helyesírási hibáinak javítása.
-* Azonos formázási módosítás elvégzése nagyobb mennyiségű cikken (például a szerzői jogi lábjegyzet átformázása).
-
-## Tartalomformázás Markdown-szintaxissal
+## <a name="how-to-use-markdown-to-format-your-topic"></a>Tartalomformázás Markdown-szintaxissal
 A tárház cikkeit a Markdown-szintaxis GitHub-dialektusa szerint kell formázni.  Néhány segédanyag:
 
-* [A Markdown alapjai](https://help.github.com/articles/markdown-basics/)
-* [Nyomtatható Markdown-puska](./contributor-guide/media/documents/markdown-cheatsheet.pdf?raw=true)
-* Markdown-szerkesztőink listáját megtalálja az [eszközökkel és beállításokkal foglalkozó oldalon](./contributor-guide/tools-and-setup.md#install-a-markdown-editor).
+* [Markdown alapjai](https://help.github.com/articles/markdown-basics/)
+* [Nyomtatható markdown-puska](./contributor-guide/media/documents/markdown-cheatsheet.pdf?raw=true)
 
-## Cikkek metaadatai
-A cikkek metaadatai fontosak az azure.microsoft.com egyes funkcióihoz – ilyen a szerzők és társszerzők megnevezése, a navigációs sávok működése, a cikkek kivonatának előállítása, a keresőoptimalizálás, illetve a tartalmak iránti érdeklődés mérésére szolgáló jelentési funkció. Szóval a metaadatok fontosak! Ajánljuk figyelmébe [a metaadatok helyes használatát ismertető cikket](./contributor-guide/article-metadata.md).
 
-## További segédanyagok
-[Szerzői kalauzunk oldalán](./contributor-guide/contributor-guide-index.md) mi.
+## <a name="labels"></a>Címkék
+A nyilvános azure-dokumentumok tárház automatizált címkék vannak társítva kérelmeket, hogy segítséget nyújtson a lekérési kérelem munkafolyamat kezelése és érdekében, hogy tudja, mit jelenít meg a lekérési kérelmet lekéréses:
 
-<!--HONumber=Aug16_HO1-->
+* Kapcsolódó hozzájárulás licencszerződés
+  * CLA nem kötelező: A módosítás viszonylag csekély, és nem igényli, hogy egy CLA jelentkezik.
+  * CLA szükséges: a módosítás következményeivel viszonylag nagy, és megköveteli, hogy egy CLA jelentkezik.
+  * CLA által aláírt: A közreműködői aláírt a CLA, így a lekérési kérelem jóváhagyásra most már továbbléphet előre.
+* Ahhoz, hogy küldött módosítása: A Szerző értesítést kapott arról, a függőben lévő lekérési kérelmet.
+* készen áll-egyesítés: készen áll a felülvizsgálatra a lekérési kérelem felülvizsgálati csapat által.
 
 

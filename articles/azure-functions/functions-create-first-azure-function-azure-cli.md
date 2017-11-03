@@ -7,19 +7,17 @@ author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 08/22/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/23/2017
-
+ms.openlocfilehash: ab35963dc9d10134799270e6ab3e6593be0e601a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-function-using-the-azure-cli"></a>Az első függvény létrehozása az Azure CLI használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhatja létre az első függvényét az Azure Functions használatával. Az Azure CLI használatával létrehoz egy függvényalkalmazást, amely az a kiszolgáló nélküli infrastruktúra lesz, amelyen a függvény működni fog. Magát a függvénykódot a GitHub tárházában található minta alapján készíti el.    
@@ -37,7 +35,7 @@ A minta futtatásához az alábbiakkal kell rendelkeznie:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Telepítése és a parancssori felület helyileg használata mellett dönt, ez a témakör az Azure parancssori felület 2.0-s vagy újabb verziója szükséges. Futtatás `az --version` található verzió található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
@@ -45,7 +43,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például a függvényalkalmazásokat, az adatbázisokat és a tárfiókokat).
 
 A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot.  
-Ha nem a Cloud Shellt használja, először be kell jelentkeznie a(z) `az login` használatával.
+Ha nem használ felhő rendszerhéj, bejelentkezhet első `az login`.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -56,7 +54,7 @@ az group create --name myResourceGroup --location westeurope
 
 A Functions szolgáltatás Azure Storage-fiókot használ a függvények állapotának és egyéb adatainak kezeléséhez. Az [az storage account create](/cli/azure/storage/account#create) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban.
 
-A következő parancsban a `<storage_name>` helyőrző helyett írja be a saját globálisan egyedi tárfióknevét. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
+Az alábbi parancs helyettesítse a globálisan egyedi tárfiók neve válaszoknál láthatja a `<storage_name>` helyőrző. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
@@ -86,7 +84,7 @@ A tárfiók létrehozása után az Azure CLI az alábbi példához hasonló info
 
 Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának biztosításához. A függvényalkalmazás szolgáltat környezetet a függvénykód kiszolgáló nélküli végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében. Hozzon létre egy függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#create) parancs használatával. 
 
-A következő parancsban a `<app_name>` helyőrző helyett írja be a saját globálisan egyedi tárfióknevét, a `<storage_name>` helyőrző helyett pedig a tárfiók nevét. Az `<app_name>` nevet a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazásában. 
+Az alábbi parancs helyettesítse be egy egyedi alkalmazás függvénynév válaszoknál láthatja a `<app_name>` helyőrző és a tárfiók neve `<storage_name>`. Az `<app_name>` nevet a rendszer a függvényalkalmazás alapértelmezett DNS-tartományának részeként használja, ezért annak egyedinek kell lennie az Azure összes alkalmazásában. 
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
@@ -125,7 +123,7 @@ az functionapp deployment source config --name <app_name> --resource-group myRes
 --repo-url https://github.com/Azure-Samples/functions-quickstart \
 --manual-integration 
 ```
-A forrás beállítása után az Azure CLI a következő példában szereplőkhöz hasonló információkat jelenít meg (a null értékeket eltávolítottuk az olvashatóság érdekében):
+A központi telepítés forrásának beállítása után az Azure parancssori felület információkat jeleníti meg a következőhöz hasonló (az olvashatóság eltávolított null értékeket):
 
 ```json
 {
@@ -170,4 +168,3 @@ Amikor a rendszer kéri, írja be a `y` parancsot.
 ## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
-

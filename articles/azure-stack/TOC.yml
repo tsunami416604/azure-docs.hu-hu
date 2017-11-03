@@ -9,7 +9,7 @@
   items:
     - name: Az Azure Stack üzembe helyezése
       href: azure-stack-deploy-overview.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Virtuális gépek biztosítása
       href: azure-stack-tutorial-tenant-vm.md
@@ -24,10 +24,16 @@
     - name: Karbantartási szabályzat
       href: azure-stack-servicing-policy.md
     - name: Kibocsátási megjegyzések
-      href: azure-stack-asdk-release-notes.md
+      items:
+        - name: Fejlesztői csomag kibocsátási megjegyzései
+          href: azure-stack-asdk-release-notes.md
+        - name: Integrált rendszerek kibocsátási megjegyzései
+          items:
+            - name: 1710 frissítés
+              href: azure-stack-update-1710.md
     - name: A legfontosabb jellemzők és fogalmak
       href: azure-stack-key-features.md
-    - name: Azure Stack fejlesztői készlet architektúrája
+    - name: Fejlesztői csomag architektúrája
       href: azure-stack-architecture.md
     - name: Az adminisztráció alapjai
       href: azure-stack-manage-basics.md
@@ -39,6 +45,8 @@
           href: azure-stack-deploy.md
         - name: Üzembe helyezés
           href: azure-stack-run-powershell-script.md
+        - name: A PowerShell telepítése
+          href: azure-stack-powershell-configure-quickstart.md
         - name: Regisztráljon
           href: azure-stack-register.md
         - name: Csatlakozás az Azure Stackhez
@@ -49,10 +57,14 @@
           href: azure-stack-provision-vm.md
     - name: Adatközpont integrációja
       items:
-        - name: DNS integrálása
+        - name: DNS
           href: azure-stack-integrate-dns.md
+        - name: Identitás
+          href: azure-stack-integrate-identity.md
         - name: Végpontok közzététele
           href: azure-stack-integrate-endpoints.md
+        - name: Biztonság
+          href: azure-stack-integrate-security.md
     - name: Kezelés
       items:
         - name: Régiók kezelése
@@ -81,6 +93,8 @@
               href: azure-stack-updates.md
             - name: Frissítések alkalmazása
               href: azure-stack-apply-updates.md
+            - name: A figyelő frissítési állapot
+              href: azure-stack-monitor-update.md
         - name: Állapot és riasztások monitorozása
           href: azure-stack-monitor-health.md
         - name: Hálózati erőforrások kezelése
@@ -91,8 +105,14 @@
           href: azure-stack-manage-windows-azure-pack.md
         - name: A hardver cseréje
           items:
+            - name: Csomópont műveletek
+              href: azure-stack-node-actions.md
+            - name: Cserélje le a csomópont
+              href: azure-stack-replace-node.md
             - name: A lemez cseréje
               href: azure-stack-replace-disk.md
+            - name: Cserélje le a összetevő
+              href: azure-stack-replace-component.md
     - name: 'Biztonság, megfelelőség és identitás'
       items:
         - name: Biztonsági áttekintés
@@ -135,10 +155,16 @@
               href: azure-stack-mysql-resource-provider-deploy.md
             - name: SQL típusú erőforrás-szolgáltató üzembe helyezése
               href: azure-stack-sql-resource-provider-deploy.md
+            - name: SQL-adatbázis létrehozása
+              href: azure-stack-sql-resource-provider-databases.md
+            - name: Üzemeltetési kiszolgáló hozzáadása
+              href: azure-stack-sql-resource-provider-hosting-servers.md
         - name: App Service ajánlása PaaS-ként
           items:
             - name: Az Azure Stack App Service szolgáltatásának áttekintése
               href: azure-stack-app-service-overview.md
+            - name: Kapacitástervezés
+              href: azure-stack-app-service-capacity-planning.md
             - name: A kezdés előtt
               href: azure-stack-app-service-before-you-get-started.md
             - name: Az App Service erőforrás-szolgáltató üzembe helyezése

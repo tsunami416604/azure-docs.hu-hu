@@ -1,7 +1,7 @@
-1. Open a web browser and browse to [http://www.windowsazure.com][].
-2. To get started with a free account, click **Free Trial** in the upper-right corner and follow the steps. You'll need a credit card number and a mobile phone number for proof of identity, but you will not be billed.
+1. Nyisson meg egy webböngészőt, és keresse meg a [http://www.windowsazure.com] [-].
+2. Megkezdéséhez egy ingyenes fiókot, kattintson a **ingyenes** a jobb felső sarokban, és kövesse a lépéseket. Szüksége lesz a hitelkártya száma és a mobiltelefonszám identitásigazolás, de nem a számlázás történik.
    
-   ![Azure Web Site][0]
+   ![Azure-webhely][0]
 
 [0]: ./media/create-azure-account/freetrialonwindowsazurehomepage.png
 

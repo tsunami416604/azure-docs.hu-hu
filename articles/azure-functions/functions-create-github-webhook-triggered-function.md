@@ -1,27 +1,26 @@
 ---
 title: "GitHub-webhookok által meghívott függvények létrehozása az Azure-ban | Microsoft Docs"
 description: "Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket GitHub-webhook hív meg."
-services: azure-functions
+services: functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 36ef34b8-3729-4940-86d2-cb8e176fcc06
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 6e91d095c8a89ead513a8ea63f74fd4b9384cfd5
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.openlocfilehash: d70186513b7313c8181092bc93a723f21154f7bc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub-webhookok által meghívott függvények létrehozása
 
@@ -52,7 +51,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. Kattintson a kívánt nyelvhez tartozó **GitHubWebHook** sablonra. **Nevezze el a függvényt**, majd kattintson a **Létrehozás** elemre.
+2. Válassza ki a **GitHub WebHook** sablont a kívánt nyelvet. **Nevezze el a függvényt**, majd kattintson a **Létrehozás** elemre.
 
      ![GitHub-webhook által aktivált függvény létrehozása az Azure Portalon](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
 
@@ -109,4 +108,3 @@ Létrehozott egy függvényt, amely akkor fut, amikor kérelem érkezik egy GitH
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 További információt a webhook-eseményindítókról az [Azure Functions – HTTP- és webhookkötések](functions-bindings-http-webhook.md) című témakörben talál.
-

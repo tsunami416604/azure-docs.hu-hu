@@ -5,18 +5,18 @@ Ebben a szakaszban megnézzük, hogyan kezelhető ez a probléma.
 ### <a name="request-wheels"></a>Kerekek kérése
 Ha a csomag telepítéséhez fordító szükséges, akkor próbálja meg felvenni a kapcsolatot a csomag tulajdonosával, és kérje meg, hogy tegyen elérhetővé kerekeket a csomaghoz.
 
-A nemrégiben elérhetővé vált [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7] megkönnyíti a natív Python 2.7-kóddal rendelkező csomagok építését.
+A nemrégiben elérhetővé vált a [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7], megkönnyíti a Python 2.7 natív kóddal rendelkező csomagok építését.
 
 ### <a name="build-wheels-requires-windows"></a>Kerekek építése (Windows rendszert igényel)
 Megjegyzés: Ha ezt a lehetőséget választja, ne felejtse el lefordítani a csomagot az Azure App Services-szolgáltatásban a webalkalmazásban használt platformmal/architektúrával/verzióval (Windows/32 bites/2.7 vagy 3.4) megegyező Python-környezetben.
 
 Ha a csomag telepítése sikertelen, mert fordító szükséges hozzá, akkor telepítse a fordítót a helyi gépén, és építsen egy kereket a csomaghoz, amelyet majd belefoglalhat a tárházba.
 
-Mac-/Linux-felhasználók: Ha nincs hozzáférése egy Windows-rendszert futtató géphez, a [Windows rendszerű virtuális gép létrehozása][Windows rendszerű virtuális gép létrehozása] című cikkből megtudhatja, hogyan hozhat létre virtuális gépet az Azure-ban.  Ezzel létrehozhatja a kerekeket, hozzáadhatja őket a tárházhoz, a virtuális gépet pedig igény szerint elvetheti. 
+Mac/Linux-felhasználók: Ha nincs Windows-számítógép eléréséhez, lásd: [hozzon létre egy virtuális gép futó Windows] [ Create a Virtual Machine Running Windows] a virtuális gép létrehozása az Azure ismertetik.  Ezzel létrehozhatja a kerekeket, hozzáadhatja őket a tárházhoz, a virtuális gépet pedig igény szerint elvetheti. 
 
-Python 2.7 esetén telepítheti a [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7] eszközt.
+Python 2.7 esetén telepítheti [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7].
 
-Python 3.4 esetén telepítheti a [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express] eszközt.
+Python 3.4 esetén telepítheti [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express].
 
 A kerekek építéséhez szüksége lesz a kerékcsomagra:
 
@@ -59,11 +59,6 @@ Ha felveszi a virtuális környezetet a tárházba, egy üres fájl létrehozás
 
 Javasoljuk, hogy törölje a létező virtuális környezetet az alkalmazásban, hogy ne maradjanak vissza fájlok akkorról, amikor a virtuális környezet felügyelete automatikus volt.
 
-[Windows rendszerű virtuális gép létrehozása]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
+[Create a Virtual Machine Running Windows]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
 [Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
-
-
-<!--HONumber=Nov16_HO2-->
-
-

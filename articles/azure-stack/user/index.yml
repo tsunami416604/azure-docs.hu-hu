@@ -4,7 +4,7 @@ title: Az Azure Stack felhasználói dokumentációja
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Az Azure Stack dokumentációja – oktatóanyagok és API-referencia
-  description: 'Ismerje meg, hogyan használhatja az Azure Stack előzetes verzióját Azure-szolgáltatások továbbítására az adatközpontból. Megvalósíthatósági példakörnyezetből származó szolgáltatások megismerése és bemutatása.'
+  description: 'Útmutató: Azure verem szolgáltatásokat használja, és olyan alkalmazások fordítása Azure verem.'
   services: azure-stack
   author: carolz
   manager: carolz
@@ -12,12 +12,12 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/23/2017
+  ms.date: 10/02/2017
   ms.author: carolz
 abstract:
-  description: 'A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat használhat a szervezete vagy a szolgáltatója adatközpontjából. Fejlesztőként létrehozhat alkalmazásokat az Azure Stackben. Ezeket üzembe helyezheti magában az Azure Stackben vagy az Azure-ban is, vagy létrehozhat valódi hibrid alkalmazásokat is, amelyek az Azure Stack felhő és az Azure közötti kapcsolatot használják ki.  Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat és helyezhet üzembe alkalmazásokat.'
+  description: 'A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat használhat a szervezete vagy a szolgáltatója adatközpontjából. Fejlesztőként létrehozhat alkalmazásokat az Azure Stackben. Ezeket üzembe helyezheti magában az Azure Stackben vagy az Azure-ban is, vagy létrehozhat valódi hibrid alkalmazásokat is, amelyek az Azure Stack felhő és az Azure közötti kapcsolatot használják ki. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat és helyezhet üzembe alkalmazásokat.<br/><br/>Ha Ön kezeli az infrastruktúra és szolgáltatásokat biztosít az Azure-verem kezelők, tekintse meg a <a href="/azure/azure-stack/">operátor dokumentáció</a>.'
 sections:
-  - title: Első lépések
+  - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
         text: 'Ismerje meg, hogyan helyezhetők üzembe Windows virtuális gépek az Azure Stacken:'
@@ -56,7 +56,7 @@ sections:
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Alkalmazások üzembe helyezése az Azure-ban és az Azure Stackben egyaránt:'
+        text: Alkalmazások központi telepítése az Azure és az Azure-verem között.
       - type: list
         style: ordered
         items:
@@ -68,4 +68,4 @@ sections:
         className: cardsD
         items:
           - title: Parancssor
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/?view=azure-cli-2017-03-09-profile">Az Azure verem parancssori felület</a></p>

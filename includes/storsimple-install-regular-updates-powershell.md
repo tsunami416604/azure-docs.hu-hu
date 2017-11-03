@@ -1,21 +1,21 @@
 <!--author=SharS last changed: 11/18/16-->
 
-#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>To install regular updates via Windows PowerShell for StorSimple
-1. Open the device serial console and select option 1, **Log in with full access**. Type the password. The default password is *Password1*. 
-2. At the command prompt, type:
+#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>A StorSimple rendszeres frissítéseket a Windows PowerShell telepítése
+1. Nyissa meg az eszköz soros konzoljához és select 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**. Írja be a jelszót. Az alapértelmezett jelszó *jelszó1*. 
+2. A parancssorba írja be:
    
      `Get-HcsUpdateAvailability`
    
-    You will be notified if updates are available and whether the updates are disruptive or non-disruptive.
-3. At the command prompt, type:
+    Ha frissítések érhetők el, és hogy a frissítések zavaró vagy nem zavaró, értesítést fog kapni.
+3. A parancssorba írja be:
    
      `Start-HcsUpdate`
    
-    The update process will start.
+    A frissítési folyamat indul el.
 
 > [!IMPORTANT]
-> * This command applies only to regular updates. You run this command on only one controller, but both controllers will be updated. 
-> * You may notice a controller failover during the update process; however, the failover will not affect system availability or operation.
+> * Ez a parancs csak a rendszeres frissítések vonatkozik. A parancs futtatása csak egy tartományvezérlőn, de mindkét tartományvezérlők frissülni fog. 
+> * A vezérlő feladatátvétel Észreveheti a frissítés során; azonban a feladatátvétel nem érinti a rendszer rendelkezésre állás vagy a műveletet.
 > 
 > 
 

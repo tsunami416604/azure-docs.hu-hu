@@ -1,3 +1,3 @@
-* Windows: `Ctrl-insert` to copy and `Shift-insert` to paste. Right-click dropdown can also enable copy/paste.
-  * FireFox/IE may not support clipboard permissions properly.
-* Mac OS: `Cmd-c` to copy and `Cmd-v` to paste. Right-click dropdown can also enable copy/paste.
+* Windows: `Ctrl-insert` másolása és `Shift-insert` beilleszteni. Kattintson a jobb gombbal a legördülő másolja és illessze be is engedélyezheti.
+  * A FireFox vagy IE nem támogatja a vágólapra engedélyek megfelelően.
+* Mac OS: `Cmd-c` másolása és `Cmd-v` beilleszteni. Kattintson a jobb gombbal a legördülő másolja és illessze be is engedélyezheti.

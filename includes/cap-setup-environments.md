@@ -1,8 +1,8 @@
 > [!div class="op_single_selector"]
-> * [Set up environment](../articles/machine-learning/team-data-science-process/environment-setup.md)
-> * [Azure storage-account](../articles/storage/common/storage-create-storage-account.md)
-> * [HDInsight (Hadoop) cluster](../articles/machine-learning/team-data-science-process/customize-hadoop-cluster.md)
-> * [Azure Machine Learning workspace](../articles/machine-learning/studio/create-workspace.md)
+> * [Környezet beállítása](../articles/machine-learning/team-data-science-process/environment-setup.md)
+> * [Az Azure storage-fiók](../articles/storage/common/storage-create-storage-account.md)
+> * [HDInsight (Hadoop) fürt](../articles/machine-learning/team-data-science-process/customize-hadoop-cluster.md)
+> * [Az Azure Machine Learning-munkaterület](../articles/machine-learning/studio/create-workspace.md)
 > 
 > 
 

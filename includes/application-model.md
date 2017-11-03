@@ -1,44 +1,44 @@
-# <a name="compute"></a>Compute
-Azure enables you to deploy and monitor your application code running inside a Microsoft data center. When you create an application and run it on Azure, the code and configuration together is called an Azure hosted service. Hosted services are easy to manage, scale up and down, reconfigure, and update with new versions of your application's code. This article focuses on the Azure hosted service application model.<a id="compare" name="compare"></a>
+# <a name="compute"></a>Számítás
+Azure lehetővé teszi üzembe helyezése és figyelése a Microsoft adatközponton belül futó alkalmazáskódok. Amikor létrehoz egy alkalmazást, és futtassa az Azure-on, a kód és a konfigurációs együtt nevezzük az Azure üzemeltetett szolgáltatásban. Üzemeltetett szolgáltatások olyan könnyen kezelése, felfelé és lefelé méretezési, konfigurálja újra, és frissítse az alkalmazás kódja az új verzióit. Ez a cikk foglalkozik az Azure szolgáltatásban az alkalmazás szolgáltatásmodellt.<a id="compare" name="compare"></a>
 
-## Table of Contents<a id="_GoBack" name="_GoBack"></a>
-* [Azure Application Model Benefits][Azure Application Model Benefits]
-* [Hosted Service Core Concepts][Hosted Service Core Concepts]
-* [Hosted Service Design Considerations][Hosted Service Design Considerations]
-* [Designing your Application for Scale][Designing your Application for Scale]
-* [Hosted Service Definition and Configuration][Hosted Service Definition and Configuration]
-* [The Service Definition File][The Service Definition File]
-* [The Service Configuration File][The Service Configuration File]
-* [Creating and Deploying a Hosted Service][Creating and Deploying a Hosted Service]
-* [References][References]
+## A tartalomjegyzék<a id="_GoBack" name="_GoBack"></a>
+* [Az Azure alkalmazás modell előnyei][Azure Application Model Benefits]
+* [Üzemeltetett szolgáltatás alapvető jellemzői][Hosted Service Core Concepts]
+* [Üzemeltetett szolgáltatás kialakítási szempontok][Hosted Service Design Considerations]
+* [Az alkalmazás bővített tervezése][Designing your Application for Scale]
+* [Üzemeltetett szolgáltatás definíció- és konfigurációs][Hosted Service Definition and Configuration]
+* [A szolgáltatásdefiníciós fájl][The Service Definition File]
+* [A szolgáltatás konfigurációs fájlja][The Service Configuration File]
+* [Létrehozása és telepítése az üzemeltetett szolgáltatás][Creating and Deploying a Hosted Service]
+* [Hivatkozások][References]
 
-## <a id="benefits"> </a>Azure Application Model Benefits
-When you deploy your application as a hosted service, Azure creates one or more virtual machines (VMs) that contain your application's code, and boots the VMs on physical machines residing in one of the Azure data centers. As client requests to your hosted application enter the data center, a load balancer distributes these requests equally to the VMs. While your application is hosted in Azure, it gets three key benefits:
+## <a id="benefits"></a>Azure alkalmazás modell előnyei
+Egy üzemeltetett szolgáltatást, az alkalmazás központi telepítésekor az Azure létrehoz egy vagy több virtuális gépek (VM), amely tartalmazza az alkalmazás kódját, és indul el a virtuális gépek egyik az Azure-adatközpont fizikai gépeken. Az üzemeltetett alkalmazás ügyfélkérések meg az adatközpontban, a terheléselosztó osztja el a ezeket a kérelmeket az virtuális gépeket egyaránt. Amíg az alkalmazás üzemel az Azure-ban, onnan kapta, hogy három fő előnyei:
 
-* **High availability.** High availability means Azure ensures that your application is running as much as possible and is able to respond to client requests. If your application terminates (due to an unhandled exception, for example), then Azure will detect this, and it will automatically re-start your application. If the machine your application is running on experiences some kind of hardware failure, then Azure will also detect this and automatically create a new VM on another working physical machine and run your code from there. NOTE: In order for your application to get Microsoft's Service Level Agreement of 99.95% available, you must have at least two VMs running your application code. This allows one VM to process client requests while Azure moves your code from a failed VM to a new, good VM.
-* **Scalability.** Azure lets you easily and dynamically change the number of VMs running your application code to handle the actual load being placed on your application. This allows you to adjust your application to the workload that your customers are placing on it while paying only for the VMs you need when you need them. When you want to change the number of VMs, Azure responds within minutes making it possible to dynamically change the number of VMs running as often as desired.
-* **Manageability.** Because Azure is a Platform as a Service (PaaS) offering, it manages the infrastructure (the hardware itself, electricity, and networking) required to keep these machines running. Azure also manages the platform, ensuring an up-to-date operating system with all the correct patches and security updates, as well as component updates such as the .NET Framework and Internet Information Server. Because all the VMs are running Windows Server 2008, Azure provides additional features such as diagnostic monitoring, remote desktop support, firewalls, and certificate store configuration. All these features are provided at no extra cost. In fact, when you run your application in Azure, the Windows Server 2008 operating system (OS) license is included. Since all of the VMs are running Windows Server 2008, any code that runs on Windows Server 2008 works just fine when running in Azure.
+* **Magas rendelkezésre állású.** Magas rendelkezésre állású azt jelenti, hogy az Azure biztosítja, hogy az alkalmazás lehetőség szerint fut, és képes ügyfélkérelmekre. Ha az alkalmazás leállása (egy nem kezelt kivétel miatt, például), majd Azure észleli ezt, így automatikusan indítsa újra az alkalmazást. Ha a számítógép az alkalmazás fut lép hardver hiba lépett fel, majd Azure is észleli ezt, és automatikusan hozzon létre egy új virtuális Gépet egy másik számítógépen működő fizikai és onnan futtassa a kódot. Megjegyzés: Ahhoz, hogy az alkalmazások a Microsoft szolgáltatásiszint-megállapodás 99,95 %-os érhető el, rendelkeznie kell az alkalmazás kódjában futó legalább két virtuális gép. Ez lehetővé teszi, hogy egy virtuális gép ügyfélkérések feldolgozása, miközben Azure helyezi át a kódot a sikertelen virtuális gépről egy új, a megfelelő virtuális géphez.
+* **Méretezhetőség.** Azure lehetővé teszi, hogy könnyen, és dinamikusan a virtuális gép fut az alkalmazás kódjában kerülne az alkalmazás tényleges terhelhető számának módosítása. Ez lehetővé teszi, hogy állítsa be az alkalmazás számára a munkaterhelés, hogy az ügyfelek csak a virtuális gépeket, ha szüksége van rájuk a míg helyez rajta. Ha szeretné módosítani a virtuális gépek számát, Azure válaszol, így dinamikusan módosítható a kívánt gyakorisággal futó virtuális gépek száma percen belül.
+* **Kezelhetőségi.** Mivel Azure platformot kínál egy szolgáltatást (PaaS), ezek a gépek futtató tartása szükséges infrastruktúra (a hardvertől elektromosság kialakulása és hálózat) kezeli. Azure is kezeli a platform összes a megfelelő javításokat és biztonsági frissítések, valamint összetevő-frissítések, például a .NET-keretrendszer és az Internet Information Server rendelkező naprakész operációs rendszer biztosítja. Mivel a virtuális gépeket futtat Windows Server 2008, Azure diagnosztikai figyelő, a távoli asztali támogatása, a tűzfalak és a tanúsítvány adattár konfigurálása például olyan funkciókat is biztosítanak. Ezek a funkciók találhatók, nem kapcsolódik további költség. Futtassa az alkalmazást az Azure-ban, ha a Windows Server 2008 operációs rendszer licenc valójában tartalmazza. Mivel minden, a virtuális gépek futnak a Windows Server 2008, bármely kódot, amely a Windows Server 2008 fut remekül működik, csak az Azure-ban való futtatásakor.
 
-## <a id="concepts"> </a>Hosted Service Core Concepts
-When your application is deployed as a hosted service in Azure, it runs as one or more *roles.* A *role* simply refers to application files and configuration. You can define one or more roles for your application, each with its own set of application files and configuration. For each role in your application, you can specify the number of VMs, or *role instances*, to run. The figure below show two simple examples of an application modeled as a hosted service using roles and role instances.
+## <a id="concepts"></a>Üzemeltetett szolgáltatás alapvető jellemzői
+Az alkalmazás telepítésekor az Azure-ban üzemeltetett szolgáltatásként fut egy vagy több *szerepkörök.* A *szerepkör* egyszerűen az alkalmazás fájljai és konfigurációs hivatkozik. Egy vagy több szerepkör adhat meg az alkalmazás, mindegyiket a saját fájljainak és a konfiguráció beállítása. Az egyes szerepkörökhöz, az alkalmazásban, adja meg a virtuális gépek számát vagy *szerepkörpéldányokat*, futtatásához. Az alábbi ábra egy üzemeltetett szolgáltatást, használja a szerepkörök és a szerepkörpéldányok modellezve alkalmazás két egyszerű példát bemutatja.
 
-##### <a name="figure-1-a-single-role-with-three-instances-vms-running-in-an-azure-data-center"></a>Figure 1: A single role with three instances (VMs) running in an Azure data center
-![image][0]
+##### <a name="figure-1-a-single-role-with-three-instances-vms-running-in-an-azure-data-center"></a>1. ábra: Egyetlen szerepkör három osztályt (VM) egy Azure-adatközpontban fut
+![Kép][0]
 
-##### <a name="figure-2-two-roles-each-with-two-instances-vms-running-in-an-azure-data-center"></a>Figure 2: Two roles, each with two instances (VMs), running in an Azure data center
-![image][1]
+##### <a name="figure-2-two-roles-each-with-two-instances-vms-running-in-an-azure-data-center"></a>2. ábra: Két szerepkörök, melyek mindegyike két osztályt (VM), egy Azure-adatközpontban fut
+![Kép][1]
 
-Role instances typically process Internet client requests entering the data center through what is called an *input endpoint*. A single role can have 0 or more input endpoints. Each endpoint indicates a protocol (HTTP, HTTPS, or TCP) and a port. It is common to configure a role to have two input endpoints: HTTP listening on port 80 and HTTPS listening on port 443. The figure below shows an example of two different roles with different input endpoints directing client requests to them.
+Szerepkörpéldányokat általában feldolgozni az internetes ügyfelek kéréseit az Adatközpont keresztül úgynevezett megadása egy *bemeneti végpont*. Egyetlen szerepkör lehet 0 vagy több bemeneti végpontot. Minden egyes végpont (HTTP, HTTPS vagy TCP) protokoll és port jelzi. Általános a két bemeneti végpont szerepkör konfigurálása: HTTP a 80-as portot és a HTTPS a 443-as porton figyel. Az alábbi ábrán két különböző szerepkörök példát arra utasíthatja őket ügyfélkérések különböző bemeneti végpont tartalmazza.
 
-![image][2]
+![Kép][2]
 
-When you create a hosted service in Azure, it is assigned a publicly addressable IP address that clients can use to access it. Upon creating the hosted service you must also select a URL prefix that is mapped to that IP address. This prefix must be unique as you are essentially reserving the *prefix*.cloudapp.net URL so that no one else can have it. Clients communicate with your role instances by using the URL. Usually, you will not distribute or publish the Azure *prefix*.cloudapp.net URL. Instead, you will purchase a DNS name from your DNS registrar of choice and configure your DNS name to redirect client requests to the Azure URL. For more details, see [Configuring a Custom Domain Name in Azure][Configuring a Custom Domain Name in Azure].
+Az Azure-ban létrehoz egy üzemeltetett szolgáltatást, amikor egy nyilvánosan megcímezhető IP-címet, amellyel az ügyfelek hozzá van hozzárendelve. Az üzemeltetett szolgáltatás létrehozása után ki kell választania egy adott IP-címre leképezett URL-előtagot is. Az előtag egyedinek kell lennie mint lényegében lefoglalja a *előtag*. cloudapp.net URL-CÍMÉT úgy, hogy senki más nem rendelkezhet. Az ügyfelek az URL-cím használatával kommunikálnak a szerepkörpéldányok. Általában, akkor nem fog terjesztése vagy közzététele az Azure *előtag*. cloudapp.net URL-CÍMÉT. Ehelyett fog vásárolhat egy DNS-nevet a DNS-regisztráló választott, és az ügyfelek kérelmeinek átirányítása Azure URL-CÍMÉT a DNS-nevét konfigurálja. További részletekért lásd: [egy egyéni tartománynév konfigurálása az Azure-ban][Configuring a Custom Domain Name in Azure].
 
-## <a id="considerations"> </a>Hosted Service Design Considerations
-When designing an application to run in a cloud environment, there are several considerations to think about such as latency, high-availability, and scalability.
+## <a id="considerations"></a>Üzemeltetett szolgáltatás kialakítási szempontok
+Egy felhőalapú környezetben futó alkalmazás tervezésekor több szempontot figyelembe kell vennie, például a késés, magas rendelkezésre állás és méretezhetőség.
 
-Deciding where to locate your application code is an important consideration when running a hosted service in Azure. It is common to deploy your application to data centers that are closest to your clients to reduce latency and get the best performance possible.
-However, you might choose a data center closer to your company or closer to your data if you have some jurisdictional or legal concerns about your data and where it resides. There are six data centers around the globe capable of hosting your application code. The table below shows the available locations:
+Fontos szempont az alkalmazás kódjában elhelyezése akkor, ha egy üzemeltetett szolgáltatást az Azure-ban. Általában a késés csökkentésére, és a lehető legjobb teljesítményt lehetséges ügyfelek legközelebbi adatközpont az alkalmazás telepítése.
+Azonban egy adatközpont közelebb a vállalat vagy az adatok közelebb lehet használni, ha néhány joghatósági vagy jogi kétségei adatait és helyét. Nincsenek a az alkalmazás kódjában tárolására képes a világ minden táján hat adatközpontokban. Az alábbi táblázat a helyeket:
 
 <table border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
 
@@ -47,12 +47,12 @@ However, you might choose a data center closer to your company or closer to your
 <tr>
 
 <td style="width: 100px;">
-**Country/Region**
+**Ország vagy régió**
 
 </td>
 
 <td style="width: 200px;">
-**Sub-regions**
+**Alárendelt régiók**
 
 </td>
 </tr>
@@ -60,25 +60,12 @@ However, you might choose a data center closer to your company or closer to your
 <tr>
 
 <td>
-United States
+Egyesült Államok
 
 </td>
 
 <td>
-South Central & North Central
-
-</td>
-</tr>
-
-<tr>
-
-<td>
-Europe
-
-</td>
-
-<td>
-North & West
+Dél-központi & északi középső régiója
 
 </td>
 </tr>
@@ -86,50 +73,63 @@ North & West
 <tr>
 
 <td>
-Asia
+Európa
 
 </td>
 
 <td>
-Southeast & East
+Észak- & nyugati régiója
+
+</td>
+</tr>
+
+<tr>
+
+<td>
+Ázsia
+
+</td>
+
+<td>
+Délkeleti & keleti régiója
 
 </td>
 </tr>
 </tbody>
 </table>
-When creating a hosted service, you select a sub-region indicating the location in which you want your code to execute.
+Üzemeltetett szolgáltatás létrehozásakor válassza ki a helyet, amelyben a kód végrehajtása kívánja jelző körzet.
 
-To achieve high availability and scalability, it is critically important that your application's data be kept in a central repository accessible to multiple role instances. To help with this, Azure offers several storage options such as blobs, tables, and SQL Database. Please see the [Data Storage Offerings in Azure][Data Storage Offerings in Azure] article for more information about these storage technologies. The figure below shows how the load balancer inside the Azure data center distributes client requests to different role instances all of which have access to the same data storage.
+Magas rendelkezésre állás és méretezhetőség eléréséhez különösen fontos, hogy az alkalmazás adatokat tárolni egy központi tárházban érhető el a szerepkör több példánya. Ennek érdekében az Azure BLOB, a táblák és az SQL-adatbázis például számos különféle tárolási lehetőséget kínál. Tekintse meg a [adatok tárolási ajánlatokat az Azure-ban] [ Data Storage Offerings in Azure] cikk további információt a tárolási technológiákat. Az alábbi ábra bemutatja, hogyan osztja el a terheléselosztó az Azure-adatközpont belül a ezek mindegyike hozzáférhetnek az azonos adattárolóra különböző szerepkörpéldányokra érkező ügyfélkérések.
 
-![image][3]
+![Kép][3]
 
-Usually, you want to locate your application code and your data in the same data center as this allows for low latency (better performance) when your application code accesses the data. In addition, you are not charged for bandwidth when data is moved around within the same data center.
+Általában érdemes keresse meg az alkalmazás kódjában és az adatok ugyanabban az adatközpontban, így az alacsony késleltetés (jobb teljesítmény) Ha az alkalmazás kódjában éri el az adatokat. Ezenkívül van nem szó, a sávszélesség mozgatásakor adatok egy adatközponton belül.
 
-## <a id="scale"> </a>Designing your Application for Scale
-Sometimes, you may want to take a single application (like a simple web site) and have it hosted in Azure. But frequently, your application may consist of several roles that all work together. For example, in the figure below, there are two instances of the Website role, three instances of the Order Processing role, and one instance of the Report Generator role. These roles are all working together and the code for all of them can be packaged together and deployed as a single unit up to Azure.
+## <a id="scale"></a>Az alkalmazás bővített tervezése
+Egyes esetekben érdemes lehet (például egy egyszerű webhely) egyetlen alkalmazás igénybe vehet, és annak az Azure-ban üzemeltetett. De gyakran, az alkalmazás állhat számos szerepkört, hogy az összes működnek együtt. Például az alábbi ábrán vannak a webhely két példánya, három példánya a rendelés feldolgozása és a jelentések készítése szerepkörnek egy példánya. Ezek a szerepkörök összes működnek együtt, és mindegyikhez kódot együtt csomagolt és telepített Azure legfeljebb egyetlen egységként.
 
-![image][4]
+![Kép][4]
 
-The main reason to split an application into different roles each running on its own set of role instances (that is, VMs) is to scale the roles independently. For example, during the holiday season, many customers may be purchasing products from your company, so you might want to increase the number of role instances running your Website role as well as the number of role instances running your Order Processing role. After the holiday season, you may get a lot of products returned, so you may still need a lot of Website instances but fewer Order Processing instances. During the rest of the year, you may only need a few Website and Order Processing instances. Throughout all of this, you may need only one Report Generator instance. The flexibility of role-based deployments in Azure enables you to easily adapt your application to your business needs.
+A fő oka a felosztott különböző szerepkörök egy alkalmazást minden egyes szerepkörpéldányokat (Ez azt jelenti, hogy a virtuális gépek) a saját készlete futó a szerepkörök méretezését. Például az ünnepi során sok ügyfél előfordulhat, hogy lehet megvásárlásáról termékek a vállalat, előfordulhat, hogy szeretné növelni a szerepkörpéldányok fut, a webhely szerepkör, valamint a feldolgozási sorrendben szerepkört futtató szerepkör-példányok száma számát. Után az ünnepi jelenhet meg lett visszaadva, akkor termékek sok, nagy mennyiségű webhely példányok, de kevesebb rendelés feldolgozása példányt lehet szükség. Az év hátralévő részében, során csak szükség lehet néhány webhely és rendelés feldolgozása példányok. Minden fenti, egész szükség lehet a jelentések készítése csak egy példány. A szerepkör-alapú telepítés esetében az Azure rugalmasságát lehetővé teszi, hogy könnyedén alkalmazkodnak az alkalmazás számára az üzleti igényeknek megfelelően.
 
-It's common to have the role instances within your hosted service communicate with each other. For example, the website role accepts a customer's order but then it offloads the order processing to the Order Processing role instances. The best way to pass work form one set of role instances to another set of instances is using the queuing technology provided by Azure, either the Queue Service or Service Bus Queues. The use of a queue is a critical part of the story here. The queue allows the hosted service to scale its roles independently allowing you to balance the workload against cost. If the number of messages in the queue increases over time, then you can scale up the number of Order Processing role instances. If the number of messages in the queue decreases over time, then you can scale down the number of Order Processing role instances. This way, you are only paying for the instances required to handle the actual workload.
+Esetében gyakori, az üzemeltetett szolgáltatáson belül lévő példányok kommunikálnak egymással a szerepkörrel kell rendelkeznie. Például a webhely szerepkör fogad el egy megrendeléshez, de majd azt kiszervezést, hogy a rendelés feldolgozása szerepkörpéldányokat feldolgozás sorrendje. A legjobb módszer egy másik példánycsoportot a szerepkörpéldányok egy készletét használja az üzenetsor-kezelési technológia Azure, által biztosított munkahelyi formában átadni a Queue szolgáltatás vagy a Service Bus-üzenetsorok. A várólista használata egy kritikus fontosságú része itt. A várólista lehetővé teszi, hogy az üzemeltetett szolgáltatás méretezése a szerepkörök külön lehetővé téve munkaterhelésének költség ellen. Ha a várólistán lévő üzenetek száma növekszik adott idő alatt, majd költenie rendelés feldolgozása szerepkörpéldányok számát. Ha idővel a várólistán lévő üzenetek száma csökken, majd méretezheti le rendelés feldolgozása szerepkörpéldányok számát. Ezzel a módszerrel csak fizet a példányok, a tényleges terheléshez kezeléséhez szükséges.
 
-The queue also provides reliability. When scaling down the number of Order Processing role instances, Azure decides which instances to terminate. It may decide to terminate an instance that is in the middle of processing a queue message. However, because the message processing does not complete successfully, the message becomes visible again to another Order Processing role instance that picks it up and processes it. Because of queue message visibility, messages are guaranteed to eventually get processed. The queue also acts as a load balancer by effectively distributing its messages to any and all role instances that request messages from it.
+A várólista megbízhatóságát is biztosít. Skálázás le a feldolgozási sorrendben szerepkör-példányok száma, amikor Azure úgy dönt, mely példány leáll. Dönthet egy példányát, amely éppen egy várólista üzenet feldolgozása leáll. Azonban az üzenet feldolgozása nem sikerült, mert az üzenet válik láthatóvá újra a másik rendelés feldolgozása szerepkörpéldányt, amely azt veszi fel, és feldolgozza őket. Várólista állapotüzenet látható, mert üzenetek kézbesítése garantáltan a idővel feldolgozni. A várólista is funkcionál terheléselosztó üzenetek kérhet minden szerepkörpéldányokat az üzenetek hatékonyan elosztásával.
 
-For the Website role instances, you can monitor the traffic coming into them and decide to scale the number of them up or down as well. The queue allows you to scale the number of Website role instances independently of the Order Processing role instances. This is very powerful and gives you a lot of flexibility. Of course, if your application consists of additional roles, you could add additional queues as the conduit to communicate between them in order to leverage the same scaling and cost benefits.
+A webhely szerepkörpéldányokért hamarosan be őket a forgalom felügyelete és úgy dönt, hogy azok számának felfelé vagy lefelé is. A várólista webhely szerepkörpéldányt beállítani, függetlenül a rendelés feldolgozása szerepkörpéldányokat számának teszi lehetővé. Ez nagyon hatékony és nagy rugalmasságot biztosít. Természetesen Ha az alkalmazás további szerepköröket, hozzáadhatja további várólisták, az átjáró ahhoz, hogy használja az ugyanazon méretezésének ki, ráadásul a költségek előnyöket közötti kommunikációt.
 
-## <a id="defandcfg"> </a>Hosted Service Definition and Configuration
-Deploying a hosted service to Azure requires you to also have a service definition file and a service configuration file. Both of these files are XML files, and they allow you to declaratively specify deployment options for your hosted service. The service definition file describes all of the roles that make up your hosted service and how they communicate. The service configuration file describes the number of instances for each role and settings used to configure each role instance.
+## <a id="defandcfg"></a>Üzemeltetett szolgáltatás definíció- és konfigurációs
+Azure üzemeltetett szolgáltatás telepítése szükséges hozzá is a szolgáltatásdefiníciós fájlban és egy szolgáltatás konfigurációs fájljában. Mindkét fájl XML-fájlokat, és lehetővé teszik, hogy deklarációval adja meg a központi telepítési beállításokat az üzemeltetett szolgáltatás számára. A szolgáltatásdefiníciós fájlban ismerteti az összes üzemeltetett szolgáltatásba, és hogyan kommunikálnak a szerepkört. A szolgáltatás konfigurációs fájlja a szerepköröket és minden egyes szerepkör példánya konfigurálásához használt beállítások a példányok száma ismerteti.
 
-## <a id="def"> </a>The Service Definition File
-As I mentioned earlier, the service definition (CSDEF) file is an XML file that describes the various roles that make up your complete application. The complete schema for the XML file can be found here: [http://msdn.microsoft.com/library/windowsazure/ee758711.aspx][].
-The CSDEF file contains a WebRole or WorkerRole element for each role that you want in your application. Deploying a role as a web role (using the WebRole element) means that the code will run on a role instance containing Windows Server 2008 and Internet Information Server (IIS).
-Deploying a role as a worker role (using the WorkerRole element) means that the role instance will have Windows Server 2008 on it (IIS will not be installed).
+## <a id="def"></a>a szolgáltatásdefiníciós fájl
+Szeretnék már említettük, a szolgáltatás definíciós (CSDEF), a fájl egy XML-fájl, amely leírja a szerepköröket, amelyek a teljes alkalmazás alkotják. A teljes séma az XML-fájlt az itt található: [http://msdn.microsoft.com/library/windowsazure/ee758711.aspx] [-].
+A CSDEF fájl az egyes szerepkörökhöz, amelyet az alkalmazás vagy webrole típusról a WorkerRole elemet tartalmaz. (A webrole típusról elem használatával) webes szerepkör egy szerepkör telepítése, az azt jelenti, hogy a Windows Server 2008 és az Internet Information Server (IIS) szerepkör-példányon futtatja a kódot.
+Egy szerepkör telepítése, mivel a feldolgozói szerepkör (a WorkerRole elem használatával) jelenti, hogy a szerepkör példánya lesz-e a Windows Server 2008 rajta (az IIS nem lehet telepítve).
 
-You can certainly create and deploy a worker role that uses some other mechanism to listen for incoming web requests (for example, your code could create and use a .NET HttpListener). Since the role instances are all running Windows Server 2008, your code can perform any operations that are normally available to an application running on Windows Server
+Biztosan létrehozása és központi telepítése a feldolgozói szerepkör, amely valamilyen más módszerrel a beérkező webes kérelmek figyelésére használ (például a kód sikerült létrehozása és használata a .NET HttpListener). Mivel a szerepkörpéldányok futó összes Windows Server 2008, a kód hajthat végre semmilyen olyan műveletet, amely elérhető a Windows Serveren futó alkalmazáshoz való
 2008.
 
-For each role, you indicate the desired VM size that instances of that role should use. The table below shows the various VM sizes available today and the attributes of each:
+Az egyes szerepkörökhöz adja meg a kívánt Virtuálisgép-méretet, amelyet az adott szerepkör példányt kell használnia. Az alábbi táblázat a különböző ma használható Virtuálisgép-méretek és az egyes attribútumait jeleníti meg:
 
 <table border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
 
@@ -138,27 +138,27 @@ For each role, you indicate the desired VM size that instances of that role shou
 <tr align="left" valign="top">
 
 <td>
-**VM Size**
+**Virtuálisgép-mérettel**
 
 </td>
 
 <td>
-**CPU**
+**PROCESSZOR**
 
 </td>
 
 <td>
-**RAM**
+**RAM-MAL**
 
 </td>
 
 <td>
-**Disk**
+**Lemez**
 
 </td>
 
 <td>
-**Peak Network I/O**
+**Csúcsidőszak hálózati i/o**
 
 </td>
 </tr>
@@ -166,7 +166,7 @@ For each role, you indicate the desired VM size that instances of that role shou
 <tr align="left" valign="top">
 
 <td>
-**Extra Small**
+**Nagyon kicsi**
 
 </td>
 
@@ -186,7 +186,7 @@ For each role, you indicate the desired VM size that instances of that role shou
 </td>
 
 <td>
-\~5 Mbps
+\~5 MB/s
 
 </td>
 </tr>
@@ -194,17 +194,17 @@ For each role, you indicate the desired VM size that instances of that role shou
 <tr align="left" valign="top">
 
 <td>
-**Small**
+**Kis**
 
 </td>
 
 <td>
-1 x 1.6 GHz
+1 x 1,6 GHz-es
 
 </td>
 
 <td>
-1.75 GB
+1,75 GB
 
 </td>
 
@@ -214,7 +214,7 @@ For each role, you indicate the desired VM size that instances of that role shou
 </td>
 
 <td>
-\~100 Mbps
+\~100 MB/s
 
 </td>
 </tr>
@@ -222,17 +222,17 @@ For each role, you indicate the desired VM size that instances of that role shou
 <tr align="left" valign="top">
 
 <td>
-**Medium**
+**Közepes**
 
 </td>
 
 <td>
-2 x 1.6 GHz
+2 x 1,6 GHz-es
 
 </td>
 
 <td>
-3.5 GB
+3,5 GB
 
 </td>
 
@@ -242,7 +242,7 @@ For each role, you indicate the desired VM size that instances of that role shou
 </td>
 
 <td>
-\~200 Mbps
+\~200 MB/s
 
 </td>
 </tr>
@@ -250,12 +250,12 @@ For each role, you indicate the desired VM size that instances of that role shou
 <tr align="left" valign="top">
 
 <td>
-**Large**
+**Nagy**
 
 </td>
 
 <td>
-4 x 1.6 GHz
+4 x 1,6 GHz-es
 
 </td>
 
@@ -265,12 +265,12 @@ For each role, you indicate the desired VM size that instances of that role shou
 </td>
 
 <td>
-1TB
+1 TB-OS
 
 </td>
 
 <td>
-\~400 Mbps
+\~400 MB/s
 
 </td>
 </tr>
@@ -278,12 +278,12 @@ For each role, you indicate the desired VM size that instances of that role shou
 <tr align="left" valign="top">
 
 <td>
-**Extra Large**
+**Extra nagy**
 
 </td>
 
 <td>
-8 x 1.6 GHz
+8 x 1,6 GHz-es
 
 </td>
 
@@ -293,55 +293,55 @@ For each role, you indicate the desired VM size that instances of that role shou
 </td>
 
 <td>
-2TB
+A 2TB
 
 </td>
 
 <td>
-\~800 Mbps
+\~800 MB/s
 
 </td>
 </tr>
 </tbody>
 </table>
-You are charged hourly for each VM you use as a role instance and you are also charged for any data that your role instances send outside the data center. You are not charged for data entering the data center. For more information, see [Azure Pricing][Azure Pricing]. In general, it is advisable to use many small role instances as opposed to a few large instances so that your application is more resilient to failure. After all, the fewer role instances you have, the more disastrous a failure in one of them is to your overall application. Also, as mentioned before, you must deploy at least two instances for each role in order to get the 99.95% service level agreement Microsoft provides.
+Van szó, óránként az egyes virtuális gépek szerepkör példányt használ, és van is szó, az adatokat, hogy a szerepkörpéldányok küldése az adatközponton kívül. Az Adatközpont belépés adatokat nem van szó. További információkért tekintse meg a [Azure díjszabás] [Azure díjszabás]. Általában tanácsos a sok kisméretű szerepkörpéldányokat figyelésekor néhány nagy példányok használja, hogy az alkalmazás több esetén is lehetséges legyen. Rendelkezik a kevesebb szerepkörpéldányt beállítani, a több hiba történt a egyiket egy katasztrofális a teljes alkalmazáshoz. Is ahogy korábban említettük, telepítenie kell az egyes szerepkörökhöz legalább két példányt 99,95 % szolgáltatásiszint-szerződést biztosít a Microsoft eléréséhez.
 
-The service definition (CSDEF) file is also where you would specify many attributes about each role in your application. Here are some of the more useful items available to you:
+A szolgáltatás definíciós (CSDEF) fájl is, ahol kellene megadnia egyes szerepkörök számos attribútum az alkalmazásban. Íme néhány hasznos elemek elérhetők:
 
-* **Certificates**. You use certificates for encrypting data or if your web service supports SSL. Any certificates need to be uploaded to Azure. For more information, see [Managing Certificates in Azure][Managing Certificates in Azure]. This XML setting installs previously-uploaded certificates into the role instance's certificate store so that they are usable by your application code.
-* **Configuration Setting Names**. For values that you want your application(s) to read while running on a role instance. The actual value of the configuration settings is set in the service configuration (CSCFG) file which can be updated at any time without requiring you to redeploy your code. In fact, you can code your applications in such a way to detect the changed configuration values without incurring any downtime.
-* **Input Endpoints**. Here you specify any HTTP, HTTPS, or TCP endpoints (with ports) that you want to expose to the outside world via your *prefix*.cloadapp.net URL. When Azure deploys your role, it will configure the firewall on the role instance automatically.
-* **Internal Endpoints**. Here you specify any HTTP or TCP endpoints that you want exposed to other role instances that are deployed as part of your application. Internal endpoints allow all the role instances within your application to talk to each other but are not accessible to any role instances that are outside your application.
-* **Import Modules**. These optionally install useful components on your role instances. Components exist for diagnostic monitoring, remote desktop, and Azure Connect (which allows your role instance to access on-premises resources through a secure channel).
-* **Local Storage**. This allocates a subdirectory on the role instance for your application to use. It is described in more detail in the [Data Storage Offerings in Azure][Data Storage Offerings in Azure] article.
-* **Startup Tasks**. Startup tasks give you a way to install prerequisite components on a role instance as it boots up. The tasks can run elevated as an administrator if required.
+* **Tanúsítványok**. A titkosított adatok, vagy ha a webszolgáltatás támogatja az SSL-tanúsítványokat használ. A tanúsítványok kell az Azure-bA feltölteni. További információkért lásd: [tanúsítványok kezelése az Azure-ban][Managing Certificates in Azure]. XML-beállításról, hogy-e az alkalmazás kódjában tárolóhálózatnak telepíti a szerepkörpéldányt tanúsítványtárolóba korábban feltöltött tanúsítványok.
+* **Konfigurációs beállítás nevek**. Az értékeket a alkalmazás(ok) olvasása közben egy szerepkör-példányon futnak. A tényleges konfigurációs beállítás értéke a szolgáltatás konfigurációs fájlban (szolgáltatáskonfigurációs SÉMA) anélkül, hogy telepítse újra a kódot bármikor frissíthető. Valójában is kód az alkalmazások oly módon, a módosított konfigurációs értékeket észleléséhez állásidő nélkül.
+* **A bemeneti végpontok**. Itt adhatja meg HTTP, HTTPS vagy TCP-végpontok (a portok), amelyet a külvilág keresztül tegye elérhetővé a *előtag*. cloadapp.net URL-CÍMÉT. Ha Azure telepíti a szerepkör, be fogja beállítani a tűzfalat szerepkörpéldányon automatikusan.
+* **Belső végpont**. Itt adhatja meg a HTTP vagy TCP-végpontok kívánt többi szerepkörpéldányon, az alkalmazás részeként telepített kitéve. Belső végpont engedélyezése az összes szerepkörpéldányt felvegye a egymáshoz az alkalmazáson belül, de bármely szerepkörpéldányt beállítani, amelyek túlmutatnak az alkalmazás számára nem érhetők.
+* **Modul importálása**. Ezeket nem kötelező a szerepkörpéldányok hasznos összetevőinek telepítése. Összetevők léteznek diagnosztikai figyelő, a távoli asztal, és Azure csatlakozzon (amely lehetővé teszi, hogy a szerepkör példánya a helyszíni erőforrások eléréséhez egy biztonságos csatornán keresztül).
+* **Helyi tároló**. Ez osztja ki az egyik alkönyvtár használandó alkalmazás-példányon. További részletes leírása a [adatok tárolási ajánlatokat az Azure-ban] [ Data Storage Offerings in Azure] cikk.
+* **Indítási feladatok**. Indítási feladatok előfeltételként szükséges összetevőket telepíti a szerepkör példányán elinduló úgy adhat. A feladatok emelt szintű rendszergazdai szükség esetén futtathatja.
 
-## <a id="cfg"> </a>The Service Configuration File
-The service configuration (CSCFG) file is an XML file that describes settings that can be changed without redeploying your application. The complete schema for the XML file can be found here: [http://msdn.microsoft.com/library/windowsazure/ee758710.aspx][http://msdn.microsoft.com/library/windowsazure/ee758710.aspx].
-The CSCFG file contains a Role element for each role in your application. Here are some of the items you can specify in the CSCFG file:
+## <a id="cfg"></a>a szolgáltatás konfigurációs fájlja
+A szolgáltatás konfigurációs (szolgáltatáskonfigurációs SÉMA) fájl nem egy XML-fájl, amely beállításokat ismerteti, amelyeket az alkalmazás üzembe helyezésével módosíthatja. A teljes séma az XML-fájlt az itt található: [http://msdn.microsoft.com/library/windowsazure/ee758710.aspx][http://msdn.microsoft.com/library/windowsazure/ee758710.aspx].
+A CSCFG-fájl az egyes szerepkörökhöz, az alkalmazás szerepkör elemet tartalmaz. Íme néhány a cikkeket, megadhatja a szolgáltatáskonfigurációs SÉMA fájlban:
 
-* **OS Version**. This attribute allows you to select the operating system (OS) version you want used for all the role instances running your application code. This OS is known as the *guest OS*, and each new version includes the latest security patches and updates available at the time the guest OS is released. If you set the osVersion attribute value to "\*", then Azure automatically updates the guest OS on each of your role instances as new guest OS versions become available. However, you can opt out of automatic updates by selecting a specific guest OS version. For example, setting the osVersion attribute to a value of "WA-GUEST-OS-2.8\_201109-01" causes all your role instances to get what is described on this web page: [http://msdn.microsoft.com/library/hh560567.aspx][http://msdn.microsoft.com/library/hh560567.aspx]. For more information about guest OS versions, see [Managing Upgrades to the Azure Guests OS].
-* **Instances**. This element's value indicates the number of role instances you want provisioned running the code for a particular role. Since you can upload a new CSCFG file to Azure (without redeploying your application), it is trivially simple to change the value for this element and upload a new CSCFG file to dynamically increase or decrease the number of role instances running your application code. This allows you to easily scale your application up or down to meet actual workload demands while also controlling how much you are charged for running the role instances.
-* **Configuration Setting Values**. This element indicates values for settings (as defined in the CSDEF file). Your role can read these values while it is running. These configuration settings values are typically used for connection strings to SQL Database or to Azure Storage, but they can be used for any purpose you desire.
+* **Operációs rendszer verziója**. Ez az attribútum a használt fut az alkalmazás kódjában szerepkörpéldányt beállítani kívánt operációs rendszer verzióját kiválasztását teszi lehetővé. Az operációs rendszer is ismert, a *vendég operációs rendszer*, és minden új verzióját tartalmazza a legújabb biztonsági javítások és a vendég operációs rendszer felszabadul időpontjában elérhető frissítések. Ha az osVersion attribútum értéke "\*", akkor az Azure automatikusan frissíti a vendég operációs rendszer egyes a szerepkörpéldányok, amint elérhetővé válnak az új Vendég operációsrendszer-verziók. Azonban is kikapcsolja az automatikus frissítések egy konkrét vendég operációs rendszer verziója kiválasztásával. Például beállítást az osVersion attribútum értéke "WA-VENDÉG-operációsrendszer-2.8\_201109-01" hatására a beolvasandó leírtaktól a weblapon lévő összes szerepkörpéldány: [http://msdn.microsoft.com/library/hh560567.aspx] [http://msdn.microsoft.com/library/hh560567.aspx]. További információ a Vendég operációsrendszer-verziók: [frissítések kezelése az Azure vendég operációs rendszeren].
+* **Példányok**. Ez az elem érték azt jelzi, hogy a kiosztott fut egy adott szerepkör kódjának kívánt szerepkör-példányok száma. Egy új CSCFG-fájl (az alkalmazás üzembe helyezésével) feltöltheti az Azure-ba, mert már trivially egyszerű módosítsa az értéket ehhez az elemhez, és dinamikusan növeléséhez vagy csökkentéséhez tegye a következőket a alkalmazás kódja szerepkörpéldányokat új CSCFG-fájl feltöltése . Ez lehetővé teszi, hogy az alkalmazás könnyen vertikális vagy igazodhat tényleges terheléshez közben is szabályozása mennyire van szó, a szerepkör-példányok fut le.
+* **A beállítás értéke konfigurációs**. Ez az elem beállítások értékeit jelző, (a CSDEF fájlban meghatározott). A szerepkör tud olvasni ezeket az értékeket, futása közben is. Ezeket a konfigurációs beállítások értékeket az SQL Database vagy az Azure Storage kapcsolati karakterláncok általában használják, de bármilyen célra felügyelni is használhatók.
 
-## <a id="hostedservices"> </a>Creating and Deploying a Hosted Service
-Creating a hosted service requires that you first go to the [Azure Management Portal] and provision a hosted service by specifying a DNS prefix and the data center you ultimately want your code running in. Then in your development environment, you create your service definition (CSDEF) file, build your application code and package (zip) all these files into a service package (CSPKG) file. You must also prepare your service configuration (CSCFG) file. To deploy your role, you upload the CSPKG and CSCFG files with the Azure Service Management API. Once deployed, Azure, will provision role instances in the data center (based upon the configuration data), extract your application code from the package, copy it to the role instances, and boot the instances. Now, your code is up and running.
+## <a id="hostedservices"></a>Létrehozása és telepítése az üzemeltetett szolgáltatás
+Üzemeltetett szolgáltatás létrehozása megköveteli, hogy nyissa meg a [Azure felügyeleti portálon] és egy üzemeltetett szolgáltatást egy DNS-előtagja és az adatok megadásával center meg kiépítési végső soron szeretné, hogy a futó kód. A fejlesztői környezetben, majd hozzon létre egy szolgáltatás definíciós (CSDEF) fájlt, az alkalmazás kódja és (zip) csomag összes ezeknek a fájloknak hozhat létre. a szolgáltatás (CSPKG) a(z). A szolgáltatás konfigurációs (szolgáltatáskonfigurációs SÉMA) fájl is elő kell készítenie. A szerepkör telepítéséhez töltse fel a CSPKG és a szolgáltatáskonfigurációs SÉMA fájlokat az Azure Service Management API-val. Amennyiben telepített, Azure-ban fog rendelkezni szerepkörpéldányokat (a konfigurációs adatok alapján) az adatközpontban, csomagolja ki a csomagból az alkalmazás kódjában, másolja azt a szerepkörpéldányok és indítsa el a példányok. Most a kód megfelelően működik, és.
 
-The figure below shows the CSPKG and CSCFG files you create on your development computer. The CSPKG file contains the CSDEF file and the code for two roles. After uploading the CSPKG and CSCFG files with the Azure Service Management API, Azure creates the role instances in the data center. In this example, the CSCFG file indicated that Azure should create three instances of role \#1 and two instances of Role \#2.
+Az alábbi ábra a fejlesztési számítógépen létrehozott CSPKG és a szolgáltatáskonfigurációs SÉMA fájlokat. A CSPKG fájl tartalmazza a CSDEF fájl- és a két szerepkörök. Azure Service Management API-val CSPKG és a szolgáltatáskonfigurációs SÉMA fájlok feltöltése után Azure az adatközpontban a szerepkörpéldányok hoz létre. Ebben a példában a CSCFG-fájl jelezte, hogy Azure hozzon létre három példánya \#1 és két példánya \#2.
 
-![image][5]
+![Kép][5]
 
-For more information about deploying, upgrading, and reconfiguring your roles, see the [Deploying and Updating Azure Applications][Deploying and Updating Azure Applications] article.<a id="Ref" name="Ref"></a>
+Központi telepítésével kapcsolatos további információkért frissítése és újrakonfigurálása a szerepkörök, tekintse meg a [központi telepítése és frissítése Azure alkalmazások] [ Deploying and Updating Azure Applications] cikk.<a id="Ref" name="Ref"></a>
 
-## <a id="references"> </a>References
-* [Creating a Hosted Service for Azure][Creating a Hosted Service for Azure]
-* [Managing Hosted Services in Azure][Managing Hosted Services in Azure]
-* [Migrating Applications to Azure][Migrating Applications to Azure]
-* [Configuring an Azure Application][Configuring an Azure Application]
+## <a id="references"></a>Hivatkozások
+* [Az Azure-üzemeltetett szolgáltatás létrehozása][Creating a Hosted Service for Azure]
+* [Az Azure-ban üzemeltetett szolgáltatások kezelése][Managing Hosted Services in Azure]
+* [Azure-alkalmazások áttelepítése][Migrating Applications to Azure]
+* [Az Azure-alkalmazások konfigurálása][Configuring an Azure Application]
 
 <div style="width: 700px; border-top: solid; margin-top: 5px; padding-top: 5px; border-top-width: 1px;">
 
-<p>Written by Jeffrey Richter (Wintellect)</p>
+<p>Jeffrey Richter (Wintellect) szerint</p>
 
 </div>
 
@@ -366,8 +366,8 @@ For more information about deploying, upgrading, and reconfiguring your roles, s
 [Managing Certificates in Azure]: http://msdn.microsoft.com/library/windowsazure/gg981929.aspx
 [http://msdn.microsoft.com/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [http://msdn.microsoft.com/library/hh560567.aspx]: http://msdn.microsoft.com/library/hh560567.aspx
-[Managing Upgrades to the Azure Guests OS]: http://msdn.microsoft.com/library/ee924680.aspx
-[Azure Management Portal]: http://manage.windowsazure.com/
+[frissítések kezelése az Azure vendég operációs rendszeren]: http://msdn.microsoft.com/library/ee924680.aspx
+[Azure felügyeleti portálon]: http://manage.windowsazure.com/
 [5]: ./media/application-model/application-model-8.jpg
 [Deploying and Updating Azure Applications]: http://www.windowsazure.com/develop/net/fundamentals/deploying-applications/
 [Creating a Hosted Service for Azure]: http://msdn.microsoft.com/library/gg432967.aspx

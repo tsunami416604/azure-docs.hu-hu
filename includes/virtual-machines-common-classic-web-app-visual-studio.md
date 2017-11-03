@@ -1,41 +1,41 @@
 
 
-When you create a web application project for Azure, you can provision a virtual machine in Azure. You can then configure the virtual machine with additional software, or use the virtual machine for diagnostic or debugging purposes.
+Egy webalkalmazás projekthez az Azure-ba való létrehozásakor megadhat egy virtuális gép az Azure-ban. Ezután konfigurálja a virtuális gép egy másik szoftver, vagy a virtuális gép hibakereséshez vagy diagnosztikai célokra használja.
 
-To create a virtual machine when you create a web application, follow these steps:
+Egy webalkalmazás létrehozásakor egy virtuális gép létrehozásához kövesse az alábbi lépéseket:
 
-1. In Visual Studio, click **File** > **New** > **Project** > **Web**, and then choose **ASP.NET Web Application** (under the **Visual C#** or **Visual Basic** nodes).
-2. In the **New ASP.NET Project** dialog box, select the type of web application you want, and in the Azure section of the dialog box (in the lower-right corner), make sure that the **Host in the cloud** check box is selected (this check box is labeled **Create remote resources** in some installations).
+1. A Visual Studióban kattintson **fájl** > **új** > **projekt** > **webes**, és válassza a **ASP.NET Web Application** (alatt a **Visual C#** vagy **Visual Basic** csomópontok).
+2. Az a **új ASP.NET projekt** párbeszédpanelen válassza ki a kívánt webes alkalmazás, és a párbeszédpanel (a jobb alsó sarokban) Azure szakaszában, győződjön meg arról, hogy a **a felhőben lévő gazdagéphez** jelölőnégyzet kijelölt (Ez a jelölőnégyzet be van jelölve **távoli erőforrások létrehozása** néhány telepítések esetén).
    
     ![][0]
-3. For this example, in the drop-down list under Microsoft Azure, choose **Virtual Machine (v1)**, and then click the **OK** button.
-4. Sign in to Azure if you're prompted. The **Create Virtual Machine** dialog box appears.
+3. Ebben a példában a Microsoft Azure-ban a legördülő listában válasszon **virtuális gép (v1)**, majd kattintson a **OK** gomb.
+4. Ha a számítógép, jelentkezzen be Azure. A **virtuális gép létrehozása** párbeszédpanel jelenik meg.
    
     ![][2]
-5. In the **DNS name** box, enter a name for the virtual machine. The DNS name must be unique in Azure. If the name you entered isn't available, a red exclamation point appears.
-6. In the **Image** list, choose the image you want to base the virtual machine on. You can choose any of the standard Azure virtual machine images or your image that you've uploaded to Azure.
-7. Leave the **Enable IIS and Web Deploy** check box selected unless you plan to install a different web server. You won't be able to publish from Visual Studio if you disable Web Deploy. You can add IIS and Web Deploy to any of the packaged Windows Server images, including your own custom images.
-8. In the **Size** list, choose the size of the virtual machine.
-9. Specify the sign-in credentials for this virtual machine. Make a note of them, because you'll need them to access the machine through Remote Desktop.
-10. In the **Location** list, choose the region to host the virtual machine.
-11. Click  the **OK** button to start creating the virtual machine. You can follow the progress of the operation in the **Output** window.
+5. Az a **DNS-név** adjon meg egy nevet a virtuális gép. A DNS-neve az Azure-ban egyedinek kell lennie. Ha a megadott név nem érhető el, egy piros felkiáltójel jelenik meg.
+6. Az a **kép** menüben válassza ki a virtuális gép alapjául kívánt lemezképet. A szabványos Azure virtuálisgép-lemezképeket vagy a kép, amelyet az Azure-bA feltöltött választhat.
+7. Hagyja a **engedélyezése az IIS és a Web Deploy** jelölőnégyzet be van jelölve, kivéve, ha egy másik webkiszolgálón telepíteni szeretné. Ön nem fog tudni közzé a Visual Studio eszközből, ha letiltja a Web Deploy keretrendszert. Az IIS és a Web Deploy adhat hozzá a csomagolt Windows Server-lemezképek, beleértve a saját egyéni lemezképek egyikének sem.
+8. Az a **mérete** menüben válassza ki a virtuális gép méretét.
+9. Adja meg a bejelentkezési hitelesítő adatait a virtuális gép számára. Jegyezze fel, mert szüksége, hogy hozzáférjenek a számítógép távoli asztalon keresztül.
+10. Az a **hely** menüben válassza ki a régiót, a virtuális gép működtetéséhez.
+11. Kattintson a **OK** gombra kattintva indítsa el a virtuális gép létrehozása. A műveletnek az előrehaladását követheti a **kimeneti** ablak.
     
     ![][3]
-12. When the virtual machine is provisioned, published scripts are created in a **PublishScripts** node in your solution. The published script runs and provisions a virtual machine in Azure. The **Output** window shows the status. The script performs the following actions to set up the virtual machine:
+12. Amikor a virtuális gép ki van építve, közzétett parancsfájlok jön létre egy **PublishScripts** csomópont a megoldásban. A közzétett parancsfájl fut, és az Azure virtuális gép kiépítését. A **kimeneti** ablak állapotát jeleníti meg. A parancsfájl a virtuális gép beállítása a következő műveleteket hajtja végre:
     
-    * Creates the virtual machine if it doesn't already exist.
-    * Creates a storage account with a name that begins with `devtest`, but only if there isn't already such a storage account in the specified region.
-    * Creates a cloud service as a container for the virtual machine, and creates a web role for the web application.
-    * Configures Web Deploy on the virtual machine.
-    * Configures IIS and ASP.NET on the virtual machine.
+    * A virtuális gépet hoz létre, ha még nem létezik.
+    * Tárfiók létrehozása kezdődő nevű `devtest`, de csak akkor, ha még nem ilyen a storage-fiók a megadott régión belül.
+    * A virtuális gép elhelyezése egy felhőalapú szolgáltatás létrehozása, és létrehoz egy webes szerepkör, a webes alkalmazás.
+    * A Web Deploy konfigurálja a virtuális gépen.
+    * Konfigurálja az IIS és ASP.NET a virtuális gépen.
     
     ![][4]
-13. (Optional) You can connect to the new virtual machine. In **Server Explorer**, expand the **Virtual Machines** node, choose the node for the virtual machine you created, and on its shortcut menu, choose **Connect with Remote Desktop**. Alternatively, in **Cloud Explorer** you can choose **Open in Portal** on the shortcut menu and connect to the virtual machine there.
+13. (Választható) Kapcsolódás az új virtuális gépet. A **Server Explorer**, bontsa ki a **virtuális gépek** csomópont, a csomópont a létrehozott virtuális gép, és a helyi menü választhat, **csatlakozás a távoli asztal**. Alternatív megoldásként a **Cloud Explorer** dönthet úgy **nyissa meg a portál** a helyi menüben, és csatlakozzon a virtuális gép van.
     
     ![][5]
 
-## <a name="next-steps"></a>Next steps
-If you want to customize the published scripts you created, read more in-depth information at [Using Windows PowerShell Scripts to Publish to Dev and Test Environments](http://msdn.microsoft.com/library/dn642480.aspx).
+## <a name="next-steps"></a>Következő lépések
+Ha szeretné testre szabni a közzétett parancsfájlok, olvassa el részletesebb információt: [Windows PowerShell parancsfájlok használata a közzététel a fejlesztési és tesztkörnyezetek](http://msdn.microsoft.com/library/dn642480.aspx).
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG
 [1]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SignIn.PNG

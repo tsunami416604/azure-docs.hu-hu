@@ -1,2 +1,2 @@
-If you don’t already have Visual Studio 2017 installed, you can download and use the **free** 
-[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
+Ha még nincs telepítve a Visual Studio 2017, töltse le és használja a **szabad** 
+[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.

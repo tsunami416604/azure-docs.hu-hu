@@ -1,113 +1,148 @@
 ---
-title: "Azure virtuálisgép-ügynökök használata a Jenkins szolgáltatással fenntartott folyamatos integrációhoz."
-description: "Azure virtuálisgép-ügynökök használata Jenkins alárendelt csomópontokként."
+title: "Bővítse a Jenkins telepítéseit Azure virtuális gép ügynökkel."
+description: "Adja hozzá az Azure virtuális gépek használata a Jenkins Azure Virtuálisgép-ügynök beépülő modul Jenkins folyamatok további kapacitást."
 services: multiple
 documentationcenter: 
-author: mlearned
-manager: douge
-editor: 
-ms.assetid: 
+author: rloutlaw
+manager: justhe
 ms.service: multiple
 ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
-ms.date: 6/7/2017
+ms.topic: article
+ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 5f2df414b4d0e8798b7ed6d90d0ea0fb79d42fc2
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/21/2017
-
+ms.openlocfilehash: dbb30809ab68079666ecfa81a896c1d5101fb6fb
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2017
 ---
-# <a name="use-azure-vm-agents-for-continuous-integration-with-jenkins"></a>Azure virtuálisgép-ügynökök használata a Jenkins szolgáltatással fenntartott folyamatos integrációhoz.
+# <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Bővítse a Jenkins telepítéseit igényeknek Azure virtuális gép ügynökkel
 
-Ez a gyors üzembe helyezési útmutató a Jenkins Azure virtuálisgép-ügynökhöz tartozó beépülő modul használatát ismerteti igény szerinti Linux (Ubuntu) ügynök létrehozásához az Azure-ban.
+Ez az oktatóanyag bemutatja, hogyan használható a Jenkins [Azure VM ügynökök beépülő modul](https://plugins.jenkins.io/azure-vm-agents) igény szerinti kapacitás hozzáadása az Azure-ban futó Linux virtuális gépekkel.
+
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+
+> [!div class="checklist"]
+> * Az Azure virtuális gép ügynökök beépülő modul telepítése
+> * A beépülő modul erőforrások létrehozására az Azure-előfizetés konfigurálása
+> * Az elérhető számítási erőforrások minden ügynök beállítása
+> * Az operációs rendszer és az ügynököket telepített eszközök
+> * Hozzon létre egy új Jenkins freestyle feladatot
+> * A feladat futtatása egy Azure virtuális gép ügynökön
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents/player]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
+* Azure-előfizetés
+* A Jenkins főkiszolgálóval. Ha az még nincs fiókja, a [gyors üzembe helyezés](install-jenkins-solution-template.md) állíthat be egy Azure-ban.
 
-* Ha még nem rendelkezik Jenkins-főkiszolgálóval, kezdheti a [Megoldássablonnal](install-jenkins-solution-template.md) 
-* Járjon el az [Azure-beli szolgáltatásnév létrehozása az Azure CLI 2.0-val](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) című cikk alapján, ha még nem rendelkezik Azure-beli szolgáltatásnévvel.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="install-azure-vm-agents-plugin"></a>Azure-beli virtuálisgép-ügynökhöz tartozó beépülő modul telepítése
 
-Ha a [Megoldássablonból](install-jenkins-solution-template.md) indul ki, akkor az Azure-beli virtuálisgép-ügynökhöz tartozó beépülő modul a Jenkins-főkiszolgálón lesz telepítve.
+> [!TIP]
+> Ha az Azure használatával telepített Jenkins a [megoldássablonban](install-jenkins-solution-template.md), az Azure Virtuálisgép-ügynök beépülő modul már telepítve van.
 
-Egyéb esetben telepítse az **Azure-beli virtuálisgép-ügynökhöz** tartozó beépülő modult a Jenkins irányítópultról.
+1. Az Jenkins irányítópulton, válassza ki a **kezelése Jenkins**, majd jelölje be **kezelése beépülő modulok**.
+2. Válassza ki a **elérhető** lapra, és keresse meg **Azure VM ügynökök**. A beépülő modul és válassza ki a bejegyzés melletti jelölőnégyzet bejelölésével **újraindítása nélküli** az irányítópult alján.
 
-## <a name="configure-the-plugin"></a>A beépülő modul konfigurálása
+## <a name="configure-the-azure-vm-agents-plugin"></a>Az Azure virtuális gép ügynökök beépülő modul konfigurálása
 
-* A Jenkins irányítópulton kattintson a **Jenkins kezelése-> Rendszer konfigurálása->** lehetőségre. Görgessen a lap aljáig és keresse meg az **Új felhő hozzáadása** legördülő menüt. A menüből válassza a **Microsoft Azure-beli virtuálisgép-ügynökök** lehetőséget
-* Válasszon egy létező fiókot az Azure-beli hitelesítő adatok legördülő listából.  Új **Microsoft Azure--beli egyszerű szolgáltatásnév** hozzáadásához adja meg a következő értékeket: előfizetés-azonosító, ügyfél-azonosító, titkos ügyfélkód és a OAuth 2.0 jogkivonat-végpont.
+1. Az Jenkins irányítópulton, válassza ki a **kezelése Jenkins**, majd **rendszer konfigurálása**.
+2. Görgessen a lap alján, és keresse a **felhő** a szakasz a **adja hozzá az új felhőalapú** legördülő válassza **Microsoft Azure virtuális gép ügynökök**.
+3. Válasszon egy meglévő egyszerű a **Hozzáadás** a legördülő lista a **Azure hitelesítő adatait** szakasz. Ha egyik sem szerepel, a következő lépésekkel [szolgáltatásnevet létrehozni](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) az az Azure-fiókra, és adja hozzá a Jenkins konfigurációt:   
 
-![Azure-beli Hitelesítő adatok](./media/jenkins-azure-vm-agents/service-principal.png)
+    a. Válassza ki **Hozzáadás** melletti **Azure hitelesítő adatok** válassza **Jenkins**.   
+    b. Az a **adja hozzá a hitelesítő adatok** párbeszédablakban válassza **Microsoft Azure szolgáltatás egyszerű** a a **jellegű** legördülő.   
+    c. Hozzon létre egy Active Directory szolgáltatás egyszerű az Azure parancssori felületen vagy [felhő rendszerhéj](/azure/cloud-shell/overview).
+    
+    ```azurecli-interactive
+    az ad sp create-for-rbac --name jenkins_sp --password secure_password
+    ```
 
-* A **Konfiguráció ellenőrzése** lehetőségre kattintva győződjön meg a profil konfigurációjának helyességéről.
-* Mentse a konfigurációt és haladjon tovább a következő lépéssel.
+    ```json
+    {
+        "appId": "BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBB",
+        "displayName": "jenkins_sp",
+        "name": "http://jenkins_sp",
+        "password": "secure_password",
+        "tenant": "CCCCCCCC-CCCC-CCCC-CCCCCCCCCCC"
+    }
+    ```
+    d. Adja meg a hitelesítő adatokat az egyszerű szolgáltatásnév az a **adja hozzá a hitelesítő adatok** párbeszédpanel. Ha nem ismeri az Azure-előfizetése Azonosítóját, a parancssori lekérdezhető:
+     
+     ```azurecli-interactive
+     az account list
+     ```
 
-## <a name="template-configuration"></a>Sablon konfigurálása
+     ```json
+        {
+            "cloudName": "AzureCloud",
+            "id": "AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA",
+            "isDefault": true,
+            "name": "Visual Studio Enterprise",
+            "state": "Enabled",
+            "tenantId": "CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCC",
+            "user": {
+            "name": "raisa@fabrikam.com",
+            "type": "user"
+            }
+     ```
 
-### <a name="general-configuration"></a>Általános konfiguráció
-Konfiguráljon egy sablont az Azure-beli virtuálisgép-ügynök definiálásához. 
+    A befejezett szolgáltatásnevet kell használnia a `id` mezőt **előfizetés-azonosító**, a `appId` értékének **ügyfél-azonosító**, `password` a **Ügyfélkulcs**, és egy URL-címet **OAuth 2.0 Token-végpont** a `https://login.windows.net/<tenant_value>`. Válassza ki **Hozzáadás** hozzáadása a szolgáltatásnév és a beépülő modul az újonnan létrehozott hitelesítő adatok használatára konfigurálja.
 
-* Adjon meg új sablont a **Hozzáadás** gombra kattintva. 
-* Adja meg az új sablon nevét. 
-* Címkeként írja be: "ubuntu". Ez a címke a feladat konfigurálása során használatos.
-* A kombinált listából válassza ki a kívánt régiót.
-* Válassza ki a virtuális gép kívánt méretét.
-* Adja meg az Azure-tárfiók nevét, vagy hagyja üresen a mezőt az alapértelmezett "jenkinsarmst" név használatához.
-* Adja meg a megőrzési időtartamot percekben mérve. Ez a beállítás határozza meg, hogy hány percet várhat a Jenkins egy tevékenység nélküli ügynök automatikus törlése előtt. Adjon meg 0 értéket, ha nem kívánja automatikusan töröltetni a tevékenység nélküli ügynököket.
+    ![Az Azure szolgáltatás egyszerű konfigurálása](./media/jenkins-azure-vm-agents/new-service-principal.png)
 
-![Általános konfiguráció](./media/jenkins-azure-vm-agents/general-config.png)
+    
 
-### <a name="image-configuration"></a>Rendszerkép-konfiguráció
+4. Az a **erőforráscsoport-név** részen hagyja **hozzon létre új** kiválasztva, és írja be `myJenkinsAgentGroup`.
+5. Válassza ki **ellenőrizze konfigurációs** csatlakozni az Azure-ba, a profil beállításainak ellenőrzéséhez.
+6. Válassza ki **alkalmaz** a beépülő modul konfiguráció frissítése.
 
-Linux (Ubuntu) ügynök létrehozásához válassza a **Képhivatkozás** lehetőséget, majd használja példaként az alábbi konfigurációt. Az Azure által támogatott lemezképek legfrissebb listáját az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) találja meg.
+## <a name="configure-agent-resources"></a>Ügynök-erőforrások konfigurálása
 
-* Lemezkép kiadója: Canonical
-* Lemezkép tartalma: UbuntuServer
-* Lemezkép termékváltozat: 14.04.5-LTS
-* Lemezkép verzió: legfrissebb
-* Operációs rendszer típusa: Linux
-* Indítási metódus: SSH
-* Rendszergazdai hitelesítő adatok megadása
-* A virtuálisgép-inicializáló parancsprogram indításához írja be:
-```
-# Install Java
-sudo apt-get -y update
-sudo apt-get install -y openjdk-7-jdk
-sudo apt-get -y update --fix-missing
-sudo apt-get install -y openjdk-7-jdk
-```
-![Rendszerkép-konfiguráció](./media/jenkins-azure-vm-agents/image-config.png)
+Egy Azure Virtuálisgép-ügynök megadhatók a sablonok konfigurálása. Ez a sablon meghatározza a számítási erőforrásokat minden ügynök mikor van létrehozva.
 
-* A konfiguráció ellenőrzéséhez kattintson a **Sablon ellenőrzése** gombra.
-* Kattintson a **Save** (Mentés) gombra.
+1. Válassza ki **Hozzáadás** melletti **Azure virtuálisgép-sablon hozzáadása**.
+2. Adja meg `defaulttemplate` a a **neve**
+3. Adja meg `ubuntu` a a **címke**
+4. Válassza ki a kívánt [az Azure-régió](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) az a kombinált lista.
+5. Válassza ki a [Virtuálisgép-méretet](/azure/virtual-machines/linux/sizes) a legördülő lista alatt **virtuálisgép-méret**. Egy általános célú `Standard_DS1_v2` mérete ideális ehhez az oktatóanyaghoz.   
+6. Hagyja a **megőrzési idő** : `60`. Ez a beállítás határozza meg a Jenkins várja meg, amíg az üresjárati ügynökök felszabadítása előtt percben. Adjon meg 0, ha nem szeretné automatikusan eltávolítani üresjárati ügynökök.
+
+   ![Általános Virtuálisgép-konfiguráció](./media/jenkins-azure-vm-agents/general-config.png)
+
+## <a name="configure-agent-operating-system-and-tools"></a>Ügynök operációs rendszer és eszközök konfigurálása
+
+Az a **kép konfigurációs** a beépülő modul konfiguráció, jelölje be a szakasz **Ubuntu 16.04 LTS**. Jelölje be a **Git telepítése (legújabb)**, **telepítése Maven (V3.5.0)**, és **telepítése Docker** az eszközök telepítése az újonnan létrehozott ügynökökre.
+
+![Virtuális gép operációs rendszere és eszközök konfigurálása](./media/jenkins-azure-vm-agents/jenkins-os-config.png)
+
+Válassza ki **Hozzáadás** melletti **rendszergazdai hitelesítő adataival**, majd jelölje be **Jenkins**. Adja meg a felhasználónévvel és jelszóval próbál bejelentkezni az ügynökök meggyőződött arról, hogy azok megfelelnek a használt a [felhasználónév és jelszó házirend](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) rendszergazdai fiókok Azure virtuális gépeken.
+
+Válassza ki **sablon ellenőrzése** ellenőrizze a konfigurációt, és jelölje ki **mentése** menti a módosításokat, és a Jenkins irányítópult való visszatéréshez.
 
 ## <a name="create-a-job-in-jenkins"></a>Feladat létrehozása a Jenkinsben
 
-* A Jenkins irányítópulton kattintson az **Új elem** lehetőségre. 
-* Adjon meg egy nevet, válassza ki a **Freestyle projekt** lehetőséget, majd kattintson az **OK** gombra.
-* Az **Általános** fülön válassza a "Projekt futási helyének korlátozása" lehetőséget, és a címke kifejezéshez írja be: "ubuntu". Az "ubuntu" ez után megjelenik a legördülő listában.
-* Kattintson a **Save** (Mentés) gombra.
+1. A Jenkins irányítópulton kattintson az **Új elem** lehetőségre. 
+2. Adja meg `demoproject1` a nevét, és válassza ki a **Freestyle projekt**, majd jelölje be **OK**.
+3. Az a **általános** lapra, majd **korlátozása, ahol a projekt futtatható** és típus `ubuntu` a **Feliratkifejezés**. Megjelenik egy üzenet, erősítse meg, hogy a címke a felhő konfigurációja az előző lépésben létrehozott által kiszolgált. 
+   ![Feladat beállítása](./media/jenkins-azure-vm-agents/job-config.png)
+4. Az a **forrás kód felügyeleti** lapon jelölje be **Git** , és adja hozzá a következő URL-címet a **tárház URL-CÍMÉT** mező:`https://github.com/spring-projects/spring-petclinic.git`
+5. Az a **Build** lapon jelölje be **Hozzáadás összeállítása lépés**, majd **meghívása a legfelső szintű Maven célok**. Adja meg `package` a a **célok** mező.
+6. Válassza ki **mentése** menteni a feladat definíciójához.
 
-![Feladat beállítása](./media/jenkins-azure-vm-agents/job-config.png)
+## <a name="build-the-new-job-on-an-azure-vm-agent"></a>Az új feladat létrehozása az Azure Virtuálisgép-ügynök
 
-## <a name="build-your-new-project"></a>Új projekt kiépítése
-
-* Térjen vissza a Jenkins irányítópultra.
-* Kattintson jobb gombbal a létrehozott feladatra, majd kattintson a **kiépítés most** lehetőségre. Megkezdődik a fordítási folyamat. 
-* A fordítás befejeződése után nyissa meg a **Konzolkimenetet**. Látható, hogy a fordítás távolról hajtódott végre az Azure-on.
+1. Térjen vissza a Jenkins irányítópultra.
+2. Jelölje ki a feladatot az előző lépésben létrehozott, majd kattintson a **Létrehozás most**. Egy új build várakoznia, de nem indul el addig, amíg az ügynök virtuális gép jön létre az Azure-előfizetése.
+3. A fordítás befejeződése után nyissa meg a **Konzolkimenetet**. Láthatja, hogy a build távolról lett végrehajtva Azure ügynökön.
 
 ![Konzolkimenet](./media/jenkins-azure-vm-agents/console-output.png)
 
-## <a name="reference"></a>Referencia
+## <a name="next-steps"></a>Következő lépések
 
-* Azure Friday videó: [Folyamatos integráció a Jenkins szolgáltatással Azure-beli virtuálisgép-ügynökök használatával](https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents)
-* Támogatási információ és konfigurációs lehetőségek: [Azure-beli virtuálisgép-ügynök Jenkins beépülő modul Wiki](https://wiki.jenkins-ci.org/display/JENKINS/Azure+VM+Agents+Plugin) 
-
-
+> [!div class="nextstepaction"]
+> [CI/CD-ről az Azure App Service](java-deploy-webapp-tutorial.md)

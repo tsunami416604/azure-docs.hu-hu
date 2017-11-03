@@ -1,37 +1,37 @@
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
-> * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-twin-getstarted.md)
+> * [C#/node.js](../articles/iot-hub/iot-hub-csharp-node-twin-getstarted.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 
-Device twins are JSON documents that store device state information (metadata, configurations, and conditions). IoT Hub persists a device twin for each device that connects to it.
+Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációit (metaadatokat, konfigurációkat és állapotokat) tárolják. Az IoT-központ továbbra is fennáll, egy eszköz iker az egyes eszközök ahhoz csatlakozó ügyfélnél.
 
-Use device twins to:
+Az eszköz twins használja:
 
-* Store device metadata from your solution back end.
-* Report current state information such as available capabilities and conditions (for example, the connectivity method used) from your device app.
-* Synchronize the state of long-running workflows (such as firmware and configuration updates) between a device app and a back-end app.
-* Query your device metadata, configuration, or state.
+* A megoldás háttérből eszköz metaadatait tárolja.
+* Például a rendelkezésre álló lehetőségeket, és a feltételek (például a kapcsolat használt módszer) aktuális állapotadatokat jelentést az eszköz alkalmazásból.
+* Egy eszköz alkalmazás és a háttér-alkalmazások között (például a belső vezérlőprogram és konfigurációja frissítések) hosszan futó munkafolyamatok állapotának szinkronizálása.
+* Az eszköz metaadatait, konfigurációs vagy az állapot lekérdezése.
 
 > [!NOTE]
-> Device twins are designed for synchronization and for querying device configurations and conditions. More informations on when to use device twins can be found in [Understand device twins][lnk-twins].
+> Eszköz twins úgy tervezték, a szinkronizálás és eszköz-konfigurációk és a kikötések lekérdezése. Az eszköz twins használatával további informations található [eszköz twins megértéséhez][lnk-twins].
 
-Device twins are stored in an IoT hub and contain:
+Eszköz twins az IoT-központ tárolódnak, és tartalmazza:
 
-* *tags*, device metadata accessible only by the solution back end;
-* *desired properties*, JSON objects modifiable by the solution back end and observable by the device app; and
-* *reported properties*, JSON objects modifiable by the device app and readable by the solution back end. Tags and properties cannot contain arrays, but objects can be nested.
+* *címkék*, csak a megoldás háttérrendszeréhez; által elérhető eszköz metaadatait
+* *szükségeskonfiguráció-tulajdonságok*, a megoldás által módosítható JSON-objektumok biztonsági vége és megfigyelhető az eszköz alkalmazás; és
+* *Tulajdonságok jelentett*, JSON-objektumok módosítható az eszköz alkalmazás, és a megoldás háttérrendszeréhez által is olvasható. Címkék és a Tulajdonságok tömb nem tartalmazhat, de az objektumok egymásba ágyazható.
 
 ![][img-twin]
 
-Additionally, the solution back end can query device twins based on all the above data.
-Refer to [Understand device twins][lnk-twins] for more information about device twins, and to the [IoT Hub query language][lnk-query] reference for querying.
+Ezen felül a megoldás háttérrendszeréhez lekérdezheti az eszköz twins a fenti adatok alapján.
+Tekintse meg [eszköz twins megértéséhez] [ lnk-twins] eszköz twins, és a további információt a [IoT-központ lekérdezési nyelv] [ lnk-query] hivatkozást lekérdezése.
 
 
-This tutorial shows you how to:
+Ez az oktatóanyag a következőket mutatja be:
 
-* Create a back-end app that adds *tags* to a device twin, and a simulated device app that reports its connectivity channel as a *reported property* on the device twin.
-* Query devices from your back-end app using filters on the tags and properties previously created.
+* Hozzon létre egy háttér-alkalmazást, amely *címkék* egy eszköz iker, és a szimulált eszköz alkalmazást, amely szerint a kapcsolat csatorna jelentések egy *tulajdonság jelentett* meg az eszköz iker.
+* A szűrők használata a címkék és a korábban létrehozott tulajdonságok a háttér-alkalmazás eszközök lekérdezése.
 
 <!-- images -->
 [img-twin]: media/iot-hub-selector-twin-get-started/twin.png

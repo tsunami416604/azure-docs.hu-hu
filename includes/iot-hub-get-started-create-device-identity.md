@@ -1,26 +1,26 @@
-## <a name="create-a-device-identity"></a>Create a device identity
+## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 
-In this section, you use a Node.js tool called [iothub-explorer][iot-hub-explorer] to create a device identity for this tutorial. Device IDs are case sensitive.
+Ebben a szakaszban egy Node.js nevű eszközt használhat [IOT hubbal-explorer] [ iot-hub-explorer] egy eszközidentitás létrehozása ehhez az oktatóanyaghoz. Az eszközazonosítókban különbözőnek számítanak a kis- és nagybetűk.
 
-1. Run the following in your command-line environment:
+1. Futtassa a következő parancssori környezetében:
 
     `npm install -g iothub-explorer@latest`
 
-1. Then, run the following command to login to your hub. Substitute `{iot hub connection string}` with the IoT Hub connection string you previously copied:
+1. Ezután futtassa a következő parancsot a központnak a bejelentkezéshez. Helyettesítő `{iot hub connection string}` és az IoT-központ korábban kimásolt kapcsolati karakterláncot:
 
     `iothub-explorer login "{iot hub connection string}"`
 
-1. Finally, create a new device identity called `myDeviceId` with the command:
+1. Végezetül hozza létre egy új eszközidentitás nevű `myDeviceId` paranccsal:
 
     `iothub-explorer create myDeviceId --connection-string`
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-Make a note of the device connection string from the result. This device connection string is used by the device app to connect to your IoT Hub as a device.
+Jegyezze fel az eszköz kapcsolati karakterlánc az eredményből. Az eszköz kapcsolati karakterlánc az eszköz alkalmazás használják az IoT Hub eszközként való kapcsolódáshoz.
 
 ![][img-identity]
 
-Refer to [Getting started with IoT Hub][lnk-getstarted] to programmatically create device identities.
+Tekintse meg [Ismerkedés az IoT-központ] [ lnk-getstarted] eszköz identitások programozott módon létrehozásához.
 
 <!-- images and links -->
 [img-identity]: media/iot-hub-get-started-create-device-identity/devidentity.png

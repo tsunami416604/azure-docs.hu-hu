@@ -1,68 +1,68 @@
 <!--author=SharS last changed: 12/01/15-->
 
-### <a name="step-1-authorize-a-device-to-change-the-service-data-encryption-key-in-the-azure-classic-portal"></a>Step 1: Authorize a device to change the service data encryption key in the Azure classic portal
-Typically, the device administrator will request that the service administrator authorize a device to change service data encryption keys. The service administrator will then authorize the device to change the key.
+### <a name="step-1-authorize-a-device-to-change-the-service-data-encryption-key-in-the-azure-classic-portal"></a>1. lépés: Engedélyezze a szolgáltatásadat-titkosítási kulcs a klasszikus Azure portálon módosíthatja az eszköz
+Általában az eszköz-rendszergazdai kérni fogja, hogy a szolgáltatás-rendszergazda engedélyezi-e az eszközöket, hogy módosítsa a szolgáltatás adattitkosítási kulcsokat. A szolgáltatás-rendszergazda fog majd engedélyezni az eszközt, hogy a kulcs módosítása.
 
-This step is performed in the Azure classic portal. The service administrator can select a device from a displayed list of the devices that are eligible to be authorized. The device is then authorized to start the service data encryption key change process.
+Ez a lépést a klasszikus Azure portálon. A szolgáltatás-rendszergazda is jelöljön ki egy eszközt az eszközöket, amelyek jogosultak kell megjelenített listáját. Az eszköz majd engedélyezve az szolgáltatás titkosítási kulcsváltozás folyamat elindításához.
 
-#### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Which devices can be authorized to change service data encryption keys?
-A device must meet the following criteria before it can be authorized to initiate service data encryption key changes:
+#### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Mely eszközök is engedélyezni kell, hogy módosítsa a szolgáltatás adattitkosítási kulcsokat?
+Egy eszköz a következő feltételeknek kell megfelelnie, mielőtt szolgáltatás titkosítási kulcs adatváltozásokat kezdeményezésére is engedélyezhető:
 
-* The device must be online to be eligible for service data encryption key change authorization.
-* You can authorize the same device again after 30 minutes if the key change has not been initiated.
-* You can authorize a different device, provided that the key change has not been initiated by the previously authorized device. After the new device has been authorized, the old device cannot initiate the change.
-* You cannot authorize a device while the rollover of the service data encryption key is in progress.
-* You can authorize a device when some of the devices registered with the service have rolled over the encryption while others have not. In such cases, the eligible devices are the ones that have completed the service data encryption key change.
+* Lehet, hogy az eszköz online jogosult legyen a szolgáltatás adatokat titkosítási kulcsváltozás engedélyezése.
+* 30 perc elteltével újra ugyanarra az eszközre engedélyezhető, ha a kulcs változás nem lett inicializálva.
+* Egy másik eszközön, feltéve, hogy a kulcsváltozás nem kezdeményezte a korábban meghatalmazott eszköz engedélyezhető. Után az új eszköz engedélyezve van-e, a régi eszköz nem indítható el a módosítást.
+* Egy eszköz nem lehet engedélyezni, amíg folyamatban van az a szolgáltatás adattitkosítási kulcshoz kapcsolódó kulcsváltás.
+* Ha egyes a szolgáltatásban regisztrált eszközöket rendelkezik tanúsítványváltást a titkosítási míg mások számára nem engedélyezhető a eszköz. Ezekben az esetekben a jogosult eszközökkel befejezte a szolgáltatásadat-titkosítási kulcs megfelelően módosítani.
 
 > [!NOTE]
-> In the Azure classic portal, StorSimple virtual devices are not shown in the list of devices that can be authorized to start the key change.
+> A klasszikus Azure portálon a StorSimple virtuális eszköz nem jelennek meg is engedélyezhető a kulcsváltozás start eszközök listáját.
 > 
 > 
 
-Perform the following steps to select and authorize a device to initiate the service data encryption key change.
+A következő lépésekkel válassza ki, és a szolgáltatás titkosítási kulcs változását kezdeményezheti az eszköz engedélyezéséhez.
 
-#### <a name="to-authorize-a-device-to-change-the-key"></a>To authorize a device to change the key
-1. On the service dashboard page, click **Change service data encryption key**.
+#### <a name="to-authorize-a-device-to-change-the-key"></a>Módosítsa a kulcsot az eszköz hitelesítése
+1. A szolgáltatás irányítópult-oldalon, kattintson **módosítás szolgáltatásadat-titkosítási kulcs**.
    
-    ![Change service encryption key](./media/storsimple-change-data-encryption-key/HCS_ChangeServiceDataEncryptionKey-include.png)
-2. In the **Change service data encryption key** dialog box, select and authorize a device to initiate the service data encryption key change. The drop-down list has all the eligible devices that can be authorized.
-3. Click the check icon ![check icon](./media/storsimple-change-data-encryption-key/HCS_CheckIcon-include.png).
+    ![Szolgáltatás-titkosítási kulcs módosítása](./media/storsimple-change-data-encryption-key/HCS_ChangeServiceDataEncryptionKey-include.png)
+2. Az a **módosítás szolgáltatásadat-titkosítási kulcs** párbeszédpanelen válassza ki, és a szolgáltatás titkosítási kulcs változását kezdeményezheti az eszköz hitelesítéséhez. A legördülő listából válassza ki az engedélyezni lehet az összes jogosult eszközre rendelkezik.
+3. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-change-data-encryption-key/HCS_CheckIcon-include.png).
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Step 2: Use Windows PowerShell for StorSimple to initiate the service data encryption key change
-This step is performed in the Windows PowerShell for StorSimple interface on the authorized StorSimple device.
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>2. lépés: Használja a Windows PowerShell-lel a szolgáltatás titkosítási kulcs változását kezdeményezése
+Ez a lépés StorSimple felületet a jogosult StorSimple eszközön a Windows PowerShell történik.
 
 > [!NOTE]
-> No operations can be performed in the Azure classic portal of your StorSimple Manager service until the key rollover is completed.
+> Nincsenek műveletek is elvégezhetők a StorSimple Manager szolgáltatás a klasszikus Azure portálon mindaddig, amíg befejeződik a kulcsváltás.
 > 
 > 
 
-If you are using the device serial console to connect to the Windows PowerShell interface, perform the following steps.
+Ha az eszköz soros konzoljához való csatlakozáshoz a Windows PowerShell-felületet használnak, a következő lépésekkel.
 
-#### <a name="to-initiate-the-service-data-encryption-key-change"></a>To initiate the service data encryption key change
-1. Select option 1 to log on with full access.
-2. At the command prompt, type:
+#### <a name="to-initiate-the-service-data-encryption-key-change"></a>A szolgáltatás titkosítási kulcs változását kezdeményezése
+1. A beállításnak 1 teljes hozzáféréssel rendelkező bejelentkezni.
+2. A parancssorba írja be:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
-3. After the cmdlet has successfully completed, you will get a new service data encryption key. Copy and save this key for use in step 3 of this process. This key will be used to update all the remaining devices registered with the StorSimple Manager service.
+3. Miután a parancsmag sikeresen befejeződött, kap egy új szolgáltatásadat-titkosítási kulcs. Másolja ki és mentse a kulcs használható a 3. lépésben a folyamat során. Ezt a kulcsot a StorSimple Manager szolgáltatásban regisztrált összes fennmaradó eszköz frissítéséhez használható.
    
    > [!NOTE]
-   > This process must be initiated within four hours of authorizing a StorSimple device.
+   > Ez a folyamat engedélyezése a StorSimple eszköz négy órán belül kell kezdeményezni.
    > 
    > 
    
-   This new key is then sent to the service to be pushed to all the devices that are registered with the service. An alert will then appear on the service dashboard. The service will disable all the operations on the registered devices, and the device administrator will then need to update the service data encryption key on the other devices. However, the I/Os (hosts sending data to the cloud) will not be disrupted.
+   Ez az új kulcs majd kerül a szolgáltatás kerül át a szolgáltatásban regisztrált összes eszközt. A szolgáltatás irányítópultján egy figyelmeztetés fog megjelenni. A szolgáltatás le fogja tiltani a regisztrált eszközökön a műveleteket, és az eszköz-rendszergazdai majd a szolgáltatásadat-titkosítási kulcs az egyéb eszközein futó frissítenie kell. Azonban az i/o műveletek (gazdagép adatokat küldeni a felhőben) fog nem működni.
    
-   If you have a single device registered to your service, the rollover process is now complete and you can skip the next step. If you have multiple devices registered to your service, proceed to step 3.
+   Ha a szolgáltatáshoz regisztrált egyetlen eszközt, a helyettesítő folyamat befejeződött, és ugorjon a következő lépéssel. Ha a szolgáltatáshoz regisztrált több eszközön, ugorjon a 3.
 
-### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Step 3: Update the service data encryption key on other StorSimple devices
-These steps must be performed in the Windows PowerShell interface of your StorSimple device if you have multiple devices registered to your StorSimple Manager service. The key that you obtained in Step 2: Use Windows PowerShell for StorSimple to initiate the service data encryption key change must be used to update all the remaining StorSimple device registered with the StorSimple Manager service.
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>3. lépés: A más StorSimple eszközökhöz a szolgáltatásadat-titkosítási kulcs frissítése
+A Windows PowerShell-felületet a StorSimple eszköz ezeket a lépéseket kell végrehajtani, ha több eszközt regisztrálni a StorSimple Manager szolgáltatásban. A 2. lépésben beszerzett kulcs: használja a Windows PowerShell-lel kezdeményezheti a szolgáltatás titkosítási kulcs változását kell használni minden a fennmaradó StorSimple eszköz frissítése regisztrálni a StorSimple Manager szolgáltatással.
 
-Perform the following steps to update the service data encryption on your device.
+Frissítéséhez hajtsa végre a következő lépéseket a szolgáltatásadat-titkosítási az eszközön.
 
-#### <a name="to-update-the-service-data-encryption-key"></a>To update the service data encryption key
-1. Use Windows PowerShell for StorSimple to connect to the console. Select option 1 to log on with full access.
-2. At the command prompt, type:
+#### <a name="to-update-the-service-data-encryption-key"></a>A szolgáltatásadat-titkosítási kulcs frissítése
+1. Használja a Windows PowerShell-lel a konzolhoz való csatlakozáshoz. A beállításnak 1 teljes hozzáféréssel rendelkező bejelentkezni.
+2. A parancssorba írja be:
    
     `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. Provide the service data encryption key that you obtained in [Step 2: Use Windows PowerShell for StorSimple to initiate the service data encryption key change](#to-initiate-the-service-data-encryption-key-change).
+3. Adja meg a szolgáltatásadat-titkosítási kulcs beolvasott [2. lépés: használja a Windows PowerShell-lel kezdeményezheti a szolgáltatás titkosítási kulcs változását](#to-initiate-the-service-data-encryption-key-change).
 

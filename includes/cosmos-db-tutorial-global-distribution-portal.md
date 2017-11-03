@@ -1,31 +1,31 @@
 
-You can learn about Azure Cosmos DB global distribution in this Azure Friday video with Scott Hanselman and Principal Engineering Manager Karthik Raman.
+Azure Cosmos DB globális terjesztési az Azure-ban videó péntek Scott Hanselman és egyszerű mérnöki Manager Karthik Raman olvashat.
 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
-For more information about how global database replication works in Azure Cosmos DB, see [Distribute data globally with Cosmos DB](../articles/cosmos-db/distribute-data-globally.md).
+Hogyan globális adatbázis-replikációval kapcsolatos további információk az Azure Cosmos Adatbázisba működik, a következő témakörben: [adatok globálisan Cosmos DB terjesztése](../articles/cosmos-db/distribute-data-globally.md).
 
-## <a id="addregion"></a>Add global database regions using the Azure Portal
-Azure Cosmos DB is available in all [Azure regions][azureregions] world-wide. After selecting the default consistency level for your database account, you can associate one or more regions (depending on your choice of default consistency level and global distribution needs).
+## <a id="addregion"></a>Adja hozzá az Azure portál használatával globális adatbázis területek
+Az Azure Cosmos DB érhető el az összes [Azure-régiók] [ azureregions] világszerte. Miután kijelölte az alapértelmezett konzisztencia szint adatbázis fiókjához, társíthatja egy vagy több régióban (attól függően, hogy a választott alapértelmezett konzisztencia szintre, valamint globális terjesztési kell).
 
-1. In the [Azure portal](https://portal.azure.com/), in the left bar, click **Azure Cosmos DB**.
-2. In the **Azure Cosmos DB** blade, select the database account to modify.
-3. In the account blade, click **Replicate data globally** from the menu.
-4. In the **Replicate data globally** blade, select the regions to add or remove by clicking regions in the map, and then click **Save**. There is a cost to adding regions, see the [pricing page](https://azure.microsoft.com/pricing/details/cosmos-db/) or the [Distribute data globally with Azure Cosmos DB](../articles/cosmos-db/distribute-data-globally.md) article for more information.
+1. Az a [Azure-portálon](https://portal.azure.com/), a bal oldali sávon kattintson **Azure Cosmos DB**.
+2. Az a **Azure Cosmos DB** panelen válassza az adatbázis-fiók módosítása.
+3. A fiók paneljén kattintson **replikálja az adatokat globális** a menüből.
+4. Az a **replikálja az adatokat globális** panelen válassza ki a régiók hozzáadása vagy eltávolítása a térkép régiók kattintva, és kattintson **mentése**. A régiók hozzáadása egy költsége van, tekintse meg a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/) vagy a [adatok globálisan Azure Cosmos DB terjesztése](../articles/cosmos-db/distribute-data-globally.md) cikkében találja.
    
-    ![Click the regions in the map to add or remove them][1]
+    ![Kattintson a régiók hozzáadásához, vagy távolítsa el őket a térképen][1]
     
-Once you add a second region, the **Manual Failover** option is enabled on the **Replicate data globally** blade in the portal. You can use this option to test the failover process or change the primary write region. Once you add a third region, the **Failover Priorities** option is enabled on the same blade so that you can change the failover order for reads.  
+Miután hozzáadta a második terület a **kézi feladatátvételt** beállítás engedélyezve van a **replikálja az adatokat globális** a portálon. Ez a beállítás használatával a feladatátvételi folyamat tesztelhet, illetve az elsődleges írási régió módosítása. Miután hozzáadta a harmadik terület a **feladatátvételi prioritások** engedélyezve van a azonos panelen, hogy bármikor módosíthatja a feladatátvételi sorrendnek olvasása.  
 
-### <a name="selecting-global-database-regions"></a>Selecting global database regions
-There are two common scenarios for configuring two or more regions:
+### <a name="selecting-global-database-regions"></a>Globális adatbázis területek kiválasztása
+Két vagy több régió konfigurálása két gyakori forgatókönyvei van:
 
-1. Delivering low-latency access to data to end users no matter where they are located around the globe
-2. Adding regional resiliency for business continuity and disaster recovery (BCDR)
+1. Alacsony késésű hozzáférést kézbesíti a végfelhasználók számára, függetlenül attól, hol találhatók a világ minden táján adatok
+2. Üzleti folytonossági és vészhelyreállítási (BCDR) regionális rugalmassági hozzáadása
 
-For delivering low-latency to end-users, it is recommended to deploy both the application and add Azure Cosmos DB in the regions thats correspond to where the application's users are located.
+Kis késleltetésű kézbesítéséhez legyenek a végfelhasználók számára, ajánlott, mind az alkalmazás központi telepítése és a régiókban, amelyek megfelelnek az Azure Cosmos-adatbázis hozzáadása hol találhatók az alkalmazás felhasználóinak.
 
-For BCDR, it is recommended to add regions based on the region pairs described in the [Business continuity and disaster recovery (BCDR): Azure Paired Regions][bcdr] article.
+A BCDR, javasoljuk, hogy a régió párok leírtak alapján régiók hozzáadása a [üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure-régiókat párosítva] [ bcdr] cikk.
 
 <!--
 

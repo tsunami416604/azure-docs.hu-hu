@@ -1,25 +1,25 @@
-## <a name="wordpress-and-azure-app-service"></a>WordPress and Azure App Service
-* [What is WordPress?](https://wordpress.org/)
-* [How to purchase ClearDB Shared MySQL hosting for your WordPress app](http://blog.syntaxc4.net/post/2012/12/03/provisioning-a-mysql-database-from-the-windows-azure-store.aspx)
-* [How to Purchase ClearDB dedicated MySQL cluster for your WordPress app ](https://azure.microsoft.com/blog/announcing-new-mysql-premium-tiers-from-cleardb/)
-* [Deploy a WordPress web app backed with MySQL replication cluster](/documentation/templates/wordpress-mysql-replication/)
-* [Build your own Master-Master MySQL Cluster using Percona Cluster](/documentation/templates/mysql-ha-pxc/) and [learn more on how to manage the cluster](https://github.com/fanjeffrey/axiom.articles/tree/master/pxc)
-* [Deploy WordPress backed by MySQL replication cluster with master-slave configuration](/documentation/templates/mysql-replication/)
-* [Deploy a WordPress app backed by SQL Azure DB managed by ProjectNami](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ProjectNami.ProjectNami?tab=Overview)
+## <a name="wordpress-and-azure-app-service"></a>WordPress és az Azure App Service
+* [Mi az a WordPress?](https://wordpress.org/)
+* [A WordPress alkalmazás üzemeltető ClearDB megosztott MySQL megvásárlásával](http://blog.syntaxc4.net/post/2012/12/03/provisioning-a-mysql-database-from-the-windows-azure-store.aspx)
+* [Hogyan beszerzési ClearDB MySQL dedikált fürtről a WordPress alkalmazás](https://azure.microsoft.com/blog/announcing-new-mysql-premium-tiers-from-cleardb/)
+* [MySQL-replikáció fürt biztonsági WordPress webalkalmazás üzembe helyezése](/documentation/templates/wordpress-mysql-replication/)
+* [A saját Master-főkiszolgáló MySQL fürtöt Percona fürt használatával hozza létre](/documentation/templates/mysql-ha-pxc/) és [további, a fürt kezeléséhez](https://github.com/fanjeffrey/axiom.articles/tree/master/pxc)
+* [MySQL replikációs fürt master-alárendelt konfiguráció alapját WordPress telepítése](/documentation/templates/mysql-replication/)
+* [A WordPress alkalmazás ProjectNami által kezelt SQL Azure Database által támogatott központi telepítése](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ProjectNami.ProjectNami?tab=Overview)
 
-## <a name="troubleshooting-wordpress-application"></a>Troubleshooting WordPress Application
-* [How to troubleshoot your WordPress app](https://sunithamk.wordpress.com/2014/09/04/wordpress-troubleshooting-techniques-on-azure-websites/)
-* [Gather usage  telemetry using Azure Application Insights  service](https://azure.microsoft.com/blog/usage-analytics-for-wordpress-with-azure-app-insights/)
-* [Run Zend Zray profiler against your web app to diagnose issues and performance](https://sunithamk.wordpress.com/2015/08/04/profiling-php-application-on-azure-web-apps/)
-* [Use Kudu Support portal to diagnose and mitigate issues in real time](https://sunithamk.wordpress.com/2015/11/04/diagnose-and-mitigate-issues-with-azure-web-apps-support-portal/)
-* [Use various auto-heal rules to automate resolving real time incidents](http://microsoftazurewebsitescheatsheet.info/#auto-heal)
-* [How to backup your web app](../articles/app-service/web-sites-backup.md) and [How to restore your web app](../articles/app-service/web-sites-restore.md)
+## <a name="troubleshooting-wordpress-application"></a>WordPress alkalmazás hibaelhárítása
+* [A WordPress alkalmazás hibaelhárítása](https://sunithamk.wordpress.com/2014/09/04/wordpress-troubleshooting-techniques-on-azure-websites/)
+* [Gyűjtse össze az Azure Application Insights szolgáltatással használat telemetriai adatai](https://azure.microsoft.com/blog/usage-analytics-for-wordpress-with-azure-app-insights/)
+* [A Zend Zray Profilkészítő futtatni a problémák és a teljesítmény diagnosztizálása érdekében webalkalmazás](https://sunithamk.wordpress.com/2015/08/04/profiling-php-application-on-azure-web-apps/)
+* [A Kudu támogatási portál használatával diagnosztizálhatók és megoldhatók a problémák valós időben](https://sunithamk.wordpress.com/2015/11/04/diagnose-and-mitigate-issues-with-azure-web-apps-support-portal/)
+* [Használjon különböző automatikus-javítandó feloldó valós idejű incidensek automatikus szabályok](http://microsoftazurewebsitescheatsheet.info/#auto-heal)
+* [A webalkalmazás biztonsági mentését hogyan](../articles/app-service/web-sites-backup.md) és [a webes alkalmazás visszaállítása](../articles/app-service/web-sites-restore.md)
 
-## <a name="performance"></a>Performance
-* [How to speed up WordPress web app](https://sunithamk.wordpress.com/2014/08/01/10-ways-to-speed-up-your-wordpress-site-on-azure-websites/)
-* [How to enabled redis cache](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md) using [redis cache plugin](https://wordpress.org/plugins/wp-redis/)
-* [Enable wincache with W3 total cache plugin](https://wordpress.org/plugins/w3-total-cache/)
-* [How to use supercache plugin to speed up WordPress app](http://ruslany.net/2008/12/speed-up-wordpress-on-iis-70/)
-* [How to server caching using IIS output caching](http://blogs.msdn.com/b/brian_swan/archive/2011/06/08/performance-tuning-php-apps-on-windows-iis-with-output-caching.aspx)
-* [How to enabled browser caching for static content](http://www.iis.net/configreference/system.webserver/staticcontent)
+## <a name="performance"></a>Teljesítmény
+* [Hogyan WordPress-webalkalmazás felgyorsítása érdekében](https://sunithamk.wordpress.com/2014/08/01/10-ways-to-speed-up-your-wordpress-site-on-azure-websites/)
+* [Hogyan engedélyezett redis gyorsítótár](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md) használatával [redis cache beépülő modul](https://wordpress.org/plugins/wp-redis/)
+* [W3 gyorsítótárra beépülő modul a wincache-bővítmény engedélyezése](https://wordpress.org/plugins/w3-total-cache/)
+* [Felgyorsíthatja a WordPress alkalmazás supercache beépülő modul használata](http://ruslany.net/2008/12/speed-up-wordpress-on-iis-70/)
+* [Hogyan server gyorsítótárazása az IIS-sel kimeneti gyorsítótár](http://blogs.msdn.com/b/brian_swan/archive/2011/06/08/performance-tuning-php-apps-on-windows-iis-with-output-caching.aspx)
+* [Hogyan engedélyezett böngésző statikus tartalom gyorsítótárazása](http://www.iis.net/configreference/system.webserver/staticcontent)
 

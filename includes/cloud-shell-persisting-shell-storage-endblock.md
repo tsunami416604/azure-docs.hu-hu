@@ -1,19 +1,19 @@
-## <a name="transfer-local-files-to-cloud-shell"></a>Transfer local files to Cloud Shell
-The `clouddrive` directory syncs with the Azure portal storage blade. Use this blade to transfer local files to or from your file share. Updating files from within Cloud Shell is reflected in the file storage GUI when you refresh the blade.
+## <a name="transfer-local-files-to-cloud-shell"></a>Helyi fájlok átvitele a felhő rendszerhéj
+A `clouddrive` directory szinkronizál az Azure portál tárolás panel. Ezen a panelen vihet át a helyi fájlokat vagy a fájlmegosztásból. Felhő rendszerhéj található fájlokat frissítése is megjelenik a file storage grafikus felhasználói Felülettel amikor frissíteni a panelt.
 
-### <a name="download-files"></a>Download files
+### <a name="download-files"></a>Fájlok letöltése
 
-![List of local files](../articles/cloud-shell/media/persisting-shell-storage/download.png)
-1. In the Azure portal, go to the mounted file share.
-2. Select the target file.
-3. Select the **Download** button.
+![A helyi fájlok listája](../articles/cloud-shell/media/persisting-shell-storage/download.png)
+1. Az Azure-portálon lépjen a csatlakoztatott fájlmegosztáshoz.
+2. Válassza ki a cél-fájlt.
+3. Válassza ki a **letöltése** gombra.
 
-### <a name="upload-files"></a>Upload files
+### <a name="upload-files"></a>Fájlok feltöltése
 
-![Local files to be uploaded](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
-1. Go to your mounted file share.
-2. Select the **Upload** button.
-3. Select the file or files that you want to upload.
-4. Confirm the upload.
+![Fel kell tölteni a helyi fájlok](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
+1. Nyissa meg a csatlakoztatott fájlmegosztáshoz.
+2. Válassza ki a **feltöltése** gombra.
+3. Válassza ki a fájl vagy a feltölteni kívánt fájlokat.
+4. Erősítse meg a feltöltést.
 
-You should now see the files that are accessible in your `clouddrive` directory in Cloud Shell.
+Most látnia kell, hogy elérhető-e a fájlokat a `clouddrive` felhő rendszerhéj könyvtárába.

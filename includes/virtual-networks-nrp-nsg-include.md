@@ -67,7 +67,7 @@ NSG a JSON formátum. minta:
         }
     }
 
-### <a name="default-security-rules"></a>Alapértelmezett szabályok
+### <a name="default-security-rules"></a>Alapértelmezett biztonsági szabályok
 
 Alapértelmezett szabályok érhető el a biztonsági szabályok azonos tulajdonságokkal rendelkezik. Adja meg, amelyek az NSG-k vonatkoznak annak biztosítása érdekében erőforrások közötti hálózati kapcsolat léteznek. Ellenőrizze, hogy tudja, amely [alapértelmezett biztonsági szabályok](../articles/virtual-network/virtual-networks-nsg.md#default-rules) létezik.
 

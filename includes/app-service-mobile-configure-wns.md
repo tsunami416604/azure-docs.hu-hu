@@ -1,7 +1,7 @@
 
-1. In the [Azure portal](https://portal.azure.com/), click **Browse All** > **App Services**, and click your Mobile Apps back end. Under **Settings**, click **App Service Push**, and then click your notification hub name.
-2. Go to **Windows (WNS)**, enter the **Security key** (client secret) and **Package SID** that you obtained from the Live Services site, and then click **Save**.
+1. A a [Azure-portálon](https://portal.azure.com/), kattintson a **összes tallózása** > **alkalmazásszolgáltatások**, és kattintson a Mobile Apps háttér. A **beállítások**, kattintson a **App Service leküldéses**, majd kattintson az értesítési központ nevére.
+2. Lépjen **Windows (WNS)**, adja meg a **biztonsági kulcs** (titkos) és **CSOMAGAZONOSÍTÓT** , amely a Live Services webhely kapott, és kattintson a **mentése** .
 
-    ![Set the WNS key in the portal](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
+    ![A WNS kulcsát állítsa a portálon](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
 
-Your back end is now configured to use WNS to send push notifications.
+A háttér most WNS leküldéses értesítések küldéséhez használatára van konfigurálva.

@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>Prerequisites
-* A [OneDrive](http://OneDrive.com) account 
+### <a name="prerequisites"></a>Előfeltételek
+* A [OneDrive](http://OneDrive.com) fiók 
 
-Before you can use your OneDrive for Business account in a Logic app, you must authorize the Logic app to connect to your OneDrive for Business account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+A onedrive vállalati verzió fiókjában található logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazást a onedrive vállalati verzió fiókjában való kapcsolódáshoz. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
 
-Here are the steps to authorize your Logic app to connect to your OneDrive for Business account:
+A Logic Apps alkalmazást, a onedrive vállalati verzió fiókjában való csatlakozáshoz engedélyezni lépései a következők:
 
-1. To create a connection to OneDrive for Business, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *OneDrive for Business* in the search box. Select the trigger or action you'll like to use:  
+1. Válassza ki a onedrive vállalati verzióhoz, VPN-kapcsolat létrehozásához a Logic app tervezőben, **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *onedrive vállalati verzió* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. If you haven't created any connections to OneDrive for Business before, you'll get prompted to provide your OneDrive for Business credentials. These credentials will be used to authorize your Logic app to connect to, and access your OneDrive for Business account's data:  
+2. Ha még nem hozott létre a kapcsolatokat, mielőtt onedrive vállalati verzióhoz, a rendszer adja meg a OneDrive vállalati hitelesítő adatok fog kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használandó és a OneDrive vállalati fiók adatait hozzáférési:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Provide your OneDrive for Business user name and password to authorize your Logic app:  
+3. Adja meg a onedrive vállalati verzió üzleti felhasználónevet és jelszót a Logic Apps alkalmazást engedélyezése:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
+4. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 

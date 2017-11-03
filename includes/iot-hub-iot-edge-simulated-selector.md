@@ -2,84 +2,84 @@
 > * [Linux](../articles/iot-hub/iot-hub-linux-iot-edge-simulated-device.md)
 > * [Windows](../articles/iot-hub/iot-hub-windows-iot-edge-simulated-device.md)
 
-This walkthrough of the [Simulated Device Cloud Upload sample] shows you how to use [Azure IoT Edge][lnk-sdk] to send device-to-cloud telemetry to IoT Hub from simulated devices.
+Ez a forgatókönyv a [szimulált eszköz felhő feltöltése minta] bemutatja, hogyan használható [Azure IoT peremhálózati] [ lnk-sdk] eszközről a felhőbe telemetriai adatokat küldhet az IoT-központ szimulált eszközökről .
 
-This walkthrough covers:
+A bemutató tartalma:
 
-* **Architecture**: architectural information about the [Simulated Device Cloud Upload sample].
-* **Build and run**: the steps required to build and run the sample.
+* **Architektúra**: architekturális információt a [szimulált eszköz felhő feltöltése minta].
+* **Létrehozás és futtatás**: A minta elkészítéséhez és futtatásához szükséges lépések.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Architektúra
 
-The [Simulated Device Cloud Upload sample] shows how to create a gateway that sends telemetry from simulated devices to an IoT hub. A device may not be able to connect directly to IoT Hub because the device:
+A [szimulált eszköz felhő feltöltése minta] mutatja be, amely a szimulált eszköz telemetriai adatokat küld az IoT-központ átjáró létrehozásához. Egy eszköz nem lehet kapcsolódni a közvetlenül az IoT hubhoz, mert az eszközön:
 
-* Does not use a communications protocol understood by IoT Hub.
-* Is not smart enough to remember the identity assigned to it by IoT Hub.
+* Az IoT-központ által értelmezhető kommunikációs protokoll nem használja.
+* Nincs elég intelligens jegyezze meg az IoT-központ által hozzárendelt identitása.
 
-An IoT Edge gateway can solve these problems in the following ways:
+Az IoT-átjárónak e problémák megoldását, a következőképpen:
 
-* The gateway understands the protocol used by the device, receives device-to-cloud telemetry from the device, and forwards those messages to IoT Hub using a protocol understood by the IoT hub.
+* Az átjáró tisztában van azzal, az eszköz által használt protokoll eszközről a felhőbe telemetriai adatokat fogad az eszközt, és továbbítja azokat az üzeneteket az IoT-központ tudja értelmezni az IoT hub protokoll használatát.
 
-* The gateway maps IoT Hub identities to devices and acts as a proxy when a device sends messages to IoT Hub.
+* Az átjáró IoT-központ identitásokat az eszközökre, és proxyként funkcionál, ha egy eszközt az IoT-központ üzeneteket küld.
 
-The following diagram shows the main components of the sample, including the IoT Edge modules:
+Az alábbi ábrán látható, a minta, beleértve az IoT-Edge modulok fő elemei:
 
-![Diagram - simulated device message goes through gateway to IoT Hub][1]
+![Diagram – a szimulált eszköz üzenet végighalad az IoT Hub-átjáró][1]
 
-This sample contains three modules that make up the gateway:
-1. Protocol ingestion module
-1. MAC &lt;-&gt; IoT Hub ID module
-1. IoT Hub communication module
+Ez a minta az átjárót alkotó három modulok tartalmazza:
+1. Protokollfeldolgozási modul
+1. MAC &lt;-&gt; IoT Hub-azonosítómodul
+1. IoT Hub-kommunikációs modul
 
-The modules do not pass messages directly to each other. The modules publish messages to an internal broker that delivers the messages to the other modules using a subscription mechanism. For more information, see [Get started with Azure IoT Edge][lnk-gw-getstarted].
+A modulok nem adnak át üzeneteket közvetlenül egymásnak. A modulok üzenetek közzététele egy belső broker, amely továbbítja az üzeneteket egy előfizetési mechanizmus használatával az egyéb modulok. További információkért lásd: [Ismerkedés az Azure IoT peremhálózati][lnk-gw-getstarted].
 
-![Diagram - gateway modules communicate with broker][2]
+![Diagram – az átjáró modulok broker folytatott kommunikációhoz.][2]
 
-### <a name="protocol-ingestion-module"></a>Protocol ingestion module
+### <a name="protocol-ingestion-module"></a>Protokollfeldolgozási modul
 
-The protocol ingestion module is the starting point for process of taking data from devices, through the gateway, and into the cloud. 
+A protokoll adatfeldolgozást modul az kiindulópont folyamat során a adatok eszközökről, az átjárón keresztül, és a felhőben. 
 
-In the sample, this module:
+A példában ez a modul:
 
-1. Creates simulated temperature data. If you use physical devices, the module reads data from those physical devices.
-1. Creates a message.
-1. Places the simulated temperature data into the message content.
-1. Adds a property with a fake MAC address to the message.
-1. Makes the message available to the next module in the chain.
+1. Szimulált hőmérséklet adatokat hoz létre. Ha a fizikai eszközöket használ, a modul olvassa be az adatokat fizikai eszközöket.
+1. Létrehoz egy üzenetet.
+1. A szimulált hőmérséklet adatok helyezi el az üzenet tartalmát.
+1. Az üzenet ad hozzá egy tulajdonság hamis MAC-címmel.
+1. Elérhetővé teszi az üzenet a következő modulhoz a láncban.
 
-The protocol ingestion module is **simulated_device.c** in the source code.
+A protokoll adatfeldolgozást modul **simulated_device.c** a forráskód.
 
-### <a name="mac-lt-gt-iot-hub-id-module"></a>MAC &lt;-&gt; IoT Hub ID module
+### <a name="mac-lt-gt-iot-hub-id-module"></a>MAC &lt;-&gt; IoT Hub-azonosítómodul
 
-The MAC &lt;-&gt; IoT Hub ID module works as a translator. This sample uses a MAC address as a unique device identifier and correlates it with an IoT Hub device identity. However, you can write your own module that uses a different unique identifier. For example, your devices may have unique serial numbers or the telemetry data may include a unique embedded device name.
+A MAC &lt; - &gt; IoT Hub azonosító modul fordító működik. Ez a minta egy MAC-címet használ egyedi eszközazonosítóként, és azt egy IoT Hub-eszközidentitáshoz kapcsolja. Írhat azonban saját, eltérő egyedi azonosítót használó modult is. Például előfordulhat, hogy az eszközök egyedi sorozatszámokat, vagy a telemetriai adatok tartalmazhatják a beágyazott eszköz egyedi neve.
 
-In the sample, this module:
+A példában ez a modul:
 
-1. Scans for messages that have a MAC address property.
-1. If there is a MAC address, adds another property with an IoT Hub device key to the message. 
-1. Makes the message available to the next module in the chain.
+1. A MAC-cím tulajdonsággal rendelkező üzenetek keres.
+1. Ha egy MAC-címet, ad hozzá egy másik tulajdonság IoT Hub eszköz kulccsal rendelkező az üzenetet. 
+1. Elérhetővé teszi az üzenet a következő modulhoz a láncban.
 
-The developer sets up a mapping between MAC addresses and IoT Hub identities to associate the simulated devices with IoT Hub device identities. The developer adds the mapping manually as part of the module configuration.
+A fejlesztői állít be egy MAC-címek és az IoT-központ identitások közötti leképezést a szimulált eszköz társítandó IoT Hub eszköz identitásokat. A fejlesztő a leképezés a modul konfigurációjának részeként manuálisan hozzáadja.
 
-The MAC &lt;-&gt; IoT Hub ID module is **identitymap.c** in the source code. 
+A MAC &lt; - &gt; IoT Hub azonosítója a modul **identitymap.c** a forráskód. 
 
-### <a name="iot-hub-communication-module"></a>IoT Hub communication module
+### <a name="iot-hub-communication-module"></a>IoT Hub-kommunikációs modul
 
-The IoT Hub communication module opens a single HTTP connection from the gateway to the IoT Hub. HTTP is one of the three protocols understood by IoT Hub. This module keeps you from having to open a connection for each device by multiplexing connections from all the devices over the one connection. This approach enables a single gateway to connect many devices. 
+Az IoT-központ kommunikációs modul egy HTTPS-kapcsolat megnyitása az IoT-központ az átjárót. HTTPS szerepel a három protokollok, az IoT-központ tudja értelmezni. Ez a modul révén nem az egyes eszközök a kapcsolat megnyitásához az eszközök közötti kapcsolatok multiplexáló egy kapcsolaton keresztül. Ez a megközelítés lehetővé teszi, hogy egyetlen átjáró sok eszközök csatlakoztatásához. 
 
-In the sample, this module:
+A példában ez a modul:
 
-1. Takes messages with an IoT Hub device key property that was assigned by the previous module. 
-1. Sends the message content to IoT Hub using the HTTP protocol. 
+1. Időt vesz igénybe üzenetek az IoT-központ és az előző modul által hozzárendelt kulcstulajdonság eszköz. 
+1. Az üzenet tartalma küld az IoT-központ a HTTPS protokoll használatával. 
 
-The IoT Hub communication module is **iothub.c** in the source code.
+Az IoT-központ kommunikációs modul **iothub.c** a forráskód.
 
-## <a name="before-you-get-started"></a>Before you get started
+## <a name="before-you-get-started"></a>A kezdés előtt
 
-Before you get started, you must:
+Mielőtt hozzáfogna, a következőket kell tennie:
 
-* [Create an IoT hub][lnk-create-hub] in your Azure subscription. You need the name of your hub for this sample walkthrough. If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.
-* Add two devices to your IoT hub and make a note of their IDs and device keys. You can use the [device explorer][lnk-device-explorer] or [iothub-explorer][lnk-iothub-explorer] tools to add devices to the IoT hub and retrieve their keys.
+* [Létrehoz egy IoT-központot] [ lnk-create-hub] az Azure-előfizetésben. Ez a minta forgatókönyv nevét a hub van szükség. Ha nincs fiókja, néhány perc alatt létrehozhat egy [ingyenes fiókot][lnk-free-trial].
+* Két eszközök hozzáadása az IoT hub, és jegyezze fel az azonosítót és az eszköz kulcsok. Használhatja a [eszköz explorer] [ lnk-device-explorer] vagy [IOT hubbal-explorer] [ lnk-iothub-explorer] eszközök eszközök hozzáadása az IoT-központot, és azok kulcsait beolvasása.
 
 
 <!-- Images -->
@@ -87,7 +87,7 @@ Before you get started, you must:
 [2]: media/iot-hub-iot-edge-simulated-selector/image2.png
 
 <!-- Links -->
-[Simulated Device Cloud Upload sample]: https://github.com/Azure/iot-edge/blob/master/samples/simulated_device_cloud_upload/README.md
+[Szimulált eszközről felhőbe történő feltöltés mintája]: https://github.com/Azure/iot-edge/blob/master/samples/simulated_device_cloud_upload/README.md
 [lnk-sdk]: https://github.com/Azure/iot-edge
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

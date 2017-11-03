@@ -25,7 +25,8 @@
 #### [Összekötők védelmének biztosítása az Azure AD-vel](custom-connector-azure-active-directory-authentication.md)
 #### [API-k leírása a Postman használatával](custom-connector-api-postman-collection.md)
 #### [OpenAPI-k kiterjesztése egyéni összekötőkhöz](custom-connector-openapi-extensions.md)
-#### [Összekötő regisztrálása](logic-apps-custom-connector-register.md)
+#### [OpenAPI-összekötő létrehozása és regisztrálása](logic-apps-custom-connector-register.md)
+#### [SOAP-összekötő létrehozása és regisztrálása](logic-apps-soap-connector-create-register.md)
 #### [Összekötő tanúsítása](custom-connector-submit-certification.md)
 #### [Egyéni összekötőkkel kapcsolatos gyakori kérdések](custom-connector-faq.md)
 ### Egyéni API-k fejlesztése
