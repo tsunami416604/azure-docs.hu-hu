@@ -1,22 +1,22 @@
 <!--author=alkohli last changed: 08/29/17-->
 
-## <a name="troubleshooting-update-failures"></a>Troubleshooting update failures
-**What if you see a notification that the pre-upgrade checks have failed?**
+## <a name="troubleshooting-update-failures"></a>A frissítéssel kapcsolatos hibák elhárítása
+**Mi a teendő, ha megjelenik egy értesítés, hogy a frissítés előtti ellenőrzések sikertelenek voltak?**
 
-If a pre-check fails, make sure that you have looked at the detailed notification bar at the bottom of the page. This provides guidance as to which pre-check has failed. For instance, you receive a notification that the controller health check and hardware component health check have failed. Go to **Monitor > Hardware health**. You need to make sure that both controllers are healthy and online. You also need to make sure that all the hardware components in the StorSimple device are shown to be healthy in this blade. You can then try to install updates. If you are not able to fix the hardware component issues, then you will need to contact Microsoft Support for next steps.
+Ha egy előzetes ellenőrzés sikertelen, tekintse meg az oldal alján lévő részletes értesítési sávot. Ez útmutatást nyújt arról, hogy miért volt sikertelen az előzetes ellenőrzés. Például kap értesítést, amelyek a tartományvezérlő állapotának ellenőrzése és a hardver összetevő állapot-ellenőrzése sikertelen volt. Ugrás a **figyelő > hardver állapotának**. Győződjön meg arról, hogy mindkét tartományvezérlők kifogástalan és online kell. Szükség győződjön meg arról, hogy a StorSimple eszköz minden hardverösszetevő megjelennek-e a lesz kifogástalan, ezen a panelen. Ezután próbálja meg telepíteni a frissítéseket. Ha nem tudja kijavítani a hardverösszetevő problémáit, a további lépésekért forduljon a Microsoft ügyfélszolgálatához.
 
-**What if you receive a "Could not install updates" error message, and the recommendation is to refer to the update troubleshooting guide to determine the cause of the failure?**
+**Mi a teendő, ha „A frissítéseket nem lehet telepíteni” hibaüzenetet kap, és a rendszer azt javasolja, hogy tekintse meg a frissítési hibaelhárítási útmutatót a hiba okának meghatározásához?**
 
-One likely cause for this could be that you do not have connectivity to the Microsoft Update servers. This is a manual check that needs to be performed. If you lose connectivity to the update server, your update job would fail. You can check the connectivity by running the following cmdlet from the Windows PowerShell interface of your StorSimple device:
+Ennek egy valószínű oka lehet, hogy nem csatlakozik a Microsoft Update-kiszolgálókhoz. Ezt manuálisan kell ellenőrizni. Ha megszakad a kapcsolat a frissítési kiszolgálóval, a frissítési feladat meghiúsul. A kapcsolat ellenőrzéséhez futtassa a következő parancsmagot a StorSimple-eszköz Windows PowerShell-felületén:
 
  `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter>`
 
-Run the cmdlet on both controllers.
+Futtassa a parancsmagot mindkét vezérlőn.
 
-If you have verified the connectivity exists, and you continue to see this issue, please contact Microsoft Support for next steps.
+Ha ellenőrizte, hogy a kapcsolat létezik, és továbbra is ezt a hibát látja, a további lépésekért forduljon a Microsoft ügyfélszolgálatához.
 
-**What if you see an update failure when updating your device to Update 4 and both the controllers are running Update 4?**
+**Mi a teendő, ha frissítési hiba történik, amikor az eszközt a 4-es frissítésre frissíti, és mindkét vezérlő a 4-es frissítést futtatja?**
 
-Starting Update 4, if both the controllers are running the same software version and if there is an update failure, the controllers do not go into recovery mode. This situation can arise if the device software hotfix (1st order update) is applied to both the controllers successfully but other hotfixes (2nd order and 3rd order) are yet to be applied. Starting Update 4, the controllers will go into recovery mode only if the two controllers are running different software versions. 
+A 4-es frissítéstől kezdődően, ha mindkét vezérlő ugyanazt a szoftververziót futtatja és frissítési hiba fordul elő, a vezérlők nem lépnek helyreállítási módba. Ez a helyzet akkor fordulhat elő, ha az eszközszoftver gyorsjavítását (elsőrendű frissítés) mindkét vezérlőre sikeresen alkalmazza, de még további gyorsjavításokat (másod- és harmadrendű frissítéseket) kell alkalmazni. A 4-es frissítéstől kezdve a vezérlők csak akkor lépnek helyreállítási módba, ha a két vezérlőn eltérő szoftververzió fut. 
 
-If the user sees an update failure when both controllers are running Update 4, we recommend that they wait a few minutes and then retry updating. If the retry does not succeed, then they should contact Microsoft Support.
+Ha frissítési hiba jelenik meg, amikor mindkét vezérlő a 4-es frissítést futtatja, javasoljuk, hogy várjon néhány percet, majd próbálkozzon újra a frissítéssel. Ha az ismételt próbálkozás nem sikerül, forduljon a Microsoft ügyfélszolgálatához.

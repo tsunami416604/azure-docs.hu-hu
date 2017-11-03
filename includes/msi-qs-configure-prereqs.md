@@ -1,3 +1,3 @@
-If you're unfamiliar with MSI, check out the [Managed Service Identity overview](../articles/active-directory/msi-overview.md).
+Ha ismeri az MSI-fájl, tekintse meg a [Szolgáltatásidentitás felügyelete – áttekintés](../articles/active-directory/msi-overview.md).
 
-If you don't already have an Azure account, be sure to [sign up for a free account](https://azure.microsoft.com/free/) before continuing.
+Ha még nem telepítette az Azure-fiók [regisztráljon egy ingyenes fiókot](https://azure.microsoft.com/free/) folytatása előtt.

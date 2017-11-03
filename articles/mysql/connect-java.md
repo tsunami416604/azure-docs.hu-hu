@@ -6,21 +6,19 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql-database
-ms.custom: mvc
-ms.topic: hero-article
+ms.service: mysql
+ms.custom: mvc, devcenter
+ms.topic: quickstart
 ms.devlang: java
-ms.date: 06/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 6ffcf3b38a3d868dfa10ea2e2a9d097441387d4f
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/25/2017
-
+ms.date: 09/20/2017
+ms.openlocfilehash: aeca003a9b031a48804a057b627714b554298645
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Java használatával
-Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás használatával csatlakozni a MySQL-hez készült Azure Database-hez. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, a MySQL-hez készült Azure Database használatában pedig még járatlan.
+A gyors üzembe helyezés bemutatja, hogyan kell csatlakoztatni egy Azure-adatbázis a MySQL Java-alkalmazás használatával. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy ismeri a Java használatával történő fejlesztéséhez, és, hogy még nem ismeri a MySQL az Azure-adatbázis használata.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
@@ -38,9 +36,9 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. A bal oldali ablaktáblán kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például: **myserver4demo**).
 3. Kattintson a kiszolgálónévre.
-4. Válassza a kiszolgáló **tulajdonságlapját**. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
+4. Válassza ki a kiszolgálót **tulajdonságok** lapon, majd jegyezze fel a **kiszolgálónév** és **kiszolgálói rendszergazda bejelentkezési név**.
  ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-java/1_server-properties-name-login.png)
-5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Overview** (Áttekintés) oldalra, és itt megtudhatja a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén visszaállíthatja a jelszót.
+5. Ha elfelejti a kiszolgálói bejelentkezési adatok, navigáljon a **áttekintése** lapon megtekintéséhez a rendszergazdai bejelentkezési nevet, és ha szükséges a jelszó alaphelyzetbe állítása.
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kód használatával csatlakozhat és tölthet be adatokat az **INSERT SQL-utasítással** használt függvény segítségével. A [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metódus a MySQL-hez való kapcsolódásra szolgál. A [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) és az execute() metódusok a tábla létrehozásához, illetve törléséhez használatosak. A prepareStatement objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az executeUpdate() metódussal futtathatja az egyes paraméterkészletekhez tartozó értékek beszúrására szolgáló parancsot. 
@@ -396,4 +394,3 @@ public class DeleteTable {
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával](concepts-migrate-dump-restore.md)
-

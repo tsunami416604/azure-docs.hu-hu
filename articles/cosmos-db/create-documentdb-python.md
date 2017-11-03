@@ -8,20 +8,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 51c11be2-af6d-425f-a86a-39cbfe61da29
 ms.service: cosmos-db
-ms.custom: quick start connect, mvc
+ms.custom: quick start connect, mvc, devcenter
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: python
-ms.topic: hero-article
-ms.date: 05/13/2017
+ms.topic: quickstart
+ms.date: 10/16/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 08d467ea27484e7d1d07d6c21b2e04b6525fbcd8
-ms.contentlocale: hu-hu
-ms.lasthandoff: 06/01/2017
-
-
+ms.openlocfilehash: 8a5c9b7861e63ef76ec338072eafcd7905c258f2
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: DocumentDB API-alkalmazás létrehozása Pythonnal és az Azure Portallal
 
@@ -32,11 +30,12 @@ A rövid útmutató bemutatja, hogyan hozhat létre az Azure Portal segítségé
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Mielőtt futtathatná ezt a mintát, rendelkeznie kell a következő előfeltételekkel:
-    * [Visual Studio 2015](http://www.visualstudio.com/) vagy újabb.
+    * Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
     * Python Tools for Visual Studio, amely beszerezhető a [GitHubról](http://microsoft.github.io/PTVS/). Ez az oktatóanyag a Python Tools VS 2015-ös verziót használja.
     * A [python.org](https://www.python.org/downloads/release/python-2712/) webhelyen elérhető Python 2.7-es verzió
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -132,11 +131,11 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 3. A másolási gomb használatával másolja ki az URI érteket a Portalról, és azt adja meg a végpont kulcs értékeként a `DocumentDBGetStarted.py`-ben. 
 
-    `config.ENDPOINT : "https://FILLME.documents.azure.com"`
+    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
 
 4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és adja meg a `config.MASTERKEY` értékeként a `DocumentDBGetStarted.py`-ben. Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
-    `config.MASTERKEY : "FILLME"`
+    `'MASTERKEY': 'FILLME',`
     
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 1. A Visual Studióban kattintson jobb gombbal a projekt lehetőségre a **Megoldáskezelőben**, válassza ki a jelenlegi Python-környezetet, majd kattintson a jobb gombbal.
@@ -164,6 +163,5 @@ Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot l�
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be a DocumentDB API-hoz](import-data.md)
-
 
 

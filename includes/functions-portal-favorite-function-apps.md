@@ -1,16 +1,16 @@
-## <a name="favorite-functions-in-the-portal"></a>Favorite Functions in the portal 
+## <a name="favorite-functions-in-the-portal"></a>Kedvenc funkciók a portálon 
 
-If you haven't already done so, add Function Apps to your favorites in the Azure portal. This makes it easier to find your function apps. If you have already done this, skip to the next section. 
+Ha még nem tette meg, vegyen fel függvényalkalmazásokat a kedvencek közé az Azure Portalon. Így könnyebben megtalálhatja a függvényalkalmazásait. Ha már megtette ezt, ugorjon a következő szakaszra. 
 
-1. Log in to the [Azure portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-2. Click the arrow at the bottom left to expand all services, type `Functions` in the **Filter** field, and then click the star next to **Function Apps**.  
+2. A bal alsó sarokban található nyílra kattintva bontsa ki az összes szolgáltatást, írja be a `Functions` kifejezést a **Szűrő** mezőbe, majd kattintson a **Függvényalkalmazások** elem melletti csillagra.  
  
-    ![Create function app in the Azure portal](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
+    ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
 
-    This adds the Functions icon to the menu on the left of the portal.
+    Ezzel felveheti a Függvények ikont a portál bal oldali menüjébe.
 
-3. Close the menu, then scroll down to the bottom to see the Functions icon. Click this icon to see a list of all your function apps. Click your function app to work with functions in this app. 
+3. Zárja be a menüt, majd a Függvények ikon megtekintéséhez görgessen le a képernyő aljára. Erre az ikonra kattintva megtekintheti a függvényalkalmazásainak listáját. Kattintson a függvényalkalmazásra az alkalmazásban található függvények használatához. 
  
     ![](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
  

@@ -1,85 +1,87 @@
 ---
-title: "Biztonságos jelszavak az Azure AD-ban és az Intelligens jelszózárolás által blokkolt jelszavak visszaállítása | Microsoft Docs"
-description: "Ismerteti az Azure AD-bérlő fogalmát, valamint az Azure kezelését az Azure Active Directory felületén keresztül"
+title: "Az Azure AD rétegzett biztonsági jelszó |} Microsoft Docs"
+description: "Azt ismerteti, hogyan az Azure AD kikényszeríti a erős jelszavak és védje a felhasználók jelszavát a számítógépes bűnözők"
 services: active-directory
 documentationcenter: 
-author: markvi
-writer: v-lorisc
+author: barlanmsft
 manager: femila
 ms.assetid: 
 ms.service: active-directory
-ms.workload: infrastructure-services
+ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 03/02/2017
-ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: 07635b0eb4650f0c30898ea1600697dacb33477c
-ms.openlocfilehash: 8e625a346c9495d436a99fcf9eadf8ffeffcfdff
-ms.lasthandoff: 03/28/2017
-
-
+ms.topic: article
+ms.date: 08/28/2017
+ms.author: barlan
+ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="secure-passwords--in-azure-ad-and-reset-passwords-that-get-blocked-by-smart-password-lockout"></a>Biztonságos jelszavak az Azure AD-ban és az Intelligens jelszózárolás által blokkolt jelszavak visszaállítása
-Ez a cikk a felhasználóként vagy rendszergazdaként követhető ajánlott eljárásokat mutatja be az Azure Active Directory (Azure AD) és a Microsoft-fiókszolgáltatás fiókjainak védelme érdekében. 
+# <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Az Azure AD-jelszó biztonsági többrétegű megközelítése
 
- >[!NOTE]
- >Az Azure AD-rendszergazdák a címtárnévre kattintva alaphelyzetbe állíthatják a felhasználói jelszavakat. Az [Azure felügyeleti portálon](https://manage.windowsazure.com) válassza a Felhasználók oldalt, kattintson a felhasználó nevére, majd a Jelszó alaphelyzetbe állítása elemre. 
+Ez a cikk ismerteti, amelyek néhány ajánlott eljárás követésével egy olyan felhasználó nevében, vagy arra, hogy az Azure Active Directory (Azure AD) vagy a Microsoft Account rendszergazdaként.
+
+ > [!NOTE]
+ > **Azért van itt, mert problémák merültek fel a bejelentkezéssel kapcsolatban?** Ha igen, [így módosíthatja vagy állíthatja alaphelyzetbe a jelszavát](active-directory-passwords-update-your-own-password.md).
+ >
+ > Az Azure AD-rendszergazdák alaphelyzetbe állíthatja a felhasználói jelszavakat útmutatásának megfelelően történt a cikkben található [az Azure Active Directoryban a felhasználó jelszavának visszaállítása](active-directory-users-reset-password-azure-portal.md).
  >
 
+## <a name="password-requirements"></a>Jelszavakra vonatkozó követelmények
+
 Az Azure AD a következő általános megközelítéseket tartalmazza a jelszavak védelme érdekében:
- *    Jelszóhosszra vonatkozó követelmények
- *    A jelszó „összetettségére” vonatkozó követelmények
- *    Normál és időszakos jelszólejárat 
 
-A jelszókezelési képességekkel kapcsolatos információkért lásd: [Jelszavak kezelése az Azure Active Directoryban](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-manage-passwords). 
+* Jelszóhosszra vonatkozó követelmények
+* Összetettségi követelményeknek
+* Normál és időszakos jelszólejárat
 
-## <a name="azure-ad-password-protection"></a>Azure AD jelszóvédelem
-Az Azure AD és a Microsoft-fiókrendszer az iparágban már bizonyított megközelítéseket alkalmaz a felhasználói és rendszergazdai jelszavak védelmének biztosítása érdekében. 
+Jelszó alaphelyzetbe állítása, az Azure Active Directoryban kapcsolatos információkért lásd a témakör [az Azure AD az önkiszolgáló jelszó-változtatási az informatikai szakembereknek szóló](active-directory-passwords.md).
 
-Ez a szakasz bemutatja, miként védi meg az Azure AD a jelszavakat a következő módszerekkel:
- *    Dinamikusan letiltott jelszavak
- *    Intelligens jelszózárolás
+## <a name="azure-ad-password-protections"></a>Az Azure AD-jelszó védelmet
 
-A jelszókezeléssel kapcsolatos, aktuális kutatásokon alapuló információkért tekintse meg a [Tájékoztató a jelszavakról](http://aka.ms/passwordguidance) című tanulmányt. 
+Az Azure AD és a Microsoft-fiókrendszer megközelítések bizonyítása iparági használatával biztosíthatja a felhasználói és rendszergazdai jelszavakat, beleértve a biztonságos védelméről:
+
+* Dinamikusan letiltott jelszavak
+* Intelligens jelszózárolás
+
+A jelszókezelés aktuális eredményei alapján kapcsolatos információkért lásd [jelszó útmutatást](http://aka.ms/passwordguidance).
 
 ### <a name="dynamically-banned-passwords"></a>Dinamikusan letiltott jelszavak
-Az Azure AD és a Microsoft-fiókrendszer a jelszóvédelem biztosítása érdekében dinamikusan letiltja az összes gyakran használt jelszavat. Az Azure ID Identity Protection csapat rendszeresen elemzi a letiltott jelszavak listáit, amely segít meggátolni, hogy a felhasználók gyakran használt jelszavakat válasszanak. Ez a szolgáltatás az Azure AD és a Microsoft-fiókszolgáltatás ügyfeleinek érhető el. 
 
-A jelszavak létrehozásakor fontos, hogy a rendszergazdák arra bátorítsák a felhasználókat, hogy betűk, számok és karakterek egyedi kombinációját tartalmazó, nem szokványos jelszavakat válasszanak. Ez elősegíti, hogy a felhasználói jelszavakat szinte lehetetlen legyen feltörni. 
+Az Azure AD és a Microsoft Accounts megakadályozhatja a jelszavas védelem által dinamikusan tiltó a gyakran használt jelszavakat. Az Azure AD Identity Protection-csapatnak rendszeresen elemzi tiltott jelszavak listája, meggátolja, hogy a felhasználók kiválasztása a gyakran használt jelszavakat. Ez a szolgáltatás az Azure AD és a Microsoft-fiókszolgáltatás ügyfeleinek érhető el.
 
-**Illetéktelen behatolások listái**
+Jelszavak létrehozása, ha fontos a rendszergazdák számára ösztönözzék a felhasználókat válassza ki a jelszó kifejezések, amely tartalmazza az betűket, számokat, karakterek vagy szavak egyedi kombinációja. Ez a megközelítés segít lehetetlenné felhasználói jelszavak majdnem sérült biztonságú, de jegyezze meg a felhasználók könnyebben.
 
-Az Azure AD mindig azon dolgozik, hogy egy lépéssel a számítógépes bűnözők előtt járjon. Ennek egyik módja, hogy nem engedi a felhasználók számára a jelenlegi támadási listán szereplő jelszavak létrehozását.
+#### <a name="password-breaches"></a>Jelszó megszegése
 
-Az Azure AD Identity Protection csapata folyamatosan elemzi a gyakran használt jelszavakat. A számítógépes bűnözők is hasonló stratégiákat használnak a támadásaikhoz, például [szivárványtáblát](https://en.wikipedia.org/wiki/Rainbow_table) hoznak létre a jelszókivonatok feltörése érdekében. 
+A Microsoft mindig dolgozik egy lépésben előre számítógépes-bűnözők marad.
 
-A Microsoft folyamatosan elemzi az [adatszivárgásokat](https://www.privacyrights.org/data-breaches) a tiltott jelszavak dinamikusan frissített listájának fenntartása érdekében, így a sebezhető jelszavak még azelőtt le lesznek tiltva, hogy valódi fenyegetést jelenthetnének az Azure AD ügyfelei számára. Az aktuális biztonsági erőfeszítéseinkről további információt a [Microsoft biztonsági intelligenciáról szóló jelentésében](https://www.microsoft.com/security/sir/default.aspx) talál. 
+Az Azure AD Identity Protection csapata folyamatosan elemzi a gyakran használt jelszavakat. A számítógépes bűnözők is hasonló stratégiákat használnak a támadásaikhoz, például [szivárványtáblát](https://en.wikipedia.org/wiki/Rainbow_table) hoznak létre a jelszókivonatok feltörése érdekében.
+
+A Microsoft folyamatosan elemzi az [adatszivárgásokat](https://www.privacyrights.org/data-breaches) a tiltott jelszavak dinamikusan frissített listájának fenntartása érdekében, így a sebezhető jelszavak még azelőtt le lesznek tiltva, hogy valódi fenyegetést jelenthetnének az Azure AD ügyfelei számára. Az aktuális biztonsági erőfeszítéseinkről további információt a [Microsoft biztonsági intelligenciáról szóló jelentésében](https://www.microsoft.com/security/sir/default.aspx) talál.
 
 ### <a name="smart-password-lockout"></a>Intelligens jelszózárolás
 
-Amikor az Azure AD érzékeli, hogy egy lehetséges számítógépes bűnöző megpróbál feltörni egy felhasználói jelszót, az Intelligens jelszózárolás segítségével zároljuk a felhasználói fiókot. Az Azure AD-t arra tervezték, hogy meghatározza az egyes bejelentkezési munkamenetekkel társított kockázatokat. 
+Amikor az Azure AD érzékeli, hogy egy lehetséges számítógépes bűnöző megpróbál feltörni egy felhasználói jelszót, az Intelligens jelszózárolás segítségével zároljuk a felhasználói fiókot. Az Azure AD-t arra tervezték, hogy meghatározza az egyes bejelentkezési munkamenetekkel társított kockázatokat. Segítségével a lehető legfrissebb biztonsági adatokat, majd érvénybe lépni fiókzárolási szemantikáját, hogy számítógépes fenyegetéseket.
 
-A legújabb biztonsági adatok használatával zárolási szemantikát alkalmazunk a számítógépes fenyegetésekre. Így a felhasználók nem lesznek kizárva, amikor egy számítógépes bűnöző feltöri a felhasználói jelszavakat a hálózaton.
-
-Ha egy felhasználó ki van zárva az Azure AD-ből, a képernyője az alábbihoz hasonlóan néz ki:
+Ha a felhasználó le van tiltva az Azure AD ki, a képernyő hasonlít, amely a következő:
 
   ![Kizárva az Azure AD-ből](./media/active-directory-secure-passwords/locked-out-azuread.png)
-  
-Egyéb Microsoft-fiókok esetén pedig a képernyő az alábbihoz hasonlóan néz ki:
+
+Más Microsoft-fiók a képernyő hasonlít, amely a következő:
 
   ![Kizárva egy Microsoft-fiókból](./media/active-directory-secure-passwords/locked-out-ms-accounts.png)
 
-Az Azure Active Directory jelszókezelésével kapcsolatos információért tekintse meg a [jelszókezelés működését leíró](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-how-it-works) szakaszt.
+Jelszó alaphelyzetbe állítása, az Azure Active Directoryban kapcsolatos információkért lásd a témakör [az Azure AD az önkiszolgáló jelszó-változtatási az informatikai szakembereknek szóló](active-directory-passwords.md).
 
-  >![MEGJEGYZÉS] Ha Ön Azure AD-rendszergazda, javasolt a [Windows Hello](https://www.microsoft.com/en-us/windows/windows-hello) használata, hogy a felhasználók egyáltalán ne is hozhassanak létre hagyományos jelszavakat.
+  >[!NOTE]
+  >Ha Ön Azure AD-rendszergazda, javasolt a [Windows Hello](https://www.microsoft.com/windows/windows-hello) használata, hogy a felhasználók egyáltalán ne is hozhassanak létre hagyományos jelszavakat.
   >
 
 ## <a name="next-steps"></a>Következő lépések
-[Saját jelszó frissítése](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-update-your-own-password)<br>
-[Az Azure-identitáskezelés alapjai](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)<br>
-[Üzemeltetési adatok beszerzése jelszókezelési jelentésekkel](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-get-insights#view-password-reset-activity)
 
-
-
+* [Saját jelszó frissítése](active-directory-passwords-update-your-own-password.md)
+* [Az Azure-identitáskezelés alapjai](fundamentals-identity.md)
+* [A jelentés a jelszó-visszaállítási tevékenység](active-directory-passwords-reporting.md)

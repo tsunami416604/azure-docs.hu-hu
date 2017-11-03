@@ -1,28 +1,28 @@
-If you want a domain, you can buy domains on [Azure Management Portal](https://portal.azure.com) directly. Use the following steps to buy domain names and assign to your web app.
+Ha azt szeretné, hogy a tartomány, vásárolhat a tartományok [Azure felügyeleti portálon](https://portal.azure.com) közvetlenül. A következő lépésekkel tartománynevek vásárolnia, és rendelje hozzá a webes alkalmazást.
 
-1. In your browser, open the [Azure Management Portal](https://portal.azure.com).
-2. In the **Web Apps** tab, click the name of your web app, select **Settings**, and then select **Custom domains and SSL**
+1. A böngészőben nyissa meg a [Azure felügyeleti portálon](https://portal.azure.com).
+2. Az a **webalkalmazások** lapra, kattintson a nevére, webalkalmazás, jelölje be **beállítások**, majd válassza ki **egyéni tartományok és SSL**
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
-3. In the **Custom domains and SSL** blade, click **Buy domains**.
+3. Az a **egyéni tartományok és SSL** panelen kattintson a **tartományok megvásárlása**.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-1.png)
-4. In the **Buy Domains** blade, use the text box to enter the domain name you want to buy. The suggested available domains will be shown just blow the text box. Select what domain you want to buy.
+4. Az a **megvásárlása tartományok** panelen, használja a szövegmezőben meg a megvásárolni kívánt tartomány nevét. Jelenik meg a javasolt elérhető tartományok csak fújni a szövegmezőben. Válassza ki a milyen tartományt szeretne vásárolni.
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-2.png)
-5. Click the **Contact Information** and fill the domain's contact information form.
+5. Kattintson a **elérhetőségi adatai** , és töltse ki a tartomány kapcsolattartási adatokat űrlap.
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-3.png)
-6. Click the **Select** on **Buy Domains** blade, then you will see the purchase information on **Purchase confirmation** blade. If you accept the legal terms and click **Buy**, your order will be submitted and you can monitor the purchasing process on **Notification**.
+6. Kattintson a **kiválasztása** a **megvásárlása tartományok** panelen, majd fog látni a vásárlási információk a **beszerzési visszaigazolások** panelen. Ha, fogadja el a jogi feltételeket, majd kattintson az **megvásárlása**, rendelés nyújtanak, és figyelheti a vásárlási folyamat **értesítési**.
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-4.png)
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-5.png)
-7. If you successfully ordered a domain, you can manage the domain and assign to your web app. Click the **"..."** at the right side of your domain. Then you can **Cancel purchase** or **Manage domain**. Click **Manage domain**, then we can bind **subdomain** to our web app on **Manage domain** blade.
+7. Sikeresen rendelt egy tartományhoz, ha a tartomány kezelése, és rendelje hozzá a webes alkalmazást. Kattintson a **"..."** a tartomány jobb oldalán. Akkor is **szakítsa meg a beszerzési** vagy **kezelése tartomány**. Kattintson **kezelése tartomány**, majd azt köthető **altartomány** a webes alkalmazás **kezelése tartomány** panelen.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-6.png)
    
-    Once configuration has completed, the custom domain name will be listed in the **Hostname bindings** section of your web app.
+    Az egyéni tartománynév konfiguráció befejezése után megjelenik a **állomásnévkötéseket** a webalkalmazás szakasza.
 
-At this point, you should be able to enter the custom domain name in your browser and see that it successfully takes you to your web app.
+Ezen a ponton meg kell tudni adja meg az egyéni tartománynév a böngészőben, és tekintse meg, hogy sikeresen tart, a webes alkalmazást.
 

@@ -1,17 +1,17 @@
-## <a name="prerequisites"></a>Prerequisites
-The Azure Toolkit for IntelliJ requires the following software components:
+## <a name="prerequisites"></a>Előfeltételek
+Az IntelliJ Azure eszköztára szükséges a következő szoftverösszetevőket:
 
-* IntelliJ IDEA Ultimate Edition, which can be downloaded from the [JetBrains website](https://www.jetbrains.com/idea/download/).
+* Az IntelliJ IDEA Ultimate Edition, amely letölthető a [JetBrains webhely](https://www.jetbrains.com/idea/download/).
 
-* A Java Developer Kit (JDK), version 1.8 or later.
+* A Java fejlesztői készlet (JDK), 1,8 vagy újabb verziója.
 
-* An Azure subscription, which can be acquired from <https://azure.microsoft.com/free/> or <http://azure.microsoft.com/pricing/purchase-options/>.
+* Azure-előfizetéssel, amely szerezhető: a <https://azure.microsoft.com/free/> vagy <http://azure.microsoft.com/pricing/purchase-options/>.
 
-* An operating system. The Azure Toolkit for IntelliJ has been tested on the following operating systems:
+* Az operációs rendszer. Az IntelliJ Azure eszköztára tesztelték a következő operációs rendszereken:
   
-  * Windows 10, Windows 8.1, Windows 8, and Windows 7
-  * Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, and Windows Server 2008
-  * [Mac OS X](http://www.apple.com/osx) version "Yosemite" or later
-  * [Ubuntu Linux](http://www.ubuntu.com) version 14, 15, and 16
+  * Windows 10, Windows 8.1, Windows 8 és Windows 7
+  * Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 és Windows Server 2008
+  * [Mac OS X](http://www.apple.com/osx) "Yosemite" verzió vagy újabb verzió
+  * [Ubuntu Linux](http://www.ubuntu.com) 14, 15 és 16
 
-For more information, see the [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053) page at the JetBrains Plugin Repository.
+További információkért lásd: a [IntelliJ Azure eszköztára](https://plugins.jetbrains.com/plugin/8053) lap a JetBrains beépülő modul tárházban.

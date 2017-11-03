@@ -1,0 +1,128 @@
+---
+title: "Az Azure verem 1710 frissítés (Build 20171020.1) |} Microsoft Docs"
+description: "További tudnivalók az Azure-verem 1710 frissítés Újdonságok integrált rendszerek, az ismert problémák és letöltéséről a frissítést."
+services: azure-stack
+documentationcenter: 
+author: twooley
+manager: byronr
+editor: 
+ms.assetid: 135314fd-7add-4c8c-b02a-b03de93ee196
+ms.service: azure-stack
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/26/2017
+ms.author: twooley
+ms.openlocfilehash: d91a23ae4eb5aee14d3d2fef74467e7f33c458cc
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/27/2017
+---
+# <a name="azure-stack-1710-update-build-201710201"></a>Az Azure verem 1710 frissítés (Build 20171020.1)
+
+*A következőkre vonatkozik: Azure verem integrált rendszerek*
+
+Ez a cikk fejlesztést és a frissítési csomag ismert problémái ebben a kiadásban, valamint a frissítés letöltése helyét. Ismert problémák vannak osztva ismert problémák közvetlenül kapcsolódik a frissítési folyamat, és a build (telepítés utáni) kapcsolatos ismert problémák.
+
+> [!IMPORTANT]
+> Ez a csomag csak integrált Azure verem rendszerek van. Ez a csomag nem vonatkoznak Azure verem szoftverfejlesztői készlet.
+
+## <a name="improvements-and-fixes"></a>Kidolgozott fejlesztéseit és javításokat
+
+A frissítés tartalmazza a következő minőségének javítása és javításokat Azure verem.
+ 
+### <a name="windows-server-2016-improvements-and-fixes"></a>Windows Server 2016 kidolgozott fejlesztéseit és javításokat
+
+- Windows Server 2016 frissítéseit: 2017. október 10 – KB4041691 (14393.1770 operációsrendszer-verzióval. Lásd: [https://support.microsoft.com/help/4041691](https://support.microsoft.com/help/4041691) további információt.
+
+### <a name="additional-quality-improvements-and-fixes"></a>További minőségének javítása és a javítások
+
+- Kiemelt végpont PowerShell-parancsmagok hibaelhárítása, és frissítse a Network Time Protocol (NTP) kiszolgálót hozzá.
+- Támogatása frissíteni a rendszerjogosultságú végpont csak elég adminisztrációs (JEA) végpont modulok és a parancsmag engedélyezett. 
+- A privilegizált végpont rögzített helyi nyelvi hibák.
+- Mostantól lehetőség van forgassa el az átjáró hitelesítő adatokat.
+- Eltávolítja a CBLocalAdmin helyi rendszergazdai fiók. 
+- A szívverés értesítési sablon tartalmat rögzített győződjön meg arról, hogy szívverés a riasztások munkahelyi megfelelően frissítés után.
+- Rögzített kezelésére időtúllépések FRU műveletek során a háló erőforrás-szolgáltató. 
+- Mostantól lehetőség van a felhő fejlesztők Azure Resource Manager API-profilok használatához Azure veremben.
+- Le van tiltva a Windows Update szolgáltatás a központi telepítés virtuális gépen (DVM). 
+- A csomópont power be-és kikapcsolása műveletek eltávolítja a felhasználói felületen.
+- Különböző egyéb teljesítményét és stabilitását javításokat. 
+ 
+## <a name="known-issues-with-the-update-process"></a>A frissítési folyamat szolgáltatással kapcsolatos ismert problémák
+
+Ez a szakasz a 1710 frissítés telepítése során előforduló ismert problémákat.
+
+> [!IMPORTANT]
+> Ha a frissítés sikertelen, amikor később próbálja kell használnia a frissítés folytatásához a `Resume-AzureStackUpdate` a rendszerjogosultságú végpont parancsmagjával. A felügyeleti portál használatával nem folytatja a frissítést. (Ez az ebben a kiadásban egy ismert probléma.) További információkért lásd: [figyelése Azure verem használatával a privilegizált végpont frissítések](azure-stack-monitor-update.md).
+
+| Jelenség  | Ok  | Megoldás: |
+|---------|---------|---------|
+|Elvégzi a frissítést, ha az alábbihoz hasonló hiba történhet, a frissítési művelet terv "Tárolási állomások indítsa újra a tárolási csomópontnak" lépés során.<br><br>**{"name": "Indítsa újra a tárolási gazdagép", "description": "Tárolási indítsa újra a gazdagépet.", "errorMessage": "típus"Restart"szerepkör"BareMetal"következik be egy kivétel: \n\nThe számítógép állomásnév-05 a rendszer kihagyja. Nem sikerült beolvasni a LastBootUpTime keresztül a WMI-szolgáltatás a következő hiba miatt: az RPC-kiszolgáló nem érhető el. (Kivétel HRESULT: 0x800706BA jelű). \nat újraindítás-állomás** | A probléma oka egy lehetséges hibás illesztőprogram bizonyos konfigurációk szerepel. | 1. Jelentkezzen be az alaplapi felügyeleti vezérlővel (BMC) webhelyről, majd indítsa újra a gazdagép, amely azonosítja a hibaüzenet.<br><br>2. A frissítés folytatásához a kiemelt végpont használatával. |
+| Frissítést hajt végre, amikor a frissítési folyamat úgy tűnik, hogy megrekedésének kezelése, és nem halad a lépés után ". lépés: lépés 2.4 - frissítés telepítése futtatása" a frissítés műveleti terv.<br><br>Ez a lépés követi másolási folyamat .nupkg fájlok sorozatát a belső infrastruktúra fájlmegosztások. Példa:<br><br>**1 fájlok másolása content\PerfCollector\VirtualMachines \VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\PerfCounterConfiguration**  | A probléma oka egy infrastruktúra-virtuális gép és a Windows Server kibővített fájl (sofs-sel) egy későbbi frissítés továbbítani problémát lemezek betelőben naplófájlok. | Forduljon a Microsoft ügyfélszolgálata és a támogatási szolgálathoz (CSS) segítségért. | 
+| Amikor egy frissítést végez, a következőhöz hasonló hiba történhet a lépés során "lépés: lépés 2.13.2 - frissítés futtatása *VM_Name*" a frissítés műveleti terv. (A virtuális gép neve eltérhetnek.)<br><br>**ActionPlanInstanceWarning dokumentumokat vagy számítógépnév: WarningMessage:Task: "LiveUpdate" szerepkör nem sikerült Cloud\Fabric\WAS felület meghívása:<br>"WAS" szerepkör "LiveUpdate" típusú kivételt okozott:<br>tárolása során hiba inicializálási: Hiba történt, miközben a Microsoft Storage szolgáltatást egy API-hívás: {"Üzenet": "a Service Fabric folytatott kommunikáció során időtúllépés történt. Kivétel típusa: TimeoutException. Kivételüzenet: művelet túllépte az időkorlátot. "}**  | A problémát az okozza, amely egy későbbi frissítés javítja a Windows Server egy i/o-időtúllépés. | Kérjen segítséget a Microsoft CSS.
+| Amikor egy frissítést végez, a következőhöz hasonló hiba fordulhat elő lépés során "lépés 21 indítsa újra az SQL server virtuális gépen."<br><br>**"Virtuális gép" szerepkör "LiveUpdateRestart" típusú kivételt okozott:<br>VerboseMessage: a virtuális gép MachineName [VirtualMachines:LiveUpdateRestart] lekérdezés-Sql01. - 10/13/2017 5:23:50 óra VerboseMessage: [virtuális gépek vannak: LiveUpdateRestart] VM HighlyAvailable van megjelölve. -10/13/2017 5:23:50 óra VerboseMessage: [VirtualMachines:LiveUpdateRestart]: MS. A MS Internal.ServerClusters.ExceptionHelp.Build. A következő Microsoft.FailoverClusters.PowerShell.StopClusterResourceCommand.BeginTimedOperation() (logikai force) Internal.ServerClusters.ClusterResource.BeginTakeOffline A Microsoft.FailoverClusters.PowerShell.FCCmdlet.ProcessRecord() - 10/13/2017 5:23:50 óra WarningMessage:Task Microsoft.FailoverClusters.PowerShell.TimedCmdlet.WrappedProcessRecord(): illesztőfelület szerepkörbe "LiveUpdateRestart" hívása nem volt " Nem sikerült Cloud\Fabric\VirtualMachines':** | A probléma akkor fordulhat elő, ha a virtuális gép nem indítható újra. | Kérjen segítséget a Microsoft CSS.
+| Amikor egy frissítést végez, a következőhöz hasonló hiba fordulhat elő:<br><br>**2017-10-22T01:37:37.5369944Z "SQL" szerepkör "Leállítás" típusú kivételt okozott: Hiba történt a felfüggesztése helyen csomópont "s45r1004-Sql01" Stop-SQL, C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\Applications\EnterpriseCloudEngineApplicationType_ App1\EnterpriseCloudEngineServicePkg.Code.1.0.597.18\CloudDeployment\Roles\SQL\SQL.psm1:. sor 542at leállítás, C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\Applications\EnterpriseCloudEngineApplicationType_App1\ EnterpriseCloudEngineServicePkg.Code.1.0.597.18\CloudDeployment\Classes\SQL\SQL.psm1:. sor 50at <ScriptBlock>, <No file>: 18at sor <ScriptBlock>, <No file>: 16. sor** | A probléma akkor fordulhat elő, ha a virtuális gép nem helyezhető, a szerepkörök kiürítésére felfüggesztett állapotba. | Kérjen segítséget a Microsoft CSS.
+| Frissítés végrehajtásakor vagy a következő hibák fordulhatnak elő:<br><br>**"AD FS" szerepkör "Ellenőrzés" típusú kivételt okozott: az AD FS/Graph szerepkör érvényesítése sikertelen, hiba: Hiba történt az AD FS mintavételi végpont ellenőrzésekor *endpoint_URI*: kivétel "GetResponse" hívás a "0" argumentummal: "a távoli kiszolgáló hibát adott vissza: (503-as) kiszolgáló nem érhető el. "Invoke-ADFSGraphValidation:**<br><br>**"AD FS" szerepkör "Ellenőrzés" típusú kivételt okozott: az AD FS/Graph szerepkör érvényesítése sikertelen, hiba: Hiba történt az AD FS tulajdonságainak beolvasása: nem sikerült csatlakozni a NET.TCP://localhost: 1500 és házirend. A kapcsolódási kísérlet egy 00:00:02.0498923 időtartamának tartott. TCP hibakód 10061: nem sikerült kapcsolatot létesíteni, mert a célként megadott gép már visszautasította 127.0.0.1:1500. Invoke-ADFSGraphValidation:** | A frissítés műveleti terv az Active Directory összevonási szolgáltatások (AD FS) állapotát nem lehet érvényesíteni. | Segítségért forduljon a Microsoft CSS.
+
+## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
+
+Ez a szakasz a telepítés utáni kapcsolatos ismert problémák 20171020.1 felépítéséhez.
+
+### <a name="portal"></a>Portál
+
+- Nem lehet a számítási és tárolási erőforrások megtekintése a felügyeleti portálon. Ez azt jelzi, hogy hiba történt a frissítés telepítése során, és, hogy a frissítés nem megfelelően történt a következő sikeres. Ha a probléma akkor fordul elő, lépjen kapcsolatba Microsoft CSS segítségért.
+- A portál üres irányítópult jelenhet meg. Az irányítópult helyreállításához válassza ki a fogaskerék ikonra a portál jobb felső sarokban, majd válassza ki **alapértelmezett beállításainak visszaállítása**.
+- Felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és láthatja például tervek és ajánlatok felügyeleti elemeket. Ezek az elemek nem működőképes a felhasználók számára is.
+- A **áthelyezése** gomb le van tiltva, ha egy erőforráscsoport tulajdonságainak megtekintése. Ez az elvárt viselkedés. Erőforráscsoportok áthelyezése másik előfizetések jelenleg nem támogatott.
+- Nem tudunk az előfizetéséhez, a Azure verem portálok engedélyek megtekintése. A probléma megoldásához engedélyek PowerShell használatával ellenőrizheti.
+-  Egyetlen olyan munkafolyamat, ahol ki kell választania egy előfizetés, a csoport vagy a hely egy legördülő listában, a legalább egy, az alábbi problémákat tapasztalhatja:
+
+   - Megjelenik egy üres sort a lista tetején. Továbbra is kell tudni jelöljön ki egy elemet várt módon.
+   - Ha a legördülő listán szereplő elemek listája rövid, nem lehet a cikk bármelyike megtekintheti.
+   - Ha több felhasználó-előfizetéssel rendelkezik, az erőforrás csoport legördülő lista üres is lehet. 
+
+   Az utolsó két problémák megoldása érdekében adhatja meg az előfizetés vagy az erőforráscsoport (ha tudja) neve, vagy a PowerShell segítségével helyette.
+  
+### <a name="backup"></a>Biztonsági mentés
+
+- Ne engedélyezze a infrastruktúra biztonsági mentés a **infrastruktúra biztonsági mentés** panelen.
+
+### <a name="health-and-monitoring"></a>Állapot- és figyelés
+
+- Ha újraindítja az infrastruktúra-szerepkör példánya, az újraindítás sikertelen jelző üzenet jelenhet meg. Azonban az újraindítás ténylegesen sikeresen befejeződött.
+
+### <a name="services"></a>Szolgáltatások
+
+**Piactér**
+- Ha megpróbálja elemek hozzáadására a verem Azure piactér használatával a **hozzáadása az Azure-ból** beállítás, nem minden elem esetleg mások is láthatják letölthető.
+- Nincs nincs Piactéri élmény virtuálisgép-méretezési csoportok létrehozásához. A skála beállítása egy sablon használatával hozhat létre.
+- A bérlő regisztrálnia kell a storage erőforrás-szolgáltató, ahhoz, hogy az első Azure-függvény létre az előfizetést.
+- Felhasználói előfizetések eredmények az árva erőforrások törlése. A probléma megoldásához először törölnie a felhasználói erőforrásokat és a teljes erőforráscsoport, és törölje a felhasználó előfizetések. 
+
+**SQL/MySQL**
+- Egy óraba bérlők adatbázisok létrehozhat egy új SQL- vagy MySQL SKU is igénybe vehet. 
+- Elemet közvetlenül az SQL és MySQL futtató kiszolgálókat, az erőforrás-szolgáltató által el nem végzett létrehozása nem támogatott, és nem megfelelő állapot azt eredményezheti.
+
+**Számítás**
+- Felhasználók rendszer felajánlja a lehetőséget a virtuális gép létrehozása a georedundáns tárolást. E konfiguráció hatására a virtuális gép nem hozható létre.
+- Beállíthatja, hogy a virtuális gép rendelkezésre állási csoportban, csak az egyik tartalék tartomány, és egy frissítési tartomány.
+ 
+**Hálózat**
+- Nyilvános IP-címek a terheléselosztó nem létrehozása a portál használatával. A probléma megoldásához a PowerShell hozhat létre a terheléselosztó hasonló adataival.
+- Hálózati terheléselosztó létrehozásakor létre kell hoznia a hálózati cím címfordítási (NAT) szabály. Ha ezt elmulasztja, kapunk hiba történt egy NAT-szabály hozzáadása a terheléselosztó létrehozása után.
+ 
+### <a name="field-replaceable-unit-fru-procedures"></a>A mező cserélhető Cisco egységet (FRU) eljárások
+
+- Offline lemezképek futtatása frissítés közben nem volt. Ha ki kell cserélni a skálázási egység csomópont, ellenőrizze, hogy a kicserélt csomópont rendelkezik a legújabb javításokkal a OEM hardver szállítójával közösen.
+
+## <a name="download-the-update"></a>A frissítés letöltése
+
+Letöltheti a 1710 csomag [Itt](https://aka.ms/azurestackupdatedownload).
+
+## <a name="next-steps"></a>Következő lépések
+
+- Frissítéskezelés Azure verem áttekintését lásd: [kezelheti a frissítéseket az Azure-verem áttekintés](azure-stack-updates.md).
+- Frissítések alkalmazásával kapcsolatos információkért lásd: [Azure verem frissítések alkalmazása](azure-stack-apply-updates.md).

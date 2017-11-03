@@ -3,23 +3,22 @@ title: "Ismerkedés a Tártallózó alkalmazással (előzetes verzió) | Microso
 description: "Azure tárerőforrások kezelése a Tártallózó alkalmazással (előzetes verzió)"
 services: storage
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: cawa
+manager: paulyuk
 editor: 
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/17/2017
-ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 94d1d4c243bede354ae3deba7fbf5da0652567cb
-ms.openlocfilehash: 0b1f7711586cdfacbbfb28af121c7f37ba564cde
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/18/2017
-
+ms.date: 07/17/2017
+ms.author: cawa
+ms.openlocfilehash: 58ab8a9c5864ce0cb505b78fd087df2973a7e0d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
 ## <a name="overview"></a>Áttekintés
@@ -43,6 +42,7 @@ Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 * [Külső tárterület csatolása](#attach-or-detach-an-external-storage-account): Más Azure-előfizetések vagy az országos Azure-felhők alá tartozó tárolási erőforrások kezelése a tárfiók fióknevének, kulcsának és végpontjainak használatával.
 * [Tárfiók csatolása SAS használatával](#attach-storage-account-using-sas): Más Azure-előfizetések alá tartozó tárolási erőforrások kezelése közös hozzáférésű jogosultságkód (SAS) használatával.
 * [Szolgáltatás csatolása SAS használatával](#attach-service-using-sas): Más Azure-előfizetések alá tartozó adott tárolási szolgáltatás (blob tároló, üzenetsor vagy tábla) kezelése SAS használatával.
+* [Csatlakozás Azure Cosmos DB fiók egy kapcsolati karakterlánc használatával](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): kezelése Cosmos-adatbázis fiók egy kapcsolati karakterlánc használatával.
 
 ## <a name="connect-to-an-azure-subscription"></a>Csatlakozás Azure-előfizetéshez
 > [!NOTE]
@@ -68,7 +68,7 @@ Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 
 ## <a name="connect-to-an-azure-stack-subscription"></a>Csatlakozás Azure Stack-előfizetéshez
 
-Az Azure Stack-előfizetéshez való csatlakozásról további információért lásd: [A Storage Explorer csatlakoztatása Azure Stack-előfizetéshez](azure-stack/azure-stack-storage-connect-se.md).
+Az Azure Stack-előfizetéshez való csatlakozásról további információért lásd: [A Storage Explorer csatlakoztatása Azure Stack-előfizetéshez](azure-stack/user/azure-stack-storage-connect-se.md).
 
 ## <a name="work-with-local-development-storage"></a>Munkavégzés helyi fejlesztési tárterülettel
 A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is dolgozhat az Azure Storage Emulator használatával. Így anélkül is írhat kódot a tárterületre és tesztelheti azt, hogy szüksége lenne egy üzembe helyezett tárfiókra az Azure szolgáltatásban (mivel a tárfiókot az Azure Storage Emulator emulálja).
@@ -156,7 +156,7 @@ Külső tárfiók csatolásához szükség van a fiók nevére és kulcsára. A 
 2. A megerősítő üzenetben kattintson az **Igen** gombra a külső tárfiók leválasztásának jóváhagyásához.
 
 ## <a name="attach-a-storage-account-by-using-an-sas"></a>Tárfiók csatolása SAS használatával
-Az [SAS](storage/storage-dotnet-shared-access-signature-part-1.md) lehetővé teszi, hogy az Azure-előfizetés rendszergazdája ideiglenes hozzáférést engedélyezzen a tárfiókhoz anélkül, hogy kiadná az Azure-előfizetés hitelesítő adatait.
+Az [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) lehetővé teszi, hogy az Azure-előfizetés rendszergazdája ideiglenes hozzáférést engedélyezzen a tárfiókhoz anélkül, hogy kiadná az Azure-előfizetés hitelesítő adatait.
 
 E forgatókönyv szemléltetésére tegyük fel, hogy az „A” felhasználó valamely Azure-előfizetés rendszergazdája, és hozzáférést szeretne engedélyezni „B” felhasználó számára a tárfiókhoz adott időtartamra és meghatározott engedélyekkel:
 
@@ -223,6 +223,17 @@ Ebben a kontextusban a szolgáltatások blob tárolók, üzenetsorok vagy tábl�
 
     ![SAS használatával megosztott szolgáltatáshoz végzett csatolás eredménye][20]
 
+## <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>Csatlakozás Azure Cosmos DB fiók egy kapcsolati karakterlánc használatával
+Emellett a Azure előfizetéssel Azure Cosmos DB fiókok kezelése, kapcsolódni egy Azure Cosmos DB megadásának alternatív módja annak használjon kapcsolati karakterláncot. A következő lépésekkel csatlakozzon a kapcsolati karakterlánc használatával.
+
+1. Található **helyi és a kapcsolódó** a bal oldali fában, kattintson a jobb gombbal **Azure Cosmos DB fiókok**, válassza a **Azure Cosmos DB kapcsolódás...**
+
+    ![Csatlakozás Azure Cosmos DB kapcsolati karakterlánc][33]
+
+2. Válassza ki az Azure Cosmos DB API, és beillesztheti a **kapcsolati karakterlánc**, és kattintson a **OK** Azure Cosmos DB fiók kapcsolódni. A kapcsolati karakterlánc beolvasása információkért lásd: [a kapcsolati karakterlánc beolvasása](https://docs.microsoft.com/en-us/azure/cosmos-db/manage-account#get-the--connection-string).
+
+    ![connection-string][32]
+
 ## <a name="search-for-storage-accounts"></a>Tárfiókok keresése
 Amennyiben tárfiókjai listája túl hosszú, az adott tárfiókok megtalálásának egyszerű módja lehet a keresőmező használata a bal oldali ablaktábla tetején.
 
@@ -232,6 +243,7 @@ Ahogy elkezdi beírni a szöveget a keresőmezőbe, a bal oldali ablaktábla csa
 
 ## <a name="next-steps"></a>Következő lépések
 * [Azure Blob Storage-erőforrások kezelése a Tártallózó (előzetes verzió) használatával](vs-azure-tools-storage-explorer-blobs.md)
+* [Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-icon.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-account-link.png
@@ -260,4 +272,5 @@ Ahogy elkezdi beírni a szöveget a keresőmezőbe, a bal oldali ablaktábla csa
 [29]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-azure-stack-account.png
 [30]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-accounts-azure-stack.png
 [31]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/azure-stack-storage-account-list.png
-
+[32]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connection-string.PNG
+[33]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-db-by-connection-string.PNG

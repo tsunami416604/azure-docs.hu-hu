@@ -1,5 +1,5 @@
 > [!NOTE]
-> **Custom policies are in public preview.**
+> **Egyéni házirendek olyan nyilvános előzetes verziójában.**
 
-> [Custom policies](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md#custom-policies) are designed primarily for identity pros who need to address complex scenarios. For most scenarios, we recommend that you use Azure Active Directory B2C [built-in policies](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md). Built-in policies are easier to set up for your configuration. You can use built-in and custom policies in the same Azure Active Directory B2C tenant. To learn more, see the [overview of custom policies](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md).
+> [Egyéni házirendek](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md#custom-policies) elsősorban a identitás szakembereknek, akik összetett forgatókönyvek esetében meg kell. A legtöbb esetben azt javasoljuk, hogy használja-e Azure Active Directory B2C [beépített házirendek](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md). Beépített házirendek olyan könnyebben a konfiguráció beállítása. Az azonos Azure Active Directory B2C-bérlőben beépített és egyéni házirendek is használhatók. További tudnivalókért tekintse meg a [egyéni házirendek – áttekintés](..\articles\active-directory-b2c\active-directory-b2c-overview-custom.md).
 

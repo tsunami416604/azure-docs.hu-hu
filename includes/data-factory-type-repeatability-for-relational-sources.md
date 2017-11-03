@@ -1,16 +1,16 @@
-## <a name="repeatability-during-copy"></a>Repeatability during Copy
-When copying data from and to relational stores, you need to keep repeatability in mind to avoid unintended outcomes. 
+## <a name="repeatability-during-copy"></a>Ismételhetőség másolása során
+Ha a Másolás a kezdő és a relációs tároló kell ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. 
 
-A slice can be rerun automatically in Azure Data Factory as per the retry policy specified. We recommend that you set a retry policy to guard against transient failures. Hence repeatability is an important aspect to take care of during data movement. 
+A szelet is futtatható automatikusan az Azure Data Factory megadott újrapróbálkozási házirend szerint. Azt javasoljuk, hogy átmeneti hibák ellen védelmet újrapróbálkozási házirendje. Ezért az ismételhetőség az adatátvitel során végrehajtására fontos eleme. 
 
-**As a source:**
+**Forrásként:**
 
 > [!NOTE]
-> The following samples are for Azure SQL but are applicable to any data store that supports rectangular datasets. You may have to adjust the **type** of source and the **query** property (for example: query instead of sqlReaderQuery) for the data store.   
+> A következő mintákat az Azure SQL, de bármilyen adattároló, amely támogatja a téglalap alakú adatkészletek vonatkoznak. Előfordulhat, hogy úgy, hogy a **típus** forrás- és a **lekérdezés** tulajdonság (például: lekérdezés helyett sqlReaderQuery) az adatok tárolásához.   
 > 
 > 
 
-Usually, when reading from relational stores, you would want to read only the data corresponding to that slice. A way to do so would be by using the WindowStart and WindowEnd variables available in Azure Data Factory. Read about the variables and functions in Azure Data Factory here in the [Scheduling and Execution](../articles/data-factory/v1/data-factory-scheduling-and-execution.md) article. Example: 
+Általában relációs áruházakból olvasásakor célszerű lehet olvasni a csak az, hogy a szelet megfelelő adatokat. Ehhez úgy lenne a rendelkezésre álló WindowStart és WindowEnd változókat az Azure Data Factory használatával. Olvassa el a változók és az Azure Data Factory Itt a függvényt a [ütemezés és a végrehajtás](../articles/data-factory/v1/data-factory-scheduling-and-execution.md) cikk. Példa: 
 
 ```json
 "source": {
@@ -18,9 +18,9 @@ Usually, when reading from relational stores, you would want to read only the da
 "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
 },
 ```
-This query reads data from ‘MyTable’ that falls in the slice duration range. Rerun of this slice would also always ensure this behavior. 
+Ez a lekérdezés adatokat olvas a "MyTable", amely a szelet időtartama közé esik. Futtassa újból a szeletet a is minden esetben gondoskodjon arról, hogy ez a viselkedés. 
 
-In other cases, you may wish to read the entire Table (suppose for one time move only) and may define the sqlReaderQuery as follows:
+Más esetekben Kezdésként érdemes lehet olvasni a teljes táblát (tegyük fel, hogy csak egy alkalommal helyezze át a) és a következőképpen határozhatnak meg a sqlReaderQuery:
 
 ```json
 "source": 

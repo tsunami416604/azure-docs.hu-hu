@@ -1,15 +1,15 @@
 > [!WARNING]
-> When you enable diagnostics on an existing role, any extensions you have enabled will be disabled when the package is deployed. These include:
+> Ha egy meglévő szerepkör diagnosztika engedélyezéséhez bármely már beállított kiszolgálóbővítmények le vannak tiltva, a csomag telepítésekor. Ezek a következők:
 >
-> * Microsoft Monitoring Agent Diagnostics
-> * Microsoft Azure Security Monitoring
+> * A Microsoft Monitoring Agent diagnosztika
+> * A Microsoft Azure biztonsági figyelése
 > * Microsoft Antimalware                 
 > * Microsoft Monitoring Agent
-> * Microsoft Service Profiler Agent      
-> * Windows Azure Domain Extension        
-> * Windows Azure Diagnostics Extension   
-> * Windows Azure Remote Desktop Extension
-> * Windows Azure Log Collector
+> * A Microsoft szolgáltatás Profilkészítő ügynök      
+> * Windows Azure-tartomány bővítmény        
+> * Windows Azure diagnosztikai bővítmény   
+> * Windows Azure távoli asztali bővítmény
+> * Windows Azure naplógyűjtő
 >
-> You may re-enable your extensions via the Azure Portal or PowerShell after you have deployed the updated role.
+> A bővítmények az Azure portálon vagy a PowerShell segítségével visszaállíthatja a frissített szerepkör telepítése után.
 >

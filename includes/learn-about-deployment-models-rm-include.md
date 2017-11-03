@@ -1,2 +1,2 @@
 > [!NOTE]
-> Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../articles/azure-resource-manager/resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model, which Microsoft recommends for new deployments instead of the classic deployment model.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../articles/azure-resource-manager/resource-manager-deployment-model.md).  Ez a cikk a Resource Manager telepítési modell, amely a Microsoft azt javasolja, hogy az új központi telepítéseknél helyett a klasszikus telepítési modell használatát bemutatja.

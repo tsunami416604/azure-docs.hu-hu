@@ -1,4 +1,4 @@
-A helyi terminálablakban adjon hozzá egy távoli Azure-mappát a helyi Git-tárházhoz.
+A helyi terminálablakban adjon hozzá egy távoli Azure-mappát a helyi Git-tárházhoz. Az Azure távoli lett létrehozva a [webalkalmazás létrehozása](#create-a-web-app).
 
 ```bash
 git remote add azure <URI from previous step>

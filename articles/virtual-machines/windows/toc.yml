@@ -39,7 +39,9 @@
       href: tutorial-azure-security.md
     - name: 12 – Team Services CI/CD
       href: tutorial-vsts-iis-cicd.md
-    - name: 13 – Biztonságos webkiszolgáló SSL-lel
+    - name: 13 - SQL\IIS\.NET-verem telepítése
+      href: tutorial-iis-sql.md
+    - name: 14 – Webkiszolgáló védelme SSL-lel
       href: tutorial-secure-web-server.md
 - name: Példák
   items:
@@ -55,6 +57,27 @@
       href: regions-and-availability.md
     - name: Virtuálisgép-típusok és -méretek
       href: sizes.md
+      items:
+        - name: Általános célú
+          href: sizes-general.md
+          items:
+            - name: B sorozat – adatlöket-kezelés
+              href: b-series-burstable.md
+        - name: Számításra optimalizált
+          href: sizes-compute.md
+        - name: Memóriaoptimalizált
+          href: sizes-memory.md
+        - name: Tárolásra optimalizált
+          href: sizes-storage.md
+        - name: GPU-optimalizált
+          href: sizes-gpu.md
+          items:
+            - name: GPU-illesztők beállítása
+              href: n-series-driver-setup.md
+        - name: Nagy teljesítményű számítás
+          href: sizes-hpc.md
+        - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
+          href: sizes-general.md
     - name: Karbantartás és frissítések
       href: maintenance-and-updates.md
     - name: Storage

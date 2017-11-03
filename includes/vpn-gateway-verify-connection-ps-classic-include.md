@@ -1,11 +1,11 @@
-You can verify that your connection succeeded by using the 'Get-AzureVNetConnection' cmdlet.
+Ellenőrizheti, hogy sikerült-e a kapcsolat a "Get-AzureVNetConnection" parancsmag használatával.
 
-1. Use the following cmdlet example, configuring the values to match your own. The name of the virtual network must be in quotes if it contains spaces.
+1. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Szóközöket tartalmaz, a virtuális hálózat nevét idézőjelek között kell lennie.
 
   ```powershell
   Get-AzureVNetConnection "Group ClassicRG ClassicVNet"
   ```
-2. After the cmdlet has finished, view the values. In the example below, the Connectivity State shows as 'Connected' and you can see ingress and egress bytes.
+2. A parancsmag futtatása után tekintse meg az értékeket. Az alábbi példában a kapcsolati állapota jeleníti meg, mint a "Csatlakoztatott", és láthatja a bemenő és kimenő bájtokat.
 
         ConnectivityState         : Connected
         EgressBytesTransferred    : 181664

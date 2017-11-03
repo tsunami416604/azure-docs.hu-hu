@@ -1,27 +1,27 @@
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-how-to-configure.md)
-> * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
+> * [C#/node.js](../articles/iot-hub/iot-hub-csharp-node-twin-how-to-configure.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-how-to-configure.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-how-to-configure.md)
 > 
 > 
 
-## <a name="introduction"></a>Introduction
+## <a name="introduction"></a>Bevezetés
 
-In [Get started with IoT Hub device twins][lnk-twin-tutorial], you learned how to set device metadata from your solution back end using *tags*, report device conditions from a device app using *reported properties*, and query this information using a SQL-like language.
+A [Ismerkedés az IoT Hub eszköz twins][lnk-twin-tutorial], megtudta, hogyan állítható be az eszköz metaadatait a megoldás háttér használata *címkék*, egy eszköz alkalmazásból eszköz feltételek jelentés használatával *tulajdonságok jelentett*, és lekérdezheti az SQL-szerű nyelv használatával adatokat.
 
-In this tutorial, you learn how to use the device twin's *desired properties* along with *reported properties*, to remotely configure device apps. More specifically, this tutorial shows how a device twin's reported and desired properties enable a multi-step configuration of a device application, and provide the visibility to the solution back end of the status of this operation across all devices. You can find more information regarding the role of device configurations in [Overview of device management with IoT Hub][lnk-dm-overview].
+Ebben az oktatóanyagban elsajátíthatja, hogyan használja a két eszköz *szükséges tulajdonságok* együtt *tulajdonságok jelentett*, és így távolról konfigurálhat az eszközön futó alkalmazások. Pontosabban Ez az oktatóanyag bemutatja, hogyan egy eszköz iker jelentett és kívánt tulajdonságokkal engedélyezze a többlépéses konfigurálása egy alkalmazást, és adja meg a válnak láthatóvá, a megoldás háttérrendszeréhez, ez a művelet állapotát az összes eszközön. Az eszköz-konfigurációk a szerepkör további információhoz található [IoT-központ az eszközkezelés áttekintése][lnk-dm-overview].
 
-At a high level, using device twins enables the solution back end to specify the desired configuration for the managed devices, instead of sending specific commands. This puts the device in charge of setting up the best way to update its configuration (important in IoT scenarios where specific device conditions affect the ability to immediately carry out specific commands), while continually reporting to the solution back end the current state and potential error conditions of the update process. This pattern is instrumental to the management of large sets of devices, as it enables the solution back end to have full visibility of the state of the configuration process across all devices.
+Magas szinten eszköz twins használata lehetővé teszi, hogy a megoldás háttérrendszeréhez, adja meg a kívánt konfigurációs parancsok küldése helyett a kezelt eszközök. Ez az eszköz feladata frissíti a konfigurációját (IoT forgatókönyvekben, ahol adott eszközhöz feltételek azonnal a parancsok végrehajtására hatással fontos), a legjobb módszer beállítása helyezi a megoldás háttérrendszeréhez folyamatosan jelentéskészítés közben az aktuális állapot és a lehetséges hibaállapotok, a frissítési folyamat. Ez a minta nem műszeres felügyeleti eszközöket, a nagy, mert lehetővé teszi, hogy a megoldás háttérrendszeréhez, hogy a teljes látható-e a konfigurációs folyamat állapotát az összes eszközön.
 
 > [!NOTE]
-> In scenarios where devices are controlled in a more interactive fashion (turn on a fan from a user-controlled app), consider using [direct methods][lnk-methods].
+> Olyan esetekben, ahol vezérelt eszközök több interaktív módon (egy felhasználó által felügyelt alkalmazásból ventilátor bekapcsolása), érdemes lehet [módszerek közvetlen][lnk-methods].
 > 
 > 
 
-In this tutorial, the solution back end changes the telemetry configuration of a target device and, as a result of that, the device app follows a multi-step process to apply a configuration update (for example, requiring a software module restart, which this tutorial simulates with a simple delay).
+Ebben az oktatóanyagban a megoldás háttérrendszeréhez a céleszközön telemetriai konfigurációját módosítja, és emiatt az adott, az eszköz alkalmazás a többlépéses folyamatot követi egy konfigurációs frissítés (például a számítógép újraindítására szoftver modul, amely ezt az oktatóanyag szimulálja egyszerű késéssel).
 
-The solution back end stores the configuration in the device twin's desired properties in the following way:
+A megoldás háttérrendszeréhez tárolja a konfiguráció a két eszköz kívánt tulajdonságok az alábbi módon:
 
         {
             ...
@@ -39,11 +39,11 @@ The solution back end stores the configuration in the device twin's desired prop
         }
 
 > [!NOTE]
-> Since configurations can be complex objects, they are assigned unique IDs (hashes or [GUIDs][lnk-guid]) to simplify their comparisons.
+> Konfigurációk lehetnek összetett objektumra, mert rendelt egyedi azonosítók (kivonatok vagy [GUID][lnk-guid]) egyszerűbbé teheti az összehasonlítást.
 > 
 > 
 
-The device app reports its current configuration mirroring the desired property **telemetryConfig** in the reported properties:
+Az eszköz alkalmazás jelent a kívánt tulajdonságot tükrözés aktuális konfigurációja **telemetryConfig** jelentett tulajdonságai:
 
         {
             "properties": {
@@ -59,9 +59,9 @@ The device app reports its current configuration mirroring the desired property 
             }
         }
 
-Note how the reported **telemetryConfig** has an additional property **status**, used to report the state of the configuration update process.
+Megjegyzés: hogyan a jelentett **telemetryConfig** további tulajdonsága **állapot**, a konfiguráció frissítési folyamat állapotának jelentésére használt.
 
-When a new desired configuration is received, the device app reports a pending configuration by changing the information:
+Amikor egy új szükségeskonfiguráció érkezik, az eszköz alkalmazás egy függőben lévő konfigurációs adatok módosításával jelentések:
 
         {
             "properties": {
@@ -81,13 +81,13 @@ When a new desired configuration is received, the device app reports a pending c
             }
         }
 
-Then, at some later time, the device app reports the success or failure of this operation by updating the above property.
-Note how the solution back end is able, at any time, to query the status of the configuration process across all the devices.
+Majd egy későbbi időpontban, az eszköz alkalmazás jelentést készít a sikeres vagy sikertelen volt, a művelet által a fenti tulajdonság.
+Vegye figyelembe, hogy a megoldás háttérrendszeréhez Mitől képes, tetszőleges időpontban, a konfigurációs folyamat állapotának lekérdezése az eszközön.
 
-This tutorial shows you how to:
+Ez az oktatóanyag a következőket mutatja be:
 
-* Create a simulated device app that receives configuration updates from the solution back end, and reports multiple updates as *reported properties* on the configuration update process.
-* Create a back-end app that updates the desired configuration of a device, and then queries the configuration update process.
+* Létrehoz egy szimulált eszköz alkalmazást, amely konfigurációs frissítések kap a megoldás háttérrendszeréhez, és több frissítések jelentések *tulajdonságok jelentett* a konfigurációban folyamatot nem lehet frissíteni.
+* Hozzon létre egy háttér-alkalmazást, amely frissíti az eszköz kívánt beállításait, és ezután lekérdezi a konfigurációs frissítési folyamat.
 
 <!-- links -->
 

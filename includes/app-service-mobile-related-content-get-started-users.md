@@ -1,6 +1,6 @@
-* [App Service Authentication / Authorization overview](../articles/app-service/app-service-authentication-overview.md)
-* Add authentication to your Mobile App: [iOS][ios-get-started-users], [Android][android-get-started-users], [Windows Universal][windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms][xamarin-forms-get-started-users], [Cordova][cordova-get-started-users]  
-  Learn how to add App Service authenication to your mobile app.
+* [App Service hitelesítés / engedélyezés áttekintése](../articles/app-service/app-service-authentication-overview.md)
+* Hitelesítés hozzáadása a Mobile Apps: [iOS][ios-get-started-users], [Android][android-get-started-users], [univerzális Windows-] [ windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms] [ xamarin-forms-get-started-users], [Cordova][cordova-get-started-users]  
+  Ismerje meg az App Service hitelesítés hozzáadása a mobilalkalmazás.
 
 [android-get-started-users]: ../articles/app-service-mobile/app-service-mobile-android-get-started-users.md
 [cordova-get-started-users]: ../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md

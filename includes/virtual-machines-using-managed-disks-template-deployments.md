@@ -1,10 +1,10 @@
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Using Managed Disks in Azure Resource Manager Templates
+# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok lemezek felügyelt
 
-This document walks through the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines. This will help you to update existing templates that are using unmanaged Disks to managed disks. For reference, we are using the [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) template as a guide. You can see the template using both [managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) and a prior version using [unmanaged disks](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) if you'd like to directly compare them.
+Ez a dokumentum végigvezeti a virtuális gépeket Azure Resource Manager-sablonok használatával kezelt és nem kezelt lemezek közötti különbségeket. Ez segít frissíteni a felügyelt lemezek nem felügyelt lemezt használ, meglévő sablonok. Referenciaként használjuk a [101-vm-egyszerű-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) útmutatóként sablont. Láthatja, hogy a sablon használatával is [által kezelt lemezeken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) egy korábbi verzióját használja, és [lemezek nem felügyelt](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) Ha szeretne közvetlenül hasonlítsa össze azokat.
 
-## <a name="unmanaged-disks-template-formatting"></a>Unmanaged Disks template formatting
+## <a name="unmanaged-disks-template-formatting"></a>Nem felügyelt lemezek sablon formázás
 
-To begin, we take a look at how unmanaged disks are deployed. When creating unmanaged disks, you need a storage account to hold the VHD files. You can create a new storage account or use one that already exists. This article will show you how to create a new storage account. To accomplish this, you need a storage account resource in the resources block as shown below.
+Első lépésként azt tekintse meg, hogyan nem felügyelt lemezek vannak telepítve. Nem felügyelt lemezek létrehozásakor a VHD-fájlok tárolásához storage-fiók szükséges. Hozzon létre egy új tárfiókot, vagy használjon már meglévő. Ez a cikk bemutatja, hogyan hozzon létre egy új tárfiókot. Ehhez szüksége van a tárolási fiók erőforrás az erőforrások blokkban alább látható módon.
 
 ```
 {
@@ -20,7 +20,7 @@ To begin, we take a look at how unmanaged disks are deployed. When creating unma
 }
 ```
 
-Within the virtual machine object, we need a dependency on the storage account to ensure that it's created before the virtual machine. Within the `storageProfile` section, we then specify the full URI of the VHD location, which references the storage account and is needed for the OS disk and any data disks. 
+A virtuális gép objektumon belül igazolnia kell a storage-fiók segítségével győződjön meg arról, hogy a virtuális gép előtt létrehozott függ. Belül a `storageProfile` szakaszban azt adja meg a teljes URI-azonosítója a VHD helye, amely hivatkozik a tárfiók, és az operációsrendszer-lemezképet és az adatok lemezzel van szükség. 
 
 ```
 {
@@ -68,18 +68,18 @@ Within the virtual machine object, we need a dependency on the storage account t
 }
 ```
 
-## <a name="managed-disks-template-formatting"></a>Managed disks template formatting
+## <a name="managed-disks-template-formatting"></a>Felügyelt lemezek sablon formázás
 
-With Azure Managed Disks, the disk becomes a top-level resource and no longer requires a storage account to be created by the user. Managed disks were first exposed in the `2016-04-30-preview` API version, they are available in all subsequent API versions and are now the default disk type. The following sections walk through the default settings and detail how to further customize your disks.
+Azure felügyelt lemezek a lemez egy legfelső szintű erőforrás lesz, és többé nem kell egy tárfiókot, a felhasználó által létrehozandó. Felügyelt lemezek először volt felfedett a `2016-04-30-preview` API-verziót, azok érhetők el az összes azt követő API-verziók és az alapértelmezett lemeztípus is. A következő szakaszok végezze el az alapértelmezett beállításokat, és részletesen további testreszabásával a lemezeket.
 
 > [!NOTE]
-> It is recommended to use an API version later than `2016-04-30-preview` as there were breaking changes between `2016-04-30-preview` and `2017-03-30`.
+> Javasoljuk, hogy az API-verziót használja későbbi, mint `2016-04-30-preview` mert jelentős változásokat közötti `2016-04-30-preview` és `2017-03-30`.
 >
 >
 
-### <a name="default-managed-disk-settings"></a>Default managed disk settings
+### <a name="default-managed-disk-settings"></a>Alapértelmezett felügyelt lemezes beállításai
 
-To create a VM with managed disks, you no longer need to create the storage account resource and can update your virtual machine resource as follows. Specifically note that the `apiVersion` reflects `2017-03-30` and the `osDisk` and `dataDisks` no longer refer to a specific URI for the VHD. When deploying without specifying additional properties, the disk will use [Standard LRS storage](../articles/storage/common/storage-redundancy.md). If no name is specified, it takes the format of `<VMName>_OsDisk_1_<randomstring>` for the OS disk and `<VMName>_disk<#>_<randomstring>` for each data disk. By default, Azure disk encryption is disabled; caching is Read/Write for the OS disk and None for data disks. You may notice in the example below there is still a storage account dependency, though this is only for storage of diagnostics and is not needed for disk storage.
+Felügyelt lemezzel rendelkező virtuális gép létrehozása, már nem szeretne létrehozni a tárolási erőforrás fiókot, és a következőképpen frissítheti a virtuálisgép-erőforrást. Kifejezetten vegye figyelembe, hogy a `apiVersion` tükrözi `2017-03-30` és a `osDisk` és `dataDisks` már nem hivatkozik egy adott URI-t a virtuális merevlemez. További tulajdonságok megadása nélkül való telepítésekor a fogja használni a lemez [Standard-LRS tárolási](../articles/storage/common/storage-redundancy.md). Ha nem ad meg nevet, tart formátuma `<VMName>_OsDisk_1_<randomstring>` az operációsrendszer-lemezképet a és `<VMName>_disk<#>_<randomstring>` adatok lemezek. Alapértelmezés szerint az Azure disk encryption le van tiltva; Olvasási/írási gyorsítótárazást az operációsrendszer-lemez és adatlemezek nincs. Az alábbi példában szereplő Észreveheti, továbbra is fennáll a tárolási fiók függőségi, bár ez csak a tárolási diagnosztikai és a lemezes tárolás esetén nem szükséges.
 
 ```
 {
@@ -118,9 +118,9 @@ To create a VM with managed disks, you no longer need to create the storage acco
 }
 ```
 
-### <a name="using-a-top-level-managed-disk-resource"></a>Using a top-level managed disk resource
+### <a name="using-a-top-level-managed-disk-resource"></a>Egy legfelső szintű felügyelt lemezes erőforrást használja
 
-As an alternative to specifying the disk configuration in the virtual machine object, you can create a top-level disk resource and attach it as part of the virtual machine creation. For example, we can create a disk resource as follows to use as a data disk.
+Másik megoldásként a lemezkonfiguráció megadása a virtuálisgép-objektumot hozzon létre egy legfelső szintű lemezerőforrás, és csatlakoztassa a virtuális gép létrehozása során nem. Olyan lemezerőforrást az alábbiak szerint használandó adatlemezt például létrehozhatunk olyan.
 
 ```
 {
@@ -140,7 +140,7 @@ As an alternative to specifying the disk configuration in the virtual machine ob
 }
 ```
 
-Within the VM object, we can then reference this disk object to be attached. Specifying the resource ID of the managed disk we created in the `managedDisk` property allows the attachment of the disk as the VM is created. Note that the `apiVersion` for the VM resource is set to `2017-03-30`. Also note that we've created a dependency on the disk resource to ensure it's successfully created before VM creation. 
+A Virtuálisgép-objektum belül a lemez objektum csatolni kell majd azt is hivatkozhatnak. Adja meg a felügyelt lemezes, a létrehozott erőforrás-azonosítója a `managedDisk` tulajdonság lehetővé teszi a mellékletet, a lemez számára, a virtuális gép létrehozása. Vegye figyelembe, hogy a `apiVersion` a virtuális gép erőforrás értéke `2017-03-30`. Ne feledje, hogy létrehoztunk Önnek függősége a lemezerőforrástól sikeres létrehozása előtt a Virtuálisgép-létrehozási biztosításához. 
 
 ```
 {
@@ -183,9 +183,9 @@ Within the VM object, we can then reference this disk object to be attached. Spe
 }
 ```
 
-### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Create managed availability sets with VMs using managed disks
+### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Felügyelt rendelkezésre állási csoportok felügyelt lemezek használata virtuális gépek létrehozása
 
-To create managed availability sets with VMs using managed disks, add the `sku` object to the availability set resource and set the `name` property to `Aligned`. This ensures that the disks for each VM are sufficiently isolated from each other to avoid single points of failure. Also note that the `apiVersion` for the availability set resource is set to `2017-03-30`.
+Felügyelt létrehozásához rendelkezésre állási készletek virtuális gépek felügyelt lemezt használ, adja hozzá a `sku` objektum a következő rendelkezésre állási erőforrás beállításához, állítsa be a `name` tulajdonságot `Aligned`. Ez biztosítja, hogy az egyes virtuális gépek a lemezek megfelelően különítve egymástól elkerülése érdekében a hibaérzékeny pontokat. Ne feledje, hogy a `apiVersion` esetében a rendelkezésre állási erőforrás értéke `2017-03-30`.
 
 ```
 {
@@ -203,17 +203,17 @@ To create managed availability sets with VMs using managed disks, add the `sku` 
 }
 ```
 
-### <a name="additional-scenarios-and-customizations"></a>Additional scenarios and customizations
+### <a name="additional-scenarios-and-customizations"></a>További forgatókönyvek és testreszabása
 
-To find full information on the REST API specifications, please review the [create a managed disk REST API documentation](/rest/api/manageddisks/disks/disks-create-or-update). You will find additional scenarios, as well as default and acceptable values that can be submitted to the API through template deployments. 
+Teljes információ keresése a REST API előírásoknak, tekintse át a [felügyelt lemezes REST API-dokumentáció](/rest/api/manageddisks/disks/disks-create-or-update). További helyzeteket is, valamint az alapértelmezett és az elfogadható értékek, amelyek küldheti el a sablon központi telepítések keresztül API találja. 
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Következő lépések
 
-* For full templates that use managed disks visit the following Azure Quickstart Repo links.
-    * [Windows VM with managed disk](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-    * [Linux VM with managed disk](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-    * [Full list of managed disk templates](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
-* Visit the [Azure Managed Disks Overview](../articles/virtual-machines/windows/managed-disks-overview.md) document to learn more about managed disks.
-* Review the template reference documentation for virtual machine resources by visiting the [Microsoft.Compute/virtualMachines template reference](/templates/microsoft.compute/virtualmachines) document.
-* Review the template reference documentation for disk resources by visiting the [Microsoft.Compute/disks template reference](/templates/microsoft.compute/disks) document.
+* Látogasson el a következő Azure gyors üzembe helyezés tárház hivatkozások teljes kezelt lemezek használó sablonokat.
+    * [A felügyelt lemezes Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+    * [A felügyelt lemezes Linux virtuális gép](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+    * [Felügyelt lemezes sablonok teljes listája](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
+* Látogasson el a [Azure felügyelt lemezekhez – áttekintés](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentum felügyelt lemezek tájékozódhat.
+* Tekintse át a virtuális gép erőforrásai sablon dokumentációját látogasson el a [Microsoft.Compute/virtualMachines sablonra való hivatkozást](/templates/microsoft.compute/virtualmachines) dokumentum.
+* Tekintse át a sablon referenciadokumentációt tartalmaz lemezerőforrásokat látogasson el a [Microsoft.Compute/disks sablonra való hivatkozást](/templates/microsoft.compute/disks) dokumentum.
  

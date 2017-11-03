@@ -1,11 +1,11 @@
-Locally redundant storage (LRS) replicates your data three times within a storage scale unit, which is hosted in a datacenter in the region in which you created your storage account. A write request returns successfully only once it has been written to all three replicas. These three replicas each reside in separate fault domains and upgrade domains within one storage scale unit.
+Helyileg redundáns tárolás (LRS) az adatok egy tárolási méretezési egység, amely a régióban, amelyben létrehozta a tárfiók adatközpontban található belül háromszor replikálja. Az írási kérelem sikeresen beolvasása csak egyszer minden három replikákra lett írva. Ezek a három replikák külön tartalék tartományok és egy tárolási méretezési egység frissítési tartományban találhatók.
 
-A storage scale unit is a collection of racks of storage nodes. A fault domain (FD) is a group of nodes that represent a physical unit of failure and can be considered as nodes belonging to the same physical rack. An upgrade domain (UD) is a group of nodes that are upgraded together during the process of a service upgrade (rollout). The three replicas are spread across UDs and FDs within one storage scale unit to ensure that data is available even if hardware failure impacts a single rack or when nodes are upgraded during a rollout.
+A tárolási méretezési egység tárolócsomópontok rackszekrények gyűjteménye. A tartalék tartomány (FD) olyan csomóponton, amelyeket egy fizikai egységet kialakulását jelöl, és az ugyanazon fizikai állványra tartozó számítógépen tekinthető. Frissítési tartományok (UD) olyan csomóponton, amelyeket a szolgáltatás frissítése (Bevezetés) folyamata során egyszerre frissítik. A három replikák vannak elosztva UDs és FDs belül egy tárolási méretezési egység győződjön meg arról, hogy érhetők el adatok akkor is, ha hardverhiba egyetlen állvány hatással van, vagy ha a csomópont frissítése a bevezetés alatt.
 
-LRS is the lowest cost option and offers least durability compared to other options. In the event of a datacenter level disaster (fire, flooding etc.) all three replicas might be lost or unrecoverable. To mitigate this risk, Geo Redundant Storage (GRS) is recommended for most applications.
+LRS a legalacsonyabb költséget beállítás, és más beállítások képest legalább tartósságot biztosít. (Fire, elárasztás stb) datacenter szintű katasztrófa esetén minden három replikák elveszett vagy helyreállíthatatlan lehet. Ennek a kockázatnak a mérséklése érdekében a legtöbb alkalmazás földrajzi redundáns tárolás (GRS) ajánlott.
 
-Locally redundant storage may still be desirable in certain scenarios:
+Helyileg redundáns tárolás kívánatos bizonyos esetekben továbbra is lehet:
 
-* Provides highest maximum bandwidth of Azure Storage replication options.
-* If your application stores data that can be easily reconstructed, you may opt for LRS.
-* Some applications are restricted to replicating data only within a country due to data governance requirements. A paired region could be in another country. For more information on region pairs, see [Azure regions](https://azure.microsoft.com/regions/).
+* Itt a legnagyobb maximális sávszélesség az Azure Storage replikálási beállításaival.
+* Ha az alkalmazás, amely könnyen rekonstruálható adatokat tárol, LRS is választhat.
+* Adatreplikálás adatok cégirányítási követelmények miatt országon belül csak bizonyos alkalmazások korlátozódnak. Egy párosított régióban lehet egy másik országból. A régió párok további információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).

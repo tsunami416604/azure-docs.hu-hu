@@ -1,47 +1,47 @@
-### <a name="noconnection"></a>To modify local network gateway IP address prefixes - no gateway connection
+### <a name="noconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – nincs átjárókapcsolat
 
-#### <a name="to-add-additional-address-prefixes"></a>To add additional address prefixes:
+#### <a name="to-add-additional-address-prefixes"></a>További címelőtagok felvétele:
 
-1. On the Local Network Gateway resource, in the **Settings** section, click **Configuration**.
-2. Add the IP address space in the *Add additional address range* box.
-3. Click **Save** to save your settings.
+1. A helyi hálózati átjáró erőforráson az a **beállítások** területén kattintson **konfigurációs**.
+2. Adja hozzá az IP-címterének a *újabb címtartomány felvétele* mezőbe.
+3. Kattintson a **mentése** a beállítások mentéséhez.
 
-#### <a name="to-remove-address-prefixes"></a>To remove address prefixes:
+#### <a name="to-remove-address-prefixes"></a>Címelőtagok eltávolítása:
 
-1. On the Local Network Gateway resource, in the **Settings** section, click **Configuration**.
-2. Click the **'...'** on the line containing the prefix you want to remove.
-3. Click **Remove**.
-4. Click **Save** to save your settings.
+1. A helyi hálózati átjáró erőforráson az a **beállítások** területén kattintson **konfigurációs**.
+2. Kattintson a **"..."** a sort, amelyben az eltávolítani kívánt előtagot.
+3. Kattintson a **eltávolítása**.
+4. Kattintson a **mentése** a beállítások mentéséhez.
 
-### <a name="withconnection"></a>To modify local network gateway IP address prefixes - existing gateway connection
+### <a name="withconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – létező átjárókapcsolat
 
-If you have a gateway connection and want to add or remove the IP address prefixes contained in your local network gateway, you need to do the following steps, in order. This results in some downtime for your VPN connection. When modifying IP address prefixes, you don't need to delete the VPN gateway. You only need to remove the connection.
+Ha már rendelkezik átjárókapcsolattal, és szeretné felvenni vagy eltávolítani a helyi hálózati átjáróban tárolt IP-címelőtagokat, akkor az alábbi lépéseket kell sorban végrehajtania. Ez némi állásidőt jelent a VPN-kapcsolata számára. Mikor módosítja az IP-címelőtagokat, nem kell törölnie a VPN-átjárót. Csak a kapcsolatot kell eltávolítania.
 
-#### <a name="1-remove-the-connection"></a>1. Remove the connection.
+#### <a name="1-remove-the-connection"></a>1. Távolítsa el a kapcsolatot.
 
-1. On the Local Network Gateway resource, in the **Settings** section, click **Connections**.
-2. Click the **...** on the line for each connection, then click **Delete**.
-3. Click **Save** to save your settings.
+1. A helyi hálózati átjáró erőforráson az a **beállítások** területén kattintson **kapcsolatok**.
+2. Kattintson a **...**  minden kapcsolat sorában, majd kattintson **törlése**.
+3. Kattintson a **mentése** a beállítások mentéséhez.
 
-#### <a name="2-modify-the-address-prefixes"></a>2. Modify the address prefixes.
+#### <a name="2-modify-the-address-prefixes"></a>2. Módosítsa a címelőtagokat.
 
-To add additional address prefixes:
+További címelőtagok felvétele:
 
-1. On the Local Network Gateway resource, in the **Settings** section, click **Configuration**.
-2. Add the IP address space.
-3. Click **Save** to save your settings.
+1. A helyi hálózati átjáró erőforráson az a **beállítások** területén kattintson **konfigurációs**.
+2. Az IP-címterület hozzáadása.
+3. Kattintson a **mentése** a beállítások mentéséhez.
 
-To remove address prefixes:
+Címelőtagok eltávolítása:
 
-1. On the Local Network Gateway resource, in the **Settings** section, click **Configuration**.
-2. Click the **...** on the line containing the prefix you want to remove.
-3. Click **Remove**.
-4. Click **Save** to save your settings.
+1. A helyi hálózati átjáró erőforráson az a **beállítások** területén kattintson **konfigurációs**.
+2. Kattintson a **...**  a sort, amelyben az eltávolítani kívánt előtagot.
+3. Kattintson a **eltávolítása**.
+4. Kattintson a **mentése** a beállítások mentéséhez.
 
-#### <a name="3-recreate-the-connection"></a>3. Recreate the connection.
+#### <a name="3-recreate-the-connection"></a>3. Hozza létre újra a kapcsolatot.
 
-1. Navigate to the Virtual Network Gateway for your VNet. (Not the Local Network Gateway.)
-2. On the Virtual Network Gateway, in the **Settings** section, click **Connections**.
-3. Click the **+ Add** to open the **Add connection** blade.
-4. Recreate your connection.
-5. Click **OK** to create the connection.
+1. Nyissa meg a virtuális hálózati átjáró a Vnethez tartozó. (Nem a helyi hálózati átjáró.)
+2. A virtuális hálózati átjárón az a **beállítások** kattintson **kapcsolatok**.
+3. Kattintson a **+ Hozzáadás** megnyitásához a **kapcsolat hozzáadása a** panelen.
+4. Hozza létre újra a kapcsolatot.
+5. Kattintson a **OK** a VPN-kapcsolat létrehozásához.

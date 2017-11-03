@@ -1,6 +1,8 @@
 # Áttekintés
 ## [Az Azure AD tartományi szolgáltatások ismertetése](active-directory-ds-overview.md)
-## [Mit nyújt Önnek a szolgáltatás?](active-directory-ds-comparison.md)
+## Ez a megfelelő választás Önnek?
+### [Összehasonlítás a Windows Server AD-vel](active-directory-ds-comparison.md)
+### [Összehasonlítás az Azure AD Joinnal](active-directory-ds-compare-with-azure-ad-join.md)
 ## [Szolgáltatások](active-directory-ds-features.md)
 ## [Forgatókönyvek](active-directory-ds-scenarios.md)
 ## [A szinkronizálás működése](active-directory-ds-synchronization.md)
@@ -36,6 +38,7 @@
 ### [Profilszinkronizálás támogatásának beállítása SharePoint-kiszolgálóhoz](active-directory-ds-enable-sharepoint-profile-sync.md)
 ### [A Kerberos által korlátozott delegálás konfigurálása](active-directory-ds-enable-kcd.md)
 ### [Üzembe helyezés az Azure AD-alkalmazásproxyval](active-directory-ds-deploy-azure-app-proxy.md)
+## [Felügyelt tartomány törlése](active-directory-ds-disable-aadds.md)
 ## Hibaelhárítás
 ### [Gyakori kérdések](active-directory-ds-faqs.md)
 ### [Hibaelhárítási útmutató](active-directory-ds-troubleshooting.md)

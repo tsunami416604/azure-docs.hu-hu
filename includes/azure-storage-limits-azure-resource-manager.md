@@ -1,8 +1,8 @@
-The following limits apply when using the Azure Resource Manager and Azure Resource Groups only.
+Az alábbi korlátokat alkalmazza, ha a felügyeleti műveleteket csak az Azure Resource Manager használatával.
 
-| Resource | Default Limit |
+| Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Storage account management operations (read) |800 per 5 minutes |
-| Storage account management operations (write) |200 per hour |
-| Storage account management operations (list) |100 per 5 minutes |
+| Tárolási fiók felügyeleti műveletek (olvasni.) |800 / 5 perc |
+| Tárolási fiókkezelési műveletekhez (írás) |óránként 200 |
+| Tárolási fiókkezelési műveletekhez (lista) |100 / 5 perc |
 

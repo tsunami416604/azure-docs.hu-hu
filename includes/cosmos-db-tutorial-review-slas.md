@@ -1,7 +1,11 @@
-Now that your app is up and running, you'll want to ensure business continuity and watch user access to ensure high availability. You can use the Azure portal to review the availability, latency, throughput, and consistency of your collection. 
+Az átviteli sebesség, tárolási, rendelkezésre állási, késés és a a fiók erőforrásai konzisztenciájának figyeli az Azure portálon. Vegyük a metrikák gyorsan át. 
 
-Each graph that's associated with the [Azure Cosmos DB Service Level Agreements (SLAs)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) provides a line that shows the quota required to meet the SLA and your actual usage. This information gives you a clear view into your database performance. Additional metrics, such as storage usage and number of requests per minute, are also included in the portal.
+1. Kattintson a **metrikák** a navigációs menü.
 
-* In the Azure portal, in the pane on the left, under **Monitoring**, select **Metrics**.
+   ![Az Azure-portálon a metrikák](./media/cosmos-db-tutorial-review-slas/metrics.png)
 
-   ![Todo app with sample data](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-portal-metrics-slas.png)
+2. Kattintson a egyes lapokon így tisztában a metrikák Azure Cosmos DB biztosít. 
+
+    Minden egyes diagram, amelyhez társítva van a [Azure Cosmos DB szolgáltatói szerződések (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) jeleníti meg, ha a szolgáltatói szerződéseknek bármelyikét megsértése sorokkal biztosít. Azure Cosmos-adatbázis lehetővé teszi a szolgáltatásiszint-szerződések ennek a programcsomagnak a mérőszámok átlátható figyelése. 
+
+   ![Az Azure Cosmos DB metrikák csomag](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)

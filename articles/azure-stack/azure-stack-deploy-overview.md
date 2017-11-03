@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Development Kit deployment quickstart | Microsoft Docs
-description: Learn how to deploy the Azure Stack Development Kit
+title: "Az Azure verem szoftverfejlesztői készlet telepítési gyors üzembe helyezés |} Microsoft Docs"
+description: "Az Azure verem szoftverfejlesztői készlet telepítése"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -11,30 +11,30 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
-ms.openlocfilehash: 81b6282addd1e88e4146367c4dd9a2ee7b8c84bf
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.openlocfilehash: 3d3f31775ae9384faeae20f108b71cea5dcc2934
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-stack-development-kit-deployment-quickstart"></a>Azure Stack Development Kit deployment quickstart
+# <a name="azure-stack-development-kit-deployment-quickstart"></a>Az Azure Stack fejlesztői készletének telepítése – rövid útmutató
 
-The [Azure Stack Development Kit](azure-stack-poc.md) is a testing and development environment that you can deploy to evaluate and demonstrate Azure Stack features and services. To get it up and running, you’ll need to prepare the environment hardware and run some scripts (this will take several hours). After that, you can sign in to the admin and tenant portals to manage Azure Stack and test offers. 
+*A következőkre vonatkozik: Azure szoftverfejlesztői készletet*
 
-1. [**Plan your hardware, software, and network**](azure-stack-deploy.md). The computer that hosts the development kit (the development kit host) must meet hardware, software, and network requirements. You must also choose between using Azure Active Directory or Active Directory Federation Services. Be sure to comply with these prerequisites before starting your deployment so that the installation process runs smoothly. 
+A [Azure verem szoftverfejlesztői készlet](azure-stack-poc.md) egy tesztelési és fejlesztési környezet, amely értékeli, és bemutatja a verem Azure-szolgáltatások és szolgáltatások telepítése. Töltse le innen működik, és lesz szüksége a környezet hardver készít, és néhány (Ez órát fog igénybe venni több) parancsfájlok futtatása. Ezután bejelentkezhet a kezelése az Azure-vermet, és tesztelje a ajánlatok rendszergazdai és felhasználói portálon. 
 
-2. [**Download and extract the deployment package**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit). You can download the deployment package to the development kit host or to a another computer. The extracted deployment files take up 60 GB of free disk space, so using another computer can help reduce the hardware requirements for the development kit host.
+1. [**Tervezze meg a hardveres, szoftveres és hálózati**](azure-stack-deploy.md). A szoftverfejlesztői készlet (development kit fogadó) futtató számítógépen meg kell felelnie hardveres, szoftveres és hálózati követelményeknek. Azure Active Directory vagy Active Directory összevonási szolgáltatások használata között is ki kell választania. Ne feledje, hogy a telepítési folyamat zökkenőmentesen, a a telepítés elindítása előtt az Előfeltételek ahhoz, hogy. 
 
-3. [**Prepare the development kit host**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host) by using the installer. After this step, the development kit host will boot to the Cloudbuilder.vhdx (a virtual hard drive that includes a bootable operating system and the Azure Stack install files).
+2. [**Töltse le, és bontsa ki a központi telepítési csomag**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit). A központi telepítési csomag letöltheti a development kit gazdagépre vagy egy másik számítógépre. A kibontott tároló 60 GB szabad lemezterület, tarthat, ezért egy másik számítógép segítségével csökkentheti a development kit gazdagép hardverkövetelményeinek.
 
-4. [**Deploy the development kit**](azure-stack-run-powershell-script.md#deploy-the-development-kit) on the development kit host.
+3. [**Készítse elő a development kit gazdagép** ](azure-stack-run-powershell-script.md#prepare-the-development-kit-host) a telepítő használatával. Ez a lépés után a development kit gazdagép fog indulni, a Cloudbuilder.vhdx (egy virtuális merevlemez-meghajtóról, amely egy rendszerindításra alkalmas operációs rendszer és az Azure-verem tartalmazza a fájlok telepítéséhez).
 
-5. If your Azure Stack deployment uses Azure Active Directory, you must [register Azure Stack with Azure](azure-stack-register.md) so that you can [download Azure marketplace items](azure-stack-download-azure-marketplace-item.md) to Azure Stack.
+4. [**A csomag telepítése** ](azure-stack-run-powershell-script.md#deploy-the-development-kit) a development kit gazdagépen.
 
-After completing these steps, you’ll have a development kit environment with both administrator and tenant portals. Next, you can [connect and sign in](azure-stack-connect-azure-stack.md) to the portal. You can then start deploying resource providers, creating [offers](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions), and populating the Azure Stack [marketplace](azure-stack-marketplace.md).
+5. Ha az Azure Alkalmazásveremben üzembe az Azure Active Directory használ, meg kell [Azure verem regisztrálni Azure](azure-stack-register.md) , hogy [töltse le az Azure piactéren elemek](azure-stack-download-azure-marketplace-item.md) Azure verem.
 
+A lépések elvégzése után kell a csomag környezet a rendszergazdai és felhasználói portálon. A következő is [csatlakozzon, és jelentkezzen be a](azure-stack-connect-azure-stack.md) a portálra. El is indíthatja erőforrás-szolgáltatók telepítéséhez, létrehozása [kínál](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions), és feltöltése az Azure-verem [piactér](azure-stack-marketplace.md).

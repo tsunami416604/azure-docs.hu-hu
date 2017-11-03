@@ -6,22 +6,17 @@ keywords:
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 08/18/2017
-ms.topic: hero-article
+ms.topic: article
 ms.service: storage
-ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: a68d5c4ee8ad69cd888765a96566a7ca6c13cff3
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/29/2017
-
+ms.openlocfilehash: f364d7b25a75012f33a282111c9624d51b65b42f
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/25/2017
 ---
-
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-preview"></a>Azure Blob Storage-események átirányítása egyéni webes végpontra (előzetes verzió)
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetünk a Blob Storage-eseményekre az Azure CLI-vel, majd elindítjuk az eseményt az eredmény megtekintéséhez. 
-
-> [!IMPORTANT]
-> Az oktatóanyag elvégzéséhez regisztrálva kell lennie a Blob Storage-események előzetes verziójára.  Az előzetes verzió programjáról további információkat [itt](storage-blob-event-overview.md#join-the-preview) talál.
 
 Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. A cikkben bemutatott példa egyszerűsítése érdekében az eseményeket egy olyan URL-címnek küldjük el, amely pusztán üzenetek gyűjtésével foglalkozik. Az URL-címet a [RequestBin](https://requestb.in/) nevű nyílt forráskódú, külső fél által biztosított eszközzel fogjuk létrehozni.
 
@@ -57,7 +52,7 @@ Az Azure Storage használatához tárfiókra van szüksége.  A Blob Storage-ese
 A Blob Storage-fiók egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok hasonlóak a meglévő általános célú tárfiókjaihoz, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát.
 
 > [!NOTE]
-> Az előzetes kiadásban a Blob Storage-események csak a tárfiókokhoz érhetők el a **westcentralus** helyen.
+> Esemény rács jelenleg előzetes, és csak a tárfiókok esetén érhető el a **westcentralus** és **westus2** régiók.
 
 A `<storage_account_name>` elemet cserélje le az erőforráscsoport egyedi nevére, a `<resource_group_name>` elemet pedig a korábban létrehozott erőforráscsoportra.
 
@@ -145,4 +140,3 @@ Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és esemény
 
 - [Reagálás Blob Storage-eseményekre](storage-blob-event-overview.md)
 - [Bevezetés az Event Grid használatába](../../event-grid/overview.md)
-

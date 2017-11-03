@@ -1,112 +1,112 @@
-# <a name="using-cdn-for-azure"></a>Using CDN for Azure
-The Azure Content Delivery Network (CDN) offers developers a global solution for delivering high-bandwidth content by caching blobs and static content of compute instances at physical nodes in the United States, Europe, Asia, Australia and South America. For a current list of CDN node locations, see [Azure CDN Node Locations].
+# <a name="using-cdn-for-azure"></a>Az Azure CDN használatával
+Az Azure tartalom Delivery Network (CDN) tartalmak nagy sávszélességű kézbesítéséhez a blobok és számítási példányokért fizikai csomópontokon az Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika a statikus tartalom gyorsítótárazása révén globális megoldást kínál a fejlesztők. CDN-csomóponti helyek aktuális listájának megtekintéséhez lásd: [Azure CDN-csomóponti helyek].
 
-This task includes the following steps:
+Ez a feladat a következő lépésekből áll:
 
-* [Step 1: Create a storage account](#Step1)
-* [Step 2: Create a new CDN endpoint for your storage account](#Step2)
-* [Step 3: Access your CDN content](#Step3)
-* [Step 4: Remove your CDN content](#Step4)
+* [1. lépés: Tárfiók létrehozása](#Step1)
+* [2. lépés: A tárfiók új CDN-végpont létrehozása](#Step2)
+* [3. lépés: A CDN-tartalom elérése](#Step3)
+* [4. lépés: A CDN-tartalom eltávolítása](#Step4)
 
-The benefits of using CDN to cache Azure data include:
+A CDN használata az Azure data gyorsítótárazásához előnyei a következők:
 
-* Better performance and user experience for end users who are far from a content source, and are using applications where many 'internet trips' are required to load content
-* Large distributed scale to better handle instantaneous high load, say, at the start of an event such as a product launch
+* Jobb teljesítmény és a felhasználói élmény a végfelhasználók számára, akik a tartalomforrás távol, és olyan alkalmazásokat használ, ahol sok "internet utazgatással" szükséges tartalom betöltése
+* Nagy méretű elosztott méretezési jobban azonnali magas terhelés kezelésére, tegyük fel például, az esemény például a termékbevezetés elején.
 
-Existing CDN customers can now use the Azure CDN in the [Azure classic portal]. The CDN is an add-on feature to your subscription and has a separate [billing plan].
+Meglévő CDN az ügyfelek most már használhatja az Azure CDN-t a [a klasszikus Azure portálon]. A CDN egy bővítmény szolgáltatás az előfizetéshez, és egy különálló [számlázási csomag].
 
 <a id="Step1"> </a>
 
-<h2>Step 1: Create a storage account</h2>
+<h2>1. lépés: Tárfiók létrehozása</h2>
 
-Use the following procedure to create a new storage account for a Azure subscription. A storage account gives access to Azure storage services. The storage account represents the highest level of the namespace for accessing each of the Azure storage service components: Blob services, Queue services, and Table services. For more information about the Azure storage services, see [Using the Azure Storage Services](http://msdn.microsoft.com/library/azure/gg433040.aspx).
+A következő eljárással hozzon létre egy új tárfiókot, Azure-előfizetéssel. A storage-fiók az Azure storage-szolgáltatásokhoz való hozzáférést. A tárfiók eléréséhez szükséges az Azure storage szolgáltatás összetevői a névtér a legmagasabb szintű jelöli: Blob-szolgáltatások, Queue szolgáltatások és Table szolgáltatások. Az Azure storage szolgáltatásainak kapcsolatos további információkért lásd: [az Azure Storage szolgáltatásainak használatával](http://msdn.microsoft.com/library/azure/gg433040.aspx).
 
-To create a storage account, you must be either the service administrator or a co-administrator for the associated subscription.
+Hozzon létre egy tárfiókot, vagy a szolgáltatás rendszergazdájának vagy társadminisztrátorának a társított előfizetés kell lennie.
 
 > [!NOTE]
-> For information about performing this operation by using the Azure Service Management API, see the [Create Storage Account](http://msdn.microsoft.com/library/windowsazure/hh264518.aspx) reference topic.
+> A művelet végrehajtása az Azure szolgáltatásfelügyeleti API használatával kapcsolatos információkért tekintse meg a [Storage-fiók létrehozása](http://msdn.microsoft.com/library/windowsazure/hh264518.aspx) referencia-témakör.
 > 
 > 
 
-**To create a storage account for an Azure subscription**
+**A storage-fiók egy Azure-előfizetés létrehozása**
 
-1. Log into the [Azure classic portal].
-2. In the lower left corner, click **New**. In the **New** Dialog, select **Data Services**, then click **Storage**, then **Quick Create**.
+1. Jelentkezzen be a [a klasszikus Azure portálon].
+2. Kattintson a bal alsó **új**. Az a **új** párbeszédpanelen válassza **adatszolgáltatások**, majd kattintson a **tárolási**, majd **Gyorslétrehozás**.
    
-   The **Create Storage Account** dialog appears.
+   A **Storage-fiók létrehozása** párbeszédpanel jelenik meg.
    
-   ![Create Storage Account][create-new-storage-account]
-3. In the **URL** field, type a subdomain name. This entry can contain from 3-24 lowercase letters and numbers.
+   ![Storage-fiók létrehozása][create-new-storage-account]
+3. Az a **URL-cím** mezőbe írja be egy altartomány nevét. Ez a bejegyzés a 3-24 kisbetűket és számokat tartalmazhat.
    
-    This value becomes the host name within the URI that is used to address Blob, Queue, or Table resources for the subscription. To address a container resource in the Blob service, you would use a URI in the following format, where *&lt;StorageAccountLabel&gt;* refers to the value you typed in **Enter a URL**:
+    Ez az érték lesz az állomásnév, az előfizetés Blob, sor vagy tábla erőforrásainak címzéséhez használt URI-Azonosítóra belül. Egy tároló-erőforrás a Blob szolgáltatás megoldására használhatja egy URI-t a következő formátumban, ahol  *&lt;StorageAccountLabel&gt;*  hivatkozik a beírt érték **adjon meg egy URL-cím**:
    
     http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
    
-    **Important:** The URL label forms the subdomain of the storage  account URI and must be unique among all hosted services in  Azure.
+    **Fontos:** az URL-cím címke űrlapok a tárfiók URI altartomány, és az Azure-ban az összes üzemeltetett szolgáltatások egyedinek kell lennie.
    
-    This value is also used as the name of this storage account in the portal, or when accessing this account programmatically.
-4. From the **Region/Affinity Group** drop-down list, select a region or affinity group for the storage account. Select an affinity group instead of a region if you want your storage services to be in the same data center with other Windows Azure services that you are using. This can improve performance, and no charges are incurred for egress.  
+    Ezt az értéket is használja a tárfiók a portálon, vagy neveként ezt a fiókot programozott módon való hozzáférés során.
+4. Az a **régiót vagy Affinitáscsoportot** legördülő listában válassza a tárfiók csoport olyan régióban vagy a kapcsolat. Az affinitáscsoportokban helyett egy régiót akkor válassza, ha azt szeretné, hogy a tárolási szolgáltatások más Windows Azure-szolgáltatásokkal, Ön által használt azonos adatközpontba találhatók. Javíthatja a teljesítményt, és nem díjak sem merülnek fel a kimenő forgalom.  
    
-   **Note:** To create an affinity group, open the **Settings** area of the Management Portal, click **Affinity Groups**, and then click either **Add an affinity group** or **Add**. You can also create and manage affinity groups using the Windows Azure Service Management API. For more information, see [Operations on Affinity Groups].
-5. From the **Subscription** drop-down list, select the subscription that the storage account will be used with.
-6. Click **Create Storage Account**. The process of creating the storage account might take several minutes to complete.
-7. To verify that the storage account was created successfully, verify that the account appears in the items listed for **Storage** with a status of **Online**.
+   **Megjegyzés:** affinitáscsoport létrehozásához nyissa meg a **beállítások** a kezelési portál területen kattintson a **Affinitáscsoportok**, ezután kattintson **affinitáscsoporthozzáadása** vagy **hozzáadása**. Is létrehozása és kezelése a Windows Azure szolgáltatásfelügyeleti API használatával affinitáscsoportokat. További információ: [műveletek affinitáscsoportokkal].
+5. Az a **előfizetés** legördülő listára, válassza ki az előfizetést, a tárolási fiók használandó.
+6. Kattintson a **Tárfiók létrehozása** lehetőségre. A storage-fiók létrehozása eltarthat néhány percet.
+7. Győződjön meg arról, hogy a tárfiók sikeresen létrejött-e, ellenőrizze, hogy a fiók megjelenik-e a felsorolt elemeket **tárolási** állapotú **Online**.
 
 <a id="Step2"> </a>
 
-<h2>Step 2: Create a new CDN endpoint for your storage account</h2>
+<h2>2. lépés: A tárfiók új CDN-végpont létrehozása</h2>
 
-Once you enable CDN access to a storage account or hosted service, all publicly available objects are eligible for CDN edge caching. If you modify an object that is currently cached in the CDN, the new content will not be available via the CDN until the CDN refreshes its content when the cached content time-to-live period expires.
+Ha a tárfiók CDN hozzáférésének engedélyezése vagy üzemeltetett szolgáltatásban futó, minden nyilvánosan elérhető objektumok jogosultak a CDN peremhálózati gyorsítótár. Ha módosítja a CDN jelenleg gyorsítótárazott objektumhoz, az új tartalom nem lesz elérhető a CDN mindaddig, amíg a CDN tartalmát frissíti, a gyorsítótárazott tartalom idő a működés közbeni időszak lejártával.
 
-**To create a new CDN endpoint for your storage account**
+**A tárfiók új CDN-végpont létrehozása**
 
-1. In the [Azure classic portal], in the navigation pane, click **CDN**.
-2. On the ribbon, click **New**. In the **New** dialog, select **App Services**, then **CDN**, then **Quick Create**.
-3. In the **Origin Domain** dropdown, select the storage account you created in the previous section from the list of your available storage accounts. 
-4. Click the **Create** button to create the new endpoint.
-5. Once the endpoint is created, it appears in a list of endpoints for the subscription. The list view shows the URL to use to access cached content, as well as the origin domain. 
+1. Az a [a klasszikus Azure portálon], kattintson a navigációs ablaktáblában **CDN**.
+2. Kattintson a menüszalagon **új**. Az a **új** párbeszédablakban válassza **alkalmazásszolgáltatások**, majd **CDN**, majd **Gyorslétrehozás**.
+3. Az a **forrástartományt** legördülő menüben válassza ki a tárolási fiók a rendelkezésre álló tárfiókok a listán az előző szakaszban létrehozott. 
+4. Kattintson a **létrehozása** gombra az új végpont létrehozásához.
+5. Miután létrehozta a végpontot, az előfizetés végpontjainak listájában jelenik meg. A listanézetben látható a gyorsítótárazott tartalom eléréséhez használható URL-cím, valamint a forrástartomány is. 
    
-    The origin domain is the location from which the CDN caches content. The origin domain can be either a storage account or a cloud service; a storage account is used for the purposes of this example. Storage content is cached to edge servers according either to a cache-control setting that you specify, or to the default heuristics of the caching network. 
+    A forrástartomány az a hely, ahonnan a CDN a tartalmakat gyorsítótárazza. Lehet, hogy a forrástartomány vagy egy tárfiókot, vagy egy felhőalapú szolgáltatás; a storage-fiók ebben a példában a célokat szolgál. Tárolási tartalom gyorsítótárazva van, a peremhálózati kiszolgálóinak alapján történik a cache-control beállítást, amely megadja, vagy az alapértelmezett heurisztikus a gyorsítótárazási hálózat. 
 
-    > [AZURE.NOTE] The configuration created for the endpoint will not immediately be available; it can take up to 60 minutes for the registration to propagate through the CDN network. Users who try to use the CDN domain name immediately may receive status code 400 (Bad Request) until the content is available via the CDN.
+    > [AZURE.NOTE]A végpont létrehozott konfigurációs nem azonnal elérhetők; a regisztráció CDN hálózati propagálásához legfeljebb 60 percig is tarthat. Felhasználók azonnali használatát, a CDN-tartománynevet próbáló állapotkód: 400 (hibás kérés) jelenhet meg addig, amíg a tartalom nem érhető el a CDN keresztül.
 
 <a id="Step3"> </a>
 
-<h2>Step 3: Access CDN content</h2> 
+<h2>3. lépés: Hozzáférési CDN-tartalom</h2> 
 
-To access cached content on the CDN, use the CDN URL provided in the portal. The address for a cached blob will be similar to the following:
+A CDN a gyorsítótárazott tartalom eléréséhez a CDN a portálon megadott URL-CÍMÉT használja. A gyorsítótárazott blob címet a következőhöz hasonló lesz:
 
-http://<*CDNNamespace*\>.vo.msecnd.net/<*myPublicContainer*\>/<*BlobName*\>
+http://<*CDNNamespace*\>.vo.msecnd.net/ <*myPublicContainer*\>/<*Blobnév*\>
 
 <a id="Step4"> </a>
 
-<h2>Step 4: Remove content from the CDN</h2>
+<h2>4. lépés: A tartalom eltávolítása a CDN-t</h2>
 
-If you no longer wish to cache an object in the Azure Content Delivery Network (CDN), you can take one of the following steps:
+Ha már nem szeretne gyorsítótárazása az objektum az az Azure Content Delivery Network (CDN), akkor is igénybe vehet az alábbi lépések egyikét:
 
-* For an Azure blob, you can delete the blob from the public container.
-* You can make the container private instead of public. See [Restrict Access to Containers and Blobs](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/#restrict-access-to-containers-and-blobs) for more information.
-* You can disable or delete the CDN endpoint using the Management Portal.
-* You can modify your hosted service to no longer respond to requests for the object.
+* Egy Azure BLOB törölheti a blob a nyilvános tárolóból.
+* Biztosíthatja, hogy a tároló privát nyilvános helyett. Lásd: [hozzáférés korlátozása a tárolók és Blobok](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/#restrict-access-to-containers-and-blobs) további információt.
+* Tiltsa le, vagy törölni a CDN-végpontot a felügyeleti portál használatával.
+* Az üzemeltetett szolgáltatás nem válaszol a kérelmekre a objektum módosíthatja.
 
-An object already cached in the CDN will remain cached until the time-to-live period for the object expires. When the time-to-live period expires, the CDN will check to see whether the CDN endpoint is still valid and the object still anonymously accessible. If it is not, then the object will no longer be cached.
+Az objektum már gyorsítótárazza a CDN gyorsítótárazott marad, amíg az objektum idő a működés közbeni időszakának lejártáig támogatja. Az idő a működés közbeni időszak lejártával a CDN ellenőrzi, hogy a CDN-végpont továbbra is érvényes, és az objektum névtelenül továbbra is elérhetők maradnak. Ha nem, majd az objektum rendszer már nem gyorsítótárazható.
 
-The ability to immediately purge content is currently not supported on Azure Management Portal. Please contact [Azure support](https://azure.microsoft.com/support/options/)  if you need to immediately purge content. 
+Közvetlenül a tartalom kiürítése lehetőséget jelenleg nem támogatott az Azure felügyeleti portálon. Lépjen kapcsolatba a [az Azure támogatási](https://azure.microsoft.com/support/options/) Ha szeretné azonnal törli a tartalmat. 
 
-## <a name="additional-resources"></a>Additional resources
-* [How to Create an Affinity Group in Azure]
-* [How to: Manage Storage Accounts for an Azure Subscription]
-* [About the Service Management API]
-* [How to Map CDN Content to a Custom Domain]
+## <a name="additional-resources"></a>További források
+* [Az Affinitáscsoportokban létrehozása az Azure-ban]
+* [Hogyan: Storage-fiókok Azure-előfizetések kezelése]
+* [A szolgáltatáskezelő API kapcsolatos]
+* [CDN-tartalom leképezése egyéni tartományra]
 
 [Create Storage Account]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
-[Azure CDN Node Locations]: http://msdn.microsoft.com/library/windowsazure/gg680302.aspx
-[Azure classic portal]: https://manage.windowsazure.com/
-[billing plan]: /pricing/calculator/?scenario=full
-[How to Create an Affinity Group in Azure]: http://msdn.microsoft.com/library/azure/ee460798.aspx
+[Azure CDN-csomóponti helyek]: http://msdn.microsoft.com/library/windowsazure/gg680302.aspx
+[a klasszikus Azure portálon]: https://manage.windowsazure.com/
+[számlázási csomag]: /pricing/calculator/?scenario=full
+[Az Affinitáscsoportokban létrehozása az Azure-ban]: http://msdn.microsoft.com/library/azure/ee460798.aspx
 [Overview of the Azure CDN]: http://msdn.microsoft.com/library/windowsazure/ff919703.aspx
-[About the Service Management API]: http://msdn.microsoft.com/library/windowsazure/ee460807.aspx
-[How to Map CDN Content to a Custom Domain]: http://msdn.microsoft.com/library/windowsazure/gg680307.aspx
+[A szolgáltatáskezelő API kapcsolatos]: http://msdn.microsoft.com/library/windowsazure/ee460807.aspx
+[CDN-tartalom leképezése egyéni tartományra]: http://msdn.microsoft.com/library/windowsazure/gg680307.aspx
 
 
 [create-new-storage-account]: ./media/cdn/CDN_CreateNewStorageAcct.png

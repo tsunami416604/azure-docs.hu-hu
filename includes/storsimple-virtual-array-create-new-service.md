@@ -1,35 +1,35 @@
-#### <a name="to-create-a-new-service"></a>To create a new service
+#### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
 
-1.  Using your Microsoft account credentials, log on to the Azure portal at this URL: <https://portal.azure.com/>. If deploying the device in Government portal, log in at: <https://portal.azure.us/>
+1.  Jelentkezzen be az Azure Portalra a Microsoft-fiók hitelesítő adataival a következő címen: <https://portal.azure.com/>. Ha az eszközt kormányzati portál telepítésével, jelentkezzen be: <https://portal.azure.us/>
 
-2.  In the Azure portal, click **+ New** &gt; **Storage** &gt; **StorSimple Virtual Series**.
+2.  Az Azure portálon kattintson **+ új** &gt; **tárolási** &gt; **StorSimple virtuális adatsorozat**.
 
-    ![Create new service](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
+    ![Új szolgáltatás létrehozása](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 
-3.  In the **StorSimple Device Manager** blade that opens up, do the following:
+3.  Az a **StorSimple Device Manager** panel, amelyen megnyílik, tegye a következőket:
 
-    1.  Supply a unique **Resource name** for your service. The resource name is a friendly name that can be used to identify the service. The name can have between 2 and 50 characters that can be letters, numbers, and hyphens. The name must start and end with a letter or a number.
+    1.  Adjon egy egyedi **Erőforrásnevet** a szolgáltatásnak. Az erőforrás nevének megadása a szolgáltatás azonosítására szolgáló rövid nevét. A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.
 
-    2.  Choose a **Subscription** from the drop-down list. The subscription is linked to your billing account. This field is not present if you have only one subscription.
+    2.  A legördülő listából válasszon egy **előfizetést**. Az előfizetés az Ön számlázási fiókjához lesz társítva. Ez a mező nem jelenik meg abban az esetben, ha csak egy előfizetéssel rendelkezik.
 
-    3.  For **Resource group**, select an existing or create a new group. For more information, see [Azure resource groups](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+    3.  A **erőforráscsoport**, válasszon egy meglévő, vagy hozzon létre egy új csoportot. További információk: [Azure-erőforráscsoportok](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
 
-    4.  Supply a **Location** for your service. See [Azure Regions](https://azure.microsoft.com/regions/#services) for more information about which services are available in which region. In general, choose a **Location** closest to the geographical region where you want to deploy your device. You may also want to factor in the following:
+    4.  Adjon meg egy **helyet** a szolgáltatáshoz. Lásd: [Azure-régiókat](https://azure.microsoft.com/regions/#services) további információt arról, hogy mely szolgáltatások érhetőek melyik régióban. Válasszon általánosságban egy **hely** legközelebbi a földrajzi régióban, ahol az eszközt telepíteni szeretné. Ezenkívül az alábbiakat is érdemes figyelembe vennie:
 
-        -   If you have existing workloads in Azure that you also intend to deploy with your StorSimple device, we recommend that you use that datacenter.
+        -   Ha meglévő alkalmazások, amelyek akkor is telepíteni szeretne a StorSimple eszközt az Azure-ban, azt javasoljuk, hogy használja-e azt az adatközpontot.
 
-        -   Your StorSimple Device Manager and Azure storage can be in two separate locations. In such a case, you are required to create the StorSimple Device Manager and Azure storage account separately. To create an Azure storage account, go to the Azure Storage service in the Azure portal and follow the steps in [Create an Azure Storage account](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account). After you create this account, add it to the StorSimple Device Manager service by following the steps in [Configure a new storage account for the service](https://azure.microsoft.com/en-us/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service).
+        -   A StorSimple Device Manager és az Azure storage két külön helyen lehet. Ilyen esetben a StorSimple-eszközkezelő fiókot és az Azure-tárfiókot külön kell létrehoznia. Azure-tárfiók létrehozásához keresse meg az Azure Storage szolgáltatást az Azure Portalon, és kövesse az [Azure-tárfiók létrehozása](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account) című szakasz lépéseit. Ha létrehozta a fiókot, az [Új tárfiók konfigurálása a szolgáltatáshoz](https://azure.microsoft.com/en-us/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service) című szakasz lépéseit követve adja hozzá a StorSimple-eszközkezelő szolgáltatáshoz.
 
-        -   If deploying the virtual device in the Government Portal, the StorSimple Device Manager service is available in US Iowa and US Virginia locations.
+        -   Ha a virtuális eszközt a kormányzati portál üzembe, a StorSimple Device Manager szolgáltatás Velünk Iowa és Velünk Virginia helyen érhető.
 
-    5.  Select **Create a new Azure storage account** to automatically create a storage account with the service. Specify a **Storage account name**. If you need your data in a different location, uncheck this box.
+    5.  Válassza ki **hozzon létre egy új Azure-tárfiók** a szolgáltatással a tárfiók automatikus létrehozásához. Adjon meg egy **tárfióknév**. Ha máshová szeretné menteni az adatokat, akkor törölje a pipát a jelölőnégyzetből.
 
-    6.  Check **Pin to dashboard** if you want a quick link to this service on your dashboard.
+    6.  Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, ha egy, a szolgáltatásra mutató gyorshivatkozást szeretne létrehozni az irányítópulton.
 
-    7.  Click **Create** to create the StorSimple Device Manager.
+    7.  A StorSimple-eszközkezelő létrehozásához kattintson a **Létrehozás** gombra.
 
-        ![Create new service](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
+        ![Új szolgáltatás létrehozása](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
 
-You are directed to the **Service** landing page. The service creation takes a few minutes. After the service is successfully created, you will be notified appropriately and the status of the service will change to **Active**.
+Irányítja a felhasználót a **szolgáltatás** kezdőlapja. A szolgáltatás létrehozása eltarthat néhány percig. A szolgáltatás sikeres létrehozásáról a rendszer értesítést küld, a szolgáltatás pedig **Aktív** állapotú lesz.
 
 

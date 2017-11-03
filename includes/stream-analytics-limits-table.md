@@ -1,11 +1,11 @@
 ---
-| Limit identifier | Limit | Comments |
+| Korlátazonosító | Korlát | Megjegyzések |
 | --- | --- | --- |
-| Maximum number of Streaming Units per subscription per region |200 |A request to increase streaming units for your subscription beyond 200 can be made by contacting [Microsoft Support](https://support.microsoft.com/en-us). |
-| Maximum number of inputs per job |60 |There is a hard limit of 60 inputs per Stream Analytics job. |
-| Maximum number of outputs per job |60 |There is a hard limit of 60 outputs per Stream Analytics job. |
-| Maximum number of functions per job |60 |There is a hard limit of 60 functions per Stream Analytics job. |
-| Maximum number of Streaming Units per job |120 |There is a hard limit of 120 Streaming Units per Stream Analytics job. |
-| Maximum number of jobs per region |1500 |Each subscription may have up to 1500 jobs per geographical region. |
-| Reference data blob MB | 100 | Reference data blobs cannot be larger than 100 MB each. |
+| A Streamelési egységek maximális száma előfizetésenként és régiónként |200 |Növelje a streamelési egységek vonatkozó előfizetése 200 túl is elvégezzék kérelem [Microsoft Support](https://support.microsoft.com/en-us). |
+| A bemenetek maximális száma feladatonként |60 |A bemenetek rögzített korlátja Stream Analytics-feladatonként 60. |
+| A kimenetek maximális száma feladatonként |60 |A kimenetek rögzített korlátja Stream Analytics-feladatonként 60. |
+| A függvények maximális száma feladatonként |60 |A függvények rögzített korlátja Stream Analytics-feladatonként 60. |
+| Egy feladat adatfolyam-egységek maximális száma |120 |Rögzített legfeljebb 120 adatfolyam-egységek száma Stream Analytics-feladat van. |
+| A feladatok maximális száma régiónként |1500 |Az egyes előfizetésekhez legfeljebb 1500 feladat tartozhat földrajzi régiónként. |
+| Referenciaadatok Blob MB-ban megadott mérete | 100 | A referenciaadat Blobok nem lehetnek nagyobbak egyenként 100 MB-nál. |
 

@@ -1,48 +1,48 @@
-# <a name="persist-files-in-azure-cloud-shell"></a>Persist files in Azure Cloud Shell
-Cloud Shell utilizes Azure File storage to persist files across sessions.
+# <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud rendszerhéj fájlok megőrzése
+Felhő rendszerhéj használja az Azure File storage fájlok megőrizni a munkamenetek között.
 
-## <a name="set-up-a-clouddrive-file-share"></a>Set up a clouddrive file share
-On initial start, Cloud Shell prompts you to associate a new or existing file share to persist files across sessions.
+## <a name="set-up-a-clouddrive-file-share"></a>Clouddrive fájlmegosztás beállítása
+A kezdeti kezdőlapon a felhő rendszerhéj kéri, hogy társítson egy új vagy meglévő fájlmegosztást fájlok megőrizni a munkamenetek között.
 
 > [!NOTE]
-> Bash and PowerShell share the same file share. Only one file share can be associated with automatic mounting in Cloud Shell.
+> Bash és PowerShell ossza meg ugyanazt a fájlmegosztást. Lehet, hogy csak egy fájlmegosztás automatikus csatlakoztatását a felhő rendszerhéj társítani.
 
-### <a name="create-new-storage"></a>Create new storage
+### <a name="create-new-storage"></a>Új tároló létrehozása
 
-When you use basic settings and select only a subscription, Cloud Shell creates three resources on your behalf in the supported region that's nearest to you:
-* Resource group: `cloud-shell-storage-<region>`
-* Storage account: `cs<uniqueGuid>`
-* File share: `cs-<user>-<domain>-com-<uniqueGuid>`
+Ha alapszintű beállításokat alkalmazza, és válassza ki az előfizetés csak, felhőalapú rendszerhéj az Ön nevében, akkor a legközelebb esik a támogatott régióban hoz létre három erőforrásokat:
+* Erőforráscsoport:`cloud-shell-storage-<region>`
+* Storage-fiók:`cs<uniqueGuid>`
+* Fájlmegosztás:`cs-<user>-<domain>-com-<uniqueGuid>`
 
-![The Subscription setting](../articles/cloud-shell/media/persisting-shell-storage/basic-storage.png)
+![Az előfizetési beállítás](../articles/cloud-shell/media/persisting-shell-storage/basic-storage.png)
 
-The file share mounts as `clouddrive` in your `$Home` directory. This is a one-time action, and the file share mounts automatically in subsequent sessions. 
+A fájlmegosztás csatlakoztatja `clouddrive` a a `$Home` könyvtár. Ez egy egyszeri művelet, és a további munkamenetekhez automatikusan csatlakoztatja a fájlmegosztást. 
 
-In Bash, the file share also contains a 5-GB image that is created for you which automatically persists data in your `$Home` directory. 
+A Bash, a fájlmegosztás is tartalmaz egy 5 GB-os lemezképnek, amely automatikusan jön létre, amelyek továbbra is fennáll az adatok a `$Home` könyvtár. 
 
-### <a name="use-existing-resources"></a>Use existing resources
+### <a name="use-existing-resources"></a>Létező erőforrásokból
 
-By using the advanced option, you can associate existing resources. When the storage setup prompt appears, select **Show advanced settings** to view additional options. The drop-down menus are filtered for your assigned Cloud Shell region and the locally redundant storage and geo-redundant storage accounts.
+A speciális beállítás használatával társíthatja a meglévő erőforrásokat. Ha a tárolási telepítő parancssor jelenik meg, válassza ki a **megjelenítése speciális beállítások** további beállítások. A legördülő menüből a hozzárendelt felhő rendszerhéj-régió, valamint helyileg redundáns tárolás és georedundáns tárolás fiókok szűrve.
 
-In Bash, existing file shares receive a 5-GB image created for you to persist your `$Home` directory.
+A Bash, meglévő fájlmegosztások megjelenik egy 5 GB-os lemezképet hozott létre az Ön megőrizni a `$Home` könyvtár.
 
-![The Resource group setting](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
+![Az erőforrás-csoport beállítás](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Restrict resource creation with an Azure resource policy
-Storage accounts that you create in Cloud Shell are tagged with `ms-resource-usage:azure-cloud-shell`. If you want to disallow users from creating storage accounts in Cloud Shell, create an [Azure resource policy for tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags) that are triggered by this specific tag.
+### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Erőforrás létrehozása az Azure-erőforrás házirendjével korlátozása
+A felhő rendszerhéj létrehozott tárfiókok vannak látva `ms-resource-usage:azure-cloud-shell`. Ha azt szeretné, hogy a storage-fiókok létrehozása a felhő rendszerhéj letilthatja, hozzon létre egy [Azure-erőforrás házirend címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags) , amely váltja ki ezt a címkét.
 
-## <a name="supported-storage-regions"></a>Supported storage regions
-Associated Azure storage accounts must reside in the same region as the Cloud Shell machine that you're mounting them to.
+## <a name="supported-storage-regions"></a>Támogatott tárolási régiók
+Kapcsolódó az Azure storage-fiókok és a felhő rendszerhéj gépet, hogy van-e csatlakoztatni őket ugyanabban a régióban kell lennie.
 
-To find your assigned region you may:
-* View the note on the "Advanced storage settings" dialog
-* Refer to the name of the storage account created for you (ex: `cloud-shell-storage-westus`)
-* Run `env` and locate the variable `ACC_LOCATION`
+A hozzárendelt régióban található, lehetséges, hogy:
+* A "speciális tárolási beállítások" párbeszédpanelen feljegyzés megtekintése
+* Tekintse meg a tárfiókot hozott létre az Ön nevét (pl.: `cloud-shell-storage-westus`)
+* Futtatás `env` , és keresse meg a változó`ACC_LOCATION`
 
-Cloud Shell machine exist in the following regions:
-|Area|Region|
+Felhő rendszerhéj gép létezik a következő régióban:
+|Terület|Régió|
 |---|---|
-|Americas|East US, South Central US, West US|
-|Europe|North Europe, West Europe|
-|Asia Pacific|India Central, Southeast Asia|
+|Amerika|USA keleti régiója, USA déli középső RÉGIÓJA, USA nyugati régiója|
+|Európa|Észak-Európa, Nyugat-Európa|
+|Ázsia és a Csendes-óceáni térség|India központi, Délkelet-Ázsia|
 

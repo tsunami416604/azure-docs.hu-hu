@@ -1,31 +1,31 @@
-## <a name="set-up-the-development-environment"></a>Set up the development environment
+## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 
-This section walks you setting up your development environment, including creating an ASP.NET MVC app, adding a Connected Services connection, adding a controller, and specifying the required namespace directives.
+Ez a szakasz bemutatja, hogyan állítja be a fejlesztési környezetet, például egy ASP.NET MVC alkalmazás létrehozása, kapcsolódó szolgáltatások-kapcsolat hozzáadása, a vezérlő hozzáadása és adja meg a szükséges névtér irányelvek.
 
-### <a name="create-an-aspnet-mvc-app-project"></a>Create an ASP.NET MVC app project
+### <a name="create-an-aspnet-mvc-app-project"></a>ASP.NET MVC alkalmazás projekt létrehozása
 
-1. Open Visual Studio.
+1. Nyissa meg a Visual Studiót.
 
-1. Select **File->New->Project** from the main menu
+1. Válassza ki **fájl -> Új -> projekt** a főmenüből
 
-1. On the **New Project** dialog, specify the options as highlighted in the following figure:
+1. Az a **új projekt** párbeszédpanelen adja meg a beállításokat az alábbi ábrán kiemelt:
 
-    ![Create ASP.NET project](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
+    ![ASP.NET-projekt létrehozása](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 
-1. Select **OK**.
+1. Kattintson az **OK** gombra.
 
-1. On the **New ASP.NET Project** dialog, specify the options as highlighted in the following figure:
+1. Az a **új ASP.NET projekt** párbeszédpanelen adja meg a beállításokat az alábbi ábrán kiemelt:
 
-    ![Specify MVC](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
+    ![Adja meg az MVC](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
 
-1. Select **OK**.
+1. Kattintson az **OK** gombra.
 
-### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Use Connected Services to connect to an Azure storage account
+### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Kapcsolódó szolgáltatások segítségével csatlakozzon az Azure storage-fiók
 
-1. In the **Solution Explorer**, right-click the project, and from the context menu, select **Add->Connected Service**.
+1. Az a **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki a helyi menüből **Hozzáadás -> kapcsolódó szolgáltatási**.
 
-1. On the **Add Connected Service** dialog, select **Azure Storage**, and then select **Configure**.
+1. Az a **kapcsolódó szolgáltatás hozzáadása** párbeszédablakban válassza **Azure Storage**, majd válassza ki **konfigurálása**.
 
-    ![Connected Service dialog](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
+    ![Csatlakoztatott Service párbeszédpanelen](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
-1. On the **Azure Storage** dialog, select the desired Azure storage account with which you want to work, and select **Add**.
+1. Az a **Azure Storage** párbeszédpanelen válassza ki a kívánt Azure-tárfiókot, és válassza ki kívánja **Hozzáadás**.

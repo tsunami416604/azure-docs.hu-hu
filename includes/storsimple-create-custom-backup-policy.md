@@ -1,27 +1,27 @@
 <!--author=SharS last changed: 9/15/15-->
 
-#### <a name="to-create-a-custom-backup-policy"></a>To create a custom backup policy
-1. On the **Devices** page, click **Backup Policies** and then click **Add**.
-2. In the **Add a backup policy** dialog box, under **Define your backup policy**:
+#### <a name="to-create-a-custom-backup-policy"></a>Egyéni biztonsági mentési házirend létrehozása
+1. A a **eszközök** kattintson **biztonsági mentési házirendek** majd **Hozzáadás**.
+2. Az a **a biztonsági mentési házirend hozzáadása** párbeszédpanel **biztonsági mentési házirend meghatározása**:
    
-   1. Specify a backup policy name.
-   2. Select the volumes to be added to this policy. You can choose to add multiple volumes by selecting them from the drop-down list.
-   3. Click the check icon ![check icon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
+   1. Adja meg a biztonsági mentési házirend nevét.
+   2. Válassza ki azokat a köteteket, fel kell venni ezt a házirendet. Ha szeretné adhat több kötetet a legördülő listából válassza ki.
+   3. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
       
-      You will be notified after the policy is created successfully. The backup policies page will also be updated to show the newly created policy.
-3. Click the policy name (first column) to drill down into details of the policy you just created.
-4. Click **manage schedules**.
-5. In the **Manage Schedules** dialog box:
+      Értesítést fog kapni a házirend sikeres létrehozása után. A biztonsági mentési házirendek lapon is frissíti az újonnan létrehozott házirend megjelenítése.
+3. Kattintson a házirend neve (első oszlop) az imént létrehozott házirend részleteinek feltárásához.
+4. Kattintson a **ütemezések kezelésére**.
+5. Az a **kezelése ütemezések** párbeszédpanel:
    
-   1. Select **Create new** to add another schedule.
-   2. From the drop-down list, choose the backup type as **local** or **cloud** snapshot.
-   3. Specify the backup frequency in minutes, hours, days, or weeks.
-   4. Select a retention. The retention choices depend on the backup frequency.
-   5. Select the starting time and date for the policy.
-   6. Select the check box to enable the policy.
-6. Click the check icon ![check icon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) to finish.
-7. You will return to the policy details. Click **Save** to save the changes you made to this policy. You will be notified when the policy has been saved.
-8. Navigate back to the **Backup Policies** page. The tabular listing of the backup policies will be updated to display the modified policy.
+   1. Válassza ki **hozzon létre új** hozzáadása egy másik ütemezést.
+   2. A legördülő listából válassza ki a biztonsági mentés típusát **helyi** vagy **felhő** pillanatkép.
+   3. Adja meg a biztonsági mentés gyakoriságát percben, órában, napban vagy hétben kifejezve.
+   4. Válassza ki a megőrzési. A megőrzési lehetőségek a biztonsági mentés gyakoriságától függenek.
+   5. Válassza ki a kezdési idő és a dátum a házirend.
+   6. Jelölje be a jelölőnégyzetet ahhoz, hogy a házirendet.
+6. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) a befejezéshez.
+7. Ekkor visszakerül a szabályzat részleteinek. Kattintson a **mentése** ezt a házirendet a módosítások mentéséhez. Ön értesítést fog kapni a házirend mentése megtörtént.
+8. Lépjen vissza a **biztonsági mentési házirendek** lap. A biztonsági mentési házirendek táblázatos listája frissülni fognak megjeleníteni a módosított házirendjét.
    
-    ![Custom backup policy](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png).
+    ![Egyéni biztonsági mentési házirend](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png).
 

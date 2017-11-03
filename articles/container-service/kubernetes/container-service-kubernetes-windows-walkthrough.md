@@ -10,21 +10,21 @@ keywords:
 ms.assetid: 
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 9211b28debc2f0df194eded564e2a4d52303f3e6
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/25/2017
-
+ms.custom: H1Hack27Feb2017, mvc, devcenter
+ms.openlocfilehash: 7dd58ae747a1009b5db99e0fec741272d98b36ad
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Kubernetes-fürt üzembe helyezése Windows-tárolókhoz
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Az útmutató leírja, hogyan használható az Azure parancssori felülete egy [Kubernetes](https://kubernetes.io/docs/home/)-fürt [Azure Container Service](../container-service-intro.md) szolgáltatásban való üzembe helyezéséhez. Miután üzembe helyezte a fürtöt, a Kubernetes `kubectl` parancssori eszközével kapcsolódhat hozzá, és üzembe helyezheti az első Windows-tárolóját.
 
@@ -110,7 +110,7 @@ Docker-tárolót futtathat egy olyan Kubernetes-*podon* belül, amely egy vagy t
 
 Ez az egyszerű példa egy JSON-fájl segítségével határoz meg egy Microsoft Internet Information Server- (IIS-) tárolót, majd a `kubctl apply` paranccsal létrehozza a podot. 
 
-Hozzon létre egy `iis.json` nevű helyi fájlt, és illessze be a fájlba a következő szöveget. A fájl arra utasítja a Kubernetest, hogy futtassa az IIS-t a Windows Server 2016 Nano Serveren egy [Docker Hubról](https://hub.docker.com/r/nanoserver/iis/) származó nyilvános tárolólemezkép segítségével. A tároló a 80-as portot használja, de kezdetben csak a fürthálózaton belül érhető el.
+Hozzon létre egy `iis.json` nevű helyi fájlt, és illessze be a fájlba a következő szöveget. A fájl arra utasítja a Kubernetest, hogy futtassa az IIS-t a Windows Server 2016 Nano Serveren egy [Docker Hubról](https://hub.docker.com/r/microsoft/iis/) származó nyilvános tárolólemezkép segítségével. A tároló a 80-as portot használja, de kezdetben csak a fürthálózaton belül érhető el.
 
  ```JSON
  {
@@ -126,7 +126,7 @@ Hozzon létre egy `iis.json` nevű helyi fájlt, és illessze be a fájlba a kö
     "containers": [
       {
         "name": "iis",
-        "image": "nanoserver/iis",
+        "image": "microsoft/iis:nanoserver",
         "ports": [
           {
           "containerPort": 80
@@ -168,7 +168,7 @@ A pod nyilvános IP-címmel történő közzétételéhez írja be a következő
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-Ezzel a paranccsal a Kubernetes létrehoz egy szolgáltatást és egy nyilvános IP-címmel rendelkező [Azure Load Balancer-szabályt](container-service-kubernetes-load-balancing.md) a szolgáltatás számára. 
+Ez a parancs Kubernetes hoz létre egy szolgáltatás és az Azure terheléselosztó szabályhoz a szolgáltatás egy nyilvános IP-címmel. 
 
 Futtassa az alábbi parancsot a szolgáltatás állapotának megtekintéséhez.
 
@@ -203,4 +203,3 @@ A rövid útmutató segítségével üzembe helyezett egy Kubernetes-fürtöt, k
 
 > [!div class="nextstepaction"]
 > [ACS-alapú Kubernetes-fürt kezelése](container-service-tutorial-kubernetes-prepare-app.md)
-

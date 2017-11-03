@@ -12,7 +12,7 @@ A kimeneti JSON tartalmazza a következő attribútumokat:
 | töredék |A metaadatok töredék nevű különböző részekre van darabolásos fel. Minden töredéke a start, a időtartama, a időszakának száma és a esemény (eke) tartalmaz. |
 | start |A "ticks" első esemény kezdési idejét. |
 | Időtartam |A töredéke a "ticks" hosszát. |
-| időköz |Mindegyik esemény bejegyzése a töredéke a "ticks" időintervallum. |
+| interval |Mindegyik esemény bejegyzése a töredéke a "ticks" időintervallum. |
 | események |Minden esemény észlelt, és adott időtartamig belül követhetők oldalakat tartalmaz. Az események tömbje. A külső tömb egy időköz jelöli. A belső tömb 0 vagy több olyan eseményeket, amelyek ezen a ponton az időben történtek áll. Egy üres zárójel [] azt jelenti, hogy nincs lapok észlelt. |
 | id |A rendszer nyomon követett arcfelismerési azonosítója. Ez a szám lehet, hogy akaratlanul is módosíthatja, ha egy lap nem válik. Egy adott személy teljes az általános videó ugyanezzel az Azonosítóval kell rendelkeznie, de ez nem garantálható az algoritmus (hangelnyelés, stb.) a korlátozásai miatt |
 | x, y |A bal felső X és Y koordinátáit, valamint a 0,0 és 1,0 határolókeret normalizált méretezési felületen. <br/>-X és Y koordináták százalékosan fekvő mindig, relatív, ha egy álló video (vagy feje-tetejére, iOS esetén), összekapcsolta a koordináták transzponálása ennek megfelelően. |

@@ -108,5 +108,6 @@
 #### [Tanúsítványok hitelesítő adatai](active-directory-certificate-credentials.md)
 ### [Hatókörök](active-directory-v2-scopes.md)
 # Erőforrások
+## [Segítség kérése](active-directory-develop-help-support.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

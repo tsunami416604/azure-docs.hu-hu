@@ -1,2 +1,2 @@
-## <a name="additional-resources"></a>Additional resources
-Not using elastic database tools yet? Check out our [Getting Started Guide](../articles/sql-database/sql-database-elastic-scale-get-started.md).  For questions, please reach out to us on the [SQL Database forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) and for feature requests, please add them to the [SQL Database feedback forum](https://feedback.azure.com/forums/217321-sql-database/).
+## <a name="additional-resources"></a>További források
+Rugalmas adatbáziseszközöket még nem használ? Tekintse meg a [Getting Started Guide](../articles/sql-database/sql-database-elastic-scale-get-started.md).  A kérdésekhez, lépjen kapcsolatba velünk a a [SQL-adatbázis fórum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a szolgáltatás kéréseket, adja hozzá őket a [SQL adatbázis-visszajelzési fórumon](https://feedback.azure.com/forums/217321-sql-database/).

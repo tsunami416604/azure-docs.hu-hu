@@ -1,18 +1,18 @@
-In this example, I will show you how to use the **SharePoint Online - When a new item is created** trigger to initiate a logic app workflow when a new item is created in a SharePoint Online list.
+Ebben a példában I bemutatja, hogyan használható a **SharePoint online-hoz - egy új elem létrehozásakor** eseményindító logic app munkafolyamat elindítására, egy új elem létrehozásakor a SharePoint Online listáját.
 
 > [!NOTE]
-> You will get prompted to sign into your SharePoint account if you have not already created a *connection* to SharePoint Online.  
+> Első kérni, hogy jelentkezzen be a SharePoint-fiókba, ha még nem hozott egy *kapcsolat* SharePoint online-hoz.  
 > 
 > 
 
-1. Enter *sharepoint* in the search box on the logic apps designer then select the **SharePoint Online - When a new item is created**  trigger.  
-   ![SharePoint online trigger image ](./media/connectors-create-api-sharepointonline/trigger-1.png)  
-2. The **When a new item is created** control is displayed.  
-   ![SharePoint online trigger image 2](./media/connectors-create-api-sharepointonline/trigger-2.png)   
-3. Select a **Site URL**. This is the SharePoint online site you want to monitor for new items to trigger your workflow.  
-   ![SharePoint online trigger image 3](./media/connectors-create-api-sharepointonline/trigger-3.png)   
-4. Select a **List name**. This is the list on the SharePoint Online site you want to monitor for new items that will trigger your workflow.  
-   ![SharePoint online trigger image 4](./media/connectors-create-api-sharepointonline/trigger-4.png)   
+1. Adja meg *sharepoint* be a keresőmezőbe a logic apps designer válassza ki a **SharePoint online-hoz - egy új elem létrehozásakor** eseményindító.  
+   ![SharePoint online eseményindító kép](./media/connectors-create-api-sharepointonline/trigger-1.png)  
+2. A **új elem létrehozásakor** vezérlő jelenik meg.  
+   ![SharePoint online eseményindító kép 2](./media/connectors-create-api-sharepointonline/trigger-2.png)   
+3. Válassza ki a **webhely URL-címe**. Ez az új elemek indítani a figyelni kívánt SharePoint online webhelyen.  
+   ![SharePoint online eseményindító kép 3](./media/connectors-create-api-sharepointonline/trigger-3.png)   
+4. Válassza ki a **neve**. A rendszer a figyelni kívánt új elemek, amelyek kiváltják a munkafolyamatot a SharePoint Online webhelyen.  
+   ![SharePoint online eseményindító kép 4](./media/connectors-create-api-sharepointonline/trigger-4.png)   
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow. This will take place each time a new item is created in SharePoint Online list you selected.  
+A Logic Apps alkalmazást ezen a ponton úgy van konfigurálva, az eseményindító, amely akkor kezdődik, eseményindítók és műveletek a munkafolyamat futását. Ez akkor kerül sor egy új elem létrehozásakor kijelölt SharePoint Online listában.  
 

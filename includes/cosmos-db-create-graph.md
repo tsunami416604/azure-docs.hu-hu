@@ -1,17 +1,17 @@
-You can now use the Data Explorer tool in the Azure portal to create a graph database. 
+Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozására is használhatja. 
 
-1. In the Azure portal, in the menu on the left, select **Data Explorer (Preview)**.
+1. Az Azure portálon a bal oldali menüben válassza ki a **adatok kezelővel (előzetes verzió)**.
 
-2. Under **Data Explorer (Preview)**, select **New Graph**. Then fill in the page by using the following information:
+2. A **adatok kezelővel (előzetes verzió)**, jelölje be **új diagram**. Az alábbi információk segítségével, majd adja meg a lap:
 
-    ![Data Explorer in the Azure portal](./media/cosmos-db-create-graph/azure-cosmosdb-data-explorer.png)
+    ![Adatkezelő az Azure Portalon](./media/cosmos-db-create-graph/azure-cosmosdb-data-explorer.png)
 
-    Setting|Suggested value|Description
+    Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    Database id|sample-database|The ID for your new database. Database names must be between 1 and 255 characters and can't contain `/ \ # ?` or a trailing space.
-    Graph id|sample-graph|The ID for your new graph. Graph names have the same character requirements as database IDs.
-    Storage capacity| 10 GB|Leave the default value. This is the storage capacity of the database.
-    Throughput|400 RUs|Leave the default value. You can scale up the throughput later if you want to reduce latency.
-    Partition key|/userid|A partition key that distributes data evenly to each partition. Selecting the correct partition key is important in creating a performant graph. For more information, see [Designing for partitioning](../articles/cosmos-db/partition-data.md#designing-for-partitioning).
+    Adatbázis azonosítója|sample-database|Az új adatbázis azonosítója. Adatbázis nevének 1 és 255 karakter közé kell esnie, és nem tartalmazhat `/ \ # ?` vagy záró szóköz.
+    Gráfazonosító|sample-graph|Az új gráfhoz tartozó azonosító. Graph nevek rendelkezik adatbázis azonosítók megegyező karakter követelmények vonatkoznak.
+    Tárkapacitás| 10 GB|Ne módosítsa az alapértelmezett értéket. Ez az adatbázis tárkapacitása.
+    Teljesítmény|400 kérelemegység|Ne módosítsa az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
+    Partíciókulcs|/firstName|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciós kulcs kiválasztása fontos performant grafikon létrehozni. További információkért lásd: [a particionálás tervezése](../articles/cosmos-db/partition-data.md#designing-for-partitioning).
 
-3. After the form is filled out, select **OK**.
+3. Miután a rendszer kitölti az űrlapot, jelölje ki a **OK**.

@@ -1,20 +1,20 @@
 
 > [!NOTE] 
-> Previews are made available to you on the condition that you agree to the terms of use. For more information, see [Microsoft Azure Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> This preview is limited to the following regions:
-> - US - West 2
-> - US - East
-> - Europe - West
-> - Asia Pacific - Southeast
+> Az előzetes verziójú funkciók rendelkezésre álló, feltéve, hogy elfogadja a használati feltételeket. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ebben az előzetes verzióban a következő régiókban korlátozódik:
+> - US - 2. nyugati régiója
+> - US - keleti régiója
+> - Európa - West
+> - Ázsia Csendes-óceáni - Southeast
 
 
-The B-series VM family allows you to choose which VM size provides you the necessary base level performance for your workload, with the ability to burst CPU performance up to 100% of an Intel® Broadwell E5-2673 v4 2.3GHz, or an Intel® Haswell 2.4 GHz E5-2673 v3 processor vCPU.
+A B sorozatnak VM termékcsalád lehetővé teszi annak meghatározását, mely Virtuálisgép-méretet a megfelelő alap szint teljesítmény a munkaterhelés a lehetőséget nyújt a CPU-teljesítmény az Intel® Broadwell E5-2673 v4 legfeljebb 100 %-os kapacitásnövelés 2.3 GHz-es, vagy egy Intel® Haswell 2.4 GHz -es E5-2673 v3 processzor vCPU.
 
-The B-series VMs are ideal for workloads that do not need the full performance of the CPU continuously, like web servers, small databases and development and test environments. These workloads typically have burstable performance requirements. The B-series provides you with the ability to purchase a VM size with baseline performance and the VM instance builds up credits when it is using less than its baseline. When the VM has accumulated credit, it VM can burst above the baseline using up to 100% of the vCPU when your application requires higher CPU performance.
+A B sorozatú virtuális gépek ideálisak munkaterhelések esetén, amelyek nem kell a Processzor teljes teljesítményének folyamatosan, például a webkiszolgálók, a kis adatbázisok és a fejlesztési és tesztelési környezetben. Az ilyen terhelések általában burstable teljesítmény követelményekkel rendelkezik. A B sorozatnak lehetőséget nyújt a beszerzési egy Virtuálisgép-méretet, a teljesítmény alapértékeiről, és kevesebb, mint az eredeti használata esetén a kreditek elkészít a Virtuálisgép-példány. A virtuális gép jóváírás keletkezett, amikor a virtuális Gépet a alapmennyiséget meghaladóan használatát az akár 100 %-a a vCPU, ha az alkalmazás által igényelt nagyobb processzorteljesítmény is kapacitásnövelés.
 
-The B-series comes in the following six VM sizes:
+A B sorozatnak érkezik a következő hat Virtuálisgép-méretek:
 
-| Size          | vCPU's | Memory: GiB | Local SSD: GiB | Base CPU Perf of VM | Max CPU Perf of VM | Credits Banked / Hour | Max Banked Credits |
+| Méret          | vCPU meg | Memória: GiB | Helyi SSD: GiB | Kiinduló virtuális gép CPU-teljesítmény | Maximális CPU telj VM | Banki kreditek / óra | Maximális banki kreditek |
 |---------------|--------|-------------|----------------|--------------------------------|---------------------------|-----------------------|--------------------|
 | Standard_B1s  | 1      | 1           | 4              | 10%                            | 100%                      | 6                     | 144                |
 | Standard_B1ms | 1      | 2           | 4              | 20%                            | 100%                      | 12                    | 288                |
@@ -26,46 +26,46 @@ The B-series comes in the following six VM sizes:
 
 
 
-## <a name="q--a-about-this-preview"></a>Q & A about this preview
+## <a name="q--a-about-this-preview"></a>Ez az előnézet kapcsolatos kérdések és válaszok
 
-### <a name="q-how-can-i-participate-in-this-preview"></a>Q: How can I participate in this preview?
-**A**: Request quota for the B-series in one of the supported regions.  After your quota has been approved then you can use the portal or the APIs to do your deployment as you normally would. For more information, see [Resource Manager core quota increase requests](../articles/azure-supportability/resource-manager-core-quotas-request.md).
+### <a name="q-how-can-i-participate-in-this-preview"></a>K: hogyan vehessen az előzetes verzióban?
+**A**: kérelem kvóta B-adatsor a támogatott régiók egyikéhez sem.  A kvóta jóváhagyását követően is használhatja a portált, vagy az API-k általában ehhez a központi telepítés, ha Ön szeretné. További információkért lásd: [erőforrás-kezelő core kvóta növelése kérelmek](../articles/azure-supportability/resource-manager-core-quotas-request.md).
 
-### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Q: How do you get 135% baseline performance from a VM?
-**A**: The 135% is shared amongst the 8 vCPU’s that make up the VM size. For example, if your application leverages 4 of the 8 cores working on batch processing and each of those 4 vCPU’s are running at 30% utilization the total amount of VM CPU performance would equal 120%.  Meaning that your VM would be building credit time based on the 15% delta from your baseline performance.  But it also means that when you have credits available that same VM can use 100% of all 8 vCPU’s giving that VM a Max CPU performance of 800%.
+### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>K: hogyan 135-ös % alapterv teljesítmény eléréséhez a virtuális gép alapján
+**A**: A 135-ös % 8 vCPU-a Virtuálisgép-méretet alkotó között meg van osztva. Például ha az alkalmazás kihasználja a dolgozik a köteges feldolgozás 8 magos, 4, és ezek 4 vCPU mindegyikének futnak, 30 %-os kihasználtsága a teljes rendszermemóriához viszonyítva VM CPU-teljesítmény 120 % volna egyenlő.  Ami azt jelenti, hogy a virtuális gép volna kell felépítése a 15 % különbözeti a alapteljesítményének a jóváírás időpontokat.  De azt is jelenti, hogy ha van elérhető, hogy ugyanazon VM használhatja minden 8 vCPU 100 %-os kreditek meg ezt a virtuális Gépet egy maximális CPU teljesítményt nyújtó 800 %.
 
-### <a name="q-is-there-a-discount-on-price-during-the-preview"></a>Q: Is there a discount on price during the preview?
-**A**: Yes, the preview prices can be viewed on our [pricing page](http://aka.ms/vmsizes).
+### <a name="q-is-there-a-discount-on-price-during-the-preview"></a>K: van kedvezményes áron az előzetes?
+**A**: Igen, a kép árak tekinthető meg a [árképzést ismertető oldalra](http://aka.ms/vmsizes).
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Q: How can I monitor my credit balance and consumption
-**A**: We will be introducing 2 new metrics in the coming weeks, the **Credit** metric will allow you to view how many credits your VM has banked and the **ConsumedCredit** metric will show how many CPU credits your VM has consumed from the bank.    You will be able to view these metrics from the metrics pane in the portal or programmatically through the Azure Monitor APIs.
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>K: hogyan követheti nyomon a saját kreditegyenlege és felhasználási
+**A**: azt fogja bevezetése 2 új mérőszámok az elkövetkező hetektől a **jóváírás** metrika lehetővé teszi a virtuális gép rendelkezik banki hány kreditek megtekintése és a **ConsumedCredit** metrika hány megjelenik A virtuális gép már felhasználta a Bank CPU kreditek.    A metrikák panelről metrikákat megtekintheti a portálon vagy programozottan az Azure-figyelő API-k segítségével fogja.
 
-For more information on how to access the metrics data for Azure, see [Overview of metrics in Microsoft Azure](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md).
+A metrikai adatok elérésével az Azure-további információkért lásd: [áttekintése a Microsoft Azure-ban mérőszámok](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-### <a name="q-how-are-credits-accumulated"></a>Q: How are credits accumulated?
-**A**: The VM accumulation and consumption rates are set such that a VM running at exactly its base performance level will have neither a net accumulation or consumption of bursting credits.  A VM will have a net increase in credits whenever it is running below its base performance level and will have a net decrease in credits whenever the VM is utilizing the CPU more than its base performance level.
+### <a name="q-how-are-credits-accumulated"></a>K: hogyan kreditek összegzi a rendszer?
+**A**: A virtuális gépi felhalmozódása és felhasználási díjszabás vannak beállítva, úgy, hogy egy virtuális Gépet, pontosan az alapszintű teljesítmény szint fog rendelkezni, sem a nettó felhalmozódása, vagy a teljesítménynövelés érdekében kreditek fogyasztását.  A virtuális gép lesz a nettó növelését kreditek amikor fut-e az alapszintű teljesítmény szint alatt, és kreditek nettó csökkenése fog rendelkezni, amikor a virtuális gép van használ, több processzor-Hozzáférést, mint az alap teljesítményszint szükséges.
 
-**Example**:  I deploy a VM using the B1ms size for my small time and attendance database application. This size allows my application to use up to 20% of a vCPU as my baseline, which is .2 credits per minute I can use or bank. 
+**Példa**: a virtuális gépek B1ms méretét a kis munkaidő-nyilvántartási adatbázis-alkalmazás központi telepítésére. Ez a méret lehetővé teszi, hogy az alkalmazás saját / perc használata vagy a bank.2 kreditek alapterv legfeljebb 20 %-át egy vCPU használandó. 
 
-My application is busy at the beginning and end of my employees work day, between 7:00-9:00 AM and 4:00 - 6:00PM. During the other 20 hours of the day, my application is typically at idle, only using 10% of the vCPU. For the non-peak hours I earn 0.2 credits per minute but only consume 0.l credits per minute, so my VM will bank .1 x 60 = 6 credits per hour.  For the 20 hours that I am off-peak, I will bank 120 credits.  
+Az alkalmazás jelenleg elfoglalt elején és az alkalmazottak munka 7:00 – 9:00-kor és 4:00 – 18:00:00 között nap végén. Az órában más 20 nap, a saját alkalmazása általában a tétlen, csak a 10 %-át a vCPU. A nem csúcsidőre I / perc 0,2 kreditek nyerjen, de csak felhasználják 0.l kreditek / perc, így a virtuális gép lesz banki ikonra.1 x 60 = 6 kreditek óránként.  A csúcsidőn kívüli vagyok 20 órában I fog banki 120 kreditek.  
 
-During peak hours my application averages 60% vCPU utilization, I still earn 0.2 credits per minute but I consume 0.6 credits per minute, for a net cost of .4 credits a minute or .4 x 60 = 24 credits per hour. I have 4 hours per day of peak usage, so it costs 4 x 24 = 96 credits for my peak usage.
+Csúcsidőben alkalmazás 60 % vCPU kihasználtsági átlaga szerepel, percenként 0,2 kreditek továbbra is nyerjen, de I / perc 0,6 kreditek felhasználását, a nettó költségét.4 kreditek egy perc vagy.4 x 60 = 24 kreditek óránként. Napi használat, 4 óra van, 4 x 24 = 96 költséggel kreditek esetében a használati csúcsot.
 
-If I take the 120 credits I earned off-peak and subtract the 96 credits I used for my peak times, I bank an additional 24 credits per day that I can use for other bursts of activity.
+Ha a 120 jóváírásokat I csúcsidőn kívüli érvénybe és kivonás a 96 kreditek a saját csúcsidőszak használt I banki naponta, a más felszakadásáig tevékenység használható egy további 24 kreditek.
 
 
-### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Q: Does the B-Series support Premium Storage data disks?
-**A**: Yes, all B-Series sizes support Premium Storage data disks.   
+### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>K: a B sorozatnak támogatja a prémium szintű Storage adatlemezek?
+**A**: Igen, támogatja a B sorozatnak különböző méretű a prémium szintű Storage adatok lemezeket.   
     
 
-### <a name="q-which-regions-can-i-access-the-preview-from"></a>Q: Which regions can I access the preview from?
-**A**:  The B-series preview will be available in the following regions:
-- US - West 2
-- US - East
-- Europe - West
-- Asia Pacific - Southeast
+### <a name="q-which-regions-can-i-access-the-preview-from"></a>K: régiók is érhető el az előzetes verzióját, a?
+**A**: A B sorozatnak preview a következő régiókban elérhető lesz:
+- US - 2. nyugati régiója
+- US - keleti régiója
+- Európa - West
+- Ázsia Csendes-óceáni - Southeast
 
-After the preview has completed we will release the B-series to all remaining regions.
+Az előzetes befejeződése után a B sorozat minden fennmaradó terület azt ad ki.
     
 
     

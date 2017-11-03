@@ -1,18 +1,18 @@
-#### <a name="prerequisites"></a>Prerequisites
-* An Azure account; you can create a [free account](https://azure.microsoft.com/free)
-* A [Dynamics CRM Online](https://www.microsoft.com/en-us/dynamics/crm-free-trial-overview.aspx) account 
+#### <a name="prerequisites"></a>Előfeltételek
+* Az Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
+* A [Dynamics CRM Online](https://www.microsoft.com/en-us/dynamics/crm-free-trial-overview.aspx) fiók 
 
-Before using your Dynamics account in a logic app, authorize the logic app to connect to your CRM Online account. You can do this easily within your logic app on the Azure portal. 
+Egy logikai alkalmazást a Dynamics fiók használatához engedélyezni, a logikai alkalmazás CRM Online-fiókjához. Ehhez egyszerűen a logikai alkalmazásban, az Azure portálon. 
 
-Authorize your logic app to connect to your CRM Online account using the following steps:
+A Logic Apps alkalmazást való csatlakozáshoz az alábbi lépéseket követve CRM Online-fiókját engedélyezi:
 
-1. Create a logic app. In the Logic Apps designer, select **Show Microsoft managed APIs** in the drop down list, and then enter "dynamics" in the search box. Select one of the triggers or actions:  
+1. Logikai alkalmazás létrehozása. A Logic Apps-tervezőben, válassza ki a **megjelenítése Microsoft felügyelt API-k** a legördülő listában, és írja be a keresőmezőbe "dynamics". Az eseményindítók és műveletek közül választhat:  
    ![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
-2. If you haven't previously created any connections to Dynamics, you are prompted to sign in using your Dynamics credentials:  
+2. Ha korábban még nem létrehozott Dynamics fennálló kapcsolatokat, Dynamics hitelesítő adataival bejelentkezni kéri:  
    ![](./media/connectors-create-api-crmonline/dynamics-signin.png)
-3. Select **Sign in**, and enter your user name and password. Select **Sign in**. 
+3. Válassza ki **bejelentkezés**, és írja be a felhasználónevet és jelszót. Válassza ki **bejelentkezés**. 
    
-    These credentials are used to authorize your logic app to connect to, and access the data in your Dynamics account. 
-4. Notice the connection has been created. Now, proceed with the other steps in your logic app:  
+    Ezek a hitelesítő adatok segítségével engedélyezik a Logic Apps alkalmazást csatlakozni, és a Dynamics fiókban tárolt adatok eléréséhez. 
+4. Figyelje meg, a kapcsolat létrejött. Most folytassa a Logic Apps alkalmazást más lépéseket:  
    ![](./media/connectors-create-api-crmonline/dynamics-properties.png)
 

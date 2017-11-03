@@ -6,19 +6,17 @@ author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
-ms.custom: mvc
+ms.service: postgresql
+ms.custom: mvc, devcenter
 ms.devlang: python
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 08/15/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 481e2552e2a2cd91d026774438788143109b28df
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/16/2017
-
+ms.openlocfilehash: 0e1a334f4dd4d142c923fababc336897d9020fad
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/24/2017
 ---
-
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Python használatával
 Ez a rövid útmutató ismerteti, hogyan használható a [Python](https://python.org) a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Azt is bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatbázisban található adatok macOS, Ubuntu Linux és Windows platformon. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Python használatával kapcsolatosan, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
 
@@ -63,8 +61,8 @@ Ez a témakör összesen négy kódmintát tartalmaz, amelyek mindegyike egy ado
 
 - Hozzon létre egy új fájlt a kedvenc szövegszerkesztőjével.
 - Másolja és illessze be az alábbi szakaszokban található kódminták egyikét a szövegfájlba. Cserélje le a **gazdagép**, az **adatbázisnév**, a **felhasználó** és a **jelszó** paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg.
-- Mentse a fájlt a .py kiterjesztéssel (például postgres.py) a projektmappába. Ha Windows operációs rendszert futtat, az UTF-8 kódolást válassza a fájl mentésekor. 
-- Indítsa el a parancssort vagy a Bash felületet, és lépjen a projektmappába, például: `cd postgres`.
+- Mentse a fájlt a .py kiterjesztéssel (például postgres.py) a projektmappába. Ha a Windows rendszeren futtatja, ügyeljen arra, hogy válassza az UTF-8 kódolását, ha a fájl mentése. 
+- Indítsa el a parancssorából, vagy a Terminálszolgáltatások vagy a Bash rendszerhéjat, és módosítsa a könyvtárat a projektmappa például `cd postgres`.
 -  A kód futtatásához írja be a Python-parancsot, majd a fájlnevet, például: `Python postgres.py`.
 
 > [!NOTE]
@@ -211,4 +209,3 @@ conn.close()
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)
-
