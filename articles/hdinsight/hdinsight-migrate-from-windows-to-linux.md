@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: f2695d4f15fe984cd02cba9ff66033b90d0a4dc3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e3bba2cfd765505a167fe4776f81d06445a8c39c
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Linux-alapú fürtre Windows-alapú HDInsight-fürtök áttelepítése
 
@@ -188,8 +188,8 @@ A Pig és a MapReduce munkaterhelések hasonlóak a Linux-alapú fürtökön. Az
 Linux-alapú HDInsight nem biztosít a távoli asztali funkciókat. Ehelyett az SSH segítségével távolról kapcsolódni a központi fürtcsomópontokon. További információkért lásd a következő dokumentumokat:
 
 * [A Hive használata a SSH](hdinsight-hadoop-use-hive-ssh.md)
-* [A Pig használata SSH](hdinsight-hadoop-use-pig-ssh.md)
-* [SSH MapReduce használata](hdinsight-hadoop-use-mapreduce-ssh.md)
+* [A Pig használata SSH](hadoop/apache-hadoop-use-pig-ssh.md)
+* [SSH MapReduce használata](hadoop/apache-hadoop-use-mapreduce-ssh.md)
 
 ### <a name="hive"></a>Hive
 
@@ -200,11 +200,11 @@ Az alábbi ábra a Hive munkaterhelések áttelepítését nyújt útmutatást.
 
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |
-| **Hive szerkesztő** |[Az Ambari Hive nézete](hdinsight-hadoop-use-hive-ambari-view.md) |
+| **Hive szerkesztő** |[Az Ambari Hive nézete](hadoop/apache-hadoop-use-hive-ambari-view.md) |
 | `set hive.execution.engine=tez;`Tez engedélyezése |Tez érték az alapértelmezett végrehajtó motorja Linux-alapú fürtökhöz, ezért már nem szükséges a set utasítás. |
 | C# felhasználó által definiált függvények | Információ a C#-összetevők Linux-alapú HDInsight érvényesítése: [át .NET Linux-alapú HDInsight-megoldások](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | CMD-fájlokat vagy parancsprogramokat meghívni egy Hive-feladat részeként a kiszolgálón |Bash parancsfájlok használata |
-| `hive`a távoli asztal parancs |Használjon [Beeline](hdinsight-hadoop-use-hive-beeline.md) vagy [SSH-munkamenetet a Hive](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive`a távoli asztal parancs |Használjon [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) vagy [SSH-munkamenetet a Hive](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -233,7 +233,7 @@ Ha olyan munkafolyamatot, amely C#-alkalmazás használ, ellenőrizze a Linux k�
 
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |
-| A Storm irányítópultja |A Storm irányítópultjának nem érhető el. Lásd: [a Linux-alapú HDInsight központi telepítése és kezelése Storm topológiák](hdinsight-storm-deploy-monitor-topology-linux.md) küldeni topológiákat módon a |
+| A Storm irányítópultja |A Storm irányítópultjának nem érhető el. Lásd: [a Linux-alapú HDInsight központi telepítése és kezelése Storm topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) küldeni topológiákat módon a |
 | A Storm felhasználói felülete |A Storm felhasználói felülete https://CLUSTERNAME.azurehdinsight.net/stormui címen érhető el |
 | A Visual Studio létrehozásához, telepítéséhez és felügyeletéhez a C# vagy hibrid topológiák |A Visual Studio létrehozásához, telepítéséhez és felügyeletéhez a C# (SCP.NET) vagy a Linux-alapú HDInsight alatt futó Storm hibrid topológiák is használható. Csak használható 10/28/2016 után létrehozott fürtökkel. |
 

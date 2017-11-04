@@ -1,9 +1,9 @@
-When installing a client certificate, you need the password that was created when the client certificate was exported.
+Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvány exportálásakor létrehozott jelszóra.
 
-1. Locate the .pfx certificate file and copy it to your Mac. You can get the certificate to the Mac in several ways, for example, you can email the certificate file.
-2. After the certificate copied to the Mac, double-click the certificate to open the **Add Certificates** box, the click **Add** to begin the install.
+1. Keresse meg a .pfx fájlt, és másolja a Mac Többféle módon is ki lehet a tanúsítványt a Mac, például tud e-mailben elküldi a tanúsítványfájlt.
+2. Másolja a tanúsítványt a Mac, kattintson duplán a tanúsítvány megnyitása a **tanúsítványok hozzáadása** mezőben, kattintson a **Hozzáadás** a telepítés megkezdéséhez.
 
-  ![Add certificates](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
-3. Enter the password that you created when the client certificate was exported. The password protects the private key of the certificate. Click **OK** to complete the installation.
+  ![Tanúsítványok hozzáadása](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
+3. Adja meg az ügyféltanúsítványt exportálásakor létrehozott jelszót. A jelszó védi a tanúsítvány titkos kulcsa. Kattintson a **OK** a telepítés befejezéséhez.
 
-  ![Password](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)
+  ![Jelszó](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)

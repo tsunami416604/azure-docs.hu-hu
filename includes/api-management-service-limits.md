@@ -1,10 +1,10 @@
-| Resource | Limit |
+| Erőforrás | Korlát |
 | --- | --- |
-| API Calls (per unit of scale) |32 million per day<sup>1</sup> |
-| Data transfer (per unit of scale) |161 GB per day<sup>1</sup> |
-| Cache |5 GB<sup>1</sup> |
-| Units of scale |Unlimited<sup>1</sup> |
-| Azure Active Directory Integration |Unlimited User Accounts<sup>1</sup> |
+| API-hívások száma (a méretezési egység) |naponta 32 millió<sup>1</sup> |
+| Adatforgalom (egy méretezési egység) |Naponta 161 GB<sup>1</sup> |
+| Gyorsítótár |5 GB<sup>1</sup> |
+| A méretezési egységek |Korlátlan<sup>1</sup> |
+| Azure Active Directory-integráció |Korlátlan felhasználói fiókok<sup>1</sup> |
 
-<sup>1</sup>API Management limits are different for each pricing tier. To see the pricing tiers and their associated limits and scaling options, see [API Management Pricing](https://azure.microsoft.com/pricing/details/api-management/).
+<sup>1</sup>API Management korlátok eltérőek az egyes tarifacsomagok. A árképzési szinteket, és a kapcsolódó korlátok és a méretezésről beállítások megtekintéséhez lásd: [API Management árképzési](https://azure.microsoft.com/pricing/details/api-management/).
 

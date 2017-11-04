@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 6ccb064a9a76e7041d4f365b3997673dc9182e0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: d60a5ca6229939e5d368c216688e4964261f85c7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Ismerje meg, azonosítása és besorolni a személyes adatok Microsoft Azure-ban
 
@@ -150,13 +150,13 @@ Az Azure HDInsight Hadoop-fürtök a személyes adatait a Power Query az Excel i
 
 #### <a name="how-do-i-use-excel-power-query-to-import-hadoop-clusters-in-azure-hdinsight-into-excel"></a>Miként használható az Excel Power Query az Excel programba importálhatók az Azure HDInsight Hadoop-fürtök?
 
-A HDInsight az oktatóanyag végigvezeti a teljes folyamat. Előfeltételek ismerteti, és egy hivatkozást tartalmaz egy [Ismerkedés az Azure HDInsight](../hdinsight/hdinsight-hadoop-linux-tutorial-get-started.md) oktatóanyag. Útmutatás fedik le a Excel 2016, valamint 2010 és 2013 (lépésekre kissé eltérő, az Excel régebbi verzióira). Ha az Excel Power Query beépülő modul nem rendelkezik, a az oktatóanyag bemutatja, hogyan legyen. Az oktatóanyag kezdi, az Excel programban, és szükség lesz egy, a fürthöz tartozó Azure Blob storage-fiókot.
+A HDInsight az oktatóanyag végigvezeti a teljes folyamat. Előfeltételek ismerteti, és egy hivatkozást tartalmaz egy [Ismerkedés az Azure HDInsight](../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md) oktatóanyag. Útmutatás fedik le a Excel 2016, valamint 2010 és 2013 (lépésekre kissé eltérő, az Excel régebbi verzióira). Ha az Excel Power Query beépülő modul nem rendelkezik, a az oktatóanyag bemutatja, hogyan legyen. Az oktatóanyag kezdi, az Excel programban, és szükség lesz egy, a fürthöz tartozó Azure Blob storage-fiókot.
 
   ![A lekérdezés az Excel programban](media/how-to-discover-classify-personal-data-azure/excel.png)
 
-Ennek módjáról további tudnivalókért keresse fel a [kapcsolódás Excel és a Hadoop Power Query használatával](../hdinsight/hdinsight-connect-excel-power-query.md) oktatóanyag.
+Ennek módjáról további tudnivalókért keresse fel a [kapcsolódás Excel és a Hadoop Power Query használatával](../hdinsight/hadoop/apache-hadoop-connect-excel-power-query.md) oktatóanyag.
 
-Forrás: [kapcsolódás Excel és a Hadoop Power Query használatával](../hdinsight/hdinsight-connect-excel-power-query.md)
+Forrás: [kapcsolódás Excel és a Hadoop Power Query használatával](../hdinsight/hadoop/apache-hadoop-connect-excel-power-query.md)
 
 ## <a name="azure-information-protection-personal-data-classification-for-documents-and-email"></a>Az Azure Information Protection: a dokumentumok és e-mailek személyes adatok besorolása
 

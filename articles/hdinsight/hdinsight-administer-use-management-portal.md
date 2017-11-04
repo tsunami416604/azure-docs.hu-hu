@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f1c7bb1795828899148a8ba8a0461a06947d40d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecaad702843a63bb82b781339d25fde10df0a0a4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Hadoop-fürtök kezelése az Azure portál használatával
 
@@ -61,7 +61,7 @@ HDInsight Hadoop széles tartomány-összetevők működik. A ellenőrizni és a
 
 * Parancsfájl művelet segítségével szabhatja testre a fürt konfigurációjának módosítása, vagy egyéni összetevők, például Giraph vagy Solr telepítése egy fürt egyéni parancsfájlok. További információkért lásd: [testreszabása HDInsight-fürtjéhez parancsfájlművelet](hdinsight-hadoop-customize-cluster.md).
 * A testreszabási Fürtparaméterek a HDInsight .NET SDK vagy az Azure PowerShell használata a fürt létrehozása során. Ezek a konfigurációs módosítások majd megmaradnak a fürt élettartama keresztül, és nem érinti a fürt csomópont reimages Azure platformon rendszeres karbantartás hajtja végre. A fürt testreszabási paraméterek használatával további információkért lásd: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
-* Néhány natív Java-összetevők, például Mahout és kaszkádolás, JAR-fájlok formájában futtathatja a fürtön. A JAR-fájlok az Azure Blob storage terjeszt, és elküldi a HDInsight-fürtök Hadoop-feladat elküldése mechanizmusokon keresztül. További információkért lásd: [nyújt Hadoop feladatok programozott módon](hdinsight-submit-hadoop-jobs-programmatically.md).
+* Néhány natív Java-összetevők, például Mahout és kaszkádolás, JAR-fájlok formájában futtathatja a fürtön. A JAR-fájlok az Azure Blob storage terjeszt, és elküldi a HDInsight-fürtök Hadoop-feladat elküldése mechanizmusokon keresztül. További információkért lásd: [nyújt Hadoop feladatok programozott módon](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
   > [!NOTE]
   > Ha problémába ütközik JAR-fájlok telepítése a HDInsight-fürtök, vagy hívja a JAR-fájlok a HDInsight-fürtökön, forduljon a [Microsoft Support](https://azure.microsoft.com/support/options/).
@@ -213,7 +213,7 @@ Meg a program a folyamat számos módja van:
 * Az Azure Data Factory felhasználó. Lásd: [Azure HDInsight társított szolgáltatás](../data-factory/compute-linked-services.md) és [alakít át és elemez az Azure Data Factory használatával](../data-factory/transform-data.md) igény szerinti és önálló definiált hdinsight összekapcsolt szolgáltatások.
 * Azure PowerShell használatával.  Lásd: [repülési késleltetés adatok elemzése](hdinsight-analyze-flight-delay-data.md).
 * Az Azure CLI használata. Lásd: [kezelése HDInsight-fürtök Azure parancssori felület használatával](hdinsight-administer-use-command-line.md).
-* A HDInsight .NET SDK használata. Lásd: [nyújt Hadoop-feladatokat](hdinsight-submit-hadoop-jobs-programmatically.md).
+* A HDInsight .NET SDK használata. Lásd: [nyújt Hadoop-feladatokat](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Díjszabási információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/). Törölni a fürtöt a portálról, lásd: [fürtök törlése](#delete-clusters)
 
@@ -271,7 +271,7 @@ Lásd: [listája és megjelenítése fürtök](#list-and-show-clusters).
 ## <a name="open-hdinsight-query-console"></a>Nyissa meg a HDInsight lekérdezés konzolt
 A HDInsight lekérdezés konzol az alábbi szolgáltatásokat tartalmazza:
 
-* **Hive szerkesztő**: webes felülete A grafikus felhasználói Felülettel Hive-feladatok elküldésekor.  Lásd: [a lekérdezés konzollal Hive futtatása lekérdezések](hdinsight-hadoop-use-hive-query-console.md).
+* **Hive szerkesztő**: webes felülete A grafikus felhasználói Felülettel Hive-feladatok elküldésekor.  Lásd: [a lekérdezés konzollal Hive futtatása lekérdezések](hadoop/apache-hadoop-use-hive-query-console.md).
 
     ![HDInsight portál hive szerkesztő](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
 * **Feladatelőzmények**: Monitor Hadoop-feladatokat.  
@@ -371,8 +371,8 @@ Ebben a cikkben megtanulta rendelkezik a HDInsight-fürtök létrehozása a port
 * [Felügyelheti a HDInsight az Azure PowerShell használatával](hdinsight-administer-use-powershell.md)
 * [Felügyelheti a HDInsight az Azure parancssori felület használatával](hdinsight-administer-use-command-line.md)
 * [A HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
-* [Hadoop-feladatokat programozott módon küldhet](hdinsight-submit-hadoop-jobs-programmatically.md)
-* [Ismerkedés az Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [Hadoop-feladatokat programozott módon küldhet](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Ismerkedés az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight Hadoop verziójának van?](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com

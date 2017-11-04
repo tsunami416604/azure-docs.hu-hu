@@ -1,10 +1,10 @@
-This article is for Azure App Service (Web Apps, API Apps, Mobile Apps, Logic Apps); for Cloud Services, see [Configuring a custom domain name for an Azure cloud service](../articles/cloud-services/cloud-services-custom-domain-name.md).
+Ez a cikk az Azure App Service (Web Apps, az API Apps, Mobile Apps, a Logic Apps); Cloud Services, lásd: [egy egyéni tartománynevet, az Azure-felhőszolgáltatás konfigurálása](../articles/cloud-services/cloud-services-custom-domain-name.md).
 
 > [!NOTE]
-> If you app is load-balanced by [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), click the selector at the top of this article to get specific steps.
+> Ha alkalmazást által terhelésű [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), kattintson a választó, ez a cikk tetején konkrét lépések segítségével.
 > 
-> **Custom domain names are not enabled for Free tier**. You must [scale up to a higher pricing tier](../articles/app-service/web-sites-scale.md), which may change how much you are billed for your subscription. 
-> See [App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/) for more information.
+> **Az egyéni tartomány nevében a rendszer nem szabad engedélyezve réteg**. Meg kell [legfeljebb egy magasabb szintű tarifacsomagban használható méretezési](../articles/app-service/web-sites-scale.md), előfordulhat, hogy változási számlázása, hogy mennyit az előfizetéséhez. 
+> Lásd: [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/app-service/) további információt.
 > 
 > 
 

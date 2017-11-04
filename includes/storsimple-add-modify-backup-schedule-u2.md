@@ -1,28 +1,28 @@
 
 <!--author=SharS last changed: 11/04/15-->
 
-#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>To add or modify a StorSimple backup schedule
-1. On the device **Quick Start** page, click the **Backup Policies** tab. This will take you to the **Backup Policies** page.
-2. In the tabular listing of the policies, select and click the policy that you want to edit.
-3. Under **General**, you can modify the backup policy name.
+#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>Felvenni vagy módosítani a StorSimple biztonsági mentés ütemezését
+1. Az eszköz **Gyors üzembe helyezés** oldalán kattintson a **Biztonsági mentési házirendek** fülre. Ekkor a **Biztonsági mentési házirendek** oldalra kerül.
+2. A házirendek táblázatos listája, jelölje ki és kattintson a szerkeszteni kívánt házirendet.
+3. A **általános**, módosíthatja a biztonsági mentési házirend nevét.
    
-     ![manage schedules](./media/storsimple-add-modify-backup-schedule-u2/AddModifyGeneral.png)
-4. Click **Manage Schedules**. 
-5. In the **Manage Schedule** dialog box, under **Add or Modify a schedule**, do the following:
+     ![ütemezések kezelése](./media/storsimple-add-modify-backup-schedule-u2/AddModifyGeneral.png)
+4. Kattintson a **ütemezések kezelésére**. 
+5. Az a **kezelése ütemezés** párbeszédpanel **hozzáadása vagy módosítása egy ütemezés**, tegye a következőket:
    
-   1. From the drop-down list, choose an existing schedule or select **Add** to create a new schedule.
-   2. Click the check icon ![modify schedules 1](./media/storsimple-add-modify-backup-schedule-u2/HCS_CheckIcon-include.png). 
+   1. A legördülő listából válasszon egy meglévő ütemezést, vagy válassza a **Hozzáadás** új ütemezés létrehozása.
+   2. Kattintson a pipa ikonra ![1 ütemezésének módosítása](./media/storsimple-add-modify-backup-schedule-u2/HCS_CheckIcon-include.png). 
       
-       ![modify schedules 1](./media/storsimple-add-modify-backup-schedule-u2/AddModify1.png)
-   3. Select the type of backup as local or cloud snapshot.
+       ![1 ütemezésének módosítása](./media/storsimple-add-modify-backup-schedule-u2/AddModify1.png)
+   3. Válassza ki a helyi biztonsági mentési vagy a felhőbeli pillanatfelvételt típusát.
       
-       ![modify schedules 1](./media/storsimple-add-modify-backup-schedule-u2/AddModify2.png) 
-   4. Specify the backup frequency, retention, and starting time for the schedule.
-   5. Select the check box to enable or disable the schedule.
-   6. Click the check icon ![check icon](./media/storsimple-add-modify-backup-schedule-u2/HCS_CheckIcon-include.png) to save the schedule.
-6. In the **Volumes** section, choose the volumes that this policy will be applied to.
-7. At the bottom of the page, click **Save** to save the changes to this policy.
-8. You will prompted for confirmation. Click **Yes** to save the policy.
+       ![1 ütemezésének módosítása](./media/storsimple-add-modify-backup-schedule-u2/AddModify2.png) 
+   4. Adja meg a biztonsági mentés gyakoriságát, megőrzési és az ütemezések kezdő időpontja.
+   5. Jelölje be a jelölőnégyzetet, engedélyezése vagy letiltása az ütemezést.
+   6. Kattintson a pipa ikonra ![pipa ikon](./media/storsimple-add-modify-backup-schedule-u2/HCS_CheckIcon-include.png) az ütemezés mentéséhez.
+6. Az a **kötetek** területen válassza ki a köteteket, hogy ez a házirend vonatkozik.
+7. Kattintson a lap alján **mentése** menti a módosításokat az ezt a házirendet.
+8. Kell megerősítést kérni. Kattintson a **Igen** menteni a házirendet.
 
-The **Backup Policies** page will be updated to save the changes to the policy.
+A **biztonsági mentési házirendek** oldal frissül menti a módosításokat a házirendhez.
 

@@ -1,12 +1,12 @@
-Use the procedure that matches your back-end project type&mdash;either [.NET back end](#dotnet) or [Node.js back end](#nodejs).
+Az eljárás a háttér-projekt típusának megfelelő&mdash;vagy [.NET háttér](#dotnet) vagy [Node.js háttér](#nodejs).
 
-### <a name="dotnet"></a>.NET back-end project
-1. In Visual Studio, right-click the server project, and click **Manage NuGet Packages**. Search for `Microsoft.Azure.NotificationHubs`, and then click **Install**. This installs the Notification Hubs client library.
-2. In the Controllers folder, open TodoItemController.cs and add the following `using` statements:
+### <a name="dotnet"></a>.NET háttér-projekt
+1. A Visual Studióban, kattintson a jobb gombbal a projekt, és kattintson **NuGet-csomagok kezelése**. Keresse meg `Microsoft.Azure.NotificationHubs`, és kattintson a **telepítése**. Ez telepíti a Notification Hubs ügyféloldali kódtárára.
+2. A tartományvezérlők mappában nyissa meg a TodoItemController.cs, és adja hozzá a következő `using` utasításokat:
 
         using Microsoft.Azure.Mobile.Server.Config;
         using Microsoft.Azure.NotificationHubs;
-3. Replace the `PostTodoItem` method with the following code:  
+3. Cserélje le a `PostTodoItem` metódus a következő kóddal:  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
@@ -46,11 +46,11 @@ Use the procedure that matches your back-end project type&mdash;either [.NET bac
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
-4. Republish the server project.
+4. A projekt közzé.
 
-### <a name="nodejs"></a>Node.js back-end project
-1. If you haven't already done so, [download the quickstart project](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), or else use the [online editor in the Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Replace the existing code in the todoitem.js file with the following:
+### <a name="nodejs"></a>NODE.js háttér-projekt
+1. Ha még nem tette meg, [a gyorsútmutató-projekt letöltése](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), vagy más használja a [az Azure portálon online szerkesztő](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
+2. Cserélje le a meglévő kódot a todoitem.js fájlban a következő:
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -95,5 +95,5 @@ Use the procedure that matches your back-end project type&mdash;either [.NET bac
 
         module.exports = table;  
 
-    This sends a GCM notification that contains the item.text when a new todo item is inserted.
-3. When editing the file in your local computer, republish the server project.
+    Ez egy új teendőelemet behelyezésekor a item.text tartalmazó GCM értesítést küld.
+3. A fájlt a helyi számítógépen szerkesztésekor közzé a projekt.

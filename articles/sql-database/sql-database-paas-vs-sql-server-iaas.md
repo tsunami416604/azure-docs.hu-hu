@@ -9,19 +9,18 @@ manager: jhubbard
 editor: cjgronlund
 ms.assetid: 7467f422-b77d-4b60-9cb5-0f1ec17ec565
 ms.service: sql-database
-ms.custom: compare
-ms.workload: data-management
+ms.custom: DBs & servers
+ms.workload: Active
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 02/01/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 48e95d51cb9414fb5ff50e587645ee6fd46abd5b
-ms.lasthandoff: 04/15/2017
-
-
+ms.openlocfilehash: 436166fcb0fa9103c6b702b63d93a0b222d536d0
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)
 Az Azure két lehetőséget biztosít SQL Server számítási feladatok a Microsoft Azure-ban történő üzemeltetésére:
@@ -64,13 +63,12 @@ Az alábbi táblázatban az SQL Database és az Azure virtuális gépeken futó 
 | --- | --- | --- |
 |  |Új felhőalapú alkalmazásokhoz, amelyek fejlesztésére és népszerűsítésére szűkösebb időkeret áll rendelkezésre. |Gyors felhőbeli áttelepítést igénylő alkalmazásokhoz, amelyekben legfeljebb minimális változtatásokra van szükség. Ha gyorsan kell elvégezni a fejlesztést és a tesztelést, és nem szeretne helyszíni nem üzemi SQL Server-hardvert vásárolni. |
 |  | Olyan csoportok számára, amelyeknek beépített magas rendelkezésre állási, vészhelyreállítási és frissítési mechanizmusokkal rendelkező adatbázisokra van szüksége. |Olyan csoportok számára, amelyek konfigurálni és kezelni tudják az SQL Server magas rendelkezésre állását, a vészhelyreállítását és frissítéseit. Mindezeket egyes beépített automatizált funkciók jelentősen leegyszerűsítik. | |
-|  | Olyan csoportok számára, amelyek nem szeretnének az alkalmazás mögötti operációs rendszer beállításával és egyéb konfigurációs feladatokkal foglalkozni. |Ha testre szabható környezetre van szüksége, amelyhez teljes körű rendszergazdai jogokkal rendelkezik. | |
-|  | Legfeljebb 1 TB méretű adatbázisokhoz, vagy egy kibővítési mintával [vízszintesen vagy függőlegesen particionálható](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) nagyobb adatbázisokhoz. |Akár 64 TB tárterülettel rendelkező SQL Server-példányokhoz. A példányok annyi adatbázist képesek támogatni, amennyire szükség van. | |
-|  | [Szoftverszolgáltatás (SaaS) típusú alkalmazásokhoz](sql-database-design-patterns-multi-tenancy-saas-applications.md). |Vállalati és hibrid alkalmazások áthelyezéséhez és létrehozásához. | |
+|  | Olyan csoportok számára, amelyek nem szeretnének az alkalmazás mögötti operációs rendszer beállításával és egyéb konfigurációs feladatokkal foglalkozni. |Teljes körű rendszergazdai jogosultságokkal rendelkező testreszabott környezetre van szükség. | |
+|  | Akár 4 TB-adatbázisok vagy nagyobb adatbázisok, amelyek lehetnek [vízszintes vagy függőleges irányú particionálva](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) kibővített minta használatával. |Akár 64 TB tárterülettel rendelkező SQL Server-példányokhoz. A példányok annyi adatbázist képesek támogatni, amennyire szükség van. | |
 |  | | |
 | **Erőforrások:** |Ha nem szeretne az alapul szolgáló infrastruktúra konfigurálására és felügyeletére informatikai erőforrásokat fordítani, hanem az alkalmazásrétegre kíván összpontosítani. |Ha rendelkezik bizonyos informatikai erőforrásokkal a konfigurációhoz és felügyelethez. Mindezeket egyes beépített automatizált funkciók jelentősen leegyszerűsítik. |
 | **Tulajdonosi költségek:** |Nincsenek hardverköltségek és alacsonyabbak a felügyeleti költségek. |Nincsenek hardverköltségek. |
-| **Az üzletmenet folytonossága** |Az infrastruktúra beépített hibatűrési képességei mellett az Azure SQL Database olyan szolgáltatásokat kínál az üzletmenet folytonosságának javítására, mint az [automatikus biztonsági mentések](sql-database-automated-backups.md), az [időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore), a [geo-visszaállítás](sql-database-recovery-using-backups.md#geo-restore) és az [aktív georeplikáció](sql-database-geo-replication-overview.md). További információk: [SQL Database business continuity overview](sql-database-business-continuity.md) (Az SQL Database üzletmenet-folytonossági funkcióinak áttekintése). |Az Azure virtuális gépeken futó SQL Server lehetőséget kínál az adatbázis konkrét igényeinek megfelelő magas rendelkezésre állási és vészhelyreállítási megoldás kialakítására. Így az adott alkalmazásra optimalizálhatja a rendszert. Szükség esetén önállóan is tesztelheti a feladatátvételt. További információk: [High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md) (Magas rendelkezésre állás és vészhelyreállítás Azure virtuális gépeken futó SQL Serveren). |
+| **Az üzletmenet folytonossága** |Beépített tartalék tolerancia infrastruktúra képességek mellett az Azure SQL Database szolgáltatásokat biztosítja, például a [biztonsági mentések automatikus](sql-database-automated-backups.md), [pont időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore), [georedundáns helyreállítás](sql-database-recovery-using-backups.md#geo-restore), és [aktív georeplikáció](sql-database-geo-replication-overview.md) üzletmenet folytonosságát elősegítő. További információk: [SQL Database business continuity overview](sql-database-business-continuity.md) (Az SQL Database üzletmenet-folytonossági funkcióinak áttekintése). |Az Azure virtuális gépeken futó SQL Server lehetőséget kínál az adatbázis konkrét igényeinek megfelelő magas rendelkezésre állási és vészhelyreállítási megoldás kialakítására. Így az adott alkalmazásra optimalizálhatja a rendszert. Szükség esetén önállóan is tesztelheti a feladatátvételt. További információk: [High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md) (Magas rendelkezésre állás és vészhelyreállítás Azure virtuális gépeken futó SQL Serveren). |
 | **Hibrid felhő:** |A helyszíni alkalmazások képesek az Azure SQL Database-ben tárolt adatok elérésére. |Az Azure virtuális gépeken futó SQL Server esetében részben a felhőben, részben helyszínen futó alkalmazásokat is használhat. Például az [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) segítségével kiterjesztheti helyszíni hálózatát és Active Directory-tartományát a felhőre. Ezenfelül az [Azure SQL Server-adatfájlok](http://msdn.microsoft.com/library/dn385720.aspx) funkciójával elhelyezheti a helyszíni adatfájlokat az Azure Storage tárhelyen. További információk: [Introduction to SQL Server 2014 Hybrid Cloud](http://msdn.microsoft.com/library/dn606154.aspx) (Bevezetés az SQL Server 2014 által biztosított hibrid felhő használatába). |
 |  | Előfizetőként támogatja az [SQL Server tranzakciós replikációját](https://msdn.microsoft.com/library/mt589530.aspx) az adatok replikálása céljából. |Teljes körűen támogatja az [SQL Server tranzakciós replikációját](https://msdn.microsoft.com/library/mt589530.aspx), az [AlwaysOn rendelkezésre állási csoportokat](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md), az integrációs szolgáltatásokat és a naplóküldést az adatok replikálása céljából. Emellett a hagyományos SQL Server-biztonságimásolatok is teljes körűen támogatottak. | |
 |  | | |
@@ -139,12 +137,11 @@ Válassza az **Azure SQL Database-t**, ha:
 
 Válassza az **Azure virtuális gépeken futó SQL Servert**, ha:
 
-* Olyan meglévő helyszíni alkalmazásokkal rendelkezik, amelyeket a felhőbe kíván áthelyezni vagy kiterjeszteni, vagy ha 1 TB-nál nagyobb méretű vállalati alkalmazásokat kíván létrehozni. Ez a megoldás 100%-os SQL-kompatibilitást, nagy adatbázis-kapacitást, az SQL Server és a Windows teljes körű irányítását, és biztonságos helyszíni bújtatást biztosít. Ez a verzió a lehető legalacsonyabbra csökkenti a meglévő alkalmazások fejlesztési és átalakítási költségeit.
+* Meglévő helyszíni alkalmazásokat használni kívánt áttelepítése vagy kiterjesztése a felhőbe, vagy ha azt szeretné, ha 4 TB-nál nagyobb vállalati alkalmazásokat szeretne összeállítani. Ez a megoldás 100%-os SQL-kompatibilitást, nagy adatbázis-kapacitást, az SQL Server és a Windows teljes körű irányítását, és biztonságos helyszíni bújtatást biztosít. Ez a verzió a lehető legalacsonyabbra csökkenti a meglévő alkalmazások fejlesztési és átalakítási költségeit.
 * Meglévő számítógépes erőforrások használatával Ön irányíthatja a frissítéseket, a biztonsági mentéseket és az adatbázisok magas rendelkezésre állását. Megjegyzendő, hogy egyes automatizált funkciók jelentősen leegyszerűsítik ezeket a műveleteket. 
 
 ## <a name="next-steps"></a>Következő lépések
 * Tekintse meg [az első Azure SQL Database-adatbázissal](sql-database-get-started-portal.md) foglalkozó témakört, hogy megismerkedhessen az SQL Database használatának első lépéseivel.
 * [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 * Az Azure virtuális gépeken futó SQL Server használatának megkezdésével kapcsolatban lásd: [Provision a SQL Server virtual machine in Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) (SQL Servert futtató virtuális gép létrehozása az Azure-ban).
-
 

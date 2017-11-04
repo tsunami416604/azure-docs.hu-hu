@@ -90,6 +90,13 @@
       href: maintenance-and-updates.md
     - name: Storage
       href: azure-vm-storage-overview.md
+      items:
+        - name: Prémium szintű Storage
+          href: premium-storage.md
+        - name: Prémium szintű tárolási teljesítmény
+          href: premium-storage-performance.md
+        - name: Standard szintű Storage
+          href: standard-storage.md
     - name: Hálózat
       href: network-overview.md
     - name: Automatikus méretezési alkalmazások
@@ -310,6 +317,8 @@
           href: expand-disks.md
         - name: Lemez pillanatképének elkészítése
           href: snapshot-copy-managed-disk.md
+        - name: Lemezek biztonsági mentése és vészhelyreállítása
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Nem felügyelt lemezek biztonsági mentése
           href: incremental-snapshots.md
         - name: Konvertálás felügyelt lemezekké
@@ -318,6 +327,8 @@
           href: convert-disk-storage.md
         - name: Fájlok másolása virtuális gépre
           href: copy-files-to-linux-vm-using-scp.md
+        - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
+          href: migrate-to-premium-storage-using-azure-site-recovery.md
         - name: Fájltároló használata
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: Lemezek üzembe helyezése sablonnal

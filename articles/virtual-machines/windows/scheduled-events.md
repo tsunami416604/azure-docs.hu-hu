@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 7198fa8d1a512d10ca7022078aa2ea7bde3a4c02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 76179b6a8eb7066c90828d33729b557f5e37c17a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Az Azure metaadat-szolgáltatás: Ütemezett események (előzetes verzió) Windows virtuális gépek
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 Ütemezett események egyike a subservices alatt az Azure metaadat-szolgáltatás. Felelős felszínre hozza a jövőbeni események kapcsolatos információk (például újraindítás), az alkalmazás előkészítése őket, és korlátozza megszakítása. Érhető el minden Azure virtuális gép esetében, beleértve a PaaS és IaaS. Ütemezett események időpontot a virtuális gép olyan esemény hatás minimalizálása érdekében megelőző feladatok elvégzéséhez. 
 
-A Linux és a Windows virtuális gépek ütemezett események érhető el. Linux ütemezett eseményekkel kapcsolatos információkért lásd: [ütemezett események Linux virtuális gépek](../windows/scheduled-events.md).
+A Linux és a Windows virtuális gépek ütemezett események érhető el. Linux ütemezett eseményekkel kapcsolatos információkért lásd: [ütemezett események Linux virtuális gépek](../linux/scheduled-events.md).
 
 ## <a name="why-scheduled-events"></a>Miért ütemezett eseményeket?
 

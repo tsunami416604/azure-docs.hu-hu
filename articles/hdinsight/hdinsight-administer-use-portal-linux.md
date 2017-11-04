@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: ashishtha
-ms.openlocfilehash: d08a9a7cc82095b0a90abd98bd4f6d13cdadb671
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 704d76808fbc5f7bde98d2fca291ac7c2796db88
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával
 
@@ -163,7 +163,7 @@ Az adatok csomópontok számának módosítása hatását függően változik, a
     >balancer
     ```
 
-    A HBase rendszerhéjjal további információkért lásd: [Ismerkedés az Apache HBase hdinsightban például](hdinsight-hbase-tutorial-get-started-linux.md).
+    A HBase rendszerhéjjal további információkért lásd: [Ismerkedés az Apache HBase hdinsightban például](hbase/apache-hbase-tutorial-get-started-linux.md).
 
 * Storm
 
@@ -209,7 +209,7 @@ Meg a program a folyamat számos módja van:
 * Az Azure Data Factory felhasználó. Lásd: [létrehozása igény szerinti Linux-alapú Hadoop-fürtök Azure Data Factory használatával hdinsight](hdinsight-hadoop-create-linux-clusters-adf.md) igény szerinti HDInsight létrehozásához kapcsolódó szolgáltatások.
 * Azure PowerShell használatával.  Lásd: [repülési késleltetés adatok elemzése](hdinsight-analyze-flight-delay-data.md).
 * Az Azure CLI használata. Lásd: [kezelése HDInsight-fürtök Azure parancssori felület használatával](hdinsight-administer-use-command-line.md).
-* A HDInsight .NET SDK használata. Lásd: [nyújt Hadoop-feladatokat](hdinsight-submit-hadoop-jobs-programmatically.md).
+* A HDInsight .NET SDK használata. Lásd: [nyújt Hadoop-feladatokat](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Díjszabási információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/). Törölni a fürtöt a portálról, lásd: [fürtök törlése](#delete-clusters)
 
@@ -341,7 +341,7 @@ A **használati** szakasz a HDInsight-fürt panelről az elérhető és a HDInsi
 
 ## <a name="connect-to-a-cluster"></a>Csatlakozzon a fürthöz
 
-* [A Hive használata a HDInsightban](hdinsight-hadoop-use-hive-ambari-view.md)
+* [A Hive használata a HDInsightban](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Következő lépések
@@ -353,10 +353,10 @@ Ebben a cikkben megtanulta rendelkezik néhány alapvető felügyeleti funkciók
 * [A HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
 * [További tudnivalók az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
 * [Az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [A Hive hdinsight használata](hdinsight-use-hive.md)
-* [A Pig használata a Hdinsightban](hdinsight-use-pig.md)
-* [Sqoop használata a Hdinsightban](hdinsight-use-sqoop.md)
-* [Ismerkedés az Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [A Hive hdinsight használata](hadoop/hdinsight-use-hive.md)
+* [A Pig használata a Hdinsightban](hadoop/hdinsight-use-pig.md)
+* [Sqoop használata a Hdinsightban](hadoop/hdinsight-use-sqoop.md)
+* [Ismerkedés az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight Hadoop verziójának van?](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com

@@ -1,14 +1,14 @@
 * PDF
-* Microsoft Office formats: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook emails)  
+* A Microsoft Office formátumok: DOCX/DOC, XLSX/XLS, PPTX/PPT, Adatköltségek (Outlook e-mailek)  
 * HTML
 * XML
-* ZIP
+* A ZIP-
 * EML
 * RTF
-* Plain text files (see also [Indexing plain text](../articles/search/search-howto-indexing-azure-blob-storage.md#IndexingPlainText))
-* JSON (see [Indexing JSON blobs](../articles/search/search-howto-index-json-blobs.md))
-* CSV (see [Indexing CSV blobs](../articles/search/search-howto-index-csv-blobs.md) preview feature)
+* Egyszerű szöveges fájlt (lásd még: [indexelő egyszerű szöveges](../articles/search/search-howto-indexing-azure-blob-storage.md#IndexingPlainText))
+* JSON (lásd: [indexelő JSON-blobok](../articles/search/search-howto-index-json-blobs.md))
+* CSV (lásd: [indexelő CSV-blobok](../articles/search/search-howto-index-csv-blobs.md) előzetes verziójú funkciók)
 
 > [!IMPORTANT]
-> Support for CSV and JSON arrays is currently in preview. These formats are available only using version **2016-09-01-Preview** of the REST API or version 2.x-preview of the .NET SDK. Please remember, preview APIs are intended for testing and evaluation, and should not be used in production environments.
+> Fürt megosztott kötetei szolgáltatás és a JSON-tömbök támogatása jelenleg előzetes verzió. Ezek a formátumok érhetők el, csak verziójával **2016 09-01. dátumú előnézeti** a REST API-t vagy a verziójával 2.x-előzetes verziójának a .NET SDK-val. Adjon ne feledje, az előzetes API-k tesztelésében és értékelésében készült, és nem használható üzemi környezetben.
 >

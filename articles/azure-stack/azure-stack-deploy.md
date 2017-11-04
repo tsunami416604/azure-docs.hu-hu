@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Development Kit deployment prerequisites| Microsoft Docs
-description: View the environment and hardware requirements for Azure Stack Development Kit (cloud operator).
+title: "Az Azure verem szoftverfejlesztői készlet telepítésének előfeltételei |} Microsoft Docs"
+description: "A környezetére és hardverére követelményei Azure verem szoftverfejlesztői készlet (felhő üzemeltetője) megtekintéséhez."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,95 +14,94 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/11/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4a53065f76cef7b711f4a656b437cbefaf47c5d0
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 73e7efb7d789fe12846d68066c0927bb123831a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-stack-deployment-prerequisites"></a>Azure Stack deployment prerequisites
+# <a name="azure-stack-deployment-prerequisites"></a>Azure Stack üzembehelyezési előfeltételek
 
-*Applies to: Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure szoftverfejlesztői készletet*
 
-Before you deploy [Azure Stack Development Kit](azure-stack-poc.md), make sure your computer meets the following requirements:
+Központi telepítése előtt [Azure verem szoftverfejlesztői készlet](azure-stack-poc.md), győződjön meg arról, hogy a számítógép megfelel-e a következő követelményeknek:
 
 
-## <a name="hardware"></a>Hardware
-| Component | Minimum | Recommended |
+## <a name="hardware"></a>Hardver
+| Összetevő | Minimális | Ajánlott |
 | --- | --- | --- |
-| Disk drives: Operating System |1 OS disk with minimum of 200 GB available for system partition (SSD or HDD) |1 OS disk with minimum of 200 GB available for system partition (SSD or HDD) |
-| Disk drives: General development kit data* |4 disks. Each disk provides a minimum of 140 GB of capacity (SSD or HDD). All available disks will be used. |4 disks. Each disk provides a minimum of 250 GB of capacity (SSD or HDD). All available disks will be used. |
-| Compute: CPU |Dual-Socket: 12 Physical Cores (total) |Dual-Socket: 16 Physical Cores (total) |
-| Compute: Memory |96 GB RAM |128 GB RAM (This is the minimum to support PaaS resource providers.)|
-| Compute: BIOS |Hyper-V Enabled (with SLAT support) |Hyper-V Enabled (with SLAT support) |
-| Network: NIC |Windows Server 2012 R2 Certification required for NIC; no specialized features required |Windows Server 2012 R2 Certification required for NIC; no specialized features required |
-| HW logo certification |[Certified for Windows Server 2012 R2](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certified for Windows Server 2012 R2](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
+| Lemezmeghajtók: Operációs rendszer |1 rendszerlemez legalább 200 GB szabad tárhellyel a rendszerpartícióhoz (SSD vagy HDD) |1 rendszerlemez legalább 200 GB szabad tárhellyel a rendszerpartícióhoz (SSD vagy HDD) |
+| Lemezmeghajtók: általános development kit adatok * |4 lemez. Mindegyik lemez legalább 140 GB tárhellyel (SSD vagy HDD). Az összes elérhető lemez használatban lesz. |4 lemez. Mindegyik lemez legalább 250 GB tárhellyel (SSD vagy HDD). Az összes elérhető lemez használatban lesz. |
+| Számítási igény: CPU |Kettős foglalat: 12 fizikai mag (összesen) |Kettős foglalat: 16 fizikai mag (összesen) |
+| Számítási igény: Memória |96 GB RAM |128 GB RAM (Ez az a minimális erőforrás-szolgáltató PaaS támogatásához.)|
+| Számítási igény: BIOS |Hyper-V engedélyezve (SLAT-támogatással) |Hyper-V engedélyezve (SLAT-támogatással) |
+| Hálózat: NIC |Windows Server 2012 R2-tanúsítvány szükséges a NIC-hez; speciális jellemzők nem szükségesek |Windows Server 2012 R2-tanúsítvány szükséges a NIC-hez; speciális jellemzők nem szükségesek |
+| Hardveres tanúsítványembléma |[A Windows Server 2012 R2 hitelesített](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[A Windows Server 2012 R2 hitelesített](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
-\*You will need more than this recommended capacity if you plan on adding many of the [marketplace items](azure-stack-download-azure-marketplace-item.md) from Azure.
+\*Kell több, mint a kapacitás ez ajánlott, ha azt tervezi, számos hozzáadásával a [Piactéri elemek](azure-stack-download-azure-marketplace-item.md) az Azure-ból.
 
-**Data disk drive configuration:** All data drives must be of the same type (all SAS or all SATA) and capacity. If SAS disk drives are used, the disk drives must be attached via a single path (no MPIO, multi-path support is provided).
+**Adatlemez-meghajtó konfigurációja:** Minden adatmeghajtónak ugyanolyan típusúnak (csak SAS vagy csak SATA) és méretűnek kell lennie. Ha SAS-lemezmeghajtókat használ, egyetlen elérési úttal kell őket összekapcsolnia (az MPIO nem engedélyezett, a többutas működés támogatása biztosított).
 
-**HBA configuration options**
+**HBA-konfigurációs beállítások**
 
-* (Preferred) Simple HBA
-* RAID HBA – Adapter must be configured in “pass through” mode
-* RAID HBA – Disks should be configured as Single-Disk, RAID-0
+* (Előnyben részesített) Egyszerű HBA
+* RAID HBA – Az adaptert „átmenő” módba kell beállítani
+* RAID HBA – A lemezeket egyszeres lemezként kell konfigurálni, RAID-0 használatával
 
-**Supported bus and media type combinations**
+**Támogatott busz és adathordozó típusa kombinációk**
 
 * SATA HDD
 * SAS HDD
 * RAID HDD
-* RAID SSD (If the media type is unspecified/unknown\*)
+* RAID SSD (ha az adathordozó típusa nem meghatározott/ismeretlen\*)
 * SATA SSD + SATA HDD
 * SAS SSD + SAS HDD
 
-\* RAID controllers without pass-through capability can’t recognize the media type. Such controllers will mark both HDD and SSD as Unspecified. In that case, the SSD will be used as persistent storage instead of caching devices. Therefore, you can deploy the development kit on those SSDs.
+\*Csatlakoztatott lehetőséggel nem RAID-vezérlők nem ismeri fel az adathordozó típusát. Az ilyen vezérlők a HDD és SSD meghajtókat „nem meghatározottként” jelölik meg. Ebben az esetben az SSD állandó tárolóként lesz használva gyorsítótáreszköz helyett. Ezért a szoftverfejlesztői készlet e SSD meghajtókon is telepíthet.
 
-**Example HBAs**: LSI 9207-8i, LSI-9300-8i, or LSI-9265-8i in pass-through mode
+**Példa HBA-kra:** LSI 9207-8i, LSI-9300-8i vagy LSI-9265-8i átmenő módban
 
-Sample OEM configurations are available.
+OEM mintakonfigurációk is elérhetők.
 
-## <a name="operating-system"></a>Operating system
-|  | **Requirements** |
+## <a name="operating-system"></a>Operációs rendszer
+|  | **Követelmények** |
 | --- | --- |
-| **OS Version** |Windows Server 2012 R2 or later. The operating system version isn’t critical before the deployment starts, as you'll boot the host computer into the VHD that's included in the Azure Stack installation. The OS and all required patches are already integrated into the image. Don’t use any keys to activate any Windows Server instances used in the development kit. |
+| **Operációs rendszer verziója** |Windows Server 2012 R2 vagy újabb. Az operációs rendszer verzióját nem kritikus a telepítés megkezdése előtt, a virtuális Merevlemezt, amely megtalálható a Azure verem telepítés lesz indul a számítógép. Az operációs rendszer és a szükséges javításokat már integrálva a lemezképpel. Ne használjon bármely kulcsok aktiválásához bármely a csomagban használt Windows Server-példányokat. |
 
-## <a name="deployment-requirements-check-tool"></a>Deployment requirements check tool
-After installing the operating system, you can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm that your hardware meets all the requirements.
+## <a name="deployment-requirements-check-tool"></a>Telepítési követelményeinek ellenőrzése eszköz
+Az operációs rendszer telepítése után is használhatja a [telepítési ellenőrző Azure verem](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) annak ellenőrzéséhez, hogy a hardver megfelel a követelményeknek.
 
-## <a name="account-requirements"></a>Account requirements
-Typically, you deploy the development kit with internet connectivity, where you can connect to Microsoft Azure. In this case, you must configure an Azure Active Directory (Azure AD) account to deploy the development kit.
+## <a name="account-requirements"></a>Fiókra vonatkozó követelmények
+A csomag általában az internetkapcsolattal, amelyen keresztül csatlakozhat a Microsoft Azure telepít. Ebben az esetben konfigurálnia kell egy Azure Active Directory (Azure AD) fiókot a csomag telepítéséhez.
 
-If your environment is not connected to the internet, or you don't want to use Azure AD, you can deploy Azure Stack by using Active Directory Federation Services (AD FS). The development kit includes its own AD FS and Active Directory Domain Services instances. If you deploy by using this option, you don't have to set up accounts ahead of time.
+Ha a környezet nem kapcsolódik az internethez, vagy nem kívánja használni az Azure AD, Azure verem telepítheti az Active Directory összevonási szolgáltatások (AD FS) használatával. A csomag tartalmazza a saját AD FS és az Active Directory tartományi szolgáltatások példányok. Használatával kíván üzembe helyezni ezt a beállítást, ha nincs fiók időben beállítása.
 
 >[!NOTE]
-If you deploy by using the AD FS option, you must redeploy Azure Stack to switch to Azure AD.
+Ha az AD FS-beállítás használatával telepít, újra kell telepítenie az Azure verem váltson át az Azure AD.
 
-### <a name="azure-active-directory-accounts"></a>Azure Active Directory accounts
-To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD account before you run the deployment PowerShell script. This account becomes the Global Admin for the Azure AD tenant. It's used to provision and delegate applications and service principals for all Azure Stack services that interact with Azure Active Directory and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can log in to your Azure Stack system’s administrator portal by using this account.
+### <a name="azure-active-directory-accounts"></a>Az Azure Active Directory-fiókok
+Azure verem telepíteni az Azure AD-fiókot, elő kell készítenie az Azure AD-fiókot a központi telepítés PowerShell-parancsfájl futtatása előtt. Ezt a fiókot az Azure AD-bérlő számára a globális rendszergazdai válik. Szeretnék telepíteni és az alkalmazások és az összes Azure verem szolgáltatáshoz Azure Active Directory és a Graph API együttműködő szolgáltatásnevekről szolgál. Az alapértelmezett szolgáltató előfizetés (amely később módosítható) tulajdonosaként is használható. Bejelentkezhet az Azure-verem rendszer felügyeleti portálra a fiók használatával.
 
-1. Create an Azure AD account that is the directory administrator for at least one Azure AD. If you already have one, you can use that. Otherwise, you can create one for free at [http://azure.microsoft.com/en-us/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (in China, visit <http://go.microsoft.com/fwlink/?LinkID=717821> instead). If you plan to later [register Azure Stack with Azure](azure-stack-register.md), you must also have a subscription in this newly created account.
+1. Hozzon létre egy Azure AD-fiókot, amely legalább egy Azure ad a directory-rendszergazda. Ha már rendelkezik ilyen fiókkal, használhatja azt. Ellenkező esetben létrehozhat egy ingyenes [http://azure.microsoft.com/en-us/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (kínai, látogasson el a <http://go.microsoft.com/fwlink/?LinkID=717821> helyett). Ha azt tervezi, hogy később [Azure verem regisztrálni Azure](azure-stack-register.md), rendelkeznie kell előfizetéssel a az újonnan létrehozott fiók.
    
-    Save these credentials for use in step 6 of [Deploy the development kit](azure-stack-run-powershell-script.md#deploy-the-development-kit). This *service administrator* account can configure and manage resource clouds, user accounts, tenant plans, quotas, and pricing. In the portal, they can create website clouds, virtual machine private clouds, create plans, and manage user subscriptions.
-2. [Create](azure-stack-add-new-user-aad.md) at least one account so that you can sign in to the development kit as a tenant.
+    6. lépésében menteni ezeket a hitelesítő adatokat [a csomag telepítése](azure-stack-run-powershell-script.md#deploy-the-development-kit). Ez a *szolgáltatás-rendszergazdai* fiók konfigurálhat és kezelhet erőforrásfelhőket, felhasználói fiókokat, bérlői csomagokat, kvótákat és díjszabást. A portálon létrehozhatnak felhőket webhelyhez, magánfelhőket virtuális géphez, csomagokat, és kezelhetik a felhasználói előfizetéseket.
+2. [Hozzon létre](azure-stack-add-new-user-aad.md) legalább egy fiókot, hogy a development Kit hez bérlőként bejelentkezhet.
    
-   | **Azure Active Directory account** | **Supported?** |
+   | **Azure Active Directory-fiók** | **Támogatott?** |
    | --- | --- |
-   | Work or school account with valid Public Azure Subscription |Yes |
-   | Microsoft Account with valid Public Azure Subscription |Yes |
-   | Work or school account with valid China Azure Subscription |Yes |
-   | Work or school account with valid US Government Azure Subscription |Yes |
+   | Munkahelyi vagy iskolai fiók érvényes nyilvános Azure-előfizetéssel |Igen |
+   | Microsoft-fiók érvényes Public Azure-előfizetéssel |Igen |
+   | Munkahelyi vagy iskolai fiókkal, Kína érvényes Azure-előfizetéssel |Igen |
+   | Munkahelyi vagy iskolai fiók érvényes US Government Azure-előfizetés |Igen |
 
-## <a name="network"></a>Network
-### <a name="switch"></a>Switch
-One available port on a switch for the development kit machine.  
+## <a name="network"></a>Network (Hálózat)
+### <a name="switch"></a>Kapcsoló
+Egy rendelkezésre álló portot a kapcsolón a development kit gép.  
 
-The development kit machine supports connecting to a switch access port or trunk port. No specialized features are required on the switch. If you are using a trunk port or if you need to configure a VLAN ID, you have to provide the VLAN ID as a deployment parameter. You can see examples in the [list of deployment parameters](azure-stack-run-powershell-script.md).
+A fejlesztői csomag machine kapcsolóport hozzáférés vagy trönk porthoz való csatlakozást támogatja. A kapcsoló esetében nem szükségesek speciális jellemzők. Ha trönkportot használ, vagy ha egy VLAN-azonosítót kell beállítania, üzembehelyezési paraméterként kell megadnia a VLAN-azonosítót. A példa látható a [üzembe helyezéshez megadott paraméterek listáját](azure-stack-run-powershell-script.md).
 
-### <a name="subnet"></a>Subnet
-Do not connect the development kit machine to the following subnets:
+### <a name="subnet"></a>Alhálózat
+A következő alhálózatokban ne csatlakoztassa a fejlesztési csomag machine:
 
 * 192.168.200.0/24
 * 192.168.100.0/27
@@ -111,35 +110,35 @@ Do not connect the development kit machine to the following subnets:
 * 192.168.103.0/25
 * 192.168.104.0/25
 
-These subnets are reserved for the internal networks within the development kit environment.
+Ezek alhálózatok development kit környezetben belső hálózatok számára vannak fenntartva.
 
 ### <a name="ipv4ipv6"></a>IPv4/IPv6
-Only IPv4 is supported. You cannot create IPv6 networks.
+Kizárólag az IPv4 használata támogatott. Nem hozhat létre IPv6-hálózatokat.
 
 ### <a name="dhcp"></a>DHCP
-Make sure there is a DHCP server available on the network that the NIC connects to. If DHCP is not available, you must prepare an additional static IPv4 network besides the one used by host. You must provide that IP address and gateway as a deployment parameter. You can see examples in the [list of deployment parameters](azure-stack-run-powershell-script.md).
+Győződjön meg róla, hogy egy DHCP-kiszolgáló elérhető azon a hálózaton, amelyhez a NIC csatlakozik. Ha a DHCP nem elérhető el, egy kiegészítő, az állomás által használt melletti, statikus IPv4-hálózatot kell előkészítenie. Üzembehelyezési paraméterként meg kell adnia azt az IP-címet és átjárót. A példa látható a [üzembe helyezéshez megadott paraméterek listáját](azure-stack-run-powershell-script.md).
 
-### <a name="internet-access"></a>Internet access
-Azure Stack requires access to the Internet, either directly or through a transparent proxy. Azure Stack does not support the configuration of a web proxy to enable Internet access. Both the host IP and the new IP assigned to the MAS-BGPNAT01 (by DHCP or static IP) must be able to access Internet. Ports 80 and 443 are used under the graph.windows.net and login.microsoftonline.com domains.
+### <a name="internet-access"></a>Internetelérés
+Azure verem internet-hozzáférésre van szüksége, közvetlenül vagy transzparens proxyra. Azure verem nem támogatja az Internet-hozzáférés engedélyezése a WebProxy beállításait. A gazdagép IP, mind az új IP-cím (amelyet a DHCP vagy statikus IP-cím) a MAS BGPNAT01 rendelt érhessék el az Internet kell lennie. A graph.windows.net és login.microsoftonline.com tartományok 80-as és 443-as portot használják.
 
-## <a name="telemetry"></a>Telemetry
+## <a name="telemetry"></a>Telemetria
 
-Telemetry helps us shape future versions of Azure Stack. It lets us respond quickly to feedback, provide new features, and improve quality. Microsoft Azure Stack includes Windows Server 2016 and SQL Server 2014. Neither of these products are changed from default settings and both are described by the Microsoft Enterprise Privacy Statement. Azure Stack also contains open source software which has not been modified to send telemetry to Microsoft. Here are some examples of Azure Stack telemetry data:
+Telemetria segít nekünk alakul Azure verem jövőbeli verzióiban. Lehetővé teszi, gyorsan képesek reagálni az visszajelzései alapján, tartalmaz új funkciókat, valamint minőségének javításában. A Microsoft Azure verem tartalmazza a Windows Server 2016-os és az SQL Server 2014. Ezeket a termékeket egyike sem módosulnak az alapértelmezett beállításról, és mindkét által a Microsoft nagyvállalati adatvédelmi nyilatkozat ismerteti. Az Azure verem is tartalmaz, nyílt forráskódú szoftver, amely nem lett módosítva telemetriai adatokat küldeni a Microsoftnak. Az alábbiakban néhány olyan Azure verem telemetriai adatokat:
 
-- deployment registration information
-- when an alert is opened and closed
-- the number of network resources
+- központi telepítés regisztrációs adatait
+- Ha riasztás megnyitása és bezárása
+- a hálózati erőforrások számát
 
-To support telemetry data flow, port 443 (HTTPS) must be open in your network. The client endpoint is https://vortex-win.data.microsoft.com.
+Telemetriai adatok folyamat támogatásához port 443-as (HTTPS) nyissa meg a hálózaton kell lennie. Az ügyfélvégpont a következő: https://vortex-win.data.microsoft.com.
 
-If you don’t want to provide telemetry for Azure Stack, you can turn it off on the development kit host and the infrastructure virtual machines as explained below.
+Ha nem szeretne biztosítani a telemetriai adatok Azure verem, kikapcsolhatja azt a development kit állomás és az infrastruktúra virtuális gépek, ahogy az alábbi leírásban.
 
-### <a name="turn-off-telemetry-on-the-development-kit-host-optional"></a>Turn off telemetry on the development kit host (optional)
+### <a name="turn-off-telemetry-on-the-development-kit-host-optional"></a>Kapcsolja ki a development kit gazdagépen telemetriai (nem kötelező)
 
 >[!NOTE]
-If you want to turn off telemetry for the development kit host, you must do so before you run the deployment script.
+Telemetria kikapcsolása az development kit állomás szeretnénk, ha az üzembe helyezési parancsfájl futtatása előtt kell megtenni.
 
-Before [running the asdk-installer.ps1 script]() to deploy the development kit host, boot into the CloudBuilder.vhdx and run the following script in an elevated PowerShell window:
+Mielőtt [a asdk-installer.ps1 parancsprogram futtatása]() a development kit gazdagép telepítése, a CloudBuilder.vhdx indul, és egy emelt szintű PowerShell-ablakban futtassa az alábbi parancsfájlt:
 ```powershell
 ### Get current AllowTelmetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
@@ -151,12 +150,12 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 -Name AllowTelemetry).AllowTelemetry
 ```
 
-Setting **AllowTelemetry** to 0 turns off telemetry for both Windows and Azure Stack deployment. Only critical security events from the operating system are sent. The setting controls Windows telemetry across all hosts and infrastructure VMs, and is reapplied to new nodes/VMs when scale-out operations occur.
+Beállítás **AllowTelemetry** telemetriai 0 kapcsolja ki a központi Windows- és Azure verem számára. Csak az operációs rendszer kritikus fontosságú biztonsági események küldése. A beállítás szabályozza a Windows telemetriai összes gazdagép és virtuális gépek infrastruktúra, és a program újra alkalmazza az új csomópontok vagy virtuális gépek kibővített műveletek esetén.
 
 
-### <a name="turn-off-telemetry-on-the-infrastructure-virtual-machines-optional"></a>Turn off telemetry on the infrastructure virtual machines (optional)
+### <a name="turn-off-telemetry-on-the-infrastructure-virtual-machines-optional"></a>Kapcsolja ki az infrastruktúra virtuális gépek telemetriai adatokat (nem kötelező)
 
-After the deployment is successful, run the following script in an elevated PowerShell window (as the AzureStack\AzureStackAdmin user) on the development kit host:
+A telepítés befejezését követően futtassa a következő parancsfájl egy emelt szintű PowerShell-ablakban (AzureStack\AzureStackAdmin felhasználóként) fejlesztési kit gazdagépen:
 
 ```powershell
 $AzSVMs= get-vm |  where {$_.Name -like "AzS-*"}
@@ -170,18 +169,17 @@ invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
 "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
 ```
 
-To configure SQL Server telemetry, see [How to configure SQL Server 2016](https://support.microsoft.com/en-us/help/3153756/how-to-configure-sql-server-2016-to-send-feedback-to-microsoft).
+SQL Server telemetriai konfigurálásához lásd: [konfigurálása az SQL Server 2016](https://support.microsoft.com/en-us/help/3153756/how-to-configure-sql-server-2016-to-send-feedback-to-microsoft).
 
-### <a name="usage-reporting"></a>Usage reporting
+### <a name="usage-reporting"></a>Használati jelentésben
 
-Through registration, Azure Stack is also configured to forward usage information to Azure. Usage reporting is controlled independently from telemetry. You can turn off usage reporting when [registering](azure-stack-register.md) by using the script on Github. Just set the **$reportUsage** parameter to **$false**.
+A regisztráció Azure verem is konfigurált előre használati adatokat az Azure-bA. Használati jelentésben szabályozott egymástól függetlenül a telemetriai adatokból. Mikor reporting használati kikapcsolható [regisztrálása](azure-stack-register.md) a Githubon a parancsfájl használatával. Állítson be a **$reportUsage** paramétert **$false**.
 
-Usage data is formatted as detailed in the [Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting). Azure Stack Development Kit users are not actually charged. This functionality is included in the development kit so that you can test to see how usage reporting works. 
+Használati adatok formátuma részletezett a [jelentés Azure verem használati adatokat az Azure-bA](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting). Az Azure verem szoftverfejlesztői készlet felhasználók ténylegesen nem van szó. Ez a funkció tartalmazza a csomagban, hogy azt is ellenőrizze, hogy használatai jelentések működéséről. 
 
 
-## <a name="next-steps"></a>Next steps
-[Download the Azure Stack development kit deployment package](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
+## <a name="next-steps"></a>Következő lépések
+[Az Azure verem development kit központi telepítési csomag](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
-[Deploy Azure Stack development kit](azure-stack-run-powershell-script.md)
-
+[Azure verem szoftverfejlesztői készlet telepítése](azure-stack-run-powershell-script.md)
 

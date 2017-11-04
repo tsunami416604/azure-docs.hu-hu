@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Active
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: e779aab97a1b96d4a0e327865e957ecd0d97a278
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: HT
+ms.openlocfilehash: 25fa8d03a206452c17e5d4ad38211203aeb5dd65
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További tudnivalók az automatikus SQL-adatbázis biztonsági mentése
 
@@ -43,7 +43,7 @@ A biztonsági mentések használhatók:
 > 
 
 ## <a name="how-much-backup-storage-is-included-at-no-cost"></a>Hány biztonsági másolatokat tároló megtalálható ingyenesen?
-SQL-adatbázis biztonsági másolatok tárolásának további költségek nélkül biztosít a maximális kiosztott adatbázistár 200 %-kal. Például ha egy szabványos DB példány kiosztott DB méretű 250 GB-os, 500 GB van biztonsági másolat tárolási használatáért nem kell külön fizetni. Ha az adatbázis meghaladja a megadott biztonsági mentési tárolót, ha szeretné csökkenteni a megőrzési időszakot lépjen kapcsolatba az Azure támogatási szolgálatához. Egy másik lehetőség egy extra biztonságimásolat-tároláshoz, az írásvédett földrajzilag redundáns tárolás (RA-GRS) alapdíj lesz számlázva kell fizetnie. 
+SQL-adatbázis biztonsági másolatok tárolásának további költségek nélkül biztosít a maximális kiosztott adatbázistár 200 %-kal. Például ha egy szabványos DB példány kiosztott DB méretű 250 GB-os, 500 GB van biztonsági másolat tárolási használatáért nem kell külön fizetni. 
 
 ## <a name="how-often-do-backups-happen"></a>Milyen gyakran történik a biztonsági mentések?
 Adatbázis teljes biztonsági mentések fordulhat elő, hetente, adatbázis különbözeti biztonsági mentések általánosan fordulhat elő, minden néhány óra, és a tranzakciós napló biztonsági mentések általában 5 – 10 percenként kerül sor. Az első teljes biztonsági mentés van ütemezve, azonnal adatbázis létrehozása után. Általában 30 percen belül befejeződik, de azt is tovább tarthat jelentős méretű az adatbázis esetén. Például a kezdeti biztonsági másolatot több időt vesz igénybe a visszaállított adatbázis vagy egy adatbázis-másolat. Az első teljes biztonsági mentés óta az összes további biztonsági másolatot automatikusan ütemezett, és csendes felügyelni a háttérben. Az összes adatbázis biztonsági másolatait pontos időzítése határozza meg az SQL Database szolgáltatás a teljes munkaterhelés egyenlegének. 

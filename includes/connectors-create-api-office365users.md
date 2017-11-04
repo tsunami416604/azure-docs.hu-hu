@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>Prerequisites
-* An [Office 365 Users](https://office365.com) account  
+### <a name="prerequisites"></a>Előfeltételek
+* Egy [Office 365-felhasználók](https://office365.com) fiók  
 
-Before you can use your Office 365 Users account in a Logic app, you must authorize the Logic app to connect to your Office 365 Users account.Fortunately, you can do this easily from within your Logic app on the Azure Portal.  
+Az Office 365 felhasználói fiókot a logikai alkalmazás használata előtt engedélyeznie kell az Office 365 felhasználói fiók kapcsolódni a logikai alkalmazást. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon.  
 
-Here are the steps to authorize your Logic app to connect to your Office 365 Users account:  
+A Logic Apps alkalmazást az Office 365 felhasználói fiók kapcsolódni engedélyezésére lépései a következők:  
 
-1. To create a connection to Office 365 Users, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Office 365 Users* in the search box. Select the trigger or action you'll like to use:  
-   ![Office 365 Users connection creation step](./media/connectors-create-api-office365users/office365users-1.png)  
-2. If you haven't created any connections to Office 365 Users before, you'll get prompted to provide your Office 365 Users credentials. These credentials will be used to authorize your Logic app to connect to, and access your Office 365 Users account's data:  
-   ![Office 365 Users connection creation step](./media/connectors-create-api-office365users/office365users-2.png)  
-3. Provide your Office 365 Users user name and password to authorize your Logic app:  
-   ![Office 365 Users connection creation step](./media/connectors-create-api-office365users/office365users-3.png)  
-4. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
-   ![Office 365 Users connection creation step](./media/connectors-create-api-office365users/office365users-4.png)  
+1. A Logic app tervezőben kapcsolat Office 365-felhasználók létrehozásához válasszon **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *Office 365-felhasználók* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
+   ![Az Office 365 felhasználók kapcsolat létrehozását lépést](./media/connectors-create-api-office365users/office365users-1.png)  
+2. Ha még nem hozott létre a kapcsolatokat az Office 365-felhasználók előtt, a rendszer adja meg az Office 365-felhasználók hitelesítő adatait fogja kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használt, és elérni az Office 365 felhasználói fiók adatait:  
+   ![Az Office 365 felhasználók kapcsolat létrehozását lépést](./media/connectors-create-api-office365users/office365users-2.png)  
+3. Az Office 365-felhasználók felhasználónevet és jelszót kell megadniuk engedélyezik a Logic Apps alkalmazást:  
+   ![Az Office 365 felhasználók kapcsolat létrehozását lépést](./media/connectors-create-api-office365users/office365users-3.png)  
+4. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
+   ![Az Office 365 felhasználók kapcsolat létrehozását lépést](./media/connectors-create-api-office365users/office365users-4.png)  
 

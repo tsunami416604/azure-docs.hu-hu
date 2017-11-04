@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/14/2017
 ms.author: nitinme
-ms.openlocfilehash: 9dd56efb89e07ea61ae431d1ea2accd721cd6502
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 88fd608a02364000699224f0f2df5b4df8a29e11
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>A HDInsight-fürtök létrehozása a Data Lake Store az Azure-portál használatával
 > [!div class="op_single_selector"]
@@ -176,7 +176,7 @@ Után a tárolására állította be a fürt a Data Lake Store, tekintse meg eze
 
 ### <a name="run-a-hive-query-against-data-in-a-data-lake-store-as-primary-storage"></a>Hive-lekérdezések futtatása egy Data Lake Store-ban adatok alapján (elsődleges tárolóként)
 
-Hive-lekérdezések futtatásához használja a Hive-nézetek felület az Ambari portálon. Ambari Hive-nézetek használata, lásd: [Hive nézet használata a hadooppal a Hdinsightban](../hdinsight/hdinsight-hadoop-use-hive-ambari-view.md).
+Hive-lekérdezések futtatásához használja a Hive-nézetek felület az Ambari portálon. Ambari Hive-nézetek használata, lásd: [Hive nézet használata a hadooppal a Hdinsightban](../hdinsight/hadoop/apache-hadoop-use-hive-ambari-view.md).
 
 Ha az egy Data Lake Store-adatokkal dolgozik, van néhány karakterláncok módosítása.
 
@@ -199,11 +199,11 @@ Az adatok másolása az Blob storage egy Data Lake Store további információk�
 * [Adatok másolása az Azure Storage blobs Data Lake Store AdlCopy segítségével](data-lake-store-copy-data-azure-storage-blob.md)
 
 ### <a name="use-data-lake-store-with-a-spark-cluster"></a>Használjon Data Lake Store egy Spark-fürt
-Spark-fürt használatával a Data Lake Store-ban tárolt adatok a feladatok futtatása Spark. További információkért lásd: [adatelemzéshez a Data Lake Store használata a HDInsight Spark-fürt](../hdinsight/hdinsight-apache-spark-use-with-data-lake-store.md).
+Spark-fürt használatával a Data Lake Store-ban tárolt adatok a feladatok futtatása Spark. További információkért lásd: [adatelemzéshez a Data Lake Store használata a HDInsight Spark-fürt](../hdinsight/spark/apache-spark-use-with-data-lake-store.md).
 
 
 ### <a name="use-data-lake-store-in-a-storm-topology"></a>Használjon Data Lake Store a Storm-topológia
-A Data Lake Store az adatok írása a Storm-topológia a használhatja. Ez a forgatókönyv megvalósítható utasításokért lásd: [használata Azure Data Lake Store a HDInsight alatt futó Apache Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md).
+A Data Lake Store az adatok írása a Storm-topológia a használhatja. Ez a forgatókönyv megvalósítható utasításokért lásd: [használata Azure Data Lake Store a HDInsight alatt futó Apache Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md).
 
 ## <a name="see-also"></a>Lásd még:
 * [PowerShell: Data Lake Store használatára HDInsight-fürtök létrehozása](data-lake-store-hdinsight-hadoop-use-powershell.md)

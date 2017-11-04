@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 958ee2f12ebbd46472972a3012ec59aecbc23126
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
-ms.translationtype: HT
+ms.openlocfilehash: 5e101c4b92868181a6b627d060a9c8e72a7837c4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
@@ -296,7 +296,7 @@ Olyan szabály, amely kijelöli a tagság eszközobjektumok egy csoportot is lé
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Dinamikus tagság módosítása a statikus, és ez fordítva is igaz
 Akkor lehet módosítani a módjára vonatkozik a csoport tagságát. Ez akkor hasznos, ha meg szeretné tartani a azonos csoport nevét és Azonosítóját a rendszer úgy, hogy minden meglévő csoporthoz továbbra is érvényes; Új csoport létrehozásakor igényelnének frissítése ezeket a hivatkozásokat.
 
-Az Azure-portál támogatja ezt a funkciót frissítése végezzük. Addig is használhatja a [a klasszikus Azure portálon](https://manage.windowsazure.com) (kövesse az utasításokat [Itt](active-directory-accessmanagement-groups-with-advanced-rules.md#changing-dynamic-membership-to-static-and-vice-versa)) vagy a PowerShell-parancsmagok a lent látható módon.
+Az Azure-portál támogatja ezt a funkciót frissítése végezzük. Addig is használhatja a [a klasszikus Azure portálon](https://manage.windowsazure.com) (kövesse az utasításokat [Itt](active-directory-accessmanagement-groups-with-advanced-rules.md)) vagy a PowerShell-parancsmagok a lent látható módon.
 
 > [!WARNING]
 > Egy létező statikus csoportot egy dinamikus csoport módosításakor a csoport összes meglévő tag törlődik, és ezután a tagsági szabály dolgoz fel új tagokat adhat. Ha a csoport használatával alkalmazásokhoz és erőforrásokhoz való hozzáférést, az eredeti tagok elveszthetik a hozzáférést a tagsági szabály teljesen feldolgozásáig.

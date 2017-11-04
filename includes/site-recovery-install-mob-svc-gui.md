@@ -1,15 +1,15 @@
-1. Copy the installation to the server, and then open the installer.
-2. On the **Installation Option** blade, select **Install Mobility Service**.
+1. Másolja a telepítése a kiszolgálóra, és ezután nyissa meg a telepítőt.
+2. Az a **telepítésen** panelen válassza **telepíteni a mobilitási szolgáltatás**.
 
-    ![Mobility Service Install Option Page ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
-3. Select the install location  and click **Install** to being the installation procedure.
+    ![Mobilitási szolgáltatás telepítési beállítások lapján ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
+3. Adja meg a telepítés helyét, és kattintson a **telepítése** számára a telepítési folyamat alatt.
 
-    ![Mobility Service Install Location Page ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
-4. You can use **Installation Progress** page to monitor the installer's progress.
-    ![Mobility Service Install Progress ](./media/site-recovery-install-mob-svc-gui/mobility3.png)
+    ![Mobilitási szolgáltatás telepítési helyét lap ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
+4. Használhat **telepítési folyamat** oldalon a telepítő előrehaladást mérik.
+    ![Mobilitási szolgáltatás telepítése folyamatban](./media/site-recovery-install-mob-svc-gui/mobility3.png)
 
-5. Once installation is complete, click the **Proceed to Configuration** button to register the Mobility Service with your Configuration server.
-    ![Mobility service Register Page ](./media/site-recovery-install-mob-svc-gui/mobility4.png)
+5. Ha a telepítés befejeződött, kattintson a **folytassa a konfigurációs** gombra, hogy a mobilitási szolgáltatást a konfigurációs kiszolgálóval.
+    ![Mobilitási szolgáltatás regisztrálása lap](./media/site-recovery-install-mob-svc-gui/mobility4.png)
 
-6. Click on the **Register** button to complete the registration.
-    ![Mobility service Register Page ](./media/site-recovery-install-mob-svc-gui/mobility5.png)
+6. Kattintson a **regisztrálása** gomb a regisztráció befejezéséhez.
+    ![Mobilitási szolgáltatás regisztrálása lap](./media/site-recovery-install-mob-svc-gui/mobility5.png)

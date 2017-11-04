@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 25488640e4a1e129f06dffbe5e7896f5ace8facc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13e681ec8893aa2cbd97f6c4e2ca66be634c9cb9
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="team-data-science-structured-projects-in-azure-machine-learning-workbench"></a>Az Azure Machine Learning-munkaterület strukturált adatok tudományos csapatprojektek
 
-Ezek oktatóanyagok és minták strukturált Team Adattudomány projektek létrehozása az Azure Machine Learning-munkaterület megjelenítése Az Team tudományos folyamat áttekintését lásd: [adatok tudományos folyamat](overview.md). A Spark on HDInsight áttekintését lásd: [a Spark on HDInsight bemutatása](../../hdinsight/hdinsight-apache-spark-overview.md).
+Ezek oktatóanyagok és minták strukturált Team Adattudomány projektek létrehozása az Azure Machine Learning-munkaterület megjelenítése Az Team tudományos folyamat áttekintését lásd: [adatok tudományos folyamat](overview.md). A Spark on HDInsight áttekintését lásd: [a Spark on HDInsight bemutatása](../../hdinsight/spark/apache-spark-overview.md).
 
 További adatok tudományos forgatókönyvek, amelyek az Team tudományos folyamat végrehajtása szerint vannak csoportosítva a **platform** használnak. Lásd: [az Team tudományos folyamat végrehajtása forgatókönyvek](walkthroughs.md) ezekben a példákban az részletezéshez.
 

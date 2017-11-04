@@ -1,18 +1,18 @@
-In this step, you create a firewall rule to open the probe port for the load-balanced endpoint (59999, as specified earlier) and another rule to open the availability group listener port. Because you created the load-balanced endpoint on the VMs that contain availability group replicas, you need to open the probe port and the listener port on the respective VMs.
+Ebben a lépésben kell megnyitni a mintavételi portot (korábban megadott 59999) elosztott terhelésű végpont tűzfalszabály létrehozása, és egy másik szabály megnyitásához a rendelkezésre állási csoport figyelőjének portszámára. Az elosztott terhelésű végpont a virtuális gépeken, amelyek tartalmazzák a rendelkezésre állási csoport replikái hozott létre, mert szükség nyissa meg a mintavételi portot és a figyelő portja a megfelelő virtuális gépeken.
 
-1. On VMs that host replicas, start **Windows Firewall with Advanced Security**.
+1. Indítsa el a virtuális gépeken replika, **fokozott biztonságú Windows tűzfal**.
 
-2. Right-click **Inbound Rules**, and then click **New Rule**.
+2. Kattintson a jobb gombbal **bejövő szabályok**, és kattintson a **új szabály**.
 
-3. On the **Rule Type** page, select **Port**, and then click **Next**.
+3. Az a **szabálytípus** lapon jelölje be **Port**, és kattintson a **következő**.
 
-4. On the **Protocol and Ports** page, select **TCP**, type **59999** in the **Specific local ports** box, and then click **Next**.
+4. Az a **protokoll és portok** lapon jelölje be **TCP**, típus **59999** a a **adott helyi portok** gombra, majd  **Következő**.
 
-5. On the **Action** page, keep **Allow the connection** selected, and then click **Next**.
+5. Az a **művelet** lapon, tartsa **a kapcsolat engedélyezéséhez** kiválasztva, és kattintson **következő**.
 
-6. On the **Profile** page, accept the default settings, and then click **Next**.
+6. Az a **profil** lapon fogadja el az alapértelmezett beállításokat, és kattintson a **következő**.
 
-7. On the **Name** page, in the **Name** text box, specify a rule name, such as **Always On Listener Probe Port**, and then click **Finish**.
+7. A a **neve** lap a **neve** szöveget adja meg a szabály nevét, például a **mindig a figyelő mintavételi portot**, és kattintson a **Befejezés**.
 
-8. Repeat the preceding steps for the availability group listener port (as specified earlier in the $EndpointPort parameter of the script), and then specify an appropriate rule name, such as **Always On Listener Port**.
+8. Ismételje meg az előző lépést a rendelkezésre állási csoport figyelőjének portszámára (a korábban a a parancsfájl $EndpointPort paraméterben megadott), majd adjon meg egy megfelelő szabályt, például a **mindig a figyelő Port**.
 

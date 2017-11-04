@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
-ms.openlocfilehash: 412fc8b76d2b5ac45532d3ccb7a2ab7361d53596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: d1098ea7f7ab7765f9769dd2e398eb3b62c5557b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a hdinsight eszközzel verziók?
 
@@ -174,7 +174,7 @@ Az Azure HDInsight a big data felhőajánlatokat két kategóriába biztosít: _
 
 | HDInsight prémium funkció | Leírás |
 | --- | --- |
-| A HDInsight-fürtök tartományhoz |Csatlakoztassa a HDInsight-fürtök olyan Azure Active Directory (Azure AD) tartományhoz a vállalati szintű biztonság. HDInsight prémium konfigurálnia a vállalati, akik bejelentkezni a HDInsight-fürtök az Azure AD használatával képes hitelesíteni az alkalmazottakat. A vállalati rendszergazda konfigurálhatja a Hive biztonsági szerepköralapú hozzáférés-vezérlés használatával [Apache Pletyka](http://hortonworks.com/apache/ranger/) és adatokhoz való hozzáférést, csak, mint amennyit szükséges használatára. Végül a rendszergazda az alkalmazottak és változások a hozzáférés-vezérlési házirendeket, ezáltal a cégirányítási a vállalati erőforrások magas fokú elérése által elért adatokat is naplózza. További információkért lásd: [konfigurálása tartományhoz a HDInsight-fürtök](hdinsight-domain-joined-configure.md). |
+| A HDInsight-fürtök tartományhoz |Csatlakoztassa a HDInsight-fürtök olyan Azure Active Directory (Azure AD) tartományhoz a vállalati szintű biztonság. HDInsight prémium konfigurálnia a vállalati, akik bejelentkezni a HDInsight-fürtök az Azure AD használatával képes hitelesíteni az alkalmazottakat. A vállalati rendszergazda konfigurálhatja a Hive biztonsági szerepköralapú hozzáférés-vezérlés használatával [Apache Pletyka](http://hortonworks.com/apache/ranger/) és adatokhoz való hozzáférést, csak, mint amennyit szükséges használatára. Végül a rendszergazda az alkalmazottak és változások a hozzáférés-vezérlési házirendeket, ezáltal a cégirányítási a vállalati erőforrások magas fokú elérése által elért adatokat is naplózza. További információkért lásd: [konfigurálása tartományhoz a HDInsight-fürtök](./domain-joined/apache-domain-joined-configure.md). |
 
 ### <a name="cluster-types-supported-in-hdinsight-premium"></a>Fürt típusokat támogatja a HDInsight prémium
 A következő táblázat a fürttípusok, amelyekkel a HDInsight prémium támogatottak.

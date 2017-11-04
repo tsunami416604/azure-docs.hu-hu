@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
-ms.openlocfilehash: a14131455ad94cbc4b729077568b12043401c08e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 4b4cb2d168676d52a90942a116905e6669b16639
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="api-versions-in-azure-search"></a>Az Azure Search API-verziók
 Az Azure Search rendszeresen bevezeti szolgáltatás-frissítéseket. Néha, de nem minden esetben ezeket a frissítéseket, hogy az előző verziókkal való kompatibilitás miatt API felületen új verziójának közzétételéhez szükséges. Új verzió közzététele lehetővé teszi szabályozhatja, mikor és hogyan integrálja a keresési szolgáltatás frissítéseiről a kódban.
@@ -36,9 +36,9 @@ Alább van pillanatképet az összes aktuális verziója programozási felülete
 | Felületek | Legutóbbi főverzió | status |
 | --- | --- | --- |
 | [.NET SDK](https://aka.ms/search-sdk) |3.0 |Általában akkor érhető el, November 2016 kiadott |
-| [.NET SDK minta](https://aka.ms/search-sdk-preview) |2.0 előzetes verzió |2016 augusztusától, amely a minta |
+| [.NET SDK minta](https://aka.ms/search-sdk-preview) |4.0.1-Preview |Megtekintés, előfordulhat, hogy 2017 kiadott |
 | [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2016-09-01 |Általánosan elérhető |
-| [Szolgáltatás REST API minta](search-api-2015-02-28-preview.md) |2015-02-28 – előzetes verzió |Előzetes verzió |
+| [Szolgáltatás REST API minta](search-api-2016-09-01-preview.md) |2016 09-01. dátumú előnézeti |Előzetes verzió |
 | [.NET-kezelési SDK](https://aka.ms/search-mgmt-sdk) |2015-08-19 |Általánosan elérhető |
 | [Kezelési REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Általánosan elérhető |
 

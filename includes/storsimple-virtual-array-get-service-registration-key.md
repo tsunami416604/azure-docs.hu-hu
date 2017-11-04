@@ -1,7 +1,7 @@
-#### <a name="to-get-the-storsimple-service-registration-key"></a>To get the StorSimple service registration key
+#### <a name="to-get-the-storsimple-service-registration-key"></a>A StorSimple szolgáltatás regisztrációs kulcsának lekérése
 
-1.  On the **StorSimple Device Manager** blade, click the service that you created. This opens up a new blade to the right.
+1.  A **StorSimple-eszközkezelő** panelen kattintson a létrehozott szolgáltatásra. Ez egy új panelt nyit meg a jobb oldalon.
 
-2.  In the blade that opens up, click **Manage &gt;** **Keys**.
+2.  A megnyitott paneljén kattintson **kezelése &gt;**  **kulcsok**.
 
-3.  Click the copy icon to copy the service registration key and save it for later use.
+3.  A Másolás ikonra a szolgáltatás regisztrációs kulcsának másolásához és mentheti későbbi felhasználásra.

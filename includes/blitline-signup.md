@@ -1,30 +1,30 @@
 
-### <a name="to-sign-up-for-a-blitline-account"></a>To sign up for a Blitline account
-1. Log in to the [Azure Management Portal](https://manage.windowsazure.com/).
-2. In the lower pane of the management portal, click **New**.
+### <a name="to-sign-up-for-a-blitline-account"></a>Az egy Blitline fiók
+1. Jelentkezzen be a [Azure felügyeleti portálján](https://manage.windowsazure.com/).
+2. A kezelési portál alsó panelén kattintson **új**.
    
     ![command-bar-new][command-bar-new]
-3. Click **Store**.
+3. Kattintson a **tároló**.
    
-    ![blitline-store][blitline-store]
-4. In the **Choose an Add-on** dialog, select **Blitline** and click the right arrow.
-5. In the **Personalize Add-on** dialog select the **Blitline** plan you want to sign up for.
-6. Enter a name to identify your **Blitline** service in your Azure settings, or use the default value of **Blitline**. Names must be between 1 and 100 characters in length and contain only alphanumeric characters, dashes, dots, and underscores. The name must be unique in your list of subscribed Azure Store Items.
+    ![blitline-tároló][blitline-store]
+4. Az a **válassza ki a bővítmény** párbeszédablakban válassza **Blitline** , és kattintson a jobbra mutató nyílra.
+5. Az a **bővítmény személyre** párbeszédpanelen válassza ki a **Blitline** jelentkezzen be a kívánt tervet.
+6. Adjon meg egy nevet, amely azonosítja a **Blitline** az Azure beállításaiban szolgáltatás, vagy az alapértelmezett értéket **Blitline**. A neveknek 1–100 karakter hosszúságúnak kell lenniük, és kizárólag alfanumerikus karaktereket, kötőjeleket, pontokat és aláhúzásjeleket tartalmazhatnak. A névnek egyedinek kell lennie az előfizetett Azure Store-elemek listájában.
    
-    ![store-screen-1][store-screen-1]
-7. Choose a value for the region; for example, West US. 
-8. Click the right arrow.
-9. On the **Review Purchase** tab, review the plan and pricing information, and review the legal terms. If you agree to the terms, click the check mark. After you click the check mark, your Blitline account will begin the provisioning process. 
+    ![tároló-képernyő-1][store-screen-1]
+7. Adjon meg értéket a régió; Ha például USA nyugati régiója. 
+8. Kattintson a jobbra mutató nyílra.
+9. Az a **tekintse át a vásárlás** lapon tekintse át a terv és a díjszabásról, és tekintse át a jogi feltételeket. Ha elfogadja a feltételeket, kattintson a pipa jelre. Kattintson a pipa jelre, miután Blitline fiókja megkezdődik a telepítési folyamatot. 
 
-To use Blitline you need to have your Application ID.
+Blitline használandó kell rendelkeznie az alkalmazás azonosítóját.
 
-### <a name="to-find-your-blitline-application-id"></a>To find your Blitline Application ID
-1. Click **Connection Info**.
+### <a name="to-find-your-blitline-application-id"></a>A Blitline Alkalmazásazonosító kereséséhez
+1. Kattintson a **Kapcsolatinformáció**.
    
-    ![blitline-connection-info-button][blitline-connection-info-button]
-2. In the *Connection info* dialog, you can see your Application ID
+    ![blitline-kapcsolat – info – gombra][blitline-connection-info-button]
+2. Az a *Kapcsolatinformáció* párbeszédpanelen megjelenik az alkalmazás azonosítója
    
-    ![blitline-connection-info][blitline-connection-info]
+    ![blitline Kapcsolatinformáció][blitline-connection-info]
 
 <!--images-->
 

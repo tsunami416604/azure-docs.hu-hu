@@ -1,10 +1,10 @@
-1. Create a new class in the project called `ToDoBroadcastReceiver`.
-2. Add the following using statements to **ToDoBroadcastReceiver** class:
+1. Hozzon létre egy új osztályt a projekt neve `ToDoBroadcastReceiver`.
+2. Adja hozzá a következő using utasításokat a **ToDoBroadcastReceiver** osztály:
    
         using Gcm.Client;
         using Microsoft.WindowsAzure.MobileServices;
         using Newtonsoft.Json.Linq;
-3. Add the following permission requests between the **using** statements and the **namespace** declaration:
+3. Adja hozzá a következő engedélykéréseket között a **használatával** utasítások és a **névtér** deklarációjában:
    
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -14,7 +14,7 @@
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-4. Replace the existing **ToDoBroadcastReceiver** class definition with the following:
+4. Cserélje le a meglévő **ToDoBroadcastReceiver** osztály definícióját a következőre:
    
         [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, 
@@ -29,8 +29,8 @@
             public static string[] senderIDs = new string[] { "<PROJECT_NUMBER>" };
         }
    
-    In the above code, you must replace *`<PROJECT_NUMBER>`* with the project number assigned by Google when you provisioned your app in the Google developer portal. 
-5. In the ToDoBroadcastReceiver.cs project file, add the following code that defines the **PushHandlerService** class:
+    A fenti kódban, le kell cserélnie  *`<PROJECT_NUMBER>`*  Google által hozzárendelt, amikor az alkalmazást a Google fejlesztői portálján a kiépített projekt számát. 
+5. A ToDoBroadcastReceiver.cs projekt fájlban adja hozzá az alábbi kódot, amely meghatározza a **PushHandlerService** osztály:
    
         // The ServiceAttribute must be applied to the class.
         [Service] 
@@ -41,13 +41,13 @@
             public PushHandlerService() : base(ToDoBroadcastReceiver.senderIDs) { }
         }
    
-    Note that this class derives from **GcmServiceBase** and that the **Service** attribute must be applied to this class.
+    Vegye figyelembe, hogy ez az osztály származik **GcmServiceBase** , és hogy a **szolgáltatás** Ez az osztály attribútumot kell alkalmazni.
    
    > [!NOTE]
-   > The **GcmServiceBase** class implements the **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** and **OnError()** methods. You must override these methods in the **PushHandlerService** class.
+   > A **GcmServiceBase** osztály megvalósítja a **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** és  **OnError()** módszerek. Ezek a módszerek felül kell bírálnia a **PushHandlerService** osztály.
    > 
    > 
-6. Add the following code to the **PushHandlerService** class that overrides the **OnRegistered** event handler. 
+6. Adja hozzá a következő kódot a **PushHandlerService** osztály, amely felülbírálja a **OnRegistered** eseménykezelő. 
    
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -86,8 +86,8 @@
             }
         }
    
-    This method uses the returned GCM registration ID to register with Azure for push notifications. Tags can only be added to the registration after it is created. For more information, see [How to: Add tags to a device installation to enable push-to-tags](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
-7. Override the **OnMessage** method in **PushHandlerService** with the following code:
+    Ez a metódus visszaadott GCM regisztrációs Azonosítót használja az Azure-ral leküldéses értesítések regisztrálása. Címkék csak felveheti a regisztrációt a létrehozás után. További információkért lásd: [hogyan: címkék hozzáadása egy eszköz telepítése leküldéses-címkék engedélyezése](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+7. Bírálja felül a **OnMessage** metódus a **PushHandlerService** az alábbi kódra:
    
        protected override void OnMessage(Context context, Intent intent)
        {          
@@ -122,7 +122,7 @@
    
            }
        }
-8. Override the **OnUnRegistered()** and **OnError()** methods with the following code.
+8. Bírálja felül a **OnUnRegistered()** és **OnError()** módszereket az alábbi kódra.
    
        protected override void OnUnRegistered(Context context, string registrationId)
        {

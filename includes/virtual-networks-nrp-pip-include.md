@@ -1,22 +1,22 @@
-## <a name="public-ip-address"></a>Public IP address
-A public IP address resource provides either a reserved or dynamic Internet facing IP address. Although you can create a public IP address as a stand alone object, you need to associate it to another object to actually use the address. You can associate a public IP address to a load balancer, application  gateway, or a NIC to provide Internet access to those resources.  
+## <a name="public-ip-address"></a>Nyilvános IP-cím
+Egy nyilvános IP-cím erőforrás vagy egy fenntartott vagy dinamikus internetes IP-címet tartalmaz. Bár létrehozhat egy nyilvános IP-cím megegyezik egy önálló, kell társítsa a címet szeretné valójában egy másik objektumhoz. A nyilvános IP-címet a terheléselosztóhoz, Alkalmazásátjáró vagy egy hálózati Adaptert, Internet-hozzáférést biztosít azokhoz az erőforrásokhoz is hozzárendelhető.  
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **publicIPAllocationMethod** |Defines if the IP address is *static* or *dynamic*. |static, dynamic |
-| **idleTimeoutInMinutes** |Defines the idle time out, with a default value of 4 minutes. If no more packets for a given session is received within this time, the session is terminated. |any value between 4 and 30 |
-| **ipAddress** |IP address assigned to object. This is a read-only property. |104.42.233.77 |
+| **publicIPAllocationMethod** |Meghatározza, hogy az IP-cím *statikus* vagy *dinamikus*. |statikus, dinamikus |
+| **idleTimeoutInMinutes** |Határozza meg az üresjárati időkorlát, 4 perces alapértelmezett értékkel. Ha egy adott munkamenethez nincs további csomagok ezen időn belül érkezik, a munkamenet megszakítása. |4 és 30 közötti értéket |
+| **IP-cím** |Az objektum hozzárendelt IP-címet. Ez a tulajdonság csak olvasható. |104.42.233.77 |
 
-### <a name="dns-settings"></a>DNS settings
-Public IP addresses have a child object named **dnsSettings** containing the following properties:
+### <a name="dns-settings"></a>DNS-beállítások
+Nyilvános IP-címek rendelkezik nevű gyermekobjektum **dnsSettings** tartalmaz a következő tulajdonságokat:
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **domainNameLabel** |Host named used for name resolution. |www, ftp, vm1 |
-| **fqdn** |Fully qualified name for the public IP. |www.westus.cloudapp.azure.com |
-| **reverseFqdn** |Fully qualified domain name that resolves to the IP address and is registered in DNS as a PTR record. |www.contoso.com. |
+| **domainNameLabel** |Nevű a névfeloldáshoz használnak. |a webszolgáltatáshoz, ftp, vm1 |
+| **teljesen minősített tartományneve** |A nyilvános IP-cím teljesen minősített nevet. |www.westus.cloudapp.Azure.com |
+| **reverseFqdn** |Teljesen minősített tartománynevét, amely megkeresi az IP-címet, és a DNS-ben a PTR típusú rekord, regisztrálva van. |www.contoso.com. |
 
-Sample public IP address in JSON format:
+A minta nyilvános IP-cím JSON formátumban:
 
     {
        "name": "PIP01",
@@ -34,8 +34,8 @@ Sample public IP address in JSON format:
        }
     } 
 
-### <a name="additional-resources"></a>Additional resources
-* Get more information about [public IP addresses](../articles/virtual-network/virtual-networks-reserved-public-ip.md).
-* Learn about [instance level public IP addresses](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
-* Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163638.aspx) for public IP addresses.
+### <a name="additional-resources"></a>További források
+* További információk [nyilvános IP-címek](../articles/virtual-network/virtual-networks-reserved-public-ip.md).
+* További tudnivalók [szintű nyilvános IP-címek példány](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
+* Olvassa el a [REST API referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt163638.aspx) nyilvános IP-címek.
 

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: nitinme
-ms.openlocfilehash: 96b2b4976729da5b7d8b75909dbe099090240c08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 8a8b62e2cdf9f4f6c41b041ac20694303203531b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Az Azure HDInsight Hadoop-összetevők kibocsátási megjegyzései
 
@@ -61,7 +61,7 @@ Ez a cikk nyújt tájékoztatást a **legutóbbi** Azure HDInsight kiadás friss
 
 * **Új szolgáltatások a Hive**. Lásd: [Hortonworks dokumentáció](https://hortonworks.com/apache/hive/#section_4).
 
-* **Parancssori felület érvénytelenítése Hive**: CLI struktúra elavult, és hogy Beeline használja helyette. További információkért lásd: [Apache-dokumentáció](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline). Beeline használata a hdinsight eszközzel, lásd: [Beeline használata a HDInsight Hadoop-fürtök](hdinsight-hadoop-use-hive-beeline.md).
+* **Parancssori felület érvénytelenítése Hive**: CLI struktúra elavult, és hogy Beeline használja helyette. További információkért lásd: [Apache-dokumentáció](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline). Beeline használata a hdinsight eszközzel, lásd: [Beeline használata a HDInsight Hadoop-fürtök](hadoop/apache-hadoop-use-hive-beeline.md).
 
 * **Az Apache Phoenix és HBase új funkciói**.
     * Tárolási kvóta támogatási: több-bérlős környezetekben, lehetővé téve a korlátozott tárolóhely a gyakran használt egy táblánként és névtér szintek.

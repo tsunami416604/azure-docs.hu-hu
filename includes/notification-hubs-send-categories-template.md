@@ -1,28 +1,28 @@
 
-In this section, you send breaking news as tagged template notifications from a .NET console app.
+Ez a szakasz legfrissebb hírek, címkézett sablon értesítéseket küld a .NET-konzolalkalmazásból.
 
-If you are using the Mobile Apps feature of Microsoft Azure App Service, refer to the [Add push notifications for Mobile Apps] tutorial, and select your platform at the top.
+Ha a Microsoft Azure App Service Mobile Apps szolgáltatásának használ, tekintse meg a [leküldéses értesítések hozzáadása Mobile Apps] oktatóanyag, és válassza ki a platformot, az oldal tetején.
 
-If you want to use Java or PHP, refer to [How to use Notification Hubs from Java or PHP]. You can send notifications from any back end by using the [Notification Hubs REST interface].
+Ha azt szeretné, a Java vagy a PHP, tekintse meg a [használata a Notification Hubs Java vagy PHP]. Értesítéseket küldhet a háttérből használatával a [Notification hub REST-felület].
 
-If you created the console app for sending notifications when you completed [Get started with Notification Hubs], skip steps 1-3.
+Ha létrehozta az értesítések küldése, ha elvégezte a Konzolalkalmazás [Ismerkedés a Notification Hubs], hagyja ki a 1-3.
 
-1. In Visual Studio, create a new Visual C# console application:
+1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást:
    
-      ![The Console Application link][13]
+      ![A Konzolalkalmazás-hivatkozás][13]
 
-2. On the Visual Studio main menu, select **Tools** > **Library Package Manager** > **Package Manager Console** and then, in the console window, enter the following string:
+2. Válassza ki a Visual Studio főmenü **eszközök** > **Kódtárcsomag-kezelő** > **Csomagkezelő konzol** , majd a konzol a ablakban adja meg a következő karakterláncot:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-3. Select **Enter**.  
-    This action adds a reference to the Azure Notification Hubs SDK by using the [Microsoft.Azure.Notification Hubs NuGet package].
+3. Válassza ki **meg**.  
+    Ez a művelet hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomag] használatával.
 
-4. Open the Program.cs file, and add the following `using` statement:
+4. Nyissa meg a Program.cs fájlt, és adja hozzá a következő `using` utasítást:
    
         using Microsoft.Azure.NotificationHubs;
 
-5. In the `Program` class, add the following method, or replace it if it already exists:
+5. Az a `Program` osztály, adja hozzá a következő metódust, vagy cserélje le, ha már létezik:
    
         private static async void SendTemplateNotificationAsync()
         {
@@ -48,23 +48,23 @@ If you created the console app for sending notifications when you completed [Get
             }
          }
    
-    This code sends a template notification for each of the six tags in the string array. The use of tags ensures that devices receive notifications only for the registered categories.
+    Ez a kód sablon értesítést küld az egyes, a hat címkék a karakterlánc-tömbben. Címkék használata azt biztosítja, hogy az eszköz megkapja az értesítéseket csak a regisztrált kategóriák.
 
-5. In the preceding code, replace the `<hub name>` and `<connection string with full access>` placeholders with your notification hub name and the connection string for *DefaultFullSharedAccessSignature* from the dashboard of your notification hub.
+5. Az előzőekben látható kód cserélje le a `<hub name>` és `<connection string with full access>` helyőrzőket az értesítési központ nevére és a kapcsolati karakterláncot *DefaultFullSharedAccessSignature* az értesítési központ az irányítópultról.
 
-6. In the **Main** method, add the following lines:
+6. A **Main** metódusban adja hozzá a következő sorokat:
    
          SendTemplateNotificationAsync();
          Console.ReadLine();
 
-7. Build the console app.
+7. A konzol alkalmazás elkészítésére.
 
 <!-- Images. -->
 [13]: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[Get started with Notification Hubs]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
-[Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
-[How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[Microsoft.Azure.Notification Hubs NuGet package]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Ismerkedés a Notification Hubs]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Notification hub REST-felület]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
+[leküldéses értesítések hozzáadása Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
+[használata a Notification Hubs Java vagy PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
+[Microsoft.Azure.Notification Hubs NuGet-csomag]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

@@ -1,0 +1,191 @@
+---
+title: "Ismert problémák és hibaelhárítási útmutató |} Microsoft Docs"
+description: "Ismert problémák listája és a hibaelhárítás elősegítése érdekében az útmutató"
+services: machine-learning
+author: svankam
+ms.author: svankam
+manager: mwinkle
+ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.service: machine-learning
+ms.workload: data-services
+ms.topic: article
+ms.date: 09/20/2017
+ms.openlocfilehash: f39faea6b7e0886d63085b752f9532a7010ea941
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/23/2017
+---
+# <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
+Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
+
+> [!IMPORTANT]
+> Ha a támogatási csoport kommunikál, fontos a buildszám rendelkezik. Az alkalmazás a buildszám kattintva talál a **súgó** menü. Kattintson a buildszáma a másolja a vágólapra. Illessze be az e-mailek, vagy a jelentés hibákat fórumok támogatja.
+
+![verziószám ellenőrzéséhez](media/known-issues-and-troubleshooting-guide/buildno.png)
+
+## <a name="machine-learning-msdn-forum"></a>Machine Learning MSDN fórum
+Az MSDN fórumon, hogy kérdéseit felteheti is van. A termékért felelős csoport a Fórum aktívan figyeli. Az URL-cím fórumra [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum). 
+
+## <a name="gather-diagnostics-information"></a>Diagnosztikai adatainak összegyűjtése
+Egyes esetekben hasznos lehet ha diagnosztikai adatokat is biztosít, ha a segítségkérés. Ez a naplófájlok lakhelyétől:
+
+### <a name="installer"></a>Telepítő
+Ha problémát tapasztal telepítése során, a telepítő naplófájlok itt:
+
+```
+# Windows:
+%TEMP%\amlinstaller\logs\*
+
+# macOS:
+/tmp/amlinstaller/logs/*
+```
+A zip-be ezeket a könyvtárakat tartalmát, és elküldi a számunkra a diagnosztikai.
+
+### <a name="workbench-desktop-app"></a>Egy asztali alkalmazás munkaterület
+Ha a munkaterületet üzemeltető asztali összeomlik, a naplófájlok itt található:
+```
+# Windows
+%APPDATA%\AmlWorkbench
+
+# macOS
+~/Library/Application Support/AmlWorkbench
+``` 
+A zip-be ezeket a könyvtárakat tartalmát, és elküldi a számunkra a diagnosztikai.
+
+### <a name="experiment-execution"></a>Kísérlet végrehajtása
+Ha egy adott parancsfájl megszakad, miközben az asztali alkalmazásból beküldése, próbálja meg újra elküldeni az keresztül parancssori felület használatával `az ml experiment submit` parancsot. Ez adjon meg teljes hibaüzenet JSON formátumú, és a legfontosabb tartalmaz egy **Műveletazonosító** érték. Küldjön nekünk a JSON fájl többek között a **Műveletazonosító** és könnyebb diagnosztizálásához. 
+
+Ha egy adott parancsfájl elküldése a sikeres, de végrehajtása sikertelen, kell-e nyomtassa ki a **futtatásához Azonosítóját** rendszert adott futtató azonosításához. Csomagot be a megfelelő naplófájlok helyét a következő parancsot:
+
+```azurecli
+# Create a ZIP file that contains all the diagnostics information
+$ az ml experiment diagnostics -r <run_id> -t <target_name>
+```
+
+A `az ml experiment diagnostics` parancs létrehoz egy `diagnostics.zip` fájlt a projekt gyökérmappájában. A ZIP-csomagját állapotban teljes projektmappában került végrehajtásra, és a naplózási információk időben tartalmazza. Úgy, hogy elküldi a diagnosztikai fájl előtt érdemes bizalmas adatai.
+
+## <a name="send-us-a-frown-or-a-smile"></a>Küldjön egy rosszallás (vagy egy mosolynál)
+
+Azure ML munkaterület dolgozik, amikor is küldhet nekünk a rosszallás (vagy egy mosolynál), az alkalmazás rendszerhéj bal alsó sarkába arc arcfelismerési ikonra kattint. Is lehetősége van a e-mail címet (így azt is visszaszerezheti), és/vagy egy Képernyőkép az aktuális állapot. 
+
+## <a name="known-service-limits"></a>Ismert szolgáltatásra vonatkozó korlátozások
+- Maximálisan engedélyezett projektet tartalmazó mappa mérete: 25 MB.
+    >[!NOTE]
+    >Ez a korlátozás nem vonatkozik `.git`, `docs` és `outputs` mappák. Ezek a mappanevek-és nagybetűk. Ha nagy fájlok dolgozik, tekintse meg a [megőrzése módosításokat, és nagy fájlok üzlet](how-to-read-write-files.md).
+
+- Maximálisan megengedett kísérlet végrehajtási ideje: hét napja
+- A nyomon követett fájl maximális méretét `outputs` mappa Futtatás után: 512 MB
+  - Ez azt jelenti, hogy a parancsfájlt a kimeneti mappában 512 MB-nál nagyobb fájlt hoz létre, ha azt nem gyűjtenek van. Ha nagy fájlok dolgozik, tekintse meg a [megőrzése módosításokat, és nagy fájlok üzlet](how-to-read-write-files.md).
+
+- SSH-kulcsok használata nem támogatott, amikor SSH-n keresztül csatlakozik egy távoli gép vagy a Spark-fürt. Csak a felhasználónév/jelszó mód jelenleg támogatott.
+
+- Szöveg fürtözési átalakítások nem támogatottak a Mac.
+
+- RevoScalePy könyvtár csak Windows és Linux (a Docker-tároló) támogatott. MacOS a nem támogatott.
+
+## <a name="file-name-too-long-on-windows"></a>A fájlnév túl hosszú a Windows rendszeren
+Ha a munkaterületet használja a Windows, mutatjuk be a alapértelmezett legfeljebb 260 karakteres fájl neve maximális hossz, amely sikerült surface, némileg félrevezető "a rendszer nem találja a megadott elérési út" hiba. Egy beállításkulcs-érték engedélyezi sokkal hosszabb fájl elérési útja módosítható. Felülvizsgálati [Ez a cikk](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.
+
+## <a name="docker-error-read-connection-refused"></a>Docker hiba "olvasható: Kapcsolat elutasítva"
+Végrehajtása egy helyi Docker-tároló, időnként megjelenhet a következő hibával: 
+```
+Get https://registry-1.docker.io/v2/: 
+dial tcp: 
+lookup registry-1.docker.io on [::1]:53: read udp [::1]:49385->[::1]:53: 
+read: connection refused
+```
+
+A Docker DNS-kiszolgáló módosítása megoldhatja `automatic` rögzített értékre `8.8.8.8`.
+
+## <a name="remove-vm-execution-error-no-tty-present"></a>Távolítsa el a virtuális gép végrehajtási hiba "nincs jelen tty"
+Egy Docker-tároló egy távoli számítógépen Linux elleni végrehajtásakor léphetnek fel a következő hibaüzenet:
+```
+sudo: no tty present and no askpass program specified.
+``` 
+Ez akkor fordulhat elő, ha az Azure portál segítségével módosíthatja az Ubuntu Linux virtuális gép gyökér szintű jelszavát. 
+
+Az Azure Machine Learning-munkaterület a távoli állomáson futtatásához jelszó nélküli sudoers hozzáférésre van szüksége. Ez a legegyszerűbb módja, hogy használjon _visudo_ (Előfordulhat, hogy a fájl esetén létrehozhat nem létezik) a következő fájl szerkesztése:
+
+```
+$ sudo visudo -f /etc/sudoers
+```
+
+>[!IMPORTANT]
+>Fontos, hogy a fájl szerkesztése _visudo_ és nem egy másik parancsba is. _visudo_ automatikusan ellenőrzi az szintaxis a összes sudo olyan konfigurációs fájlt, és szintaktikailag helyes sudoers fájl létrehozásához hiba is kizárhatja sudo.
+
+Szúrja be a következő sort a fájl végén:
+
+```
+username ALL=(ALL) NOPASSWD:ALL
+```
+
+Ha _felhasználónév_ Azure Machine Learning-munkaterület nevét a távoli állomás bejelentkezni fogja használni.
+
+A sor #includedir után kell következnie "/ etc/sudoers.d", ellenkező esetben azt felülbírálható egy másik szabálynak.
+
+Ha egy bonyolultabb sudo-konfigurációt, érdemes lehet dokumentációjában sudo Ubuntu érhető el itt: https://help.ubuntu.com/community/Sudoers
+
+A fenti hiba is előfordulhat, ha nem használja az Ubuntu-alapú Linux virtuális gép az Azure-ban egy végrehajtási célként. Távoli végrehajtás Ubuntu alapú Linux virtuális gép csak támogatott. 
+
+## <a name="vm-disk-is-full"></a>Virtuálisgép-lemez megtelt
+Alapértelmezés szerint új Linux virtuális gép létrehozása az Azure nyílik meg a 30-GB lemezterület az operációs rendszerhez. Alapértelmezés szerint a docker-motorhoz húzza lefelé képek és futó tárolók ugyanazt a lemezt használ. Ez töltheti fel az operációsrendszer-lemezképet, és a "Virtuális gép lemez van teljes" hibát látja, ha ez történik.
+
+A gyorsjavítást, hogy távolítsa el az összes Docker-lemezképek, már nem használja. A következő Docker parancs éppen ez hajtja végre. (Természetesen kell SSH-ból a virtuális gép egy bash rendszerhéj a Docker parancs végrehajtásához.)
+
+```
+$ docker system prune -a
+```
+
+Is hozzá adatlemezt, majd konfigurálja a adatlemez lemezképek tárolásához használandó Docker-motorhoz. Itt [adatlemez hozzáadása](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk). Követően [módosítása, ahol a Docker tárolja a képek](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
+
+Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk).
+
+## <a name="sharing-c-drive-on-windows"></a>A Windows a C meghajtó megosztása
+Ha végrehajtás alatt álló helyi Docker-tároló a Windows, a beállítás `sharedVolumes` való `true` a a `docker.compute` a fájl `aml_config` végrehajtási teljesítményének. Azonban ehhez a C meghajtó megosztja a _Docker a Windows eszköz_. Ha nem tudja megosztani a C meghajtó, próbáljon a következő tippek:
+
+* Ellenőrizze a osztozik a C meghajtó használata a Fájlkezelőből
+* Nyissa meg a hálózati adapterre vonatkozó beállításai és eltávolítása/újratelepítése "Fájl és nyomtatómegosztás Microsoft Networkshöz" vEthernet a
+* Nyissa meg a docker-beállítások és a docker beállítások belül a C meghajtó
+* A Windows-jelszó módosítása hatással a megosztást. Nyissa meg a Fájlkezelőt, ossza meg újra a C meghajtó, és adja meg az új jelszót.
+* Tűzfallal kapcsolatos probléma esetleg felmerülő is, a C meghajtó megosztása Docker tett kísérlet során. Ez [Stack Overflow post](http://stackoverflow.com/questions/42203488/settings-to-windows-firewall-to-allow-docker-for-windows-to-share-drive/43904051) hasznos lehet.
+* Tartományi hitelesítő adatok használatával, a C meghajtó megosztásakor a megosztás működése leáll a hálózatokon, ahol a tartományvezérlő nem érhető el (például otthoni hálózathoz, a nyilvános Wi-Fi stb.) a. További információkért lásd: [a feladás egy vagy több](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/).
+
+A megosztási problémát, a kis teljesítményt, úgy, hogy a is elkerülheti `sharedVolumne` való `false` a a `docker.compute` fájl.
+
+## <a name="some-useful-docker-commands"></a>Néhány hasznos Docker-parancsok
+
+Íme néhány hasznos Docker parancsokat:
+
+```sh
+# display all running containers
+$ docker ps
+
+# dislplay all containers (running or stopped)
+$ docke ps -a
+
+# display all images
+$ docker images
+
+# show Docker logs of a container
+$ docker logs <container_id>
+
+# create a new container and launch into a bash shell
+$ docker run <image_id> /bin/bash
+
+# launch into a bash shell on a running container
+$ docker exec -it <container_id> /bin/bash
+
+# stop an running container
+$ docker stop <container_id>
+
+# delete a container
+$ docker rm <container_id>
+
+# delete an image
+$ docker rmi <image_id>
+
+# delete all unussed Docker images 
+$ docker system prune -a
+
+```

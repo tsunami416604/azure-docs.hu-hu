@@ -1,6 +1,6 @@
-1. Open the Android SDK Manager by clicking the icon on the toolbar of Android Studio, or by clicking **Tools** > **Android** > **SDK Manager** on the menu. Click the **Launch Standalone SDK Manager** link.
-2. Locate the target version of the Android SDK that is used in your project, and open it. If **Google APIs** is not already installed, then select it and click **Install packages...**.
-3. In Android Studio, choose **File** > **Project Structure**. Select **Notifications**, select **Google Cloud Messaging**, and then click **OK**.
+1. Nyissa meg az Android SDK Manager, az Android Studio eszköztár ikonjára kattint, vagy úgy **eszközök** > **Android** > **SDK Manager** a menü. Kattintson a **indítsa el önálló SDK Manager** hivatkozásra.
+2. Keresse meg az alkalmazásában használt Android SDK célverzióját, és nyissa meg. Ha **Google API-k** nincs telepítve, majd válassza ki azt, és kattintson a **csomagok telepítése...** .
+3. Az Android Studióban válassza **fájl** > **szerkezetének**. Válassza ki **értesítések**, jelölje be **Google Cloud Messaging**, és kattintson a **OK**.
 
 <!--
 3. Open **AndroidManifest.xml** and add this tag to the *application* tag.

@@ -5,47 +5,46 @@ keywords: "sql database-oktatóanyag"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial
-ms.workload: data-management
+ms.custom: scale out apps
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/10/2017
+ms.topic: article
+ms.date: 07/28/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 19d02229781186053a0063af1c7e1a3280179f46
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/12/2017
-
-
+ms.openlocfilehash: 14912df26074b525585594cc1b5d32c85ce9094f
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="manage-schema-for-multiple-tenants-in-the-wtp-saas-application"></a>Séma kezelése több bérlőnél a WTP SaaS-alkalmazásban
+# <a name="manage-schema-for-multiple-tenants-in-a-multi-tenant-application-that-uses-azure-sql-database"></a>Több bérlő sémájának kezelése Azure SQL Database-t használó több-bérlős alkalmazásban
 
-A WTP alkalmazás bemutatása oktatóanyagból megtudhatja, hogyan lehet a WTP alkalmazással bérlői adatbázist üzembe helyezni a kezdeti sémájával, és regisztrálni a katalógusban. Mint minden alkalmazás, idővel a WTP alkalmazás is fejlődik, és alkalmanként szükségessé válik az adatbázis módosítása. A módosítások a következők lehetnek: új vagy módosított séma, új vagy módosított referenciaadatok és rutin adatbázis-karbantartási feladatok az alkalmazás optimális teljesítményének biztosítása érdekében. A SaaS-alkalmazásokkal ezeket a módosításokat koordinált módon kell üzembe helyezni valószínűleg nagyszámú bérlői adatbázison. A módosításokat a későbbi bérlői adatbázisok miatt is be kell építeni az üzembe helyezési folyamatba.
+A [első Wingtip Szolgáltatottszoftver-oktatóanyag](sql-database-saas-tutorial.md) bemutatja, hogyan az alkalmazás egy bérlő adatbázis létesítéséhez és regisztrálja a katalógusban. Bármely alkalmazás, például a Wingtip SaaS-alkalmazás verzióinformációk lesz, és esetenként esetén a módosítások adatbázisba. A módosítások a következők lehetnek: új vagy módosított séma, új vagy módosított referenciaadatok és rutin adatbázis-karbantartási feladatok az alkalmazás optimális teljesítményének biztosítása érdekében. A SaaS-alkalmazásokkal ezeket a módosításokat koordinált módon kell üzembe helyezni valószínűleg nagyszámú bérlői adatbázison. A módosítások lehet a jövőben bérlői adatbázisok van szükségük a kiépítési folyamat szóló.
 
-Ez az oktatóanyag két forgatókönyvet ismertet: referenciaadat-frissítések üzembe helyezése az összes bérlőhöz, és index visszaadása a referenciaadatokat tartalmazó táblázathoz. Ezeknek a műveleteknek az összes bérlőre kiterjedő végrehajtására a [Rugalmas feladatok](sql-database-elastic-jobs-overview.md) funkció használatos és egy *arany* bérlői adatbázis, amely az új adatbázisok sablonja.
+Ez az oktatóanyag két forgatókönyvet ismertet: referenciaadat-frissítések üzembe helyezése az összes bérlőhöz, és index visszaadása a referenciaadatokat tartalmazó táblázathoz. A [rugalmas feladatok](sql-database-elastic-jobs-overview.md) szolgáltatás hajthatók végre ezeket a műveleteket között egyetlen bérlő számára, és a *arany* bérlői adatbázis, amely sablonként szolgál, az új adatbázisokat.
 
-Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
+Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 
-> * Feladatfiók létrehozása több bérlőben történő lekérdezéshez
+> * Feladat-fiók létrehozása
+> * Több bérlő átfogó lekérdezése
 > * Az összes bérlői adatbázis adatainak frissítése
 > * Index létrehozása a táblához az összes bérlői adatbázisban
 
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A WTP alkalmazás üzembe van helyezve. A kevesebb, mint öt perc alatti üzembe helyezéshez lásd: [A WTP SaaS-alkalmazás üzembe helyezése és felfedezése](sql-database-saas-tutorial.md)
+* A Wingtip SaaS-alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip SaaS-alkalmazáshoz](sql-database-saas-tutorial.md)
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [Az SSMS letöltése és telepítése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
-*Ez az oktatóanyag az SQL Database szolgáltatás egy korlátozott előzetes verziójának funkcióit használja (Elastic Database-feladatok). Ha szeretné elvégezni ezt az oktatóanyagot, küldje el az előfizetés-azonosítóját az SaaSFeedback@microsoft.com címre, tárgyként megadva a subject=Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Mivel ez egy korlátozott előzetes verzió, az ezzel kapcsolatos kérdésekkel és támogatásért vegye fel a kapcsolatot az SaaSFeedback@microsoft.com címen.*
+*Ez az oktatóanyag az SQL Database szolgáltatás egy korlátozott előzetes verziójának funkcióit használja (Elastic Database-feladatok). Ha szeretné elvégezni ezt az oktatóanyagot, küldje el az előfizetés-azonosítóját az SaaSFeedback@microsoft.com címre, tárgyként megadva a subject=Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előnézet korlátozva, így forduljon SaaSFeedback@microsoft.com kapcsolatos kérdésekre, vagy a támogatási szolgálathoz.*
 
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Az SaaS-sémakezelési minták bemutatása
@@ -60,11 +59,11 @@ Az adatbázisonkénti egyetlen bérlőt alkalmazó SaaS-mintából fakadó adate
 Megjelent az Elastic Jobs új verziója, amely most az Azure SQL Database integrált funkciója (nincs szükség hozzá további szolgáltatásokra vagy összetevőkre). Ez Elastic Jobs-nak ez az új verziója jelenleg korlátozott előzetes verzió. Ez a korlátozott előzetes verzió jelenleg a PowerShellt támogatja feladatfiókok létrehozásához és a T-SQL-t a feladatok létrehozásához és kezeléséhez.
 
 > [!NOTE]
-> *Ez az oktatóanyag az SQL Database szolgáltatás egy korlátozott előzetes verziójának funkcióit használja (Elastic Database-feladatok). Ha szeretné elvégezni ezt az oktatóanyagot, küldje el az előfizetés-azonosítóját az SaaSFeedback@microsoft.com címre, tárgyként megadva a subject=Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Mivel ez egy korlátozott előzetes verzió, az ezzel kapcsolatos kérdésekkel és támogatásért vegye fel a kapcsolatot az SaaSFeedback@microsoft.com címen.*
+> *Ez az oktatóanyag az SQL Database szolgáltatás egy korlátozott előzetes verziójának funkcióit használja (Elastic Database-feladatok). Ha szeretné elvégezni ezt az oktatóanyagot, küldje el az előfizetés-azonosítóját az SaaSFeedback@microsoft.com címre, tárgyként megadva a subject=Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előnézet korlátozva, így forduljon SaaSFeedback@microsoft.com kapcsolatos kérdésekre, vagy a támogatási szolgálathoz.*
 
 ## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
 
-A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaas](https://github.com/Microsoft/WingtipSaaS) GitHub-adattárban érhető el. A szkriptfájlok a [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Tanulási modulok) mappában találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
+A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github-tárház. [Töltse le a Wingtip Szolgáltatottszoftver-parancsfájlok lépéseket](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>Feladatfiók-adatbázis és új feladatfiók létrehozása
 
@@ -89,14 +88,14 @@ Most hozzon létre egy feladatot, amely frissíti a *VenueTypes* táblát az ös
 1. Kapcsolódjon a bérlői kiszolgálóhoz is: tenants1-\<user\>.database.windows.net
 1. Keresse meg a *contosoconcerthall* adatbázist a *tenants1* kiszolgálón, és kérdezze le a *VenueTypes* táblát annak a megerősítéséhez, hogy a *Motorkerékpár-verseny* és az *Úszóklub* **nem szerepel** az eredménylistán.
 1. Nyissa meg a ... \\Tanulási modulok\\Sémakezelés\\DeployReferenceData.sql fájlt
-1. Módosítsa a \<user\> értékét, használja a WTP alkalmazás üzembe helyezésekor alkalmazott felhasználónevet a szkriptben mind a 3 helyen
+1. Az utasítás módosítása: beállítása @wtpUser = &lt;felhasználói&gt; és a Wingtip alkalmazás telepítésekor használt felhasználói helyettesítésére
 1. Ellenőrizze, hogy kapcsolódik-e a feladatfiók adatbázishoz, és nyomja le az **F5** billentyűt a szkript futtatásához
 
 * Az **sp\_add\_target\_group** létrehozza a DemoServerGroup nevű célcsoportot, most hozzá kell adnunk a céltagokat.
-* Az **sp\_add\_target\_group\_member** hozzáad egy *kiszolgáló* céltagtípust, amely feltételezi, hogy a kiszolgálón (ne feledje, ez a bérlői adatbázisokat tartalmazó customer1-&lt;WtpUser&gt; kiszolgáló) belüli összes adatbázist feladat-végrehajtáskor bele kell foglalni a feladatba, a második egy *adatbázis* céltagtípust ad hozzá, konkrétan a baseTenantDB „arany” adatbázist, amely a catalog-&lt;WtpUser&gt; kiszolgálón található, végül pedig egy másik *adatbázis* célcsoporttagtípust a későbbi oktatóanyagban használt adhocanalytics adatbázis belefoglalásához.
+* **SP\_hozzáadása\_cél\_csoport\_tag** ad hozzá egy *server* céltípust tag, amely úgy ítéli meg, hogy a kiszolgálón belüli összes adatbázis (Megjegyzés: Ez a tenants1 -&lt;felhasználói&gt; a bérlő adatbázisokat tartalmazó kiszolgáló) időpontban feladat végrehajtási szerepelnie kell a feladatot, a második hozzáadásával egy *adatbázis* tagtípus, kifejezetten a "arany" adatbázis (basetenantdb) a katalógus - található cél&lt;felhasználói&gt; kiszolgáló, és végül egy másik *adatbázis* csoport tagja céltípust egy újabb oktatóanyagban használt adhocanalytics-adatbázist tartalmazza.
 * Az **sp\_add\_job** létrehoz egy „Referenciaadat-telepítés” nevű feladatot
-* Az **sp\_add\_jobstep** létrehozza a T-SQL-parancsszöveget tartalmazó feladatlépést a VenueTypes referenciatáblára való frissítéséhez
-* A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Tekintse át az állapot értékét az **életciklus** oszlopban. A feladat sikeresen befejeződött az összes bérlői adatbázison és a két további, referenciatáblát tartalmazó adatbázison.
+* **SP\_hozzáadása\_feladatlépés használja** hoz létre a T-SQL parancs szövege a referenciatábla VenueTypes frissítése tartalmazó feladat lépésének
+* A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Tekintse át a értéket használja ezeket a lekérdezéseket a **életciklus** határozza meg, ha a feladat sikeresen befejeződött az összes bérlői és a két további adatbázisait a referenciatábla tartalmazó oszlop.
 
 1. Keresse meg az SSMS-ben a *contosoconcerthall* adatbázist a *tenants1* kiszolgálón, és kérdezze le a *VenueTypes* táblát annak a megerősítéséhez, hogy a *Motorkerékpár-verseny* és az *Úszóklub* **most már szerepel** az eredménylistán.
 
@@ -107,9 +106,9 @@ Az előző gyakorlathoz hasonlóan, ebben a gyakorlatban létrehoz egy feladatot
 
 Hozzon létre egy feladatot ugyanannak a feladatnak a „system” által tárolt eljárásait használva.
 
-1. Nyissa meg az SSMS-t, és kapcsolódjon a catalog-&lt;WtpUser&gt;.database.windows.net kiszolgálóhoz
+1. Nyissa meg a szolgáltatáshoz az SSMS és kapcsolódjon a katalógus -&lt;felhasználói&gt;. database.windows.net kiszolgáló
 1. Nyissa meg a ...\\Tanulási modulok\\Sémakezelés\\.sql fájlt
-1. Kattintson a jobb gombbal, válassza a Kapcsolat lehetőséget, és ha még nem kapcsolódott, akkor kapcsolódjon a catalog-&lt;WtpUser&gt;.database.windows.net kiszolgálóhoz
+1. Kattintson a jobb gombbal, válassza ki a kapcsolat, és kapcsolódjon a katalógus -&lt;felhasználói&gt;. database.windows.net kiszolgáló, ha még nincs csatlakoztatva
 1. Ellenőrizze, hogy kapcsolódik-e a jobaccount adatbázishoz, és nyomja le az F5 billentyűt a parancsprogram futtatásához
 
 * Az sp\_add\_job létrehoz egy „Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885” nevű új feladatot
@@ -133,6 +132,6 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 
 ## <a name="additional-resources"></a>További források
 
-* [A Wingtip Tickets Platform (WTP) alkalmazás kezdeti üzembe helyezésére épülő további oktatóanyagok](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [További oktatóprogramot kínál, amelyek a Wingtip SaaS-alkalmazás telepítésében épül](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Kiterjesztett felhőalapú adatbázisok kezelése](sql-database-elastic-jobs-overview.md)
 * [Horizontálisan felskálázott felhőalapú adatbázisok létrehozása és kezelése](sql-database-elastic-jobs-create-and-manage.md)

@@ -53,9 +53,9 @@ Miután a hibákat kijavította, válassza le a meglévő virtuális merevlemezt
 
 ## <a name="create-a-vm-from-the-original-hard-disk"></a>Virtuális gép létrehozása az eredeti merevlemezről
 
-Ha az eredeti virtuális merevlemezről szeretne létrehozni virtuális gépet, használja a [klasszikus Azure portált](https://manage.windowsazure.com).
+Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [Azure-portálon](https://portal.azure.com).
 
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com).
-2. A portál alsó részén válassza az **Új** > **Számítás** > **Virtuális gép** > **Gyűjteményből** elemet.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A portálon, válassza a bal felső at **új** > **számítási** > **virtuális gép** > **a gyűjtemény**.
 3. A **Kép kiválasztása** szakaszban válassza a **Saját lemezek** lehetőséget, majd válassza ki az eredeti virtuális merevlemezt. Ellenőrizze a helyadatokat. Ez az a régió, ahol a virtuális gépet üzembe kell helyezni. Válassza a Tovább gombot.
 4. A **Virtuális gép konfigurációja** szakaszban írja be a virtuális gép nevét, majd válasszon méretet a virtuális gép számára.

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2017
 ms.author: larryfr
-ms.openlocfilehash: 470ec09d444f93abcd8f0f58fc197474bbb1376e
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: ec6e6d07b0933504ffee17912aac9ee3ef937688
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>A HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával
 
@@ -151,7 +151,7 @@ Egyes szolgáltatások megjelenítése egy **Gyorshivatkozások** az oldal tetej
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari felhasználók, csoportok és engedélyek
 
-Felhasználók, csoportok és engedélyek végzett használata esetén támogatottak. egy [tartományhoz csatlakoztatott](hdinsight-domain-joined-introduction.md) HDInsight-fürthöz. A felhasználói felületen az Ambari felügyeleti tartományhoz fürt információkért lásd: [tartományhoz HDInsight-fürtök kezelése](hdinsight-domain-joined-introduction.md).
+Felhasználók, csoportok és engedélyek végzett használata esetén támogatottak. egy [tartományhoz csatlakoztatott](./domain-joined/apache-domain-joined-introduction.md) HDInsight-fürthöz. A felhasználói felületen az Ambari felügyeleti tartományhoz fürt információkért lásd: [tartományhoz HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-introduction.md).
 
 > [!WARNING]
 > Ne változtassa meg jelszavát a Linux-alapú HDInsight-fürtök az Ambari figyelő (hdinsightwatchdog). A jelszó módosítása megsérti a Parancsfájlműveletek vagy méretezési műveleteket a fürthöz.
@@ -236,7 +236,7 @@ Az Ambari nézetek a fejlesztők olyan felhasználói felületi elemei csatlakoz
 
 * Yarn várólista-kezelő: A várólista-kezelő egy egyszerű felhasználói Felületet biztosít megtekintése és módosítása a YARN várólisták.
 
-* Hive nézete: A Hive nézet lehetővé teszi, hogy közvetlenül a böngészőből Hive-lekérdezések futtatásához. Lekérdezések mentése, eredmények megtekintése, az eredmények mentése a fürttároló vagy eredmények letöltése a helyi rendszer. A Hive-nézetek használata további információkért lásd: [Hive nézetek és a HDInsight együttes](hdinsight-hadoop-use-hive-ambari-view.md).
+* Hive nézete: A Hive nézet lehetővé teszi, hogy közvetlenül a böngészőből Hive-lekérdezések futtatásához. Lekérdezések mentése, eredmények megtekintése, az eredmények mentése a fürttároló vagy eredmények letöltése a helyi rendszer. A Hive-nézetek használata további információkért lásd: [Hive nézetek és a HDInsight együttes](hadoop/apache-hadoop-use-hive-ambari-view.md).
 
 * Tez nézet: A Tez nézet lehetővé teszi, hogy jobban megérteni, és optimalizálja a feladatok. A Tez feladatok végrehajtásának módját, és milyen erőforrásokat használt információk is megtekinthetők.
 

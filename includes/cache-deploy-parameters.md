@@ -1,6 +1,6 @@
 
 ### <a name="cacheskuname"></a>cacheSKUName
-The pricing tier of the new Azure Redis Cache.
+Az új Azure Redis Cache tarifacsomagját.
 
     "cacheSKUName": {
       "type": "string",
@@ -14,11 +14,11 @@ The pricing tier of the new Azure Redis Cache.
       }
     },
 
-The template defines the values that are permitted for this parameter (Basic or Standard), and assigns a default value (Basic) if no value is specified. Basic provides a single node with multiple sizes available up to 53 GB.
-Standard provides two-node Primary/Replica with multiple sizes available up to 53 GB and 99.9% SLA.
+A sablon határozza meg az értékeket, amelyeknél engedélyezve van ez a paraméter (Basic vagy Standard), és hozzárendeli az alapértelmezett értéket (alapszintű), ha nincs érték megadva. Basic biztosít egy egyetlen csomópont több másolatot elérhető méretek 53 GB.
+Standard biztosít két csomópontos elsődleges vagy replika több másolatot elérhető méretek 53 GB és 99,9 %-os SLA-t.
 
 ### <a name="cacheskufamily"></a>cacheSKUFamily
-The family for the sku.
+A termékcsalád a termékváltozat.
 
     "cacheSKUFamily": {
       "type": "string",
@@ -33,7 +33,7 @@ The family for the sku.
 
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
-The size of the new Azure Redis Cache instance. 
+Az új Azure Redis Cache példány mérete. 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -53,5 +53,5 @@ The size of the new Azure Redis Cache instance.
     }
 
 
-The template defines the values that are permitted for this parameter (0, 1, 2, 3, 4, 5 or 6), and assigns a default value (1) if no value is specified. Those numbers correspond to following cache sizes: 0 = 250 MB, 1 = 1 GB, 2 = 2.5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
+A sablon határozza meg az értékeket, amelyeknél engedélyezve van ez a paraméter (0, 1, 2, 3, 4, 5 vagy 6), és hozzárendeli az alapértelmezett értéket (1), ha nincs érték megadva. A számok felel meg a következő gyorsítótár méretének: 0 = 250 MB, 1 = 1 GB-os, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
 

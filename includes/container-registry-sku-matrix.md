@@ -1,0 +1,5 @@
+| SKU | Leírás |
+|---|---|
+| Basic | Egy Azure tároló beállításjegyzék megtanulni fejlesztőknek költség optimalizált belépési pont. Alapszintű nyilvántartó azonos programozott funkciókkal rendelkeznek, mint a Standard és Premium (a Azure Active Directory hitelesítési integráció, a lemezkép törlése és a webes hurkok) rendelkezik, azonban van mérete és használati korlátozások. |
+| Standard | A szabványos beállításjegyzék alapvető megegyezik, azonban nagyobb tárolási korlátokhoz és átviteli kép ugyanazokat a képességeket biztosít. Standard nyilvántartó kell a legtöbb éles környezetben igényeinek kielégítéséhez. |
+| Prémium | Prémium szintű nyilvántartó korlát is magasabb megkötések miatt a például a tárolási és párhuzamos műveletek, beleértve a speciális tárolási képességeinek nagy mennyiségű forgatókönyvek támogatása céljából. Nagyobb átviteli sebesség a lemezképet, mellett prémium szintű szolgáltatásokkal bővíti georeplikáció egyetlen beállításjegyzékbeli kezeléséhez különféle régiókban, például egyes központi telepítések egy hálózati bezárású beállításjegyzék karbantartása. |

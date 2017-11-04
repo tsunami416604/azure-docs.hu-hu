@@ -1,55 +1,55 @@
 <!--author=alkohli last changed: 11/07/16 -->
 
-#### <a name="to-install-updates-via-the-azure-portal"></a>To install updates via the Azure portal
+#### <a name="to-install-updates-via-the-azure-portal"></a>Frissítések telepítése az Azure Portalon keresztül
 
-1. Go to your StorSimple Device Manager and select **Devices**. From the list of devices connected to your service, select and click the device you want to update. 
+1. Nyissa meg a StorSimple-eszközkezelőt, és válassza az **Eszközök** elemet. A szolgáltatáshoz csatlakozó eszközök listájából válassza ki a frissíteni kívánt eszközt, majd kattintson rá. 
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
 
-2. In the **Settings** blade, click **Device updates**. 
+2. A **Beállítások** panelen kattintson az **Eszközfrissítések** elemre. 
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate2m.png)  
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate2m.png)  
 
-3. You see a message if the software updates are available. To check for updates, you can also click **Scan**.
+3. Megjelenik a szoftverfrissítések elérhetőségét jelző üzenet. A frissítések kereséséhez a **Vizsgálat** gombot is használhatja.
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate3m.png)
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate3m.png)
 
-    You will be notified when the scan starts and completes successfully.
+    A vizsgálat indításáról és sikeres befejezéséről értesítést kap.
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate5m.png)
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate5m.png)
 
-4. Once the updates are scanned, click **Download updates**. 
+4. Ha elkészült a frissítések vizsgálata, kattintson a **Frissítések letöltése** gombra. 
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
 
-5. In the **New updates** blade, review the information that after the updates are downloaded, you need to confirm the installation. Click **OK**.
+5. Az **Új frissítések** panel tájékoztatja arról, hogy a frissítések letöltése után meg kell erősítenie a telepítésüket. Kattintson az **OK** gombra.
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
 
-6. You are notified when the upload starts and completes successfully.
+6. A feltöltés indításáról és sikeres befejezéséről értesítést kap.
 
-     ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate8m.png)
+     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate8m.png)
 
-5. In the **Device updates** blade, click **Install**.
+5. Az **Eszközfrissítések** panelen kattintson a **Telepítés** elemre.
 
-     ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate11m.png)   
+     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate11m.png)   
 
-6. In the **New updates** blade, you are warned that the update is disruptive. As virtual array is a single node device, the device restarts after it is updated. This disrupts any IO in progress. Click **OK** to install the updates. 
+6. Az **Új frissítések** panelen a rendszer figyelmezteti, hogy a frissítési folyamat megszakítja az eszköz egyéb folyamatait. Mivel a virtuális tömb egy egyetlen csomóponttal rendelkező eszköz, ezért az eszköz a frissítést követően újraindul. Ez megszakítja a folyamatban lévő I/O-műveleteket. A frissítések telepítéséhez kattintson az **OK** gombra. 
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate12m.png) 
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate12m.png) 
 
-7. You are notified when the install job starts. 
+7. A telepítési feladat indításáról értesítést kap. 
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate13m.png)
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate13m.png)
 
-8.  After the install job completes successfully, click **View Job** link in the **Device updates** blade to monitor the installation. 
+8.  A telepítési feladat sikeres befejezése után a telepítés eredményeinek megtekintéséhez kattintson a **Feladat megtekintése** hivatkozásra az **Eszközfrissítések** panelen. 
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate15m.png)
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate15m.png)
 
-    This takes you to the **Install Updates** blade. You can view detailed information about the job here.
+    Ezzel továbblép a **Frissítések telepítése** panelre. A feladatról részletes információt itt talál.
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 
-9. After the updates are successfully installed, you see a message to this effect in the Device updates blade. The software version also changes to **10.0.10288.0**. 
+9. A frissítés sikeres telepítését követően megjelenik egy üzenet az eszközön a frissítések panelen erről. A szoftververzió módosítja is **10.0.10288.0**. 
 
-    ![update device](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)
+    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)

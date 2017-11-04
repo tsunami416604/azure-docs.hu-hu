@@ -1,18 +1,18 @@
-### <a name="prerequisites"></a>Prerequisites
-* A Wunderlist account  
+### <a name="prerequisites"></a>Előfeltételek
+* Egy Wunderlist fiók  
 
-Before you can use your Wunderlist account in a Logic app, you must authorize the Logic app to connect to your Wunderlist account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+A Wunderlist fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás Wunderlist fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
 
-Here are the steps to authorize your Logic app to connect to your Wunderlist account:
+A Logic Apps alkalmazást Wunderlist fiókjához történő engedélyezéséhez lépései a következők:
 
-1. To create a connection to Wunderlist, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Wunderlist* in the search box. Select the trigger or action you'll like to use:  
+1. A Logic app designer Wunderlist, kapcsolat létrehozásához válassza **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *Wunderlist* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
    ![](./media/connectors-create-api-wunderlist/wunderlist-0.png)
-2. If you haven't created any connections to Wunderlist before, you'll get prompted to provide your Wunderlist credentials. These credentials will be used to authorize your Logic app to connect to, and access your Wunderlist account's data:   
+2. Ha még nem hozott létre előtt Wunderlist fennálló kapcsolatokat, a rendszer Wunderlist hitelesítő adatok megadása fog kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használandó, és Wunderlist fiókja adatok eléréséhez:   
    ![](./media/connectors-create-api-wunderlist/wunderlist-1.png)  
-3. Provide your credentials then select the button to sign in  
+3. Adja meg a hitelesítő adatait, majd kattintson a gombra, majd jelentkezzen be  
    ![](./media/connectors-create-api-wunderlist/wunderlist-2.png)  
-4. You'll then be told what the Logic app will have permissions to do with your Wunderlist account. If you agree, select the button to indicate your agreement. 
+4. Meg kell majd értesítést Mi a Logic app engedéllyel rendelkezni az Wunderlist fiókját. Ha elfogadja, kattintson a gombra jelzi a szerződést. 
    ![](./media/connectors-create-api-wunderlist/wunderlist-4.png)  
-5. Finally, select the **Authorize** button  
+5. Végül válassza ki a **engedélyezés** gomb  
    ![](./media/connectors-create-api-wunderlist/wunderlist-5.png)  
 

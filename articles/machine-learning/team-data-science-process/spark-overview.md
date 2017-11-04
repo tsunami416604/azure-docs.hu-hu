@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: d9964ace6b59fa65f0f5d4caff28a4291047c8a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be3bbad11632f3af257239f6b10b1b22951073f7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Adattudomány Spark on Azure HDInsight használatának áttekintése
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -29,7 +29,7 @@ Ennek a programcsomagnak a témakörök használata a HDInsight Spark például 
 [Spark](http://spark.apache.org/) egy nyílt forráskódú párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozása folyamatban van a big data elemző alkalmazások teljesítményének növelése érdekében. A Spark program sebességét, a könnyű, valamint a kifinomult analytics lett tervezve. A Spark memóriában elosztott tárolt számítási képességei jól funkcionálnak a szerepel a machine learning és a graph számítások iteratív algoritmusaival a. [MLlib](http://spark.apache.org/mllib/) van a Spark méretezhető machine learning könyvtárban, amely csökkenti a algoritmikus modellezési képességekkel az elosztott környezetben. 
 
 ## <a name="hdinsight-spark"></a>A HDInsight Spark
-[HDInsight Spark](../../hdinsight/hdinsight-apache-spark-overview.md) nyílt forráskódú Spark az Azure üzemeltetett elérhető van. Is támogatja a **Jupyter PySpark notebookok** futtatható Spark SQL interaktív lekérdezések átalakítása, szűrési és megjeleníteni az Azure BLOB (WASB) tárolt adatokat a Spark-fürt. PySpark a Python API-t a Spark. A kódrészletek, amelyek a megoldásokat és megjelenítése a megfelelő előkészítésére itt futtatása a Jupyter notebookok a Spark-fürtjei telepített adatok megjelenítéséhez. A modellezési lépések, a következő témakörökben talál, amely bemutatja, hogyan betanítása, értékelje ki, mentse és felhasználását a modell különböző típusú kódot tartalmaznak. 
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) nyílt forráskódú Spark az Azure üzemeltetett elérhető van. Is támogatja a **Jupyter PySpark notebookok** futtatható Spark SQL interaktív lekérdezések átalakítása, szűrési és megjeleníteni az Azure BLOB (WASB) tárolt adatokat a Spark-fürt. PySpark a Python API-t a Spark. A kódrészletek, amelyek a megoldásokat és megjelenítése a megfelelő előkészítésére itt futtatása a Jupyter notebookok a Spark-fürtjei telepített adatok megjelenítéséhez. A modellezési lépések, a következő témakörökben talál, amely bemutatja, hogyan betanítása, értékelje ki, mentse és felhasználását a modell különböző típusú kódot tartalmaznak. 
 
 ## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>A telepítő: A Spark-fürtök és a Jupyter notebookok
 Beállítási lépéseket és kód okat ebben a forgatókönyvben egy HDInsight Spark 1.6 használatával. De Jupyter notebookok HDInsight Spark 1.6-os és a Spark 2.0 fürtök rendelkeznek. A jegyzetfüzetek és a hozzájuk hivatkozások leírása szerepelnek a [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) az azokat tartalmazó GitHub-tárházban. Ezenkívül a kód itt és a csatolt jegyzetfüzetekben általános és a Spark-fürt kell működnie. Ha nem használja a HDInsight Spark, a fürt beállítása, és lehet, hogy a felügyeleti lépések némileg eltér az itt látható. Kényelmi célokat szolgál az alábbiakban a hivatkozásokat a Jupyter notebookok Spark 1.6 (futtatásához a pySpark kernel a Jupyter Notebook kiszolgáló) és a Spark 2.0-s verzióját (a pySpark3 kernel a Jupyter Notebook kiszolgáló kell futtatni):
@@ -75,7 +75,7 @@ Az alábbi eljárások Spark 1.6 kapcsolódnak. A Spark 2.0-s verziójához hasz
 
 1. rendelkeznie kell Azure-előfizetéssel. Ha még nem rendelkezik egy, lásd: [beolvasása az Azure ingyenes próbaverzió](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-2 van szüksége a Spark 1.6-os-fürt forgatókönyv végrehajtásához. Szeretne létrehozni egyet, tekintse meg a utasításokat [első lépések: Apache Spark on Azure HDInsight létrehozása](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). A fürt típusa és verzió van megadva a **fürt típusának kiválasztása** menü. 
+2 van szüksége a Spark 1.6-os-fürt forgatókönyv végrehajtásához. Szeretne létrehozni egyet, tekintse meg a utasításokat [első lépések: Apache Spark on Azure HDInsight létrehozása](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). A fürt típusa és verzió van megadva a **fürt típusának kiválasztása** menü. 
 
 ![Fürt konfigurálása](./media/spark-overview/spark-cluster-on-portal.png)
 

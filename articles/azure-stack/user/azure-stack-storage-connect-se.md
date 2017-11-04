@@ -1,6 +1,6 @@
 ---
-title: Connect Storage Explorer to an Azure Stack subscription
-description: Learn how to connect Storage Exporer to an  Azure Stack subscription
+title: "Csatlakozás a Tártallózó verem Azure-előfizetéshez"
+description: "Kapcsolódás tárolási Exporer verem Azure-előfizetéshez"
 services: azure-stack
 documentationcenter: 
 author: xiaofmao
@@ -14,97 +14,96 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 8cd52e9561f2ad92664c01959df8919aa56e8738
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: c7e6d70148d39fd74f6409a0a239833f8e9f7614
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/12/2017
 ---
-# <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Connect Storage Explorer to an Azure Stack subscription
+# <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Csatlakozás a Tártallózó verem Azure-előfizetéshez
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Azure Storage Explorer (Preview) is a standalone app that enables you to easily work with Azure Stack Storage data on Windows, macOS, and Linux. There are several tools avaialble to move data to and from Azure Stack Storage. For more information, see [Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md).
+Az Azure Tártallózó (előzetes verzió) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure verem Storage-adatokkal Windows, a macOS és a Linux. Nincsenek áthelyezni az adatokat, és az Azure Storage-verem több eszközök véve. További információkért lásd: [adatok át Azure verem tárolási eszközök](azure-stack-storage-transfer.md).
 
-In this article, you learn how to connect to your Azure Stack storage accounts using Storage Explorer. 
+Ebből a cikkből megismerheti, hogyan a verem Azure storage-fiókok Tártallózóval való kapcsolódáshoz. 
 
-If you haven't installed Storage Explorer yet, [download](http://www.storageexplorer.com/) and and install it.
+Ha még nem telepítette a Tártallózó még, [letöltése](http://www.storageexplorer.com/) és telepítse azt.
 
-After you connect to your Azure Stack subscription, you can use the [Azure Storage Explorer articles](../../vs-azure-tools-storage-manage-with-storage-explorer.md) to work with your Azure Stack data. 
+Miután csatlakozott az Azure-verem előfizetés, használhatja a [Azure Tártallózó cikkek](../../vs-azure-tools-storage-manage-with-storage-explorer.md) az Azure-verem adatait. 
 
-## <a name="prepare-an-azure-stack-subscription"></a>Prepare an Azure Stack subscription
+## <a name="prepare-an-azure-stack-subscription"></a>Egy Azure verem előfizetés előkészítése
 
-You need access to the Azure Stack host machine's desktop or a VPN connection for Storage Explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+Hozzá kell férni az Azure-verem gazdaszámítógépen asztali vagy Tártallózó az Azure-verem előfizetés eléréséhez a VPN-kapcsolatot. A VPN-kapcsolat Azure Stackhez való beállításáról a [Csatlakozás az Azure Stackhez VPN segítségével](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) témakörben talál további információt.
 
-For the Azure Stack Development Kit, you need to export the Azure Stack authority root certificate.
+Az Azure verem szoftverfejlesztői készlet kell exportálni a Azure verem legfelső szintű tanúsítványát.
 
-### <a name="to-export-and-then-import-the-azure-stack-certificate"></a>To export and then import the Azure Stack certificate
+### <a name="to-export-and-then-import-the-azure-stack-certificate"></a>A exportálása, majd az Azure-verem tanúsítvány importálása
 
-1. Open `mmc.exe` on an Azure Stack host machine, or a local machine with a VPN connection to Azure Stack. 
+1. Nyissa meg `mmc.exe` egy Azure verem gazdaszámítógépen, vagy a helyi virtuális gép Azure verem VPN-kapcsolatot. 
 
-2. In **File**, select **Add/Remove Snap-in**, and then add **Certificates** to manage **Computer account** of **Local Computer**.
-
-
-
-3. Under **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** find **AzureStackSelfSignedRootCert**.
-
-    ![Load the Azure Stack root certificate through mmc.exe][25]
-
-4. Right-click the certificate, select **All Tasks** > **Export**, and then follow the instructions to export the certificate with **Base-64 encoded X.509 (.CER)**.  
-
-    The exported certificate will be used in the next step.
-5. Start Storage Explorer (Preview), and if you see the **Connect to Azure Storage** dialog box, cancel it.
-
-6. On the **Edit** menu, point to **SSL Certificates**, and then click **Import Certificates**. Use the file picker dialog box to find and open the certificate that you exported in the previous step.
-
-    After importing, you are prompted to restart Storage Explorer.
-
-    ![Import the certificate into Storage Explorer (Preview)][27]
-
-Now you are ready to connect Storage Explorer to an Azure Stack subscription.
-
-### <a name="to-connect-an-azure-stack-subscription"></a>To connect an Azure Stack subscription
+2. A **fájl**, jelölje be **beépülő modul hozzáadása/eltávolítása**, majd adja hozzá **tanúsítványok** kezeléséhez **a felhasználói fiók**.
 
 
-1. After Storage Explorer (Preview) restarts, select the **Edit** menu, and then ensure that **Target Azure Stack** is selected. If it is not selected, select it, and then restart Storage Explorer for the change to take effect. This configuration is required for compatibility with your Azure Stack environment.
 
-    ![Ensure Target Azure Stack is selected][28]
+3. A **konzol Root\Certificated (helyi számítógép) \Trusted Root Certification Authorities\Certificates** található **AzureStackSelfSignedRootCert**.
 
-7. In the left pane, select **Manage Accounts**.  
-    All the Microsoft accounts that you are signed in to are displayed.
+    ![Az Azure Stack főtanúsítványának betöltése az mmc.exe segítségével][25]
 
-8. To connect to the Azure Stack account, select **Add an account**.
+4. Kattintson a jobb gombbal a tanúsítvány, válasszon **feladataival** > **exportálása**, és kövesse az utasításokat a tanúsítvány exportálása **Base-64 kódolású X.509 (. CER)**.  
 
-    ![Add an Azure Stack account][29]
+    Az exportált tanúsítványt a következő lépésben fogja használni.
+5. Indítsa el a Tártallózót (előzetes verzió), és ha megjelenik a **csatlakozás az Azure Storage** párbeszédpanel mezőbe megszakítja a műveletet.
 
-9. In the **Connect to Azure Storage** dialog box, under **Azure environment**, select **Use Azure Stack Environment**, and then click **Next**.
+6. Az a **szerkesztése** menüben mutasson a **SSL-tanúsítványok**, és kattintson a **importálási tanúsítványok**. A fájlválasztó párbeszédpanellel keresse meg és nyissa meg az előző lépésben exportált tanúsítványt.
 
-10. To sign in with the Azure Stack account that's associated with at least one active Azure Stack subscription, fill in the **Sign in to Azure Stack Environment** dialog box.  
+    Az importálás után a rendszer kérni fogja a Tártallózó újraindítására.
 
-    The details for each field are as follows:
+    ![A tanúsítvány importálása a Tártallózóba (előzetes verzió)][27]
 
-    * **Environment name**: The field can be customized by user.
-    * **ARM resource endpoint**: The samples of Azure Resource Manager resource endpoints:
+Most már készen áll a Tártallózó verem Azure-előfizetéshez csatlakozni.
 
-        * For cloud operator:<br> https://adminmanagement.local.azurestack.external   
-        * For tenant:<br> https://management.local.azurestack.external
+### <a name="to-connect-an-azure-stack-subscription"></a>Az Azure-verem előfizetéssel kapcsolódni
+
+
+1. A Tártallózó (előzetes verzió) újraindítása után válassza ki a **Szerkesztés** menüt, és győződjön meg arról, hogy be van jelölve a **Cél Azure Stack** jelölőnégyzet. Ha nincs bejelölve, jelölje be, és indítsa újra a Tártallózót a módosítás érvénybe léptetéséhez. Ez a konfiguráció szükséges az Azure Stack környezettel való kompatibilitáshoz.
+
+    ![Győződjön meg arról, hogy be van jelölve a Cél Azure Stack.][28]
+
+7. A bal oldali panelen válassza az **Fiókok kezelése** lehetőséget.  
+    Megjelenik az összes Microsoft-fiók, amelybe bejelentkezett.
+
+8. Az Azure Stack-fiókhoz való csatlakozáshoz kattintson a **Fiók hozzáadása** elemre.
+
+    ![Azure Stack-fiók hozzáadása][29]
+
+9. Az a **csatlakozás az Azure Storage** párbeszédpanel **Azure környezetben**, jelölje be **használata Azure verem környezet**, és kattintson a **tovább**.
+
+10. Az Azure-verem fiókkal bejelentkezni Azure verem legalább egy aktív előfizetéssel társított, töltse ki a **jelentkezzen be Azure verem környezet** párbeszédpanel megnyitásához.  
+
+    A mezők részletei az alábbiak:
+
+    * **Környezetnév**: Ezt a mezőt a felhasználó testreszabhatja.
+    * **ARM erőforrás végpontja**: Az Azure Resource Manager-erőforrás végpontjának mintái:
+
+        * A felhő üzemeltetője:<br> https://adminmanagement.local.azurestack.external   
+        * Bérlő:<br> https://Management.local.azurestack.external
  
-    * **Tenant Id**: Optional. The value is given only when the directory must be specified.
+    * **A bérlői azonosító**: nem kötelező. Ezt az értéket csak akkor kell megadni, ha meg kell határozni a könyvtárat.
 
-12. After you successfully sign in with an Azure Stack account, the left pane is populated with the Azure Stack subscriptions associated with that account. Select the Azure Stack subscriptions that you want to work with, and then select **Apply**. (Selecting or clearing the **All subscriptions** check box toggles selecting all or none of the listed Azure Stack subscriptions.)
+12. Amint sikeresen bejelentkezett egy Azure Stack-fiókkal, a bal oldali ablaktáblán megjelenik a fiókhoz társított összes Azure Stack-előfizetés. Válassza ki azt az Azure Stack-előfizetést, amellyel dolgozni szeretne, majd válassza az **Alkalmaz** lehetőséget. (Az **Összes előfizetés** kiválasztásával vagy törlésével kijelölheti az összes felsorolt Azure Stack-előfizetést, vagy törölheti mindegyik jelölését.)
 
-    ![Select the Azure Stack subscriptions after filling out the Custom Cloud Environment dialog box][30]  
-    The left pane displays the storage accounts associated with the selected Azure Stack subscriptions.
+    ![Az Egyéni felhőkörnyezet párbeszédpanel mezőinek kitöltése után válassza ki az Azure Stack-előfizetéseket][30]  
+    A bal oldali ablaktábla megjeleníti a kiválasztott Azure Stack-előfizetésekhez társított összes tárfiókot.
 
-    ![List of storage accounts including Azure Stack subscription accounts][31]
+    ![A tárfiókok listája, benne az Azure Stack-előfizetéssel rendelkező fiókokkal][31]
 
-## <a name="next-steps"></a>Next steps
-* [Get started with Storage Explorer (Preview)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [Azure Stack Storage: differences and considerations](azure-stack-acs-differences.md)
+## <a name="next-steps"></a>Következő lépések
+* [Ismerkedés a Tártallózó (előzetes verzió)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Verem az Azure Storage: különbségek és szempontok](azure-stack-acs-differences.md)
 
 
-* To learn more about Azure Storage, see [Introduction to Microsoft Azure Storage](../../storage/common/storage-introduction.md)
+* Azure Storage kapcsolatos további információkért lásd: [Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
 
 [25]: ./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png
 [26]: ./media/azure-stack-storage-connect-se/export-root-cert-azure-stack.png
@@ -113,4 +112,3 @@ Now you are ready to connect Storage Explorer to an Azure Stack subscription.
 [29]: ./media/azure-stack-storage-connect-se/add-azure-stack-account.png
 [30]: ./media/azure-stack-storage-connect-se/select-accounts-azure-stack.png
 [31]: ./media/azure-stack-storage-connect-se/azure-stack-storage-account-list.png
-

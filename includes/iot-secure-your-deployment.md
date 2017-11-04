@@ -1,95 +1,95 @@
-# <a name="secure-your-iot-deployment"></a>Secure your IoT deployment
-This article provides the next level of detail for securing the Azure IoT-based Internet of Things (IoT) infrastructure. It links to implementation level details for configuring and deploying each component. It also provides comparisons and choices between various competing methods.
+# <a name="secure-your-iot-deployment"></a>Az IoT üzemelő példányának védelme
+Ez a cikk a következő részletességi biztosít az Azure IoT-alapú az eszközök internetes hálózatát (IoT) infrastruktúra védelmének biztosítása. Hivatkozik szintű részleteket minden összetevőjének telepítése és konfigurálása. Összehasonlítás és a lehetőségek között a különböző versengő módszer is biztosít.
 
-Securing the Azure IoT deployment can be divided into the following three security areas:
+Az Azure IoT-telepítés biztonságossá tétele a következő három biztonsági területeket osztható:
 
-* **Device Security**: Securing the IoT device while it is deployed in the wild.
-* **Connection Security**: Ensuring all data transmitted between the IoT device and IoT Hub is confidential and tamper-proof.
-* **Cloud Security**: Providing a means to secure data while it moves through, and is stored in the cloud.
+* **Eszközbiztonsági**: biztonságossá tétele az IoT-eszközök, amíg a helyettesítő telepítették.
+* **Kapcsolat biztonsági**: bizalmas és hamisíthatatlan biztosítása az IoT-eszközök és az IoT-központ között továbbított összes adat.
+* **A felhő biztonsági**: biztonságos adatokat, amikor egy keresztül bonyolítanak, és a felhőben tárolt eszközöket biztosítva.
 
-![Three security areas][img-overview]
+![Három biztonsági területek][img-overview]
 
-## <a name="secure-device-provisioning-and-authentication"></a>Secure device provisioning and authentication
-The Azure IoT Suite secures IoT devices by the following two methods:
+## <a name="secure-device-provisioning-and-authentication"></a>Kiépítés biztonságos eszköz és a hitelesítés
+Az Azure IoT Suite az IoT-eszközök az alábbi két módszer biztonságossá tételére:
 
-* By providing a unique identity key (security tokens) for each device, which can be used by the device to communicate with the IoT Hub.
-* By using an on-device [X.509 certificate][lnk-x509] and private key as a means to authenticate the device to the IoT Hub. This authentication method ensures that the private key on the device is not known outside the device at any time, providing a higher level of security.
+* Az egyes eszközök ad meg egy egyedi identitáskulcs (biztonsági jogkivonatokat), amelyekkel az eszköz kommunikáljon az IoT-központot.
+* A-eszköz segítségével [X.509 tanúsítvány] [ lnk-x509] és titkos kulcsok segítségével hitelesíteni az eszközt az IoT-központ számára. Ez a hitelesítési módszer biztosítja, hogy a titkos kulcs az eszközön nem ismert az eszköz kívül bármikor, így magasabb szintű biztonságot.
 
-The security token method provides authentication for each call made by the device to IoT Hub by associating the symmetric key to each call. X.509-based authentication allows authentication of an IoT device at the physical layer as part of the TLS connection establishment. The security-token-based method can be used without the X.509 authentication which is a less secure pattern. The choice between the two methods is primarily dictated by how secure the device authentication needs to be, and availability of secure storage on the device (to store the private key securely).
+A biztonsági token módszer minden hívás által végzett az eszközt az IoT-központ a szimmetrikus kulcsot minden hívás társításával hitelesítést nyújt. X.509-alapú hitelesítés lehetővé teszi, hogy az IoT-eszközök hitelesítési a fizikai rétegben TLS kapcsolat létrehozásának részeként. A biztonsági jogkivonat-alapú módszer az X.509-hitelesítést, amely egy kevésbé biztonságos minta nélkül használható lesz. A két módszerek közötti választást elsősorban határozza meg hogy mennyire vannak biztonságban eszköz hitelesítési kell lennie, és az eszközön (tárolja biztonságos helyen a titkos kulcs) biztonságos tárolási rendelkezésre állását.
 
-## <a name="iot-hub-security-tokens"></a>IoT Hub security tokens
-IoT Hub uses security tokens to authenticate devices and services to avoid sending keys on the network. Additionally, security tokens are limited in time validity and scope. Azure IoT SDKs automatically generate tokens without requiring any special configuration. Some scenarios, however, require the user to generate and use security tokens directly. These include the direct use of the MQTT, AMQP, or HTTP surfaces, or the implementation of the token service pattern.
+## <a name="iot-hub-security-tokens"></a>IoT Hub biztonsági tokenek
+Az IoT-központ biztonsági jogkivonatokat használ hitelesítéséhez, eszközöket és szolgáltatásokat lehet, ne küldjön kulcsok a hálózaton. Emellett biztonsági jogkivonatok érvényesség és hatókör korlátozott. Azure IoT SDK-k automatikusan hoz létre jogkivonatokat anélkül, hogy semmiféle speciális beállítást. Bizonyos esetekben azonban a felhasználónak kell hozhat létre és használhat közvetlenül a biztonsági jogkivonatokat. Ezek közé tartozik a MQTT, az AMQP vagy a HTTP-felületek közvetlen használatát, vagy a biztonságijogkivonat-szolgáltatás mintát végrehajtásának.
 
-More details on the structure of the security token and its usage can be found in the following articles:
+A biztonsági jogkivonat és a használati szerkezetének további részleteket a következő cikkekben talál:
 
-* [Security token structure][lnk-security-tokens]
-* [Using SAS tokens as a device][lnk-sas-tokens]
+* [Biztonsági jogkivonat szerkezete][lnk-security-tokens]
+* [SAS-tokenje eszközként használatával][lnk-sas-tokens]
 
-Each IoT Hub has an [identity registry][lnk-identity-registry] that can be used to create per-device resources in the service, such as a queue that contains in-flight cloud-to-device messages, and to allow access to the device-facing endpoints. The IoT Hub identity registry provides secure storage of device identities and security keys for a solution. Individual or groups of device identities can be added to an allow list, or a block list, enabling complete control over device access. The following articles provide more details on the structure of the identity registry and supported operations.
+Minden egyes IoT-központ rendelkezik egy [identitásjegyzékhez] [ lnk-identity-registry] , amely a a szolgáltatás, például az üzenetsoroktól felhő eszközre üzeneteket tartalmaz várólista eszközönkénti erőforrások létrehozásához és az eszköz felé néző végpontok eléréséhez használható. Az IoT-központ identitásjegyzékhez eszköz identitások és a biztonsági kulcsok megoldás biztonságos tárolására szolgál. Személy vagy eszköz identitások csoportok felveheti egy engedélyezési lista vagy egy tiltólista engedélyezése a teljes felügyeletet gyakorolhat az eszközök elérést. A következő cikkekben további részletekkel szolgálnak az identitásjegyzékhez és a támogatott műveletek struktúra.
 
-[IoT Hub supports protocols such as MQTT, AMQP, and HTTP][lnk-protocols]. Each of these protocols use security tokens from the IoT device to IoT Hub differently:
+[Az IoT-központ például MQTT AMQP vagy HTTP protokollt támogat][lnk-protocols]. Biztonsági jogkivonatokat az IoT-eszközről az IoT hubhoz másképp egyes ezeket a protokollokat használja:
 
-* AMQP: SASL PLAIN and AMQP Claims-based security ({policyName}@sas.root.{iothubName} in the case of IoT hub-level tokens; {deviceId} in case of device-scoped tokens).
-* MQTT: CONNECT packet uses {deviceId} as the {ClientId}, {IoThubhostname}/{deviceId} in the **Username** field and a SAS token in the **Password** field.
-* HTTP: Valid token is in the authorization request header.
+* AMQP: SASL egyszerű és AMQP jogcímalapú biztonsági ({házirendnév}@sas.root. { iothubName} esetén az IoT hub-szintű jogkivonatok; {deviceId} eszköz hatókörű jogkivonatok esetén).
+* MQTT: Csatlakozás csomagot használ {deviceId} a {ClientId}, {IoThubhostname} / {deviceId} a a **felhasználónév** mező, és egy SAS-token a a **jelszó** mező.
+* HTTP: Érvénytelen lexikális elem a hitelesítési kérelem fejlécében.
 
-IoT Hub identity registry can be used to configure per-device security credentials and access control. However, if an IoT solution already has a significant investment in a [custom device identity registry and/or authentication scheme][lnk-custom-auth], it can be integrated into an existing infrastructure with IoT Hub by creating a token service.
+Az IoT-központ identitásjegyzékhez segítségével eszközönkénti biztonsági hitelesítő adatok konfigurálása és hozzáférés-vezérlést. Azonban ha egy IoT-megoldás már jelentős befektetési egy [egyéni eszköz identitása beállításjegyzék és/vagy hitelesítési séma][lnk-custom-auth], ezért integrálható az IoT hubbal meglévő infrastruktúra hozzon létre egy jogkivonat-szolgáltatás.
 
-### <a name="x509-certificate-based-device-authentication"></a>X.509 certificate-based device authentication
-The use of a [device-based X.509 certificate][lnk-use-x509] and its associated private and public key pair allows additional authentication at the physical layer. The private key is stored securely in the device and is not discoverable outside the device. The X.509 certificate contains information about the device, such as device ID, and other organizational details. A signature of the certificate is generated by using the private key.
+### <a name="x509-certificate-based-device-authentication"></a>X.509 tanúsítvány alapú eszközhitelesítés
+Használatát egy [eszközalapú X.509 tanúsítvány] [ lnk-use-x509] és a társított titkos és nyilvános kulcsból álló kulcspárt lehetővé teszi, hogy a további hitelesítési a fizikai rétegben. A titkos kulcs lesz biztonságosan tárolva az eszközt, és nincs felderíthető kívül az eszközt. Az X.509 tanúsítvány információkat az eszköz, például az eszköz-Azonosítóját, és az egyéb szervezeti adatait tartalmazza. A tanúsítvány aláírása hozza létre a titkos kulccsal.
 
-High-level device provisioning flow:
+Magas szintű eszköz üzembe helyezési folyamata:
 
-* Associate an identifier to a physical device – device identity and/or X.509 certificate associated to the device during device manufacturing or commissioning.
-* Create a corresponding identity entry in IoT Hub – device identity and associated device information in the IoT Hub identity registry.
-* Securely store X.509 certificate thumbprint in IoT Hub identity registry.
+* Társítson egy fizikai eszközön – eszközidentitást és/vagy eszköz gyártási vagy üzembe helyezés során az eszközhöz társított X.509-tanúsítvány azonosítót.
+* Hozzon létre egy megfelelő identitás IoT Hub – eszközidentitást és az IoT-központ identitásjegyzékhez társított eszköz információival.
+* Biztonságosan tárolja az IoT-központ identitásjegyzékhez X.509 tanúsítvány ujjlenyomata.
 
-### <a name="root-certificate-on-device"></a>Root certificate on device
-While establishing a secure TLS connection with IoT Hub, the IoT device authenticates IoT Hub using a root certificate which is part of the device SDK. For the C client SDK the certificate is located under the folder "\\c\\certs" under the root of the repo. Though these root certificates are long-lived, they still may expire or be revoked. If there is no way of updating the certificate on the device, the device may not be able to subsequently connect to the IoT Hub (or any other cloud service). Having a means to update the root certificate once the IoT device is deployed will effectively mitigate this risk.
+### <a name="root-certificate-on-device"></a>Legfelső szintű tanúsítványt az eszközre
+Az IoT hubbal biztonságos TLS kapcsolódás közben, az IoT-eszközök hitelesíti az IoT-központ az eszköz SDK részét képező legfelső szintű tanúsítványt használ. A mappában található a tanúsítvány a C ügyfél SDK "\\c\\Tanúsítványos" alatt a tárház gyökérkönyvtárában. Bár a legfelső szintű tanúsítványok hosszú élettartamú, továbbra is lehetséges, hogy lejáratukig vagy vonható vissza. Ha nem tudja frissíteni a tanúsítvány az eszközön, az eszköz nem lehet csatlakozni később az IoT-központ (vagy bármely más felhőalapú szolgáltatás). A azt jelenti, a legfelső szintű tanúsítvány frissítése után az IoT-eszközök telepítve van a kockázat hatékonyan csökkentése.
 
-## <a name="securing-the-connection"></a>Securing the connection
-Internet connection between the IoT device and IoT Hub is secured using the Transport Layer Security (TLS) standard. Azure IoT supports [TLS 1.2][lnk-tls12], TLS 1.1 and TLS 1.0, in this order. Support for TLS 1.0 is provided for backward compatibility only. It is recommended to use TLS 1.2 since it provides the most security.
+## <a name="securing-the-connection"></a>A kapcsolat biztonságossá tétele
+Az IoT-eszközök és az IoT-központ között internetkapcsolat használatával lett biztonságossá téve a Transport Layer Security (TLS) szabvány. Az Azure IoT támogatja [TLS 1.2][lnk-tls12], TLS 1.1 és TLS 1.0, az itt megadott sorrendben. A TLS 1.0 támogatását a csak a visszamenőleges kompatibilitás érdekében. Javasoljuk, hogy a TLS 1.2 használni, mivel a lehető legnagyobb biztonságot nyújt.
 
-Azure IoT Suite supports the following Cipher Suites, in this order.
+Az Azure IoT Suite támogatja a következő titkosító csomag használatát, az itt megadott sorrendben.
 
-| Cipher Suite | Length |
+| Titkosítási csomagok | Hossza |
 | --- | --- |
-| TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384 (0xc028) ECDH secp384r1 (eq. 7680 bits RSA) FS |256 |
-| TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA256 (0xc027) ECDH secp256r1 (eq. 3072 bits RSA) FS |128 |
-| TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA (0xc014) ECDH secp384r1 (eq. 7680 bits RSA) FS |256 |
-| TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA (0xc013) ECDH secp256r1 (eq. 3072 bits RSA) FS |128 |
-| TLS\_RSA\_WITH\_AES\_256\_GCM\_SHA384 (0x9d) |256 |
-| TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256 (0x9c) |128 |
-| TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA256 (0x3d) |256 |
-| TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA256 (0x3c) |128 |
-| TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA (0x35) |256 |
-| TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA (0x2f) |128 |
-| TLS\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA (0xa) |112 |
+| A TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384 (0xc028) ECDH secp384r1 (eq. FS 7680 bits RSA) |256 |
+| A TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA-256 (0xc027) ECDH secp256r1 (eq. FS 3072 bits RSA) |128 |
+| A TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA (0xc014) ECDH secp384r1 (eq. FS 7680 bits RSA) |256 |
+| A TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA (0xc013) ECDH secp256r1 (eq. FS 3072 bits RSA) |128 |
+| A TLS\_RSA\_WITH\_AES\_256\_GCM\_SHA384 (0x9d) |256 |
+| A TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA-256 (0x9c) |128 |
+| A TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA-256 (0x3d) |256 |
+| A TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA-256 (0x3c) |128 |
+| A TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA (0x35 hiba) |256 |
+| A TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA (0x2f) |128 |
+| A TLS\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA (0xa) |112 |
 
-## <a name="securing-the-cloud"></a>Securing the cloud
-Azure IoT Hub allows definition of [access control policies][lnk-protocols] for each security key. It uses the following set of permissions to grant access to each of IoT Hub's endpoints. Permissions limit the access to an IoT Hub based on functionality.
+## <a name="securing-the-cloud"></a>A felhő biztonságossá tétele
+Az Azure IoT-központ lehetővé teszi, hogy a definíciója [hozzáférés-vezérlési házirendeket] [ lnk-protocols] minden egyes biztonsági kulcshoz. Hozzáférést biztosít egyes IoT-központok végpontjai használja a következő engedélyekkel vannak beállítva. Az engedélyek korlátozhatják az IoT-központ funkciókon alapulnak.
 
-* **RegistryRead**. Grants read access to the identity registry. For more information, see [identity registry][lnk-identity-registry].
-* **RegistryReadWrite**. Grants read and write access to the identity registry. For more information, see [identity registry][lnk-identity-registry].
-* **ServiceConnect**. Grants access to cloud service-facing communication and monitoring endpoints. For example, it grants permission to back-end cloud services to receive device-to-cloud messages, send cloud-to-device messages, and retrieve the corresponding delivery acknowledgments.
-* **DeviceConnect**. Grants access to device-facing endpoints. For example, it grants permission to send device-to-cloud messages and receive cloud-to-device messages. This permission is used by devices.
+* **RegistryRead**. Olvasási hozzáférést biztosít az identitásjegyzékhez. További információkért lásd: [identitásjegyzékhez][lnk-identity-registry].
+* **RegistryReadWrite**. Biztosít az olvasási és írási hozzáférést biztosít az identitásjegyzékhez. További információkért lásd: [identitásjegyzékhez][lnk-identity-registry].
+* **ServiceConnect**. Cloud service irányuló kommunikációra és figyelési végpontok biztosít hozzáférést. Például az engedélyt háttér-felhőszolgáltatások eszközről a felhőbe üzeneteket fogadni, felhőalapú-eszközre küldött üzenetek küldése és a megfelelő kézbesítési visszaigazolások beolvasása.
+* **DeviceConnect**. Engedélyezi a hozzáférést a eszköz felé néző végpontok. Például az engedélyt felhő eszközre üzeneteket eszköz a felhőbe küldött üzeneteket küldjön és fogadjon. Ez az engedély eszközöket használják.
 
-There are two ways to obtain **DeviceConnect** permissions with IoT Hub with [security tokens][lnk-sas-tokens]: using a device identity key, or a shared access key. Moreover, it is important to note that all functionality accessible from devices is exposed by design on endpoints with prefix `/devices/{deviceId}`.
+Két módon beszerzése **DeviceConnect** IoT hubot engedélyeket [biztonsági jogkivonatokat][lnk-sas-tokens]: egy eszköz identitáskulcs, vagy egy megosztott elérési kulcsot. Fontos továbbá, vegye figyelembe, hogy eszközökhöz elérhető összes funkciót tesz elérhetővé előtaggal rendelkező végpontokon tervezési `/devices/{deviceId}`.
 
-[Service components can only generate security tokens][lnk-service-tokens] using shared access policies granting the appropriate permissions.
+[Szolgáltatás-összetevők csak hozhat létre a biztonsági jogkivonatokat] [ lnk-service-tokens] használatával megosztott hozzáférési házirendeket a megfelelő jogosultságokat.
 
-Azure IoT Hub and other services which may be part of the solution allow management of users using the Azure Active Directory.
+Azure IoT Hub és egyéb szolgáltatásokat, amelyek a megoldás részét képezhetik engedélyezése az Azure Active Directory használatával felhasználókat kezelését.
 
-Data ingested by Azure IoT Hub can be consumed by a variety of services such as Azure Stream Analytics and Azure blob storage. These services allow management access. Read more about these services and available options below:
+Azure IoT-központ által okozhatnak adatokat képes használni a számos olyan szolgáltatásokat, például Azure Stream Analytics és az Azure blob Storage tárolóban. Ezek a szolgáltatások felügyeleti hozzá lehessen férni. További tájékoztatást talál a szolgáltatások és a rendelkezésre álló lehetőségeket az alábbi:
 
-* [Azure Cosmos DB][lnk-cosmosdb]: A scalable, fully-indexed database service for semi-structured data that manages metadata for the devices you provision, such as attributes, configuration, and security properties. Azure Cosmos DB offers high-performance and high-throughput processing, schema-agnostic indexing of data, and a rich SQL query interface.
-* [Azure Stream Analytics][lnk-asa]: Real-time stream processing in the cloud that enables you to rapidly develop and deploy a low-cost analytics solution to uncover real-time insights from devices, sensors, infrastructure, and applications. The data from this fully-managed service can scale to any volume while still achieving high throughput, low latency, and resiliency.
-* [Azure App Services][lnk-appservices]: A cloud platform to build powerful web and mobile apps that connect to data anywhere; in the cloud or on-premises. Build engaging mobile apps for iOS, Android, and Windows. Integrate with your Software as a Service (SaaS) and enterprise applications with out-of-the-box connectivity to dozens of cloud-based services and enterprise applications. Code in your favorite language and IDE (.NET, Node.js, PHP, Python, or Java) to build web apps and APIs faster than ever.
-* [Logic Apps][lnk-logicapps]: The Logic Apps feature of Azure App Service helps integrate your IoT solution to your existing line-of-business systems and automate workflow processes. Logic Apps enables developers to design workflows that start from a trigger and then execute a series of steps—rules and actions that use powerful connectors to integrate with your business processes. Logic Apps offers out-of-the-box connectivity to a vast ecosystem of SaaS, cloud-based, and on-premises applications.
-* [Azure blob storage][lnk-blob]: Reliable, economical cloud storage for the data that your devices send to the cloud.
+* [Az Azure Cosmos DB][lnk-cosmosdb]: egy méretezhető, teljes mértékben indexelt dokumentumadatbázis-szolgáltatás, amely felügyeli az eszközök metaadatok félig strukturált adatok ellátásához, például az attribútumokat, a konfiguráció és a biztonsági tulajdonságait. Azure Cosmos DB nagy teljesítményű és nagy átviteli feldolgozás, a séma-független indexelő adatokat, és egy részletes SQL-lekérdezési felületet kínál.
+* [Az Azure Stream Analytics][lnk-asa]: valós idejű streamfeldolgozó, amely lehetővé teszi, hogy a gyors fejlesztésére és alacsony költségű analytics megoldást nyújt a valós idejű betekintést az eszközök, érzékelőket, infrastruktúra és alkalmazások telepítése a felhőben. A teljes körűen felügyelt szolgáltatás adatainak megőrzése mellett nagy átviteli sebességet, alacsony késéssel és rugalmasság méretezhető, azonosíthatja a kötettel.
+* [Az Azure App Services][lnk-appservices]: egy felhőalapú platform hozhat létre hatékony webes és mobilalkalmazások bárhol adatokat; a felhőben, vagy a helyszínen. Vonzó alkalmazások készítése iOS, Android és Windows rendszerre. A szoftver egy szolgáltatott szoftverként (SaaS) és a felhő alapú szolgáltatások több tucatnyi out-of-az-box kapcsolattal rendelkező vállalati alkalmazások és a vállalati alkalmazások integrálása. A kedvenc nyelvi és IDE (.NET, Node.js, PHP, Python vagy Java) hozhat létre webes alkalmazásokat és API-k minden eddiginél gyorsabban kódot.
+* [A Logic Apps][lnk-logicapps]: A Logic Apps szolgáltatás az Azure App Service segítségével integrálható a meglévő üzleti rendszereken az IoT-megoldásból és munkafolyamat-folyamatok automatizálása. A Logic Apps segítségével a fejlesztők olyan munkafolyamatokat alakíthatnak ki, amely egy és majd végrehajtanak bizonyos lépéseket – szabályok és műveleteit, amelyekkel az üzleti folyamatok integrálása hatékony összekötők. A Logic Apps kínál a túlnyomó ökoszisztémájának alkalmazásával az SaaS, a felhő alapú out-of-az-box kapcsolat és a helyszíni alkalmazások.
+* [Az Azure blob storage][lnk-blob]: az eszközök elküldik a felhőbe adatok megbízható, gazdaságos felhőalapú tárhelyre.
 
-## <a name="conclusion"></a>Conclusion
-This article provides overview of implementation level details for designing and deploying an IoT infrastructure using Azure IoT. Configuring each component to be secure is key in securing the overall IoT infrastructure. The design choices available in Azure IoT provide some level of flexibility and choice; however, each choice may have security implications. It is recommended that each of these choices be evaluated through a risk/cost assessment.
+## <a name="conclusion"></a>Összegzés
+Ez a cikk áttekintést nyújt az megvalósítási tervezése és telepítése az IoT-infrastruktúrát használó Azure IoT szintű részleteit. Az általános IoT-infrastruktúra védelmének biztosítása a kulcs beállítása az egyes összetevők biztonságos. A tervezési döntések ütköznek azokkal elérhető Azure IoT biztosít bizonyos fokú rugalmasságot és a választott; minden kiválasztott azonban biztonsági hatásai lehetnek. Javasoljuk, hogy ezek mindegyikének lehet értékelni a kockázat/költsége értékelése.
 
 [img-overview]: media/iot-secure-your-deployment/overview.png
 

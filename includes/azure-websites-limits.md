@@ -1,40 +1,40 @@
-| Resource | Free | Shared (Preview) | Basic | Standard | Premium (Preview)</th> |
+| Erőforrás | Ingyenes | Közös (előzetes) | Basic | Standard | Prémium (előzetes verzió)</th> |
 | --- | --- | --- | --- | --- | --- |
-| [Web, mobile, or API apps](https://azure.microsoft.com/services/app-service/) per [App Service plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Unlimited<sup>2</sup> |Unlimited<sup>2</sup> |Unlimited<sup>2</sup> |
-| [Logic apps](https://azure.microsoft.com/services/app-service/logic/) per [App Service plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)</a><sup>1</sup> |10 |10 |10 |20 per core |20 per core |
-| [App Service plan](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |1 per region |10 per resource group |100 per resource group |100 per resource group |100 per resource group |
-| Compute instance type |Shared |Shared |Dedicated<sup>3</sup> |Dedicated<sup>3</sup> |Dedicated<sup>3</sup></p> |
-| [Scale-Out](../articles/app-service/web-sites-scale.md) (max instances) |1 shared |1 shared |3 dedicated<sup>3</sup> |10 dedicated<sup>3</sup> |20 dedicated (50 in ASE)<sup>3,4</sup> |
-| Storage<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |500 GB<sup>4,5</sup></p> |
-| CPU time (5 min)<sup>6</sup> |3 minutes |3 minutes |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unlimited, pay at standard rates |Unlimited, pay at standard rates |
-| CPU time (day)<sup>6</sup> |60 minutes |240 minutes |Unlimited, pay at standard [rates](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unlimited, pay at standard rates |Unlimited, pay at standard rates |
-| Memory (1 hour) |1024 MB per App Service plan |1024 MB per app |N/A |N/A |N/A |
-| Bandwidth |165 MB |Unlimited, [data transfer rates](https://azure.microsoft.com/pricing/details/data-transfers/) apply |Unlimited, data transfer rates apply |Unlimited, data transfer rates apply |Unlimited, data transfer rates apply |
-| Application architecture |32-bit |32-bit |32-bit/64-bit |32-bit/64-bit |32-bit/64-bit |
-| Web Sockets per instance<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |
-| Concurrent [debugger connections](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) per application |1 |1 |1 |5 |5 |
-| [azurewebsites.net subdomain with FTP/S and SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |X |X |X |X |X |
-| [Custom domain](../articles/app-service/app-service-web-tutorial-custom-domain.md) support | |X |X |X |X |
-| Custom domain [SSL support](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |Unlimited |Unlimited, 5 SNI SSL and 1 IP SSL connections included |Unlimited, 5 SNI SSL and 1 IP SSL connections included |
-| Integrated Load Balancer | |X |X |X |X |
+| [Webes, mobil és API apps](https://azure.microsoft.com/services/app-service/) / [App Service-csomag](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |
+| [A Logic apps](https://azure.microsoft.com/services/app-service/logic/) / [App Service-csomag](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)</a><sup>1</sup> |10 |10 |10 |20 / mag |20 / mag |
+| [App Service-csomag](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |régiónként 1 |az adott erőforráscsoport 10 |az adott erőforráscsoport 100 |az adott erőforráscsoport 100 |az adott erőforráscsoport 100 |
+| Számítási sablonpéldány típusúvá |Közös |Közös |Dedikált<sup>3</sup> |Dedikált<sup>3</sup> |Dedikált<sup>3</sup></p> |
+| [Kibővített](../articles/app-service/web-sites-scale.md) (max példányok) |megosztott 1 |megosztott 1 |dedikált 3<sup>3</sup> |dedikált 10<sup>3</sup> |20 dedikált (50 ASE)<sup>3,4</sup> |
+| Tárolási<sup>5</sup> |1 GB-OS<sup>5</sup> |1 GB-OS<sup>5</sup> |10 GB-OS<sup>5</sup> |50 GB-OS<sup>5</sup> |500 GB<sup>4,5</sup></p> |
+| CPU-idő (azaz 5 perc)<sup>6</sup> |3 perc |3 perc |Korlátlan, kell fizetnie, amennyit a standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/)</a> |Korlátlan, normál díjszabás fizetett |Korlátlan, normál díjszabás fizetett |
+| CPU-idő (nap)<sup>6</sup> |60 perc |240 perc |Korlátlan, kell fizetnie, amennyit a standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/)</a> |Korlátlan, normál díjszabás fizetett |Korlátlan, normál díjszabás fizetett |
+| Memória (1 óra) |1024 MB méretű App Service-csomag |Alkalmazásonkénti 1024 MB |N/A |N/A |N/A |
+| Sávszélesség |165 MB |Korlátlan, [adatátviteli sebességet](https://azure.microsoft.com/pricing/details/data-transfers/) alkalmazása |Korlátlan adatforgalom díjszabás érvényes |Korlátlan adatforgalom díjszabás érvényes |Korlátlan adatforgalom díjszabás érvényes |
+| Alkalmazásarchitektúra |32 bites |32 bites |32 bites vagy 64 bites |32 bites vagy 64 bites |32 bites vagy 64 bites |
+| Webes szoftvercsatornák példányonként<sup>7</sup> |5 |35 |350 |Korlátlan |Korlátlan |
+| Egyidejű [kapcsolatok hibakereső](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) alkalmazásonként |1 |1 |1 |5 |5 |
+| [az FTP/mp és az SSL azurewebsites.NET altartomány](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |X |X |X |X |X |
+| [Az egyéni tartomány](../articles/app-service/app-service-web-tutorial-custom-domain.md) támogatja | |X |X |X |X |
+| Az egyéni tartomány [SSL-támogatás](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |Korlátlan SNI SSL-kapcsolatok |Korlátlan SNI SSL és 1 IP SSL-kapcsolatok tartalmazza |Korlátlan SNI SSL és 1 IP SSL-kapcsolatok tartalmazza |
+| Integrált Load Balancer | |X |X |X |X |
 | [Always On](../articles/app-service/web-sites-configure.md) | | |X |X |X |
-| [Scheduled Backups](../articles/app-service/web-sites-backup.md) | | | |Once per day |Once every 5 minutes<sup>8</sup> |
-| [Auto Scale](../articles/app-service/web-sites-scale.md) | | |X |X |X |
-| [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
-| [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) support | |X |X |X |X |
-| [Endpoint monitoring](../articles/app-service/web-sites-monitor.md) | | |X |X |X |
-| [Staging Slots](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |
-| Custom domains per app</a> | |500 |500 |500 |500 |
+| [Ütemezett biztonsági mentések](../articles/app-service/web-sites-backup.md) | | | |Naponta egyszer |5 percenként egyszer<sup>8</sup> |
+| [Automatikus méretezése](../articles/app-service/web-sites-scale.md) | | | |X |X |
+| [Webjobs-feladatok](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
+| [Azure Schedulerrel](https://azure.microsoft.com/services/scheduler/) támogatja | |X |X |X |X |
+| [Végpontmonitoring](../articles/app-service/web-sites-monitor.md) | | |X |X |X |
+| [Átmeneti pontokon](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |
+| Alkalmazásonkénti egyéni tartományok</a> | |500 |500 |500 |500 |
 | SLA | |<p> |99.9% |99.95%<sup>10</sup> |99.95%<sup>10</sup> |
 
-<sup>1</sup>Apps and storage quotas are per App Service plan unless noted otherwise.  
-<sup>2</sup>The actual number of apps that you can host on these machines depends on the activity of the apps, the size of the machine instances, and the corresponding resource utilization.  
-<sup>3</sup>Dedicated instances can be of different sizes. See [App Service Pricing](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/) for more details.  
-<sup>4</sup>Premium tier allows up to 50 computes instances (subject to availability) and 500 GB of disk space when using App Service Environments, and 20 compute instances and 250 GB storage otherwise.  
-<sup>5</sup>The storage limit is the total content size across all apps in the same App Service plan. More storage options are available in [App Service Environment](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage)  
-<sup>6</sup>These resources are constrained by physical resources on the dedicated instances (the instance size and the number of instances).  
-<sup>7</sup>If you scale an app in the Basic tier to two instances, you have 350 concurrent connections for each of the two instances.  
-<sup>8</sup>Premium tier allows backup intervals down up to every 5 minutes when using App Service Environments, and 50 times per day otherwise.  
-<sup>9</sup>Run custom executables and/or scripts on demand, on a schedule, or continuously as a background task within your App Service instance. Always On is required for continuous WebJobs execution. Azure Scheduler Free or Standard is required for scheduled WebJobs. There is no predefined limit on the number of WebJobs that can run in an App Service instance, but there are practical limits that depend on what the application code is trying to do.   
-<sup>10</sup>SLA of 99.95% provided for deployments that use multiple instances with Azure Traffic Manager configured for failover.  
+<sup>1</sup>alkalmazások és a tárolási kvótákat is egy App Service-csomag hacsak másként nem jelezzük.  
+<sup>2</sup>a tényleges száma tárolhatja, ezeknek a gépeknek az alkalmazások az alkalmazások tevékenységét, a gép példányok és a megfelelő erőforrás-használat méretétől függ.  
+<sup>3</sup>dedikált példányok különböző méretű lehet. Lásd: [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/) további részleteket.  
+<sup>4</sup>prémium csomagban lehetővé teszi, hogy legfeljebb 50 kiszámítja példányok (függvényében a rendelkezésre állás), és 500 GB lemezterület használata az App Service Environment-környezetek esetén, és 20 számítási példányok és 250 GB tárhely ellenkező esetben.  
+<sup>5</sup>a tárolási kapacitás a teljes tartalom mérete összes alkalmazások között ugyanazt az App Service-csomag. További tárolási lehetőségek érhetők el [App Service Environment-környezet](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage)  
+<sup>6</sup>ezeket az erőforrásokat csak korlátozottan fizikai erőforrások dedikált példányokon (a példány mérete és a példányok száma).  
+<sup>7</sup>Ha egy alkalmazás az alapszintű rétegben két példányokhoz, 350 egyidejű kapcsolatok az egyes két példánya van.  
+<sup>8</sup>prémium csomagban lehetővé teszi a biztonsági mentés gyakoriságát, legfeljebb 5 percenként le App Service Environment-környezetek használatakor és 50 napi időpontot egyéb.  
+<sup>9</sup>egyéni végrehajtható fájlok és/vagy parancsfájlok futtatása az igény szerinti, ütemezés szerint, vagy folyamatosan háttérfeladatként belül az App Service-példány. A folyamatos WebJobs-végrehajtáshoz folyamatos üzem szükséges. Az ütemezett WebJobs-végrehajtás csak az Azure Scheduler Ingyenes vagy Standard rétegével használható. Webjobs-feladatok, futtathat egy App Service-példány számára előre meghatározott korlátozva van, de mi az alkalmazás kódjának van végrehajtását megkísérlő függő gyakorlati határát.   
+<sup>10</sup>használó központi telepítések több példányt az Azure Traffic Manager konfigurálva a feladatátvételi előírt 99,95 %-os SLA-t.  
 

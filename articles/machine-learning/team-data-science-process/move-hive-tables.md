@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: e879ab2874cb3298de4b0929b286482d824e8309
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c90c3d3c0effd68a4a5962d4d097fccbdc3fee56
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage
 Ebből a témakörből megismerheti, hogy a Hive táblák létrehozása és az adatok betöltése az Azure blob storage általános Hive-lekérdezéseket. Néhány is útmutatást a Hive Táblák particionálása és az optimalizált sor oszlopos (ORC) lekérdezés teljesítmény javítása érdekében formázás használatával.
@@ -120,7 +120,7 @@ Ha az alapértelmezett tároló, a Hadoop-fürt használata Azure Tártallózó 
 A lekérdezés konzol (Hive szerkesztő) írja be egy URL-cím is használható *https://&#60; Hadoop-fürt neve >.azurehdinsight.net/Home/HiveEditor* egy webböngészőbe. Végezhetik el a további részletekért lásd a konzol bejelentkezett, és így a Hadoop fürthöz hitelesítő adatait itt kell.
 
 ### <a name="ps"></a> 3. Küldje el az Azure PowerShell-parancsokkal Hive-lekérdezések
-PowerShell elküldeni a Hive-lekérdezéseket is használható. Útmutatásért lásd: [elküldeni a Hive feladatok PowerShell-lel](../../hdinsight/hdinsight-hadoop-use-hive-powershell.md).
+PowerShell elküldeni a Hive-lekérdezéseket is használható. Útmutatásért lásd: [elküldeni a Hive feladatok PowerShell-lel](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
 
 ## <a name="create-tables"></a>Hive-adatbázis és tábla létrehozása
 A Hive-lekérdezéseket is meg van osztva a [GitHub-tárházban](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) , és innen tölthető le.
@@ -142,11 +142,11 @@ Ez a Hive lekérdezés, amely egy Hive táblát hoz létre.
 
 Az alábbiakban a mezőket, amelyeknek kell csatlakoztatni és egyéb beállításokra leírása:
 
-* **&#60; adatbázis neve >**: a létrehozni kívánt adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a lekérdezés *adatbázis létrehozása...*  kihagyható.
-* **&#60; tábla neve >**: a táblázat, amely szeretne létrehozni a megadott adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a tábla is közvetlenül elé *&#60; tábla neve >* nélkül &#60; adatbázis neve >.
-* **&#60; mező elválasztó >**: az elválasztó, amely az adatfájlban a Hive tábla feltölteni kívánt mezőket.
-* **&#60; Sorelválasztó >**: az elválasztó, amely az adatfájl sorainak.
-* **&#60; tárolási helye >**: az Azure storage-helyre menteni az adatokat a Hive táblák. Ha nincs megadva *hely &#60; a tárolási helye >*, az adatbázis és a táblázatok tárolja *hive/adatraktár/* könyvtárban lévő az alapértelmezett tároló alapértelmezés szerint a Hive-fürt. Ha meg szeretné határozni a tárolási helye, a tárolási hely nem lehet az adatbázis és a táblák alapértelmezett tárolóban. Ezen a helyen van, a fürt formátumban viszonyítva az alapértelmezett tároló helye elé *"wasb: / / / &#60; könyvtár 1 > /"* vagy *"wasb: / / / &#60; 1 könyvtár > / &#60; directory 2 > / "*stb. A lekérdezés végrehajtása után a relatív könyvtárak alapértelmezett tárolóban jönnek létre.
+* **& #60; adatbázis neve >**: a létrehozni kívánt adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a lekérdezés *adatbázis létrehozása... * kihagyható.
+* **& #60; tábla neve >**: a táblázat, amely szeretne létrehozni a megadott adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a tábla is közvetlenül elé *& #60; tábla neve >* nélkül & #60; adatbázis neve >.
+* **& #60; mező elválasztó >**: az elválasztó, amely az adatfájlban a Hive tábla feltölteni kívánt mezőket.
+* **& #60; Sorelválasztó >**: az elválasztó, amely az adatfájl sorainak.
+* **& #60; tárolási helye >**: az Azure storage-helyre menteni az adatokat a Hive táblák. Ha nincs megadva *hely & #60; a tárolási helye >*, az adatbázis és a táblázatok tárolja *hive/adatraktár/* könyvtárban lévő az alapértelmezett tároló alapértelmezés szerint a Hive-fürt. Ha meg szeretné határozni a tárolási helye, a tárolási hely nem lehet az adatbázis és a táblák alapértelmezett tárolóban. Ezen a helyen van, a fürt formátumban viszonyítva az alapértelmezett tároló helye elé *"wasb: / / / & #60; könyvtár 1 > /"* vagy *"wasb: / / / & #60; 1 könyvtár > / & #60; directory 2 > / "*stb. A lekérdezés végrehajtása után a relatív könyvtárak alapértelmezett tárolóban jönnek létre.
 * **TBLPROPERTIES("Skip.Header.line.Count"="1")**: Ha az adatfájl fejléc, fel kell vennie a tulajdonság **végén** , a *tábla létrehozása* lekérdezés. Ellenkező esetben a fejlécsort a táblázathoz rekordként be van töltve. Ha az adatok fájlban nincs fejléc, ez a konfiguráció elhagyható a lekérdezésben.
 
 ## <a name="load-data"></a>Adatok betöltése a Hive táblák
@@ -154,7 +154,7 @@ Ez a Hive-lekérdezés, amely adatokat tölt be egy Hive tábla.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **&#60; blob adatok elérési útja >**: az alapértelmezett tárolóban, a HDInsight Hadoop-fürt, a blob-fájlt fel kell tölteni a Hive tábla esetén a *&#60; blob adatok elérési útja >* formátumban kell megadni *" wasb: / / / &#60; ebben a tárolóban directory > / &#60; blob fájl neve >'*. A blob fájl is lehet egy további tárolót a HDInsight Hadoop-fürt. Ebben az esetben *&#60; blob adatok elérési útja >* formátumban kell megadni *"wasb: / / &#60; a tároló neve > @&#60; tárfiók neve >.blob.core.windows.net/ &#60; a blob-fájl neve >'*.
+* **& #60; blob adatok elérési útja >**: az alapértelmezett tárolóban, a HDInsight Hadoop-fürt, a blob-fájlt fel kell tölteni a Hive tábla esetén a *& #60; blob adatok elérési útja >* formátumban kell megadni *" wasb: / / / & #60; ebben a tárolóban directory > / & #60; blob fájl neve >'*. A blob fájl is lehet egy további tárolót a HDInsight Hadoop-fürt. Ebben az esetben *& #60; blob adatok elérési útja >* formátumban kell megadni *"wasb: / / & #60; a tároló neve > @& #60; tárfiók neve >.blob.core.windows.net/ & #60; a blob-fájl neve >'*.
 
   > [!NOTE]
   > A blobadatokat feltöltendő Hive táblát nem lehet az alapértelmezett vagy a tárfiók a Hadoop-fürt további tárolóban. Ellenkező esetben a *adatok betöltése* lekérdezés nem sikerült panaszos, hogy az adatok nem férhet hozzá.
@@ -221,7 +221,7 @@ Válassza az 1. lépésben a külső tábla az adatok és az ORC táblázat besz
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Ha a TEXTFILE tábla *&#60; adatbázis neve >. &#60; külső textfile táblanév >* partíciókkal rendelkezik, a 3. LÉPÉSBEN, a `SELECT * FROM <database name>.<external textfile table name>` parancsot választja a partíció változó a visszaadott adatkészlet mező. Beszúrása be azt a *&#60; adatbázis neve >. &#60; ORC táblanév >* óta sikertelen *&#60; adatbázis neve >. &#60; ORC táblanév >* nem rendelkezik a partíció változó mezőként az a következő tábla sémáját. Ebben az esetben kell kifejezetten válassza ki a mezőket a beszúrni *&#60; adatbázis neve >. &#60; ORC táblanév >* az alábbiak szerint:
+> Ha a TEXTFILE tábla *& #60; adatbázis neve >. & #60; külső textfile táblanév >* partíciókkal rendelkezik, a 3. LÉPÉSBEN, a `SELECT * FROM <database name>.<external textfile table name>` parancsot választja a partíció változó a visszaadott adatkészlet mező. Beszúrása be azt a *& #60; adatbázis neve >. & #60; ORC táblanév >* óta sikertelen *& #60; adatbázis neve >. & #60; ORC táblanév >* nem rendelkezik a partíció változó mezőként az a következő tábla sémáját. Ebben az esetben kell kifejezetten válassza ki a mezőket a beszúrni *& #60; adatbázis neve >. & #60; ORC táblanév >* az alábbiak szerint:
 >
 >
 
@@ -230,7 +230,7 @@ Válassza az 1. lépésben a külső tábla az adatok és az ORC táblázat besz
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Biztonságos dobja el a *&#60; külső textfile táblanév >* amikor után minden adat a következő lekérdezéssel e behelyezve *&#60; adatbázis neve >. &#60; ORC táblanév >*:
+Biztonságos dobja el a *& #60; külső textfile táblanév >* amikor után minden adat a következő lekérdezéssel e behelyezve *& #60; adatbázis neve >. & #60; ORC táblanév >*:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

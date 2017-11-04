@@ -1,6 +1,6 @@
 ---
 title: "Jelszó alaphelyzetbe állítása, az Azure Active Directoryban |} Microsoft Docs"
-description: "Ismerteti az Azure Active Directoryban a felhasználó jelszavának visszaállítása"
+description: "Rendszergazdai jelszó alaphelyzetbe állítása, az Azure Active Directoryban egy felhasználó által kezdeményezett"
 services: active-directory
 documentationcenter: 
 author: MicrosoftGuyJFlo
@@ -12,35 +12,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 11/01/2017
 ms.author: joflore
-ms.reviewer: jeffsta
-ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: f88a227eda042991ad5dd9cd6c3f349ccb0c4366
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
-ms.translationtype: HT
+ms.reviewer: sahenry
+ms.custom: it-pro
+ms.openlocfilehash: 3dede0f026ab38bae64df664d190b47937416d2d
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Az Azure Active Directoryban a felhasználó jelszavának visszaállítása
 
+Rendszergazdák a felhasználói jelszó azokban az esetekben, ahol elfelejtette, előfordulhat, hogy szükség adta ki, vagy más forgatókönyvekre vonatkozóan. A következő lépések végigvezetik a jelszó alaphelyzetbe állítása.
+
 ## <a name="how-to-reset-the-password-for-a-user"></a>A felhasználó jelszavának alaphelyzetbe állítása
-1. Jelentkezzen be a [Azure AD felügyeleti központban](https://aad.portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki **felhasználók és csoportok**.
 
-   ![Nyitó felhasználók kezelése](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
-3. Válassza ki **minden felhasználó**.
+1. Jelentkezzen be a [Azure AD felügyeleti központban](https://aad.portal.azure.com) egy olyan fiókkal, amely directory jogosult felhasználók új jelszavainak létrehozására.
+2. Válassza ki **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó**.
+3. Válassza ki a felhasználó szeretné visszaállítani a jelszavát.
+2. Válassza ki a kijelölt felhasználó **jelszó-átállítási**.
 
-   ![Az összes felhasználói csoport megnyitása](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
-1. Válasszon egy felhasználót a listáról.
-2. A kiválasztott felhasználónál válassza az **Áttekintés** elemet, majd a parancssávon válassza ki a **Jelszó alaphelyzetbe állítása** parancsot.
-
-    ![A jelszó alaphelyzetbe állítása paranccsal](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
+    ![Az Azure AD egy felhasználó a felhasználói profilt a jelszó alaphelyzetbe állítása](./media/active-directory-users-reset-password-azure-portal/user-password-reset.png)
+    
 6. A **jelszó-átállítási**, jelölje be **jelszó-átállítási**.
+7. Egy ideiglenes jelszót, majd megadhatja a felhasználó számára jelenik meg. Majd módosíthatják a jelszavukat a következő alkalommal, azok bejelentkezési kérni fogja a a felhasználótól. 
 
 ## <a name="next-steps"></a>Következő lépések
 * [Felhasználó hozzáadása](active-directory-users-create-azure-portal.md)
-* [Felhasználó hozzárendelése egy szerepkörhöz az Azure AD-ben](active-directory-users-assign-role-azure-portal.md)
-* [A felhasználó munkahelyi adatainak módosítása](active-directory-users-work-info-azure-portal.md)
+* [Rendszergazdai szerepkörök hozzárendelése egy felhasználóhoz](active-directory-users-assign-role-azure-portal.md)
 * [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
-* [Felhasználó törlése az Azure AD-ben](active-directory-users-delete-user-azure-portal.md)
+* [Az Azure AD-felhasználó törlése](active-directory-users-delete-user-azure-portal.md)

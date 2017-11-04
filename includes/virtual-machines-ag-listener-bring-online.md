@@ -1,27 +1,27 @@
-1. In Failover Cluster Manager, expand **Roles**, and then highlight your availability group.  
+1. A Feladatátvevőfürt-kezelőben bontsa ki a **szerepkörök**, és jelölje ki a rendelkezésre állási csoporthoz.  
 
-2. On the **Resources** tab, right-click the listener name, and then click **Properties**.
+2. Az a **erőforrások** fülre, kattintson a jobb gombbal a figyelő nevét, majd **tulajdonságok**.
 
-3. Click the **Dependencies** tab. If multiple resources are listed, verify that the IP addresses have OR, not AND, dependencies.  
+3. Kattintson a **függőségek** fülre. Ha több erőforrások vannak felsorolva, győződjön meg arról, hogy az IP-címek rendelkezik-e, vagy nem és függőségeit.  
 
-4. Click **OK**.
+4. Kattintson az **OK** gombra.
 
-5. Right-click the listener name, and then click **Bring Online**.
+5. Kattintson a jobb gombbal a figyelő nevét, és kattintson **online állapotba hozás**.
 
-6. After the listener is online, on the **Resources** tab, right-click the availability group, and then click **Properties**.
+6. Miután a figyelő online, a **erőforrások** fülre, kattintson a jobb gombbal a rendelkezésre állási csoportot, majd **tulajdonságok**.
    
-    ![Configure the availability group resource](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
+    ![A rendelkezésre állási csoport erőforrása konfigurálása](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
 
-7. Create a dependency on the listener name resource (not the IP address resources name), and then click **OK**.
+7. Függőség létrehozása a figyelő neve erőforrás (nem az IP-erőforrás nevét), és kattintson a **OK**.
    
-    ![Add dependency on the listener name](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
+    ![Adja hozzá a függőségi figyelő neve](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
 
-8. Start SQL Server Management Studio, and then connect to the primary replica.
+8. Indítsa el az SQL Server Management Studio eszközt, és csatlakozzon az elsődleges másodpéldány.
 
-9. Go to **AlwaysOn High Availability** > **Availability Groups** > **\<AvailabilityGroupName\>** > **Availability Group Listeners**.  
-    The listener name that you created in Failover Cluster Manager should be displayed.
+9. Ugrás a **AlwaysOn magas rendelkezésre állás** > **rendelkezésre állási csoportok** > **\<AvailabilityGroupName\>**   >  **Rendelkezésre állási csoport figyelői**.  
+    A figyelő nevét, amelyet a Feladatátvevőfürt-kezelőt hozott létre üzenetnek kell megjelennie.
 
-10. Right-click the listener name, and then click **Properties**.
+10. Kattintson a jobb gombbal a figyelő nevét, és kattintson **tulajdonságok**.
 
-11. In the **Port** box, specify the port number for the availability group listener by using the $EndpointPort that you used earlier (in this tutorial, 1433 was the default), and then click **OK**.
+11. Az a **Port** mezőben adja meg a portszámot a korábban használt $EndpointPort használatával a rendelkezésre állási csoport figyelője (ebben az oktatóanyagban a 1433-as volt az alapértelmezett), és kattintson a **OK**.
 

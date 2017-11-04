@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a90d9c620221bffbb225fb060b997af2f5e90390
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 22cc516c15353e39c73e762d2b8fa0d787a05ef4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>A Log Analyticshez való használatra egyéni irányítópult létrehozása
 
->[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), akkor nem lehet új irányítópultok készít vagy szerkeszt a meglévő irányítópultok. 
-
 Az útmutató segítségével megismerheti, hogyan Naplóelemzési irányítópultok jelenítheti meg az összes a mentett napló keresések felkínálva egy egyetlen helyre gyűjti a környezet megtekintéséhez.
+
+>[!NOTE]
+> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), akkor már nem szerkesztheti a meglévő **saját irányítópult**. Ha a munkaterületet nem rendelkezett a **saját irányítópult** csempék hozzáadni, akkor nem jelenik meg **saját irányítópult** a frissített munkaterületén. 
 
 ![Példa irányítópult](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
 

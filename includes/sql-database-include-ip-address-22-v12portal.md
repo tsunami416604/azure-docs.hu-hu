@@ -15,25 +15,25 @@ articles/sql-database/sql-database-connect-query.md
 -->
 
 
-1. Log in to the [Azure portal](https://portal.azure.com/) at http://portal.azure.com/.
-2. In the left banner, click **BROWSE ALL**. The **Browse** blade is displayed.
-3. Scroll and click **SQL servers**. The **SQL servers** blade is displayed.
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) , http://portal.azure.com/.
+2. Kattintson a bal oldali szalagcím **összes TALLÓZÁSA**. A **Tallózás** panel jelenik meg.
+3. Görgetéssel **SQL Server-kiszolgálók**. A **SQL Server-kiszolgálók** panel jelenik meg.
    
-    ![Find your Azure SQL Database server in the portal][b21-FindServerInPortal]
-4. For convenience, click the minimize control on the earlier **Browse** blade.
-5. In the filter text box, start typing the name of your server. Your row is displayed.
-6. Click the row for your server. A blade for your server is displayed.
-7. On your server blade, click **Settings**. The **Settings** blade is displayed.
-8. Click **Firewall**. The **Firewall Settings** blade is displayed.
+    ![Az Azure SQL adatbázis-kiszolgáló található a portálon][b21-FindServerInPortal]
+4. Kényelmi okokból kattintson a kis méretűvé a korábbi **Tallózás** panelen.
+5. A Szűrő mezőbe írja be annak a kiszolgálónak a nevét elindításához. A sor jelenik meg.
+6. A kiszolgáló sorára kattintson. A kiszolgáló egy panel jelenik meg.
+7. A kiszolgáló paneljén kattintson **beállítások**. A **beállítások** panel jelenik meg.
+8. Kattintson a **tűzfal**. A **tűzfalbeállítások** panel jelenik meg.
    
-    ![Click Settings > Firewall][b31-SettingsFirewallNavig]
-9. Click **Add Client IP**. Type in a name for your new rule into the first text box.
-10. Type in the low and high IP address values for the range you want to enable.
+    ![Kattintson a beállítások > tűzfal][b31-SettingsFirewallNavig]
+9. Kattintson a **adja hozzá ügyfél IP**. Adjon meg egy nevet az új szabály az első szövegmezőbe.
+10. Adja meg a kis és nagy IP cím a tartomány értékeinek engedélyezni szeretné.
     
-    * It can be handy to have the low value end with **.0** and the high with **.255**.
+    * Azok az alacsony érték end jöhet **.0** és a magas **.255**.
     
-    ![Add an IP address range to allow][b41-AddRange]
-11. Click **Save**.
+    ![Engedélyezi az IP-címtartomány hozzáadása][b41-AddRange]
+11. Kattintson a **Save** (Mentés) gombra.
 
 <!-- Image references. -->
 

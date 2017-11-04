@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 5c3e4a4d98922533bcf901108d58329cb951b01c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: c48c0931ede6d17078c64cbb1e1dacd21098f792
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Azure Data Lake Store használatát a big Data típusú adatok követelmények
 Nagy adatfeldolgozási négy fő szakaszból áll:
@@ -49,7 +49,7 @@ Adatok, például alkalmazások, eszközök, érzékelőket és stb különböz�
 Az alábbiakban eszközök közül választhat:
 
 * [Az Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) -események az Event Hubsban okozhatnak csak írható Azure Data Lake az Azure Data Lake Store kimeneti használatával.
-* [Az Azure HDInsight alatt futó Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md) -írhat adatok közvetlenül a Data Lake Store a Storm-fürtök.
+* [Az Azure HDInsight alatt futó Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md) -írhat adatok közvetlenül a Data Lake Store a Storm-fürtök.
 * [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) – események fogadásához az Event Hubs, és jegyezze Data Lake Store használatára a [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md).
 
 ### <a name="relational-data"></a>Relációs adatok

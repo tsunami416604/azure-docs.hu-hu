@@ -1,65 +1,65 @@
 
 
 
-An availability set helps keep your virtual machines available during downtime, such as during maintenance. Placing two or more similarly configured virtual machines in an availability set creates the redundancy needed to maintain availability of the applications or services that your virtual machine runs. For details about how this works, see [Manage the availability of virtual machines][Manage the availability of virtual machines].
+Rendelkezésre állási készlet nyújt segítséget, mint tartani a virtuális gépek állásidő, során rendelkezésre álló karbantartás során. Két vagy több hasonló módon konfigurált virtuális gépek elhelyezése egy rendelkezésre állási csoportot hoz létre a redundancia csökkentése érdekében az alkalmazások vagy a virtuális gépen futó szolgáltatások rendelkezésre állását fenntartásához szükséges. Ez működésével kapcsolatos részletekért lásd: [virtuális gépek rendelkezésre állásának kezelése][Manage the availability of virtual machines].
 
-It's a best practice to use both availability sets and load-balancing endpoints to help ensure that your application is always available and running efficiently. For details about load-balanced endpoints, see [Load balancing for Azure infrastructure services][Load balancing for Azure infrastructure services].
+Ajánlott eljárás segítségével rendelkezésre állási készletek és a terheléselosztás végpontok győződjön meg arról, hogy az alkalmazás mindig elérhető, és fut. hatékonyan. További információk az elosztott terhelésű végpont: [Azure infrastruktúra-szolgáltatásokat a terheléselosztás][Load balancing for Azure infrastructure services].
 
-You can add classic virtual machines into an availability set by using one of two options:
+Klasszikus virtuális gépeket adhat hozzá a rendelkezésre állási készlet két lehetőség egyikét használva:
 
-* [Option 1: Create a virtual machine and an availability set at the same time][Option 1: Create a virtual machine and an availability set at the same time]. Then, add new virtual machines to the set when you create those virtual machines.
-* [Option 2: Add an existing virtual machine to an availability set][Option 2: Add an existing virtual machine to an availability set].
+* [1. lehetőség: Hozzon létre egy virtuális gép és a rendelkezésre állási készlet egyszerre][Option 1: Create a virtual machine and an availability set at the same time]. Adja hozzá az új virtuális gépek a készlethez azon virtuális gépek létrehozásakor.
+* [2. lehetőség: Hozzáadása egy meglévő virtuális gép rendelkezésre állási csoportok][Option 2: Add an existing virtual machine to an availability set].
 
 > [!NOTE]
-> In the classic model, virtual machines that you want to put in the same availability set must belong to the same cloud service.
+> A klasszikus modellben el szeretné helyezni az azonos rendelkezésre állási csoport a virtuális gépek azonos a felhőszolgáltatáshoz kell tartoznia.
 > 
 > 
 
-## <a id="createset"> </a>Option 1: Create a virtual machine and an availability set at the same time
-You can use either the Azure portal or Azure PowerShell commands to do this.
+## <a id="createset"></a>1. lehetőség: hozzon létre egy virtuális gép és a rendelkezésre állási készlet egyszerre
+Ehhez használhatja az Azure portálon vagy az Azure PowerShell-parancsokat.
 
-To use the Azure portal:
+Az Azure portál használata:
 
-1. If you haven't already done so, sign in to the [Azure portal](https://portal.azure.com).
-2. On the hub menu, click **+ New**, and then click **Virtual Machine**.
+1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A központ menüben kattintson a **+ új**, és kattintson a **virtuális gép**.
    
-    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
-3. Select the Marketplace virtual machine image you wish to use. You can choose to create a Linux or Windows virtual machine.
-4. For the selected virtual machine, verify that the deployment model is set to **Classic** and then click **Create**
+    ![Kép helyettesítő szövege](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
+3. Válassza ki a használni kívánt piactér virtuálisgép-lemezkép. Ha szeretné, hozzon létre egy Linux vagy a Windows virtuális gépet.
+4. A kijelölt virtuális gép esetében ellenőrizze, hogy a telepítési modell **klasszikus** majd **létrehozása**
    
-    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
-5. Enter a virtual machine name, user name and password (for Windows machines) or SSH public key (for Linux machines). 
-6. Choose the VM size and then click **Select** to continue.
-7. Choose **Optional Configuration > Availability set**, and select the availability set you wish to add the virtual machine to.
+    ![Kép helyettesítő szövege](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
+5. Adja meg a virtuális gép nevét, felhasználónevet és jelszót (a Windows gépek) vagy (a Linux-gépek) nyilvános SSH-kulcsot. 
+6. Válassza ki a virtuális gép méretét, és kattintson a **válasszon** a folytatáshoz.
+7. Válasszon **opcionális konfigurációs > rendelkezésre állási csoport**, és válassza ki a rendelkezésre állási csoportban, akkor a virtuális gép hozzá kívánja.
    
-    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png) 
-8. Review your configuration settings. When you're done, click **Create**.
-9. While Azure creates your virtual machine, you can track the progress under **Virtual Machines** in the hub menu.
+    ![Kép helyettesítő szövege](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png) 
+8. Tekintse át a konfigurációs beállításokat. Amikor elkészült, kattintson a **létrehozása**.
+9. Amíg az Azure létrehozza a virtuális gép, nyomon követheti a folyamat állapotát **virtuális gépek** a központ menüben.
 
-To use Azure PowerShell commands to create an Azure virtual machine and add it to a new or existing availability set, see [Use Azure PowerShell to create and preconfigure Windows-based virtual machines](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+Azure PowerShell-parancsok használatával hozzon létre egy Azure virtuális gépen, és adja hozzá egy új vagy meglévő rendelkezésre állási csoport, lásd: [hozhat létre és konfigurálja a Windows-alapú virtuális gépek előre Azure PowerShell használata](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a id="addmachine"> </a>Option 2: Add an existing virtual machine to an availability set
-In the Azure portal, you can add existing classic virtual machines to an existing availability set or create a new one for them. (Keep in mind that the virtual machines in the same availability set must belong to the same cloud service.) The steps are almost the same. With Azure PowerShell, you can add the virtual machine to an existing availability set.
+## <a id="addmachine"></a>2. lehetőség: egy meglévő virtuális gép rendelkezésre állási csoportok hozzáadása
+Az Azure-portálon adhat hozzá meglévő klasszikus virtuális gépek rendelkezésre állási beállítása, vagy hozzon létre egy újat a számukra. (Ne feledje, hogy az azonos rendelkezésre állási csoport a virtuális gépek azonos a felhőszolgáltatáshoz kell tartoznia.) A lépései megegyeznek szinte. Az Azure PowerShell a virtuális gép adhat hozzá egy meglévő rendelkezésre állási csoportot.
 
-1. If you have not already done so, sign in to the [Azure portal](https://portal.azure.com).
-2. On the Hub menu, click **Virtual Machines (classic)**.
+1. Ha még nem tette meg, jelentkezzen be a [Azure-portálon](https://portal.azure.com).
+2. A központ menüben kattintson a **virtuális gépek (klasszikus)**.
    
-    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
-3. From the list of virtual machines, select the name of the virtual machine that you want to add to the set.
-4. Choose **Availability set** from the virtual machine **Settings**.
+    ![Kép helyettesítő szövege](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
+3. Virtuális gépek listájából válassza ki a virtuális gép hozzá a kívánt nevét.
+4. Válasszon **rendelkezésre állási csoport** a virtuális gépről **beállítások**.
    
-    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
-5. Select the availability set you wish to add the virtual machine to. The virtual machine must belong to the same cloud service as the availability set.
+    ![Kép helyettesítő szövege](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
+5. Válassza ki a rendelkezésre állási csoport a virtuális gép hozzá kívánja. A virtuális gép az ugyanabban a rendelkezésre állási csoport felhőszolgáltatásra kell tartoznia.
    
-    ![Alt image text](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
-6. Click **Save**.
+    ![Kép helyettesítő szövege](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
+6. Kattintson a **Save** (Mentés) gombra.
 
-To use Azure PowerShell commands, open an administrator-level Azure PowerShell session and run the following command. For the placeholders (such as &lt;VmCloudServiceName&gt;), replace everything within the quotes, including the < and > characters, with the correct names.
+Az Azure PowerShell-parancsokkal, nyisson meg egy rendszergazdai Azure PowerShell-munkamenetet, és futtassa a következő parancsot. A helyőrzőket a (például &lt;VmCloudServiceName&gt;), cserélje le a mindent, ami az ajánlatokat, beleértve a < és > karakter, helyes nevét.
 
     Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
 > [!NOTE]
-> The virtual machine might have to be restarted to finish adding it to the availability set.
+> A virtuális gép kell hozzáadni a rendelkezésre állási csoport befejezéséhez újra kell indítani.
 > 
 > 
 

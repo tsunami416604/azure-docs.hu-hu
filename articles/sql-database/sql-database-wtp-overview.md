@@ -1,111 +1,114 @@
 ---
-title: "Azure SQL Database több-bérlős mintaalkalmazás | Microsoft Docs"
-description: "Bevezetés az Azure SQL Database mintául szolgáló Wingtip Tickets (WTP) alkalmazásába"
+title: "Az Azure SQL adatbázis több-bérlős app példa - Wingtip SaaS |} Microsoft Docs"
+description: "Ismerje meg, amely használja az Azure SQL Database, a Wingtip SaaS példa több-bérlős mintaalkalmazás használatával"
 keywords: "sql database-oktatóanyag"
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
-ms.custom: tutorial
-ms.workload: data-management
+ms.custom: scale out apps
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/10/2017
-ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 265eab8104d8af7c510a88dffb9d70a2b3b37631
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/12/2017
-
-
+ms.topic: article
+ms.date: 06/09/2017
+ms.author: sstein
+ms.openlocfilehash: 46c9a3eadc2c23959b4d08649c6c0215d44b493e
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="introduction-to-the-wingtip-tickets-platform-wtp-sample-saas-application"></a>A Wingtip Tickets Platform (WTP) minta SaaS-alkalmazás bemutatása
+# <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>Egy SQL-adatbázis több-bérlős SaaS app példa bemutatása
 
-A Wingtip Tickets Platform (WTP) SaaS-alkalmazás egy több-bérlős mintaalkalmazás, amely bemutatja az SQL Database egyedülálló előnyeit. Az alkalmazás bérlőnkénti adatbázis SaaS-alkalmazásmintát használ több bérlő kiszolgálásához. A WTP alkalmazás az Azure SQL Database SaaS-forgatókönyveket lehetővé tevő funkcióinak, például az SaaS-tervezési és -kezelési mintáknak a bemutatására lett tervezve. A gyors telepítés érdekében [a WTP alkalmazás üzembe helyezéséhez kevesebb, mint öt percre van szükség](sql-database-saas-tutorial.md)!
+A *Wingtip SaaS* alkalmazás egy több-bérlős mintaalkalmazást, azt mutatja be, az SQL-adatbázis egyedülálló előnyeit. Az alkalmazás bérlőnkénti adatbázis SaaS-alkalmazásmintát használ több bérlő kiszolgálásához. Célja, hogy az alkalmazást, az Azure SQL Database funkcióit, amelyek lehetővé teszik a Szolgáltatottszoftver-forgatókönyvek, köztük a több SaaS tervezési és felügyeleti minták megjelenítve. Gyorsan karban lehessen működik és elérhető, a Wingtip SaaS-alkalmazás telepíti, kevesebb mint öt perc alatt!
 
-A WTP alkalmazás telepítése után ismerje meg a kezdeti üzembe helyezésre épülő [oktatóanyagok gyűjteményét](#sql-database-saas-tutorials). Minden oktatóanyagban az SaaS-alkalmazásokban implementált szokásos feladatok vannak a középpontban. A feladatok megvalósítása az SQL Database beépített funkcióit kihasználó SaaS-mintákat követve történik. A leírt minták magukban foglalják új bérlők üzembe helyezését, a bérlői adatbázisok visszaállítását, elosztott lekérdezések futtatását az összes bérlőn és sémaváltozások bevezetését az összes bérlői adatbázison. Minden oktatóprogram tartalmaz újrafelhasználható szkripteket részletes leírásokkal, amelyek jelentősen egyszerűsítik ugyanazoknak a SaaS-felügyeleti mintáknak a megértését és megvalósítását az alkalmazásaiban.
+Alkalmazás forrás kódot és kezelésre szolgáló parancsfájlok érhetők el a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github-tárház. A parancsfájlok futtatásához [töltse le a tanulási modulok mappa](#download-and-unblock-the-wingtip-saas-scripts) a helyi számítógépen.
 
-Bár a WTP alkalmazás meglehetősen befejezett és kötelező mintaalkalmazásként, fontos a mag SaaS-mintákra koncentrálni, mert azok az adatréteggel kapcsolatosak. Más szavakkal, koncentráljon az adatrétegre, és ne elemezze túl magát az alkalmazást. A mag SaaS-minták végrehajtásának megértése kulcsfontosságú ezeknek a mintáknak az alkalmazásaiban való megvalósítása szempontjából, ami során meg kell fontolnia a sajátos céges követelmények miatt szükséges minden módosítást.
+## <a name="sql-database-wingtip-saas-tutorials"></a>SQL adatbázis Wingtip SaaS oktatóprogramok
+
+Miután telepíti az alkalmazást, megismerkedhet a következő oktatóprogramot kínál, amelyek a kezdeti telepítés épül. Ezek az oktatóanyagok közös SQL-adatbázis, az SQL Data Warehouse és más Azure-szolgáltatások beépített funkciók előnyeit Szolgáltatottszoftver-minták felfedezése. Oktatóanyagok PowerShell-parancsfájlok, a részletes leírást, amely jelentősen egyszerűsítheti a megismeréséhez, és az azonos SaaS felügyeleti minták valósít meg az alkalmazások közé tartoznak.
+
+
+| Oktatóanyag | Leírás |
+|:--|:--|
+|[Központi telepítése, és vizsgálja meg a Wingtip SaaS-alkalmazáshoz](sql-database-saas-tutorial.md)| **KEZDJE ITT!** Központi telepítése, és vizsgálja meg a Wingtip SaaS-alkalmazás az Azure-előfizetéshez. |
+|[Kiépítés és a katalógus bérlők](sql-database-saas-tutorial-provision-and-catalog.md)| Ismerje meg, hogyan az alkalmazás a bérlők katalógus adatbázis használatával csatlakozik, és hogy a katalógus hogyan leképezi a bérlők adataikat. |
+|[Megfigyelés és kezelés teljesítmény](sql-database-saas-tutorial-performance-monitoring.md)| Útmutató: az SQL-adatbázis felügyeleti funkcióinak használatát, és riasztások beállítását, ha a teljesítmény-küszöbérték túllépése. |
+|[A figyelőt Naplóelemzés (OMS)](sql-database-saas-tutorial-log-analytics.md) | Használata [Naplóelemzési](../log-analytics/log-analytics-overview.md) nagy mennyiségű erőforrást, figyelheti több készletet között. |
+|[Egy egybérlős visszaállítása](sql-database-saas-tutorial-restore-single-tenant.md)| Megtudhatja, hogyan bérlői adatbázis visszaállítása korábbi pontra időben. Párhuzamos adatbázisba, online, így a meglévő bérlő adatbázis lépéseket is szerepelnek. |
+|[Bérlői séma kezelése](sql-database-saas-tutorial-schema-management.md)| Tudnivalók a séma frissítése, és frissíti a referenciaadatok, minden Wingtip Szolgáltatottszoftver-bérlők között. |
+|[Ad hoc analytics futtatása](sql-database-saas-tutorial-adhoc-analytics.md) | Hozzon létre egy ad hoc elemzés és valós idejű elosztott lekérdezések futtatása egyetlen bérlő számára.  |
+|[Futtassa a bérlő elemzés](sql-database-saas-tutorial-tenant-analytics.md) | Bontsa ki a bérlői adatforgalom az egy analytics adatbázis vagy a data warehouse-bA offline elemzési lekérdezések futtatását. |
 
 
 
 ## <a name="application-architecture"></a>Alkalmazásarchitektúra
 
-A WTP alkalmazás a bérlőnkénti adatbázis modellt használja, és Rugalmas SQL-készletek alkalmaz a hatékonyság növelésére.
-Bérlői katalógus használata a felügyelet és az összekapcsolhatóság kiépítésére.
-Integrált alkalmazás-, készlet- és adatbázis-figyelés és riasztás (OMS).
-Több-bérlős séma- és referenciaadat-kezelés (rugalmas adatbázis-feladatok).
-Több-bérlős lekérdezés, operatív elemzés (rugalmas lekérdezés).
-Földrajzilag elosztott adatok használata a megnövelt hatókör érdekében.
-Skálázható Business continuity Single-tenant recovery (PITR) DR (geo-visszaállítás, georeplikáció, auto-DR) bérlő önkiszolgáló kezelése (felügyeleti API-kkal) PITR a saját maga által okozott hurokból való helyreállításhoz.
-
-A mag Wingtip alkalmazás három minta bérlővel rendelkező készletet használ és egy katalógus-adatbázist.
-
-![WTP-architektúra](media/sql-database-wtp-overview/wtp-architecture.png)
+A Wingtip SaaS-alkalmazás az adatbázis-/-bérlős modell, és használja az SQL rugalmas készletek hatékonyságának maximalizálása. A létrehozásához és a leképezés bérlők számára az adatokat a katalógus-adatbázist használja. A core Wingtip SaaS-alkalmazás, egy címkészlet, amely három minta bérlők, valamint a katalógus-adatbázis használja. A bővítmények megnyilvánulhat oktatóanyagok a kezdeti telepítés Wingtip SaaS számos befejezése elemzési adatbázis bevezetésével adatbázisok közötti séma felügyeleti stb.
 
 
-## <a name="sql-database-wtp-saas-tutorials"></a>SQL Database WTP SaaS-oktatóanyagok
-
-A következő oktatóanyagok a [Wingtip Tickets Platform SaaS alkalmazásmintájának](sql-database-saas-tutorial.md) kezdeti üzemelő példányára épülnek:
-
-| Terület | Leírás | Szkript helye |
-|:--|:--|:--|
-|[Bérlők kiépítése és katalogizálása oktatóanyag](sql-database-saas-tutorial-provision-and-catalog.md)| Új bérlők kiépítése és regisztrálása a katalógusban | [A githubon található szkriptek](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Provision%20and%20Catalog) |
-|[Teljesítmény figyelése és kezelése oktatóanyag](sql-database-saas-tutorial-performance-monitoring.md)| Adatbázis és a készlet teljesítményének figyelése és kezelése | [A githubon található szkriptek](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Performance%20Monitoring%20and%20Management) |
-|[Egyetlen bérlő visszaállítása – oktatóanyag](sql-database-saas-tutorial-restore-single-tenant.md)| Bérlői adatbázisok visszaállítása | [A githubon található szkriptek](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Business%20Continuity%20and%20Disaster%20Recovery/RestoreTenant) |
-|[Bérlői sémák kezelése – oktatóanyag](sql-database-saas-tutorial-schema-management.md)| Lekérdezések végrehajtása az összes bérlőn  | [A githubon található szkriptek](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Schema%20Management) |
-|[Alkalmi elemzések futtatása – oktatóanyag](sql-database-saas-tutorial-adhoc-analytics.md) | Alkalmi elemzések adatbázisának létrehozása és lekérdezések futtatása az összes bérlőn  | [A githubon található szkriptek](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Operational%20Analytics/Adhoc%20Analytics) |
-|[Kezelés a Log Analytics szolgáltatásban (OMS) oktatóanyag](sql-database-saas-tutorial-log-analytics.md) | A Log Analytics konfigurálása és megismerése | [A githubon található szkriptek](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Performance%20Monitoring%20and%20Management/LogAnalytics) |
-|[Bérlői elemzések futtatása – oktatóanyag](sql-database-saas-tutorial-tenant-analytics.md) | Bérlői elemzések lekérdezéseinek beállítása és futtatása | [A githubon található szkriptek](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules/Operational%20Analytics/Tenant%20Analytics) |
-
-## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
-
-A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaas](https://github.com/Microsoft/WingtipSaaS) GitHub-adattárban érhető el. A szkriptfájlok a [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Tanulási modulok) mappában találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
-
-## <a name="working-with-the-wtp-powershell-scripts"></a>A WTP PowerShell-szkriptek használata
-
-A WTP alkalmazással való munkavégzés előnyei a megadott szkriptek elemzéséből és a különböző SaaS-minták megvalósítási módjának vizsgálatából származnak.
-
-A megadott szkriptek és modulok megtekintéséhez és a jobb megértésük érdekében a rajtuk való végiglépkedéshez használja a [Windows PowerShell ISE-t](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise). Mivel a *Demo-* előtaggal rendelkező szkriptek többsége a végrehajtás előtt módosítható változókat tartalmaz, a PowerShell ISE használata leegyszerűsíti az ezekkel a szkriptekkel végzett munkát.
-
-A WTP alkalmazás minden egyes üzemelő példányánál található egy **UserConfig.psm1** fájl, amely két paramétert tartalmaz az üzembe helyezéskor meghatározott erőforráscsoport és felhasználónév értékeinek beállításához. Üzembe helyezés után szerkessze a **UserConfig.psm1** modult, és állítsa be a _ResourceGroupName_ és a _Name_ paramétereket. Ezeket az értékeket használják más szkriptek, hogy sikeresen futtatni lehessen őket, ezért ajánlott beállítani ezeket az üzembe helyezés befejeződésekor!
+![A Wingtip Szolgáltatottszoftver-architektúra](media/sql-database-wtp-overview/app-architecture.png)
 
 
+Az oktatóanyagok keresztül haladó, és az alkalmazás dolgozik, miközben fontos a Szolgáltatottszoftver-minták összpontosítson, mivel az adatréteg kapcsolódnak. Más szavakkal, koncentráljon az adatrétegre, és ne elemezze túl magát az alkalmazást. Ezek SaaS végrehajtásának megértése mintázatok, kulcs valósít meg ezeket a mintákat a alkalmazások, figyelembe véve a szükséges módosításokat a saját speciális üzleti igényeinek.
+
+## <a name="download-and-unblock-the-wingtip-saas-scripts"></a>Töltse le és a Wingtip Szolgáltatottszoftver-parancsfájlok feloldása
+
+Ha egy zip-fájl külső forrásból letöltött és kibontott végrehajtható tartalma (parancsfájlok, DLL-ek) blokkolhatja Windows. Ha a parancsfájlok kibontása zip-fájl, ***tiltásának feloldása a .zip fájl kibontása előtt az alábbi lépésekkel***. Ez biztosítja, hogy a parancsfájlok futtatásának engedélyezése.
+
+1. Keresse meg a [a Wingtip SaaS github-tárház](https://github.com/Microsoft/WingtipSaaS).
+1. Kattintson a **Klónozás vagy letöltési**.
+1. Kattintson a **töltse le a ZIP-** , és mentse a fájlt.
+1. Kattintson a jobb gombbal a **WingtipSaaS-master.zip** fájlt, és válassza ki **tulajdonságok**.
+1. Az a **általános** lapon jelölje be **Unblock**.
+1. Kattintson az **OK** gombra.
+1. Bontsa ki a fájlokat.
+
+Parancsfájlok a találhatók a *... \\WingtipSaaS-főkiszolgáló\\tanulási modulok* mappát.
+
+
+## <a name="working-with-the-wingtip-saas-powershell-scripts"></a>A Wingtip SaaS PowerShell-parancsfájlok használata
+
+A legtöbbet hozhatja ki a minta alaposabban tanulmányozhatja a megadott parancsfájlok kell. Töréspontokat használja, és a parancsfájlok vizsgálata folyamatban van a különböző Szolgáltatottszoftver-minták megvalósított hogyan részleteit lépéseit. Könnyen végighaladhat a megadott parancsfájlok és a modulok legjobb megértéséhez, ajánlott használata a [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
+
+### <a name="update-the-configuration-file-for-your-deployment"></a>A központi telepítés konfigurációs fájljának frissítése
+
+Szerkessze a **UserConfig.psm1** fájl központi telepítése során beállított erőforrás csoportot és felhasználót értékét:
+
+1. Nyissa meg a *PowerShell ISE* és betöltése... \\Tanulási modulok\\*UserConfig.psm1* 
+1. Frissítés *ResourceGroupName* és *neve* a központi telepítés (sorok 10-es és 11 csak) az adott értékkel.
+1. A módosítások mentése!
+
+Ezek az értékek beállítás itt egyszerűen révén nem minden parancsfájlban a központi telepítési tartományspecifikus értékeinek frissítéséhez.
 
 ### <a name="execute-scripts-by-pressing-f5"></a>A szkripteket az F5 lenyomásával hajtsa végre
 
-Számos szkript a *$PSScriptRoot* paramétert használja a mappák közötti navigáció engedélyezéséhez, és ennek a változónak az ellenőrzése csak akkor történik meg, ha a szkriptet az **F5** lenyomásával hajtja végre.  A kijelölés és a kijelöltek futtatása (**F8**) hibákat eredményezhet, ezért a WTP-szkriptek futtatásakor nyomja le az **F5** billentyűt.
+Több parancsfájlok használata *$PSScriptRoot* navigáljon a mappákat, és *$PSScriptRoot* csak értékeli a parancsfájlok billentyűkombináció lenyomásával végrehajtásakor **F5**.  Kiemelése és futtató egy kijelölést (**F8**) is hibákat eredményez, így nyomja le az **F5** Ha a parancsfájlok futtatásához.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>A megvalósítás vizsgálatához lépjen végig a szkripteken
 
-A szkriptek vizsgálatának tényleges értéke abban áll, hogy végig kell lépkedni rajtuk, hogy láthassa, milyen műveleteket végeznek. Tekintse meg az első szintű _Demo-_ szkripteket, amelyek könnyen olvasható, magas szintű munkafolyamatot biztosítanak, amelyek bemutatják a feladat elvégzéséhez szükséges lépéseket. Elemezze mélyebben az egyes hívásokat, hogy láthassa a különböző SaaS-minták megvalósítási részleteit.
+A legjobb módszer megértéséhez a parancsfájlok által számukra látni enged ezek lépésenkénti végrehajtás van. Tekintse meg a megadott **bemutató -** parancsfájlok, amelyek jelenleg egy könnyen kövesse az általános munkafolyamat. A **bemutató -** parancsfájlok szemlélteti a lépéseket minden feladatnak, így állítson be töréspontokat és elemezze szükséges mélyebb be az egyes hívások tekintse meg a különböző Szolgáltatottszoftver-minták megvalósítási részleteit.
 
-Tippek a [PowerShell-szkriptek hibáinak kereséséhez](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise) és a velük való munkavégzéshez:
+Tippek az fel, és lépjen az PowerShell-parancsfájlokkal:
 
-* Nyissa meg és konfigurálja a demo- előtagú szkripteket a PowerShell ISE-ben.
-* Hajtsa végre vagy folytassa az **F5** billentyű lenyomásával. Az **F8** használata nem javasolt, mert a *$PSScriptRoot* kiértékelése nem történik meg a szkript kijelöléseinek futtatásakor.
+* Nyissa meg **bemutató -** a PowerShell ISE parancsfájlok.
+* Hajtható végre, vagy folytassa a **F5** (használatával **F8** nem ajánlott, mert *$PSScriptRoot* nem kerül kiértékelésre beállításokat egy parancsfájl futtatásakor).
 * Töréspontok elhelyezéséhez kattintson egy sorra, vagy válasszon ki egyet, és nyomja le az **F9** billentyűt.
 * Függvény- vagy szkripthívás átlépéséhez használja az **F10** billentyűt.
 * Függvény- vagy szkripthívásba az **F11** billentyűvel léphet.
 * A jelenlegi függvény- vagy szkripthívásból a **Shift + F11** billentyűkkel léphet ki.
 
 
-
-
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>Adatbázisséma vizsgálatát és SQL-lekérdezések végrehajtása SSMS használatával
 
-Használja az [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) alkalmazást a WTP-kiszolgálókhoz és -adatbázisokhoz való kapcsolódásra és azok tallózására.
+Használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) csatlakozzanak, és keresse meg az alkalmazás-kiszolgálókat és adatbázisokat.
 
-A WTP mintaalkalmazásnak kezdetben két SQL Database-kiszolgáló áll a rendelkezésére, amelyekhez kapcsolódhat – a *tenants1* kiszolgáló és a *katalógus* kiszolgáló:
+A központi telepítés először van csatlakozni - két SQL adatbázis-kiszolgálók a *tenants1 -&lt;felhasználói&gt;*  kiszolgáló, és a *katalógus -&lt;felhasználói&gt;*  kiszolgáló. Ahhoz, hogy a sikeres bemutató kapcsolatot, mindkét kiszolgáló rendelkezik egy [tűzfalszabály](sql-database-firewall-configure.md) így minden IP-címen keresztül.
 
 
 1. Nyissa meg az *SSMS* alkalmazást, és kapcsolódjon a *tenants1-&lt;User&gt;.database.windows.net* kiszolgálóhoz.
-2. Kattintson a **Kapcsolódás** > **Adatbázismotor...** :
+1. Kattintson a **Kapcsolódás** > **Adatbázismotor...** :
 
    ![katalóguskiszolgáló elemre](media/sql-database-wtp-overview/connect.png)
 
@@ -115,7 +118,7 @@ A WTP mintaalkalmazásnak kezdetben két SQL Database-kiszolgáló áll a rendel
 
 1. Ismételje meg a 2. és 3. lépést, és kapcsolódjon a *catalog-&lt;User&gt;.database.windows.net* kiszolgálóhoz.
 
-Sikeres kapcsolódás után meg kell jelennie mindkét kiszolgálónak. A kiépített bérlők számától függően megjelenhet több vagy kevesebb adatbázis:
+Sikeres kapcsolódás után meg kell jelennie mindkét kiszolgálónak. Az adatbázisok listája, a korábban kiépített bérlők függően eltérőek lehetnek:
 
 ![Object Explorer](media/sql-database-wtp-overview/object-explorer.png)
 
@@ -123,4 +126,4 @@ Sikeres kapcsolódás után meg kell jelennie mindkét kiszolgálónak. A kiép�
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A Wingtip Tickets SaaS-mintaalkalmazás telepítése](sql-database-saas-tutorial.md)
+[A Wingtip SaaS-alkalmazás központi telepítése](sql-database-saas-tutorial.md)

@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/07/2016
 ms.author: nateko
-ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 447abc48cca3dee398e641f8458e52a5b2cb8e42
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Szinonimák az Azure Search (előzetes verzió)
 
 Szinonimák a keresőprogramok, amely implicit módon bontsa ki a lekérdezés hatókörét a felhasználónak nem kell ténylegesen adja meg a kifejezés nem megfelelő használati társítani. Például a kifejezés "kutya" és a szinonima rendelését "canine" és "ételadagot", "kutya" tartalmazó dokumentumokat kap, "canine" vagy "ételadagot" is tartozik a lekérdezés hatókörén belül.
 
-Az Azure Search szinonimát bővítése időben történik. Egy szolgáltatás együtt nincs meglévő műveletek megszakadását szinonimát leképezéseket adhat hozzá. Hozzáadhat egy **synonymMaps** anélkül, hogy az index újraépítése mező definíció tulajdonságot. További információkért lásd: [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index).
+Az Azure Search szinonimát bővítése időben történik. Egy szolgáltatás együtt nincs meglévő műveletek megszakadását szinonimát leképezéseket adhat hozzá. Hozzáadhat egy **synonymMaps** anélkül, hogy az index újraépítése mező definíció tulajdonságot.
 
 ## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
 
@@ -78,14 +78,14 @@ Azt is megteheti PUT használja, és adja meg az URI a szinonima térkép nevét
 
 A Solr formátumhoz egyenértékű és explicit szinonimát leképezéseket. A nyílt forráskódú szinonimát szűrő megadását Apache Solr, a jelen dokumentumban ismertetett igazodik leképezési szabályokat: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Az alábbiakban az egyenértékű szinonimák minta szabályt.
 ```
-              USA, United States, United States of America
+USA, United States, United States of America
 ```
 
 Keresési lekérdezés a fenti a szabály az "USA" bővített "USA" vagy "Az Amerikai Egyesült Államok" vagy "Az Amerikai Egyesült Államok".
 
 Explicit leképezési nyíl megjelölt "= >". Megadása esetén a kifejezés, amely megfelel a bal oldali keresési lekérdezés sorozatát "= >" váltja fel a alternatívák jobb oldalán. Az alábbi szabály tekintve keresőkifejezések "Washington", "Wash." vagy a "WA" összes felülíródik a "WA". Explicit leképezési csak a megadott irányban vonatkozik, és ebben az esetben nem írja a lekérdezés "Washington" a "WA".
 ```
-              Washington, Wash., WA => WA
+Washington, Wash., WA => WA
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Lista szinonimát leképezi a szolgáltatás alatt.

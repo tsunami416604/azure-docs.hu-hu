@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/26/2016
 ms.author: jgao
-ms.openlocfilehash: edbf797e6277a65b5311e4939f5ab72776b11557
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 56c00c3ea885bd1f431613ea90868dc65c98818b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight Hive-lekérdezések optimalizálása
 
@@ -180,11 +180,11 @@ Nincsenek további optimalizálás módszereket is fontolóra veheti, például:
 ## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta rendelkezik Hive lekérdezés több közös optimalizálási módszert. További tudnivalókért tekintse meg a következő cikkeket:
 
-* [Apache Hive hdinsight használata](hdinsight-use-hive.md)
+* [Apache Hive hdinsight használata](hadoop/hdinsight-use-hive.md)
 * [Repülési késleltetés adatok elemzése a Hive HDInsight használatával](hdinsight-analyze-flight-delay-data.md)
 * [Hdinsight Hive eszközzel Twitter-adatok elemzése](hdinsight-analyze-twitter-data.md)
-* [HDInsight hadoop Hive lekérdezés konzol használata érzékelőadatok elemzése](hdinsight-hive-analyze-sensor-data.md)
-* [A Hive használata a hdinsight eszközzel webhelyek naplóinak elemzése](hdinsight-hive-analyze-website-log.md)
+* [HDInsight hadoop Hive lekérdezés konzol használata érzékelőadatok elemzése](hadoop/apache-hive-analyze-sensor-data.md)
+* [A Hive használata a hdinsight eszközzel webhelyek naplóinak elemzése](hadoop/apache-hive-analyze-website-log.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png

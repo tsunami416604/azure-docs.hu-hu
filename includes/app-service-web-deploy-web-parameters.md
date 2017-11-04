@@ -1,26 +1,26 @@
-With Azure Resource Manager, you define parameters for values you want to specify when the template is deployed. The template includes a section called Parameters that contains all of the parameter values.
-You should define a parameter for those values that will vary based on the project you are deploying or based on the environment you are deploying to. Do not define parameters for values that will always stay the same. Each parameter value is used in the template to define the resources that are deployed. 
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon nevű paraméterek szakaszban, amely tartalmazza az összes paraméter értékét tartalmazza.
+Meg kell határozni egy paramétert ezeket az értékeket, amelyek a projekt telepít vagy telepít, hogy a környezet alapján változhatnak. Az értékeket, amelyeket a rendszer mindig ugyanaz maradjon paraméterek nem határoznak meg. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva. 
 
-When defining parameters, use the **allowedValues** field to specify which values a user can provide during deployment. Use the **defaultValue** field to assign a value to the parameter, if no value is provided during deployment.
+Ha paraméterek megadása a **Storageaccount_accounttype** mezőben adja meg, mely felhasználó értékekkel biztosíthat a telepítés során. Használja a **defaultValue** mezőben rendelhet értéket a paraméternek, ha nincs érték megadva üzembe helyezése során.
 
-We will describe each parameter in the template.
+Azt ismerteti, egyes paramétereket a sablonban.
 
-### <a name="sitename"></a>siteName
-The name of the web app that you wish to create.
+### <a name="sitename"></a>SiteName
+A létrehozni kívánt webes alkalmazás neve.
 
     "siteName":{
       "type":"string"
     }
 
 ### <a name="hostingplanname"></a>hostingPlanName
-The name of the App Service plan to use for hosting the web app.
+A webalkalmazás üzemeltetéséhez használt App Service-csomag neve.
 
     "hostingPlanName":{
       "type":"string"
     }
 
-### <a name="sku"></a>sku
-The pricing tier for the hosting plan.
+### <a name="sku"></a>Termékváltozat
+Ez a tarifacsomag a üzemeltetési terv.
 
     "sku": {
       "type": "string",
@@ -44,10 +44,10 @@ The pricing tier for the hosting plan.
       }
     }
 
-The template defines the values that are permitted for this parameter, and assigns a default value (S1) if no value is specified.
+A sablon határozza meg az értékeket, amelyeket ez a paraméter engedélyezett, és hozzárendeli az alapértelmezett értéket (S1), ha nincs érték megadva.
 
 ### <a name="workersize"></a>workerSize
-The instance size of the hosting plan (small, medium, or large).
+A példány mérete a üzemeltetési terv (kis, közepes vagy nagy).
 
     "workerSize":{
       "type":"string",
@@ -59,5 +59,5 @@ The instance size of the hosting plan (small, medium, or large).
       "defaultValue":"0"
     }
 
-The template defines the values that are permitted for this parameter (0, 1, or 2), and assigns a default value (0) if no value is specified. The values correspond to small, medium and large.
+A sablon határozza meg az értékeket, amelyeknél engedélyezve van ez a paraméter (0, 1 vagy 2), és hozzárendeli az alapértelmezett értéket (0), ha nincs érték megadva. Az értékek megegyeznek kis, közepes és nagy méretű.
 

@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan használja Spark az Apache Spark on az adatfol
 keywords: "kafka például kafka zookeeper, spark streamelési kafka, spark streamelési kafka – példa"
 services: hdinsight
 documentationcenter: 
-author: Blackmist
+author: maxluk
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
-ms.author: larryfr
-ms.openlocfilehash: 788ba828d1380b17913cabf18827c1abcc83c725
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maxluk
+ms.openlocfilehash: 6608363f90b61fe60f26d3f9fafd77b1e2232838
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-preview-on-hdinsight"></a>Apache Spark streaming (DStream) például Kafka (előzetes verzió) a HDInsight a
 
@@ -97,7 +97,7 @@ A jelen dokumentumban leírt lépések az azonos Azure erőforráscsoport mindk�
 
 Ebben a példában megtanulta, hogyan használható a Spark olvasási és írási Kafka. Az alábbi hivatkozások segítségével felderíteni a más módon történő együttműködésre Kafka:
 
-* [Ismerkedés az Apache Kafka a HDInsight-on](hdinsight-apache-kafka-get-started.md)
-* [A MirrorMaker használata a Kafka replikájának HDInsighton való létrehozásához](hdinsight-apache-kafka-mirroring.md)
+* [Ismerkedés az Apache Kafka a HDInsight-on](kafka/apache-kafka-get-started.md)
+* [A MirrorMaker használata a Kafka replikájának HDInsighton való létrehozásához](kafka/apache-kafka-mirroring.md)
 * [Az Apache Storm használata a HDInsighton futó Kafkával](hdinsight-apache-storm-with-kafka.md)
 

@@ -1,18 +1,18 @@
-## <a name="create-a-resource-group"></a>Create a resource group
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Create a resource group with the [az group create](/cli/azure/group#create) command. An Azure resource group is a logical container into which Azure resources are deployed and managed. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
-The following example creates a resource group named *myResourceGroup* in the *eastus* location.
+A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
+## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Create a VM with the [az vm create](/cli/azure/vm#create) command. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#create) paranccsal. 
 
-The following example creates a VM named *myVM* and creates SSH keys if they do not already exist in a default key location. To use a specific set of keys, use the `--ssh-key-value` option.  
+Az alábbi példa egy *myVM* nevű virtuális gépet és SSH-kulcsokat hoz létre, ha azok még nem léteznek a kulcsok alapméretezett helyén. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást.  
 
 ```azurecli-interactive 
 az vm create \
@@ -23,7 +23,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-When the VM has been created, the Azure CLI shows information similar to the following example. Take note of the `publicIpAddress`. This address is used to access the VM.
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a `publicIpAddress` értékét. Ez a cím használható a virtuális gép eléréséhez.
 
 ```azurecli-interactive 
 {
@@ -40,24 +40,24 @@ When the VM has been created, the Azure CLI shows information similar to the fol
 
 
 
-## <a name="open-port-80-for-web-traffic"></a>Open port 80 for web traffic 
+## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára 
 
-By default, only SSH connections are allowed into Linux VMs deployed in Azure. Because this VM is going to be a web server, you need to open port 80 from the internet. Use the [az vm open-port](/cli/azure/vm#open-port) command to open the desired port.  
+Alapértelmezés szerint csak az SSH-kapcsolatok engedélyezettek az Azure szolgáltatásba telepített Linux virtuális gépek. Ez a virtuális gép lesz a webkiszolgálón, mert szükség nyissa meg a 80-as porton az internetről. A kívánt port megnyitásához használja az [az vm open-port](/cli/azure/vm#open-port) parancsot.  
  
 ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
-## <a name="ssh-into-your-vm"></a>SSH into your VM
+## <a name="ssh-into-your-vm"></a>Bejelentkezés a virtuális gépre SSH-val
 
 
-If you don't already know the public IP address of your VM, run the [az network public-ip list](/cli/azure/network/public-ip#list) command:
+Ha a nyilvános IP-címet a virtuális gép már nem tudja, futtassa a [az nyilvános ip-lista](/cli/azure/network/public-ip#list) parancs:
 
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
 ```
 
-Use the following command to create an SSH session with the virtual machine. Substitute the correct public IP address of your virtual machine. In this example, the IP address is *40.68.254.142*.
+Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Helyettesítse be a megfelelő nyilvános IP-címet a virtuális gép. Ebben a példában az IP-cím van *40.68.254.142*.
 
 ```bash
 ssh azureuser@40.68.254.142

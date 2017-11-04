@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 10/23/2017
 ms.author: larryfr
 ms.custom: hdinsightactive
-ms.openlocfilehash: a6e5712026dc2da3627c07e9b411c81fb9a7e1fb
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
-ms.translationtype: HT
+ms.openlocfilehash: e9e55f05c97fe335a315683294805b1027b53784
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>Telepítse vagy frissítse a HDInsight monó
 
@@ -64,9 +64,9 @@ Monó verzió van telepítve, akkor adja meg a verziószámot a __paraméterek__
 
 Rendelkezik megtudta, hogyan frissítse vagy a HDInsight monó meghatározott verzióját telepítse. A .NET-alkalmazások használata a HDInsight monó további információkért lásd a következő dokumentumokat:
 
-* [Az adatfolyamként történő MapReduce a HDInsight .NET használata](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [A Hive és a Pig a HDInsight .NET használata](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [A HDInsight alatt futó Storm a C# megoldások fejlesztése](hdinsight-storm-develop-csharp-visual-studio-topology.md)
+* [Az adatfolyamként történő MapReduce a HDInsight .NET használata](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [A Hive és a Pig a HDInsight .NET használata](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [A HDInsight alatt futó Storm a C# megoldások fejlesztése](storm/apache-storm-develop-csharp-visual-studio-topology.md)
 * [Linux-alapú HDInsight .NET megoldások áttelepítése](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
 Parancsfájlműveletek használatával kapcsolatos további információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök parancsfájlművelet használatával](hdinsight-hadoop-customize-cluster-linux.md)

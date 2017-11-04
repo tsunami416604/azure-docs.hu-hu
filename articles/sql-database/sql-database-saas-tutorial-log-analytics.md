@@ -1,32 +1,30 @@
 ---
 title: "Log Analytics használata SQL Database több-bérlős alkalmazással | Microsoft Docs"
-description: "Log Analytics (OMS) beállítása és használata az Azure SQL Database mintául szolgáló Wingtip Tickets (WTP) alkalmazásával"
+description: "A telepítő és Naplóelemzés (OMS) használja egy több-bérlős Azure SQL adatbázis SaaS-alkalmazáshoz"
 keywords: "sql database-oktatóanyag"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial
-ms.workload: data-management
+ms.custom: scale out apps
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/10/2017
+ms.topic: article
+ms.date: 07/26/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 4ff4519ca40f036d58f82993db78fe08aa7d5733
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/12/2017
-
-
+ms.openlocfilehash: 43d46e6a31ee05add33da59348a1d180c4078f97
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="setup-and-use-log-analytics-oms-with-the-wtp-sample-saas-app"></a>A Log Analytics (OMS) beállítása és használata a WTP minta SaaS-alkalmazással
+# <a name="setup-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>A telepítő és Naplóelemzés (OMS) használja egy több-bérlős Azure SQL adatbázis SaaS-alkalmazáshoz
 
-Ebben az oktatóanyagban a *Log Analytics ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* beállítását és a WTP alkalmazással a rugalmas készletek és adatbázisok figyelésére történő használatát ismertetjük. A [Teljesítményfigyelés és -kezelés oktatóanyagra](sql-database-saas-tutorial-performance-monitoring.md) épül, és bemutatja a *Log Analytics* szolgáltatásnak az Azure Portalon biztosított figyelési és riasztási szolgáltatás kiegészítésére történő használatnak módját. A Log Analytics különösen alkalmas kiterjedt figyelésre és riasztásra, mert több száz készlet és több százezer adatbázis használatát is támogatja. Egyetlen figyelési megoldásként is szolgál, amely képes több Azure-előfizetésben is integrálni a különböző alkalmazások és Azure-szolgáltatások figyelését.
+Ebben az oktatóanyagban beállítása és használata *Naplóelemzési ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* a rugalmas készletek és adatbázisokat figyeli. Ez az oktatóanyag épít, a [Teljesítményfigyelő és a felügyeleti útmutató](sql-database-saas-tutorial-performance-monitoring.md). Azt illusztrálja, hogyan használandó *Naplóelemzési* révén a figyelés és riasztás a megadott Azure-portálon. A Naplóelemzési alkalmas figyelés és riasztás léptékű, mert több száz készletek és a több száz akár több ezer adatbázis támogatja. Egyetlen figyelési megoldásként is szolgál, amely képes több Azure-előfizetésben is integrálni a különböző alkalmazások és Azure-szolgáltatások figyelését.
 
 Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
@@ -36,7 +34,7 @@ Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A WTP alkalmazás üzembe van helyezve. A kevesebb, mint öt perc alatti üzembe helyezéshez lásd: [A WTP SaaS-alkalmazás üzembe helyezése és felfedezése](sql-database-saas-tutorial.md)
+* A Wingtip SaaS-alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip SaaS-alkalmazáshoz](sql-database-saas-tutorial.md)
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 Az SaaS-forgatókönyveknek és -mintáknak és azok figyelési megoldásokkal szemben támasztott követelményekre gyakorolt hatásának a megbeszélését lásd a [Teljesítményfigyelés és kezelés oktatóanyagban](sql-database-saas-tutorial-performance-monitoring.md).
@@ -45,19 +43,19 @@ Az SaaS-forgatókönyveknek és -mintáknak és azok figyelési megoldásokkal s
 
 Az SQL Database esetében a figyelés és riasztás rendelkezésre áll az adatbázisokhoz és a készletekhez. Ez a beépített figyelés és riasztás erőforrás-specifikus, és kényelmes kisszámú erőforrás esetén, de kevésbé alkalmas nagy telepítések figyelésére, vagy egységes nézet létrehozására a különböző erőforrásokról és előfizetésekről.
 
-Nagy mennyiségű erőforrás esetén a Log Analytics használható. Ez egy különálló Azure-szolgáltatás, amely Log Analytics-munkahelyen gyűjtött diagnosztikai naplókhoz és telemetriához biztosít elemzési szolgáltatást, számos szolgáltatásból képes telemetriai adatok gyűjtésére, és használható lekérdezések indítására, valamint riasztások beállítására. A Log Analytics beépített lekérdezési nyelvet és adatvizualizációs eszközöket biztosít, amelyek lehetővé teszik a működési adatok elemzését és vizualizálását. Az SQL Analytics megoldás számos előre definiált rugalmas készlet- és adatbázis-figyelést, valamint riasztási nézeteket és lekérdezéseket biztosít, és szükség szerint lehetővé teszi a saját eseti lekérdezéseinek hozzáadását és mentését. Az OMS egyéni nézettervező is biztosít.
+Nagy mennyiségű erőforrás esetén a Log Analytics használható. Ez egy különálló Azure-szolgáltatás, amely Log Analytics-munkahelyen gyűjtött diagnosztikai naplókhoz és telemetriához biztosít elemzési szolgáltatást, számos szolgáltatásból képes telemetriai adatok gyűjtésére, és használható lekérdezések indítására, valamint riasztások beállítására. A Log Analytics beépített lekérdezési nyelvet és adatvizualizációs eszközöket biztosít, amelyek lehetővé teszik a működési adatok elemzését és vizualizálását. Az SQL-elemzési megoldások számos előre definiált rugalmas készlet és figyelés és riasztás nézetek és lekérdezések adatbázis biztosít, és lehetővé teszi, hogy adja hozzá a saját ad hoc lekérdezéseket, és mentse őket szükség szerint. Az OMS egyéni nézettervező is biztosít.
 
 A Log Analytics-munkahelyek és elemzési megoldások az Azure Portalon és az OMS-ben is megnyithatók. Az Azure Portal az újabb hozzáférési pont, de lehet, hogy egyes területeken az OMS-portál mögött marad.
 
-### <a name="start-the-load-generator-to-create-data-to-analyze"></a>Indítsa el a terhelésgenerátort az elemzésre szánt adatok létrehozásához
+### <a name="create-data-by-starting-the-load-generator"></a>Adatok létrehozásához a terhelés generátor indítása 
 
 1. Nyissa meg a **Demo-PerformanceMonitoringAndManagement.ps1**fájlt a **PowerShell ISE** alkalmazásban. Tartsa nyitva ezt a szkriptet, mivel előfordulhat, hogy az oktatóanyag használata közben szeretne több terhelésgenerálási forgatókönyvet is futtatni.
-1. Ha ötnél kevesebb bérlővel rendelkezik, építse ki a bérlők egy kötegét, hogy érdekesebb figyelési környezetet tudjon kialakítani:
+1. Ha kevesebb mint öt bérlők, rendelkezni a bérlők számára adja meg a érdekes még egy kötegelt figyelési környezetben:
    1. Állítsa be a **$DemoScenario = 1,** **Bérlői köteg kiépítése** értéket
-   1. A szkriptek futtatásához nyomja le az **F5** billentyűt.
+   1. A parancsfájl futtatásához nyomja le az **F5**.
 
-1. Állítsa be **$DemoScenario** = 2, **Normál intenzitású terhelés generálása (hozzávetőlegesen 40 DTU)** értéket.
-1. A szkriptek futtatásához nyomja le az **F5** billentyűt.
+1. Állítsa be **$DemoScenario** = 2, **Generate normál intenzitásának terhelés (KB. 40 DTU)**.
+1. A parancsfájl futtatásához nyomja le az **F5**.
 
 ## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
 
@@ -65,18 +63,18 @@ A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaas](https
 
 ## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>A Log Analytics és az Azure SQL Analytics megoldás telepítése és konfigurálása
 
-A Log Analytics egy különálló szolgáltatás, amelyet konfigurálni kell. A Log Analytics naplóadatokat, telemetriai adatok és metrikákat gyűjt egy naplóelemzési munkaterületre. A munkaterület egy erőforrás, mint az Azure egyéb erőforrásai, és létre kell hozni. Bár a munkaterületet nem szükséges ugyanabban az erőforráscsoportban létrehozni, mint az általa figyelt alkalmazás(oka)t, általában ez a legésszerűbb. A WTP alkalmazás esetében ez lehetővé teszi a munkaterület egyszerű törlését az erőforráscsoport törlésével.
+A Log Analytics egy különálló szolgáltatás, amelyet konfigurálni kell. A Log Analytics naplóadatokat, telemetriai adatok és metrikákat gyűjt egy naplóelemzési munkaterületre. A munkaterület egy erőforrás, mint az Azure egyéb erőforrásai, és létre kell hozni. Bár a munkaterületet nem szükséges ugyanabban az erőforráscsoportban létrehozni, mint az általa figyelt alkalmazás(oka)t, általában ez a legésszerűbb. A Wingtip SaaS-alkalmazások esetén lehetővé teszi a munkaterület egyszerűen törölni kell az erőforráscsoport egyszerűen törölni az alkalmazással.
 
 1. Nyissa meg a ...\\Tanulási modulok\\Teljesítményfigyelés és -kezelés\\Log Analytics\\*Demo-LogAnalytics.ps1* fájlt a **PowerShell ISE** alkalmazásban.
-1. A szkript futtatásához nyomja le az **F5** billentyűt.
+1. A parancsfájl futtatásához nyomja le az **F5**.
 
-Ekkor meg kell tudnia nyitni a Log Analytics-et az Azure Portalon (vagy az OMS-portálon). A telemetriai adatok összegyűjtése és megjelenítése a Log Analytics-munkaterületen eltarthat néhány percig. Minél tovább hagyja, hogy a rendszer gyűjtse az adatokat, annál érdekesebb lesz az eredmény. Eljött a pillanat, hogy magához vegyen valamilyen frissítőt, csak hagyja nyugodtan futni a terhelésgenerátort!
+Ezen a ponton a nyitott Naplóelemzési tudja az Azure-portál (vagy az OMS-portállal) kell lennie. Telemetria kell gyűjteni a Naplóelemzési munkaterület, és láthatóvá válnak néhány percet vesz igénybe. A továbbiakban hagyja a rendszer a ennél is érdekesebb megoldást a szolgáltatás adatokat gyűjt. Eljött a pillanat, hogy magához vegyen valamilyen frissítőt, csak hagyja nyugodtan futni a terhelésgenerátort!
 
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Készletek és adatbázisok figyelése a Log Analytics és az SQL Analytics megoldással
 
 
-Ebben a gyakorlatban meg fogja nyitni a Log Analytics megoldást és az OMS-portált a WTP-adatbázisokhoz és készletekhez gyűjtött telemetriai adatok megtekintéséhez.
+Ebben a gyakorlatban nyissa meg a Naplóelemzési és az OMS-portálon az adatbázisok és a készletek alatt gyűjtött telemetriai adatok közül.
 
 1. Keresse meg az [Azure Portalt](https://portal.azure.com), és nyissa meg a Log Analytics megoldást, ehhez kattintson a További szolgáltatások elemre, majd keressen rá a Log Analytics kifejezésre:
 
@@ -134,7 +132,6 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 
 ## <a name="additional-resources"></a>További források
 
-* [A Wingtip Tickets Platform (WTP) alkalmazás kezdeti üzembe helyezésére épülő további oktatóanyagok](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* [További oktatóprogramot kínál, amelyek a kezdeti Wingtip SaaS-alkalmazás telepítésében épül](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
 * [OMS](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)
-

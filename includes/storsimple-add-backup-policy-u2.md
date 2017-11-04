@@ -22,8 +22,3 @@
 
 Az újonnan felvett házirend megjelenik a **Biztonsági mentési házirendek** oldal táblázatos nézetében.
 
-
-
-<!--HONumber=Jan17_HO4-->
-
-

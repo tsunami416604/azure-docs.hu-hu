@@ -1,25 +1,25 @@
-| Type | Service | Trigger* | Input | Output |  
+| Típus | Szolgáltatás | Eseményindító * | Input (Bemenet) | Kimenet |  
 | --- | --- | --- | --- | --- |  
-| [Schedule](../articles/azure-functions/functions-bindings-timer.md)  |Azure Functions |✔ | | |  
-| [HTTP (REST or webhook)](../articles/azure-functions/functions-bindings-http-webhook.md) |Azure Functions |✔ |  |✔\** |  
+| [Ütemezés](../articles/azure-functions/functions-bindings-timer.md)  |Azure Functions |✔ | | |  
+| [HTTP (REST vagy webhook)](../articles/azure-functions/functions-bindings-http-webhook.md) |Azure Functions |✔ |  |✔\** |  
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md) |Azure Storage |✔ |✔ |✔ |  
-| [Events](../articles/azure-functions/functions-bindings-event-hubs.md) |Azure Event Hubs |✔ | |✔ |  
-| [Queues](../articles/azure-functions/functions-bindings-storage-queue.md) |Azure Storage |✔ | |✔ |  
-| [Queues and topics](../articles/azure-functions/functions-bindings-service-bus.md) |Azure Service Bus |✔ | |✔ |  
-| [Storage tables](../articles/azure-functions/functions-bindings-storage-table.md) |Azure Storage | |✔ |✔ |  
-| [SQL tables](../articles/azure-functions/functions-bindings-mobile-apps.md) |Azure Mobile Apps | |✔ |✔ |  
-| [NoSQL DB](../articles/azure-functions/functions-bindings-documentdb.md) | Azure Cosmos DB |✔ |✔ |✔ |  
-| [Push Notifications](../articles/azure-functions/functions-bindings-notification-hubs.md) |Azure Notification Hubs | | |✔ |  
-| [Twilio SMS Text](../articles/azure-functions/functions-bindings-twilio.md) |Twilio | | |✔ |
-| [SendGrid email](../articles/azure-functions/functions-bindings-sendgrid.md) | SendGrid | | |✔ |
-| [Excel tables](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph | |✔ |✔ |
-| [OneDrive files](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph | |✔ |✔ |
-| [Outlook email](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph | | |✔ |
-| [Microsoft Graph events](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph |✔ |✔ |✔ |
-| [Auth tokens](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph | |✔ | |
+| [Események](../articles/azure-functions/functions-bindings-event-hubs.md) |Azure Event Hubs |✔ | |✔ |  
+| [A várólisták](../articles/azure-functions/functions-bindings-storage-queue.md) |Azure Storage |✔ | |✔ |  
+| [Üzenetsorok és témakörök](../articles/azure-functions/functions-bindings-service-bus.md) |Azure Service Bus |✔ | |✔ |  
+| [Tárolási táblák](../articles/azure-functions/functions-bindings-storage-table.md) |Azure Storage | |✔ |✔ |  
+| [SQL-táblák](../articles/azure-functions/functions-bindings-mobile-apps.md) |Azure Mobile Apps | |✔ |✔ |  
+| [NoSQL adatbázis](../articles/azure-functions/functions-bindings-documentdb.md) | Azure Cosmos DB |✔ |✔ |✔ |  
+| [Leküldéses értesítések](../articles/azure-functions/functions-bindings-notification-hubs.md) |Azure Notification Hubs | | |✔ |  
+| [Twilio SMS szöveg](../articles/azure-functions/functions-bindings-twilio.md) |Twilio | | |✔ |
+| [SendGrid e-mail](../articles/azure-functions/functions-bindings-sendgrid.md) | SendGrid | | |✔ |
+| [Excel-táblázatok](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph | |✔ |✔ |
+| [OneDrive-fájlokhoz](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph | |✔ |✔ |
+| [Az Outlook e-mail fiók](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph | | |✔ |
+| [A Microsoft Graph-események](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph |✔ |✔ |✔ |
+| [Hitelesítési jogkivonatok](../articles/azure-functions/functions-bindings-microsoft-graph.md) | Microsoft Graph | |✔ | |
 
-(\* - All triggers have associated input data)
+(\* -Indítók vannak társítva a bemeneti adatok)
 
-(\** - The HTTP output binding requires an HTTP trigger)
+(\**-HTTP kimeneti kötése egy HTTP-eseményindítóval igényel)
 
 

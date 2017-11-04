@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: kgremban
-ms.openlocfilehash: cacb027fad4127072e542f554373881932870841
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 159e56c7ba1e0c27cd854f7d835611d5707c7a23
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure multi-factor Authentication beszerzése
 
 A fiókok védelmének ismét, kétlépéses ellenőrzést kell szabványos szervezeten belüli. Ez a szolgáltatás különösen fontos a rendszergazdai fiókok, amelyek privilegizált erőforrásokhoz való hozzáférést. Emiatt Microsoft alapvető kétlépéses ellenőrzés funkciókat nyújtja az Office 365 szolgáltatásra, és az Azure rendszergazdái nem kapcsolódik további költség. Ha szeretné frissíteni a rendszergazdák a szolgáltatások, illetve kibővíthetők a kétlépéses ellenőrzést, a többi felhasználó, az Azure multi-factor Authentication vásárolhat. 
 
 Ez a cikk ismerteti a különbség a különböző példányainak verzióiban érhető el a rendszergazdák és a teljes Azure MFA-verziót. Ha készen áll a teljes Azure MFA ajánlat telepítéséhez, a későbbi fejezet végrehajtási beállítások, és hogyan számítja ki a Microsoft a felhasználását.
+
 
 >[!IMPORTANT]
 >Ez a cikk arra szolgál, hogy egy útmutató, amelyekkel jobban megértheti az Azure multi-factor Authentication megvásárlása különböző módokon lehet. Árak és számlázás kapcsolatos részleteket, mindig tekintse át a [multi-factor Authentication árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
@@ -55,6 +56,7 @@ A következő táblázat felsorolja az Azure multi-factor Authentication külön
 | Második tényezőként SMS |● |● |● |
 | Alkalmazásjelszók az ügyfelek, amelyek nem támogatják a többtényezős hitelesítés |● |● |● |
 | Az ellenőrzési módszereket rendszergazda általi szabályozásának |● |● |● |
+| A multi-factor Authentication szolgáltatás nem rendszergazdai fiókok védelme | | |● |
 | PIN-mód | | |● |
 | Csalási riasztás | | |● |
 | MFA-jelentések | | |● |
@@ -87,7 +89,7 @@ Hozzon létre egy Azure multi-factor Authentication hitelesítésszolgáltató b
 
 Az Azure multi-factor Authentication hitelesítésszolgáltató használata esetén van elérhető, amely az Azure-előfizetéshez keresztül számlázása két használati modellekről:  
 
-1. **Felhasználónként** – a vállalatok számára, amely engedélyezi a kétlépéses ellenőrzést alkalmazottak, akik rendszeresen hitelesítési rögzített száma. Egyes felhasználók számlázási az Azure AD-bérlő és az Azure MFA kiszolgáló a multi-factor Authentication engedélyezett felhasználók számát alapul. Felhasználók engedélyezve vannak-e a multi-factor Authentication mindkét Azure AD-ben és az Azure MFA kiszolgáló, és a tartomány sync (az Azure AD Connect) engedélyezve van, majd azt a nagyobb mennyiségű felhasználók száma. Ha a tartomány szinkronizálás nincs engedélyezve, akkor azt az összegük az összes olyan felhasználó, az Azure AD MFA engedélyezett száma és az Azure MFA kiszolgáló. Számlázási arányosítva és a kereskedelmi rendszer jelentett naponta. 
+1. **Engedélyezett felhasználónként** – a vállalatok számára, amely engedélyezi a kétlépéses ellenőrzést alkalmazottak, akik rendszeresen hitelesítési rögzített száma. Egyes felhasználók számlázási az Azure AD-bérlő és az Azure MFA kiszolgáló a multi-factor Authentication engedélyezett felhasználók számát alapul. Felhasználók engedélyezve vannak-e a multi-factor Authentication mindkét Azure AD-ben és az Azure MFA kiszolgáló, és a tartomány sync (az Azure AD Connect) engedélyezve van, majd azt a nagyobb mennyiségű felhasználók száma. Ha a tartomány szinkronizálás nincs engedélyezve, akkor azt az összegük az összes olyan felhasználó, az Azure AD MFA engedélyezett száma és az Azure MFA kiszolgáló. Számlázási arányosítva és a kereskedelmi rendszer jelentett naponta. 
 
   > [!NOTE]
   > Számlázási 1. példa: jelenleg engedélyezve van a multi-factor Authentication 5000 felhasználója van. A multi-factor Authentication rendszer elosztja ezt a számot 31 és jelentések 161.29 felhasználók napra vonatkozóan. Holnap engedélyezi 15 további felhasználókat, így a multi-factor Authentication rendszer 161.77 felhasználók jelentései adott napon. Az elszámolási időszak végéig szemben az Azure-előfizetéshez számlázott felhasználók teljes száma ad legfeljebb 5000 körül. 

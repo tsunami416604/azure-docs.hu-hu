@@ -1,16 +1,16 @@
-Key transactions (Max transactions allowed in 10 seconds, per vault per region<sup>1</sup>):
+Kulcs tranzakciók (10 másodperc telepítésenként engedélyezett maximális tranzakciók tároló régiónként<sup>1</sup>):
 
-|Key type|HSM-Key<br>CREATE Key|HSM-key<br>All other transactions|Software-key<br>CREATE Key|Software-key<br>All other transactions|
+|kulcs típusa|HSM-kulcs<br>Kulcs létrehozása|HSM-kulcs<br>Minden más tranzakciók|Szoftver-kulcs<br>Kulcs létrehozása|Szoftver-kulcs<br>Minden más tranzakciók|
 |:---|---:|---:|---:|---:|
-|RSA 2048-bit|5|1000|10|2000|
-|RSA 3072-bit|5|250|10|500|
-|RSA 4096-bit|5|125|10|250|
+|2048 bites RSA|5|1000|10|2000|
+|3072 bites RSA|5|250|10|500|
+|RSA 4096 bites|5|125|10|250|
 |
 
-Secrets, Managed Storage Account Keys, and vault transactions:
-| Transactions Type | Max transactions allowed in 10 seconds, per vault per region<sup>1</sup> |
+Titkos kulcsok, a Tárfiókkulcsok felügyelt és a tároló tranzakciók:
+| Tranzakciók típusa | 10 másodperc telepítésenként engedélyezett maximális tranzakciók tároló régiónként<sup>1</sup> |
 | --- | --- |
-| All transactions |2000 |
+| Minden tranzakció |2000 |
 |
 
-<sup>1</sup> There is a subscription-wide limit for all transaction types, that is 5x per key vault limit. For example, HSM- other transactions per subscription are limited to 5000 transactions in 10 seconds per subscription.
+<sup>1</sup> előfizetés kiterjedő maximális minden tranzakció esetében, amely kulcstároló korlátja 5 x. Ha például HSM - előfizetésenként más tranzakciók korlátozva, és 5000 tranzakciók előfizetésenként 10 másodperc.

@@ -1,15 +1,15 @@
-In this section, you update code in your existing Mobile Apps back-end project to send a push notification every time a new item is added. This is powered by the [template](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) feature of Azure Notification Hubs, enabling cross-platform pushes. The various clients are registered for push notifications using templates, and a single universal push can get to all client platforms.
+Ebben a szakaszban a kód a meglévő Mobile Apps háttér-projekt egy leküldéses értesítést küldeni, minden alkalommal, amikor egy új listaelem frissítenie. Ez működteti a [sablon](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) funkció az Azure Notification Hubs, platformfüggetlen leküldéses értesítések engedélyezése. A különböző ügyfelek regisztrálva van a leküldéses értesítések sablonokkal, és egyetlen univerzális leküldéses el tudja érni a ügyfélplatformokon összes.
 
-Choose one of the following procedures that matches your back-end project type&mdash;either [.NET back end](#dotnet) or [Node.js back end](#nodejs).
+Válasszon egyet az alábbi eljárások a háttér-projekt típusának megfelelő&mdash;vagy [.NET háttér](#dotnet) vagy [Node.js háttér](#nodejs).
 
-### <a name="dotnet"></a>.NET back-end project
-1. In Visual Studio, right-click the server project and click **Manage NuGet Packages**. Search for `Microsoft.Azure.NotificationHubs`, and then click **Install**. This installs the Notification Hubs library for sending notifications from your back end.
-2. In the server project, open **Controllers** > **TodoItemController.cs**, and add the following using statements:
+### <a name="dotnet"></a>.NET háttér-projekt
+1. A Visual Studióban, kattintson a jobb gombbal a projekt, és kattintson a **NuGet-csomagok kezelése**. Keresse meg `Microsoft.Azure.NotificationHubs`, és kattintson a **telepítése**. Ez telepíti a háttérből értesítések küldése a Notification Hubs könyvtárban.
+2. A kiszolgáló projektben nyissa meg a **tartományvezérlők** > **TodoItemController.cs**, és adja hozzá a következő using utasításokat:
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
         using Microsoft.Azure.Mobile.Server.Config;
-3. In the **PostTodoItem** method, add the following code after the call to **InsertAsync**:  
+3. Az a **PostTodoItem** módszer, vegye fel a következő kód hívása után **InsertAsync**:  
 
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
@@ -45,12 +45,12 @@ Choose one of the following procedures that matches your back-end project type&m
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-    This sends a template notification that contains the item.Text when a new item is inserted.
-4. Republish the server project.
+    Ezt az elemet tartalmazó sablon értesítést küld. Szöveg, ha egy új elem szerepel.
+4. A projekt közzé.
 
-### <a name="nodejs"></a>Node.js back-end project
-1. If you haven't already done so, [download the quickstart back-end project](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), or else use the [online editor in the Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Replace the existing code in todoitem.js with the following:
+### <a name="nodejs"></a>NODE.js háttér-projekt
+1. Ha még nem tette meg, [a gyors üzembe helyezés háttér-projekt letöltése](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), vagy más használja a [az Azure portálon online szerkesztő](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
+2. Cserélje le a meglévő kódot a todoitem.js a következő:
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -91,5 +91,5 @@ Choose one of the following procedures that matches your back-end project type&m
 
         module.exports = table;  
 
-    This sends a template notification that contains the item.text when a new item is inserted.
-3. When editing the file on your local computer, republish the server project.
+    Ez egy új cikk behelyezésekor a item.text tartalmazó sablon értesítést küld.
+3. A fájlt a helyi számítógépen szerkesztésekor közzé a projekt.

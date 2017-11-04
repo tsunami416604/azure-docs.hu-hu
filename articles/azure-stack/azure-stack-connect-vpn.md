@@ -1,6 +1,6 @@
 ---
-title: Connect Azure Stack to Azure using VPN
-description: How to connect virtual networks in Azure Stack to virtual networks in Azure using VPN.
+title: "Csatlakozás Azure verem Azure VPN-nel"
+description: "Hogyan Azure verem virtuális hálózatok csatlakoztatása VPN-kapcsolattal Azure virtuális hálózatairól."
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -14,220 +14,219 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c06eb0bb44bdfeab956e9b5051786b5bc631acf5
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-azure-stack-to-azure-using-vpn"></a>Connect Azure Stack to Azure using VPN
+# <a name="connect-azure-stack-to-azure-using-vpn"></a>Csatlakozás Azure verem Azure VPN-nel
 
-*Applies to: Azure Stack integrated systems*
+*A következőkre vonatkozik: Azure verem integrált rendszerek*
 
-This article shows you how to create a site-to-site VPN to connect a virtual network in Azure Stack to a virtual network in Azure.
+Ez a cikk bemutatja, hogyan hozzon létre egy--webhelyek közötti VPN egy virtuális hálózatot az Azure-ban Azure verem egy virtuális hálózathoz csatlakozni.
 
-### <a name="connection-diagram"></a>Connection diagram
-The following diagram shows what the connection configuration should look like when you’re done:
+### <a name="connection-diagram"></a>Kapcsolati diagram
+Az alábbi ábra bemutatja, mi a kapcsolat konfigurációs kell hasonlítania ezután:
 
-![Site-to-site VPN connection configuration](media/azure-stack-connect-vpn/image2.png)
+![Pont-pont VPN-kapcsolat konfigurációja](media/azure-stack-connect-vpn/image2.png)
 
-### <a name="before-you-begin"></a>Before you begin
-To complete the connection configuration, make sure you have the following items before you begin:
+### <a name="before-you-begin"></a>Előkészületek
+Fejezze be a kapcsolat konfigurációját, győződjön meg arról, hogy a következő elemek megkezdése előtt:
 
-* An Azure Stack integrated systems (multi-node) deployment that is directly connected to the Internet. This means that your External Public IP Address range must be directly reachable from the public Internet.
-* A valid Azure subscription.  If you don’t have an Azure subscription, you can create a [free Azure account here](https://azure.microsoft.com/free/?b=17.06).
+* Egy Azure verem integrált rendszerek (több csomópontos) központi telepítés, amely közvetlenül kapcsolódik az internethez. Ez azt jelenti, hogy a külső nyilvános IP-címtartományt a nyilvános interneten keresztül közvetlenül elérhető kell lennie.
+* Egy érvényes Azure-előfizetéshez.  Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes Azure-fiókot Itt](https://azure.microsoft.com/free/?b=17.06).
 
-## <a name="network-example-values-table"></a>Network example values table
-The network example values table shows the sample values that are used in this article. You can use these values or you can refer to them to better understand the examples in this article.
+## <a name="network-example-values-table"></a>Hálózati példa értékek tábla
+A hálózati példa értékek táblázat használt minta értékeket ebben a cikkben. Ezeket az értékeket is használhat, vagy olvassa el a jobb megértése érdekében ebben a cikkben szereplő példák őket.
 
-**Network example values table**
+**Hálózati példa értékek tábla**
 |   |Azure Stack|Azure|
 |---------|---------|---------|
-|Virtual network name     |Azs-VNet|AzureVNet |
-|Virtual network address space |10.1.0.0/16|10.100.0.0/16|
-|Subnet name     |FrontEnd|FrontEnd|
-|Subnet address range|10.1.0.0/24 |10.100.0.0/24 |
-|Gateway subnet     |10.1.1.0/24|10.100.1.0/24|
+|Virtuális hálózat neve     |Azs-hálózatok|AzureVNet |
+|Virtuális hálózat címtere |10.1.0.0/16|10.100.0.0/16|
+|Alhálózat neve     |Előtér|Előtér|
+|Alhálózati címtartomány|10.1.0.0/24 |10.100.0.0/24 |
+|Átjáró alhálózata     |10.1.1.0/24|10.100.1.0/24|
 
-## <a name="create-the-network-resources-in-azure"></a>Create the network resources in Azure
+## <a name="create-the-network-resources-in-azure"></a>A hálózati erőforrások létrehozása az Azure-ban
 
-First you create the network resources for Azure. The following instructions show how to create the resources by using the [Azure portal](http://portal.azure.com/).
+Először hoz létre a hálózati erőforrások az Azure-bA. Az alábbi utasítások alapján bemutatják, hogyan hozhat létre az erőforrások használatával a [Azure-portálon](http://portal.azure.com/).
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
+### <a name="create-the-virtual-network-and-vm-subnet"></a>A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
 
-1. Sign in to the [Azure portal](http://portal.azure.com/) using your Azure account.
-2. In the user portal, select **New**.
-3. Go to **Marketplace**, and then select **Networking**.
-4. Select **Virtual network**.
-5. Use the information from the network configuration table to identify the values for Azure **Name**, **Address space**, **Subnet name**, and **Subnet address range**.
-6. For **Resource Group**, create a new resource group or, if you already have one, select **Use existing**.
-7. Select the **Location** of your VNet.  If you're using the example values, select **East US** or use another location if you prefer.
-8. Select **Pin to dashboard**.
-9. Select **Create**.
+1. Jelentkezzen be a [Azure-portálon](http://portal.azure.com/) Azure-fiókjával.
+2. Válassza ki a felhasználói portál **új**.
+3. Ugrás a **piactér**, majd válassza ki **hálózati**.
+4. Válassza ki **virtuális hálózati**.
+5. Olvassa el a hálózati konfiguráció táblából azonosítsa azokat az értékeket az Azure- **neve**, **Címtéren**, **alhálózati név**, és **alhálózati cím tartomány**.
+6. A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy ha már rendelkezik egy, **meglévő**.
+7. Válassza ki a **hely** a vnet.  A példában szereplő értékeket használata, válassza ki a **USA keleti régiója** , vagy használjon egy másik helyre, ha szeretné.
+8. Válassza a **Rögzítés az irányítópulton** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-the-gateway-subnet"></a>Create the Gateway Subnet
-1. Open the Virtual network resource you created (**AzureVNet**) from the dashboard.
-2. On the **Settings** section, select **Subnets**.
-3. Select  **Gateway subnet** to add a gateway subnet to the virtual network.
-4. The name of the subnet is set to **GatewaySubnet** by default.
-   Gateway subnets are special and must have this specific name to function properly.
-5. In the **Address range** field, verify the address is **10.100.0.0/24**.
-6. Select **OK** to create the gateway subnet.
+### <a name="create-the-gateway-subnet"></a>Hozza létre az átjáró-alhálózatot.
+1. Nyissa meg a létrehozott virtuális hálózati erőforráshoz (**AzureVNet**) az irányítópulton.
+2. Az a **beállítások** szakaszban jelölje be **alhálózatok**.
+3. Válassza ki **átjáróalhálózatot** hozzáadása egy átjáró-alhálózatot a virtuális hálózathoz.
+4. Az alhálózat neve alapértelmezés szerint **GatewaySubnet**.
+   Az átjáró-alhálózatok egyediek, és a megfelelő működéshez ezzel az adott névvel kell rendelkezniük.
+5. Az a **-címtartományt** mezőbe a címe **10.100.0.0/24**.
+6. Válassza ki **OK** az átjáró alhálózatának létrehozásához.
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
-1. In the Azure portal, select **New**.  
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, type **Azure-GW**.
-5. To choose a virtual network, select **Virtual network**. Then select **AzureVnet** from the list.
-6. Select **Public IP address**. When the **Choose public IP address** section opens, select **Create new**.
-7. In **Name**, type **Azure-GW-PiP**, and then select **OK**.
-8. By default, for **VPN type**, **Route-based** is selected.
-    Keep the **Route-based** VPN type.
-9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
+### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
+1. Válassza ki az Azure-portálon **új**.  
+2. Ugrás a **piactér**, majd válassza ki **hálózati**.
+3. Válassza ki a listáról a hálózati erőforrások **virtuális hálózati átjáró**.
+4. A **neve**, típus **Azure-GW**.
+5. Virtuális hálózat kiválasztásához jelölje ki a **virtuális hálózati**. Válassza ki **AzureVnet** a listából.
+6. Válassza ki **nyilvános IP-cím**. Ha a **nyilvános IP-cím kiválasztása** szakasz megnyílik, jelölje be **hozzon létre új**.
+7. A **neve**, típus **Azure-GW-PiP**, majd válassza ki **OK**.
+8. Alapértelmezés szerint a **VPN-típus**, **útválasztó-alapú** van kiválasztva.
+    Tartsa a **útválasztó-alapú** VPN-típus.
+9. Ellenőrizze, hogy az **Előfizetés** és a **Hely** mező értéke helyes-e. Rögzítheti az irányítópulton az erőforrást. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
+### <a name="create-the-local-network-gateway-resource"></a>A helyi hálózati átjáró létrehozása
 
-1. In the Azure portal, select **New**. 
-4. Go to **Marketplace**, and then select **Networking**.
-5. From the list of resources, select **Local network gateway**.
-6. In **Name**, type **Azs-GW**.
-7. In **IP address**, type the public IP address for your Azure Stack Virtual Network Gateway that is listed earlier in the network configuration table.
-8. In **Address Space**, from Azure Stack, type the **10.0.10.0/23** address space for **AzureVNet**.
-9. Verify that your **Subscription**, **Resource Group**, and **Location** are correct, and then select **Create**.
+1. Válassza ki az Azure-portálon **új**. 
+4. Ugrás a **piactér**, majd válassza ki **hálózati**.
+5. Válassza ki a listáról az erőforrások **helyi hálózati átjáró**.
+6. A **neve**, típus **Azs-GW**.
+7. A **IP-cím**, írja be a nyilvános IP-cím a Azure verem virtuális hálózati átjáró, amely korábban a hálózati konfiguráció táblázatban szerepel.
+8. A **Címterület**, az Azure-vermet, írja be a **10.0.10.0/23** címterének a **AzureVNet**.
+9. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e, majd válassza ki **létrehozása**.
 
-## <a name="create-the-connection"></a>Create the connection
-1. In the user portal, select **New**. 
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of resources, select **Connection**.
-4. On the **Basic** settings section, for the **Connection type**, choose **Site-to-site (IPSec)**.
-5. Select the **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-6. On the **Settings** section, select **Virtual network gateway**, and then select **Azure-GW**.
-7. Select **Local network gateway**, and then select **Azs-GW**.
-8. In **Connection name**, type **Azure-Azs**.
-9. In **Shared key (PSK)**, type **12345**. If you choose a different value, remember that it *must* match the value for the shared key that you create on the other end of the connection. Select **OK**.
-10. Review the **Summary** section, and then select **OK**.
+## <a name="create-the-connection"></a>A kapcsolat létrehozása
+1. Válassza ki a felhasználói portál **új**. 
+2. Ugrás a **piactér**, majd válassza ki **hálózati**.
+3. Válassza ki a listáról az erőforrások **kapcsolat**.
+4. Az a **alapvető** beállítások szakaszban, a a **kapcsolattípus**, válassza a **pont-pont (IPSec)**.
+5. Válassza ki a **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
+6. Az a **beállítások** szakaszban jelölje be **virtuális hálózati átjáró**, majd válassza ki **Azure-GW**.
+7. Válassza ki **helyi hálózati átjáró**, majd válassza ki **Azs-GW**.
+8. A **kapcsolatnév**, típus **Azure-Azs**.
+9. A **megosztott kulcsot (PSK)**, típus **12345**. Ha egy másik értéket választja, ne feledje, hogy az informatikai *kell* felel meg a megosztott kulcs, amely hoz létre a kapcsolat másik végén. Kattintson az **OK** gombra.
+10. Tekintse át a **összegzés** szakaszt, és válassza ki **OK**.
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
-Create a virtual machine in Azure now, and put it on your VM subnet in your virtual network.
+## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
+Létrehoz egy virtuális gépet az Azure-ban, és a Virtuálisgép-alhálózatot a virtuális hálózat helyezése.
 
-1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
-4. On the **Basics** section, for **Name**, type **AzureVM**.
-5. Type a valid username and password. You use this account to sign in to the virtual machine after it's created.
-6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** section, select a virtual machine size for this instance, and then select **Select**.
-8. On the **Settings** section, you can accept the defaults. Make sure that the **AzureVnet** virtual network is selected, and verify that the subnet is set to **10.0.20.0/24**. Select **OK**.
-9. Review the settings on the **Summary** section, and then select **OK**.
+1. Válassza ki az Azure-portálon **új**.
+2. Ugrás a **piactér**, majd válassza ki **számítási**.
+3. A virtuálisgép-lemezképeket, jelölje ki a **Windows Server 2016 Datacenter próbaverzió** kép.
+4. Az a **alapjai** szakaszban, a **neve**, típus **AzureVM**.
+5. Írjon be egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
+6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
+7. Az a **mérete** szakaszban, a virtuális gép méretét, az adott példány, majd válassza ki és **válasszon**.
+8. Az a **beállítások** szakaszban elfogadhatja az alapértelmezett beállításokat. Győződjön meg arról, hogy a **AzureVnet** virtuális hálózat van kiválasztva, és ellenőrizze, hogy az alhálózat **10.0.20.0/24**. Kattintson az **OK** gombra.
+9. Tekintse át a beállításokat a a **összegzés** szakaszt, és válassza ki **OK**.
 
-## <a name="create-the-network-resources-in-azure-stack"></a>Create the network resources in Azure Stack
-Next you create the network resources in Azure Stack.
+## <a name="create-the-network-resources-in-azure-stack"></a>A hálózati erőforrások létrehozása az Azure-verem
+A hálózati erőforrások következő Azure verem létrehozása.
 
-### <a name="sign-in-as-a-user"></a>Sign in as a user
-A service administrator can sign in as a user to test the plans, offers, and subscriptions that their users might use. If you don’t already have one, [create a user account](azure-stack-add-new-user-aad.md) before you sign in.
+### <a name="sign-in-as-a-user"></a>Jelentkezzen be egy olyan felhasználó nevében
+A szolgáltatás-rendszergazdáknak is jelentkezzen be egy olyan felhasználó nevében a tervek, ajánlatok és-előfizetések, amelyek a felhasználók használhatja. Ha még nem rendelkezik egy, [felhasználói fiók létrehozása](azure-stack-add-new-user-aad.md) regisztráció előtt.
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
-1. Use a user account to sign in to the user portal.
-2. In the user portal, select **New**.
+### <a name="create-the-virtual-network-and-vm-subnet"></a>A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
+1. Felhasználói fiók használata a felhasználói portálra történő bejelentkezéshez.
+2. Válassza ki a felhasználói portál **új**.
 
-    ![Create new virtual network](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
+    ![Új virtuális hálózat létrehozása](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
 
-3. Go to **Marketplace**, and then select **Networking**.
-4. Select **Virtual network**.
-5. For **Name**, **Address space**, **Subnet name**, and **Subnet address range**, use the values from the network configuration table.
-6. In **Subscription**, the subscription that you created earlier appears.
-7. For **Resource Group**, you can either create a resource group or if you already have one, select **Use existing**.
-8. Verify the default location.
-9. Select **Pin to dashboard**.
-10. Select **Create**.
+3. Ugrás a **piactér**, majd válassza ki **hálózati**.
+4. Válassza ki **virtuális hálózati**.
+5. A **neve**, **Címtéren**, **alhálózati név**, és **alhálózati címtartományt**, használja a hálózati konfiguráció táblából értékeket.
+6. A **előfizetés**, az előfizetés korábban létrehozott jelenik meg.
+7. A **erőforráscsoport**, hozzon létre egy erőforráscsoportot, vagy ha már rendelkezik egy, válassza ki a **meglévő**.
+8. Ellenőrizze az alapértelmezett helyet.
+9. Válassza a **Rögzítés az irányítópulton** lehetőséget.
+10. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-the-gateway-subnet"></a>Create the gateway subnet
-1. On the dashboard, open the Azs-VNet virtual network resource you created.
-2. On the **Settings** section, select **Subnets**.
-3. To add a gateway subnet to the virtual network, select **Gateway Subnet**.
+### <a name="create-the-gateway-subnet"></a>Az átjáróalhálózat létrehozása
+1. Az irányítópulton nyissa meg a létrehozott Azs-virtuális hálózat virtuális hálózati erőforrás.
+2. Az a **beállítások** szakaszban jelölje be **alhálózatok**.
+3. A virtuális hálózati átjáró-alhálózatot hozzáadásához válassza **Átjáróalhálózatot**.
    
-    ![Add gateway subnet](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
+    ![Átjáró alhálózatának hozzáadása](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
 
-4. By default, the subnet name is set to **GatewaySubnet**.
-   Gateway subnets are special. To function properly, they must use the *GatewaySubnet* name.
-5. In **Address range**, verify that the address is **10.1.1.0/24**.
-6. Select **OK** to create the gateway subnet.
+4. Alapértelmezés szerint az alhálózat neve legyen **GatewaySubnet**.
+   Átjáró alhálózatok olyan speciális. A megfelelő működéshez kell használniuk a *GatewaySubnet* nevét.
+5. A **-címtartományt**, győződjön meg arról, hogy a cím **10.1.1.0/24**.
+6. Válassza ki **OK** az átjáró alhálózatának létrehozásához.
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
-1. In the Azure Stack portal, select **New**. 
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, type **Azs-GW**.
-5. Select the **Virtual network** item to choose a virtual network.
-   Select **Azs-VNet** from the list.
-6. Select the **Public IP address** menu item. When the **Choose public IP address** section opens, select **Create new**.
-7. In **Name**, type **Azs-GW-PiP**, and then select **OK**.
-8.  By default, for **VPN type**, **Route-based** is selected.
-    Keep the **Route-based** VPN type.
-9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
+### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
+1. Válassza a verem Azure portál **új**. 
+2. Ugrás a **piactér**, majd válassza ki **hálózati**.
+3. Válassza ki a listáról a hálózati erőforrások **virtuális hálózati átjáró**.
+4. A **neve**, típus **Azs-GW**.
+5. Válassza ki a **virtuális hálózati** elem egy virtuális hálózatot választ.
+   Válassza ki **Azs-VNet** a listából.
+6. Válassza ki a **nyilvános IP-cím** menüpont. Ha a **nyilvános IP-cím kiválasztása** szakasz megnyílik, jelölje be **hozzon létre új**.
+7. A **neve**, típus **a PiP GW Azs**, majd válassza ki **OK**.
+8.  Alapértelmezés szerint a **VPN-típus**, **útválasztó-alapú** van kiválasztva.
+    Tartsa a **útválasztó-alapú** VPN-típus.
+9. Ellenőrizze, hogy az **Előfizetés** és a **Hely** mező értéke helyes-e. Rögzítheti az irányítópulton az erőforrást. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-the-local-network-gateway"></a>Create the local network gateway
-The notion of a *local network gateway* in Azure Stack is a bit different than in an Azure deployment.
+### <a name="create-the-local-network-gateway"></a>A helyi hálózati átjáró létrehozása
+A fogalmát egy *helyi hálózati átjáró* Azure verem kissé eltérő, mint az Azure-telepítés.
 
-In an Azure deployment, a local network gateway represents an on-premises (at the user location) physical device, that you use to connect to a virtual network gateway in Azure. In Azure Stack, both ends of the connection are virtual network gateways!
+Az Azure-telepítés a helyi hálózati átjáró egy (az adott helyen felhasználói) helyszíni fizikai eszköz, a virtuális hálózati átjáró az Azure-ban való kapcsolódáshoz használt jelöli. Azure-készletben a kapcsolat mindkét végén a virtuális hálózati átjárók!
 
-A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. 
+Egy gondolja, hogy a több általános módja, hogy a helyi hálózati átjáró erőforrás mindig jelzi a távoli átjáró, a kapcsolat másik végén. 
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
-1. Sign in to the Azure Stack portal.
-2. In the user portal, select **New**.
-3. Go to **Marketplace**, and then select **Networking**.
-4. From the list of resources, select **local network gateway**.
-5. In **Name**, type **Azure-GW**.
-6. In **IP address**, type the Public IP Address for the virtual network gateway in Azure **Azure-GW-PiP**. This address appears earlier in the network configuration table.
-7. In **Address Space**, for the address space of the Azure VNET that you created, type **10.0.20.0/23**.
-8. Verify that your **Subscription**, **Resource Group**, and **location** are correct, and then select **Create**.
+### <a name="create-the-local-network-gateway-resource"></a>A helyi hálózati átjáró létrehozása
+1. Jelentkezzen be a verem Azure portálra.
+2. Válassza ki a felhasználói portál **új**.
+3. Ugrás a **piactér**, majd válassza ki **hálózati**.
+4. Válassza ki a listáról az erőforrások **helyi hálózati átjáró**.
+5. A **neve**, típus **Azure-GW**.
+6. A **IP-cím**, írja be a virtuális hálózati átjáró nyilvános IP-címét az Azure-ban **Azure-GW-PiP**. Ez a cím jelenik meg a korábban a hálózati konfiguráció táblázatban.
+7. A **Címterület**, a létrehozott Azure virtuális hálózat a címtér, írja be a következőt **10.0.20.0/23**.
+8. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e, majd válassza ki **létrehozása**.
 
-### <a name="create-the-connection"></a>Create the connection
-1. In the user portal, select **New**.
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of resources, select **Connection**.
-4. On the **Basics** settings section, for the **Connection type**, select **Site-to-site (IPSec)**.
-5. Select the **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-6. On the **Settings** section,  select **Virtual network gateway**, and then select **Azs-GW**.
-7. Select **Local network gateway**, and then select **Azure-GW**.
-8. In **Connection Name**, type **Azs-Azure**.
-9. In **Shared key (PSK)**, type **12345**, and then select **OK**.
-10. On the **Summary** section, select **OK**.
+### <a name="create-the-connection"></a>A kapcsolat létrehozása
+1. Válassza ki a felhasználói portál **új**.
+2. Ugrás a **piactér**, majd válassza ki **hálózati**.
+3. Válassza ki a listáról az erőforrások **kapcsolat**.
+4. Az a **alapjai** beállítások szakaszban, a a **kapcsolattípus**, jelölje be **pont-pont (IPSec)**.
+5. Válassza ki a **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
+6. Az a **beállítások** szakaszban jelölje be **virtuális hálózati átjáró**, majd válassza ki **Azs-GW**.
+7. Válassza ki **helyi hálózati átjáró**, majd válassza ki **Azure-GW**.
+8. A **kapcsolatnév**, típus **Azs-Azure**.
+9. A **megosztott kulcsot (PSK)**, típus **12345**, majd válassza ki **OK**.
+10. Az a **összegzés** szakaszban jelölje be **OK**.
 
-### <a name="create-a-vm"></a>Create a VM
-To validate the data that travels through the VPN connection, you need to create virtual machines on each end to send and receive data through the VPN tunnel. 
+### <a name="create-a-vm"></a>Virtuális gép létrehozása
+A VPN-kapcsolaton keresztül átvitt adatok ellenőrzéséhez szüksége küldeni és fogadni az adatokat a VPN-alagúton keresztül minden futó virtuális gépek létrehozásához. 
 
-1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
-4. On the **Basics** section, in **Name**, type **Azs-VM**.
-5. Type a valid username and password. You use this account to sign in to the VM after it's created.
-6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** section, for this instance, select a virtual machine size, and then select **Select**.
-8. On the **Settings** section, accept the defaults. Make sure that the **Azs-VNet** virtual network is selected. Verify that the subnet is set to **10.1.0.0/24**. Then select **OK**.
-9. On the **Summary** section, review the settings, and then select **OK**.
+1. Válassza ki az Azure-portálon **új**.
+2. Ugrás a **piactér**, majd válassza ki **számítási**.
+3. A virtuálisgép-lemezképeket, jelölje ki a **Windows Server 2016 Datacenter próbaverzió** kép.
+4. Az a **alapjai** részben, a **neve**, típus **Azs-VM**.
+5. Írjon be egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
+6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
+7. Az a **mérete** részben, a példány, jelölje be a virtuális gép méretét, és válassza ki **válasszon**.
+8. Az a **beállítások** területen fogadja el az alapértelmezett beállításokat. Győződjön meg arról, hogy a **Azs-VNet** virtuális hálózat van kiválasztva. Ellenőrizze, hogy az alhálózat **10.1.0.0/24**. Válassza ki **OK**.
+9. Az a **összegzés** szakaszt, tekintse át a beállításokat, és válassza ki **OK**.
 
 
-## <a name="test-the-connection"></a>Test the connection
-Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in Azure Stack. Then, ping the virtual machine that you created in Azure. 
+## <a name="test-the-connection"></a>A kapcsolat tesztelése
+Most, hogy a helyek kapcsolat létrejött, ellenőriznie kell, hogy az átfutó forgalom kaphat. Ellenőrizze, hogy jelentkezzen be Azure verem létrehozott virtuális gépek közül. Ezt követően Pingelje meg a virtuális gép, amelyet az Azure-ban hozott létre. 
 
-To make sure that you send the traffic through the site-to-site connection, ping the Direct IP (DIP) address of the virtual machine on the remote subnet, not the VIP. To do this, find the DIP address on the other end of the connection. Save the address for later use.
+Győződjön meg arról, hogy a helyek kapcsolaton keresztül a forgalom küldése, Pingelje meg a virtuális gép távoli alhálózaton, nem a VIP közvetlen IP-címet (DIP) címét. Ehhez az szükséges, a DIP cím, a kapcsolat másik végén található. A későbbi használat céljából menteni.
 
-### <a name="sign-in-to-the-user-vm-in-azure-stack"></a>Sign in to the user VM in Azure Stack
-1. Sign in to the Azure Stack portal.
-2. In the left navigation bar, select **Virtual Machines**.
-3. In the list of VMs, find **Azs-VM** that you created previously, and then select it.
-4. On the section for the virtual machine, click **Connect**, and then open the Azs-VM.rdp file.
+### <a name="sign-in-to-the-user-vm-in-azure-stack"></a>Jelentkezzen be a felhasználó Azure verem VM
+1. Jelentkezzen be a verem Azure portálra.
+2. Válassza ki a bal oldali navigációs sáv **virtuális gépek**.
+3. A virtuális gépek listájának megtekintéséhez keresse **Azs-VM** korábban létrehozott, és állítsa be azt.
+4. A szakasz a virtuális gépet, kattintson a **Connect**, majd nyissa meg a Azs-VM.rdp fájlt.
    
-     ![Connect button](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
-5. Sign in with the account that you configured when you created the virtual machine.
-6. Open an elevated **Windows PowerShell** window.
-7. Type **ipconfig /all**.
-8. In the output, find the **IPv4 Address**, and then save the address for later use. This is the address that you will ping from Azure. In the example environment, the address is **10.0.10.4**, but in your environment it might be different. It should fall within the **10.0.10.0/24** subnet that you created previously.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+     ![A Csatlakozás gombra](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
+5. Jelentkezzen be a virtuális gép létrehozásakor beállított fiókot.
+6. Nyisson meg egy emelt szintű **Windows PowerShell** ablak.
+7. Írja be az **ipconfig /all** parancsot.
+8. A kimenetben keresse meg a **IPv4-cím**, majd mentse a cím későbbi használatra. Ez az a cím, amely pingelést az Azure-ból. Ebben a példakörnyezetben a cím **10.0.10.4**, de az Ön környezetében ettől eltérő lehet. Alá kell tartozniuk a **10.0.10.0/24** korábban létrehozott alhálózati.
+9. Hozzon létre egy tűzfalszabályt, amely lehetővé teszi, hogy a virtuális gép pingelésre, futtassa a következő PowerShell-parancsot:
 
    ```powershell
    New-NetFirewallRule `
@@ -235,16 +234,16 @@ To make sure that you send the traffic through the site-to-site connection, ping
     –Protocol ICMPv4
    ```
 
-### <a name="sign-in-to-the-tenant-vm-in-azure"></a>Sign in to the tenant VM in Azure
-1. Sign in to the Azure portal.
-2. In the left navigation bar, click **Virtual Machines**.
-3. From the list of virtual machines, find **Azure-VM** that you created previously, and then select it.
-4. On the section for the virtual machine, click **Connect**.
-5. Sign in with the account that you configured when you created the virtual machine.
-6. Open an elevated **Windows PowerShell** window.
-7. Type **ipconfig /all**.
-8. You should see an IPv4 address that falls within **10.0.20.0/24**. In the example environment, the address is **10.0.20.4**, but your address might be different.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+### <a name="sign-in-to-the-tenant-vm-in-azure"></a>Jelentkezzen be a bérlő Azure-ban
+1. Jelentkezzen be az Azure portálra.
+2. A bal oldali navigációs sávon kattintson **virtuális gépek**.
+3. A virtuális gépek listájának található **Azure-VM** korábban létrehozott, és állítsa be azt.
+4. A szakasz a virtuális gépet, kattintson a **Connect**.
+5. Jelentkezzen be a virtuális gép létrehozásakor beállított fiókot.
+6. Nyisson meg egy emelt szintű **Windows PowerShell** ablak.
+7. Írja be az **ipconfig /all** parancsot.
+8. Egy IPv4-címet, amely kell megjelennie **10.0.20.0/24**. Példa környezetben, a cím az **10.0.20.4**, de lehet, hogy a cím különböző.
+9. Hozzon létre egy tűzfalszabályt, amely lehetővé teszi, hogy a virtuális gép pingelésre, futtassa a következő PowerShell-parancsot:
 
    ```powershell
    New-NetFirewallRule `
@@ -252,21 +251,21 @@ To make sure that you send the traffic through the site-to-site connection, ping
     –Protocol ICMPv4
    ```
 
-10. From the virtual machine in Azure, ping the virtual machine in Azure Stack, through the tunnel. To do this, you ping the DIP that you recorded from Azs-VM.
-   In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following screenshot:
+10. A virtuális gépről az Azure-ban Pingelje meg a virtuális gép Azure-készletben, az alagúton keresztül. Ehhez az szükséges, a DIP Azs-virtuális gépről rögzített pingelést.
+   Példa környezetben, ami **10.0.10.4**, de ügyeljen arra, hogy pingelni a címre, amelyet a tesztkörnyezetben. Az alábbi képernyőfelvételen hasonló egy eredmény kell megjelennie:
    
-    ![Successful ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
-11. A reply from the remote virtual machine indicates a successful test! You can close the virtual machine window. To test your connection, you can try other kinds of data transfers like a file copy.
+    ![Sikeres ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
+11. A távoli virtuális gépről a válasz azt jelzi, hogy a sikeres vizsgálat! A virtuális gép ablak bezárása A kapcsolat tesztelésére, próbálja meg más típusú adatátvitelek például egy fájl másolása.
 
-### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Viewing data transfer statistics through the gateway connection
-If you want to know how much data passes through your site-to-site connection, this information is available on the **Connection** section. This test is also another way to verify that the ping you just sent actually went through the VPN connection.
+### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Adatátviteli statisztika megtekintése az átjárókapcsolaton keresztül
+Ha szeretné tudni, hogy mennyi adatot továbbítja a helyek kapcsolaton keresztül, ezek az információk érhető el a **kapcsolat** szakasz. Ez a vizsgálat módja is egy másik győződjön meg arról, hogy az imént a telefonjára küldött ping ténylegesen merült fel a VPN-kapcsolaton keresztül.
 
-1. While you're signed in to the user virtual machine in Azure Stack, use your user account to sign in to the user portal.
-2. Go to **All resources**, and then select the **Azs-Azure** connection. **Connections** appears.
-4. On the **Connection** section, the statistics for **Data in** and **Data out** appear. In the following screenshot, the large numbers are attributed to additional file transfer. You should see some nonzero values there.
+1. Amíg a felhasználó Azure verem virtuális gépre van bejelentkezve, a felhasználói fiók használata a felhasználói portálra történő bejelentkezéshez.
+2. Nyissa meg a **összes erőforrás**, majd válassza ki a **Azs-Azure** kapcsolat. **Kapcsolatok** jelenik meg.
+4. Az a **kapcsolat** részben, a statisztikája **adatok** és **kimenő adatforgalmat** jelennek meg. Az alábbi képernyőképen a nagy mennyiségű rendelnek a további fájlok átvitele. Néhány nullától eltérő értéket kell megjelennie.
    
-    ![Data in and out](media/azure-stack-connect-vpn/Connection.png)
+    ![Adatok és kimenő](media/azure-stack-connect-vpn/Connection.png)
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>Következő lépések
 
-[Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
+[Alkalmazások telepítése Azure és az Azure verem](azure-stack-solution-pipeline.md)

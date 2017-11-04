@@ -1,6 +1,6 @@
 ---
-title: Understanding DNS in Azure Stack | Microsoft Docs
-description: Understanding DNS features and capabilities in Azure Stack
+title: "Az Azure-készletben DNS ismertetése |} Microsoft Docs"
+description: "DNS-szolgáltatásokat és képességeket Azure verem ismertetése"
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -14,45 +14,43 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8c023eda179ace41a082bf4a4fadc281c14db7ba
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="introducing-idns-for-azure-stack"></a>Introducing iDNS for Azure Stack
+# <a name="introducing-idns-for-azure-stack"></a>Azure verem IDN bemutatása
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-iDNS is a feature in Azure Stack that allows you to resolve external DNS names (such as http://www.bing.com).
-It also allows you to register internal virtual network names. By doing so, you can resolve VMs on the same virtual network by name rather than IP address, without having to provide custom DNS server entries.
+IDN egy olyan szolgáltatás, amely lehetővé teszi, hogy a külső DNS-nevek (pl. http://www.bing.com) Azure-készletben.
+Lehetővé teszi a belső virtuális hálózati nevek regisztrálni. Ennek végrehajtásával oldhatja virtuális gépek azonos virtuális hálózaton IP-címet, hanem nevét egyéni DNS-kiszolgálóbejegyzéseik megadása nélkül.
 
-It’s something that’s always been there in Azure, but it's available in Windows Server 2016 and Azure Stack too.
+Amelyet mindig az, hogy létezik az Azure-ban, de akkor érhető el a Windows Server 2016 és Azure verem túl.
 
-## <a name="what-does-idns-do"></a>What does iDNS do?
-With iDNS in Azure Stack, you get the following capabilities, without having to specify custom DNS server entries.
+## <a name="what-does-idns-do"></a>Mire IDN?
+IDN Azure-készletben akkor az alábbi képességeket egyéni DNS-kiszolgálóbejegyzéseik megadása nélkül beolvasása.
 
-* Shared DNS name resolution services for tenant workloads.
-* Authoritative DNS service for name resolution and DNS registration within the tenant virtual network.
-* Recursive DNS service for resolution of Internet names from tenant VMs. Tenants no longer need to specify custom DNS entries to resolve Internet names (for example, www.bing.com).
+* Megosztott DNS névfeloldási szolgáltatást bérlői munkaterheléseket.
+* A névfeloldás és a DNS-regisztráció a bérlői virtuális hálózaton belül mérvadó DNS-szolgáltatás.
+* A rekurzív DNS-szolgáltatás a bérlői virtuális gépek Internet-nevek feloldását. Bérlők már nem kell Internet névfeloldás (például www.bing.com) egyéni DNS-bejegyzéseit adja meg.
 
-You can still bring your own DNS and use custom DNS servers if you want. But now, if you just want to be able to resolve Internet DNS names and be able to connect to other virtual machines in the same virtual network, you don’t need to specify anything and it will just work.
+Kapcsolja a saját DNS is, és egyéni DNS-kiszolgálók használata, ha azt szeretné. Azonban, ha most kívánja kell tudni oldania az internetes DNS-nevek, és az azonos virtuális hálózatban lévő másik virtuális gép csatlakozni, adja meg, semmit nem kell, és csak akkor fog működni.
 
-## <a name="what-does-idns-not-do"></a>What does iDNS not do?
-What iDNS does not allow you to do is create a DNS record for a name that can be resolved from outside the virtual network.
+## <a name="what-does-idns-not-do"></a>Mire IDN nem?
+Milyen IDN nem teszi lehetővé a teendő, hozzon létre egy DNS-rekordot a nevet, amely a virtuális hálózaton kívül feloldhatók legyenek.
 
-In Azure, you have the option of specifying a DNS name label that can be associated with a public IP address. You can choose the label (prefix), but Azure chooses the suffix, which is based on the region in which you create the public IP address.
+Az Azure lehetősége van egy DNS-névcímke, amely társítva van egy nyilvános IP-cím megadásával. Választhat, hogy a címke (előtag), de Azure úgy dönt, az a régió, ahol a nyilvános IP-cím létrehozása alapuló előtagot.
 
-![Screenshot of DNS name label](media/azure-stack-understanding-dns-in-tp2/image3.png)
+![Képernyőfelvétel a DNS-névcímke](media/azure-stack-understanding-dns-in-tp2/image3.png)
 
-In the image above, Azure will create an “A” record in DNS for the DNS name label specified under the zone **westus.cloudapp.azure.com**. The prefix and the suffix together compose a Fully Qualified Domain Name (FQDN) that can be resolved from anywhere on the public Internet.
+A fenti kép Azure létrehoz egy "A" rekord a DNS-ben a DNS-névcímke, a zóna alatt megadott **westus.cloudapp.azure.com**. Az előtag és a együtt utótag állítható össze a teljes tartomány neve (FQDN), amelyeket bárhol lehet feloldani a nyilvános interneten.
 
-Azure Stack only supports iDNS for internal name registration, so it cannot do the following.
+Az Azure verem csak támogatja belső névregisztráció, IDN, így nem tegye a következőket.
 
-* Create a DNS record under an existing hosted DNS zone (for example, local.azurestack.external).
-* Create a DNS zone (such as Contoso.com).
-* Create a record under your own custom DNS zone.
-* Support the purchase of domain names.
-
+* Hozzon létre egy meglévő üzemeltetett DNS-zóna (például local.azurestack.external) a DNS-rekord.
+* Hozzon létre egy DNS-zóna (például Contoso.com).
+* A saját egyéni DNS-zóna rekordot kell létrehozni.
+* A tartománynevek vásárlásának támogatja.
 

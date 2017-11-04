@@ -1,10 +1,10 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-exit-maintenance-mode"></a>To exit Maintenance mode
-1. At the command prompt type:
+#### <a name="to-exit-maintenance-mode"></a>A kilépéshez a karbantartási mód
+1. A parancssorba írja be a következőt:
    
      `Exit-HcsMaintenanceMode`
-2. A warning message and a confirmation message will appear. Type **Y** to exit Maintenance mode.
+2. Ekkor megjelenik egy figyelmeztető üzenet, és egy megerősítő üzenetet. Típus **Y** kilép karbantartási módból.
    
-    Both controllers will restart. When the restart is complete, another message will appear indicating that the device is in Normal mode.
+    Mindkét tartományvezérlők újraindul. Ha az újraindítás befejeződött, egy másik üzenet jelenik meg arról, hogy az eszköz normál üzemmódban.
 

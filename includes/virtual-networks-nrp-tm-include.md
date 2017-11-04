@@ -1,26 +1,26 @@
-## <a name="traffic-manager-profile"></a>Traffic Manager Profile
-Traffic manager and its child endpoint resource enable DNS routing to endpoints in Azure and outside of Azure. Such traffic distribution is governed by routing  policy methods. Traffic manager also allows endpoint health to be monitored, and traffic diverted appropriately based on the health of an endpoint. 
+## <a name="traffic-manager-profile"></a>Traffic Manager-profil
+A TRAFFIC manager és a gyermek végpont a DNS az Azure-ban, és az Azure-on kívüli végpontokhoz Útválasztás engedélyezése. Ilyen forgalomeloszlás, útválasztási házirend metódusok szabályozzák. A TRAFFIC manager is lehetővé teszi a figyelni kívánt végpont állapotát, és megfelelő módon használják fel forgalom alapján végpont állapotát. 
 
-| Property | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| **trafficRoutingMethod** |possible values are *Performance*, *Weighted*, and *Priority* |
-| **dnsConfig** |FQDN for the profile |
-| **Protocol** |monitoring protocol, possible values are *HTTP* and *HTTPS* |
-| **Port** |monitoring port |
-| **Path** |monitoring path |
-| **Endpoints** |container for endpoint resources |
+| **trafficRoutingMethod** |a lehetséges értékek: *teljesítmény*, *Weighted*, és *prioritása* |
+| **dnsConfig** |A profil teljes Tartományneve |
+| **Protocol (Protokoll)** |figyelés a protokollt, a lehetséges értékek: *HTTP* és *HTTPS* |
+| **Port** |figyelési port |
+| **Elérési út** |figyelési elérési út |
+| **Végpontok** |végpont erőforrások tárolója |
 
-### <a name="endpoint"></a>Endpoint
-An endpoint is a child resource of a Traffic Manager Profile. It represents a service or web endpoint to which user traffic is distributed based on the configured policy in the Traffic Manager Profile resource. 
+### <a name="endpoint"></a>Végpont
+A végpont a Traffic Manager-profil gyermek erőforrása. Azt jelenti, hogy egy szolgáltatás, vagy felhasználói adatforgalom elosztása webes végpontjának a beállított házirend alapján virtualizál a Traffic Manager-profil erőforrás. 
 
-| Property | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| **Type** |the type of the endpoint, possible values are *Azure End point*, *External Endpoint*, and  *Nested Endpoint* |
-| **targetResourceId** |public IP address of a service or web endpoint. This can be an Azure or external endpoint. |
-| **Weight** |endpoint weight used in traffic management. |
-| **Priority** |priority of the endpoint, used to define a failover action |
+| **Típus** |a végpont típusú lehetséges értékei *Azure végpont*, *külső végpont*, és *beágyazott végpont* |
+| **targetresourceid azonosítója** |egy szolgáltatás vagy webes végpont nyilvános IP-címe. Ez lehet egy Azure-bA vagy külső végpont. |
+| **Súlyozás** |végpont súly használt forgalom kezeléséhez. |
+| **Priority (Prioritás)** |a végponthoz, a feladatátvételi művelet meghatározására használt prioritása |
 
-Sample of Traffic Manager in Json format: 
+A Traffic Manager minta Json formátumban: 
 
         {
             "apiVersion": "[variables('tmApiVersion')]",
@@ -77,6 +77,6 @@ Sample of Traffic Manager in Json format:
         }
 
 
-## <a name="additional-resources"></a>Additional resources
-Read [REST API documentation for Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx) for more information.
+## <a name="additional-resources"></a>További források
+Olvasási [REST API-dokumentáció a Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx) további információt.
 

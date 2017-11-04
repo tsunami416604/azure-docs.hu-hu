@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 11/01/2017
 ms.author: nitinme
-ms.openlocfilehash: 0e2e0d02677013252b0806558535fe970b5c50b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 2d601cfa6e2e89ef26d4a2d7824b239a2f6ca7a7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Azure PowerShell használata a HDInsight-fürtök létrehozása a Data Lake Store (a további tárhely)
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ Kövesse az alábbi lépéseket egy Data Lake Store létrehozásához.
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>A szerepköralapú hozzáférés-Data Lake Store-hitelesítés beállítása
-Egy Azure Active Directory minden Azure-előfizetés tartozik. Felhasználók és a szolgáltatások, az előfizetés, a klasszikus Azure portálon vagy az Azure Resource Manager API-t használó erőforrásokat elérő először hitelesítenie kell magát, hogy Azure Active Directoryban. Hozzáférés az Azure-előfizetések és-szolgáltatások egy Azure-erőforrás a megfelelő szerepkört hozzárendelésével.  Szolgáltatások esetén egy egyszerű szolgáltatást a szolgáltatás az Azure Active Directory (AAD) a azonosítja. Ez a szakasz bemutatja az alkalmazásszolgáltatás, mint például a HDInsight, egy Azure-erőforrás (a korábban létrehozott Azure Data Lake Store fióknak) való hozzáférés engedélyezése az alkalmazás egyszerű szolgáltatás létrehozása és hozzárendelése a szerepkörök, amelyek Azure PowerShell.
+Egy Azure Active Directory minden Azure-előfizetés tartozik. Felhasználók és a szolgáltatások, az előfizetés az Azure-portálon vagy az Azure Resource Manager API erőforrásokat elérő először hitelesítenie kell magát, hogy Azure Active Directoryban. Hozzáférés az Azure-előfizetések és-szolgáltatások egy Azure-erőforrás a megfelelő szerepkört hozzárendelésével.  Szolgáltatások esetén egy egyszerű szolgáltatást a szolgáltatás az Azure Active Directory (AAD) a azonosítja. Ez a szakasz bemutatja az alkalmazásszolgáltatás, mint például a HDInsight, egy Azure-erőforrás (a korábban létrehozott Azure Data Lake Store fióknak) való hozzáférés engedélyezése az alkalmazás egyszerű szolgáltatás létrehozása és hozzárendelése a szerepkörök, amelyek Azure PowerShell.
 
 Active Directory-hitelesítés az Azure Data Lake beállításához a következő feladatokat kell elvégeznie.
 

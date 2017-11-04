@@ -2,7 +2,7 @@
 
 Ebben a cikkben megválaszolunk néhány Azure felügyelt lemezek és a prémium szintű Azure Storage kapcsolatos gyakori kérdésekre.
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Felügyelt lemezek
 
 **Mi az Azure Managed lemezek?**
 
@@ -54,7 +54,7 @@ Nem. A virtuális gépek rendelkezésre állási csoportba kell használnia, vag
 
 **Felügyelt lemezek van az alapértelmezett beállítás, az Azure-portálon?**
 
-Jelenleg nem de ez a jövőben lesz az alapértelmezett.
+Igen. 
 
 **Hozhat létre egy üres felügyelt lemezes?**
 

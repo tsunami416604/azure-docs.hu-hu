@@ -1,6 +1,6 @@
 ---
-title: Create a test VM in Azure Stack | Microsoft Docs
-description: Learn how to provision a test VM in Azure Stack as a cloud operator.
+title: "A teszteléshez használt virtuális gép létrehozása Azure-készletben |} Microsoft Docs"
+description: "Útmutató a teszteléshez használt virtuális gép Azure verem felhő operátorként kiépítéséhez."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,34 +14,32 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 98770945d5cccc27bfce971491e6ea30fee2460a
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 233cf4df53af6a49e5fe4c5d51e112d8196a7530
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-test-virtual-machine-in-azure-stack"></a>Create a test virtual machine in Azure Stack
+# <a name="create-a-test-virtual-machine-in-azure-stack"></a>A teszt virtuális gép létrehozása Azure-verem
 
-*Applies to: Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure szoftverfejlesztői készletet*
 
-As a cloud operator, you can create a test virtual machine to validate your [Azure Stack](azure-stack-poc.md) deployment.
+Azure verem kezelőként létrehozhat a tesztcélú virtuális gépek ellenőrzése a [Azure verem](azure-stack-poc.md) szoftverfejlesztői készlet központi telepítés.
 
 > [!NOTE]
-> Before you can provision virtual machines, you must [add the Windows Server 2016 Evaluation image to the Azure Stack marketplace](azure-stack-add-default-image.md).
+> Virtuális gépek oszthat, előtt [adja hozzá a Windows Server 2016 értékelése a verem Azure piactér](azure-stack-add-default-image.md).
 > 
 > 
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
-1. On the Azure Stack Development Kit host, [sign in](azure-stack-connect-azure-stack.md) to the administrator portal (`https://adminportal.local.azurestack.external`), and then click **New** > **Compute** > **Windows Server 2016 Datacenter Eval** > **Create**.  
-2. In the **Basics** blade, type a **Name**, **User name**, and **Password**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, and then click **OK**.  
-3. In the **Choose a size** blade, click **A1 Standard**, and then click **Select**.  
-4. In the **Settings** blade, accept the defaults and click **OK**
-5. In the **Summary** blade, click **OK** to create the virtual machine.  
-6. To see your new virtual machine, click **All resources**, then search for the virtual machine and click its name.
+## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
+1. Az Azure verem szoftverfejlesztői készlet állomáson [bejelentkezés](azure-stack-connect-azure-stack.md) a felügyeleti portálra (`https://adminportal.local.azurestack.external`), és kattintson a **új** > **számítási**  >  **Windows Server 2016 Datacenter próbaverzió** > **létrehozása**.  
+2. Az a **alapjai** panelen adjon meg egy **neve**, **felhasználónév**, és **jelszó**. Válasszon egy **előfizetés**. Hozzon létre egy **erőforráscsoport**, vagy válasszon egy meglévőt, és kattintson **OK**.  
+3. Az a **méret kiválasztása** panelen kattintson **A1 szabványos**, és kattintson a **kiválasztása**.  
+4. Az a **beállítások** panelen fogadja el az alapértelmezett beállításokat, majd kattintson **OK**
+5. Az **Összegzés** panelen kattintson az **OK** gombra a virtuális gép létrehozásához.  
+6. Az új virtuális gép megtekintéséhez kattintson **összes erőforrás**, majd keresse meg a virtuális gép, és kattintson a nevére.
     ![](media/azure-stack-provision-vm/image06.png)
 
 
-## <a name="next-steps"></a>Next steps
-[Using the administrator and user portals in Azure Stack](azure-stack-manage-portals.md)
-
+## <a name="next-steps"></a>Következő lépések
+[A rendszergazda és a felhasználói portálon Azure verem használata](azure-stack-manage-portals.md)

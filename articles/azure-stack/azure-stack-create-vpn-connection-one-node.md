@@ -1,6 +1,6 @@
 ---
-title: Create a site-to-site VPN connection between two virtual networks in different Azure Stack Development Kit environments | Microsoft Docs
-description: Step-by-step procedure that a cloud administrator uses to create a site-to-site VPN connection between two single-node Azure Stack Development Kit environments.
+title: "Különböző Azure verem szoftverfejlesztői készlet környezetekben két virtuális hálózat közötti pont-pont VPN-kapcsolat létrehozása |} Microsoft Docs"
+description: "Lépésről lépésre, amely egycsomópontos Azure verem szoftverfejlesztői készlet két környezet közötti pont-pont VPN-kapcsolat létrehozásához használja a felhő rendszergazdájához."
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -14,57 +14,56 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: f76de4efe3d4328a37f86f986287092c808ea537
 ms.openlocfilehash: fa2a940620e06521fa110fa13dcbc3050635a502
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Create a site-to-site VPN connection between two virtual networks in different Azure Stack Development Kit environments
-## <a name="overview"></a>Overview
-This article shows you how to create a site-to-site VPN connection between two virtual networks in two separate Azure Stack Development Kit environments. While you configure the connections, you learn how VPN gateways in Azure Stack work.
+# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Különböző Azure verem szoftverfejlesztői készlet környezetekben két virtuális hálózat közötti pont-pont VPN-kapcsolat létrehozása
+## <a name="overview"></a>Áttekintés
+Ez a cikk bemutatja, hogyan két külön Azure verem szoftverfejlesztői készlet környezetben két virtuális hálózat közötti pont-pont VPN-kapcsolatot. Konfigurálhatja a kapcsolatokat, amíg megtudhatja, hogyan működnek a VPN-átjárók Azure-készletben.
 
-### <a name="connection-diagram"></a>Connection diagram
-The following diagram shows what the connection configuration should look like when you’re done.
+### <a name="connection-diagram"></a>Kapcsolati diagram
+Az alábbi ábrán látható, hogy mi a kapcsolat konfigurációs kell hasonlítania amikor elkészült.
 
-![Site-to-site VPN connection configuration](media/azure-stack-create-vpn-connection-one-node-tp2/OneNodeS2SVPN.png)
+![Pont-pont VPN-kapcsolat konfigurációja](media/azure-stack-create-vpn-connection-one-node-tp2/OneNodeS2SVPN.png)
 
-### <a name="before-you-begin"></a>Before you begin
-To complete the connection configuration, ensure that you have the following items before you begin:
+### <a name="before-you-begin"></a>Előkészületek
+A kapcsolat a konfigurálás befejezéséhez gondoskodjon arról, hogy a következő elemek megkezdése előtt:
 
-* Two servers that meet the Azure Stack Development Kit hardware requirements, which are defined by the [Azure Stack deployment prerequisites](azure-stack-deploy.md). Ensure that the other prerequisites that appear in the [article](azure-stack-deploy.md) are fulfilled too.
-* The [Azure Stack Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/) deployment package.
+* Két kiszolgáló, amely által megadott Azure verem szoftverfejlesztői készlet hardverkövetelményeinek megfelelő a [Azure verem telepítésének előfeltételei](azure-stack-deploy.md). Győződjön meg arról, hogy más előfeltételt jelennek meg a [cikk](azure-stack-deploy.md) túl teljesülnek-e.
+* A [Azure verem szoftverfejlesztői készlet](https://azure.microsoft.com/en-us/overview/azure-stack/try/) központi telepítési csomagot.
 
-## <a name="deploy-the-azure-stack-development-kit-environments"></a>Deploy the Azure Stack Development Kit environments
-To complete the connection configuration, you must deploy two Azure Stack Development Kit environments.
+## <a name="deploy-the-azure-stack-development-kit-environments"></a>Az Azure verem szoftverfejlesztői készlet környezetek központi telepítése
+Fejezze be a kapcsolat konfigurációját, két Azure verem szoftverfejlesztői készlet környezetet kell telepítenie.
 > [!NOTE] 
-> For each Azure Stack Development Kit that you deploy, follow the [deployment instructions](azure-stack-run-powershell-script.md). In this article, the Azure Stack Development Kit environments are called *POC1* and *POC2*.
+> Minden Azure verem szoftverfejlesztői készlet, amely központilag, kövesse a [üzembe helyezési utasítások](azure-stack-run-powershell-script.md). Ebben a cikkben az Azure verem szoftverfejlesztői készlet környezetek nevezzük *POC1* és *POC2*.
 
 
-## <a name="prepare-an-offer-on-poc1-and-poc2"></a>Prepare an offer on POC1 and POC2
-On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines. For information on how to create an offer, see [Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md).
+## <a name="prepare-an-offer-on-poc1-and-poc2"></a>Az ajánlat POC1 és POC2 előkészítése
+POC1 és POC2 készítse elő az ajánlatot, hogy egy felhasználó az ajánlat előfizetni, és a virtuális gépek telepítése. Ajánlat létrehozásával kapcsolatos további információkért lásd: [virtuális gépek Azure verem felhasználók számára történő elérhetővé](azure-stack-tutorial-tenant-vm.md).
 
-## <a name="review-and-complete-the-network-configuration-table"></a>Review and complete the network configuration table
-The following table summarizes the network configuration for both Azure Stack Development Kit environments. Use the procedure that appears after the table to add the External BGPNAT address that is specific for your network.
+## <a name="review-and-complete-the-network-configuration-table"></a>Tekintse át és végezze el a hálózati konfigurációs tábla
+A következő táblázat összefoglalja a hálózati konfigurációt a mindkét Azure verem szoftverfejlesztői készlet környezetben. Az eljárással, amely akkor jelenik meg, a külső BGPNAT címet adott-e a hálózat hozzáadása a táblázat után.
 
-**Network configuration table**
+**Hálózati konfiguráció tábla**
 |   |POC1|POC2|
 |---------|---------|---------|
-|Virtual network name     |VNET-01|VNET-02 |
-|Virtual network address space |10.0.10.0/23|10.0.20.0/23|
-|Subnet name     |Subnet-01|Subnet-02|
-|Subnet address range|10.0.10.0/24 |10.0.20.0/24 |
-|Gateway subnet     |10.0.11.0/24|10.0.21.0/24|
-|External BGPNAT address     |         |         |
+|Virtuális hálózat neve     |VNET-01|VNET-02 |
+|Virtuális hálózat címtere |10.0.10.0/23|10.0.20.0/23|
+|Alhálózat neve     |Alhálózat-01|Alhálózat-02|
+|Alhálózati címtartomány|10.0.10.0/24 |10.0.20.0/24 |
+|Átjáró alhálózata     |10.0.11.0/24|10.0.21.0/24|
+|Külső BGPNAT cím     |         |         |
 
 > [!NOTE]
-> The external BGPNAT IP addresses in the example environment are 10.16.167.195 for POC1, and 10.16.169.131 for POC2. Use the following procedure to determine the external BGPNAT IP addresses for your Azure Stack Development Kit hosts, and then add them to the previous network configuration table.
+> A példa környezetben BGPNAT IP-címek a következők: a POC1 10.16.167.195 és 10.16.169.131 POC2 a. Az alábbi eljárás segítségével határozza meg a külső BGPNAT IP-címek az Azure verem szoftverfejlesztői készlet gazdagépek, és adja őket a hálózati konfiguráció előző táblázatban.
 
 
-### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>Get the IP address of the external adapter of the NAT VM
-1. Sign in to the Azure Stack physical machine for POC1.
-2. Edit the following Powershell code to replace your administrator password, and then run the code on the POC host:
+### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>Az IP-cím beszerzése a NAT virtuális gépének külső adapteréről
+1. Jelentkezzen be a Azure verem fizikai gép POC1 számára.
+2. Szerkessze a következő Powershell-kódjába lecseréli a rendszergazda jelszavát, és futtassa a kódot a Koncepció állomáson:
 
    ```powershell
    cd \AzureStack-Tools-master\connect
@@ -76,199 +75,199 @@ The following table summarizes the network configuration for both Azure Stack De
     -HostComputer "AzS-bgpnat01" `
     -Password $Password
    ```
-3. Add the IP address to the network configuration table that appears in the previous section.
+3. Az IP-cím hozzáadása a hálózati konfigurációs táblázat, amely akkor jelenik meg az előző szakaszban.
 
-4. Repeat this procedure on POC2.
+4. Ismételje meg ezt a műveletet az POC2.
 
-## <a name="create-the-network-resources-in-poc1"></a>Create the network resources in POC1
-Now you create the POC1 network resources that you need to set up your gateways. The following instructions show you how to create the resources by using the user portal. You can also use PowerShell code to create the resources.
+## <a name="create-the-network-resources-in-poc1"></a>A hálózati erőforrások POC1 létrehozása
+Most már a POC1 hálózati erőforrásokhoz, hogy be kell állítani a átjárók másolatot hoz létre. Az alábbi utasítások alapján megjelenítése az erőforrás létrehozása a felhasználói portál használatával. Az erőforrások létrehozásához használhatja a PowerShell-kódot.
 
-![Workflow that is used to create resources](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
+![Erőforrások létrehozásához használt munkafolyamat](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
 
-### <a name="sign-in-as-a-tenant"></a>Sign in as a tenant
-A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
+### <a name="sign-in-as-a-tenant"></a>Jelentkezzen be a bérlő
+Szolgáltatás-rendszergazda bejelentkezhet hez bérlőként a tervek, ajánlatok és-előfizetések, amelyek a bérlők használhatja. Ha még nem rendelkezik egy, [bérlői fiók létrehozása](azure-stack-add-new-user-aad.md) regisztráció előtt.
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
-1. Use a tenant account to sign in to the user portal.
-2. In the user portal, select **New**.
+### <a name="create-the-virtual-network-and-vm-subnet"></a>A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
+1. A bérlői fiók használatával jelentkezzen be a felhasználói portálra.
+2. Válassza ki a felhasználói portál **új**.
 
-    ![Create new virtual network](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
+    ![Új virtuális hálózat létrehozása](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
 
-3. Go to **Marketplace**, and then select **Networking**.
-4. Select **Virtual network**.
-5. For **Name**, **Address space**, **Subnet name**, and **Subnet address range**, use the values that appear earlier in the network configuration table.
-6. In **Subscription**, the subscription that you created earlier appears.
-7. For **Resource Group**, you can either create a resource group or if you already have one, select **Use existing**.
-8. Verify the default location.
-9. Select **Pin to dashboard**.
-10. Select **Create**.
+3. Ugrás a **piactér**, majd válassza ki **hálózati**.
+4. Válassza ki **virtuális hálózati**.
+5. A **neve**, **Címtéren**, **alhálózati név**, és **alhálózati címtartományt**, használja az értékeket, amelyeket korábban a hálózati jelenik meg konfigurációs tábla.
+6. A **előfizetés**, az előfizetés korábban létrehozott jelenik meg.
+7. A **erőforráscsoport**, hozzon létre egy erőforráscsoportot, vagy ha már rendelkezik egy, válassza ki a **meglévő**.
+8. Ellenőrizze az alapértelmezett helyet.
+9. Válassza a **Rögzítés az irányítópulton** lehetőséget.
+10. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-the-gateway-subnet"></a>Create the gateway subnet
-1. On the dashboard, open the VNET-01 virtual network resource that you created earlier.
-2. On the **Settings** blade, select **Subnets**.
-3. To add a gateway subnet to the virtual network, select **Gateway Subnet**.
+### <a name="create-the-gateway-subnet"></a>Az átjáróalhálózat létrehozása
+1. Az irányítópulton nyissa meg a korábban létrehozott VNET-01 virtuális hálózati erőforráshoz.
+2. A **Beállítások** panelen válassza az **Alhálózatok** elemet.
+3. A virtuális hálózati átjáró-alhálózatot hozzáadásához válassza **Átjáróalhálózatot**.
    
-    ![Add gateway subnet](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
+    ![Átjáró alhálózatának hozzáadása](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
 
-4. By default, the subnet name is set to **GatewaySubnet**.
-   Gateway subnets are special. To function properly, they must use the *GatewaySubnet* name.
-5. In **Address range**, verify that the address is **10.0.11.0/24**.
-6. Select **OK** to create the gateway subnet.
+4. Alapértelmezés szerint az alhálózat neve legyen **GatewaySubnet**.
+   Átjáró alhálózatok olyan speciális. A megfelelő működéshez kell használniuk a *GatewaySubnet* nevét.
+5. A **-címtartományt**, győződjön meg arról, hogy a cím **10.0.11.0/24**.
+6. Válassza ki **OK** az átjáró alhálózatának létrehozásához.
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
-1. In the Azure portal, select **New**. 
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, enter **GW1**.
-5. Select the **Virtual network** item to choose a virtual network.
-   Select **VNET-01** from the list.
-6. Select the **Public IP address** menu item. When the **Choose public IP address** blade opens, select **Create new**.
-7. In **Name**, enter **GW1-PiP**, and then select **OK**.
-8.  By default, for **VPN type**, **Route-based** is selected.
-    Keep the **Route-based** VPN type.
-9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
+### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
+1. Válassza ki az Azure-portálon **új**. 
+2. Ugrás a **piactér**, majd válassza ki **hálózati**.
+3. Válassza ki a listáról a hálózati erőforrások **virtuális hálózati átjáró**.
+4. A **neve**, adja meg **GW1**.
+5. Válassza ki a **virtuális hálózati** elem egy virtuális hálózatot választ.
+   Válassza ki **VNET-01** a listából.
+6. Válassza ki a **nyilvános IP-cím** menüpont. Ha a **nyilvános IP-cím kiválasztása** panel nyílik, jelölje be **hozzon létre új**.
+7. A **neve**, adja meg **GW1-PiP**, majd válassza ki **OK**.
+8.  Alapértelmezés szerint a **VPN-típus**, **útválasztó-alapú** van kiválasztva.
+    Tartsa a **útválasztó-alapú** VPN-típus.
+9. Ellenőrizze, hogy az **Előfizetés** és a **Hely** mező értéke helyes-e. Rögzítheti az irányítópulton az erőforrást. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-the-local-network-gateway"></a>Create the local network gateway
-The implementation of a *local network gateway* in this Azure Stack evaluation deployment is a bit different than in an actual Azure deployment.
+### <a name="create-the-local-network-gateway"></a>A helyi hálózati átjáró létrehozása
+A *helyi hálózati átjárók* megvalósítása ebben az Azure Stack értékelési telepítésben kissé eltér egy tényleges Azure-telepítéstől.
 
-In an Azure deployment, a local network gateway represents an on-premises (at the tenant) physical device, that you use to connect to a virtual network gateway in Azure. In this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways!
+Az Azure-telepítés a helyi hálózati átjáró egy (a bérlő) a helyszíni fizikai eszköz, a virtuális hálózati átjáró az Azure-ban való kapcsolódáshoz használt jelöli. Az Azure-verem értékelési telepítést a kapcsolat mindkét végén virtuális hálózati átjárók!
 
-A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the Azure Stack Development Kit was designed, you need to provide the IP address of the external network adapter on the network address translation (NAT) VM of the other Azure Stack Development Kit as the Public IP Address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
-
-
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
-1. Sign in to the Azure Stack physical machine for POC1.
-2. In the user portal, select **New**.
-3. Go to **Marketplace**, and then select **Networking**.
-4. From the list of resources, select **local network gateway**.
-5. In **Name**, enter **POC2-GW**.
-6. In **IP address**, enter the External BGPNAT address for POC2. This address appears earlier in the network configuration table.
-7. In **Address Space**, for the address space of the POC2 VNET that you create later, enter **10.0.20.0/23**.
-8. Verify that your **Subscription**, **Resource Group**, and **location** are correct, and then select **Create**.
-
-### <a name="create-the-connection"></a>Create the connection
-1. In the user portal, select **New**.
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of resources, select **Connection**.
-4. On the **Basics** settings blade, for the **Connection type**, select **Site-to-site (IPSec)**.
-5. Select the **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-6. On the **Settings** blade,  select **Virtual network gateway**, and then select **GW1**.
-7. Select **Local network gateway**, and then select **POC2-GW**.
-8. In **Connection Name**, enter **POC1-POC2**.
-9. In **Shared key (PSK)**, enter **12345**, and then select **OK**.
-10. On the **Summary** blade, select **OK**.
-
-### <a name="create-a-vm"></a>Create a VM
-To validate the data that travels through the VPN connection, you need the virtual machines to send and receive data in each Azure Stack Development Kit. Create a virtual machine in POC1 now, and then in your virtual network, put it on your VM subnet.
-
-1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
-4. On the **Basics** blade, in **Name**, enter **VM01**.
-5. Enter a valid username and password. You use this account to sign in to the VM after it's created.
-6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** blade, for this instance, select a virtual machine size, and then select **Select**.
-8. On the **Settings** blade, accept the defaults. Ensure that the **VNET-01** virtual network is selected. Verify that the subnet is set to **10.0.10.0/24**. Then select **OK**.
-9. On the **Summary** blade, review the settings, and then select **OK**.
+Egy gondolja, hogy a több általános módja, hogy a helyi hálózati átjáró erőforrás mindig jelzi a távoli átjáró, a kapcsolat másik végén. Az Azure verem szoftverfejlesztői készlet tervezésétől miatt meg kell adnia a külső hálózati adapter IP-címét a hálózati címfordítást (NAT) a többi Azure verem szoftverfejlesztői készlet a nyilvános IP-címet a virtuális gép helyi hálózati átjáró. Ezután hozzon létre NAT-hozzárendelések a győződjön meg arról, hogy megfelelően vannak-e csatlakoztatva a attribútumának mindkét ends végpontjához NAT virtuális Gépre.
 
 
+### <a name="create-the-local-network-gateway-resource"></a>A helyi hálózati átjáró létrehozása
+1. Jelentkezzen be a Azure verem fizikai gép POC1 számára.
+2. Válassza ki a felhasználói portál **új**.
+3. Ugrás a **piactér**, majd válassza ki **hálózati**.
+4. Válassza ki a listáról az erőforrások **helyi hálózati átjáró**.
+5. A **neve**, adja meg **POC2-GW**.
+6. A **IP-cím**, adja meg a külső BGPNAT címét POC2. Ez a cím jelenik meg a korábban a hálózati konfiguráció táblázatban.
+7. A **Címterület**, adja meg a később létrehozott POC2 virtuális hálózat a címtér, **10.0.20.0/23**.
+8. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e, majd válassza ki **létrehozása**.
 
-## <a name="create-the-network-resources-in-poc2"></a>Create the network resources in POC2
+### <a name="create-the-connection"></a>A kapcsolat létrehozása
+1. Válassza ki a felhasználói portál **új**.
+2. Ugrás a **piactér**, majd válassza ki **hálózati**.
+3. Válassza ki a listáról az erőforrások **kapcsolat**.
+4. Az a **alapjai** -beállítások panelen a a **kapcsolattípus**, jelölje be **pont-pont (IPSec)**.
+5. Válassza ki a **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
+6. Az a **beállítások** panelen válassza **virtuális hálózati átjáró**, majd válassza ki **GW1**.
+7. Válassza ki **helyi hálózati átjáró**, majd válassza ki **POC2-GW**.
+8. A **kapcsolatnév**, adja meg **POC1-POC2**.
+9. A **megosztott kulcsot (PSK)**, adja meg **12345**, majd válassza ki **OK**.
+10. Az a **összegzés** panelen válassza **OK**.
 
-The next step is to create the network resources for POC2. The following instructions show how to create the resources by using the user portal.
+### <a name="create-a-vm"></a>Virtuális gép létrehozása
+A VPN-kapcsolaton keresztül átvitt adatok ellenőrzéséhez szüksége van a virtuális gépek adatokat küldeni és fogadni az egyes Azure verem szoftverfejlesztői készlet. Most hozzon létre egy virtuális gépet POC1, majd a virtuális hálózaton, tegye meg a Virtuálisgép-alhálózatot.
 
-### <a name="sign-in-as-a-tenant"></a>Sign in as a tenant
-A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
+1. Válassza ki az Azure-portálon **új**.
+2. Ugrás a **piactér**, majd válassza ki **számítási**.
+3. A virtuálisgép-lemezképeket, jelölje ki a **Windows Server 2016 Datacenter próbaverzió** kép.
+4. Az a **alapjai** panelen, a **neve**, adja meg **VM01**.
+5. Adjon meg egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
+6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
+7. Az a **mérete** paneljét, ebben az esetben válassza ki a virtuális gép méretét, és válassza **válasszon**.
+8. Az a **beállítások** panelen fogadja el az alapértelmezett beállításokat. Győződjön meg arról, hogy a **VNET-01** virtuális hálózat van kiválasztva. Ellenőrizze, hogy az alhálózat **10.0.10.0/24**. Válassza ki **OK**.
+9. Az a **összegzés** panelt, tekintse át a beállításokat, majd válassza ki **OK**.
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
 
-1. Sign in by using a tenant account.
-2. In the user portal, select **New**.
-3. Go to **Marketplace**, and then select **Networking**.
-4. Select **Virtual network**.
-5. Use the information appearing earlier in the network configuration table to identify the values for the POC2 **Name**, **Address space**, **Subnet name**, and **Subnet address range**.
-6. In **Subscription**, the subscription that you created earlier appears.
-7. For **Resource Group**, create a new resource group or, if you already have one, select **Use existing**.
-8. Verify the default **Location**.
-9. Select **Pin to dashboard**.
-10. Select **Create**.
 
-### <a name="create-the-gateway-subnet"></a>Create the Gateway Subnet
-1. Open the Virtual network resource you created (**VNET-02**) from the dashboard.
-2. On the **Settings** blade, select **Subnets**.
-3. Select  **Gateway subnet** to add a gateway subnet to the virtual network.
-4. The name of the subnet is set to **GatewaySubnet** by default.
-   Gateway subnets are special and must have this specific name to function properly.
-5. In the **Address range** field, verify the address is **10.0.21.0/24**.
-6. Select **OK** to create the gateway subnet.
+## <a name="create-the-network-resources-in-poc2"></a>A hálózati erőforrások POC2 létrehozása
 
-### <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
-1. In the Azure portal, select **New**.  
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, enter **GW2**.
-5. To choose a virtual network, select **Virtual network**. Then select **VNET-02** from the list.
-6. Select **Public IP address**. When the **Choose public IP address** blade opens, select **Create new**.
-7. In **Name**, enter **GW2-PiP**, and then select **OK**.
-8. By default, for **VPN type**, **Route-based** is selected.
-    Keep the **Route-based** VPN type.
-9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
+A következő lépés, ha a hálózati erőforrásokhoz a POC2. Az alábbi utasítások alapján bemutatják, hogyan hozhat létre az erőforrásokat a felhasználói portál használatával.
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the local network gateway resource
+### <a name="sign-in-as-a-tenant"></a>Jelentkezzen be a bérlő
+Szolgáltatás-rendszergazda bejelentkezhet hez bérlőként a tervek, ajánlatok és-előfizetések, amelyek a bérlők használhatja. Ha még nem rendelkezik egy, [bérlői fiók létrehozása](azure-stack-add-new-user-aad.md) regisztráció előtt.
 
-1. In the POC2 user portal, select **New**. 
-4. Go to **Marketplace**, and then select **Networking**.
-5. From the list of resources, select **Local network gateway**.
-6. In **Name**, enter **POC1-GW**.
-7. In **IP address**, enter the External BGPNAT address for POC1 that is listed earlier in the network configuration table.
-8. In **Address Space**, from POC1, enter the **10.0.10.0/23** address space of **VNET-01**.
-9. Verify that your **Subscription**, **Resource Group**, and **Location** are correct, and then select **Create**.
+### <a name="create-the-virtual-network-and-vm-subnet"></a>A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
 
-## <a name="create-the-connection"></a>Create the connection
-1. In the user portal, select **New**. 
-2. Go to **Marketplace**, and then select **Networking**.
-3. From the list of resources, select **Connection**.
-4. On the **Basic** settings blade, for the **Connection type**, choose **Site-to-site (IPSec)**.
-5. Select the **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-6. On the **Settings** blade, select **Virtual network gateway**, and then select **GW2**.
-7. Select **Local network gateway**, and then select **POC1-GW**.
-8. In **Connection name**, enter **POC2-POC1**.
-9. In **Shared key (PSK)**, enter **12345**. If you choose a different value, remember that it *must* match the value for the shared key that you created on POC1. Select **OK**.
-10. Review the **Summary** blade, and then select **OK**.
+1. Jelentkezzen be egy bérlői fiók használatával.
+2. Válassza ki a felhasználói portál **új**.
+3. Ugrás a **piactér**, majd válassza ki **hálózati**.
+4. Válassza ki **virtuális hálózati**.
+5. A korábban a hálózati konfiguráció táblázatban szereplő információk segítségével azonosítsa azokat az értékeket a POC2 a **neve**, **Címtéren**, **alhálózati név**, és **Alhálózati címtartományt**.
+6. A **előfizetés**, az előfizetés korábban létrehozott jelenik meg.
+7. A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy ha már rendelkezik egy, **meglévő**.
+8. Az alapértelmezett ellenőrzése **hely**.
+9. Válassza a **Rögzítés az irányítópulton** lehetőséget.
+10. Kattintson a **Létrehozás** gombra.
 
-## <a name="create-a-virtual-machine"></a>Create a virtual machine
-Create a virtual machine in POC2 now, and put it on your VM subnet in your virtual network.
+### <a name="create-the-gateway-subnet"></a>Hozza létre az átjáró-alhálózatot.
+1. Nyissa meg a létrehozott virtuális hálózati erőforráshoz (**VNET-02**) az irányítópulton.
+2. A **Beállítások** panelen válassza az **Alhálózatok** elemet.
+3. Válassza ki **átjáróalhálózatot** hozzáadása egy átjáró-alhálózatot a virtuális hálózathoz.
+4. Az alhálózat neve alapértelmezés szerint **GatewaySubnet**.
+   Az átjáró-alhálózatok egyediek, és a megfelelő működéshez ezzel az adott névvel kell rendelkezniük.
+5. Az a **-címtartományt** mezőbe a címe **10.0.21.0/24**.
+6. Válassza ki **OK** az átjáró alhálózatának létrehozásához.
 
-1. In the Azure portal, select **New**.
-2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
-4. On the **Basics** blade, for **Name**, enter **VM02**.
-5. Enter a valid username and password. You use this account to sign in to the virtual machine after it's created.
-6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** blade, select a virtual machine size for this instance, and then select **Select**.
-8. On the **Settings** blade, you can accept the defaults. Ensure that the **VNET-02** virtual network is selected, and verify that the subnet is set to **10.0.20.0/24**. Select **OK**.
-9. Review the settings on the **Summary** blade, and then select **OK**.
+### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
+1. Válassza ki az Azure-portálon **új**.  
+2. Ugrás a **piactér**, majd válassza ki **hálózati**.
+3. Válassza ki a listáról a hálózati erőforrások **virtuális hálózati átjáró**.
+4. A **neve**, adja meg **GW2**.
+5. Virtuális hálózat kiválasztásához jelölje ki a **virtuális hálózati**. Válassza ki **VNET-02** a listából.
+6. Válassza ki **nyilvános IP-cím**. Ha a **nyilvános IP-cím kiválasztása** panel nyílik, jelölje be **hozzon létre új**.
+7. A **neve**, adja meg **GW2-PiP**, majd válassza ki **OK**.
+8. Alapértelmezés szerint a **VPN-típus**, **útválasztó-alapú** van kiválasztva.
+    Tartsa a **útválasztó-alapú** VPN-típus.
+9. Ellenőrizze, hogy az **Előfizetés** és a **Hely** mező értéke helyes-e. Rögzítheti az irányítópulton az erőforrást. Kattintson a **Létrehozás** gombra.
 
-## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>Configure the NAT virtual machine on each Azure Stack Development Kit for gateway traversal
-Because the Azure Stack Development Kit is self-contained and isolated from the network on which the physical host is deployed, the *external* VIP network that the gateways are connected to is not actually external. Instead, the VIP network is hidden behind a router that performs network address translation. 
+### <a name="create-the-local-network-gateway-resource"></a>A helyi hálózati átjáró létrehozása
 
-The router is a Windows Server virtual machine, called *AzS-bgpnat01*, that runs the Routing and Remote Access Services (RRAS) role in the Azure Stack Development Kit infrastructure. You must configure NAT on the AzS-bgpnat01 virtual machine to allow the site-to-site VPN connection to connect on both ends. 
+1. Válassza a POC2 felhasználói portál **új**. 
+4. Ugrás a **piactér**, majd válassza ki **hálózati**.
+5. Válassza ki a listáról az erőforrások **helyi hálózati átjáró**.
+6. A **neve**, adja meg **POC1-GW**.
+7. A **IP-cím**, adja meg a külső BGPNAT címét, amely korábban a hálózati konfigurációs táblában szereplő POC1.
+8. A **Címterület**, POC1, adja meg a **10.0.10.0/23** címtere **VNET-01**.
+9. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e, majd válassza ki **létrehozása**.
 
-To configure the VPN connection, you must create a static NAT map route that maps the external interface on the BGPNAT virtual machine to the VIP of the Edge Gateway Pool. A static NAT map route is required for each port in a VPN connection.
+## <a name="create-the-connection"></a>A kapcsolat létrehozása
+1. Válassza ki a felhasználói portál **új**. 
+2. Ugrás a **piactér**, majd válassza ki **hálózati**.
+3. Válassza ki a listáról az erőforrások **kapcsolat**.
+4. A a **alapvető** -beállítások panelen a a **kapcsolattípus**, válassza a **pont-pont (IPSec)**.
+5. Válassza ki a **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
+6. Az a **beállítások** panelen válassza **virtuális hálózati átjáró**, majd válassza ki **GW2**.
+7. Válassza ki **helyi hálózati átjáró**, majd válassza ki **POC1-GW**.
+8. A **kapcsolatnév**, adja meg **POC2-POC1**.
+9. A **megosztott kulcsot (PSK)**, adja meg **12345**. Ha egy másik értéket választja, ne feledje, hogy az informatikai *kell* felel meg a megosztott kulcs, amelyet a POC1 hozott létre. Kattintson az **OK** gombra.
+10. Tekintse át a **összegzés** panelt, és válassza **OK**.
+
+## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
+Most hozzon létre egy virtuális gépet POC2, és a Virtuálisgép-alhálózatot a virtuális hálózat helyezése.
+
+1. Válassza ki az Azure-portálon **új**.
+2. Ugrás a **piactér**, majd válassza ki **számítási**.
+3. A virtuálisgép-lemezképeket, jelölje ki a **Windows Server 2016 Datacenter próbaverzió** kép.
+4. Az a **alapjai** panelen a **neve**, adja meg **VM02**.
+5. Adjon meg egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
+6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
+7. Az a **mérete** panelen válassza a virtuális gép méretének ehhez a példányhoz, és válassza **válasszon**.
+8. Az a **beállítások** panelen elfogadhatja az alapértelmezett beállításokat. Győződjön meg arról, hogy a **VNET-02** virtuális hálózat van kiválasztva, és ellenőrizze, hogy az alhálózat **10.0.20.0/24**. Kattintson az **OK** gombra.
+9. Tekintse át a beállításokat a a **összegzés** panelt, és válassza **OK**.
+
+## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>A NAT virtuális gépeket konfigurálhatja az egyes Azure verem szoftverfejlesztői készlet átjáró egyesítésre alkalmas
+Mivel az Azure verem szoftverfejlesztői készlet önálló és elkülönül a hálózaton, amelyek a fizikai gazdagépen van telepítve, a *külső* VIP-hálózati átjáró csatlakozó nincs ténylegesen külső. Ehelyett a virtuális IP-hálózati rejtett hálózati címfordítást végző útválasztó mögött. 
+
+Az útválasztó egy Windows Server virtuális gép neve nem *AzS-bgpnat01*, amelyen fut az Útválasztás és távelérés szolgáltatás (RRAS) szerepkör, az Azure verem szoftverfejlesztői készlet infrastruktúrában. NAT kell konfigurálnia a AzS-bgpnat01 virtuális gépen elhelyezve lehetővé teheti a a pont-pont VPN-kapcsolat mindkét végén csatlakozni. 
+
+A VPN-kapcsolat konfigurálása, létre kell hoznia egy statikus NAT térkép útvonalat, amely a külső felület BGPNAT virtuális gépen van leképezve a VIP, a peremhálózati átjáró készlet. Statikus NAT-leképezés útvonal szükség az egyes portok a VPN-kapcsolatot.
 
 > [!NOTE]
-> This configuration is required for Azure Stack Development Kit environments only.
+> Ez a konfiguráció csak Azure verem szoftverfejlesztői készlet környezetben szükség.
 > 
 > 
 
-### <a name="configure-the-nat"></a>Configure the NAT
+### <a name="configure-the-nat"></a>A NAT konfigurálása
 > [!IMPORTANT]
-> You must complete this procedure for *both* Azure Stack Development Kit environments.
+> Ezt az eljárást kell végrehajtani *mindkét* Azure verem szoftverfejlesztői készlet környezetekben.
 
-1. Determine the **Internal IP address** to use in the following PowerShell script. Open the virtual network gateway (GW1 and GW2), and then on the **Overview** blade, save the value for the **Public IP address** for later use.
-![Internal IP address](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
-2. Sign in to the Azure Stack physical machine for POC1.
-3. Copy and edit the following PowerShell script. To configure the NAT on each Azure Stack Development Kit, run the script in an elevated Windows PowerShell ISE. In the script, add values to the *External BGPNAT address* and *Internal IP address* placeholders:
+1. Határozza meg a **belső IP-cím** a következő PowerShell-parancsfájl használatára. Nyissa meg a virtuális hálózati átjáró (GW1 és GW2), majd a a **áttekintése** panelen, mentse a értéke a **nyilvános IP-cím** későbbi használatra.
+![Belső IP-cím](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
+2. Jelentkezzen be a Azure verem fizikai gép POC1 számára.
+3. Másolja, és a következő PowerShell-parancsfájl szerkesztése. Minden Azure verem szoftverfejlesztői készlet a NAT konfigurálásához futtassa a parancsfájlt egy rendszergazda jogú Windows PowerShell ISE. A parancsfájlban, adjon meg értékeket a *külső BGPNAT cím* és *belső IP-cím* helyőrzők:
 
    ```powershell
    # Designate the external NAT address for the ports that use the IKE authentication.
@@ -310,25 +309,25 @@ To configure the VPN connection, you must create a static NAT map route that map
       -InternalPort 4500}
    ```
 
-4. Repeat this procedure on POC2.
+4. Ismételje meg ezt a műveletet az POC2.
 
-## <a name="test-the-connection"></a>Test the connection
-Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in either Azure Stack Development Kit environment. Then, ping the virtual machine that you created in the other environment. 
+## <a name="test-the-connection"></a>A kapcsolat tesztelése
+Most, hogy a helyek kapcsolat létrejött, ellenőriznie kell, hogy az átfutó forgalom kaphat. Ellenőrizze, hogy jelentkezzen be az egyik Azure verem szoftverfejlesztői készlet környezetben létrehozott virtuális gépek közül. Ezt követően Pingelje meg a környezetben létrehozott virtuális gépre. 
 
-To ensure that you send the traffic through the site-to-site connection, ensure that you ping the Direct IP (DIP) address of the virtual machine on the remote subnet, not the VIP. To do this, find the DIP address on the other end of the connection. Save the address for later use.
+Győződjön meg arról, hogy a helyek kapcsolaton keresztül a forgalom küldése, győződjön meg arról, hogy a virtuális gép távoli alhálózaton, nem a VIP közvetlen IP-címet (DIP) címének pingelése. Ehhez az szükséges, a DIP cím, a kapcsolat másik végén található. A későbbi használat céljából menteni.
 
-### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>Sign in to the tenant VM in POC1
-1. Sign in to the Azure Stack physical machine for POC1, and then use a tenant account to sign in to the user portal.
-2. In the left navigation bar, select **Compute**.
-3. In the list of VMs, find **VM01** that you created previously, and then select it.
-4. On the blade for the virtual machine, click **Connect**, and then open the VM01.rdp file.
+### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>Jelentkezzen be a bérlő POC1 a virtuális gép
+1. Jelentkezzen be a Azure verem fizikai gép POC1 a, és a bérlői fiók használatával jelentkezzen be a felhasználói portálra.
+2. Válassza ki a bal oldali navigációs sáv **számítási**.
+3. A virtuális gépek listájának megtekintéséhez keresse **VM01** korábban létrehozott, és állítsa be azt.
+4. A virtuális gép paneljén kattintson **Connect**, majd nyissa meg a VM01.rdp fájlt.
    
-     ![Connect button](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
-5. Sign in with the account that you configured when you created the virtual machine.
-6. Open an elevated **Windows PowerShell** window.
-7. Enter **ipconfig /all**.
-8. In the output, find the **IPv4 Address**, and then save the address for later use. This is the address that you will ping from POC2. In the example environment, the address is **10.0.10.4**, but in your environment it might be different. It should fall within the **10.0.10.0/24** subnet that you created previously.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+     ![A Csatlakozás gombra](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
+5. Jelentkezzen be a virtuális gép létrehozásakor beállított fiókot.
+6. Nyisson meg egy emelt szintű **Windows PowerShell** ablak.
+7. Adja meg **ipconfig/all**.
+8. A kimenetben keresse meg a **IPv4-cím**, majd mentse a cím későbbi használatra. Ez az a cím, amely a POC2 ping. Ebben a példakörnyezetben a cím **10.0.10.4**, de az Ön környezetében ettől eltérő lehet. Alá kell tartozniuk a **10.0.10.0/24** korábban létrehozott alhálózati.
+9. Hozzon létre egy tűzfalszabályt, amely lehetővé teszi, hogy a virtuális gép pingelésre, futtassa a következő PowerShell-parancsot:
 
    ```powershell
    New-NetFirewallRule `
@@ -336,16 +335,16 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
     –Protocol ICMPv4
    ```
 
-### <a name="sign-in-to-the-tenant-vm-in-poc2"></a>Sign in to the tenant VM in POC2
-1. Sign in to the Azure Stack physical machine for POC2, and then use a tenant account to sign in to the user portal.
-2. In the left navigation bar, click **Compute**.
-3. From the list of virtual machines, find **VM02** that you created previously, and then select it.
-4. On the blade for the virtual machine, click **Connect**.
-5. Sign in with the account that you configured when you created the virtual machine.
-6. Open an elevated **Windows PowerShell** window.
-7. Enter **ipconfig /all**.
-8. You should see an IPv4 address that falls within **10.0.20.0/24**. In the example environment, the address is **10.0.20.4**, but your address might be different.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+### <a name="sign-in-to-the-tenant-vm-in-poc2"></a>Jelentkezzen be a bérlő POC2 a virtuális gép
+1. Jelentkezzen be a Azure verem fizikai gép POC2 a, és a bérlői fiók használatával jelentkezzen be a felhasználói portálra.
+2. A bal oldali navigációs sávon kattintson **számítási**.
+3. A virtuális gépek listájának található **VM02** korábban létrehozott, és állítsa be azt.
+4. A virtuális gép paneljén kattintson a **Csatlakozás** elemre.
+5. Jelentkezzen be a virtuális gép létrehozásakor beállított fiókot.
+6. Nyisson meg egy emelt szintű **Windows PowerShell** ablak.
+7. Adja meg **ipconfig/all**.
+8. Egy IPv4-címet, amely kell megjelennie **10.0.20.0/24**. Példa környezetben, a cím az **10.0.20.4**, de lehet, hogy a cím különböző.
+9. Hozzon létre egy tűzfalszabályt, amely lehetővé teszi, hogy a virtuális gép pingelésre, futtassa a következő PowerShell-parancsot:
 
    ```powershell
    New-NetFirewallRule `
@@ -353,18 +352,17 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
     –Protocol ICMPv4
    ```
 
-10. From the virtual machine on POC2, ping the virtual machine on POC1, through the tunnel. To do this, you ping the DIP that you recorded from VM01.
-   In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following:
+10. A virtuális gépről a POC2 Pingelje meg a virtuális gép POC1, az alagúton keresztül. Ehhez az szükséges, a DIP-ről a VM01 feljegyzett pingelést.
+   Példa környezetben, ami **10.0.10.4**, de ügyeljen arra, hogy pingelni a címre, amelyet a tesztkörnyezetben. A következőhöz hasonló eredmény kell megjelennie:
    
-    ![Successful ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
-11. A reply from the remote virtual machine indicates a successful test! You can close the virtual machine window. To test your connection, you can try other kinds of data transfers like a file copy.
+    ![Sikeres ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
+11. A távoli virtuális gépről a válasz azt jelzi, hogy a sikeres vizsgálat! A virtuális gép ablak bezárása A kapcsolat tesztelésére, próbálja meg más típusú adatátvitelek például egy fájl másolása.
 
-### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Viewing data transfer statistics through the gateway connection
-If you want to know how much data passes through your site-to-site connection, this information is available on the **Connection** blade. This test is also another way to verify that the ping you just sent actually went through the VPN connection.
+### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Adatátviteli statisztika megtekintése az átjárókapcsolaton keresztül
+Ha szeretné tudni, hogy mennyi adatot továbbítja a helyek kapcsolaton keresztül, ezek az információk érhető el a **kapcsolat** panelen. Ez a vizsgálat módja is egy másik győződjön meg arról, hogy az imént a telefonjára küldött ping ténylegesen merült fel a VPN-kapcsolaton keresztül.
 
-1. While you're signed in to the tenant virtual machine in POC2, use your tenant account to sign in to the user portal.
-2. Go to **All resources**, and then select the **POC2-POC1** connection. **Connections** appears.
-4. On the **Connection** blade, the statistics for **Data in** and **Data out** appear. In the following screenshot, the large numbers are attributed to additional file transfer. You should see some nonzero values there.
+1. Be van jelentkezve POC2 a bérlői virtuális gépre, a bérlői fiók használatával jelentkezzen be a felhasználói portálra.
+2. Nyissa meg a **összes erőforrás**, majd válassza ki a **POC2-POC1** kapcsolat. **Kapcsolatok** jelenik meg.
+4. Az a **kapcsolat** panelen, a statisztikája **adatok** és **kimenő adatforgalmat** jelennek meg. Az alábbi képernyőképen a nagy mennyiségű rendelnek a további fájlok átvitele. Néhány nullától eltérő értéket kell megjelennie.
    
-    ![Data in and out](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
-
+    ![Adatok és kimenő](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)

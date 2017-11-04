@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/06/2017
+ms.date: 10/01/2017
 ms.author: maroche
-ms.openlocfilehash: 7259505b68202f3741e64e86555d2e3f968b8951
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2eab8ce96399c7d6da9b4afbccdfd8b836f0c9f3
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Szoftverfrissítések **Azure Data Catalog** rendszeresen kiadásakor. Nem minden kiadás szolgáltatásai új felhasználók számára is elérhető, néhány kiadásokban a háttér-szolgáltatás jellemzőinek lévőként. Ezen a lapon az új felhasználók számára is elérhető képességbeli az Azure Data Catalog szolgáltatás mutatja be.
@@ -239,7 +239,7 @@ Azure Data Catalog 2015 decemberében a következő lehetőségekkel bővült:
 * Regisztrálja, és felderíti az Azure SQL Data Warehouse-objektumok és adatbázisok támogatása. További információ az Azure SQL Data Warehouse: [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 * Regisztrálja, és felderíti az SQL Server Analysis Services-modellek és tárolóként SQL Server Reporting Services-kiszolgálók támogatása. Az SSAS és az SSRS objektumok regisztrálásakor Azure Data Catalog bejegyzést hoz létre az SSAS modell és az SSRS-kiszolgáló, és a jelentések és egyéb objektumok. A tárolók könnyen megtalálhatók legyenek, és jegyzetelve, az Azure Data Catalog-portál használatával. Felhasználók keresése és egy modell vagy a kiszolgálót a Keresés és szűrés a katalógus tartalma felül tartalmát is.
 * Regisztráció és a HTTP/HTTPS kapcsolaton az SQL Server Analysis Services felderítéséhez támogatása. Felhasználók SSAS kiszolgálók ahelyett, hogy a kiszolgáló nevét (például https://servername/olap/msmdpump.dll) URL-cím használatával is csatlakozhat, és az egyszerű hitelesítés és a Windows-hitelesítés mellett anonim felhasználói kapcsolatok. A HTTP/HTTPS-kapcsolatok az SSAS további információkért lásd: [HTTP elérésének konfigurálása az Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
-* A HDInsight Hive adatforrások támogatása. A felhasználók most már regisztrálása és az Apache Hive az adatforrásokban HDInsight Hadoop Hive táblák felderíteni. A HDInsight Hive további információkért tekintse meg a [HDInsight dokumentációs központban](../hdinsight/hdinsight-use-hive.md).
+* A HDInsight Hive adatforrások támogatása. A felhasználók most már regisztrálása és az Apache Hive az adatforrásokban HDInsight Hadoop Hive táblák felderíteni. A HDInsight Hive további információkért tekintse meg a [HDInsight dokumentációs központban](../hdinsight/hadoop/hdinsight-use-hive.md).
 * Regisztrálja, és felderíti az Oracle-adatbázis és a HDFS-fürt tárolóként támogatása. Oracle-táblák és nézetek vagy HDFS regisztrálásakor Azure Data Catalog bejegyzést hoz létre az adatbázist, táblák és nézetek. Az adatbázis könnyen megtalálhatók legyenek, és jegyzetelve, az Azure Data Catalog-portál használatával. Felhasználók keresése és egy adatbázis vagy a fürt mellett a Keresés és szűrés a katalógus tartalma tartalmát is.
 * Manuálisan regisztrálja a ismeretlen adatforrásokat támogatása. Felhasználó manuálisan adhat meg az adatforrásra vonatkozó információ az Azure Data Catalog-portált használja, úgy, hogy nem kifejezetten az adatforrás-regisztráló eszköz által támogatott adatforrások lehet feliratozva és felderített.
 * Regisztrálja és SQL Server-adatbázisok mint tárolók felderítésével támogatása. SQL Server-táblák és nézetek regisztrálásakor Azure Data Catalog bejegyzést hoz létre az adatbázist, táblák és nézetek. Az adatbázis könnyen megtalálhatók legyenek, és jegyzetelve, az Azure Data Catalog-portál használatával. A felhasználók is keresni és a Keresés és szűrés a katalógus tartalma felül adatbázis tartalmát.

@@ -1,32 +1,32 @@
 <!--author=alkohli last changed: 07/05/2017-->
 
 > [!NOTE] 
-> You cannot modify the encryption settings and the storage account credentials associated with a volume container after it is created.
+> A titkosítási beállítások és a tárfiók hitelesítő adatainak társított kötettároló létrehozása után nem módosíthatja.
 
-#### <a name="to-modify-a-volume-container"></a>To modify a volume container
+#### <a name="to-modify-a-volume-container"></a>A kötettároló módosítása
 
-1. Go to your StorSimple Device Manager service and then navigate to **Management > Volume containers**.
+1. Nyissa meg a StorSimple eszköz Manager szolgáltatáshoz, és navigáljon arra **felügyeleti > kötettárolók**.
 
-2. From the tabular list of volume containers, select the volume container you want to modify. On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.
+2. Válassza ki a módosítani kívánt kötettároló a táblázatos kötettárolók listáról. Az a **eszközök** lapon válassza ki az eszközt, kattintson rá duplán, és kattintson a **kötettárolók** fülre.
 
-2. In the tabular listing of the volume containers, select the volume container that you want to modify. In the blade that opens up, click **Modify** from the command bar.
+2. Válassza ki a módosítani kívánt kötettároló kötettárolók táblázatos felsorolása. A megnyitott paneljén kattintson **módosítás** a parancssávon.
 
-    ![Modify volume container](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
+    ![Kötettároló módosítása](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
 
-3. In the **Modify Volume container** blade, do the following steps:
+3. Az a **módosítása kötettároló** panelen tegye a következőket:
    
-   1. The name, encryption key, and storage account associated with the volume container cannot be changed after they are specified. Change the associated bandwidth setting.
+   1. A nevét, a titkosítási kulcs és a társított a kötettároló tárfiók nem módosítható, miután azokat. A hozzárendelt sávszélesség beállítás módosításával.
       
-       ![Change bandwidth setting](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
+       ![Sávszélesség-beállításának módosítása](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
-   2.  Click **OK**.
-4. In the next page of the **Modify Volume Container** dialog box:
+   2.  Kattintson az **OK** gombra.
+4. A következő oldalon, a **Kötettároló módosítása** párbeszédpanel:
    
-   1. From the drop-down list, choose an existing bandwidth template.
-   2. Review the schedule settings for the specified bandwidth template.
-   3. Click **Save** and confirm the changes.
+   1. A legördülő listából válassza ki egy meglévő sávszélesség-sablont.
+   2. Tekintse át a megadott sávszélességsablon ütemezési beállításait.
+   3. Kattintson a **mentése** , majd erősítse meg a módosításokat.
       
-       ![Confirm changes](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
+       ![Módosításának megerősítése](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
 
-   3. The **Volume containers** blade is updated to reflect the changes.
+   3. A **kötettárolók** panel frissül a módosításokkal.
 

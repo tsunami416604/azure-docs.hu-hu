@@ -1,6 +1,6 @@
-## <a name="create-an-azure-storage-account"></a>Create an Azure storage account
-The easiest way to create your first Azure storage account is by using the [Azure Portal](https://portal.azure.com). To learn more, see [Create a storage account](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
+## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+Legegyszerűbben az [Azure Portal](https://portal.azure.com) segítségével hozhatja létre első Azure Storage-fiókját. További tudnivalókért lásd: [Create a storage account](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása).
 
-You can also create an Azure storage account by using [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [Azure CLI](../articles/storage/common/storage-azure-cli.md), or the [Storage Resource Provider Client Library for .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx).
+Ezenkívül az [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), az [Azure CLI](../articles/storage/common/storage-azure-cli.md), illetve a [.NET-keretrendszerhez készült Storage erőforrás-szolgáltató ügyfél](https://msdn.microsoft.com/library/azure/mt131037.aspx) használatával is létrehozhat egy Azure Storage-fiókot.
 
 

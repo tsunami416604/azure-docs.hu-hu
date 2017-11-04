@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: e8ac4bef5af7a98857278b82304bb58f1ac6e342
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 534bf37cc70420dc30fcd5c994ae7d9beb654072
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -376,7 +376,7 @@ Az átviteli sebesség meghatározása segítségével rugalmasan módosíthatja
 
 ### <a name="azure-storage-sdk-has-been-very-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-new-azure-cosmos-db-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Az Azure Storage szolgáltatás SDK a számomra, nagyon alacsony költségű volt, mert az csak a tárolja az adatokat, és szeretnék ritkán lekérdezés kell fizetni. Az új Azure Cosmos DB elérhető úgy tűnik, hogy lehet díjszabási me annak ellenére, hogy I nem egyetlen tranzakció végre vagy bármi tárolja. Adjon melyek?
 
-Azure Cosmos-adatbázis egy rendelkezésre állási, a késés és átviteli garanciák globálisan elosztott, SLA-alapú rendszer tervezték. Amikor lefoglalni Azure Cosmos DB átviteli sebességet, válik biztossá, szemben a más rendszerekkel átviteli sebességgel. Azure Cosmos-adatbázis, amely az ügyfelek kért, például a másodlagos indexek és globális terjesztési további képességeket biztosít. A próbaidőszak alatt egy átviteli optimalizált modell nyújtunk, és végül azt tervezi, hogy biztosítja a felhasználók igényeinek tárolási optimalizált modelljét. 
+Azure Cosmos-adatbázis egy rendelkezésre állási, a késés és átviteli garanciák globálisan elosztott, SLA-alapú rendszer tervezték. Amikor lefoglalni Azure Cosmos DB átviteli sebességet, válik biztossá, szemben a más rendszerekkel átviteli sebességgel. Azure Cosmos-adatbázis, amely az ügyfelek kért, például a másodlagos indexek és globális terjesztési további képességeket biztosít.  
 
 ### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-table-storage-with-the-table-api-preview-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Soha nem jelenik meg a "teljes" kvótaértesítéshez (arról, hogy a partíció teljes) Ha I betöltik az adatokat a Table storage-be. A tábla API-t (előzetes verzió) Ez az üzenet jelenik meg. Ez kínál me korlátozása van, és módosíthatja a meglévő alkalmazás me?
 

@@ -1,55 +1,55 @@
 <!--author=SharS last changed: 02/22/2016-->
 
-### <a name="to-configure-and-register-the-device"></a>To configure and register the device
-1. Access the Windows PowerShell interface on your StorSimple device serial console. See [Use PuTTY to connect to the device serial console](../articles/storsimple/storsimple-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) for instructions. **Be sure to follow the procedure exactly or you will not be able to access the console.**
-2. In the session that opens up, press Enter one time to get a command prompt.
-3. You will be prompted to choose the language that you would like to set for your device. Specify the language, and then press Enter.
+### <a name="to-configure-and-register-the-device"></a>Az eszköz konfigurálása és regisztrálása
+1. Nyissa meg a Windows PowerShell felületet a StorSimple-eszköz soros konzoljában. Az erre vonatkozó utasítások [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](../articles/storsimple/storsimple-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) című szakaszban találhatók. **Pontosan kövesse az ismertetett eljárást, különben nem fog tudni hozzáférni a konzolhoz.**
+2. A megnyitott munkamenetben nyomja le egyszer az Enter billentyűt a parancssor megjelenítéséhez.
+3. Ekkor a rendszer arra kéri, hogy válassza ki az eszközhöz beállítani kívánt nyelvet. Válassza ki a nyelvet, majd nyomja le az Enter billentyűt.
    
-    ![StorSimple configure and register device 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
-4. In the serial console menu that is presented, choose option 1 to log on with full access.
+    ![StorSimple-eszköz konfigurálása és regisztrálása, 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
+4. A soros konzol megjelenő menüjében válassza az 1. lehetőséget a teljes körű hozzáféréssel való bejelentkezéshez.
    
-    ![StorSimple register device 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
-5. Perform the following steps to configure the minimum required network settings for your device.
+    ![StorSimple-eszköz regisztrálása, 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
+5. A következő lépésekkel adja meg az eszköz minimális szükséges hálózati beállításait.
    
    > [!IMPORTANT]
-   > These configuration steps need to be performed on the active controller of the device. The serial console menu indicates the controller state in the banner message. If you are not connect to the active controller, disconnect and then connect to the active controller.
+   > Ezeket a konfigurálási lépéseket az eszköz aktív vezérlőjén kell elvégezni. A vezérlő állapota a soros konzol menüjének címsorában látható. Ha nem csatlakozik az aktív vezérlővel, válassza le, és csatlakozzon újra az aktív vezérlőhöz.
    > 
    > 
    
-   1. At the command prompt, type your password. The default device password is **Password1**.
-   2. Type the following command:
+   1. Írja be a jelszót a parancssorba. Az eszköz alapértelmezett jelszava: **Password1**.
+   2. Írja be a következő parancsot:
       
         `Invoke-HcsSetupWizard`
-   3. A setup wizard will appear to help you configure the network settings for the device. Supply the following information:
+   3. Ekkor megjelenik egy telepítővarázsló az eszköz hálózati beállításainak konfigurálásához. Adja meg a következő információkat:
       
-      * IP address for DATA 0 network interface
-      * Subnet mask
-      * Gateway
-      * IP address for Primary DNS server
-      * IP address for Primary NTP server
+      * DATA 0 hálózati adapterén IP-címe
+      * Alhálózati maszk
+      * Átjáró
+      * Az elsődleges DNS-kiszolgáló IP-címe
+      * Az elsődleges NTP-kiszolgáló IP-címe
       
       > [!NOTE]
-      > You may have to wait for a few minutes for the subnet mask and DNS settings to be applied.
+      > Előfordulhat, hogy az alhálózati maszk és a DNS-beállítások alkalmazása néhány percet vár.
       > 
       > 
-   4. Optionally, configure your web proxy server.
+   4. Igény szerint állítsa be a proxy-webkiszolgáló.
       
       > [!IMPORTANT]
-      > Although web proxy configuration is optional, be aware that if you use a web proxy, you can only configure it here. For more information, go to [Configure web proxy for your device](../articles/storsimple/storsimple-configure-web-proxy.md).
+      > Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha olyan webproxyt használ, csak konfigurálhatja azt itt. További információ: [Configure web proxy for your device](../articles/storsimple/storsimple-configure-web-proxy.md) (Webproxy beállítása az eszközhöz).
       > 
       > 
-6. Press Ctrl + C to exit the setup wizard.
-7. Install the updates as follows:
+6. Használja a Ctrl + C billentyűket a telepítővarázslóból való kilépéshez.
+7. A frissítések telepítése az alábbiak szerint:
    
-   1. Use the following cmdlet to set IPs on both the controllers:
+   1. IP-címeket mindkét vezérlőhöz beállításához használja a következő parancsmagot:
       
       `Set-HcsNetInterface -InterfaceAlias Data0 -Controller0IPv4Address <Controller0 IP> -Controller1IPv4Address <Controller1 IP>`
-   2. At the command prompt, run `Get-HcsUpdateAvailability`. You should be notified that updates are available.
-   3. Run `Start-HcsUpdate`. You can run this command on any node. Updates will be applied on the first controller, the controller will fail over, and then the updates will be applied on the other controller.
+   2. A parancssorban futtassa `Get-HcsUpdateAvailability`. Meg kell értesítés frissítések érhetők el.
+   3. Futtassa az `Start-HcsUpdate` parancsot. Ez a parancs futtatható bármely csomópontján. Az első tartományvezérlő alkalmazandó frissítések, a tartományvezérlő hajt végre feladatátvételt, és majd a frissítések a többi tartományvezérlőn érvényesíthetők.
       
-      You can monitor the progress of the update by running `Get-HcsUpdateStatus`.    
+      Futtassa a figyelheti a frissítési folyamat `Get-HcsUpdateStatus`.    
       
-      The following sample output shows the update in progress.
+      Az alábbi kimeneti példa azt mutatja, hogy a frissítés még folyamatban van.
       
       ````
       Controller0>Get-HcsUpdateStatus
@@ -60,7 +60,7 @@
       Controller1Events   :
       ````
       
-      The following sample output indicates that the update is finished.
+      Az alábbi kimeneti példa azt mutatja, hogy a frissítés befejeződött.
       
       ```
       Controller1>Get-HcsUpdateStatus
@@ -72,53 +72,53 @@
       Controller1Events   :
       ```
       
-      It may take up to 11 hours to apply all the updates, including the Windows Updates.
-8. Run the following cmdlet to point the device to the Microsoft Azure Government portal (because it points to the public Azure classic portal by default). This will restart both controllers. We recommend that you use two PuTTY sessions to simultaneously connect to both controllers so that you can see when each controller is restarted.
+      Minden a frissítések alkalmazása, beleértve a Windows-frissítések 11 órát is igénybe vehet.
+8. Futtassa az alábbi parancsmagot, mutasson az eszköz a Microsoft Azure Government Portal (mert alapértelmezés szerint a nyilvános klasszikus Azure portálra mutat). Ez mindkét tartományvezérlők újraindul. Azt javasoljuk, hogy egyszerre kapcsolódó mindkét vezérlőket, hogy a tartományvezérlők újraindításakor láthatóvá két PuTTY munkamenet használja.
    
     `Set-CloudPlatform -AzureGovt_US`
    
-   You will see a confirmation message. Accept the default (**Y**).
-9. Run the following cmdlet to resume setup:
+   Egy megerősítő üzenet jelenik meg. Fogadja el az alapértelmezett (**Y**).
+9. Futtassa a telepítő folytatja a következő parancsmagot:
    
     `Invoke-HcsSetupWizard`
    
-    ![Resume setup wizard](./media/storsimple-configure-and-register-device-gov-u2/HCS_ResumeSetup-gov-include.png)
+    ![A telepítővarázsló folytatása](./media/storsimple-configure-and-register-device-gov-u2/HCS_ResumeSetup-gov-include.png)
    
-   When you resume setup, the wizard will be the Update 2 version.
-10. Accept the network settings. You will see a validation message after you accept each setting.
-11. For security reasons, the device administrator password expires after the first session, and you will need to change it now. When prompted, provide a device administrator password. A valid device administrator password must be between 8 and 15 characters. The password must contain three of the following: lowercase, uppercase, numeric, and special characters.
+   Amikor a telepítő folytatja, a varázsló 2. frissítés verziója lesz.
+10. Fogadja el a hálózati beállításokat. Egy érvényesítési üzenet jelenik meg, ha elfogadja, hogy egyes beállítások.
+11. Biztonsági okokból az eszköz rendszergazdai jelszava az első munkamenet végeztével lejár, így ezt most meg kell változtatnia. Amikor a rendszer erre kéri, adjon meg az eszközhöz egy rendszergazdai jelszót. Az eszköz rendszergazdai jelszavának 8–15 karakter hosszúságúnak kell lennie. A jelszónak az alábbiak közül hármat tartalmaznia kell: kisbetűk, nagybetűk, számok és speciális karakterek.
     
-    <br/>![StorSimple register device 5](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice5_gov-include.png)
-12. The final step in the setup wizard registers your device with the StorSimple Manager service. For this, you will need the service registration key that you obtained in [Step 2: Get the service registration key](../articles/storsimple/storsimple-deployment-walkthrough-gov-u2.md#step-2-get-the-service-registration-key). After you supply the registration key, you may need to wait for 2-3 minutes before the device is registered.
+    <br/>![StorSimple-eszköz regisztrálása, 5](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice5_gov-include.png)
+12. A telepítővarázsló utolsó lépésként regisztrálja az eszközt a StorSimple Manager szolgáltatásban. Ehhez szüksége lesz a szolgáltatás regisztrációs kulcsának beolvasott [2. lépés: Szolgáltatásregisztrációs kulcs lekérése](../articles/storsimple/storsimple-deployment-walkthrough-gov-u2.md#step-2-get-the-service-registration-key). Előfordulhat, hogy a regisztrációs kulcs megadása után 2–3 percet várni kell az eszköz regisztrálására.
     
     > [!NOTE]
-    > You can press Ctrl + C at any time to exit the setup wizard. If you have entered all the network settings (IP address for Data 0, Subnet mask, and Gateway), your entries will be retained.
+    > A Ctrl + C billentyűkombinációval bármikor kiléphet a varázslóból. Ha minden hálózati beállítást megadott (a Data 0 IP-címe, alhálózati maszk és átjáró), akkor a bejegyzéseket megőrzi a rendszer.
     > 
     > 
     
-    ![StorSimple registration progress](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegistrationProgress-gov-include.png)
-13. After the device is registered, a Service Data Encryption key will appear. Copy this key and save it in a safe location. **This key will be required with the service registration key to register additional devices with the StorSimple Manager service.** Refer to [StorSimple security](../articles/storsimple/storsimple-security.md) for more information about this key.
+    ![A StorSimple regisztrációs folyamat](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegistrationProgress-gov-include.png)
+13. Az eszköz regisztrálása után megjelenik egy szolgáltatásadat-titkosítási kulcs. Másolja ki ezt a kulcsot, és mentse egy biztonságos helyre. **Szüksége lesz erre a kulcsra a szolgáltatás regisztrációs kulcsával együtt, ha további eszközöket szeretne regisztrálni a StorSimple Manager szolgáltatásban.** További információk a kulccsal kapcsolatban: [A StorSimple biztonsági megoldásai](../articles/storsimple/storsimple-security.md).
     
-    ![StorSimple register device 7](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice7_gov-include.png)    
+    ![StorSimple-eszköz regisztrálása, 7](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice7_gov-include.png)    
     
     > [!IMPORTANT]
-    > To copy the text from the serial console window, simply select the text. You should then be able to paste it in the clipboard or any text editor.
+    > Ha ki szeretné másolni a szöveget a soros konzol ablakából, egyszerűen jelölje ki azt. A szöveget ezután a vágólapra vagy bármilyen szövegszerkesztőbe beillesztheti.
     > 
-    > DO NOT use Ctrl + C to copy the service data encryption key. Using Ctrl + C will cause you to exit the setup wizard. As a result, the device administrator password will not be changed and the device will revert to the default password.
+    > NE használja a Ctrl + C billentyűparancsot a szolgáltatás adattitkosítási kulcsának másolásához. A Ctrl + C billentyűkombinációval kilép a varázslóból. Ennek eredményeképpen az eszköz rendszergazdai jelszava nem változik meg, és az eszköz visszaállítja az alapértelmezett jelszót.
     > 
     > 
-14. Exit the serial console.
-15. Return to the Azure Government Portal, and complete the following steps:
+14. Lépjen ki a soros konzolból.
+15. Térjen vissza az Azure Government portálra, és kövesse az alábbi lépéseket:
     
-    1. Double-click your StorSimple Manager service to access the **Quick Start** page.
-    2. Click **View connected devices**.
-    3. On the **Devices** page, verify that the device has successfully connected to the service by looking up the status. The device status should be **Online**.
+    1. Kattintson duplán a StorSimple Manager szolgáltatásra a **Gyors üzembe helyezés** lap megnyitásához.
+    2. Kattintson a **Csatlakoztatott eszközök megtekintése** lehetőségre.
+    3. Az **Eszközök** lapon tekintse meg az eszközök állapotát, és ellenőrizze, hogy az eszköz sikeresen csatlakozott-e a szolgáltatáshoz. Az eszköznek **Online** állapotúnak kell lennie.
        
-        ![StorSimple Devices page](./media/storsimple-configure-and-register-device-gov-u2/HCS_DeviceOnline-gov-include.png)
+        ![A StorSimple Eszközök lapja](./media/storsimple-configure-and-register-device-gov-u2/HCS_DeviceOnline-gov-include.png)
        
-        If the device status is **Offline**, wait for a couple of minutes for the device to come online.
+        Ha az eszköz állapota **Offline**, akkor várjon néhány percet, amíg az eszköz online állapotú nem lesz.
        
-        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in [networking requirements for your StorSimple device](../articles/storsimple/storsimple-system-requirements.md).
+        Ha az eszköz néhány perc eltelte után is offline állapotú, akkor ellenőrizze, hogy a tűzfallal védett hálózat [a StorSimple-eszköz hálózati követelményeiben](../articles/storsimple/storsimple-system-requirements.md) leírtak szerint van-e beállítva.
        
-        Verify that port 9354 is open for outbound communication as this is used by the service bus for StorSimple Manager Service-to-device communication.
+        Ellenőrizze, hogy a 9354-es port kimenő kommunikációra nyitva van-e, mivel az a StorSimple Manager szolgáltatás és eszköz közötti kommunikációt lebonyolító Service Bus működéséhez szükséges.
 

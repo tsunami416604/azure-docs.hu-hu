@@ -48,7 +48,6 @@
 #### [Azure PowerShell-példák csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 #### [Az Azure AD termékeinek és szolgáltatáscsomagjainak referenciája](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
-### [Új jelszó létrehozása](active-directory-users-reset-password-azure-portal.md)
 ### [A felhasználók munkahelyi adatainak kezelése](active-directory-users-work-info-azure-portal.md)
 ### [Fiókok megosztása](active-directory-sharing-accounts.md)
 
@@ -126,7 +125,6 @@
 ### [SSPR-jelentéskészítés](active-directory-passwords-reporting.md)
 ### Informatikai rendszergazdák: Új jelszavak kérése
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
-#### [klasszikus Azure portál](active-directory-create-users-reset-password.md)
 ### [SSPR licenc](active-directory-passwords-licensing.md)
 ### [Jelszóvisszaíró](active-directory-passwords-writeback.md)
 ### [Hibaelhárítás](active-directory-passwords-troubleshoot.md)

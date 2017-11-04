@@ -59,7 +59,7 @@ Következő lépésként importálja a `.publishsettings` fájlt a következő p
 
     azure account import {path to .publishsettings file}
 
-Az <code>import</code> parancs által tárolt összes információt eltávolíthatja az <code>account clear</code> parancs használatával:
+Eltávolíthatja az összes által tárolt információ a <code>import</code> parancs használatával a <code>account clear</code> parancs:
 
     azure account clear
 

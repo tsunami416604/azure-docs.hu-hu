@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 11/01/2017
 ms.author: nitinme
-ms.openlocfilehash: 1309b44ea99af6d20a4d0f730dd68969f3c3082b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 744759968706e0a2c9fe8c1c153f44cc958e31b8
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Data Lake Store-adatok offline példányát az Azure Import/Export szolgáltatás használata
 Ebből a cikkből megtudhatja, hogyan hatalmas adatok másolása (> 200 GB-os) azokat az Azure Data Lake Store módszerrel offline másolat, például a [Azure Import/Export szolgáltatás](../storage/common/storage-import-export-service.md). Pontosabban ebben a cikkben példa fájl 339,420,860,416 bájt vagy körülbelül 319 GB-TAL a lemezen. Most hívja meg a fájl 319GB.tsv.
@@ -58,7 +58,7 @@ Kövesse az utasításokat a [az Azure Import/Export szolgáltatás használatá
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
     Lásd: [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) a minta további részletek.
-4. Az előző parancs létrehoz egy napló fájlt a megadott helyen. Ez a napló fájl segítségével az importálási feladat létrehozása a [a klasszikus Azure portálon](https://manage.windowsazure.com).
+4. Az előző parancs létrehoz egy napló fájlt a megadott helyen. Ez a napló fájl segítségével az importálási feladat létrehozása a [Azure-portálon](https://portal.azure.com).
 
 ## <a name="create-an-import-job"></a>Importálási feladat létrehozása
 Mostantól létrehozhat egy importálási feladat található utasítások segítségével [az Azure Import/Export szolgáltatás használatával](../storage/common/storage-import-export-service.md) (alatt a **az importálási feladat létrehozása** szakaszban). Az importálási feladathoz más adatokkal is adja meg a napló-fájlját a merevlemez-meghajtók előkészítése során létrehozott.

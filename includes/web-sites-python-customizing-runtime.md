@@ -15,8 +15,3 @@ tartalmához:
 
 A megadott mikroverziót (harmadik számjegy) a rendszer figyelmen kívül hagyja.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

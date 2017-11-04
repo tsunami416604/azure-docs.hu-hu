@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 42d617ffeb8c2fee6be6d747b39d80b09774a1c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 9ca91721e691eca239478c4ac8b85e2652babdfd
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-user-permissions-at-the-file-and-folder-levels"></a>A fájl- és alkalmazásszinteken felhasználói engedélyeinek kezelése
 
-[A HDInsight-fürtök tartományhoz](hdinsight-domain-joined-introduction.md) Azure Active Directory (Azure AD) felhasználók erős hitelesítés használatára, továbbá *szerepköralapú hozzáférés-vezérlés* különböző szolgáltatások, például a YARN és a Hive (RBAC) házirendeket. Ha a fürt számára, az alapértelmezett adatokat tároló Azure Storage vagy a Windows Azure Storage Blobs (WASB), is kényszerítheti a fájl és mappa szintű engedélyek. Apache Pletyka segítségével szabályozhatja a fürt fájlokhoz való hozzáférést a szinkronizált az Azure AD-felhasználókat és csoportokat.
+[A HDInsight-fürtök tartományhoz](./domain-joined/apache-domain-joined-introduction.md) Azure Active Directory (Azure AD) felhasználók erős hitelesítés használatára, továbbá *szerepköralapú hozzáférés-vezérlés* különböző szolgáltatások, például a YARN és a Hive (RBAC) házirendeket. Ha a fürt számára, az alapértelmezett adatokat tároló Azure Storage vagy a Windows Azure Storage Blobs (WASB), is kényszerítheti a fájl és mappa szintű engedélyek. Apache Pletyka segítségével szabályozhatja a fürt fájlokhoz való hozzáférést a szinkronizált az Azure AD-felhasználókat és csoportokat.
 <!-- [synchronized Azure AD users and groups](hdinsight-sync-aad-users-to-cluster.md). -->
 
 A HDInsight-fürtök tartományhoz az Apache Pletyka példány rendelkezik előre konfigurált a Pletyka-WASB szolgáltatással. A Pletyka-WASB szolgáltatás nem a felügyeleti házirendmotor Pletyka-HDFS, hasonló, de egy másik Pletyka hozzáférési házirendek kényszerítése. Pletyka-WASB szolgáltatási erőforrás a bejövő üzenet nem rendelkezik a megfelelő Pletyka házirend az alapértelmezett válasz esetén MEGTAGADÁS. A Pletyka szolgáltatás nem felel meg a WASB ellenőrzése.
@@ -69,7 +69,7 @@ Ha egy helyettesítő karakter (`*`) megtalálható a szabályzat elérési útj
 
 ## <a name="manage-file-and-folder-level-permissions-with-apache-ranger"></a>Fájl- és mappaszintű engedélyeket Apache Pletyka kezelése
 
-Ha még nem tette meg, kövesse az [ezeket az utasításokat](hdinsight-domain-joined-configure.md) tartományhoz tartozó új fürt létrehozásához.
+Ha még nem tette meg, kövesse az [ezeket az utasításokat](./domain-joined/apache-domain-joined-configure.md) tartományhoz tartozó új fürt létrehozásához.
 
 Tallózással nyissa meg a Pletyka-WASB `https://<YOUR CLUSTER NAME>.azurehdinsight.net/ranger/`. Adja meg a fürt rendszergazdai jogosultságú felhasználónevet és jelszót, amelyet a fürt létrehozásakor megadott.
 
@@ -117,8 +117,8 @@ Az Apache Pletyka [házirend kiértékelési folyamat](#permission-and-policy-mo
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A tartományhoz csatlakoztatott HDInsight Hive-szabályzatok konfigurálása](hdinsight-domain-joined-run-hive.md)
-* [Tartományhoz csatlakozó HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md)
+* [A tartományhoz csatlakoztatott HDInsight Hive-szabályzatok konfigurálása](./domain-joined/apache-domain-joined-run-hive.md)
+* [Tartományhoz csatlakozó HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md)
 * [Kezelése az Ambari,-Ambari felhasználók engedélyezése](hdinsight-authorize-users-to-ambari.md)
 
 <!-- * [Synchronize Azure AD users and groups](hdinsight-sync-aad-users-to-cluster.md) -->

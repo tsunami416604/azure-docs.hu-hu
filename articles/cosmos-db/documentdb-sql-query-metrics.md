@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: c6c929c568cf7246c2c2e414723a38429727df36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: f057ee80e8a26595c17e6610a2aaaad08d0346b5
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
 Az Azure Cosmos DB biztosít egy [SQL API-t a lekérdezésre adatok](documentdb-sql-query.md), anélkül, hogy a séma vagy másodlagos kulcsot. Ez a cikk a fejlesztők számára a következő adatokat tartalmazza:
@@ -253,7 +253,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | ezredmásodperc | Idő a dokumentum betöltése  | 
 | `systemFunctionExecuteTimeInMs` | ezredmásodperc | A fordított teljes idő végrehajtás alatt álló rendszer (beépített) funkciók ezredmásodpercben  | 
 | `userFunctionExecuteTimeInMs` | ezredmásodperc | Töltött teljes idő, ezredmásodpercben végrehajtó felhasználó által definiált függvények | 
-| `retrievedDocumentCount` | ezredmásodperc | Lekért dokumentumok száma összesen  | 
+| `retrievedDocumentCount` | Száma | Lekért dokumentumok száma összesen  | 
 | `retrievedDocumentSize` | Bájtok | A beolvasott dokumentumokat a bájtok teljes mérete  | 
 | `outputDocumentCount` | Száma | Kimeneti dokumentumok száma | 
 | `writeOutputTimeInMs` | ezredmásodperc | Lekérdezés-végrehajtási idő ezredmásodpercben | 

@@ -1,34 +1,34 @@
-## <a name="install-the-prerequisites"></a>Install the prerequisites
+## <a name="install-the-prerequisites"></a>Az előfeltételek telepítése
 
-1. Install [Visual Studio 2015 or 2017](https://www.visualstudio.com). You can use the free Community Edition if you meet the licensing requirements. Be sure to include Visual C++ and NuGet Package Manager.
+1. Telepítés [Visual Studio 2015-öt vagy 2017](https://www.visualstudio.com). A szabad Community Edition is használhatja, ha a licencelési teljesülnek. Ne felejtse el feltüntetni a Visual C++ és NuGet Package Manager.
 
-1. Install [git](http://www.git-scm.com) and make sure you can run git.exe from the command line.
+1. Telepítés [git](http://www.git-scm.com) , és győződjön meg arról, hogy a parancssorból futtatható git.exe.
 
-1. Install [CMake](https://cmake.org/download/) and make sure you can run cmake.exe from the command line. CMake version 3.7.2 or later is recommended. The **.msi** installer is the easiest option on Windows. Add CMake to the PATH for at least the current user when the installer prompts you.
+1. Telepítés [CMake](https://cmake.org/download/) , és győződjön meg arról, hogy a parancssorból futtatható cmake.exe. CMake 3.7.2 verzió vagy újabb ajánlott. A **.msi** telepítő legegyszerűbb lehetőség a Windows. Legalább CMake hozzáadni az elérési ÚTJÁT az aktuális felhasználó, amikor a telepítő kéri.
 
-1. Install [Python 2.7](https://www.python.org/downloads/release/python-27). Make sure you add Python to your `PATH` environment variable in **Control Panel -> System -> Advanced system settings -> Environment Variables**.
+1. Telepítés [Python 2.7](https://www.python.org/downloads/release/python-27). Ellenőrizze, hogy a Python hozzáadása a `PATH` környezeti változó. Ugrás a **Vezérlőpult** > **rendszer és biztonság** > **rendszer** > **Speciális rendszerbeállítások**  >  **Környezeti változók**. Adja hozzá `C:\Python27` az elérési útra. 
 
-1. At a command prompt, run the following command to clone the Azure IoT Edge GitHub repository to your local machine:
+1. A parancssorba az Azure IoT peremhálózati GitHub-tárházban, a helyi számítógép klónozása a következő parancsot:
 
     ```cmd
     git clone https://github.com/Azure/iot-edge.git
     ```
 
-## <a name="how-to-build-the-sample"></a>How to build the sample
+## <a name="how-to-build-the-sample"></a>A minta létrehozása
 
-You can now build the IoT Edge runtime and samples on your local machine:
+Most már lefordíthatja az IoT él futásidejű és minták a helyi számítógépen:
 
-1. Open a **Developer Command Prompt for VS 2015** or **Developer Command Prompt for VS 2017** command prompt.
+1. Nyissa meg **Developer-parancssorból VS 2015** vagy **Developer-parancssorból VS 2017**, attól függően, a verzió.
 
-1. Navigate to the root folder in your local copy of the **iot-edge** repository.
+1. Az **iot-edge** adattár helyi példányában lépjen a gyökérmappába.
 
-1. Run the build script as follows:
+1. A build parancsfájl futtatása a következőképpen:
 
     ```cmd
     tools\build.cmd --disable-native-remote-modules
     ```
 
-This script creates a Visual Studio solution file and builds the solution. You can find the Visual Studio solution in the **build** folder in your local copy of the **iot-edge** repository. If you want to build and run the unit tests, add the `--run-unittests` parameter. If you want to build and run the end to end tests, add the `--run-e2e-tests`.
+Ez a parancsfájl létrehoz egy Visual Studio megoldás, és létrehozza a megoldás. A Visual Studio megoldás található a **build** mappa a helyi példánya a **iot-edge** tárház. Build a egység tesztek futtatása, és adja hozzá szeretné a `--run-unittests` paraméter. Ha szeretne build és a végpontok közötti tesztek, vegye fel a `--run-e2e-tests`.
 
 > [!NOTE]
-> Every time you run the **build.cmd** script, it deletes and then recreates the **build** folder in the root folder of your local copy of the **iot-edge** repository.
+> Minden alkalommal, amikor a **build.cmd** parancsfájl törli és állítja helyre a **build** a gyökérmappájában lévő mappának a helyi példányának a **iot-edge** tárházba.

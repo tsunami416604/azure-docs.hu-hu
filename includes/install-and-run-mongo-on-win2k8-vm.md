@@ -1,27 +1,27 @@
-Follow these steps to install and run MongoDB on a virtual machine running Windows Server.
+Kövesse az alábbi lépéseket, telepítése és futtatása a MongoDB Windows Server rendszerű virtuális gépen.
 
 > [!IMPORTANT]
-> MongoDB security features, such as authentication and IP address binding, are not enabled by default. Security features should be enabled before deploying MongoDB to a production environment.  For more information, see [Security and Authentication](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> Alapértelmezés szerint nem engedélyezettek a MongoDB biztonsági funkciók, például hitelesítés és az IP-cím kötés. Biztonsági szolgáltatások éles környezetben MongoDB telepítése előtt engedélyezni kell.  További információkért lásd: [biztonsági és hitelesítési](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
 >
 >
 
-1. After you've connected to the virtual machine using Remote Desktop, open Internet Explorer from the **Start** menu on the virtual machine.
-2. Select the **Tools** button in the upper right corner.  In **Internet Options**, select the **Security** tab, and then select the **Trusted Sites** icon, and finally click the **Sites** button. Add *https://\*.mongodb.org* to the list of trusted sites.
-3. Go to [Downloads - MongoDB](https://www.mongodb.com/download-center#community).
-4. Find the **Current Stable Release** of **Community Server**, select the latest **64-bit** version in the Windows column. Download, then run the MSI installer.
-5. MongoDB is typically installed in C:\Program Files\MongoDB. Search for Environment Variables on the desktop and add the MongoDB binaries path to the PATH variable. For example, you might find the binaries at C:\Program Files\MongoDB\Server\3.4\bin on your machine.
-6. Create MongoDB data and log directories in the data disk (such as drive **F:**) you created in the preceding steps. From **Start**, select **Command Prompt** to open a command prompt window.  Type:
+1. Miután csatlakozott a virtuális géphez a távoli asztal használatával, nyissa meg az Internet Explorer hozzáférését a **Start** menü a virtuális gépen.
+2. Válassza ki a **eszközök** gombra a jobb felső sarokban.  A **Internetbeállítások**, jelölje be a **biztonsági** lapra, majd válassza ki a **megbízható helyek** ikonra, végül kattintson a **helyek** gombra. Adja hozzá *https://\*. mongodb.org* a megbízható helyek listájához.
+3. Ugrás a [letölti – MongoDB](https://www.mongodb.com/download-center#community).
+4. Található a **jelenlegi stabil kiadásban** a **közösségi Server**, válassza ki a legújabb **64 bites** verziója a Windows oszlopban. Töltse le, majd futtassa az MSI telepítő.
+5. MongoDB telepítése általában a C:\Program Files\MongoDB. Keresse meg a környezeti változók az asztalon, és vegye fel a MongoDB bináris fájlok elérési útját a PATH változóban. Például bizonyára hasznosnak találja a bináris fájljai a C:\Program Files\MongoDB\Server\3.4\bin a számítógépen.
+6. Az adatlemez MongoDB adatainak és naplókönyvtárainak könyvtárak létrehozása (például meghajtó **F:**) az előző lépésekben létrehozott. A **Start**, jelölje be **parancssor** való nyisson meg egy parancssori ablakot.  Típus:
 
         C:\> F:
         F:\> mkdir \MongoData
         F:\> mkdir \MongoLogs
-7. To run the database, run:
+7. Futtassa az adatbázis futtatásához:
 
         F:\> C:
         C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
-    All log messages are directed to the *F:\MongoLogs\mongolog.log* file as mongod.exe server starts and preallocates journal files. It may take several minutes for MongoDB to preallocate the journal files and start listening for connections. The command prompt stays focused on this task while your MongoDB instance is running.
-8. To start the MongoDB administrative shell, open another command window from **Start** and type the following commands:
+    Összes naplózási üzenetek vannak átirányítva a *F:\MongoLogs\mongolog.log* mongod.exe server elindul, és Adatbázisnapló-fájlok preallocates fájlt. A napló fájlok készletméret, és elindítja a kapcsolatfigyelést mongodb több percig is eltarthat. A parancssor marad összpontosítanak ezt a feladatot, a MongoDB-példány futtatása közben.
+8. A MongoDB felügyeleti rendszerhéj elindításához nyisson meg egy másik parancs ablakot az **Start** és írja be a következő parancsokat:
 
         C:\> cd \my_mongo_dir\bin  
         C:\my_mongo_dir\bin> mongo  
@@ -36,55 +36,55 @@ Follow these steps to install and run MongoDB on a virtual machine running Windo
         ...  
         > help  
 
-    The database is created by the insert.
-9. Alternatively, you can install mongod.exe as a service:
+    Az adatbázist a beszúrást hozta létre.
+9. Másik lehetőségként telepítése mongod.exe szolgáltatásként:
 
         C:\> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
 
-    A service is installed named MongoDB with a description of "Mongo DB". The `--logpath` option must be used to specify a log file, since the running service does not have a command window to display output.  The `--logappend` option specifies that a restart of the service causes output to append to the existing log file.  The `--dbpath` option specifies the location of the data directory. For more service-related command-line options, see [Service-related command-line options][MongoWindowsSvcOptions].
+    A szolgáltatást, MongoDB nevű "Mongo DB" leírását. A `--logpath` egy naplófájlba, azóta a futó szolgáltatás nem rendelkezik egy parancsablakot kimenet megjelenítése a beállítást kell használni.  A `--logappend` beállítás megadja, hogy a szolgáltatás újraindítását okozza-e a kimeneti hozzáfűzése a meglévő naplófájl.  A `--dbpath` lehetőséget a data könyvtárának helyét adja meg. A szolgáltatással kapcsolatos további parancssori kapcsolókat lásd: [parancssori kapcsolók szolgáltatással kapcsolatos][MongoWindowsSvcOptions].
 
-    To start the service, run this command:
+    A szolgáltatás elindításához futtassa ezt a parancsot:
 
         C:\> net start MongoDB
-10. Now that MongoDB is installed and running, you need to open a port in Windows Firewall so you can remotely connect to MongoDB.  From the **Start** menu, select **Administrative Tools** and then **Windows Firewall with Advanced Security**.
-11. a) In the left pane, select **Inbound Rules**.  In the **Actions** pane on the right, select **New Rule...**.
+10. Most, hogy a MongoDB telepítve van és fut, meg kell nyitnia egy portot a Windows tűzfal, távolról csatlakozhat MongoDB.  Az a **Start** menü **felügyeleti eszközök** , majd **fokozott biztonságú Windows tűzfal**.
+11. a) a bal oldali ablaktáblában jelölje ki **bejövő szabályok**.  Az a **műveletek** ablaktáblán a jobb oldali select **új szabály létrehozása...** .
 
-    ![Windows Firewall][Image1]
+    ![A Windows tűzfal][Image1]
 
-    b) In the **New Inbound Rule Wizard**, select **Port** and then click **Next**.
+    b) a a **új bejövő szabály varázsló**, jelölje be **Port** majd **következő**.
 
-    ![Windows Firewall][Image2]
+    ![A Windows tűzfal][Image2]
 
-    c) Select **TCP** and then **Specific local ports**.  Specify a port of "27017" (the default port MongoDB listens on) and click **Next**.
+    c) válassza **TCP** , majd **adott helyi portok**.  Adjon meg egy portot az "27017" (az alapértelmezett porton figyel MongoDB), és kattintson a **következő**.
 
-    ![Windows Firewall][Image3]
+    ![A Windows tűzfal][Image3]
 
-    d) Select **Allow the connection** and click **Next**.
+    d) válassza **a kapcsolat engedélyezéséhez** kattintson **következő**.
 
-    ![Windows Firewall][Image4]
+    ![A Windows tűzfal][Image4]
 
-    e) Click **Next** again.
+    e) kattintson **következő** újra.
 
-    ![Windows Firewall][Image5]
+    ![A Windows tűzfal][Image5]
 
-    f) Specify a name for the rule, such as "MongoPort", and click **Finish**.
+    f) adja meg, például a "MongoPort", a szabály nevét, és kattintson a **Befejezés**.
 
-    ![Windows Firewall][Image6]
+    ![A Windows tűzfal][Image6]
 
-12. If you didn't configure an endpoint for MongoDB when you created the virtual machine, you can do it now. You need both the firewall rule and the endpoint to be able to connect to MongoDB remotely.
+12. A virtuális gép létrehozása után nem konfigurálta a végpont mongodb, most is elvégezhető. A tűzfalszabály és a MongoDB távolról csatlakozni tudjanak a végpont van szüksége.
 
-  In the Azure portal, click **Virtual Machines (classic)**, click the name of your new virtual machine, and then click **Endpoints**.
+  Az Azure portálon kattintson **virtuális gépek (klasszikus)**, kattintson az új virtuális gép nevét, majd **végpontok**.
 
-    ![Endpoints][Image7]
+    ![Végpontok][Image7]
 
-13. Click **Add**.
+13. Kattintson az **Add** (Hozzáadás) parancsra.
 
-14. Add an endpoint with name "Mongo", protocol **TCP**, and both **Public** and **Private** ports set to "27017". Opening this port allows MongoDB to be accessed remotely.
+14. "Mongo" protokoll nevű végpont hozzáadása **TCP**, és mindkét **nyilvános** és **titkos** portok "27017" értékre. Ez a port megnyitása lehetővé teszi, hogy a MongoDB távoli elérését.
 
-    ![Endpoints][Image9]
+    ![Végpontok][Image9]
 
 > [!NOTE]
-> The port 27017 is the default port used by MongoDB. You can change this default port by specifying the `--port` parameter when starting the mongod.exe server. Make sure to give the same port number in the firewall and the "Mongo" endpoint in the preceding instructions.
+> A MongoDB által használt alapértelmezett port az 27017 portot használja. Az alapértelmezett port megadásával módosíthatja a `--port` paraméter a mongod.exe kiszolgáló indításakor. Ügyeljen arra, hogy ugyanazt a portszámot a tűzfal és a "Mongo" végpont az előző utasítások.
 >
 >
 

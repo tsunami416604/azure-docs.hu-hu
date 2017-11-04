@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: bfbfc5b46985d3413510ba69cbdfc688f46f0f1b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: HT
+ms.openlocfilehash: c6289df50d17de1ef542abbf617eb1cdb2f32311
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>A Service Fabric-fürt beállításait és a háló házirend testreszabása
 Ez a dokumentum azt ismerteti, hogyan szabhatja testre a különböző hálóbeállításokat, és a háló frissítéséhez a Service Fabric-fürt házirendet. Testre szabhatja azokat keresztül a [Azure-portálon](https://portal.azure.com) vagy Azure Resource Manager-sablonnal.
@@ -596,7 +596,7 @@ PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus| |
 | PeriodicApiSlowTraceInterval | Idő (másodpercben), az alapértelmezett érték 5 perc |Dinamikus| Adja meg az időtartam másodpercben. PeriodicApiSlowTraceInterval az időköz, amelyben lassú API-hívásokat fog szerepelnie az API-figyelő által határozza meg. |
 | NodeDeactivationMaxReplicaCloseDuration | Idő (másodpercben), alapértelmezett érték a 900 |Dinamikus|Adja meg az időtartam másodpercben. Az időtartam, amelynek a rendszer vár, mielőtt leállítja az üzemeltetett szolgáltatások azzal replikák rendelkező mappában zárja be a csomópont inaktiválása során. |
 | FabricUpgradeMaxReplicaCloseDuration | Idő (másodpercben), alapértelmezett érték a 900 |Dinamikus| Adja meg az időtartam másodpercben. Az időtartam, amelynek a rendszer vár, mielőtt leállítja az üzemeltetett szolgáltatások azzal replikák rendelkező mappában zárja be a fabric frissítés során. |
-|GracefulReplicaShutdownMaxDuration|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus|Adja meg az időtartam másodpercben. Zárja be az az időtartam, amelynek a rendszer vár, mielőtt leállítja az üzemeltetett szolgáltatások azzal replikák rendelkező mappában.|
+|GracefulReplicaShutdownMaxDuration|TimeSpan érték, alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus|Adja meg az időtartam másodpercben. Zárja be az az időtartam, amelynek a rendszer vár, mielőtt leállítja az üzemeltetett szolgáltatások azzal replikák rendelkező mappában. Ha ez az érték 0, replikák nem utasítani fogja bezárásához.|
 |ReplicaChangeRoleFailureRestartThreshold|Int, alapértelmezett érték 10|Dinamikus| Egész szám. Adja meg az API-hibák száma elteltével automatikusan-megoldás művelet (replika újraindítás) alkalmazandó elsődleges előléptetés során. |
 |ReplicaChangeRoleFailureWarningReportThreshold|int, alapértelmezett érték 2147483647|Dinamikus| Egész szám. Adja meg az API-hibák száma elteltével állapotjelentése figyelmeztetés generál elsődleges előléptetés során.|
 

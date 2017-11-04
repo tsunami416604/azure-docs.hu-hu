@@ -1,30 +1,30 @@
-The steps for this task use a VNet based on the values in the following configuration reference list. Additional settings and names are also outlined in this list. We don't use this list directly in any of the steps, although we do add variables based on the values in this list. You can copy the list to use as a reference, replacing the values with your own.
+Ez a feladat lépéseit a következő konfigurációs hivatkozás listában található értékek alapján a VNet használja. További beállításokat és a nevek azt is ezen a listán. Nem használjuk a lista összes lépést, közvetlenül a Bár jelenleg felvenni a listában szereplő értékek alapján a változók. A listában referenciaként, az értékeket cserélje le a saját másolhatja.
 
-**Configuration reference list**
+**Konfigurációs hivatkozáslista**
 
-* Virtual Network Name = "TestVNet"
-* Virtual Network address space = 192.168.0.0/16
-* Resource Group = "TestRG"
-* Subnet1 Name = "FrontEnd" 
-* Subnet1 address space = "192.168.1.0/24"
-* Gateway Subnet name: "GatewaySubnet" You must always name a gateway subnet *GatewaySubnet*.
-* Gateway Subnet address space = "192.168.200.0/26"
-* Region = "East US"
-* Gateway Name = "GW"
-* Gateway IP Name = "GWIP"
-* Gateway IP configuration Name = "gwipconf"
-* Type = "ExpressRoute" This type is required for an ExpressRoute configuration.
-* Gateway Public IP Name = "gwpip"
+* Virtuális hálózati név = "TestVNet"
+* Virtuális hálózati címterület = 192.168.0.0/16
+* Erőforráscsoport = "TestRG"
+* Alhalozat_1 Name = "Előtér" 
+* Címterület Alhalozat_1 = "192.168.1.0/24"
+* Átjáró alhálózati név: "GatewaySubnet" mindig neve egy átjáró-alhálózatot kell *GatewaySubnet*.
+* Átjáró alhálózati címtartományt = "192.168.200.0/26"
+* A régióban = "USA keleti régiója"
+* Átjáró Name = "GW"
+* Átjáró IP-név = "GWIP"
+* Átjáró IP-konfiguráció neve = "gwipconf"
+* Típus = "ExpressRoute" Ez a típus egy ExpressRoute-konfiguráció szükséges.
+* Átjáró nyilvános IP-név = "gwpip"
 
-## <a name="add-a-gateway"></a>Add a gateway
-1. Connect to your Azure Subscription.
+## <a name="add-a-gateway"></a>Átjáró hozzáadása
+1. Csatlakozás az Azure-előfizetéshez.
 
   ```powershell 
   Login-AzureRmAccount
   Get-AzureRmSubscription 
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
-2. Declare your variables for this exercise. Be sure to edit the sample to reflect the settings that you want to use.
+2. Deklarálja a változókat, ehhez a gyakorlathoz. Győződjön meg arról, a minta megfelelően a beállításokat, amely a használni kívánt szerkesztése.
 
   ```powershell 
   $RG = "TestRG"
@@ -34,54 +34,54 @@ The steps for this task use a VNet based on the values in the following configur
   $GWIPconfName = "gwipconf"
   $VNetName = "TestVNet"
   ```
-3. Store the virtual network object as a variable.
+3. A virtuális hálózat objektumot tárolja változóként.
 
   ```powershell
   $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
   ```
-4. Add a gateway subnet to your Virtual Network. The gateway subnet must be named "GatewaySubnet". You should create a gateway subnet that is /27 or larger (/26, /25, etc.).
+4. Egy átjáró alhálózatának hozzáadása a virtuális hálózathoz. Az átjáró alhálózatának "GatewaySubnet" nevet kell kapniuk. Hozzon létre egy átjáró-alhálózatot, amely /27 vagy nagyobb (26, / / 25, stb.).
 
   ```powershell
   Add-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
   ```
-5. Set the configuration.
+5. Állítsa be a konfigurációt.
 
   ```powershell
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-6. Store the gateway subnet as a variable.
+6. Az átjáró alhálózatának tárolására változóként.
 
   ```powershell
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
   ```
-7. Request a public IP address. The IP address is requested before creating the gateway. You cannot specify the IP address that you want to use; it’s dynamically allocated. You'll use this IP address in the next configuration section. The AllocationMethod must be Dynamic.
+7. Kérjen egy nyilvános IP-címet. Az IP-címre van szükség az átjáró létrehozása előtt. Nem adható meg; használni kívánt IP-cím dinamikusan történik. Ezt az IP-címet a következő konfigurációs szakaszban kell majd használni. Az AllocationMethod dinamikus kell lennie.
 
   ```powershell
   $pip = New-AzureRmPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
   ```
-8. Create the configuration for your gateway. The gateway configuration defines the subnet and the public IP address to use. In this step, you are specifying the configuration that will be used when you create the gateway. This step does not actually create the gateway object. Use the sample below to create your gateway configuration.
+8. A konfiguráció az átjáró létrehozása. Az átjáró konfigurációja meghatározza az alhálózatot és a használandó nyilvános IP-címet. Ebben a lépésben meg a konfigurációt, az átjáró létrehozásakor használható. Ez a lépés nem hoz létre az átjáró objektum. Az alábbi minta használatával hozza létre az átjáró konfigurációját.
 
   ```powershell
   $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
   ```
-9. Create the gateway. In this step, the **-GatewayType** is especially important. You must use the value **ExpressRoute**. After running these cmdlets, the gateway can take 45 minutes or more to create.
+9. Hozza létre az átjárót. Ebben a lépésben a **- GatewayType** különösen fontos. Az értéket kell használnia **ExpressRoute**. Miután ezek a parancsmagok, az átjáró 45 percig vagy tovább is létre vehet igénybe.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
   ```
 
-## <a name="verify-the-gateway-was-created"></a>Verify the gateway was created
-Use the following commands to verify that the gateway has been created:
+## <a name="verify-the-gateway-was-created"></a>Ellenőrizze az átjáró létrejött-e
+A következő parancsokkal ellenőrizheti, hogy létrejött-e az átjáró:
 
 ```powershell
 Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
 ```
 
-## <a name="resize-a-gateway"></a>Resize a gateway
-There are a number of [Gateway SKUs](../articles/expressroute/expressroute-about-virtual-network-gateways.md). You can use the following command to change the Gateway SKU at any time.
+## <a name="resize-a-gateway"></a>Átjáró méretezése
+A több [Gateway SKU-n](../articles/expressroute/expressroute-about-virtual-network-gateways.md). A következő paranccsal átjáró-Termékváltozat bármikor módosíthatja.
 
 > [!IMPORTANT]
-> This command doesn't work for UltraPerformance gateway. To change your gateway to an UltraPerformance gateway, first remove the existing ExpressRoute gateway, and then create a new UltraPerformance gateway. To downgrade your gateway from an UltraPerformance gateway, first remove the UltraPerformance gateway, and then create a new gateway.
+> Ez a parancs UltraPerformance átjáró nem működik. Ha módosítani szeretné az átjárót egy UltraPerformance átjárót, először távolítsa el a meglévő ExpressRoute-átjárót, és ezután hozzon létre újat UltraPerformance. Az átjáró egy UltraPerformance átjáró használni, először távolítsa el a UltraPerformance átjáró, és ezután hozzon létre újat.
 > 
 > 
 
@@ -90,8 +90,8 @@ $gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 
-## <a name="remove-a-gateway"></a>Remove a gateway
-Use the following command to remove a gateway:
+## <a name="remove-a-gateway"></a>Átjáró eltávolítása
+A következő paranccsal egy átjáró eltávolítása:
 
 ```powershell
 Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 07927f1660681af35428747b51a8c14ba6153a7a
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
-ms.translationtype: HT
+ms.openlocfilehash: 96a40753d87d49e9493e808da0294d682b2a19e5
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>A Linux-alapú HDInsight Hive használatával repülési késleltetés adatok elemzése
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/24/2017
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **HDInsight-fürtök**. Lásd: [Hadoop használatának megkezdésében a HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md) lépéseit egy új Linux-alapú HDInsight-fürt létrehozásához.
+* **HDInsight-fürtök**. Lásd: [Hadoop használatának megkezdésében a HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md) lépéseit egy új Linux-alapú HDInsight-fürt létrehozásához.
 
 * **Azure SQL Database** Azure SQL-adatbázis használata a cél-tárolóban. Ha egy SQL-adatbázis nem rendelkezik, tekintse meg a [Azure SQL-adatbázis létrehozása az Azure portálon](../sql-database/sql-database-get-started.md).
 
@@ -306,15 +306,15 @@ További részleteket a hdinsight adatokkal dolgozni, lásd: a következő cikke
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-[hdinsight-use-hive]: hdinsight-use-hive.md
+[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-[hdinsight-use-sqoop]: hdinsight-use-sqoop-mac-linux.md
-[hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-develop-streaming]: hdinsight-hadoop-streaming-python.md
-[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce-linux.md
+[hdinsight-get-started]: hadoop/apache-hadoop-linux-tutorial-get-started.md
+[hdinsight-use-sqoop]:hadoop/apache-hadoop-use-sqoop-mac-linux.md
+[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
+[hdinsight-develop-streaming]:hadoop/apache-hadoop-streaming-python.md
+[hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
 

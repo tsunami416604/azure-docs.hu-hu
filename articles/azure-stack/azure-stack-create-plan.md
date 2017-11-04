@@ -1,6 +1,6 @@
 ---
-title: Create a plan in Azure Stack | Microsoft Docs
-description: As a cloud administrator, create a plan that lets subscribers provision virtual machines.
+title: "Hozzon létre egy csomagot az Azure-verem |} Microsoft Docs"
+description: "A felhő rendszergazdájának hozzon létre egy tervet, amely lehetővé teszi a előfizetők kiépítése virtuális gépek."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,58 +14,56 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ddd69acaed4d56211092866571350d855b14e8b3
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 30759dca746fd7fd02653556cb105f419f5bf854
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-plan-in-azure-stack"></a>Create a plan in Azure Stack
+# <a name="create-a-plan-in-azure-stack"></a>Csomag létrehozása az Azure Stackben
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-[Plans](azure-stack-key-features.md) are groupings of one or more services. As a provider, you can create plans to offer to your tenants. In turn, your tenants subscribe to your offers to use the plans and services they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
+A [Csomagok](azure-stack-key-features.md) egy vagy több szolgáltatás csoportjai. -Szolgáltatóként biztosítson a felhasználók terveket hozhat létre. A felhasználók, a csomagok és szolgáltatások tartoznak a ajánlatok előfizetni. Ez a példa bemutatja, hogyan hozhat létre egy tervet, amely tartalmazza a számítási, hálózati és tárolóerőforrás-szolgáltatók. Ez a séma segítségével előfizetők a virtuális gépeket.
 
-1. Sign in to the Azure Stack administrator portal (https://adminportal.local.azurestack.external). Enter the credentials for the account that you created during step 5 of the [Run the PowerShell script](azure-stack-run-powershell-script.md) section.
+1. Jelentkezzen be a verem Azure felügyeleti portálra (https://adminportal.local.azurestack.external). 5. lépése során létrehozott fiókot adja meg a hitelesítő adatait a [a PowerShell-parancsprogrammal](azure-stack-run-powershell-script.md) szakasz.
 
-2. To create a plan and offer that tenants can subscribe to, click **New** > **Tenant Offers + Plans** > **Plan**.
+2. A terv és az ajánlat, amely a felhasználók előfizethetnek létrehozásához kattintson a **új** > **bérlői kínál + tervek** > **terv**.
 
    ![](media/azure-stack-create-plan/image01.png)
-3. In the **New Plan** blade, fill in **Display Name** and **Resource Name**. The Display Name is the plan's friendly name that tenants see. Only the admin can see the Resource Name. It's the name that admins use to work with the plan as an Azure Resource Manager resource.
+3. Az a **új megtervezése** panelen adja meg a **megjelenített név** és **erőforrásnév**. A megjelenített nevének értéke a terv valódi neve, amelyet a felhasználók. Kizárólag a rendszergazda láthatja az erőforrás nevét. A rendszergazdák az Azure Resource Manager erőforrásként tervvel működését nevét is.
 
    ![](media/azure-stack-create-plan/image02.png)
-4. Create a new **Resource Group**, or select an existing one, as a container for the plan.
+4. Hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő, a terv tárolója.
 
    ![](media/azure-stack-create-plan/image02a.png)
-5. Click **Services**, select **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**, and then click **Select**.
+5. Kattintson a **szolgáltatások**, jelölje be **Microsoft.Compute**, **Microsoft.Network**, és **Microsoft.Storage**, majd kattintson az **Válasszon**.
 
    ![](media/azure-stack-create-plan/image03.png)
-6. Click **Quotas**, click **Microsoft.Storage (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+6. Kattintson a **kvóták**, kattintson a **Microsoft.Storage (helyi)**, és majd válasszon az alapértelmezett kvótát, vagy kattintson a **hozzon létre új kvóta** testreszabása a kvótát.
 
    ![](media/azure-stack-create-plan/image04.png)
-7. If you're creating a new quota, enter a name for the quota > set the quota values > click **OK** > click the name of the new quota.
+7. Ha hoz létre egy új kvóta, adjon meg egy nevet a kvóta > állítsa be a kvótaértékek > kattintson **OK** > kattintson az új kvótának nevére.
 
    ![](media/azure-stack-create-plan/image06.png)
-8. Click **Microsoft.Network (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+8. Kattintson a **Microsoft.Network (helyi)**, és majd válasszon az alapértelmezett kvótát, vagy kattintson a **hozzon létre új kvóta** testreszabása a kvótát.
 
     ![](media/azure-stack-create-plan/image07.png)
-9. If you're creating a new quota, type a name for the quota > set the quota values > click **OK** > click the name of the new quota.
+9. Ha egy új kvóta hoz létre, írjon be egy nevet a kvóta > állítsa be a kvótaértékek > kattintson **OK** > kattintson az új kvótának nevére.
 
     ![](media/azure-stack-create-plan/image08.png)
-10. Click **Microsoft.Compute (local)**, and then either select the default quota or click **Create new quota** to customize the quota.
+10. Kattintson a **Microsoft.Compute (helyi)**, és majd válasszon az alapértelmezett kvótát, vagy kattintson a **hozzon létre új kvóta** testreszabása a kvótát.
 
     ![](media/azure-stack-create-plan/image09.png)
-11. If you're creating a new quota, type a name for the quota > set the quota values > click **OK** > click the name of the new quota.
+11. Ha egy új kvóta hoz létre, írjon be egy nevet a kvóta > állítsa be a kvótaértékek > kattintson **OK** > kattintson az új kvótának nevére.
 
     ![](media/azure-stack-create-plan/image10.png)
-12. In the **Quotas** blade, click **OK**, and then in the **New Plan** blade, click **Create** to create the plan.
+12. A a **kvóták** panelen kattintson **OK**, majd a a **új tervet** panelen kattintson **létrehozása** a terv létrehozásához.
 
     ![](media/azure-stack-create-plan/image11.png)
-13. To see your new plan, click **All resources**, then search for the plan and click its name.
+13. Az új csomag megtekintéséhez kattintson **összes erőforrás**, majd keresse meg a tervet, és kattintson a nevére.
 
     ![](media/azure-stack-create-plan/image12.png)
 
-### <a name="next-steps"></a>Next steps
-[Create an offer](azure-stack-create-offer.md)
-
+### <a name="next-steps"></a>Következő lépések
+[Ajánlat létrehozása](azure-stack-create-offer.md)

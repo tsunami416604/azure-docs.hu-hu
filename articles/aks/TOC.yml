@@ -9,7 +9,7 @@
   items:
     - name: AKS-fürt létrehozása
       href: kubernetes-walkthrough.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Alkalmazás előkészítése az AKS-hez
       href: tutorial-kubernetes-prepare-app.md
@@ -37,6 +37,8 @@
       href: kubernetes-helm.md
     - name: Alkalmazások fejlesztése a Draft használatával
       href: kubernetes-draft.md
+    - name: Adatok megőrzése az Azure Files segítségével
+      href: azure-files.md
     - name: A Kubernetes-irányítópult használata
       href: kubernetes-dashboard.md
     - name: Egyszerű szolgáltatás létrehozása

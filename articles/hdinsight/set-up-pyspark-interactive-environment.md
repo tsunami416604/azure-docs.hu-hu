@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 839f379228322eb2da0ff61609634bf1f86e4bb3
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: HT
+ms.openlocfilehash: 24839aadaee07b98ac5a6e6cfd14e44de54e7e7e
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="set-up-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code PySpark interaktív környezet beállítása
 
@@ -96,14 +96,14 @@ Parancsot kell használnia **pip3** az alábbi lépéseket, ha a **python 3.x**.
 
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [A HDInsight eszközzel Azure a Visual Studio Code](hdinsight-for-vscode.md)
-* [Az intellij-t Azure eszközkészlet segítségével hozza létre, és küldje el a Spark Scala-alkalmazások](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Az intellij-t Azure eszközkészlet segítségével SSH keresztül távolról Spark-alkalmazások](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Az intellij-t Azure eszközkészlet segítségével VPN-en keresztül távolról Spark-alkalmazások](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Az Eclipse Azure eszközkészlet a HDInsight Tools használatával Spark-alkalmazások létrehozása](hdinsight-apache-spark-eclipse-tool-plugin.md)
-* [Használja a HDInsight Tools for IntelliJ a Hortonworks védőfal](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Zeppelin notebookok használata Spark-fürttel HDInsighton](hdinsight-apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-* [Külső csomagok használata Jupyter notebookokkal](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
-* [Hive-adatok ábrázolása a Microsoft Power bi-ban az Azure HDInsight](./hdinsight-connect-hive-power-bi.md).
-* [Zeppelin segítségével az Azure HDInsight Hive-lekérdezések futtatása ](./hdinsight-connect-hive-zeppelin.md).
+* [Az intellij-t Azure eszközkészlet segítségével hozza létre, és küldje el a Spark Scala-alkalmazások](spark/apache-spark-intellij-tool-plugin.md)
+* [Az intellij-t Azure eszközkészlet segítségével SSH keresztül távolról Spark-alkalmazások](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Az intellij-t Azure eszközkészlet segítségével VPN-en keresztül távolról Spark-alkalmazások](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Az Eclipse Azure eszközkészlet a HDInsight Tools használatával Spark-alkalmazások létrehozása](spark/apache-spark-eclipse-tool-plugin.md)
+* [Használja a HDInsight Tools for IntelliJ a Hortonworks védőfal](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
+* [Zeppelin notebookok használata Spark-fürttel HDInsighton](spark/apache-spark-zeppelin-notebook.md)
+* [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](spark/apache-spark-jupyter-notebook-kernels.md)
+* [Külső csomagok használata Jupyter notebookokkal](spark/apache-spark-jupyter-notebook-use-external-packages.md)
+* [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](spark/apache-spark-jupyter-notebook-install-locally.md)
+* [Hive-adatok ábrázolása a Microsoft Power bi-ban az Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md).
+* [Zeppelin használja az Azure HDInsight Hive-lekérdezések futtatásához](hdinsight-connect-hive-zeppelin.md)

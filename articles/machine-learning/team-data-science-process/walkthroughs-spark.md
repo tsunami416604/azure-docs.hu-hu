@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 99b9f047525f46f68dc2c1029f6d53fbda87b69e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76c9382cc5210bb5ac8551ebb7b16ecabe0dcd39
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>PySpark és Scala használatával az Azure HDInsight Spark adatok tudományos forgatókönyvek
 
-Ezek a forgatókönyvek PySpark és Scala egy Azure Spark-fürt kell használni a prediktív elemzés. Ezek leírt lépések az adatok tudományos folyamatban. Az Team tudományos folyamat áttekintését lásd: [adatok tudományos folyamat](overview.md). A Spark on HDInsight áttekintését lásd: [a Spark on HDInsight bemutatása](../../hdinsight/hdinsight-apache-spark-overview.md).
+Ezek a forgatókönyvek PySpark és Scala egy Azure Spark-fürt kell használni a prediktív elemzés. Ezek leírt lépések az adatok tudományos folyamatban. Az Team tudományos folyamat áttekintését lásd: [adatok tudományos folyamat](overview.md). A Spark on HDInsight áttekintését lásd: [a Spark on HDInsight bemutatása](../../hdinsight/spark/apache-spark-overview.md).
 
 További adatok tudományos forgatókönyvek, amelyek az Team tudományos folyamat végrehajtása szerint vannak csoportosítva a **platform** használnak. Lásd: [az Team tudományos folyamat végrehajtása forgatókönyvek](walkthroughs.md) ezekben a példákban az részletezéshez.
 

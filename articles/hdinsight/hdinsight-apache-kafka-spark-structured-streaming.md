@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: larryfr
-ms.openlocfilehash: 565f840e0ac7ec1a68361ac1613da5d42459c979
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 9eb39989bdec330e47e6233be5c1347ff716bed2
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-spark-structured-streaming-with-kafka-preview-on-hdinsight"></a>Használja a hdinsight Spark strukturált Stream továbbítása Kafka (előzetes verzió)
 
@@ -158,4 +158,4 @@ Jupyter Notebook kezdőlapján válassza ki a __Spark-strukturált-adatfolyam-a-
 Most, hogy megismerte a használata Spark strukturált Streaming rendelkezik, tekintse meg a következő dokumentumok tudhat meg többet a Spark és Kafka használata:
 
 * [Spark streaming (DStream) rendelkező Kafka használata](hdinsight-apache-spark-with-kafka.md).
-* [Indítsa el a Jupyter Notebook és a Spark on HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md)
+* [Indítsa el a Jupyter Notebook és a Spark on HDInsight](spark/apache-spark-jupyter-spark-sql.md)

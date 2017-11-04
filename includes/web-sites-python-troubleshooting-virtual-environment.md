@@ -18,8 +18,3 @@ Ez egy olyan alternatíva, amely azt használja ki, hogy a telepítési parancsf
 ### <a name="option-3-customize-deployment-script"></a>3. lehetőség: A telepítési parancsfájl testreszabása
 Ha testre szabta a telepítési parancsfájlt, módosíthatja a deploy.cmd fájl kódját, hogy az törölje az env mappát.
 
-
-
-<!--HONumber=Nov16_HO2-->
-
-

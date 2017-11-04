@@ -1,7 +1,7 @@
 
 ## <a name="about-vhds"></a>Tudnivalók a VHD-kről
 
-Az Azure-ban használt VHD-k .vhd fájlok, amelyek lapblobként vannak tárolva egy standard vagy prémium szintű Azure-tárfiókban. A lapblobokkal kapcsolatos további részletekért tekintse meg [a blokkblobokat és a lapblobokat bemutató cikket](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). A prémium szintű tárolással kapcsolatos részletekért tekintse meg [a nagy teljesítményű Premium Storage szolgáltatással és az Azure virtuális gépekkel kapcsolatos cikket](../articles/storage/common/storage-premium-storage.md).
+Az Azure-ban használt VHD-k .vhd fájlok, amelyek lapblobként vannak tárolva egy standard vagy prémium szintű Azure-tárfiókban. A lapblobokkal kapcsolatos további részletekért tekintse meg [a blokkblobokat és a lapblobokat bemutató cikket](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). A prémium szintű tárolással kapcsolatos részletekért tekintse meg [a nagy teljesítményű Premium Storage szolgáltatással és az Azure virtuális gépekkel kapcsolatos cikket](../articles/virtual-machines/windows/premium-storage.md).
 
 Az Azure támogatja a rögzített lemezes VHD formátumot. A rögzített formátum a logikai lemezt lineárisan helyezi el a fájlon belül, így az X lemezeltolás az X blobeltolásnál van tárolva. A blob végén egy kis lábléc írja le a VHD tulajdonságait. A rögzített formátum gyakran helypazarló, mivel a legtöbb lemezen nagy méretű kihasználatlan tartományok találhatóak. Az Azure azonban egy ritka formátumban tárolja a .vhd fájlokat, így a rögzített és a dinamikus lemezek előnyei egyaránt kihasználhatók. További részletekért tekintse meg [a virtuális merevlemezek használatába bevezető cikket](https://technet.microsoft.com/library/dd979539.aspx).
 
@@ -26,11 +26,11 @@ A lemezek létrehozásakor kétféle teljesítményszint közül választhat: St
 
 A merevlemez-meghajtókra épülő Standard Storage költséghatékony tárolási megoldás, amely emellett jó teljesítményt nyújt. A Standard Storage replikálható helyileg egy adatközpontban, vagy lehet georedundáns egy elsődleges és egy másodlagos adatközponttal. A tárolók replikálásával kapcsolatos további információkért tekintse át [az Azure Storage replikációjával kapcsolatos cikket](../articles/storage/common/storage-redundancy.md). 
 
-A Standard Storage és a VM-lemezek együttes használatával kapcsolatos információkért tekintse át [a Standard Storage és a lemezek együttes használatát bemutató cikket](../articles/storage/common/storage-standard-storage.md).
+A Standard Storage és a VM-lemezek együttes használatával kapcsolatos információkért tekintse át [a Standard Storage és a lemezek együttes használatát bemutató cikket](../articles/virtual-machines/windows/standard-storage.md).
 
 ### <a name="premium-storage"></a>Prémium szintű Storage 
 
-Az SSD-kre épülő Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatást biztosít a nagy adatátviteli teljesítményt igénylő számítási feladatokat futtató virtuális gépek számára. Prémium szintű Storage használata DS, DSv2, GS, Ls vagy FS adatsorozat Azure virtuális gépeken. További információk: [Premium Storage](../articles/storage/common/storage-premium-storage.md).
+Az SSD-kre épülő Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatást biztosít a nagy adatátviteli teljesítményt igénylő számítási feladatokat futtató virtuális gépek számára. Prémium szintű Storage használata DS, DSv2, GS, Ls vagy FS adatsorozat Azure virtuális gépeken. További információk: [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Nem felügyelt lemezek
 

@@ -11,6 +11,7 @@ az webapp create --name <app_name> --resource-group myResourceGroup --plan myApp
 A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg:
 
 ```json
+Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -19,24 +20,17 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
   "defaultHostName": "<app_name>.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
   "enabled": true,
-  "enabledHostNames": [
-    "<app_name>.azurewebsites.net",
-    "<app_name>.scm.azurewebsites.net"
-  ],
-  "gatewaySiteName": null,
-  "hostNameSslStates": [
-    {
-      "hostType": "Standard",
-      "name": "<app_name>.azurewebsites.net",
-      "sslState": "Disabled",
-      "thumbprint": null,
-      "toUpdate": null,
-      "virtualIp": null
-    }
-    < JSON data removed for brevity. >
+  < JSON data removed for brevity. >
 }
 ```
+
+Egy üres web app alkalmazásban létrehozott git telepítés engedélyezve van.
+
+> [!NOTE]
+> A Git távoli URL-CÍMÉT is megjelennek a `deploymentLocalGitUrl` tulajdonság formátumban `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Az URL-cím akkor menteni, mert később szüksége.
+>
 
 Az újonnan létrehozott webapp megtekintéséhez tallózással keresse meg a helyet.
 

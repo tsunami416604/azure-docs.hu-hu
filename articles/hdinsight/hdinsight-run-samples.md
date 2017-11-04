@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 741cce6f2c81efed1e4bd0547fcb46a231815263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 6e4dbf1fa32f916a206e4f8d796218ab809835ad
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows-alapú HDInsight Hadoop-MapReduce minták futtatása
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -37,14 +37,14 @@ Segítségnyújtáshoz elindított futó MapReduce-feladatok az Azure HDInsight 
 
 Sokkal további dokumentáció létezik-e az interneten a Hadoop-kapcsolódó technológiákkal, például Java-alapú MapReduce programozási és adatfolyam- és a használt Windows PowerShell-parancsmagokkal dokumentáció parancsfájlok. Ezekkel az erőforrásokkal kapcsolatos további információkért lásd:
 
-* [A hdinsight Hadoop Java MapReduce programok fejlesztése](hdinsight-develop-deploy-java-mapreduce-linux.md)
-* [Hadoop-feladatok elküldése a HDInsightban](hdinsight-submit-hadoop-jobs-programmatically.md)
+* [A hdinsight Hadoop Java MapReduce programok fejlesztése](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Hadoop-feladatok elküldése a HDInsightban](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Az Azure HDInsight bemutatása][hdinsight-introduction]
 
 Napjainkban sokan válassza a Hive és a Pig MapReduce keresztül.  További információkért lásd:
 
-* [A Hive hdinsight használata](hdinsight-use-hive.md)
-* [A Pig használata a Hdinsightban](hdinsight-use-pig.md)
+* [A Hive hdinsight használata](hadoop/hdinsight-use-hive.md)
+* [A Pig használata a Hdinsightban](hadoop/hdinsight-use-pig.md)
 
 **Előfeltételek**:
 
@@ -62,7 +62,7 @@ Elküldeni a MapReduce-projekt, először hoz létre a MapReduce feladat definí
 
 A forráskód megtalálhatók a [függelék](#apendix-a---the-word-count-MapReduce-program-in-java).
 
-Az eljárás egy Java MapReduce fejlődő program című - [fejlesztése Java MapReduce programok a Hadoop a Hdinsightban](hdinsight-develop-deploy-java-mapreduce-linux.md)
+Az eljárás egy Java MapReduce fejlődő program című - [fejlesztése Java MapReduce programok a Hadoop a Hdinsightban](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
 **Elküldeni a MapReduce feladatot word száma**
 
@@ -127,7 +127,7 @@ Az eljárás egy Java MapReduce fejlődő program című - [fejlesztése Java Ma
 Hadoop streamelési API MapReduce, így térkép írása, és csökkentheti a funkciók Java kívül más nyelveken is biztosít.
 
 > [!NOTE]
-> A jelen oktatóanyagban szereplő lépések csak a Windows-alapú HDInsight-fürtök esetében érvényes. Például a Linux-alapú HDInsight-fürtök adatfolyamként való továbbítására, [programok streaming hdinsight fejlesztése Python](hdinsight-hadoop-streaming-python.md).
+> A jelen oktatóanyagban szereplő lépések csak a Windows-alapú HDInsight-fürtök esetében érvényes. Például a Linux-alapú HDInsight-fürtök adatfolyamként való továbbítására, [programok streaming hdinsight fejlesztése Python](hadoop/apache-hadoop-streaming-python.md).
 
 A példában a hozzárendelést és a nyomáscsökkentő a végrehajtható fájlok, hogy olvassa a bemeneti [stdin] [ stdin-stdout-stderr] (--soronként) és a kibocsátás kimenet [stdout] [ stdin-stdout-stderr]. A program megjeleníti a szövegben a szavakat.
 
@@ -986,12 +986,12 @@ public class TeraSort extends Configured implements Tool {
 
 [hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
-[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
-[hdinsight-introduction]: hdinsight-hadoop-introduction.md
+[hdinsight-submit-jobs]: hadoop/submit-apache-hadoop-jobs-programmatically.md
+[hdinsight-introduction]:hadoop/apache-hadoop-introduction.md
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
-[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 
 [hdinsight-samples]: hdinsight-run-samples.md
 [hdinsight-sample-10gb-graysort]: #hdinsight-sample-10gb-graysort
@@ -999,8 +999,8 @@ public class TeraSort extends Configured implements Tool {
 [hdinsight-sample-pi-estimator]: #hdinsight-sample-pi-estimator
 [hdinsight-sample-wordcount]: #hdinsight-sample-wordcount
 
-[hdinsight-use-hive]: hdinsight-use-hive.md
-[hdinsight-use-pig]: hdinsight-use-pig.md
+[hdinsight-use-hive]: hadoop/hdinsight-use-hive.md
+[hdinsight-use-pig]: hadoop/hdinsight-use-pig.md
 
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/21/2017
 ms.author: larryfr
-ms.openlocfilehash: 17059c5861962a56ed2011a8f8874fc23673ed68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 5835d4ac83b54648b4f7885de577f90008018baa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure virtuális hálózat használatával Azure HDInsight kiterjesztése
 
@@ -671,8 +671,8 @@ Ezek a lépések végrehajtását követően csatlakozhat a teljes tartománynev
 ## <a name="next-steps"></a>Következő lépések
 
 * Például egy végpontok közötti egy a helyszíni hálózathoz való kapcsolódáshoz a HDInsight konfigurálása, lásd: [egy a helyszíni hálózathoz való csatlakozás HDInsight](./connect-on-premises-network.md).
-* Hbase-fürtökkel konfigurálása az Azure virtuális hálózataihoz, lásd: [hozzon létre HBase-fürtök a HDInsight az Azure Virtual Network](./hdinsight-hbase-provision-vnet.md).
-* A HBase georeplikáció konfigurálása, lásd: [HBase fürt replikálása az Azure virtuális hálózat beállítása](./hdinsight-hbase-replication.md).
+* Hbase-fürtökkel konfigurálása az Azure virtuális hálózataihoz, lásd: [hozzon létre HBase-fürtök a HDInsight az Azure Virtual Network](hbase/apache-hbase-provision-vnet.md).
+* A HBase georeplikáció konfigurálása, lásd: [HBase fürt replikálása az Azure virtuális hálózat beállítása](hbase/apache-hbase-replication.md).
 * Azure virtuális hálózataihoz további információkért tekintse meg a [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
 
 * Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).

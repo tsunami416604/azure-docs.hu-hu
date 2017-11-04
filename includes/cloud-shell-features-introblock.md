@@ -1,5 +1,5 @@
-Azure Cloud Shell is a browser-based shell experience to manage and develop Azure resources.
+Azure Cloud rendszerhéj található az adott egy webböngésző-alapú felület és Azure-erőforrások fejlesztését.
 
-Cloud Shell offers a browser-accessible, pre-configured shell experience for managing Azure resources without the overhead of installing, versioning, and maintaining a machine yourself.
+Felhő rendszerhéj kínál a böngésző által elérhető, előre konfigurált rendszerhéj élmény nem növeli a telepítése, versioning, és a gép karbantartása, saját magának az Azure erőforrások kezeléséhez.
 
-Cloud Shell provisions machines on a per-request basis and as a result machine state will not persist across sessions. Since Cloud Shell is built for interactive sessions, shells automatically terminate after 20 minutes of shell inactivity.
+Felhő rendszerhéj kérelem alapú számítógépek kiépítését, és emiatt gép állapota nem minden munkamenetben megmarad. Felhő rendszerhéj interaktív munkamenet lett tervezve, mivel a parancskörnyezet automatikusan leáll, 20 perc rendszerhéj inaktivitás után.

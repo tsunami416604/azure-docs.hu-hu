@@ -1,6 +1,6 @@
-| Resource | Default Limit | Maximum Limit |
+| Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Maximum number of VMs in a scale set |1000 |1000 |
-| Maximum number of VMs based on a custom VM image in a scale set|300 |300 |
-| Maximum number of scale sets in a region |2000 |2000 |
+| Virtuális gépek maximális száma egy méretezési csoporton belül |1000 |1000 |
+| A méretezési egyéni Virtuálisgép-lemezkép alapján virtuális gépek maximális száma|300 |300 |
+| Méretezési csoportok maximális száma egy régión belül |2000 |2000 |
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/01/2017
 ms.author: robinsh
-ms.openlocfilehash: fdba4588fbb2c46efb3fc4de1a9e53414264444a
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
-ms.translationtype: HT
+ms.openlocfilehash: 9c5628307e76bd30d2dd59f284f2c4b30d434223
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>Átviteli objektumok az Azure Blob storage .NET használatával
 
@@ -34,25 +34,7 @@ A gyorsútmutató elvégzéséhez:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-storage-account-using-the-azure-portal"></a>Hozzon létre egy tárfiókot, az Azure portál használatával
-
-Először hozzon létre egy új általános célú tárfiókok fiókot szeretné használni a gyors üzembe helyezés. 
-
-1. Lépjen a [Azure-portálon](https://portal.azure.com) , és jelentkezzen be Azure-fiókjával. 
-2. A központ menüben válassza ki a **új** > **tárolási** > **tárfiók - blob, a fájl, a tábla, a várólista**. 
-3. Adja meg a tárfiók nevét. A név 3 – 24 karakter hosszúságúnak kell lennie, és számokat, és csak kisbetűket tartalmazhat. Azt is egyedinek kell lennie.
-4. Állítsa be `Deployment model` való **erőforrás-kezelő**.
-5. Állítsa be `Account kind` való **általános célú**.
-6. Állítsa be `Performance` való **szabványos**. 
-7. Állítsa be `Replication` való **helyileg redundáns tárolás (LRS)**.
-8. Állítsa be `Storage service encryption` való **letiltott**.
-9. Állítsa be `Secure transfer required` való **letiltott**.
-10. Válassza ki előfizetését. 
-11. A `resource group`, hozzon létre egy újat, és adjon neki egy egyedi nevet. 
-12. Válassza ki a `Location` a tárfiók használatára.
-13. Ellenőrizze **rögzítés az irányítópulton** kattintson **létrehozása** a tárfiók létrehozásához. 
-
-A tárfiók létrehozása után az irányítópulton van rögzítve. Kattintson rá a megnyitásához. Kattintson a beállítások **hívóbetűk**. Válasszon ki egy kulcsot, és másolja a KAPCSOLATI KARAKTERLÁNCOT a vágólapra, majd illessze be egy szövegszerkesztőben későbbi használatra.
+[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
@@ -115,6 +97,9 @@ Az első lépés férhessen hozzá és felügyelhesse a Blob storage használt o
 * Hozzon létre egy példányát a **CloudBlobContainer** objektum, a tároló elérésére. Tárolók használatával rendezheti a blobok, például a mappák használ a fájlok rendszerezéséhez a számítógépen.
 
 Ha elvégezte a **CloudBlobContainer**, létrehozhat egy példányát a **CloudBlockBlob** objektumra mutat, az adott blob, amelyen szeretné, és hajtsa végre egy feltöltés, letöltés, másolása, stb. a műveletet.
+
+> [!IMPORTANT]
+> A tároló nevének kisbetűnek kell lennie. Lásd: [elnevezési és hivatkozó tárolók, Blobok és metaadatok](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) tároló és a blob nevének további információt.
 
 Ebben a szakaszban az objektumok példányt létrehozni, hozzon létre egy új tárolót, és majd engedélyek beállítása a tárolón, a blobok nyilvánosak, és csak egy URL-cím elérhető. A tároló neve **quickstartblobs**. 
 
