@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: 63f2d88ad59661b7fbcffd0aaeb94c58d40bdb73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a30d7a8e3f2e11a0c5ed05c5b68d75d32b138fb9
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Hibaelhárítás YARN Azure HDInsight segítségével
 
 A legfőbb problémákat és azok megoldásait ismerje meg az Apache Ambari az Apache Hadoop YARN Payload van jelen használatakor.
 
-## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozzon létre egy új YARN várólistát egy fürtön
+## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hogyan hozzon létre egy új YARN várólistát egy fürtön?
 
 
 ### <a name="resolution-steps"></a>Megoldási lépések 
@@ -70,7 +70,7 @@ A módosítások azonnal a YARN Feladatütemező felhasználói felület az lát
 - [YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 
-## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan le a YARN naplóit fürtből
+## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hogyan le a YARN naplóit fürtből?
 
 
 ### <a name="resolution-steps"></a>Megoldási lépések 
@@ -141,6 +141,10 @@ A módosítások azonnal a YARN Feladatütemező felhasználói felület az lát
 
 - [Csatlakozás HDInsight (Hadoop) SSH használatával](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN fogalmakat és alkalmazások](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
+
+
+### <a name="see-also"></a>Lásd még:
+[Hibaelhárítás az Azure HDInsight segítségével](hdinsight-troubleshoot-guide.md)
 
 
 

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: a87924faaf5c6c43716b06b6d70ab5100c61f097
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 694d75807d978ece6296b945bf348f08688d3b5d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Speciális programozási modell a Reliable Services használata
 Azure Service Fabric leegyszerűsíti az írást, és megbízható állapotmentes és állapotalapú szolgáltatások kezelésére. Ez az útmutató bemutat speciális Reliable Services ahhoz, hogy több irányítást és rugalmasságot a szolgáltatások keresztül is érvényesek. Jelen útmutató elolvasásával előtt ismerje meg a [a Reliable Services programozási modell](service-fabric-reliable-services-introduction.md).

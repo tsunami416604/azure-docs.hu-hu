@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 041847f2f341528c742d127f5d624e60c26e01fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6047528b56c220a410a602422604c1453024903
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
-A biztonsági mentése és visszaállítás szolgáltatás [Azure App Service](app-service-web-overview.md) lehetővé teszi, hogy könnyen hozzanak létre alkalmazás biztonsági mentést, manuálisan vagy ütemezés szerint. Az alkalmazás felülírja a meglévő alkalmazás vagy egy másik alkalmazásnak visszaállítása visszaállíthatja egy korábbi állapothoz pillanatképet. 
+A biztonsági mentési és visszaállítási funkciót [Azure App Service](app-service-web-overview.md) lehetővé teszi, hogy könnyen hozzanak létre alkalmazás biztonsági mentést, manuálisan vagy ütemezés szerint. Az alkalmazás felülírja a meglévő alkalmazás vagy egy másik alkalmazásnak visszaállítása visszaállíthatja egy korábbi állapothoz pillanatképet. 
 
 Az alkalmazás biztonsági másolatból történő visszaállítását információkért lásd: [visszaállítása egy alkalmazást az Azure-ban](web-sites-restore.md).
 
 <a name="whatsbackedup"></a>
 
 ## <a name="what-gets-backed-up"></a>Mi a biztonsági mentés beolvasása
-App Service készíthet biztonsági másolatot egy Azure-tárfiók és tároló, amely az alkalmazás használatára konfigurálta a következő információkat. 
+App Service is biztonsági másolatot a következő információkat az Azure-tárfiók és tároló, amely az alkalmazás használatára konfigurált. 
 
 * Alkalmazáskonfiguráció
 * A fájl
@@ -49,54 +49,54 @@ A következő adatbázis-megoldások biztonsági mentését végző szolgáltat�
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>Követelmények és korlátozások
-* A biztonsági mentését és visszaállítását funkció használatához az App Service-csomag kell lennie a **szabványos** réteg vagy **prémium** réteg. Az alkalmazásszolgáltatási csomag magasabb szintű használható használandó méretezésével kapcsolatos további információkért lásd: [vertikális felskálázás az Azure alkalmazásban](web-sites-scale.md).  
+* A biztonsági mentés és visszaállítás használatához kell lennie az App Service-csomag a **szabványos** réteg vagy **prémium** réteg. Az alkalmazásszolgáltatási csomag magasabb szintű használható használandó méretezésével kapcsolatos további információkért lásd: [vertikális felskálázás az Azure alkalmazásban](web-sites-scale.md).  
   **Prémium szintű** réteg lehetővé teszi, hogy a napi nagyobb számú biztonsági ups mint **szabványos** réteg.
-* Egy Azure storage-fiók és a tároló ugyanazt az előfizetést, mint az alkalmazás kívánt kell biztonsági másolatot készíteni. Az Azure storage-fiókokról további információkért lásd: a [hivatkozások](#moreaboutstorage) Ez a cikk végén.
+* Azure-tárfiók és tároló ugyanazt az előfizetést, mint az alkalmazás, amelyet szeretne biztonsági másolatot készíteni van szükség. Az Azure storage-fiókokról további információkért lásd: a [hivatkozások](#moreaboutstorage) Ez a cikk végén.
 * Biztonsági mentés az alkalmazás- és a tartalom legfeljebb 10 GB-os lehet. Ha a biztonsági másolat mérete meghaladja ezt a korlátot, hibaüzenetet kap.
 
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>Manuális biztonsági mentés létrehozása
-1. Az a [Azure Portal](https://portal.azure.com), keresse meg az alkalmazás panelen, jelölje ki **biztonsági mentések**. A **biztonsági mentések** panel fog megjelenni.
+1. Az a [Azure-portálon](https://portal.azure.com), keresse meg az alkalmazás lapját, válassza ki **biztonsági mentések**. A **biztonsági mentések** lap is megjelenik.
    
     ![Biztonsági mentések lap][ChooseBackupsPage]
    
    > [!NOTE]
-   > Ha az alábbi üzenet jelenik meg, kattintson rá az App Service-csomag frissítése előtt nyugodtan folytathatja a biztonsági másolatok.
-   > Lásd: [vertikális felskálázás az Azure alkalmazásban](web-sites-scale.md) további információt.  
+   > Ha a következő üzenet jelenik meg, kattintson rá az App Service-csomag frissítése előtt nyugodtan folytathatja a biztonsági másolatok.
+   > További információkért lásd: [vertikális felskálázás az Azure alkalmazásban](web-sites-scale.md).  
    > ![Válassza ki a tárfiók](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 
 
-2. A a **biztonsági mentés** paneljén kattintson **konfigurálása**
+2. Az a **biztonsági mentés** lapon, kattintson **konfigurálása**
 ![kattintson konfigurálása](./media/web-sites-backup/ClickConfigure1.png)
-3. Az a **biztonsági mentési konfigurációhoz** panelen kattintson a **tárolási: nincs konfigurálva** storage-fiókok konfigurálása.
+3. Az a **biztonsági mentési konfigurációhoz** kattintson **tárolási: nincs konfigurálva** storage-fiókok konfigurálása.
    
     ![Válassza ki a tárfiók][ChooseStorageAccount]
-4. A biztonsági mentés célhelyének megadásához jelöljön ki egy **Tárfiók** és **tároló**. A tárfiók ugyanahhoz az előfizetéshez, mint a kívánt alkalmazást, készítsen biztonsági másolatot kell tartoznia. Ha kívánja, létrehozhat egy új tárfiókot vagy egy új tároló a megfelelő panelt a. Amikor elkészült, kattintson a **válasszon**.
+4. A biztonsági mentés célhelyének megadásához jelöljön ki egy **Tárfiók** és **tároló**. A tárfiók ugyanahhoz az előfizetéshez, mint a kívánt alkalmazást, készítsen biztonsági másolatot kell tartoznia. Ha kívánja, létrehozhat egy új tárfiókot vagy egy új tároló megfelelő lapján. Amikor elkészült, kattintson a **válasszon**.
    
     ![Válassza ki a tárfiók](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
-5. A a **biztonsági mentési konfigurációhoz** még mindig nyitva marad panelen beállíthatja **adatbázis biztonsági másolata**, majd válassza ki a szerepeljen a biztonsági mentések (SQL-adatbázis vagy MySQL), majd kattintson a kívánt adatbázisokat **OK**.  
+5. Az a **biztonsági mentési konfigurációhoz** még mindig nyitva marad lapján konfigurálhatja **adatbázis biztonsági másolata**, majd válassza ki a biztonsági mentés (SQL-adatbázis vagy MySQL) szerepeltetni kívánt adatbázisokat, majd kattintson a **OK**.  
    
     ![Válassza ki a tárfiók](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
-   > Ebben a listában szerepelnek az adatbázis, a kapcsolati karakterláncában szerepelnie kell a **kapcsolati karakterláncok** szakasza a **Alkalmazásbeállítások** alkalmazás.
+   > Ebben a listában szerepelnek az adatbázis, a kapcsolati karakterláncában szerepelnie kell a **kapcsolati karakterláncok** szakasza a **Alkalmazásbeállítások** az alkalmazás lapját.
    > 
    > 
-6. Az a **biztonsági mentési konfigurációhoz** panelen kattintson a **mentése**.    
-7. Az a **biztonsági mentések** panelen kattintson a **biztonsági mentés**.
+6. Az a **biztonsági mentési konfigurációhoz** kattintson **mentése**.    
+7. Az a **biztonsági mentések** kattintson **biztonsági mentés**.
    
     ![BackUpNow gomb][BackUpNow]
    
     A folyamatban lévő üzenet jelenik meg a biztonsági mentési folyamat során.
 
-Miután beállította a tárfiók és tároló manuális biztonsági mentés bármikor kezdeményezhető.  
+A tárfiók és tároló konfigurálása után bármikor kezdeményezhető manuális biztonsági mentés.  
 
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>Az automatikus biztonsági mentések konfigurálása
-1. Az a **biztonsági mentési konfigurációhoz** panelen állítsa **ütemezett biztonsági mentés** való **a**. 
+1. Az a **biztonsági mentési konfigurációhoz** lap **ütemezett biztonsági mentés** való **a**. 
    
     ![Válassza ki a tárfiók](./media/web-sites-backup/05ScheduleBackup1.png)
 2. Beállítások megjelenik, biztonsági mentési ütemezés beállítása **ütemezett biztonsági mentési** való **a**, majd konfigurálja a biztonsági mentés ütemezése tetszés szerint, és kattintson a **OK**.
@@ -106,16 +106,16 @@ Miután beállította a tárfiók és tároló manuális biztonsági mentés bá
 <a name="partialbackups"></a>
 
 ## <a name="configure-partial-backups"></a>Részleges biztonsági mentések konfigurálása
-Néha nem kívánja minden, az alkalmazás a biztonsági mentés. Íme, néhány példa:
+Néha nem szeretnénk mindenről az alkalmazást. Íme, néhány példa:
 
 * Ön [beállítása heti biztonsági mentései](web-sites-backup.md#configure-automated-backups) az alkalmazás, amely tartalmazza a statikus tartalom, amely soha nem változik, például a régi blogbejegyzések vagy képeket.
-* Az alkalmazás rendelkezik több mint 10 GB-os tartalomtípus (Ez az a maximális időtartam készíthet biztonsági másolatot egy időben).
-* Nem szeretné a naplófájlok biztonsági mentését.
+* Az alkalmazás rendelkezik több mint 10 GB-os tartalomtípus (Ez az a maximális időtartam, biztonsági másolatot készíthet egy időben).
+* Nem szeretnénk készítsen biztonsági másolatot a rendszernapló fájljaiban.
 
-Részleges biztonsági másolatok lehetővé teszi, hogy úgy dönt, hogy pontosan amely fájlokat szeretne biztonsági másolatot készíteni.
+Részleges biztonsági mentések engedélyezése úgy dönt, hogy pontosan mely kívánt fájlt, készítsen biztonsági másolatot.
 
 ### <a name="exclude-files-from-your-backup"></a>Fájlok kizárása a biztonsági mentés
-Tegyük fel, hogy egy alkalmazás, amely tartalmazza a naplófájlok és a statikus képeket, biztonsági mentési egyszer és nem kívánja módosítani. Ilyen esetekben kizárhatja azokat a fájlokat és mappákat a jövőbeni biztonsági mentések tárolják. Fájlok és mappák kizárása a biztonsági másolatok, hozzon létre egy `_backup.filter` fájlt a `D:\home\site\wwwroot` az alkalmazás mappájában. Megadja azokat a fájlokat és mappákat szeretne kizárni a fájlban található. 
+Tegyük fel, hogy egy alkalmazás, amely tartalmazza a naplófájlok és a statikus képeket, biztonsági mentési egyszer és nem kívánja módosítani. Ebben az esetben kizárhatja azokat a fájlokat és mappákat a jövőbeni biztonsági mentések tárolják. Fájlok és mappák kizárása a biztonsági másolatok, hozzon létre egy `_backup.filter` fájlt a `D:\home\site\wwwroot` az alkalmazás mappájában. Megadja azokat a fájlokat és mappákat szeretne kizárni a fájlban található. 
 
 A fájlok eléréséhez egyszerűen, hogy a Kudu használja. Kattintson a **speciális eszközök -> Ugrás** Kudu eléréséhez a webalkalmazás beállítása.
 
@@ -125,7 +125,7 @@ Azonosítsa a biztonsági másolatok kizárni kívánt mappákat.  Például sze
 
 ![Képek mappához][ImagesFolder]
 
-Hozzon létre egy nevű fájlt `_backup.filter` és a fenti lista be a fájlt, de eltávolítása `D:\home`. Egy soronként fájl vagy könyvtár felsorolása. Ezért a fájl tartalma kell lennie:
+Hozzon létre egy nevű fájlt `_backup.filter` és az előző listában be a fájlt, de eltávolítása `D:\home`. Egy soronként fájl vagy könyvtár felsorolása. Ezért a fájl tartalma kell lennie:
  ```bash
     \site\wwwroot\Images\brand.png
     \site\wwwroot\Images\2014
@@ -146,14 +146,23 @@ Biztonsági mentések futtatása a szokásos módon teheti meg, ugyanúgy [manu�
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Biztonsági másolatok tárolási módját
-Egy vagy több biztonsági mentés az alkalmazás elkészítése után a biztonsági másolatok jelennek meg a **tárolók** panelen található a tárfiók, és az alkalmazás. A tárfiókban lévő minden egyes biztonsági másolat áll egy`.zip` a biztonsági mentési adatokat tartalmazó fájlt, és egy `.xml` a javítócsomagban adatait tartalmazó fájlt a `.zip` fájl tartalmát. Csomagolja ki, és keresse meg ezeket a fájlokat, ha azt szeretné, hogy egy alkalmazás-visszaállítási végrehajtása nélkül a biztonsági másolatok eléréséhez.
+Egy vagy több biztonsági mentés az alkalmazás elkészítése után a biztonsági másolatok jelennek meg a **tárolók** a tárfiók, és az alkalmazás lapján. A tárfiókban lévő minden egyes biztonsági másolat áll egy`.zip` a biztonsági mentési adatokat tartalmazó fájlt, és egy `.xml` a javítócsomagban adatait tartalmazó fájlt a `.zip` fájl tartalmát. Csomagolja ki, és keresse meg ezeket a fájlokat, ha azt szeretné, hogy egy alkalmazás-visszaállítási végrehajtása nélkül a biztonsági másolatok eléréséhez.
 
-Az adatbázis biztonsági mentése az alkalmazás the.zip fájl tárolja. SQL-adatbázis Ez egy BACPAC-fájl (nincs fájl kiterjesztése) és importálhatók. Egy SQL-adatbázis BACPAC exportálás alapján létrehozásához lásd: [létrehozni egy új felhasználói adatbázis BACPAC fájl importálása](http://technet.microsoft.com/library/hh710052.aspx).
+Az adatbázis biztonsági mentése az alkalmazás a .zip fájl tárolja. SQL-adatbázis Ez egy BACPAC-fájl (nincs fájl kiterjesztése) és importálhatók. Egy SQL-adatbázis BACPAC exportálás alapján létrehozásához lásd: [létrehozni egy új felhasználói adatbázis BACPAC fájl importálása](http://technet.microsoft.com/library/hh710052.aspx).
 
 > [!WARNING]
 > Módosítása a fájlokat a **websitebackups** tároló okozhat a biztonsági mentés érvénytelen, és ezért nem visszaállítható válik.
 > 
 > 
+
+## <a name="automate-with-scripts"></a>Parancsfájlok automatizálásához
+
+Automatizálható biztonságimásolat-felügyeleti parancsfájlok, használja a [Azure CLI](/cli/azure/install-azure-cli) vagy [Azure PowerShell](/powershell/azure/overview).
+
+Minták lásd:
+
+- [Azure CLI-minták](app-service-cli-samples.md)
+- [Az Azure PowerShell-példák](app-service-powershell-samples.md)
 
 <a name="nextsteps"></a>
 

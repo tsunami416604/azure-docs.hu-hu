@@ -13,20 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: dharmeshkakadia
-ms.openlocfilehash: 53e9685458190efe6a586504721b8e7baadaed60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 398cc7cd0fa815f12ba5b503a1328688e1159eee
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Hive hibaelhárítása az Azure HDInsight használatával
 
 A felső kérdések és azok megoldásait ismerje meg az Apache Ambari az Apache Hive Payload használatakor.
 
 
-## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Hogyan egy Hive metaadattárhoz exportálhatja és importálhatja azokat a fürt egy másik
+## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Hogyan egy Hive metaadattárhoz exportálhatja és importálhatja azokat a fürt egy másik?
 
 
 ### <a name="resolution-steps"></a>Megoldási lépések
@@ -54,7 +54,7 @@ A kódot a megoldási lépések feltételezi, hogy az új fürtön adatelérési
 - [Csatlakozás egy HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Hogyan keresik meg Hive naplók fürt
+## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Hogyan keresik meg Hive naplók fürt?
 
 ### <a name="resolution-steps"></a>Megoldási lépések
 
@@ -83,7 +83,7 @@ A kódot a megoldási lépések feltételezi, hogy az új fürtön adatelérési
 - [Csatlakozás egy HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Hogyan indítsa el a fürt adott konfigurációjú a Hive rendszerhéjat
+## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Hogyan indítsa el a fürt adott konfigurációjú a Hive rendszerhéjat?
 
 ### <a name="resolution-steps"></a>Megoldási lépések
 
@@ -110,7 +110,7 @@ A kódot a megoldási lépések feltételezi, hogy az új fürtön adatelérési
 - [Hive konfiguráció tulajdonságai](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Hogyan elemezheti a fürt kritikus útvonalra Tez DAG adatokat
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Hogyan elemezheti a fürt kritikus útvonalra Tez DAG adatokat?
 
 
 ### <a name="resolution-steps"></a>Megoldási lépések
@@ -150,7 +150,7 @@ A kódot a megoldási lépések feltételezi, hogy az új fürtön adatelérési
 - [Csatlakozás egy HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Hogyan le Tez DAG adatok fürtből
+## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Hogyan le Tez DAG adatok fürtből?
 
 
 #### <a name="resolution-steps"></a>Megoldási lépések
@@ -177,6 +177,8 @@ A Tez DAG adatok gyűjtéséhez két módja van:
 [Csatlakozás egy HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
+### <a name="see-also"></a>Lásd még:
+[Hibaelhárítás az Azure HDInsight segítségével](hdinsight-troubleshoot-guide.md)
 
 
 

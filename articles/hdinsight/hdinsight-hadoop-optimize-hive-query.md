@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/26/2016
+ms.date: 11/03/2017
 ms.author: jgao
-ms.openlocfilehash: 56c00c3ea885bd1f431613ea90868dc65c98818b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4bd7f5b584030f9c1554b56895493837d2eac357
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight Hive-lekérdezések optimalizálása
 
@@ -51,9 +51,9 @@ Tez használata gyorsabb, mert:
 * **Ezzel elkerülheti a szükségtelen írások**. Több feladat éppen hoz azonos Hive lekérdezés esetén a MapReduce-vezérlő, mert minden egyes feladat eredményének beíródik HDFS köztes adatok. Mivel a Tez minimálisra csökkenti a tud-e a szükségtelen írási elkerülése érdekében minden egyes Hive-lekérdezések feladatok számát.
 * **Minimalizálja a kezdeti késések**. Tez jobban az indítási késleltetés minimálisra elindításához szükséges mappers számának csökkentése és is az egész optimalizálási javítása.
 * **A rendszer újból felhasználja tárolók**. Amikor lehetséges Tez tovább használhassa a tárolók győződjön meg arról, hogy lecsökkent van-e a késés miatt tárolók indítása.
-* **Folyamatos optimalizálási technikákat**. Hagyományosan optimalizálási fordítási fázis során végezhető el. Azonban további információt a bemenetek érhető el, amelyek engedélyezik a hatékonyabb optimalizálás futásidőben. Tez használ, amely lehetővé teszi, hogy optimalizálja a terv további futásidejű fázisba történő folyamatos optimalizálási technikákat.
+* **Folyamatos optimalizálási technikákat**. Hagyományosan optimalizálási fordítási fázis során végezhető el. Azonban további információt a bemenetek érhető el, amelyek engedélyezik a hatékonyabb optimalizálás futásidőben. Tez használ, amelyek lehetővé teszik, hogy optimalizálja a terv további futásidejű fázisba történő folyamatos optimalizálási technikákat.
 
-Ezekről a fogalmakról további részletekért lásd: [Apache TEZ](http://hortonworks.com/hadoop/tez/).
+További információ ezekről a fogalmakról: [Apache TEZ](http://hortonworks.com/hadoop/tez/).
 
 A Hive-lekérdezések engedélyezve van a lekérdezés az alábbi beállításokkal illesztésével Tez végezheti el:
 
@@ -110,7 +110,7 @@ A particionált tábla létrehozása után létrehozhat particionálás statikus
               L_QUANTITY as L_QUANTITY, L_EXTENDEDPRICE as L_EXTENDEDPRICE,
              L_DISCOUNT as L_DISCOUNT, L_TAX as L_TAX, L_RETURNFLAG as           L_RETURNFLAG, L_LINESTATUS as L_LINESTATUS, L_SHIPDATE as           L_SHIPDATE_PS, L_COMMITDATE as L_COMMITDATE, L_RECEIPTDATE as      L_RECEIPTDATE, L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as      L_SHIPMODE, L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
 
-További részletekért lásd: [particionált táblák](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
+További információkért lásd: [particionált táblák](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
 ## <a name="use-the-orcfile-format"></a>A következő ORCFile formátumot használja
 Hive különböző fájlformátumok támogatja. Példa:

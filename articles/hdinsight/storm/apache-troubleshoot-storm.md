@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: 70a3d762431d90acdd6ed2a432a569f34d0ce447
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 399ed17e997baf5dcf484f7798d3c4679522c633
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight alatt futó Storm hibaelhárításáról
 
 További tudnivalók a legfőbb problémákat és azok megoldásait Apache Ambari az Apache Storm hasznos adatot való munkához.
 
-## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Hogyan érhetem el az egy fürtön a Storm felhasználói felülete
+## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Hogyan érhetem el az egy fürtön a Storm felhasználói felülete?
 A Storm felhasználói felülete eléréséhez a böngészőben két lehetőség közül választhat:
 
 ### <a name="ambari-ui"></a>Ambari felhasználói felület
@@ -42,7 +42,7 @@ Példa:
 
  https://stormcluster.azurehdinsight.NET/stormui
 
-## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Hogyan tegye I átvitele Storm hub spout ellenőrzőpont eseményadatok egy topológia között
+## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Hogyan tegye I átvitele Storm hub spout ellenőrzőpont eseményadatok egy topológia között?
 
 Amikor olvassa el az Azure Event Hubs topológiák fejlesztése a HDInsight alatt futó Storm eseményközpont használatával spout található .jar fájl, telepítenie kell egy új fürt meg a névvel rendelkező topológia. Azonban meg kell őrizni, hogy a régi fürtön Apache ZooKeeper lett véglegesített ellenőrzőpont-adatok.
 
@@ -86,14 +86,14 @@ A parancs a metaadatok ír egy Apache Hadoop elosztott fájlrendszerrel (HDFS) �
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter delete /eventhubspout
     ```
 
-## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hogyan keresse meg a Storm bináris fürt
+## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hogyan keresse meg a Storm bináris fürt?
 Az aktuális HDP verem Storm bináris /usr/hdp/current/storm-client szerepelnek. A hely az azonos átjárócsomópontokkal és munkavégző csomópontokhoz.
  
 Előfordulhat, hogy több bináris fájljait (például /usr/hdp/2.5.0.1233/storm) /usr/hdp adott HDP verzióihoz. A /usr/hdp/current/storm-client mappa nem symlinked a legújabb verzióra, hogy fut a fürtön.
 
 További információkért lásd: [egy HDInsight-fürthöz SSH használatával csatlakozhat](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [Storm](http://storm.apache.org/).
  
-## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hogyan állapítható meg a telepítési topológia a Storm-fürt
+## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Hogyan állapítható meg a telepítési topológia a Storm-fürt?
 Először azonosítsa a HDInsight alatt futó Storm, telepített összetevők. A Storm-fürt négy csomópont kategóriák áll:
 
 * Átjárócsomópontok
@@ -122,7 +122,7 @@ A Storm munkavégző csomópontokhoz futtassa a következő szolgáltatásokat:
 * Munkavégző Java virtuális gépek (JVMs), a futó topológiák
 * Ambari ügynök
  
-## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Hogyan keresse meg a Storm event hub spout bináris fejlesztési
+## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Hogyan keresse meg a Storm event hub spout bináris fejlesztési?
  
 A topológia a Storm event hub spout .jar fájlok használatával kapcsolatos további információkért lásd a következőket.
  
@@ -138,7 +138,7 @@ A legújabb Storm event hub spout, amely kompatibilis a HDInsight 3.5 + Linux St
 ### <a name="source-code-examples"></a>Forrás-kódpéldák
 Lásd: [példák](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) bemutatja, hogyan olvashatja és írhatja az Azure Event Hubs egy Apache Storm-topológia (Java nyelven írt) használata az Azure HDInsight-fürtöt.
  
-## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a>Hogyan keresse meg a Storm Log4J konfigurációs fájlok fürtökön
+## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a>Hogyan keresse meg a Storm Log4J konfigurációs fájlok fürtökön?
  
 Apache Log4J konfigurációs fájlok Storm szolgáltatások azonosításához.
  
@@ -152,3 +152,5 @@ A munkavégző Log4J konfigurációs fájl olvasása az/usr/hdp/\<HDP verzió\>/
  
 Példák: /usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml /usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml
 
+### <a name="see-also"></a>Lásd még:
+[Hibaelhárítás az Azure HDInsight segítségével](../../hdinsight/hdinsight-troubleshoot-guide.md)

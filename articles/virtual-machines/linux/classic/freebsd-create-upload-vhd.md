@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: huishao
-ms.openlocfilehash: 0010e01d4333b96696680ec6fbbeee74b17f46a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b41826f071174df8f00af56a228e0f31c3cfe2f
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-and-upload-a-freebsd-vhd-to-azure"></a>Hozzon létre és freebsd rendszerű virtuális merevlemez feltöltése az Azure-bA
 Ez a cikk bemutatja, hogyan hozhat létre, és töltse fel a virtuális merevlemez (VHD), amely tartalmazza a freebsd rendszerű operációs rendszer. Miután a feltöltés, segítségével azt saját képként (VM) virtuális gép létrehozása az Azure-ban.
@@ -39,7 +39,7 @@ Ez a cikk feltételezi, hogy rendelkezik-e a következő elemek:
 >
 >
 
-Ez a feladat a következő öt szükséges lépéseket tartalmazza:
+Ez a feladat a következő négy lépéseket tartalmazza:
 
 ## <a name="step-1-prepare-the-image-for-upload"></a>1. lépés: A lemezkép előkészítése feltöltése
 A virtuális gépen, amelyre telepítette a freebsd rendszerű operációs rendszer az alábbi eljárások végrehajtása:
@@ -114,66 +114,21 @@ A virtuális gépen, amelyre telepítette a freebsd rendszerű operációs rends
 
     Most, állítsa le a virtuális Gépet.
 
-## <a name="step-2-create-a-storage-account-in-azure"></a>2. lépés: Az Azure storage-fiók létrehozása
-A .vhd fájl feltöltéséhez, így a virtuális gépek létrehozásához használhatók az Azure-ban storage-fiók szükséges. A klasszikus Azure portál segítségével hozzon létre egy tárfiókot.
+## <a name="step-2-prepare-the-connection-to-azure"></a>2. lépés: Felkészülés a kapcsolat az Azure-bA
+Győződjön meg arról, hogy a klasszikus üzembe helyezési modellt használ az Azure parancssori felület (`azure config mode asm`), majd jelentkezzen be a fiókba:
 
-1. Jelentkezzen be a [klasszikus Azure portálra](https://manage.windowsazure.com).
-2. A parancssávon válassza **új**.
-3. Válassza ki **adatszolgáltatások** > **tárolási** > **Gyorslétrehozás**.
+```azurecli
+azure login
+```
 
-    ![Storage-fiók gyors létrehozása](./media/freebsd-create-upload-vhd/Storage-quick-create.png)
-4. Töltse ki a mezőket az alábbiak szerint:
 
-   * Az a **URL-cím** mezőbe írja be egy altartomány nevet a tárolási fiók URL-címét. A bejegyzés a 3-24 számokat és kisbetűket tartalmazhat. Ez a név lesz az állomásnév, az Azure Blob Storage tárolóban, Azure Queue storage vagy az előfizetéshez tartozó Azure Table storage-erőforrások megoldására használt URL-cím belül.
-   * Az a **hely/Affinitáscsoport** legördülő menüben válassza ki a **helye vagy affinitáscsoportja** a tárfiók. Az affinitáscsoportokban lehetővé teszi a felhőalapú szolgáltatások és a tárolási be ugyanabban az adatközpontban.
-   * Az a **replikációs** mezőbe döntsön a **Georedundáns** a tárfiók replikációs. A georeplikáció alapértelmezés szerint be van kapcsolva. Ez a beállítás, hogy a tároló átadja a feladatokat, hogy a hely az elsődleges helyen jelentős hiba esetén replikálja a másodlagos helyre, hogy az adatok. A másodlagos hely automatikusan hozzá van rendelve, és nem módosítható. Ha hatékonyabban szeretné vezérelni jogi követelmények vagy a szervezeti házirend miatt a felhőalapú tároló helyét, kikapcsolhatja a georeplikáció. Azonban vegye figyelembe, hogy később bekapcsolása georeplikáció, fizetnie kell replikálni a másodlagos hely a meglévő adatokat egyszeri adatok adatátviteli díjat. Tárolási szolgáltatások nélkül georeplikáció kedvezményes áron érhető el. A tárfiókok georeplikáció kezelésével kapcsolatos további részletekért itt található: [Azure Storage replikációs](../../../storage/common/storage-redundancy.md).
+<a id="upload"> </a>
 
-     ![Írja be a tárolási fiók adatait](./media/freebsd-create-upload-vhd/Storage-create-account.png)
-5. Válassza ki **Storage-fiók létrehozása**. A fiók ekkor már megjelenik a **tárolási**.
 
-    ![A tárfiók sikeresen létrehozva](./media/freebsd-create-upload-vhd/Storagenewaccount.png)
-6. Ezután hozzon létre egy a feltöltött .vhd fájlokat tároló. A tárfiók nevét, majd válassza ki és **tárolók**.
+## <a name="step-3-upload-the-vhd-file"></a>3. lépés: A .vhd fájl feltöltése
 
-    ![Tárolási fiók részletei](./media/freebsd-create-upload-vhd/storageaccount_detail.png)
-7. Válassza ki **létrehozni egy tárolót**.
+Töltse fel a VHD-fájlt a storage-fiók szükséges. Vagy válassza ki meglévő tárfiók vagy [hozzon létre egy újat](../../../storage/common/storage-create-storage-account.md).
 
-    ![Tárolási fiók részletei](./media/freebsd-create-upload-vhd/storageaccount_container.png)
-8. Az a **neve** mezőbe írja be a tároló nevét. Ezt követően a a **hozzáférés** legördülő menüben válassza kívánt hozzáférési házirendet milyen típusú.
-
-    ![Tárolónév](./media/freebsd-create-upload-vhd/storageaccount_containervalues.png)
-
-   > [!NOTE]
-   > Alapértelmezés szerint a tároló privát, és csak a fiók tulajdonosának hozzáférhet. A tárolóban lévő blobok, de nem a tároló tulajdonságainak és a metaadatok nyilvános olvasási hozzáférés engedélyezéséhez használja a **nyilvános Blob** lehetőséget. A tároló és a blobok teljes nyilvános olvasási hozzáférés engedélyezéséhez használja a **nyilvános tárolókban** lehetőséget.
-   >
-   >
-
-## <a name="step-3-prepare-the-connection-to-azure"></a>3. lépés: Felkészülés a kapcsolat az Azure-bA
-A .vhd fájlt tölthet, mielőtt kell a számítógép és az Azure-előfizetés között biztonságos kapcsolatot létrehozni. Ehhez használhatja az Azure Active Directory (Azure AD) vagy a tanúsítvány metódust.
-
-### <a name="use-the-azure-ad-method-to-upload-a-vhd-file"></a>Az Azure AD a módszerhez a .vhd fájl feltöltéséhez
-1. Nyissa meg az Azure PowerShell-konzolt.
-2. Írja be a következő parancsot:  
-    `Add-AzureAccount`
-
-    Ez a parancs megnyit egy bejelentkezési ablakot, ahol jelentkezhet be a munkahelyi vagy iskolai fiókjával.
-
-    ![PowerShell-ablakot](./media/freebsd-create-upload-vhd/add_azureaccount.png)
-3. Azure hitelesíti, és menti a hitelesítő adatokat. Majd bezárja az ablakot.
-
-### <a name="use-the-certificate-method-to-upload-a-vhd-file"></a>A tanúsítvány a módszerhez a .vhd fájl feltöltéséhez
-1. Nyissa meg az Azure PowerShell-konzolt.
-2. Típus: `Get-AzurePublishSettingsFile`.
-3. Egy böngészőablakban megnyitja, és megkéri, hogy töltse le a .publishsettings fájlt. Ez a fájl tartalmazza az adatokat és az Azure-előfizetés tanúsítványát.
-
-    ![Böngésző letöltési oldala](./media/freebsd-create-upload-vhd/Browser_download_GetPublishSettingsFile.png)
-4. Mentse a .publishsettings fájlt.
-5. Típus: `Import-AzurePublishSettingsFile <PathToFile>`, ahol `<PathToFile>` .publishsettings fájl teljes elérési útja.
-
-   További információkért lásd: [Ismerkedés az Azure-parancsmagokkal](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx).
-
-   PowerShell konfigurálásával kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
-
-## <a name="step-4-upload-the-vhd-file"></a>4. lépés: A .vhd fájl feltöltése
 A .vhd fájlt tölt fel, ha azt bárhol elhelyezheti a Blob-tároló belül. Az alábbiakban néhány fogja használni, amikor a fájl feltöltése feltételek:
 
 * **BlobStorageURL** az URL-cím, a 2. lépésben létrehozott tárfiók.
@@ -185,7 +140,7 @@ Az előző lépésben használt Azure PowerShell-ablakot írja be:
 
         Add-AzureVhd -Destination "<BlobStorageURL>/<YourImagesFolder>/<VHDName>.vhd" -LocalFilePath <PathToVHDFile>
 
-## <a name="step-5-create-a-vm-with-the-uploaded-vhd-file"></a>5. lépés: Virtuális gép létrehozása a feltöltött .vhd fájl
+## <a name="step-4-create-a-vm-with-the-uploaded-vhd-file"></a>4. lépés: Virtuális gép létrehozása a feltöltött .vhd fájl
 A .vhd fájl feltöltése után hozzáadhatja képként az egyéni lemezképek, hogy az előfizetéshez, majd hozzon létre egy virtuális gépet egyéni lemezképpel listájához.
 
 1. Az előző lépésben használt Azure PowerShell-ablakot írja be:

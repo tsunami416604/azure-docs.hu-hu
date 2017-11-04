@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/25/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: f7810d519da500a33c2e1cd15b8de54835f304d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74beeffe04fa4b6dba4db8687bdebe79e0d750f4
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Egy Azure virtuális géphez a távoli asztali kapcsolatok hibáinak elhárítása
 A távoli asztal protokoll (RDP) kapcsolatot a Windows-alapú Azure virtuális gép (VM) különböző okokból, így nem érhető el a virtuális gép sikertelen lehet. A probléma lehet a távoli asztali szolgáltatás a virtuális Gépet, a hálózati kapcsolat vagy a távoli asztali ügyfél a gazdaszámítógépen. Ez a cikk végigvezeti Önt egy RDP-kapcsolati problémák megoldása a leggyakrabban használt módszerek. 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2017
+ms.date: 11/03/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: be3631db20ae744965f9f6677c536ade45e34c49
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16ce69855aa7505f52cd9d01dcd0843784fcb706
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="controls-in-azure-active-directory-conditional-access"></a>A vezérlők Azure Active Directory feltételes hozzáférés beállítása 
 
@@ -101,7 +101,7 @@ Feltételes hozzáférés, amely átirányítja a felhasználók egy kompatibili
 
 ## <a name="custom-controls"></a>Egyéni vezérlők
 
-Egyéni vezérlők, a feltételes hozzáférés a felhasználók átirányítása egy kompatibilis szolgáltatás megfelelnek a további Azure Active Directory kívül. A vezérlő kielégítéséhez, a felhasználó böngészőben a külső szolgáltatás átirányítja hajt végre a szükséges hitelesítés vagy érvényesítési tevékenységek és van majd visszairányítja Azure Active Directory. Az Azure Active Directory ellenőrzi a választ, és ha a felhasználó sikeresen hitelesített vagy érvényesítve, a felhasználó a feltételes hozzáférés folyamata a továbbra is.
+Egyéni vezérlők olyan Azure Active Directory Premium P2 kiadás egy képesség. Egyéni vezérlők használatakor a rendszer átirányítja a felhasználókat megfelelnek a további Azure Active Directory kívül kompatibilis szolgáltatás. A vezérlő kielégítéséhez, a felhasználó böngészőben a külső szolgáltatás átirányítja hajt végre a szükséges hitelesítés vagy érvényesítési tevékenységek és van majd visszairányítja Azure Active Directory. Az Azure Active Directory ellenőrzi a választ, és ha a felhasználó sikeresen hitelesített vagy érvényesítve, a felhasználó a feltételes hozzáférés folyamata a továbbra is.
 
 Ezek az intézkedések egyes külső vagy egyéni szolgáltatást is feltételes hozzáférés-vezérlés használatának engedélyezése, és általában a feltételes hozzáférés képességekkel bővíthetik.
 

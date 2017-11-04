@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: jgao
-ms.openlocfilehash: 82733e2a3025f932961122bad9d70c26896837b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 25a45a380db06808db352fa26b88235d6e4b8fd4
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Hadoop-fürtök létrehozása a Hdinsightban Resource Manager-sablonok használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -34,8 +34,6 @@ Ez a cikk útmutatását, lesz szüksége:
 
 * Egy [Azure-előfizetés](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Az Azure PowerShell és/vagy Azure CLI-t.
-
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 A Resource Manager-sablon megkönnyíti, hogy egyetlen, koordinált műveletben a következő alkalmazás létrehozásához:
@@ -58,8 +56,7 @@ Az Azure portál használatával állítsa be a fürt összes tulajdonságait, �
 **Egy sablon létrehozása az Azure portál használatával**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **új** kattintson a bal oldali menü **Eszközintelligencia + analitika**, és kattintson a **HDInsight**.
-3. Kövesse az útmutatást követve adja meg az tulajdonságait. Választhatja a **Gyorslétrehozás** vagy a **egyéni** lehetőséget.
+2. Kattintson a **hozzon létre egy erőforrást** kattintson a bal oldali menü **adatok + analitika**, és kattintson a **HDInsight**.
 4. Az a **összegzés** lapra, majd **töltse le a sablon és a paraméterek**:
 
     ![HDInsight Hadoop létrehozása a fürt Resource Manager sablon letöltése](./media/hdinsight-hadoop-create-linux-clusters-arm-templates/hdinsight-create-cluster-resource-manager-template-download.png)
@@ -169,6 +166,7 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 ## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta rendelkezik többféle módon hozhat létre HDInsight-fürtöt. További tudnivalókért tekintse meg a következő cikkeket:
 
+* Több hdinsight kapcsolódó sablonjainak használatáról [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/?term=hdinsight).
 * Például a .NET ügyféloldali kódtár erőforrásoknak történő telepítésének, [erőforrások telepíteni a .NET-kódtárakra és egy sablon](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Részletes példa az alkalmazások központi telepítése, lásd: [kiépítése és mikroszolgáltatások kiszámítható módon tudja az Azure-ban telepítheti](../app-service/app-service-deploy-complex-application-predictably.md).
 * Útmutató a megoldások különböző környezetekben történő telepítéséhez: [Fejlesztési és tesztelési környezetek a Microsoft Azure eszközben](../solution-dev-test-environments.md).
@@ -176,7 +174,7 @@ Ebben a cikkben megtanulta rendelkezik többféle módon hozhat létre HDInsight
 * Az Azure Resource Manager-sablonokban használható függvények listáját lásd: [sablonfüggvényei](../azure-resource-manager/resource-group-template-functions.md).
 
 ## <a name="appendix-resource-manager-template-to-create-a-hadoop-cluster"></a>A függelék: Resource Manager-sablon egy Hadoop-fürt létrehozása
-A következő Azure Resource Manager-sablon egy Linux-alapú Hadoop-fürt a függő Azure storage-fiókot hoz létre.
+A következő Azure Resource Manager-sablon a Hadoop fürtök a függő Azure storage-fiókot hoz létre.
 
 > [!NOTE]
 > Ez a minta Hive metaadattárhoz és az Oozie metaadattárhoz konfigurációs információkat tartalmazza. Távolítsa el a szakasz, vagy konfigurálja a szakasz a sablon használata előtt.
@@ -289,7 +287,7 @@ A következő Azure Resource Manager-sablon egy Linux-alapú Hadoop-fürt a füg
 
         },
         "properties": {
-            "clusterVersion": "3.4",
+            "clusterVersion": "3.6",
             "osType": "Linux",
             "tier": "standard",
             "clusterDefinition": {
@@ -420,7 +418,7 @@ Bármely egy paraméter értéke a szakasz a sablonba részeként, HDInsight né
         },
         "clusterVersion": {
             "type": "string",
-            "defaultValue": "3.5",
+            "defaultValue": "3.6",
             "metadata": {
                 "description": "HDInsight cluster version."
             }

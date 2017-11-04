@@ -4,23 +4,26 @@ description: "A napló Analytics napló Search API lehetővé teszi, hogy az ada
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/28/2017
+ms.date: 11/03/2017
 ms.author: bwren
-ms.openlocfilehash: 56d7c6dc648a01e7b0efc167cb65c94bac5468ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8a4ec7a6ddf2daeca6ead11460fa076a7eb5c94
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>Log Analytics egy Python-parancsfájl adatainak lekérése
 A [napló Analytics napló Search API](log-analytics-log-search-api.md) lehetővé teszi az adatok lekérése a Naplóelemzési munkaterület bármely REST API-ügyfél.  Ez a cikk egy minta Python-parancsfájl, amely a napló Analytics napló keresési API mutatja be.  
+
+>[!NOTE]
+> Ez a cikk az örökölt lekérdezési nyelv a Naplóelemzési a napló keresési API-t használ.  Frissítés, amely frissítette a munkaterületek Ez a cikk számára biztosított a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md).
 
 ## <a name="authentication"></a>Authentication
 A parancsfájl egy egyszerű szolgáltatást az Azure Active Directoryban, hogy a munkaterület hitelesítést.  Szolgáltatásnevekről engedélyezése, hogy a szolgáltatás egy fiók hitelesítéséhez, még akkor is, ha az ügyfél nem rendelkezik a fióknév kérelem ügyfélalkalmazást. A parancsfájl futtatása előtt létre kell hoznia egy egyszerű szolgáltatás használata a folyamatban levő [használata portálon hozzon létre egy Azure Active Directory erőforrásokat elérő alkalmazás és szolgáltatás egyszerű](../azure-resource-manager/resource-group-create-service-principal-portal.md).  Adja meg az Alkalmazásazonosítót, a bérlő azonosítója és a hitelesítési kulcs a parancsfájl lesz szüksége. 

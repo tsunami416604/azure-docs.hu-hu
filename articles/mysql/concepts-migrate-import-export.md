@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 2164562af60442375b96a51f820a65d4d4a6f257
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.openlocfilehash: 36ffa7082ce60093cbd90d0c12187e28f517646d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis áttelepítéséhez importálása és exportálása
 Ez a cikk azt ismerteti, két gyakori módszer az adatok importálása és exportálása a MySQL-kiszolgáló Azure adatbázisba MySQL munkaterület használatával. 
@@ -45,7 +45,7 @@ A kapcsolati adatok hozzáadása a MySQL-munkaterületet.
 MySQL-eszközök segítségével importálása és exportálása adatbázisokat az Azure-beli MySQL Database a következő esetekben. Más esetekben előfordulhat, hogy kihasználhatja a használatával a [dump és visszaállítási](concepts-migrate-dump-restore.md) közelítik meg helyette. 
 
 - Ha szelektív parancsot néhány meglévő MySQL-adatbázis importálása az Azure-beli MySQL Database van szüksége, célszerű az importálás és exportálás a módszer használata.  Ezzel a módszerrel, hagyja ki ezt az áttelepítési időt és erőforrásokat takaríthat a szükségtelen táblázatra. Tegyük fel például, a `--include-tables` vagy `--exclude-tables` kapcsoló [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) és a `--tables` kapcsoló [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
-- Ha az adatbázis-objektumok táblák nem telepít át, explicit módon hozza létre azokat. Például megkötések (elsődleges kulcs, külső kulcs, indexek), nézetek, függvények, eljárások, eseményindítók és bármely más adatbázis-objektumok szeretne áttelepíteni.
+- Ha az adatbázis-objektumok táblák nem telepít át, explicit módon hozza létre azokat az objektumokat. Például megkötések (elsődleges kulcs, külső kulcs, indexek), nézetek, függvények, eljárások, eseményindítók és bármely más adatbázis-objektumok szeretne áttelepíteni.
 - A MySQL-adatbázis nem külső adatforrások, amelybe migrálna adatokat, amikor egybesimított fájlok létrehozása, és importálja a [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 Győződjön meg arról, hogy az összes táblák az adatbázisban használja-e a InnoDB tárolóprogramot, ha tölt be adatokat az Azure-adatbázisba a MySQL. Azure MySQL-adatbázis csak a InnoDB tárolási összetevőt támogatja, így a másodlagos tárolási motorok nem támogatja. Ha a táblák alternatív tárolási motorok van szükség, mindenképpen alakíthatja át őket a MySQL az Azure-adatbázishoz az áttelepítés előtt InnoDB motor formátumot használja. 

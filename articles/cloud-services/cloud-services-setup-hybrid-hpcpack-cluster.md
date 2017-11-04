@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
-ms.openlocfilehash: f6dc9657e64160be1e68a7356863b53131e9b3c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad5c13723eef352148a40e3e7f4f2ff616867296
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>A hibrid nagy teljesítményű számítástechnikai igény Azure számítási csomópontok és a Microsoft HPC Pack (HPC) fürt beállítása
 A Microsoft HPC Pack 2012 R2 és az Azure használatával állítson be egy kisméretű, hibrid nagyteljesítményű számítástechnikai (HPC) fürt. A fürt látható az ebben a cikkben egy helyszíni HPC Pack átjárócsomópont tartalmaz, és néhány számítási csomópont telepítése egy Azure-ban igény a felhőalapú szolgáltatás. Ezt követően futtathatja a számítási feladatok, a hibrid fürtön.
@@ -87,7 +87,9 @@ HPC Pack egy önaláírt tanúsítványt telepít az átjárócsomóponthoz, az 
 
 2. Kattintson a **előfizetések** > *your_subscription_name*.
 
-3. Kattintson a **felügyeleti tanúsítványok** > **feltöltése**.4. Keresse meg a fájl C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer a head csomóponton. Kattintson a **feltöltése**.
+3. Kattintson a **felügyeleti tanúsítványok** > **feltöltése**.
+
+4. Keresse meg a fájl C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer a head csomóponton. Kattintson a **feltöltése**.
 
    
 A **alapértelmezett HPC Azure felügyeleti** tanúsítvány megjelenik a felügyeleti tanúsítványok listájában.

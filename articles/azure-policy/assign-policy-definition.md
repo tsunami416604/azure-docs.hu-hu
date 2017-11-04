@@ -5,24 +5,26 @@ services: azure-policy
 keywords: 
 author: Jim-Parker
 ms.author: jimpark
-ms.date: 10/06/2017
+ms.date: 11/02/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 2e0962ae02dd8132d878792634abc1f63b2c29a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db5112c858d2a2c54813d9c9a3670a45fcbdb993
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Az Azure környezetben nem kompatibilis erőforrások azonosítására házirend-hozzárendelés létrehozása
-Az első lépés az Azure-ban ismertetése megfelelőségi ismerete amennyiben állniuk saját aktuális erőforrásokkal. A gyors üzembe helyezés végigvezeti egy házirend-hozzárendelést azonosíthassa az erőforrásokat, amelyek nem SQL Server verziója 12.0 létrehozásának folyamatán. Ez a folyamat végén fog sikeresen azonosította kiszolgálók Mik a verziója, és ezért *nem megfelelő*.
+Az első lépés az Azure-ban ismertetése megfelelőségi ismerete amennyiben állniuk saját aktuális erőforrásokkal. A gyors üzembe helyezés végigvezeti a házirend-hozzárendelés nem felügyelt lemezeket használó virtuális gépek azonosításához létrehozásának folyamatán.
+
+Ez a folyamat végén fog sikeresen azonosította virtuális gépekhez, amelyek nem használják a kezelt lemezeken, és ezért *nem megfelelő*.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="opt-in-to-azure-policy"></a>Az Azure házirend engedélyezve
 
-Azure házirend jelenleg korlátozott előzetes érhető el, a hozzáférés kéréséhez regisztrálnia kell.
+Az Azure házirend mostantól nyilvános előzetes verziójában, és a hozzáférés kéréséhez regisztrálnia kell.
 
 1. Keresse fel Azure házirend https://aka.ms/getpolicy, és válassza ki a **regisztráció** a bal oldali ablaktáblán.
 
@@ -32,11 +34,11 @@ Azure házirend jelenleg korlátozott előzetes érhető el, a hozzáférés ké
 
    ![Szeretné használni az Azure-házirend](media/assign-policy-definition/preview-opt-in.png)
 
-   Néhány napot ki, hogy fogadja el a regisztrációs kérelmet, igény szerint is tarthat. Ha a kérés elfogadva lekérdezi, értesítést fog kapni e-mailben, hogy a szolgáltatás segítségével megkezdheti.
+   A kérelem automatikus jóváhagyása Preview. Várja meg a regisztrációt feldolgozni a rendszer akár 30 percet.
 
 ## <a name="create-a-policy-assignment"></a>Házirend-hozzárendelés létrehozása
 
-A gyors üzembe helyezés, az azt házirend-hozzárendelés létrehozása, és rendelje hozzá a *szükséges SQL Server verziója 12.0* definíciója. 
+A gyors üzembe helyezés, az azt házirend-hozzárendelés létrehozása, és rendelje hozzá a *naplózási virtuális gépek nélkül kezelt lemezek* házirend-definíció.
 
 1. Válassza ki **hozzárendelések** a bal oldali ablaktáblában az Azure-szabályzatának oldaláról.
 2. Válassza ki **házirend hozzárendelése** tetején a **hozzárendelések** ablaktáblán.
@@ -53,11 +55,11 @@ A gyors üzembe helyezés, az azt házirend-hozzárendelés létrehozása, és r
    - Alkalmazza a címke és annak értéke
    - Szükséges SQL Server verzió 12.0
 
-4. Keresés a házirend-definíciók kereséséhez keresztül a *szükséges SQL Server verziója 12.0* definíciója. Kattintson a házirendhez, és kattintson a **válasszon**.
+4. Keresés a házirend-definíciók kereséséhez keresztül a *naplózási virtuális gépek, amelyek nem használnak kezelt lemezek* definíciója. Kattintson a házirendhez, és kattintson a **hozzárendelése**.
 
    ![A megfelelő házirend-definíció keresése](media/assign-policy-definition/select-available-definition.png)
 
-5. Adjon meg egy megjelenítési **neve** a házirend-hozzárendelés. Ebben az esetben most használja *szükséges SQL Server verziója 12.0*. Azt is megteheti egy nem kötelező **leírás**. A leírás előírja, hogyan biztosítja a házirend-hozzárendelést, ebben a környezetben létrehozott összes SQL-kiszolgálók adatait 12.0 verziója.
+5. Adjon meg egy megjelenítési **neve** a házirend-hozzárendelés. Ebben az esetben most használja *naplózási virtuális gépek, amelyek nem használnak felügyelt lemezek*. Azt is megteheti egy nem kötelező **leírás**. A leírás ismerteti, hogyan a házirend-hozzárendelés azonosítja, amelyek nem használnak felügyelt lemezek ebben a környezetben létrehozott virtuális gépeket.
 6. A tarifacsomagjának módosítása a következőre módosítani **szabványos** annak érdekében, hogy a házirend alkalmazva lesz a meglévő erőforrásokat.
 
    Nincsenek Azure házirend – két tarifacsomagok *szabad* és *szabványos*. Az ingyenes szint csak házirendjeinek betartatásával jövőbeli erőforrásokon, a Standard, is kényszerítheti azokat a meglévő erőforrásokat jobb megértése érdekében a megfelelőségi állapot. Mivel jelenleg korlátozott előzetes, nem még kiadtuk árképzési modellt, így Ön nem kap egy számlázási kiválasztásának *szabványos*. További vonatkozó, tekintse meg: [Azure házirend árképzési](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/).
@@ -108,4 +110,3 @@ További információt a házirendek annak érdekében, hogy **jövőbeli** erő
 
 > [!div class="nextstepaction"]
 > [Létrehozás és házirendek kezelése](./create-manage-policy.md)
-

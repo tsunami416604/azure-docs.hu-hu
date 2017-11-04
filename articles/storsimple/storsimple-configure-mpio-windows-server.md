@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/03/2017
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 77f06b6ef146bdea8dc2f6cb920979e827626e35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f870df32bed8213f6252c70b2f687f436dbd71b8
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Többutas I/O konfigurálása a StorSimple eszköz
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [konfigurálása többutas i/o-a StorSimple eszköz](storsimple-8000-configure-mpio-windows-server.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 A Microsoft beépített támogatása a többutas I/O (MPIO) szolgáltatást a Windows Server a Súgó build magas rendelkezésre állású, nagy hibatűrésű SAN beállításokat. Az MPIO használ a redundáns összetevők – adapterek, kábelek és kapcsolók – a kiszolgáló és a tárolóeszköz közötti logikai útvonalak létrehozásához. Ha sikertelen egy összetevő, és ezáltal a logikai útvonal is meghibásodik, többutas logika egy alternatív útvonalat használ az i/o, hogy az alkalmazások továbbra is hozzáférjenek az adataikhoz. Emellett a konfigurációtól függően az MPIO is a jobb teljesítmény érdekében a terheléselosztás újra a közötti összes elérési utat. További információkért lásd: [MPIO áttekintése](https://technet.microsoft.com/library/cc725907.aspx "MPIO áttekintése és a szolgáltatások").  
 
 A magas rendelkezésre állású a StorSimple megoldás, a többutas I/O konfigurálnia kell a StorSimple eszközt. Ha az MPIO telepítve van a Windows Server 2012 R2 rendszert futtató kiszolgálók, a kiszolgálók majd tűri egy hivatkozás, hálózati vagy adapterhibákat. 

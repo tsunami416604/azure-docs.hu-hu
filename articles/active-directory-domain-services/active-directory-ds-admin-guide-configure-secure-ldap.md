@@ -4,7 +4,7 @@ description: "Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi 
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 93afa49166c5b31d23237c308b9d34f6d6f3507d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05af1ccc9702891980e60a1c1db4c527ffbed0fa
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) használatos az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartozó konfigurálása
 Ez a cikk bemutatja, hogyan engedélyezheti biztonságos Lightweight Directory Access Protocol (LDAPS) vonatkozóan az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. Biztonságos LDAP más néven az "Lightweight Directory Access Protocol (LDAP) Secure Sockets Layer (SSL) rétegen keresztül / Transport Layer Security (TLS)".
@@ -55,31 +55,36 @@ Szerezzen be egy érvényes tanúsítványt az alábbi útmutatást, /, biztons�
 ## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>1. feladat – biztonságos LDAP tanúsítvány beszerzése
 Az első tevékenységet foglal magában, beszerzett egy tanúsítványt, a felügyelt tartományra biztonságos LDAP eléréséhez használható. Erre két lehetősége van:
 
-* Szerezzen be egy tanúsítványt egy hitelesítésszolgáltatótól. A szolgáltató egy nyilvános hitelesítésszolgáltató lehet.
+* Szerezzen be egy tanúsítványt nyilvános hitelesítésszolgáltatótól.
 * Hozzon létre egy önaláírt tanúsítványt.
-
-### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Lehetőség (ajánlott) - biztonságos LDAP tanúsítvány beszerzése hitelesítésszolgáltatótól
-Ha a szervezet jut hozzá a tanúsítványt nyilvános hitelesítésszolgáltatótól származó, a biztonságos LDAP-tanúsítvány beszerzése a nyilvános hitelesítésszolgáltatótól származó szeretné.
-
-A tanúsítvány igénylésekor győződjön meg arról, hogy megfelelnek-e leírt összes követelményének [a biztonságos LDAP-tanúsítványra vonatkozó követelményekről](#requirements-for-the-secure-ldap-certificate).
 
 > [!NOTE]
 > Biztonságos LDAP segítségével a felügyelt tartományra kapcsolódó ügyfélszámítógépek számára megbízhatónak kell lennie a biztonságos LDAP tanúsítvány kiállítója.
 >
+
+### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Lehetőség (ajánlott) - biztonságos LDAP tanúsítvány beszerzése hitelesítésszolgáltatótól
+Ha a szervezet beszerzi a tanúsítványokat nyilvános hitelesítésszolgáltatótól származó, a biztonságos LDAP-tanúsítvány beszerzése a nyilvános hitelesítésszolgáltatótól.
+
+> [!TIP]
+> **Önaláírt tanúsítványokat használnak a felügyelt tartományok ". onmicrosoft.com" tartományi utótagokat.**
+> Ha a DNS-tartománynév, a felügyelt tartomány fejeződik be a ". onmicrosoft.com", nem egy biztonságos LDAP-tanúsítvány beszerzése egy nyilvános hitelesítésszolgáltatót. Mivel a Microsoft az "onmicrosoft.com" tartománnyal rendelkezik, nyilvános hitelesítésszolgáltató egy biztonságos LDAP-tanúsítvány kiállításához Önnek egy tartományhoz a utótaggal rendelkező elutasítja. Ebben a forgatókönyvben hozzon létre egy önaláírt tanúsítványt, és használja, amely biztonságos LDAP konfigurálásához.
 >
 
+Győződjön meg arról, a nyilvános hitelesítésszolgáltatótól származó tanúsítvány megfelel a leírt [a biztonságos LDAP-tanúsítványra vonatkozó követelményekről](#requirements-for-the-secure-ldap-certificate).
+
+
 ### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>B lehetőség – biztonságos LDAP önaláírt tanúsítvány létrehozása
-Ha nem tervezi, nyilvános hitelesítésszolgáltatótól származó tanúsítvány használatára, választhatja, hogy biztonságos LDAP egy önaláírt tanúsítvány létrehozásához.
+Ha nem tervezi, nyilvános hitelesítésszolgáltatótól származó tanúsítvány használatára, választhatja, hogy biztonságos LDAP egy önaláírt tanúsítvány létrehozásához. Válassza ki ezt a beállítást, ha a DNS-tartománynév, a felügyelt tartomány fejeződik be a ". onmicrosoft.com".
 
 **Hozzon létre egy önaláírt tanúsítványt PowerShell használatával**
 
 A Windows számítógépen nyisson meg egy új PowerShell-ablakot, **rendszergazda** és írja be a következő parancsokat egy új önaláírt tanúsítvány létrehozásához.
+```
+$lifetime=Get-Date
+New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
+```
 
-    $lifetime=Get-Date
-
-    New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
-
-A fenti példában cserélje le a "*. contoso100.com" a DNS-tartománynévvel a felügyelt tartomány. For example, ha létrehozott egy "contoso100.onmicrosoft.com" nevű felügyelt tartomány, cserélje le a(z)*. contoso100.com "a fenti szkript a" *. contoso100.onmicrosoft.com ").
+A fenti példában cserélje le a "*. contoso100.com" a DNS-tartománynévvel a felügyelt tartomány. For example, ha létrehozott egy "contoso100.onmicrosoft.com" nevű felügyelt tartomány, cserélje le a(z)*. contoso100.com "előző parancsfájlt a" *. contoso100.onmicrosoft.com ").
 
 ![Azure AD címtár kiválasztása](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 

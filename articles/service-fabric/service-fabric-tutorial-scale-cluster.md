@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2017
 ms.author: adegeo
-ms.openlocfilehash: e1d35bcd51349e6460d50acec0d9706fcd291e89
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b8b1ac04c20cf9fe6d6d8ea58571af05010461d9
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="scale-a-service-fabric-cluster"></a>A Service Fabric-fürt méretezése
 
@@ -48,6 +48,11 @@ Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
 
+```azurecli
+az login
+az account set --subscription <guid>
+```
+
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
 Sikeres végrehajtásához az oktatóanyag ezen része, akkor csatlakoztatni kell a Service Fabric-fürt és a virtuálisgép-méretezési csoport (a fürt üzemeltető). A virtuálisgép-méretezési csoport, amelyen az Azure Service Fabric Azure-erőforrás.
@@ -67,7 +72,12 @@ Connect-ServiceFabricCluster -ConnectionEndpoint $endpoint `
 Get-ServiceFabricClusterHealth
 ```
 
-Az a `Get-ServiceFabricClusterHealth` parancs állapota Önnek is visszaad a fürt minden csomópontja állapotának részleteit.
+```azurecli
+sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
+--pem ./aztestcluster201709151446.pem --no-verify
+```
+
+Most, hogy csatlakozott, a parancs segítségével a fürt minden csomópont állapotának beolvasása. A PowerShell környezethez, használja a `Get-ServiceFabricClusterHealth` parancsot, és a **sfctl** használja a "parancsot.
 
 ## <a name="scale-out"></a>Horizontális felskálázás
 
@@ -80,7 +90,15 @@ $scaleset.Sku.Capacity += 1
 Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
 ```
 
-A frissítési művelet befejezése után futtassa a `Get-ServiceFabricClusterHealth` parancsot az új csomópont információk megtekintéséhez.
+Ez a kód a kapacitás 6 állítja be.
+
+```azurecli
+# Get the name of the node with
+az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
+
+# Use the name to scale
+az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
+```
 
 ## <a name="scale-in"></a>A méretezési
 
@@ -91,22 +109,29 @@ A méretezés megegyezik a kiterjesztése, azzal a különbséggel alsó haszná
 > [!NOTE]
 > Ez a rész csak vonatkozik a *bronz* tartóssági szint. Tartóssági kapcsolatos további információkért lásd: [Service Fabric-fürt kapacitástervezés][durability].
 
-Amikor egy virtuálisgép-méretezési csoportban lévő méretezni, a méretezési készletben (a legtöbb esetben) eltávolítja az utolsó létrehozott virtuálisgép-példányt. Ezért kell a megfelelő, legutóbbi létrehozása a service fabric-csomópont található. Az utolsó csomópont található a legnagyobbnak ellenőrzésével `NodeInstanceId` a service fabric-csomópontokon a tulajdonság értéke. 
+Amikor egy virtuálisgép-méretezési csoportban lévő méretezni, a méretezési készletben (a legtöbb esetben) eltávolítja az utolsó létrehozott virtuálisgép-példányt. Ezért kell a megfelelő, legutóbbi létrehozása a service fabric-csomópont található. Az utolsó csomópont található a legnagyobbnak ellenőrzésével `NodeInstanceId` a service fabric-csomópontokon a tulajdonság értéke. Rendezési szempont a csomópont alatt példakódok példány, és térjen vissza a példányt a legnagyobb értékű azonosító adatait. 
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
+```azurecli
+`sfctl node list --query "sort_by(items[*], &instanceId)[-1]"`
+```
+
 A service fabric-fürt tudnia kell, hogy ez a csomópont fog eltávolítani. Kell venni a három lépésben történik:
 
 1. Tiltsa le a csomóponton, úgy, hogy az már nem egy replikálja az adatokat.  
-`Disable-ServiceFabricNode`
+PowerShell:`Disable-ServiceFabricNode`  
+sfcli:`sfctl node disable`
 
 2. Állítsa le a kiszolgálót, hogy a service fabric-futtatókörnyezet szabályszerűen leáll, és az alkalmazás lekérdezi a megszakítási kérelmet.  
-`Start-ServiceFabricNodeTransition -Stop`
+PowerShell:`Start-ServiceFabricNodeTransition -Stop`  
+sfcli:`sfctl node transition --node-transition-type Stop`
 
 2. Távolítsa el a csomópontot a fürtből.  
-`Remove-ServiceFabricNodeState`
+PowerShell:`Remove-ServiceFabricNodeState`  
+sfcli:`sfctl node remove-state`
 
 Miután a fenti három lépést a csomópont alkalmaztak, akkor eltávolíthatja a méretezési. Bármely tartóssági szint mellett használata [bronz][durability], ezeket a lépéseket, ha a méretezési példányt eltávolítják a történik.
 
@@ -169,6 +194,30 @@ else
 }
 ```
 
+Az a **sfctl** alatt kódját, a következő parancs segítségével beolvasása a **csomópontnév** és **csomópont példányazonosító** értékek az elmúlt által létrehozott csomópont:`sfctl node list --query "sort_by(items[*], &instanceId)[-1].[instanceId,name]"`
+
+```azurecli
+# Inform the node that it is going to be removed
+sfctl node disable --node-name _nt1vm_5 --deactivation-intent 4 -t 300
+
+# Stop the node using a random guid as our operation id
+sfctl node transition --node-instance-id 131541348482680775 --node-name _nt1vm_5 --node-transition-type Stop --operation-id c17bb4c5-9f6c-4eef-950f-3d03e1fef6fc --stop-duration-in-seconds 14400 -t 300
+
+# Remove the node from the cluster
+sfctl node remove-state --node-name _nt1vm_5
+```
+
+> [!TIP]
+> Használja a következő **sfctl** lekérdezések minden lépés állapotának ellenőrzése
+>
+> **Az inaktiválást állapotának ellenőrzése**  
+> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].nodeDeactivationInfo"`
+>
+> **Leállítási állapotának ellenőrzése**  
+> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].isStopped"`
+>
+
+
 ### <a name="scale-in-the-scale-set"></a>A méretezési csoportban lévő méretezése
 
 Most, hogy a service fabric-csomópont eltávolították a fürtből, a virtuálisgép-méretezési csoport is méretezhető. Az alábbi példában a méretezési készlet kapacitásának 1 csökken.
@@ -179,6 +228,17 @@ $scaleset.Sku.Capacity -= 1
 
 Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
 ```
+
+Ez a kód a kapacitás 5 állítja be.
+
+```azurecli
+# Get the name of the node with
+az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
+
+# Use the name to scale
+az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
+```
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 6d1845e27c6b0fff66b80a683f59d14238e2ad71
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 4918a820ca07a7d83dfb544ee9f0bbeb66d22722
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Annak-megosztás oktatóanyag: adatok előkészítése az Azure Machine Learning-munkaterület speciális
 Azure Machine Learning-szolgáltatások (előzetes verzió) egy integrált, végpontok közötti adattudomány, de a professional adatszakértőkön át a készítse elő az adatokat, kísérletek fejlesztése és központi telepítése a felhőbeli skálázással modellek speciális elemzési megoldás.
@@ -493,7 +493,7 @@ Válassza ki __OK__ a szűrőt.
 
 ### <a name="remove-columns"></a>Oszlopok eltávolítása
 
-Minden egyes sorára út adatok kerékpárt felvételi esemény jelöli. Ebben az oktatóanyagban csak van szüksége a **starttime** és **állomás start** oszlopok. Távolítsa el a többi oszlop szerint több kiválasztásával a két oszlop, kattintson a jobb gombbal az oszlopfejlécre, és válassza **oszlop megtartása**. Más oszlopokat is törlődnek.
+Minden egyes sorára út adatok kerékpárt felvételi esemény jelöli. Ebben az oktatóanyagban csak van szüksége a **starttime** és **állomás azonosítója start** oszlopok. Távolítsa el a többi oszlop szerint több kiválasztásával a két oszlop, kattintson a jobb gombbal az oszlopfejlécre, és válassza **oszlop megtartása**. Más oszlopokat is törlődnek.
 
 ![A tárolás során is garantálják column beállítás képe](media/tutorial-bikeshare-dataprep/tripdatakeepcolumn.png)
 

@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.openlocfilehash: f661aa5eb6ba87671a83b41aa25621da405aa335
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: cd6315c192ad3c33d43406993b1a3e6bd6ec7e4d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>A HBase hibaelhárítása az Azure HDInsight használatával
 
 A legfőbb problémákat és azok megoldásait ismerje meg az Apache Ambari az Apache HBase hasznos adat található használatakor.
 
-## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Hogyan futtathatok hbck parancs jelentéseket a ki nem osztott több régióba
+## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Hogyan futtathatok hbck parancs jelentéseket a ki nem osztott több régióba?
 
 Egy általános hibaüzenetet, láthatja, ha futtatja a `hbase hbck` parancs a "több régióba alatt hozzá nem rendelt vagy régiókban láncában lyuk."
 
@@ -41,7 +41,7 @@ Ahhoz, hogy a ki nem osztott régiók normál állapotra, kövesse az alábbi l�
 6. Futtassa a `hbase hbck` parancsot ismét (kapcsolók) nélkül. Ellenőrizze, győződjön meg arról, hogy minden egyes hozzárendelve a parancs kimenetét.
 
 
-## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Hogyan oldja meg időtúllépés problémák, régió hozzárendelések hbck parancsok használata esetén
+## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Hogyan oldja meg időtúllépés problémák, régió hozzárendelések hbck parancsok használata esetén?
 
 ### <a name="issue"></a>Probléma
 
@@ -56,7 +56,7 @@ Az időtúllépés problémák használatakor egyik lehetséges oka a `hbck` par
 5. Az Ambari felhasználói felületén indítsa újra az aktív HBase fő szolgáltatást.
 6. Futtassa a `hbase hbck -fixAssignments` újra a parancsot.
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Hogyan tegye I kényszerített – letiltása HDFS csökkentett módban egy fürtben
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Hogyan tegye I kényszerített – letiltása HDFS csökkentett módban egy fürtben?
 
 ### <a name="issue"></a>Probléma
 
@@ -211,7 +211,7 @@ A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópon
    ```
 
 
-## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Hogyan állítsa helyre JDBC vagy SQLLine elérhetőségét Apache Phoenix problémái
+## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Hogyan állítsa helyre JDBC vagy SQLLine elérhetőségét Apache Phoenix problémái?
 
 ### <a name="resolution-steps"></a>Megoldási lépések
 
@@ -262,7 +262,7 @@ A HBase fő szolgáltatás stabilizálását, és fejezze be a helyreállítási
 Amikor a rendszer. KATALÓGUS tábla vissza a normál, a kapcsolódási problémát a Phoenix automatikusan feloldja kell lennie.
 
 
-## <a name="what-causes-a-master-server-to-fail-to-start"></a>Mi okozhatja, hogy elindítsa a fő kiszolgáló
+## <a name="what-causes-a-master-server-to-fail-to-start"></a>Mi okozhatja, hogy elindítsa főkiszolgálóvá?
 
 ### <a name="error"></a>Hiba 
 
@@ -344,7 +344,7 @@ Ez az egy ismert probléma az HMaster szolgáltatással. Általános fürt indí
 2. Indítsa újra a szükséges szolgáltatásokat (HMaster, és valószínűleg más HBase szolgáltatások).  
 
 
-## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Mi újraindítás hibát okoz a terület-kiszolgálón
+## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Mi újraindítás hibát okoz a régió kiszolgálón?
 
 ### <a name="issue"></a>Probléma
 
@@ -421,3 +421,5 @@ A lezárás miatt a folyamathoz társított port előfordulhat, hogy nem oldhat�
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"   
    ```
 
+### <a name="see-also"></a>Lásd még:
+[Hibaelhárítás az Azure HDInsight segítségével](../../hdinsight/hdinsight-troubleshoot-guide.md)

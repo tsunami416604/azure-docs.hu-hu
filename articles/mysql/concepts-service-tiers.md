@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 05/23/2017
-ms.openlocfilehash: d9ec4556d57ff1975a93d806237ad0c7416b9988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.openlocfilehash: 7396b8f66dc65cfad497e336887978fa487c42f6
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure-adatbázis a MySQL beállításai és teljesítménye: az egyes tarifacsomagok elérhető
 Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozásakor három fő lehetőségek konfigurálása a kiszolgáló számára lefoglalt erőforrások határoz meg. Ezek a lehetőségek a teljesítmény és a kiszolgáló méretezési hatással.
@@ -52,7 +52,7 @@ Döntse el, hogy a tarifacsomagot, először meghatározhatja, hogy a munkaterhe
 Az előnézet időtartam alatt nem módosítható a tarifacsomagot, ha a kiszolgáló akkor jön létre. A jövőben lesz lehetséges egy másik réteghez egy tarifacsomagot kiszolgáló visszaminősítését vagy frissítéséhez.
 
 ## <a name="understand-the-price"></a>Az ár ismertetése
-Amikor létrehoz egy új Azure-adatbázis a MySQL belül a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer), kattintson a **tarifacsomag** panelen, és a havi költségét is megjelennek alapján a kiválasztott beállításokat. Ha még nem rendelkezik Azure-előfizetéssel, az Azure árképzési Számológép segítségével egy becsült ár. Látogasson el a [Azure árképzési Számológép](https://azure.microsoft.com/pricing/calculator/) webhely, kattintson a **elemek hozzáadása**, bontsa ki a **adatbázisok** kategóriát, és válassza a **MySQL az Azure-adatbázis** a beállítások testreszabása.
+Amikor létrehoz egy új Azure-adatbázis a MySQL belül a [Azure-portálon](https://portal.azure.com/#create/Microsoft.MySQLServer), jelölje be a **tarifacsomag** lap, és a havi költségeket látható alapján a kiválasztott beállítások. Ha még nem rendelkezik Azure-előfizetéssel, az Azure árképzési Számológép segítségével egy becsült ár. Látogasson el a [Azure árképzési Számológép](https://azure.microsoft.com/pricing/calculator/) webhely, kattintson a **elemek hozzáadása**, bontsa ki a **adatbázisok** kategóriát, és válassza a **MySQL az Azure-adatbázis** a beállítások testreszabása.
 
 ## <a name="choose-a-performance-level-compute-units"></a>Itt választhatja ki a teljesítmény (számítási egység)
 Miután megadta, hogy a tarifacsomag kiválasztása az Azure-adatbázis MySQL-kiszolgáló, készen áll a teljesítményszintet meghatározásához szükséges számítási egységek számának kiválasztásával. Jó kiindulási pont 200 vagy 400 számítási egység van szüksége a magasabb szintű felhasználói párhuzamossági webes és analitikai munkaterhelések, és fokozatosan igény szerint módosítsa alkalmazások esetében. 
@@ -84,7 +84,7 @@ A tárolási konfiguráció egy Azure-adatbázishoz MySQL-kiszolgáló határozz
 
 Bizonyos tárolási kapacitás megtalálható legalább az egyes tarifacsomagok, a tartalomjegyzékben említett előző méreteként"befoglalt tárolási." Ha a kiszolgáló akkor jön létre, akár a maximális megengedett tárolási 125 GB-os lépésekben további tárolási kapacitás adható hozzá. A további tárolási kapacitás a számítási egység konfigurációs függetlenül konfigurálhatók. A kiválasztott tárolókapacitást alapján ár módosításokat.
 
-Az egyes IOPS konfigurálása az árképzési szint és a választott tárméret vonatkozik. Az alapszintű csomag nem biztosít egy IOPS garantált. A Standard tarifacsomag, belül az IOPS méretezhető arányosan egy rögzített 3:1 arányban maximális mérete. A belefoglalt tárolási 125 GB-os biztosítja, hogy a 375 kiosztott IOPS, az egy IO mérete legfeljebb 256 KB-os. Ha szeretné, további tárhely 1 TB-os legfeljebb 3000 olyan kiosztott IOPS biztosításához.
+Az egyes IOPS konfigurálása az árképzési szint és a választott tárméret vonatkozik. Az alapszintű csomag nem biztosít egy IOPS garantált. A Standard tarifacsomag, belül az IOPS méretezhető arányosan egy rögzített 3:1 arányban maximális mérete. 125 GB-os garanciák 375 a belefoglalt tárolási IOPS, az egy IO mérete legfeljebb 256 KB-os kiépítve. Ha szeretné, további tárhely 1 TB-os legfeljebb 3000 olyan kiosztott IOPS biztosításához.
 
 Az Azure-portálon a metrikák diagramhoz figyelése, vagy tárolási és IOPS mérésére Azure CLI-parancsok írásával. Figyelése vonatkozó adatok gyűjtése le tárolási kapacitása, tárolási százalékos, használt tárolási és IO százalék.
 
@@ -92,11 +92,11 @@ Az Azure-portálon a metrikák diagramhoz figyelése, vagy tárolási és IOPS m
 > Kép nézetben, válassza ki a tárolókapacitást a kiszolgáló létrehozásának időpontjában. A tárhely méretét, a meglévő kiszolgáló módosítása még nem támogatott. 
 
 ## <a name="scaling-a-server-up-or-down"></a>A kiszolgáló skálázás feljebb vagy lejjebb
-Akkor kezdetben Itt választhatja ki a tarifacsomagot és teljesítményszintet a MySQL az Azure-adatbázis létrehozásakor. Később, a számítási egység méretezheti felfelé vagy lefelé dinamikusan, az azonos árképzési szint tartományán belül. Az Azure portálon, húzza a számítási egység a kiszolgáló árazás réteg panelen, vagy parancsfájl az ebben a példában a következő: [figyelő és a skála egy Azure-adatbázis MySQL-kiszolgáló Azure parancssori felület használatával](scripts/sample-scale-server.md)
+Akkor kezdetben Itt választhatja ki a tarifacsomagot és teljesítményszintet a MySQL az Azure-adatbázis létrehozásakor. Később, a számítási egység méretezheti felfelé vagy lefelé dinamikusan, az azonos árképzési szint tartományán belül. Az Azure portálon, húzza a számítási egység a kiszolgáló árazás réteg oldalán, vagy parancsfájl az ebben a példában a következő: [figyelő és a skála egy Azure-adatbázis MySQL-kiszolgáló Azure parancssori felület használatával](scripts/sample-scale-server.md)
 
 A számítási egység skálázás történik, függetlenül a választott maximális mérete.
 
-A háttérben módosítása az adatbázis teljesítményszintjét alkalmazás egy replikát készít az eredeti adatbázist az új teljesítmény szintjén, és majd kapcsolatok való működésre vált a replikát. Adatok nem vesztek el a folyamat során. Során mikor azt átválthat a replika rövid néhány percet kapcsolatok az adatbázis le vannak tiltva, így felé továbbított egyes tranzakciók előfordulhat, hogy állítható vissza. Ennek időtartama eltérő lehet, de átlagosan 4 másodpercnél rövidebb, az esetek 99%-ában pedig kevesebb mint 30 másodperc. Ha a kapcsolatok letiltásának pillanatában nagy számú tranzakció van folyamatban, ez az időtartam hosszabb lehet.
+A háttérben módosítása az adatbázis teljesítményszintjét másolatot hoz létre az eredeti adatbázist az új teljesítmény szintjén, és majd kapcsolatok való működésre vált a másolt kiszolgáló. Adatok nem vesztek el a folyamat során. Során a rövid jelenleg, ha az új kiszolgáló átvált a rendszer Ha az adatbázishoz létesített kapcsolatokhoz le vannak tiltva, az egyes tranzakciók útban előfordulhat, hogy állítható vissza. Ennek időtartama eltérő lehet, de átlagosan 4 másodpercnél rövidebb, az esetek 99%-ában pedig kevesebb mint 30 másodperc. Ha a kapcsolatok letiltásának pillanatában nagy számú tranzakció van folyamatban, ez az időtartam hosszabb lehet.
 
 A teljes méretezési eljárás ideje alatt méretét és függ IP-címek a kiszolgáló előtt és után a változás. Például egy kiszolgálót, amely a számítási egység módosítás, a Standard tarifacsomag belül kell végeznie néhány percen belül. Az új tulajdonságok a kiszolgáló nem érvényesek, amíg be nem fejeződik a módosításokat.
 
