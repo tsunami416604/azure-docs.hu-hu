@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/06/2017
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: e9b2f8b225c6b9ed0f0622e6a51a48cdfada28bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f5b5cc597da714369d4c452edce42ea7fe205dd
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>5. frissítésétől a StorSimple eszköz telepítése
 
@@ -30,7 +30,7 @@ Frissítés 5 tartalmazza az eszköz szoftvere Storport és Spaceport, az operá
 
 > [!IMPORTANT]
 > * Manuális és automatikus előtti ellenőrzés történik az eszköz állapotának hardver állapot és hálózati kapcsolatok tekintetében telepítése előtt. Az előzetes ellenőrzések csak akkor, ha a frissítések telepítését az Azure-portálon történik.
-> * Határozottan javasoljuk, hogy 3. frissítés előtti verzióit futtató eszközök frissítésekor a frissítések telepítése gyorsjavítások a módszerrel. Végigvezeti Önt a frissítési támogatása érdekében [egy támogatási jegy jelentkezzen](storsimple-8000-contact-microsoft-support.md).
+> * Határozottan javasoljuk, hogy 3. frissítés előtti verzióit futtató eszközök frissítésekor a frissítések telepítése gyorsjavítások a módszerrel. Ha problémába ütközik, [egy támogatási jegy jelentkezzen](storsimple-8000-contact-microsoft-support.md).
 > * Azt javasoljuk, hogy telepítse a szoftver- és egyéb rendszeres frissítéseket az Azure-portálon. Csak abban az csak lépjen a Windows PowerShell felületét (a frissítések telepítése) az eszköz, ha a frissítés előtti átjáró ellenőrzés sikertelen, a portálon. Attól függően, a verzióra frissít, a, a frissítések órát is igénybe vehet 4 (vagy újabb) telepítéséhez. A karbantartási mód frissítéseket telepíteni kell az eszköz a Windows PowerShell felületén keresztül. Karbantartási mód frissítések zavaró frissítések érhetők el, mert ezek eredményez le egyszerre az eszközhöz.
 > * Ha a választható StorSimple Snapshot Manager fut, győződjön meg arról, hogy frissítette a Snapshot Manager verzióra frissítés 5 az eszköz frissítése előtt.
 

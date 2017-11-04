@@ -1,6 +1,6 @@
 ---
-title: "Vonja össze az adatokat tudományos folyamat életciklus - Azure |} Microsoft Docs"
-description: "Az adatok tudományos projektek végrehajtásához szükséges lépéseket."
+title: "A csoport az tudományos folyamata életciklus - Azure |} Microsoft Docs"
+description: "A adattudomány projektek végrehajtásához szükséges lépéseket"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/02/2017
 ms.author: bradsev;
-ms.openlocfilehash: 264386b527626f3241966bfdb2fb061781121be1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aed74111402a1d5b1d1e2659d78a7997ad9c457e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
-# <a name="team-data-science-process-lifecycle"></a>Team adatok tudományos folyamat életciklusa
+# <a name="the-team-data-science-process-lifecycle"></a>A csoport az tudományos folyamata életciklusa
 
-A csapat adatok tudományos folyamat (TDSP) biztosít egy ajánlott életciklussal, amely segítségével az adatok tudományos projektek struktúra. Az életciklus kezdetétől a végéig, projektek általában követve azok végrehajtásakor, lépéseit mutatja be. Ha az adatok egy másik tudományos életciklusát, például a [SZÍNELOSZLÁS-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) vagy a szervezet saját egyéni folyamat a feladatalapú TDSP továbbra is használható a fejlesztési életciklusának. 
+A csapat adatok tudományos folyamat (TDSP) biztosít egy ajánlott életciklussal, amely segítségével a adattudomány projektek struktúra. Az életciklus kezdetétől a végéig, projektek általában követve azok végrehajtásakor, lépéseit mutatja be. Ha egy másik adattudomány életciklus, például a kereszt-iparági szabványos folyamata adatbányászati [(SZÍNELOSZLÁS-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), adatbázisok felderítése Tudásbázis [(KDD)](https://wikipedia.org/wiki/Data_mining#Process), vagy a szervezet saját egyéni folyamat , a feladatalapú TDSP továbbra is használhatja. 
 
-Életciklus úgy tervezték, adatok tudományos projektek célja, hogy intelligens alkalmazások részét képezi. Ezek az alkalmazások központi telepítése a machine learning vagy mesterséges eszközintelligencia modellek prediktív elemzési. Felderítési adatok tudományos és alkalmi analytics projektek is is előnyt az ezt a folyamatot. Azonban ebben az esetben egyes lépéseit nem is szükséges.    
+Életciklus készült adattudomány projektek, amely intelligens alkalmazások részét képezi. Ezek az alkalmazások központi telepítése a machine learning vagy mesterséges eszközintelligencia modellek prediktív elemzési. Felderítő adattudomány és alkalmi analytics projektek is is élvezhetik ezt a folyamatot. De ezek projektek egyes itt leírt lépések nem szükség lehet. 
 
-A TDSP életciklus ismételt végrehajtott öt fő szakaszból áll. Ezek a következők:
+A TDSP életciklus ismételt végrehajtott öt fő szakaszból áll. A szakaszok az alábbiak:
 
-* [1. vállalati ismertetése](lifecycle-business-understanding.md)
-* [2 adatgyűjtést és ismertetése](lifecycle-data.md)
-* [3. modellezési](lifecycle-modeling.md)
-* [4 telepítése](lifecycle-deployment.md)
-* [5. ügyfelek](lifecycle-acceptance.md)
+   1. [Üzleti ismertetése](lifecycle-business-understanding.md)
+   2. [Adatok megszerzését és ismertetése](lifecycle-data.md)
+   3. [Modellezési](lifecycle-modeling.md)
+   4. [Üzembe helyezés](lifecycle-deployment.md)
+   5. [Ügyfelek](lifecycle-acceptance.md)
 
-Íme egy vizuális ábrázolását a **Team adatok tudományos folyamat életciklus**. 
+A TDSP életciklus vizuális ábrázolását itt található: 
 
-![TDSP-életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP életciklusa](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-A csoport az tudományos folyamata életciklus többször is lépések, amely útmutatást nyújtanak a prediktív modellek használatához szükséges feladatok sorozatát van modellezve. Ezek a modellek javítható, ha intelligens alkalmazásokat szeretne összeállítani az éles környezetben is telepíthető. Folyamat életciklus célja továbbra is helyezze át a tudományos adatprojekthez előre egy tiszta engagement végpont felé. Is igaz, hogy adattudomány-e a kutatás és felderítési egy gyakorlatot, félreértés igényt egyértelműen kommunikációhoz ezeket a feladatokat a csapat és ügyfelei az alábbiakra, összetevők, amelyek az alkalmazottak szabványosított sablonok segítségével jól meghatározott elkerülése és Növelje meg az esélye, egy összetett adatokat tudományos projektet egy sikeres befejezését.
+A TDSP életciklus többször is lépések, amely útmutatást nyújtanak a prediktív modellek használatához szükséges feladatok sorozatát van modellezve. A prediktív modellek alkalmazással tervezi használni az intelligens alkalmazásokat hozhatnak létre éles környezetben telepít. Folyamat életciklus célja egy tiszta engagement végpont felé adattudomány projekt áthelyezése a folytatáshoz. Adattudomány egy kutatási és felderítési gyakorlatot. A abban, hogy a csoport és az ügyfelek feladatok alkalmazó szoftverbiztonsági szabványosított sablonok műtermék jól meghatározott készletből segít a félreértések elkerülése érdekében. Is használja ezeket a sablonokat megnő az esélye, egy bonyolult adattudomány projekt sikeres befejezését.
 
 Minden szakaszhoz azt adja meg a következő információkat:
 
-* **Célok**: a konkrét célokat.
-* **Megtudhatja, hogyan teheti**: a leírt meghatározott feladatok és útmutatást elvégzését őket.
-* **Az összetevők**: a termékek és az őket létrehozó támogatását.
+   * **Célok**: A konkrét célokat.
+   * **Megtudhatja, hogyan teheti**: áttekintése, amelyek a meghatározott feladatok és útmutatás végrehajtani azokat.
+   * **Az összetevők**: A termékek és a támogatási azt.
 
 ## <a name="next-steps"></a>Következő lépések
-Végpont forgatókönyvek, amelyek azt mutatják, a folyamat lépései teljes **meghatározott forgatókönyvek** is rendelkezésre állnak. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) témakör. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
 
-Az adatok tudományos folyamatban lépések végrehajtása, amelyek használják az Azure Machine Learning Studióban, tekintse meg a [Azure ML](http://aka.ms/datascienceprocess) képzési.
+Teljes-végpontok forgatókönyvek, amelyek azt mutatják, meghatározott forgatókönyvek esetén a folyamat lépései a Microsoft biztosítja. A [példa forgatókönyvek](walkthroughs.md) a cikk ismerteti a miniatűr leírások és hivatkozások forgatókönyvek listája. A forgatókönyvek bemutatják, hogyan lehet a felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
 
+Hogyan hajthat végre a lépéseket az Azure Machine Learning Studio használó TDSPs példákért lásd [a TDSP használja az Azure Machine Learning segítségével](http://aka.ms/datascienceprocess).

@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/01/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: b19aaa652f2c15573ded632ca1348e1a6752f080
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a63a15782b85a48552fd913d5d3f8aaaae7db44
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>A szolgáltatás előtér-webkiszolgáló az ASP.NET Core segítségével alkalmazás létrehozása
 Alapértelmezés szerint Azure Service Fabric-szolgáltatások nem biztosítanak egy nyilvános webes felületet. Teszi közzé a HTTP-ügyfelek számára az alkalmazás működését, akkor belépési pontként személyekről, és onnan az egyes szolgáltatások majd kommunikálni webes projekt létrehozása.
@@ -210,12 +210,6 @@ Az állapotalapú szolgáltatás más szolgáltatások forgalom fogadására RPC
     ![Az állapot-nyilvántartó számlálóérték jelenik meg a böngészőben][browser-aspnet-counter-value]
    
     Frissítse a böngészőablakot, hogy rendszeresen tekintse meg a számláló értéke frissítése.
-
-## <a name="kestrel-and-weblistener"></a>Vércse és WebListener
-
-Az alapértelmezett ASP.NET Core webkiszolgáló, vércse, úgynevezett [jelenleg nem támogatott a közvetlen internet-forgalom kezelésére](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel). Ennek eredményeképpen a Service Fabric ASP.NET Core állapotmentes szolgáltatások sablonját használja [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener) alapértelmezés szerint. 
-
-További információt a vércse és WebListener a Service Fabric-szolgáltatások, tekintse meg [ASP.NET Core a Service Fabric Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md).
 
 ## <a name="connecting-to-a-reliable-actor-service"></a>Egy megbízható szereplő csatlakozik
 Ez az oktatóanyag összpontosított hozzáadása egy előtér-webkiszolgáló, amely egy állapotalapú szolgáltatással továbbítani. Egy nagyon hasonló modell felvegye a gyakrabban is végrehajthatja. Visual Studio megbízható szereplő projekt létrehozása, automatikusan létrehoz egy illesztőfelület-projekt meg. Az aktor proxy létrehozni a szereplő folytatott kommunikációhoz a webes projekt használhatja, hogy a illesztő. A kommunikációs csatornát automatikusan valósul meg. Így nem kell tennie semmit, egyenértékű létrehozó egy `ServiceRemotingListener` például ebben az oktatóanyagban az állapotalapú szolgáltatásból esetében tette.

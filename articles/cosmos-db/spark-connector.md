@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: denlee
-ms.openlocfilehash: 8ecbb478c81cde25bbd0d1c9ee07ae02b07f8cc7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7500ed798519671ba864cc185efffa0f93a8be70
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>A Spark a valós idejű big data elemzések érdekében, és Azure Cosmos DB-összekötő
 
@@ -44,7 +44,7 @@ Az összekötő a következő összetevőket használja:
 
 * [Az Apache Spark on](http://spark.apache.org/) egy hatékony nyílt forráskódú feldolgozási motor, amely a sebesség, valamint a kifinomult analytics könnyű épül.
 
-* [Apache Spark on Azure Hdinsighttal](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) , hogy a segítségével telepíthet a felhőbe a kritikus fontosságú központi telepítések elvégzéséhez az Apache Spark on [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/).
+* [Apache Spark on Azure Hdinsighttal](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) , hogy a segítségével telepíthet a felhőbe a kritikus fontosságú központi telepítések elvégzéséhez az Apache Spark on [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/).
 
 Hivatalos támogatott verziók:
 
@@ -351,4 +351,4 @@ Ha még nem tette meg, töltse le a Spark on Azure Cosmos DB-összekötőt a [az
 * [Elosztott összesítések példák](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [Mintaparancsfájlok és notebookok](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-Is érdemes áttekinteni a [Apache Spark SQL, DataFrames és adatkészletek útmutató](http://spark.apache.org/docs/latest/sql-programming-guide.html) és a [Apache Spark on Azure Hdinsighttal](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) cikk.
+Is érdemes áttekinteni a [Apache Spark SQL, DataFrames és adatkészletek útmutató](http://spark.apache.org/docs/latest/sql-programming-guide.html) és a [Apache Spark on Azure Hdinsighttal](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) cikk.

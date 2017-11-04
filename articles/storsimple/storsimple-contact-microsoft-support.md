@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 11/02/2017
 ms.author: alkohli;anbacker
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d25fb4902d37faca5358e5a9010e9e146e344e1
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="contact-microsoft-support-for-your-storsimple"></a>A StorSimple a Microsoft támogatási szolgálatához
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [a StorSimple Forduljon a Microsoft ügyfélszolgálatához](storsimple-8000-contact-microsoft-support.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 Ha problémába ütközik a Microsoft Azure StorSimple megoldás, létrehozhat egy szolgáltatási kérelem a technikai támogatási szolgálathoz. Egy online munkamenetben a támogatási szakértőhöz is szükség lehet a StorSimple eszköz támogatási munkamenet indításához. Ez a cikk bemutatja, hogyan:
 
 * Megtudhatja, hogyan hozzon létre egy támogatási kérést.
@@ -29,7 +32,7 @@ Ha problémába ütközik a Microsoft Azure StorSimple megoldás, létrehozhat e
 
 Tekintse át a [a StorSimple 8000 Series támogatási SLA-k és információk](https://msdn.microsoft.com/library/mt433077.aspx) a támogatási kérelem létrehozása előtt.
 
-## <a name="create-a-support-request"></a>Támogatási kérés létrehozása
+## <a name="create-a-support-request"></a>hozzon létre támogatási kérést
 A következő lépésekkel hozzon létre egy támogatási kérést:
 
 #### <a name="to-create-a-support-request"></a>A támogatási kérelem létrehozása

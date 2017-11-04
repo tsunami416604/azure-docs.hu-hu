@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 11/03/2017
 ms.author: cjiang
-ms.openlocfilehash: 923b3ca8a2e2b1d7f44cd77946a02e1d30839f14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c81d7fa793388612ec4d76d79a2f30f209b9cf42
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Előfizetés az Azure-előfizetéssel az Office 365-fiókkal
 Ha olyan Office 365-előfizetéssel rendelkezik, az Office 365-fiók segítségével hozzon létre egy Azure-előfizetés. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) Office 365-felhasználónevét és jelszavát használva. Ha szeretné beállítani a virtuális gépek, vagy használjon más Azure-szolgáltatásokkal, kell regisztrál az Azure-előfizetésre. Az Azure-előfizetéshez megoszthatja másokkal és [az Azure-előfizetés és az erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)

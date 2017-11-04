@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 11/02/2017
 ms.author: kumud
-ms.openlocfilehash: 7256548b988812c64ca9a9f8a84fec377646635d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4cd65c01d75af8539f5fa13dbbd2aaec548aea0b
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>Belső terheléselosztó magas rendelkezésre állású portok konfigurálása
 
-Ez a cikk magas rendelkezésre ÁLLÁS telepítését bemutató példát-portokat biztosít egy belső terheléselosztón. Virtuális készülékek hálózati konfigurációkkal tekintse meg a megfelelő szolgáltató webhelyeket.
+Ez a cikk magas rendelkezésre ÁLLÁS telepítését bemutató példát-portokat biztosít egy belső terheléselosztón. Hálózati virtuális készülékek (NVAs) specifikus konfigurációk tekintse meg a megfelelő szolgáltató webhelyeket.
 
 >[!NOTE]
 > Magas rendelkezésre állás portok funkció jelenleg előzetes verzió. Az előzetes kiadás során a szolgáltatás rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadásétól. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 1. ábra azt mutatja be, a jelen cikkben ismertetett telepítési példában a következő konfigurációt:
 - A NVAs egy belső terheléselosztó mögött a magas rendelkezésre ÁLLÁSÚ portok konfigurációs háttérkészlethez vannak telepítve. 
-- A UDR alkalmazza a DMZ alhálózati útvonalak az összes forgalom a <>? azáltal, hogy a belső terheléselosztási terheléselosztó virtuális IP-cím, a következő ugrás. 
+- A UDR alkalmazza a DMZ alhálózati útvonalak az összes forgalom a NVAs azáltal, hogy a belső terheléselosztási terheléselosztó virtuális IP-cím, a következő ugrás. 
 - Belső terheléselosztó osztja el a forgalmat a Terheléselosztó algoritmus alapján aktív NVAs egyikét.
 - NVA dolgozza fel a forgalmat, és továbbítja a backend alhálózathoz az eredeti célra.
 - A visszaadott elérési út is esetén is igénybe vehet a azonos útvonal a megfelelő UDR konfigurálva van a backend alhálózathoz. 
@@ -41,19 +41,13 @@ Ez a cikk magas rendelkezésre ÁLLÁS telepítését bemutató példát-portoka
 
 ## <a name="preview-sign-up"></a>Előnézet-előfizetés
 
-Előzetes verziójú Load Balancer Standard Termékváltozat portok funkcióját a magas rendelkezésre ÁLLÁSÚ részt, előfizetése hozzáférhet a PowerShell vagy Azure CLI 2.0 használatával regisztrálja.
+Az előzetes betöltési terheléselosztó szabványos magas rendelkezésre ÁLLÁSÚ portok szolgáltatásának részt, regisztrálja az előfizetés hozzáférést Azure CLI 2.0 vagy a PowerShell használatával.  Regisztrálja az előfizetés
 
-- Regisztráció PowerShell használatával
+1. [Terheléselosztó szabványos előzetes betöltési](https://aka.ms/lbpreview#preview-sign-up) és 
+2. [Magas rendelkezésre ÁLLÁSÚ portok előzetes](https://aka.ms/haports#preview-sign-up).
 
-   ```powershell
-   Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-
-- Regisztráljon az Azure CLI 2.0 verziót használja
-
-    ```cli
-  az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network  
-    ```
+>[!NOTE]
+>Ez a funkció használatához le kell is előfizetési terheléselosztóhoz [szabványos Preview](https://aka.ms/lbpreview#preview-sign-up) magas rendelkezésre ÁLLÁSÚ portok mellett. A magas rendelkezésre ÁLLÁSÚ portok vagy a Load Balancer szabványos előzetes regisztrációja egy óráig is tarthat.
 
 ## <a name="configuring-ha-ports"></a>Magas rendelkezésre ÁLLÁSÚ portok konfigurálása
 
@@ -68,6 +62,39 @@ Az Azure portálon a **magas rendelkezésre ÁLLÁSÚ portok** beállítást ehh
 ![magas rendelkezésre állású portok konfigurálása Azure-portálon](./media/load-balancer-configure-ha-ports/haports-portal.png)
 
 2. ábra – magas rendelkezésre ÁLLÁSÚ portok konfigurációs portálon
+
+### <a name="configure-ha-ports-lb-rule-via-resource-manager-template"></a>Magas rendelkezésre ÁLLÁSÚ portok LB szabály keresztül Resource Manager-sablon konfigurálása
+
+Konfigurálhatja a magas rendelkezésre ÁLLÁSÚ portokat 2017-08-01 API-verzió Microsoft.Network/loadBalancers használ a Load Balancer erőforrás. A következő JSON-részlet a módosításokat a terheléselosztó-konfigurációban a magas rendelkezésre ÁLLÁSÚ portokhoz REST API-n keresztül mutatja be.
+
+```json
+    {
+        "apiVersion": "2017-08-01",
+        "type": "Microsoft.Network/loadBalancers",
+        ...
+        "sku":
+        {
+            "name": "Standard"
+        },
+        ...
+        "properties": {
+            "frontendIpConfigurations": [...],
+            "backendAddressPools": [...],
+            "probes": [...],
+            "loadBalancingRules": [
+             {
+                "properties": {
+                    ...
+                    "protocol": "All",
+                    "frontendPort": 0,
+                    "backendPort": 0
+                }
+             }
+            ],
+       ...
+       }
+    }
+```
 
 ### <a name="configure-ha-ports-load-balancer-rule-with-powershell"></a>A PowerShell segítségével magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály konfigurálása
 

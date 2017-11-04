@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 11/02/2017
 ms.author: bwren
-ms.openlocfilehash: f27f038e0507270c0bfe200cb8c86622ebac5372
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 17a59a38b6a445a7f42df171a711669f95fc84c2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>A Naplóelemzési számítógépcsoportok jelentkezzen keresések
 
@@ -109,13 +109,29 @@ Kattintson a **x** a a **eltávolítása** oszlop a számítógép-csoport törl
 
 
 ## <a name="using-a-computer-group-in-a-log-search"></a>Számítógépcsoport használata egy napló keresése
-Számítógép csoportot használjon a lekérdezésben való kezelésével a alias függvényében, amely általában a következő szintaxist:
+Egy számítógépcsoport hozta létre a lekérdezésben napló keresési függvényében, amely általában a következő szintaxist a alias kezelésére használhatja:
 
   `Table | where Computer in (ComputerGroup)`
 
 Például a következő segítségével adja vissza UpdateSummary rekordok csak számítógépek mycomputergroup nevű számítógép csoport.
  
   `UpdateSummary | where Computer in (mycomputergroup)`
+
+
+Importált számítógépcsoportokat és belefoglalt számítógépeik tárolódnak a **ComputerGroup** tábla.  Például a következő lekérdezés alakítanák vissza számítógépeknek a listáját, a tartományi számítógépek csoportban az Active Directoryból. 
+
+  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+
+A következő lekérdezés csak a számítógépek UpdateSummary rekordok meghaladná a tartományi számítógépek.
+
+  ```
+  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+  UpdateSummary | where Computer in (ADComputers)
+  ```
+
+
+
+  
 
 >[!NOTE]
 > Ha a munkaterületet továbbra is használja a [örökölt Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md)>, majd a következő szintaxis segítségével tekintse meg a naplófájl-keresési számítógépcsoport.  Adja meg a **kategória** > nem kötelező szükséges, ha van ilyen nevű számítógépcsoportok különböző kategóriákba. 

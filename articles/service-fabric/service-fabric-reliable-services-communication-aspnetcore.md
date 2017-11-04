@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 05/02/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 8ac4d409f7363e8b4ae98be659a627ac8db8d787
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a98e9ad891fcfaf02ca7df5d10d5b310445c9d34
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Az ASP.NET Core a Service Fabric megbízható szolgáltatások
 
@@ -55,20 +55,20 @@ A Service Fabric-szolgáltatás és az ASP.NET, a Vendég végrehajtható fájl 
 
 Azonban az alkalmazás belépési pont nincs a megfelelő helyen a Webállomás létrehozásához a megbízható szolgáltatás, az alkalmazás belépési pont csak használatával a Service Fabric-futtatókörnyezet, a szolgáltatás típusának regisztrálni, hogy az adott szolgáltatás típusú példányok létrehozhat. A Webállomás létre kell hozni egy megbízható szolgáltatás magát. A szolgáltatás gazdafolyamaton belül szolgáltatáspéldány és/vagy a replikák Lépkedjen végig több életciklusának. 
 
-A megbízható példánya a származó osztály által képviselt `StatelessService` vagy `StatefulService`. A kommunikációs verem szolgáltatás szerepel egy `ICommunicationListener` végrehajtása a szolgáltatás osztályban. A `Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet-csomagok tartalmaznak implementációja `ICommunicationListener` , indítsa el és kezelheti az ASP.NET Core WebHost vércse vagy WebListener megbízható szolgáltatásban.
+A megbízható példánya a származó osztály által képviselt `StatelessService` vagy `StatefulService`. A kommunikációs verem szolgáltatás szerepel egy `ICommunicationListener` végrehajtása a szolgáltatás osztályban. A `Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet-csomagok tartalmaznak implementációja `ICommunicationListener` , indítsa el és kezelheti az ASP.NET Core WebHost vércse vagy egy megbízható szolgáltatás httpsys kiszolgálón.
 
 ![Az ASP.NET Core működnie a tároló][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>Az ASP.NET Core ICommunicationListeners
-A `ICommunicationListener` vércse és a WebListener megvalósításait a `Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet-csomagok hasonló felhasználási minták rendelkezik, de az adott minden webkiszolgálóhoz némileg eltérő műveletet végrehajtani. 
+A `ICommunicationListener` megvalósításait vércse és a httpsys kiszolgálón a `Microsoft.ServiceFabric.Services.AspNetCore.*` NuGet-csomagok hasonló felhasználási minták rendelkezik, de az adott minden webkiszolgálóhoz némileg eltérő műveletet végrehajtani. 
 
 Mindkét kommunikációs figyelőket adja meg a következő argumentumok konstruktort:
  - **`ServiceContext serviceContext`**: A `ServiceContext` objektum, amely a futó szolgáltatás adatait tartalmazza.
- - **`string endpointName`**: a neve egy `Endpoint` ServiceManifest.xml konfiguráció. Ez a főként ha a két kommunikációs figyelőket eltérőek: WebListener **szükséges** egy `Endpoint` konfigurációs, vércse azonban nem.
+ - **`string endpointName`**: a neve egy `Endpoint` ServiceManifest.xml konfiguráció. Ez a főként ha a két kommunikációs figyelőket eltérőek: httpsys kiszolgálón **szükséges** egy `Endpoint` konfigurációs, vércse azonban nem.
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: egy lambda, amely hoz létre, és visszatérési megvalósító egy `IWebHost`. Ez lehetővé teszi, hogy konfigurálja `IWebHost` módja az ASP.NET Core alkalmazásban normális esetben tenné. A lambda biztosít egy URL-címnek, amely, attól függően, hogy a Service Fabric-integráció lehetőségek akkor jön létre, és a `Endpoint` konfigurációs megadnia. URL-cím majd kell módosítani vagy vettük-elindítása a webkiszolgálón.
 
 ## <a name="service-fabric-integration-middleware"></a>A Service Fabric-integráció köztes
-A `Microsoft.ServiceFabric.Services.AspNetCore` NuGet-csomag magában foglalja a `UseServiceFabricIntegration` bővítmény metódusa `IWebHostBuilder` , amely a Service Fabric-kompatibilis köztes ad. A köztes konfigurálja a vércse vagy WebListener `ICommunicationListener` regisztrálni egy egyedi URL-címe a Service Fabric-szolgáltatás majd összeveti az ügyfelek kéréseit az ügyfelek csatlakoznak a jobb szolgáltatás biztosítására. Erre akkor szükség a megosztott gazdagép-környezetben, például a Service Fabric, ahol több webalkalmazás az azonos fizikai vagy virtuális gép is futtathatók, de ne használja egyedi állomásnevek, hogy megakadályozza a felhasználókat a megfelelő szolgáltatást véletlenül csatlakozik. Ebben a forgatókönyvben a következő szakaszban részletesen ismertetett.
+A `Microsoft.ServiceFabric.Services.AspNetCore` NuGet-csomag magában foglalja a `UseServiceFabricIntegration` bővítmény metódusa `IWebHostBuilder` , amely a Service Fabric-kompatibilis köztes ad. A köztes megadható a vércse vagy a httpsys kiszolgálón `ICommunicationListener` regisztrálni egy egyedi URL-címe a Service Fabric-szolgáltatás majd összeveti az ügyfelek kéréseit az ügyfelek csatlakoznak a jobb szolgáltatás biztosítására. Erre akkor szükség a megosztott gazdagép-környezetben, például a Service Fabric, ahol több webalkalmazás az azonos fizikai vagy virtuális gép is futtathatók, de ne használja egyedi állomásnevek, hogy megakadályozza a felhasználókat a megfelelő szolgáltatást véletlenül csatlakozik. Ebben a forgatókönyvben a következő szakaszban részletesen ismertetett.
 
 ### <a name="a-case-of-mistaken-identity"></a>A gyorsítás esetében is téves identitás
 Szolgáltatás replikákat protocol, függetlenül egyedi IP:port kombinációjából figyelése. Szolgáltatás replika megkezdése IP:port a végpont figyel, után, hogy végpontcím és jelentéseket küldeni a Service Fabric-szolgáltatás ahol, könnyen megtalálhatók legyenek az ügyfelek vagy egyéb szolgáltatásokat. Szolgáltatások alkalmazás dinamikusan hozzárendelt portok használatára, ha egy szolgáltatás replika helyezi használhat egy másik szolgáltatás, amely korábban a azonos fizikai vagy virtuális gép ugyanazon IP:port végpontja. Ennek hatására mistakely ügyfél csatlakozzon a megfelelő szolgáltatáshoz. Ez akkor fordulhat elő, ha az események az alábbi sorrendben történik:
@@ -95,19 +95,19 @@ Az alábbi ábrán a áramlanak a engedélyezve köztes:
 
 ![Service Fabric ASP.NET Core integráció][2]
 
-Vércse és a WebListener `ICommunicationListener` megvalósítások használja a mechanizmus pontosan azonos módon. Bár WebListener belső megkülönböztetni azokat a kérelmeket a használatával az alapul szolgáló egyedi URL-cím elérési utak alapján *http.sys* port megosztása szolgáltatás, a funkció *nem* a WebListener általhasznált`ICommunicationListener` végrehajtása, mert a korábban ismertetett forgatókönyvben HTTP 503-as és a HTTP 404-es hiba állapotkódok vezethet. Amely pedig rendkívül megnehezíti az ügyfelek számára az határozza meg a hiba, a célt a HTTP 503-as és a HTTP 404-es már gyakran használt egyéb hibákat. Emiatt vércse és WebListener `ICommunicationListener` megvalósítások szabványosítására a a köztes által biztosított a `UseServiceFabricIntegration` kiterjesztésmetódus, hogy az ügyfelek csak kell elvégezni a szolgáltatásvégpont újra oldja meg a HTTP 410 válaszok művelet.
+Vércse és a httpsys kiszolgálón `ICommunicationListener` megvalósítások használja a mechanizmus pontosan azonos módon. Bár a httpsys kiszolgálón belső megkülönböztetni azokat a kérelmeket a használatával az alapul szolgáló egyedi URL-cím elérési utak alapján *http.sys* port megosztása szolgáltatás, a funkció *nem* a httpsys kiszolgálón által használt `ICommunicationListener` végrehajtása, mert a korábban ismertetett forgatókönyvben HTTP 503-as és a HTTP 404-es hiba állapotkódok vezethet. Amely pedig rendkívül megnehezíti az ügyfelek számára az határozza meg a hiba, a célt a HTTP 503-as és a HTTP 404-es már gyakran használt egyéb hibákat. Emiatt vércse és httpsys kiszolgálón `ICommunicationListener` megvalósítások szabványosítására a a köztes által biztosított a `UseServiceFabricIntegration` kiterjesztésmetódus, hogy az ügyfelek csak kell elvégezni a szolgáltatásvégpont újra oldja meg a HTTP 410 válaszok művelet.
 
-## <a name="weblistener-in-reliable-services"></a>A megbízható szolgáltatások WebListener
-WebListener használható egy megbízható szolgáltatás importálásával a **Microsoft.ServiceFabric.AspNetCore.WebListener** NuGet-csomagot. Ez a csomag tartalmaz `WebListenerCommunicationListener`, megvalósítása `ICommunicationListener`, ami lehetővé teszi az ASP.NET Core WebHost belül egy megbízható szolgáltatás létrehozásához WebListener használja, mint a webkiszolgálón.
+## <a name="httpsys-in-reliable-services"></a>A megbízható szolgáltatások httpsys kiszolgálón
+Httpsys kiszolgálón használható egy megbízható szolgáltatás importálásával a **Microsoft.ServiceFabric.AspNetCore.HttpSys** NuGet-csomagot. Ez a csomag tartalmaz `HttpSysCommunicationListener`, megvalósítása `ICommunicationListener`, ami lehetővé teszi az ASP.NET Core WebHost belül egy megbízható szolgáltatás létrehozásához httpsys kiszolgálón használja, mint a webkiszolgálón.
 
-WebListener épül, a [Windows HTTP-kiszolgáló API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Ez a *http.sys* a HTTP-kérelmek feldolgozásához, és a webalkalmazások futó folyamatok továbbítani az IIS által használt kernel-illesztőprogram. Ez lehetővé teszi több folyamatot, az azonos fizikai vagy virtuális gépet a webalkalmazások ugyanazt a portot, az egyedi URL-cím vagy állomásnév használatát. Ezek a funkciók hasznosak a Service Fabric ugyanazon fürt több webhely üzemeltetésére.
+A httpsys kiszolgálón épül a [Windows HTTP-kiszolgáló API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Ez a *http.sys* a HTTP-kérelmek feldolgozásához, és a webalkalmazások futó folyamatok továbbítani az IIS által használt kernel-illesztőprogram. Ez lehetővé teszi több folyamatot, az azonos fizikai vagy virtuális gépet a webalkalmazások ugyanazt a portot, az egyedi URL-cím vagy állomásnév használatát. Ezek a funkciók hasznosak a Service Fabric ugyanazon fürt több webhely üzemeltetésére.
 
-A következő diagram azt ábrázolja, hogyan használja a WebListener a *http.sys* kernel illesztőprogramját a Windows-portmegosztás:
+A következő diagram azt ábrázolja, hogyan használja a httpsys kiszolgálón a *http.sys* kernel illesztőprogramját a Windows-portmegosztás:
 
 ![a HTTP.sys][3]
 
-### <a name="weblistener-in-a-stateless-service"></a>Az állapotmentes szolgáltatások WebListener
-Használandó `WebListener` az állapotmentes szolgáltatások, bírálja felül a `CreateServiceInstanceListeners` metódust, és térjen vissza a `WebListenerCommunicationListener` példány:
+### <a name="httpsys-in-a-stateless-service"></a>Az állapotmentes szolgáltatások httpsys kiszolgálón
+Használandó `HttpSys` az állapotmentes szolgáltatások, bírálja felül a `CreateServiceInstanceListeners` metódust, és térjen vissza a `HttpSysCommunicationListener` példány:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -115,9 +115,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
     return new ServiceInstanceListener[]
     {
         new ServiceInstanceListener(serviceContext =>
-            new WebListenerCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
+            new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
                 new WebHostBuilder()
-                    .UseWebListener()
+                    .UseHttpSys()
                     .ConfigureServices(
                         services => services
                             .AddSingleton<StatelessServiceContext>(serviceContext))
@@ -130,13 +130,13 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-### <a name="weblistener-in-a-stateful-service"></a>Az állapotalapú service WebListener
+### <a name="httpsys-in-a-stateful-service"></a>Az állapotalapú service httpsys kiszolgálón
 
-`WebListenerCommunicationListener`jelenleg nincs használatra szolgál az állapotalapú szolgáltatások miatt az alapul szolgáló, komplikációk *http.sys* port megosztása szolgáltatást. További információkért lásd a következő WebListener a dinamikus port kiosztását. Állapotalapú szolgáltatások esetén vércse az az ajánlott webkiszolgáló.
+`HttpSysCommunicationListener`jelenleg nincs használatra szolgál az állapotalapú szolgáltatások miatt az alapul szolgáló, komplikációk *http.sys* port megosztása szolgáltatást. További információkért lásd a következő dinamikus port kiosztását a httpsys kiszolgálón. Állapotalapú szolgáltatások esetén vércse az az ajánlott webkiszolgáló.
 
 ### <a name="endpoint-configuration"></a>Végpont-konfiguráció
 
-Egy `Endpoint` konfigurálni kell a webkiszolgálók, a Windows HTTP kiszolgáló API-t használó, beleértve a WebListener. A Windows HTTP-kiszolgáló API használó webkiszolgálók először kell lefoglalni az URL-cím elé *http.sys* (Ez általában érhető el, és a [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) eszköz). Ehhez a művelethez emelt szintű jogosultságokkal, amely a szolgáltatások alapértelmezés szerint nem rendelkeznek. A "http" vagy "https" beállításait a `Protocol` tulajdonsága a `Endpoint` konfiguráció *ServiceManifest.xml* használt kifejezetten kérje meg a Service Fabric-futtatókörnyezet, az egy URL-cím regisztrálása  *a HTTP.sys* a nevében használatával a [ *erős helyettesítő* ](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL-előtagját.
+Egy `Endpoint` konfigurálni kell a webkiszolgálók, a Windows HTTP kiszolgáló API-t használó, beleértve a httpsys kiszolgálón. A Windows HTTP-kiszolgáló API használó webkiszolgálók először kell lefoglalni az URL-cím elé *http.sys* (Ez általában érhető el, és a [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) eszköz). Ehhez a művelethez emelt szintű jogosultságokkal, amely a szolgáltatások alapértelmezés szerint nem rendelkeznek. A "http" vagy "https" beállításait a `Protocol` tulajdonsága a `Endpoint` konfiguráció *ServiceManifest.xml* használt kifejezetten kérje meg a Service Fabric-futtatókörnyezet, az egy URL-cím regisztrálása  *a HTTP.sys* a nevében használatával a [ *erős helyettesítő* ](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL-előtagját.
 
 Ahhoz például, hogy foglalási `http://+:80` egy szolgáltatás, a következő konfigurációs kell használni a ServiceManifest.xml:
 
@@ -152,21 +152,21 @@ Ahhoz például, hogy foglalási `http://+:80` egy szolgáltatás, a következő
 </ServiceManifest>
 ```
 
-A végpont nevének kell átadni és a `WebListenerCommunicationListener` konstruktor:
+A végpont nevének kell átadni és a `HttpSysCommunicationListener` konstruktor:
 
 ```csharp
- new WebListenerCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
+ new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
  {
      return new WebHostBuilder()
-         .UseWebListener()
+         .UseHttpSys()
          .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
          .UseUrls(url)
          .Build();
  })
 ```
 
-#### <a name="use-weblistener-with-a-static-port"></a>A statikus port WebListener használata
-A WebListener statikus port használatára, adja meg a portszámot a `Endpoint` konfiguráció:
+#### <a name="use-httpsys-with-a-static-port"></a>A statikus port httpsys kiszolgálón használata
+A httpsys kiszolgálón egy statikus port használatára, adja meg a portszámot a `Endpoint` konfiguráció:
 
 ```xml
   <Resources>
@@ -176,8 +176,8 @@ A WebListener statikus port használatára, adja meg a portszámot a `Endpoint` 
   </Resources>
 ```
 
-#### <a name="use-weblistener-with-a-dynamic-port"></a>A dinamikus port WebListener használata
-Egy dinamikusan hozzárendelt port WebListener használni, hagyja ki ezt a `Port` tulajdonságot a `Endpoint` konfiguráció:
+#### <a name="use-httpsys-with-a-dynamic-port"></a>A dinamikus port httpsys kiszolgálón használata
+A dinamikusan kiosztott portot használja a httpsys kiszolgálón, hagyja ki ezt a `Port` tulajdonságot a `Endpoint` konfigurációs:
 
 ```xml
   <Resources>
@@ -187,12 +187,12 @@ Egy dinamikusan hozzárendelt port WebListener használni, hagyja ki ezt a `Port
   </Resources>
 ```
 
-Vegye figyelembe, hogy a dinamikus port lefoglalta egy `Endpoint` a konfiguráció csak egyetlen port biztosít *állomás folyamatonként*. Az aktuális Service Fabric üzemeltetési modell lehetővé teszi, hogy több szolgáltatáspéldány és/vagy ugyanabban a folyamatban, ami azt jelenti, hogy mindegyik keresztül kiosztása során ugyanazt a portot is meg fogja osztani üzemeltetését replikák a `Endpoint` konfigurációs. Több WebListener példány megoszthat egy portot használ, az alapul szolgáló *http.sys* port megosztása szolgáltatást, de, amely nem támogatja `WebListenerCommunicationListener` miatt a komplikációk az ügyféli kérelmek részére okozna. Dinamikus portok használatát vércse esetén ajánlott a webkiszolgálón.
+Vegye figyelembe, hogy a dinamikus port lefoglalta egy `Endpoint` a konfiguráció csak egyetlen port biztosít *állomás folyamatonként*. Az aktuális Service Fabric üzemeltetési modell lehetővé teszi, hogy több szolgáltatáspéldány és/vagy ugyanabban a folyamatban, ami azt jelenti, hogy mindegyik keresztül kiosztása során ugyanazt a portot is meg fogja osztani üzemeltetését replikák a `Endpoint` konfigurációs. Több httpsys kiszolgálón példány megoszthat egy portot használ, az alapul szolgáló *http.sys* port megosztása szolgáltatást, de, amely nem támogatja `HttpSysCommunicationListener` miatt a komplikációk az ügyféli kérelmek részére okozna. Dinamikus portok használatát vércse esetén ajánlott a webkiszolgálón.
 
 ## <a name="kestrel-in-reliable-services"></a>A megbízható szolgáltatások vércse
 Vércse használható egy megbízható szolgáltatás importálásával a **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet-csomagot. Ez a csomag tartalmaz `KestrelCommunicationListener`, megvalósítása `ICommunicationListener`, ami lehetővé teszi az ASP.NET Core WebHost belül egy megbízható szolgáltatás létrehozásához vércse használja, mint a webkiszolgálón.
 
-Vércse, az ASP.NET Core platformfüggetlen webkiszolgáló libuv, a platformok közötti aszinkron i/o-szalagtár egyik alapján. WebListener, eltérően vércse nem használ központi végponthoz vezető például *http.sys*. És WebListener, eltérően vércse nem támogatja a port megosztása több folyamat között. Minden példánynak vércse egy egyedi portot kell használnia.
+Vércse, az ASP.NET Core platformfüggetlen webkiszolgáló libuv, a platformok közötti aszinkron i/o-szalagtár egyik alapján. Eltérően httpsys kiszolgálón, vércse nem használ központi végponthoz vezető például *http.sys*. És httpsys kiszolgálón, eltérően vércse nem támogatja a port megosztása több folyamat között. Minden példánynak vércse egy egyedi portot kell használnia.
 
 ![vércse][4]
 
@@ -254,7 +254,7 @@ Vegye figyelembe, hogy egy `Endpoint` -konfiguráció nevét **nem** megadott `K
 ### <a name="endpoint-configuration"></a>Végpont-konfiguráció
 Egy `Endpoint` konfigurációs vércse használatához nem szükséges. 
 
-Vércse egy egyszerű önálló webkiszolgáló; WebListener (és HttpListener) eltérően nem kell egy `Endpoint` konfiguráció *ServiceManifest.xml* , mert nem szükséges URL-cím regisztrálása elkezdése előtt. 
+Vércse egy egyszerű önálló webkiszolgáló; httpsys kiszolgálón (és HttpListener) eltérően nem kell egy `Endpoint` konfiguráció *ServiceManifest.xml* , mert nem szükséges URL-cím regisztrálása elkezdése előtt. 
 
 #### <a name="use-kestrel-with-a-static-port"></a>A statikus port vércse használata
 A statikus port konfigurálható a `Endpoint` ServiceManifest.xml konfigurációját vércse való használatra. Ez azonban nem feltétlenül szükséges, akkor két lehetséges előnyöket nyújtja:
@@ -302,28 +302,26 @@ Egy **csak belső** szolgáltatás az egyik amelynek-végpont esetében csak a f
 > Állapot-nyilvántartó Szolgáltatásvégpontok általában nem szabad felfedni az internethez. Állapotalapú szolgáltatások teszi közzé, mert a terheléselosztó nem lesz képes forgalom megfelelő irányításához, és keresse meg lehet mögötti terheléselosztókat, amelyekben nem tudnak a Service Fabric szolgáltatás megoldás, az Azure terheléselosztó, például a fürtök az állapotalapú szolgáltatás replika. 
 
 ### <a name="externally-exposed-aspnet-core-stateless-services"></a>Külsőleg kitett az ASP.NET Core állapotmentes szolgáltatások
-WebListener az előtér-szolgáltatásokat, amelyek a Windows külső, az internetre irányuló HTTP-végpontokról láthatóvá ajánlott webkiszolgálóját. Támadásokkal szembeni hatékonyabb védekezés és vércse viszont nem, például a Windows-hitelesítés és a port megosztása funkciókat is támogat. 
-
-Vércse jelenleg nem támogatott (internetről hozzáférhető) edge-kiszolgálóként. Például az IIS vagy Nginx fordított proxykiszolgálón a nyilvános internetről érkező forgalom kezelésére használható.
+Vércse az előtér-szolgáltatásokat, amelyek külső, az internetre irányuló HTTP-végpontokról láthatóvá ajánlott webkiszolgálóját. A Windows a httpsys kiszolgálón port megosztási képességet, amely lehetővé teszi több webszolgáltatásokkal ugyanazokat a csomópontokat használja ugyanazt a portot, anélkül, hogy egy előtér-proxy vagy az átjáró a HTTP-útválasztást az állomásnév vagy elérési útja, szerint megkülönböztetett használható.
  
 Ha kapcsolódik az internethez, állapotmentes szolgáltatások egy jól ismert és állandó végponttal, amely elérhető a terheléselosztót használja. Ez az az URL-címet, a felhasználók számára az alkalmazás biztosítja. A következő konfiguráció ajánlott:
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | WebListener | Ha a szolgáltatás csak fel van fedve egy megbízható hálózathoz, az intraneten vércse is használható. Ellenkező esetben WebListener a kívánt beállítást. |
+| Webkiszolgáló | vércse | Vércse esetén az elsődleges webkiszolgálón, mert a Windows és Linux esetén támogatott. |
 | Port konfigurálása | Statikus | A jól ismert statikus port lehet beállítani a `Endpoints` ServiceManifest.xml, például a 80-as HTTP vagy HTTPS-hez a 443-as konfigurációját. |
 | ServiceFabricIntegrationOptions | None | A `ServiceFabricIntegrationOptions.None` beállítást kell használni, amikor a Service Fabric-integráció köztes konfigurálása, hogy a szolgáltatás nem próbálja meg egy egyedi azonosítót a bejövő kérelmeket. Az alkalmazás külső felhasználók nem fogja tudni az egyedi azonosító adatokat, a köztes használják. |
 | A példányok száma | -1 | Tipikus használati esetekben a példányok száma beállítást meg kell-"1", hogy egy példány érhető el az összes olyan csomóponton, amelyet a forgalom fogadására a terheléselosztótól. |
 
-Ha több külsőleg kitett szolgáltatás ugyanazokat a csomópontok megosztásához stabil, de egyedi URL-cím használható. Ehhez a IWebHost konfigurálásakor megadott URL-cím módosításával. Megjegyzés: Ez kizárólag a WebListener.
+Ha több külsőleg kitett szolgáltatás ugyanazokat a csomópontok megosztásához httpsys kiszolgálón egy stabil, de egyedi URL-cím használható. Ehhez a IWebHost konfigurálásakor megadott URL-cím módosításával. Megjegyzés: Ez kizárólag a httpsys kiszolgálón.
 
  ```csharp
- new WebListenerCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
+ new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
  {
      url += "/MyUniqueServicePath";
  
      return new WebHostBuilder()
-         .UseWebListener()
+         .UseHttpSys()
          ...
          .UseUrls(url)
          .Build();
@@ -335,7 +333,7 @@ Csak a fürtön belül hívását állapotmentes szolgáltatások egyedi URL-eke
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | vércse | Bár WebListener belső állapotmentes szolgáltatások is használhatók, vércse a javasolt kiszolgálót úgy, hogy több-gazdagépet megosztásához szolgáltatáspéldány.  |
+| Webkiszolgáló | vércse | Bár a httpsys kiszolgálón belső állapotmentes szolgáltatásokhoz használható, vércse a javasolt kiszolgálót úgy, hogy több-gazdagépet megosztásához szolgáltatáspéldány.  |
 | Port konfigurálása | dinamikusan kiosztott | Az állapotalapú szolgáltatás több replika megoszthatja a gazdafolyamat vagy a gazda operációs rendszer, és így kell egyedi portok. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port-hozzárendelés Ez a beállítás megakadályozza a korábban leírt téves identitás probléma. |
 | InstanceCount | bármely | A példányok száma beállítás állítható be értéket a szolgáltatás működtetéséhez szükséges. |
@@ -345,7 +343,7 @@ Csak a fürtön belül hívását állapotmentes szolgáltatások egyedi URL-eke
 
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
-| Webkiszolgáló | vércse | A `WebListenerCommunicationListener` több replikák osztozik egy állapotalapú szolgáltatások használatra nem szolgál. |
+| Webkiszolgáló | vércse | A `HttpSysCommunicationListener` több replikák osztozik egy állapotalapú szolgáltatások használatra nem szolgál. |
 | Port konfigurálása | dinamikusan kiosztott | Az állapotalapú szolgáltatás több replika megoszthatja a gazdafolyamat vagy a gazda operációs rendszer, és így kell egyedi portok. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port-hozzárendelés Ez a beállítás megakadályozza a korábban leírt téves identitás probléma. |
 

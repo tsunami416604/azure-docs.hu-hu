@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 11/03/2017
 ms.author: tomfitz
-ms.openlocfilehash: 51b3519bbba8cb4c768bfdd7dadf92fced434f22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 955b04517c3ccdbe530eb982e6aa1255b69e1edd
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="apply-resource-policies-for-names-and-text"></a>Nevét és az erőforrás-szabályzatok alkalmazása
-Ez a témakör bemutatja a több [erőforrás-házirendek](resource-manager-policy.md) elnevezésekor és a szöveg egyezmények létrehozására is alkalmazhat. Ezek a házirendek biztosítják a konzisztenciát erőforrásnevek és az értékeket. 
+Ez a cikk bemutatja több [erőforrás-házirendek](resource-manager-policy.md) elnevezésekor és a szöveg egyezmények létrehozására is alkalmazhat. Ezek a házirendek biztosítják a konzisztenciát erőforrásnevek és az értékeket. 
 
 ## <a name="set-naming-convention-with-wildcard"></a>A helyettesítő karakteres elnevezési beállítása
 A következő példa bemutatja támogatja-e helyettesítő karakter használatát a **például** feltétel. A feltétel, amely jelzi, ha a név nem egyezik meg az említett mintát (namePrefix\*nameSuffix) visszautasítja a kérelmet, majd:
@@ -71,6 +71,34 @@ A dátum minta kétjegyű, dash, három betű, dash vagy négy számjegy, haszn�
   "then": {
     "effect": "deny"
   }
+}
+```
+
+## <a name="set-multiple-naming-patterns"></a>Több elnevezési minták beállítása
+
+Egynél több engedélyezett elnevezési megadásához használja a **allOf** és **nem** operátorok. A következő példa Ha a megadott név nem egyezik meg a vagy minta azt megtagadva.
+
+```json
+{
+    "if": {
+        "allOf": [
+            {
+                "not": {
+                    "field": "name",
+                    "match": "contoso??????"
+                }
+            },
+            {
+                "not": {
+                    "field": "name",
+                    "match": "contoso-???-##"
+                }
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
 }
 ```
 

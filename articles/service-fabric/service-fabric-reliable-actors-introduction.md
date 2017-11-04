@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e89be04a0d6fe90a89e293e67d42f0204eb7000a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 640e051a909b1b9457b20cbd507b418342297c6e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>A Service Fabric Reliable Actors bemutatása
 Reliable Actors a Service Fabric alkalmazási keretrendszer alapján a [virtuális szereplő](http://research.microsoft.com/en-us/projects/orleans/) mintát. A megbízható Actors API a Service Fabric skálázhatóságát és megbízhatóságát garanciák épülő programozási egyszálas modellt biztosít.
@@ -143,7 +143,7 @@ A szereplője futásidejű rögzítve alapértelmezés szerint lehetővé teszi.
 A szereplője futásidejű ezek párhuzamossági garanciákat olyan esetekben, ahol azt szabályozza, hogy ezek a metódusok meghívását nyújt. Például azzal a garanciákat nyújt, amely egy ügyfél irányuló kérelemre adott válasz végzett a metódus meghívásához, valamint időzítő és felszólítás visszahívások. Azonban a szereplő kódot közvetlenül hív meg, ezek a módszerek a szereplője futtatókörnyezet által megadott mechanizmusok kívül, ha a futtatókörnyezet nem adja meg minden párhuzamossági garanciák. Például ha a metódus hivatkoznak, néhány feladatot, amely nincs társítva a tevékenység aktor módszerek által visszaadott a környezetében, a futtatókörnyezet nem adja meg párhuzamossági garanciát. Ha a metódus egy olyan szálból, amely a szereplő hoz létre a saját hivatkoznak, a futtatókörnyezet is nem adja meg párhuzamossági garanciát. Ezért háttérbeli műveletek végrehajtásához szereplője használandó [szereplő időzítők és szereplő emlékeztetők](service-fabric-reliable-actors-timers-reminders.md) , figyelembe vegyék kapcsolja-alapú feldolgozási.
 
 ## <a name="next-steps"></a>Következő lépések
-* Ismerkedés az első Reliable Actors szolgáltatás épület:
+Ismerkedés az első Reliable Actors szolgáltatás épület:
    * [Bevezetés a Reliable Actors a .NET használatába](service-fabric-reliable-actors-get-started.md)
    * [Ismerkedés a Java a Reliable Actors](service-fabric-reliable-actors-get-started-java.md)
 

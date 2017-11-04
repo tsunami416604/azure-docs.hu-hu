@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2017
+ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 19f94f009aac53baca31dcb6973a8aff3f4f5ab9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9aea299738eb5cac6fe6d3b633707862d978fff0
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>Hálózati forgalom szűrésére, hálózati és az alkalmazás biztonsági csoportok (előzetes verzió)
 
@@ -53,7 +53,9 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
     az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     ```
 
-    Ne folytassa a hátralévő lépéseket, amíg *regisztrált* jelenik meg **állapot** az előző parancs által visszaadott kimenet. Ha a folytatás előtt van regisztrálva a fennmaradó lépéseit sikertelen.
+    > [!WARNING]
+    > Regisztrációs órát is igénybe vehet egy befejezéséhez. Ne folytassa a hátralévő lépéseket, amíg *regisztrált* jelenik meg **állapot** az előző parancs által visszaadott kimenet. Ha a folytatás előtt van regisztrálva a fennmaradó lépéseit sikertelen.
+
 6. Futtassa a következő bash erőforráscsoport létrehozása:
 
     ```azurecli-interactive
@@ -161,7 +163,6 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       --name myNic1 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "WebServers" "AppServers"
 
@@ -170,7 +171,6 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       --name myNic2 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "AppServers"
 
@@ -179,12 +179,11 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       --name myNic3 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "DatabaseServers"
     ```
 
-    A hálózati illesztő a hálózati illesztő tagja alkalmazás biztonsági csoport alapján csak a megfelelő biztonsági szabály 9. lépésében létrehozott vonatkozik. Például csak a *WebRule* érvényben a *myWebNic*, mert a hálózati illesztő tagja a *webkiszolgálók* alkalmazás biztonsági csoport és a szabály Megadja a *webkiszolgálók* alkalmazás biztonsági csoport az helyeként. A *AppRule* és *DatabaseRule* szabályok nem érvényesek a *myWebNic*, mert a hálózati illesztő nem tagja a *AppServers*és *DatabaseServers* biztonsági csoportok.
+    A hálózati illesztő a hálózati illesztő tagja alkalmazás biztonsági csoport alapján csak a megfelelő biztonsági szabály 9. lépésében létrehozott vonatkozik. Például csak a *WebRule* érvényben *myNic1*, mert a hálózati illesztő tagja a *webkiszolgálók* alkalmazás biztonsági csoport és a szabály Megadja a *webkiszolgálók* alkalmazás biztonsági csoport az helyeként. A *AppRule* és *DatabaseRule* szabályok nem érvényesek *myNic1*, mert a hálózati illesztő nem tagja a *AppServers*és *DatabaseServers* biztonsági csoportok.
 
 13. Hozzon létre egy virtuális gépet az egyes kiszolgáló, a megfelelő hálózati illesztő csatolása minden egyes virtuális géphez. Ebben a példában a Windows virtuális gépeket hoz létre, de bármikor módosíthatja *win2016datacenter* való *UbuntuLTS* helyette Linux virtuális gépek létrehozásához.
 
@@ -240,7 +239,8 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
     Get-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
     ```
 
-    Ne folytassa a hátralévő lépéseket, amíg *regisztrált* jelenik meg a **RegistrationState** az előző parancs által visszaadott a kimeneti oszlop. Ha a folytatás előtt van regisztrálva a fennmaradó lépéseit sikertelen.
+    > [!WARNING]
+    > Regisztrációs órát is igénybe vehet egy befejezéséhez. Ne folytassa a hátralévő lépéseket, amíg *regisztrált* jelenik meg **RegistrationState** az előző parancs által visszaadott kimenet. Ha a folytatás előtt van regisztrálva a fennmaradó lépéseit sikertelen.
         
 6. Hozzon létre egy erőforráscsoportot:
 
@@ -344,7 +344,6 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $webAsg,$appAsg
 
     $nic2 = New-AzureRmNetworkInterface `
@@ -352,7 +351,6 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $appAsg
 
     $nic3 = New-AzureRmNetworkInterface `
@@ -360,11 +358,10 @@ Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $databaseAsg
     ```
 
-    A hálózati illesztő a hálózati illesztő tagja alkalmazás biztonsági csoport alapján csak a megfelelő biztonsági szabály 8. lépésben létrehozott vonatkozik. Például csak a *WebRule* érvényben a *myWebNic*, mert a hálózati illesztő tagja a *webkiszolgálók* alkalmazás biztonsági csoport és a szabály Megadja a *webkiszolgálók* alkalmazás biztonsági csoport az helyeként. A *AppRule* és *DatabaseRule* szabályok nem érvényesek a *myWebNic*, mert a hálózati illesztő nem tagja a *AppServers*és *DatabaseServers* biztonsági csoportok.
+    A hálózati illesztő a hálózati illesztő tagja alkalmazás biztonsági csoport alapján csak a megfelelő biztonsági szabály 8. lépésben létrehozott vonatkozik. Például csak a *WebRule* érvényben *myNic1*, mert a hálózati illesztő tagja a *webkiszolgálók* alkalmazás biztonsági csoport és a szabály Megadja a *webkiszolgálók* alkalmazás biztonsági csoport az helyeként. A *AppRule* és *DatabaseRule* szabályok nem érvényesek *myNic1*, mert a hálózati illesztő nem tagja a *AppServers*és *DatabaseServers* biztonsági csoportok.
 
 13. Hozzon létre egy virtuális gépet az egyes kiszolgáló, a megfelelő hálózati illesztő csatolása minden egyes virtuális géphez. Ebben a példában a Windows virtuális gépeket hoz létre, de a parancsfájl végrehajtása előtt módosíthatja *-Windows* való *- Linux*, *MicrosoftWindowsServer* való *Kanonikus*, *WindowsServer* való *UbuntuServer* és *2016-Datacenter* való *14.04.2-LTS*helyette Linux virtuális gépek létrehozásához.
 

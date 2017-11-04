@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 11/02/2017
 ms.author: anandy
-ms.openlocfilehash: 6822320c92d106d28607289a90f2f08a51e04070
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc5ef81704423c5a1bc136fb2d51d79a9265e20
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect és összevonás
 Az összevonási konfigurálását teszi az Azure Active Directory (Azure AD) Connect lehetővé a helyszíni Active Directory összevonási szolgáltatások (AD FS) és az Azure AD. Az összevonási bejelentkezhet engedélyezheti a felhasználók jelentkezhetnek be az Azure AD-alapú szolgáltatásokhoz a helyszíni jelszavak – és a vállalati hálózaton, a jelszavuk ismételt megadása nélkül. Az AD FS összevonási beállításának használata esetén egy új telepítés Active Directory összevonási szolgáltatások telepítése, vagy megadhat egy meglévő telepítését egy Windows Server 2012 R2-farmban.
@@ -40,6 +40,7 @@ Ez a témakör az Azure AD Connect funkciók összevonási kapcsolatos informác
 | [Új AD FS WAP-kiszolgáló hozzáadása](active-directory-aadconnect-federation-management.md#addwapserver) |Bontsa ki az AD FS-farm további webalkalmazás-proxykiszolgálóként (WAP) kiszolgáló a kezdeti telepítés után. |
 | [Adjon hozzá egy új összevont tartományt](active-directory-aadconnect-federation-management.md#addfeddomain) |Adjon hozzá egy másik tartomány átalakításakor az Azure ad-val. |
 | [Az SSL-tanúsítvány frissítése](active-directory-aadconnectfed-ssl-update.md)| Az SSL-tanúsítványt az AD FS-farm frissítéséhez. |
+| [Office 365 és az Azure AD összevonási tanúsítványok megújítása](active-directory-aadconnect-o365-certs.md)|Az Azure AD az Office 365 tanúsítvány megújítása.|
 | **Más összevonási konfiguráció** | |
 | [Több Azure AD-példány összevonása egyetlen AD FS-példánnyal](active-directory-aadconnectfed-single-adfs-multitenant-federation.md) | Az egyetlen AD FS-farm több Azure AD összevonni| 
 | [Adja hozzá az egyéni vállalati emblémát/ábra](active-directory-aadconnect-federation-management.md#customlogo) |Módosítsa a bejelentkezés során tapasztal élmény jelenik meg az AD FS bejelentkezési oldalára egyéni embléma megadásával. |

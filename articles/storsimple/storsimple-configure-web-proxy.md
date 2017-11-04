@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 66ee6ce15e51b14366eac0512c899d1c425c6092
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be4a8facc2f5951b6ebc027088d43ef47504acd1
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>A StorSimple eszköz webalkalmazás-proxy konfigurálása
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [a StorSimple eszköz webalkalmazás-proxy konfigurálása](storsimple-8000-configure-web-proxy.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag leírja, hogyan használható a Windows PowerShell-lel konfigurálásához és a StorSimple eszköz webes proxy beállításainak megtekintése. A webproxy beállításai használják a StorSimple eszköz a felhőre való kommunikáció során. Proxy-webkiszolgáló használatával egy másik biztonsági, szűrő tartalmával, egyszerű sávszélesség-követelményekkel vagy analytics még akkor is segítséget gyorsítótár réteget.
 

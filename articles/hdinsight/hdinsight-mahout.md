@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/03/2017
 ms.author: larryfr
-ms.openlocfilehash: 569aeef58e601174aa9f28dc3ba39ebae17c17f8
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8f40beb4e3eb8020a65eac6e43ffefe4fedfcee2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Film javaslatok generálása Apache Mahout a hadooppal a Hdinsightban (PowerShell)
 
@@ -56,11 +56,11 @@ A következő példa egy egyszerűsített segédlet az ajánlás folyamat műkö
 
 ### <a name="understanding-the-data"></a>Az adatok ismertetése
 
-[GroupLens kutatási] [ movielens] minősítés adatokat biztosít a filmek formátuma nem kompatibilis a Mahout. Ezek az adatok érhető el az alapértelmezett tároló, a fürt `/HdiSamples//HdiSamples/MahoutMovieData`.
+[GroupLens kutatási] [ movielens] minősítés adatokat biztosít a filmek formátuma nem kompatibilis a Mahout. Ezek az adatok érhető el az alapértelmezett tároló, a fürt `/HdiSamples/HdiSamples/MahoutMovieData`.
 
 Két fájlt `moviedb.txt` (a filmek információ) és `user-ratings.txt`. A `user-ratings.txt` fájllal elemzése során. A `moviedb.txt` fájllal meg felhasználóbarát szöveges, amikor a vizsgálat eredményeit jeleníti meg.
 
-A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, `userRating`, és `timestamp`, amely közli a gép magas hogyan minden felhasználó besorolású film. Íme egy példa:
+A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, `userRating`, és `timestamp`, amely azt ismerteti, hogyan magas minden felhasználó besorolású film. Íme egy példa:
 
     196    242    3    881250949
     186    302    3    891717742

@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 843d0a4bcc1807a6b1995d067e0f9e572307775d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-change-your-storsimple-passwords"></a>A StorSimple Manager szolgáltatással a StorSimple-jelszavak módosítása
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [a StorSimple-jelszavak megváltoztatása a StorSimple Manager szolgáltatás segítségével](storsimple-8000-change-passwords.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 A klasszikus Azure portálon **konfigurálása** lap tartalmaz olyan módon konfigurálhatja újra a StorSimple eszközön a StorSimple Manager szolgáltatás által kezelt eszköz paramétereket. Ez az oktatóanyag azt ismerteti, hogyan használhatja a **konfigurálása** lapon az eszköz-rendszergazdai vagy a StorSimple Snapshot Manager jelszavának módosítása.
 

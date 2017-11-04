@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 08/08/2017
+ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 3168a8129e2e73d7ab1de547679aabd10d8f7112
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f29860519d4dce76f0b7f866852484b93ce7b02
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Az Azure Service Fabric fordított proxy
 Azure Service Fabric épített fordított proxy segít a Service Fabric-fürt futó mikroszolgáltatások felderítése és http-végpontokról rendelkező más szolgáltatásokkal kommunikálni.
@@ -114,9 +114,7 @@ Az átjáró ezután továbbítja ezeket a kéréseket a szolgáltatás URL-cím
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
 ## <a name="special-handling-for-port-sharing-services"></a>A port megosztása különleges kezelést szolgáltatások
-Azure Application Gateway próbálja újra feloldani a szolgáltatás címét, és ismételje meg a kérelmet, ha a szolgáltatás nem érhető el. Ennek oka egy fő előnye, hogy az Alkalmazásátjáró Ügyfélkód nem kell megvalósítani a saját service megoldás, és oldja meg a hurok.
-
-Általában a szolgáltatás nem érhető el, amikor a szolgáltatáspéldány, vagy a replika áthelyezte a normál életciklusának egy másik csomópont. Ha ez történik, az Alkalmazásátjáró arról, hogy a végpont már nem nyitva eredetileg feloldott címet a hálózati kapcsolódási hiba fordulhat elő.
+A Service Fabric fordított proxy próbálja újra feloldani a szolgáltatás címét, és ismételje meg a kérelmet, ha a szolgáltatás nem érhető el. Általában a szolgáltatás nem érhető el, amikor a szolgáltatáspéldány, vagy a replika áthelyezte a normál életciklusának egy másik csomópont. Ha ez történik, a fordított proxy arról, hogy a végpont már nem nyitva eredetileg feloldott címet a hálózati kapcsolódási hiba fordulhat elő.
 
 Azonban replikák és a szolgáltatáspéldány egy gazdafolyamaton megoszthatnak, és előfordulhat, hogy is megoszthat egy portot, ha azt egy http.sys alapú webkiszolgálóhoz, beleértve:
 
@@ -124,21 +122,21 @@ Azonban replikák és a szolgáltatáspéldány egy gazdafolyamaton megoszthatna
 * [Az ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-Ebben az esetben valószínű, hogy a webkiszolgáló nem érhető el a gazdagép-folyamat és válaszol a kérelmekre, de a szolgáltatáspéldány megoldott vagy a replika már nem érhető el a gazdagépen. Ebben az esetben az átjáró kap egy HTTP 404-es választ a webkiszolgálón. HTTP 404-es így két különböző jelentése van:
+Ebben az esetben valószínű, hogy a webkiszolgáló nem érhető el a gazdagép-folyamat és válaszol a kérelmekre, de a szolgáltatáspéldány megoldott vagy a replika már nem érhető el a gazdagépen. Ebben az esetben az átjáró kap egy HTTP 404-es választ a webkiszolgálón. HTTP 404-es választ, így két különböző jelentését veheti fel:
 
 - #1. eset: A szolgáltatás címe helyes, de a felhasználó a kért erőforrás nem létezik.
 - #2. eset: A szolgáltatás címe nem megfelelő, és az erőforrás, a felhasználó azt kérte, előfordulhat, hogy létezik egy másik csomópontjára.
 
-Az első esetben egy normál HTTP 404-es, amely felhasználói hiba történt. A második esetben azonban a felhasználó kérelmezte a erőforrása, amely létezik. Alkalmazásátjáró nem tudta keresse meg, mert a szolgáltatás át lett helyezve. Alkalmazásátjáró kell újra feloldani a címet, és próbálkozzon újra a kéréssel.
+Az első esetben egy normál HTTP 404-es, amely felhasználói hiba történt. A második esetben azonban a felhasználó kérelmezte a erőforrása, amely létezik. A fordított proxy nem tudott keresse meg, mert a szolgáltatás át lett helyezve. A fordított proxyhoz kell újra feloldani a címet, és próbálkozzon újra a kéréssel.
 
-Alkalmazásátjáró így megkülönböztetheti két esetben úgy kell. Ahhoz, hogy a különbség, egy a kiszolgáló megadása szükséges.
+A fordított proxy így megkülönböztetheti két esetben úgy kell. Ahhoz, hogy a különbség, egy a kiszolgáló megadása szükséges.
 
-* Alapértelmezés szerint az Alkalmazásátjáró azt feltételezi, hogy a #2. eset, és megkísérli feloldani, és adja ki újra a kérelmet.
-* Jelzi az Alkalmazásátjáró #1. eset, a szolgáltatás a következő HTTP-válaszfejléc kell visszaadnia:
+* Alapértelmezés szerint a fordított proxy azt feltételezi, hogy a #2. eset, és megkísérli feloldani, és adja ki újra a kérelmet.
+* Jelzi a fordított proxykiszolgálóhoz #1. eset, a szolgáltatás a következő HTTP-válaszfejléc kell visszaadnia:
 
   `X-ServiceFabric : ResourceNotFound`
 
-A HTTP-válaszfejléc azt jelzi, hogy egy normál HTTP 404-es helyzetet, amelyben a kért erőforrás nem létezik, és az Alkalmazásátjáró nem kísérli meg újra a szolgáltatást címek feloldására.
+A HTTP-válaszfejléc azt jelzi, hogy egy normál HTTP 404-es helyzetet, amelyben a kért erőforrás nem létezik, és a fordított proxy nem kísérli meg újra a szolgáltatást címek feloldására.
 
 ## <a name="setup-and-configuration"></a>Beállítás és konfiguráció
 

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 04/07/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: b418904f50b772c12bfcdbb95beb9312c8b9fb00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 006f32ea9dea18f8b8e454a256272ec87bfee7f3
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>A Reliable Services kommunikációs API-k használata
 Az Azure Service Fabric platformként rendszer teljesen független kapcsolatos szolgáltatások közötti kommunikáció. Protokollok és a verem elfogadhatók, az UDP HTTP. A szolgáltatás fejlesztők kiválaszthatja, hogyan lépjen kapcsolatba a szolgáltatások van. A Reliable Services alkalmazás-keretrendszer biztosít, beépített kommunikációs verem, valamint az API-t is használhatja a kommunikációhoz egyéni összetevők létrehozása.
@@ -427,7 +427,6 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-* Példa a szolgáltatások közötti HTTP-kommunikációt egy [C#-projektet mintát a Githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/WordCount) vagy [Java mintaprojektet a Githubon](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/Services/WatchDog).
+* [Az ASP.NET Core megbízható szolgáltatásokkal](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Távoli eljáráshívások a Reliable Services távoli eljáráshívás](service-fabric-reliable-services-communication-remoting.md)
-* [Webes API-t használó OWIN Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 * [WCF-kommunikáció Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)

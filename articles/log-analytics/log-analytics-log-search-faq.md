@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 11/02/2017
 ms.author: bwren
-ms.openlocfilehash: bf48cbc52a1ed96ed1bb49b1879d5cd7aece945c
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 1ec815a12cea98228dd4b7ac7361fe5e3554b5d3
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Új Naplóelemzési naplófájl, keresés – gyakori kérdések és ismert problémák
 
@@ -38,13 +38,6 @@ Nem, néhány változás történik a webhook és runbook igénylő műveletek e
 
 ### <a name="question-im-getting-errors-when-trying-to-use-computer-groups--has-their-syntax-changed"></a>Kérdés: azért kapom hibák számítógépcsoportok használatakor.  Módosult a szintaxis?
 Igen, a számítógép szintaxisát csoportok módosításokat, a munkaterület frissítésekor.  Lásd: [számítógépcsoportokat a Log Analyticshez jelentkezzen keresések](log-analytics-computer-groups.md) részleteiről.
-
-### <a name="known-issue-groups-imported-from-active-directory"></a>Ismert problémák: importált az Active Directory-csoportok
-A számítógép (csoport) importálásra az Active Directoryból használó lekérdezés most nem lehet létrehozni.  Megoldás a probléma kijavításáig hozzon létre egy új számítógépcsoportot importált Active Directory-csoport használatával, és majd használni az új csoport a lekérdezésben.
-
-Hozzon létre egy új számítógép csoportot, amely tartalmazza az egy importált Active Directory-csoport példalekérdezést a következőképpen történik:
-
-    ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "AD Group Name" and TimeGenerated >= ago(24h) | distinct Computer
 
 
 ## <a name="dashboards"></a>Irányítópultok
@@ -76,11 +69,6 @@ Minify egy szolgáltatás, amely a keresési eredmények összefoglaló áttekin
     | evaluate autocluster_v2()
 
 
-### <a name="known-issue-search-results-in-a-list-may-include-properties-with-no-data"></a>Ismert problémák: keresési eredmények listájában tartalmazhat adatot nem tartalmazó tulajdonságai
-Adatot nem tartalmazó tulajdonságok napló keresési eredmények listájában jeleníthet meg.  Frissítés előtt ezeket a tulajdonságokat nem tudnák szerepelni.  A probléma kijavítjuk, hogy üres tulajdonságok nem jelennek meg.
-
-### <a name="known-issue-selecting-a-value-in-a-chart-doesnt-display-detailed-results"></a>Ismert problémák: kiválasztja az értéket a diagramon nem jeleníti meg a részletes eredmények
-Frissítés előtt a diagramon, érték kiválasztásakor az meghaladná a kijelölt érték megfelelő rekordok részletes listáját.  Frissítés után csak egyetlen összesített sort adja vissza.  A probléma a rendszer jelenleg vizsgált.
 
 ## <a name="log-search-api"></a>Log Search API
 
@@ -109,11 +97,9 @@ A böngésző Naplóelemzési lekérdezések futtatása a frissítés után a k�
 ## <a name="power-bi"></a>Power BI
 
 ### <a name="question-does-anything-change-with-powerbi-integration"></a>Kérdés: Bármi változik a Power bi integrációja?
-Igen.  Ha a munkaterületet frissítve lett majd Naplóelemzési adatok exportálásához a Power bi-bA a folyamat nem fog többé működni.  A frissítés előtt létrehozott meglévő ütemezések a program letiltja.  Frissítés után Azure Naplóelemzés használ ugyanannak a platformnak Application Insights, és Ön ugyanazzal az eljárással Naplóelemzési lekérdezések exportálásáról a Power bi-ba, [a folyamat az Application Insights lekérdezések exportálásáról a Power bi-bA](../application-insights/app-insights-export-power-bi.md#export-analytics-queries).
+Igen.  Ha a munkaterületet frissítve lett majd Naplóelemzési adatok exportálásához a Power bi-bA a folyamat nem fog többé működni.  A frissítés előtt létrehozott meglévő ütemezések a program letiltja.  
 
-### <a name="known-issue-power-bi-request-size-limit"></a>Ismert probléma: a Power BI kérelem méretkorlátot
-Jelenleg egy Power bi-bA exportálható Log Analytics-lekérdezés, 8 MB méretkorlátot.  Ezt a határt hamarosan növekszik.
-
+Frissítés után Azure Naplóelemzés használ ugyanannak a platformnak Application Insights, és Ön ugyanazzal az eljárással Naplóelemzési lekérdezések exportálásáról a Power bi-ba, [a folyamat az Application Insights lekérdezések exportálásáról a Power bi-bA](../application-insights/app-insights-export-power-bi.md#export-analytics-queries).  A Power bi-ban való exportáláshoz most meghívja a közvetlenül az API-végpontot. Ez lehetővé teszi, Önnek pedig legfeljebb 500 000 sorok vagy 64,000,000 bájtnyi adatot, hosszú lekérdezések exportálásáról és testre szabhatja a lekérdezés időkorlátja (alapértelmezett időtúllépési érték 3 percet, és a maximális időkorlátot 10 perc).
 
 ## <a name="powershell-cmdlets"></a>PowerShell-parancsmagok
 
@@ -153,14 +139,11 @@ Igen.  Kell egy 2017-03-15-előnézeti API verzióját használja, és tartalmaz
 ### <a name="question-will-my-solutions-continue-to-work"></a>Kérdés: A megoldások továbbra is működnek majd?
 Minden megoldás továbbra is működni fog egy frissített munkaterületen, bár a teljesítményük javítja, ha az új lekérdezési nyelv telepítésekké lesznek átalakítva.  Néhány meglévő megoldás ebben a szakaszban ismertetett problémákat is ismertek.
 
-### <a name="known-issue-capacity-and-performance-solution"></a>Ismert problémák: kapacitást és teljesítményt megoldás
-Az egyes részeket némelyike a [kapacitást és teljesítményt](log-analytics-capacity.md) lehet, hogy a nézet üres.  Egy javítást a probléma hamarosan elérhető.
-
-### <a name="known-issue-application-insights-connector"></a>Ismert problémák: Application Insights-összekötő
-A perspektívák [Application Insights-összekötő megoldás](log-analytics-app-insights-connector.md) egy frissített munkaterületen jelenleg nem támogatottak.  Egy javítást a probléma éppen elemzés alatt áll.
+### <a name="known-issue-perspectives-in-application-insights-connector"></a>Ismert problémák: szempontok az Application Insights-összekötő
+A perspektívák [Application Insights-összekötő megoldás](log-analytics-app-insights-connector.md) már nem támogatottak az Application Insights-összekötő megoldást.  Adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre az Application Insights-adatokkal.
 
 ### <a name="known-issue-backup-solution"></a>Ismert problémák: biztonsági mentési megoldás
-A biztonsági mentési megoldás nem gyűjti az adatokat egy frissített munkaterületen. Egy új biztonsági mentési megoldás, amely kompatibilis a frissített munkaterület bejelentések hamarosan.
+A biztonsági mentési megoldás lehet, hogy nem gyűjt adatot, ha a munkaterületet frissítése előtt lett telepítve. Távolítsa el a megoldást, és telepítse a legújabb verzióra.  A megoldás új verziója nem támogatja a klasszikus mentési tárolókban, így is frissítenie kell a Recovery Services-tárolók használatához a megoldás.
 
 ## <a name="upgrade-process"></a>Frissítési folyamata
 
@@ -182,9 +165,6 @@ Az örökölt napló keresési néhány hónapon belül megszűnnek. Munkaterül
 
 ### <a name="question-how-do-i-create-a-new-view-with-view-designer"></a>Kérdés: Hogyan hozható létre egy új nézetet az adatforrásnézet-tervezőből?
 Frissítés előtt új nézet segítségével létrehozhat adatforrásnézet-tervezőből a a fő Irányítópulton egy csempére.  Ha a munkaterületet frissítve van, a rendszer eltávolítja a csempe.  Létrehozhat egy új nézetet az adatforrásnézet-tervezőből az OMS-portálon a zöld + a bal oldali menü gombjára kattintva.
-
-### <a name="known-issue-see-all-option-for-line-charts-in-views-doesnt-result-in-a-line-chart"></a>Ismert problémák: lásd az összes beállítás megadása a nézetekben vonaldiagramok vonaldiagram eset sem eredményez:
-Elemre a *láthatja az összes* beállítás nézetben sor diagram része alján jelenik meg egy tábla.  Frissítés előtt, akkor jelenik meg a grafikont.  A probléma lehetséges módosításra elemezni.
 
 
 ## <a name="next-steps"></a>Következő lépések

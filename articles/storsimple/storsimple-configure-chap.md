@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 83ad256522ca19a19b3fe46fcc48e9cb37cbe246
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>A CHAP konfigurálása a StorSimple eszköz
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [CHAP konfigurálása a StorSimple eszköz](storsimple-8000-configure-chap.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 Ez az oktatóanyag azt ismerteti, hogyan CHAP konfigurálása a StorSimple eszközt. Ebben a cikkben ismertetett eljárás a StorSimple 8000 series, valamint a StorSimple 1200-as eszközök vonatkozik.
 
 A CHAP hitelesítési protokoll jelenti. Egy távoli ügyfelek identitása érvényesítéséhez kiszolgálók által használt hitelesítési séma. Az ellenőrzés megosztott jelszó vagy titkos kulcs alapul. Lehet, hogy a CHAP egyirányú (egyirányú) vagy a kölcsönös (kétirányú). Egyirányú CHAP akkor, ha a cél hitelesíti az kezdeményező. Kölcsönös vagy fordított CHAP, másrészt megköveteli, hogy a cél hitelesítéséhez a kezdeményező és a kezdeményező hitelesítse a cél. Kezdeményező hitelesítés nélkül cél hitelesítés valósítható meg. Cél hitelesítési esetén alkalmazhatóak azonban csak akkor, ha a kezdeményező hitelesítési is tartalmazzák. 

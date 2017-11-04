@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: 9336743b92130e37b1df2992aab806696f8276aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8031c9bae923e19574b7189a97cb71a148b63d77
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Igény szerinti "kapacitásnövelés" csomópontok hozzáadása a HPC Pack fürthöz az Azure-ban
 Ha úgy konfigurálja a [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) fürt Azure, érdemes egy módszerre, amellyel gyorsan méretezni a fürt kapacitás felfelé vagy lefelé, előre konfigurált számítási csomópont virtuális gépek halmaza fenntartása nélkül. Ez a cikk bemutatja, hogyan igény szerinti "kapacitásnövelés" csomópontokat (feldolgozói szerepkör példányok felhőszolgáltatásban fut), egy átjárócsomópont Azure számítási erőforrásokat. 
@@ -42,10 +42,10 @@ A cikkben ismertetett Azure-csomópontok gyorsan hozzá egy felhőalapú HPC Pac
 * **Magok kvóta** -előfordulhat, hogy növelnie kell a beállított kvótát mag, különösen akkor, ha úgy dönt, hogy több Azure csomópontokat multicore méretek a telepítése. A kvóta növeléséhez [nyissa meg az online támogatás ügyfélkérés](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) díjmentesen.
 
 ## <a name="step-1-create-a-cloud-service-and-a-storage-account-for-the-azure-nodes"></a>1. lépés: Egy felhőalapú szolgáltatás és az Azure-csomópontok a tárfiók létrehozása
-A klasszikus Azure portálon vagy a megfelelő eszközök segítségével konfigurálja a következő erőforrásokat, amelyek szükségesek ahhoz, hogy telepítse az Azure csomópontokat:
+Az Azure portálon vagy ezzel egyenértékű eszközök segítségével konfigurálja a következő erőforrásokat, amelyek szükségesek ahhoz, hogy telepítse az Azure csomópontokat:
 
-* Egy új Azure-felhőszolgáltatásban
-* Egy új Azure storage-fiók
+* Egy új Azure cloud service (klasszikus)
+* Egy új Azure storage-fiók (klasszikus)
 
 > [!NOTE]
 > Az előfizetéshez létező felhőalapú szolgáltatást nem használja fel. 
@@ -60,7 +60,11 @@ A klasszikus Azure portálon vagy a megfelelő eszközök segítségével konfig
 ## <a name="step-2-configure-an-azure-management-certificate"></a>2. lépés: Az Azure felügyeleti tanúsítvány konfigurálása
 Adja hozzá Azure-csomópontok számítási erőforrásokat, az átjárócsomópont és feltöltése, a központi telepítéshez használt Azure-előfizetéshez tartozó tanúsítvány a felügyeleti tanúsítvány szükséges.
 
-A jelen esetben válassza a **alapértelmezett HPC Azure felügyeleti tanúsítvánnyal** HPC Pack telepítését, és automatikusan konfigurálja a központi csomóponton. Ez a tanúsítvány akkor hasznos, tesztelési célokra és a koncepció igazolása központi telepítéseket. Ezt a tanúsítványt használni, töltse fel az előfizetés az átjárócsomóponthoz VM a C:\Program Files\Microsoft HPC Pack fájl 2012\Bin\hpccert.cer. A tanúsítvány feltöltése a [a klasszikus Azure portálon](https://manage.windowsazure.com), kattintson a **beállítások** > **felügyeleti tanúsítványok**.
+A jelen esetben válassza a **alapértelmezett HPC Azure felügyeleti tanúsítvánnyal** HPC Pack telepítését, és automatikusan konfigurálja a központi csomóponton. Ez a tanúsítvány akkor hasznos, tesztelési célokra és a koncepció igazolása központi telepítéseket. Ezt a tanúsítványt használni, töltse fel az előfizetés az átjárócsomóponthoz VM a C:\Program Files\Microsoft HPC Pack fájl 2012\Bin\hpccert.cer. A tanúsítvány feltöltése a [Azure-portálon](https://portal.azure.com):
+
+1. Kattintson a **előfizetések** > *your_subscription_name*.
+
+2. Kattintson a **felügyeleti tanúsítványok** > **feltöltése**.
 
 A felügyeleti tanúsítvány konfigurálásának további lehetőségei, lásd: [forgatókönyvek az Azure felügyeleti tanúsítvány konfigurálása az Azure-kapacitásnövelés a telepítések](http://technet.microsoft.com/library/gg481759.aspx).
 

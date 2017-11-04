@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
-ms.author: willzhan;juliako
-ms.openlocfilehash: 1c62857699fb29b3583363e1c6f2dc7874635f40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.author: willzhan;juliako;johndeu
+ms.openlocfilehash: e5d7a5ec1c28a552420aba5e2cd6c8c7bbf4213d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Az Azure Media Services API REST eléréséhez használja az Azure AD-alapú hitelesítés
 
@@ -86,21 +86,14 @@ A jwt-t és a négy alkalmazások attribútumokat vagy az előző táblázatban 
 |Alkalmazás típusa |Alkalmazás |JWT-attribútum |
 |---|---|---|
 |Ügyfél |Felhasználói alkalmazás vagy megoldás |AppID: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6". A következő szakaszban regisztrálni fogja az Azure AD-alkalmazás ügyfél-azonosító. |
-|Az identitásszolgáltató (IDP) | Azure AD szolgáltatásba IDP |IDP: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/".  A globálisan egyedi Azonosítót az az azonosítója a Microsoft-bérlő (microsoft.onmicrosoft.com). Mindegyik bérlő saját, egyedi azonosítóval rendelkezik |
+|Az identitásszolgáltató (IDP) | Azure AD szolgáltatásba IDP |IDP: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/" a GUID-azonosító az azonosító a Microsoft-bérlő (microsoft.onmicrosoft.com). Mindegyik bérlő saját, egyedi azonosítóval rendelkezik |
 |Secure Token Service (STS) / OAuth-kiszolgáló |Azure AD szolgáltatásba STS | iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/". A globálisan egyedi Azonosítót az az azonosítója a Microsoft-bérlő (microsoft.onmicrosoft.com). |
 |Erőforrás | Media Services REST API-k |és: "https://rest.media.azure.net". A címzett, vagy a célközönség és a hozzáférési jogkivonat. |
 
 ## <a name="steps-for-setup"></a>A telepítés lépései
 
-Regisztrálja, és állítson be egy Azure AD-alkalmazást az Azure AD-alapú hitelesítés, és egy hozzáférési jogkivonatot az Azure Media Services REST API-végpont meghívása az beszerzése, kövesse az alábbi lépéseket:
+Regisztrálásához és az alkalmazás Azure Active Directory (AAD) beállítása, valamint a kulcsok az Azure Media Services REST API-végpont meghívása, tekintse meg a cikk [Ismerkedés az Azure AD-alapú hitelesítés az Azure portál használatával](media-services-portal-get-started-with-aad.md)
 
-1.  Az a [a klasszikus Azure portálon](http://go.microsoft.com/fwlink/?LinkID=213885), (például wzmediaservice) az Azure AD alkalmazás regisztrálása az Azure AD-bérlő (például microsoft.onmicrosoft.com). Nem számít, hogy Ön a webes alkalmazás vagy a natív alkalmazással regisztrált-e. Választhat is, a bejelentkezés és válasz URL-címe (például mindkét http://wzmediaservice.com).
-2. Az a [a klasszikus Azure portálon](http://go.microsoft.com/fwlink/?LinkID=213885), navigáljon a **konfigurálása** az alkalmazás lapon. Megjegyzés: a **ügyfél-azonosító**. Ekkor a **kulcsok**, létrehozni egy **ügyfélkulcsot** (titkos). 
-
-    > [!NOTE] 
-    > Jegyezze fel a titkos ügyfélkulcsot. Ez nem jeleníthető meg újra.
-    
-3.  Az a [Azure-portálon](http://ms.portal.azure.com), keresse fel a Media Services-fiók. Válassza ki a **hozzáférés-vezérlés** (IAM) ablak. Adja hozzá egy új tag a tulajdonosa vagy a közreműködő szerepkört. A rendszerbiztonsági tag keressen rá az 1. lépésben (a példában wzmediaservice) regisztrált alkalmazás nevét.
 
 ## <a name="info-to-collect"></a>Adatok összegyűjtése
 
@@ -138,9 +131,9 @@ A minta projekt három lehetőséggel rendelkezik:
 
 Néhány olvasók kérheti: hol található a frissítési jogkivonat? Miért nem használja a frissítési jogkivonat Itt?
 
-A frissítési jogkivonat célja nem egy hozzáférési jogkivonatot frissítése. Ehelyett tervezték végfelhasználói hitelesítési vagy felhasználói beavatkozás kihagyásával még mindig érvényes jogkivonat, ha egy korábbi jogkivonat lejár. A frissítési jogkivonat jobb nevét lehet, hogy valami like "kihagyása a felhasználó újra-sign-in jogkivonatát."
+A frissítési jogkivonat célja nem egy hozzáférési jogkivonatot frissítése. Végfelhasználói hitelesítés kihagyásával még mindig érvényes jogkivonat, ha egy korábbi jogkivonat lejár tervezték. A frissítési jogkivonat jobb nevét lehet, hogy valami like "kihagyása a felhasználó újra-sign-in jogkivonatát."
 
-Használja az OAuth 2.0 engedélyezési folyamata (felhasználónévvel és jelszóval, egy felhasználó nevében eljáró) adja meg, ha a frissítési jogkivonat segítséget nyújt a megújított access token beszerzése a kért felhasználói beavatkozás nélkül. Azonban az OAuth 2.0 ügyfél hitelesítő adatai megadják a folyamatot leíró cikkben azt, az ügyfél működik a saját nevében. Minden felhasználói beavatkozás nem szükséges, és a hitelesítési kiszolgáló nem szükséges (és nem) adjon meg egy frissítési jogkivonat. Ha hibakeresése a **GetUrlEncodedJWT** metódust, akkor figyelje meg, hogy a jogkivonat végpontjához válaszát rendelkezik-e a hozzáférési tokent, de nincs frissítési jogkivonat.
+Használja az OAuth 2.0 engedélyezési folyamata (felhasználónévvel és jelszóval, egy felhasználó nevében eljáró) adja meg, ha a frissítési jogkivonat segítséget nyújt a megújított access token beszerzése a kért felhasználói beavatkozás nélkül. Azonban az OAuth 2.0 ügyfél hitelesítő adatai megadják a cikkben ismertetett folyamatot, az ügyfél működik a saját nevében. Minden felhasználói beavatkozás nem szükséges, és a hitelesítési kiszolgáló nem szükséges, hogy biztosítson egy frissítési jogkivonat. Ha hibakeresése a **GetUrlEncodedJWT** metódust, akkor figyelje meg, hogy a jogkivonat végpontjához válaszát rendelkezik-e a hozzáférési tokent, de nincs frissítési jogkivonat.
 
 ## <a name="next-steps"></a>Következő lépések
 

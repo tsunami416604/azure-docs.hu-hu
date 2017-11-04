@@ -4,7 +4,7 @@ description: "Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi 
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 11/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 245ad4948cf4b8c2d44a0dafb61923b0b4267856
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2ef65bb4dc8e12a18265ae8264def2bb32e191f
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) használatos az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartozó konfigurálása
 
@@ -48,8 +48,8 @@ Ahhoz, hogy a biztonságos LDAP, hajtsa végre az alábbi konfigurációs lépé
     ![Biztonságos LDAP engedélyezése](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
 5. Alapértelmezés szerint le van tiltva az interneten keresztül a felügyelt tartományra biztonságos LDAP-hozzáférés. Váltás **biztonságos LDAP-hozzáférés engedélyezése az interneten keresztül** való **engedélyezése**, ha szükséges. 
 
-    > [!TIP]
-    > Biztonságos LDAP-hozzáférés engedélyezésével az interneten keresztül való hozzáférés szükséges forrás IP-címtartományok zárolását egy NSG beállítása ajánlott. Az utasításokat lásd: [LDAPS hozzáférés az interneten keresztül a felügyelt tartományra zárolása](#task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet).
+    > [!WARNING]
+    > Biztonságos LDAP-hozzáférés engedélyezésével az interneten keresztül, a tartomány hajlamos jelszó találgatásos támadásokkal szemben az interneten keresztül. Ezért ajánlott egy NSG eléréséhez szükséges forrás IP-címtartományok zárolását beállítását. Az utasításokat lásd: [LDAPS hozzáférés az interneten keresztül a felügyelt tartományra zárolása](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
     >
 
 6. Kattintson a mappa ikon következő **. Biztonságos LDAP tanúsítvány PFX-fájl**. Adja meg a PFX-fájl elérési útját a felügyelt tartományra biztonságos LDAP hozzáférést tanúsítványával.
@@ -79,7 +79,7 @@ Ez a feladat megkezdése előtt győződjön meg arról, befejezte a leírt lép
 
 Miután engedélyezte biztonságos LDAP hozzáférést az interneten keresztül a felügyelt tartományok, módosítania DNS, hogy a felügyelt tartomány található ügyfélszámítógépek számára. 3. feladat végén külső IP-cím jelenik meg a **tulajdonságok** lapján **külső IP-cím a LDAPS ELÉRÉST**.
 
-Konfigurálja a külső DNS-szolgáltatónál, hogy a külső IP-címre mutat a felügyelt tartomány (például ldaps.contoso100.com) DNS-nevét. A jelen példában kell a következő DNS-bejegyzés létrehozása:
+Konfigurálja a külső DNS-szolgáltatónál, hogy a külső IP-címre mutat a felügyelt tartomány (például ldaps.contoso100.com) DNS-nevét. Hozzon létre például a következő DNS-bejegyzést:
 
     ldaps.contoso100.com  -> 52.165.38.113
 
@@ -91,9 +91,9 @@ Ennyi az egész – most már készen áll a felügyelt tartományra biztonságo
 >
 
 
-## <a name="task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet"></a>5. feladat – az interneten keresztül a felügyelt tartományok LDAPS elérésére zár ki
+## <a name="task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>5. feladat – az interneten keresztül a felügyelt tartományok biztonságos LDAP hozzáférést zárolása
 > [!NOTE]
-> **Nem kötelező** - LDAPS hozzáféréssel a felügyelt tartományra nincs engedélyezve az interneten keresztül, ha a konfigurációs feladat kihagyása.
+> Ha nem engedélyezte a felügyelt tartományra LDAPS hozzáférés az interneten keresztül, hagyja ki a konfigurációs feladat.
 >
 >
 
@@ -101,13 +101,28 @@ Ez a feladat megkezdése előtt győződjön meg arról, befejezte a leírt lép
 
 A felügyelt tartományok LDAPS hozzáférési közzéteszi az interneten keresztül jelenti a biztonsági kockázatot jelentenek. A felügyelt tartományra érhető el az interneten, a biztonságos LDAP használt port (Ez azt jelenti, hogy a 636-os port). Ezért ha szeretné, korlátozza a hozzáférést a felügyelt tartományra ismert IP-címek. A nagyobb biztonság érdekében hozzon létre egy hálózati biztonsági csoportot (NSG), és rendelje hozzá azt az alhálózatot, ha engedélyezte az Azure AD tartományi szolgáltatásokat.
 
-Az alábbi táblázat mutatja be egy minta NSG-t is konfigurálhat, biztonságos LDAP hozzáférést zárolását az interneten keresztül. Az NSG tartalmaz egy TCP-porton keresztül 636 csak egy megadott készletből IP-címek bejövő LDAPS hozzáférést engedélyező szabályokat. Minden bejövő forgalom az internetről az alapértelmezett "DenyAll" szabály vonatkozik. Az NSG-szabály LDAPS hozzáférést a megadott IP-címeket az interneten keresztül rendelkezik, magasabb prioritású, mint a DenyAll NSG-szabály.
+Az alábbi táblázat mutatja be egy minta NSG-t is konfigurálhat, biztonságos LDAP hozzáférést zárolását az interneten keresztül. Az NSG tartalmaz egy TCP-porton keresztül 636 csak egy megadott készletből IP-címek bejövő biztonságos LDAP hozzáférést engedélyező szabályokat. Minden bejövő forgalom az internetről az alapértelmezett "DenyAll" szabály vonatkozik. Az NSG-szabály LDAPS hozzáférést a megadott IP-címeket az interneten keresztül rendelkezik, magasabb prioritású, mint a DenyAll NSG-szabály.
 
 ![Minta NSG LDAPS hozzáférés biztonságossá az interneten keresztül](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
 **További információ** - [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
 
 <br>
+
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+Ha sikerült csatlakozni a biztonságos LDAP a felügyelt tartományra, hajtsa végre a következő hibaelhárítási lépéseket:
+* Győződjön meg arról, hogy a kibocsátó lánc biztonságos LDAP tanúsítvány megbízható-e az ügyfélen. Választhatja a legfelső szintű hitelesítésszolgáltató hozzáadása a megbízható főtanúsítvány-tárolóba való a megbízhatósági kapcsolat létrehozása az ügyfélen.
+* Győződjön meg arról, hogy a biztonságos LDAP nem tanúsítványt egy köztes hitelesítésszolgáltatót, amely egy friss windows gépen alapértelmezés szerint nem megbízható.
+* Győződjön meg arról, hogy az LDAP-ügyfél (például az ldp.exe) csatlakozik-e a biztonságos LDAP végpont egy DNS-név, ne az IP-címet.
+* Ellenőrizze az LDAP-ügyfél kapcsolódik a nyilvános IP-címre oldja fel a rendszer biztonságos LDAP a felügyelt tartomány DNS-nevét.
+* Ellenőrizze, hogy a biztonságos LDAP a felügyelt tartományok tanúsítványnál a tulajdonos vagy a tulajdonos alternatív neve attribútum DNS-nevét.
+
+Ha továbbra is problémákat tapasztal a felügyelt tartományra biztonságos LDAP kapcsolódás [lépjen kapcsolatba a termékért felelős csoport](active-directory-ds-contact-us.md) segítségét. A probléma diagnosztizálásához jobban segítségével a következő információkat tartalmazza:
+* A kapcsolat létrehozása és sikertelen ldp.exe képernyőképe.
+* Az Azure AD-bérlő azonosítója, és a felügyelt tartományok DNS-tartomány nevét.
+* Felhasználói-kötés kívánt nevet.
+
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)

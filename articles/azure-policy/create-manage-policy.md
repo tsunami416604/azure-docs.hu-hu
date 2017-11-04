@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: Jim-Parker
 ms.author: jimpark
-ms.date: 10/06/2017
+ms.date: 11/01/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 55e5a60294fc5ccb2a55b1e572af2fd27c68f462
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adbf6e13efaad196c39e4fce0900fa40d7511122
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Kényszeríteni a megfelelőségi szabályzatok létrehozása és kezelése
 
@@ -61,7 +61,7 @@ Az első lépés betartása Azure házirend, hogy rendelje hozzá a házirend-de
    ![Nyissa meg az elérhető, házirend-definíciók](media/create-manage-policy/open-policy-definitions.png)
 
 5. Válassza ki **szükséges SQL Server verzió 12.0**.
-   
+
    ![Keresse meg a házirend](media/create-manage-policy/select-available-definition.png)
 
 6. Adjon meg egy megjelenítési **neve** a házirend-hozzárendelés. Ebben az esetben most használja *szükséges SQL Server verziója 12.0*. Azt is megteheti egy nem kötelező **leírás**. A leírás előírja, hogyan biztosítja a házirend-hozzárendelést, ebben a környezetben létrehozott összes SQL-kiszolgálók adatait 12.0 verziója.
@@ -93,7 +93,7 @@ Most, hogy a házirend-definíció hozzárendelt igazolnia, az oktatóanyagban m
       - A házirend-paraméterek.
       - A szabályok/Házirendfeltételek, ebben az esetben – G adatsorozat egyenlő méretű Termékváltozat-méretét
       - A házirend hatása ebben az esetben – **Megtagadás**.
-   
+
    Ez mit kell hasonlítania a JSON-ban
 
 ```json
@@ -118,9 +118,225 @@ Most, hogy a házirend-definíció hozzárendelt igazolnia, az oktatóanyagban m
 }
 ```
 
+<!-- Update the following link to the top level samples page
+-->
    A mintákat a json-kód megtekintéséhez nézze meg a cikk - [erőforrás házirendek – áttekintés](../azure-resource-manager/resource-manager-policy.md)
-   
+
 4. Kattintson a **Mentés** gombra.
+
+## <a name="create-a-policy-definition-with-rest-api"></a>Házirend-definíció létrehozása REST API-hoz
+
+Létrehozhat egy házirendet a REST API-t házirend-definíciók. A REST API lehetővé teszi létrehozása és törlése a házirend-definíciók és meglévő definíciók adatainak beolvasása.
+Házirend-definíció létrehozásához használja a következő példát:
+
+```
+PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
+
+```
+Az alábbi példához hasonló egy kérelemtörzset a következők:
+
+```
+{
+  "properties": {
+    "parameters": {
+      "allowedLocations": {
+        "type": "array",
+        "metadata": {
+          "description": "The list of locations that can be specified when deploying resources",
+          "strongType": "location",
+          "displayName": "Allowed locations"
+        }
+      }
+    },
+    "displayName": "Allowed locations",
+    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+    "policyRule": {
+      "if": {
+        "not": {
+          "field": "location",
+          "in": "[parameters('allowedLocations')]"
+        }
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}
+```
+
+## <a name="create-a-policy-definition-with-powershell"></a>Házirend-definíció létrehozása a PowerShell használatával
+
+A PowerShell-példa folytatása előtt győződjön meg arról, hogy a legújabb Azure PowerShell telepítése. Házirend-paraméterek 3.6.0 verzióban lettek hozzáadva. Ha egy korábbi, a példák, hibaüzenetet jelzi, hogy a paraméter nem található.
+
+A szabályzat definíciója használatával hozhat létre a `New-AzureRmPolicyDefinition` parancsmag.
+
+Házirend-definíció létrehozása fájlból, adja át az elérési út a fájlhoz. Külső fájlra használja az alábbi példa:
+
+```
+$definition = New-AzureRmPolicyDefinition `
+    -Name denyCoolTiering `
+    -DisplayName "Deny cool access tiering for storage" `
+    -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
+```
+
+Egy helyi fájl használható használja a következő példát:
+
+```
+$definition = New-AzureRmPolicyDefinition `
+    -Name denyCoolTiering `
+    -Description "Deny cool access tiering for storage" `
+    -Policy "c:\policies\coolAccessTier.json"
+```
+
+Egy beágyazott szabály létrehozásához a házirend-definíció, használja a következő példát:
+
+```
+$definition = New-AzureRmPolicyDefinition -Name denyCoolTiering -Description "Deny cool access tiering for storage" -Policy '{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "field": "kind",
+        "equals": "BlobStorage"
+      },
+      {
+        "not": {
+          "field": "Microsoft.Storage/storageAccounts/accessTier",
+          "equals": "cool"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}'
+```
+
+A kimeneti tárolja egy `$definition` objektum, amely házirend-hozzárendelés során használatos.
+Az alábbi példakód létrehozza a házirend-definíció paramétereket tartalmaz:
+
+```
+$policy = '{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
+            },
+            {
+                "not": {
+                    "field": "location",
+                    "in": "[parameters(''allowedLocations'')]"
+                }
+            }
+        ]
+    },
+    "then": {
+        "effect": "Deny"
+    }
+}'
+
+$parameters = '{
+    "allowedLocations": {
+        "type": "array",
+        "metadata": {
+          "description": "The list of locations that can be specified when deploying storage accounts.",
+          "strongType": "location",
+          "displayName": "Allowed locations"
+        }
+    }
+}'
+
+$definition = New-AzureRmPolicyDefinition -Name storageLocations -Description "Policy to specify locations for storage accounts." -Policy $policy -Parameter $parameters
+```
+
+## <a name="view-policy-definitions"></a>Házirend-definíciók megtekintése
+
+Az előfizetés az összes házirend-definíciók, használja a következő parancsot:
+
+```
+Get-AzureRmPolicyDefinition
+```
+
+Összes elérhető, házirend-beállítást, többek között beépített házirendek adja vissza. Minden egyes házirend eredmény abban az esetben a következő formátumban:
+
+```
+Name               : e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceId         : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceName       : e56962a6-4747-49cd-b67b-bf8b01975c4c
+ResourceType       : Microsoft.Authorization/policyDefinitions
+Properties         : @{displayName=Allowed locations; policyType=BuiltIn; description=This policy enables you to
+                     restrict the locations your organization can specify when deploying resources. Use to enforce
+                     your geo-compliance requirements.; parameters=; policyRule=}
+PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
+```
+
+## <a name="create-a-policy-definition-with-azure-cli"></a>Házirend-definíció létrehozása az Azure parancssori felülettel
+
+A házirend-definíció a házirend-definíció parancs az Azure parancssori felület használatával hozhat létre.
+Egy beágyazott szabály létrehozásához a házirend-definíció, használja a következő példát:
+
+```
+az policy definition create --name denyCoolTiering --description "Deny cool access tiering for storage" --rules '{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "field": "kind",
+        "equals": "BlobStorage"
+      },
+      {
+        "not": {
+          "field": "Microsoft.Storage/storageAccounts/accessTier",
+          "equals": "cool"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}'
+```
+
+## <a name="view-policy-definitions"></a>Házirend-definíciók megtekintése
+
+Az előfizetés az összes házirend-definíciók, használja a következő parancsot:
+
+```
+az policy definition list
+```
+
+Összes elérhető, házirend-beállítást, többek között beépített házirendek adja vissza. Minden egyes házirend eredmény abban az esetben a következő formátumban:
+
+```
+{                                                            
+  "description": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements.",                      
+  "displayName": "Allowed locations",
+  "id": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+  "name": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+  "policyRule": {
+    "if": {
+      "not": {
+        "field": "location",
+        "in": "[parameters('listOfAllowedLocations')]"
+      }
+    },
+    "then": {
+      "effect": "Deny"
+    }
+  },
+  "policyType": "BuiltIn"
+}
+```
 
 ## <a name="create-and-assign-an-initiative-definition"></a>Létrehozni és hozzárendelni egy kezdeményezésére definíciója
 
@@ -166,7 +382,7 @@ Kezdeményezésére definition egy átfogó cél eléréséhez több házirend-d
    - IP-címek: Standard
    - azt szeretné, hogy alkalmazza a hozzárendelt hatókör: **Azure Advisor kapacitás fejlesztői**
 
-5. Válassza ki **hozzárendelése**. 
+5. Válassza ki **hozzárendelése**.
 
 ## <a name="resolve-a-non-compliant-or-denied-resource"></a>Nem megfelelő, vagy az elutasított resource megoldásához
 
@@ -205,4 +421,4 @@ Ebben az oktatóanyagban hogy sikeresen valósítható meg a következő:
 További információt a házirend-definíciók struktúrák, tekintse meg a cikk:
 
 > [!div class="nextstepaction"]
-> [Házirend szerkezete](../azure-resource-manager/resource-manager-policy.md#policy-definition-structure)
+> [Az Azure házirend szerkezete](policy-definition.md)

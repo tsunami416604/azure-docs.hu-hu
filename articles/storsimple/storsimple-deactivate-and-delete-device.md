@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2017
+ms.date: 11/03/2017
 ms.author: anbacker
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5778d54060c9be1b0c90c34bcf7c8e9bacb414d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>Inaktiválása és a StorSimple Manager szolgáltatással a StorSimple 8000 series eszköz törlése
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [inaktiválását vagy törlését a StorSimple 8000 sorozat eszközt a StorSimple Manager szolgáltatás keresztül](storsimple-8000-deactivate-and-delete-device.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 Kezdésként érdemes lehet, hogy nem működik a StorSimple eszköz (például akkor, ha cseréje vagy az eszköz frissítése, vagy ha már nem használja a StorSimple). Ha ez a helyzet, szüksége lesz az eszköz inaktiválása, mielőtt törölné. Az eszköz és a megfelelő StorSimple Manager szolgáltatás közötti kapcsolat inaktiválása kiszolgálója. Ez az oktatóanyag ismerteti a StorSimple eszköz eltávolítása a szolgáltatás első inaktiválása és törlését is. 
 

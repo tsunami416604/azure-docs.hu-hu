@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 00fcccb379bf1ba3875fbaba57a05b00fa228622
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dec785757ac582f044811c0f64ae0d452d6ad9a0
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="reliable-actors-reentrancy"></a>Megbízható szereplője rögzítve
 A Reliable Actors futásidejű alapértelmezés szerint lehetővé teszi, hogy logikai hívás környezetfüggő rögzítve. Ez lehetővé teszi a szereplőket ismételten belépő, ha azok hívás környezetben ugyanabba a láncba kell. Például A Aktor üzenetet küld szereplő B, egy üzenet küld Aktor a c kiszolgálóra. Az üzenet feldolgozása részeként szereplő C Aktor A, ha az üzenet ismételten belépő, amelynek engedélyezni. Bármely más üzeneteket, amelyek egy másik hívás környezetet részei le lesz tiltva a Aktor A feldolgozás befejezéséig.

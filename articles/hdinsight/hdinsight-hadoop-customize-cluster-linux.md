@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: larryfr
-ms.openlocfilehash: 7c8c10f96a742092bb7b8453698d498707b0b2c2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 549582b0282a7b0382496b89dbcb4330ab67192a
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-action"></a>Parancsfájlművelet Linux-alapú HDInsight-fürtök testreszabása
 
@@ -140,7 +140,7 @@ Egy hiba történt egy parancsfájlt a fürt létrehozása során használt műv
 >
 > Parancsfájlok műveletek futtassa legfelső szintű jogosultságokkal, ezért meg kell győződnie arról, hogy tudomásul veszi a parancsfájl funkciója mielőtt telepítené azt a fürtöt.
 
-Parancsfájl fürtre alkalmazásakor a fürt állapota változik a **futtató** való **elfogadott**, majd **HDInsight konfigurációs**, és végül biztonsági **futtató** sikeres parancsfájlok. A parancsfájl állapota a parancsfájlművelet előzményeinek van bejelentkezve, és ezen információk használatával határozza meg, hogy a parancsfájl sikeres vagy sikertelen volt. Például a `Get-AzureRmHDInsightScriptActionHistory` PowerShell-parancsmag segítségével egy parancsfájl állapotának megtekintése. Olyan információkat ad vissza az alábbihoz hasonló:
+Egy parancsfájl fürtre alkalmazásakor a fürt állapota megosztottról **futtató** való **elfogadott**, majd **HDInsight konfigurációs**, és végül biztonsági  **Futó** sikeres parancsfájlok. A parancsfájl állapota a parancsfájlművelet előzményeinek van bejelentkezve, és ezen információk használatával határozza meg, hogy a parancsfájl sikeres vagy sikertelen volt. Például a `Get-AzureRmHDInsightScriptActionHistory` PowerShell-parancsmag segítségével egy parancsfájl állapotának megtekintése. Olyan információkat ad vissza az alábbihoz hasonló:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -213,227 +213,27 @@ Ez a szakasz a különböző módszereket, Parancsfájlműveletek létrehozása 
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Egy parancsfájlművelettel Azure Resource Manager-sablonok alapján
 
-Ebben a szakaszban szereplő példák bemutatják, hogyan lehet Parancsfájlműveletek használata Azure Resource Manager-sablonok.
+A Parancsfájlműveletek Azure Resource Manager sablonokban használható. Egy vonatkozó példáért lásd: [https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
 
-#### <a name="before-you-begin"></a>Előkészületek
+Ebben a példában a parancsfájlművelet hozzáadása a következő kódot:
 
-* A munkaállomás HDInsight Powershell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
-* Sablonok létrehozásával kapcsolatos utasításokért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md).
-* Ha nem korábban használt Azure PowerShell a Resource Manager, lásd: [az Azure PowerShell használata Azure Resource Managerrel](../azure-resource-manager/powershell-azure-resource-manager.md).
-
-#### <a name="create-clusters-using-script-action"></a>Parancsfájlművelet-fürtök létrehozása
-
-1. A következő sablon másolása a számítógépen lévő helyre. Ez a sablon Giraph telepíti a headnodes és a munkavégző csomóponton a fürtben. Ha a JSON-sablon esetében érvényes is ellenőrizheti. Illessze be a sablon a tartalom [JSONLint](http://jsonlint.com/), online JSON-érvényesítési segédprogramot.
-
-            {
-            "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-            "contentVersion": "1.0.0.0",
-            "parameters": {
-                "clusterLocation": {
-                    "type": "string",
-                    "defaultValue": "West US",
-                    "allowedValues": [ "West US" ]
-                },
-                "clusterName": {
-                    "type": "string"
-                },
-                "clusterUserName": {
-                    "type": "string",
-                    "defaultValue": "admin"
-                },
-                "clusterUserPassword": {
-                    "type": "securestring"
-                },
-                "sshUserName": {
-                    "type": "string",
-                    "defaultValue": "username"
-                },
-                "sshPassword": {
-                    "type": "securestring"
-                },
-                "clusterStorageAccountName": {
-                    "type": "string"
-                },
-                "clusterStorageAccountResourceGroup": {
-                    "type": "string"
-                },
-                "clusterStorageType": {
-                    "type": "string",
-                    "defaultValue": "Standard_LRS",
-                    "allowedValues": [
-                        "Standard_LRS",
-                        "Standard_GRS",
-                        "Standard_ZRS"
-                    ]
-                },
-                "clusterStorageAccountContainer": {
-                    "type": "string"
-                },
-                "clusterHeadNodeCount": {
-                    "type": "int",
-                    "defaultValue": 1
-                },
-                "clusterWorkerNodeCount": {
-                    "type": "int",
-                    "defaultValue": 2
-                }
-            },
-            "variables": {
-            },
-            "resources": [
-                {
-                    "name": "[parameters('clusterStorageAccountName')]",
-                    "type": "Microsoft.Storage/storageAccounts",
-                    "location": "[parameters('clusterLocation')]",
-                    "apiVersion": "2015-05-01-preview",
-                    "dependsOn": [ ],
-                    "tags": { },
-                    "properties": {
-                        "accountType": "[parameters('clusterStorageType')]"
-                    }
-                },
-                {
-                    "name": "[parameters('clusterName')]",
-                    "type": "Microsoft.HDInsight/clusters",
-                    "location": "[parameters('clusterLocation')]",
-                    "apiVersion": "2015-03-01-preview",
-                    "dependsOn": [
-                        "[concat('Microsoft.Storage/storageAccounts/', parameters('clusterStorageAccountName'))]"
-                    ],
-                    "tags": { },
-                    "properties": {
-                        "clusterVersion": "3.2",
-                        "osType": "Linux",
-                        "clusterDefinition": {
-                            "kind": "hadoop",
-                            "configurations": {
-                                "gateway": {
-                                    "restAuthCredential.isEnabled": true,
-                                    "restAuthCredential.username": "[parameters('clusterUserName')]",
-                                    "restAuthCredential.password": "[parameters('clusterUserPassword')]"
-                                }
-                            }
-                        },
-                        "storageProfile": {
-                            "storageaccounts": [
-                                {
-                                    "name": "[concat(parameters('clusterStorageAccountName'),'.blob.core.windows.net')]",
-                                    "isDefault": true,
-                                    "container": "[parameters('clusterStorageAccountContainer')]",
-                                    "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('clusterStorageAccountName')), '2015-05-01-preview').key1]"
-                                }
-                            ]
-                        },
-                        "computeProfile": {
-                            "roles": [
-                                {
-                                    "name": "headnode",
-                                    "targetInstanceCount": "[parameters('clusterHeadNodeCount')]",
-                                    "hardwareProfile": {
-                                        "vmSize": "Large"
-                                    },
-                                    "osProfile": {
-                                        "linuxOperatingSystemProfile": {
-                                            "username": "[parameters('sshUserName')]",
-                                            "password": "[parameters('sshPassword')]"
-                                        }
-                                    },
-                                    "scriptActions": [
-                                        {
-                                            "name": "installGiraph",
-                                            "uri": "https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh",
-                                            "parameters": ""
-                                        }
-                                    ]
-                                },
-                                {
-                                    "name": "workernode",
-                                    "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
-                                    "hardwareProfile": {
-                                        "vmSize": "Large"
-                                    },
-                                    "osProfile": {
-                                        "linuxOperatingSystemProfile": {
-                                            "username": "[parameters('sshUserName')]",
-                                            "password": "[parameters('sshPassword')]"
-                                        }
-                                    },
-                                    "scriptActions": [
-                                        {
-                                            "name": "installR",
-                                            "uri": "https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh",
-                                            "parameters": ""
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            ],
-            "outputs": {
-                "cluster":{
-                    "type" : "object",
-                    "value" : "[reference(resourceId('Microsoft.HDInsight/clusters',parameters('clusterName')))]"
-                }
-            }
+    "scriptActions": [
+        {
+            "name": "setenvironmentvariable",
+            "uri": "[parameters('scriptActionUri')]",
+            "parameters": "headnode"
         }
-2. Indítsa el az Azure PowerShell és a bejelentkezés az Azure-fiókjával. Miután megadta a hitelesítő adatait, a parancs a fiókja adatait adja vissza.
+    ]
 
-        Add-AzureRmAccount
+Egy sablon telepítésének módjáról további információkért lásd a következő dokumentumokat:
 
-        Id                             Type       ...
-        --                             ----
-        someone@example.com            User       ...
-3. Ha több előfizetéssel rendelkezik, adja meg a központi telepítéshez használni kívánt előfizetés-azonosító.
+* [Erőforrások sablonok és Azure PowerShell telepítése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-        Select-AzureRmSubscription -SubscriptionID <YourSubscriptionId>
-
-    > [!NOTE]
-    > Használható `Get-AzureRmSubscription` listájának, beleértve az előfizetés-azonosító, minden egyes a fiókjához társított előfizetéseket.
-
-4. Ha nem rendelkezik egy meglévő erőforráscsoportot, hozzon létre egy erőforráscsoportot. Adja meg az erőforráscsoport nevének és a megoldáshoz szükséges hely nevét. Az új erőforráscsoport összegzését adja vissza.
-
-        New-AzureRmResourceGroup -Name myresourcegroup -Location "West US"
-
-        ResourceGroupName : myresourcegroup
-        Location          : westus
-        ProvisioningState : Succeeded
-        Tags              :
-        Permissions       :
-                            Actions  NotActions
-                            =======  ==========
-                            *
-        ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
-
-5. Az erőforráscsoport számára a központi telepítés létrehozásához futtassa a **New-AzureRmResourceGroupDeployment** parancsot, és adja meg a szükséges paramétereket. A paraméterek közé tartoznak az alábbi adatokat:
-
-    * A központi telepítés nevét
-    * Az erőforráscsoport neve
-    * Az elérési út vagy URL-címe a létrehozott sablont.
-
-  Ha a sablon bármely paramétereket igényel, át kell adnia ezeket a paramétereket. Ebben az esetben a parancsfájlművelet R telepítése a fürt nem szükséges paramétereket.
-
-        New-AzureRmResourceGroupDeployment -Name mydeployment -ResourceGroupName myresourcegroup -TemplateFile <PathOrLinkToTemplate>
-
-    A sablonban definiált paraméterek értékének megadására kéri.
-
-1. Az erőforráscsoport van telepítve, a központi telepítés összegzését jelenik meg.
-
-          DeploymentName    : mydeployment
-          ResourceGroupName : myresourcegroup
-          ProvisioningState : Succeeded
-          Timestamp         : 8/14/2017 7:00:27 PM
-          Mode              : Incremental
-          ...
-
-2. Ha nem sikerül a telepítés, a következő parancsmagokat használhatja a hibákkal kapcsolatos információkért.
-
-        Get-AzureRmResourceGroupDeployment -ResourceGroupName myresourcegroup -ProvisioningState Failed
+* [Erőforrások sablonok és az Azure parancssori felület telepítése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Egy parancsfájlművelettel Azure PowerShell a fürt létrehozása során
 
-Ebben a szakaszban használjuk a [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) parancsmag parancsfájlok meghívni egy fürt testreszabásához parancsfájlművelet használatával. A folytatás előtt győződjön meg arról, hogy telepítette és konfigurálta az Azure PowerShell. A munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
+Ebben a szakaszban használhatja a [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) parancsmag parancsfájlok meghívni egy fürt testreszabásához parancsfájlművelet használatával. A folytatás előtt győződjön meg arról, hogy telepítette és konfigurálta az Azure PowerShell. A munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [telepítse és konfigurálja az Azure Powershellt](/powershell/azure/overview).
 
 Az alábbi parancsfájl bemutatja, hogyan alkalmazza a parancsfájlművelet, ha a PowerShell egy fürtöt hoz létre:
 
@@ -703,7 +503,7 @@ A fürthöz az SSH a további információkért lásd: [az SSH a Hdinsighttal](h
 
 ### <a name="history-doesnt-show-scripts-used-during-cluster-creation"></a>Előzmények nem jelenik meg a fürt létrehozása során használt parancsfájlok
 
-Ha a fürt létrehozása előtt 2016. március 15-én nem jelenhet meg a parancsfájlművelet előzményeinek bejegyzése. 2016. március 15-én után átméretezésekor a fürt a fürt létrehozása során parancsfájlok jelennek meg előzmények, a rendszer alkalmazza azokat a fürt új csomópontjának az átméretezés részeként.
+Ha a fürt létrehozása előtt 2016. március 15-én nem jelenhet meg a parancsfájlművelet előzményeinek bejegyzése. 2016. március 15-én után átméretezésekor a fürt a parancsfájlok használata a fürt létrehozása során, a rendszer alkalmazza azokat a fürt új csomópontjának során az átméretezés megjelennek előzmények.
 
 Ez alól két kivétel van:
 

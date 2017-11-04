@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 11/03/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: fa8f63c8da5019ed42ea8ec067d3d3d174976dd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5eb681e5f5c3b5944ff2d101056ae7c7cd60fac2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy távoli asztal közzététele
 
@@ -49,9 +49,6 @@ Egy távoli asztali szolgáltatások telepítése esetén a távoli asztali webe
 - Ön már rendelkezik [központilag telepített távoli asztali szolgáltatások](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), és [engedélyezve van az alkalmazásproxy](active-directory-application-proxy-enable.md).
 
 - Ez a forgatókönyv azt feltételezi, hogy a végfelhasználók nyissa meg az Internet Explorer keresztül a Windows 7 vagy Windows 10 asztali gépek, a távoli asztali weblap keresztül csatlakozó. Ha más operációs rendszerek támogatásához van szüksége, tekintse meg [támogatja az egyéb ügyfél-konfiguráció](#support-for-other-client-configurations).
-
-  >[!NOTE]
-  >Windows 10 létrehozó frissítése jelenleg nem támogatott.
 
 - Az Internet Explorer a távoli asztali szolgáltatások ActiveX-bővítmény engedélyezéséhez.
 
@@ -85,7 +82,7 @@ A távoli asztali szolgáltatások környezetbe rendszergazdaként csatlakozhat,
 
   ![A távoli asztali szolgáltatások telepítési tulajdonságok képernyő](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. Futtassa ezt a parancsot a gyűjtemény. Cserélje le * \<yourcollectionname\> * és * \<proxyfrontendurl\> * a saját adataival. Ez a parancs lehetővé teszi, hogy az egyszeri bejelentkezés a távoli asztali webes és a távoli asztali átjáró között, és optimalizálja a teljesítmény:
+8. Futtassa ezt a parancsot a gyűjtemény. Cserélje le  *\<yourcollectionname\>*  és  *\<proxyfrontendurl\>*  a saját adataival. Ez a parancs lehetővé teszi, hogy az egyszeri bejelentkezés a távoli asztali webes és a távoli asztali átjáró között, és optimalizálja a teljesítmény:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

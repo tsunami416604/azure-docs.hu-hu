@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/06/2017
 ms.author: fimguy
-ms.openlocfilehash: 98eb9b3a58737da2436eed591d69a900166c6af9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6df124a38c748294e92183df272dc266a0afc51
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="connector-version-release-history"></a>Összekötő verziókiadásai
 Az összekötők a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM) gyakran frissül.
 
 > [!NOTE]
 > Ez a témakör csak a FIM és a MIM rendszer. Az összekötők nem támogatottak az Azure AD Connect telepítése. Kiadott összekötők frissítése a megadott Build esetén az AADConnect előtelepített.
+
 
 Ez a témakör a csatlakozók kiadott összes verziójának felsorolása.
 
@@ -37,6 +38,29 @@ Kapcsolódó hivatkozások:
 * [PowerShell-összekötő](active-directory-aadconnectsync-connector-powershell.md) dokumentáció
 * [Lotus Domino-összekötő](active-directory-aadconnectsync-connector-domino.md) dokumentáció
 
+## <a name="116490-aadconnect-116490"></a>1.1.649.0 (AADConnect 1.1.649.0)
+
+### <a name="fixed-issues"></a>Javított problémák:
+
+* Lotus Notes:
+  * Egyéni képesítést adók engedélyezése beállítás szűrése
+  * Az osztály ImportOperations importálása volt rögzített a meghatározását, hogy milyen műveleteket futtathatja a "Nézetek" módban, és amely a "Search" módban.
+* Általános LDAP:
+  * OpenLDAP Directory DN entryUUI, hanem horgonyzási használja. Új lehetőség GLDAP összekötőt, amely lehetővé teszi a horgony módosítása
+* Általános SQL:
+  * Rögzített exportálási mezőbe, amely a varbinary(max) típusú.
+  * Amikor hozzá a bináris adatok adatforrásból származó CSEntry objektum, a DataTypeConversion függvény nulla bájt sikertelen volt. Rögzített DataTypeConversion függvény CSEntryOperationBase osztály.
+
+
+
+
+### <a name="enhancements"></a>Fejlesztései:
+
+* Általános SQL:
+  * Az ügyfélgépek konfigurálására a végrehajtási mód tárolt eljárást az elnevezett paramétereket, vagy neve nem szerepel-e az általános SQL felügyeleti ügynök a lap "Globális paraméterek" konfigurációs ablakban. A lap "Globális paraméterek" nincs "Use elnevezett paramétereket a tárolt eljárás végrehajtásához" hajtsa végre a tárolt eljárás mód felelős címkével jelölőnégyzetet neve paraméterek vagy nem.
+    * Az elnevezett paraméterek tárolt eljárás végrehajtásához képességét jelenleg csak olyan adatbázisok IBM DB2 és MSSQL működik. Az Oracle és a MySQL-adatbázisok Ez a módszer nem működik: 
+      * Az SQL-szintaxis MySQL az elnevezett paraméterek nem támogatja a tárolt eljárások.
+      * Az Oracle ODBC-illesztőprogram nem támogatja az elnevezett paraméterek az elnevezett paramétereket a tárolt eljárások)
 
 ## <a name="116040-aadconnect-116140"></a>1.1.604.0 (AADConnect 1.1.614.0)
 
@@ -203,6 +227,22 @@ A kezdeti kiadása a [általános SQL-összekötő](active-directory-aadconnects
 * [KB2932635](https://support.microsoft.com/kb/2932635) -5.3.1003, 2014. február  
 * [KB2899874](https://support.microsoft.com/kb/2899874) -5.3.0721, 2013. október
 * [KB2875551](https://support.microsoft.com/kb/2875551) -5.3.0534, 2013. augusztus
+
+## <a name="troubleshooting"></a>Hibaelhárítás 
+
+> [!NOTE]
+> Amikor frissíti a Microsoft Identity Manager vagy az AADConnect ECMA2 összekötők használatával. 
+
+Az összekötő-definíció felel meg a frissítés után frissítenie kell vagy a következő hiba jelentését figyelmeztetés azonosítója 6947 alkalmazás Eseménynapló elindítása kap: "szerelvény verziója AAD-összekötő konfigurációjában ("X.X.XXX. "X") korábbi, mint a tényleges verzió ("X.X.XXX. "X") a "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll".
+
+A definíció frissítése:
+* Az összekötő-példány tulajdonságainak megnyitása
+* Kattintson a kapcsolat / lapon kapcsolódni
+  * Az összekötő fiókjaként adja meg a jelszót
+* Ezután kattintson az egyes tulajdonság lapokon
+  * Ha az összekötő a partíciók lapon van a frissítés gombra, és kattintson a lapnak a frissítés gombra
+* Az összes tulajdonság lap elérése után kattintson az OK gombra a módosítások mentéséhez.
+
 
 ## <a name="next-steps"></a>Következő lépések
 További információ a [az Azure AD Connect szinkronizálási szolgáltatás](active-directory-aadconnectsync-whatis.md) konfigurációs.

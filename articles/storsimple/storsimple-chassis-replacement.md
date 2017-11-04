@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5295c5dd039b1d4746ebaaf90372932e4c3e7c26
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bc23e64331ad18c604ffaa29476766827119cd4
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>Cserélje le a StorSimple eszköz készülékház
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [cserélje le a StorSimple eszköz váz](storsimple-8000-chassis-replacement.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt ismerteti, hogyan cserélje ki a StorSimple 8000 series eszköz eszközök befogadására szolgáló vázat. A StorSimple 8100 modell történik egyetlen ház (egy házban csoportosítva), mivel a 8600 kettős ház eszköz (két váz). Egy 8600 modell nincsenek esetleg sikertelen lehet, az eszköz két váz: az elsődleges ház vagy a EBOD ház a váz váz.
 

@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 06/13/2017
+ms.date: 11/03/2017
 ms.author: daleche
-ms.openlocfilehash: 22208bf4f138a7f7c3b263a1f310e27a0f085b37
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cc9b1e1474e67628857dd80a63850634469ca5e8
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Az Azure SQL Database kapcsolati problémák elhárítása
 Ha az Azure SQL Database létesített kapcsolat megszakad, [hibaüzenetek](sql-database-develop-error-messages.md). Ez a cikk központi Ez a témakör segítséget nyújt az Azure SQL Database kapcsolódási problémáinak elhárítása. Okozna [gyakori okainak](#cause) kapcsolódási problémák javasolja [hibaelhárításhoz](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , amely segít az identitás a problémát, és megoldásuk megoldására [átmeneti hibák](#troubleshoot-transient-errors) és [állandó vagy nem átmeneti hiba](#troubleshoot-persistent-errors). 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: 983abcd103a58be63053e466c767015c0835eaba
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 33a3474ed91194efbaf2ef96957ad268f43a717e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Az Azure virtuális hálózat Service Fabric Linux fürt központi telepítése
 Ez az oktatóanyag egy sorozat része. Megtudhatja, hogyan telepítheti Linux Service Fabric-fürt be egy meglévő Azure virtuális hálózatot (VNET), és részterv net az Azure parancssori felület használatával. Amikor végzett, hogy a fürt fut a felhőben, amely központilag telepíthető alkalmazások. A Windows PowerShell fürt létrehozásához lásd: [biztonságos Windows-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
@@ -98,7 +98,15 @@ Egy hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon a
 - a kulcscseréhez használt, amely exportálható egy személyes információcsere (.pfx) fájl hozható létre.
 - a tulajdonos nevét, amely megfelel a tartományt, amelyikhez a Service Fabric-fürt eléréséhez használt rendelkezik. A megfelelő szükség SSL a fürt HTTPS felügyeleti végpontokat és a Service Fabric Explorerben talál. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) származó nem szerezze be a. cloudapp.azure.com tartomány. Be kell szereznie egy egyéni tartománynevet a fürt számára. A hitelesítésszolgáltató tanúsítvány kérése, amikor a tanúsítvány tulajdonosának nevét meg kell egyeznie az egyéni tartománynevet, amelyekkel a fürt számára.
 
-Adja meg az üres **clusterName**, **adminUserName**, és **adminPassword** paramétereit a *linuxcluster.parameters.json* fájl a telepítéshez.  Hagyja a **certificateThumbprint**, **certificateUrlValue**, és **sourceVaultValue** paraméter üres, létrehozhat egy önaláírt tanúsítványt.  Ha egy meglévő kulcstároló korábban feltöltött tanúsítványt használni kívánt, töltse ki azokat a paraméterértékek.
+Töltse ki a üres paraméterek a *linuxcluster.parameters.json* fájl az adott környezethez:
+
+|Paraméter|Érték|
+|---|---|
+|adminPassword|Jelszó #1234|
+|adminUserName|vmadmin|
+|Fürtnév|mysfcluster|
+
+Hagyja a **certificateThumbprint**, **certificateUrlValue**, és **sourceVaultValue** paraméter üres, létrehozhat egy önaláírt tanúsítványt.  Ha egy meglévő kulcstároló korábban feltöltött tanúsítványt használni kívánt, töltse ki azokat a paraméterértékek.
 
 Az alábbi parancsfájl használ a [az ú fürt létrehozása](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancs és a sablon telepítése egy új fürtöt az Azure-ban. A parancsmag is létrehoz egy új kulcstartó az Azure-ban, a key vault ad hozzá egy új önaláírt tanúsítványt, és letölti a fájlt helyileg. A többi paraméter használatával adhat meg egy meglévő tanúsítvány és/vagy a kulcstartót a [az ú fürt létrehozása](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancsot.
 
@@ -148,9 +156,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Csatlakozzon a fürthöz Service Fabric parancssori felület használatával
 > * A fürt eltávolítása
 
-A következő előzetes a következő oktatóanyag segítséget nyújt a Service Fabric API Management telepítése.
+A következő előzetes az alábbi oktatóanyag áttekintésével megismerheti, hogyan méretezni a fürtön.
 > [!div class="nextstepaction"]
-> [API Managmentet telepítése](service-fabric-tutorial-deploy-api-management.md)
+> [A fürt méretezése](service-fabric-tutorial-scale-cluster.md)
 
 
 [network-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/network.json
