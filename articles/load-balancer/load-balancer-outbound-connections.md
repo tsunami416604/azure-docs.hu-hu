@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 93e6c87a9d445ca448509a256247fb5e4749ec1c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
-ms.translationtype: HT
+ms.openlocfilehash: 3b51276fe074282339d30d075547160277bee53f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>Kimenő kapcsolatok áttekintése az Azure-ban
 
@@ -93,4 +93,4 @@ Azure algoritmust használ, a készlet mérete alapján SNAT port számának meg
 
 Kimenő kapcsolatok 4 perces üresjárati időtúllépés rendelkezik.  Ez nem módosítható.
 
-Fontos rememember, amely SNAT elérhető portok száma nem fordíthatók le közvetlenül a kapcsolatok száma. Ellenőrizze a fent arról, mikor és hogyan SNAT portok foglal le, és ez kimeríthető erőforrás kezelése.
+Fontos megjegyezni, hogy SNAT elérhető portok száma nem fordíthatók le, közvetlenül a kapcsolatok száma. Ellenőrizze a fent arról, mikor és hogyan SNAT portok foglal le, és ez kimeríthető erőforrás kezelése.

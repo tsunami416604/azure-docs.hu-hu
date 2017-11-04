@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 5220ca664d5c7584f3aada0bb707099f91d5650f
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
-ms.translationtype: HT
+ms.openlocfilehash: 0eff48ec65a01a2fc3fa9f7652dd8e1a0fc8dd2a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Az Azure Data Factory folyamatok Spark programok meghívása
 
@@ -56,7 +56,7 @@ A Data Factory-folyamat létrehozása egy Spark tevékenységet a szokásos lép
 
 ### <a name="prerequisites"></a>Előfeltételek
 1. Hozzon létre egy **általános célú Azure Storage-fiók** a forgatókönyv a következő utasítással: [hozzon létre egy tárfiókot](../../storage/common/storage-create-storage-account.md#create-a-storage-account).  
-2. Hozzon létre egy **Azure HDInsight az Apache Spark-fürt** által az oktatóanyag utasításai a következő: [Azure HDInsight létrehozása Apache Spark-fürt](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Társítsa a #1. lépésben a fürthöz létrehozott Azure-tárfiókot.  
+2. Hozzon létre egy **Azure HDInsight az Apache Spark-fürt** által az oktatóanyag utasításai a következő: [Azure HDInsight létrehozása Apache Spark-fürt](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Társítsa a #1. lépésben a fürthöz létrehozott Azure-tárfiókot.  
 3. Töltse le, és tekintse át a python-parancsfájl **test.py** helyen található: [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).  
 3.  Töltse fel **test.py** számára a **pyFiles** mappájában a **adfspark** az Azure Blob Storage tárolóban. A tároló és a mappa létrehozása, ha azok nem léteznek.
 
@@ -234,7 +234,7 @@ Ebben a lépésben a folyamat létrehoz egy **HDInsightSpark** tevékenység. Je
     ![Jupyter lekérdezés eredményei](media/data-factory-spark/jupyter-notebook-results.png)
 
 <!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-Lásd: [Spark SQL-lekérdezés futtatható](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) szakaszban részletes információkra van szüksége. 
+Lásd: [Spark SQL-lekérdezés futtatható](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) szakaszban részletes információkra van szüksége. 
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 Óta beállított **getDebugInfo** való **mindig**, megjelenik egy **napló** almappájában a **pyFiles** mappa az Azure Blob-tárolóban. A napló mappában a naplófájl további részleteket biztosít. Ez a naplófájl akkor különösen akkor hasznos, ha nem sikerül. Termelési környezetben érdemes lehet állítsa **hiba**.

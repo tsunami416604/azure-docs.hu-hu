@@ -1,181 +1,182 @@
-Organizations have large-scale computing needs. These Big Compute workloads include engineering design and analysis, financial risk calculations, image rendering, complex modeling, Monte Carlo simulations, and more. 
+Szervezet már rendelkezik a nagyméretű számítógépes igényeinek. Az ilyen nagy számítási terhelések például a műszaki tervezés és elemzés, pénzügyi kockázat számítások, kép megjelenítési, összetett modellezési, Monte Carlo szimulációja és több. 
 
-Use the Azure cloud to efficiently run compute-intensive Linux and Windows workloads, from parallel batch jobs to traditional HPC simulations. Run your HPC and batch workloads on Azure infrastructure, with your choice of compute services, grid managers, Marketplace solutions, and vendor-hosted (SaaS) applications. Azure provides flexible solutions to distribute work and scale to thousands of VMs or cores and then scale down when you need fewer resources. 
-
-
-
-## <a name="solution-options"></a>Solution options
+Az Azure felhőalapú segítségével hatékonyan alkalmazásokat és szolgáltatásokat futtathatnak számítási igényű Linux és a Windows, a hagyományos HPC szimulációja párhuzamos kötegelt feladatok. Futtassa a HPC, és az Azure infrastruktúra, és a választott kötegelt munkaterhelését számítási szolgáltatások, a rács kezelők, a piactér megoldások és a szállító által szolgáltatott (SaaS) alkalmazások. Azure munkahelyi terjesztése és méretezhető, több ezer virtuális gépek vagy mag, vagy ha kevesebb erőforrást kell majd csökkentheti rugalmas megoldást kínál. 
 
 
 
-* **Do-it-yourself solutions**
-    * Set up your own cluster environment in Azure virtual machines or [virtual machine scale sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). 
-    * Lift and shift an on-premises cluster, or deploy a new cluster in Azure for additional capacity. 
-    * Use Azure Resource Manager templates to deploy leading [workload managers](#workload-managers), infrastructure, and [applications](#hpc-applications). 
-    * Choose [HPC and GPU VM sizes](#hpc-and-gpu-sizes) that include specialized hardware and network connections for MPI or GPU workloads. 
-    * Add [high performance storage](#hpc-storage) for I/O-intensive workloads.
-* **Hybrid solutions**
-    * Extend your on-premises solution to offload ("burst") peak workloads to Azure infrastructure
-    * Use cloud compute on-demand with your existing [workload manager](#workload-manager).
-    * Take advantage of [HPC and GPU VM sizes](#hpc-and-gpu-sizes) for MPI or GPU workloads.
-* **Big Compute solutions as a service**
-    * Develop custom Big Compute solutions and workflows using [Azure Batch](#azure-batch) and related [Azure services](#related-azure-services).
-    * Run Azure-enabled engineering and simulation solutions from vendors including [Altair](http://www.altair.com/), [Rescale](https://www.rescale.com/azure/), and [Cycle Computing](https://cyclecomputing.com/) (now [joined with Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).
-* **Marketplace solutions**
-    * Use the scale of [HPC applications](#hpc-applications) and [solutions](#marketplace-solutions) offered in the [Azure Marketplace](https://azuremarketplace.microsoft.com/). 
+## <a name="solution-options"></a>Megoldás beállításai
+
+
+
+* **Saját munka megoldások**
+    * Állítsa be a saját fürt környezetet az Azure virtuális gépeken vagy [virtuálisgép-méretezési csoportok](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). 
+    * Növekedési és az eltolás mértékét megadó egy helyi fürtöt, vagy az Azure-ban további kapacitást az új fürt központi telepítése. 
+    * Bevezető telepítése Azure Resource Manager-sablonok segítségével [munkaterhelés kezelők](#workload-managers), infrastruktúra, és [alkalmazások](#hpc-applications). 
+    * Válasszon [HPC-és a GPU VM](#hpc-and-gpu-sizes) , amelyek tartalmazzák a speciális hardver- és hálózati kapcsolatok MPI vagy GPU munkaterhelésekhez. 
+    * Adja hozzá [nagy teljesítményű tárolási](#hpc-storage) I/O-igényes munkaterhelések.
+* **Hibrid megoldások**
+    * A helyszíni megoldás kiszervezéséhez ("kapacitásnövelés") csúcs munkaterhelések Azure-infrastruktúra bővítése
+    * A meglévő felhőalapú számítási igény használata [munkaterhelés manager](#workload-manager).
+    * Előnyeit [HPC-és a GPU VM](#hpc-and-gpu-sizes) MPI vagy GPU munkaterhelésekhez.
+* **Nagy számítási megoldások szolgáltatásként**
+    * Egyéni nagy számítási megoldások és munkafolyamatok használatával [Azure Batch](#azure-batch) és kapcsolódó [Azure-szolgáltatások](#related-azure-services).
+    * Futtassa az Azure-kompatibilis termékgondozó csoportja és a szimuláció megoldások beleértve szállítóktól származó [Altair](http://www.altair.com/), [átméretezése](https://www.rescale.com/azure/), és [ciklus számítástechnikai](https://cyclecomputing.com/) (most [csatlakoztatni a Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).
+* **Piactér-megoldások**
+    * A skála használati [HPC-alkalmazásokhoz](#hpc-applications) és [megoldások](#marketplace-solutions) érhető el a [Azure piactér](https://azuremarketplace.microsoft.com/). 
     
 
 
-The following sections provide more information about the supporting technologies and links to guidance.
+A következő szakaszokban további információt a támogató technológiákat és útmutatást mutató hivatkozásokat tartalmaz.
 
 
 
-## <a name="marketplace-solutions"></a>Marketplace solutions
+## <a name="marketplace-solutions"></a>Piactér-megoldások
 
-Visit the [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) for Linux and Windows VM images and solutions designed for HPC. Examples include:
+Látogasson el a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/) a Linux és a Windows virtuális gép képek és készült HPC megoldások. Példák erre vonatkozóan:
 
-* [RogueWave CentOS-based HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73HPC?tab=Overview)
-* [SUSE Linux Enterprise Server for HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
-*  [TIBCO Grid Server Engine](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tibco-software.gridserverlinuxengine?tab=Overview)
-* [Azure Data Science VM for Windows and Linux](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)
+* [RogueWave CentOS-alapú HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73HPC?tab=Overview)
+* [SUSE Linux Enterprise Server HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
+*  [TIBCO rács Server motor](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tibco-software.gridserverlinuxengine?tab=Overview)
+* [Az Azure Data tudományos Windows és Linux rendszerű virtuális gép](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md)
 * [D3View](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/xfinityinc.d3view-v5?tab=Overview)
 * [UberCloud](https://azure.microsoft.com/search/marketplace/?q=ubercloud)
-* [Intel Cloud Edition for Lustre](https://azuremarketplace.microsoft.com/marketplace/apps/intel.lustre-cloud-edition-eval?tab=Overview)
+* [Intel felhő Edition fényesség](https://azuremarketplace.microsoft.com/marketplace/apps/intel.lustre-cloud-edition-eval?tab=Overview)
 
 
  
-## <a name="hpc-applications"></a>HPC applications
+## <a name="hpc-applications"></a>HPC-alkalmazásokhoz
 
-Run custom or commercial HPC applications in Azure. Several examples in this section are benchmarked to scale efficiently with additional VMs or compute cores. Visit the [Azure Marketplace](https://marketplace.azure.com) for ready-to-deploy solutions.
+Futtassa az egyéni vagy kereskedelmi HPC-alkalmazásokhoz az Azure-ban. Ebben a szakaszban néhány példa további virtuális gépek hatékony méretezést vagy magok számítási rendszer benchmarked. Látogasson el a [Azure piactér](https://marketplace.azure.com) megoldások kész a központi telepítése.
 
 > [!NOTE]
-> Check with the vendor of any commercial application for licensing or other restrictions for running in the cloud. Not all vendors offer pay-as-you-go licensing. You might need a licensing server in the cloud for your solution, or connect to an on-premises license server.
+> Ellenőrizze a licencelési vagy más korlátozásokat a felhőben futó összes kereskedelmi alkalmazás gyártójával. Nem minden szállító kínál használatalapú licencet. Lehet, hogy a megoldást a felhőben egy licenckiszolgálóra kell, vagy a helyszíni licenc kiszolgálóhoz kapcsolódni.
 
-### <a name="engineering-applications"></a>Engineering applications
+### <a name="engineering-applications"></a>Mérnöki csapathoz alkalmazások
 
 
 * [Altair RADIOSS](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/)
 * [ANSYS CFD](https://azure.microsoft.com/blog/ansys-cfd-and-microsoft-azure-perform-the-best-hpc-scalability-in-the-cloud/)
-* [MATLAB Distributed Computing Server](../articles/virtual-machines/windows/matlab-mdcs-cluster.md)
-* [StarCCM+](https://blogs.msdn.microsoft.com/azurecat/2017/07/07/run-star-ccm-in-an-azure-hpc-cluster/)
+* [MATLAB elosztott számítástechnikai kiszolgáló](../articles/virtual-machines/windows/matlab-mdcs-cluster.md)
+* [StarCCM +](https://blogs.msdn.microsoft.com/azurecat/2017/07/07/run-star-ccm-in-an-azure-hpc-cluster/)
 * [OpenFOAM](https://simulation.azure.com/casestudies/Team-182-ABB-UC-Final.pdf)
 
 
 
-### <a name="graphics-and-rendering"></a>Graphics and rendering
+### <a name="graphics-and-rendering"></a>Grafikus és megjelenítés
 
-* [Autodesk Maya, 3ds Max, and Arnold](../articles/batch/batch-rendering-service.md) on Azure Batch (preview)
+* [Autodesk Maya, 3ds Max és Arnold](../articles/batch/batch-rendering-service.md) Azure Batch (előzetes verzió)
 
-### <a name="ai-and-deep-learning"></a>AI and deep learning
+### <a name="ai-and-deep-learning"></a>AI és részletes tanulás
 
+* [A Batch-AI](../articles/batch-ai/overview.md) mély tanulási modellek betanítása
 * [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
-* [Deep learning toolkit for Data Science VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
-* [Batch Shipyard recipes for deep learning](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
+* [Virtuális gép tanulási mély](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
+* [Részletes biztonságával hajógyárnak receptet köteg](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
 
 
 
 
 
 
-## <a name="hpc-and-gpu-vm-sizes"></a>HPC and GPU VM sizes
-Azure offers a range of sizes for [Linux](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) and [Windows](../articles/virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) VMs, including sizes designed for compute-intensive workloads. For example, H16r and H16mr VMs can connect to a high throughput back-end RDMA network. This cloud network can improve the performance of tightly coupled parallel applications running under [Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) or Intel MPI. 
+## <a name="hpc-and-gpu-vm-sizes"></a>HPC-és a GPU VM
+Azure számos mérete [Linux](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [Windows](../articles/virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) virtuális gépeken, beleértve a számítási-igényes munkaterhelések számára tervezett méretét. Például H16r és H16mr virtuális gépek magas teljesítmény háttér-RDMA hálózati is elérheti. A felhő hálózati javíthatja alatt futó szorosan összekapcsolt párhuzamos alkalmazások teljesítményének [Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) vagy Intel MPI. 
 
-N-series VMs feature NVIDIA GPUs designed for compute-intensive or graphics-intensive applications including artificial intelligence (AI) learning and visualization. 
+N sorozatú virtuális gépek szolgáltatás NVIDIA Feldolgozóegységekkel, beleértve a mesterséges intelligencia (AI) learning és a képi megjelenítés számítási igényű vagy grafikai igényű alkalmazások számára tervezett. 
 
-Learn more:
+További információ:
 
-* High performance compute sizes for [Linux](../articles/virtual-machines/linux/sizes-hpc.md) and [Windows](../articles/virtual-machines/windows/sizes-hpc.md) VMs 
-* GPU-enabled sizes for [Linux](../articles/virtual-machines/linux/sizes-gpu.md) and [Windows](../articles/virtual-machines/windows/sizes-gpu.md) VMs 
+* Nagy teljesítményű számítási mérete [Linux](../articles/virtual-machines/linux/sizes-hpc.md) és [Windows](../articles/virtual-machines/windows/sizes-hpc.md) virtuális gépek 
+* GPU-kompatibilis mérete [Linux](../articles/virtual-machines/linux/sizes-gpu.md) és [Windows](../articles/virtual-machines/windows/sizes-gpu.md) virtuális gépek 
 
-Learn how to:
+Az alábbiak végrehajtásának módját ismerheti meg:
 
-* [Set up a Linux RDMA cluster to run MPI applications](../articles/virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Set up a Windows RDMA cluster with Microsoft HPC Pack to run MPI applications](../articles/virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Use compute-intensive VMs in Batch pools](../articles/batch/batch-pool-compute-intensive-sizes.md)
+* [MPI-alkalmazások futtatására Linux RDMA fürt beállítása](../articles/virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [MPI-alkalmazások futtatására és a Microsoft HPC Pack Windows RDMA fürt beállítása](../articles/virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Kötegelt készletek számítási igényű virtuális gépek használata](../articles/batch/batch-pool-compute-intensive-sizes.md)
 
 
 
 ## <a name="azure-batch"></a>Azure Batch
-[Batch](../articles/batch/batch-technical-overview.md) is a platform service for running large-scale parallel and high-performance computing (HPC) applications efficiently in the cloud. Azure Batch schedules compute-intensive work to run on a managed pool of virtual machines, and can automatically scale compute resources to meet the needs of your jobs. 
+[Kötegelt](../articles/batch/batch-technical-overview.md) van egy platform szolgáltatás a felügyeleti teendők központjaként párhuzamosan futó és nagy teljesítményű számítástechnikai (HPC) alkalmazások hatékonyan a felhőben. Azure Batch ütemezések számítási igényű működjenek a felügyelt készletbe, a virtuális gépek futtatásához, és is automatikusan méretezési számítási erőforrásokat a feladatok igényeinek. 
 
-SaaS providers or developers can use the Batch SDKs and tools to integrate HPC applications or container workloads with Azure, stage data to Azure, and build job execution pipelines. 
+SaaS-szolgáltatók és a fejlesztőknek a kötegelt SDK-k és eszközök segítségével HPC alkalmazások vagy munkaterhelések tároló integrálása az Azure-szakasz adatokat az Azure-ba, és feladat végrehajtási folyamatok felépítéséhez. 
 
-Learn how to:
+Az alábbiak végrehajtásának módját ismerheti meg:
 
-* [Get started developing with Batch](../articles/batch/batch-dotnet-get-started.md)
-* [Use Azure Batch code samples](https://github.com/Azure/azure-batch-samples)
-* [Use low-priority VMs with Batch (preview)](../articles/batch/batch-low-pri-vms.md)
-* [Run containerized HPC workloads with Batch Shipyard](https://github.com/Azure/batch-shipyard)
-* [Use the R language with Batch](https://github.com/Azure/doAzureParallel)
+* [A kötegelt fejlesztés első](../articles/batch/batch-dotnet-get-started.md)
+* [Használja az Azure Batch-Kódminták](https://github.com/Azure/azure-batch-samples)
+* [Kis prioritású virtuális gépek használata a kötegelt](../articles/batch/batch-low-pri-vms.md)
+* [HPC tárolóalapú munkafolyamatok hibaüzenettel kötegelt hajógyárnak](https://github.com/Azure/batch-shipyard)
+* [A kötegelt az R nyelv használatával](https://github.com/Azure/doAzureParallel)
 
-## <a name="workload-managers"></a>Workload managers
+## <a name="workload-managers"></a>Munkaterhelés-kezelők
 
-The following are examples of cluster and workload managers that can run in Azure infrastructure. Create stand-alone clusters in Azure VMs or burst to Azure VMs from an on-premises cluster. 
+A következő példák fürt és a munkaterhelés-kezelők futtatható Azure-infrastruktúra. Hozzon létre különálló fürtök Azure virtuális gépeken vagy kapacitásnövelés Azure virtuális gépek helyszíni fürtök. 
 * [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/) 
-* [Bright Cluster Manager](http://www.brightcomputing.com/technology-partners/microsoft)
-* [IBM Spectrum Symphony and Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/)
+* [Világos kezelő](http://www.brightcomputing.com/technology-partners/microsoft)
+* [IBM pontszámot Symphony és Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/)
 * [PBS Pro](http://pbspro.org)
-* [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029(v=ws.11).aspx) - see options to run in [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)  and [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VMs 
+* [A Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029(v=ws.11).aspx) -beállítások futtatásához [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) virtuális gépek 
 
 
 
-## <a name="hpc-storage"></a>HPC storage
+## <a name="hpc-storage"></a>HPC-tároló
 
-Large-scale Batch and HPC workloads have demands for data storage and access that exceed the capabilities of traditional cloud file systems. Implement parallel file system solutions in Azure such as [Lustre](http://lustre.org/) and [BeeGFS](http://www.beegfs.com/content/).
+A nagyméretű kötegelt és HPC munkaterhelések igényekkel rendelkezhetnek adattárolás és hozzáférés terén, mint a hagyományos felhő fájlrendszerek képességeit. Például az Azure-ban párhuzamos fájl rendszer megoldások megvalósítását [fényesség](http://lustre.org/) és [BeeGFS](http://www.beegfs.com/content/).
 
-Learn more:
+További információ:
 
-* [Parallel file systems for HPC storage on Azure](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
+* [Párhuzamos fájlrendszerek HPC tárolás az Azure-on](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
 
 
-## <a name="related-azure-services"></a>Related Azure services
+## <a name="related-azure-services"></a>Kapcsolódó Azure-szolgáltatások
 
-Azure virtual machines, virtual machine scale sets, Batch, and related compute services are the foundation of most Azure HPC solutions. However, your solution can take advantage of many related Azure services. Here is a partial list:
+Az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a kötegelt és a kapcsolódó számítási szolgáltatások olyan Azure HPC-megoldások többsége alapját. A megoldás azonban számos kapcsolódó Azure-szolgáltatások előnyeinek életbe. Ez egy részleges lista:
 
 ### <a name="storage"></a>Storage
 
-* [Blob, table, and queue storage](../articles/storage/storage-introduction.md)
-* [File storage](../articles/storage/storage-files-introduction.md)
+* [A BLOB, table és a queue storage](../articles/storage/storage-introduction.md)
+* [A File storage](../articles/storage/storage-files-introduction.md)
 
-### <a name="data-and-analytics"></a>Data and analytics
-* [HDInsight](../articles/hdinsight/hdinsight-hadoop-introduction.md) for Hadoop clusters on Azure
+### <a name="data-and-analytics"></a>Adatok és analitika
+* [HDInsight](../articles/hdinsight/hdinsight-hadoop-introduction.md) a Hadoop-fürtök az Azure-on
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
 * [SQL Database](../articles/sql-database/sql-database-technical-overview.md)
 
-### <a name="networking"></a>Networking
-* [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
+### <a name="networking"></a>Hálózat
+* [Virtuális hálózat](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Tárolók
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
 * [Container Registry](../articles/container-registry/container-registry-intro.md)
 
 
 
-## <a name="customer-stories"></a>Customer stories
+## <a name="customer-stories"></a>Ügyfelek történetei
 
-Here are examples of customers that have solved business problems with Azure HPC solutions:
+Az alábbiakban példát kell megoldani az üzleti problémák Azure HPC-megoldás az ügyfelek:
 
 * [ANEO](https://customers.microsoft.com/story/it-provider-finds-highly-scalable-cloud-based-hpc-redu) 
-* [AXA Global P&C](https://customers.microsoft.com/story/axa-global-p-and-c)
+* [Globális P & C AXA](https://customers.microsoft.com/story/axa-global-p-and-c)
 * [Axioma](https://customers.microsoft.com/story/axioma-delivers-fintechs-first-born-in-the-cloud-multi-asset-class-enterprise-risk-solution)
 * [d3View](https://customers.microsoft.com/story/big-data-solution-provider-adopts-new-cloud-gains-thou)
 * [Hymans Robertson](https://customers.microsoft.com/story/hymans-robertson)
 * [MetLife](https://enterprise.microsoft.com/en-us/customer-story/industries/insurance/metlife/)
-* [Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
+* [A Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
 * [Milliman](https://customers.microsoft.com/story/actuarial-firm-works-to-transform-insurance-industry-w)
-* [Mitsubishi UFJ Securities International](https://customers.microsoft.com/story/powering-risk-compute-grids-in-the-cloud)
+* [Mitsubishi UFJ biztosítékok nemzetközi](https://customers.microsoft.com/story/powering-risk-compute-grids-in-the-cloud)
 * [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
-* [Towers Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
+* [Torony Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 
 
-## <a name="next-steps"></a>Next steps
-* Learn more about Big Compute solutions for [engineering simulation](https://simulation.azure.com/), [rendering](https://simulation.azure.com/), [banking and capital markets](https://finance.azure.com/), and [genomics](https://enterprise.microsoft.com/en-us/industries/health/genomics/).
-* For the latest announcements, see the [Microsoft HPC and Batch team blog](http://blogs.technet.com/b/windowshpc/) and the [Azure blog](https://azure.microsoft.com/blog/tag/hpc/).
+## <a name="next-steps"></a>Következő lépések
+* További információ a megoldások nagy számítási [szimuláció mérnöki](https://simulation.azure.com/), [megjelenítési](https://simulation.azure.com/), [banki és nagy piacok](https://finance.azure.com/), és [genomika](https://enterprise.microsoft.com/en-us/industries/health/genomics/) .
+* A legújabb bejelentésekért lásd: [A Microsoft HPC és Batch csapatának blogja](http://blogs.technet.com/b/windowshpc/) és [Azure-blog](https://azure.microsoft.com/blog/tag/hpc/).
 
-* Use the managed and scalable Azure [Batch](https://azure.microsoft.com/services/batch/) service to run compute-intensive workloads, without managing underlying infrastructure [Learn more](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/)
+* Használja a felügyelt és méretezhető Azure [kötegelt](https://azure.microsoft.com/services/batch/) szolgáltatás futtatásához a számítási-igényes munkaterhelések, alapul szolgáló infrastruktúra kezelése nélkül [további](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/)
 
 
 

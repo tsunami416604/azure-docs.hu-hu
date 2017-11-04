@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 2d033e5af13660c99aba813c58b743bf94a6b95a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>Figyelése és hibaelhárítása szempontjából a virtuális gépek és fizikai kiszolgálók védelme
 A figyelési és hibaelhárítási útmutató segítségével megtudhatja, hogyan replikálás állapotának nyomon követése és technikák hibaelhárítása az Azure Site Recovery.
@@ -55,7 +55,7 @@ A hiba részletes adatait segítségével azonosíthatók a lehetséges ok és a
 
 ![Egy adott feladat kapcsolatos hiba részleteit megjelenítő párbeszédpanel](media/site-recovery-monitoring-and-troubleshooting/image5.png)
 
-Az előző példában egy másik művelet folyamatban úgy tűnik, hogy a védelem konfigurálása sikertelen lehet okozza. Hárítsa el a problémát a javaslat alapján, és kattintson a **RESART** való indítsa el újra a műveletet.
+Az előző példában egy másik művelet folyamatban úgy tűnik, hogy a védelem konfigurálása sikertelen lehet okozza. Hárítsa el a problémát a javaslat alapján, és kattintson a **indítsa újra a** való indítsa el újra a műveletet.
 
 ![Az Újraindítás gombra, a feladatok lap](media/site-recovery-monitoring-and-troubleshooting/image6.png)
 

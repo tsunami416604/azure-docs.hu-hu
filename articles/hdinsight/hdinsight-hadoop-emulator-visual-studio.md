@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/11/2017
 ms.author: larryfr
-ms.openlocfilehash: 574ccaa8b2d9448a60ddf8adc7f92fa3683b1d61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 53db03029ffca724638871b22a12dfa7f160fc64
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Az Azure Data Lake tools használja a Visual Studio és a Hortonworks védőfal
 
@@ -29,7 +29,7 @@ A a Hortonworks védőfal lehetővé teszi, hogy helyileg dolgozik hadooppal a f
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Hortonworks védőfal, a virtuális gépen futó a fejlesztési környezetet. Ez a dokumentum lett írva, és a védőfal Oracle VirtualBox-beli tesztelése. A védőfal beállításával kapcsolatos információkért lásd: a [Ismerkedjen meg a Hortonworks védőfal.](hdinsight-hadoop-emulator-get-started.md) a dokumentum.
+* A Hortonworks védőfal, a virtuális gépen futó a fejlesztési környezetet. Ez a dokumentum lett írva, és a védőfal Oracle VirtualBox-beli tesztelése. A védőfal beállításával kapcsolatos információkért lásd: a [Ismerkedjen meg a Hortonworks védőfal.](hadoop/apache-hadoop-emulator-get-started.md) a dokumentum.
 
 * A Visual Studio 2013, Visual Studio 2015-öt vagy a Visual Studio 2017 (minden kiadás).
 
@@ -39,7 +39,7 @@ A a Hortonworks védőfal lehetővé teszi, hogy helyileg dolgozik hadooppal a f
 
 ## <a name="configure-passwords-for-the-sandbox"></a>A védőfal jelszavak beállítása
 
-Győződjön meg arról, hogy fut-e a Hortonworks védőfal. Ezután kövesse a [Ismerkedés a Hortonworks védőfal](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentum. Ezeket a lépéseket a jelszó beállítása az SSH `root` fiókot, és az Ambari `admin` fiók. Ezek a jelszavak használják, a Visual Studio eszközből a védőfal való csatlakozás esetén.
+Győződjön meg arról, hogy fut-e a Hortonworks védőfal. Ezután kövesse a [Ismerkedés a Hortonworks védőfal](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentum. Ezeket a lépéseket a jelszó beállítása az SSH `root` fiókot, és az Ambari `admin` fiók. Ezek a jelszavak használják, a Visual Studio eszközből a védőfal való csatlakozás esetén.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Az eszközök csatlakozni a védőfal
 

@@ -1,142 +1,142 @@
-# <a name="azure-managed-disks-overview"></a>Azure Managed Disks Overview
+# <a name="azure-managed-disks-overview"></a>Az Azure felügyelt lemezekhez – áttekintés
 
-Azure Managed Disks simplifies disk management for Azure IaaS VMs by managing the [storage accounts](../articles/storage/common/storage-introduction.md) associated with the VM disks. You only have to specify the type ([Premium](../articles/storage/common/storage-premium-storage.md) or [Standard](../articles/storage/common/storage-standard-storage.md)) and the size of disk you need, and Azure creates and manages the disk for you.
+Azure-lemezeket felügyelt egyszerűbbé teszi a Lemezkezelés Azure IaaS virtuális gépekhez való kezelésekor a [tárfiókok](../articles/storage/common/storage-introduction.md) a virtuális gépek lemezei társított. Csak akkor kell megadnia a típus ([prémium](../articles/virtual-machines/windows/premium-storage.md) vagy [szabványos](../articles/virtual-machines/windows/standard-storage.md)) lemez mérete van szüksége, és Azure hoz létre, és az Ön kezeli a lemezt.
 
-## <a name="benefits-of-managed-disks"></a>Benefits of managed disks
+## <a name="benefits-of-managed-disks"></a>Felügyelt lemezek előnyei
 
-Let's take a look at some of the benefits you gain by using managed disks, starting with this Channel 9 video, [Better Azure VM Resiliency with Managed Disks](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
+Vessen egy pillantást, ettől kezdve által kezelt lemezek segítségével kezdődő, és ezt a Channel 9 videót előnyöket nyújtja [jobb Azure VM rugalmassági felügyelt lemezzel](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
 <br/>
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency/player]
 
-### <a name="simple-and-scalable-vm-deployment"></a>Simple and scalable VM deployment
+### <a name="simple-and-scalable-vm-deployment"></a>Egyszerű és skálázható módon telepíthetők a Virtuálisgép-telepítéshez
 
-Managed Disks handles storage for you behind the scenes. Previously, you had to create storage accounts to hold the disks (VHD files) for your Azure VMs. When scaling up, you had to make sure you created additional storage accounts so you didn't exceed the IOPS limit for storage with any of your disks. With Managed Disks handling storage, you are no longer limited by the storage account limits (such as 20,000 IOPS / account). You also no longer have to copy your custom images (VHD files) to multiple storage accounts. You can manage them in a central location – one storage account per Azure region – and use them to create hundreds of VMs in a subscription.
+Kezelve lemezek leírók tárolási a háttérben. Korábban meg kellett storage-fiókok a lemezeket (VHD-fájlokat) az Azure virtuális gépek tárolására. Ha vertikális felskálázásával, ellenőrizze, hogy további tárfiókok létrehozott, a lemezek egyik tárolási IOPS-korláttal nem haladhatja meg kellett. A felügyelt lemezek kezelése tárolási, már nem korlátozott a tárfiókok korlátai által (például a 20 000 IOPS / fiók). Már nem kell több tárfiókot másolja az egyéni lemezképek (VHD-fájlokat). – Egy tárfiókot Azure régiónként – központi helyen kezelheti azokat, és hozhatók létre a virtuális gépek több száz egy előfizetésben.
 
-Managed Disks will allow you to create up to 10,000 VM **disks** in a subscription, which will enable you to create thousands of **VMs** in a single subscription. This feature also further increases the scalability of [Virtual Machine Scale Sets (VMSS)](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) by allowing you to create up to a thousand VMs in a VMSS using a Marketplace image.
+Felügyelt lemezek lehetővé teszi, hogy legfeljebb 10 000 virtuális gép létrehozása **lemezek** egy előfizetésben található, amely lehetővé teszi a több ezer létrehozásához **virtuális gépek** az egy-egy előfizetéshez. Ez a szolgáltatás tovább növeli a méretezhetőséget biztosít a [virtuális gép méretezési készletek (VMSS)](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) azáltal, hogy legfeljebb egy ezred virtuális gépeket létrehozni a Piactéri rendszerkép használatával VMSS.
 
-### <a name="better-reliability-for-availability-sets"></a>Better reliability for Availability Sets
+### <a name="better-reliability-for-availability-sets"></a>A rendelkezésre állási csoportok jobb megbízhatóságot
 
-Managed Disks provides better reliability for Availability Sets by ensuring that the disks of [VMs in an Availability Set](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) are sufficiently isolated from each other to avoid single points of failure. It does this by automatically placing the disks in different storage scale units (stamps). If a stamp fails due to hardware or software failure, only the VM instances with disks on those stamps fail. For example, let's say you have an application running on five VMs, and the VMs are in an Availability Set. The disks for those VMs won't all be stored in the same stamp, so if one stamp goes down, the other instances of the application continue to run.
+Felügyelt lemezek biztosít nagyobb megbízhatóságot rendelkezésre állási készletek biztosítva, hogy a lemezek [virtuális gépek rendelkezésre állási csoport](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) elég különítve egymástól elkerülése érdekében a hibaérzékeny pontokat. Ennek érdekében automatikusan helyezi el a lemezek különböző tárolási méretezési egységeit (bélyegek). A stamp hardver-vagy szoftverhiba miatt meghiúsul, ha csak a Virtuálisgép-példányok az adott bélyegzők lemezzel sikertelen. Ha tegyük fel például, öt virtuális gépeken futó egy alkalmazást, és a virtuális gépek rendelkezésre állási csoport. A lemezek a virtuális gépek nem tárolja az azonos bélyegen, így ha egyetlen stampet konfiguráljon leáll, az alkalmazás más példányát tovább futnak.
 
-### <a name="highly-durable-and-available"></a>Highly durable and available
+### <a name="highly-durable-and-available"></a>Tartós és magas rendelkezésre állású
 
-Azure Disks are designed for 99.999% availability. Rest easier knowing that you have three replicas of your data that enables high durability. If one or even two replicas experience issues, the remaining replicas help ensure persistence of your data and high tolerance against failures. This architecture has helped Azure consistently deliver enterprise-grade durability for IaaS disks, with an industry-leading ZERO% Annualized Failure Rate. 
+Az Azure Disks 99,999%-os elérhetőséggel büszkélkedhet. REST-könnyebb ismerete, hogy rendelkezik-e az adatok, amely lehetővé teszi a magas tartósság három replikákat. Ha egy vagy két replika meghibásodik, a fennmaradó replikák azok feladatátvételével garantálják az adatok megőrzését és a magas fokú hibatűrő képességet. Ezzel a kialakítással az Azure rendszeresen vállalati szintű tartósságot nyújthat az IaaS-lemezeknek, iparágvezető NULLA %-os Éves Hibaszázalékkal. 
 
-### <a name="granular-access-control"></a>Granular access control
+### <a name="granular-access-control"></a>A részletes hozzáférés-vezérlés
 
-You can use [Azure Role-Based Access Control (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) to assign specific permissions for a managed disk to one or more users. Managed Disks exposes a variety of operations, including read, write (create/update), delete, and retrieving a [shared access signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) for the disk. You can grant access to only the operations a person needs to perform his job. For example, if you don't want a person to copy a managed disk to a storage account, you can choose not to grant access to the export action for that managed disk. Similarly, if you don't want a person to use an SAS URI to copy a managed disk, you can choose not to grant that permission to the managed disk.
+Használhat [átruházásához hozzáférés-vezérlés (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) felügyelt lemezes jellemző engedélyek hozzárendelése egy vagy több felhasználó. Felügyelt lemezek tesz elérhetővé a különféle műveletek, beleértve az olvasási, írási (létrehozása/frissítése), törölje és lekérése egy [közös hozzáférésű jogosultságkód (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) a lemezhez. Csak azokat a műveleteket, a feladat végrehajtásához szükséges egy személy hozzáférést biztosíthat. Például ha nem szeretné felügyelt lemezes tárfiókba másolása egy személy, is nem kíván hozzáférést biztosíthat az exportálási művelet a felügyelt lemezt. Hasonlóképpen ha egy személy egy SAS URI követve másolja át a felügyelt lemezes, hogy nem szeretné, dönthet úgy, nem engedélyt szeretne megadni, hogy a kezelt lemezre.
 
-### <a name="azure-backup-service-support"></a>Azure Backup service support
-Use Azure Backup service with Managed Disks to create a backup job with time-based backups, easy VM restoration and backup retention policies. Managed Disks only support Locally Redundant Storage (LRS) as the replication option; this means it keeps three copies of the data within a single region. For regional disaster recovery, you must backup your VM disks in a different region using [Azure Backup service](../articles/backup/backup-introduction-to-azure-backup.md) and a GRS storage account as backup vault. Currently Azure Backup supports data disk sizes up to 1TB for backup. Read more about this at [Using Azure Backup service for VMs with Managed Disks](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+### <a name="azure-backup-service-support"></a>Az Azure Backup szolgáltatás támogatása
+A felügyelt lemezek Azure Backup szolgáltatás használatával hozzon létre egy biztonsági mentési feladat idő-alapú biztonsági mentések, könnyű VM-helyreállítás és biztonsági mentési adatmegőrzési. Felügyelt lemezek csak támogatják az helyileg redundáns tárolás (LRS) a következő replikálási beállítás; Ez azt jelenti, hogy az adatok három másolatot tart egyetlen régión belül. Regionális vész-helyreállítási kell biztonsági mentést készíteni a virtuális gépek lemezei be egy másik régióban [Azure Backup szolgáltatás](../articles/backup/backup-introduction-to-azure-backup.md) és a biztonsági mentési tárolóval Georedundáns tárfiókot. Azure biztonsági mentési támogatja adatlemez jelenleg biztonsági mentés akár 1TB méretű. További információk a következő [használata Azure Backup szolgáltatás felügyelt lemezzel rendelkező virtuális gépek](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
-## <a name="pricing-and-billing"></a>Pricing and Billing
+## <a name="pricing-and-billing"></a>Árak és számlázás
 
-When using Managed Disks, the following billing considerations apply:
-* Storage Type
+Felügyelt lemezek használatakor az alábbi számlázási szempontok érvényesek:
+* Tárolási típus
 
-* Disk Size
+* Lemezméret
 
-* Number of transactions
+* Tranzakciók száma
 
-* Outbound data transfers
+* Kimenő adatforgalom
 
-* Managed Disk Snapshots (full disk copy)
+* Felügyelt lemez – pillanatfelvételek (teljes lemezmásolás)
 
-Let's take a closer look at these.
+Vegyük a következő részletes bemutatása.
 
-**Storage Type:** Managed Disks offers 2 performance tiers: [Premium](../articles/storage/common/storage-premium-storage.md) (SSD-based) and [Standard](../articles/storage/common/storage-standard-storage.md) (HDD-based). The billing of a managed disk depends on which type of storage you have selected for the disk.
+**Tárolási típus:** felügyelt lemezek 2 teljesítmény rétegek kínál: [prémium](../articles/virtual-machines/windows/premium-storage.md) (SSD-alapú) és [szabványos](../articles/virtual-machines/windows/standard-storage.md) (HDD-alapú). Egy kezelt lemez számlázási függ a lemez kiválasztott tárolási típusát.
 
 
-**Disk Size**: Billing for managed disks depends on the provisioned size of the disk. Azure maps the provisioned size (rounded up) to the nearest Managed Disks option as specified in the tables below. Each managed disk maps to one of the supported provisioned sizes and is billed accordingly. For example, if you create a standard managed disk and specify a provisioned size of 200 GB, you are billed as per the pricing of the S20 Disk type.
+**Lemezméret**: felügyelt lemezek számlázási a kiépített lemez méretének függ. Azure a kiépített mérete (kerekítve) van leképezve a legközelebbi felügyelt lemezek beállítást az alábbi táblázatban megadottak. Minden felügyelt lemezes egy, a támogatott kiosztott méretű van leképezve, és ennek megfelelően van-e terhelve. Például hozzon létre egy standard szintű felügyelt lemezes és 200 GB-os kiosztott méretet adjon meg, ha díját is felszámítjuk a S20 lemeztípus díjszabás szerint.
 
-Here are the disk sizes available for a premium managed disk:
+Íme egy prémium szintű felügyelt lemezes a lemezméret:
 
-| **Premium Managed <br>Disk Type** | **P4** | **P6** |**P10** | **P20** | **P30** | **P40** | **P50** | 
+| **Prémium szintű kezelt <br>lemez típusa** | **P4** | **P6** |**P10** | **P20** | **P30** | **P40** | **P50** | 
 |------------------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| Disk Size        | 32 GB   | 64 GB   | 128 GB  | 512 GB  | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| Lemezméret        | 32 GB   | 64 GB   | 128 GB  | 512 GB  | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 
 
-Here are the disk sizes available for a standard managed disk:
+Íme egy standard szintű felügyelt lemezes a lemezméret:
 
-| **Standard Managed <br>Disk Type** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
+| **Standard felügyelt <br>lemez típusa** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
 |------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Disk Size        | 32 GB   | 64 GB   | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| Lemezméret        | 32 GB   | 64 GB   | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 
 
-**Number of transactions**: You are billed for the number of transactions that you perform on a standard managed disk. There is no cost for transactions for a premium managed disk.
+**A tranzakciók számának**: hajt végre egy standard szintű felügyelt lemezes tranzakciók száma a kell fizetni. Nincs a prémium szintű felügyelt lemezes tranzakciók költség nélkül.
 
-**Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/data-transfers/) (data going out of Azure data centers) incur billing for bandwidth usage.
+**Kimenő adatátvitel**: [kimenő adatátviteli](https://azure.microsoft.com/pricing/details/data-transfers/) (az adatok Azure-adatközpont kilépő) gigabájtalapú sávszélesség-használat.
 
-For detailed information on pricing for Managed Disks, see [Managed Disks Pricing](https://azure.microsoft.com/pricing/details/managed-disks).
-
-
-## <a name="managed-disk-snapshots"></a>Managed Disk Snapshots
-
-A Managed Snapshot is a read-only full copy of a managed disk which is stored as a standard managed disk by default. With snapshots, you can back up your managed disks at any point in time. These snapshots exist independent of the source disk and can be used to create new Managed Disks. They are billed based on the used size. For example, if you create a snapshot of a managed disk with provisioned capacity of 64 GB and actual used data size of 10 GB, snapshot will be billed only for the used data size of 10 GB.  
-
-[Incremental snapshots](../articles/virtual-machines/windows/incremental-snapshots.md) are currently not supported for Managed Disks, but will be supported in the future.
-
-To learn more about how to create snapshots with Managed Disks, please check out these resources:
-
-* [Create copy of VHD stored as a Managed Disk using Snapshots in Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Create copy of VHD stored as a Managed Disk using Snapshots in Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+Felügyelt lemezek árakkal kapcsolatos részletes információkért lásd: [lemezek árképzési felügyelt](https://azure.microsoft.com/pricing/details/managed-disks).
 
 
-## <a name="images"></a>Images
+## <a name="managed-disk-snapshots"></a>Felügyelt lemezes pillanatképek
 
-Managed Disks also support creating a managed custom image. You can create an image from your custom VHD in a storage account or directly from a generalized (sys-prepped) VM. This captures in a single image all managed disks associated with a VM, including both the OS and data disks. This enables creating hundreds of VMs using your custom image without the need to copy or manage any storage accounts.
+Felügyelt pillanatkép egy csak olvasható, teljes másolata egy felügyelt lemezes, amely alapértelmezés szerint egy standard szintű felügyelt lemezes tárolja. A pillanatképekkel akkor készíthet biztonsági másolatot a felügyelt lemezek bármikor időben. Ezeket a pillanatképeket független a forrás lemez létezik, és új kezelt lemezek létrehozásához használható. Azok a felhasznált mérete alapján számlázzuk. Például ha 64 GB-os kiosztott kapacitását és tényleges használt adatok mérete 10 GB-os felügyelt lemezes pillanatképet hoz létre, pillanatkép alapján számlázzuk csak a 10 GB-os használt adatok méretét.  
 
-For information on creating images, please check out the following articles:
-* [How to capture a managed image of a generalized VM in Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [How to generalize and capture a Linux virtual machine using the Azure CLI 2.0](../articles/virtual-machines/linux/capture-image.md)
+[Növekményes pillanatképek](../articles/virtual-machines/windows/incremental-snapshots.md) lemezek felügyelete jelenleg nem támogatottak, de a jövőben támogatott.
 
-## <a name="images-versus-snapshots"></a>Images versus snapshots
+A felügyelt lemezek pillanatképek létrehozásával kapcsolatos további tudnivalókért vegye ki ezeket az erőforrásokat:
 
-You often see the word "image" used with VMs, and now you see "snapshots" as well. It's important to understand the difference between these. With Managed Disks, you can take an image of a generalized VM that has been deallocated. This image will include all of the disks attached to the VM. You can use this image to create a new VM, and it will include all of the disks.
-
-A snapshot is a copy of a disk at the point in time it is taken. It only applies to one disk. If you have a VM that only has one disk (the OS), you can take a snapshot or an image of it and create a VM from either the snapshot or the image.
-
-What if a VM has five disks and they are striped? You could take a snapshot of each of the disks, but there is no awareness within the VM of the state of the disks – the snapshots only know about that one disk. In this case, the snapshots would need to be coordinated with each other, and that is not currently supported.
-
-## <a name="managed-disks-and-encryption"></a>Managed Disks and Encryption
-
-There are two kinds of encryption to discuss in reference to managed disks. The first one is Storage Service Encryption (SSE), which is performed by the storage service. The second one is Azure Disk Encryption, which you can enable on the OS and data disks for your VMs.
-
-### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
-
-[Azure Storage Service Encryption](../articles/storage/common/storage-service-encryption.md) provides encryption-at-rest and safeguard your data to meet your organizational security and compliance commitments. SSE is enabled by default for all Managed Disks, Snapshots and Images in all the regions where managed disks is available. Starting June 10th, 2017, all new managed disks/snapshots/images and new data written to existing managed disks are automatically encrypted-at-rest with keys managed by Microsoft.  Visit the [Managed Disks FAQ page](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) for more details.
+* [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Windows alatt](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Linux alatt](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 
-### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+## <a name="images"></a>Képek
 
-Azure Disk Encryption allows you to encrypt the OS and Data disks used by an IaaS Virtual Machine. This includes managed disks. For Windows, the drives are encrypted using industry-standard BitLocker encryption technology. For Linux, the disks are encrypted using the DM-Crypt technology. This is integrated with Azure Key Vault to allow you to control and manage the disk encryption keys. For more information, please see [Azure Disk Encryption for Windows and Linux IaaS VMs](../articles/security/azure-security-disk-encryption.md).
+Felügyelt lemezeket is támogatja a felügyelt egyéni lemezkép létrehozása. Kép hozhat létre, az egyéni virtuális merevlemez olyan tárfiókban illetve közvetlenül egy általánosított (sys prepped) virtuális Gépet. Ez az összes felügyelt egy virtuális Gépet, beleértve az operációs rendszer és az adatok lemezek hozzárendelt egyetlen rendszerképbe írja le. Ez lehetővé teszi a virtuális gépek az egyéni lemezképet, nem kell másolnia, vagy a storage-fiókok kezelése létrehozása több száz.
 
-## <a name="next-steps"></a>Next steps
+Információ az egyéni lemezképek adjon tekintse meg a következő cikkeket:
+* [Egy felügyelt képre az Azure-ban egy általánosított virtuális gép rögzítése](../articles/virtual-machines/windows/capture-image-resource.md)
+* [Generalize és az Azure CLI 2.0 használatával Linux virtuális gép rögzítése](../articles/virtual-machines/linux/capture-image.md)
 
-For more information about Managed Disks, please refer to the following articles.
+## <a name="images-versus-snapshots"></a>A pillanatképek és lemezképek
 
-### <a name="get-started-with-managed-disks"></a>Get started with Managed Disks
+Gyakran használt virtuális gépek "kép" szó látható, és ekkor megjelenik a "pillanatképek" is. Fontos ezek közötti különbségek megértése. A felügyelt lemezek esetében is igénybe vehet egy általánosított virtuális Gépet, amely fel lettek szabadítva képe. Ez a rendszerkép tartalmazza a virtuális Géphez csatlakozik, a lemezeket. Ez a rendszerkép használatával hozzon létre egy új virtuális Gépet, és ez magában foglalja a lemezeket.
 
-* [Create a VM using Resource Manager and PowerShell](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md)
+Pillanatkép van szükséges idő a ponton a lemez egy példányát. Csak egy lemezre vonatkozik. Ha egy lemez (az operációs rendszer) rendelkező virtuális gép, pillanatkép vagy egy képet, és vagy a pillanatképet, vagy a lemezképet a virtuális gép létrehozása.
 
-* [Create a Linux VM using the Azure CLI 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
+Mi történik, ha a virtuális gépek öt lemezzel rendelkezik, és azok csíkozott? Minden lemez pillanatképet készíthet, de nincs nincs belül a virtuális Gépet, a lemezek – állapotának figyelése a pillanatképek csak tudni, hogy egy lemez. Ebben az esetben a pillanatképek kell lennie a koordinált egymással, és, amely jelenleg nem támogatott.
 
-* [Attach a managed data disk to a Windows VM using PowerShell](../articles/virtual-machines/windows/attach-disk-ps.md)
+## <a name="managed-disks-and-encryption"></a>Felügyelt lemezek és titkosítás
 
-* [Add a managed disk to a Linux VM](../articles/virtual-machines/linux/add-disk.md)
+Nincsenek titkosítási és beszéljék meg, állapotalapú felügyelt lemezek kétféle. Az elsőt a Storage szolgáltatás titkosítási (SSE), amely végzi el a társzolgáltatás. A második érték engedélyezheti a virtuális gépek az operációs rendszer és az adatok lemezeken Azure Disk Encryption.
 
-* [Managed Disks PowerShell Sample Scripts](https://github.com/Azure-Samples/managed-disks-powershell-getting-started)
+### <a name="storage-service-encryption-sse"></a>Storage szolgáltatás titkosítási (SSE)
 
-* [Use Managed Disks in Azure Resource Manager templates](../articles/virtual-machines/windows/using-managed-disks-template-deployments.md)
+[Az Azure Storage szolgáltatás titkosítási](../articles/storage/common/storage-service-encryption.md) nyugalmi titkosítási biztosít, és megakadályozhatja az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi jár kötelezettségekkel. SSE alapértelmezés szerint az összes felügyelt lemezek, a pillanatképek és a képeket minden régióban, amennyiben rendelkezésre áll-e felügyelt lemezek engedélyezve van. 2017. június 10., kezdve az összes új felügyelt lemezek/pillanatképek/képek és új adatokat írni a meglévő felügyelt lemezek automatikusan titkosítva nyugalmi Microsoft által felügyelt kulcsokkal.  Látogasson el a [kezelt lemezek gyakori kérdéseket tartalmazó oldal](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) további részleteket.
 
-### <a name="compare-managed-disks-storage-options"></a>Compare Managed Disks storage options
 
-* [Premium storage and disks](../articles/storage/common/storage-premium-storage.md)
+### <a name="azure-disk-encryption-ade"></a>Az Azure Disk Encryption (ADE)
 
-* [Standard storage and disks](../articles/storage/common/storage-standard-storage.md)
+Az Azure Disk Encryption lehetővé teszi, hogy az operációsrendszer- és adatlemezek egy infrastruktúra-szolgáltatási virtuális gép által használt titkosítását. Ez magában foglalja a felügyelt lemezek. A Windows a meghajtók titkosítása szabványos BitLocker titkosítás technológia használatával. Linux a lemez titkosítása a DM-Crypt technológia használatával. Ez integrálva van az Azure Key Vault lehetővé teszi a lemez titkosítási kulcsok kezeléséhez, és szabályozhatja. További információkért lásd: [lemez titkosítás a Windows Azure és a Linux IaaS virtuális gépeket](../articles/security/azure-security-disk-encryption.md).
 
-### <a name="operational-guidance"></a>Operational guidance
+## <a name="next-steps"></a>Következő lépések
 
-* [Migrate from AWS and other platforms to Managed Disks in Azure](../articles/virtual-machines/windows/on-prem-to-azure.md)
+A felügyelt lemezek kapcsolatos további információkért tekintse meg a következő cikkekben talál.
 
-* [Convert Azure VMs to managed disks in Azure](../articles/virtual-machines/windows/migrate-to-managed-disks.md)
+### <a name="get-started-with-managed-disks"></a>Ismerkedés a Managed Disks szolgáltatással
+
+* [Virtuális gép létrehozása a Resource Manager és a PowerShell használatával](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md)
+
+* [Linux-alapú virtuális gép létrehozása az Azure CLI 2.0-s verziójával](../articles/virtual-machines/linux/quick-create-cli.md)
+
+* [Felügyelt adatlemezt csatolni egy Windows-VM PowerShell-lel](../articles/virtual-machines/windows/attach-disk-ps.md)
+
+* [Felügyelt lemez hozzáadása Linux rendszerű virtuális géphez](../articles/virtual-machines/linux/add-disk.md)
+
+* [Felügyelt lemezek PowerShell-mintaparancsfájlok](https://github.com/Azure-Samples/managed-disks-powershell-getting-started)
+
+* [Felügyelt lemezek használhatók Azure Resource Manager-sablonok](../articles/virtual-machines/windows/using-managed-disks-template-deployments.md)
+
+### <a name="compare-managed-disks-storage-options"></a>Felügyelt lemezek tárolási lehetőségek összehasonlítása
+
+* [Prémium szintű storage és a lemezek](../articles/virtual-machines/windows/premium-storage.md)
+
+* [Standard szintű tárolást és a lemezek](../articles/virtual-machines/windows/standard-storage.md)
+
+### <a name="operational-guidance"></a>Műveleti útmutató
+
+* [Az Azure-ban kezelt lemezek áttelepítésére AWS és más platformokra](../articles/virtual-machines/windows/on-prem-to-azure.md)
+
+* [Alakítsa át a Azure virtuális gépeken futó felügyelt Azure-ban](../articles/virtual-machines/windows/migrate-to-managed-disks.md)

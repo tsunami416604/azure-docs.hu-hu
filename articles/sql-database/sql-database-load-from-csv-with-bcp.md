@@ -1,5 +1,5 @@
 ---
-title: "Adatok betöltése CSV-fájlból az Azure SQL Database-be (bcp) | Microsoft Docs"
+title: "Adatok betöltése az CSV-fájl az Azure SQL Database (bcp) |} Microsoft Docs"
 description: "Kisebb adatméret esetén a bcp segítségével importálhatja az adatokat az Azure SQL Database-be."
 services: sql-database
 documentationcenter: NA
@@ -8,25 +8,25 @@ manager: jhubbard
 editor: 
 ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
 ms.service: sql-database
-ms.custom: migrate and move
+ms.custom: load & move data
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-services
+ms.workload: On Demand
 ms.date: 01/10/2017
 ms.author: carlrab
-translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: 389c7c75bcc0c1a5a66f66a9692ebe2e4095db5e
-
-
+ms.openlocfilehash: 2f00a740b3cc59c4e7b3b378c06cfa8cb05e8380
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="load-data-from-csv-into-azure-sql-data-warehouse-flat-files"></a>Adatok betöltése CSV-fájlból az Azure SQL Data Warehouse-ba (egybesimított fájlok)
+# <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Adatok betöltése CSV-fájlból az Azure SQL Database-be (egybesimított fájlok)
 A bcp parancssori segédprogram használatával adatokat importálhat egy CSV-fájlból az Azure SQL Database-be.
 
 ## <a name="before-you-begin"></a>Előkészületek
 ### <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Ebben a cikkben szereplő lépések elvégzéséhez szüksége:
 
 * Egy Azure SQL Database logikai kiszolgáló és adatbázis
 * Telepített bcp parancssori segédprogram
@@ -75,20 +75,20 @@ Nyissa meg a Jegyzettömböt, és másolja az alábbi adatsorokat egy új szöve
 
 (Opcionális) A saját adatok SQL Server-adatbázisból való exportálásához nyisson meg egy parancssort, és futtassa az alábbi parancsot. Cserélje le a TableName, ServerName, DatabaseName, Username és Password adatokat a saját adataira.
 
-```sql
-bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
+```bcp
+bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
 ## <a name="3-load-the-data"></a>3. Az adatok betöltése
 Az adatok betöltéséhez nyisson meg egy parancssort, és futtassa az alábbi, a kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a jelszót a saját értékeire lecserélő parancsot.
 
-```sql
-bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ','
+```bcp
+bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ,
 ```
 
 A parancs segítségével ellenőrizze, hogy megfelelő volt-e az adatok betöltése
 
-```sql
+```bcp
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
@@ -118,9 +118,3 @@ Az SQL Server-adatbázisok áttelepítésével kapcsolatban tekintse meg az [SQL
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
-
-
-
-<!--HONumber=Dec16_HO1-->
-
-

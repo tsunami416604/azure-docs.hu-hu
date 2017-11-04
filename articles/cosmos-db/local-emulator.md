@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2017
 ms.author: arramac
-ms.openlocfilehash: a6124a8fa630424558c0812edbf12d5ad25d6bf6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
-ms.translationtype: HT
+ms.openlocfilehash: 5ea254110a24ea3315d614ebca2d43bda0e1a674
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használja a helyi fejlesztéshez és teszteléshez
 
@@ -86,7 +86,7 @@ Az Azure Cosmos DB Emulator a következő hardver- és követelményekkel rendel
   * 10 GB szabad lemezterület
 
 ## <a name="installation"></a>Telepítés
-Töltse le, és telepítse az Azure-Cosmos DB az emulátort a [Microsoft Download Center](https://aka.ms/cosmosdb-emulator) vagy az emulátor Docker for Windows futtathatja. A Docker for Windows emulátorral, lásd: [Docker futó](#running-on-docer). 
+Töltse le, és telepítse az Azure-Cosmos DB az emulátort a [Microsoft Download Center](https://aka.ms/cosmosdb-emulator) vagy az emulátor Docker for Windows futtathatja. A Docker for Windows emulátorral, lásd: [Docker futó](#running-on-docker). 
 
 > [!NOTE]
 > Telepítését, konfigurálását és az Azure Cosmos DB Emulator futtassa, hogy a számítógépen rendszergazdai jogosultsággal kell rendelkeznie.

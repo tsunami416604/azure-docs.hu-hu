@@ -1,8 +1,8 @@
-Data Lake Analytics makes the complex task of managing distributed infrastructure and complex code easy. It dynamically provisions resources and lets you do analytics on exabytes of data. When the job completes, it winds down resources automatically, and you pay only for the processing power used. As you increase or decrease the size of data stored or the amount of compute used, you don’t have to rewrite code. Many of the default limits can be easily raised for your subscription by contacting support. 
+A Data Lake Analytics leegyszerűsíti az elosztott infrastruktúra és az összetett programkód kezelésének bonyolult feladatát. A szolgáltatás az erőforrások dinamikus kiosztásával akár több exabájt adat elemzését is lehetővé teszi. Amikor a feladat befejeződik, automatikusan kivonja az erőforrásokat a használatból, így csak a ténylegesen felhasznált számítási teljesítményért kell fizetnie. Ha növeli vagy csökkenti a tárolt adatok méretét, vagy a felhasznált számítási teljesítményt, nem kell újraírnia a programot. Az alapértelmezett korlátokat számos könnyen emelhető az előfizetéshez tartozó lépjen kapcsolatba az ügyfélszolgálattal. 
 
-| **Resource** | **Default Limit** | **Comments** |
+| **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzések** |
 | --- | --- | --- |
-| Maximum number of concurrent jobs |20 | |
-| Maximum number of Analytics Units (AUs) per account |250 | Use any combination of up to a maximum of 250 AUs across 20 jobs. |
-| Maximum script size for job submission | 3 MB | |
+| Egyidejű feladatok maximális száma |20 | |
+| Fiókonként (ausztráliai) Analytics egységek maximális száma |250 | Legfeljebb 250 együtt is használhatók ausztráliai 20 feladatok között. |
+| A feladat elküldése parancsfájl maximális mérete | 3 MB | |
 

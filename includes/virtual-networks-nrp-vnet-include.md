@@ -1,34 +1,34 @@
 ## <a name="virtual-network"></a>Virtual Network
-Virtual Networks (VNET) and subnets resources help define a security boundary for workloads running in Azure. A VNet is characterized by a collection of address spaces, defined as CIDR blocks. 
+Virtuális hálózatok (VNET) és alhálózatok erőforrások segítségével határozza meg az Azure-ban futó munkaterhelések biztonsági korlátot. Egy VNet jellemzőek, címterekhez, meghatározott CIDR-blokkok gyűjteménye. 
 
 > [!NOTE]
-> Network administrators are familiar with CIDR notation. If you are not familiar with CIDR, [learn more about it](http://whatismyipaddress.com/cidr).
+> A hálózati rendszergazdák jártas CIDR-formátumban. Ha nem ismeri a CIDR, [olvashat azokról bővebben](http://whatismyipaddress.com/cidr).
 > 
 > 
 
-![VNet with multiple subnets](./media/resource-groups-networking/Figure4.png)
+![Virtuális hálózat, több alhálózattal](./media/resource-groups-networking/Figure4.png)
 
-VNets contain the following properties.
+Vnetek az alábbi tulajdonságokat tartalmazzák.
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **addressSpace** |Collection of address prefixes that make up the VNet in CIDR notation |192.168.0.0/16 |
-| **subnets** |Collection of subnets that make up the VNet |see [subnets](#Subnets) below. |
-| **ipAddress** |IP address assigned to object. This is a read-only property. |104.42.233.77 |
+| **Címtartományt** |A virtuális hálózat CIDR-jelöléssel alkotó címelőtagokat gyűjteménye |192.168.0.0/16 |
+| **alhálózatok** |A virtuális hálózatot alkotó alhálózatok gyűjteménye |Lásd: [alhálózatok](#Subnets) alatt. |
+| **IP-cím** |Az objektum hozzárendelt IP-címet. Ez a tulajdonság csak olvasható. |104.42.233.77 |
 
-### <a name="subnets"></a>Subnets
-A subnet is a child resource of a VNet, and helps define segments of address spaces within a CIDR block, using IP address prefixes. NICs can be added to subnets, and connected to VMs, providing connectivity for various workloads.
+### <a name="subnets"></a>Alhálózatok
+Egy alhálózat egy Vnetet gyermek erőforrása, és segítségével meghatározhatja a címterek belül használja az IP-cím előtagokat CIDR-blokkja részeit. Hálózati adapter alhálózatok hozzá, és kapcsolódik a virtuális gépek, a különböző munkaterhelések biztosítható a kapcsolat.
 
-Subnets contain the following properties. 
+Alhálózatok az alábbi tulajdonságokat tartalmazzák. 
 
-| Property | Description | Sample values |
+| Tulajdonság | Leírás | Példaértékek |
 | --- | --- | --- |
-| **addressPrefix** |Single address prefix that make up the subnet in CIDR notation |192.168.1.0/24 |
-| **networkSecurityGroup** |NSG applied to the subnet |see [NSGs](#Network-Security-Group) |
-| **routeTable** |Route table applied to the subnet |see [UDR](#Route-table) |
-| **ipConfigurations** |Collection of IP configruation objects used by NICs connected to the subnet |see [UDR](#Route-table) |
+| **addressPrefix** |Az alhálózat CIDR-jelöléssel alkotó egyetlen címelőtag |192.168.1.0/24 |
+| **hálózati biztonsági csoporthoz tartozik** |Az alhálózat alkalmazott NSG |Lásd: [NSG-k](#Network-Security-Group) |
+| **Migrálták** |Az útvonaltábla alkalmazva |Lásd: [UDR](#Route-table) |
+| **IP-konfigurációk** |Az alhálózathoz csatlakozó hálózati adapter által használt IP-konfigurációs objektumok gyűjteménye |Lásd: [UDR](#Route-table) |
 
-Sample VNet in JSON format:
+A minta VNet JSON formátumban:
 
     {
         "name": "TestVNet",
@@ -72,8 +72,8 @@ Sample VNet in JSON format:
         }
     }
 
-### <a name="additional-resources"></a>Additional resources
-* Get more information about [VNet](../articles/virtual-network/virtual-networks-overview.md).
-* Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163650.aspx) for VNets.
-* Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163618.aspx) for Subnets.
+### <a name="additional-resources"></a>További források
+* További információk [VNet](../articles/virtual-network/virtual-networks-overview.md).
+* Olvassa el a [REST API referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt163650.aspx) tartozó Vnetek esetében.
+* Olvassa el a [REST API referenciadokumentációt](https://msdn.microsoft.com/library/azure/mt163618.aspx) alhálózatok esetében.
 

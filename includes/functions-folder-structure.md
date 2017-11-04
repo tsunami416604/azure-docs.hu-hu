@@ -1,5 +1,5 @@
 
-The code for all of the functions in a given function app lives in a root folder that contains a host configuration file and one or more subfolders, each of which contain the code for a separate function, as in the following example:
+A kódot az összes, egy adott funkció alkalmazást a funkciókat él, az állomás konfigurációs fájlt tartalmazó legfelső szintű mappa és egy vagy több almappáiban, amelyek tartalmazzák a kód egy külön függvény, az alábbi példában látható módon:
 
 ```
 wwwroot
@@ -15,7 +15,7 @@ wwwroot
  | | - run.csx
 ```
 
-The *host.json* file contains some runtime-specific configuration and sits in the root folder of the function app. For information on settings that are available, see [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) in the WebJobs.Script repository wiki.
+A *host.json* tartalmaz néhány futásidejű konfigurációs fájl- és a gyökérmappában található, a függvény alkalmazás helyezkedik el. A rendelkezésre álló beállítások információkért lásd: [host.json hivatkozás](../articles/azure-functions/functions-host-json.md).
 
-Each function has a folder that contains one or more code files, the function.json configuration and other dependencies.
+Minden egyes függvény rendelkezik egy vagy több kódfájlok, a function.json konfigurációs és egyéb függőségek tartalmazó mappát.
 

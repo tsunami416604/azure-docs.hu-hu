@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
-ms.openlocfilehash: 8118570071aa5af6ec74c971a711b2eab07fb1b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0f89f98c26b80e8b71c58fc89ea7ecebe734f71
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hdinsight Hadoop, Spark, Kafka és több fürt beállítása
 
@@ -76,13 +76,13 @@ Az Azure HDInsight jelenleg a következő fürttípusok, az összetevők arra, h
 
 | Fürttípus | Funkció |
 | --- | --- |
-| [Hadoop](hdinsight-hadoop-introduction.md) |Kötegelt lekérdezés és a tárolt adatok elemzése |
-| [HBase](hdinsight-hbase-overview.md) |Nagy mennyiségű séma nélküli, nosql típusú adatok számára történő feldolgozásakor. |
-| [A Storm](hdinsight-storm-overview.md) |Valós idejű eseményfeldolgozás |
-| [Spark](hdinsight-apache-spark-overview.md) |A memórián belüli feldolgozást, interaktív lekérdezések micro-kötegelt adatfolyam feldolgozása |
-| [Kafka (előzetes verzió)](hdinsight-apache-kafka-introduction.md) | A valós idejű streamelési adatok folyamatok és alkalmazások készítéséhez használható elosztott adatfolyam platform |
-| [R Server](hdinsight-hadoop-r-server-overview.md) |Különböző big Data típusú adatok statisztika, prediktív modellezési és gépi tanulási képességek |
-| [Interaktív lekérdezés](hdinsight-hadoop-use-interactive-hive.md) |A memóriában történő gyorsítótárazás gyorsabb és interaktív Hive-lekérdezések |
+| [Hadoop](hadoop/apache-hadoop-introduction.md) |Kötegelt lekérdezés és a tárolt adatok elemzése |
+| [HBase](hbase/apache-hbase-overview.md) |Nagy mennyiségű séma nélküli, nosql típusú adatok számára történő feldolgozásakor. |
+| [A Storm](storm/apache-storm-overview.md) |Valós idejű eseményfeldolgozás |
+| [Spark](spark/apache-spark-overview.md) |A memórián belüli feldolgozást, interaktív lekérdezések micro-kötegelt adatfolyam feldolgozása |
+| [Kafka (előzetes verzió)](kafka/apache-kafka-introduction.md) | A valós idejű streamelési adatok folyamatok és alkalmazások készítéséhez használható elosztott adatfolyam platform |
+| [R Server](r-server/r-server-overview.md) |Különböző big Data típusú adatok statisztika, prediktív modellezési és gépi tanulási képességek |
+| [Interaktív lekérdezés](./interactive-query/apache-interactive-query-get-started.md) |A memóriában történő gyorsítótárazás gyorsabb és interaktív Hive-lekérdezések |
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Az egyes fürt a csomópontok száma
 Minden egyes fürttípus csomópontok, terminológia csomópontokat, és az alapértelmezett Virtuálisgép-méretet a saját számú tartalmaz. Az alábbi táblázatban az egyes csomópont csomópontok száma zárójelek között van.
@@ -208,7 +208,7 @@ A HDInsight-alkalmazások többsége egy üres élcsomópontot vannak telepítve
 
 További összetevők, vagy testre szabhatja a fürtkonfiguráció létrehozása során-parancsfájlok használatával. Az ilyen parancsprogramok keresztül kerül meghívásra **parancsfájlművelet**, ami használható az Azure-portálon, a HDInsight a Windows PowerShell-parancsmagokkal vagy a HDInsight .NET SDK konfigurációs beállítás. További információkért lásd: [testreszabása HDInsight-fürtjéhez parancsfájlművelet](hdinsight-hadoop-customize-cluster-linux.md).
 
-Néhány natív Java-összetevők, például Mahout és kaszkádolás, Java archív (JAR) fájlként futtathatja a fürtön. Ezek a JAR-fájlok Azure Storage terjeszthető és a HDInsight-fürtök Hadoop-feladat elküldése mechanizmusokkal elküldve. További információkért lásd: [nyújt Hadoop feladatok programozott módon](hdinsight-submit-hadoop-jobs-programmatically.md).
+Néhány natív Java-összetevők, például Mahout és kaszkádolás, Java archív (JAR) fájlként futtathatja a fürtön. Ezek a JAR-fájlok Azure Storage terjeszthető és a HDInsight-fürtök Hadoop-feladat elküldése mechanizmusokkal elküldve. További információkért lásd: [nyújt Hadoop feladatok programozott módon](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 > [!NOTE]
 > Ha problémába ütközik JAR-fájlok telepítése a HDInsight-fürtök, vagy hívja a JAR-fájlok a HDInsight-fürtökön, forduljon a [Microsoft Support](https://azure.microsoft.com/support/options/).
@@ -242,7 +242,7 @@ Ha a megoldást igényel, amely több HDInsight-fürttípusok, vannak elosztva e
 
 További információ az Azure virtuális hálózat használatával a hdinsight eszközzel, lásd: [kiterjesztése HDInsight az Azure virtuális hálózatokkal](hdinsight-extend-hadoop-virtual-network.md).
 
-Például egy Azure virtuális hálózaton belül, kétféle fürt használatával, [elemezhet érzékelőadatokat a Storm és HBase](hdinsight-storm-sensor-data-analysis.md). HDInsight használatával egy virtuális hálózattal, beleértve a virtuális hálózat, megadott konfigurációs követelményekkel kapcsolatos további információk: [kiterjesztése HDInsight képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md).
+Például egy Azure virtuális hálózaton belül, kétféle fürt használatával, [elemezhet érzékelőadatokat a Storm és HBase](storm/apache-storm-sensor-data-analysis.md). HDInsight használatával egy virtuális hálózattal, beleértve a virtuális hálózat, megadott konfigurációs követelményekkel kapcsolatos további információk: [kiterjesztése HDInsight képességek az Azure Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md).
 
 ## <a name="troubleshoot-access-control-issues"></a>Hozzáférés-vezérlő elhárítása
 
@@ -250,6 +250,6 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Mik azok a HDInsight, a Hadoop ökoszisztémájának, és a Hadoop-fürtök?](hdinsight-hadoop-introduction.md)
-- [A Hadoop első lépései a HDInsightban](hdinsight-hadoop-linux-tutorial-get-started.md)
+- [Mik azok a HDInsight, a Hadoop ökoszisztémájának, és a Hadoop-fürtök?](hadoop/apache-hadoop-introduction.md)
+- [A Hadoop első lépései a HDInsightban](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Működik a Hadoop on HDInsight from Windows-számítógépek](hdinsight-hadoop-windows-tools.md)

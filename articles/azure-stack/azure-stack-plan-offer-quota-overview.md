@@ -1,6 +1,6 @@
 ---
-title: Azure Stack plan, offer, quota, and subscription overview | Microsoft Docs
-description: As a cloud operator, I want to understand Azure Stack plans, offers, quotas, and subscriptions.
+title: "Az Azure verem terv, ajánlat, kvóta és előfizetés áttekintése |} Microsoft Docs"
+description: "Felhő operátorként kívánt Azure verem terveket, ajánlatokat, kvóták és előfizetések ismertetése."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,69 +14,67 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/22/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bfed4c557a420eda14cafe5b1cf8ad11476e2d79
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: 083ca2f0a06625810d2f90a682ba0b3110032e60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="plan-offer-quota-and-subscription-overview"></a>Plan, offer, quota, and subscription overview
+# <a name="plan-offer-quota-and-subscription-overview"></a>Csomag, ajánlat, kvóta és előfizetés áttekintése
 
-*Applies to: Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-[Azure Stack](azure-stack-poc.md) lets you deliver a wide variety of services, like virtual machines, SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a cloud operator, you configure and deliver such services in Azure Stack by using plans, offers, and quotas.
+[Azure verem](azure-stack-poc.md) megadható, hogy számos átadná szolgáltatások, például a virtuális gépeket, SQL Server-adatbázisok, SharePoint, Exchange, sőt akár [Azure piactéren elemek](azure-stack-marketplace-azure-items.md). Azure verem kezelőként konfigurálása, és ilyen szolgáltatások biztosításához Azure verem terveket, a ajánlatok és a kvóták segítségével.
 
-Offers contain one or more plans, and each plan includes one or more services. By creating plans and combining them into different offers, you control
-- which services and resources users can access
-- the amount of those resources that users can consume
-- which regions have access to the resources
+Ajánlatok tartalmazhat egy vagy több terveket, és minden csomag tartalmaz egy vagy több szolgáltatás. Tervek létrehozásával, és azokat a különböző ajánlatok kombinálásával, szabályozása
+- mely szolgáltatások és erőforrások a felhasználók
+- azokat az erőforrásokat, a felhasználók is felhasználhatnak mennyisége
+- mely régiókat férhetnek hozzá az erőforrásokhoz
 
-When you deliver a service, you'll follow these high-level steps:
+Ha valamilyen szolgáltatás biztosításához fogjuk lépések magas szintű:
 
-1. Add a service that you want to deliver to your users.
-2. Create a plan that contains one or more services. When creating a plan, you will select or create quotas that define the resource limits of each service in the plan.
-3. Create an offer that contains one or more plans (including base plans and optional add-on plans).
+1. Adjon hozzá egy szolgáltatás, amelyet telepíthet a felhasználók számára.
+2. Egy vagy több szolgáltatást tartalmazó terv létrehozása. Terv létrehozása, amikor válasszon, vagy hozzon létre a csomagban az erőforrás korlátai által megszabott minden egyes szolgáltatás meghatározó kvótákat.
+3. Hozzon létre egy ajánlatot (például alap tervek és választható bővítmény tervek) egy vagy több terveket tartalmazó.
 
-After you have created the offer, your users can subscribe to it to access the services and resources it provides. Users can subscribe to as many offers as they want. The following diagram shows a simple example of a user who has subscribed to two offers. Each offer has a plan or two, and each plan gives them access to services.
+Miután létrehozta a kért ajánlat, a felhasználók előfizethetnek hozzáférjen a szolgáltatásokat és erőforrásokat biztosít. Felhasználók előfizethetnek annyi ajánlatok szerint. Az alábbi ábrán egy egyszerű példa egy felhasználó két ajánlatok fizet elő. Minden egyes ajánlat rendelkezik a szolgáltatáscsomag vagy a kettő, és minden terv hozzáférést biztosít szolgáltatások.
 
 ![](media/azure-stack-key-features/image4.png)
 
-## <a name="plans"></a>Plans
+## <a name="plans"></a>Tervek
 
-Plans are groupings of one or more services. As a cloud operator, you [create plans](azure-stack-create-plan.md) to offer to your users. In turn, your users subscribe to your offers to use the plans and services they include. When creating plans, make sure to set your quotas, define your base plans, and consider including optional add-on plans.
+Tervek csoportosítását egy vagy több szolgáltatást is. Azure verem kezelőként Ön [tervek létrehozása](azure-stack-create-plan.md) történő szinkronizálásával. A felhasználók, a csomagok és szolgáltatások tartoznak a ajánlatok előfizetni. Tervek létrehozásakor győződjön meg arról, hogy a kvótákat, az alap tervek meghatározása, és nem kötelező bővítmény terveket is.
 
-### <a name="quotas"></a>Quotas
+### <a name="quotas"></a>Kvóták
 
-To help you manage your cloud capacity, you select or create a quota for each service in a plan. Quotas define the upper resource limits that a user subscription can provision or consume. For example, a quota might allow a user to create up to five virtual machines. Quotas can limit a variety of resources, like virtual machines, RAM, and CPU limits.
+Kezeléséhez nyújt segítséget a felhő kapacitása, válassza ki, vagy hozzon létre egy kvótát minden egyes szolgáltatás egy csomagban. Kvóták határait felső erőforrás felhasználói előfizetés kiépítése vagy felhasználását. Például a kvóta lehetővé teheti a felhasználó legfeljebb öt virtuális gépek létrehozásához. Kvóták korlátozhatja a különböző erőforrások, például a virtuális gépek, memória és CPU korlátok.
 
-Quotas can be configured by region. For example, a plan containing compute services from Region A could have a quota of two virtual machines, 4-GB RAM, and 10 CPU cores. In the Azure Stack Development Kit, only one region (named *local*) is available.
+Kvóták régió konfigurálhatja. Például egy tervet tartalmazó terület A számítási szolgáltatásai eredményezhet. a kvóta két virtuális gép, 4 GB RAM és 10 CPU-magokat. A csomagban Azure verem, csak egy régió tartozik (nevű *helyi*) érhető el.
 
-### <a name="base-plan"></a>Base plan
+### <a name="base-plan"></a>Referenciaterv
 
-When creating an offer, the service administrator can include a base plan. These base plans are included by default when a user subscribes to that offer. When a user subscribes, they have access to all the resource providers specified in those base plans (with the corresponding quotas).
+Az ajánlat létrehozásakor a szolgáltatás-rendszergazda tartalmazhat egy referenciaterv. E alap tervek szerepelnek alapértelmezés szerint, amikor a felhasználó adott ajánlatra. Amikor a felhasználó, hozzáférhetnek az e alap terveket (megfelelő kvótával) megadott összes erőforrás-szolgáltató.
 
-### <a name="add-on-plans"></a>Add-on plans
+### <a name="add-on-plans"></a>Bővítmény tervek
 
-You can also include optional add-on plans in an offer. Add-on plans are not included by default in the subscription. Add-on plans are additional plans (with quotas) available in an offer that a subscriber can add to their subscriptions. For example, you can offer a base plan with limited resources for a trial, and an add-on plan with more substantial resources to customers who decide to adopt the service.
+Nem kötelező bővítmény tervek ajánlatot is felvehető. Az előfizetés alapértelmezés szerint nem szerepelnek a bővítmény tervek. Bővítmény tervek további terveket (kvóták), amely az előfizető adhat hozzá az előfizetések ajánlatot érhető el. Például kínálhat egy referenciaterv próbaverziójára korlátozott erőforrásokkal, és nagyobb mértékű erőforrásokkal bővítmény tervének az ügyfelek, akik úgy dönt, hogy elfogadja a szolgáltatást.
 
-## <a name="offers"></a>Offers
+## <a name="offers"></a>Ajánlatok
 
-Offers are groups of one or more plans that you create so that users can subscribe to them. For example, Offer Alpha can contain Plan A containing a set of compute services and Plan B containing a set of storage and network services. 
+Ajánlatok olyan beállításcsoportok, egy vagy több tervek az Ön által létrehozott, hogy a felhasználók előfizethetnek őket. Alpha kínálnak például tartalmazhat terv A számítási szolgáltatások és a tárolási és hálózati szolgáltatások tartalmazó megtervezése B halmazát tartalmazza. 
 
-When you [create an offer](azure-stack-create-offer.md), you must include at least one base plan, but you can also create add-on plans that users can add to their subscription.
-
-
-## <a name="subscriptions"></a>Subscriptions
-
-A subscription is how users access your offers. If you’re a cloud operator at a service provider, your users (tenants) buy your services by subscribing to your offers. If you’re a cloud operator at an organization, your users (employees) can subscribe to the services you offer without paying. Each combination of a user with an offer is a unique subscription. Thus, a user can have subscriptions to multiple offers, but each subscription applies to only one offer. Plans, offers, and quotas apply only to each unique subscription – they can’t be shared between subscriptions. Each resource that a user creates is associated with one subscription.
+Ha Ön [hozzon létre egy ajánlatot](azure-stack-create-offer.md), meg kell adni legalább egy referenciaterv, de bővítmény terveket tartalmazhatnak, amelyek felhasználókat adhat hozzá az előfizetés is létrehozhat.
 
 
-### <a name="default-provider-subscription"></a>Default provider subscription
+## <a name="subscriptions"></a>Előfizetések
 
-The Default Provider Subscription is automatically created when you deploy the Azure Stack Development Kit. This subscription can be used to manage Azure Stack, deploy further resource providers, and create plans and offers for users. For security and licensing reasons, it should not be used to run customer workloads and applications. 
+Az előfizetés egy, a felhasználók miként csatlakoznak a ajánlatokat. Ha egy szolgáltató Azure verem operátort, a felhasználók (bérlőkkel) vásároljon a szolgáltatások a ajánlatok való feliratkozással. Ha egy szervezet Azure verem operátort, a felhasználók (alkalmazottak) fizethet nélkül fizető kínált szolgáltatásokat. Ajánlattal felhasználó minden értékkombinációja egyedi előfizetés. Így a felhasználó rendelkezhet több ajánlatokat az előfizetések, de minden előfizetéshez csak egy ajánlat vonatkozik. Tervek ajánlatok és kvóták alkalmazása csak egyes egyedi előfizetések – nem osztható előfizetések között. Az egyes erőforrások egy felhasználó által létrehozott egy előfizetés tartozik.
 
-## <a name="next-steps"></a>Next steps
 
-[Create a plan](azure-stack-create-plan.md)
+### <a name="default-provider-subscription"></a>Alapértelmezett szolgáltató előfizetés
 
+Az alapértelmezett szolgáltató előfizetés automatikusan létrejön a Azure verem csomag telepítésekor. Ez az előfizetés kezelése az Azure-vermet, további erőforrás-szolgáltatók telepítéséhez és tervek és a felhasználók ajánlatok létrehozása használható. A biztonsági és licencelési okok azt nem használandó felhasználói munkaterhelések és alkalmazások futtatásához. 
+
+## <a name="next-steps"></a>Következő lépések
+
+[Csomag létrehozása](azure-stack-create-plan.md)

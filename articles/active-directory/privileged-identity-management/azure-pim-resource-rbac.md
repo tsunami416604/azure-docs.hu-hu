@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barclayn
-ms.openlocfilehash: abaf78428cb12235a659bad5c13d64e8e51f4ba6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 114ef434e6167ef2b25b040e35ab3ce1b85151a9
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="pim-for-azure-resources-preview"></a>A PIM az Azure-erőforrások (előzetes verzió)
 
@@ -43,11 +43,12 @@ Az Azure AD PIM a beépített Azure erőforrás-szerepköröket, valamint a egy�
 - Biztonsági és egyéb
 
 >[!NOTE]
-Felhasználók vagy a tulajdonos vagy a felhasználói hozzáférés adminisztrátora szerepkört, és, amelyek lehetővé teszik az előfizetés-kezelés az Azure AD globális rendszergazdák csoport tagjai az erőforrás-rendszergazdák. A rendszergazdák előfordulhat, hogy szerepköröket, szerepkör beállításainak konfigurálása, és tekintse át a PIM használó Azure-erőforrások hozzáférés. A lista megtekintése [beépített szerepkörök az Azure-erőforrások](../role-based-access-built-in-roles.md)
+Felhasználók vagy a tulajdonos vagy a felhasználói hozzáférés adminisztrátora szerepkört, és, amelyek lehetővé teszik az előfizetés-kezelés az Azure AD globális rendszergazdák csoport tagjai az erőforrás-rendszergazdák. A rendszergazdák előfordulhat, hogy szerepköröket, szerepkör beállításainak konfigurálása, és tekintse át a PIM használó Azure-erőforrások hozzáférés. A lista megtekintése [beépített szerepkörök az Azure-erőforrások](../role-based-access-built-in-roles.md).
 
 ## <a name="tasks"></a>Feladatok
 
 A PIM szerepkörök aktiválása, függőben lévő aktiválások/kérelmek, függőben lévő jóváhagyások megtekintése kényelmes hozzáférést biztosít (az [az Azure Active directory szerepkörök](azure-ad-pim-approval-workflow.md)), és ellenőrzi, hogy a válasz a bal oldali navigációs menü feladatok részéből függőben.
+
 Elérésekor a feladatok menü elemek bármelyikét a áttekintése belépési pontról, az eredményül kapott nézet tartalmazza az Azure Active directory szerepkörök, mind az Azure erőforrás-szerepkörök (előzetes verzió). 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
@@ -56,7 +57,7 @@ A szerepkörök az Azure Active directory szerepkörök és az Azure erőforrás
 
 ## <a name="activate-roles"></a>Szerepkörök aktiválása
 
-Szerepkörök aktiválása az Azure-erőforrások (előzetes verzió) bevezet egy új felület, amely lehetővé teszi az aktiválási a jövőbeni dátum/idő ütemezése, és válasszon egy adott aktiválási időtartamot a legnagyobb (a rendszergazdák által konfigurált) belül jogosult szerepkör tagjai. További tudnivalók [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md)
+Szerepkörök aktiválása az Azure-erőforrások (előzetes verzió) bevezet egy új felület, amely lehetővé teszi az aktiválási a jövőbeni dátum/idő ütemezése, és válasszon egy adott aktiválási időtartamot a legnagyobb (a rendszergazdák által konfigurált) belül jogosult szerepkör tagjai. További tudnivalók [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 

@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 04392b535965edd785bbb66a52eb6b41b768553e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 64a4c5b158ebe0119f2f0133587a743fd2dbf0ff
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>Apache Phoenix és az SQuirreL használata a Hdinsightban Windows-alapú HBase-fürtökkel
 Ismerje meg, hogyan használható [Apache Phoenix](http://phoenix.apache.org/) , és hogyan telepítheti és konfigurálhatja a munkaállomásra való kapcsolódáshoz a hdinsight HBase-fürtöt SQuirreL. Phoenix kapcsolatos további információkért lásd: [Phoenix kevesebb mint 15 perc alatt](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). A Phoenix nyelvtan, lásd: [Phoenix nyelvtan](http://phoenix.apache.org/language/index.html).
@@ -29,7 +29,7 @@ Ismerje meg, hogyan használható [Apache Phoenix](http://phoenix.apache.org/) ,
 >
 
 > [!IMPORTANT]
-> Az ebben a dokumentumban csak a lépések Windows-alapú HDInsight-fürtök. HDInsight csak érhető el a Windows korábbi, mint a HDInsight 3.4-es verziójához. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). Phoenix a Linux-alapú HDInsight használatáról további információért lásd: [használata Apache Phoenix a Linux-alapú HBase a HDInsight clusters](hdinsight-hbase-phoenix-squirrel-linux.md).
+> Az ebben a dokumentumban csak a lépések Windows-alapú HDInsight-fürtök. HDInsight csak érhető el a Windows korábbi, mint a HDInsight 3.4-es verziójához. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). Phoenix a Linux-alapú HDInsight használatáról további információért lásd: [használata Apache Phoenix a Linux-alapú HBase a HDInsight clusters](hbase/apache-hbase-phoenix-squirrel-linux.md).
 >
 
 
@@ -269,7 +269,7 @@ Ebben a cikkben megtanulta rendelkezik Apache Phoenix használata a Hdinsightban
 
 * [HDInsight HBase overview][hdinsight-hbase-overview] (A HDInsight HBase áttekintése): A HBase egy Apache, nyílt forráskódú, a Hadoopra épülő NoSQL-adatbázis, amely véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára.
 * [Azure virtuális hálózat HBase-fürtök kiépítése][hdinsight-hbase-provision-vnet]: A virtuális hálózati integráció, HBase-fürtökkel telepíthetők az alkalmazások azonos virtuális hálózaton, hogy az alkalmazások közvetlenül kommunikálhatnak a HBase.
-* [A HDInsight HBase-replikálás konfigurálása](hdinsight-hbase-replication.md): HBase-replikálás konfigurálása az Azure két adatközpont között.
+* [A HDInsight HBase-replikálás konfigurálása](hbase/apache-hbase-replication.md): HBase-replikálás konfigurálása az Azure két adatközpont között.
 
 
 [azure-portal]: https://portal.azure.com
@@ -278,8 +278,8 @@ Ebben a cikkben megtanulta rendelkezik Apache Phoenix használata a Hdinsightban
 [hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
-[hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
-[hdinsight-hbase-overview]: hdinsight-hbase-overview.md
+[hdinsight-hbase-provision-vnet]:hbase/apache-hbase-provision-vnet.md
+[hdinsight-hbase-overview]:hbase/apache-hbase-overview.md
 
 [hdinsight-hbase-phoenix-sqlline]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-phoenix-sqlline.png
 [img-certificate]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-vpn-certificate.png

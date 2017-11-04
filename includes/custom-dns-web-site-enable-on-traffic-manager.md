@@ -1,30 +1,30 @@
-After the records for your domain name have propagated, you should be able to use your browser to verify that your custom domain name can be used to access your web app in Azure App Service.
+Miután a tartománynév a rekordjainak propagálása, a böngésző használatával győződjön meg arról, hogy használható-e az egyéni tartománynevet eléréséhez a webalkalmazás az Azure App Service szolgáltatásban kell lennie.
 
 > [!NOTE]
-> It can take some time for your CNAME to propagate through the DNS system. You can use a service such as <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> to verify that the CNAME is available.
+> A CNAME REKORDOT a DNS-rendszerében propagálásához némi időt is igénybe vehet. A szolgáltatás használhatja például a <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> annak ellenőrzéséhez, hogy a CNAME érhető el.
 > 
 > 
 
-If you have not already added your web app as a Traffic Manager endpoint, you must do this before name resolution will work, as the custom domain name routes to Traffic Manager. Traffic Manager then routes to your web app. Use the information in [Add or Delete Endpoints](../articles/traffic-manager/traffic-manager-endpoints.md) to add your web app as an endpoint in your Traffic Manager profile.
+Ha nem már hozzáadta a webes alkalmazás a Traffic Manager-végpontként, ezt névfeloldás működik, az egyéni tartomány nevét útvonalként felvétele a Traffic Manager előtt kell megtennie. A TRAFFIC Manager ezután továbbítja a webalkalmazás. Olvassa el a [telepítése és törlése végpontok](../articles/traffic-manager/traffic-manager-endpoints.md) a webes alkalmazás hozzáadása a Traffic Manager-profil végpontjaként.
 
 > [!NOTE]
-> If your web app is not listed when adding an endpoint, verify that it is configured for **Standard** App Service plan mode. You must use **Standard** mode for your web app in order to work with Traffic Manager.
+> Ha a webalkalmazás nem szerepel a végpont hozzáadásakor, győződjön meg arról, hogy van-e konfigurálva a **szabványos** App Service-csomag mód. Használjon **szabványos** mód a webalkalmazás a Traffic Managerrel működéshez.
 > 
 > 
 
-1. In your browser, open the [Azure Portal](https://portal.azure.com).
-2. In the **Web Apps** tab, click the name of your web app, select **Settings**, and then select **Custom domains**
+1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com).
+2. Az a **webalkalmazások** lapra, kattintson a nevére, webalkalmazás, jelölje be **beállítások**, majd válassza ki **egyéni tartományok**
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
-3. In the **Custom domains** blade, click **Add hostname**.
-4. Use the **Hostname** text boxes to enter the Traffic Manager domain name to associate with this web app.
+3. Az a **egyéni tartományok** panelen kattintson a **állomásnév hozzáadása**.
+4. Használja a **állomásnév** beviteli mezők adja meg a webalkalmazás társítja a Traffic Manager szolgáltatásbeli tartománynevére.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
-5. Click **Validate** to save the domain name configuration.
-6. Upon clicking **Validate** Azure will kick off Domain Verification workflow. This will check for Domain ownership as well as Hostname availability and report success or detailed error with prescriptive guidence on how to fix the error.    
-7. Upon successful validation **Add hostname** button will become active and you will be able to the assign hostname. Now navigate to your custom domain name in a browser. You should now see your app running using your custom domain name. 
+5. Kattintson a **ellenőrzése** a tartomány neve konfigurációjának mentéséhez.
+6. Gomb megnyomásakor **ellenőrzése** Azure lesz indítsa tartományok ellenőrzésének munkafolyamat. Ez ellenőrzi, hogy a tartomány tulajdonosa, valamint állomásnév rendelkezésre állás és a jelentés sikeres vagy az előírásoknak megfelelő guidence a hiba megoldásával kapcsolatos hiba részleteit.    
+7. Sikeres érvényesítése után **állomásnév hozzáadása** gomb aktívvá válik, és nem fogja tudni a hozzárendelése állomásnév. Most nyissa meg böngészőben az egyéni tartománynevet. Ekkor megjelenik az alkalmazás fut, az egyéni tartománynév használatával. 
    
-   Once configuration has completed, the custom domain name will be listed in the **domain names** section of your web app.
+   Az egyéni tartománynév konfiguráció befejezése után megjelenik a **tartománynevek** webalkalmazás szakasz.
 
-At this point, you should be able to enter the Traffic Manager domain name name in your browser and see that it successfully takes you to your web app.
+Ezen a ponton meg kell tudni adja meg a Traffic Manager tartományneve a böngészőben, és tekintse meg, hogy sikeresen tart, a webes alkalmazást.
 

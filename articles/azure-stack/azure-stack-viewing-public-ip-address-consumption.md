@@ -1,6 +1,6 @@
 ---
-title: View public IP address consumption in Azure Stack | Microsoft Docs
-description: Administrators can view the consumption of public IP addresses in a region
+title: "Tekintse meg nyilvános IP-cím fogyasztás Azure verem |} Microsoft Docs"
+description: "A rendszergazdák megtekinthetik a nyilvános IP-címek fogyasztás régióban"
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -14,55 +14,54 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7651565eebf6272f307a4ce4790ca19b41bfa826
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="view-public-ip-address-consumption-in-azure-stack"></a>View public IP address consumption in Azure Stack
+# <a name="view-public-ip-address-consumption-in-azure-stack"></a>Nyilvános IP-cím fogyasztás Azure verem megtekintése
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-As a cloud administrator, you can view the number of public IP addresses that have been allocated to tenants, the number of public IP addresses that are still available for allocation, and the percentage of public IP addresses that have been allocated in that location.
+Felhő rendszergazdaként Megtekintheti a nyilvános IP-címek a bérlők számára, a nyilvános IP-címet, amely kiosztható továbbra is elérhetők, és a nyilvános IP-címek, amelyek az adott helyre került kiosztásra százalékos rendelt.
 
-The **Public IP pools usage** tile shows the total number of public IP addresses that have been consumed across all public IP address pools on the fabric, whether they have been used for tenant IaaS VM instances, fabric infrastructure services, or public IP address resources that were explicitly created by tenants.
+A **nyilvános IP-címet a készletbe használati** csempe kellett volna használni az összes nyilvános IP-címkészletet a hálón között nyilvános IP-címek teljes számát jeleníti meg, hogy IaaS Virtuálisgép-példányok, bérlő hálóinfrastruktúrában használja-e szolgáltatások, vagy explicit módon bérlők által létrehozott nyilvános IP-cím erőforrás.
 
-The purpose of this tile is to give Azure Stack administrators a sense of the overall number of public IP addresses that have been consumed in this location. This helps administrators determine whether they are running low on this resource.
+Ez a csempe célja segítségével Azure verem rendszergazdák egyfajta kellett volna használni az ezen a helyen nyilvános IP-címek teljes száma. Ez segít meghatározni, hogy azok kevés erőforrás rendszergazdák.
 
-On the **Resource providers**, **Network** blade, the **Public IP addresses** menu item under **Tenant Resources** lists only those public IP addresses that have been *explicitly created by tenants*. As such, the number of **Used** public IP addresses on the **Public IP pools usage** tile is always different from (larger than) the number on the **Public IP Addresses** tile under **Tenant Resources**.
+A a **erőforrás-szolgáltató**, **hálózati** panelen a **nyilvános IP-címek** menüpont alatt **bérlői erőforrások** csak azokat a nyilvános listája IP-címek, amelyek lettek *explicit módon a bérlők által létrehozott*. Így a száma **használható** nyilvános IP-címek a a **nyilvános IP-címet a készletbe használati** csempe nem mindig azonos a (nagyobb) a száma a **nyilvános IP-címek** csempe a **bérlői erőforrások**.
 
-## <a name="view-the-public-ip-address-usage-information"></a>View the public IP address usage information
-To view the total number of public IP addresses that have been consumed in the region:
+## <a name="view-the-public-ip-address-usage-information"></a>A nyilvános IP-címek használati adatait megtekintése
+Nyilvános IP-címek, amelyek a régió felhasznált teljes számának megtekintése:
 
-1. In the Azure Stack administrator portal, click **More services**, under **Administrative Resources**, click **Resource providers**.
-2. From the list of **Resource Providers**, select **Network**.
-3. The **Network** blade displays the **Public IP pools usage** tile in the **Overview** section.
+1. A verem Azure felügyeleti portálon kattintson **további szolgáltatások**a **felügyeleti erőforrások**, kattintson a **erőforrás-szolgáltató**.
+2. A listájáról **erőforrás-szolgáltató**, jelölje be **hálózati**.
+3. A **hálózati** csempe megjeleníti a **nyilvános IP-címet a készletbe használati** csempére a **áttekintése** szakasz.
 
-![Network Resource Provider blade](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
+![Hálózati erőforrás-szolgáltató panel](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
 
-Keep in mind that the **Used** number represents the number of public IP addresses from all public IP address pools in that location that are assigned. The **Free** number represents the number of public IP addresses from all public IP address pools that have not been assigned and are still available. The **% Used** number represents the number of used or assigned addresses as a percentage of the total number of public IP addresses in all public IP address pools in that location.
+A következőket kell figyelembe venni, hogy a **használható** számát jelenti. a nyilvános IP-címek száma az összes nyilvános IP-címkészletet azon a helyen rendelt. A **szabad** szám azt jelzi, a nyilvános IP-címek számának minden nyilvános IP-cím a címkészlet, amely nincs hozzárendelve, és továbbra is elérhetők. A **(%) értékét** számot jelöli a számát, használt vagy címek hozzárendelve a nyilvános IP-címeket az összes nyilvános IP-címkészletet azon a helyen lévő száma százalékában.
 
-## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>View the public IP addresses that were created by tenant subscriptions
-To see a list of public IP addresses that were explicitly created by tenant subscriptions in a specific region, click **Public IP addresses** under **Tenant Resources**.
+## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>A nyilvános IP-címet, amelyet bérlői előfizetések megtekintése
+Nyilvános IP-címek egy adott régióban bérlői előfizetések explicit módon létrehozott listájának megtekintéséhez kattintson **nyilvános IP-címek** alatt **bérlői erőforrások**.
 
-![Tenant public IP addresses](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
+![Bérlő nyilvános IP-címek](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
 
-You might notice that some public IP addresses that have been dynamically allocated appear in the list but do not have an address associated with them yet. This is because the address resource has been created in the Network Resource Provider, but not in the Network Controller yet.
+Bizonyára észrevette, hogy, hogy néhány nyilvános IP-címeket dinamikusan lefoglalt szerepelnek a listán, de nincs társítva még címe. Ennek oka az, a cím erőforrás még jött létre a hálózati erőforrás-szolgáltató, de nem a hálózati vezérlő.
 
-The Network Controller does not assign an address to this resource until it is actually bound to an interface, a network interface card (NIC), a load balancer, or a virtual network gateway. When the public IP address is bound to an interface, the Network Controller allocates an IP address to it, and it appears in the **Address** field.
+A hálózati vezérlő nem címet hozzárendelni az erőforráshoz való csak illesztőfelület, a hálózati kártya (NIC), a terheléselosztó vagy a virtuális hálózati átjáró ténylegesen kötött. Ha a nyilvános IP-cím egy adapterhez van kötve, a hálózati vezérlő osztja ki az IP-címet, és megjelenik a **cím** mező.
 
-## <a name="view-the-public-ip-address-information-summary-table"></a>View the public IP address information summary table
-There are a number of different cases in which public IP addresses are assigned that determine whether the address appears in one list or another.
+## <a name="view-the-public-ip-address-information-summary-table"></a>A nyilvános IP-cím információk összefoglaló táblázata megtekintése
+Számos nyilvános IP-címek vannak társítva, amelyek meghatározzák, hogy a cím jelenik meg egy lista vagy egy másik különbözik azoktól.
 
-| **Public IP address assignment case** | **Appears in usage summary** | **Appears in tenant public IP addresses list** |
+| **Nyilvános IP-cím hozzárendelés eset** | **Megjelenik a használatának összegzése** | **A bérlő nyilvános IP-címeket tartalmazó listájában jelenik meg** |
 | --- | --- | --- |
-| Dynamic public IP address not yet assigned to an NIC or load balancer (temporary) |No |Yes |
-| Dynamic public IP address assigned to an NIC or load balancer. |Yes |Yes |
-| Static public IP address assigned to a tenant NIC or load balancer. |Yes |Yes |
-| Static public IP address assigned to a fabric infrastructure service endpoint. |Yes |No |
-| Public IP address implicitly created for IaaS VM instances and used for outbound NAT on the virtual network. These are created behind the scenes whenever a tenant creates a VM instance so that VMs can send information out to the Internet. |Yes |No |
+| Még nem rendelt (átmeneti) egy hálózati adapter vagy terheléselosztó dinamikus nyilvános IP-cím |Nem |Igen |
+| Dinamikus nyilvános IP-cím egy hálózati adapter vagy terheléselosztó rendelt. |Igen |Igen |
+| Statikus nyilvános IP-címet hozzárendelni a bérlő hálózati adapter vagy terheléselosztó. |Igen |Igen |
+| Statikus nyilvános IP-címet hozzárendelni a háló infrastruktúra-szolgáltatási végpont. |Igen |Nem |
+| Nyilvános IP-cím implicit módon létrehozott IaaS Virtuálisgép-példányok és használt kimenő forgalmat kezelő NAT a virtuális hálózaton. Amikor a bérlő hoz létre egy Virtuálisgép-példány, hogy a virtuális gépek képes információkat küldeni Internet ezek jönnek létre a háttérben. |Igen |Nem |
 
-## <a name="next-steps"></a>Next steps
-[Manage Storage Accounts in Azure Stack](azure-stack-manage-storage-accounts.md)
+## <a name="next-steps"></a>Következő lépések
+[A verem az Azure Storage-fiókok kezelése](azure-stack-manage-storage-accounts.md)

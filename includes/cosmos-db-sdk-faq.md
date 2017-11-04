@@ -1,24 +1,24 @@
-**1. How will customers be notified of the retiring SDK?**
+**1. Hogyan ügyfelek értesítést fog kapni a leköszönő SDK?**
 
-Microsoft will provide 12 month advance notification to the end of support of the retiring SDK in order to facilitate a smooth transition to a supported SDK. Further, customers will be notified through various communication channels – Azure Management Portal, Developer Center, blog post, and direct communication to assigned service administrators.
+12 hónapos előzetes értesítéssel a támogatás megszűnésével leköszönő SDK egy támogatott SDK zökkenőmentes átmenet megkönnyítése érdekében a Microsoft nyújt. További az ügyfelek az különböző kommunikációs csatornák – Azure felügyeleti portálon, fejlesztői központban, blogbejegyzés, értesítést fog kapni, és közvetlen kommunikációt hozzárendelt szolgáltatás-rendszergazdák.
 
-**2. Can customers author applications using a "to-be" retired Azure Cosmos DB SDK during the 12 month period?** 
+**2. Az ügyfelek 12 hónap során egy "visszaállítandó" kivont Azure Cosmos DB SDK-t használó alkalmazások hozhat létre?** 
 
-Yes, customers will have full access to author, deploy and modify applications using the "to-be" retired Azure Cosmos DB SDK during the 12 month grace period. During the 12 month grace period, customers are advised to migrate to a newer supported version of Azure Cosmos DB SDK as appropriate.
+Igen, az ügyfelek létrehozásához, telepítéséhez és módosíthatja a 12 hónap türelmi időszak alatt az "visszaállítandó" kivont Azure Cosmos DB SDK-t használó alkalmazások teljes hozzáféréssel rendelkeznek. A 12 hónap türelmi időszak alatt az ügyfelek javasolja, hogy egy újabb támogatott verzióra Azure Cosmos DB SDK szükség szerint telepítse át.
 
-**3. Can customers author and modify applications using a retired Azure Cosmos DB SDK after the 12 month notification period?**
+**3. Képes ügyfelek létrehozásával és módosításával a értesítési 12 hónapos időszak után a kivont Azure Cosmos DB SDK-t használó alkalmazások?**
 
-After the 12 month notification period, the SDK will be retired. Any access to Azure Cosmos DB by an applications using a retired SDK will not be permitted by the Azure Cosmos DB platform. Further, Microsoft will not provide customer support on the retired SDK.
+12 hónapos értesítési időszak után az SDK rendszerből. Egy kivont SDK használata alkalmazások Azure Cosmos DB elérését nem szabad engedélyezni az Azure Cosmos DB platformon. További, a Microsoft nem vevő támogatást nyújt a kivont SDK-val.
 
-**4. What happens to Customer’s running applications that are using unsupported Azure Cosmos DB SDK version?**
+**4. Mi történik, az ügyfél által futó verziója nem támogatott Azure Cosmos DB SDK-t használó alkalmazások?**
 
-Any attempts made to connect to the Azure Cosmos DB service with a retired SDK version will be rejected. 
+Egy kivont SDK-verzió az Azure Cosmos DB-ba való kapcsolódáshoz tett bármilyen kísérletet a program elutasítja. 
 
-**5. Will new features and functionality be applied to all non-retired SDKs?**
+**5. Új szolgáltatásait és funkcióit alkalmazandó összes nem lejárt SDK?**
 
-New features and functionality will only be added to new versions. If you are using an old, non-retired, version of the SDK your requests to Azure Cosmos DB will still function as previous but you will not have access to any new capabilities.  
+Új szolgáltatásait és funkcióit kizárólag hozzáadódik új verziók. Az SDK régi, nem lejárt verziójának használatakor a kérelmek Azure Cosmos DB továbbra is működnek az előző, de Ön nem rendelkezik semmilyen új képességekkel rendelkezik hozzáféréssel.  
 
-**6. What should I do if I cannot update my application before a cut-off date?**
+**6. Mit tegyek, ha nem lehet frissíteni a határidő előtt az alkalmazást?**
 
-We recommend that you upgrade to the latest SDK as early as possible. Once an SDK has been tagged for retirement you will have 12 months to update your application. If, for whatever reason, you cannot complete your application update within this timeframe then please contact the [Cosmos DB Team](mailto:askcosmosdb@microsoft.com) and request their assistance before the cutoff date.
+Azt javasoljuk, hogy frissítsen a legújabb SDK lehető leghamarabb. Az SDK a használatból való kivonást címkézett fog követően az alkalmazás frissítése a 12 hónapon keresztül. Ha, valamilyen okból nem az alkalmazás frissítéséhez a időkereten belül vegye fel a kapcsolatot a [Cosmos DB Team](mailto:askcosmosdb@microsoft.com) és azok Segítségkérés a megadott időpont előtt.
 

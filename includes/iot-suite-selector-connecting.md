@@ -1,73 +1,71 @@
 > [!div class="op_single_selector"]
 > * [C Windowson](../articles/iot-suite/iot-suite-connecting-devices.md)
 > * [C Linuxon](../articles/iot-suite/iot-suite-connecting-devices-linux.md)
-> * [Node.js](../articles/iot-suite/iot-suite-connecting-devices-node.md)
-> 
-> 
+> * [Node.js (általános)](../articles/iot-suite/iot-suite-connecting-devices-node.md)
+> * [Node.js Raspberry Pi-on](../articles/iot-suite/iot-suite-connecting-pi-node.md)
+> * [C Raspberry Pi-on](../articles/iot-suite/iot-suite-connecting-pi-c.md)
 
-## <a name="scenario-overview"></a>Forgatókönyv áttekintése
-Ebben az esetben olyan eszközt hoz létre, amely a következő telemetriát küldi az [előre konfigurált][lnk-what-are-preconfig-solutions] távoli figyelési megoldásnak:
+Az oktatóanyag végrehajtása egy **hűtő** eszköz, amely a következő telemetriai adatokat küld a távoli megfigyelési [előre konfigurált megoldás](../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md):
 
-* Külső hőmérséklet
-* Belső hőmérséklet
+* Hőmérséklet
+* nyomás
 * Páratartalom
 
-Az egyszerűség kedvéért az eszközön lévő kód mintaértékeket hoz létre, de javasoljuk, hogy terjessze ki a mintát valós érzékelők az eszközhöz csatlakoztatása és valós telemetria küldése révén.
+Az egyszerűség, a kódot állít elő, a telemetriai adatok mintaértékek a **hűtő**. A minta lehetett bővíteni a valódi érzékelők csatlakozik az eszközt, és valós telemetriai adatok küldését.
 
-Az eszköz a megoldás irányítópultjáról indított metódusokra és a megoldás irányítópultján beállított tulajdonságértékekre is tud válaszolni.
+A minta eszköz is:
 
-Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ: [Ingyenes Azure-fiók létrehozása][lnk-free-trial].
+* A megoldás platformképességei leírására elküldi a metaadatokat.
+* Válaszol-e a műveletek állapotváltozás aktiválja a **eszközök** lap a megoldásban.
+* A konfigurációs módosítások megválaszolja küldjön a **eszközök** lap a megoldásban.
+
+Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](http://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="before-you-start"></a>Előkészületek
+
 Mielőtt bármilyen kódot írna az eszközhöz, ki kell építenie az előre konfigurált távoli figyelési megoldást, és meg kell adnia egy új egyéni eszközt ebben a megoldásban.
 
 ### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Az előre konfigurált távoli figyelési megoldás kiépítése
-Az ebben az oktatóanyagban létrehozott eszköz adatokat küld az előre konfigurált [távoli figyelési][lnk-remote-monitoring] megoldásnak. Ha még nem építette ki az előre konfigurált távoli figyelési megoldást az Azure-fiókban, használja a következő lépéseket:
 
-1. A <https://www.azureiotsuite.com/> oldalon kattintson a **+** elemre egy megoldás létrehozásához.
-2. Kattintson a **Kiválasztás** elemre a **Távoli figyelés** panelen a megoldás létrehozásához.
-3. A **Távoli figyelési megoldás létrehozása** oldalon írjon be egy **megoldásnevet**, válassza ki a **Régiót**, ahová üzembe szeretné helyezni azt, majd válassza ki a használni kívánt Azure-előfizetést. Ezután kattintson a **Megoldás létrehozása** parancsra.
-4. Várja meg, amíg befejeződik a kiépítési folyamat.
-
-> [!WARNING]
-> Az előre konfigurált megoldások számlázható Azure-szolgáltatásokat használnak. A felesleges költségek elkerülése érdekében ügyeljen arra, hogy eltávolítsa az előre konfigurált megoldást az előfizetésből, amikor végzett annak használatával. Teljesen is eltávolíthatja az előre konfigurált megoldást az előfizetésből a <https://www.azureiotsuite.com/> oldalon.
-> 
-> 
+A **hűtő** eszköz ebben az oktatóanyagban létrehozhat adatokat küld egy példányát a [távoli megfigyelési](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) előre konfigurált megoldás. Ha a távoli felügyeleti előkonfigurált megoldás még nem már megtörtént, az Azure-fiókjába, lásd: [a távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
 
 A távoli figyelési megoldás kiépítésének befejezte után kattintson az **Indítás** gombra a megoldás irányítópultjának a böngészőben történő megnyitásához.
 
-![A megoldás irányítópultja][img-dashboard]
+![A megoldás irányítópultja](media/iot-suite-selector-connecting/dashboard.png)
 
 ### <a name="provision-your-device-in-the-remote-monitoring-solution"></a>Az eszköz kiépítése a távoli figyelési megoldásban
+
 > [!NOTE]
-> Ha már kiépített egy eszközt a megoldásában, kihagyhatja ezt a lépést. Ismernie kell az eszköz hitelesítő adatait az ügyfélalkalmazás létrehozásakor.
-> 
-> 
+> Ha már kiépített egy eszközt a megoldásában, kihagyhatja ezt a lépést. Van szüksége a hitelesítő adatai az ügyfélalkalmazás létrehozásakor.
 
-Ahhoz, hogy egy eszköz előre konfigurált megoldáshoz csatlakozhasson, érvényes hitelesítő adatokkal kell azonosítania magát az IoT Hubon. A megoldás irányítópultjáról kérheti le az eszköz hitelesítő adatait. Az oktatóanyagban később megadja az eszköz hitelesítő adatait az ügyfélalkalmazásban.
+Ahhoz, hogy egy eszköz előre konfigurált megoldáshoz csatlakozhasson, érvényes hitelesítő adatokkal kell azonosítania magát az IoT Hubon. A megoldás kérhetnek le a hitelesítő adatai **eszközök** lap. Az oktatóanyagban később megadja az eszköz hitelesítő adatait az ügyfélalkalmazásban.
 
-Ha eszközt szeretne hozzáadni a távoli figyelési megoldáshoz, végezze el a következő lépéseket a megoldás irányítópultján:
+Hozzáad egy eszközt a távoli felügyeleti megoldás, végezze el az alábbi lépéseket a **eszközök** lap a megoldásban:
 
-1. Az irányítópult bal alsó részén kattintson az **Eszköz hozzáadása** parancsra.
-   
-   ![Eszköz hozzáadása][1]
-2. Az **Egyéni eszköz** panelen kattintson az **Új hozzáadása** parancsra.
-   
-   ![Egyéni eszköz hozzáadása][2]
-3. Válassza a **Meghatározom a saját eszközazonosítómat** elemet. Írjon be egy eszközazonosítót, például a **sajáteszköz** kifejezést, kattintson az **Azonosító ellenőrzése** parancsra, hogy meggyőződhessen arról, hogy a név még nincs használatban, majd kattintson a **Létrehozás** parancsra az eszköz kiépítéséhez.
-   
-   ![Eszközazonosító hozzáadása][3]
-4. Jegyezze fel az eszköz hitelesítő adatait (az eszköz azonosítóját, az IoT Hub-eszköznevet és az eszköz kulcsát). Az ügyfélalkalmazásnak szüksége van ezekre az értékekre, hogy a távoli figyelési megoldáshoz csatlakozhasson. Ezután kattintson a **Done** (Kész) gombra.
-   
-    ![Eszköz hitelesítő adatainak megtekintése][4]
-5. Válassza ki az eszközt a megoldás irányítópultján lévő eszközlistából. Ezután az **Eszköz részletei** panelen kattintson az **Eszköz engedélyezése** parancsra. Az eszköz mostantól **Fut** állapotú. A távoli figyelési megoldás ettől kezdve telemetriát fogadhat az eszközről és metódusokat hívhat meg az eszközön.
+1. Válasszon **rendelkezés**, és válassza a **fizikai** , a **eszköztípus**:
 
-[img-dashboard]: ./media/iot-suite-selector-connecting/dashboard.png
-[1]: ./media/iot-suite-selector-connecting/suite0.png
-[2]: ./media/iot-suite-selector-connecting/suite1.png
-[3]: ./media/iot-suite-selector-connecting/suite2.png
-[4]: ./media/iot-suite-selector-connecting/suite3.png
+    ![A fizikai eszköz kiépítése](media/iot-suite-selector-connecting/devicesprovision.png)
 
-[lnk-what-are-preconfig-solutions]: ../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md
-[lnk-remote-monitoring]: ../articles/iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+1. Adja meg **fizikai-hűtő** , az eszközazonosító. Válassza ki a **szimmetrikus kulcs** és **automatikus kulcsok létrehozása** beállítások:
+
+    ![Válassza ki az eszköz beállítások](media/iot-suite-selector-connecting/devicesoptions.png)
+
+Keresse meg az eszköz kell az előkonfigurált megoldás való csatlakozáskor használandó hitelesítő adatokat, navigáljon a böngészőben az Azure portálon. Jelentkezzen be az előfizetéshez.
+
+1. Keresse meg az erőforráscsoport, amely tartalmazza a távoli felügyeleti megoldás az Azure-szolgáltatásokhoz. Az erőforráscsoport neve megegyezik a távoli figyelési megoldást igényelnek létesített rendelkezik.
+
+1. Nyissa meg az IoT-központ az erőforráscsoportban. Válassza a **eszköz explorer**:
+
+    ![Eszköz explorer](media/iot-suite-selector-connecting/deviceexplorer.png)
+
+1. Válassza ki a **Eszközazonosító** a létrehozott a **eszközök** lap a távoli felügyeleti megoldás.
+
+1. Jegyezze fel a **Eszközazonosító** és **elsődleges kulcs** értékeket. Csatlakoztassa az eszközt a megoldáshoz kód hozzáadásakor használja ezeket az értékeket.
+
+Most már kiépített egy fizikai eszköz a távoli figyelési előre aktiválja megoldás. A következő szakaszokban, amelyek a hitelesítő adatai a megoldás való kapcsolódáshoz használ az ügyfélalkalmazás megvalósítása.
+
+Az ügyfélalkalmazás valósítja meg a beépített **hűtő** eszközmodell. Egy előre konfigurált megoldás eszköz típusa határozza meg az alábbiakat az eszköz:
+
+* Az eszköz jelentés készít a megoldás tulajdonságait. Például egy **hűtő** eszköz a belső vezérlőprogram és helyére vonatkozó jelent adatokat.
+* A megoldás küld az eszköz a telemetriai adatok típusú. Például egy **hűtő** eszköz küld hőmérséklet, páratartalom és érték.
+* A módszerek is ütemezheti a megoldásban való futtatható az eszközön. Például egy **hűtő** meg kell valósítania az eszköz **újraindítás**, **FirmwareUpdate**, **EmergencyValveRelease**, és  **IncreasePressuree** módszerek.

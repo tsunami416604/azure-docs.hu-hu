@@ -1,2 +1,2 @@
-To use this feature and other new Azure capabilities, sign up for the [free preview](https://account.windowsazure.com/PreviewFeatures).
+Ez a szolgáltatás és az új Azure egyéb funkcióit szeretné használni, Regisztráljon a [ingyenes kiadásra](https://account.windowsazure.com/PreviewFeatures).
 

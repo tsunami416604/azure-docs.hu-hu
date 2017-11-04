@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jgao
-ms.openlocfilehash: c1aeed8c6fe4f83b170838e4efb9d9c4744fb951
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 00eb9f6e13035ba5827b70e911be4afeafd442a2
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>A nem interaktív hitelesítés .NET HDInsight-alkalmazások létrehozása
 A Microsoft .NET Azure HDInsight-alkalmazásokat, az alkalmazás saját identitással (nem interaktív) vagy a bejelentkezett felhasználó az alkalmazás (interaktív) alapján is futtathatja. Ez a cikk bemutatja, hogyan hozzon létre egy nem interaktív hitelesítés az Azure-bA csatlakoztatni és kezelni a HDInsight .NET-alkalmazásokat. Interaktív alkalmazás mintát, lásd: [csatlakozás az Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
@@ -32,7 +32,7 @@ A nem interaktív .NET-alkalmazás lesz szüksége:
 * Az Azure AD-alkalmazás titkos kulcs. Lásd: [Get alkalmazás hitelesítési kulcs](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* HDInsight-fürtöt. Tekintse meg a [használatába bevezető oktatóanyagot](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster).
+* HDInsight-fürtöt. Tekintse meg a [használatába bevezető oktatóanyagot](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Szerepkör hozzárendelése az Azure AD-alkalmazás
 Az Azure AD alkalmazás hozzárendelése egy [szerepkör](../active-directory/role-based-access-built-in-roles.md), biztosítania jogosultságokkal műveletek végrehajtásához. A hatókör szintjén található az előfizetés, erőforráscsoportból vagy erőforrás állíthatja be. Az engedélyek hatóköre alacsonyabb szintű származnak. (Például egy alkalmazást az olvasó szerepkört erőforráscsoport hozzáadása azt jelenti, hogy az alkalmazás elolvashatják az erőforráscsoport és bármely-erőforrásokat.) Ebben az oktatóanyagban hatókör, az erőforráscsoport szintjén beállítása. További információkért lásd: [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](../active-directory/role-based-access-control-configure.md).

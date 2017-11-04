@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: larryfr
-ms.openlocfilehash: 1ad536a53d64b0144f6396393830bc0c5cbe4fb1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: d474cce902dad1390d55ed7bad556d9b0610605f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>A HDInsight Hadoop-szolgáltatás által használt portok
 
@@ -48,17 +48,17 @@ HDInsight-fürtök minden csomópontján egy Azure virtuális hálózatban talá
 | sshd |23 |SSH |A másodlagos headnode a sshd ügyfelek csatlakozik. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | Ambari |443 |HTTPS |Ambari webes felhasználói felület. Lásd: [kezelése HDInsight az Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari REST API-t. Lásd: [kezelése HDInsight az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API-t. Lásd: [a Hive használata a Curl](hdinsight-hadoop-use-pig-curl.md), [a Pig használata Curl](hdinsight-hadoop-use-pig-curl.md), [MapReduce használata Curl](hdinsight-hadoop-use-mapreduce-curl.md) |
-| Hiveserver2-n |443 |ODBC |Hive ODBC használatával csatlakozik. Lásd: [az Excel csatlakozzon a HDInsight a Microsoft ODBC-illesztőprogram](hdinsight-connect-excel-hive-odbc-driver.md). |
-| Hiveserver2-n |443 |JDBC |A Hive használatával JDBC csatlakozik. Lásd: [Hive hdinsight Hive JDBC-illesztőprogram használatával csatlakozhat](hdinsight-connect-hive-jdbc-driver.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API-t. Lásd: [a Hive használata a Curl](hadoop/apache-hadoop-use-pig-curl.md), [a Pig használata Curl](hadoop/apache-hadoop-use-pig-curl.md), [MapReduce használata Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| Hiveserver2-n |443 |ODBC |Hive ODBC használatával csatlakozik. Lásd: [az Excel csatlakozzon a HDInsight a Microsoft ODBC-illesztőprogram](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
+| Hiveserver2-n |443 |JDBC |A Hive használatával JDBC csatlakozik. Lásd: [Hive hdinsight Hive JDBC-illesztőprogram használatával csatlakozhat](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 Az alábbiakban adott fürt esetében érhető el:
 
 | Szolgáltatás | Port | Protokoll | Fürttípus | Leírás |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API-t. Lásd: [HBase első lépései](hdinsight-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark REST API-t. Lásd: [küldje el külső feladatok távolról a Livy használatával](hdinsight-apache-spark-livy-rest-interface.md) |
-| Storm |443 |HTTPS |Storm |A Storm webes felhasználói felület. Lásd: [központi telepítése és kezelése a HDInsight alatt futó Storm-topológiák](hdinsight-storm-deploy-monitor-topology-linux.md) |
+| Stargate |443 |HTTPS |HBase |HBase REST API-t. Lásd: [HBase első lépései](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Spark REST API-t. Lásd: [küldje el külső feladatok távolról a Livy használatával](spark/apache-spark-livy-rest-interface.md) |
+| Storm |443 |HTTPS |Storm |A Storm webes felhasználói felület. Lásd: [központi telepítése és kezelése a HDInsight alatt futó Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>Authentication
 

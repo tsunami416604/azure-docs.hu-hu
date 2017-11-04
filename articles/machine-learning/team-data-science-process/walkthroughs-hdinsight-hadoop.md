@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 5dbfd043f1809f407baf6aa4ca5c5272af425012
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: cef2dac8651933765c83410579eafb23460960f9
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>HDInsight Hadoop adatok tudományos forgatókönyvek az Azure-on a Hive eszközzel 
 
-Ezek a forgatókönyvek Hive HDInsight Hadoop-fürthöz prediktív elemzési kell használni. Ezek leírt lépések az adatok tudományos folyamatban. Az Team tudományos folyamat áttekintését lásd: [adatok tudományos folyamat](overview.md). Megismerkedhet az Azure HDInsight, lásd: [Bevezetés az Azure HDInsight Hadoop technológiai területekre, és az Hadoop-fürtök](../../hdinsight/hdinsight-hadoop-introduction.md).
+Ezek a forgatókönyvek Hive HDInsight Hadoop-fürthöz prediktív elemzési kell használni. Ezek leírt lépések az adatok tudományos folyamatban. Az Team tudományos folyamat áttekintését lásd: [adatok tudományos folyamat](overview.md). Megismerkedhet az Azure HDInsight, lásd: [Bevezetés az Azure HDInsight Hadoop technológiai területekre, és az Hadoop-fürtök](../../hdinsight/hadoop/apache-hadoop-introduction.md).
 
 További adatok tudományos forgatókönyvek, amelyek az Team tudományos folyamat végrehajtása szerint vannak csoportosítva a **platform** használnak. Lásd: [az Team tudományos folyamat végrehajtása forgatókönyvek](walkthroughs.md) ezekben a példákban az részletezéshez.
 

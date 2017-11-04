@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 11/02/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b8656123fa9c5158f366872ab050f370080ec18a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 5be05fabf03e7e3ccaa3bf66ffefdd6406a06b3e
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>A HDInsight Hive és a Hadoop használatával Twitter-adatok elemzése
 
@@ -158,6 +158,9 @@ A következő Python kódját letölti a 10 000 Twitter-üzeneteket Twitter, és
     > * `consumer_key`
     > * `access_token`
     > * `access_token_secret`
+
+    > [!TIP]
+    > Állítsa be úgy a témakörök szűrő nyomon követéséhez a népszerű kulcsszavak utolsó sorában. Népszerű kulcsszavak használatával futtassa a parancsfájlt időpontjában lehetővé teszi, hogy az adatok gyorsabb rögzítési.
 
 6. Használjon **Ctrl + X**, majd **Y** fájl mentéséhez.
 
@@ -312,19 +315,22 @@ Ezek a parancsok a fürt összes csomópontja által elérhető helyen tárolja 
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
-       FROM tweets
-       WHERE text like "%Azure%"
-       GROUP BY name,screen_name
-       ORDER BY cc DESC LIMIT 10;
+   FROM tweets
+   WHERE text like "%Azure%"
+   GROUP BY name,screen_name
+   ORDER BY cc DESC LIMIT 10;
    ```
 
     A lekérdezés által visszaadott legfeljebb 10 Twitter-üzeneteket, amelyek tartalmazzák a word **Azure** az az üzenet szövege.
+
+    > [!NOTE]
+    > Ha módosította a szűrőt a `gettweets.py` parancsfájlt, hogy lecseréli **Azure** egy szűrőt használja.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Rendelkezik megtudta, hogyan egy strukturálatlan JSON adatkészlet átalakítása strukturált Hive táblákat. A HDInsight Hive kapcsolatos további tudnivalókért tekintse meg a következő dokumentumokat:
 
-* [Első lépései a hdinsight eszközzel](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [Első lépései a hdinsight eszközzel](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight eszközzel repülési késleltetés adatok elemzése](hdinsight-analyze-flight-delay-data-linux.md)
 
 [curl]: http://curl.haxx.se

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.openlocfilehash: 6e6e7a199547135bd9695ff0867e8d5a98341b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Platformok és az adatok tudományos csapatprojektek eszközök
 
@@ -61,7 +61,7 @@ Apache Spark egy nyílt forráskódú párhuzamos feldolgozása keretrendszer, a
 
 Amikor Spark-fürtöt hoz létre a HDInsightban, olyan Azure számítási erőforrásokat is létrehoz, amelyeken a Spark telepítve és konfigurálva van. Hdinsight Spark-fürt létrehozása nagyjából 10 percet vesz igénybe. Az Azure Blob storage feldolgozandó adatok tárolására. Az Azure Blob Storage használata a fürt további információkért lásd: [használatát a HDFS-kompatibilis Azure Blob storage hadooppal a Hdinsightban](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-TDSP csapat a Microsoft tett közzé két végpont forgatókönyvek adatok tudományos megoldások létrehozásához Azure HDInsight Spark-fürtök használatáról Python és az egyéb Scala egy használatával. További információ az Azure HDInsight **Spark-fürtjei**, lásd: [– áttekintés: Apache Spark on HDInsight Linux rendszeren](../../hdinsight/hdinsight-apache-spark-overview.md). Megtudhatja, hogyan hozhat létre egy tudományos megoldás használatával végzett **Python** az Azure HDInsight Spark-fürtöt, tekintse meg a [áttekintése adatok tudományos Spark on Azure HDInsight használatának](spark-overview.md). Megtudhatja, hogyan hozhat létre egy tudományos megoldás használatával végzett **Scala** az Azure HDInsight Spark-fürtöt, tekintse meg a [Scala és Spark az Azure használatával Adattudomány](scala-walkthrough.md). 
+TDSP csapat a Microsoft tett közzé két végpont forgatókönyvek adatok tudományos megoldások létrehozásához Azure HDInsight Spark-fürtök használatáról Python és az egyéb Scala egy használatával. További információ az Azure HDInsight **Spark-fürtjei**, lásd: [– áttekintés: Apache Spark on HDInsight Linux rendszeren](../../hdinsight/spark/apache-spark-overview.md). Megtudhatja, hogyan hozhat létre egy tudományos megoldás használatával végzett **Python** az Azure HDInsight Spark-fürtöt, tekintse meg a [áttekintése adatok tudományos Spark on Azure HDInsight használatának](spark-overview.md). Megtudhatja, hogyan hozhat létre egy tudományos megoldás használatával végzett **Scala** az Azure HDInsight Spark-fürtöt, tekintse meg a [Scala és Spark az Azure használatával Adattudomány](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
@@ -86,7 +86,7 @@ Hive lehetővé teszi a nagy mértékben strukturálatlan adatok szerkezetének.
 
 Adatszakértőkön, a Hive futtathat Python User-Defined funkciókat (UDF) rekordok feldolgozásához Hive-lekérdezéseket. Ez a lehetőség jelentősen kiterjeszti az adatok elemzése a Hive-lekérdezések képességet. Pontosabban, lehetővé teszi a méretezhető szolgáltatás mérnöki legtöbbször nem ismeri nyelvű elvégzésére adatszakértőkön: az SQL-szerű HiveQL és a Python. 
 
-Azure HDInsight Hive fürtökön további információkért lásd: [használata Hive és a HiveQL hadooppal a Hdinsightban](../../hdinsight/hdinsight-use-hive.md). Az Azure HDInsight Hive fürtök egy méretezhető végpont adatok tudományos megoldás kiépítését, lásd: [a csapat adatok tudományos folyamat működés közben: HDInsight Hadoop-fürtök használata](hive-walkthrough.md).
+Azure HDInsight Hive fürtökön további információkért lásd: [használata Hive és a HiveQL hadooppal a Hdinsightban](../../hdinsight/hadoop/hdinsight-use-hive.md). Az Azure HDInsight Hive fürtök egy méretezhető végpont adatok tudományos megoldás kiépítését, lásd: [a csapat adatok tudományos folyamat működés közben: HDInsight Hadoop-fürtök használata](hive-walkthrough.md).
 
 
 ## <a name="azure-file-storage"></a>Az Azure File Storage 

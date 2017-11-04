@@ -1,26 +1,26 @@
-## <a name="export-an-api-definition"></a>Export an API definition
-You have an OpenAPI definition for your function, from [Create an OpenAPI definition for a function](../articles/azure-functions/functions-openapi-definition.md). The next step in this process is to export the API definition so that PowerApps and Microsoft Flow can use it in a custom API.
+## <a name="export-an-api-definition"></a>Az API-definíció exportálása
+Egy OpenAPI definíciója a függvény a rendelkezik [létrehozása a következő függvényt egy OpenAPI definíciója](../articles/azure-functions/functions-openapi-definition.md). Ez a folyamat következő lépése a rendszer az API-definíció, hogy a PowerApps és Microsoft Flow használható egy egyéni API-t.
 
 > [!IMPORTANT]
-> Remember that you must be signed into Azure with the same credentials that you use for your PowerApps and Microsoft Flow tenants. This enables Azure to create the custom API and make it available for both PowerApps and Microsoft Flow.
+> Ne feledje, hogy be kell jelentkeznie az Azure azokkal a hitelesítő adatokkal, használja a PowerApps és Microsoft Flow bérlők. Ez lehetővé teszi az egyéni API-t létrehozni, és tegye elérhetővé a PowerApps és a Microsoft Flow Azure.
 
-1. In the [Azure portal](https://portal.azure.com), click your function app name (like **function-demo-energy**) > **Platform features** > **API definition**.
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a függvény alkalmazás neve (például **függvény-bemutató-energia**) > **Platform funkciói** > **API-definíció** .
 
-    ![API definition](media/functions-export-api-definition/api-definition.png)
+    ![API-definíció](media/functions-export-api-definition/api-definition.png)
 
-1. Click **Export to PowerApps + Flow**.
+1. Kattintson a **exportálja a PowerApps és Flow**.
 
-    ![API definition source](media/functions-export-api-definition/export-api-1.png)
+    ![API definition forrás](media/functions-export-api-definition/export-api-1.png)
 
-1. In the right pane, use the settings as specified in the table.
+1. A jobb oldali ablaktáblában a táblázatban megadott beállítást használja.
 
-    |Setting|Description|
+    |Beállítás|Leírás|
     |--------|------------|
-    |**Export Mode**|Select **Express** to automatically generate the custom API. Selecting **Manual** exports the API definition, but then you must import it into PowerApps and Microsoft Flow manually. For more information, see [Export to PowerApps and Microsoft Flow](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md).|
-    |**Environment**|Select the environment that the custom API should be saved to. For more information, see [Environments overview (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) or [Environments overview (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/).|
-    |**Custom API Name**|Enter a name, like `Turbine Repair`.|
-    |**API Key Name**|Enter the name that app and flow builders should see in the custom API UI. Note that the example includes helpful information.|
+    |**Exportálás módja**|Válassza ki **Express** automatikusan létrehozni az egyéni API-t. Kiválasztása **manuális** exportálja az API-definíció, de majd meg kell importálnia kell azt PowerApps és Microsoft Flow manuálisan. További információkért lásd: [PowerApps és Microsoft Flow exportálása](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md).|
+    |**Környezet**|Válassza ki a környezetben, ami az egyéni API-t menteni kell. További információkért lásd: [környezetek – áttekintés (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) vagy [környezetek overview (a Microsoft-Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/).|
+    |**Egyéni API neve**|Adjon meg egy nevet, például `Turbine Repair`.|
+    |**Az API-kulcs nevét**|Adja meg, hogy az alkalmazás és a folyamat szerkesztők kell megjelennie az egyéni API felhasználói felületén. Vegye figyelembe, hogy a példában tartalmaz hasznos információkat.|
  
-    ![Export to PowerApps and Microsoft Flow](media/functions-export-api-definition/export-api-2.png)
+    ![Exportálás a PowerAppsbe és a Microsoft Flow-ba](media/functions-export-api-definition/export-api-2.png)
 
-1. Click **OK**. The custom API is now built and added to the environment you specified.
+1. Kattintson az **OK** gombra. Az egyéni API-t most már a beépített, és felveszi a környezetbe a megadott.

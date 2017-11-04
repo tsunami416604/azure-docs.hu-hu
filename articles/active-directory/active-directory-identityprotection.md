@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 0c7a8d68c0df729441e3f7faa5cd06066db1261d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: a4473f25fefd65de75996240955302abb08762da
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -34,7 +34,7 @@ Az Azure Active Directory azonosító adatok védelmét lehetővé teszi az Azur
 
 ## <a name="getting-started"></a>Bevezetés
 
-A Microsoft felhőalapú Identitások a több mint egy évtizedben biztonságossá tételére. Az Azure Active Directory azonosító adatok védelmét a környezetben, használhatja a Microsoft használja a biztonságos identitások azonos védelmi rendszerek.
+A Microsoft felhőalapú Identitások biztonságossá teszi a több mint egy évtizedben. Az Azure Active Directory azonosító adatok védelmét a környezetben, használhatja a Microsoft használja a biztonságos identitások azonos védelmi rendszerek.
 
 A biztonsági problémák többsége kerül sor, amikor a támadók hozzáférést egy olyan környezetben a felhasználók személyazonossága ellopása. Az évek során a támadók egyre hatékony, a harmadik féltől származó megszegése követését és kifinomult adathalász támadások használatával lettek. Amint a támadó hozzáfér még az alacsony szintű jogosultságokkal rendelkező felhasználói fiókok, is viszonylag egyszerűen azokat a fontos vállalati erőforrásokra oldalirányú mozgás keresztül.
 
@@ -67,7 +67,7 @@ Az Azure Active Directory azonosító adatok védelmét a rendszer több mint eg
 
 **Kockázati-alapú feltételes hozzáférési házirendek:**
 
-* Házirend kockázatos bejelentkezések mérséklése bejelentkezések blokkolja, vagy a multi-factor authentication kihívások szükségessé tételével.
+* Kockázatos bejelentkezések mérséklése bejelentkezések blokkolja, vagy a multi-factor authentication kihívások szükségessé tételével házirend
 * Házirend letiltás vagy biztonságos kockázatos felhasználói fiókok
 * A felhasználók a multi-factor authentication regisztrálása házirend
 
@@ -81,7 +81,7 @@ A terheléselosztás irányul a felügyeleti tevékenységek körül az Identity
 | :--                          | ---                                |  ---   |
 | Globális rendszergazda         | Teljes körű hozzáférés az Identity Protection előkészítésére Identity Protection| |
 | Biztonsági rendszergazda       | Teljes körű hozzáférés az Identity Protection | Identity Protection előkészítésére, állítsa vissza egy felhasználó jelszavát |
-| Biztonsági olvasó              | Identity Protection csak kész hozzáféréssel | A bevezetni, Identity Protection, remidiate felhasználók, házirendeket konfigurálhat, jelszavak alaphelyzetbe állítása |
+| Biztonsági olvasó              | Azonosító adatok védelmét a csak olvasási hozzáféréssel | A bevezetni, Identity Protection, remidiate felhasználók, házirendeket konfigurálhat, jelszavak alaphelyzetbe állítása |
 
 
 

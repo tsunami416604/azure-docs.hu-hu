@@ -1,133 +1,133 @@
-You can create virtual machines in Azure by using Server Explorer in Visual Studio.
+A Visual Studio Server Explorer használatával hozhat létre virtuális gépeket az Azure-ban.
 
-## <a name="create-an-azure-virtual-machine-in-server-explorer"></a>Create an Azure virtual machine in Server Explorer
-While you can create a virtual machine in the [Azure Management Portal](http://go.microsoft.com/fwlink/?LinkID=253103), you can also create a virtual machine in Azure by using commands in Server Explorer. Virtual machines can be used, for example, to provide a front end behind a common load-balanced public endpoint.
+## <a name="create-an-azure-virtual-machine-in-server-explorer"></a>A Server Explorer egy Azure virtuális gép létrehozása
+A virtuális gép létrehozásakor is a [Azure felügyeleti portálon](http://go.microsoft.com/fwlink/?LinkID=253103), is létrehozhat egy virtuális gépet az Azure-ban a Server Explorer parancsok használatával. Virtuális gépek használható, például egy közös terhelésű nyilvános végpontot mögé előtér biztosításához.
 
-### <a name="to-create-a-new-virtual-machine"></a>To create a new virtual machine
-1. In Server Explorer, open the **Azure** node and click **Virtual Machines**.
-2. On the context menu, click **Create Virtual Machine**.
+### <a name="to-create-a-new-virtual-machine"></a>Egy új virtuális gép létrehozása
+1. A Server Explorer eszközben nyissa meg a **Azure** csomópontot, és kattintson **virtuális gépek**.
+2. A helyi menüben kattintson a **virtuális gép létrehozása**.
    
-    The **Create a New Virtual Machine** wizard appears.
+    A **hozzon létre egy új virtuális gépet** varázsló jelenik meg.
    
-    ![The Create Virtual Machine command](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718342.png)
-3. On the **Choose a Subscription** page, select a subscription to use when creating the virtual machine and then click **Next**.
+    ![A virtuális gép létrehozása parancs](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718342.png)
+3. Az a **válasszon egy előfizetést** lapon, válassza ki a virtuális gép létrehozásakor használt előfizetés, majd kattintson **következő**.
    
-    If you aren’t signed in to Azure, click **Sign In** to sign in. Then, select your Azure subscription in the dropdown list box if it’s not already selected.
-4. On the **Select a Virtual Machine Image** page, select an image type in the **Image type** dropdown list box, and then select a virtual machine images in the **Image name** list box. When you're done, click **Next**.
+    Ha jelenleg nincs bejelentkezve az Azure-ba, kattintson a **bejelentkezés** való bejelentkezéshez. Ezután válassza az Azure-előfizetéshez a legördülő listában, ha még nincs kiválasztva.
+4. Az a **válassza ki a virtuálisgép-lemezkép** lapon, válassza ki a képhez a **képtípussal** legördülő listán, és válassza ki a virtuálisgép-rendszerképek a a **lemezképnév** listamező . Amikor elkészült, kattintson a **következő**.
    
-    ![Select a virtual machine image page](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744137.png)
+    ![Válassza ki a virtuális gép lap](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744137.png)
    
-    You can choose the following image types.
+    Lehetősége van a következő típusú.
    
-   * **Public Images** lists virtual machine images of operating systems and server software such as Windows Server and SQL Server.
-   * **MSDN Images** lists virtual machine images of software available to MSDN subscribers, such as Visual Studio and Microsoft Dynamics.
-   * **Private Images** lists specialized and generalized virtual machine images that you've created.
+   * **Nyilvános képek** sorolja fel az operációs rendszerek és a kiszolgáló szoftvert, például a Windows Server és SQL Server virtuálisgép-lemezképeket.
+   * **MSDN-lemezképeihez** sorolja fel az MSDN-előfizetők, például a Visual Studio és a Microsoft Dynamics számára elérhető szoftverek virtuálisgép-lemezképeket.
+   * **Saját lemezképek** listák kifejezetten és általánosítva létrehozott virtuális gépek lemezképeivel.
      
-     To learn about specialized and generalized virtual machines, see [VM Image](https://azure.microsoft.com/blog/2014/04/14/vm-image-blog-post/). See [How to Capture a Windows Virtual Machine to Use as a Template](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/) for information about how to turn a virtual machine into a template that you can use to quickly create new pre-configured virtual machines.
+     Speciális és általánosított virtuális gépeket, lásd: [Virtuálisgép-lemezkép](https://azure.microsoft.com/blog/2014/04/14/vm-image-blog-post/). Lásd: [sablon Windows virtuális gép rögzítése](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/) olvashat, hogy a virtuális gép egy sablont, amely segítségével gyorsan létrehozhat új, előre konfigurált virtuális gépek számára.
      
-     You can click a virtual machine image name to see information about the image on the right side of the page.
+     Kattintson a lap jobb oldalán a lemezképére vonatkozó információ megjelenítéséhez a virtuális gép lemezképének nevét.
      
      > [!NOTE]
-     > You can't add virtual machine images to the **Public Images** or **MSDN Images** lists because they are read-only. All virtual machines that you create are added to the **Private Images** list.
+     > Nem adható hozzá virtuális gépek lemezképét a **nyilvános képek** vagy **MSDN-lemezképeihez** sorolja fel, mert csak olvasható. Minden, az Ön által létrehozott virtuális gépek hozzáadódnak a **saját lemezképek** listája.
      > 
      > 
      
-     If you're an MSDN subscriber with a Visual Studio-level subscription, you can create a pre-built Azure virtual machine that contains Visual Studio, as well as several other images. For more information, see [Create a Virtual Machine in Visual Studio by Using Images Visual Studio 2013 Gallery image for MSDN subscribers](http://visualstudio2013msdngalleryimage.azurewebsites.net) and [MSDN subscriptions](https://www.visualstudio.com/products/msdn-subscriptions-vs).|
-5. On the **Virtual Machine Basic Settings** page, enter a machine name and then add the specifications for the virtual machine, including the size, and a user name and password. When you're done, click **Next**.
+     Ha a Visual Studio-szintű előfizetést az MSDN-előfizető, létrehozhat egy előre létrehozott Azure virtuális gép, amely a Visual Studio, valamint több lemezképet tartalmaz. További információkért lásd: [virtuális gép létrehozása a Visual Studio használatával képek Visual Studio 2013 gyűjtemény kép az MSDN-előfizetők](http://visualstudio2013msdngalleryimage.azurewebsites.net) és [MSDN előfizetések](https://www.visualstudio.com/products/msdn-subscriptions-vs). |}
+5. Az a **virtuális gép alapbeállítások** lapon adja meg a számítógép nevét, és adja meg az előírásoknak, a virtuális gép, beleértve a méretet, és egy felhasználónevet és jelszót. Amikor elkészült, kattintson a **következő**.
    
-    You’ll use the new name and password to log into the machine using remote desktop, so it’s a good idea to write them down in case you forget. After you create an Azure virtual machine in Visual Studio, you can change its size and other settings in the [Azure Management Portal](http://go.microsoft.com/fwlink/?LinkID=253103).
-   
-   > [!NOTE]
-   > If you choose larger sizes for the virtual machine, extra charges may apply. See [Virtual Machines Pricing Details](https://azure.microsoft.com/pricing/details/virtual-machines/) for more information.
-   > 
-   > 
-6. Virtual machines created in Visual Studio require a cloud service. On the **Cloud Service Settings** page, select a cloud service for the virtual machine, or click **<Create New…>** in the dropdown list if you don’t already have a cloud service or want to use a new one. A storage account is also required, so choose a storage account (or create a new storage account) in the **Storage account** dropdown list box. See [Introduction to Microsoft Azure Storage](../articles/storage/common/storage-introduction.md) for more information.
-7. If you want to specify a virtual network (which is optional), select it in the Virtual Network and Subnet dropdown list boxes.
-   
-    Virtual machines that are members of an availability set are deployed to different fault domains. See [Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) for more information.
-8. If you want your virtual machine to belong to an availability set (also optional), select the **Specify an availability set** check box and then choose an availability set in the dropdown list box. When you're done, choose the **Next** button.
-   
-    Adding your virtual machine to an availability set helps your application stay available during network failures, local disk hardware failures, and any planned downtime. You need to use the [Azure Management Portal](http://go.microsoft.com/fwlink/?LinkID=253103) to create virtual networks, subnets, and availability sets. See [Manage the Availability of Virtual Machines](https://azure.microsoft.com/documentation/articles/manage-availability-virtual-machines/) for more information.
-9. On the **Endpoints** page, specify the public endpoints that you want available to users of your virtual machine. For example, you might choose to enable HTTP (Port 80) in addition to the Remote Desktop and PowerShell endpoints, which are enabled by default. To add an endpoint, choose one in the **Port Name** dropdown list box and then choose the **Add** button. To remove an endpoint, choose the red **X** next to the name in the endpoints list.
-   
-    ![The Endpoints page in the virtual machines wizard.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718351.png)
-   
-    The endpoints that are available depend on the cloud service you selected for your virtual machine. See [Azure Service Endpoints](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/) for more information.
+    Jelentkezzen be a számítógépre, távoli asztali kapcsolattal, így érdemes írja le abban az esetben, ha elfelejti a új nevet és jelszót fogja használni. Azure virtuális gép létrehozása a Visual Studio, után módosíthatja annak méretét és az egyéb beállításai a [Azure felügyeleti portálon](http://go.microsoft.com/fwlink/?LinkID=253103).
    
    > [!NOTE]
-   > Enabling public endpoints makes services on your virtual machine available to the internet. Be sure to install and properly configure the endpoints and services on your virtual machine, such as setting access control lists (ACLs) for the endpoints. See [How to Set Up Endpoints to a Virtual Machine](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/) for more information.
+   > Ha úgy dönt, hogy nagyobb méretek a virtuális géphez, külön költségek merülhetnek fel. Lásd: [virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/) további információt.
    > 
    > 
-10. After you’re done configuring the virtual machine settings, choose the **Create** button to create the virtual machine.
+6. A Visual Studio létrehozott virtuális gépeknél szükség van a felhőszolgáltatásban. Az a **felhőalapú szolgáltatás beállításainak** lapon jelölje be a virtuális gép egy felhőalapú szolgáltatás, vagy kattintson a **< hozzon létre új... >** a legördülő listában, ha még nem telepítette a felhőalapú szolgáltatás, vagy egy új használni szeretne. A storage-fiók is szükség, ezért válasszon tárfiókot (vagy hozzon létre egy új tárfiókot) az a **tárfiók** legördülő listában. Lásd: [Microsoft Azure Storage bemutatása](../articles/storage/common/storage-introduction.md) további információt.
+7. Ha meg szeretné határozni a virtuális hálózat (nem kötelező), jelölje ki a virtuális hálózati és alhálózati legördülő listák.
+   
+    Különböző tartalék tartományok telepített virtuális gépek rendelkezésre állási csoportok tagjai. Lásd: [Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) további információt.
+8. Ha a virtuális gép egy (szintén nem kötelező) rendelkezésre állási csoportba tartozik, jelölje be a **adja meg a rendelkezésre állási csoportok** jelölje be a jelölőnégyzetet, és válassza a rendelkezésre állási készlet a legördülő listában. Amikor elkészült, válassza ki a **következő** gombra.
+   
+    Az alkalmazás hálózati hibák, helyi lemezhiba hardver és a tervezett leállások közben elérhető marad a virtuális gép hozzáadása a rendelkezésre állási csoportok segítségével. Kell használnia a [Azure felügyeleti portálon](http://go.microsoft.com/fwlink/?LinkID=253103) segítségével hozzon létre virtuális hálózatok, az alhálózatok és a rendelkezésre állási készlet. Lásd: [a virtuális gépek rendelkezésre állásának kezelése](https://azure.microsoft.com/documentation/articles/manage-availability-virtual-machines/) további információt.
+9. Az a **végpontok** adja meg azokat a nyilvános végpontok, amelyet a felhasználók a virtuális gép számára elérhető. Például előfordulhat, hogy most engedélyezi HTTP (80-as Port) mellett a távoli asztal és a PowerShell-végpontot, amely alapértelmezés szerint engedélyezve vannak. A végpont hozzáadásához válasszon a **Port neve** legördülő listán, és válassza ki a **Hozzáadás** gombra. A végpont eltávolításához válassza ki a piros **X** a végpontok listájában neve mellett.
+   
+    ![A végpontok oldalon, a virtuális gép varázsló.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718351.png)
+   
+    A rendelkezésre álló végpontok a virtuális gép a kiválasztott felhő szolgáltatás függ. Lásd: [Azure Szolgáltatásvégpontok](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/) további információt.
+   
+   > [!NOTE]
+   > Nyilvános végpontok engedélyezésére elérhetővé szolgáltatások a virtuális gépen az internethez. Ügyeljen arra, hogy telepítse, és megfelelően konfigurálni a virtuális gépet, a végpontokat és a szolgáltatások, mint például a beállítás hozzáférés-vezérlési lista (ACL) a végpontok. Lásd: [hogyan állítsa be végpontok egy virtuális géphez](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/) további információt.
+   > 
+   > 
+10. Miután elkészült a virtuális gép beállításainak konfigurálását, válassza ki a **létrehozása** gombra, a virtuális gép.
     
-     As Azure creates the virtual machine, the **Azure Activity Log** shows the progress of the virtual machine creation operation.
+     Mivel Azure hozza létre a virtuális gép a **Azure tevékenységnapló** mutatja a virtuálisgép-létrehozási művelet előrehaladását.
     
-     ![Virtual machine activity log - in progress.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744138.png)
+     ![Virtuális gép tevékenységnapló - folyamatban.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744138.png)
     
-     To view only virtual machine information, choose the **Virtual Machines** tab in the **Azure Activity Log**.
+     Csak a virtuálisgép-adatok megtekintéséhez válassza a **virtuális gépek** lapra a **Azure tevékenységnapló**.
     
-     ![Virtual machine activity log - completed.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744139.png)
+     ![Virtuális gép tevékenységnapló - befejeződött.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744139.png)
     
-     If the operation completes successfully, the new virtual machine appears under the **Virtual Machines** node in Server Explorer. You can log into it by clicking the **Connect using Remote Desktop** shortcut.
+     Ha a művelet sikeresen befejeződött, az új virtuális gép megjelenik a **virtuális gépek** a Server Explorer csomópont. Jelentkezhet be kattintva a **csatlakozzon a távoli asztali kapcsolattal** helyi.
     
-     ![Virtual machine appearing in Server Explorer.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744140.png)
+     ![A virtuális gép a Server Explorer megjelenne.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744140.png)
 
-## <a name="manage-your-virtual-machines"></a>Manage your virtual machines
-On the virtual machine configuration page, in addition to shutting down, connecting, refreshing, and adding checkpoints to the selected virtual machine, you can also view or change settings for the virtual machine. You can:
+## <a name="manage-your-virtual-machines"></a>A virtuális gépek kezelése
+Az mellett leállítása, csatlakozás, frissítése és az ellenőrzőpontok felvétele a kiválasztott virtuális gépet, a virtuális gép konfigurációs lapján is megtekintheti vagy módosíthatja a virtuális gép beállításait. A következőket teheti:
 
-* Change the virtual machine size.
-* Select the availability set to use with the virtual machine.
-* Add, remove, or change settings for public endpoints.
-* Add, remove, or configure virtual machine extensions.
-* View information about the disks associated with the virtual machine.
+* Módosíthatja a virtuális gép méretét.
+* Válassza ki a rendelkezésre állási csoportot a virtuális gép használata.
+* Hozzáadása, eltávolítása vagy nyilvános végpontok beállításainak módosítása.
+* Hozzáadása, eltávolítása vagy virtuálisgép-bővítmények konfigurálása.
+* A virtuális géphez tartozó lemez adatainak megtekintése.
 
-### <a name="view-or-change-virtual-machine-settings"></a>View or change virtual machine settings
-1. In Server Explorer, choose your virtual machine in the **Azure Virtual Machines** node.
-2. On the shortcut menu, choose **Configure** to view the virtual machine configuration page.
+### <a name="view-or-change-virtual-machine-settings"></a>Virtuális gép beállításainak megtekintése vagy módosítása
+1. A Server Explorer eszközben válassza ki a virtuális gép a **Azure virtuális gépek** csomópont.
+2. A helyi menüben válasszon **konfigurálása** a virtuális gép konfigurációs lapnak a megtekintésére.
    
-    ![The Azure virtual machine configuration page](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744141.png)
-3. View the virtual machine information or change it.
+    ![Az Azure virtuális gép konfigurációs lapján](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744141.png)
+3. A virtuális gép adatainak megtekintéséhez, vagy módosítsa azt.
 
-### <a name="save-or-restore-the-status-of-your-virtual-machine"></a>Save or restore the status of your virtual machine
-As you configure your virtual machine and install software on it, it's a good idea to regularly save your progress by creating virtual machine checkpoints. A checkpoint is a snapshot, or image, of the current state of your virtual machine. If something goes wrong with the virtual machine, or you want to reconfigure the virtual machine, you can save time by restoring it to a previous checkpoint state rather than starting over from scratch.
+### <a name="save-or-restore-the-status-of-your-virtual-machine"></a>Mentse, vagy a virtuális gép állapotának visszaállítása
+Konfigurálja a virtuális gépet, és a szoftverek telepítését, célszerű rendszeresen takaríthat meg a folyamatban lévő virtuális gépek ellenőrzőpontjainak létrehozása. Egy ellenőrzőpont egy pillanatkép, a kép vagy az aktuális állapot, a virtuális gép. Ha probléma merül fel a virtuális gépet, vagy konfigurálja újra a virtuális gép kívánt, időt takaríthat meg állítja vissza egy korábbi ellenőrzőpont állapotának nulláról keresztül helyett.
 
-### <a name="to-create-a-virtual-machine-checkpoint"></a>To create a virtual machine checkpoint
-1. In Server Explorer, choose your virtual machine in the **Azure Virtual Machines** node.
-2. On the shortcut menu, choose **Configure** to view the virtual machine configuration page.
-3. On the configuration page, choose the **Capture Image** button.
+### <a name="to-create-a-virtual-machine-checkpoint"></a>A virtuálisgép-ellenőrzőpont létrehozása
+1. A Server Explorer eszközben válassza ki a virtuális gép a **Azure virtuális gépek** csomópont.
+2. A helyi menüben válasszon **konfigurálása** a virtuális gép konfigurációs lapnak a megtekintésére.
+3. A konfiguráció lapon válassza ki a **lemezkép rögzítése** gombra.
    
-    ![Azure configuration page capture button](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744142.png)
+    ![Azure-alapú konfigurációs oldal rögzítése gomb](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744142.png)
    
-    The **Capture Virtual Machine** dialog appears.
+    A **virtuális gép rögzítése** párbeszédpanel jelenik meg.
    
-    ![Azure capture virtual machine dialog box](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744143.png)
-4. Provide an image label and description. A default label and description are provided, but you can overwrite them with your own if you like.
-5. If you have already run Sysprep on this virtual machine, select the **I have run Sysprep on the virtual machine** box.
+    ![Az Azure rögzítési virtuális gép párbeszédpanel](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744143.png)
+4. Adjon meg egy kép címke és a leírást. Felülírhatja azokat a saját Ha szeretné, de egy alapértelmezett címkét és egy leírást vannak megadva.
+5. Ha már futtatta a Sysprep a virtuális gépen, jelölje be a **futtattam Sysprep eszközt a virtuális gépen** mezőbe.
    
-    Sysprep is a tool that, among other things, removes systems-specific data from the virtual machine’s version of Windows, making it template that others can use. See [How to Capture a Windows Virtual Machine to Use as a Template](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/) for more information. Back up the VM before running Sysprep.
-6. After you’re done configuring the capture settings, choose the **Capture** button to create the checkpoint.
+    A Sysprep az eszközzel, többek között rendszerek vonatkozó adatokat eltávolítja a Windows, így mások is használt sablon a virtuális gép verziója. Lásd: [sablon Windows virtuális gép rögzítése](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/) további információt. Készítsen biztonsági másolatot a virtuális Gépet a Sysprep futtatása előtt.
+6. Miután elkészült a rögzítési beállításainak konfigurálása, válassza a **rögzítése** az ellenőrzőpont létrehozása gombra.
    
-    As Azure creates the checkpoint, the **Azure Activity Log** shows the progress of the operation.
+    Mivel Azure az ellenőrzőpont hozza létre a **Azure tevékenységnapló** a művelet végrehajtási állapotát tartalmazza.
    
-    ![Capturing a virtual machine checkpoint](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744144.png)
+    ![A virtuálisgép-ellenőrzőpont rögzítése](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744144.png)
    
-    When the checkpoint operation completes, you’ll see it in the **Azure Activity Log**.
+    Az ellenőrzőpont-művelet befejezése után megjelenik a a **Azure tevékenységnapló**.
    
-    ![Checkpoint operation completed](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744145.png)
+    ![Ellenőrzőpont művelete befejeződött](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744145.png)
 
-## <a name="to-manage-virtual-machine-checkpoints"></a>To manage virtual machine checkpoints
-### <a name="to-restore-a-virtual-machine-to-a-previously-saved-state"></a>To restore a virtual machine to a previously saved state
-* Follow the steps outlined in [Step-by-Step: Perform Cloud Restores of Microsoft Azure Virtual Machines using PowerShell - Part 2](http://blogs.technet.com/b/keithmayer/archive/2014/02/04/step-by-step-perform-cloud-restores-of-windows-azure-virtual-machines-using-powershell-part-2.aspx).
+## <a name="to-manage-virtual-machine-checkpoints"></a>Kezelheti a virtuális gépek ellenőrzőpontjaival kapcsolatban
+### <a name="to-restore-a-virtual-machine-to-a-previously-saved-state"></a>A virtuális gépek visszaállítani egy korábban mentett állapotra
+* Című rész lépéseit követve [lépésről lépésre: hajtsa végre felhő állítja vissza a Microsoft Azure virtuális gépek használata a PowerShell - 2. rész](http://blogs.technet.com/b/keithmayer/archive/2014/02/04/step-by-step-perform-cloud-restores-of-windows-azure-virtual-machines-using-powershell-part-2.aspx).
 
-### <a name="to-delete-a-checkpoint"></a>To delete a checkpoint
-1. Go to the [Azure Management Portal](http://go.microsoft.com/fwlink/?LinkID=253103).
-2. On the virtual machine configuration page, choose the **Images** tab at the top of the page.
-3. Choose the checkpoint you want to delete, and then choose the **Delete**  button at the bottom of the page.
+### <a name="to-delete-a-checkpoint"></a>Ellenőrzőpont törlése
+1. Lépjen a [Azure felügyeleti portálján](http://go.microsoft.com/fwlink/?LinkID=253103).
+2. A virtuális gép konfigurációs lapján válassza a **képek** fülre az oldal tetején.
+3. Válassza ki az ellenőrző pont törlése, és válassza ki a **törlése** gombra az oldal alján.
 
-## <a name="shut-down-your-virtual-machine"></a>Shut down your virtual machine
-1. In Server Explorer, choose the virtual machine you want to shut down in the **Azure Virtual Machines** node.
-2. On the shortcut menu, either choose the **Shutdown** command, or choose **Configure** to view the virtual machine configuration page, and then choose the **Shutdown** button.
+## <a name="shut-down-your-virtual-machine"></a>A virtuális gép leállítása
+1. A Server Explorer eszközben válassza ki a kívánt állítsa le a virtuális gép a **Azure virtuális gépek** csomópont.
+2. A helyi menüben, vagy válassza ki a **leállítási** parancsot, vagy válasszon **konfigurálása** megtekintéséhez a virtuális gép konfigurációs lapján, és válassza ki a **leállítási** gombra.
 
-## <a name="next-steps"></a>Next steps
-To learn more about creating virtual machines, see [Create a Virtual Machine Running Linux](../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) and [Create a virtual machine running Windows in the Azure preview portal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>Következő lépések
+Virtuális gépek létrehozásával kapcsolatos további tudnivalókért lásd: [hozzon létre egy virtuális gép futó Linux](../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [az Azure betekintő portálon Windows rendszerű virtuális gép létrehozása](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

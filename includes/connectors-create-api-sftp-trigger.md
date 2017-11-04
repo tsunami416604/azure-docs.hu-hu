@@ -1,18 +1,18 @@
-Let's add a trigger.
+Adjuk hozzá egy eseményindító.
 
-1. Enter *sftp* in the search box on the logic apps designer then select the **SFTP - When a file is added or modified**  trigger   
-   ![SFTP trigger image 1](./media/connectors-create-api-sftp/trigger-1.png)  
-2. The **When a file is added or modified** control opens up  
-   ![SFTP trigger image 2](./media/connectors-create-api-sftp/trigger-2.png)  
-3. Select the **...** located on the right side of the control. This opens the folder picker control  
-   ![SFTP trigger image 3](./media/connectors-create-api-sftp/action-1.png)  
-4. Select the **SFTP** to select the root folder as the folder to monitor for new or modified files. Notice the root folder is now displayed in the **Folder** control.  
-   ![SFTP trigger image 4](./media/connectors-create-api-sftp/action-2.png)   
+1. Adja meg *sftp* be a keresőmezőbe a logic apps designer válassza ki a **SFTP - amikor egy fájl hozzáadása vagy módosítása** eseményindító   
+   ![SFTP eseményindító kép 1](./media/connectors-create-api-sftp/trigger-1.png)  
+2. A **amikor egy fájl hozzáadása vagy módosítása esetén** vezérlő megnyílik.  
+   ![SFTP eseményindító kép 2](./media/connectors-create-api-sftp/trigger-2.png)  
+3. Válassza ki a **...**  a vezérlő jobb oldalán található. Ekkor megnyílik a mappa példányválasztó vezérlő  
+   ![SFTP eseményindító kép 3](./media/connectors-create-api-sftp/action-1.png)  
+4. Válassza ki a **SFTP** jelölje ki a gyökérmappában található új vagy módosított fájlokat a figyelendő mappát. A legfelső szintű mappa megjelenik a figyelmeztetés a **mappa** vezérlő.  
+   ![SFTP eseményindító kép 4](./media/connectors-create-api-sftp/action-2.png)   
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow when a file is either modified or created in the specific SFTP folder. 
+A Logic Apps alkalmazást ezen a ponton úgy van konfigurálva, az eseményindítók és műveletek a munkafolyamat futtató akkor kezdődik, amikor egy fájl módosított, vagy az adott SFTP mappában létrehozott eseményindítót. 
 
 > [!NOTE]
-> For a logic app to be functional, it must contain at least one trigger and one action. Follow the steps in the next section to add an action.  
+> A logikai alkalmazás működéséhez legalább egy eseményindító és egy műveletet kell tartalmaznia. Kövesse a következő szakaszban művelet hozzáadása.  
 > 
 > 
 

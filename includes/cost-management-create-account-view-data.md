@@ -31,3 +31,5 @@ A következő ábra a Contoso Azure-erőforrásokkal kapcsolatos költségeit je
 Kattintson a jobb gombbal egy erőforrástípusra, és válassza a **Cost Entities** (Költségelemek) lehetőséget a költségelemek és az erőforrást felhasználó szolgáltatások megjelenítéséhez. A példában a DevOps VM és a feldolgozó szolgáltatásai 486,60 USD és 435,71 USD költséget használtak fel. A kettő összege 922 USD.
 
 ![költségelemek és szolgáltatások](./media/cost-management-create-account-view-data/actual-cost-05.png)
+
+Útmutató videót a felhőben, számlázási adatok megtekintésével kapcsolatban, tekintse meg a [elemzése a számlázási adatokat az Azure költség Management Cloudyn felhő](https://youtu.be/G0pvI3iLH-Y).

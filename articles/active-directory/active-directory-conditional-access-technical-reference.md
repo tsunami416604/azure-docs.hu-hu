@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 11/01/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 4bcca3ee5862a0455b6064d0f9c0a91388db9516
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: HT
+ms.openlocfilehash: 8cde8e10b6789e930ea1deda2f4aa0d4a5e7ea97
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technikai útmutató az Azure Active Directory feltételes hozzáférés
 
@@ -135,7 +135,7 @@ A feltételes hozzáférési házirend az alábbi böngészők támogatottak:
 | macOS                  | Chrome                      | Hamarosan |
 
 > [!NOTE]
-> A Chrome támogatáshoz muse használata a Windows 10 Creators frissítés (verzió: 1703) vagy újabb.<br>
+> A Chrome támogatáshoz használnia kell a Windows 10 Creators frissítés (verzió: 1703) vagy újabb.<br>
 > Telepítése [ehhez a kiterjesztéshez](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>Támogatott mobil alkalmazások és asztali ügyfelek

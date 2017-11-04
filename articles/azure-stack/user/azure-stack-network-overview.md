@@ -1,35 +1,33 @@
 ---
-title: Introduction to Azure Stack networking
-description: Learn about Azure Stack networking
+title: "Bevezetés az Azure-verem hálózatkezelés"
+description: "További tudnivalók az Azure verem hálózatkezelés"
 services: azure-stack
 author: ScottNapolitan
 ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 02406ef396fdaa40cb4d46f32d0b2b00c4ec295e
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="introduction-to-azure-stack-networking"></a>Introduction to Azure Stack networking
+# <a name="introduction-to-azure-stack-networking"></a>Bevezetés az Azure-verem hálózatkezelés
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Azure Stack provides a variety of networking capabilities that can be used together or separately:
-- Connectivity between Azure Stack resources: connect Azure resources together in a secure, private virtual network in the cloud.
-- Internet connectivity: communicate to and from Azure Stack resources over the Internet.
-- On-premises connectivity: connect an on-premises network to Azure Stack resources through a virtual private network (VPN) over the Internet, or through a dedicated connection to Azure Stack.
-- Load balancing and traffic direction: load balance traffic to servers in the same location and direct traffic to servers in different locations.
-- Security: filter network traffic between network subnets or individual virtual machines (VM).
-- Routing: use default routing or fully control routing between your Azure Stack and on-premises resources.
-- Manageability: monitor and manage your Azure Stack networking resources.
-- Deployment and configuration tools: use a web-based portal or cross-platform command-line tools to deploy and configure network resources.
+Azure verem különböző használható együtt vagy külön-külön hálózati képességekkel biztosítja:
+- Azure verem erőforrások közötti kapcsolat: kapcsolódás együtt a felhőben biztonságos, titkos virtuális hálózatot az Azure-erőforrások.
+- Internetkapcsolat: Azure verem erőforrások érkező vagy oda irányuló kommunikálnak az interneten keresztül.
+- A helyi kapcsolat: egy a helyszíni hálózathoz csatlakozzanak a virtuális magánhálózat (VPN) az interneten keresztül, vagy egy Azure verem dedikált kapcsolaton keresztül Azure verem erőforrásokhoz.
+- Terheléselosztás és a forgalom iránya betölteni: egyenleg ugyanazon a helyen kiszolgálókra és a közvetlen forgalom különböző helyeken lévő kiszolgálókra tölthető be.
+- Biztonsági: alhálózatok vagy egyedi virtuális gépeket (VM) közötti hálózati forgalom szűrésére.
+- Útválasztás: használja az alapértelmezett útválasztási vagy teljes irányítása a Azure verem és a helyszíni erőforrások között.
+- Kezelhetőségi: felügyeletéhez, és az Azure-verem hálózati erőforrások kezeléséhez.
+- Üzembe helyezési és konfigurációs eszközök: egy webes portál vagy a platformfüggetlen parancssori eszközök telepítését és konfigurálását a hálózati erőforrásokhoz.
 
 
-## <a name="next-steps"></a>Next steps
-* [Considerations for Azure Stack networking](azure-stack-network-differences.md)
-
+## <a name="next-steps"></a>Következő lépések
+* [Azure verem hálózati szempontjai](azure-stack-network-differences.md)
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 8660bd09ea09e2c4c81da9c3ef66a1a448d3db43
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
-ms.translationtype: HT
+ms.openlocfilehash: 4ba53dd1239290c64907ed431d404b2d1be66c36
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker kép webalkalmazás a tárolók használata
 
@@ -279,7 +279,7 @@ SSH lehetővé teszi, hogy a tároló és az ügyfél közötti biztonságos kom
     > [!NOTE]
     > Ez a konfiguráció nem teszi lehetővé a tároló külső kapcsolatot. SSH csak a Kudu/SCM webhelyen keresztül érhető el. A Kudu/SCM hely hitelesítése a közzétételi hitelesítő adatokkal.
 
-* A [MÁSOLÁSI](https://docs.docker.com/engine/reference/builder/#copy) utasítást, amely arra utasítja a Docker-motorhoz másolása a [sshd_config](http://man.openbsd.org/sshd_config) fájlt a */stb/ssh/* könyvtár. A konfigurációs fájl alapján [a sshd_config fájl](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config).
+* A [MÁSOLÁSI](https://docs.docker.com/engine/reference/builder/#copy) utasítást, amely arra utasítja a Docker-motorhoz másolása a [sshd_config](http://man.openbsd.org/sshd_config) fájlt a */stb/ssh/* könyvtár. A konfigurációs fájl alapján [a sshd_config fájl](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config).
 
     ```docker
     COPY sshd_config /etc/ssh/
@@ -329,7 +329,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-Gratulálunk! Egyéni Docker-lemezkép tárolók a webes alkalmazás konfigurálását.
+Gratulálunk! A webalkalmazás az tárolókat konfigurálta az egyéni Docker-lemezkép.
 
 ## <a name="use-a-private-image-from-docker-hub-optional"></a>(Választható) Docker hubról titkos lemezkép
 
@@ -493,7 +493,7 @@ az acr credential show --name <azure-container-registry-name>
 }
 ```
 
-A felhő Rendszerhéjában futtassa a [az webapp tároló konfiguráció](/cli/azure/webapp/config/container#az_webapp_config_container_set) parancs a Docker egyéni rendszerkép hozzárendelése a webalkalmazást. Cserélje le  *\<alkalmazás_neve >*,  *\<docker-beállításjegyzék-kiszolgáló-URL-címe >*, _< beállításjegyzék-username >_, és  _<password>_ . Az Azure-tároló beállításjegyzék  *\<docker-beállításjegyzék-kiszolgáló-URL-címe >* formátumú `https://<azure-container-registry-name>.azurecr.io`. 
+A felhő Rendszerhéjában futtassa a [az webapp tároló konfiguráció](/cli/azure/webapp/config/container#az_webapp_config_container_set) parancs a Docker egyéni rendszerkép hozzárendelése a webalkalmazást. Cserélje le  *\<alkalmazás_neve >*,  *\<docker-beállításjegyzék-kiszolgáló-URL-címe >*,  _\<beállításjegyzék-username >_, és  _\<jelszó >_. Az Azure-tároló beállításjegyzék  *\<docker-beállításjegyzék-kiszolgáló-URL-címe >* formátumú `https://<azure-container-registry-name>.azurecr.io`. 
 
 ```azurecli-interactive
 az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-custom-image-name mydockerimage --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -534,4 +534,5 @@ A parancs azt jelzi, hogy a következő JSON-karakterláncban, megjeleníti, hog
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Linux – gyakori kérdések az Azure App Service](app-service-linux-faq.md)
+> [!div class="nextstepaction"]
+> [Az Azure-ban Docker Python és PostgreSQL webalkalmazás létrehozása](tutorial-docker-python-postgresql-app.md)

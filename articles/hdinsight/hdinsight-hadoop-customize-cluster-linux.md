@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: larryfr
-ms.openlocfilehash: 0c5d00b6cb9f68a1a0e474f81c969eb1b5654c67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 7c8c10f96a742092bb7b8453698d498707b0b2c2
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-action"></a>Parancsfájlművelet Linux-alapú HDInsight-fürtök testreszabása
 
@@ -40,7 +40,7 @@ Ha egy tartományhoz csatlakozó HDInsight-fürtöt használ, nincsenek két Amb
 * **AMBARI. Futtatás\_egyéni\_parancs**: az Ambari rendszergazdai szerepkör rendelkezik ezzel az engedéllyel, alapértelmezés szerint.
 * **A FÜRT. Futtatás\_egyéni\_parancs**: a HDInsight fürt rendszergazdája és az Ambari rendszergazda alapértelmezés szerint rendelkezik ilyen engedéllyel.
 
-Tartományhoz csatlakozó HDInsight engedélyeket munkáról bővebben lásd: [tartományhoz HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md).
+Tartományhoz csatlakozó HDInsight engedélyeket munkáról bővebben lásd: [tartományhoz HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md).
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 

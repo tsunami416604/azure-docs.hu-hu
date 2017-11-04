@@ -1,26 +1,26 @@
-### <a name="prerequisites"></a>Prerequisites
-* A Twilio account
-* A verified Twilio phone number that can receive SMS
-* A verified Twilio phone number that can send SMS
+### <a name="prerequisites"></a>Előfeltételek
+* A Twilio-fiókja
+* Ellenőrzött Twilio-telefonszámot, amelyet a SMS fogadására
+* Az SMS küldő ellenőrzött Twilio telefonszám rendelve
 
 > [!NOTE]
-> If you are using a Twilio trial account, you can only send SMS to **verified** phone numbers.  
+> Ha a Twilio-próbafiókra használ, az SMS csak elküldheti **ellenőrzése** telefonszámokat.  
 > 
 > 
 
-Before you can use your Twilio account in a Logic app, you must authorize the Logic app to connect to your Twilio account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+A Twilio-fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás Twilio-fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
 
-Here are the steps to authorize your Logic app to connect to your Twilio account:
+A Logic Apps alkalmazást Twilio-fiókja való csatlakozáshoz engedélyezni lépései a következők:
 
-1. To create a connection to Twilio, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Twilio* in the search box. Select the trigger or action you'll like to use:  
+1. Válassza ki a Twilio-, VPN-kapcsolat létrehozásához a Logic app tervezőben, **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *Twilio* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
    ![](./media/connectors-create-api-twilio/twilio-0.png)
-2. If you haven't created any connections to Twilio before, you'll get prompted to provide your Twilio credentials. These credentials will be used to authorize your Logic app to connect to, and access your Twilio account's data:  
+2. Ha még nem hozott létre a kapcsolatokat a Twilio előtt, meg fogja kérni a Twilio-hitelesítő adatainak megadását. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használandó, és hozzáférni a Twilio-fiókja adatai:  
    ![](./media/connectors-create-api-twilio/twilio-1.png)  
-3. You'll need the **Twilio account id** and **Twilio access token**  from the dashboard in Twilio, so log in to your Twilio account now to grab these two pieces of information:  
+3. Szüksége lesz a **Twilio fiókazonosító** és **Twilio hozzáférési jogkivonat** Twilio az irányítópultról, jelentkezzen be a Twilio fiókjába most két adatot bejelentkezési:  
    ![](./media/connectors-create-api-twilio/twilio-2.png)  
-4. Twilio and Logic apps use different names to identify these two pieces of infomation. Here is how you must map them to the Logic apps dialog: ![](./media/connectors-create-api-twilio/twilio-3.png)  
-5. Select the **Create connection** button:  
+4. Twilio és a Logic apps segítségével, hogy két adatot azonosíthatja a különböző neveket. Itt látható, hogyan kell társítani őket a Logic apps párbeszédpanel:![](./media/connectors-create-api-twilio/twilio-3.png)  
+5. Válassza ki a **hozható létre kapcsolat** gombra:  
    ![](./media/connectors-create-api-twilio/twilio-4.png)
-6. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
+6. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
    ![](./media/connectors-create-api-twilio/twilio-5.png)
 

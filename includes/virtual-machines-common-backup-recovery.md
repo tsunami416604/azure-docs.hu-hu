@@ -1,31 +1,31 @@
 
 ## <a name="azure-backup"></a>Azure Backup
 
-For backing up Azure VMs running production workloads, use Azure Backup. Azure Backup supports application-consistent backups for both Windows and Linux VMs. Azure Backup creates recovery points that are stored in geo-redundant recovery vaults. When you restore from a recovery point, you can restore the whole VM or just specific files. 
+Termelési számítási feladatokhoz futtató Azure virtuális gépek biztonsági mentéséről, használja az Azure Backup szolgáltatásnál. Azure biztonsági mentés a Windows és a Linux virtuális gépek alkalmazáskonzisztens biztonsági mentést támogatja. Az Azure Backup georedundáns helyreállítás tárolók tárolt helyreállítási pontokat hoz létre. Helyreállításakor a helyreállítási pont, az egész virtuális gép vagy csak adott fájlokat is helyreállíthatja. 
 
-For a simple, hands-on introduction to Azure Backup for Azure VMs, see the "Back up Windows virtual machines tutorial" for [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) or [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md)
+Egyszerű, gyakorlati megismerkedhet az Azure Backup Azure virtuális gépekhez, tekintse meg a "biztonságimásolat-Windows virtuális gépek oktatóanyag" [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md)
 
-For more information on how Azure Backup works, see [Plan your VM backup infrastructure in Azure](../articles/backup/backup-azure-vms-introduction.md)
+Azure biztonsági mentési működéséről további információkért lásd: [tervezze meg a virtuális gép biztonsági mentési infrastruktúra az Azure-ban](../articles/backup/backup-azure-vms-introduction.md)
 
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Azure Site Recovery protects your VMs from a major disaster scenario, when a whole region experiences an outage due to major natural disaster or widespread service interruption. You can configure Azure Site Recovery for your VMs so that you can recover your application with a single click in matter of minutes. You can replicate to an Azure region of your choice, it is not restricted to paired regions. 
+Az Azure Site Recovery jelentős katasztrófa esetben megakadályozza a virtuális gépek, amikor egy teljes régió miatt jelentős természeti katasztrófa vagy szélesebb körben szolgáltatáskiesést kimaradás. Azure Site Recovery konfigurálhatja a virtuális gépek, így helyreállíthatja az alkalmazás, függetlenül attól, hogy az egyetlen kattintással perc alatt. Az Ön által választott Azure-régióhoz replikálhatja, a nem párhuzamos régiók korlátozni. 
 
-You can run disaster-recovery drills with on-demand test failovers, without affecting your production workloads or ongoing replication. Create recovery plans to orchestrate failover and failback of the entire application running on multiple VMs. The recovery plan feature is integrated with Azure automation runbooks.
+Az igény szerinti feladatátvételi teszteket, anélkül, hogy befolyásolná a termelési számítási feladatokhoz vagy a folyamatban lévő replikáció futtathatja vész-helyreállítási gyakorlatokat. Hozzon létre helyreállítási terv feladatátvételi és a teljes alkalmazás több virtuális gépeken futó feladat-visszavétel számít. A helyreállítási terv funkció integrálva van az Azure automation-forgatókönyveket.
 
-You can get started by [replicating your virtual machines](https://aka.ms/a2a-getting-started). 
+Elkezdheti által [a virtuális gépek replikálásához](https://aka.ms/a2a-getting-started). 
 
-## <a name="managed-snapshots"></a>Managed snapshots 
+## <a name="managed-snapshots"></a>Felügyelt pillanatképek 
 
-In development and test environments, snapshots provide a quick and simple option for backing up VMs that use Managed Disks. A managed snapshot is a read-only full copy of a managed disk. Snapshots exist independent of the source disk and can be used to create new managed disks for rebuilding a VM. They are billed based on the used portion of the disk. For example, if you create a snapshot of a managed disk with provisioned capacity of 64 GB and actual used data size of 10 GB, snapshot will be billed only for the used data size of 10 GB.  
+Fejlesztési és tesztelési környezetben pillanatképek adjon meg egy gyors és egyszerű beállítása, a felügyelt lemezeket használó virtuális gépek biztonsági mentéséről. Felügyelt pillanatképet egy csak olvasható, teljes másolata egy felügyelt lemezes. A pillanatképek független a forrás lemez létezik, és új kezelt lemezek újbóli létrehozása a virtuális gépek létrehozásához használható. Azok a lemez használt része alapján számlázzuk. Például ha 64 GB-os kiosztott kapacitását és tényleges használt adatok mérete 10 GB-os felügyelt lemezes pillanatképet hoz létre, pillanatkép alapján számlázzuk csak a 10 GB-os használt adatok méretét.  
 
-For more information on creating snapshots, see:
+Pillanatképeinek további információkért lásd:
 
-* [Create copy of VHD stored as a Managed Disk using Snapshots in Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Create copy of VHD stored as a Managed Disk using Snapshots in Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Windows alatt](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Linux alatt](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 
 
-## <a name="next-steps"></a>Next steps
-You can try out Azure Backup by following the "Back up Windows virtual machines tutorial" for [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) or [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
+## <a name="next-steps"></a>Következő lépések
+Módszer kipróbálásához Azure Backup a "biztonságimásolat-Windows virtuális gépek oktatóanyag" követve a [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).

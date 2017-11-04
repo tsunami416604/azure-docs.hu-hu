@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/11/2017
+ms.date: 11/02/2017
 ms.author: larryfr
-ms.openlocfilehash: 2e4b1a307fae06c0639d93b9804c6f0f703d5900
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 92ad526d034591b8f463ef6b01e115101b74e1ae
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage megosztott hozzáférési aláírásokkal segítségével adatokat a hdinsight eszközben való hozzáférés korlátozása
 
 HDInsight a fürthöz tartozó Azure Storage-fiókokat az adatok teljes hozzáféréssel rendelkezik. A blob tárolóra megosztott hozzáférési aláírásokkal használatával korlátozza a hozzáférést az adatokat. Például írásvédett hozzáférést biztosít az adatokat. Megosztott hozzáférési aláírásokkal (SAS) az Azure storage-fiókok egy szolgáltatása, amely lehetővé teszi az adatokhoz való hozzáférés korlátozása. Például az adatok csak olvasható hozzáférést biztosító.
 
 > [!IMPORTANT]
-> Apache Pletyka használó megoldás érdemes a HDInsight-tartományhoz. További információkért lásd: a [konfigurálása tartományhoz csatlakoztatott HDInsight](hdinsight-domain-joined-configure.md) dokumentum.
+> Apache Pletyka használó megoldás érdemes a HDInsight-tartományhoz. További információkért lásd: a [konfigurálása tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-configure.md) dokumentum.
 
 > [!WARNING]
 > HDInsight a fürt az alapértelmezett tároló teljes hozzáféréssel kell rendelkeznie.
@@ -304,8 +304,8 @@ Miután csatlakozott a fürthöz, a következő lépések segítségével győz�
 
 Most, hogy megismerte a korlátozott hozzáférésű tároló felvétele a HDInsight-fürt rendelkezik, ismerje meg, a fürtön lévő adatokkal dolgozni egyéb módjai:
 
-* [A Hive használata a HDInsightban](hdinsight-use-hive.md)
-* [A Pig használata a HDInsightban](hdinsight-use-pig.md)
-* [Use MapReduce with HDInsight](hdinsight-use-mapreduce.md)
+* [A Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
+* [A Pig használata a HDInsightban](hadoop/hdinsight-use-pig.md)
+* [Use MapReduce with HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs

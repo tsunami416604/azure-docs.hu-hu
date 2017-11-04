@@ -1,13 +1,10 @@
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon nevű paraméterek szakaszban, amely tartalmazza az összes paraméter értékét tartalmazza.
-Meg kell határozni egy paramétert ezeket az értékeket, amelyek a projekt telepít vagy telepít, hogy a környezet alapján változhatnak. Az értékeket, amelyeket a rendszer mindig ugyanaz maradjon paraméterek nem határoznak meg. Minden paraméter értéke szolgál a sablon határozza meg az erőforrásokat, vannak-e telepíteni. 
+Az Azure Resource Manager határozhatja meg a sablon telepítésekor használni kívánt értékeket a paraméterek. A sablon tartalmaz egy `parameters` a paraméterek értékeit tartalmazó szakasz. Minden paraméter értéke szolgál a sablonhoz adja meg a telepíteni kívánt erőforrásokat.
 
-Ha paraméterek megadása a **Storageaccount_accounttype** mezőben adja meg, mely felhasználó értékekkel biztosíthat a telepítés során. Használja a **defaultValue** mezőben rendelhet értéket a paraméternek, ha nincs érték megadva üzembe helyezése során.
+> [!NOTE]
+> Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. Paramétereit csak értékek, amelyek eltérnek a központilag telepíteni projektre vagy a környezet telepítéséhez alapján.
 
-Azt ismerteti, egyes paramétereket a sablonban.
+Ha paraméterek meghatározása:
 
-### <a name="logicappname"></a>logicAppName
-A logikai alkalmazás létrehozása neve.
+* Adja meg az engedélyezett értékeket, amely a felhasználó képes biztosítani a telepítés során, a **Storageaccount_accounttype** mező.
 
-    "logicAppName": {
-        "type": "string"
-    }
+* Ha nincs központi telepítése során biztosított hozzá paraméter alapértelmezett értékeket, használja a **defaultValue** mező. 

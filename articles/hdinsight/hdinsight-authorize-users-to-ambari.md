@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: ad9aa6aee0a9f6407da6e9f45df71f8feb8b1500
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: df6cd9651d63ccea175fc8417d9f7dd2a9161f57
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="authorize-users-for-ambari-views"></a>A felhasználóknak engedélyezik, az Ambari nézetek
 
-[A HDInsight-fürtök tartományhoz](hdinsight-domain-joined-introduction.md) adja meg a vállalati szintű képességet, beleértve az Azure Active Directory-alapú hitelesítés. Szinkronizálhatja az új felhasználók
+[A HDInsight-fürtök tartományhoz](./domain-joined/apache-domain-joined-introduction.md) adja meg a vállalati szintű képességet, beleértve az Azure Active Directory-alapú hitelesítés. Szinkronizálhatja az új felhasználók
 <!-- [synchronize new users](hdinsight-sync-aad-users-to-cluster.md) --> added to Azure AD groups that have been provided access to the cluster, allowing those specific users to perform certain actions. Currently, working with users, groups, and permissions in Ambari is only supported when using a domain-joined HDInsight cluster.
 
 Active Directory-felhasználók bejelentkezhetnek a fürtcsomópontokon, a tartományi hitelesítő adataik használatával. A tartományi hitelesítő adataik fürt interakciók más jóváhagyott végpontok, például a Hue, az Ambari nézetek, a ODBC, a JDBC, a PowerShell és a REST API-k hitelesítésére szolgáltatást is alkalmazhatja.
@@ -32,7 +32,7 @@ Active Directory-felhasználók bejelentkezhetnek a fürtcsomópontokon, a tarto
 > [!WARNING]
 > Ne változtassa meg jelszavát a Linux-alapú HDInsight-fürtök az Ambari figyelő (hdinsightwatchdog). A jelszó módosítása megsérti a Parancsfájlműveletek vagy méretezési műveleteket a fürthöz.
 
-Ha még nem tette meg, kövesse az [ezeket az utasításokat](hdinsight-domain-joined-configure.md) tartományhoz tartozó új fürt létrehozásához.
+Ha még nem tette meg, kövesse az [ezeket az utasításokat](./domain-joined/apache-domain-joined-configure.md) tartományhoz tartozó új fürt létrehozásához.
 
 ## <a name="access-the-ambari-management-page"></a>Hozzáférés az Ambari kezelése lap
 
@@ -123,7 +123,7 @@ A lista nézet két kategóriába gyors szerkesztési képességeket biztosít: 
 
     ![Szerepkörök listanézet - felhasználók](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* A csoportok kategória a listanézet összes csoport és az egyes csoportokhoz rendelt szerepkör jeleníti meg. A jelen példában csoportok listájának szinkronizálása a megadott Azure AD-csoport a **hozzáférés felhasználói csoport** a fürt tartománybeállítások tulajdonsága. Lásd: [hozzon létre HDInsight-fürt](hdinsight-domain-joined-configure.md#create-hdinsight-cluster).
+* A csoportok kategória a listanézet összes csoport és az egyes csoportokhoz rendelt szerepkör jeleníti meg. A jelen példában csoportok listájának szinkronizálása a megadott Azure AD-csoport a **hozzáférés felhasználói csoport** a fürt tartománybeállítások tulajdonsága. Lásd: [hozzon létre HDInsight-fürt](./domain-joined/apache-domain-joined-configure.md#create-hdinsight-cluster).
 
     ![Szerepkörök listanézet - csoportok](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
@@ -143,8 +143,8 @@ Azt az Azure AD tartományi felhasználói "hiveuser2" rendelt-e a *fürt felhas
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A tartományhoz csatlakoztatott HDInsight Hive-szabályzatok konfigurálása](hdinsight-domain-joined-run-hive.md)
-* [Tartományhoz csatlakozó HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md)
-* [A Hive nézet használata a hadooppal a Hdinsightban](hdinsight-hadoop-use-hive-ambari-view.md)
+* [A tartományhoz csatlakoztatott HDInsight Hive-szabályzatok konfigurálása](./domain-joined/apache-domain-joined-run-hive.md)
+* [Tartományhoz csatlakozó HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md)
+* [A Hive nézet használata a hadooppal a Hdinsightban](hadoop/apache-hadoop-use-hive-ambari-view.md)
 
 <!-- * [Synchronize Azure AD users to the cluster](hdinsight-sync-aad-users-to-cluster.md) -->

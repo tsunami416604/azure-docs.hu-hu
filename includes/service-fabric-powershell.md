@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> Nincsenek két használt kommunikál a Service Fabric PowerShell-modulok. [Az Azure PowerShell](/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Azure-erőforrások, például egy Azure-kiszolgálón futó Service Fabric-fürt kezelésére szolgál. [Az Azure Service Fabric SDK](../articles/service-fabric/service-fabric-get-started.md) közvetlenül kapcsolódni a Service Fabric-fürt (függetlenül attól, hol helyezkedik el), és a fürt, alkalmazások és szolgáltatások kezelése segítségével. 

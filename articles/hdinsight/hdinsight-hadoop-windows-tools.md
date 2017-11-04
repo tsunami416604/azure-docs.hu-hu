@@ -10,11 +10,11 @@ ms.date: 05/17/2017
 ms.topic: article
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: e4f231c1f9b903d6cc7f2b062b30d2a072be8493
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9e4476334db95c66650f663dc3d8d13df2c5b52
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>A Windows-számítógép HDInsight a Hadoop ökoszisztémájának működik
 
@@ -28,7 +28,7 @@ Az Azure PowerShell egy parancsfájl-kezelési környezet, melyekkel automatizá
 A PowerShell használatával elvégezhető feladatok példái:
 
 * [PowerShell-fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [PowerShell-lel Hive-lekérdezések futtatása](hdinsight-hadoop-use-hive-powershell.md)
+* [PowerShell-lel Hive-lekérdezések futtatása](hadoop/apache-hadoop-use-hive-powershell.md)
 * [A PowerShell-lel fürtök kezelése](hdinsight-administer-use-powershell.md)
 
 Lépések segítségével [Azure Powershell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) a letöltéséhez. Ha vannak olyan parancsprogramjai, amelyeket módosítani kell az új parancsmagok használatát az Azure Resource Manager című [Fejlesztőeszközök Azure Resource Manager-alapú HDInsight-fürtök az áttelepítés](hdinsight-hadoop-development-using-azure-resource-manager.md).
@@ -38,17 +38,17 @@ Az alábbi segédprogramokat rendelkezik egy webes felhasználói felület, amel
 * **[Azure Cloud rendszerhéj (előzetes verzió)](https://docs.microsoft.com/azure/cloud-shell/quickstart)**  egy interaktív, parancssori rendszerhéj és belül a böngészőben futó Azure-portálon.
 * **[Ambari webes felhasználói felületén](hdinsight-hadoop-manage-ambari.md)**  van egy kezelési és figyelési segédprogram használható az Azure-portál különböző feladatok, például a kezelésére használható:
     * [Használja az Ambari REST API-val](hdinsight-hadoop-manage-ambari-rest-api.md)
-    * [Az Ambari Hive nézete](hdinsight-hadoop-use-hive-ambari-view.md)
+    * [Az Ambari Hive nézete](hadoop/apache-hadoop-use-hive-ambari-view.md)
     * [Az Ambari Tez megtekintése](hdinsight-debug-ambari-tez-view.md)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>(Hadoop) a Data Lake Tools for Visual Studio
 A Data Lake Tools for Visual Studio használatával telepítését és kezelését a Storm-topológiák. A Data Lake Tools is telepíti a SCP.NET SDK, amely lehetővé teszi a Visual Studio C# Storm-topológiák fejlesztése.
 
-Mielőtt továbblép a következő példák [telepítése, és próbálja meg a Data Lake Tools for Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md). 
+Mielőtt továbblép a következő példák [telepítése, és próbálja meg a Data Lake Tools for Visual Studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md). 
 
 A Visual Studio és a Data Lake Tools for Visual Studio elvégezhető feladatok példái:
-* [Telepítését és kezelését a Storm-topológiák a Visual Studio eszközből](hdinsight-storm-deploy-monitor-topology-linux.md)
-* [C#-topológiák fejlesztése a Visual Studio használatával alatt futó Storm](hdinsight-storm-develop-csharp-visual-studio-topology.md). A bits csatlakozhat például az Azure Cosmos adatbázis és az SQL Database-adatbázisok Storm-topológiák például sablonokat tartalmaznak.
+* [Telepítését és kezelését a Storm-topológiák a Visual Studio eszközből](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [C#-topológiák fejlesztése a Visual Studio használatával alatt futó Storm](storm/apache-storm-develop-csharp-visual-studio-topology.md). A bits csatlakozhat például az Azure Cosmos adatbázis és az SQL Database-adatbázisok Storm-topológiák például sablonokat tartalmaznak.
 
 ## <a name="visual-studio-and-the-net-sdk"></a>A Visual Studio és a .NET SDK 
 
@@ -56,8 +56,8 @@ Visual Studio .NET SDK-t használhatja a fürtök és a big data-alkalmazások f
 
 A Visual Studio .NET SDK-val elvégezhető feladatok példái:
 * [Fürtök létrehozása és a HDInsight .NET-keretrendszer alkalmazás használata](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
-* [A .NET SDK használatával Hive-lekérdezések futtatása](hdinsight-hadoop-use-hive-dotnet-sdk.md)
-* [A Hive és a Hadoop streamelési Pig C# felhasználó által definiált függvények használata](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [A .NET SDK használatával Hive-lekérdezések futtatása](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
+* [A Hive és a Hadoop streamelési Pig C# felhasználó által definiált függvények használata](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
 > Tipp .NET megoldások a Windows-alapú HDInsight-fürtök használ, akkor egy időben, a Linux-alapú fürtökön szeretne áttelepítést végezni. További információkért lásd: [át .NET megoldást a Windows-alapú HDInsight Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 
@@ -68,15 +68,15 @@ Mindkét [Intellij IDEA](https://www.jetbrains.com/idea/download) és a [Eclipse
 * Fejleszthet, és egy Scala Spark alkalmazás helyileg történő futtatása.
 
 Ezek a cikkek megjelenítése módját: 
-* Intellij IDEA: [Create Spark-alkalmazások az Azure-eszközkészlet az Intellij beépülő modul és a Scala SDK használatával.](hdinsight-apache-spark-intellij-tool-plugin.md)
-* IDE vagy az Eclipse Scala IDE Holdas: [létrehozása Spark-alkalmazások és az Eclipse Azure eszköztára](hdinsight-apache-spark-eclipse-tool-plugin.md) 
+* Intellij IDEA: [Create Spark-alkalmazások az Azure-eszközkészlet az Intellij beépülő modul és a Scala SDK használatával.](spark/apache-spark-intellij-tool-plugin.md)
+* IDE vagy az Eclipse Scala IDE Holdas: [létrehozása Spark-alkalmazások és az Eclipse Azure eszköztára](spark/apache-spark-eclipse-tool-plugin.md) 
 
 
 ## <a name="notebooks-on-spark-for-data-scientists"></a>A Spark on az adatszakértőkön notebookok 
 Az Apache Spark on hdinsight fürtök Zeppelin notebookok és a Jupyter notebookok használható kernelt. 
 
-* [Ismerje meg, kernelek a Spark-fürtök a Jupyter notebookok használata Spark-alkalmazások tesztelése](hdinsight-apache-spark-zeppelin-notebook.md)
-* [Zeppelin notebookok használata Spark-fürtön Spark-feladatok futtatása](hdinsight-apache-spark-jupyter-notebook-kernels.md) 
+* [Ismerje meg, kernelek a Spark-fürtök a Jupyter notebookok használata Spark-alkalmazások tesztelése](spark/apache-spark-zeppelin-notebook.md)
+* [Zeppelin notebookok használata Spark-fürtön Spark-feladatok futtatása](spark/apache-spark-jupyter-notebook-kernels.md) 
 
 
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>Futtassa a Linux-alapú eszközök és technológiák a Windows

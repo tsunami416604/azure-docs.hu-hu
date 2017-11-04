@@ -41,6 +41,7 @@
 ## Útválasztó konfigurálása ExpressRoute-hoz
 ### [Útválasztó konfigurálása](expressroute-config-samples-routing.md)
 ### [Útválasztó-konfigurációs minták NAT-hoz](expressroute-config-samples-nat.md)
+## [Network Performance Monitor for ExpressRoute konfigurálása](how-to-npm.md)
 
 ## Ajánlott eljárások
 ### [Hálózati biztonság és felhőszolgáltatások – ajánlott eljárások](../best-practices-network-security.md)

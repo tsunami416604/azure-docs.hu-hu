@@ -1,6 +1,6 @@
 ---
-title: Subscribe to an offer | Microsoft Docs
-description: As a tenant, learn how to subscribe to an offer.
+title: "Az ajánlat előfizetni |} Microsoft Docs"
+description: "Egy felhasználó nevében megtudhatja, hogyan ajánlatot előfizetni."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,35 +14,36 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/03/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
-ms.openlocfilehash: 3cd87ebe9827249d32f15b5de0ad8521d0282c47
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
+ms.openlocfilehash: f70815b5e89753a4b0083ffbe10d9920062d1ff0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="subscribe-to-an-offer"></a>Subscribe to an offer
-Now that you've [created an offer](azure-stack-create-offer.md), test that your tenants can create a subscription.
+# <a name="subscribe-to-an-offer"></a>Előfizetés egy ajánlatra
 
-1. [Sign in](azure-stack-connect-azure-stack.md) to the Azure Stack tenant portal (https://portal.local.azurestack.external) and click **Get a Subscription**.
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+
+Most, hogy megismerte [ajánlatot létrehozott](azure-stack-create-offer.md), tesztelheti, hogy a felhasználók létrehoz egy előfizetést.
+
+1. [Jelentkezzen be a](azure-stack-connect-azure-stack.md) a Azure verem felhasználói portál (https://portal.local.azurestack.external), majd kattintson **egy előfizetés**.
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image01.png)
-2. In the **Display Name** field, type a name for your subscription, click **Offer**, click one of the offers in the **Choose an offer** blade, and then click **Create**.
+2. A a **megjelenített név** mezőben, írja be az előfizetés nevét, kattintson a **kínálnak**, kattintson az offers egyikére a **válasszon egy ajánlatot** panelt, és kattintson  **Hozzon létre**.
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image02.png)
-3. To view the subscription you created, click **More services**, click **Subscriptions**, then click your new subscription.  
+3. A létrehozott előfizetés megtekintéséhez kattintson **további szolgáltatások**, kattintson a **előfizetések**, majd kattintson az új előfizetés.  
 
-After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
+Miután előfizetett egy ajánlatot, frissítse a portálhoz, és milyen szolgáltatásokat az új előfizetés részét képezik.
 
-## <a name="subscribe-to-an-add-on-plan"></a>Subscribe to an add-on plan
-If the offer has an add-on plan, tenants can add them to their subscription at any time.  
+## <a name="subscribe-to-an-add-on-plan"></a>Egy bővítmény csomag előfizetés
+Ha az ajánlat egy bővítmény csomagban van, a felhasználók hozzáadhatja ezeket az előfizetéshez bármikor.  
 
-1. In the tenant portal, select **More services** > **Subscriptions**.
+1. Válassza ki a felhasználói portál **további szolgáltatások** > **előfizetések**.
 
-2. Click on the subscription > **Add Plan** button, and select the add-on plan.
+2. Kattintson a az előfizetést > **hozzáadása terv** gombra, és válassza ki a bővítmény tervet.
 
 
 
-## <a name="next-steps"></a>Next steps
-[Provision a virtual machine](azure-stack-provision-vm.md)
-
+## <a name="next-steps"></a>Következő lépések
+[Virtuális gép kiépítése](azure-stack-provision-vm.md)

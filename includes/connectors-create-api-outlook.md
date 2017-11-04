@@ -1,17 +1,17 @@
-## <a name="connect-to-outlookcom"></a>Connect to Outlook.com
-### <a name="prerequisites"></a>Prerequisites
-* An Outlook.com account
+## <a name="connect-to-outlookcom"></a>Outlook.com-os csatlakozás
+### <a name="prerequisites"></a>Előfeltételek
+* Egy Outlook.com-fiók
 
-Before you can use your Outlook.com account in a Logic app, you must authorize the Logic app to connect to your Outlook.com account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+Outlook.com-os fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazás Outlook.com-os fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
 
-Here are the steps to authorize your Logic app to connect to your Outlook.com account:
+A Logic Apps alkalmazást Outlook.com-os fiókjához történő engedélyezéséhez lépései a következők:
 
-1. All Logic apps need to be started by a trigger so after you create your Logic app, the designer opens and displays a list of triggers that you can use to start your Logic app:
+1. Logic Apps-alkalmazások összes el kell indítani egy eseményindító által, miután hoz létre a Logic Apps alkalmazást, a Tervező megnyílik, és megjeleníti váltja ki, amely segítségével indítsa el a logikai alkalmazás:
    
    ![](./media/connectors-create-api-outlook/office365-outlook-0.png)
-2. Enter "outlook" in the search box. Notice the list is filtered to list all the triggers with "Outlook" in the name: ![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
-3. Select **Office 365 Outlook - On new email**.   
-   If you haven't created any connections to Outlook before, you'll get prompted to provide your Outlook.com credentials. These credentials will be used to authorize your Logic app to connect to, and access your Outlook.com account's data: ![](./media/connectors-create-api-outlook/office365-outlook-1.png)
-4. Provide your credentials for Outlook and sign in: ![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
-   That's it. You've now created a connection to Outlook. This connection will be available for use in any other Logic app that you create.
+2. A keresőmezőbe írja be a "outlook". Figyelje meg, a szűrt "Outlook" az eseményindítók listát a nevében a lista:![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
+3. Válassza ki **Office 365 Outlook - az új e-mailek**.   
+   Ha még nem hozott létre a kapcsolatokat, az Outlook programot, a rendszer az Outlook.com-os hitelesítő fog kérni. Ezek a hitelesítő adatok engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használt, és elérni az Outlook.com-os fiók adatait:![](./media/connectors-create-api-outlook/office365-outlook-1.png)
+4. Adja meg a hitelesítő adatait az Outlook, és jelentkezzen be:![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
+   Ennyi az egész. Most létrehozott egy kapcsolatot Outlook. Ez a kapcsolat bármely más logikai alkalmazás az Ön által létrehozott használható lesz.
 

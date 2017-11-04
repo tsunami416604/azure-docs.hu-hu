@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 42644bd97443e827b523503989b0b25d3d48028c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 1366cd79248b2e0008234a5da0d87552e6530d80
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps diagnosztikai naplózás engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -180,17 +180,17 @@ Rendelkezésre álló elérési utak listájának megtekintéséhez használja a
 ### <a name="streaming-with-azure-command-line-interface"></a>Adatfolyam-Azure parancssori felületével
 Adatfolyam-naplózási információk nyisson meg egy új parancssor, PowerShell, Bash vagy terminál-munkamenetet, és adja meg a következő parancsot:
 
-    azure site log tail webappname
+    az webapp log tail --name webappname --resource-group myResourceGroup
 
 Ez az "webappname" nevű webes alkalmazáshoz és kezdete streaming a az ablak az információk a webalkalmazásban alkalmazásnapló-események bekövetkezésekor. Minden olyan információt írni a .txt, .log vagy .htm végződése (d:/otthoni/naplófájlok) /LogFiles könyvtárban tárolt fájlok adatfolyamként továbbítva a lesz a helyi konzol.
 
 Szűrés adott események, például a hibák, használja a **--szűrő** paraméter. Példa:
 
-    azure site log tail webappname --filter Error
+    az webapp log tail --name webappname --resource-group myResourceGroup --filter Error
 
 Szűrés adott napló típusok, például HTTP, használja a **--elérési** paraméter. Példa:
 
-    azure site log tail webappname --path http
+    az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
 > [!NOTE]
 > Ha nem telepítette az Azure parancssori felület, vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [hogyan való használata Azure parancssori felület](../cli-install-nodejs.md).

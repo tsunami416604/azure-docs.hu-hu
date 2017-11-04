@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 473da6436ad39709359b579162a6b60efc38d61f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>Integrációs fiókok logic Apps alkalmazásokat a hitelesítendő metaadatok kezelése
 
-Integrációs fiókok egyéni metaadatait az összetevők ad meg, és a metaadatok lekérése futtatás során a logikai alkalmazásnak. Például megadhatja, hogy az összetevők, például a partnerek, egyezmények, sémák és maps metaadat - összes metaadatok kulcs-érték párok tárolására. Jelenleg az összetevők nem hozható létre a metaadatok felhasználói felületén keresztül, de a REST API-k hozhat létre a metaadatok. Metaadatok hozzáadása a létrehozásakor vagy egy partner, a szerződés vagy a séma kiválasztása az Azure portálon, válassza a **módosítsa a JSON**. Logic Apps alkalmazásokat a hitelesítendő metaadatainak beolvasására, használhatja a összetevő Fiókkeresés integrációs szolgáltatást.
+Integrációs fiókok egyéni metaadatait az összetevők ad meg, és a metaadatok lekérése futtatás során a logikai alkalmazásnak. Például megadhatja, hogy az összetevők, például a partnerek, egyezmények, sémák és maps metaadat - összes metaadatok kulcs-érték párok tárolására. Jelenleg az összetevők nem hozható létre a metaadatok felhasználói felületén keresztül, de a REST API-k hozhat létre a metaadatok. Metaadatok hozzáadása a létrehozásakor vagy egy partner, a szerződés vagy a séma kiválasztása az Azure portálon, válassza a **szerkesztése**. Logic Apps alkalmazásokat a hitelesítendő metaadatainak beolvasására, használhatja a összetevő Fiókkeresés integrációs szolgáltatást.
 
 ## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>Integrációs fiókok lévő metaadatok hozzáadása
 
@@ -31,7 +31,7 @@ Integrációs fiókok egyéni metaadatait az összetevők ad meg, és a metaadat
 
 2. Adja hozzá az összetevő integrációs fiókjába, egy [partner](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner), [megállapodás](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements), vagy [séma](logic-apps-enterprise-integration-schemas.md).
 
-3.  Válassza ki a összetevő, válassza a **módosítsa a JSON**, és írja be a metaadatok adatait.
+3.  Válassza ki a összetevő, válassza a **szerkesztése**, és írja be a metaadatok adatait.
 
     ![Adja meg a metaadatok](media/logic-apps-enterprise-integration-metadata/image1.png)
 

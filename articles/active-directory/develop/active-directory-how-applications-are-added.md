@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 6ffcfcb7ed071a12b0b3495ad534fd00f6d6ad99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: a97c6af38b1d3191447ad16a789a034a9d475422
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Miért és hogyan lehet az Azure AD-alkalmazások felvétele
 A kezdeti puzzling dolog, ha az alkalmazások listáját jeleníti meg az Azure Active Directory-példány az ismertetése, az alkalmazások származási helyét, és miért van.  Ez a cikk nyújt a magas szintű áttekintését hogyan az alkalmazások jelennek meg a könyvtárban, és biztosít, amely segítséget nyújt a megértése, hogyan kérelmet kapott a könyvtárban kellene lennie a környezetben.
@@ -84,8 +84,8 @@ Alkalmazások, amelyeket saját maga a következők:
   * Jogcím átalakítási szabályok:
   * (A felhasználók átadása) attribútum-leképezésekhez
 * További részletes információk az egyszerű szolgáltatás és alkalmazás objektumának tekintse meg az Azure AD Graph REST API referenciadokumentációt tartalmaz.  *Mutató*: az Azure AD Graph API-dokumentáció áll a legközelebbi tudnivaló, hogy a séma-referencia az Azure AD, hogy jelenleg rendelkezésre áll.  
-  * [Alkalmazás](https://msdn.microsoft.com/library/azure/dn151677.aspx)
-  * [Egyszerű szolgáltatásnév](https://msdn.microsoft.com/library/azure/dn194452.aspx)
+  * [Alkalmazás](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Egyszerű szolgáltatásnév](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="how-are-apps-added-to-my-azure-ad-instance"></a>Hogyan kerülnek alkalmazásokat a saját Azure AD-példányban?
 Egy alkalmazás felveheti az Azure AD számos módja van:

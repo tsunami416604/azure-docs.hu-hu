@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Stack storage accounts  | Microsoft Docs
-description: Learn how to find, manage, recover and reclaim Azure Stack storage accounts
+title: "A verem Azure storage-fiókok kezelése |} Microsoft Docs"
+description: "Megtudhatja, hogyan keresése, kezelése, helyreállítás és VISSZAIGÉNYLÉSE verem Azure storage-fiókok"
 services: azure-stack
 documentationcenter: 
 author: AniAnirudh
@@ -14,203 +14,201 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/6/2017
 ms.author: anirudha
-ms.translationtype: HT
-ms.sourcegitcommit: d941879aee6042b38b7f5569cd4e31cb78b4ad33
 ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
-ms.contentlocale: hu-hu
-ms.lasthandoff: 07/10/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>Manage Storage Accounts in Azure Stack
-Learn how to manage storage accounts in Azure Stack to find, recover, and reclaim storage capacity based on business needs.
+# <a name="manage-storage-accounts-in-azure-stack"></a>A verem az Azure Storage-fiókok kezelése
+Útmutató: Azure-készletben található, helyreállítására és az üzleti igények alapján tárolási kapacitás visszaigényléséhez storage-fiókok kezelése.
 
-## <a name="find"></a>Find a storage account
-The list of storage accounts in the region can be viewed in Azure Stack by:
+## <a name="find"></a>A storage-fiók található
+A listában tárfiókok régióban Azure verem által tekintheti meg:
 
-1. In an Internet browser, navigate to https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack administration portal as a cloud operator (using the credentials you provided during deployment)
-3. On the default dashboard – find the **Region management** list and click the region you want to explore. For example **(local**).
+1. Egy webböngészőben nyissa meg a https://adminportal.local.azurestack.external.
+2. Jelentkezzen be a verem Azure felügyeleti portálon, a felhő üzemeltetője (a telepítés során megadott hitelesítő adatok használata)
+3. Keresse meg az alapértelmezett irányítópult – a **régió felügyeleti** listán, és kattintson a régiót szeretné használni. Például **(helyi**).
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
-4. Select **Storage** from the **Resource Providers** list.
+4. Válassza ki **tárolási** a a **erőforrás-szolgáltató** listája.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Now, on the storage Resource Provider administrator blade – scroll down to the **Storage accounts** tab and click it.
+5. Most, a rendszergazda panelen storage erőforrás-szolgáltató – görgessen le a **tárfiókok** fülre, és kattintson rá.
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
-   The resulting page is the list of storage accounts in that region.
+   Az eredményül kapott lap a listában tárfiókok az adott régióban.
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
-By default, the first 10 accounts are displayed. You can choose to fetch more by clicking the  **Load more** link at the bottom of the list.
+Alapértelmezés szerint az első 10 fiókok jelennek meg. Dönthet úgy, több beolvasása kattintva a **betöltése több** hivatkozás a lista alján.
 
-OR
+VAGY
 
-If you are interested in a particular storage account – you can **filter and fetch the relevant accounts** only.
+Ha érdekli az adott tárfiókok – **szűrésére és a megfelelő fiókok fetch** csak.
 
 
-**To filter for accounts:**
+**A fiókok szűrése:**
 
-1. Click **Filter** at the top of the blade.
-2. On the Filter blade, it allows you to specify **account name**, **subscription ID** or **status** to fine-tune the list of storage accounts to be displayed. Use them as appropriate.
-3. Click **Update**. The list should refresh accordingly.
+1. Kattintson a **szűrő** a panel tetején.
+2. A szűrő panelre, akkor megadhatja **fióknév**, **előfizetés-azonosító** vagy **állapot** finomhangolását a megjelenítendő storage-fiókok listája. Használja őket.
+3. Kattintson a **frissítés**. A lista ennek megfelelően kell frissíteni.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
-4. To reset the filter: click **Filter**, clear out the  selections and update.
+4. A szűrő alaphelyzetbe: kattintson a **szűrő**, törölje ki a beállításokat, és frissítését.
 
-The search text box (on the top of the storage accounts list blade) lets you highlight the selected text in the list of accounts. This is really handy in the case when the full name or id is not easily available.
+A keresőmezőben (tetején a tárolás fiókok listája panel) lehetővé teszi a kijelölt szöveg fiókok listájában jelölje ki. Ez az valóban lesz szüksége, abban az esetben, ha a teljes név vagy azonosító nem lennének könnyen elérhetőek.
 
-You can use free text here to help find the account you are interested in.
+Itt szabad szöveg segítségével keresse meg a fiókot szeretné.
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
-## <a name="look-at-account-details"></a>Look at account details
-Once you have located the accounts you are interested in viewing, you can click the particular account to view certain details. A new blade opens with the account details such as: the type of the account, creation time, location, etc.
+## <a name="look-at-account-details"></a>Nézze meg fiókadatok
+Miután megtalálta a fiókok megtekintése érdekli, kattintson az adott fiók bizonyos a részletek megtekintéséhez. Egy új panel nyílik meg a fiók adatait, mint: a típusa, a fiók létrehozásának idejét, hely, stb.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
-## <a name="recover-a-deleted-account"></a>Recover a deleted account
-You may be in a situation where you need to recover a deleted account.
+## <a name="recover-a-deleted-account"></a>Helyreállítás törölt fiókhoz
+Lehet, olyan helyzet, ahol kell helyreállítani egy törölt fiókhoz.
 
-In Azure Stack there is a very simple way to do that:
+Azure-készletben egy nagyon egyszerű módja van:
 
-1. Browse to the storage accounts list. See [Find a storage account](#find) in this topic for more information.
-2. Locate that particular account in the list. You may need to filter.
-3. Check the *state* of the account. It should say **Deleted**.
-4. Click the account which opens the account details blade.
-5. On top of this blade, locate the **Recover** button and click it.
-6. Click **Yes** to confirm.
+1. Tallózással keresse meg a storage-fiókok listáján. Lásd: [található a tárfiók](#find) című témakörben talál további információt.
+2. Keresse meg az adott fiók a listában. Szükség lehet szűrni.
+3. Ellenőrizze a *állapot* fiók. Üzenetnek kell megjelennie **törölt**.
+4. Kattintson a fiók, amely a fiók részletei panel nyílik meg.
+5. Fölött ezen a panelen keresse meg a **helyreállítása** gombra, majd kattintson rá.
+6. Kattintson a **Yes** (Igen) gombra a megerősítéshez.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
-7. The recovery is now in *process…wait* for an indication that it was successful.
-   You can also click the “bell” icon at the top of the portal to view progress indications.
+7. A helyreállítási jelenleg *feldolgozása... várakozási* az arra utal, hogy sikeres volt-e azt.
+   A portálra, ahol megtekintheti a folyamatban lévő jelzések tetején a "harang" ikonra is kattinthat.
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
-   Once the recovered account is successfully synchronized, it can be used again.
+   Amikor a helyreállított fiók sikeresen szinkronizálta, azt az használható újra.
 
-### <a name="some-gotchas"></a>Some Gotchas
-* Your deleted account shows state as **out of retention**.
+### <a name="some-gotchas"></a>Néhány Gotchas
+* A törölt fiók állapota látható **kívül megőrzési**.
   
-  This means that the deleted account has exceeded the retention period and may not be recoverable.
-* Your deleted account does not show in the accounts list.
+  Ez azt jelenti, hogy a törölt fiók túllépte a megőrzési idő, és nem használható helyreállításhoz.
+* A törölt fiókhoz nem szerepelnek a fiókok listájában.
   
-  This could mean that the deleted account has already been garbage collected. In this case it cannot be recovered. See [Reclaim capacity](#reclaim) in this topic.
+  Ez azt jelentheti, hogy a törölt fiók szemétgyűjtő már megtörtént. Ebben az esetben nem állíthatók vissza. Lásd: [kapacitás visszaigényléséhez](#reclaim) ebben a témakörben.
 
-## <a name="set-the-retention-period"></a>Set the retention period
-The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to 15 days. Setting the value to “0” means that any deleted account is immediately out of retention and marked for periodic garbage collection.
+## <a name="set-the-retention-period"></a>A megőrzési időszak beállítása
+A megőrzési időszak beállítása lehetővé teszi, hogy a felhő üzemeltetője Ha meg szeretné adni egy adott időszakban között eltelt napok (0 és 9999 nap) amely során egy törölt fiókhoz potenciálisan állíthatók helyre. A megőrzési idő van beállítva, és 15 nap. Az érték "0" azt jelenti, hogy a törölt fiók azonnal megőrzési kívül esik, és rendszeres szemétgyűjtési.
 
-**To change the retention period:**
+**A megőrzési időtartam módosítása:**
 
-1. In an internet browser, navigate to https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack administration portal as a cloud operator (using the credentials you provided during deployment)
-3. On the default dashboard – find the **Region management** list and click the region you want to explore – for example **(local**).
-4. Select **Storage** from the **Resource Providers** list.
-5. Click **Settings** at the top to open the setting blade.
-6. Click **Configuration** then edit the retention period value.
+1. Egy webböngészőben nyissa meg a https://adminportal.local.azurestack.external.
+2. Jelentkezzen be a verem Azure felügyeleti portálon, a felhő üzemeltetője (a telepítés során megadott hitelesítő adatok használata)
+3. Keresse meg az alapértelmezett irányítópult – a **régió felügyeleti** listán, és kattintson a felfedezés – például kívánt régiót **(helyi**).
+4. Válassza ki **tárolási** a a **erőforrás-szolgáltató** listája.
+5. Kattintson a **beállítások** felső beállítás panel megnyitásához.
+6. Kattintson a **konfigurációs** szerkessze az adatmegőrzési időszak értéket.
 
-   Set the number of days and then save it.
+   Állítsa be a napok számát, és mentse azt.
    
-   This value is immediately effective and is set for your entire region.
+   Ez az érték azonnal hatékonyan, és a teljes régió van beállítva.
 
    ![](media/azure-stack-manage-storage-accounts/image10.png)
 
-## <a name="reclaim"></a>Reclaim capacity
-One of the side effects of having a retention period is that a deleted account continues to consume capacity until it comes out of the retention period. As a cloud operator you may need a way to reclaim the deleted account space even though the retention period has not yet expired.
+## <a name="reclaim"></a>Kapacitás visszaigényléséhez
+A mellékhatással működő, a megőrzési időszak egyike, hogy a fiók továbbra is kapacitás felhasználását, amíg a megőrzési időn kívül az ismét. A felhő felelősnek szükség lehet egy módszerre, amellyel a törölt fiók jusson, annak ellenére, hogy a megőrzési időszak még nem járt.
 
-You can reclaim capacity using either the portal or PowerShell.
+Kapacitás, a portál vagy a PowerShell használatával is visszaigényléséhez.
 
-**To reclaim capacity using the portal:**
-1. Navigate to the storage accounts blade. See [Find a storage account](#find).
-2. Click **Reclaim space** at the top of the blade.
-3. Read the message and then click **OK**.
+**A portál használatával kapacitás visszaigényléséhez:**
+1. Nyissa meg a storage-fiókok panelen. Lásd: [található a tárfiók](#find).
+2. Kattintson a **jusson** a panel tetején.
+3. Olvassa el az üzenetet, és kattintson a **OK**.
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
-4. Wait for success notification See the bell icon on the portal.
+4. Várjon, amíg sikeres notification tekintse meg a portál a harang ikonra.
 
     ![](media/azure-stack-manage-storage-accounts/image12.png)
-5. Refresh the Storage accounts page. The deleted accounts are no longer shown in the list because they have been purged.
+5. Frissítse a Storage-fiókok lapot. A törölt fiókok már nem jelennek meg a listában, mert azok kiürítése megtörtént.
 
-You can also use PowerShell to explicitly override the retention period and immediately reclaim capacity.
+A megőrzési időtartam explicit módon felülbírálására PowerShell is használható, és azonnal a kapacitás visszaigényléséhez.
 
-**To reclaim capacity using PowerShell:**   
+**Kapacitás visszaigényléséhez PowerShell használatával:**   
 
-1. Confirm that you have Azure PowerShell installed and configured. If not, use the following instructions: 
-   * To install the latest Azure PowerShell version and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-   For more information about Azure Resource Manager cmdlets, see [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
-2. Run the following cmdlet:
+1. Győződjön meg arról, hogy rendelkezik-e az Azure PowerShell telepítése és konfigurálása. Ha nem, kövesse az alábbi utasításokat: 
+   * Telepítse a legújabb Azure PowerShell-verziót, és társítsa azt az Azure-előfizetése, [telepítése és konfigurálása az Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+   Azure Resource Manager parancsmagjainak kapcsolatos további információkért lásd: [az Azure PowerShell használata Azure Resource Managerrel](http://go.microsoft.com/fwlink/?LinkId=394767)
+2. Futtassa a következő parancsmagot:
 
 > [!NOTE]
-> If you run this cmdlet you permanently delete the account and its contents. It is not recoverable. Use this with care.
+> Ez a parancsmag futtatásakor véglegesen törli a fiókot, és annak tartalmát. Nincs helyreállítható. Ez körültekintően használja.
 
 
         Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
 
 
-For more details, refer to [Azure Stack powershell documentation.](https://msdn.microsoft.com/library/mt637964.aspx)
+További részletekért tekintse meg a [Azure verem powershell dokumentációját.](https://msdn.microsoft.com/library/mt637964.aspx)
  
 
-## <a name="migrate-a-container"></a>Migrate a container
-Due to uneven storage use by tenants, an cloud operator may find one or more underlying tenant shares using more space than others. If this occurs, the cloud operator can attempt to free up some space on the stressed share by manually migrating some blob containers to another share. 
+## <a name="migrate-a-container"></a>A tároló áttelepítése
+Bérlők egyenetlen tárolóhely-használat, mert a felhő üzemeltetője lehet található ilyen, vagy több alapul szolgáló bérlői közösen használja, mint mások több helyet használ. Ha ez történik, a felhő üzemeltetője megpróbálhatja szabadítson fel helyet a teherhordó megosztáson manuálisan át kell telepítenie néhány blob-tárolók egy másik megosztásba. 
 
-You must use PowerShell to migrate containers.
+Tárolók áttelepítése PowerShell kell használnia.
 > [!NOTE]
->Blob container migration does not support live migration and currently is an offline operation. During migration and until it is complete the underlying blobs in that container cannot be used and are “offline”. 
+>A BLOB-tároló áttelepítése nem támogatja az élő áttelepítést, és jelenleg offline művelet. Az áttelepítés során, és mindaddig, amíg nem fejeződik be az alapul szolgáló BLOB a tárolóban nem használható, és a "kapcsolat nélküli". 
 
-**To migrate containers using PowerShell:**
+**PowerShell-lel tárolók áttelepítéséhez:**
 
-1. Confirm that you have Azure PowerShell installed and configured. If not, use the following instructions:
-    * To install the latest Azure PowerShell version and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). For more information about Azure Resource Manager cmdlets, see [Using Azure PowerShell with Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
-2. Get the farm name: 
+1. Győződjön meg arról, hogy rendelkezik-e az Azure PowerShell telepítése és konfigurálása. Ha nem, kövesse az alábbi utasításokat:
+    * Telepítse a legújabb Azure PowerShell-verziót, és társítsa azt az Azure-előfizetése, [telepítése és konfigurálása az Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). Azure Resource Manager parancsmagjainak kapcsolatos további információkért lásd: [az Azure PowerShell használata Azure Resource Managerrel](http://go.microsoft.com/fwlink/?LinkId=394767)
+2. Töltse le a farm neve: 
       
       `$farm = Get-ACSFarm -ResourceGroupName system.local`
-3. Get the shares: 
+3. Töltse le a megosztások: 
 
    `$shares = Get-ACSShare -ResourceGroupName system.local -FarmName $farm.FarmName`
 
-4. Get the containers for a given share. Note that count and intent are optional parameters:
+4. A tárolók beolvasása a megadott megosztás. Vegye figyelembe, hogy száma és a leképezés-e a választható paraméterek:
             
    `$containers = Get-ACSContainer -ResourceGroupName system.local -FarmName $farm.FarmName -ShareName $shares[0].ShareName -Count 4 -Intent Migration`  
 
-   Then examine $containers:
+   Vizsgálja meg $containers:
 
    `$containers`
 
     ![](media/azure-stack-manage-storage-accounts/image13.png)
-5. Get the best destination shares for the container migration:
+5. A legjobb cél megosztások érhető el a tároló áttelepítése:
 
     `$destinationshares= Get-ACSSharesForMigration  -ResourceGroupName system.local -FarmName $farm.farmname -SourceShareName $shares[0].ShareName`
 
-    Then examine $destinationshares:
+    Vizsgálja meg $destinationshares:
 
     `$destinationshares`
 
     ![](media/azure-stack-manage-storage-accounts/image14.png)
-6. Kick off migration for a container, notice this is an async implementation, so one can loop all containers in a share and track the status using the returned job id.
+6. Egy tároló áttelepítési indítsa, figyelje meg, ez a helyzet aszinkron implementációja, egy olyan megosztáson található összes tárolók hurokba, és nyomon követheti a állapotát, a visszaadott feladat azonosítójával.
 
     `$jobId = Start-ACSContainerMigration -ResourceGroupName system.local -FarmName $farm.farmname -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares.UncPath`
 
-    Then examine $jobId:
+    Vizsgálja meg $jobId:
 
    ```
    $jobId
    d1d5277f-6b8d-4923-9db3-8bb00fa61b65
    ```
-7. Check status of the migration job by its job id. When the container migration finishes, MigrationStatus is set to “Completed”.
+7. Az áttelepítési feladat állapotának ellenőrzése a feladat azonosítóval. A tároló áttelepítésének befejezése után MigrationStatus "Kész" értékre van beállítva.
 
     `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 
     ![](media/azure-stack-manage-storage-accounts/image15.png)
 
-8. You can cancel an in-progress migration job. This again is an async operation and can be tracked using $jobid:
+8. Egy folyamatban lévő áttelepítési feladat megszakítása Ez újra aszinkron művelet, és a $jobid használatával követhető nyomon:
 
     `Stop-ACSContainerMigration-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId-Verbose`
 
     ![](media/azure-stack-manage-storage-accounts/image16.png)
 
-    You can check the status of the migration cancel again:
+    Az áttelepítés Mégse állapotának újra ellenőrizheti:
 
     `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 

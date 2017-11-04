@@ -1,22 +1,22 @@
 
-1. In the **Hybrid connections** blade, click the hybrid connection you just created, then click **Listener Setup**.
+1. Az a **hibrid kapcsolatok** panelen, kattintson az imént a hibrid kapcsolat létrejött, majd kattintson **figyelő telepítő**.
    
-    ![Click Listener Setup](./media/app-service-hybrid-connections-manager-install/D04ClickListenerSetup.png)
-2. The **Hybrid connection properties** blade opens. Under **On-premises Hybrid Connection Manager**, choose **download and configure manually**, save the downloaded HybridConnectionManager.msi package, and copy the gateway connection string.
+    ![Kattintson a figyelő beállítás](./media/app-service-hybrid-connections-manager-install/D04ClickListenerSetup.png)
+2. A **hibrid kapcsolat tulajdonságai** panel nyílik meg. A **helyszíni Hybrid Connection Manager**, válassza a **manuális letöltés és beállítás**, mentse a letöltött HybridConnectionManager.msi csomagot, és másolja az átjáró kapcsolati karakterlánca.
    
-    ![Click here to install](./media/app-service-hybrid-connections-manager-install/D05ClickToInstallHCM.png)
-3. From an administrator command prompt, type the following command to start the installer:
+    ![Kattintson ide](./media/app-service-hybrid-connections-manager-install/D05ClickToInstallHCM.png)
+3. Rendszergazdai jogú parancssort írja be a telepítő elindításához a következő parancsot:
    
         start HybridConnectionManager.msi
-4. After the installer runs, click **Not now**, then browse to the %ProgramFiles%\Microsoft\HybridConnectionManager folder, run HCMConfigWizard.exe and click **Yes** in the **User Account Control** dialog.
-5. Paste the hybrid connection string that you copied earlier and click **OK**. 
+4. A telepítő futtatását követően kattintson **most nem**, majd tallózással keresse meg a %ProgramFiles%\Microsoft\HybridConnectionManager mappát, HCMConfigWizard.exe futtatni, és kattintson a **Igen** a a **felhasználói fiók Vezérlő** párbeszédpanel.
+5. Illessze be a hibrid korábban kimásolt kapcsolati karakterláncot, és kattintson a **OK**. 
    
-    ![Installing](./media/app-service-hybrid-connections-manager-install/D08aHCMInstallManual.png)
-6. When the install completes, click **Close**.
+    ![Telepítése](./media/app-service-hybrid-connections-manager-install/D08aHCMInstallManual.png)
+6. A telepítés befejeztével kattintson **Bezárás**.
    
-    ![Click Close](./media/app-service-hybrid-connections-manager-install/D09HCMInstallComplete.png)
+    ![Kattintson a Bezárás gombra](./media/app-service-hybrid-connections-manager-install/D09HCMInstallComplete.png)
    
-    On the **Hybrid connections** blade, the **Status** column now shows **Connected**. 
+    Az a **hibrid kapcsolatok** panelen a **állapot** most az oszlop látható **csatlakoztatva**. 
    
-    ![Connected Status](./media/app-service-hybrid-connections-manager-install/D10HCStatusConnected.png)
+    ![Csatlakoztatott állapot](./media/app-service-hybrid-connections-manager-install/D10HCStatusConnected.png)
 

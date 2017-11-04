@@ -1,6 +1,6 @@
 ---
-title: Deploy the Azure Stack Development Kit | Microsoft Docs
-description: Learn how to prepare the Azure Stack Development Kit and run the PowerShell script to deploy it.
+title: "Az Azure verem szoftverfejlesztői készlet telepítése |} Microsoft Docs"
+description: "Ismerje meg, készítse elő a Azure verem Development Kit, és a PowerShell-parancsfájl a telepítés futtatása."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,56 +14,55 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 530a9558df2323e1aa49d9f4b974c142ee5ecf37
-ms.contentlocale: hu-hu
-ms.lasthandoff: 09/25/2017
-
+ms.openlocfilehash: b67cabf0ecdb48f137bfcfbce95eee568a1c298d
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="deploy-the-azure-stack-development-kit"></a>Deploy the Azure Stack Development Kit
+# <a name="deploy-the-azure-stack-development-kit"></a>Az Azure verem szoftverfejlesztői készlet telepítése
 
-*Applies to: Azure Stack Development Kit*
+*A következőkre vonatkozik: Azure szoftverfejlesztői készletet*
 
-To deploy the [Azure Stack Development Kit](azure-stack-poc.md), you must complete the following steps:
+Központi telepítése a [Azure verem szoftverfejlesztői készlet](azure-stack-poc.md), hajtsa végre az alábbi lépéseket:
 
-1. [Download the deployment package](https://azure.microsoft.com/overview/azure-stack/try/?v=try) to get the Cloudbuilder.vhdx.
-2. [Prepare the cloudbuilder.vhdx](#prepare-the-development-kit-host) by running the asdk-installer.ps1 script to configure the computer (the development kit host) on which you want to install development kit. After this step, the development kit host will boot to the Cloudbuilder.vhdx.
-3. [Deploy the development kit](#deploy-the-development-kit) on the development kit host.
-
-> [!NOTE]
-> For best results, even if you want to use a disconnected Azure Stack environment, it is best to deploy while connected to the internet. That way, the Windows Server 2016 evaluation version can be activated at deployment time. If the Windows Server 2016 evaluation version is not activated within 10 days, it shuts down.
-> 
-> 
-
-## <a name="download-and-extract-the-development-kit"></a>Download and extract the development kit
-1. Before you start the download, make sure that your computer meets the following prerequisites:
-
-   * The computer must have at least 60 GB of free disk space.
-   * [.NET Framework 4.6 (or a later version)](https://aka.ms/r6mkiy) must be installed.
-
-2. [Go to the Get Started page](https://azure.microsoft.com/overview/azure-stack/try/?v=try), provide your details, and click **Submit**.
-3. Under **Download the software**, click **Azure Stack Development Kit**.
-4. Run the downloaded AzureStackDownloader.exe file.
-5. In the **Azure Stack Development Kit Downloader** window, follow steps 1 through 5.
-6. After the download completes, click **Run** to launch the MicrosoftAzureStackPOC.exe.
-7. Review the License Agreement screen and information of the Self-Extractor Wizard and then click **Next**.
-8. Review the Privacy Statement screen and information of the Self-Extractor Wizard and then click **Next**.
-9. Select the Destination for the files to be extracted, click **Next**.
-   * The default is: <drive letter>:\<current folder>\Microsoft Azure Stack
-10. Review the Destination location screen and information of the Self-Extractor Wizard, and then click **Extract** to extract the CloudBuilder.vhdx (~25 GB) and ThirdPartyLicenses.rtf files. This process will take some time to complete.
+1. [A központi telepítési csomag](https://azure.microsoft.com/overview/azure-stack/try/?v=try) a Cloudbuilder.vhdx eléréséhez.
+2. [Készítse elő a cloudbuilder.vhdx](#prepare-the-development-kit-host) szoftverfejlesztői készlet telepíteni szeretné a számítógép (development kit fogadó) konfigurálása a asdk-installer.ps1 parancsfájl futtatásával. Ez a lépés után a development kit gazdagép fog indulni, a Cloudbuilder.vhdx.
+3. [A csomag telepítése](#deploy-the-development-kit) a development kit gazdagépen.
 
 > [!NOTE]
-> After you extract the files, you can delete the exe and bin files to recover space on the machine. Or, you can move these files to another location so that if you need to redeploy you don’t need to download the files again.
+> A legjobb eredmények elérése érdekében akkor is, ha szeretné használni az Azure-verem leválasztott környezet esetén célszerű telepíteni, amíg csatlakozik az internethez. Ily módon a központi telepítéskor akkor lehet aktiválni a Windows Server 2016 próbaverzióját.
 > 
 > 
 
-## <a name="prepare-the-development-kit-host"></a>Prepare the development kit host
-1. Make sure that you can physically connect to the development kit host, or have physical console access (such as KVM). You must have such access after you reboot the development kit host in step 13 below.
-2. Make sure the development kit host meets the [minimum requirements](azure-stack-deploy.md). You can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm your requirements.
-3. Sign in as the Local Administrator to your development kit host.
-4. Copy or move the CloudBuilder.vhdx file to the root of the C:\ drive (C:\CloudBuilder.vhdx).
-5. Run the following script to download the development kit installer file (asdk-installer.ps1) to the c:\AzureStack_Installer folder on your development kit host.
+## <a name="download-and-extract-the-development-kit"></a>Töltse le és a csomag kibontása
+1. A letöltés megkezdése előtt győződjön meg arról, hogy a számítógép megfelel-e a következő előfeltételek teljesülését:
+
+   * A számítógépnek rendelkeznie kell legalább 60 GB szabad lemezterület szükséges.
+   * [.NET-keretrendszer 4.6 (vagy újabb verzió)](https://aka.ms/r6mkiy) kell telepíteni.
+
+2. [Ugrás az első lépések lap](https://azure.microsoft.com/overview/azure-stack/try/?v=try), adja meg a adatait, és kattintson a **Submit**.
+3. A **a szoftverfrissítések letöltéséhez**, kattintson a **Azure verem szoftverfejlesztői készlet**.
+4. Futtassa a letöltött AzureStackDownloader.exe fájlt.
+5. Az a **Azure verem Development Kit letöltő** ablak, végezze el az 1 – 5.
+6. A letöltés befejezése után kattintson **futtatása** a MicrosoftAzureStackPOC.exe elindításához.
+7. Tekintse át a licencszerződés képernyőjén és a önkibontó varázsló információt, és kattintson a **következő**.
+8. Tekintse át az adatvédelmi nyilatkozat képernyő, és a önkibontó varázsló információt, és kattintson a **következő**.
+9. Válassza ki a célhelyet ki kell olvasni, kattintson a fájlok **következő**.
+   * Az alapértelmezett érték: <drive letter>:\<aktuális mappa > \Microsoft Azure verem
+10. Tekintse át a rendeltetési hely képernyő és a önkibontó varázsló információkat, majd a **kibontása** CloudBuilder.vhdx (~ 25 GB) és ThirdPartyLicenses.rtf fájlok kibontásához. Ez a folyamat eltarthat egy ideig.
+
+> [!NOTE]
+> A fájlok kibontása után törölheti a exe és bin fájlok visszanyeréséhez a számítógépen. Vagy áthelyezheti egy másik helyre, ezért, ha meg kell telepíteni, akkor ezeket a fájlokat nem kell újból letöltheti a fájlokat.
+> 
+> 
+
+## <a name="prepare-the-development-kit-host"></a>Készítse elő a development kit állomás
+1. Győződjön meg arról, hogy fizikailag a development kit állomással lépnek kapcsolatba, de (például KVM) fizikai konzol hozzáféréssel rendelkeznek. Ilyen hozzáféréssel kell rendelkeznie, a 13 alatt a fejlesztési kit gazdagép újraindítása után.
+2. Ellenőrizze, hogy a development kit gazdagép megfelel-e a [minimális követelmények](azure-stack-deploy.md). Használhatja a [telepítési ellenőrző Azure verem](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) annak a követelmények ellenőrzéséhez.
+3. Jelentkezzen be helyi rendszergazdaként a development kit gazdagépre.
+4. Másolja, vagy helyezze át a CloudBuilder.vhdx fájlt a C:\ meghajtó (C:\CloudBuilder.vhdx) gyökérkönyvtárában.
+5. Futtassa a következő töltse le a development kit telepítőfájl (asdk-installer.ps1) a c:\AzureStack_Installer mappába a development kit állomáson.
     ```powershell
     # Variables
     $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
@@ -75,82 +74,88 @@ To deploy the [Azure Stack Development Kit](azure-stack-poc.md), you must comple
     # Download file
     Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
     ```
-6. Open an elevated PowerShell console > run the C:\AzureStack_Installer\asdk-installer.ps1 script > click **Prepare vhdx**.
-7. On the **Select Cloudbuilder vhdx** page of the installer, browse to and select the cloudbuilder.vhdx file that you downloaded in the previous steps.
-8. Optional: Check the **Add drivers** box to specify a folder containing additional drivers that you want on the host.
-9. On the **Optional settings** page, provide the local administrator account for the development kit host. If you don't provide these credentials, you'll need KVM access to the host during the install process below.
-10. Also on the **Optional settings** page, you have the option to set the following:
-    - **Computername**: This option sets the name for the development kit host. The name must comply with FQDN requirements and must be 15 characters or less in length. The default is a random computer name generated by Windows.
-    - **Time zone**: Sets the time zone for the development kit host. The default is (UTC-8:00) Pacific Time (US & Canada).
-    - **Static IP configuration**: Sets your deployment to use a static IP address. Otherwise, when the installer reboots into the cloudbuilder.vhx, the network interfaces are configured with DHCP.
-11. Click **Next**.
-12. If you chose a static IP configuration in the previous step, you must now:
-    - Select a network adapter. Make sure you can connect to the adapter before you click **Next**.
-    - Make sure that the **IP address**, **Gateway**, and **DNS** values are correct and then click **Next**.
-13. Click **Next** to start the preparation process.
-14. When the preparation indicates **Completed**, click **Next**.
-15. Click **Reboot now** to boot into the cloudbuilder.vhdx and continue the deployment process.
+6. Nyisson meg egy emelt szintű PowerShell-konzolt > a C:\AzureStack_Installer\asdk-installer.ps1 parancsprogrammal > kattintson **környezet előkészítése**.
+7. Az a **Cloudbuilder válasszon vhdx** oldalon a telepítő, keresse meg és válassza ki az előző lépésben letöltött cloudbuilder.vhdx-fájlt.
+8. Választható lehetőség: Ellenőrizze a **illesztőprogramok hozzáadásával** mezőben megadhat egy további illesztőprogramokat, a gazdagépen használni kívánt tartalmazó mappát.
+9. Az a **választható beállítások** lapján adja meg a helyi rendszergazdai fiók a development kit állomás. Ezeket a hitelesítő adatokat nem ad meg, ha a telepítés során a gazdagép KVM elérésére lesz szüksége.
+10. A is a **választható beállítások** lap, lehetősége van a állítsa be a következőket:
+    - **Számítógépnév**: Ez a beállítás egy development kit állomás neve. A név FQDN követelményeknek kell megfelelniük, és lehet 15 karakternél rövidebb szerepnevet. Az alapértelmezett érték a Windows által generált véletlenszerű számítógép nevét.
+    - **Időzóna**: időzónáját adja meg a development kit gazdagép. Az alapértelmezett érték (UTC-8:00) csendes-óceáni idő (Egyesült Államok és Kanada).
+    - **Statikus IP-konfiguráció**: Beállítja azt a környezetet, hogy statikus IP-cím. Ellenkező esetben amikor a telepítő újraindítja a cloudbuilder.vhx, a hálózati adapterek vannak konfigurálva a DHCP.
+11. Kattintson a **Tovább** gombra.
+12. Ha az előző lépésben a statikus IP-konfigurációt, akkor most le kell:
+    - Válasszon olyan hálózati adaptert. Győződjön meg arról is elérheti az adapter kattintás előtt **következő**.
+    - Győződjön meg arról, hogy a **IP-cím**, **átjáró**, és **DNS** értékek megfelelőek, és kattintson a **következő**.
+13. Kattintson a **következő** az előkészítési folyamat elindításához.
+14. Az előkészítési azt jelzi, ha **befejezve**, kattintson a **következő**.
+15. Kattintson a **Újraindítás most** a cloudbuilder.vhdx indul, és a telepítési folyamat folytatásához.
 
-## <a name="deploy-the-development-kit"></a>Deploy the development kit
-1. Sign in as the Local Administrator to the development kit host. Use the credentials specified in the previous steps.
+## <a name="deploy-the-development-kit"></a>A csomag telepítése
+1. Jelentkezzen be helyi rendszergazdaként a development kit gazdagépre. Az előző lépésben megadott hitelesítő adatokat használja.
 
     > [!IMPORTANT]
-    > For Azure Active Directory deployments, Azure Stack requires access to the Internet, either directly or through a transparent proxy. The deployment supports exactly one NIC for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script in the next section.
+    > Az Azure Active Directory-környezetekben Azure verem kell elérnie az interneten, közvetlenül vagy transzparens proxyra. A központi telepítés pontosan egy hálózati adapter támogatja a hálózatkezeléshez. Ha több hálózati adapterrel rendelkezik, győződjön meg arról, hogy csak egy engedélyezve van (és összes többi le vannak tiltva) a következő szakaszban az üzembe helyezési parancsfájl futtatása előtt.
     
-2. Open an elevated PowerShell console > run the \AzureStack_Installer\asdk-installer.ps1 script (which may be on a different drive in the Cloudbuilder.vhdx) > click **Install**.
-3. In the **Type** box, select **Azure Cloud** or **ADFS**.
-    - **Azure Cloud**: Azure Active Directory is the identity provider. Use this parameter to specify a specific directory where the AAD account has global admin permissions. Full name of an AAD Directory tenant in the format of .onmicrosoft.com. 
-    - **ADFS**: The default stamp Directory Service is the identity provider, the default account to sign in with is azurestackadmin@azurestack.local, and the password to use is the one you provided as part of the setup.
-4. Under **Local administrator password**, in the **Password** box, type the local administrator password (which must match the current configured local administrator password), and then click **Next**.
-5. Select a network adapter to use for the development kit and then click **Next**.
-6. Select DHCP or static network configuration for the BGPNAT01 virtual machine.
-    - **DHCP** (default): The virtual machine gets the IP network configuration from the DHCP server.
-    - **Static**: Only use this option if DHCP can’t assign a valid IP address for Azure Stack to access the Internet. A static IP address must be specified with the subnetmask length (for example, 10.0.0.5/24).
-7. Optionally, set the following values:
-    - **VLAN ID**: Sets the VLAN ID. Only use this option if the host and AzS-BGPNAT01 must configure VLAN ID to access the physical network (and Internet). 
-    - **DNS forwarder**: A DNS server is created as part of the Azure Stack deployment. To allow computers inside the solution to resolve names outside of the stamp, provide your existing infrastructure DNS server. The in-stamp DNS server forwards unknown name resolution requests to this server.
-    - **Time server**: Sets a specific time server. 
-8. Click **Next**. 
-9. On the **Verifying network interface card properties** page, you'll see a progress bar. 
-    - If it says **An update cannot be downloaded**, follow the instructions on the page.
-    - When it says **Completed**, click **Next**.
-10. On **Summary** page, click **Deploy**.
-11. If you're using an Azure Active Directory deployment, you'll be asked to enter your Azure Active Directory global administrator account credentials.
-12. The deployment process can take a few hours, during which the system automatically reboots once.
+2. Nyisson meg egy emelt szintű PowerShell-konzolt > a \AzureStack_Installer\asdk-installer.ps1 parancsprogrammal (amely lehet egy másik meghajtót a a Cloudbuilder.vhdx) > kattintson **telepítése**.
+3. Az a **típus** mezőben válassza **Azure felhőbe** vagy **az AD FS**.
+    - **Azure-felhőbe**: Azure Active Directory az identitásszolgáltató. A paraméter segítségével adjon meg egy adott könyvtár ahol az AAD-fiókba globális rendszergazdai jogosultságokkal rendelkezik. Az AAD-címtárában bérlő teljes neve. Például. onmicrosoft.com. 
+    - **Az AD FS**: az alapértelmezett stamp címtárszolgáltatás az identitásszolgáltató esetén az alapértelmezett fiókot a bejelentkezéshez azurestackadmin@azurestack.local, és a jelszó használata a telepítés részeként megadott.
+4. A **helyi rendszergazda jelszavát**, a a **jelszó** mezőbe, írja be a helyi rendszergazda jelszavát (amelynek meg kell egyeznie az aktuális beállított helyi rendszergazdai jelszót), és kattintson a **Következő**.
+5. Válasszon olyan hálózati adaptert kíván használni a csomagot, és kattintson a **következő**.
+6. Válassza ki a DHCP vagy statikus hálózati BGPNAT01 virtuális gép konfigurációja.
+    - **DHCP** (alapértelmezett): A virtuális gép IP-hálózati konfigurációja lekérdezi a DHCP-kiszolgálótól.
+    - **Statikus**: csak akkor használja ezt a beállítást, ha a DHCP nem rendelhető hozzá egy érvényes IP-címet az Internet eléréséhez Azure verem. Egy statikus IP-címet meg kell adni az alhálózati maszk hosszal (például 10.0.0.5/24).
+7. Szükség esetén állítsa be a következő értékeket:
+    - **VLAN-azonosító**: Beállítja a VLAN-azonosítót. Csak akkor használja ezt a beállítást, ha a gazdagép és a AzS-BGPNAT01 konfigurálnia kell a VLAN-Azonosítót a fizikai hálózaton (és az Internet) elérésére. 
+    - **DNS-továbbító**: A DNS-kiszolgáló jön létre az Azure-verem központi telepítésének részeként. Lehetővé teszi a számítógépek belül a megoldás a stamp kívül nevek feloldására, adja meg a meglévő infrastruktúra DNS-kiszolgáló. A stamp a DNS-kiszolgáló ismeretlen névfeloldási erre a kiszolgálóra továbbítja.
+    - **Kiszolgálót**: Ez a kötelező mező beállítja azt a kiszolgálót, és IP-címnek kell lennie. Egy IP-címének, látogasson el a [pool.ntp.org](http:\\pool.ntp.org) vagy time.windows.com pingelését. 
+8. Kattintson a **Tovább** gombra. 
+9. A a **hálózati kártya kártya tulajdonságainak ellenőrzése** lapon egy folyamatjelző sáv megjelenik. 
+    - Ha a felirat látható **egy frissítést nem lehet letölteni**, kövesse az utasításokat az oldalon.
+    - Ha felirat látható **befejezve**, kattintson a **következő**.
+10. A **összegzés** kattintson **telepítés**.
+11. Ha az Azure Active Directory központi telepítésének használata esetén, a rendszer kéri, Azure Active Directory globális rendszergazdai fiók hitelesítő adatait.
+12. A telepítési folyamat is igénybe vehet néhány órát, amely során a rendszer automatikusan újraindítja a számítógépet egyszer.
    
    > [!IMPORTANT]
-   > If you want to monitor the deployment progress, sign in as azurestack\AzureStackAdmin. If you sign in as a local admin after the machine is joined to the domain, you won't see the deployment progress. Do not rerun deployment, instead sign in as azurestack\AzureStackAdmin to validate that it's running.
+   > Ha azt szeretné, a telepítési folyamat figyelésére, jelentkezzen be azurestack\AzureStackAdmin felhasználóként. Ha jelentkezik be, és egy helyi rendszergazdai után a számítógép csatlakozik a tartományhoz, akkor nem látható a telepítés előrehaladását. Futtassa újra a központi telepítés, ne helyette bejelentkezés azurestack\AzureStackAdmin ellenőrzése, hogy fut-e.
    > 
    > 
    
-    When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment’**.
+    Ha a telepítés sikeres, a PowerShell-konzolon jeleníti meg: **COMPLETE: "Telepítés" művelet**.
    
-If the deployment fails, you can use the following PowerShell rerun script from the same elevated PowerShell window:
+Ha nem sikerül a telepítés, a következő futtassa újra a PowerShell-parancsfájlt használhatja ugyanazon emelt szintű PowerShell-ablakából:
 
 ```powershell
 cd c:\CloudDeployment\Setup
 .\InstallAzureStackPOC.ps1 -Rerun
 ```
 
-This script will restart the deployment from the last step that succeeded.
+Ezt a parancsfájlt a központi telepítés az utolsó lépésben sikeresen telepített újraindul.
 
-Or, you can [redeploy](azure-stack-redeploy.md) from scratch.
-
-
-## <a name="reset-the-password-expiration-to-180-days"></a>Reset the password expiration to 180 days
-
-To make sure that the password for the development kit host doesn't expire too soon, follow these steps after you deploy:
-
-1. On the development kit host, open **Group Policy Management** and navigate to **Group Policy Management** – **Forest: azurestack.local** – **Domains** – **azurestack.local**.
-2. Right click on **MemberServer** and click **Edit**.
-3. In the Group Policy Management Editor, navigate to **Computer Configuration** – **Policies** – **Windows Settings** – **Security Settings** – **Account Policies** – **Password Policy**.
-4. In the right pane, double-click on **Maximum password age**.
-5. In the **Maximum password age Properties** dialog box, change the **Password will expire in** value to 180, then Click **OK**.
+Is [újratelepíteni](azure-stack-redeploy.md) teljesen.
 
 
-## <a name="next-steps"></a>Next steps
-[Register Azure Stack with your Azure subscription](azure-stack-register.md)
+## <a name="reset-the-password-expiration-to-180-days"></a>A jelszavak alaphelyzetbe 180 nap
 
-[Connect to Azure Stack](azure-stack-connect-azure-stack.md)
+Győződjön meg arról, hogy a jelszót ahhoz, hogy a development kit gazdagép nem jár le túl korán, központi telepítését követően tegye a következőket:
 
+A jelszó-elévülési szabályzatának módosítása a Powershellből:
+1. A Powershell-ablakban futtassa a parancsot; Set-ADDefaultDomainPasswordPolicy - MaxPasswordAge 180.00:00:00-identitás azurestack.local
+
+A jelszó-elévülési szabályzatának manuális módosítása:
+1. Nyissa meg a development kit gazdagép **csoportházirend-kezelő** , és keresse meg **csoportházirend-kezelő** – **erdő: azurestack.local** – **tartományok** – **azurestack.local**.
+2. Kattintson a jobb gombbal **alapértelmezett tartományházirend** kattintson **szerkesztése**.
+3. Navigáljon a a Csoportházirendkezelés-szerkesztő, **számítógép konfigurációja** – **házirendek** – **Windows-beállítások** – **biztonsági beállítások**– **Fiókházirendek** – **jelszóházirend**.
+4. A jobb oldali ablaktáblában kattintson duplán a **jelszó maximális élettartama**.
+5. Az a **jelszó maximális élettartama tulajdonságok** párbeszédpanelen módosítsa a **a jelszó lejár** 180 értékét, majd kattintson az **OK**.
+
+
+## <a name="next-steps"></a>Következő lépések
+
+[A PowerShell telepítése](azure-stack-powershell-configure-quickstart.md)
+
+[Azure verem regisztrálása az Azure-előfizetéshez](azure-stack-register.md)
+
+[Csatlakozás az Azure Stackhez](azure-stack-connect-azure-stack.md)
 

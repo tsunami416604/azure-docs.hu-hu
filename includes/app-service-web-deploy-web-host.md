@@ -1,5 +1,5 @@
-### <a name="app-service-plan"></a>App Service plan
-Creates the service plan for hosting the web app. You provide the name of the plan through the **hostingPlanName** parameter. The location of the plan is the same location used for the resource group. The pricing tier and worker size are specified in the **sku** and **workerSize** parameters
+### <a name="app-service-plan"></a>App Service-csomag
+A service-csomag a webalkalmazás üzemeltetéséhez létrehoz. Itt megadni a segítségével a terv a **hostingPlanName** paraméter. A terv helye ugyanazon a helyen használt ahhoz az erőforráscsoporthoz. Az árképzési szint és a feldolgozói mérete vannak megadva a **sku** és **workerSize** paraméterek
 
     {
       "apiVersion": "2015-08-01",

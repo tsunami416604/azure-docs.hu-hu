@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 749a536fea50d0f45b021cfeaffe8e493faa9b3f
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
-ms.translationtype: HT
+ms.openlocfilehash: 90d4b51dfaad409298f72887480dfaf827aef9f0
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deploy-web-app-from-azure-container-registry"></a>Azure-tároló beállításjegyzékből webalkalmazás telepítése
 
@@ -36,7 +36,7 @@ Ha még nem hozott létre a georeplikált beállításjegyzék és a beállítá
 
 A sorozat következő része frissítse az alkalmazást, majd egy új tároló kép leküldése a beállításjegyzékben. Végezetül böngészéssel minden futó webalkalmazás-példány együtt, automatikusan megjelenik a módosítás megtekintéséhez Azure tároló beállításjegyzék georeplikáció és webhookokkal megjelenítő művelet.
 
-## <a name="automatic-deployment-to-web-app-for-containers"></a>A tárolók a webes alkalmazás automatikus telepítése
+## <a name="automatic-deployment-to-web-apps-for-containers"></a>A webalkalmazások tárolók az automatikus központi telepítési
 
 Azure tároló beállításjegyzék támogatást nyújt a tárolóalapú próbafiókokon közvetlenül [tárolók webalkalmazásait](../app-service/containers/index.yml). Az oktatóanyag segítségével az Azure-portálon az előző az oktatóanyag segítséget nyújt az Azure különböző régiókban található két webes alkalmazás tervek létrehozott tároló lemezkép központi telepítését.
 
@@ -48,11 +48,11 @@ Ebben a lépésben szereplő tárolókhoz példány a webalkalmazás létrehozá
 
 Jelentkezzen be a [Azure-portálon](https://portal.azure.com) , és keresse meg a beállításjegyzéket, az előző oktatóanyag létrehozott.
 
-Válassza ki **adattárak** > **acr-helloworld**, majd kattintson a jobb gombbal a a **v1** címke alatt **címkék** ,majd**Az app service telepítéséhez**.
+Válassza ki **adattárak** > **acr-helloworld**, majd kattintson a jobb gombbal a a **v1** címke alatt **címkék** ,majd**Központi telepítése a webes alkalmazás**.
 
 ![Telepítése az app service az Azure-portálon][deploy-app-portal-01]
 
-A **Linux (előzetes verzió) webalkalmazás** , amely akkor jelenik meg, a következő értékek mindegyikéhez:
+A **Web App az tárolókat** , amely akkor jelenik meg, a következő értékek mindegyikéhez:
 
 | Beállítás | Érték |
 |---|---|
@@ -71,7 +71,7 @@ Központi telepítés befejeződése után megtekintheti a futó alkalmazások n
 
 Válassza a portál **alkalmazásszolgáltatások**, akkor a webalkalmazás üzembe az előző lépésben. Ebben a példában a webes alkalmazás neve *uniqueregistryname-westus*.
 
-A jobb felső részén jelölje ki a hiperhivatkozással ellátott a webalkalmazás URL-CÍMÉT a **App Service áttekintése** a futó alkalmazás megtekintése a böngészőben.
+A jobb felső részén jelölje ki a hiperhivatkozással ellátott a webalkalmazás URL-CÍMÉT a **App Service** áttekintése a futó alkalmazás megtekintése a böngészőben.
 
 ![A webalkalmazás az Azure portálon Linux-konfiguráció][deploy-app-portal-04]
 
@@ -81,7 +81,7 @@ Miután a Docker-lemezkép központi telepítésekor a georeplikált tároló be
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>Tárolók példány második webalkalmazás telepítése
 
-Az előző szakaszban leírt eljárás segítségével a második webalkalmazás üzembe helyezése a *USA keleti régiója* régióban. A **Linux (előzetes verzió) webalkalmazás**, adja meg a következő értékeket:
+Az előző szakaszban leírt eljárás segítségével a második webalkalmazás üzembe helyezése a *USA keleti régiója* régióban. A **Web App az tárolókat**, adja meg a következő értékeket:
 
 | Beállítás | Érték |
 |---|---|

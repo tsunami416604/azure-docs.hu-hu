@@ -1,11 +1,11 @@
 
-| Resource | Default limit | Maximum limit | 
+| Erőforrás | Alapértelmezett korlát | Felső korlát | 
 | --- | --- | --- |
-| CDN profiles |8 |25 |
-| CDN endpoints per profile |10 |25 |
-| Custom domains per endpoint |10 |25 |
+| CDN-profil |8 |25 |
+| CDN-végpontok profilonként |10 |25 |
+| Egyéni tartományok végpontonként |10 |25 |
 
-A CDN subscription can contain one or more CDN profiles and a CDN profile can contain one or more CDN endpoints. You may wish to use multiple profiles to organize your CDN endpoints by internet domain, web application, or some other criteria. 
+A CDN-előfizetés tartalmazhat egy vagy több CDN-profil és a CDN-profil is egy vagy több CDN-végpontokat. Előfordulhat, hogy több profil használatával rendszerezni szeretné a CDN-végpontokat internetes tartomány, webalkalmazás vagy más feltétel alapján. 
 
-To request an update to your subscription's default limits, open a support ticket. 
+Az előfizetés alapértelmezett korlátokat frissítése kérelmezéséhez támogatási jegy megnyitása. 
 

@@ -1,14 +1,14 @@
-### <a name="prerequisites"></a>Prerequisites
-* A [SendGrid](https://www.SendGrid.com/) account 
+### <a name="prerequisites"></a>Előfeltételek
+* A [SendGrid](https://www.SendGrid.com/) fiók 
 
-Before you can use your SendGrid account in a Logic app, you must authorize the Logic app to connect to your SendGrid account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+A SendGrid-fiókját a logikai alkalmazás használata előtt engedélyeznie kell a logikai alkalmazást a SendGrid-fiókjához. Szerencsére ehhez egyszerűen a a logikai alkalmazásban, az Azure portálon. 
 
-Here are the steps to authorize your Logic app to connect to your SendGrid account:
+A Logic Apps alkalmazást SendGrid fiókjához történő engedélyezéséhez lépései a következők:
 
-1. To create a connection to SendGrid, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *SendGrid* in the search box. Select the trigger or action you'll like to use:  
-   ![SendGrid step 1](./media/connectors-create-api-sendgrid/sendgrid-1.png)
-2. If you haven't created any connections to SendGrid before, you'll get prompted to provide your SendGrid credentials. These credentials will be used to authorize your Logic app to connect to, and access your SendGrid account's data:  
-   ![SendGrid step 2](./media/connectors-create-api-sendgrid/sendgrid-2.png)
-3. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
-   ![SendGrid step 3](./media/connectors-create-api-sendgrid/sendgrid-3.png)   
+1. A Logic app designer SendGrid, kapcsolat létrehozásához válassza **megjelenítése Microsoft felügyelt API-k** a legördülő listában adja meg *SendGrid* be a keresőmezőbe. Válassza ki az eseményindító vagy művelet fogjuk használni kívánt:  
+   ![1. lépés SendGrid](./media/connectors-create-api-sendgrid/sendgrid-1.png)
+2. Ha még nem hozott létre a SendGrid előtt fennálló kapcsolatokat, a rendszer Sendgridbeli hitelesítő adatok megadása fog kérni. Ezeket a hitelesítő adatokat engedélyezik a Logic Apps alkalmazást való kapcsolódáshoz használt, és a SendGrid fiók adatok eléréséhez:  
+   ![2. lépés SendGrid](./media/connectors-create-api-sendgrid/sendgrid-2.png)
+3. Figyelje meg, a kapcsolat létrejött, és szabadon most folytatja a Logic Apps alkalmazást más lépéseket:  
+   ![3. lépés SendGrid](./media/connectors-create-api-sendgrid/sendgrid-3.png)   
 

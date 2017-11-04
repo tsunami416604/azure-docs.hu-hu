@@ -1,9 +1,9 @@
-Collection of custom measurements. Use this collection to report named measurement associated with the telemetry item. Typical use cases are:
-- the size of Dependency Telemetry payload
-- the number of queue items processed by Request Telemetry
-- time that customer took to complete the step in wizard step completion Event Telemetry.
+Egyéni mérési adatok gyűjtése. A telemetriai adatok elemhez tartozó mérési nevű jelentés a gyűjtemény használható. A tipikus használati esetek a következők:
+- – Függőségi Telemetria tartalom mérete
+- a Telemetriai kérelem által feldolgozott várólista elemek száma.
+- idő tartozó ügyfél varázsló lépés befejezése esemény telemetriai adatokat a lépés elvégzéséhez.
 
-You can query [custom measurements](https://analytics.applicationinsights.io/demo?q=H4sIAAAAAAAAA2WLOw6DMAyGd07hZoLeoRPqyMaGGAL8aiPhGCV2kKoeHsHK%2Bj1myyr8LoiaqfrT%2FkUCzRft4LMl8OUeL3LuLLIx%2BxR%2BIF8%2BtcoiNq2o78vgWuFthQaJ1AeGGxt6UlBwKxa1qQ6EpLhAfQAAAA%3D%3D&timespan=PT24H) in Application Analytics:
+Lekérheti [egyéni mértékek](https://analytics.applicationinsights.io/demo?q=H4sIAAAAAAAAA2WLOw6DMAyGd07hZoLeoRPqyMaGGAL8aiPhGCV2kKoeHsHK%2Bj1myyr8LoiaqfrT%2FkUCzRft4LMl8OUeL3LuLLIx%2BxR%2BIF8%2BtcoiNq2o78vgWuFthQaJ1AeGGxt6UlBwKxa1qQ6EpLhAfQAAAA%3D%3D&timespan=PT24H) alkalmazás Analytics:
 
 ```
 customEvents
@@ -12,6 +12,6 @@ customEvents
 ```
 
  > [!NOTE]
- > Custom measurements are associated with the telemetry item they belong to. They are subject to sampling with the telemetry item containing those measurements. To track a measurement that has a value independent from other telemetry types, use [Metric telemetry](../articles/application-insights/app-insights-api-custom-events-metrics.md).
+ > Egyéni mértékek társítva a telemetriai adatok elem tartoznak. A fenti mérések tartalmazó telemetriai elem vannak mintavételi vonatkoznak. Egy mérték, amely független a más telemetriai értéke követheti nyomon, használjon [metrika telemetriai](../articles/application-insights/app-insights-api-custom-events-metrics.md).
 
-Max key length: 150
+Maximális kulcshossz: 150

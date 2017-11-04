@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 85424a00b34b4bccf7dc38b2bae1cfe31b2507d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 9ff633b4543fbc537ffdb721756706e8de5e8e88
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Azok a Spark-beépített machine learning modellek
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -118,7 +118,7 @@ A PySpark kernel tartalmaz néhány előre definiált "magics", amelyeket speci�
 * **%% sql -o<variable name>** 
 * Végrehajtja a Hive-lekérdezések a sqlContext ellen. Ha az -o paramétert, a lekérdezés eredménye megőrződjön-e az a %%, egy Pandas dataframe helyi Python-környezetben.
 
-További információ a Jupyter notebookokból és az előre meghatározott kernelek "magics", amely a biztosítanak, lásd: [HDInsight Spark Linux és a Jupyter notebookok elérhető kernelek a HDInsight-fürtök](../../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
+További információ a Jupyter notebookokból és az előre meghatározott kernelek "magics", amely a biztosítanak, lásd: [HDInsight Spark Linux és a Jupyter notebookok elérhető kernelek a HDInsight-fürtök](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Adatok és megtisztított adatok keret létrehozása
 Ez a szakasz az adatok pontozni szükséges lépések egy sorozatát kódját tartalmazza. Olvasása illesztett 0,1 % minta taxi út és a jegy ára fájl (.tsv fájlként tárolja), formátum az adatokat, és létrehoz egy tiszta adatok keret.
@@ -527,7 +527,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Spark modellek felhasználásához webes felületen keresztül
-Spark lehetővé teszi a kötegelt feladatok vagy interaktív lekérdezések egy REST-felületen keresztül távolról elküldeni a Livy összetevőt. A HDInsight Spark-fürt alapértelmezés szerint engedélyezve van a Livy. Livy további információkért lásd: [távolról a Livy használatával nyújt Spark feladatok](../../hdinsight/hdinsight-apache-spark-livy-rest-interface.md). 
+Spark lehetővé teszi a kötegelt feladatok vagy interaktív lekérdezések egy REST-felületen keresztül távolról elküldeni a Livy összetevőt. A HDInsight Spark-fürt alapértelmezés szerint engedélyezve van a Livy. Livy további információkért lásd: [távolról a Livy használatával nyújt Spark feladatok](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Segítségével Livy távolról az, hogy a batch-pontszámok feladat elküldése egy fájlt, amely egy Azure blob tárolja, és az eredményeket ezután ír egy másik blob. Ehhez az szükséges, a Python-parancsfájl feltöltése  
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) a Spark-fürt blobba. Egy eszköz, például használhatja **Microsoft Azure Tártallózó** vagy **AzCopy** a parancsfájlt a fürt blob másolása. Abban az esetben, ha azt a parancsfájlt, amellyel feltöltött ***wasb:///example/python/ConsumeGBNYCReg.py***.   

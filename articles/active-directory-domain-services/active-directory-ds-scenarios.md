@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: maheshu
-ms.openlocfilehash: b73bfc7703d79681f0de345f4ec994da540aa2a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: fc1aa4d778a6232258470fc9a58a98906c86ec7b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Központi telepítési forgatókönyvek és példák
 Ebben a szakaszban úgy tekintünk, néhány forgatókönyvek és használati esetet, amelyekkel igénybe vehesse az Azure Active Directory (AD) tartományi szolgáltatásokban.
@@ -85,4 +85,4 @@ Ez a telepítési forgatókönyv kapcsolatos további információkért lásd: h
 ## <a name="domain-joined-hdinsight-clusters-preview"></a>Tartományhoz csatlakozó HDInsight-fürtök (előzetes verzió)
 Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartományhoz csatlakoztatott Apache Pletyka engedélyezve van az Azure HDInsight-fürtök állíthat be. Hozzon létre és Pletyka Apache Hive-házirendeket alkalmazni, és engedélyezése a felhasználók (például adatszakértőkön) való kapcsolódáshoz a Hive ODBC-alapú eszközökkel, például az Excel, a Tableau stb. A Microsoft egyéb munkaterhelések, például a HBase, Spark és Storm, hozzáadása HDInsight tartományhoz hamarosan dolgozik.
 
-Ez a telepítési forgatókönyv kapcsolatos további információkért lásd: hogyan [tartományhoz a HDInsight-fürtök konfigurálása](../hdinsight/hdinsight-domain-joined-configure.md)
+Ez a telepítési forgatókönyv kapcsolatos további információkért lásd: hogyan [tartományhoz a HDInsight-fürtök konfigurálása](../hdinsight/domain-joined/apache-domain-joined-configure.md)

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: 29f245fdeaadd6f95755f7fd7564dfa7f6b2981f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: befd03d94f816cb2b59219cd9f1f9af238949592
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információ a HDInsight használata Linux rendszeren
 
@@ -39,13 +39,13 @@ A jelen dokumentumban leírt lépések számos használja az alábbi segédprogr
 
 ## <a name="users"></a>Felhasználók
 
-Ha [tartományhoz](hdinsight-domain-joined-introduction.md), érdemes figyelembe venni a HDInsight egy **egyfelhasználós** rendszer. Egy SSH-felhasználói fiókot a fürt rendszergazdai szintű engedélyekkel rendelkező hozza létre. További SSH-fiókok hozhatók létre, de a fürt rendszergazdai hozzáféréssel is rendelkeznek.
+Ha [tartományhoz](./domain-joined/apache-domain-joined-introduction.md), érdemes figyelembe venni a HDInsight egy **egyfelhasználós** rendszer. Egy SSH-felhasználói fiókot a fürt rendszergazdai szintű engedélyekkel rendelkező hozza létre. További SSH-fiókok hozhatók létre, de a fürt rendszergazdai hozzáféréssel is rendelkeznek.
 
-Tartományhoz csatlakozó HDInsight támogatja egyszerre több felhasználó és részletesebb engedéllyel és szerepkör-beállítások. További információkért lásd: [kezelése tartományhoz a HDInsight-fürtök](hdinsight-domain-joined-manage.md).
+Tartományhoz csatlakozó HDInsight támogatja egyszerre több felhasználó és részletesebb engedéllyel és szerepkör-beállítások. További információkért lásd: [kezelése tartományhoz a HDInsight-fürtök](./domain-joined/apache-domain-joined-manage.md).
 
 ## <a name="domain-names"></a>Tartománynevek
 
-A teljes tartománynevét (FQDN) az internetről a fürthöz történő csatlakozás során használandó van  **&lt;clustername >. azurehdinsight.net** vagy (az SSH csak)  **&lt;fürtnév-ssh >. azurehdinsight.NET**.
+A teljes tartománynevét (FQDN) az internetről a fürthöz történő csatlakozás során használandó van ** &lt;clustername >. azurehdinsight.net** vagy (az SSH csak) ** &lt;fürtnév-ssh >. azurehdinsight.NET**.
 
 Belső a fürt minden csomópontja rendelkezik a nevet, amely hozzá van rendelve, fürt konfigurálása során. A fürt nevének megkereséséhez lásd: a **állomások** oldalon, az Ambari webes felhasználói felületén. Az Ambari REST API-t az állomások listájához való visszatéréshez is használhatja a következő:
 
@@ -277,6 +277,6 @@ Egy összetevő egy másik verzióját használja, töltse fel a verziót kell, 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Linux-alapú Windows-alapú HDInsight át](hdinsight-migrate-from-windows-to-linux.md)
-* [A Hive használata a HDInsightban](hdinsight-use-hive.md)
-* [A Pig használata a HDInsightban](hdinsight-use-pig.md)
-* [MapReduce-feladatok használata a HDInsightban](hdinsight-use-mapreduce.md)
+* [A Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
+* [A Pig használata a HDInsightban](hadoop/hdinsight-use-pig.md)
+* [MapReduce-feladatok használata a HDInsightban](hadoop/hdinsight-use-mapreduce.md)

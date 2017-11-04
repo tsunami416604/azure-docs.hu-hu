@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 88feffc13690a3a33f757a43972c5ef1fe967b7f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
-ms.translationtype: HT
+ms.openlocfilehash: 75408dc88b23b615971a23dc6235c563229d75aa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>Egy Azure-tárolót georeplikált beállításjegyzék előkészítése
 
@@ -247,10 +247,10 @@ Ebben az oktatóanyagban létre egy saját, a georeplikált tároló beállítá
 > * A beépített alkalmazás forrásból tároló Docker képként
 > * A tároló kép leküldött a beállításjegyzéket
 
-Előzetes központi telepítésével a tároló több Azure App Service-példány, helyileg a lemezképek kiszolgálásához georeplikáció használatával kapcsolatos további következő oktatóanyagot.
+Előzetes központi telepítése a tároló több tárolók példányok használó webalkalmazások georeplikáció helyileg a lemezképek kiszolgálásához megismeréséhez következő oktatóanyagot.
 
 > [!div class="nextstepaction"]
-> [Tárolók üzembe helyezése az Azure App Service szolgáltatások](container-registry-tutorial-deploy-app.md)
+> [Azure-tároló beállításjegyzékből webalkalmazás telepítése](container-registry-tutorial-deploy-app.md)
 
 <!-- IMAGES -->
 [tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png

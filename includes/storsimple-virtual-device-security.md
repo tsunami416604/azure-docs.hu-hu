@@ -1,8 +1,8 @@
 <!--v-sharos 10/13/2105 virtual device security-->
 
-Keep the following security considerations in mind when you use the StorSimple virtual device:
+A StorSimple virtuális eszköz használatakor vegye figyelembe a következő biztonsági megfontolásoknak:
 
-* The virtual device is secured through your Microsoft Azure subscription. This means that if you are using the virtual device and your Azure subscription is compromised, the data stored on your virtual device is also susceptible.
-* The public key of the certificate used to encrypt data stored in Azure StorSimple is securely made available to the Azure classic portal, and the private key is retained with the StorSimple device. On the StorSimple virtual device, both the public and private keys are stored in Azure.
-* The virtual device is hosted in the Microsoft Azure datacenter.
+* A virtuális eszköz a Microsoft Azure-előfizetéssel védve. Ez azt jelenti, hogy ha a virtuális eszközt használ, és az Azure-előfizetéshez biztonsága sérül, a virtuális eszközön tárolt adatok is ki vannak téve.
+* Az Azure StorSimple tárolt adatok titkosításához használható tanúsítvány nyilvános kulcsát biztonságosan szeretné elérhetővé tenni a klasszikus Azure portálra, és a titkos kulcs és a StorSimple-eszköz őrződnek meg. A StorSimple virtuális eszköz a nyilvános és titkos kulcsok Azure vannak tárolva.
+* A virtuális eszköz a Microsoft Azure-adatközpontban található.
 

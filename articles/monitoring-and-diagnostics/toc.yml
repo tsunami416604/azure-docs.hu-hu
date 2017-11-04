@@ -11,7 +11,7 @@
       href: monitor-quick-resource-metric-alert-portal.md
     - name: Riasztás előfizetési tevékenység esetén
       href: monitor-quick-audit-notify-action-in-subscription.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Automatikus méretezés teljesítmény és ütemezés alapján
       href: monitor-tutorial-autoscale-performance-schedule.md
@@ -134,6 +134,8 @@
       items:
         - name: Archívum
           href: monitoring-archive-diagnostic-logs.md
+        - name: Küldés a Log Analyticsnek
+          href: monitor-stream-diagnostic-logs-log-analytics.md
         - name: Streamelés az Event Hubsra
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: Diagnosztikai beállítások engedélyezése Resource Manager-sablonok használatával

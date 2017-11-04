@@ -1,0 +1,71 @@
+---
+title: 'Az Azure Cosmos DB: MongoDB API cikkek |} Microsoft Docs'
+description: "Összes dokumentum adatbázisok létrehozásához a MongoDB API-t az Azure Cosmos Adatbázisba vonatkozó cikkek listáját."
+services: cosmos-db
+author: mimig1
+manager: jhubbard
+documentationcenter: 
+ms.assetid: 0ee5b7f8-cda9-41a1-b7f0-f6a97e58c4da
+ms.service: cosmos-db
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/25/2017
+ms.author: mimig
+ms.openlocfilehash: 8feabb464c87032db40a66a67f471d0f41cd98eb
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2017
+---
+# <a name="azure-cosmos-db-mongodb-api-documentation"></a>Az Azure Cosmos DB: MongoDB API dokumentációt
+
+Ez a cikk a MongoDB API adott Azure Cosmos DB tartalomra mutató hivatkozásokat biztosít.
+
+Ezek a cikkek nem vonatkoznak a DocumentDB API, a Graph API-val vagy a tábla API. 
+
+## <a name="introduction-and-concepts"></a>Bevezetés és fogalmak
+
+Ezek a kell olvasni a témakör és forrás, a MongoDB API-t az Azure Cosmos DB megismerését elindításához.
+
+- [MongoDB API bemutatása](mongodb-introduction.md)
+- [Csatlakozás a MongoDB-fiókhoz](connect-mongodb-account.md)
+
+## <a name="quickstarts"></a>Gyors útmutatók
+
+A gyors üzembe helyezés témakörök szolgálnak a leggyorsabban Azure Cosmos DB hozzon létre egy működő alkalmazást. Minden egyes gyors üzembe helyezés elsajátíthatja a Felhasználóifelület-alapú Azure-portál és a nyelvi kódolási kedvenc használata adatbázis megoldások létrehozásához Azure Cosmos DB számára. Klónozható webalkalmazások minden gyors üzembe helyezés elérhető GitHub területről. 
+
+
+- [MongoDB + Express + AngularJS + Node.js + webalkalmazások](create-mongodb-nodejs.md)
+- [.NET + azure-portál + webalkalmazások](create-mongodb-dotnet.md)
+- [Java + Azure-portál + webalkalmazások](create-mongodb-java.md)
+- [Nyissa meg + Azure-portál + Ugrás](create-mongodb-golang.md)
+
+## <a name="tutorials"></a>Oktatóanyagok
+
+Ezek az oktatóanyagok egy szint a Quickstarts értékénél. Az oktatóanyagok teljesen új, és másolja az alkalmazások készítéséhez, és illessze be a kódot az alkalmazásba. Is megtudhatja, hogyan importálhatja adatokat, adatait, és az adatbázisok globálisan terjesztése.
+
+### <a name="create-a-console-app"></a>Hozzon létre egy konzolalkalmazást
+
+- [Node.js](mongodb-samples.md) 
+- [.NET](tutorial-develop-mongodb.md)
+
+### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
+
+- Alapú videó: [Node.js + Angular](tutorial-develop-mongodb-nodejs.md)
+- Alapú videó: [Node.js + reagálni](tutorial-develop-mongodb-react.md)
+
+### <a name="migrate-mongodb-data"></a>MongoDB-adatok áttelepítése
+
+- [MongoDB-adatok beolvasása](mongodb-migrate.md)
+
+### <a name="work-with-data"></a>Adatok használata
+
+- [MongoDB rendszerhéj lekérdezések](tutorial-query-mongodb.md)
+- [Globális adatok terjesztése](tutorial-global-distribution-mongodb.md)
+
+## <a name="developers-guide"></a>Fejlesztői útmutató
+
+- [A MongoChef használata](mongodb-mongochef.md)
+- [A Robomongo használata](mongodb-robomongo.md)

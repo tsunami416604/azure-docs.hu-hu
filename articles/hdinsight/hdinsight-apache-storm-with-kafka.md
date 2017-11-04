@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/12/2017
 ms.author: larryfr
-ms.openlocfilehash: 7b41afdbb019f8533a49db3ebd37ff144186f956
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 97b89b9c6ef88c1611ccad7963a0aa8e7eb82318
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>Apache Kafka (előzetes verzió) használata a HDInsight alatt futó Storm
 
@@ -341,6 +341,6 @@ A jelen dokumentumban leírt lépések az azonos Azure erőforráscsoport mindk�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a HDInsight alatt futó Storm használható további példa topológiák [példa Storm-topológiák és összetevők](hdinsight-storm-example-topology.md).
+Tekintse meg a HDInsight alatt futó Storm használható további példa topológiák [példa Storm-topológiák és összetevők](storm/apache-storm-example-topology.md).
 
-A telepítését és megfigyelését a HDInsight Linux-alapú topológiák további információkért lásd: [központi telepítése és kezelése a Linux-alapú HDInsight alatt futó Apache Storm-topológiák](hdinsight-storm-deploy-monitor-topology-linux.md)
+A telepítését és megfigyelését a HDInsight Linux-alapú topológiák további információkért lásd: [központi telepítése és kezelése a Linux-alapú HDInsight alatt futó Apache Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md)

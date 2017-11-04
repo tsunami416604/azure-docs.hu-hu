@@ -1,6 +1,6 @@
 ---
 title: "Elemzési lekérdezések futtatása több Azure SQL-adatbázisban | Microsoft Docs"
-description: "Elosztott lekérdezések futtatása több Azure SQL-adatbázisban"
+description: "Adatok kinyerése a bérlő adatbázis kapcsolat nélküli elemzéshez analytics adatbázisba"
 keywords: "sql database-oktatóanyag"
 services: sql-database
 documentationcenter: 
@@ -9,24 +9,22 @@ manager: jhubbard
 editor: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: tutorial
-ms.workload: data-management
+ms.custom: scale out apps
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 05/10/2017
+ms.topic: article
+ms.date: 06/16/2017
 ms.author: billgib; sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: a0742a004b618dda304618bca21ae715552c16e6
-ms.contentlocale: hu-hu
-ms.lasthandoff: 05/12/2017
-
-
+ms.openlocfilehash: 4a96efb15268c56e3625832b0b4d6dd8f6a78614
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="run-distributed-queries-across-multiple-azure-sql-databases"></a>Elosztott lekérdezések futtatása több Azure SQL-adatbázisban
+# <a name="extract-data-from-tenant-databases-into-an-analytics-database-for-offline-analysis"></a>Adatok kinyerése a bérlő adatbázis kapcsolat nélküli elemzéshez analytics adatbázisba
 
-Ebben az oktatóanyagban a katalógusban szereplő összes bérlőre vonatkozó analitikai lekérdezéseket futtat majd. A lekérdezések futtatásához egy rugalmas feladatot fogunk használni. A feladat kigyűjti és a katalóguskiszolgálón létrehozott külön analitikai adatbázisba tölti be az adatokat. Ennek az adatbázisnak a lekérdezésével feltárhatók az összes bérlő nap mint nap használt adatai között rejlő összefüggések. A feladat kimeneteként az eredményt visszaadó lekérdezések alapján létrejön egy tábla a bérlő analitikai adatbázisában.
+Ebben az oktatóanyagban egy rugalmas feladat minden egyes bérlői adatbázisához lekérdezéseinek futtatásához használja. A feladat jegy értékesítési adatait kinyeri, és betölti az elemzési adatbázis (vagy az adatraktár) elemzés céljából. Az elemzési adatbázis majd le kell kérdezni insights kibontani a napi működésiadat egyetlen bérlő számára.
 
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -37,7 +35,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A WTP alkalmazás üzembe van helyezve. A kevesebb, mint öt perc alatti üzembe helyezéshez lásd: [A WTP SaaS-alkalmazás üzembe helyezése és felfedezése](sql-database-saas-tutorial.md)
+* A Wingtip SaaS-alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip SaaS-alkalmazáshoz](sql-database-saas-tutorial.md)
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [Az SSMS letöltése és telepítése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
@@ -47,20 +45,20 @@ Az SaaS-alkalmazásokban rejlő nagy lehetőségek egyike a felhőben tárolt r�
 
 ## <a name="get-the-wingtip-application-scripts"></a>A Wingtip alkalmazásszkriptek beolvasása
 
-A Wingtip Tickets szkriptjei és alkalmazás-forráskódja a [WingtipSaas](https://github.com/Microsoft/WingtipSaaS) GitHub-adattárban érhető el. A szkriptfájlok a [Learning Modules](https://github.com/Microsoft/WingtipSaaS/tree/master/Learning%20Modules) (Tanulási modulok) mappában találhatók. Töltse le a **Tanulási modulok** mappát a helyi számítógépére, a mappaszerkezetének megőrzésével.
+A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) github-tárház. [Töltse le a Wingtip Szolgáltatottszoftver-parancsfájlok lépéseket](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
 
 ## <a name="deploy-a-database-for-tenant-analytics-results"></a>A bérlői analitikai eredményeket tároló adatbázis kialakítása
 
 Ehhez az oktatóanyaghoz szükség van egy adatbázisra, amely tárolja a lekérdezéseket tartalmazó, feladatként futó parancsprogramok által visszaadott eredményeket. Hozzunk létre egy tenantanalytics nevű adatbázist erre a célra.
 
 1. Nyissa meg a ...\\Tanulási modulok\\Működési elemzések\\Bérlői analitikák\\*Demo-TenantAnalytics.ps1* fájlt a *PowerShell ISE* alkalmazásban, és állítsa be a következő értékeket:
-   * **$DemoScenario** = **2** *Működési elemzés adatbázis telepítése*
+   * **$DemoScenario** = **2***Működési elemzés adatbázis telepítése*
 1. Az **F5** lenyomásával futtassa le a bérlői analitikai adatbázist létrehozó bemutató szkriptet (amely meghívja a *Deploy-TenantAnalyticsDB.ps1* szkriptet).
 
 ## <a name="create-some-data-for-the-demo"></a>Adatok létrehozása a bemutatóhoz
 
 1. Nyissa meg a ...\\Tanulási modulok\\Működési elemzések\\Bérlői analitikák\\*Demo-TenantAnalytics.ps1* fájlt a *PowerShell ISE* alkalmazásban, és állítsa be a következő értékeket:
-   * **$DemoScenario** = **1** *Jegyek beszerzése minden helyszínen*
+   * **$DemoScenario** = **1***Jegyek beszerzése minden helyszínen*
 1. Az **F5** lenyomásával futtassa le a szkriptet, és hozza létre a jegyvásárlások naplóját.
 
 
@@ -68,14 +66,14 @@ Ehhez az oktatóanyaghoz szükség van egy adatbázisra, amely tárolja a lekér
 
 Ez a szkript létrehoz egy feladatot, amely minden bérlőtől beszerzi a jegyvásárlásokkal kapcsolatos adatokat. Ezeket egyetlen táblában összesítve részletes képet kaphat a bérlők körében elterjedt jegyvásárlási mintázatokról.
 
-1. Nyissa meg az SSMS-t, és kapcsolódjon a catalog-\<felhasználó\>.database.windows.net kiszolgálóhoz
+1. Nyissa meg az SSMS-t, és kapcsolódjon a catalog-&lt;felhasználó&gt;.database.windows.net kiszolgálóhoz
 1. Nyissa meg a ...\\Tanulási modulok\\Működési elemzések\\Bérlői analitikák\\*TicketPurchasesfromAllTenants.sql* fájlt
-1. Módosítsa a \<WtpUser\> felhasználót a WTP alkalmazás telepítésekor az **sp\_add\_target\_group\_member** és az **sp\_add\_jobstep** szkript elején használt felhasználónévvel
-1. Kattintson a jobb gombbal, válassza a **Kapcsolat** lehetőséget, és ha még nem kapcsolódott, akkor kapcsolódjon a catalog-\<WtpUser\>.database.windows.net kiszolgálóhoz
+1. Módosítsa &lt;felhasználói&gt;, használja a Wingtip SaaS-alkalmazás a parancsfájl elején telepítésekor használt felhasználónevét **sp\_hozzáadása\_cél\_csoport\_tag** és **sp\_hozzáadása\_feladatlépés használja**
+1. Kattintson a jobb gombbal, válassza ki **kapcsolat**, és kapcsolódjon a katalógus -&lt;felhasználói&gt;. database.windows.net kiszolgáló, ha még nincs csatlakoztatva
 1. Ellenőrizze, hogy kapcsolódik-e a **jobaccount** adatbázishoz, és nyomja le az **F5** billentyűt a parancsprogram futtatásához
 
 * Az **sp\_add\_target\_group** létrehozza a *TenantGroup* nevű célcsoportot, most hozzá kell adnunk a céltagokat.
-* Az **sp\_add\_target\_group\_member** hozzáad egy *kiszolgáló* céltagtípust, amely feltételezi, hogy a kiszolgálón (ne feledje, ez a bérlői adatbázisokat tartalmazó customer1-&lt;WtpUser&gt; kiszolgáló) belüli összes adatbázist feladat-végrehajtáskor bele kell foglalni a feladatba.
+* **SP\_hozzáadása\_cél\_csoport\_tag** ad hozzá egy *server* céltípust tag, amely úgy ítéli meg, hogy a kiszolgálón belüli összes adatbázis (Megjegyzés: Ez a customer1 -&lt;felhasználói&gt; a bérlő adatbázisokat tartalmazó kiszolgáló) időpontban feladat végrehajtása a feladat kell foglalni.
 * Az **sp\_add\_job** létrehoz egy új, hetenként ütemezett feladatot „Jegyvásárlások az összes bérlőnél” néven
 * **sp\_add\_jobstep** létrehozza a T-SQL-parancsszöveget tartalmazó feladatlépést, amely kinyeri az összes bérlő jegyvásárlási információit és a kapott eredményhalmazt bemásolja egy *AllTicketsPurchasesfromAllTenants* nevű táblába
 * A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Az állapot figyeléséhez tekintse át az állapot értékét az **életciklus** oszlopban. A sikeres végrehajtás azt jelenti, hogy a feladat sikeresen befejeződött az összes bérlői adatbázison és a két további, referenciatáblát tartalmazó adatbázison.
@@ -90,8 +88,8 @@ Ez a szkript létrehoz egy feladatot, amely megadja az összes bérlő összes j
 
 1. Nyissa meg az SSMS-t, és kapcsolódjon a *catalog-&lt;felhasználó&gt;.database.windows.net* kiszolgálóhoz
 1. Nyissa meg a ...\\Tanulási modulok\\Kiépítés és katalogizálás\\Működési elemzések\\Bérlői analitikák\\*Results-TicketPurchasesfromAllTenants.sql* fájlt
-1. Módosítsa a &lt;WtpUser&gt; felhasználót a WTP alkalmazás telepítésekor a szkriptben, az **sp\_add\_jobstep** tárolt alkalmazásban használt felhasználónévvel
-1. Kattintson a jobb gombbal, válassza a **Kapcsolat** lehetőséget, és ha még nem kapcsolódott, akkor kapcsolódjon a catalog-\<WtpUser\>.database.windows.net kiszolgálóhoz
+1. Módosítsa &lt;felhasználói&gt;, a Wingtip Szolgáltatottszoftver-alkalmazás a parancsfájl a telepítésekor használt felhasználónév használata a **sp\_hozzáadása\_feladatlépés használja** tárolt eljárás
+1. Kattintson a jobb gombbal, válassza ki **kapcsolat**, és kapcsolódjon a katalógus -&lt;felhasználói&gt;. database.windows.net kiszolgáló, ha még nincs csatlakoztatva
 1. Ellenőrizze, hogy kapcsolódik-e a **tenantanalytics** adatbázishoz, és nyomja le az **F5** billentyűt a parancsprogram futtatásához
 
 A szkript sikeres lefutása az alábbihoz hasonló eredményt mutat:
@@ -119,5 +117,5 @@ Gratulálunk!
 
 ## <a name="additional-resources"></a>További források
 
-* [A Wingtip Tickets Platform (WTP) alkalmazás kezdeti üzembe helyezésére épülő további oktatóanyagok](sql-database-wtp-overview.md#sql-database-wtp-saas-tutorials)
+* További [oktatóprogramot kínál, amelyek a Wingtip SaaS-alkalmazás épül](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Rugalmas feladatok](sql-database-elastic-jobs-overview.md)

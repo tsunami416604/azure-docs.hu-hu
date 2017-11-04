@@ -1,6 +1,6 @@
 ---
-title: Quota types in Azure Stack | Microsoft Docs
-description: Review the different quota types available for services and resources in Azure Stack.
+title: "Kvóta típusa Azure verem |} Microsoft Docs"
+description: "Tekintse át a szolgáltatásokat és erőforrásokat a Azure verem használható különböző kvóta típusok."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,53 +14,54 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 9c65abd596b1a67175a4f91558c318f16ddbb11f
-ms.contentlocale: hu-hu
-ms.lasthandoff: 08/24/2017
-
+ms.openlocfilehash: d9bb048ece32bf5b34e05d7459488aa0f24d0d44
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="quota-types-in-azure-stack"></a>Quota types in Azure Stack
-[Quotas](azure-stack-plan-offer-quota-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five VMs. Each resource can have its own types of quotas.
+# <a name="quota-types-in-azure-stack"></a>Azure verem kvóta típusa
 
-## <a name="compute-quota-types"></a>Compute quota types
-| **Type** | **Default value** | **Description** |
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+
+[Kvóták](azure-stack-plan-offer-quota-overview.md#plans) erőforrásokat, amelyek felhasználói előfizetés kiépítése, vagy felhasználhatják határait. Például a kvóta lehetővé teheti a felhasználó legfeljebb öt virtuális gépek létrehozásához. Az egyes erőforrások saját kvótatípusokat is rendelkezhet.
+
+## <a name="compute-quota-types"></a>Számítási kvóta típusa
+| **Típus** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
-| Max number of virtual machines |50 | The maximum number of virtual machines that a subscription can create in this location. |
-| Max number of virtual machine cores |100 | The maximum number of cores that a subscription can create in this location (for example, an A3 VM has four cores). |
-| Max number of availability sets |10 | The maximum number of availability sets that can be created in this location. |
-| Max number of virtual machine scale sets |100 | The maximum number of virtual machine scale sets that can be created in this location. |
+| Virtuális gépek maximális száma | 20 | Előfizetés is ezen a helyen létrehozott virtuális gépek maximális száma. |
+| Virtuális gép magok maximális száma | 50 | Előfizetés hozhat létre ezen a helyen magok maximális számának (például egy VM A3 csomag négy magok rendelkezik). |
+| Rendelkezésre állási maximális száma | 10 | Ezen a helyen létrehozott rendelkezésre állási csoportok maximális számát. |
+| Virtuálisgép-méretezési maximális száma | 20 | Ezen a helyen létrehozott virtuálisgép-méretezési csoportok maximális számát. |
 
 > [!NOTE]
-> Compute quotas are not enforced in this technical preview.
+> Számítási kvóták nem érvényesek a technical Preview-ban.
 > 
 > 
 
-## <a name="storage-quota-types"></a>Storage quota types
-| **Item** | **Default value** | **Description** |
+## <a name="storage-quota-types"></a>Tárolási kvóta típusok
+| **Elem** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
-| Maximum capacity (GB) |500 |Total storage capacity that can be consumed by a subscription in this location. |
-| Total number of storage accounts |20 |The maximum number of storage accounts that a subscription can create in this location. |
+| Maximális kapacitás (GB) |500 |Ezen a helyen az előfizetés által felhasználható teljes tárolási kapacitás. |
+| Storage-fiókok száma összesen |20 |Előfizetés hozhat létre ezen a helyen storage-fiókok maximális száma. |
 
-## <a name="network-quota-types"></a>Network quota types
-| **Item** | **Default value** | **Description** |
+## <a name="network-quota-types"></a>Kvóta hálózattípusok
+| **Elem** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
-| Max public IPs |50 |The maximum number of public IPs that a subscription can create in this location. |
-| Max virtual networks |50 |The maximum number of virtual networks that a subscription can create in this location. |
-| Max virtual network gateways |1 |The maximum number of virtual network gateways (VPN Gateways) that a subscription can create in this location. |
-| Max network connections |2 |The maximum number of network connections (point-to-point or site-to-site) that a subscription can create across all virtual network gateways in this location. |
-| Max load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
-| Max NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
-| Max network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
+| Maximális nyilvános IP-címek |50 |Nyilvános IP-cím, egy előfizetést hozhat létre ezen a helyen maximális száma. |
+| Virtuális hálózatok maximális száma |50 |Előfizetés is ezen a helyen létrehozott virtuális hálózatok maximális száma. |
+| Virtuális hálózati átjárók maximális száma |1 |A virtuális hálózati átjáró (VPN-átjárók), egy előfizetést hozhat létre ezen a helyen maximális száma. |
+| Hálózati kapcsolatok maximális száma |2 |A hálózati kapcsolatok (point-to-point vagy pont-pont), amely egy előfizetést hozhat létre ezen a helyen az összes virtuális hálózati átjárók közötti maximális száma. |
+| Maximális terheléselosztók |50 |A maximális száma a terheléselosztókat, amelyekben egy előfizetést hozhat létre ezen a helyen. |
+| Hálózati adapterek maximális száma |100 |Amely egy előfizetést hozhat létre ezen a helyen hálózati adapterek maximális száma. |
+| A maximális hálózati biztonsági csoportok |50 |Hálózati biztonsági csoportok, egy előfizetést hozhat létre ezen a helyen maximális száma. |
 
-## <a name="view-an-existing-quota"></a>View an existing quota
-1. Click **More services** > **Resource Providers**.
-2. Select the service with the quota that you want to view.
-3. Click **Quotas**, and select the quota you want to view.
+## <a name="view-an-existing-quota"></a>Egy meglévő kvóta megtekintése
+1. Kattintson a **további szolgáltatások** > **erőforrás-szolgáltató**.
+2. Válassza ki a szolgáltatást, amely a megtekinteni kívánt kvótát.
+3. Kattintson a **kvóták**, és válassza ki a megtekinteni kívánt kvótát.
 
-## <a name="next-steps"></a>Next steps
-[Learn more about plans, offers, and quotas.](azure-stack-plan-offer-quota-overview.md)
+## <a name="next-steps"></a>Következő lépések
+[Ismerje meg a csomagok, ajánlatokat, és tájékozódhat a kvóták.](azure-stack-plan-offer-quota-overview.md)
 
-[Create quotas while creating a plan.](azure-stack-create-plan.md)
-
+[Kvóták létrehozása terv létrehozása közben.](azure-stack-create-plan.md)

@@ -1,12 +1,12 @@
 <!--author=SharS last changed: 12/01/15-->
 
-#### <a name="to-enter-maintenance-mode"></a>To enter Maintenance mode
-1. In the serial console menu, choose option 1, **Log in with full access**.
-2. Type the password. The default password is **Password1**.
-3. At the command prompt, type
+#### <a name="to-enter-maintenance-mode"></a>Adja meg a karbantartási módból való
+1. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**.
+2. Írja be a jelszót. Az alapértelmezett jelszó **jelszó1**.
+3. Írja be a parancssorba
    
      `Enter-HcsMaintenanceMode`
-4. You will see a warning message telling you that Maintenance mode will disrupt all I/O requests and sever the connection to the Azure classic portal, and you will be prompted for confirmation. Type **Y** to enter Maintenance mode.
+4. Látni fogja, hogy a karbantartási mód lesz megzavarhatják összes i/o-kérelmek és -kiszolgálón a kapcsolat a klasszikus Azure portálra, és megerősítés bekéri felszólító figyelmeztető üzenetet. Típus **Y** a karbantartási üzemmódba.
    
-    Both controllers will restart. When the restart is complete, another message will appear indicating that the device is in Maintenance mode.
+    Mindkét tartományvezérlők újraindul. Ha az újraindítás befejeződött, egy másik üzenet jelenik meg arról, hogy az eszköz karbantartási módban.
 

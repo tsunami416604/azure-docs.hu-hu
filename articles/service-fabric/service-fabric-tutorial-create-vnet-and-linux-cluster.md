@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: b2542af86be236b8d575fcaf7687222cd74af661
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 983abcd103a58be63053e466c767015c0835eaba
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Az Azure virtuális hálózat Service Fabric Linux fürt központi telepítése
 Ez az oktatóanyag egy sorozat része. Megtudhatja, hogyan telepítheti Linux Service Fabric-fürt be egy meglévő Azure virtuális hálózatot (VNET), és részterv net az Azure parancssori felület használatával. Amikor végzett, hogy a fürt fut a felhőben, amely központilag telepíthető alkalmazások. A Windows PowerShell fürt létrehozásához lásd: [biztonságos Windows-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
@@ -84,17 +84,27 @@ az group deployment create \
 ```
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
 ## <a name="deploy-the-service-fabric-cluster"></a>A Service Fabric-fürt központi telepítése
-Ha a hálózati erőforrások végzett központi telepítése, a következő lépés a Service Fabric-fürt központi telepítése a virtuális hálózat, az alhálózat és a Service Fabric-fürt számára kijelölt NSG. A Resource Manager-sablon egy meglévő VNET és alhálózat (korábban ebben a cikkben telepített) egy fürt telepítése szükséges.  További információkért lásd: [fürt létrehozása az Azure Resource Manager használatával](service-fabric-cluster-creation-via-arm.md). Az oktatóanyag adatsorozathoz a sablon nevét a virtuális Hálózatot, alhálózatot és az előző lépésben beállított NSG használandó előre konfigurálva.  Töltse le a következő Resource Manager sablon és a Paraméterek:
+Ha a hálózati erőforrások végzett központi telepítése, a következő lépés a Service Fabric-fürt központi telepítése a virtuális hálózat, az alhálózat és a Service Fabric-fürt számára kijelölt NSG. A Resource Manager-sablon egy meglévő VNET és alhálózat (korábban ebben a cikkben telepített) egy fürt telepítése szükséges.  További információkért lásd: [fürt létrehozása az Azure Resource Manager használatával](service-fabric-cluster-creation-via-arm.md). Az oktatóanyag adatsorozathoz a sablon nevét a virtuális Hálózatot, alhálózatot és az előző lépésben beállított NSG használandó előre konfigurálva.  
+
+Töltse le a következő Resource Manager sablon és a Paraméterek:
 - [linuxcluster.JSON][cluster-arm]
 - [linuxcluster.Parameters.JSON][cluster-parameters-arm]
 
-Adja meg az üres **clusterName**, **adminUserName**, és **adminPassword** paramétereit a *linuxcluster.parameters.json* fájl a telepítéshez.  Hagyja a **certificateThumbprint**, **certificateUrlValue**, és **sourceVaultValue** paraméter üres, ha szeretne létrehozni egy önaláírt tanúsítványt.  Ha egy meglévő kulcstároló korábban feltöltött tanúsítványt, töltse ki azokat a paraméterértékek.
+A sablon használatához a biztonságos fürtök létrehozásához.  A fürt tanúsítvány csomópontok kommunikáció biztosításához és a fürt felügyeleti végpontok egy felügyeleti ügyfél hitelesítésére használt X.509 tanúsítvány.  A fürt tanúsítvány is lehetővé teszi az SSL protokoll a HTTPS-szolgáltatásfelügyeleti API és a Service Fabric Explorer HTTPS-KAPCSOLATON keresztül. Az Azure Key Vault segítségével kezelheti az Azure Service Fabric-fürtök tanúsítványait.  A fürt telepítésekor az Azure-ban, a Service Fabric-fürtök létrehozásáért felelős az Azure erőforrás-szolgáltató kéri le a tanúsítványokat a Key Vault, és telepíti azokat a virtuális gépek fürtön. 
 
-A következő parancsfájl segítségével a Resource Manager sablonnal és paraméterfájlokkal fájlokkal fürt központi telepítése.  Önaláírt tanúsítvány jön létre a megadott kulcstároló, és a fürt biztonságossá tételére szolgál.  A tanúsítvány is tölt le helyileg.
+Egy hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon a fürt-tanúsítványt, vagy a tesztelési célokra, hozzon létre egy önaláírt tanúsítványt. A fürt tanúsítványt kell:
+
+- tartalmazza a titkos kulcsot.
+- a kulcscseréhez használt, amely exportálható egy személyes információcsere (.pfx) fájl hozható létre.
+- a tulajdonos nevét, amely megfelel a tartományt, amelyikhez a Service Fabric-fürt eléréséhez használt rendelkezik. A megfelelő szükség SSL a fürt HTTPS felügyeleti végpontokat és a Service Fabric Explorerben talál. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) származó nem szerezze be a. cloudapp.azure.com tartomány. Be kell szereznie egy egyéni tartománynevet a fürt számára. A hitelesítésszolgáltató tanúsítvány kérése, amikor a tanúsítvány tulajdonosának nevét meg kell egyeznie az egyéni tartománynevet, amelyekkel a fürt számára.
+
+Adja meg az üres **clusterName**, **adminUserName**, és **adminPassword** paramétereit a *linuxcluster.parameters.json* fájl a telepítéshez.  Hagyja a **certificateThumbprint**, **certificateUrlValue**, és **sourceVaultValue** paraméter üres, létrehozhat egy önaláírt tanúsítványt.  Ha egy meglévő kulcstároló korábban feltöltött tanúsítványt használni kívánt, töltse ki azokat a paraméterértékek.
+
+Az alábbi parancsfájl használ a [az ú fürt létrehozása](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancs és a sablon telepítése egy új fürtöt az Azure-ban. A parancsmag is létrehoz egy új kulcstartó az Azure-ban, a key vault ad hozzá egy új önaláírt tanúsítványt, és letölti a fájlt helyileg. A többi paraméter használatával adhat meg egy meglévő tanúsítvány és/vagy a kulcstartót a [az ú fürt létrehozása](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) parancsot.
 
 ```azurecli
 Password="q6D7nN%6ck@6"
-Subject="aztestcluster.southcentralus.cloudapp.azure.com"
+Subject="mysfcluster.southcentralus.cloudapp.azure.com"
 VaultName="linuxclusterkeyvault"
 az group create --name $ResourceGroupName --location $Location
 

@@ -1,21 +1,21 @@
-Most of the time authentication errors result from incorrect or inconsistent configuration settings. Here are some specific suggestions for things to check.
+Az idő hitelesítési hibák többségét eredménye nem megfelelő vagy nem következetes konfigurációs beállításokat. Az alábbiakban néhány dolog adott javaslatokat.
 
-* Make sure that you didn't miss the **Save** button anywhere. This is often easy to do, and the result is that you'll be looking at the correct values on a portal page but they haven't actually been saved in the Azure environment or Azure AD application.
-* For settings configured in the **Application Settings** blade of the Azure portal, make sure that the correct API app or web app was selected when the settings were entered.  Also make sure that the settings were entered as **App settings** and not **Connection strings**, as the format of the two sections is similar.
-* For authentication to a JavaScript front end, download the manifest again to verify that `oauth2AllowImplicitFlow` was successfully changed to `true`.
-* Verify that you used HTTPS wherever you configured URLs:
+* Győződjön meg arról, hogy nem teljesíti a **mentése** gombra kattint, bármely részén. Ez gyakran könnyen elvégezhető, és az eredménye, hogy akkor lesz megtekintik helyes az értékük portál oldalon, de ténylegesen ezek még nincsenek mentve a Azure-alapú környezetben vagy az Azure AD-alkalmazást.
+* A konfigurált beállítások a **Alkalmazásbeállítások** panel az Azure portál, győződjön meg arról, hogy a megfelelő API-alkalmazás vagy a web app kiválasztott a beállítások vannak megadva.  Emellett győződjön meg arról, hogy a beállításokat vannak-e megadva **Alkalmazásbeállítások** és nem **kapcsolati karakterláncok**, mert a két szakasz formátuma hasonló.
+* A JavaScript előtér hitelesítést, töltse le újra annak ellenőrzésére, hogy a jegyzék `oauth2AllowImplicitFlow` sikeresen módosítva, `true`.
+* Ellenőrizze, hogy HTTPS bárhol konfigurált URL-címek:
   
-  * In project code
-  * In CORS
-  * In Azure environment App settings for each API app and web app
-  * In Azure AD application settings.
+  * A projekt kódját
+  * A CORS
+  * Az alkalmazásbeállítások Azure-alapú környezetben az egyes API-alkalmazás és a webes alkalmazás
+  * Az Azure AD alkalmazás-beállításokat.
     
-    Note that if you copy an API app's URL from the portal, it often has `http://` and you have to manually change it to `https://`.
-* Make sure that any code changes were successfully deployed. For example, in a multiple-project solution it's possible to change a project's code and accidentally choose one of the others when you intend to deploy the change.
-* Make sure that you are going to HTTPS URLs in your browser, not HTTP URLs. By default, Visual Studio creates publish profiles with HTTP URLs, and that's what opens in the browser after you deploy a project.
-* For authentication to a JavaScript front end, make sure that CORS is correctly configured on the API app that the JavaScript code calls. If in doubt about whether the problem is CORS-related, try "*" as the allowed origin URL. 
-* For a JavaScript front end, open your browser's Developer Tools Console tab to get more error information, and examine HTTP requests on the Network. However, Console error messages may be misleading. If you get a message indicating a CORS error, the real issue may be authentication. You can check if this is the case by running the app with authentication temporarily temporarily disabled.
-* For a .NET API app, make sure you are getting as much information in error messages as possible by setting [customErrors mode to Off](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview).
-* For a .NET API app, start a [remote debugging session](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug), and examine the values of the variables that are passed to code that uses ADAL to acquire a bearer token, or code that checks claims against the expected service principal ID. Note that your code can pick up configuration values from many different sources, so it's possible to find surprises this way. For example, if you mistype `ida:ClientId` as `ida:ClientID` when configuring Azure App Service environment settings, the code might get the `ida:ClientId` value that it's looking for from the Web.config file, ignoring the Azure App Service setting. 
-* If things don't work in a normal Internet Explorer window, an existing log-in may be interfering; try InPrivate and try Chrome or Firefox.
+    Vegye figyelembe, hogy ha egy API-alkalmazás URL-címet a portálról másolja, ez gyakran `http://` és módosítsa úgy, hogy manuálisan kell `https://`.
+* Ellenőrizze, hogy a kód módosításokat sikeres volt-e telepítve. Például egy több-projekt megoldásban is lehet módosítani a projekt kódját, és véletlenül válasszon egyet a többi Ha szeretné telepíteni a módosítás.
+* Győződjön meg arról, hogy szeretne HTTPS URL-címek nem HTTP URL-címek a böngészőben. Alapértelmezés szerint a Visual Studio létrehozza a HTTP URL-címek profilok közzététele, és mi megnyitása a böngészőben, a projekt telepítése után.
+* A JavaScript előtér hitelesítést győződjön meg arról, hogy a CORS megfelelően van-e beállítva az API-alkalmazás, amely a JavaScript-kód hívja meg. Ha a arról, hogy a problémát a CORS-kapcsolódó kétséges, próbálja ki a "*" az engedélyezett forrás URL-címet. 
+* JavaScript előtér nyissa meg a hiba további információkat a böngésző fejlesztői eszközök konzol lapon, és vizsgálja meg a HTTP-kérések a hálózaton. Előfordulhat azonban, konzol hibaüzenetek félrevezető. A CORS hibát jelző üzenet jelenik meg, ha a valós oka valószínűleg a hitelesítést. Ha ez helyzet a hitelesítéssel ideiglenesen átmenetileg le van tiltva az alkalmazás futtatásával ellenőrizheti.
+* .NET API-alkalmazások esetén ellenőrizze, hogy kap, a rendszer mennyi információt látható a hibaüzenetekben a lehető beállításával [ki a customErrors módot](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview).
+* A .NET API-alkalmazást, indítsa el a [távoli hibakeresési munkamenetben](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug), és vizsgálja meg a kódot, amely egy tulajdonosi jogkivonatot szerezni az adal-t használ, vagy kódot, amely ellenőrzi az elvárt szolgáltatási egyszerű azonosító szemben átadott változók értékei Figyelje meg, hogy a kód is számos különböző forrásokból konfigurációs értékek átvételéhez, ezért található meglepetések számát, így lehetséges. Például, ha írunk `ida:ClientId` , `ida:ClientID` Azure App Service-környezet beállításainak konfigurálásakor a kód első előfordulhat, hogy a `ida:ClientId` érték, amely a Web.config fájlból, a rendszer figyelmen kívül hagyja az Azure App Service-beállítás keresi. 
+* Ha egy normál Internet Explorer-ablakban probléma, akkor egy már létező napló a zavart; InPrivate próbálja, majd ismételje meg a Chrome, Firefox vagy.
 

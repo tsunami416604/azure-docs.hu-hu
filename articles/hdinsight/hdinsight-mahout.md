@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: larryfr
-ms.openlocfilehash: 934de9ca2df48b29ef7a56d5729d59d77875ea7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 569aeef58e601174aa9f28dc3ba39ebae17c17f8
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Film javaslatok generálása Apache Mahout a hadooppal a Hdinsightban (PowerShell)
 
@@ -42,7 +42,7 @@ Ismerje meg, hogyan használható a [Apache Mahout](http://mahout.apache.org) ma
 > [!WARNING]
 > Ebben a szakaszban a feladat használható Azure PowerShell használatával. A Mahout megadott osztályok többsége nem jelenleg Azure PowerShell-lel dolgozni. Nem működnek az Azure PowerShell osztályok listáját lásd: a [hibaelhárítás](#troubleshooting) szakasz.
 >
-> Például az SSH használatával csatlakozhat a HDInsight és futtatási Mahout példák közvetlenül a fürtön, [Mahout és a HDInsight-(SSH) használatával movie javaslatok generálása](hdinsight-hadoop-mahout-linux-mac.md).
+> Például az SSH használatával csatlakozhat a HDInsight és futtatási Mahout példák közvetlenül a fürtön, [Mahout és a HDInsight-(SSH) használatával movie javaslatok generálása](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 A funkciók Mahout által biztosított egyike egy javaslat motor. Ez a motor elfogadja a kell adatokat `userID`, `itemId`, és `prefValue` (a felhasználók beállítások elem). Mahout hasonló-cikk beállítások, amely ajánlásokat rendelkező felhasználók meghatározására használja az adatok.
 
@@ -208,21 +208,21 @@ A következő osztályokat használó mahout feladatok vissza különböző hiba
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Ezeket az osztályokat használó feladatok futtatásához, a HDInsight-fürthöz SSH használatával csatlakozhat, és a feladatok futtatása a parancssorból. Az SSH használatával Mahout feladatok futtatásához példáért lásd: [Mahout és a HDInsight-(SSH) használatával movie javaslatok generálása](hdinsight-hadoop-mahout-linux-mac.md).
+Ezeket az osztályokat használó feladatok futtatásához, a HDInsight-fürthöz SSH használatával csatlakozhat, és a feladatok futtatása a parancssorból. Az SSH használatával Mahout feladatok futtatásához példáért lásd: [Mahout és a HDInsight-(SSH) használatával movie javaslatok generálása](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
 Most, hogy rendelkezik megismerte Mahout használata, felderítése egyéb módjait a HDInsight-adatokkal végzett munka:
 
-* [A HDInsight Hive](hdinsight-use-hive.md)
-* [Pig with HDInsight](hdinsight-use-pig.md)
-* [MapReduce a hdinsight eszközzel](hdinsight-use-mapreduce.md)
+* [A HDInsight Hive](hadoop/hdinsight-use-hive.md)
+* [Pig with HDInsight](hadoop/hdinsight-use-pig.md)
+* [MapReduce a hdinsight eszközzel](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [aps]: /powershell/azureps-cmdlets-docs
 [movielens]: http://grouplens.org/datasets/movielens/
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
-[getstarted]: hdinsight-hadoop-linux-tutorial-get-started.md
+[getstarted]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
 [ml]: http://en.wikipedia.org/wiki/Machine_learning
 [forest]: http://en.wikipedia.org/wiki/Random_forest

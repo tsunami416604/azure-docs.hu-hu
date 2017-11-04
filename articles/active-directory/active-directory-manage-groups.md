@@ -16,11 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 3a4764ddf2dea68bf25bd46b9691429ad3341678
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: aba231a91efafa48837e45435efd51769b12374b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Az Azure Active Directoryval erőforrásokhoz való hozzáférés kezelése
 Azure Active Directory (Azure AD) egy átfogó identitás- és hozzáférés felügyeleti megoldás, amely egy robusztus több funkciót biztosít hozzáférést a helyszíni és felhőalapú alkalmazásokhoz és erőforrásokhoz, beleértve az Office 365-höz hasonló Microsoft online szolgáltatások kezelése és egy a globális Microsoft SaaS-alkalmazásokhoz. Ez a cikk áttekintést nyújt, de ha Elindítja most csoportosítja az Azure AD, kövesse az utasításokat a [biztonsági csoportok kezelése az Azure AD](active-directory-accessmanagement-manage-groups.md). Ha meg szeretné tekinteni, hogyan használhatja PowerShell kezelése az Azure Active Directoryban további a [eszközcsoport-kezelés Azure Active Directory-parancsmagjai](active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
@@ -66,7 +66,7 @@ A csoport tulajdonosa is elérhetővé teheti, hogy a csoport a önkiszolgáló 
 ## <a name="getting-started-with-access-management"></a>Ismerkedés a hozzáférés-kezelés
 Próbálja ki. Használja ki az Azure AD-csoportok elvégezhető alapvető feladatokat. Ezek a képességek segítségével speciális hozzáférést adhat a különböző csoportok tagjai a szervezet különböző erőforrások. Alapszintű első lépések listáját alább láthatók.
 
-* [A csoport dinamikus csoporttagságok konfigurálása egyszerű szabályt hoz létre](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
+* [A csoport dinamikus csoporttagságok konfigurálása egyszerű szabályt hoz létre](active-directory-accessmanagement-manage-groups.md)
 * [SaaS-alkalmazásokhoz való hozzáférés kezelése csoport segítségével](active-directory-accessmanagement-group-saasapps.md)
 * [Csoport elérhetővé tétele a felhasználók önkiszolgáló](active-directory-accessmanagement-self-service-group-management.md)
 * [Egy helyi csoport az Azure-bA az Azure AD Connect használatával szinkronizálása](active-directory-aadconnect.md)
