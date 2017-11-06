@@ -1,56 +1,56 @@
 
-## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>View VMs scheduled for maintenance in the portal
+## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Ütemezett karbantartás miatt a portál nézet virtuális gépek
 
-Once a planned maintenance wave is scheduled, and notifications are sent, you can observe the list of virtual machines that are impacted by the upcoming maintenance wave. 
+A tervezett karbantartások wave ütemezve van, és a rendszer értesítéseket küld, ha a közelgő karbantartásokról wave által befolyásolt virtuális gépek listájának figyelheti meg. 
 
-You can use the Azure portal and look for VMs scheduled for maintenance.
+Az Azure-portálon, és keresse meg a virtuális gépek karbantartás ütemezve.
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. In the left navigation, click **Virtual Machines**.
+2. Kattintson a bal oldali navigációs **virtuális gépek**.
 
-3. In the Virtual Machines pane, click the **Columns** button to open the list of available columns.
+3. A virtuális gépek ablaktáblán kattintson a **oszlopok** gombra kattintva nyissa meg az elérhető oszlopok listája.
 
-4. Select and add the following columns:
+4. Válassza ki, és adja hozzá a következő oszlopokat:
 
-   **Maintenance** - shows the maintenance status for the VM. The following are the potential values:
+   **Karbantartási** -karbantartási állapota látható a virtuális gép számára. A lehetséges értékek a következők:
       
-      | Value | Description |
+      | Érték | Leírás |
       |-------|-------------|
-      | Start now | The VM is in the self-service maintenance window which lets you initiate the maintenance yourself. See below on how to start maintenance on your VM | 
-      | Scheduled | The VM is scheduled for maintenance with no option for you to initiate maintenance. You can learn of the maintenance window by selecting the Auto-Scheduled window in this view or by clicking on the VM | 
-      | Completed | You have successfully initiated and completed maintenance on your VM. | 
-      | Skipped| You have selected to initiate maintenance with no success. Azure has canceled the maintenance for your VM and will reschedule it in a later time | 
-      | Retry later| You have selected to initiate maintenance and Azure was not able to fulfill your request. In this case, you can try again in a later time. | 
+      | Az első lépések | A virtuális gép az önkiszolgáló karbantartási időszak, amely lehetővé teszi, hogy a karbantartási kezdeményezni a saját maga. Lásd az alábbi karbantartási indításához a virtuális gépen | 
+      | Ütemezett | A virtuális gép ütemezett karbantartási nincs lehetőség, hogy a karbantartási kezdeményezni. Ebben a nézetben az automatikus ütemezett ablak kiválasztásával vagy a virtuális Gépre kattintva ismerje meg a karbantartási időszak | 
+      | Befejeződött | Sikeresen kezdeményezett és karbantartása befejeződött a virtuális gépen. | 
+      | Kihagyva| Kijelölt karbantartási nem sikerrel kezdeményezéséhez. Azure a karbantartási megszakította a virtuális gép számára, és fog átütemezése azt egy későbbi időpontban | 
+      | Próbálkozzon újra később| Kijelölt karbantartási kezdeményezése és Azure nem tudta teljesíteni a kérést. Ebben az esetben is próbálkozzon újra később. | 
    
-   **Maintenance Pro-Active** - shows the time window when you can self-start maintenance on your VMs.
+   **Karbantartási proaktív** -látható, az időszak, amikor karbantartási önálló elindíthatja a virtuális gépeken.
    
-   **Maintenance Scheduled** - shows the time window when Azure will reboot your VM in order to complete maintenance. 
+   **Ütemezett karbantartás** -látható, az időszak, amikor Azure karbantartás végrehajtásához a virtuális gép újraindul. 
 
 
 
 
-## <a name="notification-and-alerts-in-the-portal"></a>Notification and alerts in the portal
+## <a name="notification-and-alerts-in-the-portal"></a>Értesítések és riasztások a portálon
 
-Azure communicates a schedule for planned maintenance by sending an email to the subscription owner and co-owners group. You can add additional recipients and channels to this communication by creating Azure activity log alerts. For more information, see [Monitor subscription activity with the Azure Activity Log] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+Azure e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport tervezett karbantartás ütemezését kommunikál. Adhat hozzá további címzetteket és csatornák kommunikáció által Azure tevékenység napló riasztásokat hoznak létre. További információ: [előfizetés tevékenység figyelése az Azure tevékenységnapló] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
-2. In the menu on the left, select **Monitor**. 
-3. In the **Monitor - Activity log** pane, select **Alerts**.
-4. In the **Monitor - Alerts** pane, click **+ Add activity log alert**.
-5. Complete the information in the **Add activity log alert** page and make sure you set the following in **Criteria**:  **Type**: Maintenance  **Status**: All (Do not set status to Active or Resolved)  **Level**: All
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. A bal oldali menüben válasszon ki **figyelő**. 
+3. Az a **figyelője – tevékenységnapló** ablaktáblán válassza előbb **riasztások**.
+4. Az a **Monitor - riasztás** ablaktáblán kattintson a **+ Hozzáadás figyelmeztetés a napló**.
+5. Végezze el az adatokat a **tevékenység napló riasztás hozzáadása** lapon, és ellenőrizze, hogy a következő beállította **feltételek**: **típus**: karbantartási **állapota**: (Nincs beállítva állapota aktív vagy megoldott) összes **szint**: összes
     
-To learn more on how to configure Activity Log Alerts, see [Create activity log alerts](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts.md)
+Napló Tevékenységriasztásokat konfigurálásával kapcsolatos további tudnivalókért lásd: [napló riasztások tevékenység létrehozása](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts.md)
     
     
-## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Start Maintenance on your VM from the portal
+## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Karbantartási elindítani a virtuális Gépet a portálon
 
-While looking at the VM details, you will be able to see more maintenance-related details.  
-At the top of the VM details view, a new notification ribbon will be added if your VM is included in a planned maintenance wave. In addition, a new option is added to start maintenance when possible. 
+A virtuális gép részletei megnézi, miközben lesz karbantartási kapcsolatos további részletek megtekintéséhez.  
+Felső részén a virtuális gép részletes nézete egy új értesítés szalagon lesz hozzáadva, ha a virtuális gép egy tervezett karbantartási wave szerepel. Emellett egy új beállítás kerül indítsa el a karbantartási, amikor lehetséges. 
 
 
-Click on the maintenance notification to see the maintenance page with more details on the planned maintenance. From there you will be able to **start maintenance** on your VM.
+Kattintson a további részleteket a karbantartás lapon tekintse meg a tervezett karbantartások a karbantartási értesítést. Ott meg fogja tudni **indítsa el a karbantartási** a virtuális gépen.
 
-Once you start maintenance, your virtual machine will be rebooted and the maintenance status will be updated to reflect the result within few minutes.
+Karbantartás megkezdése után a virtuális gépet újra kell indítani, és a karbantartási állapota frissülni fog az eredmény megfelelően néhány percen belül.
 
-If you missed the window where you can start maintenance, you will still be able to see the window when your VM will be rebooted by Azure. 
+Ha nem fogadta a ahol megkezdheti a karbantartási időszak, továbbra is kell látni a az ablak, amikor a virtuális Gépet újra lesz indítva az Azure-ban. 

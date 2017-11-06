@@ -1,50 +1,50 @@
-Azure periodically performs updates to improve the reliability, performance, and security of the host infrastructure for virtual machines. These updates range from patching software components in the hosting environment (like operating system, hypervisor, and various agents deployed on the host), upgrading networking components, to hardware decommissioning. The majority of these updates are performed without any impact to the hosted virtual machines. However, there are cases where updates do have an impact:
+Azure rendszeres időközönként megbízhatóságát, teljesítményét és a virtuális gépek állomás infrastruktúra biztonságát javító frissítés. Ezen frissítések közé javítását szoftverösszetevőket. az üzemeltetési környezetben (például az operációs rendszer, hipervizor, és a gazdagépen rendszerbe állított különböző ügynökök), hálózati összetevők frissítése hardver leszerelése. A legtöbb, a frissítések a futtatott virtuális gépek számára gyakorolt hatás nélkül kerül sor. Vannak azonban esetekben, amikor frissítések ütközés:
 
-- If the maintenance does not require a reboot, Azure uses in-place migration to pause the VM while the host is updated.
+- A karbantartási nem igényel újraindítást, ha Azure helyben történő áttelepítés használatával a virtuális gép felfüggesztése, amíg a gazdagép frissül.
 
-- If maintenance requires a reboot, you get a notice of when the maintenance is planned. In these cases, you'll also be given a time window where you can start the maintenance yourself, at a time that works for you.
+- Ha karbantartási újraindítást igényel, kap értesítést, ha a karbantartási tervezett. Ezekben az esetekben akkor lesz is kell adni egy olyan időkeretet, ahol megkezdheti a karbantartási saját magának, megfelelő egyszerre.
 
-This page describes how Microsoft Azure performs both types of maintenance. For more information about unplanned events (outages), see Manage the availability of virtual machines for [Windows] (../articles/virtual-machines/windows/manage-availability.md) or [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Ez a lap ismerteti, hogyan Microsoft Azure-ban mindkét karbantartási típusú. Nem tervezett események (hosszabb idejű) kapcsolatos további információkért lásd: a virtuális gépek rendelkezésre állásának kezelése [Windows] (../articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
-Applications running in a virtual machine can gather information about upcoming updates by using the Azure Metadata Service for [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) or [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md).
+A virtuális gépen futó alkalmazások jövőbeli frissítések információt tud gyűjteni az Azure metaadat-szolgáltatás használatával [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) vagy [Linux] (../articles/virtual-machines/linux/instance-metadata-service.md).
 
-For "how-to" information on managing planned maintence, see "Handling planned maintenance notifications" for [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) or [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
+"" Útmutatót a tervezett maintence kezelését, tekintse meg "Kezelési tervezett karbantartás értesítések" [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="in-place-vm-migration"></a>In-place VM migration
+## <a name="in-place-vm-migration"></a>Helyszíni virtuális gép áttelepítés
 
-When updates don't require a full reboot, an in-place live migration is used. During the update the virtual machine is paused for about 30 seconds, preserving the memory in RAM, while the hosting environment applies the necessary updates and patches. The virtual machine is then resumed and the clock of the virtual machine is automatically synchronized.
+Ha a frissítéseket egy teljes számítógép újraindítása nem szükséges, egy helyszíni élő áttelepítés szolgál. A frissítés során a virtuális gép fel van függesztve, körülbelül 30 másodpercig, RAM, a memória megőrzi, amíg az üzemeltetési környezetben alkalmazza, a szükséges frissítések és javítások. A virtuális gép majd folytatja a működését, és a rendszer automatikusan szinkronizálja az óra, a virtuális gép.
 
-For VMs in availability sets, update domains are updated one at a time. All VMs in one update domain (UD) are paused, updated and then resumed before planned maintenance moves on to the next UD.
+Virtuális gépek a rendelkezésre állási csoportokban a frissítés tartományai frissített egyszerre csak egy. Frissítési tartományok (UD) virtuális gépeinek szünetel, frissítése és majd folytatása előtt a következő UD a tervezett karbantartások helyezi át.
 
-Some applications may be impacted by these types of updates. Applications that perform real-time event processing, like media streaming or transcoding, or high throughput networking scenarios, may not be designed to tolerate a 30 second pause. <!-- sooooo, what should they do? --> 
+Egyes alkalmazások negatív hatással lehet az ilyen típusú frissítések. Valós idejű Eseményfeldolgozási, például a médiaadatfolyam vagy az átkódolás vagy a magas teljesítmény forgatókönyvek, hálózati végző alkalmazások nem úgy tervezték, hogy egy 30 másodperces szünet működését. <!-- sooooo, what should they do? --> 
 
 
-## <a name="maintenance-requiring-a-reboot"></a>Maintenance requiring a reboot
+## <a name="maintenance-requiring-a-reboot"></a>A rendszer újraindítását igénylik karbantartás
 
-When VMs need to be rebooted for planned maintenance, you are notified in advance. Planned maintenance has two phases: the self-service window and a scheduled maintenance window.
+Ha virtuális gépeket újra kell indítani a tervezett karbantartáshoz, értesítés jelenik meg előre. Tervezett karbantartás két szakasza van: az önkiszolgáló ablakot, és egy ütemezett karbantartási időszaknál.
 
-The **self-service window** lets you initiate the maintenance on your VMs. During this time, you can query each VM to see their status and check the result of your last maintenance request.
+A **önkiszolgáló ablak** lehetővé teszi, hogy kezdeményezni a virtuális gépeken karbantartási. Ebben az időszakban lekérheti az állapotát tekintheti meg, és ellenőrizze az utolsó karbantartási kérelem eredménye összes virtuális Géphez.
 
-When you start self-service maintenance, your VM is moved to a node that has already been updated and then powers it back on. Because the VM reboots, the temporary disk is lost and dynamic IP addresses associated with virtual network interface are updated.
+Önkiszolgáló karbantartási indításakor a virtuális gép átkerül egy csomópontra, amely már frissítve van, és majd bekapcsolja azt vissza. A virtuális gép újraindul, mert az ideiglenes lemez, és dinamikus, virtuális hálózati interfészhez társított IP-címek frissülnek.
 
-If you start self-service maintenance and there is an error during the process, the operation is stopped, the VM is not updated and it is also removed from the planned maintenance iteration. You will be contacted in a later time with a new schedule and offered a new opportunity to do self-service maintenance. 
+Önkiszolgáló karbantartási indítja el, és a folyamat során hiba történik, ha a művelet le van állítva, a virtuális gép nem frissül, és a tervezett karbantartások iterációs is a rendszer eltávolítja. A rendszer kapcsolatba lépni a később egy új ütemezéssel rendelkező, majd felkínálja egy új lehetőséget önkiszolgáló karbantartás. 
 
-When the self-service window has passed, the **scheduled maintenance window** begins. During this time window, you can still query for the maintenance window, but no longer be able to start the maintenance yourself.
+Az önkiszolgáló időszak elteltével a **ütemezett karbantartási időszaknál** kezdődik. Időablak során továbbra is kereshet a karbantartási időszak, de már nem lehet elindítani a karbantartási magát.
 
-## <a name="availability-considerations-during-planned-maintenance"></a>Availability Considerations during Planned Maintenance 
+## <a name="availability-considerations-during-planned-maintenance"></a>Tervezett karbantartás során a rendelkezésre állási lehetőségekért 
 
-If you decide to wait until the planned maintenance window, there are a few things to consider for maintaining the highest availabilty of your VMs. 
+Ha úgy dönt, hogy a tervezett karbantartások megvárni, néhány szempontot kell figyelembe venni a virtuális gépek közül a legmagasabb availabilty megőrzéséhez. 
 
-### <a name="paired-regions"></a>Paired Regions
+### <a name="paired-regions"></a>Párhuzamos régiók
 
-Each Azure region is paired with another region within the same geography, together they make a regional pair. During planned maintenance, Azure will only update the VMs in a single region of a region pair. For example, when updating the Virtual Machines in North Central US, Azure will not update any Virtual Machines in South Central US at the same time. However, other regions such as North Europe can be under maintenance at the same time as East US. Understanding how region pairs work can help you better distribute your VMs across regions. For more information, see [Azure region pairs](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Minden Azure-régió, egy másik ugyanazon a földrajzi régióját párosított, együtt egy regionális pár élnek. Tervezett karbantartás közben Azure csak frissíti a virtuális gépek régió pár egy régiót. Például ha az USA északi középső régiójában található virtuális gépeket frissíti, az Azure nem fogja frissíteni az USA déli középső régiójában található virtuális gépeket ugyanabban az időben. Azonban más régiók (például Észak-Európa) karbantarthatók ugyanabban az időben, mint az USA keleti régiója. Ismertetése régió párok működése segítségével jobban elosztása a virtuális gépek régiók. További információkért lásd: [az Azure-régió párok](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-### <a name="availability-sets-and-scale-sets"></a>Availability sets and scale sets
+### <a name="availability-sets-and-scale-sets"></a>Rendelkezésre állási készletek és a méretezési csoportok
 
-When deploying a workload on Azure VMs, you can create the VMs within an availability set to provide high availability to your application. This ensures that during either an outage or maintenance events, at least one virtual machine is available.
+A munkaterhelés Azure virtuális gépeken való telepítésekor a virtuális gépek rendelkezésre állási készlet magas rendelkezésre állás, az alkalmazás belül is létrehozhat. Ez biztosítja, hogy szolgáltatáskimaradás vagy karbantartási események, legalább egy virtuális gép érhető el.
 
-Within an availability set, individual VMs are spread across up to 20 update domains (UDs). During planned maintenance, only a single update domain is impacted at any given time. Be aware that the order of update domains being impacted does not necessarily happen sequentially. 
+Egy rendelkezésre állási csoportot belül az egyes virtuális gépek legfeljebb 20 frissítési tartományok (UDs) vannak elosztva. Tervezett karbantartás közben csak egyetlen frissítési tartományi egy adott időpontban van hatással. Vegye figyelembe, hogy a frissítési tartományok befolyásolja sorrendjét nem feltétlenül fordulhat elő egymás után. 
 
-Virtual machine scale sets are an Azure compute resource that enables you to deploy and manage a set of identical VMs as a single resource. The scale set is automatically deployed across update domains, like VMs in an availability set. Just like with availability sets, with scale sets only a single update domain is impacted at any given time.
+Virtuálisgép-méretezési csoportok olyan Azure számítási erőforrás, amely lehetővé teszi, akkor helyezheti üzembe és felügyelheti az azonos virtuális gépek készletét, amely egyetlen erőforrásra. A méretezési automatikusan telepíti a frissítési tartományokon, például a virtuális gépek rendelkezésre állási csoportba. Csakúgy, mint a rendelkezésre állási csoportok esetében a méretezési csoportok csak egyetlen frissítési tartományi van hatással az adott időpontban.
 
-For more information about configuring your virtual machines for high availability, see Manage the availability of your virtual machines for Windows (../articles/virtual-machines/windows/manage-availability.md) or [Linux](../articles/virtual-machines/linux/manage-availability.md).
+A magas rendelkezésre állású virtuális gépek konfigurálásával kapcsolatos további információkért tekintse meg a virtuális gépek rendelkezésre állásának kezelése a Windows (../articles/virtual-machines/windows/manage-availability.md) vagy [Linux](../articles/virtual-machines/linux/manage-availability.md).
