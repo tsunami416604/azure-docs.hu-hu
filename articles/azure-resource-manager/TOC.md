@@ -71,15 +71,10 @@
 
 ## Erőforrás-házirendek beállítása
 ### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
-### [Szabályzat hozzárendelése az Azure Portal használatával](resource-manager-policy-portal.md)
 ### [Szabályzat hozzárendelése szkriptek használatával](resource-manager-policy-create-assign.md)
 ### Példák
 #### [Címkék](resource-manager-policy-tags.md)
 #### [Elnevezési konvenciók](resource-manager-policy-naming-convention.md)
-#### [Hálózat](resource-manager-policy-network.md)
-#### [Storage](resource-manager-policy-storage.md)
-#### [Linux rendszerű virtuális gép](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Windows rendszerű virtuális gép](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## Naplózás
 ### [Tevékenységnaplók megtekintése](resource-group-audit.md)
