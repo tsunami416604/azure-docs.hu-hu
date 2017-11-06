@@ -1,6 +1,6 @@
 ---
-title: "Szinkronizálja az adatokat (előzetes verzió) |} Microsoft Docs"
-description: "Ez az áttekintés bemutatja az Azure SQL adatszinkronizálás (előzetes verzió)."
+title: "Az Azure SQL adatszinkronizálás (előzetes verzió) |} Microsoft Docs"
+description: "Ez az áttekintés bemutatja az Azure SQL adatszinkronizálás (előzetes verzió)"
 services: sql-database
 documentationcenter: 
 author: douglaslms
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 34bc9588745eb24d8b8c2e81389a9e5144497b34
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: HT
+ms.openlocfilehash: c53eabfeb9ee1a7c50340bbfc65674b478068c75
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL adatszinkronizálás több felhőalapú és helyszíni az adatbázisok közötti szinkronizálja az adatokat
 
@@ -58,7 +58,7 @@ Adatszinkronizálás hasznos olyan esetekben, amikor adatokat kell több Azure S
 
 -   **Globálisan elosztott alkalmazások:** számos vállalat több régióban, illetve akár több ország kiterjedhetnek. Hálózati késés minimalizálása érdekében célszerű előkészítheti az adatait az Önhöz legközelebb eső régiót. Az adatszinkronizálás hogy könnyedén képes tárolni adatbázisok szinkronizálása a világ különböző régiókban.
 
-Az alábbi helyzetekben adatszinkronizálás nem ajánlott:
+Adatszinkronizálás nincs megfelelő, az alábbi helyzetekben:
 
 -   Vészhelyreállítás
 
@@ -77,48 +77,6 @@ Az alábbi helyzetekben adatszinkronizálás nem ajánlott:
 -   **Az ütközések feloldása:** adatszinkronizálás ütközések feloldása, két lehetőséget biztosít *Hub wins* vagy *tag wins*.
     -   Ha *Hub wins*, a módosítások a központban mindig felülírja a tag változásai.
     -   Ha *tag wins*, a felülírási módosításához központban változásait. Ha egynél több tag, végső értéke függ, mely tag szinkronizálásának először.
-
-## <a name="limitations-and-considerations"></a>Korlátozások és megfontolások
-
-### <a name="performance-impact"></a>Teljesítményre gyakorolt hatás
-Adatok szinkronizálása által beszúrási, frissítési és törlési eseményindítók követni a változásokat. Ügyféloldali táblák létrehozza a változáskövetési felhasználói adatbázisban. E módosítás követési tevékenységek hatással vannak az adatbázisban munkaterhelés. A szolgáltatási rétegben felmérése, és ha szükséges.
-
-### <a name="eventual-consistency"></a>Végleges konzisztencia
-Mivel adatszinkronizálás eseményindító-alapú, a tranzakciós konzisztencia nem garantált. A Microsoft biztosítja, hogy minden módosításai felé, és nem Adatszinkronizálás a adatvesztéshez vezethet.
-
-### <a name="unsupported-data-types"></a>Nem támogatott adattípusok
-
--   A FileStream
-
--   SQL/CLR UDT
-
--   XmlSchemaCollection gyűjteményben (XML támogatott)
-
--   Kurzor esetén Timestamp, Hierarchyid
-
-### <a name="requirements"></a>Követelmények
-
--   Minden tábla elsődleges kulccsal kell rendelkeznie. Ne módosítsa az összes sort az elsődleges kulcs értékét. Ha ehhez, törölni a sort, és hozza létre újra az új elsődleges kulcs értéke. 
-
--   Egy táblázat azonosító oszlopot, amely nem az elsődleges kulcs nem lehet.
-
--   Objektumok (adatbázisok, táblákat és oszlopokat) nevét nem tartalmazza a nyomtatható karakterek pont (.), bal oldali szögletes zárójel ([), és jobb szögletes zárójel (]).
-
--   Pillanatkép-elkülönítés engedélyezve kell lennie. További információk: [pillanatkép-elkülönítést az SQL Server](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
-
-### <a name="limitations-on-service-and-database-dimensions"></a>A szolgáltatás és az adatbázis-dimenziókra korlátozásai
-
-|                                                                 |                        |                             |
-|-----------------------------------------------------------------|------------------------|-----------------------------|
-| **Dimenziók**                                                      | **Korlát**              | **Megkerülő megoldás**              |
-| Szinkronizálási csoportok maximális száma bármely adatbázis is tartozik.       | 5                      |                             |
-| Több végpont már egy szinkronizálási csoportban              | 30                     | Több szinkronizálási csoportok létrehozása |
-| A helyi végpont egy szinkronizálási csoportban maximális száma. | 5                      | Több szinkronizálási csoportok létrehozása |
-| Adatbázis, a tábla, a séma és az oszlop neve                       | nevenként 50 karakter hosszú lehet |                             |
-| A szinkronizálás csoport táblák                                          | 500                    | Több szinkronizálási csoportok létrehozása |
-| A táblázat egy szinkronizálási csoportban                              | 1000                   |                             |
-| Adatok sorméret táblán                                        | 24 mb                  |                             |
-| Minimális szinkronizálási időköz                                           | 5 perc              |                             |
 
 ## <a name="common-questions"></a>Gyakori kérdések
 
@@ -143,9 +101,55 @@ Ez a hibaüzenet azt jelzi, a két alábbi problémák egyike:
 Adatszinkronizálás. a körkörös hivatkozások nem tud kezelni. Feltétlenül elkerüljék azokat. 
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Hogyan exportálása és importálása az adatszinkronizálás adatbázis?
-Egy adatbázis exportálni a .bacpac fájlba, és importálja a hozhat létre új adatbázist, után adatszinkronizálás használni az új adatbázis a következő két műveletet kell végrehajtania:
+Adatbázis exportálása után egy `.bacpac` fájlt, és importálja a fájlt egy új adatbázis létrehozásához, meg kell nyitnia a következő két dolog adatszinkronizálás használni az új adatbázis:
 1.  Az adatszinkronizálás objektumok és kiszolgálóoldali táblák tisztítása a **új adatbázis** használatával [ezt a parancsfájlt](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql). Ez a parancsfájl az összes szükséges adatszinkronizálás objektum törli az adatbázisból.
 2.  Hozza létre újra az új adatbázis szinkronizálási csoportban. Ha már nincs szüksége a régi szinkronizálású csoport, törölje azt.
+
+## <a name="sync-req-lim"></a>Követelmények és korlátozások
+
+### <a name="general-requirements"></a>Általános követelmények
+
+-   Minden tábla elsődleges kulccsal kell rendelkeznie. Ne módosítsa az összes sort az elsődleges kulcs értékét. Ha ehhez, törölni a sort, és hozza létre újra az új elsődleges kulcs értéke. 
+
+-   Egy táblázat azonosító oszlopot, amely nem az elsődleges kulcs nem lehet.
+
+-   Objektumok (adatbázisok, táblákat és oszlopokat) nevét nem tartalmazza a nyomtatható karakterek pont (.), bal oldali szögletes zárójel ([]), és jobb szögletes zárójel (]).
+
+-   Pillanatkép-elkülönítés engedélyezve kell lennie. További információk: [pillanatkép-elkülönítést az SQL Server](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+
+### <a name="general-considerations"></a>Általános megfontolások
+
+#### <a name="eventual-consistency"></a>Végleges konzisztencia
+Mivel adatszinkronizálás eseményindító-alapú, a tranzakciós konzisztencia nem garantált. A Microsoft biztosítja, hogy minden módosításai felé, és nem Adatszinkronizálás a adatvesztéshez vezethet.
+
+#### <a name="performance-impact"></a>Teljesítményre gyakorolt hatás
+Adatok szinkronizálása által beszúrási, frissítési és törlési eseményindítók követni a változásokat. Ügyféloldali táblák létrehozza a változáskövetési felhasználói adatbázisban. E módosítás követési tevékenységek hatással vannak az adatbázisban munkaterhelés. A szolgáltatási rétegben felmérése, és ha szükséges.
+
+### <a name="general-limitations"></a>Általános korlátozások
+
+#### <a name="unsupported-data-types"></a>Nem támogatott adattípusok
+
+-   A FileStream
+
+-   SQL/CLR UDT
+
+-   XmlSchemaCollection gyűjteményben (XML támogatott)
+
+-   Kurzor esetén Timestamp, Hierarchyid
+
+#### <a name="limitations-on-service-and-database-dimensions"></a>A szolgáltatás és az adatbázis-dimenziókra korlátozásai
+
+| **Dimenziók**                                                      | **Korlát**              | **Megkerülő megoldás**              |
+|-----------------------------------------------------------------|------------------------|-----------------------------|
+| Szinkronizálási csoportok maximális száma bármely adatbázis is tartozik.       | 5                      |                             |
+| Több végpont már egy szinkronizálási csoportban              | 30                     | Több szinkronizálási csoportok létrehozása |
+| A helyi végpont egy szinkronizálási csoportban maximális száma. | 5                      | Több szinkronizálási csoportok létrehozása |
+| Adatbázis, a tábla, a séma és az oszlop neve                       | nevenként 50 karakter hosszú lehet |                             |
+| A szinkronizálás csoport táblák                                          | 500                    | Több szinkronizálási csoportok létrehozása |
+| A táblázat egy szinkronizálási csoportban                              | 1000                   |                             |
+| Adatok sorméret táblán                                        | 24 mb                  |                             |
+| Minimális szinkronizálási időköz                                           | 5 perc              |                             |
+|||
 
 ## <a name="next-steps"></a>Következő lépések
 
