@@ -1,24 +1,24 @@
 ---
 title: "Több Azure-beli virtuális gép frissítéseinek kezelése | Microsoft Docs"
-description: "Készítsen elő Azure-beli virtuális gépeket frissítések kezelésére."
-services: operations-management-suite
+description: "Ez a témakör az Azure-beli virtuális gépek frissítéseinek kezelését mutatja be."
+services: automation
 documentationcenter: 
 author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: operations-management-suite
+ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/25/2017
-ms.author: eslesar
-ms.openlocfilehash: 89bf87f27fdf276068cba261fc6ae1660307e0b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/31/2017
+ms.author: magoedte;eslesar
+ms.openlocfilehash: 80a6caff51631637825d560d270198be0336e806
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Több Azure-beli virtuális gép frissítéseinek kezelése
 
@@ -27,10 +27,46 @@ A frissítéskezelés segítségével kezelheti az Azure-beli virtuális gépek 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+A frissítéskezelés használatához a következőkre van szüksége:
 
-* Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) kapcsolatos részt.
-* Egy Azure Resource Manager-alapú virtuális gépre (nem klasszikus). A virtuális gépek létrehozásával kapcsolatos információkért tekintse meg a [Windows virtuális gép létrehozása az Azure Portallal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) című cikket.
+* Egy Azure Automation-fiókra. Az Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg a [az Azure Automation használatának első lépéseit](automation-offering-get-started.md) ismertető részt.
+
+* Egy támogatott operációs rendszert futtató virtuális gépre vagy számítógépre.
+
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
+
+A frissítéskezelés a következő operációs rendszereken támogatott:
+
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 vagy újabb, a frissítéstelepítések pedig csak Windows Server 2008 R2 SP1 vagy újabb rendszereken támogatottak.  A Server Core és a Nano Server telepítési lehetőségek nem támogatottak.
+
+    > [!NOTE]
+    > Frissítések a Windows Server 2008 R2 SP1 rendszerre való telepítésének támogatásához .NET-keretrendszer 4.5 és WMF 5.0 vagy újabb verzió szükséges.
+    > 
+* Az ügyféloldali Windows operációs rendszerek nem támogatottak.
+
+A Windows rendszerű ügynökszámítógépeket vagy a Windows Server Update Services (WSUS) szolgáltatással való kommunikációhoz kell konfigurálni, vagy a Microsoft Update szolgáltatáshoz kell hozzáféréssel rendelkezniük.
+
+> [!NOTE]
+> A Windows-ügynök ezzel egyidejűleg nem felügyelhető a System Center Configuration Manager használatával.
+>
+
+### <a name="linux"></a>Linux
+
+* CentOS 6 (x86/x64) és 7 (x64)  
+* Red Hat Enterprise 6 (x86/x64) és 7 (x64)  
+* SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)  
+* Ubuntu 12.04 LTS és újabb x86/x64   
+
+> [!NOTE]  
+> Ahhoz, hogy Ubuntu rendszeren elkerülje a karbantartási időszakon kívüli frissítéstelepítést, konfigurálja újra az Unattended-Upgrade csomagot az automatikus frissítések letiltásához. A konfigurációval kapcsolatos útmutatásért lásd [az Ubuntu Server útmutatójának automatikus frissítésekkel kapcsolatos témakörét](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+
+A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.
+
+> [!NOTE]
+> Ebben a megoldásban nem támogatott az olyan Linuxhoz készült OMS-ügynök, amely több OMS-munkaterületnek való jelentésre van konfigurálva.  
+>
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Frissítéskezelés engedélyezése Azure-beli virtuális gépeken
 
@@ -45,9 +81,36 @@ Az útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 A frissítéskezelés engedélyezve van a virtuális gépen.
 
+## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Frissítéskezelés engedélyezése nem Azure-beli virtuális gépeken és számítógépeken
+
+A nem Azure-beli virtuális gépeken és számítógépeken a frissítéskezelés engedélyezésének útmutatásáért lásd a [Windows rendszerű számítógépek a Log Analytics szolgáltatáshoz az Azure-ban való csatlakoztatását](../log-analytics/log-analytics-windows-agents.md) ismertető dokumentumot.
+
+A nem Azure-beli linuxos virtuális gépeken és számítógépeken a frissítéskezelés engedélyezésének útmutatásáért lásd a [Linux rendszerű számítógépek Operations Management Suite-hoz (OMS) való csatlakoztatását](../log-analytics/log-analytics-agent-linux.md) ismertető témakört.
+
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
 A **Frissítéskezelés** engedélyezése után megjelenik a **Frissítéskezelés** képernyő. A **Hiányzó frissítések** lapon a hiányzó frissítések listája látható.
+
+## <a name="data-collection"></a>Adatgyűjtés
+
+A virtuális gépekre és számítógépekre telepített ügynökök adatokat gyűjtenek a frissítésekről, és elküldik őket az Azure-frissítéskezelésnek.
+
+### <a name="supported-agents"></a>Támogatott ügynökök
+
+Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
+
+| Összekapcsolt forrás | Támogatott | Leírás |
+| --- | --- | --- |
+| Windows-ügynökök |Igen |A frissítéskezelés begyűjti a Windows-ügynököktől a rendszerfrissítésekről szóló információkat, és kezdeményezi a szükséges frissítések telepítését. |
+| Linux-ügynökök |Igen |A frissítéskezelés begyűjti a Linux-ügynököktől a rendszerfrissítésekről szóló információkat, és kezdeményezi a szükséges frissítések telepítését a támogatott disztribúciókon. |
+| Az Operations Manager felügyeleti csoportja |Igen |A frissítéskezelés begyűjti a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről szóló információkat. |
+| Azure Storage-fiók |Nem |Az Azure Storage nem tartalmaz rendszerfrissítésekkel kapcsolatos információt. |
+
+### <a name="collection-frequency"></a>A gyűjtés gyakorisága
+
+Minden felügyelt Windows-számítógép esetében naponta kétszer történik vizsgálat. A rendszer 15 percenként lekérdezi a Windows API utolsó frissítésének időpontját, hogy meghatározza, megváltozott-e az állapot, és ha igen, megfelelőségi vizsgálatot kezdeményez.  Linux-számítógépek esetében a vizsgálat három óránként történik.
+
+30 perctől akár 6 óráig is eltarthat, amíg megjelennek a felügyelt számítógépekből származó frissített adatok az irányítópulton.
 
 ## <a name="schedule-an-update-deployment"></a>Frissítéstelepítés ütemezése
 
@@ -106,6 +169,8 @@ Kattintson a **Minden napló** csempére a telepítés által létrehozott össz
 Kattintson a **Kimenet** csempére azon runbook feladatstreamjének megtekintéséhez, amely a frissítések telepítését kezeli a cél virtuális gépen.
 
 Kattintson a **Hibák** csempére a telepítés közben felmerülő hibák részletes információinak megtekintéséhez.
+
+Részletes információ a naplókról, a kimenetről és a hibaadatokról: [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

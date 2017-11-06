@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2017
+ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9fcfea96516e0cde6329ef9dd4b9024a1b448c5b
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 6205f64f11d9029adf1f7f96baf780b82738a44a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/21/2017
 > * [2. verzió – Előzetes verzió](../introduction.md)
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory 1. verziójára vonatkozik, amely általánosan elérhető. Ha a Data Factory szolgáltatás előzetes verzióban elérhető 2. verzióját használja, lásd: [A Data Factory 2. verziójának bemutatása](../introduction.md).
+> Ez a cikk az Azure Data Factory általánosan elérhető 1. verziójára vonatkozik. Ha a Data Factory szolgáltatás előzetes verzióban elérhető 2. verzióját használja, lásd: [A Data Factory 2. verziójának bemutatása](../introduction.md).
 
 
 ## <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
@@ -80,7 +80,7 @@ Az átalakított adatok a felhőből áthelyezhetők egy helyszíni forrásra, p
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Az Azure Data Factory négy fő összetevőből áll. Ezek együtt alkotják azt a platformot, amelyen létrehozhatók olyan adatvezérelt munkafolyamatok, amelyeknek a lépései áthelyezik és átalakítják az adatokat. 
 
 ### <a name="pipeline"></a>Folyamat
-Az adat-előállító egy vagy több folyamattal rendelkezhet. A folyamatok tevékenységek csoportjai. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. 
+A data factory egy vagy több folyamattal rendelkezhet. A folyamatok tevékenységek csoportjai. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. 
 
 Például a folyamat tartalmazhat egy csoportnyi műveletet, amelyek adatokat fogadnak egy Azure-blobból, majd egy Hive-lekérdezést futtatnak egy HDInsight-fürtön az adatok particionálásához. A folyamatok használatának az az előnye, hogy így a tevékenységek egy készletben kezelhetők, nem pedig külön-külön. Például, különböző tevékenységek ütemezése helyett, maga a folyamat helyezhető üzembe és ütemezhető. 
 

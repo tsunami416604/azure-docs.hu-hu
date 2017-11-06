@@ -3,8 +3,8 @@ title: "Tartomány delegálása az Azure DNS-be | Microsoft Docs"
 description: "Ismerje meg, hogyan módosíthatja a tartományok delegálását és használhatja tartományszolgáltatóként az Azure DNS-névkiszolgálóit."
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
-ms.author: gwallace
-ms.openlocfilehash: 7aa26fd54bab476e798e2327d1c46afb04aa3838
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.author: kumud
+ms.openlocfilehash: d73a42fd0f41c20b516c0348c86b40202fd06f53
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="delegate-a-domain-to-azure-dns"></a>Tartomány delegálása az Azure DNS-be
 
@@ -30,11 +30,11 @@ Tegyük fel például, hogy megvette a „contoso.net” tartományt, és létre
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 1. Jelentkezzen be az Azure Portalra
-1. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a DNS-zóna létrehozása panel megnyitásához.
+1. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a DNS-zóna létrehozása lap megnyitásához.
 
     ![DNS-zóna](./media/dns-domain-delegation/dns.png)
 
-1. A **DNS-zóna létrehozása** panelen adja meg a következő értékeket, majd kattintson a **Létrehozás** elemre:
+1. A **DNS-zóna létrehozása** lapon adja meg a következő értékeket, majd kattintson a **Létrehozás** elemre:
 
    | **Beállítás** | **Érték** | **Részletek** |
    |---|---|---|
@@ -50,9 +50,9 @@ Tegyük fel például, hogy megvette a „contoso.net” tartományt, és létre
 
 Mielőtt DNS-zónáját az Azure DNS-be delegálhatná, meg kell tudnia a zóna névkiszolgálóinak neveit. Minden zóna létrehozásakor az Azure DNS egy névkiszolgálói készletből választ ki egyet.
 
-1. Ha létrehozta a DNS-zónát, az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az **Összes erőforrás** panelen kattintson a **contoso.net** DNS-zónára. Ha a kiválasztott előfizetésben már több erőforrás szerepel, az alkalmazásátjáró egyszerű eléréséhez beírhatja a **contoso.net** nevet a Szűrés név alapján... mezőbe. 
+1. Ha létrehozta a DNS-zónát, az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az **Összes erőforrás** lapon kattintson a **contoso.net** DNS-zónára. Ha a kiválasztott előfizetésben már több erőforrás szerepel, az alkalmazásátjáró egyszerű eléréséhez beírhatja a **contoso.net** nevet a Szűrés név alapján... mezőbe. 
 
-1. Kérdezze le a névkiszolgálókat a DNS-zóna panelen. Ebben a példában a „contoso.net” zónához a következő névkiszolgálók tartoznak: „ns1-01.azure-dns.com”, „ns2-01.azure-dns.net”, „ns3-01.azure-dns.org” és „ns4-01.azure-dns.info”:
+1. Kérdezze le a névkiszolgálókat a DNS-zóna lapon. Ebben a példában a „contoso.net” zónához a következő névkiszolgálók tartoznak: „ns1-01.azure-dns.com”, „ns2-01.azure-dns.net”, „ns3-01.azure-dns.org” és „ns4-01.azure-dns.info”:
 
  ![DNS-névkiszolgáló](./media/dns-domain-delegation/viewzonens500.png)
 
@@ -161,11 +161,11 @@ Ha különálló gyermekzónát szeretne létrehozni, azt megteheti egy altartom
 ### <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 1. Jelentkezzen be az Azure Portalra
-1. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a DNS-zóna létrehozása panel megnyitásához.
+1. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a DNS-zóna létrehozása lap megnyitásához.
 
     ![DNS-zóna](./media/dns-domain-delegation/dns.png)
 
-1. A **DNS-zóna létrehozása** panelen adja meg a következő értékeket, majd kattintson a **Létrehozás** elemre:
+1. A **DNS-zóna létrehozása** lapon adja meg a következő értékeket, majd kattintson a **Létrehozás** elemre:
 
    | **Beállítás** | **Érték** | **Részletek** |
    |---|---|---|
@@ -179,9 +179,9 @@ Ha különálló gyermekzónát szeretne létrehozni, azt megteheti egy altartom
 
 ### <a name="retrieve-name-servers"></a>Névkiszolgálók lekérdezése
 
-1. Ha létrehozta a DNS-zónát, az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az **Összes erőforrás** panelen kattintson a **partners.contoso.net** DNS-zónára. Ha a kiválasztott előfizetésben már több erőforrás szerepel, a DNS-zóna egyszerű eléréséhez beírhatja a **partners.contoso.net** nevet a Szűrés név alapján... mezőbe.
+1. Ha létrehozta a DNS-zónát, az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az **Összes erőforrás** lapon kattintson a **partners.contoso.net** DNS-zónára. Ha a kiválasztott előfizetésben már több erőforrás szerepel, a DNS-zóna egyszerű eléréséhez beírhatja a **partners.contoso.net** nevet a Szűrés név alapján... mezőbe.
 
-1. Kérdezze le a névkiszolgálókat a DNS-zóna panelen. Ebben a példában a „contoso.net” zónához a következő névkiszolgálók tartoznak: „ns1-01.azure-dns.com”, „ns2-01.azure-dns.net”, „ns3-01.azure-dns.org” és „ns4-01.azure-dns.info”:
+1. Kérdezze le a névkiszolgálókat a DNS-zóna lapon. Ebben a példában a „contoso.net” zónához a következő névkiszolgálók tartoznak: „ns1-01.azure-dns.com”, „ns2-01.azure-dns.net”, „ns3-01.azure-dns.org” és „ns4-01.azure-dns.info”:
 
  ![DNS-névkiszolgáló](./media/dns-domain-delegation/viewzonens500.png)
 
@@ -191,7 +191,7 @@ Az Azure DNS automatikusan létrehozza a zóna mérvadó névkiszolgálói rekor
 
 1. Az Azure Portalon lépjen a **contoso.net** DNS-zónára.
 1. Kattintson a **+ Rekordhalmaz** gombra.
-1. A **Rekordhalmaz hozzáadása** panelen adja meg az alábbi értékeket, és kattintson az **OK** gombra:
+1. A **Rekordhalmaz hozzáadása** lapon adja meg az alábbi értékeket, és kattintson az **OK** gombra:
 
    | **Beállítás** | **Érték** | **Részletek** |
    |---|---|---|
@@ -297,8 +297,8 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 
 A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az Összes erőforrás panelen kattintson a **contosorg** erőforráscsoportra. Ha a kiválasztott előfizetésben már több erőforrás szerepel, az erőforráscsoport egyszerű eléréséhez beírhatja a **contosorg** nevet a **Szűrés név alapján...** mezőbe.
-1. A **contosorg** panelen kattintson a **Törlés** gombra.
+1. Az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. Az Összes erőforrás lapon kattintson a **contosorg** erőforráscsoportra. Ha a kiválasztott előfizetésben már több erőforrás szerepel, az erőforráscsoport egyszerű eléréséhez beírhatja a **contosorg** nevet a **Szűrés név alapján...** mezőbe.
+1. A **contosorg** lapon kattintson a **Törlés** gombra.
 1. A portál megköveteli, hogy az erőforráscsoport törlésének megerősítéséhez beírja annak nevét. Írja be a *contosorg* nevet az erőforráscsoport nevéhez, majd kattintson a **Törlés** gombra. Az erőforráscsoport törlésével az abban foglalt összes erőforrás törölve lesz, ezért mindenképp ellenőrizze az erőforráscsoportok tartalmát azok törlése előtt. A portál törli az erőforráscsoportban lévő összes erőforrást, majd magát az erőforráscsoportot is. Ez a folyamat több percig is eltarthat.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Site Recovery? | Microsoft Docs
+title: "Tudnivalók az Azure Site Recovery szolgáltatásról | Microsoft Docs"
 description: "Áttekintést nyújt az Azure Site Recovery szolgáltatásról, és összefoglalja az üzembehelyezési forgatókönyveket."
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/25/2017
+ms.date: 11/01/2017
 ms.author: raynew
-ms.openlocfilehash: aa657c92f347f7529affee78ad1842e5e066b74d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: MVC
+ms.openlocfilehash: 90f9fe5775f493298dad3b12f2be9d6da6cb480e
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="what-is-site-recovery"></a>Mi a Site Recovery?
+# <a name="about-site-recovery"></a>Tudnivalók a Site Recovery szolgáltatásról
 
 Üdvözli az Azure Site Recovery szolgáltatás! Ebben a cikkben a szolgáltatás rövid áttekintését olvashatja el.
 
@@ -62,19 +63,15 @@ A Site Recovery a következők replikációját képes kezelni:
 
 **Támogatott** | **Részletek**
 --- | ---
-**Miket replikálhatok?** | Azure virtuális gépek Azure-régiók között (előzetes)<br/><br/>  Helyszíni VMware virtuális gépek, Hyper-V virtuális gépek, valamint fizikai kiszolgálók (Windows és Linux) az Azure-ba.<br/> Helyszíni VMware virtuális gépek, Hyper-V virtuális gépek, valamint fizikai kiszolgálók egy másodlagos helyre. Hyper-V virtuális gépek másodlagos helyre történő replikációja csak abban az esetben támogatott, ha a Hyper-V gazdagépeket a System Center VMM felügyeli.
+**Miket replikálhatok?** | Azure-beli virtuális gépeket Azure-régiók között.<br/><br/>  Helyszíni VMware virtuális gépeket, Hyper-V virtuális gépeket, valamint fizikai kiszolgálókat (Windows és Linux) az Azure-ba.<br/><br/> Helyszíni VMware virtuális gépeket, Hyper-V virtuális gépeket, valamint fizikai kiszolgálókat a Virtual Machine Managerbe (VMM).
 **Mely régiók támogatottak a Site Recoveryhez?** | [Támogatott régiók](https://azure.microsoft.com/regions/services/) |
-**Mely operációs rendszerek használhatóak a replikált gépeken?** | [Azure virtuálisgép-követelmények](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)<br></br>[VMware virtuálisgép-követelmények](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> A Hyper-V virtuális gépek esetében az Azure által támogatott bármely [vendég operációs rendszer](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) és a Hyper-V is támogatott.<br/><br/> [Fizikai kiszolgáló követelmények](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
-**Milyen VMware-kiszolgálókra/-gazdagépekre van szükségem?** | VMware virtuális gépek elhelyezhetők [támogatott vSphere gazdagépeken/vCenter kiszolgálókon](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)
+**Mely operációs rendszerek használhatóak a replikált gépeken?** | [Azure virtuálisgép-követelmények](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)</br></br>[VMware virtuálisgép-követelmények](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> A Hyper-V virtuális gépek esetében az Azure által támogatott bármely [vendég operációs rendszer](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) és a Hyper-V is támogatott.<br/><br/> [Fizikai kiszolgáló követelmények](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
+**Milyen VMware-kiszolgálókra/-gazdagépekre van szükségem?** | A VMware virtuális gépeket a [támogatott vSphere gazdagépeken/vCenter kiszolgálókon](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) lehet elhelyezni.
+
 **Milyen számítási feladatokat replikálhatok?** | A támogatott replikációs gépeken futó bármilyen számítási feladat replikálható. Ezenkívül a Site Recovery csapata alkalmazásspecifikus tesztelést végzett [néhány alkalmazáshoz](site-recovery-workload.md#workload-summary).
 
 
-## <a name="azure-portal-considerations"></a>Azure Portal tudnivalók
-
-* A Site Recovery az [Azure Portalon](https://portal.azure.com) helyezhető üzembe.
-* A klasszikus Azure portálon a Site Recovery a klasszikus szolgáltatáskezelési modellel kezelhető.
-- A klasszikus portál csak a meglévő Site Recovery-környezetek fenntartására használható. Új tárolók nem hozhatók létre a klasszikus portálon.
 
 ## <a name="next-steps"></a>Következő lépések
-* További információk a [támogatott számítási feladatokról](site-recovery-workload.md)
-* Első lépések: [Azure virtuális gép replikációja régiók között](site-recovery-azure-to-azure.md), [VMware replikáció az Azure-ba](vmware-walkthrough-overview.md), vagy [Hyper-V replikáció az Azure-ba](hyper-v-site-walkthrough-overview.md).
+* További információk a [támogatott számítási feladatokról](site-recovery-workload.md).
+* Első lépések: [Azure-beli virtuális gép replikálása régiók között](azure-to-azure-quickstart.md). 

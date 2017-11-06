@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
-ms.openlocfilehash: 3bf9227a7ee432f036c57dd9d1c3807c7a867f3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5535433c478b989e255451a0bf882dfb8ba8f8fe
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -105,7 +105,7 @@ Az egyszerű konfigurációval kísérleteket végezhet el számos számítási 
 
 A kísérletezési szolgáltatás virtuális környezeteket hoz létre annak érdekében, hogy biztosítsa a szkriptek elkülönített, reprodukálható eredményekkel szolgáló végrehajtását. Futtatási előzményekről szóló információkat rögzít, és gondoskodik az előzmények vizuális megjelenítéséről. Egyszerűen kiválaszthatja a legjobb modellt a kísérletezési futtatások közül. 
 
-További információkért tekintse meg a [kísérlet-végrehajtás konfigurálását](experiment-execution-configuration.md) ismertető cikket.
+További információkért tekintse meg a [kísérletezési szolgáltatás konfigurációjával kapcsolatos](experimentation-service-configuration.md) cikket.
 
 ## <a name="azure-machine-learning-model-management-service"></a>Azure Machine Learning Modellkezelés szolgáltatás
 
