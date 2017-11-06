@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/25/2017
-ms.openlocfilehash: 5d86f3bdf19603d2f92fc1a704376beefd7323c0
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 976407daee45e2f3a8360c1316227cc3399ad43e
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="classifying-iris-part-2-build-a-model"></a>Írisz osztályozása, 2. rész: Modell létrehozása
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -198,11 +198,11 @@ Az Azure ML segítségével könnyedén konfigurálhat további végrehajtási k
 
 5. Most pedig próbáljuk ki a Sparkot. Az alap Docker-rendszerkép tartalmaz egy előre telepített és beállított Spark-példányt. Ez lehetővé teszi, hogy végrehajtson benne egy PySpark-szkriptet. Ez egy egyszerű módja annak, hogy saját Spark-programot fejlesszen és teszteljen anélkül, hogy időt kelljen szánnia a Spark telepítésére és konfigurálására. 
 
-   Nyissa meg az `iris_pyspark.py` fájlt. Ez a szkript betölti az `iris.csv` adatfájlt, és a Spark ML-könyvtár logisztikai regressziós algoritmusával besorolja az Írisz adatkészletet. Módosítsa a futtatási környezetet **docker-spark** környezetre, a szkriptet pedig az **iris_pyspark.py** fájlra, majd futtassa újra. Ez egy kicsit több időt fog igénybe venni, mivel létre kell hozni egy Spark-munkamenetet, és el kell indítani azt a Docker-tárolóban. Azt is észreveheti, hogy az stdout eltér az `iris_pyspark.py` stdout kimenetétől.
+   Nyissa meg az `iris_spark.py` fájlt. Ez a szkript betölti az `iris.csv` adatfájlt, és a Spark ML-könyvtár logisztikai regressziós algoritmusával besorolja az Írisz adatkészletet. Módosítsa a futtatási környezetet **docker-spark** környezetre, a szkriptet pedig az **iris_spark.py** fájlra, majd futtassa újra. Ez egy kicsit több időt fog igénybe venni, mivel létre kell hozni egy Spark-munkamenetet, és el kell indítani azt a Docker-tárolóban. Azt is észreveheti, hogy az stdout eltér az `iris_spark.py` stdout kimenetétől.
 
 6. Futtassa még néhányszor, és adjon meg különböző argumentumokat. 
 
-7. Nyissa meg az `iris_pyspark.py` fájlt a Spark ML-könyvtár segítségével létrehozott egyszerű logisztikai regressziós modell megtekintéséhez. 
+7. Nyissa meg az `iris_spark.py` fájlt a Spark ML-könyvtár segítségével létrehozott egyszerű logisztikai regressziós modell megtekintéséhez. 
 
 8. Használja a **Feladatok** panelt, a futtatási előzmények listanézetet és a futtatás részletei nézetet a különböző végrehajtási környezetekben végzett futtatásoknál.
 
@@ -249,8 +249,8 @@ Az Azure ML segítségével könnyedén konfigurálhat további végrehajtási k
    REM Execute iris_sklearn.py in local Docker container Python environment.
    az ml experiment submit -c docker-python .\iris_sklearn.py 0.01
    
-   REM Execute iris_pyspark.py in local Docker container Spark environment.
-   az ml experiment submit -c docker-spark .\iris_pyspark.py 0.1
+   REM Execute iris_spark.py in local Docker container Spark environment.
+   az ml experiment submit -c docker-spark .\iris_spark.py 0.1
    ```
 6. Az Azure Machine Learning Workbench alkalmazásban kattintson a bal oldali eszköztáron található Mappa ikonra a projektfájlok listázásához, majd nyissa meg a **run.py** nevű Python-szkriptet. 
 
@@ -320,8 +320,8 @@ Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkript
 
 5. Az alábbi parancsot beírva futtassa azt a távoli Docker-tároló Spark-példányában:
    ```azureli
-   REM execute iris_pyspark.py in Spark instance on remote Docker container
-   az ml experiment submit -c myvm-spark .\iris_pyspark.py
+   REM execute iris_spark.py in Spark instance on remote Docker container
+   az ml experiment submit -c myvm-spark .\iris_spark.py
    ```
 
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>Szkript végrehajtása HDInsight-fürtön
@@ -345,8 +345,8 @@ Ezt a szkriptet futtathatja egy tényleges Spark-fürtön is.
 2. Futtassa az alábbi parancsot, és a szkript fut a HDInsight-fürtön:
 
    ```azurecli
-   REM execute iris_pyspark on the HDI cluster
-   az ml experiment submit -c myhdi .\iris_pyspark.py
+   REM execute iris_spark on the HDI cluster
+   az ml experiment submit -c myhdi .\iris_spark.py
    ```
 
    >[!NOTE]

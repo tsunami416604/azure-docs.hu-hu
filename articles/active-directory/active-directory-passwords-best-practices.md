@@ -13,31 +13,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4cfc1652377f0cfd059e336aec6994b40d32c559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e28324fe0d7e52f1721af6cd835369f024d4c58f
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="roll-out-password-reset-for-users"></a>Jelszóátállítás bevezetése felhasználók számára
+# <a name="how-to-successfully-rollout-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
-A legtöbb ügyfél követi azokat a lépéseket, amelyek biztosítják számukra az SSPR funkcióinak zökkenőmentes bevezetését.
+A legtöbb ügyfél követi ezeket a lépéseket, amelyek biztosítják számukra az SSPR funkcióinak zökkenőmentes kibocsátását.
 
-1. [A jelszóátállítás engedélyezése a címtárban](active-directory-passwords-getting-started.md)
-2. [A helyszíni AD-engedélyeket konfigurálása a jelszóvisszaíró számára](active-directory-passwords-how-it-works.md#active-directory-permissions)
-3. [Jelszóvisszaíró konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához
-4. [A szükséges licencek hozzárendelése és ellenőrzése](active-directory-passwords-licensing.md)
-5. Ha a bevezetést fokozatosan szeretné elvégezni, korlátozhatja a jelszóátállítást a felhasználók egy csoportjára, így a funkciót lassan, apránként vezetheti be. Ehhez állítsa az **Önkiszolgáló jelszóátállítás engedélyezve** lehetőség értékét a **Mindenki** értékről **Egy csoport** értékre, majd válassza ki azt a biztonsági csoportot, amely számára engedélyezni kívánja a jelszó átállítását. E csoport tagjainak rendelkeznie kell a hozzájuk rendelt licencekkel. A [csoportalapú licencelés](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing) engedélyezésére ez kiváló megoldás.
-6. Töltse fel a [Hitelesítési adatok](active-directory-passwords-data.md) minimális készletét a szabályzatának megfelelően.
-7. Tanítsa meg felhasználóinak az SSPR használatát, küldjön nekik útmutatást arról, hogyan regisztrálhatnak, és hogyan állíthatják át a jelszavukat.
-    > [!NOTE]
+1. [Az új jelszavak kérésének engedélyezése a címtárban](active-directory-passwords-getting-started.md).
+2. [A helyszíni AD-engedélyek konfigurálása a jelszóvisszaíró számára](active-directory-passwords-writeback.md#active-directory-permissions).
+3. [Jelszóvisszaíró konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback) jelszavak az Azure AD-ből a helyszíni könyvtárba történő visszaírásához.
+4. [A szükséges licencek hozzárendelése és ellenőrzése](active-directory-passwords-licensing.md).
+5. Ha az SSPR bevezetését fokozatosan szeretné elvégezni, a hozzáférést a felhasználók egy csoportjára korlátozhatja, így egy adott csoporttal kísérletezhet. Ehhez állítsa az **Új jelszó önkiszolgáló kérése engedélyezve** beállítást a **Kiválasztva** értékre, majd válassza ki azt a biztonsági csoportot, amely számára engedélyezni kívánja az új jelszavak kérését. 
+6. Töltse ki a felhasználók [Hitelesítési adatait](active-directory-passwords-data.md), például az irodai telefonszámukat, a mobiltelefonszámukat és a másodlagos e-mail-címüket.
+7. [Az Azure AD bejelentkezési felület testreszabása a vállalat márkajelzésének megjelenítésével](active-directory-passwords-customize.md).
+8. Tanítsa meg felhasználóinak az SSPR használatát, küldjön nekik útmutatást arról, hogyan regisztrálhatnak, és hogyan állíthatják át a jelszavukat.
+9. Bármikor dönthet úgy, hogy kényszeríti a regisztrációt, és megköveteli a felhasználóktól, hogy bizonyos idő elteltével újra erősítsék meg a hitelesítési adataikat.
+10. Az [Azure AD által biztosított jelentés](active-directory-passwords-reporting.md) megtekintésével folyamatosan ellenőrizheti, mely felhasználók regisztráltak és vették igénybe a funkciót.
+11. Amikor elkészült, engedélyezze az új jelszó kérését az összes felhasználónak, állítsa az **Új jelszó önkiszolgáló kérése engedélyezve** beállítást a **Mindenki** értékre. 
+
+    > [!IMPORTANT]
     > Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai típusú fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról további információkat a [részletes bemutatócikkünkben](active-directory-passwords-how-it-works.md) talál.
-
-8. Bármikor dönthet úgy, hogy kényszeríti a regisztrációt, és megköveteli a felhasználóktól, hogy bizonyos idő elteltével újra erősítsék meg a hitelesítési adataikat. Ha nem szeretné, hogy a felhasználók regisztrációja kötelező legyen, válassza a [jelszóátállítás üzembe helyezése anélkül, hogy a felhasználóknak regisztrálniuk kellene](active-directory-passwords-data.md) lehetőséget.
-9. Az [Azure AD által biztosított jelentés](active-directory-passwords-reporting.md) megtekintésével folyamatosan ellenőrizheti, mely felhasználók regisztráltak és vették igénybe a funkciót.
 
 ## <a name="email-based-rollout"></a>E-mailes alapú bevezetés
 
@@ -47,13 +49,17 @@ Számos ügyfél szerint egy egyszerűen követhető útmutatással ellátott e-
 * A **Már elérhető** e-mail-sablont az indulás napján érdemes használni, hogy a felhasználók regisztráljanak, és megerősítsék a hitelesítési adataikat. Így szükség esetén már használatba tudják venni az SSPR-t.
 * A **Regisztrációs emlékeztető** e-mail-sablont pár nappal vagy héttel az üzembe helyezés után érdemes használni, hogy a felhasználók emlékeztetőt kapjanak a regisztrációról és hitelesítési adataik megerősítéséről.
 
+![E-mail][Email]
+
 ## <a name="creating-your-own-password-portal"></a>Saját jelszókezelő portál létrehozása
 
 Nagyvállalati ügyfeleink közül sokan döntenek webhelyek üzemeltetése és gyökérszintű DNS-bejegyzések létrehozása mellett. Például: https://jelszo.contoso.com. Ezután feltöltik az oldalt az Azure AD jelszóátállítására, a jelszóátállítási regisztrációra, a jelszóátállítási portálokra mutató és más, az adott szervezetre jellemző hivatkozásokkal. A kiküldött e-mailekben vagy közleményekben feltüntethet egy márkaüzenettel ellátott, könnyen megjegyezhető URL-címet, amelyre a felhasználók ellátogathatnak, amikor szükségük van a szolgáltatásokra.
 
-* Jelszóátállítási portál – https://passwordreset.microsoftonline.com
+* Új jelszó kérése portál – https://aka.ms/sspr
 * Jelszóátállítási regisztrációs portál – http://aka.ms/ssprsetup
 * Jelszómódosítási portál – https://account.activedirectory.windowsazure.com/ChangePassword.aspx
+
+Létrehoztunk Önnek egy mintaoldalt, amelyet a szervezet igényei szerint használhat és szabhat testre, és amelyet a [GitHubról](https://github.com/ajamess/password-reset-page) tölthet le.
 
 ## <a name="using-enforced-registration"></a>Kényszerített regisztráció használata
 
@@ -73,15 +79,15 @@ Az önkiszolgáló jelszó-visszaállítás letiltása egyszerű: nyissa meg Azu
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
+* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](active-directory-passwords-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
-* [**Gyors üzembe helyezés**](active-directory-passwords-getting-started.md) – Percek alatt üzembe helyezheti az Azure AD önkiszolgáló jelszókezelőjét. 
-* [**Licencelés**](active-directory-passwords-licensing.md) – Az Azure AD licencelésének konfigurálása.
-* [**Adatok**](active-directory-passwords-data.md) – A szükséges adatok megismerése, és az adatok használata a rendszer jelszókezelésre.
-* [**Testreszabás**](active-directory-passwords-customize.md) – Az SSPR-felület megjelenésének és működésének testre szabása a cége számára.
-* [**Szabályzat**](active-directory-passwords-policy.md) – Megismerheti és beállíthatja az Azure AD jelszószabályzatait.
-* [**Jelszóvisszaíró**](active-directory-passwords-writeback.md) – Megtudhatja, hogyan használhatja a jelszóvisszaírót a helyszíni címtárával.
-* [**Jelentéskészítés**](active-directory-passwords-reporting.md) – Megtudhatja, mikor és hol érik el a felhasználói az SSPR funkcióit.
-* [**Részletes műszaki bemutatás**](active-directory-passwords-how-it-works.md) – Egy pillantás a függöny mögé, hogy megértse, hogyan is működik.
-* [**Gyakori kérdések**](active-directory-passwords-faq.md) – Hogyan? Hogy miért? Mi? Hová? Ki? Mikor? – Válaszok olyan kérdésekre, amiket mindig is fel akart tenni
-* [**Hibaelhárítás**](active-directory-passwords-troubleshoot.md) – Ismerje meg, hogyan oldhat meg általános, az SSPR működése során jelentkező hibákat.
+[Email]: ./media/active-directory-passwords-best-practices/sspr-emailtemplates.png "E-mail-sablonok testreszabása a szervezeti követelményeknek megfelelően"

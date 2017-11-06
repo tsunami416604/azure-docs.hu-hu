@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.openlocfilehash: d803e814828132aa5c8355de6192e45cd9e902b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebeff09a16ca7ecb4214cbccb31ffcfb2c512f7c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-ad-access-reviews-preview"></a>Azure AD hozzáférési felülvizsgálatok (előzetes verzió)
 
-A hozzáférési felülvizsgálatokkal a cégek hatékonyan kezelhetik a csoporttagságokat és a vállalati alkalmazásokhoz való hozzáférést. 
+Az Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokkal a cégek hatékonyan kezelhetik a csoporttagságokat és a vállalati alkalmazásokhoz való hozzáférést. 
 
 ## <a name="what-can-you-do-with-access-reviews"></a>Mire használhatók a hozzáférési felülvizsgálatok?
    
-- A vendégfelhasználói hozzáférést az alkalmazásokhoz való hozzáférések és a csoporttagságok felülvizsgálatával újrahitelesítheti olyan elemzések alapján, amelyek segítik annak eldöntését, hogy az egyes vendégek kaphatnak-e folyamatos hozzáférést.
+- Az alkalmazásokhoz való hozzáférések és a csoporttagságok felülvizsgálatával újrahitelesítheti a vendégfelhasználói hozzáférést. A felülvizsgálatot végzők a biztosított elemzések segítségével eldönthetik, hogy az egyes vendégek kaphatnak-e folyamatos hozzáférést.
       
 - A hozzáférési felülvizsgálatok segítségével az alkalmazottak alkalmazás-hozzáférését és csoporttagságait is újból hitelesítheti.
    

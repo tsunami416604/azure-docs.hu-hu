@@ -8,6 +8,7 @@ A következő ügyféloldali operációs rendszerek támogatottak:
 * Windows 8.1 (32 bites és 64 bites)
 * Windows Server 2012 (csak 64 bites)
 * Windows Server 2012 R2 (csak 64 bites)
+* Windows Server 2016 (csak 64 bites)
 * Windows 10
 * OSX 10.11-es verzió Mac gépekhez (El Capitan)
 * macOS 10.12-es verzió Mac gépekhez (Sierra)

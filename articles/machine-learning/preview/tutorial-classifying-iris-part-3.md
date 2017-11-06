@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/27/2017
-ms.openlocfilehash: 56a79906a0f43f06d35db703d641f547e7bdf868
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 048d734277f855086a48ad00a52b873adbf419b4
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="classifying-iris-part-3-deploy-a-model"></a>Írisz osztályozása, 3. rész: Modell üzembe helyezése
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -85,15 +85,15 @@ A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van e
 
    ![Pontozófájl](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. A sémafájl lekéréséhez futtassa ezt a szkriptet. Válassza ki a **helyi** környezetet és az **iris_score.py** szkriptet a parancssorban, majd kattintson a **Futtatás** gombra. 
+4. A sémafájl lekéréséhez futtassa ezt a szkriptet. Válassza ki a **helyi** környezetet és az **iris-score.py** szkriptet a parancssorban, majd kattintson a **Futtatás** gombra. 
 
 5. A szkript létrehoz az **outputs** mappában egy JSON-fájlt, amely a modellhez szükséges bemenetiadat-sémát tartalmazza.
 
-6. Figyelje meg a Machine Learning Workbench ablak jobb oldalán található Feladatok panelt. Várja meg, hogy a legfrissebb **iris\_score.py** feladat mellett a zöld **Befejezve** állapot jelenjen meg. Ezután kattintson a legfrissebb feladatfuttatáshoz tartozó **iris\_score.py [1]** hivatkozásra az **iris_score.py** futtatási részleteinek megtekintéséhez. 
+6. Figyelje meg a Machine Learning Workbench ablak jobb oldalán található Feladatok panelt. Várja meg, hogy a legfrissebb **iris-score.py** feladat mellett a zöld **Befejezve** állapot jelenjen meg. Ezután kattintson a legfrissebb feladatfuttatáshoz tartozó **iris-score.py [1]** hiperhivatkozásra az **iris-score.py** futtatási részleteinek megtekintéséhez. 
 
 7. A Futtatás tulajdonságai lap **Kimenetek** részében válassza ki az újonnan létrehozott **service_schema.json** fájlt. **Ellenőrizze** a fájlt, és kattintson a **Letöltés** elemre. Mentse a fájlt a projektmappa gyökérkönyvtárába.
 
-8. Lépjen vissza az előző lapra, ahol megnyitotta az **iris_score.py** szkriptet. 
+8. Lépjen vissza az előző lapra, ahol megnyitotta az **iris-score.py** szkriptet. 
 
    Érdemes megfigyelni az adatgyűjtés használatát, amely lehetővé teszi modellbemenetek és előrejelzések rögzítését a webszolgáltatásból. A következő pontok érdekesek az adatgyűjtés szempontjából:
 
@@ -120,6 +120,9 @@ A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van e
    ```
 
 Most már készen áll arra, hogy előkészítse a környezetet a modell üzembe helyezéséhez.
+
+>[!NOTE]
+>A modellek üzembe helyezéséhez tulajdonosi hozzáféréssel kell rendelkeznie egy Azure-előfizetéshez.
 
 ## <a name="prepare-to-operationalize-locally"></a>Üzembe helyezés helyi előkészítése
 Használja a _helyi módú_ üzembe helyezést a helyi számítógépen lévő Docker-tárolókban történő futtatáshoz.
@@ -201,7 +204,7 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
 1. Valós idejű webszolgáltatás létrehozásához használja a következő parancsot:
 
    ```azurecli
-   az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+   az ml service create realtime -f iris-score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
    ```
    Ez létrehoz egy webszolgáltatás-azonosítót, amelyet később felhasználhat.
 
@@ -241,7 +244,7 @@ A fenti **az ml service create realtime** parancs alternatívájaként külön-k
    Jegyzék létrehozásához használja a következő parancsot, és adja meg az előző lépésből származó modellazonosító-kimenetet:
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f iris_score.py -r python -i <model ID> -s service_schema.json
+   az ml manifest create --manifest-name <new manifest name> -f iris-score.py -r python -i <model ID> -s service_schema.json
    ```
    Ez a parancs létrehoz egy jegyzékazonosítót.
 

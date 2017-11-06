@@ -1,55 +1,77 @@
 ---
-title: "Igény szerinti tartalomtovábbítás Java használatával | Microsoft Docs"
+title: "Az Azure Media Services Java SDK használatának megkezdése | Microsoft Docs"
 description: "Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre a Java segítségével, az Azure Media Services (AMS) alkalmazással."
 services: media-services
 documentationcenter: java
 author: juliako
 manager: cfowler
-editor: 
+editor: johndeu
 ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 01/10/2017
+ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: 2294f3de094389f8aa500c75472e753339b18358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad022eb8d3a0a22e679962d75c05eed799976ece
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-java"></a>Igény szerinti tartalomtovábbítás Java használatával
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre a Java segítségével, az Azure Media Services (AMS) alkalmazással.
+Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű videotartalom-továbbítási szolgáltatást hozhat létre a Java ügyfél-SDK segítségével, az Azure Media Services alkalmazással.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ismertetett eljárás végrehajtásához a következők szükségesek:
+Ezen oktatóanyag elvégzésének a következők a feltételei:
 
-* Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/). 
+* Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
-* A Javához készült Azure-könyvtárak, amelyeket az [Azure Java fejlesztői központból][Azure Java Developer Center] lehet telepíteni.
+* Az aktuális [Azure Media Services Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
-## <a name="how-to-use-media-services-with-java"></a>Útmutató: A Media Services használata Javával
+## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Útmutató: Az Azure Media Services Java ügyfél-SDK csomag importálása
+
+A Java Media Services SDK használatának megkezdéséhez adja hozzá az `azure-media` csomag aktuális verziójának (0.9.8) hivatkozását az [Azure Media Services Java SDK-ból](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
+
+Ha például az összeállítási eszköze a `gradle`, adja a következő függőséget a `build.gradle` fájlhoz:
+
+    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+
+>[!IMPORTANT]
+>A `azure-media` csomag `0.9.8`-as verziójától kezdődően az SDK támogatást nyújt az Azure Active Directory (AAD) hitelesítéshez, és nem támogatja az Azure Access Control Service (ACS) hitelesítést. Az ACS-szolgáltatások 2018. június 1-én elavulnak. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre. Az áttelepítéssel kapcsolatos részletekért olvassa el [az Azure Media Services API Azure AD-hitelesítéssel történő elérését](media-services-use-aad-auth-to-access-ams-api.md) ismertető cikket.
 
 >[!NOTE]
->Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
+>Az Azure Media Services Java SDK forráskódját a [GitHub-adattárban találja](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Győződjön meg arról, hogy a „0.9”, és nem a „master” ágra váltott. 
+
+## <a name="how-to-use-azure-media-services-with-java"></a>Útmutató: Az Azure Media Services használata Javával
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
+>A Media Services-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie.
 
 A következő kód bemutatja, hogyan hozhat létre egy adategységet, tölthet fel az adategységbe egy médiafájlt, futtathat le egy feladatot az adategység átalakításához, és hozhat létre egy keresőt a videó továbbításához.
 
-A kód használatához először létre kell hoznia egy Media Services-fiókot. A fiók létrehozásával kapcsolatos információk: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
+A kód használata előtt hozzon létre egy Media Services-fiókot. A fiók létrehozásával kapcsolatos információk: [Media Services-fiók létrehozása](media-services-portal-create-account.md)
 
-A „clientId” és „clientSecret” változó helyére helyettesítse be a saját értékeit. A kód egy helyileg tárolt fájlt is használ. Meg kell adnia a saját használandó fájlját.
+A kód csatlakozik az Azure Media Services API-hoz az Azure AD egyszerű szolgáltatásnév hitelesítésével. Hozzon létre egy Azure AD-alkalmazást, és adja meg a kódban a következő változók értékeit:
+* `tenant`: Annak az Azure AD-bérlőnek a tartománya, ahol az Azure AD-alkalmazás található
+* `clientId`: Az Azure AD-alkalmazás ügyfél-azonosítója
+* `clientKey`: Az Azure AD-alkalmazás ügyfélkulcsa
+* `restApiEndpoint`: Az Azure Media Services-fiók REST API-végpontja
+
+Létrehozhat egy Azure AD-alkalmazást, és lekérheti a megelőző konfigurációs értékeket az Azure Portalról. További információt az **Ismerkedés az Azure AD-alapú hitelesítéssel az Azure Portalon** című cikk [Egyszerű szolgáltatásnév hitelesítése](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) szakaszában találhat.
+
+A kód egy helyileg tárolt videofájlt is használ. Szerkesztenie kell a kódot, hogy megadhassa a saját feltölteni kívánt helyi fájlját.
 
     import java.io.*;
+    import java.net.URI;
     import java.security.NoSuchAlgorithmException;
     import java.util.EnumSet;
+    import java.util.concurrent.ExecutorService;
+    import java.util.concurrent.Executors;
 
     import com.microsoft.windowsazure.Configuration;
     import com.microsoft.windowsazure.exception.ServiceException;
@@ -57,6 +79,10 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
     import com.microsoft.windowsazure.services.media.MediaContract;
     import com.microsoft.windowsazure.services.media.MediaService;
     import com.microsoft.windowsazure.services.media.WritableBlobContainerContract;
+    import com.microsoft.windowsazure.services.media.authentication.AzureAdClientSymmetricKey;
+    import com.microsoft.windowsazure.services.media.authentication.AzureAdTokenCredentials;
+    import com.microsoft.windowsazure.services.media.authentication.AzureAdTokenProvider;
+    import com.microsoft.windowsazure.services.media.authentication.AzureEnvironments;
     import com.microsoft.windowsazure.services.media.models.AccessPolicy;
     import com.microsoft.windowsazure.services.media.models.AccessPolicyInfo;
     import com.microsoft.windowsazure.services.media.models.AccessPolicyPermission;
@@ -75,34 +101,48 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
     import com.microsoft.windowsazure.services.media.models.MediaProcessorInfo;
     import com.microsoft.windowsazure.services.media.models.Task;
 
-    public class HelloMediaServices
+    public class Program
     {
         // Media Services account credentials configuration
-        private static String mediaServiceUri = "https://media.windows.net/API/";
-        private static String oAuthUri = "https://wamsprodglobal001acs.accesscontrol.windows.net/v2/OAuth2-13";
-        private static String clientId = "account name";
-        private static String clientSecret = "account key";
-        private static String scope = "urn:WindowsAzureMediaServices";
+        private static String tenant = "tenant.domain.com";
+        private static String clientId = "<client id>";
+        private static String clientKey = "<client key>";
+        private static String restApiEndpoint = "https://account_name.restv2.region_name.media.azure.net/api/";
+
+        // Media Services API
         private static MediaContract mediaService;
 
         // Encoder configuration
+        // This is using the default Adaptive Streaming encoding preset. 
+        // You can choose to use a custom preset, or any other sample defined preset. 
+        // In addition you can use other processors, like Speech Analyzer, or Redactor if desired.
         private static String preferedEncoder = "Media Encoder Standard";
         private static String encodingPreset = "Adaptive Streaming";
 
         public static void main(String[] args)
         {
+            ExecutorService executorService = Executors.newFixedThreadPool(1);
 
             try {
-                // Set up the MediaContract object to call into the Media Services account
-                Configuration configuration = MediaConfiguration.configureWithOAuthAuthentication(
-                mediaServiceUri, oAuthUri, clientId, clientSecret, scope);
+                // Setup Azure AD Service Principal Symmetric Key Credentials
+                AzureAdTokenCredentials credentials = new AzureAdTokenCredentials(
+                        tenant,
+                        new AzureAdClientSymmetricKey(clientId, clientKey),
+                        AzureEnvironments.AZURE_CLOUD_ENVIRONMENT);
+
+                AzureAdTokenProvider provider = new AzureAdTokenProvider(credentials, executorService);
+
+                // Create a new configuration with the credentials
+                Configuration configuration = MediaConfiguration.configureWithAzureAdTokenProvider(
+                        new URI(restApiEndpoint),
+                        provider);
+
+                // Create the media service provisioned with the new configuration
                 mediaService = MediaService.create(configuration);
 
-
                 // Upload a local file to an Asset
-                AssetInfo uploadAsset = uploadFileAndCreateAsset("BigBuckBunny.mp4");
+                AssetInfo uploadAsset = uploadFileAndCreateAsset("Video Name", "C:/path/to/video.mp4");
                 System.out.println("Uploaded Asset Id: " + uploadAsset.getId());
-
 
                 // Transform the Asset
                 AssetInfo encodedAsset = encode(uploadAsset);
@@ -120,11 +160,12 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
             } catch (Exception e) {
                 System.out.println("Exception encountered.");
                 System.out.println(e.toString());
+            } finally {
+                executorService.shutdown();
             }
-
         }
 
-        private static AssetInfo uploadFileAndCreateAsset(String fileName)
+        private static AssetInfo uploadFileAndCreateAsset(String assetName, String fileName)
             throws ServiceException, FileNotFoundException, NoSuchAlgorithmException {
 
             WritableBlobContainerContract uploader;
@@ -133,7 +174,7 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
             LocatorInfo uploadLocator = null;
 
             // Create an Asset
-            resultAsset = mediaService.create(Asset.create().setName(fileName).setAlternateId("altId"));
+            resultAsset = mediaService.create(Asset.create().setName(assetName).setAlternateId("altId"));
             System.out.println("Created Asset " + fileName);
 
             // Create an AccessPolicy that provides Write access for 15 minutes
@@ -147,15 +188,15 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
             // Create the Blob Writer using the Locator
             uploader = mediaService.createBlobWriter(uploadLocator);
 
-            File file = new File("BigBuckBunny.mp4"); 
+            File file = new File(fileName);
 
             // The local file that will be uploaded to your Media Services account
             InputStream input = new FileInputStream(file);
 
             System.out.println("Uploading " + fileName);
 
-            // Upload the local file to the asset
-            uploader.createBlockBlob(fileName, input);
+            // Upload the local file to the media asset
+            uploader.createBlockBlob(file.getName(), input);
 
             // Inform Media Services about the uploaded files
             mediaService.action(AssetFile.createFileInfos(resultAsset.getId()));
@@ -227,7 +268,7 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
             AccessPolicyInfo originAccessPolicy;
             LocatorInfo originLocator = null;
 
-            // Create a 30-day readonly AccessPolicy
+            // Create a 30-day read only AccessPolicy
             double durationInMinutes = 60 * 24 * 30;
             originAccessPolicy = mediaService.create(
                     AccessPolicy.create("Streaming policy", durationInMinutes, EnumSet.of(AccessPolicyPermission.READ)));
@@ -256,7 +297,6 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
                 }
             }
         }
-
     }
 
 
@@ -267,10 +307,15 @@ A „clientId” és „clientSecret” változó helyére helyettesítse be a s
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="additional-resources"></a>További források
-A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvtárakban][Azure Libraries for Java documentation].
+További információk Java-alkalmazások fejlesztéséről az Azure-ban: [Azure Java fejlesztői központ][Azure Java Developer Center] és [Azure Java-fejlesztőknek][Azure for Java developers].
+
+
+A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvtárakban][Java-dokumentáció az Azure-könyvtárakban].
 
 <!-- URLs. -->
 
+[Azure Media Services SDK Maven Package]: https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest
 [Azure Java Developer Center]: http://azure.microsoft.com/develop/java/
-[Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
+[Azure for Java developers]: https://docs.microsoft.com/java/azure/
 [Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
+

@@ -1,6 +1,6 @@
 ---
-title: "Milyen számítási feladatokat tud védeni az Azure Site Recovery?"
-description: "Az Azure Site Recovery a helyszíni virtuális gépek és a fizikai kiszolgálók Azure-ba vagy egy másodlagos helyszíni helyre történő replikálásának, feladatátvételének és helyreállításának koordinálásával képes védelmet nyújtani a számítási feladatok és alkalmazások számára."
+title: "Milyen számítási feladatokat tud védeni az Azure Site Recovery? | Microsoft Docs"
+description: "Azokat a számítási feladatokat ismerteti, amelyeket meg lehet védeni a vészhelyreállítás Azure Site Recovery szolgáltatással történő használatával."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,20 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/08/2017
+ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: d7cb95d0e099d5e0357ce8871f02c894acfdc9b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3987b50a7a1798d2094e8271ad2cc317c7f472ef
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
-Ez a cikk az Azure Site Recoveryvel replikálható számítási feladatokat és alkalmazásokat írja le.
 
-Megjegyzéseit vagy kérdéseit a cikk alján, vagy az [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) teheti fel.
+Ez a cikk az [Azure Site Recovery](site-recovery-overview.md) szolgáltatással replikálható számítási feladatokat és alkalmazásokat írja le.
+
+
 
 ## <a name="overview"></a>Áttekintés
+
 A szervezeteknek szükségük van egy üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégiára, amely meghatározza, hogy hogyan tudnak a számítási feladatok és az adatok biztonságban és üzemben maradni a tervezett és nem tervezett leállások során, illetve hogy miként lehet a lehető leggyorsabban visszaállni a normál működésre.
 
 Az Azure Site Recovery segít a BCDR-stratégia kidolgozásában. A Site Recovery használatával alkalmazásbarát replikációt végezhet a felhőbe vagy egy másodlagos helyre. Függetlenül attól, hogy alkalmazásai Windows- vagy Linux-alapúak, illetve hogy fizikai, VMware- vagy Hyper-V-kiszolgálón futnak, a Site Recovery koordinálja a replikációt, elvégzi a vészhelyreállítás tesztelését, valamint feladatátvételt és -visszavételt hajt végre.
@@ -33,6 +35,7 @@ Az Azure Site Recovery segít a BCDR-stratégia kidolgozásában. A Site Recover
 A Site Recovery számos Microsoft-alkalmazással (például SharePoint, Exchange, Dynamics, SQL Server és Active Directory) képes együttműködni. A Microsoft továbbá szorosan együttműködik az olyan vezető szállítókkal, mint az Oracle, a SAP vagy a Red Hat. A replikációs megoldásokat alkalmazásonként szabhatja testre.
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>Miért előnyös a Site Recovery használata az alkalmazásreplikációhoz?
+
 A Site Recovery az alábbi módokon járul hozzá az alkalmazásszintű védelemhez és helyreállításhoz:
 
 * Alkalmazásfüggetlen, így egy támogatott gépen futó bármilyen számítási feladatok replikációját biztosítja.
@@ -157,4 +160,5 @@ A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemel�
 [Itt részletesen tájékozódhat](site-recovery-citrix-xenapp-and-xendesktop.md) az üzemelő Citrix XenApp- és XenDesktop-példányok védelméről. Másik lehetőségként megtekintheti [a Citrix tanulmányát](https://aka.ms/citrix-xenapp-xendesktop-with-asr), amely ugyanezt részletezi.
 
 ## <a name="next-steps"></a>Következő lépések
-[Előfeltételek ellenőrzése](site-recovery-prereq.md)
+
+[Első lépések:](azure-to-azure-quickstart.md) Azure-beli virtuális gép replikálása.

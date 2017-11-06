@@ -1,5 +1,5 @@
 ---
-title: "Prediktív karbantartási előre konfigurált megoldás | Microsoft Docs"
+title: "A prediktív karbantartási megoldás áttekintése – Azure | Microsoft Docs"
 description: "Az Azure IoT Suite prediktív karbantartási előre konfigurált megoldás ismertetése."
 services: 
 suite: iot-suite
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 8bad198488c4940a83eb32ec02122a91d47ca86c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 369e61b091c79df8ad2d874693aedc3b23e512c8
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>A prediktív karbantartási előre konfigurált megoldás áttekintése
 
@@ -144,7 +144,7 @@ Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltat�
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
 [lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
-[lnk_iot_suite]: iot-suite-overview.md
+[lnk_iot_suite]: iot-suite-options.md
 [lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 
