@@ -15,11 +15,11 @@ ms.date: 08/14/2017
 ms.author: joflore
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 3cdeec642590d4ab4ae342e8675c124fa86bc970
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e5e0a852ae9b245ef69fcbff2e87712a31197790
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -52,7 +52,7 @@ A hálózati házirend-kiszolgáló bővítmény arra szolgál, hogy a meglévő
 
 ### <a name="licenses"></a>Licencek
 
-A hálózati házirend-kiszolgáló bővítmény, az Azure MFA számára érhető el az ügyfeleknek [Azure multi-factor Authentication licenceinek](multi-factor-authentication.md) (az Azure AD prémium, EMS vagy az MFA szolgáltatásra része).
+A hálózati házirend-kiszolgáló bővítmény, az Azure MFA számára érhető el az ügyfeleknek [Azure multi-factor Authentication licenceinek](multi-factor-authentication.md) (az Azure AD prémium, EMS vagy az MFA szolgáltatásra része). Fogyasztás alapján licenceinek többek között az Azure MFA felhasználónként vagy a hitelesítési licencek nem kompatibilisek-e a hálózati házirend-kiszolgáló bővítményt. 
 
 ### <a name="software"></a>Szoftver
 
