@@ -5,16 +5,16 @@ services: azure-policy
 keywords: 
 author: Jim-Parker
 ms.author: jimpark; nini
-ms.date: 10/25/2017
+ms.date: 11/06/2017
 ms.topic: overview
 ms.service: azure-policy
 manager: jochan
 ms.custom: mvc
-ms.openlocfilehash: 82721fe984ff7b3c7440b11d7526a9413b0770de
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: b784c79166eb614988d84b4553bb95e4d1e457af
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure-házirendet?
 
@@ -55,7 +55,7 @@ További információt a házirend-definíciók struktúrák, tekintse meg a cik
 
 ## <a name="policy-assignment"></a>Házirend-hozzárendelés
 
-Egy házirend-hozzárendelést egy házirend-definíció, belül egy adott hatókörhöz van rendelve. Ebben a hatókörben egy felügyeleti csoport terjedhet az erőforráscsoporthoz. Házirend-hozzárendelések összes gyermek-erőforrás örökli. Ezért ha a házirend vonatkozik egy erőforráscsoport, vonatkozik az erőforráscsoport összes erőforrást. A kifejezés *hatókör* az erőforráscsoportok, előfizetések vagy a házirend-definíció hozzárendelt felügyeleti csoportok hivatkozik.
+Egy házirend-hozzárendelést egy házirend-definíció, belül egy adott hatókörhöz van rendelve. Ebben a hatókörben egy felügyeleti csoport terjedhet az erőforráscsoporthoz. A kifejezés *hatókör* az erőforráscsoportok, előfizetések vagy a házirend-definíció hozzárendelt felügyeleti csoportok hivatkozik. Házirend-hozzárendelések összes gyermek-erőforrás örökli. Ezért ha a házirend vonatkozik egy erőforráscsoport, vonatkozik az erőforráscsoport összes erőforrást. Azonban egy subscope is zárhatja ki a házirend-hozzárendelés. Például a előfizetés hatókörben rendelhet hozzá olyan házirendet, amely megakadályozza, hogy a hálózati erőforrások létrehozását. Azonban kizárhat egy erőforráscsoport, amelyet hálózati infrastruktúra előfizetésen belül. Hozzáférés engedélyezése a felhasználók számára, amelyek megbízható hálózati erőforrások létrehozásának hálózati erőforráscsoporthoz.
 
 A házirend beállításdefiníciókra és hozzárendelések további információkért lásd: [azonosításához az Azure környezetben nem kompatibilis erőforrások házirend-hozzárendelés létrehozása](assign-policy-definition.md).
 

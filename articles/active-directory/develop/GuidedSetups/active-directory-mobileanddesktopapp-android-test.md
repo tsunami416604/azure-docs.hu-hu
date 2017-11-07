@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 6df64f4820f8409bd8897d5ac24f81bffeeef102
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b59c44e351c3b3aa74557d0d1625495277b1bc1a
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
@@ -45,3 +45,5 @@ Az eredmények Microsoft Graph API hívása a "me" kell megtekintéséhez az bes
 A Microsoft Graph API megköveteli a `user.read` hatókörrel, hogy a felhasználói profil olvasása. Minden egyes a regisztrációs portál regisztrált alkalmazás alapértelmezés szerint automatikusan megjelenik az ebben a hatókörben. Néhány más Microsoft Graph API, továbbá egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. Például a Microsoft Graph-hatóköre `Calendars.Read` listát a felhasználók naptáraiban szükséges. A felhasználó naptár kontextusban az alkalmazás eléréséhez, hozzá kell adnia a `Calendars.Read` jogosultságot a az alkalmazás regisztrációs adatait, majd adja hozzá a `Calendars.Read` a hatókör a `acquireTokenSilentAsync` hívható meg. A felhasználó kérheti további hozzájárulásokat azoktól a hatókörök számának növelésével.
 
 <!--end-collapse-->
+
+[!INCLUDE  [Help and Support Options](../../../../includes/active-directory-develop-help-support-include.md)]

@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/14/2017
-ms.openlocfilehash: 5c3a642940bbaf766b87c74522a97b145632291f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/03/2017
+ms.openlocfilehash: 937423d0b844f6ce30e532bbae12b85071a6f8d4
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Telepítse át az exportálási PostgreSQL-adatbázist, és importálása
 Használható [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) kibontásához PostgreSQL-adatbázisból egy parancsfájl fájlba és [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) az adatok importálása a céladatbázis, a fájl számára.
@@ -37,7 +37,7 @@ pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sq
 ```
 
 ## <a name="import-the-data-on-target-azure-database-for-postrgesql"></a>A cél Azure-adatbázis adatok importálása az PostrgeSQL
-A psql parancssor és a -d, az adatok importálása az Azure-adatbázis számára létrehozott PostrgeSQL és az adatok betöltése az sql fájl--dbname paraméterrel is használhatja.
+Psql parancssor és a--dbname paramétert (-d) számára az adatok importálása az Azure-adatbázishoz tartozó PostgreSQL kiszolgáló és az adatok betöltése az sql-fájlból.
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
 ```

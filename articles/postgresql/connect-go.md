@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 06/29/2017
-ms.openlocfilehash: 1a581752e3803e9c9aba826b23db14a76080b4ec
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.date: 11/03/2017
+ms.openlocfilehash: 8b52aeaadf7ba94d6b79ef447600cd7b57e70dfa
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>PostgreSQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go nyelv használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz [Go](https://golang.org/) nyelven írt kóddal (golang). Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikk feltételezi, hogy Ön ismeri a Go-t használó fejlesztéseket, de még járatlan a PostgreSQL-hez készült Azure-adatbázis használatában.
@@ -88,8 +88,8 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 5. Amennyiben elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az **Áttekintés** oldalra, és keresse ki a kiszolgáló-rendszergazda bejelentkezési nevét. Szükség esetén kérjen új jelszót.
 
 ## <a name="build-and-run-go-code"></a>Go kód felépítése és futtatása 
-1. Golang-kód írásához használhat egy egyszerű szövegszerkesztőt, ilyen például Microsoft Windows rendszeren a Jegyzettömb, Ubuntu rendszeren a [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy a [Nano](https://www.nano-editor.org/), macOS rendszeren pedig a TextEdit. Ha a funkciógazdagabb interaktív fejlesztési környezeteket (IDE-ket) részesít előnyben, próbálja ki a Jetbrains [Gogland](https://www.jetbrains.com/go/) a Microsoft [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/) eszközt.
-2. Az alábbi szakaszokban található Golang-kódokat illessze be szövegfájlokba, és mentse a fájlokat a projektmappába \*.go kiterjesztéssel, például `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (Windows) vagy `~/go/src/postgresqlgo/createtable.go` (Linux) elérési úton.
+1. Használhatja egy egyszerű szövegszerkesztőben, például a Jegyzettömbben a Microsoft Windows Golang kód írása [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy [Nano](https://www.nano-editor.org/) Ubuntu, vagy a macOS TextEdit. Ha a funkciógazdagabb interaktív fejlesztési környezeteket (IDE-ket) részesít előnyben, próbálja ki a Jetbrains [Gogland](https://www.jetbrains.com/go/) a Microsoft [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/) eszközt.
+2. A következő szakaszok a Golang kód beillesztése szövegfájlok, és mentse a projektmappa kiterjesztésű az \*.go, például a Windows útvonalhoz `%USERPROFILE%\go\src\postgresqlgo\createtable.go` vagy Linux elérési `~/go/src/postgresqlgo/createtable.go`.
 3. Keresse meg a `HOST`, a `DATABASE`, a `USER` és a `PASSWORD` állandót a kódban, és a példaértékeket cserélje le a saját értékeire.  
 4. Nyissa meg a parancssort vagy a bash rendszerhéjat. Lépjen a projektmappára. Windows rendszer például a következővel: `cd %USERPROFILE%\go\src\postgresqlgo\`. Linuxon: `cd ~/go/src/postgresqlgo/`. A fentiekben említettek közül egyes IDE-környezetek hibakeresési és futásidejű képességeket biztosítanak anélkül, hogy rendszerhéjparancsokra lenne szükség.
 5. A kód futtatásához írja be a `go run createtable.go` parancsot az alkalmazás lefordításához és futtatásához. 
@@ -166,7 +166,7 @@ A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQ
 
 A kód importálja három csomagot: a [sql csomag](https://golang.org/pkg/database/sql/), a [pq csomag](http://godoc.org/github.com/lib/pq) illesztőprogramként PostgreSQL kiszolgálóval való kommunikációhoz és a [fmt csomag](https://golang.org/pkg/fmt/) nyomtatott bemeneti és a kimeneti a parancssorban.
 
-A kód metódus meghívja [sql. Open()](http://godoc.org/github.com/lib/pq#Open) adatbázishoz való kapcsolódáshoz Azure PostgreSQL-adatbázishoz, és ellenőrzi a kapcsolat metódussal [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A rendszer a folyamat során [adatbázis-leírót](https://golang.org/pkg/database/sql/#DB) használ, amely az adatbázis-kiszolgáló kapcsolatkészletét tárolja. A select lekérdezés futtatása metódus meghívásával [db. Query()](https://golang.org/pkg/database/sql/#DB.Query), és az eredményül kapott sor tartják típusú változó [sorok](https://golang.org/pkg/database/sql/#Rows). A kód beolvassa az aktuális sorban található oszlopok adatértékeit a [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) metódussal, majd a [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) iterátor használatával ismétlődően fut a sorokon, amíg azok el nem fogynak. Az egyes sorok oszlopértékei megjelennek a konzolon. Minden alkalommal, amikor egy egyéni checkError() módszer segítségével ellenőrizze, ha hiba történt, és vészhelyzeti való kilépéshez, ha hiba történik.
+A kód metódus meghívja [sql. Open()](http://godoc.org/github.com/lib/pq#Open) adatbázishoz való kapcsolódáshoz Azure PostgreSQL-adatbázishoz, és ellenőrzi a kapcsolat metódussal [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A rendszer a folyamat során [adatbázis-leírót](https://golang.org/pkg/database/sql/#DB) használ, amely az adatbázis-kiszolgáló kapcsolatkészletét tárolja. A select lekérdezés futtatása metódus meghívásával [db. Query()](https://golang.org/pkg/database/sql/#DB.Query), és az eredményül kapott sor tartják típusú változó [sorok](https://golang.org/pkg/database/sql/#Rows). A kód beolvassa az aktuális sorban található oszlopok adatértékeit a [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) metódussal, majd a [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) iterátor használatával ismétlődően fut a sorokon, amíg azok el nem fogynak. Az egyes sorok oszlopértékei megjelennek a konzolon. Minden alkalommal, amikor egy egyéni checkError() metódus ellenőrzése, ha hiba történt, és kilép, ha hiba fordul elő vészhelyzeti használatos.
 
 Cserélje le a `HOST`, `DATABASE`, `USER` és `PASSWORD` paramétereket a saját értékeire. 
 
@@ -286,7 +286,7 @@ Az alábbi kód használatával csatlakozhat és végezheti el az adatok törlé
 
 A kód három csomagot importál, az [sql package](https://golang.org/pkg/database/sql/) és a [pq package](http://godoc.org/github.com/lib/pq) csomagot illesztőprogramként a Postgres-kiszolgálóval való kommunikációhoz, illetve az [fmt package](https://golang.org/pkg/fmt/) csomagot a nyomtatott bemenetekhez és kimenetekhez a parancssoron.
 
-A kód metódus meghívja [sql. Open()](http://godoc.org/github.com/lib/pq#Open) adatbázishoz való kapcsolódáshoz Azure PostgreSQL-adatbázishoz, és ellenőrzi a kapcsolat metódussal [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A rendszer a folyamat során [adatbázis-leírót](https://golang.org/pkg/database/sql/#DB) használ, amely az adatbázis-kiszolgáló kapcsolatkészletét tárolja. A kód hívások a [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) módszert az SQL-utasítást, amely egy sor törlése a táblázatból. Egy egyéni checkError() módszer segítségével ellenőrizze, hogy hiba történt, és pánikot való kilépéshez, ha hiba történik.
+A kód metódus meghívja [sql. Open()](http://godoc.org/github.com/lib/pq#Open) adatbázishoz való kapcsolódáshoz Azure PostgreSQL-adatbázishoz, és ellenőrzi a kapcsolat metódussal [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). A rendszer a folyamat során [adatbázis-leírót](https://golang.org/pkg/database/sql/#DB) használ, amely az adatbázis-kiszolgáló kapcsolatkészletét tárolja. A kód hívások a [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) módszert az SQL-utasítást, amely egy sor törlése a táblázatból. Egy egyéni checkError() módszert ellenőrzése, ha hiba történt, és vészhelyzeti való kilépéshez, ha hiba történik.
 
 Cserélje le a `HOST`, `DATABASE`, `USER` és `PASSWORD` paramétereket a saját értékeire. 
 ```go

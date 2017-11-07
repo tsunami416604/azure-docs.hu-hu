@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/30/2017
 ms.author: gwallace
-ms.openlocfilehash: 4c3c4ec341a0e5f4f0e7415128479f6448f7db6b
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 9ea7f77d3bbe45de49c798fe3d51151e1a5a6658
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Az Azure Blob storage használata Node.js átviteli objektumok
 
@@ -51,7 +51,7 @@ Ez a parancs klónokat a tárházat a helyi git-mappába. Nyissa meg az alkalmaz
 
 Az alkalmazás a kapcsolati karakterláncot kell megadnia a tárfiók. Nyissa meg a `index.js` fájlt, keresse meg a `connectionString` változó. Cserélje le az értékét a teljes Azure-portálról mentett azt a kapcsolati karakterlánc értékét. A tárolási kapcsolati karakterlánc a következő hasonlóan kell kinéznie:
 
-```node
+```javascript
 // Create a blob client for interacting with the blob service from connection string
 // How to create a storage connection string - http://msdn.microsoft.com/library/azure/ee758697.aspx
 var connectionString = '<Your connection string here>';
@@ -62,7 +62,7 @@ var blobService = storage.createBlobService(connectionString);
 
 Az alkalmazás könyvtárában, futtassa `npm install` telepítése szükséges a fájlban felsorolt csomagok a `package.json` fájlt.
 
-```node
+```javascript
 npm install
 ```
 
@@ -113,7 +113,7 @@ Az első lépés az mutató hivatkozás létrehozása a `BlobService` férhessen
 
 Ez a példa [createContainerCreateIfNotExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createContainerIfNotExists) mert szeretnénk hozzon létre egy új tároló minden alkalommal, amikor a minta futtatása. Éles környezetben, ahol az alkalmazás teljes tárolóhoz használ hogy a rendszer jobb eljárás az, hogy csak egyszer hívható meg CreateIfNotExists. Azt is megteheti a tároló időben hozhat létre, így nem kell a kódban létrehozásához.
 
-```node
+```javascript
 // Create a container for organizing blobs within the storage account.
 console.log('1. Creating a Container with Public Access:', blockBlobContainerName, '\n');
 blobService.createContainerIfNotExists(blockBlobContainerName, { 'publicAccessLevel': 'blob' }, function (error) {
@@ -128,7 +128,7 @@ Fájl feltöltése a blob, használhatja a [createBlockBlobFromLocalFile](/nodej
 
 A mintakód létrehoz egy helyi fájlt a feltöltés és letöltés, mint a feltölteni kívánt fájl tárolására használt **localPath** és a blob neve **localFileToUpload**. Az alábbi példa feltölti a tárolóhoz kezdődő **quickstartcontainer -**.
 
-```node
+```javascript
 console.log('2. Creating a file in ~/Documents folder to test the upload and download\n');
 console.log('   Local File:', LOCAL_FILE_PATH, '\n');
 fs.writeFileSync(LOCAL_FILE_PATH, 'Greetings from Microsoft!');
@@ -147,7 +147,7 @@ Ezt követően az alkalmazás a tárolót használja a fájlok listájának lek�
 
 5000 vagy kevesebb BLOB a tárolóban van, ha az összes a blob nevének egy hívás a beolvasott [listBlobsSegmented](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_listBlobsSegmented). Ha több mint 5000 BLOB a tárolóban, a szolgáltatás lekérdezi az 5000-készletek listájában, amíg a blob nevének mindegyikét lettek beolvasva. Ezért először az API neve, az első 5000 blob nevének, valamint a folytatási kód adja vissza. A második alkalommal megadta a jogkivonatot, és a szolgáltatás lekérdezi a blob nevének a következő készletét, és stb a folytatási kód csak NULL értékű, ami azt jelzi, hogy a blob nevének mindegyikét lettek beolvasva.
 
-```node
+```javascript
 console.log('4. Listing blobs in container\n');
 blobService.listBlobsSegmented(CONTAINER_NAME, null, function (error, data) {
     handleError(error);
@@ -164,7 +164,7 @@ Blobok letöltése a helyi lemezek használata [getBlobToLocalFile](/nodejs/api/
 
 A következő kódot a blob feltöltése egy korábbi szakaszában "_DOWNLOADED" utótag hozzáadása a blob nevének, így mindkét fájlt a helyi lemezen tölti le. 
 
-```node
+```javascript
 console.log('5. Downloading blob\n');
 blobService.getBlobToLocalFile(CONTAINER_NAME, BLOCK_BLOB_NAME, DOWNLOADED_FILE_PATH, function (error) {
 handleError(error);
@@ -175,7 +175,7 @@ console.log('   Downloaded File:', DOWNLOADED_FILE_PATH, '\n');
 
 Ha már nincs szüksége a blobok a gyors üzembe helyezés feltöltött, törölje a teljes tárolóhoz történő [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) és [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteContainerIfExists). Ha már nincs szükség a fájlt is törli. Ez az végrehajtott megvagyunk az alkalmazásban megnyomásakor kilép az alkalmazásból adja meg.
 
-```node
+```javascript
 console.log('6. Deleting block Blob\n');
     blobService.deleteBlobIfExists(CONTAINER_NAME, BLOCK_BLOB_NAME, function (error) {
         handleError(error);

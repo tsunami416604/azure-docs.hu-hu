@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: aa99d3ebd181a76d582670c5219f29858c462d30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5eea5e4499b9de40002ce2fc6aac39239c41b19
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-cím típusok és elosztási módszert (klasszikus) Azure-ban
 IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a helyszíni hálózattal és az internettel való kommunikáció céljából. Az IP-címek is használhatja az Azure-ban két típusa van: nyilvános és titkos.
@@ -141,9 +141,8 @@ Az alábbi táblázat a lehetséges, hogy foglalási módszerek (dinamikus vagy 
 
 | Erőforrás | Dinamikus | Statikus | Több IP-cím |
 | --- | --- | --- | --- |
-| Virtuális gép (a egy *önálló* felhőalapú szolgáltatás) |Igen |Igen |Igen |
-| A PaaS szerepkörpéldányt (az egy *önálló* felhőalapú szolgáltatás) |Igen |Nem |Igen |
-| A virtuális gép vagy PaaS szerepkörpéldányt (a VNet) |Igen |Igen |Igen |
+| Virtuális gép (a egy *önálló* felhőalapú szolgáltatás, vagy a virtuális hálózat) |Igen |Igen |Igen |
+| A PaaS szerepkörpéldányt (az egy *önálló* felhőalapú szolgáltatás, vagy a virtuális hálózat) |Igen |Nem |Nem |
 | Belső terheléselosztó előtér |Igen |Igen |Igen |
 | Átjáró előtér-alkalmazás |Igen |Igen |Igen |
 

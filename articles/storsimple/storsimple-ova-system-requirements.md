@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/10/2017
+ms.date: 10/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 4dc228ce8a7a73dd32bde77d529698bdcb7f490c
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 8cae0577d950e3968bc25083e59d637963e6b442
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
 ## <a name="overview"></a>Áttekintés
@@ -50,7 +50,7 @@ A szoftverkövetelményeket tartalmazza az információkat a támogatott webbön
 | Minimális memória (RAM) |8 GB <br> Fájlkiszolgáló, 8 GB-ot legalább 2 millió fájlok és a 2 – 4 millió fájlok 16 GB|
 | Szabad lemezterület<sup>1</sup> |Az operációsrendszer-lemez - 80 GB <br></br>Adatlemez - 500 GB és 8 TB |
 | Hálózati adaptert minimális száma |1 |
-| Minimális internetes sávszélességet<sup>2</sup> |5 MB/s |
+| Internetes sávszélesség<sup>2</sup> |A szükséges minimális sávszélesség: 5 MB/s <br> Sávszélesség ajánlott: 100 MB/s <br> Az adatok átvitel bevonásával méretezhető, az internetes sávszélességet sebessége. Például 100 GB adat tart: 5 MB/s, amely a biztonsági mentési hibák vezethet, mivel a napi biztonsági mentés nem hajtsa végre egy nap átvitele 2 nap. A 100 MB/s sávszélesség, a 100 GB adat át lehet vinni 2,5 órában.   |
 
 <sup>1</sup> - dinamikus kiosztása
 
@@ -113,7 +113,7 @@ Azt javasoljuk, hogy állítsa a tűzfalszabályok a kimenő forgalom liberally 
 > [!NOTE]
 > 
 > * Az eszköz (forrás) IP-címek mindig a felhő-kompatibilis hálózati adaptereken kell megadni. 
-> * A cél IP-címet kell megadni [Azure datacenter IP-címtartományok](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653).
+> * A cél IP-címet kell megadni [Azure datacenter IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 > 
 > 
 
@@ -128,6 +128,5 @@ Azt javasoljuk, hogy állítsa a tűzfalszabályok a kimenő forgalom liberally 
 | `https://*.partners.extranet.microsoft.com/*` |Támogatási csomag |
 | `http://*.data.microsoft.com ` |Telemetria szolgáltatás a Windows rendszerben lásd: a [a felhasználói élmény és diagnosztikai telemetriai adatok frissítése](https://support.microsoft.com/en-us/kb/3068708) |
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>Következő lépések
 * [A portál telepítése a StorSimple virtuális tömb előkészítése](storsimple-virtual-array-deploy1-portal-prep.md)
-

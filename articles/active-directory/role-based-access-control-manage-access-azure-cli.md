@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: 77315171754304c965f296670fbba3a4751a3656
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88a5fe33d048814d956a1221802f059cfbcccb0a
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Szerepköralapú hozzáférés-vezérlés az Azure parancssori felületével kezelése
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ A példa a szerepkör-hozzárendelés majd eltávolítja az előfizetésben a cs
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 Segítségével hozhat létre egy egyéni biztonsági szerepkört:
 
-    azure role definition create --role-definition <file path>
+    azure role create --inputfile <file path>
 
 Az alábbi példa létrehoz egy egyéni biztonsági szerepkört nevű *virtuális gépet üzemeltető*. Az egyéni szerepkör hozzáférést biztosít az összes olvasási műveletek a *Microsoft.Compute*, *Microsoft.Storage*, és *Microsoft.Network* erőforrás-szolgáltatók és engedélyezi a hozzáférést Indítsa el, és indítsa újra a virtuális gépek figyelése. Az egyéni szerepkör két előfizetések használható. A példa egy JSON-fájl bemenetként.
 
@@ -159,9 +159,9 @@ Az alábbi példa létrehoz egy egyéni biztonsági szerepkört nevű *virtuáli
 ![Szerepalapú Azure parancssori - azure szerepkör létrehozása – képernyőfelvétel](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-2.png)
 
 ## <a name="modify-a-custom-role"></a>Egyéni szerepkör módosítása
-Ha módosít egy egyéni biztonsági szerepkört, először az a `azure role definition list` parancsot a szerepkör-definíció lekéréséhez. A szerepkör-definíciós fájlt, végezze el a szükséges módosításokat. Végül `azure role definition update` menteni a módosított szerepkör-definíció.
+Ha módosít egy egyéni biztonsági szerepkört, először az a `azure role list` parancsot a szerepkör-definíció lekéréséhez. A szerepkör-definíciós fájlt, végezze el a szükséges módosításokat. Végül `azure role set` menteni a módosított szerepkör-definíció.
 
-    azure role definition update --role-definition <file path>
+    azure role set --inputfile <file path>
 
 A következő példakóddal felveheti a *Microsoft.Insights/diagnosticSettings/* művelet a **műveletek**, és az Azure-előfizetés a **AssignableScopes** , a Virtuális gép operátor egyéni biztonsági szerepkört.
 
@@ -170,7 +170,7 @@ A következő példakóddal felveheti a *Microsoft.Insights/diagnosticSettings/*
 ![RBAC Azure - azure szerepkör set - parancssori képernyőképe](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set2.png)
 
 ## <a name="delete-a-custom-role"></a>Egyéni szerepkör törléséhez
-Egyéni szerepkör törléséhez először használja a `azure role definition list` parancsot annak meghatározásához, a **azonosító** a szerepkör. Ezt követően a `azure role definition delete` parancs megadásával a szerepkör törlése a **azonosító**.
+Egyéni szerepkör törléséhez először használja a `azure role list` parancsot annak meghatározásához, a **azonosító** a szerepkör. Ezt követően a `azure role delete` parancs megadásával a szerepkör törlése a **azonosító**.
 
 A következő példában eltávolítjuk a *virtuális gépet üzemeltető* egyéni biztonsági szerepkört.
 
@@ -182,7 +182,7 @@ A szerepkörök, amelyek rendelhető hozzá hatókör kilistázhatja a `azure ro
 A következő parancs megjeleníti az összes szerepkör, amely a kijelölt előfizetés kiosztására használható.
 
 ```
-azure role definition list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
+azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
 ```
 
 ![RBAC Azure - azure szerepkör lista - parancssori képernyőképe](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
@@ -190,7 +190,7 @@ azure role definition list --json | jq '.[] | {"name":.properties.roleName, type
 A következő példában a *virtuális gépet üzemeltető* egyéni szerepkör nem érhető el a *Production4* előfizetés, mert az adott előfizetéshez nem szerepel a **AssignableScopes** a szerepkör.
 
 ```
-azure role definition list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
+azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
 ```
 
 ![RBAC Azure - egyéni szerepkörök listája azure szerepkör - parancssori képernyőképe](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)

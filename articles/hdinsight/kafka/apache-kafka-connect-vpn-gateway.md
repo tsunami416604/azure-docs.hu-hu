@@ -13,17 +13,17 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/01/2017
+ms.date: 11/06/2017
 ms.author: larryfr
-ms.openlocfilehash: 7bb9939df413bfea2b3b8545c29a20feb623f94e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1721f985214b9a9fbefed628308b1a72f5cc186a
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="connect-to-kafka-on-hdinsight-preview-through-an-azure-virtual-network"></a>A HDInsight (előzetes verzió) egy Azure virtuális hálózaton keresztül Kafka kapcsolódni
 
-Útmutató a HDInsight az Azure virtuális hálózatok használatával Kafka közvetlenül kapcsolódni. Ez a dokumentum információkat biztosít Kafka csatlakozni a következő konfigurációk használatával:
+Útmutató a HDInsight az Azure virtuális hálózaton keresztül Kafka közvetlenül kapcsolódni. Ez a dokumentum információkat biztosít Kafka csatlakozni a következő konfigurációk használatával:
 
 * Az egy helyi hálózatán lévő erőforrásokat. Ezt a kapcsolatot a helyi hálózaton a VPN-eszköz (szoftveres vagy hardveres) használatával.
 * A környezet a VPN szoftver ügyfél használatával.
@@ -58,7 +58,7 @@ A HDInsight nem engedélyezi a Kafka közvetlen kapcsolatra a nyilvános interne
     > Ez a konfiguráció csak ajánlott fejlesztési célra miatt a következő korlátozások vonatkoznak:
     >
     > * Minden ügyfél szoftver VPN-ügyfél használatával kell csatlakoztatni. Azure csak egy Windows-alapú ügyfelek tartalmazza.
-    > * Az ügyfél nem felel meg névfeloldási a virtuális hálózathoz, így IP-címzési Kafka kommunikálni kell használni. Integrációs csomaggal folytatott kommunikációhoz az Kafka fürtön további konfigurációt igényel.
+    > * A VPN-ügyfél nem felel meg névfeloldási a virtuális hálózathoz, így IP-címzési Kafka kommunikálni kell használni. Integrációs csomaggal folytatott kommunikációhoz az Kafka fürtön további konfigurációt igényel.
 
 A HDInsight eszközzel virtuális hálózatban további információkért lásd: [kiterjesztése HDInsight Azure virtuális hálózatok használatával](../hdinsight-extend-hadoop-virtual-network.md).
 
@@ -130,7 +130,7 @@ Ebben a szakaszban a lépések segítségével hozza létre a következő konfig
 
     # HDInsight settings
     $HdiWorkerNodes = 4
-    $hdiVersion = "3.5"
+    $hdiVersion = "3.6"
     $hdiType = "Kafka"
     ```
 
@@ -237,7 +237,7 @@ Ebben a szakaszban a lépések segítségével hozza létre a következő konfig
     ```
 
   > [!WARNING]
-  > Ez a folyamat befejezéséhez körülbelül 20 percet vesz.
+  > Ez a folyamat mintegy 15 perc szükséges teljes.
 
 8. A Windows VPN-ügyfelek a virtuális hálózat az URL-cím lekéréséhez használja a következő parancsmagot:
 

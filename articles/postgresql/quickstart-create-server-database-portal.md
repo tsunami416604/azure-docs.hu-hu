@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 08/10/2017
-ms.openlocfilehash: 3a76e816f9b1fa484789f548899d7e8e7043febb
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 11/03/2017
+ms.openlocfilehash: b78009a4b2683bb7ee881808ddbbc792d66dea6c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozása az Azure-portálon
 
@@ -205,7 +205,7 @@ Csatlakozás az Azure PostgreSQL-kiszolgálóhoz a grafikus felhasználói Felü
 
 9. Írja be az Ön által választott, az adatbázis nevét a **adatbázis** mezőjét, többek között **mypgsqldb**, a példában látható módon.
 
-10. Válassza ki a **tulajdonos** az adatbázis, a legördülő listából. Válassza ki a kiszolgáló rendszergazdai bejelentkezési nevet, például a példa kedvéért **mylogin**.
+10. Válassza ki a **tulajdonos** az adatbázis, a legördülő listából. Válassza ki a kiszolgáló rendszergazdai bejelentkezési nevet, például a példában **mylogin**.
 
 11. Válassza ki **mentése** egy új, üres adatbázis létrehozásához.
 
@@ -221,9 +221,9 @@ Törölheti is az erőforrásokat, amelyek a gyors üzembe helyezés, az alábbi
 > Az ebben a gyűjteményben található többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy folytatja ezen rövid útmutatók használatát, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem kívánja folytatni, kövesse az alábbi lépéseket törli az erőforrást, amelyet a gyors üzembe helyezés, a portálon.
 
 A teljes erőforráscsoport, beleértve az újonnan létrehozott kiszolgáló törlése:
-1. Keresse meg az erőforráscsoport a portálon. A bal oldali menüben válassza ki a **erőforráscsoportok**. Válassza ki például a fenti példában az erőforráscsoport neve **myresourcegroup**.
+1. Keresse meg az erőforráscsoport a portálon. A bal oldali menüben válassza ki a **erőforráscsoportok**. Válassza ki például a példában az erőforráscsoport neve **myresourcegroup**.
 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Írja be például a fenti példában az erőforráscsoport nevét **myresourcegroup**, a törlés megerősítéséhez szövegmezőben. Válassza a **Törlés** elemet.
+2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Írja be például a példában az erőforráscsoport nevét **myresourcegroup**, a törlés megerősítéséhez szövegmezőben. Válassza a **Törlés** elemet.
 
 Csak az újonnan létrehozott kiszolgáló törlése:
 1. Keresse meg a kiszolgáló a portálon, ha még nincs megnyitva. A bal oldali menüben válassza ki a **összes erőforrás**. Ezután keressen rá az Ön által létrehozott kiszolgálóra.
@@ -232,7 +232,7 @@ Csak az újonnan létrehozott kiszolgáló törlése:
 
     ![A "Törlés" gombra.](./media/quickstart-create-database-portal/12-delete.png)
 
-3. Erősítse meg a törölni kívánt kiszolgáló nevét, és az érintett tartozó adatbázisok megtekintéséhez. A kiszolgáló nevét írják be a szövegmezőben, például a példa kedvéért **mypgserver-20170401**. Válassza a **Törlés** elemet.
+3. Erősítse meg a törölni kívánt kiszolgáló nevét, és az érintett tartozó adatbázisok megtekintéséhez. A kiszolgáló nevét írják be a szövegmezőben, például a példában **mypgserver-20170401**. Válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]

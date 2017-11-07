@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5a729139e122693b4199607919c876bda45fd4b5
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 6b1cfa2b52e8e9e2b6a8ab87be6d4269cbe3f1cf
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 Kérdések és problémák [Azure Application Insights Java nyelven][java]? Az alábbiakban néhány tipp.
@@ -124,6 +124,13 @@ A tűzfal akkor előfordulhat, hogy nyissa meg a 80-as és a kimenő forgalom dc
 **Mennyi ideig adatok őrződnek meg a portálon? Az biztonságos?**
 
 Lásd: [az adatmegőrzés és az adatvédelmi][data].
+
+## <a name="debug-logging"></a>Hibakeresési naplózás
+Az Application Insights használ `org.apache.http`. Ez az Application Insights core JAR-fájlok kivételével a wsrmp belül más helyre `com.microsoft.applicationinsights.core.dependencies.http`. Ez lehetővé teszi, hogy az Application Insights helyzetek kezelésére, ahol különböző verziói azonos `org.apache.http` egy kódbázis szerepel. 
+
+>[!NOTE]
+>Ha engedélyezi a hibakeresési webhelyszintű naplózás az összes névtérhez az alkalmazásban, az szembeni szerződéses kötelezettségeket beleértve az összes végrehajtás alatt álló modul által `org.apache.http` előzményfájlként `com.microsoft.applicationinsights.core.dependencies.http`. Az Application Insights nem tudnak szűrést az ilyen hívást, mert a napló hívás kezdeményezése történik az Apache Library alkalmazni. HIBAKERESÉSI webhelyszintű naplózás naplóadatokat jelentős mennyiségű eredményez, és nem javasolt éles példányok.
+
 
 ## <a name="next-steps"></a>Következő lépések
 **Az Application Insights saját Java server alkalmazás beállítása I. Mit tehetek?**

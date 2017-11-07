@@ -12,27 +12,29 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 11/2/2017
 ms.author: damaerte
-ms.openlocfilehash: 4c99ae37b66200244514ee554c9696cf18c1b800
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 1bf0acdfad04a55d5b85aabee150526836062002
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="troubleshooting-azure-cloud-shell"></a>Hibaelhárítás az Azure-felhőbe rendszerhéj
 
 Ismert problémák Azure Cloud rendszerhéj megoldások:
 
-## <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Tárolási párbeszédpanel – hiba: 403-as RequestDisallowedByPolicy
+## <a name="general-resolutions"></a>Általános megoldások
+
+### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Tárolási párbeszédpanel – hiba: 403-as RequestDisallowedByPolicy
 - **Részletek**: Felhő rendszerhéj keresztül tárfiók létrehozásához esetén sikerült, mert az Azure házirend helyez el a rendszergazdának. Hibaüzenet tartalmazza:`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **Megoldási**: a rendszergazdától Azure távolítsa el, vagy a tároló létrehozása megtagadása Azure házirend frissítése.
 
-## <a name="storage-dialog---error-400-disallowedoperation"></a>Tárolási párbeszédpanel – hiba: 400 DisallowedOperation
+### <a name="storage-dialog---error-400-disallowedoperation"></a>Tárolási párbeszédpanel – hiba: 400 DisallowedOperation
  - **Részletek**: Ha az Azure Active Directory-előfizetéssel, tárolási nem hozható létre.
  - **Megoldási**: képes a tárolási erőforrások létrehozása az Azure-előfizetést használ. Azure AD-előfizetések nem hozhat létre Azure-erőforrások.
 
-## <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminálszolgáltatások kimeneti - hiba: nem sikerült kapcsolódni a Terminálszolgáltatások: websocket nem hozható létre. Nyomja le az `Enter` az újracsatlakozáshoz.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminálszolgáltatások kimeneti - hiba: nem sikerült kapcsolódni a Terminálszolgáltatások: websocket nem hozható létre. Nyomja le az `Enter` az újracsatlakozáshoz.
  - **Részletek**: Felhő rendszerhéj megbizonyosodhat websocket kapcsolatot létesíteni a felhő rendszerhéj infrastruktúra.
  - **Megoldási**: Ellenőrizze, hogy konfigurálta a hálózati beállításokat küldő https és a websocket-kérelmeket, tartományokra való engedélyezéséhez *. console.azure.com.
 

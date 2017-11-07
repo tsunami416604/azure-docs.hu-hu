@@ -1,5 +1,5 @@
 ---
-title: "Készítsen biztonsági másolatot, és egy kiszolgálóhoz az Azure-adatbázis visszaállítása a PostgreSQL |} Microsoft Docs"
+title: "Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis PostgreSQL |} Microsoft Docs"
 description: "Útmutató: biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis a PostgreSQL az Azure parancssori felület használatával."
 services: postgresql
 author: jasonwhowell
@@ -9,14 +9,14 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 871887e67d686a965a0648d2c6f0c72b3008db05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.openlocfilehash: 0cfce63b1523f939dc2d706dba771e56ce9ccd6c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Készítsen biztonsági másolatot, és a kiszolgáló Azure-adatbázis visszaállítása a PostgreSQL az Azure parancssori felület használatával
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis PostgreSQL az Azure parancssori felület használatával
 
 Egy kiszolgáló-adatbázis visszaállítása korábbi dátumra 35 nap 7 kiterjedő PostgreSQL Azure adatbázis használata.
 
@@ -31,7 +31,7 @@ Ez az útmutató útmutató befejezéséhez lesz szüksége:
 > [!IMPORTANT]
 > Telepítésekor és az Azure parancssori felület helyileg használja, ez az útmutató útmutató használatához Azure CLI 2.0-s vagy újabb verziója. Erősítse meg a verzió, az Azure CLI parancssorba írja be a következőt `az --version`. Telepítéséhez vagy frissítéséhez, lásd: [Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="back-up-happens-automatically"></a>Készítsen biztonsági másolatot automatikusan történik,
+## <a name="backup-happens-automatically"></a>Automatikusan megtörténik a biztonsági mentés
 Amikor PostgreSQL Azure-adatbázist használ, az adatbázis-szolgáltatás automatikusan teszi a szolgáltatás biztonsági másolatot, 5 percenként. 
 
 Az alapszintű csomag a biztonsági mentések érhetők el 7 napban. Standard csomagra a biztonsági mentések érhetők el 35 napon. További információkért lásd: [Azure-adatbázis a tarifacsomagok PostgreSQL](concepts-service-tiers.md).
@@ -56,7 +56,7 @@ A `az postgres server restore` parancs paraméterei a következők:
 | --- | --- | --- |
 | Erőforráscsoport |  myResourceGroup |  Az erőforráscsoport, ahol a forráskiszolgáló található.  |
 | név | mypgserver visszaállítása | A restore parancs által létrehozott új kiszolgáló neve. |
-| visszaállítás--időpontban | 2017-04-13T13:59:00Z | Válasszon ki egy pontot időben történő visszaállításához. A dátum és idő a forráskiszolgáló biztonsági mentése a megőrzési időn belül kell lennie. Dátum és idő ISO8601 formátumot használja. Például használhatja a saját helyi időzóna, például a `2017-04-13T05:59:00-08:00`. Használhatja a UTC Zulu formátumban, például `2017-04-13T13:59:00Z`. |
+| visszaállítás--időpontban | 2017-04-13T13:59:00Z | Válasszon ki egy pontot időben történő visszaállításához. A dátum és idő a forráskiszolgáló biztonsági mentés megőrzési időn belül kell lennie. Dátum és idő ISO8601 formátumot használja. Például használhatja a saját helyi időzóna, például a `2017-04-13T05:59:00-08:00`. Használhatja a UTC Zulu formátumban, például `2017-04-13T13:59:00Z`. |
 | forrás-kiszolgáló | mypgserver-20170401 | Név vagy azonosító a forráskiszolgáló visszaállítása. |
 
 Időben egy korábbi állapotba szeretné visszaállítani egy kiszolgálót, létrejön egy új kiszolgálót. Az eredeti kiszolgáló és az idő megadott pontjáról adatbázisainak az új kiszolgálóra történő átmásolása.

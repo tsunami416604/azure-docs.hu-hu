@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 05e645ebafd8c8b9f3078524b76732b3e1be05f8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 11/03/2017
+ms.openlocfilehash: ec362cec28160b5c4827f6e47614661319ba4039
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával
 Kiszolgálószintű tűzfal-szabályok lehetővé teszik a rendszergazdák hozzáférésének kezelése az Azure-adatbázis PostgreSQL-kiszolgáló egy adott IP-cím vagy az IP-címek. Tetszés szerinti Azure parancssori felület parancsait használva hozhat létre, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Az áttekintést az Azure-adatbázis PostgreSQL tűzfalszabályaira vonatkozó, lásd: [PostgreSQL-kiszolgáló tűzfalszabályainak az Azure-adatbázis](concepts-firewall-rules.md)
@@ -22,7 +22,7 @@ Kiszolgálószintű tűzfal-szabályok lehetővé teszik a rendszergazdák hozz�
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató Útmutató lépéseit, az alábbiak szükségesek:
 - Egy [PostgreSQL-kiszolgáló és adatbázis Azure-adatbázis](quickstart-create-server-database-azure-cli.md).
-- Telepítés [Azure CLI 2.0](/cli/azure/install-azure-cli) sor segédprogram parancsot, vagy használja az Azure-felhő rendszerhéj a böngészőben.
+- Telepítés [Azure CLI 2.0](/cli/azure/install-azure-cli) parancssori segédprogram, vagy használja az Azure-felhő rendszerhéj a böngészőben.
 
 ## <a name="configure-firewall-rules-for-azure-database-for-postgresql"></a>Tűzfalszabályok konfigurálása az Azure Database PostgreSQL
 A [az postgres-tűzfalszabályt](/cli/azure/postgres/server/firewall-rule) -parancsok segítségével tűzfalszabályok konfigurálása.
@@ -39,7 +39,7 @@ az postgres server firewall-rule list --resource-group myresourcegroup --server 
 ## <a name="create-firewall-rule"></a>Tűzfalszabály létrehozása
 Új szabály létrehozása a kiszolgálón, futtassa a [az postgres-tűzfalszabály létrehozása](/cli/azure/postgres/server/firewall-rule#create) parancsot. 
 
-Mint 0.0.0.0 megadásával a `--start-ip-address` és 255.255.255.255, mint a `--end-ip-address` tartomány, az alábbi példában lehetővé teszi, hogy az összes IP-címek a kiszolgálóhoz való hozzáféréshez **mypgserver-20170401.postgres.database.azure.com**
+Mint 0.0.0.0 megadásával a `--start-ip-address` és 255.255.255.255, mint a `--end-ip-address` tartomány, a következő példa lehetővé teszi, hogy az összes IP-címek a kiszolgálóhoz való hozzáféréshez **mypgserver-20170401.postgres.database.azure.com**
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup  --server mypgserver-20170401 --name "AllowIpRange" --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```

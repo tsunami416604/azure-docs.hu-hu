@@ -5,16 +5,17 @@ services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
+editor: jasonwhowell
 ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: tutorial
-ms.date: 06/13/2017
+ms.date: 11/03/2017
 ms.custom: mvc
-ms.openlocfilehash: 0e6a92eeb9711b086359ab2cd1aea87a57f1fc36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dcd59442c0b3aa5d6ed1a9ef287949d1d17fa80f
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>Az első Azure-adatbázis MySQL-adatbázis megtervezése
 
@@ -33,7 +34,7 @@ Az Azure-felhő rendszerhéj lehet használni a böngésző vagy [Azure CLI 2.0 
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha telepítése és a parancssori felület helyileg használata mellett dönt, ez a cikk szükséges az, hogy az Azure parancssori felület verzióját futtatja, 2.0-s vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#set) parancs segítségével.
 ```azurecli-interactive
@@ -102,7 +103,7 @@ Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualif
 ```
 
 ## <a name="connect-to-the-server-using-mysql"></a>Csatlakozzon a kiszolgálóhoz, a mysql használata
-Használjon [mysql parancssori eszköz](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) kapcsolatot létrehozni a MySQL-kiszolgálóhoz tartozó Azure-adatbázis számára. Ebben a példában a parancs a következő:
+Használja a [mysql parancssori eszköz](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) kapcsolatot létrehozni a MySQL-kiszolgálóhoz tartozó Azure-adatbázis számára. Ebben a példában a parancs a következő:
 ```cmd
 mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
 ```
@@ -119,9 +120,9 @@ mysql> USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Hozzon létre táblák az adatbázisban
-Most, hogy tudja, hogyan csatlakozzon az Azure-adatbázishoz a MySQL-adatbázis, a is, hogyan lehet elvégezni, néhány alapvető műveleteket ismerteti.
+Most, hogy tudja, hogyan MySQL-adatbázis az Azure-adatbázishoz való kapcsolódáshoz, néhány egyszerű feladatot kell elvégeznie:
 
-Először hogy hozzon létre egy táblát, és töltse be adatokkal. Hozzon létre egy tábla tárolja a leltáradatokat.
+Először hozzon létre egy táblát, és töltse be az adatokat. Hozzon létre egy tábla tárolja a leltáradatokat.
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -131,7 +132,7 @@ CREATE TABLE inventory (
 ```
 
 ## <a name="load-data-into-the-tables"></a>Adatok betöltése a táblákba
-Most, hogy a tábla, azt beilleszthet néhány adat azt. A parancssor megnyitása ablakban futtassa a következő lekérdezés szúrható be néhány sornyi adatot.
+Most, hogy a tábla, néhány adat beviteléhez bele. A parancssor megnyitása ablakban futtassa a következő lekérdezés szúrható be néhány sornyi adatot.
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
@@ -158,7 +159,7 @@ SELECT * FROM inventory;
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Adatbázis visszaállítása egy korábbi időpontra
 Képzelje el ezt a táblázatot véletlenül törölt. Ez a valami nem egyszerűen állíthat helyre. Azure MySQL-adatbázis lehetővé teszi térjen vissza olyan hely, az utolsó legfeljebb 35 nappal időpont, és állítsa vissza ezt a pontot az új kiszolgáló időt. Az új kiszolgáló segítségével helyreállíthatja a törölt adatokat. Az alábbi lépéseket a a minta kiszolgáló pontra visszaállításához, mielőtt a tábla hozzá lett adva.
 
-A visszaállítás van szüksége a következő információkat:
+A visszaállítás a következő információk szükségesek:
 
 - Visszaállítási pont: Válasszon egy pont időponthoz kötött, amely akkor fordul elő, mielőtt a kiszolgáló megváltozott. Nagyobb vagy egyenlő a forrásadatbázis legrégebbi biztonsági mentési értéknek kell lennie.
 - Célkiszolgáló: Adjon meg egy új kiszolgálónevet a visszaállítani kívánt

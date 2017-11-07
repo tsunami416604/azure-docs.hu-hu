@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 35aa45ce09b756dd7413a1df3d3c7b0c428b7a97
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71d407050f210c770bcac30259b9c2f2fb27aa3
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center, egy szolgáltatás, amely segít a megakadályozása, észlelésében és kezelésében fenyegetések láthatóság növelésével és a Microsoft Azure-erőforrások védelmét kapcsolatos kérdésekre ad választ.
@@ -127,6 +127,15 @@ Az Azure Security Center rendelkezik Azure-bővítményeket keresztül telepíte
 
 ### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>Miért jelenik meg az üzenet "Hiányzó vizsgálati adatok" a virtuális géphez?
 Ez az üzenet akkor jelenik meg, amikor nincs a virtuális gépek vizsgálat adat. Ellenőrző adatok feltöltése után az Azure Security Centerben engedélyezett adatgyűjtés némi időbe (kevesebb mint egy óra) is igénybe vehet. Ellenőrző adatok kezdeti sokaságát után jelenhet meg ezt az üzenetet, mert nincs minden vizsgálat adat, vagy nincs legutóbbi vizsgálat adat. Vizsgálat nem sikerült adatokkal feltölteni a virtuális gép leállított állapotban. Ezt az üzenetet is jelennek meg, ha az ellenőrző adatok nem nemrég (a Windows-ügynök, amely alapértelmezett értéke 30 napos adatmegőrzési) megfelelően van feltöltve.
+
+### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Milyen gyakran nem Security Center operációs rendszer biztonsági rések, rendszerfrissítések és vizsgálatára végpontvédelmi problémákkal?
+A Tiltás késése a Security Center ellenőrzi a biztonsági frissítések, és problémákat:
+
+- Operációs rendszer biztonsági rés (amelyet a Microsoft) – adatok 48 órán belül frissítése
+- Rendszerfrissítések – adatok frissül 24 órában
+- Az Endpoint Protection állít – 8 órán belül adatok frissítése
+
+A Security Center általában megvizsgálja az új adatokat óránként. A késés fenti értékei a legrosszabb esetben ha nincs a legutóbbi vizsgálat vagy a vizsgálat nem sikerült.
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Miért jelenik meg az üzenet "Virtuálisgép-ügynök hiányzó?"
 A virtuális gép ügynököt telepíteni kell a virtuális gépeken szeretné az adatgyűjtést. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. A Virtuálisgép-ügynök telepítésével más virtuális gépeken információkért lásd: a következő blogbejegyzésben található [ügynök és Virtuálisgép-bővítmények](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).

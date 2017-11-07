@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/03/2017
 ms.author: jgao
-ms.openlocfilehash: 5654f2822cae4db4c291012546d0c8e19f36da8f
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3bf8ff367fcf88c76c2dc711a6daeffdcb3258b7
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Egyéni Hadoop-alkalmazások telepítése Azure HDInsight platformon
 
@@ -72,7 +72,7 @@ Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
     Erre a gombra kattintva megnyithat egy Resource Manager-sablont az Azure Portalon.  A Resource Manager-sablon a következő helyen található: [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  A Resource Manager-sablon írásának ismertetése: [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: HDInsight-alkalmazás telepítése).
 2. Kövesse a fürt létrehozására és a Hue telepítésére vonatkozó utasításokat. További információk a HDInsight-fürtökről: [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsight szolgáltatásban).
 
-A Resource Manager-sablonok meghívására az Azure Portalon kívül az [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-powershell) és az [Azure parancssori felület](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-cli) is használható.
+A Resource Manager-sablonok meghívására az Azure Portalon kívül az [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) és az [Azure parancssori felület](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-cli) is használható.
 
 ## <a name="validate-the-installation"></a>A telepítés ellenőrzése
 Az alkalmazás telepítésének ellenőrzéséhez az alkalmazás állapotát az Azure Portalon követheti. Emellett a várt megjelenésük sorrendjében ellenőrizheti a HTTP-végpontokat is, illetve a webhelyet (ha van):

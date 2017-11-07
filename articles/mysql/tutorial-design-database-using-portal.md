@@ -8,13 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: tutorial
-ms.date: 06/06/2017
+ms.date: 11/03/2017
 ms.custom: mvc
-ms.openlocfilehash: 92ae809646cb956b0b7cb71cf2a21610bb2d610f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f38484e000b05a57cad9bc95abb255414d0162
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>Az első Azure-adatbázis MySQL-adatbázis megtervezése
 A MySQL-hez készült Azure Database egy felügyelt szolgáltatás, amely lehetővé teszi a magas rendelkezésre állású MySQL-adatbázisok futtatását, kezelését és skálázását a felhőben. Az Azure portál használatával egyszerűen kezelheti a kiszolgálót, és egy adatbázis tervezése.
@@ -41,7 +41,7 @@ A MySQL-kiszolgálóhoz készült Azure-adatbázis [számítási és tárolási 
 
 2. Kattintson a **MySQL az Azure-adatbázis** csempére, majd **létrehozása**.
 
-A példa kedvéért töltse ki az Azure-adatbázishoz MySQL űrlap a következő információkat:
+Ebben a példában töltse ki az Azure-adatbázishoz MySQL űrlap a következő információkat:
 
 | **Beállítás** | **Ajánlott érték** | **Mező leírása** |
 |---|---|---|
@@ -98,9 +98,9 @@ USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Hozzon létre táblák az adatbázisban
-Most, hogy tudja, hogyan csatlakozzon az Azure-adatbázishoz a MySQL-adatbázis, a is, hogyan lehet elvégezni, néhány alapvető műveleteket ismerteti.
+Most, hogy tudja, hogyan MySQL-adatbázis az Azure-adatbázishoz való kapcsolódáshoz, néhány alapvető műveleteket hajtható végre:
 
-Először hogy hozzon létre egy táblát, és töltse be adatokkal. Hozzon létre egy tábla tárolja a leltáradatokat.
+Először hozzon létre egy táblát, és töltse be az adatokat. Hozzon létre egy tábla tárolja a leltáradatokat.
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -110,7 +110,7 @@ CREATE TABLE inventory (
 ```
 
 ## <a name="load-data-into-the-tables"></a>Adatok betöltése a táblákba
-Most, hogy a tábla, azt beilleszthet néhány adat azt. A parancssor megnyitása ablakban futtassa a következő lekérdezés szúrható be néhány sornyi adatot.
+Most, hogy a tábla, néhány adat beviteléhez bele. A parancssor megnyitása ablakban futtassa a következő lekérdezés szúrható be néhány sornyi adatot.
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);

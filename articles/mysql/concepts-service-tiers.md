@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/02/2017
-ms.openlocfilehash: 7396b8f66dc65cfad497e336887978fa487c42f6
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.date: 11/03/2017
+ms.openlocfilehash: ae7e57e9b40f5194c15525a48843060bbccaa956
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure-adatbázis a MySQL beállításai és teljesítménye: az egyes tarifacsomagok elérhető
 Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozásakor három fő lehetőségek konfigurálása a kiszolgáló számára lefoglalt erőforrások határoz meg. Ezek a lehetőségek a teljesítmény és a kiszolgáló méretezési hatással.
@@ -96,7 +96,7 @@ Akkor kezdetben Itt választhatja ki a tarifacsomagot és teljesítményszintet 
 
 A számítási egység skálázás történik, függetlenül a választott maximális mérete.
 
-A háttérben módosítása az adatbázis teljesítményszintjét másolatot hoz létre az eredeti adatbázist az új teljesítmény szintjén, és majd kapcsolatok való működésre vált a másolt kiszolgáló. Adatok nem vesztek el a folyamat során. Során a rövid jelenleg, ha az új kiszolgáló átvált a rendszer Ha az adatbázishoz létesített kapcsolatokhoz le vannak tiltva, az egyes tranzakciók útban előfordulhat, hogy állítható vissza. Ennek időtartama eltérő lehet, de átlagosan 4 másodpercnél rövidebb, az esetek 99%-ában pedig kevesebb mint 30 másodperc. Ha a kapcsolatok letiltásának pillanatában nagy számú tranzakció van folyamatban, ez az időtartam hosszabb lehet.
+A háttérben a kiszolgáló teljesítményét szintjének módosítása másolatot hoz létre az eredeti kiszolgálón az új teljesítmény szintjén, és majd kapcsolatok való működésre vált a másolt kiszolgáló. Adatok nem vesztek el a folyamat során. Során a rövid jelenleg, ha az új kiszolgáló átvált a rendszer Ha az adatbázishoz létesített kapcsolatokhoz le vannak tiltva, az egyes tranzakciók útban előfordulhat, hogy állítható vissza. Ennek időtartama eltérő lehet, de átlagosan 4 másodpercnél rövidebb, az esetek 99%-ában pedig kevesebb mint 30 másodperc. Ha a kapcsolatok letiltásának pillanatában nagy számú tranzakció van folyamatban, ez az időtartam hosszabb lehet.
 
 A teljes méretezési eljárás ideje alatt méretét és függ IP-címek a kiszolgáló előtt és után a változás. Például egy kiszolgálót, amely a számítási egység módosítás, a Standard tarifacsomag belül kell végeznie néhány percen belül. Az új tulajdonságok a kiszolgáló nem érvényesek, amíg be nem fejeződik a módosításokat.
 

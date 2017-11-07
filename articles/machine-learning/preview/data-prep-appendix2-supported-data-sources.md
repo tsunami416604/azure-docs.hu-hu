@@ -1,6 +1,6 @@
 ---
-title: "Támogatott adatforrások az Azure Machine Learning adatok előkészítése |} Microsoft Docs"
-description: "Ez a dokumentum nyújt a támogatott adatforrások teljes listáját az Azure Machine Learning adatok előkészítése"
+title: "Támogatott adatforrások érhető el az Azure Machine Learning adatok előkészítése |} Microsoft Docs"
+description: "Ez a dokumentum az Azure Machine Learning adatok előkészítése érhető el a támogatott adatforrások teljes listáját tartalmazza."
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -12,29 +12,31 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 1ef4c5c33d98cfeb566e8fe23bda9e0d3f041781
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: db4774de28a17e022de111986f72a1f15ec32beb
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="supported-data-sources-for-this-release"></a>Ebben a kiadásban támogatott adatforrások 
-A következő dokumentum ismerteti az Azure Machine Learning adatok előkészítése a jelenleg támogatott adatforrások listáját.
+# <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>A támogatott adatforrások az Azure Machine Learning adatok előkészítése 
+Ez a cikk ismerteti az Azure Machine Learning adatok előkészítése a jelenleg támogatott adatforrások.
 
 A támogatott adatforrások ebben a kiadásban a következők:
 
 ## <a name="types"></a>Típusok 
-### <a name="directory-versus-file"></a>Fájl vagy könyvtár
-*Fájlok vagy könyvtárak*: Válasszon egy fájlt, és olvassa el, az adatok előkészítése. A fájl típusa határozza meg a fájl kapcsolattal, amely a következő képernyőn alapértelmezett paramétereinek elemzett. Válasszon egy könyvtárat vagy állítja be a fájlok egy könyvtárat (a fájlválasztó multiselect) belül. Mindkét megközelítés eredmények a hozzáíródik egymáshoz (szükség esetén eltávolítja fejlécek) fájlok olvasása egyetlen adatfolyamban, fájljaiban.
+### <a name="directory-vs-file"></a>Fájl vagy könyvtár
+Válasszon egy fájlt, és olvassa el, az adatok előkészítése. A fájl típusa határozza meg a fájl kapcsolat a következő képernyőn megjelenő alapértelmezett paraméterek elemzett.
 
-A fájl típusok a következők:
-- Tagolt (.csv, .tsv, .txt, és így tovább) 
+Válasszon egy könyvtárat vagy a fájlokat egy könyvtárat (a fájlválasztó multiselect) belül. Bármelyik módszert használja a fájlok olvashatóak egy egyetlen folyamatként, és lesz hozzáfűzve egymással, a fejlécek, szükség esetén eltávolítja.
+
+A támogatott típusok a következők:
+- Tagolt (.csv .tsv, .txt, stb.)
 - A rögzített szélességű
 - Egyszerű szöveg
 - JSON-fájl
 
 ### <a name="csv-file"></a>A CSV-fájl
-Tároló CSV-fájlból olvassa be.
+A vesszővel tagolt fájl olvasásához tárolóból.
 
 #### <a name="options"></a>Beállítások
 - Elválasztó
@@ -45,7 +47,7 @@ Tároló CSV-fájlból olvassa be.
 - Átugrandó sorok
 
 ### <a name="tsv-file"></a>TSV fájl
-Tárolási egy TSV értékeket tartalmazó fájlból olvassa be.
+A lapon tagolt fájl olvasásához a tárolóból.
 
 #### <a name="options"></a>Beállítások
 - Megjegyzés
@@ -54,39 +56,39 @@ Tárolási egy TSV értékeket tartalmazó fájlból olvassa be.
 - Átugrandó sorok
 
 ### <a name="excel-xlsxlsx"></a>Excel (.xls/.xlsx)
-Egy Excel-fájl, egyszerre, egy lap beolvassa a lap nevének vagy számának megadásával.
+Olvassa el egyszerre egy Excel-fájl egy lapot a lap nevének vagy számának megadásával.
 
 #### <a name="options"></a>Beállítások
-- Lap neve/száma
+- A lap nevének vagy száma
 - Fejlécek
 - Átugrandó sorok
 
 ### <a name="json-file"></a>JSON-fájl
-A JSON-fájl tárolási olvasni. Vegye figyelembe az, hogy a fájl "egybesimított" olvasáskor.
+A JSON-fájl tárolási olvasni. A fájl "egybesimított" olvasáskor.
 
 #### <a name="options"></a>Beállítások
-None
+- None
 
 ### <a name="parquet"></a>Parquet
-Olvassa el a Parquet adatkészlet vagy egyetlen fájl vagy mappa.
+Olvassa el a Parquet adatkészletet, vagy egyetlen fájl vagy mappa.
 
-Parquet, formátum különböző formát ölthetnek tároló. Kisebb adatkészletek esetében egyetlen .parquet fájl használható. Különböző Python könyvtárak olvasása vagy írása egyetlen .parquet fájl támogatja. Azure Machine Learning-munkaterület jelenleg támaszkodik a PyArrow Python kódtár Parquet olvasásához helyi interaktív használat során. Egyetlen .parquet fájlok (feltéve, írt, nem a nagyobb DataSet adatkészlet részeként) támogatja. Parquet adatkészletek is támogatja. 
+Parquet, formátum különböző formát ölthetnek tároló. A kisebb adatkészletek egyetlen .parquet fájl használható. Különböző Python könyvtárak olvasása vagy írása egyetlen .parquet fájlokat támogatja. Egyelőre Azure Machine Learning adatok előkészítése támaszkodik a PyArrow Python kódtár Parquet olvasásához helyi interaktív használat során. Támogatja a egyetlen .parquet fájlok (amennyiben ezek készültek, így, és nem nagyobb adatkészlet részeként), valamint Parquet adatkészletek.
 
-Egy Parquet adatkészlet egynél több .parquet fájl, a nagyobb adatkészletek kisebb partíció jelöli, amelyek mindegyike gyűjteménye. Adatkészletek általában a mappa tartalmazza. Az alapértelmezett Parquet kimeneti formátum közös platformokon, például a Spark- és Hive.
+Parquet adatkészlet egynél több .parquet fájl, a nagyobb adatkészletet kisebb partíciójának jelöli, amelyek mindegyike gyűjteménye. Adatkészletek általában egy mappában található és platformokon, például a Spark- és Hive alapértelmezett parquet kimeneti formátumát.
 
 >[!NOTE]
->A mappában, amelynek több .parquet fájl Parquet adatok olvasása közben, esetén válassza ki azt a címtárat, olvasási és az osztásjelek a legbiztonságosabb a **Parquet Dataset** lehetőséget. Így az egész mappa helyett a fájlok olvasása PyArrow. Ez biztosítja, hogy olvasási bonyolultabb módokat Parquet tárolása a lemezen (például mappa particionálás.) támogatása
+>Parquet adatokat, amelyek egy mappában, amelynek több .parquet fájl olvasása közben, esetén válassza ki azt a címtárat olvasását, a legbiztonságosabb és a **Parquet adatkészlet** lehetőséget. Így az egész mappa helyett a fájlok olvasása PyArrow. Ez biztosítja, hogy a támogatási bonyolultabb módokat Parquet tárolása a lemezen, például a particionálás mappa olvasásához.
 
-Kibővített végrehajtása a Spark Parquet képességek olvasása alapul, és egyetlen fájlok, valamint a mappák támogatja.
+Kibővített végrehajtása a Spark Parquet képességek olvasása alapul, és egyetlen fájlok, valamint a mappákat, hasonló helyi interaktív használatát támogatja.
 
 #### <a name="options"></a>Beállítások
-*A dataset parquet*: Ez a beállítás határozza meg, ha Azure Machine Learning-munkaterület használja-e a unticked vagy a ticked üzemmódban. A unticked mód adott címtárak bővíti, és megkísérli beolvasni egyenként mindegyik fájlban. A ticked módot a könyvtárat, a teljes adatkészlet kezeli, és lehetővé teszi, hogy a PyArrow mérje fel, a legjobb módja a fájlok értelmezhetők.
+- Parquet adatkészlet. Ez a beállítás meghatározza, hogy Azure Machine Learning adatok előkészítése bővíti az adott címtárak-e, és megkísérli beolvasni külön-külön minden fájl (a ki nem jelölt üzemmód), vagy hogy az értékként kezelje a könyvtárban, a teljes adatkészlet (a kijelölt mód). A kijelölt üzemmódot PyArrow úgy dönt, a legjobb módja a fájlok értelmezhetők.
 
 
 ## <a name="locations"></a>Helyek
 ### <a name="local"></a>Helyi
-Helyi merevlemez-meghajtóról vagy a csatlakoztatott hálózati tárolási helyét.
+A helyi merevlemez-meghajtóról vagy egy csatlakoztatott hálózati tárolási helyét.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
-Azure-előfizetés szükséges.
+Az Azure Blob storage, amelyhez az Azure-előfizetés szükséges.
 

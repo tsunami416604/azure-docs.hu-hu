@@ -1,5 +1,5 @@
 ---
-title: "A table storage (Node.js) webalkalmazásnál |} Microsoft Docs"
+title: "Az Azure Table storage: Node.js webalkalmazás létrehozása |} Microsoft Docs"
 description: "Ez az oktatóanyag Azure Storage szolgáltatás és az Azure-modul hozzáadásával a webalkalmazás az Express oktatóanyag épül."
 services: cosmos-db
 documentationcenter: nodejs
@@ -12,15 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e931f0457511963b87c1b14fe873593bcb000c7
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="nodejs-web-application-using-storage"></a>Storage használata node.js-webalkalmazás
+# <a name="azure-table-storage-nodejs-web-application"></a>Az Azure Table storage: Node.js-webalkalmazás
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+
 ## <a name="overview"></a>Áttekintés
 Ebben az oktatóanyagban az alkalmazás létrehozott a [Express használata Node.js-webalkalmazás] oktatóanyag ki van bővítve használata a Microsoft Azure Klienskódtárak segítségével a Node.js adatok szolgáltatások. Hozzon létre egy webalapú feladatlista alkalmazás, amely központilag telepíthető a Azure terjesztheti ki az alkalmazást. A feladatok lista lehetővé teszi a felhasználóknak feladatokat beolvasni, adja hozzá az új feladatok és feladatok megjelölése befejezettként.
 

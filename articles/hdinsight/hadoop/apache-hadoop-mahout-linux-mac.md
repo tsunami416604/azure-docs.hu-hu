@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 11/06/2017
 ms.author: larryfr
-ms.openlocfilehash: c8a992e84d770295a6c7008cfa85ca947fb8fca5
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 65d6dc7bf96666f004038c6dae00d2f4e9ea5d7f
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>Film javaslatok generálása Apache Mahout Linux-alapú hadooppal a HDInsight-(SSH) használatával
 
@@ -59,9 +59,9 @@ Az alábbi munkafolyamat egy egyszerűsített példa movie adatait használó:
 
 Kényelmesen [GroupLens kutatási] [ movielens] minősítés adatokat biztosít a filmek formátuma nem kompatibilis a Mahout. Ezek az adatok érhető el a fürt alapértelmezett tárolás `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Két fájlt `moviedb.txt` és `user-ratings.txt`. A felhasználó-ratings.txt fájllal elemzés, míg az moviedb.txt felhasználóbarát szöveg információk megadására, amikor a vizsgálat eredményeit jeleníti meg.
+Két fájlt `moviedb.txt` és `user-ratings.txt`. A `user-ratings.txt` fájllal elemzése során. A `moviedb.txt` felhasználóbarát szöveges információ biztosítható, ha az eredmények megtekintésével.
 
-A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, `userRating`, és `timestamp`, amely közli a gép magas hogyan minden felhasználó besorolású film. Íme egy példa:
+A felhasználó-ratings.txt szereplő adatok struktúrája `userID`, `movieID`, `userRating`, és `timestamp`, ami azt jelenti, hogy hogyan magas minden felhasználó besorolású film. Íme egy példa:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -97,7 +97,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     Az első oszlop a `userID`. Szereplő értékeket ' ["és"] "vannak `movieId`:`recommendationScore`.
 
-2. A kimeneti együtt a moviedb.txt segítségével nyújtanak további információt a ajánlása. Először igazolnia kell átmásolni a fájlokat helyileg az alábbi parancsokkal:
+2. A kimeneti együtt a moviedb.txt segítségével nyújtanak további információt a ajánlása. Első lépésként másolja a fájlokat helyileg az alábbi parancsokkal:
 
     ```bash
     hdfs dfs -get /example/data/mahoutout/part-r-00000 recommendations.txt

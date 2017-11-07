@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 52d03c535d63aa1985a0991f309f2db1e189717e
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: c18ca8e81fefdee723714c6535160e75ef4d698d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Egy meglévő egyéni SSL-tanúsítvány kötését az Azure Web Apps
 
@@ -151,13 +151,13 @@ Ha az IIS vagy _Certreq.exe_ létrehozni a tanúsítványkérelmet, telepítse a
 
 Az SSL-tanúsítvány feltöltése, kattintson a **SSL-tanúsítványok** a bal oldali navigációs webalkalmazás.
 
-Kattintson a **-tanúsítvány feltöltése**.
+Kattintson a **-tanúsítvány feltöltése**. 
 
 A **PFX-tanúsítványfájlt**, válassza ki a PFX-fájlt. A **tanúsítványjelszavas**, írja be a PFX-fájl exportálása során létrehozott jelszót.
 
 Kattintson a **Feltöltés** gombra.
 
-![Tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate.png)
+![Tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
 App Service befejezése után a tanúsítvány feltöltése megjelenik a **SSL-tanúsítványok** lap.
 
@@ -311,6 +311,10 @@ New-AzureRmWebAppSSLBinding `
     -CertificatePassword <PFX_password> `
     -SslState SniEnabled
 ```
+## <a name="public-certificates-optional"></a>Nyilvános tanúsítványokat (nem kötelező)
+Feltöltheti a [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) a webalkalmazáshoz. A webalkalmazásokkal az App Service vagy az App Service-környezet (ASE) a nyilvános tanúsítványokat is használhat. Ha a tanúsítványt a LocalMachine tanúsítványtárolójában van szüksége, kell használni egy webalkalmazást az App Service-környezetben. További részletekért lásd: [konfigurálása a nyilvános tanúsítványokat a webalkalmazáshoz](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+
+![Nyilvános tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

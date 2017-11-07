@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31f80e93dc741d41a00826c9c8b7ab061c0ca414
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure piactéren
 Ez a cikk **2. lépés**, végigvezeti azokon a virtuális merevlemezeket (VHD), ha telepíti az Azure piactéren előkészítése. A virtuális merevlemezek a Termékváltozat alapját. A folyamat eltér attól függően, hogy meg van adva egy Linux- vagy Windows-alapú Termékváltozat. Ez a cikk mindkét forgatókönyvet ismertet. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -289,6 +289,8 @@ Miután elvégezte a kérdőív, további információkkal szolgál például a 
 A közzététel során adja meg az egységes erőforrás-azonosítók (URI), amely a VHD-k a Termékváltozat létrehozott vezethet. Ezek a Microsoft számára szükségesek a virtuális merevlemezek eléréséhez a minősítési folyamat során. Ezért figyelembe kell egy közös hozzáférésű jogosultságkódot URI minden virtuális merevlemez létrehozásához. Ez a megadott URI kell megadni a **képek** a közzétételi Portáljára lapján.
 
 A közös hozzáférésű jogosultságkódot létrehozni URI a következő követelményeknek kell megfelelniük:
+
+Megjegyzés: az alábbi utasítások alapján csak a nem felügyelt lemezeket, amelyeket az egyetlen támogatott típusa alkalmazhatók.
 
 * Közös hozzáférésű jogosultságkódot URI-azonosítók a VHD-k létrehozásakor listáját és az olvasási engedélyek megfelelőek. Ne adjon írási vagy törlési hozzáférést.
 * Az időtartamot a hozzáférés legalább három (3) héten belül kell lennie, a közös hozzáférésű jogosultságkódot URI létrehozásakor.

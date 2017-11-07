@@ -12,18 +12,24 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/02/2017
 ms.author: juluk
-ms.openlocfilehash: 7f5c034df3410fc5563a5ed657f7c1aa0f4135ec
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 3acea56ea414f0c43333a02274e91226db29d454
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Azure-felhőbe rendszerhéj (előzetes verzió) áttekintése
 Azure Cloud rendszerhéjjal egy interaktív, a böngésző által elérhető rendszerhéj Azure-erőforrások kezeléséhez.
 Azt a rugalmasságot biztosít a rendszerhéj élmény igényei leginkább megfelelő kiválasztása.
 A Linuxot használók választhatják a Basht, a Windows-használók pedig a PowerShellt.
+
+Indítsa el a felhő rendszerhéj ikonra az Azure-portálon:
+
+![Portál indítása](media/overview/portal-launch-icon.png)
+
+Kihasználhatja a Bash vagy a PowerShell a rendszerhéj választó legördülő listából:
 
 ![A felhő rendszerhéj bash](media/overview/overview-bash-pic.png)
 
@@ -44,16 +50,16 @@ Felhő rendszerhéj előre előre telepített népszerű parancssori eszközökk
 A teljes tooling listájának megtekintése [élmény Bash](features.md#tools) és [PowerShell élmény.](features-powershell.md#tools)
 
 ### <a name="automatic-authentication"></a>Automatikus hitelesítéshez
-Felhő rendszerhéj biztonságosan hitelesíti automatikusan minden munkamenet azonnali erőforrások elérése érdekében a PowerShell-parancsmagok és az Azure CLI 2.0 keresztül.
+Felhő rendszerhéj biztonságosan hitelesíti automatikusan minden munkamenet azonnali erőforrások elérése érdekében az Azure CLI 2.0 vagy az Azure PowerShell parancsmagokon keresztül.
 
 ### <a name="connect-your-azure-file-storage"></a>Csatlakozás az Azure File storage
-Felhő rendszerhéj gépek ideiglenes, és emiatt igényel csatlakoztatni az Azure fájlmegosztások `clouddrive` megőrizni a $Home címtárban.
+Felhő rendszerhéj gépek ideiglenes, és emiatt igényel az egy Azure fájlok megosztás csatlakoztatható `clouddrive` megőrizni a $Home címtárban.
 Felhő rendszerhéj kérni fogja az erőforrás létrehozása első indítsa el a csoport, a tárfiók, és fájlmegosztás, az Ön nevében. Ez egy egyszeri lépés, és lesz automatikusan hozzárendelve minden munkamenetben. Egyetlen fájlmegosztást képezhetők és Bash és a felhő rendszerhéj PowerShell is használható.
 
 #### <a name="create-new-storage"></a>Új tároló létrehozása
 ![](media/overview/basic-storage.png)
 
-A helyileg redundáns tárolás (LRS) fiók és az Azure fájlmegosztás hozhatók létre az Ön nevében. Az Azure fájlmegosztás Bash és a PowerShell környezetben használandó, ha úgy dönt, hogy egyaránt. Rendszeres tárolási költségek vonatkoznak.
+Egy helyileg redundáns tárolás (LRS) fiókot és az Azure-fájlok létrehozhatók az Ön nevében. Azure-fájlok Bash és a PowerShell környezetben használandó, ha úgy dönt, hogy egyaránt. Rendszeres tárolási költségek vonatkoznak.
 
 Három erőforrások hozza létre az Ön nevében:
 1. Az erőforráscsoport neve:`cloud-shell-storage-<region>`
@@ -90,7 +96,7 @@ További információk a szolgáltatások [felhő rendszerhéj Bash](features.md
 Próbálja ki ezeket a quickstarts szereplő példák [felhő rendszerhéj Bash](quickstart.md) és [felhő rendszerhéj PowerShell](quickstart-powershell.md).
 
 ## <a name="pricing"></a>Díjszabás
-Felhő rendszerhéj futtató gépen egy csatlakoztatott Azure fájlmegosztás előfeltételként az ingyenes. Rendszeres tárolási költségek vonatkoznak.
+A felhő rendszerhéj futtató gépen szabad, az Azure Fileshoz csatlakoztatott megosztás előfeltételeként. Rendszeres tárolási költségek vonatkoznak.
 
 ## <a name="supported-browsers"></a>Támogatott böngészők
 Felhő rendszerhéj Chrome, biztonsági és Safari ajánlott.

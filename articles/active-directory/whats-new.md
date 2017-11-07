@@ -1,6 +1,6 @@
 ---
 title: "Újdonságok Azure Active Directory kibocsátási megjegyzései |} Microsoft Docs"
-description: "Használja a kiadásban jelzi, hogy a legfrissebb verziókban ismert problémákkal kapcsolatban maradhat, javítások, programhiba elavult funkciók és tervez módosítja az Azure Active Directory (Azure AD)."
+description: "Ismerje meg, mi az az Azure Active Directoryval (Azure AD) többek között a legújabb kibocsátási megjegyzései, ismert problémák, hibajavításokat tartalmaz, az elavult funkciók és a jövőbeni változtatásokról új."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,23 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 11/06/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 54a6f197de82e5c4ae93d196a532aec7793bbd4c
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0fd0ee5bb0bc3e9dcda9db291a1f9dbac6a2e7dc
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
 
----
 
-Naprakész legyen what's new in Azure Active Directoryban ez feliratkozással [hírcsatorna](https://docs.microsoft.com/api/search/rss?search=%22what%27s%20new%20in%20azure%20active%20directory%3%22&locale=en-us) az RSS-hírcsatorna olvasó meg kedvenc.
 
----
+> Naprakész legyen what's new in Azure Active Directoryban ez feliratkozással [hírcsatorna](https://docs.microsoft.com/api/search/rss?search=%22what%27s%20new%20in%20azure%20active%20directory%3F%22&locale=en-us) az RSS-hírcsatorna olvasó meg kedvenc.
+
 
 
 Azure Active Directory javítása azt vannak a folyamatos. Ahhoz, hogy naprakész legutóbbi fejlesztésekkel, ez a témakör adatokkal kapcsolatban:

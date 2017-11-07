@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 06/30/2017
-ms.openlocfilehash: 7ad4a2fd7452f31689a02b144078a9630bfd5259
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 11/03/2017
+ms.openlocfilehash: 0b8ee73ab86dde2b2c09c9fe2e73209d000b3f26
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés a Ruby használatával
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet egy [Ruby](https://www.ruby-lang.org)-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ebben a cikkben azt feltételezi, hogy ismeri a Ruby használatával történő fejlesztéséhez, és nem ismeri a PostgreSQL az Azure-adatbázis használata.
@@ -53,7 +53,7 @@ Telepítse a Rubyt saját számítógépén.
 - Hozza létre a Ruby pg modult a Gem használatával a `sudo gem install pg` parancs futtatásával.
 
 ## <a name="run-ruby-code"></a>Ruby-kód futtatása 
-- Mentse a kódot egy szövegfájlba, és mentse a fájlt egy projektmappába az .rb fájlkiterjesztéssel, például: `C:\rubypostgres\read.rb` vagy `/home/username/rubypostgres/read.rb`
+- A kód egy szövegfájlba fájl kiterjesztése .rb mentéséhez, és mentse a fájlt a projekt mappába, például a `C:\rubypostgres\read.rb` vagy`/home/username/rubypostgres/read.rb`
 - A kód futtatásához nyissa meg a parancssort vagy a bash rendszerhéjat. Lépjen a projektmappába a `cd rubypostgres` paranccsal, majd írja be a `ruby read.rb` parancsot az alkalmazás futtatásához.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése

@@ -14,25 +14,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: c1a3370d29b47da752e4ab1ea67ccc1a4cdd94df
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: cf077fef6df2fd21cf51f6b4fd4e26a4b5081247
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Kibocsátási megjegyzések a Microsoft Azure Tártallózó (előzetes verzió)
 
-A cikkben a kibocsátási megjegyzések a 0.9.0-s. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
+A cikkben a kibocsátási megjegyzések a 0.9.2. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
 
 [A Microsoft Azure Tártallózó (előzetes verzió)](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux rendszeren.
 
+## <a name="version-092"></a>0.9.2 verzió
+11/01/2017
+
+### <a name="download-azure-storage-explorer-092-preview"></a>Töltse le az Azure Tártallózó (előzetes verzió) 0.9.2
+- [A Windows Azure Tártallózó (előzetes verzió) 0.9.2](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [A Mac Azure Tártallózó (előzetes verzió) 0.9.2](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.2](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>Gyorsjavítások
+* Váratlan adatok módosítása volt lehetséges, attól függően, hogy a helyi időzónát táblaentitásokat Edm.DateTime értékeinek szerkesztése során. A szerkesztő mostantól használ a egyszerű szövegmező Edm.DateTime értékek pontos, egységes ad.
+* Egy csoport nevét és a kulcs csatolt blobok feltöltése/letöltése nem indul el. A probléma javítását.
+* Korábban Tártallózó csak felajánlja újból hitelesítésre a régi fiókot, ha egy vagy több a fiók-előfizetések választotta. Most Tártallózó kérni fogja, még akkor is, ha a fiók teljesen ki van szűrve.
+* A végpontok Azure Amerikai Egyesült államokbeli kormányzati tartomány hibás volt. Rögzítettek.
+* Az Alkalmaz gombra a fiókok kezelése panelen lett néha nehéz kattintson. Ez már nem megtörténik.
+
+### <a name="new"></a>új
+* Azure Cosmos DB Preview támogatása:
+    * [Online dokumentáció](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * Adatbázisok és a gyűjtemények létrehozása
+    * Adatok kezelése
+    * Lekérdezési, hozzon létre vagy dokumentumok törlése
+    * A tárolt eljárások, felhasználó által megadott függvények és eseményindítók frissítése
+    * Kapcsolati karakterláncok használatával csatlakozhat, és az adatbázisok kezelése
+* Növeli a sok kisméretű blobok feltöltése/letöltés a teljesítményt.
+* Bekerül egy "Próbálja meg újra All" művelet, ha egy blob feltöltése vagy blob letöltési csoport hibái.
+* A Tártallózó most felfüggeszti iterációs blob feltöltése/letöltése során, ha azt észleli, a hálózati kapcsolat megszakadt. Ezután folytathatja a iterációs követően a hálózati kapcsolat helyreáll.
+* Mostantól lehetőség van a "Bezárás All", "Bezárás mások" és a "Bezárás" lapon a helyi menü segítségével.
+* Most már a Tártallózó natív párbeszédpanelek és natív helyi menük.
+* Tártallózó alkalmazással akadálymentesített áll. Fejlesztések a következők:
+    * Továbbfejlesztett képernyő olvasó, NVDA Windows rendszeren, és a támogatása VoiceOver Mac gépen
+    * Továbbfejlesztett kontrasztos témák használatát
+    * Kijavítja a bejárási és billentyűzet billentyűzetfókusz
+
+### <a name="fixes"></a>Javítások
+* Ha próbált megnyitni, vagy letöltheti egy blobot a Windows fájl neve érvénytelen, a művelet sikertelen lesz. A Tártallózó most ellenőrzés, hogy a blob neve érvénytelen, és kérje meg, ha szeretné kódolása, vagy hagyja ki a blob. A Tártallózó is észlelni fogja, ha a fájl nevét úgy tűnik, hogy kódolhatók, és megkérdezi, hogy ha kívánja dekódolni a feltöltés előtt.
+* Blob feltöltése közben a cél blob tároló szerkesztője néha nem megfelelően frissíti. A probléma javítását.
+* Több űrlap kapcsolati karakterláncok és a SAS URI-k támogatása közleményében szerepelt. Rendszer foglalkoztak minden ismert problémákat, de küldjön visszajelzést, ha hibát tapasztal további.
+* A frissítési értesítés 0.9.0-s a felhasználók megszakadt. Ezt a problémát, és azok a hiba érinti, manuálisan töltse le a legújabb verzióját a Tártallózó [Itt](https://azure.microsoft.com/en-us/features/storage-explorer/).
+
+### <a name="known-issues"></a>Ismert problémák
+* A Tártallózó nem támogatja az AD FS-fiókokat.
+* Billentyűparancsok a "Nézet Explorer" és "View Fiókkezelés" kell lennie a Ctrl vagy Cmd + Shift + E, és a Ctrl vagy Cmd + Shift + A kulcsattribútumokkal.
+* Ha Azure verem célzó, bizonyos fájlokat, hozzáfűző blobok feltöltése meghiúsulhat.
+* Után a "Mégse gombra" kattintva meg olyan feladatra, ez eltarthat egy kis ideig, megszakítja a tevékenység. Ennek oka az itt leírt Mégse szűrő megoldást használunk.
+* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd akkor kell biztosítani, hogy a döntési elfelejti Tártallózó újraindítására.
+* A fiók beállítások panel jelenhet meg, hogy meg kell adnia a hitelesítő adatok előfizetések szűrése.
+* Blobok (külön-külön vagy átnevezett blob tárolóhoz belül) átnevezése nem őrzi meg a pillanatképeket. Minden más tulajdonságok és metaadatok BLOB-, fájl-és entitások egy átnevezési megőriz.
+* Bár az Azure-verem jelenleg nem támogatja a fájlmegosztásokat, fájlmegosztások csomópont továbbra is egy csatolt verem Azure storage-fiók alatt jelenik meg.
+* A Tártallózó által használt elektronsugár rendszerhéj problémák léptek fel néhány (grafikus processzorral) GPU-hardveres gyorsítás rendelkezik. A Tártallózó (üres) üres fő ablak megjelenítése, ha megpróbálhatja Tártallózó indítása a parancssorból, és a GPU gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
+```
+./StorageExplorer.exe --disable-gpu
+```
+* Ubuntu 14.04 felhasználójához, meg kell győződnie arról ÖET folyamatosan naprakész adatokat tartalmazzon – ezt megteheti a következő parancsok futtatásával, és indítsa újra a számítógépet:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a számítógépet erre:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+
+
 ## <a name="version-091--090-preview"></a>Verzió 0.9.1 / 0.9.0-s (előzetes verzió)
 10/20/2017
-
 ### <a name="download-azure-storage-explorer-091-preview"></a>Töltse le az Azure Tártallózó (előzetes verzió) 0.9.1
-- [A Windows Azure Tártallózó (előzetes verzió) 0.9.1](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [A Mac Azure Tártallózó (előzetes verzió) 0.9.1](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.1](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [Töltse le a Windows Azure Tártallózó (előzetes verzió) 0.9.1](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [Töltse le a Mac Azure Tártallózó (előzetes verzió) 0.9.1](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.1 letöltése](https://go.microsoft.com/fwlink/?LinkId=809308)
 
 ### <a name="new"></a>új
 * Azure Cosmos DB Preview támogatása:
@@ -86,13 +154,30 @@ A cikkben a kibocsátási megjegyzések a 0.9.0-s. Azure Tártallózó (előzete
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-0816-preview"></a>Verzió 0.8.16 (előzetes verzió)
-8/21/2017
 
-### <a name="download-azure-storage-explorer-0816-preview"></a>Töltse le az Azure Tártallózó (előzetes verzió) 0.8.16
-* [Töltse le a Windows Azure Tártallózó (előzetes verzió) 0.8.16](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Töltse le a Mac Azure Tártallózó (előzetes verzió) 0.8.16](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.8.16 letöltése](https://go.microsoft.com/fwlink/?LinkId=809308)
+
+## <a name="previous-releases"></a>Korábbi kiadások
+
+* [0.8.16 verzió](#version-0816)
+* [0.8.14 verzió](#version-0814)
+* [0.8.13 verzió](#version-0813)
+* [Verzió 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
+* [Verzió 0.8.9 / 0.8.8](#version-089--088)
+* [0.8.7 verzió](#version-087)
+* [0.8.6 verzió](#version-086)
+* [0.8.5 verzió](#version-085)
+* [0.8.4 verzió](#version-084)
+* [0.8.3 verzió](#version-083)
+* [0.8.2 verzió](#version-082)
+* [0.8.0 verzió](#version-080)
+* [0.7.20160509.0 verzió](#version-07201605090)
+* [0.7.20160325.0 verzió](#version-07201603250)
+* [0.7.20160129.1 verzió](#version-07201601291)
+* [0.7.20160105.0 verzió](#version-07201601050)
+* [0.7.20151116.0 verzió](#version-07201511160)
+
+## <a name="version-0816"></a>0.8.16 verzió
+8/21/2017
 
 ### <a name="new"></a>új
 * Amikor megnyit egy blobot, Tártallózó kérni fogja a letöltött fájl feltöltéséhez, ha egy változást észlel
@@ -130,26 +215,6 @@ A cikkben a kibocsátási megjegyzések a 0.9.0-s. Azure Tártallózó (előzete
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Korábbi kiadások
-
-* [0.8.14 verzió](#version-0814)
-* [0.8.13 verzió](#version-0813)
-* [Verzió 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
-* [Verzió 0.8.9 / 0.8.8](#version-089--088)
-* [0.8.7 verzió](#version-087)
-* [0.8.6 verzió](#version-086)
-* [0.8.5 verzió](#version-085)
-* [0.8.4 verzió](#version-084)
-* [0.8.3 verzió](#version-083)
-* [0.8.2 verzió](#version-082)
-* [0.8.0 verzió](#version-080)
-* [0.7.20160509.0 verzió](#version-07201605090)
-* [0.7.20160325.0 verzió](#version-07201603250)
-* [0.7.20160129.1 verzió](#version-07201601291)
-* [0.7.20160105.0 verzió](#version-07201601050)
-* [0.7.20151116.0 verzió](#version-07201511160)
-
 
 ### <a name="version-0814"></a>0.8.14 verzió
 06/22/2017
