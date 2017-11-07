@@ -1,14 +1,14 @@
 # Áttekintés
 ## [Virtuális hálózatok](virtual-networks-overview.md)
-## [Felhasználó által megadott útvonalak és IP-továbbítás](virtual-networks-udr-overview.md)
+## [Útválasztás](virtual-networks-udr-overview.md)
 ## [Társviszony létesítése virtuális hálózatok között](virtual-network-peering-overview.md)
 ## [Virtuális hálózati szolgáltatásvégpontok](virtual-network-service-endpoints-overview.md)
 ## [Virtuális hálózatot az Azure-szolgáltatásokhoz](virtual-network-for-azure-services.md)
 ## [Biztonság](security-overview.md)
 ## [Az üzletmenet folytonossága](virtual-network-disaster-recovery-guidance.md)
-## [Gyakori kérdések](virtual-networks-faq.md)
 ## [IP-címzés](virtual-network-ip-addresses-overview-arm.md)
 ## [Védelem DDOS-támadások ellen](ddos-protection-overview.md)
+## [Gyakori kérdések](virtual-networks-faq.md)
 ## Klasszikus
 ### [IP-címzés](virtual-network-ip-addresses-overview-classic.md)
 ### [Hozzáférés-vezérlési listák](virtual-networks-acl.md)

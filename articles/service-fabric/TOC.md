@@ -6,8 +6,9 @@
 ## [.NET-alkalmazás létrehozása](service-fabric-quickstart-dotnet.md)
 ## [Linux-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers-linux.md)
 ## [Windows-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers.md)
+## [Java-alkalmazás üzembe helyezése](service-fabric-quickstart-java.md)
 
-# oktatóanyagokat
+# Oktatóanyagok
 ## .NET-alkalmazás üzembe helyezése
 ### [1. .NET-alkalmazás összeállítása](service-fabric-tutorial-create-dotnet-app.md)
 ### [2. Az alkalmazás telepítése](service-fabric-tutorial-deploy-app-to-party-cluster.md)
@@ -28,7 +29,9 @@
 ### 1 – Fürt létrehozása az Azure-ban
 #### [1a – Windows rendszerű fürt létrehozása](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 #### [1b – Linux rendszerű fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
-### [2 – Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
+### [2 – A fürt átméretezése](service-fabric-tutorial-scale-cluster.md)
+### [3 – Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
+
 
 # Példák
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=service-fabric)

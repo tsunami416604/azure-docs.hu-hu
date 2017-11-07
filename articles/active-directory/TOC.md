@@ -240,6 +240,7 @@
 ### [Több címtár](active-directory-licensing-directory-independence.md)
 ### [O365-címtárak](active-directory-manage-o365-subscription.md)
 ### [Önkiszolgáló regisztráció](active-directory-self-service-signup.md)
+#### [Nem felügyelt könyvtár átvétele](domains-admin-takeover.md)
 ### [Vállalati állapothordozás](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [Bekapcsolás](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [Csoportházirend-beállítások](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)

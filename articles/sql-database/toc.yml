@@ -309,6 +309,10 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure Automation
           href: sql-database-manage-automation.md
+        - name: Az SQL Data Synchez ajánlott eljárások
+          href: sql-database-best-practices-data-sync.md
+        - name: Az SQL Data Synch hibaelhárítása
+          href: sql-database-troubleshoot-data-sync.md
     - name: Horizontális felskálázás
       items:
         - name: Szilánkokra osztott alkalmazás létrehozása

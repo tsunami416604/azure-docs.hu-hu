@@ -19,7 +19,7 @@
           href: quickstart-create-data-factory-rest-api.md
         - name: Portál
           href: quickstart-create-data-factory-portal.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – SSIS csomagok üzembe helyezése az Azure-ban
       href: tutorial-deploy-ssis-packages-azure.md
@@ -71,6 +71,8 @@
               href: connector-azure-cosmos-db.md
             - name: Azure Data Lake Store
               href: connector-azure-data-lake-store.md
+            - name: Azure File Storage
+              href: connector-azure-file-storage.md
             - name: Azure Search
               href: connector-azure-search.md
             - name: Azure SQL Database

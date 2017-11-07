@@ -78,6 +78,7 @@
 ### [Javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Jellemzőalapú navigáció](search-faceted-navigation.md)
 ### [Szinonimák előzetes verziója](search-synonyms.md)
+### [moreLikeThis előzetes verziója](search-more-like-this.md)
 
 # Referencia
 
@@ -86,7 +87,7 @@
 ## [Python (Felügyelet)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST](/rest/api/searchservice)
 ## [.REST (Felügyelet)](/rest/api/searchmanagement)
-## [Szolgáltatási REST (előzetes verzió)](search-api-2015-02-28-preview.md)
+## [Szolgáltatási REST (előzetes verzió)](search-api-2016-09-01-preview.md)
 
 # Erőforrások
 

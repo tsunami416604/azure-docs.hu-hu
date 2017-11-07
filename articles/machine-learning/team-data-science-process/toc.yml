@@ -84,8 +84,20 @@
         - name: Azure Machine Learning-munkaterület
           href: ../studio/create-workspace.md
           maintainContext: true
-        - name: Virtuális gépek telepítése
-          href: virtual-machines.md
+        - name: Adatelemzési virtuális gép beállítása
+          items:
+            - name: Windows rendszerű adatelemzési virtuális gép létrehozása
+              href: ../data-science-virtual-machine/provision-vm.md
+              maintainContext: true
+            - name: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
+              href: ../data-science-virtual-machine/dsvm-ubuntu-intro.md
+              maintainContext: true
+            - name: CentOS rendszerű adatelemzési virtuális gép létrehozása
+              href: ../data-science-virtual-machine/linux-dsvm-intro.md
+              maintainContext: true
+            - name: Mélytanulási virtuális gép létrehozása
+              href: ../data-science-virtual-machine/provision-deep-learning-dsvm.md
+              maintainContext: true
     - name: Üzleti igények elemzése
       items:
         - name: A szituáció azonosítása
