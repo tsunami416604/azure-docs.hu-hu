@@ -31,7 +31,7 @@
           href: connect-go.md
         - name: MySQL Workbench
           href: connect-workbench.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Adatbázis-tervezés
       items:
@@ -79,8 +79,8 @@
       href: concepts-monitoring.md
     - name: Fejlesztés
       items:
-        - name: Adatkapcsolattárak
-          href: concepts-connection-libraries.md
+        - name: Az illesztőprogramok és eszközök kompatibilitása
+          href: concepts-compatibility.md
         - name: Alkalmazásfejlesztés
           href: concepts-database-application-development.md
     - name: Adatbázis migrálása

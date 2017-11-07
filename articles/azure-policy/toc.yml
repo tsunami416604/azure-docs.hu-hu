@@ -11,10 +11,18 @@
       href: assign-policy-definition-ps.md
     - name: Szabályzat hozzárendelése – Azure CLI
       href: assign-policy-definition-cli.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Azure-szabályzat létrehozása és kezelése
       href: create-manage-policy.md
+- name: Példák
+  items:
+    - name: Szabályzatsablonok
+      href: json-samples.md
+- name: Alapelvek
+  items:
+    - name: Azure szabályzatdefiníciók struktúrája
+      href: policy-definition.md
 - name: Referencia
   items:
     - name: Azure CLI

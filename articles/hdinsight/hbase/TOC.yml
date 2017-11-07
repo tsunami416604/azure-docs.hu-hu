@@ -1,0 +1,120 @@
+- name: "Azure HDInsight\_– dokumentáció"
+  href: /azure/hdinsight
+- name: HBase on HDInsight
+  items:
+    - name: Áttekintés
+      href: apache-hbase-overview.md
+    - name: Összetevő verziókezelése
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
+- name: Bevezetés
+  items:
+    - name: Első lépések a HBase-ben és a NoSQL-ben
+      href: apache-hbase-tutorial-get-started-linux.md
+    - name: Kapacitástervezés
+      href: ../hdinsight-capacity-planning.md
+      maintainContext: true
+- name: Útmutató
+  items:
+    - name: Fürt létrehozása virtuális hálózatban
+      href: apache-hbase-provision-vnet.md
+    - name: HBase-replikáció konfigurálása
+      href: apache-hbase-replication.md
+    - name: A Phoenix és az SQLLine használata
+      href: apache-hbase-phoenix-squirrel-linux.md
+    - name: Java-alkalmazások fejlesztése
+      href: apache-hbase-build-java-maven-linux.md
+    - name: A HBase hibaelhárítása
+      href: apache-troubleshoot-hbase.md
+- name: Referencia
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.hdinsight
+    - name: .NET (Hadoop)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet'
+    - name: .NET (HBase)
+      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
+    - name: .NET (Avro)
+      href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
+    - name: REST
+      href: /rest/api/hdinsight/
+    - name: REST (Spark)
+      href: /rest/api/hdinsightspark/
+- name: Kapcsolódó
+  items:
+    - name: Windows-fürtök
+      items:
+        - name: Windows-fürtök áttelepítése Linux-fürtökre
+          href: ../hdinsight-migrate-from-windows-to-linux.md
+          maintainContext: true
+        - name: .NET–megoldások áttelepítése Linux-fürtökre
+          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
+          maintainContext: true
+        - name: Hadoop MapReduce-minták futtatása
+          href: ../hdinsight-run-samples.md
+          maintainContext: true
+        - name: A Solr használata fürtökön
+          href: ../hdinsight-hadoop-solr-install-linux.md
+          maintainContext: true
+        - name: A Giraph használata nagyméretű gráfok feldolgozásához
+          href: ../hdinsight-hadoop-giraph-install.md
+          maintainContext: true
+        - name: Az Oozie használata a munkafolyamatokhoz
+          href: ../hdinsight-use-oozie.md
+          maintainContext: true
+        - name: Storm-topológiák üzembe helyezése és kezelése
+          href: ../storm/apache-storm-deploy-monitor-topology.md
+          maintainContext: true
+        - name: A Maven használata Java-alkalmazások létrehozásához
+          href: ../hdinsight-hbase-build-java-maven.md
+          maintainContext: true
+        - name: A Tez felhasználói felület használata a Tez-feladatok hibakereséséhez
+          href: ../hdinsight-debug-tez-ui.md
+          maintainContext: true
+        - name: Testreszabás szkriptműveletekkel
+          href: ../hdinsight-hadoop-customize-cluster.md
+          maintainContext: true
+        - name: YARN-alkalmazásnaplók elérése
+          href: ../hdinsight-hadoop-access-yarn-app-logs.md
+          maintainContext: true
+        - name: Az Apache Phoenix és az SQuirreL használata
+          href: ../hdinsight-hbase-phoenix-squirrel.md
+          maintainContext: true
+        - name: Filmajánlók létrehozása a Mahout használatával
+          href: ../hdinsight-mahout.md
+          maintainContext: true
+        - name: Repülőjáratok késési adatainak elemzése
+          href: ../hdinsight-analyze-flight-delay-data.md
+          maintainContext: true
+        - name: Szkriptműveletek fejlesztése
+          href: ../hdinsight-hadoop-script-actions.md
+          maintainContext: true
+        - name: Twitter-adatok elemzése
+          href: ../hdinsight-analyze-twitter-data.md
+          maintainContext: true
+        - name: Fürtök felügyelete az Azure Portalon
+          href: ../hdinsight-administer-use-management-portal.md
+          maintainContext: true
+        - name: Fürtök figyelése az Ambari API-val
+          href: ../hdinsight-monitor-use-ambari-api.md
+          maintainContext: true
+- name: Erőforrások
+  items:
+    - name: Kibocsátási megjegyzések
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: Segítség kérése a fórumokon
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
+    - name: Képzési terv
+      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
+    - name: Microsoft Professional Program big data-megoldásokhoz
+      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: A HDInsight Windows-eszközei
+      href: ../hdinsight-hadoop-windows-tools.md
+      maintainContext: true

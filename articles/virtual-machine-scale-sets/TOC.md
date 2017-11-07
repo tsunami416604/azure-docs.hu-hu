@@ -36,6 +36,7 @@
 #### [Az Azure CLI 2.0 használata](virtual-machine-scale-sets-manage-cli.md)
 #### [Azure PowerShell használata](virtual-machine-scale-sets-manage-powershell.md)
 ### [Függőleges méretezés méretezési csoportban](virtual-machine-scale-sets-vertical-scale-reprovision.md)
+### [Operációs rendszer automatikus frissítései](virtual-machine-scale-sets-automatic-upgrade.md)
 ### [Méretezésicsoport-frissítések](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [DSC és méretezési csoportok használata](virtual-machine-scale-sets-dsc.md)
 ### [Méretezési csoportok hálózatkezelése](virtual-machine-scale-sets-networking.md)
