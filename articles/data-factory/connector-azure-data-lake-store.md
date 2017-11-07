@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: 5e6e56dd7ce1a16cadf35f9efe959ac490a65071
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: HT
+ms.openlocfilehash: 6ef76763859482d24c088f58fe361882cc4a619b
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Data Lake Store az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az A
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Azure Data Lake Store-összekötőt a V1](v1/data-factory-azure-datalake-connector.md).
 
-## <a name="supported-scenarios"></a>Támogatott esetek
+## <a name="supported-capabilities"></a>Támogatott képességei
 
 Adatok másolása az egyetlen támogatott forrás adattár az Azure Data Lake Store, vagy adatok másolása az Azure Data Lake Store az egyetlen támogatott fogadó adattár. A másolási tevékenység által támogatott adatforrások vagy mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -52,7 +52,7 @@ Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regis
 - Alkalmazás kulcs
 - Bérlőazonosító
 
-[!TIP]
+>[!TIP]
 > Győződjön meg arról, hogy biztosítsa a szolgáltatás egyszerű megfelelő engedélyeket az Azure Data Lake Store:
 >- Forrásaként, adja meg legalább **olvasási + Execute** adat-hozzáférési listán, és másolja át egy mappa tartalmát vagy **olvasási** engedéllyel egy fájl másolása. Nem követelmény a fióknak szintű hozzáférés-vezérlés.
 >- Mint fogadó, adja meg legalább **írási + hajtható végre** adat-hozzáférési engedélye a mappában található elemek gyermek létrehozására. Azure IR használatakor építve a másolás és (a forrás- és fogadó vannak felhő), lehetővé teszik a Data Factory Data Lake Store régió észleli, hogy adja meg legalább **olvasó** fiók hozzáférés-vezérlés (IAM) szerepkörhöz. Ha el szeretné kerülni ezt a IAM-szerepkört [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) a helyét, valamint a Data Lake Store, a Data Lake Store-ban társítása a társított szolgáltatás a következő példa.

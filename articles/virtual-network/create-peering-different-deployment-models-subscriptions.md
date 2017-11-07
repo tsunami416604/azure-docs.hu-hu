@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: c7d2333c90f6ceca93b3eb702c3a010c37a0f70b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a8ba64f1d4b2d638f156c0dfc20d6686312daa5
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellek és előfizetések
 
@@ -33,48 +33,13 @@ Virtuális hálózati társviszony-létesítés létrehozásának lépései elt�
 |[Mindkét erőforrás-kezelő](create-peering-different-subscriptions.md) |Különböző|
 |[Egy erőforrás-kezelő egy klasszikus](create-peering-different-deployment-models.md) |Azonos|
 
-Virtuális hálózati társviszony-létesítés nem hozható létre, a klasszikus üzembe helyezési modellben telepített virtuális hálózatok között. Virtuális hálózati társviszony-létesítés csak létrehozhatók, amelyek azonos Azure-régióban található virtuális hálózatok között. 
+Virtuális hálózati társviszony-létesítés nem hozható létre, a klasszikus üzembe helyezési modellben telepített virtuális hálózatok között. Ha mindkét létrehozott virtuális hálózatok csatlakozhat a klasszikus üzembe helyezési modellben van szüksége, használhatja az Azure [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális hálózathoz csatlakozni. 
 
-  > [!WARNING]
-  > A virtuális hálózati társviszony-létesítés különböző régiókban virtuális hálózatok közötti létrehozásának jelenleg előzetes verzió. Az alábbi mintában előfizetés tud regisztrálni. Ebben a forgatókönyvben létrehozott virtuális hálózati társviszony nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, mint a társviszony-létesítés forgatókönyvekben általános rendelkezésre állási kiadás virtuális hálózat létrehozása. Ebben a forgatókönyvben létrehozott virtuális hálózati társviszony nem támogatottak, van, korlátozott képességeit, és előfordulhat, hogy nem érhető el az összes Azure-régiók. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
+Ez az oktatóanyag állomásokhoz virtuális hálózatok ugyanabban a régióban. Különböző régiókban lévő virtuális hálózatok egyenrangú lehetősége jelenleg előzetes verzió. Hajtsa végre a [regisztrálni a globális virtuális hálózati társviszony-létesítés](#register) különböző régiókban, vagy a társviszony-létesítési sikertelen a virtuális hálózatok egyenrangú megkísérlése előtt. Csatlakozás az Azure virtuális hálózatok különböző régiókban képes [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) általánosan elérhető, és nincs szükség regisztrációra.
 
 A virtuális hálózati társviszony-létesítés különböző előfizetéshez létező virtuális hálózatok közötti létrehozásakor az előfizetések is kell társítani a azonos Azure Active Directory-bérlő. Ha még nem rendelkezik egy Azure Active Directory-bérlőt, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch). Ha mindkét létrehozott a klasszikus üzembe helyezési modell használatával, amely létezik a különböző Azure-régiók vagy, amely létezik az előfizetések különböző Azure Active Directory-bérlő társított virtuális hálózatok csatlakoztatása van szüksége, használhatja az Azure [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális hálózathoz csatlakozni.
 
 Használhatja a [Azure-portálon](#portal), az Azure [parancssori felület](#cli) (CLI), vagy Azure [PowerShell](#powershell) létrehozni a virtuális hálózati társviszony-létesítés. Kattintson az előző eszköz hivatkozásokra kattintva közvetlenül Ugrás a virtuális hálózati társviszony-létesítés a eszközzel választott létrehozásához szükséges lépésekről.
-
-## <a name="register"></a>A globális Vnetben társviszony-létesítés Preview regisztrálása
-
-Virtuális hálózatok egyenrangú régiók között, regisztráljon az előzetes, hajtsa végre a lépéseket, hogy kövesse a mindkét előfizetések, amelyek tartalmazzák a virtuális hálózatokat partnert szeretné. Az egyetlen eszköz segítségével regisztrálja az előzetes PowerShell.
-
-1. Telepítse a PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) moduljának legújabb verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Indítson el egy PowerShell-munkamenetet, és jelentkezzen be az Azure használatával a `Login-AzureRmAccount` parancsot.
-3. Az előfizetés regisztrálása a az előzetes kiadásban a következő parancsok beírásával:
-
-    ```powershell
-    Register-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-
-    Register-AzureRmProviderFeature `
-      -FeatureName AllowClassicCrossSubscriptionPeering `
-      -ProviderNamespace Microsoft.Network
-
-    Register-AzureRmResourceProvider `
-      -ProviderNamespace Microsoft.Network
-    ```
-    Ne hajtsa végre a portál, az Azure parancssori felület vagy a PowerShell szakaszok, amíg ez a cikk lépéseit a **RegistrationState** kap, miután a rendszer az alábbi parancs beírásával kimeneti **regisztrált** mindkét elő:
-
-    ```powershell
-    Get-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    
-    Get-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    ```
-  > [!WARNING]
-  > A virtuális hálózati társviszony-létesítés különböző régiókban virtuális hálózatok közötti létrehozásának jelenleg előzetes verzió. Ebben a forgatókönyvben létrehozott virtuális hálózati társviszony van, korlátozott képességeit, és előfordulhat, hogy nem érhető el az összes Azure-régiók. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
 ## <a name="portal"></a>Hozzon létre a társviszony - Azure-portálon
 
@@ -376,6 +341,56 @@ Ez az oktatóanyag befejezése után, előfordulhat, hogy törölni kívánja az
 
     > [!WARNING]
     > Megváltozott hálózati konfigurációs fájlok importálása (klasszikus) az előfizetéshez létező virtuális hálózatok módosításai okozhatják. Győződjön meg arról, csak távolítsa el a korábbi virtuális hálózatot, és nem módosítja, illetve bármely más meglévő virtuális hálózatot eltávolítása az előfizetésből. 
+
+## <a name="register"></a>A globális virtuális hálózati társviszony-létesítési Preview regisztrálása
+
+Különböző régiókban lévő virtuális hálózatok egyenrangú lehetősége jelenleg előzetes verzió. A funkció régiók (kezdetben MIKROSZEKUNDUM nyugati központi Kanada központi és Velünk nyugati 2) korlátozott számú érhető el. Különböző régiókban virtuális hálózatok közötti létrehozott virtuális hálózati társviszony nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, társviszony-létesítés ugyanabban a régióban virtuális hálózatok között. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
+
+Virtuális hálózatok egyenrangú régiók között, először regisztrálnia kell az előzetes (belül minden partnert kívánt virtuális hálózat szerepel az előfizetés) az alábbi lépések végrehajtásával Azure PowerShell vagy az Azure parancssori felület használatával:
+
+### <a name="powershell"></a>PowerShell
+
+1. Telepítse a PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) moduljának legújabb verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Indítson el egy PowerShell-munkamenetet, és jelentkezzen be az Azure használatával a `Login-AzureRmAccount` parancsot.
+3. Regisztrálni az előfizetést, minden egyes virtuális hálózatot egyenrangú szeretné van a az előzetes kiadásban a következő parancsok beírásával:
+
+    ```powershell
+    Register-AzureRmProviderFeature `
+      -FeatureName AllowGlobalVnetPeering `
+      -ProviderNamespace Microsoft.Network
+    
+    Register-AzureRmResourceProvider `
+      -ProviderNamespace Microsoft.Network
+    ```
+4. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
+
+    ```powershell    
+    Get-AzureRmProviderFeature `
+      -FeatureName AllowGlobalVnetPeering `
+      -ProviderNamespace Microsoft.Network
+    ```
+
+    Ne hajtsa végre a portál, az Azure parancssori felület, a PowerShell vagy a Resource Manager template szakaszokban, amíg ez a cikk lépéseit a **RegistrationState** kimeneti kapja az előző parancs bevitele után **regisztrált**  mindkét előfizetésekhez.
+
+### <a name="azure-cli"></a>Azure CLI
+
+1. [Telepítse és konfigurálja az Azure parancssori felület](/cli/azure/install-azure-cli?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
+2. Győződjön meg arról, 2.0.18 verzióját használja vagy újabb, írja be az Azure parancssori felület a `az --version` parancsot. Ha nem, telepítse a legújabb verziót.
+3. Jelentkezzen be Azure-bA a `az login` parancsot.
+4. Az előzetes rögzítése a következő parancsok beírásával:
+
+   ```azurecli-interactive
+   az feature register --name AllowGlobalVnetPeering --namespace Microsoft.Network
+   az provider register --name Microsoft.Network
+   ```
+
+5. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
+
+    ```azurecli-interactive
+    az feature show --name AllowGlobalVnetPeering --namespace Microsoft.Network
+    ```
+
+    Ne hajtsa végre a portál, az Azure parancssori felület, a PowerShell vagy a Resource Manager template szakaszokban, amíg ez a cikk lépéseit a **RegistrationState** kimeneti kapja az előző parancs bevitele után **regisztrált**  mindkét előfizetésekhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

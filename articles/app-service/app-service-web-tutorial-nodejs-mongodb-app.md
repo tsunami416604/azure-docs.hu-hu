@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 0c3f9b49c7931371bf3a4eaf1a5a3c6261dad839
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 9fc11352a031ac1c1abcc6c6bd173bd9b0e8a222
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>Az Azure-ban Node.js és a MongoDB webalkalmazás létrehozása
 
@@ -182,7 +182,7 @@ Másolja a `primaryMasterKey` értékét. A következő lépés során szükség
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>A kapcsolati karakterlánc konfigurálása a Node.js-alkalmazásban
 
-A helyi MEAN.js tárházban lévő a _config/env/_ mappa, hozzon létre egy fájlt _helyi-production.js_. _.gitignore_ ezt a fájlt a tárház kívül van konfigurálva. 
+A helyi MEAN.js tárházban lévő a _config/env/_ mappa, hozzon létre egy fájlt _helyi-production.js_. Alapértelmezés szerint _.gitignore_ ezt a fájlt a tárház kívül van konfigurálva. 
 
 A következő kódot bemásolhatja azt. Ügyeljen arra, hogy cserélje le a két  *\<cosmosdb_name >* helyőrzőt a Cosmos DB adatbázis neve, és cserélje le a  *\<primary_master_key >* helyőrző a kulccsal, az előző lépésben a vágólapra másolt.
 
@@ -209,7 +209,12 @@ gulp prod
 A következő parancsot a kapcsolati karakterlánc, amelyet _config/env/local-production.js_.
 
 ```bash
+# Bash
 NODE_ENV=production node server.js
+
+# Windows PowerShell
+$env:NODE_ENV = "production" 
+node server.js
 ```
 
 `NODE_ENV=production`Beállítja a környezeti változó, amely közli a Node.js az éles környezetben történő futását.  `node server.js`Elindítja a Node.js-kiszolgálót `server.js` az adattár gyökérkönyvtárában található. Ez az, hogy be van töltve a Node.js-alkalmazás az Azure-ban. 
@@ -261,7 +266,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 A Node.js-kódnak érheti el az alkalmazás setting `process.env.MONGODB_URI`, ahogy bármely környezeti változó elérésére. 
 
-Nyissa meg a helyi MEAN.js tárház _config/env/production.js_ (nem _config/env/local-production.js_), amely éles környezet adott konfigurációval rendelkezik. Vegye figyelembe, hogy az alapértelmezett MEAN.js alkalmazás már használatára konfigurált a `MONGODB_URI` létrehozott környezeti változó.
+Nyissa meg a helyi MEAN.js tárház _config/env/production.js_ (nem _config/env/local-production.js_), amely éles környezet adott konfigurációval rendelkezik. Az alapértelmezett MEAN.js alkalmazás már használatára van konfigurálva a `MONGODB_URI` létrehozott környezeti változó.
 
 ```javascript
 db: {
@@ -416,12 +421,15 @@ Mentse az összes módosítást.
 A helyi terminálablakot, a teszteléshez éles módban a módosításokat.
 
 ```bash
+# Bash
 gulp prod
 NODE_ENV=production node server.js
-```
 
-> [!NOTE]
-> Ne feledje, hogy a _config/env/production.js_ vissza lett állítva, és a `MONGODB_URI` környezeti változó csak akkor állítható be, az Azure web app alkalmazásban, és nem a helyi számítógépen. A konfigurációs fájl tekinti meg, ha látnia, hogy az üzemi configuration értéke alapértelmezés szerint a helyi MongoDB-adatbázist használja. Ezzel biztosíthatja, hogy nem touch termelési adatok helyben a kódmódosításokat tesztelésekor.
+# Windows PowerShell
+gulp prod
+$env:NODE_ENV = "production" 
+node server.js
+```
 
 Navigáljon a `http://localhost:8443` a böngészőben, és győződjön meg arról, hogy be van jelentkezve.
 

@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: d23721eba308096a05211eb6e26e1338a69cae0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f1c601f5de440346d35e25299f6f800f3e3c10d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurálható jogkivonat élettartamát az Azure Active Directoryban (nyilvános előzetes verzió)
 Megadhat egy Azure Active Directory (Azure AD) által kiállított jogkivonat élettartamát. A szervezet jogkivonat élettartamát a szervezet összes alkalmazást, egy több-bérlős (több szervezet) alkalmazáshoz, vagy egy adott szolgáltatás egyszerű állíthatja be.
@@ -58,9 +58,9 @@ Nyilvános ügyfelek nem tudja biztonságosan tárolni (titkos) ügyfél jelszó
 Webhelyek és natív ügyfelek átadott azonosító-jogkivonatokat. Azonosító-jogkivonatokat a felhasználói profil adatait tartalmazzák. Egy azonosító jogkivonat felhasználói és az ügyfél egyedi kombinációja van kötve. Azonosító-jogkivonatokat érvényesek a lejártáig. Általában egy webes alkalmazás megfelel a felhasználó a munkamenetek élettartamát az az alkalmazás azonosítója jogkivonat élettartamát adja ki a felhasználó. Egy azonosító jogkivonatot, milyen gyakran a webes alkalmazás lejár az alkalmazás munkamenet, és milyen gyakran szükség van a felhasználó számára (csendes vagy interaktív) az Azure AD-val hitelesíthető vezérlésére élettartama módosíthatja.
 
 ### <a name="single-sign-on-session-tokens"></a>Egyszeri bejelentkezés munkamenetet jogkivonatok
-Amikor egy felhasználó hitelesíti magát az Azure ad-val, és kiválasztja a **bejelentkezve szeretnék maradni** jelölőnégyzetet, egy egyszeri bejelentkezés (SSO) munkamenet a felhasználó böngésző és az Azure AD. A cookie-k formájában, az egyszeri bejelentkezési token jelöli ehhez a munkamenethez. Vegye figyelembe, hogy az egyszeri bejelentkezés munkameneti jogkivonat nincs kötve egy adott erőforrás/ügyfélalkalmazást. Egyszeri bejelentkezési munkamenet jogkivonatok visszavonhatók, és azok érvényességi be van jelölve, minden alkalommal, amikor a segítségükkel.
+Amikor a felhasználók hitelesítése az Azure ad-vel, egy egyszeri bejelentkezés (SSO) munkamenet és a felhasználó böngésző és az Azure AD. A cookie-k formájában, az egyszeri bejelentkezési token jelöli ehhez a munkamenethez. Vegye figyelembe, hogy az egyszeri bejelentkezés munkameneti jogkivonat nincs kötve egy adott erőforrás/ügyfélalkalmazást. Egyszeri bejelentkezési munkamenet jogkivonatok visszavonhatók, és azok érvényességi be van jelölve, minden alkalommal, amikor a segítségükkel.
 
-Az Azure AD használ egyszeri bejelentkezési munkamenet jogkivonatok kétféle: állandó, és nem állandó. Állandó munkamenet jogkivonatok állandó cookie-kat a böngészőben tárolódnak. Nem állandó munkamenet jogkivonatok munkamenet cookie-kat, tárolódnak. (A munkamenet cookie-k megsemmisülnek a böngésző bezárásakor.)
+Az Azure AD használ egyszeri bejelentkezési munkamenet jogkivonatok kétféle: állandó, és nem állandó. Állandó munkamenet jogkivonatok állandó cookie-kat a böngészőben tárolódnak. Nem állandó munkamenet jogkivonatok munkamenet cookie-kat, tárolódnak. (A munkamenet cookie-k megsemmisülnek a böngésző bezárásakor.) Általában a nem állandó munkameneti jogkivonat tárolja. De ha a felhasználó kijelöli a **bejelentkezve szeretnék maradni** jelölőnégyzetet egy állandó munkameneti jogkivonat a hitelesítés során tárolja.
 
 Nem állandó munkamenet jogkivonatok élettartama pedig 24 óra. Állandó jogkivonatok élettartama 180 nap. Az egyszeri bejelentkezési munkamenet jogkivonat az érvényességi idején belül bármikor érvényességi ki van bővítve másik 24 óra vagy 180 nap, attól függően, hogy a jogkivonat típusa. Ha egy egyszeri bejelentkezési munkamenet-azonosító nem használják az érvényességi idején belül, lejárt, és már nem elfogadható minősül.
 

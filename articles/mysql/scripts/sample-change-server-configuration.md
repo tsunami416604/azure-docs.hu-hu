@@ -10,19 +10,19 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 08/29/2017
-ms.openlocfilehash: 558e7d4ee96a3424a777f9f57679da25f2306efd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.openlocfilehash: 286b16148d28509714862714dcc5986496d9af44
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Az Azure parancssori felület használatával MySQL-kiszolgáló Azure adatbázisának lista és a frissítés konfigurációk
 Ez a parancsfájlpélda CLI felsorolja az összes rendelkezésre álló konfigurációs paraméterek, valamint az engedélyezett értékek az Azure Database MySQL-kiszolgáló, és beállítja a *innodb_lock_wait_timeout* , amely az egyik alapértelmezett értéktől eltérő értékre.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha telepítése és a parancssori felület helyileg használata mellett dönt, ez a cikk szükséges az, hogy az Azure parancssori felület verzióját futtatja, 2.0-s vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Mintaparancsfájl
 Ez a parancsfájlpélda módosítsa a kijelölt sorok testre szabhatja a rendszergazda felhasználónevét és jelszavát.

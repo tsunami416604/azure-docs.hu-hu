@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2017
+ms.date: 11/2/2017
 ms.author: dekapur
-ms.openlocfilehash: 83981d5bec14c06c509f1a8a4153dc23298f5ce0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8c1ac57d38ae504e677c44c6fec08164b9b74ce
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
 Ha a szolgáltatások problémája, válaszol, és oldja meg az incidensek és a leállások arra a képességére, a problémák gyorsan észlelése arra a képességére, függ. Ha készít jelentést az problémák és hibák az Azure Service Fabric-kezelő szolgáltatás programkódból, szabványos állapotfigyelési, amely a rendszerállapot állapotának biztosít a Service Fabric eszközök is használhatja.

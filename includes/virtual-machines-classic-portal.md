@@ -1,0 +1,1 @@
+2017. November 15., kezdve virtuális gépek csak a lesznek a [Azure-portálon](https://portal.azure.com). Hozzáférés a klasszikus portálon nem fogja támogatni.

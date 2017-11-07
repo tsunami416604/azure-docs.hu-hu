@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
-ms.date: 05/10/2017
-ms.openlocfilehash: 9f1c8241d0d7e68abd175c7c1c3b023d18b24a68
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/03/2017
+ms.openlocfilehash: 1a210f813319a4f21c7c246002c968b8093f8a4e
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Az első Azure-adatbázis kialakítása a PostgreSQL az Azure portál használatával
 
@@ -71,13 +71,13 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
 
-Az Azure-adatbázis PostgreSQL-hez szolgáltatás a kiszolgáló szintjén hoz létre tűzfalat. Alapértelmezés szerint ez a tűzfal megakadályozza, hogy minden külső alkalmazások és eszközök a kiszolgáló és a kiszolgálón lévő összes adatbázis való kapcsolódás, kivéve, ha egy tűzfalszabály, egy adott IP-címtartomány tűzfal megnyitásához. 
+Az Azure-adatbázishoz PostgreSQL szolgáltatás tűzfalat használ, a kiszolgáló szintjén. Alapértelmezés szerint ez a tűzfal megakadályozza, hogy minden külső alkalmazások és eszközök a kiszolgáló és a kiszolgálón lévő összes adatbázis való kapcsolódás, kivéve, ha egy tűzfalszabály, egy adott IP-címtartomány tűzfal megnyitásához. 
 
 1.  Miután befejeződött a telepítés, kattintson az **Összes erőforrás** lehetőségre a bal oldali menüben, és írja be az újonnan létrehozott kiszolgáló nevét **mypgserver-20170401**. Kattintson a keresési eredményekben listázott kiszolgálónévre. Megnyílik a kiszolgáló **Áttekintés** oldala, amely további konfigurációs lehetőségeket biztosít.
  
  ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
-2.  Válassza ki a kiszolgálójuk paneljéről **kapcsolatbiztonsági**. 
+2.  A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet. 
 3.  Kattintson a **Szabálynév** alatti szövegmezőbe, és adjon hozzá egy új tűzfalszabályt az IP-címtartomány összekapcsolhatóságának engedélyezéséhez. Ebben az oktatóanyagban most engedélyezése minden IP-címet írja be a **szabály neve = AllowAllIps**, **kezdő IP-= 0.0.0.0** és **záró IP-Címnél = 255.255.255.255** , majd **mentése** . Beállíthatja, hogy egy adott tűzfalszabályt, amely lefedi a kisebb IP-címtartomány a tudnak kapcsolódni a hálózaton.
  
  ![Azure-adatbázis PostgreSQL-hez - Tűzfalszabály létrehozása](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
@@ -85,19 +85,20 @@ Az Azure-adatbázis PostgreSQL-hez szolgáltatás a kiszolgáló szintjén hoz l
 4.  Kattintson a **mentése** , majd a **X** bezárásához a **kapcsolatok biztonsági** lap.
 
   > [!NOTE]
-  > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben addig nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, amíg az informatikai részleg nem nyitja meg az 5432-es portot.
+  > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ha igen, akkor az Azure SQL adatbázis-kiszolgáló nem csatlakozik, kivéve, ha az IT-részleg 5432 portot nyit meg.
   >
 
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
-Az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásakor, az alapértelmezett **postgres** adatbázis is létrejön. A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat.
+Ha létrehozta az Azure-adatbázishoz PostgreSQL-kiszolgáló, az alapértelmezett **postgres** adatbázis is létrejött. A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat.
 
 1. Az Azure-portálon a bal oldali menüben kattintson a **összes erőforrás** és keressen rá az imént létrehozott server **mypgserver-20170401**.
 
   ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 3. Kattintson a **mypgserver-20170401** kiszolgálónévre.
+
 4. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
 
  ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló-rendszergazdai bejelentkezés](./media/tutorial-design-database-using-azure-portal/6-server-name.png)
@@ -136,9 +137,9 @@ Amikor a rendszer kéri, hajtsa végre a következő parancsot, a kapcsolat átv
 \c mypgsqldb
 ```
 ## <a name="create-tables-in-the-database"></a>Hozzon létre táblák az adatbázisban
-Most, hogy tudja, hogyan PostgreSQL az Azure-adatbázishoz való kapcsolódáshoz, azt is ismerteti, hogyan lehet néhány alapvető műveleteket elvégezni.
+Most, hogy tudja, hogyan PostgreSQL az Azure-adatbázishoz való kapcsolódáshoz, néhány alapvető műveleteket hajtható végre:
 
-Először hogy hozzon létre egy táblát, és töltse be adatokkal. Hozzon létre egy táblát, amely nyomon követi a leltáradatokat.
+Először hozzon létre egy táblát, és töltse be az adatokat. Hozzon létre egy táblát, amely nyomon követi a leltáradatokat az SQL-kód használatával:
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -153,7 +154,7 @@ CREATE TABLE inventory (
 ```
 
 ## <a name="load-data-into-the-tables"></a>Adatok betöltése a táblákba
-Most, hogy a tábla, azt beilleszthet néhány adat azt. A parancssor megnyitása ablakban futtassa a következő lekérdezés szúrható be néhány sornyi adatot.
+Most, hogy a tábla, néhány adat beviteléhez bele. A parancssor megnyitása ablakban futtassa a következő lekérdezés szúrható be néhány sornyi adatot.
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);

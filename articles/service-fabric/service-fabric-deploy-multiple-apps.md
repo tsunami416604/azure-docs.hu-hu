@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell;mikhegn
-ms.openlocfilehash: 53614d4d2e3101e8ea0bfa6a29256cc817055843
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7a37d7c04f85e9031cab52fa86026e56315c882
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="deploy-multiple-guest-executables"></a>Több futtatható vendégalkalmazás üzembe helyezése
 Ez a cikk bemutatja, hogyan csomagot, és több Vendég végrehajtható fájlok telepítése Azure Service Fabric. Kialakításához, és egyetlen Service Fabric-csomag telepítése olvasási hogyan való [központi telepítése egy Vendég végrehajtható Service Fabric](service-fabric-deploy-existing-app.md).
@@ -29,7 +29,7 @@ Visual Studio segítségével létrehozhat több Vendég végrehajtható fájlok
 
 ## <a name="samples"></a>Példák
 * [Minta csomagolás és központi telepítése egy Vendég végrehajtható fájl](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Minta két Vendég végrehajtható fájlok (C# és nodejs) kapcsolaton keresztül kommunikáljon a Naming szolgáltatás REST használatával](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Minta két Vendég végrehajtható fájlok (C# és nodejs) kapcsolaton keresztül kommunikáljon a Naming szolgáltatás REST használatával](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>A több Vendég futtatható alkalmazás manuálisan csomag
 Másik lehetőségként a Vendég végrehajtható manuálisan csomagot. A manuális csomagolása, az ebben a cikkben az érhető el a Service Fabric csomagolás eszköz [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool).
@@ -217,4 +217,4 @@ Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már l�
 ## <a name="next-steps"></a>Következő lépések
 * További tudnivalók a tárolók telepítése [Service Fabric és a tárolók – áttekintés](service-fabric-containers-overview.md)
 * [Minta csomagolás és központi telepítése egy Vendég végrehajtható fájl](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Minta két Vendég végrehajtható fájlok (C# és nodejs) kapcsolaton keresztül kommunikáljon a Naming szolgáltatás REST használatával](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Minta két Vendég végrehajtható fájlok (C# és nodejs) kapcsolaton keresztül kommunikáljon a Naming szolgáltatás REST használatával](https://github.com/Azure-Samples/service-fabric-containers)

@@ -12,19 +12,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/02/2017
+ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 9c6035e97de38ff63ef074109afd9f3c7484f828
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 252dcdf0ff9e1fecd6665808bfe7978a4417018b
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló Service Fabric-fürt a csomópontok hozzáadásához és eltávolításához
-Miután [a különálló Service Fabric-fürt létrehozása a Windows Server gépeken](service-fabric-cluster-creation-for-windows-server.md), az üzleti igényeknek megfelelően változhat, és szükség lehet az a fürt a csomópontok hozzáadásához és eltávolításához. Ez a cikk részletes lépéseit ennek érdekében. Vegye figyelembe, hogy hozzáadása csomópont funkció nem támogatott a helyi fejlesztési fürtök.
+Miután [a különálló Service Fabric-fürt létrehozása a Windows Server gépeken](service-fabric-cluster-creation-for-windows-server.md), () igényeinek lehet módosítani, ezért szüksége lesz a fürthöz való csomópontok hozzáadásához és eltávolításához. Ez a cikk részletes lépéseit ennek érdekében. Vegye figyelembe, hogy hozzáadása csomópont funkció nem támogatott a helyi fejlesztési fürtök.
 
 ## <a name="add-nodes-to-your-cluster"></a>Csomópontok hozzáadása a fürthöz
-1. Az említett lépések a fürthöz hozzáadni kívánt virtuális gép/gép előkészítése a [készítse elő a fürtöt tartalmazó környezetben az Előfeltételek teljesítése érdekében a gépek](service-fabric-cluster-creation-for-windows-server.md) szakasz
+
+1. Készítse elő a virtuális gép/gép című rész lépéseit követve adja hozzá a fürthöz szeretne [tervezze meg és készítse elő a Service Fabric-fürt telepítése](service-fabric-cluster-creation-for-windows-server.md)
 2. Melyik tartalék tartomány és a frissítési tartomány hozzáadása a virtuális gép/gép kívánja azonosítása
 3. A távoli asztal (RDP) a fürthöz hozzáadni kívánt virtuális gép vagy gépek be
 4. Másolás vagy [töltse le az önálló csomag a Service Fabric Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) a virtuális géphez, és bontsa ki a csomagot

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: jingwang
-ms.openlocfilehash: c9395ab077a112e64811b860dd5aa2345a3206fc
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 0dd2c7aa0f8e845c8aae42575c3e46e3ac17ad63
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Adatok másolása az PostgreSQL Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ Ez a cikk ismerteti a másolási tevékenység használata az Azure Data Factory
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [PostgreSQL-összekötőt a V1](v1/data-factory-onprem-postgresql-connector.md).
 
-## <a name="supported-scenarios"></a>Támogatott esetek
+## <a name="supported-capabilities"></a>Támogatott képességei
 
 Adatok bármely támogatott fogadó adattárolóhoz másolhatja PostgreSQL-adatbázisból. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 

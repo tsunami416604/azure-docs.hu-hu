@@ -10,22 +10,23 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.custom: mvc
 ms.topic: sample
-ms.date: 05/31/2017
-ms.openlocfilehash: b847abb336cce5dd5516469dca58002d3ba265f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.openlocfilehash: 9fe5b56d64d325f855b6030ef3dcc0ed65ad7afc
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Figyelheti és méretezhető egy PostgreSQL egykiszolgálós Azure parancssori felület használatával
 Ez a parancsfájlpélda CLI PostgreSQL-kiszolgáló egy másik teljesítményszintre egy Azure-adatbázis méretezi a metrikák lekérdezése után. 
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha telepítése és a parancssori felület helyileg használata mellett dönt, ez a cikk szükséges az, hogy az Azure parancssori felület verzióját futtatja, 2.0-s vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Mintaparancsfájl
-Ez a parancsfájlpélda módosítsa a kijelölt sorok testre szabhatja a rendszergazda felhasználónevét és jelszavát. Cserélje le a saját előfizetés-azonosító az figyelő utasítással használt előfizetés-azonosító.[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/scale-postgresql-server.sh?highlight=15-16 "Create and scale Azure Database for PostgreSQL.")]
+Ez a parancsfájlpélda módosítsa a kijelölt sorok testre szabhatja a rendszergazda felhasználónevét és jelszavát. Cserélje le az előfizetés-azonosító szerepel a saját előfizetés-azonosító az figyelő utasítással.
+[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/scale-postgresql-server.sh?highlight=15-16 "Create and scale Azure Database for PostgreSQL.")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.

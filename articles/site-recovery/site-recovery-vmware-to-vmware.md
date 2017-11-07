@@ -1,9 +1,9 @@
 ---
-title: "VMware virtuális gépek vagy fizikai kiszolgálók replikálása egy másik helyre (klasszikus Azure portálon) |} Microsoft Docs"
-description: "Ez a cikk használatával VMware virtuális gépek vagy windowsos/Linuxos fizikai kiszolgálók replikálása egy másodlagos helyre, az Azure Site Recovery szolgáltatással."
+title: "VMware virtuális gépek vagy fizikai kiszolgálók egy másodlagos helyre vész-helyreállítási beállítása |} Microsoft Docs"
+description: "Ez a cikk ismerteti a helyszíni VMware virtuális gépek vagy windowsos/Linuxos fizikai kiszolgálók replikálása egy másodlagos helyre, az Azure Site Recovery szolgáltatással."
 services: site-recovery
 documentationcenter: 
-author: nsoneji
+author: rayne-wiselman
 manager: jwhit
 editor: 
 ms.assetid: b2cba944-d3b4-473c-8d97-9945c7eabf63
@@ -12,33 +12,33 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
-ms.author: nisoneji
-ms.openlocfilehash: 01a6f35fe61290f8c7275c34273d66956a53d3f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/05/2017
+ms.author: raynew
+ms.openlocfilehash: 8cfaa56735c1f4e2e01b58fdde2ad0e77b388762
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>Helyszíni VMware virtuális gépek vagy fizikai kiszolgálók replikálása egy másodlagos helyre a klasszikus Azure-portálon
+# <a name="set-up-disaster-recovery-of-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>VMware virtuális gépek vagy fizikai kiszolgálók egy másodlagos helyre vész-helyreállítási beállítása
 
-## <a name="overview"></a>Áttekintés
-Az Azure Site Recovery InMage Scout biztosít a valós idejű, a helyszíni VMware helyek közötti replikáció. Azure Site Recovery szolgáltatás előfizetések InMage Scout tartalmazza. 
 
-## <a name="prerequisites"></a>Előfeltételek
-**Azure-fiók**: szüksége lesz egy [Microsoft Azure](https://azure.microsoft.com/) fiók. Kezdésként használhatja az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) is. [További információk](https://azure.microsoft.com/pricing/details/site-recovery/) a Site Recovery díjszabásáról.
+Az Azure Site Recovery InMage Scout biztosít a valós idejű, a helyszíni VMware helyek közötti replikáció. Azure Site Recovery szolgáltatás előfizetések InMage Scout tartalmazza.
 
-## <a name="step-1-create-a-vault"></a>1. lépés: A tároló létrehozása
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiók létrehozását](https://azure.microsoft.com/pricing/free-trial/) megkezdése előtt.
+
+
+## <a name="create-a-vault"></a>Tároló létrehozása
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/) > **Recovery Services** szolgáltatásba.
 2. Új kattintson > felügyeleti > biztonsági mentés és helyreállítás (OMS). Másik lehetőségként kattinthat a Tallózás > Recovery Services-tároló > Hozzáadás.
 3. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, válasszon egyet ezek közül.
 4. A **erőforráscsoport** hozzon létre egy új erőforráscsoportot, vagy válasszon egy meglévőt. Adjon meg egy Azure-régiót végezze el a kötelező mezőket.
 5. A **hely**, válassza ki a tároló földrajzi területét. Annak ellenőrzéséhez, régiók, lásd: [Azure Site Recovery Díjszabásáról](https://azure.microsoft.com/pricing/details/site-recovery/).
 6. Ha szeretne gyors hozzáférést a tárolóhoz az irányítópultról kattintson a rögzítés az irányítópulton, és majd kattintson a Létrehozás gombra.
-7. Az új tároló megjelenik az irányítópulton > összes erőforrást, és a fő Recovery Services-tárolók panelen.
+7. Az új tároló megjelenik az irányítópulton > összes erőforrást, és a fő Recovery Services-tárolók lap.
 
-## <a name="step-2-configure-the-vault-and-download-inmage-scout-components"></a>2. lépés: Konfigurálja a tárolót, és InMage Scout összetevők letöltése
-1. A Recovery Services-tárolók panelen válassza ki a tároló, és kattintson a beállítások gombra.
+## <a name="configure-the-vault-and-download-inmage-scout-components"></a>A tároló konfigurálása és InMage Scout összetevők letöltése
+1. A helyreállítási szolgáltatások tárolók lapon válassza ki a tároló, kattintson a **beállítások**.
 2. A **beállítások** > **bevezetés** kattintson **Site Recovery** > 1. lépés: **infrastruktúra előkészítése** > **védelmi cél**.
 3. A **védelmi cél** válassza a helyreállítási helyen, és válassza az Igen, amelyen a VMware vSphere Hipervizorra. Ezután kattintson az OK gombra.
 4. A **Scout telepítő**, kattintson a letöltés a letöltési InMage Scout 8.0.1 GA szoftver és a regisztrációs kulcsot. A telepítő a szükséges összetevőket fájljai a letöltött .zip-fájlban.
@@ -46,7 +46,7 @@ Az Azure Site Recovery InMage Scout biztosít a valós idejű, a helyszíni VMwa
 ## <a name="step-3-install-component-updates"></a>3. lépés: Az összetevő-frissítések telepítése
 Olvassa el a legújabb [frissítések](#updates). A kiszolgálók frissítési fájlok lesz telepítése a következő sorrendben:
 
-1. Ha van ilyen a RX kiszolgáló
+1. Ha szükséges a RX kiszolgáló
 2. Konfigurációs kiszolgálók
 3. Folyamat kiszolgálók
 4. Fő célkiszolgálóra
@@ -69,7 +69,7 @@ A frissítések telepítése az alábbiak szerint:
 5. **A Windows fő célkiszolgáló**: a unified agent frissítéséhez másolása **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a fő célkiszolgálóhoz. Kattintson duplán a való futtatáshoz. Vegye figyelembe, hogy a unified agent is alkalmazható a forráskiszolgáló Ha forrás Update4 vége nem frissül. Akkor kell telepítenie a forráskiszolgálón és, ahogy azt korábban említettük, a listában szereplő később.<br>
 6. **A vContinuum-kiszolgáló**: másolás **vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe** a vContinuum-kiszolgáló számára.  Győződjön meg arról, hogy a vContinuum varázsló bezárt. Kattintson duplán a futtatható fájl.<br>
 7. **A Linux fő célkiszolgáló**: a unified agent frissítéséhez másolása **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a fő célkiszolgáló, és bontsa ki. A kibontott mappát, futtassa **/telepítése**.<br>
-8. **A Windows forráskiszolgáló**: nem kell frissítés 5-ügynök telepítését forrás, ha soruce már update4. Ha kevesebb, mint update4, alkalmazza a frissítés 5-ügynök.
+8. **A Windows forráskiszolgáló**: frissítés 5-ügynök telepítése Update 4 már fut. Ha a forrás nem igényelnek. Ha kevesebb, mint Update 4 fut, alkalmazza a frissítés 5-ügynök.
 Másolja a unified agent frissítéséhez **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** a forráskiszolgálóra. Kattintson duplán a való futtatáshoz. <br>
 9. **A Linux rendszerű forráskiszolgálóhoz**: a unified agent frissítéséhez EE-fájl megfelelő verziója a Linux-kiszolgálóra másolja, majd bontsa ki. A kibontott mappát, futtassa **/telepítése**.  Példa: RHEL 6,7 64 bites kiszolgálót, másolja át **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** a kiszolgálóra, és bontsa ki. A kibontott mappát, futtassa **/telepítése**.
 
@@ -86,7 +86,7 @@ Másolja a unified agent frissítéséhez **UA_Windows_8.0.5.0_GA_Update_5_11525
 ## <a name="updates"></a>Frissítések
 ### <a name="azure-site-recovery-scout-801-update-5"></a>Az Azure Site Recovery Scout 8.0.1 5. frissítése
 5. Scout frissítése az összesítő frissítés. Az 1. frissítés vége: update4 és a következő új hibajavításokat és fejlesztések a javításokat tartalmaz.
-Az automatikus rendszer-Helyreállítás Scout update4 update5 hozzáadott javítások fő célkiszolgáló és a vContinuum-összetevők vonatkoznak. Ha minden a forrás-kiszolgálók, a fő célkiszolgálón, a konfigurációs kiszolgáló, a Folyamatkiszolgáló és a RX esetén már ASR Scout update4 alkalmaznia kell, majd frissítse a 5 csak a fő célkiszolgálón. 
+A Site Recovery Scout update4 update5 hozzáadott javítások fő célkiszolgáló és a vContinuum-összetevők vonatkoznak. Ha a forrás kiszolgálóinak, a fő célkiszolgálón, a konfigurációs kiszolgáló, a Folyamatkiszolgáló és a RX már a Site Recovery Scout update4 majd szüksége frissítés 5 csak a fő célkiszolgálón. 
 
 **Új eszközplatform-támogatás**
 * SUSE Linux Enterprise Server 11 szervizcsomag 4(SP4)
@@ -109,11 +109,11 @@ Az automatikus rendszer-Helyreállítás Scout update4 update5 hozzáadott javí
 
 > [!NOTE]
 > 
-> * P2V fürt fent javítások alkalmazhatók csak adott fizikai MSCS-fürtökben az automatikus rendszer-Helyreállítás Scout update5 frissen védett. További bejelentkezések nélkül hozzáférhet a fürt kijavítja az már védett P2V MSCS fürtön régebbi frissítésekkel, a frissítési lépések az 12 szakaszban ismertetett szüksége, frissítés védett Scout Update5 a P2V MSCS fürt [ASR Scout kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes).
+> * P2V fürt fent javítások alkalmazhatók csak adott fizikai MSCS-fürtök és hely helyreállítási Scout update5 frissen védett. További bejelentkezések nélkül hozzáférhet a fürt kijavítja az már védett P2V MSCS fürtön régebbi frissítésekkel, a frissítési lépések az 12 szakaszban ismertetett szüksége, frissítés védett Scout frissítés 5 P2V MSCS fürtöket a [kibocsátási megjegyzéseket](https://aka.ms/asr-scout-release-notes) .
 > 
-> * Állítsa be a fizikai MSCS-fürt védelmét is felhasználhatja meglévő céllemezek, csak ha időpontjában az újbóli védelem, ugyanazokat a lemezek aktív a fürt csomópontjain mint az eredetileg védett. Ha nem, akkor nincsenek a manuális lépések a szakasza 12 [ASR Scout kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes) helyezhető át a céllemezek ügyféloldali újból használni őket az újbóli védelem alatt az megfelelő datastore elérési útra. Ha Ön lássa el újból védelemmel az MSCS-fürtökben P2V módban frissítési lépések nélkül majd hoz létre az új lemez a célként megadott ESXi-kiszolgálón. Manuálisan törölje a régi lemezt az adattárral kell.
+> * Állítsa be a fizikai MSCS-fürt védelmét is felhasználhatja meglévő céllemezek, csak ha időpontjában az újbóli védelem, ugyanazokat a lemezek aktív a fürt csomópontjain mint az eredetileg védett. Ha nem, majd manuális lépések amit 12 részben a [kibocsátási megjegyzéseket](https://aka.ms/asr-scout-release-notes) helyezhető át a céllemezek ügyféloldali újból használni őket az újbóli védelem alatt az megfelelő datastore elérési útra. Ha Ön lássa el újból védelemmel az MSCS-fürtökben P2V módban frissítési lépések nélkül majd hoz létre az új lemez a célként megadott ESXi-kiszolgálón. Manuálisan törölje a régi lemezt az adattárral kell.
 > 
-> * Amikor forrás SLES11 vagy bármely service pack kiszolgálóval SLES11 szabályosan újraindítása után, majd egy manuálisan kell megjelölni a **legfelső szintű** lemez replikációs pár szinkronizálja újra, akkor nem jelenik meg értesítés CX felhasználói felületén. Ha ezt elmulasztja "jelölje meg a legfelső szintű lemezt újraszinkronizálási, láthatja, hogy az adatok integritását (DI) kapcsolatos problémákat.
+> * Amikor forrás SLES11 vagy bármely service pack kiszolgálóval SLES11 szabályosan újraindítása után, majd egy manuálisan kell megjelölni a **legfelső szintű** lemez replikációs pár szinkronizálja újra, akkor nem jelenik meg értesítés CX felhasználói felületén. Ha nem jelöli be a legfelső szintű lemezt újraszinkronizálási, megjelenik az adatok integritását (DI) kapcsolatos problémákat.
 > 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Az Azure Site Recovery Scout 8.0.1 Update 4
@@ -144,7 +144,7 @@ Scout Update 4 az összesítő frissítés. Az 1. frissítés vége: update3 és
 * VMware vCLI 6.0 letöltési hivatkozás Windows fő célkiszolgáló alap telepítő kerül.
 * További ellenőrzéseket és naplókat a további hálózati konfigurációkat módosítások hozzá feladatátvételi és vész-Helyreállítási csukja során.
 * A CX nem bejelentések bizonyos megőrzési információkat.  
-* Fizikai fürt kötet újra méretezés művelet vContinuum varázsló lépéseinek forrás kötet zsugorítás történt, amikor nem működik.
+* Fizikai fürt kötet vContinuum varázsló lépéseinek újra méretezés művelet sikertelen lesz, amikor a forrás kötet zsugorítás következik be.
 * Fürt védelem sikertelen volt, hiba: "Nem található a lemezaláírását" Ha a fürt lemez PRDM lemez.
 * cxps server összeomlása átviteli out tartományon kívüli kivétel miatt.
 * Kiszolgáló neve és IP-oszlopok is méretezhető vContinuum varázsló leküldéses telepítés lapján.
@@ -164,7 +164,7 @@ Scout Update 4 az összesítő frissítés. Az 1. frissítés vége: update3 és
 3 frissítés a következő hibajavításokat és fejlesztéseket tartalmazza:
 
 * A konfigurációs kiszolgáló és a RX regisztrációja elmarad való a Site Recovery-tárolóban, ha azok a proxykiszolgáló mögött található.
-* Az órát, amelyek nem feleltek meg a helyreállítási időkorlát (RPO) nem frissülnek a az állapotjelentést.
+* Az órát, hogy a helyreállítási időkorlát (RPO) még nem teljesült nem frissíti a az állapotjelentést.
 * A konfigurációs kiszolgáló nem szinkronizálja a RX, amikor az ESX hardveres jellemzőit vagy hálózati adatok bármely UTF-8 karaktereket tartalmaz.
 * Windows Server 2008 R2 rendszerű tartományvezérlők nem tudnak indítsa el a helyreállítás után.
 * Kapcsolat nélküli szinkronizálás nem a várt módon működik.

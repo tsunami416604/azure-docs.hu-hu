@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: a0bd11491fbc49333937ab6e6f3e67abcee9f180
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eba08c38a5502368beda7ca7f84559ecca011133
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Cassandra
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ Ez a cikk ismerteti a másolási tevékenység használata az Azure Data Factory
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Cassandra összekötő a V1](v1/data-factory-onprem-cassandra-connector.md).
 
-## <a name="supported-scenarios"></a>Támogatott esetek
+## <a name="supported-capabilities"></a>Támogatott képességei
 
 Adatok bármely támogatott fogadó adattárolóhoz Cassandra adatbázis másolhatja. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 

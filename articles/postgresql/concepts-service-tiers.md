@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/31/2017
-ms.openlocfilehash: 0ebdced6ac748245faed90949fd0e76c0eacb2d3
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/03/2017
+ms.openlocfilehash: 2c0ed6b58fe3e354da3cf58cd0c504d72bb0f421
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure-adatbázishoz tartozó PostgreSQL beállításai és teljesítménye: az egyes tarifacsomagok elérhető
 Egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozásakor három fő lehetőségek konfigurálása a kiszolgáló számára lefoglalt erőforrások határoz meg. Ezek a lehetőségek a teljesítmény és a kiszolgáló méretezési hatással.
@@ -53,7 +53,7 @@ Döntse el, hogy a tarifacsomagot, először meghatározhatja, hogy a munkaterhe
 Az előnézet időtartam alatt nem módosítható a tarifacsomagot, ha a kiszolgáló akkor jön létre. A jövőben lesz lehetséges egy másik réteghez egy tarifacsomagot kiszolgáló visszaminősítését vagy frissítéséhez.
 
 ## <a name="understand-the-price"></a>Az ár ismertetése
-Amikor létrehoz egy új Azure-adatbázis a PostgreSQL belül a [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer), kattintson a **tarifacsomag** panelen, és a havi költségét is megjelennek alapján a kiválasztott beállításokat. Ha még nem rendelkezik Azure-előfizetéssel, az Azure árképzési Számológép segítségével egy becsült ár. Látogasson el a [Azure árképzési Számológép](https://azure.microsoft.com/pricing/calculator/) webhely, kattintson a **elemek hozzáadása**, bontsa ki a **adatbázisok** kategóriát, és válassza a **PostgreSQL az Azure-adatbázis**  a beállítások testreszabása.
+Amikor létrehoz egy új Azure-adatbázis a PostgreSQL belül a [Azure-portálon](https://portal.azure.com/#create/Microsoft.PostgreSQLServer), kattintson a **tarifacsomag** lap, és a havi költségeket látható alapján a kiválasztott beállítások. Ha még nem rendelkezik Azure-előfizetéssel, az Azure árképzési Számológép segítségével egy becsült ár. Látogasson el a [Azure árképzési Számológép](https://azure.microsoft.com/pricing/calculator/) webhely, kattintson a **elemek hozzáadása**, bontsa ki a **adatbázisok** kategóriát, és válassza a **PostgreSQL az Azure-adatbázis**  a beállítások testreszabása.
 
 ## <a name="choose-a-performance-level-compute-units"></a>Itt választhatja ki a teljesítmény (számítási egység)
 Miután megadta, hogy a tarifacsomag kiválasztása az Azure-adatbázis PostgreSQL-kiszolgáló, készen áll a teljesítményszintet meghatározásához szükséges számítási egységek számának kiválasztásával. Jó kiindulási pont 200 vagy 400 számítási egység van szüksége a magasabb szintű felhasználói párhuzamossági webes és analitikai munkaterhelések, és fokozatosan igény szerint módosítsa alkalmazások esetében. 
@@ -85,7 +85,7 @@ A tárolási konfiguráció egy Azure-adatbázishoz PostgreSQL-kiszolgáló hat�
 
 Bizonyos tárolási kapacitás megtalálható legalább az egyes tarifacsomagok, a tartalomjegyzékben említett előző méreteként"befoglalt tárolási." Ha a kiszolgáló akkor jön létre, akár a maximális megengedett tárolási 125 GB-os lépésekben további tárolási kapacitás adható hozzá. A további tárolási kapacitás a számítási egység konfigurációs függetlenül konfigurálhatók. A kiválasztott tárolókapacitást alapján ár módosításokat.
 
-Az egyes IOPS konfigurálása az árképzési szint és a választott tárméret vonatkozik. Az alapszintű csomag nem biztosít egy IOPS garantált. A Standard tarifacsomag, belül az IOPS méretezhető arányosan egy rögzített 3:1 arányban maximális mérete. A belefoglalt tárolási 125 GB-os biztosítja, hogy a 375 kiosztott IOPS, az egy IO mérete legfeljebb 256 KB-os. Ha szeretné, további tárhely 1 TB-os legfeljebb 3000 olyan kiosztott IOPS biztosításához.
+Az egyes IOPS konfigurálása az árképzési szint és a választott tárméret vonatkozik. Az alapszintű csomag nem biztosít egy IOPS garantált. A Standard tarifacsomag, belül az IOPS méretezhető arányosan egy rögzített 3:1 arányban maximális mérete. 125 GB-os garanciák 375 a belefoglalt tárolási IOPS, az egy IO mérete legfeljebb 256 KB-os kiépítve. Ha szeretné, további tárhely 1 TB-os legfeljebb 3000 olyan kiosztott IOPS biztosításához.
 
 Az Azure-portálon a metrikák diagramhoz figyelése, vagy tárolási és IOPS mérésére Azure CLI-parancsok írásával. Figyelésére vonatkozó adatok gyűjtése le tárolási kapacitása, tárolási, tárhelyet,- és IO %.
 
@@ -93,11 +93,11 @@ Az Azure-portálon a metrikák diagramhoz figyelése, vagy tárolási és IOPS m
 > Kép nézetben, válassza ki a tárolókapacitást a kiszolgáló létrehozásának időpontjában. A tárhely méretét, a meglévő kiszolgáló módosítása még nem támogatott. 
 
 ## <a name="scaling-a-server-up-or-down"></a>A kiszolgáló skálázás feljebb vagy lejjebb
-Az árképzési szint és a teljesítmény szint kezdetben az Azure-adatbázis létrehozásakor az PostgreSQL válassza. Később, a számítási egység méretezheti felfelé vagy lefelé dinamikusan, az azonos árképzési szint tartományán belül. Az Azure portálon, húzza a számítási egység a kiszolgáló árazás réteg panelen, vagy parancsfájl az ebben a példában a következő: [figyelő és a skála egy PostgreSQL egykiszolgálós Azure parancssori felület használatával](scripts/sample-scale-server-up-or-down.md)
+Az árképzési szint és a teljesítmény szint kezdetben az Azure-adatbázis létrehozásakor az PostgreSQL válassza. Később, a számítási egység méretezheti felfelé vagy lefelé dinamikusan, az azonos árképzési szint tartományán belül. Az Azure portálon, húzza a számítási egység a kiszolgáló árazás réteg oldalán, vagy parancsfájl az ebben a példában a következő: [figyelő és a skála egy PostgreSQL egykiszolgálós Azure parancssori felület használatával](scripts/sample-scale-server-up-or-down.md)
 
 A számítási egység skálázás történik, függetlenül a választott maximális mérete.
 
-A háttérben módosítása az adatbázis teljesítményszintjét alkalmazás egy replikát készít az eredeti adatbázist az új teljesítmény szintjén, és majd kapcsolatok való működésre vált a replikát. Adatok nem vesztek el a folyamat során. Során mikor azt átválthat a replika rövid néhány percet kapcsolatok az adatbázis le vannak tiltva, így felé továbbított egyes tranzakciók előfordulhat, hogy állítható vissza. Ebben az ablakban változik, de átlagosan 4 másodperc alatt, és az esetek több mint 99 % kevesebb, mint 30 másodperc. Ha a kapcsolatok letiltásának pillanatában nagy számú tranzakció van folyamatban, ez az időtartam hosszabb lehet.
+A háttérben módosítása az adatbázis teljesítményszintjét másolatot hoz létre az eredeti kiszolgálón az új teljesítmény szintjén, és majd kapcsolatok való működésre vált a másolt kiszolgáló. Adatok nem vesztek el a folyamat során. Során a rövid jelenleg, ha az új kiszolgáló átvált a rendszer Ha az adatbázishoz létesített kapcsolatokhoz le vannak tiltva, az egyes tranzakciók útban előfordulhat, hogy állítható vissza. Ebben az ablakban változik, de átlagosan 4 másodperc alatt, és az esetek több mint 99 % kevesebb, mint 30 másodperc. Ha a kapcsolatok letiltásának pillanatában nagy számú tranzakció van folyamatban, ez az időtartam hosszabb lehet.
 
 A teljes méretezési eljárás ideje alatt méretét és függ IP-címek a kiszolgáló előtt és után a változás. Például egy kiszolgálót, amely a számítási egység módosítás, a Standard tarifacsomag belül kell végeznie néhány percen belül. Az új tulajdonságok a kiszolgáló nem érvényesek, amíg be nem fejeződik a módosításokat.
 

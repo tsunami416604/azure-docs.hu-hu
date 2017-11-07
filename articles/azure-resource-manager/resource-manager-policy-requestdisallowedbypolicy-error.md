@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: c950fe5444d4eacf3568d355a8dc9c5699645229
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 2e821c0369c6f01a7f09361c1093259429a79fa6
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Az Azure erőforrás-házirenddel RequestDisallowedByPolicy hiba
 
@@ -64,4 +64,4 @@ A probléma megoldásához, az informatikai részleg tekintse át az erőforrás
 További információkért tekintse át a következő cikkeket:
 
 - [Erőforrás-házirendek – áttekintés](resource-manager-policy.md)
-- [Házirend-hozzárendelések megtekintése portálon keresztül](resource-manager-policy-portal.md#view-policy-assignments)
+- [Házirend-hozzárendelések megtekintése portálon keresztül](resource-manager-policy-portal.md)

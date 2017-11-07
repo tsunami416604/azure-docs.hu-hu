@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3062c7c060c3730c5edef3ada16f3a5077cf5558
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a96e52bad725acb70a429c8eaafd6942b13d9b8
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Riasztások kezelése a StorSimple virtuális tömb StorSimple Eszközkezelő
 
@@ -146,6 +146,11 @@ A következő táblázat a StorSimple-riasztásokat, amelyek akkor léphetnek fe
 |:--- |:--- |:--- |
 | A biztonsági mentési <*eszköznév*> nem sikerült végrehajtani. |Biztonsági mentési feladat sikertelen. |Nem sikerült létrehozni a biztonsági másolat. Vegye figyelembe a következők egyikét:<ul><li>Kapcsolódási problémák megakadályozzák, hogy a biztonsági mentési művelet sikeres befejezését. Győződjön meg arról, hogy nincsenek-e kapcsolódási problémák. Kapcsolódási problémák elhárításával kapcsolatos további információkért látogasson el a [helyi webes felhasználói felület](storsimple-ova-web-ui-admin.md) a virtuális eszköz.</li><li>Elérte a rendelkezésre álló tár vonatkozó korlátozást. Szabadítson fel lemezterületet, fontolja meg a törlése minden biztonsági másolatának már nem szükséges.</li></ul> Javítsa ki a hibákat, törölheti a riasztást, és próbálja megismételni a műveletet. |
 | A klón <*eszköznév*> nem sikerült végrehajtani. |Klónozza a feladat sikertelen. |Nem sikerült létrehozni a klónozott. Vegye figyelembe a következők egyikét:<ul><li>A biztonságimásolat-lista nem lehet érvényes. Frissítse a listát ellenőrizze az érvényességét.</li><li>Kapcsolódási problémák megakadályozzák, hogy a Klónozási művelet sikeres befejezését. Győződjön meg arról, hogy nincsenek-e kapcsolódási problémák.</li><li>Elérte a rendelkezésre álló tár vonatkozó korlátozást. Szabadítson fel lemezterületet, fontolja meg a törlése minden biztonsági másolatának már nem szükséges.</li></ul>Javítsa ki a hibákat, törölheti a riasztást, és próbálja megismételni a műveletet. |
+
+### <a name="networking-alerts"></a>Hálózatkezelés riasztások
+| Figyelmeztető szöveg | Esemény | További információ / javasolt műveletek |
+|:--- |:--- |:--- |
+| Nem sikerült kapcsolódni a hitelesítési szolgáltatás. |DataPath hiba |A hitelesítéshez használt URL-cím nem érhető el. Győződjön meg arról, hogy a tűzfalszabályok tartalmazza-e a StorSimple eszközhöz megadott URL-mintával. Az Azure portál URL-mintával további információkért látogasson el [StorSimple virtuális tömb hálózati követelményei](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|
 
 ### <a name="performance-alerts"></a>Teljesítményével kapcsolatos riasztások
 

@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 06/29/2017
-ms.openlocfilehash: 20dbc4bbe66ec311afcc238b25a6c1f6f6a40829
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 11/03/2017
+ms.openlocfilehash: dec02baf0ae9df4860a3f67e67b0f62e356658ff
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>PostgreSQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a PHP-vel
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz egy [PHP](http://php.net/manual/intro-whatis.php)-alkalmazással. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ebben a cikkben azt feltételezi, hogy ismeri a PHP használatával történő fejlesztéséhez, és nem ismeri a PostgreSQL az Azure-adatbázis használata.

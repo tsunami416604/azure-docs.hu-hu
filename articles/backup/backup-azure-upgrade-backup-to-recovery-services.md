@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/03/2017
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: c7eb4514dca806d6e6470091423785b30a7d4bcb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7347301cd34979df9b3acc59f623ab346dbe41f6
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló
 
@@ -120,7 +120,7 @@ Miután a Recovery Services-tároló frissít, jelentések konfigurálása az Az
 Nem. A folyamatban levő biztonsági másolatok megszakításmentes folytatásához során, és a frissítés után.
 
 **Ha szeretnék frissítéséről hamarosan nem tervezi, mi történik a tárolók?**</br>
-Mivel az összes új szolgáltatás csak a Recovery Services-tárolók vonatkoznak, javasoljuk, hogy a tároló frissítésére. A Microsoft felé fog érvényteleníthető a klasszikus portálon. 2017. szeptember 1., kezdési Microsoft megkezdődik a mentési tárolók automatikus frissítése a Recovery Services-tárolók. A Microsoft által 2017. November 1., a frissítési folyamat befejeződik. A tároló automatikusan frissíthető. szeptember vagy október alatt. A Microsoft azt javasolja, hogy minél hamarabb frissítse a tárolóban.
+Mivel az összes új szolgáltatás csak a Recovery Services-tárolók vonatkoznak, javasoljuk, hogy a tároló frissítésére. A Microsoft felé fog érvényteleníthető a klasszikus portálon. 2017. szeptember 1., kezdési Microsoft megkezdődik a mentési tárolók automatikus frissítése a Recovery Services-tárolók. A Microsoft által 2017. November 30. a frissítési folyamat befejeződik. A tároló frissíthetők automatikusan az között bármikor. A Microsoft azt javasolja, hogy minél hamarabb frissítse a tárolóban.
 
 **A meglévő eszközt használunk erre a frissítési középértéket funkciója?**</br>
 Frissítse az eszközt használunk erre a Resource Manager üzembe helyezési modellben. Tárolók jelentek meg a helyreállítási szolgáltatások használata a Resource Manager üzembe helyezési modellben. A Resource Manager üzembe helyezési modellel tervezéséről és a különbség a tárolók elszámolása fontos. 

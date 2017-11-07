@@ -1,10 +1,10 @@
 ---
-title: "Virtuálisgép-kapcsolat az Azure Site Recovery egy másodlagos helyre a feladatátvételt követően |} Microsoft Docs"
+title: "Virtuális gépek csatlakoztatása az Azure Site Recovery egy másodlagos helyre a feladatátvételt követően |} Microsoft Docs"
 description: "Hálózati útmutató a virtuális gépek csatlakoztatása az Azure Site Recovery egy másodlagos helyre a feladatátvételt követően."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
+manager: prateek9us
 editor: 
 ms.assetid: 67d73590-185c-49b2-a097-597bf54747a9
 ms.service: site-recovery
@@ -12,15 +12,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
-ms.author: raynew
-ms.openlocfilehash: 7b27fc568c77b44ab2366d297ca9e7685439143e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/05/2017
+ms.author: pratshar
+ms.openlocfilehash: ce33a90a303a10de8ff198754e8e39c334035537
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="vm-connectivity-after-failover-to-a-secondary-site"></a>Virtuális gépek kapcsolatai másodlagos helyre történő feladatátadás után
+# <a name="connecting-to-vms-after-failover-to-a-secondary-site"></a>Csatlakozás a virtuális gépeknek egy másodlagos helyre a feladatátvételt követően
 
 Miután megtekintette a telepítés előfeltételeit, olvassa el ebben a cikkben tervezze meg a hálózati bővített végez replikálást a Hyper-V virtuális gépek (VM) kezelése a System Center Virtual Machine Manager (VMM) felhők, egy másodlagos hely használatával [Azure Site Recovery](site-recovery-overview.md) az Azure portálon. 
 

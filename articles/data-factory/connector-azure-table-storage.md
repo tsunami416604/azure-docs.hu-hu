@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 2fa03b82750585454430da0c29392db57b20d3c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69115945929f1dc93369ee000d78bceead8c109c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure táblából
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,7 +29,7 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az A
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Azure Table Storage-összekötőt a V1](v1/data-factory-azure-table-connector.md).
 
-## <a name="supported-scenarios"></a>Támogatott esetek
+## <a name="supported-capabilities"></a>Támogatott képességei
 
 Adatok másolása az egyetlen támogatott forrás adattár az Azure Table vagy adatok másolása az Azure tábla bármely támogatott fogadó adattárolóhoz. Adattároló források/mosdók, a másolási tevékenység által támogatott listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 

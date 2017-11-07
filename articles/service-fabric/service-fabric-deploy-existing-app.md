@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.openlocfilehash: a8579c66cbfb0968a3659316aa5f03b798f4e332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c851e1f756957d58d5f7372098620e4b7129b089
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="deploy-a-guest-executable-to-service-fabric"></a>A Service Fabric központi telepítése egy Vendég végrehajtható
 Az Azure Service Fabric szolgáltatásként futtatható kódok, például a Node.js, Java vagy C++ bármilyen típusú. A Service Fabric Vendég végrehajtható fájlok szolgáltatások az ilyen típusú néven hivatkozik.
@@ -349,6 +349,6 @@ A Server Explorer tallózással könyvtárat, ha található a munkakönyvtárat
 Ebben a cikkben rendelkezik megismerte a Vendég végrehajtható csomagot, majd központilag telepítenie kell a Service Fabric. Tekintse meg a következő cikkeket azzal kapcsolatos információkat és feladatokat.
 
 * [Minta csomagolás és központi telepítése egy Vendég végrehajtható](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), beleértve az előzetes verzióját a csomagolás eszköz mutató hivatkozás
-* [Minta két Vendég végrehajtható fájlok (C# és nodejs) kapcsolaton keresztül kommunikáljon a Naming szolgáltatás REST használatával](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Minta két Vendég végrehajtható fájlok (C# és nodejs) kapcsolaton keresztül kommunikáljon a Naming szolgáltatás REST használatával](https://github.com/Azure-Samples/service-fabric-containers)
 * [Több futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-multiple-apps.md)
 * [A Visual Studio használatával első Service Fabric-alkalmazás létrehozása](service-fabric-create-your-first-application-in-visual-studio.md)

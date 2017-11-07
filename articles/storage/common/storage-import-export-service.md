@@ -1,6 +1,6 @@
 ---
-title: "Azure Import/Export adattovábbításra irányuló és onnan a blob storage használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan importálási létrehozni és exportálni a feladatokat az Azure portálon a blob-tároló érkező vagy oda irányuló adatátvitel."
+title: "Azure Import/Export használatával történő adatátvitelhez számára és Azure Storage-ból |} Microsoft Docs"
+description: "Megtudhatja, hogyan importálási létrehozni és exportálni a feladatokat az adatoknak az Azure Storage érkező vagy oda irányuló az Azure portálon."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: fb5b059ad8dc87f445bd84a5fe3bb90822d13f94
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 221bd7662eb4974395c7f970961d5bfb556417f4
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>A Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez az Azure storage
-Ez a cikk azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatot az Azure-blob és a fájl storage egy Azure adatközpontba meghajtók szállítási által. Ez a szolgáltatás adatátvitelt az Azure blob storage merevlemez-meghajtókra, és küldje el a helyszíni helyek használatával is lehet. A egyetlen belső SATA-meghajtó adatokat importálni vagy az Azure blob-tároló vagy az Azure File storage. 
+# <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
+Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
 
 > [!IMPORTANT] 
-> A szolgáltatás csak fogadja a belső SATA merevlemez vagy SSD meghajtók csak. Nincs más eszköz használata támogatott. Ne küldjön külső HDD vagy NAS-eszközök stb fog adható vissza, ha lehetséges vagy elvetett.
+> A szolgáltatás csak fogadja a belső SATA merevlemez vagy SSD meghajtók csak. Nincs más eszköz használata támogatott. Nem küldenek külső HDD NAS-eszközökön, stb., akkor adja vissza, ha lehetséges, vagy más módon elvetett.
 >
 >
 
-Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Blob Storage importálható.
+Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage importálható.
 ### <a name="step-1-prepare-the-drives-using-waimportexport-tool-and-generate-journal-files"></a>1. lépés: Készítse elő a meghajtó/s WAImportExport eszközzel, és napló fájl/s készítése.
 
-1.  Azonosíthatja az adatokat az Azure blob storage importálható. Ennek oka lehet egy helyi kiszolgálón vagy egy hálózati megosztásra önálló fájlok és könyvtárak.
+1.  Az adatok Azure Storage importálható azonosításához. Ennek oka lehet egy helyi kiszolgálón vagy egy hálózati megosztásra önálló fájlok és könyvtárak.
 2.  Attól függően, hogy az adatok teljes mérete be kell szereznie a szükséges számú 2,5 hüvelyk SSD vagy 2,5" vagy 3.5-ös" SATA II vagy III merevlemez-meghajtókat.
 3.  Csatlakoztassa közvetlenül használatával SATA merevlemez-meghajtók vagy külső USB-adapterek egy windows-számítógépre.
 4.  Hozzon létre egy NTFS-kötet minden merevlemez-meghajtón, és rendeljen meghajtóbetűjelet a köteten. Nincs csatlakozási pontok le.
@@ -80,7 +80,7 @@ Forgatókönyvek például használhatja ezt a szolgáltatást:
 
 * Adatok áttelepítése a felhőbe: nagy mennyiségű adatok gyors áthelyezése az Azure-ba, és hatékonyan költség.
 * Tartalomterjesztést: a felhasználói helyek gyorsan adatküldéshez.
-* Biztonsági mentés: A biztonsági mentést, a helyszíni adatok Azure blob Storage tárolóban tárolni igénybe vehet.
+* Biztonsági mentés: A helyszíni adatok biztonsági mentések tárolására az Azure Storage igénybe vehet.
 * Adat-helyreállítás: nagy mennyiségű storage-ban tárolt adatok helyreállításához, és annak a helyszíni helyre kézbesíteni.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -90,13 +90,13 @@ Az itt látható a szolgáltatás használatához szükséges előfeltételeket.
 Meglévő Azure-előfizetés és az Import/Export szolgáltatás használata egy vagy több storage-fiókokat kell rendelkeznie. Minden feladat adatátvitel vagy a csak egy tárfiókot is használható. Más szóval egy egyetlen importálási/exportálási feladatok nem terjedhetnek ki több tárfiókok között. Új tárfiók létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
 
 ### <a name="data-types"></a>Adattípusok
-Azure Import/Export szolgáltatás segítségével az adatok másolása **blokk** blobok vagy **lap** blobok vagy **fájlok**. Viszont csak akkor exportálható **blokk** blobokat, **lap** blobok vagy **Append** BLOB az Azure storage-ban Ez a szolgáltatás. A szolgáltatás nem támogatja az Azure files exportálása, és képes csak fájlok importálása az Azure storage.
+Azure Import/Export szolgáltatás segítségével az adatok másolása **blokk** blobokat, **lap** blobot, vagy **fájlok**. Viszont csak akkor exportálható **blokk** blobokat, **lap** blobok vagy **Append** BLOB az Azure storage-ban Ez a szolgáltatás. A szolgáltatás támogatja az Azure storage Azure fájlok csak importálása. Azure-fájlok exportálása jelenleg nem támogatott.
 
 ### <a name="job"></a>Feladat
 A megkezdéséhez importálása vagy exportálása a tárolási, először feladatot hoz létre. Egy feladat lehet, az importálási feladat vagy exportálási feladat:
 
-* Kívánja átvinni az adatokat az Azure storage-fiókok a helyszíni blobok van egy importálási feladat létrehozása
-* Exportálási feladat létrehozása, ha azt szeretné, a merevlemez-meghajtókat, amelyek a számunkra mellékeltük a tárfiókban lévő blobként jelenleg tárolt adatok átviteléhez. Feladatot hoz létre, amikor Ön értesítést az Import/Export szolgáltatás, hogy Ön lesz kell szállítási legalább egy merevlemez-meghajtók egy Azure adatközpontba.
+* Hozzon létre egy importálási feladat, ha a kívánt Azure-tárfiókot kell a helyszíni adatok átviteléhez.
+* Exportálási feladat létrehozása, ha azt szeretné, a merevlemez-meghajtókat, amelyek a számunkra mellékeltük a tárfiók jelenleg tárolt adatok átviteléhez. Feladatot hoz létre, amikor Ön értesítést az Import/Export szolgáltatás, hogy Ön lesz kell szállítási legalább egy merevlemez-meghajtók egy Azure adatközpontba.
 
 * Az importálási feladat meg lesz kell szállítási az adatokat tartalmazó merevlemez-meghajtókat.
 * Az exportálási feladat akkor lesz kell szállítási üres merevlemez-meghajtókat.
@@ -107,7 +107,7 @@ Az importálás létrehozhat vagy az Azure portál használatával feladat expor
 ### <a name="waimportexport-tool"></a>WAImportExport eszköz
 A létrehozásának első lépése egy **importálása** közzéteendő meghajtó előkészítése az importálási folyamat. Készítse elő a meghajtók, csatlakoztassa a helyi kiszolgálón, és futtassa a WAImportExport eszközt a helyi kiszolgálón. Ez WAImportExport az eszköz lehetővé teszi az adatok másolását a meghajtóra, a meghajtón a BitLocker, az adatok titkosítása és a meghajtó Adatbázisnapló-fájlok generálása.
 
-Az adatbázisnapló-fájlok a feladat és a meghajtó meghajtó sorozatszáma és a tárfiók neve például alapvető adatainak tárolására. A napló fájl nem található a meghajtón. Importálási feladat létrehozásakor használható. Lépésről lépésre feladat létrehozása adatait a cikk későbbi részében valósul meg.
+Az adatbázisnapló-fájlok a feladat és a meghajtó meghajtó sorozatszáma és a tárfiók neve például alapvető adatainak tárolására. A napló fájl nem található a meghajtón. Importálási feladat létrehozásakor használható. Feladat létrehozása részletes adatait a cikk későbbi részében találhatók.
 
 A WAImportExport eszköze csak 64 bites Windows operációs rendszerrel kompatibilis. Tekintse meg a [operációs rendszer](#operating-system) az adott operációsrendszer-verziók támogatottak területén.
 
@@ -294,7 +294,7 @@ Amikor Ön Azure-meghajtóval, a szállítási szolgáltatói fizetett szállít
 
 **Tranzakciós költségek**
 
-Nincsenek nem tranzakciós költségek adatok importálása a blob Storage tárolóban. A szabványos kilépő költségek is alkalmazható, ha adatait a blob-tároló exportálja. Tranzakciós költségek a további részletekért lásd: [adatátviteli díjszabás.](https://azure.microsoft.com/pricing/details/data-transfers/)
+Nincsenek nem tranzakciós költségek adatok importálása az Azure Storage. A szabványos kilépő költségek is alkalmazható, ha adatait a Blob-tároló exportálja. Tranzakciós költségek a további részletekért lásd: [adatátviteli díjszabás.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 
 
@@ -304,7 +304,6 @@ Az első lépés az Azure Import/Export szolgáltatás használatával az adatok
 
 1. Az Azure File Storage importálható azon adatok meghatározásában. Ennek oka lehet a helyi kiszolgálón vagy egy hálózati megosztásra önálló fájlok és könyvtárak.  
 2. Szüksége lesz, attól függően, hogy az adatok teljes mérete meghajtók számának meghatározásához. Szerzik be a szükséges számú 2,5 hüvelyk SSD vagy 2,5" vagy 3.5-ös" SATA II vagy III merevlemez-meghajtókat.
-3. A céloldali tárfiók, a tároló, a virtuális könyvtárak és a blobok azonosításához.
 4. Határozza meg, a könyvtárak és/vagy az önálló fájlok, amelyet a program minden merevlemez-meghajtón.
 5. A DataSet adatkészlet és driveset a CSV-fájlok létrehozása.
     
@@ -498,11 +497,11 @@ Az Azure storage-fiókjában az adatok az Azure portálon keresztül is elérhet
 
 **Az importálási feladat befejezése után mi lesz a adatok néz a tárfiókban lévő? A könyvtár-hierarchia megőrzi?**
 
-Ha a merevlemez-meghajtó előkészítése az importálási feladat, a cél a DstBlobPathOrPrefix mező adatkészlet CSV határozza meg. Ez az a cél tároló a storage-fiókot, amelyhez a merevlemez-meghajtóról az adatok másolásakor. A cél tárolóban virtuális könyvtárak mappák a merevlemez-meghajtóról jön létre, és blobok fájlok jönnek létre. 
+Ha a merevlemez-meghajtó előkészítése az importálási feladat, a cél a fürt megosztott kötetei szolgáltatás adatkészlet DstBlobPathOrPrefix mező szerint van megadva. Ez az a cél tároló a storage-fiókot, amelyhez a merevlemez-meghajtóról az adatok másolásakor. A cél tárolóban virtuális könyvtárak mappák a merevlemez-meghajtóról jön létre, és blobok fájlok jönnek létre. 
 
-**Ha a meghajtó már megtalálható a tárfiókban lévő fájlok, a szolgáltatás felülírja a létező blobot, amely a tárfiókot?**
+**Ha a meghajtó már megtalálható a tárfiókban lévő fájlok, a szolgáltatás felülírja meglévő blobokkal vagy a fájlok a storage-fiókom?**
 
-Amikor előkészíti a meghajtót, vagy adhat meg hogy felülírható-e a cél fájlok törlése figyelmen kívül hagyott használatát a mező dataset CSV-fájl neve: < átnevezése |} nem írható felül |} felülírása >. Alapértelmezés szerint a szolgáltatás fogja az új fájlok átnevezése helyett felülírja a meglévő blobokat.
+Amikor előkészíti a meghajtót, vagy adhat meg hogy felülírható-e a cél fájlok törlése figyelmen kívül hagyott használatát a mező dataset CSV-fájl neve: < átnevezése |} nem írható felül |} felülírása >. Alapértelmezés szerint a szolgáltatás fogja az új fájlok átnevezése helyett felülírja a meglévő blobokkal vagy a fájlokat.
 
 **Egy 32 bites operációs rendszerekkel kompatibilis a WAImportExport eszköz?**
 Nem. A WAImportExport eszköze csak 64 bites Windows operációs rendszerekkel kompatibilis. Tekintse meg az operációs rendszerek szakasza a [szükséges előfeltételek](#pre-requisites) támogatott operációsrendszer-verziók teljes listáját.

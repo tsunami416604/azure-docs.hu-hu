@@ -1,30 +1,35 @@
 ---
 title: "Az Azure piactér értékesítő útmutató |} Microsoft Docs"
-description: "Ez az útmutató az üzleti felhasználók és a termék vezetői független szoftvergyártók (ISV-k) terjesztésében érdekelt a virtuális gép Azure hitelesített képek kínál informatikai szakemberek és fejlesztők számára is."
+description: "Ez az útmutató az üzleti felhasználók és a termék vezetői független szoftvergyártók (ISV-k) terjesztésében érdekelt kínál a hitelesített Azure virtuálisgép-lemezképeket és az informatikai szakemberek és fejlesztők számára a kezelt alkalmazások is."
 documentationcenter: 
-author: rupeshazure
-manager: hamidm
+author: divacc
+manager: prkumar
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
-ms.author: rupesk@microsoft.com
-ms.robots: NOINDEX, NOFOLLOW
-ms.openlocfilehash: c78708687fbb5716e3e8d62967013310d6ccc735
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.author: divacc@microsoft.com
+ms.openlocfilehash: 0985c7da429202cc6003df73c6ca17714b5a1287
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure Marketplace – Eladói útmutató
 
-Üdvözli az Azure piactér értékesítő útmutatóját. Ez az útmutató üzleti felhasználók és a termék vezetői független szoftvergyártók (ISV-k) terjesztésében érdekelt a virtuális gép Azure hitelesített képek kínál informatikai szakemberek és fejlesztők számára készült. A világ Azure ügyfelekkel a [piactér](https://azuremarketplace.microsoft.com/) kiváló reach és nyújthat elérhetővé tegyék a termékek.
-
+Üdvözli az Azure piactér értékesítő útmutatóját. Ez az útmutató üzleti felhasználók és a termék vezetői független szoftvergyártók (ISV-k) is kínál a hitelesített Azure virtuálisgép-lemezképeket és a felügyelt alkalmazások informatikai szakemberek és fejlesztők számára készült. Az Azure-ügyfél a világ [Azure piactér](https://azuremarketplace.microsoft.com/) kiváló reach és nyújthat elérhetővé tegyék a termékek.
 
 > [!NOTE]
-> Ha érdekli a befejezett szoftver kínál a szolgáltatott szoftverként (SaaS) termékként az üzleti felhasználók, használatával megvizsgálhatja a beállítások segítségével rendezze őket a [AppSource](https://appsource.microsoft.com).
+> Ha érdekli a kínál a [kezelt alkalmazás](https://docs.microsoft.com/en-us/azure/managed-applications/overview), kövesse az utasításokat segítségével rendezze őket az Azure piactér [Itt](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app).
+
+> [!NOTE]
+> Ha érdekli a befejezett szoftver kínál, a szolgáltatott szoftverként (SaaS) termékek _informatikai szakemberek és fejlesztők_, akkor is elérhetők a saas-on-amp@microsoft.com további információt a beállításokat.
+
+> [!NOTE]
+> Ha érdekli a befejezett szoftver kínál, a szolgáltatott szoftverként (SaaS) termékek _üzleti felhasználók_, használatával megvizsgálhatja a beállítások segítségével rendezze őket a [AppSource](https://appsource.microsoft.com).
+
 
 Ez az útmutató végén tudni fogja, hol található az alábbi témakörök részletesebb tájékoztatást:
 
@@ -43,9 +48,9 @@ Lássunk neki.
 
 ## <a name="whats-the-azure-marketplace"></a>Mi az az Azure piactéren?
 
-Az Azure piactéren egy online alkalmazásokhoz és szolgáltatásokhoz piactér amelyen ISV-k – a vállalkozásoknak--indítások azok-megoldásokat nyújtsanak a világ különböző Azure-ügyfél. A piactéren keresztül Azure közzétevők terjesztése és a virtuális gép képek értékesít más informatikai szakemberek számára, akik gyorsan a mobileszköz-megoldás az Azure-ban, valamint a felhőalapú alkalmazások fejlesztéséhez. A piactér ajánlatok – az adatok végpontok közötti analytics alkalmazásokból adatfeldolgozási, adattárolási és elemzési rétegek rétegzett elektronikus kereskedelmi alkalmazásokra (adatokat, a szolgáltatás és az Internet) számos támogatja.
+Az Azure piactéren egy online alkalmazásokhoz és szolgáltatásokhoz piactér amelyen ISV-k – a vállalkozásoknak--indítások azok-megoldásokat nyújtsanak a világ különböző Azure-ügyfél. A piactéren keresztül Azure közzétevők terjesztése, és a virtuális gép képek eladásra, kezelt alkalmazások és más szakemberek számára, akik gyorsan SaaS-alkalmazások fejlesztése a felhőalapú alkalmazások és a mobileszköz-megoldás az Azure-ban. Az Azure piactér ajánlatok – az adatok végpontok közötti analytics alkalmazásokból adatfeldolgozási, adattárolási és elemzési rétegek rétegzett elektronikus kereskedelmi alkalmazásokra (adatokat, a szolgáltatás és az Internet) számos támogatja.
 
-A felhő ügyfelek arcfelismerési számos kihívást egyedi igényeiknek megfelelően megoldások keresésekor. A piactér ezek a kihívások megoldásában, valamint elérheti az ügyfelek innovatív ISV megoldások lehetőséget kínál, a következő táblázatban leírtak szerint:
+A felhő ügyfelek arcfelismerési számos kihívást egyedi igényeiknek megfelelően megoldások keresésekor. Az Azure piactér ezek a kihívások megoldásában, valamint elérheti az ügyfelek innovatív ISV megoldások lehetőséget kínál, a következő táblázatban leírtak szerint:
 
 | Ügyfél szükséges | Az Azure piactér megoldás |
 | --- | --- |
@@ -54,14 +59,14 @@ A felhő ügyfelek arcfelismerési számos kihívást egyedi igényeiknek megfel
 | A méretezhető mechanizmussal kell külső alkalmazások és szolgáltatások | Lehetővé teszi, hogy létrehozását és méretezhető központi telepítésének harmadik féltől származó alkalmazások és szolgáltatások konfigurálása |
 | Új alkalmazások és szolgáltatások integrálását, és a már meglévő megoldások használatához szükséges | Harmadik féltől származó alkalmazások és szolgáltatások könnyen integrálható a meglévő megoldások Azure |
 
-A piactér során az minőségének, választott és az Azure partner ökoszisztéma erősségével globális vonatkozik. A következő fő előnyöket nyújtják:
+Az Azure piactér során az minőségének, választott és az Azure partner ökoszisztéma erősségével globális vonatkozik. A következő fő előnyöket nyújtják:
 
 - Azure-alapú ajánlatok Microsoft és a partnerek egyesített helye.
 - Több mint 5000 ajánlatokat.
 - Integrált platformot felületet.
 - Zökkenőmentes konfigurációs, telepítése és kezelése.
 
-## <a name="is-the-marketplace-right-for-my-business"></a>Az piactér jobb az üzletmenetemet?
+## <a name="is-azure-marketplace-right-for-my-business"></a>Az Azure piactér közvetlenül az üzletmenetemet?
 
 Mostanra felmerülhet, ha az Azure piactéren-e a megfelelő méretezése a vállalkozása számára. És ha igen, milyen lesz kap belőle? A piactér hoz létre az Ön új értékesítési lehetőségek:
 
@@ -74,23 +79,32 @@ Mostanra felmerülhet, ha az Azure piactéren-e a megfelelő méretezése a vál
 
 Piactér-felhasználók számára különböző. Emellett Azure rendelkezik-e a leggyorsabban felhasználói körrel összes felhő-szolgáltatót. Ettől kezdve informatikai szakemberek és fejlesztők kezdve tőkéhez vállalatok iparágakban, és a nyilvános és a magán a vállalatok számára a hozzáférést.
 
-## <a name="how-does-the-marketplace-work"></a>Hogyan működik a piactér?
+## <a name="how-does-marketplace-work"></a>Hogyan működik a piactér?
 
-&#39; igen egyszerű s. Meg &#39; után ismételt jóváhagyása, a hitelesített Azure virtuálisgép-lemezkép létrehozásához, és tegye közzé a piactéren. Hiba, Azure-ügyfél található, vásárolnia, és a termék telepítése percben. Még jobban az ügyfelek magabiztosan telepíthetnek a megoldás. Tudják, hogy a környezet konfigurálva van-e a sikeres, az Azure-on, és hogy az infrastruktúra készen áll néhány percen belül.
+&#39; igen egyszerű s. Meg &#39; után ismételt jóváhagyása, a virtuális gép lemezképe Azure hitelesített vagy a kezelt alkalmazás létrehozásához, és tegye közzé a piactéren. Hiba, Azure-ügyfél található, vásárolnia, és a termék telepítése percben. Még jobban az ügyfelek magabiztosan telepíthetnek a megoldás. Tudják, hogy a környezet konfigurálva van-e a sikeres, az Azure-on, és hogy az infrastruktúra készen áll néhány percen belül.
 
-A Cloud Partner portálra a központ létrehozásához az ajánlatot a piactéren. Virtuálisgép-rendszerképek a teljes telepített operációs rendszer és egy vagy több alkalmazást specifikációjában. A lemezkép tanúsítására úgy, hogy az informatikai &#39;szükségesek, készen áll a kiadványt, bizonyos Előfeltételek teljesítése érdekében van. A következő szakaszban ezek tárgyaljuk.
+A Cloud Partner portálra a központ létrehozásához az ajánlatot a piactéren. Tanúsítására ezt az ajánlatot, hogy az informatikai &#39;szükségesek, készen áll a kiadványt, hogy bizonyos feltételek teljesítéséhez szükséges. A következő szakaszban ezek tárgyaljuk.
 
 
 ## <a name="whats-next"></a>A következő lépések
 
-Akkor is előfordulhat, hogy kell végezni, hogy az Azure piactéren valóban-e a megfelelő beválik, ha a terméket. Igen, hogyan az első lépés? Ez a szakasz legyen használatba, és amelyen fut a piactéren (1. ábra): 
+Akkor is előfordulhat, hogy kell végezni, hogy az Azure piactéren valóban-e a megfelelő beválik, ha a terméket. Igen, hogyan az első lépés? Ez a szakasz használatba és fut-e a piactér (1. ábra) a virtuálisgép-lemezképek által kialakításával foglalkozik: 
 * Hitelesített válik Azure.
 * Első jóváhagyva értékesítési a terméket.
-* Az ajánlat hoz létre, a Cloud Partner portálra. 
+* Létrehozása és közzététele az ajánlatot a Cloud Partner portálra keresztül. 
 
 ![Az Azure piactéren értékesítési folyamat](./media/cloud-partner-portal-seller-guide/processforselling.png)
 
 1. ábra: Folyamatban az értékesítési az Azure piactéren
+
+A munkaterhelés (a virtuális gép vagy a kezelt alkalmazás) függ közzétételének megtervezése, fog hajtsa végre az ajánlatot közzétenni egy másik folyamat. A következő tartalmat közzététel összpontosít _virtuális gép ajánlatok_.
+
+> [!NOTE]
+> Ha érdekli a kínál a [kezelt alkalmazás](https://docs.microsoft.com/en-us/azure/managed-applications/overview), kövesse az utasításokat segítségével rendezze őket az Azure piactér [Itt](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app).
+
+> [!NOTE]
+> Ha érdekli a befejezett szoftver kínál, a szolgáltatott szoftverként (SaaS) termékek _informatikai szakemberek és fejlesztők_, akkor is elérhetők a saas-on-amp@microsoft.com további információt a beállításokat.
+
 
 Először műszaki és felhasználóknak előfeltételeket teljesítő, és készítse elő a virtuális gép lemezképe. Ezután a termék jelöl ki, és egy értékesítő regisztrálásához. Végül marketing tartalom hozzáadása, és küldje el a közzétételre. Tekintse át az ajánlatot a preview vagy tesztelési környezetben előtt, hogy az élő a piactéren.
 
@@ -103,6 +117,7 @@ Az Azure piactérről az ajánlat létrehozásának első lépése, hogy Azure h
 ![Csatlakozás Azure hitelesített követelmények](./media/cloud-partner-portal-seller-guide/azurecertified.png)
 
 2. ábra: Azure hitelesített váljon követelményei
+
 
 ### <a name="technical-prerequisites"></a>Műszaki Előfeltételek
 
@@ -147,13 +162,15 @@ Megszerzéséhez _Azure hitelesített_ állapotát jelöli a bevezetési folyama
 
 ## <a name="how-do-i-nominate-my-product-and-get-approved"></a>Hogyan jelöl ki a termék és az beszerzése jóváhagyott?
 
-Most már elemszámú jóváhagyás értékesítési a terméket a piactéren (a 3. ábrán). Microsoft megkönnyíti, hogy a termék jelöl ki, a közzétételi folyamat, majd egy értékesítő regisztrálásához.
+Most már elemszámú jóváhagyás értékesítési a terméket a piactéren (a 3. ábrán). 
+
+Microsoft megkönnyíti, hogy a termék jelöl ki, a közzétételi folyamat, majd egy értékesítő regisztrálásához. A munkaterhelés (a virtuális gép vagy a kezelt alkalmazás) függ közzétételének megtervezése, egy másik jelölési eljárás fog kövesse.
 
 ![Adja meg az Azure piactéren el első jóváhagyása](./media/cloud-partner-portal-seller-guide/gettingapprovedsteps.png)
 
 3. ábra: Lépéseit első jóváhagyott el az Azure piactéren
 
-Az első lépés jóváhagyási felé [megadjuk](https://createopportunity.azurewebsites.net/) a termék regisztráció és a közzététel előtt. Jóváhagyási is igénybe vehet _legfeljebb három munkanapon_.
+Ha közzéteszi a _virtuális gép ajánlat_, termékét kijelöli [Itt](https://createopportunity.azurewebsites.net/). Jóváhagyási is igénybe vehet _legfeljebb három munkanapon_.
 
 A jóváhagyást követően jelenik meg a következő:
 
@@ -172,17 +189,19 @@ Most már készen áll a virtuálisgép-lemezkép hitelesíthet és az ajánlato
 
 ## <a name="what-about-best-practices"></a>Mi a helyzet a gyakorlati tanácsok?
 
-Az alábbiakban néhány eszközök és ajánlott eljárások, amelyek segítségével a legtöbbet hozhatja ki, egy a piactéren értékesítő alatt.
+Az alábbiakban néhány gyakorlati tanácsot, amelyik segíthet a legtöbbet hozhatja ki, egy a piactéren értékesítő alatt.
 
 ### <a name="azure-test-drives"></a>Az Azure vizsgálati meghajtók
 
 [Az Azure vizsgálati meghajtók](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/test-drives?page=1) kiváló módja annak, kihasználhatják a termék a lehetséges ügyfeleket, így azok vásárolnak előtt próbálja is vannak. Teszt meghajtók segítségével növelheti az átalakítás és érdeklődők készítése.
 
-Miután megadta a kapcsolattartási adatait, az ügyfelek is hozzáférhetnek az előre elkészített tesztelése. A termék &#39; s legfontosabb funkcióira és a valós forgatókönyvek előnyeit gyakorlati önállóan végigkövethető próbaverziójára az ügyfeleken.
+Miután megadta a kapcsolattartási adatait, az ügyfelek is hozzáférhetnek az előre elkészített tesztelése. A termék &#39; s legfontosabb funkcióira és a valós forgatókönyvek előnyeit gyakorlati önállóan végigkövethető próbaverziójára az ügyfeleken. Még jobb? 36 %-kal több érdeklődők próbát közzétételével társított ajánlatát kérheti le.
 
-A termék próbát közzététel jelenleg csak a klasszikus közzétételi portáljára érhető el. További dokumentációját címen [új próbát közzététele](https://github.com/Azure/AzureTestDrive/wiki).
+Azt adja meg a bevezetési folyamat során meg kell közzétennie a teszt összes útmutatással meghajtóra a Cloud Partner portálra. További információ [Azure vizsgálati meghajtók](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf).
 
-További információ [Azure vizsgálati meghajtók](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf).
+###<a name="lead-generation"></a>Létrehozás vezethet
+
+A kulcs értéke tulajdonságai listázása a termékkel kapcsolatban egy Azure piactér egyike, hogy az ügyfelek, amelyek iránt érdeklődik, vagy a termék telepített magas minősített erőforrások küldünk. Mi is jobb pedig nem küldeni ezeket az érdeklődőket közvetlenül a CRM, hogy a művelet végrehajtása, és nyomon követéséhez gyorsan, további lehetőségek létrehozása és a záró további illeszkedő kereskedelmi ajánlatokat. Az integráció az érdeklődési generációs néhány percet vesz igénybe, és a Cloud Partner portálra a közzétételi folyamat során történik.
 
 ### <a name="go-to-market-checklist"></a>Nyissa meg piacra jutási ellenőrzőlista
 
@@ -198,21 +217,20 @@ Az indítás előtt ajánlott néhány művelettel gyors vontatási hozzáférhe
 
 ## <a name="what-about-reports"></a>Mi a helyzet a jelentéseket?
 
-A piactér kínál jelentések a rendelések, használata és az ügyfelek, amelyek elérhetők a piactér [Publisher Reporting portal](https://reports.azure.com). Hasznos insights és elemzés kívül a nyers adatok hajózható táblázat, és a CSV vagy XLS-fájlként tölthető le.
+A piactér kínál jelentések a rendeléseket, a használati és az ügyfelek, akik a Cloud Partner portálra Insights szakasz keresztül érhető el. Hasznos insights és elemzés kívül a nyers adatok hajózható táblázat, és a CSV vagy XLS-fájlként tölthető le.
 
-[Ez a videó](https://player.vimeo.com/video/200859918) lehetővé teszi az olyan kukucskálózsetonokat betekintés jelentés szolgáltatásai és előnyöket, többek között:
+A Insights szolgáltatásainak és előnyei többek között:
 
-- Jelentéstípusok: rendelések, a használat és a felhasználói trendeket a kezdőlap összefoglaló pillanatképe.
+- Jelentéstípusok: rendelések, használat, deployements és felhasználói összefoglaló pillanatkép trendeket Insights kezdőlapján.
 - Részletes rendeléseket, a használati és a felhasználói adatokat.
 - Rendeléseket és használati havi összegzését, vagy egy hat hónapos trend nézetben látható.
-- Több megjelenített elemzések a szabványként.
 - Használati/rendelések szerint:
   - Piac
   - Csatorna
   - Ajánlatok trendek
   - Piactér-licenc típusa
 
-Részletes jelentések megjelenítése a felhasználói adatok, például a cég nevét, és le az irányítószámot, földrajzi hely, az ügyfelek összehasonlítás. Az alábbi lista tartalmazza a konkrét attribútumok nyújtunk kapcsolatos ügyfelei az alábbiakra:
+Részletes jelentések megjelenítése a felhasználói adatok, például a cég nevét, és le az irányítószámot, földrajzi hely, így hasonlítsa össze az ügyfelek és a eladók kártalanítja. Az alábbi lista tartalmazza a konkrét attribútumok nyújtunk kapcsolatos ügyfelei az alábbiakra:
 
 - Viszonteladó
 - Utónév
@@ -221,7 +239,7 @@ Részletes jelentések megjelenítése a felhasználói adatok, például a cég
 - Cégnév
 - TransactionDate
 - SubscriptionName
-- AzureSubscriptionId
+- AzureSubscriptionId (csak az ügyfelek PAYG)
 - CloudInstanceName
 - OrderCount
 - CustomerCountryRegion
@@ -229,7 +247,7 @@ Részletes jelentések megjelenítése a felhasználói adatok, például a cég
 - CustomerCommunicationCulture
 - CustomerZipCode
 
-Azt is kínál – súgó dokumentációját, egy szószedet és rögzített bemutató képzési. Ha kell segítségével vagy a jelentések segítségével támogatja, megnyithat egy [támogatja a jegy](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=636233723471685249).
+Azt is kínál – súgó dokumentációját, egy szószedet és rögzített bemutató képzési. Ha kell segítségével vagy a jelentések segítségével támogatja, bármikor megnyithatja a támogatási jegy keresztül Cloud Partner portálra.
 
 Azt az ISV eladók-Közösség Üdvözöljük, és várjuk az ajánlatot.
 

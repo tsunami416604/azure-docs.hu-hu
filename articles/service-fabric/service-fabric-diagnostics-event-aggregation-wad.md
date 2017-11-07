@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2017
+ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5773361fdec4cb8ee54fa2856f6aa969d5dac4e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c05cfec995538a95d99451155cf269d33e2716d0
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Esemény összesítésére és az adatgyűjtést, a Windows Azure diagnosztikai
 > [!div class="op_single_selector"]
@@ -174,7 +174,7 @@ Lásd a template.json fájl módosítása, után közzé a Resource Manager-sabl
 
 A Service Fabric 5.4 kiadástól kezdve, állapotát és a terheléselosztási metrika események állnak rendelkezésre a gyűjteményhez. Ezek az események tükrözze az állapotfigyelő segítségével a rendszer vagy a kód által előállított eseményeket vagy nem tölthető be, mint jelentéskészítési API-k [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) vagy [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Ez lehetővé teszi, hogy összesítésére és idővel állapotának megtekintése és a riasztás állapotát vagy a betöltési események alapján. Ezeket az eseményeket a Visual Studio diagnosztikai eseménynapló adja hozzá megtekintése "Microsoft-ServiceFabric:4:0x4000000000000008" ETW-szolgáltatók listáját.
 
-Az események összegyűjtésére, tartalmazza a Resource Manager-sablon módosítása
+A fürt az események összegyűjtésére, módosítsa a `scheduledTransferKeywordFilter` a Resource Manager sablon WadCfg a `4611686018427387912`.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -191,11 +191,15 @@ Az események összegyűjtésére, tartalmazza a Resource Manager-sablon módos�
 
 ## <a name="collect-reverse-proxy-events"></a>Fordított proxy eseményeinek gyűjtése
 
-A Service Fabric 5.7 kiadástól kezdve [fordított proxy](service-fabric-reverseproxy.md) események állnak rendelkezésre a következő gyűjtemény számára.
-Fordított proxy események két csatornákon, egy kérelem feldolgozása sikertelen, a másik a kérelmekkel kapcsolatos részletes eseményeket tartalmazó tükröző tartalmazó hibaesemények feldolgozni a fordított proxy bocsát ki. 
+A Service Fabric 5.7 kiadástól kezdve [fordított proxy](service-fabric-reverseproxy.md) események gyűjtemény adat & Messaging csatornákon keresztül érhetők el. 
 
-1. Hiba eseményeinek gyűjtése: megtekintéséhez ezeket az eseményeket a Visual Studio diagnosztikai eseménynapló hozzáadása "Microsoft-ServiceFabric:4:0x4000000000000010" ETW-szolgáltatók listáját.
-Az események összegyűjtésére Azure fürtök, tartalmazza a Resource Manager-sablon módosítása
+A fordított proxy a fő adatok & Messaging-csatornán keresztül - feldolgozási hibák és a kritikus fontosságú problémáit tükröző csak hibaesemények leküldéses értesítések. A részletes csatorna a fordított proxy által feldolgozott összes kérelem kapcsolatos részletes eseményeket tartalmazza. 
+
+Megtekintéséhez a Visual Studio diagnosztikai eseménynapló hiba események hozzáadása "Microsoft-ServiceFabric:4:0x4000000000000010" ETW-szolgáltatók listáját. A – kéréstelemetria frissítés a Microsoft-ServiceFabric bejegyzés ETW szolgáltató listában "Microsoft-ServiceFabric:4:0x4000000000000020".
+
+Azure-ban futó fürtök:
+
+A nyomkövetési adatokat abban a fő adatok & Messaging csatorna átvételéhez, módosítsa a `scheduledTransferKeywordFilter` érték a Resource Manager sablon WadCfg `4611686018427387920`.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -210,8 +214,7 @@ Az események összegyűjtésére Azure fürtök, tartalmazza a Resource Manager
     }
 ```
 
-2. Összegyűjteni az összes kérelem események feldolgozását: A Visual Studio diagnosztikai eseménynapló, frissítés a Microsoft-ServiceFabric bejegyzés ETW szolgáltató listában "Microsoft-ServiceFabric:4:0x4000000000000020".
-Az Azure Service Fabric-fürtök esetén tartalmazza a resource manager-sablon módosítása
+Minden Kérelemfeldolgozás eseményeinek gyűjtése, kapcsolja be az adatok & Messaging - részletes csatorna módosításával a `scheduledTransferKeywordFilter` érték a Resource Manager sablon WadCfg `4611686018427387936`.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -225,9 +228,8 @@ Az Azure Service Fabric-fürtök esetén tartalmazza a resource manager-sablon m
       }
     }
 ```
-> Javasoljuk, hogy körültekintően a csatornán gyűjtését események ez gyűjti az összes forgalom a fordított proxyn keresztül és engedélyezése gyorsan felhasználhat a tárolási kapacitást.
 
-Az Azure Service Fabric-fürtök esetén a csomópontok eseményei gyűjtött és a SystemEventTable összesíteni.
+Jelen gyűjtését események engedélyezése részletes nyomkövetések gyors létrehozás alatt számos csatorna eredményez, és felhasználhat a tárolási kapacitást. Csak kapcsolja be ezt a feltétlenül szükséges.
 Részletes fordított proxy eseményeket, tekintse meg a [fordított proxy diagnosztika útmutató](service-fabric-reverse-proxy-diagnostics.md).
 
 ## <a name="collect-from-new-eventsource-channels"></a>Új EventSource csatornák gyűjtése

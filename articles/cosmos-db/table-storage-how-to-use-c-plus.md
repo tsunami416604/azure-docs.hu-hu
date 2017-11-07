@@ -1,5 +1,5 @@
 ---
-title: "A Table storage (C++) használatával |} Microsoft Docs"
+title: "Azure Table storage használata C++ |} Microsoft Docs"
 description: "Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható."
 services: cosmos-db
 documentationcenter: .net
@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: 8314292cdb9b7a3f464c60119ed10f6b06ed4d10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb6adfda2ef17e04cedd026964cfcad7443e0bd9
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="how-to-use-table-storage-from-c"></a>A C++ a Table storage használata
+# <a name="how-to-use-azure-table-storage-with-c"></a>Azure Table storage használata C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 

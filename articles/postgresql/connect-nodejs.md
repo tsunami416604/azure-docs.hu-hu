@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 06/23/2017
-ms.openlocfilehash: c16705c89c36452a28ab0547dc6b5277f57dd6d5
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 11/03/2017
+ms.openlocfilehash: 72756c6acd8cd7c35405754ccda585228f800a8e
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Node.js használatával
 A gyors üzembe helyezés mutatja be egy PostgreSQL az Azure-adatbázishoz való kapcsolódáshoz a [Node.js](https://nodejs.org/) alkalmazás. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ebben a cikkben azt feltételezi, hogy ismeri a Node.js használatával történő fejlesztéséhez, és nem ismeri a PostgreSQL az Azure-adatbázis használata.
@@ -45,7 +45,7 @@ npm list
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Azure-portálon a bal oldali menüben kattintson a **összes erőforrás** és keressen rá az imént létrehozott kiszolgálót.
+2. Azure-portálon a bal oldali menüben kattintson a **összes erőforrás** , és keresse meg a létrehozott kiszolgálót.
 3. Kattintson a kiszolgálónévre.
 4. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
  ![PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-nodejs/1-connection-string.png)

@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: babcf20b58af1415e0e658e0a622cb056e34642b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
-ms.translationtype: HT
+ms.openlocfilehash: 1442f6ccc1d4ec349bb20d302faabd6788ff9253
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez
 
@@ -39,13 +39,17 @@ Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. T
 
 Mielőtt központilag telepíteni az előkonfigurált megoldás az Azure-előfizetéshez, ki kell választania néhány konfigurálási beállításhoz:
 
-1. Jelentkezzen be [azureiotsuite.com](https://www.azureiotsuite.com) az Azure használatával fiók hitelesítő adatait, és kattintson a  **+**  megoldások létrehozásához.
+1. Jelentkezzen be [azureiotsuite.com](https://www.azureiotsuite.com) az Azure használatával fiók hitelesítő adatait, és kattintson a  **+**  egy új megoldás létrehozásához:
 
-1. Kattintson a **Kiválasztás** elemre a **Távoli figyelés** csempén.
+    ![Új megoldás létrehozása](media/iot-suite-remote-monitoring-deploy/createnewsolution.png)
+
+1. Kattintson a **kiválasztása** a a **távoli figyelési preview** csempére.
+
+    ![Válassza ki a távoli figyelése](media/iot-suite-remote-monitoring-deploy/remotemonitoring.png)
 
 1. A a **távoli figyelő létrehozása megoldás** lapján adjon meg egy **megoldásnév** a megoldás a távoli figyelésének előre konfigurált.
 
-1. Válassza ki a **alapvető** vagy **vállalati** központi telepítés. Ha meg vannak deplying megtudhatja, hogyan működik, vagy hogy bemutatója futtatni, válassza ki a **alapvető** költségek minimalizálása érdekében a beállítást.
+1. Válassza ki a **alapvető** vagy **szabványos** központi telepítés. Ha meg vannak deplying megtudhatja, hogyan működik, vagy hogy bemutatója futtatni, válassza ki a **alapvető** költségek minimalizálása érdekében a beállítást.
 
 1. Válasszon **Java** vagy **.NET** nyelve. A mikroszolgáltatások állnak rendelkezésre, vagy a Java, vagy a .NET hitelesítés megvalósításához.
 
@@ -53,7 +57,9 @@ Mielőtt központilag telepíteni az előkonfigurált megoldás az Azure-előfiz
 
 1. Válassza ki a megoldás kiépítéséhez használni kívánt **Előfizetést** és **Régiót**.
 
-1. Kattintson a **Megoldás létrehozása** gombra a kiépítés elkezdéséhez. Ez a folyamat általában több percig tart.
+1. Kattintson a **Megoldás létrehozása** gombra a kiépítés elkezdéséhez. Ez a folyamat általában több percig tarthat futtatásához:
+
+    ![Távoli felügyeleti megoldás részletei](media/iot-suite-remote-monitoring-deploy/createform.png)
 
 A hibaelhárítási információkat, lásd: [Mi a teendő, ha a központi telepítés nem sikerül](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide#what-to-do-when-a-deployment-fails) a GitHub-tárházban.
 
@@ -61,12 +67,16 @@ A hibaelhárítási információkat, lásd: [Mi a teendő, ha a központi telep�
 
 Ha a kiépítési folyamat befejeződött, bejelentkezhet a távoli felügyeleti előre konfigurált megoldásához.
 
-1. Az a **kiépített megoldások** lapon, válassza ki az új távoli felügyeleti megoldás.
+1. Az a **kiépített megoldások** lapon, válassza ki az új távoli figyelési megoldás:
+
+    ![Új megoldás kiválasztása](media/iot-suite-remote-monitoring-deploy/choosenew.png)
 
 1. A távoli felügyeleti megoldás a panelen megjelenő információk is megtekinthetők. Válasszon **megoldás irányítópultja** kapcsolódni a távoli felügyeleti megoldás.
 
     > [!NOTE]
     > Törölheti a távoli felügyeleti megoldás a panelről, amikor elkészült, vele.
+
+    ![Megoldás panel](media/iot-suite-remote-monitoring-deploy/solutionpanel.png)
 
 1. A távoli felügyeleti megoldás irányítópultja jeleníti meg a böngészőben.
 

@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/10/2017
-ms.openlocfilehash: 5d62a138313ae3568470cbf5a8eb191321cd6cc7
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 11/03/2017
+ms.openlocfilehash: 96e917d1ea147e3b53b00002675ed16facb69255
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok az Azure portál használatával
 Kiszolgálószintű tűzfal-szabályok lehetővé teszik a rendszergazdák az Azure-adatbázisának eléréséhez PostgreSQL-kiszolgáló a megadott IP-cím vagy az IP-címek. 
@@ -23,11 +23,11 @@ Ez az útmutató Útmutató lépéseit, az alábbiak szükségesek:
 - A kiszolgáló [PostgreSQL az Azure-adatbázis létrehozása](quickstart-create-server-database-portal.md)
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
-1. A PostgreSQL server, a beállítások panelen elemcsoportban kattintson **kapcsolatbiztonsági** megnyitandó a kapcsolat biztonsági panel az Azure-adatbázis PostgreSQL.
+1. PostgreSQL-kiszolgáló beállításai lapon elemcsoportban kattintson **kapcsolatbiztonsági** PostgreSQL megnyitandó a kapcsolat biztonsági beállításait tartalmazó lapot az Azure-adatbázishoz.
 
   ![Azure portál – kattintson a kapcsolat biztonságát](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
-2. Kattintson a **hozzáadása a saját IP** az eszköztáron. Ez lesz automatikusan hozzon létre egy tűzfalszabályt a számítógép a nyilvános IP-címmel, az Azure rendszer által érzékelt.
+2. Válassza ki **hozzáadása a saját IP** az eszköztáron. Ez a művelet automatikusan létrehozza a tűzfalszabályok a számítógép a nyilvános IP-címmel, az Azure rendszer által érzékelt.
 
   ![Azure portál – kattintson a saját IP-cím hozzáadása](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
@@ -36,7 +36,7 @@ Egy keresőmotor vagy más online eszköz használatával ellenőrizze a saját 
 
   ![Mi az a saját IP Bing keresése](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. Adjon hozzá további címtartományok. Az adatbázisra vonatkozó tűzfalszabályok az Azure a PostgreSQL megadhatja a egyetlen IP-címet, vagy címtartományokat. Ha szeretné korlátozni a szabály, amely egyetlen IP-címnek, írja be ugyanazt a címet a mezőben a kezdő IP- és a záró IP. Megnyitásáról a tűzfal lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazások használatát a bejelentkezéshez a PostgreSQL-kiszolgálón, amelyhez bármely adatbázisra érvényes hitelesítő adatokkal rendelkezik.
+4. Adjon hozzá további címtartományok. Az adatbázisra vonatkozó tűzfalszabályok az Azure a PostgreSQL megadhatja a egyetlen IP-címet, vagy címtartományokat. Ha szeretné korlátozni a szabály, amely egyetlen IP-címnek, írja be ugyanazt a címet a mezőben a kezdő IP- és a záró IP. Megnyitásáról a tűzfal lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazások a bejelentkezéshez a PostgreSQL-kiszolgálón, amelyhez bármely adatbázisra érvényes hitelesítő adatokkal rendelkezik.
 
   ![Azure portál – tűzfalszabályok ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 

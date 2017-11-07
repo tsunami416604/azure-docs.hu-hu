@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2017
 ms.author: adegeo
-ms.openlocfilehash: b8b1ac04c20cf9fe6d6d8ea58571af05010461d9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: b8a9204b9eece396fbc30eacc8912ba9e655b963
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="scale-a-service-fabric-cluster"></a>A Service Fabric-fürt méretezése
 
@@ -252,6 +252,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 A következő előzetes az alábbi oktatóanyag áttekintésével megismerheti, hogyan telepítsen egy alkalmazást, és az API management használata.
 > [!div class="nextstepaction"]
-> [Alkalmazás üzembe helyezése](service-fabric-tutorial-deploy-api-management.md)
+> [Az API Management telepítése](service-fabric-tutorial-deploy-api-management.md)
 
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster

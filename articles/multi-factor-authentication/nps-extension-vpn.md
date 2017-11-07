@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.openlocfilehash: 92b95b91073ef0a53a936bea53a7c63fe37f1746
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 8bb4c754f7bf22198b997ded7a994ccf0e4ad265
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA bővítményével a hálózati házirend-kiszolgáló az Azure-bA
 
@@ -99,7 +99,7 @@ Ez a szakasz részletesen az előfeltételeket, amelyeket az MFA integrálható 
 Ez a cikk feltételezi, hogy rendelkezik-e egy működő VPN-infrastruktúra, amely Microsoft Windows Server 2016 használja, és, hogy a VPN-kiszolgáló nincs beállítva a továbbítási kapcsolat kérelmekre egy RADIUS-kiszolgáló. A cikk a VPN-infrastruktúra központi RADIUS-kiszolgáló használatára konfigurálja.
 
 Ha nem rendelkeznek olyan működő VPN-infrastruktúra helyen, akkor gyorsan létrehozhat a Microsoft és a külső webhelyek által a számos VPN telepítő oktatóprogramot kínál, amelyek található útmutatást követve. 
-
+            
 ### <a name="the-network-policy-and-access-services-role"></a>A hálózati házirend- és elérési szolgáltatások szerepkör
 
 Hálózati házirend- és elérési szolgáltatások a RADIUS-kiszolgáló és az ügyfél funkciókat biztosítja. Ez a cikk feltételezi, hogy telepítette a hálózati házirend- és elérési szolgáltatások szerepkör a tagkiszolgáló vagy tartományvezérlő a környezetben. Ebben az útmutatóban RADIUS VPN-konfigurációt konfigurálása. A hálózati házirend- és elérési szolgáltatások szerepkör telepítése a kiszolgálóra *eltérő* a VPN-kiszolgáló.
@@ -108,7 +108,7 @@ A hálózati házirend- és elérési szolgáltatások szerepkör telepítésév
 
 ### <a name="azure-mfa-license"></a>Az Azure MFA-licenc
 
-Egy licencre szükség az Azure multi-factor Authentication, és az Azure AD Premium, nagyvállalati mobilitási + biztonsági vagy a multi-factor Authentication előfizetés keresztül érhető el. További információkért lásd: [beolvasásával Azure multi-factor Authentication](multi-factor-authentication-versions-plans.md). Tesztelési célokra használható a próba-előfizetést.
+Egy licencre szükség az Azure multi-factor Authentication, és az Azure AD Premium, nagyvállalati mobilitási + biztonsági vagy a multi-factor Authentication előfizetés keresztül érhető el. Fogyasztás alapján licenceinek többek között az Azure MFA felhasználónként vagy a hitelesítési licencek nem kompatibilisek-e a hálózati házirend-kiszolgáló bővítményt. További információkért lásd: [beolvasásával Azure multi-factor Authentication](multi-factor-authentication-versions-plans.md). Tesztelési célokra használható a próba-előfizetést.
 
 ### <a name="windows-server-software"></a>Windows Server szoftver
 

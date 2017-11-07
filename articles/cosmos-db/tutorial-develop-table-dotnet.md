@@ -12,14 +12,14 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/12/2017
+ms.date: 11/03/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 2189dc7900f03a45c360fceffbcd7c1ff36f7e48
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a4145f70af429274c3c908d3dedef63c5f973bf6
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: A tábla API a .NET fejlesztést
 
@@ -41,29 +41,11 @@ Ez az oktatóanyag ismerteti a következő feladatokat:
  
 ## <a name="tables-in-azure-cosmos-db"></a>Az Azure Cosmos DB táblák 
 
-Az Azure Cosmos DB biztosít a [tábla API](table-introduction.md) (előzetes) séma nélküli kialakítás egy kulcs-érték tároló igénylő alkalmazásokhoz. Az [Azure Table Storage](../storage/common/storage-introduction.md) szolgáltatáshoz tartozó SDK-k és REST API-k képesek együttműködni az Azure Cosmos DB szolgáltatással. Az Azure Cosmos DB használatával nagy átviteli sebességet megkövetelő táblákat hozhat létre. Az Azure Cosmos DB jelenleg nyilvános előzetes verzióban támogatja az átviteli sebességre optimalizált táblákat (más néven „prémium szintű táblákat”). 
+Az Azure Cosmos DB biztosít a [tábla API](table-introduction.md) (előzetes verzió) egy kulcs-érték igénylő alkalmazásokat séma nélküli kialakítás tárolja, és magas througput követelményekkel rendelkezik. [Az Azure Table storage](../storage/common/storage-introduction.md) SDK-k és a REST API-k segítségével az Azure Cosmos Adatbázisba táblák használata.   
 
-Az Azure Table Storage továbbra is használható nagy tárigényű és alacsonyabb átviteli sebességet megkövetelő táblákkal.
+Ez az oktatóanyag a fejlesztők számára, aki ismeri az Azure Table storage SDK, és a premium szolgáltatásainak használatához az Azure Cosmos DB van. Alapul [Ismerkedés az Azure Table storage használatának .NET](table-storage-how-to-use-dotnet.md) és bemutatja, hogyan további szolgáltatásokat, például a másodlagos indexek, a létesített átviteli sebesség és a többszörös homing előnyeit. Ez az oktatóanyag leírja, hogyan használható az Azure-portálon hozzon létre egy Azure Cosmos DB fiókot létrehozása és egy tábla API-alkalmazás központi telepítése. A Microsoft .NET példákból létrehozása és egy tábla törlésével és beszúrni, frissítése, törlése és tábla adatok lekérdezése is ismerteti. 
 
-Ha Azure Table storage jelenleg használ, a következő előnyöket a "prémium table" előnézettel:
-
-- Kulcsrakész [globális terjesztési](distribute-data-globally.md) a többszörös homing és [automatikus és manuális feladatátvétel](regional-failover.md)
-- Automatikus séma-független elleni tulajdonságokat ("másodlagos indexek"), és gyors lekérdezéseket indexelő támogatása 
-- Támogatja az [független méretezése tárolási és átviteli](partition-data.md), tetszőleges számú régiók között
-- Támogatja az [táblánként dedikált átviteli](request-units.md) , amely a kérések száma másodpercenként több millió akár több százszor is méretezhető
-- Támogatja az [öt konzisztenciaszinteket](consistency-levels.md) rendelkezésre állás, a késés és az adott alkalmazástól függően konzisztencia kompromisszumot kell
-- rendelkezésre állás 99,99 % belül egy régiót, és a magas rendelkezésre állás érdekében további régiókban hozzáadásának lehetősége és [iparágvezető átfogó SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) az általánosan rendelkezésre álló
-- A meglévő Azure storage .NET SDK és az alkalmazáshoz nincs kódmódosításokat használata
-
-Az előzetes Azure Cosmos DB támogatja a tábla API a .NET SDK használatával. Letöltheti a [Azure Storage szolgáltatás előzetes SDK](https://aka.ms/premiumtablenuget) a Nugetből, amely rendelkezik a azonos osztályok és metódus-aláírása, mint a [Azure Storage szolgáltatás SDK](https://www.nuget.org/packages/WindowsAzure.Storage), de Azure Cosmos DB fiókok tábla API használatával is kapcsolódhatnak.
-
-Összetett Azure Table storage feladatokkal kapcsolatos további tudnivalókért lásd:
-
-* [Bevezetés az Azure Cosmos DB: tábla API](table-introduction.md)
-* A tábla szolgáltatás elérhető API-kat vonatkozó referenciadokumentációt [Storage ügyféloldali kódtára a .NET-referencia](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-
-### <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-Ez az oktatóanyag a fejlesztők számára, aki ismeri az Azure Table storage SDK, és a premium szolgáltatásainak használatához használja Azure Cosmos DB. Alapul [Ismerkedés az Azure Table storage használatának .NET](table-storage-how-to-use-dotnet.md) és bemutatja, hogyan további szolgáltatásokat, például a másodlagos indexek, a létesített átviteli sebesség és a többszörös homing előnyeit. A Microsoft foglalkozik az Azure-portál használatával hozzon létre egy Azure Cosmos DB fiókot és build és egy tábla alkalmazás központi telepítése. A Microsoft .NET példákból létrehozása és egy tábla törlésével és beszúrni, frissítése, törlése és tábla adatok lekérdezése is ismerteti. 
+## <a name="prerequisites"></a>Előfeltételek
 
 Ha még nincs telepítve a Visual Studio 2017, töltse le és használja a **szabad** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
@@ -72,14 +54,6 @@ Ha még nincs telepítve a Visual Studio 2017, töltse le és használja a **sza
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
 Először hozzon létre egy Azure Cosmos DB fiókot az Azure portálon.  
-
-> [!TIP]
-> * Már van Azure Cosmos DB fiókja? Ha igen, ugorjon előre [a Visual Studio megoldás beállítása](#SetupVS).
-> * Kellett az Azure DocumentDB-fiókot? Ha igen, a fiókját most már Azure Cosmos DB fiókkal, és ugorjon előre a [a Visual Studio megoldás beállítása](#SetupVS).  
-> * Ha az Azure Cosmos DB Emulator használ, adja kövesse a [Azure Cosmos DB emulátor](local-emulator.md) kell beállítania az emulátor, és ugorjon előre [a Visual Studio megoldás beállítása](#SetupVS).
-<!---Loc Comment: Please, check link [Set up your Visual Studio solution] since it's not redirecting to any location.---> 
->
->
 
 [!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
 
@@ -112,7 +86,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 ```
 
 > [!NOTE]
-> Az alkalmazás használatához az szabványos Azure Table Storage, a kapcsolati karakterlánc módosítani szeretné `app.config file`. Azure Storage elsődleges kulcsként használja tábla fióknevet és kulcsot a fiók nevét. <br>
+> Az alkalmazás használatához az Azure Table storage, a kapcsolati karakterlánc módosítani szeretné `app.config file`. Azure Storage elsődleges kulcsként használja tábla fióknevet és kulcsot a fiók nevét. <br>
 >`<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
 > 
 >
@@ -135,7 +109,7 @@ Mostantól vissza a adatkezelő és tekintse meg a lekérdezés, módosíthatja,
 >
 
 ## <a name="azure-cosmos-db-capabilities"></a>Azure Cosmos DB-képességek
-Az Azure Cosmos DB képességeket kínál, amelyek nem érhetők el az Azure Table storage API-ban számos támogat. Az új funkciók engedélyezéséhez a következő `appSettings` konfigurációs értékeket. Azt adta vezet be, minden új aláírások vagy az Azure Storage szolgáltatás SDK előzetes túlterheléssel. Ez lehetővé teszi, hogy a standard és a prémium szintű csatlakozhat, és az egyéb Azure Storage services hasonlóan működik. 
+Az Azure Cosmos DB tábla API számos olyan képességeket kínál, amelyek nem érhetők el az Azure Table storage-ban támogat. Az új funkciók engedélyezéséhez a következő `appSettings` konfigurációs értékeket. Új aláírásokat vagy túlterhelés nem érhetőek el a tábla API-t, amely nem található az az Azure Storage szolgáltatás SDK. Ez lehetővé teszi, hogy csatlakozzon az Azure Table storage mind az Azure Cosmos DB táblák, és az egyéb Azure Storage services hasonlóan működik. 
 
 
 | Kulcs | Leírás |

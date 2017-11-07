@@ -9,11 +9,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: jingwang
-ms.openlocfilehash: c0fd6db570a91eeb1ddcc8a0dcade009b8179f2c
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 76b44766780a730092b31a0c44396f9851dd411a
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Blob Storage Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -26,7 +26,7 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Da
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Azure Blog tárolási connnector a V1](v1/data-factory-azure-blob-connector.md).
 
 
-## <a name="supported-scenarios"></a>Támogatott esetek
+## <a name="supported-capabilities"></a>Támogatott képességei
 
 Adatok másolása az egyetlen támogatott forrás adattár az Azure Blob Storage vagy adatok másolása az Azure Blob Storage bármely támogatott fogadó adattárolóhoz. Adattároló forrásként támogatott listája / vagy mosdók által a másolási tevékenység során, tekintse meg a [adattárolókhoz támogatott](copy-activity-overview.md) tábla.
 

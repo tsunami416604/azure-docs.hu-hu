@@ -9,17 +9,17 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 7d6f13336b3913299433e25c69a41f8c94f598b2
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: f371d5cd4e20096d5101fadf9066e3a135218d0b
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Adatkapcsolattárak PostgreSQL Azure-adatbázis
-Ez a témakör felsorolja a szalagtárak és illesztőprogramokat, amelyek a fejlesztők a program alkalmazások csatlakozzanak, Azure-adatbázis lekérdezése a PostgreSQL.
+Ez a cikk felsorolja a szalagtárak és illesztőprogramokat, amelyek a fejlesztők a csatlakozhat, és az Azure-adatbázis lekérdezése a PostgreSQL-alkalmazások fejlesztéséhez.
 
 ## <a name="client-interfaces"></a>Ügyfél felületek
-A legtöbb nyelvi ügyfél függvénytárainak PostgreSQL-kiszolgálóhoz való csatlakozáshoz használt külső projektek, és egymástól függetlenül küld. Ezek a Windows, Linux és Mac rendszerek támogatottak. Egy népszerű ügyfél illesztőprogramot a következő táblázat tartalmazza:
+A legtöbb nyelvi ügyfél függvénytárainak PostgreSQL-kiszolgálóhoz való csatlakozáshoz használt külső projektek, és egymástól függetlenül küld. A felsorolt könyvtárak támogatottak a Windows, Linux és Mac rendszerek PostgreSQL az Azure-adatbázishoz szeretne csatlakozni. Gyors üzembe helyezés néhány példa a következő lépéseket szakaszban találhatók.
 
 | **Nyelv** | **Ügyféloldali felület** | **További információ** | **Letöltés** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
