@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 9fec253fbf9136cf86a84a6c7b407ea522996226
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 2a4b32af3f92744fe0543d9984c4845391a6180f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>A Fejlesztőeszközök Azure Resource Manager-alapú HDInsight-fürtök áttelepítése
 
 A HDInsight-ból kivezettük való Azure Service Manager ASM-alapú eszközök hdinsight. Ha használta az Azure PowerShell, az Azure parancssori felület vagy a HDInsight .NET SDK a HDInsight-fürtök együttműködni, hosszúan az Azure Resource Manager ARM-alapú verziói PowerShell parancssori felület és továbbítja a .NET SDK használatával. Ez a cikk mutatók áttelepítése az új ARM-alapú módszert biztosít. Megfelelő esetben ez a cikk is rámutat, a címterület-kezelési és ARM közötti különbségekről megközelítések hdinsight.
 
 > [!IMPORTANT]
-> A címterület-kezelési támogatás PowerShell parancssori felület, és a .NET SDK nem küld a **2017. január 1.**.
+> A címterület-kezelési támogatás PowerShell parancssori felület, és a .NET SDK nem küld a **2017. január 1**.
 > 
 > 
 
@@ -56,11 +56,11 @@ Elérhető az Azure Resource Manager új parancsok a következők:
 ### <a name="deprecated-commands"></a>Elavult parancsok
 Ha használja a `azure hdinsight job` parancsok elküldeni a HDInsight-fürtjét, feladatok ezek nem állnak rendelkezésre az ARM-parancsok használatával. Ha programozottan feladatok elküldéséhez a HDInsight parancsfájlok van szüksége, helyette használja a HDInsight által biztosított REST API-k. A REST API-k használatával feladatok elküldésekor további információkért lásd a következő dokumentumokat.
 
-* [Hadoop MapReduce-feladatok a HDInsight használata cURL használatával futtassa](hdinsight-hadoop-use-mapreduce-curl.md)
-* [A Hadoop Hive-lekérdezések futtatása a HDInsight használata cURL használatával](hdinsight-hadoop-use-hive-curl.md)
-* [Pig-feladatokhoz Hadoop on HDInsight használata cURL használatával futtassa](hdinsight-hadoop-use-pig-curl.md)
+* [Hadoop MapReduce-feladatok a HDInsight használata cURL használatával futtassa](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [A Hadoop Hive-lekérdezések futtatása a HDInsight használata cURL használatával](hadoop/apache-hadoop-use-hive-curl.md)
+* [Pig-feladatokhoz Hadoop on HDInsight használata cURL használatával futtassa](hadoop/apache-hadoop-use-pig-curl.md)
 
-Információk más módjairól MapReduce futtatásához, struktúra, és interaktív módon sertésfelmérés, lásd: [használata MapReduce a Hadoop on HDInsight](hdinsight-use-mapreduce.md), [használata a hdinsight Hadoop Hive](hdinsight-use-hive.md), és [a Pig használata a hadooppal HDInsight](hdinsight-use-pig.md).
+Információk más módjairól MapReduce futtatásához, struktúra, és interaktív módon sertésfelmérés, lásd: [használata MapReduce a Hadoop on HDInsight](hadoop/hdinsight-use-mapreduce.md), [használata a hdinsight Hadoop Hive](hadoop/hdinsight-use-hive.md), és [a Pig használata a hadooppal HDInsight](hadoop/hdinsight-use-pig.md).
 
 ### <a name="examples"></a>Példák
 **Fürt létrehozása**
@@ -220,9 +220,9 @@ Régi parancs (ASM):
 
 #### <a name="other-samples"></a>Más minták
 * [A HDInsight-fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [Küldje el a Hive-feladatok](hdinsight-hadoop-use-hive-powershell.md)
-* [Küldje el a Pig-feladatokhoz](hdinsight-hadoop-use-pig-powershell.md)
-* [Sqoop feladatok elküldéséhez](hdinsight-hadoop-use-sqoop-powershell.md)
+* [Küldje el a Hive-feladatok](hadoop/apache-hadoop-use-hive-powershell.md)
+* [Küldje el a Pig-feladatokhoz](hadoop/apache-hadoop-use-pig-powershell.md)
+* [Sqoop feladatok elküldéséhez](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-arm-based-hdinsight-net-sdk"></a>Az ARM-alapú HDInsight .NET SDK áttelepítése
 Az Azure Szolgáltatáskezelés-alapú [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) elavult. Hosszúan használja az Azure Resource Manager-alapú [(ARM) a HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx). A következő ASM-alapú HDInsight-csomagok elavulttá válnak.
@@ -236,11 +236,11 @@ Ez a témakör mutatókat biztosít a további információt az ARM-alapú SDK s
 | --- | --- |
 | .NET SDK használatával a HDInsight-fürtök létrehozása |Lásd: [HDInsight-fürtök létrehozása .NET SDK használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
 | A fürt parancsfájlművelet .NET SDK-val testreszabása |Lásd: [testreszabása HDInsight Linux clusters parancsfájlművelet használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
-| Alkalmazások interaktív .NET SDK-val az Azure Active Directory használatával hitelesíti |Lásd: [.NET SDK használatával futtassa Hive lekérdezések](hdinsight-hadoop-use-hive-dotnet-sdk.md). Ebben a cikkben a kódrészletet használja az interaktív hitelesítési módszerrel. |
+| Alkalmazások interaktív .NET SDK-val az Azure Active Directory használatával hitelesíti |Lásd: [.NET SDK használatával futtassa Hive lekérdezések](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Ebben a cikkben a kódrészletet használja az interaktív hitelesítési módszerrel. |
 | Alkalmazások nem interaktív .NET SDK-val az Azure Active Directory használatával hitelesíti |Lásd: [a HDInsight nem interaktív alkalmazások létrehozása](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
-| .NET SDK használatával Hive feladat elküldése |Lásd: [elküldeni a Hive-feladatok](hdinsight-hadoop-use-hive-dotnet-sdk.md) |
-| Elküldeni a Pig feladatot .NET SDK használatával |Lásd: [elküldeni a Pig-feladatokhoz](hdinsight-hadoop-use-pig-dotnet-sdk.md) |
-| .NET SDK használatával Sqoop feladat elküldése |Lásd: [nyújt Sqoop feladatok](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) |
+| .NET SDK használatával Hive feladat elküldése |Lásd: [elküldeni a Hive-feladatok](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
+| Elküldeni a Pig feladatot .NET SDK használatával |Lásd: [elküldeni a Pig-feladatokhoz](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
+| .NET SDK használatával Sqoop feladat elküldése |Lásd: [nyújt Sqoop feladatok](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
 | Lista HDInsight-fürtök .NET SDK használatával |Lásd: [lista HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
 | A HDInsight-fürtök .NET SDK használatával méretezése |Lásd: [méretezési HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
 | A HDInsight-fürtök .NET SDK használatával engedélyezéshez/visszavonáshoz elérésére |Lásd: [Grant/revoke access HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
