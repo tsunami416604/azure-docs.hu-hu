@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.openlocfilehash: 2d033e5af13660c99aba813c58b743bf94a6b95a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: ad1e0bcb2e2c073c8fb186f5a9d8bcb0bac588a0
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>Figyelése és hibaelhárítása szempontjából a virtuális gépek és fizikai kiszolgálók védelme
 A figyelési és hibaelhárítási útmutató segítségével megtudhatja, hogyan replikálás állapotának nyomon követése és technikák hibaelhárítása az Azure Site Recovery.
 
 ## <a name="understand-the-components"></a>Összetevők megismerése
 ### <a name="vmware-virtual-machine-or-physical-server-site-deployment-for-replication-between-on-premises-and-azure"></a>VMware virtuális gép vagy fizikai kiszolgálók helyen történő központi telepítés a helyszíni és az Azure közötti replikáció
-Helyszíni VMware virtuális gép vagy fizikai kiszolgálók és az Azure közötti helyreállítás beállításához, be kell állítania a konfigurációs kiszolgáló, a fő célkiszolgáló és a kiszolgáló-összetevők folyamat a virtuális gép vagy a kiszolgáló. Ha engedélyezi a védelmet a forráskiszolgálón, Azure Site Recovery telepíti a Microsoft Azure App Service Mobile Apps szolgáltatásának. A helyszíni kimaradás után és a forrás után kiszolgáló átadja a feladatokat Azure, állítsa be az Azure-ban egy folyamatkiszolgálóra és egy fő célkiszolgálóra a helyi, hogy a forráskiszolgálón, a helyszíni ügyfél igényel.
+Helyszíni VMware virtuális gép vagy fizikai kiszolgálók és az Azure közötti helyreállítás beállításához, be kell állítania a konfigurációs kiszolgáló, a fő célkiszolgáló és a kiszolgáló-összetevők folyamat a virtuális gép vagy a kiszolgáló. Ha engedélyezi a védelmet a forráskiszolgálón, Azure Site Recovery telepíti a mobilitási szolgáltatás a kiválasztott folyamatkiszolgáló Ha egy legfrissebb verziójával már nincs telepítve. A helyszíni kimaradás után és a forrás után kiszolgáló átadja a feladatokat Azure, állítsa be az Azure-ban egy folyamatkiszolgálóra és egy fő célkiszolgálóra a helyi, hogy a forráskiszolgálón, a helyszíni ügyfél igényel.
 
 ![VMware vagy fizikai helyen történő központi telepítés, a helyszíni és az Azure közötti replikáció](media/site-recovery-monitoring-and-troubleshooting/image18.png)
 

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: d8c357474e040f2e35c51dec0c7785cf98381a37
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 533add8948544e37dc27623a2f51aad1054b1bef
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Telepítse és konfigurálja az Azure virtuális gépek és egyéb infrastruktúra kiépítéséhez Terraform
  
 Terraform segítségével határozza meg, tekintse meg és központi telepítése a felhő-infrastruktúra használatával egyszerűen egy [egyszerű templating nyelvi](https://www.terraform.io/docs/configuration/syntax.html). Ez a cikk ismerteti a szükséges lépéseket az Azure-erőforrások kiépítése Terraform használandó. 
 
 > [!TIP]
-> Terraform része a [Azure Cloud rendszerhéj Bash élmény](/azure/cloud-shell/quickstart), és a hitelesítő adatokkal rendelkező előre konfigurált és [Azure Terraform modulok](https://registry.terraform.io/modules/Azure).
+> Alapértelmezés szerint telepítve van a Terraform a [az Azure felhőalapú rendszerhéj tapasztalat Bash](/azure/cloud-shell/quickstart). Hitelesítő adatok is előre és [Azure Terraform modulok](https://registry.terraform.io/modules/Azure). Felhő-rendszerhéj használatával kihagyhatja a dokumentum telepítőben/részeit.
 
 ## <a name="install-terraform"></a>Terraform telepítése
 
@@ -47,9 +47,7 @@ Több módon is hozzon létre egy Azure AD-alkalmazást és az Azure AD szolgál
 
 Jelentkezzen be az Azure-előfizetéshez felügyeletéhez a következő parancsot:
 
-```azurecli-interactive
-az login
-```
+   `az login`
 
 Ha több Azure-előfizetéssel rendelkezik, azok adatai által visszaadott a `az login` parancsot. Állítsa be a `SUBSCRIPTION_ID` ahhoz, hogy a visszaadott érték környezeti változó `id` mező szeretné használni az előfizetésből. 
 
