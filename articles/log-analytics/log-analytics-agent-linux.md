@@ -1,6 +1,6 @@
 ---
-title: "A Linux rendszerű számítógépek csatlakozni az Operations Management Suite (OMS) |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan csatlakozzon az Azure, a más felhőalapú vagy helyszíni OMS-ügynök használatával Linux OMS üzemeltetett Linux rendszerű számítógépek."
+title: "A Linux rendszerű számítógépek csatlakoztatása az Azure szolgáltatáshoz |} Microsoft Docs"
+description: "Ez a cikk ismerteti, hogyan linuxos Azure, a más felhőalapú vagy helyszíni az OMS-ügynököt a Naplóelemzési szolgáltatásban üzemeltetett Linux rendszerű számítógépek csatlakozni."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/29/2017
+ms.date: 11/07/2017
 ms.author: magoedte
-ms.openlocfilehash: c9902e1b8644c2b0a894f9cde98f2056564775c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 56c666d1a18937df21a6aca8acde87beda1cad8e
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
-# <a name="connect-your-linux-computers-to-operations-management-suite-oms"></a>A Linux rendszerű számítógépek csatlakozni az Operations Management Suite (OMS) 
+# <a name="connect-your-linux-computers-to-log-analytics"></a>A Linux rendszerű számítógépek csatlakoztatása szolgáltatáshoz 
 
-A Microsoft Operations Management Suite (OMS), összegyűjtheti, és Linux rendszerű számítógépek és a tároló-megoldásokkal, például a Docker, fizikai kiszolgálóként vagy virtuális gépek, virtuális gépek a helyszíni adatközpontban található adatok intézkedjen egy például az Amazon Web Services (AWS) vagy a Microsoft Azure-felhőben üzemeltetett szolgáltatás. Is használhatja OMS elérhető megoldások például a változások követése, konfigurációs módosításokat, és a frissítéskezelés szoftverfrissítések segítségével proaktívan felügyelheti a Linux virtuális gépek az életciklus kezeléséhez. 
+Az Azure Naplóelemzés gyűjtése és Linux rendszerű számítógépek és a tároló-megoldásokkal, például a Docker, a helyszíni adatközpont fizikai kiszolgálóként vagy virtuális gépek, virtuális gépek például Amazon felhőben üzemeltetett szolgáltatásban található adatok rájuk Webszolgáltatások (AWS) vagy a Microsoft Azure. Használhatja a rendelkezésre álló megoldások [Azure Automation](../automation/automation-intro.md) például a változások követése, a konfigurációs módosítások és a frissítéskezelés szoftverfrissítések segítségével proaktívan felügyelheti az a Linux-életciklus kezeléséhez azonosítása Virtuális gépek. 
 
-Az OMS-ügynököt a Linux rendszerhez használt 443-as TCP-porton keresztül kommunikál az OMS szolgáltatással kimenő, és ha a számítógép csatlakozik egy tűzfal vagy a proxy-kiszolgálót kommunikálnak az interneten keresztül tekintse meg [használható az ügynök OMS vagy HTTP-proxy kiszolgáló konfigurálása Átjáró](#configuring-the-agent-for-use-with-an-http-proxy-server-or-oms-gateway) milyen konfiguráció módosításait fogja tudni alkalmazni kell.  Ha a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2-ben futtató számítógép lehet többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is az Operations Manager által figyelt az OMS szolgáltatással.  Egy Operations Manager OMS szolgáltatással integrált felügyeleti csoportot által figyelt Linux rendszerű számítógépek nem kapják meg a konfigurációs adatforrások, és előre gyűjtött adatokat a felügyeleti csoporton keresztül.  Az OMS-ügynököt nem konfigurálható a jelentés egynél több munkaterületet.  
+Az OMS-ügynököt Linux kommunikál a Naplóelemzési a kimenő, és Azure Automation szolgáltatás TCP-n keresztül 443-as porton, és ha a számítógép csatlakozik egy tűzfal vagy a proxy-kiszolgálót kommunikálnak az interneten keresztül tekintse meg [konfigurálása az ügynök való használatra a proxykiszolgáló vagy az OMS-átjáró](#configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway) milyen konfiguráció módosításait fogja tudni alkalmazni kell.  Ha a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2-ben futtató számítógép lehet többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is az Operations Manager által figyelt Naplóelemzés szolgáltatással.  Az Operations Manager felügyeleti csoport, amely integrálva van a Naplóelemzési (jelenleg Operations Management Suite az említett az Operations Manager operatív konzolja) által figyelt Linux rendszerű számítógépek nem kap az adatforrások konfigurációja, és továbbítsa a felügyeleti csoporton keresztül gyűjtött adatokat.  Az OMS-ügynököt nem konfigurálható a jelentés egynél több Naplóelemzési munkaterületet.  
 
-Ha az IT-biztonsági házirendeknek nem engedélyezi a számítógépek a hálózat csatlakozik az internethez, az ügynök beállítható úgy, hogy az OMS-átjárón, attól függően, hogy a megoldás engedélyezte az összegyűjtött adatok küldésére és fogadására a konfigurációs adatokat. További információt és az OMS Linux-ügynök kommunikációja áthaladjon egy OMS-átjárót az OMS szolgáltatáshoz konfigurálásával kapcsolatos lépéseket, [számítógépeket csatlakoztatni az OMS Szolgáltatáshoz az OMS-átjáró](log-analytics-oms-gateway.md).  
+Ha az IT-biztonsági házirendeknek nem engedélyezi a számítógépek a hálózat csatlakozik az internethez, az ügynök beállítható úgy, hogy az OMS-átjárón, attól függően, hogy a megoldás engedélyezte az összegyűjtött adatok küldésére és fogadására a konfigurációs adatokat. További információt és az OMS Linux-ügynök kommunikációja áthaladjon egy OMS-átjáró a szolgáltatásokhoz való konfigurálásával kapcsolatos lépéseket, [számítógépeket csatlakoztatni az OMS Szolgáltatáshoz az OMS-átjáró](log-analytics-oms-gateway.md).  
 
-A következő ábra szemlélteti a Linux rendszerű számítógépek ügynök által felügyelt és az OMS-ben, beleértve a irányát és portok közötti kapcsolat.
+A következő ábra szemlélteti a kapcsolatot a Linux rendszerű számítógépek ügynök által felügyelt és a Naplóelemzési, beleértve a irányát és portjait is.
 
-![közvetlen ügynökkommunikációhoz OMS diagramja](./media/log-analytics-agent-linux/log-analytics-agent-linux-communication.png)
+![Azure Services diagram közvetlen ügynökkommunikációhoz](./media/log-analytics-agent-linux/log-analytics-agent-linux-communication.png)
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 Megkezdése előtt tekintse át az alábbi részleteket megfelel az Előfeltételek ellenőrzése.
@@ -47,7 +47,7 @@ A következő Linux terjesztésekről hivatalosan támogatottak.  Azonban az OMS
 * SUSE Linux Enterprise Server 11 és 12 (x86/x64)
 
 ### <a name="network"></a>Network (Hálózat)
-Az alábbi lista a proxy és tűzfal konfigurációs adatokat, a Linux-ügynök OMS folytatott kommunikációhoz szükséges információt. Akkor kimenő forgalomról beszélünk a hálózatról az OMS szolgáltatáshoz. 
+Az alábbi lista a proxy és tűzfal konfigurációs adatokat, a Linux-ügynök, Naplóelemzés és az Azure Automation folytatott kommunikációhoz szükséges információt. Akkor kimenő forgalomról beszélünk a hálózatról a szolgáltatáshoz. 
 
 |Ügynök erőforrása| Portok |  
 |------|---------|  
@@ -73,7 +73,7 @@ Az ügynök több csomagot tartalmaz. A kiadási fájl tartalmazza a következő
 
 **Csomag** | **Verzió** | **Leírás**
 ----------- | ----------- | --------------
-omsagent | 1.4.1 | Az Operations Management Suite-ügynök Linux
+omsagent | 1.4.0 | Az Operations Management Suite-ügynök Linux
 omsconfig | 1.1.1 | Az OMS-ügynök konfigurálása ügynök
 OMI | 1.2.0 | Nyissa meg a Management Infrastructure (OMI) – egy egyszerűsített CIM-kiszolgáló
 az scx | 1.6.3 | Operációs rendszer teljesítménymutatók OMI a CIM-szolgáltatók
@@ -91,22 +91,31 @@ Az OMS-ügynököt a Linux ügynök bináris fájlokat osztanak meg a System Cen
 ### <a name="system-configuration-changes"></a>Rendszer-konfigurációs módosítások
 Az OMS-ügynököt a Linux-csomagok telepítése után a következő további rendszerszintű konfigurációs módosítások. Ezen összetevők a omsagent csomag eltávolításakor a rendszer törli.
 
-* Egy jogosulatlan felhasználó nevű: `omsagent` jön létre. A omsagent démon fut, ezt a fiókot.
-* /Etc/sudoers.d/omsagent sudoers "tartalmaz" fájl jön létre. Ez a fájl engedélyezi a syslog és omsagent démonok újraindítására omsagent. Ha a sudo "tartalmaz" direktívák nem támogatottak a sudo telepített verziója, ezek a bejegyzések /etc/sudoers kerülnek.
-* A rendszernaplózás konfigurálásánál úgy módosul, hogy események csoportját, hogy az ügynök továbbítja. További információkért lásd: a **adatok gyűjtésének konfigurálása** az alábbi szakasz.
+* Egy jogosulatlan felhasználó nevű: `omsagent` jön létre. Ez az a fiók futtatja a omsagent démon fut.
+* /Etc/sudoers.d/omsagent sudoers "tartalmaz" fájl jön létre. Ez engedélyezi a syslog és omsagent démonok újraindítására omsagent. Ha a sudo "tartalmaz" direktívák nem támogatottak a sudo telepített verziója, ezek a bejegyzések /etc/sudoers kerülnek.
+* A rendszernaplózás konfigurálásánál úgy módosul, hogy események csoportját, hogy az ügynök továbbítja. További információkért lásd: a **adatok gyűjtésének konfigurálása** az alábbi szakasz
 
 ### <a name="upgrade-from-a-previous-release"></a>Frissítse korábbi kiadásáról
 Ebben a kiadásban 1.0.0-47 támogatottnál korábbi verzióit frissíteni. A telepítés végrehajtása a `--upgrade` parancs összetevők az ügynök a legújabb verzióra frissíti.
 
 ## <a name="installing-the-agent"></a>Az ügynök telepítése
 
-Ez a szakasz ismerteti az OMS-ügynök telepítése Linux rendszert egy bunndle, az ügynök összetevői a Debian és RPM csomagokat tartalmazó.  Ez közvetlenül telepített vagy kibontva, az egyes csomagok lekérdezése.  
+Ez a szakasz ismerteti az OMS-ügynök telepítése Linux segítségével manuálisan egy bunndle, az ügynök összetevői a Debian és RPM csomagokat tartalmazó.  Ez közvetlenül telepített vagy kibontva, az egyes csomagok lekérdezése.  Ha azt tervezi, hogy az ügynök telepítése az Azure Linux virtuális gép, a következő témakör [Azure virtuális gépek kapcsolatos adatok gyűjtéséhez](log-analytics-quick-collect-azurevm.md) megtudhatja, hogyan telepítse az ügynököt, a napló Analytics Virtuálisgép-bővítmény használatával.  Kövesse a szakasz a *a napló Analytics Virtuálisgép-bővítmény engedélyezése*.  A környezetében üzemeltetett Linux rendszerű számítógépek, egyszerűbbé teheti a telepítési folyamat parancsfájlalapú metódussal a cikkben ismertetett [adatokat gyűjteni a környezetében üzemeltetett Linux rendszerű számítógépek](log-analytics-quick-collect-linux-computer.md).  
 
-Először van szüksége az OMS-munkaterület azonosítója és a kulcs, amely átvált a [OMS klasszikus portál](https://mms.microsoft.com).  A a **áttekintése** lap, a felső menüben válassza **beállítások**, és navigáljon arra **Sources\Linux kiszolgálók csatlakoztatva**.  Jobb oldalán érték **munkaterület azonosítója** és **elsődleges kulcs**.  Másolással illessze be a kedvenc szerkesztő mindkettő.    
+> [!NOTE]
+> A fentiekben említett két cikkek szánt valakinek, aki az új szolgáltatáshoz, és a szolgáltatás használatának gyors megkezdéséhez, amíg a számítógép konfigurálásának lépéseit kapcsolódik.  Ha már rendelkezik egy munkaterület, és a Linux-számítógép keresése, ha az Azure Linux virtuális gép vagy egy Azure, a Másolás a munkaterület azonosítója és a kulcs továbbadni a parancsfájlnak kívül üzemeltetett számítógép válasszon a meglévő munkaterületet.  
 
-1. Töltse le a legújabb [Linux (x64) OMS-ügynököt](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x64.sh) vagy [Linux x86 OMS-ügynököt](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x86.sh) a Githubról.  
-2. Vigye át a megfelelő csomagot (x86 vagy x64) a Linux-számítógép scp/sftp használatával.
-3. A csomag telepítéséhez használja a `--install` vagy `--upgrade` argumentum. 
+Linux az OMS-ügynök telepítéséhez szükséges a munkaterület azonosítója és kulcsa a Naplóelemzési munkaterületet.  
+
+1. Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com). 
+2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Analytics jelentkezzen**.
+3. A Naplóelemzési munkaterület, jelölje ki a azt szeretné, hogy a számítógép jelenti a munkaterületen.
+3. Válassza ki **speciális beállítások**.<br><br> ![Naplóelemzés speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+4. Válassza ki **csatlakoztatott források**, majd válassza ki **Linux kiszolgálók**.   
+5. Az érték jobb oldalán **munkaterület azonosítója** és **elsődleges kulcs**. Másolással illessze be a kedvenc szerkesztő mindkettő.  
+6. Töltse le a legújabb [Linux (x64) OMS-ügynököt](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x64.sh) vagy [Linux x86 OMS-ügynököt](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x86.sh) a Githubról.  
+7. Vigye át a megfelelő csomagot (x86 vagy x64) a Linux-számítógép scp/sftp használatával.
+8. A csomag telepítéséhez használja a `--install` vagy `--upgrade` argumentum. 
 
     > [!NOTE]
     > Ha a meglévő csomagokat például ha már telepítve van a a System Center Operations Manager Linux-ügynök van telepítve, használja a `--upgrade` argumentum. A telepítés során kapcsolódjon az Operations Management Suite, adja meg a `-w <WorkspaceID>` és `-s <Shared Key>` paraméterek.
@@ -128,7 +137,7 @@ sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -w <workspace id> -s <sh
 ```
 
 ## <a name="configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway"></a>Az ügynök használatra konfigurálja a proxykiszolgáló vagy az OMS-átjáró
-Az OMS-ügynököt a Linux támogatja, akár a proxykiszolgáló vagy az OMS átjáró az OMS szolgáltatáshoz, a HTTPS protokoll használatával kommunikál.  A névtelen és alapszintű hitelesítést (felhasználónév/jelszó) is támogatja.  
+Az OMS-ügynököt a Linux támogatja a proxykiszolgáló vagy a HTTPS protokollon keresztül Naplóelemzés szolgáltatás OMS-átjáró keresztül kommunikál.  A névtelen és alapszintű hitelesítést (felhasználónév/jelszó) is támogatja.  
 
 ### <a name="proxy-configuration"></a>Proxykiszolgáló-konfiguráció
 A proxy konfigurációs érték szintaxisa a következő:
@@ -171,8 +180,8 @@ sudo rm /etc/opt/microsoft/omsagent/proxy.conf /etc/opt/microsoft/omsagent/conf/
 sudo /opt/microsoft/omsagent/bin/service_control restart 
 ```
 
-## <a name="onboarding-with-operations-management-suite"></a>Az Operations Management Suite előkészítési
-A munkaterület azonosítója és kulcsa nem lett megadva a csomag telepítése során, ha az ügynök később regisztrálni kell az Operations Management Suite szolgáltatásban.
+## <a name="onboarding-with-log-analytics"></a>A Naplóelemzési bevezetése
+A munkaterület azonosítója és kulcsa nem lett megadva a csomag telepítése során, ha az ügynök később regisztrálni kell a Naplóelemzési.
 
 ### <a name="onboarding-using-the-command-line"></a>Bevezetés a parancssor használatával
 Futtassa a omsadmin.sh parancsot, hogy megadja a munkaterület azonosítója és a munkaterület kulcsát. Ez a parancs (rendelkező sudo jogosultsági szint emeléséhez) rendszergazdaként kell futtatnia:
@@ -181,7 +190,7 @@ cd /opt/microsoft/omsagent/bin
 sudo ./omsadmin.sh -w <WorkspaceID> -s <Shared Key>
 ```
 
-### <a name="onboarding-using-a-file"></a>A bevezetési fájl használatával
+### <a name="register-using-a-file"></a>Regisztráljon egy fájlt
 1.  A fájl létrehozása `/etc/omsagent-onboard.conf`. A fájl olvasható és írható az alapvető kell lennie.
 `sudo vi /etc/omsagent-onboard.conf`
 2.  Helyezze be a fájlt a munkaterület azonosítója és a megosztott kulcs a következő sorokat:
@@ -189,7 +198,7 @@ sudo ./omsadmin.sh -w <WorkspaceID> -s <Shared Key>
         WORKSPACE_ID=<WorkspaceID>  
         SHARED_KEY=<Shared Key>  
    
-3.  A következő parancsot a Onboard az OMS-be:`sudo /opt/microsoft/omsagent/bin/omsadmin.sh`
+3.  Futtassa a következő parancsot a Log Analyticshez regisztrálása:`sudo /opt/microsoft/omsagent/bin/omsadmin.sh`
 4.  A fájl törlődik a sikeres bevezetése.
 
 ## <a name="enable-the-oms-agent-for-linux-to-report-to-system-center-operations-manager"></a>A Linux számára, hogy a System Center Operations Manager OMS-ügynök engedélyezése
@@ -228,18 +237,18 @@ A ügynökcsomagokat el lehet távolítani a csomagot .sh fájl futtatásával a
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="issue-unable-to-connect-through-proxy-to-oms"></a>Probléma: Nem lehet csatlakozni az OMS-proxy használatával
+### <a name="issue-unable-to-connect-through-proxy-to-log-analytics"></a>Probléma: Nem lehet csatlakozni a szolgáltatáshoz proxyn keresztül
 
 #### <a name="probable-causes"></a>Lehetséges okok
 * A bevezetési során megadott proxy helytelen volt.
-* Az OMS végpontok nincsenek az adatközpontban található whitelistested 
+* A Naplóelemzési és Azure Automation szolgáltatás végpontok nincsenek-e az Adatközpont szerepel az engedélyezési listán 
 
 #### <a name="resolutions"></a>Megoldások
-1. Az OMS szolgáltatáshoz az OMS-ügynököt a Linux-a kapcsolóval használja a következő parancsot a Reonboard `-v` engedélyezve van. A settubg lehetővé teszi, hogy az ügynök az OMS szolgáltatáshoz a proxyn keresztül történő kapcsolódás részletes kimenet. 
+1. A Linux-a kapcsolóval használja a következő parancsot az OMS-ügynököt a Log Analytics szolgáltatás Reonboard `-v` engedélyezve van. Ez lehetővé teszi, hogy az ügynök az OMS szolgáltatáshoz a proxyn keresztül történő kapcsolódás részletes kimenet. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <OMS Workspace ID> -s <OMS Workspace Key> -p <Proxy Conf> -v`
 
 2. Tekintse át a szakasz [az ügynök használatra konfigurálja a proxykiszolgáló vagy az OMS-átjáró](#configuring the-agent-for-use-with-a-proxy-server-or-oms-gateway) megfelelően konfigurált proxykiszolgálón keresztül kommunikálnak az ügynököt ellenőrzéséhez.    
-* Kettős ellenőrizze, hogy az OMS Szolgáltatásvégpontok szerepel az engedélyezési listán:
+* Ellenőrizze, hogy a következő Naplóelemzés szolgáltatás végpontjait szerepel az engedélyezési listán:
 
     |Ügynök erőforrása| Portok |  
     |------|---------|  
@@ -261,22 +270,36 @@ A ügynökcsomagokat el lehet távolítani a csomagot .sh fájl futtatásával a
 3. A Reonboard használja a megfelelő munkaterület Azonosítóját és kulcsát a következő témakör korábbi szakaszában a telepítési utasításokat.
 
 ### <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Probléma: Egy 500 és 404-es hiba látható a naplófájlban bevezetése után
-Ez a hiba nem egy ismert probléma, amely az OMS-munkaterület Linux adatok első feltöltéskor. Ez a hiba nem befolyásolja az elküldött és a szolgáltatás élmény adatok.
+Ez az egy ismert hiba jelentkezik be a Naplóelemzési munkaterület Linux adatok első feltöltéskor. Ez nem befolyásolja az elküldött és a szolgáltatás élmény adatok.
 
-### <a name="issue-you-are-not-seeing-any-data-in-the-oms-portal"></a>Probléma: Nem Ön az OMS-portálon megadott adattal sem
+### <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Probléma: Nem Ön az Azure-portálon megadott adattal sem
 
 #### <a name="probable-causes"></a>Lehetséges okok
 
-- Bevezetés az OMS szolgáltatáshoz sikertelen volt
-- Az OMS szolgáltatáshoz kapcsolat le van tiltva.
+- Sikertelen a Naplóelemzési szolgáltatás bevezetése
+- A Log Analytics szolgáltatás kapcsolat le van tiltva.
 - OMS-ügynököt a Linux-adatok biztonsági mentése
 
 #### <a name="resolutions"></a>Megoldások
-1. Ellenőrizze, hogy bevezetése az OMS szolgáltatáshoz a következő fájl létezésének ellenőrzésével sikeres volt:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Ellenőrizze, hogy ha bevezetése a Naplóelemzés szolgáltatás sikeres volt a következő fájl létezésének ellenőrzésével:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Reonboard használatával a `omsadmin.sh` parancssori utasításokat
 3. Ha proxyt használ, tekintse meg a korábban megadott proxy megoldási lépések.
-4. Egyes esetekben amikor Linux az OMS-ügynök nem tud kommunikálni az OMS szolgáltatással adatai az ügynökön várólistára van állítva 50 MB teljes puffer mérete. A Linux OMS-ügynököt újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
+4. Egyes esetekben amikor Linux az OMS-ügynök nem tud kommunikálni a szolgáltatás adatai az ügynökön várólistára van állítva 50 MB teljes puffer mérete. A Linux OMS-ügynököt újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
 
     >[!NOTE]
     >Ez a probléma fennáll ügynök verziója 1.1.0-28 és újabb verziók.
 
+### <a name="issue-omsagent-creates-excessive-number-of-user-process-on-computer-and-never-terminates-them"></a>Probléma: OMSAgent hoz létre felhasználói folyamat túl sok számítógép, és soha nem megszakítja azokat
+Ha engedélyezi a felügyeleti megoldás, amely támogatja a Linux virtuális gépek felügyeletét, a Linux-ügynök folyamatok számos indít. De a folyamat befejeződik, mielőtt egy másik folyamat elindul egy ismert probléma miatt. 
+
+#### <a name="resolutions"></a>Megoldások
+Ha módosítani szeretné a OMSAgent létrehozó felhasználó folyamatok száma, omsadmin.sh használatával ügynök konfigurálása.  Alapértelmezés szerint generált folyamatok száma 75, és módosítsa az értéket, mielőtt először futtassa a következő parancsot, hogy hány OMSAgent folyamatok jelenleg futnak: `ps aux | grep -E '^omsagent' | wc -l`.  
+Mi a jelenlegi érték a következő parancs futtatásával ellenőrizheti:`cat /etc/security/limits.conf | grep -E '^omsagent'`
+
+Használja a következő parancsokat, konfigurálhat egy egyéni feldolgozási korlátja, vagy vissza az alapértelmezett érték a folyamat korlát beállítása.
+
+1. A feldolgozási korlátja OMSAgent beállítása: `sudo /opt/microsoft/omsagent/bin/omsadmin.sh -n <specific number limit>`.<br>Vegye figyelembe, hogy a minimális korlát beállítható az 5.  
+
+2. A feldolgozási korlátja OMSAgent beállítása az alapértelmezett értékre:`sudo /opt/microsoft/omsagent/bin/omsadmin.sh -N`
+
+Győződjön meg arról, hogy az új beállítás alkalmazva van a következő parancs futtatásával: `cat /etc/security/limits.conf | grep -E '^omsagent'`.  Ha nem látja az új konfigurációt alkalmazza, akkor valószínűleg korlátot állít be a folyamat túl alacsony.  

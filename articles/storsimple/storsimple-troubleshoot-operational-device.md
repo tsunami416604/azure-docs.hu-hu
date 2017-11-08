@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/16/2016
+ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 8d1b4905d0a24c8df9eb2c986459286909fd20dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4639e749cfaa6b38fa6b91ddebfc17924c1d5bd6
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Az operatív StorSimple eszköz hibáinak elhárítása
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 A cikkben kapcsolatos konfigurációs problémák hasznos hibaelhárítási útmutatót, hogy esetleg felmerülő után a StorSimple eszköz üzembe helyezett és működik. Kapcsolatos gyakori hibák, lehetséges okok, és a Microsoft Azure StorSimple futtatásakor az esetleg előforduló problémák megoldását segítő javasolt lépéseket ismerteti. Ez az információ a StorSimple fizikai eszköz helyszíni, mind a StorSimple virtuális eszköz vonatkozik.
 

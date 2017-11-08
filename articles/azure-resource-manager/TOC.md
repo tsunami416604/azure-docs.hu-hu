@@ -71,7 +71,6 @@
 
 ## Erőforrás-házirendek beállítása
 ### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
-### [Szabályzat hozzárendelése szkriptek használatával](resource-manager-policy-create-assign.md)
 ### Példák
 #### [Címkék](resource-manager-policy-tags.md)
 #### [Elnevezési konvenciók](resource-manager-policy-naming-convention.md)

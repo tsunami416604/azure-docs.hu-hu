@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: c99279413b50e7bf1e6058a4151890e3a8f83892
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7031409aa63f5d64d5bb7a1b9dcac50a97718630
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Eszköz telepítéséhez használja az Azure IoT Hub eszköz kiépítése szolgáltatás beállítása
 
@@ -35,7 +35,7 @@ A folytatás előtt hozzon létre az eszköz kiépítése szolgáltatáshoz-pél
 
 ## <a name="select-a-hardware-security-module"></a>Válassza ki a hardveres biztonsági modul
 
-A [eszköz kiépítése szolgáltatáshoz ügyfél SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/dps_client) támogatja a hardveres biztonsági modulok (vagy HSM-EK) két típusú: 
+A [eszköz kiépítése szolgáltatáshoz ügyfél SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) támogatja a hardveres biztonsági modulok (vagy HSM-EK) két típusú: 
 
 - [Platformmegbízhatósági modul (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module).
     - BE egy bevett a legtöbb Windows-alapú eszközplatformokat, valamint néhány Linux/Ubuntu-alapú eszközökön. Egy eszköz gyártóját, ha ezek az eszközökön futó operációs rendszer egyik sem, és keres egy bevett a HSM-EK dönthet erről a HSM. A TPM modulok csak regisztrálhat egyes eszközökre külön-külön az eszköz kiépítése szolgáltatáshoz. Fejlesztési célokra szolgál a TPM szimulátor is használhatja a Windows vagy Linux fejlesztési számítógépén.

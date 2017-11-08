@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: damaerte
-ms.openlocfilehash: 1bf0acdfad04a55d5b85aabee150526836062002
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 89d5d8df9327c6136fbd00078f6a34f78d85032e
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="troubleshooting-azure-cloud-shell"></a>Hibaelhárítás az Azure-felhőbe rendszerhéj
 
@@ -37,6 +37,18 @@ Ismert problémák Azure Cloud rendszerhéj megoldások:
 ### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminálszolgáltatások kimeneti - hiba: nem sikerült kapcsolódni a Terminálszolgáltatások: websocket nem hozható létre. Nyomja le az `Enter` az újracsatlakozáshoz.
  - **Részletek**: Felhő rendszerhéj megbizonyosodhat websocket kapcsolatot létesíteni a felhő rendszerhéj infrastruktúra.
  - **Megoldási**: Ellenőrizze, hogy konfigurálta a hálózati beállításokat küldő https és a websocket-kérelmeket, tartományokra való engedélyezéséhez *. console.azure.com.
+
+## <a name="bash-resolutions"></a>Bash megoldások
+
+### <a name="cannot-run-az-login"></a>Nem futtatható az bejelentkezés
+
+- **Részletek**: futó `az login` nem fog működni, mint Ön már hitelesítve felhő rendszerhéj vagy Azure portal-ba való bejelentkezéshez használt fiókkal.
+- **Megoldási**: a bejelentkezéshez vagy jelentkezzen ki, és a kívánt Azure fiókjához újból hitelesítésre használt fiók használata.
+
+### <a name="cannot-run-the-docker-daemon"></a>A docker démon nem futtatható.
+
+- **Részletek**: Felhő rendszerhéj használja egy tárolót a rendszerhéj környezet üzemeltetéséhez, ezért fut a démon nem engedélyezett.
+- **Megoldási**: kihasználhassák [docker-gép](https://docs.docker.com/machine/overview/), amelyiken telepítve van alapértelmezés szerint a docker-tárolók kezelése távoli Docker gazdagépről.
 
 ## <a name="powershell-resolutions"></a>PowerShell-megoldások
 

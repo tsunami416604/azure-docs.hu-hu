@@ -5,7 +5,7 @@ services: container-instances
 documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
+editor: mmacy
 tags: 
 keywords: 
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 11/07/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 3b651526f5ee3197e7d04accb6a87e2f10bf0791
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 2858f20cd9da469d5983e2bef9176f5922349196
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>A tároló üzembe Azure tároló példányokhoz
 
@@ -56,31 +56,31 @@ Tároló beállításjegyzék jelszó:
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-A tároló lemezkép 1 Processzormagok erőforrás kérését és 1 GB memóriát a tároló beállításjegyzékből való telepítéséhez futtassa a következő parancsot:
+A tároló lemezkép 1 Processzormagok erőforrás kérését és 1 GB memóriát a tároló beállításjegyzékből való telepítéséhez futtassa a következő parancsot. Cserélje le `<acrLoginServer>` és `<acrPassword>` az előző két parancsot kapott értékekkel.
 
 ```azurecli
 az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public -g myResourceGroup
 ```
 
-Néhány másodpercen belül kap egy kezdeti választ az Azure Resource Manager. A központi telepítési állapotának megtekintéséhez használja:
+Néhány másodpercen belül kap egy kezdeti választ az Azure Resource Manager. A központi telepítési állapotának megtekintéséhez használja [az tároló megjelenítése](/cli/azure/container#az_container_show):
 
 ```azurecli
-az container show --name aci-tutorial-app --resource-group myResourceGroup --query state
+az container show --name aci-tutorial-app --resource-group myResourceGroup --query instanceView.state
 ```
 
-A Folytatás ezt a parancsot futtatja, amíg az állapot *függőben lévő* való *futtató*. Azt is lépjen.
+Ismételje meg a `az container show` parancs, amíg az állapot *függőben lévő* való *futtató*, amely kell vennie egy perc alatt. A tároló esetén *futtató*, folytassa a következő lépéssel.
 
 ## <a name="view-the-application-and-container-logs"></a>Az alkalmazás és a tároló naplók megtekintése
 
-Miután a telepítés sikeres, az IP-cím a következő parancs kimenetében megjelennek a böngészőben nyissa meg:
+Miután a telepítés sikeres, a tároló nyilvános IP-cím megjelenítése a [az tároló megjelenítése](/cli/azure/container#az_container_show) parancs:
 
 ```bash
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
 ```
 
-```json
-"13.88.176.27"
-```
+Példa a kimenetre:`"13.88.176.27"`
+
+A futó alkalmazás megtekintéséhez navigáljon a nyilvános IP-cím, kedvenc böngészőjével.
 
 ![Hello world alkalmazást a böngészőben][aci-app-browser]
 
@@ -96,6 +96,14 @@ Kimenet:
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://13.88.176.27/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs szüksége az erőforrásokat, az oktatóanyag adatsorozat létrehozott, Ön is végrehajthatja a [az csoport törlése](/cli/azure/group#delete) parancs beírásával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. Ez a parancs törli a tárolót beállításjegyzék hozott létre, valamint a futó tároló és az összes kapcsolódó erőforrások.
+
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Következő lépések

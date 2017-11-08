@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/02/2017
 ms.author: babanisa
-ms.openlocfilehash: e798a1e751cb9e789bc479a6f842fb7f8f703bbf
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: a0bcc9650fda10c099887b74b408551b12cde667
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event rács bemutatása
 
@@ -50,6 +50,8 @@ Az alábbiakban néhány fő funkciója Azure esemény rács:
 * **Magas teljesítmény** -esemény rács nagy munkaterhelések létrehozásához, támogatja a több millió esemény / másodperc.
 * **Beépített események** - létrehozásához, és gyorsan futtató beépített események erőforrás által definiált.
 * **Egyéni események** -esemény rács útvonal, szűrő és megbízhatóan kézbesítése egyéni események használja az alkalmazásban.
+
+Egy esemény rács, az Event Hubs és a Service Bus, lásd: [válasszon az Azure-szolgáltatásokat, hogy a üzenetek](compare-messaging-services.md).
 
 ## <a name="built-in-publisher-and-handler-integration"></a>Beépített közzétevő és kezelő integrációja
 
@@ -100,14 +102,6 @@ Az Event Grid lehetővé teszi az automatizálás felgyorsítását és a szabá
 ![Alkalmazásintegrálás](./media/overview/app_integration.png)
 
 Az Event Grids más szolgáltatásokkal kapcsolja össze alkalmazását. Például hozzon létre egy egyéni témakör az alkalmazás esemény adatokat küldeni a rács esemény, és kihasználhatják a megbízható szállítási, speciális útválasztási, és közvetlen integráció az Azure-ral. Úgy is dönthet, hogy az Event Gridet a Logic Apps-szel együtt használ adatfeldolgozásra tetszőleges helyen, kód írása nélkül. 
-
-## <a name="how-is-event-grid-different-from-other-azure-integration-services"></a>Miben különbözik az esemény rács más Azure integrációs szolgáltatások?
-
-Esemény rács egy esemény csatlakozópanel, amely lehetővé teszi a eseményvezérelt, reaktív programozási. Szorosan integrálódik az Azure-szolgáltatásokkal, és harmadik féltől származó szolgáltatással integrálható. Az eseményüzenetben a szolgáltatások és alkalmazások változásairól reagálni szükséges információkat. Esemény rács nincs adatok folyamat, és nem kézbesíti a tényleges objektum, amely frissítve lett.
-
-A Service Bus kiválóan alkalmas tranzakciók, rendezés, kettős észlelés és azonnali konzisztencia igénylő hagyományos vállalati alkalmazások. Esemény rács sebesség, a méretezés, a körének tervezték, és az alacsony költségű reaktív modellben. Kiválóan alkalmas a kiszolgáló nélküli architektúra.
-
-Esemény rács kiegészíti a Logic Apps és az Event Hubs például más Azure-szolgáltatásokkal. Esemény rács váltja ki a logikai alkalmazást a munkafolyamat megkezdéséhez. Az Event Hubs azáltal, hogy engedélyezi az események reagálnak az Event Hubs rögzítése, és állítsa be adatok bemenő és átalakítási folyamatok esemény rács működik.
 
 ## <a name="how-much-does-event-grid-cost"></a>Milyen mértékű nem költség esemény rács?
 

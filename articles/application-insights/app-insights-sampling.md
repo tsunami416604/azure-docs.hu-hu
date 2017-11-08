@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0ed612a0e2101397fb1074de61db07d2361f8463
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: af184574bdfa7d3a11baf75d8cdfbf80f1544dde
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -57,7 +57,7 @@ Mintavételi más típusú, mint az algoritmus megtartja a kapcsolódó telemetr
 
 Hogy a rendszer elveti a mintavétellel már nem érhetők el bármilyen Application Insights szolgáltatás például [a folyamatos exportálás](app-insights-export-telemetry.md).
 
-Adatfeldolgozást mintavételi nem működik, amikor az SDK-alapú adaptív vagy rögzített mintavételi művelet van. Ha a mintavételi ráta az SDK-t a 100 %-nál kisebb, az Ön által beállított adatfeldolgozást mintavételi ráta figyelmen kívül hagyja.
+Adatfeldolgozást mintavételi nem működik, amikor az SDK-alapú adaptív vagy rögzített mintavételi művelet van. Vegye figyelembe, hogy adaptív mintavételi alapértelmezés szerint engedélyezve van az ASP.NET SDK engedélyezve van, a Visual Studio vagy állapotfigyelő segítségével, és adatfeldolgozást mintavételi le van tiltva. Ha a mintavételi ráta az SDK-t a 100 %-nál kisebb, az Ön által beállított adatfeldolgozást mintavételi ráta figyelmen kívül hagyja.
 
 > [!WARNING]
 > A csempén megjelenő érték adatfeldolgozást mintavételi beállított értékeket. A tényleges mintavételi ráta az nem jelent, ha SDK mintavételi művelet.

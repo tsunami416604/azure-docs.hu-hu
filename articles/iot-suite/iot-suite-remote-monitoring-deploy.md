@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 1442f6ccc1d4ec349bb20d302faabd6788ff9253
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 159397ba4fc93628acbf2bb53edf5eb88fd0cac7
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez
 
@@ -49,7 +49,7 @@ Mielőtt központilag telepíteni az előkonfigurált megoldás az Azure-előfiz
 
 1. A a **távoli figyelő létrehozása megoldás** lapján adjon meg egy **megoldásnév** a megoldás a távoli figyelésének előre konfigurált.
 
-1. Válassza ki a **alapvető** vagy **szabványos** központi telepítés. Ha meg vannak deplying megtudhatja, hogyan működik, vagy hogy bemutatója futtatni, válassza ki a **alapvető** költségek minimalizálása érdekében a beállítást.
+1. Válassza ki a **alapvető** vagy **szabványos** központi telepítés. Megtudhatja, hogyan működik, vagy hogy bemutatója futtatni, válassza a központi telepítése a **alapvető** költségek minimalizálása érdekében a beállítást.
 
 1. Válasszon **Java** vagy **.NET** nyelve. A mikroszolgáltatások állnak rendelkezésre, vagy a Java, vagy a .NET hitelesítés megvalósításához.
 

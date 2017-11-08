@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d45bb37c8417785db0ea38be4375a998b6d9f109
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e1387bfb3487c148c8befcf3f8bf23bba35661f
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-your-storsimple-device"></a>A StorSimple eszközt a StorSimple Manager szolgáltatás segítségével
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [a StorSimple Manager szolgáltatás segítségével figyelheti a StorSimple eszköz](storsimple-8000-monitor-device.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 A StorSimple Manager szolgáltatás használatával figyelheti az adott eszközökön belül a StorSimple megoldásban. I/o teljesítmény, tárolókapacitás használatát, hálózati teljesítményt és eszköz teljesítménymutatók alapján egyéni diagramokat hozhat létre. 
 

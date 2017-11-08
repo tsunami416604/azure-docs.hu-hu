@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2017
+ms.date: 11/07/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d7bc694b05ed1eb3915ba913afdb3cc39e048ca7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1002ce29ff0d9ee2a6eac44c6e4402fc7e9ade31
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 Ez a cikk az Azure Active Directory (AD) fejlesztői alapfogalmakat, amelyek hasznosak, ha az Azure AD alkalmazásfejlesztés megtanulni részénél definíciókat tartalmazza.
@@ -153,13 +153,13 @@ Egy alkalmazás bejelentkezési funkciójának általában egyszeri bejelentkez�
 A folyamatot nem hitelesítő felhasználó, a felhasználói állapot leválasztása társított a [ügyfélalkalmazás](#client-application) munkamenet során [bejelentkezés](#sign-in)
 
 ## <a name="tenant"></a>Bérlői
-Az Azure AD-címtár egy példányát az Azure AD-bérlő nevezzük. Funkciót, beleértve a különböző tartalmazza:
+Az Azure AD-címtár egy példányát az Azure AD-bérlő nevezzük. Több funkciót, beleértve a tartalmazza:
 
 * a beállításjegyzék szolgáltatás integrált alkalmazások
 * hitelesítés a felhasználói fiókoknak és a társított alkalmazások
 * Az OAuth2 és SAML, beleértve különböző protokollok támogatásához szükséges REST-végpontok többek között a [engedélyezési végpont](#authorization-endpoint), [token-végpont](#token-endpoint) és a "általános" végpont által használt [ több-bérlős alkalmazásokhoz](#multi-tenant-application).
 
-A bérlő is hozzá rendelve egy Azure AD-val vagy Office 365-előfizetéssel, az előfizetés, az előfizetés Identity & Access Management szolgáltatásokat nyújtó kiépítése során. Lásd: [Azure Active Directory-bérlő beszerzése] [ AAD-How-To-Tenant] talál részletes információt a különböző módokon kaphat hozzáférést a bérlőt. Lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directory] [ AAD-How-Subscriptions-Assoc] talál részletes információt az előfizetések és az Azure AD-bérlő közötti kapcsolat.
+Az Azure AD-bérlő Office 365 és az Azure-előfizetések létrehozása vagy társítani alatt is az előfizetéshez tartozó regisztráció, olyan Identity & Access Management szolgáltatásokat. Azure-előfizetés rendszergazdái is létrehozhat további Azure AD-bérlőt az Azure-portálon. Lásd: [Azure Active Directory-bérlő beszerzése] [ AAD-How-To-Tenant] talál részletes információt a különböző módokon kaphat hozzáférést a bérlőt. Lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directory] [ AAD-How-Subscriptions-Assoc] talál részletes információt az előfizetések és az Azure AD-bérlő közötti kapcsolat.
 
 ## <a name="token-endpoint"></a>token-végpont
 A végpont által megvalósított közül a [engedélyezési server](#authorization-server) támogatásához OAuth2 [engedélyezési biztosít](#authorization-grant). Attól függően, hogy a grant használható szerezni egy [hozzáférési jogkivonat](#access-token) (és a kapcsolódó "frissítés" token) a egy [ügyfél](#client-application), vagy [azonosító token](#ID-token) használata esetén a [OpenID Csatlakozás] [ OpenIDConnect] protokoll.

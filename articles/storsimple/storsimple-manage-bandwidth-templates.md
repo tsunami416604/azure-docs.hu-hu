@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: df3ae8bf775370432b3648459a7c942afe69fb17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b426a0fc8e0a6c8615b348d3e832c134be4dfbaf
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-storsimple-bandwidth-templates"></a>A StorSimple Manager szolgáltatással a StorSimple sávszélesség sablonok kezelése
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [StorSimple sávszélesség sablonok kezelése a StorSimple Manager szolgáltatás segítségével](storsimple-8000-manage-bandwidth-templates.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 Sávszélesség-sablonok lehetővé teszik a réteg a StorSimple eszköz a felhőre adatait több idő napi ütemezés konfigurálja a hálózati sávszélesség-használat.
 

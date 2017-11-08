@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 730917b6859f8dbd800ef2cb141062f45d7779ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4a53d053a4c792f54e215c19a8f0c4064815839
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>CENC többplatformos DRM és hozzáférés-vezérlés használatával: Egy referenciaterv és megvalósítás az Azure-on és az Azure Media Services szolgáltatásban
  
@@ -207,7 +207,7 @@ A végrehajtása a következő lépéseket tartalmazza:
 
 Az Azure Media Services csapatától George Trifonov írás biztosít az ASP.NET MVC player alkalmazásoknak az Azure Active Directory beállításának részletes lépéseket blog: [integrálni Azure Media Services OWIN MVC alkalmazás Azure Active Directory-alapú, és korlátozhatja a JWT jogcímei alapján kulcs tartalomkézbesítési](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-George is írás blog a [JWT jogkivonat hitelesítés az Azure Media Services és a dinamikus titkosítás](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/). És itt a [mintát a Azure AD integrálása Azure Media Services kulcs kézbesítésével](https://github.com/AzureMediaServicesSamples/Key-delivery-with-AAD-integration/).
+George is írás blog a [JWT jogkivonat hitelesítés az Azure Media Services és a dinamikus titkosítás](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).  
 
 Információk az Azure Active Directoryban:
 

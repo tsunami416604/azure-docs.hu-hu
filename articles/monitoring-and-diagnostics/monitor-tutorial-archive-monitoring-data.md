@@ -10,15 +10,23 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: 445901a740920a74f259aaa9c6b862680c1c807e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f19cf8fddd9ffcf08b8ce18db070a7482ce012df
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="archive-azure-monitoring-data"></a>Figyelési adatok archiválása Azure
 
 Az Azure-alapú környezetben több rétegből napló és a metrika értékét, amely egy Azure Storage-fiók archiválható eredményez. Érdemes lehet ehhez figyelési adatok időbeli alacsony költségű, nem kereshető tárolóban adatok Naplóelemzési vagy Azure figyelő a megőrzési időszak letelte után előzményeinek megőrzése érdekében. A folyamatot, amely az Azure-tárfiókba adatok archiválására környezet konfigurálása a Útmutató lépéseit.
+
+> [!div class="checklist"]
+> * Hozzon létre egy tárfiókot a figyelési adatok tárolásához
+> * Előfizetési naplók átirányítása 
+> * Útvonal erőforrás adatokat 
+> * Virtuális gép (vendég operációs rendszer) adatainak átirányítása 
+> * A figyelési adatok megtekintése 
+> * Az erőforrások törlése 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -158,7 +166,18 @@ Most már sikeresen állított be figyelési adatok tárfiókba archiválását.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtudta, hogyan figyelése az Azure környezetben (előfizetés, erőforrás és a vendég operációs rendszer) archiválását, a tárolási fiók adatait. Több jelentéssel kívül az adatok és elemzések származnia, próbálkozzon a adatküldés a Log Analyticshez való is.
+Ebben az oktatóanyagban megtudta, hogyan figyelése az Azure környezetben (előfizetés, erőforrás és a vendég operációs rendszer) archiválását, a tárolási fiók adatait. 
+
+
+> [!div class="checklist"]
+> * Hozzon létre egy tárfiókot a figyelési adatok tárolásához
+> * Előfizetési naplók átirányítása 
+> * Útvonal erőforrás adatokat 
+> * Virtuális gép (vendég operációs rendszer) adatainak átirányítása 
+> * A figyelési adatok megtekintése 
+> * Az erőforrások törlése 
+
+Még több előny az adatokat, és további betekintést nyerjen származnia, is elküldheti az adatokat a Naplóelemzési.
 
 > [!div class="nextstepaction"]
 > [Log Analytics használatába](../log-analytics/log-analytics-get-started.md)

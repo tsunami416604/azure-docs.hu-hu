@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: c05cfec995538a95d99451155cf269d33e2716d0
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: e417458a16a5f23d8b89cbf87ab2713fab352046
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Esemény összesítésére és az adatgyűjtést, a Windows Azure diagnosztikai
 > [!div class="op_single_selector"]
@@ -254,27 +254,9 @@ Gyűjti az teljesítményszámlálók és az eseménynaplók, módosítsa a Reso
 
 ## <a name="collect-performance-counters"></a>A teljesítményszámlálók adatainak összegyűjtése
 
-Teljesítményadatok gyűjtéséhez a fürtről, a teljesítményszámlálók hozzáadása a "WadCfg > DiagnosticMonitorConfiguration" a Resource Manager sablon a fürt számára. Lásd: [Service Fabric teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md) teljesítményszámlálóinak, javasoljuk a összegyűjtése.
-
-Például itt hivatott egy teljesítményszámláló mintát 15 másodpercenként (ez módosítható, és a formátuma a következő "PT\<idő >\<egység >", például a PT3M három perces időközönként mintát lenne), és továbbítja a megfelelő tárolási tábla egy percenként.
-
-  ```json
-  "PerformanceCounters": {
-      "scheduledTransferPeriod": "PT1M",
-      "PerformanceCounterConfiguration": [
-          {
-              "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-              "sampleRate": "PT15S",
-              "unit": "Percent",
-              "annotation": [
-              ],
-              "sinks": ""
-          }
-      ]
-  }
-  ```
+Teljesítményadatok gyűjtéséhez a fürtről, a teljesítményszámlálók hozzáadása a "WadCfg > DiagnosticMonitorConfiguration" a Resource Manager sablon a fürt számára. Lásd: [ÜVEGVATTA teljesítményfigyelés](service-fabric-diagnostics-perf-wad.md) lépéseket módosítani a `WadCfg` specifikus teljesítményszámlálók adatainak összegyűjtése. Hivatkozás [Service Fabric teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md) teljesítmény listáját, amelyek teljesítményszámlálók javasoljuk a összegyűjtése.
   
-Ha Ön egy Application Insights fogadó használja a következő szakaszban leírtak szerint, és ezeket a metrikákat az Application Insights megjelennek, majd győződjön meg arról, a fogadó név hozzáadásához, ahogy fent látható "mosdók" szakaszában. Ezenkívül célszerű küldeni a teljesítményszámlálókat, különálló táblában, azok utasok nagyobb nem csoportjának kimenő az adatforrásból származó az egyéb naplózási csatornák engedélyezett.
+Ha Ön egy Application Insights fogadó használja a következő szakaszban leírtak szerint, és ezeket a metrikákat az Application Insights megjelennek, majd győződjön meg arról, a fogadó név hozzáadásához, ahogy fent látható "mosdók" szakaszában. Ez küld a teljesítményszámlálót mutat be, külön-külön vannak konfigurálva az Application Insights-erőforrást.
 
 
 ## <a name="send-logs-to-application-insights"></a>Az Application Insights elküldeni a naplókat

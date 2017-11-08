@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/02/2017
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3be8836ae6b877bc4caa98f0467147b008c42aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdb5fdb094a185db12ee08969a12e556dab96389
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>.NET Service Fabric-alkalmazás létrehozása az Azure-ban
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -57,12 +57,14 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 Kattintson a jobb gombbal a Visual Studio ikonra a Start menüben, és válassza a **Futtatás rendszergazdaként**. Ahhoz, hogy a Hibakereső csatlakoztatása a szolgáltatások, a Visual Studio Futtatás rendszergazdaként kell.
 
-Nyissa meg a **Voting.sln** klónozott tárház a Visual Studio-megoldáshoz.
+Nyissa meg a **Voting.sln** klónozott tárház a Visual Studio-megoldáshoz.  
+
+Alapértelmezés szerint a szavazási alkalmazás a 8080-as port figyelésére van beállítva.  Az alkalmazás port van megadva a */VotingWeb/PackageRoot/ServiceManifest.xml* fájlt.  Módosíthatja az alkalmazás port frissítésekor a **Port** attribútuma a **végpont** elemet.  Üzembe helyezését, és futtassa az alkalmazást helyileg, az alkalmazás port nyitott és elérhető a számítógépen kell lennie.  Ha megváltoztatja az alkalmazás portot, az új alkalmazás-port értékének helyettesítéséhez "8080" cikkben.
 
 Az alkalmazás telepítéséhez, nyomja le az **F5**.
 
 > [!NOTE]
-> Az első alkalommal futtatja, és az alkalmazás központi telepítése a Visual Studio létrehozza a helyi fürthöz, a hibakereséshez. Ez a művelet eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.
+> Az első alkalommal futtatja, és az alkalmazás központi telepítése a Visual Studio létrehozza a helyi fürthöz, a hibakereséshez. Ez a művelet eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.  A kimenetben üzenet jelenik meg a "Az alkalmazás URL-címe nincs beállítva, vagy nem egy HTTP/HTTPS URL-címe, így a böngésző nem nyílik meg az alkalmazáshoz."  Ez az üzenet nem jelent hibát, de ez a böngésző fog nem automatikus indítású.
 
 Ha a telepítés befejeződött, elindít egy böngészőt, és nyissa meg az ezen a lapon: `http://localhost:8080` – az alkalmazás előtér-webkiszolgáló.
 
@@ -114,14 +116,15 @@ Nézze meg mi történik, a kódban, végezze el a következő lépéseket:
 A hibakeresési munkamenetben leállításához nyomja le az **Shift + F5**.
 
 ## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
-Az Azure-fürthöz az alkalmazás telepítéséhez, választhat a saját fürt létrehozásához, vagy fél-fürtöt használ.
+Telepítse központilag az alkalmazást, az Azure-ba, szüksége a Service Fabric-fürt, amely futtatja az alkalmazást. 
 
-A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi, és amelyeken bárki üzembe helyezhet alkalmazásokat, és megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric). 
+### <a name="join-a-party-cluster"></a>Csatlakozás fél fürthöz
+A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi, és amelyeken bárki üzembe helyezhet alkalmazásokat, és megismerkedhet a platform használatával. 
 
-További információk saját fürtök létrehozásáról: [Az első saját Service Fabric-fürt létrehozása az Azure-on](service-fabric-get-started-azure-cluster.md).
+Jelentkezzen be és [csatlakozás egy Windows fürtnek](http://aka.ms/tryservicefabric). Ne feledje a **csatlakozási végpont** értéket, amely a következő lépéseket használatban van.
 
 > [!Note]
-> A webes előtér-szolgáltatás a 8080-as portot a bejövő forgalmat figyelő van konfigurálva. Győződjön meg róla, hogy a port nyitva van a fürtön. Az entitás-fürtöt használ, ha a port meg nyitva.
+> Alapértelmezés szerint a webes előtér-szolgáltatás figyelésére van beállítva a bejövő forgalmat a 8080-as porton. Meg nyitva a fél fürt a 8080-as porton.  Ha módosítania kell az alkalmazás port, módosítsa azt a portot a fél fürt megnyitott.
 >
 
 ### <a name="deploy-the-application-using-visual-studio"></a>Telepítse központilag az alkalmazást a Visual Studio használatával
@@ -131,7 +134,9 @@ Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a V
 
     ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-2. A **Connection Endpoint** (Kapcsolati végpont) mezőbe írja be a fürt kapcsolati végpontját, majd kattintson a **Publish** (Közzététel) parancsra. Amikor regisztrál a fél fürt, a csatlakozási végpont valósul meg a böngészőben. – például `winh1x87d1d.westus.cloudapp.azure.com:19000`.
+2. Másolás a **csatlakozási végpont** az entitás fürt oldalról a **csatlakozási végpont** mezőben, majd kattintson a **közzététel**. Például: `winh1x87d1d.westus.cloudapp.azure.com:19000`.
+
+    A fürt minden alkalmazáshoz egyedi nevet kell adni.  Entitás fürtök egy nyilvános, megosztott környezetben azonban, és előfordulhat, hogy egy meglévő alkalmazást ütközik.  Ha egy ütköző, nevezze át a Visual Studio-projektet, majd telepítse újra.
 
 3. Nyissa meg egy böngészőt, és írja be a fürt címe foolowed által ": 8080-as ' a fürt – például az alkalmazás eléréséhez `http://winh1x87d1d.westus.cloudapp.azure.com:8080`. Meg kell jelennie az Azure-ban a fürtben futó alkalmazás.
 

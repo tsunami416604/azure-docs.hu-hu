@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: af135518f66eb8c94c183f28191f016fcd601ae1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 811c06c6355ae881037cceb573ae0f96fa1ec2ad
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Az eszköz felügyelete a Windows PowerShell-lel segítségével
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [használata a Windows PowerShell-lel az eszköz felügyeletére](storsimple-8000-windows-powershell-administration.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 A Windows PowerShell-lel egy parancssori felületet biztosít, amely segítségével kezelheti a Microsoft Azure StorSimple eszközt. A nevet javasol, mivel a Windows PowerShell-alapú, parancssori felület egy korlátozott futási térrel részét képező is. A parancssorban a felhasználó szemszögéből egy korlátozott futási térrel egy Windows PowerShell korlátozott verziója jelenik meg. Néhány alapvető funkciót, a Windows PowerShell megőrzésével Ez az interfész rendelkezik kezelése a Microsoft Azure StorSimple eszköz körétől további dedikált parancsmagokat. 
 

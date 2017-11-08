@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/21/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4dfd3973593a94adfc15a6e15d69c697e13998af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 642a416c167d8a1795a0c33987cec8836f2db0aa
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-8000-series-update-01-release-notes--october-2014"></a>A StorSimple 8000 Series Update 0,1 kibocsátási megjegyzések – 2014. október
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 Az alábbi kibocsátási megjegyzések a StorSimple 8000 Series frissítés, amely a 2014. októberi 0,1 a kritikus megnyitott problémák azonosításához. Az ebben a kiadásban szereplő StorSimple szoftver és a belső vezérlőprogram frissítés listáját is tartalmaznak. Ez az első kiadása után a StorSimple 8000 Series kiadási verzió általánosan elérhető a 2014. július történt, és szoftververzió 6.3.9600.17312 felel meg.  
 

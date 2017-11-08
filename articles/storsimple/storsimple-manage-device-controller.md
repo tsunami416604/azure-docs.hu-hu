@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/11/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 67dbb0c4066002256efbab6061157c641527e441
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8182d0ccf9fb57a9dba383d376d1c557845bcc8a
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>A StorSimple eszköz tartományvezérlők kezelése
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [kezelése a StorSimple eszközvezérlők](storsimple-8000-manage-device-controller.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag leírja a különböző műveletek végrehajtható a StorSimple eszköz tartományvezérlőn. A StorSimple eszköz tartományvezérlőinek redundáns (társközi) vezérlők aktív-passzív konfigurációban. Egy adott időben csak egy vezérlő aktív, és a lemezek és a hálózati műveletek feldolgozása. A többi tartományvezérlő a passzív módban van. Az aktív vezérlő nem sikerül, ha a passzív vezérlő automatikusan aktívvá válik.
 

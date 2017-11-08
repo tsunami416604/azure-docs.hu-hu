@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 1b0d0fa1afc94d5261443f6b08cb6f0c3518f3eb
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: a1214d8327075ee081124d42aeb78846e09ff588
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL adatbázis Azure SQL elemzés (előzetes verzió) Naplóelemzési figyelése
 
@@ -102,7 +102,16 @@ Az adott perspektíva kiválasztásával a csempéket, részletes jelentés megn
 
 Minden szempontból ezekkel az előfizetés, a kiszolgáló, a rugalmas készlet és az adatbázis szintje biztosít. Emellett minden szempontból perspektíva adott jelentés a jobb oldali látható. A részletezés előfizetés, a kiszolgáló, a készlet vagy az adatbázis kiválasztásával a listából továbbra is működik.
 
-| Terv |} Leírása. Erőforrás típus szerint |} Megjeleníti a figyelt összes erőforrást perspektívát. Részletezés biztosít DTU és GB metrikák összegzését. | | Elemzések |} Hierarchikus leásási biztosít az intelligens Insights. További tudnivalók az intelligens insights. | | Hibák |} Hierarchikus leásási biztosít, és ismételje meg az adatbázisok SQL hibákba. | | Időtúllépések |} Hierarchikus leásási nyújt az SQL-időtúllépések, az adatbázisok történt. | | Blockings |} Hierarchikus leásási biztosít, és ismételje meg az adatbázisok SQL blockings be. | | Adatbázis-vár |} Hierarchikus leásási biztosít az SQL várakozási statisztikák az adatbázis szintjén. A teljes várakozási idő és a várakozási idő várakozási típusonkénti összegzését tartalmazza. | | Időtartam lekérdezése |} Hierarchikus leásási biztosítja azokat a lekérdezés-végrehajtási statisztikákról, például a lekérdezés időtartama, a CPU-használat, a adat IO kihasználtsága, a napló IO kihasználtsága. | | Lekérdezési vár |} Hierarchikus leásási biztosítja azokat a lekérdezés várakozási statisztika várakozási kategória szerint. |
+| Perspektíva | Leírás |
+| --- | --- |
+| Erőforrás típus szerint | Megjeleníti a figyelt összes erőforrást perspektívát. Részletezés biztosít DTU és GB metrikák összegzését. |
+| Insights | Hierarchikus leásási biztosít az intelligens Insights. További tudnivalók az intelligens insights. |
+| Hibák | Hierarchikus leásási biztosít, és ismételje meg az adatbázisok SQL hibákba. |
+| Időtúllépések | Hierarchikus leásási nyújt az SQL-időtúllépések, az adatbázisok történt. |
+| Blockings | Hierarchikus leásási biztosít, és ismételje meg az adatbázisok SQL blockings be. |
+| Adatbázis vár | Hierarchikus leásási biztosít az SQL várakozási statisztikák az adatbázis szintjén. A teljes várakozási idő és a várakozási idő várakozási típusonkénti összegzését tartalmazza. |
+| lekérdezés időtartama | Hierarchikus leásási biztosítja azokat a lekérdezés-végrehajtási statisztikákról, például a lekérdezés időtartama, a CPU-használat, a adat IO kihasználtsága, a napló IO kihasználtsága. |
+| Lekérdezés | Hierarchikus leásási biztosítja azokat a lekérdezés várakozási statisztika várakozási kategória szerint. |
 
 ### <a name="intelligent-insights-report"></a>Intelligens Insights jelentés
 

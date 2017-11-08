@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 11/07/2017
 ms.author: v-donglo
-ms.openlocfilehash: e7663f931594c0626a173562b846f3f9324d8ba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40079da0e04520477771a11a1e4111768cf18280
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Meglévő prediktív webszolgáltatás újratanítása
 Ez a dokumentum ismerteti a megőrzési folyamata a következő forgatókönyvet:
@@ -86,9 +86,10 @@ Az a **alapvető fogyasztási adatai** szakasza a **felhasználás** lapon keres
 ### <a name="update-the-azure-storage-information"></a>Az Azure Storage-adatainak módosítása
 A BES mintakód feltölt egy fájlt egy helyi meghajtó (például "C:\temp\CensusIpnput.csv") az Azure Storage, folyamatokat engedélyez, és kiírja az eredményeket vissza az Azure Storage.  
 
-Az Azure Storage információk frissítéséhez be kell a tárfiók neve, a kulcs és a tároló adatokat olvasni a a tárfiók a klasszikus Azure portálon, és majd frissítési kísérletét, az eredményül kapott munkafolyamat futtatása után correspondi kell lennie a következőhöz hasonló:
+Az Azure tárolással kapcsolatos frissítéséhez a tárfiók neve, a kulcs és a tároló információt lekérni a tárfiók a klasszikus Azure portálon, és frissítse a megfelelő értékeket a kódban.
+Miután a kísérletet, az eredményül kapott munkafolyamat kell lennie a következőhöz hasonló:
 
-![Eredményül kapott munkafolyamat futtatása után][4]a kód ng értékek.
+![Eredményül kapott munkafolyamat futtatása után][4]
 
 1. Jelentkezzen be a klasszikus Azure portálra.
 2. A bal oldali oszlopban kattintson **tárolási**.
@@ -119,7 +120,9 @@ Ha a kimeneti helyet ad meg a kérelem hasznos, a megadott fájl kiterjesztése 
             }
         },
 
-Az alábbiakban egy példa megőrzési kimeneti: ![kimeneti Átképezési][6]
+A következő egy megőrzési kimeneti példát:
+
+![Kimeneti átképezési][6]
 
 ## <a name="evaluate-the-retraining-results"></a>Megőrzési eredmények értékelése
 Az alkalmazás futtatásakor a parancs kimenete az URL-cím és a megosztott aláírások jogkivonatot az értékelés eredményét eléréséhez szükséges.

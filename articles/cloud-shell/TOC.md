@@ -8,7 +8,6 @@
 ## [A Bash funkciói és eszközei](features.md)
 ## [A PowerShell funkciói és eszközei](features-powershell.md)
 ## [Korlátozások](limitations.md)
-## [hibaelhárítással](troubleshooting.md)
 
 # Használati útmutató
 ## [Tároló megőrzése Bash-ben](persisting-shell-storage.md)
@@ -16,6 +15,8 @@
 ## [Az ablak használata](using-the-shell-window.md)
 
 # [Díjszabás](pricing.md)
+
+# [hibaelhárítással](troubleshooting.md)
 
 # Referencia
 ## [Azure CLI](/cli/azure)
