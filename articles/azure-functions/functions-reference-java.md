@@ -11,13 +11,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: dc9a1b6061c41cd623e1ddb3bb9dbb87530a13d5
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: e8a4b0cc620c887aac3cc442154429b43336d8f1
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutató
 > [!div class="op_single_selector"]
@@ -164,10 +164,11 @@ Bemeneti az Azure Functions két kategóriába oszthatók: egy eseményindító 
 package com.example;
 
 import com.microsoft.azure.serverless.functions.annotation.BindingName;
+import java.util.Optional;
 
 public class MyClass {
-    public static String echo(String in, @BindingName("item") MyObject obj) {
-        return "Hello, " + in + " and " + obj.getKey() + ".";
+    public static String echo(Optional<String> in, @BindingName("item") MyObject obj) {
+        return "Hello, " + in.orElse("Azure") + " and " + obj.getKey() + ".";
     }
 
     private static class MyObject {
@@ -210,7 +211,7 @@ A `@BindingName` jegyzet fogad el egy `String` tulajdonság, amely a kötés/ese
 }
 ```
 
-Ez a funkció meghívásakor a HTTP kérésére hasznos cserél egy `String` argumentum `in` és az Azure Table Storage `MyObject` típus átadott argumentum `obj`.
+Ez a funkció meghívásakor a HTTP-kérések forgalma átadja egy nem kötelező, `String` argumentum `in` és az Azure Table Storage `MyObject` típus átadott argumentum `obj`. Használja a `Optional<T>` bemeneti adatok kezeléséhez a függvényekké, amely lehet null értékű típus.
 
 ## <a name="outputs"></a>kimenetek
 
@@ -271,11 +272,34 @@ Néha egy függvény részletes ellenőrzése alatt tartja a be- és kimenetekke
 
 | Speciális típusa      |       cél        | Tipikus használati                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage`  |    HTTP-eseményindítóval     | Módszer, fejlécek vagy lekérdezések beolvasása |
-| `HttpResponseMessage` | Kötelező HTTP-kimenet | 200 eltérő visszatérési állapota   |
+| `HttpRequestMessage<T>`  |    HTTP-eseményindítóval     | Módszer, fejlécek vagy lekérdezések beolvasása |
+| `HttpResponseMessage<T>` | Kötelező HTTP-kimenet | 200 eltérő visszatérési állapota   |
 
 > [!NOTE] 
 > Is `@BindingName` jegyzet HTTP-fejlécek és a lekérdezések. Például `@Bind("name") String query` megismétli a HTTP-kérelmek fejléceinek és a lekérdezéseket, és adja át ezt az értéket a metódusnak. Például `query` lesz `"test"` Ha a kérelem URL-cím `http://example.org/api/echo?name=test`.
+
+### <a name="metadata"></a>Metaadatok
+
+Metaadatok származik a különböző forrásokból, például a HTTP-fejléceket, a HTTP-lekérdezések, és [metaadatok indítás](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties). Használja a `@BindingName` Megjegyzés a metaadat-neve, ahonnan az értéket be kell együtt.
+
+Például a `queryValue` a következő kódot a részlet lesz `"test"` a kért URL-címe `http://{example.host}/api/metadata?name=test`.
+
+```Java
+package com.example;
+
+import java.util.Optional;
+import com.microsoft.azure.serverless.functions.annotation.*;
+
+public class MyClass {
+    @FunctionName("metadata")
+    public static String metadata(
+        @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
+        @BindingName("name") String queryValue
+    ) {
+        return body.orElse(queryValue);
+    }
+}
+```
 
 ## <a name="functions-execution-context"></a>Funkciók végrehajtási környezet
 
@@ -294,7 +318,7 @@ import com.microsoft.azure.serverless.functions.ExecutionContext;
 public class Function {
     public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         if (req.isEmpty()) {
-            context.getLogger().warning("Empty request body received in " + context.getInvocationId());
+            context.getLogger().warning("Empty request body received by function " + context.getFunctionName() + " with invocation " + context.getInvocationId());
         }
         return String.format(req);
     }

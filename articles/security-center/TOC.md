@@ -1,6 +1,5 @@
 # Áttekintés
 ## [Mi az az Azure Security Center?](security-center-intro.md)
-## [Elemzések készítése a Power BI-szolgáltatással](security-center-powerbi.md)
 ## [Adatbiztonság](security-center-data-security.md)
 ## Forgatókönyvek
 ### [Incidensmegoldás](security-center-incident-response.md)

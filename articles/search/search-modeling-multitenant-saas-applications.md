@@ -13,11 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2016
 ms.author: ashmaka
-ms.openlocfilehash: fd1b0c7cc8210d27fdc500bf4e5641bedfe93cff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33897e7966de5d467602f6cb36fe16caf0786ffd
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>A kialakítási minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Search
 Egy több-bérlős alkalmazás egyike, amellyel a bérlők számára nem látható, vagy semmilyen más bérlővel adatok megosztására tetszőleges számú szolgáltatások és képességei azonosak. Ez a dokumentum ismerteti a bérlő elkülönítési stratégiák több-bérlős alkalmazásokhoz az Azure Search beépített.
@@ -44,7 +44,7 @@ Nincsenek különböző néhány [tarifacsomagok](https://azure.microsoft.com/pr
 |  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximális replikák-szolgáltatás |3 |12 |12 |12 |12 |
-| Maximális partícióból szolgáltatás |1 |12 |12 |12 |1 |
+| Maximális partícióból szolgáltatás |1 |12 |12 |12 |3 |
 | Maximális keresési egységek (replikák * partíciók) szolgáltatás |3 |36 |36 |36 |36 (legfeljebb 3 partíció) |
 | Maximális dokumentumok-szolgáltatás |1 millió |180 millió |720 millió |1.4 milliárd |600 millió |
 | Maximális tárolási szolgáltatás |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |

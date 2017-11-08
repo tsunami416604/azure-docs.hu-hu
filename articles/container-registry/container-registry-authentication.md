@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 11/05/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51fb72fc3c0e9b9e261f19883820f5d7399a57ab
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 37514e7b90afe1162aa4bbd2869326a691f75c4e
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>A hitelesítést egy titkos Docker-tároló beállításjegyzék
 
@@ -39,7 +39,7 @@ Az használatakor a beállításjegyzék közvetlenül, például a lemezképeke
 az acr login --name <acrName>
 ```
 
-Ha jelentkezzen be az `az acr login`, a CLI-t használja a jogkivonatot jön létre, amikor hajtja végre `az login` akadálytalanul hitelesíteni a beállításjegyzék-munkamenet. Ha így már bejelentkezett, a hitelesítő adatok gyorsítótárazott, és az azt követő `docker` parancsok nem igényelnek, a felhasználónév vagy jelszó. Ha a jogkivonat lejár, frissítheti azt használatával a `az acr login` újra a parancsot újból hitelesítésre.
+Ha jelentkezzen be az `az acr login`, a CLI-t használja a jogkivonatot jön létre, amikor hajtja végre `az login` akadálytalanul hitelesíteni a beállításjegyzék-munkamenet. Ha így már bejelentkezett, a hitelesítő adatok gyorsítótárazott, és az azt követő `docker` parancsok nem igényelnek, a felhasználónév vagy jelszó. Ha a jogkivonat lejár, frissítheti azt használatával a `az acr login` újra a parancsot újból hitelesítésre. Használatával `az acr login` Azure identitások nyújt [szerepkörön alapuló hozzáférés](../active-directory/role-based-access-control-configure.md).
 
 ## <a name="service-principal"></a>Egyszerű szolgáltatásnév
 
@@ -75,6 +75,10 @@ Attól függően, hogy a Docker telepített verzióját, megjelenhet egy biztons
 
 Minden egyes tároló beállításjegyzék magában foglalja a rendszergazda felhasználói fiókkal, amely alapértelmezés szerint le van tiltva. A felhasználót a rendszergazda engedélyezheti és kezelése a saját hitelesítő adatait a [Azure-portálon](container-registry-get-started-portal.md#create-a-container-registry), vagy az Azure parancssori felület használatával.
 
+> [!IMPORTANT]
+> A rendszergazdai fiók egy-egy felhasználóhoz hozzáférni a beállításjegyzékhez, különösen ha tesztelési célokra tervezték. Több felhasználó osztja meg a rendszergazdai fiók hitelesítő adatai nem ajánlott. A beállításjegyzék leküldéses és lekéréses hozzáférést egy felhasználó hitelesíti a rendszergazdai fiókkal minden felhasználó jelennek meg. Módosítása vagy a fiók letiltása letiltja az összes felhasználó számára a megszerzett hitelesítő adatokkal beállításjegyzék elérésének. Egyedi azonosító a felhasználók és szolgáltatásnevekről távfelügyeleti forgatókönyvek esetén ajánlott.
+>
+
 A rendszergazdai fiók kerül a két jelszavakkal, amelyek mindegyikét helyreállíthatja. Két jelszavak lehetővé teszik a beállításjegyzék kapcsolatot tart egy jelszó használatával, amíg a másikat újragenerálja. Ha a rendszergazdai fiókon engedélyezve van, a felhasználónevet és vagy jelszót átadhatók a `docker login` parancsot az egyszerű hitelesítés a beállításjegyzékhez. Példa:
 
 ```
@@ -92,10 +96,6 @@ az acr update -n <acrName> --admin-enabled true
 Engedélyezheti a felhasználót a rendszergazda az Azure portálon lépjen a beállításjegyzék kiválasztásával **hívóbetűk** alatt **beállítások**, majd **engedélyezése** alatt **rendszergazda felhasználói**.
 
 ![Engedélyezze a felhasználót a rendszergazda felhasználói felület az Azure-portálon][auth-portal-01]
-
-> [!IMPORTANT]
-> A rendszergazdai fiók egy-egy felhasználóhoz hozzáférni a beállításjegyzékhez, különösen ha tesztelési célokra tervezték. Több felhasználó osztja meg a rendszergazdai fiók hitelesítő adatai nem ajánlott. Minden felhasználó a rendszergazdai fiókkal hitelesítése egy-egy felhasználóhoz a beállításjegyzék jelennek meg. Módosítása vagy a fiók letiltása letiltja az összes felhasználó számára a megszerzett hitelesítő adatokkal beállításjegyzék elérésének.
->
 
 ## <a name="next-steps"></a>Következő lépések
 

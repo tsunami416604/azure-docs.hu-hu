@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e0b4bc196786ca4dfa3d57f3e89dd36ddc32acbc
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: d8b0cd2a3e5f9829f0844783aad22d375eb9d7a8
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="forecast-future-spending"></a>Felmérheti a jövőbeli kiadásokat
 
@@ -57,7 +57,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Felmérheti a jövőbeli kiadásokat
 
 
-További Cloudyn dokumentációját előzetes készül első lépések Cloudyn, és annak szolgáltatásait használja.
+Továbblépés a következő oktatóanyag áttekintésével megismerheti, hogyan költség lemezfoglalási és -visszajelzési jelentéseket költségek kezelésére.
 
 > [!div class="nextstepaction"]
-> [Cloudyn dokumentáció](https://support.cloudyn.com/hc/)
+> [Költség lemezfoglalási és -visszajelzési jelentéseket költségeinek kezelése](tutorial-manage-costs.md)

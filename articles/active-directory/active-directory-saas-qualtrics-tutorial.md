@@ -1,114 +1,229 @@
 ---
 title: "Oktatóanyag: Azure Active Directoryval integrált Qualtrics |} Microsoft Docs"
-description: "Megtudhatja, hogyan Qualtrics használata az Azure Active Directoryval az egyszeri bejelentkezés, automatizált üzembe helyezést és további engedélyezéséhez!"
+description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Qualtrics között."
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 4df889ab-2685-4d15-a163-1ba26567eeda
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 03/23/2017
+ms.date: 10/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 2fcde595a40dafda7549f5bccb582b57585b314e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66924ed0754bade90b83a3b001849f0dff3ab216
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>Oktatóanyag: Azure Active Directoryval integrált Qualtrics
-Ez az oktatóanyag célja az Azure és Qualtrics integrálását megjelenítése.  
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
+Ebben az oktatóanyagban elsajátíthatja Qualtrics integrálása az Azure Active Directory (Azure AD).
 
-* Egy érvényes Azure-előfizetés
-* Egy Qualtrics egyszeri bejelentkezés (SSO) engedélyezve van az előfizetés
+Qualtrics integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-Ez az oktatóanyag befejezése után az Azure AD-felhasználók Qualtrics rendelt fog tudni egyetlen jelentkezzen be az alkalmazás a Qualtrics vállalati hely (a szolgáltatás a szolgáltató által kezdeményezett bejelentkezési), vagy használja a [a hozzáférési Panelbemutatása](active-directory-saas-access-panel-introduction.md).
+- Az Azure AD, aki hozzáfér Qualtrics szabályozhatja.
+- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Qualtrics (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
+- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ebben az oktatóanyagban leírt forgatókönyv az alábbi építőelemeket áll:
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
-1. Az alkalmazás Qualtrics-integráció engedélyezése
-2. Egyszeri bejelentkezés (SSO) konfigurálása
-3. Felhasználók átadására
-4. Felhasználók hozzárendelése
+## <a name="prerequisites"></a>Előfeltételek
 
-![A forgatókönyv](./media/active-directory-saas-qualtrics-tutorial/IC789542.png "forgatókönyv")
+Konfigurálása az Azure AD-integrációs Qualtrics, a következőkre van szükség:
 
-## <a name="enabling-the-application-integration-for-qualtrics"></a>Az alkalmazás Qualtrics-integráció engedélyezése
-Ez a szakasz célja felvázoló Qualtrics az alkalmazás-integráció engedélyezése.
+- Az Azure AD szolgáltatásra
+- Egy Qualtrics egyszeri bejelentkezés engedélyezve van az előfizetés
 
-**Ahhoz, hogy az alkalmazás-integráció Qualtrics, hajtsa végre az alábbi lépéseket:**
+> [!NOTE]
+> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
 
-1. A klasszikus Azure portálon, a bal oldali navigációs panelen kattintson a **Active Directory**.
-   
-   ![Az Active Directory](./media/active-directory-saas-qualtrics-tutorial/IC700993.png "Active Directory")
-2. Az a **Directory** listára, válassza ki a könyvtárat, amelyhez a címtár-integrációs engedélyezni szeretné.
-3. A könyvtár nézetben a alkalmazások nézet megnyitásához kattintson **alkalmazások** a felső menüben.
-   
-   ![Alkalmazások](./media/active-directory-saas-qualtrics-tutorial/IC700994.png "alkalmazások")
-4. Kattintson a **Hozzáadás** az oldal alján.
-   
-   ![Alkalmazás hozzáadása](./media/active-directory-saas-qualtrics-tutorial/IC749321.png "alkalmazás hozzáadása")
-5. Az a **mi történjen a teendő** párbeszédpanel, kattintson a **hozzáadhat egy alkalmazást a katalógusból**.
-   
-   ![Alkalmazás hozzáadása a gallerry](./media/active-directory-saas-qualtrics-tutorial/IC749322.png "gallerry az alkalmazás hozzáadása")
-6. Az a **keresőmezőbe**, típus **Qualtrics**.
-   
-   ![Alkalmazáskatalógusában](./media/active-directory-saas-qualtrics-tutorial/IC789543.png "Alkalmazáskatalógusában")
-7. Az eredmények ablaktáblájában válassza **Qualtrics**, és kattintson a **Complete** hozzáadása az alkalmazáshoz.
-   
-   ![Qualtrics](./media/active-directory-saas-qualtrics-tutorial/IC789544.png "Qualtrics")
-   
-## <a name="configure-single-sign-on"></a>Egyszeri bejelentkezés konfigurálása
+Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-Ez a szakasz célja felvázoló engedélyezése a felhasználók hitelesítéséhez Qualtrics fiókkal az Azure AD összevonási alapján a SAML protokoll használatával.
+- Ne használja az éles környezetben, nem szükséges.
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
-**Egyszeri bejelentkezés konfigurálásához hajtsa végre az alábbi lépéseket:**
+## <a name="scenario-description"></a>Forgatókönyv leírása
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-1. A klasszikus Azure portálon a a **Qualtrics** alkalmazás integráció lapján, kattintson a **konfigurálása egyszeri bejelentkezéshez** megnyitásához a **konfigurálása egyszeri bejelentkezés** párbeszédpanel.
-   
-   ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-qualtrics-tutorial/IC789545.png "egyszeri bejelentkezés konfigurálása")
-2. Az a **hová bejelentkezni Qualtrics felhasználók** lapon jelölje be **Microsoft Azure AD az egyszeri bejelentkezés**, és kattintson a **következő**.
-   
-   ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-qualtrics-tutorial/IC789546.png "egyszeri bejelentkezés konfigurálása")
-3. A a **alkalmazás URL-cím konfigurálása** lap a **Qualtrics bejelentkezési URL-cím** szövegmező, írja be az URL-cím (pl.: "*https://ssotest2ut1.qualtrics.com*"), és kattintson a **Következő**.
-   
-   ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "alkalmazás URL-CÍMEK konfigurálása")
-4. A a **konfigurálhatja az egyszeri bejelentkezés Qualtrics** kattintson **metaadatok letöltése**, és mentse a fájlt a számítógépen a metaadat.
-   
-   ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-qualtrics-tutorial/IC789548.png "egyszeri bejelentkezés konfigurálása")
-5. A metaadatfájl küldeni a Qualtrics támogatási csapatával.
-   
-   >[!NOTE]
-   >Az egyszeri bejelentkezés konfigurációs ki a Qualtrics támogatási csoport végzi el. Értesítést kap, amint a konfigurálása befejeződött.
-   > 
-   > 
-6. A klasszikus Azure portálon, válassza ki az egyszeri bejelentkezés konfigurációs megerősítő, és kattintson **Complete** bezárásához a **konfigurálása egyszeri bejelentkezés** párbeszédpanel.
-   
-   ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-qualtrics-tutorial/IC789549.png "egyszeri bejelentkezés konfigurálása")
-   
-## <a name="configure-user-provisioning"></a>A felhasználók átadása konfigurálása
+1. A gyűjteményből Qualtrics hozzáadása
+2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+
+## <a name="adding-qualtrics-from-the-gallery"></a>A gyűjteményből Qualtrics hozzáadása
+Az Azure AD integrálása a Qualtrics konfigurálásához kell hozzáadnia Qualtrics a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+
+**A gyűjteményből Qualtrics hozzáadásához hajtsa végre az alábbi lépéseket:**
+
+1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+
+    ![Az Azure Active Directory gomb][1]
+
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+
+    ![A vállalati alkalmazások panel][2]
+    
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+
+    ![Az új alkalmazás gomb][3]
+
+4. Írja be a keresőmezőbe, **Qualtrics**, jelölje be **Qualtrics** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+    ![Az eredménylistában Qualtrics](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_addfromgallery.png)
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Qualtrics.
+
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Qualtrics a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Qualtrics közötti kapcsolat kapcsolatot kell létrehozni.
+
+Qualtrics, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+
+Az Azure AD egyszeri bejelentkezést a Qualtrics tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. **[Qualtrics tesztfelhasználó létrehozása](#create-a-qualtrics-test-user)**  - való Britta Simon valami Qualtrics, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Qualtrics alkalmazásban.
+
+**Konfigurálása az Azure AD az egyszeri bejelentkezés Qualtrics, hajtsa végre az alábbi lépéseket:**
+
+1. Az Azure portálon a a **Qualtrics** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+
+    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+
+2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+ 
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_samlbase.png)
+
+3. Az a **Qualtrics tartomány és az URL-címek** területen tegye a következőket:
+
+    ![Az egyszeri bejelentkezés információk Qualtrics tartomány és az URL-címek](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_url.png)
+
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.qualtrics.com`
+
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
+    | |
+    |--|
+    | `https://<companyname>.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
+    | `https://<companyname>.co1.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
+
+    > [!NOTE] 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Qualtrics ügyfél-támogatási csoport](https://www.qualtrics.com/support/) beolvasni ezeket az értékeket.
+
+4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_certificate.png) 
+
+5. Kattintson a **mentése** gombra.
+
+    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-qualtrics-tutorial/tutorial_general_400.png)
+
+6. Egyszeri bejelentkezés konfigurálása **Qualtrics** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Qualtrics támogatási csoport](https://www.qualtrics.com/support/). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+
+> [!TIP]
+> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+
+Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+
+   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+
+**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+
+1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+
+    ![Az Azure Active Directory gomb](./media/active-directory-saas-qualtrics-tutorial/create_aaduser_01.png)
+
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-qualtrics-tutorial/create_aaduser_02.png)
+
+3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+
+    ![A Hozzáadás gombra.](./media/active-directory-saas-qualtrics-tutorial/create_aaduser_03.png)
+
+4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+
+    ![A felhasználó párbeszédpanel](./media/active-directory-saas-qualtrics-tutorial/create_aaduser_04.png)
+
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+
+    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+
+    d. Kattintson a **Create** (Létrehozás) gombra.
+ 
+### <a name="create-a-qualtrics-test-user"></a>Qualtrics tesztfelhasználó létrehozása
 
 Nincs művelet elem ahhoz, hogy a felhasználó Qualtrics történő konfigurálásához. Ha egy hozzárendelt felhasználó megpróbál bejelentkezni, a hozzáférési panelen Qualtrics, Qualtrics ellenőrzi, hogy a felhasználó létezik-e.  
 
 Nincs még nincs felhasználói fiók érhető el, ha a Qualtrics automatikusan létrehozni.
 
-## <a name="assign-users"></a>Felhasználók hozzárendelése
-A konfiguráció teszteléséhez kell biztosítania az Azure AD-felhasználók számára engedélyezni, használja az alkalmazás elérésére hozzárendelésével.
+### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-**Felhasználók hozzárendelése Qualtrics, hajtsa végre az alábbi lépéseket:**
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Qualtrics Azure egyszeri bejelentkezéshez használandó.
 
-1. A klasszikus Azure portálon hozzon létre egy olyan fiókot.
-2. Az a **Qualtrics** alkalmazás integráció lapján, kattintson a **felhasználók hozzárendelése**.
-   
-   ![Felhasználók hozzárendelése](./media/active-directory-saas-qualtrics-tutorial/IC789550.png "felhasználók hozzárendelése")
-3. Adja meg a tesztfelhasználó számára, kattintson **hozzárendelése**, és kattintson a **Igen** a hozzárendelés megerősítéséhez.
-   
-   ![Igen](./media/active-directory-saas-qualtrics-tutorial/IC767830.png "Igen")
+![A felhasználói szerepkör hozzárendelése][200] 
 
-Az SSO-beállítások tesztelésére, nyissa meg a hozzáférési Panel. A hozzáférési Panel kapcsolatos további tudnivalókért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md).
+**Britta Simon hozzárendelése Qualtrics, hajtsa végre az alábbi lépéseket:**
+
+1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+
+    ![Felhasználó hozzárendelése][201] 
+
+2. Az alkalmazások listában válassza ki a **Qualtrics**.
+
+    ![Az alkalmazások listáját a Qualtrics hivatkozás](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_app.png)  
+
+3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra][202]
+
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panelen][203]
+
+5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+
+6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+
+7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+    
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+
+Ha a hozzáférési panelen Qualtrics csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Qualtrics alkalmazására.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
+
+## <a name="additional-resources"></a>További források
+
+* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_203.png
 

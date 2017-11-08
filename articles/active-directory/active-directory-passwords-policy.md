@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 5c33f08e54d522e0eea13a3e267f14f407fc59b6
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9d61f46070e6956c60f1135b98a9ebe71011b922
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -94,7 +94,7 @@ A következő táblázat ismerteti a rendelkezésre álló jelszó házirend-be�
 
 ## <a name="set-password-expiration-policies-in-azure-active-directory"></a>Jelszó lejárati házirendek beállítása az Azure Active Directoryban
 
-Egy Microsoft felhőszolgáltatásra globális rendszergazdája használhatja a Microsoft Active Directory modul Windows Powershellhez készült Azure hozzon létre felhasználói jelszavak nem járnak le. Használhatja a Windows PowerShell-parancsmagokkal eltávolítani az-véglegesek konfigurációs, vagy hogy mely felhasználói jelszavak beállítása nem jár le. Ez az útmutató többi szolgáltatók, például a Microsoft Intune és az Office 365, amely identitás- és a directory Services Microsoft Azure Active Directory is támaszkodjon vonatkozik.
+Egy Microsoft felhőszolgáltatásra globális rendszergazdája használhatja a Microsoft Active Directory modul Windows Powershellhez készült Azure hozzon létre felhasználói jelszavak nem járnak le. Használhatja a Windows PowerShell-parancsmagokkal eltávolítani az-véglegesek konfigurációs, vagy hogy mely felhasználói jelszavak beállítása nem jár le. Ez az útmutató többi szolgáltatók, például a Microsoft Intune és az Office 365, amely identitás- és a directory Services Microsoft Azure Active Directory is támaszkodjon vonatkozik. Ez része a csak a házirendet, amely módosíthatja.
 
 > [!NOTE]
 > Csak a címtár-szinkronizálás keresztül nem szinkronizált felhasználói fiókok jelszavainak beállítható úgy, hogy nem jár le. További információ a címtár-szinkronizálás:[AD az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
@@ -128,18 +128,21 @@ A kezdéshez kell [töltse le és telepítse az Azure AD PowerShell modult](http
    * Soha le nem járó egy felhasználó jelszavának megadásához a következő parancsmag használatával futtassa az egyszerű felhasználónév (UPN) vagy a felhasználó felhasználói Azonosítóját:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
    * Az összes olyan felhasználó jelszavának beállítása nem jár le egy szervezet, futtassa a következő parancsmagot:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
+   > [!WARNING]
+   > Ha `-PasswordNeverExpires $true` a jelszó lesz továbbra is kora alapján a `pwdLastSet` attribútum. Ez azt jelenti, hogy ha beállíthatja a jelszó soha nem jár le, és 90 nap váltson alapján `pwdLastSet` és módosítható `-PasswordNeverExpires $false` jelszavak, amelyek rendelkeznek egy `pwdLastSet` régebbi, mint 90 nap módosítania kell a következő bejelentkezéskor. Ez a változás jelentős hatással lehet a felhasználók nagy számú. 
+
 ## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
 
-* [Hogyan végezze el a sikeres bevezetéshez az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-best-practices.md)
-* [A jelszó megváltoztatására](active-directory-passwords-update-your-own-password.md).
-* [Az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
-* [Licencelés kérdése van?](active-directory-passwords-licensing.md)
-* [Milyen adatok SSPR használja, és milyen adatokat kell tölteni a felhasználók számára?](active-directory-passwords-data.md)
-* [Hitelesítési módszerek állnak rendelkezésre a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [A jelszóvisszaírás és miért fontos információk?](active-directory-passwords-writeback.md)
-* [Hogyan jelentést az önkiszolgáló jelszó-Változtatási tevékenység?](active-directory-passwords-reporting.md)
-* [Mik az önkiszolgáló jelszó-Változtatási közül az összes, és mit azokat a következőket:?](active-directory-passwords-how-it-works.md)
-* [Szerintem valami nem működik. Hogyan hibáinak elhárítása az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-troubleshoot.md)
-* [A rendszer nem jelzett valahol máshol kérdést kell](active-directory-passwords-faq.md)
+* [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
+* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](active-directory-passwords-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)

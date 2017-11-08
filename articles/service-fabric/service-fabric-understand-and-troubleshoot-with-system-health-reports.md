@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: b02b1260cedcade9bf69a99453ab0f5aa2c3c7b1
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 42dca05c4d7d104ed0e7e21f1e53411e5983cd38
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevők adja meg, hogy közvetlenül a kezdő verzióról a fürt összes entitásának a rendszerállapot-jelentéseket. A [a health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli a rendszer-jelentéseken alapuló entitásokat. Azt is rendszerezi azokat a hierarchiában, amely rögzíti az entitás interakciókat.
@@ -55,6 +55,18 @@ A jelentés a globális bérleti idejét adja meg az idő-live (TTL). A jelenté
 * **SourceId**: System.Federation
 * **Tulajdonság**: kezdődik **hálózatok** és csomópont információkat tartalmaz.
 * **További lépések**: vizsgálja meg, miért a helyek elvész, például, a fürt csomópontjai közötti kommunikáció.
+
+### <a name="rebuild"></a>Építse újra
+
+A **Feladatátvevőfürt-kezelő** szolgáltatás (**FM**) a fürt csomópontjai kapcsolatos információt. Amikor FM elveszíti az adatokat, és azt nem garantálja az adatvesztéssel hiányzóra rendelkezik a fürtcsomópontokon a legfrissebb információkat. Ebben az esetben a rendszer végighalad egy **újraépítése**, és **System.FM** adatokat gyűjt a fürt összes csomópontján ahhoz, hogy építse újra az állapotát. Egyes esetekben hálózati vagy a csomópont problémák miatt rebuild sikerült akadt-e vagy leállt. Azonos fordulhat elő a **Feladatátvevőfürt-kezelő Master** szolgáltatás (**FMM**). A **FMM** állapotmentes rendszer szolgáltatás, amely nyomon követi a where összes a **FMs** vannak a fürtben. A **FMMs** elsődleges van mindig 0 legközelebbi azonosítójú csomópont. Ha a csomóponton eldobott kapja, egy **építse újra** elindul.
+Az előző feltételek valamelyike esetén fordulhat elő, amikor **System.FM** vagy **System.FMM** megjelölés keresztül egy esetleges hibajelentésben való megjelenítéshez. Újraépítés elakadt egy két lépésből áll:
+
+* Várakozás a szórás: **FM/FMM** megvárja-e a többi csomópontjáról a szórási üzenet érkezett válasz. **További lépések:** vizsgálja meg, hogy van-e a hálózati kapcsolati hibáája csomópontok között.   
+* Várakozás a csomópontok: **FM/FMM** már szórási válasz érkezett a többi csomópont, és arra vár, hogy egy adott csomópont válasza. A jelentés felsorolja a csomópont, amelynek a **FM/FMM** választ vár. **További lépések:** vizsgálja meg a hálózati kapcsolatot a **FM/FMM** , valamint a felsorolt csomópontot. Minden felsorolt csomópont egyéb lehetséges problémákat vizsgálja meg.
+
+* **SourceID**: System.FM vagy System.FMM
+* **Tulajdonság**: építse újra.
+* **További lépések**: vizsgálja meg a hálózati kapcsolat a csomópontok, valamint a szerinti táblázat felsorolja a jelentés leírását a megadott csomópontok között.
 
 ## <a name="node-system-health-reports"></a>Csomópont rendszerállapot-jelentések
 **System.FM**, a szolgáltatót, amely a fürtcsomópontokon kapcsolatos információt, amely jelenti, hogy a Feladatátvevőfürt-kezelő szolgáltatás. Minden csomópont állapotát megjelenítő System.FM egy jelentést kell rendelkeznie. A csomópont entitásokat a rendszer törli, a csomópont állapota eltávolításakor. További információkért lásd: [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).

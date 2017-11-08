@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: a87624b5706c1d9b8c2b9926e5580996a89ce984
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 320569e302d145d695f3be9684e97786fa82e80b
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>A StorSimple Manager szolgáltatással hozzáférés-vezérlési rekordokat kezelése
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [a StorSimple Manager szolgáltatás segítségével kezelheti a hozzáférés-vezérlési rekordokat](storsimple-8000-manage-acrs.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 Hozzáférés-vezérlési rekordokat (ACRs) lehetővé teszik annak megadását, hogy mely gazdagépek csatlakozhat a StorSimple eszközön levő kötet. ACRs vannak beállítva, hogy egy adott kötet, és az iSCSI minősített nevét (IQN-nevekre vonatkozóan), a gazdagépek tartalmaz. Állomás megpróbál egy kötet csatlakozni, amikor az eszköz ellenőrzi, hogy a köteten a IQN-nevének társított az ACR, és ha van egyezés, majd a kapcsolat létrejön. A hozzáférés-vezérlés szakaszban rögzíti a a **konfigurálása** lap megjeleníti az összes a hozzáférési vezérlési rekordot a megfelelő IQN-nevekre vonatkozóan a gazdagépek.
 

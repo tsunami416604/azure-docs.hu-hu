@@ -1,8 +1,8 @@
 ---
 title: "Figyelő PowerShell Azure gyors üzembe helyezési minta. | Microsoft Docs"
 description: "PowerShell Azure figyelő szolgáltatásokkal, például az automatikus skálázás, riasztások, webhookok és tevékenységi naplóit keresés eléréséhez használja."
-author: kamathashwin
-manager: orenr
+author: rboucher
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
-ms.author: ashwink
-ms.openlocfilehash: 48f064884c2a6d0a55cc58a44169ed03c62de46d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: robb
+ms.openlocfilehash: 60048ab8e0118bc67850aa6ad91c82dcf8122b1d
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>A figyelő PowerShell Azure gyors üzembe helyezési-minták
-Ez a cikk jeleníti meg, akkor minták segítséget nyújtanak a figyelő az Azure-szolgáltatások elérésének PowerShell-parancsokat. Az Azure figyelő lehetővé teszi az automatikus skálázás Felhőszolgáltatásokat, a virtuális gépek és a Web Apps és riasztási értesítések küldését, vagy hívja a webes URL-címek, a konfigurált telemetriai adatok értékek alapján.
+Ez a cikk jeleníti meg, akkor minták segítséget nyújtanak a figyelő az Azure-szolgáltatások elérésének PowerShell-parancsokat. Azure figyelő lehetővé teszi az automatikus skálázás Felhőszolgáltatásokat, a virtuális gépek és a Web Apps. Lehetővé teszi a riasztási értesítéseket küldeni, vagy hívja a webes URL-címek, a konfigurált telemetriai adatok értékek alapján.
 
 > [!NOTE]
-> Az Azure figyelő csak 2016. Szeptembertől 25. az "Azure Insights" nevezett új neve. Azonban a névterek, és így a következő parancsok továbbra is tartalmazza az "insights".
+> Az Azure figyelő csak 2016. Szeptembertől 25. az "Azure Insights" nevezett új neve. Azonban a névterek, és így a következő parancsokat tartalmaz a a word "insights."
 > 
 > 
 
@@ -41,13 +41,13 @@ Első lépésként jelentkezzen be az Azure-előfizetéshez.
 Login-AzureRmAccount
 ```
 
-Ehhez szükséges, hogy jelentkezzen be. Ha így tesz, a fiókjához, megjelenik a TenantID és alapértelmezett előfizetés-azonosító. Az Azure parancsmagok működik az alapértelmezett előfizetés keretében. Rendelkezik hozzáféréssel előfizetések listájának megtekintéséhez használja a következő parancsot.
+Megjelenik egy bejelentkezési képernyő. Egyszer, jelentkezzen be a fiókjával, a TenantID, és alapértelmezett előfizetés-azonosító jelennek meg. Az Azure parancsmagok működik az alapértelmezett előfizetés keretében. Rendelkezik hozzáféréssel előfizetések listájának megtekintéséhez használja a következő parancsot:
 
 ```PowerShell
 Get-AzureRmSubscription
 ```
 
-Módosítsa a működő környezetét egy másik előfizetésbe, a következő paranccsal.
+Módosítsa a működő környezetét egy másik előfizetésbe, a következő paranccsal:
 
 ```PowerShell
 Set-AzureRmContext -SubscriptionId <subscriptionid>
@@ -141,7 +141,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 ## <a name="create-metric-alerts"></a>Riasztások metrika létrehozása
 Használhatja a `Add-AlertRule` parancsmag létrehozására, frissítésére, és tiltsa le a riasztási szabályt.
 
-E-mailek és a webhook tulajdonságok használatával hozhat létre `New-AzureRmAlertRuleEmail` és `New-AzureRmAlertRuleWebhook`, illetve. A riasztási szabály parancsmag-példában rendelje hozzá azokat a műveleteket, mint a **műveletek** a riasztási szabály tulajdonsága.
+E-mailek és a webhook tulajdonságok használatával hozhat létre `New-AzureRmAlertRuleEmail` és `New-AzureRmAlertRuleWebhook`, illetve. A riasztási szabály parancsmag rendelje hozzá ezeket a tulajdonságokat műveleteket, mint a **műveletek** a riasztási szabály tulajdonsága.
 
 A következő táblázat ismerteti a használt paraméterek és értékek használatával metrika riasztás létrehozása.
 
@@ -201,10 +201,10 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 Az elérhető lehetőségek teljes listáját `Get-AzureRmMetricDefinition` érhető el [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
 
 ## <a name="create-and-manage-autoscale-settings"></a>Automatikus skálázási beállítások létrehozása és kezelése
-Egy erőforrás, például egy webalkalmazást, a virtuális gép, a felhőalapú szolgáltatás vagy a virtuálisgép-méretezési csoport rendelkezhet beállított csak egy automatikus skálázási beállítás.
+(A webes alkalmazás, virtuális gép, a felhőalapú szolgáltatás vagy virtuálisgép-méretezési csoport) erőforrás rendelkezhet beállított csak egy automatikus skálázási beállítás.
 Van azonban, az minden automatikus skálázási beállítás profiljainak. Például egy méretezési teljesítmény-alapú profil és egy másikat a ütemezésalapú profilra. Az egyes profilok rendelkezhet több szabály konfigurálva. Automatikus méretezéssel kapcsolatos további információkért lásd: [automatikus skálázás alkalmazás hogyan](../cloud-services/cloud-services-how-to-scale.md).
 
-Használjuk lépései a következők:
+Az alábbiakban a szükséges lépéseket:
 
 1. Szabályok létrehozása.
 2. A profilok leképezése a korábban létrehozott szabályok profil létrehozásához.
@@ -213,13 +213,13 @@ Használjuk lépései a következők:
 
 Az alábbi példák bemutatják, hogyan hozhat létre az automatikus skálázási beállítás egy virtuálisgép-méretezési csoportban Windows operációs rendszer esetén a CPU-kihasználtság metrika segítségével.
 
-Először hozzon létre egy szabályt, amely kibővített, a példány számának növelését.
+Először hozzon létre egy szabályt, amely kiterjesztése, példányok számának növelését.
 
 ```PowerShell
 $rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-Ezután hozzon létre egy szabályt, amely méretezési az, egy példány száma csökken.
+Ezután hozzon létre egy szabályt, amely egy példány száma csökken, méretezést.
 
 ```PowerShell
 $rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
@@ -243,7 +243,7 @@ Az értesítési tulajdonságot, az automatikus skálázási beállítás, bele�
 $notification1= New-AzureRmAutoscaleNotification -CustomEmails ashwink@microsoft.com -SendEmailToSubscriptionAdministrators SendEmailToSubscriptionCoAdministrators -Webhooks $webhook_scale
 ```
 
-Végezetül hozza létre a fentiekben létrehozott profil hozzáadása az automatikus skálázási beállítás.
+Végezetül hozza létre a korábban létrehozott profil hozzáadása az automatikus skálázási beállítás. 
 
 ```PowerShell
 Add-AzureRmAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
@@ -289,7 +289,7 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>A műveletnapló napló profilok kezelése
-Létrehozhat egy *profilt naplózni* és a tevékenységnapló egy tárfiókot, és az adatok exportálása az adatmegőrzés konfigurálhatja azt. Az adatok szükség esetén az Eseményközpont is adatfolyam. Vegye figyelembe, hogy ez a funkció jelenleg előzetes állapotban van, akkor csak egy naplófájl profil előfizetésenként hozhat létre. Segítségével a következő parancsmagokat a jelenlegi előfizetés napló profilok létrehozásához és kezeléséhez. Egy adott előfizetést is beállíthatja. PowerShell alapértelmezett az aktuális előfizetésben, de bármikor módosíthatja, hogy használatával `Set-AzureRmContext`. Konfigurálhatja a tevékenységnapló útvonal az adatokat bármely tárfiók vagy az Eseményközpont kiválasztásával adott előfizetésen belül. Adatok blob fájlok JSON formátumban van megírva.
+Létrehozhat egy *profilt naplózni* és a tevékenységnapló egy tárfiókot, és az adatok exportálása az adatmegőrzés konfigurálhatja azt. Az adatok szükség esetén az Eseményközpont is adatfolyam. Ez a funkció jelenleg előzetes verzióban érhetők, és csak egy naplófájl profil előfizetésenként hozhat létre. Segítségével a következő parancsmagokat a jelenlegi előfizetés napló profilok létrehozásához és kezeléséhez. Egy adott előfizetést is beállíthatja. PowerShell alapértelmezett az aktuális előfizetésben, de bármikor módosíthatja, hogy használatával `Set-AzureRmContext`. Konfigurálhatja a tevékenységnapló útvonal az adatokat bármely tárfiók vagy az Eseményközpont kiválasztásával adott előfizetésen belül. Adatok blob fájlok JSON formátumban van megírva.
 
 ### <a name="get-a-log-profile"></a>A napló profil beolvasása
 A meglévő napló profilok olvasni, használja a `Get-AzureRmLogProfile` parancsmag.
@@ -312,14 +312,19 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 ```
 
 ### <a name="add-log-profile-with-retention-and-eventhub"></a>A megőrzési és EventHub napló profil hozzáadása
-Az adatok tárfiókba az útválasztáson kívül akkor is is adatfolyamként az Eseményközpontba. Vegye figyelembe, hogy az előzetes kiadás és a tárolási fiók konfigurációjának megadása kötelező, de az Event Hubs konfigurálása nem kötelező.
+Az adatok tárfiókba az útválasztáson kívül akkor is is adatfolyamként az Eseményközpontba. Ebben az előzetes kiadásban a tárolási fiók konfigurációjának megadása kötelező, de az Event Hubs konfigurálása nem kötelező.
 
 ```PowerShell
 Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ## <a name="configure-diagnostics-logs"></a>Diagnosztikai naplók konfigurálása
-Sok Azure-szolgáltatások további naplókat és az adatok mentése az Azure Storage-fiók, az Event Hubs küldeni konfigurálva, illetve egy OMS Naplóelemzési munkaterület küldött telemetriai adatot adja meg. Ez a művelet csak egy erőforrás szinten hajtható végre, és a tárolási fiók vagy az event hub ugyanabban a régióban a cél erőforráson, ahol a diagnosztika beállítás konfigurálva jelen kell lennie.
+Sok Azure-szolgáltatások adja meg a további naplók és telemetriai adatokat, amelyek képesek a következők közül: 
+ - úgy, hogy az adatok mentése az Azure Storage-fiókban
+ - az Event Hubs küldött
+ - az OMS Naplóelemzési munkaterület küldeni. 
+
+A művelet csak egy erőforrás szinten hajtható végre. A tárolási fiók vagy az event hub ugyanabban a régióban a cél erőforráson, ahol a diagnosztika beállítás konfigurálva jelen kell lennie.
 
 ### <a name="get-diagnostic-setting"></a>Diagnosztikai beállításának beolvasása
 ```PowerShell

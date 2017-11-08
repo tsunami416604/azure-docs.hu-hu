@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 69115945929f1dc93369ee000d78bceead8c109c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: d7da4c3c4aa902cf9ccb97ebd13b7d16940f2c32
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure táblából
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,6 +63,7 @@ Az Azure tárolás társított szolgáltatásának a fiókkulcs, amely az adat-e
             "connectionString": {
                 "type": "SecureString",
                 "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -271,4 +272,4 @@ Ha megköveteli az adatok & Azure táblából, a következő [Azure Table szolg�
 | Edm.String |Karakterlánc |Az UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
 
 ## <a name="next-steps"></a>Következő lépések
-Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md##supported-data-stores-and-formats).
+Támogatott források és mosdók által a másolási tevékenység során az Azure Data Factory adattárolókhoz listájáért lásd: [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats).

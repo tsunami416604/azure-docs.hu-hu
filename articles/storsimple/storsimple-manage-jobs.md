@@ -12,19 +12,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 7d9377bb8f3cb8c587823c2d71d61dfb9b50f52f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 426fd3ec76157670c9d192f007adacc4284abb42
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-jobs"></a>A StorSimple Manager szolgáltatás segítségével megtekintheti, és a StorSimple-feladatok kezelése
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 [!INCLUDE [storsimple-version-selector-manage-jobs](../../includes/storsimple-version-selector-manage-jobs.md)]
 
 ## <a name="overview"></a>Áttekintés
-A **feladatok** lap egy egyetlen központi portált biztosít a megtekintése, és a StorSimple Manager szolgáltatás eszközök elindított feladatok kezelése kapcsolódik. Több eszköz ütemezett, futó, befejezett, és a sikertelen feladatok tekintheti meg. Eredmények táblázatos formában jelennek meg. 
+A **feladatok** lap egy egyetlen központi portált biztosít a megtekintése, és a StorSimple Manager szolgáltatás eszközök elindított feladatok kezelése kapcsolódik. Több eszköz ütemezett, futó, befejezett, és a sikertelen feladatok tekintheti meg. Eredmények táblázatos formában jelennek meg.
 
 ![Feladatok lap](./media/storsimple-manage-jobs/HCS_JobsPage.png)
 

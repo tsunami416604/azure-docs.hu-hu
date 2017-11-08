@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 8ce4d6d9024dc4ce3956220eb0678a6295b0b7ab
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9733774570f3148e0092f42c1321b4fac1c80b54
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-writeback-overview"></a>Jelszó visszaírási áttekintése
 
@@ -91,6 +91,8 @@ Az alábbi lépések azt feltételezik, hogy a környezet használatával már k
    ![Az Azure AD Connectben a jelszóvisszaírás engedélyezése][Writeback]
 7. A Ready to beállítása képernyő, kattintson a **konfigurálása** és várja meg a folyamat befejezéséhez.
 8. Amikor megjelenik a konfigurációs befejeződik, kattintson a **Kilépés**
+
+A jelszóvisszaírás kapcsolódó általános hibaelhárítási műveletek című [jelszóvisszaírás hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) a hibaelhárítási cikkben.
 
 ## <a name="active-directory-permissions"></a>Active Directory-engedélyek
 
@@ -212,16 +214,16 @@ Minden, a fenti üzenet mérete általában a 1 kb szélsőséges terhelés alat
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Hogyan végezze el a sikeres bevezetéshez az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-best-practices.md)
-* [A jelszó megváltoztatására](active-directory-passwords-update-your-own-password.md).
-* [Az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
-* [Licencelés kérdése van?](active-directory-passwords-licensing.md)
-* [Milyen adatok SSPR használja, és milyen adatokat kell tölteni a felhasználók számára?](active-directory-passwords-data.md)
-* [Hitelesítési módszerek állnak rendelkezésre a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Mik a házirend-beállításokban az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-policy.md)
-* [Hogyan jelentést az önkiszolgáló jelszó-Változtatási tevékenység?](active-directory-passwords-reporting.md)
-* [Mik az önkiszolgáló jelszó-Változtatási közül az összes, és mit azokat a következőket:?](active-directory-passwords-how-it-works.md)
-* [Szerintem valami nem működik. Hogyan hibáinak elhárítása az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-troubleshoot.md)
-* [A rendszer nem jelzett valahol máshol kérdést kell](active-directory-passwords-faq.md)
+* [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
+* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](active-directory-passwords-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
 [Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "Az Azure AD Connectben a jelszóvisszaírás engedélyezése"

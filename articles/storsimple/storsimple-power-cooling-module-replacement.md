@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 2a956de58b279a013913631a077d7b03c6327f72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7031aff9d4797e99e6523a65ded7495c88aff282
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Cserélje le a energia- és hűtési modul a StorSimple eszköz
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [energia- és hűtési modul lecseréli a StorSimple eszköz](storsimple-8000-power-cooling-module-replacement.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Áttekintés
 A energia- és hűtési modul (PCM) a Microsoft Azure StorSimple eszközt a áll egy tápegység- és hűtési az elsődleges és a EBOD ház által szabályozott ventilátor. Csak egy modellje, amely minden ház minősítéssel PCM van. Az elsődleges ház egy 764 W PCM minősítéssel, és a EBOD ház egy 580 W PCM minősítéssel. Annak ellenére, hogy az elsődleges ház és a EBOD ház PCMs különböző, a csere eljárás megegyezik.
 

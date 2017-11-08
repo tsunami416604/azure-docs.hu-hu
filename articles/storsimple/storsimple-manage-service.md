@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2017
+ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba3637a3a8b15b45c16bf5a00c1f4225bcfc5af8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee22a31e9c0ec23d9b042dc894cafe0fc346e742
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>A klasszikus Azure portálon a StorSimple Manager szolgáltatás telepítése
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Ez a cikk az új Azure-portálon verziójának megtekintéséhez keresse fel [a klasszikus Azure portálon a StorSimple Manager szolgáltatás telepítése](storsimple-8000-manage-service.md). Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 
 ## <a name="overview"></a>Áttekintés
 A StorSimple Manager szolgáltatás fut a Microsoft Azure-ban, és több StorSimple eszközt csatlakozik. Miután létrehozta a szolgáltatást, az eszközök kezeléséhez a Microsoft Azure portálról klasszikus böngészőjében futó használhatja. Ez lehetővé teszi, hogy egységes, központi helyről, ezáltal az adminisztratív terhek minimalizálása a StorSimple Manager szolgáltatáshoz csatlakozó eszközök figyelésére.

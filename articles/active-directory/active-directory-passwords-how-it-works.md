@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 71310534ec62b62bcd408d75060859c79bc470cf
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: fd9515120049dd3837a43c95de8a9b6822719e19
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-változtatási az Azure AD részletes bemutatója
 
@@ -88,6 +88,23 @@ Ez a beállítás meghatározza, hogy a rendelkezésre álló hitelesítési mó
 Adja meg a további hitelesítési módszerek, ha engedélyezve vannak a rendszergazda felhasználók maguk dönthetik.
 
 Ha a felhasználó nem rendelkezik a minimálisan szükséges módszerek regisztrált, láthatják, amely arra utasítja, kérje a rendszergazda számára, hogy a jelszó visszaállítása hibalap.
+
+#### <a name="changing-authentication-methods"></a>Hitelesítési módszerek módosítása
+
+Ha először egy házirendet, amely csak egy szükséges hitelesítési módszerrel alaphelyzetbe állítása és feloldása van regisztrálva, és módosíthatja, hogy két mi történik?
+
+| Több regisztrált módszer | Szükséges módszerek száma | eredménye |
+| :---: | :---: | :---: |
+| legalább 1 | 1 | **Képes** alaphelyzetbe állítása vagy feloldása |
+| 1 | 2 | **Nem lehet** alaphelyzetbe állítása vagy feloldása |
+| 2 vagy több | 2 | **Képes** alaphelyzetbe állítása vagy feloldása |
+
+Ha módosítja a hitelesítési módszereket, hogy egy felhasználó használhatja-akkor típusú véletlenül leállíthatja a felhasználók nem használhatják az önkiszolgáló jelszó-Változtatási, ha nem rendelkeznek a minimális mennyiségű adat.
+
+Példa: 
+1. Eredeti házirenddel konfigurált 2 hitelesítési módszerek csak az office-telefon és a biztonsági kérdések használata szükséges. 
+2. Rendszergazda megváltoztatja a szabályzatot, már nem a biztonsági kérdések használata, de a mobileszköz és a másodlagos e-mail használatának engedélyezése.
+3. Mobileszköz és a másodlagos e-mail mezői nem rendelkező felhasználók a jelszavuk nem állítható alaphelyzetbe.
 
 ### <a name="how-secure-are-my-security-questions"></a>Hogy mennyire vannak biztonságban vannak a biztonsági kérdések
 
@@ -169,6 +186,7 @@ Ha le van tiltva a felhasználók továbbra is futtathatja manuálisan regisztr�
 > [!NOTE]
 > Felhasználók a jelszó-visszaállítási portál esetben elvetheti a Mégse gombra kattintva vagy az ablak bezárása, de a rendszer kéri, minden alkalommal, amikor azok bejelentkezéshez, amíg a regisztrációs művelet befejeződik.
 >
+> Nem ezzel megszünteti a felhasználói kapcsolat, ha bejelentkezve képezve.
 
 ### <a name="number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>A napok száma, amely előtt a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését
 
@@ -190,7 +208,7 @@ Példa: Nincsenek négy rendszergazdák környezetben. "A" rendszergazda az önk
 
 ## <a name="on-premises-integration"></a>Helyszíni integráció
 
-Ha van telepítve, konfigurálásához és az Azure AD Connect engedélyezve, akkor a következő beállítások helyszíni Integrációk.
+Ha van telepítve, konfigurálásához és az Azure AD Connect engedélyezve, akkor a következő beállítások helyszíni Integrációk. Ha ezek a beállítások vannak kiszürkített kibővített visszaírási nem megfelelően van konfigurálva, majd tekintse meg [jelszóvisszaírás konfigurálása](active-directory-passwords-writeback.md#configuring-password-writeback) további információt.
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Jelszavakat írhasson a helyszíni címtár
 
@@ -215,21 +233,24 @@ Bármilyen B2B konfigurációjának teljes mértékben támogatottak a jelszó a
 
 Ez a forgatókönyv teszteléséhez Ugrás http://passwordreset.microsoftonline.com ezen partner felhasználók egyike. Mindaddig, amíg egy másodlagos e-mail vagy a megadott hitelesítési e-mail rendelkeznek, jelszó-átállítási akkor működik megfelelően.
 
+> [!NOTE]
+> Microsoft-fiókkal, amely a Vendég hozzáféréssel rendelkezik az Azure ad bérlői például Hotmail.com, Outlook.com, a, vagy más személyes e-mail címek nem használható az Azure AD SSPR és jelszavuk található információk segítségével kell a a cikk [mikor nem tud bejelentkezni Microsoft-fiókja](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).
+
 ## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
 
-* [Hogyan végezze el a sikeres bevezetéshez az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-best-practices.md)
-* [A jelszó megváltoztatására](active-directory-passwords-update-your-own-password.md).
-* [Az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
-* [Licencelés kérdése van?](active-directory-passwords-licensing.md)
-* [Milyen adatok SSPR használja, és milyen adatokat kell tölteni a felhasználók számára?](active-directory-passwords-data.md)
-* [Hitelesítési módszerek állnak rendelkezésre a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Mik a házirend-beállításokban az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-policy.md)
-* [A jelszóvisszaírás és miért fontos információk?](active-directory-passwords-writeback.md)
-* [Hogyan jelentést az önkiszolgáló jelszó-Változtatási tevékenység?](active-directory-passwords-reporting.md)
-* [Mik az önkiszolgáló jelszó-Változtatási közül az összes, és mit azokat a következőket:?](active-directory-passwords-how-it-works.md)
-* [Szerintem valami nem működik. Hogyan hibáinak elhárítása az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-troubleshoot.md)
-* [A rendszer nem jelzett valahol máshol kérdést kell](active-directory-passwords-faq.md)
+* [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
+* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](active-directory-passwords-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
-[Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "Azure AD hitelesítési módszer áll rendelkezésre, és a szükséges mennyiség"
+[Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "Az elérhető Azure AD-hitelesítési módszerek és a szükséges mennyiség"

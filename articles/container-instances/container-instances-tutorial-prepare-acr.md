@@ -5,7 +5,7 @@ services: container-instances
 documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
+editor: mmacy
 tags: acs, azure-container-service
 keywords: "Docker, tárolók, mikroszolgáltatások, Kubernetes, DC/OS, Azure"
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 11/07/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 8cb00210ee260383d546be4faf141c133661156b
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 848f6cbde49efdcfe96fc58ebc4160e0ea39f3f2
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Üzembe helyezés és használat Azure tároló beállításjegyzék
 
@@ -54,13 +54,19 @@ Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#cre
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy Azure-tárolóba beállításjegyzéket a [az acr létrehozása](/cli/azure/acr#create) parancsot. Egy tároló beállításjegyzék neve **egyedinek kell lennie**. A következő példában használjuk a neve *mycontainerregistry082*.
+Hozzon létre egy Azure-tárolót beállításjegyzéket a [az acr létrehozása](/cli/azure/acr#create) parancsot. A tároló neve **egyedinek kell lennie** Azure,-ban, és 5-50 alfanumerikus karaktereket tartalmazhat. Cserélje le `<acrName>` a beállításjegyzék egyedi nevére:
+
+```azurecli
+az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
+```
+
+Például hozzon létre egy Azure-tárolót beállításjegyzék nevű *mycontainerregistry082*:
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
 ```
 
-Ez az oktatóanyag a többi, egész használjuk `<acrname>` a tároló neve választott számára.
+Ez az oktatóanyag a többi, egész használjuk `<acrName>` a tároló neve választott számára.
 
 ## <a name="container-registry-login"></a>Tároló beállításjegyzék bejelentkezés
 
@@ -70,7 +76,7 @@ A ACR példányát előtt képek rá kell bejelentkezni. Használja a [az acr be
 az acr login --name <acrName>
 ```
 
-A parancs visszaadja a "Sikeres bejelentkezés" üzenet, amint befejeződött.
+A parancs visszaadja a `Login Succeeded` üzenet amint befejeződött.
 
 ## <a name="tag-container-image"></a>Címke tároló kép
 
@@ -89,13 +95,21 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
 ```
 
-Ahhoz, hogy a loginServer nevét, a következő parancsot:
+Ahhoz, hogy a loginServer nevét, a következő parancsot. Cserélje le `<acrName>` a tároló beállításjegyzék nevével.
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Címke a *aci-oktatóanyag – alkalmazás* a tároló beállításjegyzék loginServer lemezkép. Továbbá adja hozzá `:v1` , a lemezkép neve végén. Ezt a címkét azt jelzi, hogy a lemezkép verziószámát.
+Példa a kimenetre:
+
+```
+Result
+------------------------
+mycontainerregistry082.azurecr.io
+```
+
+Címke a *aci-oktatóanyag – alkalmazás* a tároló beállításjegyzék loginServer lemezkép. Továbbá adja hozzá `:v1` , a lemezkép neve végén. Ezt a címkét azt jelzi, hogy a lemezkép verziószámát. Cserélje le `<acrLoginServer>` eredményével a `az acr show` parancsot csak hajtja végre.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -117,12 +131,23 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app        v1                  a9
 
 ## <a name="push-image-to-azure-container-registry"></a>Azure-tároló beállításjegyzék leküldéses kép
 
-Leküldéses a *aci-oktatóanyag – alkalmazás* kép a beállításjegyzékhez.
-
-Az alábbi példa használatával, a tároló loginServer neve cserélje le a környezetből loginServer.
+Leküldéses a *aci-oktatóanyag – alkalmazás* lemezképet a beállításjegyzéket a `docker push` parancsot. Cserélje le `<acrLoginServer>` a korábbi lépésben beszerzése a teljes bejelentkezési kiszolgáló nevével.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
+```
+
+A `push` művelet néhány másodpercre kell néhány percet, attól függően, hogy az internetkapcsolat, és a kimenete az alábbihoz hasonló:
+
+```bash
+The push refers to a repository [mycontainerregistry082.azurecr.io/aci-tutorial-app]
+3db9cac20d49: Pushed
+13f653351004: Pushed
+4cd158165f4d: Pushed
+d8fbd47558a8: Pushed
+44ab46125c35: Pushed
+5bef08742407: Pushed
+v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05715 size: 1576
 ```
 
 ## <a name="list-images-in-azure-container-registry"></a>Azure-tároló beállításjegyzék lemezképek felsorolása

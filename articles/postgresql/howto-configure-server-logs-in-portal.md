@@ -9,15 +9,15 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 10/19/2017
-ms.openlocfilehash: 388af25aa7cf623fa3ff4167943cf94fb5c566d8
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 9e22d96d20f3201a8d1618c5ff1878e99d50ad79
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurálja, és hozzáférést kiszolgálónaplókban olvashatók az Azure-portálon
 
-Konfigurálja, listában, és töltse le a [Azure-adatbázis a MySQL-kiszolgáló naplók](concepts-server-logs.md) Azure-portálról.
+Konfigurálja, listában, és töltse le a [Azure adatbázis PostgreSQL server naplók](concepts-server-logs.md) Azure-portálról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató Útmutató lépéseit, az alábbiak szükségesek:

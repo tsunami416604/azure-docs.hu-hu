@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 89924a02396403258bf50dce0c4d24f89565997e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 3f3075fc5c6f3a47bde13d98d0b705c29b98112b
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Alakítsa át a Windows rendszerű virtuális gép nem felügyelt lemezekből felügyelt
 
@@ -93,7 +93,6 @@ Ha az átalakítani kívánt virtuális gépek lemezek rendelkezésre állási c
      $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
-     Start-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name
   }
   ```
 
@@ -101,6 +100,7 @@ Ha az átalakítani kívánt virtuális gépek lemezek rendelkezésre állási c
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha nem sikerül átalakítás során, vagy az előző konverzió problémák miatt sikertelen állapotban van a virtuális gépek, futtassa a `ConvertTo-AzureRmVMManagedDisk` újra a parancsmagot. Egy egyszerű újra általában feloldja a problémát.
+Átalakítás, előtt győződjön meg arról, a Virtuálisgép-bővítmények az "A kiépítés sikeres" állapotban van, vagy az átalakítás 409 hibakóddal meghiúsul.
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -12,16 +12,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/25/2017
+ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8b230904e1e079417c3b39bbc281bc3a87668a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 282383f0887e546c7d569494eeab42805f789fb2
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Frissítse a StorSimple 8000 series eszköz 3 kibocsátási megjegyzései
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 
 ## <a name="overview"></a>Áttekintés
 Az alábbi kibocsátási megjegyzések új szolgáltatásait ismerteti, és a StorSimple 8000 Series Update 3 a kritikus megnyitott problémák azonosításához. Ebben a kiadásban szereplő StorSimple szoftverfrissítések listáját is tartalmaznak. 
@@ -75,7 +78,7 @@ A következő táblázat összefoglalja az ismert problémákról, ebben a kiad�
 | 12 |Migrálás |Az áttelepítés befejezése után az adatsorozat 5000/7000-es eszköz nem hozzáférést kell az áttelepített adatok tárolókat. |Azt javasoljuk, hogy törölje az áttelepített adatok tárolókat, az áttelepítés befejezése és véglegesítése után. |Igen |Nem |
 | 13 |Klónozás és vész-Helyreállítási |1. frissítést futtató a StorSimple eszköz nem klónozza vagy katasztrófa utáni helyreállítás 1 frissítés előtti szoftvert futtató eszközre. |Szüksége lesz a cél-eszköz frissítése 1 frissítése lehetővé ezen műveletek |Igen |Igen |
 | 14 |Migrálás |Áttelepítés konfigurációs biztonsági másolat nem tud az adatsorozat 5000-7000-es eszközön, kötet csoportok nem társított kötetekkel vannak. |Nincs társított kötetek üres kötet csoportok törlése, és ismételje meg a konfigurációs biztonsági másolat. |Igen |Nem |
-| 15 |Az Azure PowerShell-parancsmagok és a helyileg rögzített kötetek |Nem hozható létre egy helyileg rögzített kötet Azure PowerShell-parancsmagok használatával. (Azure PowerShell használatával hoz létre kötet lesz helyezhető el.) Továbbá ne használja az Azure PowerShell-parancsmagok módosítsa a tulajdonságokat a helyileg rögzített kötet, mert a kötet típusa módosítása nemkívánatos hatásának a rétegzett. |Mindig használja a StorSimple Manager szolgáltatás módosíthatók a helyileg rögzített kötetekhez.  |Igen |Nem |
+| 15 |Az Azure PowerShell-parancsmagok és a helyileg rögzített kötetek |Nem hozható létre egy helyileg rögzített kötet Azure PowerShell-parancsmagok használatával. (Azure PowerShell használatával hoz létre kötet lesz helyezhető el.) |Mindig a StorSimple Manager szolgáltatás segítségével konfigurálhatja a helyileg rögzített kötetekhez. |Igen |Nem |
 | 16 |A helyileg rögzített kötetekhez szabad terület |Ha töröl egy helyileg rögzített kötetet, a szabad lemezterület az új kötetekre esetleg nem azonnal frissíti. A StorSimple Manager szolgáltatás körülbelül óránként frissíti a rendelkezésre álló helyi területet. |Várjon, amíg egy óraba az új kötet létrehozásakor. |Igen |Nem |
 | 17 |Helyileg rögzített kötetek |A visszaállítási feladat mutatja meg az ideiglenes pillanatkép biztonsági másolatából a biztonságimásolat-katalógus, de csak a visszaállítási feladat időtartama. Emellett elérhetővé teszi a virtuális lemez csoport előtaggal rendelkező **tmpCollection** a a **biztonsági mentési házirendek** oldalon, de csak a visszaállítási feladat időtartamára. |Ez akkor fordulhat elő, ha a visszaállítási feladat csak a helyi számítógépre van rögzítve, kötetek vagy a helyileg rögzített és a rétegzett kötetek kombinációját. Ha a visszaállítási feladat csak a rétegzett kötetek is tartalmazza, majd ezt a viselkedést nem történik. Meg kell adni a felhasználói beavatkozás nélkül. |Igen |Nem |
 | 18 |Helyileg rögzített kötetek |Ha a helyreállítási feladat megszakítása, a tartományvezérlő feladatátvétel közvetlenül ezek után jelennek meg a helyreállítási feladat **sikertelen** helyett **visszavonva**. Ha a helyreállítási feladat sikertelen lesz, a tartományvezérlő feladatátvétel közvetlenül ezek után jelennek meg a helyreállítási feladat **visszavonva** helyett **sikertelen**. |Ez akkor fordulhat elő, ha a visszaállítási feladat csak a helyi számítógépre van rögzítve, kötetek vagy a helyileg rögzített és a rétegzett kötetek kombinációját. Ha a visszaállítási feladat csak a rétegzett kötetek is tartalmazza, majd ezt a viselkedést nem történik. Meg kell adni a felhasználói beavatkozás nélkül. |Igen |Nem |

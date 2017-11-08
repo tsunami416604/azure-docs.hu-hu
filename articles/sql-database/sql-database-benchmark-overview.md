@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: 43ab7ed75313863d2912063169ccc089af6052c2
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: fb8a5f205ddc143dc47349829048f46f88963d05
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Az Azure SQL Database teljesítménytesztek áttekintése
 ## <a name="overview"></a>Áttekintés
@@ -106,7 +106,7 @@ Az alábbi táblázat az egyes szolgáltatást és teljesítményszintet tényle
 | Standard (s2 –) |50 |7.1 GB |
 | Prémium (P1) |100 |14 GB |
 | Prémium (P2) |200 |28 GB |
-| Prémium (P6/P3) |800 |114 GB |
+| Prémium (P6) |800 |114 GB |
 
 ## <a name="measurement-duration"></a>Mérési időtartama
 Egy érvényes teljesítményteszt futtatásához igényel a stabil állapot mérési időtartama legalább egy órát.

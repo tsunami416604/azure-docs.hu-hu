@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 10/20/2017
-ms.openlocfilehash: 5b5da758e966cc5ca536d7b291be74409f02ca73
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 9aa24dd10ef29c716c05cafeb84e0beb23d50628
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure-adatbázis a PostgreSQL?
 
@@ -39,7 +39,7 @@ Az Azure parancssori felület mintákat mutat be lásd:
 - [Azure CLI-minták PostgreSQL Azure-adatbázis](./sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodpercen belül
-A minta a MySQL-szolgáltatás az Azure-adatbázishoz nyújt két szolgáltatásszintek: Basic és Standard. Minden más-más teljesítménybeli és támogatni, nehéz adatbázis munkaterhelések képességeket kínál. Az első alkalmazás kisméretű adatbázis építése néhány dollár havonta, és adja meg az igényeknek a megoldás a skála. Dinamikus méretezhetőség lehetővé teszi, hogy az adatbázis transzparens módon reagál a sűrűn módosuló az erőforrás-követelményei. Csak kell fizetnie az erőforrások akkor szükséges, és csak akkor, ha szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-service-tiers.md) részleteiről.
+A képen PostgreSQL-szolgáltatás az Azure-adatbázishoz két szolgáltatásszintek kínál: Basic és Standard. Minden más-más teljesítménybeli és támogatni, nehéz adatbázis munkaterhelések képességeket kínál. Az első alkalmazás kisméretű adatbázis építése néhány dollár havonta, és adja meg az igényeknek a megoldás a skála. Dinamikus méretezhetőség lehetővé teszi, hogy az adatbázis transzparens módon reagál a sűrűn módosuló az erőforrás-követelményei. Csak kell fizetnie az erőforrások akkor szükséges, és csak akkor, ha szüksége van rájuk. Lásd: [Tarifacsomagok](concepts-service-tiers.md) részleteiről.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 Hogyan Ön dönt, hogy mikor felfelé vagy lefelé skáláznia? A beépített teljesítmény figyelési és riasztási szolgáltatásokat, a teljesítmény-minősítések számítási egység alapján együtt használja. Ezek az eszközök gyorsan felmérheti a számítási egység vertikális felskálázásával hatását vagy le a jelenlegi vagy tervezett teljesítmény igények alapján. Lásd: [riasztások](howto-alert-on-metric.md) részleteiről.

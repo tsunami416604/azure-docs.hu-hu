@@ -14,13 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: Active
-ms.date: 02/08/2017
+ms.date: 11/07/2017
 ms.author: carlrab
-ms.openlocfilehash: f27d2fbeb8ec514419bd0d208429e3d3de2d07ea
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 4e22a512f7ee11dde14f8eac818506b59791e17f
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>SQL Server-adatbázis áttelepítése a felhőbeli SQL Database-be
 Ebben a cikkben az SQL Server 2005 vagy újabb adatbázisok Azure SQL Database-be való migrálásának két elsődleges módszerét ismerheti meg. Az első módszer egyszerűbb, azonban jelentős állásidőt igényelhet a migrálás során. A második módszer bonyolultabb, viszont nem jár állásidővel a migrálás közben.
@@ -28,7 +28,7 @@ Ebben a cikkben az SQL Server 2005 vagy újabb adatbázisok Azure SQL Database-b
 Mindkét esetben gondoskodnia kell arról, hogy kompatibilis legyen az Azure SQL Database használata-e a forrásadatbázis a [adatok áttelepítési Segéd (DMA-)](https://www.microsoft.com/download/details.aspx?id=53595). SQL Database 12-es közeledik [szolgáltatásparitás](sql-database-features.md) az SQL Server eltérő kiszolgálószintű és az adatbázisok közötti műveleteivel kapcsolatos problémákat. A [részben támogatott vagy nem támogatott funkciókra](sql-database-transact-sql-information.md) támaszkodó adatbázisokat és alkalmazásokat [némileg át kell alakítani](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues) ezen inkompatibilitások kijavítása érdekében, még mielőtt áttelepíthetné az SQL Server-adatbázist.
 
 > [!NOTE]
-> Nem SQL Server-adatbázis (beleértve a Microsoft Access-, Sybase-, MySQL Oracle- és DB2-adatbázisokat) az Azure SQL Database-be történő áttelepítéséhez lásd [az SQL Server áttelepítési segédet](https://blogs.msdn.microsoft.com/datamigration/2016/12/22/released-sql-server-migration-assistant-ssma-v7-2/) ismertető cikket.
+> Nem SQL Server-adatbázis (beleértve a Microsoft Access-, Sybase-, MySQL Oracle- és DB2-adatbázisokat) az Azure SQL Database-be történő áttelepítéséhez lásd [az SQL Server áttelepítési segédet](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/) ismertető cikket.
 > 
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>1. módszer: Állásidővel járó migrálás
@@ -39,12 +39,11 @@ Az alábbi lista tartalmazza az SQL Server adatbázis-migrálásának általáno
 
   ![VSSSDT áttelepítési ábra](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. Az adatbázis kompatibilitását a [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) program legújabb verziójával mérheti fel.
+1. [Értékeléséhez](https://docs.microsoft.com/en-us/sql/dma/dma-assesssqlonprem) az adatbázis kompatibilitási legújabb verziójának használatával az [adatok áttelepítési Segéd (DMA-)](https://www.microsoft.com/download/details.aspx?id=53595).
 2. A szükséges javításokat Transact-SQL szkriptekként készítse elő.
-3. Készítsen tranzakciós szempontból konzisztens másolatot a migrálni kívánt forrásadatbázisról, és gondoskodjon róla, hogy a forrásadatbázis tartalmában ne történjenek további változások (vagy a migrálás után manuálisan alkalmazhatja az ilyen módosításokat). Sokféleképpen elérheti az adatbázisok fokozatos leválasztását, az ügyfélkapcsolat letiltásától [adatbázis-pillanatfelvételének](https://msdn.microsoft.com/library/ms175876.aspx) létrehozásáig.
+3. Tranzakciós úton konzisztens másolat készítése a forrásadatbázis áttelepítendő -, és győződjön meg arról, amely nincs további módosul a forráshely adatbázisára (vagy hogy kézzel alkalmazhatja az ilyen jellegű változtatásokat az áttelepítés befejezése után). Sokféleképpen elérheti az adatbázisok fokozatos leválasztását, az ügyfélkapcsolat letiltásától [adatbázis-pillanatfelvételének](https://msdn.microsoft.com/library/ms175876.aspx) létrehozásáig.
 4. Helyezze üzembe a Transact-SQL szkripteket a javítások alkalmazásához az adatbázis másolatán.
-5. [Exportálás](sql-database-export.md) az adatbázis másolatát egy helyi meghajtó BACPAC fájlba.
-6. [Importálás](sql-database-import.md) bármely több BACPAC használatával új Azure SQL-adatbázis BACPAC fájlként importálása eszközök, az a legjobb teljesítmény érdekében ajánlott eszköz éppen SQLPackage.exe.
+5. [Telepítse át](https://docs.microsoft.com/en-us/sql/dma/dma-migrateonpremsql) az adatbázis másolatát egy új Azure SQL Database segítségével az adatok áttelepítési Segéd.
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>Az adatátviteli teljesítmény optimalizálása migrálás közben 
 
@@ -94,7 +93,7 @@ Tranzakciós replikáció esetén minden adat- vagy sémamódosítás megjelenik
 ### <a name="some-tips-and-differences-for-migrating-to-sql-database"></a>Tippek és különbségek az SQL Database-be való migráláshoz
 
 1. Helyi terjesztő használata 
-   - Ez kihat a kiszolgáló teljesítményére. 
+   - Ekkor a teljesítményre gyakorolt hatás a kiszolgálón. 
    - Ha a teljesítményre kifejtett hatás mértéke nem elfogadható, használhat másik kiszolgálót, ez azonban megnehezíti a kezelést és az adminisztrációt.
 2. Pillanatképmappa kiválasztásakor győződjön meg arról, hogy a mappában az összes replikálni kívánt tábla BCP-je elfér. 
 3. A pillanatkép létrehozása a folyamat befejezéséig lezárja a hozzá társított táblákat, így megfelelően időzítse a pillanatkép-készítést. 

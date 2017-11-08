@@ -166,6 +166,8 @@
           href: compute-linked-services.md
     - name: Átvitelvezérlés
       items:
+        - name: If Condition tevékenység
+          href: control-flow-if-condition-activity.md
         - name: Webes tevékenység
           href: control-flow-web-activity.md
         - name: Keresési tevékenység

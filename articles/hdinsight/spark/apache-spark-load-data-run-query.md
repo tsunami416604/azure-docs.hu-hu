@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: nitinme
-ms.openlocfilehash: ef9154b0d400ff23c53460454c886ab90e290f0c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0d93e261121f11d2a1082b9672e6d979955d3bee
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="run-interactive-queries-on-an-hdinsight-spark-cluster"></a>Interaktív lekérdezések futtatására egy HDInsight Spark-fürt
 
@@ -34,10 +34,12 @@ A jelen oktatóanyag esetében használja a **PySpark** interaktív Spark SQL-le
 
 ## <a name="create-a-jupyter-notebook-to-run-interactive-queries"></a>Interaktív lekérdezések futtatása Jupyter notebook létrehozása
 
-Lekérdezések futtatása, amely elérhető a fürthöz rendelt tárolási alapértelmezés szerint mintaadatok használjuk. Azonban meg kell először adott adatok betöltése az Spark, a dataframe. Miután a dataframe, rajta a Jupyter notebook használatával lekérdezéseket is futtathat. Ebben a szakaszban, olvassa el:
+Lekérdezések futtatása, amely elérhető a fürthöz rendelt tárolási alapértelmezés szerint mintaadatok használjuk. Azonban meg kell először adott adatok betöltése az Spark, a dataframe. Miután a dataframe, rajta a Jupyter notebook használatával lekérdezéseket is futtathat. Ebben a cikkben, olvassa el:
 
 * A Spark dataframe minta adatkészlet regisztrálásához.
 * A dataframe kapcsolatos lekérdezések futtatása.
+
+Lássunk neki.
 
 1. Nyissa meg az [Azure portált](https://portal.azure.com/). Ha rögzítette a fürtöt az irányítópulton, a fürt paneljének megnyitásához kattintson a fürt csempéjére az irányítópulton.
 
@@ -78,7 +80,7 @@ Lekérdezések futtatása, amely elérhető a fürthöz rendelt tárolási alap�
 
     ![Az adatok interaktív Spark SQL-lekérdezés pillanatkép](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "pillanatkép adatok interaktív Spark SQL-lekérdezés")
 
-6. Hozzon létre egy dataframe és egy ideiglenes tábla (**hvac**) a következő kód futtatásával. Ebben az oktatóanyagban nem létrehozni az oszlopokat az ideiglenes tábla át a nyers adatok CSV képest. 
+6. Hozzon létre egy dataframe és egy ideiglenes tábla (**hvac**) a következő kód futtatásával. Ebben az oktatóanyagban nem létrehozni minden oszlopai a CSV-fájlt. 
 
         # Create an RDD from sample data
         hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -96,7 +98,7 @@ Lekérdezések futtatása, amely elérhető a fürthöz rendelt tárolási alap�
         dfw = DataFrameWriter(hvacTable)
         dfw.saveAsTable('hvac')
 
-7. A tábla létrehozása után az adatok interaktív lekérdezés futtatása a következő kódot használja.
+7. A tábla létrehozása után az adatok interaktív-lekérdezés futtatása a következő kódot használja.
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
@@ -107,11 +109,13 @@ Lekérdezések futtatása, amely elérhető a fürthöz rendelt tárolási alap�
 
      ![Az interaktív Spark-lekérdezési eredmény táblázati kimenete](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Az interaktív Spark-lekérdezési eredmény táblázati kimenete")
 
-    Az eredményeket egyéb megjelenítési formákban is megtekintheti. Az azonos kimenethez tartozó területgrafikon például az alábbihoz hasonlóan fog kinézni.
+9. Az eredményeket egyéb megjelenítési formákban is megtekintheti. Az azonos kimenethez tartozó területgrafikon megtekintéséhez válasszon **terület** utána állítsa be más értékek látható módon.
 
     ![Az interaktív Spark-lekérdezési eredmény területgrafikonja](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Az interaktív Spark-lekérdezési eredmény területgrafikonja")
 
-9. Az alkalmazás futtatása után állítsa le a notebookot a fürt erőforrásainak felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre.
+10. Az a **fájl** a notebook menüjében kattintson **mentése és ellenőrzőpont**. 
+
+11. Mire az első a [következő oktatóanyagában](apache-spark-use-bi-tools.md) , hagyja a notebook megnyitva. Ha nem, állítsa le a notebook felszabadítása a fürt erőforrásait: az a **fájl** a notebook menüjében kattintson **zárja be és Halt**.
 
 ## <a name="next-step"></a>Következő lépés
 

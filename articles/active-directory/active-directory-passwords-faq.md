@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 53075d20aff073ff46dcd6dccaefea5fc8ec3483
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 14c565bb67480681e1d398a0a21a11448f405e4e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés gyakran ismételt kérdések
 
@@ -176,6 +176,11 @@ Ez a GYIK a következő szakaszok oszlik:
   > **V:** a munkamenetek élettartamát, jelszó-visszaállításhoz érték 15 perc. A jelszó-visszaállítási művelet kezdetétől a felhasználó rendelkezik-e jelszavuk 15 perc. Az e-mailek és SMS egyszer használatos jelszót érvénytelenek, ebben az időszakban lejárata után is.
   >
   >
+* **K: a jelszó alaphelyzetbe állításával felhasználók megakadályozása?**
+
+  > **V:** Igen, ha egy csoportot használja az önkiszolgáló jelszó-visszaállítás engedélyezése eltávolíthatja azokat a csoportból, amellyel ez a lehetőség.
+  >
+  >
 
 ## <a name="password-change"></a>A jelszó módosítása
 
@@ -187,6 +192,11 @@ Ez a GYIK a következő szakaszok oszlik:
 * **K: a felhasználók értesítést kaphat az Office portálon helyszíni jelszavukat lejárati?**
 
   > **V:** Ez azért lehetséges ma használata az AD FS utasítások itt: [küldése jelszó házirend jogcímek az AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396). Ha a Jelszókivonat-szinkronizálást használ, ez nem lehetséges ma. Ennek oka az, nem azt szinkronizálása a helyszíni jelszóházirendek, ezért nem lehetséges utáni lejárati értesítéseinek feladatait a felhőbe való. Mindkét esetben is lehetőség [értesítse a felhasználókat, amelyeknek a jelszava lejár, a PowerShell használatával](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  >
+  >
+* **K: felhasználók módosítsák a jelszavukat blokkolja?**
+
+  > **V:** csak felhőalapú felhasználók ez nem tiltható le. Beállíthatja a helyszíni felhasználók `User cannot change password` az be van jelölve, és ezek a felhasználók nem fognak tudni megváltoztatni a jelszavát.
   >
   >
 
@@ -263,14 +273,14 @@ Ez a GYIK a következő szakaszok oszlik:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Hogyan végezze el a sikeres bevezetéshez az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-best-practices.md)
-* [A jelszó megváltoztatására](active-directory-passwords-update-your-own-password.md).
-* [Az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
-* [Licencelés kérdése van?](active-directory-passwords-licensing.md)
-* [Milyen adatok SSPR használja, és milyen adatokat kell tölteni a felhasználók számára?](active-directory-passwords-data.md)
-* [Hitelesítési módszerek állnak rendelkezésre a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Mik a házirend-beállításokban az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-policy.md)
-* [A jelszóvisszaírás és miért fontos információk?](active-directory-passwords-writeback.md)
-* [Hogyan jelentést az önkiszolgáló jelszó-Változtatási tevékenység?](active-directory-passwords-reporting.md)
-* [Mik az önkiszolgáló jelszó-Változtatási közül az összes, és mit azokat a következőket:?](active-directory-passwords-how-it-works.md)
-* [Szerintem valami nem működik. Hogyan hibáinak elhárítása az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-troubleshoot.md)
+* [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
+* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](active-directory-passwords-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)

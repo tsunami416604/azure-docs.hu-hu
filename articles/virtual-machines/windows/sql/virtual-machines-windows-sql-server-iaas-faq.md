@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 10/04/2017
 ms.author: v-shysun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88c54293b4a9b470febeda3c0e9a1755ad3b0638
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d692d806bab072fc2c4b734677223bad4142561
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-windows-azure-virtual-machines"></a>Gyakori kérdések az SQL Server a Windows Azure virtuális gépeken
 
@@ -60,6 +60,9 @@ Ez a témakör ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL
       A hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL-kiszolgálóhoz való kapcsolódás során. A kiszolgáló nem található vagy nem érhető el.
 
    Ha úgy dönt, az alapértelmezett példány eltávolítása, is eltávolítja a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) is.
+   
+   >[!NOTE]
+   >Egy SQL Server Azure virtuális gép lesz számlázva, a [útmutatást az SQL Server Azure virtuális gépek díjszabása](virtual-machines-windows-sql-server-pricing-guidance.md). Ha el kell távolítania az SQL Server, a hálózathasználati költségeket továbbra is. Ha már nem kell az SQL Server, egy új virtuális gép telepítéséhez, és telepítse át az adatokat és alkalmazásokat az új virtuális gépet. Az SQL Server virtuális gép távolíthatja el.
 
 1. **Hogyan lehet frissíteni az SQL Server egy Azure virtuális gép egy új verziójához/kiadásához számára?**
 

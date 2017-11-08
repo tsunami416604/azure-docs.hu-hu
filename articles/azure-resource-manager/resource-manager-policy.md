@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2e0d2e9830639209a22e9b62b0679d31854150e4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6faa8b4d259eddb1b26345d8900e829f6ca4dba8
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="resource-policy-overview"></a>Erőforrás-házirendek – áttekintés
 Erőforrás-házirendek lehetővé teszik a szervezet egyezmények erőforrások létrehozásához. Egyezmények meghatározásával szabályozhatja költségeit, és több könnyen kezelheti az erőforrásokat. Megadhatja például, hogy engedélyezve legyenek-e a virtuális gépek csak bizonyos típusú. Vagy megkövetelheti, hogy minden erőforrás egy bizonyos címkével rendelkezik. Összes gyermek-erőforrás által örökölt házirendek. Igen a házirend vonatkozik egy erőforráscsoport, esetén alkalmazandó az erőforráscsoport összes erőforrást.
@@ -55,8 +55,6 @@ Azure biztosít néhány beépített házirend-definíciókat tartalmazzon, elő
 * Nem engedélyezett típusú erőforrások
 * SQL Server verziója 12.0 megkövetelése
 * Tárolási fiók titkosításának kötelezővé tétele
-
-Említett házirendjeinek keresztül rendelhet a [portal](resource-manager-policy-portal.md), [PowerShell](resource-manager-policy-create-assign.md#powershell), vagy [Azure CLI](resource-manager-policy-create-assign.md#azure-cli).
 
 ## <a name="policy-definition-structure"></a>Házirend szerkezete
 JSON házirend-definíció létrehozására használhatja. A házirend-definíció a elemeket tartalmazza:

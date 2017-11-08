@@ -12,29 +12,31 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72b004a6c2604e0fc20b71b4b69217622f8f9ea0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b99b9cd52dd28f7f62b5d8d5ffe32339a67f82a
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="install-update-3-on-your-storsimple-8000-series-device"></a>A StorSimple 8000 series eszközön Update 3 telepítéséhez
+
+> [!NOTE]
+> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+
 
 ## <a name="overview"></a>Áttekintés
 
 Ez az oktatóanyag azt ismerteti, hogyan 3 frissítés telepítése a StorSimple eszköz egy korábbi verzióját szoftver a klasszikus Azure portálon keresztül, és a gyorsjavítások a módszerrel. Amikor egy átjáró konfigurálva van a hálózati adaptert, mint a DATA 0 a StorSimple eszköz és a frissítés előtti 1 szoftver verziójából származó frissíteni kívánt a gyorsjavítás módszert használják.
 
-Frissítés 3 eszköz szoftver, a LSI illesztőprogram és a belső vezérlőprogram, Storport és Spaceport frissíti. Ha frissíti a 2. frissítés vagy korábbi verziójú, is kell az iSCSI, a WMI-alkalmazásához, és bizonyos esetekben a belső vezérlőprogram-frissítésekre lemez szükséges. Az eszközhöz, WMI, iSCSI, LSI illesztőprogram, Spaceport és Storport javításokat nem zavaró frissítések érhetők el, és a klasszikus Azure portálon keresztül is alkalmazható. A lemez belső vezérlőprogram-frissítésekre zavaró frissítések érhetők el, és csak akkor érvényesíthetők, az eszköz a Windows PowerShell felületén keresztül. 
+Frissítés 3 eszköz szoftver, a LSI illesztőprogram és a belső vezérlőprogram, Storport és Spaceport frissíti. Ha frissíti a 2. frissítés vagy korábbi verziójú, is szükségesek az iSCSI, a WMI-alkalmazásához, és bizonyos esetekben lemez a belső vezérlőprogram-frissítésekre. Az eszközhöz, WMI, iSCSI, LSI illesztőprogram, Spaceport és Storport javítások nem zavaró frissítések érhetők el. Ezeket a frissítéseket a klasszikus Azure portálon keresztül lehet alkalmazni. A lemez belső vezérlőprogram-frissítésekre zavaró frissítések érhetők el, és csak akkor érvényesíthetők, az eszköz a Windows PowerShell felületén keresztül.
 
 > [!IMPORTANT]
 > * Manuális és automatikus előtti ellenőrzés történik az eszköz állapotának hardver állapot és hálózati kapcsolatok tekintetében telepítése előtt. Az előzetes ellenőrzések csak akkor, ha a frissítések telepítését a klasszikus Azure-portálon történik.
-> * Azt javasoljuk, hogy telepítse a szoftver- és illesztőprogram frissítéseket, a klasszikus Azure portálon keresztül. Csak abban az csak lépjen a Windows PowerShell felületét (a frissítések telepítése) az eszköz, ha a frissítés előtti átjáró ellenőrzés sikertelen, a portálon. Attól függően, a verzióra frissít, a, a frissítések telepítése 1.5-2.5 óráig is eltarthat. A karbantartási mód frissítéseket telepíteni kell az eszköz a Windows PowerShell felületén keresztül. Karbantartási mód frissítések zavaró frissítések érhetők el, mert ezek jár le egyszerre az eszközhöz.
+> * Azt javasoljuk, hogy telepítse a szoftver- és illesztőprogram frissítéseket, a klasszikus Azure portálon keresztül. Csak akkor, ha a frissítés előtti átjáró ellenőrzés sikertelen, a portálon lépjen a Windows PowerShell felületen, az eszköz (a frissítések telepítése). Attól függően, a verzióra frissít, a, a frissítések telepítése 1.5-2.5 óráig is eltarthat. A karbantartási mód frissítéseket telepíteni kell az eszköz a Windows PowerShell felületén keresztül. Karbantartási mód frissítések zavaró frissítések érhetők el, mert az eszköz teljesen állásidő.
 > * Ha a választható StorSimple Snapshot Manager fut, győződjön meg arról, hogy frissítette a Snapshot Manager verzióra frissítés 2 az eszköz frissítése előtt.
-> 
-> 
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
@@ -42,15 +44,14 @@ Frissítés 3 eszköz szoftver, a LSI illesztőprogram és a belső vezérlőpro
 Az eszköz frissítése a következő lépésekkel [frissítése 3](storsimple-update3-release-notes.md).
 
 > [!NOTE]
-> Ha Ön alkalmazzák a 2. frissítés vagy újabb verziók (beleértve a 2.1-es frissítés), a Microsoft fog tudni lekéréses további diagnosztikai adatok az eszközről. Ennek eredményeképpen ha a műveleti csapata az eszközöket, amelyek problémákat tapasztal, vagy folyamatban, jobban ellátni a adatokat gyűjthetnek az eszköz és a problémák diagnosztizálásához. Elfogadásával Update 2 vagy újabb, hogy lehetővé teszik a számunkra a proaktív támogatásához.
-> 
-> 
+> Ha Ön alkalmazzák a 2. frissítés vagy újabb verziók (beleértve a 2.1-es frissítés), a Microsoft fog tudni lekéréses további diagnosztikai adatok az eszközről. Ezen adatok segítenek a StorSimple eszközök tapasztal problémákat és a problémák diagnosztizálásával eszközök azonosításához. Elfogadásával Update 2 vagy újabb, hogy lehetővé teszik a számunkra a proaktív támogatásához.
+
 
 [!INCLUDE [storsimple-install-update2-via-portal](../../includes/storsimple-install-update2-via-portal.md)]
 
-Győződjön meg arról, hogy az eszköz fut. **a StorSimple 8000 Series Update 3 (6.3.9600.17759)**. A **utolsó frissítés dátuma** is módosítani kell. 
-   - 2. frissítés előtt verziójából származó frissítésekor, akkor is látható, hogy a karbantartási mód frissítések érhetők el (Ez az üzenet előfordulhat, hogy továbbra is megjelennek a frissítések telepítése után legfeljebb 24 órában).
-     Karbantartási mód frissítések zavaró frissítések eszköz állásidőt eredményezhettek, és csak akkor érvényesíthetők, az eszköz a Windows PowerShell felületén keresztül érhetők el. Bizonyos esetekben frissítés 1.2 futtatása során a lemez belső vezérlőprogram esetleg naprakész, ebben az esetben nem kell telepítse a karbantartási mód frissítéseket.
+Győződjön meg arról, hogy az eszköz fut. **a StorSimple 8000 Series Update 3 (6.3.9600.17759)**. A **utolsó frissítés dátuma** módosul. 
+   - 2. frissítés előtt verziójából származó frissítésekor, láthatja, hogy a karbantartási mód frissítések érhetők el. Ez az üzenet előfordulhat, hogy továbbra is megjelennek a frissítések telepítése után legfeljebb 24 órában.
+     Karbantartási mód frissítések, amelyek eszköz állásidőt eredményezhettek zavaró frissítések érhetők el. Ezek a frissítések csak akkor alkalmazható, az eszköz a Windows PowerShell felületén keresztül. Bizonyos esetekben 1.2-es frissítés futtatásakor a lemez belső vezérlőprogram már lehet, hogy naprakész, és nem karbantartás módban frissítéseket telepíteni kell.
    - Ha frissíteni a 2. frissítés vagy újabb, az eszköz kell naprakész. Ugorjon a következő lépéssel.
 
 A karbantartási mód frissítések letöltése a felsorolt lépéseket követve [gyorsjavítások letöltése](#to-download-hotfixes) keresését, és töltse le a KB3121899, mely telepíti lemez belső vezérlőprogram-frissítésekre (a más frissítések már telepítve kell lennie mostanra). Kövesse a felsorolt lépéseket [telepítse, és ellenőrizze a karbantartási mód gyorsjavítások](#to-install-and-verify-maintenance-mode-hotfixes) a karbantartási mód telepítendő frissítések. 

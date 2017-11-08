@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2017
+ms.date: 11/07/2017
 ms.author: sethm
-ms.openlocfilehash: 00f9f38fbae028486270053dedb4df580a3f1a44
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bea3b56cea81362b25e696a672bf2a00e26d3ef
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 
-A Microsoft Azure Service Bus felhőalapú, üzenet célú köztes technológiák – például a megbízható üzenetsor és a tartós közzétételi/előfizetési üzenetküldési támogat. A "közvetítőalapú" üzenettovábbítási képességeket-re, leválasztott üzenetküldési funkcióknak, amely a támogatási közzétételi-feliratkozási, az időalapú leválasztási és a terheléselosztási forgatókönyveket a Service Bus üzenetkezelés háló használatával. A leválasztott kommunikációnak számos előnye van: az ügyfelek és a kiszolgálók például szükség szerint kapcsolódhatnak, és aszinkron módon hajthatják végre a műveleteiket.
+A Microsoft Azure Service Bus felhőalapú, üzenet célú köztes technológiák – például a megbízható üzenetsor és a tartós közzétételi/előfizetési üzenetküldési támogat. A "közvetítőalapú" üzenettovábbítási képességeket-re, leválasztott üzenetküldési funkcióknak, amely a támogatási közzétételi-feliratkozási, az időalapú leválasztási és a terheléselosztási forgatókönyveket a Service Bus üzenetküldési munkaterhelés használatával. A leválasztott kommunikációnak számos előnye van: az ügyfelek és a kiszolgálók például szükség szerint kapcsolódhatnak, és aszinkron módon hajthatják végre a műveleteiket.
 
 Az üzenetküldési entitások, amely az alapvető üzenetkezelési képességeket alkotják a Service Bus üzenetsorok, témakörök és előfizetések és szabályok/művelet.
 
@@ -30,11 +30,11 @@ Az üzenetküldési entitások, amely az alapvető üzenetkezelési képességek
 
 Az üzenetsorok elsőnek *First In, első kimenő* (FIFO) üzenetküldést biztosítanak egy vagy több versengő fogyasztó számára. Ez azt jelenti, hogy üzeneteket általában az érzékelők fogadják és dolgozza fel a hozzáadásuk sorrendjében, amelyben addig adták hozzá, a várakozási sorba, és minden üzenetet kapott, és csak egy üzenetfogyasztó által feldolgozott. Üzenetsorok használata egyik legfontosabb előnye értékre a "időbeli elválasztás" alkalmazás-összetevő. Más szóval az adatalkotóknak (küldőknek) és a fogyasztóknak (fogadóknak) nem kell küldeniük és fogadniuk az üzeneteket egy időben, mivel üzenetek tartósan tárolja őket a várólista. Továbbá a küldőnek nem kell ahhoz, hogy a feldolgozásához, és üzenetek küldése egy a fogyasztó válaszára a Várakozás.
 
-Egy kapcsolódó előny, "Terheléskiegyenlítés," amely lehetővé teszi a gyártó és a felhasználó számára a különböző ütemben üzeneteket küldjön és fogadjon. Számos alkalmazásban a rendszerterhelés időnként; eltérő azonban az egyes Munkaegységek szükséges feldolgozási idő jellemzően állandó marad. Közé üzenetek létrehozói és felhasználói üzenetsorokat jelenti, hogy a fogyasztó alkalmazás csak úgy kell létrehozni, hogy tudja kezelni az átlagos terheléssel csúcsterhelés helyett. A bejövő terhelés változásával az üzenetsor hossza nő vagy csökken. Ez közvetlen megtakarításokkal pénz alkalmazásterhelés kiszolgálásához szükséges infrastruktúraméret mennyiségének tekintetében. Ha a terhelés növekszik, további feldolgozó folyamatok adhatók olvasni az üzenetsorból. Az egyes üzeneteket a feldolgozó folyamatoknak csak az egyike dolgozza fel. Továbbá a lekérésalapú terheléselosztás lehetővé teszi a feldolgozó számítógépek optimális használatára akkor is, ha a munkavégző számítógépek feldolgozási teljesítmény tekintetében különböznek, kérik le a saját maximális díj üzenetek. Ezt a mintát gyakran nevezik "versengő fogyasztó" mintát.
+Egy kapcsolódó előny, "Terheléskiegyenlítés," amely lehetővé teszi a gyártó és a felhasználó számára a különböző ütemben üzeneteket küldjön és fogadjon. Számos alkalmazásban a rendszerterhelés időnként; eltérő azonban az egyes Munkaegységek szükséges feldolgozási idő jellemzően állandó marad. Közé üzenetek létrehozói és felhasználói üzenetsorokat jelenti, hogy a fogyasztó alkalmazás csak úgy kell létrehozni, hogy tudja kezelni az átlagos terheléssel csúcsterhelés helyett. A bejövő terhelés változásával az üzenetsor hossza nő vagy csökken. Ez közvetlen megtakarításokkal pénz alkalmazásterhelés kiszolgálásához szükséges infrastruktúraméret mennyiségének tekintetében. Ha a terhelés növekszik, további feldolgozó folyamatok adhatók olvasni az üzenetsorból. Az egyes üzeneteket a feldolgozó folyamatoknak csak az egyike dolgozza fel. Ezenkívül a lekérésalapú terheléselosztás lehetővé teszi a munkavégző számítógépek optimális használatára akkor is, ha a munkavégző számítógépek feldolgozási teljesítmény tekintetében különböznek, azok lekéréses üzeneteket a saját maximális díj. Ezt a mintát gyakran nevezik "versengő fogyasztó" mintát.
 
 Várólisták kiválasztásával közötti üzenetek létrehozói és felhasználói segítségével biztosítja az összetevők közötti rejlő laza kapcsoló. Mivel létrehozói és felhasználói nem kompatibilis, minden más, a fogyasztó anélkül, hogy a hatása, ha a gyártó a frissítése.
 
-A várólista létrehozása folyamat. Felügyeleti műveletek a Service Bus üzenetküldési entitásokról (üzenetsorok és témakörök) keresztül hajtsa végre a [Microsoft.ServiceBus.NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) osztályt, amely úgy, hogy megadja a Service Bus-névtér és a felhasználói hitelesítő adatok alapszintű címéből épül. [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) létrehozása, enumerálása és üzenetküldési entitások törlése metódusokat biztosít. Létrehozása után egy [Microsoft.ServiceBus.TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#microsoft_servicebus_tokenprovider) a SAS-nevet és a kulcs és a szolgáltatási névtér felügyeleti objektum object, használhatja a [Microsoft.ServiceBus.NamespaceManager.CreateQueue](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateQueue_System_String_) módszer a várólista létrehozásához. Példa:
+A várólista létrehozása folyamat. Felügyeleti műveletek a Service Bus üzenetküldési entitásokról (üzenetsorok és témakörök) keresztül hajtsa végre a [Microsoft.ServiceBus.NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) osztályt, amely úgy, hogy megadja a Service Bus-névtér és a felhasználói hitelesítő adatok alapszintű címéből épül. [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager#microsoft_servicebus_namespacemanager) létrehozásához, enumerálásához és üzenetküldési entitások törlése metódusokat biztosít. Létrehozása után egy [Microsoft.ServiceBus.TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#microsoft_servicebus_tokenprovider) a SAS-nevet és a kulcs és a szolgáltatási névtér felügyeleti objektum object, használhatja a [Microsoft.ServiceBus.NamespaceManager.CreateQueue](/dotnet/api/microsoft.servicebus.namespacemanager#Microsoft_ServiceBus_NamespaceManager_CreateQueue_System_String_) módszer a várólista létrehozásához. Példa:
 
 ```csharp
 // Create management credentials
@@ -52,7 +52,7 @@ MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateS
 QueueClient myQueueClient = factory.CreateQueueClient("TestQueue");
 ```
 
-Majd üzeneteket küldhetnek a várólistába. Például, ha a lista a közvetítőalapú üzenetek nevű `MessageList`, a kód jelenik meg a következőhöz hasonló:
+Majd üzeneteket küldhetnek a várólistába. Például, ha a lista a közvetítőalapú üzenetek nevű `MessageList`, a kódot az alábbi példához hasonlóan jelenik meg:
 
 ```csharp
 for (int count = 0; count < 6; count++)
@@ -82,7 +82,7 @@ A [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) módban, a 
 
 Ha az alkalmazás nem tudja feldolgozni az üzenetet valamilyen okból kifolyólag, akkor meghívhatja a [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) metódust a fogadott üzenethez (ahelyett, hogy [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete)). Ez lehetővé teszi, hogy a Service Bus feloldja az üzenet zárolását, és lehetővé teszi az ugyanazon felhasználó vagy egy másik versengő felhasználó ismételt fogadását. Másodszor, nincs társítva a zárolási időtúllépés, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási előtt időkorlát lejárta (például, ha az alkalmazás összeomlik), akkor a Service Bus feloldja az üzenet, és lehetővé teszi az újbóli fogadását (lényegében hajt végre egy [Abandon](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon) művelet alapértelmezés szerint).
 
-Vegye figyelembe, hogy arra az esetre, ha az alkalmazás összeomlik az üzenet, de előtte feldolgozása után a **Complete** kérés kiadása, az üzenet újból kézbesítve az alkalmazásnak, amikor újraindul. Ezt gyakran nevezik *legalább egyszeri* feldolgozása; Ez azt jelenti, hogy minden üzenet legalább egyszer fel. Azonban bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újból kézbesítve. Ha a forgatókönyvben nem lehetségesek, akkor további logikát azért van szükség az alkalmazás észleléséhez duplikált elemek érhető el, amely alapján a **MessageId** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során. Ez más néven *pontosan egyszer* feldolgozása.
+Vegye figyelembe, hogy arra az esetre, ha az alkalmazás összeomlik az üzenet, de előtte feldolgozása után a **Complete** kérés kiadása, az üzenet újból kézbesítve az alkalmazásnak, amikor újraindul. Ezt gyakran nevezik *legalább egyszeri* feldolgozása; Ez azt jelenti, hogy minden üzenet legalább egyszer fel. Azonban bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újból kézbesítve. Ha ismétlődő feldolgozás, a forgatókönyvben nem lehetségesek, akkor további logikát azért van szükség az alkalmazás ismétlődések észlelése, amely elérhető alapján a **MessageId** tulajdonság az üzenet, amely több állandó marad kézbesítési kísérletek során. Ez más néven *pontosan egyszer* feldolgozása.
 
 ## <a name="topics-and-subscriptions"></a>Témakörök és előfizetések
 Várólisták, amelyben minden üzenetet dolgoz fel egy-egy fogyasztó, ellentétben *témakörök* és *előfizetések* egy egy-a-többhöz típusú kommunikációt biztosítanak a egy *közzétételi/előfizetési* mintát. Hasznos címzettek nagyon nagy számú méretezését, minden egyes közzétett üzenetek szeretné elérhetővé tenni az adott témakörre regisztrált összes előfizetéshez. Üzenetek elküldenek egy témakörbe, és hogy egy vagy több kapcsolódó előfizetések, attól függően, hogy a szűrési szabályokat, amelyek egy előfizetésenként történő beállítására is beállítható. Az előfizetések további szűrőkkel korlátozza az üzeneteket, amelyeket be szeretne kapni. Üzenetek küldése történik, a témakör ugyanúgy azok küldik annak a várólistára, de nem érkezik üzenet témakörben közvetlenül. Ehelyett azok érkező előfizetések. Egy üzenettémakör-előfizetésben hasonlít egy virtuális üzenetsorra, amelyik a témakörbe küldött üzenetek példányait megkapja. Üzenetek érkező előfizetés azonos az üzenetsorból érkező felügyeletéhez.
@@ -155,7 +155,7 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 
 Az előfizetés szűrővel helyen, csak olyan üzeneteket, amelyek rendelkeznek a `StoreName` tulajdonsága `Store1` kerülnek a virtuális várakozási sorban a `Dashboard` előfizetés.
 
-További információ a lehetséges szűrőértékek dokumentációjában a [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) és [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) osztályok. További tájékoztatás a [Brokered Messaging: speciális szűrők](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) és [témakör szűrők](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters) minták.
+További információ a lehetséges szűrőértékek dokumentációjában a [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) és [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) osztályok. További tájékoztatás a [Brokered Messaging: speciális szűrők](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749) és [témakör szűrők](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters) minták.
 
 ## <a name="next-steps"></a>Következő lépések
 Tekintse meg az alábbi témakörök további információt és példákat használatával a Service Bus üzenetkezelés speciális.
@@ -163,6 +163,5 @@ Tekintse meg az alábbi témakörök további információt és példákat haszn
 * [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
 * [Service Bus brokered messaging .NET tutorial](service-bus-brokered-tutorial-dotnet.md) (A Service Bus által felügyelt üzenettovábbítás .NET oktatóanyaga)
 * [A Service Bus által felügyelt üzenettovábbítás REST oktatóanyaga](service-bus-brokered-tutorial-rest.md)
-* [A témakör szűrők minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters)
 * [A közvetítőalapú üzenetek: Speciális szűrők minta](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 

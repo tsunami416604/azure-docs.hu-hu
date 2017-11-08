@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 5d414c8c0c9825aae245d59abc23dfc0d4027862
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: f4df68a5cb240e9483cc088c620716bba207439b
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Másolja az adatokat, és az SQL-kiszolgáló Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -507,7 +507,7 @@ Ha másol adatokat az/SQL Server, a következő megfeleltetéseket segítségév
 | Szöveg |Karakterlánc, Char] |
 | time |A TimeSpan |
 | időbélyeg |Byte] |
-| tinyint |Bájt |
+| tinyint |Int16 |
 | egyedi azonosító |GUID |
 | varbinary |Byte] |
 | varchar |Karakterlánc, Char] |

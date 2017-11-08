@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 82b1916a49cd1e04580fdb848545ce7d52299579
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1e715b54c78d42d88d2082e9b0e9f942bec72abd
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -78,13 +78,7 @@ Jelenleg az Azure AD-jelentések és események API lekérdezi legfeljebb **75,0
 
 Ha szeretné beolvasni, vagy ez az ablak adatok tárolására, javasoljuk, hogy külső adatbázis megőrzése, és a eltéréseit – eredményező lekérdezni az API-val. Azt javasoljuk, hogy ezek az adatok beolvasása SSPR segítségével a szervezet indításakor megkezdéséhez, megőrizni a külsőleg, és majd továbbra is nyomon követheti az eltérések ettől kezdve.
 
-## <a name="how-to-download-password-reset-registration-events-quickly-with-powershell"></a>Jelszó alaphelyzetbe állítása regisztrációs események gyorsan PowerShell letöltése
-
-Az Azure AD-jelentések és események API közvetlenül használata mellett is használhatja az alábbi PowerShell-parancsfájl használatával legutóbbi regisztrációs események a címtárban. Ez akkor hasznos, ha meg szeretné tekinteni, akik nemrég regisztrálva van, vagy győződjön meg arról, hogy a várt módon jelentkezett-e a jelszó alaphelyzetbe állítása bevezetést szeretné.
-
-* [Az Azure AD SSPR regisztrációs tevékenység PowerShell-parancsfájl](https://gallery.technet.microsoft.com/scriptcenter/azure-ad-self-service-e31b8aee)
-
-### <a name="description-of-report-columns-in-azure-portal"></a>Azure-portálon jelentés oszlopok leírása
+## <a name="description-of-report-columns-in-azure-portal"></a>Azure-portálon jelentés oszlopok leírása
 
 Az alábbi lista ismerteti részletesen jelentés oszlopainak mindegyike:
 
@@ -93,7 +87,7 @@ Az alábbi lista ismerteti részletesen jelentés oszlopainak mindegyike:
 * **Dátum és idő** – a dátum és idő a kísérlet.
 * **Adatok regisztrált** – milyen hitelesítési adatokat, a felhasználó által megadott során jelszó-átállítási regisztrációk.
 
-### <a name="description-of-report-values-in-azure-portal"></a>Azure-portálon jelentés értékek leírása
+## <a name="description-of-report-values-in-azure-portal"></a>Azure-portálon jelentés értékek leírása
 
 A következő táblázat ismerteti a különböző minden egyes oszlophoz engedélyezett értékek:
 
@@ -198,16 +192,16 @@ Az alábbi lista ismerteti ennek a tevékenységnek a részletei:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Hogyan végezze el a sikeres bevezetéshez az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-best-practices.md)
-* [A jelszó megváltoztatására](active-directory-passwords-update-your-own-password.md).
-* [Az önkiszolgáló jelszó-változtatási regisztrációs](active-directory-passwords-reset-register.md).
-* [Licencelés kérdése van?](active-directory-passwords-licensing.md)
-* [Milyen adatok SSPR használja, és milyen adatokat kell tölteni a felhasználók számára?](active-directory-passwords-data.md)
-* [Hitelesítési módszerek állnak rendelkezésre a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Mik a házirend-beállításokban az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-policy.md)
-* [A jelszóvisszaírás és miért fontos információk?](active-directory-passwords-writeback.md)
-* [Mik az önkiszolgáló jelszó-Változtatási közül az összes, és mit azokat a következőket:?](active-directory-passwords-how-it-works.md)
-* [Szerintem valami nem működik. Hogyan hibáinak elhárítása az önkiszolgáló jelszó-Változtatási?](active-directory-passwords-troubleshoot.md)
-* [A rendszer nem jelzett valahol máshol kérdést kell](active-directory-passwords-faq.md)
+* [Hogyan végezhető el az SSPR sikeres bevezetése?](active-directory-passwords-best-practices.md)
+* [Új jelszó kérése vagy jelszó módosítása](active-directory-passwords-update-your-own-password.md).
+* [Regisztráció új jelszó önkiszolgáló kérésére](active-directory-passwords-reset-register.md).
+* [Kérdése van a licenceléssel kapcsolatban?](active-directory-passwords-licensing.md)
+* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](active-directory-passwords-data.md)
+* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Mik az SSPR szabályzatbeállításai?](active-directory-passwords-policy.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](active-directory-passwords-writeback.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](active-directory-passwords-how-it-works.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/active-directory-passwords-reporting/sspr-reporting.png "Az Azure AD naplózza az önkiszolgáló jelszó-Változtatási tevékenység naplózási – példa"
