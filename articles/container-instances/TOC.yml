@@ -13,7 +13,7 @@
       href: container-instances-quickstart-portal.md
     - name: Tároló létrehozása – PowerShell
       href: container-instances-quickstart-powershell.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: Tároló létrehozása és üzembe helyezése
       items:
@@ -48,7 +48,7 @@
     - name: REST
       href: /rest/api/container-instances
     - name: PowerShell
-      href: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
+      href: '/powershell/module/azurerm.containerinstance#container_instances'
 - name: Erőforrások
   items:
     - name: Azure-ütemterv
