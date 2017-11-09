@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 2e5475a0563549ddfaa2c146e4acf94c019841ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7109a3b21feac396d8c20c7e72a8987f72a909a
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép megoldás használja
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Szolgáltatástérkép, használatával megtekintheti a kiszolgálók, amelyek Ön szerint egyik módja: összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép jeleníti meg a kiszolgálók, a folyamatok közötti kapcsolatokat, és portok között bármely TCP-csatlakoztatott architektúra, a konfiguráció nem szükséges másik ügynököt telepíteni.
@@ -224,11 +224,26 @@ Az alábbi képen, amelyeket konfigurációváltozás esemény részletes nézet
 
 
 ## <a name="operations-management-suite-performance-integration"></a>Az Operations Management Suite teljesítmény-integráció
-A **gépek teljesítménye** ablaktábla megjeleníti a kiválasztott kiszolgálóhoz tartozó szabványos teljesítménymutatók. A mérőszámok közé tartozik a CPU kihasználtsága, memória-felhasználás, küldött és fogadott hálózati bájtok és a legfelső szintű folyamatok listáját által küldött és fogadott hálózati bájtok. Ahhoz, hogy a hálózati teljesítményadatokat, kell is engedélyezte az Operations Management Suite átviteli adatok 2.0 megoldás.
+A **gépek teljesítménye** ablaktábla megjeleníti a kiválasztott kiszolgálóhoz tartozó szabványos teljesítménymutatók. A mérőszámok közé tartozik a CPU kihasználtsága, memória-felhasználás, küldött és fogadott hálózati bájtok és a legfelső szintű folyamatok listáját által küldött és fogadott hálózati bájtok.
 
 ![Gép teljesítmény ablaktábla](media/oms-service-map/machine-performance.png)
 
+Teljesítményadatok megtekintéséhez esetleg [engedélyezése a megfelelő Naplóelemzési teljesítményszámlálók](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  A számlálók érdemes engedélyezése:
 
+Windows:
+- Processor(*)\% processzoridő
+- Memória\% előjegyzett memória
+- Hálózati Adapter (*) \Bytes küldött/mp
+- Hálózati Adapter (*) \Bytes fogadott/mp
+
+Linux:
+- Processor(*)\% processzoridő
+- Memory(*)\% használt memória
+- Hálózati Adapter (*) \Bytes küldött/mp
+- Hálózati Adapter (*) \Bytes fogadott/mp
+
+Ahhoz, hogy a hálózati teljesítményadatokat, kell is engedélyezte az Operations Management Suite átviteli adatok 2.0 megoldás.
+ 
 ## <a name="operations-management-suite-security-integration"></a>Az Operations Management Suite biztonsági integráció
 Biztonsági és a naplózási szolgáltatás térkép integrációját akkor automatikus, ha a két megoldás engedélyezve és konfigurálva az Operations Management Suite-munkaterülettel.
 

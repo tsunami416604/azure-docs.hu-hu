@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/27/2017
+ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 4cf30130907151ade9eaf9db28748b8141dac8e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40849e7f0c8a76bdd8a0e03d0780534569d9874a
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Feltételes hozzáférés az Azure Active Directoryban
 
@@ -131,18 +131,13 @@ A számított bejelentkezési kockázati szint egy feltételes hozzáférési h�
 
 ### <a name="device-platforms"></a>Eszközök
 
-Az eszköz platformjától jellemzőek, az eszközön futó operációs rendszer:
+Az eszköz platformjától jellemzőek, az eszközön futó operációs rendszer: meghatározhatja azokat az eszközplatformokat, amelyeknek tartalmazza, valamint a eszközplatformokat, amelyeken a házirend alól.  
+A házirend eszközplatformok használatához előbb módosítsa a konfigurálás váltógombok **Igen**, majd válassza ki az összes vagy az egyes eszközplatformok a házirend vonatkozik. Ha az egyes eszközplatformok választja, a házirend ezekről a platformokról csak hatással van. Ebben az esetben, más támogatott platformra bejelentkezések nem érinti a házirendet.
 
-- Android
-- iOS
-- Windows Phone
-- Windows
-- macOS (előzetes verzió). 
 
 ![Feltételek](./media/active-directory-conditional-access-azure-portal/02.png)
 
-Meghatározhatja az eszközplatformokat, amelyeknek tartalmazza, továbbá az eszközplatformokat, amelyeken a házirend alól.  
-A házirend eszközplatformok használatához előbb módosítsa a konfigurálás váltógombok **Igen**, majd válassza ki az összes vagy az egyes eszközplatformok a házirend vonatkozik. Ha az egyes eszközplatformok választja, a házirend ezekről a platformokról csak hatással van. Ebben az esetben, más támogatott platformra bejelentkezések nem érinti a házirendet.
+A támogatott eszközplatformok teljes listáját lásd: [eszköz platform feltétel](active-directory-conditional-access-technical-reference.md#device-platform-condition).
 
 
 ### <a name="locations"></a>Helyek

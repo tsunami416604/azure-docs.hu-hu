@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/16/2017
 ms.author: stevelas
-ms.openlocfilehash: 630bc088fcb6d3c7e5bb3a9713107c3fb6653ec6
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: dae97084bdaab77efd38169cdf7e70c827b0b5ab
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-container-registry-skus"></a>Azure-tárolót beállításjegyzék termékváltozatok
 
@@ -43,21 +43,7 @@ A klasszikus beállításjegyzék SKU eredeti kiadásának az Azure-ban az Azure
 
 Az alábbi táblázat részletezi, a szolgáltatások és a Basic, Standard és Premium szolgáltatásszintek határain.
 
-| Szolgáltatás | Basic | Standard | Prémium |
-|---|---|---|---|---|
-| Storage | 10 giB | 100 giB| 500 giB |
-| Percenként ReadOps<sup>1, 2</sup> | 1k | 300-k | 10 000-k |
-| Percenként WriteOps<sup>1, 3</sup> | 100 | 500 | 2-k |
-| Töltse le a MB/s sávszélesség<sup>1</sup> | 30 | 60 | 100 |
-| Töltse fel a MB/s sávszélesség<sup>1</sup> | 10 | 20 | 50 |
-| webhook | 2 | 10 | 100 |
-| Georeplikáció | N/A | N/A | [Támogatott *(előzetes verzió)*](container-registry-geo-replication.md) |
-
-<sup>1</sup> *ReadOps*, *WriteOps*, és *sávszélesség* minimális hozzávetőlegesek. ACR nagy hangsúlyt fektet használati van szüksége a teljesítmény javítása érdekében.
-
-<sup>2</sup> [docker lekéréses](https://docs.docker.com/registry/spec/api/#pulling-an-image) az eszköz több olvasási műveletek a lemezkép, valamint a jegyzék beolvasása rétegek száma alapján.
-
-<sup>3</sup> [docker leküldéses](https://docs.docker.com/registry/spec/api/#pushing-an-image) az eszköz több írási műveleteket, rétegeket, amelyeket a leküldött értesítést kell száma alapján. A `docker push` tartalmaz *ReadOps* egy meglévő lemezképet jegyzékfájljának beolvasása.
+[!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
 ## <a name="manage-registry-size"></a>A rendszerleíró adatbázis mérete kezelése
 Minden egyes SKU tárolási korlátai célja, hogy megfelel-e a jellemző forgatókönyv: első lépések a Basic, Standard, a legtöbb éles alkalmazások és a prémium kapacitású teljesítmény és [georeplikáció](container-registry-geo-replication.md). A beállításjegyzék élettartama során kezelje nem használt tartalom rendszeresen törlésével annak méretét.

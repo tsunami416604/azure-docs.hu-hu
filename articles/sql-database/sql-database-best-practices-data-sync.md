@@ -8,15 +8,17 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 6101dfa4bc74acf5045975f6513886fa135fe833
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 7492fffd1c18a149ef12174c79d64b47afbaa3e4
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/08/2017
 ---
-# <a name="best-practices-for-sql-data-sync"></a>Ajánlott eljárások az SQL-adatok szinkronizálása 
+# <a name="best-practices-for-azure-sql-data-sync-preview"></a>Ajánlott eljárások az Azure SQL adatszinkronizálás (előzetes verzió) 
 
 Ez a cikk ismerteti a gyakorlati tanácsok az SQL adatszinkronizálás (előzetes verzió).
+
+SQL adatszinkronizálás áttekintését lásd: [adatok szinkronizálásának több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-sync-data.md).
 
 ## <a name="security-and-reliability"></a>Biztonsága és megbízhatósága
 
@@ -221,3 +223,21 @@ Ne távolítsa el az adatbázis egy szinkronizálási csoportból, és szerkessz
 Először távolítsa el az adatbázis egy szinkronizálási csoportból. Ezután a változtatás központi telepítésének, és várjon, amíg befejeződik megszüntetést. Ez a művelet befejezése után a szinkronizálási csoport szerkesztéséhez, és telepítheti a módosításokat.
 
 Ha egy adatbázis eltávolítása, és szerkessze a szinkronizálási csoport első telepítése nélkül kísérli meg a módosításokat, egy vagy a másik művelet sikertelen lesz, és a portál felület kaphat inkonzisztens állapotba kerülnek. Ebben az esetben a megfelelő állapot visszaállításához a lap frissítésével.
+
+## <a name="next-steps"></a>Következő lépések
+SQL adatszinkronizálás kapcsolatos további információkért lásd:
+
+-   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md)
+-   [Ismerkedés az Azure SQL-adatok szinkronizálása](sql-database-get-started-sql-data-sync.md)
+-   [Az Azure SQL adatszinkronizálás problémák elhárítása](sql-database-troubleshoot-data-sync.md)
+
+-   PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás befejezése:
+    -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [Egy Azure SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálása a PowerShell használatával](scripts/sql-database-sync-data-between-azure-onprem.md)
+
+-   [Töltse le az SQL Data szinkronizálási REST API dokumentációja](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+
+SQL-adatbázis kapcsolatos további információkért lásd:
+
+-   [SQL-adatbázis – áttekintés](sql-database-technical-overview.md)
+-   [Adatbázis életciklusának kezelésére](https://msdn.microsoft.com/library/jj907294.aspx)

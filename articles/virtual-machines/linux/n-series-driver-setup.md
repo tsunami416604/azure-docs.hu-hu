@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96e429ae0e9462e6046a4aaabc5ab9281f2e67ce
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 46f8b2c20d9ce31ef3f782d098de09952701bbcc
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>N-sorozat linuxos virtuális gépek NVIDIA GPU illesztőprogramok telepítéséhez
 
@@ -350,8 +350,9 @@ Telepítés NC24r virtuális gépeket az Azure piactéren, amely támogatja az R
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* Egy ismert probléma az Azure virtuális gépeken N-sorozat a 4.4.0-75 Linux kernel futó Ubuntu 16.04 LTS CUDA illesztőprogramok van. Ha egy korábbi kernel frissít, frissítsen legalább kernel verzió 4.4.0-77. 
+* Egy ismert probléma az Azure virtuális gépeken N-sorozat a 4.4.0-75 Linux kernel futó Ubuntu 16.04 LTS CUDA illesztőprogramok van. Ha egy korábbi kernel frissít, frissítsen legalább kernel verzió 4.4.0-77.
 
+* Adatmegőrzési mód nvidia-smi használ, így a parancs kimenetében gyorsabban akkor, ha a lekérdezés kártyák kell állíthatja be. Adatmegőrzési üzemmód beállítása, hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy a virtuális gép újraindul, ha a üzemmódját eltűnik majd. Lehet mindig parancsprogramot futtatni a üzemmódját indításkor végrehajtásához.
 
 
 ## <a name="next-steps"></a>Következő lépések

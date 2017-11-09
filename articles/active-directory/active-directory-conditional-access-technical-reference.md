@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/01/2017
+ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 8cde8e10b6789e930ea1deda2f4aa0d4a5e7ea97
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 316157a7a8ed920e9f3b15e24e15035db4cefc6c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technikai útmutató az Azure Active Directory feltételes hozzáférés
 
@@ -82,11 +82,7 @@ Mellett a Microsoft felhőalapú alkalmazásokat feltételes hozzáférési ház
 
 ## <a name="device-platform-condition"></a>Eszköz platform feltétel
 
-Feltételes hozzáférési szabályzatot konfigurálhatja a házirendet, az operációs rendszer összekötését egy ügyfél az eszköz platform feltételt.
-
-![A hozzáférési házirend, az ügyfél operációs rendszer kötése](./media/active-directory-conditional-access-technical-reference/41.png)
-
-Az Azure AD feltételes hozzáférés a következő eszközplatformokat támogatja:
+Feltételes hozzáférési szabályzatot konfigurálhatja a házirendet, az operációs rendszer összekötését egy ügyfél az eszköz platform feltételt. Az Azure AD feltételes hozzáférés a következő eszközplatformokat támogatja:
 
 - Android
 
@@ -96,7 +92,12 @@ Az Azure AD feltételes hozzáférés a következő eszközplatformokat támogat
 
 - Windows
 
-- macOS (előzetes verzió)
+- macOS
+
+
+![A hozzáférési házirend, az ügyfél operációs rendszer kötése](./media/active-directory-conditional-access-technical-reference/41.png)
+
+
 
 
 
@@ -131,8 +132,8 @@ A feltételes hozzáférési házirend az alábbi böngészők támogatottak:
 | Windows Server 2016    | Chrome                      | Hamarosan |
 | Windows Server 2012 R2 | Internet Explorer, a Chrome   | ![Jelölőnégyzet][1] |
 | Windows Server 2008 R2 | Internet Explorer, a Chrome   | ![Jelölőnégyzet][1] |
-| macOS                  | Safari                      | ![Jelölőnégyzet][1] |
-| macOS                  | Chrome                      | Hamarosan |
+| macOS                  | Chrome, Safari              | ![Jelölőnégyzet][1] |
+
 
 > [!NOTE]
 > A Chrome támogatáshoz használnia kell a Windows 10 Creators frissítés (verzió: 1703) vagy újabb.<br>
@@ -153,7 +154,7 @@ A következő mobilalkalmazások és asztali ügyfelek támogatja a feltételes 
 | Dynamics CRM-alkalmazás| Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS és Android|
 | Mail/naptár/személyek app, Outlook 2016, az Outlook 2013 (modern hitelesítést)| Az Office 365 Exchange online-hoz| Windows 10|
 | Többtényezős hitelesítés és a hely házirend-alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak.| Bármely saját alkalmazások app service| Android és iOS|
-| Microsoft csapatok szolgáltatások – ezen lehetőség összes szolgáltatás, amely támogatja a Microsoft Teams és minden az ügyfél alkalmazások – Windows asztali, iOS, Android, WP és webes ügyfél| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS és Android|
+| Microsoft csapatok szolgáltatások – ezen lehetőség összes szolgáltatás, amely támogatja a Microsoft Teams és minden az ügyfél alkalmazások – Windows asztali, iOS, Android, WP és webes ügyfél| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS, Android és macOS|
 | Office 2016, Office 2013 (a modern hitelesítést), a onedrive vállalati verzió alkalmazások szinkronizálása ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))| Az Office 365 SharePoint online szolgáltatáshoz| Windows 8.1, Windows 7|
 | Office 2016-alkalmazások, univerzális Office-alkalmazásokat, Office 2013 (modern hitelesítést), a onedrive vállalati verzió szinkronizálási ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), Office csoportok támogatási tervezünk-e a jövőben, SharePoint-alkalmazások támogatása tervezünk-e a jövőben| Az Office 365 SharePoint online szolgáltatáshoz| Windows 10|
 | Office 2016 macOS (Word, Excel, PowerPoint, csak a OneNote). A OneDrive vállalati verziójának ügyfélszolgálatával tervezett a jövőben| Az Office 365 SharePoint online szolgáltatáshoz| Mac OS X|
@@ -165,6 +166,7 @@ A következő mobilalkalmazások és asztali ügyfelek támogatja a feltételes 
 | Power bi alkalmazásról. Az Androidhoz készült Power BI alkalmazás jelenleg nem támogatja a eszközalapú feltételes hozzáférés.| Power bi szolgáltatás| Windows 10, Windows 8.1, Windows 7 és iOS|
 | A Skype vállalati verzió| Az Office 365 Exchange online-hoz| Android, IOS|
 | A Visual Studio Team Services-alkalmazás| Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS és Android|
+
 
 
 

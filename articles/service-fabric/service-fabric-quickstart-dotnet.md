@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/02/2017
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cdb5fdb094a185db12ee08969a12e556dab96389
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 40b29ccb454caf5462807d6c24ca3f470865d368
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>.NET Service Fabric-alkalmazás létrehozása az Azure-ban
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -64,7 +64,7 @@ Alapértelmezés szerint a szavazási alkalmazás a 8080-as port figyelésére v
 Az alkalmazás telepítéséhez, nyomja le az **F5**.
 
 > [!NOTE]
-> Az első alkalommal futtatja, és az alkalmazás központi telepítése a Visual Studio létrehozza a helyi fürthöz, a hibakereséshez. Ez a művelet eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.  A kimenetben üzenet jelenik meg a "Az alkalmazás URL-címe nincs beállítva, vagy nem egy HTTP/HTTPS URL-címe, így a böngésző nem nyílik meg az alkalmazáshoz."  Ez az üzenet nem jelent hibát, de ez a böngésző fog nem automatikus indítású.
+> Az első alkalommal futtatja, és az alkalmazás központi telepítése a Visual Studio létrehozza a helyi fürthöz, a hibakereséshez. Ez a művelet eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.  A kimenetben megjelenik az üzenet "Az alkalmazás URL-címe nincs beállítva, vagy nem egy HTTP/HTTPS URL-címe, így a böngésző nem nyílik meg az alkalmazáshoz."  Ez az üzenet nem jelent hibát, de ez a böngésző fog nem automatikus indítású.
 
 Ha a telepítés befejeződött, elindít egy böngészőt, és nyissa meg az ezen a lapon: `http://localhost:8080` – az alkalmazás előtér-webkiszolgáló.
 
@@ -87,30 +87,30 @@ Amikor az alkalmazás szavaz a következők történnek:
 3. A háttér-szolgáltatás időt vesz igénybe a bejövő kérelem, és tárolja a frissített eredmény megbízható szótár, amely lekérdezi a fürt több csomópontja replikálása, és a lemezen maradnak. Az alkalmazás adatokat tárolja a fürt így adatbázis szükséges.
 
 ## <a name="debug-in-visual-studio"></a>A Visual Studio hibakeresési
-A Visual Studio alkalmazás nyomkövetésére használ egy helyi Service Fabric-fejlesztési fürtöt. Lehetősége van úgy, hogy adott esetben a hibakeresési felhasználói élmény. Ebben az alkalmazásban tároljuk adatok a háttér-szolgáltatásban egy megbízható szótár használatával. A Visual Studio eltávolítja az alkalmazás alapértelmezés szerint a hibakereső leállítása. Az alkalmazás eltávolítása azt eredményezi, az adatok a háttér-szolgáltatás is el kell távolítani. Az adatok között munkamenetek hibakeresés megőrizni, módosíthatja a **alkalmazás hibakeresési módban** meg tulajdonságként a **Voting** projektre a Visual Studio.
+A Visual Studio alkalmazás nyomkövetésére használ egy helyi Service Fabric-fejlesztési fürtöt. Lehetősége van úgy, hogy adott esetben a hibakeresési felhasználói élmény. Ebben az alkalmazásban adatok megbízható dictionary használatával háttérszolgáltatásnak tárolja. A Visual Studio eltávolítja az alkalmazás alapértelmezés szerint a hibakereső leállítása. Az alkalmazás eltávolítása azt eredményezi, az adatok a háttér-szolgáltatás is el kell távolítani. Az adatok között munkamenetek hibakeresés megőrizni, módosíthatja a **alkalmazás hibakeresési módban** meg tulajdonságként a **Voting** projektre a Visual Studio.
 
 Nézze meg mi történik, a kódban, végezze el a következő lépéseket:
-1. Nyissa meg a **VotesController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódus (sor: 47) – a fájlt a Visual studióban a Solution Explorer kereshet.
+1. Nyissa meg a **/VotingWeb/Controllers/VotesController.cs** fájlt, és állítson be egy töréspontot a webes API **Put** metódus (sor: 47) – a fájlt a Visual studióban a Solution Explorer kereshet.
 
-2. Nyissa meg a **VoteDataController.cs** fájlt, és állítson be egy töréspontot ezen webes API **Put** metódus (sor 50).
+2. Nyissa meg a **/VotingData/ControllersVoteDataController.cs** fájlt, és állítson be egy töréspontot ezen webes API **Put** metódus (sor 50).
 
 3. Lépjen vissza a böngésző és szavazó lehetőségre, vagy adja hozzá egy új szavazó lehetőséget. A webalkalmazás első-a befejezési tartozó api-vezérlőben első töréspont kattint.
     - Ez azért, ahol a JavaScript a böngészőben egy kérést küld a webes API-vezérlőben az előtér-szolgáltatás.
     
     ![Szavazás előtér-szolgáltatás hozzáadása](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    - Először a háttér-szolgáltatás URL-CÍMÉT a ReverseProxy azt összeállításához **(1)**.
-    - Ezt követően nem küldeni a HTTP PUT kérés a ReverseProxy **(2)**.
-    - Végül a rendszer visszaadja a már a válasz a háttér-szolgáltatásból az ügyfélnek **(3)**.
+    - Első lépésként összeállítani a ReverseProxy a háttér-szolgáltatás URL-címe **(1)**.
+    - Ezt követően a ReverseProxy a HTTP PUT kérés küldése **(2)**.
+    - Végül térjen vissza a válasz a háttér-szolgáltatás az ügyfél **(3)**.
 
 4. Nyomja le az **F5** folytatja
     - Ekkor a számítógép a töréspontot a háttér-szolgáltatásban.
     
     ![Szavazás háttér-szolgáltatás hozzáadása](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    - A metódus első sorában **(1)** használjuk a `StateManager` nevű megbízható szótár felvétele, illetve `counts`.
+    - A metódus első sorában **(1)** a `StateManager` lekérdezi, vagy hozzáadja egy megbízható szótár nevű `counts`.
     - A megbízható szótárban értékek minden interakció tranzakció, a használatával szükséges utasítás **(2)** hoz létre, hogy a tranzakció.
-    - A tranzakció frissítjük majd a szavazó beállítás értékének a megfelelő kulcs értékét és véglegesíti a művelet **(3)**. Amikor a véglegesítési mód értéket ad vissza, az adatok frissítése a szótárban és replikálja a fürt többi tagján. Az adatok immár biztonságosan tárolja a fürt, és a háttér-szolgáltatás átveheti más csomópontokat, a rendelkezésre álló adatok továbbra is fennáll.
+    - A tranzakcióban, frissítse az értéket a szavazó beállítás értékének a megfelelő kulcs, és a művelet végrehajtása **(3)**. Amikor a véglegesítési mód értéket ad vissza, az adatok frissítése a szótárban és replikálja a fürt többi tagján. Az adatok immár biztonságosan tárolja a fürt, és a háttér-szolgáltatás átveheti más csomópontokat, a rendelkezésre álló adatok továbbra is fennáll.
 5. Nyomja le az **F5** folytatja
 
 A hibakeresési munkamenetben leállításához nyomja le az **Shift + F5**.
@@ -138,12 +138,12 @@ Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a V
 
     A fürt minden alkalmazáshoz egyedi nevet kell adni.  Entitás fürtök egy nyilvános, megosztott környezetben azonban, és előfordulhat, hogy egy meglévő alkalmazást ütközik.  Ha egy ütköző, nevezze át a Visual Studio-projektet, majd telepítse újra.
 
-3. Nyissa meg egy böngészőt, és írja be a fürt címe foolowed által ": 8080-as ' a fürt – például az alkalmazás eléréséhez `http://winh1x87d1d.westus.cloudapp.azure.com:8080`. Meg kell jelennie az Azure-ban a fürtben futó alkalmazás.
+3. Nyissa meg a böngésző, és írja be a fürt címe követ ": 8080-as ' a fürt – például az alkalmazás eléréséhez `http://winh1x87d1d.westus.cloudapp.azure.com:8080`. Meg kell jelennie az Azure-ban a fürtben futó alkalmazás.
 
 ![Előtér-alkalmazás](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Alkalmazások és szolgáltatások méretezése a fürtökben
-A Service Fabric-szolgáltatások könnyen-szolgáltatásoknak a terhelés módosítására vonatkozó olyan fürtön belül lehet méretezni. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatások skálázás több módja van, használhatja a parancsfájlokat vagy parancsokat a PowerShell vagy a Service Fabric CLI (sfctl). A jelen példában használjuk Service Fabric Explorerben talál.
+A Service Fabric-szolgáltatások könnyen-szolgáltatásoknak a terhelés módosítására vonatkozó olyan fürtön belül lehet méretezni. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatások skálázás több módja van, használhatja a parancsfájlokat vagy parancsokat a PowerShell vagy a Service Fabric CLI (sfctl). Ebben a példában használja a Service Fabric Explorerben talál.
 
 Service Fabric Explorer összes Service Fabric-fürt fut, és keresse meg azt a fürtök HTTP felügyeleti portra (19080), például egy böngészőből elérhető `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
 
@@ -161,22 +161,17 @@ A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lé
 
     ![Service Fabric Explorer méretezési szolgáltatás](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scaled-service.png)
 
-    Láthatja, hogy a szolgáltatás két példánya van, és a faszerkezetes nézetben látható a példányok futtassa mely csomópontok.
+    Várakozás után tekintheti meg, hogy a szolgáltatás két példánya van-e.  A fanézetben tekintse meg a példányok futtassa mely csomópontok.
 
-Ezzel az egyszerű felügyeleti eljárással megdupláztuk az előtér-szolgáltatás számára a felhasználói terhelések feldolgozásához rendelkezésre álló erőforrások mennyiségét. Fontos megérteni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány kezdjen futni a fürtben.
+Ez egyszerű fájlkezelési feladat által elérhető erőforrások kettőzni feldolgozni a felhasználói terhelést az előtér-szolgáltatás. Fontos megérteni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány kezdjen futni a fürtben.
 
 ## <a name="perform-a-rolling-application-upgrade"></a>Alkalmazás a frissítéshez szükséges
 Új frissítések az alkalmazáshoz való telepítésekor a Service Fabric bevezeti a frissítés egy biztonságos módon. Működés közbeni frissítés lehetővé teszi az állásidő nélkül hibákról kell és automatikus visszaállítási frissítése közben.
 
 Az alkalmazás frissítéséhez tegye a következőket:
 
-1. Nyissa meg a **Index.cshtml** fájlt a Visual Studio - kereshet a fájlt a Visual studióban a Solution Explorer.
-2. Módosítsa a fejléc az oldalon szöveget – például hozzáadásával.
-    ```html
-        <div class="col-xs-8 col-xs-offset-2 text-center">
-            <h2>Service Fabric Voting Sample v2</h2>
-        </div>
-    ```
+1. Nyissa meg a **/VotingWeb/Views/Home/Index.cshtml** fájlt a Visual Studióban.
+2. Módosítsa a <h2> címsor által létrehozásától vagy frissítésétől egészen a szöveg a lapon. Például módosítsa a "Service Fabric Voting minta v2" fejléc.
 3. Mentse a fájlt.
 4. Kattintson a jobb gombbal **Voting** a Megoldáskezelőben kattintson **közzététel**. Ekkor megjelenik a Publish (Közzététel) párbeszédpanel.
 5. Kattintson a **Manifest verzió** gombra kattintva módosíthatja a szolgáltatás és az alkalmazás verziója.
@@ -187,7 +182,7 @@ Az alkalmazás frissítéséhez tegye a következőket:
 
     ![Közzététele párbeszédpanelen beállítás frissítése](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 8. Nyissa meg a böngészőt, és keresse meg a fürt címe 19080 - porton például `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
-9. Kattintson a a **alkalmazások** csomópont a faszerkezetes nézetben, majd **folyamatban lévő frissítések** a jobb oldali ablaktáblában. Látni hogyan a verziófrissítés áthalad a frissítési tartományok a fürt meggyőződött arról, hogy minden egyes tartományhoz állapota kifogástalan, mielőtt továbblép a következő.
+9. Kattintson a a **alkalmazások** csomópont a faszerkezetes nézetben, majd **folyamatban lévő frissítések** a jobb oldali ablaktáblában. Látni hogyan a verziófrissítés áthalad a frissítési tartományok a fürt meggyőződött arról, hogy minden egyes tartományhoz állapota kifogástalan, mielőtt továbblép a következő. Egy frissítési tartomány, a folyamatjelző sávon jelenik meg zöld, ha a tartomány állapotának ellenőrzése megtörtént.
     ![A Service Fabric Explorerben nézet frissítése](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     A Service Fabric lesz frissítések biztonságos által a szolgáltatás a fürt minden egyes csomóponton a frissítés után két percet várakozik. Várja meg a teljes frissítési körülbelül nyolc percet vesz igénybe.

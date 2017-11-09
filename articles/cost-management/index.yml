@@ -37,3 +37,4 @@ sections:
           - html: <a href="tutorial-review-usage">A használat és a költségek áttekintése az anomáliák és hatékonyságok észleléséhez</a>
           - html: <a href="tutorial-user-access">A Cost Management adataihoz való hozzáférés hozzárendelése</a>
           - html: <a href="tutorial-forecast-spending">Jövőbeli kiadások előrejelzése</a>
+          - html: '<a href="tutorial-manage-costs">Költségek kezelése költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel</a>'

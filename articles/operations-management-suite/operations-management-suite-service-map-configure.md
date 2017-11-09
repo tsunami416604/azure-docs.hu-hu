@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: daef11a0cea11b0f6633ab32f7d84fac4591180a
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 209631536d8c611b46a2ad3ff6c685062b17c649
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép konfigurálása
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, módon úgy gondolja, hogy azok--összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép kiszolgálók, folyamatok és portok közötti kapcsolatok között nincs konfigurációjával kapcsolatban egy ügynök telepítése nem szükséges bármely TCP-csatlakoztatott architektúra jeleníti meg.
@@ -135,7 +135,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 ### <a name="shell-script-for-linux"></a>A Linux rendszerhez parancsfájl
 ```
 wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
-sh InstallDependencyAgent-Linux64.bin -s
+sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
 ## <a name="azure-vm-extension"></a>Az Azure Virtuálisgép-bővítmény
@@ -228,10 +228,15 @@ A rendszergazda eltávolíthatja a függőségi ügynök a Windows Vezérlőpult
 A rendszergazda %Programfiles%\Microsoft függőségi Agent\Uninstall.exe távolítsa el a függőségi ügynököt is futtathatja.
 
 ### <a name="uninstall-the-dependency-agent-on-linux"></a>Távolítsa el a függőségi ügynököt Linux rendszeren
-A függőségi ügynök teljesen eltávolítása Linux, el kell távolítani az ügynök önmagát és az összekötő telepítésekor automatikusan települ az ügynök. Eltávolíthatja, mindkettő használatával a következő parancsot:
-
-    rpm -e dependency-agent dependency-agent-connector
-
+A függőségi ügynök teljesen eltávolítása Linux, el kell távolítani az ügynök önmagát és az összekötő telepítésekor automatikusan települ az ügynök. Használatával a következő parancsot is eltávolítható.
+<br>RHEL, CentOs vagy Oracle:
+```
+sudo rpm -e dependency-agent dependency-agent-connector
+```
+Ubuntu:
+```
+sudo dpkg --purge dependency-agent dependency-agent-connector
+```
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha bármely telepítését és futtatását a Service Map, akkor ez a szakasz segítséget. Ha még mindig nem tudja megoldani a problémát, forduljon a Microsoft Support.
 
@@ -316,6 +321,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 | 7.1 | 3.10.0-229 |
 | 7.2 | 3.10.0-327 |
 | 7.3 | 3.10.0-514 |
+| 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 | Operációs rendszer verziója | Kernel-verzió |
@@ -329,6 +335,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 | 6.6 | 2.6.32-504 |
 | 6.7 | 2.6.32-573 |
 | 6.8 | 2.6.32-642 |
+| 6.9 | 2.6.32-696 |
 
 #### <a name="red-hat-linux-5"></a>Red Hat Linux 5
 | Operációs rendszer verziója | Kernel-verzió |
@@ -336,10 +343,17 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
 | 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419 |
+| 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419<br>2.6.18-420 |
 
-#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Szoros vállalati Kernel az Oracle Enterprise Linux
+### <a name="ubuntu-server"></a>Ubuntu Server
+- Egyéni mag, beleértve a szabványos kernelek újrafordításainak maximális nem támogatottak.
 
+| Operációs rendszer verziója | Kernel-verzió |
+|:--|:--|
+| 16.04 | 4.4.0-98 |
+| 14.04 | 3.13.0-135<br>4.4.0-98 |
+
+### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Szoros vállalati Kernel az Oracle Enterprise Linux
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 | Operációs rendszer verziója | Kernel-verzió
 |:--|:--|

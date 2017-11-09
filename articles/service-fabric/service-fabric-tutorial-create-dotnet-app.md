@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2017
+ms.date: 11/08/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5a095663b7e716fd63322c9f89f67a1f3187638b
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 341d275fbf9f80ac9e3363757d880b9546bdee13
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Hozzon létre és telepítsen egy alkalmazást az ASP.NET Core Web API előtér- és egy állapotalapú háttér-szolgáltatás
 Ez az oktatóanyag egy sorozat része.  Megtudhatja, hogyan egy Azure Service Fabric-alkalmazás létrehozása az ASP.NET Core Web API előtér és állapot-nyilvántartó háttér-szolgáltatás az adatok tárolásához. Amikor végzett, hogy a szavazóalkalmazást az ASP.NET Core webes előtér-állapot-nyilvántartó háttér-szolgáltatás a fürt szavazó eredmények takarít meg, amely a. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [töltse le a forráskód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazás, és ugorjon előre [végezze el a szavazó mintaalkalmazás](#walkthrough_anchor).
@@ -228,7 +228,11 @@ Nyissa meg a *Views/Shared/_Layout.cshtml* fájlt, az ASP.NET-alkalmazás alapé
 ```
 
 ### <a name="update-the-votingwebcs-file"></a>A VotingWeb.cs fájl frissítése
-Nyissa meg a *VotingWeb.cs* fájlt, amely létrehozza az ASP.NET Core WebHost az állapot nélküli-szolgáltatást a WebListener webkiszolgáló belül.  Adja hozzá a `using System.Net.Http;` irányelv a fájl elejéhez.  Cserélje le a `CreateServiceInstanceListeners()` és a következő működni, akkor a módosítások mentéséhez.
+Nyissa meg a *VotingWeb.cs* fájlt, amely létrehozza az ASP.NET Core WebHost az állapot nélküli-szolgáltatást a WebListener webkiszolgáló belül.  
+
+Adja hozzá a `using System.Net.Http;` irányelv a fájl elejéhez.  
+
+Cserélje le a `CreateServiceInstanceListeners()` és a következő működni, akkor a módosítások mentéséhez.
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -257,7 +261,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 ### <a name="add-the-votescontrollercs-file"></a>Adja hozzá a VotesController.cs
-Vegyen fel egy vezérlőt, amely meghatározza a szavazó műveletek. Kattintson a jobb gombbal a a **tartományvezérlők** mappát, majd válassza ki **Hozzáadás -> Új elem -> osztály**.  A fájl neve "VotesController.cs", és kattintson a **Hozzáadás**.  Cserélje ki a fájl tartalmát a következőt, majd a változtatások mentéséhez.  A későbbi [VotesController.cs fájl frissíthető](#updatevotecontroller_anchor), ezt a fájlt úgy módosítjuk, hogy olvasási és írási szavazó adatok a háttér-szolgáltatás.  A lépést a tartományvezérlő nézetbe statikus karakterlánc adatokat ad vissza.
+Vegyen fel egy vezérlőt, amely meghatározza a szavazó műveletek. Kattintson a jobb gombbal a a **tartományvezérlők** mappát, majd válassza ki **Hozzáadás -> Új elem -> osztály**.  A fájl neve "VotesController.cs", és kattintson a **Hozzáadás**.  
+
+Cserélje ki a fájl tartalmát a következőt, majd a változtatások mentéséhez.  A későbbi [VotesController.cs fájl frissíthető](#updatevotecontroller_anchor), ezt a fájlt úgy módosítjuk, hogy olvasási és írási szavazó adatok a háttér-szolgáltatás.  A lépést a tartományvezérlő nézetbe statikus karakterlánc adatokat ad vissza.
 
 ```csharp
 using System;
@@ -296,7 +302,23 @@ namespace VotingWeb.Controllers
 }
 ```
 
+### <a name="configure-the-listening-port"></a>A figyelő portja konfigurálása
+A VotingWeb előtér-szolgáltatás létrehozásakor, a Visual Studio véletlenszerűen választ egy portot a figyelést a szolgáltatáshoz.  A VotingWeb szolgáltatás úgy működik, mint az előtér-alkalmazás, és elfogadja a külső forgalom, most, hogy a szolgáltatás kötése egy rögzített méretű és jól ismeri port. A Solution Explorerben nyissa meg a *VotingWeb/PackageRoot/ServiceManifest.xml*.  Keresés a **végpont** erőforrás a **erőforrások** szakaszt, és módosítsa a **Port** értéke 80-as, vagy egy másik portra. Üzembe helyezését, és futtassa az alkalmazást helyileg, az alkalmazás figyelőportja nyitott és elérhető a számítógépen kell lennie.
 
+```xml
+<Resources>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+           listen. Please note that if your service is partitioned, this port is shared with 
+           replicas of different partitions that are placed in your code. -->
+      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="80" />
+    </Endpoints>
+  </Resources>
+```
+
+Az alkalmazás URL-Címének tulajdonság értéke a szavazási projekt frissíteni, egy webböngészőben megnyílik a megfelelő porthoz hibakeresése "F5" használatával.  A Megoldáskezelőben, válassza ki a **Voting** projektet és a frissítés a **alkalmazás URL-Címének** tulajdonság.
+
+![Alkalmazás URL-címe](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ### <a name="deploy-and-run-the-application-locally"></a>Telepítheti és futtathatja az alkalmazást helyileg
 Most lépjen tovább, és futtassa az alkalmazást. Nyomja le az `F5` billentyűt a Visual Studióban, hogy üzembe helyezze az alkalmazást a hibakereséshez. `F5`sikertelen lesz, ha nem korábban nyissa meg a Visual Studióban **rendszergazda**.

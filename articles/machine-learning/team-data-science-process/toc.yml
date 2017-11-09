@@ -79,8 +79,23 @@
           maintainContext: true
         - name: Platformok és eszközök
           href: platforms-and-tools.md
-        - name: Hadoop testreszabása
-          href: customize-hadoop-cluster.md
+        - name: R és Python a HDInsight-fürtökön
+          items:
+            - name: A HDInsight-alapú Spark bemutatása
+              href: ../../hdinsight/spark/apache-spark-overview.md
+              maintainContext: true
+            - name: Apache Spark-fürt létrehozása az Azure HDInsightban
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md
+              maintainContext: true
+            - name: PySpark-kernelek Jupyter notebookokhoz
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md
+              maintainContext: true
+            - name: R Server a HDInsightban
+              href: ../../hdinsight/r-server/r-server-overview.md
+              maintainContext: true
+            - name: R Server a HDInsightban – első lépések
+              href: ../../hdinsight/r-server/r-server-get-started.md
+              maintainContext: true
         - name: Azure Machine Learning-munkaterület
           href: ../studio/create-workspace.md
           maintainContext: true

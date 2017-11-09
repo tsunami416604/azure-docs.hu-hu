@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2017
+ms.date: 11/08/2017
 ms.author: mimig
-ms.openlocfilehash: cf7ba26369b3978bb0c2ad5e903a7aee804017ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: a34c47efbe811bec2ebe2c43abb9516cdab492bd
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="performance-tips-for-azure-cosmos-db"></a>Teljesítmény tippek az Azure Cosmos DB rendszerhez
 Azure Cosmos-adatbázis egy gyors és rugalmas elosztott adatbázis, amely zökkenőmentesen méretezi, garantált késéssel és átviteli sebesség. Nincs a fő architektúra módosításokat, vagy írja meg az adatbázist az Cosmos DB méretezési komplex kódot. Felfelé és lefelé skálázás be lehető legkönnyebben egyetlen API-hívás vagy [SDK metódus hívása](set-throughput.md#set-throughput-sdk). Azonban mivel a Cosmos DB hálózati hívások keresztül érhető el nincsenek biztosíthatja, hogy a maximális teljesítmény érdekében az ügyféloldali optimalizálás.
@@ -165,7 +165,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     Cosmos DB kínál széles választéka, beleértve a felhasználó által megadott függvények, tárolt eljárások és eseményindítók – összes működési egy adatbázis-gyűjteményben lévő dokumentumokon hierarchikus és relációs lekérdezések az adatbázis-művelet. E műveletek költsége attól függően változik, a CPU IO és memória a művelet befejezéséhez szükséges. Továbbléphetnek és hardver-erőforrások kezelése helyett tulajdonképpen egy kérelem egységet (RU) egyetlen intézkedésként az adatbázis különböző műveleteket végezhet, és az alkalmazás kérelem kiszolgálásához szükséges erőforrásokhoz.
 
-    [Kérelem egységek](request-units.md) minden kapacitásegység megvásárolt száma alapján adatbázis fiókjához tartozó törlődnek. Kérelem egység fogyasztás másodpercenkénti történik. Olyan alkalmazások, amelyek mérete meghaladja a kiépített kérelmek egység aránya fiókjuk korlátozva, amíg a fiók fenntartott szint alatt esik sebessége. Ha az alkalmazás egy magasabb szintű teljesítmény, vásárolhat további kapacitást egység.
+    Átviteli sebesség ki van építve a mennyisége alapján [egységek kérelem](request-units.md) minden egyes tároló beállítása. Kérelem egység fogyasztás másodpercenkénti történik. Olyan alkalmazások, amelyek mérete meghaladja a kiépített kérelmek egység aránya fiókjuk korlátozva, amíg a fiók fenntartott szint alatt esik sebessége. Ha az alkalmazás egy magasabb szintű teljesítmény, a további kérelemegység kiépítés is megnövelheti az átviteli sebesség. 
 
     A lekérdezés összetettsége hatással van kérelem egységek művelet végrehajtásánál. Predikátumok a száma, a predikátum, felhasználó által megadott függvények száma és a forrás adatkészlet összes mérete befolyásolja a lekérdezési műveletek költségét.
 

@@ -8,6 +8,41 @@
 ### [Az előre konfigurált megoldás üzembe helyezése](iot-suite-remote-monitoring-deploy.md)
 ### [Az előre konfigurált megoldás üzemeltetése](iot-suite-remote-monitoring-explore.md)
 
+## Távoli figyelés (előző verzió)
+### [Mik azok az előre konfigurált megoldások?](iot-suite-v1-what-are-preconfigured-solutions.md)
+### [Gyakori kérdések](iot-suite-v1-faq.md)
+
+### Első lépések
+#### [Első lépések az előre konfigurált megoldásokkal](iot-suite-v1-getstarted-preconfigured-solutions.md)
+#### [Engedélyek az azureiotsuite.com webhelyen](iot-suite-v1-permissions.md)
+#### [A távoli figyelési megoldás bemutatója](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
+#### [A Raspberry Pi csatlakoztatása](iot-suite-v1-raspberry-pi-kit-get-started.md)
+##### C használata
+###### [Szimulált adatok](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
+###### [Valódi érzékelők használata](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
+###### [Vezérlőprogram-frissítés megvalósítása](iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md)
+##### Node.js használata
+###### [Szimulált adatok](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
+###### [Valódi érzékelők használata](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
+###### [Vezérlőprogram-frissítés megvalósítása](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
+#### Az Intel NUC-átjáró csatlakoztatása
+##### [Szimulált adatok](iot-suite-v1-gateway-kit-get-started-simulator.md)
+##### [Valódi érzékelő használata](iot-suite-v1-gateway-kit-get-started-sensortag.md)
+
+### Útmutató
+#### Szimulált eszköz csatlakoztatása
+##### [C Windowson](iot-suite-v1-connecting-devices.md)
+##### [C Linuxon](iot-suite-v1-connecting-devices-linux.md)
+##### [Node.js](iot-suite-v1-connecting-devices-node.md)
+#### [Logikai alkalmazás csatlakoztatása a távoli figyelési megoldáshoz](iot-suite-v1-logic-apps-tutorial.md)
+#### [Előre konfigurált megoldás testreszabása](iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)
+#### [Dinamikus telemetria használata a távoli figyelési megoldással](iot-suite-v1-dynamic-telemetry.md)
+#### [Egyéni szabály létrehozása a távoli figyelési megoldásban](iot-suite-v1-custom-rule.md)
+#### [Eszközinformációk a távoli figyelési megoldásban](iot-suite-v1-remote-monitoring-device-info.md)
+
+
+
+
 ## Prediktív karbantartás
 ### [A prediktív karbantartási megoldás áttekintése](iot-suite-predictive-overview.md)
 ### [A prediktív karbantartási megoldás bemutatója](iot-suite-predictive-walkthrough.md)

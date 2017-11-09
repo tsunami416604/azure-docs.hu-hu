@@ -1,5 +1,6 @@
 Ha az Azure-ban valamely virtuális gép (VM) indítási vagy lemezhibát észlel, előfordulhat, hogy magán a virtuális merevlemezen kell elvégeznie a hibaelhárítást. Egy gyakori példa erre, amikor egy sikertelen alkalmazásfrissítés megakadályozza, hogy a virtuális gép sikeresen elinduljon. A cikk leírja, hogyan csatlakoztathatja virtuális merevlemezét egy másik virtuális géphez az Azure Portal használatával a hibák javítása és az eredeti virtuális gép ismételt létrehozása érdekében.
 
+
 ## <a name="recovery-process-overview"></a>Helyreállítási folyamat áttekintése
 A hibaelhárítási folyamat a következő:
 

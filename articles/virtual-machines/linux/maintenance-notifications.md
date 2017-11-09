@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: zivr
-ms.openlocfilehash: be062ce9cfbe7486ef500dd9d27418cbf245d6e0
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: b31955e19883f9fe2e7ed6cf7f5076eaf52577c0
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>A Linux virtuális gépek kezelési tervezett karbantartási értesítések
 
@@ -65,6 +65,8 @@ A következő értékek visszaadott MaintenanceRedeployStatus alatt:
 | LastOperationResultCode               | Kezdeményezni a virtuális gép karbantartása tett legutóbbi kísérlet eredménye ||
 
 
+
+
 ## <a name="start-maintenance-on-your-vm-using-cli"></a>Karbantartási elindítani a virtuális gép parancssori felület használatával
 
 A következő hívást kezdeményez a virtuális gép karbantartási, ha `IsCustomerInitiatedMaintenanceAllowed` értéke TRUE.
@@ -74,6 +76,28 @@ az vm perform-maintenance rgName vmName
 ```
 
 [!INCLUDE [virtual-machines-common-maintenance-notifications](../../../includes/virtual-machines-common-maintenance-notifications.md)]
+
+## <a name="classic-deployments"></a>Klasszikus üzembe helyezés
+
+Ha továbbra is fennáll, melyeket az örökölt virtuális gépek telepített, a klasszikus üzembe helyezési modellel is CLI 1.0 használatával lekérdezés virtuális gépek és karbantartási kezdeményezni.
+
+Ellenőrizze, hogy a helyes mód írja be a klasszikus virtuális gép használható:
+
+```
+azure config mode asm
+```
+
+A karbantartási állapota a virtuális gépek nevű *myVM*, típus:
+
+```
+azure vm show myVM 
+``` 
+
+Elindítja a karbantartási, klasszikus virtuális gép nevű *myVM* a a *myService* szolgáltatás és *myDeployment* telepítési, írja be:
+
+```
+azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
+```
 
 
 ## <a name="faq"></a>GYIK

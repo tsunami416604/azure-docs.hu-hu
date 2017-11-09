@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/20/2017
+ms.date: 11/08/2017
 ms.author: gauravbh
-ms.openlocfilehash: b4fda06f85c7dab52ff38558b0d928193e0694f6
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 41eaff13cf55d58f58b33bc05d39a6665d51ea29
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>A piactéren Azure kezelt alkalmazások
 
@@ -122,7 +122,7 @@ A Termékváltozat jelenik meg, az a szülő-ajánlat a piactéren. Úgy tűnik,
    Töltse ki a következő mezőket:
 
    * **Aktuális verzió**: Adjon meg egy verziót a feltöltött csomag. Ez a formátumúnak kell lennie `{number}.{number}.{number}{number}`.
-   * **Válassza ki a csomagfájl**: Ez a csomag tartalmaz egy .zip-csomagja tömörített fájl szükséges. További információkért lásd: [katalógus szolgáltatásalkalmazás létrehozása](publish-service-catalog-app.md).
+   * **Válassza ki a csomagfájl**: Ez a csomag tartalmaz egy .zip-csomagja tömörített két szükséges fájlokat. Egy fájl egy Resource Manager-sablon, amely meghatározza a felügyelt alkalmazás üzembe helyezendő erőforrásokat. A többi fájl határozza meg a [felhasználói felület](create-uidefinition-overview.md) a fogyasztók számára a portálon keresztül a felügyelt alkalmazás telepítése. A felhasználói felületen elemeket, amelyek lehetővé teszik a fogyasztók paraméter értékének megadására, adja meg.
    * **PrincipalId**: Ez a tulajdonság az Azure Active Directory (Azure AD) azonosító egy felhasználó, a felhasználói csoport vagy az alkalmazás számára biztosított, amely az ügyfél előfizetéséhez az erőforrásokhoz való hozzáférést. A szerepkör-definíció ismerteti azokat az engedélyeket.
    * **Szerepkör-definíció**: Ez a tulajdonság esetén a beépített szerepköralapú hozzáférés-vezérlést (RBAC) szerepkörök az Azure AD által biztosított listáját. Kiválaszthatja, hogy a szerepkör, amely a legjobban megfelelő, az ügyfél nevében az erőforrásokat kezeljen.
 
@@ -197,5 +197,5 @@ Után adja meg az összes szakaszok, válassza ki **közzététel** a folyamat, 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Felügyelt alkalmazások bemutatása, lásd: [felügyelt használatát áttekintő cikkben](overview.md).
+* A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * További információ a szolgáltatáskatalógus kezelt alkalmazás közzététele: [létrehozása és a szolgáltatáskatalógus kezelt alkalmazás közzététele](publish-service-catalog-app.md).

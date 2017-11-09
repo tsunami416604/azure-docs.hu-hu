@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/08/2017
 ms.author: jingwang
-ms.openlocfilehash: 3f2b95e57e34905bf1128e9aee2862110a598f75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0351e4c4dcf19f9e4b6ec11c59c4dd00f0013a2
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +53,7 @@ Referenciaként alábbi táblázat a számát mutatja, másolása átviteli **MB
 ![Teljesítmény mátrix](./media/copy-activity-performance/CopyPerfRef.png)
 
 >[!IMPORTANT]
->Azure Data Factory 2-es verzióját, a másolási tevékenység végrehajtása az Azure integrációs futásidejű, a minimális felhő adatok adatátviteli egység esetén két.
+>Azure Data Factory 2-es verzióját, a másolási tevékenység végrehajtása az Azure integrációs futásidejű, a minimális megengedett felhő adatok adatátviteli egység esetén két. Ha nincs megadva, tekintse meg az alapértelmezett adatátviteli adategységek használatban lévő [adatátviteli adategységek felhőalapú](#cloud-data-movement-units).
 
 Vegye figyelembe a következő szempontok:
 
@@ -84,13 +84,12 @@ Vegye figyelembe a következő szempontok:
 
 A **felhő adatok adatátviteli egység (DMU)** egy mérték, amely jelöli az (a Processzor, memória és a hálózatierőforrás-lefoglalás kombinációja) adat-előállítóban egyetlen egységben. **Csak érvényes DMU [Azure integrációs futásidejű](concepts-integration-runtime.md#azure-integration-runtime)**, de nem [Self-hosted integrációs futásidejű](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-**A minimális felhő adatátviteli adategységek építve a másolási tevékenység során futtassa két.** A következő táblázat a különböző másolással használt alapértelmezett DMUs.
+**A minimális felhő adatátviteli adategységek építve a másolási tevékenység során futtassa két.** Ha nincs megadva, az alábbi táblázat a különböző másolással használt alapértelmezett DMUs:
 
 | Másolja át a forgatókönyvben | Szolgáltatás által meghatározott alapértelmezett DMUs |
 |:--- |:--- |
-| Adatok másolása a fájlalapú tárolók között | 2 és 16 számát és a fájlok méretétől függően. |
-| A Salesforce/Dynamics adatok másolása | 4 |
-| Minden egyéb másolatot forgatókönyvek | 2 |
+| Adatok másolása a fájlalapú tárolók között | 4 – 16 számát és a fájlok méretétől függően. |
+| Minden egyéb másolatot forgatókönyvek | 4 |
 
 Ez az alapértelmezett felülbírálásához adjon meg értéket a **cloudDataMovementUnits** tulajdonság az alábbiak szerint. A **engedélyezett értékek** a a **cloudDataMovementUnits** tulajdonság, 2, 4, 8, 16 és 32. A **felhő DMUs tényleges száma** egyenlő vagy kisebb, mint a konfigurált érték, attól függően, hogy a adatmintát, hogy használja-e a másolási művelet futásidőben. Egy adott másolási forrását, és a fogadó további egységek konfigurálásakor kaphat jobb teljesítménye szintjét kapcsolatos információk: a [teljesítményfigyelési](#performance-reference).
 

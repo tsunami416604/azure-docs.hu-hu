@@ -15,16 +15,17 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: huvalo
-ms.openlocfilehash: 283a296fb39863c2801be1093cc4f56904786abd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01fa162d41e03e29f3b6f0ca128e7cc49aa91abb
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>A Django Hello World webes alkalmazás a Windows Server virtuális gép
 
 > [!IMPORTANT] 
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager és a klasszikus üzembe helyezési modellel](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzembe helyezési modellben. Azt javasoljuk, hogy az új telepítések esetén a Resource Manager modellt használja.
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 Ez az oktatóanyag bemutatja, hogyan egy Django-alapú webhely a Windows Server Azure virtuális gépek üzemeltetéséhez. Az oktatóanyagban feltételezzük, hogy nincs korábbi tapasztalata kapcsolatban az Azure-ral. Az oktatóanyag befejezése után a Django-alapú alkalmazások és a felhőben futó lehet.
 

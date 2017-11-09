@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 238b7d6bb6289b5f2e8d2a20f4335724087dfd48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1be39ab258235740c7e0875a5c0c29ee4a665a71
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A művelet az Team tudományos folyamat: használata Azure HDInsight Hadoop-fürtök
 Ebben a bemutatóban használjuk a [Team adatok tudományos folyamat (TDSP)](overview.md) egy végpont forgatókönyv használatával egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolására, vizsgálatát, és a beállítást, a visszafejtés adatait a nyilvánosan rendelkezésre álló [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészletet, és lefelé az az adatokat. Az adatok modellek beépített Azure Machine Learning segítségével multiclass és bináris osztályozás és regressziós prediktív feladatok kezelésére.
@@ -59,15 +59,15 @@ Három példa a előrejelzés problémák, amely azon alapul, amelynek létrehoz
 
 1. **Bináris osztályozási**: előre jelezni, függetlenül attól, tipp kifizetett utazás, azaz egy *tipp\_összeg* nagyobb, mint 0 egy pozitív példában látható, miközben egy *tipp\_Összeg* $ 0 egy negatív példában látható.
    
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0
+        Class 0: tip_amount = $0
+        Class 1: tip_amount > $0
 2. **Multiclass besorolási**: út kifizette tipp összegek számos előre jelezni. Azt a osztani a *tipp\_összeg* öt bins vagy osztályok:
    
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0 and tip_amount <= $5
-        Class 2 : tip_amount > $5 and tip_amount <= $10
-        Class 3 : tip_amount > $10 and tip_amount <= $20
-        Class 4 : tip_amount > $20
+        Class 0: tip_amount = $0
+        Class 1: tip_amount > $0 and tip_amount <= $5
+        Class 2: tip_amount > $5 and tip_amount <= $10
+        Class 3: tip_amount > $10 and tip_amount <= $20
+        Class 4: tip_amount > $20
 3. **Regressziós feladat**: megjósolható a fizetős útnak tipp mennyisége.  
 
 ## <a name="setup"></a>Állítson be egy HDInsight Hadoop-fürt speciális elemzésekre
@@ -132,7 +132,7 @@ Az adatok most kell az Azure Blob Storage és a rendszer készen áll a HDInsigh
 > 
 > 
 
-Felderítő adatelemzés és az adatok mintavételi le a fürt átjárócsomópontjához szeretne használni, kövesse a témakörben ismertetett eljárás [a Head csomópont a Hadoop-fürt eléréséhez](customize-hadoop-cluster.md#headnode).
+Felderítő adatelemzés és az adatok mintavételi le a fürt átjárócsomópontjához szeretne használni, kövesse a témakörben ismertetett eljárás [a Head csomópont a Hadoop-fürt eléréséhez](customize-hadoop-cluster.md).
 
 Ez a forgatókönyv elsősorban használjuk írt lekérdezések [Hive](https://hive.apache.org/), egy SQL-szerű lekérdező nyelv, előzetes adatok explorations végrehajtásához. A Hive-lekérdezések .hql fájlok tárolják. Azt majd lefelé az az adatokat az Azure Machine Learning modellek készítéséhez használható.
 
@@ -723,17 +723,17 @@ Hive kiállító előfeltételként lekérdezi a a [és adatokat importálhat] [
 
 Egyes adatok a [és adatokat importálhat] [ import-data] modul és a bemeneti paramétereket:
 
-**HCatalog kiszolgáló URI azonosítója**: Ha a fürt neve abc123, akkor ez az egyszerűen: https://abc123.azurehdinsight.net
+**HCatalog kiszolgáló URI azonosítója**: Ha a fürtnév abc123, akkor egyszerűen: https://abc123.azurehdinsight.net
 
-**Hadoop felhasználói fiók nevét** : A felhasználó nevét, a fürthöz kiválasztott (**nem** a távelérés felhasználónév)
+**Hadoop felhasználói fiók nevét**: A felhasználó nevét, a fürthöz kiválasztott (**nem** a távelérés felhasználónév)
 
-**Hadoop ser fiók jelszava** : A jelszó a fürthöz kiválasztott (**nem** a távelérés jelszó)
+**Hadoop ser fiók jelszava**: A jelszó a fürthöz kiválasztott (**nem** a távelérés jelszó)
 
-**Az kimeneti adatok** : Ez kell lennie az Azure van kiválasztva.
+**Az kimeneti adatok**: Ez kell lennie az Azure van kiválasztva.
 
-**Az Azure storage-fiók neve** : az alapértelmezett tárfiók neve a fürthöz rendelt.
+**Az Azure storage-fiók neve**: az alapértelmezett tárfiók neve a fürthöz rendelt.
 
-**Az Azure Tárolónév** : Ez az alapértelmezett tároló a fürt nevét, és általában ugyanaz, mint a fürt nevét. A fürt "abc123" nevű ez pedig csak abc123.
+**Az Azure Tárolónév**: Ez az alapértelmezett tároló a fürt nevét, és általában ugyanaz, mint a fürt nevét. A fürt "abc123" nevű ez pedig csak abc123.
 
 > [!IMPORTANT]
 > **Bármely táblájának jelenítsük lekérdezés használatával a [és adatokat importálhat] [ import-data] modul az Azure Machine Learning egy belső tábla kell lennie.** Tipp: a meghatározhatja, hogy a tábla T D.db adatbázisban egy belső tábla a következőképpen történik.
@@ -795,7 +795,7 @@ b. Ehhez a kísérlethez használjuk a félreértések mátrix nézze meg az el�
 
 ![Zavart mátrix](./media/hive-walkthrough/cxFmErM.png)
 
-Vegye figyelembe, hogy az osztály pontosság elterjedt osztályokon ugyan meglehetősen helyes, a modell nem "tanulás" szép munka meg az egyes osztályok.
+Vegye figyelembe, hogy az osztály pontosság elterjedt osztályokon meglehetősen megfelelőek, amíg a modell nem "tanulás" szép munka meg az egyes osztályok.
 
 **3. Regressziós feladat**: megjósolható a fizetős útnak tipp mennyisége.
 
@@ -814,12 +814,12 @@ b. A regresszió problémákat a az előrejelzési pontosság az előrejelzés, 
 Azt látja, hogy a együttható kapcsolatos 0.709, körülbelül 71 % varianciája úgy magyarázza a modell együttható.
 
 > [!IMPORTANT]
-> Az Azure Machine Learning és elérése, és ezzel kapcsolatos további tudnivalókért tekintse meg [Mi az Machine Learning?](../studio/what-is-machine-learning.md). A Machine Learning kísérleteket Azure Machine Learning szolgáltatásban egy csoportját játszik nagyon hasznos erőforrás a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/). A gyűjtemény egy kísérletek skáláját ismerteti, és az Azure Machine Learning képességek körének való alapos bevezetést tartalmaz.
+> Az Azure Machine Learning és elérése, és ezzel kapcsolatos további tudnivalókért tekintse meg [Mi az Machine Learning](../studio/what-is-machine-learning.md). A Machine Learning kísérleteket Azure Machine Learning szolgáltatásban egy csoportját játszik nagyon hasznos erőforrás a [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/). A gyűjtemény egy kísérletek skáláját ismerteti, és az Azure Machine Learning képességek körének való alapos bevezetést tartalmaz.
 > 
 > 
 
 ## <a name="license-information"></a>Licencinformációk
-Ez a minta a forgatókönyv és a hozzá tartozó szkriptek osztanak meg a Microsoft a MIT licence. Ellenőrizze a LICENSE.txt fájlt további részletekért a Githubon mintakódot a címtárban.
+Ez a minta a forgatókönyv és a hozzá tartozó szkriptek osztanak meg a Microsoft a MIT licence. Ellenőrizze a LICENSE.txt fájl a mintakódot a Githubon további részleteket.
 
 ## <a name="references"></a>Referencia
 • [Andrés Monroy NYC Taxi utak letöltési oldala](http://www.andresmh.com/nyctaxitrips/)  

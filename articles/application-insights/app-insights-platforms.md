@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: mbullwin
-ms.openlocfilehash: 4c87ebbcd79576553ad95b99cbdca8ad33a4452e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 6bd3419a3483e108dc13f33ada7beeb2fd7f1eda
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Fejlesztői elemzések: nyelvek, platformok és integrációk
 Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósításai, amelyekről hallottunk, beleértve néhány harmadik fél által létrehozottat.
@@ -35,7 +35,6 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [Bármi más](#projects)
 
 ## <a name="platforms-and-frameworks"></a>Platformok és keretrendszerek
-* [Angular](https://www.npmjs.com/package/angular-applicationinsights)
 * [ASP.NET](app-insights-asp-net.md)
 * [ASP.NET – már élő alkalmazásokhoz](app-insights-monitor-performance-live-website-now.md)
 * [ASP.NET Core](app-insights-asp-net-core.md)

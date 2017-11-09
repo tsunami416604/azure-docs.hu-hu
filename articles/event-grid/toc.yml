@@ -4,6 +4,8 @@
   items:
     - name: Bevezetés az Event Grid használatába
       href: overview.md
+    - name: Üzenetküldő szolgáltatások összehasonlítása
+      href: compare-messaging-services.md
 - name: Gyors útmutatók
   items:
     - name: Blob Storage-események irányítása – Azure CLI
@@ -14,7 +16,7 @@
       href: custom-event-quickstart-powershell.md
     - name: Egyéni esemény létrehozása – Azure Portal
       href: custom-event-quickstart-portal.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Virtuális gépek változásainak monitorozása logikai alkalmazásokkal
       href: monitor-virtual-machine-changes-event-grid-logic-app.md

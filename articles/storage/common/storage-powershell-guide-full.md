@@ -11,13 +11,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2017
+ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: 1046e407bb4e9d07e91014384e9eba7b0c7020a8
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d3f70880e58a21a1ae61577b04e3155c5fec6552
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
 
@@ -165,7 +165,7 @@ A más kulcs újragenerálása, használja a `key2` ahelyett, hogy a kulcs nevek
 Újragenerálja a kulcsokat egyikét, és majd még egyszer tekintse meg az új érték beolvasása.
 
 > [!NOTE] 
-> Végre kell hajtania üzemi tárfiók kulcsának újragenerálása előtt gondosan meg kell tervezni. Legalább az egyik kulcs újragenerálása érvényteleníti a hozzáférési kulcs újragenerálása használatával bármely alkalmazás. További információkért lásd: [Regenate tárelérési kulcsok](storage-create-storage-account.md#regenerate-storage-access-keys).
+> Végre kell hajtania üzemi tárfiók kulcsának újragenerálása előtt gondosan meg kell tervezni. Legalább az egyik kulcs újragenerálása érvényteleníti a hozzáférési kulcs újragenerálása használatával bármely alkalmazás. További információkért lásd: [tárelérési kulcsok újragenerálása](storage-create-storage-account.md#regenerate-storage-access-keys).
 
 
 ### <a name="delete-a-storage-account"></a>Tárfiók törlése 
@@ -216,6 +216,12 @@ Most, hogy megismerte a PowerShell használatával a tárfiók kezelése, a köv
 * [A PowerShell-lel blobok kezelése](../blobs/storage-how-to-use-blobs-powershell.md)
 * [A PowerShell-lel fájlok kezelése](../files/storage-how-to-use-files-powershell.md)
 * [A PowerShell-lel várólisták kezelése](../queues/storage-powershell-how-to-use-queues.md)
+* [Azure Table storage műveleteket a PowerShell használatával](../../cosmos-db/table-storage-how-to-use-powershell.md)
+
+Az Azure Cosmos DB tábla API prémium szolgáltatások biztosít a table storage például kulcsrakész globális terjesztési kis késleltetésű olvasások és írások, másodlagos indexelő vagy dedikált átviteli sebesség. 
+
+* További információkért lásd: [Azure Cosmos DB tábla API](../../cosmos-db/table-introduction.md). 
+* Azure Cosmos DB tábla API-műveleteket a PowerShell használatával, lásd: [végre Azure Cosmos DB tábla API-műveleteket a PowerShell-lel](../../cosmos-db/table-powershell.md).
 
 ## <a name="azures-independently-deployed-clouds"></a>Azure-egymástól függetlenül telepített felhők
 
