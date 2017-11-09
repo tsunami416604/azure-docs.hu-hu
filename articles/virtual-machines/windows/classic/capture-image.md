@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 6032263848c469ce2f416306e5c91c29f4cb30e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6fa6d3099d8427a186e6095fdcbbc327d1acab7f
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Hagyományos módon üzembe helyezett Azure -beli windowsos virtuális gép lemezképének létrehozása.
 > [!IMPORTANT]
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Erőforrás-kezelő modell információkért lásd: [egy általánosított virtuális Gépet az Azure-ban a felügyelt lemezképének](../capture-image-resource.md).
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 Ez a cikk bemutatja, hogy használhassa az képként más virtuális gépek létrehozásához a Windows rendszert futtató Azure virtuális gép rögzítése. Ez a rendszerkép tartalmazza az operációsrendszer-lemez és a virtuális géphez csatolt adatok lemezzel. Hálózati konfigurációk, ezért szüksége hálózati konfigurációk beállításához, a más virtuális gépek, amelyek a lemezkép létrehozásakor nem tartoznak bele.
 

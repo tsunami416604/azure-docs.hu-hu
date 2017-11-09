@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
-ms.openlocfilehash: 6fbd96935f444d8b0c6d068ebd0d28e612f19816
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5477068ddab46bbe0fdbdda754227642ed97bb36
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>A Resource Manager telepítés Windows rendszerállapot biztonsági mentését
 Ez a cikk ismerteti a rendszerállapot biztonsági mentését a Windows Server az Azure-bA. Ez az oktatóanyag végigvezeti az alapokon.
@@ -29,7 +29,7 @@ Ha többet szeretne megtudni az Azure Backupról, olvassa el ezt az [áttekinté
 Ha még nincs Azure-előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), amellyel bármely Azure-szolgáltatást elérhet.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
-A fájlok és mappák biztonsági mentéséhez létre kell hoznia egy Recovery Services-tárolót abban a régióban, ahol az adatokat tárolni szeretné. Emellett a tároló replikálásának módját is meg kell határoznia.
+Rendszerállapot biztonsági mentését a Windows Server, szüksége Recovery Services-tároló létrehozásához az a régió, ahol szeretné tárolni az adatokat. Emellett a tároló replikálásának módját is meg kell határoznia.
 
 ### <a name="to-create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-előfizetésével.
@@ -135,6 +135,9 @@ Most, hogy létrehozta a tárolót, konfigurálja a Windows rendszerállapotról
     A tároló hitelesítő adatait a rendszer a Letöltések mappába menti. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Kattintson a **Save** (Mentés) gombra. Ha véletlenül a **Megnyitás** gombra kattint, hagyja, hogy sikertelen legyen a párbeszédpanel, amely megpróbálja megnyitni a tároló hitelesítő adatait. A tároló hitelesítő adatai nem nyithatók meg. Folytassa a következő lépéssel. A tároló hitelesítő adatai a Letöltések mappában találhatók.   
 
     ![a tároló hitelesítő adatainak letöltése befejeződött](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
+> [!NOTE]
+> A tárolói hitelesítő adatok csak olyan helyre, amely a Windows Server, amelyen az ügynök használni kívánt helyi kell menteni. 
+>
 
 ## <a name="install-and-register-the-agent"></a>Az ügynök telepítése és regisztrálása
 
@@ -163,40 +166,13 @@ Most, hogy létrehozta a tárolót, konfigurálja a Windows rendszerállapotról
 
 Az ügynök most telepítve van, és a gépe regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
 
-## <a name="back-up-windows-server-system-state-preview"></a>Készítsen biztonsági másolatot a Windows Server rendszer állapota (előzetes verzió)
-A kezdeti biztonsági másolatot a három feladatokból áll:
+## <a name="back-up-windows-server-system-state"></a>A Windows Server rendszerállapotának biztonsági mentése 
+A kezdeti biztonsági másolatot a két feladatokból áll:
 
-* Rendszerállapot biztonsági mentésének segítségével az Azure Backup szolgáltatás ügynökének engedélyezése
 * A biztonsági mentés ütemezése
-* A fájlok és mappák biztonsági mentése első alkalommal
+* Rendszerállapot biztonsági mentését az első alkalommal
 
 A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Recovery Services-ügynököt.
-
-### <a name="to-enable-system-state-backup-using-the-azure-backup-agent"></a>Rendszerállapot biztonsági mentésének segítségével az Azure Backup szolgáltatás ügynöke engedélyezése
-
-1. Egy PowerShell-munkamenetben futtassa a következő parancs futtatásával állítsa le az Azure Backup motor.
-
-  ```
-  PS C:\> Net stop obengine
-  ```
-
-2. Nyissa meg a Windows beállításjegyzéket.
-
-  ```
-  PS C:\> regedit.exe
-  ```
-
-3. Adja hozzá a következő beállításkulcs DWord értéket.
-
-  | Beállításjegyzékbeli elérési út | Beállításkulcs | Duplaszó |
-  |---------------|--------------|-------------|
-  | HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider | TurnOffSSBFeature | 2 |
-
-4. Indítsa újra a biztonsági mentés motor hajtja végre a következő parancsot egy rendszergazda jogú parancssort a.
-
-  ```
-  PS C:\> Net start obengine
-  ```
 
 ### <a name="to-schedule-the-backup-job"></a>A biztonsági mentési feladat ütemezése
 
@@ -216,11 +192,7 @@ A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Re
 
 6. Kattintson a **Tovább** gombra.
 
-7. A rendszerállapot biztonsági mentése és a megőrzési ütemezés automatikusan értéke készítsen biztonsági másolatot minden vasárnap 9:00 PM helyi időben, és a megőrzési idő 60 napra van állítva.
-
-   > [!NOTE]
-   > Rendszerállapot biztonsági mentési és adatmegőrzési házirend automatikusan konfigurálja. Ha a biztonsági mentést a fájlok és mappák mellett a Windows Server rendszer állapotáról, adja meg, csak a biztonsági mentési és adatmegőrzési házirend a fájl biztonsági mentésekhez, a varázslóból. 
-   >
+7. Válassza ki a szükséges biztonsági mentés gyakoriságát és a rendszerállapot biztonsági másolatok megőrzésének következő lapjain. 
 
 8. A Jóváhagyás lapon ellenőrizze az információkat, majd kattintson a **Befejezés** gombra.
 
@@ -234,88 +206,21 @@ A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Re
 
     ![Windows Server biztonsági másolat készítése](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. A Jóváhagyás lapon tekintse át azokat a beállításokat, amelyeket a Biztonsági másolat készítése varázsló a gép biztonsági mentéséhez fog használni. Ezután kattintson a **Biztonsági mentés** gombra.
+3. Válassza ki **rendszerállapot** a a **válassza ki a biztonsági másolati elem** , amely akkor jelenik meg, és kattintson a képernyő **következő**.
+
+4. A Jóváhagyás lapon tekintse át azokat a beállításokat, amelyeket a Biztonsági másolat készítése varázsló a gép biztonsági mentéséhez fog használni. Ezután kattintson a **Biztonsági mentés** gombra.
 
 4. A varázsló bezárásához kattintson a **Bezárás** gombra. Ha bezárja a varázslót a biztonsági mentési folyamat befejezése előtt, a varázsló továbbra is fut a háttérben.
 
-5. Ha a kiszolgálón kívül a Windows Server rendszerállapot biztonsági mentése a fájlokat és mappákat a biztonsági mentés most varázsló csak mentésére fájlokat. Hajtsa végre az alkalmi rendszerállapot biztonsági mentése, használja a következő PowerShell-parancsot:
 
-    ```
-    PS C:\> Start-OBSystemStateBackup
-    ```
-
-  A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot jelenik meg a biztonsági mentési konzolon.
+A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot jelenik meg a biztonsági mentési konzolon.
 
   ![IR befejezve](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
-
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-Az alábbi kérdések és válaszok kiegészítő információkat.
-
-### <a name="what-is-the-staging-volume"></a>Mi az az átmeneti kötet?
-
-Az átmeneti kötet a köztes helyre, ahol a natív módon, a Windows Server biztonsági másolat készít elő a rendszerállapot biztonsági mentését jelöli. Az Azure Backup szolgáltatás ügynökének majd tömöríti és titkosítja a köztes biztonsági mentési és biztonságos HTTPS protokollon keresztül elküldi a konfigurált Recovery Services-tároló. **Erősen ajánlott kapcsolatot hoz létre az átmeneti köteten nem-Windows-OS köteten. Azt láthatja, hogy a rendszerállapot biztonsági mentéseit problémákat, ha a hibaelhárítás első lépése a átmeneti kötet hely annak ellenőrzése, hogy áll.** 
-
-### <a name="how-can-i-change-the-staging-volume-path-specified-in-the-azure-backup-agent"></a>Hogyan lehet módosítani a átmeneti kötet megadott elérési út az Azure Backup szolgáltatás ügynökének?
-
-Az átmeneti kötet alapértelmezés szerint a gyorsítótár mappában található. 
-
-1. Ez a hely módosításához használja a következő parancsot (a rendszergazda jogú parancssorból):
-  ```
-  PS C:\> Net stop obengine
-  ```
-
-2. Ezután frissítse a következő beállításjegyzék-bejegyzések az új kötet átmeneti mappa elérési útját.
-
-  |Beállításjegyzékbeli elérési út|Beállításkulcs|Érték|
-  |-------------|------------|-----|
-  |HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider | SSBStagingPath | Új átmeneti kötet hely |
-
-Az átmeneti elérési út kis-és nagybetűket, és a pontos azonos kis-és nagybetűk, mi létezik a kiszolgálón kell lennie. 
-
-3. Az átmeneti kötet elérési út módosítása után indítsa újra a biztonsági mentés motor:
-  ```
-  PS C:\> Net start obengine
-  ```
-4. A módosított elérési utat átvételéhez, nyissa meg a Microsoft Azure Recovery Services Agent ügynököt, és rendszerállapot ad hoc biztonsági mentés.
-
-### <a name="why-is-the-system-state-default-retention-set-to-60-days"></a>A rendszerállapot alapértelmezett megőrzési miért van beállítva 60 napra?
-
-A rendszerállapot biztonsági mentését élettartama megegyezik a Windows Server Active Directory szerepkör "szemétgyűjtési" beállítást. A törlésre kijelölt élettartama bejegyzés alapértelmezett értéke 60 nap. Ez az érték akkor állíthatók be a címtár szolgáltatást (NTDS) konfigurációs objektum.
-
-### <a name="how-do-i-change-the-default-backup-and-retention-policy-for-system-state"></a>Hogyan módosítható az alapértelmezett biztonsági mentési és adatmegőrzési rendszerállapot?
-
-Az alapértelmezett biztonsági mentési és adatmegőrzési rendszerállapot módosíthatja:
-1. Állítsa le a biztonsági mentés motor. A következő parancsot egy emelt szintű parancssorból.
-
-  ```
-  PS C:\> Net stop obengine
-  ```
-
-2. Adja hozzá, vagy frissítse a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider következő beállításjegyzékbeli kulcs bejegyzéseit.
-
-  |Rendszerleíró adatbázis neve|Leírás|Érték|
-  |-------------|-----------|-----|
-  |SSBScheduleTime|A biztonsági másolat készítésének idején konfigurálásához használt. Alapértelmezett érték a helyi idő du. 9.|DWord: Formátum HHMM (decimális) például 2130 9:30 PM helyi ideje|
-  |SSBScheduleDays|Az nap, amikor a rendszerállapot biztonsági mentését kell végrehajtani, a megadott időpontban konfigurálásához használt. Egyes számjegyeket adja meg a napokat a hét. 0 a vasárnapot jelenti, 1 hétfő, és így tovább. Alapértelmezett napi biztonsági mentéshez a vasárnapot jelenti.|DWord: napokat a hét például 1230 ütemez biztonsági mentések hétfő, kedd, szerda és vasárnap (decimális) biztonsági mentés futtatására.|
-  |SSBRetentionDays|A biztonsági mentés napokban konfigurálásához használt. Alapértelmezett érték 60. Megengedett maximális értéket 180.|DWord: Napig szeretné megőrizni a biztonsági mentés (decimális).|
-
-3. A következő paranccsal indítsa újra a biztonsági mentési motor.
-    ```
-    PS C:\> Net start obengine
-    ```
-
-4. Nyissa meg a Microsoft Recovery Services Agent ügynököt.
-
-5. Kattintson a **biztonsági mentés ütemezése** majd **következő** mindaddig, amíg a módosítások megjelenése.
-
-6. Kattintson a **Befejezés** a módosítások életbe léptetéséhez.
-
 
 ## <a name="questions"></a>Kérdései vannak?
 Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Következő lépések
 * További részletek a [Windows rendszerű gépek biztonsági mentéséről](backup-configure-vault.md).
-* Most, hogy biztonsági másolatot készített a fájlokról és mappákról, [kezelheti a tárlókat és a kiszolgálókat](backup-azure-manage-windows-server.md).
+* Most, hogy készített biztonsági másolatot a Windows Server rendszer állapota, [a tárolók és a kiszolgálók felügyeletére](backup-azure-manage-windows-server.md).
 * Ha vissza kell állítania egy biztonsági másolatot, ezzel a cikkel [állíthat vissza fájlokat Windows rendszerű gépre](backup-azure-restore-windows-server.md).

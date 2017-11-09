@@ -380,6 +380,8 @@
           href: how-to-use-perfInsights.md
         - name: Teljesítménydiagnosztikai virtuálisgép-bővítmény
           href: performance-diagnostics-vm-extension.md
+        - name: Beágyazott virtualizálás használata
+          href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: Referencia
   items:
     - name: Azure CLI

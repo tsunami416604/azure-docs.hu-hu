@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: b7583a1556bb1113f349a78890768451e39c6878
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af32c3f2d96ca51f59e29f8d9635caa290d580aa
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect szinkronizálása: működtetési feladatok és szempont
 Ez a témakör célja az Azure AD Connect szinkronizálási szolgáltatás működési feladatokat írják le.
@@ -68,11 +68,18 @@ Most előkészítette rendelkezik exportálási módosításai az Azure AD és a
 #### <a name="verify"></a>Ellenőrzés
 1. Indítsa el egy parancssort, és navigáljon a`%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. Futtatás: `csexport "Name of Connector" %temp%\export.xml /f:x` a nevét, az összekötő szinkronizálási szolgáltatás található. A "contoso.com – AAD" hasonló névvel rendelkezik az Azure AD.
-3. A szakasz a PowerShell parancsfájl másolása [CSAnalyzer](#appendix-csanalyzer) nevű fájlba `csanalyzer.ps1`.
-4. Nyisson meg egy PowerShell-ablakot, és keresse meg a mappát, amelyben létrehozta a PowerShell-parancsfájlt.
-5. Futtatás: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
-6. Most már rendelkezik egy fájlt **processedusers1.csv** , amely a Microsoft Excel kell vizsgálni. Az Azure ad Szolgáltatásba exportálni előkészített összes módosítást a fájlban találhatók.
-7. Hajtsa végre a módosításokat az adatok vagy konfiguráció, és futtassa ezeket a lépéseket újra (importálás és szinkronizálás és ellenőrzése) addig, amíg az exportálni kívánt módosításokkal várható.
+3. Futtatás: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` % temp %, amely megfelel a Microsoft Excel export.csv nevű fájlt. Ez a fájl minden exportálni, módosításokat tartalmaz.
+4. Hajtsa végre a módosításokat az adatok vagy konfiguráció, és futtassa ezeket a lépéseket újra (importálás és szinkronizálás és ellenőrzése) addig, amíg az exportálni kívánt módosításokkal várható.
+
+**A export.csv fájl ismertetése** a fájlt a legtöbb értetődő. Néhány rövidítések tudni, hogy a tartalom:
+* OMODT – objektumtípus-módosítás. Azt jelzi, hogy a művelet az objektum szinten egy hozzáadása, frissítése vagy törlése.
+* AMODT – attribútumtípus módosítását. Azt jelzi, hogy a művelet egy attribútum szinten egy hozzáadása, frissítése vagy törlése.
+
+**Közös azonosítók beolvasása** a export.csv fájl exportálni, minden módosításokat tartalmaz. A kapcsolódási térbe szereplő objektum állásidejének változás minden sor megfelel-e, és az objektum megkülönböztető név attribútum által azonosított. A megkülönböztető név attribútum található a kapcsolódási térbe objektumhoz hozzárendelt egyedi azonosítója. Ha sok sorok/módosítások elemzéséhez export.csv rendelkezik, ahhoz, hogy mérje fel, hogy milyen objektumokat, a változtatások vannak, csak a megkülönböztető név attribútum-alapú nehéz lehet. Egyszerűbbé elemzése a módosításokat, használja a csanalyzer.ps1 PowerShell-parancsfájlt. A parancsfájl beolvassa az objektumok közös azonosítói (például displayName, userPrincipalName). A parancsprogram használata:
+1. A szakasz a PowerShell parancsfájl másolása [CSAnalyzer](#appendix-csanalyzer) nevű fájlba `csanalyzer.ps1`.
+2. Nyisson meg egy PowerShell-ablakot, és keresse meg a mappát, amelyben létrehozta a PowerShell-parancsfájlt.
+3. Futtatás: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
+4. Most már rendelkezik egy fájlt **processedusers1.csv** , amely a Microsoft Excel kell vizsgálni. Vegye figyelembe, hogy a fájl tartalmazza-e a leképezés a megkülönböztető név attribútum csak akkor közös azonosítók (például displayName és userPrincipalName). Jelenleg nem tartalmazza a tényleges Attribútummódosítások, amelyek exportálásra váró adatokat.
 
 #### <a name="switch-active-server"></a>Az active server kapcsoló
 1. A jelenleg aktív kiszolgálón vagy kapcsolja ki a kiszolgálót (a DirSync vagy FIM vagy az Azure AD Sync), akkor nem exportálása az Azure ad Szolgáltatásba, vagy állítsa az átmeneti módban (az Azure AD Connect).

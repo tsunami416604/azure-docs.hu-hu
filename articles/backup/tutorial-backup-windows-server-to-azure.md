@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.openlocfilehash: f81f23862e783de07b5ec5aebad7f0a781168bd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7caf1dd3fa5ef295c2472cc11deb2895fc2a7111
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="back-up-windows-server-to-azure"></a>A Windows Server biztonság mentése az Azure-be
 
@@ -116,23 +116,19 @@ A Microsoft Azure Recovery Services Agent ügynök használatával ütemezni, am
 
 3. Kattintson a **következő** lehetőségre, és navigáljon a **kiválasztja az elemeket a biztonsági mentést** lap.
 
-4. Kattintson a **elemek hozzáadása** és a párbeszédpanelen válassza ki a megnyíló **rendszerállapot** és fájlok vagy mappák, amelyet szeretne biztonsági másolatot készíteni. Ezután kattintson az **OK** gombra.
+4. Kattintson a **elemek hozzáadása** és a megnyíló párbeszédpanelen válassza ki **rendszerállapot** és fájlok vagy mappák, amelyet szeretne biztonsági másolatot készíteni. Ezután kattintson az **OK** gombra.
 
 5. Kattintson a **Tovább** gombra.
 
-6. Az a **adja meg a biztonsági mentési ütemezés** lapján adja meg az a nap vagy hét, amikor biztonsági mentést kell fájlok és mappák elindul. A rendszerállapot biztonsági mentésének ütemezését a rendszer automatikusan konfigurálja. 
+6. Az a **biztonsági mentési ütemezés megadása (rendszerállapot)** adja meg azokat a nap vagy hét, amikor biztonsági mentést kell rendszerállapot elindul, és kattintson **tovább** 
 
-    ![infrastruktúra előkészítése](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
- 
-
-
-7.  Az a **válassza ki az adatmegőrzési** lapon, válassza ki az adatmegőrzési fájlok és mappák biztonsági másolatot. A megőrzési időszak a rendszerállapot biztonsági mentések automatikusan 60 napra van állítva.
+7.  Az a **válassza ki az adatmegőrzési (rendszerállapot)** lapon válassza ki az adatmegőrzési a rendszerállapot biztonsági másolatot, majd kattintson **tovább**
+8. Hasonlóképpen válassza ki a kijelölt fájlok és mappák biztonsági mentési ütemezés és a megőrzési házirend. 
 8.  Az a **válassza a kezdeti biztonsági mentés típusa** lapon, hagyja a beállítást **automatikusan a hálózaton keresztül** kiválasztva, és kattintson **következő**.
 9.  Az a **megerősítő** lapon tekintse át az adatokat, és kattintson a **Befejezés**.
 10. Miután a varázsló befejezte a biztonsági mentési ütemezés létrehozását, kattintson a **Bezárás** gombra.
 
 ## <a name="perform-an-ad-hoc-back-up"></a>Hajtsa végre az ad hoc biztonsági mentése
-
 
 Az ütemezés hozott létre, ha biztonsági mentési feladatok futtatásához. Azonban nem készített biztonsági másolatot a kiszolgálóról. Vész helyreállítási ajánlott annak biztosítására, a kiszolgáló adatrugalmasság egy igény szerinti biztonsági mentés futtatására.
 
@@ -140,8 +136,9 @@ Az ütemezés hozott létre, ha biztonsági mentési feladatok futtatásához. A
 
     ![infrastruktúra előkészítése](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
 
-2.  Az a **megerősítő** lapján tekintse át a beállításokat, amelyek a **biztonsági másolat készítése most** varázsló használatával készítsen biztonsági másolatot a kiszolgálóról. Ezután kattintson a **Biztonsági mentés** gombra.
-3.  A varázsló bezárásához kattintson a **Bezárás** gombra. Ha a biztonságimásolat-folyamatának befejeződése előtt bezárja a varázslót, a varázsló továbbra is fut a háttérben.
+2.  Az a **biztonsági másolat készítése most** varázsló, jelölje be egy **fájlok és mappák** vagy **rendszerállapot** készítsen biztonsági másolatot, és kattintson a kívánt **tovább** 
+3. Az a **megerősítő** lapján tekintse át a beállításokat, amelyek a **biztonsági másolat készítése most** varázsló használatával készítsen biztonsági másolatot a kiszolgálóról. Ezután kattintson a **Biztonsági mentés** gombra.
+4.  A varázsló bezárásához kattintson a **Bezárás** gombra. Ha a biztonságimásolat-folyamatának befejeződése előtt bezárja a varázslót, a varázsló továbbra is fut a háttérben.
 4.  A kezdeti biztonsági mentés befejezése után **feladata befejezve** állapota megjelenik a **feladatok** a MARS agent konzol ablaktáblájában.
 
 

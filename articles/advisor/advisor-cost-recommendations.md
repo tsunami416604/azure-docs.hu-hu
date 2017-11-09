@@ -14,45 +14,34 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 51320d93689da3e37c0946d8877b27a11793d9c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b9c7037271fabd67c1ada80420ad72c340e46bb
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="advisor-cost-recommendations"></a>Költség javaslatokat biztosít
 
 Az Advisor segítségével optimalizálhatja, és csökkentheti a teljes Azure töltött túl magas és üresjárati erőforrások azonosításával. Akkor is beolvasása költség javaslatokat a **költség** az Advisor irányítópult fület.
 
-![Az Advisor költség lap](./media/advisor-cost-recommendations/advisor-cost-tab2.png)
-
-## <a name="optimize-virtual-machine-spend-by-resizing-underutilized-instances"></a>Optimalizálhatja a túl példányok átméretezésével töltött virtuális gép 
+## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizálása virtuális gép töltött átméretezésével vagy a túl példány leállítása 
 Bár egyes alkalmazás-forgatókönyvekre eredményezhet alacsony kihasználtságú úgy lett kialakítva, gyakran mentheti pénz való kezelésekor a a virtuális gépek száma és mérete. Az Advisor figyeli a virtuális gépek használatának 14 napja, és majd azonosítja a kis-kihasználtságának virtuális gépek. Virtuális gépek, amelyek CPU-felhasználás csak 5 % vagy kevesebb és hálózati aktivitás a 7 MB vagy kisebb a négy vagy több napot minősülnek alacsony használt virtuális gépek.
 
-Az Advisor jeleníti meg, hogy ha szeretné leállítani, vagy méretezze át a virtuális gép futtatásához Folytatás becsült költségét.  
+Az Advisor jeleníti meg, hogy ha szeretné leállítani, vagy méretezze át a virtuális gép futtatásához Folytatás becsült költségét.
 
-![Az Advisor költségeket, virtuális gépek átméretezésével kapcsolatos ajánlások](./media/advisor-cost-recommendations/advisor-cost-resizevms.png)
+Ha szigorúbb túl virtuális gépek azonosításához, lehet, módosíthatja a átlagos CPU kihasználtsága szabály egy előfizetés alapon.
 
 ## <a name="use-a-cost-effective-solution-to-manage-performance-goals-of-multiple-sql-databases"></a>Költséghatékony megoldás segítségével Teljesítménycélok több SQL-adatbázisok kezelése
 Az Advisor azonosítja az SQL server-példányokat, amelyek kihasználhatják a rugalmas adatbáziskészlet létrehozása. A rugalmas adatbáziskészletek adja meg, amely egyszerű és költséghatékony megoldást teljesítményértékeket rendelkező, különböző használati minták több adatbázis kezelésére. Az Azure rugalmas készletek kapcsolatos további információkért lásd: [Mi az Azure rugalmas készletek?](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/).
 
-![Az Advisor rugalmas adatbáziskészletek javaslatok költsége](./media/advisor-cost-recommendations/advisor-cost-elasticdbpools.png)
+## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Csökkentheti a költségeket kiépített ExpressRoute-Kapcsolatcsoportok kiküszöbölése révén
+Az Advisor azonosítja a szolgáltató állapota már ExpressRoute-Kapcsolatcsoportok *nincs kiépítve* több mint egy hónap, és javasolja a kapcsolatcsoport törlése, ha nem tervezi a kapcsolatcsoport adja meg a kapcsolatot szolgáltató.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Költség javaslatok az Azure Advisor elérése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
 
-2. Kattintson a bal oldali ablaktáblában **további szolgáltatások**.
-
-3. A szolgáltatás menü ablaktáblán alatt **figyelés és felügyelet**, kattintson a **Azure Advisor**.  
- Az Advisor irányítópult jelenik meg.
-
-4. Az Advisor irányítópultján kattintson a **költség** fülre.
-
-5. Válassza ki az előfizetést, amely javaslatokat kap, és kattintson a kívánt **javaslatok beszerzése**.
-
-> [!NOTE]
-> Advisor-javaslatokra szeretne használni, először *az előfizetés regisztrálása* az Advisor szolgáltatásban. Egy előfizetés regisztrálva amikor egy *előfizetés tulajdonosának* elindítja az Advisor irányítópulton, és rákattint a **javaslatok beszerzése** gombra. Ez egy *egyszeri művelet*. Az előfizetés regisztrálása után érheti el, az Advisor-javaslatokra *tulajdonos*, *közreműködő*, vagy *olvasó* előfizetés, egy erőforráscsoport vagy egy adott erőforrás.
+2.  Az Advisor irányítópultján kattintson a **költség** fülre.
 
 ## <a name="next-steps"></a>Következő lépések
 

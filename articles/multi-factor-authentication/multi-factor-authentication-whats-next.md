@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
-ms.openlocfilehash: 8ff991ffb05bb92f047cc8dfc40e80b704379898
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 723bd7135a59bcc0bce648460f871a841a684d3c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Konfigurálja az Azure multi-factor Authentication beállításai – nyilvános előzetes verzió
 
@@ -29,6 +29,7 @@ Ez a cikk segítséget Azure multi-factor Authentication most, hogy működik é
 
 | Szolgáltatás | Leírás | 
 |:--- |:--- |
+| [Felhasználó blokkolása/feloldása](#block/unblock-users) |Felhasználó blokkolása/feloldása megakadályozhatják, hogy a felhasználók hitelesítési kérelmek fogadását. |
 | [Csalási riasztás](#fraud-alert) |Csalási riasztás konfigurálhatók, és állítsa be, hogy a felhasználók jelenthetik-e rosszindulatú megpróbál hozzáférni az erőforrásokhoz. |
 | [Az egyszeri Mellőzés](#one-time-bypass) |Az egyszeri Mellőzés lehetővé teszi, hogy a felhasználó egy alkalommal a multi-factor authentication "kihagyásával". |
 | [Egyedi Hangüzenetek](#custom-voice-messages) |Egyedi Hangüzenetek történő saját felvételek vagy hónap és a többtényezős hitelesítés használatát teszi lehetővé. |
@@ -37,6 +38,23 @@ Ez a cikk segítséget Azure multi-factor Authentication most, hogy működik é
 | [Alkalmazásjelszók](#app-passwords) |Az alkalmazásjelszó lehetővé teszi, hogy egy alkalmazás, amely nincs MFA-t támogató multi-factor authentication kihagyásához és a munka folytatásához. |
 | [Ne feledje a multi-factor Authentication a korábban megjegyzett eszközökön és böngészők](#remember-multi-factor-authentication-for-devices-that-users-trust) |Lehetővé teszi az eszközök jegyezze meg a meghatározott számú nap elteltével a felhasználó sikeresen bejelentkezett az MFA használata. |
 | [Választható hitelesítési módszerek](#selectable-verification-methods) |A felhasználók számára elérhető hitelesítési módszerek használatát teszi lehetővé. |
+
+## <a name="blockunblock-users"></a>Felhasználó blokkolása/feloldása
+Felhasználó blokkolása/feloldása segítségével megakadályozhatja, hogy a felhasználók hitelesítési kérelmek megkapja. A letiltott felhasználóknak bármely hitelesítési kísérleteit a rendszer automatikusan blokkolja. Letiltott felhasználók letiltott marad, a 90 nap abból az időből, amikor azok le vannak tiltva.
+
+### <a name="block-a-user"></a>Felhasználó letiltása
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
+2. Navigáljon a **Azure Active Directory** > **MFA kiszolgáló** > **felhasználó blokkolása/feloldása**.
+3. Kattintson a **Hozzáadás** a felhasználó blokkolását.
+4. Válassza ki a **replikációs csoport**, adjon meg a letiltott felhasználónév szerint  **username@domain.com** , és adja meg a megjegyzéseit a **OK** mező.
+5. Kattintson a **Hozzáadás** a felhasználó letiltásának befejezéséhez.
+
+### <a name="unblock-a-user"></a>A felhasználó tiltásának feloldása
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
+2. Navigáljon a **Azure Active Directory** > **MFA kiszolgáló** > **felhasználó blokkolása/feloldása**.
+3. Kattintson a **Unblock** a a **művelet** a feloldani kívánt felhasználó melletti oszlopra.
+4. Adja meg a megjegyzéseit a **vonatkozó tiltás feloldásának okból** mező.
+5. Kattintson a **Unblock** a felhasználó blokkolásának feloldása befejezéséhez.
 
 ## <a name="fraud-alert"></a>Csalási riasztás
 Csalási riasztás konfigurálhatók, és állítsa be, hogy a felhasználók jelenthetik-e rosszindulatú megpróbál hozzáférni az erőforrásokhoz.  Csalás mobilalkalmazással vagy telefont keresztül a felhasználók jelenthetik.

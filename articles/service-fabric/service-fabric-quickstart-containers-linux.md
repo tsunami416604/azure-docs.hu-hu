@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 7c1ac13d50180909bbe55b01f47721387d1195d7
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 7623c5ac5cbc52e9fc77b1f944908b07ff43fbaf
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Linux-alapú Azure Service Fabric-tároló üzembe helyezése az Azure-on
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -45,9 +45,9 @@ A tárolók a Service Fabric szolgáltatásban való üzembe helyezéséhez jegy
 A Cloud Shellben a git használatával klónozással készítsen egy másolatot az alkalmazásdefinícióról.
 
 ```azurecli-interactive
-git clone https://github.com/Azure-Samples/service-fabric-dotnet-containers.git
+git clone https://github.com/Azure-Samples/service-fabric-containers.git
 
-cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
+cd service-fabric-containers/Linux/container-tutorial/Voting
 ```
 
 ## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>Helyezze üzembe a tárolókat egy Service Fabric-fürtön az Azure-ban
@@ -141,7 +141,7 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).
-* A [Service Fabric tárolók mintakódjainak](https://github.com/Azure-Samples/service-fabric-dotnet-containers) megtekintése a GitHubon.
+* A [Service Fabric tárolók mintakódjainak](https://github.com/Azure-Samples/service-fabric-containers) megtekintése a GitHubon.
 
 [sfx]: ./media/service-fabric-quickstart-containers-linux/containersquickstartappinstance.png
 [quickstartpic]: ./media/service-fabric-quickstart-containers-linux/votingapp.png

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: dce813b885d492343428428056a2e8aada27b461
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1baf98616eb48bd3ae45b78ab1ac31e711fa655d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory fejlesztők számára
 Az Azure Active Directory egy olyan felhőalapú identitásszolgáltatás, amely lehetővé teszi a fejlesztők számára bármely munkahelyi vagy iskolai Microsoft-fiókkal rendelkező felhasználó biztonságos bejelentkeztetését.  E dokumentációban megtekintheti, hogyan történik az Azure AD-támogatás hozzáadása az alkalmazásához iparági szabvány szerinti hitelesítési protokollok (OAuth és OpenID Connect) használatával.
@@ -59,16 +59,9 @@ Ezekben a cikkekben az API-król, a protokollüzenetekről és az Azure Active D
 | [Szószedet](active-directory-dev-glossary.md)                                      | A jelen dokumentációban használt fogalmak terminológiája és meghatározásai |
 | [További referenciaanyagok…](active-directory-developers-guide-index.md#reference)|     |
 
-## <a name="help--support"></a>Súgó és támogatás
-Az Azure Active Directoryban történő fejlesztéshez ezeken a helyeken találhat segítséget.
-
-|  |  
-|---|
-|[A Stack Overflow `azure-active-directory` és `adal` címkéi](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)      |
-|[Visszajelzés az Azure Active Directoryról](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)|
-| [Próbálja ki a Microsoft Dev Chatet (korlátozott ideig ingyenes)](http://aka.ms/devchat) |
-
-<br />
 
 > [!NOTE]
 > Ha szeretne bejelentkezni a személyes Microsoft-fiókjaiba, érdemes megfontolnia az [Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) használatát.  Az Azure AD v2.0-végpont egyetlen hitelesítési rendszerben egyesíti a személyes és munkahelyi Microsoft-fiókjait (az Azure AD-ből).
+
+
+[!INCLUDE  [Help and Support Options](../../../includes/active-directory-develop-help-support-include.md)]

@@ -15,25 +15,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
-ms.openlocfilehash: 932744208d9d53c87e31dcdf9e34539750be4bdb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5c1822b7304c0360da866ddb504483f5a53432f
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-classic-portal"></a>A Docker VM-bővítmény használata a klasszikus Azure portálon
 > [!IMPORTANT] 
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 [Docker](https://www.docker.com/) a legnépszerűbb virtualizálási módszerekkel által használt egyik [Linux tárolók](http://en.wikipedia.org/wiki/LXC) ahelyett, hogy a virtuális gépek adatforgalom elkülönítése, és a megosztott erőforrások számítástechnikai módja. Használhatja a Docker Virtuálisgép-bővítmény kezeli [Azure Linux ügynök] egy Docker tároló korlátlan számú tárolót tárolhat, az alkalmazások az Azure virtuális gép létrehozásához.
 
 > [!NOTE]
-> Ez a témakör ismerteti a Docker virtuális gép létrehozása a klasszikus Azure portálon. A Docker virtuális gép létrehozása a parancssorból, olvassa el [a Docker Virtuálisgép-bővítmény az Azure parancssori felület (CLI) használatával]. Egy magas szintű leírását a tárolók és azok előnyeit, olvassa el a [Docker magas szintű Faliújság](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
+> Ez a témakör ismerteti a Docker virtuális gép létrehozása az Azure-portálról. A Docker virtuális gép létrehozása a parancssorból, olvassa el [a Docker Virtuálisgép-bővítmény az Azure parancssori felület (CLI) használatával]. Egy magas szintű leírását a tárolók és azok előnyeit, olvassa el a [Docker magas szintű Faliújság](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
 > 
 > 
 
 ## <a name="create-a-new-vm-from-the-image-gallery"></a>Hozzon létre egy új virtuális Gépet a lemezkép-galériából
-Az első lépés egy Azure virtuális Gépen, amely támogatja a Docker Virtuálisgép-bővítmény, az Ubuntu 14.04 LTS lemezkép használata a lemezkép-galériából egy példa kiszolgálói lemezképet és az Ubuntu 14.04 asztali ügyfélként a Linux-lemezkép szükséges. Kattintson a portál **+ új** hozzon létre új Virtuálisgép-példányt, és jelöljön ki egy Ubuntu 14.04 LTS képet a rendelkezésre álló lehetőségek közül, vagy a teljes kép gyűjteményből alább látható módon bal alsó sarkában.
+Az első lépés egy Azure virtuális Gépen, amely támogatja a Docker Virtuálisgép-bővítmény, az Ubuntu 14.04 LTS lemezkép használata a lemezkép-galériából egy példa kiszolgálói lemezképet és az Ubuntu 14.04 asztali ügyfélként a Linux-lemezkép szükséges. Kattintson a portál **+ új** hozzon létre új Virtuálisgép-példányt, és jelöljön ki egy Ubuntu 14.04 LTS képet a rendelkezésre álló lehetőségek közül, vagy a teljes kép gyűjteményből alább látható módon.
 
 > [!NOTE]
 > Jelenleg csak Ubuntu 14.04 LTS lemezképek újabb a 2014. július támogatják a Docker Virtuálisgép-bővítmény.
@@ -67,11 +68,6 @@ A parancssorból használható  **`base64`**  vagy egy másik kedvenc kódolási
 
 ## <a name="add-the-docker-vm-extension"></a>A Docker Virtuálisgép-bővítmény hozzáadása
 A Docker Virtuálisgép-bővítmény hozzáadásához keresse meg a létrehozott Virtuálisgép-példány, és görgessen le a **bővítmények** , és kattintson rá elindítani a Virtuálisgép-bővítmények, a lent látható módon.
-
-> [!NOTE]
-> Ez a funkció csak a betekintő portálon támogatott: https://portal.azure.com/
-> 
-> 
 
 ![](media/portal-use-docker/ClickExtensions.png)
 

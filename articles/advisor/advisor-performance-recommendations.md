@@ -14,17 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 995a1f37a3fd68b39c14a95d46109c0f7814018d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e32723cd3ef13829890a630f4bff308164e17674
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="advisor-performance-recommendations"></a>Teljesítmény javaslatokat biztosít
 
 Az Azure teljesítménye javaslatokat biztosít a sebesség és az üzleti szempontból kritikus fontosságú alkalmazások válaszképességének javítása érdekében. Letölthető teljesítmény javaslatok Advisor a **teljesítmény** az Advisor irányítópult.
-
-![Az Advisor teljesítmény lap](./media/advisor-performance-recommendations/advisor-performance-tab.png)
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Az SQL DB Advisor adatbázis teljesítményének növelése
 
@@ -34,8 +32,6 @@ Az Advisor egy egységes, összevont nézetének összes Azure-erőforrások jav
 > Ahhoz, hogy a javaslatok, egy adatbázisnak rendelkeznie kell egy hét használati kapcsolatos, és a hét belül kell konzisztens tevékenységet észleltünk a fiókjában. SQL Database Advisor segédprogramot a lekérdezés konzisztens mintára mint a véletlenszerű felszakadásáig tevékenység könnyebben optimalizálható.
 
 SQL Database Advisor kapcsolatos további információkért lásd: [SQL Database Advisor](https://azure.microsoft.com/en-us/documentation/articles/sql-database-advisor/).
-
-![SQL-adatbázissal kapcsolatos javaslatok](./media/advisor-performance-recommendations/advisor-performance-sql.png)
 
 ## <a name="improve-redis-cache-performance-and-reliability"></a>Redis gyorsítótár teljesítményének és megbízhatóságának növelése
 
@@ -49,23 +45,12 @@ Azure Advisor integrálja a alkalmazásszolgáltatások felhasználói élmény 
 * Ahol helymegosztást erőforrások – például webes alkalmazásokat és adatbázisokat példányok észlelésének javíthatja a teljesítményt és az alacsonyabb költségek. 
 
 App Service szolgáltatások javaslatok kapcsolatos további információkért lásd: [ajánlott eljárások az Azure App Service](https://azure.microsoft.com/en-us/documentation/articles/app-service-best-practices/).
-![App Services javaslatok](./media/advisor-performance-recommendations/advisor-performance-app-service.png)
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítmény javaslatok az Advisor elérése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
 
-2. Kattintson a bal oldali ablaktáblában **további szolgáltatások**.
-
-3. A szolgáltatás menü ablaktáblán alatt **figyelés és felügyelet**, kattintson a **Azure Advisor**.  
- Az Advisor irányítópult jelenik meg.
-
-4. Az Advisor irányítópultján kattintson a **teljesítmény** fülre.
-
-5. Válassza ki az előfizetést, amely javaslatokat kap, és kattintson a kívánt **javaslatok beszerzése**.
-
-> [!NOTE]
-> Advisor-javaslatokra szeretne használni, először *az előfizetés regisztrálása* az Advisor szolgáltatásban. Egy előfizetés regisztrálva amikor egy *előfizetés tulajdonosának* elindítja az Advisor irányítópulton, és rákattint a **javaslatok beszerzése** gombra. Ez egy *egyszeri művelet*. Az előfizetés regisztrálása után érheti el, az Advisor-javaslatokra *tulajdonos*, *közreműködő*, vagy *olvasó* előfizetés, egy erőforráscsoport vagy egy adott erőforrás.
+2.  Az Advisor irányítópultján kattintson a **teljesítmény** fülre.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,7 +11,7 @@
       href: quick-setup-auto-provision.md
     - name: Szimulált eszköz létrehozása
       href: quick-create-simulated-device.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Felhőerőforrások beállítása
       href: tutorial-set-up-cloud.md
@@ -29,12 +29,15 @@
       href: concepts-service.md
     - name: Biztonsági alapelvek
       href: concepts-security.md
+    - name: Biztonság
 - name: Útmutatók
   items:
     - name: Eszközök beléptetésének kezelése
       href: how-to-manage-enrollments.md
     - name: A HSM használata az SDK-val
       href: use-hsm-with-sdk.md
+    - name: Eszközkiépítési szolgáltatás hozzáférés-vezérlése
+      href: how-to-control-access.md
 - name: Referencia
   items:
     - name: REST

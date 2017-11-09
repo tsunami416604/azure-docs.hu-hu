@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/22/2017
+ms.date: 11/8/2017
 ms.author: raiye
-ms.openlocfilehash: 7a42f4b981883881681a7e7ecdb102ee28772c49
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: b94001e16068f1163beaac81053a03600af5f768
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrix
 Itt való naprakész információkat a legújabb Azure vendég operációs rendszer feloldja a Felhőszolgáltatásai számára. Ez az információ segít a frissítési lépések megtervezéséről, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissíti a [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], nem elengedhetetlen, hogy olvassa el ezen a lapon.
@@ -43,6 +43,8 @@ Nem tudja, hogy milyen a vendég operációs rendszer, vagy hogyan a vendég ope
 
 ## <a name="news-updates"></a>Hírek
 
+###### <a name="november-8-2017"></a>**2017. november 8.**
+Október vendég operációs rendszer adott ki.
 
 ###### <a name="october-6-2017"></a>**2017. október 6.**
 Szeptembertől vendég operációs rendszer adott ki. A Windows Server 2016. szeptemberi kiadás netfx3 alapértelmezés szerint engedélyezve van. Az ügyfelek hozzá kell adnia "dism / online Feature /featurename:netfx3" a saját OnStart, ha a munkafolyamat megköveteli őket egy 4.x futtatási idő mellett .NET 2.x alkalmazás futtatására, vagy ha a .NET-2.x alkalmazás futtatásakor kezelését a hiba, és majd futtatta a .NET-4.x-es alkalmazás.
@@ -71,12 +73,6 @@ Előfordulhat, hogy Vendég operációs rendszer adott ki.
 ###### <a name="may-17-2017"></a>**2017. május 17.**
 Egy biztonsági hiba miatt azonban azt választotta, hogy letiltja a következő 2016. December és 2017. január operációs rendszereinek kiadásait, amelyek nem rendelkeznek a [javítsa ki] a portálról: WA-VENDÉG-operációs rendszer-5.4_201612-01, WA-VENDÉG-operációsrendszer-4.39_201612-01, WA-VENDÉG-operációs rendszer-3.46_201612-01, WA-VENDÉG-az operációs rendszer-2.59_201701-01
 
-###### <a name="may-12-2017"></a>**2017. május 12.**
-Előfordulhat, hogy Vendég operációs rendszer bevezetés előfordulhat, hogy 12 indul, és a tervezett kiadását. június 13 rendelkezik.
-
-###### <a name="april-18-2017"></a>**2017. április 18.**
-Április vendég operációs rendszer bevezetés. április 18 indul, és a tervezett kiadását előfordulhat, hogy 9 rendelkezik.
-
 
 ## <a name="releases"></a>Kiadások
 ## <a name="family-5-releases"></a>Feloldja a családja 5
@@ -92,16 +88,16 @@ Előfordulhat, hogy Vendég operációs rendszer bevezetés előfordulhat, hogy 
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.12_201710-01 |2017. november 8. |POST 5.14 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.11_201709-01 |2017. október 6. |POST 5.13. |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.10_201708-01 |2017. augusztus 24. |POST 5.12 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.9_201707-01 |2017. augusztus 3. |POST 5.11 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.9_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.8_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.7_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.6_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.5_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.4_201612-01~~ |2017. január 10. |2017. június 5.|TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.3_201611-01~~ |2016. december 14. |2017. május 9. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.2_201610-02~~ |2016. november 1. |2017. április 10. |TBD |
 
 ## <a name="family-4-releases"></a>Feloldja a családja 4
 **Windows Server 2012 R2 rendszerben**
@@ -115,20 +111,16 @@ Előfordulhat, hogy Vendég operációs rendszer bevezetés előfordulhat, hogy 
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.47_201710-01 |2017. november 8. |POST 4.49 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.46_201709-01 |2017. október 6. |POST 4.48 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.45_201708-01 |2017. augusztus 24. |POST 4.47 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.44_201707-01 |2017. augusztus 3. |POST 4.46 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.44_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.43_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.42_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.41_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.40_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.39_201612-01~~ |2017. január 10. |2017. június 5. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.38_201611-01~~ |2016. december 14. |2017. május 9. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.37_201610-02~~ |2016. november 16. |2017. április 10. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.36_201609-01~~ |2016. október 13. |2017. január 14. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.35_201608-01~~ |2016. Szeptembertől 13. |2016. december 16. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.34_201607-01~~ |2016. augusztus 8. |2016. november 13. |TBD |
-
 
 ## <a name="family-3-releases"></a>Feloldja a családja 3
 **Windows Server 2012-ben**
@@ -142,20 +134,16 @@ Előfordulhat, hogy Vendég operációs rendszer bevezetés előfordulhat, hogy 
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.54_201710-01 |2017. november 8. |POST 3.56 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.53_201709-01 |2017. október 6. |POST 3.55 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.52_201708-01 |2017. augusztus 24. |POST 3.54 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.51_201707-01 |2017. augusztus 3. |POST 3.53 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.51_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.50_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.49_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.48_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.47_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.46_201612-01~~ |2017. január 10. |2017. június 5. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.45_201611-01~~ |2016. december 14. |2017. május 9. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.44_201610-02~~ |2016. november 16. |2017. Előfordulhat, hogy 1. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.43_201609-01~~ |2016. október 13. |2017. január 14. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.42_201608-01~~ |2016. Szeptembertől 13. |2016. december 16. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.41_201607-01~~ |2016. augusztus 8. |2016. november 13. |TBD |
-
 
 ## <a name="family-2-releases"></a>Feloldja a családja 2
 **Windows Server 2008 R2 SP1**
@@ -169,9 +157,10 @@ Előfordulhat, hogy Vendég operációs rendszer bevezetés előfordulhat, hogy 
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.67_201710-01 |2017. november 8. |POST 2.69 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.66_201709-01 |2017. október 6. |POST 2.68 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.65_201708-01 |2017. augusztus 24. |POST 2.67 |TBD |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.64_201707-01 |2017. augusztus 3. |POST 2.66 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.64_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.63_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.62_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.61_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
@@ -179,11 +168,6 @@ Előfordulhat, hogy Vendég operációs rendszer bevezetés előfordulhat, hogy 
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.59_201701-01~~ |2017. január 10. |2017. június 5. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.58_201612-01~~ |2017. január 10. |2017. május 9.|TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.57_201611-01~~ |2016. december 14. |2017. április 10. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.56_201610-02~~ |2016. november 16. |2017. február 10. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.55_201609-01~~ |2016. október 13. |2017. január 14. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.54_201608-01~~ |2016. Szeptembertől 13. |2016. december 16. |TBD |
-|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.53_201607-01~~ |2016. augusztus 8. |2016. november 13. |TBD |
-
 
 
 ## <a name="msrc-patch-updates"></a>MSRC javítás frissítések

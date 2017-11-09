@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
 ms.author: iainfou
-ms.openlocfilehash: 6b5af18d02fd508a21cdc21b38b1c16e79f07ecb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d70194f30b7866cab38cfbbe1ea06664b0ddc1f5
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="install-mongodb-on-a-windows-vm-in-azure"></a>A MongoDB telepítése a Windows Azure-ban
 > [!IMPORTANT]
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md).  Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Telepítse, és a Resource Manager üzembe helyezési modellel használatával MongoDB konfigurálására, [Ez a cikk](../install-mongodb.md).
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 [MongoDB] [ MongoDB] egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk végigvezeti a lépésein, egy Windows Server virtuális gép (VM) használatával a [Azure-portálon][AzurePortal]. Ezután hozzon létre és adatlemezt csatolni a virtuális gép telepítése és konfigurálása a MongoDB előtt. Ha egy meglévő virtuális gép, amely a használni kívánt Azure-ban, de is ugorhat rögtön [telepítése és konfigurálása a MongoDB](#install-and-run-mongodb-on-the-virtual-machine).
 

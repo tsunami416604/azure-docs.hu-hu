@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2017
+ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e6d68612be4b7d4e1d6cea13e0f29636931abd8
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egy erőforrás vagy egy tulajdonság az Azure Resource Manager sablonokban több példányának telepítése
 Ez a témakör bemutatja, hogyan felépítésének erőforrás több példányát, vagy egy tulajdonság több példányát erőforrás létrehozása az Azure Resource Manager sablonban.
 
 Ha szeretné logika hozzáadása a sablont, amely lehetővé teszi, hogy adja meg, hogy telepítve van-e a erőforrás című [feltételesen telepíteni az erőforrás](#conditionally-deploy-resource).
+
+Több elem létrehozása a tömbváltozó példát talál [változók](resource-group-authoring-templates.md#variables).
 
 ## <a name="resource-iteration"></a>Erőforrás iterációs
 Az erőforrástípus több példányt létrehozni, vegye fel a `copy` elemben, amely az erőforrástípus. A másolási elemben adja meg a számát ismétlési és ez a ciklus nevét. A count értékének pozitív egész számnak kell lennie, és nem haladhatja meg a 800. Erőforrás-kezelő párhuzamosan hoz létre az erőforrásokat. A sorrend, amelyben létre, ezért nem garantált. Feladatütemezési többször is erőforrások létrehozásához lásd: [soros másolási](#serial-copy). 

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: d6dc0ffac1a3e688f93af903f51f798270b63711
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ebb469289afc36b08c90ae9839f5bdba41cd90b
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Hibaelhárítás általános az Azure-telepítés az Azure Resource Manager eszközzel
 
-Ez a témakör néhány gyakori az Azure-telepítés hibák észlelhetnek, és javítsa ki a hibákat információival. Ha a hiba kódja nem találhatók a központi telepítési hiba, tekintse meg [hibakód keresése](#find-error-code).
+Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és javítsa ki a hibákat az információival. Ha a hiba kódja nem találhatók a központi telepítési hiba, tekintse meg [hibakód keresése](#find-error-code).
 
 ## <a name="error-codes"></a>Hibakódok
 
@@ -61,6 +61,7 @@ Ez a témakör néhány gyakori az Azure-telepítés hibák észlelhetnek, és j
 | PrivateIPAddressNotInSubnet | A megadott IP-cím az alhálózat tartományon kívül esik. Alhálózati tartományba eső IP-címének módosítása. | [IP-címek](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PropertyChangeNotAllowed | Néhány tulajdonság üzembe helyezett erőforrás nem módosítható. Egy erőforrás frissítésekor korlátozza a feljogosított tulajdonságainak módosítása. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | A előfizetése tartalmaz egy erőforrás-házirendet, amely megakadályozza a központi telepítése során végrehajtani kívánt műveletet. Keresse meg a házirendet, amely blokkolja a műveletet. Ha lehetséges módosíthatja a környezetet, hogy megfeleljen a korlátozások vonatkoznak a szabályzat alól. | [Hárítsa el a házirendek](resource-manager-policy-requestdisallowedbypolicy-error.md) |
+| ReservedResourceName | Adjon meg egy erőforrás nevét, amely tartalmazza az foglalt név. | [Fenntartott erőforrások neve](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Várjon, amíg befejeződik a törlésre. | |
 | ResourceGroupNotFound | Ellenőrizze a központi telepítés a célként megadott erőforráscsoport nevét. Ez már léteznie kell az előfizetéshez. Ellenőrizze az előfizetési kontextust. | [Az Azure CLI](/cli/azure/account?#az_account_set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
 | ResourceNotFound | A központi telepítés hivatkozik a erőforrása, amely nem oldható fel. Ellenőrizze, hogy Ön miként használja a a **hivatkozás** függvény a forgatókönyvhöz szükséges paramétereket tartalmazza. | [Hivatkozások feloldása](resource-manager-not-found-errors.md) |

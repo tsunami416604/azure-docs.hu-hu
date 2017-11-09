@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 630d9022da0d51e533534ea43f50f27e8eb09a78
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Az Azure Functions használatával egy kiszolgáló nélküli API létrehozása
 
@@ -61,7 +61,8 @@ Ezt követően tesztelje meg szeretné tekinteni, az új API felület használat
 1. Lépjen vissza a fejlesztési lapon kattintson a bal oldali navigációs a függvény nevét.
 1. Kattintson a **függvény URL-cím beszerzése** és másolja az URL-címet. Láthatja, hogy használja a `/api/hello` címre.
 1. Másolja az URL-címet egy új böngészőlapon vagy a kívánt REST-ügyfél. Böngészők alapértelmezés szerint fogja használni a GET.
-1. A funkció futtatásához, és győződjön meg arról, hogy működik. Adja meg a "név" paraméternek a gyors üzembe helyezés kód kielégítéséhez lekérdezési karakterláncként szeretne.
+1. Paraméterek hozzáadása az URL-ben a lekérdezési karakterlánc pl.`/api/hello/?name=John`
+1. Kattintson az "Adja meg" annak ellenőrzéséhez, hogy működik. A válasz megjelenik "*Hello John*"
 1. A végpont meghívása a megerősítéséhez, hogy a függvény nem hajtotta végre egy másik HTTP-metódussal is próbálkozhat. Ehhez szüksége lesz egy REST-ügyfél, például a cURL, a Postman vagy a Fiddler használata.
 
 ## <a name="proxies-overview"></a>Proxyk áttekintése
@@ -85,9 +86,8 @@ Ebben a szakaszban egy új proxy, amely az általános API-nak időtúllépést 
 Ismételje meg a [függvény-alkalmazás létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) függvény a proxy hoz létre új alkalmazás létrehozása. Az új alkalmazás URL-címe erre a célra a frontend az API-hoz, és a korábban Szerkesztés függvény alkalmazás erre a célra egy háttér.
 
 1. Nyissa meg az új előtér függvény alkalmazás a portálon.
-1. Válassza ki **beállítások**. Majd átváltása **engedélyezése Azure Functions proxyk (előzetes verzió)** "A" számára.
-1. Válassza ki **Platform beállítások** válassza **Alkalmazásbeállítások**.
-1. Görgessen le a **Alkalmazásbeállítások** , és hozzon létre egy új beállítás "HELLO_HOST" kulcs. Állítsa be az értékét, mint a háttéralkalmazás függvény alkalmazáshoz, a gazdagép `<YourBackendApp>.azurewebsites.net`. Ez a korábban kimásolt a HTTP-függvény tesztelése során URL-cím része. Ez a beállítás később a konfigurációban kell hivatkozik.
+1. Válassza ki **Platform funkciói** válassza **Alkalmazásbeállítások**.
+1. Görgessen le a **Alkalmazásbeállítások** Ha kulcs/érték párok tárolják, és hozzon létre egy új kulcsot "HELLO_HOST" beállításnál. Állítsa be az értékét, mint a háttéralkalmazás függvény alkalmazáshoz, a gazdagép `<YourBackendApp>.azurewebsites.net`. Ez a korábban kimásolt a HTTP-függvény tesztelése során URL-cím része. Ez a beállítás később a konfigurációban kell hivatkozik.
 
     > [!NOTE] 
     > Alkalmazásbeállítások a gazdagép konfigurációja a proxy-sablonja környezet függőség megelőzése érdekében ajánlott. Alkalmazásbeállítások használata azt jelenti, hogy a proxy konfigurációs áthelyezheti különböző környezetek között, a környezet-specifikus alkalmazás beállítások lesznek alkalmazva.
@@ -120,7 +120,7 @@ Ismételje meg a [függvény-alkalmazás létrehozása](https://docs.microsoft.c
 
 A következő szüksége lesz egy proxy utánzatait API a megoldás létrehozásához. Ez lehetővé teszi, hogy folyamatban van, az ügyféloldali fejlesztés anélkül, hogy a háttér teljes végrehajtását. Később a fejlesztési hozzon létre egy új függvény alkalmazást, amely támogatja a logikai és a proxy átirányítása sikerült.
 
-Az utánzatait API létrehozásához létrehozunk egy új proxyt a használatával a [App Service-szerkesztő](https://github.com/projectkudu/kudu/wiki/App-Service-Editor). Először keresse meg a függvény app a portálon. Válassza ki **Platform funkciói** és található **App Service-szerkesztő**. A hivatkozásra kattintva az megnyílik az App Service-szerkesztő új ablakban.
+Az utánzatait API létrehozásához létrehozunk egy új proxyt a használatával a [App Service-szerkesztő](https://github.com/projectkudu/kudu/wiki/App-Service-Editor). Először keresse meg a függvény app a portálon. Válassza ki **Platform funkciói** és a **Fejlesztőeszközök** található **App Service-szerkesztő**. A hivatkozásra kattintva az megnyílik az App Service-szerkesztő új ablakban.
 
 Válassza ki `proxies.json` a bal oldali navigációs. Ez az a fájlt, amely az összes a proxyk konfigurációs tárolja. Ha valamelyikét használja a [működik a központi telepítési módszerekkel](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment), a fájl megmaradjanak a verziókövetési rendszerrel. Ez a fájl kapcsolatos további információkért lásd: [proxyk speciális konfigurációs](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
 
@@ -178,7 +178,7 @@ Ezután a utánzatait API fogja hozzáadni. Cserélje le a proxies.json fájl a 
 
 Ezzel hozzáad egy új proxy, "GetUserByName", a backendUri tulajdonság nélkül. Helyett egy másik erőforrás, módosítja egy válasz felülbírálás használatával proxyk alapértelmezett válaszát. Kérelem és válasz felülbírálások használhatók a URL-t együtt. Ez akkor különösen hasznos, ha a proxy használatát az ügynökökön egy örökölt rendszerre, ahol előfordulhat, hogy módosítania kell a fejlécek, lekérdezési paraméterek stb. Kérelem és válasz felülbírálások kapcsolatos további információkért lásd: [kérelmeit és válaszait a proxyk módosítása](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses).
 
-Tesztelje a utánzatait API hívása a `/api/users/{username}` végpont egy böngésző vagy a kedvenc REST-ügyfél használatával. Ügyeljen arra, hogy a csere _{username}_ egy karakterláncértéket, amely egy felhasználónévvel rendelkező.
+Tesztelje a utánzatait API hívása a `<YourProxyApp>.azurewebsites.net/api/users/{username}` végpont egy böngésző vagy a kedvenc REST-ügyfél használatával. Ügyeljen arra, hogy a csere _{username}_ egy karakterláncértéket, amely egy felhasználónévvel rendelkező.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2017
+ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 3030336f5efca5029e0e790372495df11cdc8aeb
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: fa25f0435df79a78d39e8f89d702d3b64db79d65
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="understand-azure-active-directory-architecture"></a>Az Azure Active Directory architektúrájának ismertetése
-Az Azure Active Directory (Azure AD) lehetővé teszi, hogy biztonságosan kezelje az Azure-szolgáltatások és -erőforrások elérését a felhasználók számára. Az Azure AD-ben megtalálható az identitáskezelési megoldások teljes palettája. Az Azure AD-funkciókkal kapcsolatos információért lásd: [Mi az az Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)
+Az Azure Active Directory (Azure AD) lehetővé teszi, hogy biztonságosan kezelje az Azure-szolgáltatások és -erőforrások elérését a felhasználók számára. Az Azure AD-ben megtalálható az identitáskezelési megoldások teljes palettája. Az Azure AD-funkciókkal kapcsolatos információért lásd: [Mi az az Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
-Az Azure AD-vel felhasználókat és csoportokat hozhat létre és kezelhet, valamint engedélyeket adhat meg a vállalati erőforrások hozzáférésének engedélyezéséhez és megtagadásához. Az identitáskezeléssel kapcsolatos információért tekintse meg az [Azure-identitáskezelés alapjait leíró szakaszt](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity).
+Az Azure AD-vel felhasználókat és csoportokat hozhat létre és kezelhet, valamint engedélyeket adhat meg a vállalati erőforrások hozzáférésének engedélyezéséhez és megtagadásához. Az identitáskezeléssel kapcsolatos információért tekintse meg az [Azure-identitáskezelés alapjait leíró szakaszt](https://docs.microsoft.com/azure/active-directory/fundamentals-identity).
 
 ## <a name="azure-ad-architecture"></a>Azure AD-architektúra
 Az Azure AD földrajzilag eltérő helyeken található architektúrája a széles körű megfigyelés, az automatikus átirányítás, a feladatátvétel és a helyreállítási funkciók kombinálásával lehetővé teszi, hogy vállalati szintű rendelkezésre állást és teljesítményt nyújthatunk az ügyfeleink számára.
@@ -79,7 +79,7 @@ Az Azure AD-ben a [helyreállítási időre vonatkozó célkitűzés (RTO)](http
 
 ### <a name="data-centers"></a>Adatközpontok
 
-Az Azure AD replikái a világ számos részén található adatközpontokban vannak tárolva. További információk: [Azure-adatközpontok](https://azure.microsoft.com/en-us/overview/datacenters).
+Az Azure AD replikái a világ számos részén található adatközpontokban vannak tárolva. További információk: [Azure adatközpontok](https://azure.microsoft.com/overview/datacenters).
 
 Az Azure AD a következő jellemzőkkel rendelkező adatközpontokon működik:
 
@@ -113,8 +113,8 @@ Ha bármelyik Azure AD szolgáltatás nem a várt módon működik, azonnal munk
 
 **Biztonságos műveletek**
 
-Műveleti vezérlőket, például többtényezős hitelesítést (MFA) alkalmazunk minden művelet esetében, valamint naplózzuk az összes műveletet. Emellett igényalapú szintemelési rendszert használunk ahhoz, hogy folyamatosan meg tudjuk adni a szükséges ideiglenes hozzáférést bármilyen igény szerinti műveleti feladathoz. További információkért lásd: [A megbízható felhő](https://azure.microsoft.com/en-us/support/trust-center).
+Műveleti vezérlőket, például többtényezős hitelesítést (MFA) alkalmazunk minden művelet esetében, valamint naplózzuk az összes műveletet. Emellett igényalapú szintemelési rendszert használunk ahhoz, hogy folyamatosan meg tudjuk adni a szükséges ideiglenes hozzáférést bármilyen igény szerinti műveleti feladathoz. További információkért lásd: [The Trusted Cloud](https://azure.microsoft.com/support/trust-center) (A megbízható felhő).
 
 ## <a name="next-steps"></a>Következő lépések
-[Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+[Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 

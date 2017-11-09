@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 320c85f8045d9b72cf7f430d2e2736ba8e5ec269
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 971f7979ca27bce5d147a9d479248c808dc658e3
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server
 
-Ez a cikk azt ismerteti, hogyan Windows kiszolgáló rendszerállapotának biztonsági másolatok visszaállítása az Azure Recovery Services-tároló. Rendszerállapot visszaállítása, rendelkeznie kell a rendszerállapot (utasításait használatával létrehozott [rendszerállapot biztonsági mentése](backup-azure-system-state.md#back-up-windows-server-system-state-preview)), és győződjön meg arról, hogy telepítette a [legújabb verzióját a Microsoft Azure Recovery Services (MARS) ügynök](http://aka.ms/azurebackup_agent). Végezze el az Azure Recovery Services-tároló a Windows Server rendszerállapot-adatok két lépésből áll:
+Ez a cikk azt ismerteti, hogyan Windows kiszolgáló rendszerállapotának biztonsági másolatok visszaállítása az Azure Recovery Services-tároló. Rendszerállapot visszaállítása, rendelkeznie kell a rendszerállapot (utasításait használatával létrehozott [rendszerállapot biztonsági mentése](backup-azure-system-state.md#back-up-windows-server-system-state), és győződjön meg arról, hogy telepítette a [legújabb verzióját a Microsoft Azure Recovery Services (MARS) ügynök](http://aka.ms/azurebackup_agent). Végezze el az Azure Recovery Services-tároló a Windows Server rendszerállapot-adatok két lépésből áll:
 
 1. Rendszerállapot visszaállítása az Azure Backup-fájlok formájában. Rendszerállapot visszaállítása az Azure Backup-fájlok formájában, lehetőségek közül választhat:
   * Visszaállítás rendszerállapot ugyanarra a kiszolgálóra ahol a biztonsági mentések vették, vagy

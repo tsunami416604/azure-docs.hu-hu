@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: billmath
-ms.openlocfilehash: d005042fffcf8f4ff99876961a55d254fd4fb2d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61652d97429336dad23ba14f7349e27bf52d33d7
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Az ADSync adatbázis Azure AD Connect telepítése
 Az Azure AD Connect SQL Server adatbázis adatainak tárolásához szükséges. Használja az alapértelmezett SQL Server 2012 Express LocalDB az Azure AD Connect telepítve, vagy használja a saját SQL teljes verzióját. Korábban az Azure AD Connect telepítése során az ADSync nevű új adatbázis mindig létrejött. Az Azure AD Connect 1.1.613.0 verziót (vagy után) lehetősége van az Azure AD Connect telepítése mutat, azt a meglévő ADSync adatbázis.
@@ -35,19 +35,19 @@ Ilyen előnyt hasznosak a következő esetekben:
 
 
 - Rendelkezik egy meglévő Azure AD Connect telepítését. A meglévő Azure AD Connect-kiszolgáló már nem működik, de továbbra is működik-e az SQL server, amely tartalmazza az ADSync adatbázis. Új Azure AD Connect kiszolgáló telepítése, és mutasson a a meglévő ADSync adatbázis. 
-- Rendelkezik egy meglévő Azure AD Connect telepítését. Az SQL server, amely tartalmazza az ADSync adatbázis már nem működik. Azonban hogy az adatbázis nemrég készült biztonsági másolatából. Egy új SQL server először visszaállíthatja az ADSync adatbázis. Mely után egy új Azure AD Connect kiszolgáló telepítése, és mutasson a a visszaállított ADSync adatbázis.
+- Rendelkezik egy meglévő Azure AD Connect telepítését. Az SQL server, amely tartalmazza az ADSync adatbázis már nem működik. Azonban, hogy a legutóbbi biztonsági mentése az adatbázis. Egy új SQL server először visszaállíthatja az ADSync adatbázis. Mely után egy új Azure AD Connect kiszolgáló telepítése, és mutasson a a visszaállított ADSync adatbázis.
 - Rendelkezik egy meglévő Azure AD Connect-telepítés által használt localdb programba. A 10 GB-os korlát LocalDB elő, mert szeretné áttelepíteni a teljes SQL. Biztonsági mentés az ADSync adatbázis LocalDB, és annak visszaállítására egy SQL server. Mely után újra kell telepítenie egy új Azure AD Connect-kiszolgáló, és mutasson a a visszaállított ADSync adatbázis.
-- Próbálja meg beállítani egy átmeneti kiszolgálón, és ellenőrizze, hogy a konfigurációja megfelelő-e az aktuális active server szeretné. Az ADSync adatbázis biztonsági mentése, és annak visszaállítására egy másik SQL server. Mely után újra kell telepítenie egy új Azure AD Connect-kiszolgáló, és mutasson a a visszaállított ADSync adatbázis.
+- Próbálja meg állítson be egy átmeneti kiszolgálón, és ellenőrizze, hogy a konfigurációja megfelelő-e az aktuális active server szeretné. Az ADSync adatbázis biztonsági mentése, és annak visszaállítására egy másik SQL server. Mely után újra kell telepítenie egy új Azure AD Connect-kiszolgáló, és mutasson a a visszaállított ADSync adatbázis.
 
 ## <a name="prerequisite-information"></a>Előfeltételként szolgáló információk
 
 Fontos megjegyzések érvénybe vegye figyelembe a folytatás előtt:
 
-
 - Mindenképpen tekintse át a szükséges előfeltételek telepítése az Azure AD Connect: hardver és előfeltételek, és a fiók és az Azure AD Connect telepítése szükséges engedélyek. A "meglévő adatbázis használata" mód segítségével az Azure AD Connect telepítése szükséges jogosultságok megegyezik a telepítés "egyéni".
+- Egy meglévő ADSync szemben az Azure AD Connect telepítése adatbázis csak a támogatott teljes SQL. Nem támogatott az SQL Express localdb programba. Ha van meglévő ADSync adatbázis LocalDB, amelyet használni kíván, először az ADSync adatbázis (LocalDB) biztonsági mentését, és visszaállítja a teljes SQL. Amely után a visszaállított adatbázis ezzel a módszerrel az Azure AD Connect telepítése.
 - A telepítéshez használt Azure AD Connect verziójának meg kell felelnie a következő feltételeknek:
     - 1.1.613.0 vagy újabb, és
-    - Azonos vagy nagyobb, mint az Azure AD Connect az ADSync adatbázis legutóbbi használt verzió. Ha az Azure AD Connect telepítéshez használt verziószáma magasabb, mint az ADSync adatbázis a legutóbbi használt verzió, majd a teljes szinkronizálás lehet szükség.  Ez azért szükséges, ha a két különböző példányainak verzióiban séma vagy a szinkronizálási szabály módosul. 
+    - Azonos vagy nagyobb, mint az Azure AD Connect az ADSync adatbázis legutóbbi használt verzió. Ha az Azure AD Connect telepítéshez használt verziószáma magasabb, mint az ADSync adatbázis a legutóbbi használt verzió, majd a teljes szinkronizálás lehet szükség.  Teljes szinkronizálás szükség, ha a két különböző példányainak verzióiban séma vagy a szinkronizálási szabály módosul. 
 - Az ADSync adatbázis tartalmaznia kell egy viszonylag új szinkronizálási állapotát. A meglévő ADSync adatbázis a legutóbbi szinkronizálás tevékenységet az elmúlt három hétben belül kell lennie.
 - Az Azure AD Connect "meglévő adatbázis használata" metódussal telepítésekor az előző az Azure AD Connect-kiszolgálón konfigurált bejelentkezési módszer nem őrződik meg. Bejelentkezési módszer továbbá telepítése közben nem konfigurálhatók. Csak konfigurálhatja a bejelentkezési módszer, telepítés befejezése után.
 - Az ADSync adatbázis megosztása több Azure AD Connect-kiszolgálók nem rendelkezhet. A "meglévő adatbázis használata" módszerrel újból egy új Azure AD Connect-kiszolgáló ADSync adatbázis. Megosztás nem támogatja.

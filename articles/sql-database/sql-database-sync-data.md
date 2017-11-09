@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: c53eabfeb9ee1a7c50340bbfc65674b478068c75
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 5c4509bc1d05bc422f6bc5599d4635020ded63e9
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/08/2017
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL adatszinkronizálás több felhőalapú és helyszíni az adatbázisok közötti szinkronizálja az adatokat
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-azure-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás (előzetes verzió)
 
 SQL adatszinkronizálás egy olyan szolgáltatás, az Azure SQL Database, amely lehetővé teszi, hogy szinkronizálja az adatokat több SQL-adatbázisok és SQL Server-példányok kiválasztása kétirányúan épül.
 
@@ -44,7 +44,7 @@ Adatszinkronizálás küllős topológia használatával szinkronizálja az adat
 -   A **Sync-adatbázis** Adatszinkronizálás a metaadatok és naplófájl tartalmazza. A Sync-adatbázis nem lehet egy Azure SQL-adatbázis és a központ adatbázis ugyanabban a régióban található. A Sync-adatbázis létrehozott felhasználói és felhasználói tulajdonban lévő.
 
 > [!NOTE]
-> Ha egy a helyi adatbázist használ, hogy [egy helyi ügynök konfigurálása.](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-sql-data-sync)
+> Ha egy a helyi adatbázist használ, hogy [egy helyi ügynök konfigurálása.](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-sql-data-sync)
 
 ![Adatbázisok között szinkronizálja az adatokat](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -113,9 +113,9 @@ Adatbázis exportálása után egy `.bacpac` fájlt, és importálja a fájlt eg
 
 -   Egy táblázat azonosító oszlopot, amely nem az elsődleges kulcs nem lehet.
 
--   Objektumok (adatbázisok, táblákat és oszlopokat) nevét nem tartalmazza a nyomtatható karakterek pont (.), bal oldali szögletes zárójel ([]), és jobb szögletes zárójel (]).
+-   Objektumok (adatbázisok, táblákat és oszlopokat) nevét nem tartalmazza a nyomtatható karakterek pont (.), bal oldali szögletes zárójel ([), és jobb szögletes zárójel (]).
 
--   Pillanatkép-elkülönítés engedélyezve kell lennie. További információk: [pillanatkép-elkülönítést az SQL Server](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+-   Pillanatkép-elkülönítés engedélyezve kell lennie. További információk: [pillanatkép-elkülönítést az SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-considerations"></a>Általános megfontolások
 
@@ -155,7 +155,9 @@ Adatok szinkronizálása által beszúrási, frissítési és törlési esemény
 
 SQL adatszinkronizálás kapcsolatos további információkért lásd:
 
--   [Bevezetés az SQL adatszinkronizálás](sql-database-get-started-sql-data-sync.md)
+-   [Ismerkedés az Azure SQL-adatok szinkronizálása](sql-database-get-started-sql-data-sync.md)
+-   [Ajánlott eljárások az Azure SQL-adatok szinkronizálása](sql-database-best-practices-data-sync.md)
+-   [Az Azure SQL adatszinkronizálás problémák elhárítása](sql-database-troubleshoot-data-sync.md)
 
 -   PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás befejezése:
     -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)
@@ -166,5 +168,4 @@ SQL adatszinkronizálás kapcsolatos további információkért lásd:
 SQL-adatbázis kapcsolatos további információkért lásd:
 
 -   [SQL-adatbázis – áttekintés](sql-database-technical-overview.md)
-
 -   [Adatbázis életciklusának kezelésére](https://msdn.microsoft.com/library/jj907294.aspx)

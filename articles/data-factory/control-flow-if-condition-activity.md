@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: shlo
-ms.openlocfilehash: 0eb4f03a5d53da771a550bd5d79607ff7f0f52d3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d6f198f7376bf2fdbc812373721571162a8c4402
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Ha a feltétel az Azure Data Factory tevékenység
 Ha az állapot tevékenység ugyanezt a funkcionalitást biztosítja, hogy egy Ha programozási nyelvek a kifejezésben. Ha a feltétel értékel tevékenységek egy készletét `true` és a tevékenységek, ha a feltétel `false`. 
@@ -76,10 +76,13 @@ kifejezés | IGAZ vagy hamis kifejezés | Igen
 ifTrueActivities | Ha a kifejezés értéke végrehajtott tevékenység `true`. | Igen
 ifFalseActivities | Ha a kifejezés értéke végrehajtott tevékenység `false`. | Igen
 
-## <a name="sample"></a>Minta
-Ez a példa a csővezeték másol adatokat egy bemeneti mappa kimeneti mappa. Adatcsatorna paraméter határozza meg a kimeneti mappa: routeSelection. A routeSelection értéke true, ha a rendszer átmásolja az adatokat outputPath1. És routeSelection értéke HAMIS, ha az adatokat outputPath2 másolja. 
+## <a name="example"></a>Példa
+Ebben a példában az adatcsatorna másol adatokat egy bemeneti mappa kimeneti mappa. Adatcsatorna paraméter határozza meg a kimeneti mappa: routeSelection. A routeSelection értéke true, ha a rendszer átmásolja az adatokat outputPath1. És routeSelection értéke HAMIS, ha az adatokat outputPath2 másolja. 
 
-### <a name="pipeline-with-if-condition-activity"></a>IF-feltétel tevékenységet-feldolgozási folyamat
+> [!NOTE]
+> Ez a szakasz a JSON-definíciók és futtatjuk a folyamatot a PowerShell Példaparancsok nyújt. Az Azure PowerShell és a JSON-definíciók használatával a Data Factory-folyamathoz létrehozásának részletes útmutatóját bemutatóért lásd: [oktatóanyag: Azure PowerShell használatával létrehozni egy adat-előállító](quickstart-create-data-factory-powershell.md).
+
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>IF-feltétel tevékenységet (Adfv2QuickStartPipeline.json)-feldolgozási folyamat
 
 ```json
 {
@@ -190,7 +193,7 @@ Egy másik példa a kifejezés a következő:
 ```
 
 
-### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Az Azure tárolás társított szolgáltatásának (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -207,7 +210,7 @@ Egy másik példa a kifejezés a következő:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset"></a>A paraméteres Azure Blob-adathalmazra
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>A paraméteres Azure Blob-adathalmazra (BlobDataset.json)
 A folyamat beállítása a **folderPath** vagy értékével **outputPath1** vagy **outputPath2** paraméter, a folyamatának. 
 
 ```json
@@ -234,7 +237,7 @@ A folyamat beállítása a **folderPath** vagy értékével **outputPath1** vagy
 }
 ```
 
-### <a name="pipeline-parameter-json"></a>Paraméter JSON-feldolgozási folyamat
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>A paraméter (PipelineParameters.json) JSON-feldolgozási folyamat
 
 ```json
 {
@@ -246,10 +249,11 @@ A folyamat beállítása a **folderPath** vagy értékével **outputPath1** vagy
 ```
 
 ### <a name="powershell-commands"></a>PowerShell-parancsok
+A parancsok használata, hogy a JSON-fájlokat mentette a mappába: C:\ADF. 
 
 ```powershell
-# Login-AzureRmAccount
-# Select-AzureRmSubscription "<Your subscription name>"
+Login-AzureRmAccount
+Select-AzureRmSubscription "<Your subscription name>"
 
 $resourceGroupName = "<Resource Group Name>"
 $dataFactoryName = "<Data Factory Name. Must be globally unique>";

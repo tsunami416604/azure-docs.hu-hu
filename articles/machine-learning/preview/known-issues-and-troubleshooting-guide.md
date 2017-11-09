@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: f39faea6b7e0886d63085b752f9532a7010ea941
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: e1ce5d337e8dea6e1dc48f04238ecb31c31909b1
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -43,7 +43,7 @@ Ha problémát tapasztal telepítése során, a telepítő naplófájlok itt:
 A zip-be ezeket a könyvtárakat tartalmát, és elküldi a számunkra a diagnosztikai.
 
 ### <a name="workbench-desktop-app"></a>Egy asztali alkalmazás munkaterület
-Ha a munkaterületet üzemeltető asztali összeomlik, a naplófájlok itt található:
+Ha problémája van bejelentkezve, vagy ha a munkaterületet üzemeltető asztali összeomlik, a naplófájlok itt található:
 ```
 # Windows
 %APPDATA%\AmlWorkbench
@@ -83,6 +83,23 @@ Azure ML munkaterület dolgozik, amikor is küldhet nekünk a rosszallás (vagy 
 - Szöveg fürtözési átalakítások nem támogatottak a Mac.
 
 - RevoScalePy könyvtár csak Windows és Linux (a Docker-tároló) támogatott. MacOS a nem támogatott.
+
+## <a name="delete-experimentation-account"></a>Kísérletezhet fiók törlése
+Parancssori felület használatával kísérletezhet-fiók törlése, de törölnie kell az alárendelt munkaterületekkel és a gyermek projektek belül e gyermek munkaterületek először.
+
+```azure-cli
+# delete a project
+$ az ml project delete -g <resource group name> -a <experimentation account name> -w <worksapce name> -n <project name>
+
+# delete a workspace 
+$ az ml workspace delete -g <resource group name> -a <experimentation account name> -n <worksapce name>
+
+# delete an experimentation account
+$ az ml account experimentation delete -g <resource group name> -n <experimentation account name>
+```
+
+A projektek és a munkaterületet üzemeltető alkalmazásból származó munkaterületek is törli.
+
 
 ## <a name="file-name-too-long-on-windows"></a>A fájlnév túl hosszú a Windows rendszeren
 Ha a munkaterületet használja a Windows, mutatjuk be a alapértelmezett legfeljebb 260 karakteres fájl neve maximális hossz, amely sikerült surface, némileg félrevezető "a rendszer nem találja a megadott elérési út" hiba. Egy beállításkulcs-érték engedélyezi sokkal hosszabb fájl elérési útja módosítható. Felülvizsgálati [Ez a cikk](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.

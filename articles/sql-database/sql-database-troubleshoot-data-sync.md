@@ -8,15 +8,17 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: d0cbe02e5a99fc62869256ed86e774aa2729f7e6
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: bbfcac5a54f04f20dbdeeecef7c06b91128b8c6a
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/08/2017
 ---
-# <a name="troubleshoot-issues-with-azure-sql-data-sync"></a>Az Azure SQL adatszinkronizálás problémák elhárítása
+# <a name="troubleshoot-issues-with-azure-sql-data-sync-preview"></a>Problémák az Azure SQL adatszinkronizálás (előzetes verzió)
 
 Ez a cikk ismerteti, amelyről ismert, hogy az SQL adatszinkronizálás (előzetes verzió) csoport aktuális kapcsolatos problémák elhárítása. Ha egy problémát a megoldás, azt itt biztosítja.
+
+SQL adatszinkronizálás áttekintését lásd: [adatok szinkronizálásának több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-sync-data.md).
                                                            
 ## <a name="my-client-agent-doesnt-work"></a>Az ügyfélügynök nem működik
 
@@ -487,3 +489,20 @@ A következő feltételek eredményezhet a szinkronizálási csoport alatt Berag
 
 Ha nem tudja kijavítani a problémát, a szinkronizálási csoport állapotát visszaállítható által a Microsoft támogatási szolgálatához. Ahhoz, hogy az állapot alaphelyzetbe állítása, hozzon létre egy fórumbejegyzést a rendelkezik a [Azure SQL Database fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted), és az előfizetés-Azonosítóval és a szinkronizálás csoport azonosítója, amely alaphelyzetbe kell állítani a csoport. A Microsoft terméktámogatási szolgálatának a POST válaszol, és jelzi, ha az állapot alaphelyzetbe lett állítva.
 
+## <a name="next-steps"></a>Következő lépések
+SQL adatszinkronizálás kapcsolatos további információkért lásd:
+
+-   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md)
+-   [Ismerkedés az Azure SQL-adatok szinkronizálása](sql-database-get-started-sql-data-sync.md)
+-   [Ajánlott eljárások az Azure SQL-adatok szinkronizálása](sql-database-best-practices-data-sync.md)
+
+-   PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás befejezése:
+    -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [Egy Azure SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálása a PowerShell használatával](scripts/sql-database-sync-data-between-azure-onprem.md)
+
+-   [Töltse le az SQL Data szinkronizálási REST API dokumentációja](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+
+SQL-adatbázis kapcsolatos további információkért lásd:
+
+-   [SQL-adatbázis – áttekintés](sql-database-technical-overview.md)
+-   [Adatbázis életciklusának kezelésére](https://msdn.microsoft.com/library/jj907294.aspx)

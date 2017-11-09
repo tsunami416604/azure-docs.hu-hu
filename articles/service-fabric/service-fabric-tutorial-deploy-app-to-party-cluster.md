@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 5766ef2097b0da295d42e7c5909efc524049f418
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7496b0578301713ebae7381e9a54642e226eb96
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Alkalmazás üzembe helyezése az Azure-ban fél fürtre
 Ez az oktatóanyag két egy sor és bemutatja, hogyan fél fürthöz az Azure-ban az Azure Service Fabric-alkalmazás központi telepítéséről.
@@ -58,24 +58,6 @@ Használhatja a saját fürt fél fürt helyett, ha azt szeretné.  Az ASP.NET c
 
 > [!NOTE]
 > Entitás fürtök nem biztonságosak, így az alkalmazások és azok helyezett adatokat esetleg mások is láthatják másoknak. Ne telepítsen semmit nem szeretné, hogy mások is láthatják. Mindenképpen olvassa el a használati feltételek a részletekért keresztül.
-
-## <a name="configure-the-listening-port"></a>A figyelő portja konfigurálása
-A VotingWeb előtér-szolgáltatás létrehozásakor, a Visual Studio véletlenszerűen választ egy portot a figyelést a szolgáltatáshoz.  A VotingWeb szolgáltatás úgy működik, mint az előtér-alkalmazás, és elfogadja a külső forgalom, most, hogy a szolgáltatás kötése egy rögzített méretű és jól ismeri port. A Solution Explorerben nyissa meg a *VotingWeb/PackageRoot/ServiceManifest.xml*.  Keresés a **végpont** erőforrás a **erőforrások** szakaszt, és módosítsa a **Port** 80-as értéket.
-
-```xml
-<Resources>
-    <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="80" />
-    </Endpoints>
-  </Resources>
-```
-
-Az alkalmazás URL-Címének tulajdonság értéke a szavazási projekt frissíteni, egy webböngészőben megnyílik a megfelelő porthoz hibakeresése "F5" használatával.  A Megoldáskezelőben, válassza ki a **Voting** projektet és a frissítés a **alkalmazás URL-Címének** tulajdonság.
-
-![Alkalmazás URL-címe](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ## <a name="deploy-the-app-to-the-azure"></a>Az alkalmazás telepítése az Azure-bA
 Most, hogy az alkalmazás készen áll, ezután telepítheti azt a közvetlen fél fürthöz a Visual Studio eszközből.

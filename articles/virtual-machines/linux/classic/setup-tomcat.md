@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: fa30c78a5a5d458ba8845c3c10b87538427786c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b76f6f7f53bc649fbc740a79e182f81f3fd983c7
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>A Linux virtuális gépek Azure-ral Tomcat7 beállítása
 Apache Tomcat (vagy egyszerűen Tomcat is korábban Dzsakarta Tomcat) egy nyílt forráskódú webkiszolgáló és a servlet tároló fejlesztett az Apache szoftver Foundation (ASP). Tomcat valósítja meg, a Java Servlet és a Sun Microsystems JavaServer lapok (JSP) előírásoknak. Tomcat Java kód futtatására tiszta Java HTTP-web server környezetet biztosít. A legegyszerűbb konfiguráció, a Tomcat egyetlen operációs rendszer folyamatban fut. Ez a folyamat fut, a Java virtuális gép (JVM). Minden HTTP-kérelem böngészőből Tomcat végzi a rendszer a Tomcat folyamat külön szálban.  
 
 > [!IMPORTANT]
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk bemutatja, hogyan adhat a klasszikus üzembe helyezési modellt használja. Azt javasoljuk, hogy az új telepítések esetén a Resource Manager modellt használja. A Resource Manager-sablon használatával az Ubuntu virtuális gép nyitott JDK és Tomcat, lásd: [Ez a cikk](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 Ez a cikk Tomcat7 telepítése egy Linux-lemezképet, és telepítse az Azure-ban.  
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8b90885583c411e5b1e513188a636fe54ec74b7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b7ec44b820e510d1e8bd99ef195546a519c365c
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz numerikus funkciók
 
@@ -122,11 +122,13 @@ Egy iteráció hurok indexét adja vissza.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a funkció mindig használatos a **másolási** objektum. Ha nincs érték megadva, a **eltolás**, az aktuális iterációs értéket adja vissza. Az ismétlési érték nulla kezdődik.
+Ez a funkció mindig használatos a **másolási** objektum. Ha nincs érték megadva, a **eltolás**, az aktuális iterációs értéket adja vissza. Az ismétlési érték nulla kezdődik. Iteráció hurkokat is használhatja, vagy az erőforrások, vagy a változók meghatározásakor.
 
 A **loopName** tulajdonság lehetővé teszi adja meg, hogy copyIndex erőforrás iterációs vagy tulajdonság iterációs hivatkozik. Ha nincs érték megadva, a **loopName**, az aktuális erőforrás-típus iteráció szolgál. Adjon meg egy értéket a **loopName** amikor léptetés tulajdonság alapján. 
  
 Teljes leírását az használatának **copyIndex**, lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
+
+Segítségével például **copyIndex** vonatkozó változó definiálása látható [változók](resource-group-authoring-templates.md#variables).
 
 ### <a name="example"></a>Példa
 

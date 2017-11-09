@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 90f9fe5775f493298dad3b12f2be9d6da6cb480e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b4b39cd23557093edaec97f7ef7a3e354f1ecd03
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="about-site-recovery"></a>Tudnivalók a Site Recovery szolgáltatásról
 
@@ -67,7 +67,6 @@ A Site Recovery a következők replikációját képes kezelni:
 **Mely régiók támogatottak a Site Recoveryhez?** | [Támogatott régiók](https://azure.microsoft.com/regions/services/) |
 **Mely operációs rendszerek használhatóak a replikált gépeken?** | [Azure virtuálisgép-követelmények](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)</br></br>[VMware virtuálisgép-követelmények](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> A Hyper-V virtuális gépek esetében az Azure által támogatott bármely [vendég operációs rendszer](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) és a Hyper-V is támogatott.<br/><br/> [Fizikai kiszolgáló követelmények](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
 **Milyen VMware-kiszolgálókra/-gazdagépekre van szükségem?** | A VMware virtuális gépeket a [támogatott vSphere gazdagépeken/vCenter kiszolgálókon](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) lehet elhelyezni.
-
 **Milyen számítási feladatokat replikálhatok?** | A támogatott replikációs gépeken futó bármilyen számítási feladat replikálható. Ezenkívül a Site Recovery csapata alkalmazásspecifikus tesztelést végzett [néhány alkalmazáshoz](site-recovery-workload.md#workload-summary).
 
 

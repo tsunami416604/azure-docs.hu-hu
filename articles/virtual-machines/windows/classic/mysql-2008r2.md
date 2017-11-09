@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 11850e5ce20efae88a7af9c1d2e4761ed2b70cd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4135f96027cc25e1e0a149857ace1672570fc4b
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>MySQL telepíthető a Windows Server 2016 rendszerű klasszikus üzembe helyezési modellel létrehozott virtuális gépek
 [MySQL](https://www.mysql.com) egy népszerű nyílt forráskódú, akkor az SQL-adatbázis. Ez az oktatóanyag bemutatja, hogyan telepítheti és futtathatja a **MySQL 5.7.18 közösségi változata** egy futó virtuális géphez MySQL-kiszolgálóként **Windows Server 2016**. Lehet, hogy a felhasználói élmény némileg eltérő MySQL vagy Windows Server más verzióiban.
@@ -28,6 +28,7 @@ Linux MySQL telepítésével kapcsolatos útmutatásért tekintse meg: [MySQL te
 
 > [!IMPORTANT]
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ## <a name="create-a-virtual-machine-running-windows-server-2016"></a>Windows Server 2016 rendszerű virtuális gép létrehozása
 Ha még nem rendelkezik a virtuális gép Windows Server 2016 rendszert futtató, ezzel [oktatóanyag](./tutorial.md) a virtuális gép létrehozásához.

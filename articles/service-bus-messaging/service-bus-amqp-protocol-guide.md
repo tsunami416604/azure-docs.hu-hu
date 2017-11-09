@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/08/2017
 ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 2ef07d78a9d81fac933f2c3359e9ee48f86e6790
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # AMQP 1.0 Azure Service Bus és az Event Hubs protokoll útmutató
 
@@ -32,7 +32,7 @@ Ez a cikk röviden összefoglalja az AMQP 1.0 együtt a bővítmény specifikác
 
 Bármelyik fejlesztő segítségével bármely létező AMQP 1.0-ügyfél verem bármilyen platformon kell képesek legyenek kommunikálni az Azure Service Bus keresztül AMQP 1.0 célja.
 
-Általános célú AMQP 1.0 csomagokat, például az Apache Proton vagy AMQP.NET Lite már az összes mag AMQP 1.0 kézmozdulatok valósítja meg. E eligazodást kézmozdulatok néha csomagolt be egy magasabb szintű API-t; Apache Proton két, a imperatív Messenger API és a reaktív reaktor API is kínál.
+Általános célú AMQP 1.0 csomagokat, például az Apache Proton vagy AMQP.NET Lite már összes core AMQP 1.0-s protokollt valósítja meg. E eligazodást kézmozdulatok néha csomagolt be egy magasabb szintű API-t; Apache Proton két, a imperatív Messenger API és a reaktív reaktor API is kínál.
 
 A következő ismertető feltételezzük, hogy a felügyeleti kapcsolatokhoz, a munkamenetek, és a hivatkozások AMQP és keret átvitel és az adatfolyam vezérlés kezelése a megfelelő verem (például az Apache Proton-C) kezeli, és nem igényel sok, ha van ilyen különös figyelmet az alkalmazásfejlesztők. Absztraktként feltételezzük, hogy létezik-e néhány API primitívek hasonlóan lehetővé teszi a, és hozzon létre valamilyen *küldő* és *fogadó* absztrakciós objektumokat, amely ezután rendelkezik néhány alakját `send()` és `receive()` műveleteket, illetve.
 
@@ -238,13 +238,13 @@ Az alábbi szakaszok ismertetik a Service Bus által használt tulajdonságok a 
 Ez a fejezet speciális képességek az Azure Service Bus vázlat bővítmények számára az AMQP, jelenleg fejlesztés alatt áll a OASIS műszaki bizottság az AMQP alapuló. A Service Bus valósítja meg a Piszkozatok legújabb verzióját, és fogad el, ezek Piszkozatok elérni a normál üzenetterhelésen bevezetett változások.
 
 > [!NOTE]
-> Service Bus üzenetkezelés egy kérelem-válasz mintát keresztül speciális műveletek támogatottak. Ezek a műveletek részleteit a dokumentum ismerteti a [AMQP 1.0 a Service Bus: kérelem-válasz-alapú műveletek](service-bus-amqp-request-response.md).
+> Service Bus üzenetkezelés egy kérelem-válasz mintát keresztül speciális műveletek támogatottak. Ezek a műveletek részleteit a cikkben bemutatott [AMQP 1.0 a Service Bus: kérelem-válasz-alapú műveletek](service-bus-amqp-request-response.md).
 > 
 > 
 
 ### AMQP kezelése
 
-Az AMQP-management specifikáció az első a Microsofttól vázlat Extensions. Ez az előírás protokoll kézmozdulatok az AMQP protokoll rétegre, amelyek lehetővé teszik az üzenetkezelési infrastruktúra felügyeleti interakciók AMQP alatt álló készletet határoz meg. A megadását, mint meghatározása általános műveletek *létrehozása*, *olvasási*, *frissítése*, és *törlése* entitások belüli kezelésére szolgáló egy üzenetkezelési infrastruktúra és a lekérdezési műveletek.
+Az AMQP-management specifikáció az első, a cikkben szereplő vázlat Extensions. Ez az előírás az AMQP protokoll rétegre protokollok, amelyek lehetővé teszik az üzenetkezelési infrastruktúra felügyeleti interakciók AMQP alatt álló készletet határoz meg. A megadását, mint meghatározása általános műveletek *létrehozása*, *olvasási*, *frissítése*, és *törlése* entitások belüli kezelésére szolgáló egy üzenetkezelési infrastruktúra és a lekérdezési műveletek.
 
 E kézmozdulatok egy kérelem-válasz közötti interakció az ügyfél és az üzenetkezelési infrastruktúra szükséges, és hogy a meghatározás ezért határozza meg a fölött AMQP interakció minta modellek hogyan: az ügyfél csatlakozik az üzenetkezelési infrastruktúra egy munkamenet kezdeményezi, és létrehozza a hivatkozások két. Egy hivatkozásra az ügyfél úgy működik, mint a küldő és a többi úgy működik, mint fogadó, így a két hivatkozásokat tartalmaz, amelyek működhet, és a kétirányú csatorna létrehozása.
 

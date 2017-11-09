@@ -59,18 +59,8 @@
       href: site-recovery-support-matrix-to-sec-site.md
     - name: Számítási feladatok vészhelyreállítása
       href: site-recovery-workload.md
-    - name: Migrálás az Azure Site Recoveryvel
+    - name: Migrálás az Azure-ba
       href: site-recovery-migrate-to-azure.md
-    - name: Azure-ról Azure-ra hálózatkezelése (előnézet)
-      href: site-recovery-azure-to-azure-networking-guidance.md
-    - name: Virtuális gépek kapcsolatai az Azure-ba történő feladatátadás után
-      href: concepts-on-premises-to-azure-networking.md
-    - name: Virtuális gépek kapcsolatai másodlagos helyre történő feladatátadás után
-      href: concepts-on-premises-to-on-premises-networking.md
-    - name: Hálózatleképezés Azure-beli virtuális gépek replikálásához
-      href: site-recovery-network-mapping-azure-to-azure.md
-    - name: Hálózatleképezés Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
-      href: site-recovery-network-mapping.md
     - name: Szerepköralapú hozzáférési engedélyek
       href: site-recovery-role-based-linked-access-control.md
     - name: GYIK
@@ -115,6 +105,16 @@
           href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md
     - name: Konfigurálás
       items:
+        - name: Hálózat beállítása az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
+          href: site-recovery-azure-to-azure-networking-guidance.md
+        - name: IP-címzés beállítása a feladatátvétel utáni hozzáféréshez az Azure-hoz
+          href: concepts-on-premises-to-azure-networking.md
+        - name: IP-címzés beállítása a feladatátvétel utáni hozzáféréshez egy másodlagos helyhez
+          href: concepts-on-premises-to-on-premises-networking.md
+        - name: Hálózatleképezés beállítása az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
+          href: site-recovery-network-mapping-azure-to-azure.md
+        - name: Hálózatleképezés előkészítése Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
+          href: site-recovery-network-mapping.md
         - name: A forráskörnyezet beállítása
           items:
             - name: 'Forráskörnyezet: VMware-ről Azure-ba'
