@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 11/08/2017
 ms.author: billmath
-ms.openlocfilehash: bce5867017647764546d872d97943d5d4f01f2d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed1e9276425b2c8577275e7ec6b57f54e5f7ae92
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Az Azure AD összevonás kompatibilitási listája
 Az Azure Active Directory egyszeri bejelentkezést biztosít, és a bővített alkalmazásbiztonsági hozzáférést az Office 365 és más Microsoft Online services az hibrid és a csak felhőalapú hitelesítés megvalósításához anélkül, hogy a nem Microsoft-megoldás. Office 365, például a Microsoft Online services, a legtöbb a directory services, hitelesítéshez és engedélyezéshez integrálva van az Azure Active Directoryban. Egyszeri bejelentkezés az SaaS-alkalmazásokhoz ezer is biztosít az Azure Active Directory és a helyszíni webalkalmazások. Tekintse meg az Azure Active Directory alkalmazáskatalógusában az támogatott SaaS-alkalmazásokhoz.
@@ -46,6 +46,7 @@ Hogyan férhetnek a az itt felsorolt külső identitásszolgáltatótól inform�
 * [Centrify](#centrify) 
 * [Dell egy felhőalapú hozzáférés identitáskezelő v7.1](#dell-one-identity-cloud-access-manager-v71) 
 * [DigitalPersona összetett hitelesítés](#digitalpersona-composite-authentication)
+* [ForgeRock identitás Platform Access Management 5.x](#forgerock-identity-platform-access-management-v5x)
 * [IBM Tivoli összevont 6.2.2 Identity Manager](#ibm-tivoli-federated-identity-manager-622) 
 * [IceWall összevonási 3.0-s verzió](#icewall-federation-version-30) 
 * [Memority](#memority)
@@ -186,6 +187,17 @@ Az alábbiakban áttekintjük a forgatókönyv támogatási mátrixot az egyszer
 
 További információ: [DigitalPersona összetett hitelesítés](http://www.crossmatch.com/uploadedFiles/Support/Reference_Material/DigitalPersona-Office-365-Deployment-Guide.pdf).
 
+## <a name="forgerock-identity-platform-access-management-v5x"></a>ForgeRock identitás Platform Access Management 5.x
+
+Az alábbiakban áttekintjük a forgatókönyv támogatási mátrixot az egyszeri bejelentkezéses felhasználói élmény biztosítása az:
+
+| Ügyfél | Támogatás | Kivételek |
+| --- | --- | --- |
+| Web-alapú ügyfelek, például Exchange webes elérés és a SharePoint online-hoz |Támogatott |None|
+| Például a Lync, az Office-előfizetés, a CRM Gazdagügyfél-alkalmazások |Támogatott |None|
+| Például az Outlook és az ActiveSync e-mailek gazdag ügyfelek |Támogatott |None |
+
+További információ: [ForgeRock identitás Platform Access Management 5.x](https://backstage.forgerock.com/knowledge/kb/article/a98278517).
 
 ## <a name="ibm-tivoli-federated-identity-manager-622"></a>IBM Tivoli összevont 6.2.2 Identity Manager
 
