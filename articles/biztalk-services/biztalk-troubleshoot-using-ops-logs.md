@@ -14,27 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: c0c83361f94ffd9c30d7fcc551ff4b85ad7d6fa5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7d3a357e1a3929153288a9d99e21f2379bcac891
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk szolgáltatások: Műveletnaplók használata – hibaelhárítás
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
+
 ## <a name="what-are-the-operation-logs"></a>Mik azok a műveleti naplói
-A műveletnaplók szolgáltatások a klasszikus Azure portálon, amely lehetővé teszi az Azure-szolgáltatásokkal, beleértve a BizTalk szolgáltatások végre műveletek korábbi naplók megtekintéséhez. Ez lehetővé teszi, hogy megtekintheti az előzményadatokat a BizTalk szolgáltatás előfizetésének kötött 180 nap alatt a felügyeleti műveleteihez kapcsolódik.
+A műveletnaplók szolgáltatások funkció lehetővé teszi az Azure-szolgáltatásokkal, beleértve a BizTalk szolgáltatások végre műveletek korábbi naplók. Ez lehetővé teszi, hogy megtekintheti az előzményadatokat a BizTalk szolgáltatás előfizetésének kötött 180 nap alatt a felügyeleti műveleteihez kapcsolódik.
 
 > [!NOTE]
-> Ez a funkció csak rögzíti a naplókat, ha a szolgáltatás indítása, például a BizTalk szolgáltatások felügyeleti műveleteihez biztonsági fel, és így tovább. Függetlenül attól, hogy a klasszikus Azure portálon vagy segítségével végrehajtandó műveletek nyomon követi a [BizTalk szolgáltatás REST API-k](http://msdn.microsoft.com/library/azure/dn232347.aspx). Szolgáltatások használatával nyomon követett műveletek teljes listáját lásd: [műveletek nyomon követett Azure felügyeleti szolgáltatások használatával](#bizops).<br/><br/>
+> Ez a funkció csak rögzíti a naplókat, ha a szolgáltatás indítása, például a BizTalk szolgáltatások felügyeleti műveleteihez biztonsági fel, és így tovább. Ilyen műveletek segítségével nyomon követi a [BizTalk szolgáltatás REST API-k](http://msdn.microsoft.com/library/azure/dn232347.aspx). Szolgáltatások használatával nyomon követett műveletek teljes listáját lásd: [műveletek nyomon követett Azure felügyeleti szolgáltatások használatával](#bizops).<br/><br/>
 > Ez a nem rögzíthető lemezkép a naplók BizTalk szolgáltatás futásideje (például hidak, és így tovább által feldolgozott üzenet.) kapcsolódó tevékenységekhez. Ezek a naplók megtekintéséhez használja a nyomon követési a BizTalk szolgáltatások portálról. További információkért lásd: [üzenetek nyomon követése](http://msdn.microsoft.com/library/azure/hh949805.aspx).
 > 
 > 
 
 ## <a name="view-biztalk-services-operation-logs"></a>BizTalk szolgáltatások műveletnaplók megtekintése
-1. A klasszikus Azure portálon, válassza ki a **szolgáltatások**, majd válassza ki a **műveletnaplók** fülre.
+1. Válassza a portál **szolgáltatások**, majd válassza ki a **műveletnaplók** fülre.
 2. A naplók előfizetés, a dátumtartományt, a szolgáltatás típusa (pl. BizTalk szolgáltatások), a szolgáltatás neve vagy a (sikeres, sikertelen) a művelet állapotának például különböző paraméterek alapján szűrhetők.
 3. Válassza ki a jelet a szűrt listájának megtekintése. A következő kép bemutatja testbiztalkservice kapcsolódó tevékenységek: ![műveletnaplók megtekintése][ViewLogs] 
 4. Egy adott műveletekre vonatkozó megtekintéséhez több, válassza ki a, és kattintson **részletek** alján a tálcán.
@@ -64,7 +66,7 @@ A következő táblázat felsorolja a nyomon követett az Azure szolgáltatások
 * [Biztonsági mentési BizTalk szolgáltatás](http://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [Állítsa vissza biztonsági másolatból BizTalk szolgáltatás](http://go.microsoft.com/fwlink/p/?LinkID=325582)
 * [BizTalk szolgáltatások: Fejlesztői, Basic, Standard és prémium kiadás diagram](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk szolgáltatások: Kiépítés használata Azure klasszikus portál](http://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk szolgáltatások: kiépítés](http://go.microsoft.com/fwlink/p/?LinkID=302280)
 * [BizTalk Services: Kiépítési állapot diagramja](http://go.microsoft.com/fwlink/p/?LinkID=329870)
 * [BizTalk Services: Irányítópult, Figyelés és Méret lapok](http://go.microsoft.com/fwlink/p/?LinkID=302281)
 * [BizTalk Services: Szabályozás](http://go.microsoft.com/fwlink/p/?LinkID=302282)

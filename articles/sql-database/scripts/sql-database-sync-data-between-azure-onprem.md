@@ -17,11 +17,11 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: f0729286afdf01ea0ce0e0060f4d7415fa122014
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 2eeab48a580bb8127a2c16ea61e419cbfd92ce3c
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="use-powershell-to-sync-between-an-azure-sql-database-and-a-sql-server-on-premises-database"></a>Egy Azure SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálása a PowerShell használatával
 
@@ -395,6 +395,7 @@ SQL adatszinkronizálás kapcsolatos további információkért lásd:
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](../sql-database-sync-data.md)
 -   [Ismerkedés az Azure SQL-adatok szinkronizálása](../sql-database-get-started-sql-data-sync.md)
 -   [Ajánlott eljárások az Azure SQL-adatok szinkronizálása](../sql-database-best-practices-data-sync.md)
+-   [A figyelő az Azure SQL adatszinkronizálás az OMS szolgáltatáshoz](../sql-database-sync-monitor-oms.md)
 -   [Az Azure SQL adatszinkronizálás problémák elhárítása](../sql-database-troubleshoot-data-sync.md)
 
 -   PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás befejezése:

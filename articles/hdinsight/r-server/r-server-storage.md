@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 80af328fc046f8d33727930d02b569da37ccf332
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: aafcc818af4c6e5d141d3633b31b913802a21752
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>Az R Server on HDInsight az Azure tárolási megoldások
 
@@ -197,6 +197,5 @@ Most, hogy megismerkedett az Azure storage-beállítások, az alábbi hivatkozá
 
 * [Az R Server on HDInsight áttekintése](r-server-overview.md)
 * [Az R server, a Hadoop első lépései](r-server-get-started.md)
-* [Rstudióból kiszolgáló felvétele a HDInsight (Ha nincs hozzáadva a fürt létrehozása során)](r-server-install-r-studio.md)
 * [Számítási környezeti beállítások a HDInsighton belüli R Server esetében](r-server-compute-contexts.md)
 

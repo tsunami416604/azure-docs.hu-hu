@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: a4b28e8a1269374a24e169f9363401109bacc471
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 6a90eb0eae6855cd0fbede65a024b5ff6490cce0
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="remote-monitoring-preconfigured-solution-architecture"></a>Távoli figyelési előkonfigurált megoldás architektúrája
 
@@ -42,7 +42,7 @@ A következő ábra bemutatja a távoli figyelési előkonfigurált megoldás, a
 Architektúra változásokon ment keresztül, mert a Microsoft, amely az első előkonfigurált megoldásokat. [Mikroszolgáltatások](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) rendelkezik kiderült, bevált gyakorlat méretezés és rugalmasság eléréséhez fejlesztési sebesség feláldozása nélkül. Több Microsoft-szolgáltatások ebben a mintában architekturális belsőleg használja a nagy megbízhatósági és méretezhetőségi eredményeit. A frissített előkonfigurált megoldásokat ezek learnings gyakorlati helyezze el, révén is kihasználhatja a őket.
 
 > [!TIP]
-> Mikroszolgáltatási architektúra kapcsolatos további információkért lásd: [.NET alkalmazás-architektúra](https://www.microsoft.com/net/learn/architecture) és [Mikroszolgáltatások: egy alkalmazás fordulat a felhő technológiával](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+> További információk a mikroszolgáltatás-architektúrákról: [.NET-alkalmazás architektúrája](https://www.microsoft.com/net/learn/architecture) és [Mikroszolgáltatások: egy felhőben zajló alkalmazásforradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
 
 ## <a name="device-connectivity"></a>Eszközkapcsolatok
 
@@ -141,5 +141,6 @@ Ha szeretné használni a kódot és fejlesztői dokumentációját, indítsa el
 
 * [Előre konfigurált távoli figyelése az Azure IoT (.NET) megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
 * [Előre konfigurált távoli megfigyelés az Azure IoT (Java) megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
+* [Előre konfigurált távoli figyelési architektúra megoldás)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
 
 Fogalmi kapcsolatos további információkért a távoli felügyeleti előkonfigurált megoldás lásd: [testre szabhatja az előkonfigurált megoldás](iot-suite-remote-monitoring-customize.md).

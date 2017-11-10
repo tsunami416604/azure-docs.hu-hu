@@ -1,4 +1,6 @@
 
+A memóriaoptimalizált VM-méretek ajánlat egy nagy memória-CPU arányú, amelyek kiváló relációs adatbázis-kiszolgálók, közepes vagy nagyméretű gyorsítótárak és memórián belüli elemzés. Ez a cikk ismerteti a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati teljesítményt minden méretéhez ennél a csoportosításnál száma. 
+
 * Az M-sorozat biztosítja a legnagyobb vCPU-számot (legfeljebb 128 vCPU) és a legtöbb memóriát (legfeljebb 2,0 TiB) a felhőben lévő összes virtuális gép közül.  Ideális a rendkívül nagy méretű adatbázisokhoz vagy olyan egyéb alkalmazásokhoz, amelyek ki tudják használni a nagy vCPU-számot és a nagy memóriamennyiséget.
 
 * A Dv2-, a D- és a G-sorozat, valamint ezek DS/GS megfelelői gyorsabb virtuális processzort (vCPU), jobb ideiglenes tárteljesítményt vagy több memóriát igényló alkalmazásokhoz ideálisak.  Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.

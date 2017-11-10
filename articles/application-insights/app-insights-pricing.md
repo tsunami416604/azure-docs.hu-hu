@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5b3d1b9e0d176f29fbcc90410f1fe80085ec5fa8
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f11f7bf6ed94c5d19ad51b1e474ab45d20216351
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Az Application Insightsban tarifa- és adatok kötet kezelése
 
@@ -39,7 +39,7 @@ Tekintse meg a [árképzést ismertető oldalra Application Insights] [ pricing]
 Az alapszintű csomag az alapértelmezett beállítás, ha egy új Application Insights-erőforrás jön létre, és a legtöbb felhasználó elegendő.
 
 * Az alapszintű csomag, az adatok kötetenként van szó: a telemetriai adatok az Application Insights által fogadott bájtok száma. Az Application Insights által kapott az alkalmazás tömörítetlen JSON adatcsomag méretének adatmennyiség mérése történik.
-A [Analytics importált adatok](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import), adatmennyiség mérik, mert a tömörítetlen Application insights szolgáltatásnak elküldött fájlok mérete.  
+A [Analytics importált adatok](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), adatmennyiség mérik, mert a tömörítetlen Application insights szolgáltatásnak elküldött fájlok mérete.  
 * Az első 1 GB az egyes alkalmazásokhoz szabad, így ha csupán kísérletezés vagy fejlesztésével, még valószínűleg nem kell fizetnie.
 * [Élő Stream metrikák](app-insights-live-stream.md) adatok díjszabási célra nem számítanak.
 * [A folyamatos exportálás](app-insights-export-telemetry.md) érhető el az extra / GB-os kell fizetni az alapszintű csomag található.

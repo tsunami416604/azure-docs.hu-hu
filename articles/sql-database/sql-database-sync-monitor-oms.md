@@ -8,11 +8,11 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: e1099d2cd7eeccbe76d762028a0c5d5f95f53026
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 5a0d25d698ddb15b4ba88d322c07a28b329c4add
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="monitor-azure-sql-data-sync-preview-with-oms-log-analytics"></a>A figyelő az Azure SQL adatszinkronizálás (előzetes verzió) az OMS szolgáltatáshoz 
 
@@ -24,19 +24,19 @@ SQL adatszinkronizálás áttekintését lásd: [adatok szinkronizálásának t�
 
 Már nincs szüksége a nézze át az egyes szinkronizálási csoportok külön-külön és azokban megkereshetik a problémák a naplókat. Egy egyéni OMS (Operations Management Suite) nézet használatával figyelheti a szinkronizálási csoportok bármelyik az előfizetések egy helyen. Ez a nézet a fontos információkat SQL adatszinkronizálás ügyfelek hibaelhárításra használható.
 
-![Adatok szinkronizálása figyelési irányítópult](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.jpg)
+![Adatok szinkronizálása figyelési irányítópult](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Az automatikus E-mail értesítések
 
-Már nincs szüksége a részletek a naplóban manuálisan az Azure portál vagy PowerShell vagy a REST API használatával. Használatával a [OMS Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), ugorjon az e-mail címét, amely hiba esetén megjelenítéséhez szükséges riasztásokat hozhat létre.
+Már nincs szüksége a részletek a naplóban manuálisan az Azure portál vagy PowerShell vagy a REST API használatával. A [OMS Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), hozhat létre riasztásokat, amelyek közvetlenül Ugrás a hiba akkor fordul elő, amikor igénylő személyek e-mail címét.
 
-![Adatok szinkronizálása értesítő e-mailek](media/sql-database-sync-monitor-oms/sync-email-notifications.jpg)
+![Adatok szinkronizálása értesítő e-mailek](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
-## <a name="how-do-you-set-this-up"></a>Hogyan hajtsa végre ezt lehet beállítani? 
+## <a name="how-do-you-set-up-these-monitoring-features"></a>Hogyan állíthatja be ezeket a figyelési szolgáltatásokat? 
 
-A felügyeleti megoldás az SQL adatszinkronizálás kevesebb, mint egy óra alatt a következő művelet végrehajtásával egyéni OMS megvalósításához.
+A felügyeleti megoldás az SQL adatszinkronizálás kevesebb, mint egy óra alatt a következő művelet végrehajtásával egyéni OMS megvalósításához:
 
-3 összetevők konfigurálása lesz szüksége:
+Kell konfigurálnia a három összetevővel:
 
 -   Naplóadatok adatszinkronizálás SQL hírcsatornát, hogy OMS PowerShell runbook.
 
@@ -70,7 +70,7 @@ Egy runbook létrehozásával kapcsolatos további információkért lásd: [az 
 
 1.  Az Azure Automation-fiókjában, válassza ki a **Runbookok** lapon a folyamatok automatizálásához.
 
-2.  Válassza ki **adja hozzá a Runbookok** , a Runbookok lap bal felső sarkában.
+2.  Válassza ki **hozzáadása egy Runbook** , a Runbookok lap bal felső sarkában.
 
 3.  Válassza ki **meglévő forgatókönyv importálása**.
 
@@ -80,13 +80,13 @@ Egy runbook létrehozásával kapcsolatos további információkért lásd: [az 
 
 6.  Az Azure Automation-fiók alatt válassza ki a **változók** lapon a megosztott erőforrások.
 
-7.  Válassza ki **változó hozzáadása** a változók oldalon. Hozzon létre egy változót, a runbook legutóbbi végrehajtásának időpontja tárolására van szükségünk. Ha több runbook, a rendszer minden runbook kell egy változó.
+7.  Válassza ki **változó hozzáadása** a változók oldalon. Hozzon létre egy változót, a runbook legutóbbi végrehajtásának időpontja tárolásához. Ha több runbook, a rendszer minden runbook kell egy változó.
 
 8.  Állítsa be a változó neve, mint a `DataSyncLogLastUpdatedTime` és annak típusát, a DateTime típusú érték.
 
 9.  Válassza ki a runbookot, és kattintson a Szerkesztés gombra az oldal tetején.
 
-10. Végezze el a fiókját és az SQL Data Sync konfigurációja a szükséges módosításokat. (Lásd: a minta-parancsfájl részletes információt.)
+10. Végezze el a fiókját és az SQL Data Sync konfigurációja a szükséges módosításokat. (További részletes információkért lásd: a minta parancsfájlt.)
 
     1.  Az Azure adatokat.
 
@@ -96,7 +96,7 @@ Egy runbook létrehozásával kapcsolatos további információkért lásd: [az 
 
 11. A runbook futtatása a ablaktáblán. Ellenőrizze, hogy sikeres volt-e.
 
-    Ha hibákat, győződjön meg arról, hogy a legújabb PowerShell-modul telepítve van. Ehhez a **modulok Gallery** az Automation-fiókban.
+    Ha hibákat, győződjön meg arról, hogy a legújabb PowerShell-modul telepítve van. A legújabb PowerShell moduljának telepítése a **modulok Gallery** az Automation-fiókban.
 
 12. Kattintson a **közzététele**
 
@@ -118,7 +118,7 @@ A runbook ütemezése:
 
 ### <a name="check-the-automation"></a>Ellenőrizze az automatizálás
 
-Figyelheti, hogy a várt módon fut az automation **áttekintése** az automation-fiókban található a **Projekt statisztika** meg a **figyelés**. Ez egyszerűen megtekinthetők az irányítópulton rögzítheti. A runbook megjelenítése "Befejezettként" sikeres kísérletei és futtatása nem sikerült megjeleníteni "Sikertelen".
+Figyelheti, hogy a várt módon fut az automation **áttekintése** az automation-fiókban található a **Projekt statisztika** meg a **figyelés**. Ez a nézet egyszerűen megtekinthetők az irányítópulton rögzítheti. A runbook megjelenítése "Befejezettként" sikeres kísérletei és futtatása nem sikerült megjeleníteni "Sikertelen".
 
 ## <a name="create-an-oms-log-reader-alert-for-email-notifications"></a>Értesítő e-mailek OMS napló olvasó riasztás létrehozása
 
@@ -136,7 +136,7 @@ Riasztás létrehozása, amely OMS Naplóelemzési használ, a következő lehet
 
     1.  Adja meg az összesített értéket **nagyobb, mint**.
 
-    2.  Miután **nagyobb, mint**, adja meg a küszöbérték milyen értesítéseket kapni. Átmeneti hibák adatszinkronizálás vár. Azt javasoljuk, hogy 5 zaj csökkentése érdekében megadhatja a küszöbértéket.
+    2.  Miután **nagyobb, mint**, adja meg a küszöbérték milyen értesítéseket kapni. Átmeneti hibák adatszinkronizálás vár. Zaj csökkentése érdekében a küszöbérték beállítása 5.
 
 5.  A **műveletek**, beállíthatja **e-mailes értesítés** az "Igen". Adja meg a kívánt e-mailjeik címzettjeire.
 
@@ -168,7 +168,7 @@ Az OMS-nézet konfigurálásához tegye a következőket:
 
         2.  Az egyes szinkronizálási csempék, a szinkronizálási csoport nevének a frissítése.
 
-    3.  Onn egyes csempére, a cím frissítéséhez, igény szerint.
+    3.  Mindegyik mozaiknál szükség szerint frissítse az a cím.
 
 4.  Kattintson a **mentése** , és készen áll a nézetet.
 
@@ -189,10 +189,11 @@ Töltse le a következő helyekről cikkben leírt mintakódok:
 -   [Adatok szinkronizálási napló OMS megtekintése](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>Következő lépések
-vagy SQL adatszinkronizálás, kapcsolatos további információért lásd:
+SQL adatszinkronizálás kapcsolatos további információkért lásd:
 
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md)
 -   [Ismerkedés az Azure SQL-adatok szinkronizálása](sql-database-get-started-sql-data-sync.md)
+-   [Ajánlott eljárások az Azure SQL-adatok szinkronizálása](sql-database-best-practices-data-sync.md)
 -   [Az Azure SQL adatszinkronizálás problémák elhárítása](sql-database-troubleshoot-data-sync.md)
 
 -   PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás befejezése:

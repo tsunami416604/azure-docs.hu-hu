@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: b9fd985c23558596408e78eadae00dd0f95c4214
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18eac72d75680ab12c4a0bea9dfc5ac8a5fce566
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Kiállító neve és kiállító kulcsa
 
@@ -76,13 +76,9 @@ A több a [New-AzureSBNamespace](https://msdn.microsoft.com/library/dn495165.asp
 Service Bus kibocsátó neve és Issuer Key BizTalk Adapter szolgáltatások használják. BizTalk szolgáltatások projektre a Visual Studio, a segítségével a BizTalk Adapter szolgáltatások egy helyszíni üzletági (LOB) rendszerhez való csatlakozás. Szeretne csatlakozni, a LOB-továbbítási létrehozása, és adja meg a LOB-rendszer részleteit. Ennek során azt is adja meg a Service Bus kibocsátó neve és Issuer Key.
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>A Service Bus kibocsátó neve és Issuer Key beolvasása
-1. Jelentkezzen be a [klasszikus Azure portálra](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. A bal oldali navigációs ablakból válassza **Service Bus**.
-3. Válassza ki a névteret. A tálcán válassza **kapcsolatadatok**. Ez megjeleníti a **alapértelmezett kibocsátó** (kibocsátó neve) és **alapértelmezett kulcs** (Issuer Key). Az értékekre másolhatók.  
-
-Összefoglalásképpen:  
-Kiállító neve alapértelmezett kibocsátó =  
-Kiállító kulcsát alapértelmezett kulcs =
+1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+2. Keresse meg **Service Bus**, és válassza ki a névteret. 
+3. Nyissa meg a **megosztott elérési házirendek** tulajdonságait, válassza ki a házirendet, és tekintse meg a **kapcsolati karakterlánc** tartozó név és kulcs értékeket.  
 
 ## <a name="next"></a>Következő lépés
 További Azure BizTalk szolgáltatások témakörök:
@@ -95,7 +91,7 @@ További Azure BizTalk szolgáltatások témakörök:
 ## <a name="see-also"></a>Lásd még:
 * [Hogyan: ACS felügyeleti szolgáltatás segítségével a szolgáltatás-identitások konfigurálása](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
 * [BizTalk szolgáltatások: Fejlesztői, Basic, Standard és prémium kiadás diagram](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk szolgáltatások: Kiépítés használata Azure klasszikus portál](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [BizTalk szolgáltatások: kiépítés](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [BizTalk Services: Kiépítési állapot diagramja](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 * [BizTalk Services: Irányítópult, Figyelés és Méret lapok](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk Services: Biztonsági mentés és visszaállítás](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

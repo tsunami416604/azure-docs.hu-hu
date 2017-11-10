@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
-ms.openlocfilehash: a294a3f92163f78bace56654c284c4e83623b829
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
-ms.translationtype: HT
+ms.openlocfilehash: 2b2f35b3241bd1700bb1fb3319d38fdfda2545f9
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="sprint-1---november-2017"></a>1 - November 2017 súlyadatainak nyomtatása 
 
@@ -127,13 +127,13 @@ Alább a sprint az Azure gépi tanulás összetevő területenként részletes f
 - Konstrukció képszolgáltatás mostantól támogatja az épület képek Azure IoT-szolgáltatások vagy eszközök.
 
 ### <a name="sample-projects"></a>A minta-projektek
-- _Iris zárolásának_ mintaprojektet:
+- [_Iris zárolásának_ ](./tutorial-classifying-iris-part-1.md) mintaprojektet:
     - `iris_pyspark.py`a rendszer átnevezi `iris_spark.py`.
-    - `iris_score.py`a rendszer átnevezi `iris-score.py`.
+    - `iris_score.py`a rendszer átnevezi `score_iris.py`.
     - `iris.dprep`és `iris.dsource` a legfrissebb adatok előkészítő kártevőfrissítések megfelelően frissül.
     - `iris.ipynb`A HDInsight-fürt működéséhez notebook módosul.
     - Futtatási előzményei be van kapcsolva a `iris.ipynb` Notebook cella.
-- _Speciális kerékpárt megosztás adatokkal adatok előkészítő_ rögzített "Kezelni hiba érték" lépés mintaprojektet.
-- _Felnőtt nyilvántartásba adatokon MMLSpark_ mintaprojektet `docker.runconfig` YAM frissítve JSON formátumban.
-- Elosztott Hyperparameter hangolása mintaprojektet`docker.runconfig` YAM frissítve JSON formátumban.
-- Új mintaprojektet _CNTK használatával kép besorolás_.
+- [_Speciális kerékpárt megosztás adatokkal adatok előkészítő_ ](./tutorial-bikeshare-dataprep.md) rögzített "Kezelni hiba érték" lépés mintaprojektet.
+- [_Felnőtt nyilvántartásba adatokon MMLSpark_ ](https://github.com/Azure/MachineLearningSamples-mmlspark) mintaprojektet `docker.runconfig` YAM frissítve JSON formátumban.
+- [_Elosztott Hyperparameter hangolása_ ](./scenario-distributed-tuning-of-hyperparameters.md) mintaprojektet`docker.runconfig` YAM frissítve JSON formátumban.
+- Új mintaprojektet [ _CNTK használatával kép besorolás_](./scenario-image-classification-using-cntk.md).

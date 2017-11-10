@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/15/2017
+ms.date: 11/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 27ecba06f2251aaf742f2221982cad5cb9602769
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c828a7b63e70669ed38ecea898442a3978e67ba7
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>A .NET SDK használatával a hdinsight Hadoop Pig feladatok futtatása
 
@@ -57,7 +57,7 @@ A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat
 
 3. A projekt létrehozásához kattintson az **OK** gombra.
 
-4. Az a **eszközök** menüjében válassza **Kódtárcsomag-kezelő** vagy **Nuget-Csomagkezelő**, majd válassza ki **Csomagkezelő konzol**.
+4. Az a **eszközök** menüjében válassza **Kódtárcsomag-kezelő** vagy **NuGet-Csomagkezelő**, majd válassza ki **Csomagkezelő konzol**.
 
 5. A .NET SDK-csomagok telepítéséhez használja a következő parancsot:
 
@@ -121,10 +121,6 @@ A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat
 7. Az alkalmazás elindításához nyomja le az **F5**.
 
 8. Kilép az alkalmazásból, nyomja le az **ENTER**.
-
-## <a name="summary"></a>Összefoglalás
-
-Ahogy látja, a .NET SDK a Hadoop lehetővé teszi egy HDInsight-fürt Pig feladatok elküldéséhez .NET-alkalmazások létrehozása, és figyelheti a feladat állapotát.
 
 ## <a name="next-steps"></a>Következő lépések
 

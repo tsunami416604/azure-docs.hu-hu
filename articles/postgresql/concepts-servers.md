@@ -1,6 +1,6 @@
 ---
 title: "Azure adatbázisban a következő PostgreSQL Server fogalmak |} Microsoft Docs"
-description: "Ez a témakör szempontjait és útmutatást biztosít PostgreSQL-kiszolgálók Azure-adatbázis használata."
+description: "Ez a témakör a szempontok és konfigurálása és kezelése az Azure-adatbázis PostgreSQL-kiszolgálók iránymutatásokat tartalmaz."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 67cf6b133e8e869ee3a157d79d68602760d9137c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/08/2017
+ms.openlocfilehash: 46e109c25f8cbdba9b3769db7563259f7c6705d4
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure-adatbázis PostgreSQL-kiszolgálók
 Ez a cikk szempontjait és útmutatást biztosít PostgreSQL-kiszolgálók Azure-adatbázis használata.
@@ -30,7 +30,7 @@ Egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis:
 - Collocates erőforrások régióban.
 - A csatlakozási végpont biztosít a kiszolgáló és az adatbázis-hozzáférési (. postgresql.database.azure.com).
 - Felügyeleti házirendek vonatkoznak annak adatbázisok hatóköre biztosít: bejelentkezés, tűzfal, felhasználók, szerepkörök, konfiguráció stb.
-- Több verzióban érhető el. További információkért lásd: [PostgreSQL támogatott adatbázis-verziók](concepts-supported-versions.md).
+- Több verzióban érhető el. További információkért lásd: [támogatott PostgreSQL-adatbázis verziója](concepts-supported-versions.md).
 - Az extensible felhasználók. További információkért lásd: [PostgreSQL-bővítmények](concepts-extensions.md).
 
 Azure adatbázisban PostgreSQL-kiszolgáló egy vagy több adatbázist is létrehozhat. Dönthet úgy, hogy az erőforrások teljes kihasználása érdekében kiszolgálónként egy adatbázist hoz létre, vagy úgy, hogy több adatbázis létrehozásával megosztja az erőforrásokat. Az árképzés strukturált kiszolgálónként, tarifacsomag, számítási egység, és tárhely (GB), a konfiguráció alapján. További információkért lásd: [Tarifacsomagok](./concepts-service-tiers.md).
@@ -47,9 +47,16 @@ A következő elemek biztosíthatja, hogy az adatbázishoz való hozzáférést.
 |||
 
 ## <a name="how-do-i-manage-a-server"></a>Hogyan kezelheti a kiszolgáló?
-Kezelheti az Azure Database PostgreSQL-kiszolgálók az Azure portál használatával vagy a [Azure CLI](/cli/azure/postgres).
+Kezelheti az Azure Database PostgreSQL-kiszolgálók használatával a [Azure-portálon](https://portal.azure.com) vagy a [Azure CLI](/cli/azure/postgres).
+
+## <a name="server-parameters"></a>Kiszolgáló paraméterei
+A PostgreSQL server paraméterek határozzák meg a kiszolgáló konfigurációját. A következő Azure adatbázisban PostgreSQL paraméterek listáját tekinthetők meg és az Azure-portálon vagy az Azure parancssori felület használatával szerkeszthetők. 
+
+A Postgres felügyelt szolgáltatásként konfigurálható PostgreSQL az Azure-adatbázis paraméterei a paramétereket a Postgres helyi példányát egy részét (Postgres paraméterek további információkért lásd: a [PostgreSQL-dokumentáció](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). Az Azure-adatbázis PostgreSQL-kiszolgáló létrehozása az egyes paramétereket alapértelmezett értékekkel engedélyezve van. A kiszolgáló újraindexelést igénylő paraméterek indítsa újra, vagy felügyelő hozzáférés a módosítások életbe léptetéséhez nem kell konfigurálni, a felhasználó által.
+
 
 ## <a name="next-steps"></a>Következő lépések
 - A szolgáltatás áttekintését lásd: [Azure adatbázis PostgreSQL áttekintés](overview.md).
 - Adott erőforrásokra vonatkozó információkból tájékoódhat kvótái és korlátai alapján a **szolgáltatásréteg**, lásd: [szolgáltatásszintek](concepts-service-tiers.md).
 - A szolgáltatáshoz való csatlakozáskor információkért lásd: [PostgreSQL az Azure-adatbázis adatkapcsolattárak](concepts-connection-libraries.md).
+- Megtekintése és szerkesztése a kiszolgáló paraméterek keresztül [Azure-portálon](howto-configure-server-parameters-using-portal.md) vagy [Azure CLI](howto-configure-server-parameters-using-cli.md).

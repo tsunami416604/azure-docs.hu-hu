@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: aff54b86da6a8a062a3f1c76aa69e32c60008274
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 35dd3c6be2fb2fa5ec4d14eefce1c16005210364
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurálja a hálózati Teljesítményfigyelő az ExpressRoute (előzetes verzió)
 
@@ -88,14 +88,14 @@ Ha már használja hálózati Teljesítményfigyelő más objektumok, vagy a szo
   >A Linux-ügynök jelenleg nem támogatott az ExpressRoute figyelését.
   >
   >
-2. Ezután másolja és illessze be a **munkaterület azonosítója** és **elsődleges kulcs** a Jegyzettömbbe.
+2. Ezután másolja a **munkaterület azonosítója** és **elsődleges kulcs** a Jegyzettömbbe.
 3. Az a **ügynökök konfigurálása** szakaszban, töltse le a Powershell-parancsfájlt. A PowerShell-parancsfájl segítségével nyissa meg a megfelelő tűzfal port a TCP-tranzakciók.
 
   ![PowerShell-szkript](.\media\how-to-npm\7.png)
 
 ### <a name="installagent"></a>2.2: a figyelési ügynök telepítése minden felügyeleti kiszolgálón
 
-1. Futtatás **telepítő** ExpressRoute figyelemmel kísérésére használni kívánt összes kiszolgálón az ügynök telepítéséhez. A figyeléshez használt kiszolgáló lehet egy virtuális Gépet, vagy a helyszíni és internetkapcsolattal kell rendelkeznie. Legalább egy ügynök-hez, és egy Azure a figyelni kívánt hálózati szegmenshez telepíteni szeretné.
+1. Futtatás **telepítő** ExpressRoute figyelemmel kísérésére használni kívánt összes kiszolgálón az ügynök telepítéséhez. A figyeléshez használt kiszolgáló lehet egy virtuális Gépet, vagy a helyszíni és internetkapcsolattal kell rendelkeznie. Azure a figyelni kívánt hálózati szegmenshez legalább egy ügynök-hez, és egy ügynököt telepíteni szeretné.
 2. Az a **üdvözlő** kattintson **következő**.
 3. Az a **licencfeltételeket** lapon olvassa el a licencfeltételeket, és kattintson a **elfogadom**.
 4. Az a **célmappa** lapon módosítani vagy hagyja az alapértelmezett telepítési mappa, és kattintson a **következő**.
@@ -116,7 +116,7 @@ Ha már használja hálózati Teljesítményfigyelő más objektumok, vagy a szo
 
 ### <a name="proxy"></a>2.3: konfigurálja a proxybeállításokat (nem kötelező)
 
-Ha olyan webproxyt használ az Internet eléréséhez, az alábbi lépések segítségével a Microsoft Monitoring Agent proxy beállításainak konfigurálása. Hajtsa végre ezeket a lépéseket minden olyan kiszolgáló kell. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse meg a [proxybeállításokat a Microsoft Monitoring Agent egy olyan parancsfájllal](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
+Ha olyan webproxyt használ az Internet eléréséhez, az alábbi lépések segítségével a Microsoft Monitoring Agent proxy beállításainak konfigurálása. Hajtsa végre ezeket a lépéseket minden olyan kiszolgáló. Ha sok kiszolgálót kell konfigurálnia, akkor érdemes lehet parancsfájl használatával automatizálni a folyamatot. Ha igen, tekintse meg a [proxybeállításokat a Microsoft Monitoring Agent egy olyan parancsfájllal](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
 
 A Microsoft Monitoring Agent a Vezérlőpulton Proxybeállítások konfigurálása:
 
@@ -140,7 +140,7 @@ Könnyen ellenőrizheti, hogy az ügynökök megfelelően kommunikálnak.
 
 ### <a name="firewall"></a>2.5: Nyissa meg a tűzfal portjait a figyelési ügynök kiszolgálókon
 
-A TCP protokoll használata esetén nyissa meg a tűzfalportok győződjön meg arról, hogy képes-e kommunikálni a felügyeleti ügynökök kell.
+A TCP protokollt használ, meg kell nyitnia tűzfalportok győződjön meg arról, hogy a felügyeleti ügynökök is kommunikálni.
 
 Hozza létre a beállításkulcsokat a hálózati teljesítményt figyelő által igényelt, valamint az ügynökök számára a TCP-kapcsolatok létrehozása egymás mellett figyelés engedélyezése a Windows tűzfal-szabályok létrehozása a PowerShell-parancsfájl futtatása. A beállításkulcsok hozta létre a parancsfájlt is megadhatja, hogy a naplófájl a hibakeresési naplókat, és a naplók fájl elérési útját. Az ügynök-kommunikációhoz használt TCP-portot is meghatározza. Ezek a kulcsok értékeit automatikusan beállítja a parancsfájl által, így nem kell manuálisan módosítani ezeket a kulcsokat.
 
@@ -157,7 +157,7 @@ Az ügynök kiszolgálón nyissa meg egy PowerShell-ablakot rendszergazdai jogos
 
 ## <a name="opennsg"></a>3. lépés: A hálózati biztonsági csoport szabályainak konfigurálása
 
-Monitoring agent kiszolgálók, amelyek az Azure-ban szeretne beállítani a hálózati biztonsági csoport (NSG) szabályokat, az TCP-forgalom szintetikus tranzakciók NPM által használt port. Az alapértelmezett port az 8084. Ez lehetővé teszi az Azure virtuális gépen egy helyszíni kommunikálni a figyelési ügynök monitoring Agent szolgáltatásnál.
+A figyelési ügynök kiszolgálók, amelyek az Azure-ban, konfigurálnia kell a hálózati biztonsági csoport (NSG) szabályokat, az TCP-forgalom szintetikus tranzakciók NPM által használt port. Az alapértelmezett port az 8084. Ez lehetővé teszi az Azure virtuális gépen egy helyszíni kommunikálni a figyelési ügynök monitoring Agent szolgáltatásnál.
 
 NSG kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-create-nsg-arm-portal.md).
 
@@ -168,8 +168,7 @@ NSG kapcsolatos további információkért lásd: [hálózati biztonsági csopor
 >
 >
 
-Előtt ExpressRoute figyelési az szolgáltatásával NPM, kérnie kell rendelkeznie a munkaterület szerepel az engedélyezési listán. [Kattintson ide a lapra, és töltse ki az űrlap](https://go.microsoft.com/fwlink/?linkid=862263). (Mutató: érdemes lehet a hivatkozás megnyitásához az egy új ablakot vagy lapot). Az engedélyezett végre üzleti napi egy vagy több. Kapni egy e-mailt az engedélyezett végrehajtása után.
-
+Előtt ExpressRoute figyelési az szolgáltatásával NPM, kérnie kell rendelkeznie a munkaterület szerepel az engedélyezési listán. [Kattintson ide a lapra, és töltse ki az űrlap](https://go.microsoft.com/fwlink/?linkid=862263). (Mutató: érdemes lehet a hivatkozás megnyitásához az egy új ablakot vagy lapot). Az engedélyezett végre üzleti napi egy vagy több. Ha a engedélyezése befejeződött, kapni fog egy e-mailt.
 
 ## <a name="setupmonitor"></a>5. lépés: NPM ExpressRoute-figyelés konfigurálása.
 
@@ -189,7 +188,7 @@ Miután befejezte a korábbi szakaszokban, és győződjön meg arról, hogy ki 
 3. A konfiguráció lapon keresse meg a bal oldali panelen található az "ExpressRoute-Társviszony" lapon. Kattintson a **most felderítése**.
 
   ![Felderítése](.\media\how-to-npm\13.png)
-4. Felderítési befejezését követően megjelenik szabályok egyedi áramkör és virtuális hálózat nevét. Kezdetben ezek a szabályok le vannak tiltva. A szabályok engedélyezése, majd válassza ki a felügyeleti ügynökök és a küszöbértékek kell.
+4. Felderítési befejezését követően megjelenik szabályok egyedi áramkör és virtuális hálózat nevét. Kezdetben ezek a szabályok le vannak tiltva. A szabályok engedélyezése, majd válassza ki a felügyeleti ügynökök és a küszöbérték.
 
   ![szabályok](.\media\how-to-npm\14.png)
 5. Megkezdéséhez feltöltése az értékek körülbelül 30 – 60 perc várakozás után a szabályok engedélyezése, majd válassza az értékek és a figyelni kívánt ügynökök, nincs és a **ExpressRoute figyelési** csempék elérhető legyen. A figyelési csempék jelenik meg, ha az ExpressRoute-Kapcsolatcsoportok és a kapcsolat erőforrások figyeli NPM.
@@ -229,6 +228,7 @@ A helyszíni útválasztók ugrásainak tartalmazza az alábbi csúszka mozgatá
 
 ![szűrők](.\media\how-to-npm\topology.png)
 
-#### <a name="detailed-topology-view-of-a-particular-expressroute-circuit---with-vnet-connections"></a>Egy adott ExpressRoute-kapcsolatcsoportot – VNet kapcsolatokhoz a topológia részletes nézete
+#### <a name="detailed-topology-view-of-a-circuit"></a>A kapcsolat részletes topológia e nézetében
 
+Ebben a nézetben látható a VNet kapcsolatokhoz.
 ![részletes topológia](.\media\how-to-npm\17.png)

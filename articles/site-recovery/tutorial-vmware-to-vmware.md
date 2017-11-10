@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: raynew
-ms.openlocfilehash: 17bd7f424117842fd0687ba8a5fcf4d83c96a0bb
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 503d7060437d08ed35681fca7f1b9306746b7f44
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Helyszíni VMware virtuális gépek vagy fizikai kiszolgálók egy másodlagos helyre vész-helyreállítási beállítása
 
@@ -45,7 +45,7 @@ Kiválasztása replikálja, valamint replikálni úgy, hogy a helyét.
 2. Válassza ki **helyreállítási hely** > **Igen, amelyen a VMware vSphere Hipervizorra**. Ezután kattintson az **OK** gombra.
 3. A **Scout telepítő**, InMage Scout 8.0.1 GA szoftver, és a regisztrációs kulcs letöltése. A telepítési fájlok lévő valamennyi összetevőnél szerepelnek a letöltött zip-fájlt.
 
-## <a name="install-component-updates"></a>Összetevő-frissítések telepítése
+## <a name="download-and-install-component-updates"></a>Összetevő-frissítések letöltése és telepítése
 
  Tekintse át és telepítse a legújabb [frissítések](#updates). Frissítéseket kell telepíteni a kiszolgálókon a következő sorrendben:
 
@@ -83,7 +83,7 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update6) .zip fájl. A fáj
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
 1. Állítsa be a forrás közötti replikációt, és a cél a VMware-hely.
-2. Útmutatásért használja az InMage Scout dokumentáció, és letöltődik a termékkel. Másik lehetőségként a dokumentáció az alábbiak szerint végezheti el:
+2. Tekintse meg a következő dokumentumok további információt a telepítési, védelmi és helyreállítási:
 
    * [Kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes)
    * [Kompatibilitási mátrix](https://aka.ms/asr-scout-cm)
@@ -95,6 +95,8 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update6) .zip fájl. A fáj
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 frissítés 6 
 Frissített: Október 12, 2017
+
+Töltse le [Scout frissítés 6](https://aka.ms/asr-scout-update6).
 
 6 Scout frissítés az összesítő frissítés. Frissítés 5 és az új javítások és továbbfejlesztett funkcióit az alábbiakban az 1. frissítést minden javításokat tartalmaz. 
 

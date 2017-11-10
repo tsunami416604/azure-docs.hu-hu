@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2017
 ms.author: adegeo
-ms.openlocfilehash: b8a9204b9eece396fbc30eacc8912ba9e655b963
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d203580f676d55acbad4936160982a40592af1d0
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="scale-a-service-fabric-cluster"></a>A Service Fabric-fürt méretezése
 
-Ebben az oktatóanyagban része egy sor és bemutatja, hogyan és a meglévő fürt méretezése. Amikor végzett, akkor a fürt méretezése és a bal oldali átvevő erőforrásokat újraépítése.
+Ez az oktatóanyag kettőnél több, és bemutatja, hogyan és a meglévő fürt méretezése. Amikor végzett, akkor a fürt méretezése és a bal oldali átvevő erőforrásokat újraépítése.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

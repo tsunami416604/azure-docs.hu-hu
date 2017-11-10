@@ -17,15 +17,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: nitinme
-ms.openlocfilehash: 7b6b551fa1009da744598715b09f13355ded2884
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4f6c27fb651fc13877a889c26aa47903985625a0
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Egy HDInsight Spark-fürt távoli feladatok elküldéséhez az Apache Spark REST API használatával
 
-Ismerje meg, hogyan Livy, az Apache Spark REST API, amely egy Azure HDInsight Spark-fürt távoli feladatok elküldéséhez használhatja. További részletes dokumentációt: [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server).
+Ismerje meg, hogyan Livy, az Apache Spark REST API, amely egy Azure HDInsight Spark-fürt távoli feladatok elküldéséhez használhatja. További részletes dokumentációt: [http://livy.incubator.apache.org/](http://livy.incubator.apache.org/).
 
 Livy használatával futtassa az interaktív Spark ismertetése vagy kötegelt feladatok futni a Spark on való elküldéséhez. Ez a cikk beszél Livy használatával kötegelt feladatok küldéséhez. Ebben a cikkben kódtöredékek cURL használatával REST API-hívások a Livy Spark-végponthoz.
 
@@ -189,6 +189,7 @@ Az alábbiakban néhány problémát, előfordulhat, hogy futtatja a Livy haszn�
 
 ## <a name="next-step"></a>Következő lépés
 
+* [Livy REST API-JÁNAK dokumentációja](http://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)
 

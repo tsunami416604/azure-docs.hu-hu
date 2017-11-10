@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 47896493fdaf651b8cf74a1ddf4fcffdd51d2972
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 57e28215124bc0330517c541e4cb74a66d939ff5
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>R Server, és nyílt forráskódú R képességek a HDInsight bemutatása
 
@@ -44,7 +44,9 @@ Lehetősége van további Blob való hozzáférés hozzáadása, és a Data lake
 Is [Azure fájlok](../../storage/files/storage-how-to-use-files-linux.md) tárolási beállításként való használatra a peremhálózati csomóponton. Az Azure Files lehetővé teszi a fájlmegosztást, amelyet a Linux fájlrendszerben létrejött az Azure Storage csatlakoztatni. HDInsight-fürt az R Serverhez adatok tárolási lehetőségek kapcsolatos további információkért lásd: [Azure Storage vonatkozó az R Server on HDInsight-fürtök beállítások](r-server-storage.md).
 
 ## <a name="access-r-server-on-the-cluster"></a>Hozzáférés az R Server on a fürt
-Csatlakozhat R Server élcsomópontjához a böngészőbe, a megadott Rstudióból kiszolgáló tartalmazza a telepítési folyamat során kiválasztott. Ha nem telepítette, akkor a fürt létesítésekor, később adhat hozzá. További információ a Rstudióból kiszolgáló telepítése egy fürt létrehozása után: [Rstudióból kiszolgáló telepítése a HDInsight-fürtök](r-server-install-r-studio.md). Keresztül is csatlakozhat az R Server SSH/PuTTY segítségével az R-konzol eléréséhez. 
+R Server élcsomópontjához egy böngészőben a csatlakozhat. Telepíti a rendszer alapértelmezés szerint a fürt létrehozása során. További információkért lásd: [az R Server on HDInsight az beszerzése stared](r-server-get-started.md).
+
+Akkor is csatlakozhatnak a R Server a parancssor az R-konzol eléréséhez a SSH/PuTTY használatával. 
 
 ## <a name="develop-and-run-r-scripts"></a>Fejlesztéséhez és az R parancsfájlok futtatása
 Az R parancsfájlok létrehozása és futtatása használhatja a rendelkezésre álló párhuzamos működésű és elosztott rutinok mellett 8000 + nyílt forráskódú R csomagokat a ScaleR könyvtárban. R Server élcsomópont a futó parancsfájl általában az R parancsértelmező belül fut, ezen a csomóponton. A kivételek közé tartoznak a fenti lépések, amelyeket a beállított számítási környezetet ScaleR függvény Hadoop térkép csökkentése (RxHadoopMR) vagy a Spark (RxSpark). A függvény ebben az esetben egy elosztott módon fut, ezen adatok (feladat) csomópontokon a fürt társított hivatkozott adatokkal. A különböző számítási környezet beállításokkal kapcsolatos további információkért lásd: [számítási környezet lehetőségek R Server on HDInsight](r-server-compute-contexts.md).
@@ -87,7 +89,7 @@ Operációsrendszer-javítások és egyéb frissítés alkalmazásához karbanta
 Mivel az átjárócsomópontokkal redundáns, és nem minden adatcsomópontokat érintettek, bármely ez idő alatt futó feladatok lelassíthatják. Ezek továbbra is fusson lefusson, azonban. Bármely egyéni szoftvert vagy a helyi adatok, amelyekhez őrzi meg karbantartási eseményekből keresztül, kivéve, ha végzetes hiba lép fel, amely egy fürt újjáépítése szükséges.
 
 ## <a name="learn-about-ide-options-for-r-server-on-an-hdinsight-cluster"></a>További tudnivalók: IDE beállítások R Server on HDInsight-fürt
-HDInsight-fürt Linux élcsomópont az R-alapú elemzése követően időzónáját. HDInsight újabb verzióiban adjon meg egy alapértelmezett beállítása a közösségi verziójának telepítése [Rstudióból Server](https://www.rstudio.com/products/rstudio-server/) , egy webböngésző-alapú IDE peremhálózati csomóponton. Egy IDE a fejlesztési Rstudióból kiszolgáló használni és az R parancsfájlok végrehajtását lehet jelentősen hatékonyabb, mint az R-konzol használata. Ha úgy döntött, hogy nem Rstudióból kiszolgáló hozzáadása a fürt létrehozásakor, de később fel, majd tekintse meg szeretné [R Studio kiszolgáló telepítése a HDInsight-fürtökön](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-install-r-studio). +
+HDInsight-fürt Linux élcsomópont az R-alapú elemzése követően időzónáját. HDInsight újabb verzióiban a peremhálózati csomóponton Rstudióból kiszolgáló alapértelmezett telepítést biztosítanak, egy webböngésző-alapú IDE. Egy IDE a fejlesztési Rstudióból kiszolgáló használni és az R parancsfájlok végrehajtását lehet jelentősen hatékonyabb, mint az R-konzol használata.
 
 Egy másik teljes IDE lehetőség egy asztali IDE telepítse, és a fürt elérni egy távoli térkép csökkentése vagy a Spark számítási környezet használata. A Microsoft a választható lehetőségek [R Tools for Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS) Rstudióból és Walware tartozó Eclipse-alapú [StatET](http://www.walware.de/goto/statet).
 
@@ -100,6 +102,5 @@ A díjak, az R Server a HDInsight-fürtök rendelt hasonlóan a szabványos HDIn
 R Server használata a HDInsight-fürtökkel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 
 * [Bevezetés az R Server on HDInsight használatába](r-server-get-started.md)
-* [RStudio Server hozzáadása a HDInsight szolgáltatáshoz (ha a fürt létrehozása közben nem telepítette)](r-server-install-r-studio.md)
 * [Számítási környezeti beállítások a HDInsighton belüli R Server esetében](r-server-compute-contexts.md)
 * [Azure Storage lehetőségek a HDInsighton belüli R Server esetében](r-server-storage.md)

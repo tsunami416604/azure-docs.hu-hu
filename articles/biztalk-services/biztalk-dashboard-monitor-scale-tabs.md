@@ -1,6 +1,6 @@
 ---
 title: "Figyelő, a méretezés, az irányítópult konfigurálásához és a BizTalk szolgáltatások hibrid kapcsolatok |} Microsoft Docs"
-description: "További tudnivalók a vezérlők, a klasszikus portál lapokon BizTalk szolgáltatások teljesítményének figyelése: irányítópult, a figyelő, a méretezés, a konfigurálás és a hibrid kapcsolatok. MABS, WABS"
+description: "További tudnivalók a vezérlők és figyelemmel kísérni a teljesítményét BizTalk szolgáltatások"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 62bef0ee0141f6a7a92146ef230f0766a85aee5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 351809cd5f165a863dc02bfadf78fa59cbaabfd7
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>Tekintse át az Irányítópult, Figyelő, Skála, Konfigurálás és Hibridkapcsolat lapokat
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 Miután a BizTalk szolgáltatás létrehozása és az alkalmazás központi telepítése, néhány a BizTalk szolgáltatás beállításainak módosítása, és az alkalmazás teljesítményének figyelése. 
 
-Amikor megnyitja a klasszikus Azure portálra, akkor automatikusan elhelyezve a **minden elem** fülre. A BizTalk szolgáltatás megtekintéséhez jelölje ki a BizTalk szolgáltatás a **minden elem** lapon, vagy válassza ki a **BIZTALK szolgáltatások** ; lapra, és válassza ki a BizTalk szolgáltatás neve.
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Az alábbi fülekkel ekkor megnyílik egy új ablakban. Ez a témakör ismerteti az ezeken a lapokon.
 
@@ -84,9 +84,9 @@ Például azt szeretné a BizTalk szolgáltatás egy új elsődleges kulcsot a t
 <br/><br/>
 <ol>
 <li>Válassza ki a BizTalk szolgáltatás, majd <strong>szinkronizálási kulcsok</strong>. Válassza ki a másodlagos kulcsot. Ha így tesz, a BizTalk szolgáltatás elindul, a másodlagos kulcs használatával.</li>
-<li>A klasszikus Azure portálon válassza ki a tárfiók, és az elsődleges kulcs újragenerálása. Ne feledje, hogy a BizTalk szolgáltatás használ a másodlagos kulcsot.</li>
+<li>Válassza ki a tárfiók, és az elsődleges kulcs újragenerálása. Ne feledje, hogy a BizTalk szolgáltatás használ a másodlagos kulcsot.</li>
 <li>Válassza ki a BizTalk szolgáltatás, majd <strong>szinkronizálási kulcsok</strong>. Jelölje ki, az elsődleges kulcs. Az új elsődleges kulcs, akkor a rendszer újra létrehozza azt.</li>
-<li>A klasszikus Azure portálon válassza ki a tárfiók, és a másodlagos kulcs újragenerálása.</li>
+<li>Válassza ki a tárfiók, és a másodlagos kulcs újragenerálása.</li>
 </ol>
 <br/>
 A folyamat elnevezése "helyettesítő kulcsok". A célja engedélyezése a felhasználóknak a BizTalk szolgáltatás megszakítása nélkül az elsődleges és a másodlagos kulcs közötti váltáshoz.</td>
@@ -169,7 +169,7 @@ A metrikák leírását itt [elérhető](#Metrics) ebben a témakörben.
 </tr>
 <tr>
 <td><strong>Előfizetés neve</strong></td>
-<td>Az előfizetés, amelyen a BizTalk szolgáltatás sorolja fel. Az előfizetés szabályozza a klasszikus Azure portál eléréséhez.</td>
+<td>Az előfizetés, amelyen a BizTalk szolgáltatás sorolja fel. Az előfizetés szabályozza a hozzáférést.</td>
 </tr>
 <tr>
 <td><strong>Előfizetés-azonosító</strong></td>
@@ -177,7 +177,7 @@ A metrikák leírását itt [elérhető](#Metrics) ebben a témakörben.
 </tr>
 </table>
 
-[BizTalk szolgáltatások: Telepítési használata Azure klasszikus portálon](http://go.microsoft.com/fwlink/p/?LinkID=302280) BizTalk szolgáltatás létrehozása lépéseit sorolja fel.
+[BizTalk szolgáltatások: Kiépítés](http://go.microsoft.com/fwlink/p/?LinkID=302280) BizTalk szolgáltatás létrehozása lépéseit sorolja fel.
 
 ##### <a name="manage-connection-information-sync-keys-and-delete-in-the-task-bar"></a>Kezelése, a kapcsolatadatok, a szinkronizálási kulcsokat, és a tálcán törlése:
 <table border="1">
@@ -206,9 +206,9 @@ Például azt szeretné a BizTalk szolgáltatás egy új elsődleges kulcsot a t
 <br/><br/>
 <ol>
 <li>Válassza ki a BizTalk szolgáltatás, majd <strong>szinkronizálási kulcsok</strong>. Válassza ki a másodlagos kulcsot. Ha így tesz, a BizTalk szolgáltatás elindul, a másodlagos kulcs használatával.</li>
-<li>A klasszikus Azure portálon válassza ki a tárfiók, és az elsődleges kulcs újragenerálása. Ne feledje, hogy a BizTalk szolgáltatás használ a másodlagos kulcsot.</li>
+<li>Válassza ki a tárfiók, és az elsődleges kulcs újragenerálása. Ne feledje, hogy a BizTalk szolgáltatás használ a másodlagos kulcsot.</li>
 <li>Válassza ki a BizTalk szolgáltatás, majd <strong>szinkronizálási kulcsok</strong>. Jelölje ki, az elsődleges kulcs. Az új elsődleges kulcs, akkor a rendszer újra létrehozza azt.</li>
-<li>A klasszikus Azure portálon válassza ki a tárfiók, és a másodlagos kulcs újragenerálása.</li>
+<li>Válassza ki a tárfiók, és a másodlagos kulcs újragenerálása.</li>
 </ol>
 <br/>
 A folyamat elnevezése "helyettesítő kulcsok". A célja engedélyezése a felhasználóknak a BizTalk szolgáltatás megszakítása nélkül az elsődleges és a másodlagos kulcs közötti váltáshoz.</td>
@@ -329,7 +329,7 @@ A biztonsági mentés állapotának beállítása None vagy automatikus. Ha ninc
 [BizTalk szolgáltatások: Biztonsági mentése és visszaállítása](biztalk-backup-restore.md) részleteit. 
 
 ## <a name="HybridConnections"></a>Hibrid kapcsolatok
-Hibrid kapcsolatok csatlakozzon az Azure-alkalmazások, például a Web Apps vagy az Azure App Service Mobile Apps egy helyszíni erőforrást, amely a statikus TCP-port, például az SQL Server, a MySQL, a HTTP webes API-k és a legtöbb egyéni webszolgáltatások használja. Hibrid kapcsolatok BizTalk szolgáltatások felügyelete a klasszikus Azure portálon.
+Hibrid kapcsolatok csatlakozzon az Azure-alkalmazások, például a Web Apps vagy az Azure App Service Mobile Apps egy helyszíni erőforrást, amely a statikus TCP-port, például az SQL Server, a MySQL, a HTTP webes API-k és a legtöbb egyéni webszolgáltatások használja. BizTalk szolgáltatások felügyelete hibrid kapcsolatok.
 
 Hozzon létre, vagy hibrid kapcsolatok a Azure BizTalk szolgáltatások kezeléséhez, tekintse meg a [hibrid kapcsolatok](integration-hybrid-connection-overview.md).
 
@@ -343,7 +343,7 @@ Most, hogy ismeri a különböző lappal, további Azure BizTalk szolgáltatáso
 ## <a name="see-also"></a>Lásd még:
 * [Hibrid kapcsolatok](integration-hybrid-connection-overview.md)  
 * [BizTalk szolgáltatások: Fejlesztői, Basic, Standard és prémium kiadás diagram](biztalk-editions-feature-chart.md)  
-* [BizTalk szolgáltatások: Kiépítés használata Azure klasszikus portál](biztalk-provision-services.md)  
+* [BizTalk szolgáltatások: kiépítés](biztalk-provision-services.md)  
 * [BizTalk szolgáltatások: BizTalk szolgáltatás állapotának diagram](biztalk-service-state-chart.md)  
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 

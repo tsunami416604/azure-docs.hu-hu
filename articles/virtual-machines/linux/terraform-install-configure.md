@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: 533add8948544e37dc27623a2f51aad1054b1bef
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: a2810d13d40272269341751b19b3010a8b135139
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Telepítse és konfigurálja az Azure virtuális gépek és egyéb infrastruktúra kiépítéséhez Terraform
  
 Terraform segítségével határozza meg, tekintse meg és központi telepítése a felhő-infrastruktúra használatával egyszerűen egy [egyszerű templating nyelvi](https://www.terraform.io/docs/configuration/syntax.html). Ez a cikk ismerteti a szükséges lépéseket az Azure-erőforrások kiépítése Terraform használandó. 
 
 > [!TIP]
-> Alapértelmezés szerint telepítve van a Terraform a [az Azure felhőalapú rendszerhéj tapasztalat Bash](/azure/cloud-shell/quickstart). Hitelesítő adatok is előre és [Azure Terraform modulok](https://registry.terraform.io/modules/Azure). Felhő-rendszerhéj használatával kihagyhatja a dokumentum telepítőben/részeit.
+Az Azure-ral Terraform használatával kapcsolatos további tudnivalókért keresse fel a [Terraform Hub](/azure/terraform). Alapértelmezés szerint telepítve van a Terraform a [felhő rendszerhéj](/terraform/terraform-cloud-shell). Felhő-rendszerhéj használatával kihagyhatja a dokumentum telepítőben/részeit.
 
 ## <a name="install-terraform"></a>Terraform telepítése
 

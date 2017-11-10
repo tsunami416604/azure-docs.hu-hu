@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/13/2017
+ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e817e327b8890c91bd7db640b083fd6c5c11aa14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40433df5ebe90aec3a9294f2c5a6083c4567b161
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk beszél lépéseket jelentések konfigurálása az Azure Backup használatával Recovery Services-tároló, és ezek a jelentések használata a Power BI eléréséhez. A lépések elvégzése után közvetlenül nyissa meg a jelentéseket a Power bi-ba, testreszabása és jelentések létrehozása. 
@@ -29,6 +29,7 @@ Ez a cikk beszél lépéseket jelentések konfigurálása az Azure Backup haszn�
 2. Az Azure SQL, a DPM és az Azure Backup Server jelentések jelenleg nem támogatottak.
 3. Jelentések megtekintéséhez tárolók és között előfizetések, ha ugyanazt a tárfiókot az egyes a tárolók van konfigurálva. Kiválasztott tárfiók és recovery services-tárolónak ugyanabban a régióban kell lennie.
 4. A jelentések az ütemezett frissítési gyakoriságának a Power BI 24 óra. Egy ad hoc frissítése a jelentést a Power BI, amelyek az ügyfél tárfiókja eset legújabb adatait használják a jelentések megjelenítése is elvégezheti. 
+5. Az Azure biztonsági mentés jelentések jelenleg nem támogatottak a nemzeti felhők.
 
 ## <a name="prerequisites"></a>Előfeltételek
 1. Hozzon létre egy [Azure storage-fiók](../storage/common/storage-create-storage-account.md#create-a-storage-account) konfigurálását a jelentésekben. Ez a tárfiók jelentések kapcsolódó adatok tárolására szolgál.
@@ -50,19 +51,26 @@ A következő lépésekkel konfigurálhatja a tárfiók recovery services-tárol
 2. Az elemek listáját tároló alatt megjelenő, kattintson **biztonsági jelentések** figyelés és jelentéskészítés konfigurálása a storage-fiók a jelentések szakaszban.
 
       ![Válassza ki biztonsági jelentések menü cikk 2. lépés](./media/backup-azure-configure-reports/backup-reports-settings.PNG)
-3. A biztonsági mentés jelentések paneljén kattintson **konfigurálása** gombra. Ekkor megnyílik az adatok küldése az ügyfél tárfiókja használt Azure Application Insights panel.
+3. A biztonsági mentés jelentések paneljén kattintson **diagnosztikai beállítások** hivatkozásra. Ekkor megnyílik a diagnosztikai beállítások felhasználói felületi kérdez le adatokat az ügyfél tárfiókja használt.
 
-      ![Konfigurálja a tárolási fiók lépés 3](./media/backup-azure-configure-reports/configure-storage-account.PNG)
-4. Az állapot váltógomb beállítása **a** válassza **archív tárfiókba** jelölőnégyzetet, hogy a jelentési adatok elindíthatja a tárolási fiók folyik.
+      ![3. lépés: a diagnosztika engedélyezésével](./media/backup-azure-configure-reports/backup-azure-configure-reports.png)
+4. Kattintson a hivatkozásra **a diagnosztika bekapcsolásához**. Ekkor megnyílik a felhasználói felület tárfiók konfigurálásához. 
 
-      ![4. lépés: a diagnosztika engedélyezésével](./media/backup-azure-configure-reports/set-status-on.png)
-5. Kattintson a Tárfiók objektumválasztó, és válassza ki a tárfiók tárolásához a jelentési adatokat, és kattintson a listából **OK**.
+      ![Kapcsolja be a diagnosztikai 4. lépés](./media/backup-azure-configure-reports/enable-diagnostics.png)
+5. Adja meg a beállítás neve mezőben **neve** válassza **tárfiókba archív** jelölőnégyzetet, hogy a jelentési adatok elindíthatja a tárolási fiók folyik.
 
-      ![Válassza ki a tárolási fiók lépés 5](./media/backup-azure-configure-reports/select-storage-account.png)
-6. Válassza ki **AzureBackupReport** négyzet jelölését, majd is a csúszkát jelölje be a megőrzési idő a jelentés adatainak. A tárfiókban lévő adatokat Reporting tartják a csúszkával kijelölt időszakra.
+      ![5. lépés: a diagnosztika engedélyezésével](./media/backup-azure-configure-reports/select-setting-name.png)
+6. Kattintson a Tárfiók objektumválasztó, és válassza ki a megfelelő előfizetés és a tárolási fiók tárolásához a jelentési adatokat, és kattintson a listából **OK**.
 
-      ![Válassza ki a tárolási fiók lépés 6](./media/backup-azure-configure-reports/save-configuration.png)
-7. Tekintse át a módosításokat, és kattintson a **mentése** gomb látható, a fenti ábrán látható módon. Ez a művelet biztosítja, hogy a módosítások mentése és a storage-fiók ezzel konfigurálva van a jelentéskészítési adatok tárolására.
+      ![Válassza ki a tárolási fiók lépés 6](./media/backup-azure-configure-reports/select-subscription-sa.png)
+7. Válassza ki **AzureBackupReport** napló szakaszban jelölőnégyzetet, majd húzza a csúszkát jelölje be a megőrzési idő a jelentés adatainak. A tárfiókban lévő adatokat Reporting tartják a csúszkával kijelölt időszakra.
+
+      ![Mentse a tárolási fiók lépés 7](./media/backup-azure-configure-reports/save-diagnostic-settings.png)
+8. Tekintse át a módosításokat, és kattintson a **mentése** gomb látható, a fenti ábrán látható módon. Ez a művelet biztosítja, hogy a módosítások mentése és a storage-fiók ezzel konfigurálva van a jelentéskészítési adatok tárolására.
+
+9. A diagnosztikai beállítások tábla most meg kell jelennie az új beállítás engedélyezve van a tároló. Ha nem jelenik meg, frissítse az alábbi táblázatban a frissített beállítás.
+
+      ![9. lépés diagnosztikai beállításának megtekintése](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
 > Ha megfelelően konfigurált jelentések úgy, hogy elmenti storage-fiók, akkor **Várjon 24 órát** a kezdeti adatok leküldéses befejezéséhez. Azure biztonsági mentés a tartalomcsomag a Power BI csak az adott idő után kell importálni. Tekintse meg a [feltett](#frequently-asked-questions) további tájékoztatást talál. 

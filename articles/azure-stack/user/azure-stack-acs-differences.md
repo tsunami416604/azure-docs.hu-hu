@@ -3,22 +3,22 @@ title: "Verem az Azure Storage: Különbségek és szempontok"
 description: "Azure verem központi telepítésével kapcsolatos megfontolások együtt Azure verem Storage és az Azure Storage közötti különbségek megismeréséhez."
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: jeffgilb
+manager: femila
+ms.reviwer: xiaofmao
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: xiaofmao
-ms.openlocfilehash: 4d6fb44fd6fd2261059ca45093d8b49345adfa74
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 11/08/2017
+ms.author: jeffgilb
+ms.openlocfilehash: 1dc099fa234e217b682c88f2214fe271c916eec2
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Verem az Azure Storage: Különbségek és szempontok
 
@@ -33,7 +33,7 @@ Ez a cikk az Azure Storage Azure Storage-verem ismert különbségek foglalja ö
 | Szolgáltatás | Azure (globális) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Felhőalapú SMB-fájlmegosztások támogatott|Még nem támogatott.
-|Adatok inaktív adatok titkosítása|256 bites AES titkosítást|Még nem támogatott.
+|Az Azure Storage szolgáltatás inaktívadat-titkosítása|256 bites AES titkosítást|Még nem támogatott.
 |Tárfiók típusa|Általános célú és az Azure Blob storage-fiókok|Általános célú csak
 |Replikációs beállítások|Helyileg redundáns tárolás, a georedundáns tárolást, az írásvédett georedundáns tárolás és a zónaredundáns tárolás|Helyileg redundáns tárolás
 |Prémium szintű Storage|Teljes mértékben támogatott.|Telepíthető, de nincs teljesítményszint vagy garancia

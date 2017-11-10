@@ -12,16 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/6/2017
+ms.date: 11/8/2017
 ms.author: raiye
-ms.openlocfilehash: b728e794132ab8eb91d5d77b3ed452f0c84b8823
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f753a30fa833aaf19069b01607c8beaadcc667f5
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-guest-os"></a>Az Azure vendég operációs rendszer
 Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC) frissítések alkalmazása az Azure vendég operációs rendszeren. Ez a cikk határozza meg, ha az adott frissítés használ, a vendég operációs rendszer összes keresése. Frissítések mindig áthozott az adott [termékcsalád] [ family-explain] bevezetett azokat.
+
+## <a name="october-guest-os"></a>Október vendég operációs rendszer
+| Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| Rel 17-10 | [4041691] |Windows 10-es frissítések |5.12 |2017. október 10. |
+| Rel 17-10 | [4041678], [4041679], [4041687] |Csak a Windows biztonsági |2.67, 3.54, 4.47 |2017. október 10. |
+| Rel 17-10 | [4040685], |Az Internet Explorer |2.67, 3.54, 4.47 |2017. október 10. |
+| Rel 17-10 | [4041681], [4041690], [4041693] |Havi Windows-frissítések |2.67, 3.54, 4.47 |2017. október 10. |
+| N/A | [4038777] |Szeptembertől nem a biztonság összegzése |2.67 |2017. szeptember 12. |
+| N/A | [4038799] |Szeptembertől nem a biztonság összegzése |3.54 |2017. szeptember 12. |
+| N/A | [4038792] |Szeptembertől nem a biztonság összegzése |4.47 |2017. szeptember 12. |
+| N/A | [4040980] |Szeptembertől .NET nem a biztonság összegzése |2.67 |2017. szeptember 12. |
+| N/A | [4040979] |Szeptembertől .NET nem a biztonság összegzése |3.54 |2017. szeptember 12. |
+| N/A | [4040981] |Szeptembertől .NET nem a biztonság összegzése |4.47 |2017. szeptember 12. |
 
 ## <a name="september-guest-os"></a>Szeptembertől vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -535,6 +549,20 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | N/A |[2999802] |Pontozott vonal helyett folytonos vonal lista tartalmazza a Windows rendszerben |4.15, 3.22, 2.34 |Január 13 2015 |
 | N/A |[2896881] |A felhasználók nyomtatók hozzárendelését a Windows bejelentkezési folyamat során a AddPrinterConnection VBScript parancs használatakor hosszú bejelentkezési idő |4.15, 3.22, 2.34 |Január 13 2015 |
 
+[4041691]: http://support.microsoft.com/kb/4041691 
+[4041678]: http://support.microsoft.com/kb/4041678 
+[4041679]: http://support.microsoft.com/kb/4041679
+[4041687]: http://support.microsoft.com/kb/4041687
+[4040685]: http://support.microsoft.com/kb/4040685
+[4041681]: http://support.microsoft.com/kb/4041681
+[4041690]: http://support.microsoft.com/kb/4041690
+[4041693]: http://support.microsoft.com/kb/4041693
+[4038777]: http://support.microsoft.com/kb/4038777
+[4038799]: http://support.microsoft.com/kb/4038799
+[4038792]: http://support.microsoft.com/kb/4038792
+[4040980]: http://support.microsoft.com/kb/4040980
+[4040979]: http://support.microsoft.com/kb/4040979
+[4040981]: http://support.microsoft.com/kb/4040981
 
 [4038782]: http://support.microsoft.com/kb/4038782
 [4038779]: http://support.microsoft.com/kb/4038779
