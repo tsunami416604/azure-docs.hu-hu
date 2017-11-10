@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/28/2017
+ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 5c9bf89feba519147b07f2810fe4da882664e89e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 645f69e71c5a13bb70edabfd22f51ed5df619693
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
-# <a name="gpu-linux-vm-sizes"></a>GPU Linux Virtuálisgép-méretek
+# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizált virtuálisgép-méretek
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
@@ -34,7 +34,7 @@ Illesztőprogram telepítése és ellenőrzési lépések, tekintse meg [N-serie
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* Nem ajánlott, hogy telepítése X kiszolgáló vagy a más rendszerekkel, az Ubuntu NC virtuális gépeken futó nouveau illesztőprogramot használja. NVIDIA GPU-illesztőprogramok a telepítés előtt tiltsa le a nouveau illesztőprogramot kell.  
+* X ne telepítse kiszolgáló vagy a más rendszerekkel, amelyek használják a `Nouveau` illesztőprogram Ubuntu NC virtuális gépeken. NVIDIA GPU-illesztőprogramok a telepítés előtt le kell tiltania a `Nouveau` illesztőprogram.  
 
 ## <a name="other-sizes"></a>Más méretek
 - [Általános célú](sizes-general.md)

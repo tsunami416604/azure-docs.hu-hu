@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: ea6e6c4044a0163ae36d6790755b67c5066251a8
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: e821a640d3d75e712c022bd681eb07b83da91911
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetria korrelációs
 
@@ -81,7 +81,7 @@ Az Application Insights határozza meg a [bővítmény](https://github.com/lmolk
 - `dependency`leképezve **Span** rendelkező`span.kind = client`
 - `id`az egy `request` és `dependency` van leképezve **Span.Id**
 - `operation_Id`leképezve **TraceId**
-- `operation_ParentId`leképezve **hivatkozás** típusa`ChileOf`
+- `operation_ParentId`leképezve **hivatkozás** típusa`ChildOf`
 
 Lásd: [adatmodell](application-insights-data-model.md) Application Insights-típusok és az adatok modell.
 

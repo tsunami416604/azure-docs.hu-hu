@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 8f0186900caf6bff19e15ef6b99c1f49fbf90a81
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: bbf969927e96053df055ac6e347bb8fb746054c8
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése egy helyi SQL server SQL Azure és az Azure Data Factory
 Ez a témakör bemutatja, hogyan tárolt adatok mozgatása egy helyi SQL Server-adatbázis SQL Azure adatbázishoz keresztül Azure Blob Storage használata az Azure Data Factory (ADF).
@@ -80,32 +80,14 @@ Az adatkezelési átjáró rendezi sorba, és a forrás és a fogadó adatokat a
 Telepítési utasításokat és az adatkezelési átjáró részleteinek: [helyezze át az adatokat a helyszíni adatforrások és az adatkezelési átjáró felhő között](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)
 
 ## <a name="adflinkedservices"></a>Az adatok erőforrásokhoz való társított szolgáltatások létrehozásához
-A társított szolgáltatás határozza meg az Azure Data Factory egy adatforrás, melyhez való kapcsolódáshoz szükséges adatokat. Lépésről lépésre társított szolgáltatások létrehozásához megadott [társított szolgáltatások létrehozásához](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services).
+A társított szolgáltatás határozza meg az Azure Data Factory egy adatforrás, melyhez való kapcsolódáshoz szükséges adatokat. Három erőforrások van ebben a forgatókönyvben, amelynek társított szolgáltatások szükségesek:
 
-Három erőforrások van ebben a forgatókönyvben összekapcsolt szolgáltatások van szükség.
+1. A helyszíni SQL Server
+2. Azure Blob Storage
+3. Az Azure SQL-adatbázis
 
-1. [A helyszíni SQL Server társított szolgáltatás](#adf-linked-service-onprem-sql)
-2. [Az Azure Blob Storage társított szolgáltatás](#adf-linked-service-blob-store)
-3. [Az Azure SQL database társított szolgáltatás](#adf-linked-service-azure-sql)
+Lépésről lépésre társított szolgáltatások létrehozásához megadott [társított szolgáltatások létrehozásához](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services).
 
-### <a name="adf-linked-service-onprem-sql"></a>A helyszíni SQL Server-adatbázis társított szolgáltatás
-A helyszíni SQL Server a társított szolgáltatás létrehozása:
-
-* Kattintson a **adattár** a klasszikus Azure portálon az ADF kezdőlapja
-* Válassza ki **SQL** , és írja be a *felhasználónév* és *jelszó* a helyszíni SQL-kiszolgálóhoz tartozó hitelesítő adatokat. Meg kell adnia a kiszolgálónév, mint egy **teljesen minősített kiszolgálónév fordított perjel példány neve (kiszolgáló_neve\példány_neve)**. A társított szolgáltatás neve *adfonpremsql*.
-
-### <a name="adf-linked-service-blob-store"></a>A Blob társított szolgáltatás
-A társított szolgáltatás az Azure Blob Storage-fiók létrehozása:
-
-* Kattintson a **adattár** a klasszikus Azure portálon az ADF kezdőlapja
-* Válassza ki **Azure Storage-fiók**
-* Írja be a Azure Blob Storage-fiók és tároló neve. A társított szolgáltatás neve *adfds*.
-
-### <a name="adf-linked-service-azure-sql"></a>Az Azure SQL database társított szolgáltatás
-A társított szolgáltatás az Azure SQL-adatbázis létrehozása:
-
-* Kattintson a **adattár** a klasszikus Azure portálon az ADF kezdőlapja
-* Válassza ki **Azure SQL** , és írja be a *felhasználónév* és *jelszó* az Azure SQL-adatbázishoz tartozó hitelesítő adatokat. A *felhasználónév* kell megadni,  *user@servername* .   
 
 ## <a name="adf-tables"></a>Adja meg, és adja meg, hogyan férhet hozzá az adatkészletek táblák létrehozása
 Adja meg a struktúra, helyét és az adatkészletek rendelkezésre állását az alábbi parancsfájl-alapú eljárások táblák létrehozása. JSON-fájlokat a táblák meghatározásához használják. Ezek a fájlok szerkezetének további információkért lásd: [adatkészletek](../../data-factory/v1/data-factory-create-datasets.md).
@@ -311,9 +293,6 @@ A JSON-definícióból a folyamat egy fájlba nevű példány *pipelinedef.json*
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
-Győződjön meg arról, hogy látja-e a folyamat az ADF a klasszikus Azure-portálon a megjelennek, a következő, (Ha a diagram kattint)
-
-![Az ADF-feldolgozási folyamat](./media/move-sql-azure-adf/DJP1kji.png)
 
 ## <a name="adf-pipeline-start"></a>A folyamat elindítása
 A folyamat futtatható a következő parancsot:

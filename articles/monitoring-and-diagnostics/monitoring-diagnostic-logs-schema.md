@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: johnkem
-ms.openlocfilehash: 2e99b7afa4e458e9ef62314e65d9e386657a747b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f571a723d91db060a1aff5e14bc452d56794db6c
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, sémákkal és az Azure diagnosztikai naplók kategóriák
 
@@ -56,20 +56,36 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott erőforrástípus napló kategóriát
 |Erőforrás típusa|Kategória|Kategória megjelenített neve|
 |---|---|---|
+|Microsoft.AnalysisServices/servers|Motor|Motor|
+|Microsoft.AnalysisServices/servers|Szolgáltatás|Szolgáltatás|
 |Microsoft.ApiManagement/service|GatewayLogs|Naplók ApiManagement átjáró|
 |Microsoft.Automation/automationAccounts|JobLogs|Feladatnaplóit|
 |Microsoft.Automation/automationAccounts|JobStreams|Feladat adatfolyamok|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|A DSC-csomópont állapota|
 |Microsoft.Batch/batchAccounts|ServiceLog|Service naplóit|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Lekérdezi a végpont a metrikákat, például a sávszélesség, a kimenő forgalom, a stb.|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
+|Microsoft.DataFactory/factories|ActivityRuns|Feldolgozási sor tevékenységnapló fut.|
+|Microsoft.DataFactory/factories|PipelineRuns|Feldolgozási sor napló fut|
+|Microsoft.DataFactory/factories|TriggerRuns|Eseményindító napló fut|
 |Microsoft.DataLakeAnalytics/accounts|Naplózás|Naplók|
 |Microsoft.DataLakeAnalytics/accounts|Kérelmek|Naplók kérése|
 |Microsoft.DataLakeStore/accounts|Naplózás|Naplók|
 |Microsoft.DataLakeStore/accounts|Kérelmek|Naplók kérése|
+|Microsoft.Devices/IotHubs|Kapcsolatok|Kapcsolatok|
+|Microsoft.Devices/IotHubs|DeviceTelemetry|Telemetriát|
+|Microsoft.Devices/IotHubs|C2DCommands|C2D parancsok|
+|Microsoft.Devices/IotHubs|DeviceIdentityOperations|Eszköz identitása műveletek|
+|Microsoft.Devices/IotHubs|FileUploadOperations|Fájlok feltöltése műveletei|
+|Microsoft.Devices/IotHubs|Útvonalak|Útvonalak|
+|Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
+|Microsoft.Devices/IotHubs|C2DTwinOperations|C2D iker műveletek|
+|Microsoft.Devices/IotHubs|TwinQueries|A két lekérdezések|
+|Microsoft.Devices/IotHubs|JobsOperations|Feladatok műveletek|
+|Microsoft.Devices/IotHubs|DirectMethods|Közvetlen módszer|
 |Microsoft.Devices/provisioningServices|DeviceOperations|Eszköz műveletek|
 |Microsoft.Devices/provisioningServices|ServiceOperations|Szolgáltatási műveletek|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
+|Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archív naplók|
 |Microsoft.EventHub/namespaces|OperationalLogs|Műveleti naplókat|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Automatikus méretezési naplók|
@@ -78,6 +94,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integráció fiók nyomon követheti az eseményeket|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Hálózati biztonsági csoport eseménye|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport Szabályszámlálója|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Hálózati biztonsági csoport szabály folyamata esemény|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Terheléselosztó értesítési eseményei|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Terheléselosztói mintavétel állapot betöltése|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS védelem értesítések|
@@ -85,6 +102,11 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Átjáró hozzáférési napló|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Alkalmazásnapló átjáró teljesítménye|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Átjáró tűzfal alkalmazásnaplóban|
+|Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|Átjáró diagnosztikai naplók|
+|Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|Diagnosztikai naplók alagút|
+|Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|Diagnosztikai naplók útvonal|
+|Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|A TRAFFIC Manager mintavételi eredmények Állapotesemény|
+|Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tábla GWM számlálók|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Jelentési adatok Azure biztonsági mentés|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Az Azure Site Recovery-feladatok|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Az Azure Site Recovery-események|
@@ -93,7 +115,6 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery helyreállítási pontok|
 |Microsoft.Search/searchServices|OperationLogs|A műveletnaplók|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Műveleti naplókat|
-|Microsoft.Sql/servers/databases|QueryStore|Lekérdezéstár|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|A Lekérdezéstár futásidejű statisztikája|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|A Lekérdezéstár várakozási statisztikák|
 |Microsoft.Sql/servers/databases|Hibák|Hibák|

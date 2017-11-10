@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 11/01/2017
 ms.author: maroche
-ms.openlocfilehash: 0623847ea1e79c3a45a8fbdcc1d3a551864aefd6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: da7ac8f323f9b2ec6303fbc85aa570373a538bcf
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Kapcsolódó adatok eszközök megtekintéséhez az Azure Data Catalog hogyan?
 Az Azure Data Catalog lehetővé teszi a kijelölt adatok eszköz és a nézet köztük lévő viszonyt is kapcsolatos adatok eszközök. 
@@ -30,6 +30,9 @@ A következő adatforrásokból származó adatok eszközök regisztrálásakor 
 - Azure SQL Database
 - MySQL
 - Oracle
+
+> [!NOTE]
+> A Data Catalog két adatok eszközök közötti kapcsolat importálásához regisztrálnia kell az mindkét az eszközök egy időben. Ha egyiket külön kellett hozzáadott, vegye fel újra, és az egyéb adatok eszköz kapcsolat importálása.
 
 ## <a name="view-related-data-assets"></a>Kapcsolódó adatok eszközök megtekintése
 A kiválasztott adatkészlet kapcsolódó adategységeket megtekintéséhez használja a **kapcsolatok** lapon a következő ábrán látható módon: 

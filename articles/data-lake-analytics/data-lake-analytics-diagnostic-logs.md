@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/31/2017
+ms.date: 11/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bab7a0646d34de3b6d71370a0fa4216845ee6a2
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Diagnosztikai naplók elérése az Azure Data Lake Analytics
 
@@ -36,11 +36,9 @@ Diagnosztikai naplózás gyűjthet adatokat a fájlhozzáférés napló ellenőr
 
     ![Engedélyezze a diagnosztikát gyűjtése a naplózási és naplók kérése](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. A __diagnosztikai beállítások__, az állapot beállítása __a__ válassza ki a naplózási beállításokat.
+3. A __diagnosztikai beállítások__, adjon meg egy __neve__ a naplózási, mind jelölje ki a naplózási beállításokat.
 
     ![Engedélyezze a diagnosztikát gyűjtése a naplózási és naplók kérése](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "diagnosztikai naplók engedélyezése")
-
-   * Állítsa be **állapot** való **a** diagnosztikai naplózás engedélyezése.
 
    * Ha szeretné, az adatok tárolási/folyamat három különböző módon.
 
@@ -58,34 +56,14 @@ Diagnosztikai naplózás gyűjthet adatokat a fájlhozzáférés napló ellenőr
         > [!NOTE]
         > Ki kell választania vagy __tárfiókba archív__, __adatfolyam egy eseményközpontba__ vagy __küldeni a Naplóelemzési__ való kattintás előtt a __mentése__ jelölt gombra.
 
-Miután engedélyezte a diagnosztikai beállítások, visszatérhet a __diagnosztikai naplók__ panelt, és a naplók megtekintéséhez.
-
-## <a name="view-logs"></a>Naplók megtekintése
-
-### <a name="use-the-data-lake-analytics-view"></a>A Data Lake Analytics nézetben
-
-1. A Data Lake Analytics a fiók panelen a **figyelés**, jelölje be **diagnosztikai naplók** , és válassza a naplókat a további megjelenítendő bejegyzése.
-
-    ![Diagnosztikai naplózás nézet](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "diagnosztikai naplók megtekintése")
-
-2. A naplók szerint kategorizálhatók **naplók** és **kérelem naplók**.
-
-    ![naplóbejegyzéseket](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
-
-   * Kérelem naplók rögzítése a Data Lake Analytics-fiók minden API kérelmet.
-   * Naplók hasonlóak naplók kérése, de a műveletek sokkal részletesebb információkat biztosít. Például egy kérelem naplóban egyetlen feltöltés API hívása több "Append" műveletet a naplóban eredményezhet.
-
-3. Kattintson a **letöltése** naplóbejegyzést, hogy a napló letöltése hivatkozásra.
-
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Használatát naplóadatokat tartalmazó Azure Storage-fiókban
 
-1. Nyissa meg a naplózás a Data Lake Analytics társított Azure Storage-fiók panelen, és kattintson a __Blobok__. A **Blob szolgáltatás** panel két tárolók listája.
-
-    ![Diagnosztikai naplózás nézet](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "diagnosztikai naplók megtekintése")
+1. A blobtárolók, amely a naplózási adatok tárolásához megjelenítéséhez nyissa meg a naplózásra használható a Data Lake Analytics az Azure Storage-fiók, és kattintson __Blobok__.
 
    * A tároló **insights-logs-naplózási** tartalmazza a naplókat.
    * A tároló **insights-logs-kérelmek** tartalmaz a kérelmek naplóit.
-2. Ezek a tárolók belül a naplók tárolt az alábbi szerkezettel:
+
+2. A tárolók területen belül a naplók a következő fájlstruktúra tárolt:
 
         resourceId=/
           SUBSCRIPTIONS/

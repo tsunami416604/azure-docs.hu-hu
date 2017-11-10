@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
-ms.openlocfilehash: aaceb556d926dbb09aeb2843a7941eadaaeb588b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 13c11902e275d1023e474d717800b3a36a6b31f2
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürt javítás
 
@@ -51,14 +51,6 @@ A javítás vezénylési alkalmazást a következő alösszetevők áll:
 > A javítás vezénylési alkalmazás a Service Fabric javítási manager szolgáltatás használ a letiltása vagy engedélyezése a csomópont és állapotát ellenőrzi. A javítási feladat, a javítás vezénylési alkalmazás által létrehozott nyomon követi, hogy a Windows Update folyamatot, az egyes csomópontok.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-### <a name="minimum-supported-service-fabric-runtime-version"></a>Legkisebb támogatott verzió a Service Fabric futásidejű
-
-#### <a name="azure-clusters"></a>Az Azure-fürtök
-A javítás vezénylési alkalmazást kell futtatni az Azure Service Fabric futásidejű verzióját v5.5 rendelkező fürtök vagy újabb.
-
-#### <a name="standalone-on-premises-clusters"></a>Önálló helyszíni fürtök
-A javítás vezénylési alkalmazást kell futtatni, amelyeken a Service Fabric futásidejű verzióját v5.6 önálló fürtökön vagy újabb.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>A kezelő szolgáltatás engedélyezése (Ha nem már fut)
 
@@ -135,59 +127,6 @@ A kezelő szolgáltatás engedélyezése:
 ### <a name="disable-automatic-windows-update-on-all-nodes"></a>Tiltsa le a Windows Update automatikus minden csomópont
 
 A Windows automatikus frissítések rendelkezésre állást vezethet, mivel egyszerre több fürtcsomóponton újraindíthatja. A javítás vezénylési alkalmazás alapértelmezés szerint, megpróbálja a fürt minden csomópontján Windows automatikus frissítését letiltani. Azonban ha beállításait a rendszergazda vagy a csoportházirend felügyeli, ajánlott a Windows Update-házirendet "Értesíti, mielőtt letöltése" beállítást explicit módon.
-
-### <a name="optional-enable-azure-diagnostics"></a>Választható: Engedélyezze az Azure Diagnostics
-
-A Service Fabric futásidejű verzióját futtató fürtök `5.6.220.9494` és fent gyűjtése javítás vezénylési app naplók Service Fabric részeként naplóz.
-Ezt a lépést kihagyhatja, ha a fürtön futó Service Fabric futásidejű verzióját `5.6.220.9494` vagy újabb verzió.
-
-A Service Fabric futásidejű verzióját futtató fürtök kisebb, mint `5.6.220.9494`, a javítás vezénylési alkalmazáshoz tartozó naplók összegyűjtését helyileg az egyes fürtcsomópontokon.
-Azt javasoljuk, hogy konfigurálja-e Azure diagnosztikai naplók feltöltése az összes csomópont egy központi helyen.
-
-Azure Diagnostics engedélyezésével kapcsolatos információkért lásd: [Naplógyűjtéshez Azure Diagnostics használatával](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-how-to-setup-wad).
-
-A javítás vezénylési alkalmazás naplók a következő rögzített szolgáltató azonosítók hozhatók létre:
-
-- e39b723c-590c-4090-abb0-11e3e6616346
-- fc0028ff-bfdc-499f-80dc-ed922c52c5e9
-- 24afa313-0d3b-4c7c-b485-1047fd964b60
-- 05dc046c-60e9-4ef7-965e-91660adffa68
-
-A Resource Manager sablon goto `EtwEventSourceProviderConfiguration` szakaszában `WadCfg` , és adja hozzá az alábbi bejegyzéseket:
-
-```json
-  {
-    "provider": "e39b723c-590c-4090-abb0-11e3e6616346",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-      "eventDestination": "PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "fc0028ff-bfdc-499f-80dc-ed922c52c5e9",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "24afa313-0d3b-4c7c-b485-1047fd964b60",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "05dc046c-60e9-4ef7-965e-91660adffa68",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  }
-```
-
-> [!NOTE]
-> Ha a Service Fabric-fürt több csomópont tartozik, akkor az előző szakaszban az összes hozzá kell adni a `WadCfg` szakaszok.
 
 ## <a name="download-the-app-package"></a>A csomag letöltése
 
@@ -303,20 +242,16 @@ Ahhoz, hogy a fürt fordított proxy, kövesse a lépéseket [fordított proxy a
 
 ## <a name="diagnosticshealth-events"></a>Diagnosztika/állapotával kapcsolatos események
 
-### <a name="collect-patch-orchestration-app-logs"></a>A gyűjtés javítás vezénylési app naplói
+### <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Javítás vezénylési app naplók begyűjti a Service Fabric naplók részeként futásidejű verzióját `5.6.220.9494` vagy újabb verzió.
-A Service Fabric futásidejű verzióját futtató fürtök kisebb, mint `5.6.220.9494`, naplók az alábbi módszerek egyikének használatával gyűjthetők össze.
+Javítás vezénylési app naplókat a rendszer a Service Fabric-futtatókörnyezet naplók részeként gyűjti.
 
-#### <a name="locally-on-each-node"></a>Minden egyes csomóponton helyileg
+Abban az esetben, ha szeretné rögzíteni a naplók diagnosztikai eszköz/folyamat a kiválasztott keresztül. Javítás vezénylési alkalmazás által rögzített szolgáltató alatt események keresztül bejelentkezési azonosítóhoz tartozó [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)
 
-Naplók összegyűjtését helyileg a Service Fabric-fürt minden csomópontján Ha Service Fabric futásidejű verziószáma kisebb, mint `5.6.220.9494`. A hely eléréséhez a naplók \[Service Fabric\_telepítési\_meghajtó\]:\\PatchOrchestrationApplication\\naplókat.
-
-Például akkor, ha a Service Fabric a D meghajtón van telepítve, az elérési út D:\\PatchOrchestrationApplication\\naplókat.
-
-#### <a name="central-location"></a>Központi hely
-
-Ha Azure Diagnostics előzetesen szükséges lépések leírását részeként van konfigurálva, az Azure Storage a javítás vezénylési alkalmazás naplók érhetők el.
+- e39b723c-590c-4090-abb0-11e3e6616346
+- fc0028ff-bfdc-499f-80dc-ed922c52c5e9
+- 24afa313-0d3b-4c7c-b485-1047fd964b60
+- 05dc046c-60e9-4ef7-965e-91660adffa68
 
 ### <a name="health-reports"></a>Állapotjelentések száma
 

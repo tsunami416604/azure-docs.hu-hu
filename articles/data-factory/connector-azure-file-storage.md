@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: edbab30d949daa8d564ec60e9f1650f38b01d942
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: c0a6a19cffafb940b13135fb3df4d7bdf57aa7ce
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása az vagy Azure File Storage Azure Data Factory használatával
 
@@ -48,11 +48,11 @@ Azure File Storage társított szolgáltatás támogatott a következő tulajdon
 | állomás | Itt adhatja meg, az Azure File Storage endpoint `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Igen |
 | felhasználói azonosítóját | Adja meg a felhasználó elérheti az Azure File Storage mint `"userid": "AZURE\\<storage name>"`. | Igen |
 | jelszó | Adja meg a hozzáférési kulcsot. Ez a mező megjelölése SecureString.<br/> | Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem a forrást, a fogadó Igen |
 
->[!TIP]
-> - Másolja az Azure File Storage Azure integrációs futásidejű, explicit módon használatával [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) után, például a File Storage és a hivatkozott szolgáltatásban található társítható helyét.
-> - Szeretné másolni a/Azure File Storage használata az Azure-on kívüli Self-hosted integrációs futásidejű, ne felejtse el nyissa meg a kimenő 445-ös TCP-portot a helyi hálózathoz.
+>[!IMPORTANT]
+> - Adatok másolása az Azure File Storage Azure integrációs futásidejű, explicit módon használatával [hozzon létre egy Azure-IR](create-azure-integration-runtime.md#create-azure-ir) után, például a File Storage és a hivatkozott szolgáltatásban található társítható helyét.
+> - Az adatok másolása az/Azure File Storage használata az Azure-on kívüli Self-hosted integrációs futásidejű, ne felejtse el nyissa meg a kimenő 445-ös TCP-portot a helyi hálózathoz.
 
 **Példa**
 

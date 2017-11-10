@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 09/19/2017
+ms.date: 11/08/2017
 ms.author: jovanpop
-ms.openlocfilehash: 1e884754682ecab4cdf097bd75caa6fcf2e0a29c
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 34aa035368a0516f9fa1c71c1bda491daf5ab370
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Az Azure SQL-adatbázis automatikus hangolása
 
@@ -46,10 +46,7 @@ Azure SQL-adatbázisok alkalmazott hangolási műveletek teljes biztonságosak a
 
 Automatikus hangolási módszerek érett, és akár több ezer adatbázis Azure-on futó százait rendelkezik lett perfected. Automatizált hangolási műveletek alkalmazása automatikusan ellenőrzése a gondoskodjon arról, hogy egy pozitív fejlesztésének a számítási feladat teljesítményére. Teljesítmény közleményében szerepelt javaslatok dinamikusan észlelt, és azonnal vissza. A hangolási Előzmények napló keresztül van minden Azure SQL Database javulás hangolása egyértelmű nyomkövetési. 
 
-Automatikus hangolási works áttekintését, és a jellemző használati forgatókönyvei lásd: a beágyazott videót:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player]
->
+![Hogyan működik az automatikus hangolási munkahelyi](./media/sql-database-automatic-tuning/how-does-automatic-tuning-work.png)
 
 Az Azure SQL adatbázis automatikus hangolása az SQL Server automatikus hangolási motor megosztja az alapvető logikát. A beépített eszközintelligencia mechanizmus a további technikai információk: [SQL Server automatikus hangolása](https://docs.microsoft.com/en-us/sql/relational-databases/automatic-tuning/automatic-tuning).
 
@@ -60,6 +57,12 @@ Automatikus hangolása kell saját kezűleg engedélyezni kell az előfizetéshe
 Automatikus hangolása is önállóan keresztül automatikusan alkalmazza az hangolási ajánlásokat, beleértve az teljesítménynövekedéshez automatizált ellenőrzése. 
 
 Jobban kézben hangolása javaslatok automatikus alkalmazása is ki kell kapcsolni, és javaslatok hangolása manuálisan alkalmazhatja az Azure portálon keresztül. Akkor is megoldást kíván használni a hangolási javaslatok automatikus megtekintéséhez, és manuálisan alkalmazhatja azokat a parancsfájlok és eszközök az Ön által választott keresztül. 
+
+Megtudhatja, hogyan automatikus hangolási működik, és a jellemző használati forgatókönyvei tekintse meg a beágyazott videót:
+
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player]
+>
 
 ## <a name="automatic-tuning-options"></a>Automatikus hangolási lehetőségeket
 

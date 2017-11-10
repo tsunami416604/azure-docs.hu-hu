@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/03/2017
 ms.author: mezha
-ms.openlocfilehash: 700f4c49bbcda1eccbcc7eafc703e625697fa2b4
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 2f62c0c6783c3cdaf1ffda3299673071b8e4a6f2
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>Tokent használó hitelesítés az Azure Content Delivery Network eszközök védelme
 
@@ -28,9 +28,9 @@ ms.lasthandoff: 11/06/2017
 
 Jogkivonat hitelesítési egy olyan mechanizmus, amely lehetővé teszi, hogy az Azure Content Delivery Network (CDN) megakadályozza a jogosulatlan ügyfelek szolgáló eszközök. Jogkivonat hitelesítési általában történik, amelyben egy másik webhelyre, gyakran egy üzenet üzenőfalon, az eszközök engedélye nélkül használ a tartalom "hotlinking" megelőzése érdekében. Hotlinking hatással lehetnek a továbbítási költségeit. A CDN tokent használó hitelesítés engedélyezése esetén kérések hitelesítése CDN peremhálózati POP előtt a CDN továbbítja a tartalmat. 
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A működés ismertetése
 
-Jogkivonat hitelesítési ellenőrzi a kérelmek azzal, hogy a token értékét tartalmazó kérelmeket, hogy a kérelmező tartás kódolt információt a megbízható helyek által generált. Tartalom kiszolgált egy kérelmezőnek csak akkor, ha a kódolt információ megfelel a követelményeknek; Ellenkező esetben kérelmeket a rendszer megtagadja. A követelmények beállítása a következő paraméterek közül:
+Jogkivonat hitelesítési ellenőrzi, hogy kérelmek által előállított megbízható webhelynek azzal, hogy a token értékét, hogy tartás kódolású igénylő információt tartalmazó kérelmeket. Tartalom kiszolgált egy kérelmezőnek csak akkor, ha a kódolt információ megfelel a követelményeknek; Ellenkező esetben kérelmeket a rendszer megtagadja. A követelmények beállítása a következő paraméterek közül:
 
 - Ország: Engedélyezi vagy megtagadja a megadott országokból kérelmekkel azok [országhívószám](https://msdn.microsoft.com/library/mt761717.aspx).
 - URL-címe: Csak vonatkozó kérés engedélyezése, amelyek megfelelnek a megadott eszköz vagy az elérési út.
@@ -41,8 +41,6 @@ Jogkivonat hitelesítési ellenőrzi a kérelmek azzal, hogy a token értékét 
 - Lejárati idő: rendelje hozzá a dátum és idő ponttal annak érdekében, hogy a hivatkozás csak korlátozott ideig időszakra érvényes marad.
 
 További információkért lásd: a részletes konfigurációs példák mindegyik paraméterére vonatkozóan [beállítása a tokent használó hitelesítés](#setting-up-token-authentication).
-
-Egy titkosított jogkivonat létrehozása után, az útvonal URL-cím végére lekérdezési karakterláncként fűznünk. Például: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
 
 ## <a name="reference-architecture"></a>Referenciaarchitektúra
 
@@ -64,15 +62,21 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az ügyfél ké
 
 2. Vigye **HTTP nagy**, és kattintson a **jogkivonat hitelesítési** az a menü. Majd állíthatja be a titkosítási kulcsot és a titkosítási paraméterek az alábbiak szerint:
 
-    1. Adjon meg egy egyedi titkosítási kulcsot a a **elsődleges kulcs** mezőbe, majd adja meg a kulcsot egy biztonsági másolatból a **biztonsági mentési kulcs** mezőbe.
-
-        ![CDN-jogkivonat hitelesítési telepítési kulcs](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+    1. Hozzon létre egy vagy több titkosítási kulcsokat. A titkosítási kulcsot a kis-és nagybetűket, és az alfanumerikus karakterek tetszőleges kombinációját tartalmazhatja. Más típusú karaktereket, szóközöket is beleértve. nem engedélyezettek. A hossza legfeljebb 250 karakterből áll. Győződjön meg arról, hogy a titkosítási kulcsok véletlenszerű, ajánlott a OpenSSL eszközzel létrehozása. A OpenSSL eszköz szintaxisa a következő: `rand -hex <key length>`. Például: `OpenSSL> rand -hex 32`. Állásidő elkerülése érdekében hozzon létre egy elsődleges és a kulcsot egy biztonsági másolatból. Kulcsot egy biztonsági másolatból zavartalan hozzáférést biztosít azokhoz a tartalmat az elsődleges kulcs frissítésekor.
     
-    2. A titkosítás eszközzel titkosítási paraméterek beállítása. A titkosítás eszközzel akkor engedélyezheti vagy tagadhatja meg kérelmet lejárati időt, ország, hivatkozó, protokoll és ügyfél IP-Címmel (tetszőleges kombinációját) alapján. 
+    2. Adjon meg egy egyedi titkosítási kulcsot a a **elsődleges kulcs** mezőbe, majd adja meg a kulcsot egy biztonsági másolatból a **biztonsági mentési kulcs** mezőbe.
 
-        ![CDN eszköz titkosítása](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+    3. Válassza ki az egyes kulcsok minimális titkosítási verzióját a **minimális titkosítási verziója** legördülő listában, majd kattintson az **frissítés**:
+       - **V2**: azt jelzi, hogy használható-e a kulcs 2.0 és 3.0 verziót jogkivonatok létrehozásához. Akkor használja ezt a beállítást, ha a 3.0-s verziója kulcs való váltás egy örökölt 2.0-s verziójának titkosítási kulcs.
+       - **V3**: (ajánlott) azt jelzi, hogy a kulcsot csak használható 3.0-s verziója jogkivonatok létrehozásához.
 
-       Adja meg az értékeket egy vagy több, a következő titkosítási paraméterek a **eszköz titkosítása** területen:  
+    ![CDN-jogkivonat hitelesítési telepítési kulcs](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+    
+    4. A titkosítás eszközzel titkosítási paraméterek beállítása és a-token létrehozásához. A titkosítás eszközzel akkor engedélyezheti vagy tagadhatja meg kérelmet lejárati időt, ország, hivatkozó, protokoll és ügyfél IP-Címmel (tetszőleges kombinációját) alapján. Bár a szám és paramétereket, és egy tokent össze lehet kombinálni kombinációja korlátozva van, a teljes jogkivonat hossza legfeljebb 512 karakter hosszúságú lehet. 
+
+       ![CDN eszköz titkosítása](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+
+       Adja meg az értékeket egy vagy több, a következő titkosítási paraméterek a **eszköz titkosítása** szakasz:  
 
        - **ec_expire**: lejárati idő rendeli jogkivonatot, amely után a jogkivonat lejár. A rendszer megtagadja a lejárati idő után küldött kérelmeket. Ezt a paramétert használ egy Unix Timestamp értéket, a standard epoch óta eltelt percek száma alapján `1/1/1970 00:00:00 GMT`. (Segítségével online eszközök téli idő és a Unix idő közötti átváltásra.) Például, ha azt szeretné, hogy az elévülés token `12/31/2016 12:00:00 GMT`, használja az Unix timestamp értéket `1483185600`, az alábbiak szerint. 
     
@@ -98,7 +102,7 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az ügyfél ké
     
        - **ec_ref_allow**: csak a megadott hivatkozó lehetővé teszi a kérelmek. A hivatkozó azonosítja a weblap, amely csatolva van a kért erőforrás URL-CÍMÉT. Tartalmazza a protokollt a hivatkozó paraméter értéke. A paraméter értéke a következő típusú bemeneti engedélyezettek:
            - Egy állomásnevet vagy egy állomásnevet és egy elérési utat.
-           - Több hivatkozó kérelmei. Több hivatkozó kérelmei hozzáadásához külön minden hivatkozó vesszővel válassza el. Ha hivatkozó értéket adjon meg, de a hivatkozó adatokat, az nem küldi el a kérést, mert a böngésző konfigurációs, ezeket a kérelmeket, alapértelmezés szerint sem kap. 
+           - Több hivatkozó kérelmei. Több hivatkozó kérelmei hozzáadásához külön minden hivatkozó vesszővel válassza el. Ha hivatkozó értéket adjon meg, de a hivatkozó adatokat, az nem küldi el a kérést, mert a böngésző konfigurációs, a rendszer megtagadja a kérelmet, alapértelmezés szerint. 
            - Kérések hivatkozó adatok hiányoznak. Az ilyen típusú kérések engedélyezéséhez adja meg a szöveg "Hiányzó", vagy adjon meg egy üres értéket. 
            - Altartományok. Altartományok engedélyezéséhez adja meg a csillag (\*). Ahhoz például, hogy engedélyezi az összes altartomány `consoto.com`, adja meg `*.consoto.com`. 
            
@@ -116,13 +120,17 @@ Az alábbi folyamatábra bemutatja, miként Azure CDN ellenőrzi az ügyfél ké
             
          ![CDN ec_clientip – példa](./media/cdn-token-auth/cdn-token-auth-clientip.png)
 
-    3. Miután befejezte a titkosítási paramétert értékek megadása, válassza ki a kulcs titkosításához (ha az elsődleges és a kulcsot egy biztonsági másolatból hozott létre) az a **kulcs titkosításához** listájában, a titkosítási verziójú a  **Titkosítási verziója** listában, majd kattintson az **titkosítása**.
+    5. Miután befejezte a titkosítási paramétert értékek megadása, válasszon egy kulcs titkosításához (ha az elsődleges és a kulcsot egy biztonsági másolatból hozott létre) a **kulcs titkosításához** listája.
+    
+    6. Válassza ki a titkosítási verziójú a **titkosítási verziója** lista: **V2** 2-es verzió vagy **V3** verziójához 3 (ajánlott). Kattintson a **titkosítása** a jogkivonat létrehozásához.
+
+    A jogkivonat előállítása, után megjelenik a **generált jogkivonat** mezőbe. A token használatához hozzáfűzése lekérdezési karakterláncként az URL-címe a fájl végére. Például: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-    4. Lehetősége van ellenőrizni a jogkivonatot a visszafejtés eszközzel. Illessze be a token értékét a **visszafejtése tokenjét** mezőbe. Válassza ki a titkosítási kulcs visszafejtése a a **kulcs visszafejtése** legördülő listában, majd kattintson az **visszafejtéséhez**.
+    7. Lehetősége van ellenőrizni a jogkivonatot a visszafejtés eszközzel. Illessze be a token értékét a **visszafejtése tokenjét** mezőbe. Válassza ki a titkosítási kulcs használatát a **kulcs visszafejtése** legördülő listában, majd kattintson az **visszafejtéséhez**.
 
-    5. Másik lehetőségként testreszabása eredményül, ha a rendszer megtagadja a kérelmet válaszkód típusú. Jelölje be a kódot a **válaszkód** legördülő listából válassza ki, és kattintson **mentése**. A **403** válaszának kódja (tiltott) alapértelmezettként van beállítva. Az egyes válaszkódot, is megadhat a a hibalap URL-CÍMÉT a **Fejlécérték** mezőbe. 
+    A token visszafejtése, miután a paraméterei megjelennek a **eredeti paraméterek** mezőbe.
 
-    6. Miután létrehozta a titkosított tokent, akkor fűzi azokat a fájl végére lekérdezési karakterláncként az URL-cím elérési úthoz. Például: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
+    8. Másik lehetőségként testreszabása eredményül, ha a rendszer megtagadja a kérelmet válaszkód típusú. Jelölje be a kódot a **válaszkód** legördülő listából válassza ki, és kattintson **mentése**. A **403** válaszának kódja (tiltott) alapértelmezettként van beállítva. Az egyes válaszkódot, is megadhat a a hibalap URL-CÍMÉT a **Fejlécérték** mezőbe. 
 
 3. A **HTTP nagy**, kattintson a **szabálymotor**. A szabályok motor használatával alkalmazza a szolgáltatás, a jogkivonat hitelesítési szolgáltatás engedélyezése és hitelesítésre vonatkozó további token képességek engedélyezése elérési utak megadása. További információkért lásd: [szabályok motor hivatkozás](cdn-rules-engine-reference.md).
 
@@ -151,4 +159,4 @@ Rendelkezésre álló nyelvek:
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Az Azure CDN szolgáltatásai és szolgáltató díjszabása
 
-További információ: [CDN áttekintésével](cdn-overview.md).
+Funkciókkal kapcsolatos információkért lásd: [CDN áttekintésével](cdn-overview.md). További információk a díjszabásról: [Content Delivery Network árképzési](https://azure.microsoft.com/pricing/details/cdn/).

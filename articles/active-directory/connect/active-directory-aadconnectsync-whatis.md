@@ -12,20 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 4edac05325ad12596d982d113df0db7461124b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b00f756fdbd059b917ac7d28f24b1a0ec22594a9
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása
 Az Azure Active Directory Connect szinkronizálási szolgáltatások (az Azure AD Connect szinkronizálása) az Azure AD Connect fő összetevője. Ez gondoskodik az identitás a helyszíni környezetben és az Azure AD közti adatszinkronizálást kapcsolatos műveleteket. Azure AD Connect szinkronizálása a követő DirSync, az Azure AD Sync és a Forefront Identity Manager az az Azure Active Directory Connector konfigurálva.
 
 Ez a témakör a érhető **az Azure AD Connect szinkronizálási szolgáltatás** (más néven **szinkronizálási motor**), és felsorolja a hozzá kapcsolódó összes további témakörökre mutató hivatkozásokat tartalmaz. Az Azure AD Connect hivatkozások: [a helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
 
-A helyszíni két összetevőből áll: a szinkronizálási szolgáltatás **az Azure AD Connect szinkronizálási szolgáltatás** összetevő és a szolgáltatási oldalon, az Azure AD nevű **az Azure AD Connect szinkronizálási szolgáltatás**. A szolgáltatás nem a DirSync, az Azure AD Sync és a Azure AD Connect közös.
+A helyszíni két összetevőből áll: a szinkronizálási szolgáltatás **az Azure AD Connect szinkronizálási szolgáltatás** összetevő és a szolgáltatási oldalon, az Azure AD nevű **az Azure AD Connect szinkronizálási szolgáltatás**. 
 
 ## <a name="azure-ad-connect-sync-topics"></a>Az Azure AD Connect szinkronizálási kapcsolatos témakörök
 | Témakör | Azt ismerteti, és mikor olvasása |

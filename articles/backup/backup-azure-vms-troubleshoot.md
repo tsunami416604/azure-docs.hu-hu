@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: 096c97f4cb41ff8df2e646f59dbc0bf845721ac7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c4ea3e3714f6a3989a260937c2c67815a6dd6f7
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 > [!div class="op_single_selector"]
@@ -32,6 +32,11 @@ ms.lasthandoff: 10/11/2017
 ## <a name="backup"></a>Biztonsági mentés
 
 ### <a name="error-the-specified-disk-configuration-is-not-supported"></a>Hiba: A megadott lemezkonfiguráció nem támogatott
+
+> [!NOTE]
+> Biztonsági mentések rendelkező virtuális gépek támogatásához a private Preview verziójára kell > nem felügyelt 1 TB-os lemezeken. A részletekért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)
+>
+>
 
 Azure Backup szolgáltatás jelenleg nem támogatja lemezméret [1023GB-nál nagyobb](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm). 
 - Ha a lemez 1 TB-nál nagyobb [új lemez csatolása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) 1 Terabájtnál kisebb ezek <br>
