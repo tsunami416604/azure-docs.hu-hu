@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 8ee171708364c3e29476302bef04a715df650b9b
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: cd727b2902dafdb8086ac4ce74db96ca8acf8fe8
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató felvétele AD FS által védett leválasztott Azure verem környezet
 
@@ -110,7 +110,7 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
     ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image07.png)    
 
-12. Tekintse át a szerepkör példánya és a Termékváltozat-beállítások. Az alapértelmezett beállításokat a rendszer feltölti a példány és az egyes szerepkörökhöz ASDK-telepítés minimális Termékváltozat minimális számát. Core és a memória követelmények összefoglalása tervezze meg a központi telepítés segítségével valósul meg. Miután elvégezte a beállításokat, kattintson a **következő**.
+12. Tekintse át a szerepkör példánya és a Termékváltozat-beállítások. Az alapértelmezett beállításokat a rendszer feltölti a példány és az egyes szerepkörökhöz ASDK-telepítés minimális Termékváltozat minimális számát. VCPU és memória követelmények összefoglalása tervezze meg a központi telepítés segítségével valósul meg. Miután elvégezte a beállításokat, kattintson a **következő**.
 
      > [!NOTE]
      > Az üzemi környezetek útmutatása [Azure App Service kiszolgálói szerepkörök Azure verem Kapacitástervezését](azure-stack-app-service-capacity-planning.md).
@@ -119,11 +119,11 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
     | Szerepkör | Minimális példányok | Minimális Termékváltozat | Megjegyzések |
     | --- | --- | --- | --- |
-    | Tartományvezérlő | 1 | Standard_A1 - (1 mag, 1792 MB) | Kezeli, és az App Service-felhő állapotának fenn. |
-    | Kezelés | 1 | Standard_A2 - (2 mag, 3584 MB) | Az App Service Azure Resource Manager és az API-végpontok, portál extensions (admin, tenant, Functions portálon) és a szolgáltatás kezeli. A feladatátvétel támogatásához nőtt az ajánlott 2-példányokat. |
-    | Közzétevő | 1 | Standard_A1 - (1 mag, 1792 MB) | Közzéteszi az FTP és a web deployment a tartalomhoz. |
-    | Előtér | 1 | Standard_A1 - (1 mag, 1792 MB) | App Service-alkalmazásokra irányuló kérelmek útvonalak. |
-    | Megosztott Worker | 1 | Standard_A1 - (1 mag, 1792 MB) | Gazdagépek webes API alkalmazásokat és az Azure Functions alkalmazásokat. Érdemes ismételt felvételéhez. Kezelőként határozza meg az ajánlat, és válassza ki bármelyik SKU rétegben. A rétegek rendelkeznie kell legalább egy core. |
+    | Tartományvezérlő | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Kezeli, és az App Service-felhő állapotának fenn. |
+    | Kezelés | 1 | Standard_A2 - (2 Vcpu, 3584 MB) | Az App Service Azure Resource Manager és az API-végpontok, portál extensions (admin, tenant, Functions portálon) és a szolgáltatás kezeli. A feladatátvétel támogatásához nőtt az ajánlott 2-példányokat. |
+    | Közzétevő | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Közzéteszi az FTP és a web deployment a tartalomhoz. |
+    | Előtér | 1 | Standard_A1 - (1 vCPU, 1792 MB) | App Service-alkalmazásokra irányuló kérelmek útvonalak. |
+    | Megosztott Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Gazdagépek webes API alkalmazásokat és az Azure Functions alkalmazásokat. Érdemes ismételt felvételéhez. Kezelőként határozza meg az ajánlat, és válassza ki bármelyik SKU rétegben. A rétegek rendelkeznie kell legalább egy vCPU. |
 
     ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image08.png)    
 

@@ -15,22 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: 1a40c4cc064b32aced7e976f40f6ed6a57e62204
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 1860ede19202566947b68b715e6bd354f64c1085
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="deploy-openshift-origin-in-azure"></a>Az Azure-ban OpenShift származási telepítése
 
-Több módon is telepítheti az Azure-ban OpenShift forrás. Manuálisan telepíti a szükséges Azure infrastruktúra-összetevőihez, és hajtsa végre a OpenShift forrás [dokumentáció](https://docs.openshift.org/3.6/welcome/index.html).
-Egy meglévő Resource Manager-sablon, amely leegyszerűsíti a OpenShift forrás fürt központi telepítése is használható. Amikor ilyen sablon átkerül [Itt](https://github.com/Microsoft/openshift-origin).
+Kétféle módon telepíthet az Azure-ban OpenShift származási egyikét használhatja:
 
-## <a name="deploy-using-the-openshift-origin-template"></a>A OpenShift eredeti sablonnal telepítése
+- A szükséges Azure infrastruktúra-összetevőihez manuális telepítése, és kövesse a OpenShift eredeti [dokumentáció](https://docs.openshift.org/3.6/welcome/index.html).
+- Használhat egy meglévő [Resource Manager-sablon](https://github.com/Microsoft/openshift-origin) , amely egyszerűbbé teszi a OpenShift forrás fürt központi telepítése.
 
-Használja a `appId` értékét a korábban létrehozott egyszerű szolgáltatás a `aadClientId` paraméter.
+## <a name="deploy-by-using-the-openshift-origin-template"></a>Központi telepítése a OpenShift eredeti sablon használatával
 
-Az alábbi példa létrehoz egy nevű paraméterek fájlt **azuredeploy.parameters.json** az összes szükséges bemeneti adatok.
+Használja a `appId` a szolgáltatás egyszerű, a korábban létrehozott értéket a `aadClientId` paraméter.
+
+Az alábbi példa létrehoz egy, a szükséges bemeneti adatok azuredeploy.parameters.json nevű paraméterek fájlt.
 
 ```json
 {
@@ -92,13 +94,13 @@ Az alábbi példa létrehoz egy nevű paraméterek fájlt **azuredeploy.paramete
 }
 ```
 
-### <a name="deploy-using-azure-cli"></a>Telepítheti az Azure parancssori felület használatával
+### <a name="deploy-by-using-azure-cli"></a>Központi telepítése az Azure parancssori felület használatával
 
 
 > [!NOTE] 
-> A következő parancshoz szükséges Azure CLI 2.0.8 vagy újabb. Ellenőrizheti a CLI az verziójával a `az --version` parancsot. Frissítés a parancssori felület, lásd: [Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+> A következő parancshoz szükséges Azure CLI 2.0.8 vagy újabb. A parancssori felület verziójával ellenőrizheti a `az --version` parancsot. Frissítés a parancssori felület, lásd: [Azure CLI 2.0 telepítése](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-A következő példa telepíti a OpenShift és minden kapcsolódó erőforrás egy contoso.com nevű myOpenShiftCluster telepítési nevű erőforrás csoporthoz. A sablon a github-tárház közvetlenül a hivatkozik, és egy helyi paraméterfájl nevű **azuredeploy.parameters.json** fájllal.
+A következő példa telepíti a OpenShift és minden kapcsolódó erőforrás a contoso.com, nevű myOpenShiftCluster telepítési nevű erőforráscsoport. A sablon a GitHub-tárház közvetlenül a hivatkozott azuredeploy.parameters.json nevű helyi paraméterek fájl használatával.
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \
@@ -106,7 +108,7 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-A központi telepítés legalább 25 percet is igénybe vehet attól függően, hogy a telepített csomópontok teljes száma. A OpenShift konzol és a DNS-név OpenShift főkiszolgálójának URL-CÍMÉT a Terminálszolgáltatások van nyomtatva, a telepítés befejezéséről.
+A telepítés befejezéséhez, attól függően, hogy a telepített csomópontok száma legalább 25 percet vesz igénybe. Az URL-CÍMÉT a OpenShift konzol és a OpenShift fő megrendelése a terminál, a telepítés befejezése után a DNS-nevét.
 
 ```json
 {
@@ -117,7 +119,7 @@ A központi telepítés legalább 25 percet is igénybe vehet attól függően, 
 
 ## <a name="connect-to-the-openshift-cluster"></a>Csatlakozzon a OpenShift fürthöz
 
-A telepítés befejezését követően a OpenShift konzol használatával, a böngésző használatával kapcsolódni a `OpenShift Console Uri`. Másik lehetőségként is elérheti a OpenShift master, a következő parancsot:
+A telepítés befejezése után a böngésző a OpenShift konzol használatával kapcsolódik a `OpenShift Console Uri`. Azt is megteheti csatlakozhat a OpenShift fő szerint a következő parancsot:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -125,7 +127,7 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége, használhatja a [az csoport törlése](/cli/azure/group#delete) távolítsa el az erőforráscsoportot, OpenShift fürt parancsot, és az összes kapcsolódó erőforrások.
+Használja a [az csoport törlése](/cli/azure/group#delete) távolítsa el az erőforráscsoportot, OpenShift fürt parancsot, és minden kapcsolódó erőforrásokat, ha azok már nincs szükség.
 
 ```azurecli 
 az group delete --name myResourceGroup
@@ -133,6 +135,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Utáni telepítési feladatok](./openshift-post-deployment.md)
-- [OpenShift üzembe helyezés hibaelhárítása](./openshift-troubleshooting.md)
-- [Ismerkedés a OpenShift forrása](https://docs.openshift.org/latest/getting_started/index.html)
+- [Telepítés utáni feladatok](./openshift-post-deployment.md)
+- [OpenShift telepítési hibáinak elhárítása](./openshift-troubleshooting.md)
+- [Bevezetés az OpenShift Origin használatába](https://docs.openshift.org/latest/getting_started/index.html)

@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/26/2016
+ms.date: 11/09/2017
 ms.author: ashmaka
-ms.openlocfilehash: 33897e7966de5d467602f6cb36fe16caf0786ffd
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 622ae64e118dd2498aff0bf2e9f6c1dbfb0ab045
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>A kialakítási minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Search
 Egy több-bérlős alkalmazás egyike, amellyel a bérlők számára nem látható, vagy semmilyen más bérlővel adatok megosztására tetszőleges számú szolgáltatások és képességei azonosak. Ez a dokumentum ismerteti a bérlő elkülönítési stratégiák több-bérlős alkalmazásokhoz az Azure Search beépített.
 
 ## <a name="azure-search-concepts"></a>Az Azure Search fogalmak
-Keresés,--szolgáltatás megoldás az Azure Search lehetővé teszi a fejlesztők számára hatékony keresési lép adhat hozzá az alkalmazásokhoz bármilyen infrastruktúra kezelése és a keresési szakértő váljon nélkül. Adatok feltöltődtek a szolgáltatásra, és a felhőben tárolt majd. Az Azure Search API egyszerű kérelmek használatával, az adatok majd módosíthatók és keres. A szolgáltatás áttekintése itt található: [Ez a cikk](http://aka.ms/whatisazsearch). Ismertetése kialakítási minta, előtt fontos tudni, hogy néhány olyan fogalmat, az Azure Search.
+Keresési,--szolgáltatás megoldásként az Azure Search lehetővé teszi a fejlesztők számára a hatékony keresési lép adhat hozzá az alkalmazásokhoz bármilyen infrastruktúra kezelése és az adatok beolvasása szakértő váljon nélkül. Adatok feltöltődtek a szolgáltatásra, és a felhőben tárolt majd. Az Azure Search API egyszerű kérelmek használatával, az adatok majd módosíthatók és keres. A szolgáltatás áttekintése itt található: [Ez a cikk](http://aka.ms/whatisazsearch). Ismertetése kialakítási minta, előtt fontos tudni, hogy néhány olyan fogalmat, az Azure Search.
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Keresési szolgáltatások, az indexek, a mezők és a dokumentumok
 Azure Search használata esetén egy előfizet egy *keresési szolgáltatás*. Mivel adatokat tölt fel az Azure Search, tárolása pedig egy *index* belül a keresési szolgáltatást. Egy önálló szolgáltatásként az indexek száma lehet. Az ismerős fogalmakat adatbázisok használatához a közben a szolgáltatás az indexek is likened, adatbázisban lévő táblák adatbázishoz a keresési szolgáltatás is likened.

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: glenga
-ms.openlocfilehash: 74933d9c3535ab71f47c792e20bfbc35e589ec08
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 7d22a6749216486de6132a6d39e2dcf683d0e678
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 Az Azure Functions lehetővé teszi a kód válaszul Azure-ban és egyéb szolgáltatások események írása keresztül *eseményindítók* és *kötések*. Ez a cikk eseményindítók elméleti áttekintését és kötések az összes támogatott programozási nyelveket. Funkciókat, amelyek megegyeznek az összes kötését dokumentum ismerteti.
@@ -243,7 +243,7 @@ Például egy Azure Storage Üzenetsorába eseményindító támogatja a követk
 
 A megfelelő referencia-témakör ismerteti a metaadat-tulajdonságainak minden eseményindító részleteit. Dokumentáció is rendelkezésre áll, az a **integráció** a portál lapján, a a **dokumentáció** című szakaszt a kötési konfigurációja területen.  
 
-Például blob eseményindítók rendelkezik néhány késések, mivel segítségével várólista eseményindító futtassa a funkciót (lásd: [Blob Storage eseményindító](functions-bindings-storage-blob.md#storage-blob-trigger)). Az üzenetsorban lévő üzenetet tartalmaz a blob fájlnevét elindítani a. Használja a `queueTrigger` metaadat-tulajdonságnak adhat meg ezt a viselkedést összes konfigurációjáról, nem pedig a kódot.
+Például blob eseményindítók rendelkezik néhány késések, mivel segítségével várólista eseményindító futtassa a funkciót (lásd: [Blob Storage eseményindító](functions-bindings-storage-blob.md#blob-storage-trigger)). Az üzenetsorban lévő üzenetet tartalmaz a blob fájlnevét elindítani a. Használja a `queueTrigger` metaadat-tulajdonságnak adhat meg ezt a viselkedést összes konfigurációjáról, nem pedig a kódot.
 
 ```json
   "bindings": [

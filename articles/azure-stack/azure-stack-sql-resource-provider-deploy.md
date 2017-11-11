@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 329970d8717053ab7126fb8fb6a4a119ccbff6b7
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 6e65af68dcd2306aabda65efdf8fe056c0d9b4a4
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 
@@ -74,7 +74,7 @@ A parancsfájl ezeket a lépéseket hajtja végre:
 - Az erőforrás-szolgáltató regisztrálása az a helyi Azure Resource Manager (felhasználó és rendszergazda).
 
 > [!NOTE]
-> Ha a telepítés több mint 90 percig tart, előfordulhat, hogy és a képernyőn, majd a naplófájlban megjelenik egy hibaüzenet, de a központi telepítés a hibás lépés a rendszer ismét megkísérli. A memória és az alapvető ajánlott paramétereknek meg nem felelő rendszereket nem lehet tudja telepíteni az SQL erőforrás-Szolgáltatónál.
+> Ha a telepítés több mint 90 percig tart, előfordulhat, hogy és a képernyőn, majd a naplófájlban megjelenik egy hibaüzenet, de a központi telepítés a hibás lépés a rendszer ismét megkísérli. Rendszerek, amelyek nem felelnek meg az ajánlott memória és vCPU paramétereknek nem lehet tudja telepíteni az SQL erőforrás-Szolgáltatónál.
 >
 
 Például futtathatja a PowerShell kérni (de a fiók- és szükség szerint módosítsa):

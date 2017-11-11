@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/09/2017
 ms.author: shlo
-ms.openlocfilehash: 8f0207853097a3d31e06a722025f3964678414bf
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 085328a9bbe304004f25f46ba5c366e911ac3836
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-data-factory---naming-rules"></a>Az Azure Data Factory - elnevezési szabályok
 A következő táblázat elnevezési szabályoknak az adat-előállító összetevők.
 
 > [!NOTE]
-> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás 1 verzióját használja, amely általánosan elérhető (GA) című [elnevezési szabályait a Data Factory version1](v1/data-factory-naming-rules.md).
+> Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [elnevezési szabályait a Data Factory version1](v1/data-factory-naming-rules.md).
 
 | Név | Név egyedisége | Érvényességi ellenőrzéseket |
 |:--- |:--- |:--- |
@@ -33,4 +33,4 @@ A következő táblázat elnevezési szabályoknak az adat-előállító összet
 | Erőforráscsoport |Egyedi Microsoft Azure között. Nevek nem különböztetik meg. |<ul><li>Karakterek maximális száma: 1000.</li><li>Név tartalmazhat betűket, számjegyeket és a következő karaktereket: "-", "_",","és"."</li></ul> |
 
 ## <a name="next-steps"></a>Következő lépések
-Megtudhatja, hogyan hozzon létre adat-előállítók a részletes insturctions [gyors üzembe helyezés: hozzon létre egy adat-előállító](quickstart-create-data-factory-powershell.md) cikk. 
+Megtudhatja, hogyan hozzon létre az adat-előállítók részletes utasításait követve [gyors üzembe helyezés: hozzon létre egy adat-előállító](quickstart-create-data-factory-powershell.md) cikk. 

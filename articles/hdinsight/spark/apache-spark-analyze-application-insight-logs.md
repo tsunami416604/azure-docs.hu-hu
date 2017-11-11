@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/15/2017
+ms.date: 11/10/2017
 ms.author: larryfr
-ms.openlocfilehash: 6ea3114a30b0ae313efb14495f5556e5484bef06
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d7e4e064a451831c7cf0753064522d0a0b4f5d63
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>A Spark on HDInsight az Application Insights telemetria naplóinak elemzése
 
@@ -61,7 +61,7 @@ Az Application Insights beállítható úgy, hogy folyamatosan telemetriai adata
 
 * **BLOB-típusú**: HDInsight csak blokk blobokat támogat. Alkalmazás Insights alapértelmezés szerint használja a blokkblobok, úgy kell működnie alapértelmezés szerint a HDInsight.
 
-A további tárhely hozzáadása egy meglévő HDInsight-fürt információkért lásd: a [adja hozzá a további tárfiókok](../hdinsight-hadoop-add-storage.md) dokumentum.
+A tárhely hozzáadása egy meglévő fürthöz információkért lásd: a [adja hozzá a további tárfiókok](../hdinsight-hadoop-add-storage.md) dokumentum.
 
 ### <a name="data-schema"></a>Adatséma
 
@@ -79,7 +79,7 @@ Az Azure Storage-fiók hozzáadása egy meglévő fürthöz, olvassa el a a [adj
 
 ## <a name="analyze-the-data-pyspark"></a>Az adatok elemzése: PySpark
 
-1. Az a [Azure-portálon](https://portal.azure.com), válassza ki a Spark on HDInsight-fürt. Az a **Gyorshivatkozások** szakaszban jelölje be **fürt irányítópultok**, majd válassza ki **Jupyter Notebook** a fürt Dashboard__ paneljéről.
+1. Az a [Azure-portálon](https://portal.azure.com), válassza ki a Spark on HDInsight-fürt. Az a **Gyorshivatkozások** szakaszban jelölje be **fürt irányítópultok**, majd válassza ki **Jupyter Notebook** a fürt Dashboard__ szakaszából.
 
     ![A fürt irányítópultok](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
 
@@ -222,7 +222,7 @@ Az Azure Storage-fiók hozzáadása egy meglévő fürthöz, olvassa el a a [adj
 
 ## <a name="analyze-the-data-scala"></a>Az adatok elemzése: Scala
 
-1. Az a [Azure-portálon](https://portal.azure.com), válassza ki a Spark on HDInsight-fürt. Az a **Gyorshivatkozások** szakaszban jelölje be **fürt irányítópultok**, majd válassza ki **Jupyter Notebook** a fürt Dashboard__ paneljéről.
+1. Az a [Azure-portálon](https://portal.azure.com), válassza ki a Spark on HDInsight-fürt. Az a **Gyorshivatkozások** szakaszban jelölje be **fürt irányítópultok**, majd válassza ki **Jupyter Notebook** a fürt Dashboard__ szakaszából.
 
     ![A fürt irányítópultok](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
 2. Válassza ki a Jupyter oldal jobb felső sarkában **új**, majd **Scala**. Scala-alapú Jupyter Notebook tartalmazó új böngészőlapon jelenik meg.

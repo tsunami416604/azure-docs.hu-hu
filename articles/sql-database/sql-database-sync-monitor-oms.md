@@ -8,13 +8,13 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 5a0d25d698ddb15b4ba88d322c07a28b329c4add
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: ace0eb671556dc980836464a365731d6100eab25
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
 ---
-# <a name="monitor-azure-sql-data-sync-preview-with-oms-log-analytics"></a>A figyelő az Azure SQL adatszinkronizálás (előzetes verzió) az OMS szolgáltatáshoz 
+# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>A figyelő SQL adatszinkronizálás (előzetes verzió) az OMS szolgáltatáshoz 
 
 Ellenőrizze az SQL adatszinkronizálás tevékenységnapló, és a hibák és figyelmeztetések észleléséhez, korábban kellett SQL adatszinkronizálás manuálisan ellenőrizze az Azure portálon, vagy PowerShell vagy a REST API-t használja. Kövesse a cikkben egy egyéni megoldás, amely javítja az adatok szinkronizálása figyelésének lehetőségével konfigurálásához. Ez a megoldás a forgatókönyvnek megfelelően testre.
 
@@ -92,7 +92,7 @@ Egy runbook létrehozásával kapcsolatos további információkért lásd: [az 
 
     2.  Szinkronizálási adatait.
 
-    3.  OMS-adatokat. Ezek az információk megtalálhatók a OMS-portálon |} Beállítások |} Csatlakoztatott adatforrások. Adatok küldése a Naplóelemzési kapcsolatos további információért lásd: [adatokat küldeni a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió) Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api).
+    3.  OMS-adatokat. Ezek az információk megtalálhatók a OMS-portálon |} Beállítások |} Csatlakoztatott adatforrások. Adatok küldése a Naplóelemzési kapcsolatos további információért lásd: [adatokat küldeni a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió) Naplóelemzési](../log-analytics/log-analytics-data-collector-api.md).
 
 11. A runbook futtatása a ablaktáblán. Ellenőrizze, hogy sikeres volt-e.
 
@@ -192,7 +192,7 @@ Töltse le a következő helyekről cikkben leírt mintakódok:
 SQL adatszinkronizálás kapcsolatos további információkért lásd:
 
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md)
--   [Ismerkedés az Azure SQL-adatok szinkronizálása](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL Data szinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
 -   [Ajánlott eljárások az Azure SQL-adatok szinkronizálása](sql-database-best-practices-data-sync.md)
 -   [Az Azure SQL adatszinkronizálás problémák elhárítása](sql-database-troubleshoot-data-sync.md)
 

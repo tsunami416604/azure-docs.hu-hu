@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb6ade65879b245bf44800da3352354ba274ee5a
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 423eee65040a11695d9f6c18d64948e4c3d3aafe
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-functions-hosting-plans-comparison"></a>Az Azure Functions üzemeltetési tervek összehasonlítása
 
@@ -68,7 +68,7 @@ A virtuális gépek leválasztja a végrehajtások, a végrehajtási idő és a 
 
 Az App Service-csomagot lehet manuálisan horizontálisan további Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus skálázási. További információkért lásd: [méretezése példányszám manuális vagy automatikus](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json). Is költenie válasszon egy másik App Service-csomagra. További információkért lásd: [vertikális felskálázás az Azure alkalmazásban](../app-service/web-sites-scale.md). 
 
-Ha azt tervezi, JavaScript-funkcióként futhat az App Service-csomagot, válasszon egy tervet, amely kevesebb magok rendelkezik. További információkért lásd: a [függvények JavaScript hivatkozás](functions-reference-node.md#choose-single-core-app-service-plans).  
+Ha azt tervezi, JavaScript-funkcióként futhat az App Service-csomagot, válasszon egy tervet, amely kevesebb Vcpu rendelkezik. További információkért lásd: a [válassza ki az App Service-csomagokról egymagos](functions-reference-node.md#considerations-for-javascript-functions).  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
@@ -93,7 +93,7 @@ A felhasználás üzemeltetési terv használatakor függvény kódfájlok Azure
 > [!NOTE]
 > Egy blob eseményindító használatakor a fogyasztás terven lehet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha egy függvény app inaktív állapotba került. A függvény alkalmazás futtatása után blobok feldolgozása azonnal megtörténik. A kezdeti késleltetés elkerülése érdekében fontolja meg az alábbi lehetőségek közül:
 > - Gazdagép a függvény alkalmazást, az App Service-csomagot, a mindig engedélyezve van.
-> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: [várólista eseményindító blob bemeneti kötése](functions-bindings-storage-blob.md#input-sample).
+> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [C# a parancsfájlt és a JavaScript-példák a BLOB bemeneti és kimeneti kötések](functions-bindings-storage-blob.md#input--output---example).
 
 ### <a name="runtime-scaling"></a>Futásidejű skálázás
 

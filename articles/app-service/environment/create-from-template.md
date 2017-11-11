@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: cdaf09d5558e0453b826b9a3e52500379ced5422
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: b3829f0e1b87451bf0706edc268359be5c4480bc
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Hozzon létre egy ASE Azure Resource Manager-sablon használatával
 
@@ -150,7 +150,7 @@ App Service Environment-környezet két verziója van: ASEv1 és ASEv2. A fenti 
 
 Az ASEv1 kezelhetők a összes erőforrást manuálisan. Amely tartalmazza az előtér-webkiszolgálóinak dolgozó munkatársak és az IP-alapú SSL-hez használt IP-címek. Ki lehet terjeszteni a App Service-csomagot, mielőtt a feldolgozókészleten üzemeltetnie kívánt kell kiterjesztése.
 
-ASEv1 ASEv2 a különböző árképzési modellt használ. ASEv1 a minden lefoglalt core fizetnie. Az előtér-webkiszolgálóinak vagy bármilyen számítási feladatot nem futtató munkavállalók használt magok, amely tartalmazza. A ASEv1 az alapértelmezett maximális méretű egy ASE mérete 55 összes állomás. Amely tartalmazza a dolgozók és első akkor ér véget. Egy ASEv1 előnye, hogy központilag telepíthető a klasszikus virtuális hálózatot és egy erőforrás-kezelő virtuális hálózatot. ASEv1 kapcsolatos további információkért lásd: [App Service Environment-környezet v1 bemutatása][ASEv1Intro].
+ASEv1 ASEv2 a különböző árképzési modellt használ. A ASEv1 akkor fizessen az egyes lefoglalt vCPU. Az előtér-webkiszolgálóinak vagy bármilyen számítási feladatot nem futtató munkavállalók használt Vcpu, amely tartalmazza. A ASEv1 az alapértelmezett maximális méretű egy ASE mérete 55 összes állomás. Amely tartalmazza a dolgozók és első akkor ér véget. Egy ASEv1 előnye, hogy központilag telepíthető a klasszikus virtuális hálózatot és egy erőforrás-kezelő virtuális hálózatot. ASEv1 kapcsolatos további információkért lásd: [App Service Environment-környezet v1 bemutatása][ASEv1Intro].
 
 Egy ASEv1 létrehozása egy Resource Manager-sablon használatával, lásd: [hozzon létre egy ILB ASE v1 Resource Manager-sablon][ILBASEv1Template].
 

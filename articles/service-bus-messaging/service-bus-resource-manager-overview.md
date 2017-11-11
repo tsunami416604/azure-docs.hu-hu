@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Bus erőforrásainak használata Azure Resource Manager-sablonok létrehozása |} Microsoft Docs"
+title: "Azure Service Bus erőforrásainak használata a Resource Manager-sablonok létrehozása |} Microsoft Docs"
 description: "Service Bus erőforrásainak automatizálhatja az Azure Resource Manager-sablonok segítségével"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,22 +12,22 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/10/2017
 ms.author: sethm
-ms.openlocfilehash: c8142d8edfd3a527b13d655bac21acf5332f2d14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ceeb138a7432e51cabe2597c680cb01ea9eac4a
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus erőforrásainak használata Azure Resource Manager-sablonok létrehozása
 
 Ez a cikk ismerteti, hogyan hozhat létre és telepíthet a Service Bus erőforrásainak Azure Resource Manager sablonok, PowerShell és a Service Bus erőforrás-szolgáltató használatával.
 
-Az Azure Resource Manager-sablonok segítségével határozza meg az erőforrásokat, a megoldás központi telepítéséhez, és adja meg a paramétereket és változókat, amelyek segítségével beviheti a különböző környezetekhez tartozó értékeket. A sablon JSON és összeállítani az üzemelő példány értékeit használó kifejezéseket tartalmaz. Azure Resource Manager-sablonok és a sablon formátum döntéseken írt kapcsolatos részletes információkért lásd: [struktúra és az Azure Resource Manager-sablonok szintaxisát](../azure-resource-manager/resource-group-authoring-templates.md).
+Az Azure Resource Manager-sablonok segítségével határozza meg az erőforrásokat, a megoldás központi telepítéséhez, és adja meg a paramétereket és változókat, amelyek segítségével beviheti a különböző környezetekhez tartozó értékeket. A sablon JSON nyelven van megírva, és az üzemelő példány értékeit összeállításához használó kifejezéseket tartalmaz. Azure Resource Manager-sablonok és a sablon formátum döntéseken írt kapcsolatos részletes információkért lásd: [struktúra és az Azure Resource Manager-sablonok szintaxisát](../azure-resource-manager/resource-group-authoring-templates.md).
 
 > [!NOTE]
-> Ebben a cikkben szereplő példák bemutatják, hogyan hozzon létre egy Service Bus-névtér és üzenetküldési entitásra (várólista) az Azure Resource Manager használatával. Más sablon példákat látogasson el a [Azure gyors üzembe helyezés sablontárban] [ Azure Quickstart Templates gallery] , és keressen a "Service Bus."
+> Ebben a cikkben szereplő példák bemutatják, hogyan hozzon létre egy Service Bus-névtér és üzenetküldési entitásra (várólista) az Azure Resource Manager használatával. Más sablon példákat látogasson el a [Azure gyors üzembe helyezés sablontárban] [ Azure Quickstart Templates gallery] keresse meg a **Service Bus**.
 >
 >
 
@@ -43,7 +43,7 @@ A Service Bus Azure Resource Manager sablonok letöltése és központi telepít
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
-Az alábbi eljárás ismerteti, hogyan használhatja a PowerShell telepítése az Azure Resource Manager-sablon által létrehozott egy **szabványos** réteg a Service Bus-névtér, és egy sor az adott névtérben. Ez a példa alapján a [hozzon létre egy Service Bus-névtér várólista](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) sablont. A hozzávetőleges munkafolyamata a következőképpen történik:
+Az alábbi eljárás ismerteti, hogyan lehet egy Service Bus-névtér Standard csomagra, és az adott névtérben várólista létrehozó Azure Resource Manager-sablon üzembe helyezése a PowerShell használatával. Ez a példa alapján a [hozzon létre egy Service Bus-névtér várólista](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) sablont. A hozzávetőleges munkafolyamata a következőképpen történik:
 
 1. Telepítse a PowerShell.
 2. A sablont, és (opcionálisan) a paraméterfájl létrehozása.
@@ -65,67 +65,72 @@ Klónozott vagy másolása a [201-szolgáltatásbusz--várólista létrehozása]
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "serviceBusNamespaceName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the Service Bus namespace"
-            }
-        },
-        "serviceBusQueueName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the Queue"
-            }
-        },
-        "serviceBusApiVersion": {
-            "type": "string",
-            "defaultValue": "2015-08-01",
-            "metadata": {
-                "description": "Service Bus ApiVersion used by the template"
-            }
-        }
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serviceBusNamespaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Service Bus namespace"
+      }
     },
-    "variables": {
-        "location": "[resourceGroup().location]",
-        "sbVersion": "[parameters('serviceBusApiVersion')]",
-        "defaultSASKeyName": "RootManageSharedAccessKey",
-        "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), variables('defaultSASKeyName'))]"
-    },
-    "resources": [{
-        "apiVersion": "[variables('sbVersion')]",
-        "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/Namespaces",
-        "location": "[variables('location')]",
-        "kind": "Messaging",
-        "sku": {
-            "name": "StandardSku",
-            "tier": "Standard"
-        },
-        "resources": [{
-            "apiVersion": "[variables('sbVersion')]",
-            "name": "[parameters('serviceBusQueueName')]",
-            "type": "Queues",
-            "dependsOn": [
-                "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-            ],
-            "properties": {
-                "path": "[parameters('serviceBusQueueName')]"
-            }
-        }]
-    }],
-    "outputs": {
-        "NamespaceConnectionString": {
-            "type": "string",
-            "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
-        },
-        "SharedAccessPolicyPrimaryKey": {
-            "type": "string",
-            "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryKey]"
-        }
+    "serviceBusQueueName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Queue"
+      }
     }
+  },
+  "variables": {
+    "defaultSASKeyName": "RootManageSharedAccessKey",
+    "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), variables('defaultSASKeyName'))]",
+    "sbVersion": "2017-04-01"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-04-01",
+      "name": "[parameters('serviceBusNamespaceName')]",
+      "type": "Microsoft.ServiceBus/Namespaces",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {},
+      "resources": [
+        {
+          "apiVersion": "2017-04-01",
+          "name": "[parameters('serviceBusQueueName')]",
+          "type": "Queues",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
+          ],
+          "properties": {
+            "lockDuration": "PT5M",
+            "maxSizeInMegabytes": "1024",
+            "requiresDuplicateDetection": "false",
+            "requiresSession": "false",
+            "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
+            "deadLetteringOnMessageExpiration": "false",
+            "duplicateDetectionHistoryTimeWindow": "PT10M",
+            "maxDeliveryCount": "10",
+            "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+            "enablePartitioning": "false",
+            "enableExpress": "false"
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "NamespaceConnectionString": {
+      "type": "string",
+      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
+    },
+    "SharedAccessPolicyPrimaryKey": {
+      "type": "string",
+      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryKey]"
+    }
+  }
 }
 ```
 
@@ -145,13 +150,13 @@ Az opcionális paraméterek fájlt használ, másolja a [201-szolgáltatásbusz-
             "value": "<myQueueName>"
         },
         "serviceBusApiVersion": {
-            "value": "2015-08-01"
+            "value": "2017-04-01"
         }
     }
 }
 ```
 
-További információkért lásd: a [paraméterek](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) témakör.
+További információkért lásd: a [paraméterek](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) cikk.
 
 ### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Jelentkezzen be az Azure és az Azure-előfizetés beállítása
 
@@ -161,13 +166,13 @@ Egy PowerShell-parancssorba futtassa a következő parancsot:
 Login-AzureRmAccount
 ```
 
-Jelentkezzen be az Azure-fiókjával kéri. A bejelentkezés után a következő parancsot az elérhető előfizetések megtekintéséhez.
+Jelentkezzen be az Azure-fiókjával kéri. A bejelentkezés után futtassa a következő parancsot az elérhető előfizetések megtekintéséhez:
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-Ez a parancs elérhető Azure-előfizetések listáját adja vissza. Válasszon egy előfizetést, az aktuális munkamenet a következő parancs futtatásával. Cserélje le `<YourSubscriptionId>` használni kívánt Azure-előfizetés GUID.
+Ez a parancs elérhető Azure-előfizetések listáját adja vissza. Válasszon egy előfizetést, az aktuális munkamenet a következő parancs futtatásával. Cserélje le `<YourSubscriptionId>` használni kívánt Azure-előfizetés GUID:
 
 ```powershell
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
@@ -209,7 +214,7 @@ A következő parancs bekéri a PowerShell-ablakban három paramétert:
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
-A következő paranccsal egy paraméterfájl Ehelyett adja meg.
+Ehelyett adja meg egy paraméterfájl, használja a következő parancsot:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -234,7 +239,7 @@ Ha az erőforrások telepítése sikeres volt, a központi telepítés összegz�
 DeploymentName    : MyDemoDeployment
 ResourceGroupName : MyDemoRG
 ProvisioningState : Succeeded
-Timestamp         : 4/19/2016 10:38:30 PM
+Timestamp         : 4/19/2017 10:38:30 PM
 Mode              : Incremental
 TemplateLink      :
 Parameters        :
@@ -242,7 +247,7 @@ Parameters        :
                     ===============  =========================  ==========
                     serviceBusNamespaceName  String             <namespaceName>
                     serviceBusQueueName  String                 <queueName>
-                    serviceBusApiVersion  String                2015-08-01
+                    serviceBusApiVersion  String                2017-04-01
 
 ```
 

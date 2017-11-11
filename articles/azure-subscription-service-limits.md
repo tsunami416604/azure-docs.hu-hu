@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: byvinyal
-ms.openlocfilehash: ee021f5679d3c5a37cd8a795732721b37aaf66ea
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: ff5da6a07512c323cd281832d1ca8a4c0ec5a816
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -38,7 +38,7 @@ Már lehetséges a több Azure-erőforrások az Azure egyetlen erőforráscsopor
 Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az Azure Resource Manager használatakor bővült. Például van egy **előfizetési korlátozásait** tábla és egy **előfizetési korlátozásait - Azure Resource Manager** tábla. Ha a megadott korlát érvényes, a mindkét forgatókönyvet, csak látható az első tábla. Hiányában korlátok legyenek globális minden régióban.
 
 > [!NOTE]
-> Fontos, hogy Azure erőforráscsoport-sablonok az erőforrásokra vonatkozó kvótákat /-régióban elérhető-e az előfizetés, és nem előfizetésenként, mert a szolgáltatás felügyeleti kvóták emelje ki. Most használja core kvóták példaként. Ha magok támogatása a kvóta növelését van szüksége, döntse el, hogy hány magok régiók használja, és végezze el az összegek és régiók, amelyet egy adott kérelem az Azure-erőforráscsoport core kvóták szüksége. Ezért, ha szeretné Nyugat-Európában 30 mag használatával futtassa az alkalmazást; Nyugat-Európában 30 magok kifejezetten igényeljen. Azonban Ön nem rendelkezik a core kvóta növelése más régióban – csak Nyugat-Európában fog rendelkezni a 30-core kvótát.
+> Fontos, hogy Azure erőforráscsoport-sablonok az erőforrásokra vonatkozó kvótákat /-régióban elérhető-e az előfizetés, és nem előfizetésenként, mert a szolgáltatás felügyeleti kvóták emelje ki. Most használja vCPU kvóták példaként. Ha a kvóta növelését Vcpu támogatása van szüksége, döntse el, melyik régióban, és végezze el az összegek és régiók, amelyet egy adott kérelem az Azure-erőforráscsoport vCPU kvóták kívánt hány Vcpu szeretné. Ezért ha 30 Vcpu, Nyugat-Európában használatával futtassa az alkalmazást nem kell, kifejezetten igényeljen 30 Vcpu, Nyugat-Európában. Azonban Ön nem rendelkezik a vCPU kvóta növelése más régióban – csak Nyugat-Európában fog rendelkezni a 30-vCPU kvótát.
 > <!-- -->
 > Ennek köszönhetően Ön érdemes figyelembe venni annak eldöntése, az Azure-erőforráscsoport kvóták kell lennie a munkaterheléshez bármely egy régióban, és minden régióban, amelybe a központi telepítés tervezi, hogy mennyi kérelem. Lásd: [telepítési problémák elhárítása](resource-manager-common-deployment-errors.md) további segítséget itt találhat az aktuális kvóták adott régióban felderítéséhez.
 >

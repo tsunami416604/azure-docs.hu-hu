@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 63e2256ca6d392a0cd284269e8c2d059f94e9139
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 2a619943abaf8835e591872cba0ed046d4c6c4a9
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="introduction-to-app-service-environments"></a>App Service-környezetek bemutatása #
  
@@ -48,13 +48,13 @@ Egy ASE előtér-webkiszolgálóinak és alkalmazottak tevődik össze. Előtér
 
 Munkavállalók alkalmazások vevői üzemeltető szerepkörök. Három rögzített méretű munkavállalók érhetők el:
 
-* Egy mag/3.5 GB RAM
-* Két alapvető/7 GB RAM
-* Négy alapvető/14 GB RAM
+* Egy vCPU/3.5 GB RAM
+* Két vCPU/7 GB RAM
+* Négy vCPU/14 GB RAM
 
 Az ügyfelek nem kell kezelniük, előtér-webkiszolgálóinak és alkalmazottak. Az összes infrastruktúra automatikusan nincs felvéve az ügyfelek kibővítési az App Service-csomagokról. Az App Service-csomagok létrehozása, illetve -környezetben méretezhető, a rendszer hozzáadásakor vagy eltávolításakor szükség szerint a szükséges infrastruktúrát.
 
-Egy egyszerű havi arány egy, az infrastruktúra fizet, és nem módosítja a ASE méretének ASE van. Emellett nincs egy App Service-csomag core onkénti költséget. Minden alkalmazás-környezetben üzemeltetett a Termékváltozat árképzési elszigetelt szerepelnek. Egy ASE az árakkal kapcsolatos információkért lásd: a [App Service díjszabás] [ Pricing] lapon, és tekintse át az elérhető lehetőségek a ASEs.
+Egy egyszerű havi arány egy, az infrastruktúra fizet, és nem módosítja a ASE méretének ASE van. Emellett nincs egy App Service-csomag vCPU onkénti költséget. Minden alkalmazás-környezetben üzemeltetett a Termékváltozat árképzési elszigetelt szerepelnek. Egy ASE az árakkal kapcsolatos információkért lásd: a [App Service díjszabás] [ Pricing] lapon, és tekintse át az elérhető lehetőségek a ASEs.
 
 ## <a name="virtual-network-support"></a>Virtuális hálózati támogatása ##
 
@@ -76,7 +76,7 @@ App Service Environment-környezet két verziója van: ASEv1 és ASEv2. A fenti 
 
 ASEv1 szükség manuális kezelése összes erőforrást. Amely tartalmazza az előtér-webkiszolgálóinak dolgozó munkatársak és az IP-alapú SSL-hez használt IP-címek. Ki lehet terjeszteni a App Service-csomagot, mielőtt a feldolgozókészleten, ahol szeretné futtatni az első bővíteni kell.
 
-ASEv1 ASEv2 a különböző árképzési modellt használ. ASEv1 a minden lefoglalt core fizetnie. Az előtér-webkiszolgálóinak vagy bármilyen számítási feladatot nem futtató munkavállalók használt mag, amely tartalmazza. A ASEv1 az alapértelmezett maximális méretű egy ASE mérete 55 összes állomás. Amely tartalmazza a dolgozók és első akkor ér véget. Egy ASEv1 előnye, hogy központilag telepíthető a klasszikus virtuális hálózatot és egy erőforrás-kezelő virtuális hálózatot. ASEv1 kapcsolatos további információkért lásd: [App Service Environment-környezet v1 bemutatása][ASEv1Intro].
+ASEv1 ASEv2 a különböző árképzési modellt használ. A ASEv1 akkor fizessen az egyes lefoglalt vCPU. Az előtér-webkiszolgálóinak vagy bármilyen számítási feladatot nem futtató munkavállalók használt Vcpu, amely tartalmazza. A ASEv1 az alapértelmezett maximális méretű egy ASE mérete 55 összes állomás. Amely tartalmazza a dolgozók és első akkor ér véget. Egy ASEv1 előnye, hogy központilag telepíthető a klasszikus virtuális hálózatot és egy erőforrás-kezelő virtuális hálózatot. ASEv1 kapcsolatos további információkért lásd: [App Service Environment-környezet v1 bemutatása][ASEv1Intro].
 
 <!--Links-->
 [Intro]: ./intro.md

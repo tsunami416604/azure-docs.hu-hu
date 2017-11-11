@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.openlocfilehash: 7caf1dd3fa5ef295c2472cc11deb2895fc2a7111
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 67a5c1494f2944e91fed2b077cf04e8906788c1e
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="back-up-windows-server-to-azure"></a>A Windows Server biztonság mentése az Azure-be
 
@@ -42,9 +42,9 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 Mielőtt készíthet biztonsági mentést a Windows Server, a biztonsági másolatok hely létrehozása, vagy az visszaállítási pontok, a rendszer ne tárolja. A [Recovery Services-tároló](backup-azure-recovery-services-vault-overview.md) egy olyan tároló, amely a Windows Server biztonsági mentés tárolja az Azure-ban. Recovery Services-tároló létrehozása az Azure-portálon az alábbi lépésekkel. 
 
-1. A bal oldali menüben válassza **további szolgáltatások** írja be a szolgáltatások listájában **Recovery Services**. Kattintson a **Recovery Services-tárolók**.
+1. A bal oldali menüben válassza **minden szolgáltatás** írja be a szolgáltatások listájában **Recovery Services**. Kattintson a **Recovery Services-tárolók**.
 
-   ![Nyissa meg a Recovery Services-tároló](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault.png)
+   ![Nyissa meg a Recovery Services-tároló](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
 2.  A **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** elemre.
 
@@ -134,7 +134,7 @@ Az ütemezés hozott létre, ha biztonsági mentési feladatok futtatásához. A
 
 1.  Kattintson a Microsoft Azure Recovery Services agent konzolon **biztonsági másolat készítése most**.
 
-    ![infrastruktúra előkészítése](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
+    ![infrastruktúra előkészítése](./media/tutorial-backup-windows-server-to-azure/backup-now.png)
 
 2.  Az a **biztonsági másolat készítése most** varázsló, jelölje be egy **fájlok és mappák** vagy **rendszerállapot** készítsen biztonsági másolatot, és kattintson a kívánt **tovább** 
 3. Az a **megerősítő** lapján tekintse át a beállításokat, amelyek a **biztonsági másolat készítése most** varázsló használatával készítsen biztonsági másolatot a kiszolgálóról. Ezután kattintson a **Biztonsági mentés** gombra.

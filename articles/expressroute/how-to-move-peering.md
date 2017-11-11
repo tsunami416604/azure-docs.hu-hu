@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/09/2017
 ms.author: cherylmc
-ms.openlocfilehash: f48e270054ba45211c2a1517593d5d7b22925d0a
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 4fd0f1cbba36957ae5ecc1b7436d1f1734a3ef79
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Helyezze át a nyilvános társviszony-létesítést úgy Microsoft társviszony-létesítés
 
@@ -34,7 +34,7 @@ Ez a cikk segítséget nyújt egy nyilvános társviszony-létesítési konfigur
 
 * Ha csatlakozni szeretne a Microsoft társviszony-létesítést, kell beállítása és kezelése a hálózati címfordítást. A kapcsolat szolgáltatójánál előfordulhat, hogy beállítása és kezelése a felügyelt szolgáltatásként NAT. Ha azt tervezi, hogy elérje az Azure PaaS és a Microsoft társviszony-létesítés Azure szolgáltatott szoftver szolgáltatásokat, fontos a hálózati Címfordítás IP-készlet megfelelő méretének. Az ExpressRoute NAT kapcsolatos további információkért tekintse meg a [NAT követelmények a Microsoft társviszony-létesítéshez](expressroute-nat.md#nat-requirements-for-microsoft-peering).
 
-* Ha már szerepel az Azure nyilvános társviszony Azure PaaS szolgáltatás-erőforrást jelenleg rendelkezik egy hálózati hozzáférés-vezérlési lista (ACL), akkor győződjön meg arról, hogy a hálózati Címfordítás IP-készlet **címtartomány** Microsoft megtalálható a tűzfal hozzáférés-vezérlési lista társviszony-létesítés.
+* Ha nyilvános társviszony használja, és jelenleg nyilvános IP-címekhez használt IP-hálózat szabályok hozzáférés [Azure Storage](../storage/common/storage-network-security.md) vagy [Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), meg kell győződnie arról, hogy a hálózati Címfordítás IP-címkészlet konfigurálva a Microsoft társviszony-létesítés szerepel a listában nyilvános IP-címek az Azure storage-fiók vagy az Azure SQL-fiók.
 
 * Ahhoz, hogy a Microsoft társviszony-létesítés állásidő nélkül áthelyezi, kövesse a lépéseket a cikk jelenjenek meg ezek a sorrendben.
 

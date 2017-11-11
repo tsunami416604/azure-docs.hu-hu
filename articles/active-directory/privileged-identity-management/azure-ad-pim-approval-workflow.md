@@ -14,27 +14,24 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: cf6a9213fa0a1cba8725aabb42abe51b805ece7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90aec90edcbbfb7833efd85752afc8f1937f5b5a
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="approvals-preview"></a>A jóváhagyások (előzetes verzió)
+# <a name="approvals"></a>A jóváhagyások
 
 ## <a name="overview"></a>Áttekintés
 
 Privileged Identity Management-jóváhagyásokkal rendelkező jóváhagyás megkövetelése, az aktiváláshoz szerepkörök konfigurálása, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyóknak csoportot. Megtudhatja, hogyan konfigurálhatók azok a szerepkörök, és válassza ki a jóváhagyóknak olvasási megtartása.
 
->[!NOTE]
-Ne feledje, a szolgáltatás fejlesztés alatt van, és hibákat tapasztalhat. A funkció leírásával elnevezési konvenciói változhat, és nem tekinthető végső.
 
-
-## <a name="key-terminology"></a>Kulcs terminológia
+## <a name="new-terminology"></a>Új terminológia
 
 *Jogosult szerepkör felhasználói* – az jogosult szerepkör felhasználó tulajdonképpen egy a szervezeten belül, amely szerint jogosult az Azure AD szerepkörhöz hozzárendelt felhasználó (szerepkör aktiválást igényel).
 
-*Meghatalmazott jóváhagyó* – egy delegált jóváhagyó egy vagy több egyéni felhasználók számára, vagy az Azure AD a csoportokat a szerepkörök aktiválásához kérelmek jóváhagyása felelős.
+*Meghatalmazott jóváhagyó* – egy delegált jóváhagyó egy vagy több egyéni felhasználók vagy csoportok jóváhagyása felelős az Azure AD belül kér szerepkörök aktiválásához.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 

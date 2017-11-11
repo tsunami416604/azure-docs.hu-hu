@@ -4,7 +4,7 @@ description: "Párhuzamos tömeges adatimportálás SQL partíciós táblák has
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ff90fdb0-5bc7-49e8-aee7-678b54f901c8
 ms.service: machine-learning
@@ -12,24 +12,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/09/2017
 ms.author: bradsev
-ms.openlocfilehash: 899f20b3642612386f2513c9c8649cd845be826e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77638ff52edbc2b782b21a4ca1c727a2b46f22f3
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Párhuzamos tömeges adatimportálás SQL partíciós táblák használatával
 Ez a dokumentum ismerteti, hogyan hozhat létre az SQL Server-adatbázis adatok gyors párhuzamos tömeges importálását a particionált táblákat. A big Data típusú adatok betöltését/átvitel SQL-adatbázishoz, az adatok importálása az SQL-adatbázis és a lekérdezések növelhető a *particionált táblák és nézetek*. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Hozzon létre egy új adatbázist és a fájlcsoport készlete
 * [Hozzon létre egy új adatbázist](https://technet.microsoft.com/library/ms176061.aspx), ha már nem létezik.
-* Adatbázis fájlcsoport hozzáadása az adatbázisban, ami a particionált fizikai fájlok tárolására. Ezt megteheti a [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) Ha új vagy [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) az adatbázis már létezik.
+* Adatbázis fájlcsoport hozzáadása az adatbázishoz, amely tartalmazza a particionált fizikai fájlok. 
+* Ezt megteheti a [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) Ha új vagy [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) az adatbázis már létezik.
 * Fájlokat adjon hozzá egy vagy több (szükség szerint) minden egyes adatbázis fájlcsoport.
   
   > [!NOTE]
-  > Adja meg a cél fájlcsoportban ehhez a partícióhoz adatokat tároló és a fizikai adatbázis fájl vagy fájlcsoport adatok tárolásához.
+  > Adja meg a cél fájlcsoportban, amely tárolja a partíció adatait és a fizikai adatbázis-fájl neve, a fájlcsoport adatok tárolására.
   > 
   > 
 
@@ -55,18 +56,19 @@ A következő példa egy új adatbázist hoz létre három kívül az elsődlege
     ')
 
 ## <a name="create-a-partitioned-table"></a>Particionált tábla létrehozása
-Az adatok séma, a az előző lépésben létrehozott adatbázis fájlcsoportokat leképezve megfelelően particionált táblák létrehozása. Adatok importálása a particionált táblák tömeges esetén rekordok közötti elosztása a fájlcsoportokat megfelelően partícióséma, az alább ismertetett.
+Az adatok séma, a az előző lépésben létrehozott adatbázis fájlcsoportokat leképezve megfelelően particionált táblák létrehozása először létre kell hoznia a partíciós függvénnyel és a rendszer. Tömeges a particionált táblák importált adatok esetén rögzíti a program elosztja a fájlcsoportokat, partícióséma megfelelően között, az alább ismertetett.
 
-**A partíciós tábla létrehozásához kell:**
-
-* [A partíciós függvények létrehozása](https://msdn.microsoft.com/library/ms187802.aspx) amely megadja, hogy az értékek/határok szereplő minden egyes partíciós tábla, pl., partíciók korlátozása havonta tartományán (néhány\_datetime\_mező) 2013-ben:
+### <a name="1-create-a-partition-function"></a>1. A partíciós függvények létrehozása
+[Partíciós függvény létrehozása](https://msdn.microsoft.com/library/ms187802.aspx) Ez a funkció határozza meg a tartomány értékek/határok szereplő minden egyes partíciós tábla például, hogy korlátozza a partíciók havonta (néhány\_datetime\_mező) 2013-ben:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
             '20130201', '20130301', '20130401',
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
-* [Hozzon létre egy partícióséma](https://msdn.microsoft.com/library/ms179854.aspx) amely van leképezve a partíciós függvény minden egyes partíciótartomány fizikai fájlcsoport, pl.:
+
+### <a name="2-create-a-partition-scheme"></a>2. Hozzon létre egy partícióséma
+[Hozzon létre egy partícióséma](https://msdn.microsoft.com/library/ms179854.aspx). Ez a séma van leképezve a partíciós függvény minden egyes partíciótartomány fizikai fájlcsoport, például:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -83,7 +85,9 @@ Az adatok séma, a az előző lépésben létrehozott adatbázis fájlcsoportoka
         INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
-* [Particionált tábla létrehozása](https://msdn.microsoft.com/library/ms174979.aspx)(s) az adatok séma alapján történik, és adja meg a tábla, pl. particionálásához használt partíciós séma és a korlátozás mező:
+
+### <a name="3-create-a-partition-table"></a>3. A partíciós tábla létrehozása
+[Particionált tábla létrehozása](https://msdn.microsoft.com/library/ms174979.aspx)(s) az adatok séma alapján történik, és adja meg a tábla, például particionálásához használt partíciós séma és a korlátozás mező:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
@@ -91,8 +95,9 @@ Az adatok séma, a az előző lépésben létrehozott adatbázis fájlcsoportoka
 További információkért lásd: [particionált táblák létrehozása és indexek](https://msdn.microsoft.com/library/ms188730.aspx).
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Tömeges importálásához minden egyes partíció tábla adatai
+
 * Előfordulhat, hogy a BCP, TÖMEGES Beszúrás vagy más módszerrel például [SQL Server varázsló](http://sqlazuremw.codeplex.com/). A megadott példa a BCP módszert használja.
-* [Az adatbázis módosítására](https://msdn.microsoft.com/library/bb522682.aspx) tranzakció naplózási séma átállítása tömegesen_naplózott naplózás, pl. terhek minimalizálása érdekében:
+* [Az adatbázis módosítására](https://msdn.microsoft.com/library/bb522682.aspx) tranzakció naplózási sémája átállítása tömegesen_naplózott jelentkezik, például terhek minimalizálása érdekében:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
 * Adatbetöltési elősegítésére, nyissa meg a tömeges importálási műveletek párhuzamosan. A tömeges meggyorsítása tippek a big Data típusú adatok importálása az SQL Server-adatbázisok, lásd: [1 TB-os betölteni a kevesebb mint 1 óra](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
@@ -162,8 +167,8 @@ A következő PowerShell-parancsfájl párhuzamos adatok betöltése a BCP segí
 
 
 ## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Illesztések és a lekérdezési teljesítmény optimalizálása érdekében indexek létrehozása
-* Ha több tábla rendszer kinyeri az adatokat a modellezési, indexek létrehozása az illesztés kulcsok illesztési teljesítményének javítása.
-* [Indexek létrehozása](https://technet.microsoft.com/library/ms188783.aspx) (fürtözött vagy nem fürtözött) célcsoport-kezelési minden partíció esetében azonos fájlcsoport a pl.:
+* Kinyeri az adatokat a modellezési több táblát is, ha az illesztés teljesítmény javítása érdekében a join kulcsok indexek létrehozása.
+* [Indexek létrehozása](https://technet.microsoft.com/library/ms188783.aspx) (fürtözött vagy nem fürtözött) célcsoport-kezelési minden partíció esetében azonos fájlcsoport az például:
   
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
@@ -178,5 +183,5 @@ A következő PowerShell-parancsfájl párhuzamos adatok betöltése a BCP segí
   > 
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Speciális elemzésekre folyamat és a technológia művelet példa
-A Cortana Analytics folyamat használata a nyilvános dataset végpont forgatókönyv példáért lásd: [Cortana Analytics folyamat működés közben: SQL Server használatával](sql-walkthrough.md).
+Az Team tudományos folyamat használata a nyilvános dataset végpont forgatókönyv példáért lásd: [Team adatok tudományos folyamat működés közben: SQL Server használatával](sql-walkthrough.md).
 

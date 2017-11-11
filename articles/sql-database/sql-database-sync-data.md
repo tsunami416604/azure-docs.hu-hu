@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: c69fab3f711e2a650d088ccec1c05ec29e0e567b
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: fe11926cb7f6b2a80913895b685acfcc433e9805
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-azure-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás (előzetes verzió)
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisok az SQL adatszinkronizálás (előzetes verzió)
 
 SQL adatszinkronizálás egy olyan szolgáltatás, az Azure SQL Database, amely lehetővé teszi, hogy szinkronizálja az adatokat több SQL-adatbázisok és SQL Server-példányok kiválasztása kétirányúan épül.
 
@@ -44,7 +44,7 @@ Adatszinkronizálás küllős topológia használatával szinkronizálja az adat
 -   A **Sync-adatbázis** Adatszinkronizálás a metaadatok és naplófájl tartalmazza. A Sync-adatbázis nem lehet egy Azure SQL-adatbázis és a központ adatbázis ugyanabban a régióban található. A Sync-adatbázis létrehozott felhasználói és felhasználói tulajdonban lévő.
 
 > [!NOTE]
-> Ha egy a helyi adatbázist használ, hogy [egy helyi ügynök konfigurálása.](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-sql-data-sync)
+> Ha egy a helyi adatbázist használ, hogy [egy helyi ügynök konfigurálása](sql-database-get-started-sql-data-sync.md#add-on-prem).
 
 ![Adatbázisok között szinkronizálja az adatokat](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -155,7 +155,7 @@ Adatok szinkronizálása által beszúrási, frissítési és törlési esemény
 
 SQL adatszinkronizálás kapcsolatos további információkért lásd:
 
--   [Ismerkedés az Azure SQL-adatok szinkronizálása](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL Data szinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
 -   [Ajánlott eljárások az Azure SQL-adatok szinkronizálása](sql-database-best-practices-data-sync.md)
 -   [A figyelő az Azure SQL adatszinkronizálás az OMS szolgáltatáshoz](sql-database-sync-monitor-oms.md)
 -   [Az Azure SQL adatszinkronizálás problémák elhárítása](sql-database-troubleshoot-data-sync.md)

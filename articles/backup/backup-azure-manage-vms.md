@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 597d8e12377ca19b0c58eb2fc8bdb7597c1c6c07
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése
 > [!div class="op_single_selector"]
@@ -32,10 +32,10 @@ Ez a cikk nyújt útmutatást a virtuális gép biztonsági másolatok kezelés�
 ## <a name="manage-vaults-and-protected-virtual-machines"></a>Tárolók és a védett virtuális gépek kezelése
 Az Azure portálon a Recovery Services-tároló irányítópult információit, a tároló, beleértve a hozzáférést biztosítja:
 
-* a legutóbbi biztonsági mentési pillanatképet, amely egyben a legutóbbi helyreállítási pontot < br\>
-* a biztonsági mentési házirend < br\>
-* teljes méret minden biztonsági mentési pillanatképek < br\>
-* a tárolóval védett virtuális gépek száma < br\>
+* a legutóbbi biztonsági mentési pillanatképet, amely egyben a legutóbbi visszaállítási pont
+* a biztonsági mentési házirend
+* az összes biztonsági mentési pillanatképek teljes mérete
+* a tárolóval védett virtuális gépek száma
 
 Egy virtuális gép biztonsági másolatából számos felügyeleti feladatot a kezdő ellenőrzéséhez nyissa meg a tároló az irányítópulton. Azonban az tárolók használható arra, hogy több elem (vagy több virtuális gép), egy adott virtuális gép adatainak megtekintése, mert az a tároló elem irányítópult megnyitásához. Az alábbi eljárás bemutatja, hogyan nyissa meg a *tároló irányítópult* és folytassa a *tároló elem irányítópult*. Nincsenek "tippek" mindkét eljárásnál, amelyek arra, hogyan adja hozzá a tárolóhoz, és a tároló cikk az Azure-irányítópulton a PIN-kód irányítópult parancs használatával. Rögzítés az irányítópulton a tárolóhoz vagy a cikk parancsikon létrehozásának módja. Általános jellegű parancsok a parancsikonnal is végrehajthat.
 
@@ -50,11 +50,11 @@ Egy virtuális gép biztonsági másolatából számos felügyeleti feladatot a 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A központi menüben kattintson a **Tallózás** elemre, majd az erőforrások listájába írja be a következőt: **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Recovery Services-tároló** elemre.
 
-    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-manage-vms/browse-to-rs-vaults.png) <br/>
+    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
     A Recovery Services-tárolók listája megjelenik.
 
-    ![Helyreállítási szolgáltatások listája tárolók ](./media/backup-azure-manage-vms/list-o-vaults.png) <br/>
+    ![Helyreállítási szolgáltatások listája tárolók ](./media/backup-azure-manage-vms/list-o-vaults.png)
 
    > [!TIP]
    > Ha rögzíti egy tárolót az Azure-irányítópultot, a tároló érhető el közvetlenül az Azure-portál megnyitásakor. PIN-kód egy tárolót az irányítópulton, a tároló listában, kattintson a jobb gombbal a tárolóra, és válassza ki **rögzítés az irányítópulton**.
@@ -89,13 +89,13 @@ Az előző eljárásban megnyitott a tároló irányítópult. A tároló elem i
 
     A tároló elem irányítópultról például több kulcskezelési feladatok, érhető el:
 
-   * Módosítsa a házirendek, vagy hozzon létre egy új biztonsági mentési házirend < br\>
-   * megtekintheti a visszaállítási pontok, és a konzisztencia állapota < br\>
-   * igény szerinti biztonsági mentést a virtuális gépek < br\>
-   * Állítsa le a virtuális gépek védelme < br\>
-   * a virtuális gépek a védelem folytatásához < br\>
-   * a biztonsági mentési adatok (vagy a helyreállítási pont) törlése < br\>
-   * [Állítsa vissza a biztonsági mentési lemezek](backup-azure-arm-restore-vms.md#restore-backed-up-disks) < br\>
+   * Módosítsa a házirendek, vagy hozzon létre egy új biztonsági mentési házirend
+   * megtekintheti a visszaállítási pontok, és konzisztencia állapotukra
+   * Igény szerinti biztonsági mentést a virtuális gépek
+   * Virtuális gépek védelmének megszüntetése
+   * A virtuális gépek a védelem folytatásához
+   * Törölje a biztonsági mentési adatok (vagy a helyreállítási pont)
+   * [Állítsa vissza a biztonsági mentési lemezek](backup-azure-arm-restore-vms.md#restore-backed-up-disks)
 
 A következő eljárásokat a kiindulási pontja egy tároló elem irányítópultot.
 
@@ -110,7 +110,7 @@ A következő eljárásokat a kiindulási pontja egy tároló elem irányítópu
     ![A biztonsági mentési házirend panel](./media/backup-azure-manage-vms/backup-policy-blade.png)
 3. Az a **válassza ki a biztonsági mentési házirend** menüben:
 
-   * Házirendek módosításához jelöljön ki egy másik házirendet, és kattintson a **mentése**. Ekkor a rendszer automatikusan alkalmazza az új házirendet a tárolón. < br\>
+   * Házirendek módosításához jelöljön ki egy másik házirendet, és kattintson a **mentése**. Ekkor a rendszer automatikusan alkalmazza az új házirendet a tárolón.
    * Egy házirend létrehozásához válassza **hozzon létre új**.
 
      ![Virtuális gép biztonsági mentése](./media/backup-azure-manage-vms/backup-policy-create-new.png)
@@ -148,7 +148,7 @@ Egy igény szerinti biztonsági mentést a virtuális gép indításához:
 Ha kikapcsolja a virtuális gép védelmét, megkérdezi, hogy kívánja-e a helyreállítási pontok megőrzése. Virtuális gépek védelmének kikapcsolását két módja van:
 
 * Állítsa le az összes jövőbeli biztonsági mentési feladat, és törölje az összes helyreállítási pont, vagy
-* Állítsa le az összes jövőbeli biztonsági mentési feladat, de hagyja meg a helyreállítási pontok <br/>
+* Állítsa le az összes jövőbeli biztonsági mentési feladat, de hagyja meg a helyreállítási pontok
 
 Nincs társított áthelyezni a helyreállítási pontok tárolási költség. Azonban az, hogy a helyreállítási pontok előnye, később visszaállíthatja a virtuális gép igény. A költség, hogy a helyreállítási pontok információ: a [díjszabása](https://azure.microsoft.com/pricing/details/backup/). Ha törli az összes helyreállítási pontot választja, a virtuális gép nem állítható vissza.
 

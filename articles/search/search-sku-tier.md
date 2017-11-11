@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: f9f3a7b2369818791ffac1c8eeccef45216c2ff0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 781683f27c943e25d5629dd846da357f51c9d4f9
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Termékváltozat vagy tarifacsomag választása az Azure Search szolgáltatáshoz
 Az Azure Search egy [szolgáltatás kiépítve](search-create-service-portal.md) egy adott árképzési szint vagy a Termékváltozat. A választható lehetőségek **szabad**, **alapvető**, vagy **szabványos**, ahol **szabványos** több konfigurációk és kapacitások érhető el.
@@ -43,9 +43,9 @@ Kapacitás és a szolgáltatás futtatásával járó költségek nyissa meg ké
 
 * Száma és mérete indexek kíván létrehozni
 * Száma és mérete dokumentumok feltöltése
-* Összeállítottuk lekérdezés kötet, tekintetében lekérdezések egy második (QPS)
+* Összeállítottuk lekérdezés kötet, tekintetében lekérdezések egy második (QPS). Útmutatásért lásd: [Azure Search teljesítmény- és optimalizálási](search-performance-optimization.md).
 
-Száma és mérete fontosak, mert a legmagasabb keresztül rögzített korlátját indexek vagy egy szolgáltatást a dokumentumok számát, vagy a szolgáltatás által használt erőforrások (tároló- és replikák) elérésekor. A tényleges a szolgáltatás határa attól lekérdezi használt először: erőforrások vagy objektumokat.
+Száma és mérete fontosak, mert a legmagasabb keresztül rögzített korlátját szolgáltatásonként indexek száma, vagy a szolgáltatás által használt erőforrások (tároló- és replikák) elérésekor. A tényleges a szolgáltatás határa attól lekérdezi használt először: erőforrások vagy objektumokat.
 
 Az aktuális becslések az alábbi lépéseket kell egyszerűbbé:
 
@@ -60,10 +60,10 @@ A következő táblázat ismerteti az egyes rétegek.
 | --- | --- |
 | **Ingyenes** |Megosztott szolgáltatás, díjmentesen, értékelése, a vizsgálat vagy a kis munkaterhelés használt. Más előfizetők van megosztva, mivel lekérdezés átviteli sebesség és a indexelő függ ki más használja a szolgáltatást. A kapacitása kis (50 MB vagy 3 indexek 10 000 fel dokumentumokat egyes). |
 | **Basic** |Kis termelési számítási feladatokhoz a dedikált hardveren. Magas rendelkezésre állású. A kapacitása legfeljebb 3 replikák és 1 partíció (2 GB-ot). |
-| **S1** |Standard 1 támogatja a partíciók (12) és a replikák (12), medium termelési számítási feladatokhoz a dedikált hardveren használt rugalmas kombinációi. Partíciók és replikák maximális száma 36 számlázható keresési egység által támogatott kombinációkban foglalhatja le. Ezen a szinten partíció található, 25 GB és QPS körülbelül 15 lekérdezések száma másodpercenként. |
-| **S2** |Standard 2 fut a azonos 36 keresési egységek használatával S1 megegyezik, azonban nagyobb méretű partíciókat és a replikák nagyobb termelési számítási feladatokhoz. Ezen a szinten partíció található, a 100 GB és QPS készül 60 lekérdezések száma másodpercenként. |
-| **S3** |Standard 3 futó arányosan nagyobb termelési számítási feladatokhoz nagyobb kapacitású rendszerek, legfeljebb 12 partíciók vagy 12 replikák beállításait a 36 keresési egység. Ezen a szinten partíció található, a 200 GB és QPS másodpercenként több mint 60 lekérdezések. |
-| **S3 HD** |Standard 3 nagy sűrűségű kisebb indexek nagy számú tervezték. Legfeljebb 3 partíció 200 GB lehet. QPS másodpercenként több mint 60 lekérdezések. |
+| **S1** |Standard 1 támogatja a partíciók (12) és a replikák (12), medium termelési számítási feladatokhoz a dedikált hardveren használt rugalmas kombinációi. Partíciók és replikák maximális száma 36 számlázható keresési egység által támogatott kombinációkban foglalhatja le. Ezen a szinten partíció található, 25 GB. |
+| **S2** |Standard 2 fut a azonos 36 keresési egységek használatával S1 megegyezik, azonban nagyobb méretű partíciókat és a replikák nagyobb termelési számítási feladatokhoz. Ezen a szinten partíció található, egyenként 100 GB. |
+| **S3** |Standard 3 futó arányosan nagyobb termelési számítási feladatokhoz nagyobb kapacitású rendszerek, legfeljebb 12 partíciók vagy 12 replikák beállításait a 36 keresési egység. Ezen a szinten partíció található, 200 GB. |
+| **S3 HD** |Standard 3 nagy sűrűségű kisebb indexek nagy számú tervezték. Legfeljebb 3 partíció 200 GB lehet.|
 
 > [!NOTE]
 > Replika és a partíció méretkorlát egységként keresési (36 egységek maximális száma a szolgáltatás), mint mi a legnagyobb azt jelenti, arc értéken hatékony alsó határának előíró számlázzuk ki. Például a legfeljebb 12 replikák használatához lehet legfeljebb 3 partíció (12 * 3 = 36 egységek). Ehhez hasonlóan maximális partíciók használatához csökkentse replikák 3. Lásd: [erőforrás szintjeinek lekérdezési és indexelési munkaterhelések az Azure Search méretezése](search-capacity-planning.md) megengedett kombinációk diagram.
@@ -81,7 +81,6 @@ A következő diagram része a korlátok [az Azure Search szolgáltatásra vonat
 | Maximális partíciók |N/A |1 |12 |12 |12 |3 <sup>2</sup> |
 | Partíció mérete |Összesen 50 MB |2 GB-ot szolgáltatás |Partíciónként 25 GB |100 GB-ot partíció (legfeljebb 1.2-es TB-szolgáltatás esetében) |200 GB-ot partíció (legfeljebb 2,4 TB-szolgáltatás esetében) |200 GB-os (legfeljebb 600 GB-szolgáltatás esetében) |
 | Maximális replikák |N/A |3 |12 |12 |12 |12 |
-| Lekérdezések száma másodpercenként |N/A |~3 replikánként |~15 replikánként |~60 replikánként |>60 replikánként |>60 replikánként |
 
 <sup>1</sup> ingyenes szint és az előzetes funkciók nem tartoznak a szolgáltatásszint-szerződések (SLA). Az összes számlázható rétegek SLA-k érvénybe, ha a szolgáltatás megfelelő redundancia kiépítése. Két vagy több replikák szükségesek (olvasás) lekérdezés SLA-t. Három vagy több replikák lekérdezés és az indexelés (írásra) SLA szükségesek. A partíciók számának nincs egy SLA-t szempont. 
 

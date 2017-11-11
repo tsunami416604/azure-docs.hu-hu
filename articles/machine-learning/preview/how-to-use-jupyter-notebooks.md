@@ -2,19 +2,19 @@
 title: "Jupyter notebookok használata az Azure Machine Learning-munkaterület |} Microsoft Docs"
 description: "Útmutató az Azure Machine Learning-munkaterület a Jupyter notebookok funkció használata"
 services: machine-learning
-author: jopela
-ms.author: jopela
+author: rastala
+ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 93850a7c9e3d9d69b0da22ebd0656ae40cee2e63
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.date: 11/09/2017
+ms.openlocfilehash: 80cdd07bff865776a68897a7b8c1b3fe66b76b18
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Jupyter notebook használata az Azure Machine Learning-munkaterület
 
@@ -31,12 +31,12 @@ Magas szinten Jupyter notebook architektúra tartalmaz három összetevővel, mi
 - **Kiszolgáló**: a notebook fájlok (.ipynb) tároló kiszolgáló
 - **Kernel**: a futtatási környezetet, ahol a notebook cellák tényleges végrehajtása történik,
 
-További részletekért tekintse át a hivatalos [Jupyter dokumentáció](http://jupyter.readthedocs.io/en/latest/architecture/how_jupyter_ipython_work.html). Fowllowing hogyan az ügyfél, a kiszolgáló és a kernel-architektúra hozzárendelése az Azure ML összetevői ábrázoló diagram.
+További részletekért tekintse át a hivatalos [Jupyter dokumentáció](http://jupyter.readthedocs.io/en/latest/architecture/how_jupyter_ipython_work.html). Az alábbiakban látható, hogyan az ügyfél, a kiszolgáló és a kernel-architektúra hozzárendelése az Azure ML összetevői ábrázoló diagram.
 
 ![notebook architektúrája](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-architecture.png)
 
 ## <a name="kernels-in-azure-ml-workbench-notebook"></a>Az Azure ML munkaterület notebook kernelek
-Van-e hozzáférési számos különböző kernelek Azure ML munkaterület által egyszerűen futtatási konfigurációk beállításához, és számítási célt a `aml_config` a projekt mappájára. Új számítási cél hozzáadása kiállításával `az ml computetarget attach` parancs megegyezik a hozzáadása egy új rendszermag.
+Azure ML munkaterület számos különböző kernelek elérheti futtatási konfigurációk konfigurálásával és számítási célt a `aml_config` a projekt mappájára. Új számítási cél hozzáadása kiállításával `az ml computetarget attach` parancs megegyezik a hozzáadása egy új rendszermag.
 
 >[!NOTE]
 >Tekintse át a [konfigurálása végrehajtási](experimentation-service-configuration.md) vonatkozó részletes információért futtassa a konfiguráció és célok számítási.
@@ -49,6 +49,9 @@ A munkaterület jelenleg a következő típusú kernelek.
 ### <a name="local-python-kernel"></a>Helyi Python kernel
 A Python kernel végrehajtási támogatja a helyi számítógépen. Integrált Azure Machine Learning futtatása előzmények támogatásával. A kernel neve nem általában a "helyi my_project_name".
 
+>[!NOTE]
+>Ne használja a "Python 3" kernel. Alapértelmezés szerint a Jupyter által biztosított önálló kernel. Nincs integrálva az Azure Machine Learning képességeit.
+
 ### <a name="python-kernel-in-docker-local-or-remote"></a>Python Kernel a Docker (helyi vagy távoli)
 A Python kernel futtat egy Docker-tároló vagy a helyi számítógépen, vagy egy távoli Linux virtuális gépre. A kernel értéke általában "my_project docker". A társított `docker.runconfig` fájl a `Framework` mező értéke `Python`.
 
@@ -59,7 +62,7 @@ A PySpark kernel parancsfájlok végrehajtja a Docker-tároló, vagy a helyi sz�
 A kernel futtatja a távoli HDInsight-fürthöz, a mellékelt számítási célként a projekthez. A kernel értéke általában "my_project my_hdi". 
 
 >[!IMPORTANT]
->Az a `.compute` a HDI-fájlját tároló számítási, módosítania kell a `yarnDeployMode` mezőről `client` (az alapértelmezett érték `cluster`) a kernel használatához. 
+>Az a `.compute` a HDI fájlt a cél számítási, módosítania kell a `yarnDeployMode` mezőről `client` (az alapértelmezett érték `cluster`) ahhoz, hogy a kernel. 
 
 ## <a name="start-jupyter-server-from-the-workbench"></a>A munkaterület a Jupyter kiszolgáló indítása
 Az Azure Machine Learning-munkaterület, jegyzetfüzeteket a munkaterület keresztül elért **notebookok** fülre. A _zárolásának Iris_ mintaprojektet tartalmaz egy `iris.ipynb` minta notebookot.
@@ -104,6 +107,33 @@ Az alapértelmezett böngésző automatikusan elindult a projekt kezdőkönyvtá
 Most rákattinthat a egy `.ipynb` notebook fájl megnyitásához, és állítsa be a rendszermag (Ha még nem lett beállítva), és indítsa el az interaktív munkamenet.
 
 ![Projekt irányítópultján](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-08.png)
+
+## <a name="use-magic-commands-to-manage-experiments"></a>-Parancsokkal magic kísérletek kezelése
+
+Használhat [magic parancsok](http://ipython.readthedocs.io/en/stable/interactive/magics.html) a notebook celláiban nyomon követheti a futtatási előzményei, és mentse a kimeneti, például a modellek és adathalmazokat.
+
+Egyes notebook követéséhez cella, használja "% azureml előzmények" magic parancsot futtatja. Az előzmények bekapcsolása után minden egyes cella futtatásához megjelenik bejegyzésének futtatási előzményei.
+
+```
+%azureml history on
+from azureml.logging import get_azureml_logger
+logger = get_azureml_logger()
+logger.log("Cell","Load Data")
+```
+
+Kapcsolja be a nyomon követési futtassa cella, használja a "% azureml előzmények" off"magic parancsot.
+
+"% Azureml feltöltés" magic parancs segítségével futni, hanem a modell-és adatfájlok mentéséhez. A mentett objektumok jelennek meg kimenetek futtatási előzményei nézetben a megadott futtató.
+
+```
+modelpath = os.path.join("outputs","model.pkl")
+with open(modelpath,"wb") as f:
+    pickle.dump(model,f)
+%azureml upload outputs/model.pkl
+```
+
+>[!NOTE]
+>A kimenetek "kimenetek" nevű mappába kell menteni.
 
 ## <a name="next-steps"></a>Következő lépések
 - Jupyter notebook használatával megismeréséhez látogasson el a [Jupyter dokumentációs](http://jupyter-notebook.readthedocs.io/en/latest/).    

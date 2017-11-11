@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/03/2017
+ms.date: 11/09/2017
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 7347301cd34979df9b3acc59f623ab346dbe41f6
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 4867a43aab1357cb8e01c2ddcef74cdebb41a84a
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló
 
@@ -120,7 +120,7 @@ Miután a Recovery Services-tároló frissít, jelentések konfigurálása az Az
 Nem. A folyamatban levő biztonsági másolatok megszakításmentes folytatásához során, és a frissítés után.
 
 **Ha szeretnék frissítéséről hamarosan nem tervezi, mi történik a tárolók?**</br>
-Mivel az összes új szolgáltatás csak a Recovery Services-tárolók vonatkoznak, javasoljuk, hogy a tároló frissítésére. A Microsoft felé fog érvényteleníthető a klasszikus portálon. 2017. szeptember 1., kezdési Microsoft megkezdődik a mentési tárolók automatikus frissítése a Recovery Services-tárolók. A Microsoft által 2017. November 30. a frissítési folyamat befejeződik. A tároló frissíthetők automatikusan az között bármikor. A Microsoft azt javasolja, hogy minél hamarabb frissítse a tárolóban.
+Mivel az összes új szolgáltatás csak a Recovery Services-tárolók vonatkoznak, javasoljuk, hogy a tároló frissítésére. A Microsoft felé fog érvényteleníthető a klasszikus portálon. 2017. szeptember 1., kezdési Microsoft megkezdődik a mentési tárolók automatikus frissítése a Recovery Services-tárolók. Utáni novemberi 30,2017, akkor már nem hozhatók létre mentési tárolókban PowerShell használatával. A tároló frissíthetők automatikusan az között bármikor. A Microsoft azt javasolja, hogy minél hamarabb frissítse a tárolóban.
 
 **A meglévő eszközt használunk erre a frissítési középértéket funkciója?**</br>
 Frissítse az eszközt használunk erre a Resource Manager üzembe helyezési modellben. Tárolók jelentek meg a helyreállítási szolgáltatások használata a Resource Manager üzembe helyezési modellben. A Resource Manager üzembe helyezési modellel tervezéséről és a különbség a tárolók elszámolása fontos. 

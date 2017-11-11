@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: 411d6103852cbf534d3c420d5ea7b2146df5164e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f60586dcd09148d916bafdde21cc038f57ed9287
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>Központi kezelését az informatikai szolgáltatás Management Connector (előzetes verzió) segítségével ITSM munkaelemek
 
@@ -30,13 +30,13 @@ Az informatikai szolgáltatás Management-összekötő segítségével:
 
   - Integrálni az incidenskezelés eljárásoknak megfelelő beállításában a ITSM eszközben, az Ön által választott működési lehetőséget.
     - Hozzon létre munkaelemeket (például a riasztást, esemény, incidens) ITSM az OMS-riasztások és a keresési napló.
-    - Az Azure tevékenységnapló riasztások ITSM tevékenységekkel művelet csoportok alapján munkaelemek létrehozása. 
-  
+    - Az Azure tevékenységnapló riasztások ITSM tevékenységekkel művelet csoportok alapján munkaelemek létrehozása.
+
   - A figyelés, a napló és a szolgáltatás felügyeleti adatok a szervezeten belüli egységes.
     - Incidens egyeztetéséhez, és módosítsa a megfelelő naplózott adatokat a Naplóelemzési munkaterület tooling eszköz ITSM kérelem adatai.   
     - Megtekintése a legfelső szintű irányítópultokon áttekintésért incidensek, változáskérések, és érintett rendszerek.
     - Betekintést nyerhet szolgáltatásfelügyelet adatok Naplóelemzési lekérdezéseket írhat.
-      
+
 ## <a name="adding-the-it-service-management-connector-solution"></a>Összekötő megoldás hozzáadása az informatikai szolgáltatás
 
 Az informatikai szolgáltatás Management-összekötő megoldás hozzáadni a Naplóelemzési munkaterület, ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
@@ -70,14 +70,15 @@ IT Service Connector megoldásról példányokhoz **System Center Service Manage
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
-Miután konfigurálta az informatikai szolgáltatás Management-összekötő a ITSM szoftver adatai, az összekötő indítja el a csatlakoztatott ITSM termék vagy szolgáltatás adatokat gyűjt. Incidenseket és változáskéréseket a ITSM termékszolgáltatásból számától függően a kezdeti szinkronizálás néhány perc alatt kell végrehajtani. 
+Miután konfigurálta az informatikai szolgáltatás Management-összekötő a ITSM szoftver adatai, az összekötő indítja el a csatlakoztatott ITSM termék vagy szolgáltatás adatokat gyűjt. Incidenseket és változáskéréseket a ITSM termékszolgáltatásból számától függően a kezdeti szinkronizálás néhány perc alatt kell végrehajtani.
 
 > [!NOTE]
 > - ITSM terméket megoldás IT Service Management-összekötő által importált adatok jelenik meg a Naplóelemzési naplórekordok típusú **ServiceDesk_CL**.
 > - Naplóbejegyzés nevű mezőt tartalmaz **ServiceDeskWorkItemType_s**, ez az incidens vagy változáskérés vagy kérelmet, a ITSM terméket importált adatok kétféle
 
 ## <a name="data-synced-from-itsm-product"></a>Az ITSM termék szinkronizált adatok
-Incidensek és változáskérések attribútumok szinkronizálva lesznek a ITSM termékből az Naplóelemzési munkaterületet. A következő információkat az informatikai szolgáltatás Management-összekötő által összegyűjtött adatok láthatók:
+Incidensek és változáskérések attribútumok szinkronizálva lesznek a ITSM termékből az Naplóelemzési munkaterületet.
+A következő információkat az informatikai szolgáltatás Management-összekötő által összegyűjtött adatok láthatók:
 
 > [!NOTE]
 > Attól függően, hogy a munkaelem-típusban importálni a Log Analyticshez **ServiceDesk_CL** a következő mezőket tartalmazza:
@@ -252,29 +253,29 @@ Is létrehozhat a munkaelemek a csatlakoztatott ITSM forrásokban közvetlenül 
 4. Adja meg a megfelelő értékeket a **ügyfél típusú**, **hatás**, **sürgősség**, **kategória**, és **alkategória** szövegmezőbe, és kattintson **létrehozása**.
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Az Azure riasztásokból ITSM munkaelemek létrehozása
-Művelet csoportok ITSM összekötő van integrálva. [A művelet csoportok](../monitoring-and-diagnostics/monitoring-action-groups.md) lehetőséget nyújtanak olyan moduláris és újrafelhasználható, az Azure-riasztások műveleteket váltanak ki. Művelet csoportok ITSM műveletét munkaelemeket hoz létre a meglévő ITSM összekötő megoldás ITSM termékét.
+Művelet csoportok ITSM összekötő van integrálva.
 
-1. Azure-portálon, kattintson a **figyelője**
-2. A bal oldali ablaktáblájában kattintson a **művelet csoportok**
+[A művelet csoportok](../monitoring-and-diagnostics/monitoring-action-groups.md) lehetőséget nyújtanak olyan moduláris és újrafelhasználható, az Azure-riasztások műveleteket váltanak ki. Művelet csoportok ITSM műveletét munkaelemeket hoz létre a meglévő ITSM összekötő megoldás ITSM termékét.
+
+1. Az Azure portálon kattintson **figyelő**.
+2. Kattintson a bal oldali ablaktáblában **művelet csoportok**.
 
     ![Műveletcsoportok](media/log-analytics-itsmc/ActionGroups.png)
 
-3. Adjon meg **neve** és **rövid_név** művelet csoport. Válassza ki a **erőforráscsoport** és **előfizetés** Ha azt szeretné, hogy a művelet csoport létrehozása.
+3. Adjon meg **neve** és **rövid_név** művelet csoport. Válassza ki a **erőforráscsoport** és **előfizetés** hol szeretne létrehozni a műveleti csoport.
 
     ![Csoportok részletei](media/log-analytics-itsmc/ActionGroupsDetail.png)
 
-4. A műveletek listában válassza ki a **ITSM** a legördülő lista a **művelettípus**. Adjon meg egy **neve** a művelet, és kattintson a **részletes adatainak szerkesztéséhez**.
-
-
+4. A műveletek listában válassza ki a **ITSM** a legördülő menüből a **művelettípus**. Adjon meg egy **neve** a műveletet, majd kattintson a **részletes adatainak szerkesztéséhez**.
 5. Válassza ki a **előfizetés** ahol a Naplóelemzési munkaterület. Válassza ki a **kapcsolat** Egytényezős a ITSM összekötő neve, a munkaterület neve követ. Például "MyITSMMConnector(MyWorkspace)".
 
     ![ITSM művelet részletei](./media/log-analytics-itsmc/ITSMActionDetails.png)
 
-6. Válassza ki **munkaelem** típusát a legördülő listán.
+6. Válassza ki **munkaelem** típusát a legördülő menüből.
 7. Válasszon egy meglévő sablont, vagy töltse ki a mezőket a ITSM termékhez szükséges.
 8. Kattintson az **OK** gombra
 
-Azure riasztási szabály létrehozása/szerkesztése, során művelet csoportot, amelynek ITSM művelet használni. A riasztás akkor váltja ki, amikor a ITSM eszköz munkaelem jön létre. 
+Azure riasztási szabály létrehozása/szerkesztése, során művelet csoportot, amelynek ITSM művelet használni. A riasztás akkor váltja ki, amikor a ITSM eszköz munkaelem jön létre.
 
 >[!NOTE]
 >Jelenleg csak napló Tevékenységriasztásokat támogatják az ITSM műveletet. Egyéb Azure riasztások esetén ez a művelet akkor műveletvégzés.
@@ -288,10 +289,10 @@ Azure riasztási szabály létrehozása/szerkesztése, során művelet csoportot
     - Ellenőrizze, hogy ha a megfelelő engedélyekkel rendelkezik a megfelelő ITSM termékben való csatlakozáshoz.
  - A Service Manager-kapcsolatok esetén
      - Győződjön meg arról, hogy a webalkalmazás telepítése sikeres volt, és a hibrid kapcsolat jön létre. Ellenőrizze, hogy sikeresen létrejött a kapcsolat a helyszíni Service Manager számítógéppel, látogasson el a webes alkalmazás URL-CÍMÉT, hogy dokumentációjában ismertetett módon a [a hibrid kapcsolat](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
-     
+
 2.  Ha ServiceNow adatait nem első szinkronizálva van a Naplóelemzési, győződjön meg arról, hogy a példány nem alszik ServiceNow. A ServiceNow fejlesztői példányok néha Ugrás üresjáratban alvó hosszú ideig. Más jelentse a hibát.
 3.  Ha OMS riasztások érvényesítést, de működik elemek nem jönnek létre ITSM termék és konfigurációs elemek nincsenek létrehozva/kapcsolódó munkaelemek vagy más általános információkat, keresse meg a következő helyen:
- -  **Informatikai Management-összekötő megoldás**: A megoldás bemutatja, kapcsolatok munkahelyi elemek/számítógépek stb. Kattintson arra a csempére ábrázoló **összekötő állapota**, amely veszi, hogy **naplófájl-keresési** a megfelelő lekérdezéssel. Tekintse meg a naplóbejegyzések LogType_S a hiba, további információt.
+ -  **Informatikai Management-összekötő megoldás**: A megoldás bemutatja, kapcsolatok munkahelyi elemek/számítógépek stb. Kattintson a csempére ábrázoló **összekötő állapota**, amely veszi, hogy **naplófájl-keresési** a megfelelő lekérdezéssel. Tekintse meg a naplóbejegyzések LogType_S a hiba, további információt.
  - Közvetlenül a hibák/kapcsolatos információk megjelenítéséhez vagy a **naplófájl-keresési** lapon, a lekérdezés használatával *típus = ServiceDeskLog_CL*.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>A Service Manager webes alkalmazás telepítésének hibaelhárítása

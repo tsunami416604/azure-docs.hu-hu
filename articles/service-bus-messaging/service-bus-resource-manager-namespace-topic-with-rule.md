@@ -12,17 +12,17 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/10/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: 35e67d86b42358c4ce28b41beae1ee8e1896e939
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 976c7b425dd17f8ed38f18b6ffa50b4368ab44b3
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Hozzon létre egy Service Bus-névtér témakör, előfizetés és Azure Resource Manager-sablonnal szabály
 
-Ez a cikk bemutatja, hogyan hozza létre a Service Bus-névtér egy témakör, az előfizetés és a szabály (szűrő) Azure Resource Manager sablonnal. Megismerheti, hogyan határozza meg, mely erőforrásokat központilag telepíti, és hogyan adhat meg a paramétereket, amelyek megadott, amikor a központi telepítés végrehajtása. Ezt a sablont saját üzembe helyezési műveleteihez is használhatja, vagy akár igényeinek megfelelően testre is szabhatja
+Ez a cikk bemutatja, hogyan hozza létre a Service Bus-névtér egy témakör, az előfizetés és a szabály (szűrő) Azure Resource Manager sablonnal. A cikk azt ismerteti, hogyan adhatja meg, mely erőforrásokat telepítve van, és hogyan adhat meg a paramétereket, amelyek megadott, amikor a központi telepítés végrehajtása. Ezt a sablont saját üzembe helyezési műveleteihez is használhatja, vagy akár igényeinek megfelelően testre is szabhatja
 
 A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál.
 
@@ -50,7 +50,7 @@ Ezen sablon esetén telepít egy Service Bus-névtér témakör, előfizetés é
 
 ## <a name="what-are-rules-filters"></a>Mik azok a szabályok (szűrők)?
 
-A sok esetben meghatározott jellemzőkkel rendelkező üzenetek különböző módon kell feldolgozni. Ennek engedélyezéséhez konfigurálhatja az előfizetések található üzeneteket meghatározott jellemzőkkel rendelkezik, és végezze el ezen tulajdonságok módosításait. Bár a Service Bus-előfizetések a témakörbe küldött üzenetek láthatja, a virtuális előfizetés várólistára csak másolhatja azokat az üzeneteket egy részét. Mindez előfizetés-szűrők használata. Szabályok (szűrők) kapcsolatos további információkért lásd: [szabályok és a műveletek](service-bus-queues-topics-subscriptions.md#rules-and-actions).
+A sok esetben meghatározott jellemzőkkel rendelkező üzenetek különböző módon kell feldolgozni. Ahhoz, hogy az egyéni feldolgozási, konfigurálhatja az előfizetések található üzeneteket meghatározott jellemzőkkel rendelkezik, és végezze el ezen tulajdonságok módosításait. Bár a Service Bus-előfizetések a témakörbe küldött üzenetek láthatja, a virtuális előfizetés várólistára csak másolhatja azokat az üzeneteket egy részét. Mindez előfizetés-szűrők használata. Szabályok (szűrők) kapcsolatos további információkért lásd: [szabályok és a műveletek](service-bus-queues-topics-subscriptions.md#rules-and-actions).
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
@@ -100,9 +100,12 @@ A Service Bus-névtér létrehozása rule(filter) neve.
 A sablon Service Bus API verzióját.
 
 ```json
-"serviceBusApiVersion": {
-"type": "string"
-}
+"serviceBusApiVersion": { 
+       "type": "string", 
+       "defaultValue": "2017-04-01", 
+       "metadata": { 
+           "description": "Service Bus ApiVersion used by the template" 
+       }
 ```
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
 Létrehoz egy standard Service Bus-névtér típusú **Messaging**, témakör és előfizetés és szabályok.

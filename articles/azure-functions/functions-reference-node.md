@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 1aaeeed2740179555c024792562a950f4fd6b29d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8050e116a48c69b2fccd6bdc1cf029dfdd6e6f28
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript fejlesztői útmutató
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -317,9 +317,9 @@ function GetEnvironmentVariable(name)
 
 JavaScript-funkcióként használatakor figyelembe a következő két szakaszban ismertetett szempontok alapján.
 
-### <a name="choose-single-core-app-service-plans"></a>Válasszon egy mag App Service-csomagokról
+### <a name="choose-single-vcpu-app-service-plans"></a>Válassza ki a single-vCPU App Service-csomagokról
 
-Egy függvény alkalmazást, amely használja az App Service-csomag létrehozásakor azt javasoljuk, hogy kiválassza a több mag terv helyett egy egymagos terv. Napjainkban funkciók fut JavaScript-funkcióként hatékonyabban egymagos virtuális gépeken, és nagyobb virtuális gépek használata nem eredményez a várt teljesítménynövekedést. Szükség esetén manuálisan méretezheti ki további egymagos Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus skálázása. További információkért lásd: [méretezése példányszám manuális vagy automatikus](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
+Egy függvény alkalmazást, amely használja az App Service-csomag létrehozásakor azt javasoljuk, hogy kiválassza a terv több Vcpu helyett egy egyetlen-vCPU terv. Napjainkban funkciók fut JavaScript-funkcióként hatékonyabban single-vCPU virtuális gépeken, és nagyobb virtuális gépek használata nem eredményez a várt teljesítménynövekedést. Szükség esetén manuálisan méretezheti ki további single-vCPU Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus skálázása. További információkért lásd: [méretezése példányszám manuális vagy automatikus](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
 
 ### <a name="typescript-and-coffeescript-support"></a>Géppel és CoffeeScript támogatása
 Közvetlen támogatási még nem létezik automatikus fordítása géppel vagy CoffeeScript a futtatókörnyezet keresztül, mert az ilyen támogatás kezelendő kívül a futtatókörnyezetet, a központi telepítéskor. 
