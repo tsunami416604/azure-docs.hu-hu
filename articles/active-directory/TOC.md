@@ -87,7 +87,6 @@
 #### [Az Azure AD termékeinek és szolgáltatáscsomagjainak referenciája](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Office 365-csoportok lejáratának beállítása](active-directory-groups-lifecycle-azure-portal.md)
 ### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
-### [Dedikált csoportok engedélyezése](active-directory-accessmanagement-dedicated-groups.md)
 ### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
 ### [Törölt Office 365-csoport visszaállítása](active-directory-groups-restore-azure-portal.md)
 ### Csoportbeállítások kezelése
@@ -254,7 +253,6 @@
 ##### [Klasszikus portál](active-directory-add-manage-domain-names.md)
 ### [A címtár felügyelete](active-directory-administer.md)
 ### [Több címtár](active-directory-licensing-directory-independence.md)
-### [O365-címtárak](active-directory-manage-o365-subscription.md)
 ### [Önkiszolgáló regisztráció](active-directory-self-service-signup.md)
 #### [Nem felügyelt könyvtár átvétele](domains-admin-takeover.md)
 ### [Vállalati állapothordozás](active-directory-windows-enterprise-state-roaming-overview.md)
