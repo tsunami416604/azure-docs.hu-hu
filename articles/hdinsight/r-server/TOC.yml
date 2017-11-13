@@ -20,8 +20,6 @@
       items:
         - name: Tárolási lehetőségek
           href: r-server-storage.md
-        - name: Az R Studio telepítése
-          href: r-server-install-r-studio.md
         - name: Számítási környezet
           href: r-server-compute-contexts.md
         - name: ScaleR és SparkR
