@@ -15,14 +15,12 @@
       href: container-instances-quickstart-powershell.md
 - name: Oktatóanyagok
   items:
-    - name: Tároló létrehozása és üzembe helyezése
-      items:
-        - name: 1 – Tárolórendszerkép létrehozása
-          href: container-instances-tutorial-prepare-app.md
-        - name: 2 – Tárolóregisztrációs adatbázis létrehozása
-          href: container-instances-tutorial-prepare-acr.md
-        - name: 3 – Alkalmazás üzembe helyezése
-          href: container-instances-tutorial-deploy-app.md
+    - name: 1 – Tárolórendszerkép létrehozása
+      href: container-instances-tutorial-prepare-app.md
+    - name: 2 – Tárolóregisztrációs adatbázis létrehozása
+      href: container-instances-tutorial-prepare-acr.md
+    - name: 3 – Alkalmazás üzembe helyezése
+      href: container-instances-tutorial-deploy-app.md
 - name: Alapelvek
   items:
     - name: Régiók és rendelkezésre állás
@@ -35,11 +33,11 @@
   items:
     - name: Többtárolós csoportok üzembe helyezése
       href: container-instances-multi-container-group.md
-    - name: Állapot kezelése Azure-fájlmegosztásokkal
+    - name: Adatok megőrzése az Azure Files segítségével
       href: container-instances-mounting-azure-files-volume.md
     - name: Üzembe helyezés az Azure Container Registryből
       href: container-instances-using-azure-container-registry.md
-    - name: Az Azure Container Instances szolgáltatásban való üzembe helyezés hibaelhárítása
+    - name: Üzemelő példányok hibaelhárítása
       href: container-instances-troubleshooting.md
 - name: Referencia
   items:
@@ -49,13 +47,19 @@
       href: /rest/api/container-instances
     - name: PowerShell
       href: '/powershell/module/azurerm.containerinstance#container_instances'
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.containerinstance/containergroups
 - name: Erőforrások
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Sablonok – Container Instances
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
+    - name: Ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Termékkel kapcsolatos visszajelzés küldése
+      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-instances'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: 95d1dce536f8f8f0fc8d93f201520fd84f0f7629
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 12ead91f6729aa3eb631cc453180ddea9bafe3df
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="copy-data-between-on-premises-and-cloud"></a>Adatok másolása a helyszíni rendszer és a felhő között
 
@@ -85,7 +85,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
         ```
 
     * Data Factory-példányok létrehozásához az Azure-előfizetés közreműködőjének vagy rendszergazdájának kell lennie.
-    * A Data Factory jelenleg csak az Egyesült Államok keleti és 2. keleti régiójában teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+    * A Data Factory 2-es verziója jelenleg csak az USA keleti régiójában, az USA 2. keleti régiójában és a nyugat-európai régióban teszi lehetővé adat-előállítók létrehozását. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 ## <a name="create-a-self-hosted-ir"></a>Saját üzemeltetésű integrációs modul létrehozása
 

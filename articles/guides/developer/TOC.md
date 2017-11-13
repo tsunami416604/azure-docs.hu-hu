@@ -1,7 +1,7 @@
 # Áttekintés
 ## [Fejlesztői útmutató](azure-developer-guide.md) 
-## [Az Azure szolgáltatásainak áttekintése](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
-## [A portál áttekintése](https://docs.microsoft.com/azure/azure-portal-overview?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
+## [Az Azure szolgáltatásainak áttekintése](../../fundamentals-introduction-to-azure.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
+## [A portál áttekintése](../../azure-portal-overview.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [SDK-k és eszközök](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # Első lépések
@@ -107,6 +107,7 @@
 ## [Számlázás](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
 # Erőforrások
+## [Az Azure-ra vonatkozó korlátok és kvóták](../../azure-subscription-service-limits.md)
 ## [Azure-régiók](https://azure.microsoft.com/regions/)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

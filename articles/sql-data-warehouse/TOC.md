@@ -120,6 +120,8 @@
 ### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
+### [Számítási szintek automatizálása](manage-compute-with-azure-functions.md)
+
 ### Erőforrásosztályok
 #### [Irányelvek](resource-classes-for-workload-management.md)
 #### [A számítási feladatok elemzése](analyze-your-workload.md)

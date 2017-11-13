@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 502b7678e0c47f594291409a9ede976dea3895e5
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 2d6a09e234ee8ec63454d42a91613ed8da9d1c4b
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="what-is-azure-iot-suite"></a>Mi az Azure IoT Suite?
 
@@ -85,6 +85,9 @@ Egy előre konfigurált megoldás üzembe helyezésekor a kiépítési folyamat 
 | Cosmos DB            | Igen                | Igen                    | Igen               |
 | Azure-táblák         |                    | Igen                    | Igen               |
 
+> [!NOTE]
+> Az előre konfigurált távoli figyelési megoldásban üzembe helyezett erőforrásokkal kapcsolatos további információkért tekintse meg a következő [cikket](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments) a GitHubon.
+
 * [Azure IoT Hub](../iot-hub/index.md). Ez a szolgáltatás az eszközökről a felhőbe irányuló és a felhőből az eszközre irányuló üzenetküldési képességeket nyújt, és a felhő és a többi fontos IoT-szolgáltatás átjárójaként működik. A szolgáltatás lehetővé teszi, hogy nagy mennyiségű üzenetet fogadjon az eszközökről, és parancsokat küldjön az eszközökre. A szolgáltatással [felügyelheti is az eszközöket](../iot-hub/iot-hub-device-management-overview.md). Konfigurálhat vagy újraindíthat például az IoT Hubhoz csatlakozó egy vagy több eszközt, illetve visszaállíthatja rajtuk a gyári beállításokat.
 * [Azure Event Hubs](../event-hubs/index.md). Ez a szolgáltatás nagy mennyiségű eseményfeldolgozást biztosít a felhőben. Lásd [az Azure IoT Hub és az Azure Event Hubs összehasonlítását](../iot-hub/iot-hub-compare-event-hubs.md).
 * [Azure Time Series Insights](../time-series-insights/index.md). Az előre konfigurált megoldások ezt a szolgáltatást használják az eszközökről származó telemetriaadatok elemzésére és megjelenítésére.
@@ -124,7 +127,7 @@ Ez a mikroszolgáltatási architektúra egy bizonyítottan bevált minta felhőa
 Amikor üzembe helyezi a távoli figyelés új verzióját, az alábbi üzembe helyezési lehetőségek közül választhat:
 
 * **Alapszintű**: Csökkentett költségű verzió bemutató célokra vagy az üzembe helyezés teszteléséhez. Mindegyik mikroszolgáltatás üzembe helyezhető egy Azure-beli virtuális gépen.
-* **Vállalati:** Bővített infrastruktúra üzembe helyezése éles környezet fejlesztéséhez. Az Azure Container Service üzembe helyezi a mikroszolgáltatásokat több Azure-beli virtuális gépen. A Kubernetes koordinálja az egyes mikroszolgáltatásokat üzemeltető Docker-tárolókat.
+* **Standard:** Bővített infrastruktúra üzembe helyezése éles környezet fejlesztéséhez. Az Azure Container Service üzembe helyezi a mikroszolgáltatásokat több Azure-beli virtuális gépen. A Kubernetes koordinálja az egyes mikroszolgáltatásokat üzemeltető Docker-tárolókat.
 
 ### <a name="language-choices-java-and-net"></a>Nyelvválaszték: Java és .NET
 

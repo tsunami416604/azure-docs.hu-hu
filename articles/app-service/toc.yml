@@ -25,7 +25,7 @@
       href: app-service-web-get-started-python.md
     - name: Statikus HTML-webhely létrehozása
       href: app-service-web-get-started-html.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Adatbázist használó alkalmazás
       items:
@@ -143,6 +143,8 @@
           href: web-sites-enable-diagnostic-log.md
     - name: Alkalmazás kezelése
       items:
+        - name: Az üzemeltetési csomag kezelése
+          href: app-service-plan-manage.md
         - name: Alkalmazás biztonsági mentése
           href: web-sites-backup.md
         - name: Visszaállítás biztonsági másolatból

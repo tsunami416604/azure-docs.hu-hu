@@ -1,4 +1,4 @@
-- name: Az Azure Machine Learning dokumentációja (előnézet)
+- name: Az Azure Machine Learning dokumentációja (előzetes verzió)
   href: index.yml
 - name: Áttekintés
   expanded: true
@@ -11,7 +11,7 @@
   items:
     - name: Telepítés és létrehozás
       href: quickstart-installation.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Adatok előkészítése
       href: tutorial-classifying-iris-part-1.md
@@ -47,7 +47,7 @@
           href: experimentation-service-configuration.md
         - name: DSVM és HDI Spark-fürt létrehozása
           href: how-to-create-dsvm-hdi.md
-        - name: Képzés GPU-k használatával
+        - name: Betanítás GPU-k használatával
           href: how-to-use-gpu.md
     - name: Adatok beszerzése és megértése
       items:
@@ -70,7 +70,7 @@
               href: data-prep-expand-json.md
     - name: Modellek fejlesztése
       items:
-        - name: Írisz besorolása a parancssori felületről
+        - name: Az Iris besorolása a parancssori felületről
           href: tutorial-iris-azure-cli.md
         - name: Futtatási előzmények és modellmérőszámok nyomon követése
           href: how-to-use-run-history-model-metrics.md
@@ -104,9 +104,9 @@
           href: scenario-predictive-maintenance.md
         - name: Légifelvételek besorolása
           href: scenario-aerial-image-classification.md
-        - name: Kiszolgáló számítási feladatokra vonatkozó előrejelzése adatok terabájtjai esetében
+        - name: A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
           href: scenario-big-data.md
-        - name: Idősorozat-előrejelzés az energiaszükségletről
+        - name: Az energiaszükséglet időbeli előrejelzése
           href: scenario-time-series-forecasting.md
         - name: Hiperparaméterek elosztott hangolása
           href: scenario-distributed-tuning-of-hyperparameters.md
@@ -118,6 +118,8 @@
           href: scenario-tdsp-biomedical-recognition.md
         - name: Egyesült államokbeli bevételek besorolása – TDSP projekt
           href: scenario-tdsp-classifying-us-incomes.md
+        - name: Képek besorolása a CNTK használatával
+          href: scenario-image-classification-using-cntk.md
 - name: Referencia
   items:
     - name: Adatok előkészítése
@@ -162,6 +164,8 @@
       items:
         - name: Sprint 0 – 2017. október
           href: release-notes-sprint-0.md
+        - name: Sprint 1 – 2017. november
+          href: release-notes-sprint-1.md
 - name: Erőforrások
   items:
     - name: Gyakori kérdések

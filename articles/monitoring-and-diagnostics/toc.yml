@@ -152,10 +152,10 @@
           href: azure-diagnostics-streaming-event-hubs.md
         - name: Hibaelhárítás
           href: azure-diagnostics-troubleshooting.md
-    - name: Az Azure Monitor Metrikaböngészőjének használata
-      items:
-        - name: Mérőszámdiagramok létrehozása
-          href: monitoring-metric-charts.md
+    - name: Mérőszámdiagramok létrehozása a Metrikaböngészőben
+      href: monitoring-metric-charts.md
+    - name: Mérőszámok küldése a Grafana számára
+      href: monitor-send-to-grafana.md
 - name: Referencia
   items:
     - name: Azure CLI

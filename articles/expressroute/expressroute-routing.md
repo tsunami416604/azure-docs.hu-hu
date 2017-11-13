@@ -3,7 +3,7 @@ title: "Az Azure ExpressRoute útválasztási követelményei | Microsoft Docs"
 description: "Ez az oldal ExpressRoute-kapcsolatcsoportok útválasztási konfigurálásának és kezelésének részletes követelményeit ismerteti."
 documentationcenter: na
 services: expressroute
-author: osamazia
+author: ganesr
 manager: ganesr
 editor: 
 ms.assetid: 5b382e79-fa3f-495a-a764-c5ff86af66a2
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: osamam
-ms.openlocfilehash: a7d1e177e08d37913afa3cb203f0e4085c171f70
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.date: 11/03/2017
+ms.author: ganesr
+ms.openlocfilehash: 088147060eeeba5c900cdcdc3fb38fc1d4ccfc58
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -174,6 +174,8 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | Nyugat-Európa | 12076:51002 |
 | Az Egyesült Királyság déli régiója | 12076:51024 |
 | Az Egyesült Királyság nyugati régiója | 12076:51025 |
+| Közép-Franciaország | 12076:51030 |
+| Dél-Franciaország | 12076:51031 |
 | **Ázsia és a Csendes-óceáni térség** | |
 | Kelet-Ázsia | 12076:51010 |
 | Délkelet-Ázsia | 12076:51011 |

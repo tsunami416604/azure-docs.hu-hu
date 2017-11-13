@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: e28324fe0d7e52f1721af6cd835369f024d4c58f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 0be1616f5df915e566dc73c15dbea2e53177aa1c
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="how-to-successfully-rollout-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
@@ -38,8 +38,8 @@ A legtöbb ügyfél követi ezeket a lépéseket, amelyek biztosítják számukr
 10. Az [Azure AD által biztosított jelentés](active-directory-passwords-reporting.md) megtekintésével folyamatosan ellenőrizheti, mely felhasználók regisztráltak és vették igénybe a funkciót.
 11. Amikor elkészült, engedélyezze az új jelszó kérését az összes felhasználónak, állítsa az **Új jelszó önkiszolgáló kérése engedélyezve** beállítást a **Mindenki** értékre. 
 
-    > [!IMPORTANT]
-    > Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai típusú fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról további információkat a [részletes bemutatócikkünkben](active-directory-passwords-how-it-works.md) talál.
+   > [!IMPORTANT]
+   > Az SSPR-t egy felhasználóval tesztelje, ne egy rendszergazdával, mert a Microsoft szigorú hitelesítési előírásokat tartat be az Azure rendszergazdai típusú fiókjaihoz. A rendszergazdai jelszavakra vonatkozó szabályzatról a [jelszóházirendről szóló cikkünkben](active-directory-passwords-policy.md#administrator-password-policy-differences) talál további információt.
 
 ## <a name="email-based-rollout"></a>E-mailes alapú bevezetés
 
@@ -67,7 +67,7 @@ Ha szeretné, hogy a felhasználók a jelszóátállításra regisztráljanak, k
 
 A rendszergazdák megkövetelhetik a felhasználóktól az újbóli regisztrációt egy bizonyos idő elteltével, ha a **Felhasználók hitelesítési adatainak ismételt megerősítésére vonatkozó kérésig hátralévő napok száma** értékét egy 0 és 730 nap közötti értékre beállítják.
 
-Miután engedélyezi ezt a beállítást, a bejelentkező felhasználókat egy üzenet fogadja majd, miszerint a rendszergazda a hitelesítési adataik érvényesítésére kéri őket.
+Miután engedélyezi ezt a beállítást, a bejelentkező felhasználókat egy üzenet tájékoztatja, hogy a rendszergazda a hitelesítési adataik ellenőrzésére kéri őket.
 
 ## <a name="populate-authentication-data"></a>Hitelesítési adatok feltöltése
 

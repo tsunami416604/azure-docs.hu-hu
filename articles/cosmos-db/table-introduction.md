@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: 6a399a3a7979f6165d26eb48505242976d51e64f
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 68c9f37b6e241d39911acff9c12aa4c978b4215d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
 
@@ -30,9 +30,9 @@ Az [Azure Cosmos DB](introduction.md) Table API-t biztosít olyan, az Azure Tabl
 * Garantáltan magas szintű rendelkezésre állás.
 * [Automatikus másodlagos indexelés](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
-Ezek az alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és ki tudják használni a prémium képességek előnyeit. A Table API .NET és Python esetében is rendelkezésre áll.
+Ezek az Azure Table Storage számára írt alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és ki tudják használni a prémium képességek előnyeit. .NET esetében a Table API-nak egyetlen ügyfél SDK-ja áll rendelkezésre.
 
-Ajánlott megnézni a következő videót, amelyben Aravind Ramachandran az Azure Cosmos DB-hez készült Table API használatának első lépéseit ismerteti:
+Javasoljuk a következő videó megtekintését, amelyben Aravind Ramachandran az Azure Cosmos DB-hez készült Table API használatának első lépéseit ismerteti:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Table-API-for-Azure-Cosmos-DB/player]
 > 
@@ -64,5 +64,5 @@ Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azu
 * [Táblaadatok lekérdezése a Table API-val](tutorial-query-table.md)
 * [Tudnivalók az Azure Cosmos DB globális terjesztésének beállításáról a Table API-val](tutorial-global-distribution-table.md)
 * [Azure Cosmos DB Table .NET API](table-sdk-dotnet.md)
-* [Azure Cosmos DB Table SDK Pythonhoz](table-sdk-python.md)
+
 

@@ -51,12 +51,14 @@
       href: /rest/api/aks
 - name: Erőforrások
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: Ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Termékkel kapcsolatos visszajelzés küldése
+      href: 'https://github.com/Azure/AKS/issues'
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
     - name: Videók

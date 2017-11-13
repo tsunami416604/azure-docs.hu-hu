@@ -88,7 +88,7 @@
 ## [Stream Analytics](/azure/stream-analytics/)
 ## [Event Hubs](/azure/event-hubs/)
 ## [IoT Hub](/azure/iot-hub/)
-## [IoT-központ](/azure/index#pivot=services&panel=iot)
+## [Microsoft IoT-központ](/azure/index#pivot=services&panel=iot)
 ## [Machine Learning](/azure/machine-learning/)
 
 # Erőforrások

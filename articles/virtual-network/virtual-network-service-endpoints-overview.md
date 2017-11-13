@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: 0a0fe6f0e353e33cec80a9e06a61e772931cdea6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be0c715e12f7df6208112eea40d6017d86f50cae
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="virtual-network-service-endpoints-preview"></a>Virtuális hálózati szolgáltatásvégpontok (előzetes verzió)
 
@@ -27,7 +27,7 @@ A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsol
 
 Ez a szolgáltatás előzetes verzióban érhető el a következő Azure-szolgáltatásokhoz és -régiókhoz:
 
-- **Azure Storage**: USA nyugati középső régiója, USA 2. nyugati régiója, USA keleti régiója, USA nyugati régiója, Kelet-Ausztrália és Délkelet-Ausztrália
+- **Azure Storage**: Az Azure nyilvános felhő összes régiója.
 - **Azure SQL Database**: USA nyugati középső régiója, USA 2. nyugati régiója és USA keleti régiója.
 
 Az előzetes verzióval kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
