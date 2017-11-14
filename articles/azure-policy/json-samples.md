@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: 
-ms.date: 10/30/2017
+ms.date: 11/13/2017
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: bb0d996b950a31e3eaaaa9d90a6b96617b58192f
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 875c8c87f62ecf0e7459dfcec22089854ad95594
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="templates-for-azure-policy"></a>Sablonok az Azure-házirend
 
-A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalmazza.
+A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalmazza. Ezeket a mintákat találhatók a [Azure házirend minták tárház](https://github.com/Azure/azure-policy).
 
 | | |
 |---|---|
 |**Számítás**||
 | [Virtuális gép által jóváhagyott lemezképeket](scripts/allowed-custom-images.md) | Telepítésére van szükség, hogy csak a jóváhagyott egyéni képek a környezetben. Megadja a jóváhagyott kép azonosítók tömbjét. |
-| [Felügyelt lemezes virtuális gép létrehozása](scripts/create-vm-managed-disk.md) | Ha egy virtuális gépet hoz létre, amely nem használja a felügyelt lemezek eseményeket.|
+| [Naplózási, amikor virtuális gép nem használja a kezelt lemez](scripts/create-vm-managed-disk.md) | Ha egy virtuális gépet hoz létre, amely nem használja a felügyelt lemezek eseményeket.|
 | [Naplózási, ha a kiterjesztés nem létezik.](scripts/audit-ext-not-exist.md) | Ha egy bővítmény nincs telepítve a virtuális gépekkel eseményeket. Megadhatja, hogy a kiterjesztés közzétevő és típusát, ellenőrizze, hogy telepítették. |
 | [Az erőforráscsoport egyéni Virtuálisgép-lemezkép engedélyezése](scripts/allow-custom-vm-image.md) |  Megköveteli, hogy az egyéni lemezképek származnia egy jóváhagyott erőforráscsoportot. Megadhatja a jóváhagyott erőforráscsoport nevét. |
 | [Hibrid használata juttatás megtagadása](scripts/deny-hybrid-use.md) | Ez a beállítás letiltja az Azure hibrid használja juttatás (AHUB) használja. Akkor használja, ha nem szeretné, hogy a helyszíni licencek használatához. |
@@ -39,6 +39,11 @@ A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalm
 | [Felügyelt lemezes virtuális gép létrehozása](scripts/use-managed-disk-vm.md) | Szükséges, hogy a virtuális gépek felügyelt lemezt használja.|
 |**Figyelés**||
 | [Diagnosztikai naplózás beállítása](scripts/audit-diag-setting.md) | Ha a diagnosztikai beállítások nincs engedélyezve a megadott típusú erőforrások eseményeket. Megadja annak ellenőrzése, hogy engedélyezve vannak-e a diagnosztikai beállítások tömbjét. |
+|**Név és a szöveges konvenciók**||
+| [Több mintában engedélyezése](scripts/allow-multiple-name-patterns.md) | Sok mintában használt erőforrások engedélyezése |
+| [A like megkövetelése](scripts/enforce-like-pattern.md) | Győződjön meg arról, erőforrásnevek felelnek meg hasonló mintát. |
+| [Igényelnek-egyeztetési minta](scripts/enforce-match-pattern.md) | Győződjön meg arról, erőforrás megfelel-e az elnevezési minta. |
+| [Címke-egyeztetési minta megkövetelése](scripts/enforce-tag-match-pattern.md) | Győződjön meg arról, hogy a címke értéke megegyezik-e egy szöveges mintával. |
 |**Hálózat**||
 | [Engedélyezett alkalmazás Gateway SKU-n](scripts/allowed-app-gate-sku.md) | Szükséges, hogy alkalmazásátjárót használja-e egy jóváhagyott Termékváltozat. Megadhatja a jóváhagyott termékváltozatok tömbjét. |
 | [Ha régió nem engedélyezett a hálózati figyelőt naplózása](scripts/net-watch-not-enabled.md) | Naplózási feladatok végrehajtását, ha a megadott régió nem engedélyezett a hálózati figyelőt. Megadhatja, hogy ellenőrizze, hogy engedélyezve van-e hálózati figyelőt a régió nevét. |

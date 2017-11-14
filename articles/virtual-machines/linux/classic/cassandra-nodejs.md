@@ -3,7 +3,7 @@ title: Linux Cassandra futtassa az Azure-on |} Microsoft Docs
 description: "Hogyan Linux Azure Virtual Machines Cassandra fürt futtassa a Node.js-alkalmazás"
 services: virtual-machines-linux
 documentationcenter: nodejs
-author: tomarcher
+author: craigshoemaker
 manager: routlaw
 editor: 
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: tarcher
-ms.openlocfilehash: 1ff3d77ced6c9d90029b251490c05e52d9b43515
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: 28eb281d8d301fa5478afb0925c74349de92ca58
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="running-cassandra-with-linux-on-azure-and-accessing-it-from-nodejs"></a>A linuxos Cassandra futtatása az Azure-ban és az alkalmazás Node.js-ből való elérése
 > [!IMPORTANT] 
@@ -157,9 +157,9 @@ Adja meg a következő információkat a "virtuálisgép-konfiguráció" képern
 <tr><td> A FELHŐALAPÚ SZOLGÁLTATÁS    </td><td> Új felhőalapú szolgáltatás létrehozása    </td><td>Felhőszolgáltatás egy tároló számítási erőforrásokhoz, mint a virtuális gépek</td></tr>
 <tr><td> FELHŐALAPÚ SZOLGÁLTATÁS DNS-NÉV    </td><td>ubuntu-template.cloudapp.net    </td><td>Adjon meg egy gép független terheléselosztó neve</td></tr>
 <tr><td> RÉGIÓ/AFFINITÁSCSOPORT/VIRTUÁLIS HÁLÓZAT </td><td>    USA nyugati régiója    </td><td> Válasszon ki egy régiót, ahol a webalkalmazások érje el a Cassandra</td></tr>
-<tr><td>TÁRFIÓK </td><td>    Használhatja az alapértelmezettet    </td><td>Az alapértelmezett tárfiók vagy egy korábban létrehozott tárfiókot használja az adott</td></tr>
+<tr><td>TÁRFIÓK </td><td>    Alapértelmezett használata    </td><td>Az alapértelmezett tárfiók vagy egy korábban létrehozott tárfiókot használja az adott</td></tr>
 <tr><td>A RENDELKEZÉSRE ÁLLÁSI CSOPORT </td><td>    None </td><td>    Hagyja üresen</td></tr>
-<tr><td>VÉGPONTOK    </td><td>Használhatja az alapértelmezettet </td><td>    Az alapértelmezett SSH-konfigurációt használja. </td></tr>
+<tr><td>VÉGPONTOK    </td><td>Alapértelmezett használata </td><td>    Az alapértelmezett SSH-konfigurációt használja. </td></tr>
 </table>
 
 Kattintson a jobbra mutató nyílra, a #3 képernyőn hagyja meg az alapértelmezett beállításokat, és kattintson az "ellenőrzés" gombra a Virtuálisgép-létrehozásnál folyamat befejezéséhez. Néhány perc múlva a virtuális Géphez a neve "ubuntu-template" a "fut" állapotú kell lennie.
@@ -327,7 +327,7 @@ Adatok és a webes alhálózatok hálózati biztonsági csoportokkal, ez a cikk 
 **2. lépés: Kiépítése virtuális gépek** a korábban létrehozott rendszerkép használatával, rendszer a következő virtuális gépek létrehozása a felhő kiszolgálón "hk-c-svc-nyugati" és a megfelelő alhálózatokban alább látható módon köthető:
 
 <table>
-<tr><th>Számítógép neve    </th><th>Alhálózat    </th><th>IP-cím    </th><th>Rendelkezésre állási csoport</th><th>DC/Rack</th><th>Kezdőérték?</th></tr>
+<tr><th>Gépnév    </th><th>Alhálózat    </th><th>IP-cím    </th><th>Rendelkezésre állási csoport</th><th>DC/Rack</th><th>Kezdőérték?</th></tr>
 <tr><td>HK-c1-nyugati-us    </td><td>Adatok    </td><td>10.1.2.4    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
 <tr><td>HK-c2-nyugati-us    </td><td>Adatok    </td><td>10.1.2.5    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
 <tr><td>HK-c3-nyugati-us    </td><td>Adatok    </td><td>10.1.2.6    </td><td>HK-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
@@ -451,8 +451,8 @@ Például az alábbi megjelenítésre kell megjelennie:
 
 <table>
   <tr><th> customer_id </th><th> Utónév </th><th> Vezetéknév </th></tr>
-  <tr><td> 1 </td><td> John </td><td> DOE </td></tr>
-  <tr><td> 2 </td><td> Jane </td><td> DOE </td></tr>
+  <tr><td> 1 </td><td> Jakab </td><td> Gipsz </td></tr>
+  <tr><td> 2 </td><td> Jane </td><td> Gipsz </td></tr>
 </table>
 
 Vegye figyelembe, hogy a 4. lépésében létrehozott kulcstérértesítések használatával egy replication_factor 3 SimpleStrategy használ. SimpleStrategy ajánlott egyetlen data center központi telepítések mivel több adatok NetworkTopologyStrategy center központi telepítések. A / 3 replication_factor csomópont hibák tolerancia rendszerében.
@@ -523,7 +523,7 @@ A klasszikus Azure portálon az "IRÁNYÍTÓPULT" menü, mind a virtuális hál�
 ### <a name="step-8-create-the-virtual-machines-in-region-2"></a>8. lépés: A virtuális gépek létrehozása régióban #2
 Ubuntu lemezkép létrehozásához a következő ugyanazokat a lépéseket vagy másolása a kép VHD-fájlt az Azure storage-fiók a #2 régióban található #1 régió telepítési leírtak szerint, és a lemezkép létrehozásához. Ezzel a lemezképpel, és hozzon létre az alábbi listán szereplő virtuális gépeket az új felhőalapú szolgáltatás hk-c-svc-keleti-us:
 
-| Számítógép neve | Alhálózat | IP-cím | Rendelkezésre állási csoport | DC/Rack | Kezdőérték? |
+| Gépnév | Alhálózat | IP-cím | Rendelkezésre állási csoport | DC/Rack | Kezdőérték? |
 | --- | --- | --- | --- | --- | --- |
 | HK-c1-keleti-us |Adatok |10.2.2.4 |HK-c-aset-1 |DC = EASTUS állvány = rack1 |Igen |
 | HK-c2-keleti-us |Adatok |10.2.2.5 |HK-c-aset-1 |DC = EASTUS állvány = rack1 |Nem |
@@ -565,8 +565,8 @@ Például az alábbi megjelenítésre kell megjelennie:
 
 | customer_id | Utónév | Vezetéknév |
 | --- | --- | --- |
-| 1 |John |DOE |
-| 2 |Jane |DOE |
+| 1 |Jakab |Gipsz |
+| 2 |Jane |Gipsz |
 
 ### <a name="step-3-execute-the-following-in-the-east-region-after-logging-into-hk-w1-east-us"></a>3. lépés: A következő végrehajtani a keleti terület hk-F1-keleti-us való bejelentkezés után:
 1. Végrehajtás $CASS_HOME/bin/cqlsh 10.2.2.101 9160
@@ -578,8 +578,8 @@ A nyugati régiójában alapegységét az azonos megjelenítési kell megjelenni
 
 | customer_id | Utónév | Vezetéknév |
 | --- | --- | --- |
-| 1 |John |DOE |
-| 2 |Jane |DOE |
+| 1 |Jakab |Gipsz |
+| 2 |Jane |Gipsz |
 
 Néhány további Beszúrások hajtható végre, és tekintse meg, hogy azok replikálja nyugati-nekünk a fürt része.
 

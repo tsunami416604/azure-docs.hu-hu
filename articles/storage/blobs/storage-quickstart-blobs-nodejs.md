@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/30/2017
 ms.author: gwallace
-ms.openlocfilehash: 9ea7f77d3bbe45de49c798fe3d51151e1a5a6658
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: dd4d3abf082767c40760d020c0997b365452e769
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Az Azure Blob storage használata Node.js átviteli objektumok
 
@@ -103,7 +103,11 @@ Például egy eszköz is használhatja a [Azure Tártallózó](http://storageexp
 
 Miután ellenőrizte, hogy a fájlokat, kattintson a bemutató befejeződését, és törölje a tesztfájlok bármelyik billentyűt. Most, hogy ismeri a minta funkciója, nyissa meg a index.js fájlt nézze meg a kódot. 
 
-## <a name="get-references-to-the-storage-objects"></a>A tárolási objektum mutató hivatkozások beolvasása
+## <a name="understand-the-sample-code"></a>A mintakód ismertetése
+
+Ezután azt végezze el a mintakódot, hogy megismerheti, hogyan működik.
+
+### <a name="get-references-to-the-storage-objects"></a>A tárolási objektum mutató hivatkozások beolvasása
 
 Az első lépés az mutató hivatkozás létrehozása a `BlobService` férhessen hozzá és felügyelhesse a Blob storage használatával. Ezek az objektumok egymástól összeállítása – egyes használja a következő egy, a listában.
 
@@ -120,7 +124,7 @@ blobService.createContainerIfNotExists(blockBlobContainerName, { 'publicAccessLe
     if (error) return callback(error);
 ```
 
-## <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
+### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. Blokkblobok a leggyakrabban használt. Ideálisak, amelynek az oka alkalmával használták őket a gyors üzembe helyezés szöveg és a bináris adatok tárolására.
 
@@ -141,7 +145,7 @@ console.log('   Uploaded Blob URL:', blobService.getUrl(CONTAINER_NAME, BLOCK_BL
 
 Többféleképpen feltöltés, a Blob storage használata. Például ha egy memóriafolyam, használhatja a [createBlockBlobFromStream](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromStream) metódus helyett [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromLocalFile).
 
-## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
 Ezt követően az alkalmazás a tárolót használja a fájlok listájának lekérése [listBlobsSegmented](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_listBlobsSegmented). A következő kódot a bináris objektumok listájának beolvasása, majd végighalad őket, az URI-azonosítók található blobok megjelenítő. Másolja az URI a parancsablakot, és illessze be a böngészőt, hogy a fájl.
 
@@ -158,7 +162,7 @@ blobService.listBlobsSegmented(CONTAINER_NAME, null, function (error, data) {
     console.log('\n');
 ```
 
-## <a name="download-blobs"></a>Blobok letöltése
+### <a name="download-blobs"></a>Blobok letöltése
 
 Blobok letöltése a helyi lemezek használata [getBlobToLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_getBlobToLocalFile).
 
@@ -171,7 +175,7 @@ handleError(error);
 console.log('   Downloaded File:', DOWNLOADED_FILE_PATH, '\n');
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a blobok a gyors üzembe helyezés feltöltött, törölje a teljes tárolóhoz történő [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) és [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteContainerIfExists). Ha már nincs szükség a fájlt is törli. Ez az végrehajtott megvagyunk az alkalmazásban megnyomásakor kilép az alkalmazásból adja meg.
 

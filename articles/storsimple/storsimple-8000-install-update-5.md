@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/02/2017
+ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f5b5cc597da714369d4c452edce42ea7fe205dd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: eefeedfb87bd30630439d13a434b246508defa96
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>5. frissítésétől a StorSimple eszköz telepítése
 
@@ -29,6 +29,7 @@ Ez az oktatóanyag azt ismerteti, hogyan frissítés 5 telepíthető a StorSimpl
 Frissítés 5 tartalmazza az eszköz szoftvere Storport és Spaceport, az operációs rendszer biztonsági frissítések és az operációs rendszer frissítéseit és a belső vezérlőprogram-frissítésekre.  Az eszközhöz, Spaceport, Storport, biztonsági és egyéb operációs rendszer frissítése nem zavaró frissítések érhetők el. A nem zavaró vagy rendszeres frissítés akkor alkalmazható, az Azure-portálon vagy a gyorsjavítások a módszerrel. A lemez belső vezérlőprogram-frissítésekre zavaró frissítések érhetők el, és alkalmazza a rendszer, amikor az eszköz a gyorsjavítások a módszerrel a Windows PowerShell felületén az eszköz karbantartási módban van.
 
 > [!IMPORTANT]
+> * 5. frissítésétől egy kötelező frissítés, és azonnal kell telepíteni. További információkért lásd: [frissítés 5 kibocsátási megjegyzések](storsimple-update5-release-notes.md).
 > * Manuális és automatikus előtti ellenőrzés történik az eszköz állapotának hardver állapot és hálózati kapcsolatok tekintetében telepítése előtt. Az előzetes ellenőrzések csak akkor, ha a frissítések telepítését az Azure-portálon történik.
 > * Határozottan javasoljuk, hogy 3. frissítés előtti verzióit futtató eszközök frissítésekor a frissítések telepítése gyorsjavítások a módszerrel. Ha problémába ütközik, [egy támogatási jegy jelentkezzen](storsimple-8000-contact-microsoft-support.md).
 > * Azt javasoljuk, hogy telepítse a szoftver- és egyéb rendszeres frissítéseket az Azure-portálon. Csak abban az csak lépjen a Windows PowerShell felületét (a frissítések telepítése) az eszköz, ha a frissítés előtti átjáró ellenőrzés sikertelen, a portálon. Attól függően, a verzióra frissít, a, a frissítések órát is igénybe vehet 4 (vagy újabb) telepítéséhez. A karbantartási mód frissítéseket telepíteni kell az eszköz a Windows PowerShell felületén keresztül. Karbantartási mód frissítések zavaró frissítések érhetők el, mert ezek eredményez le egyszerre az eszközhöz.
@@ -74,19 +75,19 @@ A gyorsjavítás metódus a következő három lépést foglal magában:
 
 Töltse le, és a gyorsjavítások telepítése az előírt sorrendben és a javasolt mappák:
 
-| Sorrendje | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
+| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4037264 |Szoftverfrissítés<br> Töltse le mindkét _HcsSfotwareUpdate.exe_ és _CisMSDAgent.exe_ |Rendszeres <br></br>A nem zavaró |~ 25 perc |FirstOrderUpdate|
 
 Frissített 4 frissítést futtató eszközről, ha csak az operációs rendszer összegző frissítések telepítésével második rendelés frissítésként kell.
 
-| Sorrendje | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
+| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
 | --- | --- | --- | --- | --- | --- |
 | 2A. |KB4025336 |Az operációs rendszer összegző frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>A nem zavaró |- |SecondOrderUpdate|
 
 Ha 3 frissítést futtató eszközről telepítése vagy korábbi, telepítse az összegző frissítések mellett a következő.
 
-| Sorrendje | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
+| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |A mappa telepítéséhez|
 | --- | --- | --- | --- | --- | --- |
 | 2B. |KB4011841 <br> KB4011842 |LSI illesztőprogram és a belső vezérlőprogram-frissítésekre <br> A legpontosabb Beállításhoz vezérlőprogram-frissítés (3.38 verzió) |Rendszeres <br></br>A nem zavaró |~ 3 óra <br> (2/a. tartalmazza. + 2B. + 2 C.)|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Az operációs rendszer biztonsági frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>A nem zavaró |- |SecondOrderUpdate|
@@ -95,7 +96,7 @@ Ha 3 frissítést futtató eszközről telepítése vagy korábbi, telepítse az
 
 Előfordulhat, hogy is telepítendő fölött a fenti táblázatokban látható frissítések lemez belső vezérlőprogram-frissítésekre. Ellenőrizheti, hogy szükséges-e a lemez belső vezérlőprogram-frissítésekre futtatásával a `Get-HcsFirmwareVersion` parancsmag. Ha ezek a belső vezérlőprogram verzióinak futtatja: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, akkor nem szükséges a frissítések telepítéséhez.
 
-| Sorrendje | KB | Leírás | Frissítés típusa | Telepítés időpontja | A mappa telepítéséhez|
+| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja | A mappa telepítéséhez|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |Lemez belső vezérlőprogram |Karbantartás <br></br>Zavaró |~ 30 perc | ThirdOrderUpdate |
 

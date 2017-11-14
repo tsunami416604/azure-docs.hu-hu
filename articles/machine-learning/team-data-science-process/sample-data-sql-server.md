@@ -4,7 +4,7 @@ description: A mintaadatok az SQL Server az Azure-on
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgeonlun
 editor: cgronlun
 ms.assetid: 33c030d4-5cca-4cc9-99d7-2bd13a3926af
 ms.service: machine-learning
@@ -12,25 +12,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/13/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: fbd83ad59a9db1daca4ba16402031e2c1c5b7991
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd669f3951b1f7f05932634f039a04e02993399f
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="heading"></a>Mintaadatok az SQL Server az Azure-on
-Ez a dokumentum bemutatja, hogyan az SQL Server az Azure-on tárolt adatokat SQL vagy a Python programozási nyelv használatával. Azt is bemutatja, hogyan mintaadatokat áthelyezi az Azure Machine Learning fájlba menti, feltölti az Azure blob, és olvassa Azure Machine Learning Studio.
+Ez a cikk bemutatja, hogyan az SQL Server az Azure-on tárolt adatokat SQL vagy a Python programozási nyelv használatával. Azt is bemutatja, hogyan mintaadatokat áthelyezi az Azure Machine Learning fájlba menti, feltölti az Azure blob, és olvassa Azure Machine Learning Studio.
 
 A Python mintavételi használatát a [pyodbc](https://code.google.com/p/pyodbc/) ODBC könyvtár az Azure SQL-kiszolgálóhoz való csatlakozáshoz és a [Pandas](http://pandas.pydata.org/) könyvtár tennie, hogy a mintavétel.
 
 > [!NOTE]
-> Ebben a dokumentumban SQL példakód azt feltételezi, hogy az adatok egy SQL Server az Azure-on. Ha nem, olvassa el [adatok áthelyezése az SQL Server Azure](move-sql-server-virtual-machine.md) témakör útmutatást az adatok áthelyezése az SQL Server az Azure-on.
+> Ebben a dokumentumban SQL példakód azt feltételezi, hogy az adatok egy SQL Server az Azure-on. Ha nem, tekintse meg [adatok áthelyezése az SQL Server Azure](move-sql-server-virtual-machine.md) a cikk útmutatást az adatok áthelyezése az SQL Server az Azure-on.
 > 
 > 
 
-A következő **menü** az adatokat a különböző tárolási környezetekben módját leíró témakörök hivatkozásait. 
+A következő **menü** hivatkozásokat ismertetik az adatokat a különböző tárolási környezetekben. 
 
 [!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
 
@@ -40,9 +40,9 @@ Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, akkor általában dow
 Ez a mintavételi feladat Ez a lépés a [Team adatok tudományos folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="SQL"></a>SQL használatával
-Ez a szakasz az adatok alapján egyszerű véletlenszerű mintavétel végrehajtásához az adatbázisban az SQL több módszerét ismerteti. Válassza ki az adatok mérete és a kiosztás alapuló módszer.
+Ez a szakasz az adatok alapján egyszerű véletlenszerű mintavétel végrehajtásához az adatbázisban az SQL több módszerét ismerteti. Az adatok mérete és a terjesztési módjának kiválasztása.
 
-Az alábbi két elemek használatát mutatják be newid az SQL Server a mintavételi végrehajtásához. Módszertől függ a minta szeretnénk hogyan véletlenszerű (az alábbi példakód pk_id feltételezett, hogy egy automatikusan létrehozott elsődleges kulcsot kell).
+A következő két elem használatát mutatják be `newid` az SQL Server a mintavételi végrehajtásához. Módszertől függ, hogyan véletlenszerű azt szeretné, a minta kell lennie (a következő példakód pk_id feltételezett, hogy egy automatikusan létrehozott elsődleges kulcsot kell).
 
 1. Kevésbé szigorú véletlenszerű minta
    
@@ -53,7 +53,7 @@ Az alábbi két elemek használatát mutatják be newid az SQL Server a mintavé
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Tablesample is lehet mintavételek, valamint alábbi. Jobb megközelítés erre akkor lehet, ha az adatok mérete nagy (feltéve, hogy az adatok különböző oldalain nem korrelált), és a lekérdezés elfogadható időn belül végrehajtani.
+Tablesample, valamint az adatok mintavétele használható. Jobb megközelítés erre akkor lehet, ha az adatok mérete nagy (feltéve, hogy az adatok különböző oldalain nem korrelált), és a lekérdezés elfogadható időn belül végrehajtani.
 
     SELECT *
     FROM <table_name> 
@@ -65,7 +65,7 @@ Tablesample is lehet mintavételek, valamint alábbi. Jobb megközelítés erre 
 > 
 
 ### <a name="sql-aml"></a>Csatlakozás az Azure gépi tanulás
-A fenti mintalekérdezések közvetlenül használható az Azure Machine Learning [és adatokat importálhat] [ import-data] lefelé-minta menet közben az adatok és az érdekében, hogy az Azure Machine Learning kísérlet a modult. Alább látható képernyőfelvétel a mintában szereplő adatokat olvasni az olvasó modullal:
+A fenti mintalekérdezések közvetlenül használható az Azure Machine Learning [és adatokat importálhat] [ import-data] lefelé-minta menet közben az adatok és az érdekében, hogy az Azure Machine Learning kísérlet a modult. Itt látható egy Képernyőkép a mintában szereplő adatokat olvasni az olvasó modullal:
 
 ![olvasó sql][1]
 
@@ -76,7 +76,7 @@ Ez a szakasz azt mutatja be, használja a [pyodbc könyvtár](https://code.googl
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-A [Pandas](http://pandas.pydata.org/) a Python kódtár adatkezelési Python programozási széles választékának adatstruktúrák és adatok elemzésére szolgáló eszközöket biztosít. Az alábbi kódot beolvassa az adatok 0,1 % minta az Azure SQL-adatbázis egy táblából egy Pandas adatokat:
+A [Pandas](http://pandas.pydata.org/) a Python kódtár adatkezelési Python programozási széles választékának adatstruktúrák és adatok elemzésére szolgáló eszközöket biztosít. Az alábbi kód beolvassa 0,1 % minta az adatok az Azure SQL-adatbázis egy táblából egy Pandas adatokat:
 
     import pandas as pd
 
@@ -112,12 +112,12 @@ Az alábbi példakód segítségével le mintát adatok mentése fájlba, és t�
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Az Azure Machine Learning segítségével az Azure blob-adatok olvasása [és adatokat importálhat] [ import-data] modul, ahogy az az alábbi képernyő fogd:
+3. Adatokat olvasni az Azure Machine Learning segítségével az Azure blob [és adatokat importálhat] [ import-data] modul a következő képernyő fogd ismertetett módon:
 
 ![olvasó blob][2]
 
 ## <a name="the-team-data-science-process-in-action-example"></a>A művelet a példában az Team tudományos folyamat
-A adatok tudományos folyamatának végpont forgatókönyv példa használata a nyilvános adatkészlet: [Team adatok tudományos folyamat működés közben: SQL Server használatával](sql-walkthrough.md).
+Forgatókönyv egy példa az Team tudományos folyamat használatával nyilvános dataset, lásd: [Team adatok tudományos folyamat működés közben: SQL Server használatával](sql-walkthrough.md).
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

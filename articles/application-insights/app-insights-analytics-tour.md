@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 26a5854735bd197fb114fce409a093251dc5c2f0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a33fedd765acde666eef280ba7dfa72536bf1bd2
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Az Application Insightsban Analytics bemutatása
 [Elemzés](app-insights-analytics.md) a hatékony keresési funkciója [Application Insights](app-insights-overview.md). Ezeken a lapokon a Log Analytics lekérdezési nyelv ismertetik.
@@ -54,7 +54,7 @@ Bontsa ki bármelyik elemre, hogy a részleteket lásd:
 ![Kattintson a táblázat, és használja az oszlopok konfigurálása](./media/app-insights-analytics-tour/040.png)
 
 > [!NOTE]
-> Kattintson a head sorrendjének az eredményeket a webböngészőben elérhető oszlop. De vegye figyelembe, hogy a nagy eredményhalmazt, a böngésző letöltött sorok száma korlátozott. Ezzel a módszerrel rendezés nem mindig meg a tényleges legnagyobb vagy legkisebb elemek megjelenítése. Elemek megbízhatóan rendezéséhez használja a `top` vagy `sort` operátor.
+> Kattintson egy sorrendjének az eredményeket a webböngészőben elérhető oszlop fejlécében. De vegye figyelembe, hogy a nagy eredményhalmazt, a böngésző letöltött sorok száma korlátozott. Egyszerűen így rendezési rendezi a visszaadott eredményhalmaz és nem mindig meg a tényleges legnagyobb vagy legkisebb elemek megjelenítése. Elemek megbízhatóan rendezéséhez használja a `top` vagy `sort` operátor.
 >
 >
 
@@ -92,7 +92,7 @@ Az első n sorok, adott oszlop szerint rendezve jelenjenek meg:
 
 Az eredmény változatlan marad, de egy kicsit lassabban fog futni. (Is létrehozható `order`, ez az alias az `sort`.)
 
-Az oszlopfejlécek nézetében is használható a képernyőn az eredmények rendezéséhez. De ha már használta természetesen `take` vagy `top` beolvasni egy tábla csak egy részét, lesz csak sorrendjének a korábban beolvasott rekordok.
+Az oszlopfejlécek nézetében is használható a képernyőn az eredmények rendezéséhez. De ha már használta természetesen `take` vagy `top` csak lekérdezni egy tábla, kattintson az oszlopfejlécre a része lesz csak sorrendjének a korábban beolvasott rekordok.
 
 ## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Ha](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): szűrési feltétel
 
@@ -115,8 +115,9 @@ A `where` operátor egy logikai kifejezés vesz igénybe. Az alábbiakban néhá
 
 <!---Read all about [scalar expressions]().--->
 
-### <a name="getting-the-right-type"></a>A megfelelő típusú beolvasása
-Sikertelen kérelmek keresése:
+### <a name="find-unsuccessful-requests"></a>Sikertelen kérelmek keresése
+
+Karakterlánc-érték átalakítása használandó nagyobb egész-összehasonlítás mint:
 
 ```AIQL
 
@@ -240,7 +241,7 @@ Vagy az eredmény azt sikerült külön kéréseket a különböző nevek:
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize`gyűjti az adatfolyamban az adatpontok csoportokba, amelynek a `by` záradék egyaránt értékelődik ki. Minden érték a `by` kifejezés - minden művelet neve a fenti példa - eredménytáblájában egy sort eredményez.
+`Summarize`gyűjti az adatfolyamban az adatpontok csoportokba, amelynek a `by` záradék egyaránt értékelődik ki. Minden érték a `by` kifejezés - minden egyedi művelet neve a fenti példa - eredménytáblájában egy sort eredményez.
 
 Vagy azt sikerült eredmények csoportosítás időpontja:
 
@@ -402,7 +403,7 @@ Hány munkamenetek vannak-e különböző hosszúságú?
     | project d = sessionDuration + datetime("2016-01-01"), count_
 ```
 
-Az utolsó sort kell az átalakítás datetime értékre. Jelenleg a diagram x tengelyének jelenik meg skaláris csak akkor, ha egy DateTime típusú érték.
+Az utolsó sort kell az átalakítás datetime értékre. Jelenleg a diagram x tengelyéhez jelenik meg skaláris csak akkor, ha egy DateTime típusú érték.
 
 A `where` záradék nem tartalmazza a végeredménye munkamenetek (sessionDuration == 0), és beállítja az x tengely hosszát.
 

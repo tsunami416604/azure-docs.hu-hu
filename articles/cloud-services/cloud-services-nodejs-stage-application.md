@@ -3,7 +3,7 @@ title: "Egy felhőalapú szolgáltatás telepítését (Node.js) tesztelése |} 
 description: "Útmutató: egy átmeneti környezet az Azure alkalmazás telepítése, majd telepíteni kell a virtuális IP-cím (VIP) lapozóterület használata termelési környezetben."
 services: cloud-services
 documentationcenter: nodejs
-author: TomArcher
+author: craigshoemaker
 manager: routlaw
 editor: 
 ms.assetid: d65d26a6-b424-49cd-a88c-7ef46bb112a8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: tarcher
-ms.openlocfilehash: b3000ed769e8c60eccb21e26f53ce7ccb7e68d7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: e35bbd31f39722c2e95ce58772dc6bd5eaf839a0
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="staging-an-application-in-azure"></a>Átmeneti egy alkalmazás az Azure-ban
 A burkolt alkalmazás tesztelése előtt helyezze át az éles környezetben, amelyben az alkalmazás elérhető az interneten Azure-ban az átmeneti környezet is telepíthető. Az átmeneti hasonlít pontosan az éles környezetben, azzal a különbséggel, hogy csak alkalmazást érheti el az előkészített az Azure által létrehozott rejtjelezett URL. Miután ellenőrizte, hogy az alkalmazás megfelelően működik-e, azt is telepíthető az éles környezetbe egy virtuális IP-cím (VIP) felcserélés elvégzésével.

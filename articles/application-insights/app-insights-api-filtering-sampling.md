@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: borooji;mbullwin
-ms.openlocfilehash: 9261f44a0c0400a0a8d908b0ff72318c637771de
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 5f4db2e79575202d3d9fa1601fb182c7a0881338
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Szűrés és az Application Insights SDK a telemetriai adatok előfeldolgozása
 
@@ -335,6 +335,9 @@ Mi az a telemetriai adatok processzorok és telemetriai inicializálók között
 * TelemetryProcessors engedélyezi, hogy teljesen cserélje le, vagy vesse el a telemetriai adatok elemet.
 * TelemetryProcessors teljesítmény számláló telemetriai nem feldolgozni.
 
+## <a name="troubleshooting-applicationinsightsconfig"></a>Hibaelhárítási ApplicationInsights.config
+* Győződjön meg arról, hogy a teljesen minősített típusnév és a szerelvény neve helyes.
+* Győződjön meg arról, hogy az applicationinsights.config fájl a kimeneti könyvtárában, és a legutóbbi módosításokat tartalmazza.
 
 ## <a name="reference-docs"></a>Segédanyagok
 * [API – Áttekintés](app-insights-api-custom-events-metrics.md)

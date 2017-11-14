@@ -14,17 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 80f65e8e7fe562030c1e39787b910e2564969882
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: dc76b30197d54c3c131ffdeb965f0cb82a3fa3cd
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Az IoT-központ (csomópont) felhő eszközre-üzenetek
+
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## <a name="introduction"></a>Bevezetés
-Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel eszközök millióira közötti megbízható és biztonságos kétirányú kommunikáció engedélyezése és a megoldás háttérrendszere. A [Ismerkedés az IoT-központ] oktatóanyag bemutatja, hogyan létrehoz egy IoT-központot, azt egy eszközidentitás kiépítéséhez és kód egy szimulált eszköz alkalmazást, amelyet az eszköz a felhőbe küldött üzeneteket küld.
+Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel eszközök millióira közötti megbízható és biztonságos kétirányú kommunikáció engedélyezése és a megoldás háttérrendszere. A [Ismerkedés az IoT-központ] oktatóanyag azt mutatja be hogyan:
+
+* Létrehoz egy IoT-központot.
+* Egy eszköz-identitás az IoT-központ telepítéséhez.
+* A kód egy szimulált eszköz alkalmazást, amelyet az eszköz a felhőbe küldött üzeneteket küld.
 
 Ez az oktatóanyag épül [Ismerkedés az IoT-központ]. Megmutatja, hogyan számára:
 
@@ -36,13 +40,11 @@ Felhő eszközre üzenetek további információt a [IoT Hub fejlesztői útmuta
 
 Ez az oktatóanyag végén, futtatja a Node.js-konzol két alkalmazásokat:
 
-* **SimulatedDevice**, az alkalmazás létrehozása a módosított változatát [Ismerkedés az IoT-központ], amely csatlakozik az IoT hub és felhő eszközre üzeneteket fogad.
-* **SendCloudToDeviceMessage**, melyik felhőalapú eszközre üzenetet küld az IoT-központ szimulált eszköz alkalmazás, és a szállítási nyugtázási majd megkapja.
+* `simulateddevice`, a létrehozott alkalmazás egy módosított verziója [Ismerkedés az IoT-központ], amely csatlakozik az IoT hub és felhő eszközre üzeneteket fogad.
+* `sendcloudtodevicemessage`, melyik felhőalapú eszközre üzenetet küld az IoT-központ szimulált eszköz alkalmazás, és a szállítási nyugtázási majd megkapja.
 
 > [!NOTE]
 > Az IoT-központ rendelkezik sok eszköz platformok és nyelvek (például C, Java és Javascript) keresztül Azure IoT eszközoldali SDK-k SDK támogatása. Csatlakoztassa az eszközt, az oktatóanyag kódot, és általában Azure IoT Hub kapcsolatos lépésenkénti útmutatót lásd: a [Azure IoT fejlesztői központ].
-> 
-> 
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -50,11 +52,12 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>A szimulált eszköz alkalmazás üzeneteket fogadni
+
 Ebben a szakaszban módosítsa a szimulált eszköz alkalmazás létrehozott [Ismerkedés az IoT-központ] felhő eszközre üzenetek fogadása az IoT-központot.
 
 1. Egy szövegszerkesztőben nyissa meg a SimulatedDevice.js fájlt.
 2. Módosítsa a **connectCallback** működnek, mint az IoT-központ által küldött üzenetek kezeléséhez. Ebben a példában az eszköz mindig meghívja a **teljes** függvény értesíteni az IoT-központot, feldolgozta-e az üzenetet. Új verziójának a **connectCallback** függvény néz ki a következő kódrészletet:
-   
+
     ```javascript
     var connectCallback = function (err) {
       if (err) {
@@ -78,44 +81,48 @@ Ebben a szakaszban módosítsa a szimulált eszköz alkalmazás létrehozott [Is
       }
     };
     ```
-   
+
    > [!NOTE]
    > Ha a átvitelhez MQTT vagy AMQP helyett a HTTPS PROTOKOLLT használja. a **DeviceClient** példány ellenőrzi az üzeneteket az IoT-központ ritkán (kevesebb mint 25 percenként). MQTT, az amqp-t és a HTTPS PROTOKOLLT támogatja, és az IoT-központ sávszélesség-szabályozási közötti különbségekről további információkért lásd: a [IoT Hub fejlesztői útmutató][IoT Hub developer guide - C2D].
-   > 
-   > 
 
 ## <a name="send-a-cloud-to-device-message"></a>Felhő eszközre üzenet küldése
+
 Ebben a szakaszban egy Node.js-Konzolalkalmazás, amely felhő eszközre üzeneteket küld a szimulált eszköz alkalmazást hoz létre. A hozzáadott eszköz az Eszközazonosítót van szüksége a [Ismerkedés az IoT-központ] oktatóanyag. Az IoT-központ kapcsolati karakterlánc, amely megtalálható a központ is kell a [Azure-portálon].
 
-1. Hozzon létre egy üres nevű **sendcloudtodevicemessage**. Az a **sendcloudtodevicemessage** mappa, hozzon létre egy package.json fájlt parancsot a parancssorba az alábbi parancs segítségével. Fogadja el az összes alapértelmezett beállítást:
-   
-    ```shell
+1. Hozzon létre egy `sendcloudtodevicemessage` nevű üres mappát. A(z) `sendcloudtodevicemessage` mappában hozzon létre egy package.json fájlt úgy, hogy beírja a következő parancsot a parancssorba. Fogadja el az összes alapértelmezett beállítást:
+
+    ```cmd/sh
     npm init
     ```
-2. A parancssorba a **sendcloudtodevicemessage** mappa telepítéséhez a következő parancsot a **azure-IOT hubbal** csomag:
-   
-    ```shell
+
+1. A parancssorba a `sendcloudtodevicemessage` mappa telepítéséhez a következő parancsot a **azure-IOT hubbal** csomag:
+
+    ```cmd/sh
     npm install azure-iothub --save
     ```
-3. Egy szövegszerkesztő használatával hozzon létre egy **SendCloudToDeviceMessage.js** fájlt a **sendcloudtodevicemessage** mappa.
-4. Adja hozzá a következő `require` elején utasítások a **SendCloudToDeviceMessage.js** fájlt:
-   
+
+1. Egy szövegszerkesztő használatával hozzon létre egy **SendCloudToDeviceMessage.js** fájlt a `sendcloudtodevicemessage` mappát.
+
+1. Adja hozzá a következő `require` elején utasítások a **SendCloudToDeviceMessage.js** fájlt:
+
     ```javascript
     'use strict';
    
     var Client = require('azure-iothub').Client;
     var Message = require('azure-iot-common').Message;
     ```
-5. Adja hozzá a következő kódot a **SendCloudToDeviceMessage.js** fájlt. Cserélje le a "{iot hub kapcsolati karakterlánc}" helyőrző értékét az IoT-központ kapcsolati karakterlánccal létrehozott központ a [Ismerkedés az IoT-központ] oktatóanyag. A "{eszközazonosító}" helyőrzőt cserélje le a hozzáadott eszköz az Eszközazonosítót az [Ismerkedés az IoT-központ] oktatóanyag:
-   
+
+1. Adja hozzá a következő kódot a **SendCloudToDeviceMessage.js** fájlt. Cserélje le a `{iot hub connection string}` létrehozott központ IoT-központ kapcsolati karakterlánccal helyőrző értékét a [Ismerkedés az IoT-központ] oktatóanyag. Cserélje le a `{device id}` az Eszközazonosítót az eszköz hozzáadott helyőrzőt a [Ismerkedés az IoT-központ] oktatóanyag:
+
     ```javascript
     var connectionString = '{iot hub connection string}';
     var targetDevice = '{device id}';
    
     var serviceClient = Client.fromConnectionString(connectionString);
     ```
-6. Adja hozzá a következő függvény nyomtatni művelet eredményeit a konzolhoz:
-   
+
+1. Adja hozzá a következő függvény nyomtatni művelet eredményeit a konzolhoz:
+
     ```javascript
     function printResultFor(op) {
       return function printResult(err, res) {
@@ -124,8 +131,9 @@ Ebben a szakaszban egy Node.js-Konzolalkalmazás, amely felhő eszközre üzenet
       };
     }
     ```
-7. Adja hozzá a következő függvény nyomtatni kézbesítési visszajelzés üzenetek a konzolhoz:
-   
+
+1. Adja hozzá a következő függvény nyomtatni kézbesítési visszajelzés üzenetek a konzolhoz:
+
     ```javascript
     function receiveFeedback(err, receiver){
       receiver.on('message', function (msg) {
@@ -134,8 +142,9 @@ Ebben a szakaszban egy Node.js-Konzolalkalmazás, amely felhő eszközre üzenet
       });
     }
     ```
-8. Adja hozzá a következő kódot üzenetet küldeni az eszközt, és a visszajelzés üzenet kezelését, amikor az eszköz elfogadja a felhőből eszközre üzenet:
-   
+
+1. Adja hozzá a következő kódot üzenetet küldeni az eszközt, és a visszajelzés üzenet kezelését, amikor az eszköz elfogadja a felhőből eszközre üzenet:
+
     ```javascript
     serviceClient.open(function (err) {
       if (err) {
@@ -151,33 +160,35 @@ Ebben a szakaszban egy Node.js-Konzolalkalmazás, amely felhő eszközre üzenet
       }
     });
     ```
-9. Mentse és zárja be **SendCloudToDeviceMessage.js** fájlt.
+
+1. Mentse és zárja be **SendCloudToDeviceMessage.js** fájlt.
 
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
+
 Most már készen áll az alkalmazások futtatására.
 
-1. A parancssorban a **simulateddevice** mappa, futtassa a következő parancsot, telemetriai adatokat küldhet az IoT-központot, és a felhő-eszközre küldött üzenetek figyelésére:
-   
-    ```shell
-    node SimulatedDevice.js 
+1. A parancssorban a `simulateddevice` mappa, futtassa a következő parancsot, telemetriai adatokat küldhet az IoT-központot, és a felhő-eszközre küldött üzenetek figyelésére:
+
+    ```cmd/sh
+    node SimulatedDevice.js
     ```
-   
+
     ![A szimulált eszköz alkalmazás futtatása][img-simulated-device]
-2. A parancsot a parancssorba a **sendcloudtodevicemessage** mappa, a következő parancsot a felhőből eszközre küldött, és várjon, amíg a visszaigazolás-visszajelzés:
-   
-    ```shell
-    node SendCloudToDeviceMessage.js 
+
+1. A parancsot a parancssorba a `sendcloudtodevicemessage` mappa, a következő parancsot a felhőből eszközre küldött, és várjon, amíg a visszaigazolás-visszajelzés:
+
+    ```cmd/sh
+    node SendCloudToDeviceMessage.js
     ```
-   
-    ![Futtassa az alkalmazásnak, hogy a felhő eszközre vonatkozó parancs küldése][img-send-command]
-   
+
+    ![A felhő eszközre vonatkozó parancs küldése, az alkalmazás futtatása][img-send-command]
+
    > [!NOTE]
    > Az egyszerűség kedvéért tartozó szakét Ez az oktatóanyag nem valósítja meg a bármely újrapróbálkozási házirendje. Az éles kódban, meg kell valósítania újrapróbálkozási házirendek (például az exponenciális leállítási), az MSDN-cikkben leírtak [átmeneti hiba kezelése].
-   > 
-   > 
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
+
+Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon.
 
 Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Azure IoT Suite].
 

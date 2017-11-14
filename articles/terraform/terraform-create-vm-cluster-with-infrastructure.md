@@ -7,13 +7,13 @@ manager: routlaw
 ms.service: virtual-machines-linux
 ms.custom: devops
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 11/13/2017
 ms.author: tarcher
-ms.openlocfilehash: 859c0a2f2cf315e9168ed9828061c03da6b8e0a4
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 2435d694e6a1671a234d02f90860e5cafe98c2df
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Hozzon létre egy Virtuálisgép-fürt Terraform és Hardverkompatibilitási
 
@@ -35,7 +35,7 @@ Ebben az oktatóanyagban az alábbiakat végezte el:
 
 Ebben a szakaszban létrehozhat egy egyszerű Azure szolgáltatás, és két Terraform konfigurációs fájlokat tartalmazó a hitelesítő adatait a rendszerbiztonsági tag.
 
-1. [Állítsa be az Azure AD szolgáltatás egyszerű](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure) Terraform az Azure erőforrások kiépítése lehetővé teszi, hogy. A rendszerbiztonsági tag létrehozásakor jegyezze fel az értékek az előfizetés-azonosító, a bérlő azonosítója, a displayName és a jelszót.
+1. [Állítsa be az Azure AD szolgáltatás egyszerű](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure) Terraform az Azure erőforrások kiépítése lehetővé teszi, hogy. A rendszerbiztonsági tag létrehozásakor jegyezze fel az értékek az előfizetés-azonosító, a bérlői, az appId és a jelszót.
 
 2. Nyisson meg egy parancssort.
 
@@ -236,7 +236,7 @@ Terraform inicializálni a következő parancsot:
 
 A [terraform terv parancs](https://www.terraform.io/docs/commands/plan.html) egy végrehajtási terv létrehozására szolgál. Egy végrehajtási terv létrehozásához Terraform összesíti az összes a `.tf` az aktuális könyvtárban található fájlokat. 
 
-Ha egy együttműködési környezetben, ahol a konfigurációt a végrehajtási terv létrehozásához és az idő között változhat dolgozik a végrehajtási terv alkalmaz, használja a [terraform terv parancs-kimeneti paraméter](https://www.terraform.io/docs/commands/plan.html#out-path)és a kimeneti fájlba a végrehajtási terv. Ellenkező esetben ha egyetlen-személy környezetben dolgozik, akkor kihagyhatja a `-out` paraméter.
+Ha egy együttműködési környezetben, ahol a konfigurációt a végrehajtási terv létrehozásához és az idő között változhat dolgozik a végrehajtási terv alkalmaz, használja a [terraform terv parancs-kimeneti paraméter](https://www.terraform.io/docs/commands/plan.html#out-path)a végrehajtási terv egy fájlba menti. Ellenkező esetben ha egyetlen-személy környezetben dolgozik, akkor kihagyhatja a `-out` paraméter.
 
 Ha a Terraform változók fájl neve nincs `terraform.tfvars` és azt nem követi a `*.auto.tfvars` mintát, meg kell adnia a fájl nevét használja a [terraform terv parancs - var-fájl paraméter](https://www.terraform.io/docs/commands/plan.html#var-file-foo) a jelentés futtatásakor a `terraform plan`parancsot.
 

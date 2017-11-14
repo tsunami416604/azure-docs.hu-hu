@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/03/2017
-ms.author: cristyg
+ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 8b744f6b33a04a707c56e6fc8a4638118170b668
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 217b9f2f0dfed5b095e1bac1c8146abf4753fadc
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-a-secure-cluster-in-azure-by-using-powershell"></a>Biztonságos fürt létrehozása az Azure PowerShell használatával
 Ez a cikk az első egy sorozat része, amely megmutatja, hogyan helyezze át a felhőbe .NET-alkalmazás Azure Service Fabric-fürtök és a tárolók használatával oktatóanyagok. A következő lépések megtanulhatja a Service Fabric fürt létrehozása (Windows vagy Linux), amely futtatja az Azure-ban. Amikor végzett, hogy a biztonságos fürt, amely a felhőben, amely alkalmazások telepíthetők.

@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 11/01/2017
 ms.author: v-rogara
 ms.custom: mvc
-ms.openlocfilehash: b096b9d79c049d8659a4171a0cbb42a99e245776
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 2a825e59093b64ab56110f9a045b0325728b39b2
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-java"></a>Átviteli objektumok az Azure Blob Storage tárolóban javás környezetekben
 
@@ -85,19 +85,23 @@ Miután ellenőrizte, hogy a fájlokat, nyomja le az enter billentyűt a bemutat
 
 ## <a name="understand-the-sample-code"></a>A mintakód ismertetése
 
+Ezután azt végezze el a mintakódot, hogy megismerheti, hogyan működik.
+
+### <a name="get-references-to-the-storage-objects"></a>A tárolási objektum mutató hivatkozások beolvasása
+
 Az első lépés férhessen hozzá és felügyelhesse a Blob storage használt objektumok hivatkozásainak létrehozásához. Ezek az objektumok egymástól összeállítása – egyes használja a következő egy, a listában.
 
 * Hozzon létre egy példányát a **CloudStorageAccount** mutató objektum a [tárfiók](/java/api/com.microsoft.azure.management.storage._storage_account).
 
-A **CloudStorageAccount** objektum a tárfiók a megjelenítése, és lehetővé teszi, és a tárfiók tulajdonságai programozott hozzáférés. Használja a **CloudStorageAccount** objektum egy példányát is létrehozhat a **CloudBlobClient**, a blob szolgáltatás eléréséhez szükséges.
+    A **CloudStorageAccount** objektum a tárfiók a megjelenítése, és lehetővé teszi, és a tárfiók tulajdonságai programozott hozzáférés. Használja a **CloudStorageAccount** objektum egy példányát is létrehozhat a **CloudBlobClient**, a blob szolgáltatás eléréséhez szükséges.
 
 * Hozzon létre egy példányát a **CloudBlobClient** objektum, amely mutat a [Blob szolgáltatás](/java/api/com.microsoft.azure.storage.blob._cloud_blob_client) tárfiókba.
 
-A **CloudBlobClient** a blob szolgáltatás számára, hogy lehetővé teszi a blob storage tulajdonságai programokon keresztül érhetők el, és hozzáférési pontot biztosít. Használja a **CloudBlobClient** létrehozhat egy példányát a **CloudBlobContainer** objektum, amely tárolók létrehozásához szükséges.
+    A **CloudBlobClient** a blob szolgáltatás számára, hogy lehetővé teszi a blob storage tulajdonságai programokon keresztül érhetők el, és hozzáférési pontot biztosít. Használja a **CloudBlobClient** létrehozhat egy példányát a **CloudBlobContainer** objektum, amely tárolók létrehozásához szükséges.
 
 * Hozzon létre egy példányát a **CloudBlobContainer** objektum, amely képviseli az [tároló](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container) fér hozzá. Tárolók használatával rendezheti a blobok, például a mappák használ a fájlok rendszerezéséhez a számítógépen.    
 
-Ha elvégezte a **CloudBlobContainer**, létrehozhat egy példányát a **CloudBlockBlob** mutat, az adott objektum [blob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob) amely érdekli, a és egy feltöltés, letöltés, másolása, stb. a művelet végrehajtásához.
+    Ha elvégezte a **CloudBlobContainer**, létrehozhat egy példányát a **CloudBlockBlob** mutat, az adott objektum [blob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob) amely érdekli, a és egy feltöltés, letöltés, másolása, stb. a művelet végrehajtásához.
 
 > [!IMPORTANT]
 > A tároló nevének kisbetűnek kell lennie. Lásd: [elnevezési és hivatkozó tárolók, Blobok és metaadatok](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) tároló és a blob nevének további információt.

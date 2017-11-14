@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6e88c590e11aa8d2f4ae17e8b5e164483f0a6820
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 11457e6556e6400d8f58f71c71ab1e790bcef8f1
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="using-azure-files-with-kubernetes"></a>Az Azure Files használata Kubernetes
 
@@ -35,7 +35,7 @@ Azure Tárolószolgáltatás egy meglévő Azure fájlmegosztás használható. 
 Hozzon létre egy erőforráscsoportot az Azure File megosztás használatára vonatkozó a [az csoport létrehozása] [ az-group-create] parancsot. Az erőforráscsoport a tárfiók és a Kubernetes fürt ugyanabban a régióban kell lennie.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location westus2
+az group create --name myResourceGroup --location eastus
 ```
 
 Használja a [az storage-fiók létrehozása] [ az-storage-create] parancsot egy Azure Storage-fiók létrehozásához. A tárfiók nevének egyedinek kell lennie. Frissítse az értéket a `--name` argumentum egy egyedi érték.

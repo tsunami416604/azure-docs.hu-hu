@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: e8b28bc9ccc12b280b1746272519bd4c9ea9e4a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bed51dc1216b40f6602fae6d32bc8bd7aa517605
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -66,11 +66,11 @@ Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-
 
 Az e-mailek aláírás a B2C-bérlő nevét tartalmazza, amelyet a B2C-bérlő kezdeti létrehozásakor megadott. Módosíthatja a nevét, a jelen utasításokat:
 
-1. Jelentkezzen be a [klasszikus Azure-portálra](https://manage.windowsazure.com/) előfizetés-rendszergazdaként.
-1. Lépjen a B2C-bérlő.
-1. Kattintson a **Configure** (Konfigurálás) lapra.
-1. Módosítsa a **neve** eleménél a **Directory tulajdonságok** szakasz.
-1. Kattintson a lap alján található **Mentés** gombra.
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) előfizetés-rendszergazdaként.
+1. Nyissa meg a **Azure Active Directory** panelen.
+1. Kattintson a **tulajdonságok** fülre.
+1. Módosítsa a **neve** mező.
+1. Kattintson a **mentése** az oldal tetején.
 
 Jelenleg nincs semmilyen módon nem lehet módosítani a "származó:" az e-mailben található. Szavazhatnak [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) érdekli testreszabása a megerősítési e-mailt törzsét.
 

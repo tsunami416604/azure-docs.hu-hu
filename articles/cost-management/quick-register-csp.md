@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/11/2017
+ms.date: 11/13/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: bcb072a2f2ab8c0e5097fca2c95309464483cb53
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 84f2fec61f791d4fc9264eaa01e24180696da853
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Regisztrálja a CSP Partner program és az adatok megtekintése
 
@@ -22,7 +22,13 @@ A CSP-partnerként regisztrálhatja az Azure költség Management Cloudyn által
 
 
 >[!NOTE]
->A Regisztrálás, aki hozzáféréssel rendelkezik a Partner Center API partner program rendszergazdának kell lennie. A Partner Center API-beállítás kötelező a hitelesítés és adatokhoz való hozzáférést. További információkért lásd: [a Partner Center API kapcsolódás](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx). Emellett közvetett CSP-hez a felhasználók csak a Cloudyn amikor regisztrálja a közvetlen CSP viszonteladóhoz Cloudyn való hozzáférés biztosítása a felhasználók és az előfizetések.
+
+>Csak a kriptográfiai Szolgáltató közvetlen partnerek és a CSP közvetett szolgáltatók Cloudyn regisztrációs hajthatja végre.
+>
+>A Partner Center API konfigurálása szükség, a hitelesítés és az adatok elérése. Egy Partner Center globális rendszergazdai fiók szükséges API-hozzáférés kiépítéséhez.
+További információkért lásd: [a Partner Center API kapcsolódás](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx).
+>
+>Cloudyn elérésére elérhetővé tehetők a CSP közvetett viszonteladók után Cloudyn regisztrálja a közvetett CSP-szolgáltató. CSP közvetett viszonteladók is majd Cloudyn hozzáférés biztosítása az Azure-ügyfelek és előfizetések.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 

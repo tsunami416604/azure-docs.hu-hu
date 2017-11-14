@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: shlo
-ms.openlocfilehash: 2cc128e8f7792a6a363aacf50f8724d689892c83
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk az Azure Data Factory szolgáltatásnak 2 verziójára vonatkozik. Adat-előállító gyakran feltett kérdésekre adott válaszok biztosít.  
@@ -152,7 +152,7 @@ A Data Factory alapelveivel kapcsolatban további információkat a következő 
 Az Azure Data Factory díjszabása, lásd: [díjszabása adat-előállító](https://azure.microsoft.com/pricing/details/data-factory/).
 
 ## <a name="what-regions-support-azure-data-factory-version-2"></a>Mely régiókat támogatják az Azure Data Factory 2-es verzióját?
-Jelenleg adat-előállítók a 2-es verzióját is létrehozhat az USA keleti régiója és régiók USA keleti régiója 2. Azonban egy adat-előállító segítségével integrációs futásidejű egy másik régióban adatok áthelyezése adattárolókhoz, küldése tevékenységeket célozzon számítási szolgáltatások vagy a feladó SSIS-csomagok között. További információkért lásd: [adat-előállító helyek](concepts-integration-runtime.md#integration-runtime-location).
+2-es verzióját az adat-előállítók jelenleg, az USA keleti régiója, USA keleti régiója 2 és Nyugat-Európában régiókban hozhat létre. Azonban egy adat-előállító segítségével integrációs futásidejű egy másik régióban adatok áthelyezése adattárolókhoz, küldése tevékenységeket célozzon számítási szolgáltatások vagy a feladó SSIS-csomagok között. További információkért lásd: [adat-előállító helyek](concepts-integration-runtime.md#integration-runtime-location).
 
 ## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Hogyan maradhat naprakész információkkal, adat-előállító?
 Azure Data Factory kapcsolatos legfrissebb információkért nyissa meg a következő helyekre:

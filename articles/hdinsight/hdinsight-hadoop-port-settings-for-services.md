@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2017
+ms.date: 11/13/2017
 ms.author: larryfr
-ms.openlocfilehash: d474cce902dad1390d55ed7bad556d9b0610605f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a55180b5d65b268d7c9b51307581a5fe777a26fe
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>A HDInsight Hadoop-szolgáltatás által használt portok
 
@@ -79,7 +79,7 @@ Minden szolgáltatás nyilvánosan elérhetővé az interneten hitelesíteni kel
 
 ### <a name="ambari"></a>Ambari
 
-| Szolgáltatás | Csomópontok | Port | URL-címe | Protokoll | 
+| Szolgáltatás | Csomópontok | Port | URL-cím | Protokoll | 
 | --- | --- | --- | --- | --- |
 | Ambari webes felhasználói felület | HEAD csomópontok | 8080 | / | HTTP |
 | Ambari REST API-n | HEAD csomópontok | 8080 | / api/v1 | HTTP |
@@ -166,11 +166,11 @@ Példák:
 
 ### <a name="spark-ports"></a>A Spark-portok
 
-| Szolgáltatás | Csomópontok | Port | Protokoll | URL-címe | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protokoll | URL-cím | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | A Spark Thrift-kiszolgálók |HEAD csomópontok |10002 |Thrift | &nbsp; | Szolgáltatás Spark SQL (Thrift/JDBC) való kapcsolódáshoz |
-| Livy kiszolgáló | HEAD csomópontok | 8998 | HTTP | /batches | Szolgáltatás utasítások, feladatok és alkalmazások |
+| Livy kiszolgáló | HEAD csomópontok | 8998 | HTTP | &nbsp; | Szolgáltatás utasítások, feladatok és alkalmazások |
 
 Példák:
 
-* Livy: `curl "http://10.0.0.11:8998/batches"`. Ebben a példában `10.0.0.11` a headnode a Livy szolgáltatást üzemeltető IP-címét.
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. Ebben a példában `10.0.0.11` a headnode a Livy szolgáltatást üzemeltető IP-címét.

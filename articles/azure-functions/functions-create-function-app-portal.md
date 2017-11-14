@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3e4eef12c1d19be6e0f1051caaa5cf2e98626aef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f9882ebc86b8119e6e683c7442ee3448a8d111b
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Függvény-alkalmazás létrehozása az Azure-portálon
 
@@ -40,7 +40,7 @@ A függvény alkalmazás létrehozása után létrehozhat egyéni függvényei e
 
 Az Azure Functions van két különböző service-csomagokról: fogyasztás terv és az App Service-csomag. A felhasználási terv automatikusan lefoglalja számára a számítási teljesítményt, ha a kódja fut, a skála kibővített terhelés kezelése érdekében szükség szerint, és majd méretezik-a kód nem futtatásakor. Az App Service-csomag a függvény alkalmazás hozzáférést biztosít az App Service minden lehetőséget. Ki kell választania a service-csomag, a függvény alkalmazás létrehozása, és azt jelenleg nem módosul. További információkért lásd: [válassza ki az Azure Functions üzemeltetési terv](functions-scale.md).
 
-Ha azt tervezi, JavaScript-funkcióként futhat az App Service-csomagot, válasszon egy tervet a kevesebb magok. További információkért lásd: a [függvények JavaScript hivatkozás](functions-reference-node.md#choose-single-core-app-service-plans).
+Ha azt tervezi, JavaScript-funkcióként futhat az App Service-csomagot, válasszon egy tervet a kevesebb magok. További információkért lásd: a [függvények JavaScript hivatkozás](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 
 <a name="storage-account-requirements"></a>
 

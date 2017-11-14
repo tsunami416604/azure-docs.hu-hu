@@ -1,5 +1,5 @@
 ---
-title: "Azure Storage blobs szolgáltatásban az Azure CDN lejáratának kezelése |} Microsoft Docs"
+title: "Azure Blob Storage tárolóban az Azure Content Delivery Network lejáratának kezelése |} Microsoft Docs"
 description: "További tudnivalók a beállításait élő idő a blobok az Azure CDN gyorsítótárazását."
 services: cdn
 documentationcenter: 
@@ -12,31 +12,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: d4741921806e443d92c385a04b781cec296c2ae8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b8f9d439184b91f8105e6bd136e48525632a85
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
-# <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>Azure Storage blobs szolgáltatásban az Azure CDN lejáratának kezelése
+# <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Azure Blob Storage tárolóban az Azure Content Delivery Network lejáratának kezelése
 > [!div class="op_single_selector"]
 > * [Az Azure Web Apps/Felhőszolgáltatások, ASP.NET, vagy az IIS](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Storage-blob szolgáltatás](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-A [blob szolgáltatás](../storage/common/storage-introduction.md#blob-storage) a [Azure Storage](../storage/common/storage-introduction.md) integrálva van a több Azure-alapú források egyik Azure CDN szolgáltatás használata.  Bármely nyilvánosan elérhető blobtartalom Azure CDN mindaddig, amíg az idő-live (TTL) lejárta gyorsítótárazható.  Az élettartam határozza meg a [ *Cache-Control* fejléc](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) az Azure Storage-ból a HTTP-válasz.
+A [blob szolgáltatás](../storage/common/storage-introduction.md#blob-storage) a [Azure Storage](../storage/common/storage-introduction.md) integrálva van a több Azure-alapú források egyikét az Azure Content Delivery Network (CDN). Bármely nyilvánosan elérhető blobtartalom Azure CDN mindaddig, amíg az idő-live (TTL) lejárta gyorsítótárazható. Az élettartam határozza meg a [ `Cache-Control` fejléc](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) az Azure Storage-ból a HTTP-válasz.
 
 > [!TIP]
-> Választhatja a blob nem TTL beállítása.  Ebben az esetben Azure CDN automatikusan érvényes alapértelmezett élettartam 7 nap.
+> Ha szeretné, nincs TTL be blob. Ebben az esetben Azure CDN automatikusan érvényes alapértelmezett élettartam 7 nap.
 > 
-> Azure CDN gyorsabb hozzáférés blobok és egyéb fájlok működésével kapcsolatos további információkért lásd: a [Azure CDN áttekintése](cdn-overview.md).
+> Azure CDN gyorsabb hozzáférés blobok és egyéb fájlok működésével kapcsolatos további információkért lásd: [az Azure Content Delivery Network áttekintése](cdn-overview.md).
 > 
-> Az Azure Storage-blob szolgáltatásban további részletekért lásd: [Blob szolgáltatással kapcsolatos fogalmak](https://msdn.microsoft.com/library/dd179376.aspx). 
-> 
-> 
+> Azure Blob Storage tárolóban kapcsolatos további információkért lásd: [Blob storage bemutatása](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction).
+ 
 
 Ez az oktatóanyag bemutatja a TTL-t állíthat be az Azure Storage blob számos módja.  
 
@@ -93,14 +92,14 @@ class Program
 ```
 
 > [!TIP]
-> Nincsenek elérhető számos további .NET Kódminták a [Azure Blob Storage-példák .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
+> Nincsenek elérhető számos további .NET mintakódok [Azure Blob Storage-példák .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
 > 
 > 
 
 ## <a name="other-methods"></a>Más módszerrel
 * [Azure parancssori felület](../cli-install-nodejs.md)
   
-    Amikor feltöltése a blob, állítsa be a *cacheControl* tulajdonság használatával a `-p` váltani.  Ebben a példában az élettartam beállítja egy óra (3600 másodperc).
+    Amikor feltöltése a blob, állítsa be a *cacheControl* tulajdonság használatával a `-p` váltani. Ebben a példában az élettartam beállítja egy óra (3600 másodperc).
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt
@@ -112,10 +111,10 @@ class Program
   
     Egyes külső Azure Tárolófelügyeleti eszközök lehetővé teszik a *CacheControl* blobok tulajdonságát. 
 
-## <a name="testing-the-cache-control-header"></a>Tesztelés a *Cache-Control* fejléc
-Az élettartam a blobok könnyen ellenőrizheti.  A böngésző használatával [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a blob közé tartoznak a következők a *Cache-Control* válaszfejlécet.  Egy eszköz, például is használható **wget**, [Postman](https://www.getpostman.com/), vagy [Fiddler](http://www.telerik.com/fiddler) megvizsgálhatja a response fejlécekkel együtt.
+## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
+Az élettartam a blobok könnyen ellenőrizheti.  A böngésző használatával [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a blob magában foglalja a `Cache-Control` válaszfejlécet. Például egy eszköz is használható **wget**, [Postman](https://www.getpostman.com/), vagy [Fiddler](http://www.telerik.com/fiddler) megvizsgálhatja a response fejlécekkel együtt.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Olvassa el a *Cache-Control* fejléc](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+* [Olvassa el a `Cache-Control` fejléc](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 * [Útmutató: Azure CDN felhő Felhőszolgáltatásbeli tartalom lejáratának kezelése](cdn-manage-expiration-of-cloud-service-content.md)
 

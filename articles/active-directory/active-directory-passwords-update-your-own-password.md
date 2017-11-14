@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 11/13/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 8f175f5711b9798153d209f6645aa8bae9f2a00b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 763248b1b7adf821d37f2308195a0934a0aee152
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/13/2017
 ---
-# <a name="help-i-forgot-my-azure-ad-password"></a>Segítségre van szüksége, elfelejtettem a saját Azure AD-jelszó
+# <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszó alaphelyzetbe állítása
 
-Ha elfelejtette a jelszavát, vagy nem kapott jelszót az informatikai kollégáktól, ki lett zárva a fiókjából, vagy csak le szeretné cserélni a jelszót, mi segíthetünk. Ha tudja, a jelszót, és csak kell módosítása továbbra is le a szakasz [jelszó módosítása](#change-my-password) alatt.
+Ha elfelejtette a jelszavát, soha nem kapott a vállalat támogatási közül, zárolja a fiókot, vagy módosítani azt szeretnénk, segítünk. Ha tudja, a jelszót, és csak kell módosítása továbbra is le a szakasz [jelszó módosítása](#change-my-password) alatt.
 
    > [!NOTE]
    > Ha például Xbox, hotmail.com vagy Outlook.com-os próbálja meg a személyes fiókja visszaszerzéséhez szükséges segítségnyújtáshoz kívánt a [ebben a cikkben található javaslatok](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
@@ -64,7 +64,7 @@ Az Azure AD az önkiszolgáló jelszó-visszaállítás, önkiszolgáló jelszó
    ![A hitelesítési adatok megerősítése][Verification]
 
 4. A rendszergazdák megkövetelhetnek egy további jóváhagyási lépést is, és ilyenkor még egyszer végre kell hajtania a 3. lépést egy másik lehetőséget választva.
-5. Az **Új jelszó megadása** oldalon adjon meg egy új jelszót, erősítse meg, majd kattintson a **Befejezés** gombra. Javasoljuk, hogy a jelszó legyen 8–16 karakter hosszúságú, és tartalmazzon kis- és nagybetűket, számokat és speciális karaktereket is.
+5. Az **Új jelszó megadása** oldalon adjon meg egy új jelszót, erősítse meg, majd kattintson a **Befejezés** gombra. A munkahelyi vagy iskolai jelszó rendelkezhetnek bizonyos követelmények; Javasoljuk, hogy a jelszó 8 – 16 karakterből állhat, és a kis- és nagybetűk, számok és speciális karakterek lehet.
 6. Miután megjelent **A jelszó vissza lett állítva** üzenet, bejelentkezhet új jelszavával.
 
     ![A jelszó vissza lett állítva][Complete]
@@ -102,8 +102,8 @@ Ezt a módszert akkor használja, ha az alkalmazásait általában az Azure Acce
 | Hiba eset| Milyen hiba látható?| Megoldás |
 | --- | --- | --- |
 | "Forduljon a rendszergazdához" oldal jelenik meg a felhasználói azonosító megadása után | Lépjen kapcsolatba a rendszergazdával <br> <br> A rendszer azt észlelte, hogy a felhasználói fiók jelszava nem Microsoft által felügyelt. Ennek eredményeképpen jelenleg nem lehet automatikusan alaphelyzetbe állítja a jelszót. <br> <br> További segítségért forduljon az informatikai munkatársak kell. | Ez az üzenet azért jelent meg, mert az informatikai munkatársak kezeli a jelszót a helyszíni környezetben, és nem teszi lehetővé a jelszó a nem tudja elérni a fiókot hivatkozásra. <br> <br> A jelszó alaphelyzetbe állításához, közvetlenül segítségért lépjen kapcsolatba az informatikai munkatársak, és tájékoztassa, alaphelyzetbe állítja a jelszót, ez a funkció az Ön is engedélyezhető.|
-| A felhasználói azonosító megadása után jelenik meg a "a nem engedélyezett a jelszó alaphelyzetbe állítása" hiba | A fiókjára vonatkozóan nincs engedélyezve a jelszó alaphelyzetbe állítása <br> <br> Sajnáljuk, de az informatikai munkatársak nem állította be a fiók a szolgáltatással való használatra. <br> <br> Ha azt szeretné, a jelszó alaphelyzetbe állításához a szervezet rendszergazda is megkereshetjük. | Ez az üzenet azért jelent, mert az informatikai munkatársak nincs engedélyezve a jelszó alaphelyzetbe állítása a szervezete számára a nem tudja elérni a fiókot hivatkozásra, vagy még nem rendelkezik licenccel a funkció használatát. <br> <br> A jelszó alaphelyzetbe állításához hivatkozásra az ügyfél egy rendszergazda e-mailt küldhet a vállalat informatikai személyzetet tart fenn, és tájékoztassa, alaphelyzetbe állítja a jelszót, ez a funkció az Ön is engedélyezhető. |
-| A felhasználói azonosító megadása után jelenik meg a "nem tudtuk ellenőrizni fiókját" hiba | Nem tudtuk ellenőrizni a fiókot. <br> <br> Ha azt szeretné, a jelszó alaphelyzetbe állításához a szervezet rendszergazda is megkereshetjük. | Ez az üzenet azért jelent meg, mert a jelszó-visszaállításhoz engedélyezve vannak, de a szolgáltatás használatára nem regisztrált. Regisztrálhatnak a jelszóváltoztatásra, http://aka.ms/ssprsetup után lépjen a fiókjába rendelkeznie helyreállt a hozzáférést. <br> <br> A jelszó alaphelyzetbe állításához hivatkozásra az ügyfél egy rendszergazda e-mailt küldhet a vállalat informatikai személyzetet tart fenn. |
+| A felhasználói azonosító megadása után jelenik meg a "a nem engedélyezett a jelszó alaphelyzetbe állítása" hiba | A fiók nincs engedélyezve a jelszó alaphelyzetbe állítása <br> <br> Sajnáljuk, de az informatikai munkatársak nem állította be a fiók a szolgáltatással való használatra. <br> <br> Ha azt szeretné, a jelszó alaphelyzetbe állításához a szervezet rendszergazda is megkereshetjük. | Ez az üzenet azért jelent, mert az informatikai munkatársak nincs engedélyezve a jelszó alaphelyzetbe állítása a szervezete számára a nem tudja elérni a fiókot hivatkozásra, vagy még nem rendelkezik licenccel a funkció használatát. <br> <br> A jelszó alaphelyzetbe állításához hivatkozásra az ügyfél egy rendszergazda e-mailt küldhet a vállalat informatikai személyzetet tart fenn, és tájékoztassa, alaphelyzetbe állítja a jelszót, ez a funkció az Ön is engedélyezhető. |
+| A felhasználói azonosító megadása után jelenik meg a "nem tudtuk ellenőrizni fiókját" hiba | Nem tudtuk ellenőrizni a fiókját <br> <br> Ha azt szeretné, a jelszó alaphelyzetbe állításához a szervezet rendszergazda is megkereshetjük. | Ez az üzenet azért jelent meg, mert a jelszó-visszaállításhoz engedélyezve vannak, de a szolgáltatás használatára nem regisztrált. Regisztrálhatnak a jelszóváltoztatásra, http://aka.ms/ssprsetup után lépjen a fiókjába rendelkeznie helyreállt a hozzáférést. <br> <br> A jelszó alaphelyzetbe állításához hivatkozásra az ügyfél egy rendszergazda e-mailt küldhet a vállalat informatikai személyzetet tart fenn. |
 
 ## <a name="next-steps"></a>Következő lépések
 

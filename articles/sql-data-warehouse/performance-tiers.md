@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/23/2017
+ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: ffeaec73a38939783174c71641c3618f4f8a3c1b
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c403a73d03fd5152e2c0617b3e3784926c28f5c3
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Az Azure SQL Data Warehouse teljesítményét rétegek (előzetes verzió)
 Az SQL Data Warehouse tárfióktípus két teljesítményszinttel analitikai munkaterhelések optimalizált kínál. Ez a cikk ismerteti a teljesítmény rétegek segítségével válassza ki a leginkább megfelelő teljesítményszintet a munkaterheléshez elveit. 
@@ -55,7 +55,7 @@ WITH
 ## <a name="memory-maximums"></a>Memória maximális értékeket
 A teljesítmény rétegek különböző memória-profilok fordítja le a különböző méretű memória lekérdezésenként rendelkezik. A számítási teljesítmény rétegben optimalizálása 2,5 x több memóriát, mint a rugalmassági teljesítményszinttel optimalizálása lekérdezésenként biztosít. Az extra memóriát segít a optimalizálása számítási teljesítmény rétegben a rendkívül gyors teljesítményt. További memória lekérdezésenként is lehetővé teszi további lekérdezések futtatásához egyidejűleg, mivel a lekérdezések használható alacsonyabb [erőforrás osztályok](resource-classes-for-workload-management.md). 
 
-### <a name="optimized-for-elasticity"></a>A rugalmasság optimalizálva
+### <a name="optimized-for-elasticity"></a>Rugalmasságra optimalizált
 
 A szolgáltatási szintek, a rugalmasság teljesítmény réteg DW100 és közé DW6000 a optimalizálása. 
 
@@ -148,7 +148,7 @@ Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási 
 | DW15000c      | 32                         |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW30000c      | 32                         | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
-### <a name="optimized-for-elasticity"></a>A rugalmasság optimalizálva
+### <a name="optimized-for-elasticity"></a>Rugalmasságra optimalizált
 Az alábbi táblázat a maximális párhuzamos lekérdezések és feldolgozási üzembe helyezési ponti minden [dinamikus erőforrásosztály](resource-classes-for-workload-management.md).  Ezek a rugalmasság teljesítményszinttel optimalizálása vonatkoznak.
 
 **Dinamikus erőforrás-osztályok**

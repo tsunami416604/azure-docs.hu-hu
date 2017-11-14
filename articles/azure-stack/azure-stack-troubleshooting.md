@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/11/2017
 ms.author: helaw
-ms.openlocfilehash: 3b40a657ee8eb391d14a38cb95acc0729a8dda21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a8e871a3a44cb14503832d2f3a096712f8112a7
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>A Microsoft Azure verem hibaelhárítása
 
@@ -37,16 +37,6 @@ Ha a telepítés során hibát észlel, futtassa újra a beállítást, a telep�
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>A telepítés végén a PowerShell-munkamenet még meg nyitva, és nem jelenik meg a kimenetet
 Ez a viselkedés esetén valószínűleg csak egy PowerShell-parancsablakban alapértelmezett viselkedése eredményét van kijelölve. A development kit telepítési ténylegesen sikeresen befejeződött, de a parancsfájl az ablak kiválasztásakor szünetel. Ez a helyzet a word keresi, "select" címsorában a parancssori ablakban ellenőrizheti.  Az ESC billentyű kikapcsolni azt, és az üzenet megjelenjenek-e után azt.
-
-## <a name="templates"></a>Sablonok
-### <a name="azure-template-wont-deploy-to-azure-stack"></a>Azure-sablon alapján Azure verem nem telepítenek.
-Győződjön meg arról, hogy:
-
-* A sablon egy Microsoft Azure-szolgáltatás, amely már érhető el, vagy Azure verem megtekintés kell használnia.
-* A helyi Azure verem példány által támogatott az adott erőforrás használt API-kat, és hogy céloz meg egy érvényes helyet ("local" Azure verem csomagban, szemben az "USA keleti régiója" vagy "Dél-Indiában" az Azure-ban).
-* Tekintse át [Ez a cikk](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md) a Test-AzureRmResourceGroupDeployment a parancsmagokról, amely catch kisebb különbségek Azure Resource Manager szintaxist.
-
-Használhatja az Azure-verem sablonok már szerepel a [GitHub-tárházban](http://aka.ms/AzureStackGitHub/) segítséget nyújtanak a kezdéshez.
 
 ## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 ### <a name="default-image-and-gallery-item"></a>Alapértelmezett kép és a gyűjtemény elem
@@ -75,20 +65,6 @@ További az adatmegőrzési küszöbértékének és az igény visszaigénylés�
 ## <a name="storage"></a>Storage
 ### <a name="storage-reclamation"></a>Tárolási visszaigénylését
 Megjelennek a portálon regenerált kapacitást akár a 14 órát is igénybe vehet. Terület-visszanyerést attól függ, hogy számos tényező befolyásolja, többek között a használat százalékos belső tároló fájlok blokk blob-tárolóban. Ezért attól függően, hogy mennyi adat törlődik, nincs garancia a szemétgyűjtő futtatásakor kell visszaigényelt terület mennyisége.
-
-## <a name="powershell"></a>PowerShell
-### <a name="resource-providers-not-registered"></a>Erőforrás-szolgáltató nincs regisztrálva
-Bérlői előfizetések a PowerShell segítségével szeretne csatlakozni, megfigyelheti, hogy az erőforrás-szolgáltatók nincsenek automatikusan regisztrálva. Használja a [Connect modul](https://github.com/Azure/AzureStack-Tools/tree/master/Connect), vagy a következő parancsot a PowerShell (miután [telepítése és csatlakozás](azure-stack-connect-powershell.md) hez bérlőként): 
-  
-       Get-AzureRMResourceProvider | Register-AzureRmResourceProvider
-
-## <a name="cli"></a>parancssori felület
-
-* A parancssori felület interaktív módban Egytényezős a `az interactive` parancs még nem támogatott Azure-készletben.
-* Azure verem használható virtuálisgép-rendszerképek listájának lekéréséhez használja a `az vm images list --all` parancs helyett a `az vm image list` parancsot. Adja meg a `--all` beállítás gondoskodik arról, hogy a válasz csak az Azure-verem környezetben elérhető képek adja vissza. 
-* Az Azure-ban rendelkezésre álló virtuális gép lemezképének aliasok nem lehet Azure verem használható. Virtuálisgép-rendszerképek használata esetén a teljes URN paramétert kell használnia (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) helyett a kép alias. A URNmust származtatva felel meg a lemezkép jellemzőinek és a `az vm images list` parancsot.
-* Alapértelmezés szerint CLI 2.0 "Standard_DS1_v2" használja az alapértelmezett virtuálisgép-lemezkép mérete. Azonban ez a méret még nem érhető el az Azure-készletben, így, meg kell adnia a `--size` paraméter explicit módon, ha egy virtuális gépet hoz létre. Kaphat használatával Azure verem rendelkezésre álló virtuálisgép-méretek listáját a `az vm list-sizes --location <locationName>` parancsot.
-
 
 ## <a name="windows-azure-pack-connector"></a>Windows Azure Pack-összekötő
 * Ha Azure verem szoftverfejlesztői készlet telepítése után megváltoztatja a azurestackadmin fiók jelszavát, több felhőalapú mód már nem konfigurálhatja. Ezért hogy nem lehet kapcsolódni a Windows Azure Pack célkörnyezet.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: a65b50a90a67b718f2a0cdd8657194d9740b3bd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 251ce238b745734bdfb508b30097304a9a650a8c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service – ajánlott eljárások
 Ez a cikk foglalja össze az ajánlott eljárások a [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -40,7 +40,26 @@ Ha azt észleli az alkalmazás feldolgozó további CPU mint várt vagy nem ész
 "Statefull" vagy "állapotmentes" alkalmazások kapcsolatos információkért tekintse meg a videót: [méretezhető-végpontok Többrétegű alkalmazások tervezése a Microsoft Azure Web Apps](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). App Service méretezés és az automatikus skálázás beállításokkal kapcsolatos további információkért olvassa el: [egy webalkalmazás skálázása az Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>A szoftvercsatorna-erőforrások elfogytak, amikor
-Egy skálázását kimenő TCP-kapcsolatok gyakori oka klienskódtárait, amelyek nem felelnek meg ismét felhasználni, TCP-kapcsolatok, illetve a magasabb szintű protokoll, például a HTTP - Keep-Alive nem alkalmazhatók használatát. Tekintse át a könyvtárak, az App Service-csomag van konfigurálva vagy érhető el a kódban, a kimenő kapcsolatok hatékony használatának biztosításához az alkalmazások által hivatkozott dokumentációját. Is útmutatását library dokumentációjában megfelelő létrehozására és kiadás vagy karbantartási kapcsolatok megakadályozására elkerülése érdekében. Az ilyen ügyfelek szalagtárak vizsgálatokat végrehajtása közben folyamatban hatás mérsékelheti kiterjesztése több példánya.  
+Egy skálázását kimenő TCP-kapcsolatok gyakori oka klienskódtárait, amelyek nem felelnek meg ismét felhasználni, TCP-kapcsolatok, illetve a magasabb szintű protokoll, például a HTTP - Keep-Alive nem alkalmazhatók használatát. Tekintse át a könyvtárak, az App Service-csomag van konfigurálva vagy érhető el a kódban, a kimenő kapcsolatok hatékony használatának biztosításához az alkalmazások által hivatkozott dokumentációját. Is útmutatását library dokumentációjában megfelelő létrehozására és kiadás vagy karbantartási kapcsolatok megakadályozására elkerülése érdekében. Az ilyen ügyfelek szalagtárak vizsgálatokat végrehajtása közben folyamatban hatás mérsékelheti kiterjesztése több példánya.
+
+### <a name="nodejs-and-outgoing-http-requests"></a>NODE.js és kimenő http-kérelmek
+Node.js és sok kimenő http-kérelmek használata, ha HTTP - életben tartási kezelésével fontos valóban. Használhatja a [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` csomag könnyebb a kódban.
+
+Mindig kezelje a `http` választ, még akkor is, ha így tesz, nem a kezelő. A válasz nem kezeli megfelelően, ha a rendszer az alkalmazás végül elakadnak, mert nincs további sockets érhetők el.
+
+Például, ha használata a `http` vagy `https` csomag:
+
+```
+var request = https.request(options, function(response) {
+    response.on('data', function() { /* do nothing */ });
+});
+```
+
+Ha az App Service Linux több maggal rendelkező gépen fut, egy másik ajánlott úgy PM2 használható az alkalmazás végrehajtása több Node.js folyamat elindításához. Ehhez a tárolóhoz indítási parancs megadásával.
+
+Ha például négy példányok elindításához:
+
+`pm2 start /home/site/wwwroot/app.js --no-daemon -i 4`
 
 ## <a name="appbackup"></a>Ha az alkalmazás biztonsági mentés indítása sikertelen
 Miért alkalmazás biztonsági mentés hibája vannak-e a két leggyakoribb okok: Érvénytelen tárolási beállításokat, és érvénytelen adatbázis-konfiguráció. Ezek a hibák általában akkor fordulhat elő, ha vagy a tároló- és adatbázis-erőforrások módosításairól, hogyan férhet hozzá ezekhez az erőforrásokhoz (pl. hitelesítő adatokat a biztonsági mentés beállításait a kijelölt adatbázis frissítése) változások. Biztonsági mentés általában ütemezhető és hozzá kell férniük (a fájlok a biztonsági mentés írása) és a adatbázisok (a másolás és a biztonsági mentés szereplő tartalmának olvasása közben). Vagy erőforrásainak elérésére sikertelen eredményét konzisztens biztonsági mentés sikertelen lesz. 
