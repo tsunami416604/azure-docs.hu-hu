@@ -21,7 +21,7 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/12/2017
 ---
-# v2.0 protokoll - OAuth 2.0 Hitelesítésikód-folyamata
+# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 protokoll - OAuth 2.0 Hitelesítésikód-folyamata
 Az OAuth 2.0 hitelesítésengedélyezési kód a védett erőforrások, például webes API-k eléréséhez az eszköz a telepített alkalmazások is használható.  Az app model v2.0 megvalósítással OAuth 2.0 hozzáadhat bejelentkezhet, és a mobil- és asztali alkalmazásokhoz való hozzáférés API.  Ez az Útmutató nyelvtől független, és ismerteti, hogyan lehet üzeneteket küldjön és fogadjon HTTP a nyílt forráskódú kódtárai bármelyikét használata nélkül.
 
 > [!NOTE]
@@ -31,12 +31,12 @@ Az OAuth 2.0 hitelesítésengedélyezési kód a védett erőforrások, példáu
 
 Az OAuth 2.0 hitelesítésikód-folyamata a leírtak [az OAuth 2.0-s szabvány 4.1 szakasz](http://tools.ietf.org/html/rfc6749).  A legtöbb alkalmazástípusok, beleértve a hitelesítési és engedélyezési végrehajtásához használatos [webalkalmazások](active-directory-v2-flows.md#web-apps) és [natívan telepített alkalmazásokat](active-directory-v2-flows.md#mobile-and-native-apps).  Ez lehetővé teszi a biztonságosan megszerzésére access_tokens, amely a v2.0-végpontra használatával védett erőforrások eléréséhez használható alkalmazások.  
 
-## Protokoll diagramja
+## <a name="protocol-diagram"></a>Protokoll diagramja
 Magas szinten az egész hitelesítési folyamat natív/mobile alkalmazás néz ki egy kicsit:
 
 ![OAuth hitelesítési folyamata](../../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
-## Az engedélyezési kód kérése
+## <a name="request-an-authorization-code"></a>Az engedélyezési kód kérése
 A hitelesítésikód-folyamata kezdődik irányítja a felhasználót, hogy az ügyfél a `/authorize` végpont.  A kérelem az ügyfél azt jelzi, kell szerzi be a felhasználói engedélyek:
 
 ```
@@ -74,7 +74,7 @@ Ezen a ponton a kérni fogja a felhasználótól kell adnia a hitelesítő adata
 
 Miután a felhasználó hitelesíti és engedélyezi a hozzájárulási, a v2.0-végpontra ad vissza az alkalmazást a jelzett választ `redirect_uri`, az ismertetett módon a `response_mode` paraméter.
 
-#### A sikeres válasz
+#### <a name="successful-response"></a>A sikeres válasz
 A sikeres válasz használatával `response_mode=query` láthatóhoz hasonló:
 
 ```
@@ -88,7 +88,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | Kód |A authorization_code, amely az alkalmazás kéri. Az alkalmazás az engedélyezési kód segítségével olyan hozzáférési jogkivonatot célerőforrás igényelhetnek.  Authorization_codes nagyon rövid élettartamú, általában azok körülbelül 10 perc múlva lejár. |
 | state |Ha a kérelem egy állapot paramétert tartalmaz, ugyanazt az értéket meg kell jelennie a válasz. Az alkalmazás győződjön meg arról, hogy a kérés- és állapot értékei megegyeznek. |
 
-#### Hibaválaszba
+#### <a name="error-response"></a>Hibaválaszba
 Hibaválaszok is elküldheti a `redirect_uri` , az alkalmazás megfelelően tudja ezeket kezelni:
 
 ```
@@ -102,7 +102,7 @@ error=access_denied
 | error |Egy hiba kód karakterlánc, amely segítségével besorolni a felmerülő hibákat, és reagálni hibákat is használható. |
 | error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba okának azonosításához. |
 
-#### Engedélyezési végpont hibái hibakódok
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>Engedélyezési végpont hibái hibakódok
 A következő táblázat ismerteti a különböző hibakódok a visszaadható a `error` paramétere a hibaüzenetet.
 
 | Hibakód: | Leírás | Ügyfélművelet |
@@ -115,7 +115,7 @@ A következő táblázat ismerteti a különböző hibakódok a visszaadható a 
 | temporarily_unavailable |A kiszolgáló ideiglenesen jelenleg túl elfoglalt a kérelem kezelésére. |Próbálkozzon újra a kéréssel. Az ügyfélalkalmazás elmagyarázhatja a felhasználót, hogy egy ideiglenes állapot miatt késik a válaszában. |
 | invalid_resource |A cél erőforráson érvénytelen, mert nem létezik, az Azure AD a fájl nem található vagy nincs megfelelően konfigurálva. |Ez azt jelzi, hogy az erőforrás, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás kérheti a felhasználót az alkalmazás telepítése és az Azure AD hozzáadni utasítás. |
 
-## A kérelem egy hozzáférési jogkivonatot:
+## <a name="request-an-access-token"></a>A kérelem egy hozzáférési jogkivonatot:
 Most, hogy egy authorization_code jut hozzá, és a felhasználó a engedélyt kaptak, beváltani a `code` a egy `access_token` küldésével a kívánt erőforráshoz egy `POST` elküldeni a kérelmet a `/token` végpont:
 
 ```
@@ -148,7 +148,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri |Szükséges |Az azonos redirect_uri érték szerezni a authorization_code használttal. |
 | client_secret |a web Apps szükséges |Az alkalmazás az app-regisztrációs portálon létrehozott alkalmazáskulcsot.  Akkor kell nem használható natív alkalmazás, mert client_secrets megbízhatóan nem tárolható az eszközökön.  Akkor szükséges a webalkalmazások és webes API-k, amely képes a client_secret tárolja biztonságos helyen a kiszolgáló oldalán. |
 
-#### A sikeres válasz
+#### <a name="successful-response"></a>A sikeres válasz
 A sikeres token válasz hasonlóan fog kinézni:
 
 ```
@@ -169,7 +169,7 @@ A sikeres token válasz hasonlóan fog kinézni:
 | Hatókör |A hatókörök, amely a access_token érvényes. |
 | refresh_token |Az OAuth 2.0-s frissítési jogkivonat. Az alkalmazás képes használni a token szerezzen be további hozzáférési jogkivonatok az aktuális jogkivonat lejárata után is.  Refresh_tokens hosszú élettartamú, és erőforrásokhoz való hozzáférés megőrzése huzamosabb ideig használható.  További részletekért tekintse meg a [v2.0 jogkivonat referenciái](active-directory-v2-tokens.md). <br> **Megjegyzés:** csak a megadott if `offline_access` hatókör kérték. |
 | id_token |Az aláírás nélküli JSON webes jogkivonat (JWT). Az alkalmazás is base64Url dekódolni a bejelentkezett felhasználóval kapcsolatos információkat a token szegmensek. Az alkalmazás gyorsítótárazása az értékeket, és a megjelenítésükhöz, de azt nem igazolható a azokat bármilyen engedélyezési vagy a biztonsági határokat.  Id_tokens kapcsolatos további információk: a [v2.0 jogkivonat végponthivatkozás](active-directory-v2-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` hatókör kérték. |
-#### Hibaválaszba
+#### <a name="error-response"></a>Hibaválaszba
 Hibaválaszok hasonlóan fog kinézni:
 
 ```
@@ -194,7 +194,7 @@ Hibaválaszok hasonlóan fog kinézni:
 | trace_id |A kérelem, amelyek segítik a diagnosztika egyedi azonosítója. |
 | correlation_id |A kérelem, amelyek segítik a diagnosztika összetevői között egyedi azonosítója. |
 
-#### A token-végpont hibákat hibakódok
+#### <a name="error-codes-for-token-endpoint-errors"></a>A token-végpont hibákat hibakódok
 | Hibakód: | Leírás | Ügyfélművelet |
 | --- | --- | --- |
 | invalid_request |Protokollhiba történt, például a hiányzó kötelező paraméter. |Javítsa ki, és küldje el újra a kérelmet |
@@ -206,7 +206,7 @@ Hibaválaszok hasonlóan fog kinézni:
 | interaction_required |A kérelem felhasználói beavatkozást igényel. Például egy további hitelesítési lépésre szükség. |Próbálja megismételni a kérelmet, amelynek ugyanerre az erőforrásra. |
 | temporarily_unavailable |A kiszolgáló ideiglenesen jelenleg túl elfoglalt a kérelem kezelésére. |Próbálkozzon újra a kéréssel. Az ügyfélalkalmazás elmagyarázhatja a felhasználót, hogy egy ideiglenes állapot miatt késik a válaszában. |
 
-## A hozzáférési jogkivonat használata
+## <a name="use-the-access-token"></a>A hozzáférési jogkivonat használata
 Most, hogy sikeresen jut hozzá egy `access_token`, azzal, hogy belefoglalja azt a webes API-k intézett kérésekben a token is használhatja a `Authorization` fejléc:
 
 > [!TIP]
@@ -220,7 +220,7 @@ Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## A hozzáférési jogkivonat frissítése
+## <a name="refresh-the-access-token"></a>A hozzáférési jogkivonat frissítése
 Access_tokens rövid élt, és frissítenie kell őket után folytatja az erőforrások eléréséhez.  Megteheti egy másik elküldése `POST` elküldeni a kérelmet a `/token` végpont, hogy ezúttal megadása a `refresh_token` ahelyett, hogy a `code`:
 
 ```
@@ -253,7 +253,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri |Szükséges |Az azonos redirect_uri érték szerezni a authorization_code használttal. |
 | client_secret |a web Apps szükséges |Az alkalmazás az app-regisztrációs portálon létrehozott alkalmazáskulcsot.  Akkor kell nem használható natív alkalmazás, mert client_secrets megbízhatóan nem tárolható az eszközökön.  Akkor szükséges a webalkalmazások és webes API-k, amely képes a client_secret tárolja biztonságos helyen a kiszolgáló oldalán. |
 
-#### A sikeres válasz
+#### <a name="successful-response"></a>A sikeres válasz
 A sikeres token válasz hasonlóan fog kinézni:
 
 ```
@@ -275,7 +275,7 @@ A sikeres token válasz hasonlóan fog kinézni:
 | refresh_token |Egy új OAuth 2.0-s frissítési jogkivonat. Az újonnan megvásárolt frissítési jogkivonat annak érdekében, hogy a frissítési jogkivonatokat továbbra is érvényesek, amíg a régi frissítési jogkivonat kell cserélni. <br> **Megjegyzés:** csak a megadott if `offline_access` hatókör kérték. |
 | id_token |Az aláírás nélküli JSON webes jogkivonat (JWT). Az alkalmazás is base64Url dekódolni a bejelentkezett felhasználóval kapcsolatos információkat a token szegmensek. Az alkalmazás gyorsítótárazása az értékeket, és a megjelenítésükhöz, de azt nem igazolható a azokat bármilyen engedélyezési vagy a biztonsági határokat.  Id_tokens kapcsolatos további információk: a [v2.0 jogkivonat végponthivatkozás](active-directory-v2-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` hatókör kérték. |
 
-#### Hibaválaszba
+#### <a name="error-response"></a>Hibaválaszba
 ```
 {
   "error": "invalid_scope",

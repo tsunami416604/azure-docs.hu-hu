@@ -21,10 +21,10 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Az Azure Active Directory hitelesítési protokolljai
+# <a name="azure-active-directory-authentication-protocols"></a>Az Azure Active Directory hitelesítési protokolljai
 Azure Active Directory (Azure AD) támogatja a legelterjedtebb hitelesítési és engedélyezési protokollokat számos. Ez a szakasz témakörei ismertetik a támogatott protokollok és a végrehajtása az Azure ad-ben. A témakörök támogatott jogcímtípusok, bevezetést használatát az összevonási metaadatok áttekintését tartalmazza, részletes OAuth 2.0-s. SAML 2.0 protokoll referenciadokumentációt és a hibaelhárítási szakaszt.
 
-## Hitelesítési protokollok cikkek és referencia
+## <a name="authentication-protocols-articles-and-reference"></a>Hitelesítési protokollok cikkek és referencia
 * [Fontos információk kapcsolatos aláírási kulcs átfordulási az Azure AD](active-directory-signing-key-rollover.md) – Azure AD-aláíró kulcsváltás ütemben történik, módosításokat végezhet automatikusan frissíteni a kulcsot és arról, hogyan frissítse a leggyakrabban használt alkalmazás-forgatókönyveket ismertető ismertetése.
 * [Támogatott Token- és jogcímtípusok](active-directory-token-and-claims.md) – további információk a jogcímek, az Azure AD kibocsát jogkivonatokat.
 * [Az összevonási metaadatok](active-directory-federation-metadata.md) -megtudhatja, hogyan keresse meg és értelmezni a metaadat-dokumentumok, amely az Azure AD-hoz létre.
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) támogatja a legelterjedtebb hitelesítési é
 * [Szolgáltatások közötti hívások On-Behalf-Of folyamat](active-directory-protocols-oauth-on-behalf-of.md) -szolgáltatások közötti hívások OAuth 2.0 On-Behalf-Of adatfolyam használata.
 * [SAML protokoll referenciája](active-directory-saml-protocol-reference.md) -további tudnivalók az Azure AD egyszeri bejelentkezéshez, és egyetlen Sign-out SAML profilok.
 
-## Lásd még:
+## <a name="see-also"></a>Lásd még:
 [Az Azure Active Directory fejlesztői útmutatója](active-directory-developers-guide.md)
 
 [Az Active Directory-Kódminták](active-directory-code-samples.md)

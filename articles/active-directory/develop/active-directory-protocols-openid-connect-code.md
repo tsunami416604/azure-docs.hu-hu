@@ -21,7 +21,7 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Az OpenID Connect és az Azure Active Directory használatával webes alkalmazásokhoz való hozzáférés engedélyezésére
+# <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Az OpenID Connect és az Azure Active Directory használatával webes alkalmazásokhoz való hozzáférés engedélyezésére
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) egy egyszerű identitásrétegének az OAuth 2.0 protokollt platformra épül. OAuth 2.0 meghatározása mechanizmusok az beszerzése és használata **hozzáférési jogkivonatok** hozzáférni védett erőforrásokhoz, de azok nem határoznak meg szabványos módszerek azonosító adatok megadása. Hitelesítési OpenID Connect valósítja meg az OAuth 2.0 hitelesítési folyamat részeként. Információt ad a végfelhasználónak formájában egy `id_token` , amely ellenőrzi a felhasználó és a felhasználó alapvető profiladataihoz tájékoztatást.
 
 Az ajánlott megoldás OpenID Connect, ha böngészőalapú hozzáférést biztosít, és a kiszolgálón futtatott webalkalmazás.
@@ -29,12 +29,12 @@ Az ajánlott megoldás OpenID Connect, ha böngészőalapú hozzáférést bizto
 
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 
-## Használja az OpenID Connect hitelesítési folyamat
+## <a name="authentication-flow-using-openid-connect"></a>Használja az OpenID Connect hitelesítési folyamat
 A legalapvetőbb bejelentkezési folyamata a következő lépéseket tartalmazza, mert azok az alábbiakban ismertetettek.
 
 ![OpenId Connect hitelesítési folyamat](media/active-directory-protocols-openid-connect-code/active-directory-oauth-code-flow-web-app.png)
 
-## OpenID Connect metaadat-dokumentum
+## <a name="openid-connect-metadata-document"></a>OpenID Connect metaadat-dokumentum
 
 A legtöbb alkalmazás bejelentkezési végrehajtásához szükséges adatokat tartalmazó metaadat-dokumentum OpenID Connect ismerteti. Ide tartoznak például az URL-címek használatára és a szolgáltatás nyilvános aláírási kulcsok helyét. Az OpenID Connect metaadat-dokumentum helyen találhatók:
 
@@ -58,7 +58,7 @@ Egy egyszerű JavaScript Object Notation (JSON) dokumentum metaadatai. Tekintse 
 }
 ```
 
-## A bejelentkezési kérelem elküldése
+## <a name="send-the-sign-in-request"></a>A bejelentkezési kérelem elküldése
 Ha a webes alkalmazás kell hitelesíteni a felhasználót, azt kell irányítani a felhasználót, hogy a `/authorize` végpont. A kérelem hasonlít az első szakasza a [OAuth 2.0 hitelesítési kód Flow](active-directory-protocols-oauth-code.md), néhány fontos különbség a:
 
 * A kérelem tartalmaznia kell a hatókör `openid` a a `scope` paraméter.
@@ -95,7 +95,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 Ezen a ponton a felhasználónak kapcsolatba kell adnia a hitelesítő adatait, és a hitelesítés végrehajtásához.
 
-### Mintaválasz
+### <a name="sample-response"></a>Mintaválasz
 A minta választ, a felhasználó rendelkezik hitelesítése után nézhet ki:
 
 ```
@@ -111,7 +111,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | id_token |A `id_token` , amely az alkalmazás kéri. Használhatja a `id_token` ellenőrzi a felhasználó identitását, és a felhasználói munkamenet elindításához. |
 | state |A kérelem is a biztonságijogkivonat-válaszban visszaadott szerepel érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások megelőzése](http://tools.ietf.org/html/rfc6749#section-10.12).  Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a is használatos. |
 
-### Hibaválaszba
+### <a name="error-response"></a>Hibaválaszba
 Hibaválaszok is elküldheti a `redirect_uri` , az alkalmazás megfelelően tudja ezeket kezelni:
 
 ```
@@ -127,7 +127,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | error |Egy hiba kód karakterlánc, amely segítségével besorolni a felmerülő hibákat, és reagálni hibákat is használható. |
 | error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba okának azonosításához. |
 
-#### Engedélyezési végpont hibái hibakódok
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>Engedélyezési végpont hibái hibakódok
 A következő táblázat ismerteti a különböző hibakódok a visszaadható a `error` paramétere a hibaüzenetet.
 
 | Hibakód: | Leírás | Ügyfélművelet |
@@ -140,7 +140,7 @@ A következő táblázat ismerteti a különböző hibakódok a visszaadható a 
 | temporarily_unavailable |A kiszolgáló ideiglenesen jelenleg túl elfoglalt a kérelem kezelésére. |Próbálkozzon újra a kéréssel. Az ügyfélalkalmazás elmagyarázhatja a felhasználót, hogy egy ideiglenes állapot miatt késik a válaszában. |
 | invalid_resource |A cél erőforráson érvénytelen, mert nem létezik, az Azure AD a fájl nem található vagy nincs megfelelően konfigurálva. |Ez azt jelzi, hogy az erőforrás, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás kérheti a felhasználót az alkalmazás telepítése és az Azure AD hozzáadni utasítás. |
 
-## A id_token ellenőrzése
+## <a name="validate-the-idtoken"></a>A id_token ellenőrzése
 Csak fogadó egy `id_token` túl kicsi a felhasználó; kell az aláírás érvényesítése és a jogcímek, az ellenőrzése a `id_token` / az alkalmazás követelményeinek. Az Azure AD-végpont JSON Web Tokens (JWTs) és a nyilvános kulcsú hitelesítésen használja a jogkivonatok aláírásához, és győződjön meg arról, hogy azok érvényesek.
 
 Ha szeretné ellenőrizni a `id_token` ügyfél kódot, de általános gyakorlat, hogy küldjön a `id_token` háttérkiszolgálóhoz, és végezze el az érvényesítési hiba. Amennyiben Ön aláírását, valamint ellenőrizte a `id_token`, van néhány jogcímeket kell ellenőrizni.
@@ -153,7 +153,7 @@ Először is célszerű további ellenőrizhesse a forgatókönyvtől függően.
 
 Ellenőrzése után a `id_token`, a felhasználói munkamenet elindításához, és a jogcímek használata a `id_token` megszerezni az alkalmazásban a felhasználó adatait. Ez az információ alkalmas megjelenített, rekordok, engedélyek, stb. A jogkivonat-típusok és a jogcímek kapcsolatos további információkért olvassa el a [támogatott jogkivonat és jogcímtípusok](active-directory-token-and-claims.md).
 
-## Kijelentkezési kérés küldése
+## <a name="send-a-sign-out-request"></a>Kijelentkezési kérés küldése
 Szeretné beléptetni a felhasználót az alkalmazásból, esetén nem elegendő az alkalmazás cookie-k vagy más célból törölni kívánja a felhasználói munkamenet.  Is kell átirányítja a felhasználót, hogy a `end_session_endpoint` a kijelentkezési.  Ha nem sikerül, a felhasználó fog tudni újból hitelesítésre az alkalmazáshoz a hitelesítő adatok újbóli megadása nélkül mert érvényes egyszeri bejelentkezés munkamenetet az Azure AD-végponthoz rendelkeznek.
 
 Egyszerűen irányíthatja át a felhasználót, hogy a `end_session_endpoint` az OpenID Connect metaadat-dokumentum szerepel:
@@ -168,7 +168,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | --- | --- | --- |
 | post_logout_redirect_uri |Ajánlott |Az URL-címet, a felhasználó sikeres kijelentkezési után a rendszer átirányítja.  Ha nem tartalmazza, a felhasználó egy általános üzenet jelenik meg. |
 
-## Egyszeri kijelentkezés
+## <a name="single-sign-out"></a>Egyszeri kijelentkezés
 Ha átirányítja a felhasználót, hogy a `end_session_endpoint`, az Azure AD törli a felhasználói munkamenetet a böngészőből. Azonban a felhasználó esetleg még be van jelentkezve más alkalmazásokhoz az Azure AD használatára a hitelesítéshez. Ahhoz, hogy ezek az alkalmazások a felhasználó egyidejűleg jelentkezzen ki, az Azure AD egy HTTP GET kérést küld a regisztrált `LogoutUrl` , a felhasználó van éppen bejelentkezve az alkalmazásokat. Alkalmazások bármely, amely azonosítja a felhasználói munkamenet és vissza ehhez a kérelemhez kell válaszolnia a `200` válasz.  Ha támogatja az egyszeri bejelentkezési ki az alkalmazásban, meg kell-e valósítania például egy `LogoutUrl` az alkalmazás kódjában.  Beállíthatja a `LogoutUrl` az Azure-portálon:
 
 1. Keresse meg a [Azure-portálon](https://portal.azure.com).
@@ -176,10 +176,10 @@ Ha átirányítja a felhasználót, hogy a `end_session_endpoint`, az Azure AD t
 3. A bal oldali navigációs panelen válassza ki a **Azure Active Directory**, majd válassza **App regisztrációk** válassza ki az alkalmazást.
 4. Kattintson a **tulajdonságok** keresse meg a **kijelentkezési URL-cím** szövegmezőben. 
 
-## Token beszerzése
+## <a name="token-acquisition"></a>Token beszerzése
 Sok webalkalmazások nem csak beléptetni a felhasználót, de emellett egy webszolgáltatás-bővítmény OAuth protokollt használó felhasználó nevében kell. Ebben a forgatókönyvben egyesíti az OpenID Connect felhasználói hitelesítés során egyidejűleg az beszerzése egy `authorization_code` , amely a beolvasandó használható `access_tokens` az OAuth hitelesítési kód Flow használatával.
 
-## A hozzáférési jogkivonatok lekérésére
+## <a name="get-access-tokens"></a>A hozzáférési jogkivonatok lekérésére
 Jogkivonatot szerezni, módosítania kell a bejelentkezési kérelem a fent:
 
 ```
@@ -198,7 +198,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 
 Többek között a engedélyhatókörök a kérelem és használatával `response_type=code+id_token`, a `authorize` végpont biztosítja, hogy a felhasználó hozzájárult szerepelnek az engedélyeket a `scope` lekérdezésparaméter, és térjen vissza az alkalmazás egy engedélyezési kód a helyszíni Exchange olyan hozzáférési jogkivonatot.
 
-### A sikeres válasz
+### <a name="successful-response"></a>A sikeres válasz
 A sikeres válasz használatával `response_mode=form_post` láthatóhoz hasonló:
 
 ```
@@ -215,7 +215,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | Kód |A authorization_code, amely az alkalmazás kéri. Az alkalmazás az engedélyezési kód segítségével olyan hozzáférési jogkivonatot célerőforrás igényelhetnek. Authorization_codes rövid élt, és általában körülbelül 10 perc múlva lejár. |
 | state |Ha a kérelem egy állapot paramétert tartalmaz, ugyanazt az értéket meg kell jelennie a válasz. Az alkalmazás győződjön meg arról, hogy a kérés- és állapot értékei megegyeznek. |
 
-### Hibaválaszba
+### <a name="error-response"></a>Hibaválaszba
 Hibaválaszok is elküldheti a `redirect_uri` , az alkalmazás megfelelően tudja ezeket kezelni:
 
 ```

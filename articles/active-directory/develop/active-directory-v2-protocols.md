@@ -21,7 +21,7 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# v2.0 protokoll - OAuth 2.0-s & OpenID Connect
+# <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoll - OAuth 2.0-s & OpenID Connect
 A v2.0-végpontra használhatja az Azure AD identity,--szolgáltatás az iparági szabványos protokollok, OpenID Connectet és az OAuth 2.0-s.  Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések vannak ezek a protokollok minden két közötti lehet.  Az adatok itt hasznos lesz, ha úgy dönt, hogy a kód írása útján tájékoztatjuk & kezelési HTTP-kérelmekre, vagy használja a 3. fél nyissa meg a forrás könyvtár, nem pedig a nyílt forráskódú szalagtárak egyikével.
 <!-- TODO: Need link to libraries above -->
 
@@ -30,7 +30,7 @@ A v2.0-végpontra használhatja az Azure AD identity,--szolgáltatás az iparág
 >
 >
 
-## Az alapok
+## <a name="the-basics"></a>Az alapok
 Szinte minden OAuth & OpenID Connect adatfolyamok nincsenek négy felek az exchange részt:
 
 ![OAuth 2.0 szerepkörök](../../media/active-directory-v2-flows/protocols_roles.png)
@@ -40,7 +40,7 @@ Szinte minden OAuth & OpenID Connect adatfolyamok nincsenek négy felek az excha
 * A **OAuth ügyfél** az alkalmazás azonosítja az alkalmazás azonosítóját.  Ez általában a felet, a végfelhasználó kommunikál, és jogkivonatok kér a hitelesítési kiszolgáló.  Az ügyfél által az erőforrás tulajdonosa erőforrás eléréséhez engedéllyel kell rendelkezni.
 * A **erőforrás-kiszolgáló** van, amelyben az erőforrás vagy adatok található.  A hitelesítési kiszolgáló biztonságosan helyszerepkörre, és az OAuth-ügyfél megbízik, és a tulajdonosi access_tokens segítségével győződjön meg arról, hogy az erőforráshoz való hozzáférés is adható.
 
-## Alkalmazás regisztrálása
+## <a name="app-registration"></a>Alkalmazás regisztrálása
 Minden alkalmazást, amely használja a v2.0-végponttal kell regisztrálható [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) előtt OAuth vagy az OpenID Connect használhatják.  Az alkalmazásregisztrációs művelet során fog gyűjteni & néhány értéket hozzárendelni az alkalmazást:
 
 * Egy **alkalmazásazonosító** , amely egyedileg azonosítja az alkalmazást
@@ -49,7 +49,7 @@ Minden alkalmazást, amely használja a v2.0-végponttal kell regisztrálható [
 
 További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](active-directory-v2-app-registration.md).
 
-## Végpontok
+## <a name="endpoints"></a>Végpontok
 Regisztrálás után az alkalmazás kommunikál az Azure AD által küldött kérésekkel a v2.0-végponttal:
 
 ```
@@ -68,12 +68,12 @@ Ha a `{tenant}` négy különböző értékek valamelyikét hajthatja végre:
 
 További információ a fenti végpontokkal kezelésének módját válasszon az alábbi adott alkalmazás típust.
 
-## Tokenek
+## <a name="tokens"></a>Tokenek
 OAuth 2.0 és az OpenID Connect v2.0 végrehajtásának kihasználása kiterjedt tulajdonosi jogkivonatok, beleértve a tulajdonosi jogkivonatok JWTs ábrázolva. Egy tulajdonosi jogkivonatot egy egyszerűsített biztonsági jogkivonatot, amely védett erőforrásokhoz való hozzáférést a "tulajdonos". Abban az értelemben a "tulajdonos", amely a token is jelenthet félre. Egy entitás először hitelesítenie kell magát a tulajdonosi jogkivonattal, fogadni az Azure AD, ha a szükséges lépéseket a rendszer nem hajtja végre a lexikális elem szerepel az átvitel, illetve tárolás biztosításához, ha hozzá, és egy nem kívánt félnek használják. Míg néhány biztonsági jogkivonatokat egy beépített mechanizmust meggátolja, hogy a nem hitelesített felek használja őket, a tulajdonosi jogkivonatok nem rendelkezik a mechanizmus, és kell szállítani, például a transport layer security (HTTPS) biztonságos csatorna. Egy tulajdonosi jogkivonatot továbbított szövegként, ha egy man-a a középső támadás segítségével egy rosszindulatú fél jogkivonat és a védett erőforrásokhoz való illetéktelen hozzáférés használni. Az azonos biztonsági elveket alkalmazza, ha a tárolást, vagy a gyorsítótárazás tulajdonosi jogkivonatok későbbi használatra. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságos módon tárolja a tulajdonosi jogkivonatokhoz. További biztonsági szempontok a tulajdonosi jogkivonatok, lásd: [RFC 6750 szakasz 5](http://tools.ietf.org/html/rfc6750).
 
 További részletek a jogkivonatok a v2.0-végpontra használt különböző típusú érhető el [a v2.0 jogkivonat referenciái végpont](active-directory-v2-tokens.md).
 
-## Protokollok
+## <a name="protocols"></a>Protokollok
 Ha készen áll a talál néhány példa kérelmeket, az egyik első lépései az alábbi oktatóanyagok.  Mindegyik megfelel egy adott hitelesítési forgatókönyv.  Ha a jobb oldali folyamata megállapításához segítségre van szüksége, tekintse meg [milyen típusú alkalmazásokat hozhat létre a v2.0 rendelkező](active-directory-v2-flows.md).
 
 * [Mobileszköz- és natív alkalmazás OAuth 2.0-val hozhat létre.](active-directory-v2-protocols-oauth-code.md)

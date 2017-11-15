@@ -19,7 +19,7 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-## Alkalmazás regisztrálása az AD-bérlőben
+## <a name="register-your-application-with-your-ad-tenant"></a>Alkalmazás regisztrálása az AD-bérlőben
 Először regisztrálnia kell az alkalmazást az Azure Active Directory- (Azure AD-) bérlőben. Ekkor kapni fog egy alkalmazásazonosítót az alkalmazáshoz, amely immár képes jogkivonatokat fogadni.
 
 * Jelentkezzen be az [Azure portálra](https://portal.azure.com).

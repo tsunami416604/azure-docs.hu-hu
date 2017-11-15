@@ -22,7 +22,7 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Hogyan használja az Azure Active Directory a az SAML protokoll
+# <a name="how-azure-active-directory-uses-the-saml-protocol"></a>Hogyan használja az Azure Active Directory a az SAML protokoll
 Az Azure Active Directory (Azure AD) használja a SAML 2.0 protokoll egy egyszeri bejelentkezéses élményt biztosíthat a felhasználók alkalmazások esetén. A [egyszeri bejelentkezés](active-directory-single-sign-on-protocol-reference.md) és [kijelentkezési egyetlen](active-directory-single-sign-out-protocol-reference.md) SAML-profilok az Azure AD azt ismertetik, hogyan SAML helyességi feltételek, protokollok és kötések fogja használni az identitás-szolgáltató szolgáltatás.
 
 SAML protokoll megköveteli az identitásszolgáltató (az Azure AD) és a szolgáltató (az alkalmazás) maguk vonatkozó adatokat.

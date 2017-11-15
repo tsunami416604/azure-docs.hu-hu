@@ -20,7 +20,7 @@ ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
 ---
-# Olyan kommunikációs protokollt hivatkozhat - a
+# <a name="reference---choose-a-communication-protocol"></a>Olyan kommunikációs protokollt hivatkozhat - a
 
 Az IoT-központ lehetővé teszi, hogy az eszköz a következő protokollok eszközoldali kommunikációra használja:
 
@@ -51,7 +51,7 @@ Ha úgy dönt, hogy a eszközoldali kommunikációs protokollja, vegye figyelemb
 > [!WARNING]
 > HTTPS használata esetén minden egyes eszköz kell a lekérésének felhő-eszközre küldött üzenetek 25 percenként vagy több. Azonban során fejlesztési, a rendszer, és kérdezze le a gyakrabban 25 percenként elfogadható.
 
-## Portszámok
+## <a name="port-numbers"></a>Portszámok
 
 Eszközök képesek kommunikálni az Azure-ban a különböző protokollok IoT-központot. A választott protokoll jellemzően a megoldás a meghatározott követelmények vezérlik. A következő táblázat az eszközök egy adott protokollt használhatják nyitva kell lennie a kimenő portokat sorolja fel:
 
@@ -66,7 +66,7 @@ Eszközök képesek kommunikálni az Azure-ban a különböző protokollok IoT-k
 Miután létrehozta az IoT-központ Azure-régióban, az IoT hub megtartja ugyanazt a címet, hogy az IoT-központ teljes. Azonban ha a Microsoft szolgáltatás-minőségi fenntartásához különböző méretezési egység az IoT hub kerül, majd ezt a jogosultságot egy új IP-címet.
 
 
-## Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hogyan IoT-központ megvalósítja a MQTT protokoll kapcsolatos további információkért lásd: [kommunikáljon az IoT hub MQTT protokollal a][lnk-mqtt-support].
 
