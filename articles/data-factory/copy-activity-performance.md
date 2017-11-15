@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/13/2017
 ms.author: jingwang
-ms.openlocfilehash: b0351e4c4dcf19f9e4b6ec11c59c4dd00f0013a2
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 841e053418dedb6b41262d1277ab4bdc9d4800c6
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -88,7 +88,7 @@ A **felhő adatok adatátviteli egység (DMU)** egy mérték, amely jelöli az (
 
 | Másolja át a forgatókönyvben | Szolgáltatás által meghatározott alapértelmezett DMUs |
 |:--- |:--- |
-| Adatok másolása a fájlalapú tárolók között | 4 – 16 számát és a fájlok méretétől függően. |
+| Adatok másolása a fájlalapú tárolók között | 4 – 32 számát és a fájlok méretétől függően. |
 | Minden egyéb másolatot forgatókönyvek | 4 |
 
 Ez az alapértelmezett felülbírálásához adjon meg értéket a **cloudDataMovementUnits** tulajdonság az alábbiak szerint. A **engedélyezett értékek** a a **cloudDataMovementUnits** tulajdonság, 2, 4, 8, 16 és 32. A **felhő DMUs tényleges száma** egyenlő vagy kisebb, mint a konfigurált érték, attól függően, hogy a adatmintát, hogy használja-e a másolási művelet futásidőben. Egy adott másolási forrását, és a fogadó további egységek konfigurálásakor kaphat jobb teljesítménye szintjét kapcsolatos információk: a [teljesítményfigyelési](#performance-reference).
@@ -96,7 +96,7 @@ Ez az alapértelmezett felülbírálásához adjon meg értéket a **cloudDataMo
 Minden egyes példányra, futtassa a másolási tevékenység során kimenet, amikor egy figyelése, futtassa a ténylegesen használt felhő adatok adatátviteli egység tekintheti meg. További részletek a [figyelése másolása](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Ha további felhőalapú DMUs magasabb átviteli van szüksége, forduljon a [az Azure támogatási](https://azure.microsoft.com/support/). 8 beállítása, a fenti jelenleg működik csak akkor, ha Ön **több fájlok másolását a Blob storage/Data Lake Store/Amazon S3/felhő FTP/felhő SFTP bármely más felhőalapú adattárolókhoz.**.
+> Ha további felhőalapú DMUs magasabb átviteli van szüksége, forduljon a [az Azure támogatási](https://azure.microsoft.com/support/). 8 beállítása, a fenti jelenleg működik csak akkor, ha Ön **több fájlok másolását a Blob storage/Data Lake Store/Amazon S3/felhő FTP/felhő SFTP bármely más felhőalapú adattárolókhoz**.
 >
 
 **Példa**
@@ -133,7 +133,7 @@ Minden egyes futtatása másolási tevékenységhez adat-előállító száma p�
 
 | Másolja át a forgatókönyvben | Alapértelmezett párhuzamos példányszám szolgáltatás határozza meg |
 | --- | --- |
-| Adatok másolása a fájlalapú tárolók között |1 és 32. A fájlok és a felhő adatok adatátviteli egység (DMUs) átmásolhatja az adatok között két felhőalapú adattároló vagy a fizikai konfigurációját a Self-hosted integrációs futásidejű gép méretétől függ. |
+| Adatok másolása a fájlalapú tárolók között |1 és 64. A fájlok és a felhő adatok adatátviteli egység (DMUs) átmásolhatja az adatok között két felhőalapú adattároló vagy a fizikai konfigurációját a Self-hosted integrációs futásidejű gép méretétől függ. |
 | Adatok másolása az összes adatforrás adattár az Azure Table storage |4 |
 | Minden egyéb másolatot forgatókönyvek |1 |
 
