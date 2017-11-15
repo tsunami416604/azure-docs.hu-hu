@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: ea0cf7ad074f95c2b49a92f9a8e32270a1d39b3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50a965f9773524a36bedc3d040bf1a1ca391507f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával
 Miután egy irányítópultot, tegye közzé, és megoszthatják más felhasználókkal a szervezetében. Engedélyezi a többi Azure használatával az irányítópult megtekintéséhez [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md). Egy felhasználó vagy csoport számára hozzárendelése egy szerepkörhöz, és ez a szerepkör határozza meg, hogy ezek a felhasználók megtekintheti és módosíthatja a közzétett irányítópulton. 
@@ -35,7 +35,7 @@ A szerepköralapú hozzáférés-vezérlés (RBAC), felhasználók hozzárendelh
 
 * előfizetést
 * erőforráscsoport
-* Erőforrás
+* erőforrás
 
 A megadott engedélyeknek örökölt le az erőforrás-előfizetésből. A közzétett irányítópulton erőforrás. Emiatt előfordulhat, hogy már felhasználók rendelve az előfizetéshez tartozó szerepkörök, amelyek a közzétett irányítópult is működik. 
 
@@ -44,7 +44,7 @@ A megadott engedélyeknek örökölt le az erőforrás-előfizetésből. A közz
 Azonban akkor is hozzárendelheti engedélyek több irányítópultokat tartalmazó erőforráscsoportot, vagy egy egyéni irányítópultot. Dönthet például úgy, hogy a felhasználók egy csoportjánál kell korlátozott engedélyekkel az előfizetés, de nagyobb mértékű hozzáférést egy adott irányítópult között. Ezek a felhasználók hozzárendelése az irányítópult a szerepkörhöz. 
 
 ## <a name="publish-dashboard"></a>Irányítópult közzététele
-Tegyük fel, hogy az előfizetésben a felhasználók egy csoportjánál megosztani kívánt irányítópult beállítása után. Az alábbi lépéseket jelzik a tárolási kezelők nevű egyéni csoport, de nevet adhat a csoport függetlenül szeretné. Az Active Directory-csoport létrehozása és a csoporthoz tartozó felhasználók hozzáadásával kapcsolatos információkért lásd: [csoportkezelés az Azure Active Directory](../active-directory/active-directory-accessmanagement-manage-groups.md).
+Tegyük fel, hogy az előfizetésben a felhasználók egy csoportjánál megosztani kívánt irányítópult beállítása után. Az alábbi lépéseket jelzik a tárolási kezelők nevű egyéni csoport, de nevet adhat a csoport függetlenül szeretné. Az Active Directory-csoport létrehozása és a csoporthoz tartozó felhasználók hozzáadásával kapcsolatos információkért lásd: [csoportkezelés az Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md).
 
 1. Az irányítópulton, válassza ki a **megosztás**.
    

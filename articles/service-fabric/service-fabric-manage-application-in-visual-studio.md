@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81814ef07cfab06855b3bfbf0eb6ef51b8dfce4f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Visual Studio segítségével egyszerűsítheti az írást, és a Service Fabric-alkalmazások kezelése
 Az Azure Service Fabric-alkalmazások és szolgáltatások Visual Studio alkalmazással kezelheti. Miután megismerte [beállította a fejlesztőkörnyezetet](service-fabric-get-started.md), használhatja a Visual Studio Service Fabric-alkalmazások létrehozása, adja hozzá a szolgáltatásokhoz, vagy a csomag, regisztrálása és alkalmazások telepítése a helyi fejlesztési fürtöt.
@@ -32,7 +32,7 @@ Alapértelmezés szerint az alkalmazás központi telepítése egyesíti be egy 
 4. Eltávolítani a alkalmazáspéldányok fut
 5. Az alkalmazáspéldány létrehozása
 
-A Visual Studio lenyomásával **F5** telepíti az alkalmazást, és csatolja a hibakereső alkalmazás összes példányát. Használhat **Ctrl + F5** nem hibakeresés, illetve hogy az alkalmazás központi telepítéséről is közzéteheti a helyi vagy távoli fürt a közzétételi profil használatával. További információkért lásd: [távoli fürtre alkalmazás közzététele a Visual Studio használatával](service-fabric-publish-app-remote-cluster.md).
+A Visual Studio lenyomásával **F5** telepíti az alkalmazást, és csatolja a hibakereső alkalmazás összes példányát. Használhat **Ctrl + F5** nem hibakeresés, illetve hogy az alkalmazás központi telepítéséről is közzéteheti a helyi vagy távoli fürt a közzétételi profil használatával. 
 
 ### <a name="application-debug-mode"></a>Alkalmazás hibakeresési módban
 A Visual Studio adja meg a tulajdonságot, **alkalmazás hibakeresési módban**, amely meghatározza, hogyan szeretné kezelni az alkalmazás központi telepítésének részeként a Hibakeresés Visual Studios.

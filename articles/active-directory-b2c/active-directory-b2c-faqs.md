@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: bed51dc1216b40f6602fae6d32bc8bd7aa517605
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 45ae4ab4c832e7537e6ee78c32603734fa64ad86
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -57,7 +57,7 @@ Nem, az alkalmazás bárhol (a felhőbeli vagy helyszíni) tárolhatja. Minden A
 "Az Azure AD B2C" megnyitása az Azure-portálon a bal oldali menüjében, előtt át kell váltania a kezelni kívánt könyvtárba.  Váltson a könyvtárak kattintson a jobb felső sarkában az Azure-portálon identitásra, majd válasszon egy könyvtárat, a legördülő lista, amely akkor jelenik meg.  A részletes lemezképekkel, lásd: [és az Azure AD B2C beállítások lép](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Hogyan ellenőrző e-mailek testre (a tartalom és a "származó:" mező) az Azure AD B2C által küldött?
-Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/active-directory-add-company-branding.md) a tartalom az ellenőrző e-mailek testreszabásához. Pontosabban a két elem az e-mailek testre szabható:
+Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/customize-branding.md) a tartalom az ellenőrző e-mailek testreszabásához. Pontosabban a két elem az e-mailek testre szabható:
 
 * **A szalagcím emblémája**: az alsó sarokban látható.
 * **Háttérszín**: felső részén látható.
@@ -98,9 +98,9 @@ Olvassa el ebben a cikkben [külső identitások](../active-directory/active-dir
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Milyen jelentéskészítési és a naplózási szolgáltatások az Azure AD B2C nyújt? Vannak ugyanaz, mint a prémium szintű Azure AD?
 Az Azure AD B2C nem, nem támogatja ugyanazokat a jelentések szerint az Azure AD Premium. Vannak azonban sok commonalities:
 
-* A bejelentkezési jelentései a minden egyes bejelentkezés csökkentett adatokkal rekordja.
-* Naplózási jelentések érhetők el az Azure portál, Azure Active Directory > tevékenység-Naplók > válassza a B2C és alkalmazni kívánt szűrőket. A felügyeleti tevékenység, valamint alkalmazástevékenységhez tartoznak. 
-* Azon felhasználók számát, a bejelentkezések száma és a kötet MFA vonatkozó használati jelentés érhető el: [használati Reporting API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api)
+* **Bejelentkezési jelentések** csak érhetők el az Azure portálon (Azure Active Directory > tevékenység > bejelentkezések), és nem érhetők el a Graph API-n keresztül. Minden egyes bejelentkezés rekordja csökkentett adatokkal rendelkeznek.
+* **Naplózási jelentések** csak érhetők el az Azure portálon (Azure Active Directory > tevékenység > Naplók), és nem érhetők el a Graph API-n keresztül. A felügyeleti tevékenység, valamint alkalmazástevékenységhez tartalmaznak. 
+* **Használati jelentések** érhetők el csak a [használati Reporting API](active-directory-b2c-reference-usage-reporting-api.md) és nem érhetők el az Azure-portálon. Azon felhasználók számát, a bejelentkezések száma és a kötet MFA tartalmaznak. 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>A felhasználói felület az Azure AD B2C által kiszolgált lapok is localize? Milyen nyelveket támogatja?
 Igen!  További információ a [nyelvi testreszabási](active-directory-b2c-reference-language-customization.md), amely nyilvános előzetes verzió van.  Azt a fordítások 36 nyelvet a, és az igényeinek bármilyen karakterlánc lehet felülbírálni.

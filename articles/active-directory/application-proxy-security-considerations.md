@@ -15,11 +15,11 @@ ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 031632aa9e01c66e836d607d588ededb7140589f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 239f3830a5e50f80ace15ff3f080653a5f402136
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Biztonsági szempontok az alkalmazások távolról a Azure AD alkalmazásproxy elérése
 
@@ -45,7 +45,7 @@ Ha csatlakoztatott legyen a előhitelesítési módszer, ez a szolgáltatás nem
 
 Gazdagabb házirend vezérlőelemek alkalmazni, mielőtt létesít kapcsolatokat a hálózathoz.
 
-A [feltételes hozzáférés](active-directory-conditional-access-azuread-connected-apps.md), milyen forgalom engedélyezve van a háttér-alkalmazások elérésére vonatkozó korlátozásokat definiálhat. Házirendeket, amelyek korlátozzák a bejelentkezéseket helye, hitelesítési és kockázatú profil alapján is létrehozhat.
+A [feltételes hozzáférés](active-directory-conditional-access-azure-portal-get-started.md), milyen forgalom engedélyezve van a háttér-alkalmazások elérésére vonatkozó korlátozásokat definiálhat. Házirendeket, amelyek korlátozzák a bejelentkezéseket helye, hitelesítési és kockázatú profil alapján is létrehozhat.
 
 Feltételes hozzáférés segítségével is újabb biztonsági réteget ad hozzá a felhasználói hitelesítések multi-factor Authentication hitelesítési házirendek konfigurálása. 
 

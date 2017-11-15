@@ -4,7 +4,7 @@ description: "A StorSimple virtuális tömb telepítendő első oktatóanyaga, a
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d0801053721f98ce7a2b0fcbe3c65da8dbdd8d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6685c5ab7768176a0c8e7084c8512d5345732d9a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>A StorSimple virtuális tömb telepítése – előkészítése az Azure-portálon
 
@@ -42,7 +42,7 @@ A StorSimple virtuális tömb telepítéséhez tekintse meg a következő cikkek
 | **#** | **Ebben a lépésben** | **Ezt megteheti...** | **És használja ezeket a dokumentumokat.** |
 | --- | --- | --- | --- |
 | 1. |**Állítsa be az Azure-portálon** |Létrehozhat és konfigurálhat egy StorSimple virtuális tömb kiépítése előtt a StorSimple Device Manager szolgáltatáshoz. |[Készítse elő a portálon](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**A virtuális tömb kiépítése** |A Hyper-V kiépíteni, és kapcsolódjon a StorSimple virtuális tömb állomás operációs rendszert futtató Hyper-V a Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 rendszeren. <br></br> <br></br> A VMware kiépíteni, és kapcsolódjon egy StorSimple virtuális tömb a gazdagéphez, VMware ESXi 5.5 rendszerű vagy újabb.<br></br> |[A Hyper-V egy virtuális tömb kiépítése](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware-ben a virtuális tömb kiépítése](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 2. |**A virtuális tömb kiépítése** |A Hyper-V kiépíteni, és kapcsolódjon a StorSimple virtuális tömb állomás operációs rendszert futtató Hyper-V a Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 rendszeren. <br></br> <br></br> A VMware kiépíteni, és egy StorSimple virtuális tömbhöz a gazdagépen operációs rendszert futtató VMware ESXi 5.0, 5.5 vagy 6.0 kapcsolódjon.<br></br> |[A Hyper-V egy virtuális tömb kiépítése](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware-ben a virtuális tömb kiépítése](storsimple-virtual-array-deploy2-provision-vmware.md) |
 | 3. |**A virtuális tömb beállítása** |A fájlkiszolgáló hajtsa végre a kezdeti beállítás regisztrálása a StorSimple fájlkiszolgáló és az eszköz beállításának befejezése. SMB-megosztások majd oszthat. <br></br> <br></br> Az iSCSI-kiszolgáló hajtsa végre a kezdeti beállítás, a StorSimple iSCSI-kiszolgáló regisztrálása és az eszköz beállításának befejezése. Az iSCSI-kötetek majd oszthat. |[Fájlkiszolgáló virtuális tömb beállítása](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Állítsa be a tömb virtuális iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 Most már megkezdheti beállítása az Azure-portálon.
@@ -70,7 +70,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 Egy virtuális tömb telepítése előtt győződjön meg arról, hogy:
 
-* Hozzáférést egy adott gazdarendszeren futó Windows Server 2008 R2 vagy újabb Hyper-V vagy VMware (ESXi 5.5-ös vagy újabb), amely rendelkezik egy kiépítéséhez használt eszköz.
+* Hozzáférést egy adott gazdarendszeren futó Windows Server 2008 R2 vagy újabb Hyper-V vagy VMware (ESXi 5.0, 5.5 vagy 6.0), amely rendelkezik egy kiépítéséhez használt eszköz.
 * A gazdagép rendszere tudni jelölt ki a virtuális tömb telepítéséhez a következőket:
   
   * Legalább 4 mag.
@@ -136,7 +136,7 @@ Hajtsa végre a következő lépéseket a [Azure-portálon](https://portal.azure
    
    * A Hyper-V a Windows Server 2012 és újabb verziók VHDX
    * Virtuális merevlemez Hyper-v a Windows Server 2008 R2 és újabb verziók
-   * Vmdk-fájl, a VMWare ESXi 5.5 és újabb verziók
+   * A VMWare ESXi 5.0, 5.5 vagy 6.0 VMDK
 5. Töltse le és csomagolja ki a fájlt egy helyi meghajtóra, a jegyezze fel, ahol a tömörítetlen fájl, így.
 
 ## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Nem kötelező lépés: a szolgáltatás egy új tárfiók konfigurálása

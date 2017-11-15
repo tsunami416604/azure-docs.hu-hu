@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: terrylan
-ms.openlocfilehash: 8d00882caf5411240c5f0a3533c78c3dbe361ef2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e816f151ea1f71770f00d6d77b65395fe080da3
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure-identitás biztonsági – áttekintés
 Microsoft identitások és hozzáférések felügyeleti megoldások Súgó informatikai védelme alkalmazásokhoz és erőforrásokhoz való hozzáférést az vállalati adatközpontban és a felhőben, például a többtényezős hitelesítés és a feltételes hozzáférési házirendek ellenőrzéséhez további szintek engedélyezése. Gyanús tevékenységek figyelése keresztül speciális biztonsági jelentések, a naplózás és a riasztási segít mérsékelni a potenciális biztonsági problémákat. [Az Azure Active Directory Premium](../active-directory/active-directory-editions.md) biztosítja az egyszeri bejelentkezés felhő több ezer (SaaS) alkalmazások és webalkalmazások hozzáférést a helyszíni futtatása.
@@ -57,7 +57,7 @@ További információ:
 
 * [Az egyszeri bejelentkezés – áttekintés](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../active-directory/active-directory-appssoaccess-whatis.md)
-* [Azure Active Directoryval az egyszeri bejelentkezés integrálása SaaS-alkalmazásokhoz](../active-directory/active-directory-sso-integrate-saas-apps.md)
+* [Azure Active Directoryval az egyszeri bejelentkezés integrálása SaaS-alkalmazásokhoz](../active-directory/active-directory-enterprise-apps-manage-sso.md)
 
 ## <a name="reverse-proxy"></a>Fordított proxy
 Az Azure AD-alkalmazásproxy lehetővé teszi, hogy a helyszíni alkalmazások, például közzététele [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) helyek, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), és [IIS](http://www.iis.net/)-alapú alkalmazások a magánhálózaton belül és biztonságos hozzáférést biztosít a felhasználók a hálózaton kívülről. Alkalmazásproxy távoli hozzáférést és egyszeri bejelentkezés (SSO) biztosít számos különböző típusú, amely támogatja az Azure AD SaaS-alkalmazásokhoz több ezer a helyszíni alkalmazások. Az alkalmazottak bejelentkezhet az alkalmazások a saját eszközükön otthoni és a felhő alapú proxyn keresztül történő hitelesítéséhez.
@@ -67,7 +67,7 @@ További információ:
 * [Az Azure AD-alkalmazásproxy engedélyezése](../active-directory/active-directory-application-proxy-enable.md)
 * [Az Azure AD-alkalmazásproxy használó alkalmazások közzététele](../active-directory/active-directory-application-proxy-publish.md)
 * [Single-sign-on a Proxy](../active-directory/active-directory-application-proxy-sso-using-kcd.md)
-* [Feltételes hozzáférés használata](../active-directory/active-directory-application-proxy-conditional-access.md)
+* [Feltételes hozzáférés használata](../active-directory/application-proxy-enable-remote-access-sharepoint.md)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 Az Azure többtényezős hitelesítés (MFA), amely egynél több ellenőrzési módszer használatát igényli, és a kritikus fontosságú második biztonsági réteget ad hozzá felhasználói bejelentkezéseket és tranzakciókat hitelesítési mód. Többtényezős hitelesítés segítségével hozzáférés biztonságossá tételét adatokhoz és alkalmazásokhoz egyszerű bejelentkezési folyamatot a felhasználó igény szerint betartása mellett. Erős hitelesítés, ellenőrzési lehetőségek széles keresztül biztosítja – a telefonhívás, szöveges üzenet vagy mobilalkalmazás értesítés vagy ellenőrző kód és a külső OAuth jogkivonatokat.

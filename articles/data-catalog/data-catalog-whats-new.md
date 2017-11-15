@@ -13,16 +13,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/01/2017
+ms.date: 11/13/2017
 ms.author: maroche
-ms.openlocfilehash: 2eab8ce96399c7d6da9b4afbccdfd8b836f0c9f3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2839c265596d98834fb4071dea1684d5a6669907
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Szoftverfrissítések **Azure Data Catalog** rendszeresen kiadásakor. Nem minden kiadás szolgáltatásai új felhasználók számára is elérhető, néhány kiadásokban a háttér-szolgáltatás jellemzőinek lévőként. Ezen a lapon az új felhasználók számára is elérhető képességbeli az Azure Data Catalog szolgáltatás mutatja be.
+
+## <a name="whats-new-for-november-2017"></a>Új 2017. November 
+2017. November a következő képességekkel rendelkezik lett hozzáadva Azure Data Catalog:
+
+* Közvetlenül az adott üzleti szószedet feltételeit a Data Catalog-portál összekapcsolása támogatása. A felhasználók az üzleti szószedet hivatkozások másolja és a beágyazása dokumentumok, e-mailek, jelentéseket vagy egyéb helyek közvetlenül kapcsolódik a szószedet a kifejezés meghatározása.
+* Támogatás az Azure Active Directory szolgáltatás rendszerbiztonsági tagok. Katalógus-rendszergazdák adhatják meg a katalógus eléréséhez használt szolgáltatásnevekről ügyfélalkalmazások, és ezek az alkalmazások adott engedélyek megadásához, mint azok engedélyeket adhat a felhasználók és biztonsági csoportok. További információ: [alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md).
+* Támogatás az Azure Active Directory-hitelesítéshez az Azure SQL Database és az Azure SQL Data Warehouse adatforrások a Data Catalog adatforrás-regisztráló eszköz használatával történő csatlakozás során. További információ: [Azure Active Directory hitelesítés használata a hitelesítés és az SQL Database vagy az SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md).
+
 
 ## <a name="whats-new-for-september-2017"></a>Új 2017. szeptember 
 2017. szeptember a következő képességekkel rendelkeznek lett hozzáadva Azure Data Catalog:

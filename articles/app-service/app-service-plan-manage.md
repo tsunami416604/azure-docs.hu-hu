@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: b2305782fa4d8ca1bc90f239bc1f6ade0ff8fdc3
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: c1b832895476e2f64bbae638db76f89890e5c804
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Az Azure App Service-csomagot kezelése
 
@@ -56,7 +56,16 @@ Az a **menü**, keresse meg a **App Service-csomag** szakasz.
 
 Válassza ki **módosítás App Service-csomag** a folyamat elindításához.
 
-**App Service-csomag módosítása** megnyitja a **App Service-csomag** választó. Válasszon egy meglévő terv ebbe az alkalmazásba történő áthelyezése. A ugyanazt az erőforráscsoportot és régió csak tervek jelennek meg. Ha ugyanazt az erőforráscsoportot és régió imént létrehozott egy App Service-csomag, de az nem jelenik meg a listában, próbálja meg frissíteni a böngésző lapot.
+**App Service-csomag módosítása** megnyitja a **App Service-csomag** választó. Válasszon egy meglévő terv ebbe az alkalmazásba történő áthelyezése. 
+
+> [!IMPORTANT] 
+> A **kiválasztása az alkalmazásszolgáltatási csomag** lap szűrve van a következő szempontok szerint: 
+> - Ugyanabban az erőforráscsoportban található 
+> - Ugyanabban a földrajzi régióban található 
+> - Az azonos webtárhely szerepel  
+> 
+> A _webtárhely_ egy logikai szerkezet, amely meghatározza a kiszolgáló erőforrások csoportosítása App Service-ben. Egy földrajzi régiót (például az USA nyugati régiója) használja az App Service ügyfelek lefoglalásához sok webspaces tartalmazza. Jelenleg az App Service-erőforrások nem helyezhetők át webspaces tudni. 
+> 
 
 ![App Service-csomag választó.][change]
 

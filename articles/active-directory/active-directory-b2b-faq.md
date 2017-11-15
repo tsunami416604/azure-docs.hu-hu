@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: bfedbbf8b26e1b129584a6a644e64a15635f5723
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e3ae7f176f41b4b0984dbef0748451c7ebff9e7
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B együttműködés – gyakori kérdések
 
@@ -29,7 +29,7 @@ Gyakori kérdések (GYIK) kapcsolatos Azure Active Directory (Azure AD) üzleti 
 Nem. Az Azure AD B2B együttműködés funkciók érhetők el csak a [Azure-portálon](https://portal.azure.com) és a a [hozzáférési Panel](https://myapps.microsoft.com/). 
 
 ### <a name="can-we-customize-our-sign-in-page-so-it-is-more-intuitive-for-our-b2b-collaboration-guest-users"></a>A Microsoft testre az bejelentkezési oldalra, hogy a a B2B együttműködés vendégfelhasználók intuitívabb?
-Feltétlenül! Tekintse meg a [erről a szolgáltatásról blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). A szervezet bejelentkezési lap testreszabásával kapcsolatos további információkért lásd: [adja hozzá a vállalati arculat megjelenítése a bejelentkezéshez és a hozzáférési Panel oldalakon](active-directory-add-company-branding.md).
+Feltétlenül! Tekintse meg a [erről a szolgáltatásról blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). A szervezet bejelentkezési lap testreszabásával kapcsolatos további információkért lásd: [adja hozzá a vállalati arculat megjelenítése a bejelentkezéshez és a hozzáférési Panel oldalakon](customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>SharePoint Online és onedrive vállalati verzió hozzáférhet B2B együttműködés felhasználók?
 Igen. Keresse meg a SharePoint Online meglévő vendégfelhasználók a személyek kiválasztása segítségével képes azonban **ki** alapértelmezés szerint. Kapcsolja be a meglévő vendégfelhasználók kereséséhez, állítsa **ShowPeoplePickerSuggestionsForGuestUsers** való **a**. Ha bekapcsolja ezt a beállítást a bérlői szintjén vagy a gyűjtemény szintjén. Ez a beállítás a Set-SPOTenant és a Set-SPOSite-parancsmagok használatával módosíthatja. Ezeket a parancsmagokat a tagok összes meglévő vendégfelhasználók kereshet a címtárban. A bérlői hatókört változásai nem befolyásolják a SharePoint Online-webhelyhez, amely már megtörtént.
@@ -93,7 +93,7 @@ Jelenleg Microsoft Dynamics CRM nem online támogatást nyújt az Azure AD B2B e
 Meghatározott karakter, a jelszó erősségét és a fiók zárolása vonatkozó követelmények egyaránt minden Azure ad cloud felhasználói fiókok Azure AD is rendelkezik. Felhő felhasználói fiókok azok a fiókok, a rendszer nem összevont egy másik identitásszolgáltatóval, például a 
 * Microsoft-fiók
 * Facebook
-* Az Active Directory összevonási szolgáltatások
+* Active Directory összevonási szolgáltatások
 * Egy másik felhőben bérlőt (B2B együttműködés)
 
 Jelszóházirend összevont fiókok a helyszíni bérlet és a felhasználó Microsoft-fiók beállításai alkalmazott házirend függ.

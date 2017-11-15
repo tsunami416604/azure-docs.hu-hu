@@ -1,6 +1,6 @@
 ---
-title: "Fürtszolgáltatás SAP (A) SCS példányához, a Windows feladatátvevő fürt fájlmegosztást használja az Azure-on |} Microsoft Docs"
-description: "Fürtszolgáltatás SAP (A) SCS példány fájlmegosztást használja a Windows feladatátvevő fürtön"
+title: "Windows feladatátvevő fürt egy SAP ASC/SCS példány fürtön fájlmegosztás használatával az Azure-ban |} Microsoft Docs"
+description: "Megtudhatja, hogyan SAP ASC/SCS példány egy Windows feladatátvevő fürtre a fürt az Azure-fájlmegosztás segítségével."
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94d725cfb072091e57c96d3b2aca7b2e73657eef
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 8cb339c9ecffbbc711aa6ea55d6f357fe0f4cfd0
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/14/2017
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -201,179 +201,162 @@ ms.lasthandoff: 10/27/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
+[1869038]:https://launchpad.support.sap.com/#/notes/1869038 
 
-# <a name="clustering-sap-ascs-instance-on-windows-failover-cluster-using-file-share-on-azure"></a>Fürtszolgáltatás SAP (A) SCS példány fájlmegosztást használja az Azure-on Windows feladatátvevő fürtön
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Windows feladatátvevő fürt egy SAP ASC/SCS példány fürtön fájlmegosztás használatával az Azure-ban
 
 > ![Windows][Logo_Windows] Windows
 >
 
-Windows Server feladatátvételi fürtszolgáltatási az alapja az egy magas rendelkezésre állású SAP ASC/SCS telepítése és a Windows DBMS.
+Windows Server Feladatátvételi fürtszolgáltatást az alapja az egy magas rendelkezésre állású SAP ASC/SCS telepítése és a Windows DBMS.
 
-A feladatátvevő fürt egy 1 + n különálló kiszolgálók csoportja (csomópontok), amelyek együttműködése az alkalmazások és szolgáltatások rendelkezésre állásának javítása. Ha egy csomópont meghibásodik, Windows Server feladatátvételi fürtszolgáltatási számítja ki a biztosításához az alkalmazások és szolgáltatások kifogástalan fürt megőrzésével előforduló hibák száma. Választhat a különböző kvórummódok feladatátvételi fürtszolgáltatás eléréséhez.
+A feladatátvevő fürt egy 1 + n különálló kiszolgálók csoportja (csomópontok), amelyek együttműködése az alkalmazások és szolgáltatások rendelkezésre állásának javítása. Ha egy csomópont meghibásodik, Windows Server Feladatátvételi fürtszolgáltatást a hibákat, és továbbra is a megfelelő fürt adja meg az alkalmazások és szolgáltatások is számítja ki. Választhat a különböző kvórummódok feladatátvételi fürtszolgáltatás eléréséhez.
 
-## <a name="prerequisite"></a>Előfeltétel
-Ügyeljen arra, hogy tekintse át ezeket a dokumentumokat, mielőtt kezdve ez a dokumentum:
+## <a name="prerequisites"></a>Előfeltételek
+Az ebben a cikkben ismertetett feladatok megkezdése előtt tekintse át az ebben a cikkben:
 
-* [Az Azure virtuális gépek magas rendelkezésre állású architektúra és SAP NetWeaver forgatókönyvei][sap-high-availability-architecture-scenarios]
+* [Azure virtuális gépek magas rendelkezésre állású architektúra és SAP NetWeaver forgatókönyvei][sap-high-availability-architecture-scenarios]
 
 > [!IMPORTANT]
->A fájlmegosztás SAP (A) SCS példányok fürtszolgáltatás támogatott **SAP NetWeaver 7.40 (vagy újabb)** termékek, a **SAP Kernel 7.49 (vagy újabb)**.
+> SAP ASC/SCS példányok fürtözését egy fájlmegosztást használja az SAP NetWeaver 7.40 (és támogatott később), a SAP Kernel 7.49 (és újabb).
 >
 
 
-## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server feladatátvételi fürtszolgáltatás az Azure-ban
+## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server Feladatátvételi fürtszolgáltatást az Azure-ban
 
-Operációs rendszer nélküli vagy saját felhőben történő alkalmazáshoz képest, Azure virtuális gépek konfigurálása a Windows Server feladatátvételi fürtszolgáltatás további lépéseket igényel. A fürtöt hozza létre, ha több IP-címek és az SAP ASC/SCS példány virtuális állomásnevek be kell.
+Operációs rendszer nélküli vagy a privát felhőben történő alkalmazáshoz képest, Azure virtuális gépek konfigurálása a Windows Server feladatátvételi fürtszolgáltatás további lépéseket igényel. A fürtöt hozza létre, ha több IP-címek és az SAP ASC/SCS példány virtuális állomásnevek be kell.
 
-### <a name="name-resolution-in-azure-and-cluster-virtual-host-name"></a>Névfeloldás a Azure és a fürt virtuális gazdagép neve
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure-ban és a fürt virtuális állomásnév feloldása
 
-Az Azure felhőalapú platform nem teszi lehetővé a virtuális IP-címek, például csak fix IP-címek konfigurálásához. Hozzon létre egy virtuális IP-címet a felhőben fürterőforrás elérni egy másik megoldásra van szüksége. Azure rendelkezik egy **belső terheléselosztó** az Azure terheléselosztó szolgáltatásban. A belső terheléselosztó rendelkező ügyfelek elérni a fürt keresztül a virtuális IP-címet. Kell telepítenie a belső terheléselosztó, amely tartalmazza a fürt csomópontjai az erőforráscsoportban. Ezt követően konfigurálja a belső terheléselosztó portok továbbítási szabályok a mintavételi minden szükséges portot. Az ügyfelek kapcsolódhatnak az virtuális állomás név. A DNS-kiszolgáló oldja fel a fürt IP-címét, és a belső terheléselosztó leírók port továbbítja a fürt aktív csomópontja.
+Az Azure felhőalapú platform nem teszi lehetővé a virtuális IP-címek, például csak fix IP-címek konfigurálásához. Hozzon létre egy virtuális IP-címet a felhőben fürterőforrás elérni egy másik megoldásra van szüksége. 
+
+Az Azure terheléselosztó szolgáltatás egy *belső terheléselosztó* az Azure-bA. A belső terheléselosztó rendelkező ügyfelek elérni a fürt keresztül a virtuális IP-címet. 
+
+Telepítse a belső terheléselosztó, amely tartalmazza a fürt csomópontjai az erőforráscsoportban. Ezt követően konfigurálja a belső terheléselosztó portok továbbítási szabályok a Hálózatfigyelő használatával az összes szükséges port. Az ügyfelek kapcsolódhatnak az virtuális állomás név. A DNS-kiszolgáló oldja fel a fürt IP-címét. A belső terheléselosztó kezeli a port továbbít adatokat a fürt aktív csomópontja.
 
 ![1. ábra: A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban egy megosztott lemez nélkül][sap-ha-guide-figure-1001]
 
-_**1. ábra:** Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban egy megosztott lemez nélkül_
+_**1. ábra:** Windows Server feladatátvevő fürt egy megosztott lemez nélküli az Azure-ban konfigurációban_
 
-## <a name="sap-ascs-ha-with-file-share"></a>(A) SCS magas rendelkezésre ÁLLÁSÚ fájlmegosztás az SAP
+## <a name="sap-ascsscs-ha-with-file-share"></a>SAP ASC/SCS magas rendelkezésre ÁLLÁSÚ fájlmegosztást a
 
-SAP fejlesztett új megközelítést és a megosztott lemezeket, SAP (A) SCS példány Windows feladatátvevő fürtre a fürt másodlagos.
-
-Itt használható **SMB-fájlmegosztás** lehetősége van arra, hogy telepíteni **SAP globális állomás fájlok**.
+SAP fejlesztett új megközelítést, és a fürt megosztott lemezeket, egy Windows feladatátvevő fürtön egy SAP ASC/SCS példány fürtözéshez helyett. Ahelyett, hogy a fürt megosztott lemezeket, SMB-fájlmegosztás segítségével SAP globális állomás fájlokat.
 
 > [!NOTE]
->SMB-fájlmegosztás SAP (A) SCS példányok fürtözéshez megosztott lemezt a fürt egy további lehetőség.  
+> SMB-fájlmegosztás a fürt megosztott lemezek SAP ASC/SCS példányok fürtözéshez használata helyett.  
 >
 
-Mi az az ebbe az architektúrába a következő:
+Ez az architektúra csak a következő módon:
 
-* **SAP globális állomás fájlok elkülönülnek SAP központi szolgáltatások (a saját fájl struktúra és az üzenet és a sorba helyezni folyamatok)**
-* **SAP központi szolgáltatások futtathatók SAP (A) SCS példány**
-* SAP (A) SCS-példány fürtözött-e és elérhető használatával virtuális állomásnév **< (A) SCSVirtualHostName >**
-* SAP globális fájlok kerülnek, SMB-fájlmegosztás, és hozzáférnek a <SAPGLOBALHost> állomásnév \\\\&lt;SAPGLOBALHost&gt;\sapmnt\\&lt;SID&gt;\SYS\...
-* Az SAP (A) SCS-példány telepítve van a helyi lemez mindkét fürtcsomóponton
-* A **< (A) SCSVirtualHostName >** hálózati neve eltér  **&lt;SAPGLOBALHost&gt;**
+* (A saját fájl struktúra és az üzenet és a sorba helyezni folyamatokkal) központi SAP-szolgáltatások függetlenek a SAP globális állomás fájlokat.
+* SAP központi szolgáltatások SAP ASC/SCS példány futtathatók.
+* SAP ASC/SCS példány fürtözött-e és elérhető használatával a \<ASC/SCS virtuális állomásnevet\> virtuális állomás neve.
+* SAP globális fájlok kerülnek, az SMB-fájlmegosztás, és segítségével érik el a \<SAP globális állomás\> állomásnév: \\ \\ &lt;SAP globális állomás&gt;\sapmnt\\ &lt;SID&gt;\SYS\....
+* Az SAP ASC/SCS-példány telepítve van a helyi lemez mindkét fürtcsomóponton.
+* A \<ASC/SCS virtuális állomásnevet\> hálózati neve eltér &lt;SAP globális állomás&gt;.
 
-![2. ábra: Az új SAP (A) SCS magas rendelkezésre ÁLLÁSÚ architektúra az SMB-fájlmegosztásra][sap-ha-guide-figure-8004]
+![2. ábra: SAP ASC/SCS magas rendelkezésre ÁLLÁSÚ architektúra az SMB-fájlmegosztásra][sap-ha-guide-figure-8004]
 
-_**2. ábra:** új SAP (A) SCS magas rendelkezésre ÁLLÁSÚ architektúra az SMB-fájlmegosztásra_
+_**2. ábra:** új SAP ASC/SCS magas rendelkezésre ÁLLÁSÚ architektúra az SMB-fájlmegosztásra_
 
 SMB-fájlmegosztásra vonatkozó Előfeltételek:
 
-* SMB 3.0-s (vagy magasabb) protokoll
-* Az Active Directory (AD) hozzáférés-vezérlési lista (ACL) meg **AD felhasználói csoportokat** és **számítógép objektum számítógép$**
-* Fájlmegosztás magas rendelkezésre ÁLLÁSÚ engedélyezve kell lennie:
-    * Fájlok tárolására használt lemezek nem lehet a hibaérzékeny pontok kialakulását
-    * Győződjön meg arról, hogy a kiszolgálók vagy virtuális gépek állásidő nem okoz a fájlmegosztás állásidő
+* SMB 3.0-s (vagy újabb) protokollt.
+* Képes állíthatók be az Active Directory hozzáférés-vezérlési listák (ACL) az Active Directory felhasználói csoportok és a `computer$` számítógép-objektumot.
+* A fájlmegosztás magas rendelkezésre ÁLLÁSÚ engedélyezve kell lennie:
+    * Fájlok tárolására használt lemezek nem lehet a hibaérzékeny pontok kialakulását.
+    * Kiszolgáló vagy a virtuális gép állásidő nem okoz a fájlmegosztáson állásidő.
 
-Most a **SAP &lt;SID&gt;**  fürtszerepkör nem tartalmazó, fürt megosztott lemezek vagy általános fájlmegosztás fürterőforrás.
-
-
-![3. ábra: < SID > SAP szerepkör fürterőforrások fájlmegosztás használata esetén][sap-ha-guide-figure-8005]
-
-_**3. ábra:** **SAP &lt;SID&gt;**  szerepkör fürterőforrások fájlmegosztás használata esetén_
+Az SAP \<SID\> fürtszerepkör nem tartalmaz a megosztott lemezek vagy általános fájlmegosztás fürt erőforrást.
 
 
-## <a name="scale-out-file-share-sofs-with-storage-spaces-direct-s2d-on-azure-as-sapmnt-file-share"></a>Kibővített fájlmegosztáson (SOFS) az Azure-on (S2D) tárolóhelyek – közvetlen, SAPMNT fájlmegosztás
+![3. ábra: SAP \<SID\> szerepkör erőforrások egy fájlmegosztást a fürt][sap-ha-guide-figure-8005]
 
-Kibővíthető Fájlkiszolgáló is használhatja, és SAP globális állomás fájlok védelméhez, valamint magas rendelkezésre állású SAPMNT fájl megosztás szolgáltatását.
+_**3. ábra:** SAP &lt;SID&gt; szerepkör erőforrások egy fájlmegosztást a fürt_
 
-![4. ábra: SOFS fájlmegosztás SAP globális állomás fájlok védelmére szolgál][sap-ha-guide-figure-8006]
 
-_**4. ábra:** SAP globális állomás fájlokat védő SOFS fájlmegosztás_
+## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Kibővíthető fájlmegosztások a közvetlen tárolóhelyekkel egy SAPMNT fájlmegosztás, az Azure-ban
 
-> [!IMPORTANT]
->Kibővíthető Fájlkiszolgáló fájlmegosztás teljes mértékben támogatott Microsoft Azure felhőbe is a helyszíni környezetben.
->
+Egy kibővített fájlmegosztást és globális állomás védheti SAP használhatja. Egy kibővített fájlmegosztást egy magas rendelkezésre állású SAPMNT megosztás szolgáltatása is biztosít.
 
-**Kibővíthető Fájlkiszolgáló** magas rendelkezésre állású és méretezhető vízszintesen SAPMNT fájlmegosztás kínál.
+![4. ábra: A kibővített fájlmegosztáshoz SAP globális állomás fájlok védelmére szolgál][sap-ha-guide-figure-8006]
 
-**Közvetlen tárolóhelyek (S2D)**, vettük **megosztott lemez** sofs-sel lehetővé teszi, hogy magas rendelkezésre állású és méretezhető tárolást biztosít helyi tárhellyel rendelkező kiszolgálók az összeállítása. Ezért használt sofs-sel, például SAP GLOBALHOST fájlok megosztott tárolót, nem a hibaérzékeny pontot (SPOF).
+_**4. ábra:** egy kibővített fájlmegosztást SAP globális állomás fájlok védelmére szolgál_
 
 > [!IMPORTANT]
->Ha azt tervezi, a telepítő katasztrófa utáni helyreállításra, SOFS ajánlott megoldás magas rendelkezésre állású fájlmegosztás az Azure-ban.
+> A kibővített fájlmegosztásokon teljes mértékben támogatja a Microsoft Azure felhőben és helyszíni környezetben.
 >
 
-### <a name="sap-prerequisites-for-sofs-in-azure"></a>Az Azure-ban SOFS SAP előfeltételei
+Egy kibővített fájlmegosztást egy magas rendelkezésre állású és méretezhető vízszintesen SAPMNT fájlmegosztást kínál.
 
-A kibővíthető Fájlkiszolgáló van szüksége:
+Közvetlen tárolóhelyek használható egy megosztott lemezt egy kibővített fájlmegosztást. Közvetlen tárolóhelyek használatával magas rendelkezésre állású és méretezhető tárolást biztosít helyi tárhellyel rendelkező kiszolgálók az összeállítása. Megosztott tárolóhelyet tartalmazzon, amely egy kibővített fájlmegosztást szolgál, például SAP globális állomás fájlok, a nem a hibaérzékeny pontok kialakulását.
 
-* Fürtcsomópontok közül legalább kettő az sofs-sel
+> [!IMPORTANT]
+>Ha Ön *nem* beállításához vész-helyreállítási terv egy kibővített fájlmegosztást megoldásként az Azure-ban magas rendelkezésre állású fájlmegosztás használatát javasoljuk.
+>
 
+### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Az Azure-ban a kibővített fájlmegosztásokon SAP előfeltételei
+
+Egy kibővített fájlmegosztást használ, a rendszer az alábbi követelményeknek kell megfelelniük:
+
+* Legalább két fürtcsomópontok a kibővített fájlmegosztáshoz.
 * Minden csomópont legalább két helyi lemezzel kell rendelkeznie.
-
-* A teljesítmény okból kell használnia **rugalmassági tükrözés**:
-    * **2 – kétutas** tükrözést a kibővíthető Fájlkiszolgáló két fürtcsomópontra
-    * **3 irányú** tükrözést a kibővíthető Fájlkiszolgáló fürt csomópontjainak három (vagy több)
-
-
-* Az **javasoljuk, hogy 3 (vagy több fürt) csomópontokat az SOFS a 3 irányú tükrözés**.
-A telepítő további méretezhetőséget és további tárolási rugalmasság, mint a kibővíthető Fájlkiszolgáló telepítése 2 fürtcsomópontok és a 2 – kétutas tükrözés kínál.
-
-* Használjon **prémium szintű lemez**
-
-* Az **ajánlott** használandó **Azure által kezelt lemezeken**
-
-* Az **ajánlott** a új formátum kötetek **Resilient File System (ReFS)**
-    * [SAP Megjegyzés 1869038 - SAP támogatja a ReFs fájlrendszer] [1869038]
-    * Lásd: [kiválasztása a fájlrendszer] [ planning-volumes-s2d-choosing-filesystem] fejezet tervezése kötetei közvetlen tárolóhelyek.
-    * Telepítse a [MS **KB4025334** összegző frissítés][kb4025334].
-
-
-* Használhat **DS sorozatnak** vagy **DSv2-sorozat** Azure Virtuálisgép-méretek
-
-* Ahhoz, hogy a virtuális gép hálózati teljesítmény közvetlen tárolóhelyek lemez szinkronizáláshoz szükséges többek jó, kell használnia, amely rendelkezik legalább egy Virtuálisgép-típussá **"magas" hálózati sávszélességet**.
-További részletekért lásd: [DSv2-sorozat] [ dv2-series] és [DS sorozatnak] [ ds-series] megadását.
-
-* Az **ajánlott** , hogy és **néhány tartalékkapacitás lefoglalva a tárolókészletben**. Kötetek kijavításához "helyben" meghajtó meghibásodik, a biztonsági adatok és a teljesítmény javítása után területet biztosít.
-
- További részletekért lásd: [kötetek méretének kiválasztása][choosing-the-size-of-volumes-s2d]
-
-
-* Kibővíthető Fájlkiszolgáló Azure virtuális gépek kell telepíteni **saját Azure rendelkezésre állási csoport**
-
-* Nincs szükség konfigurálása az Azure belső terheléselosztó SOFS fájlmegosztás hálózat neve, pl. <SAPGlobalHostName>, mert a elkészült a < (A) SCSVirtualHostname > SAP (A) SCS-példány vagy az adatbázis-kezelő. Kibővíthető Fájlkiszolgáló van kiterjesztése terhelés összes fürtcsomópont, így <SAPGlobalHostName> által használt helyi IP-címe fürt összes csomópontján.
+* Teljesítmény okból kell használnia *rugalmassági tükrözés*:
+    * Kétutas tükrözés két fürtcsomópontra a kibővített fájlmegosztások.
+    * Háromutas tükrözés (legalább három) fürtcsomópontra a kibővített fájlmegosztások.
+* Azt javasoljuk, hogy három (vagy több) fürtcsomóponton a kibővíthető fájlkiszolgáló-megosztás a háromutas tükrözést.
+    A telepítő további méretezhetőséget és további tárolási rugalmasság, mint a kibővített fájlkiszolgáló megosztást telepítése két fürt csomópontjai és kétirányú tükrözés kínál.
+* Prémium szintű lemezeket kell használnia.
+* Azt javasoljuk, hogy használja-e Azure felügyelt lemezek.
+* Azt javasoljuk, Resilient File System (ReFS) a kötetek formázásának.
+    * További információkért lásd: [SAP Megjegyzés 1869038 - SAP támogatja a ReFs fájlrendszer] [ 1869038] és a [a fájlrendszer megválasztása] [ planning-volumes-s2d-choosing-filesystem] fejezete a a cikk tervezése kötetek közvetlen tárolóhelyek.
+    * Ne feledje, hogy telepítse [Microsoft KB4025334 összegző frissítés][kb4025334].
+* Használhatja a DS sorozatnak vagy DSv2-sorozat Azure virtuális gép méretét.
+* A virtuális gépek, amelyek közvetlen tárolóhelyek lemez szinkronizálás szükséges, megfelelő minőségű hálózati teljesítmény egy Virtuálisgép-típussá, amely rendelkezik legalább egy "magas" hálózati sávszélesség használata.
+    További információkért lásd: a [DSv2-sorozat] [ dv2-series] és [DS sorozatnak] [ ds-series] előírásokat.
+* Azt javasoljuk, hogy Ön tartalékkapacitás néhány le nem foglalt a tárolókészletben. A tárolókészlet néhány nem lefoglalt kapacitás elhagyása ad kötetek helyet egy adott meghajtó meghibásodásakor "helyen" kijavításához. Ez növeli az adatok biztonságát és teljesítmény.  További információkért lásd: [kötet méretének kiválasztásában][choosing-the-size-of-volumes-s2d].
+* A kibővített fájlmegosztáshoz Azure virtuális gépek a saját Azure rendelkezésre állási csoportot kell telepíteni.
+* Nem kell konfigurálása az Azure belső terheléselosztót a kibővített fájlkiszolgáló megosztást hálózat nevét, például \<SAP globális állomás\>. Ebben az esetben a \<ASC/SCS virtuális állomásnevet\> SAP ASC/SCS-példány vagy az adatbázis-kezelő. Egy kibővített fájlmegosztást méretezi a terhelés ki minden fürt csomópontjai között. \<SAP globális állomás\> a helyi IP-címet használja, a fürt összes csomópontja.
 
 
 > [!IMPORTANT]
->Nem lehet módosítani a SAPMNT fájlmegosztás, amely SAPGLOBALHOST mutat. SAP sapmnt nem támogatja egy másik megosztási nevet.
->[Megjegyzés 2492395 SAP - a megosztás neve sapmnt módosíthatók?][2492395]
+> Nem lehet átnevezni a SAPMNT fájlmegosztás, amely mutat \<SAP globális állomás\>. SAP támogatja a csak a megosztás neve "sapmnt."
 
-### <a name="configuring-sap-ascs-instances-and-sofs-in-two-clusters"></a>(A) SCS konfigurálása SAP példányok és a kibővíthető Fájlkiszolgáló fürtök a
+> További információkért lásd: [SAP Megjegyzés 2492395 - is módosítható a megosztás neve sapmnt?][2492395]
 
-Lehetősége van egy fürtben, a saját SAP SAP (A) SCS példányok telepítése <SID> fürtszerepkört. A kibővíthető Fájlkiszolgáló fájlmegosztást a fürt egy másik szerepkört egy másik fürtben lett konfigurálva.
+### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Adja meg SAP ASC/SCS példányok és a kibővített fájlkiszolgáló fürtök megosztás
 
-> [!IMPORTANT]
->Ebben az esetben az SAP (A) SCS példány úgy van konfigurálva, UNC elérési úton keresztül SAP GLOBALHost eléréséhez \\\\&lt;SAPGLOBALHost&gt;\sapmnt\\&lt;SID&gt;\SYS\...
->
-
-![5. ábra: SAP (A) SCS-példány és a kibővíthető Fájlkiszolgáló fürtök telepítése][sap-ha-guide-figure-8007]
-
-_**5. ábra:** SAP (A) SCS-példány és a kibővíthető Fájlkiszolgáló fürtök telepítése_
+Telepíthet egy fürtben, a saját SAP SAP ASC/SCS példányok \<SID\> fürtszerepkört. Ebben az esetben konfigurálnia a kibővített fájlmegosztáshoz egy másik fürtre, a fürt egy másik szerepkört.
 
 > [!IMPORTANT]
->Azure felhőben, az SAP, és a kibővíthető Fájlkiszolgáló fájl megosztások kell telepíteni a saját Azure rendelkezésre állási csoport használt a fürtökön biztosításához elosztva a fürt virtuális gépek elhelyezését az alapul szolgáló Azure-infrastruktúra.
+>Ebben az esetben az SAP ASC/SCS példány úgy van konfigurálva, a SAP globális gazdagép eléréséhez UNC elérési úttal \\ \\ &lt;SAP globális állomás&gt;\sapmnt\\&lt;SID&gt;\SYS\.
 >
 
-## <a name="generic-file-share-with-sios-as-cluster-shared-disks"></a>Általános fájlmegosztás SIOS, a fürt megosztott lemezeket
+![5. ábra: SAP ASC/SCS-példány és egy kibővített fájlmegosztást fürtök telepítése][sap-ha-guide-figure-8007]
+
+_**5. ábra:** SAP ASC/SCS példány és egy kibővített fájlmegosztásba fürtök telepítése_
+
+> [!IMPORTANT]
+> Azure felhőben SAP és a kibővített fájlkiszolgáló megosztások kell telepíteni a saját Azure rendelkezésre állási használt egyes fürtök beállítása. Ez biztosítja, hogy a fürt virtuális gépek között az alapul szolgáló Azure-infrastruktúrában elosztott elhelyezését.
+>
+
+## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Mivel a fürt megosztott lemez SIOS DataKeeper általános fájlmegosztás
 
 
 > [!IMPORTANT]
->Kibővíthető Fájlkiszolgáló ajánlott magas rendelkezésre állású fájlmegosztás-megoldást.
+> Azt javasoljuk, hogy a kibővített fájlkiszolgáló megosztást a megoldás lehet a magas rendelkezésre állású fájlmegosztás.
 >
->Azonban ha azt tervezi, továbbá hogy **vész-helyreállítási** a magas rendelkezésre állású fájlmegosztás kell használni általános fájlmegosztás és SISO technológia a fürt megosztott lemezeket.
+> Ha azt tervezi, hogy is beállíthat a magas rendelkezésre állású fájlmegosztás vész-helyreállítási, a fürt megosztott lemezek általános fájlmegosztás és SISO DataKeeper kell használnia.
 >
 
-Általános fájlmegosztás lehetősége, hogy magas rendelkezésre állású fájlmegosztás eléréséhez.
+Általános fájlmegosztás egy másik lehetőség egy magas rendelkezésre állású fájlmegosztás eléréséhez.
 
-Itt mivel a fürt megosztott lemez 3. fél SIOS megoldás használhatja.
+Ebben az esetben egy fürt megosztott lemezt egy külső SIOS megoldás is használhatja.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Az SAP magas rendelkezésre ÁLLÁSÚ Windows feladatátvevő fürt és a fájlmegosztás SAP (A) SCS-példány használata az Azure infrastruktúra előkészítése][sap-high-availability-infrastructure-wsfc-file-share]
-
-* [SAP NetWeaver magas rendelkezésre ÁLLÁSÚ telepítés a Windows feladatátvevő fürt és a fájlmegosztás SCS példány SAP (A)][sap-high-availability-installation-wsfc-shared-disk]
-
+* [Az Azure-infrastruktúra előkészítése az SAP magas rendelkezésre ÁLLÁSÚ egy Windows feladatátvevő fürt és a fájlmegosztást egy SAP ASC/SCS példány használatával][sap-high-availability-infrastructure-wsfc-file-share]
+* [Telepítse SAP NetWeaver magas rendelkezésre ÁLLÁSÚ Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található egy SAP ASC/SCS példány][sap-high-availability-installation-wsfc-shared-disk]
 * [Egy két csomópontos közvetlen tárolóhelyek kibővített fájlkiszolgáló telepítéséhez UPD tárolás az Azure-ban][deploy-sofs-s2d-in-azure]
-
 * [Tárolóhelyek – közvetlen a Windows Server 2016][s2d-in-win-2016]
-
-* [Részletes bemutatója: Kötetek a tárolóhelyek közvetlen][deep-dive-volumes-in-s2d]
+* [Részletes bemutatója: a tárolóhelyek közvetlen kötetek][deep-dive-volumes-in-s2d]

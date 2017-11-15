@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 11/13/2017
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: 875c8c87f62ecf0e7459dfcec22089854ad95594
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 4042c3606155d1d37947afccafd64652c9659894
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="templates-for-azure-policy"></a>Sablonok az Azure-házirend
 
@@ -67,6 +67,7 @@ A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalm
 | [Naplózási DB szintű fenyegetések észlelése beállítás](scripts/audit-db-threat-det-setting.md) | SQL-adatbázis biztonsági riasztási házirendek eseményeket, ha ezek a házirendek nem meghatározott állapotú. Adjon meg egy értéket, amely jelzi, hogy fenyegetésészlelés engedélyezve vagy letiltva.  |
 | [SQL Server szint naplózási naplózása](scripts/audit-sql-ser-leve-audit-setting.md) | SQL server naplózási beállításai eseményeket, ha ezek a beállítások nem egyezik a megadott értéket. Adjon meg egy értéket, amely jelzi, hogy naplózási beállításai engedélyezve legyen-e vagy le van tiltva. |
 | [Naplózási szint fenyegetések észlelése beállítást](scripts/audit-sql-ser-threat-det-setting.md) | SQL-adatbázis biztonsági riasztási házirendek eseményeket, ha ezek a házirendek nem meghatározott állapotú. Adjon meg egy értéket, amely jelzi, hogy fenyegetésészlelés engedélyezve vagy letiltva.  |
+| [Azure Active Directory-rendszergazda nélkül naplózása](scripts/audit-no-aad-admin.md) | Ha az SQL-kiszolgáló nem Azure Active Directory rendszergazdája naplózási. |
 | [SQL DB termékváltozatok engedélyezett](scripts/allowed-sql-db-skus.md) | Szükséges SQL-adatbázisok használata egy jóváhagyott Termékváltozat. Megadja az engedélyezett SKU-azonosítók tömbje vagy engedélyezett SKU nevének tömbjét. |
 |**Tárolás**||
 | [A Storage-fiókok és a virtuális gépek engedélyezett termékváltozatok](scripts/allowed-skus-storage.md) | Verziójához jóváhagyott termékváltozatok storage-fiókok és a virtuális gépek használni. Beépített házirendet használja, hogy jóvá SKU. Megadhatja, hogy engedélyezett virtuális gépek termékváltozatok tömbje és jóváhagyott tárfiók termékváltozatok tömbjét. |

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3810c6fc3e6d6abf6e41047a303f8d0ecfe1c7ec
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Az Azure AD-jelszó biztonsági többrétegű megközelítése
 
@@ -37,7 +37,7 @@ Az Azure AD a következő általános megközelítéseket tartalmazza a jelszava
 * Összetettségi követelményeknek
 * Normál és időszakos jelszólejárat
 
-Jelszó alaphelyzetbe állítása, az Azure Active Directoryban kapcsolatos információkért lásd a témakör [az Azure AD az önkiszolgáló jelszó-változtatási az informatikai szakembereknek szóló](active-directory-passwords.md).
+Jelszó alaphelyzetbe állítása, az Azure Active Directoryban kapcsolatos információkért lásd a témakör [az Azure AD az önkiszolgáló jelszó-változtatási az informatikai szakembereknek szóló](active-directory-passwords-update-your-own-password.md).
 
 ## <a name="azure-ad-password-protections"></a>Az Azure AD-jelszó védelmet
 
@@ -74,7 +74,7 @@ Más Microsoft-fiók a képernyő hasonlít, amely a következő:
 
   ![Kizárva egy Microsoft-fiókból](./media/active-directory-secure-passwords/locked-out-ms-accounts.png)
 
-Jelszó alaphelyzetbe állítása, az Azure Active Directoryban kapcsolatos információkért lásd a témakör [az Azure AD az önkiszolgáló jelszó-változtatási az informatikai szakembereknek szóló](active-directory-passwords.md).
+Jelszó alaphelyzetbe állítása, az Azure Active Directoryban kapcsolatos információkért lásd a témakör [az Azure AD az önkiszolgáló jelszó-változtatási az informatikai szakembereknek szóló](active-directory-passwords-update-your-own-password.md).
 
   >[!NOTE]
   >Ha Ön Azure AD-rendszergazda, javasolt a [Windows Hello](https://www.microsoft.com/windows/windows-hello) használata, hogy a felhasználók egyáltalán ne is hozhassanak létre hagyományos jelszavakat.

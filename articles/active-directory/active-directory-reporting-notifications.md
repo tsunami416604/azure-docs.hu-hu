@@ -16,11 +16,11 @@ ms.date: 10/18/2017
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e561061cadd88e2c5670e27f2a66ef21002e30b0
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: fa8ca5940bb437c1e5c3939262db000544b04e36
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Az Azure Active Directory jelentéskészítési értesítései
 ## <a name="what-reports-generate-email-notifications"></a>Milyen jelentések készítése az értesítő e-mailek
@@ -47,5 +47,5 @@ Igen, a rendellenes bejelentkezések a klasszikus Azure portálon belül kapcsol
 ## <a name="whats-next"></a>A következő lépések
 * Fejezetét milyen biztonsági, naplózási és tevékenységjelentéseket állnak rendelkezésre? Tekintse meg [az Azure AD biztonsági, naplózási és tevékenységjelentéseket](active-directory-view-access-usage-reports.md)
 * [Bevezetés a Prémium szintű Azure Active Directory használatába](active-directory-get-started-premium.md)
-* [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon](active-directory-add-company-branding.md)
+* [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési panel oldalon](customize-branding.md)
 

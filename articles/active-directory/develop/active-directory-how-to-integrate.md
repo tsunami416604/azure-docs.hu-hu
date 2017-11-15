@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 3da53852eaad7a37f19d906d2ee27b72d35c513f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2a83e8dcd054576b4a99533cdfbb9f5605cd6f9
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="integrating-with-azure-active-directory"></a>Az Azure Active Directory integrálása
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -67,7 +67,7 @@ Az Azure Active Directoryval való integrációhoz tartalmaz, amelyek nem igény
 
 **Rendellenes bejelentkezési észlelése.**  Az Azure AD dolgozza fel a több mint egymilliárd bejelentkezések napi gyanús tevékenységek észlelése és értesíthetők a informatikai rendszergazdák lehetséges problémák gépi tanulási algoritmusok használata során.  Az Azure AD-bejelentkezés támogatásával az alkalmazás lekérdezi az előnye, hogy ez a védelem. További információ [Azure Active Directory hozzáférési jelentés megtekintése](../active-directory-view-access-usage-reports.md).
 
-**Feltételes hozzáférés.**  Többtényezős hitelesítés mellett a rendszergazdák megkövetelheti bizonyos feltételeknek teljesülniük előtt felhasználók is bejelentkezhet az alkalmazásba.  Feltételeket, amelyek állíthat be az IP-címtartomány ügyféleszközök, megadott csoportok tagságát és az eszköz eléréshez használt állapotát tartalmazza.  További információ [Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access.md).
+**Feltételes hozzáférés.**  Többtényezős hitelesítés mellett a rendszergazdák megkövetelheti bizonyos feltételeknek teljesülniük előtt felhasználók is bejelentkezhet az alkalmazásba.  Feltételeket, amelyek állíthat be az IP-címtartomány ügyféleszközök, megadott csoportok tagságát és az eszköz eléréshez használt állapotát tartalmazza.  További információ [Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md).
 
 ### <a name="easy-development"></a>Könnyű fejlesztés
 **Iparági szabványos protokollt használják.**  A Microsoft elkötelezett az ipari szabványok támogatása.  Az Azure AD a SAML 2.0, az OpenID Connect 1.0, az OAuth 2.0 és a WS-Federation 1.2-es hitelesítési protokollt támogat.  A Graph API OData 4.0-s megfelelő.  Az alkalmazás már támogatja az SAML 2.0-s vagy OpenID Connect 1.0 protokoll jelentkezhetnek be összevont módon, ha az Azure AD támogatása egyszerű is lehet.  További információ [az Azure AD hitelesítési protokollok támogatott](active-directory-authentication-protocols.md).

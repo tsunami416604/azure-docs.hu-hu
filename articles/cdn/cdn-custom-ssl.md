@@ -1,5 +1,5 @@
 ---
-title: "Engedélyezheti vagy tilthatja le a HTTPS, az Azure Content Delivery Network egyéni tartomány |} Microsoft Docs"
+title: "HTTPS konfigurálása az Azure Content Delivery Network egyéni tartomány |} Microsoft Docs"
 description: "Megtudhatja, hogyan engedélyezheti vagy tilthatja le a HTTPS az Azure CDN-végpont egy egyéni tartomány."
 services: cdn
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: casoper
-ms.openlocfilehash: 68a171ee6da58e6d84b466daf573577c909c7f5c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 82de79cde208cdce1ed7cbd600f1e804ff1d45ff
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="enable-or-disable-https-on-an-azure-content-delivery-network-custom-domain"></a>Engedélyezheti vagy tilthatja le a HTTPS, az Azure Content Delivery Network egyéni tartományt
+# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>HTTPS konfigurálása az Azure Content Delivery Network egyéni tartományt
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-A Microsoft Azure tartalom Delivery Network (CDN) egyéni tartomány HTTPS támogatása lehetővé teszi, hogy a tartalmak biztonságos SSL-en keresztüli saját tartománynév használatával, melyekkel biztonságosabbá teheti az adatok az átvitel során. A végpontok közötti munkafolyamat HTTPS engedélyezése az egyéni tartomány egyszerűsödött, egy kattintással engedélyezését, teljes és minden további költség nélkül.
+A Microsoft a HTTPS protokollt támogatja az egyéni tartományok az Azure Content Delivery Network (CDN). A HTTPS egyéni tartomány támogatása biztosíthat a tartalmak biztonságos SSL-en keresztüli saját tartománynév használatával, melyekkel biztonságosabbá teheti az adatok az átvitel során. A munkafolyamat HTTPS engedélyezése az egyéni tartomány egyszerűsödött, egy kattintással engedélyezése és a teljes tanúsítványkezelés, minden további költség nélkül.
 
-Nagyon fontos adatvédelmi és a webes alkalmazások bizalmas adatok az átvitel alatt adatok integritásának biztosításához. A HTTPS protokoll használatával biztosítja, hogy a bizalmas adatok titkosítva van, amikor az interneten keresztül továbbítja azokat. Biztosít megbízhatónak, hitelesítés, és a webalkalmazások a támadások ellen védi. Az Azure CDN támogatja a HTTPS PROTOKOLLT a CDN-végpont alapértelmezés szerint. Például, ha a CDN-végpontot hoz létre Azure CDN (például `https://contoso.azureedge.net`), automatikusan engedélyezi a HTTPS PROTOKOLLT. Emellett az egyéni tartomány HTTPS-támogatással rendelkező engedélyezheti biztonságos kézbesítés egy egyéni tartomány (például `https://www.contoso.com`) is. 
+Nagyon fontos annak érdekében, az adatok biztonságát és sértetlenségét a webes alkalmazás a bizalmas adatok átvitel közben. A HTTPS protokoll használatával, akkor győződjön meg arról, hogy a bizalmas adatok titkosítva van, amikor az interneten keresztül továbbítja azokat. Biztosít megbízhatónak, hitelesítés, és a webalkalmazások a támadások ellen védi. Alapértelmezés szerint Azure CDN HTTPS CDN-végpont használatát támogatja. Például, ha a CDN-végpontot hoz létre Azure CDN (például `https://contoso.azureedge.net`), automatikusan engedélyezi a HTTPS PROTOKOLLT. Emellett az egyéni tartomány HTTPS-támogatással rendelkező is engedélyezheti biztonságos kézbesítés egy egyéni tartomány (például `https://www.contoso.com`). 
 
 A következő fontos attribútumokat a HTTPS-funkció a következők:
 
@@ -41,7 +41,7 @@ A következő fontos attribútumokat a HTTPS-funkció a következők:
 
 ## <a name="enabling-https"></a>HTTPS engedélyezése
 
-Ahhoz, hogy a HTTPS, kövesse az alábbi lépéseket:
+Az egyéni tartománynév a HTTPS engedélyezéséhez kövesse az alábbi lépéseket:
 
 ### <a name="step-1-enable-the-feature"></a>1. lépés: A funkció engedélyezése 
 
@@ -66,7 +66,7 @@ Ahhoz, hogy a HTTPS, kövesse az alábbi lépéseket:
 HTTPS engedélyezi az egyéni tartomány, miután a DigiCert hitelesítésszolgáltatót (CA) érvényesíti tulajdonjogát, a tartomány kapcsolatba lépve a bejegyzés a tartomány megfelelően [WHOIS](http://whois.domaintools.com/) bejegyzés információkat. Forduljon az e-mail cím keresztül történik (alapértelmezés), vagy a telefonszámot, a WHOIS regisztrációs szerepel. 
 
 >[!NOTE]
->Ha egy tanúsítvány hatóság engedélyezési (CAA) rekordot a DNS-szolgáltatónál, DigiCert tartalmaznia kell egy érvényes hitelesítésszolgáltatóként. CAA rekord lehetővé teszi, hogy a tartomány tulajdonosai számára adja meg a DNS-szolgáltatókkal a tartományához tartozó tanúsítványokat kibocsátó hitelesítésszolgáltató engedélyezett. Ha a hitelesítésszolgáltató nem szerepel az engedélyezett kiállítóként egy hitelesítésszolgáltatóhoz egy ahhoz, hogy egy tanúsítványt, amely egy CAA rekordja, az adott tartomány vagy altartomány a tanúsítványt kiállító tilos.
+>Ha egy tanúsítvány hatóság engedélyezési (CAA) rekordot a DNS-szolgáltatónál, DigiCert tartalmaznia kell egy érvényes hitelesítésszolgáltatóként. CAA rekord lehetővé teszi, hogy a tartomány tulajdonosai számára adja meg a DNS-szolgáltatókkal a tartományához tartozó tanúsítványokat kibocsátó hitelesítésszolgáltató engedélyezett. Ha a hitelesítésszolgáltató nem szerepel az engedélyezett kiállítóként egy hitelesítésszolgáltatóhoz egy ahhoz, hogy egy tanúsítványt, amely egy CAA rekordja, az adott tartomány vagy altartomány a tanúsítványt kiállító tilos. CAA rekordok kezelésével kapcsolatos információkért lásd: [kezelése CAA rekordok](https://support.dnsimple.com/articles/manage-caa-record/). Egy CAA rekord eszközt, lásd: [CAA rekord segítő](https://sslmate.com/caa/).
 
 ![WHOIS-rekord](./media/cdn-custom-ssl/whois-record.png)
 
@@ -82,7 +82,7 @@ Kap egy e-mailt néhány perc múlva, az alábbi példához hasonló kéri, hogy
     
 ![Tartomány-e-mailek ellenőrzése](./media/cdn-custom-ssl/domain-validation-email.png)
 
-Ha a jóváhagyási hivatkozásra kattint, a rendszer kéri, a következő online-hoz jóváhagyási űrlapon: 
+Amikor a jóváhagyási hivatkozásra kattint, a rendszer átirányítja a következő online-hoz jóváhagyási űrlapon: 
     
 ![Tartomány ellenőrzés képernyő](./media/cdn-custom-ssl/domain-validation-form.png)
 
@@ -128,7 +128,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="disabling-https"></a>HTTPS letiltása
 
-Miután engedélyezte a HTTPS, később letilthatja. Tiltsa le a HTTPS, kövesse az alábbi lépéseket:
+Miután engedélyezte az egyéni tartománynév a HTTPS, később letilthatja. Tiltsa le a HTTPS, kövesse az alábbi lépéseket:
 
 ### <a name="step-1-disable-the-feature"></a>1. lépés: A funkció letiltásához 
 

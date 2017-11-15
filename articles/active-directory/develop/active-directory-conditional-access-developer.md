@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 321c87f242f2c24eb2b28be2dc69cde278117b97
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: eddc1988e094a50ba7e41331a576846aa26f77a4
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>A feltételes hozzáférés az Azure Active Directory fejlesztői útmutató
 
@@ -28,7 +28,7 @@ Az Azure Active Directory (AD) biztonságos az alkalmazás és szolgáltatás v�
 * Így csak az Intune-ban regisztrált eszközök férhessenek hozzá az egyes szolgáltatások
 * Korlátozza a felhasználó helyét és IP-címtartományok
 
-A feltételes hozzáférés a szolgáltatás összes funkciójáról további információkért lásd: [feltételes hozzáférés a klasszikus Azure portálon](../active-directory-conditional-access.md). 
+A feltételes hozzáférés a szolgáltatás összes funkciójáról további információkért lásd: [feltételes hozzáférés a klasszikus Azure portálon](../active-directory-conditional-access-azure-portal.md). 
 
 Ez a cikk azt összpontosítani milyen feltételes hozzáférési azt jelenti, hogy a fejlesztők számára hozhat létre alkalmazásokat az Azure AD.  Ismeretét feltételezi [egyetlen](active-directory-integrating-applications.md) és [több-bérlős](active-directory-devhowto-multi-tenant-overview.md) alkalmazások és [közös hitelesítési minták](active-directory-authentication-scenarios.md).
 
@@ -48,7 +48,7 @@ Pontosabban a következő esetekben igényel kezelésére "kihívást" feltétel
 * Egylapos alkalmazások ADAL.js
 * Web Apps erőforrás hívása
 
-Feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazás, de is alkalmazható egy webes API-k éri el az alkalmazást. A feltételes hozzáférési házirend konfigurálásával kapcsolatos további tudnivalókért tekintse meg [Azure Active Directory feltételes hozzáférés – első lépések](../active-directory-conditional-access-azuread-connected-apps.md).
+Feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazás, de is alkalmazható egy webes API-k éri el az alkalmazást. A feltételes hozzáférési házirend konfigurálásával kapcsolatos további tudnivalókért tekintse meg [Azure Active Directory feltételes hozzáférés – első lépések](../active-directory-conditional-access-azure-portal-get-started.md).
 
 A helyzettől függően az ügyfél egy vállalati alkalmazni, és bármikor eltávolíthatja a feltételes hozzáférési szabályzatok.  Ahhoz, hogy az alkalmazás működését, amikor egy új házirendet alkalmaz meg kell a "kérdés" kezelése. A következő példák bemutatják a challenge kezelését. 
 
@@ -218,7 +218,7 @@ Próbálja ki ebben a forgatókönyvben, tekintse meg a [JS SPA a nevében-az k�
 
 ## <a name="see-also"></a>Lásd még:
 
-* A képességeivel kapcsolatos további tudnivalókért lásd: [feltételes hozzáférés az Azure AD](../active-directory-conditional-access.md).
+* A képességeivel kapcsolatos további tudnivalókért lásd: [feltételes hozzáférés az Azure AD](../active-directory-conditional-access-azure-portal.md).
 * További Azure AD-mintakódok, lásd: [Github-tárház, kódmintákat](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory). 
 * További információk az ADAL SDK és a hozzáférés a referenciadokumentációt: [könyvtár útmutató](active-directory-authentication-libraries.md).
 * Több-bérlős forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a több-bérlős minta használatával a felhasználók bejelentkezés](active-directory-devhowto-multi-tenant-overview.md).

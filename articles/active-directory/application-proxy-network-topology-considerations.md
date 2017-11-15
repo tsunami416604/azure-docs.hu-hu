@@ -15,11 +15,11 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 11244e0044eef8441e3a37ab8aeff0da30dacdb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15c392c6e94abaff7c28bc672cfe61c7551ede4d
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Hálózati topológia való használatának szempontjai Azure Active Directory Alkalmazásproxyjával
 
@@ -102,7 +102,7 @@ Bár ez a cikk célja összekötő elhelyezése, az alkalmazások jobb késés j
 
 Egyre több szervezet áthelyezi hálózataikat üzemeltetett környezetekben. Ez lehetővé teszi, hogy helyezze alkalmazások egy része emellett a vállalati hálózatában üzemeltetési környezetben, és továbbra is a tartományon belül kell. Ebben az esetben a minták, a fenti szakaszokban ismertetett alkalmazhatók az új alkalmazás helyre. Ha ezt a beállítást fontolóra vette, lásd: [Azure AD tartományi szolgáltatások](../active-directory-domain-services/active-directory-ds-overview.md).
 
-Emellett vegye figyelembe az összekötők használatával rendszerezéséhez [összekötő csoportok](active-directory-application-proxy-connectors.md) cél alkalmazásokra, amelyek különböző helyekre és -hálózatok találhatók. 
+Emellett vegye figyelembe az összekötők használatával rendszerezéséhez [összekötő csoportok](active-directory-application-proxy-connectors-azure-portal.md) cél alkalmazásokra, amelyek különböző helyekre és -hálózatok találhatók. 
 
 ## <a name="common-use-cases"></a>Gyakori használati helyzetek
 
@@ -174,5 +174,5 @@ Is megfontolhatja egy variant ebben a helyzetben. Ha a szervezet a legtöbb felh
 
 - [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
 - [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)
-- [Feltételes hozzáférés engedélyezése](active-directory-application-proxy-conditional-access.md)
+- [Feltételes hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)
 - [Az alkalmazásproxy problémák elhárítása](active-directory-application-proxy-troubleshoot.md)

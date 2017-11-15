@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: e368f14638c480a632afa7c17023aa8ae4c8833f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4d4e15e1bada54ce06f38187e6a2ea1f8c749dc4
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="understand-azure-identity-solutions"></a>Az Azure identitáskezelési megoldásairól ismertetése
 A Microsoft Azure Active Directory (Azure AD) egy identitás- és hozzáférés kezelési felhőalapú megoldás, amely címtárszolgáltatások, identitás-irányítás és alkalmazáshozzáférés-kezeléshez. Az Azure AD gyorsan [lehetővé teszi az egyszeri bejelentkezés (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) 1, 000 a kereskedelmi és egyéni előre integrált alkalmazások által a [az Azure AD application gallery](https://azure.microsoft.com/marketplace/active-directory/all/). Ezekhez az alkalmazásokhoz számos valószínűleg már használhatja például az Office 365, a Salesforce.com, a mezőbe, a ServiceNow és a Workday.
@@ -110,12 +110,12 @@ Van egy tonna kiváló erőforrások online részletes tudnivalók az Azure AD s
 * [Egy legalább egyszer világgal további biztonsági](../multi-factor-authentication/multi-factor-authentication.md)
 * [Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](active-directory-saas-app-provisioning.md)
 * [Ismerkedés az Azure AD Reporting](active-directory-reporting-getting-started.md)
-* [A jelszavak kezelése bárhonnan](active-directory-passwords.md)
+* [A jelszavak kezelése bárhonnan](active-directory-passwords-update-your-own-password.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 * [Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](active-directory-saas-app-provisioning.md)
 * [Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak](active-directory-application-proxy-get-started.md)
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](active-directory-manage-groups.md)
-* [Mi az a Microsoft Azure Active Directory licencelésének ismertetése](active-directory-licensing-what-is.md)
+* [Mi az a Microsoft Azure Active Directory licencelésének ismertetése](active-directory-licensing-whatis-azure-portal.md)
 * [Hogyan lehet használt, jóvá nem hagyott felhőalkalmazások felderítése a szervezeten belül](active-directory-cloudappdiscovery-whatis.md)
 
 ## <a name="next-steps"></a>Következő lépések

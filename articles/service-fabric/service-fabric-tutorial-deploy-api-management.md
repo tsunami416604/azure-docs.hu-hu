@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/13/2017
 ms.author: ryanwi
-ms.openlocfilehash: e28ea6df24b9df144552739427427ee14e998584
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 1238863265a227c18ebef8ac2aaeabd802f877d4
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>A Service Fabric az API Management központi telepítését
 Ez az oktatóanyag három egy sorozat része.  Üzembe helyezése az Azure API Management a Service Fabric a Speciális lehetőséget, akkor hasznos, ha az útválasztási szabályokat a Service Fabric háttérszolgáltatások széles skáláját API-k közzé kell tenni. Az oktatóanyag bemutatja, hogyan állíthat be [Azure API Management](../api-management/api-management-key-concepts.md) a Service Fabric egy háttér-szolgáltatás a Service Fabric forgalom.  Amikor végzett, egy VNETET az API Management telepítve rendelkezik, konfigurált adatforgalom küldését az állapot nélküli háttérszolgáltatások egy API-művelet. A Service Fabric Azure API Management-forgatókönyvekkel kapcsolatos további tudnivalókért tekintse meg a [áttekintése](service-fabric-api-management-overview.md) cikk.
@@ -235,7 +235,7 @@ Indítsa el a Visual Studio rendszergazdaként, és az ASP.NET Core szolgáltat�
 
     Ez az a végpont, amely az Azure API Management keresztül teszi ki.
 
- 7. Végül telepítse az alkalmazást az Azure-ban a fürthöz. [Visual Studio használatával](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box), kattintson a jobb gombbal a projektet, és válassza ki **közzététel**. Adja meg a fürt végpontja (például `mycluster.southcentralus.cloudapp.azure.com:19000`) az alkalmazás számára az Azure Service Fabric-fürt központi telepítése.
+ 7. Végül telepítse az alkalmazást az Azure-ban a fürthöz. A Visual Studióban, kattintson a jobb gombbal a projektet, és válassza ki **közzététel**. Adja meg a fürt végpontja (például `mycluster.southcentralus.cloudapp.azure.com:19000`) az alkalmazás számára az Azure Service Fabric-fürt központi telepítése.
 
 Az ASP.NET Core állapotmentes szolgáltatások nevű `fabric:/ApiApplication/WebApiService` most futnia kell a Service Fabric-fürt az Azure-ban.
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 426b7ff6114fd0b79a6af71a78705f11b80862bf
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 0e6cc412fdb3ea7b9d8291b9f963e6412ae994a9
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>A megoldás tesztelése szimulált eszközökkel
 
@@ -39,6 +39,10 @@ A következő táblázat a ligthbulb a felhőbe, mint egy adatfolyam jelentések
 | Név   | Értékek      |
 | ------ | ----------- |
 | status | "a" "off" |
+| online | IGAZ, hamis |
+
+> [!NOTE]
+> A **online** telemetriai értéke összes szimulált esetében kötelező.
 
 *Módszerek*
 
@@ -267,7 +271,11 @@ Tesztelheti a **villanykörte** eszköztípus, először tesztelheti az eszköz 
 
 Tesztelése és hibakeresése a módosításokat a helyi [eszköz szimuláció áttekintése](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md).
 
-Másolja az új projekt konfigurálása **villanykörte** eszköz fájlok a kimeneti könyvtárba.
+Másolja az új projekt konfigurálása **villanykörte** eszköz fájlok a kimeneti könyvtárba:
+
+* Ha a Visual Studio használ, ellenőrizze, hogy adja hozzá az előző szakaszban létrehozott három új villanykörte fájlokat a **szolgáltatások** projektre a megoldásban. Ezután **megoldáskezelőben** megjelölhetők a kimeneti könyvtárba kell másolni.
+
+* Ha a Visual Studio Code használ, nyissa meg a **Services.csproj** fájlt, és adja hozzá az előző szakaszban létrehozott három új villanykörte fájlokat. Tekintse meg a meglévő eszköz modell fájl bejegyzések a **Services.csproj** fájl példaként.
 
 Az új eszköz a telepített megoldás teszteléséhez valamelyike látható:
 

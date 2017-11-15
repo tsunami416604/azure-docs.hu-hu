@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: bb739d19be7aedf73f422faaa0f5f63a81633d07
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 36443ec86c15edce27bdc4f50cabcaf2e14936bc
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory a másolási tevékenység
 
@@ -65,6 +65,10 @@ Például a következő másolási tevékenység teheti meg:
 * Szöveges (CSV) formátumú fájlok másolását a helyszíni fájlrendszer, és az Avro formátum az Azure Blob írni.
 * Tömörített fájlok másolását a helyszíni fájlrendszer, és kibontani majd föld Azure Data Lake Store.
 * Adatok másolása GZip tömörített szöveges (CSV) formátumú az Azure Blob, és az Azure SQL Database írni.
+
+## <a name="supported-regions"></a>Támogatott régiók
+
+A szolgáltatás, amely a rendszert működtet a másolási tevékenység érhető globális régiókban és földrajzi felsorolt [Azure integrációs futásidejű helyek](concepts-integration-runtime.md#integration-runtime-location). A globálisan elérhető topológia hatékony adatmozgás, amely általában a kereszt-régió ugrások nem biztosítja. Lásd: [régiói](https://azure.microsoft.com/regions/#services) a Data Factory és az adatátvitelt jelölik a régióban rendelkezésre állását.
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -132,7 +136,7 @@ A másolási tevékenység a következő sablon tartalmazza a támogatott tulajd
 | Bemenetek | Adja meg az adatkészlet mely pontok a forrásadatokhoz való létrehozott. Másolási tevékenység során csak egyetlen bemenetet támogatja. | Igen |
 | kimenetek | Adja meg az adatkészlet mely pontok, a fogadó adatok létrehozott. Másolási tevékenység során csak egyetlen kimeneti támogatja. | Igen |
 | typeProperties | Tulajdonságok másolása tevékenység konfigurálása csoportja. | Igen |
-| Forrás | Adja meg a másolási adatforrás típusa és a vonatkozó tulajdonságok kapcsolatos adatok lekéréséhez.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
+| forrás | Adja meg a másolási adatforrás típusa és a vonatkozó tulajdonságok kapcsolatos adatok lekéréséhez.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
 | a fogadó | Adja meg a másolási a fogadó típusa és a vonatkozó tulajdonságok hogyan adatokat írni.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |
 | A fordító | Adjon meg explicit oszlop-hozzárendelések gyűjtése forrásból. Érvényes, ha az alapértelmezett példány viselkedés nem teljesíthető az igényeknek.<br/><br/>További részletek a [séma- és adatok hozzárendelése](copy-activity-schema-and-type-mapping.md). | Nem |
 | cloudDataMovementUnits | Adja meg a powerfulness [Azure integrációs futásidejű](concepts-integration-runtime.md) építve az adatok másolását.<br/><br/>További részletek a [adatátviteli adategységek felhőalapú](copy-activity-performance.md). | Nem |
@@ -152,9 +156,9 @@ A másolási tevékenység futtatás eredménye visszaadja a másolási tevéken
 | rowsSkipped | Nem kompatibilis kihagyta a sorok száma. Bekapcsolása a szolgáltatás beállítása "enableSkipIncompatibleRow" true által. | Int64 típusú érték (egység) |
 | Átviteli sebesség | Átvitt adatok – amely arány | Lebegőpontos szám KB/s |
 | copyDuration | A másolási időtartama | Int32 típusú érték, másodpercben. |
-| sqlDwPolyBase | Ha az adatok másolása az SQL Data Warehouse PolyBase használatos. | Logikai érték |
-| redshiftUnload | Ha az adatok másolása Redshift UNLOAD használatos. | Logikai érték |
-| hdfsDistcp | Ha az adatok másolása HDFS ból a DistCp használatos. | Logikai érték |
+| sqlDwPolyBase | Ha az adatok másolása az SQL Data Warehouse PolyBase használatos. | Logikai |
+| redshiftUnload | Ha az adatok másolása Redshift UNLOAD használatos. | Logikai |
+| hdfsDistcp | Ha az adatok másolása HDFS ból a DistCp használatos. | Logikai |
 | effectiveIntegrationRuntime | Integráció Runtime(s) használt a tevékenység fut, a kell ellenőrizniük megjelenítése `<IR name> (<region if it's Azure IR>)`. | Szöveg (karakterlánc) |
 | usedCloudDataMovementUnits | A hatékony felhő adatátviteli adategységek másolása során. | Int32 érték |
 | redirectRowPath | A blob-tároló "redirectIncompatibleRowSettings" alapján konfigurálja a rendszer kihagyta nem kompatibilis sorok a napló elérési útja. Lásd az alábbi példa. | Szöveg (karakterlánc) |

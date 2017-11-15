@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: ee334186dffaa1f88cf05717b6a5ba1e819a8cdc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9b7490fd51a2a39e6438856041fb25110ddde69
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>A Service Fabric gyakori kérdések
 
@@ -79,7 +79,7 @@ A három csomópontos fürt konfigurációja támogatott fejlesztési és teszte
 
 Általában nem. A Service Fabric tárolja állapot helyi, rövid élettartamú lemezeken, ami azt jelenti, hogy a virtuális gép átkerül egy másik gazdagépet, ha az adatok nem helyezi át a vele. A normál működés, amely nincs probléma, az új csomópont más csomópontok naprakész állapotba. Azonban ha állítson le minden csomópontot, és azokat később újraindíthatja a rendszert, nincs jelentős lehetséges, hogy a csomópontok többsége indítsa el az új gazdagépek számára, ellenőrizze a rendszer nem lehet helyreállítani.
 
-Ha szeretné az alkalmazást tesztelni, mielőtt telepítené a fürtöket létrehozni, azt javasoljuk, hogy dinamikusan hozzon létre ezeket a fürt részeként a [folyamatos integráció/folyamatos központi telepítési folyamat](service-fabric-set-up-continuous-integration.md).
+Ha szeretné az alkalmazást tesztelni, mielőtt telepítené a fürtöket létrehozni, azt javasoljuk, hogy dinamikusan hozzon létre ezeket a fürt részeként a [folyamatos integráció/folyamatos központi telepítési folyamat](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
 
 
 ### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>Hogyan lehet frissíteni az operációs rendszer (például a Windows Server 2012, Windows Server 2016)?

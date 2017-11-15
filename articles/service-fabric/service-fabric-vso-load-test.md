@@ -3,7 +3,7 @@ title: "Betöltési az alkalmazás tesztelése a Visual Studio Team Services has
 description: "Megtudhatja, hogyan terhelési tesztelést az Azure Service Fabric-alkalmazások Visual Studio Team Services használatával."
 services: service-fabric
 documentationcenter: na
-author: cawams
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: fc743585-0d1b-483f-981d-493f4552ac07
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
-ms.author: cawa
-ms.openlocfilehash: e8e270ce865d4da3ee219958b308db2c1c89b11b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ryanwi
+ms.openlocfilehash: 42cd4fc0f7a8d1efdc4afff9c51693e756a1d1e3
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="load-test-your-application-by-using-visual-studio-team-services"></a>Betöltési az alkalmazás tesztelése a Visual Studio Team Services használatával
 Ez a cikk bemutatja a Microsoft Visual Studio terhelés teszt szolgáltatások használatának terhelési tesztelést kérelmet. Az Azure Service Fabric állapotalapú szolgáltatási háttér és egy állapotmentes szolgáltatások előtér-webkiszolgáló használ. Az itt használt mintaalkalmazás egy repülőgép hely szimulátor. Megadja, hogy egy repülőgép Azonosítót, az indulási idő és a cél. Az alkalmazás háttér feldolgozza a kérelmeket, és az előtér egy térképen jeleníti meg, amely megfelel a feltételeknek a repülőgép.
@@ -32,7 +32,7 @@ Az első lépések előtt kell tegye a következőket:
 
 * Hozzon létre egy Visual Studio Team Services-fiókot. Kaphat egy ingyenes [Visual Studio Team Services](https://www.visualstudio.com).
 * Szerezze be, és telepítse a Visual Studio 2013 vagy Visual Studio 2015-öt. Ez a cikk a Visual Studio 2015 Enterprise edition használ, de a Visual Studio 2013 és a többi kiadás hasonlóan működnek.
-* Átmeneti környezet az alkalmazás telepítése. Lásd: [egy távoli fürtre, a Visual Studio használatával alkalmazások központi telepítése](service-fabric-publish-app-remote-cluster.md) információkat arról.
+* Átmeneti környezet az alkalmazás telepítése. Lásd: [egy távoli fürtre, a Visual Studio használatával alkalmazások központi telepítése](service-fabric-manage-application-in-visual-studio.md) információkat arról.
 * Az alkalmazás használati szokások megismerése. Ezt az információt a terhelés mintát szimulálására szolgál.
 * Ismerje meg a cél a terhelés teszteléséhez. Ezzel a megoldással értelmezése és elemzése a teszteredmények betöltése.
 

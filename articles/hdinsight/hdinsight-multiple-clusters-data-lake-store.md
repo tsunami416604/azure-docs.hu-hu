@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 08f860dcf0f1d6c69cee02261b2a4989fc5c694a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92339548768878d03b864853172f3e94ad899693
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Több HDInsight-fürt használata az Azure Data Lake Store-fiók
 
@@ -52,7 +52,7 @@ A következő táblában:
 - **Szolgáltatás egyszerű** van a fiókhoz tartozó egyszerű Azure Active Directory (AAD) szolgáltatást.
 - **FINGRP** az aad-ben, amely a pénzügyi szervezet felhasználóinak tartalmazza létrehozott felhasználói csoport.
 
-További információ a egy AAD-alkalmazást, (amelyek is létrehoz egy egyszerű szolgáltatásnév) létrehozása [hozzon létre egy AAD-alkalmazást](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Felhasználói csoport létrehozása az aad-ben, lásd: [csoportkezelés az Azure Active Directory](../active-directory/active-directory-accessmanagement-manage-groups.md).
+További információ a egy AAD-alkalmazást, (amelyek is létrehoz egy egyszerű szolgáltatásnév) létrehozása [hozzon létre egy AAD-alkalmazást](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Felhasználói csoport létrehozása az aad-ben, lásd: [csoportkezelés az Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md).
 
 Figyelembe kell venni néhány kulcs mutat.
 

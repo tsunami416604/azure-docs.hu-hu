@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 278aa67013eb2cabcf5efa7e0de21e9cff0519ba
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 00fc998666574f0b85b968cba174d328a300e861
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Az Azure Active Directory biztonságossá tétele a privilegizált hozzáférési jogosultsága.
 Emelt szintű hozzáférés biztonságossá tétele Ez kritikus első lépés egy modern szervezet üzleti eszközök védelme érdekében. Kiemelt jogosultságú fiókok azok a fiókok, felügyelheti és kezelheti az informatikai rendszerek. A támadók számítógépes ezeket a fiókokat ahhoz, hogy hozzáférjenek a szervezetek adatokhoz és rendszerek célként. Emelt szintű hozzáférés biztonságossá tételéhez, a fiókok és a kockázat, hogy egy rosszindulatú felhasználó rendszert kell különíteni.
@@ -66,7 +66,7 @@ Feltételes hozzáférés-vezérlést Azure Active Directory ellenőrzi a megado
 * Engedélyezése [Azure többtényezős hitelesítés](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
 * Engedélyezése [az Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md)
 * Engedélyezése [Azure AD Identity Protection](../active-directory-identityprotection.md)
-* Engedélyezése [feltételes hozzáférés-vezérlést](../active-directory-conditional-access.md)
+* Engedélyezése [feltételes hozzáférés-vezérlést](../active-directory-conditional-access-azure-portal.md)
 
 Egy teljes biztonsági terv felépítésével további információkért lásd: az "ügyfél feladatkörei és terv" részében a [vállalati fejlesztők a Microsoft Cloud biztonsági](http://aka.ms/securecustomer) dokumentum. Bővebben módon vegye fel a Microsoft-szolgáltatások az alábbi témakörök egyik segít, forduljon a Microsoft képviselőjével, vagy keresse fel a [számítógépes megoldások lap](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 

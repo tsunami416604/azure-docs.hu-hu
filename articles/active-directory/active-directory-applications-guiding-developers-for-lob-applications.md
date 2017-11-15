@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b119be9c06d8c1ccc8e747168429e6c2d2e7a8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76bb8d239b54b5236d077b98a5908c230cdc31a1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Az Azure Active Directory-üzleti alkalmazások fejlesztéséhez
 Ez az útmutató áttekintést fejlesztése az üzletági (LoB) alkalmazások az Azure Active Directory (AD). A célközönség Active Directory vagy Office 365 globális rendszergazdák.
 
 ## <a name="overview"></a>Áttekintés
-Az Azure AD integrált alkalmazások lehetőséget ad a felhasználók a szervezet egyszeri bejelentkezéshez és az Office 365 a. Mivel az alkalmazás a hitelesítési házirend alkalmazására vonatkozó vezérlésére biztosít az Azure AD lehetőséget. További információt a feltételes hozzáférés és a többtényezős hitelesítés (MFA) tekintse meg az alkalmazások védelme [konfigurálása hozzáférési szabályok](active-directory-conditional-access-azuread-connected-apps.md).
+Az Azure AD integrált alkalmazások lehetőséget ad a felhasználók a szervezet egyszeri bejelentkezéshez és az Office 365 a. Mivel az alkalmazás a hitelesítési házirend alkalmazására vonatkozó vezérlésére biztosít az Azure AD lehetőséget. További információt a feltételes hozzáférés és a többtényezős hitelesítés (MFA) tekintse meg az alkalmazások védelme [konfigurálása hozzáférési szabályok](active-directory-conditional-access-azure-portal-get-started.md).
 
 Regisztrálja az alkalmazást az Azure Active Directoryt. Az alkalmazás regisztrálása, az azt jelenti, hogy a fejlesztők használhatják-e az Azure AD hitelesíti a felhasználókat, és kérjen hozzáférést a felhasználói erőforrások, például az e-mailek, naptár és dokumentumok.
 
@@ -57,7 +57,7 @@ Mi a globális rendszergazdának kell tennie segítségével a fejlesztők legye
 * Ne jelenjen meg többé az alapértelmezett felhasználói hozzájárulás élmény
 
 ## <a name="configure-access-rules"></a>Hozzáférési szabályok konfigurálása
-A Szolgáltatottszoftver-alkalmazásoknál alkalmazás hozzáférési szabályok konfigurálása. Például többtényezős hitelesítés megkövetelése, vagy csak felhasználók férhessenek hozzá a megbízható hálózatokon. Ez a részletes érhetők el a dokumentum [konfigurálása hozzáférési szabályok](active-directory-conditional-access-azuread-connected-apps.md).
+A Szolgáltatottszoftver-alkalmazásoknál alkalmazás hozzáférési szabályok konfigurálása. Például többtényezős hitelesítés megkövetelése, vagy csak felhasználók férhessenek hozzá a megbízható hálózatokon. Ez a részletes érhetők el a dokumentum [konfigurálása hozzáférési szabályok](active-directory-conditional-access-azure-portal-get-started.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Az alkalmazás felhasználói kiosztása és felhasználók hozzárendelése konfigurálása
 Alapértelmezés szerint felhasználók folyik a hozzárendelése nem férhet hozzá az alkalmazásokhoz. Ha az alkalmazás elérhetővé teszi a szerepkörök, vagy ha azt szeretné, hogy az alkalmazás a felhasználó hozzáférési panel megjeleníteni, felhasználó-hozzárendelés elvégzéséhez szükséges.
@@ -78,6 +78,6 @@ További információ a felhasználói hozzájárulás és a hozzájárulásukat
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure AD alkalmazásproxy a helyszíni alkalmazások biztonságos távoli hozzáférés engedélyezése](active-directory-application-proxy-get-started.md)
-* [Azure feltételes hozzáférés előzetes verziója SaaS-alkalmazásokhoz](active-directory-conditional-access-azuread-connected-apps.md)
+* [Azure feltételes hozzáférés előzetes verziója SaaS-alkalmazásokhoz](active-directory-conditional-access-azure-portal-get-started.md)
 * [Az Azure ad-val alkalmazásokhoz való hozzáférés kezelése](active-directory-managing-access-to-apps.md)
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)

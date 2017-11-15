@@ -15,17 +15,13 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 1b08a0b376cbcae8522364c9b6ef22e9c0176438
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 477f20bd552460176be92f1db70bb0f76de8bac1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Külön hálózatok és helyek összekötő csoportokat használnak az alkalmazások közzététele
-> [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-application-proxy-connectors-azure-portal.md)
-> * [klasszikus Azure portál](active-directory-application-proxy-connectors.md)
->
 
 Az Azure AD-alkalmazásproxy több és több forgatókönyvek és az alkalmazások használatát. Így hajtottunk alkalmazásnak Proxy rugalmasabb még további topológiák engedélyezésével. Alkalmazásproxy-összekötő csoportokat is létrehozhat, úgy, hogy egyes alkalmazások kiszolgálására adott összekötők rendelhet. Ez a funkció lehetőséget további és a Proxy telepítésének optimalizálása. 
 

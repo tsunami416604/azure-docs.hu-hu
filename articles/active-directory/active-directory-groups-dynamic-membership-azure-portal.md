@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 5e101c4b92868181a6b627d060a9c8e72a7837c4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0bf6177bc34b6f7daf9c14a22c3b381025f0f825
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
@@ -81,7 +81,7 @@ Az alábbi táblázat a támogatott kifejezés szabályoperátorokat és szintax
 | Operátor | Szintaxis |
 | --- | --- |
 | Nem egyenlő |-ne |
-| egyenlő |-eq |
+| Egyenlő |-eq |
 | Nem kezdődik |-notStartsWith |
 | Kezdődik |-startswith elemnek |
 | Nem tartalmazza |-notContains |
@@ -296,7 +296,7 @@ Olyan szabály, amely kijelöli a tagság eszközobjektumok egy csoportot is lé
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Dinamikus tagság módosítása a statikus, és ez fordítva is igaz
 Akkor lehet módosítani a módjára vonatkozik a csoport tagságát. Ez akkor hasznos, ha meg szeretné tartani a azonos csoport nevét és Azonosítóját a rendszer úgy, hogy minden meglévő csoporthoz továbbra is érvényes; Új csoport létrehozásakor igényelnének frissítése ezeket a hivatkozásokat.
 
-Az Azure-portál támogatja ezt a funkciót frissítése végezzük. Addig is használhatja a [a klasszikus Azure portálon](https://manage.windowsazure.com) (kövesse az utasításokat [Itt](active-directory-accessmanagement-groups-with-advanced-rules.md)) vagy a PowerShell-parancsmagok a lent látható módon.
+Az Azure-portál támogatja ezt a funkciót frissítése végezzük. Addig is használhatja a [a klasszikus Azure portálon](https://manage.windowsazure.com) (kövesse az utasításokat [Itt](active-directory-groups-dynamic-membership-azure-portal.md)) vagy a PowerShell-parancsmagok a lent látható módon.
 
 > [!WARNING]
 > Egy létező statikus csoportot egy dinamikus csoport módosításakor a csoport összes meglévő tag törlődik, és ezután a tagsági szabály dolgoz fel új tagokat adhat. Ha a csoport használatával alkalmazásokhoz és erőforrásokhoz való hozzáférést, az eredeti tagok elveszthetik a hozzáférést a tagsági szabály teljesen feldolgozásáig.

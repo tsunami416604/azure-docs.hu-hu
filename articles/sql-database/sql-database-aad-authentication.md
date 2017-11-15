@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 09/12/2017
 ms.author: rickbyh
-ms.openlocfilehash: 2726f5a78920f0ce47ed9d034e6a597c11b92e98
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: b6a7a1d6e7c9f8a921dc73bb3bf629de71f85acf
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-or-sql-data-warehouse"></a>Az SQL Database vagy az SQL Data Warehouse hitelesítéshez használandó Azure Active Directory-hitelesítés
 Az Azure Active Directory-hitelesítés a Microsoft Azure SQL-adatbázishoz szeretne csatlakozni egy olyan mechanizmus és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitások az Azure Active Directory (Azure AD) segítségével. Az Azure AD-alapú hitelesítés adatbázis-felhasználók identitását, és más Microsoft-szolgáltatásokban egyetlen központi helyen központilag kezelheti. Központi azonosítófelügyeleti biztosít egy helyen adatbázis-felhasználók kezelése és egyszerűbbé teszi a jogosultság kezelése. Előnyei a következők:
@@ -73,7 +73,7 @@ Tartalmazott adatbázis-felhasználó létrehozása az Azure SQL Database vagy a
 ## <a name="azure-ad-features-and-limitations"></a>Az Azure AD-funkciókat és korlátozások
 Az alábbi tagokat az Azure AD az Azure SQL server vagy az SQL Data Warehouse kiépítése:
 
-* Natív tagok: tagja hozott létre az Azure AD, a felügyelt tartományra vagy egy felhasználói tartományban. További információkért lásd: [saját tartománynév hozzáadása az Azure AD](../active-directory/active-directory-add-domain.md).
+* Natív tagok: tagja hozott létre az Azure AD, a felügyelt tartományra vagy egy felhasználói tartományban. További információkért lásd: [saját tartománynév hozzáadása az Azure AD](../active-directory/active-directory-domains-add-azure-portal.md).
 * Összevont tartományhoz: hozott létre az Azure AD egy összevont tartomány tagja. További információkért lásd: [Microsoft Azure mostantól támogatja a Windows Server Active Directory összevonási](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/).
 * Importált tagjai más Azure AD-ből natív vagy összevont tartománytagok.
 * Active Directory csoport biztonsági csoportok jönnek létre.

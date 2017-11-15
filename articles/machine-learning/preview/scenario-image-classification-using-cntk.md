@@ -9,11 +9,11 @@ ms.reviewer: mawah, marhamil, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 336d3ffaee21040a95366e0317cecdb83977ce97
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 2f8b2d9d2396c1f9c9e509257f3cd031a816729f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Kép besorolás használata az Azure Machine Learning-munkaterület
 
@@ -52,9 +52,11 @@ Ez a példa futtatásához az Előfeltételek a következők:
 4. Egy dedikált GPU nincs szükség a SVM képzési végrehajtása részében 1, azonban szükség van a 2. rész ismertetett DNN finomítása. Ha nem rendelkezik egy erős GPU, szeretné, hogy a több Feldolgozóegységekkel betanítása, vagy egy Windows-számítógép nem rendelkezik, fontolja meg Azure mély tanulási virtuális gépek használata a Windows operációs rendszerrel. Lásd: [Itt](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) egy 1 kattintással telepítési útmutató. Amennyiben telepített, csatlakoztassa a virtuális Gépet egy távoli asztali kapcsolaton keresztül, munkaterület nincs telepítése és a virtuális gépről helyi hajtható végre a kódot.
 5. Például OpenCV különböző Python függvénytárak telepítve kell lennie. Kattintson a *nyissa meg a parancssort* a a *fájl* menü a munkaterületet üzemeltető futtatja a következő parancsokat a függőségek telepítése:  
     - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-win_amd64.whl`  
-    - `pip install opencv_python-3.3.0-cp35-cp35m-win_amd64.whl`után a OpenCV kerék letöltésére http://www.lfd.uci.edu/~gohlke/pythonlibs/ (a pontos fájl nevét és verzióját módosítható)
-    - `conda install matplotlib numpy pillow`
-    - `conda install -c conda-forge bqplot`
+    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl`után a OpenCV kerék letöltésére http://www.lfd.uci.edu/~gohlke/pythonlibs/ (a pontos fájl nevét és verzióját módosítható)
+    - `conda install pillow`
+    - `pip install -U numpy`
+    - `pip install bqplot`
+    - `jupyter nbextension enable --py --sys-prefix bqplot`
 
 ### <a name="troubleshooting--known-bugs"></a>Hibaelhárítási / ismert hibák
 - 2. rész GPU szükséges, és ellenkező esetben a hiba "Kötegelt normalizálási képzési CPU még nincs megvalósítva" azért történik, pontosítsa a DNN tett kísérlet során.
@@ -66,7 +68,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
 ## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
 
 Ebben a példában egy sablon használatával új projekt létrehozásához:
-1.  Nyissa meg az Azure Machine Learning-munkaterület.
+1.  Nyissa meg az Azure Machine Learning Workbenchet.
 2.  Az a **projektek** lapján kattintson a  **+**  aláírásához, és válassza ki **új projekt**.
 3.  Az a **új projekt létrehozása** ablaktáblán, töltse ki az adatokat az új projekt.
 4.  Az a **keresési Projektsablonjai** keresési mezőbe, írja be a "Besorolást kép", és válassza ki a sablont.

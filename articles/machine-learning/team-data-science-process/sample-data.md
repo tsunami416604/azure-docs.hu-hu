@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: e56c9e74c3413f8780295678273ea2ba06caad77
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 97d344fd31d711454f3e4aa251361b86351cc283
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="heading"></a>Az Azure blob-tárolókban, SQL Server-adatokat, és a Hive táblák
-Ez a dokumentum témakörökre mutató hivatkozásokat tartalmaz, amely bemutatja, hogyan adhat az három különböző Azure helyek egyikén tárolt adatokat:
+Ez a dokumentum a cikkeket a három különböző Azure helyek egyikén tárolt adatok módjának mutató hivatkozásokat tartalmaz:
 
 * **Az Azure blob-tároló adatok** van mintát az programozott módon letöltheti, és majd mintavételi minta Python kóddal.
 * **SQL Server-adatok** mintát venni, SQL és a Python programozási nyelv használatával. 
