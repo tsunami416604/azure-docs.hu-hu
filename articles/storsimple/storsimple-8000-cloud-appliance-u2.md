@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/10/2017
+ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 1ece5b1b2ba8e4d26fe633fe7c7c60f4187f9d6b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 46b1be5bdd4fa400f437bca274e7f3f6e0dfec08
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
 
@@ -183,6 +183,18 @@ A következő lépések végrehajtásával hozhat létre nyilvános végpontot a
 [!INCLUDE [Create public endpoints on a cloud appliance](../../includes/storsimple-8000-create-public-endpoints-cloud-appliance.md)]
 
 Javasolt ugyanannak a virtuális hálózatnak egy másik virtuális gépéről csatlakozni, mivel így csökkenthető a nyilvános végpontok száma a virtuális hálózaton. Ebben az esetben egy távoli asztali munkameneten keresztül csatlakozhat a virtuális géphez, majd a virtuális gépet ugyanúgy konfigurálhatja a használatra, ahogyan bármely más Windows-ügyfelet egy helyi hálózaton. A nyilvános port számát nem kell hozzáfűznie, mivel a port már ismert.
+
+## <a name="get-private-ip-for-the-cloud-appliance"></a>Magánhálózati IP-cím lekérése a felhőalapú berendezéshez
+
+Ahhoz, hogy a felhőalapú berendezés csatlakozzon az ugyanazon a virtuális hálózaton lévő gazdakiszolgálóhoz, szüksége van a felhőalapú berendezés belső vagy magánhálózati IP-címére. A felhőalapú berendezés magánhálózati IP-címének lekéréséhez tegye a következőket:
+
+1. Lépjen a felhőalapú berendezés alapjául szolgáló virtuális gépre. A virtuális gép neve megegyezik a felhőalapú berendezés nevével. Lépen az **Összes erőforrás** területre, adja meg a felhőalapú berendezés és az előfizetés nevét, majd válassza a virtuális gépek típust. A megjelenő virtuális gépek listájáról válassza ki a felhőalapú berendezésnek megfelelő virtuális gépet, és kattintson rá.
+
+     ![A felhőalapú berendezéshez tartozó virtuális gép kiválasztása](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
+
+2. Lépjen a **Beállítások > Hálózatkezelés** területre. A jobb oldali panelen megjelenik a felhőalapú berendezés magánhálózati IP-címe. Ezt jegyezze fel.
+
+    ![A felhőalapú berendezés magánhálózati IP-címének lekérése](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 
 ## <a name="work-with-the-storsimple-cloud-appliance"></a>A StorSimple Cloud Appliance használata
 

@@ -1,6 +1,6 @@
 ---
-title: "Ismerkedés az Azure SQL adatszinkronizálás (előzetes verzió) |} Microsoft Docs"
-description: "Ez az oktatóanyag segítséget nyújt Ismerkedés az Azure SQL adatszinkronizálás (előzetes verzió)"
+title: "Azure SQL adatszinkronizálás (előzetes verzió) beállítása |} Microsoft Docs"
+description: "Az oktatóanyag bemutatja, hogyan állíthat be Azure SQL adatszinkronizálás (előzetes verzió)"
 services: sql-database
 documentationcenter: 
 author: douglaslms
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 0dc34a8e08ea75a84d1553963bdb892c84dacdb7
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: d0b3f3b188bc5da91414efb763b5165377009191
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
 ---
-# <a name="get-started-with-azure-sql-data-sync-preview"></a>Ismerkedés az Azure SQL adatszinkronizálás (előzetes verzió)
+# <a name="set-up-sql-data-sync-preview"></a>SQL adatszinkronizálás (előzetes verzió) beállítása
 Ebben az oktatóanyagban elsajátíthatja, hogyan Azure SQL Data szinkronizálás beállítása az Azure SQL Database és az SQL Server-példányokat tartalmazó hibrid szinkronizálási csoportok létrehozásával. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.
 
 Ez az oktatóanyag feltételezi, hogy rendelkezik-e legalább némi tapasztalattal az SQL Database és SQL-kiszolgálóval. 
@@ -110,7 +110,7 @@ Az a **Azure-adatbázis beállítása** lapján tegye a következőket:
 
     ![Új SQL-adatbázis szinkronizálási tag hozzá lett adva.](media/sql-database-get-started-sql-data-sync/datasync-preview-memberadded.png)
 
-### <a name="add-an-on-premises-sql-server-database"></a>A helyszíni SQL Server adatbázis hozzáadása
+### <a name="add-on-prem"></a>A helyszíni SQL Server adatbázis hozzáadása
 
 Az a **Tagadatbázis** szakaszban, és opcionálisan adja hozzá egy helyi SQL Server a szinkronizálási csoport kiválasztásával **adja hozzá az On-Premises adatbázis**. A **konfigurálása a helyszíni** lap megnyitásakor.
 

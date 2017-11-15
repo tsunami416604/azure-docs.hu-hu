@@ -12,21 +12,24 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 3286db40856c9f0eb2564c01f1483870952a19e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6107f64ae86af9b0ee873c8313ebba5371737f4d
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-2"></a>A helyszíni StorSimple eszköz (2. frissítés) üzembe helyezése
+
+> [!NOTE]
+> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ennek a cikknek az új Azure Portalra vonatkozó verziója: [A helyszíni StorSimple eszköz (2. frissítés) üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md). Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
+
+
 > [!div class="op_single_selector"]
 > * [2. és azt követő frissítések ](storsimple-deployment-walkthrough-u2.md)
 > * [1. frissítés](storsimple-deployment-walkthrough-u1.md)
 > * [GA kiadás](storsimple-deployment-walkthrough.md)
-> 
-> 
 
 ## <a name="overview"></a>Áttekintés
 Üdvözöljük a Microsoft Azure StorSimple eszköztelepítő útmutatójában. Ezek az üzembehelyezési oktatóanyagok a StorSimple 8000 Series 2-es frissítési verzióra vonatkoznak. Ez az oktatóanyag-sorozat tartalmazza a StorSimple eszköz konfigurálásához szükséges ellenőrzőlistát, előfeltételeket és részletes lépéseket.

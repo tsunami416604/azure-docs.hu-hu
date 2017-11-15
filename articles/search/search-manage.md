@@ -13,13 +13,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 06/18/2017
+ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: c293de5b43103c8cbec01f61a26b8b28ac7e9116
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 916a08aacca428530bc4f728d5de422e04bed8bc
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Az Azure-portálon az Azure Search szolgáltatás adminisztrációs
 > [!div class="op_single_selector"]
@@ -34,13 +34,10 @@ Az Azure Search egy teljes körűen felügyelt, felhőalapú keresőszolgáltat�
 * Módosítsa a szolgáltatás kapacitás lefoglalása a partíciók és replikák módosításával.
 * Erőforrás-használat, a szolgáltatási réteg maximális határértékeinek viszonyítva figyelése.
 
-**Nincs a hatókörben** 
+Figyelje meg, hogy *frissítése* nem szerepel, mint a felügyeleti feladatot. -Erőforrásokat foglal le, ha a szolgáltatás ki van építve, mert egy másik réteghez kell egy új szolgáltatás. További információkért lásd: [Azure Search szolgáltatás létrehozása](search-create-service-portal.md).
 
-*Tartalomkezelési* (vagy felügyeleti indexazonosító) hivatkozik a műveletek, például a lekérdezés kötet megértéséhez, mely feltételek, személyek keresése a, és hogyan sikeres találatok között szerepelnek az ügyfelek irányítása az egyes dokumentumokhoz felderítése keresési forgalom elemzése az index. Ezen a területen, lásd: [keresési forgalom Analytics az Azure Search](search-traffic-analytics.md).
-
-*Lekérdezés teljesítmény* már nem ez a cikk is tartozik. További információkért lásd: [használati és a lekérdezés metrikát](search-monitor-usage.md) és [teljesítmény- és optimalizálási](search-performance-optimization.md).
-
-*Frissítés* nincs felügyeleti feladatot. -Erőforrásokat foglal le, ha a szolgáltatás ki van építve, mert egy másik réteghez kell egy új szolgáltatás. További információkért lásd: [Azure Search szolgáltatás létrehozása](search-create-service-portal.md).
+> [!Tip]
+> Súgó a keresési forgalom vagy a lekérdezés teljesítményének elemzése keres? Lekérdezés kötet, amely feltételek személyek keres, és hogyan sikeres találatok nyereség betekintést szerepelnek, az ügyfelek irányítása az indexben egyes dokumentumokhoz. Útmutatásért lásd: [keresési forgalom Analytics az Azure Search](search-traffic-analytics.md), [használati és a lekérdezés metrikát](search-monitor-usage.md), és [teljesítmény- és optimalizálási](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
@@ -113,15 +110,10 @@ Hozzáférési engedélyek másik módja: kattintson **szerepkörök** a felhasz
 ## <a name="monitor-resource-usage"></a>A figyelő Erőforrás kihasználtsága
 Az irányítópult erőforrás figyelési korlátozódik a szolgáltatás irányítópultját és néhány metrikák szerezheti be a szolgáltatás lekérdezi a megjelenő információkat. A szolgáltatás irányítópultján, a használati területen segítségével gyorsan megállapítható, hogy partíció erőforrás szintek megfelelőek-e az alkalmazás.
 
-A Search szolgáltatás API használatával kaphat a dokumentumok és indexek száma. Nincsenek társított ezeket a számokat az árképzési szint alapján a szigorú korlátozásokat. További információkért lásd: [Search szolgáltatásra vonatkozó korlátozások](search-limits-quotas-capacity.md). 
+A Search szolgáltatás REST API használatával, kaphat a dokumentumok és indexek száma programozott módon: 
 
 * [Megtekintheti a statisztikákat Index](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [A dokumentumok száma](https://docs.microsoft.com/rest/api/searchservice/count-documents)
-
-> [!NOTE]
-> Gyorsítótárazás viselkedések ideiglenesen overstate korlátozni. Például a megosztott szolgáltatás használatakor láthatja a dokumentumok száma meghaladja a rögzített 10 000 dokumentumokat. A adatról ideiglenes, és a következő kényszerítési ellenőrzés észlelni fogja. 
-> 
-> 
 
 ## <a name="disaster-recovery-and-service-outages"></a>Katasztrófa utáni helyreállítás és a szolgáltatás leállások esetén
 

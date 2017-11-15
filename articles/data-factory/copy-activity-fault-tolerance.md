@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2017
+ms.date: 11/10/2017
 ms.author: jingwang
-ms.openlocfilehash: 5b2658cecba80ef871cc38b930b0e52bc3952530
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 990bffa728977efead7b2b20847ff2adaa63a7f8
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/10/2017
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>A másolási tevékenység során az Azure Data Factory hibatűrés
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/18/2017
 A másolási tevékenység során az Azure Data Factory szeretné kezelni a forrás és a fogadó adattároló közötti másolás nem kompatibilis sorok két lehetőséget kínál:
 
 - Megszakítja, és sikertelen lesz a másolási tevékenység nem kompatibilis adat esetén történt (alapértelmezés).
-- Továbbra is másolhatja az összes adat hozzáadásával a hibatűrést, és nem kompatibilis adat sorok kihagyása. Ezenkívül bejelentkezhet a nem kompatibilis sorok Azure Blob Storage tárolóban. Ismerje meg a hiba okát, javítsa ki az adatokat az adatforrás, és ismételje meg a másolási tevékenység napló majd ellenőrizheti.
+- Továbbra is másolhatja az összes adat hozzáadásával a hibatűrést, és nem kompatibilis adat sorok kihagyása. Ezenkívül bejelentkezhet a nem kompatibilis sorok Azure Blob-tároló vagy az Azure Data Lake Store. Ismerje meg a hiba okát, javítsa ki az adatokat az adatforrás, és ismételje meg a másolási tevékenység napló majd ellenőrizheti.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [tevékenység hibatűrést másolja a V1](v1/data-factory-copy-activity-fault-tolerance.md).
@@ -50,23 +50,24 @@ A következő példa egy JSON-definícióból, a másolási tevékenység nem ko
     },
     "sink": {
         "type": "SqlSink",
-    },         
-    "enableSkipIncompatibleRow": true,           
+    },
+    "enableSkipIncompatibleRow": true,
     "redirectIncompatibleRowSettings": {
          "linkedServiceName": {
-              "referenceName": "AzureBlobLinkedService",
+              "referenceName": "<Azure Storage or Data Lake Store linked service>",
               "type": "LinkedServiceReference"
             },
             "path": "redirectcontainer/erroroutput"
      }
 }
 ```
+
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | Megadja, hogy nem kompatibilis sorok kihagyása másolása során, vagy nem. | True (Igaz)<br/>Hamis (alapértelmezés) | Nem
 redirectIncompatibleRowSettings | Egy csoport, amely tulajdonságok meg, ha azt szeretné, a nem kompatibilis sorok bejelentkezni. | &nbsp; | Nem
-linkedServiceName | A napló, a rendszer kihagyta sorokat tartalmazó tárolásához Azure Storage társított szolgáltatás. | A nevének AzureStorage vagy AzureStorageSas társított szolgáltatás, amely hivatkozik a naplófájl tárolási használni kívánt tárolási-példány. | Nem
-Elérési út | A rendszer kihagyta sorokat tartalmaz-e a naplófájl elérési útja | Adja meg a Blob storage elérési utat, amely a nem kompatibilis adatokat naplózhatnak használni kívánt. Ha nem ad meg egy elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
+linkedServiceName | A társított szolgáltatás [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) a naplót, hogy a rendszer kihagyta sorokat tartalmaz-e tárolni. | A neve egy `AzureStorage` vagy `AzureDataLakeStore` írja be a társított szolgáltatás, amely ahhoz a példányhoz, a naplófájl tárolási használni kívánt hivatkozik. | Nem
+Elérési út | A rendszer kihagyta sorokat tartalmaz-e a naplófájl elérési útja | Adja meg az útvonalat, amelyet a nem kompatibilis adatokat naplózhatnak használni kívánt. Ha nem ad meg egy elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
 ## <a name="monitor-skipped-rows"></a>A rendszer kihagyta sorok figyelése
 A másolási tevékenység során futtatása után megtekintheti a másolási tevékenység kimenet kihagyott sorok száma:

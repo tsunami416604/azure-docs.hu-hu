@@ -1,5 +1,5 @@
 ---
-title: "Az Azure SQL-adatok szinkronizálása gyakorlati tanácsok |} Microsoft Docs"
+title: "Gyakorlati tanácsok az Azure SQL adatszinkronizálás |} Microsoft Docs"
 description: "Ismerje meg az ajánlott eljárások az Azure SQL adatszinkronizálás fut és konfigurálása"
 services: sql-database
 ms.date: 11/2/2017
@@ -8,13 +8,13 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 51ef421e0761be81681728daba9c2b6300e702c4
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: d23bd186300d451186dd4f3644290cb4178417a2
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
 ---
-# <a name="best-practices-for-azure-sql-data-sync-preview"></a>Ajánlott eljárások az Azure SQL adatszinkronizálás (előzetes verzió) 
+# <a name="best-practices-for-sql-data-sync-preview"></a>Ajánlott eljárások az SQL adatszinkronizálás (előzetes verzió) 
 
 Ez a cikk ismerteti a gyakorlati tanácsok az SQL adatszinkronizálás (előzetes verzió).
 
@@ -228,7 +228,7 @@ Ha egy adatbázis eltávolítása, és szerkessze a szinkronizálási csoport el
 SQL adatszinkronizálás kapcsolatos további információkért lásd:
 
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md)
--   [Ismerkedés az Azure SQL-adatok szinkronizálása](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL Data szinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
 -   [A figyelő az Azure SQL adatszinkronizálás az OMS szolgáltatáshoz](sql-database-sync-monitor-oms.md)
 -   [Az Azure SQL adatszinkronizálás problémák elhárítása](sql-database-troubleshoot-data-sync.md)
 

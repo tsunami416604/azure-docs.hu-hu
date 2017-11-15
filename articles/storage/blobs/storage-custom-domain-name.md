@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: tamram
-ms.openlocfilehash: cbc8654bf1755826afa2cf83e5476e88903e0854
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfca37e3a369fdfb41b4064b72ccd027bd8cbd3
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>Egyéni tartományév konfigurálása a Blob Storage-végponthoz
 
@@ -55,7 +55,7 @@ Az egyéni tartomány hozzárendelését a blob végponthoz rövid idő alatt a 
 A köztes metódus tárgyalja [regisztráljon egy egyéni tartomány a *asverify* altartomány](#register-a-custom-domain-using-the-asverify-subdomain).
 
 ## <a name="register-a-custom-domain"></a>Az egyéni tartománynév regisztrálása
-Ez az eljárás segítségével regisztrálja az egyéni tartomány, ha kérdése nincs folyamatban röviden nem érhető el, hogy a felhasználók tartománnyal kapcsolatos információk, vagy ha az egyéni tartomány jelenleg nem üzemeltet egy alkalmazást.
+Ez az eljárás segítségével regisztrálja az egyéni tartomány, ha kérdése nincs folyamatban röviden nem érhető el, hogy a felhasználók tartománnyal kapcsolatos információk, vagy ha az egyéni tartomány jelenleg nem üzemeltet egy alkalmazást. Használhatja az Azure DNS konfigurálása az Azure Blob-tároló egy egyéni DNS-nevet. További információkért lásd: [használata Azure DNS számára adja meg az egyéni tartomány beállításait az Azure-szolgáltatások](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage).
 
 Ha az egyéni tartomány jelenleg támogat, amelyek nem rendelkeznek leállási kérelmet, hajtsa végre az ismertetett módon [regisztráljon egy egyéni tartomány a *asverify* altartomány](#register-a-custom-domain-using-the-asverify-subdomain).
 

@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 08b07053dd1507bcf0564f3071642f66f06b3559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86e19d5bb942937779665eb60d9dc0654c16747d
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Python konfigurálása az Azure App Service Web Apps alkalmazások
 Ez az oktatóanyag ismerteti, szerzői és egy alapszintű Web Server átjáró felület (WSGI) kompatibilis Python alkalmazást beállításának beállítások [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -33,15 +33,15 @@ Az Azure piactéren a Bottle, a Django és a Flask keretrendszerek sablonjait ta
 * [Webalkalmazások létrehozása a djangóval](https://portal.azure.com/#create/PTVS.Django)
 * [Webalkalmazások létrehozása a Flask](https://portal.azure.com/#create/PTVS.Flask)
 
-## <a name="web-app-creation-on-azure-portal"></a>Webalkalmazás létrehozása az Azure portálon
-Ez az oktatóanyag azt feltételezi, hogy egy meglévő Azure-előfizetés és az Azure portál eléréséhez.
+## <a name="web-app-creation-on-azure-portal"></a>Webalkalmazás létrehozása az Azure-portálon
+Ez az oktatóanyag azt feltételezi, hogy egy meglévő Azure-előfizetés és az Azure-portál eléréséhez.
 
-Ha még nem rendelkezik egy létező webalkalmazása, létrehozhat egyet a [Azure Portal](https://portal.azure.com).  Kattintson az új gombra a bal felső sarokban, majd **Web + mobil** > **webalkalmazás**.
+Ha még nem rendelkezik egy létező webalkalmazása, létrehozhat egyet a [Azure-portálon](https://portal.azure.com).  Kattintson az új gombra a bal felső sarokban, majd **Web + mobil** > **webalkalmazás**.
 
 ## <a name="git-publishing"></a>Git-közzététel
 Konfigurálja az újonnan létrehozott webalkalmazáshoz tartozó Git-közzétételt a [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben) részben megadott utasítások szerint. Ez az oktatóanyag a Git segítségével létrehozására, kezelésére és a Python webalkalmazás közzététele az Azure App Service.
 
-Git-közzététel beállítása után a Git-tárház létrehozása, és a webalkalmazás társított. A tárház URL-cím fog megjelenni, és ezentúl segítségével küldje le adatokat a helyi fejlesztési környezetet a felhőben. Git keresztül alkalmazások közzétételét, győződjön meg arról, hogy a Git-ügyfél telepítése, és kövesse az utasításokat, majd a webtartalom-alkalmazás az Azure App Service megadott.
+Git-közzététel beállítása után a Git-tárház létrehozása és a webalkalmazás társított. A tárház URL-cím jelenik meg, és küldje le adatokat a helyi fejlesztési környezetet a felhőben is használható. Git keresztül alkalmazások közzétételét, győződjön meg arról, hogy a Git-ügyfél telepítése, és kövesse az utasításokat, majd a webtartalom-alkalmazás az Azure App Service megadott.
 
 ## <a name="application-overview"></a>Az alkalmazás áttekintése
 A következő szakaszok a következő fájlok jönnek létre. A Git-tárház gyökérkönyvtárában található kerüljön.
@@ -74,16 +74,16 @@ WSGI egy Python szabvány szerint [EGP 3333](http://www.python.org/dev/peps/pep-
 Az alkalmazást helyileg is futtathatja `python app.py`, majd tallózással `http://localhost:5555` a böngészőben.
 
 ## <a name="virtual-environment"></a>Virtuális környezet
-Bár a fenti példa alkalmazás nincs szükség külső csomagok, valószínű, hogy az alkalmazás néhány szükséges.
+Bár az előző példa alkalmazás nincs szükség külső csomagok, valószínű, hogy az alkalmazás által igényelt néhány.
 
 Külső csomagfüggőségek kezelése érdekében a Azure Git-telepítés a virtuális környezetek létrehozását támogatja.
 
 Ha az Azure a requirements.txt észlel a tárház gyökérkönyvtárában található, automatikusan létrehoz egy nevű virtuális környezet `env`. Csak az első központi telepítése történik, vagy a telepítést követően a kijelölt Python során futásidejű megváltozott.
 
-Valószínűleg érdemes lehet létrehozni egy helyi fejlesztési virtuális környezetről, de nem adja hozzá a Git-tárházban.
+Valószínűleg szeretne létrehozni egy helyi fejlesztési virtuális környezetről, de nem adja hozzá a Git-tárházban.
 
 ## <a name="package-management"></a>Csomagkezelés
-A requirements.txt fájlban felsorolt csomagok automatikusan települnek a pip használatával a virtuális környezetben. Ez történik, minden üzembe helyezés, de a pip kihagyja a telepítést, ha a csomag már telepítve van.
+A requirements.txt fájlban felsorolt csomagok automatikusan települnek a pip használatával a virtuális környezetben. Ez történik, minden üzembe helyezés, de a pip kihagyja a telepítés, ha a csomag már telepítve van.
 
 Példa `requirements.txt`:
 
@@ -99,9 +99,9 @@ Példa `runtime.txt`:
 
 
 ## <a name="webconfig"></a>Web.config
-Hozzon létre egy web.config fájlt adhatja meg, hogy a kiszolgáló hogyan kezelje kérelmek lesz szüksége.
+A web.config fájlt a adja meg, hogy a kiszolgáló hogyan kezelje kérelmek létrehozásához szükséges.
 
-Vegye figyelembe, hogy a beállítást, ha egy web.x.y.config fájlt a tárházban, ahol x megfelel a kiválasztott Python-futtatókörnyezet, majd az Azure automatikusan másolatot készít a megfelelő web.config fájlt.
+Ha egy web.x.y.config fájlt a tárházban, ahol x megegyezik a kijelölt Python-futtatókörnyezet, majd Azure automatikusan átmásolja a megfelelő fájl is web.config.
 
 A következő web.config példák virtuális környezet proxyparancsfájl, amely a következő szakaszban ismertetett támaszkodnak.  Ezek a példában használt WSGI kezelő működnek `app.py` felett.
 
@@ -203,7 +203,7 @@ Példa `web.config` Python 3.4 esetén:
     </configuration>
 
 
-Statikus fájlok kezelik a webkiszolgáló által közvetlenül, Python kódját, javítja a teljesítményt áthaladás nélkül.
+Statikus fájlok a webkiszolgáló közvetlenül kezel, Python kódját, javítja a teljesítményt áthaladás nélkül.
 
 A fenti példákban a lemezen a statikus fájlokat meg kell felelnie a hely URL-címét. Ez azt jelenti, hogy kérelmet `http://pythonapp.azurewebsites.net/static/site.css` szolgálja ki a fájl a lemezen `\static\site.css`.
 
@@ -356,7 +356,3 @@ További információ: [Python fejlesztői központban](/develop/python/).
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
-
-## <a name="whats-changed"></a>A változások
-* Információk a Websites szolgáltatásról az App Service-re való váltásról: [Az Azure App Service és a hatása a meglévő Azure-szolgáltatásokra](http://go.microsoft.com/fwlink/?LinkId=529714)
-

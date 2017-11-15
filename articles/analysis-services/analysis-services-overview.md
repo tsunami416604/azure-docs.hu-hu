@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 11/07/2017
 ms.author: owend
-ms.openlocfilehash: c6be396f22ee364e7746038b2243162e775c8c54
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 350f95b2f9ec8dc4a3e2dc8f7d390f841b248fa1
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -46,9 +46,18 @@ Percek alatt [létrehozhat egy kiszolgálót](analysis-services-create-server.md
 A kiszolgáló létrehozása után közvetlenül az Azure Portalon létrehozhat egy táblázatos modellt. Az új (előzetes verziójú) [webes tervezői funkcióval](analysis-services-create-model-portal.md) Azure SQL Database-adatbázisokhoz és Azure SQL Data Warehouse-adatforrásokhoz kapcsolódhat, vagy importálhat Power BI Desktop- (.pbix kiterjesztésű) fájlokat. A táblák közötti kapcsolatok automatikusan jönnek létre, és közvetlenül a böngészően hozhat létre mértékeket vagy szerkesztheti a modell .bim fájlját json formátumban.
 
 ## <a name="scale-to-your-needs"></a>Igényei szerint méretezhető
+
+### <a name="the-right-tier-when-you-need-it"></a>A megfelelő szint – igény szerint
+
 Az Azure Analysis Services fejlesztői, alap- és standard szinten is elérhető. Az egyes szinteken belül a csomagköltségek a feldolgozási teljesítmény, a QPU-k és a memória mérete alapján változnak. Amikor létrehoz egy kiszolgálót, egy adott szinten belül választ ki egy csomagot. A csomagokat a szinten belül magasabb vagy alacsonyabb szintre módosíthatja, vagy frissíthet magasabb szintre, de magasabb szintről nem léphet vissza egy alacsonyabbra.
 
-Vertikálisan fel- vagy leskálázhatja, illetve szüneteltetheti a kiszolgálóját. Ehhez használhatja az Azure Portalt, illetve a PowerShellt, amely azonnali és teljes körű vezérlést biztosít. A fizetés használat alapján történik. További információ a különböző csomagokról és szintekről, illetve az Önnek legmegfelelőbb csomag kiválasztására szolgáló díjkalkulátor használatáról: [Az Azure Analysis Services díjszabása](https://azure.microsoft.com/pricing/details/analysis-services/).
+Fel- vagy leskálázhatja, illetve szüneteltetheti a kiszolgálóját. Ehhez használhatja az Azure Portalt, illetve a PowerShellt, amely azonnali és teljes körű vezérlést biztosít. A fizetés használat alapján történik. További információ a különböző csomagokról és szintekről, illetve az Önnek legmegfelelőbb csomag kiválasztására szolgáló díjkalkulátor használatáról: [Az Azure Analysis Services díjszabása](https://azure.microsoft.com/pricing/details/analysis-services/).
+
+### <a name="scale-out-resources-for-fast-query-responses"></a>Erőforrások kibővítése a lekérdezési válaszadás felgyorsítása érdekében
+
+Kibővített Azure Analysis Services-szolgáltatások esetében az ügyféllekérdezések több *lekérdezésreplikára* vannak kiosztva az adott lekérdezési készletben. A lekérdezésreplikák a táblázatos modellek szinkronizált másolataival rendelkeznek. A lekérdezésekből származó számítási feladatok felosztásával csökkenthető a válaszidő az erőforrás-igényesebb feladatok esetén. A modellfeldolgozási műveletek elkülöníthetők a lekérdezési készletből, ezáltal biztosítható, hogy a feldolgozási műveletek ne legyenek negatív hatással az ügyféllekérdezésekre. A létrehozott lekérdezési készlet legfeljebb hét további lekérdezésreplikát tartalmazhat (a kiszolgálóval együtt összesen nyolcat). 
+
+A szint módosításához hasonlóan a lekérdezésreplikákat is igénye szerint bővítheti. A bővítést a portálon vagy REST API-k használatával konfigurálhatja. További tudnivalókért lásd az [Azure Analysis Services kibővítését](analysis-services-scale-out.md) ismertető témakört.
 
 ## <a name="keep-your-data-close"></a>Tartsa adatait a közelben
 Az Azure Analysis Services szolgáltatásai a következő [Azure-régiókban](https://azure.microsoft.com/regions/) hozhatók létre:
@@ -92,11 +101,17 @@ Az Azure Analysis Services felhasználóhitelesítését az [Azure Active Direct
 #### <a name="data-security"></a>Adatbiztonság
 Az Azure Analysis Services az Azure Blob Storage segítségével őrzi meg az Analysis Services-adatbázisok tárterületét és metaadatait. A Blobon belüli adatfájlok az Azure Blob kiszolgálóoldali titkosításával (SSE) vannak titkosítva. Közvetlen lekérdezési mód használatakor a rendszer csak a metaadatokat tárolja. A tényleges adatok az adatforrásból érhetőek el a lekérdezés során.
 
+#### <a name="firewall"></a>Tűzfal
+
+Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, amely nincs megadva a szabályokban. Az engedélyezett IP-címeket meghatározó szabályok egyesével, ügyfél IP-címenként vagy tartományonként is konfigurálhatók. A Power BI- (szolgáltatási) kapcsolatok szintén engedélyezhetők vagy blokkolhatók. 
+
 #### <a name="on-premises-data-sources"></a>Helyszíni adatforrások
 A [helyszíni adatátjáró](analysis-services-gateway.md) telepítésével és konfigurálásával biztosíthatja a szervezet helyszíni adataihoz való biztonságos hozzáférést. Az átjárók hozzáférést biztosítanak az adatokhoz közvetlen lekérdezési és memóriában tárolt módban is. Az Azure Analysis Services-modell helyszíni adatforráshoz csatlakozásakor létrejön egy lekérdezés a helyszíni adatforrás titkosított hitelesítő adataival. Az átjáró felhőszolgáltatása elvégzi a lekérdezés elemzését, majd elküldi a kérést egy Azure Service Bus részére. A helyszíni átjáró lekérdezi a függőben lévő kéréseket az Azure Service Bustól. Az átjáró megkapja a lekérdezést, visszafejti a hitelesítő adatokat, majd csatlakozik az adatforráshoz annak végrehajtása érdekében. Az eredményeket a rendszer az adatforrástól visszaküldi az átjárónak, majd tovább az Azure Analysis Services-adatbázis számára.
 
 Az Azure Analysis Servicesre a [Microsoft Online Services feltételei](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) és a [Microsoft Online Services adatvédelmi nyilatkozata](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx) vonatkozik.
 További információk az Azure Securityről: [Microsoft biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter/Security/AzureSecurity).
+
+
 
 ## <a name="supports-the-latest-client-tools"></a>Támogatja a legújabb ügyféleszközöket
 ![Adatmegjelenítések](./media/analysis-services-overview/aas-overview-clients.png)

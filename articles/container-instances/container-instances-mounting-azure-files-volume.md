@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 11/09/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41c3a449b39d6ef77e1dd0cf10699f8debcad475
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 0f824dad7ba5b661941e952383025e5171f32e55
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="mounting-an-azure-file-share-with-azure-container-instances"></a>Azure-tároló osztályt az Azure fájlmegosztások csatlakoztatása
+# <a name="mount-an-azure-file-share-with-azure-container-instances"></a>Azure-tároló osztályt az Azure fájlmegosztások csatlakoztatása
 
 Alapértelmezés szerint Azure tároló példányok állapot nélküli alkalmazások. Ha a tároló összeomlik, vagy leállítja, annak teljes állapota elvész. Állapot élettartama meghaladja a tároló megőrizni, a kötet csatlakoztatnia kell külső áruházban. Ez a cikk bemutatja, hogyan használható Azure tároló osztályt egy Azure fájlmegosztás csatlakoztatásához.
 
@@ -66,7 +66,7 @@ STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_G
 echo $STORAGE_KEY
 ```
 
-## <a name="store-storage-account-access-details-with-azure-key-vault"></a>Hozzáférés tárfiókadatok együtt az Azure key vault tárolásához
+## <a name="store-storage-account-access-details-with-azure-key-vault"></a>Hozzáférés tárfiókadatok az Azure Key Vault tárolásához
 
 Tárfiókkulcsok védi a adatokhoz való hozzáférés, ezért javasoljuk, hogy az az Azure key vault tárolja őket.
 
@@ -185,16 +185,16 @@ Szúrja be az értékeket a paraméterek fájlba:
 A sablon definiált a tároló létrehozása, és csatlakoztassa a kötetet, az Azure parancssori felület használatával. Feltételezve, hogy a sablon fájl neve *azuredeploy.json* és a paraméterfájlban nevű *azuredeploy.parameters.json*, akkor a parancssorban:
 
 ```azurecli-interactive
-az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group myResourceGroup
+az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group $ACI_PERS_RESOURCE_GROUP
 ```
 
-A tároló elindul, ha a egyszerű webalkalmazást telepített keresztül is használhatja a **seanmckenna/aci-hellofiles** lemezképet, az Azure-fájlmegosztáshoz megadott csatlakoztatási elérési úton lévő fájlok kezeléséhez. Az IP-cím a következő webalkalmazás az beszerzése:
+A tároló elindul, ha a egyszerű webalkalmazást telepített keresztül is használhatja a **seanmckenna/aci-hellofiles** kép kezelése az Azure-fájlmegosztáshoz megadott csatlakoztatási elérési úton található fájlokat. A web app és az IP-cím beszerzése a [az tároló megjelenítése](/cli/azure/container#az_container_show) parancs:
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name hellofiles -o table
+az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles -o table
 ```
 
-Egy eszköz, például használhatja a [Microsoft Azure Tártallózó](http://storageexplorer.com) kérhető le, és vizsgálja meg a fájlmegosztás írni a fájlt.
+Egy eszköz, például használhatja a [Microsoft Azure Tártallózó](https://storageexplorer.com) kérhető le, és vizsgálja meg a fájlmegosztás írni a fájlt.
 
 >[!NOTE]
 > Azure Resource Manager-sablonok használatával kapcsolatos további tudnivalókért alkalmazásparaméter-fájlokat, és az Azure parancssori Felülettel történő telepítése, lásd: [erőforrások a Resource Manager-sablonok és az Azure parancssori felület telepítése](../azure-resource-manager/resource-group-template-deploy-cli.md).

@@ -12,19 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/13/2017
 ms.author: helaw
-ms.openlocfilehash: ffad7bfd4ffcd9159dea23b70640f0ee761fbae0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9109c58b29d5f09f1a86068a87c5e7f839228af
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Az Azure Resource Manager sablon kapcsolatos szempontok
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 Az alkalmazás fejlesztése, fontos annak biztosítása érdekében a sablon hordozhatóság Azure és az Azure-verem között.  Ez a témakör fejlesztése az Azure Resource Manager szempontjai [sablonok](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), így a prototípus az alkalmazás teszt központi és az Azure-ban Azure verem környezetben való hozzáférés nélkül is.
+
+## <a name="resource-provider-availability"></a>Erőforrás-szolgáltató elérhetőség
+A sablont, hogy telepíteni szeretne egy Microsoft Azure-szolgáltatás, amely már érhető el, vagy Azure verem megtekintés kell használnia.
 
 ## <a name="public-namespaces"></a>Nyilvános névterek
 Mivel Azure verem az adatközpontban található, mint az Azure nyilvános felhőjében rendelkezik másik végpont névterei. Ennek eredményeképpen szoftveresen kötött nyilvános végpontok a Resource Manager-sablonok nem telepítheti őket az Azure-verem megkísérlésekor. Ehelyett használhatja a *hivatkozás* és *összefűzésére* működnek, mint a szolgáltatási végpont értékek alapján dinamikusan build beolvasni az erőforrás-szolgáltató telepítése során. Például ahelyett, hogy megadása *blob.core.windows.net* a sablonban beolvasni a [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) dinamikusan beállítása a *osDisk.URI* végpont:
@@ -73,7 +76,6 @@ Resource Manager-sablonok segítségével egy helyen attribútum erőforrások �
       }
     }
     ]
-
 
 ## <a name="next-steps"></a>Következő lépések
 * [Sablonok üzembe helyezése a PowerShell-lel](azure-stack-deploy-template-powershell.md)

@@ -15,38 +15,39 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: c91b7232b2f87e0b4b5e659126b96a6ef8b4202c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 159f30fc59a050b9a4ff983e8ac84e424104b484
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Az Azure-ban OpenShift tároló Platform telepítése
 
-Több módon is OpenShift tároló Platform az Azure-ban telepítheti. A szükséges Azure infrastruktúra-összetevőihez manuálisan telepítheti, és hajtsa végre a OpenShift tároló Platform [dokumentáció](https://docs.openshift.com/container-platform/3.6/welcome/index.html).
-Egy meglévő Resource Manager-sablon, amely leegyszerűsíti a OpenShift tároló Platform fürt központi telepítése is használható. Amikor ilyen sablon átkerül [Itt](https://github.com/Microsoft/openshift-container-platform/).
+Az Azure-ban OpenShift tároló Platform telepítése többféle módszer használható:
 
-Egy másik lehetőség az [Azure piactér ajánlat](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+- Manuálisan telepítheti a szükséges Azure infrastruktúra-összetevőihez, és hajtsa végre a OpenShift tároló Platform [dokumentáció](https://docs.openshift.com/container-platform/3.6/welcome/index.html).
+- Használhat egy meglévő [Resource Manager-sablon](https://github.com/Microsoft/openshift-container-platform/) , amely egyszerűbbé teszi a OpenShift tároló Platform fürt központi telepítése.
+- Egy másik lehetőség az [Azure piactér ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
 
-Mindkét lehetőség Red Hat előfizetés megadása kötelező. A telepítés során az RHEL példány a Red Hat előfizetés regisztrálva, a készlet Azonosítóját, amely tartalmazza a jogosultságok OpenShift tároló platform csatolva.
-Ellenőrizze, hogy a egy érvényes Red Hat előfizetés Manager felhasználónév, jelszó és alkalmazáskészlet-azonosító (RHSM felhasználónév, jelszó RHSM és alkalmazáskészlet-azonosító). Jelentkezzen be https://access.redhat.com ellenőrizheti az adatokat.
+Red Hat előfizetés összes beállítás megadása kötelező. A telepítés során a Red Hat Enterprise Linux-példány a Red Hat előfizetés regisztrálva, a készlet Azonosítóját, amely tartalmazza a jogosultságok OpenShift tároló platform csatolva.
+Győződjön meg arról, hogy rendelkezik-e egy érvényes Red Hat előfizetés Manager (RHSM) felhasználónév, jelszó és a készlet azonosítóját. Ez az információ https://access.redhat.com bejelentkezés ellenőrizheti.
 
-## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>A OpenShift tároló Platform Resource Manager sablonnal telepítése
+## <a name="deploy-by-using-the-openshift-container-platform-resource-manager-template"></a>Központi telepítése a OpenShift tároló Platform Resource Manager-sablon használatával
 
-A Resource Manager sablonnal telepítéséhez paraméterfájl segítségével adja meg a bemeneti paramétereket. Ha szeretné testre szabhatja a központi telepítési elemek, amelyek nem tartoznak bemeneti paraméterek, a github-tárház elágazás használatával, és módosítsa a megfelelő elemeket.
+A Resource Manager-sablon használatával telepítéséhez segítségével egy paraméterfájl adja meg a bemeneti paramétereket. A bemeneti paraméterek használatával nem ismertetett telepítési elemek testreszabásához oszthatja ketté a GitHub-tárház, és módosítsa a megfelelő elemeket.
 
-Néhány gyakori testreszabási lehetőségek (de nem kizárólagosan):
+Néhány gyakori testreszabási lehetőségek közé tartozik, de nincsenek korlátozva:
 
-- Virtuális hálózat CIDR [azuredeploy.json változót]
-- Megerősített Virtuálisgép-méretet [azuredeploy.json változót]
-- Elnevezési konvenciók [azuredeploy.json változók]
-- OpenShift fürt rögzítésen - módosító keresztül hosts fájl [deployOpenShift.sh]
+- Virtuális hálózat CIDR (azuredeploy.json változó)
+- Megerősített Virtuálisgép-méretet (azuredeploy.json változó)
+- Elnevezési konvenciók (azuredeploy.json változók)
+- Gazdafájl (deployOpenShift.sh) keresztül módosított OpenShift fürt rögzítésen,
 
-### <a name="configure-parameters-file"></a>Paraméterek fájljának konfigurálása
+### <a name="configure-the-parameters-file"></a>A paraméterfájl konfigurálása
 
 Használja a `appId` értékét a korábban létrehozott egyszerű szolgáltatás a `aadClientId` paraméter. 
 
-Az alábbi példa létrehoz egy nevű paraméterek fájlt **azuredeploy.parameters.json** az összes szükséges bemeneti adatok.
+Az alábbi példa létrehoz egy, a szükséges bemeneti adatok azuredeploy.parameters.json nevű paraméterek fájlt.
 
 ```json
 {
@@ -132,14 +133,14 @@ Az alábbi példa létrehoz egy nevű paraméterek fájlt **azuredeploy.paramete
 }
 ```
 
-Az elemek zárt megkeresése a lényeges adatot cseréje.
+Cserélje le a megadott adatokkal zárójelek elemeket.
 
-### <a name="deploy-using-azure-cli"></a>Telepítheti az Azure parancssori felület használatával
+### <a name="deploy-by-using-azure-cli"></a>Központi telepítése az Azure parancssori felület használatával
 
 > [!NOTE] 
-> A következő parancshoz szükséges Azure CLI 2.0.8 vagy újabb. Ellenőrizheti a CLI az verziójával a `az --version` parancsot. Frissítés a parancssori felület, lásd: [Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+> A következő parancshoz szükséges Azure CLI 2.0.8 vagy újabb. A parancssori felület verziójával ellenőrizheti a `az --version` parancsot. Frissítés a parancssori felület, lásd: [Azure CLI 2.0 telepítése](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
-A következő példa telepíti a OpenShift és minden kapcsolódó erőforrás egy contoso.com nevű myOpenShiftCluster telepítési nevű erőforrás csoporthoz. A sablon a github-tárház közvetlenül a hivatkozik, és egy helyi paraméterfájl nevű **azuredeploy.parameters.json** fájllal.
+A következő példa telepíti a OpenShift és minden kapcsolódó erőforrás a contoso.com, nevű myOpenShiftCluster telepítési nevű erőforráscsoport. A sablon-ről a GitHub-tárház, és egy helyi paraméterek azuredeploy.parameters.json fájl nevű fájllal hivatkozik.
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \
@@ -147,7 +148,7 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-A központi telepítés legalább 30 percet is igénybe vehet attól függően, hogy a telepített csomópontok teljes száma. A OpenShift konzol és a DNS-név OpenShift főkiszolgálójának URL-CÍMÉT a Terminálszolgáltatások van nyomtatva, a telepítés befejezéséről.
+A központi telepítés legalább 30 percet is igénybe vehet, attól függően, hogy a telepített csomópontok teljes száma. Az URL-CÍMÉT a OpenShift konzol és a OpenShift fő megrendelése a terminál, a telepítés befejezése után a DNS-nevét.
 
 ```json
 {
@@ -156,21 +157,21 @@ A központi telepítés legalább 30 percet is igénybe vehet attól függően, 
 }
 ```
 
-## <a name="deploy-using-openshift-container-platform-marketplace-offer"></a>Szabályzatsablonokat OpenShift tároló Platform Piactéri ajánlat
+## <a name="deploy-by-using-the-openshift-container-platform-azure-marketplace-offer"></a>Telepítését a OpenShift tároló Platform Azure piactér vonatkozó ajánlatot
 
-A legegyszerűbben úgy OpenShift tároló Platform telepítése az Azure-hoz használni a [Azure piactér ajánlat](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+A legegyszerűbben úgy OpenShift tároló Platform telepítése az Azure-hoz használni a [Azure piactér ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
 
-Ezt a beállítást, a legegyszerűbb egy, de is korlátozott testreszabási képességeket. Az ajánlat három konfigurációs beállítások is:
+Ez a legegyszerűbb lehetőség, de azt is korlátozott testreszabási képességeket. Az ajánlat három konfigurációs beállítások is:
 
-- Kis: Egy nem telepít-magas rendelkezésre ÁLLÁSÚ fürt egyik fő csomóponton, egy infrastruktúra-csomópont, két alkalmazás csomópontot és több megerősített csomópont. Minden csomópont szabványos DS2v2 Virtuálisgép-méretek. A fürt 10 teljes mag szükséges, és kis léptékű tesztelési ideális.
-- Közepes: Egy magas rendelkezésre ÁLLÁSÚ fürt három fő csomópontok, két infrastruktúra-kiszolgálókon, négy alkalmazás csomópont és egy megerősített csomópont telepíti. A megerősített kívül minden csomópont szabványos DS3v2 Virtuálisgép-méretek. A megerősített csomópont egy szabványos DS2v2. A fürt 38 magok igényel.
-- Nagy: Telepít egy magas rendelkezésre ÁLLÁSÚ fürt három fő csomópontok, két infrastruktúra-kiszolgálókon, hat alkalmazás csomópontok és egy megerősített csomópont. A fő- és az infrastruktúra-kiszolgálók szabványos DS3v2 Virtuálisgép-méretek, az alkalmazás csomópontja a normál DS4v2 Virtuálisgép-méretek és a megerősített csomópont egy szabványos DS2v2. A fürt 70 magok igényel.
+- **Kis**: egy nem magas rendelkezésre ÁLLÁS fürt egyik fő csomóponton, egy infrastruktúra-csomópont, két alkalmazás csomópontot és egy megerősített csomópont telepíti. Minden csomópont szabványos DS2v2 Virtuálisgép-méretek. A fürt 10 teljes mag szükséges, és csak kevés számítógépet érintő tesztelési ideális.
+- **Közepes**: egy magas rendelkezésre ÁLLÁSÚ fürt három fő csomópontok, két infrastruktúra csomópont, négy alkalmazás csomópontok és egy megerősített csomópont telepíti. A megerősített csomópont kívül minden csomópont szabványos DS3v2 Virtuálisgép-méretek. A megerősített csomópont egy szabványos DS2v2. A fürt 38 magok igényel.
+- **Nagy**: egy magas rendelkezésre ÁLLÁSÚ fürt három fő csomópontok, két infrastruktúra-kiszolgálókon, hat alkalmazás csomópontok és egy megerősített csomópont telepíti. A fő- és infrastruktúra csomópontja szabványos DS3v2 Virtuálisgép-méretek. Az alkalmazás csomópontok szabványos DS4v2 Virtuálisgép-méretek, és a megerősített csomópont egy szabványos DS2v2. A fürt 70 magok igényel.
 
-Azure Cloud szolgáltató konfigurációjában nem kötelező megadni a közepes és nagy fürt méretét. A kis foglalásiegység-méret nem nyújtja a beállítás a Azure Cloud szolgáltató konfigurálása.
+Azure Cloud Solution Provider konfigurálása nem kötelező megadni a fürt közepes és nagy méretű. A kis foglalásiegység-méret nem nyújtja a beállítás a Azure Cloud Solution Provider konfigurálása.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Csatlakozzon a OpenShift fürthöz
 
-A telepítés befejezését követően a OpenShift konzol használatával, a böngésző használatával kapcsolódni a `OpenShift Console Uri`. Másik lehetőségként is elérheti a OpenShift master, a következő parancsot:
+A telepítés befejezése után a böngésző a OpenShift konzol használatával kapcsolódik a `OpenShift Console Uri`. Azt is megteheti csatlakozhat a OpenShift fő szerint a következő parancsot:
 
 ```bash
 $ ssh clusteradmin@myopenshiftmaster.cloudapp.azure.com -p 2200
@@ -178,7 +179,7 @@ $ ssh clusteradmin@myopenshiftmaster.cloudapp.azure.com -p 2200
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége, használhatja a [az csoport törlése](/cli/azure/group#delete) távolítsa el az erőforráscsoportot, OpenShift fürt parancsot, és az összes kapcsolódó erőforrások.
+Használja a [az csoport törlése](/cli/azure/group#delete) távolítsa el az erőforráscsoportot, OpenShift fürt parancsot, és minden kapcsolódó erőforrásokat, ha azok már nincs szükség.
 
 ```azurecli 
 az group delete --name myResourceGroup
@@ -186,6 +187,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Utáni telepítési feladatok](./openshift-post-deployment.md)
-- [OpenShift üzembe helyezés hibaelhárítása](./openshift-troubleshooting.md)
+- [Telepítés utáni feladatok](./openshift-post-deployment.md)
+- [Az Azure-ban OpenShift telepítési hibáinak elhárítása](./openshift-troubleshooting.md)
 - [Ismerkedés a OpenShift tároló Platform](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)

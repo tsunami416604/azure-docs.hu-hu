@@ -14,19 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 7464611e669165d9ec1f0de7422b20b3f3b8c2b5
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 955f84e5656bbf568234cbaf69faa4dd0a741206
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="using-volume-plugins-and-logging-drivers-in-your-container"></a>Kötet beépülő modulok segítségével, és a tároló-illesztőprogramok naplózás
+A Service Fabric támogatja megadó [Docker kötet beépülő modulok](https://docs.docker.com/engine/extend/plugins_volume/) és [Docker naplózási illesztőprogramok](https://docs.docker.com/engine/admin/logging/overview/) a tárolószolgáltatás számára.  Ez lehetővé teszi az adatok megőrzéséhez [Azure fájlok](https://azure.microsoft.com/en-us/services/storage/files/) még akkor is, ha Ön tároló áthelyezése vagy egy másik állomás újraindul.
 
-A Service Fabric támogatja megadó [Docker kötet beépülő modulok](https://docs.docker.com/engine/extend/plugins_volume/) és [Docker naplózási illesztőprogramok](https://docs.docker.com/engine/admin/logging/overview/) a tárolószolgáltatás számára. 
+Jelenleg nincsenek az alább látható módon Linux tárolókat csak kötet illesztőprogramokat.  Ha Windows-tárolókat használ, úgy is kötet hozzárendelése egy Azure-fájlok [SMB3 megosztás](https://blogs.msdn.microsoft.com/clustering/2017/08/10/container-storage-support-with-cluster-shared-volumes-csv-storage-spaces-direct-s2d-smb-global-mapping/) nélkül egy kötet illesztőprogram, a Windows Server legújabb 1709 verzióját használja. Ehhez van szükség a virtuális gépek a fürt frissítése a Windows Server 1709 verzióra.
+
 
 ## <a name="install-volumelogging-driver"></a>Kötet/naplózási illesztőprogram telepítése
 
-Ha a Docker kötet/naplózási illesztőprogram nincs telepítve a számítógépen, telepítse manuálisan VMSS indítási parancsfájl vagy keresztül az RDP/SSH-ing be a számítógépre. Például azért, hogy a Docker kötet illesztőprogramot telepítse, SSH be a számítógépre, majd hajtsa végre:
+A Docker kötet/naplózási illesztőprogram nincs telepítve a számítógépen, ha manuális telepítése az RDP/SSH-ing keresztül a géppé keresztül egy [VMSS indítási parancsfájl](https://azure.microsoft.com/en-us/resources/templates/201-vmss-custom-script-windows/) vagy egy [SetupEntryPoint](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-model#describe-a-service) parancsfájl. Az említett módszerek közül választva, írhat telepítéséhez a parancsfájlt a [Docker kötet illesztőprogram Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/):
+
 
 ```bash
 docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
@@ -72,7 +75,7 @@ A beépülő modulok az alkalmazásjegyzékben vannak megadva, ahogy az a követ
 </ApplicationManifest>
 ```
 
-Az előző példában a `Source` a címke a `Volume` a forrás mappára hivatkozik. A forrásmappa lehet a virtuális gépen, amelyen a tárolók vagy egy állandó távoli tároló mappa. A `Destination` címke az a hely, amely a `Source` futó tárolóban van leképezve. 
+Az előző példában a `Source` a címke a `Volume` a forrás mappára hivatkozik. A forrásmappa lehet a virtuális gépen, amelyen a tárolók vagy egy állandó távoli tároló mappa. A `Destination` címke az a hely, amely a `Source` futó tárolóban van leképezve.  Így az a cél nem lehet a tárolóban már meglévő hely.
 
 Ha egy kötet beépülő modult, a Service Fabric automatikusan létrehozza a kötet a megadott paraméterekkel. A `Source` címke pedig a kötet neve és a `Driver` kód adja meg a kötet illesztőprogram beépülő modul. Beállítások adhatók meg a `DriverOption` címkét, ahogy az a következő kódrészletet:
 
@@ -81,7 +84,6 @@ Ha egy kötet beépülő modult, a Service Fabric automatikusan létrehozza a k�
            <DriverOption Name="share" Value="models"/>
 </Volume>
 ```
-
 Egy Docker-napló illesztőprogram meg van adva, akkor a fürtben lévő ügynökök (vagy a tárolókat) a naplók kezelése telepítéséhez szükséges.  A `DriverOption` címke segítségével adja meg a napló illesztőprogram beállításokat is.
 
 Tekintse meg a Service Fabric-fürt – tárolók üzembe helyezése a következő cikkeket:

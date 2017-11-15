@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 11/10/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 300b2b17b44e21ed446fd63d572a2461e2fc1343
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb08d5c80954e1c231bf6e8b781b09700ef0959d
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-the-classic-deployment-model"></a>Fájlok visszaállítása a Windows-kiszolgálóra vagy -ügyfélre a klasszikus üzemi modell használatával
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 Ez a cikk azt ismerteti, hogyan adatokat helyreállítani egy biztonsági mentési tárolóból, és annak visszaállítására egy kiszolgáló vagy a számítógépen. -Től kezdődően. március 2017, már nem készíthetők mentési tárolók a klasszikus portálon.
 
 > [!IMPORTANT]
-> A biztonsági mentési tárolókról mostantól lehetőség van Recovery Services-tárolókra váltani. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> **2017. október 15-től** a PowerShell a továbbiakban nem használható Backup-tárolók létrehozására. <br/> **2017. november 1-től kezdődően**:
+> A biztonsági mentési tárolókról mostantól lehetőség van Recovery Services-tárolókra váltani. A részletekről bővebben az [Váltás biztonsági mentési tárolóról Recovery Services-tárolóra](backup-azure-upgrade-backup-to-recovery-services.md) című cikkben olvashat. A Microsoft azt javasolja, hogy a biztonsági mentési tárolóról váltson Recovery Services-tárolóra.<br/> Miután **2017. November 30**, pedig nem fogják tudni PowerShell használatával létrehozni a biztonsági mentési tárolóból. <br/> **2017. November 30 indítása**:
 >- A rendszer automatikusan elvégzi valamennyi megmaradó biztonsági mentési tároló átváltását Recovery Services-tárolókra.
 >- A klasszikus portálon nem lehet majd hozzáférni a biztonsági másolati adatokhoz. Helyette az Azure Portal segítségével férhet hozzá a Recovery Services-tárolókban található biztonsági mentési adatokhoz.
 >

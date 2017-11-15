@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 1ecded3af6396f50e67dc5d2a9ef8337699046ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 855e315f66858210875039f91f7f05055ff7d9b9
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tároló hálózati módok
 
-A hálózati módban érhető el a Service Fabric-fürt tárolószolgáltatások az alapértelmezett érték a `nat` hálózati mód. Az a `nat` hálózati mód, hogy az azonos port eredményeket a központi telepítési hibái figyel egynél több tároló szolgáltatás. Rendszert futtató több szolgáltatási adott figyelési ugyanazt a portot, a Service Fabric támogatja a `open` hálózati mód (5.7-es vagy újabb verzió). Az a `open` hálózati mód, minden tárolószolgáltatás beolvasása dinamikusan hozzárendelt IP-címnek belső így több szolgáltatás ugyanazt a portot figyeli.   
+A hálózati módban érhető el a Service Fabric-fürt tárolószolgáltatások az alapértelmezett érték a `nat` hálózati mód. Az a `nat` hálózati mód, hogy az azonos port eredményeket a központi telepítési hibái figyel egynél több tároló szolgáltatás. Rendszert futtató több szolgáltatási adott figyelési ugyanazt a portot, a Service Fabric támogatja a `Open` hálózati mód (5.7-es vagy újabb verzió). Az a `Open` hálózati mód, minden tárolószolgáltatás beolvasása dinamikusan hozzárendelt IP-címnek belső így több szolgáltatás ugyanazt a portot figyeli.   
 
-Így egyetlen szolgáltatástípus egy statikus végponttal, a szolgáltatás jegyzékben meghatározott, az új szolgáltatások előfordulhat, hogy hozható létre és használatával, a telepítési hibák nélkül törli a `open` hálózati mód. Hasonlóképpen, egy használhatja ugyanazt `docker-compose.yml` több szolgáltatások létrehozásának statikus fájlt.
+Így egyetlen szolgáltatástípus egy statikus végponttal, a szolgáltatás jegyzékben meghatározott, az új szolgáltatások előfordulhat, hogy hozható létre és használatával, a telepítési hibák nélkül törli a `Open` hálózati mód. Hasonlóképpen, egy használhatja ugyanazt `docker-compose.yml` több szolgáltatások létrehozásának statikus fájlt.
 
 A dinamikusan kiosztott IP-használatával felderítéséhez a szolgáltatások esetén nem javasolt óta az IP-címet érintő módosításait a szolgáltatás újraindul, vagy egy másik csomópontjára helyezi át. Csak a **Service Fabric-szolgáltatás** vagy a **DNS-szolgáltatás** a szolgáltatás felderítése. 
 
 
 > [!WARNING]
-> Az Azure virtuális hálózat csak 4096 IP-címek összesen használható. Ebből kifolyólag a csomópontok száma és a tároló szolgáltatás példányainak száma összege (a `open` hálózati) legfeljebb 4096 történik egy Vneten belül. Ilyen nagy sűrűségű forgatókönyvek esetén a `nat` hálózati mód használata ajánlott.
+> Az Azure virtuális hálózat csak 4096 IP-címek összesen használható. Ebből kifolyólag a csomópontok száma és a tároló szolgáltatás példányainak száma összege (a `Open` hálózati) legfeljebb 4096 történik egy Vneten belül. Ilyen nagy sűrűségű forgatókönyvek esetén a `nat` hálózati mód használata ajánlott.
 >
 
 ## <a name="setting-up-open-networking-mode"></a>Nyissa meg a hálózati mód beállítása
@@ -183,7 +183,7 @@ A dinamikusan kiosztott IP-használatával felderítéséhez a szolgáltatások 
    |     2000 | Custom_Dns | VirtualNetwork | VirtualNetwork | DNS (UDP/53) | Engedélyezés  |
 
 
-4. Adja meg a hálózati mód az alkalmazásjegyzéket az egyes szolgáltatásokhoz `<NetworkConfig NetworkType="open">`.  A mód `open` eredményezi, a szolgáltatás egy dedikált IP-cím beolvasása. Ha egy mód nincs megadva, a basic alapértelmezett `nat` mód. Így az alábbi jegyzék `NodeContainerServicePackage1` és `NodeContainerServicePackage2` is ugyanazt a portot minden figyelése (mindkét szolgáltatás által figyelt `Endpoint1`).
+4. Adja meg a hálózati mód az alkalmazásjegyzéket az egyes szolgáltatásokhoz `<NetworkConfig NetworkType="Open">`.  A mód `Open` eredményezi, a szolgáltatás egy dedikált IP-cím beolvasása. Ha egy mód nincs megadva, a basic alapértelmezett `nat` mód. Így az alábbi jegyzék `NodeContainerServicePackage1` és `NodeContainerServicePackage2` is ugyanazt a portot minden figyelése (mindkét szolgáltatás által figyelt `Endpoint1`). Ha a `Open` hálózati mód Sorozatszámcsoport, `PortBinding` configs nem adható meg.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -197,8 +197,7 @@ A dinamikusan kiosztott IP-használatával felderítéséhez a szolgáltatások 
         <ServiceManifestRef ServiceManifestName="NodeContainerServicePackage1" ServiceManifestVersion="1.0"/>
         <Policies>
           <ContainerHostPolicies CodePackageRef="NodeContainerService1.Code" Isolation="hyperv">
-           <NetworkConfig NetworkType="open"/>
-           <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
+           <NetworkConfig NetworkType="Open"/>
           </ContainerHostPolicies>
         </Policies>
       </ServiceManifestImport>
@@ -206,14 +205,13 @@ A dinamikusan kiosztott IP-használatával felderítéséhez a szolgáltatások 
         <ServiceManifestRef ServiceManifestName="NodeContainerServicePackage2" ServiceManifestVersion="1.0"/>
         <Policies>
           <ContainerHostPolicies CodePackageRef="NodeContainerService2.Code" Isolation="default">
-            <NetworkConfig NetworkType="open"/>
-            <PortBinding ContainerPort="8910" EndpointRef="Endpoint1"/>
+            <NetworkConfig NetworkType="Open"/>
           </ContainerHostPolicies>
         </Policies>
       </ServiceManifestImport>
     </ApplicationManifest>
     ```
-Ön szabadon kombinálhatók hálózati mód szolgáltatásban egy Windows-fürt számára az alkalmazáson belül. Ebből kifolyólag lehet néhány szolgáltatás `open` mód és az egyes `nat` hálózati mód. Ha a szolgáltatás beállítása a `nat`, a port a figyeléshez egyedinek kell lennie. Különböző szolgáltatások hálózati módjainak keverése nem támogatott Linux fürtökön. 
+Ön szabadon kombinálhatók hálózati mód szolgáltatásban egy Windows-fürt számára az alkalmazáson belül. Ebből kifolyólag lehet néhány szolgáltatás `Open` mód és az egyes `nat` hálózati mód. Ha a szolgáltatás beállítása a `nat`, a port a figyeléshez egyedinek kell lennie. Különböző szolgáltatások hálózati módjainak keverése nem támogatott Linux fürtökön. 
 
 
 ## <a name="next-steps"></a>Következő lépések

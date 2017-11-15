@@ -10,7 +10,7 @@
       href: create-external-ase.md
     - name: Belső ASE létrehozása
       href: create-ilb-ase.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Integrálás WAF-fal
       href: app-service-app-service-environment-web-application-firewall.md
@@ -38,6 +38,8 @@
       href: integrate-with-application-gateway.md
     - name: ASE létrehozása sablonból
       href: create-from-template.md
+    - name: A kényszerített bújtatás konfigurációja
+      href: forced-tunnel-support.md
 - name: Referencia
   items:
     - name: Felügyeleti címek

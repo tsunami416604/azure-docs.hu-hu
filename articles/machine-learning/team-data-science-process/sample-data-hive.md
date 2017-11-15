@@ -4,7 +4,7 @@ description: "Lefelé (Hadopop) Azure HDInsight Hive táblák az adatok mintavé
 services: machine-learning,hdinsight
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: f31e8d01-0fd4-4a10-b1a7-35de3c327521
 ms.service: machine-learning
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
-ms.author: hangzh;bradsev
-ms.openlocfilehash: 357307a034b277e8c37e99bda1ed6a9a76e13f41
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/13/2017
+ms.author: bradsev
+ms.openlocfilehash: d765c2adc8a3aa77d903490875c7f8ad622ef4d2
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Adatmintavétel az Azure HDInsight Hive-táblákban
-Ez a cikk azt ismertetik lefelé-minta Hive-lekérdezésekkel Azure HDInsight Hive táblákban tárolt adatokat. Azt a három popularly használt mintavételi módszerek terjed ki:
+Ez a cikk ismerteti lefelé-minta még kezelhetőbbé teszik elemzéshez méretre csökkenteni a Hive-lekérdezésekkel Azure HDInsight Hive táblákban tárolt adatokat. Azt a három popularly használt mintavételi módszerek terjed ki:
 
 * Egységes véletlenszerű mintavétel
 * A csoportok véletlenszerű mintavétel
@@ -32,15 +32,15 @@ A következő **menü** az adatokat a különböző tárolási környezetekben m
 [!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
 
 **Miért érdemes az az adatokat?**
-Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, akkor általában down kétmintás az adatokat, hogy az kisebb, de reprezentatív és könnyebben kezelhető méretű jó ötlet. Ez lehetővé teszi az adatok ismertetése, feltárása és a szolgáltatás mérnöki csapathoz. A szerepkör az adatok tudományos folyamatban az adatok feldolgozása funkciók és a gépi tanulási modellek gyors prototípusának engedélyezéséhez.
+Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, akkor általában down kétmintás az adatokat, hogy az kisebb, de reprezentatív és könnyebben kezelhető méretű jó ötlet. Lefelé mintavételi elősegíti a adatok ismertetése, feltárása és a szolgáltatás mérnöki csapathoz. A szerepkör az adatok tudományos folyamatban az adatok feldolgozása funkciók és a gépi tanulási modellek gyors prototípusának engedélyezéséhez.
 
 Ez a mintavételi feladat Ez a lépés a [Team adatok tudományos folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Hogyan lehet elküldeni a Hive-lekérdezések
-A Hadoop parancssori konzolról a Hadoop-fürt átjárócsomópontjához a Hive-lekérdezések küldheti el. Ehhez jelentkezzen be a Hadoop-fürt átjárócsomópontjához, nyissa meg a Hadoop parancssori konzolt, és küldje el a Hive-lekérdezések ott. A Hadoop parancssori konzolon Hive-lekérdezések elküldése, lásd: [hogyan küldhetnek Hive-lekérdezések](move-hive-tables.md#submit).
+A parancssori Hadoop-konzolon, a Hadoop-fürt átjárócsomópontjához a Hive-lekérdezések küldheti el. Ehhez jelentkezzen be a Hadoop-fürt átjárócsomópontjához, nyissa meg a Hadoop parancssori konzolt, és küldje el a Hive-lekérdezések ott. A Hadoop parancssori konzolon Hive-lekérdezések elküldése, lásd: [hogyan küldhetnek Hive-lekérdezések](move-hive-tables.md#submit).
 
 ## <a name="uniform"></a>Egységes véletlenszerű mintavétel
-Egységes véletlenszerű mintavételi jelenti, hogy az adatkészlet egyes soraihoz alatt mintát egyenlő esélyét. Ez az ad hozzá egy kiegészítő mezőt rand() az adatkészletben a belső "select" lekérdezési, és a külső "select" lekérdezési feltételhez véletlenszerű mező valósítható meg.
+Egységes véletlenszerű mintavételi jelenti, hogy az adatkészlet egyes soraihoz alatt mintát egyenlő esélyét. Ad hozzá egy kiegészítő mezőt rand() az adatkészletben a belső "select" lekérdezési, és a külső "select" lekérdezési feltételhez véletlenszerű mező hajtható végre.
 
 Íme egy példa lekérdezést:
 
@@ -58,8 +58,7 @@ Egységes véletlenszerű mintavételi jelenti, hogy az adatkészlet egyes sorai
 Itt `<sample rate, 0-1>` azt jelzi, hogy a felhasználók mintát szeretne arányát határozza meg.
 
 ## <a name="group"></a>A csoportok véletlenszerű mintavétel
-Ha mintavételi kategorikus adatok, érdemes lehet akár vagy kizárja a minden egyes adott kategorikus változó értékének előfordulása. Ez a "csoport mintavételi" Mit jelent.
-Például ha kategorikus változó "Állapot", amelynek értékek NY MA, CA, NJ, PA, stb akkor, rekordjának olyan állapotban kell mindig együtt, hogy azok lekérdező vagy nem.
+Ha mintavételi kategorikus adatok, érdemes lehet akár vagy kizárja a minden egyes kategorikus változó értéke a előfordulása. Az ilyen mintavételi "mintavételi csoport" nevezik. Például, ha egy kategorikus változó "*állapot*", például NY, MA, CA, NJ és PA értékeket tartalmaz, minden állapotot együtt, hogy azok lekérdező vagy nem származó rekordokat szeretne.
 
 Íme példalekérdezést adott minták csoport szerint:
 
@@ -88,7 +87,7 @@ Például ha kategorikus változó "Állapot", amelynek értékek NY MA, CA, NJ,
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Rétegzett mintavétel
-Véletlenszerű mintavételi van műanyaggal rétegezett tekintetében kategorikus változó Ha kapott minták értékeit, hogy kategorikus, amelyek egy-egy beállítani, mint a szülő feltöltését, ahol a minták származik. Az előző példát, a fenti tegyük fel, hogy az adatok részleges feltöltések rendelkezik államok, például NJ 100 megfigyelések, NY 60 megfigyelések van, pedig WA 300 megfigyelések. Ha 0,5 kell rétegzett mintavételi arány ad meg, majd a mintát a kell rendelkeznie körülbelül 50, 30 és 150 megfigyelések NJ, NY és WA rendre.
+Véletlenszerű mintavételi műanyaggal a rétegezett kategorikus változó tekintetében, ha a kapott minták kategorikus értékek, amelyek egy-egy található, mint a szülő feltöltése a. Az előző példát a fenti, tegyük fel, hogy az adatok a következő megfigyelések rendelkezik államok: NJ van 100 megfigyelések NY van 60 megfigyelések, és WA 300 megfigyelések rendelkezik. Ha 0,5 kell rétegzett mintavételi arány ad meg, majd a mintát a kell rendelkeznie körülbelül 50, 30 és 150 megfigyelések NJ, NY és WA rendre.
 
 Íme egy példa lekérdezést:
 

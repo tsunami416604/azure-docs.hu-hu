@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: badaefb4986f573362babea81d704bf2be067d6b
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 28ceb7345c0d74e2a7d7911d5b4bf24a0ceb214a
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -153,7 +153,7 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 Attól függően, hogy a rendszer teljesítményét és a letöltési sebessége, telepítési akár 20 percig vagy hosszú szerint több óráig is eltarthat. Ha nem érhető el a MySQLAdapter panelt, frissítse a felügyeleti portálon.
 
 > [!NOTE]
-> Ha a telepítés több mint 90 percig tart, előfordulhat, hogy, és a hibaüzenet akkor jelenik meg, a képernyőn, majd a naplófájlban. A rendszer a központi telepítés a hibás lépés ismét megkísérli. Rendszerek, amelyek nem felelnek meg a memória és az alapvető ajánlott paramétereknek nem lehet a MySQL RP telepíthet.
+> Ha a telepítés több mint 90 percig tart, előfordulhat, hogy, és a hibaüzenet akkor jelenik meg, a képernyőn, majd a naplófájlban. A rendszer a központi telepítés a hibás lépés ismét megkísérli. Rendszerek, amelyek nem felelnek meg az ajánlott memória és vCPU paramétereknek nem lehet a MySQL RP telepíthet.
 
 
 

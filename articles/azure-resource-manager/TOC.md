@@ -71,9 +71,7 @@
 
 ## Erőforrás-házirendek beállítása
 ### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
-### Példák
-#### [Címkék](resource-manager-policy-tags.md)
-#### [Elnevezési konvenciók](resource-manager-policy-naming-convention.md)
+### [Elnevezési konvenciók](resource-manager-policy-naming-convention.md)
 
 ## Naplózás
 ### [Tevékenységnaplók megtekintése](resource-group-audit.md)
@@ -89,6 +87,7 @@
 #### [NotFound](resource-manager-not-found-errors.md)
 #### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
 #### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+#### [ReservedResourceName](resource-manager-reserved-resource-name.md)
 #### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
 #### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
 ### Virtuális gépek telepítési hibái

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/21/2017
+ms.date: 11/10/2017
 ms.author: larryfr
-ms.openlocfilehash: 4b606ea3797d685b9deacf72f1bd31e0ef007f98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f55abc84a8afea398cf0e95761d922b77e1c248
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>SSH Tunneling Ambari webes felhasználói felület, JobHistory, NameNode, Oozie és egyéb web UI eléréséhez használja
 
@@ -48,7 +48,7 @@ Ha a Parancsfájlműveletek segítségével testre szabhatja a fürt, lehetnek s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy SSH-ügyfél. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. A legtöbb operációs rendszer adja meg egy SSH-ügyfél keresztül a `ssh` parancsot. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Egy olyan webböngésző, beállítható úgy, hogy egy SOCKS5 proxy használatára.
 
@@ -74,9 +74,9 @@ Ez a parancs kapcsolatot hoz létre, amely irányítja a forgalmat helyi port 98
 * **C** -tömörítése minden adatot, mert a webes forgalom leginkább szöveget.
 * **2** -force SSH protokoll 2-es verzióját kipróbálásához.
 * **a q** -csendes mód.
-* **T** -pszeudo-tty kiosztását, tiltsa le, mivel jelenleg csupán továbbít egy portot.
-* **n**– Előfordulhat, hogy olvasása STDIN, mivel jelenleg csupán továbbít egy portot.
-* **N** -ne hajtsa végre a távoli parancstól, mivel jelenleg csupán továbbít egy portot.
+* **T** -pszeudo-tty kiosztását, tiltsa le, mivel csak továbbít egy portot.
+* **n**-Előfordulhat, hogy olvasása STDIN, mivel csak továbbít egy portot.
+* **N** -nem hajtható végre távoli parancsot, mert csak továbbít egy portot.
 * **f** -fusson a háttérben.
 
 Ha a parancs a helyi számítógépen 9876 portra küldi továbbítódik a head fürtcsomóponton.

@@ -12,22 +12,17 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 11/10/2017
 ms.author: markgal
-ms.openlocfilehash: 5922e308f5c205a07bd329c28322ae82cea0e1fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58080d0e045f1825e89287fc421b7e84db36331e
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows-gépek Azure Recovery Services-tárolóinak és -kiszolgálóinak figyelése és kezelése
-> [!div class="op_single_selector"]
-> * [Resource Manager](backup-azure-manage-windows-server.md)
-> * [Klasszikus](backup-azure-manage-windows-server-classic.md)
->
->
 
-Ebben a cikkben az Azure-portál és a Microsoft Azure Backup szolgáltatás ügynöke elérhető biztonsági mentési figyelő és a felügyeleti feladatok áttekintést találhat. Ez a cikk azt feltételezi, hogy már rendelkezik Azure-előfizetéssel, és legalább egy Recovery Services-tároló létrehozása.
+Ez a cikk áttekintést az Azure-portál és a Microsoft Azure Backup szolgáltatás ügynöke elérhető biztonsági mentési figyelő és a felügyeleti feladatokat. Ez a cikk azt feltételezi, hogy már rendelkezik Azure-előfizetéssel, és legalább egy Recovery Services-tároló létrehozása.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -49,7 +44,7 @@ A Recovery Services-tároló irányítópult látható a részleteit, illetve a 
 
     ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. Tárolók a listából válassza ki a megnyitni kívánt Recovery Services-tároló nevét. Ekkor megnyílik a Recovery Services-tároló irányítópult panel.
+4. Tárolók a listából válassza ki a megnyitni kívánt Recovery Services-tároló nevét. A Recovery Services-tároló irányítópult menü megnyitása.
 
     ![helyreállítási szolgáltatások tároló irányítópult](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -66,13 +61,13 @@ Figyelheti a feladatok és riasztások az irányítópultról Recovery Services 
 
 ![Biztonsági mentési irányítópult feladatok](./media/backup-azure-manage-windows-server/dashboard-tiles.png)
 
-Minden egyes ezen csempék az információk kattintva megnyílik a társított panel, ahol a kapcsolódó feladatok kezelése.
+Minden egyes ezen csempék az információk kattintva megnyithatja a hozzárendelt menüt, ahol a kapcsolódó feladatok kezelése.
 
 Az irányítópult tetején:
 
-* Beállítások hozzáférést biztosít az elérhető biztonsági mentési feladatokat.
+* A beállítások - hozzáférést biztosít az elérhető biztonsági mentési feladatokat.
 * A biztonsági mentés - biztonsági másolatot készíteni az új fájlok és mappák (vagy Azure virtuális gépek) számára a Recovery Services-tároló segítségével.
-* Törlés – a recovery services-tároló már nem használatos, ha törlése tárhely felszabadítása érdekében. Törlés csak akkor engedélyezett, miután az összes védett kiszolgálón, hogy törölték a tárolóból.
+* -Ha törli a recovery services-tároló már nincs használatban van, úgy, hogy szabadítson fel helyet a tároló törlése. Törlés csak akkor engedélyezett, miután az összes védett kiszolgálón, hogy törölték a tárolóból.
 
 ![Biztonsági mentési irányítópult feladatok](./media/backup-azure-manage-windows-server/dashboard-tasks.png)
 
@@ -80,11 +75,11 @@ Az irányítópult tetején:
 | Riasztási szint | Értesítések küldése |
 | --- | --- |
 | Kritikus |Sikertelen biztonsági mentéshez, helyreállítási hiba |
-| Figyelmeztetés |A biztonsági mentés befejeződött, de figyelmeztetéseket generált (Ha kevesebb mint száz fájlok nem készül biztonsági mentés okozta problémák miatt, és több mint egymillió fájlok sikeresen biztonsági mentése) |
+| Figyelmeztetés |A biztonsági mentés befejeződött, de figyelmeztetéseket generált (Ha < 100 fájlok nem készül biztonsági mentés okozta problémák miatt, és 1 000 000 > fájlok sikeresen biztonsági mentése) |
 | Tájékoztató |None |
 
 ## <a name="manage-backup-alerts"></a>Biztonsági riasztások kezelése
-Kattintson a **biztonsági mentési riasztások** csempére kattintva nyissa meg a **biztonsági mentési riasztások** panel és kezelheti a riasztásokat.
+Kattintson a **biztonsági mentési riasztások** csempére kattintva nyissa meg a **biztonsági mentési riasztások** menü és kezelheti a riasztásokat.
 
 ![Biztonsági mentési riasztás](./media/backup-azure-manage-windows-server/manage-backup-alerts.png)
 
@@ -93,23 +88,23 @@ A biztonsági riasztások csempén a számát mutatja:
 * kritikus riasztás feloldva a legutóbbi 24 órában
 * az elmúlt 24 órában feloldatlan figyelmeztető riasztások
 
-Kattintson a valamennyi kapcsolatot tart, hogy a **biztonsági mentési riasztások** szűrt láthassák ezeket a riasztásokat (kritikus vagy figyelmeztetési) panelen.
+A hivatkozásra kattintva megtekintheti a **biztonsági mentési riasztások** menüt, ezek a riasztások (kritikus vagy figyelmeztetési) szűrt nézete.
 
-A biztonsági mentési riasztások paneljéről meg:
+A biztonsági mentési riasztások menüből hogy:
 
 * Válassza ki a megfelelő információkkal együtt a riasztásokat.
 
     ![Oszlopok kiválasztása](./media/backup-azure-manage-windows-server/choose-alerts-colunms.png)
-* Riasztások szűrése a súlyosság, állapota és a kezdő és záró időpont.
+* A súlyosság, állapotát, a riasztások szűrése és kezdő/záró idő.
 
     ![Riasztások szűrése](./media/backup-azure-manage-windows-server/filter-alerts.png)
 * Súlyosság, a gyakoriság és a címzettek értesítések konfigurálása, valamint figyelmeztetések engedélyezése vagy letiltása.
 
     ![Riasztások szűrése](./media/backup-azure-manage-windows-server/configure-notifications.png)
 
-Ha **/ riasztási** választotta a **értesítendő** gyakoriság nincs csoportosítás vagy e-mailek csökkenése történik. Minden egyes riasztás 1 értesítési eredményez. Ez az alapértelmezett beállítás, és a feloldási e-mailt is küld azonnal.
+Ha **/ riasztási** választotta a **értesítendő** gyakorisága, nincs csoportosítás vagy e-mailek csökkenése következik be. Minden egyes riasztás egy értesítés (az alapértelmezett beállítás) elemre, majd a feloldási e-mailt küld azonnal.
 
-Ha **óránkénti kivonatoló** választotta a **értesítendő** egy e-mailt küld a felhasználó közölve, hogy van a gyakoriság feloldatlan új riasztások jönnek létre az elmúlt órában. A feloldási e-mailt küld az órát végén.
+Ha **óránkénti kivonatoló** választotta a **értesítendő** gyakorisága, egy e-mailt küld a felhasználó ismertető feloldatlan riasztások az elmúlt órában jött létre. A feloldási e-mailt küld az órát végén.
 
 Is elküldi a riasztásokat a következő súlyossági szintek:
 
@@ -117,12 +112,12 @@ Is elküldi a riasztásokat a következő súlyossági szintek:
 * Figyelmeztetés
 * Információ
 
-A riasztás inaktiválja a **inaktiválása** gombot a projekt részleteit megjelenítő panelen. Kattintva inaktiválása, megadhatja a feloldási megjegyzések.
+A riasztás inaktiválja a **inaktiválása** a feladat részletei menü gombjára. Kattintva inaktiválása, megadhatja a feloldási megjegyzések.
 
 Úgy dönt, hogy az oszlopok, akkor jelenik meg a riasztás részeként a **oszlopok kiválasztása** gombra.
 
 > [!NOTE]
-> Az a **beállítások** panelen kezelheti a biztonsági mentési riasztás kiválasztásával **figyelés és jelentéskészítés > riasztások és események > biztonsági mentésekkel kapcsolatos riasztások** , majd kattintson **szűrő** vagy  **Értesítések konfigurálása**.
+> Az a **beállítások** menü kiválasztásával kezelheti a biztonsági mentési riasztás **figyelés és jelentéskészítés > riasztások és események > biztonsági mentésekkel kapcsolatos riasztások** , majd kattintson **szűrő** vagy  **Értesítések konfigurálása**.
 >
 >
 
@@ -133,14 +128,14 @@ Kattintson a **-mappákban** a biztonsági mentés elemeknél csempére.
 
 ![Biztonsági másolati elemei csempe](./media/backup-azure-manage-windows-server/backup-items-tile.png)
 
-A biztonsági másolati elemei panel nyílik meg a szűrő beállítása fájlok és mappák, ahol minden egyes konkrét biztonsági másolat felsorolt elem látható.
+A biztonsági másolati elemei menü nyílik meg a szűrő beállítása fájlok és mappák, ahol minden egyes konkrét biztonsági másolat felsorolt elem látható.
 
 ![Biztonsági másolati elemei](./media/backup-azure-manage-windows-server/backup-item-list.png)
 
 Ha egy adott biztonsági mentési elemet a listáról válassza ki, alapvető részletes adatainak megadása, hogy az elem látható.
 
 > [!NOTE]
-> Az a **beállítások** panelen, kezelheti a fájlok és mappák kiválasztásával **védett elemek > biztonsági mentés elemek** és jelölje be **-mappákban** a legördülő menüből.
+> Az a **beállítások** menü kiválasztásával kezelheti fájlok és mappák **védett elemek > biztonsági mentés elemek** és jelölje be **-mappákban** a legördülő menüből.
 >
 >
 
@@ -154,18 +149,18 @@ Az irányítópult a biztonsági mentés területen a biztonsági mentési felad
 * folyamatban van
 * nem sikerült az elmúlt 24 órában.
 
-A biztonsági mentési feladatok kezeléséhez kattintson a **biztonsági mentési feladatok** csempe, amely a biztonsági mentési feladatok paneljének megnyitása.
+A biztonsági mentési feladatok kezeléséhez kattintson a **biztonsági mentési feladatok** csempe, amely a biztonsági mentési feladatok menü megnyitása.
 
 ![A beállítások biztonsági másolati elemei](./media/backup-azure-manage-windows-server/backup-jobs.png)
 
-A biztonsági mentési feladatok panelről a rendelkezésre álló információk módosítása a **oszlopok kiválasztása** gombra az oldal tetején.
+A biztonsági mentési feladatok menü a rendelkezésre álló információk módosítása a **oszlopok kiválasztása** gombra az oldal tetején.
 
 Használja a **szűrő** gombra, majd a fájlok és mappák és az Azure virtuális gép biztonsági mentése között.
 
-Ha nem látja a biztonsági mentés fájlokat és mappákat, kattintson a **szűrő** gombbal és válassza ki **fájlok és mappák** a elemtípus menüből.
+Ha nem látja a biztonsági mentési fájlok és mappák, kattintson a **szűrő** gombbal és válassza ki **fájlok és mappák** a elemtípus menüből.
 
 > [!NOTE]
-> Az a **beállítások** panelen kiválasztásával kezelheti a biztonsági mentési feladatok **figyelés és jelentéskészítés > feladatok > biztonsági mentési feladatok** és jelölje be **-mappákban** a legördülő menüben menü.
+> Az a **beállítások** menü kiválasztásával kezelheti a biztonsági mentési feladatok **figyelés és jelentéskészítés > feladatok > biztonsági mentési feladatok** és jelölje be **-mappákban** a legördülő menüben menü.
 >
 >
 
@@ -180,7 +175,7 @@ Az üzemi kiszolgálók kezeléséhez kattintson **beállítások**.
 
 Kattintson a kezelés **biztonsági infrastruktúra > az üzemi kiszolgálók**.
 
-A rendelkezésre álló üzemi kiszolgálók az üzemi kiszolgálók panel listáját. Kattintson egy kiszolgálón nyissa meg a részletek a listában.
+A rendelkezésre álló üzemi kiszolgálók az üzemi kiszolgálók menü listáját. Kattintson egy kiszolgálón nyissa meg a részletek a listában.
 
 ![Védett elemek](./media/backup-azure-manage-windows-server/production-server-list.png)
 

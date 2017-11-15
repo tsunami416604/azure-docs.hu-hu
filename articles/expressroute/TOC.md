@@ -36,12 +36,19 @@
 ### [Azure Portal](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
 ### [Azure CLI](how-to-routefilter-cli.md)
+## [Váltás nyilvános társviszony-létesítésről Microsoft társviszony-létesítésre](how-to-move-peering.md)
 ## [Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra](expressroute-howto-move-arm.md)
 ## [Kapcsolódó virtuális hálózatok áttelepítése klasszikus üzemi modellből Resource Manager-alapú modellbe](expressroute-migration-classic-resource-manager.md)
 ## Útválasztó konfigurálása ExpressRoute-hoz
 ### [Útválasztó konfigurálása](expressroute-config-samples-routing.md)
 ### [Útválasztó-konfigurációs minták NAT-hoz](expressroute-config-samples-nat.md)
 ## [Network Performance Monitor for ExpressRoute konfigurálása](how-to-npm.md)
+## Klasszikus üzemi modellhez kapcsolódó cikkek
+### [Kapcsolatcsoport módosítása](expressroute-howto-circuit-classic.md)
+### [Társhálózati konfiguráció létrehozása és módosítása](expressroute-howto-routing-classic.md)
+### [Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal](expressroute-howto-linkvnet-classic.md)
+### [Párhuzamos ExpressRoute- és párhuzamos helyek közötti kapcsolatok konfigurálása](expressroute-howto-coexist-classic.md)
+### [Átjáró hozzáadása virtuális hálózathoz](expressroute-howto-add-gateway-classic.md)
 
 ## Ajánlott eljárások
 ### [Hálózati biztonság és felhőszolgáltatások – ajánlott eljárások](../best-practices-network-security.md)

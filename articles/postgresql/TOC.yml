@@ -97,6 +97,8 @@
           href: howto-migrate-using-export-and-import.md
     - name: Kiszolgáló paramétereinek konfigurálása
       items:
+        - name: Azure Portal
+          href: howto-configure-server-parameters-using-portal.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
     - name: Hozzáférés a kiszolgálói naplókhoz

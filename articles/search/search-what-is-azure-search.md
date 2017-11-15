@@ -3,7 +3,7 @@ title: Mi az Azure Search |} Microsoft Docs
 description: "Az Azure Search egy teljes körűen felügyelt, üzemeltetett felhőalapú keresőszolgáltatás. További információ: a szolgáltatás áttekintését."
 services: search
 manager: jhubbard
-author: ashmaka
+author: HeidiSteen
 documentationcenter: 
 ms.assetid: 50bed849-b716-4cc9-bbbc-b5b34e2c6153
 ms.service: search
@@ -11,18 +11,18 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 06/26/2017
-ms.author: ashmaka
-ms.openlocfilehash: 9893be47ec0c2f58ca206ec7c1bce13734513390
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/10/2017
+ms.author: heidist
+ms.openlocfilehash: 63c7bcc1bf4e650f913d31e5687c31257a85bfee
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
-Az Azure Search egy keresési,--szolgáltatás felhőalapú megoldás, amely lehetőséget nyújt a fejlesztők API-k, valamint eszközei hozzáadása egy hatékony keresési élményt biztosít az adatok a webes, mobil és vállalati alkalmazások.
+Az Azure Search olyan keresési,--szolgáltatás felhőalapú megoldás, amely lehetőséget nyújt a fejlesztők API-k, valamint eszközei egy hatékony keresési funkciók hozzáadása a webes, mobil és vállalati alkalmazások tartalma fölött.
 
-Funkció van közzétéve, az egyszerű [REST API](/rest/api/searchservice/) vagy [.NET SDK](search-howto-dotnet-sdk.md) , amely elfedi keresési technológia rejlő összetettsége. API-k az Azure-portálon lehetőség felügyeleti vagy prototípusának támogatása. Infrastruktúra- és rendelkezésre állás a Microsoft által felügyelt.
+Funkció van közzétéve, az egyszerű [REST API](/rest/api/searchservice/) vagy [.NET SDK](search-howto-dotnet-sdk.md) , amely elfedi rejlő összetettsége adatok beolvasása. API-k, mellett az Azure-portálon biztosít, felügyeleti és tartalomkezelési támogatja, prototípusának és lekérdezi-e az indexek eszközeivel. A szolgáltatás fut a felhőben, mert infrastruktúra és a rendelkezésre állás a Microsoft által felügyelt.
 
 <a name="feature-drilldown"></a>
 
@@ -70,7 +70,7 @@ Az ügyfelek gyakran kérje meg, hogyan összehasonlítja az Azure Search keres�
 
 | Képest | Fontos különbség |
 |--|--|
-|Bing | [Bing webes keresés API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/) Bing.com indexei keres rá megfelelő feltételek elküldését. Indexek HTML, XML és egyéb webes tartalom nyilvános helyeken épülnek. [Bing egyéni keresés](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/) kínál webes ugyanazt a webbejáró technológiát egyes webhelyek hatóköre tartalomtípusokat.<br/><br/>Az Azure Search index meghatározása, adatokat és Ön a tulajdonosa, gyakran különböző forrásokból származó dokumentumokat töltődik keres. Az Azure Search rendelkezik néhány adatforrás keresztül webbejáró capabilies [indexelők](search-indexer-overview.md), de a sémát indexeli a JSON-dokumentumában, amelyik megfelel a azokat egy egyetlen, összevont kereshető erőforrás tolható. |
+|Bing | [Bing webes keresés API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/) Bing.com indexei keres rá megfelelő feltételek elküldését. Indexek HTML, XML és egyéb webes tartalom nyilvános helyeken épülnek. [Bing egyéni keresés](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/) kínál webes ugyanazt a webbejáró technológiát egyes webhelyek hatóköre tartalomtípusokat.<br/><br/>Az Azure Search index meghatározása, adatokat és Ön a tulajdonosa, gyakran különböző forrásokból származó dokumentumokat töltődik keres. Az Azure Search néhány adatforrás keresztül webbejáró képességekkel rendelkezik [indexelők](search-indexer-overview.md), de a sémát indexeli a JSON-dokumentumában, amelyik megfelel a azokat egy egyetlen, összevont kereshető erőforrás tolható. |
 |Adatbázis-keresés | [SQL Server teljes szöveges keresés](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) az adatbázis-kezelő, az SQL-táblák belső tartalom van. <br/><br/>Az Azure Search heterogén forrásból származó tartalmat tárolja, és speciális szöveg például a nyelvi és egyéni elemzési feldolgozási funkciókat nyújtja. A [teljes szöveges keresés motor](search-lucene-query-architecture.md) az Azure Search épül Apache Lucene, iparági szabvány, az adatok beolvasása. <br/><br/>Erőforrás-használat egy másik nincsenek pontot. Természetes nyelvű keresési legtöbbször számításilag intenzív. Dedikált megoldásokhoz szervez keresési megőrzi a tranzakció-feldolgozást erőforrásokat. Externalizing keresés könnyen módosíthatja méretezési lekérdezés kötet kereséséhez.|
 |Dedikált keresési megoldás | A helyszíni vagy felhőalapú szolgáltatási megoldások dedikált keresési megoldások teljes skálája funkciójú. Keresési technológiák általában kínálnak az indexelést és a lekérdezés folyamatok szabályozhatják, gazdagabb lekérdezés hozzáférést, és dimenziószáma és relevanciájának és irányuló és az intelligens keresési funkciók szintaxis, szűrés vezérlése. <br/><br/>Dedikált keresési megoldások tartalomhelyként a felhőalapú szolgáltatás, vagy önálló kiszolgálóként üzemeltetett a helyszínen vagy a virtuális gépen található. Egy felhőalapú szolgáltatás használata a megfelelő választás, ha azt szeretné egy [kulcsrakész megoldást minimális terhelés és karbantartási és állítható méretezési](#cloud-service-advantage). <br/><br/>Belül a felhő összeállítást a több szolgáltatók összehasonlíthatónak alapvető szolgáltatásokat, a teljes szöveges keresés, földrajzi-keresés és a keresési bemenet a félreérthetőség bizonyos szintű kezelésének képessége. Általában rendelkezik egy [speciális funkció](#feature-drilldown), vagy a könnyű, és a teljes API-k, eszközök és felügyeletéhez, amely meghatározza, hogy a legjobb térkihasználás érdekében egyszerűsége. |
 

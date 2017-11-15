@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
-ms.openlocfilehash: 50161c71443a3cc0192ab2db771bb258058e233c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="using-analytics-in-application-insights"></a>Az Application Insightsban Analytics használatával
 [Elemzés](app-insights-analytics.md) a hatékony keresési funkciója [Application Insights](app-insights-overview.md). Ezeken a lapokon a Log Analytics lekérdezési nyelv ismertetik.
@@ -38,7 +38,7 @@ Van egy [itt átfogóbb bemutatása](app-insights-analytics-tour.md).
 ### <a name="write-a-query"></a>Lekérdezés írása
 ![Séma megjelenítése](./media/app-insights-analytics-using/150.png)
 
-A bal oldalon felsorolt táblákat nevei kezdődnie (vagy a [tartomány](https://docs.loganalytics.io/queryLanguage/query_language_rangeoperator.html) vagy [Unió](https://docs.loganalytics.io/queryLanguage/query_language_unionoperator.html) operátorok). Használjon `|` a folyamatokat létrehozni [operátorok](https://docs.loganalytics.io/learn/cheatsheets/useful_operators.html). 
+A bal oldalon felsorolt táblákat nevei kezdődnie (vagy a [tartomány](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/range-operator) vagy [Unió](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/union-operator) operátorok). Használjon `|` a folyamatokat létrehozni [operátorok](https://docs.loganalytics.io/docs/Learn/References/Useful-operators). 
 
 IntelliSense kéri az operátorok és a kifejezés elemek közül választhat. Kattintson a ikonra (vagy nyomja meg a CTRL + szóköz) hosszabb leírást és a példákat egyes elemeinek a használatára.
 
@@ -49,7 +49,7 @@ Tekintse meg a [Analytics nyelvi bemutató](app-insights-analytics-tour.md) és 
 
 1. Egyetlen sortörést használható egy lekérdezésben.
 2. A kurzor belül, vagy a futtatni kívánt lekérdezés végén elhelyezése.
-3. Ellenőrizze a lekérdezés az időtartományt. (Módosíthatja, vagy bírálja felül az által, beleértve a saját [ `where...timestamp...` ](https://docs.loganalytics.io/concepts/concepts_datatypes_timespan.html) záradék a lekérdezés.)
+3. Ellenőrizze a lekérdezés az időtartományt. (Módosíthatja, vagy bírálja felül az által, beleértve a saját [ `where...timestamp...` ](https://docs.loganalytics.io/docs/Learn/Tutorials/Date-and-time-operations) záradék a lekérdezés.)
 3. A lekérdezés futtatásához az Ugrás gombra.
 4. A lekérdezés nem üres sorok be. Beállíthatja, hogy több elkülönített lekérdezések egy lekérdezés lap üres vonallal elválasztva őket. Csak a lekérdezés, amely rendelkezik a kurzor fut.
 
@@ -71,7 +71,7 @@ Rendezési, szűréséhez, megjelenítheti és az a lekérdezés által visszaad
 > [!NOTE]
 > Rendezés, a csoportosítás és a szűrés a böngészőben ne futtassa újból a lekérdezést. Ezek csak az eredményeket a legutóbbi lekérdezés által visszaadott eredményobjektumokban tárolt átrendezését. 
 > 
-> Ezen feladatok végrehajtásával a kiszolgálón, mielőtt a rendszer visszairányítja az eredményeket, a lekérdezés írása a [rendezési](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html), [összefoglalója](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) és [ahol](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) operátorok.
+> Ezen feladatok végrehajtásával a kiszolgálón, mielőtt a rendszer visszairányítja az eredményeket, a lekérdezés írása a [rendezési](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator), [összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) és [ahol](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) operátorok.
 > 
 > 
 
@@ -99,7 +99,7 @@ Ha úgy gondolja, hogy nem minden, a várt eredményt is lát, van néhány lehe
 
     Azonban módosíthatja az időtartományt a legördülő menü használatával szűrő.
 
-    A beállítás felülbírálható az automatikus tartomány beleértve a saját vagy [ `where  ... timestamp ...` záradék](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) be a lekérdezést. Példa:
+    A beállítás felülbírálható az automatikus tartomány beleértve a saját vagy [ `where  ... timestamp ...` záradék](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) be a lekérdezést. Példa:
 
     `requests | where timestamp > ago('2d')`
 
@@ -107,10 +107,10 @@ Ha úgy gondolja, hogy nem minden, a várt eredményt is lát, van néhány lehe
 
     Tanácsos elérte-e a korlát elkerülése érdekében. Az idő a tartomány szűrővel, vagy használjon operátorok például:
 
-  * [TOP 100 alapján időbélyeg](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) 
-  * [100 igénybe](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html)
-  * [összefoglalója](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 
-  * [Ha időbélyeg > ago(3d)](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)
+  * [TOP 100 alapján időbélyeg](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) 
+  * [100 igénybe](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/take-operator)
+  * [összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
+  * [Ha időbélyeg > ago(3d)](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)
 
 (Több mint 10 KB-os sor szeretné? Érdemes lehet [a folyamatos exportálás](app-insights-export-telemetry.md) helyette. Elemzés készült elemzés, nem pedig nyers adatok lekérése során.)
 
@@ -121,7 +121,7 @@ Válassza ki a kívánt diagram típusát:
 
 Ha rendelkezik a megfelelő típusú több oszlopot, kiválaszthatja az x és y-tengelyek és dimenziókat osztani az eredményeket tartalmazó oszlop.
 
-Alapértelmezés szerint eredmények kezdetben táblázatként jelenik meg, és manuálisan jelölje ki a diagramot. De használhatja a [irányelv leképezési](https://docs.loganalytics.io/queryLanguage/query_language_renderoperator.html) egy lekérdezést a diagram kiválasztásához végén.
+Alapértelmezés szerint eredmények kezdetben táblázatként jelenik meg, és manuálisan jelölje ki a diagramot. De használhatja a [irányelv leképezési](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) egy lekérdezést a diagram kiválasztásához végén.
 
 ### <a name="analytics-diagnostics"></a>Elemzés diagnosztika
 

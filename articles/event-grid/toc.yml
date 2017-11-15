@@ -46,6 +46,15 @@
       href: subscription-creation-schema.md
     - name: Eseményséma
       href: event-schema.md
+      items:
+        - name: Azure-előfizetések
+          href: event-schema-subscriptions.md
+        - name: Blob Storage
+          href: event-schema-blob-storage.md
+        - name: Event Hubs
+          href: event-schema-event-hubs.md
+        - name: Erőforráscsoportok
+          href: event-schema-resource-groups.md
 - name: Erőforrások
   items:
     - name: Azure-ütemterv

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: f055f1e87e73733b3f2ecfa87e4d372ade8a7868
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 7d3e6a34b5851a5a35a530b18efc3db3e2249274
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -35,7 +35,7 @@ A virtuális társhálózatok használatának előnyei:
 
 ## <a name="requirements-constraints"></a>Követelmények és korlátozások
 
-* Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban és az USA 2. nyugati régiójában. [Regisztrálhatja az előfizetését](virtual-network-create-peering.md) az előzetes verzióra.
+* Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban és az USA 2. nyugati régiójában. Mielőtt különböző régiókban lévő virtuális hálózatok között alakítana ki társviszonyt, [regisztrálnia kell az előfizetését](virtual-network-create-peering.md#register) az előzetes verzióra. A különböző régióban lévő virtuális hálózatok közötti társviszony kialakításának kísérlete meg fog hiúsulni, ha még nem végezte el a regisztrációt az előzetes verzióra.
     > [!WARNING]
     > A régiók között létrehozott virtuális társhálózatok rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadások társításaitól. Előfordulhat, hogy a virtuális társhálózatok korlátozott képességekkel rendelkeznek, vagy nem érhetőek el minden Azure-régióban. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
@@ -65,7 +65,7 @@ Virtuális hálózatok társviszonyának konfigurálásakor megnyithatja vagy le
 
 Konfigurálhatók olyan útvonalak, amelyekben a társviszonyban álló virtuális hálózatba tartozó virtuális gépek vannak megadva a „következő ugrás” IP-címeként, lehetővé téve a szolgáltatásláncolást. A szolgáltatásláncolás lehetővé teszi a forgalomnak a felhasználó által meghatározott útvonalon történő átirányítását egy virtuális hálózatból a virtuális társhálózatban működő virtuális berendezésre.
 
-Jó eredménnyel alakíthat ki csillagpontos típusú környezetet is, amelyben a csillag középponti hálózatában infrastrukturális összetevők (például virtuális hálózati berendezések) működhetnek. Az ágakon lévő virtuális hálózatok társhálózatai lehetnek a középponti hálózatnak. Az adatforgalom áthaladhat a középponti virtuális hálózatban futó virtuális hálózati berendezéseken. A virtuális hálózatok közötti társhálózati viszonnyal lehetőség nyílik arra, hogy a felhasználó által definiált útvonalon egy virtuális társhálózat egyik virtuális gépének IP-címe legyen a következő ugrás IP-címe. A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd a [felhasználó által megadott útvonalak áttekintését](virtual-networks-udr-overview.md). A küllős hálózati topológiák létrehozásával kapcsolatos további információkért lásd a [küllős hálózati topológiákkal](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering) foglalkozó cikket
+Jó eredménnyel alakíthat ki csillagpontos típusú környezetet is, amelyben a csillag középponti hálózatában infrastrukturális összetevők (például virtuális hálózati berendezések) működhetnek. Az ágakon lévő virtuális hálózatok társhálózatai lehetnek a középponti hálózatnak. Az adatforgalom áthaladhat a középponti virtuális hálózatban futó virtuális hálózati berendezéseken. A virtuális hálózatok közötti társhálózati viszonnyal lehetőség nyílik arra, hogy a felhasználó által definiált útvonalon egy virtuális társhálózat egyik virtuális gépének IP-címe legyen a következő ugrás IP-címe. A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd a [felhasználó által megadott útvonalak áttekintését](virtual-networks-udr-overview.md). A küllős hálózati topológiák létrehozásával kapcsolatos további információkért lásd a [küllős hálózati topológiákat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering) ismertető cikket
 
 ## <a name="gateways-and-on-premises-connectivity"></a>Átjárók és kapcsolat helyszíni rendszerekkel
 

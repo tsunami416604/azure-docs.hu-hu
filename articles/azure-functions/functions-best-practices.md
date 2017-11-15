@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d3df59afe595265fba88f7274154a36d42139859
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d59ef16de433ac9691f6996eab2bf56f056feb88
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>A teljesítmény-és az Azure Functions megbízhatóság
 
@@ -66,8 +66,7 @@ Hogyan reagál a kódját a után 5000 elem beszúrása a várólistára feldolg
 
 Egy elem már megtörtént a feldolgozása, ha engedélyezi a műveletvégzés a funkciót.
 
-Használhatja az Azure Functions platform összetevők már foglalt védelmi intézkedések előnyeit. Lásd például: **elhalt üzenetek kezelésének** dokumentációját [Azure Storage Üzenetsorába elindítja a](functions-bindings-storage-queue.md#trigger).
- 
+Használhatja az Azure Functions platform összetevők már foglalt védelmi intézkedések előnyeit. Lásd például: **elhalt üzenetek kezelésének** dokumentációját [Azure Storage eseményindítók és kötések](functions-bindings-storage-queue.md#trigger---poison-messages). 
 
 ## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Angol szövegben ne keverje függvény ugyanazt az alkalmazást a teszt- és éles kódot
 
@@ -97,4 +96,3 @@ További információkért lásd a következőket:
 
 Mivel az Azure Functions használ akkor is tisztában kell lennie az App Service-irányelvek Azure App Service-ben.
 * [Minták és gyakorlatok HTTP teljesítményoptimalizálás](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
-

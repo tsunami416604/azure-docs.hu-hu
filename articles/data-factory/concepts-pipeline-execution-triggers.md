@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: c319979cce23da69965d4fbab037919461f67b3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f4c0b11039bbdaf29c90ec2358934dc1c24af90
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -165,7 +165,7 @@ Az ütemező eseményindító egy időpont-alapú ütemezőn futtatja a folyamat
 ### <a name="scheduler-trigger-json-definition"></a>Ütemező eseményindító JSON-definíciója
 Amikor létrehoz egy ütemező eseményindítót, a JSON segítségével megadhatja az ütemezést és az ismétlődést a szakaszban található példában látható módon. 
 
-Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, az eseményindító meghatározásába foglalja bele az adott folyamat referenciáját. A folyamatok és az eseményindítók között „n-m” kapcsolat áll fenn. Egyetlen folyamatot több eseményindító is indíthat. Ugyanaz az eseményindító elindíthat több folyamatot is.
+Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, az eseményindító meghatározásába foglalja bele az adott folyamat referenciáját. A folyamatok és az eseményindítók között nincsen „n-m” kapcsolat. Egyetlen folyamatot több eseményindító is indíthat. Ugyanaz az eseményindító elindíthat több folyamatot is.
 
 ```json
 {
@@ -177,7 +177,7 @@ Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, a
         "interval": <<int>>,             // optional, how often to fire (default to 1)
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
-        "timeZone": <<default UTC>>
+        "timeZone": "UTC"
         "schedule": {                    // optional (advanced scheduling specifics)
           "hours": [<<0-24>>],
           "weekDays": ": [<<Monday-Sunday>>],
@@ -189,6 +189,7 @@ Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, a
                     "occurrence": <<1-5>>
                }
            ] 
+        }
       }
     },
    "pipelines": [
@@ -202,7 +203,7 @@ Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, a
                         "type": "Expression",
                         "value": "<parameter 1 Value>"
                     },
-                    "<parameter 2 Name> : "<parameter 2 Value>"
+                    "<parameter 2 Name>" : "<parameter 2 Value>"
                 }
            }
       ]
@@ -210,17 +211,57 @@ Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, a
 }
 ```
 
+> [!IMPORTANT]
+>  A **paraméterek** tulajdonság megadása a **folyamatokon** belül kötelező. Még abban az esetben is, ha az adott folyamat nem használ semmilyen paramétert, vegyen fel egy üres JSON-objektumot a paraméterek közé, mivel a tulajdonságnak léteznie kell.
+
+
 ### <a name="overview-scheduler-trigger-schema"></a>Áttekintés: az ütemező eseményindító sémája
 Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítókkal kapcsolatos ismétlődés és ütemezés fő elemeiről:
 
 JSON-tulajdonság |     Leírás
 ------------- | -------------
 startTime | A startTime egy dátum és idő. Egyszerű ütemezéseknél a startTime az első előfordulás. Összetett ütemezéseknél az eseményindító nem indul korábban, mint a startTime.
+endTime | Az eseményindító befejező dátumát határozza meg. A rendszer ezt az időpontot követően nem hajtja végre az eseményindítót. Múlt idejű endTime nem érvényes.
+timeZone | Jelenleg csak az egyezményes világidő (UTC) használata támogatott. 
 recurrence | A recurrence objektum adja meg az eseményindítóhoz tartozó ismétlődési szabályokat. A recurrence objektum a következő elemeket támogatja: frequency, interval, endTime, count és schedule. Ha a recurrence meg van adva, a frequency elemet meg kell adni, a recurrence többi eleme választható.
 frequency | Az eseményindító ismétlődésének gyakorisági egységét jelöli. A támogatott értékek a következők: `minute`, `hour`, `day`, `week` vagy `month`.
 interval | Az interval egy pozitív egész szám. Az eseményindító futásának gyakoriságát meghatározó frequency időközét jelöli. Ha például az interval 3, a frequency pedig „week”, az eseményindító 3 hetente ismétlődik.
-endTime | Az eseményindító befejező dátumát határozza meg. A rendszer ezt az időpontot követően nem hajtja végre az eseményindítót. Múlt idejű endTime nem érvényes.
 schedule | Egy frequency tulajdonsággal ellátott eseményindító az ismétlődést az ismétlődési ütemezés alapján módosítja. A schedule elemben szereplő módosítások alapjául a percek, órák, a hét napja, a hónap napjai és a hét száma szolgál.
+
+
+### <a name="schedule-trigger-example"></a>Példa ütemezési eseményindítóra
+
+```json
+{
+    "properties": {
+        "name": "MyTrigger",
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Hour",
+                "interval": 1,
+                "startTime": "2017-11-01T09:00:00-08:00",
+                "endTime": "2017-11-02T22:00:00-08:00"
+            }
+        },
+        "pipelines": [{
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "SQLServerToBlobPipeline"
+                },
+                "parameters": {}
+            },
+            {
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "SQLServerToAzureSQLPipeline"
+                },
+                "parameters": {}
+            }
+        ]
+    }
+}
+```
 
 ### <a name="overview-scheduler-trigger-schema-defaults-limits-and-examples"></a>Áttekintés: az ütemező eseményindító sémájának alapértékei, korlátai és példák
 
@@ -251,7 +292,7 @@ Végül, ha az eseményindítóhoz tartozik ütemezés, és az ütemezésben nin
 ### <a name="deep-dive-schedule"></a>A schedule részletes bemutatása
 A schedule egyrészt korlátozhatja a eseményindító végrehajtásainak számát. Ha például egy „month” gyakoriságú eseményindítóhoz csak a 31. napon futó ütemezés van megadva, akkor az eseményindító csak a 31 napos hónapokban fut.
 
-Másrészt az ütemezés növelheti is az eseményindító végrehajtásának számát. Ha például egy „month” gyakoriságú eseményindítóhoz a hónap 1. és 2. napján futó ütemezés van megadva, akkor az eseményindító minden elsején és másodikán is fut, nem csak egyszer egy hónapban.
+Ezzel szemben az ütemezés növelheti is az eseményindító végrehajtásának számát. Ha például egy „month” gyakoriságú eseményindítóhoz a hónap 1. és 2. napján futó ütemezés van megadva, akkor az eseményindító minden elsején és másodikán is fut, nem csak egyszer egy hónapban.
 
 Ha több ütemezési elem is meg van adva, a kiértékelési sorrend a legnagyobbtól halad a legkisebb felé: hét száma, hónap napja, hét napja, óra és perc.
 
@@ -262,9 +303,9 @@ JSON-név | Leírás | Érvényes értékek
 --------- | ----------- | ------------
 minutes | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
 hours | A nap azon órái, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
-weekDays | A hét azon napjai, amelyeken az eseményindító fut. Csak heti gyakoriság mellett adható meg. | <ul><li>Hétfő, kedd, szerda, csütörtök, péntek, szombat vagy vasárnap</li><li>Az előző értékek bármelyikének tömbje (a tömb maximális mérete 7)</li></p>Nem különbözteti meg a kis- és nagybetűket</p>
+weekDays | A hét azon napjai, amelyeken az eseményindító fut. Csak heti gyakoriság mellett adható meg. | <ul><li>Hétfő, kedd, szerda, csütörtök, péntek, szombat vagy vasárnap</li><li>Az értékek bármelyikének tömbje (a tömb maximális mérete: 7)</li></p>Nem különbözteti meg a kis- és nagybetűket</p>
 monthlyOccurrences | Meghatározza, hogy az eseményindító a hónap mely napjain fusson le. Csak havi gyakoriság mellett adható meg. | monthlyOccurence objektumok tömbje: `{ "day": day,  "occurrence": occurence }`. <p> A „day” a hét azon napja, amelyen az eseményindító lefut. A `{Sunday}` például a hónap minden vasárnapja. Kötelező.<p>Az „occurrence ” az adott nap előfordulása a hónapban. A `{Sunday, -1}` például a hónap utolsó vasárnapja. Választható.
-monthDays | A hónap azon napja, amelyen az eseményindító lefut. Csak havi gyakoriság mellett adható meg. | <ul><li>Bármilyen érték -1 és -31 között</li><li>Bármilyen érték 1 és 31 között</li><li>A fenti értékek tömbje</li>
+monthDays | A hónap azon napja, amelyen az eseményindító lefut. Csak havi gyakoriság mellett adható meg. | <ul><li>Bármilyen érték -1 és -31 között</li><li>Bármilyen érték 1 és 31 között</li><li>Értékek tömbje</li>
 
 
 ## <a name="examples-recurrence-schedules"></a>Példák: ismétlődésütemezések

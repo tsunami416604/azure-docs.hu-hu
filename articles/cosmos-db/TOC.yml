@@ -246,6 +246,8 @@
           items:
             - name: A Table fejlesztése
               href: table-support.md
+            - name: Table API-műveletek a PowerShell-lel
+              href: table-powershell.md
             - name: Azure Table Storage
               items:
                 - name: A Table Storage áttekintése
@@ -254,7 +256,7 @@
                   href: table-storage-design-guide.md
                 - name: Table Storage REST API-k
                   href: /rest/api/storageservices/Table-Service-Concepts
-                - name: Útmutató
+                - name: Fejlesztés
                   items:
                     - name: .NET
                       href: table-storage-how-to-use-dotnet.md
@@ -274,6 +276,8 @@
                       href: table-storage-how-to-use-python.md
                     - name: Ruby
                       href: table-storage-how-to-use-ruby.md
+                    - name: PowerShell
+                      href: table-storage-how-to-use-powershell.md
         - name: Csatorna módosítása
           href: change-feed.md
         - name: Térinformatikai

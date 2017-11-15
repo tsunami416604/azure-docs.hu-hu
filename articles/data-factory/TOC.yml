@@ -55,10 +55,12 @@
       href: concepts-integration-runtime.md
 - name: Útmutatók
   items:
-    - name: Adatok áthelyezése
+    - name: Adatok másolása
       items:
-        - name: Másolási tevékenység áttekintése
+        - name: Adatok másolása támogatott forrásokból a célhelyekre
           href: copy-activity-overview.md
+        - name: Particionált adatok olvasása vagy írása
+          href: how-to-read-write-partitioned-data.md
         - name: Összekötők
           items:
             - name: Amazon Redshift
@@ -71,6 +73,8 @@
               href: connector-azure-cosmos-db.md
             - name: Azure Data Lake Store
               href: connector-azure-data-lake-store.md
+            - name: Azure Database for MySQL
+              href: connector-azure-database-for-mysql.md
             - name: Azure File Storage
               href: connector-azure-file-storage.md
             - name: Azure Search
@@ -168,6 +172,8 @@
       items:
         - name: If Condition tevékenység
           href: control-flow-if-condition-activity.md
+        - name: Until tevékenység
+          href: control-flow-until-activity.md
         - name: Webes tevékenység
           href: control-flow-web-activity.md
         - name: Keresési tevékenység
@@ -178,6 +184,8 @@
           href: control-flow-execute-pipeline-activity.md
         - name: Minden egyes tevékenységhez
           href: control-flow-for-each-activity.md
+        - name: Wait tevékenység
+          href: control-flow-wait-activity.md
         - name: Kifejezés nyelve
           href: control-flow-expression-language-functions.md
         - name: Rendszerváltozók
@@ -190,6 +198,8 @@
           href: store-credentials-in-key-vault.md
         - name: Hitelesítő adatok titkosítása helyi integrációs modul számára
           href: encrypt-credentials-self-hosted-integration-runtime.md
+        - name: Data Factory-szolgáltatásidentitás
+          href: data-factory-service-identity.md
     - name: Monitorozás és kezelés
       items:
         - name: SDK-k használata
@@ -204,7 +214,7 @@
           href: monitor-integration-runtime.md
     - name: Integrációs modul létrehozása
       items:
-        - name: Azure integrációs modul
+        - name: Azure-beli integrációs modul
           href: create-azure-integration-runtime.md
         - name: Helyi integrációs modul
           href: create-self-hosted-integration-runtime.md

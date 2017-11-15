@@ -3,7 +3,7 @@ title: "Önálló üzemeltetett integrációs futásidejű létrehozása az Azur
 description: "Ismerje meg, hogy önálló üzemeltetett integrációs futásidejű létrehozása az Azure Data Factory, amely lehetővé teszi az adat-előállítók való hozzáférést egy magánhálózaton."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: spelluru
-ms.openlocfilehash: 63e4bb600d053a43c500b601a3942eb96ac16b07
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.author: abnarain
+ms.openlocfilehash: 0fcc245369d90042066cbfc516a8c32db7272bd3
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hozzon létre, és Self-hosted integrációs futásidejű konfigurálása
 Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos részletekért lásd: [integrációs futásidejű áttekintése](concepts-integration-runtime.md).
@@ -103,11 +103,11 @@ Amikor az adatok a helyszínen és a felhő között, a tevékenység egy önál
 
 
 ## <a name="high-availability-and-scalability"></a>Magas rendelkezésre állás és méretezhetőség
-Egy Self-hosted integrációs futásidejű associateed több helyi gépekre lehet. Ezek a gépek csomópontoknak nevezzük. Egy Self-hosted integrációs futásidejű társított legfeljebb négy csomópont lehet. Több csomópont (a telepített átjárót a helyszíni gépeket) rendelkező logikai átjáró előnyei a következők:
+Egy Self-hosted integrációs futásidejű társítható több helyszíni gépeket. Ezek a gépek csomópontoknak nevezzük. Egy Self-hosted integrációs futásidejű társított legfeljebb négy csomópont lehet. Több csomópont (a telepített átjárót a helyszíni gépeket) rendelkező logikai átjáró előnyei a következők:
 1. Magas rendelkezésre állás Self-hosted integrációs futtatókörnyezet, hogy már nem a hibaérzékeny pontok kialakulását a Big Data típusú adatok megoldás vagy a felhőbeli adatok integráció az Azure Data Factoryvel, legfeljebb 4 csomópontokkal folytonosságának biztosítása érdekében.
 2. A helyszíni és a felhő közötti adatátvitel során teljesítményére és átviteli továbbfejlesztett adattárolókhoz. További információ [teljesítmény összehasonlítása](copy-activity-performance.md).
 
-A Self-hosted integrációs futásidejű szoftverek egyszerűen telepítésével több csomópont is társíthat a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) és a hitelesítési kulcsokat obtainined a egyikével regisztrálásával Új AzureRmDataFactoryV2IntegrationRuntimeKey parancsmag leírtak szerint a [oktatóanyag](tutorial-hybrid-copy-powershell.md)
+A Self-hosted integrációs futásidejű szoftverek egyszerűen telepítésével több csomópont is társíthat a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) és a hitelesítési kulcsokat nyert egyikével regisztrálásával Új AzureRmDataFactoryV2IntegrationRuntimeKey parancsmag leírtak szerint a [oktatóanyag](tutorial-hybrid-copy-powershell.md)
 
 > [!NOTE]
 > Nem kell új Self-hosted integrációs futásidejű az egyes csomópontok közötti társítás létrehozásával.

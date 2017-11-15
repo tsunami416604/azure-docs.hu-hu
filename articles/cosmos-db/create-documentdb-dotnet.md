@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 295d3b8983484b33c69ebb5d0d68c451211102a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8ab132a3e90032c4d70c310a2dd88f7441c4f0a
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: DocumentDB API-webalkalmazás létrehozása .NET-tel és az Azure Portallal
 
@@ -95,24 +95,29 @@ Most pedig váltsunk át kódok használatára. Klónozunk egy DocumentDB API-al
 
 Tekintsük át, hogy mi is történik az alkalmazásban. Nyissa meg a DocumentDBRepository.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB-erőforrásokat. 
 
-* A DocumentClient inicializálva van a 73. sorban.
+* A documentclient ügyfél segítségével sor 78 inicializálva van.
 
     ```csharp
-    client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);`
+    client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
     ```
 
-* A rendszer létrehozza az új adatbázist a 88. sorban.
+* Egy új adatbázis létrehozása sor 93.
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* A rendszer létrehozza az új gyűjteményt a 107. sorban.
+* Sor 112 létrejön egy új gyűjteményt.
 
     ```csharp
     await client.CreateDocumentCollectionAsync(
         UriFactory.CreateDatabaseUri(DatabaseId),
         new DocumentCollection { Id = CollectionId },
+        new DocumentCollection
+            {
+               Id = CollectionId,
+               PartitionKey = new PartitionKeyDefinition() { Paths = new Collection<string>() { "/category" } }
+            },
         new RequestOptions { OfferThroughput = 1000 });
     ```
 

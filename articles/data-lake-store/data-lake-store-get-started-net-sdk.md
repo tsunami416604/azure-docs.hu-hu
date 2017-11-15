@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 10/13/2017
 ms.author: nitinme
-ms.openlocfilehash: fb9be26d3affe898bbbb66ead242dbdb59436bb6
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 018cf772f458bb29712ef9516c3af4e969a94564
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>Fiókkezelési műveletek az Azure Data Lake Store-ban a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -105,7 +105,7 @@ A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .
 * Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [Végfelhasználói hitelesítés a Data Lake Store-ban a .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
 * Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [Szolgáltatások közötti hitelesítés a Data Lake Store-ban a .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
-## <a name="create-client-objects"></a>Ügyfélobjektumok létrehozása
+## <a name="create-client-object"></a>Ügyfélobjektum létrehozása
 A következő kódrészlet létrehozza a Data Lake Store-fiók ügyfélobjektumát, amely a szolgáltatásnak küldött fiókkezelési kérések (például fiók létrehozása, fiók törlése stb.) kiadására használatos.
 
     // Create client objects and set the subscription ID

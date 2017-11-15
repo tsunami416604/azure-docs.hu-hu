@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/08/2017
+ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 26f5e71f3d00161a92de702209e224008ec8a5ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>A lekérdezés és a munkaterhelések az Azure Search indexelő erőforrás szintjeinek
 Miután [válasszon egy tarifacsomagot](search-sku-tier.md) és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), a következő lépésre szükség növelje a replikák és a szolgáltatás által használt partíciók számát. Minden egyes kínál, számlázási egységek rögzített száma. Ez a cikk azt ismerteti, hogyan azokat az egységeket, hogy a lekérdezés-végrehajtás indexelő és tárolási követelményeinek optimális konfigurálása során eléréséhez lefoglalni.
 
-Erőforrás beállítási lehetőségek érhetők el, ha beállít egy szolgáltatást a [alapszintű rétegben](http://aka.ms/azuresearchbasic) vagy az egyik a [szabványos rétegek](search-limits-quotas-capacity.md). Ezek a rétegek számlázható szolgáltatások, a kapacitás lépésekben vásárolt *keresési egységet* (SUs) ahol minden partíció és a replika számít-e egy SU. 
+Erőforrás beállítási lehetőségek érhetők el, ha beállít egy szolgáltatást a [alapszintű rétegben](http://aka.ms/azuresearchbasic) vagy az egyik a [szabványos rétegek](search-limits-quotas-capacity.md). Ezek a rétegek szolgáltatások, a kapacitás lépésekben vásárolt *keresési egységet* (SUs) ahol minden partíció és a replika számít-e egy SU. 
 
 Kevesebb SUs-eredmények arányosan alacsonyabb számlázási használata. Számlázási számára van, amíg a szolgáltatás be van állítva. A szolgáltatás nem ideiglenesen használ, ha a csak számlázási elkerülése érdekében, a szolgáltatás törlése, és majd újra hozza létre, ha esetleg szükség lenne rá.
 
@@ -51,21 +51,19 @@ Növelheti vagy csökkentheti a lefoglalást a replikák és a partíciók, java
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) , és válassza ki a keresési szolgáltatást.
 2. A **beállítások**, nyissa meg a **méretezési** panel és a csúszkák használatával növelheti vagy csökkentheti a partíciók és replikák száma.
 
-Ha szüksége van egy parancsprogram-alapú vagy a kód-alapú üzembe helyezési módszert használja, a [felügyeleti REST API](https://msdn.microsoft.com/library/azure/dn832687.aspx) a portál alternatív megoldás.
+Ha szüksége van egy parancsprogram-alapú vagy a kód-alapú üzembe helyezési módszert használja, a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) a portál alternatív megoldás.
 
 Alkalmazások keresése általában akkor kell további replikák partíciók, mint, különösen akkor, amikor a szolgáltatási műveletek felé lekérdezés munkaterhelések vannak optimalizálva. A szakasz a [magas rendelkezésre állású](#HA) miért ismerteti.
 
 > [!NOTE]
-> A szolgáltatás üzembe helyezése után nem lehet frissíteni egy magasabb másikra. Akkor hozzon létre egy keresési szolgáltatást, az új réteget, és töltse be újra az indexek. Lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) szolgáltatás kiépítése segítségre.
+> A szolgáltatás üzembe helyezése után nem lehet frissíteni egy magasabb másikra. Hozzon létre egy keresési szolgáltatást, az új réteget kell, és töltse be újra az indexek. Lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md) szolgáltatás kiépítése segítségre.
 >
 >
 
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
-Mivel a szolgáltatás egyszerű és viszonylag gyors méretezést kívánó, általában ajánlott a kiindulási pont egy partíciót, és egy vagy két replikákat, és ezután lekérdezés kötetként felskálázott készítsen. Sok Services, a Basic vagy S1 rétegek egy partíciót biztosítja elegendő tárhely és i/o (15 millió dokumentumot partíciónként).
-
-Lekérdezés munkaterhelések futtatásához elsősorban a replikákon. Ha további átviteli vagy magas rendelkezésre állású, további replikák valószínűleg szüksége lesz.
+Mivel a szolgáltatás egyszerű és viszonylag gyors méretezést kívánó, általában ajánlott a kiindulási pont egy partíciót, és egy vagy két replikákat, és ezután lekérdezés kötetként felskálázott készítsen. Lekérdezés munkaterhelések futtatásához elsősorban a replikákon. Ha további átviteli vagy magas rendelkezésre állású, további replikák valószínűleg szüksége lesz.
 
 A magas rendelkezésre állás általános ajánlások a következők:
 
@@ -73,6 +71,8 @@ A magas rendelkezésre állás általános ajánlások a következők:
 * Három vagy több replikák a magas rendelkezésre állás olvasási/írási munkaterhelések (lekérdezések és indexelő, egyes dokumentumok hozzáadott, frissítése vagy törlése)
 
 Szolgáltatásszint-szerződések (SLA) az Azure Search lekérdezési műveletek és az index frissítések, amelyek hozzáadása, frissítése vagy törlése a dokumentumok célozzák meg.
+
+Az alapszintű csomag fent egy partíciót és három replikákat. Ha azt szeretné, hogy igény szerint indexelő és lekérdezés átviteli sebesség eléréséhez a ingadozását azonnal reagálni a rugalmasságot, fontolja meg a normál szintek egyikét.
 
 ### <a name="index-availability-during-a-rebuild"></a>Során egy rebuild index elérhetősége
 
@@ -89,9 +89,9 @@ Jelenleg nincs vész-helyreállítási beépített mechanizmus. Hozzáadását p
 ## <a name="increase-query-performance-with-replicas"></a>Növelje a lekérdezési teljesítmény replikával
 Lekérdezés-késleltetés értéke azt jelzi, hogy van-e szükség további replikákat. Általában a lekérdezési teljesítmény első lépését hoz adhat hozzá további ehhez az erőforráshoz. Replikák hozzáadása során, további példányokat az index online állapotba nagyobb lekérdezés munkaterhelések támogatásához, és betölteni a kérelmek kiegyenlítheti a több replika keresztül.
 
-Rögzített becslések nem nyújtunk a lekérdezések / másodperc (QPS): a lekérdezés a lekérdezés és versengő munkaterhelések bonyolultságától függ. Átlagosan Basic vagy S1 termékváltozatok replika készül 15 QPS is szolgáltatás, de az átviteli sebesség magasabb vagy alacsonyabb attól függően, hogy a lekérdezés összetettsége (jellemzőalapú lekérdezések összetettebbek) és a hálózati késés. Ezenkívül fontos, hogy ismeri fel, hogy bár a replikák mindenképpen felveszi méretezés és teljesítmény, az eredmény nincs szigorúan lineáris: három replikák hozzáadása nem garantálja háromszoros átviteli sebességet.
+Rögzített becslések nem nyújtunk a lekérdezések / másodperc (QPS): a lekérdezés a lekérdezés és versengő munkaterhelések bonyolultságától függ. Bár egyértelműen replikák hozzáadása jobb teljesítményt eredményez, az eredmény nincs szigorúan lineáris: három replikák hozzáadása nem garantálja háromszoros átviteli sebességet.
 
-Című témakörben olvashat a QPS, beleértve a QPS becsléséhez a munkaterhelések megközelítések [a Search szolgáltatás kezelése](search-manage.md).
+A QPS becslése a munkaterhelések útmutatóért lásd: [Azure Search teljesítmény- és optimalizálási szempontok](search-performance-optimization.md).
 
 ## <a name="increase-indexing-performance-with-partitions"></a>A partíciók indexelési teljesítmény növelése
 Közel valós idejű adatok frissítést igénylő alkalmazások keresése mint replikák arányosan több partíciót kell. Partíciók hozzáadása között osztja el olvasási/írási műveletek nagy számú számítási erőforrások között. Azt is lehetővé teszi több lemezterületet tárolásához további indexekhez és dokumentumokhoz.

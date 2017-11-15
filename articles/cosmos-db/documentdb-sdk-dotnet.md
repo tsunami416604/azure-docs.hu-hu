@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 11/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fcd3b9647833d15d0fd7913f3be55f18f665d094
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 25fd7ca3a7a6f2bd9b361bd459a707bad49449e4
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Az Azure DB .NET SDK Cosmos: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -51,6 +51,15 @@ ms.lasthandoff: 10/26/2017
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name11901190"></a><a name="1.19.0"/>1.19.0
+
+* Márkajelzési Azure Cosmos Adatbázist az API-referencia az Azure DocumentDB változásait, dokumentáció, szerelvényekben metaadat-információkat és a NuGet-csomagot. 
+* Diagnosztikai adatok és a késleltetés közvetlen kapcsolatot módban küldött kérelmek a válaszban szereplő tenni. A tulajdonságnevek megkülönböztetik RequestDiagnosticsString és RequestLatency ResourceResponse osztályban.
+* Az SDK-verzió telepítéséhez a legújabb Azure Cosmos DB emulátorának elérhetősége a https://aka.ms/cosmosdb-emulator letölthető. 
+
+### <a name="a-name11811181"></a><a name="1.18.1"/>1.18.1 
+
+* Belső módosításainak Microsoft ismerősök szerelvényeket.
 
 ### <a name="a-name11801180"></a><a name="1.18.0"/>1.18.0 
 
@@ -261,6 +270,8 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.19.0](#1.19.0) |2017. november 10. |--- |
+| [1.18.1](#1.18.1) |2017. november 07. |--- |
 | [1.18.0](#1.18.0) |2017. október 17. |--- |
 | [1.17.0](#1.17.0) |2017. augusztus 10. |--- |
 | [1.16.1](#1.16.1) |2017. augusztus 07. |--- |

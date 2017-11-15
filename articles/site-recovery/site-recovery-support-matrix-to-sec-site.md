@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: c0f86e13e21f2af323e0a306b381054b6eb76755
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: da120d8e325867eaf9eb8b9be1ae8d9152db54c4
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>A replikálás az Azure Site Recovery egy másodlagos hely támogatási mátrix
 
@@ -28,7 +28,7 @@ Ez a cikk összefoglalja, hogy mi támogatja, ha használja a [Azure Site Recove
 
 **Üzembe helyezés** | **Részletek** 
 --- | ---
-**VMware és VMware közötti replikáció** | Vészhelyreállítás a helyszíni VMware virtuális gépek másodlagos VMware-helyre.<br/><br/> Töltse le a [InMage Scout felhasználói útmutatója](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)
+**VMware és VMware közötti replikáció** | Vészhelyreállítás a helyszíni VMware virtuális gépek másodlagos VMware-helyre.<br/><br/> Töltse le a [InMage Scout felhasználói útmutatója](https://aka.ms/asr-scout-user-guide)
 **Hyper-V – Hyper-V** | Vészhelyreállítás a helyszíni Hyper-V virtuális gépek VMM-felhőkben másodlagos VMM-felhőhöz.<br></br> A VMM nem támogatott.
 
 
@@ -39,7 +39,7 @@ Ez a cikk összefoglalja, hogy mi támogatja, ha használja a [Azure Site Recove
 
 **Üzembe helyezés** | **Támogatás**
 --- | ---
-**VMware virtuális gép vagy fizikai kiszolgáló** | vCenter 5.5 vagy 6.0 (csak a 5.5 szolgáltatások támogatása)
+**VMware virtuális gép vagy fizikai kiszolgáló** | vCenter 5.5, 6.0 és 6.5 (csak a 5.5 szolgáltatások támogatása)
 **A Hyper-V a VMM-mel** | Windows Server 2016 és a Windows Server 2012 R2 legújabb frissítéseit.<br/><br/> Windows Server 2016 gazdagépek a VMM 2016 kell kezelnie.<br/><br/> Windows Server 2016 és 2012 R2-állomások VMM 2016 felhők jelenleg nem támogatottak.<br/><br/> Központi telepítés egy létező VMM 2012 R2-ben a System Center 2016 verziófrissítést jelenleg nem támogatottak.
 
 
@@ -49,7 +49,7 @@ A következő táblázat összefoglalja az operációs rendszer támogatása gé
 
 **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a VMM-mel)**
 --- | ---
-64 bites Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2: legalább SP1<br/><br/> Red Hat Enterprise Linux 6.7, 7.1, 7.2 <br/><br/> Centos 6.5, 6.6, 6.7, 7.0, 7.1, 7.2 <br/><br/> Oracle 6.4 vagy 6.5 fut a Red Hat Enterprise Linux kompatibilis kernel vagy szoros vállalati Kernel Release 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3 | A vendég operációs rendszer [Hyper-V által támogatott](https://technet.microsoft.com/library/mt126277.aspx)
+64 bites Windows Server 2016-os, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2: legalább SP1<br/><br/> Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.1, 7.2 <br/><br/> Centos 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2 <br/><br/> Oracle Enterprise Linux 6.4 6.5, 6.8 a Red Hat kompatibilis kernel vagy szoros vállalati Kernel kiadási-3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4  | A vendég operációs rendszer [Hyper-V által támogatott](https://technet.microsoft.com/library/mt126277.aspx)
 
 ## <a name="linux-machine-storage"></a>Linux-gépek tárhelye
 
@@ -104,15 +104,15 @@ VHD/VHDX | N/A | Igen (legfeljebb 16 lemez)
 Generációból 2 virtuális gép | N/A | Igen
 Megosztott fürtlemez | Igen  | Nem
 Titkosított lemez | Nem | Nem
-UEFI| Nem | N/A
+UEFI| Igen | N/A
 NFS | Nem | Nem
 SMB 3.0 | Nem | Nem
 RDM | Igen | N/A
-> 1 TB méretű lemez | Nem | Igen
+> 1 TB méretű lemez | Igen | Igen
 A csíkozott > 1 TB-os kötet<br/><br/> LVM | Igen | Igen
 Tárolóhelyek | Nem | Igen
-Gyakran használt adatok hozzáadása lemez | Nem | Nem
-Lemez kizárása | Nem | Igen
+Gyakran használt adatok hozzáadása lemez | Igen | Nem
+Lemez kizárása | Igen | Igen
 (MPIO) többutas | N/A | Igen
 
 ## <a name="vaults"></a>Tárolók

@@ -28,7 +28,13 @@
 - name: Alapelvek
   items:
     - name: Munkaterület frissítése
-      href: log-analytics-log-search-upgrade.md
+      items:
+        - name: Frissítés áttekintése
+          href: log-analytics-log-search-upgrade.md
+        - name: A módosítások összefoglalása
+          href: log-analytics-log-search-upgrade-changes.md
+        - name: Frissítés – gyakori kérdések
+          href: log-analytics-log-search-faq.md
     - name: Log Analytics – gyakori kérdések
       href: log-analytics-faq.md
     - name: Adathasználat
@@ -41,8 +47,6 @@
       items:
         - name: A naplókeresések áttekintése
           href: log-analytics-log-search-new.md
-        - name: Naplók keresése – gyakori kérdések
-          href: log-analytics-log-search-faq.md
         - name: Naplókeresési portálok
           href: log-analytics-log-search-portals.md
 - name: Útmutatók

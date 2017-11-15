@@ -15,6 +15,12 @@
       href: container-registry-get-started-powershell.md
 - name: Oktatóanyagok
   items:
+    - name: Azure Container Instances
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure Container Service (AKS)
+      href: ../aks/tutorial-kubernetes-prepare-app.md
+    - name: Service Fabric
+      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
     - name: Georeplikáció (előzetes verzió)
       items:
         - name: 1 – A tárolóregisztrációs adatbázis előkészítése
@@ -23,12 +29,6 @@
           href: container-registry-tutorial-deploy-app.md
         - name: 3 – A webalkalmazás frissítése
           href: container-registry-tutorial-deploy-update.md
-    - name: Azure Container Instances
-      href: ../container-instances/container-instances-tutorial-prepare-app.md
-    - name: Azure Container Service (AKS)
-      href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Service Fabric
-      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
 - name: Alapelvek
   items:
     - name: Tárolóregisztrációs adatbázis termékváltozatai
@@ -57,13 +57,19 @@
       href: /rest/api/containerregistry
     - name: PowerShell
       href: /powershell/module/azurerm.containerregistry
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.containerregistry/registries
 - name: Erőforrások
   items:
-    - name: Ütemterv
-      href: 'https://aka.ms/acr/roadmap'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
+    - name: Ütemterv
+      href: 'https://aka.ms/acr/roadmap'
+    - name: Termékkel kapcsolatos visszajelzés küldése
+      href: 'https://feedback.azure.com/forums/903958-azure-container-registry'
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-container-registry'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'

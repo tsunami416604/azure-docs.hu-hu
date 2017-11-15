@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: bcf42ebb081517d247690ee57c2be274784ef29d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>A helyszíni StorSimple-eszköz (3. frissítés vagy újabb) üzembe helyezése
 
@@ -49,7 +49,7 @@ Ezen szükséges lépések végrehajtásával konfigurálhatja a StorSimple-eszk
 | [1. lépés: Új szolgáltatás létrehozása](#step-1-create-a-new-service) |A felhőfelügyelet és a felhőalapú tárolás beállítása a StorSimple-eszközhöz. *Hagyja ki ezt a lépést, ha már rendelkezik meglévő szolgáltatással más StorSimple eszközökhöz*. |
 | [S2. lépés: Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key) |Ezzel a kulccsal regisztrálhatja és csatlakoztathatja az eszközét a felügyeleti szolgáltatáshoz. |
 | [3. lépés: Az eszköz konfigurálása és regisztrálása a StorSimple-höz készült Windows PowerShell-lel](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |A felügyeleti szolgáltatással végzett telepítés befejezéséhez csatlakoztassa az eszközt a hálózathoz, és regisztrálja az Azure-ban. |
-| [4. lépés: Minimális eszközbeállítások végrehajtása](#step-4-complete-minimum-device-setup)</br>[Választható lehetőség: A StorSimple eszköz frissítése](#scan-for-and-apply-updates) |A felügyeleti szolgáltatással végezze el az eszköz beállítását, és engedélyezze rajta a tárolást. |
+| [4. lépés: Minimális eszközbeállítások végrehajtása](#step-4-complete-minimum-device-setup)</br>[Ajánlott eljárás: A StorSimple eszköz frissítése](#scan-for-and-apply-updates) |A felügyeleti szolgáltatással végezze el az eszköz beállítását, és engedélyezze rajta a tárolást. |
 | [5. lépés: Kötettároló létrehozásar](#step-5-create-a-volume-container) |Hozzon létre egy tárolót a kötetek kiépítéséhez. A kötettároló tárfiók-, sávszélesség- és titkosítási beállításokat biztosít minden benne tárolt kötet számára. |
 | [6. lépés: Kötet létrehozása](#step-6-create-a-volume) |Tárköteteket építhet ki a StorSimple-eszközön a kiszolgálói számára. |
 | [7. lépés: Kötet csatlakoztatása, inicializálása és formázása](#step-7-mount-initialize-and-format-a-volume)</br>[Választható lehetőség: Az MPIO konfigurálása](storsimple-8000-configure-mpio-windows-server.md) |Csatlakoztassa a kiszolgálókat az eszköz által biztosított iSCSI-tárolóhoz. Választható lehetőségként konfigurálhatja az MPIO-t, hogy a kiszolgálók képesek legyenek tűrni a kapcsolati, a hálózati és az adapterhibákat. |
@@ -127,6 +127,8 @@ Hajtsa végre az alábbi lépéseket az Azure Portalon a minimális eszközbeál
 
 [!INCLUDE [storsimple-8000-complete-minimum-device-setup-u2](../../includes/storsimple-8000-complete-minimum-device-setup-u2.md)]
 
+A minimális eszközbeállítás elvégzése után az ajánlott eljárás a [legújabb frissítések keresése és alkalmazása](#scan-for-and-apply-updates).
+
 ## <a name="step-5-create-a-volume-container"></a>5. lépés: Kötettároló létrehozása
 A kötettároló tárfiók-, sávszélesség- és titkosítási beállításokat biztosít minden benne tárolt kötet számára. Ahhoz, hogy elkezdhessen köteteket kiépíteni a StorSimple eszközön, létre kell hoznia egy kötettárolót.
 
@@ -181,7 +183,7 @@ A StorSimple-höz készült Windows PowerShellhez való csatlakozáshoz szüksé
 [!INCLUDE [Use PuTTY to connect to the device serial console](../../includes/storsimple-use-putty.md)]
 
 ## <a name="scan-for-and-apply-updates"></a>Frissítések keresése és telepítése
-Az eszköz frissítése több órát is igénybe vehet. A legújabb frissítés telepítésének lépéseiért lásd: [A 4-es frissítés telepítése](storsimple-8000-install-update-4.md).
+Az eszköz frissítése több órát is igénybe vehet. A legújabb frissítés telepítésének lépéseiért lásd: [A 5-es frissítés telepítése](storsimple-8000-install-update-5.md).
 
 
 ## <a name="get-the-iqn-of-a-windows-server-host"></a>Egy Windows Server-állomás IQN-nevének lekérése

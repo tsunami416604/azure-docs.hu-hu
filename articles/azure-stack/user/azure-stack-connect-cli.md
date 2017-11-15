@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 11/11/2017
 ms.author: sngun
-ms.openlocfilehash: 5ef64e727615d17ae550efbc7ea427936d7d4c3b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 60b06cf41ea632219d2f16b29607899bd2e8d789
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Telepítse és konfigurálja a CLI Azure verem való használatra
 
@@ -204,6 +204,15 @@ az group create \
 Az erőforráscsoport létrehozása sikeres, ha az előző parancs kimenete az újonnan létrehozott erőforrás következő tulajdonságai:
 
 ![Erőforráscsoport létrehozása kimeneti](media/azure-stack-connect-cli/image1.png)
+
+## <a name="known-issues"></a>Ismert problémák
+Nincsenek ismert problémák a kell ügyelnie, ha a CLI Azure-készletben:
+
+* A parancssori felület interaktív módban Egytényezős a `az interactive` parancs még nem támogatott Azure-készletben.
+* Azure verem használható virtuálisgép-rendszerképek listájának lekéréséhez használja a `az vm images list --all` parancs helyett a `az vm image list` parancsot. Adja meg a `--all` beállítás gondoskodik arról, hogy a válasz csak az Azure-verem környezetben elérhető képek adja vissza. 
+* Az Azure-ban rendelkezésre álló virtuális gép lemezképének aliasok nem lehet Azure verem használható. Virtuálisgép-rendszerképek használata esetén a teljes URN paramétert kell használnia (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) helyett a kép alias. Ez URN meg kell egyeznie a kép specifikációk származtatva a `az vm images list` parancsot.
+* Alapértelmezés szerint CLI 2.0 "Standard_DS1_v2" használja az alapértelmezett virtuálisgép-lemezkép mérete. Azonban ez a méret még nem érhető el az Azure-készletben, így, meg kell adnia a `--size` paraméter explicit módon, ha egy virtuális gépet hoz létre. Kaphat használatával Azure verem rendelkezésre álló virtuálisgép-méretek listáját a `az vm list-sizes --location <locationName>` parancsot.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

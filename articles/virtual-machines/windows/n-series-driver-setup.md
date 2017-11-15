@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/07/2017
+ms.date: 11/09/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b480d10df777a2757c073ff77e1845d33d63163a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b16e57e06d5055fc0c2750385630a908e10bd217
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Windows Server rendszert futtató N sorozatú virtuális gépek GPU illesztőprogramok beállítása
 A Windows Server 2016 vagy a Windows Server 2012 R2 rendszert futtató Azure N sorozatú virtuális gépek GPU lehetőségeinek kihasználásához, telepítse a támogatott NVIDIA video-illesztőprogramok. Ez a cikk lépéseit illesztőprogram beállítása az N-sorozatú virtuális gép telepítése után. Telepítési információk illesztőprogram érhető el is [Linux virtuális gépek](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -50,7 +50,7 @@ A GPU eszköz állapotát lekérdező, futtassa a [nvidia-smi](https://developer
 
 1. Nyisson meg egy parancssort, és módosítsa a **C:\Program Files\NVIDIA Corporation\NVSMI** könyvtár.
 
-2. Futtatás **nvidia-smi**. Ha az adatforrásnak alatt hasonló kimenetet fog látni. Vegye figyelembe, hogy **GPU-Util** látható **0 %** kivéve, ha meg van nyitva egy GPU munkaterhelés a virtuális Gépen.
+2. Futtassa az `nvidia-smi` parancsot. Ha az illesztőprogram telepítve van a következőhöz hasonló kimenetet fog látni. Vegye figyelembe, hogy **GPU-Util** látható **0 %** kivéve, ha meg van nyitva egy GPU munkaterhelés a virtuális Gépen. A illesztőprogramjának verziószámát és a GPU részletek látható eltérő lehet.
 
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi.png)  
 

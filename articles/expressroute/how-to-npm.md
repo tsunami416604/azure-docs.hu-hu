@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/01/2017
+ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 35dd3c6be2fb2fa5ec4d14eefce1c16005210364
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: b041244b28d76de4bac2822c115482e31d073a22
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurálja a hálózati Teljesítményfigyelő az ExpressRoute (előzetes verzió)
 
@@ -39,21 +39,27 @@ A következőket teheti:
 
 * Tekintse meg a ExpressRoute rendszerállapot egy előző pont időben
 
-**Hogyan működik?**
+## <a name="regions"></a>Régiók
+
+Figyelheti a világ minden részén ExpressRoute-Kapcsolatcsoportok üzemeltetett munkaterület használatával a következő területek közül:
+
+* Nyugat-Európa 
+* USA keleti régiója 
+* Délkelet-Ázsia 
+
+## <a name="workflow"></a>Munkafolyamat
 
 Több kiszolgáló figyelési ügynökök telepítve vannak a helyszíni és az Azure-ban. Az ügynökök kommunikálnak egymással, de ne küldjön adatokat, azok TCP kézfogás csomagok küldése. Az ügynökök közötti kommunikáció lehetővé teszi, hogy az Azure-t azoknak a hálózati topológia és a forgalmat több elérési út.
 
-**Munkafolyamat**
-
-1. Hozzon létre egy NPM munkaterületet nyugati középső Régiójában régióban. Jelenleg ez az a csak régió, ahol ez az előzetes kiadás támogatott-e.
+1. Hozzon létre egy NPM munkaterület közül a [támogató régiók](#regions).
 2. Telepítse és konfigurálja a szoftverfrissítési ügynökök: 
     * A telepítés figyelését a helyszíni kiszolgálók és az Azure virtuális gépeken futó ügynököket.
     * A beállítások a kiszolgálókon figyelési ügynök engedélyezése a figyelőügynökök való kommunikációhoz. (Nyissa meg a tűzfal portjait, stb.)
 3. Konfigurálja a hálózati biztonsági csoport (NSG) szabályokat az ügynök figyelését a helyszíni kommunikálni Azure virtuális gépeken telepített figyelési ügynökökhöz.
-4. Engedélyezési lista kérése az NPM-munkaterület
+4. Engedélyezett az NPM-munkaterület kérelmet.
 5. Figyelés beállítása: automatikus felderítése és kezelése a hálózatok láthatók a NPM.
 
-Ha már használja hálózati Teljesítményfigyelő más objektumok, vagy a szolgáltatások figyelésére, és már munkaterületén nyugati középső Régiójában, 1. lépés és a 2. lépés kihagyhatja, és a konfiguráció 3. lépés megkezdése.
+Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgáltatások figyelésére, és már rendelkezik munkaterület a támogatott régiók egyikéhez sem, ha az 1. lépésben és a 2. lépés kihagyhatja, és a konfiguráció 3. lépés megkezdése.
 
 ## <a name="configure"></a>1. lépés: A munkaterület létrehozása
 
@@ -66,14 +72,14 @@ Ha már használja hálózati Teljesítményfigyelő más objektumok, vagy a szo
   * OMS-munkaterület - adja meg a munkaterület nevét.
   * Előfizetés – Ha több előfizetéssel, válasszon egyet az új munkaterületet társítani kívánt rendelkezik.
   * Erőforráscsoport - hozzon létre egy erőforráscsoportot, vagy használjon egy meglévőt.
-  * Hely - ki kell választania nyugati középső Régiójában az előzetes verzió
+  * Hely - ki kell választania egy [támogatott régióban](#regions).
   * Tarifacsomagra - válassza az "ingyenes"
 
   ![Munkaterület](.\media\how-to-npm\4.png)<br><br>
 4. Kattintson a **OK** mentéséhez és a beállítások-sablon üzembe helyezése. Amikor érvényesíti a sablont, kattintson a **létrehozása** központi telepítése a munkaterületen.
 5. A munkaterület központi telepítése után nyissa meg a **NetworkMonitoring(name)** létrehozott erőforrás. Ellenőrizze a beállításokat, majd kattintson a **megoldás további konfigurálást igényel**.
 
-  ![További konfigurációs](.\media\how-to-npm\5.png)
+  ![további beállítások](.\media\how-to-npm\5.png)
 6. A a **hálózati Teljesítményfigyelő Üdvözöljük** lapon jelölje be **szintetikus tranzakciók használata TCP**, kattintson a **Submit**. A TCP tranzakciókat csak történő elérhetővé tételéhez és megszünteti a kapcsolatot használják. Nem küld adatokat a TCP-kapcsolatokon keresztül.
 
   ![Szintetikus tranzakciók TCP](.\media\how-to-npm\6.png)

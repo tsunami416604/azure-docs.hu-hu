@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-ms.openlocfilehash: af75d63caca24f389345c964e2dc506a255bec19
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2c844ce8aec04c74a9c2dbecdd1b3effb286df97
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>Tartományhoz csatlakozó HDInsight-fürtök (előzetes verzió) konfigurálása
 
@@ -31,13 +31,7 @@ Ismerje meg, hogyan állíthat be az Azure Active Directoryval (Azure AD) Azure 
 Ez a cikk az sorozat első oktatóanyaga:
 
 * Hozzon létre egy HDInsight-fürthöz az Azure AD (az Azure Directory tartományi szolgáltatások képesség) keresztül csatlakozó Apache Pletyka engedélyezve van.
-* Hozzon létre és Pletyka Apache Hive-házirendeket alkalmazni, és engedélyezése a felhasználók (például adatszakértőkön) való kapcsolódáshoz a Hive ODBC-alapú eszközökkel, például az Excel, a Tableau stb. A Microsoft egyéb munkaterhelések, például a HBase, Spark és Storm, hozzáadása HDInsight tartományhoz hamarosan dolgozik.
-
-A végső topológia például a következőképpen néz ki:
-
-![A HDInsight-topológia a tartományhoz](./media/apache-domain-joined-configure/hdinsight-domain-joined-topology.png)
-
-Mivel az Azure AD jelenleg csak a klasszikus virtuális hálózatokról (Vnetekről) támogatja, és Linux-alapú HDInsight-fürtök csak támogatási Azure Resource Manager Vnetek, HDInsight az Azure AD-integrációs van szükség, két virtuális hálózatokat és a társviszony-létesítés közöttük. A két üzembe helyezési modellek közötti összehasonlítás információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: üzembe helyezési modellek és az erőforrások állapotát](../../azure-resource-manager/resource-manager-deployment-model.md). A két Vnetek és az Azure Active Directory tartományi szolgáltatások ugyanabban a régióban kell lennie.
+* Hozzon létre és Pletyka Apache Hive-házirendeket alkalmazni, és engedélyezése a felhasználók (például adatszakértőkön) való kapcsolódáshoz a Hive ODBC-alapú eszközökkel, például az Excel, a Tableau stb. A Microsoft egyéb munkaterhelések, például a HBase és a Storm, hozzáadása HDInsight tartományhoz hamarosan dolgozik.
 
 Azure-szolgáltatás nevének globálisan egyedinek kell lennie. A következő neveket ebben az oktatóanyagban használnak. Contoso nevű fiktív. Le kell cserélnie *contoso* valamilyen más névvel, ha az oktatóanyag lépéseinek követése. 
 
@@ -45,8 +39,6 @@ Azure-szolgáltatás nevének globálisan egyedinek kell lennie. A következő n
 
 | Tulajdonság | Érték |
 | --- | --- |
-| Az Azure AD-hálózatok |contosoaadvnet |
-| Az Azure AD-Vnet erőforráscsoport |contosoaadrg |
 | Azure AD-címtár |contosoaaddirectory |
 | Az Azure AD-tartomány neve |Contoso (contoso.onmicrosoft.com) |
 | HDInsight virtuális hálózat |contosohdivnet |
@@ -58,45 +50,50 @@ Ez az oktatóanyag lépéseit egy tartományhoz csatlakozó HDInsight-fürt konf
 ## <a name="prerequisite"></a>Előfeltétel:
 * Ismerje meg a [Azure AD tartományi szolgáltatások](https://azure.microsoft.com/services/active-directory-ds/) a [árképzési](https://azure.microsoft.com/pricing/details/active-directory-ds/) struktúra.
 * Győződjön meg arról, hogy az előfizetés szerepel az engedélyezési listán az nyilvános előzetes verzió. Ehhez úgy, hogy küld egy e-mailek hdipreview@microsoft.com az előfizetés-azonosítóval.
-* A tartomány egy aláíró hitelesítésszolgáltatóval által aláírt SSL-tanúsítvány. A tanúsítványra szükség van a biztonságos LDAP konfigurálásával. Önaláírt tanúsítványok nem használhatók.
+* A tartomány egy aláíró hitelesítésszolgáltatóval, vagy önaláírt tanúsítványt által aláírt SSL-tanúsítvány. A tanúsítványra szükség a biztonságos LDAP beállítása.
 
 ## <a name="procedures"></a>Eljárások
-1. Hozzon létre egy Azure klasszikus virtuális hálózatot az Azure AD.  
+1. Hozzon létre egy HDInsight virtuális hálózatot az Azure-erőforrás felügyeleti üzemmódban.
 2. Hozzon létre, és konfigurálja az Azure AD és az Azure Active Directory tartományi Szolgáltatásokban.
-3. Hozzon létre egy HDInsight virtuális hálózatot az Azure-erőforrás felügyeleti üzemmódban.
-4. A két partner Vnetek.
-5. HDInsight-fürtök létrehozása.
+3. HDInsight-fürtök létrehozása.
 
 > [!NOTE]
-> Ez az oktatóanyag feltételezi, hogy nem rendelkezik az Azure AD. Ha nincs fiókja, ugorjon a 2. lépésben az a része.
+> Ez az oktatóanyag feltételezi, hogy nem rendelkezik az Azure AD. Ha nincs fiókja, kihagyhatja a része.
 > 
 > 
 
-## <a name="create-an-azure-virtual-network-classic"></a>Hozzon létre egy Azure virtuális hálózat (klasszikus)
-Ebben a szakaszban hoz létre egy virtuális hálózat (klasszikus) Azure portál használatával. A következő szakaszban az Azure Active Directory tartományi szolgáltatások a virtuális hálózat az Azure AD számára engedélyezi. Az alábbi eljárást és más virtuális hálózat létrehozása módszerekkel kapcsolatos további információkért lásd: [virtuális hálózat létrehozása (klasszikus) Azure portál használatával](../../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
+## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>A HDInsight-fürt erőforrás-kezelő VNet létrehozása
+Ez a szakasz hoz létre egy Azure Resource Manager virtuális hálózatot, amely a HDInsight-fürtöt fog történni. Azure-hálózatok más módszerekkel egyéni további információkért lásd: [virtuális hálózat létrehozása](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
 
-**A klasszikus virtuális hálózat létrehozása**
+Miután létrehozta a virtuális hálózat, konfigurál majd az Azure Active Directory tartományi szolgáltatások a virtuális hálózatot.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Kattintson a **új** > **hálózati** > **virtuális hálózati**.
-3. A **telepítési modell kiválasztása**, jelölje be **klasszikus**, és kattintson a **létrehozása**.
-4. Adja meg vagy válassza ki a következő értékeket:
+**Erőforrás-kezelő VNet létrehozása**
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Kattintson a **új**, **hálózati**, majd **virtuális hálózati**. 
+3. A **telepítési modell kiválasztása**, jelölje be **erőforrás-kezelő**, és kattintson a **létrehozása**.
+4. Írja be vagy válassza ki az alábbi értékeket:
    
-   * **Név**: contosoaadvnet
-   * **Címtér**: 10.1.0.0/16
+   * **Név**: contosohdivnet
+   * **Címtér**: 10.0.0.0/16.
    * **Alhálózati név**: Alhalozat_1
-   * **Alhálózati címtartományt**: 10.1.0.0/24
-   * **Előfizetés**: (válassza ki a virtuális hálózat létrehozásához használt előfizetés.)
-   * **Erőforráscsoport**: contosoaadrg
-   * **Hely**: (válasszon ki egy régiót a HDInsight-fürthöz.)
+   * **Alhálózati címtartományt**: 10.0.0.0/24
+   * **Előfizetés**: (válassza ki az Azure-előfizetéshez.)
+   * **Erőforráscsoport**: contosohdirg
+   * **Hely**: (jelöljön ki azonos helyen, az Azure AD virtuális hálózatot. Például contosoaadvnet.)
+5. Kattintson a **Create** (Létrehozás) gombra.
+
+**Az erőforrás-kezelő VNet DNS konfigurálása**
+
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **további szolgáltatások** > **virtuális hálózatok**. Győződjön meg arról, hogy ne kattintson **virtuális hálózatok (klasszikus)**.
+2. Kattintson a **contosohdivnet**.
+3. Kattintson a **DNS-kiszolgálók** az új panel bal oldalán.
+4. Kattintson a **egyéni**, és írja be a következő értékeket:
+   
+   * 10.0.0.4
+   * 10.0.0.5     
      
-     > [!IMPORTANT]
-     > Ki kell választania egy helyet, amely támogatja az Azure Active Directory tartományi Szolgáltatásokban. További információért lásd a [régiónként elérhető termékeket](https://azure.microsoft.com/en-us/regions/services/). 
-     > 
-     > A klasszikus virtuális hálózaton, mind az erőforrás-csoport virtuális hálózatot az Azure Active Directory tartományi szolgáltatások ugyanabban a régióban kell lennie.
-     > 
-     > 
-5. A VNet létrehozásához kattintson a **Create** (Létrehozás) gombra.
+5. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="create-and-configure-azure-ad-ds-for-your-azure-ad"></a>Hozzon létre, és az Azure Active Directory tartományi szolgáltatások konfigurálása az Azure AD
 Ez a szakasz tartalma:
@@ -121,44 +118,42 @@ Ha szeretné használni egy meglévő Azure AD, kihagyhatja a 1. és 2.
 
 **Hozzon létre egy Azure AD-felhasználó**
 
-1. Az a [a klasszikus Azure portálon](https://manage.windowsazure.com), kattintson a **Active Directory** -> **contosoaaddirectory**. 
-2. Kattintson a **felhasználók** a felső menüben.
-3. Kattintson a **felhasználó hozzáadása**.
-4. Adja meg **felhasználónév**, és kattintson a **következő**. 
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **Azure Active Directory** > **contosoaaddirectory** > **felhasználók és csoportok**. 
+2. Kattintson a **minden felhasználó** a menüből.
+3. Kattintson a **új felhasználó**.
+4. Adja meg **neve** és **felhasználónév**, és kattintson a **következő**. 
 5. Felhasználói profil; konfigurálása A **szerepkör**, jelölje be **globális rendszergazda**; majd **következő**.  A globális rendszergazdai szerepkörrel szervezeti egységek létrehozásához szükséges.
-6. Kattintson a **létrehozása** lekérni egy ideiglenes jelszót.
-7. Másolatot készít a jelszót, és kattintson a **Complete**. Az oktatóanyag későbbi részében szüksége lesz az a globális rendszergazdai jogú felhasználó létrehozása a HDInsight-fürthöz.
+6. Készítsen másolatot az ideiglenes jelszót.
+7. Kattintson a **Create** (Létrehozás) gombra. Az oktatóanyag későbbi részében szüksége lesz az a globális rendszergazdai jogú felhasználó létrehozása a HDInsight-fürthöz.
 
 Kövesse ugyanezt az eljárást a két további felhasználók létrehozása a **felhasználói** szerepkör, hiveuser1 és hiveuser2. A következő felhasználók használandó [tartományhoz a HDInsight-fürtök házirendek konfigurálása Hive](apache-domain-joined-run-hive.md).
 
 **Az aad-ben DC rendszergazdák csoport létrehozása, és az Azure AD-felhasználó hozzáadása**
 
-1. Az a [a klasszikus Azure portálon](https://manage.windowsazure.com), kattintson a **Active Directory** > **contosoaaddirectory**. 
-2. Kattintson a **csoportok** a felső menüben.
-3. Kattintson a **csoport hozzáadása** vagy **csoport hozzáadása**.
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **Azure Active Directory** > **contosoaaddirectory** > **felhasználók és csoportok**. 
+2. Kattintson a **összes csoport** a felső menüben.
+3. Kattintson a **új csoport**.
 4. Adja meg vagy válassza ki a következő értékeket:
    
    * **Név**: DC rendszergazdák aad-ben.  A csoport neve nem módosítható.
-   * **Csoporttípust**: biztonsági.
-5. Kattintson a **Befejezés** gombra.
-6. Kattintson a **AAD DC rendszergazdák** nyissa meg a csoport számára.
-7. Kattintson a **tagok hozzáadása**.
-8. Válassza ki az első felhasználót az előző lépésben létrehozott, és kattintson **Complete**.
-9. Ismételje meg a azonos nevű másik csoport létrehozása **HiveUsers**, és a két Hive felhasználók hozzáadása a csoporthoz.
+   * **Tagsági típusa**: rendelve.
+5. Kattintson a **Kiválasztás** gombra.
+6. Kattintson a **tagok**.
+7. Válassza ki az első felhasználót az előző lépésben létrehozott, és kattintson **válasszon**.
+8. Ismételje meg a azonos nevű másik csoport létrehozása **HiveUsers**, és a két Hive felhasználók hozzáadása a csoporthoz.
 
 További információkért lásd: [Azure AD tartományi szolgáltatások (előzetes verzió) – a "AAD DC rendszergazdák" csoport létrehozása](../../active-directory-domain-services/active-directory-ds-getting-started.md).
 
 **Az Azure AD az Azure Active Directory tartományi szolgáltatások engedélyezése**
 
-1. Az a [a klasszikus Azure portálon](https://manage.windowsazure.com), kattintson a **Active Directory** > **contosoaaddirectory**. 
-2. Kattintson a **konfigurálása** a felső menüben.
-3. Görgessen le a **tartományi szolgáltatások**, és állítsa be a következő értékeket:
-   
-   * **A címtárban tartományi szolgáltatások engedélyezése**: Igen.
-   * **DNS-tartománynevet a tartományi szolgáltatások**: Ez azt jelenti, hogy az Azure-címtár alapértelmezett DNS-nevét. Például a contoso.onmicrosoft.com.
-   * **Tartományi szolgáltatások csatlakoztatása a virtuális hálózat**: válassza ki a korábban létrehozott klasszikus virtuális hálózatot például **contosoaadvnet**.
-4. Kattintson a **mentése** az oldal alján. Látni fogja **folyamatban...**  melletti **engedélyezése tartományi szolgáltatásokat a címtárhoz**.  
-5. Várjon, amíg **folyamatban...**  eltűnik, és **IP-cím** lekérdezi feltöltve. Két IP-címet fogja lekérni feltöltve. Ezek azok a tartományvezérlők, tartományi szolgáltatások által kiosztott IP-címét. Minden IP-cím után létesítése sikeres, és készen áll a megfelelő tartományvezérlő lesznek láthatók. Jegyezze fel a két IP-címet. Később szüksége lesz rájuk.
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **hozzon létre egy erőforrást** > **biztonság + identitás szakaszában** > **AzureADtartományiszolgáltatások**  >  **Hozzáadása**. 
+2. Adja meg vagy válassza ki a következő értékeket:
+   * **Könyvtárnév**: contosoaaddirectory
+   * **DNS-tartománynév**: Ez azt jelenti, hogy az Azure-címtár alapértelmezett DNS-nevét. Például a contoso.onmicrosoft.com.
+   * **Hely**: válassza ki a régiót.
+   * **Hálózati**: válassza ki a virtuális hálózat és a korábban létrehozott alhálózati. Például **contosohdivnet**.
+3. Kattintson a **OK** összefoglaló lapról. Látni fogja **telepítés folyamatban...**  értesítések alatt.
+4. Várjon, amíg **telepítés folyamatban...**  eltűnik, és **IP-cím** lekérdezi feltöltve. Két IP-címet fogja lekérni feltöltve. Ezek azok a tartományvezérlők, tartományi szolgáltatások által kiosztott IP-címét. Minden IP-cím után létesítése sikeres, és készen áll a megfelelő tartományvezérlő lesznek láthatók. Jegyezze fel a két IP-címet. Később szüksége lesz rájuk.
 
 További információkért lásd: [engedélyezése Azure Active Directory tartományi szolgáltatások az Azure portál használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md).
 
@@ -168,13 +163,11 @@ Ha a saját tartomány használata esetén a jelszó szeretné. Lásd: [engedél
 
 **LDAPS konfigurálása az Azure AD**
 
-1. A tartomány egy aláíró hitelesítésszolgáltatóval által aláírt SSL-tanúsítvány beszerzése. Ha szeretne egy önaláírt tanúsítványt használ, lépjen kapcsolatba hdipreview@microsoft.com kivételt.
-2. Az a [a klasszikus Azure portálon](https://manage.windowsazure.com), kattintson a **Active Directory** > **contosoaaddirectory**. 
-3. Kattintson a **konfigurálása** a felső menüben.
-4. Görgessen **tartományi szolgáltatások**.
-5. Kattintson a **konfigurálása tanúsítvány**.
-6. Kövesse az utasításokat a tanúsítványfájl és a jelszó megadását. Látni fogja **folyamatban...**  melletti **engedélyezése tartományi szolgáltatásokat a címtárhoz**.  
-7. Várjon, amíg **folyamatban...**  eltűnik, és **biztonságos LDAP tanúsítvány** fel lett töltve.  A is tarthat 10 perc vagy több.
+1. A tartomány egy aláíró hitelesítésszolgáltatóval által aláírt SSL-tanúsítvány beszerzése.
+2. Az a [Azure-portálon](https://portal.azure.com), kattintson a **Azure AD tartományi szolgáltatások** > **contoso.onmicrosoft.com**. 
+3. Engedélyezése **biztonságos LDAP**.
+6. Kövesse az utasításokat a tanúsítványfájl és a jelszó megadását.  
+7. Várjon, amíg **biztonságos LDAP tanúsítvány** fel lett töltve. A is tarthat 10 perc vagy több.
 
 > [!NOTE]
 > Az Azure Active Directory tartományi szolgáltatások néhány háttérfeladatok készül futtatni, jelenhet meg tanúsítványának feltöltése - hibát <i>van egy művelet végrehajtás alatt álló ennél a bérlőnél. Próbálkozzon újra később</i>.  Ha ezt a hibát tapasztal, próbálja meg újra némi várakozás után. A második tartományvezérlő IP-Címének úgy kell létrehozni, akár 3 órát is igénybe vehet.
@@ -182,59 +175,6 @@ Ha a saját tartomány használata esetén a jelszó szeretné. Lásd: [engedél
 > 
 
 További információkért lásd: [konfigurálása biztonságos LDAP (LDAPS) egy Azure AD tartományi szolgáltatások által felügyelt tartomány](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
-
-## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>A HDInsight-fürt erőforrás-kezelő VNet létrehozása
-Ez a szakasz hoz létre egy Azure Resource Manager virtuális hálózatot, amely a HDInsight-fürtöt fog történni. Azure-hálózatok más módszerekkel egyéni további információkért lásd: [virtuális hálózat létrehozása](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
-
-Miután létrehozta a virtuális hálózat, az erőforrás-kezelő VNet az azonos DNS-kiszolgálók esetében az Azure AD VNet használandó állít. Ha követte a lépéseket a klasszikus virtuális hálózat és az Azure AD létrehozásához ebben az oktatóanyagban, a DNS-kiszolgálók olyan 10.1.0.4 és 10.1.0.5.
-
-**Erőforrás-kezelő VNet létrehozása**
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **új**, **hálózati**, majd **virtuális hálózati**. 
-3. A **telepítési modell kiválasztása**, jelölje be **erőforrás-kezelő**, és kattintson a **létrehozása**.
-4. Írja be vagy válassza ki az alábbi értékeket:
-   
-   * **Név**: contosohdivnet
-   * **Címtér**: 10.2.0.0/16. Győződjön meg arról, hogy a címtartomány a klasszikus virtuális hálózaton az IP-címtartománya nem lehet átfedésben.
-   * **Alhálózati név**: Alhalozat_1
-   * **Alhálózati címtartományt**: 10.2.0.0/24
-   * **Előfizetés**: (válassza ki az Azure-előfizetéshez.)
-   * **Erőforráscsoport**: contosohdirg
-   * **Hely**: (jelöli ki az ugyanazon a helyen az Azure AD VNet, azaz contosoaadvnet.)
-5. Kattintson a **Create** (Létrehozás) gombra.
-
-**Az erőforrás-kezelő VNet DNS konfigurálása**
-
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **további szolgáltatások** -> **virtuális hálózatok**. Győződjön meg arról, hogy ne kattintson **virtuális hálózatok (klasszikus)**.
-2. Kattintson a **contosohdivnet**.
-3. Kattintson a **DNS-kiszolgálók** az új panel bal oldalán.
-4. Kattintson a **egyéni**, és írja be a következő értékeket:
-   
-   * 10.1.0.4
-   * 10.1.0.5
-     
-     A DNS-kiszolgáló IP-címének egyeznie kell a DNS-kiszolgálója az Azure AD virtuális hálózat (klasszikus virtuális hálózaton).
-5. Kattintson a **Save** (Mentés) gombra.
-
-## <a name="peer-the-azure-ad-vnet-and-the-hdinsight-vnet"></a>Az Azure AD-hálózatok és a HDInsight VNet partnert
-**A két VNet egyenrangú**
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **további szolgáltatások** a bal oldali menüből.
-3. Kattintson a **virtuális hálózatok**. Ne kattintson **virtuális hálózatok (klasszikus)**.
-4. Kattintson a **contosohdivnet**.  Ez az a HDInsight virtuális hálózat.
-5. Kattintson a **Társviszony** a panel bal oldali menüben.
-6. Kattintson a **Hozzáadás** a felső menüben. Ekkor megnyílik a **hozzáadása a társviszony-létesítés** panelen.
-7. Az a **hozzáadása a társviszony-létesítés** panelen állítsa be, vagy válassza ki a következő értékeket:
-   
-   * **Név**: ContosoAADHDIVNetPeering
-   * **Virtuális hálózat üzembe helyezési modellel**: klasszikus
-   * **Előfizetés**: válassza ki az előfizetés neve a klasszikus (az Azure AD) virtuális hálózatot használja.
-   * **Virtuális hálózati**: contosoaadvnet.
-   * **Virtuális hálózati hozzáférés engedélyezése**: (ellenőrzés)
-   * **Engedélyezi a továbbított forgalmat**: (ellenőrzés). Hagyja üresen a többi két négyzet jelölését.
-8. Kattintson az **OK** gombra.
 
 ## <a name="create-hdinsight-cluster"></a>HDInsight-fürt létrehozása
 Ebben a szakaszban egy Linux-alapú Hadoop fürt létrehozása hdinsight segítségével az Azure-portálon vagy [Azure Resource Manager sablon](../../azure-resource-manager/resource-group-template-deploy.md). Egyéb Fürtlétrehozási módszerekhez és a beállítások ismertetése, lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md). Hdinsight Hadoop-fürtök létrehozása a Resource Manager-sablonnal kapcsolatos további információkért lásd: [létrehozása Hadoop-fürtök a HDInsight a Resource Manager-sablonok](../hdinsight-hadoop-create-windows-clusters-arm-templates.md)
@@ -249,7 +189,7 @@ Ebben a szakaszban egy Linux-alapú Hadoop fürt létrehozása hdinsight segíts
    * **Előfizetés**: válassza ki a fürt létrehozásához használt Azure-előfizetéssel.
    * **Fürtkonfiguráció**:
      
-     * **Fürt típusa**: Hadoop. Tartományhoz csatlakozó HDInsight jelenleg csak a támogatott Hadoop-fürtök.
+     * **Fürt típusa**: Hadoop. Tartományhoz csatlakoztatott HDInsight jelenleg csak a támogatott Hadoop, Spark, és interaktív lekérdezés fürtök.
      * **Operációs rendszer**: Linux.  HDInsight-tartományhoz csak a Linux-alapú HDInsight-fürtökön támogatott.
      * **Verzió**: HDI 3.6. A HDInsight-tartományhoz csak a HDInsight-fürt verziószáma 3.6 támogatott.
      * **Fürt típusa**: prémium szintű

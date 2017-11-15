@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: glenga
-ms.openlocfilehash: 18d3a87da8c240a3153dfa68f9b1d8bd17bbe693
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 10943769e46adf05642e19d6be297820171bb9f6
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>Az Azure parancsfájl fejlesztői leírás funkciók C#
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -375,7 +375,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 
 `BindingTypeAttribute`a .NET-attribútum, amely meghatározza a kötés és `T` a bemeneti vagy kimeneti típus a kötési típus által támogatott. `T`nem lehet egy `out` típusú paraméter (például `out JObject`). Például a Mobile Apps tábla kimeneti kötése támogatja [hat kimeneti típusok](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), de csak használható [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)a `T`.
 
-Az alábbi példakód létrehoz egy [tárolási blob kimeneti kötése](functions-bindings-storage-blob.md#using-a-blob-output-binding) blobbal együtt futási időben megadott elérési út ezután ír egy karakterláncot a blobra mutató.
+Az alábbi példakód létrehoz egy [tárolási blob kimeneti kötése](functions-bindings-storage-blob.md#blob-storage-input--output-bindings) blobbal együtt futási időben megadott elérési út ezután ír egy karakterláncot a blobra mutató.
 
 ```cs
 using Microsoft.Azure.WebJobs;

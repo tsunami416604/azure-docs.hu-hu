@@ -1,5 +1,5 @@
 ---
-title: "Kezelése az eszközök használatával az Azure portál – előzetes verzió |} Microsoft Docs"
+title: "Az Azure portál használatával eszközök kezelése |} Microsoft Docs"
 description: "Ismerje meg, hogyan használható az Azure-portálon eszközök kezelésére."
 services: active-directory
 documentationcenter: 
@@ -12,19 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2017
+ms.date: 11/11/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4b46e1627a229b0649d9ccd2550cd28fda9849f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6ac076917092caa8b3c14ab179515c0693fc89bf
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
-# <a name="managing-devices-using-the-azure-portal---preview"></a>Kezelés eszközök használatával az Azure portál – előzetes
-
->[!NOTE]
->Ez a funkció jelenleg nyilvános előzetes verziójához. Készüljön visszaállítja, vagy távolítsa el a módosításokat. A szolgáltatás bármely Azure Active Directory (Azure AD) előfizetés nyilvános előzetes érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a funkció az egyes funkcióit szükség lehet az Azure Active Directory premium előfizetéssel.
+# <a name="managing-devices-using-the-azure-portal"></a>Az Azure portál használatával eszközök kezelése
 
 
 Az eszköz kezelése az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről érnek el az erőforrásokat. 
@@ -36,21 +33,17 @@ Ez a témakör:
 - Az Azure portál használata az eszközök felügyeletével kapcsolatos információt
 
 
-Az Azure portálon lévő eszközök kezeléséhez, akkor kattintson **eszközök** a a **kezelése** szakasza a a **Azure Active Directory** panelen.
-
-![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/11.png)
-
-
-
 
 ## <a name="configure-device-settings"></a>Eszközök beállításainak konfigurálása
 
-Az Azure portál használatával eszközei kezelésére, szükségük lesz regisztrálva vagy az Azure AD-tartományhoz. A rendszergazdák úgy finomhangolhatja, regisztrálása, illetve az eszközök csatlakoztatása az eszköz beállítások konfigurálásával folyamatán.
+Az Azure portál használatával eszközeinek kezelésére, az eszközök kell vagy regisztrált vagy az Azure AD-tartományhoz. A rendszergazdák úgy finomhangolhatja, regisztrálása, illetve az eszközök csatlakoztatása az eszköz beállítások konfigurálásával folyamatán. 
 
-![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/22.png)
+![Eszközök beállításainak konfigurálása](./media/device-management-azure-portal/22.png)
 
+Az eszköz beállításai oldal konfigurálását teszi lehetővé:
 
-Az eszköz beállítások panel konfigurálását teszi lehetővé:
+![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/21.png)
+
 
 - **Felhasználók eszközök regisztrálása az Azure AD** – a beállítások lehetővé teszi a felhasználók számára az Azure AD is kapcsolódhatnak eszközök. Az alapértelmezett érték **összes**.
 
@@ -65,14 +58,13 @@ Az eszköz beállítások panel konfigurálását teszi lehetővé:
 - **Felhasználók is szinkronizálásának beállítások és alkalmazások adatainak eszközök** -alapértelmezés szerint ez a beállítás értéke **NONE**. Egyes felhasználók vagy csoportok, vagy az összes kijelölésével a felhasználói beállítások és alkalmazások adatainak a Windows 10-eszközök szinkronizálásának. További tudnivalókért a Windows 10-es sync működéséről.
 Ez a beállítás akkor a termékek, például az Azure AD Premium vagy a nagyvállalati mobilitási csomag (EMS) keresztül érhető el prémium funkció.
  
-    ![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/21.png)
 
 
 
 
 ## <a name="locate-devices"></a>Keresse meg az eszközök
 
-A rendszergazdák az Azure portálon, két lehetősége van regisztrált és a csatlakoztatott eszköz kereséséhez:
+Keresse meg a regisztrált és a csatlakoztatott eszközök a két lehetőség közül választhat:
 
 - **Minden eszköz** a a **kezelése** szakasza a **eszközök** panel  
 
@@ -103,45 +95,73 @@ Mindkét lehetőség érhet nézetet, amely:
 A rendszergazdák a regisztrált vagy csatlakoztatott eszközöket kezelheti. Ez a szakasz a közös eszköz felügyeleti feladatokkal kapcsolatos információt nyújt.
 
 
-**Az Intune eszközök kezelésére** – Ha egy Intune-rendszergazda, jelölésű eszközöket kezelheti **a Microsoft Intune**. A rendszergazda további eszköz látható 
+### <a name="manage-an-intune-device"></a>Az Intune-ban eszközök kezelése
+
+Ha egy Intune-rendszergazda, jelölésű-eszközök kezeléséhez **a Microsoft Intune**. A rendszergazda további eszköz látható 
 
 ![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/31.png)
 
 
-**Engedélyezi / letiltja az Azure AD-eszközök**
+### <a name="enable--disable-an-azure-ad-device"></a>Engedélyezi / letiltja az Azure AD-eszközök
 
-Engedélyezheti vagy letilthatja az eszköz, kell lennie egy globális rendszergazda Azure AD-ben. Ha letilt egy eszközt megakadályozza, hogy az eszköz az Azure AD-erőforrások hozzáférését.  Az eszköz letiltása, vagy kattintson is *...* Kattintson a további részleteket.
+Engedélyezi / letiltja az eszköz, két lehetőség közül választhat:
+
+- A feladatok menüjének ("...") a **minden eszköz** lap
+
+    ![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/71.png)
+
+- Az eszköztáron a **eszközök** lap
+
+    ![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/32.png)
+
+
+**Megjegyzés:**
+
+- Kell lennie egy globális rendszergazda Azure ad-engedélyezése / letiltása eszköz. 
+- Ha letilt egy eszközt megakadályozza, hogy az eszköz az Azure AD-erőforrások hozzáférését. 
+
+
+
+### <a name="delete-an-azure-ad-device"></a>Egy Azure AD-eszköz törlése
+
+Eszköz törlése, két lehetőség közül választhat:
+
+- A feladatok menüjének ("...") a **minden eszköz** lap
+
+    ![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/72.png)
+
+- Az eszköztáron a **eszközök** lap
+
+    ![Eszköz törlése](./media/device-management-azure-portal/34.png)
+
+
+**Megjegyzés:**
+
+- Az eszköz törlése az Azure AD globális rendszergazdának lennie kell.  
+
+- Egy eszköz törlése:
+ 
+    - Megakadályozza, hogy egy eszközt az Azure AD-erőforrások eléréséhez. 
+
+    - Eltávolítja az összes csatlakoztatott eszközön, például részletei, a BitLocker-kulcsok Windows-eszközök.  
+
+    - Nem állíthatók helyre tevékenységet jelent, és nem ajánlott, kivéve, ha szükséges.
+
+Ha egy eszköz felügyelete egy másik felügyeleti hatóság (például a Microsoft Intune), győződjön meg arról, hogy az eszközön tárolt adatok törléséig / már nincs az Azure ad-ben az eszköz törlése előtt.
 
  
-![Az Intune-ban eszközök kezelése](./media/device-management-azure-portal/33.png)
-
-Ha letilt egy eszközt a állapotát módosítja a **engedélyezve** oszlop **nem**.
-
-![Az eszköz letiltása](./media/device-management-azure-portal/32.png)
 
 
-**Egy Azure AD-eszköz törlése** -, eszköz törlése kell lennie egy globális rendszergazda Azure AD-ben.  
-Egy eszköz törlése:
- 
-- Megakadályozza, hogy az eszköz az Azure AD-erőforrások elérése 
+### <a name="view-or-copy-device-id"></a>Megtekintése vagy Eszközazonosító másolása
 
-- Eltávolítja az összes csatlakoztatott eszközön, például részletei, a BitLocker-kulcsok Windows-eszközök  
-
-- Nem állíthatók helyre tevékenységet jelent, és nem ajánlott, kivéve, ha szükséges
-
-Ha egy eszköz felügyelete egy másik felügyeleti hatóság (pl. Microsoft Intune), győződjön meg arról, hogy az eszközön tárolt adatok törléséig / már nincs az Azure ad-ben az eszköz törlése előtt.
-
-Kiválaszthatja "..." az eszköz törlése, vagy kattintson a további részleteket az eszközön
- 
-![Eszköz törlése](./media/device-management-azure-portal/34.png)
-
-
-**Megtekintése vagy másolása Eszközazonosító** -Eszközazonosítót segítségével ellenőrizze az eszköz azonosító adatait az eszköz vagy a PowerShell használatával a hibaelhárítás során. A másolási lehetőséget szeretne használni, kattintson az eszközre.
+Egy eszköz azonosítója segítségével ellenőrizze az eszköz azonosító adatait az eszköz vagy a PowerShell használatával a hibaelhárítás során. A másolási lehetőséget szeretne használni, kattintson az eszközre.
 
 ![Eszközazonosítót megtekintése](./media/device-management-azure-portal/35.png)
   
 
-**Megtekintése vagy a BitLocker-kulcsok másolása** – Ha Ön rendszergazda, tekintheti meg és másolja a BitLocker-kulcsok számára, hogy a titkosított meghajtó helyreállítani segítségével. Ezek a kulcsok csak titkosított Windows-eszközökhöz elérhető, és a kulcsaikat az Azure ad-ben tárolt. Ezek a kulcsok másolhatja az eszköz részleteit való hozzáféréskor.
+### <a name="view-or-copy-bitlocker-keys"></a>BitLocker-kulcsok megtekintése és másolása
+
+Ha Ön rendszergazda, megtekintheti, és másolja a BitLocker-kulcsok számára, hogy a titkosított meghajtó helyreállítani segítségével. Ezek a kulcsok csak titkosított Windows-eszközökhöz elérhető, és a kulcsaikat az Azure ad-ben tárolt. Ezek a kulcsok másolhatja az eszköz részleteit való hozzáféréskor.
  
 ![A BitLocker-kulcsok megtekintése](./media/device-management-azure-portal/36.png)
 
@@ -165,7 +185,7 @@ A belépési pont a naplózási adatok **naplók** a a **tevékenység** szakasz
 
 Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 
-- az előfordulás dátuma és időpontját
+- a dátum és idő a előfordulás
 
 - a cél
 

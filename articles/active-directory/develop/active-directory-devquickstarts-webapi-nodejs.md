@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/17/2017
 ms.author: cshoe
 ms.custom: aaddev
-ms.openlocfilehash: a0b8ff6894a1f30fd8d18beef234737573691af9
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 6f67a2cf2baabfa10c6a8e81b085ca6991b981dd
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="secure-nodejs-web-api-with-azure-active-directory"></a>Node.js webes API-t az Azure Active Directory biztonságossá tétele
 
@@ -53,7 +53,7 @@ Egyszer `package.json` jön létre, futtassa `npm install` a parancssorban a cso
 
 ### <a name="configure-the-project-to-use-active-directory"></a>A használatára az Active Directory-projekt konfigurálása
 
-Először az alkalmazás konfigurálása értékei néhány fiókspecifikus ezt úgy szerezheti be az Azure parancssori felület. Ismerkedjen meg a parancssori felület a legegyszerűbben az Azure-felhő rendszerhéj használata.
+Először az alkalmazás konfigurálása néhány fiókspecifikus értékek vannak az Azure parancssori felület szerezhetők be. Ismerkedjen meg a parancssori felület a legegyszerűbben az Azure-felhő rendszerhéj használata.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -76,7 +76,7 @@ Mielőtt az csatlakozna az Azure Active Directory, a következő információkat
 | Név  | Leírás | A konfigurációs fájlban változó neve |
 | ------------- | ------------- | ------------- |
 | Bérlő neve  | [Bérlő neve](active-directory-howto-tenant.md) a hitelesítéshez használni kívánt | `tenantName`  |
-| Ügyfél-azonosító  | Ügyfél-azonosító az aad-ben használt OAuth-kifejezésnek _Alkalmazásazonosító_. |  `clientID`  |
+| Ügyfélazonosító  | Ügyfél-azonosító az aad-ben használt OAuth-kifejezésnek _Alkalmazásazonosító_. |  `clientID`  |
 
 A regisztrációs válasz az Azure-felhő rendszerhéj, másolja a `appId` értékét, és hozzon létre egy új fájlt `config.js`. Ezután adja hozzá az alábbi kódot, és cserélje le az értékeket a zárójeles jogkivonatokat:
 

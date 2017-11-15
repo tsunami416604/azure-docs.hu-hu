@@ -1,6 +1,6 @@
 - name: "Azure HDInsight\_– dokumentáció"
   href: /azure/hdinsight
-- name: Többfelhasználós fürtök a HDInsighton
+- name: Vállalati biztonság a HDInsightban
   items:
     - name: Áttekintés
       href: apache-domain-joined-introduction.md
@@ -13,6 +13,8 @@
   items:
     - name: Tartományhoz csatlakoztatott HDInsight konfigurálása
       href: apache-domain-joined-configure.md
+    - name: Tartományhoz csatlakoztatott HDInsight konfigurálása az Azure AD DS használatával
+      href: apache-domain-joined-configure-using-azure-adds.md
     - name: Hive-házirendek konfigurálása
       href: apache-domain-joined-run-hive.md
     - name: Kapacitástervezés

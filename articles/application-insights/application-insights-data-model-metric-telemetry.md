@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4cfdf3b70f6fdb2ddd5f89a72c931d3b6be54132
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: bd09e2a21c25097fa4b378cb2dbe2787edbb1967
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metrika telemetriai: Application Insights adatmodell
 
@@ -24,7 +24,7 @@ Metrika telemetriai által támogatott két típusa van [Application Insights](a
 
 Előre összesített metrika telemetriai azt feltételezi, hogy az összesítő időszak egy perc volt.
 
-Nincsenek Application Insights által támogatott több jól ismert metrika neve. 
+Nincsenek Application Insights által támogatott több jól ismert metrika neve. A metrikák elhelyezett performanceCounters táblába.
 
 A mérőszám a rendszer és a folyamat számlálók képviselő:
 
@@ -48,7 +48,7 @@ Az Application Insights portál és a felhasználói felületen szeretné metrik
 
 Mérési egyetlen értéket. Az összesítés egyéni mértékek összege.
 
-## <a name="count"></a>Mennyiség
+## <a name="count"></a>Darabszám
 
 Metrika súlyának a összesített metrika. Nem lehet beállítani a mérés.
 
@@ -65,6 +65,8 @@ Az összesített metrika maximális értékét. Nem lehet beállítani a mérés
 Az összesített metrika szórása. Nem lehet beállítani a mérés.
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
+
+Egyéni tulajdonság metrika `CustomPerfCounter` beállítása `true` jelzi, hogy a mérték jelenti-e a windows-teljesítményszámláló. A metrikák performanceCounters tábla kerülnek. Nem található customMetrics. Ez a mérőszám a neve is kategória, a számláló és példánynevek kibontásához elemzi.
 
 [!INCLUDE [application-insights-data-model-properties](../../includes/application-insights-data-model-properties.md)]
 

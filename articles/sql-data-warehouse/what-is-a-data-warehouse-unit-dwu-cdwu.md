@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 10/23/2017
+ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: 93f0d21c7214487ffa0c2c5e27bd6e468920418c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 02998c48dcab5d3ed191b168665c9e47bbfbd232
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adattárházegységek (dwu-k) és a számítás Adattárházegységek (cDWUs)
 Adattárházegységek (dwu-k) ismerteti, és az Azure SQL Data Warehouse Adattárházegységek (cDWUS) számítási. Javaslatok kiválasztásáról adattárházegységek, és azok számát módosítása ideális számát tartalmazza. 
@@ -52,16 +52,8 @@ Dwu-k és cDWUs egyaránt támogatja méretezési számítási felfelé vagy lef
 Adattárházegységek növelésével számítási erőforrások lineárisan növekednek. Az optimalizált számítás teljesítményszinttel biztosítja a legjobb lekérdezési teljesítmény és a legmagasabb méretezési azonban rendelkezik egy magasabb belépési ár. A teljesítmény állandó igény szerinti rendelkező vállalatok számára készült. Ezek a rendszerek kell használniuk a legtöbb a gyorsítótár. 
 
 ### <a name="capacity-limits"></a>Kapacitási korlátok
-Alapértelmezés szerint minden olyan kiszolgálón (például myserver.database.windows.net) rendelkezik, amely korlátozza a mérete és azon a példányon az adatbázisok méretezésének kvóta. A kiszolgáló SQL DW- és SQL DB adatbázisok ezek mindegyike el kell férnie a kvótát. Ez a kvóta az adatbázis tranzakciós egységek (DTU) mérése történik, és alapértelmezett értéke 54 000 legfeljebb 6000 cDWU engedélyezéséhez. Ez a kvóta egyszerűen egy biztonsági korlát. A kvóta növelhető a támogatási jegy létrehozása, majd válassza a "Kvóta" kérelem típusként. 
+Minden egyes SQL server (például myserver.database.windows.net) rendelkezik egy [Database Transaction Unit (DTU)](../sql-database/sql-database-what-is-a-dtu.md) , amely lehetővé teszi, hogy egy bizonyos számú adattárházegységek kvótát. További információkért lásd: a [munkaterhelés felügyeleti kapacitáskorlátait](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
-A DTU-követelmény kiszámításához, alkalmazza az alábbi tényezők a DTU számítási:
-
-| Teljesítményszinttel | Mértékegység | DTU szorzója | Példa                   |
-|:----------------:|----------------:|---------------:|--------------------------:|
-| A rugalmasság       |  DWU            | 7.5            | 7.5 = 45,000 x DW6000 DTU |
-| Számítás          | cDWU            | 9              | 7.5 = 54 000 x DW6000 DTU |
-
-Megtekintheti az aktuális DTU fogyasztás lásd: SQL server tulajdonságainak a portálon.
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Hány adattárházegységek kell?
 Az ideális száma adattárházegységek függ túlságosan azok a számítási feladatok és a rendszerbe betöltött adatok mennyiségét.

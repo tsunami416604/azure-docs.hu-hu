@@ -11,17 +11,17 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/01/2017
+ms.date: 11/07/2017
 ms.author: heidist
-ms.openlocfilehash: 58f4eab190e40e16ed261c165ffdfc8155eeb434
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eaf317b42026298cc42edcc907bc48169f869460
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
-Ez a cikk ismerteti, hogyan létrehozásához vagy a portál Azure Search szolgáltatás telepítéséhez. PowerShell útmutatásért lásd: [Azure Search kezelése a PowerShell-lel](search-manage-powershell.md).
+Megtudhatja, hogyan hozható létre, vagy egy Azure Search szolgáltatás a portálon kiépítése. PowerShell útmutatásért lásd: [Azure Search kezelése a PowerShell-lel](search-manage-powershell.md).
 
 ## <a name="subscribe-free-or-paid"></a>Előfizetés (ingyenes és fizetős)
 
@@ -34,20 +34,21 @@ Másik lehetőségként [aktiválhatja MSDN-előfizetői előnyeit](https://azur
 2. Kattintson a plusz jelre ("+") a bal felső sarokban.
 3. Válassza ki **Web + mobil** > **az Azure Search**.
 
-![](./media/search-create-service-portal/find-search2.png)
+![](./media/search-create-service-portal/find-search3.png)
 
 ## <a name="name-the-service-and-url-endpoint"></a>A szolgáltatás és az URL-végpontjának neve
 
-A szolgáltatás nevét az URL-végpontjának szemben, amelyek az API-hívásokban kiállított részét képezi. Írja be a szolgáltatás nevét a **URL-cím** mező. 
+A szolgáltatás nevét az URL-végpontjának elleni mely API hívások kiállított része: `https://your-service-name.search.windows.net`. Adja meg a szolgáltatás nevét a **URL-cím** mező. 
 
 Szolgáltatás vonatkozó követelményeknek:
+   * A search.windows.net névtéren belül egyedinek kell lennie
    * 2-60 karakter hosszúságú
-   * kisbetűk, számjegyek és kötőjelek ("-")
-   * nincs a kötőjel ("-") a először 2 karakternél vagy utolsó egyetlen karakter
-   * Nincs egymást követő kötőjeleket ("--")
+   * Használja a kisbetűk, számjegyek és kötőjelek ("-")
+   * Kerülje a kötőjelet ("-") az a először 2 karakternél, és az utolsó egyetlen karakter
+   * Nincs egymást követő kötőjeleket ("--") bárhonnan
 
 ## <a name="select-a-subscription"></a>Előfizetés kiválasztása
-Ha egynél több előfizetéssel rendelkezik, válasszon egyet, adatok vagy a fájl tárolási szolgáltatások is vannak. Az Azure Search is automatikus észlelésű Azure Table és a Blob storage, az SQL Database és az Azure Cosmos DB használatával az indexelés *indexelők*, de csak a szolgáltatások ugyanazt az előfizetést.
+Ha egynél több előfizetéssel rendelkezik, válasszon egyet, adatok vagy a fájl tárolási szolgáltatások is vannak. Az Azure Search is automatikus észlelésű Azure Table és a Blob storage, az SQL Database és az Azure Cosmos DB használatával az indexelés [ *indexelők*](search-indexer-overview.md), de csak a szolgáltatások ugyanazt az előfizetést.
 
 ## <a name="select-a-resource-group"></a>Erőforráscsoport kiválasztása
 Erőforráscsoport gyűjteményei, Azure-szolgáltatások és erőforrások együtt használja őket. Például ha az Azure Search indexelheti az SQL-adatbázis használ, majd mindkét szolgáltatás részét kell képezniük ugyanabban az erőforráscsoportban.
@@ -63,11 +64,13 @@ Az Azure-szolgáltatások, Azure Search a világ különböző adatközpontokban
 
 Ebben a bemutatóban a Standard csomagot választott azt szolgáltatás.
 
+A tarifacsomag nem módosítható, a szolgáltatás létrehozása után. Ha egy magasabb vagy alacsonyabb szint később szüksége, hogy hozza létre újból a szolgáltatás.
+
 ## <a name="create-your-service"></a>A szolgáltatás létrehozása
 
 Ne felejtse el egyszerűen hozzáférhetnek az irányítópultot a szolgáltatás rögzíti, amikor bejelentkezik.
 
-![](./media/search-create-service-portal/new-service2.png)
+![](./media/search-create-service-portal/new-service3.png)
 
 ## <a name="scale-your-service"></a>A szolgáltatás méretezésére
 A szolgáltatás (15 perc vagy több, attól függően, hogy a réteg) létrehozásához néhány percet is igénybe vehet. A szolgáltatás üzembe helyezése után is méretezhető úgy, hogy az igényeinek. Azt választotta, a Standard csomagot az Azure Search szolgáltatás, mert a szolgáltatás is skálázható a két dimenziókban: replikák és a partíciók. Kellett alapszintű rétegben választása esetén csak adhat hozzá replikákat. Ha a szabad szolgáltatás kiépítése, a méretezési nem érhető el.
@@ -79,7 +82,7 @@ A szolgáltatás (15 perc vagy több, attól függően, hogy a réteg) létrehoz
 > [!Important]
 > Rendelkeznie kell egy szolgáltatás [írásvédett garantált szolgáltatási szintje 2 replikákat és a 3-replikáit az olvasási/írási SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-1. Nyissa meg a search szolgáltatás paneljét az Azure portálon.
+1. Nyissa meg a keresési oldalát az Azure portálon.
 2. Jelölje ki a bal oldali navigációs sávon ablaktáblán **beállítások** > **méretezési**.
 3. A slidebar használatával adhatja hozzá a replikák és a partíciók.
 
@@ -105,9 +108,7 @@ Bár a legtöbb felhasználó csak egy szolgáltatás használatához szolgálta
 Egy második szolgáltatás nincs szükség a magas rendelkezésre állás érdekében. Magas rendelkezésre állás a lekérdezések érhető el, ha a 2 vagy több replikákat az ugyanazt a szolgáltatást használ. A replika frissítései egymást követő, ami azt jelenti, hogy legalább egy akkor működik, ha a szolgáltatásfrissítés megkezdődött. Hasznos üzemidő kapcsolatos további információkért lásd: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="next-steps"></a>Következő lépések
-Egy Azure Search szolgáltatás kiépítését követően készen áll [index definiálása az](search-what-is-an-index.md) , töltse fel, és keresse meg az adatokat.
+Egy Azure Search szolgáltatás kiépítését követően készen áll [index definiálása az](search-what-is-an-index.md) , töltse fel, és keresse meg az adatokat. 
 
-A szolgáltatás eléréséhez kódot vagy parancsprogramot, adja meg az URL-cím (*szolgáltatásnév*. search.windows.net) és a kulcsot. Adminisztrációs kulcsok teljes hozzáférést; lekérdezési kulcsok hozzáférést csak olvasható. Lásd: [használata Azure Search .NET](search-howto-dotnet-sdk.md) a kezdéshez.
-
-Lásd: [felépítéséhez és az első index lekérdezése](search-get-started-portal.md) gyors portálalapú oktatóanyag.
-
+> [!div class="nextstepaction"]
+> [Azure Search .NET használata](search-howto-dotnet-sdk.md)

@@ -8,13 +8,13 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 29fb935ada4aa7f2571b128f82d4c037bbb88eb1
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 8c59e6ad42109c7df64fd651a012a56446daaad0
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
 ---
-# <a name="troubleshoot-issues-with-azure-sql-data-sync-preview"></a>Problémák az Azure SQL adatszinkronizálás (előzetes verzió)
+# <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Problémák az SQL adatszinkronizálás (előzetes verzió)
 
 Ez a cikk ismerteti, amelyről ismert, hogy az SQL adatszinkronizálás (előzetes verzió) csoport aktuális kapcsolatos problémák elhárítása. Ha egy problémát a megoldás, azt itt biztosítja.
 
@@ -493,7 +493,7 @@ Ha nem tudja kijavítani a problémát, a szinkronizálási csoport állapotát 
 SQL adatszinkronizálás kapcsolatos további információkért lásd:
 
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md)
--   [Ismerkedés az Azure SQL-adatok szinkronizálása](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL Data szinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
 -   [Ajánlott eljárások az Azure SQL-adatok szinkronizálása](sql-database-best-practices-data-sync.md)
 -   [A figyelő az Azure SQL adatszinkronizálás az OMS szolgáltatáshoz](sql-database-sync-monitor-oms.md)
 

@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 29f33d01cc6b640a566dc371f4b9c704978da091
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 98892a0919b1ba49308fd3bc51c735977bbff437
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>A StorSimple virtuális eszköz üzembe helyezése és kezelése az Azure-ban
+> [!NOTE]
+> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ennek a cikknek az új Azure Portalra vonatkozó verziója: [A StorSimple virtuális eszköz üzembe helyezése és kezelése az Azure-ban](storsimple-8000-cloud-appliance-u2.md). Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
+
 ## <a name="overview"></a>Áttekintés
 A StorSimple 8000 sorozatú virtuális eszköz egy további lehetőség a Microsoft Azure StorSimple megoldáshoz. A StorSimple virtuális eszköz egy virtuális gépen fut egy Microsoft Azure virtuális hálózatban, és arra szolgál, hogy az állomásokon tárolt adatokról biztonsági másolatokat készítsen, illetve klónozza őket. Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe és kezelhet egy virtuális eszközt az Azure-ban (a 2. vagy annál korábbi frissítési szoftververziót futtató összes virtuális eszközre érvényes).
 
@@ -33,7 +36,7 @@ A StorSimple virtuális eszköz két modellben érhető el: a hagyományos 8010-
 | **Azure virtuális gép** |Standard_A3 (4 mag, 7 GB memória) |Standard_DS3 (4 mag, 14 GB memória) |
 | **Verziók kompatibilitása** |A 2. frissítés előzetes verzióját vagy újabb verziókat futtató verziók |A 2. frissítést vagy újabb verziókat futtató verziók |
 | **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot és a DS3 csomagú Azure-beli virtuális gépeket támogató összes Azure-régió<br></br> [Ebben a listában](https://azure.microsoft.com/en-us/regions/services) ellenőrizheti, hogy a *Virtuális gépek &gt; DS-sorozat* és a *Storage &gt; Disk Storage* termékek egyaránt elérhetők-e az adott régióban. |
-| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../virtual-machines/windows/premium-storage.md) |
+| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |A helyi lemezeken Azure Premium szintű tárolást használ<sup>2</sup> <br></br>További információ a [Premium Storage-fiók létrehozásáról](../storage/common/storage-premium-storage.md) |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek, kis késés, nagyobb teljesítményű számítási feladatok <br></br>Másodlagos vészhelyreállítási eszköz |
 
 <sup>1</sup>*Korábbi nevén az 1100-as*.
@@ -63,7 +66,7 @@ Az alábbi táblázat a StorSimple virtuális eszköz és a StorSimple fizikai e
 | **Szolgáltatásadat-titkosítási kulcs** |Újra létrejön a fizikai eszközön, majd az új kulccsal frissíti a virtuális eszközt. |A virtuális eszközről nem tud újra létrejönni. |
 
 ## <a name="prerequisites-for-the-virtual-device"></a>A virtuális eszköz előfeltételei
-Az alábbi szakaszok ismertetik a StorSimple virtuális eszköz előfeltételeit. A virtuális eszközök üzembe helyezése előtt tekintse meg [a virtuális eszközök használatának biztonsági szempontjait](storsimple-security.md).
+Az alábbi szakaszok ismertetik a StorSimple virtuális eszköz előfeltételeit. A virtuális eszközök üzembe helyezése előtt tekintse meg [a virtuális eszközök használatának biztonsági szempontjait](storsimple-8000-security.md#storsimple-cloud-appliance-security).
 
 #### <a name="azure-requirements"></a>Azure-követelmények
 A virtuális eszköz kiépítése előtt a következő előkészületekre lesz szükség az Azure-környezetben:
@@ -82,7 +85,7 @@ A virtuális eszköz kiépítése előtt a következő előkészületekre lesz s
 Hajtsa végre a következő frissítéseket az Azure StorSimple eszközön a virtuális eszköz létrehozása előtt:
 
 * Vegyen fel [hozzáférés-vezérlési rekordokat](storsimple-manage-acrs.md) azokon a gépekhez, amelyek a virtuális eszköz gazdakiszolgálói lesznek.
-* A virtuális eszközével megegyező régióban lévő [tárfiókot](storsimple-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A virtuális eszközzel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók](../storage/common/storage-create-storage-account.md), illetve a [Premium Storage-fiók ](../virtual-machines/windows/premium-storage.md) létrehozásáról
+* A virtuális eszközével megegyező régióban lévő [tárfiókot](storsimple-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A virtuális eszközzel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [Standard Storage-fiók](../storage/common/storage-create-storage-account.md), illetve a [Premium Storage-fiók ](../storage/common/storage-premium-storage.md) létrehozásáról
 * A virtuális eszköz létrehozásához ne használja ugyanazt a tárfiókot, amelyet az adataihoz is használ. Ugyanazon tárfiók használata esetén a teljesítmény gyenge lehet.
 
 Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:

@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 11/13/2017
 ms.author: dobett
-ms.openlocfilehash: 161089159999a4a63a39b059e69a08b7a9297445
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 951cd64f475363aaceac75ba96176a9b423ac5c1
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Létrehoz egy IoT-központot, az Azure CLI 2.0 használatával
 
@@ -31,7 +31,7 @@ Azure CLI 2.0 (az.py) hozhat létre és kezelhet programozott módon Azure IoT-k
 A következő CLI-verziók egyikével elvégezheti a feladatot:
 
 * [Az Azure CLI (azure.js)](iot-hub-create-using-cli-nodejs.md) – a parancssori felületen a klasszikus és resource management üzembe helyezési modellek.
-* Az Azure CLI 2.0 (az.py) - CLI következő generációs erőforrás felügyeleti telepítési modell ebben a cikkben leírtak szerint.
+* Az Azure CLI 2.0 (az.py) - CLI következő generációs erőforrás felügyeleti telepítési modell. Ez a cikk ismerteti.
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -43,17 +43,17 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 Jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését.
 
 1. A parancssorban futtassa a [bejelentkezési parancs][lnk-login-command]:
-    
+
     ```azurecli
     az login
     ```
 
     Kövesse az utasításokat a hitelesítést a kódot, és jelentkezzen be az Azure-fiókjával webböngészőn keresztül.
 
-2. Ha több Azure-előfizetéssel rendelkezik, az Azure-bA bejelentkezés engedélyezi a hozzáférést az Azure fiókokhoz tartozó hitelesítő adatait. Használja a következő [paranccsal listát készíthet az Azure-fiókra] [ lnk-az-account-command] elérhető lesz szükség:
-    
+1. Ha több Azure-előfizetéssel rendelkezik, az Azure-bA bejelentkezés engedélyezi a hozzáférést az Azure fiókokhoz tartozó hitelesítő adatait. Használja a következő [paranccsal listát készíthet az Azure-fiókra] [ lnk-az-account-command] elérhető lesz szükség:
+
     ```azurecli
-    az account list 
+    az account list
     ```
 
     Az alábbi parancs segítségével válassza ki, hogy az IoT hub létrehozására szolgáló parancsok futtatásához használni kívánt előfizetést. Az előfizetés neve vagy azonosítója is használhatja, ha az előző parancs kimenetében:
@@ -67,29 +67,24 @@ Jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését.
 Az Azure parancssori felület használatával hozzon létre egy erőforráscsoportot, és vegye fel az IoT-központ.
 
 1. Amikor létrehoz egy IoT-központot, erőforráscsoportban kell létrehoznia. Használjon egy meglévő erőforráscsoportot, vagy futtassa a következő [parancs futtatásával hozzon létre egy erőforráscsoportot][lnk-az-resource-command]:
-    
+
     ```azurecli
      az group create --name {your resource group name} --location westus
     ```
 
     > [!TIP]
     > Az előző példában az erőforráscsoport USA nyugati régiója a helyen hozza létre. A parancs futtatásával megtekintheti a rendelkezésre álló helyek listáját `az account list-locations -o table`.
-    >
-    >
 
-2. Futtassa a következő [parancs létrehoz egy IoT-központot] [ lnk-az-iot-command] az erőforráscsoportban, globálisan egyedi névvel az IoT hub:
-    
+1. Futtassa a következő [parancs létrehoz egy IoT-központot] [ lnk-az-iot-command] az erőforráscsoportban, globálisan egyedi névvel az IoT hub:
+
     ```azurecli
     az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
     ```
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-
 > [!NOTE]
 > Az előző parancs létrehozza az IoT-központ az S1 az IP-címek, amelynek kell fizetni. További információkért lásd: [Azure IoT Hub árképzési][lnk-iot-pricing].
->
->
 
 ## <a name="remove-an-iot-hub"></a>Távolítsa el az IoT-központ
 
@@ -108,6 +103,7 @@ az group delete --name {your resource group name}
 ```
 
 ## <a name="next-steps"></a>Következő lépések
+
 Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]

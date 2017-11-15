@@ -6,7 +6,11 @@
 
 | Disztribúció | Illesztőprogram |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>CentOS-alapú 7.3 | NVIDIA GRID 4.3, R367-es illesztőprogram-ág|
+| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>CentOS-alapú 7.3 | NVIDIA rács 5.0 illesztőprogram fiókirodai R384|
+
+> [!NOTE]
+> Microsoft újraterjeszti NVIDIA rács illesztőprogram telepítők Permanens virtuális gépekhez. Csak rács illesztőprogramok telepítése Azure Permanens virtuális gépeken. Ezeket az illesztőprogramokat tartalmazza, a licencelés rács virtuális GPU szoftver az Azure-ban.
+>
 
 ### <a name="nc-instances---nvidia-tesla-drivers"></a>NC-példányok – NVIDIA Tesla illesztőprogramok
 | Disztribúció | Illesztőprogram |

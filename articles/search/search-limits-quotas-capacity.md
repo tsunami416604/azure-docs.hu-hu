@@ -13,23 +13,23 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 06/07/2017
+ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 60e63401e3915e62e1ec5ac03cd548c291580b24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3deb0ff81114c840798c5927ad7311d7e603813d
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatásra vonatkozó korlátozások
 Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [kiépíteni az Azure Search](search-create-service-portal.md) , egy **szabad**, **alapvető**, vagy **Szabványos** tarifacsomagra vált.
 
-* **Szabad** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéssel rendelkezik. Már meglévő előfizetők egy további-ingyenes beállítása, amely lehetővé teszi, hogy a szolgáltatás kísérletezhet a dedikált erőforrások regisztrálása előtt.
+* **Szabad** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéssel rendelkezik. 
 * **Alapszintű** dedikált számítási erőforrások biztosít egy kisebb léptékű termelési számítási feladatokhoz.
 * **Standard** minden szinten további tárolási és feldolgozási kapacitással rendelkező dedikált gépeken futtatja. Standard elérhető lesz a négy szinten lévő: S1, S2, S3 és S3 nagy sűrűségű (S3 HD).
 
 > [!NOTE]
-> A szolgáltatás van üzembe helyezve egy konkrét csomagot kiválasztani. Ha szeretne további kapacitás beolvasandó rétegek ugorhat, el kell juttatnia (nincs nincs frissítés) új szolgáltatása. További információkért lásd: [válasszon egy SKU vagy a réteg](search-sku-tier.md). Beállítja egy már kiépített szolgáltatás belül kapcsolatos további információkért lásd: [erőforrás szintek lekérdezési és indexelési munkaterhelések méretezése](search-capacity-planning.md).
+> A szolgáltatás van üzembe helyezve egy konkrét csomagot kiválasztani. Ahhoz, hogy a kapacitás rétegek Ugrás magában foglalja a (nincs nincs frissítés) egy új szolgáltatás kiépítését. További információkért lásd: [válasszon egy SKU vagy a réteg](search-sku-tier.md). Beállítja egy már kiépített szolgáltatás belül kapcsolatos további információkért lásd: [erőforrás szintek lekérdezési és indexelési munkaterhelések méretezése](search-capacity-planning.md).
 >
 
 ## <a name="per-subscription-limits"></a>Előfizetés korlátokat
@@ -66,16 +66,11 @@ A dokumentum maximális méretét jelenti az Index API-k hívásakor. A dokument
 
 Tartsa a dokumentum mérete, ne felejtse el nem lekérdezhető adatok kihagyása a kérelemből. Képek és egyéb bináris adatokat nem közvetlenül lekérdezhető, és nem szabad az index. Nem lekérdezhető adatok integrálja a keresési eredmények között, adja meg az erőforrás URL-cím hivatkozást tartalmazó nem kereshető mező.
 
-## <a name="workload-limits-queries-per-second"></a>Munkaterhelés-korlátok (lekérdezések / másodperc)
-| Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 HD |
-| --- | --- | --- | --- | --- | --- | --- |
-| QPS |N/A |~3 replikánként |~15 replikánként |~60 replikánként |>60 replikánként |>60 replikánként |
+## <a name="queries-per-second-qps"></a>Lekérdezések / másodperc (QPS)
 
-Lekérdezések / másodperc (QPS) közelítő heurisztikus szimulált és a tényleges ügyfél munkaterheléseinek használ kapcsolattípusokból becsült értékek alapján. Pontos QPS átviteli az adatok és a lekérdezés jellegétől függ.
+QPS becslése egymástól függetlenül kifejlesztett minden ügyfél. Index mérete és összetettségét, lekérdezés méretét és összetettségét és az adatforgalom mennyisége olyan elsődleges befolyásoló QPS. Nincs semmilyen módon nem értelmezhető becslése ajánlatot tényezőket számára ismeretlen.
 
-Bár durva becslést fent vannak, egy tényleges sebessége akkor nehéz lenne meghatározni, különösen ha átviteli sebesség alapján rendelkezésre álló sávszélesség és a rendszer-erőforrások verseny a szabad megosztott szolgáltatás. Ingyenes szint számítási és tárolási erőforrásokat megosztott több előfizető, így a megoldás QPS mindig változhatnak attól függően, hogy egyszerre hány más feladatokat futtató.
-
-Standard szintű megbecsülheti QPS jobban mert befolyásolni több paramétert. További részletekért lásd a témakör az ajánlott eljárásokat [kezelése a keresési megoldás](search-manage.md) kapcsolatos útmutatás a munkaterhelések QPS kiszámításához.
+Megbecsli több előre jelezhető, ha a dedikált erőforrások (Basic és Standard rétegek) futó szolgáltatások számított. További QPS megbecsülheti szorosan mert befolyásolni több paramétert. Megközelítés becslés kapcsolatos útmutatásért lásd: [Azure Search teljesítmény- és optimalizálási](search-performance-optimization.md).
 
 ## <a name="api-request-limits"></a>API-kérelmekre vonatkozó korlátok
 * 16 MB kérelmenként maximálisan <sup>1</sup>

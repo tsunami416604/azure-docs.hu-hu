@@ -13,13 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2017
 ms.author: abnarain
-ms.openlocfilehash: 9caea4191a2ca99e6e98cc8ce7ca9ca0c7b8dc87
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: bba2781d43aff9e462246cfe21961695e48196d8
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatátvitelt jelölik a kapcsolódó biztonsági szempontok
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [1. verzió – Általánosan elérhető](v1/data-factory-data-movement-security-considerations.md)
+> * [2. verzió – Előzetes verzió](data-movement-security-considerations.md)
+
 Ez a cikk ismerteti az alapvető biztonsági infrastruktúra, amely adatátviteli szolgáltatások az Azure Data Factory használatával az adatok védelme. Az Azure Data Factory-kezelési források az Azure biztonsági infrastruktúra épül, és használja az Azure által kínált minden lehetséges biztonsági intézkedéseket.
 
 > [!NOTE]
@@ -27,7 +31,7 @@ Ez a cikk ismerteti az alapvető biztonsági infrastruktúra, amely adatátvitel
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](concepts-pipelines-activities.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok találhatók a régióban, ahol az adat-előállító létrehozása történt. 
 
-Annak ellenére, hogy a Data Factory érhető el csak **USA keleti régiója** és **USA keleti régiója 2** régió (előzetes verzió 2), az adatátviteli szolgáltatás érhető el [globálisan több régióban](concepts-integration-runtime.md#azure-ir). Az adatátviteli szolgáltatás még nincs telepítve a régióba, ha a Data Factory szolgáltatásnak biztosítja az adatok nem hagynak egy földrajzi terület vagy régió kivéve, ha explicit módon utasíthatja a szolgáltatás egy másik régióban. 
+Annak ellenére, hogy a Data Factory érhető el csak **USA keleti régiója**, **USA keleti régiója 2**, és **Nyugat-Európa** régiók (előzetes verzió 2-es verzió), az adatátviteli szolgáltatás elérhető [globálisan több régióban](concepts-integration-runtime.md#azure-ir). Az adatátviteli szolgáltatás még nincs telepítve a régióba, ha a Data Factory szolgáltatásnak biztosítja az adatok nem hagynak egy földrajzi terület vagy régió kivéve, ha explicit módon utasíthatja a szolgáltatás egy másik régióban. 
 
 Az Azure Data Factory maga nem tárol kivéve a társított szolgáltatás hitelesítő adatait felhőalapú adattároló, tanúsítványok használata titkosított adatokat. Lehetővé teszi viszont olyan adatvezérelt munkafolyamatok létrehozását, amelyekkel előkészíthető a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) közötti adatmozgás és az adatok [számítási szolgáltatásokkal](compute-linked-services.md) történő feldolgozása más régiókban, illetve helyszíni környezetben. Lehetővé teszi a SDK és Azure figyelő használata munkafolyamatok figyelése és kezelése.
 

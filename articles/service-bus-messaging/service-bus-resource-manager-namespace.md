@@ -14,17 +14,17 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: 0598ee93a38c07aa7b1102cdaf228c2a4b4dcf71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8a42638c79a8a53f80102fc344eccb521e4c1c5
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal Service Bus-névtér létrehozása
 
 Ez a cikk ismerteti az Azure Resource Manager sablon használata, amely létrehoz egy Service Bus-névtér típusú **Messaging** a Standard Termékváltozat. A cikk is definiálja a megadott paraméterek, a telepítés végrehajtásához. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
-Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
+A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál.
 
 A teljes sablon, tekintse meg a [Service Bus-névtér sablon] [ Service Bus namespace template] a Githubon.
 
@@ -48,9 +48,9 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 [![Üzembe helyezés az Azure-ban](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Paraméterek
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon nevű szakaszban tartalmaz `Parameters` , amely tartalmazza az összes a paraméterértékek. Meg kell határozni egy paramétert ezeket az értékeket, amelyek a projekt telepít vagy telepít, hogy a környezet alapján változhatnak. Az értékeket, amelyeket a rendszer mindig ugyanaz maradjon paraméterek nem határoznak meg. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon nevű szakaszban tartalmaz `Parameters` , amely tartalmazza az összes a paraméterértékek. Azokhoz az értékekhez adjon meg paramétert, amelyek az üzembe helyezendő projekt vagy az üzembe helyezési környezet alapján változhatnak. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
-Ez a sablon határozza meg a következő paraméterekkel.
+Ez a sablon meghatározza, hogy a következő paraméterekkel:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 A Service Bus-névtér létrehozása neve.
@@ -81,7 +81,7 @@ A Service Bus neve [SKU](https://azure.microsoft.com/pricing/details/service-bus
 
 ```
 
-A sablon határozza meg az értékeket, amelyeknél engedélyezve van ez a paraméter (Standard vagy prémium), és hozzárendel egy alapértelmezett értéket (általános), ha nincs érték megadva.
+A sablon határozza meg az értékeket, amelyek ehhez a paraméterhez (Standard vagy prémium) megengedettek. Ha nincs érték megadva, az erőforrás-kezelő (általános) alapértelmezett értéket rendeli hozzá.
 
 A Service Bus árazással kapcsolatos további információkért lásd: [Service Bus árak és számlázás][Service Bus pricing and billing].
 
@@ -91,7 +91,7 @@ A sablon Service Bus API verzióját.
 ```json
 "serviceBusApiVersion": { 
        "type": "string", 
-       "defaultValue": "2015-08-01", 
+       "defaultValue": "2017-04-01", 
        "metadata": { 
            "description": "Service Bus ApiVersion used by the template" 
        } 

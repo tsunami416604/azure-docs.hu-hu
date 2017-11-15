@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1366cd79248b2e0008234a5da0d87552e6530d80
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a9c5743c92ac48202c19c2f6f024238c147d8444
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps diagnosztikai naplózás engedélyezése
 ## <a name="overview"></a>Áttekintés
-Azure biztosít, beépített diagnosztika, elősegítve ezzel a hibakeresést egy [App Service webalkalmazásba](http://go.microsoft.com/fwlink/?LinkId=529714). Ebben a cikkben megtudhatja, hogyan diagnosztikai naplózás engedélyezése és instrumentation hozzá az alkalmazáshoz, valamint az Azure által naplózott információk elérését.
+Azure biztosít, beépített diagnosztika, elősegítve ezzel a hibakeresést egy [App Service webalkalmazásba](http://go.microsoft.com/fwlink/?LinkId=529714). Ebben a cikkben megismerheti, hogyan diagnosztikai naplózás engedélyezése és instrumentation hozzá az alkalmazáshoz, valamint az Azure által naplózott információk elérését.
 
-Ebben a cikkben az a [Azure Portal](https://portal.azure.com), Azure PowerShell és az Azure parancssori felület (CLI) történő együttműködésre a diagnosztikai naplókat. Diagnosztikai naplók Visual Studio használatával használatával kapcsolatos információkért lásd: [Azure hibaelhárítása a Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+Ebben a cikkben az a [Azure-portálon](https://portal.azure.com), Azure PowerShell és az Azure parancssori felület (CLI) történő együttműködésre a diagnosztikai naplókat. Diagnosztikai naplók Visual Studio használatával használatával kapcsolatos információkért lásd: [Azure hibaelhárítása a Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -43,24 +43,24 @@ Application diagnostics lehetővé teszi egy webes alkalmazás által létrehozo
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-Futásidőben kérheti le a naplók segíthetnek a hibaelhárításban. További információkért lásd: [hibaelhárítási Azure web Apps alkalmazások, a Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+Futásidőben a naplók segíthetnek a hibaelhárításban kérheti le. További információkért lásd: [hibaelhárítási Azure web Apps alkalmazások, a Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
 App Service web apps is naplózza az információkat, amikor a tartalom közzétételére a webes alkalmazás. Ez automatikusan megtörténik, és nincsenek telepítési naplózás konfigurációs beállítások. Központi telepítés naplózás lehetővé teszi a segítségével meghatározhatja, miért nem sikerült a telepítés. Egy egyéni telepítési parancsfájl használ, előfordulhat, hogy meghatározni, miért nem sikerült a parancsfájl például használhat telepítési naplózást.
 
 ## <a name="enablediag"></a>Diagnosztika engedélyezése
-A diagnosztika engedélyezéséhez a [Azure Portal](https://portal.azure.com), nyissa meg a webalkalmazás panelen, és kattintson a **beállítások > diagnosztikai naplók**.
+A diagnosztika engedélyezéséhez a [Azure-portálon](https://portal.azure.com), nyissa meg a webes alkalmazás lapját, és kattintson **beállítások > diagnosztikai naplók**.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Naplók része](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Amikor engedélyezi a **alkalmazásdiagnosztika** meg a **szint**. Ez a beállítás lehetővé teszi annak elkészült a megjelenített információkat szűrheti **tájékoztató**, **figyelmeztetés** vagy **hiba** információkat. Ezt a beállítást **részletes** naplózza az alkalmazás által létrehozott összes információt.
+Amikor engedélyezi a **alkalmazásdiagnosztika**, úgy is dönt a **szint**. Ez a beállítás lehetővé teszi annak elkészült a megjelenített információkat szűrheti **tájékoztató**, **figyelmeztetés**, vagy **hiba** információkat. Ezt a beállítást **részletes** naplózza az alkalmazás által létrehozott összes információt.
 
 > [!NOTE]
 > Ellentétben a web.config fájl módosítása, alkalmazásdiagnosztika engedélyezése vagy diagnosztikai naplózási szintek módosítása nem indul a az alkalmazás belül futó alkalmazástartományban.
 >
 >
 
-Az a [klasszikus portál](https://manage.windowsazure.com) webalkalmazás **konfigurálása** lapon választhat **tárolási** vagy **fájlrendszer** a **webkiszolgáló naplózásának**. Kiválasztása **tárolási** választhatja ki a tárfiók, és egy blob tároló, amely a naplók lesz írva. A többi naplófájlt **diagnosztika hely** a fájlrendszer csak kerülnek.
+Az a [klasszikus portál](https://manage.windowsazure.com) webalkalmazás **konfigurálása** lapon választhat **tárolási** vagy **fájlrendszer** a **webkiszolgáló naplózásának**. Kiválasztása **tárolási** választhatja ki a tárfiók, és egy blob tároló, amely a naplókat a rendszer ír. A többi naplófájlt **diagnosztika hely** a fájlrendszer csak kerülnek.
 
 A [klasszikus portál](https://manage.windowsazure.com) webalkalmazás **konfigurálása** lap is tartalmaz további beállításokat az application diagnostics:
 
@@ -113,7 +113,7 @@ Töltse le a naplófájlok, indítsa el az Azure PowerShell egy új példányát
 
     Save-AzureWebSiteLog -Name webappname
 
-A naplók által megadott webalkalmazás megtakarít a **-név** paraméter nevű fájlba **logs.zip** az aktuális könyvtárban található.
+Ez a parancs menti a webalkalmazást, amelyet a naplókat a **-név** nevű fájlba paraméter **logs.zip** az aktuális könyvtárban található.
 
 > [!NOTE]
 > Ha nem telepítette az Azure PowerShell, vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [hogyan használható az Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
@@ -125,7 +125,7 @@ Töltse le a naplófájlok az Azure parancssori felület használatával, nyissa
 
     azure site log download webappname
 
-A naplók nevű fájlba "webappname' nevű webalkalmazás megtakarít **diagnostics.zip** az aktuális könyvtárban található.
+Ez a parancs a keresse meg a webes alkalmazás, neve "webappname" nevű fájlba menti **diagnostics.zip** az aktuális könyvtárban található.
 
 > [!NOTE]
 > Ha nem telepítette az Azure parancssori felület (CLI), vagy nem konfigurálta az Azure-előfizetés használatára, lásd: [hogyan használható az Azure parancssori felület](../cli-install-nodejs.md).
@@ -136,11 +136,11 @@ A naplók nevű fájlba "webappname' nevű webalkalmazás megtakarít **diagnost
 A Visual Studio Application Insights szűrési és keresési naplókat, valamint a válaszoknak az összekapcsolása a naplók kérések és más eseményekkel eszközöket biztosít.
 
 1. Az Application Insights SDK hozzáadása a projekthez a Visual Studióban.
-   * A Megoldáskezelőben kattintson a jobb gombbal a projekt, és válassza ki az Application Insights hozzáadása. Lesz, amely tartalmazza az Application Insights-erőforrás létrehozása lépések interaktív. [További információ](../application-insights/app-insights-asp-net.md)
+   * A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza ki az Application Insights hozzáadása. A felület végigvezeti, amely tartalmazza az Application Insights-erőforrás létrehozása. [További információ](../application-insights/app-insights-asp-net.md)
 2. A nyomkövetés-figyelő csomag hozzáadása a projekthez.
-   * Kattintson a jobb gombbal a projekt, és válassza ki a NuGet-csomagok kezelése. Válassza ki `Microsoft.ApplicationInsights.TraceListener` [további](../application-insights/app-insights-asp-net-trace-logs.md)
+   * Kattintson jobb gombbal a projektre, és válassza ki a NuGet-csomagok kezelése. Válassza ki `Microsoft.ApplicationInsights.TraceListener` [további](../application-insights/app-insights-asp-net-trace-logs.md)
 3. Töltse fel a projektet, és futtassa a naplóadatok létrehozásához.
-4. Az a [Azure Portal](https://portal.azure.com/), keresse meg az új Application Insights-erőforrást, és nyissa meg a **keresési**. Látni fogja, a naplóadatok kérelem, használatának és egyéb telemetriai együtt. Néhány telemetriai érkezésére néhány percbe telhet: kattintson a frissítés parancsra. [További információ](../application-insights/app-insights-diagnostic-search.md)
+4. Az a [Azure-portálon](https://portal.azure.com/), keresse meg az új Application Insights-erőforrást, és nyissa meg a **keresési**. Meg kell jelennie a naplóadatok kérelem, használatának és egyéb telemetriai együtt. Néhány telemetriai érkezésére néhány percbe telhet: kattintson a frissítés parancsra. [További információ](../application-insights/app-insights-diagnostic-search.md)
 
 [További információ a teljesítmény nyomon követése az Application insights szolgáltatással](../application-insights/app-insights-azure-web-apps.md)
 
@@ -151,7 +151,7 @@ Az alkalmazások fejlesztése során gyakran célszerű közel valós idejű nap
 > Naplózási puffer bizonyos típusú ír a naplófájlba, ennek eredményeként az adatfolyamban üzemen kívüli események. Például egy alkalmazás naplóbejegyzés, amely akkor fordul elő, amikor a felhasználó meglátogat egy lap esetleg jelennek meg az adatfolyam a megfelelő HTTP naplóbejegyzés a lap lekérése előtt.
 >
 > [!NOTE]
-> Adatfolyam-naplót is adatfolyam bármely szöveges fájlba, tárolt adatokat a **D:\\otthoni\\naplófájlok\\**  mappa.
+> Bármely szöveges fájlba, tárolt adatokat is napló adatfolyam-adatfolyamokat a **D:\\otthoni\\naplófájlok\\**  mappa.
 >
 >
 
@@ -160,7 +160,7 @@ Adatfolyam-naplózási információkat, indítsa el az Azure PowerShell egy új 
 
     Get-AzureWebSiteLog -Name webappname -Tail
 
-Ezzel összeköti azt a webalkalmazást, amelyet a **-név** paraméter és kezdete streaming adatokat a PowerShell-ablakot a webalkalmazásban alkalmazásnapló-események bekövetkezésekor. Minden olyan információt írni a .txt, .log vagy .htm végződése (d:/otthoni/naplófájlok) /LogFiles könyvtárban tárolt fájlok adatfolyamként továbbítva a lesz a helyi konzol.
+Ezzel a paranccsal összekapcsolja azt a webalkalmazást, amelyet a **-név** paraméter és kezdete streaming adatokat a PowerShell-ablakot a webalkalmazásban alkalmazásnapló-események bekövetkezésekor. A helyi konzol minden olyan információt írni a .txt, .log vagy .htm végződése (d:/otthoni/naplófájlok) /LogFiles könyvtárban tárolt fájlok továbbítja adatfolyamként.
 
 Szűrés adott események, például a hibák, használja a **-üzenet** paraméter. Példa:
 
@@ -182,7 +182,7 @@ Adatfolyam-naplózási információk nyisson meg egy új parancssor, PowerShell,
 
     az webapp log tail --name webappname --resource-group myResourceGroup
 
-Ez az "webappname" nevű webes alkalmazáshoz és kezdete streaming a az ablak az információk a webalkalmazásban alkalmazásnapló-események bekövetkezésekor. Minden olyan információt írni a .txt, .log vagy .htm végződése (d:/otthoni/naplófájlok) /LogFiles könyvtárban tárolt fájlok adatfolyamként továbbítva a lesz a helyi konzol.
+Ez a parancs a 'webappname' nevű webalkalmazás csatlakozik, és kezdete streaming a az ablak az információk a webalkalmazásban alkalmazásnapló-események bekövetkezésekor. A helyi konzol minden olyan információt írni a .txt, .log vagy .htm végződése (d:/otthoni/naplófájlok) /LogFiles könyvtárban tárolt fájlok továbbítja adatfolyamként.
 
 Szűrés adott események, például a hibák, használja a **--szűrő** paraméter. Példa:
 
@@ -203,15 +203,15 @@ Application diagnostics információkat tárol egy meghatározott formátumnak a
 
 **Fájlrendszer**
 
-Minden egyes sorban, a rendszer naplózza a fájlrendszer vagy streaming használatával fogadott lesz a következő formátumban:
+Minden egyes sorban, a rendszer naplózza a fájlrendszer vagy használja a streaming kapott a következő formátumban kell megadni:
 
-    {Date}  PID[{process id}] {event type/level} {message}
+    {Date}  PID[{process ID}] {event type/level} {message}
 
 Például egy hibaesemény jelent a következőhöz hasonló:
 
     2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
-A fájlrendszer naplózása a három rendelkezésre álló metódusok biztosító csak az idő, folyamatazonosító, Eseményszint, és üzenet a legalapvetőbb információkat biztosít.
+A fájlrendszer naplózása a három rendelkezésre álló metódusok biztosító csak az idő, Folyamatazonosító, Eseményszint, és üzenet a legalapvetőbb információkat biztosít.
 
 **Table Storage**
 
@@ -253,12 +253,12 @@ A blob tárolt adatok a következőhöz hasonló lenne:
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> Az első sor a napló fogja tartalmazni az oszlopfejlécek, ahogy ebben a példában.
+> A napló az első sor az oszlopfejléceket tartalmaz, ebben a példában képviselt.
 >
 >
 
 ### <a name="failed-request-traces"></a>Sikertelen kérelmek nyomkövetési
-Sikertelen kérelmek nyomkövetési nevű XML-fájlok tárolják **fr ### .xml**. A naplózott információk megkönnyítése XSL-stíluslap nevű **freb.xsl** található az XML-fájlok könyvtárába. Az XML-fájlok megnyitása az Internet Explorer használatával az XSL-stíluslap adja meg a nyomkövetési adatok egy formázott megjelenítése. Ez jelenik meg a következőhöz hasonló:
+Sikertelen kérelmek nyomkövetési nevű XML-fájlok tárolják **fr ### .xml**. A naplózott információk megkönnyítése XSL-stíluslap nevű **freb.xsl** található az XML-fájlok könyvtárába. Ha megnyit egy XML-fájlt az Internet Explorer, az Internet Explorer formázott megjeleníti a nyomkövetési adatok a biztosításához használt XSL-stíluslap. Ez jelenik meg a következőhöz hasonló:
 
 ![a böngészőben sikertelen kérelem](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
@@ -282,7 +282,3 @@ A webkiszolgáló naplóinak használatával formázott a [W3C bővített napló
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 >
 >
-
-## <a name="whats-changed"></a>A változások
-* Információk a Websites szolgáltatásról az App Service-re való váltásról: [Az Azure App Service és a hatása a meglévő Azure-szolgáltatásokra](http://go.microsoft.com/fwlink/?LinkId=529714)
-* A régi portál, az új portálon való váltásról: [útmutató az Azure-portálon lépjen a](http://go.microsoft.com/fwlink/?LinkId=529715)

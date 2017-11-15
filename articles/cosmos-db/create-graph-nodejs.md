@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/29/2017
 ms.author: denlee
-ms.openlocfilehash: 228d739ac4505d9f16c43bb484dd8050631f084e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 361f63141a8bf3f901eee6c93742f1a7fdc4348f
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Node.js-alkalmazás létrehozása a Graph API-val
 
@@ -75,9 +75,23 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a `app.js` fáj
         });
     ```
 
-  Minden konfiguráció a `config.js` fájlban van, amelynek a szerkesztését a következő rész írja le.
+  A konfigurációk tartoznak `config.js`, mely azt a a [a következő szakasz](#update-your-connection-string).
 
-* A `client.execute` metódussal a program Gremlin-lépések sorozatát hajtja végre.
+* Funkciók több különböző Gremlin műveletek végrehajtásához vannak definiálva. Ez az egyik legyen:
+
+    ```nodejs
+    function addVertex1(callback)
+    {
+        console.log('Running Add Vertex1'); 
+        client.execute("g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('userid', 1)", { }, (err, results) => {
+          if (err) callback(console.error(err));
+          console.log("Result: %s\n", JSON.stringify(results));
+          callback(null)
+        });
+    }
+    ```
+
+* Mindkét funkciót hajt végre egy `client.execute` Gremlin lekérdezési karakterlánc paraméter metódust. Íme egy példa bemutatja, hogyan `g.V().count()` végrehajtása:
 
     ```nodejs
     console.log('Running Count'); 
@@ -88,11 +102,28 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a `app.js` fáj
     });
     ```
 
+* A fájl végén módszer közül mindegyik majd hívják használatával a `async.waterfall()` metódust. Ez hajtja végre őket egymás után:
+
+    ```nodejs
+    try{
+        async.waterfall([
+            dropGraph,
+            addVertex1,
+            addVertex2,
+            addEdge,
+            countVertices
+            ], finish);
+    } catch(err) {
+        console.log(err)
+    }
+    ```
+
+
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
 1. Nyissa meg a config.js fájlt. 
 
-2. A config.js fájlban adja meg a config.endpoint kulcsot az Azure Portal **Áttekintés** lapjáról származó **Gremlin URI** értékkel. 
+2. A config.js, töltse ki a `config.endpoint` a kulcs a **Gremlin URI** értéket a **áttekintése** az Azure-portálon oldalán. 
 
     `config.endpoint = "GRAPHENDPOINT";`
 

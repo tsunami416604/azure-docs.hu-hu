@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/06/2017
+ms.date: 11/09/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46f8b2c20d9ce31ef3f782d098de09952701bbcc
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 59790185c4603eac99032dd77a79bd8315402538
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>N-sorozat linuxos virtuális gépek NVIDIA GPU illesztőprogramok telepítéséhez
 
@@ -70,11 +70,11 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 5. Töltse le és telepítse a rács illesztőprogramját:
 
   ```bash
-  wget -O NVIDIA-Linux-x86_64-367.106-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+  wget -O NVIDIA-Linux-x86_64-384.73-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
 
-  chmod +x NVIDIA-Linux-x86_64-367.106-grid.run
+  chmod +x NVIDIA-Linux-x86_64-384.73-grid.run
 
-  sudo ./NVIDIA-Linux-x86_64-367.106-grid.run
+  sudo ./NVIDIA-Linux-x86_64-384.73-grid.run
   ``` 
 
 6. Ha megkérdezi, hogy kívánja-e frissíteni a X-konfigurációs fájlt, jelölje be a nvidia-xconfig segédprogram futtatásához **Igen**.
@@ -139,11 +139,11 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 5. Töltse le és telepítse a rács illesztőprogramját:
 
   ```bash
-  wget -O NVIDIA-Linux-x86_64-367.106-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+  wget -O NVIDIA-Linux-x86_64-384.73-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
 
-  chmod +x NVIDIA-Linux-x86_64-367.106-grid.run
+  chmod +x NVIDIA-Linux-x86_64-384.73-grid.run
 
-  sudo ./NVIDIA-Linux-x86_64-367.106-grid.run
+  sudo ./NVIDIA-Linux-x86_64-384.73-grid.run
   ``` 
 6. Ha megkérdezi, hogy kívánja-e frissíteni a X-konfigurációs fájlt, jelölje be a nvidia-xconfig segédprogram futtatásához **Igen**.
 
@@ -165,7 +165,7 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 
 Lekérdezni a GPU eszközállapotba SSH a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram illesztőprogrammal telepítve. 
 
-A következő eredmény jelenik meg:
+A következő eredmény jelenik meg. A illesztőprogramjának verziószámát és a GPU részletek látható eltérő lehet.
 
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi-nv.png)
  
@@ -229,7 +229,7 @@ Majd a terjesztéshez futtatási telepítési parancsokat.
 
 1. Töltse le és telepítse a CUDA illesztőprogramokat.
   ```bash
-  CUDA_REPO_PKG=cuda-9-0_9.0.176-1_amd64.deb
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
 
   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
@@ -352,7 +352,7 @@ Telepítés NC24r virtuális gépeket az Azure piactéren, amely támogatja az R
 
 * Egy ismert probléma az Azure virtuális gépeken N-sorozat a 4.4.0-75 Linux kernel futó Ubuntu 16.04 LTS CUDA illesztőprogramok van. Ha egy korábbi kernel frissít, frissítsen legalább kernel verzió 4.4.0-77.
 
-* Adatmegőrzési mód nvidia-smi használ, így a parancs kimenetében gyorsabban akkor, ha a lekérdezés kártyák kell állíthatja be. Adatmegőrzési üzemmód beállítása, hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy a virtuális gép újraindul, ha a üzemmódját eltűnik majd. Lehet mindig parancsprogramot futtatni a üzemmódját indításkor végrehajtásához.
+* Adatmegőrzési mód használatával állíthatja be `nvidia-smi` , a parancs kimenetében esetén gyorsabb lekérdezés kártyák kell. Adatmegőrzési üzemmód beállítása, hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy a virtuális gép újraindul, ha a üzemmódját eltűnik majd. Lehet mindig parancsprogramot futtatni a üzemmódját indításkor végrehajtásához.
 
 
 ## <a name="next-steps"></a>Következő lépések

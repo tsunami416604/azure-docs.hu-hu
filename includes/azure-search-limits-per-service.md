@@ -11,7 +11,6 @@ A tárhelyet a lemezterület mérete, illetve az indexek vagy dokumentumok *maxi
 | Indexelők maximális száma |3 |5 |50 |200 |200 |Az indexelők nem támogatottak |
 | Adatforrások maximális száma |3 |5 |50 |200 |200 |Az indexelők nem támogatottak |
 | Dokumentumok maximális száma |10,000 |1 millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
-| Másodpercenkénti lekérdezések (QPS) becsült száma |N/A |~3 replikánként |~15 replikánként |~60 replikánként |~60 replikánként |>60 replikánként |
 
 <sup>1</sup> ingyenes szint és az előzetes funkciók nem tartoznak a szolgáltatásszint-szerződések (SLA). Az összes számlázható rétegek SLA-k érvénybe, ha a szolgáltatás megfelelő redundancia kiépítése. Két vagy több replikák szükségesek (olvasás) lekérdezés SLA-t. Három vagy több replikák lekérdezés és az indexelés (írásra) SLA szükségesek. A partíciók számának nincs egy SLA-t szempont. 
 

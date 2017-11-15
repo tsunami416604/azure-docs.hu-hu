@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 10/30/2017
+ms.date: 11/13/2017
 ms.author: genemi
-ms.openlocfilehash: 69059b6169e1fac4d0abea2770b0de502f816113
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e1bb3e9f09ca7f5463228da4079b06ad2e771def
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Virtuális hálózati szolgáltatás végpontok és szabályok az Azure SQL Database használata
 
@@ -141,6 +141,9 @@ Az Azure SQL Database a virtuális hálózati szabályok funkció rendelkezik a 
 - Minden Azure SQL adatbázis-kiszolgáló legfeljebb 128 ACL-bejegyzések a megadott virtuális hálózat lehet.
 
 - Virtuális hálózati szabályok vonatkoznak csak Azure Resource Manager virtuális hálózatok; és nem arra [klasszikus üzembe helyezési modellel] [ arm-deployment-model-568f] hálózatok.
+
+- Virtuális hálózati Szolgáltatásvégpontok indításának ON Azure SQL Database is lehetővé teszi a MySQL és PostGres Azure szolgáltatáshoz a végpontok. Azonban a végpontok ON példányokhoz való csatlakozáshoz a végpontról a MySQL vagy Postgres kísérlet sikertelen lesz.
+    - Az alapul szolgáló oka az, hogy a MySQL és PostGres jelenleg nem támogatják az ACLing.
 
 - A tűzfalon az IP-címtartományok alkalmazása a következő hálózati elemek, de a virtuális hálózati szabályok azonban nem:
     - [Webhelyek (közötti S2S) virtuális magánhálózati (VPN)][vpn-gateway-indexmd-608y]

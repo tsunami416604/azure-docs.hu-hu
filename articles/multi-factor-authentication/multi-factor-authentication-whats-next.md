@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
-ms.openlocfilehash: 723bd7135a59bcc0bce648460f871a841a684d3c
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 5da47bf2f48b0f5df5f7fa19f1f626fbdca2b8db
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Konfigurálja az Azure multi-factor Authentication beállításai – nyilvános előzetes verzió
 
@@ -29,7 +29,7 @@ Ez a cikk segítséget Azure multi-factor Authentication most, hogy működik é
 
 | Szolgáltatás | Leírás | 
 |:--- |:--- |
-| [Felhasználó blokkolása/feloldása](#block/unblock-users) |Felhasználó blokkolása/feloldása megakadályozhatják, hogy a felhasználók hitelesítési kérelmek fogadását. |
+| [Blokkolnia és feloldania felhasználók](#block-and-unblock) |Felhasználó blokkolása/feloldása megakadályozhatják, hogy a felhasználók hitelesítési kérelmek fogadását. |
 | [Csalási riasztás](#fraud-alert) |Csalási riasztás konfigurálhatók, és állítsa be, hogy a felhasználók jelenthetik-e rosszindulatú megpróbál hozzáférni az erőforrásokhoz. |
 | [Az egyszeri Mellőzés](#one-time-bypass) |Az egyszeri Mellőzés lehetővé teszi, hogy a felhasználó egy alkalommal a multi-factor authentication "kihagyásával". |
 | [Egyedi Hangüzenetek](#custom-voice-messages) |Egyedi Hangüzenetek történő saját felvételek vagy hónap és a többtényezős hitelesítés használatát teszi lehetővé. |
@@ -39,7 +39,7 @@ Ez a cikk segítséget Azure multi-factor Authentication most, hogy működik é
 | [Ne feledje a multi-factor Authentication a korábban megjegyzett eszközökön és böngészők](#remember-multi-factor-authentication-for-devices-that-users-trust) |Lehetővé teszi az eszközök jegyezze meg a meghatározott számú nap elteltével a felhasználó sikeresen bejelentkezett az MFA használata. |
 | [Választható hitelesítési módszerek](#selectable-verification-methods) |A felhasználók számára elérhető hitelesítési módszerek használatát teszi lehetővé. |
 
-## <a name="blockunblock-users"></a>Felhasználó blokkolása/feloldása
+## <a name="block-and-unblock"></a>Blokkolása és feloldása
 Felhasználó blokkolása/feloldása segítségével megakadályozhatja, hogy a felhasználók hitelesítési kérelmek megkapja. A letiltott felhasználóknak bármely hitelesítési kísérleteit a rendszer automatikusan blokkolja. Letiltott felhasználók letiltott marad, a 90 nap abból az időből, amikor azok le vannak tiltva.
 
 ### <a name="block-a-user"></a>Felhasználó letiltása
@@ -56,7 +56,7 @@ Felhasználó blokkolása/feloldása segítségével megakadályozhatja, hogy a 
 4. Adja meg a megjegyzéseit a **vonatkozó tiltás feloldásának okból** mező.
 5. Kattintson a **Unblock** a felhasználó blokkolásának feloldása befejezéséhez.
 
-## <a name="fraud-alert"></a>Csalási riasztás
+## <a name="fraud-alert"></a>Visszaélési riasztás
 Csalási riasztás konfigurálhatók, és állítsa be, hogy a felhasználók jelenthetik-e rosszindulatú megpróbál hozzáférni az erőforrásokhoz.  Csalás mobilalkalmazással vagy telefont keresztül a felhasználók jelenthetik.
 
 ### <a name="turn-on-fraud-alert"></a>Csalási riasztás bekapcsolása
@@ -70,7 +70,7 @@ Csalási riasztás konfigurálhatók, és állítsa be, hogy a felhasználók je
 
 ### <a name="configuration-options"></a>Konfigurációs beállítások
 
-- **Felhasználó blokkolása visszaélés jelentésekor** – Ha egy felhasználó jelentések csalás, a fiók le van tiltva.
+- **Felhasználó blokkolása visszaélés jelentésekor** – Ha egy felhasználó jelentések csalás, a fiók le van tiltva, 90 napig, vagy amíg a rendszergazda feloldja a fiók. Egy rendszergazda bejelentkezések a bejelentkezési jelentés segítségével áttekintheti, és hajtsa végre a megfelelő műveletet jövőbeli csalás megelőzése érdekében. A rendszergazda tudja majd [feloldása](#unblock-a-user) a felhasználói fiók.
 - **Kód a visszaélés jelentéséhez a kezdeti üdvözlés során** – Ha a felhasználók felhívja Önt telefonján kétlépéses ellenőrzés, akkor általában # gomb megnyomására a bejelentkezés megerősítéséhez. Csalás jelentése szeretnék, ha azok kód megadása előtt a # gomb megnyomásával. Ez a kód **0** alapértelmezés szerint azonban testre szabható.
 
 > [!NOTE]
@@ -188,7 +188,7 @@ Megbízható IP-címek engedélyezve van-e, hogy böngésző adatfolyamok szüks
 
 ![Megbízható IP-címek](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
-## <a name="app-passwords"></a>Alkalmazásjelszók
+## <a name="app-passwords"></a>Alkalmazásjelszavak
 Apple Mail és alkalmazások, például az Office 2010 vagy korábbi nem támogatják a kétlépéses ellenőrzést. Azok a második ellenőrzési fogadásához nem konfigurálva. Ezen alkalmazások használatához szüksége "alkalmazásjelszót" helyett a hagyományos jelszavát. Az alkalmazásjelszó lehetővé teszi, hogy az alkalmazás figyelmen kívül hagyása a kétlépéses ellenőrzést, és folytathatja a munkát.
 
 > [!NOTE]
@@ -296,7 +296,7 @@ Amikor a felhasználók beléptetik a fiókjukat a multi-factor Authentication, 
 |:--- |:--- |
 | Megadott telefonszám hívása |Egy automatizált hang hívás helyezi. A felhasználó fogadja a hívást, és a telefon billentyűzetén hitelesíteni kell nyomnia a #. Ez a telefonszám nem szinkronizálja a helyszíni Active Directory. |
 | SMS küldése megadott telefonszámra |Egy megerősítési kódot tartalmazó szöveges üzenetet küld. A felhasználónak vagy válaszolnia kell az üzenetre a megerősítési kódot, vagy adja meg a bejelentkezési felületen kéri. |
-| Mobilalkalmazás használatával értesítést |Elküld egy leküldéses értesítést küld telefonjára vagy regisztrált eszközhöz. A felhasználó az értesítési megtekintése és kijelöli **ellenőrizze** igazolásához. <br>A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| Értesítés mobilalkalmazáson keresztül |Elküld egy leküldéses értesítést küld telefonjára vagy regisztrált eszközhöz. A felhasználó az értesítési megtekintése és kijelöli **ellenőrizze** igazolásához. <br>A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
 | Mobilalkalmazás ellenőrzőkódja |A Microsoft Authenticator alkalmazást hoz létre egy új OATH-ellenőrző kódot 30 másodpercenként. A bejelentkezési felületén, a felhasználó beírja ezt a megerősítési kódot.<br>A Microsoft Authenticator alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [IOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
 
 ### <a name="how-to-enabledisable-authentication-methods"></a>Engedélyezi/letiltja a hitelesítési módszerek hogyan

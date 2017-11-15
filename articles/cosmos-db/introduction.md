@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: d5ae2a68f749310d4d6a2514055fb258978eec9c
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 804b20111ea99892201079657d6d3602ececdd28
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB az aláb
     * Az alábbi adatmodellekhez készült API-kat több nyelven elérhető SDK-k támogatják:
         * [A DocumentDB API](documentdb-introduction.md): egy séma nélküli JSON adatbázismotor SQL lekérdezési képességeket.
         * [MongoDB API](mongodb-introduction.md): A MongoDB adatbázis-szolgáltatás Cosmos DB platformra épül. Kompatibilis a meglévő MongoDB szalagtárak, illesztőprogramok, eszközök és alkalmazások.
-        * [Tábla API](table-introduction.md): A kulcs-érték tároló adatbázis szolgáltatás biztosítja a prémium szintű funkciókat az Azure Table storage alkalmazások beépített.
+        * [Tábla API](table-introduction.md): prémium szintű képességeket biztosít Azure Table storage alkalmazások beépített egy kulcs-érték dokumentumadatbázis-szolgáltatás.
         * [Graph API (Gremlin)](graph-introduction.md): egy grafikonon adatbázis-szolgáltatás, amely következő a [Apache TinkerPop specification](http://tinkerpop.apache.org/).
         * További adatok modellek hamarosan!
 

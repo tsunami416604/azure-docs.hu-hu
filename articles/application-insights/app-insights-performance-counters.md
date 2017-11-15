@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 26837a72dd4539cd5b32e5b49a127a714f3a1426
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 40821d32c5bdfe51bb3cb205660d6f25b2c3fadc
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Az Application Insightsban rendszerteljesítmény-számlálók
 A Windows számos biztosít [teljesítményszámlálók](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) például a Processzor Foglaltság, memória, lemez és hálózat használatának. Is definiálhat a saját. [Az Application Insights](app-insights-overview.md) megjelenítheti a teljesítményszámlálók Ha az alkalmazás fut az IIS a helyi gazdagép vagy virtuális gépet, amely rendszergazdai hozzáféréssel rendelkezik. A diagramok jelzi az élő alkalmazás számára elérhető erőforrások, és segít a kiszolgálópéldányok közötti egyenetlen terhelés azonosításához.
@@ -83,7 +83,6 @@ A rendszer a teljesítményszámlálók adatainak összegyűjtése, és küldje 
       @"\.NET CLR Memory([replace-with-application-process-name])\# GC Handles", "GC Handles")));
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 ```
-
 Vagy is elvégezheti a létrehozott egyéni metrikákat az ugyanaz:
 
 ``` C#
@@ -115,6 +114,9 @@ Egyéb telemetriai adatokat, például **performanceCounters** egy olyan oszlop 
 
 * *Kivétel arány* rendszer teljesítményszámláló van. A közös nyelvi futtató környezet összes a kezelt és kezeletlen kivételt okozott, és a mintavételi időközben a teljes elosztja a időközt hosszának száma. Az Application Insights SDK ennek gyűjt, és elküldi a portálon.
 * *Kivételek* a mintavételi időközben a diagram a portál által fogadott TrackException jelentések száma. Ez magában foglalja a csak a kezelt kivételek ahol TrackException hívja be a kódját, és nem tartalmazza az összes írt [nem kezelt kivételek](app-insights-asp-net-exceptions.md). 
+
+## <a name="performance-counters-in-aspnet-core-applications"></a>Az Asp.Net Core alkalmazások teljesítményszámlálók
+Teljesítményszámlálók csak akkor, ha az alkalmazás a teljes .NET-keretrendszer célzott támogatottak. Nincs a teljesítményszámlálók adatainak összegyűjtése a .NET-hez nem képes alkalmazások alapvető.
 
 ## <a name="alerts"></a>Riasztások
 Például a más metrikákkal is [riasztás beállításához](app-insights-alerts.md) figyelmezteti, ha a teljesítményszámláló megadott maximális kívül kerül. Nyissa meg a riasztások panelen, majd kattintson a riasztás hozzáadása.

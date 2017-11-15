@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 11/09/2017
 ms.author: shlo
-ms.openlocfilehash: 25581fa1aa2086accabc9b480d936ebae0338dd3
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8fb656a86689e59c3408b1e2a9274737430eb127
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Amíg az Azure Data Factory tevékenység
 A Until tevékenység ugyanezt a funkcionalitást biztosítja, hogy egy tegye-mindaddig, amíg az ismétlési struktúra programozási nyelvek nyújt. Ez végrehajtja a tevékenységek egy készletét ismétlődő mindaddig, amíg a tevékenységhez társított feltétel értéke true. Időtúllépési értéket is megadhat az adat-előállítóban tevékenység-ig. 
@@ -60,7 +60,7 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 név | Neve a `Until` tevékenység. | Karakterlánc | Igen
 type | Meg kell **amíg**. | Karakterlánc | Igen
 kifejezés | IGAZ vagy hamis kifejezés | Kifejezés.  | Igen
-timeout | A ne-csak a megadott idő elteltével időtúllépést hurok. | Karakterlánc. `d.hh:mm:ss`(vagy) `hh:mm:ss`. Az alapértelmezett érték 7 nap. | Nem
+timeout | A ne-csak a megadott idő elteltével időtúllépést hurok. | Karakterlánc. `d.hh:mm:ss`(vagy) `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
 Tevékenységek | Amíg a kifejezés eredménye végrehajtott tevékenység `true`. | Tevékenységek tömbje. |  Igen
 
 ## <a name="example-1"></a>1. példa

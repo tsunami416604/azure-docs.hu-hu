@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
-ms.openlocfilehash: 736e48f9651d89a1f4e8e0ae72cdffebb8e9c6e0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0319029277091611673f15c94604604850cbfcbe
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-a-user-defined-route---azure-portal"></a>Hozzon létre egy felhasználó által megadott útvonal - Azure-portálon
 
@@ -268,6 +268,12 @@ A cikkben a Resource Manager telepítési modell, amely a felhasználó által d
         - **Ubuntu**: futtassa a `tracepath myvm-private` parancsot.
       Forgalom átmegy 10.0.2.4 (NVA) (a virtuális gép személyes alhálózaton) 10.0.1.4 elérése előtt. 
     - Az előző lépéseket csatlakozva a *myVm InPrivate-* virtuális gép és a pingelés a *myVm nyilvános* virtuális gépet. A nyomkövetési útvonal 10.0.0.4 (a virtuális gép nyilvános alhálózaton) elérése előtt 10.0.2.4 keresztül utazás kommunikációs jeleníti meg.
+
+      > [!NOTE]
+      > Az előző lépések lehetővé teszik annak ellenőrzéséhez, hogy az Azure magánhálózati IP-címek között. Ha előre, vagy a proxy, forgalom nyilvános IP-címek, egy hálózati virtuális készüléken keresztül:
+      > - A készülék biztosítania kell a hálózati címfordítás vagy a proxy-képességet. Hálózati címfordítás, a készülék kell fordítani a forrás IP-cím a saját, és majd továbbítja a kérést a nyilvános IP-cím. Hogy a készülék hálózati cím lefordítani az forráscím, vagy a proxy használatát az ügynökökön, Azure fordítja le a hálózati virtuális készülék magánhálózati IP-cím egy nyilvános IP-cím. Azure nyilvános IP-címek magánhálózati IP-címeit használja a különböző módszerekkel kapcsolatos további információkért lásd: [kimenő kapcsolatok ismertetése](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+      > - Az útválasztási táblázatban előtag például egy további útvonal: 0.0.0.0/0, a következő ugrás típusa VirtualAppliance és a következő ugrás IP-10.0.2.4 (az előző példa parancsfájlban).
+      >
     - **Opcionálisan**: a következő Ugrás az Azure két virtuális gép közötti érvényesítéséhez használja a következő ugrás funkció az Azure hálózati figyelőt. Hálózati figyelőt használatához először [hozzon létre egy Azure hálózati figyelőt példányt](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json) számára a használni kívánt régiót. Ebben az oktatóanyagban az Amerikai keleti terület szolgál. Miután engedélyezte a hálózati figyelőt példánya a régió, adja meg a nyilvános és Magánfelhő alhálózatban lévő virtuális gépek között a következő ugrás adatainak megtekintéséhez a következő parancsot:
      
         ```azurecli-interactive
