@@ -13,17 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/10/2017
+ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: e9cb4b5b886cec46c0483287460c720855867f38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93e75429d66a30bfc4588a3070e32d58eec0df4b
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Hogyan lehet beállítani az Azure Cosmos DB globális terjesztési tábla API használatával
-
-Ebben a cikkben megmutatjuk, hogyan használható az Azure portál Azure Cosmos DB globális terjesztési telepítési és a tábla API (előzetes verzió) segítségével csatlakozzon.
 
 Ez a cikk ismerteti a következő feladatokat: 
 
@@ -36,13 +34,13 @@ Ez a cikk ismerteti a következő feladatokat:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>A preferált régió tábla API használatával csatlakozik
 
-Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti úgy, hogy a `TablePreferredLocations` konfigurációs érték az előzetes Azure Storage szolgáltatás SDK az alkalmazás Config. Az Azure Cosmos DB-fiók konfigurációja, az aktuális területi rendelkezésre állás és a megadott beállításokat szabályozó lista alapján, a legoptimálisabb végpont választja ki az Azure Storage szolgáltatás SDK írási és olvasási műveletek.
+Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti úgy, hogy a `TablePreferredLocations` konfigurációs érték az az App.config fájlban, az Azure Cosmos DB tábla API SDK-ban. Az Azure Cosmos DB tábla API SDK válasszon fog kommunikálni a legjobb végpont a fiók konfigurációjának, aktuális területi rendelkezésre állás és a megadott beállítások listája alapján.
 
 A `TablePreferredLocations` olvasása előnyben részesített (többhelyű) helyek vesszővel tagolt listáját kell tartalmaznia. Minden ügyfél példány e régiók részhalmazát megadhat kis késleltetésű olvasása csatlakozási kísérleteinek kívánt sorrendjét. A régiók névvel kell ellátni használatával a [megjelenített neveket](https://msdn.microsoft.com/library/azure/gg441293.aspx), például `West US`.
 
-Az összes olvasási kapnak az első rendelkezésre álló terület a `TablePreferredLocations` listája. A kérés nem teljesíthető, ha az ügyfél lefelé a listában, a következő régióban sikertelen, és így tovább.
+Az első rendelkezésre álló terület küldött összes írási a `TablePreferredLocations` listája. A kérés nem teljesíthető, ha az ügyfél lefelé a listában, a következő régióban sikertelen, és így tovább.
 
-Az SDK-t csak megpróbálja beolvasni a régió van megadva a `TablePreferredLocations`. Igen, például ha az adatbázis-fiókot a három régióban, de az ügyfél csak meghatározza a nem írási területek két `TablePreferredLocations`, akkor nincs olvasási szolgáltató kívül az írási régió, feladatátvétel esetén is.
+Az SDK próbál olvasni a megadott régiók `TablePreferredLocations`. Igen, például ha az adatbázis-fiókot a három régióban, de az ügyfél csak meghatározza a nem írási területek két `TablePreferredLocations`, akkor nincs olvasási szolgáltató kívül az írási régió, feladatátvétel esetén is.
 
 Az SDK automatikusan elküld minden írási műveleteket ad ki az aktuális írási régió.
 
@@ -62,9 +60,5 @@ Ebben az oktatóanyagban ezt a következők:
 
 > [!div class="checklist"]
 > * Az Azure portál használatával globális terjesztési konfigurálása
-> * A DocumentDB API-k használatával globális terjesztési konfigurálása
+> * Az Azure Cosmos DB tábla API-kkal globális terjesztési konfigurálása
 
-Most már folytathatja a következő oktatóanyag megtudhatja, hogyan fejleszthet, helyileg emulátorral Azure Cosmos DB helyi.
-
-> [!div class="nextstepaction"]
-> [Helyileg emulátorral fejlesztése](local-emulator.md)

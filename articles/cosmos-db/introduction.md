@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/14/2017
+ms.date: 11/15/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 804b20111ea99892201079657d6d3602ececdd28
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f34790ad670b488159e945be9bf4ba378cc5e94a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -44,6 +44,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB az aláb
         * [MongoDB API](mongodb-introduction.md): A MongoDB adatbázis-szolgáltatás Cosmos DB platformra épül. Kompatibilis a meglévő MongoDB szalagtárak, illesztőprogramok, eszközök és alkalmazások.
         * [Tábla API](table-introduction.md): prémium szintű képességeket biztosít Azure Table storage alkalmazások beépített egy kulcs-érték dokumentumadatbázis-szolgáltatás.
         * [Graph API (Gremlin)](graph-introduction.md): egy grafikonon adatbázis-szolgáltatás, amely következő a [Apache TinkerPop specification](http://tinkerpop.apache.org/).
+        * [Cassandra API](cassandra-introduction.md): A kulcs-érték tároló épülő a [Apache Cassandra](https://cassandra.apache.org/) végrehajtására. 
         * További adatok modellek hamarosan!
 
 * **Igény szerinti rugalmas átviteli sebesség és tárterület, világszerte**
@@ -55,7 +56,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB az aláb
     * Egy átlagos 1 KB-os elem esetében a Cosmos DB – ugyanabban az Azure-régióban – az esetek 99%-ában garantálja az olvasások 10 ezredmásodperc alatti, illetve az indexelt írások 15 ezredmásodperc alatti végpontok közötti késését. A késések átlagértékei lényegesen alacsonyabbak ennél (5 ezredmásodperc alattiak).
 
 * **Always On rendelkezésre állás**
-    * 99,99%-os rendelkezésre állás egy adott régión belül.
+    * SLA rendelkezésre állás 99,99 % fiókokhoz egyetlen régión és laza konzisztencia, 99.999 % fiókokhoz több területi olvassa el az összes fiókot a több területi adatbázis rendelkezésre állásának.
     * Bármennyi [Azure-régiót](https://azure.microsoft.com/regions) üzembe helyezhet a magasabb rendelkezésre állás érdekében.
     * [Hibaszimuláció](regional-failover.md) egy vagy több régióban, adatvesztés elleni garanciával. 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 17f6918371678ac849198bff4e3b3eea8678c660
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2aadf6a103e92a4fbb11223a449280a36dea6b4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services szerepkörök csatlakozik egy egyéni Azure-ban üzemeltetett AD tartományvezérlő
 Első üzembe helyezünk egy virtuális hálózatot (VNet) az Azure-ban. Majd felveszi azt a virtuális hálózat egy Active Directory-tartományvezérlőhöz (az Azure virtuális gép üzemeltetett). Ezután azt fogja meglévő felhőszolgáltatás szerepköreit hozzá a korábban létrehozott virtuális hálózatot, majd csatlakoztassa őket a tartományvezérlő.
@@ -128,7 +128,7 @@ Ezt követően kell a felhőalapú szolgáltatás központi telepítés hozzáad
 </ServiceConfiguration>
 ```
 
-Ezután hozza létre a felhőalapú szolgáltatások projektet, és telepítheti az Azure. Ha segítséget szeretne kapni a cloud services csomag telepítése az Azure-ba, tekintse meg a [létrehozásáról és központi telepítése egy felhőalapú szolgáltatás](cloud-services-how-to-create-deploy.md#how-to-deploy-a-cloud-service)
+Ezután hozza létre a felhőalapú szolgáltatások projektet, és telepítheti az Azure. Ha segítséget szeretne kapni a cloud services csomag telepítése az Azure-ba, tekintse meg a [létrehozásáról és központi telepítése egy felhőalapú szolgáltatás](cloud-services-how-to-create-deploy-portal.md)
 
 ## <a name="connect-your-webworker-roles-to-the-domain"></a>A webes vagy feldolgozói szerepköröket csatlakozni a tartományhoz
 Miután a felhőszolgáltatás-projekt Azure van telepítve, csatlakoztassa a szerepkörpéldányok az egyéni AD-tartomány, az Active Directory-tartománynak kiterjesztés használatával. Az Active Directory-tartománynak-bővítmény hozzáadása a meglévő felhőalapú szolgáltatások telepítéséhez, és az egyéni tartományhoz, a PowerShell hajtható végre a következő parancsokat:

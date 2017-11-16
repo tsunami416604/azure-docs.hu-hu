@@ -1,36 +1,35 @@
 ---
 title: "Referenciaadatok Azure idő adatsorozat Insights környezet kezelése C# használatával |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan kezelheti a referenciaadatok Azure idő adatsorozat Insights környezet C# használatával"
-keywords: 
+description: "Ez a cikk a C# (c-éles) .NET nyelve egyéni alkalmazás létrehozásával referenciaadatok Azure idő adatsorozat Insights környezet kezelését ismerteti."
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: venkatgct
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 528a33cf01b2a0a07880dad62ba6bbaf4a605153
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: cd4d37ae2a68be3c061706f80055efb7e5387d98
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# használatával referenciaadatok Azure idő adatsorozat Insights környezet kezelése
 
-C# mutatja be a referenciaadatok Azure idő adatsorozat Insights környezet kezelése.
-A minta futtatásához győződjön meg arról, a következő lépéseket.
+Ez a cikk ismerteti a C# mintakód referenciaadatok Azure idő adatsorozat Insights környezet kezeléséhez állíthat össze.
+
+Győződjön meg arról, fordítása és futtatása a mintakódot előtt a következő lépéseket:
 1. A referencia-adatkészlet használatával lett létrehozva [Ez a cikk](time-series-insights-add-reference-data-set.md).
-2. A hozzáférési jogkivonat használható, ha az alkalmazás futtatása az Azure Active Directory API-n keresztül keletkezik. Ez a token kell átadni a `Authorization` minden lekérdezés API-kérelem fejlécében. Nem interaktív alkalmazások beállításának, tekintse meg a [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md) cikk.
-3. A minta elején definiált összes állandók megfelelően van beállítva.
 
-## <a name="c-sample"></a>C#-minta
+2. Konfigurálja a hozzáférési jogkivonat ahhoz, hogy az alkalmazás által használandó. Győződjön meg arról, hogy a jogkivonat keletkezik, az Azure Active Directory API-n keresztül. Ez a token kell átadni a `Authorization` minden lekérdezés API-kérelem fejlécében. Nem interaktív alkalmazások beállításának, tekintse meg a [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md) cikk.
 
+3. Cserélje le a példában állandók, a kijelölt mintakódot szerkesztése **#DUMMY #**, a kód elejére közelében. 
+
+## <a name="c-sample-code"></a>C# mintakód 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -233,5 +232,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-
-Az alkalmazásprogramozási felület (API) teljes leírását a [Referencia-adatok API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) dokumentum tartalmazza.
+Tekintse meg a teljes REST API-referenciában [referencia az API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api).

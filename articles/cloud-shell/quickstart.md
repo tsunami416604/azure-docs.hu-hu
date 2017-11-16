@@ -1,5 +1,5 @@
 ---
-title: "Az Azure-felhőbe rendszerhéj (előzetes verzió) gyors üzembe helyezés bash |} Microsoft Docs"
+title: "Az Azure-felhőbe rendszerhéj gyors üzembe helyezés bash |} Microsoft Docs"
 description: "A felhő rendszerhéj Bash gyors üzembe helyezés"
 services: 
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: bbad2735acf06ebefda020410731fb307c4ec614
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ed83b28fe5f0f1e9626115390f8697dfb2c8ead
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Az Azure-felhőbe rendszerhéj Bash gyors üzembe helyezés
 
@@ -30,7 +30,7 @@ Ez a dokumentum részletesen Bash használata az Azure felhőalapú Shell a [Azu
 ## <a name="start-cloud-shell"></a>Indítsa el a felhő rendszerhéj
 1. Indítsa el **felhő rendszerhéj** az Azure portál felső navigációs sáv <br>
 ![](media/quickstart/shell-icon.png)
-2. Kiválaszthat egy tárfiókot és Azure fájlmegosztás létrehozása
+2. Válasszon ki egy előfizetést hozzon létre egy tárfiókot, és a Microsoft Azure fájlok megosztása
 3. Válassza a "Create a storage"
 
 > [!TIP]
@@ -59,7 +59,7 @@ Ubuntu virtuális gép létrehozása az új erőforráscsoportban. Az Azure CLI 
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
-> A nyilvános és titkos kulcsokat, a virtuális gép hitelesítéséhez használt kerülnek `/User/.ssh/id_rsa` és `/User/.ssh/id_rsa.pub` Azure CLI 2.0 alapértelmezés szerint. Az .ssh mappa a csatolt Azure fájlmegosztás 5 GB-os kép megőrződjenek.
+> A nyilvános és titkos kulcsokat, a virtuális gép hitelesítéséhez használt kerülnek `/User/.ssh/id_rsa` és `/User/.ssh/id_rsa.pub` Azure CLI 2.0 alapértelmezés szerint. Az .ssh mappa a csatolt Azure fájlok megosztási 5 GB-os kép megőrződjenek.
 
 A felhasználónév, a virtuális gép lesz a felhő rendszerhéj használt felhasználónév ($User@Azure:).
 
@@ -79,4 +79,4 @@ Futtassa a `az group delete -n MyRG` parancsot.
 ## <a name="next-steps"></a>Következő lépések
 [A felhő rendszerhéj Bash tárolásakor fájlok megismerése](persisting-shell-storage.md) <br>
 [További tudnivalók az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
-[További tudnivalók az Azure File storage](../storage/files/storage-files-introduction.md) <br>
+[Tudnivalók Azure Files storage:](../storage/files/storage-files-introduction.md) <br>

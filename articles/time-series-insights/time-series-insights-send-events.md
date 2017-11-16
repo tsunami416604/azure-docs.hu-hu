@@ -1,55 +1,63 @@
 ---
-title: "Események küldése Azure Time Series Insights-környezetbe | Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja az események a Time Series Insights-környezetbe való küldéséhez szükséges lépéseket"
-keywords: 
-services: tsi
-documentationcenter: 
+title: "Események küldése az Azure idő adatsorozat Insights környezetre |} Microsoft Docs"
+description: "Ez az oktatóanyag azt ismerteti, hogyan létrehozása és konfigurálása az event hubs, és futtassa a mintaalkalmazást, leküldéses események jelennek meg Azure idő adatsorozat Insights."
+services: time-series-insights
+ms.service: time-series-insights
 author: venkatgct
-manager: jhubbard
-editor: 
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 07/21/2017
 ms.author: venkatja
-ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+manager: jhubbard
+editor: MarkMcGeeAtAquent
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 2c1b91fb87857eee8ca938be193b61e01bbdb886
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Események küldése Time Series Insights-környezetbe eseményközponton keresztül
-
-Az oktatóanyag elmagyarázza, hogyan hozhat létre és konfigurálhat egy eseményközpontot, és hogyan futtathat egy mintaalkalmazást események leküldéséhez. Ha már van JSON formátumú eseményeket tartalmazó eseményközpontja, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetet a [Time Series Insightsban](https://insights.timeseries.azure.com).
+Ez a cikk ismerteti, hogyan hozza létre és konfigurálja az eseményközpont, és futtassa a mintaalkalmazást leküldéses eseményekre. Ha egy meglévő event hubs eseményközpontot, az események JSON formátumban, ez az oktatóanyag kihagyhatja, és megtekintheti a környezet [idő adatsorozat Insights](https://insights.timeseries.azure.com).
 
 ## <a name="configure-an-event-hub"></a>Eseményközpont konfigurálása
-1. Eseményközpont létrehozásához kövesse az Event Hubs [dokumentációjában](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) foglalt utasításokat.
+1. Eseményközpont létrehozásához kövesse az Event Hubs [dokumentációjában](../event-hubs/event-hubs-create.md) foglalt utasításokat.
 
-2. Olyan fogyasztói csoportot hozzon létre, amelyet csak a Time Series Insights-eseményforrás használ.
+2. Keresse meg **eseményközpont** a keresési sávon. Kattintson a **Event Hubs** a visszaadott lista.
 
-  > [!IMPORTANT]
-  > Ügyeljen arra, hogy ezt a fogyasztói csoportot ne használja másik szolgáltatás (például Stream Analytics-feladat vagy másik Time Series Insights-környezet). Ha a fogyasztói csoportot más szolgáltatások is használják, az zavarhatja az olvasási műveleteket ebben a környezetben és a többi szolgáltatásban is. Ha a „$Default” elemet használja a fogyasztói csoportként, előfordulhat, hogy más olvasók újra fel fogják használni a csoportot.
+3. Az eseményközpont kijelöléséhez kattintson a nevére.
+
+4. A **entitások** középső konfigurációs ablakában kattintson **Event Hubs** újra.
+
+5. Válassza ki az event hubs konfigurálásának nevét.
 
   ![Az eseményközpont fogyasztói csoportjának kiválasztása](media/send-events/consumer-group.png)
 
-3. Az eseményközpontban hozza létre a „MySendPolicy” elnevezésű szabályzatot, amelyet az alábbi C#-példában az események küldésére használunk majd.
+6. A **entitások**, jelölje be **fogyasztói csoportok**.
+ 
+7. Olyan fogyasztói csoportot hozzon létre, amelyet csak a Time Series Insights-eseményforrás használ.
+
+   > [!IMPORTANT]
+   > Ügyeljen arra, hogy ezt a fogyasztói csoportot ne használja másik szolgáltatás (például Stream Analytics-feladat vagy másik Time Series Insights-környezet). Ha használ egyéb a fogyasztói csoportot szolgáltatások olvasási művelete negatívan befolyásolja ebben a környezetben, és az egyéb szolgáltatások. Ha a „$Default” elemet használja a fogyasztói csoportként, előfordulhat, hogy más olvasók újra fel fogják használni a csoportot.
+
+8. A a **beállítások** elemcsoportban válasszon **megosztás hozzáférési házirendek**.
+
+9. Az eseményközpontok felé, hozzon létre **MySendPolicy** csharp minta események küldésére szolgál.
 
   ![A Megosztott elérési házirendek kiválasztása, majd kattintás a Hozzáadás gombra](media/send-events/shared-access-policy.png)  
 
   ![Új megosztott elérési házirend hozzáadása](media/send-events/shared-access-policy-2.png)  
 
 ## <a name="create-time-series-insights-event-source"></a>Time Series Insights-eseményforrás létrehozása
-1. Ha még nem hozott létre eseményforrást, tegye ezt meg [ezeket az utasításokat](time-series-insights-add-event-source.md) követve.
+1. Ha még nem hozott létre eseményforrást, tegye ezt meg [ezeket az utasításokat](time-series-insights-how-to-add-an-event-source-eventhub.md) követve.
 
-2. Adja meg a „deviceTimestamp” értéket az időbélyegző-tulajdonság neveként – ezt a tulajdonságot használja a rendszer a tényleges időbélyegzőként a C#-példában. Az időbélyegző-tulajdonság neve megkülönbözteti a kis- és nagybetűket, és az értékeknek __éééé-HH-nnTÓÓ:pp:mm.FFFFFFFK__ formátumban kell lenniük, ha JSON formátumban lesznek elküldve az eseményközpontba. Ha a tulajdonság nem létezik az eseményben, akkor a rendszer azt az időpontot használja, amikor az eseményt sorba helyezték az eseményközpontban.
+2. Adja meg **deviceTimestamp** a időbélyeg-tulajdonság neve – Ez a tulajdonság része lesz a C# mintában tényleges időbélyegző. Az időbélyegző-tulajdonság neve megkülönbözteti a kis- és nagybetűket, és az értékeknek __éééé-HH-nnTÓÓ:pp:mm.FFFFFFFK__ formátumban kell lenniük, ha JSON formátumban lesznek elküldve az eseményközpontba. Ha a tulajdonság nem létezik az eseményben, akkor a rendszer azt az időpontot használja, amikor az eseményt sorba helyezték az eseményközpontban.
 
   ![Eseményforrás létrehozása](media/send-events/event-source-1.png)
 
 ## <a name="sample-code-to-push-events"></a>Mintakód események leküldéséhez
-1. Lépjen a „MySendPolicy” eseményközpont-házirendhez, és másolja a házirendkulccsal rendelkező kapcsolati karakterláncot.
+1. Nyissa meg az event hub csoportházirend nevű **MySendPolicy**. Másolás a **kapcsolati karakterlánc** a házirend-kulccsal.
 
   ![A MySendPolicy kapcsolati karakterlánc másolása](media/send-events/sample-code-connection-string.png)
 
@@ -163,6 +171,7 @@ JSON-tömb két JSON-objektummal. Minden JSON-objektum eseménnyé lesz átalak�
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
+
 ### <a name="sample-3"></a>3. példa
 
 #### <a name="input"></a>Input (Bemenet)
@@ -235,5 +244,5 @@ Két JSON-objektumot tartalmazó beágyazott JSON-tömbbel rendelkező JSON-obje
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>Következő lépések
-
-* A környezet megtekintése a [Time Series Insights portálon](https://insights.timeseries.azure.com)
+> [!div class="nextstepaction"]
+> [Tekintse meg a környezetben idő adatsorozat Insights explorer](https://insights.timeseries.azure.com).

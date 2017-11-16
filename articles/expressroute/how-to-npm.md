@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: b041244b28d76de4bac2822c115482e31d073a22
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 3ab8029d035c3ba88ddb8a112e27f9054f7c203c
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurálja a hálózati Teljesítményfigyelő az ExpressRoute (előzetes verzió)
 
@@ -74,6 +74,11 @@ Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgálta
   * Erőforráscsoport - hozzon létre egy erőforráscsoportot, vagy használjon egy meglévőt.
   * Hely - ki kell választania egy [támogatott régióban](#regions).
   * Tarifacsomagra - válassza az "ingyenes"
+  
+  >[!NOTE]
+  >Az ExpressRoute-kapcsolatcsoport a világon bárhol lehet, és nem rendelkezik a munkaterületen ugyanabban a régióban kell.
+  >
+
 
   ![Munkaterület](.\media\how-to-npm\4.png)<br><br>
 4. Kattintson a **OK** mentéséhez és a beállítások-sablon üzembe helyezése. Amikor érvényesíti a sablont, kattintson a **létrehozása** központi telepítése a munkaterületen.
@@ -174,7 +179,7 @@ NSG kapcsolatos további információkért lásd: [hálózati biztonsági csopor
 >
 >
 
-Előtt ExpressRoute figyelési az szolgáltatásával NPM, kérnie kell rendelkeznie a munkaterület szerepel az engedélyezési listán. [Kattintson ide a lapra, és töltse ki az űrlap](https://go.microsoft.com/fwlink/?linkid=862263). (Mutató: érdemes lehet a hivatkozás megnyitásához az egy új ablakot vagy lapot). Az engedélyezett végre üzleti napi egy vagy több. Ha a engedélyezése befejeződött, kapni fog egy e-mailt.
+Előtt ExpressRoute figyelési az szolgáltatásával NPM, kérnie kell rendelkeznie a munkaterület szerepel az engedélyezési listán. [Kattintson ide a lapra, és töltse ki az űrlap](https://aka.ms/npmcohort). (Mutató: érdemes lehet a hivatkozás megnyitásához az egy új ablakot vagy lapot). Az engedélyezett végre üzleti napi egy vagy több. Ha a engedélyezése befejeződött, kapni fog egy e-mailt.
 
 ## <a name="setupmonitor"></a>5. lépés: NPM ExpressRoute-figyelés konfigurálása.
 

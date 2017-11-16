@@ -14,17 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 3f6569d32708c42247e0ffec70389f2e0f07389e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7c33dc0a3c1f01cc53a91e05feb33272cb21f47
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Élő Stream továbbítása helyszíni kódolókkal, amely többféle sávszélességű adatfolyamok létrehozása
 ## <a name="overview"></a>Áttekintés
 Azure Media Services a *csatorna* live-streaming tartalom feldolgozása csővezeték jelöli. Egy csatorna élő bemeneti adatfolyamok megkapja az alábbi két módszer egyikével:
 
-* Egy helyszíni élő kódoló küld egy többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) adatfolyamot a csatornát, amely a Media Services élő kódolás nincs engedélyezve a. A feldolgozott adatfolyamok további feldolgozás nélkül továbbítja csatornákon keresztül. Ezt a módszert nevezik *áteresztő*. A következő élő kódolók képesek, amelyek többféle sávszélességű Smooth Streaming kimenetként is használhatja: Media Excel Ateme, kommunikációs képzelhető el, Envivo, Cisco és elemi. A következő élő kódolók képesek rendelkezik RTMP kimenetként: Adobe Flash Media élő kódoló, Telestream Wirecast, Haivision, Teradek és TriCaster. Az élő kódolók is küldhetnek egy egyszeres sávszélességű streamet egy csatornát, amely az élő kódolás nincs engedélyezve, de nem ajánlott. Az ügyfél számára, akik kérnek, azt a Media Services továbbítja az adatfolyamot.
+* Egy helyszíni élő kódoló küld egy többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) adatfolyamot a csatornát, amely a Media Services élő kódolás nincs engedélyezve a. A feldolgozott adatfolyamok további feldolgozás nélkül továbbítja csatornákon keresztül. Ezt a módszert nevezik *áteresztő*. Az élő kódolók is küldhetnek egy egyszeres sávszélességű streamet egy csatornát, amely az élő kódolás nincs engedélyezve, de nem ajánlott. Az ügyfél számára, akik kérnek, azt a Media Services továbbítja az adatfolyamot.
 
   > [!NOTE]
   > Valamely áteresztő módszer használata a leggazdaságosabb megoldás közvetít élő adatfolyamként.
@@ -34,13 +34,13 @@ Azure Media Services a *csatorna* live-streaming tartalom feldolgozása csőveze
 
 A Media Services 2.10 kiadástól kezdve, amikor létrehoz egy csatornát, megadhatja, hogyan történjen a csatorna a bemeneti adatfolyam fogadására. Megadhatja azt is, hogy kíván-e a csatorna élő kódolásra az adatfolyam. Erre két lehetősége van:
 
-* **Továbbítása**: Adja meg ezt az értéket, ha szeretné használni, amely többszörös sávszélességű streammé (csatlakoztatott adatfolyam) kimenetként fog rendelkezni a helyszíni élő kódoló. Ebben az esetben a bejövő streamből haladnak keresztül a kimeneti kódolási nélkül. Ez a csatorna 2,10 kiadása előtt történik. Ez a témakör tájékoztatást nyújt a csatornák a típus használata.
-* **Élő kódolás**: válassza ezt az értéket, ha tervezi az egyszeres sávszélességű élő adatfolyamot többféle sávszélességűvé kódolása a Media Services segítségével. Vegye figyelembe, hogy egy élő kódolás hagyja a csatorna egy **futtató** állapot adatforgalmi díjak gyakorisága. Azt javasoljuk, hogy azonnal leállítja a futó csatornák után az élő adatfolyam esemény extra óránkénti díjak elkerülése érdekében. Az ügyfél számára, akik kérnek, azt a Media Services továbbítja az adatfolyamot.
+* **Továbbítása**: Adja meg ezt az értéket, ha egy helyszíni élő kódoló, amely rendelkezik egy többszörös sávszélességű streammé (csatlakoztatott adatfolyam) kimenetként használatát tervezi. Ebben az esetben a bejövő streamből haladnak keresztül a kimeneti kódolási nélkül. Ez a csatorna 2,10 kiadása előtt történik. Ez a cikk tájékoztatást nyújt a csatornák a típus használata.
+* **Élő kódolás**: válassza ezt az értéket, ha tervezi az egyszeres sávszélességű élő adatfolyamot többféle sávszélességűvé kódolása a Media Services segítségével. Az élő kódolás csatorna elhagyása egy **futtató** állapot számlázási terhel. Azt javasoljuk, hogy azonnal leállítja a futó csatornák után az élő adatfolyam esemény extra óránkénti díjak elkerülése érdekében. Az ügyfél számára, akik kérnek, azt a Media Services továbbítja az adatfolyamot.
 
 > [!NOTE]
-> Ez a témakör nem élő kódolásra képes csatornák attribútumait ismerteti. További információ a segítségével élő kódolásra képes csatornák használata: [többféle sávszélességű adatfolyamok létrehozása az Azure Media Services segítségével élő Stream továbbítása](media-services-manage-live-encoder-enabled-channels.md).
+> A cikk nem élő kódolásra képes csatornák attribútumait ismerteti. További információ a segítségével élő kódolásra képes csatornák használata: [többféle sávszélességű adatfolyamok létrehozása az Azure Media Services segítségével élő Stream továbbítása](media-services-manage-live-encoder-enabled-channels.md).
 >
->
+>Ajánlott helyszíni kódolókkal kapcsolatos információkért lásd: [helyszíni kódolókkal ajánlott](media-services-recommended-encoders.md).
 
 A következő diagram által live-streaming használó munkafolyamatot, egy helyszíni élő kódoló többszörös sávszélességű RTMP vagy töredezett MP4) (Smooth Streaming) adatfolyamok kimenetként.
 
@@ -94,7 +94,7 @@ A másodlagos URL-cím Ha azt szeretné, hogy a bemeneti adatfolyam (valamint k�
 
 - Több kódolók minden Encoder kérdez le, hogy egy dedikált pontot:
 
-    Ez a forgatókönyv mindkét kódoló biztosít, és redundanciát betöltési. Ebben a forgatókönyvben encoder1 leküldi az elsődleges URL-címet, és encoder2 leküldi a másodlagos URL-CÍMÉT. Ha Encoder elemek esetében nem sikerül, a más kódoló is tartsa adatküldés. Mivel a Media Services nem szakítja meg elsődleges és másodlagos URL-címek egyidejűleg adatredundanciát tarthatjuk fenn. Ebben a forgatókönyvben azt feltételezi, hogy, hogy kódolók idő szinkronizálva, és adja meg pontosan ugyanazokat az adatokat.  
+    Ez a forgatókönyv mindkét kódoló biztosít, és redundanciát ingests. Ebben a forgatókönyvben encoder1 leküldi az elsődleges URL-címet, és encoder2 leküldi a másodlagos URL-CÍMÉT. Ha Encoder elemek esetében nem sikerül, a más kódoló is tartsa adatküldés. Mivel a Media Services nem szakítja meg elsődleges és másodlagos URL-címek egyidejűleg adatredundanciát tarthatjuk fenn. Ebben a forgatókönyvben azt feltételezi, hogy, hogy kódolók idő szinkronizálva, és adja meg pontosan ugyanazokat az adatokat.  
 
 - Több kódolók dupla küldését elsődleges és másodlagos URL-címek:
 
@@ -124,7 +124,7 @@ A csatorna kimeneti konfigurálásával és a FragmentsPerSegment beállítása 
 
 A keyframe intervallumértéket ChanneInput KeyFrameInterval tulajdonság beállításával is módosíthatja. Ha explicit módon beállítva KeyFrameInterval, a HLS szegmentálhatja csomagolás arány FragmentsPerSegment kiszámítása a korábban meghatározott szabályokat.  
 
-Ha explicit módon beállítva KeyFrameInterval és FragmentsPerSegment is, a Media Services fogja használni az Ön által beállított értékek.
+Ha explicit módon beállítva KeyFrameInterval és FragmentsPerSegment is, a Media Services Ön által beállított értékeket használja.
 
 #### <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
 Az IP-címek, amelyek jogosultak videókat közzétenni a csatorna adhat meg. Az alábbi engedélyezett IP-címet adhat meg:
@@ -133,7 +133,7 @@ Az IP-címek, amelyek jogosultak videókat közzétenni a csatorna adhat meg. Az
 * Az IP-címet és egy CIDR alhálózati maszk (például 10.0.0.1/22) használó IP-tartomány
 * Az IP-címet és egy pontozott decimális alhálózati maszk (például 10.0.0.1(255.255.252.0)) használó IP-tartomány
 
-Ha egyetlen IP-címek vannak megadva, és nincs határoz meg szabálydefiníciót, majd IP-cím engedélyezett lesz. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
+Ha egyetlen IP-címek vannak megadva, és határoz meg szabálydefiníciót, az IP-cím engedélyezett. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 
 ### <a name="channel-preview"></a>Csatorna előnézeti
 #### <a name="preview-urls"></a>Kép URL-címek
@@ -144,7 +144,7 @@ A csatorna létrehozásakor az előnézeti URL-CÍMÉT érheti el. Meg az URL-c�
 Jelenleg az előzetes adatfolyam továbbítható csak a töredezett MP4) (Smooth Streaming) formátumban, függetlenül a megadott bemeneti típus. Használhatja a [Smooth Streaming figyelő](http://smf.cloudapp.net/healthmonitor) player a smooth stream teszteléséhez. Egy player, amely az adatfolyam megtekintéséhez az Azure portálon is használható.
 
 #### <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
-Megadhatja, hogy az IP-címek, amelyek számára engedélyezett az előnézeti végpont való kapcsolódáshoz. Ha nincs megadva IP-cím, IP-címeket engedélyezett lesz. Az alábbi engedélyezett IP-címet adhat meg:
+Megadhatja, hogy az IP-címek, amelyek számára engedélyezett az előnézeti végpont való kapcsolódáshoz. Ha nincs megadva IP-cím, IP-címeket engedélyezett. Az alábbi engedélyezett IP-címet adhat meg:
 
 * Egyetlen IP-címet (például 10.0.0.1)
 * Az IP-címet és egy CIDR alhálózati maszk (például 10.0.0.1/22) használó IP-tartomány
@@ -154,13 +154,13 @@ Megadhatja, hogy az IP-címek, amelyek számára engedélyezett az előnézeti v
 Csatorna kimeneti kapcsolatos információkért tekintse meg a [Keyframe időköz](#keyframe_interval) szakasz.
 
 ### <a name="channel-managed-programs"></a>Programok csatorna által felügyelt
-Egy csatorna programok társítva, amelyek segítségével szabályozhatja a élő stream szegmenseinek közzétételét és. Programokat a csatornák kezelik. A csatornák és programok viszonya nagyon hasonlít a hagyományos televíziózáshoz, ahol egy csatorna rendelkezik a tartalom állandó adatfolyam, és a program hatóköre a következő néhány időzített esemény adott csatornán.
+Egy csatorna programok társítva, amelyek segítségével szabályozhatja a élő stream szegmenseinek közzétételét és. Programokat a csatornák kezelik. A csatornák és programok viszonya hasonló a hagyományos televíziózáshoz, ahol egy csatorna rendelkezik a tartalom állandó adatfolyam, és a program hatóköre a következő néhány időzített esemény adott csatornán.
 
-Az **Archive Window** (Archiválás időtartama) beállításnál megadhatja, hogy hány órára szeretné megőrizni a program felvett tartalmát. Ez az érték 5 perc és 25 óra közötti lehet. Az archiválási időtartam határozza meg azt is, hogy mennyi idővel ugorhatnak vissza az ügyfelek az aktuális élő pozíciótól. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan elveti azokat a tartalmakat, amelyek korábbiak a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
+Az **Archive Window** (Archiválás időtartama) beállításnál megadhatja, hogy hány órára szeretné megőrizni a program felvett tartalmát. Ez az érték 5 perc és 25 óra közötti lehet. Az archiválási időtartam is határozzák meg, hogy idő ügyfelek maximális száma is kérhet az idő az aktuális élő pozíciótól. Az események hosszabbak lehetnek a megadott időtartamnál, de a rendszer folyamatosan elveti azokat a tartalmakat, amelyek korábbiak a megadott időtartamnál. Ennek a tulajdonságnak az értéke határozza meg azt is, hogy milyen hosszúra nőhetnek az ügyfél jegyzékfájljai.
 
 Minden program társítva, amelyeket az adatfolyamként továbbított tartalmat tárolja. Az eszköz az Azure storage-fiókok blokkolása blob tárolóhoz van leképezve, és az adott tároló blobként tárolja a fájlokat az eszköz. Így az ügyfelek megtekintheti az adatfolyamot a program közzétételéhez létre kell hoznia egy OnDemand-lokátort a társított objektumhoz. Ez a lokátor segítségével megadhatja, hogy az ügyfelek számára adatfolyam-továbbítási URL-cím létrehozása.
 
-Egy csatorna három egyidejűleg zajló programot, támogatja az, hogy létrehozhasson egy bejövő streamből több archívumot. Közzététele, és archiválja esemény különböző részeinek szükség szerint. Tegyük fel például, hogy az üzleti igény szerint a program 6 órát kell archiválni, de csak az elmúlt 10 perc szórási-e. Ezt két egyidejűleg zajló program létrehozásával érheti el. Az esemény 6 órát kell archiválni van állítva egy program, de a program nem lesz közzétéve. A program 10 perc archiválására van beállítva, és a program közzé van téve.
+Egy csatorna három egyidejűleg zajló programot, támogatja az, hogy létrehozhasson egy bejövő streamből több archívumot. Közzététele, és archiválja esemény különböző részeinek szükség szerint. Tegyük fel például, hogy az üzleti igény szerint a program 6 órát kell archiválni, de csak az elmúlt 10 perc szórási-e. Ezt két egyidejűleg zajló program létrehozásával érheti el. Egy program archiválására állítsa be az esemény hat órán keresztül, de a program nem lesz közzétéve. A program 10 perc archiválására van beállítva, és a program közzé van téve.
 
 A meglévő programokat nem szabad új eseményekhez ismét felhasználni. Ehelyett hozzon létre egy új programot az egyes eseményekhez. Amikor készen áll a streamelésre és az archiválásra, indítsa el a program. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
 
@@ -210,8 +210,8 @@ Az alábbiakban a csatornák és kapcsolódó összetevők kapcsolódó egyéb s
 
 * Minden alkalommal, amikor újrakonfigurálja az élő kódoló, hívja az **alaphelyzetbe** módszer a csatornán. A csatorna visszaállítása előtt akkor állítsa le a programot. A csatorna visszaállítása után indítsa újra a programot.
 * Egy csatornát csak akkor, ha az állítható le a **futtató** állapotot és a csatornán minden program lett leállítva.
-* Alapértelmezés szerint csak 5 csatornák adhat hozzá a Media Services-fiókhoz. További információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
-* Csak akkor, ha a csatorna kell fizetni az **futtató** állapotát. További információkért tekintse meg a [állapotok és számlázási csatorna](media-services-live-streaming-with-onprem-encoders.md#states) szakasz.
+* Alapértelmezés szerint csak öt csatornák adhat hozzá a Media Services-fiókhoz. További információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
+* Csak akkor, ha a csatorna kell fizetni az **futtató** állapotát. További információkért lásd: a [állapotok és számlázási csatorna](media-services-live-streaming-with-onprem-encoders.md#states) szakasz.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -220,7 +220,9 @@ Az alábbiakban a csatornák és kapcsolódó összetevők kapcsolódó egyéb s
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
-[Az Azure Media Services töredezett MP4 élő betöltési meghatározása](media-services-fmp4-live-ingest-overview.md)
+[Ajánlott helyszíni kódolókkal](media-services-recommended-encoders.md)
+
+[Az Azure Media Services töredezett MP4 életét betöltési meghatározása](media-services-fmp4-live-ingest-overview.md)
 
 [Az Azure Media Services áttekintése és gyakori alkalmazási esetei](media-services-overview.md)
 

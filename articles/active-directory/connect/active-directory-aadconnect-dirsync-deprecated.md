@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3674670e10500d2992539ab60fbdb31b666fcf9a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 104c2f087a38b3fe006ede4c4d6d283336c3511c
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Frissítse a Windows Azure Active Directory-szinkronizálás és az Azure Active Directory-szinkronizálás
-Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Itt az ideje, hogy Azure AD Connectre frissítsen a Microsoft Azure Active Directory Sync (DirSync) vagy az Azure AD Sync eszközről, mivel ezek elavultak, és a támogatásuk 2017. április 13-ától megszűnik.
+Az Azure AD Connect a legjobb megoldás, ha a helyszíni címtárat az Azure AD-hez és az Office 365-höz szeretné csatlakoztatni. Ez az ideje, mivel ezek az eszközök most már elavultak, és már nem támogatott 2017. április 13-től a Windows Azure Active Directory-szinkronizálás (DirSync) vagy az Azure AD Sync az Azure AD Connect frissítése.
 
-A két azonosító szinkronizálási eszközt, amely elavult érhető el a egyerdős ügyfelek (DirSync) és Többerdős és egyéb speciális ügyfelek (Azure AD Sync). Ezek az eszközök régebbi helyett, amelyet a összes forgatókönyv egyetlen megoldás: az Azure AD Connect. Új funkciókat, a továbbfejlesztett szolgáltatásokat és az új forgatókönyvek támogatása kínál. Tudjanak továbbra is szinkronizálja a helyszíni identitási adatokat az Azure AD és az Office 365, Határozottan javasoljuk, hogy az Azure AD Connect frissítése.
+A két azonosító szinkronizálási eszközt, amely elavult érhető el a egyerdős ügyfelek (DirSync) és Többerdős és egyéb speciális ügyfelek (Azure AD Sync). Ezek az eszközök régebbi helyett, amelyet a összes forgatókönyv egyetlen megoldás: az Azure AD Connect. Új funkciókat, a továbbfejlesztett szolgáltatásokat és az új forgatókönyvek támogatása kínál. Tudjanak továbbra is szinkronizálja a helyszíni identitási adatokat az Azure AD és az Office 365, Határozottan javasoljuk, hogy az Azure AD Connect frissítése. A Microsoft nem garantálja 2017. December 31. után működéséhez régebbi verzióit.
 
 2014. július jelent meg a legutóbbi kiadása a DirSync és 2015. május jelent meg az Azure AD Sync legutóbbi kiadása.
 

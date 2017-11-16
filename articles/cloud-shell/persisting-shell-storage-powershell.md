@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud rendszerhéj (előzetes verzió) fájlok maradnak |} Microsoft Docs"
+title: "PowerShell Azure Cloud rendszerhéj (előzetes verzió) lévő fájlok maradnak |} Microsoft Docs"
 description: "A forgatókönyv a hogyan Azure Cloud rendszerhéj fájlokat továbbra is fennáll."
 services: azure
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: damaerte
-ms.openlocfilehash: 933af3860bfe087a0b4db7eff53d4b978a1475da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66d0e20d670e49cdfe64614d1fc6f5739fde6155
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
-## <a name="how-cloud-shell-works"></a>Felhő rendszerhéj működése
-Felhő rendszerhéj továbbra is fennáll a fájlok a következő metóduson keresztül: 
+## <a name="how-powershell-in-azure-cloud-shell-preview-works"></a>Azure Cloud rendszerhéj (előzetes verzió) PowerShell működése
+A felhő rendszerhéj (előzetes verzió) PowerShell továbbra is fennáll a fájlok a következő metóduson keresztül: 
 * A megadott fájlmegosztással csatlakoztatása `clouddrive` a a `$Home` könyvtárhoz, a fájlmegosztás közvetlen interakció.
 
 ## <a name="list-cloud-drive-file-shares"></a>Lista felhőalapú Meghajtójukra fájlmegosztások

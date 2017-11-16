@@ -1,5 +1,5 @@
 ---
-title: "Fájlok megmaradnak a Bash Azure Cloud rendszerhéj (előzetes verzió) |} Microsoft Docs"
+title: "Fájlok megmaradnak az Azure felhőalapú rendszerhéj Bash |} Microsoft Docs"
 description: "A forgatókönyv a hogyan Azure Cloud rendszerhéj Bash fájlokat továbbra is fennáll."
 services: azure
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 8b8a82e1c1328d952a85ea5afd975a95f5a6e740
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a04342f77126afe1e0a2707f1d213e0a8eb5825d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
-## <a name="how-cloud-shell-storage-works"></a>Felhő rendszerhéj tárolási működése 
-Felhő rendszerhéj továbbra is fennáll, az alábbi eljárások közül mindkettő keresztül fájlokat: 
+## <a name="how-bash-in-cloud-shell-storage-works"></a>A felhő rendszerhéj tárolási Bash működése 
+A felhő rendszerhéj bash továbbra is fennáll, az alábbi eljárások közül mindkettő keresztül fájlokat: 
 * A lemez lemezkép létrehozása a `$Home` directory megőrizni a címtárban található összes tartalmat. Az alapkonfiguráció lemezképét mentette: a megadott fájlmegosztással `acc_<User>.img` : `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`, és automatikusan szinkronizálja a módosításokat. 
 * A megadott fájlmegosztással csatlakoztatása `clouddrive` a a `$Home` könyvtárhoz, a fájlmegosztás közvetlen interakció. `/Home/<User>/clouddrive`van leképezve `fileshare.storage.windows.net/fileshare`.
  
@@ -91,6 +91,6 @@ justin@Azure:~$
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-[Felhő rendszerhéj gyors üzembe helyezés](quickstart.md) <br>
-[További tudnivalók az Azure File storage](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md) <br>
+[További tudnivalók a Microsoft Azure Files storage:](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
 [További információk a tárolási címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

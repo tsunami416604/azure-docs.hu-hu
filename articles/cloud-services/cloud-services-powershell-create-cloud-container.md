@@ -14,11 +14,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 2023fa7b318f9f76ce1e1ea0a46110297be9a001
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd703feb7bf5af765fc3a5448464499aa7b48d6a
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Az Azure PowerShell-parancs segítségével hozzon létre egy üres felhőalapú szolgáltatás tárolójának
 Ez a cikk azt ismerteti, hogyan hozhat létre gyorsan egy Azure PowerShell-parancsmagok használatával Felhőszolgáltatások tároló. Kérjük, kövesse az alábbi lépéseket:
@@ -50,5 +50,5 @@ Get-help New-AzureService
 ```
 
 ### <a name="next-steps"></a>Következő lépések
-* A felhőalapú szolgáltatás telepítés kezeléséhez, tekintse meg a [Get-AzureService](https://msdn.microsoft.com/library/azure/dn495131.aspx), [Remove-AzureService](https://msdn.microsoft.com/library/azure/dn495120.aspx), és [Set-AzureService](https://msdn.microsoft.com/library/azure/dn495242.aspx) parancsok. Akkor is hivatkozhat [konfigurálása felhőszolgáltatások](cloud-services-how-to-configure.md) további tájékoztatást talál.
+* A felhőalapú szolgáltatás telepítés kezeléséhez, tekintse meg a [Get-AzureService](https://msdn.microsoft.com/library/azure/dn495131.aspx), [Remove-AzureService](https://msdn.microsoft.com/library/azure/dn495120.aspx), és [Set-AzureService](https://msdn.microsoft.com/library/azure/dn495242.aspx) parancsok. Akkor is hivatkozhat [konfigurálása felhőszolgáltatások](cloud-services-how-to-configure-portal.md) további tájékoztatást talál.
 * A felhőszolgáltatás-projekt közzététele az Azure-ba, tekintse meg a **PublishCloudService.ps1** a kódminta [folyamatos kézbesítését az Azure-ban a felhőszolgáltatás](cloud-services-dotnet-continuous-delivery.md).

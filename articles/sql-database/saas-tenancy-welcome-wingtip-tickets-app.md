@@ -13,13 +13,13 @@ ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2017
+ms.date: 11/14/2017
 ms.author: billgib;genemi
-ms.openlocfilehash: e10a954ba57782f4f79131ab583b5a73edf4ba02
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 96e031835905057a9ab2b3ee4023b08de092dd8e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="welcome-to-the-wingtip-tickets-sample-saas-azure-sql-database-tenancy-app"></a>Üdvözli a Wingtip jegyek SaaS Azure SQL Database bérleti mintaalkalmazás
 
@@ -37,9 +37,9 @@ A Wingtip jegyek alkalmazást is telepíthető a saját Azure-előfizetés öt p
 
 Alkalmazáskód, és a parancsfájlok, amelyek összes elérhető a Githubon:
 
-- **Önálló alkalmazás** modell: *(hamarosan napon belül).*
-- **Bérlőnként adatbázis** modell: [WingtipSaaS tárház](https://github.com/Microsoft/WingtipSaaS/).
-- **Horizontálisan skálázott több-bérlős** modell a *hibrid*: *(hamarosan napon belül).*
+- **Önálló alkalmazás** modell: [WingtipTicketsSaaS-StandaloneApp tárház](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
+- **Bérlőnként adatbázis** modell: [WingtipTicketsSaaS-DbPerTenant tárház](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant).
+- **Horizontálisan skálázott több-bérlős** modell: [WingtipTicketsSaaS-MultiTenantDB tárház](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB).
 
 A azonos egy kódbázis a Wingtip jegyek alkalmazás az összes felsorolt előző típust használja fel újra. A kódot a Githubról használhatja saját Szolgáltatottszoftver-projektek elindításához.
 
@@ -79,8 +79,6 @@ Ez a modell egy bérlői egyetlen alkalmazás használja. Ezért a modellnek tá
 
 Ezt a modellt használja eladása példányok az alkalmazás számos különböző ügyfelekre, az egyes ügyfelek futtathatnak saját előfordulhat, hogy. Az ügyfél ezután csak a bérlői. Az adatbázis tárolja az adatokat csak egy ügyfelet, amíg az adatbázis tárolja az adatokat az ügyfél sok felhasználónál.
 
-- *(Ehhez a modellhez oktatóanyagok közzé lesz téve Itt néhány napon belül. Hivatkozás lesz itt.)*
-
 #### <a name="database-per-tenant"></a>Bérlőnként adatbázis
 
 ![Bérlői model adatbázishoz][database-per-tenant-model-35d]
@@ -99,8 +97,7 @@ Ez a modell több bérlő az az alkalmazás-példány van. Ez a modell több bé
 
 A séma összes adatbázis tartalmazza a bérlő azonosítója. A bérlői azonosító még akkor is, ezeket az adatbázisokat tároló csak egy bérlő.
 
-- *(Ehhez a modellhez oktatóanyagok közzé lesz téve Itt néhány napon belül. Hivatkozás lesz itt.)*
-
+- [Egy SQL-adatbázis több-bérlős SaaS app példa bemutatása][saas-multitenantdb-get-started-deploy-89i]
 
 
 
@@ -149,4 +146,7 @@ Az egyes útmutató cikkek terjed ki a következő kezelési forgatókönyveket:
 [saas-dbpertenant-wingtip-app-overview-15d]: saas-dbpertenant-wingtip-app-overview.md
 
 [multi-tenant-saas-database-tenancy-patterns-60p]: saas-tenancy-app-design-patterns.md
+
+[saas-multitenantdb-get-started-deploy-89i]: saas-multitenantdb-get-started-deploy.md
+
 

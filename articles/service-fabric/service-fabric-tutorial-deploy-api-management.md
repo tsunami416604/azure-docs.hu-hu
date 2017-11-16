@@ -12,16 +12,18 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/13/2017
+ms.date: 11/10/2017
 ms.author: ryanwi
-ms.openlocfilehash: 1238863265a227c18ebef8ac2aaeabd802f877d4
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 97bcf312621ec0fed28e26179d4c4aa101a8a92d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>A Service Fabric az API Management központi telepítését
-Ez az oktatóanyag három egy sorozat része.  Üzembe helyezése az Azure API Management a Service Fabric a Speciális lehetőséget, akkor hasznos, ha az útválasztási szabályokat a Service Fabric háttérszolgáltatások széles skáláját API-k közzé kell tenni. Az oktatóanyag bemutatja, hogyan állíthat be [Azure API Management](../api-management/api-management-key-concepts.md) a Service Fabric egy háttér-szolgáltatás a Service Fabric forgalom.  Amikor végzett, egy VNETET az API Management telepítve rendelkezik, konfigurált adatforgalom küldését az állapot nélküli háttérszolgáltatások egy API-művelet. A Service Fabric Azure API Management-forgatókönyvekkel kapcsolatos további tudnivalókért tekintse meg a [áttekintése](service-fabric-api-management-overview.md) cikk.
+Ez az oktatóanyag három egy sorozat része.  Azure API Management Service Fabric a telepítése a Speciális lehetőséget.  Az API Management akkor hasznos, ha a Service Fabric háttérszolgáltatások vonatkozó útválasztási szabályokat széles skáláját az API-k közzé kell tenni. A felhőalapú alkalmazásokhoz általában adjon meg egy olyan hibaérzékeny pontot érkező felhasználók, eszközök és más alkalmazások előtér-átjáró szükséges. A Service Fabric átjáró lehet bármely állapotmentes szolgáltatások, például egy APP.NET Core alkalmazás, az Event Hubs, IoT-központ vagy Azure API Management forgalom érkező készült. 
+
+Az oktatóanyag bemutatja, hogyan állíthat be [Azure API Management](../api-management/api-management-key-concepts.md) a Service Fabric egy háttér-szolgáltatás a Service Fabric forgalom.  Amikor végzett, egy VNETET az API Management telepítve rendelkezik, konfigurált adatforgalom küldését az állapot nélküli háttérszolgáltatások egy API-művelet. A Service Fabric Azure API Management-forgatókönyvekkel kapcsolatos további tudnivalókért tekintse meg a [áttekintése](service-fabric-api-management-overview.md) cikk.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -35,6 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag adatsorozat elsajátíthatja, hogyan:
 > [!div class="checklist"]
 > * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) Azure-sablon használatával
+> * [Bejövő vagy kimenő fürt méretezése](/service-fabric-tutorial-scale-cluster.md)
 > * A Service Fabric az API Management központi telepítését
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -44,6 +47,11 @@ Ez az oktatóanyag elkezdéséhez:
 - Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) az Azure-on
 - Ha telepít egy Windows-fürt, a Windows környezet beállítása. Telepítés [Visual Studio 2017](http://www.visualstudio.com) és a **Azure fejlesztési**, **ASP.NET és a webes fejlesztési**, és **.NET Core platformfüggetlen fejlesztésekhez**munkaterhelések.  Hozzon létre egy [.NET fejlesztőkörnyezet](service-fabric-get-started.md).
 - Ha a Linux-fürt központi telepítése, állítsa be a Java-fejlesztőkörnyezet a [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md).  Telepítse a [háló CLI szolgáltatás](service-fabric-cli.md). 
+
+## <a name="network-topology"></a>Hálózati topológia
+Most, hogy a biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) Azure, telepítse az API Management a virtuális hálózathoz (VNET) alhálózat és az API Management kijelölt NSG. Ebben az oktatóanyagban az API Management Resource Manager-sablon a virtuális Hálózatot, alhálózatot és előző beállított NSG-neveket használja az előre konfigurálva [Windows fürt oktatóanyag](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux fürt oktatóanyag](service-fabric-tutorial-create-vnet-and-linux-cluster.md). Ez az oktatóanyag az Azure-ba, amelyben az API Management és a Service Fabric is ugyanazt a virtuális hálózatot az alhálózatok központilag telepíti a következő topológia:
+
+ ![Képfelirat][sf-apim-topology-overview]
 
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>Jelentkezzen be az Azure-ba, és jelölje ki az előfizetését
 Az Azure-fiókjába történő bejelentkezéshez jelölje ki az előfizetését, Azure parancsok végrehajtása előtt.
@@ -59,153 +67,13 @@ az login
 az account set --subscription <guid>
 ```
 
-## <a name="deploy-api-management"></a>Az API Management telepítése
-A felhőalapú alkalmazásokhoz általában adjon meg egy olyan hibaérzékeny pontot érkező felhasználók, eszközök és más alkalmazások előtér-átjáró szükséges. A Service Fabric átjáró lehet bármely állapotmentes szolgáltatások, például egy ASP.NET Core alkalmazás, vagy egy másik szolgáltatás, amely a forgalom érkező, például az Event Hubs, az IoT-központ vagy az Azure API Management. Ez az oktatóanyag megismerkedhet az Azure API Management használatával a Service Fabric-alkalmazások átjáróként. Az API Management közvetlenül integrálható a Service Fabric, lehetővé téve az API-k közzététele az útválasztási szabályokat a Service Fabric háttérszolgáltatások széles skáláját. 
-
-Most, hogy a biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) Azure, telepítse az API Management a virtuális hálózathoz (VNET) alhálózat és az API Management kijelölt NSG. Ebben az oktatóanyagban az API Management Resource Manager-sablon a virtuális Hálózatot, alhálózatot és előző beállított NSG-neveket használja az előre konfigurálva [Windows fürt oktatóanyag](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux fürt oktatóanyag](service-fabric-tutorial-create-vnet-and-linux-cluster.md). 
-
-Ez az oktatóanyag az Azure-ba, amelyben az API Management és a Service Fabric is ugyanazt a virtuális hálózatot az alhálózatok központilag telepíti a következő topológia:
-
- ![Képfelirat][sf-apim-topology-overview]
-
-Töltse le a következő Resource Manager sablon és a Paraméterek:
- 
-- [APIM.JSON][apim-arm]
-- [APIM.Parameters.JSON][apim-parameters-arm]
-
-Adja meg az üres paraméterei a `apim.parameters.json` az üzembe helyezéshez.
-
-A következő parancsfájl használata a Resource Manager sablonnal és paraméterfájlokkal fájlok telepítése az API Management:
-
-```powershell
-$ResourceGroupName = "tutorialgroup"
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile .\apim.json -TemplateParameterFile .\apim.parameters.json -Verbose
-```
-
-```azurecli
-ResourceGroupName="tutorialgroup"
-az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGroupName --template-file apim.json --parameters @apim.parameters.json 
-```
-
-## <a name="configure-api-management"></a>API-kezelés konfigurálása
-
-Után az API Management és a Service Fabric-fürt vannak telepítve, az API Management biztonsági beállításait és a Service Fabric háttér állíthatja be. Ez lehetővé teszi, hogy a szabályzatban háttér szolgáltatás forgalmat küld a Service Fabric-fürt.
-
-### <a name="configure-api-management-security"></a>API Management biztonságának konfigurálása
-
-A Service Fabric háttér konfigurálásához először API biztonsági beállítások megadásához. A biztonsági beállítások konfigurálása, nyissa meg az API Management szolgáltatás az Azure portálon.
-
-#### <a name="enable-the-api-management-rest-api"></a>Az API Management REST API engedélyezése
-
-Az API Management REST API jelenleg az egyetlen lehetőség a háttér-szolgáltatás konfigurálásához. Az első lépés, hogy engedélyezze az API Management REST API-t és a biztonság.
-
- 1. Válassza ki az API Management szolgáltatásban **felügyeleti API** alatt **biztonsági**.
- 2. Ellenőrizze a **engedélyezése API Management REST API** jelölőnégyzetet.
- 3. Megjegyzés: a **felügyeleti API URL-címe**, amelyek később állíthatja be a Service Fabric-háttéralkalmazás használatára.
- 4. Generate egy **Access Token** kiválasztásával lejárati dátummal és a kulcsot, majd kattintson a **Generate** gombra az oldal alján.
- 5. Másolás a **hozzáférési jogkivonat** és mentse azt.  A hozzáférési jogkivonat a következő lépésekben használjuk. Vegye figyelembe, hogy ez különbözik az elsődleges és másodlagos kulcsot.
-
-#### <a name="upload-a-service-fabric-client-certificate"></a>A Service Fabric ügyfél-tanúsítvány feltöltése
-
-A szolgáltatás felderítése használ a fürt eléréséhez használt tanúsítványt a Service Fabric-fürt API-kezelés kell hitelesíteni. Az egyszerűség kedvéért ez az oktatóanyag használja ugyanazt a tanúsítványt a korábban megadott létrehozásakor a [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md#createvaultandcert_anchor), amely alapértelmezés szerint a fürt eléréséhez használható.
-
- 1. Válassza ki az API Management szolgáltatásban **ügyféltanúsítványok** alatt **biztonsági**.
- 2. Kattintson a **+ Hozzáadás** gombra.
- 2. Válassza ki a titkos kulcs fájlját (.pfx) a fürt tanúsítvány, a Service Fabric-fürt létrehozásakor megadott, adjon neki egy nevet, és adja meg a titkos kulcs jelszava.
-
-> [!NOTE]
-> Ez az oktatóanyag az ügyfél-hitelesítés és a fürt-csomópontok biztonsági ugyanazt a tanúsítványt használja. Külön ügyfél-tanúsítványt használhatja, ha van a Service Fabric-fürt elérésére.
-
-### <a name="configure-the-backend"></a>A háttérkiszolgáló beállítása
-
-Most, hogy az API Management a biztonsági beállítások konfigurálása a Service Fabric háttér konfigurálhatja. A Service Fabric háttérkiszolgálókon a Service Fabric-fürt esetén a háttér ahelyett, hogy egy adott Service Fabric-szolgáltatás. Ez lehetővé teszi egy útvonalat a fürt több szolgáltatás egyetlen házirendet.
-
-Ez a lépés szükséges a hozzáférési jogkivonat korábban létrehozott és az ujjlenyomat a fürt tanúsítvány, melyet korábban töltött fel az API Management.
-
-> [!NOTE]
-> Az API Management az előző lépésben használt külön ügyfél-tanúsítványt, ha az ügyféltanúsítványt a fürt tanúsítvány ujjlenyomata ebben a lépésben mellett kell az ujjlenyomat.
-
-A következő HTTP PUT kérelmek az API Management API URL-címet korábban feljegyzett, ha engedélyezi az API Management REST API-t konfigurálja a Service Fabric háttérszolgáltatáshoz küldése Megjelenik egy `HTTP 201 Created` választ, ha a parancs sikeres. Minden mező további információkért lásd: az API Management [háttér-API referenciadokumentációt](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend).
-
-HTTP-parancs és az URL-címe:
-```http
-PUT https://your-apim.management.azure-api.net/backends/servicefabric?api-version=2016-10-10
-```
-
-Kérelem fejlécei:
-```http
-Authorization: SharedAccessSignature <your access token>
-Content-Type: application/json
-```
-
-A kérelem törzse:
-```http
-{
-    "description": "<description>",
-    "url": "<fallback service name>",
-    "protocol": "http",
-    "resourceId": "<cluster HTTP management endpoint>",
-    "properties": {
-        "serviceFabricCluster": {
-            "managementEndpoints": [ "<cluster HTTP management endpoint>" ],
-            "clientCertificateThumbprint": "<client cert thumbprint>",
-            "serverCertificateThumbprints": [ "<cluster cert thumbprint>" ],
-            "maxPartitionResolutionRetries" : 5
-        }
-    }
-}
-```
-
-A **URL-cím** itt paramétere a fürt összes kérelem átirányított alapértelmezés szerint ha szolgáltatásnév nem egy háttér-házirendben megadott szolgáltatás egy teljesen minősített nevét. Használhat egy hamis nevét, például a "fabric: / hamis/szolgáltatás" Ha nem tervezi, hogy a tartalék szolgáltatást.
-
-Tekintse meg az API Management [háttér-API referenciadokumentációt](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend) kapcsolatban további részleteket a minden mező.
-
-```python
-#import requests library for making REST calls
-import requests
-import json
-
-#specify url
-url = 'https://your-apim.management.azure-api.net/backends/servicefabric?api-version=2016-10-10'
-
-token = "SharedAccessSignature integration&201710140514&Lqnbei7n2Sot6doiNtxMFPUi/m9LsNa+1ZK/PdxqFl49JFWjXh1wW5Gd99r/tIOeHp6dU8UV5iZUdOPfcrm5hg=="
-
-payload = {
-    "description": "My Service Fabric backend",
-    "url": "fabric:/ApiApplication/ApiWebService",
-    "protocol": "http",
-    "resourceId": "https://tutorialcluster.eastus.cloudapp.azure.com:19080",
-    "properties": {
-        "serviceFabricCluster": {
-            "managementEndpoints": [ "https://tutorialcluster.eastus.cloudapp.azure.com:19080" ],
-            "clientCertificateThumbprint": "97EDD7E4979FB072AF3E480A5E5EE34B1B89DD80",
-            "serverCertificateThumbprints": [ "97EDD7E4979FB072AF3E480A5E5EE34B1B89DD80" ],
-            "maxPartitionResolutionRetries" : 5
-        }
-    }
-}
-
-headers = {'Authorization': token, "Content-Type": "application/json"}
-
-#Call REST API
-response = requests.put(url, data=json.dumps(payload), headers=headers)
-
-#Print Response
-print(response.status_code)
-print(response.text)
-```
-
 ## <a name="deploy-a-service-fabric-back-end-service"></a>A Service Fabric háttér-szolgáltatás telepítése
 
-Most, hogy a Service Fabric egy háttéralkalmazását az API Management konfigurálva, az API-k esetében, amelyek forgalmat küldeni a Service Fabric-szolgáltatásokhoz hozhat létre a háttér-házirendeket. De először meg kell a Service Fabric-kérelmek fogadásához futó szolgáltatásban.  Ha korábban létrehozott egy [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md), .NET Service Fabric-szolgáltatás telepítése.  Ha korábban létrehozott egy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md), Java Service Fabric-szolgáltatás telepítése.
+Mielőtt konfigurálná a API Management forgalom irányítására a Service Fabric háttér-szolgáltatáshoz, először kell kérelmek fogadásához egy futó szolgáltatással.  Ha korábban létrehozott egy [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md), .NET Service Fabric-szolgáltatás telepítése.  Ha korábban létrehozott egy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md), Java Service Fabric-szolgáltatás telepítése.
 
 ### <a name="deploy-a-net-service-fabric-service"></a>A .NET Service Fabric-szolgáltatás telepítése
 
-Ebben az oktatóanyagban létrehozhatunk egy alapszintű állapotmentes ASP.NET Core megbízható szolgáltatás az alapértelmezett webes API projektet sablon használatával. Ezzel létrehoz egy HTTP-végpont a szolgáltatáshoz, amely Azure API Management keresztül teszi ki:
-
-```
-/api/values
-```
+Ebben az oktatóanyagban alapvető állapotmentes ASP.NET Core megbízható szolgáltatás létrehozása az alapértelmezett webes API projektet sablon használatával. Ezzel létrehoz egy HTTP-végpont a szolgáltatáshoz, amely Azure API Management keresztül teszi ki.
 
 Indítsa el a Visual Studio rendszergazdaként, és az ASP.NET Core szolgáltatás létrehozása:
 
@@ -223,11 +91,11 @@ Indítsa el a Visual Studio rendszergazdaként, és az ASP.NET Core szolgáltat�
     </Resources>
     ```
 
-    Ez lehetővé teszi, hogy a Service Fabric az alkalmazás porttartományát, amelyet azt a hálózati biztonsági csoport révén a fürt Resource Manager sablon keresztülhaladó forgalmat felé haladjanak API Management megnyitni a dinamikus port megadásához.
+    A port eltávolításával lehetővé teszi, hogy a Service Fabric egy dinamikusan a az alkalmazás porttartományát, a hálózati biztonsági csoport révén a fürt Resource Manager sablon keresztülhaladó forgalmat felé haladjanak API Management megnyitva port megadásához.
  
  6. Nyomja le az F5 ellenőrzése a webes API-t a Visual Studio helyileg nem érhető el. 
 
-    Nyissa meg Service Fabric Explorer és megtekintheti az egyes egy adott példányt az ASP.NET Core szolgáltatás alapcímét megjelenítéséhez a szolgáltatás figyeli. Adja hozzá `/api/values` alap történő címet, majd nyissa meg a böngészőben. Ez elindítja a ValuesController a webes API-sablonban a Get metódust. A sablon által biztosított alapértelmezett választ, egy JSON-tömb, amely tartalmazza a két karakterláncot adja vissza:
+    Nyissa meg Service Fabric Explorer és megtekintheti az egyes egy adott példányt az ASP.NET Core szolgáltatás alapcímét megjelenítéséhez a szolgáltatás figyeli. Adja hozzá `/api/values` alap történő címet, majd nyissa meg azt a böngészőbe, amely meghívja a ValuesController a webes API-sablonban a Get metódust. A sablon által biztosított alapértelmezett választ, egy JSON-tömb, amely tartalmazza a két karakterláncot adja vissza:
 
     ```json
     ["value1", "value2"]`
@@ -240,7 +108,7 @@ Indítsa el a Visual Studio rendszergazdaként, és az ASP.NET Core szolgáltat�
 Az ASP.NET Core állapotmentes szolgáltatások nevű `fabric:/ApiApplication/WebApiService` most futnia kell a Service Fabric-fürt az Azure-ban.
 
 ### <a name="create-a-java-service-fabric-service"></a>Hozzon létre egy Java Service Fabric-szolgáltatás
-Ebben az oktatóanyagban egy alapszintű webkiszolgálón, amelyen a felhasználók üzenetek echók azt telepíteni. Az echo server mintaalkalmazás tartalmaz egy HTTP-végpont a szolgáltatáshoz, amely Azure API Management keresztül teszi ki.
+Az ebben az oktatóanyagban egy alapszintű webkiszolgálón, amely echók központi telepítése a felhasználó biztonsági üzeneteket. Az echo server mintaalkalmazás tartalmaz egy HTTP-végpont a szolgáltatáshoz, amely Azure API Management keresztül teszi ki.
 
 1. A Java kezdeti Klónozó lépések minták.
 
@@ -274,73 +142,143 @@ Ebben az oktatóanyagban egy alapszintű webkiszolgálón, amelyen a felhasznál
 
 5. Nyissa meg egy böngészőt, és írja be a http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage, megtekintheti az "[1.0-s verzió] Hello World!!!" jelenik meg.
 
-
-## <a name="create-an-api-operation"></a>Hozzon létre egy API-művelet
-
-Most még az API Management külső ügyfelek által használt szolgáltatással való kommunikációra az ASP.NET Core állapotmentes a Service Fabric-fürt fut egy művelet létrehozására alkalmas.
-
-1. Jelentkezzen be az Azure-portálon, és keresse meg az API Management szolgáltatás központi telepítése.
-2. Az API Management szolgáltatás panelen válassza ki a **API-k**
-3. Egy olyan új API hozzáadása gombra kattintva **+ API**, majd **üres API** be, és a párbeszédpanel kitöltése:
-
-    - **Webszolgáltatás URL-címe**: A Service Fabric háttérkiszolgálókon, ez az URL-cím érték nem használható. Bármely érték itt helyezhet el. A jelen oktatóanyag esetében használja: "http://servicefabric".
-    - **Megjelenítendő név**: bármely nevezze el az API-t. A jelen oktatóanyag esetében használja a "Service Fabric-alkalmazás".
-    - **Név**: Adja meg a "service-fabric-alkalmazás".
-    - **URL-séma**: válassza **HTTP**, **HTTPS**, vagy **mindkét**. A jelen oktatóanyag esetében használja **mindkét**.
-    - **API URL-cím utótag**: Adjon meg egy utótagot az API felületen. A jelen oktatóanyag esetében használja a "myapp".
+## <a name="download-and-understand-the-resource-manager-template"></a>Töltse le és a Resource Manager-sablon ismertetése
+Töltse le és mentse a következő Resource Manager sablon és a paraméterek fájlt:
  
-4. Válassza ki **Service Fabric-alkalmazás** API-t, és kattintson a listájáról **+ Hozzáadás művelet** hozzáadása egy előtér-API-művelet. Töltse ki az értékeket:
-    
-    - **URL-cím**: válasszon **beolvasása** , és adjon meg egy URL-címet a API-t. A jelen oktatóanyag esetében használja a "/ api/értékek".  Alapértelmezés szerint a URL-címet itt megadott URL-címet kap a háttérkiszolgálón Service Fabric-szolgáltatás. Ha azonos URL-címet Itt a szolgáltatás által használt használja, ebben az esetben "/ api/értékek", akkor a művelet működik további módosítás nélkül. Megadhat egy URL-címe itt, amely eltér a Service Fabric-szolgáltatás háttéralkalmazása által használt URL-címet ebben az esetben meg is kell adnia egy elérési utat módosítsa úgy a művelet házirend később.
-    - **Megjelenített név**: bármely nevezze el az API-t. A jelen oktatóanyag esetében használja a "Értékek".
+- [APIM.JSON][apim-arm]
+- [APIM.Parameters.JSON][apim-parameters-arm]
 
-5. Kattintson a **Save** (Mentés) gombra.
+A következő szakaszok ismertetik az erőforrásokat, amelyet a *apim.json* sablont. További információ a hivatkozásokat követve az egyes szakaszokon belül sablon hivatkozás dokumentációját. A konfigurálható paraméterek a *apim.parameters.json* paraméterfájl vannak beállítva, a cikk későbbi részében.
 
-## <a name="configure-a-backend-policy"></a>Háttér-házirend konfigurálása
+### <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
+[Microsoft.ApiManagement/service](/azure/templates/microsoft.apimanagement/service) ismerteti az API Management szolgáltatáspéldány: név, SKU vagy réteg, erőforráscsoport helye, adatait és virtuális hálózat.
 
-A háttérrendszer házirend kötelékek mindent együtt. Ez azért, ahol konfigurálhatja a Service Fabric háttérszolgáltatáshoz rendszer kérést átirányítja. Ezt a házirendet alkalmazhat API-művelet. A [háttérkonfiguráció a Service Fabric](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService) biztosít a következő kérés útválasztási vezérlők: 
+### <a name="microsoftapimanagementservicecertificates"></a>Microsoft.ApiManagement/service/certificates
+[Microsoft.ApiManagement/service/certificates](/azure/templates/microsoft.apimanagement/service/certificates) API Management biztonsági konfigurálja. A szolgáltatás felderítése használ a fürt eléréséhez használt tanúsítványt a Service Fabric-fürt API-kezelés kell hitelesíteni. Ez az oktatóanyag használja ugyanazt a tanúsítványt a korábban megadott létrehozásakor a [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md#createvaultandcert_anchor), amely alapértelmezés szerint a fürt eléréséhez használható. 
+
+Ez az oktatóanyag az ügyfél-hitelesítés és a fürt-csomópontok biztonsági ugyanazt a tanúsítványt használja. Külön ügyfél-tanúsítványt használhatja, ha van a Service Fabric-fürt elérésére. Adja meg a **neve**, **jelszó**, és **adatok** (base-64 kódolású karakterlánc), a titkos kulcs fájlját (.pfx) a fürt létrehozásakor megadott tanúsítvány a Service Fabric-fürt.
+
+### <a name="microsoftapimanagementservicebackends"></a>Microsoft.ApiManagement/service/backends
+[Microsoft.ApiManagement/service/backends](/azure/templates/microsoft.apimanagement/service/backends) a háttérszolgáltatáshoz való továbbított forgalmat ismerteti. 
+
+A Service Fabric háttérkiszolgálókon a Service Fabric-fürt esetén a háttér helyett egy adott Service Fabric-szolgáltatás. Ez lehetővé teszi egy útvonalat a fürt több szolgáltatás egyetlen házirendet. A **URL-cím** itt mező értéke egy teljesen minősített nevét a fürt összes kérelem átirányított alapértelmezés szerint ha a háttérkiszolgáló házirendben megadott szolgáltatásnév nem szolgáltatás. Használhat egy hamis nevét, például a "fabric: / hamis/szolgáltatás" Ha nem tervezi, hogy a tartalék szolgáltatást. **resourceId** határozza meg a fürt felügyeleti végpontja.  **clientCertificateThumbprint** és **serverCertificateThumbprints** azonosíthatja a fürt hitelesítéséhez használt tanúsítványok.
+
+### <a name="microsoftapimanagementserviceproducts"></a>Microsoft.ApiManagement/service/products
+[Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) hoz létre egy termék. Az Azure API Management a termék egy vagy több API-k, valamint a memóriahasználati kvóta és a használati feltételeket tartalmaz. Miután közzétette a termék, a fejlesztők a termék előfizetni és a termék API-k használatának megkezdéséhez. 
+
+Adjon meg egy leíró **displayName** és **leírás** termék. A jelen oktatóanyag esetében szükség van egy előfizetésre, de előfizetés rendszergazdája jóvá nem.  A termék **állapot** "közzétett", és látható a előfizetők számára. 
+
+### <a name="microsoftapimanagementserviceapis"></a>Microsoft.ApiManagement/service/apis
+[Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagement/service/apis) létrehozza az API-k. Az API Management API ügyfélalkalmazások meghívható műveletkészlet jelöli. A műveletek kerülnek, az API-t egy termék hozzáadódik és tehetők közzé. Miután közzétette az API-k, az előfizetett, és a fejlesztők használják.
+
+- **displayName** bármilyen az API-nevet. A jelen oktatóanyag esetében használja a "Service Fabric-alkalmazás".
+- **név** az API-t, például a "service-fabric-alkalmazás" egyedinek és leírónak elnevezi. A fejlesztői és publisher portálon megjelenik. 
+- **serviceUrl** végrehajtási az API-t a HTTP-szolgáltatás hivatkozik. Az API management erre a címre kérelmeket továbbítja. Service Fabric háttérkiszolgálókon, az az URL-cím érték nem használható. Bármely érték itt helyezhet el. A jelen oktatóanyag esetében például a "http://servicefabric". 
+- **elérési út** az alap URL-címet a API management szolgáltatás a rendszer hozzáfűzi. Az alap URL-cím esetében gyakori, minden API-kezelés szolgáltatás példánya által üzemeltetett API. API Management az API-k által az utótag különbözteti meg, és ezért a utótag minden API-hoz. a megadott közzétevő egyedinek kell lennie. 
+- **protokollok** határozza meg, mely protokollokkal az API eléréséhez. Ebben az oktatóanyagban listában **http** és **https**.
+- **elérési út** utótag van az API-hoz. A jelen oktatóanyag esetében használja a "myapp".
+
+### <a name="microsoftapimanagementserviceapisoperations"></a>Microsoft.ApiManagement/service/apis/operations
+[Microsoft.ApiManagement/service/apis/operations](/azure/templates/microsoft.apimanagement/service/apis/operations) előtt az API Management az API is használható, műveletek hozzá kell adni az API-hoz.  Külső ügyfelek művelet használatával kommunikál a Service Fabric-fürt futtatja az ASP.NET Core állapotmentes szolgáltatások.
+
+Egy előtér-API művelet hozzáadásához töltse ki az értékeket:
+
+- **displayName** és **leírás** írják le a műveletet. A jelen oktatóanyag esetében használja a "Értékek".
+- **módszer** meghatározza azt a HTTP-műveletet.  Adja meg a jelen oktatóanyag esetében **beolvasása**.
+- **urlTemplate** rendszer hozzáfűzi az alap URL-címet a API, és azonosítja a egyetlen HTTP-műveletre.  A jelen oktatóanyag esetében használja `/api/values` Ha a .NET-háttérrendszer szolgáltatás hozzáadott vagy `getMessage` Ha hozzáadta a Java háttérszolgáltatáshoz.  Alapértelmezés szerint a URL-címet itt megadott URL-címet kap a háttérkiszolgálón Service Fabric-szolgáltatás. Ha azonos URL-címet Itt a szolgáltatás által használt, például a "/ api/értékek", majd a művelet használható további módosítás nélkül. Megadhat egy URL-címe itt, amely eltér a Service Fabric-szolgáltatás háttéralkalmazása által használt URL-címet ebben az esetben meg is kell adnia egy elérési utat módosítsa úgy a művelet házirend később.
+
+### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
+[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) hoz létre egy háttér-házirendet, amely kötelékek mindent együtt. Ez azért, ahol konfigurálhatja a Service Fabric háttérszolgáltatáshoz rendszer kérést átirányítja. Ezt a házirendet alkalmazhat API-művelet.  További információkért lásd: [házirendek – áttekintés](/azure/api-management/api-management-howto-policies). 
+
+A [háttérkonfiguráció a Service Fabric](/azure/api-management/api-management-transformation-policies#SetBackendService) biztosít a következő kérés útválasztási vezérlők: 
  - A Service Fabric szolgáltatás példány neve, vagy szoftveresen kötött megadásával példány kiválasztása szolgáltatás (például `"fabric:/myapp/myservice"`) vagy a HTTP-kérelem generált (például `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`).
  - A Service Fabric particionálási sémát használó partíciós kulcs létrehozása általi megoldása partíció.
  - Állapotalapú szolgáltatások replika kiválasztása.
  - Megoldási újrapróbálkozási feltételeket, amelyek segítségével adhatja meg a feltételeket újra feloldani a helyét, és küldje el újra a kérelmet.
 
-Ebben az oktatóanyagban a szabályzatban háttér közvetlenül kérelmeket továbbítja a korábban telepített ASP.NET Core állapotmentes szolgáltatások:
-
- 1. Válassza ki, és szerkesztheti a **házirendek bejövő** ehhez kattintson a Szerkesztés ikonra, és jelölje be az értékeket művelet **kódnézetben**.
- 2. A kód házirendszerkesztő, adja hozzá a `set-backend-service` házirend a bejövő házirendek, ahogy az itt látható, és kattintson a **mentése** gombra:
+**policyContent** a házirend XML-tartalmának a Json escape-karakterrel megjelölve.  Ebben az oktatóanyagban kérelmek közvetlenül telepített .NET vagy Java állapotmentes szolgáltatások háttér házirend létrehozása. Adja hozzá a `set-backend-service` bejövő házirendek házirend.  "Szolgáltatásnevet" cserélje `fabric:/ApiApplication/WebApiService` , ha korábban telepítették a .NET-háttérrendszer szolgáltatás, vagy `fabric:/EchoServerApplication/EchoServerService` Ha telepítette a Java-szolgáltatás.
     
-    ```xml
-    <policies>
-      <inbound>
-        <base/>
-        <set-backend-service 
-           backend-id="servicefabric"
-           sf-service-instance-name="fabric:/ApiApplication/WebApiService"
-           sf-resolve-condition="@((int)context.Response.StatusCode != 200)" />
-      </inbound>
-      <backend>
-        <base/>
-      </backend>
-      <outbound>
-        <base/>
-      </outbound>
-    </policies>
-    ```
+```xml
+<policies>
+  <inbound>
+    <base/>
+    <set-backend-service 
+        backend-id="servicefabric"
+        sf-service-instance-name="service-name"
+        sf-resolve-condition="@((int)context.Response.StatusCode != 200)" />
+  </inbound>
+  <backend>
+    <base/>
+  </backend>
+  <outbound>
+    <base/>
+  </outbound>
+</policies>
+```
 
 A Service Fabric háttér-házirend attribútumainak teljes készletét, tekintse meg a [API Management háttér-dokumentáció](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService)
 
-### <a name="add-the-api-to-a-product"></a>Adja hozzá az API-t egy termékre 
+## <a name="set-parameters-and-deploy-api-management"></a>Paraméterek beállítása és telepítése az API Management
+A következő üres paramétereket a töltse ki a *apim.parameters.json* az üzembe helyezéshez. 
 
-Az API hívása előtt azt hozzá kell adni egy termékre, ahol hozzáférést biztosíthat a felhasználóknak. 
+|Paraméter|Érték|
+|---|---|
+|apimInstanceName|ú-apim|
+|apimPublisherEmail|myemail@contosos.com|
+|apimSku|Fejlesztői|
+|serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
+|CertificatePassword|q6D7nN %6ck@6| 
+|serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
+|serviceFabricCertificate|&lt;Base-64 kódolású karakterlánc&gt;|
+|url_path|/ api/értékek|
+|clusterHttpManagementEndpoint|https://mysfcluster.southcentralus.cloudapp.Azure.com:19080|
+|inbound_policy|&lt;XML-karakterlánc&gt;|
 
- 1. Válassza ki az API Management szolgáltatásban **termékek**.
- 2. Alapértelmezés szerint az API Management szolgáltatók két termékek: alapszintű és a korlátlan. Jelölje ki a korlátlan terméket.
- 3. Válassza ki **+ Hozzáadás API-k**.
- 4. Válassza ki a `Service Fabric App` a fenti lépéseket, majd kattintson a létrehozott API a **válasszon** gombra.
+*certificatePassword* és *serviceFabricCertificateThumbprint* meg kell egyeznie a fürt tanúsítványt, a fürt létrehozásakor használt.  
 
-### <a name="test-it"></a>Tesztelheti
+*serviceFabricCertificate* a tanúsítvány van, mint a base-64 kódolású karakterláncot, amely az alábbi parancsfájl használatával hozhatók létre:
 
-Most megpróbálhatja egy kérést küld a háttér-szolgáltatás a Service Fabric API Management keresztül közvetlenül az Azure portálról.
+```powershell
+$bytes = [System.IO.File]::ReadAllBytes("C:\mycertificates\sfclustertutorialgroup220171109113527.pfx");
+$b64 = [System.Convert]::ToBase64String($bytes);
+[System.Io.File]::WriteAllText("C:\mycertificates\sfclustertutorialgroup220171109113527.txt", $b64);
+```
+
+A *inbound_policy*, "szolgáltatásnevet" cserélje `fabric:/ApiApplication/WebApiService` , ha korábban telepítették a .NET-háttérrendszer szolgáltatás, vagy `fabric:/EchoServerApplication/EchoServerService` Ha telepítette a Java-szolgáltatás.
+
+```xml
+<policies>
+  <inbound>
+    <base/>
+    <set-backend-service 
+        backend-id="servicefabric"
+        sf-service-instance-name="service-name"
+        sf-resolve-condition="@((int)context.Response.StatusCode != 200)" />
+  </inbound>
+  <backend>
+    <base/>
+  </backend>
+  <outbound>
+    <base/>
+  </outbound>
+</policies>
+```
+
+A következő parancsfájl használata a Resource Manager sablonnal és paraméterfájlokkal fájlok telepítése az API Management:
+
+```powershell
+$ResourceGroupName = "sfclustertutorialgroup"
+New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile .\apim.json -TemplateParameterFile .\apim.parameters.json -Verbose
+```
+
+```azurecli
+ResourceGroupName="sfclustertutorialgroup"
+az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGroupName --template-file apim.json --parameters @apim.parameters.json 
+```
+
+## <a name="test-it"></a>Tesztelheti
+
+Most megpróbálhatja egy kérést küld a háttér-szolgáltatás a Service Fabric keresztül közvetlenül az API Management a [Azure-portálon](https://portal.azure.com).
 
  1. Válassza ki az API Management szolgáltatásban **API**.
  2. Az a **Service Fabric-alkalmazás** létrehozta az előző lépéseket, jelölje be az API a **teszt** fülre, majd a **értékek** műveletet.
@@ -379,12 +317,12 @@ A fürtben a fürt erőforrásán felül egyéb Azure-erőforrások is megtalál
 Jelentkezzen be az Azure-ba, és válassza ki az előfizetés-azonosító, amelynél el szeretné távolítani a fürt.  Miután bejelentkezett az előfizetés-azonosító található a [Azure-portálon](http://portal.azure.com). Törölje az erőforráscsoportot és használó fürt erőforrásait a [Remove-AzureRMResourceGroup parancsmag](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
 ```powershell
-$ResourceGroupName = "tutorialgroup"
+$ResourceGroupName = "sfclustertutorialgroup"
 Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force
 ```
 
 ```azurecli
-ResourceGroupName="tutorialgroup"
+ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 

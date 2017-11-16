@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 11/15/2017
 ms.author: denlee
-ms.openlocfilehash: b6cc51ad2bab294035f3ed8f300423d1d320df1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71d9d03b45d8c4fcf8acb41871dcf3f1304955aa
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB: Graph API
 
@@ -44,7 +44,7 @@ Az Azure Cosmos DB Graph API biztosítja:
 - A rugalmas méretezést tárolási és átviteli, legfeljebb 10 ms késések olvasása és a 99th PERCENTILIS, kevesebb mint 15 ms.
 - Automatikus indexelés azonnali lekérdezés rendelkezésre állással.
 - Aprólékosan beállítható konzisztenciaszintek.
-- Átfogó SLA-k, beleértve a rendelkezésre állás 99,99 %.
+- Átfogó SLA-k, beleértve a rendelkezésre állás 99,99 % SLA fiókokhoz egyetlen régión és fiókokhoz több területi laza konzisztencia- és 99.999 % olvassa el az összes fiókot a több területi adatbázis rendelkezésre állási.
 
 Azure Cosmos DB lekérdezéséhez használja a [Apache TinkerPop](http://tinkerpop.apache.org) átjárás nyelvi diagramot [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), vagy más kompatibilis TinkerPop graph rendszerek, például [Apache Spark GraphX](spark-connector-graph.md).
 

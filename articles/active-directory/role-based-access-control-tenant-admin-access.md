@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2017
 ms.author: andredm
-ms.openlocfilehash: cb6e5a398a1d7e20efbcc4a8900f9e8dea43ad2c
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: c1f49e2c7836a56f37aafcaad0cb74278213a720
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Bérlői rendszergazdaként a szerepköralapú hozzáférés-vezérlés jogosultságszintjének emelése
 
@@ -43,6 +43,30 @@ Ez a funkció fontos, mert lehetővé teszi a bérlői rendszergazda szerepel a 
 > A benyomást, hogy ez az Azure Active Directory globális tulajdonság, azonban a bejelentkezett felhasználó felhasználónkénti alapon működik. Ha a globális rendszergazdai jogosultságokkal rendelkezik az Azure Active Directoryban, hívhat meg a elevateAccess funkció, amely Azure Active Directory felügyeleti központ jelenleg bejelentkezett felhasználó.
 
 ![Az Azure AD - tulajdonságok – felügyeleti központot Globalisrendszergazda kezelheti az Azure-előfizetés – képernyőkép](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+
+## <a name="view-role-assignments-at-the--scope-using-powershell"></a>A PowerShell használatával "/" hatókörből szerepkör-hozzárendelések megtekintése
+Megtekintéséhez a **felhasználói hozzáférés adminisztrátora** -hozzárendelés a  **/**  hatókörét, használja a `Get-AzureRmRoleAssignment` PowerShell-parancsmagot.
+    
+```
+Get-AzureRmRoleAssignment* | where {$_.RoleDefinitionName -eq "User Access Administrator" -and $_SignInName -eq "<username@somedomain.com>" -and $_.Scope -eq "/"}
+```
+
+**Példa a kimenetre**:
+
+RoleAssignmentId: /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0    
+Hatókör: /    
+DisplayName: felhasználónév    
+SignInName:username@somedomain.com    
+RoleDefinitionName: Felhasználói hozzáférés adminisztrátora    
+Roledefinitionid-értékkel: 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9    
+Objektumazonosító: d65fd0e9-c185-472c-8f26-1dafa01f72cc    
+Objektumtípus: felhasználó    
+
+## <a name="delete-the-role-assignment-at--scope-using-powershell"></a>A szerepkör-hozzárendelés törlése "/" hatókör a Powershell használatával:
+A következő PowerShell-parancsmag használatával-hozzárendelés törlése:
+```
+Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefinitionName "User Access Administrator" -Scope "/" 
+```
 
 ## <a name="use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>A bérlői hozzáférésének REST API-val elevateAccess használata
 

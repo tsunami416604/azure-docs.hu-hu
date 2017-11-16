@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: db23eba9ff8debd5268cd02bc4f37c4e6501bfac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b77000c2cf46b59b65c27c78182193624fd62062
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager számos elképesztő funkciókat nyújtja, miközben nagyon fontos tervezze meg az áttelepítési út zökkenőmentesek sure művelet. Tervezési idő költségeik biztosítja, hogy nem tapasztal, az áttelepítési tevékenységek végrehajtása során.
@@ -204,7 +204,7 @@ Kell a mely szolgáltatásokat szeretné engedélyezni az Azure Resource Manager
 - [Az Azure Resource Manager-sablonok egyszerűbbé és több ellenőrzött telepítéshez](../../azure-resource-manager/resource-group-overview.md#template-deployment).
 - [Címkék](../../azure-resource-manager/resource-group-using-tags.md).
 - [Tevékenység-vezérlő](../../azure-resource-manager/resource-group-audit.md)
-- [Erőforrás-házirendekkel](../../azure-resource-manager/resource-manager-policy.md)
+- [Az Azure házirendek](../../azure-policy/azure-policy-introduction.md)
 
 ### <a name="pitfalls-to-avoid"></a>Nehézségek elkerülése érdekében
 

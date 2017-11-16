@@ -12,26 +12,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 7a94fd5065de93384460e851627a9813d439956b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-azure-resources-through-portal"></a>Azure-portálon keresztül erőforrások kezelése
-> [!div class="op_single_selector"]
-> * [Azure PowerShell](powershell-azure-resource-manager.md)
-> * [Azure CLI](xplat-cli-azure-resource-manager.md)
-> * [Portál](resource-group-portal.md) 
-> * [REST API](resource-manager-rest-api.md)
-> 
-> 
 
-Ez a témakör bemutatja, hogyan használja a [Azure-portálon](https://portal.azure.com) rendelkező [Azure Resource Manager](resource-group-overview.md) az Azure erőforrások kezeléséhez. A portálon keresztül erőforrások telepítésével kapcsolatos további tudnivalókért lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](resource-group-template-deploy-portal.md).
-
-Jelenleg nem minden szolgáltatás támogatja, a portál vagy az erőforrás-kezelő. Ezek a szolgáltatások kell használnia a [klasszikus portál](https://manage.windowsazure.com). Minden szolgáltatás állapotát, lásd: [az Azure portál elérhetőségi diagram](https://azure.microsoft.com/features/azure-portal/availability/).
+Ez a cikk bemutatja, hogyan használható a [Azure-portálon](https://portal.azure.com) rendelkező [Azure Resource Manager](resource-group-overview.md) az Azure erőforrások kezeléséhez. A portálon keresztül erőforrások telepítésével kapcsolatos további tudnivalókért lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](resource-group-template-deploy-portal.md).
 
 ## <a name="manage-resource-groups"></a>Erőforrás-csoportok kezelése
 
@@ -58,7 +49,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
    
     ![oszlopok hozzáadása](./media/resource-group-portal/add-columns.png)
 7. Az új erőforráscsoportba erőforrások telepítésével kapcsolatos további tudnivalókért lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](resource-group-template-deploy-portal.md).
-8. A gyors elérés érdekében az erőforráscsoporthoz a panel rögzítheti az irányítópulton való rögzítéséhez.
+8. A gyors elérés érdekében az erőforráscsoporthoz az erőforráscsoport rögzítheti az irányítópulton való rögzítéséhez.
    
     ![PIN-kód erőforráscsoport](./media/resource-group-portal/pin-group.png)
 9. Az irányítópult az erőforráscsoportot és az erőforrások jeleníti meg. Kiválaszthatja az erőforráscsoportok vagy az erőforrásokat a navigáljon.
@@ -71,12 +62,12 @@ A címkékkel erőforráscsoportok és erőforrásokhoz, hogy logikusan rendszer
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
 ## <a name="monitor-resources"></a>Erőforrások megfigyelése
-Amikor kiválaszt egy erőforrást, az erőforrás panel alapértelmezett diagramjait és az adott erőforrástípus figyelési táblák mutatja be.
+Amikor kiválaszt egy erőforrást, a portál megjelenít alapértelmezett diagramjait és táblák figyelés az erőforrás típusát.
 
 1. Válasszon ki egy erőforrást és értesítés a **figyelés** szakasz. Ez magában foglalja a diagramok, amelyek kapcsolódnak az erőforrástípus. A következő kép bemutatja az alapértelmezett figyelési a tárfiók adatait.
    
     ![figyelési megjelenítése](./media/resource-group-portal/show-monitoring.png)
-2. Egy részében találhatja; ehhez válassza a három ponttal (…) a szakasz fenti rögzítheti az irányítópulton. A szakasz a panel mérete testreszabásával, vagy távolítsa el teljesen. A következő kép bemutatja, hogyan PIN-kód, testre szabhatja, vagy távolítsa el a Processzor és memória szakaszban.
+2. Szakasz; ehhez válassza a három ponttal (…) a szakasz fenti rögzítheti az irányítópulton. A szakasz méretét is, vagy távolítsa el teljesen. A következő kép bemutatja, hogyan PIN-kód, testre szabhatja, vagy távolítsa el a Processzor és memória szakaszban.
    
     ![PIN-kód szakasz](./media/resource-group-portal/pin-cpu-section.png)
 3. Miután a szakasz az irányítópulton, látni fogja az összegzés az irányítópulton. És lehetőséget azonnal viszi az adatokkal kapcsolatos további részletekért.
@@ -92,7 +83,7 @@ Amikor kiválaszt egy erőforrást, az erőforrás panel alapértelmezett diagra
      Irányítópultok kezelésével kapcsolatos információkért lásd: [létrehozása és az Azure portálon irányítópultok megosztása](../azure-portal/azure-portal-dashboards.md).
 
 ## <a name="manage-resources"></a>Erőforrások kezelése
-Az erőforrás panelen tekintse meg a beállítások kezelését az erőforrás. A portál megjelenít, hogy adott erőforrástípusra vonatkozó beállítások. A parancsok és a bal oldalon az erőforrás panel tetején megjelenik.
+Amikor egy erőforrást a portálon megtekintik, tekintse meg a beállítások kezelését az adott erőforráshoz.
 
 ![Erőforrások kezelése](./media/resource-group-portal/manage-resources.png)
 
@@ -111,7 +102,7 @@ Az előfizetés és az összegzett költségeinek kapcsolatos információk is m
 
 ![előfizetést](./media/resource-group-portal/select-subscription.png)
 
-Az előfizetés panel belül megjelenik egy írási sebesség.
+Az írási sebesség láthatja.
 
 ![Írás gyakorisága](./media/resource-group-portal/burn-rate.png)
 
@@ -128,7 +119,7 @@ Miután beállította az erőforráscsoport, érdemes lehet a Resource Manager-s
 Lépésenkénti útmutatásért lásd: [Azure Resource Manager sablon exportálása létező erőforrásokból](resource-manager-export-template.md).
 
 ## <a name="delete-resource-group-or-resources"></a>Erőforráscsoport és erőforrások törlése
-Erőforráscsoport törlésekor törlődnek a benne található összes erőforrást. Törölheti az egyes erőforrások erőforráscsoporton belül is. Szeretné körültekintően járjon el egy erőforráscsoport törlésekor, mert lehetséges, hogy nem erőforrások egyéb erőforráscsoportok, amelyek kapcsolódnak. Erőforrás-kezelő nem törli a társított erőforrásokat, de azok nem működnek megfelelően nélkül szükséges erőforrásokkal.
+Erőforráscsoport törlésekor törlődnek a benne található összes erőforrást. Törölheti az egyes erőforrások erőforráscsoporton belül is. Ha töröl egy erőforráscsoport, körültekintően járjon el. Ennek az erőforráscsoportnak is tartalmazhatnak, egyéb erőforráscsoportok erőforrások függő erőforrások.
 
 ![Csoport törlése](./media/resource-group-portal/delete-group.png)
 

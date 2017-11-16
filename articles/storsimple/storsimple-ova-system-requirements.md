@@ -4,7 +4,7 @@ description: "Ismerje meg, a szoftverekről és a StorSimple virtuális tömb h�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/16/2017
+ms.date: 11/14/2017
 ms.author: alkohli
-ms.openlocfilehash: 8cae0577d950e3968bc25083e59d637963e6b442
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 5d01523f326bd7e2518bff06e62ae62db8f318d3
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
 ## <a name="overview"></a>Áttekintés
@@ -41,7 +41,10 @@ A szoftverkövetelményeket tartalmazza az információkat a támogatott webbön
 | **Hipervizor** | **Verzió** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 és újabb verziók |
-| VMware ESXi |5.5 és 6.0 |
+| VMware ESXi |5.0, 5.5 és 6.0 <br> (6.5 nem támogatott.) |
+
+> [!IMPORTANT]
+> Ne telepítse a StorSimple virtuális tömb; VMware-eszközök Ez egy nem támogatott konfigurációt eredményez.
 
 ### <a name="virtual-device-requirements"></a>Virtuális eszköz követelményei
 | **Összetevő** | **Követelmény** |
@@ -79,8 +82,8 @@ Az SMB-ügyfelek a StorSimple virtuális tömb (fájlkiszolgálóként konfigur�
 | SMB 3.02 |
 
 > [!IMPORTANT]
-> Ne másolja vagy tárolja a StorSimple virtuális tömb fájlkiszolgálóra; által Windows titkosított fájlrendszer (EFS) védett fájlokkal. Ez egy nem támogatott konfigurációt eredményez. 
-> 
+> Ne másolja vagy tárolja a StorSimple virtuális tömb fájlkiszolgálóra; által Windows titkosított fájlrendszer (EFS) védett fájlokkal. Ez egy nem támogatott konfigurációt eredményez.
+
 
 ### <a name="supported-storage-format"></a>Tárolási formátum támogatott.
 Csak az Azure blob blokktárolást esetén támogatott. Nem támogatja a lapblobokat. További információ [blokk blobokat és lapblobokat](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: f7109a3b21feac396d8c20c7e72a8987f72a909a
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: c07290a5003189b0b773bd9b9c995400b424c7f4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép megoldás használja
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Szolgáltatástérkép, használatával megtekintheti a kiszolgálók, amelyek Ön szerint egyik módja: összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép jeleníti meg a kiszolgálók, a folyamatok közötti kapcsolatokat, és portok között bármely TCP-csatlakoztatott architektúra, a konfiguráció nem szükséges másik ügynököt telepíteni.
@@ -231,16 +231,16 @@ A **gépek teljesítménye** ablaktábla megjeleníti a kiválasztott kiszolgál
 Teljesítményadatok megtekintéséhez esetleg [engedélyezése a megfelelő Naplóelemzési teljesítményszámlálók](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  A számlálók érdemes engedélyezése:
 
 Windows:
-- Processor(*)\% processzoridő
-- Memória\% előjegyzett memória
-- Hálózati Adapter (*) \Bytes küldött/mp
-- Hálózati Adapter (*) \Bytes fogadott/mp
+- Processor(*)\\kihasználtsága (%)
+- Memória\\% előjegyzett memória
+- A hálózati Adapter(*)\\küldött bájtok/s
+- A hálózati Adapter(*)\\fogadott bájtok/s
 
 Linux:
-- Processor(*)\% processzoridő
-- Memory(*)\% használt memória
-- Hálózati Adapter (*) \Bytes küldött/mp
-- Hálózati Adapter (*) \Bytes fogadott/mp
+- Processor(*)\\kihasználtsága (%)
+- Memory(*)\\% használt memória
+- A hálózati Adapter(*)\\küldött bájtok/s
+- A hálózati Adapter(*)\\fogadott bájtok/s
 
 Ahhoz, hogy a hálózati teljesítményadatokat, kell is engedélyezte az Operations Management Suite átviteli adatok 2.0 megoldás.
  

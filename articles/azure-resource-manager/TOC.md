@@ -69,10 +69,6 @@
 ### [Hitelesítési API az előfizetések hozzáféréséhez](resource-manager-api-authentication.md)
 ### [Erőforrások zárolása](resource-group-lock-resources.md)
 
-## Erőforrás-házirendek beállítása
-### [Mik azok az erőforrás-házirendek?](resource-manager-policy.md)
-### [Elnevezési konvenciók](resource-manager-policy-naming-convention.md)
-
 ## Naplózás
 ### [Tevékenységnaplók megtekintése](resource-group-audit.md)
 ### [Üzembe helyezési műveletek megtekintése](resource-manager-deployment-operations.md)

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 11/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43f957d8549adb8bbc94111ee9f9eb216f5d8210
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6aecdce1de2e852c8683df0ec29e91de940ba25
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-python-sdk-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK: A kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -51,6 +51,9 @@ ms.lasthandoff: 10/11/2017
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+* Az SDK-verzió telepítéséhez a legújabb Azure Cosmos DB emulátorának elérhetősége a https://aka.ms/cosmosdb-emulator letölthető.
+
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Hiba a javítás összesített a szótárhoz.
 * A tisztítás hibajavítás törtvonalat az erőforrás-hivatkozás.
@@ -131,6 +134,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2017. november 10. |--- |
 | [2.2.1](#2.2.1) |29. szeptember, 2017 |--- |
 | [2.2.0](#2.2.0) |2017. május 10. |--- |
 | [2.1.0](#2.1.0) |2017. Előfordulhat, hogy 01. |--- |

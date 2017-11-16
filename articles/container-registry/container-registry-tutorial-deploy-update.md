@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 76e6e1b826f37bfea7a8463808566191753e4f2d
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
-ms.translationtype: HT
+ms.openlocfilehash: 049fba28d0783a79331e8bc8de741f55e9caf828
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="push-an-updated-image-to-regional-deployments"></a>Frissített leküldése regionális központi telepítések
 
@@ -40,7 +40,7 @@ Ha még nem konfigurálta a két *Web App az tárolókat* regionális központi 
 
 Ebben a lépésben lehet módosítani a webes alkalmazás, amely után a frissített tároló kép leküldése Azure tároló beállításjegyzék jól látható lesz.
 
-Keresse a `AcrHelloworld/Views/Home/Index.cshtml` fájl az alkalmazás forrás [GitHub alapján klónozták](container-registry-tutorial-prepare-registry.md#get-application-code) egy előző oktatóprogram és nyissa meg a kedvenc szövegszerkesztőjével. Adja hozzá a következő sort a fenti a `<img>` sor:
+Keresse a `AcrHelloworld/Views/Home/Index.cshtml` fájl az alkalmazás forrás [GitHub alapján klónozták](container-registry-tutorial-prepare-registry.md#get-application-code) egy előző oktatóprogram és nyissa meg a kedvenc szövegszerkesztőjével. Adja hozzá a következő sort a meglévő alatt `<h1>` sor:
 
 ```html
 <h1>MODIFIED</h1>
@@ -52,15 +52,27 @@ A módosított `Index.cshtml` hasonlóan kell kinéznie:
 @{
     ViewData["Title"] = "Azure Container Registry :: Geo-replication";
 }
+<style>
+    body {
+        background-image: url('images/azure-regions.png');
+        background-size: cover;
+    }
+    .footer {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+    }
+</style>
+
+<h1 style="text-align:center;color:blue">Hello World from:  @ViewData["REGION"]</h1>
 <h1>MODIFIED</h1>
-<img width="700" src="~/images/@ViewData["MAPIMAGE"]" />
-<ul>
-<li>Registry URL: @ViewData["REGISTRYURL"]</li>
-<li>Registry IP: @ViewData["REGISTRYIP"]</li>
-<li>HostEntry: @ViewData["HOSTENTRY"]</li>
-<li>Region: @ViewData["REGION"]</li>
-<li>Map: @ViewData["MAPIMAGE"]</li>
-</ul>
+<div class="footer">
+    <ul>
+        <li>Registry URL: @ViewData["REGISTRYURL"]</li>
+        <li>Registry IP: @ViewData["REGISTRYIP"]</li>
+        <li>Registry Region: @ViewData["REGION"]</li>
+    </ul>
+</div>
 ```
 
 ## <a name="rebuild-the-image"></a>A lemezkép újbóli létrehozása
@@ -71,24 +83,26 @@ Most, hogy a webalkalmazás frissítése, építse újra a tároló kép. Mint k
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-## <a name="run-the-container-locally"></a>Futtassa helyileg a tárolót
-
-Mielőtt telepítené az Azure-tároló beállításjegyzék, futtassa helyileg a lemezképet ellenőrzése sikeres volt-e a build.
-
-```bash
-docker run -d -p 8080:80 <acrName>.azurecr.io/acr-helloworld:v1
-```
-
-Navigáljon a 8080 annak ellenőrzéséhez, hogy a tároló működik és elérhető, és a módosítás jelenik meg a böngészőben.
-
-![HELYI TÁROLÓ KÉP][local-container-01]
-
 ## <a name="push-image-to-azure-container-registry"></a>Azure-tároló beállításjegyzék leküldéses kép
 
 Most, a frissített leküldéses *acr-helloworld* a georeplikált beállításjegyzék lemezképet tároló. Itt, egyetlen most végrehajtása `docker push` központi telepítése a frissített lemezképet a beállításjegyzék replikák mindkét parancs a *USA nyugati régiója* és *USA keleti régiója* régiók.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
+```
+
+Kimenet az alábbihoz hasonlóan kell megjelennie:
+
+```bash
+The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
+5b9454e91555: Pushed
+d6803756744a: Layer already exists
+b7b1f3a15779: Layer already exists
+a89567dff12d: Layer already exists
+59c7b561ff56: Layer already exists
+9a2f9413d9e4: Layer already exists
+a75caa09eb1f: Layer already exists
+v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186ec7a size: 1792
 ```
 
 ## <a name="view-the-webhook-logs"></a>A webhook naplók megtekintése
@@ -123,7 +137,7 @@ Egyetlen `docker push`, mindkét regionális webalkalmazás központi telepíté
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban frissítése, és a webes alkalmazás tároló új verziójának a georeplikált beállításjegyzék leküldve. Azure-tároló beállításjegyzék Webhookok alkalmazásszolgáltatások a frissítés, a replikált nyilvántartó a helyi lekérési kiváltó értesítést kap.
+Ebben az oktatóanyagban frissítése, és a webes alkalmazás tároló új verziójának a georeplikált beállításjegyzék leküldve. Azure tároló beállításjegyzék Webhookok webalkalmazásait a frissítés, a beállításjegyzék replikák a helyi lekérési kiváltó tárolók értesítést kap.
 
 Az adatsorozat utolsó oktatóanyag ezen meg:
 

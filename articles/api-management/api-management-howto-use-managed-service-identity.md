@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Managed Service Identity használata az Azure API Management |} Microsoft Docs"
+title: "Használata Azure felügyelete az Azure API Management Szolgáltatásidentitás |} Microsoft Docs"
 description: "Az Azure Managed Service Identity az API Management használata"
 services: api-management
 documentationcenter: 
@@ -11,22 +11,22 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 70bf207cc173caf7d8cae3c4c9111ee2f427405b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: ded0809fa90e98b2e845d328fbeec6d21507c46b
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="how-to-use-azure-managed-service-identity-in-azure-api-management"></a>Az Azure Managed Service Identity használata az Azure API Management
+# <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Azure felügyelt Szolgáltatásidentitás használata az Azure API Management
 
 > [!Note]
 > Az Azure API Management felügyelt Szolgáltatásidentitás jelenleg előzetes verzió.
 
-Ez a témakör bemutatja az API Management szolgáltatáspéldány felügyelt szolgáltatásidentitás létrehozása és egyéb erőforrásainak elérésére. Által Azure Active Directory (AAD) előállított felügyelt szolgáltatásidentitás lehetővé teszi, hogy az API Management példány könnyen és biztonságosan férhetnek hozzá más AAD által védett erőforrások, például az Azure Key Vault. A felügyelt szolgáltatásidentitás Azure kezeli, és nem kell kiosztania vagy forgassa el a titkos kulcsok. Az Azure Managed Service Identity kapcsolatban bővebben lásd: [felügyelt identitás áttekintése](../active-directory/msi-overview.md).
+Ez a cikk bemutatja, hogyan az API Management szolgáltatáspéldány felügyelt szolgáltatásidentitás létrehozása és egyéb erőforrások elérését. Azure Active Directory (Azure AD) által létrehozott felügyelt szolgáltatásidentitás lehetővé teszi, hogy az API Management példány könnyen és biztonságosan férhetnek hozzá más Azure AD által védett erőforrások, például az Azure Key Vault. A felügyelt szolgáltatásidentitás Azure kezeli, és nem kell kiosztania vagy forgassa el a titkos kulcsok. Az Azure Managed Service Identity kapcsolatos további információkért lásd: [Szolgáltatásidentitás felügyelt Azure-erőforrások](../active-directory/msi-overview.md).
 
-## <a name="creating-an-api-management-instance-with-an-identity-using-an-azure-resource-manager-template"></a>Az API Management-példány létrehozása Azure Resource Manager-sablonnal identitással
+## <a name="create-an-api-management-instance-with-an-identity-by-using-a-resource-manager-template"></a>Az API Management példányt létrehozni identitással a Resource Manager-sablon használatával
 
-Az API Management-példány is létrehozható egy identitás, többek között a következő tulajdonság az erőforrás-definícióban. 
+Az API Management példány létrehozhatja identitással többek között a következő tulajdonság az erőforrás-definícióban: 
 
 ```json
 "identity" : {
@@ -34,9 +34,9 @@ Az API Management-példány is létrehozható egy identitás, többek között a
 }
 ```
 
-Ez alapján Azure létrehozásához és kezeléséhez az API Management-példány azonosítója. 
+Ez a tulajdonság tájékoztatja az Azure létrehozásához és kezeléséhez az API Management-példány azonosítója. 
 
-Például egy teljes sablon nézhet ki például a következőket:
+Például egy teljes Azure Resource Manager-sablon nézhet ki például a következőket:
 
 ```json
 {
@@ -109,13 +109,13 @@ Például egy teljes sablon nézhet ki például a következőket:
 }
 ```
 
-## <a name="obtaining-a-certificate-from-azure-key-vault"></a>Az Azure Key Vault tanúsítvány beszerzése
+## <a name="obtain-a-certificate-from-azure-key-vault"></a>Az Azure Key Vault egy tanúsítvány beszerzése
 
-Az alábbi példa bemutatja, hogyan lehet lekérni a tanúsítványt az Azure Key Vault. A következő lépéseket tartalmazza:
+A következő példa bemutatja, hogyan lehet lekérni a tanúsítványt az Azure Key Vault. A következő lépéseket tartalmazza:
 
-* Hozzon létre egy API Management-példányt identitás
-* A hozzáférési házirendek az Azure Key Vault-példány frissítéséhez és titkos kulcsok beszerzése az API Management-példányt engedélyezése
-* A Key Vault példányból tanúsítvánnyal egyéni tartománynév beállítása az API Management-példány frissítése
+1. Az API Management példányt létrehozni identitással.
+2. A hozzáférési házirendek az Azure Key Vault-példány frissítéséhez, és lehetővé teszik a titkos kulcsok beszerzése az API Management-példányt.
+3. A tanúsítvány egyéni tartománynév beállítása a Key Vault példányból frissíteni az API Management-példány.
 
 > [!Important]
 > Ha a tanúsítvány objektum verziója nem áll rendelkezésre, az API Management automatikusan beszerzi az újabb verzió, a tanúsítvány Key Vault való feltöltésük után. 
@@ -245,7 +245,8 @@ Az alábbi példa bemutatja, hogyan lehet lekérni a tanúsítványt az Azure Ke
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További tudnivalók az Azure Managed Service Identity
-  * [Felügyelt identitás – áttekintés](../active-directory/msi-overview.md)
-  * [Tekintse meg a további Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates)
+További tudnivalók az Azure Managed Service Identity:
+
+* [Az Azure-erőforrások felügyelt identitás](../active-directory/msi-overview.md)
+* [Az Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates)
 

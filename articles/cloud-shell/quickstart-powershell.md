@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: fd1d340bc0408eaeb0b7b18235df109224eae5f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 995a5bf0b28f6bfa0e501f5930b9efcad9041b8c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj PowerShell gyors üzembe helyezés
+# <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Gyors üzembe helyezés PowerShell Azure-felhőbe rendszerhéj (előzetes verzió)
 
 Ez a dokumentum részletesen a PowerShell használatával a felhő rendszerhéj a [Azure-portálon](https://aka.ms/PSCloudPreview).
 
@@ -227,7 +227,7 @@ Akkor is megtalálhatja a `virtualMachines` directory első és futtatási `Ente
 
 ### <a name="discover-webapps"></a>Webalkalmazás felderítése
 
-Írja be azokat a `WebApps` egyszerűen nyissa meg a tárolási erőforrások mappa
+Írja be azokat a `WebApps` egyszerűen nyissa meg a webes alkalmazások erőforrások mappa
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -243,15 +243,15 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 
 
-# You can use Azure cmdlets to Start/Stop your web apps for example,
+# You can use Azure cmdlets to Start/Stop your web apps
 PS Azure:\MySubscriptionName\WebApps> Start-AzureRmWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
 
 Name           State    ResourceGroup        EnabledHostNames                   Location
 ----           -----    -------------        ----------------                   --------
 mywebapp1      Running  MyResourceGroup1     {mywebapp1.azurewebsites.net ...   West US
 
-# Refresh the current state with -force
-PS Azure:\MySubscriptionName\WebApps> dir -force
+# Refresh the current state with -Force
+PS Azure:\MySubscriptionName\WebApps> dir -Force
 
     Directory: Azure:\MySubscriptionName\WebApps
 
@@ -266,7 +266,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="list-available-commands"></a>Rendelkezésre álló parancslista
 
-A `Azure` meghajtó, írja be a `Get-AzureRmCommand` környezet konkrét Azure parancsok eléréséhez.
+A `Azure` meghajtó, írja be a `Get-AzureRmCommand` környezetfüggő Azure parancsok eléréséhez.
 
 Azt is megteheti, hogy mindig használhatja `Get-Command *azurerm* -Module AzureRM.*` elérhető Azure parancsok megállapítása.
 
@@ -282,7 +282,7 @@ Típus `Get-Help` Azure Cloud rendszerhéj PowerShell lekérése.
 PS Azure:\> Get-Help
 ```
 
-Egy adott parancs továbbra is mindent Get-Help parancsmag, majd például
+Egy adott parancs továbbra is végezhet a Get-Help parancsmag követ.
 
 ``` Powershell
 PS Azure:\> Get-Help Get-AzureRmVM
@@ -290,7 +290,7 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-file-storage-to-store-your-data"></a>Az adatok tárolásához Azure File Storage használata
 
-Létrehozhat egy parancsfájlt, mondja ki `helloworld.ps1`, és mentse a rendszerhéj-munkamenetek között használandó clouddrive.
+Létrehozhat egy parancsfájlt, mondja ki `helloworld.ps1`, és menti a `CloudDrive` rendszerhéj-munkamenetek között használandó.
 
 ``` Powershell
 cd C:\users\ContainerAdministrator\CloudDrive
@@ -310,13 +310,13 @@ Arról, hogyan hozza létre a profilt, hogy [kapcsolatos profilok][profile].
 
 ## <a name="use-git"></a>A Git
 
-Egy a CloudShell a git-tárház klónozása, szeretne létrehozni egy [személyes hozzáférési jogkivonat] [ githubtoken] , és használja azt a felhasználónevet. Ha már van a token, klónozás a tárházban az alábbiak szerint:
+A felhő rendszerhéj egy git-tárház klónozása, szeretne létrehozni egy [személyes hozzáférési jogkivonat] [ githubtoken] , és használja azt a felhasználónevet. Ha már van a token, klónozás a tárházban az alábbiak szerint:
 
  ``` PowerShell
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-CloudShell munkamenet során kijelentkezik, vagy a munkamenet lejárata nem maradnak, mivel a Git-konfigurációs fájl nem létezik a következő bejelentkezéskor. Ahhoz, hogy a Git-config továbbra is fennáll, mentenie kell a .gitconfig, hogy a `CloudDrive` , és másolja, vagy hozzon létre egy symlink amikor a `CloudShell` lekérdezi elindítani. A profile.ps1, a következő kódrészletet segítségével hozzon létre egy symlink való `CloudDrive`.
+Felhő rendszerhéj munkamenetek nem maradnak, ha kijelentkezik, vagy a munkamenet lejárata, mivel a Git-konfigurációs fájl nem létezik a következő bejelentkezéskor. Ahhoz, hogy a Git-config továbbra is fennáll, mentenie kell a .gitconfig, hogy a `CloudDrive` , és másolja, vagy hozzon létre egy symlink, a felhő rendszerhéj lekérdezi indításakor. A profile.ps1, a következő kódrészletet segítségével hozzon létre egy symlink való `CloudDrive`.
 
  ``` PowerShell
  

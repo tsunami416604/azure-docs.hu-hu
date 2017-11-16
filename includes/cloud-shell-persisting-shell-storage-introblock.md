@@ -29,7 +29,7 @@ A Bash, meglévő fájlmegosztások megjelenik egy 5 GB-os lemezképet hozott l�
 ![Az erőforrás-csoport beállítás](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 
 ### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Erőforrás létrehozása az Azure-erőforrás házirendjével korlátozása
-A felhő rendszerhéj létrehozott tárfiókok vannak látva `ms-resource-usage:azure-cloud-shell`. Ha azt szeretné, hogy a storage-fiókok létrehozása a felhő rendszerhéj letilthatja, hozzon létre egy [Azure-erőforrás házirend címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags) , amely váltja ki ezt a címkét.
+A felhő rendszerhéj létrehozott tárfiókok vannak látva `ms-resource-usage:azure-cloud-shell`. Ha azt szeretné, hogy a storage-fiókok létrehozása a felhő rendszerhéj letilthatja, hozzon létre egy [Azure-erőforrás házirend címkék](../articles/azure-policy/json-samples.md) , amely váltja ki ezt a címkét.
 
 ## <a name="supported-storage-regions"></a>Támogatott tárolási régiók
 Kapcsolódó az Azure storage-fiókok és a felhő rendszerhéj gépet, hogy van-e csatlakoztatni őket ugyanabban a régióban kell lennie.

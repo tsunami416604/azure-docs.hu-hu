@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs"
-description: "Útmutatás a mobilalkalmazások a figyelés az Application Insights és Mobile Center gyorsan beállítása"
+description: "Útmutatás a mobilalkalmazások a figyelés az Application insights szolgáltatással és az alkalmazás Center gyorsan beállítása"
 services: application-insights
 keywords: 
 author: numberbycolors
@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a8af65a9a9f31200f833a47f811ae50a0a9d2f9b
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 897c45322148aeb088f1ec2e7f8d9f46b58c71aa
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="start-analyzing-your-mobile-app-with-mobile-center-and-application-insights"></a>Indítsa el a mobilalkalmazást az mobileszköz-központ és az Application Insights elemzése
+# <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Indítsa el a mobilalkalmazást az App-központ és az Application Insights elemzése
 
-A gyors üzembe helyezés végigvezeti Önt az alkalmazáspéldányban Mobile Center Application insights szolgáltatással való kapcsolódás. Az Application insights szolgáltatással lekérdezése, szegmentálhatja, szűrésére és hatékonyabb eszközök érhetők el, mint a telemetriai adatok elemzése a [Analytics](https://docs.microsoft.com/mobile-center/analytics/) Mobile Center szolgáltatás.
+A gyors üzembe helyezés végigvezeti Önt az alkalmazáspéldányban App Center Application insights szolgáltatással való kapcsolódás. Az Application insights szolgáltatással lekérdezése, szegmentálhatja, szűrésére és hatékonyabb eszközök érhetők el, mint a telemetriai adatok elemzése a [Analytics](https://docs.microsoft.com/mobile-center/analytics/) alkalmazás-központ szolgáltatás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,11 +29,11 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
  
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="onboard-to-mobile-center"></a>Érheti el a mobil Center
+## <a name="onboard-to-app-center"></a>Érheti el a App Center
 
-Az Application Insights az a mobilalkalmazás használata előtt kell bevezetésében az alkalmazásnak, hogy [Mobile Center](https://docs.microsoft.com/mobile-center/). Az Application Insights nem telemetriai adatok fogadhatók az a mobilalkalmazás közvetlenül. Ehelyett az alkalmazás egyéni esemény telemetriai adatokat küld Mobile Center. Majd Mobile Center folyamatosan exportálja az egyéni esemény másolatát az Application Insightsban való, az események fogadása.
+Az Application Insights az a mobilalkalmazás használata előtt kell bevezetésében az alkalmazásnak, hogy [App Center](https://docs.microsoft.com/mobile-center/). Az Application Insights nem telemetriai adatok fogadhatók az a mobilalkalmazás közvetlenül. Ehelyett az alkalmazás egyéni esemény telemetriai adatokat küld App Center. Majd alkalmazás Center folyamatosan exportálja az egyéni esemény másolatát az Application Insightsban való, az események fogadása.
 
-A bevezetni az alkalmazás minden egyes platformhoz a mobileszköz Center gyors üzembe helyezés a alkalmazás támogatja. Minden egyes platformhoz különálló Mobile Center példányok létrehozása:
+A bevezetni az alkalmazás az App Center gyors üzembe helyezés, az egyes platformokon a alkalmazás támogatja. Minden egyes platformhoz különálló alkalmazás Center példányok létrehozása:
 
 * [iOS](https://docs.microsoft.com/mobile-center/sdk/getting-started/ios).
 * [Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/android).
@@ -43,27 +43,27 @@ A bevezetni az alkalmazás minden egyes platformhoz a mobileszköz Center gyors 
 
 ## <a name="track-events-in-your-app"></a>Nyomon követheti az eseményeket az alkalmazásban
 
-Miután az alkalmazás Mobile Center előkészítve, kell módosítani kell a mobileszköz Center SDK használatával egyéni esemény telemetriai adatokat küldhet. Egyéni eseményeket az Application Insights az exportált Mobile Center telemetriai csak ilyen típusú is.
+Miután az alkalmazás alkalmazás-központnak előkészítve, kell módosítani kell, hogy az alkalmazás Center SDK használatával egyéni esemény telemetriai adatokat küldhet. Egyéni eseményeket az Application Insights az exportált App Center telemetriai csak ilyen típusú is.
 
-Egyéni események küldése az iOS-alkalmazások, használja a `trackEvent` vagy `trackEvent:withProperties` módszerek a Mobile Center SDK-ban. [További információk az iOS-alkalmazások nyomon követés.](https://docs.microsoft.com/mobile-center/sdk/analytics/ios)
+Egyéni események küldése az iOS-alkalmazások, használja a `trackEvent` vagy `trackEvent:withProperties` módszerek az alkalmazás Center SDK-ban. [További információk az iOS-alkalmazások nyomon követés.](https://docs.microsoft.com/mobile-center/sdk/analytics/ios)
 
 ```Swift
 MSAnalytics.trackEvent("Video clicked")
 ```
 
-Egyéni események küldése az Android-alkalmazások, használja a `trackEvent` a Mobile Center SDK metódust. [További információk az Android-alkalmazások nyomon követés.](https://docs.microsoft.com/mobile-center/sdk/analytics/android)
+Egyéni események küldése az Android-alkalmazások, használja a `trackEvent` módszer az alkalmazás Center SDK-ban. [További információk az Android-alkalmazások nyomon követés.](https://docs.microsoft.com/mobile-center/sdk/analytics/android)
 
 ```Java
 Analytics.trackEvent("Video clicked")
 ```
 
-Egyéni események küldése az egyéb alkalmazás platformokról származó, használja a `trackEvent` a Mobile Center SDK-k metódusokon.
+Egyéni események küldése az egyéb alkalmazás platformokról származó, használja a `trackEvent` az alkalmazás Center SDK-k metódusokon.
 
-Győződjön meg arról, hogy az egyéni események beérkező, keresse fel a **események** lap a **Analytics** Mobile Center című szakasza. Az események megjelennek a, ha azok még az alkalmazásból küldött néhány percig is tarthat.
+Győződjön meg arról, hogy az egyéni események beérkező, keresse fel a **események** lap a **Analytics** App Center című szakasza. Az események megjelennek a, ha azok még az alkalmazásból küldött néhány percig is tarthat.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
-Miután az alkalmazás egyéni események küld, és ezek az események Mobile Center beérkező, hozzon létre egy Mobile Center-típus az Application Insights-erőforrást az Azure portálon kell:
+Miután az alkalmazás egyéni események küld, és ezek az események App Center beérkező, hozzon létre egy alkalmazást Center típusú Application Insights-erőforrást az Azure portálon kell:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **Új** > **Felügyelet és kezelés** > **Application Insights** elemet.
@@ -75,7 +75,7 @@ Miután az alkalmazás egyéni események küld, és ezek az események Mobile C
     | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Néhány globális szinten egyedi érték, például a "myApp-iOS" | A figyelt alkalmazást azonosító név |
-   | **Alkalmazás típusa** | Mobile központ alkalmazásában | A figyelt alkalmazás típusa |
+   | **Alkalmazás típusa** | Alkalmazás központ alkalmazásában | A figyelt alkalmazás típusa |
    | **Erőforráscsoport**     | Egy új erőforráscsoportot, vagy egy meglévő a menüből | Az erőforráscsoport, amelyben az új Application Insights-erőforrás létrehozása |
    | **Hely** | Egy helyet a menüből | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
@@ -87,7 +87,7 @@ Ha az alkalmazás támogatja a több platformot (iOS, Android, stb.), érdemes l
 
 A új Application Insights-erőforrás a a **áttekintése** lapját a **Essentials** szakasz elején, másolja az ehhez az erőforráshoz instrumentation kulcsot.
 
-Az alkalmazás Mobile Center-példány:
+Az alkalmazás alkalmazás Center-példány:
 
 1. Az a **beállítások** kattintson **exportálása**.
 2. Válasszon **új exportálása**, válasszon **Application Insights**, majd kattintson a **Testreszabás**.
@@ -96,13 +96,13 @@ Az alkalmazás Mobile Center-példány:
 
 Ne felejtse el az egyes platformokon ismételje meg a folyamatot a alkalmazás támogatja.
 
-Egyszer [exportálása](https://docs.microsoft.com/mobile-center/analytics/export) van beállítva fel, minden egyéni esemény Mobile központ fogadja az Application Insightsban való másolódik. Az Application Insights elérni, így ha azok nem jelennek meg azonnal, várjon egy kicsit előtt további diagnosztizálása az események több percet is igénybe vehet.
+Egyszer [exportálása](https://docs.microsoft.com/mobile-center/analytics/export) van beállítva fel, minden egyes alkalmazás-központ által fogadott egyéni esemény az Application Insightsban való másolódik. Az Application Insights elérni, így ha azok nem jelennek meg azonnal, várjon egy kicsit előtt további diagnosztizálása az események több percet is igénybe vehet.
 
-Hogy több adatot biztosítson amikor első alkalommal csatlakoztatja, egyéni események Mobile Center legutóbbi 48 órán belül automatikusan exportálása az Application Insights részére.
+Hogy több adatot biztosítson amikor első alkalommal csatlakoztatja, egyéni események App Center legutóbbi 48 órán belül automatikusan exportálása az Application Insights részére.
 
 ## <a name="start-monitoring-your-app"></a>Az alkalmazás figyelése
 
-Az Application Insights lekérdezni, szegmentálhatja, szűrheti, és elemezheti az egyéni esemény telemetriai adatokat az alkalmazásokból, a mobil központ elemzőeszközök túl.
+Az Application Insights lekérdezni, szegmentálhatja, szűrheti, és elemezheti az egyéni esemény telemetriai adatokat az alkalmazásokból, az alkalmazás központ elemzőeszközök túl.
 
 1. **Az egyéni esemény telemetriai adatokat lekérdezni.** Az Application Insights az **áttekintése** lapon, válassza ki **Analytics**. 
 
@@ -131,7 +131,7 @@ Az Application Insights lekérdezni, szegmentálhatja, szűrheti, és elemezheti
 
    ![Felhasználó-eszköz ikon](./media/app-insights-mobile-center-quickstart/users-icon.png)
 
-   A felhasználó-eszköz a felhasználók számára az alkalmazás egyes gombokra kattintott, bizonyos képernyők meglátogatott vagy bármilyen más műveletet végre, amely a Mobile Center SDK-val eseményként nyomon követett jeleníti meg. Ha már megtörtént a szegmenseket, és a mobil Center események szűréséhez, a felhasználó eszköze kiváló választás.
+   A felhasználó-eszköz a felhasználók számára az alkalmazás egyes gombokra kattintott, bizonyos képernyők meglátogatott vagy bármilyen más műveletet végre, amely az alkalmazás Center SDK-val eseményként nyomon követett jeleníti meg. Ha Ön már van olyan módszert keres szegmentálni, és az alkalmazás Center események szűréséhez, a felhasználó eszköze kiváló választás.
 
    ![Felhasználó-eszköz](./media/app-insights-mobile-center-quickstart/users.png) 
 
@@ -152,11 +152,11 @@ Az Application Insights lekérdezni, szegmentálhatja, szűrheti, és elemezheti
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem szeretné, hogy továbbra is az Application Insights használja a mobileszköz-központban, kapcsolja ki az Mobile Center exportálása, és az Application Insights-erőforrás törlése. Ez megakadályozza, hogy többletfizetésre volna szükség, további Application Insights által ehhez az erőforráshoz.
+Ha nem szeretné, hogy továbbra is az Application Insights App Center használja, kapcsolja ki az alkalmazás Center exportálása, és az Application Insights-erőforrás törlése. Ez megakadályozza, hogy többletfizetésre volna szükség, további Application Insights által ehhez az erőforráshoz.
 
-Exportálás Mobile Center kikapcsolása:
+Az alkalmazás Center exportálása kikapcsolása:
 
-1. Lépjen a Mobile Center **beállítások** válassza **exportálása**.
+1. Az alkalmazás központban navigáljon **beállítások** válassza **exportálása**.
 2. Kattintson az Application Insights exportálás törölje, majd kattintson a kívánt **exportálás törlése** a lap alján, majd erősítse meg.
 
 Az Application Insights-erőforrás törlése:

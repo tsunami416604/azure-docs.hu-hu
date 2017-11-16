@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: af184574bdfa7d3a11baf75d8cdfbf80f1544dde
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: bf5f12e4a20d9692e311550fc7a02f14f0b4aaad
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -38,9 +38,9 @@ Mintavételi csökkenti a forgalom és az adatok költségeket, és segít elker
 ## <a name="types-of-sampling"></a>Mintavételi típusai
 Alternatív mintavételi három módszer áll rendelkezésre:
 
-* **Adaptív mintavételi** automatikusan beállítja az SDK-t az ASP.NET-alkalmazás által küldött telemetriai adatok mennyiségét. Alapértelmezés szerint az SDK v 2.0.0-beta3. Jelenleg csak az ASP.NET kiszolgálóoldali telemetriai adat esetén érhető el. 
+* **Adaptív mintavételi** automatikusan beállítja az SDK-t az ASP.NET-alkalmazás által küldött telemetriai adatok mennyiségét. SDK-v 2.0.0-beta3 kezdve ez a mintavételi mód az alapértelmezett. Adaptív mintavételi jelenleg csak az ASP.NET kiszolgálóoldali telemetriai használható. 
 * **Rögzített mintavételi** mindkét az ASP.NET kiszolgálóról, és a felhasználók böngészőjének a telemetriai adatok mennyiségét csökkenti. A sebesség beállítása. Az ügyfél és kiszolgáló szinkronizálja a mintavételi, a keresés, navigálhat kapcsolódó Lapmegtekintések és kérések között.
-* **Adatfeldolgozást mintavételi** működik az Azure portálon. Törli az alkalmazásból, Ön által beállított ütemben érkező telemetriai adatok némelyike. Nem csökkenthető a telemetria-forgalom, de lehetővé teszi a havi kvótán belül. A nagy adatfeldolgozást mintavételi előnye, hogy az alkalmazás üzembe helyezésével állíthatja be, és egységesen összes kiszolgálók és ügyfelek esetében működik. 
+* **Adatfeldolgozást mintavételi** működik az Azure portálon. Törli az alkalmazást, a mintavételi ráta, amely nem érkezik telemetriai adatok némelyike. Az alkalmazásból küldött telemetriai forgalom nem csökkenthető, de lehetővé teszi a havi kvótán belül. Adatfeldolgozást mintavételi fő előnye, hogy a mintavételi ráta állíthatja be az alkalmazás üzembe helyezésével, és minden kiszolgálók és ügyfelek egységesen működik. 
 
 Ha az adaptív vagy rögzített arány mintavételi művelet, adatfeldolgozást mintavételi le van tiltva.
 
@@ -67,7 +67,7 @@ Adatfeldolgozást mintavételi nem működik, amikor az SDK-alapú adaptív vagy
 ## <a name="adaptive-sampling-at-your-web-server"></a>A webkiszolgáló adaptív mintavétel
 Adaptív mintavételi az Application Insights SDK az ASP.NET v 2.0.0-beta3 és újabb verzióihoz érhető el, és alapértelmezés szerint engedélyezve van. 
 
-Adaptív mintavételi hatással van az Application Insights szolgáltatás a webalkalmazás-kiszolgáló által küldött telemetriai adatok mennyiségét. A kötet tartani a megadott legnagyobb mértékben forgalom belül automatikusan módosul.
+Adaptív mintavételi hatással van az Application Insights szolgáltatás végpontjának a webalkalmazás-kiszolgáló által küldött telemetriai adatok mennyiségét. A kötet tartani a megadott legnagyobb mértékben forgalom belül automatikusan módosul.
 
 Azt nem működik, telemetriai adatokat kis mennyiségű úgy egy alkalmazást a hibakeresés, vagy nem befolyásolja az alacsony használat rendelkező webhely.
 
@@ -75,7 +75,11 @@ A célkötet eléréséhez a generált telemetriai adatok némelyike program elv
 
 A metrika számít például kérelmek aránya, és kivétel arány igazítva kiegyensúlyozása érdekében a mintavételi ráta, hogy azok körülbelül megfelelő értékek megjelenítése a metrika Intézőben.
 
-**Frissítse a projekt NuGet** csomagok a legújabb *kiadás előtti* Application Insights verziója: kattintson a jobb gombbal a projektre a Megoldáskezelőben, válassza a NuGet-csomagok kezelése, ellenőrizze **közé tartoznak az előzetes** , és keressen a Microsoft.ApplicationInsights.Web. 
+### <a name="update-nuget-packages"></a>NuGet-csomagok frissítése ###
+
+A projekt NuGet-csomagok frissítése a legújabb *kiadás előtti* Application Insights verzióját. A Visual Studióban, kattintson a jobb gombbal a projektre a Megoldáskezelőben, válassza a NuGet-csomagok kezelése, ellenőrizze **közé tartoznak az előzetes** és Microsoft.ApplicationInsights.Web megkereséséhez. 
+
+### <a name="configuring-adaptive-sampling"></a>Adaptív mintavétel konfigurálása ###
 
 A [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), a több paraméterrel beállíthatja a `AdaptiveSamplingTelemetryProcessor` csomópont. Az ábrán látható az alapértelmezett értékeket:
 
@@ -116,7 +120,7 @@ A [ApplicationInsights.config](app-insights-configuration-with-applicationinsigh
 **Kapcsolja ki a** adaptív mintavételi, távolítsa el a AdaptiveSamplingTelemetryProcessor csomópont applicationinsights-config.
 
 ### <a name="alternative-configure-adaptive-sampling-in-code"></a>Alternatív: Adaptív mintavétel konfigurálása a kódban
-Mintavétel a .config kiterjesztésű fájl helyett, a kódot is használhatja. Ez lehetővé teszi, hogy adjon meg egy visszahívási függvény, amelyet mindig, amikor a mintavételi ráta újraértékelése is megtörténik. Használhat, például, hogy megtudja, milyen mintavételi ráta használatban van.
+Helyett, ha a mintavételi paramétert a .config kiterjesztésű fájl, programozott módon állíthatja be ezeket az értékeket. Ez lehetővé teszi, hogy adjon meg egy visszahívási függvény, amelyet mindig, amikor a mintavételi ráta újraértékelése is megtörténik. Használhat, például, hogy megtudja, milyen mintavételi ráta használatban van.
 
 Távolítsa el a `AdaptiveSamplingTelemetryProcessor` csomópontot a .config fájlból.
 
@@ -168,7 +172,7 @@ Távolítsa el a `AdaptiveSamplingTelemetryProcessor` csomópontot a .config fá
 ## <a name="sampling-for-web-pages-with-javascript"></a>Mintavételi JavaScript weblapok
 Konfigurálhatja a weblapok rögzített mintavételi tetszőleges kiszolgálóról. 
 
-Ha Ön [a weblapok konfigurálja az Application Insights](app-insights-javascript.md), módosítsa a kódrészletet, hogy az Application Insights portáljáról. (Az ASP.NET alkalmazásokban, a részlet általában kerül a _Layout.cshtml.)  Például a sor beszúrása `samplingPercentage: 10,` előtt a instrumentation kulcs:
+Ha Ön [a weblapok konfigurálja az Application Insights](app-insights-javascript.md), módosítsa a JavaScript kódrészletet, hogy az Application Insights portáljáról. (Az ASP.NET alkalmazásokban, a részlet általában kerül a _Layout.cshtml.)  Például a sor beszúrása `samplingPercentage: 10,` előtt a instrumentation kulcs:
 
     <script>
     var appInsights= ... 
@@ -191,13 +195,15 @@ A mintavételi arány válassza százalékában, amelynek mérete megközelítő
 Ha rögzített mintavételi a kiszolgálón is engedélyezi, az ügyfelek és a kiszolgáló szinkronizálja, a keresés, navigálhat kapcsolódó Lapmegtekintések és kérések között.
 
 ## <a name="fixed-rate-sampling-for-aspnet-web-sites"></a>Az ASP.NET-webhelyeket rögzített mintavétel
-Rögzített alapján mintavételi csökkenti a webkiszolgálót és a böngészők által küldött forgalmat. Adaptív mintavételi eltérően csökkenti telemetriai rögzített kulcs határoz meg. Azt is szinkronizálja az ügyfél és kiszolgáló mintavételi, hogy a kapcsolódó elemek megmaradnak – például, hogy a nézet a keresési tekinti meg, ha a kapcsolódó kérelemre található.
+Rögzített alapján mintavételi csökkenti a webkiszolgálót és a böngészők által küldött forgalmat. Adaptív mintavételi eltérően csökkenti telemetriai rögzített kulcs határoz meg. Azt is szinkronizálja az ügyfél és kiszolgáló mintavételi, hogy a kapcsolódó elemek megmaradnak – például ha egy lap nézetben, a keresési tekinti meg, megtalálhatja a kapcsolódó kérelemre.
 
-A mintavételi algoritmus megtartja a kapcsolódó elemeket. Az egyes HTTP-kérelmek esemény, ezért a kapcsolódó események vagy elvetett vagy továbbítani. 
+A mintavételi algoritmus megtartja a kapcsolódó elemeket. Az egyes HTTP-kérelmek esemény, a kérelem és a kapcsolódó események vagy elvetett vagy továbbított együtt. 
 
 A Metrikaböngészőben például a kérelem és a kivételesemények számát díjszabás vannak faktor szorzata kiegyensúlyozása érdekében a mintavételi ráta, hogy azok körülbelül helyességét.
 
-1. **A projekt NuGet-csomagok frissítése** a legújabb *kiadás előtti* Application Insights verzióját. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, válassza a NuGet-csomagok kezelése, ellenőrizze **közé tartoznak az előzetes** és Microsoft.ApplicationInsights.Web megkereséséhez. 
+### <a name="configuring-fixed-rate-sampling"></a>Rögzített mintavétel konfigurálása ###
+
+1. **A projekt NuGet-csomagok frissítése** a legújabb *kiadás előtti* Application Insights verzióját. A Visual Studióban, kattintson a jobb gombbal a projektre a Megoldáskezelőben, válassza a NuGet-csomagok kezelése, ellenőrizze **közé tartoznak az előzetes** és Microsoft.ApplicationInsights.Web megkereséséhez. 
 2. **Tiltsa le a adaptív mintavételi**: A [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), távolítsa el vagy megjegyzéssé a `AdaptiveSamplingTelemetryProcessor` csomópont.
    
     ```xml
@@ -233,7 +239,7 @@ A Metrikaböngészőben például a kérelem és a kivételesemények számát d
 > 
 
 ### <a name="alternative-enable-fixed-rate-sampling-in-your-server-code"></a>Másik megoldás: a kiszolgáló kódjában található rögzített mintavételi engedélyezése
-Helyett, ha a mintavételi paramétert a .config kiterjesztésű fájl, a kódot is használhatja. 
+Helyett, ha a mintavételi paramétert a .config kiterjesztésű fájl, programozott módon állíthatja be ezeket az értékeket. 
 
 *C#*
 
@@ -256,9 +262,9 @@ Helyett, ha a mintavételi paramétert a .config kiterjesztésű fájl, a kódot
 ([További információ a telemetriai adatok processzorok](app-insights-api-filtering-sampling.md#filtering).)
 
 ## <a name="when-to-use-sampling"></a>Mikor érdemes használni a mintavételi?
-Adaptív mintavételi automatikusan engedélyezi az ASP.NET SDK verzió 2.0.0-beta3 használatakor vagy újabb. Függetlenül attól, milyen SDK verzióját használja használhat adatfeldolgozást mintavételi (a kiszolgáló).
+Adaptív mintavételi automatikusan engedélyezi az ASP.NET SDK verzió 2.0.0-beta3 használatakor vagy újabb. Melyik verzióját az SDK-t használja, attól függetlenül engedélyezi a mintavételhez. az összegyűjtött adatokat az Application Insights adatfeldolgozást mintavételi engedélyezheti.
 
-Mintavételi legtöbb kis és közepes méretű alkalmazásokhoz nem szükséges. A leghasznosabb információkat a diagnosztikai és a legpontosabb statisztika nyerhetők adatokat gyűjt a felhasználói tevékenységekről. 
+Általában a legtöbb kis és közepes méretű alkalmazásokhoz nem szükséges mintavételi. A leghasznosabb információkat a diagnosztikai és a legpontosabb statisztika nyerhetők adatokat gyűjt a felhasználói tevékenységekről. 
 
 A mintavételi fő előnyei a következők:
 
@@ -281,7 +287,7 @@ A mintavételi fő előnyei a következők:
 
 **Adaptív mintavételi használja:**
 
-Ellenkező esetben ajánlott adaptív mintavételi. Ez az ASP.NET Server SDK verzió 2.0.0-beta3 alapértelmezés szerint engedélyezve van, vagy később. Azt nem csökkenthető a forgalom csak egy bizonyos minimális sebessége, így nem lesz hatással a alacsony használható hely.
+Ha más űrlap mintavételi feltételek nem vonatkoznak, adaptív mintavételi ajánlott. Ez az ASP.NET Server SDK verzió 2.0.0-beta3 alapértelmezés szerint engedélyezve van, vagy később. Nem csökkenti forgalom a meghatározott minimális mértékben eléréséig, ezért alacsony használható helyeket nem érinti.
 
 ## <a name="how-do-i-know-whether-sampling-is-in-operation"></a>Hogyan állapítható meg, hogy a mintavétel van-e művelet?
 Annak megállapításához, a tényleges mintavételi ráta, függetlenül attól, hol van érvényben, használjon egy [Analytics lekérdezési](app-insights-analytics.md) Ez például:
@@ -330,7 +336,7 @@ Az ügyféloldali (JavaScript) SDK vesz részt a rögzített mintavételi a kisz
 
 * Egyirányú kezdődnie adaptív mintavételi, megtudhatja, mi értékelés rendezi a (lásd a fenti kérdés), és rögzített majd átváltása mintát vesz adott alapján. 
   
-    Ellenkező esetben van kitalálni. Az aktuális telemetriai használatának a AI elemzése, megfigyelheti, hogy a sávszélesség-szabályozás, hogy folyamatban van és becslése gyűjtött telemetriai adatok mennyiségét. Ezen három bemeneti adatokat, és a választott tarifacsomaghoz javasoljuk, hogy mennyire érdemes a gyűjtött telemetriai adatok mennyiségének csökkentése érdekében. Azonban a felhasználók számának növelését vagy valamilyen más shift telemetriai adatok mennyiségének esetleg érvénytelenné válnak a becsült.
+    Ellenkező esetben van kitalálni. Az Application Insights az aktuális telemetriai használatának elemzése, láthatja a szabályozás, hogy folyamatban van, és becsléséhez gyűjtött telemetriai adatok mennyiségét. Ezen három bemeneti adatokat, és a választott tarifacsomaghoz javasoljuk, hogy mennyire érdemes a gyűjtött telemetriai adatok mennyiségének csökkentése érdekében. Azonban a felhasználók számának növelését vagy valamilyen más shift telemetriai adatok mennyiségének esetleg érvénytelenné válnak a becsült.
 
 *Mi történik, ha a mintavételi arány túl alacsony konfigurálni?*
 

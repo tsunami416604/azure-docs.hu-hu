@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 763248b1b7adf821d37f2308195a0934a0aee152
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 9595b318b8bd974f778dc12b38cccd949a4e7a1a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszó alaphelyzetbe állítása
 
@@ -95,6 +95,27 @@ Ezt a módszert akkor használja, ha az alkalmazásait általában az Azure Acce
 3. Kattintson a **Jelszó módosítása** elemre.
 4. Adja meg régi jelszavát, állítsa be és erősítse meg az új jelszót, majd kattintson a **Küldés** gombra.
 
+## <a name="reset-password-at-login"></a>Jelszó-átállítási bejelentkezéskor
+
+A rendszergazda engedélyezte a funkció most jelenhet meg egy hivatkozást **jelszó-átállítási** , a Windows 10 alá esik Creators frissítés bejelentkezési képernyőt.
+
+![LoginScreen][LoginScreen]
+
+Kattintson a **jelszó-átállítási** hivatkozásra kattintva megnyílik a SSPR élmény, a bejelentkezési képernyőn, hogy az új jelszó anélkül, hogy a szokásos webes élményt eléréséhez bejelentkezni.
+
+1. Ellenőrizze a felhasználói Azonosítóját, majd kattintson **tovább**
+2. Válassza ki, és erősítse meg a kapcsolattartási módot ellenőrzése. Az informatikai munkatársak esetleg további ellenőrzést, és ismételje meg ezt újra a egy másik adatbázissal is.
+
+   ![ContactMethod][ContactMethod]
+
+3. Az a **hozzon létre egy új jelszót** lapon adjon meg egy új jelszót, erősítse meg a jelszót, és kattintson a **következő**. Javasoljuk, hogy a jelszó legyen 8–16 karakter hosszúságú, és tartalmazzon kis- és nagybetűket, számokat és speciális karaktereket is.
+
+   ![ResetPassword][ResetPassword]
+
+4. Amikor látja **jelszavát átállították**, kattintson a **Befejezés**
+
+Most már be kell tudnia lépni a fiókjába. Ha mégsem, forduljon a vállalati informatikai részleghez további segítségért.
+
 ## <a name="common-problems-and-their-solutions"></a>Gyakori problémák és megoldásuk
 
  Az alábbiakban néhány gyakori hibák és a megoldások:
@@ -116,3 +137,6 @@ Ezt a módszert akkor használja, ha az alkalmazásait általában az Azure Acce
 [Verification]: ./media/active-directory-passwords-update-your-own-password/reset-2-verification.png "A hitelesítési adatok megerősítése"
 [Change]: ./media/active-directory-passwords-update-your-own-password/reset-3-change.png "Jelszó módosítása"
 [Complete]: ./media/active-directory-passwords-update-your-own-password/reset-4-complete.png "A jelszó vissza lett állítva"
+[LoginScreen]: ./media/active-directory-passwords-update-your-own-password/login-screen.png "Windows 10 alá esik Creators frissítés bejelentkezési képernyő alaphelyzetbe állítása jelszó-hivatkozás"
+[ContactMethod]: ./media/active-directory-passwords-update-your-own-password/reset-contact-method-screen.png "A hitelesítési adatok megerősítése"
+[ResetPassword]: ./media/active-directory-passwords-update-your-own-password/reset-password-screen.png "Jelszó módosítása"

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: owend
-ms.openlocfilehash: 0e58862684e62a65cf11266cc0320a9acd781f07
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: a97f9648efef7f07659110d720c200dcd0a241a9
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services kibővített
 
@@ -32,7 +32,7 @@ Kibővített hozhat létre a lekérdezés-készletben legfeljebb hét további l
 
 A lekérdezés-készletben található lekérdezés replikák száma, függetlenül feldolgozási terheléshez nem osztják lekérdezés replikák között. A feldolgozó kiszolgáló egyetlen kiszolgáló szolgál. Lekérdezés replikák ellenőrizhető, hogy csak a lekérdezések a lekérdezés készletben található összes replikát szinkronizálja modellekkel. 
 
-Feldolgozási műveletek befejezése után a feldolgozási kiszolgáló és a lekérdezés a replika kiszolgálók közötti szinkronizálás kell elvégezni. Feldolgozási műveletek automatizálása esetén fontos, hogy konfigurálja a szinkronizálási művelet feldolgozási műveletek sikeres befejezését követően.
+Feldolgozási műveletek befejezése után a feldolgozási kiszolgáló és a lekérdezés a replika kiszolgálók közötti szinkronizálás kell elvégezni. Feldolgozási műveletek automatizálása esetén fontos, hogy konfigurálja a szinkronizálási művelet feldolgozási műveletek sikeres befejezését követően. Szinkronizálás végezheti el manuálisan a portálon, vagy a PowerShell vagy a REST API használatával.
 
 > [!NOTE]
 > Kibővített kiszolgálók a standard tarifacsomag érhető el. Minden egyes lekérdezés replika számlázása a kiszolgálóval azonos ütemben történik.
@@ -58,12 +58,10 @@ Feldolgozási műveletek befejezése után a feldolgozási kiszolgáló és a le
 
 Az elsődleges kiszolgálón táblázatos modellek szinkronizálva legyenek a replikakiszolgálót. Szinkronizálás befejeződése után a lekérdezés készlet kezdődik, bejövő lekérdezések a replika kiszolgálók között terjeszti. 
 
-### <a name="powershell"></a>PowerShell
-Használjon [Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver) parancsmag. Adja meg a `-Capacity` paraméter értéke > 1.
 
 ## <a name="synchronization"></a>Szinkronizálás 
 
-Amikor új lekérdezés replikákat, Azure Analysis Services automatikusan replikálja a modellek összes replika között. Manuális szinkronizálást is elvégezheti. A modellek dolgozza fel, ha végre kell hajtania a szinkronizálás, a lekérdezés replikák között szinkronizálva.
+Amikor új lekérdezés replikákat, Azure Analysis Services automatikusan replikálja a modellek összes replika között. Manuális szinkronizálást a portálon vagy REST API használatával is elvégezheti. Amikor dolgozza fel a modellek, végre kell hajtania a szinkronizálás, a lekérdezés replikák között szinkronizálva.
 
 ### <a name="in-azure-portal"></a>Azure-portálon
 
@@ -72,18 +70,22 @@ A **áttekintése** > modell > **szinkronizálás modell**.
 ![Kibővített csúszka](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
+Használja a **szinkronizálási** műveletet.
 
-A modell szinkronizálása   
-`POST https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
+#### <a name="synchronize-a-model"></a>A modell szinkronizálása   
+`POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
-A modell szinkronizálás állapotának beolvasása  
-`GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
+#### <a name="get-sync-status"></a>Szinkronizálási állapotának beolvasása  
+`GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
+
+### <a name="powershell"></a>PowerShell
+PowerShell, a szinkronizálási futtatásához [frissítése a legújabb](https://github.com/Azure/azure-powershell/releases) 5.01 vagy magasabb AzureRM modul. Használjon [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
 
 ## <a name="connections"></a>Kapcsolatok
 
 A kiszolgáló – áttekintés lapon nincsenek két kiszolgáló nevét. Ha még kiszolgáló kibővített még nincs konfigurálva, akkor mindkét kiszolgáló neve azonos működik. Ha a kiszolgáló kibővített megfelelően konfigurált, szüksége lesz a kapcsolat típusától függően a megfelelő kiszolgáló nevének megadásához. 
 
-A végfelhasználói ügyfélkapcsolatok például a Power BI Desktop-, Excel- és egyéni alkalmazásokba, használjon **kiszolgálónév**. 
+Például a Power BI Desktop, az Excel és az egyéni alkalmazások használatát a végfelhasználói ügyfélkapcsolatok **kiszolgálónév**. 
 
 Az SSMS, az SSDT és PowerShell kapcsolati karakterláncokat, Azure-függvény alkalmazások és az AMO-használata **felügyeleti kiszolgáló neve**. A felügyeleti kiszolgáló neve tartalmaz egy speciális `:rw` (írásra) minősítő jelöl. Minden feldolgozási műveletek fordulhat elő, a felügyeleti kiszolgálón.
 

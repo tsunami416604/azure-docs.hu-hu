@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
-ms.reviewer: alexwe
-ms.openlocfilehash: 77d6742faadfaf3d7afccfbe888b910c80278737
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.reviewer: richagi
+ms.openlocfilehash: a0ac1711b6bfb8f461cd775ed1f3409925643615
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure multi-factor Authentication jelentései
 
@@ -29,10 +29,10 @@ Az Azure multi-factor Authentication segítségével, és a szervezet több jele
 |:--- |:--- |
 | Használat |A használati jelentések megjelenítési adatok összesített használatát, a – felhasználói összefoglalás és a felhasználó adatait. |
 | Kiszolgáló állapota |Ez a jelentés a fiókjához a multi-factor Authentication kiszolgálók állapotát jeleníti meg. |
-| Letiltott felhasználók előzményei |Ezek a jelentések megjelenítése a felhasználók blokkolása és feloldása kérelmek előzményeit. |
-| Kihagyott felhasználók előzményei |Átugorja a multi-factor Authentication hitelesítés a felhasználó telefonszámának kérelmek előzményeit jeleníti meg. |
-| Csalási riasztás |Megjeleníti a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
-| A várólistára |Listák sorba állított jelentések feldolgozási és azok állapotát. Töltse le, vagy a jelentés megtekintéséhez mutató hivatkozás a jelentés befejezésekor valósul meg. |
+| Blokkolt felhasználó – előzmények |Ezek a jelentések megjelenítése a felhasználók blokkolása és feloldása kérelmek előzményeit. |
+| Mellőzött felhasználó – előzmények |Átugorja a multi-factor Authentication hitelesítés a felhasználó telefonszámának kérelmek előzményeit jeleníti meg. |
+| Visszaélési riasztás |Megjeleníti a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
+| Várakozási sorba helyezve |Listák sorba állított jelentések feldolgozási és azok állapotát. Töltse le, vagy a jelentés megtekintéséhez mutató hivatkozás a jelentés befejezésekor valósul meg. |
 
 ## <a name="view-reports"></a>Jelentések megtekintése
 

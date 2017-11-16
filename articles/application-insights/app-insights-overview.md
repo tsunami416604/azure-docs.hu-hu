@@ -14,14 +14,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 05/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7910540add4092e1b5822a7525bec912befd80e7
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 2e2a9e8491ad56bcbc42be64729715016f7ed17b
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
-Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Sokféle platform alkalmazásaival együttműködik, ilyen többek között a .NET, a Node.js és a J2EE platform helyszíni vagy felhőbeli tárolás esetén is. Integrálható a DevOps folyamat, és a csatlakozási pontok Fejlesztőeszközök számos különböző rendelkezik. Azt figyelheti és elemezheti a mobilalkalmazások telemetriai integrálása a Visual Studio Mobile Center és a Hockeyappra.
+Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Sokféle platform alkalmazásaival együttműködik, ilyen többek között a .NET, a Node.js és a J2EE platform helyszíni vagy felhőbeli tárolás esetén is. Integrálható a DevOps folyamat, és a csatlakozási pontok Fejlesztőeszközök számos különböző rendelkezik. Azt figyelheti és elemezheti a mobilalkalmazások telemetriai integrálása a Visual Studio alkalmazás Center és a Hockeyappra.
 
 ![Felhasználói tevékenységek statisztikáit ábrázolhatja diagramon, vagy konkrét eseményeket elemezhet.](./media/app-insights-overview/00-sample.png)
 
@@ -117,7 +117,7 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
   * [Node.js](app-insights-nodejs.md)
   * [Más platformok](app-insights-platforms.md)
 * **[Vizsgálhatja a weblapokat](app-insights-javascript.md)** lapmegtekintés, AJAX-használat és egyéb ügyféloldali telemetria tekintetében.
-* **[Mobilalkalmazás használati elemzése](app-insights-mobile-center-quickstart.md)**  integrálja a Visual Studio Mobile központtal.
+* **[Mobilalkalmazás használati elemzése](app-insights-mobile-center-quickstart.md)**  integrálja a Visual Studio alkalmazás központtal.
 * **[Rendelkezésre állási tesztek](app-insights-monitor-web-app-availability.md)** – rendszeresen pingelheti webhelyét kiszolgálóinkról.
 
 

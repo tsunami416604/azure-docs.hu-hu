@@ -5,7 +5,7 @@ services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: yossib
+ms.reviewer: richagi
 ms.assetid: 1f94a214-d6f6-48a8-8a12-006b5896ae45
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: 9daad3fab3990297cea6651c474e29e5c4002364
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0e7406e00aea59f14a986bd1dd091d0968cc4579
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Speciális forgatókönyvek az Azure multi-factor Authentication és a külső VPN-megoldások
 Az Azure multi-factor Authentication segítségével különböző külső VPN-megoldások zökkenőmentesen csatlakozzon. Ez a cikk a Cisco® ASA VPN-készülék, Citrix NetScaler SSL VPN-készülék és a Juniper hálózatok biztonságos hozzáférést/Pulse Secure Csatlakozás biztonságos SSL VPN-készülék összpontosít. Létrehozott konfigurációs útmutatók három közös készülék megoldására. A multi-factor Authentication kiszolgáló is integrálható a legtöbb más RADIUS, LDAP, az IIS vagy AD FS jogcímalapú hitelesítést használó rendszerek. További részletek találhatók [MFA kiszolgáló konfigurációk](multi-factor-authentication-get-started-server.md#next-steps).

@@ -6,7 +6,7 @@ services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-editor: yossib
+ms.reviewer: richagi
 ms.assetid: c40d7a34-1274-4496-96b0-784850c06e9b
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2017
 ms.author: joflore
-ms.openlocfilehash: 89c395d50d87db51cb2c502fe83490d104cd1c79
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: a928344dfc41687c92e7845bc304a05122ab8a92
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-multi-factor-authentication"></a>Mi az az Azure Multi-Factor Authentication?
 Kétlépéses ellenőrzés, hogy egynél több ellenőrzési módszert igényel, és a kritikus fontosságú második biztonsági réteget ad hozzá felhasználói bejelentkezéseket és tranzakciókat hitelesítési mód. Működését tekintve a igénylő bármely két vagy több, az alábbi hitelesítési módszerek:
@@ -33,9 +33,9 @@ Kétlépéses ellenőrzés, hogy egynél több ellenőrzési módszert igényel,
 Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. Az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáférésekkel szemben, miközben a felhasználói igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát teszi lehetővé. Számos (például telefonos megerősítést, szöveges üzenetet vagy mobilalkalmazást használó) ellenőrzési módszerének köszönhetően erős hitelesítést biztosít.
 
 ## <a name="why-use-azure-multi-factor-authentication"></a>Miért érdemes használni az Azure multi-factor Authentication?
-Ma, több mint legalább egyszer személyek egyre csatlakoznak. Az intelligens telefonok, táblagépek, laptopok és számítógépek személyek közül számos különböző hogyan a rendszer hamarosan csatlakozni, és bármikor maradhat. Személyek férhetnek a fiókok és az alkalmazások bárhonnan, ami azt jelenti, hogy hatékonyabb munkavégzésben, és az ügyfelek kiszolgálásához jobban.
+Ma, több mint legalább egyszer személyek egyre csatlakoznak. Intelligens telefonok, táblagépek, laptopok és számítógépekhez, személyek több lehetőségek állnak a fiókok és alkalmazások hozzáférni bárhonnan és bármikor maradhat.
 
-Az Azure multi-factor Authentication egy könnyen használható, méretezhető és megbízható megoldás, amely egy második hitelesítési módszer, így a felhasználók mindig védett.
+Az Azure multi-factor Authentication egy könnyen használható, méretezhető és megbízható megoldás, amely egy második hitelesítési eljárást is védelme érdekében a felhasználók.
 
 | ![Egyszerű használat](./media/multi-factor-authentication/simple.png) | ![Méretezhető](./media/multi-factor-authentication/scalable.png) | ![Mindig védve](./media/multi-factor-authentication/protected.png) | ![Megbízható](./media/multi-factor-authentication/reliable.png) |
 |:---:|:---:|:---:|:---:|
@@ -44,7 +44,7 @@ Az Azure multi-factor Authentication egy könnyen használható, méretezhető �
 * **Könnyen használható** -Azure multi-factor Authentication egy egyszerű beállítása és használata. A további védelem a Azure multi-factor Authentication lehetővé teszi, hogy a felhasználók a saját eszközök kezelésére. Ajánlott az összes sok esetben azt is beállítható néhány egyszerű kattintással.
 * **Méretezhető** -Azure multi-factor Authentication használja ki a felhőt, és integrálható a helyszíni AD és az egyéni alkalmazások. Ez a védelem még akkor is ki van bővítve a nagy mennyiségű, a kritikus fontosságú forgatókönyvek.
 * **Mindig védett** -Azure multi-factor Authentication használata a legmagasabb iparági szabványoknak megfelelő erős hitelesítést nyújt.
-* **Megbízható** -garantáljuk Azure multi-factor Authentication 99,9 %-os rendelkezésre állását. A szolgáltatás nem érhető el tekintendő, ha nem jelenik meg, vagy a kétlépéses ellenőrzéshez hitelesítési kérelmeket.
+* **Megbízható** -Microsoft Azure multi-factor Authentication 99,9 %-os rendelkezésre állását garantálja. A szolgáltatás nem érhető el tekintendő, ha nem jelenik meg, vagy a kétlépéses ellenőrzéshez hitelesítési kérelmeket.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Windows-Azure-Multi-Factor-Authentication/player]
 

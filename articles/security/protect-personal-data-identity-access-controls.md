@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 11/13/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 7c66a95d5a056f59e0f28dba4e0880e72e74dc3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Az Azure Active Directory és a multi-factor Authentication: identitások és hozzáférések vezérlőkkel személyes adatok védelme
 
@@ -121,23 +121,23 @@ MFA Azure felhőben való üzembe helyezéséhez meg kell először, engedélyez
 
 #### <a name="how-do-i-enable-azure-to-use-mfa"></a>Hogyan engedélyezhető az Azure MFA használata?
 
-Ha a felhasználók, amely tartalmazza az Azure multi-factor Authentication licencek, nincs mit kell tennie az Azure többtényezős hitelesítés bekapcsolása. Ha nem, a címtárban a multi-factor Auth provider létrehozásához szükséges. Ehhez kövesse az alábbi lépéseket:
+Ha a felhasználók, amely tartalmazza az Azure multi-factor Authentication licencek, egyszerűen az Azure többtényezős hitelesítés beállítása egy felhasználó vagy csoport alapján. 
 
-1. Válassza ki **Active Directory** a klasszikus Azure portálon (bejelentkezve rendszergazdaként).
+![Engedélyezve van az MFA-felhasználók](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-2. Válassza ki **többtényezős hitelesítési szolgáltatók.**
+Ha meg kell vizsgálni a folyamatot, amely a helyzetnek legmegfelelőbb központi telepítési típus meghatározása licencek jelenleg nem rendelkezik. A című cikk bármikor elindíthatja [válassza ki az Azure multi-factor Authentication Autehntication megoldást meg](../multi-factor-authentication/multi-factor-authentication-get-started.md). Ha úgy dönt, hogy a multi-factor Authentication kiszolgáló létrehozásához szükséges. Következő lépések végrehajtásával elindíthatja:
 
-3. Válassza ki **új** majd a **alkalmazásszolgáltatások** kiválasztása **többtényezős hitelesítésszolgáltató.**
+1. Válassza ki **Active Directory** (bejelentkezve rendszergazdaként) az Azure portálon.
 
-4. Válassza ki **Gyorslétrehozás.**
+2. Válassza ki **MFA kiszolgáló**
 
-5. A név mezőbe, és válassza ki a használati modell (engedélyezett felhasználónkénti vagy hitelesítésenkénti).
+3. Adjon meg egy időtúllépési értéknek. 
 
-6. Kijelöl egy könyvtárat, amelyhez társítva az MFA-szolgáltató.
+    ![](media/protect-personal-data-identity-access-controls/mfa-server-settings.png)
 
-7. Kattintson a **Létrehozás** gombra.
+4. Kattintson a **mentése**
 
-![](media/protect-personal-data-identity-access-controls/quick-create.png)
+Ebben az ablakban is lehetősége nyílik a multi-factor Authentication kiszolgáló letöltéséhez. Méretezés és a központi telepítésének megtervezése a cikk áttekintésével kapcsolatos további részletekért [Ismerkedés az Azure multi-factor Authentication kiszolgáló az](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)
 
 A többtényezős hitelesítésszolgáltató kezeléséről további utasításokért lásd: [első lépések az Azure multi-factor Auth Provider.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)
 
@@ -158,7 +158,7 @@ Többtényezős hitelesítés engedélyezése felhasználói állapot módosít�
 5. A felhasználó neve melletti négyzetet.
 6. Az első lépéseket, a jobb oldalon válassza ki a **engedélyezése**.
 
-   ![](media/protect-personal-data-identity-access-controls/quick-create.png)
+   ![](media/protect-personal-data-identity-access-controls/mfa-bulk.png)
 
 7. Ellenőrizze a választást, a megjelenő előugró ablakban.  Felhasználók, akiknél a többtényezős hitelesítés engedélyezve van a következő bejelentkezéskor regisztrálni kell adnia.
 

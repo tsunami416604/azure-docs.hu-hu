@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
 ms.author: kraigb
-ms.openlocfilehash: a76bcba5ab4ca8e1a4899e4aa28f734c09af2aa9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96c4ed88db5e24f439825aee5afe457a1e8c81d7
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>Tartsa meg az Azure-felhőszolgáltatás állandó virtuális IP-cím
-Amikor frissíti egy felhőszolgáltatás, amely az Azure szolgáltatásban üzemeltetett, szükség lehet győződjön meg arról, hogy a virtuális IP-cím (VIP) a szolgáltatás nem változik. Sok tartományi szolgáltatások a tartománynévrendszer (DNS) tartománynevek a regisztrációhoz használja. DNS működését csak akkor, ha a VIP változatlan marad. Használhatja a **közzététele varázsló** Azure eszközök annak érdekében, hogy a felhőszolgáltatás VIP nem változik mikor végezzen frissítést. A felhőszolgáltatások DNS-tartományok használatával kapcsolatos további információkért lásd: [egy egyéni tartománynevet, az Azure-felhőszolgáltatás konfigurálása](cloud-services/cloud-services-custom-domain-name.md).
+Amikor frissíti egy felhőszolgáltatás, amely az Azure szolgáltatásban üzemeltetett, szükség lehet győződjön meg arról, hogy a virtuális IP-cím (VIP) a szolgáltatás nem változik. Sok tartományi szolgáltatások a tartománynévrendszer (DNS) tartománynevek a regisztrációhoz használja. DNS működését csak akkor, ha a VIP változatlan marad. Használhatja a **közzététele varázsló** Azure eszközök annak érdekében, hogy a felhőszolgáltatás VIP nem változik mikor végezzen frissítést. A felhőszolgáltatások DNS-tartományok használatával kapcsolatos további információkért lásd: [egy egyéni tartománynevet, az Azure-felhőszolgáltatás konfigurálása](cloud-services/cloud-services-custom-domain-name-portal.md).
 
 ## <a name="publish-a-cloud-service-without-changing-its-vip"></a>Egy felhőalapú szolgáltatás közzététele a VIP módosítása nélkül
 A VIP felhőalapú szolgáltatások üzembe helyezésekor az Azure-bA az adott környezetben, például az éles környezetben van lefoglalva. A VIP csak változik, ha explicit módon törölheti a központi telepítést, vagy a központi telepítés implicit módon törölte a frissítési folyamat. A VIP megőrzéséhez nem törölnie kell a központi telepítés, és meg kell győződnie arról, hogy a Visual Studio nem automatikusan törli a központi telepítés. 

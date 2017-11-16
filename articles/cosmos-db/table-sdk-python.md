@@ -1,6 +1,6 @@
 ---
-title: Az Azure Table storage Python SDK |} Microsoft Docs
-description: "Tudnivalók az Azure Table storage SDK Python, beleértve a kiadási dátum, a használatból való kivonást dátumot és az egyes verziók között végrehajtott módosításokat."
+title: "Az Azure Cosmos DB tábla API Python |} Microsoft Docs"
+description: "Tudnivalók az Azure Cosmos DB tábla API beleértve a kiadási dátum, a használatból való kivonást dátumot és az egyes verziók között végrehajtott módosításokat."
 services: cosmos-db
 documentationcenter: python
 author: mimig
@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 11/15/2017
 ms.author: mimig1
 ms.custom: 
-ms.openlocfilehash: 6f6528498c26ff79b6c35891e93e4dbcffb322f5
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: a68b24fe91d3acb0f18d3d06d6252317bd671be4
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="azure-table-storage-sdk-for-python-release-notes-and-resources"></a>Az Azure Table storage Python SDK: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Az Azure Cosmos DB tábla API SDK for Python: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
+> * [Java](table-sdk-java.md)
+> * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
  
 
@@ -37,6 +39,10 @@ ms.lasthandoff: 11/06/2017
 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+* Általános rendelkezésre állási kiadás
+
 ### <a name="a-name03710371"></a><a name="0.37.1"/>0.37.1
 * Kiadás előtti SDK
 
@@ -49,6 +55,7 @@ Microsoft legalább értesítést küldenek **12 hónapon keresztül** SDK eltá
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.0.0](#1.0.0) |2017. november 15. |--- |
 | [0.37.1](#0.37.1) |2017. október 05. |--- |
 
 

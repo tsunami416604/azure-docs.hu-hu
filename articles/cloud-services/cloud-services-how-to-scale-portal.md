@@ -14,16 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: e9683d4c5779450fd67fa42ab13095c7f201b4cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 708b35252429e30b44226030d3d83b928f2a9520
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Az automatikus skálázás egy felhőalapú szolgáltatás, a portál konfigurálása
-> [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-how-to-scale-portal.md)
-> * [klasszikus Azure portál](cloud-services-how-to-scale.md)
 
 Egy felhőalapú szolgáltatás feldolgozói szerepkör terjedő skálán bejövő vagy kimenő műveletet kiváltó feltételek állíthat be. A feltételek a szerepkör a Processzor, lemez vagy a szerepkör a hálózati terhelést alapulhatnak. Beállíthat egy feltételt, egy üzenet-várólista vagy valamilyen más Azure-erőforrás az Ön előfizetéséhez rendelve metrikája alapján is.
 

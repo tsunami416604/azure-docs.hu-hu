@@ -13,22 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 11/15/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1ebec2285982c70aa9dc49950769fe18e2e2d0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 303a36fc966cd92399de92b4d52f75c114b75781
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos Adatbázisba hangolható konzisztencia szintek
-Azure Cosmos-adatbázis úgy van kialakítva egészen az alapoktól fel a globális terjesztési szem előtt az összes adatmodell. Előre jelezhető késés garanciák, egy 99,99 % rendelkezésre állási SLA-t, és több jól meghatározott laza konzisztencia modellek tervezték. Jelenleg az Azure Cosmos DB biztosít öt konzisztenciaszintek: erős, kötött elavulás, munkamenet, egységes előtag, és végleges. 
+Azure Cosmos-adatbázis úgy van kialakítva egészen az alapoktól fel a globális terjesztési szem előtt az összes adatmodell. Előre jelezhető késés garanciák és több jól meghatározott laza konzisztencia modellek tervezték. Jelenleg az Azure Cosmos DB biztosít öt konzisztenciaszintek: erős, kötött elavulás, munkamenet, egységes előtag, és végleges. Kötött elavulás, munkamenet, egységes előtag és végleges biztosan néven "laza konzisztencia modellek" azok adjon meg kevesebb konzisztencia erős, mint amely a legtöbb rendelkezésre állású egységes modellje. 
 
-Emellett **erős** és **végleges konzisztencia** modellek gyakran által nyújtott elosztott adatbázisok Azure Cosmos DB három további gondosan kódolt és operationalized konzisztencia modellt biztosít, és a valós életben használati esetek elleni hasznosságát érvényesített. Ezek a **kötött elavulási**, **munkamenet**, és **konzisztens előtag** konzisztenciaszintek. Együttesen ezek öt konzisztenciaszintek lehetővé teszi végre jól indokolt kompromisszumot konzisztencia, a rendelkezésre állás és a késleltetés között. 
+Emellett a **erős** és **végleges konzisztencia** modellek gyakran által nyújtott elosztott adatbázisok Azure Cosmos DB három további gondosan kódolt és operationalized konzisztencia modellt kínál:  **a kötött elavulási**, **munkamenet**, és **konzisztens előtag**. Mindegyik konzisztencia szinten hasznosságát ellenőrzött valós használati esetek ellen. Együttesen ezek öt konzisztenciaszintek lehetővé teszi végre jól indokolt kompromisszumot konzisztencia, a rendelkezésre állás és a késleltetés között. 
 
 ## <a name="distributed-databases-and-consistency"></a>Elosztott adatbázisok és a konzisztencia
-A kereskedelmi forgalomban elérhető adatbázisok két kategóriába sorolhatók: az egyik egyáltalán nem kínál jól definiált és bizonyítható konzisztencialehetőségeket, a másik pedig két szélsőséges programozási lehetőséget nyújt (erős vagy végleges konzisztencia). 
+Kereskedelmi elosztott adatbázisok két kategóriába sorolhatók: adatbázisok, amelyek egyáltalán nem képes a jól meghatározott hangelemzés konzisztencia lehetőségeket, és két szélsőséges programozhatóság lehetőség (erős és a végleges konzisztencia) adatbázisok. 
 
 Az előbbi replikációs protokolljainak részletessége komoly fejfájást okozhat az alkalmazásfejlesztőknek, ráadásul rajtuk múlik az egyensúlyi állapot megteremtése a konzisztencia, a rendelkezésre állás, a késés és az átviteli sebesség között. Az utóbbinál pedig komoly terhet jelent a választás a két véglet közül. A kutatási adatok bősége és a több mint 50 konzisztenciamodellre vonatkozó javaslatok ellenére az elosztott adatbázisok közössége eleddig nem volt képes az erős és végleges konzisztencián túl szabványosítani a konzisztenciaszinteket. Cosmos DB lehetővé teszi a fejlesztők számára öt jól meghatározott konzisztencia modellek mentén konzisztencia pontszámot – erős, kötött elavulás, választhat [munkamenet](http://dl.acm.org/citation.cfm?id=383631), egységes előtag, és végleges. 
 
@@ -40,15 +40,19 @@ Az alábbi táblázat azt illusztrálja, hogy melyik konzisztenciaszint milyen g
 
 | Konzisztenciaszint | Garanciák |
 | --- | --- |
-| Erős | Linearizálhatóság |
+| Erős | Linearizability. Olvasási garantáltan a legfrissebb elemet adja vissza.|
 | Kötött elavulás | Konzisztens előtag. Az olvasások k verzióval vagy t időközzel követik az írásokat |
 | Munkamenet   | Konzisztens előtag. Monoton olvasások, monoton írások, írás utáni visszaolvasás, beolvasás utáni írás |
 | Konzisztens előtag | A visszaadott frissítések között az összes frissítés néhány egymást követő verziója szerepel, mindig megfelelő sorrendben |
 | Végleges  | Nem sorrendben történő olvasások |
 
-Konfigurálhatja az alapértelmezett konzisztenciaszintet Cosmos DB-fiókjában (és később felülbírálhatja a konzisztenciát egy adott olvasási kérésen). Belsőleg az alapértelmezett konzisztencia szint a partíció készletek, amelyek esetleg régiók adatainak vonatkozik. A bérlők körülbelül 73 %-át használja a munkamenet-konzisztencia, és a kötött elavulási előnyben részesítik a 20 %-át. Azt láthatja, hogy a felhasználók körülbelül 3 % kísérletezhet különböző konzisztenciaszintek kezdetben előtt az adott konzisztencia téve az alkalmazásokban a rendezése. Azt is láthatja, hogy a bérlők számára csak 2 % felülbírálása konzisztenciaszintek kérelmek száma alapján. 
+Konfigurálhatja az alapértelmezett konzisztenciaszintet Cosmos DB-fiókjában (és később felülbírálhatja a konzisztenciát egy adott olvasási kérésen). Belsőleg az alapértelmezett konzisztencia szint a partíció készletek, amelyek esetleg régiók adatainak vonatkozik. Azure Cosmos DB bérlők használata a munkamenet-konzisztencia készül 73 % és 20 % inkább a kötött elavulási. Azure Cosmos DB ügyfél körülbelül 3 % kísérletezhet különböző konzisztenciaszintek kezdetben előtt az adott konzisztencia téve az alkalmazásokban a rendezése. Azure Cosmos DB bérlők csak 2 %-át egy kérelem alapon konzisztenciaszintek bírálja felül. 
 
-A Cosmos DB olvasási kiszolgált munkamenetben, egységes előtag és végleges konzisztencia kétszer szerint olcsó, olvasások erős, vagy a kötött elavulási konzisztencia. Cosmos DB rendelkezik iparágvezető átfogó 99,99 % SLA-k többek között a rendelkezésre állás, az átviteli sebesség és a késleltetés mellett konzisztencia biztosítja. Alkalmazott egy [linearizability ellenőrző](http://dl.acm.org/citation.cfm?id=1806634), amely folyamatosan működik a szolgáltatás telemetriai, és nyilvánosan jelentéseket bármely konzisztencia megsértését jelenti meg. A kötött elavulási azt megfigyelése és jelentése bármely k és t határainak megsértését jelenti. Az összes öt laza konzisztenciaszintek, azt is jelentheti a [probabilisztikus a kötött elavulási metrika](http://dl.acm.org/citation.cfm?id=2212359) előfizetve.  
+A Cosmos DB olvasási kiszolgált munkamenetben, egységes előtag és végleges konzisztencia kétszer szerint olcsó, olvasások erős, vagy a kötött elavulási konzisztencia. Cosmos DB rendelkezik iparágvezető átfogó SLA-k, beleértve a rendelkezésre állás, az átviteli sebesség és a késleltetés mellett konzisztencia biztosítja. Azure Cosmos DB védelmi funkciókat alkalmaz a [linearizability ellenőrző](http://dl.acm.org/citation.cfm?id=1806634), amely a szolgáltatás telemetriai folyamatosan működik, és nyilvánosan jelentéseket bármely konzisztencia megsértését jelenti. A kötött elavulási, az Azure Cosmos DB figyeli, és jelenti a bármely k és t határainak megsértését jelenti. Az összes öt laza konzisztenciaszintek, Azure Cosmos DB is jelent a [probabilistically kötött elavulási metrika](http://dl.acm.org/citation.cfm?id=2212359) előfizetve.  
+
+## <a name="service-level-agreements"></a>Szolgáltatásszint-szerződések
+
+Az Azure Cosmos DB nyújt átfogó 99,99 % [SLA-k](https://azure.microsoft.com/support/legal/sla/cosmos-db/) mely garancia átviteli, a konzisztencia, a rendelkezésre állási és a késleltetés az Azure Cosmos DB adatbázis-fiókokat az öt konzisztencia egyik konfigurált egy Azure régió hatóköre szinteket, vagy több Azure-régiók, sem a négy laza konzisztenciaszintek konfigurált átfedés adatbázis fiókok. Továbbá függetlenül a választott egy konzisztenciaszint, Azure Cosmos DB kínál egy 99.999 % SLA olvasási rendelkezésre álláshoz két vagy több Azure-régiók átfedés adatbázis fiókok.
 
 ## <a name="scope-of-consistency"></a>Konzisztencia hatóköre
 A lépésköz legyen konzisztencia egy felhasználói kérelem hatókörét. Egy írási kérelem egy insert, replace, upsert vannak rendelve, vagy törölhető a tranzakció. Írási műveleteket, mint a olvasás/lekérdezés tranzakció is egy felhasználói kérelem hatókörét. A felhasználó előfordulhat, hogy szükséges kattintva megjelenítheti a nagy keresztül eredménykészlet, az átfedés több partíció, de egyes olvassa el a tranzakció egyetlen oldalra hatókörű, és a belül egyetlen partícióra kiszolgált.
@@ -60,15 +64,15 @@ A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és
 
 * Erős konzisztenciát biztosít egy [linearizability](https://aphyr.com/posts/313-strong-consistency-models) garantálja az olvasási garantált, hogy a legfrissebb elemet adja vissza. 
 * Az erős konzisztencia biztosítja, hogy egy írási csak látható után már tartósan által a replikák többsége kvórum. Írás már vagy szinkron módon tartósan használta az elsődleges, mind a kvórum több másodlagos adatbázist, vagy azt végrehajtása megszakadt. Egy olvasási mindig nyugtázta a legtöbb, olvassa el a kvórum, az ügyfél egy nem véglegesített vagy részleges írási soha nem látható, és mindig olvassa el a legújabb nyugtázott írási garantáltan. 
-* Az erős konzisztencia használatára konfigurált Azure Cosmos DB fiókok nem társítható egynél több Azure-régiót Azure Cosmos DB fiókkal. 
+* Az erős konzisztencia használatára konfigurált Azure Cosmos DB fiókok nem társítható egynél több Azure-régiót Azure Cosmos DB fiókkal.  
 * Egy olvasási művelet költsége (a [egységek kérelem](request-units.md) felhasznált) erős konzisztencia értéke nagyobb, mint a munkamenet és végleges, de ugyanaz, mint a kötött elavulási.
 
 **A kötött elavulási**: 
 
 * A kötött elavulási konzisztencia biztosítja, hogy az lehet, hogy legfeljebb olvasási késés által írt *K* verziója vagy az előtagok elem vagy *t* időköz. 
 * Ezért kiválasztása kötött elavulási, a "elavulási" konfigurálható kétféleképpen: verziók száma *K* az elem, amely olvasási verziót használják, és az időtartam alatt a írási *t* 
-* A kötött elavulási ajánlatok teljes globális sorrendjét kivételével a "elavulási időszakban." A monoton olvasási garanciák létezik belül és kívül egyaránt a "elavulási ablak." régión belül 
-* A kötött elavulási konzisztencia erősebb garancia munkamenet, illetve a végleges konzisztencia biztosítja. Globálisan elosztott alkalmazásokhoz javasoljuk, használja a kötött elavulási forgatókönyvek hova kerüljenek az erős konzisztencia rendelkezik, de is érdemes a rendelkezésre állás 99,99 % és kis késleltetése. 
+* A kötött elavulási ajánlatok teljes globális sorrendjét kivételével a "elavulási időszakban." A monoton olvasási garanciák léteznek belül és kívül egyaránt a "elavulási ablak." régión belül 
+* A kötött elavulási konzisztencia erősebb garancia munkamenet, konzisztens-előtag vagy végleges konzisztencia biztosítja. Globálisan elosztott alkalmazásokhoz javasoljuk, használja a kötött elavulási forgatókönyvek hova kerüljenek az erős konzisztencia rendelkezik, de is érdemes a rendelkezésre állás 99,99 % és kis késleltetése.   
 * A kötött elavulási konzisztencia konfigurált Azure Cosmos DB fiókok tetszőleges számú Azure-régiók társíthatja Azure Cosmos DB fiókjuk. 
 * Egy olvasási művelet (tekintetében felhasznált RUs) költsége a kötött elavulási, azaz magasabb-munkamenet és végleges konzisztencia, de ugyanaz, mint az erős konzisztencia.
 
@@ -78,7 +82,7 @@ A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és
 * A munkamenet-konzisztencia minden olyan esetekben, ahol van szó egy eszközre vagy felhasználóra vonatkozik-munkamenetet, mivel azt biztosítja, hogy monoton olvasási, monoton írás és Olvasás saját írási műveletek (RYW) biztosítja, hogy az ideális. 
 * Munkamenet-konzisztencia kiszámítható konzisztencia biztosít egy munkamenet esetében, és a maximális átviteli sebesség olvasási, miközben a legkisebb késés írási és olvasási műveletek. 
 * A munkamenet-konzisztencia konfigurált Azure Cosmos DB fiókok tetszőleges számú Azure-régiók társíthatja Azure Cosmos DB fiókjuk. 
-* Egy olvasási művelet (tekintetében felhasznált RUs) költségét munkamenet konzisztenciaszint nem kisebb, mint erős és a kötött elavulási, de több mint végleges konzisztencia
+* Egy olvasási művelet (tekintetében felhasznált RUs) költségét munkamenet konzisztenciaszint nem kisebb, mint erős és a kötött elavulási, de több mint végleges konzisztencia.
 
 <a id="consistent-prefix"></a>
 **Egységes előtag**: 
@@ -97,9 +101,9 @@ A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és
 
 ## <a name="configuring-the-default-consistency-level"></a>Az alapértelmezett konzisztencia szint konfigurálása
 1. Az a [Azure-portálon](https://portal.azure.com/), az ugrósávon kattintson **Azure Cosmos DB**.
-2. Az a **Azure Cosmos DB** panelen válassza az adatbázis-fiók módosítása.
-3. A fiók paneljén kattintson **alapértelmezett konzisztencia**.
-4. Az a **alapértelmezett konzisztencia** panelen válassza ki az új konzisztenciaszint, és kattintson a **mentése**.
+2. Az a **Azure Cosmos DB** lapon, válassza ki a következő adatbázisfiókot módosításához.
+3. Kattintson a fiók lapon **alapértelmezett konzisztencia**.
+4. Az a **alapértelmezett konzisztencia** lapon válassza ki az új konzisztencia szintet, majd kattintson **mentése**.
    
     ![Képernyőfelvétel a beállítások ikonra, és alapértelmezett konzisztencia bejegyzés kiemelve](./media/consistency-levels/database-consistency-level-1.png)
 

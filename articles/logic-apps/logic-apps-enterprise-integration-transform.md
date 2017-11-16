@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fb6027769377b3527b11f7831dab3bb8d7061c84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f09819a1bfd380cd826a478471e673b6d5ff9ee7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>XML-átalakítók vállalati integrációja
 ## <a name="overview"></a>Áttekintés
@@ -50,6 +50,11 @@ Most, hogy az az Előfeltételek korábban hozott ítélt, ideje létrehozni a l
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. Válassza ki a **átalakítása XML** művelet   
 6. Adja hozzá az XML-fájl **tartalom** , amely alakít át. Is használhatja, mint a HTTP-kérelem érkezik XML-adatokat a **tartalom**. Ebben a példában válassza ki a logikai alkalmazás kiváltó HTTP-kérelem törzsét.
+
+   > [!NOTE]
+   > Győződjön meg arról, hogy a tartalom a **átalakítása XML** XML formátumú-e. Ha a tartalom nincs a XML vagy base64-kódolású, meg kell adnia egy kifejezés, amely feldolgozza a tartalmat. Használhat például [funkciók](logic-apps-workflow-definition-language.md#functions), például ```@base64ToBinary``` az tartalom dekódolási vagy ```@xml``` az XML-tartalom feldolgozása.
+ 
+
 7. Válassza ki a nevét a **térkép** , hogy szeretné-e az átalakítás elvégzéséhez. A térkép szerepelniük kell a integrációs fiókját. Egy korábbi lépésben már adott a logikai alkalmazás eléréséhez, amely tartalmazza a térképre integrációs fiókját.      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Mentse a munkáját  

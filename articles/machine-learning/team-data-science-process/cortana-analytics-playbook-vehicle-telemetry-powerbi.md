@@ -1,5 +1,5 @@
 ---
-title: "Power BI-irányítópulton a vehicle állapotát, és ki irányítja az szokásait - Azure |} Microsoft Docs"
+title: "A Power BI-irányítópulton vehicle állapot-és befolyásoló tényezők szokásait - Azure |} Microsoft Docs"
 description: "A Cortana Intelligence szolgáltatásai segítségével a vehicle állapotát, és ki irányítja a valós idejű és prediktív dcu szokásokat."
 services: machine-learning
 documentationcenter: 
@@ -14,394 +14,458 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
-ms.openlocfilehash: 39be936520d62cb1c1c28de9bd72f8f489166082
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a28ef3765518fe2948853d1c6334cf034b40d34
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Vehicle telemetriai analytics megoldás sablon Power BI-irányítópulton telepítési utasításokat
-Ez **menü** Ez a forgatókönyv a fejezetek mutató hivatkozásokat tartalmaz. 
+# <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Vehicle Telemetriai Analytics megoldás sablon Power BI irányítópult telepítési utasításokat
+Ez a forgatókönyv a fejezetek menü hivatkozásokat: 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-A Vehicle Telemetriai elemzési megoldások hogyan car kereskedők, autó gyártók és biztosítási vállalatok kihasználhatják a Cortana Intelligence ahhoz, hogy a valós idejű képességeit és a vehicle állapotát, és ki irányítja a prediktív elemzések szokásait bővíthető meghajtó továbbfejlesztése területén felhasználói felület, a R & D és marketingkampányok. Ez a dokumentum konfigurálásának a Power BI-jelentéseket és az irányítópult után a megoldást már telepítették az előfizetésében részletes útmutatást tartalmaz. 
+A Vehicle Telemetriai elemzési megoldások bővíthető car kereskedők autó gyártók és biztosítási vállalatok használatát a Cortana Intelligence képességeit. Valós idejű és prediktív elemzések a vehicle állapotát befolyásoló tényezők a felhasználói élmény, a kutatás és fejlesztés javítása érdekében a szokásokat, és marketingkampányok is kapnak. Ezek a részletes útmutatók bemutatják, hogyan konfigurálható a Power BI-jelentéseket és az irányítópult után üzembe helyezéséhez az előfizetésben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Telepítheti a [Telemetriai Analytics](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) megoldás  
-2. [Telepítse a Microsoft Power BI Desktopba](http://www.microsoft.com/download/details.aspx?id=45331)
-3. Egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/). Ha nem rendelkezik Azure-előfizetéssel, ingyenes Azure-előfizetés az első lépései
-4. Microsoft Power BI-fiók
+* Telepítheti a [Vehicle Telemetriai Analytics](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) megoldás. 
+* [Telepítse a Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331).
+* Szerezzen be egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/). Ha nem rendelkezik Azure-előfizetéssel, Ismerkedés az Azure ingyenes előfizetés.
+* Nyissa meg a Power BI-fiókkal.
 
-## <a name="cortana-intelligence-suite-components"></a>A Cortana Intelligence Suite összetevői
-A Vehicle Telemetriai Analytics megoldássablonban részeként a következő Cortana Intelligence szolgáltatások vannak telepítve az előfizetéshez.
+## <a name="cortana-intelligence-suite-components"></a>A Cortana Intelligence suite összetevői
+A Vehicle Telemetriai Analytics Megoldássablonban részeként a következő Cortana Intelligence szolgáltatások vannak telepítve az előfizetésben:
 
-* **Az Event Hubs** választásával dolgozhat fel a vehicle telemetriai események több millió az Azure.
-* **Stream Analytics** való vehicle egészségügyi valós idejű elemzése és továbbra is fennáll, hogy az adatok a hosszú távú tároló gazdagabb kötegelt elemzéséhez.
-* **Gépi tanulás** közüli valós idejű és prediktív dcu kötegfeldolgozási.
-* **HDInsight** rendszer elkészítéséhez használja léptékű adatok átalakítása
-* **Adat-előállító** vezénylési, ütemezés, erőforrás-kezelés és figyelés, a köteges feldolgozás folyamatának kezeli.
+* **Az Azure Event Hubs** vehicle telemetriai események több millió ingests az Azure.
+* **Az Azure Stream Analytics** biztosít a valós idejű elemzése a vehicle állapotát, és továbbra is fennáll, hogy az adatok a hosszú távú tároló gazdagabb kötegelt elemzéséhez.
+* **Az Azure Machine Learning** rendellenességeket észleli a valós idejű, és kötegfeldolgozási prediktív elemzések biztosításához használt.
+* **Az Azure HDInsight** átalakítja az adatokat a skála.
+* **Az Azure Data Factory** vezénylési, ütemezés, erőforrás-kezelés és figyelés, a köteges feldolgozás folyamatának kezeli.
 
 **A Power BI** Ez a megoldás részletes irányítópult ad valós idejű adatok és a prediktív elemzés képi megjelenítések. 
 
-A megoldás az két különböző forrásokból: **vehicle jelek és diagnosztikai adatkészlet szimulált** és **vehicle katalógus**.
+A megoldás két különböző adatforrásból használ:
 
-A vehicle telematika szimulátor Ez a megoldás részét. Diagnosztikai adatok bocsát ki, és jelzi a vehicle állapota megfelelő, és ki irányítja a minta egy időben. 
+* Szimulált vehicle jelek és diagnosztikai adatkészletek
+* Vehicle katalógus
 
-A Vehicle katalógus egy hivatkozási adatkészletet tartalmazó VIN az modell-lel
+A vehicle telematika szimulátor Ez a megoldás részét. Általa kibocsátott diagnosztikai információkat, és azt jelzi, hogy időben állapotát, a vehicle és adott vezetői minták megfelelnek. 
 
-## <a name="power-bi-dashboard-preparation"></a>A Power BI-irányítópulton előkészítése
-### <a name="setup-power-bi-real-time-dashboard"></a>A telepítő a Power BI-valós idejű irányítópulton
+A vehicle katalógus olyan referencia adat, amely leképezhető VINs modellek.
 
-**A valós idejű irányítópulton alkalmazás** Ha a telepítés befejeződött, kövesse a manuális műveletet utasításokat
+## <a name="power-bi-dashboard-preparation"></a>A Power BI irányítópult előkészítése
+### <a name="set-up-the-power-bi-real-time-dashboard"></a>Állítsa be a valós idejű Power BI-irányítópulton
 
-* Töltse le a valós idejű irányítópulton alkalmazás RealtimeDashboardApp.zip, és bontsa ki azt.
-*  A tömörítetlen mappába nyissa meg az alkalmazás konfigurációs fájljában "RealtimeDashboardApp.exe.config", a név felülírandó appSettings az értékek manuális művelet utasításokat, és mentse a módosításokat az Eventhub, a Blob Storage és a gépi tanulás szolgáltatás kapcsolatokhoz.
-* Futtassa az alkalmazást RealtimeDashboardApp.exe. A bejelentkezési ablak előugró ablak, érvényes Power bi hitelesítő adatok megadása és kattintson a **elfogadás** gombra. Ezt követően az alkalmazás futása elindul.
+#### <a name="start-the-real-time-dashboard-application"></a>A valós idejű irányítópulton alkalmazás indítása
+A telepítés befejezése után kövesse kézi művelet.
 
-   ![Bejelentkezés a Power bi-hoz](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/5-sign-into-powerbi.png)
+1. Töltse le a valós idejű irányítópulton alkalmazás RealtimeDashboardApp.zip, és bontsa ki azt.
+
+2.  Nyissa meg a tömörítetlen mappába, az alkalmazás konfigurációs fájlját RealtimeDashboardApp.exe.config. Cserélje le az appSettings Event Hubs, Azure Blob storage és a kézi művelet utasításokat értékkel rendelkező Azure Machine Learning szolgáltatás kapcsolatok. Mentse a módosításokat.
+
+3. Futtassa az alkalmazást RealtimeDashboardApp.exe. A bejelentkezési ablakban adja meg a Power BI érvényes hitelesítő adatokat. 
+
+   ![A Power BI-bejelentkezés ablak](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/5-sign-into-powerbi.png)
    
-   ![A Power BI-irányítópulton engedélyek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-powerbi-dashboard-permissions.png)
+4. Válassza ki **elfogadása**. Az alkalmazás elindul.
 
-* Jelentkezzen be a Power bi webhelyen, és hozza létre a valós idejű irányítópulton.
+   ![A Power BI irányítópult engedélyek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-powerbi-dashboard-permissions.png)
 
-Most készen áll a Power BI-irányítópultot konfigurálása ahhoz, hogy a valós idejű gazdag megjelenítésekkel és prediktív elemzések a vehicle állapotát, és ki irányítja a szokásokat. A jelentések létrehozása és konfigurálása az Irányítópulton egy órával körülbelül 45 percet vesz igénybe. 
+5. Jelentkezzen be a Power BI webhelyén, és hozzon létre egy valós idejű irányítópulton.
+
+Most már készen áll a Power BI-irányítópultot konfigurálásához.  
 
 ### <a name="configure-power-bi-reports"></a>A Power BI-jelentések konfigurálása
-A valós idejű jelentéseket és az irányítópult körülbelül 30-45 percig tarthat a befejezéséhez. Keresse meg a [http://powerbi.com](http://powerbi.com) és a bejelentkezés.
+A valós idejű jelentéseket és az irányítópult körülbelül 30-45 percig tarthat a befejezéséhez. 
 
-![Bejelentkezés a Power bi-hoz](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-1-powerbi-signin.png)
+1. Keresse meg a [Power BI](http://powerbi.com) weblapot, és jelentkezzen be.
 
-Új adatkészlet jön létre a Power bi-ban. Kattintson a **ConnectedCarsRealtime** adatkészlet.
+    ![A Power BI bejelentkezési oldal](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-1-powerbi-signin.png)
 
-![Be van jelölve csatlakoztatott autók valós idejű adatkészlet](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/7-select-connected-cars-realtime-dataset.png)
+2. Új adatkészlet jön létre a Power bi-ban. Válassza ki a **ConnectedCarsRealtime** adatkészlet.
 
-Mentés a üres jelentés használatával **Ctrl + s**.
+    ![ConnectedCarsRealtime adatkészlet](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/7-select-connected-cars-realtime-dataset.png)
 
-![Üres jelentés mentése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/8-save-blank-report.png)
+3. Üres jelentés mentése, nyomja le a Ctrl + S.
 
-Adja meg a jelentés neve *Vehicle Telemetriai elemzés valós idejű - jelentések*.
+    ![Üres jelentés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/8-save-blank-report.png)
 
-![Adja meg a jelentés neve.](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9-provide-report-name.png)
+4. Adja meg a jelentés nevét **Vehicle Telemetriai elemzés valós idejű - jelentések**.
+
+    ![Jelentés neve.](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9-provide-report-name.png)
 
 ## <a name="real-time-reports"></a>Valós idejű jelentéseket
-Ez a megoldás három valós idejű jelentés áll:
+Ez a megoldás három valós idejű jelentéseket vannak:
 
-1. A művelet járművekről gyűjtött
-2. Karbantartási igénylő járművekről gyűjtött
-3. Járművekről gyűjtött egészségügyi statisztikák
+* A művelet járművekről gyűjtött
+* Karbantartási igénylő járművekről gyűjtött
+* Vehicle egészségügyi statisztikák
 
-Ha szeretné, konfigurálja az összes három valós idejű jelentéseket vagy leállítása után fel, és folytassa a következő szakaszban a kötegelt jelentések konfigurálása. Azt javasoljuk, hogy a három jelentések megjelenítéséhez a teljes elemzéseket a megoldás a valós idejű elérési út létrehozása.  
+Beállíthatja, mind a hármat a valós idejű jelentéseket, vagy megszüntetheti a után fel. Majd folytassa a következő szakasszal kötegelt jelentések konfigurálásához. Azt javasoljuk, hogy hozzon létre minden három jelentéseket a megoldás a valós idejű elérési út teljes insights megjelenítéséhez.  
 
-### <a name="1-vehicles-in-operation"></a>1. A művelet járművekről gyűjtött
-Kattintson duplán a **1. oldal** és adjon neki "Műveletben járművekről gyűjtött"  
-    ![Autók - csatlakoztatott járművekről gyűjtött műveletben](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4a.png)  
+### <a name="vehicles-in-operation-report"></a>A művelet a jelentés járművekről gyűjtött
+1. Kattintson duplán a **lap 1**, és adjon neki **műveletben járművekről gyűjtött**.
 
-Válassza ki **vin** mezőjét a **mezők** , és válassza a típusú képi megjelenítés **"Kártyás"**.  
+    ![A művelet járművekről gyűjtött](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4a.png)  
 
-Kártya képi megjelenítés létrehozása ábrán látható módon.  
-    ![Csatlakoztatott autók - válassza vin](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4b.png)
+2. Az a **mezők** lapon jelölje be **vin**. Az a **képi megjelenítések** lapon jelölje be a **kártya** képi megjelenítés.  
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.  
+    A **kártya** képi megjelenítés létrehozása a következő ábrán látható módon:
 
-Válassza ki **Város** és **vin** mezők. Módosíthatja a képi megjelenítés **"Térkép"**. A csomóponthúzási **vin** az értékek területére. A csomóponthúzási **Város** a mezők **jelmagyarázat** területen.   
-    ![Csatlakoztatott autók - kártya képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4c.png)
+    ![Válassza ki a vin](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4b.png)
 
-Válassza ki **formátum** szakasz **képi megjelenítések**, kattintson a **cím** , és módosítsa a **szöveg** való **"járművekről gyűjtött műveletben "városonként**.  
-    ![Autók - csatlakoztatott járművekről gyűjtött városonként műveletben](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)   
+3. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.  
 
-Végső képi megjelenítés keres az ábrán látható módon.    
-    ![Csatlakoztatott autók - végső képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4e.png)
+4. Az a **mezők** lapon jelölje be **Város** és **vin**. Az a **képi megjelenítések** lapon jelölje be a **térkép** képi megjelenítés. A csomóponthúzási **vin** való a **értékek** területen. A csomóponthúzási **Város** való a **jelmagyarázat** területen. 
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.  
+    ![Kártya képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4c.png)
 
-Válassza ki **Város** és **vin**, a képi megjelenítés típus a **fürtözött oszlopdiagram**. Győződjön meg arról **Város** mezőjét **tengely terület** és **vin** a **érték-terület**  
+5. Az a **képi megjelenítések** lapon jelölje be a **formátum** szakasz. Válassza ki **cím**, és módosítsa **szöveg** való **városonként műveletben járművekről gyűjtött**.
 
-Rendezés a diagram által **"Vin száma"**  
-    ![Csatlakoztatott autók - vin száma](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4f.png)  
+    ![A művelet városonként járművekről gyűjtött](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)   
 
-Módosítsa a diagram **cím** való **"Műveletben városonként járművekről gyűjtött"**  
+    A végső képi megjelenítés a következőképpen néz ki:
 
-Kattintson a **formátum** területen, majd válassza ki **adatok színek**, kattintson a **"A"** való **összes megjelenítése**  
-    ![Csatlakoztatott autók - színek adatok megjelenítése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4g.png)  
+    ![Végső képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4e.png)
 
-Egyes város színének módosítása a szín ikonra kattintva.  
-    ![Csatlakoztatott autók - módosítás színek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4h.png)  
+6. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.  
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.  
+7. Az a **mezők** lapon jelölje be **Város** és **vin**. Az a **képi megjelenítések** lapon jelölje be a **fürtözött oszlopdiagram** képi megjelenítés. A csomóponthúzási **Város** való a **tengely** területen. A csomóponthúzási **vin** való a **érték** területen.
 
-Válassza ki **fürtözött oszlopdiagram** képi megjelenítéseket, a képi megjelenítés húzza **Város** mezőjét **tengely** területen **modell** a **Jelmagyarázat** terület és **vin** a **érték** területen.  
-    ![Csatlakoztatott autók - csoportosított oszlopdiagram](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4i.png)  
-    ![Csatlakoztatott autók - megjelenítése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4j.png)
+8. Rendezés a diagram **vin száma**.
 
-Ezen a lapon minden képi megjelenítés átrendezését, az ábrán látható módon.  
-    ![Csatlakoztatott autók - képi megjelenítések](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
+    ![Vin száma](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4f.png)  
 
-Sikeresen konfigurálta a "Műveletben járművekről gyűjtött" valós idejű jelentést. A következő valós idejű jelentést készít vagy leállás, és konfigurálja az irányítópult lépne. 
+9. A diagram **cím** való **városonként műveletben járművekről gyűjtött**. 
 
-### <a name="2-vehicles-requiring-maintenance"></a>2. Karbantartási igénylő járművekről gyűjtött
-Kattintson a ![Hozzáadás](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) hozzáadása egy új jelentést, nevezze át **"Járművekről gyűjtött igénylő karbantartási"**
+10. Válassza ki a **formátum** szakaszt, és válassza ki **adatok színek**. Változás **az összes megjelenítése** való **a**.
 
-![Csatlakoztatott autók - karbantartási igénylő járművekről gyűjtött](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4l.png)  
+    ![Adatok színek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4g.png)  
 
-Válassza ki **vin** mezőben, majd a képi megjelenítés típus a **kártya**.  
-    ![Csatlakoztatott autók - Vin kártya képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4m.png)  
+11. Az egyes város színének módosítása a szín jel kiválasztásával.
 
-Tudunk adatkészlet "MaintenanceLabel" nevű mező. Ez a mező is rendelkezik értéke "0" vagy "1"." Azt állítja be az Azure Machine Learning modell megoldás részeként üzembe, és integrálva van a valós idejű elérési útja. Az "1" érték azt jelzi, hogy a vehicle igényel karbantartást. 
+    ![Szín módosítása](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4h.png)  
 
-Hozzáadása egy **oldal szintjének** karbantartási megköveteli, az járművekről gyűjtött adatok jelennek meg a szűrő: 
+12. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.  
 
-1. Húzza a **"MaintenanceLabel"** mezőjét a **szint Lapszűrők**.  
-   ![Csatlakoztatott autók - oldal szintjének szűrők](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)  
-2. Kattintson a **alapszintű szűrési** menü MaintenanceLabel lap szint szűrő alsó részén található.  
-   ![Csatlakoztatott autók - alapvető szűrése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n2.png)  
-3. Állítsa be az szűrő értékét **"1"**    
-   ![Csatlakoztatott autók - szűrő értéke](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n3.png)  
+13. Az a **képi megjelenítések** lapon jelölje be a **fürtözött oszlopdiagram** képi megjelenítés. Az a **mezők** lapján húzza **Város** számára a **tengely** területen. A csomóponthúzási **modell** való a **jelmagyarázat** területen. A csomóponthúzási **vin** való a **érték** területen.
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.  
+    ![Fürtözött oszlopdiagram](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4i.png)
 
-Válassza ki **fürtözött oszlopdiagram** a képi megjelenítések  
-![Csatlakoztatott autók - Vind kártya képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4o.png)  
-![Csatlakoztatott autók - csoportosított oszlopdiagram](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4p.png)
+    A diagram az alábbi képen néz ki:
 
-Húzza a mező **modell** történő **tengely** területen **Vin** való **érték** területen. Ezután szűrje a képi megjelenítés által **vin száma**.  Módosítsa a diagram **cím** való **"Járművekről gyűjtött karbantartási igénylő modell"**  
+    ![Renderelés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4j.png)
 
-Húzza **vin** a mezők **szín telítettségét** jelen **mezők** ![mezők](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) szakasza **aképimegjelenítés**lap  
-![Csatlakoztatott autók - szín telítettségét](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
+14. A képi megjelenítések átrendezését, úgy, hogy, az oldal az alábbihoz hasonlóan:
 
-Változás **adatok színek** a képi megjelenítéseket **formátum** szakasz  
-Módosítsa a minimális színhez: **F2C812**  
-A maximális színhez módosítása: **FF6300**  
-![Autók - szín módosítások csatlakoztatva](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4r.png)  
-![Csatlakoztatott autók - új színeit](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4s.png)  
+    ![A képi megjelenítések irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.  
+Sikeresen konfigurálta a "Járművekről gyűjtött a művelet" valós idejű jelentést. A következő valós idejű jelentést hozhat létre, vagy leállás, és konfigurálja az irányítópulton. 
 
-Válassza ki **fürtözött oszlopdiagram** a képi megjelenítések, húzza **vin** mezőjét a **érték** terület, húzza **Város** mezőjét a **Tengely** területen. Rendezés a diagram által **"Vin száma"**. Módosítsa a diagram **cím** való **"Járművekről gyűjtött városonként karbantartási megkövetelése"**   
-![Csatlakoztatott autók - karbantartási városonként igénylő járművekről gyűjtött](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4t.png)  
+### <a name="vehicles-requiring-maintenance-report"></a>Járművekről gyűjtött igénylő karbantartási jelentés
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.  
+1. Válassza ki ![Hozzáadás](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) új jelentés hozzáadásához. Nevezze át **járművekről gyűjtött igénylő karbantartási**.
 
-Válassza ki **többsoros kártya** képi megjelenítéseket, a képi megjelenítés húzza **modell** és **vin** azokat a **mezők** területen.  
-![Csatlakoztatott autók - többsoros kártya](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4u.png)    
+    ![Karbantartási igénylő járművekről gyűjtött](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4l.png)  
 
-A képi megjelenítés mindegyikét átrendezése, a végső jelentés a következőképpen néz ki:  
-![Csatlakoztatott autók - többsoros kártya](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4v.png)  
+2. Az a **mezők** lapon jelölje be **vin**. Az a **képi megjelenítések** lapon jelölje be a **kártya** képi megjelenítés.
 
-Sikeresen konfigurálta a "Járművekről gyűjtött igénylő karbantartás" valós idejű jelentést. A következő valós idejű jelentést készít vagy leállás, és konfigurálja az irányítópult lépne. 
+    ![Vin kártya képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4m.png)  
 
-### <a name="3-vehicles-health-statistics"></a>3. Járművekről gyűjtött egészségügyi statisztikák
-Kattintson a ![Hozzáadás](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) adja hozzá az új jelentést, nevezze át, hogy **"Járművekről gyűjtött állapotstatisztika"**  
+    Az adathalmazban nevű mező **MaintenanceLabel**. Ez a mező lehet értéke "0" vagy "1". Az alapérték a gépi tanulási modell, amely ki van építve a megoldás részeként. Integrálva van a valós idejű elérési úttal. "1" érték azt jelzi, hogy a vehicle igényel karbantartást. 
 
-Válassza ki **mérőműszer** képi megjelenítés a képi megjelenítések, majd húzza a **sebesség** mezőjét a **, minimális érték, maximális érték** területeket.  
-![Csatlakoztatott autók - többsoros kártya](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4w.png)  
+3. Hozzáadása egy **szint Lapszűrő** a karbantartást igénylő járművekről gyűjtött adatok megjelenítése: 
 
-Módosítsa az alapértelmezett összesítése **sebesség** a **terület érték** való **átlagos** 
+   a. Húzza a **MaintenanceLabel** mezőről **szint Lapszűrők**.
+  
+      ![Az oldal szintjének szűrők](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)
 
-Módosítsa az alapértelmezett összesítése **sebesség** a **minimális terület** való **minimális**
+    b. Alján **lap szint szűrők MaintenanceLabel**, jelölje be **alapszintű szűrési**.
 
-Módosítsa az alapértelmezett összesítése **sebesség** a **maximális terület** való **maximális**
+      ![Alapszintű szűrése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n2.png) 
 
-![Csatlakoztatott autók - többsoros kártya](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4x.png)  
+    c. Adja meg a szűrő értéket **1**.
 
-Nevezze át a **mérőműszer cím** való **"Átlagos sebesség"** 
+      ![Szűrő értéke](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n3.png)  
 
-![Csatlakoztatott autók - mérőműszer](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4y.png)  
+4. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.  
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.  
+5. Az a **képi megjelenítések** lapon jelölje be a **fürtözött oszlopdiagram** képi megjelenítés. 
 
-Hasonlóképpen adja hozzá a **mérőműszer** a **motor olaj átlagos**, **üzemanyag átlagos**, és **átlagos motor mérsékelt**.  
+    ![Vin kártya](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4o.png)
 
-Módosítsa az alapértelmezett összesítés minden mérőműszer megfelelően a fent ismertetett mezők **"Átlagos sebesség"** fel tudja mérni.
+    ![Fürtözött oszlopdiagram](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4p.png)
 
-![Csatlakoztatott autók - mérőműszer](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4z.png)
+6. Az a **mezők** lapján húzza **modell** számára a **tengely** területen. A csomóponthúzási **vin** való a **érték** területen. Ezután szűrje a képi megjelenítés által **vin száma**. A diagram **cím** való **járművekről gyűjtött karbantartási igénylő modell**. 
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.
+7. Az a **mezők** ![mezők](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) szakasza a **képi megjelenítések** lapján húzza **vin** való **szín telítettségét**.
 
-Válassza ki **sor- és fürtözött oszlopdiagram** a képi megjelenítések, majd húzza **Város** mezőjét a **megosztott tengely**, húzza **sebesség**, **tirepressure és engineoil mezők** történő **oszlopok értékeinek** terület, az összesítési típus a **átlagos**. 
+    ![Szín telítettségét](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
 
-Húzza a **engineTemperature** mezőjét a **sor értékek** terület, összesítési típus a **átlagos**. 
+8. Az a **formátum** területen módosítsa **adatok színek** a képi megjelenítés a: 
 
-![Csatlakoztatott autók - képi megjelenítések mezők](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4aa.png)
+    a. Módosítsa a **minimális** a szín **F2C812**.
 
-A diagram **cím** való **"Átlagos sebességét, kulcsszava nyomás, motor olaj- és motor"**.  
+    b. Módosítsa a **maximális** a szín **FF6300**.
 
-![Csatlakoztatott autók - képi megjelenítések mezők](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4bb.png)
+    ![Új adatok színek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4r.png)
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.
+    Az új színeit az alábbi példában látható:
 
-Válassza ki **Treemap** képi megjelenítés a képi megjelenítések, húzza a **modell** történő mezőjét a **csoport** területen, majd húzza a mező **MaintenanceProbability** azokat a **értékek** területen.
+    ![Új színeit](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4s.png)  
 
-A diagram **cím** való **"Vehicle modellek karbantartási igénylő"**.
+9. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.  
 
-![Csatlakoztatott autók - diagram cím módosítása](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4cc.png)
+10. Az a **képi megjelenítések** lapon jelölje be **fürtözött oszlopdiagram**. A csomóponthúzási **vin** való a **érték** területen. A csomóponthúzási **Város** való a **tengely** területen. Rendezés a diagram **vin száma**. A diagram **cím** való **járművekről gyűjtött városonként karbantartási igénylő**.
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.
+    ![Karbantartási városonként igénylő járművekről gyűjtött](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4t.png)  
 
-Válassza ki **100 százalékos halmozott sáv-** a képi megjelenítés, húzza a **Város** történő mezőjét a **tengely** területen, majd húzza a **MaintenanceProbability**, **RecallProbability** a mezők a **érték** területen.
+11. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.  
 
-![Csatlakoztatott autók - hozzáadása új képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4dd.png)
+12. Az a **képi megjelenítések** lapon jelölje be a **többsoros kártya** képi megjelenítés. A csomóponthúzási **modell** és **vin** való a **mezők** területen.
 
-Kattintson a **formátum**, jelölje be **adatok színek**, és állítsa be a **MaintenanceProbability** értékre szín **"F2C80F"**.
+    ![Többsoros kártya](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4u.png)    
 
-Módosítsa a **cím** a diagram **"Probability a Vehicle karbantartási & visszahívása által város"**.
+13. A képi megjelenítések átrendezését, úgy, hogy, a végső jelentés az alábbi példához hasonló: 
 
-![Csatlakoztatott autók - hozzáadása új képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ee.png)
+    ![Átcsoportosított végső jelentés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4v.png)  
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést.
+Sikeresen konfigurálta a "Járművekről gyűjtött igénylő karbantartás" valós idejű jelentést. A következő valós idejű jelentést hozhat létre, vagy leállás, és konfigurálja az irányítópulton. 
 
-Válassza ki **területdiagram** a képi megjelenítés a képi megjelenítések, húzza a **modell** történő mezőjét a **tengely** területen, majd húzza a **engineOil, tirepressure, sebesség és a MaintenanceProbability** a mezők a **értékek** területen. Az összesítési típus a **"Átlagos"**. 
+### <a name="vehicle-health-statistics-report"></a>Vehicle állapotfigyelő Szinkronizálásistatisztika-jelentésről
 
-![Csatlakoztatott autók - összesítési típusának módosítása](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ff.png)
+1. Válassza ki ![Hozzáadás](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) új jelentés hozzáadásához. Nevezze át **járművekről gyűjtött állapotstatisztika**. 
 
-Módosítsa a diagram címét **"Átlagos motor olaj, nyomás, a sebesség és a karbantartás valószínűség megunja modell"**.
+2. Az a **képi megjelenítések** lapon jelölje be a **mérőműszer** képi megjelenítés. Húzza **sebesség** számára a **érték**, **minimális érték**, és **maximális érték** területeket.
 
-![Csatlakoztatott autók - diagram cím módosítása](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4gg.png)
+   ![Járművekről gyűjtött egészségügyi statisztikák](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4w.png)  
 
-Kattintson az üres területen adja hozzá az új képi megjelenítést:
+3. Az a **érték** területen módosítsa az alapértelmezett összesítése **sebesség** való **átlagos**.
 
-1. Válassza ki **pontdiagram diagram** képi megjelenítések a képi megjelenítés.
-2. Húzza a **modell** történő mezőjét a **részletek** és **jelmagyarázat** területen.
-3. Húzza a **üzemanyag** mezőben az a **x tengely** területen módosítsa a összevonása a **átlagos**.
-4. Húzza **engineTemparature** történő **y tengely terület**, módosítsa a összevonása a **átlagos**
-5. Húzza a **vin** történő mezőjét a **mérete** területen.
+4. Az a **minimális érték** területen módosítsa az alapértelmezett összesítése **sebesség** való **minimális**.
 
-![Csatlakoztatott autók - hozzáadása új képi megjelenítés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4hh.png)
+5. Az a **maximális érték** területen módosítsa az alapértelmezett összesítése **sebesség** való **maximális**.
 
-A diagram **cím** való **"Üzemanyag átlagok, motor hőmérséklet modell"**.
+   ![Sebességének értékei](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4x.png)  
 
-![Csatlakoztatott autók - diagram cím módosítása](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ii.png)
+6. Nevezze át a **mérőműszer cím** való **sebesség átlagos**.
 
-A végső jelentést fog megjelenni, alább látható módon.
+   ![Kijelző](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4y.png)  
 
-![Csatlakoztatott autók végleges jelentés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4jj.png)
+7. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.  
+
+    Ezután adjon hozzá egy **mérőműszer** a **motor olaj átlagos**, **üzemanyag átlagos**, és **motor átlagos**.  
+
+8. Módosítsa az alapértelmezett összesítés minden mérőműszer, mint amilyet az előző lépésben a mezők a **sebesség átlagos** fel tudja mérni.
+
+    ![További mérőműszer](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4z.png)
+
+9. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.
+
+10. Az a **képi megjelenítések** lapon jelölje be a **sor- és fürtözött oszlopdiagram** képi megjelenítés. A csomóponthúzási **Város** való **megosztott tengely**. Húzza **tirepressure**, **engineoil**, és **sebesség** számára a **oszlopok értékeinek** területen. Az összesítési típus a **átlagos**. 
+
+11. A csomóponthúzási **engineTemperature** való a **sor értékek** területen. A összesítési típus a **átlagos**. 
+
+    ![Oszlop és sor értékek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4aa.png)
+
+12. A diagram **cím** való **átlagos sebességét, kulcsszava nyomás, motor olaj- és motor**.  
+
+    ![Vonal- és fürtözött oszlopdiagram cím](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4bb.png)
+
+13. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.
+
+14. Az a **képi megjelenítések** lapon jelölje be a **Treemap** képi megjelenítés. A csomóponthúzási **modell** való a **csoport** területen. A csomóponthúzási **MaintenanceProbability** való a **értékek** területen.
+
+15. A diagram **cím** való **karbantartási igénylő Vehicle modellek**.
+
+    ![Treemap cím](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4cc.png)
+
+16. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.
+
+17. Az a **képi megjelenítések** lapon jelölje be a **100 százalékos halmozott sáv-** képi megjelenítés. A csomóponthúzási **Város** való a **tengely** területen. A csomóponthúzási **MaintenanceProbability** és **RecallProbability** való a **érték** területen.
+
+    ![Tengely és érték területek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4dd.png)
+
+18. Az a **formátum** szakaszban jelölje be **adatok színek**. Állítsa be a **MaintenanceProbability** értékre szín **F2C80F**.
+
+19. A diagram **cím** való **Vehicle karbantartási valószínűség & városonként visszaírási**.
+
+    ![100 %-os halmozott sáv diagrammá cím](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ee.png)
+
+20. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.
+
+21. Az a **képi megjelenítések** lapon jelölje be a **területdiagram** képi megjelenítés. A csomóponthúzási **modell** való a **tengely** területen. A csomóponthúzási **engineOil**, **tirepressure**, **sebesség**, és **MaintenanceProbability** való a **értékek** területen. Az összesítési típus a **átlagos**. 
+
+    ![Aggregáció típusa](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ff.png)
+
+22. A diagram **cím** való **átlagos motor olaj, a terhelés, a sebesség és a karbantartás valószínűség megunja modell**.
+
+    ![Diagramcím terület](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4gg.png)
+
+23. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.
+
+24. Az a **képi megjelenítések** lapon jelölje be a **pontdiagram diagram** képi megjelenítés. A csomóponthúzási **modell** való a **részletek** és **jelmagyarázat** területek. A csomóponthúzási **üzemanyag** számára a **X tengely** területen. Módosítsa a összevonása a **átlagos**. A csomóponthúzási **engineTemperature** számára a **Y tengely** területen. Módosítsa a összevonása a **átlagos**. A csomóponthúzási **vin** való a **mérete** területen.
+
+    ![Részletek, jelmagyarázat, a tengely és a méret területek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4hh.png)
+
+25. A diagram **cím** való **átlagos üzemanyag, valamint a modell és a modell szerint vin száma engineTemperature átlaga**.
+
+    ![Pontdiagram diagram címét.](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ii.png)
+
+    A végső jelentés a következőképpen néz ki:
+
+    ![Végső jelentés](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4jj.png)
 
 ### <a name="pin-visualizations-from-the-reports-to-the-real-time-dashboard"></a>PIN-kód képi megjelenítéseket készíthet a jelentésekben, a valós idejű irányítópulton
-Hozzon létre egy üres irányítópult irányítópultok mellett a plusz ikonra kattintva. "Vehicle Telemetriai elemzések irányítópultján" is neve
+1. Üres irányítópult létrehozása mellett a plusz jel kiválasztásával **irányítópultok**. Adja meg a nevét **Vehicle Telemetriai elemzések irányítópultján**.
 
-![Csatlakoztatott autók-irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.5.png)
+    ![Irányítópult plusz jel](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.5.png)
 
-A képi megjelenítés a fenti jelentésekben az irányítópulton rögzítheti. 
+2. Az előző jelentések az irányítópultot a képi megjelenítéseket rögzítheti. 
 
-![Csatlakoztatott autók-irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.6.png)
+    ![PIN-kód szimbólum irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.6.png)
 
-Az irányítópult kell hasonlítania az három jelentések létrehozása és a megfelelő vizuális vannak rögzítve az irányítópulton. Ha nem hozott létre a jelentéseket, az irányítópult másképp sikerült. 
+    Ha minden három jelentések vannak rögzítve az irányítópulton, az alábbi példához hasonló formában. A jelentések nem hozott létre, ha az irányítópult eltérő lehet. 
 
-![Csatlakoztatott autók-irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-4.0.png)
+    ![Irányítópultot, amelynek jelentései](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-4.0.png)
 
-Gratulálunk! Sikeresen létrehozta a valós idejű irányítópulton. Továbbra is CarEventGenerator.exe és RealtimeDashboardApp.exe hajtható végre, mert az élő frissítések meg kell jelennie az irányítópulton. Nagyjából 10 – 15 percet kell vennie az alábbi lépések elvégzéséhez.
+Sikeresen létrehozta a valós idejű irányítópulton. Továbbra is CarEventGenerator.exe és RealtimeDashboardApp.exe hajtható végre, mert az irányítópulton látható működés közbeni frissítések. A következő lépések körülbelül 10 – 15 percet befejezéséhez.
 
-## <a name="setup-power-bi-batch-processing-dashboard"></a>A telepítő a Power BI kötegelt feldolgozásra irányítópult
+## <a name="set-up-the-power-bi-batch-processing-dashboard"></a>Állítsa be a Power BI kötegelt feldolgozásra irányítópult
 > [!NOTE]
-> A végpontok közötti kötegfeldolgozási adatcsatorna végrehajtásának befejeződését, és érdemes év létrehozott adatok feldolgozása körülbelül két órás (az a telepítés sikeres befejezése) vesz igénybe. Ezért Várjon, amíg a feldolgozás a következő lépések végrehajtása előtt. 
+> A végpont kötegfeldolgozási folyamat végrehajtásának befejeződését, és létrehozott egy év értékelésével feldolgozni (az a telepítés sikeres befejezése) körülbelül két órás szükséges időt. Várjon, amíg a feldolgozás befejeződik, mielőtt továbblép a következő lépéseket. 
 > 
 > 
 
-**A Power BI designer-fájl letöltése**
+### <a name="download-the-power-bi-designer-file"></a>A Power BI designer-fájl letöltése
 
-* Egy előre konfigurált Power BI designer fájl tartalmazzák a telepítési utasításokat a manuális műveletet a
-* Keresse meg a 2. Telepítő Power bi kötegelt feldolgozásra irányítópult letöltheti a Power bi sablon itt nevű kötegfeldolgozási irányítópult **ConnectedCarsPbiReport.pbix**.
-* Mentse helyileg
+1. Egy előre konfigurált Power BI designer fájl tartalmazzák a telepítési kézi művelet utasításokat. Keressen a "2. Állítsa be a Power bi kötegelt feldolgozásra irányítópult."
 
-**A Power BI-jelentések konfigurálása**
+2. Töltse le a Power BI sablon itt nevű kötegfeldolgozási irányítópult **ConnectedCarsPbiReport.pbix**.
 
-* Nyissa meg a Tervező fájlt "**ConnectedCarsPbiReport.pbix**" Power BI Desktop használatával. Ha még nem rendelkezik, telepítse a Power BI Desktop a [Power BI Desktop telepítés](http://www.microsoft.com/download/details.aspx?id=45331). 
-* Kattintson a **lekérdezések szerkesztése**.
+3. Mentse a fájlt helyileg.
 
-![A Power BI lekérdezés szerkesztése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/10-edit-powerbi-query.png)
+### <a name="configure-power-bi-reports"></a>A Power BI-jelentések konfigurálása
 
-* Kattintson duplán a **forrás**.
+1. Nyissa meg a Tervező fájlt **ConnectedCarsPbiReport.pbix** a Power BI Desktop használatával. Ha még nem rendelkezik azt, telepítse a Power BI Desktop a a [Power BI Desktop telepítési](http://www.microsoft.com/download/details.aspx?id=45331) webhelyet.
 
-![A Power BI-forrás beállítása](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11-set-powerbi-source.png)
+2. Válassza ki **lekérdezések szerkesztése**.
 
-* Frissítse a kiszolgáló kapcsolati karakterláncot az Azure SQL-kiszolgálót, amely a központi telepítésének részeként lett kiépítve.  A manuális műveletet utasításokat a hely 
+    ![Lekérdezések szerkesztése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/10-edit-powerbi-query.png)
 
-    4. Azure SQL Database
-    
+3. Kattintson duplán a **forrás**.
+
+    ![Forrás](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11-set-powerbi-source.png)
+
+4. Frissítse a kiszolgáló kapcsolati karakterláncot az Azure SQL-kiszolgálót, amely a központi telepítésének részeként lett kiépítve. Keresse meg az Azure SQL adatbázis kézi művelet utasításokat:
+
     * Server: somethingsrv.database.windows.net
     * Adatbázis: connectedcar
     * Felhasználónév: felhasználónév
-    * Jelszó: Kezelheti az SQL server jelszó Azure-portálon
+    * Jelszó: Az SQL Server jelszó kezelheti az Azure portálról.
 
-* Hagyja **adatbázis** , *connectedcar*.
+5. Hagyja **adatbázis** , **connectedcar**.
 
-![A Power BI-adatbázis beállítása](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/12-set-powerbi-database.png)
+    ![Adatbázis](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/12-set-powerbi-database.png)
 
-* Kattintson az **OK** gombra.
-* Látni fogja **Windows hitelesítő adatok** lapon alapértelmezés szerint kiválasztva, módosítsa úgy, hogy **adatbázis-hitelesítő adatok** kattintva **adatbázis** jobb fülre.
-* Adja meg a **felhasználónév** és **jelszó** , az Azure SQL Database, a telepítés során megadott.
+6. Kattintson az **OK** gombra.
 
-![Adja meg az adatbázis hitelesítő adatai](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/13-provide-database-credentials.png)
+7. A **Windows hitelesítő adat** lapon alapértelmezettként van beállítva. Módosítsa úgy, hogy **adatbázis-hitelesítő adatok** kiválasztásával a **adatbázis** jobb fülre.
 
-* Kattintson a **csatlakozás**
-* Ismételje meg a fenti lépéseket minden olyan jobb oldali ablaktáblában található három fennmaradó lekérdezések, és frissítse az az adatforrás kapcsolati részleteit.
-* Kattintson a **zárja be, és betölti**. A Power BI Desktop-fájl adatkészletek SQL Azure Database-táblázatok kapcsolódnak.
-* **Bezárás** Power BI Desktop-fájlba.
+8. Adja meg a **felhasználónév** és **jelszó** az Azure SQL-adatbázis, a telepítés során megadott.
 
-![Zárja be a Power BI desktop](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/14-close-powerbi-desktop.png)
+    ![Adatbázis hitelesítő adatai](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/13-provide-database-credentials.png)
 
-* Kattintson a **mentése** gombra a módosítások mentéséhez. 
+9. Kattintson a **Csatlakozás** gombra.
 
-Ezzel beállította a kötegelt feldolgozásra elérési útjára a megoldás megfelelő jelentéseihez. 
+10. Ismételje meg az előző lépést minden, a jobb oldali ablaktáblában található három fennmaradó lekérdezések. Frissítse az adatforrás kapcsolati részleteit.
 
-## <a name="upload-to-powerbicom"></a>Töltse fel a *powerbi.com webhelyre*
-1. Keresse meg a Power bi-ban webes portál http://powerbi.com és a bejelentkezés.
-2. Kattintson a **adatok beolvasása**  
-3. A Power BI Desktop-fájl feltöltése.  
-4. Töltse fel, kattintson a **adatok beolvasása -> fájlok Get -> helyi fájl**  
-5. Keresse meg a **"**ConnectedCarsPbiReport.pbix**"**  
-6. A fájl a feltöltést követően nyílik vissza a Power BI munkaterület a.  
+11. Válassza ki **zárja be, és betölti**. A Power BI Desktop-fájl adatkészletek SQL adatbázistáblák csatlakoznak.
 
-A DataSet adatkészlet, jelentést és egy üres irányítópult meg hozható létre.  
+12. Válassza ki **bezárása** kattintva zárja be a Power BI Desktop-fájlba.
 
-Új irányítópult PIN-kód diagramok nevű **Vehicle Telemetriai elemzések irányítópultján** a **Power BI**. A fenti létrehozott üres irányítópult, és keresse meg a **jelentések** szakaszban kattintson az újonnan feltöltött jelentés.  
+    ![Bezárás](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/14-close-powerbi-desktop.png)
 
-![Vehicle Telemetriai Power BI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png) 
+13. Válassza ki **mentése** menti a módosításokat. 
 
-**Vegye figyelembe a jelentés hat lapok:**  
-1. oldal: Vehicle sűrűség  
-2. lap: Valós idejű vehicle állapota  
-3. oldal: Agresszív vezérelt járművekről gyűjtött   
-4. lap: Visszaírt járművekről gyűjtött  
-Lap 5: Hatékony vezérelt járművekről gyűjtött üzemanyag  
-6. lap: Contoso-embléma  
+Ezzel beállította a jelentések, amelyek megfelelnek a kötegfeldolgozási elérési útja a megoldásban. 
 
-![Csatlakoztatott autók Power BI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard2.png)
+## <a name="upload-to-powerbicom"></a>Töltse fel a powerbi.com webhelyre
+1. Lépjen a [Power BI web portal](http://powerbi.com), és jelentkezzen be.
 
-**A lap 3**, PIN-kód a következő:  
+2. Válassza ki **adatok**.
 
-1. VIN száma  
-   ![Csatlakoztatott autók Power BI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png) 
-2. Járművekről gyűjtött agresszív vezérlik modell – diagram vízesés egyes szintjei  
-   ![Vehicle Telemetria - PIN-kód diagramok 4](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard4.png)
+3. A Power BI Desktop-fájl feltöltése. Válassza ki **adatok beolvasása** > **fájlok beolvasása** > **helyi fájl**.
 
-**Az oldal 5**, PIN-kód a következő: 
+4. Ugrás a **ConnectedCarsPbiReport.pbix**.
 
-1. Vin száma    
-   ![Vehicle Telemetria - 5 PIN-kód diagramok](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)  
-2. Üzemanyag-a hatékony járművekről gyűjtött modell: csoportosított oszlopdiagram  
-   ![Vehicle Telemetria - PIN-kód diagramok 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
+5. Miután a fájl feltöltése, térjen vissza a Power BI munkaterület. A DataSet adatkészlet, jelentést és egy üres irányítópult jön létre.  
 
-**A lap 4**, PIN-kód a következő:  
+6. Új irányítópult PIN-kód diagramok nevű **Vehicle Telemetriai elemzések irányítópultján** Power BI-ban. Válassza ki a korábban létrejött, és folytassa a üres irányítópult a **jelentések** szakasz. Válassza ki az újonnan feltöltött jelentést.  
 
-1. Vin száma  
-   ![Vehicle Telemetria - PIN-kód diagramok 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
-2. Visszaírt járművekről gyűjtött városonként, a modell: Treemap  
-   ![Vehicle Telemetria - PIN-kód diagramok 8](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard8.png)  
+    ![Új Power BI-irányítópulton](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png) 
 
-**A lap 6**, PIN-kód a következő:  
+    A jelentésben van hat lapok:
 
-1. Contoso motorok embléma  
-   ![Vehicle Telemetria - PIN-kód diagramok 9](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard9.png)
+    1. oldal: Vehicle sűrűség  
+    2. lap: Valós idejű vehicle állapota  
+    3. oldal: Agresszív vezérelt járművekről gyűjtött   
+    4. lap: Visszaírt járművekről gyűjtött  
+    Lap 5: Hatékony vezérelt járművekről gyűjtött üzemanyag  
+    6. lap: Contoso motorok embléma  
 
-**Az irányítópult rendezése**  
+    ![A Power BI-jelentés hat Pages](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard2.png)
 
-1. Keresse meg az irányítópulton
-2. Minden egyes diagram és az alapján, az alábbi képen teljes irányítópult megadott elnevezési átnevezése mutasson. Is helyezheti a diagramok az alábbi irányítópult tűnik.  
-   ![Vehicle Telemetria - irányítópult 2 rendszerezése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard2.png)  
-   ![Vehicle Telemetriai Power BI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard.png)
-3. Ha a jelentések hozott létre, ahogy azt korábban említettük, a dokumentum, a végső befejezett irányítópult a következő ábra kell hasonlítania. 
+7. A **lap 3**, PIN-kód a következőket:  
 
-![Vehicle Telemetria - irányítópult 2 rendszerezése](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard3.png)
+    a. **Vin száma**  
 
-Gratulálunk! Sikeresen létrehozta a jelentések és az irányítópult valós idejű, a prediktív kapnak, és áttekinthetik a vehicle állapotát, és ki irányítja a batch-szokásokat.  
+   ![Vin lap 3 száma](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png)
+
+    b. **Járművekről gyűjtött agresszív vezérlik modell – diagram vízesés egyes szintjei** 
+
+   ![3. oldal diagram 4](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard4.png)
+
+8. A **lap 5**, PIN-kód a következőket: 
+
+    a. **Vin száma**
+
+   ![Lap 5 diagram 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)
+
+    b. **Tíz járművekről gyűjtött modell: csoportosított oszlopdiagram**
+
+   ![Lap 5 diagram 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
+
+9. A **lap 4**, PIN-kód a következőket:  
+
+    a. **Vin száma** 
+
+   ![Lap 4 diagram 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
+
+    b. **Visszaírt járművekről gyűjtött városonként, a modell: Treemap**
+
+   ![Lap 4 diagram 8](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard8.png)  
+
+10. A **lap 6**, PIN-kód a következőket:  
+
+    * **Contoso motorok embléma**
+
+    ![Contoso motorok embléma](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard9.png)
+
+### <a name="organize-the-dashboard"></a>Az irányítópult rendezése  
+
+1. Nyissa meg az irányítópultot.
+
+2. Minden egyes diagram mutasson. Nevezze át a következő végzett irányítópult példa megadott elnevezési alapján minden egyes diagram:
+
+   ![Irányítópult-szervezet](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard2.png) 
+   
+3. Helyezze át a diagramok körülbelül keresse meg az alábbi irányítópult példára hasonlít:
+
+    ![Átcsoportosított irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard.png)
+
+4. Ebben a dokumentumban említett összes jelentés létrehozása után utolsó befejezett irányítópult néz az alábbi példa: 
+
+   ![Végső irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard3.png)
+
+Sikeresen létrehozta a jelentések és ahhoz, hogy az irányítópult valós idejű, a prediktív, és a kötegelt áttekinthetik a vehicle állapotát, és ki irányítja a szokásokat.  

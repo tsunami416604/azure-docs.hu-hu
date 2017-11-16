@@ -1,29 +1,26 @@
 ---
-title: "Hitelesítési és engedélyezési egy egyéni alkalmazás, amely a Azure idő adatsorozat Insights API konfigurálása |} Microsoft Docs"
-description: "Ez az oktatóanyag azt ismerteti, hogyan konfigurálhatja a hitelesítési és engedélyezési, amely a Azure idő adatsorozat Insights API-egyéni alkalmazás"
-keywords: 
+title: "Hitelesítés és egy egyéni alkalmazást úgy, hogy az Azure idő adatsorozat Insights API-engedélyezés konfigurálása |} Microsoft Docs"
+description: "Ez a cikk ismerteti a hitelesítési és engedélyezési egy egyéni a Azure idő adatsorozat Insights API-alkalmazások konfigurálása."
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: dmdenmsft
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/24/2017
 ms.author: dmden
-ms.openlocfilehash: abc3b5400e6961a798e1e6bf9e4986304046e845
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 7772f6be0c60c1c2e59499d46e3c56975053e551
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítési és engedélyezési Azure idő adatsorozat Insights API-hoz.
 
-Ez a cikk ismerteti, amely a Azure idő adatsorozat Insights API-egyéni alkalmazás konfigurálása.
+Ez a cikk ismerteti, hogyan konfigurálhatja a hitelesítési és engedélyezési szerepel, amely a Azure idő adatsorozat Insights API-egyéni alkalmazás.
 
 ## <a name="service-principal"></a>Egyszerű szolgáltatásnév
 
@@ -102,11 +99,9 @@ Részletes lépései a következők:
     string accessToken = token.AccessToken;
     ```
 
+Használja az Azure idő adatsorozat Insight való hitelesítéshez szükséges az alkalmazás Azonosítóját és kulcsát az alkalmazásban. 
+
 ## <a name="next-steps"></a>Következő lépések
-
-Használja az alkalmazás Azonosítóját és kulcsát az alkalmazásban. Az idő adatsorozat Hirdetéselemző API-t behívó kód a minta, lásd: [adatait használó C#](time-series-insights-query-data-csharp.md).
-
-## <a name="see-also"></a>Lásd még:
-
-* [Lekérdezési API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) a teljes lekérdezés API-referencia
-* [Egy egyszerű szolgáltatás létrehozása az Azure-portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+- Az idő adatsorozat Hirdetéselemző API-t behívó kód a minta, lásd: [adatait használó C#](time-series-insights-query-data-csharp.md).
+- API-referencia információkért lásd: [lekérdezés API-referencia](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
+- [Egy egyszerű szolgáltatás létrehozása az Azure-portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md)

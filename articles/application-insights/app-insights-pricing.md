@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: f11f7bf6ed94c5d19ad51b1e474ab45d20216351
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: ecb6dd0343c36a0f1571b416817aad5e7a52fccb
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Az Application Insightsban tarifa- és adatok kötet kezelése
 
@@ -110,7 +110,7 @@ Application Insights költségek az Azure számlázásának hozzáadódnak. A sz
 A kötet küldött adatok korlátozódik három módja van:
 
 * **Mintavételi:** Ez az eljárás használható a kiszolgáló és az ügyfél alkalmazásoknak, a minimális torzulásának metrikák küldött telemetriai adatok mennyiségének csökkentésére. Ez az adatmennyiség hangolására, hogy az elsődleges eszköz. További információ [szolgáltatások mintavétel](app-insights-sampling.md). 
-* **Napi cap:** Ha létrehozása az Application Insights-erőforrást az Azure portálról ennek értéke 500 GB/nap. A Visual Studio Application Insights-erőforrás létrehozásakor alapértelmezés szerint csak a faciliate tesztelést készült kis (csak 32,3 megabájt MB/nap). Ebben az esetben célja, hogy a felhasználó emeli a napi kap éles környezetben az alkalmazás telepítése előtt. A maximális kap kért nagy forgalmú alkalmazások magasabb legfeljebb 500 GB/nap esetén. Körültekintően járjon el a napi kap beállításakor a leképezés kell lennie **soha nem az, hogy a napi kap találati**, mert fog majd adatvesztés, a nap hátralevő és kell az alkalmazás figyelése nem lehetséges. Az módosításához használja a napi kötet cap panelen kapcsolódó adatok kötetkezelés paneljén (lásd alább). Ne feledje, hogy néhány előfizetéstípusok jóváírás, amely nem használható az Application insights szolgáltatással. Ha az előfizetésnek a költségkeret maximumát, a napi cap panelen lesz utasításokat távolítsa el, és a napi kap túl 32,3 megabájt MB/nap felmerülő engedélyezésével.  
+* **Napi cap:** Ha létrehozása az Application Insights-erőforrást az Azure portálról ennek értéke 100 GB/nap. A Visual Studio Application Insights-erőforrás létrehozásakor alapértelmezés szerint csak a faciliate tesztelést készült kis (csak 32,3 megabájt MB/nap). Ebben az esetben célja, hogy a felhasználó emeli a napi kap éles környezetben az alkalmazás telepítése előtt. A maximális kap kért nagy forgalmú alkalmazások magasabb legfeljebb 1000 GB/nap esetén. Körültekintően járjon el a napi kap beállításakor a leképezés kell lennie **soha nem az, hogy a napi kap találati**, mert fog majd adatvesztés, a nap hátralevő és kell az alkalmazás figyelése nem lehetséges. Az módosításához használja a napi kötet cap panelen kapcsolódó adatok kötetkezelés paneljén (lásd alább). Ne feledje, hogy néhány előfizetéstípusok jóváírás, amely nem használható az Application insights szolgáltatással. Ha az előfizetésnek a költségkeret maximumát, a napi cap panelen lesz utasításokat távolítsa el, és a napi kap túl 32,3 megabájt MB/nap felmerülő engedélyezésével.  
 * **Sávszélesség-szabályozás:** ez korlátozza az események (Event), átlagosan több mint 1 perces 32-k sebesség. 
 
 

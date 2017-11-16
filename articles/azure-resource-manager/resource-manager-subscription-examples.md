@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6e8335b9c2f3609bf0c48c563205ffaee8575b20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ab816d0392816c2293f9d70eb249bbcfa09bfba
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Az Azure enterprise scaffold implementációi
 Ez a témakör példák hogyan vállalati kapcsolatos ajánlások is létrehozható egy [Azure enterprise scaffold](resource-manager-subscription-governance.md). Gyakori helyzetek ajánlott eljárásai bemutatják egy kitalált, Contoso nevű vállalat használ.
@@ -68,14 +68,14 @@ Dave az előfizetésben szereplő erőforrások kezeléséhez a következő köv
 * Érintett költséggel. Ezért azt szeretné, hogy ezáltal megakadályozhatja, hogy a alkalmazástulajdonosok feleslegesen költséges virtuális gépek létrehozását.  
 * Ez az alkalmazás számos üzleti egységek fejlesztők is kiszolgál, mert szeretné az egyes erőforrások az üzleti egység és a kérelem tulajdonossal rendelkező címke. Ezek a címkék használatával ETS a megfelelő csoportokkal is kiszámlázni.
 
-A következő hoz [erőforrás-kezelő házirendek](resource-manager-policy.md):
+A következő hoz [Azure házirendek](../azure-policy/azure-policy-introduction.md):
 
 | Mező | Következmény | Leírás |
 | --- | --- | --- |
 | location |Naplózási |Naplózási bármely régióban erőforrás létrehozása |
-| type |Megtagadása |G sorozatú virtuális gépek létrehozását megtagadása |
-| tags |Megtagadása |Igényelnek az alkalmazás tulajdonosa címke |
-| tags |Megtagadása |Költség center címke megkövetelése |
+| type |elutasítás |G sorozatú virtuális gépek létrehozását megtagadása |
+| tags |elutasítás |Igényelnek az alkalmazás tulajdonosa címke |
+| tags |elutasítás |Költség center címke megkövetelése |
 | tags |hozzáfűzése |A címke neve hozzáfűzése **részleghez** értéke pedig **ETS** az összes erőforráshoz |
 
 ### <a name="resource-tags"></a>Az erőforráscímkék
@@ -143,9 +143,9 @@ Az a **éles előfizetés**, akkor hozza létre a következő házirendeket:
 
 | Mező | Következmény | Leírás |
 | --- | --- | --- |
-| location |Megtagadása |Az Amerikai Egyesült Államok adatközpontok kívül semmilyen erőforráshoz létrehozását megtagadása |
-| tags |Megtagadása |Igényelnek az alkalmazás tulajdonosa címke |
-| tags |Megtagadása |Részleg címke megkövetelése |
+| location |elutasítás |Az Amerikai Egyesült Államok adatközpontok kívül semmilyen erőforráshoz létrehozását megtagadása |
+| tags |elutasítás |Igényelnek az alkalmazás tulajdonosa címke |
+| tags |elutasítás |Részleg címke megkövetelése |
 | tags |hozzáfűzése |Címke hozzáfűzése minden erőforráscsoportban, amely jelzi, éles környezetben |
 
 Ezek korlátozza a termékváltozat éles hozhat létre a felhasználó milyen típusú.
@@ -156,7 +156,7 @@ Dave tisztában van azzal, hogy ő rendelkeznie kell a megfelelő üzleti azonos
 | A címke neve | Címke |
 | --- | --- |
 | ApplicationOwner |Ezt az alkalmazást kezelő személy nevét |
-| Szervezeti egység |A csoport, amely az Azure felhasználásra fizeti költséghely |
+| Részleg |A csoport, amely az Azure felhasználásra fizeti költséghely |
 | EnvironmentType |**Éles** (annak ellenére, hogy az előfizetése **éles** nevét, ennek a címkének lehetővé teszi a könnyebbé teszi a beazonosítást kezelőkonzoljából nézve a portál vagy a számlázási erőforrások) |
 
 ### <a name="core-networks"></a>Alapvető hálózat

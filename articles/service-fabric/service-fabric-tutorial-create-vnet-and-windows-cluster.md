@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: ryanwi
-ms.openlocfilehash: 31e35432ecc10b06c7a6400a1e0904e7bc2cd8c9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: b06d0196f1f911f2f6cf87242d70455ba22b1f88
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Service Fabric Windows Azure virtuális hálózat a fürt központi telepítése
 Ez az oktatóanyag egy sorozat része. Megtudhatja, hogyan telepítheti a Windows Service Fabric-fürt be egy meglévő Azure virtuális hálózatot (VNET), és részterv net a PowerShell használatával. Amikor végzett, hogy a fürt fut a felhőben, amely központilag telepíthető alkalmazások.  Azure parancssori felület használatával Linux-fürt létrehozásához lásd: [biztonságos Linux-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
@@ -36,6 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag adatsorozat elsajátíthatja, hogyan:
 > [!div class="checklist"]
 > * Biztonságos fürt létrehozása az Azure-on
+> * [Bejövő vagy kimenő fürt méretezése](/service-fabric-tutorial-scale-cluster.md)
 > * [A Service Fabric az API Management központi telepítését](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Előfeltételek

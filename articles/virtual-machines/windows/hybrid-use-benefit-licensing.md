@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/02/2017
+ms.date: 11/13/2017
 ms.author: kmouss
-ms.openlocfilehash: d47b8ab2cd6391e937fe7f9ba6eded3b89fe2c40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 11b491b52fe359427c5e395d5d8c3be3cddcdc89
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
-Software Assurance rendelkező ügyfelek Azure hibrid juttatás for Windows Server lehetővé teszi a helyszíni Windows Server licencek használja, és futtassa a Windows virtuális gépek Azure költséghatékony. Azure hibrid juttatás for Windows Server bármelyik új virtuális gépek telepítéséhez használható Azure platform Windows Server-lemezképet Windows egyéni támogatott. Mindaddig, amíg a kép nem tartalmaz további szoftvert, például az SQL Server vagy a külső piactéren elérhető rendszerkép. Ez a cikk kerül a lépéseket keresztül Azure hibrid juttatás for Windows Server új virtuális gépek telepítéséhez. További információ az Azure hibrid juttatás for Windows Server licencelési és pluszköltséggel kevésbé kell kihasználni, tekintse meg a [Azure hibrid juttatás for Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
+Software Assurance rendelkező ügyfelek Azure hibrid juttatás for Windows Server lehetővé teszi a helyszíni Windows Server licencek használja, és futtassa a Windows virtuális gépek Azure költséghatékony. Azure hibrid juttatás for Windows Server bármelyik új virtuális gépek telepítéséhez használható Azure platform Windows Server-lemezképet Windows egyéni támogatott. Ez a cikk halad keresztül lépéseket, a új virtuális gépek Azure hibrid juttatás for Windows Server telepítése, és hogyan frissíthet meglévő futtató virtuális gépek. További információ az Azure hibrid juttatás for Windows Server licencelési és pluszköltséggel kevésbé kell kihasználni, tekintse meg a [Azure hibrid juttatás for Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
 > [!IMPORTANT]
 > Az örökölt "[HUB]" Windows Server-lemezképekben Azure piactéren nagyvállalati szerződéssel rendelkező ügyfelek esetén közzétett től 9/11/2017 eltávolították, a szabványos Windows Server használata a "Mentés pénz" lehetőséget, a portál az Azure hibrid juttatása Windows Server. További információkért tekintse meg a [cikk.](https://support.microsoft.com/en-us/help/4036360/retirement-azure-hybrid-use-benefit-images-for-ea-subscriptions)
 >
 
 > [!NOTE]
-> Azure hibrid juttatás for Windows Server nem használható virtuális gépeket, amelyek van szó, például az SQL Server vagy a külső piactéren elérhető rendszerkép bármelyikét további szoftvereket. Például a get 409 hiba: tulajdonságának módosítása nem engedélyezett 'LicenseType'; Ha egy Windows Server virtuális Gépet, amely rendelkezik a költségeket, további szoftverek átalakításának megkísérlése. 
+> Azure hibrid juttatás for Windows Server használata virtuális gépek, amelyek van szó, például az SQL Server vagy a külső piactéren elérhető rendszerkép bármelyikét további szoftvereket van megkezdődött. Ha egy 409 hibaüzenet jelenik meg, mint: tulajdonságának módosítása nem engedélyezett 'LicenseType'; majd kívánt alakítható, vagy egy új Windows Server virtuális gép üzembe helyezése, amely rendelkezik a költség, további szoftver, amely nem támogatja az adott régióban.
 >
 
 
@@ -42,10 +42,11 @@ Windows virtuális gépek használata az Azure hibrid juttatás néhány módja 
 
 1. Telepíthet egy, a megadott virtuális gépek [Windows Server lemezképeket az Azure piactéren](#https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview)
 2. Is [feltöltése egy egyéni VM](#upload-a-windows-vhd) és [telepítése a Resource Manager-sablon használatával](#deploy-a-vm-via-resource-manager) vagy [Azure PowerShell](#detailed-powershell-deployment-walkthrough)
+3. Váltás és konvertálja a meglévő virtuális gép közötti Azure hibrid juttatás fut vagy igény szerinti költségek ellenében Windows Server
 4. Ezenkívül telepítheti egy új virtuálisgép-méretezési Azure hibrid előnye a Windows Server beállítása
 
 > [!NOTE]
-> Egy meglévő virtuális gép vagy virtuálisgép-méretezési Azure hibrid juttatás for Windows Server használandó konvertálás jelenleg nem támogatott
+> Egy meglévő virtuálisgép-méretezési Azure hibrid juttatás for Windows Server használandó konvertálása nem támogatott
 >
 
 ## <a name="deploy-a-vm-from-a-windows-server-marketplace-image"></a>Telepítse a virtuális Gépet egy Windows Server Piactéri lemezképből
@@ -61,6 +62,26 @@ A lépések segítségével [Windows virtuális gép létrehozása a PowerShell-
 
 ### <a name="portal"></a>Portál
 A lépések segítségével [Windows virtuális gép létrehozása az Azure portálon](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal) és a beállítással használhatja a meglévő Windows Server-licencét.
+
+## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Azure hibrid juttatás for Windows Server egy meglévő virtuális gép átalakítása
+Ha egy meglévő virtuális Gépet, amely szeretné átalakítása Azure hibrid juttatás for Windows Server előnyeit, frissítheti a virtuális gép licenc típusa az alábbiak szerint:
+
+### <a name="convert-to-using-azure-hybrid-benefit-for-windows-server"></a>Azure hibrid előnye a Windows Server használatával átalakítása
+```powershell
+$vm = Get-AzureRmVM -ResourceGroup "rg-name" -Name "vm-name"
+$vm.LicenseType = "Windows_Server"
+Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
+```
+
+### <a name="convert-back-to-pay-as-you-go"></a>Vissza kell fizetnie menet átalakítása
+```powershell
+$vm = Get-AzureRmVM -ResourceGroup "rg-name" -Name "vm-name"
+$vm.LicenseType = "None"
+Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
+```
+
+### <a name="portal"></a>Portál
+Portálról VM panelen frissítse a virtuális gép használata a Azure hibrid kiszolgálóterhelések használják ki a "Konfiguráció" lehetőség kiválasztásával és az "Azure hibrid előnyeit" beállítás bekapcsolására
 
 ## <a name="upload-a-windows-server-vhd"></a>A Windows Server VHD feltöltése
 Az Azure-ban a Windows Server virtuális gép üzembe helyezéséhez először az alap Windows-buildet tartalmazó virtuális merevlemez létrehozása. Ehhez a virtuális Merevlemezhez kell megfelelően készíteni a Sysprep segítségével az Azure-ba való feltöltés előtt. Is [további tudnivalókat a virtuális merevlemez követelményeiről és a Sysprep folyamat](upload-generalized-managed.md) és [Sysprep támogatási kiszolgálói szerepköre tekintetében](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles). Készítsen biztonsági másolatot a virtuális Gépet a Sysprep futtatása előtt. 
@@ -78,7 +99,6 @@ Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\m
 >
 
 Akkor is olvashat további tudnivalókat [a virtuális merevlemez feltöltése az Azure folyamat](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account)
-
 
 ## <a name="deploy-a-vm-via-resource-manager-template"></a>A virtuális gép keresztül Resource Manager-sablon üzembe helyezése
 A Resource Manager-sablonok, egy további paraméter belül `licenseType` meg kell adni. További tudnivalók [Azure Resource Manager sablonok készítése](../../resource-group-authoring-templates.md). Miután a virtuális merevlemez feltöltése az Azure-ba, szerkesztése, a licenc típusa a számítási szolgáltató részeként és a szokásos módon sablon üzembe helyezése a Resource Manager-sablon:
@@ -100,7 +120,6 @@ New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -
 ```
 
 El tudja olvasni a különböző lépéseket leíró útmutató [erőforrás-kezelő és a PowerShell használatával Windows virtuális gép létrehozása](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
 
 ## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Ellenőrizze, hogy a virtuális Gépet a licencelési előnye van használata
 A virtuális Gépet, vagy PowerShell, a Resource Manager-sablon vagy a portálon keresztül üzembe helyezett ellenőrizheti a licenc típusa a `Get-AzureRmVM` az alábbiak szerint:
@@ -161,7 +180,9 @@ A virtuális gépen belüli virtuális gépek méretezési csoportjának Resourc
 Emellett [létrehozása és központi telepítése egy virtuálisgép-méretezési csoport](#https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create) és a LicenseType tulajdonság
 
 ## <a name="next-steps"></a>Következő lépések
-Tudjon meg többet az [Azure hibrid juttatás for Windows Server licencelési](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
+Tudjon meg többet az [pénz mentése Azure hibrid előnyökkel](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
+
+További információ [Azure hibrid juttatás a Windows Server licencelési részletes útmutatást](http://go.microsoft.com/fwlink/?LinkId=859786)
 
 További információ [Resource Manager-sablonok használatával](../../azure-resource-manager/resource-group-overview.md).
 

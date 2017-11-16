@@ -12,15 +12,15 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 9eb39989bdec330e47e6233be5c1347ff716bed2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: df767617842d5f331b5c4dda6d87d6a999ee1d1b
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="use-spark-structured-streaming-with-kafka-preview-on-hdinsight"></a>Használja a hdinsight Spark strukturált Stream továbbítása Kafka (előzetes verzió)
+# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Válassza a Spark strukturált hdinsight Kafka Stream továbbítása
 
 Ismerje meg, hogyan használható a adatokat olvasni az Apache Kafka on Azure HDInsight Spark strukturált Streaming.
 
@@ -52,7 +52,7 @@ Létrehozhat egy Azure virtuális hálózatra, Kafka, és a Spark-fürtök manu�
 
     Ez a sablon hoz létre a következő erőforrásokat:
 
-    * Egy Kafka HDInsight 3.5-fürtön.
+    * Egy Kafka HDInsight 3.6-fürtön.
     * A Spark on HDInsight 3.6 fürtön.
     * Egy Azure virtuális hálózatot, amely a HDInsight-fürtöt tartalmaz.
 

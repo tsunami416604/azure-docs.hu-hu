@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: jingwang
-ms.openlocfilehash: ebf63cd6d0f9e62d1001d74ce06b4849e08c0de0
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 2b6219dc509b1af8f196f056b489a31fa331acaf
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index Azure Data Factory használatával
 
@@ -51,7 +51,7 @@ Csatolt Azure Search szolgáltatás támogatott a következő tulajdonságokkal:
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
 > [!IMPORTANT]
-> Felhőalapú adattároló az adatok másolása az Azure Search-index, az Azure Search szolgáltatás csatolt kell egy Azure integrációs futásidejű connactVia explicit régiót, tekintse meg. A régió állítja be azt az Azure Search helyezkedik el. További az [Azure integrációs futásidejű] (fogalmak-integráció-runtime.md #azure-integráció-futásidejű).
+> Felhőalapú adattároló az adatok másolása az Azure Search-index, az Azure Search szolgáltatás csatolt kell egy Azure integrációs futásidejű connactVia explicit régiót, tekintse meg. A régió állítja be azt az Azure Search helyezkedik el. A további [Azure integrációs futásidejű](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Példa**
 
@@ -175,7 +175,7 @@ Az alábbi táblázat felsorolja, hogy az Azure Search adattípus támogatott-e,
 | Int32 | I |
 | Int64 | I |
 | Dupla | I |
-| Logikai érték | I |
+| Logikai | I |
 | DataTimeOffset | I |
 | Karakterlánc-tömbben | N |
 | GeographyPoint | N |

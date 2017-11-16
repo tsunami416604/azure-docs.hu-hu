@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: damaerte
-ms.openlocfilehash: ffe5298678de6cc16af0ea29c7d887330f77589d
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 13289d9b18b4c53a2569b9a8772715b38ed22cf7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="features--tools-for-powershell-in-azure-cloud-shell"></a>Szolgáltatások & eszközök PowerShell Azure Cloud rendszerhéj
+# <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Szolgáltatások és eszközök PowerShell Azure Cloud rendszerhéj (előzetes verzió)
 
 [!include [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
 > [!TIP]
 > Szolgáltatások és az eszközök [Bash](features.md) is rendelkezésre áll.
 
-A felhő rendszerhéj PowerShell futó `Windows Server 2016`.
+PowerShell felhő rendszerhéj (előzetes verzió) futó `Windows Server 2016`.
 
 ## <a name="features"></a>Szolgáltatások
 
 ### <a name="secure-automatic-authentication"></a>Biztonságos automatikus hitelesítés
 
-A felhő rendszerhéj PowerShell biztonságosan és automatikusan hitelesíti felhasználóifiók-hozzáférés az Azure PowerShell.
+A felhő rendszerhéj (előzetes verzió) PowerShell biztonságosan és automatikusan hitelesíti felhasználóifiók-hozzáférés az Azure PowerShell.
 
 ### <a name="files-persistence-across-sessions"></a>Adatmegőrzési fájlok munkamenetei között
 
@@ -45,7 +45,7 @@ Mivel minden kérelmet a felhő rendszerhéj lefoglalni egy ideiglenes gép, fá
 
 ### <a name="azure-drive-azure"></a>Az Azure meghajtó (Azure:)
 
-A felhő rendszerhéj PowerShell elindul Azure meghajtón (`Azure:`).
+A felhő rendszerhéj (előzetes verzió) PowerShell elindul Azure meghajtóban (`Azure:`).
 Az Azure meghajtó lehetővé teszi, hogy könnyen felderítés és az Azure-erőforrások, például a számítási, hálózati, tárolási stb filesystem navigációs hasonló navigációs.
 Továbbra is a megszokott [Azure PowerShell-parancsmagok](https://docs.microsoft.com/en-us/powershell/azure) kezelheti ezeket az erőforrásokat.
 Az Azure-erőforrások, vagy közvetlenül az Azure portálon vagy az Azure PowerShell-parancsmagokkal végzett módosítások azonnal megjelennek az Azure meghajtó.
@@ -109,6 +109,6 @@ Ezek a parancsok PowerShell távoli eljáráshívás épülnek, és az Azure vir
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A PowerShell használatával a felhő rendszerhéj gyors üzembe helyezés](quickstart-powershell.md)
+[Gyors üzembe helyezése a PowerShell használatával a felhő rendszerhéj (előzetes verzió)](quickstart-powershell.md)
 
 [További tudnivalók az Azure PowerShell](https://docs.microsoft.com/powershell/azure/)

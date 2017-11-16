@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6692d5b75954b2162862e6be7c2e39c63fa8408b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a0567df53dff15d7fbacf4850f6eae07c8985598
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>A S1, S2 és S3 teljesítményszintet kivonása
 
@@ -44,7 +44,7 @@ Ez a cikk S1, S2 és S3 teljesítményszintet áttekintést nyújt, és ismertet
 
 ## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Miért van a S1, S2 és S3 teljesítmény szintek hatókörről?
 
-A S1, S2 és S3 teljesítményszintet biztosít, amely DocumentDB API gyűjtemények nyújt rugalmasságot. S1, S2, S3 teljesítményszintet, az átviteli sebesség és a tárolási kapacitás előre beállított és nem ajánlja fel a rugalmasság. Azure Cosmos DB kínál testreszabása az átviteli sebesség és tárterület, felkínálva sokkal nagyobb rugalmasságot biztosít arra, hogy a méretezés pedig az igényeinek módosítása.
+A S1, S2 és S3 teljesítményszintet biztosít a rugalmasságot, hogy a DocumentDB API gyűjtemények ajánlat. S1, S2, S3 teljesítményszintet, az átviteli sebesség és a tárolási kapacitás előre beállított és nem ajánlja fel a rugalmasság. Azure Cosmos DB kínál testreszabása az átviteli sebesség és tárterület, felkínálva sokkal nagyobb rugalmasságot biztosít arra, hogy a méretezés pedig az igényeinek módosítása.
 
 <a name="compare"></a>
 
@@ -71,7 +71,7 @@ Semmi, Cosmos DB kezeli, az áttelepítés. Ha egy S1, S2 vagy S3 gyűjteményt,
 
 ## <a name="how-will-my-collection-change-after-the-migration"></a>Hogyan változik a saját gyűjteményembe az áttelepítést követően?
 
-Ha egy S1 gyűjteményt, akkor telepíti át egy egypartíciós gyűjtemény átviteli sebességgel 400 RU/mp. 400 RU/mp a legalacsonyabb átviteli sebesség érhető el az egypartíciós gyűjtemények. Azonban a 400 RU/mp a költsége az egypartíciós gyűjtemény célja megközelítőleg azonos, amelyben meg volt fizető S1 gyűjteményének és 250 RU/mp –, így nem kell fizet az extra 150 RU/mp elérhető.
+Ha egy S1 gyűjteményt, akkor telepíti át egy egypartíciós gyűjtemény átviteli sebességgel 400 RU/mp. 400 RU/mp a legalacsonyabb átviteli sebesség érhető el az egypartíciós gyűjtemények. Azonban költsége 400 RU/mp egypartíciós gyűjtemény megközelítőleg azonos módon meg volt fizető S1 gyűjteményének és 250 RU/mp –, így nem kell fizet az extra 150 RU/mp elérhető.
 
 Ha egy S2 gyűjteményt, akkor telepíti át egy 1 KB-os RU/mp egypartíciós gyűjtemény. Nincs változás az átviteli szinten jelenik meg.
 
@@ -119,29 +119,29 @@ A S1, S2 és S3 teljesítményszintek az Azure portál használatával az egypar
 
 1. A a [ **Azure-portálon**](https://portal.azure.com), kattintson a **Azure Cosmos DB**, majd válassza ki a Cosmos DB fiók módosítása. 
  
-    Ha **Azure Cosmos DB** értéke nem az Ugrósávon kattintson >, görgessen **adatbázisok**, jelölje be **Azure Cosmos DB**, majd válassza ki a DocumentDB-fiók.  
+    Ha **Azure Cosmos DB** van nem az Ugrósávon kattintson >, görgessen **adatbázisok**, jelölje be **Azure Cosmos DB**, majd válassza ki a fiókot.  
 
-2. Erőforrás menüjében a **tárolók**, kattintson a **méretezési**, válassza ki a gyűjteményt, és kattintson a legördülő listából módosításához **árképzési szintjében**. Előre definiált átviteli használatával fiókok jogosultak az S1, S2 vagy S3 tarifacsomagot.  A a **válasszon tarifacsomagot** panelen kattintson **szabványos** felhasználói átviteli módosítsa, majd **válasszon** menteni a módosítást.
+2. Erőforrás menüjében a **tárolók**, kattintson a **méretezési**, válassza ki a gyűjteményt, és kattintson a legördülő listából módosításához **árképzési szintjében**. Előre definiált átviteli használatával fiókok jogosultak az S1, S2 vagy S3 tarifacsomagot.  Az a **válasszon tarifacsomagot** lapján kattintson **szabványos** felhasználói átviteli módosítsa, majd **kiválasztása** menteni a módosítást.
 
-    ![A beállítások panelről, hol változtatható meg az átviteli sebesség értéket ábrázoló képernyőfelvétel](./media/performance-levels/change-performance-set-thoughput.png)
+    ![A beállítások lapon hol változtatható meg az átviteli sebesség értéket ábrázoló képernyőfelvétel](./media/performance-levels/change-performance-set-thoughput.png)
 
-3. Vissza a **méretezési** panelen a **Tarifacsomagot** változott **szabványos** és a **átviteli sebesség (RU/mp)** mezőben jelenik meg az alapértelmezett érték 400 értéke. Állítsa be az átviteli sebesség 400 és 10 000 között [egységek kérelem](request-units.md)/second (RU/mp). A **havi számla becsült** a lap frissítések, automatikusan a havi költségeket becsült alján. 
+3. Vissza a **méretezési** lap, a **Tarifacsomagot** változott **szabványos** és a **átviteli sebesség (RU/mp)** mezőben jelenik meg az alapértelmezett érték 400 értéke. Állítsa be az átviteli sebesség 400 és 10 000 között [egységek kérelem](request-units.md)/second (RU/mp). A **havi számla becsült** a lap frissítések, automatikusan a havi költségeket becsült alján. 
 
     >[!IMPORTANT] 
     > Miután menti a módosításokat, és helyezze át a Standard tarifacsomag, nem állítható vissza a S1, S2 vagy S3 teljesítmény szintre.
 
 4. Kattintson a **mentése** menti a módosításokat.
 
-    Ha azt állapítja meg, hogy van szüksége további átviteli sebesség (nagyobb, mint 10000 RU/mp) vagy további tárhelyet (10GB-nál nagyobb) particionált gyűjtemény hozható létre. Az egypartíciós gyűjtemény egy particionált gyűjtemény áttelepítéséhez lásd: [egypartíciós telepít át a particionált gyűjtemények](documentdb-partition-data.md#migrating-from-single-partition).
+    Ha azt állapítja meg, hogy van szüksége további átviteli sebesség (nagyobb, mint 10000 RU/mp) vagy további tárhelyet (10 GB-nál nagyobb) particionált gyűjtemény hozható létre. Az egypartíciós gyűjtemény egy particionált gyűjtemény áttelepítéséhez lásd: [egypartíciós telepít át a particionált gyűjtemények](documentdb-partition-data.md#migrating-from-single-partition).
 
     > [!NOTE]
-    > Standard S1, S2 vagy S3 módosítása 2 percet is igénybe vehet.
+    > Standard S1, S2 vagy S3 módosítása két percet is igénybe vehet.
     > 
     > 
 
 **A .NET SDK használatával az egypartíciós gyűjtemények áttelepítése**
 
-A gyűjtemények teljesítményszintet módosítására vonatkozóan egy másik lehetőség az SDK-k keresztül történik. Ez a szakasz csak hozzá van rendelve egy gyűjtési teljesítmény módosítása szinten használatával a [DocumentDB .NET API](documentdb-sdk-dotnet.md), de a folyamat hasonló, ha az egyéb SDK-k.
+A gyűjtemények teljesítményszintet módosítására vonatkozóan egy másik lehetőség az Azure Cosmos DB SDK-k keresztül történik. Ez a szakasz csak hozzá van rendelve egy gyűjtési teljesítmény módosítása szinten használatával a [DocumentDB .NET API](documentdb-sdk-dotnet.md), a folyamat hasonló, ha a Csomagjától, de.
 
 Íme egy kódrészletet a a gyűjtemény átviteli sebességének módosítása a 5 000 kérelemegység / másodperc:
     
